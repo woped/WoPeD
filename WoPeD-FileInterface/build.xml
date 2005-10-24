@@ -1,0 +1,48 @@
+<!-- Build file for WoPeD-FileInterface -->
+
+<project default="makejar" name="FileInterface">
+
+	<property name="LOG4JVERSION" value="1.2.8" />
+	<property name="JGRAPHVERSION" value="5.4.4" />
+	<property name="FILEINTERFACEVERSION" value="0.9.0" />
+
+	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
+	<filter token="log4jversion" value="${LOG4JVERSION}" />
+
+	<target name="compile" depends="generateOldPnmlXMLBeans">
+		<javac srcdir="src/org" destdir="bin" compiler="extJavac">
+			<classpath>
+				<pathelement path="../WoPeD-CORE/bin" />
+				<pathelement path="../WoPeD-Editor/bin" />
+				<pathelement path="lib/pnmlBeans.jar" />
+				<pathelement path="lib/pnmlBeans_old.jar" />
+				<pathelement path="../CommonLibs/lib/xbean.jar" />
+				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+				<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+			</classpath>
+		</javac>
+	</target>
+	<target name="makejar" depends="compile">
+		<jar destfile="lib/woped-fileinterface-${FILEINTERFACEVERSION}.jar">
+			<fileset dir="bin" />
+			<fileset dir="lib" file="lib/pnmlBeans.jar" />
+			<fileset dir="lib" file="lib/pnmlBeans_old.jar" />
+		</jar>
+	</target>
+	<target name="cleanup" depends="makejar">
+		<delete file="./lib/pnmlBeans.jar" />
+		<delete file="./lib/pnmlBeans_old.jar" />
+	</target>
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
+	<!-- Please do not run this unless you really know what you're doing -->
+	<target name="generatePnmlXMLBeans">
+		<echo message="Compiling the PNML schema..." />
+		<xmlbean schema="src/org/woped/file/pnml_wf.xsd" destfile="lib/pnmlBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
+	</target>
+	<!-- Please do not run this unless you really know what you're doing -->
+	<target name="generateOldPnmlXMLBeans" depends="generatePnmlXMLBeans">
+		<echo message="Compiling the old PNML schema..." />
+		<xmlbean schema="src/org/woped/file/pnml_wf_old.xsd" destfile="lib/pnmlBeans_old.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
+	</target>
+
+</project>

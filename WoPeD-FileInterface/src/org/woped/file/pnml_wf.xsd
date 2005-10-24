@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by tyr (odin) -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Dietmar Hantsch (KYBEIDOS GmbH) -->
+<!-- 
+	
+ -->
+<xs:schema targetNamespace="pnml.woped.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="pnml.woped.org" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation>	
+			This is the XML Schema for PNML 1.3.2c
+			according the Specification  http://www.informatik.hu-berlin.de/top/PNX/download/ISO-IEC-15909-2-Draft.0.5.0.pdf
+			and the Relax NG Files: 
+			(Basic PNML RNG) http://www.informatik.hu-berlin.de/top/pnml/basicPNML.rng
+			(PNML Type Extension PNTD) http://www.informatik.hu-berlin.de/top/pntd/ptNetb
+			(RNG for label graphics) http://www.informatik.hu-berlin.de/top/pnml/conv.rng
+			20.01.2005
+			Simon Landes (landes@woped.org)
+		</xs:documentation>
+	</xs:annotation>
+	<xs:element name="pnml" type="pnmlType"/>
+	<xs:complexType name="pnmlType">
+		<xs:sequence>
+			<xs:element name="net" type="netType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- PetriNet -->
+	<xs:complexType name="netNameType">
+		<xs:annotation>
+			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="netType">
+		<xs:sequence>
+			<xs:element name="name" minOccurs="0">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="netNameType">
+							<xs:sequence>
+								<xs:element name="text" type="xs:string"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="place" type="placeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="transition" type="transitionType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="arc" type="arcType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="toolspecific" type="netToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="graphics" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="type" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="netToolspecificType">
+		<xs:complexContent>
+			<xs:extension base="toolspecificType">
+				<xs:sequence>
+					<xs:element name="bounds" type="graphicsSimpleType" minOccurs="0"/>
+					<xs:element name="resources" type="resourcesType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="resourceMappingType">
+		<xs:attribute name="resourceID" type="xs:IDREF"/>
+		<xs:attribute name="resourceClass" type="xs:IDREF"/>
+	</xs:complexType>
+	<xs:complexType name="organizationUnitType">
+		<xs:attribute name="Name" type="xs:ID"/>
+	</xs:complexType>
+	<xs:complexType name="resourceType">
+		<xs:attribute name="Name" type="xs:ID"/>
+	</xs:complexType>
+	<xs:complexType name="resourcesType">
+		<xs:sequence>
+			<xs:element name="resource" type="resourceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="role" type="roleType"/>
+				<xs:element name="organizationUnit" type="organizationUnitType"/>
+			</xs:choice>
+			<xs:element name="resourceMapping" type="resourceMappingType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:ID"/>
+	</xs:complexType>
+	<xs:complexType name="roleType">
+		<xs:attribute name="Name" type="xs:ID"/>
+	</xs:complexType>
+	<!-- General Node Types -->
+	<xs:complexType name="nodeType">
+		<xs:sequence>
+			<xs:element name="name" type="nodeNameType"/>
+			<xs:element name="graphics" type="graphicsNodeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="nodeNameType">
+		<xs:annotation>
+			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pnml/conv.rng"</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="text" type="xs:string"/>
+			<xs:element name="graphics" type="annotationGraphisType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="graphicsNodeType">
+		<xs:sequence>
+			<xs:element name="position" type="positionType"/>
+			<xs:element name="dimension" type="dimensionType" minOccurs="0"/>
+			<xs:element ref="fill" minOccurs="0"/>
+			<xs:element ref="line" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Place Types-->
+	<xs:complexType name="placeType" mixed="0">
+		<xs:complexContent mixed="0">
+			<xs:extension base="nodeType">
+				<xs:sequence>
+					<xs:element name="initialMarking" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="text" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="toolspecific" type="placeToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="id" type="xs:ID" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="placeToolspecificType">
+		<xs:complexContent>
+			<xs:extension base="toolspecificType">
+				<xs:sequence>
+					<xs:element name="operator" type="operatorType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- Transition Types-->
+	<xs:complexType name="transitionType">
+		<xs:complexContent>
+			<xs:extension base="nodeType">
+				<xs:sequence>
+					<xs:element name="toolspecific" type="transitionToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="id" type="xs:ID" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="transitionToolspecificType">
+		<xs:complexContent>
+			<xs:extension base="toolspecificType">
+				<xs:sequence>
+					<xs:element name="trigger" minOccurs="0">
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="triggerType"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:choice minOccurs="0">
+						<xs:element name="operator" type="operatorType"/>
+						<xs:element name="subprocess" type="xs:boolean"/>
+					</xs:choice>
+					<xs:element name="transitionResource" minOccurs="0">
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="transitionResourceType"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="triggerType">
+		<xs:sequence>
+			<xs:element name="graphics" type="graphicsSimpleType"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="type" type="xs:int" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="operatorType">
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="type" type="xs:int" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="transitionResourceType">
+		<xs:sequence>
+			<xs:element name="graphics" type="graphicsSimpleType"/>
+		</xs:sequence>
+		<xs:attribute name="organizationalUnitName" type="xs:IDREF"/>
+		<xs:attribute name="roleName" type="xs:IDREF"/>
+	</xs:complexType>
+	<!-- Arc Types-->
+	<xs:complexType name="arcType">
+		<xs:sequence>
+			<xs:element name="inscription" type="arcNameType" minOccurs="0"/>
+			<xs:element name="graphics" type="graphicsArcType" minOccurs="0"/>
+			<xs:element name="toolspecific" type="arcToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="source" type="xs:IDREF" use="required"/>
+		<xs:attribute name="target" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="arcToolspecificType">
+		<xs:complexContent>
+			<xs:extension base="toolspecificType">
+				<xs:sequence>
+					<xs:element name="route" type="xs:boolean" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="arcInscriptionType">
+		<xs:annotation>
+			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="text" type="xs:string"/>
+			<xs:element name="graphics" type="annotationGraphisType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="graphicsArcType">
+		<xs:sequence>
+			<xs:element name="position" type="positionType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="line" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="arcNameType">
+		<xs:annotation>
+			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pnml/conv.rng"</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="text" type="xs:int"/>
+			<xs:element name="graphics" type="annotationGraphisType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- General Types -->
+	<xs:complexType name="graphicsSimpleType">
+		<xs:sequence>
+			<xs:element name="position" type="positionType"/>
+			<xs:element name="dimension" type="dimensionType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="toolspecificType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Type for the Inheritance of the Toolspecific Types</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="tool" type="xs:string" use="required"/>
+		<xs:attribute name="version" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="annotationGraphisType">
+		<xs:annotation>
+			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="offset" type="positionType"/>
+			<xs:element ref="fill" minOccurs="0"/>
+			<xs:element ref="line" minOccurs="0"/>
+			<xs:element ref="font" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Helper  Types / Elements-->
+	<xs:element name="fill">
+		<xs:complexType>
+			<xs:attribute name="color"/>
+			<xs:attribute name="gradient-color"/>
+			<xs:attribute name="gradient-rotation" type="xs:token"/>
+			<xs:attribute name="images" type="xs:anyURI"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="line">
+		<xs:complexType>
+			<xs:attribute name="shape" type="xs:token"/>
+			<xs:attribute name="color"/>
+			<xs:attribute name="width" type="xs:decimal"/>
+			<xs:attribute name="style" type="xs:token"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="font">
+		<xs:complexType>
+			<xs:attribute name="family"/>
+			<xs:attribute name="style"/>
+			<xs:attribute name="weight"/>
+			<xs:attribute name="size"/>
+			<xs:attribute name="decoration">
+				<xs:simpleType>
+					<xs:restriction base="xs:token">
+						<xs:enumeration value="underline"/>
+						<xs:enumeration value="overline"/>
+						<xs:enumeration value="line-through"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="align">
+				<xs:simpleType>
+					<xs:restriction base="xs:token">
+						<xs:enumeration value="left"/>
+						<xs:enumeration value="center"/>
+						<xs:enumeration value="right"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="rotation" type="xs:decimal"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="dimensionType">
+		<xs:attribute name="x" type="xs:decimal" use="required"/>
+		<xs:attribute name="y" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="positionType">
+		<xs:attribute name="x" type="xs:decimal" use="required"/>
+		<xs:attribute name="y" type="xs:decimal" use="required"/>
+	</xs:complexType>
+</xs:schema>
