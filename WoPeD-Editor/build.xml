@@ -1,0 +1,22 @@
+<project default="makejar" name="EDITOR">
+	
+	<property name="JGRAPHVERSION" value="5.4.4" />
+	<property name="LOG4JVERSION" value="1.2.8" />
+	<property name="EDITORVERSION" value="0.9.0" />
+		
+	<target name="compile">
+			<javac srcdir="src/org" destdir="bin" compiler="extJavac">
+				<classpath>
+					<pathelement path="../WoPeD-CORE/bin" />
+					<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+					<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+				</classpath>
+			</javac>
+		</target>
+	<target name="makejar" depends="compile">
+		<jar destfile="lib/woped-editor-${EDITORVERSION}.jar">
+			<fileset dir="bin" />
+		</jar>
+	</target>
+
+</project>
