@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Dietmar Hantsch (KYBEIDOS GmbH) -->
+<xs:schema targetNamespace="config.woped.org" xmlns="config.woped.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Configuration">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="gui" type="GUI"/>
+				<xs:element name="model">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Model"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="editor" type="Editor"/>
+				<xs:element name="general" type="General"/>
+				<xs:element name="tools" type="Tool"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Model"/>
+	<xs:complexType name="Importing">
+		<xs:sequence>
+			<xs:element name="toolspecific" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Exporting">
+		<xs:sequence>
+			<xs:element name="toolspecific" type="xs:boolean"/>
+			<xs:element name="tpnExportElementAsName" type="xs:boolean" default="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GUI">
+		<xs:sequence>
+			<xs:element name="Window">
+				<xs:complexType>
+					<xs:attribute name="width" type="xs:int" use="optional"/>
+					<xs:attribute name="height" type="xs:int" use="optional"/>
+					<xs:attribute name="x" type="xs:int" use="optional"/>
+					<xs:attribute name="y" type="xs:int" use="optional"/>
+					<xs:attribute name="lookAndFeel" type="xs:string" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Editor">
+		<xs:sequence>
+			<xs:element name="editOnCreation" type="xs:boolean" default="true" minOccurs="0"/>
+			<xs:element name="insert_copy" type="xs:boolean" default="false" minOccurs="0"/>
+			<xs:element name="smartEditing" type="xs:boolean" default="true" minOccurs="0"/>
+			<xs:element name="showGrid" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="arrowWidth" type="xs:int" minOccurs="0"/>
+			<xs:element name="arrowheadSize" type="xs:int" minOccurs="0"/>
+			<xs:element name="arrowFilledHead" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="roundRouting" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RecentFile">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="path" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="General">
+		<xs:sequence>
+			<xs:element name="homedir" type="xs:string"/>
+			<xs:element name="recentFiles" type="RecentFile" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Tool">
+		<xs:sequence>
+			<xs:element name="exporting" type="Exporting"/>
+			<xs:element name="importing" type="Importing"/>
+			<xs:element name="woflan" type="Woflan"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Woflan">
+		<xs:sequence>
+			<xs:element name="useWoflan" type="xs:boolean" default="false" minOccurs="0"/>
+			<xs:element name="woflanPath" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

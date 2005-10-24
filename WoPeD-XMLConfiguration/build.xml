@@ -1,0 +1,36 @@
+<!-- Build file for WoPeD-XMLConfiguration -->
+
+<project default="makejar" name="CONFIGURATION">
+
+	<property name="LOG4JVERSION" value="1.2.8" />
+	<property name="CONFIGURATIONVERSION" value="0.9.0" />
+
+	<filter token="log4jversion" value="${LOG4JVERSION}" />
+
+	<target name="compile" depends="generateConfigXMLBeans">
+		<javac srcdir="src/org/woped/config" destdir="bin" compiler="extJavac">
+			<classpath>
+				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+				<pathelement path="../CommonLibs/lib/xbean_orig.jar" />
+				<pathelement path="../WoPeD-CORE/bin" />
+				<pathelement path="lib/confBeans.jar" />
+			</classpath>
+		</javac>
+	</target>
+	<target name="makejar" depends="compile">
+		<jar destfile="lib/woped-configuration-${CONFIGURATIONVERSION}.jar">
+			<fileset dir="bin" />
+			<fileset dir="lib" file="lib/confBeans.jar" />
+		</jar>
+	</target>
+	<target name="cleanup" depends="makejar">
+		<delete file="lib/confBeans.jar" />
+	</target>
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
+	<!-- Please do not run this unless you really know what you're doing -->
+	<target name="generateConfigXMLBeans">
+		<echo message="Compiling the config schema..." />
+		<xmlbean schema="src/org/woped/config/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
+	</target>
+
+</project>
