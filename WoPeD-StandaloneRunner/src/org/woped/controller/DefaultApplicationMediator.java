@@ -2,19 +2,22 @@ package org.woped.controller;
 
 import java.io.File;
 
-import org.woped.config.IConfiguration;
-import org.woped.controller.vc.ConfigVC;
+import org.woped.config.gui.ConfEditorPanel;
+import org.woped.config.gui.ConfFilePanel;
+import org.woped.config.gui.ConfToolsPanel;
 import org.woped.controller.vc.MenuBarVC;
 import org.woped.controller.vc.StatusBarVC;
-import org.woped.controller.vc.TaskBarVC;
 import org.woped.controller.vc.ToolBarVC;
-import org.woped.controller.vep.FileEventProcessor;
 import org.woped.controller.vep.GUIViewEventProcessor;
+import org.woped.core.config.IConfiguration;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IViewController;
+import org.woped.core.gui.IUserInterface;
+import org.woped.editor.controller.ApplicationMediator;
+import org.woped.editor.controller.vc.ConfigVC;
+import org.woped.editor.controller.vc.TaskBarVC;
+import org.woped.file.controller.vep.FileEventProcessor;
 import org.woped.gui.DefaultUserInterface;
-import org.woped.gui.IUserInterface;
-import org.woped.gui.config.ConfEditorPanel;
-import org.woped.gui.config.ConfFilePanel;
-import org.woped.gui.config.ConfToolsPanel;
 
 public class DefaultApplicationMediator extends ApplicationMediator
 {

@@ -40,7 +40,7 @@ import org.woped.action.help.BrowserForwardAction;
 import org.woped.action.help.BrowserHomeAction;
 import org.woped.action.help.BrowserRefreshAction;
 import org.woped.action.help.BrowserWebpageAction;
-import org.woped.gui.ToolBarButton;
+import org.woped.editor.gui.ToolBarButton;
 
 /**
  * @author Thomas Freytag

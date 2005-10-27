@@ -30,9 +30,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import org.jgraph.JGraph;
-import org.woped.config.ConfigurationManager;
-import org.woped.controller.vc.EditorVC;
-import org.woped.utilities.WoPeDLogger;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.LoggerManager;
+import org.woped.editor.controller.vc.EditorVC;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
@@ -44,47 +44,42 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
  * 
  * 13.05.2003
  */
-public class JPGExport implements WoPeDLogger
-{
+public class JPGExport {
 
-    // Create a buffered image of the specified graph.
-    public static boolean save(String absFileName, EditorVC editor)
-    {
-        JGraph graph = editor.getGraph();
-        graph.clearSelection();
-        Object[] cells = graph.getRoots();
-        if (cells.length > 0)
-        {
-            Rectangle2D bounds = graph.getCellBounds(cells);
+	// Create a buffered image of the specified graph.
+	public static boolean save(String absFileName, EditorVC editor) {
+		JGraph graph = editor.getGraph();
+		graph.clearSelection();
+		Object[] cells = graph.getRoots();
+		if (cells.length > 0) {
+			Rectangle2D bounds = graph.getCellBounds(cells);
 
-            graph.setGridVisible(false);
-            graph.toScreen(bounds);
+			graph.setGridVisible(false);
+			graph.toScreen(bounds);
 
-            // Create a Buffered Image
-            Dimension d = bounds.getBounds().getSize();
-            BufferedImage img = new BufferedImage(d.width + 10, d.height + 10, BufferedImage.TYPE_INT_RGB);
-            Graphics2D graphics = img.createGraphics();
-            graphics.translate(-bounds.getX() + 10, -bounds.getY() + 10);
-            graph.paint(graphics);
+			// Create a Buffered Image
+			Dimension d = bounds.getBounds().getSize();
+			BufferedImage img = new BufferedImage(d.width + 10, d.height + 10, BufferedImage.TYPE_INT_RGB);
+			Graphics2D graphics = img.createGraphics();
+			graphics.translate(-bounds.getX() + 10, -bounds.getY() + 10);
+			graph.paint(graphics);
 
-            graph.setGridVisible(ConfigurationManager.getConfiguration().isShowGrid() & !editor.isTokenGameMode());
+			graph.setGridVisible(ConfigurationManager.getConfiguration().isShowGrid() & !editor.isTokenGameMode());
 
-            try
-            {
-                FileOutputStream fos = new FileOutputStream(new File(absFileName));
-                JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(fos);
-                encoder.encode(img);
-                fos.flush();
-                fos.close();
-                logger.info("File saved to: " + absFileName);
-                return true;
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-                logger.error("Could not export as JPG");
-                return false;
-            }
-        }
-        return false;
-    }
+			try {
+				FileOutputStream fos = new FileOutputStream(new File(absFileName));
+				JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(fos);
+				encoder.encode(img);
+				fos.flush();
+				fos.close();
+				LoggerManager.info(Constants.FILE_LOGGER, "File saved to: " + absFileName);
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				LoggerManager.error(Constants.FILE_LOGGER, "Could not export as JPG");
+				return false;
+			}
+		}
+		return false;
+	}
 }

@@ -48,8 +48,8 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.Document;
 
+import org.woped.WoPeDLogger;
 import org.woped.action.help.LaunchDefaultBrowserAction;
-import org.woped.utilities.WoPeDLogger;
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>

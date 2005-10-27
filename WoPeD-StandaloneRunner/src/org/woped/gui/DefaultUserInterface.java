@@ -21,23 +21,24 @@ import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
-import org.woped.action.WoPeDAction;
-import org.woped.config.ConfigurationManager;
-import org.woped.controller.AbstractViewEvent;
-import org.woped.controller.ActionFactory;
-import org.woped.controller.IEditor;
+import org.woped.WoPeDLogger;
 import org.woped.controller.ViewEvent;
-import org.woped.controller.VisualController;
-import org.woped.controller.petrinet.PetriNetPropertyEditor;
-import org.woped.controller.vc.EditorVC;
 import org.woped.controller.vc.MenuBarVC;
 import org.woped.controller.vc.StatusBarVC;
-import org.woped.controller.vc.TaskBarVC;
 import org.woped.controller.vc.ToolBarVC;
-import org.woped.model.AbstractModelProcessor;
-import org.woped.model.PetriNetModelProcessor;
-import org.woped.utilities.Messages;
-import org.woped.utilities.WoPeDLogger;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IEditor;
+import org.woped.core.gui.IUserInterface;
+import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.utilities.Messages;
+import org.woped.editor.action.WoPeDAction;
+import org.woped.editor.controller.ActionFactory;
+import org.woped.editor.controller.PetriNetPropertyEditor;
+import org.woped.editor.controller.VisualController;
+import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.TaskBarVC;
 
 public class DefaultUserInterface extends JFrame implements IUserInterface, InternalFrameListener, WoPeDLogger
 {

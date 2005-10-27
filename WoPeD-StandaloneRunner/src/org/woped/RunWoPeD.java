@@ -24,7 +24,6 @@ package org.woped;
 
 import org.woped.config.WoPeDConfiguration;
 import org.woped.controller.DefaultApplicationMediator;
-import org.woped.utilities.WoPeDLogger;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

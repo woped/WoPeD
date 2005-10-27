@@ -31,7 +31,7 @@ package org.woped.action.help;
 
 import java.awt.event.ActionEvent;
 
-import org.woped.action.WoPeDAction;
+import org.woped.editor.action.WoPeDAction;
 import org.woped.gui.help.HelpBrowser;
 
 public class BrowserContentsAction extends WoPeDAction

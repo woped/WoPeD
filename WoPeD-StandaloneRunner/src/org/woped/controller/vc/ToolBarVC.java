@@ -33,14 +33,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JToolBar;
 
-import org.woped.controller.AbstractViewEvent;
-import org.woped.controller.ActionFactory;
 import org.woped.controller.DefaultApplicationMediator;
-import org.woped.controller.IViewController;
-import org.woped.controller.IViewListener;
 import org.woped.controller.ViewEvent;
-import org.woped.controller.VisualController;
-import org.woped.gui.ToolBarButton;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IViewController;
+import org.woped.core.controller.IViewListener;
+import org.woped.editor.controller.ActionFactory;
+import org.woped.editor.controller.VisualController;
+import org.woped.editor.gui.ToolBarButton;
 
 /**
  * Part of a small example showing basic use of JToolBar. Creates a small

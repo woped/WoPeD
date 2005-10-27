@@ -32,6 +32,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import org.woped.WoPeDLogger;
 import org.woped.action.help.BrowserBackAction;
 import org.woped.action.help.BrowserCloseAction;
 import org.woped.action.help.BrowserContentsAction;
@@ -39,8 +40,7 @@ import org.woped.action.help.BrowserForwardAction;
 import org.woped.action.help.BrowserHomeAction;
 import org.woped.action.help.BrowserRefreshAction;
 import org.woped.action.help.BrowserWebpageAction;
-import org.woped.utilities.Messages;
-import org.woped.utilities.WoPeDLogger;
+import org.woped.core.utilities.Messages;
 
 
 /**

@@ -40,16 +40,16 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.woped.config.ConfigurationManager;
+import org.woped.WoPeDLogger;
 import org.woped.config.WoPeDRecentFile;
-import org.woped.controller.AbstractViewEvent;
-import org.woped.controller.ActionFactory;
 import org.woped.controller.DefaultApplicationMediator;
-import org.woped.controller.IViewController;
-import org.woped.controller.IViewListener;
 import org.woped.controller.ViewEvent;
-import org.woped.utilities.Messages;
-import org.woped.utilities.WoPeDLogger;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IViewController;
+import org.woped.core.controller.IViewListener;
+import org.woped.core.utilities.Messages;
+import org.woped.editor.controller.ActionFactory;
 
 /**
  * Represents the Manubar TODO: DOCUMENTATION (xraven)

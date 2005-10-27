@@ -15,11 +15,11 @@ import javax.swing.JProgressBar;
 import javax.swing.Timer;
 import javax.swing.border.BevelBorder;
 
-import org.woped.controller.AbstractViewEvent;
 import org.woped.controller.DefaultApplicationMediator;
-import org.woped.controller.IViewController;
-import org.woped.controller.IViewListener;
-import org.woped.utilities.SynchonizeTask;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IViewController;
+import org.woped.core.controller.IViewListener;
+import org.woped.editor.utilities.SynchonizeTask;
 
 /*
  * 

@@ -11,16 +11,16 @@ import java.net.URL;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.woped.config.ConfigurationManager;
-import org.woped.controller.AbstractEventProcessor;
-import org.woped.controller.AbstractViewEvent;
+import org.woped.WoPeDLogger;
 import org.woped.controller.DefaultApplicationMediator;
-import org.woped.controller.vc.EditorVC;
 import org.woped.controller.vc.MenuBarVC;
 import org.woped.controller.vc.ToolBarVC;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractEventProcessor;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.AboutUI;
 import org.woped.gui.help.HelpBrowser;
-import org.woped.utilities.WoPeDLogger;
 
 /**
  * @author lai

@@ -33,9 +33,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.border.BevelBorder;
 
-import org.woped.config.DefaultStaticConfiguration;
-import org.woped.controller.petrinet.PetriNetPropertyEditor;
-import org.woped.controller.vc.EditorVC;
+import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.editor.controller.PetriNetPropertyEditor;
+import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.gui.StatusBarLabel;
 
 /**
  * The EditorFrame is the container for each <code>Editor</code>.

@@ -1,5 +1,7 @@
 package org.woped.controller;
 
+import org.woped.core.controller.AbstractViewEvent;
+
 public class ViewEvent extends AbstractViewEvent
 {
     public static final int VIEWEVENTTYPE_GUI = 3;
