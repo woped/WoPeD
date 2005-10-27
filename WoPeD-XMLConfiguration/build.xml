@@ -8,7 +8,7 @@
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 
 	<target name="compile" depends="generateConfigXMLBeans">
-		<javac srcdir="src/org/woped/config" destdir="bin" compiler="extJavac">
+		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
 				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 				<pathelement path="../CommonLibs/lib/xbean_orig.jar" />

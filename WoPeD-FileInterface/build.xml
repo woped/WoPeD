@@ -10,7 +10,7 @@
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 
 	<target name="compile" depends="generateOldPnmlXMLBeans">
-		<javac srcdir="src/org" destdir="bin" compiler="extJavac">
+		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
 				<pathelement path="../WoPeD-CORE/bin" />
 				<pathelement path="../WoPeD-Editor/bin" />

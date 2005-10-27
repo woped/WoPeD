@@ -5,6 +5,7 @@
 	<property name="JGRAPHVERSION" value="5.4.4" />
 	<property name="LOG4JVERSION" value="1.2.8" />
 	<property name="GUIVERSION" value="0.9.0" />
+	<property name="COREVERSION" value="0.9.0" />
 
 	<filter token="wopedversion" value="${GUIVERSION}" />
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
@@ -12,9 +13,9 @@
 	<filter token="builtstamp" value="${DSTAMP}" />
 
 	<target name="compile">
-		<javac srcdir="src/org/woped/config" destdir="bin" compiler="extJavac">
+		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
-				<pathelement path="../WoPeD-CORE/bin" />
+				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}.jar" />
 				<pathelement path="../WoPeD-Editor/bin" />
 				<pathelement path="../WoPeD-FileInterface/bin" />
 				<pathelement path="../WoPeD-XMLConfiguration/bin" />
