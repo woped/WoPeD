@@ -2,18 +2,28 @@
 
 	<tstamp />
 
-	<property name="WOPEDVERSION" value="0.8.1" />
 	<property name="JGRAPHVERSION" value="5.4.4" />
 	<property name="LOG4JVERSION" value="1.2.8" />
+	<property name="WOPEDVERSION" value="0.9.0" />
+	<property name="COREVERSION" value="0.9.0" />
+	<property name="EDITORVERSION" value="0.9.0" />
+	<property name="FILEINTERFACEVERSION" value="0.9.0" />
+	<property name="GUIVERSION" value="0.9.0" />
+	<property name="CONFIGURATIONVERSION" value="0.9.0" />
 
-	<filter token="wopedversion" value="${WOPEDVERSION}" />
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
+	<filter token="wopedversion" value="${WOPEDVERSION}" />
+	<filter token="coreversion" value="${COREVERSION}" />
+	<filter token="editorversion" value="${EDITORVERSION}" />
+	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}" />
+	<filter token="guiversion" value="${GUIVERSION}" />
+	<filter token="configurationversion" value="${CONFIGURATIONVERSION}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="makeinstaller, makebindist, makesrcdist, purge" />
+	<target name="makedistribution" depends="makeinstaller" />
 	<!--	depends="makeinstaller, makebindist, makesrcdist, purge" /> -->
 
 	<target name="clean">
@@ -29,30 +39,22 @@
 	</target>
 
 	<target name="copylibs" depends="makedir">
-		<copy todir="dist/lib" file="lib/jgraph-${JGRAPHVERSION}.jar" />
-		<copy todir="dist/lib" file="lib/pnmlBeans.jar" />
-		<copy todir="dist/lib" file="lib/pnmlBeans_old.jar" />
-		<copy todir="dist/lib" file="lib/log4j-${LOG4JVERSION}.jar" />
-		<copy todir="dist/lib" file="lib/xbean.jar" />
-		<copy todir="dist/lib" file="lib/confBeans.jar" />
-	</target>
-
-	<target name="compile" depends="copylibs, setversion">
-		<javac srcdir="src/org" destdir="bin" compiler="extJavac">
-			<classpath>
-				<pathelement path="lib/jgraph-${JGRAPHVERSION}.jar" />
-				<pathelement path="lib/pnmlBeans.jar" />
-				<pathelement path="lib/pnmlBeans_old.jar" />
-				<pathelement path="lib/log4j-${LOG4JVERSION}.jar" />
-				<pathelement path="lib/xbean.jar" />
-				<pathelement path="lib/confBeans.jar" />
-			</classpath>
-		</javac>
+		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CORE/lib/woped-core-${COREVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
+		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/woped-fileinterface-${FILEINTERFACEVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-StandaloneRunner/lib/woped-gui-${GUIVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/woped-configuration-${CONFIGURATIONVERSION}.jar" />
 	</target>
 
 	<target name="setversion">
-		<copy file="src/org/woped/properties/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
-		<copy file="dist/Messages.properties" tofile="bin/org/woped/properties/Messages.properties" filtering="true" overwrite="true" />
+		<copy file="../WoPeD-Editor/src/org/woped/properties/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
+		<copy file="dist/Messages.properties" tofile="../WoPeD-Editor/bin/org/woped/properties/Messages.properties" filtering="true" overwrite="true" />
 	</target>
 
 	<target name="copydocs" depends="makedir">
@@ -67,10 +69,10 @@
 	</target>
 
 	<target name="makejavadoc" depends="makedir">
-		<javadoc packagenames="org.woped.*" sourcepath="src" destdir="doc/api-doc" />
+<!--		<javadoc packagenames="org.woped.*" sourcepath="src" destdir="doc/api-doc" />-->
 	</target>
 
-	<target name="copybuildtools" depends="makedir">
+	<target name="copybuildtools" depends="setversion, copylibs, copydocs">
 		<copy todir="dist">
 			<fileset dir="build-tools/launcher/Windows" />
 			<fileset dir="build-tools/launcher/Linux" />
@@ -78,33 +80,18 @@
 			<fileset dir="build-tools/setup/Windows" />
 			<fileset dir="build-tools/setup/Linux" />
 			<fileset dir="build-tools/setup/MacOS" />
-			<fileset file="build-tools/*.*" />
 		</copy>
-
-		<unzip src="build-tools/setup/izpack.zip" dest="dist" />
-
 		<copy todir="dist" filtering="true" overwrite="true">
+			<fileset file="build-tools/*.*" />
 			<fileset file="build-tools/setup/install.xml" />
 		</copy>
 
-		<copy file="build-tools/MANIFEST.mf" tofile="dist/MANIFEST.mf" filtering="true" overwrite="true" />
-		<copy file="build-tools/MANIFEST1.mf" tofile="dist/lib/MANIFEST.mf" filtering="true" overwrite="true" />
+		<unzip src="build-tools/setup/izpack.zip" dest="dist" />
 	</target>
 
-	<target name="makejar" depends="compile, copybuildtools, copydocs">
-		<jar destfile="dist/lib/WoPeDclasses.jar" manifest="dist/lib/MANIFEST.mf">
-			<fileset dir="bin" />
-			<fileset dir="dist">
-				<include name="doc/html/**" />
-			</fileset>
-		</jar>
-	</target>
-
-	<target name="makeinstaller" depends="makejar">
+	<target name="makeinstaller" depends="copybuildtools">
 		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST.mf">
-			<fileset dir="bin">
-				<include name="**/RunWoPeD.class" />
-			</fileset>
+			<fileset file="../WoPeD-StandaloneRunner/bin/org/woped/RunWoPeD.class" />
 		</jar>
 		<exec dir="dist" executable="cmd">
 			<arg line="/c launch4j.exe buildexe.cfg" />
@@ -137,6 +124,26 @@
 		</tar>
 	</target>
 
+	<target name="purge">
+		<delete dir="dist/bin" />
+		<delete dir="dist/doc/html/images" />
+		<delete dir="dist/doc/html" />
+		<delete dir="dist/doc" />
+		<delete dir="dist/lib" />
+		<delete dir="dist/build" />
+		<delete dir="dist/WoPeD Starter.xcode" />
+		<delete>
+			<fileset dir="dist" excludes="WoPeD-install*.tgz 
+		    							  WoPeD-install*.zip 
+		    							  WoPeD-src*.zip
+		    			    			  WoPeD-src*.tgz 
+										  WoPeD-bin*.zip
+		    							  WoPeD-bin*.tgz" />
+		</delete>
+		<delete dir="doc/api-doc" />
+	</target>
+
+	<!--
 	<target name="makesrcdist" depends="copybuildtools, makejavadoc">
 		<zip destfile="dist/WoPeD-src-${WOPEDVERSION}.zip">
 			<zipfileset dir="." includes="src/**/*" />
@@ -158,7 +165,7 @@
 		</tar>
 	</target>
 
-	<target name="makebindist" depends="makejar">
+	<target name="makebindist">
 		<zip destfile="dist/WoPeD-bin-${WOPEDVERSION}.zip">
 			<zipfileset dir="." includes="lib/*.*" />
 			<zipfileset dir="dist" includes="WoPeD.jar" />
@@ -176,26 +183,7 @@
 			<tarfileset dir="dist" includes="Changelog.txt" />
 		</tar>
 	</target>
-
-	<target name="purge">
-		<delete dir="dist/bin" />
-		<delete dir="dist/doc/html/images" />
-		<delete dir="dist/doc/html" />
-		<delete dir="dist/doc" />
-		<delete dir="dist/lib" />
-		<delete dir="dist/build" />
-		<delete dir="dist/WoPeD Starter.xcode" />
-		<delete>
-			<fileset dir="dist" excludes="WoPeD-install*.tgz 
-		    							  WoPeD-install*.zip 
-		    							  WoPeD-src*.zip
-		    			    			  WoPeD-src*.tgz 
-										  WoPeD-bin*.zip
-		    							  WoPeD-bin*.tgz" />
-		</delete>
-		<delete dir="doc/api-doc" />
-	</target>
-
+-->
 	<!--<target name="genjar" depends="copy libs">
 		<unjar dest="dist/genjarsrc">
 			<fileset dir="dist/lib"/>
@@ -231,21 +219,19 @@
 		</jar>
 	</target>-->
 	
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="resources/xbean_orig.jar" />
-	<!-- Please do not run this unless you really know what you're doing -->
+<!-- Please do not run this unless you really know what you're doing -->	
+<!--	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="resources/xbean_orig.jar" />	
 	<target name="generateConfigXMLBeans">
 		<echo message="Compiling the config schema..." />
 		<xmlbean schema="src/org/woped/config/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="resources/xbean_orig.jar" />
 	</target>
-	<!-- Please do not run this unless you really know what you're doing -->
 	<target name="generatePnmlXMLBeans">
 		<echo message="Compiling the PNML schema..." />
 		<xmlbean schema="src/org/woped/pnml/pnml_wf.xsd" destfile="lib/pnmlBeans.jar" debug="on" classpath="resources/xbean_orig.jar" />
 	</target>
-	<!-- Please do not run this unless you really know what you're doing -->
 	<target name="generateOldPnmlXMLBeans">
 		<echo message="Compiling the old PNML schema..." />
 		<xmlbean schema="src/org/woped/pnml/pnml_wf_old.xsd" destfile="lib/pnmlBeans_old.jar" debug="on" classpath="resources/xbean_orig.jar" />
-	</target>
+	</target>-->
 
 </project>
