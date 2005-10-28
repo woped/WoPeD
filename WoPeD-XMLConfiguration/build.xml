@@ -4,7 +4,9 @@
 
 	<property name="LOG4JVERSION" value="1.2.8" />
 	<property name="CONFIGURATIONVERSION" value="0.9.0" />
-
+	<property name="COREVERSION" value="0.9.0" />
+	<property name="SNAPSHOT" value="SNAPSHOT" />
+	
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 
 	<target name="compile" depends="generateConfigXMLBeans">
@@ -12,13 +14,13 @@
 			<classpath>
 				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 				<pathelement path="../CommonLibs/lib/xbean_orig.jar" />
-				<pathelement path="../WoPeD-CORE/bin" />
+				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}.jar" />
 				<pathelement path="lib/confBeans.jar" />
 			</classpath>
 		</javac>
 	</target>
 	<target name="makejar" depends="compile">
-		<jar destfile="lib/woped-configuration-${CONFIGURATIONVERSION}.jar">
+		<jar destfile="lib/woped-configuration-${CONFIGURATIONVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="lib" file="lib/confBeans.jar" />
 		</jar>
