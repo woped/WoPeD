@@ -47,11 +47,18 @@ import org.woped.core.model.ArcModel;
 public class Utils
 {
 
-    public static Point getCenterPoint(Rectangle ownerBounds, Dimension dialogDimension)
+    /**
+     * This method returns the location that should place a component with <code>componentDimension</code>
+     * in the center of the owner component (<code>ownerBounds</code>).
+     * @param ownerBounds
+     * @param componentDimension
+     * @return
+     */
+    public static Point getCenterPoint(Rectangle ownerBounds, Dimension componentDimension)
     {
         int middleX = (int) (ownerBounds.getX() + (ownerBounds.getWidth() * 0.5));
         int middleY = (int) (ownerBounds.getY() + (ownerBounds.getHeight() * 0.5));
-        return new Point(middleX - (int) (dialogDimension.getWidth() * 0.5), middleY - (int) (dialogDimension.getHeight() * 0.5));
+        return new Point(middleX - (int) (componentDimension.getWidth() * 0.5), middleY - (int) (componentDimension.getHeight() * 0.5));
     }
 
     /**
