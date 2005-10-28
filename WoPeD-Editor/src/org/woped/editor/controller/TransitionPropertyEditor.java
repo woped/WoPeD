@@ -1,15 +1,31 @@
 /*
- * Created on 21.06.2005
+ * 
+ * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
+ *
+ * For contact information please visit http://woped.ba-karlsruhe.de
+ *
  */
-
 package org.woped.editor.controller;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
@@ -32,10 +48,9 @@ import javax.swing.JTextField;
 
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.utilities.Utils;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.controller.vc.EditorVC;
 
@@ -47,80 +62,75 @@ import org.woped.editor.controller.vc.EditorVC;
  */
 public class TransitionPropertyEditor extends JDialog implements ActionListener
 {
-    private JPanel                 contentPanel                  = null;
+    private JPanel                contentPanel                  = null;
+    private JPanel                namePanel                     = null;
+    private JLabel                nameLabel                     = null;
+    private JTextField            nameTextField                 = null;
 
-    private JPanel                 namePanel                     = null;
-    private JLabel                 nameLabel                     = null;
-    private JTextField             nameTextField                 = null;
     // Trigger
-    private JPanel                 triggerPanel                  = null;
-    private JLabel                 triggerLabel                  = null;
-    private JRadioButton           triggerNoneRadioButton        = null;
-    private JRadioButton           triggerResourceRadioButton    = null;
-    private JRadioButton           triggerMessageRadioButton     = null;
-    private JRadioButton           triggerTimeRadioButton        = null;
-    private ButtonGroup            triggerButtonGroup            = null;
-    private DefaultButtonModel     triggerButtonModel            = null;
+    private JPanel                triggerPanel                  = null;
+    private JLabel                triggerLabel                  = null;
+    private JRadioButton          triggerNoneRadioButton        = null;
+    private JRadioButton          triggerResourceRadioButton    = null;
+    private JRadioButton          triggerMessageRadioButton     = null;
+    private JRadioButton          triggerTimeRadioButton        = null;
+    private ButtonGroup           triggerButtonGroup            = null;
+    private DefaultButtonModel    triggerButtonModel            = null;
+
     // Branching
-    private JPanel                 branchingPanel                = null;
-    private JLabel                 branchingLabel                = null;
-    private JRadioButton           branchingNoneRadioButton      = null;
-    private JRadioButton           branchingAndSplittRadioButton = null;
-    private JRadioButton           branchingAndJoinRadioButton   = null;
-    private JRadioButton           branchingXorSplittRadioButton = null;
-    private JRadioButton           branchingXorJoinRadioButton   = null;
-    private ButtonGroup            branchingButtonGroup          = null;
+    private JPanel                branchingPanel                = null;
+    private JLabel                branchingLabel                = null;
+    private JRadioButton          branchingNoneRadioButton      = null;
+    private JRadioButton          branchingAndSplittRadioButton = null;
+    private JRadioButton          branchingAndJoinRadioButton   = null;
+    private JRadioButton          branchingXorSplittRadioButton = null;
+    private JRadioButton          branchingXorJoinRadioButton   = null;
+    private ButtonGroup           branchingButtonGroup          = null;
 
     // Duration
-    private JPanel                 durationPanel                 = null;
-    private JTextField             durationTextField             = null;
-    private JLabel                 durationLabel                 = null;
-    private JComboBox              durationComboBox              = null;
-    private static final String    COMBOBOX_HOURS_TEXT           = "hours";
-    private static final String    COMBOBOX_MINUTES_TEXT         = "minutes";
-    private static final String    COMBOBOX_SECONDS_TEXT         = "seconds";
-    private static final Object[]  durationComboBoxA             = { COMBOBOX_HOURS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_SECONDS_TEXT };
+    private JPanel                durationPanel                 = null;
+    private JTextField            durationTextField             = null;
+    private JLabel                durationLabel                 = null;
+    private JComboBox             durationComboBox              = null;
+    private static final String   COMBOBOX_HOURS_TEXT           = "hours";
+    private static final String   COMBOBOX_MINUTES_TEXT         = "minutes";
+    private static final String   COMBOBOX_SECONDS_TEXT         = "seconds";
+    private static final Object[] durationComboBoxA             = { COMBOBOX_HOURS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_SECONDS_TEXT };
+
     // Resource
-    private JPanel                 resourcePanel                 = null;
-    private JLabel                 resourceLabel                 = null;
-    private JLabel                 resourceRoleLabel             = null;
-    private JLabel                 resourceOrgUnitLabel          = null;
-    private JComboBox              resourceRoleComboBox          = null;
-    private JComboBox              resourceOrgUnitComboBox       = null;
-    private DefaultComboBoxModel   roleComboBoxModel             = null;
-    private DefaultComboBoxModel   orgUnitComboBoxModel          = null;
+    private JPanel                resourcePanel                 = null;
+    private JLabel                resourceLabel                 = null;
+    private JLabel                resourceRoleLabel             = null;
+    private JLabel                resourceOrgUnitLabel          = null;
+    private JComboBox             resourceRoleComboBox          = null;
+    private JComboBox             resourceOrgUnitComboBox       = null;
+    private DefaultComboBoxModel  roleComboBoxModel             = null;
+    private DefaultComboBoxModel  orgUnitComboBoxModel          = null;
 
-    private static final String    TRIGGER_NONE                  = "None";
-    private static final String    TRIGGER_MESSAGE               = "Message";
-    private static final String    TRIGGER_RESOURCE              = "Resource";
-    private static final String    TRIGGER_TIME                  = "Time";
-
+    private static final String   TRIGGER_NONE                  = "None";
+    private static final String   TRIGGER_MESSAGE               = "Message";
+    private static final String   TRIGGER_RESOURCE              = "Resource";
+    private static final String   TRIGGER_TIME                  = "Time";
     // Button Panel
-    private JPanel                 buttonPanel                   = null;
-    private JButton                buttonOk                      = null;
-    private JButton                buttonCancel                  = null;
-    private JButton                buttonApply                   = null;
+    private JPanel                buttonPanel                   = null;
+    private JButton               buttonOk                      = null;
+    private JButton               buttonCancel                  = null;
+    private JButton               buttonApply                   = null;
     // allgemein
-    private Object[]               selection;
-    private EditorVC               editor                        = null;
-    PetriNetModelElement           element;
-    private PetriNetModelProcessor petrinet;
 
-    public PetriNetModelProcessor getPetrinet()
-    {
-        return petrinet;
-    }
+    private TransitionModel       transition                    = null;
+    private EditorVC              editor                        = null;
 
-    public TransitionPropertyEditor(PetriNetModelProcessor petrinet, Object[] selection)
+    public TransitionPropertyEditor(Frame owner, TransitionModel transition, EditorVC editor)
     {
-        super();
-        this.petrinet = petrinet;
-        this.setVisible(false);
+        super(owner, true);
+        this.transition = transition;
         this.editor = editor;
-        this.selection = selection;
+        this.setVisible(false);
         initialize();
         readTriggerConfiguration();
         this.setSize(280, 400);
+        this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
     }
 
     private void initialize()
@@ -130,55 +140,26 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         contentPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
-        if (selection != null)
-        {
-            if (selection.length == 1)
-            {
-                if (selection[0] instanceof GroupModel)
-                {
-                    selection[0] = ((GroupModel) selection[0]).getMainElement();
-                }
-                if (selection[0] instanceof PetriNetModelElement)
-                {
-                    element = (PetriNetModelElement) selection[0];
-                    if (element instanceof TransitionModel)
-                    {
-                        c.weightx = 1;
-                        c.gridx = 0;
-                        c.gridy = 0;
-                        contentPanel.add(getNamePanel(), c);
+        c.weightx = 1;
+        c.gridx = 0;
+        c.gridy = 0;
+        contentPanel.add(getNamePanel(), c);
 
-                        c.gridx = 0;
-                        c.gridy = 1;
-                        contentPanel.add(getTriggerPanel(), c);
+        c.gridx = 0;
+        c.gridy = 1;
+        contentPanel.add(getTriggerPanel(), c);
 
-                        c.gridx = 0;
-                        c.gridy = 2;
-                        contentPanel.add(getBranchingPanel(), c);
+        c.gridx = 0;
+        c.gridy = 2;
+        contentPanel.add(getBranchingPanel(), c);
 
-                        c.gridx = 0;
-                        c.gridy = 3;
-                        contentPanel.add(getDurationPanel(), c);
+        c.gridx = 0;
+        c.gridy = 3;
+        contentPanel.add(getDurationPanel(), c);
 
-                        c.gridx = 0;
-                        c.gridy = 4;
-                        contentPanel.add(getResourcePanel(), c);
-                    }
-                } else
-                {
-                    contentPanel.add(new JLabel("TODO"));
-                }
-            } else if (selection.length > 1)
-            {
-                throw new IllegalArgumentException("Not suported!");
-            } else
-            {
-                contentPanel.add(new JLabel("TODO"));
-            }
-        } else
-        {
-            throw new IllegalArgumentException("No Selection!");
-        }
+        c.gridx = 0;
+        c.gridy = 4;
+        contentPanel.add(getResourcePanel(), c);
 
         this.getContentPane().add(contentPanel, BorderLayout.CENTER);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
@@ -187,27 +168,24 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
 
     private void readTriggerConfiguration()
     {
-        if (selection[0] instanceof TransitionModel)
+        if (transition.getToolSpecific().getTrigger() == null)
         {
-            if (((TransitionModel) selection[0]).getToolSpecific().getTrigger() == null)
+            getTriggerNoneRadioButton().setSelected(true);
+            actionPerformed(new ActionEvent(getTriggerNoneRadioButton(), -1, TRIGGER_NONE));
+        } else if (transition.hasTrigger())
+        {
+            if (transition.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
             {
-                getTriggerNoneRadioButton().setSelected(true);
-                actionPerformed(new ActionEvent(getTriggerNoneRadioButton(), -1, TRIGGER_NONE));
-            } else if (((TransitionModel) selection[0]).hasTrigger())
+                getTriggerResourceRadioButton().setSelected(true);
+                actionPerformed(new ActionEvent(getTriggerResourceRadioButton(), -1, TRIGGER_RESOURCE));
+            } else if (transition.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_EXTERNAL)
             {
-                if (((TransitionModel) selection[0]).getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
-                {
-                    getTriggerResourceRadioButton().setSelected(true);
-                    actionPerformed(new ActionEvent(getTriggerResourceRadioButton(), -1, TRIGGER_RESOURCE));
-                } else if (((TransitionModel) selection[0]).getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_EXTERNAL)
-                {
-                    getTriggerMessageRadioButton().setSelected(true);
-                    actionPerformed(new ActionEvent(getTriggerMessageRadioButton(), -1, TRIGGER_MESSAGE));
-                } else if (((TransitionModel) selection[0]).getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_TIME)
-                {
-                    getTriggerTimeRadioButton().setSelected(true);
-                    actionPerformed(new ActionEvent(getTriggerTimeRadioButton(), -1, TRIGGER_TIME));
-                }
+                getTriggerMessageRadioButton().setSelected(true);
+                actionPerformed(new ActionEvent(getTriggerMessageRadioButton(), -1, TRIGGER_MESSAGE));
+            } else if (transition.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_TIME)
+            {
+                getTriggerTimeRadioButton().setSelected(true);
+                actionPerformed(new ActionEvent(getTriggerTimeRadioButton(), -1, TRIGGER_TIME));
             }
         }
     }
@@ -237,9 +215,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (nameTextField == null)
         {
-            element = (PetriNetModelElement) selection[0];
-            nameTextField = new JTextField(element.getNameValue());
-
+            nameTextField = new JTextField(transition.getNameValue());
             nameTextField.setPreferredSize(new Dimension(150, 20));
             nameTextField.setMinimumSize(new Dimension(150, 20));
         }
@@ -526,27 +502,20 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (roleComboBoxModel == null)
         {
-            if (getPetrinet().getRoles() != null)
+            if (((PetriNetModelProcessor) getEditor().getModelProcessor()).getRoles() != null)
             {
                 roleComboBoxModel = new DefaultComboBoxModel();
                 roleComboBoxModel.addElement(TRIGGER_NONE);
-                for (Iterator iter = getPetrinet().getRoles().iterator(); iter.hasNext();)
+                for (Iterator iter = ((PetriNetModelProcessor) getEditor().getModelProcessor()).getRoles().iterator(); iter.hasNext();)
                 {
                     roleComboBoxModel.addElement(iter.next());
                 }
-                if (!((TransitionModel) selection[0]).hasResource())
+                if (!transition.hasResource())
                 {
                     roleComboBoxModel.setSelectedItem(TRIGGER_NONE);
                 } else
                 {
-                    Object cell = getEditor().getGraph().getSelectionCell();
-                    if (cell instanceof GroupModel)
-                    {
-                        cell = ((GroupModel) cell).getMainElement();
-                    }
-
-                    TransitionModel transModel = (TransitionModel) cell;
-                    String transRole = transModel.getToolSpecific().getTransResource().getTransRoleName();
+                    String transRole = transition.getToolSpecific().getTransResource().getTransRoleName();
 
                     roleComboBoxModel.setSelectedItem(transRole);
                 }
@@ -560,26 +529,20 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (orgUnitComboBoxModel == null)
         {
-            if (getPetrinet().getOrganizationUnits() != null)
+            if (((PetriNetModelProcessor) getEditor().getModelProcessor()).getOrganizationUnits() != null)
             {
                 orgUnitComboBoxModel = new DefaultComboBoxModel();
                 orgUnitComboBoxModel.addElement(TRIGGER_NONE);
-                for (Iterator iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();)
+                for (Iterator iter = ((PetriNetModelProcessor) getEditor().getModelProcessor()).getOrganizationUnits().iterator(); iter.hasNext();)
                 {
                     orgUnitComboBoxModel.addElement(iter.next());
                 }
-                if (!((TransitionModel) selection[0]).hasResource())
+                if (!transition.hasResource())
                 {
                     orgUnitComboBoxModel.setSelectedItem(TRIGGER_NONE);
                 } else
                 {
-                    Object cell = getEditor().getGraph().getSelectionCell();
-                    if (cell instanceof GroupModel)
-                    {
-                        cell = ((GroupModel) cell).getMainElement();
-                    }
-                    TransitionModel transModel = (TransitionModel) cell;
-                    String transOrgUnit = transModel.getToolSpecific().getTransResource().getTransOrgUnitName();
+                    String transOrgUnit = transition.getToolSpecific().getTransResource().getTransOrgUnitName();
 
                     orgUnitComboBoxModel.setSelectedItem(transOrgUnit);
                 }
@@ -692,87 +655,63 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private void apply()
     {
         // Trigger Handling
-        Object cell = getEditor().getGraph().getSelectionCell();
-        TransitionModel transModel = null;
-        if (cell instanceof GroupModel)
+        int selectedTriggerType = -1;
+        if (getTriggerNoneRadioButton().isSelected())
         {
-            cell = ((GroupModel) cell).getMainElement();
-            if (cell instanceof TransitionModel)
+            if (transition.hasTrigger())
             {
-                transModel = (TransitionModel) cell;
+                getEditor().deleteCell(transition.getToolSpecific().getTrigger(), true);
+            }
+        } else if (getTriggerResourceRadioButton().isSelected())
+        {
+            selectedTriggerType = TriggerModel.TRIGGER_RESOURCE;
+        } else if (getTriggerTimeRadioButton().isSelected())
+        {
+            selectedTriggerType = TriggerModel.TRIGGER_TIME;
+        } else if (getTriggerMessageRadioButton().isSelected())
+        {
+            selectedTriggerType = TriggerModel.TRIGGER_EXTERNAL;
+        }
+        // Rescource Handling
+        if (selectedTriggerType == TriggerModel.TRIGGER_RESOURCE)
+        {
+            String selectedRole = getRoleComboxBoxModel().getSelectedItem().toString();
+            String selectedOrgUnit = getOrgUnitComboxBoxModel().getSelectedItem().toString();
+            if (!selectedRole.equals(TRIGGER_NONE) && !selectedOrgUnit.equals(TRIGGER_NONE))
+            {
+                CreationMap map = transition.getCreationMap();
+                map.setResourceOrgUnit(selectedOrgUnit);
+                map.setResourceRole(selectedRole);
+                if (transition.hasResource())
+                {
+                    map.setResourcePosition(transition.getToolSpecific().getTransResource().getPosition());
+                }
+                getEditor().createTransitionResource(map);
+            } else
+            {
+                getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
             }
         }
-        if (transModel != null)
+        // trigger Handling
+        CreationMap map = transition.getCreationMap();
+        map.setTriggerType(selectedTriggerType);
+        if (transition.hasTrigger())
         {
-            int selectedTriggerType = -1;
-            if (getTriggerNoneRadioButton().isSelected())
+            if (transition.getToolSpecific().getTrigger().getTriggertype() != selectedTriggerType)
             {
-                if (transModel.hasTrigger())
-                {
-                    editor.deleteCell(transModel.getToolSpecific().getTrigger(), true);
-                }
-            } else if (getTriggerResourceRadioButton().isSelected())
-            {
-                selectedTriggerType = TriggerModel.TRIGGER_RESOURCE;
-            } else if (getTriggerTimeRadioButton().isSelected())
-            {
-                selectedTriggerType = TriggerModel.TRIGGER_TIME;
-            } else if (getTriggerMessageRadioButton().isSelected())
-            {
-                selectedTriggerType = TriggerModel.TRIGGER_EXTERNAL;
+                Point p = transition.getToolSpecific().getTrigger().getPosition();
+                getEditor().deleteCell(transition.getToolSpecific().getTrigger(), true);
+                map.setTriggerPosition(p.x, p.y);
+                getEditor().createTrigger(map);
             }
-            // Rescource Handling
-            if (selectedTriggerType == TriggerModel.TRIGGER_RESOURCE)
-            {
-                String selectedRole = getRoleComboxBoxModel().getSelectedItem().toString();
-                String selectedOrgUnit = getOrgUnitComboxBoxModel().getSelectedItem().toString();
-                if (!selectedRole.equals(TRIGGER_NONE) && !selectedOrgUnit.equals(TRIGGER_NONE))
-                {
-                    CreationMap map = transModel.getCreationMap();
-                    map.setResourceOrgUnit(selectedOrgUnit);
-                    map.setResourceRole(selectedRole);
-                    if (transModel.hasResource())
-                    {
-                        map.setResourcePosition(transModel.getToolSpecific().getTransResource().getPosition());
-                    }
-                    editor.createTransitionResource(map);
-                } else
-                {
-                    editor.deleteCell(transModel.getToolSpecific().getTransResource(), true);
-                }
-            }
-            // trigger Handling
-            CreationMap map = transModel.getCreationMap();
-            map.setTriggerType(selectedTriggerType);
-            if (transModel.hasTrigger())
-            {
-                if (transModel.getToolSpecific().getTrigger().getTriggertype() != selectedTriggerType)
-                {
-                    Point p = transModel.getToolSpecific().getTrigger().getPosition();
-                    editor.deleteCell(transModel.getToolSpecific().getTrigger(), true);
-                    map.setTriggerPosition(p.x, p.y);
-                    editor.createTrigger(map);
-                }
 
-            } else if (selectedTriggerType != -1)
-            {
-                editor.createTrigger(map);
-            }
-            // name changing handling
-            transModel.setNameValue(getNameTextField().getText());
+        } else if (selectedTriggerType != -1)
+        {
+            getEditor().createTrigger(map);
         }
-
-        // editor.createTransitionResource()
-
-    }
-
-    /**
-     * @return Returns the editor.
-     */
-    public EditorVC getEditor()
-    {
-        return editor;
-    }
+        // name changing handling
+        transition.setNameValue(getNameTextField().getText());
+    } // editor.createTransitionResource()
 
     /*
      * (non-Javadoc)
@@ -791,5 +730,13 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             getResourceOrgUnitComboBox().setEnabled(true);
         }
 
+    }
+
+    /**
+     * @return Returns the editor.
+     */
+    public EditorVC getEditor()
+    {
+        return editor;
     }
 }
