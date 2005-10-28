@@ -5,6 +5,9 @@
 	<property name="LOG4JVERSION" value="1.2.8" />
 	<property name="JGRAPHVERSION" value="5.4.4" />
 	<property name="FILEINTERFACEVERSION" value="0.9.0" />
+	<property name="COREVERSION" value="0.9.0" />
+	
+	<property name="SNAPSHOT" value="SNAPSHOT" />
 
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
@@ -12,7 +15,7 @@
 	<target name="compile" depends="generateOldPnmlXMLBeans">
 		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
-				<pathelement path="../WoPeD-CORE/bin" />
+				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}.jar" />
 				<pathelement path="../WoPeD-Editor/bin" />
 				<pathelement path="lib/pnmlBeans.jar" />
 				<pathelement path="lib/pnmlBeans_old.jar" />
@@ -23,7 +26,7 @@
 		</javac>
 	</target>
 	<target name="makejar" depends="compile">
-		<jar destfile="lib/woped-fileinterface-${FILEINTERFACEVERSION}.jar">
+		<jar destfile="lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="lib" file="lib/pnmlBeans.jar" />
 			<fileset dir="lib" file="lib/pnmlBeans_old.jar" />
