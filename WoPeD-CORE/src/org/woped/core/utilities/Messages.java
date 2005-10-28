@@ -43,7 +43,7 @@ import org.woped.core.gui.IUserInterface;
  */
 public abstract class Messages {
 
-	private static final String BUNDLE_NAME = "org.woped.properties.Messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.woped.editor.properties.Messages"; //$NON-NLS-1$
 
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
 			.getBundle(BUNDLE_NAME);

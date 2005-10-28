@@ -620,7 +620,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, WoPeDLogger
 
             try
             {
-                String innerPath = "org/woped/samples/";
+                String innerPath = "org/woped/file/samples/";
                 String path = this.getClass().getResource("/" + innerPath).toExternalForm();
                 // Jar file access
                 if (path.indexOf("jar:file:") != -1)
