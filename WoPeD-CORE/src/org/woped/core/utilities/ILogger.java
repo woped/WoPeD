@@ -1,4 +1,4 @@
-package org.woped.core.config;
+package org.woped.core.utilities;
 
 public interface ILogger {
 	public void debug(String msg);

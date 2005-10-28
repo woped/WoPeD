@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.controller.vc;
+package org.woped.gui.controller.vc;
 
 /*
  * Created on 31.07.2004
@@ -40,23 +40,24 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.woped.WoPeDLogger;
 import org.woped.config.WoPeDRecentFile;
-import org.woped.controller.DefaultApplicationMediator;
-import org.woped.controller.ViewEvent;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
-import org.woped.core.utilities.Messages;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ActionFactory;
+import org.woped.editor.utilities.Messages;
+import org.woped.gui.Constants;
+import org.woped.gui.controller.DefaultApplicationMediator;
+import org.woped.gui.controller.ViewEvent;
 
 /**
  * Represents the Manubar TODO: DOCUMENTATION (xraven)
  * 
  * @author Thomas Pohl
  */
-public class MenuBarVC extends JMenuBar implements IViewController, WoPeDLogger
+public class MenuBarVC extends JMenuBar implements IViewController
 {
     // ViewControll
     private Vector             viewListener             = new Vector(1, 3);
@@ -689,12 +690,12 @@ public class MenuBarVC extends JMenuBar implements IViewController, WoPeDLogger
                         }
                     } else
                     {
-                        logger.error("No sample nets found in directory " + path);
+                        LoggerManager.error(Constants.GUI_LOGGER, "No sample nets found in directory " + path);
                     }
                 }
             } catch (Exception ex)
             {
-                logger.error("Cannot find sample files");
+                LoggerManager.error(Constants.GUI_LOGGER, "Cannot find sample files");
                 ex.printStackTrace();
             }
         }

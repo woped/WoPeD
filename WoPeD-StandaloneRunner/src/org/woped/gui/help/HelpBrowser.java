@@ -48,15 +48,16 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.Document;
 
-import org.woped.WoPeDLogger;
-import org.woped.action.help.LaunchDefaultBrowserAction;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.gui.Constants;
+import org.woped.gui.action.help.LaunchDefaultBrowserAction;
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>
- *
+ * 
  * TODO: DOCUMENTATION (tfreytag)
  */
-public class HelpBrowser extends JFrame implements HyperlinkListener, WoPeDLogger
+public class HelpBrowser extends JFrame implements HyperlinkListener
 {
     public static HelpBrowser c_instance = null;
 
@@ -83,7 +84,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener, WoPeDLogge
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e)
         {
-            logger.error("Error setting Look and Feel: " + e);
+            LoggerManager.error(Constants.GUI_LOGGER, "Error setting Look and Feel: " + e);
         }
 
         addWindowListener(new WindowAdapter()
@@ -183,7 +184,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener, WoPeDLogge
             }
         } catch (IOException ioe)
         {
-            logger.error("Can't open URL " + url + ": " + ioe);
+            LoggerManager.error(Constants.GUI_LOGGER, "Can't open URL " + url + ": " + ioe);
         }
     }
 
@@ -196,7 +197,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener, WoPeDLogge
         doc.putProperty(Document.StreamDescriptionProperty, null);
         showPage(currURL, true, true);
     }
-    
+
     /**
      * TODO: DOCUMENTATION (tfreytag)
      */
@@ -226,9 +227,10 @@ public class HelpBrowser extends JFrame implements HyperlinkListener, WoPeDLogge
             showPage(prevURL, false, true);
         } catch (EmptyStackException e)
         {
-            logger.warn("No backward operation allowed");
+            LoggerManager.warn(Constants.GUI_LOGGER, "No backward operation allowed");
         }
     }
+
     /**
      * TODO: DOCUMENTATION (tfreytag)
      */
@@ -240,12 +242,13 @@ public class HelpBrowser extends JFrame implements HyperlinkListener, WoPeDLogge
             showPage(nextURL, false, true);
         } catch (EmptyStackException e)
         {
-            logger.warn("No forward operation allowed");
+            LoggerManager.warn(Constants.GUI_LOGGER, "No forward operation allowed");
         }
     }
-    
+
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @param event
      */
     public void hyperlinkUpdate(HyperlinkEvent event)

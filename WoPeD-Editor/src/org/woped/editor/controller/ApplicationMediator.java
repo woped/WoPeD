@@ -6,11 +6,11 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 
 import org.woped.core.config.IConfiguration;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IUserInterface;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.EditorVC;

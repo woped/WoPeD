@@ -37,7 +37,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 
-import org.woped.core.utilities.Messages;
+import org.woped.editor.utilities.Messages;
 
 
 /**

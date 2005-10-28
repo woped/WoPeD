@@ -21,26 +21,26 @@ import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
-import org.woped.WoPeDLogger;
-import org.woped.controller.ViewEvent;
-import org.woped.controller.vc.MenuBarVC;
-import org.woped.controller.vc.StatusBarVC;
-import org.woped.controller.vc.ToolBarVC;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.utilities.Messages;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.PetriNetPropertyEditor;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
+import org.woped.editor.utilities.Messages;
+import org.woped.gui.controller.ViewEvent;
+import org.woped.gui.controller.vc.MenuBarVC;
+import org.woped.gui.controller.vc.StatusBarVC;
+import org.woped.gui.controller.vc.ToolBarVC;
 
-public class DefaultUserInterface extends JFrame implements IUserInterface, InternalFrameListener, WoPeDLogger
+public class DefaultUserInterface extends JFrame implements IUserInterface, InternalFrameListener
 {
     private JDesktopPane          desktop                = null;
     public static final int       DEFAULT_FRAME_DISTANCE = 20;
@@ -89,7 +89,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         getContentPane().add(taskBar, BorderLayout.SOUTH);
 
         setVisible(true);
-        logger.info("END  INIT Application");
+        LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
 
         // addKeyListener(this);
         splash.close();
@@ -126,7 +126,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
                 frame.setSelected(true);
             } catch (PropertyVetoException e)
             {
-                logger.error("VetoException Could not Select Frame");
+                LoggerManager.error(Constants.GUI_LOGGER, "VetoException Could not Select Frame");
             }
 
         }
@@ -158,7 +158,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             ConfigurationManager.getConfiguration().saveConfig();
             try
             {
-                logger.info("EXIT WoPeD - LOGGING DEACTIVATED");
+                LoggerManager.info(Constants.GUI_LOGGER, "EXIT WoPeD");
                 System.exit(0);
             } catch (AccessControlException ace)
             {
@@ -166,7 +166,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             }
         } else
         {
-            logger.debug("User has canceled quit-operation.");
+            LoggerManager.debug(Constants.GUI_LOGGER, "User has canceled quit-operation.");
         }
     }
 
@@ -212,7 +212,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             iframe.setSelected(true);
         } catch (PropertyVetoException e)
         {
-            logger.debug("Could not select Frame");
+            LoggerManager.debug(Constants.GUI_LOGGER, "Could not select Frame");
         }
     }
 
@@ -280,7 +280,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         int frameHeight = desktop.getHeight() / yCount;
         int lastRowWidth = desktop.getWidth() / (xCount - (xCount * yCount - allOpenFrames.size()));
 
-        logger.debug("Frames" + allOpenFrames.size() + ":" + xCount + "x" + yCount);
+        LoggerManager.debug(Constants.GUI_LOGGER, "Frames" + allOpenFrames.size() + ":" + xCount + "x" + yCount);
 
         for (int i = 0; i < allOpenFrames.size(); i++)
         {

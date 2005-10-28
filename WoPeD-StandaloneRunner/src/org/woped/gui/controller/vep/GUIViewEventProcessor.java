@@ -4,22 +4,23 @@
  * TODO To change the template for this generated file go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-package org.woped.controller.vep;
+package org.woped.gui.controller.vep;
 
 import java.net.URL;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.woped.WoPeDLogger;
-import org.woped.controller.DefaultApplicationMediator;
-import org.woped.controller.vc.MenuBarVC;
-import org.woped.controller.vc.ToolBarVC;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.AboutUI;
+import org.woped.gui.Constants;
+import org.woped.gui.controller.DefaultApplicationMediator;
+import org.woped.gui.controller.vc.MenuBarVC;
+import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.gui.help.HelpBrowser;
 
 /**
@@ -28,7 +29,7 @@ import org.woped.gui.help.HelpBrowser;
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
-public class GUIViewEventProcessor extends AbstractEventProcessor implements WoPeDLogger
+public class GUIViewEventProcessor extends AbstractEventProcessor
 {
     private DefaultApplicationMediator mediator = null;
 
@@ -66,7 +67,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor implements WoP
                 showHelp((String) event.getData(), false);
             } catch (Exception e)
             {
-                logger.error("Cannot find HTML manual files. " + e.getMessage());
+                LoggerManager.error(Constants.GUI_LOGGER, "Cannot find HTML manual files. " + e.getMessage());
                 JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), "Cannot find HTML manual files", "Not found", JOptionPane.ERROR_MESSAGE);
             }
             break;
@@ -76,7 +77,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor implements WoP
                 showHelp(null, true);
             } catch (Exception e)
             {
-                logger.error("Cannot find HTML contents file. " + e.getMessage());
+                LoggerManager.error(Constants.GUI_LOGGER, "Cannot find HTML contents file. " + e.getMessage());
                 JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), "Cannot find HTML contents file", "Not found", JOptionPane.ERROR_MESSAGE);
             }
             break;

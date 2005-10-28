@@ -1,4 +1,4 @@
-package org.woped.controller;
+package org.woped.gui.controller;
 
 import org.woped.core.controller.AbstractViewEvent;
 

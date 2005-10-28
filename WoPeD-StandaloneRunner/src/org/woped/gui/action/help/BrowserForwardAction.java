@@ -27,7 +27,7 @@
  *  
  */
 
-package org.woped.action.help;
+package org.woped.gui.action.help;
 
 import java.awt.event.ActionEvent;
 

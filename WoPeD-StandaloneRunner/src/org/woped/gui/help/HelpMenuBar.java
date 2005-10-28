@@ -32,24 +32,21 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.woped.WoPeDLogger;
-import org.woped.action.help.BrowserBackAction;
-import org.woped.action.help.BrowserCloseAction;
-import org.woped.action.help.BrowserContentsAction;
-import org.woped.action.help.BrowserForwardAction;
-import org.woped.action.help.BrowserHomeAction;
-import org.woped.action.help.BrowserRefreshAction;
-import org.woped.action.help.BrowserWebpageAction;
-import org.woped.core.utilities.Messages;
-
+import org.woped.editor.utilities.Messages;
+import org.woped.gui.action.help.BrowserBackAction;
+import org.woped.gui.action.help.BrowserCloseAction;
+import org.woped.gui.action.help.BrowserContentsAction;
+import org.woped.gui.action.help.BrowserForwardAction;
+import org.woped.gui.action.help.BrowserHomeAction;
+import org.woped.gui.action.help.BrowserRefreshAction;
+import org.woped.gui.action.help.BrowserWebpageAction;
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>
- * TODO: DOCUMENTATION (tfreytag)
- * Represents the HelpMenubar
- * 
+ *         TODO: DOCUMENTATION (tfreytag) Represents the HelpMenubar
+ *  
  */
-public class HelpMenuBar extends JMenuBar implements WoPeDLogger
+public class HelpMenuBar extends JMenuBar
 {
 
     private static HelpMenuBar c_instance         = null;
@@ -69,6 +66,7 @@ public class HelpMenuBar extends JMenuBar implements WoPeDLogger
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @param controlledWindow
      * @return
      */
@@ -145,6 +143,7 @@ public class HelpMenuBar extends JMenuBar implements WoPeDLogger
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public JMenuItem getCloseMenuItem()
@@ -158,6 +157,7 @@ public class HelpMenuBar extends JMenuBar implements WoPeDLogger
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public JMenuItem getRefreshMenuItem()
@@ -171,6 +171,7 @@ public class HelpMenuBar extends JMenuBar implements WoPeDLogger
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public JMenuItem getHomeMenuItem()
@@ -184,6 +185,7 @@ public class HelpMenuBar extends JMenuBar implements WoPeDLogger
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public JMenuItem getContentsMenuItem()
@@ -197,6 +199,7 @@ public class HelpMenuBar extends JMenuBar implements WoPeDLogger
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public JMenuItem getForwardMenuItem()
@@ -210,6 +213,7 @@ public class HelpMenuBar extends JMenuBar implements WoPeDLogger
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public JMenuItem getBackMenuItem()
@@ -223,6 +227,7 @@ public class HelpMenuBar extends JMenuBar implements WoPeDLogger
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public JMenuItem getWWWMenuItem()

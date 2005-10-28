@@ -31,7 +31,6 @@ import java.util.Map;
 import java.util.Vector;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -40,6 +39,7 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.WoPeDJGraph;
 

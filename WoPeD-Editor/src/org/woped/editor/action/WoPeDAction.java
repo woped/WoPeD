@@ -28,11 +28,11 @@ import java.lang.reflect.Method;
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 
-import org.woped.core.config.LoggerManager;
 import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.utilities.Messages;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.EditorViewEvent;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author Thomas Pohl

@@ -31,7 +31,7 @@ import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.Constants;
-import org.woped.core.config.LoggerManager;
+import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

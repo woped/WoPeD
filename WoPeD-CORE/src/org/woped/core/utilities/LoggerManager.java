@@ -1,4 +1,4 @@
-package org.woped.core.config;
+package org.woped.core.utilities;
 
 import java.util.HashMap;
 
@@ -6,8 +6,10 @@ public class LoggerManager {
 
 	private static HashMap list = new HashMap();
 
-	public static void register(ILogger logger, String loggerName) {
-		list.put(loggerName, logger);
+	public static void register(Object logger, String loggerName) {
+	    if (logger instanceof ILogger) {
+	        list.put(loggerName, logger);    
+	    } 
 	}
 
 	public static void debug(String logger, String msg) {

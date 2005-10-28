@@ -35,7 +35,6 @@ import javax.swing.undo.UndoManager;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
@@ -44,6 +43,7 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.EditorVC;
 

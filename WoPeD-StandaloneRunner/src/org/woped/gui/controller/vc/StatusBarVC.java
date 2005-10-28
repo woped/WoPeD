@@ -1,4 +1,4 @@
-package org.woped.controller.vc;
+package org.woped.gui.controller.vc;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,11 +15,11 @@ import javax.swing.JProgressBar;
 import javax.swing.Timer;
 import javax.swing.border.BevelBorder;
 
-import org.woped.controller.DefaultApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.editor.utilities.SynchonizeTask;
+import org.woped.gui.controller.DefaultApplicationMediator;
 
 /*
  * 

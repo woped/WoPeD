@@ -20,40 +20,40 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.action.help;
+/*
+ * Created on Jan 20, 2005
+ * 
+ * @author Thomas Freytag
+ *  
+ */
+
+package org.woped.gui.action.help;
 
 import java.awt.event.ActionEvent;
 
 import org.woped.editor.action.WoPeDAction;
 import org.woped.gui.help.HelpBrowser;
 
-/**
- * Created on Jan 20, 2005
- * 
- * @author Thomas Freytag
- *  
- */
-public class BrowserBackAction extends WoPeDAction
+public class BrowserContentsAction extends WoPeDAction
 {
-    private HelpBrowser              helpBrowser;
+    private HelpBrowser                  helpBrowser;
 
-    private static final String      PROPERTIES_PREFIX = "Action.Browser.Back";
-    private static BrowserBackAction c_instance;
+    private static BrowserContentsAction c_instance;
 
-    public static BrowserBackAction getInstance(HelpBrowser helpBrowser)
+    public static BrowserContentsAction getInstance(HelpBrowser helpBrowser)
     {
-        if (c_instance == null) c_instance = new BrowserBackAction(helpBrowser);
+        if (c_instance == null) c_instance = new BrowserContentsAction(helpBrowser);
         return c_instance;
     }
 
-    private BrowserBackAction(HelpBrowser helpBrowser)
+    private BrowserContentsAction(HelpBrowser helpBrowser)
     {
-        super(PROPERTIES_PREFIX);
+        super("Action.Browser.Contents");
         this.helpBrowser = helpBrowser;
     }
 
     public void actionPerformed(ActionEvent arg0)
     {
-        helpBrowser.back();
+        helpBrowser.contents();
     }
 }

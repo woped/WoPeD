@@ -34,9 +34,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
-import org.woped.core.utilities.Messages;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.VisualController;
+import org.woped.editor.utilities.Messages;
 
 
 /**

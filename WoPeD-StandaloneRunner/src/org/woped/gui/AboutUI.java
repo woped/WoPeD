@@ -43,9 +43,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import org.woped.action.help.LaunchDefaultBrowserAction;
-import org.woped.core.utilities.Messages;
 import org.woped.editor.action.DisposeWindowAction;
+import org.woped.editor.utilities.Messages;
+import org.woped.gui.action.help.LaunchDefaultBrowserAction;
 
 
 /**

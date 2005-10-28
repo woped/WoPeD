@@ -32,7 +32,6 @@ import java.util.Vector;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.Constants;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
@@ -42,6 +41,7 @@ import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

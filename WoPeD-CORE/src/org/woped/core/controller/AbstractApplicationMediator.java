@@ -16,8 +16,8 @@ import javax.swing.UIManager;
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IConfiguration;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.gui.IUserInterface;
+import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author lai

@@ -21,16 +21,39 @@
  *
  */
 /*
- * Created on Sep 22, 2004
+ * Created on Jan 20, 2005
+ * 
+ * @author Thomas Freytag
+ *  
  */
-package org.woped;
 
-/**
- * @author Thomas Pohl
- */
-public interface WoPeDLogger
+package org.woped.gui.action.help;
+
+import java.awt.event.ActionEvent;
+
+import org.woped.editor.action.WoPeDAction;
+import org.woped.gui.help.HelpBrowser;
+
+public class BrowserHomeAction extends WoPeDAction
 {
+    private HelpBrowser              helpBrowser;
 
-    public static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger("WOPED_LOGGER");
+    private static BrowserHomeAction c_instance;
 
+    public static BrowserHomeAction getInstance(HelpBrowser helpBrowser)
+    {
+        if (c_instance == null) c_instance = new BrowserHomeAction(helpBrowser);
+        return c_instance;
+    }
+
+    private BrowserHomeAction(HelpBrowser helpBrowser)
+    {
+        super("Action.Browser.Home");
+        this.helpBrowser = helpBrowser;
+    }
+
+    public void actionPerformed(ActionEvent arg0)
+    {
+        helpBrowser.home();
+    }
 }

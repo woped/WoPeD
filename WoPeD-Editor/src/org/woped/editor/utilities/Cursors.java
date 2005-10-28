@@ -12,7 +12,6 @@ import java.awt.Toolkit;
 
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
-import org.woped.core.utilities.Messages;
 
 /**
  * @author lai

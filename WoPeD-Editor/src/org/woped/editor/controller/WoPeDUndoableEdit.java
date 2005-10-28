@@ -30,12 +30,12 @@ import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoableEdit;
 
 import org.jgraph.graph.DefaultGraphModel;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.EditorVC;

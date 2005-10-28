@@ -20,10 +20,13 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped;
+package org.woped.gui;
 
+import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.WoPeDConfiguration;
-import org.woped.controller.DefaultApplicationMediator;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.gui.controller.DefaultApplicationMediator;
+import org.woped.gui.utilities.WopedLogger;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -34,7 +37,7 @@ import org.woped.controller.DefaultApplicationMediator;
  * 
  * 29.04.2003
  */
-public class RunWoPeD implements WoPeDLogger
+public class RunWoPeD
 {
 
     /**
@@ -46,6 +49,20 @@ public class RunWoPeD implements WoPeDLogger
     {
         try
         {
+            // Loading Logger!
+            try
+            {
+                DOMConfigurator.configure(RunWoPeD.class.getResource("/org/woped/gui/utilities/log4j.xml"));
+                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(Constants.GUI_LOGGER)), Constants.GUI_LOGGER);
+                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.editor.Constants.EDITOR_LOGGER)), org.woped.editor.Constants.EDITOR_LOGGER);
+                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.file.Constants.FILE_LOGGER)), org.woped.file.Constants.FILE_LOGGER);
+                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.config.Constants.CONFIG_LOGGER)), org.woped.config.Constants.CONFIG_LOGGER);
+                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.core.Constants.CORE_LOGGER)), org.woped.core.Constants.CORE_LOGGER);
+                LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
+            } catch (Exception e)
+            {
+                System.err.println("ERROR ACTIVATING LOGGER");
+            }
             // create & init GUI
             DefaultApplicationMediator mediator = new DefaultApplicationMediator(null, new WoPeDConfiguration(), args);
         } catch (RuntimeException e1)

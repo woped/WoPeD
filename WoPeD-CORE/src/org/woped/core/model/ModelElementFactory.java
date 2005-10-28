@@ -24,7 +24,6 @@ package org.woped.core.model;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.Constants;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
@@ -34,6 +33,7 @@ import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.model.uml.ActivityModel;
 import org.woped.core.model.uml.OperatorModel;
 import org.woped.core.model.uml.StateModel;
+import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

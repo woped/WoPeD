@@ -28,7 +28,7 @@ import org.jgraph.graph.CellView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.woped.core.Constants;
-import org.woped.core.config.LoggerManager;
+import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author Thomas Pohl TODO: DOCUMENTATION (xraven)

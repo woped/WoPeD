@@ -27,11 +27,11 @@ import java.io.FileWriter;
 import java.util.Iterator;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

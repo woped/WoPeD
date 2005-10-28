@@ -37,7 +37,6 @@ import javax.swing.JOptionPane;
 
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.LoggerManager;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
@@ -47,6 +46,7 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vc.EditorVC;

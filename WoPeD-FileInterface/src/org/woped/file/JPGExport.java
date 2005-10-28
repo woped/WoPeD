@@ -31,7 +31,7 @@ import java.io.FileOutputStream;
 
 import org.jgraph.JGraph;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.LoggerManager;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.EditorVC;
 
 import com.sun.image.codec.jpeg.JPEGCodec;

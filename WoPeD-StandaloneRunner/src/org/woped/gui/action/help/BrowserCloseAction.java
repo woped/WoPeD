@@ -21,39 +21,41 @@
  *
  */
 /*
- * Created on Jan 20, 2005
- * 
- * @author Thomas Freytag
- *  
+ * Created on Jan 24, 2005
+ *
  */
-
-package org.woped.action.help;
+package org.woped.gui.action.help;
 
 import java.awt.event.ActionEvent;
 
 import org.woped.editor.action.WoPeDAction;
 import org.woped.gui.help.HelpBrowser;
 
-public class BrowserContentsAction extends WoPeDAction
+/**
+ * @author Thomas Freytag
+ *  
+ */
+public class BrowserCloseAction extends WoPeDAction
 {
-    private HelpBrowser                  helpBrowser;
+    private static final String       PROPERTIES_PREFIX = "Action.Browser.Close";
+    private static BrowserCloseAction c_instance;
+    private HelpBrowser               helpBrowser;
 
-    private static BrowserContentsAction c_instance;
-
-    public static BrowserContentsAction getInstance(HelpBrowser helpBrowser)
+    public static BrowserCloseAction getInstance(HelpBrowser helpBrowser)
     {
-        if (c_instance == null) c_instance = new BrowserContentsAction(helpBrowser);
+        if (c_instance == null) c_instance = new BrowserCloseAction(helpBrowser);
         return c_instance;
     }
 
-    private BrowserContentsAction(HelpBrowser helpBrowser)
+    private BrowserCloseAction(HelpBrowser helpBrowser)
     {
-        super("Action.Browser.Contents");
+        super(PROPERTIES_PREFIX);
         this.helpBrowser = helpBrowser;
     }
 
     public void actionPerformed(ActionEvent arg0)
     {
-        helpBrowser.contents();
+        helpBrowser.close();
+        helpBrowser.dispose();
     }
 }

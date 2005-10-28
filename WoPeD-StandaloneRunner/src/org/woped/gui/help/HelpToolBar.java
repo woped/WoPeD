@@ -33,14 +33,14 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JToolBar;
 
-import org.woped.action.help.BrowserBackAction;
-import org.woped.action.help.BrowserCloseAction;
-import org.woped.action.help.BrowserContentsAction;
-import org.woped.action.help.BrowserForwardAction;
-import org.woped.action.help.BrowserHomeAction;
-import org.woped.action.help.BrowserRefreshAction;
-import org.woped.action.help.BrowserWebpageAction;
 import org.woped.editor.gui.ToolBarButton;
+import org.woped.gui.action.help.BrowserBackAction;
+import org.woped.gui.action.help.BrowserCloseAction;
+import org.woped.gui.action.help.BrowserContentsAction;
+import org.woped.gui.action.help.BrowserForwardAction;
+import org.woped.gui.action.help.BrowserHomeAction;
+import org.woped.gui.action.help.BrowserRefreshAction;
+import org.woped.gui.action.help.BrowserWebpageAction;
 
 /**
  * @author Thomas Freytag

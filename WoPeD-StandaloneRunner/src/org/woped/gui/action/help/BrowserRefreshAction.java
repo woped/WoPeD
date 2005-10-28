@@ -21,33 +21,33 @@
  *
  */
 /*
- * Created on Jan 24, 2005
- *
+ * Created on Jan 20, 2005
+ * 
+ * @author Thomas Freytag
+ *  
  */
-package org.woped.action.help;
+
+package org.woped.gui.action.help;
 
 import java.awt.event.ActionEvent;
 
 import org.woped.editor.action.WoPeDAction;
 import org.woped.gui.help.HelpBrowser;
 
-/**
- * @author Thomas Freytag
- *  
- */
-public class BrowserWebpageAction extends WoPeDAction
+public class BrowserRefreshAction extends WoPeDAction
 {
-    private static final String         PROPERTIES_PREFIX = "Action.Browser.WWW";
-    private static BrowserWebpageAction c_instance;
     private HelpBrowser                 helpBrowser;
 
-    public static BrowserWebpageAction getInstance(HelpBrowser helpBrowser)
+    private static final String         PROPERTIES_PREFIX = "Action.Browser.Refresh";
+    private static BrowserRefreshAction c_instance;
+
+    public static BrowserRefreshAction getInstance(HelpBrowser helpBrowser)
     {
-        if (c_instance == null) c_instance = new BrowserWebpageAction(helpBrowser);
+        if (c_instance == null) c_instance = new BrowserRefreshAction(helpBrowser);
         return c_instance;
     }
 
-    private BrowserWebpageAction(HelpBrowser helpBrowser)
+    private BrowserRefreshAction(HelpBrowser helpBrowser)
     {
         super(PROPERTIES_PREFIX);
         this.helpBrowser = helpBrowser;
@@ -55,7 +55,6 @@ public class BrowserWebpageAction extends WoPeDAction
 
     public void actionPerformed(ActionEvent arg0)
     {
-        LaunchDefaultBrowserAction lda = new LaunchDefaultBrowserAction("http://www.woped.org", null);
-        lda.displayURL();
+        helpBrowser.refresh();
     }
 }

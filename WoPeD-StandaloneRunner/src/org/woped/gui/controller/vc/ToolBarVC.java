@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.controller.vc;
+package org.woped.gui.controller.vc;
 
 import java.awt.Dimension;
 import java.awt.Insets;
@@ -33,14 +33,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JToolBar;
 
-import org.woped.controller.DefaultApplicationMediator;
-import org.woped.controller.ViewEvent;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.gui.ToolBarButton;
+import org.woped.gui.controller.DefaultApplicationMediator;
+import org.woped.gui.controller.ViewEvent;
 
 /**
  * Part of a small example showing basic use of JToolBar. Creates a small
