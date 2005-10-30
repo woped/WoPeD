@@ -10,15 +10,16 @@
 	<property name="FILEINTERFACEVERSION" value="0.9.0" />
 	<property name="GUIVERSION" value="0.9.0" />
 	<property name="CONFIGURATIONVERSION" value="0.9.0" />
+	<property name="SNAPSHOT" value="SNAPSHOT" />
 
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
-	<filter token="wopedversion" value="${WOPEDVERSION}" />
-	<filter token="coreversion" value="${COREVERSION}" />
-	<filter token="editorversion" value="${EDITORVERSION}" />
-	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}" />
-	<filter token="guiversion" value="${GUIVERSION}" />
-	<filter token="configurationversion" value="${CONFIGURATIONVERSION}" />
+	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
+	<filter token="coreversion" value="${COREVERSION}${SNAPSHOT}" />
+	<filter token="editorversion" value="${EDITORVERSION}${SNAPSHOT}" />
+	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}${SNAPSHOT}" />
+	<filter token="guiversion" value="${GUIVERSION}${SNAPSHOT}" />
+	<filter token="configurationversion" value="${CONFIGURATIONVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
 	<!--<taskdef resource="genjar.properties"/>	-->
@@ -39,17 +40,17 @@
 	</target>
 
 	<target name="copylibs" depends="makedir">
-		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
-		<copy todir="dist/lib" file="../WoPeD-CORE/lib/woped-core-${COREVERSION}.jar" />
-		<copy todir="dist/lib" file="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}${SNAPSHOT}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-StandaloneRunner/lib/woped-gui-${GUIVERSION}${SNAPSHOT}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/woped-configuration-${CONFIGURATIONVERSION}${SNAPSHOT}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
-		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/woped-fileinterface-${FILEINTERFACEVERSION}.jar" />
-		<copy todir="dist/lib" file="../WoPeD-StandaloneRunner/lib/woped-gui-${GUIVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
-		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/woped-configuration-${CONFIGURATIONVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
 	</target>
 
 	<target name="setversion">
@@ -91,7 +92,7 @@
 
 	<target name="makeinstaller" depends="copybuildtools">
 		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST.mf">
-			<fileset file="../WoPeD-StandaloneRunner/bin/org/woped/RunWoPeD.class" />
+			<fileset file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
 		</jar>
 		<exec dir="dist" executable="cmd">
 			<arg line="/c launch4j.exe buildexe.cfg" />
@@ -217,6 +218,21 @@
 				<exclude name="config/woped/org/*"/>
 			</fileset>
 		</jar>
+	</target>-->
+	
+<!-- Please do not run this unless you really know what you're doing -->	
+<!--	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="resources/xbean_orig.jar" />	
+	<target name="generateConfigXMLBeans">
+		<echo message="Compiling the config schema..." />
+		<xmlbean schema="src/org/woped/config/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="resources/xbean_orig.jar" />
+	</target>
+	<target name="generatePnmlXMLBeans">
+		<echo message="Compiling the PNML schema..." />
+		<xmlbean schema="src/org/woped/pnml/pnml_wf.xsd" destfile="lib/pnmlBeans.jar" debug="on" classpath="resources/xbean_orig.jar" />
+	</target>
+	<target name="generateOldPnmlXMLBeans">
+		<echo message="Compiling the old PNML schema..." />
+		<xmlbean schema="src/org/woped/pnml/pnml_wf_old.xsd" destfile="lib/pnmlBeans_old.jar" debug="on" classpath="resources/xbean_orig.jar" />
 	</target>-->
 
 </project>
