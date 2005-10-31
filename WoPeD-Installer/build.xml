@@ -24,7 +24,7 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="makeinstaller" />
+	<target name="makedistribution" depends="makeinstaller, purge" />
 	<!--	depends="makeinstaller, makebindist, makesrcdist, purge" /> -->
 
 	<target name="clean">
@@ -90,7 +90,15 @@
 		<unzip src="build-tools/setup/izpack.zip" dest="dist" />
 	</target>
 
-	<target name="makeinstaller" depends="copybuildtools">
+	<target name="makesubprojects">
+		<ant antfile="../WoPeD-CORE/build.xml" dir="../WoPeD-CORE" />
+		<ant antfile="../WoPeD-Editor/build.xml" dir="../WoPeD-Editor" />
+		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
+		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
+		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
+	</target>
+	
+	<target name="makeinstaller" depends="makesubprojects, copybuildtools">
 		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST.mf">
 			<fileset file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
 		</jar>
@@ -218,6 +226,21 @@
 				<exclude name="config/woped/org/*"/>
 			</fileset>
 		</jar>
+	</target>-->
+	
+<!-- Please do not run this unless you really know what you're doing -->	
+<!--	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="resources/xbean_orig.jar" />	
+	<target name="generateConfigXMLBeans">
+		<echo message="Compiling the config schema..." />
+		<xmlbean schema="src/org/woped/config/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="resources/xbean_orig.jar" />
+	</target>
+	<target name="generatePnmlXMLBeans">
+		<echo message="Compiling the PNML schema..." />
+		<xmlbean schema="src/org/woped/pnml/pnml_wf.xsd" destfile="lib/pnmlBeans.jar" debug="on" classpath="resources/xbean_orig.jar" />
+	</target>
+	<target name="generateOldPnmlXMLBeans">
+		<echo message="Compiling the old PNML schema..." />
+		<xmlbean schema="src/org/woped/pnml/pnml_wf_old.xsd" destfile="lib/pnmlBeans_old.jar" debug="on" classpath="resources/xbean_orig.jar" />
 	</target>-->
 
 </project>

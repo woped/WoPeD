@@ -34,10 +34,15 @@
 			</classpath>
 		</javac>
 	</target>
+	
 	<target name="makejar" depends="compile">
 		<jar destfile="lib/woped-gui-${GUIVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 		</jar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="bin/org" />
 	</target>
 
 </project>

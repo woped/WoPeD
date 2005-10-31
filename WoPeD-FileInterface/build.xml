@@ -1,5 +1,3 @@
-<!-- Build file for WoPeD-FileInterface -->
-
 <project default="makejar" name="FileInterface">
 
 	<property name="LOG4JVERSION" value="1.2.8" />
@@ -16,7 +14,6 @@
 		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
 				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}.jar" />
-				<pathelement path="../WoPeD-Editor/bin" />
 				<pathelement path="lib/pnmlBeans.jar" />
 				<pathelement path="lib/pnmlBeans_old.jar" />
 				<pathelement path="../CommonLibs/lib/xbean.jar" />
@@ -25,6 +22,7 @@
 			</classpath>
 		</javac>
 	</target>
+	
 	<target name="makejar" depends="compile">
 		<jar destfile="lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
@@ -32,20 +30,26 @@
 			<fileset dir="lib" file="lib/pnmlBeans_old.jar" />
 		</jar>
 	</target>
+	
 	<target name="cleanup" depends="makejar">
 		<delete file="./lib/pnmlBeans.jar" />
 		<delete file="./lib/pnmlBeans_old.jar" />
 	</target>
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
+	
 	<!-- Please do not run this unless you really know what you're doing -->
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	<target name="generatePnmlXMLBeans">
 		<echo message="Compiling the PNML schema..." />
 		<xmlbean schema="src/org/woped/file/pnml_wf.xsd" destfile="lib/pnmlBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	</target>
-	<!-- Please do not run this unless you really know what you're doing -->
+	
 	<target name="generateOldPnmlXMLBeans" depends="generatePnmlXMLBeans">
 		<echo message="Compiling the old PNML schema..." />
 		<xmlbean schema="src/org/woped/file/pnml_wf_old.xsd" destfile="lib/pnmlBeans_old.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
+	</target>
+	
+	<target name="clean">
+		<delete dir="bin/org" />
 	</target>
 
 </project>

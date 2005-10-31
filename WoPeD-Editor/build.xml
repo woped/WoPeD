@@ -15,11 +15,16 @@
 					<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 				</classpath>
 			</javac>
-		</target>
+	</target>
+	
 	<target name="makejar" depends="compile">
 		<jar destfile="lib/woped-editor-${EDITORVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 		</jar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="bin/org" />
 	</target>
 
 </project>
