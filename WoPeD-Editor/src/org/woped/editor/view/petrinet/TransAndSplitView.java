@@ -131,13 +131,13 @@ public class TransAndSplitView extends TransSimpleView
             if (isActive() && !isFireing())
             {
                 g2.drawString("enabled", 3, 18);
-                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/gui/images/tokenGame_active.gif"));
+                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_active.gif"));
                 g2.drawImage(img.getImage(), 5, 22, 6, 11, img.getImageObserver());
             }
             if (isFireing())
             {
                 // g.setColor(Color.BLACK);
-                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/gui/images/tokenGame_fire.gif"));
+                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_fire.gif"));
                 g2.drawImage(img.getImage(), 5, 22, 18, 11, img.getImageObserver());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
                 g2.drawString("fire", 5, 18);

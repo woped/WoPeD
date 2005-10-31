@@ -43,13 +43,9 @@ import org.woped.editor.utilities.Messages;
 public class WoPeDAction extends AbstractAction {
 
 	private boolean m_selected = false;
-
 	private AbstractApplicationMediator am = null;
-
 	private int type = -1;
-
 	private int order = -1;
-
 	private Object data = null;
 
 	public boolean isSelected() {
@@ -59,7 +55,8 @@ public class WoPeDAction extends AbstractAction {
 	public void setSelected(boolean selected) {
 		if (m_selected != selected) {
 			m_selected = selected;
-			firePropertyChange("selected", new Boolean(!selected), new Boolean(selected));
+			firePropertyChange("selected", new Boolean(!selected), new Boolean(
+					selected));
 			for (int i = 0; i < getPropertyChangeListeners().length; i++) {
 				try {
 					// TODO find better solution
@@ -67,28 +64,32 @@ public class WoPeDAction extends AbstractAction {
 					// Bessere Lösungen sind gerne gesehen.
 					Object curObject = getPropertyChangeListeners()[i];
 					Class curClass = curObject.getClass();
-					Method targetMethod = curClass.getMethod("getTarget", new Class[0]);
+					Method targetMethod = curClass.getMethod("getTarget",
+							new Class[0]);
 					targetMethod.setAccessible(true);
-					Object targetObject = targetMethod.invoke(curObject, new Object[0]);
+					Object targetObject = targetMethod.invoke(curObject,
+							new Object[0]);
 					setSelected(targetObject, selected);
 				} catch (Exception e) {
-					LoggerManager.error(Constants.EDITOR_LOGGER, "Could not select Object");
+					LoggerManager.error(Constants.EDITOR_LOGGER,
+							"Could not select Object");
 				}
 			}
 		}
 	}
 
 	/**
-	 * 
+	 *  
 	 */
 	public WoPeDAction(AbstractApplicationMediator am, int type, int order) {
 		this(am, type, order, null, null);
 	}
 
 	/**
-	 * 
+	 *  
 	 */
-	public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data) {
+	public WoPeDAction(AbstractApplicationMediator am, int type, int order,
+			Object data) {
 		this(am, type, order, data, null);
 	}
 
@@ -99,7 +100,8 @@ public class WoPeDAction extends AbstractAction {
 	/**
 	 * @param arg0
 	 */
-	public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data, String propertiesPrefix) {
+	public WoPeDAction(AbstractApplicationMediator am, int type, int order,
+			Object data, String propertiesPrefix) {
 		super();
 		this.type = type;
 		this.order = order;
@@ -108,7 +110,8 @@ public class WoPeDAction extends AbstractAction {
 		if (propertiesPrefix != null) {
 			putValue(NAME, Messages.getTitle(propertiesPrefix));
 			putValue(SMALL_ICON, Messages.getImageIcon(propertiesPrefix));
-			putValue(MNEMONIC_KEY, new Integer(Messages.getMnemonic(propertiesPrefix)));
+			putValue(MNEMONIC_KEY, new Integer(Messages
+					.getMnemonic(propertiesPrefix)));
 			putValue(ACCELERATOR_KEY, Messages.getShortcut(propertiesPrefix));
 			putValue(SHORT_DESCRIPTION, Messages.getTitle(propertiesPrefix));
 		}
@@ -126,14 +129,19 @@ public class WoPeDAction extends AbstractAction {
 		if (obj != null) {
 			try {
 				// Reflection!!
-				Method enableMethod = obj.getClass().getMethod("setSelected", new Class[] { Boolean.TYPE });
+				Method enableMethod = obj.getClass().getMethod("setSelected",
+						new Class[] { Boolean.TYPE });
 				enableMethod.invoke(obj, new Object[] { new Boolean(status) });
 				return true;
 			} catch (Exception e) {
 				if (obj != null) {
-					LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change the status for " + obj.getClass());
+					LoggerManager
+							.warn(Constants.EDITOR_LOGGER,
+									"Could not change the status for "
+											+ obj.getClass());
 				} else {
-					LoggerManager.error(Constants.EDITOR_LOGGER, "Could not change the status. Object was null!");
+					LoggerManager.error(Constants.EDITOR_LOGGER,
+							"Could not change the status. Object was null!");
 				}
 			}
 
@@ -143,7 +151,8 @@ public class WoPeDAction extends AbstractAction {
 
 	public void actionPerformed(ActionEvent e) {
 		if (am != null) {
-			am.viewEventPerformed(new EditorViewEvent(e.getSource(), type, order, data));
+			am.viewEventPerformed(new EditorViewEvent(e.getSource(), type,
+					order, data));
 		}
 	}
 }

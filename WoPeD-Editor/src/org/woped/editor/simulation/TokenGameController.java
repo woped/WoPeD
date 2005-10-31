@@ -69,9 +69,13 @@ public class TokenGameController
 {
 
     private PetriNetModelProcessor petrinet              = null;
+
     private AbstractGraph          graph                 = null;
+
     private Map                    allTransitions        = null;
+
     private MouseHandler           tokenGameMouseHandler = null;
+
     private boolean                visualTokenGame       = false;
 
     /**
@@ -179,6 +183,7 @@ public class TokenGameController
         getGraph().setBackground(Color.WHITE);
         // remove own MouseHandler
         getGraph().removeMouseListener(tokenGameMouseHandler);
+        getGraph().validate();
         getGraph().updateUI();
     }
 
@@ -248,7 +253,8 @@ public class TokenGameController
         {
             if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
             {
-                //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: FIRE simple Transition:
+                //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: FIRE
+                // simple Transition:
                 // "+transition.getId());
                 receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
                 sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
@@ -257,7 +263,8 @@ public class TokenGameController
                 OperatorTransitionModel operator = (OperatorTransitionModel) transition;
                 if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE)
                 {
-                    //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: FIRE AND-Transition:
+                    //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
+                    // FIRE AND-Transition:
                     // "+transition.getId());
                     receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
                     sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
@@ -270,7 +277,8 @@ public class TokenGameController
                     // Do nothing: Only controlled by Arc Clicking
                 } else if (operator.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE)
                 {
-                    //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: FIRE ORSPLIT-Transition:
+                    //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
+                    // FIRE ORSPLIT-Transition:
                     // "+transition.getId());
                     sendTokens(getPetriNet().getElementContainer().getIncomingArcs(operator.getId()));
                 }

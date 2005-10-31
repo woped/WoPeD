@@ -691,6 +691,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             {
                 getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
             }
+        } else
+        {
+            getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
         }
         // trigger Handling
         CreationMap map = transition.getCreationMap();

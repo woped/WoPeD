@@ -346,7 +346,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                 TransitionResourceModel transResourceModell = ((PetriNetModelProcessor) getModelProcessor()).newTransResource(map);
                 if (map.getResourcePosition() == null)
                 {
-                    map.setResourcePosition(transition.getX() + 10, transition.getY() - 20);
+                    map.setResourcePosition(transition.getX() - TransitionResourceModel.DEFAULT_WIDTH - 5, transition.getY() - TransitionResourceModel.DEFAULT_HEIGHT - 5);
                 } else
                 {
                     map.setResourcePosition(map.getResourcePosition().x == -1 ? transition.getX() - 65 : map.getResourcePosition().x, map.getResourcePosition().y == -1 ? transition.getY() - 20 : map
@@ -608,9 +608,11 @@ public void deleteCells(Object toDelete[], boolean withGraph) {
                 {
                     if (owner.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
                     {
-                        getGraph().getModel().remove(new Object[] { owner.getToolSpecific().getTransResource() });
-                        owner.getToolSpecific().removeTransResource();
+                        if (owner.getToolSpecific().getTransResource() != null) {
+                            owner.getToolSpecific().removeTransResource();
+                        }
                     }
+                    //getGraph().getModel().remove(new Object[] { owner.getToolSpecific().getTrigger() });
                     owner.getToolSpecific().removeTrigger();
                 }
             } else if (toDelete[i] instanceof TransitionResourceModel)

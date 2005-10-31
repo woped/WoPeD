@@ -214,7 +214,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_addMenu == null)
         {
             m_addMenu = new JMenu("Add");
-            VisualController.getInstance().addElement(m_addMenu, VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_addMenu, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
             m_addMenu.add(getAddPlaceMenuItem());
             m_addMenu.add(getAddTransitionMenuItem());
             m_addMenu.add(getAddAndSplitMenuItem());
@@ -356,7 +356,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_tokenMenu == null)
         {
             m_tokenMenu = new JMenu("Token");
-            VisualController.getInstance().addElement(m_tokenMenu, VisualController.PLACE_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_tokenMenu, VisualController.PLACE_SELECTION, VisualController.PLACE_SELECTION, VisualController.IGNORE);
             m_tokenMenu.add(getAddTokenMenuItem());
             m_tokenMenu.add(getRemoveTokenMenuItem());
         }
@@ -368,7 +368,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_triggerMenu == null)
         {
             m_triggerMenu = new JMenu("Trigger");
-            VisualController.getInstance().addElement(m_triggerMenu, VisualController.TRANSITION_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_triggerMenu, VisualController.TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION, VisualController.IGNORE);
             m_triggerMenu.add(getExternalTriggerMenuItem());
             m_triggerMenu.add(getResourceTriggerMenuItem());
             m_triggerMenu.add(getTimeTriggerMenuItem());
@@ -382,7 +382,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_arcMenu == null)
         {
             m_arcMenu = new JMenu("Arc");
-            VisualController.getInstance().addElement(m_arcMenu, VisualController.ARC_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_arcMenu, VisualController.ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
             m_arcMenu.add(getRouteMenuItem());
             m_arcMenu.add(getUnrouteMenuItem());
             m_arcMenu.add(getAddPointMenuItem());

@@ -134,7 +134,7 @@ public class TransXOrJoinView extends TransSimpleView
             if (isActive() && !isFireing())
             {
                 g2.drawString("enabled", 3, 18);
-                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/gui/images/tokenGame_active.gif"));
+                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_active.gif"));
                 g2.drawImage(img.getImage(), 5, 22, 6, 11, img.getImageObserver());
             }
             if (isFireing())

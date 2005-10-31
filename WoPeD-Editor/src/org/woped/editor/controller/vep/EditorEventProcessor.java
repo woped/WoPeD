@@ -15,6 +15,7 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.model.uml.AbstractUMLElementModel;
@@ -47,7 +48,10 @@ public class EditorEventProcessor extends AbstractEventProcessor
         if (editor != null)
         {
             CreationMap map = CreationMap.createMap();
-            map.setPosition((int) editor.getLastMousePosition().getX(), (int) editor.getLastMousePosition().getY());
+            if (editor.getLastMousePosition() != null)
+            {
+                map.setPosition((int) editor.getLastMousePosition().getX(), (int) editor.getLastMousePosition().getY());
+            }
             map.setEditOnCreation(false);
             switch (event.getOrder())
             {
@@ -158,7 +162,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
                 {
                     if (element instanceof TransitionModel)
                     {
-                        TransitionPropertyEditor prop = new TransitionPropertyEditor((JFrame)getMediator().getUi(), (TransitionModel) element, editor);
+                        TransitionPropertyEditor prop = new TransitionPropertyEditor((JFrame) getMediator().getUi(), (TransitionModel) element, editor);
                         prop.setLocation(Utils.getCenterPoint(editor.getBounds(), prop.getSize()));
                         prop.setVisible(true);
                     } else
@@ -236,26 +240,30 @@ public class EditorEventProcessor extends AbstractEventProcessor
                 editor.updateNet();
                 break;
             case AbstractViewEvent.ADD_TOKEN:
-                // TODO:
-                /*
-                 * EditorVC editor = m_controlledWindow.getActiveEditor();
-                 * WoPeDJGraph graph = editor.getGraph(); Object cell =
-                 * graph.getSelectionCell(); if (cell instanceof GroupModel) {
-                 * cell = ((GroupModel) cell).getMainElement(); }
-                 * 
-                 * ((PlaceModel) cell).addToken();
-                 */
+                if (editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET)
+                {
+                    if ((cell = editor.getGraph().getSelectionCell()) instanceof GroupModel)
+                    {
+                        cell = ((GroupModel) cell).getMainElement();
+                    }
+                    if (cell instanceof PlaceModel)
+                    {
+                        ((PlaceModel) cell).addToken();
+                    }
+                }
                 break;
             case AbstractViewEvent.REMOVE_TOKEN:
-                // TODO:
-                /*
-                 * EditorVC editor = m_controlledWindow.getActiveEditor();
-                 * WoPeDJGraph graph = editor.getGraph(); Object cell =
-                 * graph.getSelectionCell(); if (cell instanceof GroupModel) {
-                 * cell = ((GroupModel) cell).getMainElement(); }
-                 * 
-                 * ((PlaceModel) cell).removeToken();
-                 */
+                if (editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET)
+                {
+                    if ((cell = editor.getGraph().getSelectionCell()) instanceof GroupModel)
+                    {
+                        cell = ((GroupModel) cell).getMainElement();
+                    }
+                    if (cell instanceof PlaceModel)
+                    {
+                        ((PlaceModel) cell).removeToken();
+                    }
+                }
                 break;
             case AbstractViewEvent.ZOOM_IN:
                 editor.zoom(0.1, false);

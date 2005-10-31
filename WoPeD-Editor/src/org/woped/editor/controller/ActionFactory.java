@@ -204,9 +204,9 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_SUBPROCESS), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);       
 
         STATIC_ACTION_MAP.put(ACTIONID_OPEN_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_SUBPROCESS, null, ACTIONID_OPEN_SUBPROCESS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.SUBPROCESS_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.SUBPROCESS_SELECTION, VisualController.SUBPROCESS_SELECTION, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_TOKEN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_TOKEN, null, ACTIONID_ADD_TOKEN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TOKEN), VisualController.TOKEN_PLACE_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TOKEN), VisualController.PLACE_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE_TOKEN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE_TOKEN, null, ACTIONID_REMOVE_TOKEN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_TOKEN), VisualController.TOKEN_PLACE_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
         // UML ELements
