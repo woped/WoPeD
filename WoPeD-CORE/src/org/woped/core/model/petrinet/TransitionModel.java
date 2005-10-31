@@ -156,4 +156,6 @@ public class TransitionModel extends PetriNetModelElement
     {
         return PetriNetModelElement.TRANS_SIMPLE_TYPE;
     }
+    
+    
 }

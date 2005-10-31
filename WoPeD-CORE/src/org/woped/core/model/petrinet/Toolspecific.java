@@ -33,171 +33,186 @@ import org.woped.core.utilities.LoggerManager;
  * 
  * 29.04.2003
  */
-public class Toolspecific {
+public class Toolspecific
+{
 
-	private String operatorId = null;
+    private String                  operatorId    = null;
 
-	private int operatorType = -1;
+    private int                     operatorType  = -1;
 
-	private boolean subprocess = false;
+    private boolean                 subprocess    = false;
 
-	private TriggerModel trigger = null;
+    private TriggerModel            trigger       = null;
 
-	private TransitionResourceModel transResource = null;
+    private TransitionResourceModel transResource = null;
 
-	private String ownerId;
+    private String                  ownerId;
 
-	/**
-	 * Constructor for Toolspecific. ownerid must not be null.
-	 */
-	public Toolspecific(String ownerId) {
-		super();
-		this.ownerId = ownerId;
-	}
+    /**
+     * Constructor for Toolspecific. ownerid must not be null.
+     */
+    public Toolspecific(String ownerId)
+    {
+        super();
+        this.ownerId = ownerId;
+    }
 
-	/**
-	 * Returns the operatorId.
-	 * 
-	 * @return String
-	 */
-	public String getOperatorId() {
-		return operatorId;
-	}
+    /**
+     * Returns the operatorId.
+     * 
+     * @return String
+     */
+    public String getOperatorId()
+    {
+        return operatorId;
+    }
 
-	/**
-	 * Returns the operatorType.
-	 * 
-	 * @return int
-	 */
-	public int getOperatorType() {
-		return operatorType;
-	}
+    /**
+     * Returns the operatorType.
+     * 
+     * @return int
+     */
+    public int getOperatorType()
+    {
+        return operatorType;
+    }
 
-	/**
-	 * Sets the operatorId.
-	 * 
-	 * @param aalstId
-	 *            The operatorId to set
-	 */
-	public void setOperatorId(String operatorId) {
-		this.operatorId = operatorId;
-	}
+    /**
+     * Sets the operatorId.
+     * 
+     * @param aalstId
+     *            The operatorId to set
+     */
+    public void setOperatorId(String operatorId)
+    {
+        this.operatorId = operatorId;
+    }
 
-	/**
-	 * Sets the operatorType.
-	 * 
-	 * @param operatorType
-	 *            The operatorType to set
-	 */
-	public void setOperatorType(int operatorType) {
-		this.operatorType = operatorType;
-	}
+    /**
+     * Sets the operatorType.
+     * 
+     * @param operatorType
+     *            The operatorType to set
+     */
+    public void setOperatorType(int operatorType)
+    {
+        this.operatorType = operatorType;
+    }
 
-	/**
-	 * TODO: Documentation
-	 * 
-	 * @param triggertype
-	 * @return
-	 */
-	public TriggerModel setTrigger(CreationMap map) {
-		this.trigger = new TriggerModel(getOwnerId(), map);
-		LoggerManager.debug(Constants.CORE_LOGGER, "Trigger added to "
-				+ getOwnerId() + ".");
-		return trigger;
-	}
+    /**
+     * TODO: Documentation
+     * 
+     * @param triggertype
+     * @return
+     */
+    public TriggerModel setTrigger(CreationMap map)
+    {
+        this.trigger = new TriggerModel(map);
+        LoggerManager.debug(Constants.CORE_LOGGER, "Trigger added to " + getOwnerId() + ".");
+        return trigger;
+    }
 
-	public TriggerModel setTrigger(TriggerModel trigger) {
-		this.trigger = trigger;
-		return trigger;
-	}
+    public TriggerModel setTrigger(TriggerModel trigger)
+    {
+        this.trigger = trigger;
+        return trigger;
+    }
 
-	/**
-	 * TODO: Documentation
-	 * 
-	 */
-	public void removeTrigger() {
-		this.trigger = null;
-		LoggerManager.debug(Constants.CORE_LOGGER, "Trigger deleted.");
-	}
+    /**
+     * TODO: Documentation
+     *  
+     */
+    public void removeTrigger()
+    {
+        this.trigger = null;
+        LoggerManager.debug(Constants.CORE_LOGGER, "Trigger deleted.");
+    }
 
-	/**
-	 * Returns the ownerId.
-	 * 
-	 * @return String
-	 */
-	public String getOwnerId() {
-		return ownerId;
-	}
+    /**
+     * Returns the ownerId.
+     * 
+     * @return String
+     */
+    public String getOwnerId()
+    {
+        return ownerId;
+    }
 
-	/**
-	 * Sets the ownerId.
-	 * 
-	 * @param ownerId
-	 *            The ownerId to set
-	 */
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
-	}
+    /**
+     * Sets the ownerId.
+     * 
+     * @param ownerId
+     *            The ownerId to set
+     */
+    public void setOwnerId(String ownerId)
+    {
+        this.ownerId = ownerId;
+    }
 
-	/**
-	 * TODO: Documentation
-	 * 
-	 * @return
-	 */
-	public TriggerModel getTrigger() {
-		return trigger;
-	}
+    /**
+     * TODO: Documentation
+     * 
+     * @return
+     */
+    public TriggerModel getTrigger()
+    {
+        return trigger;
+    }
 
-	/**
-	 * Returns the subprocess.
-	 * 
-	 * @return boolean
-	 */
-	public boolean isSubprocess() {
-		return subprocess;
-	}
+    /**
+     * Returns the subprocess.
+     * 
+     * @return boolean
+     */
+    public boolean isSubprocess()
+    {
+        return subprocess;
+    }
 
-	/**
-	 * Sets the subprocess.
-	 * 
-	 * @param subprocess
-	 *            The subprocess to set
-	 */
-	public void setSubprocess(boolean subprocess) {
-		this.subprocess = subprocess;
-		// setOperatorType(PetriNetModelElement.SUBP_TYPE);
-	}
+    /**
+     * Sets the subprocess.
+     * 
+     * @param subprocess
+     *            The subprocess to set
+     */
+    public void setSubprocess(boolean subprocess)
+    {
+        this.subprocess = subprocess;
+        // setOperatorType(PetriNetModelElement.SUBP_TYPE);
+    }
 
-	/**
-	 * @return Returns the transResource.
-	 */
-	public TransitionResourceModel getTransResource() {
-		return transResource;
-	}
+    /**
+     * @return Returns the transResource.
+     */
+    public TransitionResourceModel getTransResource()
+    {
+        return transResource;
+    }
 
-	/**
-	 * TODO: Documentation (waschtl)
-	 * 
-	 */
-	public void removeTransResource() {
-		this.transResource = null;
-		LoggerManager.debug(Constants.CORE_LOGGER, "ResourceModel deleted.");
-	}
+    /**
+     * TODO: Documentation (waschtl)
+     *  
+     */
+    public void removeTransResource()
+    {
+        this.transResource = null;
+        LoggerManager.debug(Constants.CORE_LOGGER, "ResourceModel deleted.");
+    }
 
-	/**
-	 * @param transResource
-	 *            The transResource to set.
-	 */
-	public TransitionResourceModel setTransResource(
-			TransitionResourceModel transResource) {
-		this.transResource = transResource;
-		return transResource;
-	}
+    /**
+     * @param transResource
+     *            The transResource to set.
+     */
+    public TransitionResourceModel setTransResource(TransitionResourceModel transResource)
+    {
+        this.transResource = transResource;
+        return transResource;
+    }
 
-	public TransitionResourceModel setTransResource(CreationMap map) {
-		this.transResource = new TransitionResourceModel(getOwnerId(), map);
-		LoggerManager.debug(Constants.CORE_LOGGER, "TransResource added to "
-				+ getOwnerId() + ".");
-		return transResource;
-	}
+    public TransitionResourceModel setTransResource(CreationMap map)
+    {
+        this.transResource = new TransitionResourceModel(map);
+        LoggerManager.debug(Constants.CORE_LOGGER, "TransResource added to " + getOwnerId() + ".");
+        return transResource;
+    }
 }

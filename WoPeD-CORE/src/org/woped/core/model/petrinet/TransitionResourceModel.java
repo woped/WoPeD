@@ -6,6 +6,7 @@
  */
 package org.woped.core.model.petrinet;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -13,6 +14,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.jgraph.graph.AttributeMap;
+import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.model.CreationMap;
 
@@ -22,29 +24,40 @@ import org.woped.core.model.CreationMap;
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
-public class TransitionResourceModel extends AbstractPetriNetModelElement
+public class TransitionResourceModel extends DefaultGraphCell
 {
     public static final int DEFAULT_WIDTH  = 60;
     public static final int DEFAULT_HEIGHT = 22; // must be even
+
     private String          transResourceId;
     private String          transRoleName;
     private String          transOrgUnitName;
     private String          ownerId;
 
-    public TransitionResourceModel(String ownerId, CreationMap map)
+    public TransitionResourceModel(CreationMap creationMap)
     {
-        super(map);
-        this.setId("transResource" + map.getId());
-        this.setOwnerId(ownerId);
-        this.transOrgUnitName = map.getResourceOrgUnit();
-        this.transRoleName = map.getResourceRole();
-        // AttributeMap attributes = getAttributes();
-        // GraphConstants.setMoveable(attributes, true);
-        // GraphConstants.setEditable(attributes, false);
-        // GraphConstants.setSizeable(attributes, false);
-        // GraphConstants.setBounds(attributes, new Rectangle(DEFAULT_WIDTH,
-        // DEFAULT_HEIGHT));
-        // setAttributes(attributes);
+        super();
+        this.setId("transResource" + creationMap.getId());
+        this.setOwnerId(creationMap.getId());
+        this.transOrgUnitName = creationMap.getResourceOrgUnit();
+        this.transRoleName = creationMap.getResourceRole();
+
+        AttributeMap attrMap = getAttributes();
+        GraphConstants.setOpaque(attrMap, false);
+        GraphConstants.setBorderColor(attrMap, Color.black);
+        GraphConstants.setEditable(attrMap, false);
+        GraphConstants.setMoveable(attrMap, true);
+        GraphConstants.setSizeable(attrMap, false);
+        GraphConstants.setSize(attributes, new Dimension(getDefaultWidth(), getDefaultHeight()));
+        //        GraphConstants.setAutoSize(attrMap, true);
+        //        GraphConstants.setInset(attrMap, 1);
+        setAttributes(attrMap);
+        
+
+        if (creationMap.getResourcePosition() != null)
+        {
+            setPosition(creationMap.getResourcePosition());
+        }
     }
 
     public void setId(String triggerId)
@@ -52,13 +65,10 @@ public class TransitionResourceModel extends AbstractPetriNetModelElement
     // TODO Auto-generated method stub
     }
 
-    public String getId()
-    {
-        return transResourceId;
-    }
-
     /**
-     * @return Returns the ownerId.
+     * Returns the ownerId.
+     * 
+     * @return String
      */
     public String getOwnerId()
     {
@@ -66,12 +76,19 @@ public class TransitionResourceModel extends AbstractPetriNetModelElement
     }
 
     /**
+     * Sets the ownerId.
+     * 
      * @param ownerId
-     *            The ownerId to set.
+     *            The ownerId to set
      */
     public void setOwnerId(String ownerId)
     {
         this.ownerId = ownerId;
+    }
+
+    public String getId()
+    {
+        return transResourceId;
     }
 
     /**
@@ -108,6 +125,45 @@ public class TransitionResourceModel extends AbstractPetriNetModelElement
         this.transRoleName = transRoleName;
     }
 
+    public String getToolTipText()
+    {
+        return null;
+    }
+
+    /* ### general methods ### */
+
+    public void setPosition(Point2D p)
+    {
+        setPosition((int) p.getX(), (int) p.getY());
+    }
+
+    public Point getPosition()
+    {
+        Rectangle2D rect = GraphConstants.getBounds(getAttributes());
+        if (rect != null)
+        {
+            return new Point((int) rect.getX(), (int) rect.getY());
+        }
+        return null;
+    }
+
+    public void setPosition(int x, int y)
+    {
+        AttributeMap map = getAttributes();
+        GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
+        changeAttributes(map);
+    }
+
+    public int getX()
+    {
+        return (int) GraphConstants.getBounds(getAttributes()).getX();
+    }
+
+    public int getY()
+    {
+        return (int) GraphConstants.getBounds(getAttributes()).getY();
+    }
+
     /**
      * TODO: Documention
      */
@@ -122,16 +178,6 @@ public class TransitionResourceModel extends AbstractPetriNetModelElement
     public int getDefaultHeight()
     {
         return DEFAULT_HEIGHT;
-    }
-
-    public int getX()
-    {
-        return (int) GraphConstants.getBounds(getAttributes()).getX();
-    }
-
-    public int getY()
-    {
-        return (int) GraphConstants.getBounds(getAttributes()).getY();
     }
 
     public void setSize(Dimension dim)
@@ -153,45 +199,6 @@ public class TransitionResourceModel extends AbstractPetriNetModelElement
     public int getWidth()
     {
         return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getWidth());
-    }
-
-    public Point getPosition()
-    {
-        Rectangle2D rect = GraphConstants.getBounds(getAttributes());
-        if (rect != null)
-        {
-            return new Point((int) rect.getX(), (int) rect.getY());
-        }
-        return null;
-    }
-
-    public String getToolTipText()
-    {
-        return null;
-    }
-
-    public void setPosition(Point2D p)
-    {
-        setPosition((int) p.getX(), (int) p.getY());
-    }
-
-    public void setPosition(int x, int y)
-    {
-        AttributeMap map = getAttributes();
-        Rectangle2D r = GraphConstants.getBounds(map);
-        if (r == null) r = new Rectangle();
-        GraphConstants.setBounds(map, new Rectangle(x, y, (int) r.getWidth(), (int) r.getHeight()));
-        changeAttributes(map);
-    }
-
-    public void setType(int type)
-    {
-    // NOT POSSIBLE
-    }
-
-    public int getType()
-    {
-        return PetriNetModelElement.RESOURCE_TYPE;
     }
 
 }

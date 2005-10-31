@@ -65,8 +65,6 @@ public class NameModel extends DefaultGraphCell {
 		GraphConstants.setMoveable(map, true);
 		GraphConstants.setSizeable(map, false);
 		GraphConstants.setAutoSize(map, true);
-		// GraphConstants.setBounds(map, new Rectangle(DEFAULT_WIDTH,
-		// DEFAULT_HEIGHT));
 		GraphConstants.setInset(map, 1);
 		setAttributes(map);
 
