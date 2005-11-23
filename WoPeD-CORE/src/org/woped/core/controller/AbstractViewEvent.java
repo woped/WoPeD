@@ -14,6 +14,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int VIEWEVENTTYPE_EDIT        = 0;
     public static final int VIEWEVENTTYPE_APPLICATION = 1;
     public static final int VIEWEVENTTYPE_FILE        = 2;
+    public static final int VIEWEVENTTYPE_GUI = 3;
 
     // WoPeD Orders
     public static final int SELECT_EDITOR             = 1000;
@@ -23,7 +24,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int HELP_CONTENTS             = 1004;
     public static final int SCREENSHOT                = 1005;
     public static final int EXPORT                    = 1006;
-    public static final int STRECH                    = 1007;
+    public static final int STRETCH                   = 1007;
     public static final int PRESS                     = 1008;
     public static final int INCONIFY_EDITOR           = 1009;
 
@@ -181,6 +182,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int TRAIN                     = 404;
     public static final int TEACH                     = 405;
     public static final int SUGGEST                   = 406;
+    public static final int RENAME                    = 407;
+    
     public static final int A                         = 500;
     public static final int B                         = 501;
     public static final int C                         = 502;

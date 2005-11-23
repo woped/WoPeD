@@ -46,13 +46,14 @@ public class ActionFactory
     public final static String ACTIONID_COPY                   = "Action.CopySelection";
     public final static String ACTIONID_PASTE                  = "Action.PasteElements";
 
-    public final static String ACTIONID_REMOVE                 = "Popup.Edit.Remove";
-    public final static String ACTIONID_ACTIVATE_ROUTING       = "Popup.Arc.ActivateRouting";
-    public final static String ACTIONID_DEACTIVATE_ROUTING     = "Popup.Arc.DeactivateRouting";
-    public final static String ACTIONID_ACTIVATE_ALL_ROUTING   = "Popup.Net.Route";
-    public final static String ACTIONID_DEACTIVATE_ALL_ROUTING = "Popup.Net.Unroute";
-    public final static String ACTIONID_ADD_POINT              = "Popup.Arc.AddPoint";
-    public final static String ACTIONID_REMOVE_POINT           = "Popup.Arc.RemovePoint";
+    public final static String ACTIONID_REMOVE                 = "Popup.Remove";
+    public final static String ACTIONID_RENAME                 = "Popup.Rename";
+    public final static String ACTIONID_ACTIVATE_ROUTING       = "Popup.ActivateRouting";
+    public final static String ACTIONID_DEACTIVATE_ROUTING     = "Popup.DeactivateRouting";
+    public final static String ACTIONID_ACTIVATE_ALL_ROUTING   = "Popup.Route";
+    public final static String ACTIONID_DEACTIVATE_ALL_ROUTING = "Popup.Unroute";
+    public final static String ACTIONID_ADD_POINT              = "Popup.AddPoint";
+    public final static String ACTIONID_REMOVE_POINT           = "Popup.RemovePoint";
     public final static String ACTIONID_OPEN_PROPERTIES        = "Popup.Properties";
     public final static String ACTIONID_ADD_RES_TRIGGER        = "Popup.Trigger.AddResource";
     public final static String ACTIONID_ADD_TIME_TRIGGER       = "Popup.Trigger.AddTime";
@@ -62,7 +63,7 @@ public class ActionFactory
     public final static String ACTIONID_ADD_TRANSITION         = "Popup.Add.Transition";
     public final static String ACTIONID_ADD_TOKEN              = "Popup.Token.Add";
     public final static String ACTIONID_REMOVE_TOKEN           = "Popup.Token.Remove";
-    public final static String ACTIONID_OPEN_SUBPROCESS        = "Popup.Subprocess.Open";
+    public final static String ACTIONID_OPEN_SUBPROCESS        = "Popup.Subprocess";
     public final static String ACTIONID_ADD_ANDJOIN            = "Popup.Add.AndJoin";
     public final static String ACTIONID_ADD_ANDSPLIT           = "Popup.Add.AndSplit";
     public final static String ACTIONID_ADD_XORSPLITJOIN       = "Popup.Add.XorSplitJoin";
@@ -78,7 +79,7 @@ public class ActionFactory
     public final static String ACTIONID_ADD_XOR                = "Action.Add.Xor";
 
     // view
-    public final static String ACTIONID_STRECH                 = "Menu.View.Stretch";
+    public final static String ACTIONID_STRETCH                 = "Menu.View.Stretch";
     public final static String ACTIONID_PRESS                  = "Menu.View.Press";
     public final static String ACTIONID_ZOOMIN                 = "Action.ZoomIn";
     public final static String ACTIONID_ZOOMOUT                = "Action.ZoomOut";
@@ -105,7 +106,7 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_EXPORT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_SHOWCONFIG, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CONFIG, null, ACTIONID_SHOWCONFIG));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SHOWCONFIG), VisualController.IGNORE, VisualController.IGNORE, VisualController.IGNORE);
-        STATIC_ACTION_MAP.put(ACTIONID_SHOWABOUT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.ABOUT, null, ACTIONID_SHOWABOUT));
+        STATIC_ACTION_MAP.put(ACTIONID_SHOWABOUT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT, null, ACTIONID_SHOWABOUT));
         //
         STATIC_ACTION_MAP.put(ACTIONID_SHOWHELPINDEX, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.HELP, null, ACTIONID_SHOWHELPINDEX));
         //
@@ -139,8 +140,8 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_SUB), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_SUBPROCESS);
 
         /* VIEW */
-        STATIC_ACTION_MAP.put(ACTIONID_STRECH, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.STRECH, null, ACTIONID_STRECH));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_STRECH), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
+        STATIC_ACTION_MAP.put(ACTIONID_STRETCH, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.STRETCH, null, ACTIONID_STRETCH));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_STRETCH), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_PRESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.PRESS, null, ACTIONID_PRESS));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_PRESS), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ZOOMIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ZOOM_IN, null, ACTIONID_ZOOMIN));
@@ -162,6 +163,10 @@ public class ActionFactory
         //
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE, null, ACTIONID_REMOVE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE), VisualController.ANY_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_RENAME, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.RENAME, null, ACTIONID_RENAME));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_RENAME), VisualController.ANY_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        
         STATIC_ACTION_MAP.put(ACTIONID_ACTIVATE_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ACTIVE, null, ACTIONID_ACTIVATE_ROUTING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ACTIVATE_ROUTING), VisualController.ARC_SELECTION, VisualController.UNROUTED_ARC_SELECTION, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_DEACTIVATE_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_DEACTIVE, null, ACTIONID_DEACTIVATE_ROUTING));
@@ -201,10 +206,11 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLITJOIN), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
         
         STATIC_ACTION_MAP.put(ACTIONID_ADD_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_SUBPROCESS, null, ACTIONID_ADD_SUBPROCESS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_SUBPROCESS), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);       
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_SUBPROCESS), VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);       
 
         STATIC_ACTION_MAP.put(ACTIONID_OPEN_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_SUBPROCESS, null, ACTIONID_OPEN_SUBPROCESS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.SUBPROCESS_SELECTION, VisualController.SUBPROCESS_SELECTION, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION, VisualController.IGNORE);
+
         STATIC_ACTION_MAP.put(ACTIONID_ADD_TOKEN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_TOKEN, null, ACTIONID_ADD_TOKEN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TOKEN), VisualController.PLACE_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE_TOKEN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE_TOKEN, null, ACTIONID_REMOVE_TOKEN));

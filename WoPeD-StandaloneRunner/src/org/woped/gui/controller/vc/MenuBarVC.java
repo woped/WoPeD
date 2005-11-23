@@ -368,8 +368,8 @@ public class MenuBarVC extends JMenuBar implements IViewController
     {
         if (m_exportMenuItem == null)
         {
-            m_exportMenuItem = new JMenuItem("export OFF"); // new
-            // ExportAction(m_containingWindow));
+            m_exportMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_EXPORT)); 
+            // new ExportAction(m_containingWindow);
         }
         return m_exportMenuItem;
     }
@@ -555,7 +555,7 @@ public class MenuBarVC extends JMenuBar implements IViewController
     {
         if (m_stretchMenuItem == null)
         {
-            m_stretchMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_STRECH));
+            m_stretchMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_STRETCH));
         }
         return m_stretchMenuItem;
     }
@@ -709,8 +709,7 @@ public class MenuBarVC extends JMenuBar implements IViewController
     {
         if (m_aboutMenuItem == null)
         {
-            m_aboutMenuItem = new JMenuItem("About OFF"); // new
-            // ShowAboutBoxAction(m_containingWindow));
+            m_aboutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SHOWABOUT)); 
         }
         return m_aboutMenuItem;
     }

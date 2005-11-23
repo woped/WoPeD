@@ -66,7 +66,7 @@ public class PopupMenuPetrinet extends JPopupMenu
 
     private JMenu                    m_editMenu                = null;
     private JMenuItem                m_removeMenuItem          = null;
-    private JMenuItem                m_editMenuItem            = null;
+    private JMenuItem                m_renameMenuItem          = null;
     private JMenuItem                m_copyMenuItem            = null;
     private JMenuItem                m_cutMenuItem             = null;
     private JMenuItem                m_pasteMenuItem           = null;
@@ -90,13 +90,22 @@ public class PopupMenuPetrinet extends JPopupMenu
     private PopupMenuPetrinet()
     {
         add(getAddMenu());
-        add(getEditMenu());
-        add(getArcMenu());
-        add(getTokenMenu());
-        add(getTriggerMenu());
-        // add(getNetMenu());
-        add(getOpenSubprocessMenuItem());
+        addSeparator();
         add(getPropertiesMenuItem());
+        add(getRenameMenuItem());
+        addSeparator();
+        add(getRemoveMenuItem());
+        add(getCutMenuItem());
+        add(getCopyMenuItem());
+        add(getPasteMenuItem());
+        addSeparator();        
+        add(getArcMenu());
+//        add(getTokenMenu());
+        add(getAddTokenMenuItem());
+        add(getRemoveTokenMenuItem());
+        
+        add(getTriggerMenu());
+        add(getOpenSubprocessMenuItem());
     }
 
     /**
@@ -112,6 +121,15 @@ public class PopupMenuPetrinet extends JPopupMenu
         }
         c_instance.pack();
         return c_instance;
+    }
+
+    private JMenuItem getRenameMenuItem()
+    {
+        if (m_renameMenuItem == null)
+        {
+            m_renameMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_RENAME));
+         }
+        return m_renameMenuItem;
     }
 
     private JMenuItem getRemoveMenuItem()
@@ -154,26 +172,15 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_cutMenuItem == null)
         {
-            m_cutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_PASTE));
+            m_cutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_CUT));
         }
         return m_cutMenuItem;
-    }
-
-    private JMenuItem getEditMenuItem()
-    {
-        if (m_editMenuItem == null)
-        {
-
-            m_editMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_EDIT));
-        }
-        return m_editMenuItem;
     }
 
     private JMenuItem getExternalTriggerMenuItem()
     {
         if (m_externalTriggerMenuItem == null)
         {
-
             m_externalTriggerMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_EXT_TRIGGER));
         }
         return m_externalTriggerMenuItem;
@@ -343,7 +350,7 @@ public class PopupMenuPetrinet extends JPopupMenu
             m_editMenu = new JMenu("Edit");
             VisualController.getInstance().addElement(m_editMenu, VisualController.ALWAYS, VisualController.ALWAYS, VisualController.IGNORE);
             m_editMenu.add(getRemoveMenuItem());
-            m_editMenu.add(getEditMenuItem());
+            m_editMenu.add(getRenameMenuItem());
             m_editMenu.add(getCutMenuItem());
             m_editMenu.add(getCopyMenuItem());
             m_editMenu.add(getPasteMenuItem());

@@ -115,7 +115,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
                 editor.createElement(map);
                 break;
             // General
-            case AbstractViewEvent.EDIT:
+            case AbstractViewEvent.RENAME:
                 cell = editor.getGraph().getSelectionCell();
                 if (cell instanceof GroupModel)
                 {
@@ -280,7 +280,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
             case AbstractViewEvent.PRESS:
                 editor.scaleNet(0.5);
                 break;
-            case AbstractViewEvent.STRECH:
+            case AbstractViewEvent.STRETCH:
                 editor.scaleNet(2);
                 break;
             default:
