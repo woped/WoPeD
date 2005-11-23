@@ -24,8 +24,9 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="makeinstaller, purge" />
-	<!--	depends="makeinstaller, makebindist, makesrcdist, purge" /> -->
+	<target name="makedistribution" 
+		    depends="makedir, setversion, copyfiles, makeinstaller, purge" />
+	<!--	depends="makebindist, makesrcdist, purge" /> -->
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -39,7 +40,12 @@
 		<mkdir dir="dist/doc/html/images" />
 	</target>
 
-	<target name="copylibs" depends="makedir">
+	<target name="setversion">
+		<copy file="../WoPeD-Editor/src/org/woped/editor/properties/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
+		<copy file="dist/Messages.properties" tofile="../WoPeD-Editor/bin/org/woped/editor/properties/Messages.properties" />
+	</target>
+
+	<target name="copyfiles">
 		<copy todir="dist/lib" file="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}${SNAPSHOT}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar" />
@@ -51,29 +57,18 @@
 		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
-	</target>
-
-	<target name="setversion">
-		<copy file="../WoPeD-Editor/src/org/woped/editor/properties/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
-		<copy file="dist/Messages.properties" tofile="../WoPeD-Editor/bin/org/woped/editor/properties/Messages.properties" />
-	</target>
-
-	<target name="copydocs" depends="makedir">
+	
 		<copy todir="dist/doc/html">
 			<fileset file="doc/html/*.htm" />
 		</copy>
+		
 		<copy file="doc/html/woped-big.css" tofile="dist/doc/html/woped.css" />
+		
 		<copy todir="dist/doc/html/images">
 			<fileset file="doc/html/images/*.gif" />
 			<fileset file="doc/html/images/*.jpg" />
 		</copy>
-	</target>
 
-	<target name="makejavadoc" depends="makedir">
-<!--		<javadoc packagenames="org.woped.*" sourcepath="src" destdir="doc/api-doc" />-->
-	</target>
-
-	<target name="copybuildtools" depends="setversion, copylibs, copydocs">
 		<copy todir="dist">
 			<fileset dir="build-tools/launcher/Windows" />
 			<fileset dir="build-tools/launcher/Linux" />
@@ -82,12 +77,17 @@
 			<fileset dir="build-tools/setup/Linux" />
 			<fileset dir="build-tools/setup/MacOS" />
 		</copy>
+
 		<copy todir="dist" filtering="true" overwrite="true">
 			<fileset file="build-tools/*.*" />
 			<fileset file="build-tools/setup/install.xml" />
 		</copy>
 
 		<unzip src="build-tools/setup/izpack.zip" dest="dist" />
+	</target>
+
+	<target name="makejavadoc">
+<!--		<javadoc packagenames="org.woped.*" sourcepath="src" destdir="doc/api-doc" />-->
 	</target>
 
 	<target name="makesubprojects">
@@ -98,7 +98,7 @@
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
 	</target>
 	
-	<target name="makeinstaller" depends="makesubprojects, copybuildtools">
+	<target name="makeinstaller">
 		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST.mf">
 			<fileset file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
 		</jar>
@@ -193,7 +193,7 @@
 		</tar>
 	</target>
 -->
-	<!--<target name="genjar" depends="copy libs">
+	<!--<target name="genjar" depends="copylibs">
 		<unjar dest="dist/genjarsrc">
 			<fileset dir="dist/lib"/>
 		</unjar>
