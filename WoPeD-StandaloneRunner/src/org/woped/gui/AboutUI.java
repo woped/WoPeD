@@ -33,6 +33,7 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
@@ -46,7 +47,6 @@ import javax.swing.JScrollPane;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.action.help.LaunchDefaultBrowserAction;
-
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>
@@ -74,10 +74,12 @@ public class AboutUI extends JDialog
     private static final String aboutText       = "<html><p>" + "<b>Version:</b> " + Messages.getWoPeDVersion(true) + "<br><b>License:</b> Published under the LGPL (c) 2004<br>"
                                                         + "<b>Contributors:</b> Christian Flender, Thomas Freytag," + "<br>Steffen Gegenheimer, Simon Landes, Alexis Nagy,"
                                                         + "<br>Sebastian Orts, Thomas Pohl<br>" + "<b>Special thanks to:</b> Bodo Kraft, Kevin Wiersch<br></p></html>";
-    public AboutUI() {
+
+    public AboutUI()
+    {
         this(null);
     }
-    
+
     /**
      * Constructor for AboutUI.
      * 
@@ -90,11 +92,11 @@ public class AboutUI extends JDialog
         initialize();
     }
 
-    public static void main(String[] args)
+ /*   public static void main(String[] args)
     {
         new AboutUI(null);
     }
-
+*/
     /**
      * This method initializes and layouts the about information
      * 
@@ -129,7 +131,7 @@ public class AboutUI extends JDialog
         {
             JPanel panel = new JPanel();
             panel.setLayout(new GridBagLayout());
-            //this.getContentPane().setBackground(Color.WHITE);
+            // this.getContentPane().setBackground(Color.WHITE);
             GridBagConstraints c = new GridBagConstraints();
 
             c.gridx = 0;
@@ -189,7 +191,7 @@ public class AboutUI extends JDialog
         return changeLogPanel;
     }
 
-    private JPanel getButtonPanel()
+private JPanel getButtonPanel()
     {
         if (buttonPanel == null)
         {
@@ -209,7 +211,7 @@ public class AboutUI extends JDialog
                 }
             });
             aboutButton.setMnemonic(KeyEvent.VK_A);
-            aboutButton.setIcon(new ImageIcon(getClass().getResource("images/about16.gif")));
+            aboutButton.setIcon(new ImageIcon(getClass().getResource("../editor/gui/images/about16.gif")));
             aboutButton.setText("About");
             aboutButton.setBorderPainted(false);
             aboutButton.setRolloverEnabled(true);
@@ -229,7 +231,7 @@ public class AboutUI extends JDialog
             });
             changelogButton.setMnemonic(KeyEvent.VK_L);
             changelogButton.setText("Versions");
-            changelogButton.setIcon(new ImageIcon(getClass().getResource("images/changelog16.gif")));
+            changelogButton.setIcon(new ImageIcon(getClass().getResource("../editor/gui/images/changelog16.gif")));
             changelogButton.setBorderPainted(false);
             /* Close Button */
             closeButton = new JButton(new DisposeWindowAction());
@@ -243,5 +245,4 @@ public class AboutUI extends JDialog
 
         }
         return buttonPanel;
-    }
-} //  @jve:visual-info decl-index=0 visual-constraint="0,0"
+    }} // @jve:visual-info decl-index=0 visual-constraint="0,0"

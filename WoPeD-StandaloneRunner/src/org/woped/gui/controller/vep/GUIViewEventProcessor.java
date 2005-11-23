@@ -52,14 +52,15 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         switch (event.getOrder())
         {
         case AbstractViewEvent.ABOUT:
+            AboutUI about = null;
             if (getMediator().getUi() != null && getMediator().getUi().getComponent() instanceof JFrame)
             {
-                new AboutUI((JFrame) getMediator().getUi());
+                about = new AboutUI((JFrame) getMediator().getUi());
             } else
             {
-                new AboutUI();
+                about = new AboutUI();
             }
-
+            about.setVisible(true);
             break;
         case AbstractViewEvent.HELP:
             try
