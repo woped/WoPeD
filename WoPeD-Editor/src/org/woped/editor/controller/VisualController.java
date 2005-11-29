@@ -394,7 +394,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             boolean routedArcSelected = false;
             boolean unroutedArcSelected = false;
             boolean transitionSelected = false;
-            boolean triggerdTransitionSelected = false;
+            boolean triggeredTransitionSelected = false;
             boolean placeSelected = false;
             boolean tokenPlaceSelected = false;
             boolean subprocessSelected = false;
@@ -419,7 +419,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
                 transitionSelected = true;
                 if (((TransitionModel) selectedCell).hasTrigger())
                 {
-                    triggerdTransitionSelected = true;
+                    triggeredTransitionSelected = true;
                 }
             } else if (selectedCell instanceof PlaceModel)
             {
@@ -432,6 +432,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             if (selectedCell instanceof SubProcessModel)
             {
                 subprocessSelected = true;
+                transitionSelected = false;  // changed, TF
             }
 
             setStatus(WOFLAN, ConfigurationManager.getConfiguration().isUseWoflan());
@@ -441,7 +442,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             setStatus(ROUTED_ARC_SELECTION, routedArcSelected);
             setStatus(UNROUTED_ARC_SELECTION, unroutedArcSelected);
             setStatus(TRANSITION_SELECTION, transitionSelected);
-            setStatus(TRIGGERED_TRANSITION_SELECTION, triggerdTransitionSelected);
+            setStatus(TRIGGERED_TRANSITION_SELECTION, triggeredTransitionSelected);
             setStatus(ARC_SELECTION, arcSelected);
         }
     }
