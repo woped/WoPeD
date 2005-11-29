@@ -67,8 +67,8 @@ public class DefaultEditorFrame extends JInternalFrame
             // TabbedPane
             JTabbedPane tabbedPane = new JTabbedPane();
             JScrollPane propScrollPane = new JScrollPane(getPetriNetPropertyEditor());
-            tabbedPane.addTab("Editor", getEditor());
-            tabbedPane.addTab("Properties", propScrollPane);
+            tabbedPane.addTab("Process", getEditor());
+            tabbedPane.addTab("Resources", propScrollPane);
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
         } else
         {
