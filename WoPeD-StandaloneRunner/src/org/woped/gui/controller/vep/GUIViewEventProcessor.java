@@ -17,6 +17,7 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.AboutUI;
+import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.vc.MenuBarVC;
@@ -61,6 +62,17 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
                 about = new AboutUI();
             }
             about.setVisible(true);
+            break;
+        case AbstractViewEvent.BUGREPORT:
+            BugReportUI bugreport = null;
+            if (getMediator().getUi() != null && getMediator().getUi().getComponent() instanceof JFrame)
+            {
+                bugreport = new BugReportUI((JFrame) getMediator().getUi());
+            } else
+            {
+                bugreport = new BugReportUI();
+            }
+            bugreport.setVisible(true);
             break;
         case AbstractViewEvent.HELP:
             try

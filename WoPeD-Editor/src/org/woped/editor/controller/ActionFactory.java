@@ -19,6 +19,7 @@ public class ActionFactory
     public final static String ACTIONID_OPENSAMPLE             = "Action.OpenSample";
     public final static String ACTIONID_SHOWCONFIG             = "Action.ShowConfig";
     public final static String ACTIONID_SHOWABOUT              = "Action.ShowAbout";
+    public final static String ACTIONID_SHOWBUGREPORT          = "Action.ShowBugReport";
     public final static String ACTIONID_SHOWHELPINDEX          = "Menu.Help.Index";
     public final static String ACTIONID_SHOWHELPCONTENTS       = "Menu.Help.Contents";
     public final static String ACTIONID_EXIT                   = "Action.QuitApplication";
@@ -107,6 +108,8 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_SHOWCONFIG, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CONFIG, null, ACTIONID_SHOWCONFIG));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SHOWCONFIG), VisualController.IGNORE, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_SHOWABOUT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT, null, ACTIONID_SHOWABOUT));
+        //
+        STATIC_ACTION_MAP.put(ACTIONID_SHOWBUGREPORT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.BUGREPORT, null, ACTIONID_SHOWBUGREPORT));
         //
         STATIC_ACTION_MAP.put(ACTIONID_SHOWHELPINDEX, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.HELP, null, ACTIONID_SHOWHELPINDEX));
         //

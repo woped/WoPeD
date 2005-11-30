@@ -110,7 +110,7 @@ public class MenuBarVC extends JMenuBar implements IViewController
     private JMenuItem          m_contentsMenuItem       = null;
     private JMenu              m_sampleMenu             = null;
     private JMenuItem          m_aboutMenuItem          = null;
-
+    private JMenuItem          m_bugReportMenuItem      = null;
     /**
      * Creates a new MenuBar for a PWTUI.
      * 
@@ -233,7 +233,8 @@ public class MenuBarVC extends JMenuBar implements IViewController
             m_helpMenu.add(getSampleMenu());
             m_helpMenu.addSeparator();
             m_helpMenu.add(getAboutMenuItem());
-        }
+            m_helpMenu.add(getBugReportMenuItem());
+                   }
         return m_helpMenu;
     }
 
@@ -712,6 +713,18 @@ public class MenuBarVC extends JMenuBar implements IViewController
             m_aboutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SHOWABOUT)); 
         }
         return m_aboutMenuItem;
+    }
+
+    /**
+     * @return Returns the bugReportMenuItem.
+     */
+    public JMenuItem getBugReportMenuItem()
+    {
+        if (m_bugReportMenuItem == null)
+        {
+            m_bugReportMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SHOWBUGREPORT)); 
+        }
+        return m_bugReportMenuItem;
     }
 
     /**
