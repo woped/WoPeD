@@ -35,8 +35,8 @@ public class BugReportUI extends JDialog
 
     // TODO: move in propertie files (tfreytag)
     private static final String bugReportText       
-        = "<html><p>" + "<b>WoPeD Bug Reporting</b><br>"
-        + "Have you found a bug? Please click on the link below.</p></html>";
+        = "<html>" + "<h4>WoPeD Bug Reporting</h4>"
+        + "<p><font size=3>Have you found a bug? Please click on the link below.</font></p></html>";
 
     public BugReportUI()
     {
@@ -106,7 +106,7 @@ public class BugReportUI extends JDialog
 
             c.gridy = 2;
             // TODO: move in propertie files (tfreytag)
-            bugPageLabel = new JLabel("<html><a href=woped.ba-karlsruhe.de/bugs>WoPeD Bug Reporting Page</a></html>");
+            bugPageLabel = new JLabel("<html><p><font size=3><a href=woped.ba-karlsruhe.de/bugs>WoPeD Bug Reporting Page</a></font></p></html>");
             bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://woped.ba-karlsruhe.de/bugs", bugPageLabel));
             panel.add(bugPageLabel, c);
             bugReportPanel = new JScrollPane(panel);

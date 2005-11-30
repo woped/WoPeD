@@ -71,9 +71,14 @@ public class AboutUI extends JDialog
     private JPanel              buttonPanel     = null;
 
     // TODO: move in propertie files (tfreytag)
-    private static final String aboutText       = "<html><p>" + "<b>Version:</b> " + Messages.getWoPeDVersion(true) + "<br><b>License:</b> Published under the LGPL (c) 2004<br>"
-                                                        + "<b>Contributors:</b> Christian Flender, Thomas Freytag," + "<br>Steffen Gegenheimer, Simon Landes, Alexis Nagy,"
-                                                        + "<br>Sebastian Orts, Thomas Pohl<br>" + "<b>Special thanks to:</b> Bodo Kraft, Kevin Wiersch<br></p></html>";
+    private static final String aboutText       = 
+          "<html><p><font size=3>" + "<b>Version:</b> " 
+        + Messages.getWoPeDVersion(true) + "<br>"
+        + "<b>License:</b> Published under the LGPL (c) 2004<br>"
+        + "<b>Contributors:</b> Christian Flender, Thomas Freytag," 
+        + "<br>Steffen Gegenheimer, Simon Landes, Alexis Nagy,"
+        + "<br>Sebastian Orts, Thomas Pohl<br>" 
+        + "<b>Special thanks to:</b> Bodo Kraft, Kevin Wiersch<br></p></font></html>";
 
     public AboutUI()
     {
@@ -148,19 +153,19 @@ public class AboutUI extends JDialog
 
             c.gridy = 2;
             // TODO: move in propertie files (tfreytag)
-            homepageLabel = new JLabel("<html><p><b>WoPeD Homepage:</b> <a href=www.woped.org>www.woped.org</a></p></html>");
+            homepageLabel = new JLabel("<html><p><font size=3><b>WoPeD Homepage:</b> <a href=www.woped.org>www.woped.org</a></font></p></html>");
             homepageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://www.woped.org", homepageLabel));
             panel.add(homepageLabel, c);
 
             c.gridy = 3;
             // TODO: move in propertie files (tfreytag)
-            mailtoLabel = new JLabel("<html><p><b>Email contact:</b> <a href=mailto:info@woped.org>info@woped.org</a></p></html>");
+            mailtoLabel = new JLabel("<html><p><font size=3><b>Email contact:</b> <a href=mailto:info@woped.org>info@woped.org</a></font></p></html>");
             mailtoLabel.addMouseListener(new LaunchDefaultBrowserAction("mailto:info@woped.org", mailtoLabel));
             panel.add(mailtoLabel, c);
 
             c.gridy = 4;
             // TODO: move in propertie files (tfreytag)
-            sfLabel = new JLabel("<html><p><b>Development powered by:</b> <a href=sourceforge.net/projects/woped>www.sourceforge.net</a><br></p></html>");
+            sfLabel = new JLabel("<html><p><font size=3><b>Development powered by:</b> <a href=sourceforge.net/projects/woped>www.sourceforge.net</a><br></font></p></html>");
             sfLabel.addMouseListener(new LaunchDefaultBrowserAction("http://sourceforge.net/projects/woped", sfLabel));
             panel.add(sfLabel, c);
             aboutPanel = new JScrollPane(panel);
