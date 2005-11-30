@@ -31,6 +31,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ZOOM_ABSOLUTE             = 1010;
     public static final int ZOOM_IN                   = 1011;
     public static final int ZOOM_OUT                  = 1012;
+    public static final int BUGREPORT                 = 1013;
 
     public static final int DRAWMODE_PLACE            = 1020;
     public static final int DRAWMODE_TRANSITION       = 1021;
