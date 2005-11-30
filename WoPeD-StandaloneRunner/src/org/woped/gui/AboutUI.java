@@ -211,7 +211,7 @@ private JPanel getButtonPanel()
                 }
             });
             aboutButton.setMnemonic(KeyEvent.VK_A);
-            aboutButton.setIcon(new ImageIcon(getClass().getResource("../editor/gui/images/about16.gif")));
+            aboutButton.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
             aboutButton.setText("About");
             aboutButton.setBorderPainted(false);
             aboutButton.setRolloverEnabled(true);
@@ -231,7 +231,7 @@ private JPanel getButtonPanel()
             });
             changelogButton.setMnemonic(KeyEvent.VK_L);
             changelogButton.setText("Versions");
-            changelogButton.setIcon(new ImageIcon(getClass().getResource("../editor/gui/images/changelog16.gif")));
+            changelogButton.setIcon(new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/changelog16.gif")));
             changelogButton.setBorderPainted(false);
             /* Close Button */
             closeButton = new JButton(new DisposeWindowAction());
