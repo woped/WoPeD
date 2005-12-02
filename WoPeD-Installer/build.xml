@@ -25,7 +25,7 @@
 	<!--<taskdef resource="genjar.properties"/>	-->
 
 	<target name="makedistribution" 
-		    depends="makedir, setversion, copyfiles, makeinstaller, purge" />
+		    depends="makedir, makesubprojects, setversion, copyfiles, makeinstaller, purge" />
 	<!--	depends="makebindist, makesrcdist, purge" /> -->
 
 	<target name="clean">
