@@ -14,10 +14,12 @@ import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.file.controller.vep.FileEventProcessor;
 import org.woped.gui.DefaultUserInterface;
+import org.woped.gui.SplashWindow;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
+import org.woped.gui.SplashWindow;
 
 public class DefaultApplicationMediator extends ApplicationMediator
 {
@@ -32,6 +34,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
     public DefaultApplicationMediator(IUserInterface ui, IConfiguration conf, String[] args)
     {
         super(ui, conf);
+        SplashWindow splash = new SplashWindow();
         getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(ViewEvent.VIEWEVENTTYPE_GUI, this));
         getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(ViewEvent.VIEWEVENTTYPE_FILE, this));
         if (ui == null)
@@ -53,7 +56,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
             config.addConfNodePanel(null, new ConfToolsPanel("Tools"));
             config.setSelectedPanel("Editor");
 
-            ui = new DefaultUserInterface(toolbar, menubar, taskbar, statusbar);
+            ui = new DefaultUserInterface(toolbar, menubar, taskbar, statusbar, splash);
             setUi(ui);
             if (args != null)
             {

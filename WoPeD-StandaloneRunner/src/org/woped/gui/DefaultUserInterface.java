@@ -53,11 +53,9 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private int                   m_numEditors           = 0;
     private List                  editorList             = new ArrayList();
 
-    public DefaultUserInterface(ToolBarVC toolBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar)
+    public DefaultUserInterface(ToolBarVC toolBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar, SplashWindow splash)
     {
         super();
-        SplashWindow splash = new SplashWindow(this);
-
         this.toolBar = toolBar;
         this.statusBar = statusBar;
         this.taskBar = taskBar;
@@ -85,6 +83,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         setJMenuBar(menuBar);
         getContentPane().add(toolBar, BorderLayout.NORTH);
         getContentPane().add(desktop, BorderLayout.CENTER);
+
         // Prepare Status & Taskbar
         getContentPane().add(taskBar, BorderLayout.SOUTH);
 
@@ -93,7 +92,6 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
         // addKeyListener(this);
         splash.close();
-
     }
 
     public void addEditor(IEditor editor)

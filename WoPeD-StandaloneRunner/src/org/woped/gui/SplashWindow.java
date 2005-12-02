@@ -39,7 +39,6 @@ import javax.swing.JWindow;
 
 import org.woped.editor.utilities.Messages;
 
-
 /**
  * TODO: DOCUMENTATION (xraven)
  * 
@@ -47,9 +46,9 @@ import org.woped.editor.utilities.Messages;
  */
 public class SplashWindow extends JWindow
 {
-
     private JPanel jPanel       = null;
     private URL    imageURL     = getClass().getResource(Messages.getString("Splash.Image"));
+    private String delayValue   = Messages.getString("Splash.Delay");
     private JLabel logoLabel    = null;
     private JLabel versionLabel = null;
     private JLabel copyrightLabel = null;
@@ -59,20 +58,26 @@ public class SplashWindow extends JWindow
      * 
      * @param f
      */
-    public SplashWindow(Frame f)
+    public SplashWindow()
     {
-        super(f);
         initialize();
     }
 
     private void initialize()
     {
-        this.setVisible(false);
-        this.setContentPane(getJPanel());
-        this.pack();
+        long t = Long.valueOf(delayValue).longValue();
+        setVisible(false);
+        setContentPane(getJPanel());
+        pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation(screenSize.width / 2 - (getLogoLabel().getWidth() / 2), screenSize.height / 2 - (getLogoLabel().getHeight() / 2));
-        this.setVisible(true);
+        setVisible(true);
+        // Delay display of splash icon for some milliseconds
+        try 
+        {
+            Thread.sleep(t);
+        }
+        catch(Exception e) {}
     }
 
     /**
@@ -142,6 +147,7 @@ public class SplashWindow extends JWindow
         }
         return versionLabel;
     }
+    
     private JLabel getCopyrightLabel()
     {
         if (copyrightLabel == null)
@@ -152,10 +158,4 @@ public class SplashWindow extends JWindow
         }
         return copyrightLabel;
     }
-
-    public static void main(String[] args)
-    {
-        new SplashWindow(null);
-    }
-
 }
