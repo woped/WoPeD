@@ -31,8 +31,8 @@ public class BugReportUI extends JDialog
     private JLabel              bugPageLabel    = null;
     private JButton             closeButton     = null;
     private JScrollPane         bugReportPanel  = null;
-    private JPanel              buttonPanel     = null;
-
+    private JPanel              buttonPanel = null;
+ 
     // TODO: move in propertie files (tfreytag)
     private static final String bugReportText       
         = "<html>" + "<h4>WoPeD Bug Reporting</h4>"
@@ -94,23 +94,26 @@ public class BugReportUI extends JDialog
 
             c.gridx = 0;
             c.gridy = 0;
-            c.anchor = GridBagConstraints.WEST;
-            c.insets = new Insets(0, 0, 0, 0);
+            c.anchor = GridBagConstraints.CENTER;
+            c.insets = new Insets(10, 10, 0, 10);
             logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Bugreport.Image"))));
             panel.add(logoLabel, c);
 
             c.gridy = 1;
-            c.insets = new Insets(1, 5, 1, 1);
+            c.anchor = GridBagConstraints.WEST;
+            c.insets = new Insets(0, 10, 0, 10);
             bugReportLabel = new JLabel(bugReportText);
             panel.add(bugReportLabel, c);
 
             c.gridy = 2;
+            c.insets = new Insets(0, 10, 10, 10);
             // TODO: move in propertie files (tfreytag)
             bugPageLabel = new JLabel("<html><p><font size=3><a href=woped.ba-karlsruhe.de/bugs>WoPeD Bug Reporting Page</a></font></p></html>");
             bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://woped.ba-karlsruhe.de/bugs", bugPageLabel));
             panel.add(bugPageLabel, c);
+            
             bugReportPanel = new JScrollPane(panel);
-         }
+        }       
         return bugReportPanel;
     }
     
@@ -119,17 +122,14 @@ public class BugReportUI extends JDialog
         if (buttonPanel == null)
         {
             buttonPanel = new JPanel();
-            buttonPanel.setLayout(new BorderLayout());
- 
-            /* Close Button */
+            GridBagConstraints c = new GridBagConstraints();
+
             closeButton = new JButton(new DisposeWindowAction());
-            
             closeButton.setMnemonic(KeyEvent.VK_C);
-            closeButton.setBorderPainted(false);
-
-            buttonPanel.add(closeButton, BorderLayout.CENTER);
             closeButton.requestFocus();
-
+            c.insets = new Insets(20, 0, 20, 0); 
+            c.anchor = GridBagConstraints.CENTER;
+            buttonPanel.add(closeButton, c);
         }
         return buttonPanel;
     }

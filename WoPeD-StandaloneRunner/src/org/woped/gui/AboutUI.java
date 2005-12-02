@@ -109,12 +109,12 @@ public class AboutUI extends JDialog
      */
     private void initialize()
     {
+        GridBagConstraints c = new GridBagConstraints();
         this.setVisible(false);
         this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(getAboutPanel(), BorderLayout.CENTER);
-        this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-
         this.setUndecorated(true);
+        this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
+        this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
         this.pack();
 
         if (getOwner() != null)
@@ -142,28 +142,31 @@ public class AboutUI extends JDialog
             c.gridx = 0;
             c.gridy = 0;
             c.anchor = GridBagConstraints.WEST;
-            c.insets = new Insets(0, 0, 0, 0);
+            c.insets = new Insets(10, 10, 10, 10);
             logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Splash.Image"))));
             panel.add(logoLabel, c);
 
             c.gridy = 1;
-            c.insets = new Insets(1, 5, 1, 1);
+            c.insets = new Insets(0, 10, 0, 10);
             aboutTextLabel = new JLabel(aboutText);
             panel.add(aboutTextLabel, c);
 
             c.gridy = 2;
+            c.insets = new Insets(0, 10, 0, 10);
             // TODO: move in propertie files (tfreytag)
             homepageLabel = new JLabel("<html><p><font size=3><b>WoPeD Homepage:</b> <a href=www.woped.org>www.woped.org</a></font></p></html>");
             homepageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://www.woped.org", homepageLabel));
             panel.add(homepageLabel, c);
 
             c.gridy = 3;
+            c.insets = new Insets(0, 10, 0, 10);
             // TODO: move in propertie files (tfreytag)
             mailtoLabel = new JLabel("<html><p><font size=3><b>Email contact:</b> <a href=mailto:info@woped.org>info@woped.org</a></font></p></html>");
             mailtoLabel.addMouseListener(new LaunchDefaultBrowserAction("mailto:info@woped.org", mailtoLabel));
             panel.add(mailtoLabel, c);
 
             c.gridy = 4;
+            c.insets = new Insets(0, 10, 0, 10);
             // TODO: move in propertie files (tfreytag)
             sfLabel = new JLabel("<html><p><font size=3><b>Development powered by:</b> <a href=sourceforge.net/projects/woped>www.sourceforge.net</a><br></font></p></html>");
             sfLabel.addMouseListener(new LaunchDefaultBrowserAction("http://sourceforge.net/projects/woped", sfLabel));
@@ -182,8 +185,9 @@ public class AboutUI extends JDialog
             GridBagConstraints c1 = new GridBagConstraints();
             c1.gridy = 0;
             c1.gridx = 0;
-            c1.insets = new Insets(3, 3, 3, 3);
+            c1.insets = new Insets(10, 10, 10, 10);
             c1.anchor = GridBagConstraints.WEST;
+
             // TODO: read changelog information out of the file !!! (silenco)
             String changeLog = "<html><b>WoPeD 0.8.0</b> (2005/03/28)<br>- first official binary release<br><b>WoPeD untagged versions</b><br>- since May 2003.</html>";
             JLabel text = new JLabel(changeLog, JLabel.LEFT);
@@ -196,12 +200,14 @@ public class AboutUI extends JDialog
         return changeLogPanel;
     }
 
-private JPanel getButtonPanel()
+    private JPanel getButtonPanel()
     {
         if (buttonPanel == null)
         {
             buttonPanel = new JPanel();
-            buttonPanel.setLayout(new GridLayout(1, 3));
+            buttonPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c1 = new GridBagConstraints();
+
             /* About Button */
             aboutButton = new JButton(new AbstractAction()
             {
@@ -215,12 +221,17 @@ private JPanel getButtonPanel()
                     repaint();
                 }
             });
+
             aboutButton.setMnemonic(KeyEvent.VK_A);
             aboutButton.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
             aboutButton.setText("About");
-            aboutButton.setBorderPainted(false);
-            aboutButton.setRolloverEnabled(true);
             aboutButton.setEnabled(false);
+            c1.gridy = 0;
+            c1.gridx = 0;
+            c1.insets = new Insets(10, 10, 10, 10);
+            c1.anchor = GridBagConstraints.WEST;
+            buttonPanel.add(aboutButton, c1);
+
             /* Changelog Button */
             changelogButton = new JButton(new AbstractAction()
             {
@@ -234,20 +245,26 @@ private JPanel getButtonPanel()
                     repaint();
                 }
             });
+            
             changelogButton.setMnemonic(KeyEvent.VK_L);
             changelogButton.setText("Versions");
             changelogButton.setIcon(new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/changelog16.gif")));
-            changelogButton.setBorderPainted(false);
+            c1.gridy = 0;
+            c1.gridx = 1;
+            c1.insets = new Insets(0, 0, 0, 0);
+            c1.anchor = GridBagConstraints.CENTER;
+            buttonPanel.add(changelogButton, c1);
+
             /* Close Button */
             closeButton = new JButton(new DisposeWindowAction());
             closeButton.setMnemonic(KeyEvent.VK_C);
-            closeButton.setBorderPainted(false);
-
-            buttonPanel.add(aboutButton);
-            buttonPanel.add(changelogButton);
-            buttonPanel.add(closeButton);
             closeButton.requestFocus();
 
-        }
+            c1.gridy = 0;
+            c1.gridx = 2;
+            c1.insets = new Insets(10, 10, 10, 10);
+            c1.anchor = GridBagConstraints.EAST;
+            buttonPanel.add(closeButton, c1);
+        }       
         return buttonPanel;
     }} // @jve:visual-info decl-index=0 visual-constraint="0,0"
