@@ -74,7 +74,7 @@ public class AboutUI extends JDialog
     private static final String aboutText       = 
           "<html><p><font size=3>" + "<b>Version:</b> " 
         + Messages.getWoPeDVersion(true) + "<br>"
-        + "<b>License:</b> Published under the LGPL (c) 2004<br>"
+        + "<b>License:</b> Published under the LGPL &copy; 2004<br>"
         + "<b>Contributors:</b> Christian Flender, Thomas Freytag," 
         + "<br>Steffen Gegenheimer, Simon Landes, Alexis Nagy,"
         + "<br>Sebastian Orts, Thomas Pohl<br>" 
@@ -189,7 +189,10 @@ public class AboutUI extends JDialog
             c1.anchor = GridBagConstraints.WEST;
 
             // TODO: read changelog information out of the file !!! (silenco)
-            String changeLog = "<html><b>WoPeD 0.8.0</b> (2005/03/28)<br>- first official binary release<br><b>WoPeD untagged versions</b><br>- since May 2003.</html>";
+            String changeLog = "<html><p><font size=3>"+
+                "<b>WoPeD 0.8.0</b> (2005/03/28)" +
+                "<br>- first official binary release" +
+                "<br><b>WoPeD untagged versions</b><br>- since May 2003.</font></p></html>";
             JLabel text = new JLabel(changeLog, JLabel.LEFT);
             panel.add(text, c1);
             JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
