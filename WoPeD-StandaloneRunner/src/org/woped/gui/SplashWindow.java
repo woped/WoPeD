@@ -25,7 +25,6 @@ package org.woped.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -44,6 +43,34 @@ import org.woped.editor.utilities.Messages;
  * 
  * @author Thomas Pohl
  */
+
+class WindowKiller extends Thread
+{
+  private JWindow wnd;
+  private long time;
+
+  public WindowKiller(JWindow wnd, long time)
+  {
+    this.wnd = wnd;
+    this.time = time;
+    start();
+  }
+
+  public void run()
+  {
+    try {
+      Thread.sleep(time);
+    } 
+    catch (InterruptedException e) 
+    {
+      //nothing
+    }
+    if (wnd.isVisible()) {
+      wnd.setVisible(false);
+      wnd.dispose();
+    }
+  }
+}
 public class SplashWindow extends JWindow
 {
     private JPanel jPanel       = null;
@@ -52,6 +79,8 @@ public class SplashWindow extends JWindow
     private JLabel logoLabel    = null;
     private JLabel versionLabel = null;
     private JLabel copyrightLabel = null;
+    private long   delayTime = 0;
+    private WindowKiller killer = null; 
 
     /**
      * TODO: DOCUMENTATION (xraven)
@@ -65,19 +94,20 @@ public class SplashWindow extends JWindow
 
     private void initialize()
     {
-        long t = Long.valueOf(delayValue).longValue();
+        delayTime = Long.valueOf(delayValue).longValue();
+        killer = new WindowKiller(this, delayTime);
         setVisible(false);
         setContentPane(getJPanel());
         pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation(screenSize.width / 2 - (getLogoLabel().getWidth() / 2), screenSize.height / 2 - (getLogoLabel().getHeight() / 2));
+        setLocation((screenSize.width - getLogoLabel().getWidth())/2, 
+                    (screenSize.height - getLogoLabel().getHeight())/2);
         setVisible(true);
-        // Delay display of splash icon for some milliseconds
-        try 
-        {
-            Thread.sleep(t);
-        }
-        catch(Exception e) {}
+    }
+    
+    public void kill()
+    {
+        killer.run();        
     }
 
     /**

@@ -2,10 +2,8 @@ package org.woped.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeSupport;
@@ -53,7 +51,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private int                   m_numEditors           = 0;
     private List                  editorList             = new ArrayList();
 
-    public DefaultUserInterface(ToolBarVC toolBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar, SplashWindow splash)
+    public DefaultUserInterface(ToolBarVC toolBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar)
     {
         super();
         this.toolBar = toolBar;
@@ -64,7 +62,6 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
         propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setTitle("WoPeD Version " + Messages.getWoPeDVersion(false));
         setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(), (int) ConfigurationManager
                 .getConfiguration().getWindowSize().getHeight());
@@ -91,7 +88,8 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
 
         // addKeyListener(this);
-        splash.close();
+        SplashWindow splash = new SplashWindow();
+        splash.kill();
     }
 
     public void addEditor(IEditor editor)
