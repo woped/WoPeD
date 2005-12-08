@@ -3,6 +3,7 @@ package org.woped.core.config;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
+import java.util.Locale;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -15,6 +16,7 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static int             DEFAULT_ARROW_HEADSIZE    = 7;
     public static boolean         DEFAULT_ARROW_FILLHEAD    = false;
     public static final ImageIcon DEFAULTEDITORFRAMEICON    = null;
+    public Locale locale = null;
 
     private boolean               insertCopy                = false;
     private boolean               importToolspec            = true;
@@ -29,7 +31,10 @@ public class DefaultStaticConfiguration implements IConfiguration
     private int                   modelProcessor            = AbstractModelProcessor.MODEL_PROCESSOR_PETRINET;
     private Color                 selectionColor            = DEFAULT_SELECTION_COLOR;
     private Color                 portColor                 = DEFAULT_PORT_COLOR;
-
+    private String 				language					= DEFAULT_LANGUAGE;
+    private String 				country					= DEFAULT_COUNTRY;
+    private String 				variant					= DEFAULT_VARIANT;
+    
     // Booleans for alpha-functions (TEST) later integration in conf&gui
     public static boolean         ACTIVATE_TREE_VIEW        = false;
     public static boolean         ACTIVATE_NET_ROUTING      = false;
@@ -37,6 +42,9 @@ public class DefaultStaticConfiguration implements IConfiguration
 
     public static Color           DEFAULT_SELECTION_COLOR   = new Color(0, 103, 178);
     public static Color           DEFAULT_PORT_COLOR        = Color.RED;
+    public static String		  	DEFAULT_LANGUAGE			= "en";
+    public static String		  	DEFAULT_COUNTRY			= "";
+    public static String		  	DEFAULT_VARIANT			= "";
 
     private String                homedir                   = "";
     private String                workingDir                = "";
@@ -333,4 +341,98 @@ public class DefaultStaticConfiguration implements IConfiguration
         portColor = color;
 
     }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.config.IConfiguration#getLocaleLanguage()
+     */
+    public String getLocaleLanguage() {
+    		return language;
+    }
+
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.config.IConfiguration#setLocaleLanguage(java.lang.String)
+     */
+    public void setLocaleLanguage(String language) {
+		this.language = language;
+	}
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.config.IConfiguration#getLocaleCountry()
+     */
+    public String getLocaleCountry() {
+		return country;
+	}
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.config.IConfiguration#setLocaleCountry(java.lang.String)
+     */
+    public void setLocaleCountry(String country) {
+		this.country = country;
+	}
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.config.IConfiguration#getLocaleVariant()
+     */
+    public String getLocaleVariant() {
+		return variant;
+	}
+
+	 /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.config.IConfiguration#setLocaleVariant(java.lang.String)
+     */
+    public void setLocaleVariant(String variant) {
+		this.variant = variant;
+	}
+
+	public void setLocale() {
+		String language = null;
+		String country = null;
+		String variant = null;
+
+    		Locale userLocale = null;
+
+        if (getLocaleLanguage() != null)
+        {
+        		language = getLocaleLanguage();
+        }
+        if (getLocaleCountry() != null) 
+        {
+        		country = getLocaleCountry();
+        }
+        if (getLocaleVariant() != null) {
+        		variant = getLocaleVariant();
+        }
+
+        if (language != null && country != null && variant != null) {
+        		userLocale = new Locale(language, country, variant);
+        } else if (language != null && country != null) {
+        		userLocale = new Locale(language, country);
+        } else {
+        		userLocale = new Locale(language);
+        }
+        if (userLocale == null) {
+        		userLocale = Locale.ENGLISH;
+        		setLocaleLanguage(this.locale.getLanguage());
+        }
+        
+        this.locale = userLocale;
+	}
+	
+	public Locale getLocale() {
+		return this.locale;
+	}
+
 }

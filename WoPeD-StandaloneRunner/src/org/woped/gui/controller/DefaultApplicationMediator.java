@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.woped.config.gui.ConfEditorPanel;
 import org.woped.config.gui.ConfFilePanel;
+import org.woped.config.gui.ConfLanguagePanel;
 import org.woped.config.gui.ConfToolsPanel;
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
@@ -12,13 +13,14 @@ import org.woped.core.gui.IUserInterface;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.TaskBarVC;
+import org.woped.editor.utilities.Messages;
 import org.woped.file.controller.vep.FileEventProcessor;
 import org.woped.gui.DefaultUserInterface;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
-
+import org.woped.editor.gui.config.AbstractConfPanel;
 
 public class DefaultApplicationMediator extends ApplicationMediator
 {
@@ -49,10 +51,11 @@ public class DefaultApplicationMediator extends ApplicationMediator
             addViewController(config);
             // Add Conf Node-Panels
             // TODO: addConfNodePanel(null, new ConfGuiPanel("GUI"));
-            config.addConfNodePanel(null, new ConfEditorPanel("Editor"));
-            config.addConfNodePanel(null, new ConfFilePanel("Files"));
-            config.addConfNodePanel(null, new ConfToolsPanel("Tools"));
-            config.setSelectedPanel("Editor");
+            config.addConfNodePanel(null, new ConfEditorPanel(Messages.getString("Configuration.Editor.Title")));
+            config.addConfNodePanel(null, new ConfFilePanel(Messages.getString("Configuration.Files.Title")));
+            config.addConfNodePanel(null, new ConfToolsPanel(Messages.getString("Configuration.Options.Title")));
+            config.addConfNodePanel(null, new ConfLanguagePanel(Messages.getString("Configuration.Language.Title")));
+            config.setSelectedPanel(Messages.getString("Configuration.Editor.Title"));
 
             ui = new DefaultUserInterface(toolbar, menubar, taskbar, statusbar);
             setUi(ui);

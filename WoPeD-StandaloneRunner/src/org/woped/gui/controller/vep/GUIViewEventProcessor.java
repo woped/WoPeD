@@ -16,6 +16,7 @@ import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.utilities.Messages;
 import org.woped.gui.AboutUI;
 import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
@@ -81,7 +82,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             } catch (Exception e)
             {
                 LoggerManager.error(Constants.GUI_LOGGER, "Cannot find HTML manual files. " + e.getMessage());
-                JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), "Cannot find HTML manual files", "Not found", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString("Help.Message.HTMLManualFileNotFound"), Messages.getString("Help.Message.notFound"), JOptionPane.ERROR_MESSAGE);
             }
             break;
         case AbstractViewEvent.HELP_CONTENTS:
@@ -91,7 +92,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             } catch (Exception e)
             {
                 LoggerManager.error(Constants.GUI_LOGGER, "Cannot find HTML contents file. " + e.getMessage());
-                JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), "Cannot find HTML contents file", "Not found", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString("Help.Message.HTMLManualFileNotFound"), Messages.getString("Help.Message.notFound"), JOptionPane.ERROR_MESSAGE);
             }
             break;
 
@@ -131,7 +132,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         boolean canceled = false;
         if (!editor.isSaved())
         {
-            int value = JOptionPane.showConfirmDialog(editor, "Save changes to " + editor.getFileName() + "?", "Confirm Save Current File", JOptionPane.YES_NO_CANCEL_OPTION);
+            String args[] = {};
+            int value = JOptionPane.showConfirmDialog(editor, Messages.getStringReplaced("Action.SaveEditor.Confirmation.Message", args), Messages.getString("Action.SaveEditor.Confirmation.Title"), JOptionPane.YES_NO_CANCEL_OPTION);
             if (value == (JOptionPane.YES_OPTION))
             {
                 // TODO: !! if (editor.getDefaultFileType() !=
@@ -165,8 +167,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         } else
         {
             // locate HTML files in local folder
-            filename = this.getClass().getResource("/").toExternalForm() + "../doc/html/".concat(filename);
-            contentFileName = this.getClass().getResource("/").toExternalForm() + "../doc/html/".concat(contentFileName);
+            filename = this.getClass().getResource("/").toExternalForm().concat("../doc/").concat(Messages.getString("Help.Dir")).concat("/html/").concat(filename);
+            contentFileName = this.getClass().getResource("/").toExternalForm().concat("../doc/").concat(Messages.getString("Help.Dir")).concat("/html/").concat(contentFileName);
         }
 
         HelpBrowser br = HelpBrowser.getInstance();

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Vector;
+import java.util.Locale;
 
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlOptions;
@@ -41,7 +42,9 @@ public class WoPeDConfiguration implements IConfiguration {
 	private int modelProcessor = 0;
 
 	private static XmlOptions xmlOptions = new XmlOptions();
-
+    
+    private Locale locale;
+    
 	private Vector runtimeRecentFiles = new Vector(RECENTFILES_SIZE);
 
 	public WoPeDConfiguration() {
@@ -135,7 +138,15 @@ public class WoPeDConfiguration implements IConfiguration {
 			setWindowX(config.getGui().getWindow().getX());
 			setWindowY(config.getGui().getWindow().getY());
 			setWindowSize(new Dimension(config.getGui().getWindow().getWidth(), config.getGui().getWindow().getHeight()));
-			// SYSTEM
+
+            //Language
+            //Locale
+		    setLocaleLanguage(config.getGui().getLocale().getLanguage());
+		    setLocaleCountry(config.getGui().getLocale().getCountry());
+		    setLocaleVariant(config.getGui().getLocale().getVariant());
+            setLocale();
+
+            // SYSTEM
 			// Recent
 			runtimeRecentFiles = new Vector();
 			for (int i = 0; i < getDocument().getConfiguration().getGeneral().getRecentFilesArray().length; i++) {
@@ -685,4 +696,95 @@ public class WoPeDConfiguration implements IConfiguration {
 	public void setPortColor(Color color) {
 		ConfigurationManager.getStandardConfiguration().setPortColor(color);
 	}
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.editor.config.IConfiguration#setLocaleLanguage(java.lang.String)
+     */
+    public void setLocaleLanguage(String language) {
+        getDocument().getConfiguration().getGui().getLocale().setLanguage(language);    
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.editor.config.IConfiguration#getLocaleLanguage()
+     */
+    public String getLocaleLanguage() {
+        return getDocument().getConfiguration().getGui().getLocale().getLanguage();
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.editor.config.IConfiguration#setLocaleCountry(java.lang.String)
+     */
+    public void setLocaleCountry(String country) {
+        getDocument().getConfiguration().getGui().getLocale().setCountry(country);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.editor.config.IConfiguration#getLocaleCountry()
+     */
+    public String getLocaleCountry() {
+        return getDocument().getConfiguration().getGui().getLocale().getCountry();
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.editor.config.IConfiguration#setLocaleVariant(java.lang.String)
+     */
+    public void setLocaleVariant(String variant) {
+        getDocument().getConfiguration().getGui().getLocale().setVariant(variant);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.editor.config.IConfiguration#getLocaleVariant()
+     */
+    public String getLocaleVariant() {
+        return getDocument().getConfiguration().getGui().getLocale().getVariant();
+    }
+    
+    public void setLocale() {
+        String language = null;
+        String country = null;
+        String variant = null;
+        Locale userLocale = null;
+
+        if (getLocaleLanguage() != null)
+        {
+                language = getLocaleLanguage();
+        }
+        if (getLocaleCountry() != null) 
+        {
+                country = getLocaleCountry();
+        }
+        if (getLocaleVariant() != null) {
+                variant = getLocaleVariant();
+        }
+
+        if (language != null && country != null && variant != null) {
+                userLocale = new Locale(language, country, variant);
+        } else if (language != null && country != null) {
+                userLocale = new Locale(language, country);
+        } else {
+                userLocale = new Locale(language);
+        }
+        if (userLocale == null) {
+                userLocale = Locale.ENGLISH;
+                setLocaleLanguage(this.locale.getLanguage());
+        }
+        
+        this.locale = userLocale;
+    }
+    
+    public Locale getLocale() {
+        return this.locale;
+    }
 }

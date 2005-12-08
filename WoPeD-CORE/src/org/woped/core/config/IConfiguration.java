@@ -3,6 +3,7 @@ package org.woped.core.config;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
+import java.util.Locale;
 import java.util.Vector;
 
 public interface IConfiguration
@@ -17,6 +18,10 @@ public interface IConfiguration
 
     public boolean saveConfig();
 
+    public void setLocale();
+    
+    public Locale getLocale();
+    
     //    
     public boolean isEditingOnCreation();
 
@@ -147,5 +152,19 @@ public interface IConfiguration
     public Color getPortColor();
     
     public void setPortColor(Color color);
+    
+    public void setLocaleLanguage(String language);
+
+    public String getLocaleLanguage();
+
+  	public void setLocaleCountry(String country);
+
+  	public String getLocaleCountry();
+
+   	public void setLocaleVariant(String variant);
+
+    public String getLocaleVariant();
+    
+
     
 }

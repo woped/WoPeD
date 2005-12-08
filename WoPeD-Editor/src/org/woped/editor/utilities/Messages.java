@@ -28,12 +28,16 @@ package org.woped.editor.utilities;
 
 import java.awt.event.KeyEvent;
 import java.net.URL;
+import java.text.MessageFormat;
+import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
@@ -45,8 +49,9 @@ public abstract class Messages
 {
 
     private static final String         BUNDLE_NAME     = "org.woped.editor.properties.Messages"; //$NON-NLS-1$
+    private static final Locale 		  LOCALE			 = ConfigurationManager.getConfiguration().getLocale();
+    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME, LOCALE);
 
-    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 
     public static String getString(String key)
     {
@@ -121,6 +126,17 @@ public abstract class Messages
         {
             return version + "." + builtstamp;
         }
+    }
+    
+    /**
+     * 
+     * @param key
+     * @param args
+     * @return returns localized String, placeholders replaced by args
+     */
+    public static String getStringReplaced(String key, String[] args)
+    {
+    		return MessageFormat.format(Messages.getString(key), args);
     }
 
 }

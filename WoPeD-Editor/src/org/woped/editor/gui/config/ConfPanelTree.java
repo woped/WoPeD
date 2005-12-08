@@ -31,6 +31,7 @@ import javax.swing.tree.TreeSelectionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.ConfigVC;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -47,7 +48,7 @@ public class ConfPanelTree extends JTree
      */
     public ConfPanelTree()
     {
-        super(new DefaultMutableTreeNode("Configuration"));
+        super(new DefaultMutableTreeNode(Messages.getString("Configuration.Title")));
         // this.setRootVisible(false);
         this.putClientProperty("JTree.lineStyle", "Angled");
         renderer.setLeafIcon(null);

@@ -59,9 +59,10 @@ import org.woped.editor.Constants;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
-import org.woped.editor.gui.config.AbstractConfPanel;
 import org.woped.editor.gui.config.ConfPanelTree;
 import org.woped.editor.utilities.FileFilterImpl;
+import org.woped.editor.utilities.Messages;
+import org.woped.editor.gui.config.AbstractConfPanel;
 
 
 /**
@@ -84,9 +85,9 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
 
     private HashMap               confPanels     = new HashMap();
 
-    public static final Dimension CONF_DIM       = new Dimension(570, 410);
-    public static final Dimension SCROLL_DIM     = new Dimension(420, 300);
-    public static final Dimension TREE_DIM       = new Dimension(130, 300);
+    public static final Dimension CONF_DIM       = new Dimension(570, 430);
+    public static final Dimension SCROLL_DIM     = new Dimension(420, 370);
+    public static final Dimension TREE_DIM       = new Dimension(140, 370);
     public static final Color     BACK_COLOR     = new Color(255, 255, 255);
 
     private static JFileChooser   jfc            = null;
@@ -132,7 +133,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
     private void initialize()
     {
         /* init GUI */
-        this.setTitle("WoPeD Configuration");
+        this.setTitle(Messages.getString("Configuration.Title"));
         this.setSize(CONF_DIM);
         this.setResizable(false);
         this.getContentPane().setLayout(new BorderLayout());
@@ -157,6 +158,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         // (*.xml)", xmlExtensions);
         // jfc.setFileFilter(XMLFilter);
         xmlExtensions.add("xml");
+        pack();
     }
 
     public void addConfNodePanel(String parentNodePanelName, AbstractConfPanel nodePanel)
@@ -349,9 +351,8 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         if (applyButton == null)
         {
             applyButton = new JButton();
-            applyButton.setPreferredSize(new Dimension(80, 23));
             applyButton.setMnemonic(KeyEvent.VK_A);
-            applyButton.setText("Apply");
+            applyButton.setText(Messages.getString("Button.Apply.Title"));
             applyButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)
@@ -369,9 +370,8 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         {
             cancelButton = new JButton(new DisposeWindowAction());
             cancelButton.setIcon(null);
-            cancelButton.setPreferredSize(new Dimension(80, 23));
             cancelButton.setMnemonic(KeyEvent.VK_C);
-            cancelButton.setText("Cancel");
+            cancelButton.setText(Messages.getString("Button.Cancel.Title"));
         }
         return cancelButton;
     }
@@ -381,8 +381,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         if (okButton == null)
         {
             okButton = new JButton();
-            okButton.setPreferredSize(new Dimension(80, 23));
-            okButton.setText("OK");
+            okButton.setText(Messages.getString("Button.OK.Title"));
             okButton.setMnemonic(KeyEvent.VK_O);
             okButton.addActionListener(new ActionListener()
             {
@@ -401,8 +400,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         if (exportButton == null)
         {
             exportButton = new JButton();
-            exportButton.setPreferredSize(new Dimension(80, 23));
-            exportButton.setText("export");
+            exportButton.setText(Messages.getString("Button.Export.Title"));
             exportButton.setMnemonic(KeyEvent.VK_E);
             exportButton.addActionListener(new ActionListener()
             {
@@ -423,8 +421,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         if (importButton == null)
         {
             importButton = new JButton();
-            importButton.setPreferredSize(new Dimension(80, 23));
-            importButton.setText("import");
+            importButton.setText(Messages.getString("Button.Import.Title"));
             importButton.setMnemonic(KeyEvent.VK_I);
             importButton.addActionListener(new ActionListener()
             {

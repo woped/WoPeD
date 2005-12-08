@@ -32,6 +32,8 @@ import java.net.URL;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
+import org.woped.editor.utilities.Messages;
+
 /**
  * A simple, static class to display a URL in the system browser.
  * 
@@ -82,7 +84,7 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
             this.url = new URL(url);
         } catch (MalformedURLException e)
         {
-            JOptionPane.showMessageDialog(null, "Malformed URL " + url);
+            JOptionPane.showMessageDialog(null, Messages.getString("Help.Message.MalformedURL") + " " + url);
         }
     }
 
@@ -162,7 +164,7 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
         catch (IOException e)
         {
             // couldn't exec browser
-            JOptionPane.showMessageDialog(null, "Could not invoke default browser" + "\nCommand = " + cmd + "\nException: " + e);
+            JOptionPane.showMessageDialog(null, Messages.getString("Help.Message.noDefaultBrowser") + "\nCommand = " + cmd + "\nException: " + e);
         }
     }
 

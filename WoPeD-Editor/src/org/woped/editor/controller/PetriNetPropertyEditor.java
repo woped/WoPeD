@@ -51,6 +51,7 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.utilities.Messages;
 
 
 /**
@@ -60,6 +61,8 @@ import org.woped.editor.controller.vc.EditorVC;
  */
 public class PetriNetPropertyEditor extends JPanel implements ListSelectionListener
 {
+    private JScrollPane            contentPanel                           = null;
+
     // Properties
     private JPanel                 propertiesPanel                        = null;
     private JTextField             nameTextField                          = null;
@@ -67,6 +70,8 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     private JLabel                 nameLabel                              = null;
     private JLabel                 descritionLabel                        = null;
 
+    // Resources
+    private JPanel                 resourcePanel                          = null;
     private JSplitPane             resourceSplittPane                     = null;
     private JList                  resourceList                           = null;
     private JPanel                 resourceRightPanel                     = null;
@@ -99,6 +104,10 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     private JList                  roleList                               = null;
     private JList                  orgUnitList                            = null;
     private JSplitPane             resourceClassLeftSplittPane            = null;
+    private JPanel                 resourceClassLeftSplitPaneRolePane     = null;
+    private JLabel                 resourceClassLeftSplitPaneRoleLabel    = null;
+    private JPanel                 resourceClassLeftSplitPaneOrgUnitPane  = null;
+    private JLabel                 resourceClassLeftSplitPaneOrgUnitLabel = null;
     private JPanel                 resourceClassRightPanel                = null;
     private JComboBox              resourceClassTypeJComboBox             = null;
     private JLabel                 resourceClassNameLabel                 = null;
@@ -120,16 +129,18 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     private JButton                buttonCancel                           = null;
     private JButton                buttonOk                               = null;
 
-    private static final String    COMBOBOX_ROLE_TEXT                     = "role";
-    private static final String    COMBOBOX_ORGUNIT_TEXT                  = "group";
+    private static final String    COMBOBOX_ROLE_TEXT                     = Messages.getString("PetriNet.Resources.Role");
+    private static final String    COMBOBOX_ORGUNIT_TEXT                  = Messages.getString("PetriNet.Resources.OrganizationalUnit");
     private static final Object[]  ResourceClassTypeA                     = { COMBOBOX_ROLE_TEXT, COMBOBOX_ORGUNIT_TEXT };
-    private static final String    BUTTON_EDIT_TEXT                       = "Edit";
-    private static final String    BUTTON_OK_TEXT                         = "Ok";
-    private static final String    BUTTON_NEW_TEXT                        = "New";
-    private static final String    BUTTON_REMOVE_TEXT                     = "Remove";
+    private static final String    BUTTON_EDIT_TEXT                       = Messages.getString("Button.Edit.Title");
+    private static final String    BUTTON_OK_TEXT                         = Messages.getString("Button.OK.Title");
+    private static final String    BUTTON_NEW_TEXT                        = Messages.getString("Button.New.Title");
+    private static final String    BUTTON_REMOVE_TEXT                     = Messages.getString("Button.Remove.Title");
     private static final String    BUTTON_ASSIGN_TEXT                     = "-->";
     private static final String    BUTTON_UNASSIGN_TEXT                   = "<--";
-    
+    // Daten der Liste
+    private String[]               data                                   = { "Secretary", "Chief", "Developper", "Finances", "Transport", "Sttutgart-Leute", "Duttenberg-Leute" };
+    private String[]               data2                                  = { "Test", "Test2" };
     private EditorVC               editor                                 = null;
     private PetriNetModelProcessor petrinet;
 
@@ -156,16 +167,16 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         c.fill = GridBagConstraints.HORIZONTAL;
 
         // c.weightx = 1;
-//        c.gridx = 0;
-//        c.gridy = 0;
-//        this.add(getPropertiesPanel(), c);
-
         c.gridx = 0;
         c.gridy = 0;
-        this.add(getResourceClassSplittPane(), c);
+        this.add(getPropertiesPanel(), c);
 
         c.gridx = 0;
         c.gridy = 1;
+        this.add(getResourceClassSplittPane(), c);
+
+        c.gridx = 0;
+        c.gridy = 2;
         this.add(getResourcePanel(), c);
 
         // c.gridx = 0;
@@ -185,7 +196,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
             // propertiesPanel.setMinimumSize(new Dimension(800, 100));
             // propertiesPanel.setPreferredSize(new Dimension(800, 100));
             GridBagConstraints c = new GridBagConstraints();
-            propertiesPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Properties"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            propertiesPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Properties")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
             // c.fill = GridBagConstraints.HORIZONTAL;
             c.anchor = GridBagConstraints.WEST;
             c.weightx = 1;
@@ -215,7 +226,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (nameLabel == null)
         {
-            nameLabel = new JLabel("PetriNet Name:");
+            nameLabel = new JLabel(Messages.getString("PetriNet.Resources.PetriNetName") + ":");
 
         }
         return nameLabel;
@@ -225,7 +236,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (descritionLabel == null)
         {
-            descritionLabel = new JLabel("PetriNet Description:");
+            descritionLabel = new JLabel(Messages.getString("PetriNet.Resources.PetriNetDescription") + ":");
         }
 
         return descritionLabel;
@@ -314,7 +325,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceClassSplittPane == null)
         {
             resourceClassSplittPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, getResourceClassLeftSplittPane(), resourceClassRightPanel);
-            resourceClassSplittPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Resource classes"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            resourceClassSplittPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.ResourceClass")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
             resourceClassSplittPane.setMinimumSize(new Dimension(800, 200));
             resourceClassSplittPane.setPreferredSize(new Dimension(800, 200));
             resourceClassSplittPane.setDividerLocation(200);
@@ -457,7 +468,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (resourceClassNameLabel == null)
         {
-            resourceClassNameLabel = new JLabel("Name:");
+            resourceClassNameLabel = new JLabel(Messages.getString("PetriNet.Resources.ResourceClassName") + ":");
         }
 
         return resourceClassNameLabel;
@@ -467,7 +478,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (resourceClassDescriptionLabel == null)
         {
-            resourceClassDescriptionLabel = new JLabel("Description:");
+            resourceClassDescriptionLabel = new JLabel(Messages.getString("PetriNet.Resources.ResourceClassDescription") + ":");
         }
 
         return resourceClassDescriptionLabel;
@@ -477,7 +488,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (resourceClassTypeLabel == null)
         {
-            resourceClassTypeLabel = new JLabel("Type:");
+            resourceClassTypeLabel = new JLabel(Messages.getString("PetriNet.Resources.ResourceClassType") + ":");
         }
 
         return resourceClassTypeLabel;
@@ -513,7 +524,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceClassTypeJComboBox == null)
         {
             resourceClassTypeJComboBox = new JComboBox(ResourceClassTypeA);
-            resourceClassTypeJComboBox.setPreferredSize(new Dimension(150, 20));
             resourceClassTypeJComboBox.setMinimumSize(new Dimension(150, 20));
             resourceClassTypeJComboBox.setEnabled(false);
         }
@@ -540,7 +550,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceClassNewButton == null)
         {
             resourceClassNewButton = new JButton();
-            resourceClassNewButton.setPreferredSize(new Dimension(80, 23));
             resourceClassNewButton.setText(BUTTON_NEW_TEXT);
             // buttonOk.setMnemonic(KeyEvent.VK_O);
             resourceClassNewButton.addActionListener(new ActionListener()
@@ -601,7 +610,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceClassEditButton == null)
         {
             resourceClassEditButton = new JButton();
-            resourceClassEditButton.setPreferredSize(new Dimension(80, 23));
             resourceClassEditButton.setText(BUTTON_EDIT_TEXT);
             resourceClassEditButton.addActionListener(new ActionListener()
             {
@@ -694,7 +702,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceClassRemoveButton == null)
         {
             resourceClassRemoveButton = new JButton();
-            resourceClassRemoveButton.setPreferredSize(new Dimension(80, 23));
             resourceClassRemoveButton.setText(BUTTON_REMOVE_TEXT);
             resourceClassRemoveButton.addActionListener(new ActionListener()
             {
@@ -786,7 +793,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceSplittPane == null)
         {
             resourceSplittPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listScrollPane2, resourceRightPanel);
-            resourceSplittPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Resources"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            resourceSplittPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Resource")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
             resourceSplittPane.setMinimumSize(new Dimension(800, 250));
             resourceSplittPane.setPreferredSize(new Dimension(800, 250));
             resourceSplittPane.setDividerLocation(200);
@@ -955,7 +962,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (resourceEditNameLabel == null)
         {
-            resourceEditNameLabel = new JLabel("Name:");
+            resourceEditNameLabel = new JLabel(Messages.getString("PetriNet.Resources.ResourceName") + ":");
         }
 
         return resourceEditNameLabel;
@@ -965,7 +972,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (resourceEditDescriptionLabel == null)
         {
-            resourceEditDescriptionLabel = new JLabel("Description:");
+            resourceEditDescriptionLabel = new JLabel(Messages.getString("PetriNet.Resources.ResourceDescription") + ":");
         }
 
         return resourceEditDescriptionLabel;
@@ -1040,7 +1047,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceAddButton == null)
         {
             resourceAddButton = new JButton(BUTTON_NEW_TEXT);
-            resourceAddButton.setPreferredSize(new Dimension(80, 23));
             resourceAddButton.setMinimumSize(new Dimension(80, 23));
             resourceAddButton.addActionListener(new ActionListener()
             {
@@ -1081,7 +1087,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceEditButton == null)
         {
             resourceEditButton = new JButton(BUTTON_EDIT_TEXT);
-            resourceEditButton.setPreferredSize(new Dimension(80, 23));
             resourceEditButton.setMinimumSize(new Dimension(80, 23));
             resourceEditButton.addActionListener(new ActionListener()
             {
@@ -1128,7 +1133,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceRemoveButton == null)
         {
             resourceRemoveButton = new JButton(BUTTON_REMOVE_TEXT);
-            resourceRemoveButton.setPreferredSize(new Dimension(80, 23));
             resourceRemoveButton.setMinimumSize(new Dimension(80, 23));
             resourceRemoveButton.addActionListener(new ActionListener()
             {
@@ -1179,7 +1183,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (resourceUnAssignedLabel == null)
         {
-            resourceUnAssignedLabel = new JLabel("UnAssigned:");
+            resourceUnAssignedLabel = new JLabel(Messages.getString("PetriNet.Resources.Resource.Unassigned") + ":");
         }
 
         return resourceUnAssignedLabel;
@@ -1189,7 +1193,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         if (resourceAssignedLabel == null)
         {
-            resourceAssignedLabel = new JLabel("Assigned:");
+            resourceAssignedLabel = new JLabel(Messages.getString("PetriNet.Resources.Resource.Assigned") + ":");
         }
 
         return resourceAssignedLabel;
@@ -1283,7 +1287,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceAssignToButton == null)
         {
             resourceAssignToButton = new JButton();
-            resourceAssignToButton.setPreferredSize(new Dimension(75, 20));
             resourceAssignToButton.setMinimumSize(new Dimension(75, 20));
             resourceAssignToButton.setText(BUTTON_ASSIGN_TEXT);
             resourceAssignToButton.addActionListener(new ActionListener()
@@ -1310,7 +1313,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceUnAssignButton == null)
         {
             resourceUnAssignButton = new JButton();
-            resourceUnAssignButton.setPreferredSize(new Dimension(75, 20));
             resourceUnAssignButton.setMinimumSize(new Dimension(75, 20));
             resourceUnAssignButton.setText(BUTTON_UNASSIGN_TEXT);
             resourceUnAssignButton.addActionListener(new ActionListener()
@@ -1363,10 +1365,9 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (buttonOk == null)
         {
             buttonOk = new JButton();
-            buttonOk.setPreferredSize(new Dimension(100, 20));
             buttonOk.setMinimumSize(new Dimension(100, 20));
 
-            buttonOk.setText("OK");
+            buttonOk.setText(Messages.getString("Button.OK.Title"));
 
         }
         return buttonOk;
@@ -1378,10 +1379,9 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         {
             buttonCancel = new JButton();
 
-            buttonCancel.setPreferredSize(new Dimension(100, 20));
             buttonCancel.setMinimumSize(new Dimension(100, 20));
             buttonCancel.setMnemonic(KeyEvent.VK_C);
-            buttonCancel.setText("Cancel");
+            buttonCancel.setText(Messages.getString("Button.Cancel.Title"));
 
         }
         return buttonCancel;
@@ -1392,9 +1392,8 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (buttonApply == null)
         {
             buttonApply = new JButton();
-            buttonApply.setPreferredSize(new Dimension(100, 20));
             buttonApply.setMinimumSize(new Dimension(100, 20));
-            buttonApply.setText("Apply");
+            buttonApply.setText(Messages.getString("Button.Apply.Title"));
         }
         return buttonApply;
     }

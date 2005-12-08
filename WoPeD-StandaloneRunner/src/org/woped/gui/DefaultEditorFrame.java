@@ -37,6 +37,7 @@ import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.controller.PetriNetPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.gui.StatusBarLabel;
+import org.woped.editor.utilities.Messages;
 
 /**
  * The EditorFrame is the container for each <code>Editor</code>.
@@ -67,8 +68,8 @@ public class DefaultEditorFrame extends JInternalFrame
             // TabbedPane
             JTabbedPane tabbedPane = new JTabbedPane();
             JScrollPane propScrollPane = new JScrollPane(getPetriNetPropertyEditor());
-            tabbedPane.addTab("Process", getEditor());
-            tabbedPane.addTab("Resources", propScrollPane);
+            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), getEditor());
+            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
         } else
         {
