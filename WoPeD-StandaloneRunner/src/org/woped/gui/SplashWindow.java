@@ -35,6 +35,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
+import javax.swing.JFrame;
 
 import org.woped.editor.utilities.Messages;
 
@@ -81,14 +82,16 @@ public class SplashWindow extends JWindow
     private JLabel copyrightLabel = null;
     private long   delayTime = 0;
     private WindowKiller killer = null; 
+    private JFrame owner = null;
 
     /**
      * TODO: DOCUMENTATION (xraven)
      * 
      * @param f
      */
-    public SplashWindow()
+    public SplashWindow(JFrame owner)
     {
+        super(owner);
         initialize();
     }
 
@@ -99,9 +102,17 @@ public class SplashWindow extends JWindow
         setVisible(false);
         setContentPane(getJPanel());
         pack();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation((screenSize.width - getLogoLabel().getWidth())/2, 
-                    (screenSize.height - getLogoLabel().getHeight())/2);
+        
+        if (getOwner() != null)
+        {
+            this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2), getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
+        } 
+        else
+        {
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
+        }
+
         setVisible(true);
     }
     
