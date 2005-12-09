@@ -28,7 +28,7 @@ public class ActionFactory
     public final static String ACTIONID_PRINT                  = "Action.PrintEditor";
     // utils
     public final static String ACTIONID_UPDATENETS             = "Action.UpdateNets";
-    public final static String ACTIONID_SCREENSHOT             = "Menu.Edit.MkScreenshot";
+    //public final static String ACTIONID_SCREENSHOT             = "Menu.Edit.MkScreenshot";
     // Drawmode
     public final static String ACTIONID_DRAWMODE_PLACE         = "ToolBar.DrawPlace";
     public final static String ACTIONID_DRAWMODE_TRANSITION    = "ToolBar.DrawTransition";
@@ -122,7 +122,7 @@ public class ActionFactory
         /* Utils */
         STATIC_ACTION_MAP.put(ACTIONID_UPDATENETS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.UPDATE));
         //
-        STATIC_ACTION_MAP.put(ACTIONID_SCREENSHOT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SCREENSHOT, null, ACTIONID_SCREENSHOT));
+    //    STATIC_ACTION_MAP.put(ACTIONID_SCREENSHOT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SCREENSHOT, null, ACTIONID_SCREENSHOT));
         //
         STATIC_ACTION_MAP.put(ACTIONID_WOFLAN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_WOFLAN, null, ACTIONID_WOFLAN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_WOFLAN), VisualController.WOFLAN, VisualController.IGNORE, VisualController.IGNORE);

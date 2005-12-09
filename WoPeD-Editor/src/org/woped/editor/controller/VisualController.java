@@ -207,7 +207,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
                 return true;
             } catch (Exception e)
             {
-                LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change the status (Enableing). " + obj.getClass());
+                LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change enabling status (code: " + obj.getClass() + ")");
             }
 
         }
@@ -226,7 +226,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
                 return true;
             } catch (Exception e)
             {
-                LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change the status (Selection).");
+                LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change selection status (code: " + obj.getClass() + ")");
             }
 
         }
@@ -245,7 +245,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
                 return true;
             } catch (Exception e)
             {
-                LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change the status (Visibility).");
+                LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change visibility status (code: " + obj.getClass() + ")");
             }
 
         }
