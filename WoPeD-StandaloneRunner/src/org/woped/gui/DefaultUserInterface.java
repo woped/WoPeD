@@ -88,7 +88,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
 
         // addKeyListener(this);
-        SplashWindow splash = new SplashWindow();
+        SplashWindow splash = new SplashWindow(this);
         splash.kill();
     }
 

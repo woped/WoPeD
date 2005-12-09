@@ -2,23 +2,20 @@ package org.woped.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.utilities.Messages;
@@ -34,9 +31,7 @@ public class BugReportUI extends JDialog
     private JPanel              buttonPanel = null;
  
     // TODO: move in propertie files (tfreytag)
-    private static final String bugReportText       
-        = "<html>" + "<h4>WoPeD Bug Reporting</h4>"
-        + "<p><font size=3>Have you found a bug? Please click on the link below.</font></p></html>";
+    private static final String bugReportText = Messages.getString("BugReport.Text"); ;
 
     public BugReportUI()
     {
@@ -49,7 +44,7 @@ public class BugReportUI extends JDialog
      * @param owner
      * @throws HeadlessException
      */
-    public BugReportUI(Frame owner) throws HeadlessException
+    public BugReportUI(JFrame owner) throws HeadlessException
     {
         super(owner, true);
         initialize();
@@ -81,7 +76,6 @@ public class BugReportUI extends JDialog
         }
 
         this.setSize(this.getWidth(), this.getHeight());
-        this.setVisible(true);
     }
 
     private JScrollPane getBugReportPanel()
@@ -96,7 +90,7 @@ public class BugReportUI extends JDialog
             c.gridy = 0;
             c.anchor = GridBagConstraints.CENTER;
             c.insets = new Insets(10, 10, 0, 10);
-            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Bugreport.Image"))));
+            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("BugReport.Image"))));
             panel.add(logoLabel, c);
 
             c.gridy = 1;
@@ -108,7 +102,7 @@ public class BugReportUI extends JDialog
             c.gridy = 2;
             c.insets = new Insets(0, 10, 10, 10);
             // TODO: move in propertie files (tfreytag)
-            bugPageLabel = new JLabel("<html><p><font size=3><a href=woped.ba-karlsruhe.de/bugs>WoPeD Bug Reporting Page</a></font></p></html>");
+            bugPageLabel = new JLabel(Messages.getString("BugReport.Link"));
             bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://woped.ba-karlsruhe.de/bugs", bugPageLabel));
             panel.add(bugPageLabel, c);
             

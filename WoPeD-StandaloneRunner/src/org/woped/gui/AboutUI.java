@@ -113,14 +113,14 @@ public class AboutUI extends JDialog
         if (getOwner() != null)
         {
             this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2), getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
-        } else
+        } 
+        else
         {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
         }
 
         this.setSize(this.getWidth(), this.getHeight());
-        this.setVisible(true);
     }
 
     private JScrollPane getAboutPanel()
