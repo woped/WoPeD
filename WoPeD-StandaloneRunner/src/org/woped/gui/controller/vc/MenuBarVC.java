@@ -617,7 +617,7 @@ public class MenuBarVC extends JMenuBar implements IViewController
         if (m_sampleMenu == null)
         {
 
-            m_sampleMenu = new JMenu("Sample nets");
+            m_sampleMenu = new JMenu(Messages.getString("Menu.Help.SampleNets.Title"));
             m_sampleMenu.setMnemonic(KeyEvent.VK_S);
 
             try
@@ -730,20 +730,20 @@ public class MenuBarVC extends JMenuBar implements IViewController
     /**
      * @return Returns the screenshotMenuItem.
      */
-    public JMenuItem getScreenshotMenuItem()
+ /*   public JMenuItem getScreenshotMenuItem()
     {
         if (m_screenshotMenuItem == null)
         {
             m_screenshotMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SCREENSHOT));
         }
         return m_screenshotMenuItem;
-    }
+    }*/
 
     public JMenuItem getCascadeWindowsMenuItem()
     {
         if (m_cascadeWindowsMenuItem == null)
         {
-            m_cascadeWindowsMenuItem = new JMenuItem("Cascade OFF");
+            m_cascadeWindowsMenuItem = new JMenuItem(Messages.getTitle("Menu.Window.Cascade"));
         }
         return m_cascadeWindowsMenuItem;
     }
@@ -756,7 +756,7 @@ public class MenuBarVC extends JMenuBar implements IViewController
     {
         if (m_arrangeWindowsMenuItem == null)
         {
-            m_arrangeWindowsMenuItem = new JMenuItem("ARRANGE OFF");
+            m_arrangeWindowsMenuItem = new JMenuItem(Messages.getTitle("Menu.Window.Arrange"));
         }
         return m_arrangeWindowsMenuItem;
     }
@@ -797,7 +797,7 @@ public class MenuBarVC extends JMenuBar implements IViewController
     {
         if (m_framesMenu == null)
         {
-            m_framesMenu = new JMenu("Frames");
+            m_framesMenu = new JMenu(Messages.getTitle("Menu.Window.Frames"));
         }
         // TODO: Window Menu
         // m_framesMenu.removeAll();
