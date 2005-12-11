@@ -250,6 +250,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
                     {
                         ((PlaceModel) cell).addToken();
                     }
+                    editor.updateNet();
                 }
                 break;
             case AbstractViewEvent.REMOVE_TOKEN:
@@ -263,6 +264,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
                     {
                         ((PlaceModel) cell).removeToken();
                     }
+                    editor.updateNet();
                 }
                 break;
             case AbstractViewEvent.ZOOM_IN:
