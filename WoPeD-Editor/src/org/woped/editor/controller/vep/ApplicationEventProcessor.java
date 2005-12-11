@@ -6,6 +6,8 @@ import java.awt.print.PrinterJob;
 import java.beans.PropertyChangeEvent;
 import java.util.Iterator;
 
+import javax.swing.JOptionPane;
+
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractGraph;
@@ -21,6 +23,7 @@ import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
+import org.woped.editor.utilities.Messages;
 
 public class ApplicationEventProcessor extends AbstractEventProcessor {
 	private ApplicationMediator mediator = null;
@@ -115,6 +118,13 @@ public class ApplicationEventProcessor extends AbstractEventProcessor {
 				currentEditor.updateNet();
 			}
 			break;
+			
+        case AbstractViewEvent.CASCADE:      	
+        	getMediator().getUi().cascadeFrames();
+        	break;
+        case AbstractViewEvent.ARRANGE:
+        	getMediator().getUi().arrangeFrames();
+        	break;
 
 		/*
 		 * SCREENSHOT m_controlledWindow.makeScreenshot(); }
