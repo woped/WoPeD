@@ -81,6 +81,12 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ANALYSIS_WOFLAN           = 1061;
 
     public static final int TOGGLE_TOKENGAME          = 1070;
+    
+    //
+    public static final int CASCADE					  = 1071;
+    public static final int ARRANGE                   = 1072;
+    
+    
     // General Orders
     public static final int VIEWEVENT_FIRST           = 0;
     public static final int OK                        = 0;
