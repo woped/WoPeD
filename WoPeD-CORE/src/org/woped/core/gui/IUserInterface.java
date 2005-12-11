@@ -27,4 +27,8 @@ public interface IUserInterface
     public Component getComponent();
 
     public Component getPropertyChangeSupportBean();
+    
+    public void cascadeFrames();
+    
+    public void arrangeFrames();
 }
