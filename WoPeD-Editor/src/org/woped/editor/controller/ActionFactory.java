@@ -84,6 +84,10 @@ public class ActionFactory
     public final static String ACTIONID_PRESS                  = "Menu.View.Press";
     public final static String ACTIONID_ZOOMIN                 = "Action.ZoomIn";
     public final static String ACTIONID_ZOOMOUT                = "Action.ZoomOut";
+    
+    // window
+    public final static String ACTIONID_CASCADE				   = "Action.Frames.Cascade";
+    public final static String ACTIONID_ARRANGE                = "Menu.Window.Arrange";
 
     private static HashMap     STATIC_ACTION_MAP               = null;
 
@@ -111,9 +115,9 @@ public class ActionFactory
         //
         STATIC_ACTION_MAP.put(ACTIONID_SHOWBUGREPORT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.BUGREPORT, null, ACTIONID_SHOWBUGREPORT));
         //
-        STATIC_ACTION_MAP.put(ACTIONID_SHOWHELPINDEX, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.HELP, null, ACTIONID_SHOWHELPINDEX));
+        STATIC_ACTION_MAP.put(ACTIONID_SHOWHELPINDEX, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.HELP, null, ACTIONID_SHOWHELPINDEX));
         //
-        STATIC_ACTION_MAP.put(ACTIONID_SHOWHELPCONTENTS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.HELP_CONTENTS, null, ACTIONID_SHOWHELPCONTENTS));
+        STATIC_ACTION_MAP.put(ACTIONID_SHOWHELPCONTENTS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.HELP_CONTENTS, null, ACTIONID_SHOWHELPCONTENTS));
         //
         STATIC_ACTION_MAP.put(ACTIONID_EXIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.EXIT, null, ACTIONID_EXIT));
         //
@@ -238,6 +242,10 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_CUT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.CUT, null, ACTIONID_CUT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_CUT), VisualController.ANY_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
 
+        STATIC_ACTION_MAP.put(ACTIONID_CASCADE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CASCADE, null, ACTIONID_CASCADE));
+        STATIC_ACTION_MAP.put(ACTIONID_ARRANGE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.ARRANGE, null, ACTIONID_ARRANGE));
+        
+        
         return STATIC_ACTION_MAP;
     }
 
