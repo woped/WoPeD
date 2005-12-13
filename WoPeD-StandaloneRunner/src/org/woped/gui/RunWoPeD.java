@@ -22,6 +22,8 @@
  */
 package org.woped.gui;
 
+import java.util.Locale;
+
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.WoPeDConfiguration;
 import org.woped.core.utilities.LoggerManager;
@@ -64,6 +66,7 @@ public class RunWoPeD
                 System.err.println("ERROR ACTIVATING LOGGER");
             }
             // create & init GUI
+            Locale.setDefault(Locale.ENGLISH);
             DefaultApplicationMediator mediator = new DefaultApplicationMediator(null, new WoPeDConfiguration(), args);
         } catch (RuntimeException e1)
         {
