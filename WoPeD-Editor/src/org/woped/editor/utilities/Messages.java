@@ -31,6 +31,7 @@ import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import javax.swing.ImageIcon;
@@ -41,6 +42,7 @@ import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
+import org.woped.core.config.IConfiguration;
 
 /**
  * @author Thomas Pohl
@@ -50,8 +52,7 @@ public abstract class Messages
 
     private static final String         BUNDLE_NAME     = "org.woped.editor.properties.Messages"; //$NON-NLS-1$
     private static final Locale 		  LOCALE			 = ConfigurationManager.getConfiguration().getLocale();
-    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME, LOCALE);
-
+    private static final ResourceBundle RESOURCE_BUNDLE = PropertyResourceBundle.getBundle(BUNDLE_NAME, LOCALE);
 
     public static String getString(String key)
     {
@@ -65,6 +66,19 @@ public abstract class Messages
         }
     }
 
+    public static String getStringForLocale(String key, Locale locale)
+    {
+    		PropertyResourceBundle tempRB = (PropertyResourceBundle) PropertyResourceBundle.getBundle(BUNDLE_NAME, locale);
+        try
+        {
+            return tempRB.getString(key);
+        } catch (MissingResourceException e)
+        {
+            LoggerManager.debug(Constants.EDITOR_LOGGER, "Resource not found: " + key);
+            return '!' + key + '!';
+        }
+    }
+    
     public static String getTitle(String propertiesPrefix)
     {
         return getString(propertiesPrefix + ".Title");
