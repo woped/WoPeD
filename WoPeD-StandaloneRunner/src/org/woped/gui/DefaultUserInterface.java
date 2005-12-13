@@ -84,12 +84,13 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         // Prepare Status & Taskbar
         getContentPane().add(taskBar, BorderLayout.SOUTH);
 
-        setVisible(true);
-        LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
-
         // addKeyListener(this);
         SplashWindow splash = new SplashWindow(this);
         splash.kill();
+ 
+        setVisible(true);
+        LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
+
     }
 
     public void addEditor(IEditor editor)
