@@ -743,7 +743,7 @@ public class MenuBarVC extends JMenuBar implements IViewController
     {
         if (m_cascadeWindowsMenuItem == null)
         {
-            m_cascadeWindowsMenuItem = new JMenuItem(Messages.getTitle("Menu.Window.Cascade"));
+            m_cascadeWindowsMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_CASCADE));
         }
         return m_cascadeWindowsMenuItem;
     }
@@ -756,7 +756,7 @@ public class MenuBarVC extends JMenuBar implements IViewController
     {
         if (m_arrangeWindowsMenuItem == null)
         {
-            m_arrangeWindowsMenuItem = new JMenuItem(Messages.getTitle("Menu.Window.Arrange"));
+            m_arrangeWindowsMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ARRANGE));
         }
         return m_arrangeWindowsMenuItem;
     }
