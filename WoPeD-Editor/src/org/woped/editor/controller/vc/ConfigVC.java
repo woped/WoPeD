@@ -85,8 +85,8 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
 
     private HashMap               confPanels     = new HashMap();
 
-    public static final Dimension CONF_DIM       = new Dimension(570, 430);
-    public static final Dimension SCROLL_DIM     = new Dimension(420, 370);
+    public static final Dimension CONF_DIM       = new Dimension(600, 430);
+    public static final Dimension SCROLL_DIM     = new Dimension(450, 370);
     public static final Dimension TREE_DIM       = new Dimension(140, 370);
     public static final Color     BACK_COLOR     = new Color(255, 255, 255);
 
@@ -135,7 +135,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         /* init GUI */
         this.setTitle(Messages.getString("Configuration.Title"));
         this.setSize(CONF_DIM);
-        this.setResizable(false);
+        this.setResizable(true);
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getSplitPane(), BorderLayout.CENTER);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
@@ -158,7 +158,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         // (*.xml)", xmlExtensions);
         // jfc.setFileFilter(XMLFilter);
         xmlExtensions.add("xml");
-        pack();
+        //pack();
     }
 
     public void addConfNodePanel(String parentNodePanelName, AbstractConfPanel nodePanel)
@@ -292,6 +292,8 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
             splitPane.setDividerLocation(140);
             splitPane.setLeftComponent(getTreeScrollPane());
         }
+        splitPane.setDividerLocation(140);
+        
         return splitPane;
     }
 
