@@ -22,7 +22,6 @@
  */
 package org.woped.config.gui;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -37,6 +36,7 @@ import javax.swing.JRadioButton;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
+import org.woped.editor.utilities.Messages;
 
 
 /**
@@ -161,8 +161,8 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (editOnCreationCheckBox == null)
         {
             editOnCreationCheckBox = new JCheckBox();
-            editOnCreationCheckBox.setText("Smart name editing");
-            editOnCreationCheckBox.setToolTipText("<html>After creation of an element,<br>its name can be edited<br>automatically</html>");
+            editOnCreationCheckBox.setText(Messages.getString("Configuration.Editor.Panel.SmartEdit.Text.SmartNameEditing"));
+            editOnCreationCheckBox.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.SmartEdit.Text.SmartNameEditing.ToolTip") + "</html>");
         }
         return editOnCreationCheckBox;
     }
@@ -172,8 +172,8 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (insertCopyCheckBox == null)
         {
             insertCopyCheckBox = new JCheckBox();
-            insertCopyCheckBox.setText("Add \"_copy\" to copied elements");
-            insertCopyCheckBox.setToolTipText("<html>Add \"_copy\" to the names <br>of copied elements</html>");
+            insertCopyCheckBox.setText(Messages.getString("Configuration.Editor.Panel.SmartEdit.Text.Add_copy"));
+            insertCopyCheckBox.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.SmartEdit.Text.Add_copy.ToolTip") + "</html>");
         }
 
         return insertCopyCheckBox;
@@ -184,8 +184,8 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (smartEditingCheckBox == null)
         {
             smartEditingCheckBox = new JCheckBox();
-            smartEditingCheckBox.setText("Smart arc drawing");
-            smartEditingCheckBox.setToolTipText("<html>Net elements can be created<br>\"on-the-fly\" by drawing arcs<br>from existing elements</html>");
+            smartEditingCheckBox.setText(Messages.getString("Configuration.Editor.Panel.SmartEdit.Text.SmartArcDrawing"));
+            smartEditingCheckBox.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.SmartEdit.Text.SmartArcDrawing.ToolTip") + "</html>");
         }
         return smartEditingCheckBox;
     }
@@ -195,7 +195,7 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (onCreationPanel == null)
         {
             onCreationPanel = new JPanel();
-            onCreationPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Smart-edit"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            onCreationPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.SmartEdit.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
             onCreationPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.NORTH;
@@ -228,7 +228,7 @@ public class ConfEditorPanel extends AbstractConfPanel
             editingPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            editingPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Grid"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            editingPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.Grid.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
 
             c.weightx = 1;
             c.weighty = 0;
@@ -259,8 +259,8 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (showGridCheckBox == null)
         {
             showGridCheckBox = new JCheckBox();
-            showGridCheckBox.setText("Show grid");
-            showGridCheckBox.setToolTipText("<html>Show or hide editor grid</html>");
+            showGridCheckBox.setText(Messages.getString("Configuration.Editor.Panel.Grid.Text.ShowGrid"));
+            showGridCheckBox.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Grid.Text.ShowGrid") + "</html>");
         }
         return showGridCheckBox;
     }
@@ -269,8 +269,8 @@ public class ConfEditorPanel extends AbstractConfPanel
     {
         if (showGridSizeLabel == null)
         {
-            showGridSizeLabel = new JLabel("Grid size:");
-            showGridSizeLabel.setToolTipText("<html>Sets the distance between grid points</html>");
+            showGridSizeLabel = new JLabel(Messages.getString("Configuration.Editor.Panel.Grid.Text.GridSize"));
+            showGridSizeLabel.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Grid.Text.ShowGrid") + "</html>");
         }
         return showGridSizeLabel;
     }
@@ -280,9 +280,8 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (showGridSizeComboBox == null)
         {
             showGridSizeComboBox = new JComboBox(gridSizes);
-            showGridSizeComboBox.setPreferredSize(new Dimension(70, 20));
             showGridSizeComboBox.setEnabled(false);
-            showGridSizeComboBox.setToolTipText("<html>Sets the distance between grid points</html>");
+            showGridSizeComboBox.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Grid.Text.GridSize") + "</html>");
         }
         return showGridSizeComboBox;
     }
@@ -295,7 +294,7 @@ public class ConfEditorPanel extends AbstractConfPanel
             arcPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            arcPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Arcs"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            arcPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.Arcs.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
             buttonGroup = new ButtonGroup();
             buttonGroup.add(getRoundRounting());
             buttonGroup.add(getSquaredRouting());
@@ -350,8 +349,8 @@ public class ConfEditorPanel extends AbstractConfPanel
     {
         if (arrowWidthJLabel == null)
         {
-            arrowWidthJLabel = new JLabel("Line width:");
-            arrowWidthJLabel.setToolTipText("<html>Sets the line width of arcs</html>");
+            arrowWidthJLabel = new JLabel(Messages.getString("Configuration.Editor.Panel.Arcs.Label.LineWidth"));
+            arrowWidthJLabel.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Arcs.Label.LineWidth.ToolTip") + "</html>");
         }
         return arrowWidthJLabel;
     }
@@ -361,8 +360,7 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (arrowWidthJComboBox == null)
         {
             arrowWidthJComboBox = new JComboBox(arrowWidth);
-            arrowWidthJComboBox.setPreferredSize(new Dimension(70, 20));
-            arrowWidthJComboBox.setToolTipText("<html>Sets the line width of arcs</html>");
+            arrowWidthJComboBox.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Arcs.Label.LineWidth.ToolTip") + "</html>");
         }
         return arrowWidthJComboBox;
     }
@@ -371,8 +369,8 @@ public class ConfEditorPanel extends AbstractConfPanel
     {
         if (arrowheadSizeJLabel == null)
         {
-            arrowheadSizeJLabel = new JLabel("Arrow head size:");
-            arrowheadSizeJLabel.setToolTipText("<html>Sets the size of arrow heads</html>");
+            arrowheadSizeJLabel = new JLabel(Messages.getString("Configuration.Editor.Panel.Arcs.Label.ArrowHeadSize"));
+            arrowheadSizeJLabel.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Arcs.Label.ArrowHeadSize.ToolTip") + "</html>");
         }
         return arrowheadSizeJLabel;
     }
@@ -382,8 +380,7 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (arrowheadSizeJComboBox == null)
         {
             arrowheadSizeJComboBox = new JComboBox(arrowHeadSize);
-            arrowheadSizeJComboBox.setPreferredSize(new Dimension(70, 20));
-            arrowheadSizeJComboBox.setToolTipText("<html>Sets the size of arrow heads</html>");
+            arrowheadSizeJComboBox.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Arcs.Label.ArrowHeadSize.ToolTip") + "</html>");
         }
         return arrowheadSizeJComboBox;
     }
@@ -393,8 +390,8 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (arrowFillHeadCheckBox == null)
         {
             arrowFillHeadCheckBox = new JCheckBox();
-            arrowFillHeadCheckBox.setText("Fill arrow heads");
-            arrowFillHeadCheckBox.setToolTipText("<html>Filling mode of arrow heads</html>");
+            arrowFillHeadCheckBox.setText(Messages.getString("Configuration.Editor.Panel.Arcs.Text.FillArrowHeads"));
+            arrowFillHeadCheckBox.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Arcs.Text.FillArrowHeads") + "</html>");
         }
         return arrowFillHeadCheckBox;
     }
@@ -403,8 +400,8 @@ public class ConfEditorPanel extends AbstractConfPanel
     {
         if (rountingLabel == null)
         {
-            rountingLabel = new JLabel("Routing:");
-            rountingLabel.setToolTipText("<html>Choose arc routing mode</html>");
+            rountingLabel = new JLabel(Messages.getString("Configuration.Editor.Panel.Arcs.Label.Routing"));
+            rountingLabel.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.Arcs.Label.Routing.ToolTip") + "</html>");
         }
         return rountingLabel;
     }
@@ -413,7 +410,7 @@ public class ConfEditorPanel extends AbstractConfPanel
     {
         if (roundRounting == null)
         {
-            roundRounting = new JRadioButton("Rounded");
+            roundRounting = new JRadioButton(Messages.getString("Configuration.Editor.Panel.Arcs.Button.Rounded"));
         }
         return roundRounting;
     }
@@ -422,7 +419,7 @@ public class ConfEditorPanel extends AbstractConfPanel
     {
         if (squaredRouting == null)
         {
-            squaredRouting = new JRadioButton("Straight");
+            squaredRouting = new JRadioButton(Messages.getString("Configuration.Editor.Panel.Arcs.Button.Straight"));
         }
         return squaredRouting;
     }

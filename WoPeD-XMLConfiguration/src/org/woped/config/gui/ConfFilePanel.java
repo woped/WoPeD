@@ -45,6 +45,7 @@ import javax.swing.event.ChangeListener;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -134,11 +135,11 @@ public class ConfFilePanel extends AbstractConfPanel
             return true;
         } else
         {
-            if (JOptionPane.showConfirmDialog(this, "Invalid home directory.\nCreate a default directory?", "Configuration Error", JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION)
+            if (JOptionPane.showConfirmDialog(this, Messages.getString("Configuration.Files.Error.InvalidHomeDirectory"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION)
             {
                 if (!new File(ConfigurationManager.getStandardConfiguration().getHomedir()).exists() && !new File(ConfigurationManager.getStandardConfiguration().getHomedir()).mkdir())
                 {
-                    JOptionPane.showMessageDialog(this, "Default directory not created", "Configuration Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, Messages.getString("Configuration.Files.Error.NoDefaultDirectory"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE);
                     return false;
                 } else
                 {
@@ -183,7 +184,7 @@ public class ConfFilePanel extends AbstractConfPanel
             homeDirPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            homeDirPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Home Directory"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            homeDirPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.HomeDirectory.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
 
             c.weightx = 1;
             c.weighty = 0;
@@ -212,7 +213,7 @@ public class ConfFilePanel extends AbstractConfPanel
             //homeDirTextField.setFont(ConfigureUI.CONFIG_FONT);
             //homeDirTextField.setColumns(30);
             homeDirTextField.setPreferredSize(new Dimension(300, 20));
-            homeDirTextField.setToolTipText("<HTML>Set the location of user home directory.</HTML>");
+            homeDirTextField.setToolTipText("<HTML>" + Messages.getString("Configuration.Files.Panel.HomeDirectory.Text.HomeDir.ToolTip") + "</HTML>");
             homeDirTextField.addKeyListener(new KeyListener()
             {
                 public void keyPressed(KeyEvent e)
@@ -235,9 +236,8 @@ public class ConfFilePanel extends AbstractConfPanel
         if (homeDirChoose == null)
         {
             homeDirChoose = new JButton();
-            homeDirChoose.setPreferredSize(new Dimension(75, 20));
             //homeDirChoose.setFont(ConfigureUI.CONFIG_FONT);
-            homeDirChoose.setText("Browse");
+            homeDirChoose.setText(Messages.getString("Button.Browse.Title"));
             homeDirChoose.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -255,7 +255,7 @@ public class ConfFilePanel extends AbstractConfPanel
 
                     }
                     jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                    jfc.showDialog(null, "OK");
+                    jfc.showDialog(null, Messages.getString("Button.OK.Title"));
                     if (jfc.getSelectedFile() != null)
                     {
                         getHomeDirTextField().setText(jfc.getSelectedFile().getPath());
@@ -276,7 +276,7 @@ public class ConfFilePanel extends AbstractConfPanel
             c.anchor = GridBagConstraints.FIRST_LINE_START;
             c.gridx = 0;
             c.weightx = 1;
-            recentFilePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Recent Files"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            recentFilePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.RecentFiles.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
             recentFilePanel.add(getRecentFilesDelete(), c);
 
         }
@@ -288,8 +288,7 @@ public class ConfFilePanel extends AbstractConfPanel
         if (recentFileDelete == null)
         {
             recentFileDelete = new JButton();
-            recentFileDelete.setText("Delete recent files");
-            recentFileDelete.setPreferredSize(new Dimension(140, 20));
+            recentFileDelete.setText(Messages.getString("Configuration.Files.Panel.RecentFiles.Text.DeleteRecentFiles"));
             recentFileDelete.setEnabled(ConfigurationManager.getConfiguration().getRecentFiles().size() != 0);
             recentFileDelete.addActionListener(new ActionListener()
             {
@@ -310,8 +309,8 @@ public class ConfFilePanel extends AbstractConfPanel
         if (exportTpnElementAsNameCheckBox == null)
         {
             exportTpnElementAsNameCheckBox = new JCheckBox();
-            exportTpnElementAsNameCheckBox.setText("Export element ID instead of element name");
-            exportTpnElementAsNameCheckBox.setToolTipText("<HTML>This should be usually enabled<br>" + "The ID of an element is unique, the name sometimes not.</HTML>");
+            exportTpnElementAsNameCheckBox.setText(Messages.getString("Configuration.Files.Panel.TPN.Text.ExportID"));
+            exportTpnElementAsNameCheckBox.setToolTipText("<HTML>" + Messages.getString("Configuration.Files.Panel.TPN.Text.ExportID.ToolTip") + "</HTML>");
         }
         return exportTpnElementAsNameCheckBox;
     }
@@ -324,7 +323,7 @@ public class ConfFilePanel extends AbstractConfPanel
             TPNPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            TPNPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("TPN"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            TPNPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.TPN.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
@@ -339,8 +338,8 @@ public class ConfFilePanel extends AbstractConfPanel
         if (importToolspecCheckBox == null)
         {
             importToolspecCheckBox = new JCheckBox();
-            importToolspecCheckBox.setText("Import *.pnml files with workflow net extensions");
-            importToolspecCheckBox.setToolTipText("<HTML>The import filter will read and translate toolspecific data.</HTML>");
+            importToolspecCheckBox.setText(Messages.getString("Configuration.Files.Panel.PNML.Text.Import"));
+            importToolspecCheckBox.setToolTipText("<HTML>" + Messages.getString("Configuration.Files.Panel.PNML.Text.Import.ToolTip") + "</HTML>");
         }
         return importToolspecCheckBox;
     }
@@ -353,7 +352,7 @@ public class ConfFilePanel extends AbstractConfPanel
             PNMLPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            PNMLPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("PNML"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            PNMLPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.PNML.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
@@ -370,8 +369,8 @@ public class ConfFilePanel extends AbstractConfPanel
         if (exportToolspecCheckBox == null)
         {
             exportToolspecCheckBox = new JCheckBox();
-            exportToolspecCheckBox.setText("Export *.pnml files with workflow net extensions");
-            exportToolspecCheckBox.setToolTipText("<HTML>The export filter will add toolspecific data.</HTML>");
+            exportToolspecCheckBox.setText(Messages.getString("Configuration.Files.Panel.PNML.Text.Export"));
+            exportToolspecCheckBox.setToolTipText("<HTML>" + Messages.getString("Configuration.Files.Panel.PNML.Text.Export.ToolTip") + "</HTML>");
         }
         return exportToolspecCheckBox;
     }
@@ -381,7 +380,7 @@ public class ConfFilePanel extends AbstractConfPanel
         if (homeDirDefaultCheckBox == null)
         {
             homeDirDefaultCheckBox = new JCheckBox();
-            homeDirDefaultCheckBox.setText("Use default directory");
+            homeDirDefaultCheckBox.setText(Messages.getString("Configuration.Files.Panel.HomeDirectory.Text.UseDefault"));
             homeDirDefaultCheckBox.addChangeListener(new ChangeListener()
             {
                 public void stateChanged(ChangeEvent e)
@@ -396,7 +395,7 @@ public class ConfFilePanel extends AbstractConfPanel
                             checkHomeDir();
                         } else
                         {
-                            getHomeDirTextField().setText("!!! DOES NOT EXISTS !!!" + ConfigurationManager.getConfiguration().getHomedir());
+                            getHomeDirTextField().setText(Messages.getString("Configuration.Files.Error.HomeDirectory") + ConfigurationManager.getConfiguration().getHomedir());
                         }
                     } else
                     {

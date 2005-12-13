@@ -44,6 +44,7 @@ import javax.swing.JTextField;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -83,7 +84,7 @@ public class ConfToolsPanel extends AbstractConfPanel
             return true;
         } else
         {
-            JOptionPane.showMessageDialog(this, "Woflan path invalid.", "Configuration Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, Messages.getString("Configuration.Options.Error.WoflanPathInvalid"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
@@ -124,8 +125,8 @@ public class ConfToolsPanel extends AbstractConfPanel
         if (woflanCheckBox == null)
         {
             woflanCheckBox = new JCheckBox();
-            woflanCheckBox.setText("Use Woflan (Windows only)");
-            woflanCheckBox.setToolTipText("<HTML>Use Woflan tool for soundness analysis.</HTML>");
+            woflanCheckBox.setText(Messages.getString("Configuration.Options.Panel.Woflan.UseWoflan.Text"));
+            woflanCheckBox.setToolTipText("<HTML>" + Messages.getString("Configuration.Options.Panel.Woflan.UseWoflan.Text.ToolTip") + "</HTML>");
             woflanCheckBox.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -159,7 +160,7 @@ public class ConfToolsPanel extends AbstractConfPanel
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
 
-            woflanPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Woflan"), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            woflanPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Options.Panel.Woflan.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
 
             c.weightx = 1;
             c.gridx = 0;
@@ -195,7 +196,7 @@ public class ConfToolsPanel extends AbstractConfPanel
             woflanTextField = new JTextField();
             woflanTextField.setPreferredSize(new Dimension(300, 20));
             //woflanTextField.setFont(ConfigureUI.CONFIG_FONT);
-            woflanTextField.setToolTipText("<HTML>Path to \"wofapp.exe\".</HTML>");
+            woflanTextField.setToolTipText("<HTML>" + Messages.getString("Configuration.Options.Panel.Woflan.WoflanPath.Text.ToolTip") + "</HTML>");
             //woflanTextField.setColumns(25);
         }
         return woflanTextField;
@@ -217,9 +218,8 @@ public class ConfToolsPanel extends AbstractConfPanel
         if (woflanBrowse == null)
         {
             woflanBrowse = new JButton();
-            woflanBrowse.setPreferredSize(new Dimension(75, 20));
             //woflanBrowse.setFont(ConfigureUI.CONFIG_FONT);
-            woflanBrowse.setText("Browse");
+            woflanBrowse.setText(Messages.getString("Button.Browse.Title"));
             woflanBrowse.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -237,7 +237,7 @@ public class ConfToolsPanel extends AbstractConfPanel
 
                     }
                     jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                    jfc.showDialog(null, "OK");
+                    jfc.showDialog(null, Messages.getString("Button.OK.Title"));
                     if (jfc.getSelectedFile() != null)
                     {
                         getWoflanTextField().setText(jfc.getSelectedFile().getPath());
@@ -252,7 +252,7 @@ public class ConfToolsPanel extends AbstractConfPanel
     {
         if (getWoflanLabel == null)
         {
-            getWoflanLabel = new JLabel("<html><u>(What's woflan?)</u></html>");
+            getWoflanLabel = new JLabel("<html><u>" + Messages.getString("Configuration.Options.Panel.Woflan.WhatsWoflan.Label") + "</u></html>");
             //getWoflanLabel.getFont().getFamily(),
             // getWoflanLabel.getFont().getSize(), Font.);
             getWoflanLabel.setHorizontalAlignment(JLabel.RIGHT);
