@@ -41,10 +41,10 @@
 	</target>
 
 	<target name="setversion">
+		<copy file="../WoPeD-Editor/src/org/woped/editor/properties/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
 		<copy file="../WoPeD-Editor/src/org/woped/editor/properties/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
-		<copy file="../WoPeD-Editor/src/org/woped/editor/properties/Messages_en.properties" tofile="dist/Messages_en.properties" filtering="true" overwrite="true" />
+		<copy file="dist/Messages.properties" tofile="../WoPeD-Editor/bin/org/woped/editor/properties/Messages.properties" />
 		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Editor/bin/org/woped/editor/properties/Messages_de.properties" />
-		<copy file="dist/Messages_en.properties" tofile="../WoPeD-Editor/bin/org/woped/editor/properties/Messages_en.properties" />
 	</target>
 
 	<target name="copyfiles">
@@ -60,7 +60,7 @@
 		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
 
-		<copy todir="dist" file="../WoPeD-XMLConfiguration/configuration.xml" />
+		<copy todir="dist" file="../WoPeD-XMLConfiguration/bin/org/woped/config/configuration.xml" />
 	
 		<copy todir="dist/doc/html">
 			<fileset file="doc/html/*.htm" />
