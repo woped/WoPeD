@@ -23,13 +23,11 @@
 package org.woped.editor.controller;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -53,7 +51,6 @@ import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
 
-
 /**
  * @author waschtl
  * 
@@ -62,13 +59,6 @@ import org.woped.editor.utilities.Messages;
 public class PetriNetPropertyEditor extends JPanel implements ListSelectionListener
 {
     private JScrollPane            contentPanel                           = null;
-
-    // Properties
-    private JPanel                 propertiesPanel                        = null;
-    private JTextField             nameTextField                          = null;
-    private JTextField             descriptionTextField                   = null;
-    private JLabel                 nameLabel                              = null;
-    private JLabel                 descritionLabel                        = null;
 
     // Resources
     private JPanel                 resourcePanel                          = null;
@@ -123,11 +113,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     private DefaultListModel       roleListModel                          = null;
     private DefaultListModel       assignedListModel                      = null;
     private DefaultListModel       unassignedListModel                    = null;
-    // Button Panel
-    private JPanel                 buttonPanel                            = null;
-    private JButton                buttonApply                            = null;
-    private JButton                buttonCancel                           = null;
-    private JButton                buttonOk                               = null;
 
     private static final String    COMBOBOX_ROLE_TEXT                     = Messages.getString("PetriNet.Resources.Role");
     private static final String    COMBOBOX_ORGUNIT_TEXT                  = Messages.getString("PetriNet.Resources.OrganizationalUnit");
@@ -138,9 +123,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     private static final String    BUTTON_REMOVE_TEXT                     = Messages.getString("Button.Remove.Title");
     private static final String    BUTTON_ASSIGN_TEXT                     = "-->";
     private static final String    BUTTON_UNASSIGN_TEXT                   = "<--";
-    // Daten der Liste
-    private String[]               data                                   = { "Secretary", "Chief", "Developper", "Finances", "Transport", "Sttutgart-Leute", "Duttenberg-Leute" };
-    private String[]               data2                                  = { "Test", "Test2" };
+
     private EditorVC               editor                                 = null;
     private PetriNetModelProcessor petrinet;
 
@@ -160,111 +143,17 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     {
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         this.setLayout(new GridBagLayout());
-        // this.setPreferredSize(new Dimension(800, 600));
-        // this.setMinimumSize(new Dimension(800, 600));
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.WEST;
         c.fill = GridBagConstraints.HORIZONTAL;
 
-        // c.weightx = 1;
         c.gridx = 0;
         c.gridy = 0;
-        this.add(getPropertiesPanel(), c);
-
-        c.gridx = 0;
-        c.gridy = 1;
         this.add(getResourceClassSplittPane(), c);
 
         c.gridx = 0;
-        c.gridy = 2;
+        c.gridy = 1;
         this.add(getResourcePanel(), c);
-
-        // c.gridx = 0;
-        // c.gridy = 3;
-        // this.add(getButtonPanel(), c);
-
-    }
-
-    // *************************************Properties*****************************************************
-
-    private JPanel getPropertiesPanel()
-    {
-        if (propertiesPanel == null)
-        {
-            propertiesPanel = new JPanel();
-            propertiesPanel.setLayout(new GridBagLayout());
-            // propertiesPanel.setMinimumSize(new Dimension(800, 100));
-            // propertiesPanel.setPreferredSize(new Dimension(800, 100));
-            GridBagConstraints c = new GridBagConstraints();
-            propertiesPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Properties")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
-            // c.fill = GridBagConstraints.HORIZONTAL;
-            c.anchor = GridBagConstraints.WEST;
-            c.weightx = 1;
-
-            c.gridx = 0;
-            c.gridy = 0;
-            propertiesPanel.add(getNameLabel(), c);
-
-            c.gridx = 1;
-            c.gridy = 0;
-            propertiesPanel.add(getNameTextField(), c);
-
-            c.gridx = 2;
-            c.gridy = 0;
-            propertiesPanel.add(getDescriptionLabel(), c);
-
-            c.gridx = 3;
-            c.gridy = 0;
-            propertiesPanel.add(getDescriptionTextField(), c);
-
-        }
-
-        return propertiesPanel;
-    }
-
-    private JLabel getNameLabel()
-    {
-        if (nameLabel == null)
-        {
-            nameLabel = new JLabel(Messages.getString("PetriNet.Resources.PetriNetName") + ":");
-
-        }
-        return nameLabel;
-    }
-
-    private JLabel getDescriptionLabel()
-    {
-        if (descritionLabel == null)
-        {
-            descritionLabel = new JLabel(Messages.getString("PetriNet.Resources.PetriNetDescription") + ":");
-        }
-
-        return descritionLabel;
-    }
-
-    private JTextField getNameTextField()
-    {
-        if (nameTextField == null)
-        {
-            nameTextField = new JTextField();
-            nameTextField.setPreferredSize(new Dimension(100, 20));
-            nameTextField.setMinimumSize(new Dimension(100, 20));
-            nameTextField.setText(getPetrinet().getName());
-            nameTextField.setEditable(false);
-        }
-        return nameTextField;
-    }
-
-    private JTextField getDescriptionTextField()
-    {
-        if (descriptionTextField == null)
-        {
-            descriptionTextField = new JTextField();
-            descriptionTextField.setPreferredSize(new Dimension(100, 20));
-            descriptionTextField.setMinimumSize(new Dimension(100, 20));
-            descriptionTextField.setEditable(false);
-        }
-        return descriptionTextField;
     }
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ResourceClass++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -277,7 +166,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         resourceClassRightPanel = new JPanel();
         resourceClassRightPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        // c.anchor = GridBagConstraints.WEST;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
         c.weighty = 1;
@@ -289,11 +177,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         c.gridx = 1;
         c.gridy = 0;
         c.insets = new Insets(0, 0, 0, 0);
-        // if (shouldFill)
-        // {
-        // shouldFill = false;
-        // c.fill = GridBagConstraints.HORIZONTAL;
-        // }
         resourceClassRightPanel.add(getResourceClassNameTextField(), c);
 
         c.gridx = 0;
@@ -319,13 +202,13 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         c.gridx = 0;
         c.gridy = 3;
         c.gridwidth = 2;
-        // c.anchor = GridBagConstraints.SOUTHEAST;
         resourceClassRightPanel.add(getResourceClassButtonPanel(), c);
 
         if (resourceClassSplittPane == null)
         {
             resourceClassSplittPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, getResourceClassLeftSplittPane(), resourceClassRightPanel);
-            resourceClassSplittPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.ResourceClass")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            resourceClassSplittPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.ResourceClass")), BorderFactory
+                    .createEmptyBorder(5, 5, 10, 5)));
             resourceClassSplittPane.setMinimumSize(new Dimension(800, 200));
             resourceClassSplittPane.setPreferredSize(new Dimension(800, 200));
             resourceClassSplittPane.setDividerLocation(200);
@@ -346,62 +229,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         return resourceClassLeftSplittPane;
 
     }
-
-    // private JSplitPane getResourceClassLeftSplittPane()
-    // {
-    //        
-    // if (resourceClassLeftSplittPane == null)
-    // {
-    // resourceClassLeftSplittPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-    // getResourceClassLeftSplitPaneRolePane(),
-    // getResourceClassLeftSplitPaneOrgUnitPane());
-    // resourceClassLeftSplittPane.setDividerLocation(200);
-    // }
-    // return resourceClassLeftSplittPane;
-    //
-    // }
-    // private JPanel getResourceClassLeftSplitPaneRolePane()
-    // {
-    // if (resourceClassLeftSplitPaneRolePane == null)
-    // {
-    // resourceClassLeftSplitPaneRolePane = new JPanel();
-    // resourceClassLeftSplitPaneRolePane.setLayout(new GridBagLayout());
-    // GridBagConstraints c = new GridBagConstraints();
-    // JScrollPane listScrollPane3 = new JScrollPane(getRoleList());
-    //            
-    // c.gridx=0;
-    // c.gridy =0;
-    // resourceClassLeftSplitPaneRolePane.add(getResourceClassLeftSplitPaneRoleLabel());
-    //            
-    // c.gridx =1;
-    // c.gridy =0;
-    // resourceClassLeftSplitPaneRolePane.add(listScrollPane3);
-    // }
-    //        
-    // return resourceClassLeftSplitPaneRolePane;
-    // }
-    // private JLabel getResourceClassLeftSplitPaneRoleLabel()
-    // {
-    // if (resourceClassLeftSplitPaneRoleLabel == null)
-    // {
-    // resourceClassLeftSplitPaneRoleLabel = new JLabel("Roles:");
-    // }
-    //
-    // return resourceClassLeftSplitPaneRoleLabel;
-    // }
-    // private JPanel getResourceClassLeftSplitPaneOrgUnitPane()
-    // {
-    // if (resourceClassLeftSplitPaneOrgUnitPane == null)
-    // {
-    // resourceClassLeftSplitPaneOrgUnitPane = new JPanel();
-    // resourceClassLeftSplitPaneOrgUnitPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("OrgUnits"),
-    // BorderFactory.createEmptyBorder(0, 0, 0, )));
-    // JScrollPane listScrollPane4 = new JScrollPane(getOrgUnitList());
-    // resourceClassLeftSplitPaneOrgUnitPane.add(listScrollPane4);
-    // }
-    //        
-    // return resourceClassLeftSplitPaneOrgUnitPane;
-    // }
 
     private JList getRoleList()
     {
@@ -535,14 +362,22 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceClassButtonPanel == null)
         {
             resourceClassButtonPanel = new JPanel();
-            resourceClassButtonPanel.setLayout(new FlowLayout());
+            resourceClassButtonPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
 
-            resourceClassButtonPanel.add(getResourceClassNewButton());
-            resourceClassButtonPanel.add(getResourceClassEditButton());
-            resourceClassButtonPanel.add(getResourceClassRemoveButton());
+            c.gridx = 0;
+            c.gridy = 0;
+            resourceClassButtonPanel.add(getResourceClassNewButton(), c);
+
+            c.gridx = 1;
+            c.gridy = 0;
+            resourceClassButtonPanel.add(getResourceClassEditButton(), c);
+
+            c.gridx = 2;
+            c.gridy = 0;
+            resourceClassButtonPanel.add(getResourceClassRemoveButton(), c);
         }
         return resourceClassButtonPanel;
-
     }
 
     private JButton getResourceClassNewButton()
@@ -551,7 +386,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         {
             resourceClassNewButton = new JButton();
             resourceClassNewButton.setText(BUTTON_NEW_TEXT);
-            // buttonOk.setMnemonic(KeyEvent.VK_O);
             resourceClassNewButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -772,7 +606,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
     // ***************************************************Resources*************************************************************
     private JSplitPane getResourcePanel()
     {
-        // resourceList.setSelectedIndex(0);
         JScrollPane listScrollPane2 = new JScrollPane(getResourceList());
 
         // create resourceRightPanel and put it in Scrollpanel
@@ -781,7 +614,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
-        // c.weighty = 0;
         c.gridx = 0;
         c.gridy = 0;
         resourceRightPanel.add(getResourceEditPanel(), c);
@@ -793,11 +625,11 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         if (resourceSplittPane == null)
         {
             resourceSplittPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listScrollPane2, resourceRightPanel);
-            resourceSplittPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Resource")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            resourceSplittPane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Resource")), BorderFactory.createEmptyBorder(5, 5,
+                    10, 5)));
             resourceSplittPane.setMinimumSize(new Dimension(800, 250));
             resourceSplittPane.setPreferredSize(new Dimension(800, 250));
             resourceSplittPane.setDividerLocation(200);
-            // TODO dfs
         }
 
         return resourceSplittPane;
@@ -887,10 +719,8 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
             resourceEditPanel = new JPanel();
             resourceEditPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
-            // c.anchor = GridBagConstraints.WEST;
             c.fill = GridBagConstraints.HORIZONTAL;
             c.weightx = 1;
-            // c.weighty = 1;
 
             c.gridx = 0;
             c.gridy = 0;
@@ -927,8 +757,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
             resourceAssignPanel = new JPanel();
             resourceAssignPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
-            // c.weightx = 1;
-            // c.weighty = 0;
             c.gridx = 0;
             c.gridy = 0;
             resourceAssignPanel.add(getResourceUnAssignedLabel(), c);
@@ -1002,44 +830,30 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         return resourceEditDescriptionTextField;
     }
 
-    // private JPanel getResourceButtonPanel()
-    // {
-    // if (resourceButtonPanel == null)
-    // {
-    // resourceButtonPanel = new JPanel();
-    // resourceButtonPanel.setLayout(new GridBagLayout());
-    // GridBagConstraints c = new GridBagConstraints();
-    //
-    // c.weightx = 1;
-    // c.weighty = 0;
-    // c.gridx = 0;
-    // c.gridy = 0;
-    // resourceButtonPanel.add(getResourceAddButton(), c);
-    //
-    // c.gridx = 1;
-    // c.gridy = 0;
-    // resourceButtonPanel.add(getResourceEditButton(), c);
-    //
-    // c.gridx = 2;
-    // c.gridy = 0;
-    // resourceButtonPanel.add(getResourceRemoveButton(), c);
-    // }
-    //
-    // return resourceButtonPanel;
-    // }
     private JPanel getResourceButtonPanel()
     {
         if (resourceButtonPanel == null)
         {
             resourceButtonPanel = new JPanel();
-            resourceButtonPanel.setLayout(new FlowLayout());
+            resourceButtonPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
 
-            resourceButtonPanel.add(getResourceNewButton());
-            resourceButtonPanel.add(getResourceEditButton());
-            resourceButtonPanel.add(getResourceRemoveButton());
+            c.weightx = 1;
+            c.weighty = 0;
+            c.gridx = 0;
+            c.gridy = 0;
+            resourceButtonPanel.add(getResourceNewButton(), c);
+
+            c.gridx = 1;
+            c.gridy = 0;
+            resourceButtonPanel.add(getResourceEditButton(), c);
+
+            c.gridx = 2;
+            c.gridy = 0;
+            resourceButtonPanel.add(getResourceRemoveButton(), c);
         }
-        return resourceButtonPanel;
 
+        return resourceButtonPanel;
     }
 
     private JButton getResourceNewButton()
@@ -1254,7 +1068,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
             });
 
         }
-        // resourceAssignedList.repaint();
         return resourceAssignedList;
     }
 
@@ -1332,70 +1145,6 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
         }
 
         return resourceUnAssignButton;
-    }
-
-    // **************************************ButtonPanel*************************************************
-    private JPanel getButtonPanel()
-    {
-        if (buttonPanel == null)
-        {
-            buttonPanel = new JPanel();
-            buttonPanel.setLayout(new GridBagLayout());
-            GridBagConstraints c = new GridBagConstraints();
-            c.anchor = GridBagConstraints.WEST;
-
-            c.gridx = 0;
-            c.gridy = 0;
-            buttonPanel.add(getButtonOk(), c);
-
-            c.gridx = 1;
-            c.gridy = 0;
-            buttonPanel.add(getButtonCancel(), c);
-
-            c.gridx = 2;
-            c.gridy = 0;
-            buttonPanel.add(getButtonApply(), c);
-
-        }
-        return buttonPanel;
-    }
-
-    private JButton getButtonOk()
-    {
-        if (buttonOk == null)
-        {
-            buttonOk = new JButton();
-            buttonOk.setMinimumSize(new Dimension(100, 20));
-
-            buttonOk.setText(Messages.getString("Button.OK.Title"));
-
-        }
-        return buttonOk;
-    }
-
-    private JButton getButtonCancel()
-    {
-        if (buttonCancel == null)
-        {
-            buttonCancel = new JButton();
-
-            buttonCancel.setMinimumSize(new Dimension(100, 20));
-            buttonCancel.setMnemonic(KeyEvent.VK_C);
-            buttonCancel.setText(Messages.getString("Button.Cancel.Title"));
-
-        }
-        return buttonCancel;
-    }
-
-    private JButton getButtonApply()
-    {
-        if (buttonApply == null)
-        {
-            buttonApply = new JButton();
-            buttonApply.setMinimumSize(new Dimension(100, 20));
-            buttonApply.setText(Messages.getString("Button.Apply.Title"));
-        }
-        return buttonApply;
     }
 
     //
