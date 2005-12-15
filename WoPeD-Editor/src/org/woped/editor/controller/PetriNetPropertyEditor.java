@@ -254,6 +254,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
                         resourceClassTypeJComboBox.setSelectedItem(COMBOBOX_ROLE_TEXT);
                     }
                     getOrgUnitList().clearSelection();
+                    getResourceList().clearSelection();
                 }
             });
         }
@@ -285,6 +286,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
                         resourceClassTypeJComboBox.setSelectedItem(COMBOBOX_ORGUNIT_TEXT);
                     }
                     getRoleList().clearSelection();
+                    getResourceList().clearSelection();
                 }
             });
         }
@@ -676,7 +678,10 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
                         {
                             ass = iter.next();
                             assignedListModel.addElement(ass);
-                            if (unassignedListModel.contains(ass)) unassignedListModel.removeElement(ass);
+                            if (unassignedListModel.contains(ass))
+                            {
+                                unassignedListModel.removeElement(ass);
+                            }
                         }
                         /*
                          * 
@@ -1036,6 +1041,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
 
     private JList getResourceAssignedList()
     {
+      
         if (resourceAssignedList == null)
         {
             assignedListModel = new DefaultListModel();
@@ -1073,6 +1079,7 @@ public class PetriNetPropertyEditor extends JPanel implements ListSelectionListe
 
     private JList getResourceUnAssignedList()
     {
+      
         if (resourceUnAssignedList == null)
         {
             unassignedListModel = new DefaultListModel();
