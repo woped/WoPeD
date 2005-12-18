@@ -26,6 +26,7 @@ public class Cursors
     public static Cursor andJoinCursor    = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawAndJoin").getImage(), new Point(), "Cursor");
     public static Cursor xorSplitCursor   = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorSplit").getImage(), new Point(), "Cursor");
     public static Cursor xorJoinCursor    = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorJoin").getImage(), new Point(), "Cursor");
+    public static Cursor xorSplitJoinCursor  = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorSplitJoin").getImage(), new Point(), "Cursor");
     public static Cursor transitionCursor = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawTransition").getImage(), new Point(), "Cursor");
     public static Cursor subProcessCursor = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawSubProcess").getImage(), new Point(), "Cursor");
 
@@ -43,6 +44,8 @@ public class Cursors
             return xorSplitCursor;
         case OperatorTransitionModel.XOR_JOIN_TYPE:
             return xorJoinCursor;
+        case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
+        	return xorSplitJoinCursor;
         case PetriNetModelElement.TRANS_SIMPLE_TYPE:
             return transitionCursor;
         case OperatorTransitionModel.SUBP_TYPE:

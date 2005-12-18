@@ -36,6 +36,7 @@ public class ActionFactory
     public final static String ACTIONID_DRAWMODE_ANDJOIN       = "ToolBar.DrawAndJoin";
     public final static String ACTIONID_DRAWMODE_XORSPLIT      = "ToolBar.DrawXorSplit";
     public final static String ACTIONID_DRAWMODE_XORJOIN       = "ToolBar.DrawXorJoin";
+    public final static String ACTIONID_DRAWMODE_XORSPLITJOIN  = "ToolBar.DrawXorSplitJoin";
     public final static String ACTIONID_DRAWMODE_SUB           = "ToolBar.DrawSubProcess";
     // Edit
     public final static String ACTIONID_REDO                   = "Action.Redo";
@@ -143,6 +144,8 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLIT), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLIT);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_XORJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_XORJOIN, null, ACTIONID_DRAWMODE_XORJOIN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORJOIN), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_XOR_JOIN);
+        STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_XORSPLITJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_XORSPLITJOIN, null, ACTIONID_DRAWMODE_XORSPLITJOIN));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLITJOIN), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLITJOIN);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_SUB, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_SUB, null, ACTIONID_DRAWMODE_SUB));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_SUB), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_SUBPROCESS);
 
@@ -208,7 +211,6 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORJOIN), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_XORSPLIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_XORSPLIT, null, ACTIONID_ADD_XORSPLIT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLIT), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
-
         STATIC_ACTION_MAP.put(ACTIONID_ADD_XORSPLITJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_XORSPLITJOIN, null, ACTIONID_ADD_XORSPLITJOIN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLITJOIN), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
         

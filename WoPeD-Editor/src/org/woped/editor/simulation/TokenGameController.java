@@ -226,7 +226,7 @@ public class TokenGameController
             {
                 if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size()) transition.setActivated(true);
 
-            } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE || operator.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE)
+            } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE )
             {
                 if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size())
                 {
@@ -240,17 +240,46 @@ public class TokenGameController
                     setIncomingArcsActive(transition.getId(), true);
                     operator.setFireing(true);
                 }
+            } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+            {
+            	// This is the XOR split-join combination type.
+            	// Check whether the center place already contains (a) token(s)
+            	if ((operator.getCenterPlace()!=null)&&
+            		(operator.getCenterPlace().getVirtualTokenCount()>0))
+            	{
+            		// The center place does in fact have at least one token.
+            		// We have to make the outgoing arcs active
+            		setOutgoingArcsActive(transition.getId(),true);
+            		// Set this transition active
+            		operator.setFireing(true);
+            	}
+            	else
+            	{            	
+            		// There must at least be one token at the input side for the transition to be 
+            		// activated
+            		if (countIncomingActivePlaces(incomingArcs) > 0)
+            		{
+            			// Activate all incoming arcs. This will allow the user to click them
+            			// and choose where the token will come from
+            			setIncomingArcsActive(transition.getId(), true);
+            			// Set this transition active.
+            			operator.setFireing(true);
+            		}
+            	}
             }
         }
     }
 
     /*
-     * Handels a click on any Transition in any state
+     * Handles a click on any Transition in any state
      */
     private void transitionClicked(TransitionModel transition)
     {
         if (transition.isActivated())
         {
+        	// Rememeber whether we actually did something here
+        	// and only deactivate the transition after a *successful* click
+        	boolean actionPerformed = false;
             if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
             {
                 //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: FIRE
@@ -258,6 +287,7 @@ public class TokenGameController
                 // "+transition.getId());
                 receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
                 sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+                actionPerformed = true;
             } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
                 OperatorTransitionModel operator = (OperatorTransitionModel) transition;
@@ -268,6 +298,7 @@ public class TokenGameController
                     // "+transition.getId());
                     receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
                     sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+                    actionPerformed = true;
 
                 } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
                 {
@@ -275,18 +306,19 @@ public class TokenGameController
                 } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
                 {
                     // Do nothing: Only controlled by Arc Clicking
-                } else if (operator.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE)
+                } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
                 {
-                    //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
-                    // FIRE ORSPLIT-Transition:
-                    // "+transition.getId());
-                    sendTokens(getPetriNet().getElementContainer().getIncomingArcs(operator.getId()));
+                	// Do nothing: Only controlled by Arc Clicking as the user has to select the
+                	// token source
                 }
             }
-            transition.setActivated(false);
-            transition.setFireing(false);
-            checkNet();
-            getGraph().updateUI();
+            if (actionPerformed==true)
+            {
+            	// Now update the status of the petri net by checking all transitions and activating them
+            	// if their input conditions are fulfilled
+            	// This will also trigger a redraw
+            	checkNet();
+            }
         }
     }
 
@@ -302,6 +334,13 @@ public class TokenGameController
 
             OperatorTransitionModel tempOperator;
 
+            // As a reminder, an arc is generally going from a place to a transition or from a 
+            // transition to a place. 
+            // When pointing to a transition it is referencing a potential provider of a token.
+            // When pointing to a place that place is potential receiver for a token.
+            // First, we check if the origin of our clicked arc is a transition
+            // (Note that we check for the operator type only as ordinary transitions are not triggered
+            // by clicking the arrow but by clicking the transition itself which is handled in transitionClicked())
             if (source.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
                 tempOperator = (OperatorTransitionModel) source;
@@ -310,42 +349,16 @@ public class TokenGameController
                     if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
                     {
                         receiveTokens(arc);
-                        sendTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
-                        setOutgoingArcsActive(tempOperator.getId(), false);
-                        arc.setActivated(false);
-                        checkNet();
-                    } else if (tempOperator.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE)
-                    {
-                        // memorize attribute of transtiton
-                        Vector activeArcIds = new Vector();
-                        Iterator iter = getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()).keySet().iterator();
-                        while (iter.hasNext())
+                        if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE)                        
+                        	sendTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
+                        else
                         {
-                            Object arcId = iter.next();
-                            if (getPetriNet().getElementContainer().getArcById(arcId).isActivated())
-                            {
-                                activeArcIds.add(arcId);
-                            }
+                        	// Special code for splitjoin. We have to take the token from the center place
+                        	if (tempOperator.getCenterPlace()!=null)
+                        		// FIXME: Once implemented, this place will also have to remove weighted tokens
+                        		tempOperator.getCenterPlace().sendToken();                    	                                               
                         }
-                        // lock net
-                        resetArcStatus();
-                        resetTransitionStatus();
-                        // set status before lock
-                        int activeArcCouter = 0;
-                        for (int i = 0; i < activeArcIds.size(); i++)
-                        {
-                            if (activeArcIds.get(i) != arc.getId())
-                            {
-                                getPetriNet().getElementContainer().getArcById(activeArcIds.get(i)).setActivated(true);
-                                tempOperator.setFireing(true);
-                            }
-                        }
-                        // if no active arcs left => finish
-                        tempOperator.setActivated(true);
-                        if (!tempOperator.isFireing()) transitionClicked(tempOperator);
-                        // receive Token(s) for the target place
-                        receiveTokens(arc);
-                    }
+                    } 
                 }
             } else if (target.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
@@ -353,12 +366,21 @@ public class TokenGameController
                 if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
                 {
                     sendTokens(arc);
-                    receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
-                    arc.setActivated(false);
-                    checkNet();
+                    if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE)     	
+                    	receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
+                    else
+                    {
+                    	// Special code for splitjoin. We have to send the token to the center place
+                    	if (tempOperator.getCenterPlace()!=null)
+                    		// FIXME: Once implemented, this place will also have to receive weighted tokens
+                    		tempOperator.getCenterPlace().receiveToken();                    	
+                    }
                 }
             }
-            getGraph().updateUI();
+            // Update net status
+            // and trigger redraw
+            checkNet();
+
         }
     }
 
@@ -509,6 +531,14 @@ public class TokenGameController
             transition = (TransitionModel) allTransitions.get(eleIter.next());
             transition.setActivated(false);
             transition.setFireing(false);
+            if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            {
+            	// When starting a new token game we have to reset all center places that
+            	// may contain tokens
+                OperatorTransitionModel tempOperator = (OperatorTransitionModel) transition;
+                if (tempOperator.getCenterPlace()!=null)
+                	tempOperator.getCenterPlace().resetVirtualTokens();
+            }
         }
     }
 
