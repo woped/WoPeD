@@ -149,10 +149,19 @@ public class WoPeDAction extends AbstractAction {
 		return false;
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(final ActionEvent e) {
 		if (am != null) {
-			am.viewEventPerformed(new EditorViewEvent(e.getSource(), type,
-					order, data));
+			Runnable r = new Runnable(){
+
+				public void run() {
+					am.viewEventPerformed(new EditorViewEvent(e.getSource(), type,
+							order, data));	
+				}
+				
+			};
+			Thread a = new Thread(r);
+			a.start();
+			
 		}
 	}
 }

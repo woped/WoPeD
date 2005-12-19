@@ -2,6 +2,7 @@ package org.woped.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
@@ -16,6 +17,7 @@ import java.util.Vector;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
@@ -82,15 +84,22 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         getContentPane().add(desktop, BorderLayout.CENTER);
 
         // Prepare Status & Taskbar
-        getContentPane().add(taskBar, BorderLayout.SOUTH);
-
+        JPanel toolPanel = new JPanel();
+        GridLayout gL = new GridLayout(2,1);
+        toolPanel.setLayout(gL);
+       toolPanel.add(taskBar);
+       toolPanel.add(statusBar);
+       getContentPane().add(toolPanel, BorderLayout.SOUTH);
+        
         // addKeyListener(this);
         SplashWindow splash = new SplashWindow(this);
         splash.kill();
- 
+        
         setVisible(true);
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
 
+        // addKeyListener(this);
+        splash.close();
     }
 
     public void addEditor(IEditor editor)

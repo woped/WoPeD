@@ -64,7 +64,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             }
             about.setVisible(true);
             break;
-        case AbstractViewEvent.BUGREPORT:
+     /*   case AbstractViewEvent.BUGREPORT:
             BugReportUI bugreport = null;
             if (getMediator().getUi() != null && getMediator().getUi().getComponent() instanceof JFrame)
             {
@@ -74,7 +74,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
                 bugreport = new BugReportUI();
             }
             bugreport.setVisible(true);
-            break;
+            break;*/
         case AbstractViewEvent.HELP:
             try
             {
