@@ -7,7 +7,9 @@
 package org.woped.core.controller;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
@@ -159,4 +161,32 @@ public abstract class AbstractApplicationMediator implements IViewListener {
 	public void setUi(IUserInterface ui) {
 		this.ui = ui;
 	}
+	
+	public IViewController[] findViewController(int type){
+		ArrayList aL = new ArrayList();
+		switch(type)
+		{
+			case IStatusBar.TYPE:
+				for (Iterator iter = viewControllerMap.values().iterator(); iter.hasNext();) {
+					IViewController iViewC = (IViewController) iter.next();
+					if(iViewC instanceof IStatusBar)
+						aL.add(iViewC);
+				}
+				break;
+		
+			case IEditor.TYPE:
+				for (Iterator iter = viewControllerMap.values().iterator(); iter.hasNext();) {
+					IViewController iViewC = (IViewController) iter.next();
+					if(iViewC instanceof IEditor)
+						aL.add(iViewC);
+				}
+				break;
+		}
+		IViewController[] iwC = new IViewController[aL.size()];
+		for (int i = 0; i < aL.size(); i++) 
+			iwC[i] = (IViewController) aL.get(i);
+		
+		return iwC;
+	}
+	
 }

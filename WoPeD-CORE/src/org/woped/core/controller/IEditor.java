@@ -16,8 +16,11 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
  * 
  * An Editor has to implement the IEditor interface.
  */
+
+
 public interface IEditor extends IViewController
 {
+	public static int TYPE = 1;
     /**
      * Returns the Graph for the Editor
      * 
