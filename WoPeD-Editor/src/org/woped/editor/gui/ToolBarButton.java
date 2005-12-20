@@ -50,6 +50,12 @@ public class ToolBarButton extends JToggleButton implements MouseListener
 {
     //private static final Insets margins = new Insets(0, 0, 0, 0);
 
+    public static final int TEXTORIENTATION_RIGHT   = 1;
+    public static final int TEXTORIENTATION_LEFT    = 2;
+    public static final int TEXTORIENTATION_TOP     = 3;
+    public static final int TEXTORIENTATION_BOTTOM  = 4;
+    
+    
     public ToolBarButton(Icon icon)
     {
         super(icon);
@@ -77,7 +83,24 @@ public class ToolBarButton extends JToggleButton implements MouseListener
         this(new ImageIcon(imageFile));
         setText(text);
     }
+    
+    public ToolBarButton(ImageIcon icon, String text)
+    {
+        this(icon);
+        setText(text);
+    }
 
+    public ToolBarButton(ImageIcon icon, String text, int pos)
+    {
+        this(icon);
+        setText(text);
+        setVerticalTextPosition(CENTER);
+        if (pos == TEXTORIENTATION_LEFT)
+            setHorizontalTextPosition(LEFT);
+        else
+            setHorizontalTextPosition(RIGHT);
+    }
+    
     public void mouseEntered(MouseEvent me)
     {
     //		JToggleButton jb = (JToggleButton) me.getSource();
