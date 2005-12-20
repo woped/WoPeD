@@ -34,7 +34,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.BevelBorder;
 
 import org.woped.core.config.DefaultStaticConfiguration;
-import org.woped.editor.controller.PetriNetPropertyEditor;
+import org.woped.editor.controller.PetriNetResourceEditor;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.gui.StatusBarLabel;
 import org.woped.editor.utilities.Messages;
@@ -47,18 +47,18 @@ import org.woped.editor.utilities.Messages;
 public class DefaultEditorFrame extends JInternalFrame
 {
     private EditorVC               m_editor                 = null;
-    private PetriNetPropertyEditor m_petriNetPropertyEditor = null;
+    private PetriNetResourceEditor m_petriNetResourceEditor = null;
     private StatusBarLabel         m_statusBarInfo          = null;
 
     private static final int       DEFAULT_WIDTH            = 500;
     private static final int       DEFAULT_HEIGHT           = 500;
 
-    public DefaultEditorFrame(EditorVC editor, PetriNetPropertyEditor propEditor)
+    public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor)
     {
         super(editor.getFileName(), true, true, true, true);
         this.setVisible(false);
         m_editor = editor;
-        m_petriNetPropertyEditor = propEditor;
+        m_petriNetResourceEditor = propEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
         this.setFrameIcon(DefaultStaticConfiguration.DEFAULTEDITORFRAMEICON);
         // Size
@@ -67,7 +67,7 @@ public class DefaultEditorFrame extends JInternalFrame
         {
             // TabbedPane
             JTabbedPane tabbedPane = new JTabbedPane();
-            JScrollPane propScrollPane = new JScrollPane(getPetriNetPropertyEditor());
+            JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), getEditor());
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
@@ -100,11 +100,11 @@ public class DefaultEditorFrame extends JInternalFrame
     }
 
     /**
-     * @return Returns the m_petriNetPropertyEditor.
+     * @return Returns the m_petriNetResourceEditor.
      */
-    public PetriNetPropertyEditor getPetriNetPropertyEditor()
+    public PetriNetResourceEditor getPetriNetResourceEditor()
     {
-        return m_petriNetPropertyEditor;
+        return m_petriNetResourceEditor;
     }
 
     /**
