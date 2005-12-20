@@ -8,13 +8,13 @@ import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.Timer;
 import javax.swing.border.BevelBorder;
 
 import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
+import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewListener;
+import org.woped.editor.utilities.Messages;
 import org.woped.editor.utilities.SynchonizeTask;
 import org.woped.gui.controller.DefaultApplicationMediator;
 
@@ -53,14 +53,9 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar {
 
 	private JLabel m_statusLabel = null;
 
-	private Timer timer = null;
-
 	private String id = null;
 	
 	private int progressBarCount;
-	
-
-	// private ProgressBarThread progressBarThread = null;
 	
 	public static final String ID_PREFIX = "STATUSBAR_VC_";
 
@@ -90,35 +85,22 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar {
 		// c.gridx = 2;
 		// this.add(new JLabel(), c);
 		c.gridx = 2;
-		getStatusLabel().setText("Hallo");
+		getStatusLabel().setText("");
 		this.add(getStatusLabel(), c);
 		c.gridx = 3;
 		this.add(getProgressBar(), c);
 		progressBarCount = -1;
-		
-		
 	}
 
 	private JLabel getEditorNumberLabel() {
 		if (m_EditorNumberLabel == null) {
-			m_EditorNumberLabel = new JLabel("Editors: ".concat(String
-					.valueOf(0)));
+			m_EditorNumberLabel = new JLabel(Messages.getString("Statusbar.Editors") 
+                    + ": " + String.valueOf(0));
 			m_EditorNumberLabel.setHorizontalAlignment(JLabel.LEFT);
 		}
 		return m_EditorNumberLabel;
 	}
 
-	/**
-	 * TODO: DOCUMENTATION (silenco)
-	 * 
-	 * @param i
-	 */
-	public void updateEditosNumber(int i) {
-		getEditorNumberLabel().setText("Editors: ".concat(String.valueOf(i)));
-	}
-
-	
-	
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
@@ -182,7 +164,7 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar {
 	}
 
 	public boolean startProgress(String description, int maxValue) {
-		if(isRunning())
+		if (isRunning())
 			return false;
 		getProgressBar().setMaximum(maxValue);
 		getStatusLabel().setText(description);
