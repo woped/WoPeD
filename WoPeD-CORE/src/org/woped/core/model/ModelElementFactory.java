@@ -35,8 +35,6 @@ import org.woped.core.model.uml.OperatorModel;
 import org.woped.core.model.uml.StateModel;
 import org.woped.core.utilities.LoggerManager;
 
-import sun.text.Normalizer.Mode;
-
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>

@@ -175,7 +175,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
                 editor.addPointToSelectedArc();
                 break;
             case AbstractViewEvent.REMOVE_POINT:
-                editor.removePoint();
+                editor.removeSelectedPoint();
                 break;
             case AbstractViewEvent.ADD_EXT_TRIGGER:
                 editor.createTrigger(getCreateTriggerMap(editor.getGraph().getSelectionCell(), TriggerModel.TRIGGER_EXTERNAL));

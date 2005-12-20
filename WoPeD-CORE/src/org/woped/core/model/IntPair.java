@@ -2,7 +2,6 @@ package org.woped.core.model;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.geom.Point2D;
 import java.io.Serializable;
 
 public class IntPair implements Serializable {

@@ -2,6 +2,7 @@ package org.woped.core.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class ModelProcessorContext implements Serializable
 {
@@ -30,5 +31,10 @@ public class ModelProcessorContext implements Serializable
     public boolean containsContext(Object key)
     {
         return contextMap.containsKey(key);
+    }
+
+    public Iterator getKeyIterator()
+    {
+        return contextMap.keySet().iterator();
     }
 }

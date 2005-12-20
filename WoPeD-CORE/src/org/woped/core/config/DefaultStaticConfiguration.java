@@ -31,6 +31,9 @@ public class DefaultStaticConfiguration implements IConfiguration
     private int                   modelProcessor            = AbstractModelProcessor.MODEL_PROCESSOR_PETRINET;
     private Color                 selectionColor            = DEFAULT_SELECTION_COLOR;
     private Color                 portColor                 = DEFAULT_PORT_COLOR;
+    
+    private String lnf = null;
+
     private String 				language					= DEFAULT_LANGUAGE;
     private String 				country					= DEFAULT_COUNTRY;
     private String 				variant					= DEFAULT_VARIANT;
@@ -86,7 +89,7 @@ public class DefaultStaticConfiguration implements IConfiguration
 
     public String getLookAndFeel()
     {
-        return "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+        return lnf;
     }
 
     public Vector getRecentFiles()
@@ -231,7 +234,7 @@ public class DefaultStaticConfiguration implements IConfiguration
 
     public void setLookAndFeel(String className)
     {
-    // TODO Auto-generated method stub
+    	lnf = className;
 
     }
 
