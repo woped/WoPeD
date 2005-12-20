@@ -10,7 +10,6 @@ import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;

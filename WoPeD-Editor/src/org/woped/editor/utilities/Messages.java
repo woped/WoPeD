@@ -38,11 +38,9 @@ import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
-import org.woped.core.config.IConfiguration;
 
 /**
  * @author Thomas Pohl

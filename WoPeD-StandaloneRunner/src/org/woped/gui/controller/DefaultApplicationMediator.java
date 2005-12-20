@@ -20,7 +20,6 @@ import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
-import org.woped.editor.gui.config.AbstractConfPanel;
 
 public class DefaultApplicationMediator extends ApplicationMediator
 {

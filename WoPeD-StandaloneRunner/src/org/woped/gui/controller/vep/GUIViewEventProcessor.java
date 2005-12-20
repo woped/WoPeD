@@ -18,7 +18,6 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.AboutUI;
-import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.vc.MenuBarVC;

@@ -32,10 +32,10 @@ import java.awt.Toolkit;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
-import javax.swing.JFrame;
 
 import org.woped.editor.utilities.Messages;
 

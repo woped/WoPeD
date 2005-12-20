@@ -59,10 +59,10 @@ import org.woped.editor.Constants;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
+import org.woped.editor.gui.config.AbstractConfPanel;
 import org.woped.editor.gui.config.ConfPanelTree;
 import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.editor.utilities.Messages;
-import org.woped.editor.gui.config.AbstractConfPanel;
 
 
 /**

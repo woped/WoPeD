@@ -1,12 +1,8 @@
 package org.woped.gui.controller.vc;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.JLabel;
@@ -16,10 +12,9 @@ import javax.swing.Timer;
 import javax.swing.border.BevelBorder;
 
 import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IStatusBar;
+import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
-import org.woped.editor.utilities.ProgressBarThread;
 import org.woped.editor.utilities.SynchonizeTask;
 import org.woped.gui.controller.DefaultApplicationMediator;
 

@@ -28,7 +28,6 @@ import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Vector;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;

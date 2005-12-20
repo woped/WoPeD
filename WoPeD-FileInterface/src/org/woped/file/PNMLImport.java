@@ -34,12 +34,10 @@ import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IStatusBar;
-import org.woped.core.controller.IViewController;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;

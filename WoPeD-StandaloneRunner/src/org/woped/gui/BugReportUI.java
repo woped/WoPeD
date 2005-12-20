@@ -11,11 +11,11 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.utilities.Messages;
