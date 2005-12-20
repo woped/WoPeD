@@ -142,13 +142,13 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private void initialize()
     {
         this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        this.setMaximumSize(new Dimension(720, 520));
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         
         c.weightx = 1;
         c.weighty = 1;
         c.anchor = GridBagConstraints.WEST;
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
         this.add(getResourceClassPanel(), c);
@@ -168,6 +168,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     BorderFactory.createEmptyBorder()));
             resourceClassPanel.setMinimumSize(new Dimension(750, 200));
             resourceClassPanel.setPreferredSize(new Dimension(750, 200));         
+            resourceClassPanel.setMaximumSize(new Dimension(750, 200));         
             resourceClassPanel.setLayout(new GridBagLayout());      
             GridBagConstraints c = new GridBagConstraints();
             
@@ -836,6 +837,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     BorderFactory.createEmptyBorder()));
             resourcePanel.setMinimumSize(new Dimension(750, 300));
             resourcePanel.setPreferredSize(new Dimension(750, 300));         
+            resourcePanel.setMaximumSize(new Dimension(750, 300));         
             resourcePanel.setLayout(new GridBagLayout());      
             GridBagConstraints c = new GridBagConstraints();
             
@@ -958,10 +960,8 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             {
                 public void valueChanged(ListSelectionEvent e)
                 {
-                    // System.out.println(resourceList.getSelectedIndex());
                     if (!e.getValueIsAdjusting() && resourceList.getSelectedIndex() > -1)
                     {
-//                        getResourceEditButton().setEnabled(true);
                         getResourceRemoveButton().setEnabled(true);
                         editResource();
                         getResourceEditNameTextField().setText(resourceList.getModel().getElementAt(resourceList.getSelectedIndex()).toString());
