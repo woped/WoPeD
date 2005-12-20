@@ -7,13 +7,17 @@
  
    Developer team:
 
+   Alexander Assall
+   Andreas Eckleder
    Christian Flender
    Thomas Freytag
    Steffen Gegenheimer
+   Mona Ketterer
    Simon Isaak Landes
    Alexis Nagy
    Sebastian Orts
    Thomas Pohl
+   Valentino Pola
 
    Contact:
 
