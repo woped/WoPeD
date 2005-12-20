@@ -22,6 +22,8 @@
  */
 package org.woped.core.model.petrinet;
 
+import java.io.Serializable;
+
 import org.woped.core.Constants;
 import org.woped.core.model.CreationMap;
 import org.woped.core.utilities.LoggerManager;
@@ -33,7 +35,7 @@ import org.woped.core.utilities.LoggerManager;
  * 
  * 29.04.2003
  */
-public class Toolspecific
+public class Toolspecific implements Serializable
 {
 
     private String                  operatorId    = null;

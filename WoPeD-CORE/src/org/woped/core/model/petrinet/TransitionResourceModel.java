@@ -24,181 +24,160 @@ import org.woped.core.model.CreationMap;
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
-public class TransitionResourceModel extends DefaultGraphCell
-{
-    public static final int DEFAULT_WIDTH  = 60;
-    public static final int DEFAULT_HEIGHT = 22; // must be even
+public class TransitionResourceModel extends DefaultGraphCell {
+	public static final int DEFAULT_WIDTH = 60;
 
-    private String          transResourceId;
-    private String          transRoleName;
-    private String          transOrgUnitName;
-    private String          ownerId;
+	public static final int DEFAULT_HEIGHT = 22; // must be even
 
-    public TransitionResourceModel(CreationMap creationMap)
-    {
-        super();
-        this.setId("transResource" + creationMap.getId());
-        this.setOwnerId(creationMap.getId());
-        this.transOrgUnitName = creationMap.getResourceOrgUnit();
-        this.transRoleName = creationMap.getResourceRole();
+	private String transResourceId;
 
-        AttributeMap attrMap = getAttributes();
-        GraphConstants.setOpaque(attrMap, false);
-        GraphConstants.setBorderColor(attrMap, Color.black);
-        GraphConstants.setEditable(attrMap, false);
-        GraphConstants.setMoveable(attrMap, true);
-        GraphConstants.setSizeable(attrMap, false);
-        GraphConstants.setSize(attributes, new Dimension(getDefaultWidth(), getDefaultHeight()));
-        //        GraphConstants.setAutoSize(attrMap, true);
-        //        GraphConstants.setInset(attrMap, 1);
-        setAttributes(attrMap);
-        
+	private String transRoleName;
 
-        if (creationMap.getResourcePosition() != null)
-        {
-            setPosition(creationMap.getResourcePosition());
-        }
-    }
+	private String transOrgUnitName;
 
-    public void setId(String triggerId)
-    {
-    // TODO Auto-generated method stub
-    }
+	private String ownerId;
 
-    /**
-     * Returns the ownerId.
-     * 
-     * @return String
-     */
-    public String getOwnerId()
-    {
-        return ownerId;
-    }
+	public TransitionResourceModel(CreationMap creationMap) {
+		super();
+		this.setId("transResource" + creationMap.getId());
+		this.setOwnerId(creationMap.getId());
+		this.transOrgUnitName = creationMap.getResourceOrgUnit();
+		this.transRoleName = creationMap.getResourceRole();
 
-    /**
-     * Sets the ownerId.
-     * 
-     * @param ownerId
-     *            The ownerId to set
-     */
-    public void setOwnerId(String ownerId)
-    {
-        this.ownerId = ownerId;
-    }
+		AttributeMap attrMap = getAttributes();
+		GraphConstants.setOpaque(attrMap, false);
+		GraphConstants.setBorderColor(attrMap, Color.black);
+		GraphConstants.setEditable(attrMap, false);
+		GraphConstants.setMoveable(attrMap, true);
+		GraphConstants.setSizeable(attrMap, false);
+		GraphConstants.setSize(attributes, new Dimension(getDefaultWidth(), getDefaultHeight()));
+		// GraphConstants.setAutoSize(attrMap, true);
+		// GraphConstants.setInset(attrMap, 1);
+		setAttributes(attrMap);
 
-    public String getId()
-    {
-        return transResourceId;
-    }
+		if (creationMap.getResourcePosition() != null) {
+			setPosition(new Point(creationMap.getResourcePosition().getX1(), creationMap.getResourcePosition().getX2()));
+		}
+	}
 
-    /**
-     * @return Returns the transOrgUnitName.
-     */
-    public String getTransOrgUnitName()
-    {
-        return transOrgUnitName;
-    }
+	public void setId(String triggerId) {
+		// TODO Auto-generated method stub
+	}
 
-    /**
-     * @param transOrgUnitName
-     *            The transOrgUnitName to set.
-     */
-    public void setTransOrgUnitName(String transOrgUnitName)
-    {
-        this.transOrgUnitName = transOrgUnitName;
-    }
+	/**
+	 * Returns the ownerId.
+	 * 
+	 * @return String
+	 */
+	public String getOwnerId() {
+		return ownerId;
+	}
 
-    /**
-     * @return Returns the transRoleName.
-     */
-    public String getTransRoleName()
-    {
-        return transRoleName;
-    }
+	/**
+	 * Sets the ownerId.
+	 * 
+	 * @param ownerId
+	 *            The ownerId to set
+	 */
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+	}
 
-    /**
-     * @param transRoleName
-     *            The transRoleName to set.
-     */
-    public void setTransRoleName(String transRoleName)
-    {
-        this.transRoleName = transRoleName;
-    }
+	public String getId() {
+		return transResourceId;
+	}
 
-    public String getToolTipText()
-    {
-        return null;
-    }
+	/**
+	 * @return Returns the transOrgUnitName.
+	 */
+	public String getTransOrgUnitName() {
+		return transOrgUnitName;
+	}
 
-    /* ### general methods ### */
+	/**
+	 * @param transOrgUnitName
+	 *            The transOrgUnitName to set.
+	 */
+	public void setTransOrgUnitName(String transOrgUnitName) {
+		this.transOrgUnitName = transOrgUnitName;
+	}
 
-    public void setPosition(Point2D p)
-    {
-        setPosition((int) p.getX(), (int) p.getY());
-    }
+	/**
+	 * @return Returns the transRoleName.
+	 */
+	public String getTransRoleName() {
+		return transRoleName;
+	}
 
-    public Point getPosition()
-    {
-        Rectangle2D rect = GraphConstants.getBounds(getAttributes());
-        if (rect != null)
-        {
-            return new Point((int) rect.getX(), (int) rect.getY());
-        }
-        return null;
-    }
+	/**
+	 * @param transRoleName
+	 *            The transRoleName to set.
+	 */
+	public void setTransRoleName(String transRoleName) {
+		this.transRoleName = transRoleName;
+	}
 
-    public void setPosition(int x, int y)
-    {
-        AttributeMap map = getAttributes();
-        GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
-        changeAttributes(map);
-    }
+	public String getToolTipText() {
+		return null;
+	}
 
-    public int getX()
-    {
-        return (int) GraphConstants.getBounds(getAttributes()).getX();
-    }
+	/* ### general methods ### */
 
-    public int getY()
-    {
-        return (int) GraphConstants.getBounds(getAttributes()).getY();
-    }
+	public void setPosition(Point2D p) {
+		setPosition((int) p.getX(), (int) p.getY());
+	}
 
-    /**
-     * TODO: Documention
-     */
-    public int getDefaultWidth()
-    {
-        return DEFAULT_WIDTH;
-    }
+	public Point getPosition() {
+		Rectangle2D rect = GraphConstants.getBounds(getAttributes());
+		if (rect != null) {
+			return new Point((int) rect.getX(), (int) rect.getY());
+		}
+		return null;
+	}
 
-    /**
-     * TODO: Documentation
-     */
-    public int getDefaultHeight()
-    {
-        return DEFAULT_HEIGHT;
-    }
+	public void setPosition(int x, int y) {
+		AttributeMap map = getAttributes();
+		GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
+		changeAttributes(map);
+	}
 
-    public void setSize(Dimension dim)
-    {
-    // NOT POSSIBLE
+	public int getX() {
+		return (int) GraphConstants.getBounds(getAttributes()).getX();
+	}
 
-    }
+	public int getY() {
+		return (int) GraphConstants.getBounds(getAttributes()).getY();
+	}
 
-    public void setSize(int width, int height)
-    {
-    // NOT POSSIBLE
-    }
+	/**
+	 * TODO: Documention
+	 */
+	public int getDefaultWidth() {
+		return DEFAULT_WIDTH;
+	}
 
-    public int getHeight()
-    {
-        return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getHeight());
-    }
+	/**
+	 * TODO: Documentation
+	 */
+	public int getDefaultHeight() {
+		return DEFAULT_HEIGHT;
+	}
 
-    public int getWidth()
-    {
-        return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getWidth());
-    }
+	public void setSize(Dimension dim) {
+		// NOT POSSIBLE
+
+	}
+
+	public void setSize(int width, int height) {
+		// NOT POSSIBLE
+	}
+
+	public int getHeight() {
+		return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getHeight());
+	}
+
+	public int getWidth() {
+		return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getWidth());
+	}
 
 }

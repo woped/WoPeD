@@ -77,11 +77,15 @@ public interface IEditor extends IViewController
     /**
      * Adds an routing point to the arc.
      * 
-     * @param arc
-     * @param point
      */
-    public void addPointToArc(ArcModel arc, Point2D point);
+    public void addPointToSelectedArc();
 
+    /**
+     * 
+     *
+     */
+    public void removeSelectedPoint();
+    
     /**
      * Returns the drawing mode. If the net is in drawing mode, clicking the
      * left mouse button will draw the Element with the set creation type.

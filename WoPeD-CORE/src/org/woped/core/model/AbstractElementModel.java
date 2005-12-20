@@ -16,177 +16,153 @@ import org.woped.core.Constants;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.utilities.LoggerManager;
 
-public abstract class AbstractElementModel extends DefaultGraphCell implements Serializable
-{
+public abstract class AbstractElementModel extends DefaultGraphCell implements Serializable {
 
-    private int            modelProcessorType = -1;
-    private CreationMap    creationMap        = null;
-    private String         id                 = null;
-    private ElementContext elementContext     = null;
-    private NameModel      nameModel          = null;
+	private int modelProcessorType = -1;
+	private CreationMap creationMap = null;
+	private String id = null;
+	private ElementContext elementContext = null;
+	private NameModel nameModel = null;
 
-    public AbstractElementModel(CreationMap creationMap, Object userObject, int modelProcessorType)
-    {
-        super(null);
-        this.elementContext = new ElementContext();
-        nameModel = new NameModel(creationMap);
-        AttributeMap map = getAttributes();
-        GraphConstants.setOpaque(map, false);
-        GraphConstants.setBorderColor(map, Color.black);
-        GraphConstants.setEditable(map, true);
-        if (creationMap.getSize() == null)
-        {
-            GraphConstants.setSize(map, new Dimension(getDefaultWidth(), getDefaultHeight()));
-        } else
-        {
-            GraphConstants.setSize(map, new Dimension((int) creationMap.getSize().getWidth(), (int) creationMap.getSize().getHeight()));
-        }
-        GraphConstants.setMoveable(map, true);
-        setAttributes(map);
+	public AbstractElementModel(CreationMap creationMap, Object userObject, int modelProcessorType) {
+		super(null);
+		this.elementContext = new ElementContext();
+		nameModel = new NameModel(creationMap);
+		AttributeMap map = getAttributes();
+		GraphConstants.setOpaque(map, false);
+		GraphConstants.setBorderColor(map, Color.black);
+		GraphConstants.setEditable(map, true);
+		if (creationMap.getSize() == null) {
+			GraphConstants.setSize(map, new Dimension(getDefaultWidth(), getDefaultHeight()));
+		} else {
+			GraphConstants.setSize(map, new Dimension(creationMap.getSize().getX1(), creationMap.getSize().getX2()));
+		}
+		GraphConstants.setMoveable(map, true);
+		setAttributes(map);
 
-        if (creationMap.getId() != null)
-        {
-            setId(creationMap.getId());
-            if (creationMap.getPosition() != null)
-            {
-                setPosition(creationMap.getPosition());
-            }
+		if (creationMap.getId() != null) {
+			setId(creationMap.getId());
+			if (creationMap.getPosition() != null) {
+				setPosition(new Point(creationMap.getPosition().getX1(), creationMap.getPosition().getX2()));
+			}
 
-            if (creationMap.getNamePosition() != null)
-            {
-                nameModel.setPosition(creationMap.getNamePosition());
-            } else
-            {
-                nameModel.setPosition(getPosition().x + ((this.getWidth() - getNameModel().getWidth()) / 2), getPosition().y + getHeight() + 5);
-            }
-        } else
-        {
-            LoggerManager.error(Constants.CORE_LOGGER, "It's not allowed to create a Element without id. Please use ModelElementFactory instead.");
-        }
+			if (creationMap.getNamePosition() != null) {
+				nameModel.setPosition(new Point(creationMap.getNamePosition().getX1(), creationMap.getNamePosition().getX2()));
+			} else {
+				nameModel.setPosition(getPosition().x + ((this.getWidth() - getNameModel().getWidth()) / 2), getPosition().y + getHeight() + 5);
+			}
+		} else {
+			LoggerManager.error(Constants.CORE_LOGGER, "It's not allowed to create a Element without id. Please use ModelElementFactory instead.");
+		}
 
-    }
+	}
 
-    public CreationMap getCreationMap()
-    {
-        if (creationMap == null)
-        {
-            creationMap = CreationMap.createMap();
-        }
-        creationMap.setPosition(getPosition());
-        creationMap.setId(getId());
-        creationMap.setName(getNameValue());
-        creationMap.setNamePosition(getNameModel().getPosition());
-        return creationMap;
-    }
+	public CreationMap getCreationMap() {
+		if (creationMap == null) {
+			creationMap = CreationMap.createMap();
+		}
+		creationMap.setPosition(new IntPair(getPosition()));
+		creationMap.setId(getId());
+		creationMap.setName(getNameValue());
+		creationMap.setSize(new IntPair(GraphConstants.getSize(getAttributes())));
+		creationMap.setNamePosition(new IntPair(getNameModel().getPosition()));
+		return creationMap;
+	}
 
-    public String getId()
-    {
-        return id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void setId(String id)
-    {
-        this.id = id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public abstract int getType();
+	public abstract int getType();
 
-    public DefaultPort getPort()
-    {
-        if (!isLeaf()) return (DefaultPort) getChildAt(0);
-        else return null;
-    }
+	public DefaultPort getPort() {
+		if (!isLeaf())
+			return (DefaultPort) getChildAt(0);
+		else
+			return null;
+	}
 
-    public int getX()
-    {
-        return (int) GraphConstants.getBounds(getAttributes()).getX();
-    }
+	public int getX() {
+		return (int) GraphConstants.getBounds(getAttributes()).getX();
+	}
 
-    public int getY()
-    {
-        return (int) GraphConstants.getBounds(getAttributes()).getY();
-    }
+	public int getY() {
+		return (int) GraphConstants.getBounds(getAttributes()).getY();
+	}
 
-    public abstract void setSize(Dimension dim);
+	public abstract void setSize(Dimension dim);
 
-    public abstract void setSize(int width, int height);
+	public abstract void setSize(int width, int height);
 
-    public abstract int getHeight();
+	public abstract int getHeight();
 
-    public abstract int getWidth();
+	public abstract int getWidth();
 
-    public void setPosition(Point2D p)
-    {
-        setPosition((int) p.getX(), (int) p.getY());
-    }
+	public void setPosition(Point2D p) {
+		setPosition((int) p.getX(), (int) p.getY());
+	}
 
-    public Point getPosition()
-    {
-        Rectangle2D rect = GraphConstants.getBounds(getAttributes());
-        if (rect != null)
-        {
-            return new Point((int) rect.getX(), (int) rect.getY());
-        }
-        return null;
-    }
+	public Point getPosition() {
+		Rectangle2D rect = GraphConstants.getBounds(getAttributes());
+		if (rect != null) {
+			return new Point((int) rect.getX(), (int) rect.getY());
+		}
+		return null;
+	}
 
-    public void setPosition(int x, int y)
-    {
-        AttributeMap map = getAttributes();
-        GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
-        changeAttributes(map);
-    }
+	public void setPosition(int x, int y) {
+		AttributeMap map = getAttributes();
+		GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
+		changeAttributes(map);
+	}
 
-    public abstract String getToolTipText();
+	public abstract String getToolTipText();
 
-    public abstract int getDefaultWidth();
+	public abstract int getDefaultWidth();
 
-    public abstract int getDefaultHeight();
+	public abstract int getDefaultHeight();
 
-    public int getModelProcessorType()
-    {
-        return modelProcessorType;
-    }
+	public int getModelProcessorType() {
+		return modelProcessorType;
+	}
 
-    public ElementContext getElementContext()
-    {
-        return elementContext;
-    }
+	public ElementContext getElementContext() {
+		return elementContext;
+	}
 
-    public void setElementContext(ElementContext elementContext)
-    {
-        this.elementContext = elementContext;
-    }
+	public void setElementContext(ElementContext elementContext) {
+		this.elementContext = elementContext;
+	}
 
-    public String getNameValue()
-    {
-        return (String) getNameModel().getUserObject();
-    }
+	public String getNameValue() {
+		return (String) getNameModel().getUserObject();
+	}
 
-    public void setNameValue(String name)
-    {
+	public void setNameValue(String name) {
 
-        getNameModel().setUserObject(name);
-    }
+		getNameModel().setUserObject(name);
+	}
 
-    /**
-     * Returns the nameModel.
-     * 
-     * @return NameModel
-     */
-    public NameModel getNameModel()
-    {
-        return nameModel;
-    }
+	/**
+	 * Returns the nameModel.
+	 * 
+	 * @return NameModel
+	 */
+	public NameModel getNameModel() {
+		return nameModel;
+	}
 
-    /**
-     * Sets the nameModel.
-     * 
-     * @param nameModel
-     *            The nameModel to set
-     */
-    public void setNameModel(NameModel nameModel)
-    {
-        this.nameModel = nameModel;
-    }
+	/**
+	 * Sets the nameModel.
+	 * 
+	 * @param nameModel
+	 *            The nameModel to set
+	 */
+	public void setNameModel(NameModel nameModel) {
+		this.nameModel = nameModel;
+	}
 }

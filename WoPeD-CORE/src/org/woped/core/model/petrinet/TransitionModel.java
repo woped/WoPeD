@@ -25,6 +25,7 @@ package org.woped.core.model.petrinet;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.model.CreationMap;
+import org.woped.core.model.IntPair;
 
 /**
  * @author Simon Landes
@@ -32,130 +33,114 @@ import org.woped.core.model.CreationMap;
  * 
  * 29.03.2003
  */
-public class TransitionModel extends PetriNetModelElement
-{
+public class TransitionModel extends PetriNetModelElement {
 
-    private Toolspecific    toolSpecific;
+	private Toolspecific toolSpecific;
 
-    private boolean         fireing   = false;
-    private boolean         activated = false;
+	private boolean fireing = false;
 
-    public static final int WIDTH     = 40;
-    public static final int HEIGHT    = 40;
+	private boolean activated = false;
 
-    private int             transType = 0;
+	public static final int WIDTH = 40;
 
-    public TransitionModel(CreationMap map)
-    {
-        super(map);
-        toolSpecific = new Toolspecific(getId());
-        AttributeMap attributes = getAttributes();
-        GraphConstants.setMoveable(attributes, true);
-        GraphConstants.setEditable(attributes, false);
-        GraphConstants.setSizeable(attributes, false);
-        setAttributes(attributes);
-    }
+	public static final int HEIGHT = 40;
 
-    /**
-     * Returns the toolSpecific.
-     * 
-     * @return Toolspecific
-     */
-    public Toolspecific getToolSpecific()
-    {
-        return toolSpecific;
-    }
+	private int transType = 0;
 
-    /**
-     * Sets the toolSpecific.
-     * 
-     * @param toolSpecific
-     *            The toolSpecific to set
-     */
-    public void setToolSpecific(Toolspecific toolSpecific)
-    {
-        this.toolSpecific = toolSpecific;
-    }
+	public TransitionModel(CreationMap map) {
+		super(map);
+		toolSpecific = new Toolspecific(getId());
+		AttributeMap attributes = getAttributes();
+		GraphConstants.setMoveable(attributes, true);
+		GraphConstants.setEditable(attributes, false);
+		GraphConstants.setSizeable(attributes, false);
+		setAttributes(attributes);
+	}
 
-    public boolean hasTrigger()
-    {
-        return (getToolSpecific().getTrigger() != null);
-    }
-    
-    public boolean hasResource()
-    {
-        return (getToolSpecific().getTransResource() !=null);
-    }
+	/**
+	 * Returns the toolSpecific.
+	 * 
+	 * @return Toolspecific
+	 */
+	public Toolspecific getToolSpecific() {
+		return toolSpecific;
+	}
 
-    /**
-     * @return
-     */
-    public boolean isFireing()
-    {
-        return fireing;
-    }
+	/**
+	 * Sets the toolSpecific.
+	 * 
+	 * @param toolSpecific
+	 *            The toolSpecific to set
+	 */
+	public void setToolSpecific(Toolspecific toolSpecific) {
+		this.toolSpecific = toolSpecific;
+	}
 
-    /**
-     * @param b
-     */
-    public void setFireing(boolean b)
-    {
-        fireing = b;
-    }
+	public boolean hasTrigger() {
+		return (getToolSpecific().getTrigger() != null);
+	}
 
-    public int getDefaultWidth()
-    {
-        return WIDTH;
-    }
+	public boolean hasResource() {
+		return (getToolSpecific().getTransResource() != null);
+	}
 
-    public int getDefaultHeight()
-    {
-        return HEIGHT;
-    }
+	/**
+	 * @return
+	 */
+	public boolean isFireing() {
+		return fireing;
+	}
 
-    /**
-     * @return Returns the activated.
-     */
-    public boolean isActivated()
-    {
-        return activated;
-    }
+	/**
+	 * @param b
+	 */
+	public void setFireing(boolean b) {
+		fireing = b;
+	}
 
-    public CreationMap getCreationMap()
-    {
-        CreationMap map = super.getCreationMap();
-        if (hasTrigger())
-        {
-            map.setTriggerType(getToolSpecific().getTrigger().getTriggertype());
-            map.setTriggerPosition(getToolSpecific().getTrigger().getPosition());
-        }
-        if (hasResource())
-        {
-            map.setResourceOrgUnit(getToolSpecific().getTransResource().getTransOrgUnitName());
-            map.setResourceRole(getToolSpecific().getTransResource().getTransRoleName());
-        }
+	public int getDefaultWidth() {
+		return WIDTH;
+	}
 
-        return map;
-    }
+	public int getDefaultHeight() {
+		return HEIGHT;
+	}
 
-    /**
-     * @param activated
-     *            The activated to set.
-     */
-    public void setActivated(boolean activated)
-    {
-        this.activated = activated;
-    }
+	/**
+	 * @return Returns the activated.
+	 */
+	public boolean isActivated() {
+		return activated;
+	}
 
-    public String getToolTipText()
-    {
-        return "Transition\nID: " + getId() + "\nName: " + getNameValue();
-    }
+	public CreationMap getCreationMap() {
+		CreationMap map = super.getCreationMap();
+		if (hasTrigger()) {
+			map.setTriggerType(getToolSpecific().getTrigger().getTriggertype());
+			map.setTriggerPosition(new IntPair(getToolSpecific().getTrigger().getPosition()));
+		}
+		if (hasResource()) {
+			map.setResourceOrgUnit(getToolSpecific().getTransResource().getTransOrgUnitName());
+			map.setResourceRole(getToolSpecific().getTransResource().getTransRoleName());
+		}
 
-    public int getType()
-    {
-        return PetriNetModelElement.TRANS_SIMPLE_TYPE;
-    }
-    
-    
+		return map;
+	}
+
+	/**
+	 * @param activated
+	 *            The activated to set.
+	 */
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
+	public String getToolTipText() {
+		return "Transition\nID: " + getId() + "\nName: " + getNameValue();
+	}
+
+	public int getType() {
+		return PetriNetModelElement.TRANS_SIMPLE_TYPE;
+	}
+
 }

@@ -203,7 +203,7 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
             // Insert wants an Object-Array
             Object[] arg = new Object[] { edge };
             // Insert the Edge and its Attributes
-            getModel().insert(new Object[] { edge }, nest, cs, null, null);
+            getGraphLayoutCache().insert(new Object[] { edge }, nest, cs, null, null);
             //
         } else
         {

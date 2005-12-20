@@ -22,6 +22,7 @@
  */
 package org.woped.core.model;
 
+import java.awt.Point;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.io.Serializable;
@@ -50,6 +51,8 @@ public class ArcModel extends DefaultEdge implements Serializable {
 
 	private Vector unknownToolSpecs = new Vector();
 
+	private ElementContext elementContext = null;
+
 	/**
 	 * Constructor for ArcModel.
 	 */
@@ -64,6 +67,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	 */
 	public ArcModel(Object userObject) {
 		super(userObject);
+		this.elementContext = new ElementContext();
 		initAttributes();
 	}
 
@@ -71,20 +75,12 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		AttributeMap map = getAttributes();
 		GraphConstants.setEditable(map, false);
 		GraphConstants.setBendable(map, true);
-		GraphConstants
-				.setLineStyle(map, ConfigurationManager.getConfiguration()
-						.isRoundRouting() ? GraphConstants.STYLE_BEZIER
-						: GraphConstants.STYLE_ORTHOGONAL);
-		GraphConstants.setEndFill(map, ConfigurationManager.getConfiguration()
-				.isFillArrowHead());
-		GraphConstants.setEndSize(map, ConfigurationManager.getConfiguration()
-				.getArrowheadSize() == 0 ? ConfigurationManager
-				.getStandardConfiguration().getArrowheadSize()
-				: ConfigurationManager.getConfiguration().getArrowheadSize());
-		GraphConstants.setLineWidth(map, ConfigurationManager
-				.getConfiguration().getArrowWidth() == 0 ? ConfigurationManager
-				.getStandardConfiguration().getArrowWidth()
-				: ConfigurationManager.getConfiguration().getArrowWidth());
+		GraphConstants.setLineStyle(map, ConfigurationManager.getConfiguration().isRoundRouting() ? GraphConstants.STYLE_BEZIER : GraphConstants.STYLE_ORTHOGONAL);
+		GraphConstants.setEndFill(map, ConfigurationManager.getConfiguration().isFillArrowHead());
+		GraphConstants.setEndSize(map, ConfigurationManager.getConfiguration().getArrowheadSize() == 0 ? ConfigurationManager.getStandardConfiguration().getArrowheadSize() : ConfigurationManager
+				.getConfiguration().getArrowheadSize());
+		GraphConstants.setLineWidth(map, ConfigurationManager.getConfiguration().getArrowWidth() == 0 ? ConfigurationManager.getStandardConfiguration().getArrowWidth() : ConfigurationManager
+				.getConfiguration().getArrowWidth());
 		GraphConstants.setDisconnectable(map, false);
 		// GraphConstants.setRouting(map, Edge.)
 		changeAttributes(map);
@@ -144,8 +140,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	}
 
 	public String getTargetId() {
-		return ((AbstractElementModel) ((DefaultPort) getTarget()).getParent())
-				.getId();
+		return ((AbstractElementModel) ((DefaultPort) getTarget()).getParent()).getId();
 	}
 
 	/**
@@ -188,8 +183,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	 */
 	public void addPoint(Point2D c, int index) {
 		GraphConstants.getPoints(getAttributes()).add(index, c);
-		LoggerManager.debug(Constants.CORE_LOGGER, "Point added "
-				+ c.toString());
+		LoggerManager.debug(Constants.CORE_LOGGER, "Point added " + c.toString());
 	}
 
 	/**
@@ -240,32 +234,41 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	 * @param l
 	 */
 	public void removePoint(Point2D l) {
+		int pos = getPointPosition(l, 10);
 		AttributeMap map = getAttributes();
 		List points = GraphConstants.getPoints(map);
+		points.remove(pos);
+		GraphConstants.setPoints(map, points);
+		changeAttributes(map);
+		LoggerManager.debug(Constants.CORE_LOGGER, "Point removed");
+
+	}
+
+	public boolean hasPoint(Point2D p, int tolerance) {
+		return (getPointPosition(p, tolerance)) != -1;
+	}
+
+	private int getPointPosition(Point2D p, int tolerance) {
+		List points = GraphConstants.getPoints(getAttributes());
 		int pos = -1;
 		double dist = Double.MAX_VALUE;
 		for (int i = 1; i < points.size() - 1; i++) {
 			Point2D a = (Point2D) points.get(i);
 
-			double tp = Point2D
-					.distance(a.getX(), a.getY(), l.getX(), l.getY());
+			double tp = Point2D.distance(a.getX(), a.getY(), p.getX(), p.getY());
 			if (tp < dist) {
 				dist = tp;
 				pos = i;
 			}
 		}
-		if (dist < 10) {
-			points.remove(pos);
-			GraphConstants.setPoints(map, points);
-			changeAttributes(map);
-			LoggerManager.debug(Constants.CORE_LOGGER, "Point removed");
+		if (dist < tolerance) {
+			return pos;
 		}
-
+		return -1;
 	}
 
 	public static double getHeightC(Point2D A, Point2D B, Point2D C) {
-		double distAC = Point2D
-				.distance(A.getX(), A.getY(), C.getX(), C.getY());
+		double distAC = Point2D.distance(A.getX(), A.getY(), C.getX(), C.getY());
 		double thetaAB = Math.atan2(B.getY() - A.getY(), B.getX() - A.getX());
 		double thetaAC = Math.atan2(C.getY() - A.getY(), C.getX() - A.getX());
 		double height = Math.sin(thetaAC - thetaAB) * distAC;
@@ -309,12 +312,19 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		List points = GraphConstants.getPoints(getAttributes());
 		Vector newPoints = new Vector();
 		for (int i = 1; i < points.size() - 1; i++) {
-			newPoints.add(points.get(i));
+			newPoints.add(new IntPair((int) ((Point2D) points.get(i)).getX(), (int) ((Point2D) points.get(i)).getY()));
 		}
 		map.setArcPoints(newPoints);
 		return map;
 	}
 
+	public ElementContext getElementContext() {
+		return elementContext;
+	}
+
+	public void setElementContext(ElementContext elementContext) {
+		this.elementContext = elementContext;
+	}
 	// /**
 	// * Generic edge router that will create bezier control points to separate
 	// * overlapping edges between two cells.

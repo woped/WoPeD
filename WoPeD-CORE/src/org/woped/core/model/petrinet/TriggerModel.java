@@ -41,179 +41,160 @@ import org.woped.core.model.CreationMap;
  * 
  * 10.05.2003
  */
-public class TriggerModel extends DefaultGraphCell
-{
+public class TriggerModel extends DefaultGraphCell {
 
-    private int             triggertype;
-    private String          triggerId;
-    private String          ownerId;
+	private int triggertype;
 
-    public static final int TRIGGER_RESOURCE = 200;
-    public static final int TRIGGER_EXTERNAL = 201;
-    public static final int TRIGGER_TIME     = 202;
+	private String triggerId;
 
-    public static final int DEFAULT_WIDTH    = 24;
-    public static final int DEFAULT_HEIGHT   = 22;
+	private String ownerId;
 
-    /**
-     * Constructor for TriggerModel.
-     * 
-     * @param type
-     * @param jGraphModel
-     */
-    public TriggerModel(CreationMap creationMap)
-    {
-        super();
-        this.setId("trigger" + creationMap.getId());
-        this.setTriggertype(creationMap.getTriggerType());
-        this.setOwnerId(creationMap.getId());
+	public static final int TRIGGER_RESOURCE = 200;
 
-        AttributeMap attributes = getAttributes();
-        GraphConstants.setOpaque(attributes, false);
-        GraphConstants.setBorderColor(attributes, Color.black);
-        GraphConstants.setMoveable(attributes, true);
-        GraphConstants.setEditable(attributes, false);
-        GraphConstants.setSizeable(attributes, false);
-        GraphConstants.setSize(attributes, new Dimension(getDefaultWidth(), getDefaultHeight()));
-        setAttributes(attributes);
-        
-        if (creationMap.getTriggerPosition() != null) {
-            setPosition(creationMap.getTriggerPosition());
-        }
-    }
+	public static final int TRIGGER_EXTERNAL = 201;
 
-    public void setId(String triggerId)
-    {
-    // TODO Auto-generated method stub
-    }
+	public static final int TRIGGER_TIME = 202;
 
-    public String getId()
-    {
-        return triggerId;
-    }
+	public static final int DEFAULT_WIDTH = 24;
 
-    /**
-     * Returns the triggertype.
-     * 
-     * @return int
-     */
-    public int getTriggertype()
-    {
-        return triggertype;
-    }
+	public static final int DEFAULT_HEIGHT = 22;
 
-    /**
-     * Sets the triggertype.
-     * 
-     * @param triggertype
-     *            The triggertype to set
-     */
-    public void setTriggertype(int triggertype)
-    {
-        this.triggertype = triggertype;
-    }
+	/**
+	 * Constructor for TriggerModel.
+	 * 
+	 * @param type
+	 * @param jGraphModel
+	 */
+	public TriggerModel(CreationMap creationMap) {
+		super();
+		this.setId("trigger" + creationMap.getId());
+		this.setTriggertype(creationMap.getTriggerType());
+		this.setOwnerId(creationMap.getId());
 
-    /**
-     * Returns the ownerId.
-     * 
-     * @return String
-     */
-    public String getOwnerId()
-    {
-        return ownerId;
-    }
+		AttributeMap attributes = getAttributes();
+		GraphConstants.setOpaque(attributes, false);
+		GraphConstants.setBorderColor(attributes, Color.black);
+		GraphConstants.setMoveable(attributes, true);
+		GraphConstants.setEditable(attributes, false);
+		GraphConstants.setSizeable(attributes, false);
+		GraphConstants.setSize(attributes, new Dimension(getDefaultWidth(), getDefaultHeight()));
+		setAttributes(attributes);
 
-    /**
-     * Sets the ownerId.
-     * 
-     * @param ownerId
-     *            The ownerId to set
-     */
-    public void setOwnerId(String ownerId)
-    {
-        this.ownerId = ownerId;
-    }
+		if (creationMap.getTriggerPosition() != null) {
+			setPosition(new Point(creationMap.getTriggerPosition().getX1(), creationMap.getTriggerPosition().getX2()));
+		}
+	}
 
+	public void setId(String triggerId) {
+		// TODO Auto-generated method stub
+	}
 
-    public String getToolTipText()
-    {
-        return null;
-    }
+	public String getId() {
+		return triggerId;
+	}
 
-    public int getType()
-    {
-        return PetriNetModelElement.TRIGGER_TYPE;
-    }
-    
-    /* ### general methods ### */
+	/**
+	 * Returns the triggertype.
+	 * 
+	 * @return int
+	 */
+	public int getTriggertype() {
+		return triggertype;
+	}
 
-    public void setPosition(Point2D p)
-    {
-        setPosition((int) p.getX(), (int) p.getY());
-    }
+	/**
+	 * Sets the triggertype.
+	 * 
+	 * @param triggertype
+	 *            The triggertype to set
+	 */
+	public void setTriggertype(int triggertype) {
+		this.triggertype = triggertype;
+	}
 
-    public Point getPosition()
-    {
-        Rectangle2D rect = GraphConstants.getBounds(getAttributes());
-        if (rect != null)
-        {
-            return new Point((int) rect.getX(), (int) rect.getY());
-        }
-        return null;
-    }
+	/**
+	 * Returns the ownerId.
+	 * 
+	 * @return String
+	 */
+	public String getOwnerId() {
+		return ownerId;
+	}
 
-    public void setPosition(int x, int y)
-    {
-        AttributeMap map = getAttributes();
-        GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
-        changeAttributes(map);
-    }
+	/**
+	 * Sets the ownerId.
+	 * 
+	 * @param ownerId
+	 *            The ownerId to set
+	 */
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+	}
 
-    public int getX()
-    {
-        return (int) GraphConstants.getBounds(getAttributes()).getX();
-    }
+	public String getToolTipText() {
+		return null;
+	}
 
-    public int getY()
-    {
-        return (int) GraphConstants.getBounds(getAttributes()).getY();
-    }
-    
+	public int getType() {
+		return PetriNetModelElement.TRIGGER_TYPE;
+	}
 
-    /**
-     * TODO: Documention
-     */
-    public int getDefaultWidth()
-    {
-        return DEFAULT_WIDTH;
-    }
+	/* ### general methods ### */
 
-    /**
-     * TODO: Documentation
-     */
-    public int getDefaultHeight()
-    {
-        return DEFAULT_HEIGHT;
-    }
+	public void setPosition(Point2D p) {
+		setPosition((int) p.getX(), (int) p.getY());
+	}
 
-    public void setSize(Dimension dim)
-    {
-    // NOT POSSIBLE
+	public Point getPosition() {
+		Rectangle2D rect = GraphConstants.getBounds(getAttributes());
+		if (rect != null) {
+			return new Point((int) rect.getX(), (int) rect.getY());
+		}
+		return null;
+	}
 
-    }
+	public void setPosition(int x, int y) {
+		AttributeMap map = getAttributes();
+		GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
+		changeAttributes(map);
+	}
 
-    public void setSize(int width, int height)
-    {
-    // NOT POSSIBLE
-    }
+	public int getX() {
+		return (int) GraphConstants.getBounds(getAttributes()).getX();
+	}
 
-    public int getHeight()
-    {
-        return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getHeight());
-    }
+	public int getY() {
+		return (int) GraphConstants.getBounds(getAttributes()).getY();
+	}
 
-    public int getWidth()
-    {
-        return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getWidth());
-    }
+	/**
+	 * TODO: Documention
+	 */
+	public int getDefaultWidth() {
+		return DEFAULT_WIDTH;
+	}
+
+	/**
+	 * TODO: Documentation
+	 */
+	public int getDefaultHeight() {
+		return DEFAULT_HEIGHT;
+	}
+
+	public void setSize(Dimension dim) {
+		// NOT POSSIBLE
+
+	}
+
+	public void setSize(int width, int height) {
+		// NOT POSSIBLE
+	}
+
+	public int getHeight() {
+		return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getHeight());
+	}
+
+	public int getWidth() {
+		return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getWidth());
+	}
 }

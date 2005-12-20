@@ -225,7 +225,7 @@ public class ModelElementContainer implements Serializable {
 
 	/**
 	 * Method getReferenceElements. Returns the all
-	 * <code>PetriNetModelElement</code>, of which an Element with a special
+	 * <code>AbstractElementModel</code>, of which an Element with a special
 	 * id is source.
 	 * 
 	 * @param id

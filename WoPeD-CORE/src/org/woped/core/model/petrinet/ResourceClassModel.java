@@ -1,12 +1,14 @@
 package org.woped.core.model.petrinet;
 
+import java.io.Serializable;
+
 /**
  * @author waschtl
  * 
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
-public class ResourceClassModel
+public class ResourceClassModel implements Serializable
 {
     private String          name         = null;
     private int             type         = -1;

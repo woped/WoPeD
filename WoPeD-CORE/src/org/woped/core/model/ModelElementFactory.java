@@ -35,6 +35,8 @@ import org.woped.core.model.uml.OperatorModel;
 import org.woped.core.model.uml.StateModel;
 import org.woped.core.utilities.LoggerManager;
 
+import sun.text.Normalizer.Mode;
+
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
@@ -63,8 +65,7 @@ public class ModelElementFactory {
 				} else if (map.getType() == PetriNetModelElement.SUBP_TYPE) {
 					/* CREATING A SUBPROCESS */
 					modElement = new SubProcessModel(map);
-				} else if (map.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE
-						&& map.getOperatorType() == -1) {
+				} else if (map.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE && map.getOperatorType() == -1) {
 					/* CREATING A SIMPLE TRANSITION */
 					modElement = new TransitionModel(map);
 				} else if (map.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
@@ -72,8 +73,7 @@ public class ModelElementFactory {
 					modElement = new OperatorTransitionModel(map);
 					// modElement.setId(id);
 					// create inital simple trans
-					TransitionModel simpleTrans = ((OperatorTransitionModel) modElement)
-							.addNewSimpleTrans();
+					TransitionModel simpleTrans = ((OperatorTransitionModel) modElement).addNewSimpleTrans();
 					// ((OperatorTransitionModel)
 					// modElement).setInitalSimpleTrans(simpleTrans);
 				} else if (map.getType() == AbstractUMLElementModel.ACTIVITY_TYPE) {
@@ -85,14 +85,14 @@ public class ModelElementFactory {
 
 				}
 
-				// add the DefaultPort as child to the DefaultGraphCell
-				modElement.add(new PortCell());
+				if (modElement != null) {
+					// add the DefaultPort as child to the DefaultGraphCell
+					modElement.add(new PortCell());
+				}
 				return modElement;
 
 			} catch (Exception ee) {
-				LoggerManager.error(Constants.CORE_LOGGER,
-						"Could not create model! Type not supported ("
-								+ map.getType() + ")");
+				LoggerManager.error(Constants.CORE_LOGGER, "Could not create model! Type not supported (" + map.getType() + ")");
 				ee.printStackTrace();
 				return null;
 			}
@@ -103,8 +103,7 @@ public class ModelElementFactory {
 
 	}
 
-	public static ArcModel createArcModel(String arcId, DefaultPort source,
-			DefaultPort target) {
+	public static ArcModel createArcModel(String arcId, DefaultPort source, DefaultPort target) {
 
 		if (arcId != null) {
 			ArcModel arc = new ArcModel();
