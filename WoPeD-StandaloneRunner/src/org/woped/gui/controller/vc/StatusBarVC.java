@@ -59,7 +59,8 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar {
 	
 	private int progressBarCount;
 	
-	private ProgressBarThread progressBarThread = null;
+
+	// private ProgressBarThread progressBarThread = null;
 	
 	public static final String ID_PREFIX = "STATUSBAR_VC_";
 

@@ -41,6 +41,7 @@ import org.woped.core.controller.IStatusBar;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
+import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
@@ -340,9 +341,9 @@ private void createEditorFromBeans() throws Exception  {
 						.intValue(), places[i].getGraphics().getPosition()
 						.getY().intValue());
 				if (places[i].getGraphics().isSetDimension())
-					map.setSize(new Dimension(places[i].getGraphics()
+					map.setSize(new IntPair(new Dimension(places[i].getGraphics()
 							.getDimension().getX().intValue(), places[i]
-							.getGraphics().getDimension().getY().intValue()));
+							.getGraphics().getDimension().getY().intValue())));
 				map.setName(places[i].getName().getText());
 				try {
 					/*
@@ -434,7 +435,7 @@ private void createEditorFromBeans() throws Exception  {
 						.getX().intValue(), transitions[i].getGraphics()
 						.getPosition().getY().intValue());
 				if (transitions[i].getGraphics().isSetDimension())
-					map.setSize(new Dimension(transitions[i].getGraphics()
+					map.setSize(new IntPair(transitions[i].getGraphics()
 							.getDimension().getX().intValue(), transitions[i]
 							.getGraphics().getDimension().getY().intValue()));
 				map.setName(transitions[i].getName().getText());

@@ -47,6 +47,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import org.woped.core.model.CreationMap;
+import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
@@ -679,7 +680,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
                 map.setResourceRole(selectedRole);
                 if (transition.hasResource())
                 {
-                    map.setResourcePosition(transition.getToolSpecific().getTransResource().getPosition());
+                    map.setResourcePosition(new IntPair(transition.getToolSpecific().getTransResource().getPosition()));
                 }
                 getEditor().createTransitionResource(map);
             } else
