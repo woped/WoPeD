@@ -28,17 +28,17 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultButtonModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -52,8 +52,8 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.Utils;
-import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.gui.ToolBarButton;
 import org.woped.editor.utilities.Messages;
 
 /**
@@ -64,44 +64,61 @@ import org.woped.editor.utilities.Messages;
  */
 public class TransitionPropertyEditor extends JDialog implements ActionListener
 {
-    private JPanel                contentPanel                  = null;
     private JPanel                namePanel                     = null;
     private JLabel                nameLabel                     = null;
     private JTextField            nameTextField                 = null;
+    private JLabel                idLabel                       = null;
 
     // Trigger
     private JPanel                triggerPanel                  = null;
-    private JLabel                triggerLabel                  = null;
     private JRadioButton          triggerNoneRadioButton        = null;
     private JRadioButton          triggerResourceRadioButton    = null;
     private JRadioButton          triggerMessageRadioButton     = null;
     private JRadioButton          triggerTimeRadioButton        = null;
     private ButtonGroup           triggerButtonGroup            = null;
-    private DefaultButtonModel    triggerButtonModel            = null;
+    private JPanel                triggerNoneEntry              = null;
+    private JPanel                triggerResourceEntry          = null;
+    private JPanel                triggerMessageEntry           = null;
+    private JPanel                triggerTimeEntry              = null;
+    private JLabel                triggerResourceIcon           = null;
+    private JLabel                triggerMessageIcon            = null;
+    private JLabel                triggerTimeIcon               = null;
 
     // Branching
     private JPanel                branchingPanel                = null;
-    private JLabel                branchingLabel                = null;
     private JRadioButton          branchingNoneRadioButton      = null;
-    private JRadioButton          branchingAndSplittRadioButton = null;
+    private JRadioButton          branchingAndSplitRadioButton  = null;
     private JRadioButton          branchingAndJoinRadioButton   = null;
     private JRadioButton          branchingXorSplittRadioButton = null;
     private JRadioButton          branchingXorJoinRadioButton   = null;
     private ButtonGroup           branchingButtonGroup          = null;
+    private JPanel                branchingNoneEntry            = null;
+    private JPanel                branchingAndSplitEntry        = null;
+    private JPanel                branchingAndJoinEntry         = null;
+    private JPanel                branchingXorSplitEntry        = null;
+    private JPanel                branchingXorJoinEntry         = null;
+    private JLabel                branchingNoneIcon             = null;
+    private JLabel                branchingAndSplitIcon         = null;
+    private JLabel                branchingAndJoinIcon          = null;
+    private JLabel                branchingXorSplitIcon         = null;
+    private JLabel                branchingXorJoinIcon          = null;
 
     // Duration
     private JPanel                durationPanel                 = null;
+    private JLabel                durationLabel                = null;
     private JTextField            durationTextField             = null;
-    private JLabel                durationLabel                 = null;
     private JComboBox             durationComboBox              = null;
-    private static final String   COMBOBOX_HOURS_TEXT           = Messages.getString("Transition.Resources.Hours");
-    private static final String   COMBOBOX_MINUTES_TEXT         = Messages.getString("Transition.Resources.Minutes");
-    private static final String   COMBOBOX_SECONDS_TEXT         = Messages.getString("Transition.Resources.Seconds");
+    private static final String   COMBOBOX_YEARS_TEXT           = Messages.getString("Transition.Properties.Years");
+    private static final String   COMBOBOX_MONTHS_TEXT          = Messages.getString("Transition.Properties.Months");
+    private static final String   COMBOBOX_WEEKS_TEXT           = Messages.getString("Transition.Properties.Weeks");
+    private static final String   COMBOBOX_DAYS_TEXT            = Messages.getString("Transition.Properties.Days");
+    private static final String   COMBOBOX_HOURS_TEXT           = Messages.getString("Transition.Properties.Hours");
+    private static final String   COMBOBOX_MINUTES_TEXT         = Messages.getString("Transition.Properties.Minutes");
+    private static final String   COMBOBOX_SECONDS_TEXT         = Messages.getString("Transition.Properties.Seconds");
     private static final Object[] durationComboBoxA             = { COMBOBOX_HOURS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_SECONDS_TEXT };
 
     // Resource
-    private JPanel                resourcePanel                 = null;
-    private JLabel                resourceLabel                 = null;
+    private JPanel                resourcePanel                 = null;    
     private JLabel                resourceRoleLabel             = null;
     private JLabel                resourceOrgUnitLabel          = null;
     private JComboBox             resourceRoleComboBox          = null;
@@ -109,20 +126,24 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private DefaultComboBoxModel  roleComboBoxModel             = null;
     private DefaultComboBoxModel  orgUnitComboBoxModel          = null;
 
-    private static final String   TRIGGER_NONE                  = Messages.getString("Transition.Resources.Trigger.None");;
-    private static final String   TRIGGER_MESSAGE               = Messages.getString("Transition.Resources.Trigger.Message");;
-    private static final String   TRIGGER_RESOURCE              = Messages.getString("Transition.Resources.Trigger.Resource");;
-    private static final String   TRIGGER_TIME                  = Messages.getString("Transition.Resources.Trigger.Time");;
+    private static final String   TRIGGER_NONE                  = Messages.getString("Transition.Properties.Trigger.None");;
+    private static final String   TRIGGER_MESSAGE               = Messages.getString("Transition.Properties.Trigger.Message");;
+    private static final String   TRIGGER_RESOURCE              = Messages.getString("Transition.Properties.Trigger.Resource");;
+    private static final String   TRIGGER_TIME                  = Messages.getString("Transition.Properties.Trigger.Time");;
+
+    private static final String   ROLE_NONE                     = Messages.getString("Transition.Properties.Group.None");;
+    private static final String   GROUP_NONE                    = Messages.getString("Transition.Properties.Role.None");;
+
     // Button Panel
     private JPanel                buttonPanel                   = null;
-    private JButton               buttonOk                      = null;
-    private JButton               buttonCancel                  = null;
-    private JButton               buttonApply                   = null;
+    private ToolBarButton         buttonOk                      = null;
+    private ToolBarButton         buttonCancel                  = null;
+    private ToolBarButton         buttonApply                   = null;
+ 
     // allgemein
-
     private TransitionModel       transition                    = null;
     private EditorVC              editor                        = null;
-
+ 
     public TransitionPropertyEditor(Frame owner, TransitionModel transition, EditorVC editor)
     {
         super(owner, true);
@@ -131,41 +152,49 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         this.setVisible(false);
         initialize();
         readTriggerConfiguration();
-        this.setSize(280, 400);
+        this.setSize(400, 450);
         this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
     }
 
     private void initialize()
     {
+        this.setTitle(Messages.getString("Transition.Properties"));
         JPanel contentPanel = new JPanel();
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         contentPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.fill = GridBagConstraints.BOTH;
         c.weightx = 1;
+        c.weighty = 1;
+        
         c.gridx = 0;
         c.gridy = 0;
+        c.insets = new Insets(0, 0, 0, 0);
         contentPanel.add(getNamePanel(), c);
 
         c.gridx = 0;
         c.gridy = 1;
+        c.insets = new Insets(0, 0, 0, 0);
         contentPanel.add(getTriggerPanel(), c);
 
         c.gridx = 0;
         c.gridy = 2;
+        c.insets = new Insets(0, 0, 0, 0);
         contentPanel.add(getBranchingPanel(), c);
 
         c.gridx = 0;
         c.gridy = 3;
+        c.insets = new Insets(0, 0, 0, 0);
         contentPanel.add(getDurationPanel(), c);
 
         c.gridx = 0;
         c.gridy = 4;
+        c.insets = new Insets(0, 0, 0, 0);
         contentPanel.add(getResourcePanel(), c);
 
         this.getContentPane().add(contentPanel, BorderLayout.CENTER);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-
+        getNameTextField().requestFocus();
     }
 
     private void readTriggerConfiguration()
@@ -200,17 +229,45 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             namePanel = new JPanel();
             namePanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
-            namePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Resources.Name")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            namePanel.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createTitledBorder(Messages.getString("Transition.Properties.Identification")), 
+                    BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
+            c.weightx = 1;
+            c.weighty = 1;
             c.anchor = GridBagConstraints.WEST;
             c.fill = GridBagConstraints.HORIZONTAL;
 
-            c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
+            c.gridwidth = 1;
+            c.insets = new Insets(0, 0, 0, 0);
+            namePanel.add(getNameLabel(), c);
+
+            c.gridx = 1;
+            c.gridy = 0;
+            c.gridwidth = 2;
+            c.insets = new Insets(0, 10, 0, 10);
             namePanel.add(getNameTextField(), c);
 
+            c.gridx = 3;
+            c.gridy = 0;
+            c.gridwidth = 1;
+            c.insets = new Insets(0, 40, 0, 0);
+            namePanel.add(getIdLabel(), c);
         }
+        
         return namePanel;
+    }
+
+    private JLabel getNameLabel()
+    {
+        if (nameLabel == null)
+        {
+            nameLabel = new JLabel(Messages.getString("Transition.Properties.Name") + ":");
+        }
+        
+        return nameLabel;
     }
 
     private JTextField getNameTextField()
@@ -220,46 +277,203 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             nameTextField = new JTextField(transition.getNameValue());
             nameTextField.setPreferredSize(new Dimension(150, 20));
             nameTextField.setMinimumSize(new Dimension(150, 20));
+            nameTextField.setMaximumSize(new Dimension(150, 20));
+            nameTextField.addKeyListener(new KeyListener()
+                    {
+                        public void keyPressed(KeyEvent e) 
+                        { 
+                            keyReleased(e);
+                        }
+                        public void keyTyped(KeyEvent e) 
+                        { 
+                            keyReleased(e);
+                        }
+                        public void keyReleased(KeyEvent e) 
+                        { 
+                            if (e.getKeyCode() == KeyEvent.VK_ENTER) 
+                            { 
+                                apply();
+                                TransitionPropertyEditor.this.dispose();
+                            }
+                        }
+                    });
         }
+        
         return nameTextField;
     }
 
+    private JLabel getIdLabel()
+    {
+        if (idLabel == null)
+        {
+            idLabel = new JLabel("ID: " + transition.getId());
+            idLabel.setPreferredSize(new Dimension(70,20));
+        }
+    
+        return idLabel;
+    }
+    
     // ******************************TriggerPanel*****************************************
     private JPanel getTriggerPanel()
     {
         if (triggerPanel == null)
         {
             triggerPanel = new JPanel();
-            triggerPanel.setLayout(new GridBagLayout());
-            GridBagConstraints c = new GridBagConstraints();
-            triggerPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Resources.Trigger")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            triggerPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Properties.Trigger")), 
+                    BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
             triggerButtonGroup = new ButtonGroup();
             triggerButtonGroup.add(getTriggerNoneRadioButton());
             triggerButtonGroup.add(getTriggerResourceRadioButton());
             triggerButtonGroup.add(getTriggerMessageRadioButton());
             triggerButtonGroup.add(getTriggerTimeRadioButton());
 
+            triggerPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
             c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
 
-            // c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
-            triggerPanel.add(getTriggerNoneRadioButton(), c);
+            c.insets = new Insets(0, 0, 0, 20);
+            triggerPanel.add(getTriggerNoneEntry(), c);
 
             c.gridx = 1;
             c.gridy = 0;
-            triggerPanel.add(getTriggerResourceRadioButton(), c);
+            c.insets = new Insets(0, 20, 0, 0);
+            triggerPanel.add(getTriggerResourceEntry(), c);
 
-            c.gridx = 2;
-            c.gridy = 0;
-            triggerPanel.add(getTriggerMessageRadioButton(), c);
+            c.gridx = 0;
+            c.gridy = 1;
+            c.insets = new Insets(0, 0, 0, 20);
+            triggerPanel.add(getTriggerMessageEntry(), c);
 
-            c.gridx = 3;
-            c.gridy = 0;
-            triggerPanel.add(getTriggerTimeRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 1;
+            c.insets = new Insets(0, 20, 0, 0);
+            triggerPanel.add(getTriggerTimeEntry(), c);
 
         }
+        
         return triggerPanel;
+    }
+
+    private JPanel getTriggerNoneEntry()
+    {
+        if (triggerNoneEntry == null)
+        {
+            triggerNoneEntry = new JPanel();
+            triggerNoneEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            triggerNoneEntry.add(getTriggerNoneRadioButton(), c);
+        }
+        
+        return triggerNoneEntry;
+    }
+        
+    private JPanel getTriggerResourceEntry()
+    {
+        if (triggerResourceEntry == null)
+        {
+            triggerResourceEntry = new JPanel();
+            triggerResourceEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            triggerResourceEntry.add(getTriggerResourceRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            triggerResourceEntry.add(getTriggerResourceIcon(), c);  
+        }
+        
+        return triggerResourceEntry;
+    }
+
+    private JPanel getTriggerMessageEntry()
+    {
+        if (triggerMessageEntry == null)
+        {
+            triggerMessageEntry = new JPanel();
+            triggerMessageEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            triggerMessageEntry.add(getTriggerMessageRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            triggerMessageEntry.add(getTriggerMessageIcon(), c);  
+        }
+        
+        return triggerMessageEntry;
+    }
+
+    private JPanel getTriggerTimeEntry()
+    {
+        if (triggerTimeEntry == null)
+        {
+            triggerTimeEntry = new JPanel();
+            triggerTimeEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            triggerTimeEntry.add(getTriggerTimeRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            c.insets = new Insets(0, 23, 0, 0);
+            triggerTimeEntry.add(getTriggerTimeIcon(), c);  
+        }
+        
+        return triggerTimeEntry;
+    }
+    
+    private JLabel getTriggerResourceIcon()
+    {
+        if (triggerResourceIcon == null)
+        {
+            triggerResourceIcon = new JLabel(Messages.getImageIcon("Popup.Trigger.AddResource"));
+        }
+        
+        return triggerResourceIcon;
+    }
+
+    private JLabel getTriggerMessageIcon()
+    {
+        if (triggerMessageIcon == null)
+        {
+            triggerMessageIcon = new JLabel(Messages.getImageIcon("Popup.Trigger.AddExternal"));
+        }
+        
+        return triggerMessageIcon;
+    }
+    
+    private JLabel getTriggerTimeIcon()
+    {
+        if (triggerTimeIcon == null)
+        {
+            triggerTimeIcon = new JLabel(Messages.getImageIcon("Popup.Trigger.AddTime"));
+        }
+        
+        return triggerTimeIcon;
     }
 
     private JRadioButton getTriggerNoneRadioButton()
@@ -312,12 +526,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingPanel == null)
         {
             branchingPanel = new JPanel();
-            branchingPanel.setLayout(new GridBagLayout());
-            // branchingPanel.setMinimumSize(new Dimension(345, 90));
-            // branchingPanel.setPreferredSize(new Dimension(345, 90));
-            GridBagConstraints c = new GridBagConstraints();
-            branchingPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Resources.Branching")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
-            // c.anchor = GridBagConstraints.WEST;
+            branchingPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Properties.Branching")), 
+                    BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
             branchingButtonGroup = new ButtonGroup();
             branchingButtonGroup.add(getBranchingNoneRadioButton());
             branchingButtonGroup.add(getBranchingAndSplitRadioButton());
@@ -325,24 +536,35 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             branchingButtonGroup.add(getBranchingXorSplitRadioButton());
             branchingButtonGroup.add(getBranchingXorJoinRadioButton());
 
-            // c.weightx = 1;
+            branchingPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            
             c.gridx = 0;
             c.gridy = 0;
-            branchingPanel.add(getBranchingNoneRadioButton(), c);
+            c.insets = new Insets(0, 0, 0, 20);
+            branchingPanel.add(getBranchingNoneEntry(), c);
             c.gridx = 1;
             c.gridy = 0;
-            branchingPanel.add(getBranchingAndJoinRadioButton(), c);
-            c.gridx = 1;
-            c.gridy = 1;
-            branchingPanel.add(getBranchingAndSplitRadioButton(), c);
+            c.insets = new Insets(0, 20, 0, 0);
+            branchingPanel.add(getBranchingAndSplitEntry(), c);
             c.gridx = 2;
             c.gridy = 0;
-            branchingPanel.add(getBranchingXorSplitRadioButton(), c);
+            c.insets = new Insets(0, 0, 0, 20);
+            branchingPanel.add(getBranchingAndJoinEntry(), c);
+            c.gridx = 1;
+            c.gridy = 1;
+            c.insets = new Insets(0, 20, 0, 0);
+            branchingPanel.add(getBranchingXorSplitEntry(), c);
             c.gridx = 2;
             c.gridy = 1;
-            branchingPanel.add(getBranchingXorJoinRadioButton(), c);
-
+            c.insets = new Insets(0, 0, 0, 20);
+            branchingPanel.add(getBranchingXorJoinEntry(), c);
         }
+        
         return branchingPanel;
     }
 
@@ -350,10 +572,10 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (branchingNoneRadioButton == null)
         {
-            branchingNoneRadioButton = new JRadioButton(Messages.getString("Transition.Resources.Branching.None"));
-            // TODO:
+            branchingNoneRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.None"));
             branchingNoneRadioButton.setEnabled(false);
         }
+        
         return branchingNoneRadioButton;
     }
 
@@ -361,8 +583,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (branchingAndJoinRadioButton == null)
         {
-            branchingAndJoinRadioButton = new JRadioButton(Messages.getString("Transition.Resources.Branching.AndJoin"));
-            // TODO:
+            branchingAndJoinRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.AndJoin"));
             branchingAndJoinRadioButton.setEnabled(false);
         }
         return branchingAndJoinRadioButton;
@@ -370,21 +591,19 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
 
     private JRadioButton getBranchingAndSplitRadioButton()
     {
-        if (branchingAndSplittRadioButton == null)
+        if (branchingAndSplitRadioButton == null)
         {
-            branchingAndSplittRadioButton = new JRadioButton(Messages.getString("Transition.Resources.Branching.AndSplit"));
-            // TODO:
-            branchingAndSplittRadioButton.setEnabled(false);
+            branchingAndSplitRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.AndSplit"));
+            branchingAndSplitRadioButton.setEnabled(false);
         }
-        return branchingAndSplittRadioButton;
+        return branchingAndSplitRadioButton;
     }
 
     private JRadioButton getBranchingXorSplitRadioButton()
     {
         if (branchingXorSplittRadioButton == null)
         {
-            branchingXorSplittRadioButton = new JRadioButton(Messages.getString("Transition.Resources.Branching.XorSplit"));
-            // TODO:
+            branchingXorSplittRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.XorSplit"));
             branchingXorSplittRadioButton.setEnabled(false);
         }
         return branchingXorSplittRadioButton;
@@ -394,11 +613,175 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (branchingXorJoinRadioButton == null)
         {
-            branchingXorJoinRadioButton = new JRadioButton(Messages.getString("Transition.Resources.Branching.XorJoin"));
-            // TODO:
+            branchingXorJoinRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.XorJoin"));
             branchingXorJoinRadioButton.setEnabled(false);
         }
         return branchingXorJoinRadioButton;
+    }
+
+    private JPanel getBranchingNoneEntry()
+    {
+        if (branchingNoneEntry == null)
+        {
+            branchingNoneEntry = new JPanel();
+            branchingNoneEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            branchingNoneEntry.add(getBranchingNoneRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            c.insets = new Insets(0, 20, 0, 0);
+            branchingNoneEntry.add(getBranchingNoneIcon(), c);  
+        }
+        
+        return branchingNoneEntry;
+    }
+
+    private JPanel getBranchingAndSplitEntry()
+    {
+        if (branchingAndSplitEntry == null)
+        {
+            branchingAndSplitEntry = new JPanel();
+            branchingAndSplitEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            branchingAndSplitEntry.add(getBranchingAndSplitRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            c.insets = new Insets(0, 20, 0, 0);
+            branchingAndSplitEntry.add(getBranchingAndSplitIcon(), c);  
+        }
+        
+        return branchingAndSplitEntry;
+    }
+
+    private JPanel getBranchingAndJoinEntry()
+    {
+        if (branchingAndJoinEntry == null)
+        {
+            branchingAndJoinEntry = new JPanel();
+            branchingAndJoinEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            branchingAndJoinEntry.add(getBranchingAndJoinRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            c.insets = new Insets(0, 20, 0, 0);
+            branchingAndJoinEntry.add(getBranchingAndJoinIcon(), c);  
+        }
+        
+        return branchingAndJoinEntry;
+    }
+
+    private JPanel getBranchingXorSplitEntry()
+    {
+        if (branchingXorJoinEntry == null)
+        {
+            branchingXorSplitEntry = new JPanel();
+            branchingXorSplitEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            branchingXorSplitEntry.add(getBranchingXorSplitRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            c.insets = new Insets(0, 20, 0, 0);
+            branchingXorSplitEntry.add(getBranchingXorSplitIcon(), c);  
+        }
+        
+        return branchingXorSplitEntry;
+    }
+
+     private JPanel getBranchingXorJoinEntry()
+    {
+        if (branchingXorJoinEntry == null)
+        {
+            branchingXorJoinEntry = new JPanel();
+            branchingXorJoinEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            branchingXorJoinEntry.add(getBranchingXorJoinRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            c.insets = new Insets(0, 20, 0, 0);
+            branchingXorJoinEntry.add(getBranchingXorJoinIcon(), c);  
+        }
+        
+        return branchingXorJoinEntry;
+    }
+
+    private JLabel getBranchingNoneIcon()
+    {
+        if (branchingNoneIcon == null)
+        {
+            branchingNoneIcon = new JLabel(Messages.getImageIcon("Popup.Add.Transition"));
+        }
+        
+        return branchingNoneIcon;
+    }
+    
+   private JLabel getBranchingAndSplitIcon()
+    {
+        if (branchingAndSplitIcon == null)
+        {
+            branchingAndSplitIcon = new JLabel(Messages.getImageIcon("Popup.Add.AndSplit"));
+        }
+        
+        return branchingAndSplitIcon;
+    }
+    
+    private JLabel getBranchingAndJoinIcon()
+    {
+        if (branchingAndJoinIcon == null)
+        {
+            branchingAndJoinIcon = new JLabel(Messages.getImageIcon("Popup.Add.AndJoin"));
+        }
+        
+        return branchingAndJoinIcon;
+    }
+
+    private JLabel getBranchingXorSplitIcon()
+    {
+        if (branchingXorSplitIcon == null)
+        {
+            branchingXorSplitIcon = new JLabel(Messages.getImageIcon("Popup.Add.XorSplit"));
+        }
+        
+        return branchingXorSplitIcon;
+    }
+
+    private JLabel getBranchingXorJoinIcon()
+    {
+        if (branchingXorJoinIcon == null)
+        {
+            branchingXorJoinIcon = new JLabel(Messages.getImageIcon("Popup.Add.XorJoin"));
+        }
+        
+        return branchingXorJoinIcon;
     }
 
     // *********************************DurationPanel*****************************************************
@@ -408,21 +791,37 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         {
             durationPanel = new JPanel();
             durationPanel.setLayout(new GridBagLayout());
-            durationPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Resources.Duration")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            durationPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Properties.ExecutionTime")), 
+                    BorderFactory.createEmptyBorder(5, 5, 0, 5)));
             GridBagConstraints c = new GridBagConstraints();
             c.fill = GridBagConstraints.HORIZONTAL;
-
+            c.anchor = GridBagConstraints.WEST;
             c.weightx = 1;
+            c.weighty = 1;
+            
             c.gridx = 0;
             c.gridy = 0;
-            durationPanel.add(getDurationTextfield(), c);
-            c.weightx = 0;
+            durationPanel.add(getDurationLabel(), c);
             c.gridx = 1;
             c.gridy = 0;
+            c.insets = new Insets(0, 0, 0, 10);
+            durationPanel.add(getDurationTextfield(), c);
+            c.gridx = 2;
+            c.gridy = 0;
+            c.insets = new Insets(0, 0, 0, 30);
             durationPanel.add(getDurationComboBox(), c);
         }
 
         return durationPanel;
+    }
+
+    private JLabel getDurationLabel()
+    {
+        if (durationLabel == null)
+        {
+            durationLabel = new JLabel(Messages.getString("Transition.Properties.Duration")+ ":");
+       }
+        return durationLabel;
     }
 
     private JTextField getDurationTextfield()
@@ -431,6 +830,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         {
             durationTextField = new JTextField();
             durationTextField.setText("");
+            durationTextField.setMinimumSize(new Dimension(80, 20));
             durationTextField.setEnabled(false);
         }
         return durationTextField;
@@ -441,7 +841,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (durationComboBox == null)
         {
             durationComboBox = new JComboBox(durationComboBoxA);
-            durationComboBox.setMinimumSize(new Dimension(70, 20));
+            durationComboBox.setMinimumSize(new Dimension(80, 20));
             durationComboBox.setEnabled(false);
         }
         return durationComboBox;
@@ -454,27 +854,33 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         {
             resourcePanel = new JPanel();
             resourcePanel.setLayout(new GridBagLayout());
-            resourcePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Resources.Resources")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
-            // resourcePanel.setMinimumSize(new Dimension(345, 40));
-            // resourcePanel.setPreferredSize(new Dimension(345, 40));
+            resourcePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Transition.Properties.ResourceAllocation")), 
+                    BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+            
             GridBagConstraints c = new GridBagConstraints();
+            c.fill = GridBagConstraints.HORIZONTAL;
             c.anchor = GridBagConstraints.WEST;
+            c.weightx = 1;
+            c.weighty = 1;
 
-            // c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
+            c.insets = new Insets(0, 0, 0, 0);
             resourcePanel.add(getResourceRoleLabel(), c);
 
             c.gridx = 1;
             c.gridy = 0;
+            c.insets = new Insets(0, 5, 0, 20);
             resourcePanel.add(getResourceRoleComboBox(), c);
 
             c.gridx = 2;
             c.gridy = 0;
-            resourcePanel.add(getResourceOrgUnitLabel(), c);
+            c.insets = new Insets(0, 0, 0, 0);
+           resourcePanel.add(getResourceOrgUnitLabel(), c);
 
             c.gridx = 3;
             c.gridy = 0;
+            c.insets = new Insets(0, 5, 0, 15);
             resourcePanel.add(getResourceOrgUnitComboBox(), c);
 
         }
@@ -485,7 +891,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (resourceRoleLabel == null)
         {
-            resourceRoleLabel = new JLabel(" " + Messages.getString("Transition.Resources.Role")+ ": ");
+            resourceRoleLabel = new JLabel(" " + Messages.getString("Transition.Properties.Role")+ ": ");
         }
         return resourceRoleLabel;
     }
@@ -494,7 +900,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (resourceOrgUnitLabel == null)
         {
-            resourceOrgUnitLabel = new JLabel(" " + Messages.getString("Transition.Resources.Group")+ ": ");
+            resourceOrgUnitLabel = new JLabel(" " + Messages.getString("Transition.Properties.Group")+ ": ");
         }
         return resourceOrgUnitLabel;
     }
@@ -506,14 +912,14 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             if (((PetriNetModelProcessor) getEditor().getModelProcessor()).getRoles() != null)
             {
                 roleComboBoxModel = new DefaultComboBoxModel();
-                roleComboBoxModel.addElement(TRIGGER_NONE);
+                roleComboBoxModel.addElement(ROLE_NONE);
                 for (Iterator iter = ((PetriNetModelProcessor) getEditor().getModelProcessor()).getRoles().iterator(); iter.hasNext();)
                 {
                     roleComboBoxModel.addElement(iter.next());
                 }
                 if (!transition.hasResource())
                 {
-                    roleComboBoxModel.setSelectedItem(TRIGGER_NONE);
+                    roleComboBoxModel.setSelectedItem(ROLE_NONE);
                 } else
                 {
                     String transRole = transition.getToolSpecific().getTransResource().getTransRoleName();
@@ -533,14 +939,14 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             if (((PetriNetModelProcessor) getEditor().getModelProcessor()).getOrganizationUnits() != null)
             {
                 orgUnitComboBoxModel = new DefaultComboBoxModel();
-                orgUnitComboBoxModel.addElement(TRIGGER_NONE);
+                orgUnitComboBoxModel.addElement(GROUP_NONE);
                 for (Iterator iter = ((PetriNetModelProcessor) getEditor().getModelProcessor()).getOrganizationUnits().iterator(); iter.hasNext();)
                 {
                     orgUnitComboBoxModel.addElement(iter.next());
                 }
                 if (!transition.hasResource())
                 {
-                    orgUnitComboBoxModel.setSelectedItem(TRIGGER_NONE);
+                    orgUnitComboBoxModel.setSelectedItem(GROUP_NONE);
                 } else
                 {
                     String transOrgUnit = transition.getToolSpecific().getTransResource().getTransOrgUnitName();
@@ -558,7 +964,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (resourceRoleComboBox == null)
         {
             resourceRoleComboBox = new JComboBox(getRoleComboxBoxModel());
-            resourceRoleComboBox.setMinimumSize(new Dimension(90, 20));
+            resourceRoleComboBox.setMinimumSize(new Dimension(150, 20));
 
         }
         return resourceRoleComboBox;
@@ -569,7 +975,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (resourceOrgUnitComboBox == null)
         {
             resourceOrgUnitComboBox = new JComboBox(getOrgUnitComboxBoxModel());
-            resourceOrgUnitComboBox.setMinimumSize(new Dimension(90, 20));
+            resourceOrgUnitComboBox.setMinimumSize(new Dimension(150, 20));
         }
         return resourceOrgUnitComboBox;
     }
@@ -582,18 +988,21 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             buttonPanel.add(getButtonOk());
             buttonPanel.add(getButtonCancel());
-            buttonPanel.add(getButtonApply());
+//            buttonPanel.add(getButtonApply());
         }
         return buttonPanel;
     }
 
-    private JButton getButtonOk()
+    private ToolBarButton getButtonOk()
     {
         if (buttonOk == null)
         {
-            buttonOk = new JButton();
-            buttonOk.setText(Messages.getString("Button.OK.Title"));
+            buttonOk = new ToolBarButton(Messages.getImageIcon("Button.Ok"), 
+                    Messages.getString("Button.Ok.Title"), 
+                    ToolBarButton.TEXTORIENTATION_RIGHT);
+            
             buttonOk.setMnemonic(KeyEvent.VK_O);
+            buttonOk.setPreferredSize(new Dimension(100, 25));
             buttonOk.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -601,32 +1010,42 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
                     apply();
                     TransitionPropertyEditor.this.dispose();
                 }
-
             });
 
         }
         return buttonOk;
     }
 
-    private JButton getButtonCancel()
+    private ToolBarButton getButtonCancel()
     {
         if (buttonCancel == null)
         {
-            buttonCancel = new JButton(new DisposeWindowAction());
-            buttonCancel.setIcon(null);
+            buttonCancel = new ToolBarButton(Messages.getImageIcon("Button.Cancel"), 
+                    Messages.getString("Button.Cancel.Title"), 
+                    ToolBarButton.TEXTORIENTATION_RIGHT);
             buttonCancel.setMnemonic(KeyEvent.VK_C);
-            buttonCancel.setText(Messages.getString("Button.Cancel.Title"));
+            buttonCancel.setPreferredSize(new Dimension(100, 25));
+            buttonCancel.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    TransitionPropertyEditor.this.dispose();
+                }
+            });
         }
+ 
         return buttonCancel;
     }
 
-    private JButton getButtonApply()
+    private ToolBarButton getButtonApply()
     {
         if (buttonApply == null)
         {
-            buttonApply = new JButton();
+            buttonApply = new ToolBarButton(Messages.getImageIcon("Button.Apply"), 
+                    Messages.getString("Button.Apply.Title"), 
+                    ToolBarButton.TEXTORIENTATION_RIGHT);
             buttonApply.setMnemonic(KeyEvent.VK_A);
-            buttonApply.setText(Messages.getString("Button.Apply.Title"));
+            buttonApply.setPreferredSize(new Dimension(100, 25));
             buttonApply.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)

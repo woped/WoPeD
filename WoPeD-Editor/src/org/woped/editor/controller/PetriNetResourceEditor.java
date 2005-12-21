@@ -745,67 +745,98 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         resetClassEditing();
     }
     
-    private void removeResourceClass()
+    private boolean groupIsUsed(String groupName)
     {
-        if (roleList.isSelectionEmpty())
-        {
-            // Remove role
-            String group2remove = getGroupList().getSelectedValue().toString();
-            int j = getPetrinet().containsOrgunit(group2remove);
-            getPetrinet().getOrganizationUnits().remove(j);
-            int index = getGroupList().getSelectedIndex();
-            groupListModel.remove(index);
-            int size = groupListModel.getSize();
-            if (size == 0)
-            { 
-                // Nobody's left, disable button.
-                resourceClassRemoveButton.setEnabled(false);
+        boolean isUsed = false;
 
-            } 
-            else
-            { 
-                // Select an index.
-                if (index == groupListModel.getSize())
-                {
-                    // removed item in last position
-                    index--;
+        // TODO: Check if group is used by any transition
+        return isUsed;
+    }
+    
+    private boolean roleIsUsed(String roleName)
+    {
+        boolean isUsed = false;
+
+        // TODO: Check if role is used by any transition
+        return isUsed;
+    }
+    
+    private void removeResourceClass()
+    {        
+        if (roleList.isSelectionEmpty())
+        {      
+             // Remove role
+            String group2remove = getGroupList().getSelectedValue().toString();
+            if (! groupIsUsed(group2remove))
+            {
+                int j = getPetrinet().containsOrgunit(group2remove);
+                getPetrinet().getOrganizationUnits().remove(j);
+                int index = getGroupList().getSelectedIndex();
+                groupListModel.remove(index);
+                int size = groupListModel.getSize();
+                if (size == 0)
+                {   
+                    // Nobody's left, disable button.
+                    resourceClassRemoveButton.setEnabled(false);
+
+                } 
+                else
+                { 
+                    // Select an index.
+                    if (index == groupListModel.getSize())
+                    {
+                        // removed item in last position
+                        index--;
+                    }
+                    getGroupList().setSelectedIndex(index);
+                    getGroupList().ensureIndexIsVisible(index);
                 }
-                getGroupList().setSelectedIndex(index);
-                getGroupList().ensureIndexIsVisible(index);
+            
+                // Mapping löschen
+                getPetrinet().getResourceMapping().remove(group2remove);
+                getResourceClassNameTextField().setText("");
             }
-            // Mapping löschen
-            getPetrinet().getResourceMapping().remove(group2remove);
-            getResourceClassNameTextField().setText("");
+            else
+            {
+                // TODO: JOptionPane error message
+            }
         } 
         else
         {
             // Remove group
             String role2remove = getRoleList().getSelectedValue().toString();
-            int j = getPetrinet().containsRole(role2remove);
-            getPetrinet().getRoles().remove(j);
-            int index2 = getRoleList().getSelectedIndex();
-            roleListModel.remove(index2);
-            int size2 = roleListModel.getSize();
-            if (size2 == 0)
-            { 
-                // Nobody's left, disable button.
-                resourceClassRemoveButton.setEnabled(false);
-            } 
-            else
-            { 
-                // Select an index.
-                if (index2 == roleListModel.getSize())
-                {
-                    // removed item in last position
-                    index2--;
+            if (! roleIsUsed(role2remove))
+            {
+                int j = getPetrinet().containsRole(role2remove);
+                getPetrinet().getRoles().remove(j);
+                int index2 = getRoleList().getSelectedIndex();
+                roleListModel.remove(index2);
+                int size2 = roleListModel.getSize();
+                if (size2 == 0)
+                { 
+                    // Nobody's left, disable button.
+                    resourceClassRemoveButton.setEnabled(false);
+                } 
+                else
+                { 
+                    // Select an index.
+                    if (index2 == roleListModel.getSize())
+                    {
+                        // removed item in last position
+                        index2--;
+                    }
+                    getRoleList().setSelectedIndex(index2);
+                    getRoleList().ensureIndexIsVisible(index2);
                 }
-                getRoleList().setSelectedIndex(index2);
-                getRoleList().ensureIndexIsVisible(index2);
-            }
 
-            // Mapping löschen
-            getPetrinet().getResourceMapping().remove(role2remove);
-            getResourceClassNameTextField().setText("");
+                // Mapping löschen
+                getPetrinet().getResourceMapping().remove(role2remove);
+                getResourceClassNameTextField().setText("");
+            }
+            else
+            {
+                // TODO: JOptionPane error message
+            }
         }
         
         resetClassEditing();
