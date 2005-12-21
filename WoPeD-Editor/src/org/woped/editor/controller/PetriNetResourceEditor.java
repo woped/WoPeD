@@ -211,9 +211,9 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceClassRolesLabel == null)
         {
             resourceClassRolesLabel = new JLabel(Messages.getString("PetriNet.Resources.Roles") + ":");
-            resourceClassRolesLabel.setMinimumSize(new Dimension(90,20));       
-            resourceClassRolesLabel.setMaximumSize(new Dimension(90,20));       
-            resourceClassRolesLabel.setPreferredSize(new Dimension(90,20));       
+            resourceClassRolesLabel.setMinimumSize(new Dimension(80, 20));       
+            resourceClassRolesLabel.setMaximumSize(new Dimension(80, 20));       
+            resourceClassRolesLabel.setPreferredSize(new Dimension(80, 20));       
         }
 
         return resourceClassRolesLabel;
@@ -224,9 +224,9 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceClassGroupsLabel == null)
         {
             resourceClassGroupsLabel = new JLabel(Messages.getString("PetriNet.Resources.Groups") + ":");
-            resourceClassGroupsLabel.setPreferredSize(new Dimension(90,20));       
-            resourceClassGroupsLabel.setMaximumSize(new Dimension(90,20));       
-            resourceClassGroupsLabel.setMinimumSize(new Dimension(90,20));       
+            resourceClassGroupsLabel.setPreferredSize(new Dimension(80, 20));       
+            resourceClassGroupsLabel.setMaximumSize(new Dimension(80, 20));       
+            resourceClassGroupsLabel.setMinimumSize(new Dimension(80, 20));       
        }
 
         return resourceClassGroupsLabel;
@@ -872,10 +872,10 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     {
         if (resourceListLabel == null)
         {
-            resourceListLabel = new JLabel(Messages.getString("PetriNet.Resources.Title") + ":");
-            resourceListLabel.setMinimumSize(new Dimension(90,20));       
-            resourceListLabel.setMaximumSize(new Dimension(90,20));       
-            resourceListLabel.setPreferredSize(new Dimension(90,20));       
+            resourceListLabel = new JLabel(Messages.getString("PetriNet.Resources.Resource") + ":");
+            resourceListLabel.setMinimumSize(new Dimension(80, 20));       
+            resourceListLabel.setMaximumSize(new Dimension(80, 20));       
+            resourceListLabel.setPreferredSize(new Dimension(80, 20));       
         }
 
         return resourceListLabel;
