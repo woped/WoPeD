@@ -22,6 +22,7 @@ import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.model.uml.OperatorModel;
 import org.woped.core.model.uml.StateModel;
 import org.woped.core.utilities.Utils;
+import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
 
@@ -163,13 +164,12 @@ public class EditorEventProcessor extends AbstractEventProcessor
                     if (element instanceof TransitionModel)
                     {
                         TransitionPropertyEditor prop = new TransitionPropertyEditor((JFrame) getMediator().getUi(), (TransitionModel) element, editor);
-                        prop.setLocation(Utils.getCenterPoint(editor.getBounds(), prop.getSize()));
-                        prop.setVisible(true);
-                    } else
+                    } 
+                    if (element instanceof PlaceModel)
                     {
-                        //TODO:
+                        PlacePropertyEditor prop = new PlacePropertyEditor((JFrame) getMediator().getUi(), (PlaceModel) element, editor);
                     }
-                }
+               }
                 break;
             case AbstractViewEvent.ADD_POINT:
                 editor.addPointToSelectedArc();

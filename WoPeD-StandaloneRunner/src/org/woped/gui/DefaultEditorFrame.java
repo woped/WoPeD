@@ -26,6 +26,8 @@
 package org.woped.gui;
 
 import java.awt.BorderLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
@@ -71,6 +73,17 @@ public class DefaultEditorFrame extends JInternalFrame
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), getEditor());
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
+            propScrollPane.addFocusListener(new FocusListener()
+                    {
+                        public void focusGained(FocusEvent e)
+                        {
+                            getPetriNetResourceEditor().reset();                         
+                        }
+                        public void focusLost(FocusEvent e)
+                        {
+                            ;                         
+                        }
+                    });
         } else
         {
             this.getContentPane().add(editor, BorderLayout.CENTER);

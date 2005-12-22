@@ -76,6 +76,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private JPanel                 resourceClassButtonPanel               = null;
     private ToolBarButton          resourceClassRemoveButton              = null;
     private ToolBarButton          resourceClassNewButton                 = null;
+    private ToolBarButton          resourceClassOkButton                  = null;
 
     private JPanel                 resourceClassEditLabelPanel            = null;
     private JLabel                 resourceClassNameLabel                 = null;
@@ -114,6 +115,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private JLabel                 resourceUnAssignedLabel                = null;
     private ToolBarButton          resourceAssignToButton                 = null;
     private ToolBarButton          resourceUnAssignButton                 = null;
+    private ToolBarButton          resourceOkButton                       = null;
     private ResourceModel          currentResource                        = null;
     private DefaultListModel       resourceListModel                      = null;
     private String                 currentUnAssignedResourceClass         = null;
@@ -158,6 +160,12 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         this.add(getResourcePanel(), c);
     }
 
+    public void reset()
+    {
+        resetClassEditing();
+        resetEditing();
+    }
+    
     private JPanel getResourceClassPanel()
     {
         if (resourceClassPanel == null)
@@ -407,6 +415,10 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             resourceClassButtonPanel.add(getResourceClassNewButton(), c);
             c.gridx = 0;
             c.gridy = 1;
+            c.insets = new Insets(0, 0, 0, 0);
+            resourceClassButtonPanel.add(getResourceClassOkButton(), c);
+            c.gridx = 0;
+            c.gridy = 2;
             c.insets = new Insets(10, 0, 10, 0);
             resourceClassButtonPanel.add(getResourceClassRemoveButton(), c);
         }
@@ -432,6 +444,27 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         }
         
         return resourceClassNewButton;
+    }
+
+    private ToolBarButton getResourceClassOkButton()
+    {
+        if (resourceClassOkButton == null)
+        {
+            resourceClassOkButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.Ok"), 
+                    Messages.getString("PetriNet.Resources.Ok.Title"), 
+                    ToolBarButton.TEXTORIENTATION_RIGHT);
+ 
+            resourceClassOkButton.setEnabled(false);
+            resourceClassOkButton.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    addResourceClass();
+                }
+            });
+        }
+        
+        return resourceClassOkButton;
     }
 
     private ToolBarButton getResourceClassRemoveButton()
@@ -621,10 +654,13 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         resourceClassNewButton.setEnabled(false);
         getRoleList().setEnabled(false);
         getGroupList().setEnabled(false);
+        resetEditing();
+        getResourceClassNameTextField().requestFocus();
     }
         
     private void editResourceClass()
     {
+        getResourceClassOkButton().setEnabled(true);
         getResourceClassTypeJComboBox().setEnabled(true);
         getResourceClassNameTextField().setEditable(true);
         getResourceClassNameTextField().requestFocus();
@@ -853,6 +889,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getResourceClassTypeJComboBox().setEnabled(false);
         getResourceClassRemoveButton().setEnabled(false);
         getResourceClassNewButton().setEnabled(true);
+        getResourceClassOkButton().setEnabled(false);
         getResourceClassNewButton().requestFocus();
    
     }
@@ -967,6 +1004,10 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
           resourceButtonPanel.add(getResourceNewButton(), c);
           c.gridx = 0;
           c.gridy = 1;
+          c.insets = new Insets(0, 0, 0, 0);
+          resourceButtonPanel.add(getResourceOkButton(), c);
+          c.gridx = 0;
+          c.gridy = 2;
           c.insets = new Insets(10, 0, 10, 0);
           resourceButtonPanel.add(getResourceRemoveButton(), c);
       }
@@ -1113,29 +1154,35 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             GridBagConstraints c = new GridBagConstraints();
             c.weightx = 1;
             c.weighty = 1;
+
             c.gridx = 0;
             c.gridy = 0;
-            c.insets = new Insets(5, 0, 0, 5);
+            c.insets = new Insets(5, 0, 0, 20);
             resourceAssignPanel.add(getResourceUnAssignedLabel(), c);
 
             c.gridx = 1;
             c.gridy = 0;
+            c.insets = new Insets(5, 20, 0, 0);
             resourceAssignPanel.add(getResourceAssignedLabel(), c);
 
             c.gridx = 0;
             c.gridy = 1;
+            c.insets = new Insets(0, 0, 0, 20);
             resourceAssignPanel.add(getResourceUnAssignedScrollPane(), c);
 
             c.gridx = 1;
             c.gridy = 1;
+            c.insets = new Insets(0, 20, 0, 0);
             resourceAssignPanel.add(getResourceAssignedScrollPane(), c);
 
             c.gridx = 0;
             c.gridy = 2;
+            c.insets = new Insets(5, 0, 0, 20);
             resourceAssignPanel.add(getResourceAssignToButton(), c);
 
             c.gridx = 1;
             c.gridy = 2;
+            c.insets = new Insets(5, 20, 0, 0);
             resourceAssignPanel.add(getResourceUnAssignButton(), c);
         }
         
@@ -1232,6 +1279,26 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceNewButton;
     }
 
+    private ToolBarButton getResourceOkButton()
+    {
+        if (resourceOkButton == null)
+        {
+            resourceOkButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.Ok"), 
+                    Messages.getString("PetriNet.Resources.Ok.Title"), 
+                    ToolBarButton.TEXTORIENTATION_RIGHT);
+            resourceOkButton.setEnabled(false);
+            resourceOkButton.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    addResource();
+                }
+            });
+        }
+        
+        return resourceOkButton;
+    }
+
     private ToolBarButton getResourceRemoveButton()
     {
         if (resourceRemoveButton == null)
@@ -1292,16 +1359,22 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getResourceEditNameTextField().setText("");
         getResourceNewButton().setEnabled(false);
         getResourceRemoveButton().setEnabled(false);
+        getResourceOkButton().setEnabled(true);
         getResourceList().setEnabled(false);
+        getResourceList().clearSelection();
         getResourceEditNameTextField().setEditable(true);
+        resetClassEditing();
         getResourceEditNameTextField().requestFocus();
     }
     
     private void editResource()
     {
         showResourceAssignments();
+        resetClassEditing();
         getResourceEditNameTextField().setEditable(true);
+        getResourceOkButton().setEnabled(true);
         getResourceEditNameTextField().requestFocus();
+
     }
    
     private boolean checkSyntax(String str)
@@ -1375,6 +1448,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getResourceRemoveButton().setEnabled(false);
         clearResourceAssignments();
         getResourceNewButton().setEnabled(true);
+        getResourceOkButton().setEnabled(false);
         getResourceNewButton().requestFocus(); 
     }
     

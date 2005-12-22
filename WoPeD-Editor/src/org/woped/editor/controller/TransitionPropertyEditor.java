@@ -154,6 +154,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         readTriggerConfiguration();
         this.setSize(400, 450);
         this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
+        this.setVisible(true);
     }
 
     private void initialize()
