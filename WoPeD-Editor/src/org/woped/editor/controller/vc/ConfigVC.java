@@ -383,7 +383,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         if (okButton == null)
         {
             okButton = new JButton();
-            okButton.setText(Messages.getString("Button.OK.Title"));
+            okButton.setText(Messages.getString("Button.Ok.Title"));
             okButton.setMnemonic(KeyEvent.VK_O);
             okButton.addActionListener(new ActionListener()
             {
