@@ -1,8 +1,13 @@
 package org.woped.editor.controller;
 
+import java.awt.event.ActionEvent;
 import java.util.HashMap;
 
+import javax.swing.Action;
+
+import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IEditor;
 import org.woped.editor.action.WoPeDAction;
 
 
@@ -91,9 +96,14 @@ public class ActionFactory
     public final static String ACTIONID_ARRANGE                = "Menu.Window.Arrange";
 
     private static HashMap     STATIC_ACTION_MAP               = null;
+    
+    private static HashMap	   SELECT_EDITOR_SELECT_ACTION	   = new HashMap();
+    
+    private static ApplicationMediator AM 					   = null;
 
     public static HashMap createStaticActions(ApplicationMediator am)
     {
+    	AM=am;
         STATIC_ACTION_MAP = new HashMap();
 
         STATIC_ACTION_MAP.put(ACTIONID_NEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.NEW, null, ACTIONID_NEW));
@@ -133,21 +143,21 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_WOFLAN), VisualController.WOFLAN, VisualController.IGNORE, VisualController.IGNORE);
         /* Drawmode Actions */
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_PLACE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_PLACE, null, ACTIONID_DRAWMODE_PLACE));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_PLACE), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_PLACE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_PLACE), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_PLACE);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_TRANSITION, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_TRANSITION, null, ACTIONID_DRAWMODE_TRANSITION));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_TRANSITION), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_TRANSITION);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_TRANSITION), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_TRANSITION);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_ANDSPLIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_ANDSPLIT, null, ACTIONID_DRAWMODE_ANDSPLIT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_ANDSPLIT), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_AND_SPLIT);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_ANDSPLIT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_AND_SPLIT);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_ANDJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_ANDJOIN, null, ACTIONID_DRAWMODE_ANDJOIN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_ANDJOIN), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_AND_JOIN);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_ANDJOIN), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_AND_JOIN);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_XORSPLIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_XORSPLIT, null, ACTIONID_DRAWMODE_XORSPLIT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLIT), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLIT);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLIT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLIT);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_XORJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_XORJOIN, null, ACTIONID_DRAWMODE_XORJOIN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORJOIN), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_XOR_JOIN);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORJOIN), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_XOR_JOIN);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_XORSPLITJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_XORSPLITJOIN, null, ACTIONID_DRAWMODE_XORSPLITJOIN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLITJOIN), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLITJOIN);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLITJOIN), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLITJOIN);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_SUB, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_SUB, null, ACTIONID_DRAWMODE_SUB));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_SUB), VisualController.IGNORE, VisualController.IGNORE, VisualController.DRAWMODE_SUBPROCESS);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_SUB), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_SUBPROCESS);
 
         /* VIEW */
         STATIC_ACTION_MAP.put(ACTIONID_STRETCH, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.STRETCH, null, ACTIONID_STRETCH));
@@ -164,7 +174,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_REDO, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REDO, null, ACTIONID_REDO));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REDO), VisualController.CAN_REDO, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_UNDO, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.UNDO, null, ACTIONID_UNDO));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_UNDO), VisualController.CAN_REDO, VisualController.IGNORE, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_UNDO), VisualController.CAN_UNDO, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_UNGROUP, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.UNGROUP, null, ACTIONID_UNGROUP));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_UNGROUP), VisualController.ANY_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_GROUP, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.GROUP, null, ACTIONID_GROUP));
@@ -261,4 +271,39 @@ public class ActionFactory
     {
         return (WoPeDAction) getStaticActionMap().get(id);
     }
+    
+    public static Action getSelectEditorAction(IEditor editor){
+    	if (!(SELECT_EDITOR_SELECT_ACTION.get(editor) instanceof Action))
+    	{
+    		Action result = new EditorSelectAction(editor);
+    			SELECT_EDITOR_SELECT_ACTION.put(editor, result);
+    	}
+    	return (Action)SELECT_EDITOR_SELECT_ACTION.get(editor);
+    	
+    }
+    private static class EditorSelectAction extends WoPeDAction
+    {
+    	
+    	private IEditor m_editor = null;
+
+		public EditorSelectAction(IEditor editor) {
+			super("Action.SelectEditor",new Object[]{editor});
+			m_editor=editor;
+			
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			if (!isSelected())
+			{
+				AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
+			}
+			else
+			{
+				AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.INCONIFY_EDITOR));
+			}
+		}
+    	
+    }
 }
+    
+

@@ -31,11 +31,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Vector;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
 import javax.swing.Box;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -43,8 +46,10 @@ import javax.swing.JMenuItem;
 import org.woped.config.WoPeDRecentFile;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
+import org.woped.core.gui.IEditorList;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.utilities.Messages;
@@ -57,13 +62,16 @@ import org.woped.gui.controller.ViewEvent;
  * 
  * @author Thomas Pohl
  */
-public class MenuBarVC extends JMenuBar implements IViewController
+public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
 {
     // ViewControll
     private Vector             viewListener             = new Vector(1, 3);
     private String             id                       = null;
     public static final String ID_PREFIX                = "MENUBAR_VC_";
-
+    
+    private Hashtable m_editorMenuItems = new Hashtable(); 
+    private JMenuItem m_windowEmptyItem = null;
+    
     // private UserInterface m_containingWindow;
 
     private JMenu              m_fileMenu               = null;
@@ -770,7 +778,11 @@ public class MenuBarVC extends JMenuBar implements IViewController
 
             m_windowMenu.add(getCascadeWindowsMenuItem());
             m_windowMenu.add(getArrangeWindowsMenuItem());
-            m_windowMenu.add(getFramesMenu());
+            m_windowMenu.addSeparator();
+            m_windowEmptyItem = new JMenuItem(Messages.getString("Menu.Window.Frames.empty"));
+            m_windowEmptyItem.setEnabled(false);
+            m_windowMenu.add(m_windowEmptyItem);
+            
         }
         return m_windowMenu;
     }
@@ -862,4 +874,32 @@ public class MenuBarVC extends JMenuBar implements IViewController
             viewlistener.viewEventPerformed(viewevent);
         }
     }
+
+	public void addEditor(IEditor editor) {
+		m_windowMenu.remove(m_windowEmptyItem);
+		m_editorMenuItems.put(editor, m_windowMenu.add(new JCheckBoxMenuItem(ActionFactory.getSelectEditorAction(editor))));
+	}
+
+	public void removeEditor(IEditor editor) {
+		JMenuItem menuItem = (JMenuItem)m_editorMenuItems.get(editor);
+		if (menuItem!=null)
+		{
+			m_windowMenu.remove(menuItem);
+			m_editorMenuItems.remove(editor);
+			if (m_editorMenuItems.isEmpty())
+			{
+				m_windowMenu.add(m_windowEmptyItem);
+			}
+		}
+	}
+
+	public void selectEditor(IEditor editor) {
+		JMenuItem menuItem = (JMenuItem)m_editorMenuItems.get(editor);
+		Iterator itr = m_editorMenuItems.values().iterator();
+		while (itr.hasNext())
+		{
+			JMenuItem curElement =((JMenuItem)itr.next());
+			curElement.setSelected(menuItem==curElement);
+		}
+	}
 }

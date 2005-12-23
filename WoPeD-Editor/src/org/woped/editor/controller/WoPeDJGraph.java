@@ -106,15 +106,8 @@ public class WoPeDJGraph extends AbstractGraph {
 		this.setHighlightColor(Color.BLUE);
 
 		// TODO: setAutoSizeOnValueChange(true);
-		// this.m_undoManager = new GraphUndoManager()
-		// {
-		// public void undoableEditHappened(UndoableEditEvent e)
-		// {
-		// super.undoableEditHappened(e);
-		// updateHistoryButtons();
-		// }
-		// };
-		// this.getModel().addUndoableEditListener(m_undoManager);
+		if (undoManager!=null)
+			this.getModel().addUndoableEditListener(undoManager);
 	}
 
 	protected void updateHistoryButtons() {

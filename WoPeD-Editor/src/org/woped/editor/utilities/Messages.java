@@ -63,6 +63,25 @@ public abstract class Messages
             return '!' + key + '!';
         }
     }
+    public static String getString(String key, Object[] params)
+    {
+    	StringBuffer result = new StringBuffer(getString(key));
+    	if (params!=null)
+    	{
+    		for (int i=0;i< params.length;i++)
+    		{
+    			if (params[i]!=null)
+    			{    				
+	    			int pos = -1;
+	    			while ((pos = result.indexOf("%"+i))>-1)
+	    			{
+	    				result.replace(pos,pos + ("%"+i).length(),params[i].toString());
+	    			}
+    			}
+    		}
+    	}
+    	return result.toString();
+    }
 
     public static String getStringForLocale(String key, Locale locale)
     {
@@ -80,6 +99,11 @@ public abstract class Messages
     public static String getTitle(String propertiesPrefix)
     {
         return getString(propertiesPrefix + ".Title");
+    }
+
+    public static String getTitle(String propertiesPrefix, Object[] args)
+    {
+        return getString(propertiesPrefix + ".Title", args);
     }
 
     public static String getIconLocation(String propertiesPrefix)

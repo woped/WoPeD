@@ -15,20 +15,22 @@ import javax.swing.border.BevelBorder;
 
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
+import org.woped.core.gui.IEditorList;
+import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
 
-public class TaskBarVC extends JPanel implements IViewController
+public class TaskBarVC extends JPanel implements IViewController, IEditorList
 {
 
     private String             id                 = null;
     private Vector             viewListener       = new Vector(1, 3);
     public static final String ID_PREFIX          = "TASKBAR_VC";
 
-    private EditorVC           selectedEditor     = null;
-    private EditorVC           lastSelectedEditor = null;
+    private IEditor           selectedEditor     = null;
     private HashMap            actions            = new HashMap();
 
     public TaskBarVC(String id)
@@ -39,41 +41,35 @@ public class TaskBarVC extends JPanel implements IViewController
         setPreferredSize(new Dimension(800, 25));
     }
 
-    public void selectEditor(EditorVC editor)
+    public void selectEditor(IEditor editor)
     {
         if (actions.get(editor) != null)
         {
-            lastSelectedEditor = selectedEditor;
             selectedEditor = editor;
             for (Iterator iter = actions.values().iterator(); iter.hasNext();)
             {
-                ((TaskBarButton) iter.next()).setSelected(false);
+                ((JToggleButton) iter.next()).setSelected(false);
             }
-            ((TaskBarButton) actions.get(editor)).setSelected(true);
+            ((JToggleButton) actions.get(editor)).setSelected(true);
         }
     }
 
-    public void addEditor(EditorVC editor)
+    public void addEditor(IEditor editor)
     {
-        TaskBarButton button = new TaskBarButton(editor);
+        JToggleButton button = new JToggleButton(ActionFactory.getSelectEditorAction(editor));//new TaskBarButton(editor);
         actions.put(editor, button);
         this.add(button);
         selectEditor(editor);
     }
 
-    public void removeEditor(EditorVC editor)
+    public void removeEditor(IEditor editor)
     {
-        this.remove((Component) actions.get(editor));
+    	if (actions.get(editor)!=null)
+    		remove((JToggleButton) actions.get(editor));
         actions.remove(editor);
         validate();
         selectedEditor = null;
-        if (lastSelectedEditor != null && !actions.isEmpty())
-        {
-            selectEditor(lastSelectedEditor);
-        } else
-        {
-
-        }
+        repaint();
     }
 
     public void addViewListener(IViewListener listener)
@@ -120,11 +116,11 @@ public class TaskBarVC extends JPanel implements IViewController
 
     class TaskBarButton extends JToggleButton implements ActionListener
     {
-        EditorVC editor;
+        IEditor editor;
 
-        TaskBarButton(EditorVC editor)
+        TaskBarButton(IEditor editor)
         {
-            super(editor.getFileName(), DefaultStaticConfiguration.DEFAULTEDITORFRAMEICON);
+            super(editor.toString(), DefaultStaticConfiguration.DEFAULTEDITORFRAMEICON);
             this.editor = editor;
             this.setPreferredSize(new Dimension(100, 20));
             addActionListener(this);
@@ -132,7 +128,7 @@ public class TaskBarVC extends JPanel implements IViewController
 
         public void actionPerformed(ActionEvent e)
         {
-            if (!editor.equals(getSelectedEditor()) || TaskBarButton.this.isSelected())
+            if (!editor.equals(getSelectedEditor()) || isSelected())
             {
                 fireViewEvent(new EditorViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
             } else
@@ -142,12 +138,7 @@ public class TaskBarVC extends JPanel implements IViewController
         }
     }
 
-    public EditorVC getLastSelectedEditor()
-    {
-        return lastSelectedEditor;
-    }
-
-    public EditorVC getSelectedEditor()
+    public IEditor getSelectedEditor()
     {
         return selectedEditor;
     }

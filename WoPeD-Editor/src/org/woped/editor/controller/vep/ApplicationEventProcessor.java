@@ -10,6 +10,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.gui.IEditorList;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
@@ -40,27 +41,38 @@ public class ApplicationEventProcessor extends AbstractEventProcessor {
 		switch (event.getOrder()) {
 		case AbstractViewEvent.NEW:
 			currentEditor = getWopedMediator().createEditorVC(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
-			TaskBarVC taskbar = null;
-			if ((taskbar = ((TaskBarVC) getMediator().getViewController(TaskBarVC.ID_PREFIX))) == null) {
-				taskbar = ((TaskBarVC) getWopedMediator().createViewController(ApplicationMediator.VIEWCONTROLLER_TASKBAR));
+			Iterator editorListIt = getMediator().getEditorLists().iterator();
+			while(editorListIt.hasNext())
+			{
+				((IEditorList)editorListIt.next()).addEditor(currentEditor);
 			}
-			taskbar.addEditor(currentEditor);
 			if (getMediator().getUi() != null) {
 				getMediator().getUi().addEditor(currentEditor);
 			}
-			// TODO: update MenuVC
+			VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, currentEditor));
 			break;
 		case AbstractViewEvent.CLOSE:
-			((TaskBarVC) getMediator().getViewController(TaskBarVC.ID_PREFIX)).removeEditor(currentEditor);
+			editorListIt = getMediator().getEditorLists().iterator();
+			while(editorListIt.hasNext())
+			{
+				((IEditorList)editorListIt.next()).removeEditor(currentEditor);
+			}
 			getMediator().removeViewController(currentEditor);
 			getMediator().getUi().removeEditor(currentEditor);
+			VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, currentEditor));
 			break;
 		case AbstractViewEvent.SELECT_EDITOR:
 			selectEditor(currentEditor);
+			editorListIt = getMediator().getEditorLists().iterator();
+			while(editorListIt.hasNext())
+			{
+				((IEditorList)editorListIt.next()).selectEditor(currentEditor);
+			}
 			break;
 
 		case AbstractViewEvent.INCONIFY_EDITOR:
 			getMediator().getUi().hideEditor(currentEditor);
+			VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, currentEditor));
 			break;
 
 		case AbstractViewEvent.DRAWMODE_PLACE:
@@ -150,10 +162,6 @@ public class ApplicationEventProcessor extends AbstractEventProcessor {
 
 	private void selectEditor(EditorVC editor) {
 		editor.getContainer().setVisible(true);
-		TaskBarVC taskBar = ((TaskBarVC) getMediator().getViewController(TaskBarVC.ID_PREFIX));
-		if (taskBar != null && taskBar.getSelectedEditor() != editor) {
-			taskBar.selectEditor(editor);
-		}
 		VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "FrameSelection", null, editor));
 		if (getMediator().getUi().getEditorFocus() != editor) {
 			getMediator().getUi().requestEditorFocus(editor);

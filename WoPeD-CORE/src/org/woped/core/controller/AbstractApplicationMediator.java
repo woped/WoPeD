@@ -10,6 +10,8 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
@@ -18,6 +20,7 @@ import javax.swing.UIManager;
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IConfiguration;
+import org.woped.core.gui.IEditorList;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 
@@ -33,6 +36,8 @@ public abstract class AbstractApplicationMediator implements IViewListener {
 	private VEPController vepController = null;
 
 	private IUserInterface ui = null;
+	
+	LinkedList editorLists = new LinkedList();
 
 	public AbstractApplicationMediator(IUserInterface ui, IConfiguration conf) {
 		viewControllerMap = new HashMap();
@@ -144,6 +149,10 @@ public abstract class AbstractApplicationMediator implements IViewListener {
 	public void addViewController(IViewController viewController) {
 		viewController.addViewListener(this);
 		viewControllerMap.put(viewController.getId(), viewController);
+		if (viewController instanceof IEditorList)
+		{
+			editorLists.add(viewController);
+		}
 	}
 
 	public IViewController getViewController(String id) {
@@ -189,4 +198,10 @@ public abstract class AbstractApplicationMediator implements IViewListener {
 		return iwC;
 	}
 	
+	
+	public List getEditorLists()
+	{
+		
+		return (List)editorLists.clone();
+	}
 }

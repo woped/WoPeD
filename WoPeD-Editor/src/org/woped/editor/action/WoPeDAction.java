@@ -97,23 +97,35 @@ public class WoPeDAction extends AbstractAction {
 		this(null, -1, -1, null, propertiesPrefix);
 	}
 
+	public WoPeDAction(String propertiesPrefix, Object[] args) {
+		this(null, -1, -1, null, propertiesPrefix, args);
+	}
+
 	/**
 	 * @param arg0
 	 */
 	public WoPeDAction(AbstractApplicationMediator am, int type, int order,
 			Object data, String propertiesPrefix) {
+		this(am, type, order, data, propertiesPrefix, null);
+	}
+
+	/**
+	 * @param arg0
+	 */
+	public WoPeDAction(AbstractApplicationMediator am, int type, int order,
+			Object data, String propertiesPrefix, Object[] args) {
 		super();
 		this.type = type;
 		this.order = order;
 		this.am = am;
 		this.data = data;
 		if (propertiesPrefix != null) {
-			putValue(NAME, Messages.getTitle(propertiesPrefix));
+			putValue(NAME, Messages.getTitle(propertiesPrefix, args));
 			putValue(SMALL_ICON, Messages.getImageIcon(propertiesPrefix));
 			putValue(MNEMONIC_KEY, new Integer(Messages
 					.getMnemonic(propertiesPrefix)));
 			putValue(ACCELERATOR_KEY, Messages.getShortcut(propertiesPrefix));
-			putValue(SHORT_DESCRIPTION, Messages.getTitle(propertiesPrefix));
+			putValue(SHORT_DESCRIPTION, Messages.getTitle(propertiesPrefix, args));
 		}
 	}
 

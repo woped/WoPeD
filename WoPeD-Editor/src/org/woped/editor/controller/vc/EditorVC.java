@@ -1474,4 +1474,9 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 		this.modelProcessor = modelProcessor;
 		getGraph().drawNet(modelProcessor);
 	}
+    
+    public String toString()
+    {
+    	return getFileName();
+    }
 }
