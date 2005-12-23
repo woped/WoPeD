@@ -116,6 +116,8 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     public static final int         CAN_REDO                       = 26;
 
     public static final int         DRAWMODE_XOR_SPLITJOIN         = 27;
+    
+    public static final int			ELEMENT_SELECTION			   = 28;
 
     private static final int        MAX_ID                         = 30;
     
@@ -392,8 +394,6 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
                 selectedCell = graph.getSelectionCell();
             }
             boolean noSelection = (selectedCell == null);
-            setStatus(NO_SELECTION, noSelection);
-            setStatus(ANY_SELECTION, !noSelection);
             boolean routedArcSelected = false;
             boolean unroutedArcSelected = false;
             boolean transitionSelected = false;
@@ -438,6 +438,8 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
                 transitionSelected = false;  // changed, TF
             }
 
+            setStatus(NO_SELECTION, noSelection);
+            setStatus(ANY_SELECTION, !noSelection);
             setStatus(WOFLAN, ConfigurationManager.getConfiguration().isUseWoflan());
             setStatus(SUBPROCESS_SELECTION, subprocessSelected);
             setStatus(PLACE_SELECTION, placeSelected);
@@ -447,6 +449,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             setStatus(TRANSITION_SELECTION, transitionSelected);
             setStatus(TRIGGERED_TRANSITION_SELECTION, triggeredTransitionSelected);
             setStatus(ARC_SELECTION, arcSelected);
+            setStatus(ELEMENT_SELECTION, !noSelection && !arcSelected);
         }
     }
 

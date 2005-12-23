@@ -399,7 +399,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         {
             m_propertiesMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_OPEN_PROPERTIES));
             VisualController.getInstance().addElement(m_propertiesMenuItem, 
-                    VisualController.ANY_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
+                    VisualController.ELEMENT_SELECTION, VisualController.ELEMENT_SELECTION, VisualController.IGNORE);
        }
         return m_propertiesMenuItem;
     }
