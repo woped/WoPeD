@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.gui.action.help;
+package org.woped.gui.help.action;
 
 import java.awt.event.ActionEvent;
 

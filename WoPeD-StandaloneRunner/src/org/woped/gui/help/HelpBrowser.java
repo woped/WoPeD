@@ -50,7 +50,7 @@ import javax.swing.text.Document;
 
 import org.woped.core.utilities.LoggerManager;
 import org.woped.gui.Constants;
-import org.woped.gui.action.help.LaunchDefaultBrowserAction;
+import org.woped.gui.help.action.LaunchDefaultBrowserAction;
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>

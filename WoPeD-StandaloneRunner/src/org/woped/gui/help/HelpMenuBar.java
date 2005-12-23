@@ -33,13 +33,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import org.woped.editor.utilities.Messages;
-import org.woped.gui.action.help.BrowserBackAction;
-import org.woped.gui.action.help.BrowserCloseAction;
-import org.woped.gui.action.help.BrowserContentsAction;
-import org.woped.gui.action.help.BrowserForwardAction;
-import org.woped.gui.action.help.BrowserHomeAction;
-import org.woped.gui.action.help.BrowserRefreshAction;
-import org.woped.gui.action.help.BrowserWebpageAction;
+import org.woped.gui.help.action.BrowserBackAction;
+import org.woped.gui.help.action.BrowserCloseAction;
+import org.woped.gui.help.action.BrowserContentsAction;
+import org.woped.gui.help.action.BrowserForwardAction;
+import org.woped.gui.help.action.BrowserHomeAction;
+import org.woped.gui.help.action.BrowserRefreshAction;
+import org.woped.gui.help.action.BrowserWebpageAction;
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>

@@ -24,7 +24,7 @@
  * Created on Jan 24, 2005
  *
  */
-package org.woped.gui.action.help;
+package org.woped.gui.help.action;
 
 import java.awt.event.ActionEvent;
 

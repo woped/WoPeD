@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.utilities.Messages;
-import org.woped.gui.action.help.LaunchDefaultBrowserAction;
+import org.woped.gui.help.action.LaunchDefaultBrowserAction;
 
 public class BugReportUI extends JDialog
 {
