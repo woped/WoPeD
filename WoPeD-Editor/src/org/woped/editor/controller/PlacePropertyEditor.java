@@ -55,25 +55,29 @@ import org.woped.editor.utilities.Messages;
  */
 public class PlacePropertyEditor extends JDialog
 {
+    // General
+    private PlaceModel            place                         = null;
+    private EditorVC              editor                        = null;
+    private JPanel                contentPanel                  = null;
+
+    // Name
     private JPanel                namePanel                     = null;
     private JLabel                nameLabel                     = null;
     private JTextField            nameTextField                 = null;
     private JLabel                idLabel                       = null;
+    private JTextField            idTextField                   = null;
 
+    // Marking
     private JPanel                markingPanel                  = null;
     private JLabel                markingLabel                  = null;
     private JTextField            markingTextField              = null;
 
-    // Button Panel
+    // Buttons
     private JPanel                buttonPanel                   = null;
     private ToolBarButton         buttonOk                      = null;
     private ToolBarButton         buttonCancel                  = null;
     private ToolBarButton         buttonApply                   = null;
- 
-    // allgemein
-    private PlaceModel            place                         = null;
-    private EditorVC              editor                        = null;
- 
+  
     public PlacePropertyEditor(Frame owner, PlaceModel place, EditorVC editor)
     {
         super(owner, true);
@@ -81,7 +85,7 @@ public class PlacePropertyEditor extends JDialog
         this.editor = editor;
         this.setVisible(false);
         initialize();
-        this.setSize(350, 220);
+        this.setSize(350, 180);
         this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
         this.setVisible(true);
     }
@@ -89,30 +93,38 @@ public class PlacePropertyEditor extends JDialog
     private void initialize()
     {
         this.setTitle(Messages.getString("Place.Properties"));
-        JPanel contentPanel = new JPanel();
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        contentPanel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        c.weightx = 1;
-        c.weighty = 1;
-        
-        c.gridx = 0;
-        c.gridy = 0;
-        c.insets = new Insets(0, 0, 0, 0);
-        contentPanel.add(getNamePanel(), c);
-
-        c.gridx = 0;
-        c.gridy = 1;
-        c.insets = new Insets(0, 0, 0, 0);
-        contentPanel.add(getMarkingPanel(), c);
-
-        this.getContentPane().add(contentPanel, BorderLayout.CENTER);
+        this.getContentPane().add(getContentPanel(), BorderLayout.NORTH);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
         getNameTextField().requestFocus();
     }
 
-     // **************************NamePanel******************************
+    private JPanel getContentPanel()
+    {
+        if (contentPanel == null)
+        {
+            contentPanel = new JPanel();
+            contentPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+            contentPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.fill = GridBagConstraints.BOTH;
+            c.weightx = 1;
+            c.weighty = 1;
+    
+            c.gridx = 0;
+            c.gridy = 0;
+            c.insets = new Insets(0, 0, 0, 0);
+            contentPanel.add(getNamePanel(), c);
+
+            c.gridx = 0;
+            c.gridy = 1;
+            c.insets = new Insets(0, 0, 0, 0);
+            contentPanel.add(getMarkingPanel(), c);
+        }
+        
+        return contentPanel;
+    }
+    
+    // **************************NamePanel******************************
     private JPanel getNamePanel()
     {
         if (namePanel == null)
@@ -144,9 +156,15 @@ public class PlacePropertyEditor extends JDialog
             c.gridx = 3;
             c.gridy = 0;
             c.gridwidth = 1;
-            c.insets = new Insets(0, 40, 0, 0);
+            c.insets = new Insets(0, 10, 0, 0);
             namePanel.add(getIdLabel(), c);
-        }
+
+            c.gridx = 4;
+            c.gridy = 0;
+            c.gridwidth = 1;
+            c.insets = new Insets(0, 10, 0, 0);
+            namePanel.add(getIdTextField(), c);
+       }
         
         return namePanel;
     }
@@ -197,11 +215,23 @@ public class PlacePropertyEditor extends JDialog
     {
         if (idLabel == null)
         {
-            idLabel = new JLabel("ID: " + place.getId());
-            idLabel.setPreferredSize(new Dimension(70,20));
+            idLabel = new JLabel("Id#: ");
         }
     
         return idLabel;
+    }
+
+    private JTextField getIdTextField()
+    {
+        if (idTextField == null)
+        {
+            idTextField = new JTextField();
+            idTextField.setText("" + place.getId());
+            idTextField.setEditable(false);
+            idTextField.setPreferredSize(new Dimension(40,20));
+        }
+    
+        return idTextField;
     }
     
     // ******************************Marking Panel*****************************************
@@ -227,10 +257,10 @@ public class PlacePropertyEditor extends JDialog
             c.insets = new Insets(0, 0, 0, 0);
             markingPanel.add(getMarkingLabel(), c);
 
-            c.gridx = 1;
+            c.gridx = 2;
             c.gridy = 0;
             c.gridwidth = 2;
-            c.insets = new Insets(0, 10, 0, 10);
+            c.insets = new Insets(0, 10, 0, 0);
             markingPanel.add(getMarkingTextField(), c);
         }
         

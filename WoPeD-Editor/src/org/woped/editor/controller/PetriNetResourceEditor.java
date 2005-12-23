@@ -127,7 +127,6 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private static final String    COMBOBOX_GROUP_TEXT                    = Messages.getString("PetriNet.Resources.Group");
     private static final Object[]  ResourceClassTypeA                     = { COMBOBOX_ROLE_TEXT, COMBOBOX_GROUP_TEXT };
 
-    private EditorVC               editor                                 = null;
     private PetriNetModelProcessor petrinet;
 
     public PetriNetModelProcessor getPetrinet()
@@ -929,7 +928,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             c.gridy = 0;
             c.gridwidth = 2;
             c.fill = GridBagConstraints.HORIZONTAL;
-            c.insets = new Insets(0, 0, 0, 10);
+            c.insets = new Insets(0, 0, 0, 5);
             resourcePanel.add(getResourcePropertiesPanel(), c);
         }
         
@@ -1103,7 +1102,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             c.gridx = 0;
             c.gridy = 1;
             c.fill = GridBagConstraints.BOTH;
-            c.insets = new Insets(10, 0, 10, 0);
+            c.insets = new Insets(10, 0, 0, 0);
             resourcePropertiesPanel.add(getResourceAssignPanel(), c);         
         }
         
@@ -1123,17 +1122,17 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
 
             c.gridx = 0;
             c.gridy = 0;
-            c.insets = new Insets(0, 0, 0, 20);
+            c.insets = new Insets(10, 5, 0, 20);
             resourceEditPanel.add(getResourceEditNameLabel(), c);
 
             c.gridx = 1;
             c.gridy = 0;
-            c.insets = new Insets(0, 0, 0, 0);
+            c.insets = new Insets(10, 0, 0, 0);
             resourceEditPanel.add(getResourceEditNameTextField(), c);
 
             c.gridx = 0;
             c.gridy = 1;
-            c.insets = new Insets(10, 0, 0, 20);
+            c.insets = new Insets(10, 5, 0, 20);
             resourceEditPanel.add(getResourceEditDescriptionLabel(), c);
 
             c.gridx = 1;
@@ -1157,32 +1156,32 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
 
             c.gridx = 0;
             c.gridy = 0;
-            c.insets = new Insets(5, 0, 0, 20);
+            c.insets = new Insets(5, 0, 5, 5);
             resourceAssignPanel.add(getResourceUnAssignedLabel(), c);
 
             c.gridx = 1;
             c.gridy = 0;
-            c.insets = new Insets(5, 20, 0, 0);
+            c.insets = new Insets(5, 5, 5, 0);
             resourceAssignPanel.add(getResourceAssignedLabel(), c);
 
             c.gridx = 0;
             c.gridy = 1;
-            c.insets = new Insets(0, 0, 0, 20);
+            c.insets = new Insets(0, 0, 0, 5);
             resourceAssignPanel.add(getResourceUnAssignedScrollPane(), c);
 
             c.gridx = 1;
             c.gridy = 1;
-            c.insets = new Insets(0, 20, 0, 0);
+            c.insets = new Insets(0, 5, 0, 0);
             resourceAssignPanel.add(getResourceAssignedScrollPane(), c);
 
             c.gridx = 0;
             c.gridy = 2;
-            c.insets = new Insets(5, 0, 0, 20);
+            c.insets = new Insets(5, 0, 0, 5);
             resourceAssignPanel.add(getResourceAssignToButton(), c);
 
             c.gridx = 1;
             c.gridy = 2;
-            c.insets = new Insets(5, 20, 0, 0);
+            c.insets = new Insets(5, 5, 0, 0);
             resourceAssignPanel.add(getResourceUnAssignButton(), c);
         }
         
@@ -1506,11 +1505,13 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     {
                         String tempResourceClassName = (String) resourceAssignedList.getModel().getElementAt(resourceAssignedList.getSelectedIndex());
                         int index;
+                        
                         if (getPetrinet().containsOrgunit(tempResourceClassName) == -1)
                         {
                             index = getPetrinet().containsRole(tempResourceClassName);
                             currentAssignedResourceClass = getPetrinet().getRoles().get(index).toString();
-                        } else
+                        } 
+                        else
                         {
                             index = getPetrinet().containsOrgunit(tempResourceClassName);
                             currentAssignedResourceClass = getPetrinet().getOrganizationUnits().get(index).toString();
@@ -1634,13 +1635,5 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
         // boolean isAdjusting = e.getValueIsAdjusting();
         resourceClassNameTextField.setText(lsm.toString());
-    }
-
-    /**
-     * @return Returns the editor.
-     */
-    public EditorVC getEditor()
-    {
-        return editor;
     }
 }
