@@ -237,7 +237,7 @@ public class ConfToolsPanel extends AbstractConfPanel
 
                     }
                     jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                    jfc.showDialog(null, Messages.getString("Button.OK.Title"));
+                    jfc.showDialog(null, Messages.getString("Button.Ok.Title"));
                     if (jfc.getSelectedFile() != null)
                     {
                         getWoflanTextField().setText(jfc.getSelectedFile().getPath());

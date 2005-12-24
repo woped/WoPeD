@@ -255,7 +255,7 @@ public class ConfFilePanel extends AbstractConfPanel
 
                     }
                     jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                    jfc.showDialog(null, Messages.getString("Button.OK.Title"));
+                    jfc.showDialog(null, Messages.getString("Button.Ok.Title"));
                     if (jfc.getSelectedFile() != null)
                     {
                         getHomeDirTextField().setText(jfc.getSelectedFile().getPath());
