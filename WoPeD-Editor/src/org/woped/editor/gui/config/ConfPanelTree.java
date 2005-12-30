@@ -36,8 +36,8 @@ import org.woped.editor.utilities.Messages;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
- *         The Tree listing the <code>AbstractNodePanel</code>s.
- *         Created on: 26.11.2004 Last Change on: 26.11.2004
+ *         The Tree listing the <code>AbstractNodePanel</code>s. Created on:
+ *         26.11.2004 Last Change on: 26.11.2004
  */
 public class ConfPanelTree extends JTree
 {
@@ -59,8 +59,6 @@ public class ConfPanelTree extends JTree
         this.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
     }
 
-
-
     public void setSelectedNode(String name)
     {
         DefaultMutableTreeNode node = findNode(name, (DefaultMutableTreeNode) getModel().getRoot());
@@ -73,18 +71,20 @@ public class ConfPanelTree extends JTree
             LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not select node \"" + name + "\"");
         }
     }
-    
+
     /**
      * Adds an <code>AbstractNodePanel</code> with the given name to the Tree.
+     * 
      * @param nodePanelName
      */
     protected void addConfNodePanel(String nodePanelName)
     {
         addConfNodePanel(null, nodePanelName);
     }
-    
+
     /**
      * Adds an <code>AbstractNodePanel</code> with the given name to the Tree.
+     * 
      * @param nodePanelName
      */
     public void addConfNodePanel(String parentNodeName, String nodePanelName)

@@ -60,240 +60,284 @@ import org.woped.editor.view.ViewFactory;
  * 
  * 29.04.2003
  */
-public class WoPeDJGraph extends AbstractGraph {
+public class WoPeDJGraph extends AbstractGraph
+{
 
-	public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, ViewFactory viewFactory, int modelPorcessorType) {
-		this(model, editorMarquee, null, null, viewFactory, modelPorcessorType);
-	}
+    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, ViewFactory viewFactory, int modelPorcessorType)
+    {
+        this(model, editorMarquee, null, null, viewFactory, modelPorcessorType);
+    }
 
-	/**
-	 * Constructor for PWTJGraph.
-	 * 
-	 * @param model
-	 */
-	public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, ViewFactory viewFactory, int modelPorcessorType) {
-		this(model, editorMarquee, undoManager, null, viewFactory, modelPorcessorType);
-	}
+    /**
+     * Constructor for PWTJGraph.
+     * 
+     * @param model
+     */
+    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, ViewFactory viewFactory, int modelPorcessorType)
+    {
+        this(model, editorMarquee, undoManager, null, viewFactory, modelPorcessorType);
+    }
 
-	/**
-	 * Constructor for PWTJGraph.
-	 * 
-	 * @param model
-	 */
-	public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, GraphUI ui, ViewFactory viewFactory, int modelPorcessorType) {
-		super(model, editorMarquee, undoManager, viewFactory, modelPorcessorType);
-		if (ui != null)
-			setUI(ui);
+    /**
+     * Constructor for PWTJGraph.
+     * 
+     * @param model
+     */
+    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, GraphUI ui, ViewFactory viewFactory, int modelPorcessorType)
+    {
+        super(model, editorMarquee, undoManager, viewFactory, modelPorcessorType);
+        if (ui != null) setUI(ui);
 
-		// Tell the Graph to Select new Cells upon Insertion
-		// TODO: setSelectNewCells(true);
-		// Make Ports Visible by Default
-		this.setPortsVisible(true);
-		// Use the Grid (but don't make it Visible)
-		this.setGridEnabled(true);
-		// Set the Grid Size to 10 Pixel
-		this.setGridSize(10);
-		// Set the Snap Size to 2 Pixel
-		this.setMinimumMove(1);
-		this.setEditClickCount(1);
-		this.setAntiAliased(true);
-		this.setGridMode(JGraph.DOT_GRID_MODE);
-		this.setGridEnabled(true);
-		this.setGridSize(10.00);
-		this.setInvokesStopCellEditing(true);
-		this.setEditable(true);
-		this.setSize(300, 500);
-		this.setHighlightColor(Color.BLUE);
+        // Tell the Graph to Select new Cells upon Insertion
+        // TODO: setSelectNewCells(true);
+        // Make Ports Visible by Default
+        this.setPortsVisible(true);
+        // Use the Grid (but don't make it Visible)
+        this.setGridEnabled(true);
+        // Set the Grid Size to 10 Pixel
+        this.setGridSize(10);
+        // Set the Snap Size to 2 Pixel
+        this.setMinimumMove(1);
+        this.setEditClickCount(1);
+        this.setAntiAliased(true);
+        this.setGridMode(JGraph.DOT_GRID_MODE);
+        this.setGridEnabled(true);
+        this.setGridSize(10.00);
+        this.setInvokesStopCellEditing(true);
+        this.setEditable(true);
+        this.setSize(300, 500);
+        this.setHighlightColor(Color.BLUE);
 
-		// TODO: setAutoSizeOnValueChange(true);
-		if (undoManager!=null)
-			this.getModel().addUndoableEditListener(undoManager);
-	}
+        // TODO: setAutoSizeOnValueChange(true);
+        if (undoManager != null) this.getModel().addUndoableEditListener(undoManager);
+    }
 
-	protected void updateHistoryButtons() {
-		VisualController.getInstance().checkUndoRedo();
-	}
+    protected void updateHistoryButtons()
+    {
+        VisualController.getInstance().checkUndoRedo();
+    }
 
-	/**
-	 * @param sourceCell
-	 * @param targetCell
-	 * @return
-	 */
-	public boolean isValidConnection(AbstractElementModel sourceCell, AbstractElementModel targetCell) {
-		// Keine Gleichartigen Verbindungen
-		if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
-			if (sourceCell.getType() != targetCell.getType()) {
-				// und keine aalst <-> simpletrans verbundungen
-				if ((sourceCell.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE && targetCell.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
-						|| (sourceCell.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE && targetCell.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)) {
-					LoggerManager.warn(Constants.EDITOR_LOGGER, sourceCell.getId() + "->" + targetCell.getId() + ") Not a valid Connection! Arc not created!");
-					return false;
-				} else {
-					return true;
-				}
-			} else {
-				LoggerManager.warn(Constants.EDITOR_LOGGER, sourceCell.getId() + "->" + targetCell.getId() + ") Not a valid Connection! Arc not created!");
-				return false;
-			}
-		} else {
-			return true;
-		}
-	}
+    /**
+     * @param sourceCell
+     * @param targetCell
+     * @return
+     */
+    public boolean isValidConnection(AbstractElementModel sourceCell, AbstractElementModel targetCell)
+    {
+        // Keine Gleichartigen Verbindungen
+        if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
+        {
+            if (sourceCell.getType() != targetCell.getType())
+            {
+                // und keine aalst <-> simpletrans verbundungen
+                if ((sourceCell.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE && targetCell.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+                        || (sourceCell.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE && targetCell.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE))
+                {
+                    LoggerManager.warn(Constants.EDITOR_LOGGER, sourceCell.getId() + "->" + targetCell.getId() + ") Not a valid Connection! Arc not created!");
+                    return false;
+                } else
+                {
+                    return true;
+                }
+            } else
+            {
+                LoggerManager.warn(Constants.EDITOR_LOGGER, sourceCell.getId() + "->" + targetCell.getId() + ") Not a valid Connection! Arc not created!");
+                return false;
+            }
+        } else
+        {
+            return true;
+        }
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.JComponent#createToolTip()
-	 */
-	public JToolTip createToolTip() {
-		return new EditorToolTip();
+    /*
+     * (non-Javadoc)
+     * 
+     * @see javax.swing.JComponent#createToolTip()
+     */
+    public JToolTip createToolTip()
+    {
+        return new EditorToolTip();
 
-	}
+    }
 
-	/**
-	 * TODO: DOCUMENTATION (xraven)
-	 */
-	public void redo() {
-		if (getUndoManager() != null) {
-			try {
-				getUndoManager().redo(getGraphLayoutCache());
-			} catch (Exception ex) {
-				LoggerManager.error(Constants.EDITOR_LOGGER, "Could not redo.");
-				LoggerManager.debug(Constants.EDITOR_LOGGER, "Exception" + ex);
-			} finally {
-				updateHistoryButtons();
-			}
-		}
-	}
+    /**
+     * TODO: DOCUMENTATION (xraven)
+     */
+    public void redo()
+    {
+        if (getUndoManager() != null)
+        {
+            try
+            {
+                getUndoManager().redo(getGraphLayoutCache());
+            } catch (Exception ex)
+            {
+                LoggerManager.error(Constants.EDITOR_LOGGER, "Could not redo.");
+                LoggerManager.debug(Constants.EDITOR_LOGGER, "Exception" + ex);
+            } finally
+            {
+                updateHistoryButtons();
+            }
+        }
+    }
 
-	/**
-	 * TODO: DOCUMENTATION (xraven)
-	 */
-	public void undo() {
-		if (getUndoManager() != null) {
-			try {
-				getUndoManager().undo(getGraphLayoutCache());
-			} catch (Exception ex) {
-				LoggerManager.error(Constants.EDITOR_LOGGER, "Could not undo.");
-				LoggerManager.debug(Constants.EDITOR_LOGGER, "Exception:" + ex);
-			} finally {
-				updateHistoryButtons();
-			}
-		}
-	}
+    /**
+     * TODO: DOCUMENTATION (xraven)
+     */
+    public void undo()
+    {
+        if (getUndoManager() != null)
+        {
+            try
+            {
+                getUndoManager().undo(getGraphLayoutCache());
+            } catch (Exception ex)
+            {
+                LoggerManager.error(Constants.EDITOR_LOGGER, "Could not undo.");
+                LoggerManager.debug(Constants.EDITOR_LOGGER, "Exception:" + ex);
+            } finally
+            {
+                updateHistoryButtons();
+            }
+        }
+    }
 
-	/**
-	 * TODO: DOCUMENTATION (xraven, silenco)
-	 * 
-	 * @param c
-	 */
-	public void toFront(Object[] c) {
-		if (c != null && c.length > 0)
-			// lai ???
-			getGraphLayoutCache().toFront(getGraphLayoutCache().getMapping(c));
-	}
+    /**
+     * TODO: DOCUMENTATION (xraven, silenco)
+     * 
+     * @param c
+     */
+    public void toFront(Object[] c)
+    {
+        if (c != null && c.length > 0)
+        // lai ???
+        getGraphLayoutCache().toFront(getGraphLayoutCache().getMapping(c));
+    }
 
-	/**
-	 * TODO: DOCUMENTATION (xraven, silenco)
-	 * 
-	 * @param c
-	 */
-	public void toBack(Object[] c) {
-		if (c != null && c.length > 0)
-			// lai ???
-			getGraphLayoutCache().toBack(getGraphLayoutCache().getMapping(c));
-	}
+    /**
+     * TODO: DOCUMENTATION (xraven, silenco)
+     * 
+     * @param c
+     */
+    public void toBack(Object[] c)
+    {
+        if (c != null && c.length > 0)
+        // lai ???
+        getGraphLayoutCache().toBack(getGraphLayoutCache().getMapping(c));
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.awt.print.Printable#print(java.awt.Graphics,
-	 *      java.awt.print.PageFormat, int)
-	 */
-	public int print(Graphics g, PageFormat pageFormat, int page) throws PrinterException {
-		double oldScale = getScale();
-		boolean oldGridMode = isGridVisible();
-		try {
-			setGridVisible(false);
-			setDoubleBuffered(false);
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.awt.print.Printable#print(java.awt.Graphics,
+     *      java.awt.print.PageFormat, int)
+     */
+    public int print(Graphics g, PageFormat pageFormat, int page) throws PrinterException
+    {
+        double oldScale = getScale();
+        boolean oldGridMode = isGridVisible();
+        try
+        {
+            setGridVisible(false);
+            setDoubleBuffered(false);
 
-			double pageWidth = pageFormat.getImageableWidth();
-			double pageHeight = pageFormat.getImageableHeight();
-			double xScale = pageWidth / getWidth();
-			double yScale = pageHeight / getHeight();
-			double scale = Math.min(xScale, yScale);
+            double pageWidth = pageFormat.getImageableWidth();
+            double pageHeight = pageFormat.getImageableHeight();
+            double xScale = pageWidth / getWidth();
+            double yScale = pageHeight / getHeight();
+            double scale = Math.min(xScale, yScale);
 
-			double tx = 0.0;
-			double ty = 0.0;
-			if (xScale > scale) {
-				tx = 0.5 * (xScale - scale) * getWidth();
-			} else {
-				ty = 0.5 * (yScale - scale) * getHeight();
-			}
+            double tx = 0.0;
+            double ty = 0.0;
+            if (xScale > scale)
+            {
+                tx = 0.5 * (xScale - scale) * getWidth();
+            } else
+            {
+                ty = 0.5 * (yScale - scale) * getHeight();
+            }
 
-			((Graphics2D) g).translate((int) pageFormat.getImageableX(), (int) pageFormat.getImageableY());
-			((Graphics2D) g).translate(tx, ty);
-			((Graphics2D) g).scale(scale, scale);
+            ((Graphics2D) g).translate((int) pageFormat.getImageableX(), (int) pageFormat.getImageableY());
+            ((Graphics2D) g).translate(tx, ty);
+            ((Graphics2D) g).scale(scale, scale);
 
-			if (page >= 1) {
-				return NO_SUCH_PAGE;
-			}
-			paint(g);
-		} finally {
-			setDoubleBuffered(true);
-			setGridVisible(oldGridMode);
-			setScale(oldScale);
+            if (page >= 1)
+            {
+                return NO_SUCH_PAGE;
+            }
+            paint(g);
+        } finally
+        {
+            setDoubleBuffered(true);
+            setGridVisible(oldGridMode);
+            setScale(oldScale);
 
-		}
-		return PAGE_EXISTS;
-	}
+        }
+        return PAGE_EXISTS;
+    }
 
-	public void startEditingAtCell(Object arg0) {
-		if (arg0 instanceof GroupModel) {
-			super.startEditingAtCell(((GroupModel) arg0).getMainElement().getNameModel());
-		} else if (arg0 instanceof PetriNetModelElement) {
-			super.startEditingAtCell(((PetriNetModelElement) arg0).getNameModel());
-		} else {
-			super.startEditingAtCell(arg0);
-		}
-	}
+    public void startEditingAtCell(Object arg0)
+    {
+        if (arg0 instanceof GroupModel)
+        {
+            super.startEditingAtCell(((GroupModel) arg0).getMainElement().getNameModel());
+        } else if (arg0 instanceof PetriNetModelElement)
+        {
+            super.startEditingAtCell(((PetriNetModelElement) arg0).getNameModel());
+        } else
+        {
+            super.startEditingAtCell(arg0);
+        }
+    }
 
-	public void drawNet(AbstractModelProcessor processor) {
-		if (processor.getProcessorType() != getModelPorcessorType()) {
-			LoggerManager.error(Constants.EDITOR_LOGGER, "Wrong ModelProcessor Type!");
-		} else {
-			if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
-				for (Iterator iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();) {
-					PetriNetModelElement element = (PetriNetModelElement) iter.next();
-					GroupModel group = groupName(element, (element.getNameModel()));
-					if (element.getType() == AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE || element.getType() == AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE) {
-						if (((TransitionModel) element).hasTrigger()) {
-							ParentMap pm = new ParentMap();
-							pm.addEntry(((TransitionModel) element).getToolSpecific().getTrigger(), group);
-							HashMap hm = new HashMap();
-							hm.put(group, group.getAttributes());
-							getModel().insert(new Object[] { ((TransitionModel) element).getToolSpecific().getTrigger() }, hm, null, pm, null);
-						}
-					}
-					getGraphLayoutCache().insertGroup(group, new Object[] { element, ((PetriNetModelElement) element).getNameModel() });
-				}
-				for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();) {
-					ArcModel arc = (ArcModel) iter.next();
-					connect(arc);
-				}
-			} else if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_UML) {
-				for (Iterator iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();) {
-					AbstractUMLElementModel element = (AbstractUMLElementModel) iter.next();
-					getGraphLayoutCache().insert(element);
-				}
-				for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();) {
-					ArcModel arc = (ArcModel) iter.next();
-					connect(arc);
-				}
-			}
+    public void drawNet(AbstractModelProcessor processor)
+    {
+        if (processor.getProcessorType() != getModelPorcessorType())
+        {
+            LoggerManager.error(Constants.EDITOR_LOGGER, "Wrong ModelProcessor Type!");
+        } else
+        {
+            if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
+            {
+                for (Iterator iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
+                {
+                    PetriNetModelElement element = (PetriNetModelElement) iter.next();
+                    GroupModel group = groupName(element, (element.getNameModel()));
+                    if (element.getType() == AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE || element.getType() == AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)
+                    {
+                        if (((TransitionModel) element).hasTrigger())
+                        {
+                            ParentMap pm = new ParentMap();
+                            pm.addEntry(((TransitionModel) element).getToolSpecific().getTrigger(), group);
+                            HashMap hm = new HashMap();
+                            hm.put(group, group.getAttributes());
+                            getModel().insert(new Object[] { ((TransitionModel) element).getToolSpecific().getTrigger() }, hm, null, pm, null);
+                        }
+                    }
+                    getGraphLayoutCache().insertGroup(group, new Object[] { element, ((PetriNetModelElement) element).getNameModel() });
+                }
+                for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
+                {
+                    ArcModel arc = (ArcModel) iter.next();
+                    connect(arc);
+                }
+            } else if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_UML)
+            {
+                for (Iterator iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
+                {
+                    AbstractUMLElementModel element = (AbstractUMLElementModel) iter.next();
+                    getGraphLayoutCache().insert(element);
+                }
+                for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
+                {
+                    ArcModel arc = (ArcModel) iter.next();
+                    connect(arc);
+                }
+            }
 
-		}
+        }
 
-	}
+    }
 
 }

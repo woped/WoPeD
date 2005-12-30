@@ -68,10 +68,10 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
     private Vector             viewListener             = new Vector(1, 3);
     private String             id                       = null;
     public static final String ID_PREFIX                = "MENUBAR_VC_";
-    
-    private Hashtable m_editorMenuItems = new Hashtable(); 
-    private JMenuItem m_windowEmptyItem = null;
-    
+
+    private Hashtable          m_editorMenuItems        = new Hashtable();
+    private JMenuItem          m_windowEmptyItem        = null;
+
     // private UserInterface m_containingWindow;
 
     private JMenu              m_fileMenu               = null;
@@ -119,6 +119,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
     private JMenu              m_sampleMenu             = null;
     private JMenuItem          m_aboutMenuItem          = null;
     private JMenuItem          m_bugReportMenuItem      = null;
+
     /**
      * Creates a new MenuBar for a PWTUI.
      * 
@@ -186,10 +187,10 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
             m_editMenu.add(getCutMenuItem());
             m_editMenu.add(getCopyMenuItem());
             m_editMenu.add(getPasteMenuItem());
-//            m_editMenu.addSeparator();
+            //            m_editMenu.addSeparator();
             // deactivated because we have jpeg export
             // m_editMenu.add(getScreenshotMenuItem());
-//            m_editMenu.add(getEditMenuItem());
+            //            m_editMenu.add(getEditMenuItem());
         }
         return m_editMenu;
     }
@@ -242,7 +243,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
             m_helpMenu.addSeparator();
             m_helpMenu.add(getAboutMenuItem());
             m_helpMenu.add(getBugReportMenuItem());
-                   }
+        }
         return m_helpMenu;
     }
 
@@ -377,7 +378,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
     {
         if (m_exportMenuItem == null)
         {
-            m_exportMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_EXPORT)); 
+            m_exportMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_EXPORT));
             // new ExportAction(m_containingWindow);
         }
         return m_exportMenuItem;
@@ -718,7 +719,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
     {
         if (m_aboutMenuItem == null)
         {
-            m_aboutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SHOWABOUT)); 
+            m_aboutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SHOWABOUT));
         }
         return m_aboutMenuItem;
     }
@@ -730,7 +731,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
     {
         if (m_bugReportMenuItem == null)
         {
-            m_bugReportMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SHOWBUGREPORT)); 
+            m_bugReportMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SHOWBUGREPORT));
         }
         return m_bugReportMenuItem;
     }
@@ -738,14 +739,12 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
     /**
      * @return Returns the screenshotMenuItem.
      */
- /*   public JMenuItem getScreenshotMenuItem()
-    {
-        if (m_screenshotMenuItem == null)
-        {
-            m_screenshotMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SCREENSHOT));
-        }
-        return m_screenshotMenuItem;
-    }*/
+    /*
+     * public JMenuItem getScreenshotMenuItem() { if (m_screenshotMenuItem ==
+     * null) { m_screenshotMenuItem = new
+     * JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SCREENSHOT)); }
+     * return m_screenshotMenuItem; }
+     */
 
     public JMenuItem getCascadeWindowsMenuItem()
     {
@@ -782,7 +781,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
             m_windowEmptyItem = new JMenuItem(Messages.getString("Menu.Window.Frames.empty"));
             m_windowEmptyItem.setEnabled(false);
             m_windowMenu.add(m_windowEmptyItem);
-            
+
         }
         return m_windowMenu;
     }
@@ -875,31 +874,34 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
         }
     }
 
-	public void addEditor(IEditor editor) {
-		m_windowMenu.remove(m_windowEmptyItem);
-		m_editorMenuItems.put(editor, m_windowMenu.add(new JCheckBoxMenuItem(ActionFactory.getSelectEditorAction(editor))));
-	}
+    public void addEditor(IEditor editor)
+    {
+        m_windowMenu.remove(m_windowEmptyItem);
+        m_editorMenuItems.put(editor, m_windowMenu.add(new JCheckBoxMenuItem(ActionFactory.getSelectEditorAction(editor))));
+    }
 
-	public void removeEditor(IEditor editor) {
-		JMenuItem menuItem = (JMenuItem)m_editorMenuItems.get(editor);
-		if (menuItem!=null)
-		{
-			m_windowMenu.remove(menuItem);
-			m_editorMenuItems.remove(editor);
-			if (m_editorMenuItems.isEmpty())
-			{
-				m_windowMenu.add(m_windowEmptyItem);
-			}
-		}
-	}
+    public void removeEditor(IEditor editor)
+    {
+        JMenuItem menuItem = (JMenuItem) m_editorMenuItems.get(editor);
+        if (menuItem != null)
+        {
+            m_windowMenu.remove(menuItem);
+            m_editorMenuItems.remove(editor);
+            if (m_editorMenuItems.isEmpty())
+            {
+                m_windowMenu.add(m_windowEmptyItem);
+            }
+        }
+    }
 
-	public void selectEditor(IEditor editor) {
-		JMenuItem menuItem = (JMenuItem)m_editorMenuItems.get(editor);
-		Iterator itr = m_editorMenuItems.values().iterator();
-		while (itr.hasNext())
-		{
-			JMenuItem curElement =((JMenuItem)itr.next());
-			curElement.setSelected(menuItem==curElement);
-		}
-	}
+    public void selectEditor(IEditor editor)
+    {
+        JMenuItem menuItem = (JMenuItem) m_editorMenuItems.get(editor);
+        Iterator itr = m_editorMenuItems.values().iterator();
+        while (itr.hasNext())
+        {
+            JMenuItem curElement = ((JMenuItem) itr.next());
+            curElement.setSelected(menuItem == curElement);
+        }
+    }
 }

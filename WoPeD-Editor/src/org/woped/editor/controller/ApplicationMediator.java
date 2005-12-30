@@ -26,91 +26,104 @@ import org.woped.editor.controller.vep.EditorEventProcessor;
  * an AbstractWopedAction, which get the VC in the Constructor!
  * 
  * @author Simon Isaak Landes
- * 
+ *  
  */
-public class ApplicationMediator extends AbstractApplicationMediator {
+public class ApplicationMediator extends AbstractApplicationMediator
+{
 
-	public static final int VIEWCONTROLLER_EDITOR = 0;
+    public static final int  VIEWCONTROLLER_EDITOR  = 0;
 
-	public static final int VIEWCONTROLLER_TASKBAR = 1;
+    public static final int  VIEWCONTROLLER_TASKBAR = 1;
 
-	public static final int VIEWCONTROLLER_CONFIG = 2;
+    public static final int  VIEWCONTROLLER_CONFIG  = 2;
 
-	private int editorCounter = 0;
+    private int              editorCounter          = 0;
 
-	private EditorClipboard clipboard = new EditorClipboard();
+    private EditorClipboard  clipboard              = new EditorClipboard();
 
-	private VisualController visualController = null;
+    private VisualController visualController       = null;
 
-	private HashMap actionMap = null;
+    private HashMap          actionMap              = null;
 
-	public ApplicationMediator() {
-		this(null, null);
-	}
+    public ApplicationMediator()
+    {
+        this(null, null);
+    }
 
-	public ApplicationMediator(IUserInterface ui, IConfiguration conf) {
-		super(ui, conf);
+    public ApplicationMediator(IUserInterface ui, IConfiguration conf)
+    {
+        super(ui, conf);
 
-		visualController = new VisualController(this);
-		actionMap = ActionFactory.createStaticActions(this);
+        visualController = new VisualController(this);
+        actionMap = ActionFactory.createStaticActions(this);
 
-		getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, new ApplicationEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, this));
-		getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT, new EditorEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_EDIT, this));
+        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, new ApplicationEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, this));
+        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT, new EditorEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_EDIT, this));
 
-		if (ui != null) {
-			PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(ui.getPropertyChangeSupportBean());
-			propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
-		}
-	}
+        if (ui != null)
+        {
+            PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(ui.getPropertyChangeSupportBean());
+            propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
+        }
+    }
 
-	public void addViewController(IViewController viewController) {
-		if (viewController != null) {
-			// viewController.init();
-			// viewController.setVisible(true);
-			// viewController.setEnabled(true);
-			switch (viewController.getViewControllerType()) {
-			case VIEWCONTROLLER_EDITOR:
-				editorCounter++;
-				// if (getUi() != null) getUi().addEditor((EditorVC)
-				// viewController);
-				break;
-			case VIEWCONTROLLER_TASKBAR:
-				// only one
-				break;
-			default:
-				break;
-			}
-			super.addViewController(viewController);
-		}
-	}
+    public void addViewController(IViewController viewController)
+    {
+        if (viewController != null)
+        {
+            // viewController.init();
+            // viewController.setVisible(true);
+            // viewController.setEnabled(true);
+            switch (viewController.getViewControllerType())
+            {
+            case VIEWCONTROLLER_EDITOR:
+                editorCounter++;
+                // if (getUi() != null) getUi().addEditor((EditorVC)
+                // viewController);
+                break;
+            case VIEWCONTROLLER_TASKBAR:
+                // only one
+                break;
+            default:
+                break;
+            }
+            super.addViewController(viewController);
+        }
+    }
 
-	public EditorVC createEditorVC(int modelProcessorType, boolean undoSupport) {
-		EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport);
-		addViewController(editor);
-		return editor;
-	}
+    public EditorVC createEditorVC(int modelProcessorType, boolean undoSupport)
+    {
+        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport);
+        addViewController(editor);
+        return editor;
+    }
 
-	public IViewController createViewController(int type) {
-		IViewController vc = null;
-		switch (type) {
-		case VIEWCONTROLLER_TASKBAR:
-			vc = new TaskBarVC(TaskBarVC.ID_PREFIX);
-			break;
-		case VIEWCONTROLLER_CONFIG:
-			if (getUi() != null && getUi().getComponent() instanceof JFrame) {
-				vc = new ConfigVC((JFrame) getUi(), true, ConfigVC.ID_PREFIX);
-			} else {
-				vc = new ConfigVC(true, ConfigVC.ID_PREFIX);
-			}
-			break;
-		default:
-			LoggerManager.warn(Constants.EDITOR_LOGGER, "No VC created.");
-			break;
-		}
-		return vc;
-	}
+    public IViewController createViewController(int type)
+    {
+        IViewController vc = null;
+        switch (type)
+        {
+        case VIEWCONTROLLER_TASKBAR:
+            vc = new TaskBarVC(TaskBarVC.ID_PREFIX);
+            break;
+        case VIEWCONTROLLER_CONFIG:
+            if (getUi() != null && getUi().getComponent() instanceof JFrame)
+            {
+                vc = new ConfigVC((JFrame) getUi(), true, ConfigVC.ID_PREFIX);
+            } else
+            {
+                vc = new ConfigVC(true, ConfigVC.ID_PREFIX);
+            }
+            break;
+        default:
+            LoggerManager.warn(Constants.EDITOR_LOGGER, "No VC created.");
+            break;
+        }
+        return vc;
+    }
 
-	public VisualController getVisualController() {
-		return visualController;
-	}
+    public VisualController getVisualController()
+    {
+        return visualController;
+    }
 }

@@ -26,8 +26,7 @@ package org.woped.editor.gui;
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
  * 
- * TODO: DOCUMENTATION (???)
- * 20.09.2003
+ * TODO: DOCUMENTATION (???) 20.09.2003
  */
 public class ElementPropertiesUI
 {

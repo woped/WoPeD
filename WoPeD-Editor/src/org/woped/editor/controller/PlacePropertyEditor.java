@@ -34,7 +34,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -56,28 +55,28 @@ import org.woped.editor.utilities.Messages;
 public class PlacePropertyEditor extends JDialog
 {
     // General
-    private PlaceModel            place                         = null;
-    private EditorVC              editor                        = null;
-    private JPanel                contentPanel                  = null;
+    private PlaceModel    place            = null;
+    private EditorVC      editor           = null;
+    private JPanel        contentPanel     = null;
 
     // Name
-    private JPanel                namePanel                     = null;
-    private JLabel                nameLabel                     = null;
-    private JTextField            nameTextField                 = null;
-    private JLabel                idLabel                       = null;
-    private JTextField            idTextField                   = null;
+    private JPanel        namePanel        = null;
+    private JLabel        nameLabel        = null;
+    private JTextField    nameTextField    = null;
+    private JLabel        idLabel          = null;
+    private JTextField    idTextField      = null;
 
     // Marking
-    private JPanel                markingPanel                  = null;
-    private JLabel                markingLabel                  = null;
-    private JTextField            markingTextField              = null;
+    private JPanel        markingPanel     = null;
+    private JLabel        markingLabel     = null;
+    private JTextField    markingTextField = null;
 
     // Buttons
-    private JPanel                buttonPanel                   = null;
-    private ToolBarButton         buttonOk                      = null;
-    private ToolBarButton         buttonCancel                  = null;
-    private ToolBarButton         buttonApply                   = null;
-  
+    private JPanel        buttonPanel      = null;
+    private ToolBarButton buttonOk         = null;
+    private ToolBarButton buttonCancel     = null;
+    private ToolBarButton buttonApply      = null;
+
     public PlacePropertyEditor(Frame owner, PlaceModel place, EditorVC editor)
     {
         super(owner, true);
@@ -109,7 +108,7 @@ public class PlacePropertyEditor extends JDialog
             c.fill = GridBagConstraints.BOTH;
             c.weightx = 1;
             c.weighty = 1;
-    
+
             c.gridx = 0;
             c.gridy = 0;
             c.insets = new Insets(0, 0, 0, 0);
@@ -120,10 +119,10 @@ public class PlacePropertyEditor extends JDialog
             c.insets = new Insets(0, 0, 0, 0);
             contentPanel.add(getMarkingPanel(), c);
         }
-        
+
         return contentPanel;
     }
-    
+
     // **************************NamePanel******************************
     private JPanel getNamePanel()
     {
@@ -132,9 +131,8 @@ public class PlacePropertyEditor extends JDialog
             namePanel = new JPanel();
             namePanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
-            namePanel.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createTitledBorder(Messages.getString("Place.Properties.Identification")), 
-                    BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+            namePanel.setBorder(BorderFactory
+                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Place.Properties.Identification")), BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
             c.weightx = 1;
             c.weighty = 1;
@@ -164,8 +162,8 @@ public class PlacePropertyEditor extends JDialog
             c.gridwidth = 1;
             c.insets = new Insets(0, 10, 0, 0);
             namePanel.add(getIdTextField(), c);
-       }
-        
+        }
+
         return namePanel;
     }
 
@@ -175,7 +173,7 @@ public class PlacePropertyEditor extends JDialog
         {
             nameLabel = new JLabel(Messages.getString("Place.Properties.Name") + ":");
         }
-        
+
         return nameLabel;
     }
 
@@ -188,26 +186,28 @@ public class PlacePropertyEditor extends JDialog
             nameTextField.setMinimumSize(new Dimension(150, 20));
             nameTextField.setMaximumSize(new Dimension(150, 20));
             nameTextField.addKeyListener(new KeyListener()
+            {
+                public void keyPressed(KeyEvent e)
+                {
+                    keyReleased(e);
+                }
+
+                public void keyTyped(KeyEvent e)
+                {
+                    keyReleased(e);
+                }
+
+                public void keyReleased(KeyEvent e)
+                {
+                    if (e.getKeyCode() == KeyEvent.VK_ENTER)
                     {
-                        public void keyPressed(KeyEvent e) 
-                        { 
-                            keyReleased(e);
-                        }
-                        public void keyTyped(KeyEvent e) 
-                        { 
-                            keyReleased(e);
-                        }
-                        public void keyReleased(KeyEvent e) 
-                        { 
-                            if (e.getKeyCode() == KeyEvent.VK_ENTER) 
-                            { 
-                                apply();
-                                PlacePropertyEditor.this.dispose();
-                            }
-                        }
-                    });
+                        apply();
+                        PlacePropertyEditor.this.dispose();
+                    }
+                }
+            });
         }
-        
+
         return nameTextField;
     }
 
@@ -217,7 +217,7 @@ public class PlacePropertyEditor extends JDialog
         {
             idLabel = new JLabel("Id#: ");
         }
-    
+
         return idLabel;
     }
 
@@ -228,13 +228,14 @@ public class PlacePropertyEditor extends JDialog
             idTextField = new JTextField();
             idTextField.setText("" + place.getId());
             idTextField.setEditable(false);
-            idTextField.setPreferredSize(new Dimension(40,20));
+            idTextField.setPreferredSize(new Dimension(40, 20));
         }
-    
+
         return idTextField;
     }
-    
-    // ******************************Marking Panel*****************************************
+
+    // ******************************Marking
+    // Panel*****************************************
     private JPanel getMarkingPanel()
     {
         if (markingPanel == null)
@@ -242,9 +243,7 @@ public class PlacePropertyEditor extends JDialog
             markingPanel = new JPanel();
             markingPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
-            markingPanel.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createTitledBorder(Messages.getString("Place.Properties.Marking")), 
-                    BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+            markingPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Place.Properties.Marking")), BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
             c.weightx = 1;
             c.weighty = 1;
@@ -263,7 +262,7 @@ public class PlacePropertyEditor extends JDialog
             c.insets = new Insets(0, 10, 0, 0);
             markingPanel.add(getMarkingTextField(), c);
         }
-        
+
         return markingPanel;
     }
 
@@ -273,7 +272,7 @@ public class PlacePropertyEditor extends JDialog
         {
             markingLabel = new JLabel(Messages.getString("Place.Properties.NumberTokens") + ":");
         }
-        
+
         return markingLabel;
     }
 
@@ -286,26 +285,28 @@ public class PlacePropertyEditor extends JDialog
             markingTextField.setMinimumSize(new Dimension(70, 20));
             markingTextField.setMaximumSize(new Dimension(70, 20));
             markingTextField.addKeyListener(new KeyListener()
+            {
+                public void keyPressed(KeyEvent e)
+                {
+                    keyReleased(e);
+                }
+
+                public void keyTyped(KeyEvent e)
+                {
+                    keyReleased(e);
+                }
+
+                public void keyReleased(KeyEvent e)
+                {
+                    if (e.getKeyCode() == KeyEvent.VK_ENTER)
                     {
-                        public void keyPressed(KeyEvent e) 
-                        { 
-                            keyReleased(e);
-                        }
-                        public void keyTyped(KeyEvent e) 
-                        { 
-                            keyReleased(e);
-                        }
-                        public void keyReleased(KeyEvent e) 
-                        { 
-                            if (e.getKeyCode() == KeyEvent.VK_ENTER) 
-                            { 
-                                apply();
-                                PlacePropertyEditor.this.dispose();
-                            }
-                        }
-                    });
+                        apply();
+                        PlacePropertyEditor.this.dispose();
+                    }
+                }
+            });
         }
-        
+
         return markingTextField;
     }
 
@@ -317,7 +318,7 @@ public class PlacePropertyEditor extends JDialog
             buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             buttonPanel.add(getButtonOk());
             buttonPanel.add(getButtonCancel());
-//            buttonPanel.add(getButtonApply());
+            //            buttonPanel.add(getButtonApply());
         }
         return buttonPanel;
     }
@@ -326,10 +327,8 @@ public class PlacePropertyEditor extends JDialog
     {
         if (buttonOk == null)
         {
-            buttonOk = new ToolBarButton(Messages.getImageIcon("Button.Ok"), 
-                    Messages.getString("Button.Ok.Title"), 
-                    ToolBarButton.TEXTORIENTATION_RIGHT);
-            
+            buttonOk = new ToolBarButton(Messages.getImageIcon("Button.Ok"), Messages.getString("Button.Ok.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
+
             buttonOk.setMnemonic(KeyEvent.VK_O);
             buttonOk.setPreferredSize(new Dimension(100, 25));
             buttonOk.addActionListener(new ActionListener()
@@ -349,9 +348,7 @@ public class PlacePropertyEditor extends JDialog
     {
         if (buttonCancel == null)
         {
-            buttonCancel = new ToolBarButton(Messages.getImageIcon("Button.Cancel"), 
-                    Messages.getString("Button.Cancel.Title"), 
-                    ToolBarButton.TEXTORIENTATION_RIGHT);
+            buttonCancel = new ToolBarButton(Messages.getImageIcon("Button.Cancel"), Messages.getString("Button.Cancel.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
             buttonCancel.setMnemonic(KeyEvent.VK_C);
             buttonCancel.setPreferredSize(new Dimension(100, 25));
             buttonCancel.addActionListener(new ActionListener()
@@ -362,7 +359,7 @@ public class PlacePropertyEditor extends JDialog
                 }
             });
         }
- 
+
         return buttonCancel;
     }
 
@@ -370,9 +367,7 @@ public class PlacePropertyEditor extends JDialog
     {
         if (buttonApply == null)
         {
-            buttonApply = new ToolBarButton(Messages.getImageIcon("Button.Apply"), 
-                    Messages.getString("Button.Apply.Title"), 
-                    ToolBarButton.TEXTORIENTATION_RIGHT);
+            buttonApply = new ToolBarButton(Messages.getImageIcon("Button.Apply"), Messages.getString("Button.Apply.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
             buttonApply.setMnemonic(KeyEvent.VK_A);
             buttonApply.setPreferredSize(new Dimension(100, 25));
             buttonApply.addActionListener(new ActionListener()
@@ -401,14 +396,14 @@ public class PlacePropertyEditor extends JDialog
         // name changing handling
         place.setNameValue(getNameTextField().getText());
         place.setTokens(Integer.valueOf(markingTextField.getText()).intValue());
-    } 
+    }
 
     /*
      * (non-Javadoc)
      * 
      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
-     /**
+    /**
      * @return Returns the editor.
      */
     public EditorVC getEditor()

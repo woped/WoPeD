@@ -40,135 +40,153 @@ import org.woped.core.model.CreationMap;
  * 
  * 20.09.2003
  */
-public class NameModel extends DefaultGraphCell {
+public class NameModel extends DefaultGraphCell
+{
 
-	public static final int DEFAULT_WIDTH = 40;
+    public static final int DEFAULT_WIDTH  = 40;
+    public static final int DEFAULT_HEIGHT = 18;
+    private String          m_ownerId;
 
-	public static final int DEFAULT_HEIGHT = 18;
+    /**
+     * Constructor for NameModel.
+     */
+    public NameModel(CreationMap creationMap)
+    {
+        super(creationMap.getName());
+        if (creationMap.getName() != null)
+        {
+            setUserObject(creationMap.getName());
+        }
+        this.m_ownerId = creationMap.getId();
+        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        AttributeMap map = getAttributes();
+        GraphConstants.setOpaque(map, false);
+        // GraphConstants.setBorderColor(map, Color.black);
+        GraphConstants.setEditable(map, true);
+        GraphConstants.setMoveable(map, true);
+        GraphConstants.setSizeable(map, false);
+        GraphConstants.setAutoSize(map, true);
+        GraphConstants.setInset(map, 1);
+        setAttributes(map);
 
-	private String m_ownerId;
+    }
 
-	/**
-	 * Constructor for NameModel.
-	 */
-	public NameModel(CreationMap creationMap) {
-		super(creationMap.getName());
-		if (creationMap.getName() != null) {
-			setUserObject(creationMap.getName());
-		}
-		this.m_ownerId = creationMap.getId();
-		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		AttributeMap map = getAttributes();
-		GraphConstants.setOpaque(map, false);
-		// GraphConstants.setBorderColor(map, Color.black);
-		GraphConstants.setEditable(map, true);
-		GraphConstants.setMoveable(map, true);
-		GraphConstants.setSizeable(map, false);
-		GraphConstants.setAutoSize(map, true);
-		GraphConstants.setInset(map, 1);
-		setAttributes(map);
+    /**
+     * Returns the ownerID.
+     * 
+     * @return String
+     */
+    public Object getOwnerId()
+    {
+        return m_ownerId;
+    }
 
-	}
+    /**
+     * Sets the ownerID.
+     * 
+     * @param ownerID
+     *            The ownerID to set
+     */
+    public void setOwnerID(String ownerId)
+    {
+        this.m_ownerId = ownerId;
+    }
 
-	/**
-	 * Returns the ownerID.
-	 * 
-	 * @return String
-	 */
-	public Object getOwnerId() {
-		return m_ownerId;
-	}
+    public String getNameValue()
+    {
+        return (String) getUserObject();
+    }
 
-	/**
-	 * Sets the ownerID.
-	 * 
-	 * @param ownerID
-	 *            The ownerID to set
-	 */
-	public void setOwnerID(String ownerId) {
-		this.m_ownerId = ownerId;
-	}
+    public int getDefaultWidth()
+    {
+        return DEFAULT_WIDTH;
+    }
 
-	public String getNameValue() {
-		return (String) getUserObject();
-	}
+    public int getDefaultHeight()
+    {
+        return DEFAULT_HEIGHT;
+    }
 
-	public int getDefaultWidth() {
-		return DEFAULT_WIDTH;
-	}
+    public int getX()
+    {
+        return (int) GraphConstants.getBounds(getAttributes()).getX();
+    }
 
-	public int getDefaultHeight() {
-		return DEFAULT_HEIGHT;
-	}
+    public int getY()
+    {
+        return (int) GraphConstants.getBounds(getAttributes()).getY();
+    }
 
-	public int getX() {
-		return (int) GraphConstants.getBounds(getAttributes()).getX();
-	}
+    public void setId(String id)
+    {
+    // TODO Auto-generated method stub
 
-	public int getY() {
-		return (int) GraphConstants.getBounds(getAttributes()).getY();
-	}
+    }
 
-	public void setId(String id) {
-		// TODO Auto-generated method stub
+    public String getId()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	}
+    public int getType()
+    {
+        return PetriNetModelElement.NAME_TYPE;
+    }
 
-	public String getId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    //  
 
-	public int getType() {
-		return PetriNetModelElement.NAME_TYPE;
-	}
+    public void setSize(Dimension dim)
+    {
+    // NOT POSSIBLE
 
-	//  
+    }
 
-	public void setSize(Dimension dim) {
-		// NOT POSSIBLE
+    public void setSize(int width, int height)
+    {
+    // NOT POSSIBLE
+    }
 
-	}
+    public int getHeight()
+    {
+        return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getHeight());
+    }
 
-	public void setSize(int width, int height) {
-		// NOT POSSIBLE
-	}
+    public int getWidth()
+    {
+        return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getWidth());
+    }
 
-	public int getHeight() {
-		return (int) (GraphConstants.getSize(getAttributes()) == null ? -1
-				: GraphConstants.getSize(getAttributes()).getHeight());
-	}
+    public void setPosition(Point2D p)
+    {
+        setPosition((int) p.getX(), (int) p.getY());
+    }
 
-	public int getWidth() {
-		return (int) (GraphConstants.getSize(getAttributes()) == null ? -1
-				: GraphConstants.getSize(getAttributes()).getWidth());
-	}
+    public Point getPosition()
+    {
+        Rectangle2D rect = GraphConstants.getBounds(getAttributes());
+        if (rect != null)
+        {
+            return new Point((int) rect.getX(), (int) rect.getY());
+        }
+        return null;
+    }
 
-	public void setPosition(Point2D p) {
-		setPosition((int) p.getX(), (int) p.getY());
-	}
+    public void setPosition(int x, int y)
+    {
+        AttributeMap map = getAttributes();
+        GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
+        changeAttributes(map);
+    }
 
-	public Point getPosition() {
-		Rectangle2D rect = GraphConstants.getBounds(getAttributes());
-		if (rect != null) {
-			return new Point((int) rect.getX(), (int) rect.getY());
-		}
-		return null;
-	}
+    public String getToolTipText()
+    {
+        return null;
+    }
 
-	public void setPosition(int x, int y) {
-		AttributeMap map = getAttributes();
-		GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(),
-				getHeight()));
-		changeAttributes(map);
-	}
-
-	public String getToolTipText() {
-		return null;
-	}
-
-	public void setType(int type) {
-		// NOT POSSIBLE
-	}
+    public void setType(int type)
+    {
+    // NOT POSSIBLE
+    }
 
 }

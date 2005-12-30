@@ -74,16 +74,17 @@ public class DefaultEditorFrame extends JInternalFrame
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
             propScrollPane.addFocusListener(new FocusListener()
-                    {
-                        public void focusGained(FocusEvent e)
-                        {
-                            getPetriNetResourceEditor().reset();                         
-                        }
-                        public void focusLost(FocusEvent e)
-                        {
-                            ;                         
-                        }
-                    });
+            {
+                public void focusGained(FocusEvent e)
+                {
+                    getPetriNetResourceEditor().reset();
+                }
+
+                public void focusLost(FocusEvent e)
+                {
+                    ;
+                }
+            });
         } else
         {
             this.getContentPane().add(editor, BorderLayout.CENTER);

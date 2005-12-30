@@ -33,10 +33,10 @@ import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
- *  @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>
- * History implementation (using two Stacks) for the MiniBrowser. The History
- * class remembers two stacks of recently visited pages (forward and backward
- * direction) in addition to the currently displayed page.
+ * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>
+ *         History implementation (using two Stacks) for the MiniBrowser. The
+ *         History class remembers two stacks of recently visited pages (forward
+ *         and backward direction) in addition to the currently displayed page.
  */
 public class BrowserHistory
 {

@@ -48,8 +48,8 @@ import org.woped.editor.Constants;
 public abstract class Messages
 {
 
-    private static final String         BUNDLE_NAME     = "org.woped.editor.properties.Messages"; //$NON-NLS-1$
-    private static final Locale 		  LOCALE			 = ConfigurationManager.getConfiguration().getLocale();
+    private static final String         BUNDLE_NAME     = "org.woped.editor.properties.Messages";               //$NON-NLS-1$
+    private static final Locale         LOCALE          = ConfigurationManager.getConfiguration().getLocale();
     private static final ResourceBundle RESOURCE_BUNDLE = PropertyResourceBundle.getBundle(BUNDLE_NAME, LOCALE);
 
     public static String getString(String key)
@@ -63,29 +63,30 @@ public abstract class Messages
             return '!' + key + '!';
         }
     }
+
     public static String getString(String key, Object[] params)
     {
-    	StringBuffer result = new StringBuffer(getString(key));
-    	if (params!=null)
-    	{
-    		for (int i=0;i< params.length;i++)
-    		{
-    			if (params[i]!=null)
-    			{    				
-	    			int pos = -1;
-	    			while ((pos = result.indexOf("%"+i))>-1)
-	    			{
-	    				result.replace(pos,pos + ("%"+i).length(),params[i].toString());
-	    			}
-    			}
-    		}
-    	}
-    	return result.toString();
+        StringBuffer result = new StringBuffer(getString(key));
+        if (params != null)
+        {
+            for (int i = 0; i < params.length; i++)
+            {
+                if (params[i] != null)
+                {
+                    int pos = -1;
+                    while ((pos = result.indexOf("%" + i)) > -1)
+                    {
+                        result.replace(pos, pos + ("%" + i).length(), params[i].toString());
+                    }
+                }
+            }
+        }
+        return result.toString();
     }
 
     public static String getStringForLocale(String key, Locale locale)
     {
-    		PropertyResourceBundle tempRB = (PropertyResourceBundle) PropertyResourceBundle.getBundle(BUNDLE_NAME, locale);
+        PropertyResourceBundle tempRB = (PropertyResourceBundle) PropertyResourceBundle.getBundle(BUNDLE_NAME, locale);
         try
         {
             return tempRB.getString(key);
@@ -95,7 +96,7 @@ public abstract class Messages
             return '!' + key + '!';
         }
     }
-    
+
     public static String getTitle(String propertiesPrefix)
     {
         return getString(propertiesPrefix + ".Title");
@@ -163,7 +164,7 @@ public abstract class Messages
             return version + "." + builtstamp;
         }
     }
-    
+
     /**
      * 
      * @param key
@@ -172,7 +173,7 @@ public abstract class Messages
      */
     public static String getStringReplaced(String key, String[] args)
     {
-    		return MessageFormat.format(Messages.getString(key), args);
+        return MessageFormat.format(Messages.getString(key), args);
     }
 
 }

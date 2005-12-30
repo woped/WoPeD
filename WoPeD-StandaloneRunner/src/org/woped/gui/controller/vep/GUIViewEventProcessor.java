@@ -63,17 +63,13 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             }
             about.setVisible(true);
             break;
-     /*   case AbstractViewEvent.BUGREPORT:
-            BugReportUI bugreport = null;
-            if (getMediator().getUi() != null && getMediator().getUi().getComponent() instanceof JFrame)
-            {
-                bugreport = new BugReportUI((JFrame) getMediator().getUi());
-            } else
-            {
-                bugreport = new BugReportUI();
-            }
-            bugreport.setVisible(true);
-            break;*/
+        /*
+         * case AbstractViewEvent.BUGREPORT: BugReportUI bugreport = null; if
+         * (getMediator().getUi() != null &&
+         * getMediator().getUi().getComponent() instanceof JFrame) { bugreport =
+         * new BugReportUI((JFrame) getMediator().getUi()); } else { bugreport =
+         * new BugReportUI(); } bugreport.setVisible(true); break;
+         */
         case AbstractViewEvent.HELP:
             try
             {
@@ -81,7 +77,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             } catch (Exception e)
             {
                 LoggerManager.error(Constants.GUI_LOGGER, "Cannot find HTML manual files. " + e.getMessage());
-                JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString("Help.Message.HTMLManualFileNotFound"), Messages.getString("Help.Message.notFound"), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString("Help.Message.HTMLManualFileNotFound"), Messages.getString("Help.Message.notFound"),
+                        JOptionPane.ERROR_MESSAGE);
             }
             break;
         case AbstractViewEvent.HELP_CONTENTS:
@@ -91,7 +88,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             } catch (Exception e)
             {
                 LoggerManager.error(Constants.GUI_LOGGER, "Cannot find HTML contents file. " + e.getMessage());
-                JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString("Help.Message.HTMLManualFileNotFound"), Messages.getString("Help.Message.notFound"), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString("Help.Message.HTMLManualFileNotFound"), Messages.getString("Help.Message.notFound"),
+                        JOptionPane.ERROR_MESSAGE);
             }
             break;
 
@@ -132,7 +130,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         if (!editor.isSaved())
         {
             String args[] = {};
-            int value = JOptionPane.showConfirmDialog(editor, Messages.getStringReplaced("Action.SaveEditor.Confirmation.Message", args), Messages.getString("Action.SaveEditor.Confirmation.Title"), JOptionPane.YES_NO_CANCEL_OPTION);
+            int value = JOptionPane.showConfirmDialog(editor, Messages.getStringReplaced("Action.SaveEditor.Confirmation.Message", args), Messages.getString("Action.SaveEditor.Confirmation.Title"),
+                    JOptionPane.YES_NO_CANCEL_OPTION);
             if (value == (JOptionPane.YES_OPTION))
             {
                 // TODO: !! if (editor.getDefaultFileType() !=

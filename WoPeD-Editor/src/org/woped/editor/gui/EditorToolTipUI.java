@@ -34,8 +34,7 @@ import javax.swing.JTextArea;
 import javax.swing.plaf.basic.BasicToolTipUI;
 
 /**
- * @author Thomas Pohl
- * TODO: DOCUMENTATION (xraven)
+ * @author Thomas Pohl TODO: DOCUMENTATION (xraven)
  */
 public class EditorToolTipUI extends BasicToolTipUI
 {

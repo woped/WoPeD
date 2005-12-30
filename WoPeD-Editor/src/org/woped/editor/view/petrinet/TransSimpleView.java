@@ -60,7 +60,7 @@ public class TransSimpleView extends AbstractElementView
         super(cell);
 
     }
-    
+
     public Point2D getPerimeterPoint(Point2D source, Point2D p)
     {
 
@@ -181,6 +181,5 @@ public class TransSimpleView extends AbstractElementView
      */
     public void refresh()
     {}
-    
 
 }

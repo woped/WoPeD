@@ -53,46 +53,46 @@ import org.woped.gui.controller.ViewEvent;
 public class ToolBarVC extends JToolBar implements IViewController
 {
     // ViewControll
-    private Vector             viewListener       = new Vector(1, 3);
-    private String             id                 = null;
-    public static final String ID_PREFIX          = "TOOLBAR_VC_";
+    private Vector             viewListener         = new Vector(1, 3);
+    private String             id                   = null;
+    public static final String ID_PREFIX            = "TOOLBAR_VC_";
 
-    static final Insets        margins            = new Insets(0, 0, 0, 0);
+    static final Insets        margins              = new Insets(0, 0, 0, 0);
 
-    private JComboBox          zoomChooser        = null;
+    private JComboBox          zoomChooser          = null;
 
-    private AbstractButton     m_newButton        = null;
-    private AbstractButton     m_openButton       = null;
-    private AbstractButton     m_saveButton       = null;
-    private AbstractButton     m_saveAsButton     = null;
+    private AbstractButton     m_newButton          = null;
+    private AbstractButton     m_openButton         = null;
+    private AbstractButton     m_saveButton         = null;
+    private AbstractButton     m_saveAsButton       = null;
 
-    private AbstractButton     m_cutButton        = null;
-    private AbstractButton     m_copyButton       = null;
-    private AbstractButton     m_pasteButton      = null;
-    private AbstractButton     m_undoButton       = null;
-    private AbstractButton     m_redoButton       = null;
+    private AbstractButton     m_cutButton          = null;
+    private AbstractButton     m_copyButton         = null;
+    private AbstractButton     m_pasteButton        = null;
+    private AbstractButton     m_undoButton         = null;
+    private AbstractButton     m_redoButton         = null;
 
-    private AbstractButton     m_groupButton      = null;
-    private AbstractButton     m_ungroupButton    = null;
-    private AbstractButton     m_zoomInButton     = null;
-    private AbstractButton     m_zoomOutButton    = null;
+    private AbstractButton     m_groupButton        = null;
+    private AbstractButton     m_ungroupButton      = null;
+    private AbstractButton     m_zoomInButton       = null;
+    private AbstractButton     m_zoomOutButton      = null;
 
-    private AbstractButton     m_placeButton      = null;
-    private AbstractButton     m_transitionButton = null;
+    private AbstractButton     m_placeButton        = null;
+    private AbstractButton     m_transitionButton   = null;
 
-    private AbstractButton     m_andSplitButton   = null;
-    private AbstractButton     m_andJoinButton    = null;
+    private AbstractButton     m_andSplitButton     = null;
+    private AbstractButton     m_andJoinButton      = null;
 
-    private AbstractButton     m_xorSplitButton   = null;
-    private AbstractButton     m_xorJoinButton    = null;
-    private AbstractButton	   m_xorSplitJoinButton = null;
+    private AbstractButton     m_xorSplitButton     = null;
+    private AbstractButton     m_xorJoinButton      = null;
+    private AbstractButton     m_xorSplitJoinButton = null;
 
-    private AbstractButton     m_orSplitButton    = null;
+    private AbstractButton     m_orSplitButton      = null;
 
-    private AbstractButton     m_subProcessButton = null;
+    private AbstractButton     m_subProcessButton   = null;
 
-    private AbstractButton     m_tokenGameButton  = null;
-    private AbstractButton     m_woflanButton     = null;
+    private AbstractButton     m_tokenGameButton    = null;
+    private AbstractButton     m_woflanButton       = null;
 
     public ToolBarVC(String id)
     {
@@ -313,14 +313,14 @@ public class ToolBarVC extends JToolBar implements IViewController
         }
         return m_xorSplitButton;
     }
-    
+
     private AbstractButton getXorSplitJoinButton()
     {
-    	if (m_xorSplitJoinButton == null)
-    	{
-    		m_xorSplitJoinButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_DRAWMODE_XORSPLITJOIN), true);
-    	}
-    	return m_xorSplitJoinButton;
+        if (m_xorSplitJoinButton == null)
+        {
+            m_xorSplitJoinButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_DRAWMODE_XORSPLITJOIN), true);
+        }
+        return m_xorSplitJoinButton;
     }
 
     // private AbstractButton getOrSplitButton()

@@ -47,42 +47,44 @@ import org.woped.editor.utilities.Messages;
 
 class WindowKiller extends Thread
 {
-  private JWindow wnd;
-  private long time;
+    private JWindow wnd;
+    private long    time;
 
-  public WindowKiller(JWindow wnd, long time)
-  {
-    this.wnd = wnd;
-    this.time = time;
-    start();
-  }
-
-  public void run()
-  {
-    try {
-      Thread.sleep(time);
-    } 
-    catch (InterruptedException e) 
+    public WindowKiller(JWindow wnd, long time)
     {
-      //nothing
+        this.wnd = wnd;
+        this.time = time;
+        start();
     }
-    if (wnd.isVisible()) {
-      wnd.setVisible(false);
-      wnd.dispose();
+
+    public void run()
+    {
+        try
+        {
+            Thread.sleep(time);
+        } catch (InterruptedException e)
+        {
+            //nothing
+        }
+        if (wnd.isVisible())
+        {
+            wnd.setVisible(false);
+            wnd.dispose();
+        }
     }
-  }
 }
+
 public class SplashWindow extends JWindow
 {
-    private JPanel jPanel       = null;
-    private URL    imageURL     = getClass().getResource(Messages.getString("Splash.Image"));
-    private String delayValue   = Messages.getString("Splash.Delay");
-    private JLabel logoLabel    = null;
-    private JLabel versionLabel = null;
-    private JLabel copyrightLabel = null;
-    private long   delayTime = 0;
-    private WindowKiller killer = null; 
-    private JFrame owner = null;
+    private JPanel       jPanel         = null;
+    private URL          imageURL       = getClass().getResource(Messages.getString("Splash.Image"));
+    private String       delayValue     = Messages.getString("Splash.Delay");
+    private JLabel       logoLabel      = null;
+    private JLabel       versionLabel   = null;
+    private JLabel       copyrightLabel = null;
+    private long         delayTime      = 0;
+    private WindowKiller killer         = null;
+    private JFrame       owner          = null;
 
     /**
      * TODO: DOCUMENTATION (xraven)
@@ -102,12 +104,11 @@ public class SplashWindow extends JWindow
         setVisible(false);
         setContentPane(getJPanel());
         pack();
-        
+
         if (getOwner() != null)
         {
             this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2), getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
-        } 
-        else
+        } else
         {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
@@ -115,10 +116,10 @@ public class SplashWindow extends JWindow
 
         setVisible(true);
     }
-    
+
     public void kill()
     {
-        killer.run();        
+        killer.run();
     }
 
     /**
@@ -150,7 +151,7 @@ public class SplashWindow extends JWindow
             gridBagConstraints2.gridy = 0;
             gridBagConstraints2.anchor = GridBagConstraints.SOUTHWEST;
             gridBagConstraints2.insets = new Insets(0, 1, 0, 0);
-            
+
             GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
             gridBagConstraints3.gridx = 1;
             gridBagConstraints3.gridy = 0;
@@ -188,7 +189,7 @@ public class SplashWindow extends JWindow
         }
         return versionLabel;
     }
-    
+
     private JLabel getCopyrightLabel()
     {
         if (copyrightLabel == null)

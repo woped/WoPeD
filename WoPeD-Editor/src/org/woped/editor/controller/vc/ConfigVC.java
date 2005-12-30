@@ -64,7 +64,6 @@ import org.woped.editor.gui.config.ConfPanelTree;
 import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.editor.utilities.Messages;
 
-
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
@@ -293,7 +292,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
             splitPane.setLeftComponent(getTreeScrollPane());
         }
         splitPane.setDividerLocation(140);
-        
+
         return splitPane;
     }
 

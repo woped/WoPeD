@@ -64,13 +64,13 @@ public class TransitionResourceView extends AbstractElementView
             }
 
             g.setColor(Color.LIGHT_GRAY);
-            g.fillRect(0, TransitionResourceModel.DEFAULT_HEIGHT/2, TransitionResourceModel.DEFAULT_WIDTH-1, TransitionResourceModel.DEFAULT_HEIGHT/2-1);
+            g.fillRect(0, TransitionResourceModel.DEFAULT_HEIGHT / 2, TransitionResourceModel.DEFAULT_WIDTH - 1, TransitionResourceModel.DEFAULT_HEIGHT / 2 - 1);
             g.setColor(Color.BLACK);
-            g.drawRect(0, TransitionResourceModel.DEFAULT_HEIGHT/2, TransitionResourceModel.DEFAULT_WIDTH-1, TransitionResourceModel.DEFAULT_HEIGHT/2-1);            
+            g.drawRect(0, TransitionResourceModel.DEFAULT_HEIGHT / 2, TransitionResourceModel.DEFAULT_WIDTH - 1, TransitionResourceModel.DEFAULT_HEIGHT / 2 - 1);
             g2.setFont(new Font("Verdana", Font.ITALIC, 9));
-            g2.drawString(((TransitionResourceModel) TransitionResourceView.this.getCell()).getTransOrgUnitName(), 2, (TransitionResourceModel.DEFAULT_HEIGHT/2)-1);
+            g2.drawString(((TransitionResourceModel) TransitionResourceView.this.getCell()).getTransOrgUnitName(), 2, (TransitionResourceModel.DEFAULT_HEIGHT / 2) - 1);
             g2.setFont(new Font("Verdana", Font.PLAIN, 9));
-            g2.drawString(((TransitionResourceModel) TransitionResourceView.this.getCell()).getTransRoleName(), 2, TransitionResourceModel.DEFAULT_HEIGHT-2);
+            g2.drawString(((TransitionResourceModel) TransitionResourceView.this.getCell()).getTransRoleName(), 2, TransitionResourceModel.DEFAULT_HEIGHT - 2);
         }
 
     }

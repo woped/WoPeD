@@ -116,11 +116,10 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     public static final int         CAN_REDO                       = 26;
 
     public static final int         DRAWMODE_XOR_SPLITJOIN         = 27;
-    
-    public static final int			ELEMENT_SELECTION			   = 28;
+
+    public static final int         ELEMENT_SELECTION              = 28;
 
     private static final int        MAX_ID                         = 30;
-    
 
     private Vector[]                m_enable                       = new Vector[MAX_ID + 1];
 
@@ -435,7 +434,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             if (selectedCell instanceof SubProcessModel)
             {
                 subprocessSelected = true;
-                transitionSelected = false;  // changed, TF
+                transitionSelected = false; // changed, TF
             }
 
             setStatus(NO_SELECTION, noSelection);

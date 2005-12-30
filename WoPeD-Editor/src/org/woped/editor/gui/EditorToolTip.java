@@ -29,14 +29,13 @@ package org.woped.editor.gui;
 import javax.swing.JToolTip;
 
 /**
- * @author Thomas Pohl
- * TODO: DOCUMENTATION (xraven)
+ * @author Thomas Pohl TODO: DOCUMENTATION (xraven)
  */
 public class EditorToolTip extends JToolTip
 {
     /**
      * TODO: DOCUMENTATION (xraven)
-     *
+     *  
      */
     public EditorToolTip()
     {

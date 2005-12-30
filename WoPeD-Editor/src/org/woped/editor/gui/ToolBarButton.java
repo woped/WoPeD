@@ -38,7 +38,6 @@ import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.utilities.Messages;
 
-
 /**
  * Part of a small example showing basic use of JToolBar. The point here is that
  * dropping a regular JButton in a JToolBar (or adding an Action) doesn't give
@@ -50,12 +49,11 @@ public class ToolBarButton extends JToggleButton implements MouseListener
 {
     //private static final Insets margins = new Insets(0, 0, 0, 0);
 
-    public static final int TEXTORIENTATION_RIGHT   = 1;
-    public static final int TEXTORIENTATION_LEFT    = 2;
-    public static final int TEXTORIENTATION_TOP     = 3;
-    public static final int TEXTORIENTATION_BOTTOM  = 4;
-    
-    
+    public static final int TEXTORIENTATION_RIGHT  = 1;
+    public static final int TEXTORIENTATION_LEFT   = 2;
+    public static final int TEXTORIENTATION_TOP    = 3;
+    public static final int TEXTORIENTATION_BOTTOM = 4;
+
     public ToolBarButton(Icon icon)
     {
         super(icon);
@@ -83,7 +81,7 @@ public class ToolBarButton extends JToggleButton implements MouseListener
         this(new ImageIcon(imageFile));
         setText(text);
     }
-    
+
     public ToolBarButton(ImageIcon icon, String text)
     {
         this(icon);
@@ -95,12 +93,10 @@ public class ToolBarButton extends JToggleButton implements MouseListener
         this(icon);
         setText(text);
         setVerticalTextPosition(CENTER);
-        if (pos == TEXTORIENTATION_LEFT)
-            setHorizontalTextPosition(LEFT);
-        else
-            setHorizontalTextPosition(RIGHT);
+        if (pos == TEXTORIENTATION_LEFT) setHorizontalTextPosition(LEFT);
+        else setHorizontalTextPosition(RIGHT);
     }
-    
+
     public void mouseEntered(MouseEvent me)
     {
     //		JToggleButton jb = (JToggleButton) me.getSource();

@@ -127,7 +127,7 @@ public class PlaceView extends AbstractElementView
     /**
      * 
      * this inner class contains the render information of a place
-     * 
+     *  
      */
     private class PlaceRenderer extends VertexRenderer
     {

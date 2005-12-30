@@ -26,12 +26,12 @@ import org.woped.editor.controller.EditorViewEvent;
 public class TaskBarVC extends JPanel implements IViewController, IEditorList
 {
 
-    private String             id                 = null;
-    private Vector             viewListener       = new Vector(1, 3);
-    public static final String ID_PREFIX          = "TASKBAR_VC";
+    private String             id             = null;
+    private Vector             viewListener   = new Vector(1, 3);
+    public static final String ID_PREFIX      = "TASKBAR_VC";
 
-    private IEditor           selectedEditor     = null;
-    private HashMap            actions            = new HashMap();
+    private IEditor            selectedEditor = null;
+    private HashMap            actions        = new HashMap();
 
     public TaskBarVC(String id)
     {
@@ -56,7 +56,8 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorList
 
     public void addEditor(IEditor editor)
     {
-        JToggleButton button = new JToggleButton(ActionFactory.getSelectEditorAction(editor));//new TaskBarButton(editor);
+        JToggleButton button = new JToggleButton(ActionFactory.getSelectEditorAction(editor));//new
+                                                                                              // TaskBarButton(editor);
         actions.put(editor, button);
         this.add(button);
         selectEditor(editor);
@@ -64,8 +65,7 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorList
 
     public void removeEditor(IEditor editor)
     {
-    	if (actions.get(editor)!=null)
-    		remove((JToggleButton) actions.get(editor));
+        if (actions.get(editor) != null) remove((JToggleButton) actions.get(editor));
         actions.remove(editor);
         validate();
         selectedEditor = null;

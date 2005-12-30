@@ -38,7 +38,7 @@ import org.woped.editor.gui.config.AbstractConfPanel;
 public class DummyNodePanel extends AbstractConfPanel
 {
     /**
-     *  Contstructor for the <code>DummyNodePanel</code>
+     * Contstructor for the <code>DummyNodePanel</code>
      */
     public DummyNodePanel(String name)
     {

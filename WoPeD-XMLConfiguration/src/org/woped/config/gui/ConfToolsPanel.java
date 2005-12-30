@@ -84,7 +84,8 @@ public class ConfToolsPanel extends AbstractConfPanel
             return true;
         } else
         {
-            JOptionPane.showMessageDialog(this, Messages.getString("Configuration.Options.Error.WoflanPathInvalid"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE);
+            JOptionPane
+                    .showMessageDialog(this, Messages.getString("Configuration.Options.Error.WoflanPathInvalid"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
@@ -160,7 +161,8 @@ public class ConfToolsPanel extends AbstractConfPanel
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
 
-            woflanPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Options.Panel.Woflan.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            woflanPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Options.Panel.Woflan.Title")), BorderFactory.createEmptyBorder(
+                    5, 5, 10, 5)));
 
             c.weightx = 1;
             c.gridx = 0;

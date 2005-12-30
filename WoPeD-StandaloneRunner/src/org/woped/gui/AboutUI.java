@@ -68,8 +68,8 @@ public class AboutUI extends JDialog
     private JScrollPane         changeLogPanel  = null;
     private JPanel              buttonPanel     = null;
 
-    private static String[] aboutArgs = {Messages.getWoPeDVersion(true)};
-    private static final String aboutText       = "<html><p>" +Messages.getStringReplaced("About.Text", aboutArgs) + "</p></html>";
+    private static String[]     aboutArgs       = { Messages.getWoPeDVersion(true) };
+    private static final String aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) + "</p></html>";
 
     public AboutUI()
     {
@@ -88,11 +88,9 @@ public class AboutUI extends JDialog
         initialize();
     }
 
- /*   public static void main(String[] args)
-    {
-        new AboutUI(null);
-    }
-*/
+    /*
+     * public static void main(String[] args) { new AboutUI(null); }
+     */
     /**
      * This method initializes and layouts the about information
      * 
@@ -111,8 +109,7 @@ public class AboutUI extends JDialog
         if (getOwner() != null)
         {
             this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2), getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
-        } 
-        else
+        } else
         {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
@@ -146,7 +143,7 @@ public class AboutUI extends JDialog
             c.gridy = 2;
             c.insets = new Insets(0, 10, 0, 10);
             // TODO: move in propertie files (tfreytag)
-            homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage")+ "</p></html>");
+            homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
             homepageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://www.woped.org", homepageLabel));
             panel.add(homepageLabel, c);
 
@@ -160,7 +157,7 @@ public class AboutUI extends JDialog
             c.gridy = 4;
             c.insets = new Insets(0, 10, 0, 10);
             // TODO: move in propertie files (tfreytag)
-            sfLabel = new JLabel("<html><p>" + Messages.getString("About.Development")+ "</p></html>");
+            sfLabel = new JLabel("<html><p>" + Messages.getString("About.Development") + "</p></html>");
             sfLabel.addMouseListener(new LaunchDefaultBrowserAction("http://sourceforge.net/projects/woped", sfLabel));
             panel.add(sfLabel, c);
             aboutPanel = new JScrollPane(panel);
@@ -181,10 +178,8 @@ public class AboutUI extends JDialog
             c1.anchor = GridBagConstraints.WEST;
 
             // TODO: read changelog information out of the file !!! (silenco)
-            String changeLog = "<html><p><font size=3>"+
-                "<b>WoPeD 0.8.0</b> (2005/03/28)" +
-                "<br>- first official binary release" +
-                "<br><b>WoPeD untagged versions</b><br>- since May 2003.</font></p></html>";
+            String changeLog = "<html><p><font size=3>" + "<b>WoPeD 0.8.0</b> (2005/03/28)" + "<br>- first official binary release"
+                    + "<br><b>WoPeD untagged versions</b><br>- since May 2003.</font></p></html>";
             JLabel text = new JLabel(changeLog, JLabel.LEFT);
             panel.add(text, c1);
             JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -240,7 +235,7 @@ public class AboutUI extends JDialog
                     repaint();
                 }
             });
-            
+
             changelogButton.setMnemonic(KeyEvent.VK_L);
             changelogButton.setText("Versions");
             changelogButton.setIcon(new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/changelog16.gif")));
@@ -260,6 +255,7 @@ public class AboutUI extends JDialog
             c1.insets = new Insets(10, 10, 10, 10);
             c1.anchor = GridBagConstraints.EAST;
             buttonPanel.add(closeButton, c1);
-        }       
+        }
         return buttonPanel;
-    }} // @jve:visual-info decl-index=0 visual-constraint="0,0"
+    }
+} // @jve:visual-info decl-index=0 visual-constraint="0,0"

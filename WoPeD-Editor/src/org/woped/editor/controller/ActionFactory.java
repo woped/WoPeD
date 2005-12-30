@@ -10,100 +10,100 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.action.WoPeDAction;
 
-
 public class ActionFactory
 {
     // Application Scope
-    public final static String ACTIONID_NEW                    = "Action.NewEditor";
-    public final static String ACTIONID_CLOSE                  = "Action.CloseEditor";
-    public final static String ACTIONID_SELECT                 = "Action.FocusEditor";
-    public final static String ACTIONID_SAVE                   = "Action.SaveEditor";
-    public final static String ACTIONID_SAVEAS                 = "ToolBar.SaveAs";
-    public final static String ACTIONID_EXPORT                 = "Action.Export";
-    public final static String ACTIONID_OPEN                   = "ToolBar.Open";
-    public final static String ACTIONID_OPENSAMPLE             = "Action.OpenSample";
-    public final static String ACTIONID_SHOWCONFIG             = "Action.ShowConfig";
-    public final static String ACTIONID_SHOWABOUT              = "Action.ShowAbout";
-    public final static String ACTIONID_SHOWBUGREPORT          = "Action.ShowBugReport";
-    public final static String ACTIONID_SHOWHELPINDEX          = "Menu.Help.Index";
-    public final static String ACTIONID_SHOWHELPCONTENTS       = "Menu.Help.Contents";
-    public final static String ACTIONID_EXIT                   = "Action.QuitApplication";
-    public final static String ACTIONID_WOFLAN                 = "ToolBar.Woflan";
-    public final static String ACTIONID_TOGGLE_TOKENGAME       = "ToolBar.TokenGame";
-    public final static String ACTIONID_PRINT                  = "Action.PrintEditor";
+    public final static String         ACTIONID_NEW                    = "Action.NewEditor";
+    public final static String         ACTIONID_CLOSE                  = "Action.CloseEditor";
+    public final static String         ACTIONID_SELECT                 = "Action.FocusEditor";
+    public final static String         ACTIONID_SAVE                   = "Action.SaveEditor";
+    public final static String         ACTIONID_SAVEAS                 = "ToolBar.SaveAs";
+    public final static String         ACTIONID_EXPORT                 = "Action.Export";
+    public final static String         ACTIONID_OPEN                   = "ToolBar.Open";
+    public final static String         ACTIONID_OPENSAMPLE             = "Action.OpenSample";
+    public final static String         ACTIONID_SHOWCONFIG             = "Action.ShowConfig";
+    public final static String         ACTIONID_SHOWABOUT              = "Action.ShowAbout";
+    public final static String         ACTIONID_SHOWBUGREPORT          = "Action.ShowBugReport";
+    public final static String         ACTIONID_SHOWHELPINDEX          = "Menu.Help.Index";
+    public final static String         ACTIONID_SHOWHELPCONTENTS       = "Menu.Help.Contents";
+    public final static String         ACTIONID_EXIT                   = "Action.QuitApplication";
+    public final static String         ACTIONID_WOFLAN                 = "ToolBar.Woflan";
+    public final static String         ACTIONID_TOGGLE_TOKENGAME       = "ToolBar.TokenGame";
+    public final static String         ACTIONID_PRINT                  = "Action.PrintEditor";
     // utils
-    public final static String ACTIONID_UPDATENETS             = "Action.UpdateNets";
-    //public final static String ACTIONID_SCREENSHOT             = "Menu.Edit.MkScreenshot";
+    public final static String         ACTIONID_UPDATENETS             = "Action.UpdateNets";
+    //public final static String ACTIONID_SCREENSHOT =
+    // "Menu.Edit.MkScreenshot";
     // Drawmode
-    public final static String ACTIONID_DRAWMODE_PLACE         = "ToolBar.DrawPlace";
-    public final static String ACTIONID_DRAWMODE_TRANSITION    = "ToolBar.DrawTransition";
-    public final static String ACTIONID_DRAWMODE_ANDSPLIT      = "ToolBar.DrawAndSplit";
-    public final static String ACTIONID_DRAWMODE_ANDJOIN       = "ToolBar.DrawAndJoin";
-    public final static String ACTIONID_DRAWMODE_XORSPLIT      = "ToolBar.DrawXorSplit";
-    public final static String ACTIONID_DRAWMODE_XORJOIN       = "ToolBar.DrawXorJoin";
-    public final static String ACTIONID_DRAWMODE_XORSPLITJOIN  = "ToolBar.DrawXorSplitJoin";
-    public final static String ACTIONID_DRAWMODE_SUB           = "ToolBar.DrawSubProcess";
+    public final static String         ACTIONID_DRAWMODE_PLACE         = "ToolBar.DrawPlace";
+    public final static String         ACTIONID_DRAWMODE_TRANSITION    = "ToolBar.DrawTransition";
+    public final static String         ACTIONID_DRAWMODE_ANDSPLIT      = "ToolBar.DrawAndSplit";
+    public final static String         ACTIONID_DRAWMODE_ANDJOIN       = "ToolBar.DrawAndJoin";
+    public final static String         ACTIONID_DRAWMODE_XORSPLIT      = "ToolBar.DrawXorSplit";
+    public final static String         ACTIONID_DRAWMODE_XORJOIN       = "ToolBar.DrawXorJoin";
+    public final static String         ACTIONID_DRAWMODE_XORSPLITJOIN  = "ToolBar.DrawXorSplitJoin";
+    public final static String         ACTIONID_DRAWMODE_SUB           = "ToolBar.DrawSubProcess";
     // Edit
-    public final static String ACTIONID_REDO                   = "Action.Redo";
-    public final static String ACTIONID_UNDO                   = "Action.Undo";
-    public final static String ACTIONID_UNGROUP                = "Action.UngroupSelection";
-    public final static String ACTIONID_GROUP                  = "Action.GroupSelection";
-    public final static String ACTIONID_EDIT                   = "Action.EditSelection";
-    public final static String ACTIONID_CUT                    = "Action.CutSelection";
-    public final static String ACTIONID_COPY                   = "Action.CopySelection";
-    public final static String ACTIONID_PASTE                  = "Action.PasteElements";
+    public final static String         ACTIONID_REDO                   = "Action.Redo";
+    public final static String         ACTIONID_UNDO                   = "Action.Undo";
+    public final static String         ACTIONID_UNGROUP                = "Action.UngroupSelection";
+    public final static String         ACTIONID_GROUP                  = "Action.GroupSelection";
+    public final static String         ACTIONID_EDIT                   = "Action.EditSelection";
+    public final static String         ACTIONID_CUT                    = "Action.CutSelection";
+    public final static String         ACTIONID_COPY                   = "Action.CopySelection";
+    public final static String         ACTIONID_PASTE                  = "Action.PasteElements";
 
-    public final static String ACTIONID_REMOVE                 = "Popup.Remove";
-    public final static String ACTIONID_RENAME                 = "Popup.Rename";
-    public final static String ACTIONID_ACTIVATE_ROUTING       = "Popup.ActivateRouting";
-    public final static String ACTIONID_DEACTIVATE_ROUTING     = "Popup.DeactivateRouting";
-    public final static String ACTIONID_ACTIVATE_ALL_ROUTING   = "Popup.Route";
-    public final static String ACTIONID_DEACTIVATE_ALL_ROUTING = "Popup.Unroute";
-    public final static String ACTIONID_ADD_POINT              = "Popup.AddPoint";
-    public final static String ACTIONID_REMOVE_POINT           = "Popup.RemovePoint";
-    public final static String ACTIONID_OPEN_PROPERTIES        = "Popup.Properties";
-    public final static String ACTIONID_ADD_RES_TRIGGER        = "Popup.Trigger.AddResource";
-    public final static String ACTIONID_ADD_TIME_TRIGGER       = "Popup.Trigger.AddTime";
-    public final static String ACTIONID_ADD_EXT_TRIGGER        = "Popup.Trigger.AddExternal";
-    public final static String ACTIONID_REMOVE_TIRGGER         = "Popup.Trigger.Remove";
-    public final static String ACTIONID_ADD_PLACE              = "Popup.Add.Place";
-    public final static String ACTIONID_ADD_TRANSITION         = "Popup.Add.Transition";
-    public final static String ACTIONID_ADD_TOKEN              = "Popup.Token.Add";
-    public final static String ACTIONID_REMOVE_TOKEN           = "Popup.Token.Remove";
-    public final static String ACTIONID_OPEN_SUBPROCESS        = "Popup.Subprocess";
-    public final static String ACTIONID_ADD_ANDJOIN            = "Popup.Add.AndJoin";
-    public final static String ACTIONID_ADD_ANDSPLIT           = "Popup.Add.AndSplit";
-    public final static String ACTIONID_ADD_XORSPLITJOIN       = "Popup.Add.XorSplitJoin";
+    public final static String         ACTIONID_REMOVE                 = "Popup.Remove";
+    public final static String         ACTIONID_RENAME                 = "Popup.Rename";
+    public final static String         ACTIONID_ACTIVATE_ROUTING       = "Popup.ActivateRouting";
+    public final static String         ACTIONID_DEACTIVATE_ROUTING     = "Popup.DeactivateRouting";
+    public final static String         ACTIONID_ACTIVATE_ALL_ROUTING   = "Popup.Route";
+    public final static String         ACTIONID_DEACTIVATE_ALL_ROUTING = "Popup.Unroute";
+    public final static String         ACTIONID_ADD_POINT              = "Popup.AddPoint";
+    public final static String         ACTIONID_REMOVE_POINT           = "Popup.RemovePoint";
+    public final static String         ACTIONID_OPEN_PROPERTIES        = "Popup.Properties";
+    public final static String         ACTIONID_ADD_RES_TRIGGER        = "Popup.Trigger.AddResource";
+    public final static String         ACTIONID_ADD_TIME_TRIGGER       = "Popup.Trigger.AddTime";
+    public final static String         ACTIONID_ADD_EXT_TRIGGER        = "Popup.Trigger.AddExternal";
+    public final static String         ACTIONID_REMOVE_TIRGGER         = "Popup.Trigger.Remove";
+    public final static String         ACTIONID_ADD_PLACE              = "Popup.Add.Place";
+    public final static String         ACTIONID_ADD_TRANSITION         = "Popup.Add.Transition";
+    public final static String         ACTIONID_ADD_TOKEN              = "Popup.Token.Add";
+    public final static String         ACTIONID_REMOVE_TOKEN           = "Popup.Token.Remove";
+    public final static String         ACTIONID_OPEN_SUBPROCESS        = "Popup.Subprocess";
+    public final static String         ACTIONID_ADD_ANDJOIN            = "Popup.Add.AndJoin";
+    public final static String         ACTIONID_ADD_ANDSPLIT           = "Popup.Add.AndSplit";
+    public final static String         ACTIONID_ADD_XORSPLITJOIN       = "Popup.Add.XorSplitJoin";
     // public final static String ACTIONID_ADD_ORSPLIT = "Popup.Add.OrSplit";
-    public final static String ACTIONID_ADD_XORJOIN            = "Popup.Add.XorJoin";
-    public final static String ACTIONID_ADD_XORSPLIT           = "Popup.Add.XorSplit";
-    public final static String ACTIONID_ADD_SUBPROCESS         = "Popup.Add.Subprocess";
+    public final static String         ACTIONID_ADD_XORJOIN            = "Popup.Add.XorJoin";
+    public final static String         ACTIONID_ADD_XORSPLIT           = "Popup.Add.XorSplit";
+    public final static String         ACTIONID_ADD_SUBPROCESS         = "Popup.Add.Subprocess";
     // UML 2.0
-    public final static String ACTIONID_ADD_ACTIVITY           = "Action.Add.Activity";
-    public final static String ACTIONID_ADD_START              = "Action.Add.Start";
-    public final static String ACTIONID_ADD_STOP               = "Action.Add.Stop";
-    public final static String ACTIONID_ADD_AND                = "Action.Add.And";
-    public final static String ACTIONID_ADD_XOR                = "Action.Add.Xor";
+    public final static String         ACTIONID_ADD_ACTIVITY           = "Action.Add.Activity";
+    public final static String         ACTIONID_ADD_START              = "Action.Add.Start";
+    public final static String         ACTIONID_ADD_STOP               = "Action.Add.Stop";
+    public final static String         ACTIONID_ADD_AND                = "Action.Add.And";
+    public final static String         ACTIONID_ADD_XOR                = "Action.Add.Xor";
 
     // view
-    public final static String ACTIONID_STRETCH                 = "Menu.View.Stretch";
-    public final static String ACTIONID_PRESS                  = "Menu.View.Press";
-    public final static String ACTIONID_ZOOMIN                 = "Action.ZoomIn";
-    public final static String ACTIONID_ZOOMOUT                = "Action.ZoomOut";
-    
-    // window
-    public final static String ACTIONID_CASCADE				   = "Action.Frames.Cascade";
-    public final static String ACTIONID_ARRANGE                = "Menu.Window.Arrange";
+    public final static String         ACTIONID_STRETCH                = "Menu.View.Stretch";
+    public final static String         ACTIONID_PRESS                  = "Menu.View.Press";
+    public final static String         ACTIONID_ZOOMIN                 = "Action.ZoomIn";
+    public final static String         ACTIONID_ZOOMOUT                = "Action.ZoomOut";
 
-    private static HashMap     STATIC_ACTION_MAP               = null;
-    
-    private static HashMap	   SELECT_EDITOR_SELECT_ACTION	   = new HashMap();
-    
-    private static ApplicationMediator AM 					   = null;
+    // window
+    public final static String         ACTIONID_CASCADE                = "Action.Frames.Cascade";
+    public final static String         ACTIONID_ARRANGE                = "Menu.Window.Arrange";
+
+    private static HashMap             STATIC_ACTION_MAP               = null;
+
+    private static HashMap             SELECT_EDITOR_SELECT_ACTION     = new HashMap();
+
+    private static ApplicationMediator AM                              = null;
 
     public static HashMap createStaticActions(ApplicationMediator am)
     {
-    	AM=am;
+        AM = am;
         STATIC_ACTION_MAP = new HashMap();
 
         STATIC_ACTION_MAP.put(ACTIONID_NEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.NEW, null, ACTIONID_NEW));
@@ -137,14 +137,17 @@ public class ActionFactory
         /* Utils */
         STATIC_ACTION_MAP.put(ACTIONID_UPDATENETS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.UPDATE));
         //
-    //    STATIC_ACTION_MAP.put(ACTIONID_SCREENSHOT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SCREENSHOT, null, ACTIONID_SCREENSHOT));
+        //    STATIC_ACTION_MAP.put(ACTIONID_SCREENSHOT, new WoPeDAction(am,
+        // AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
+        // AbstractViewEvent.SCREENSHOT, null, ACTIONID_SCREENSHOT));
         //
         STATIC_ACTION_MAP.put(ACTIONID_WOFLAN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_WOFLAN, null, ACTIONID_WOFLAN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_WOFLAN), VisualController.WOFLAN, VisualController.IGNORE, VisualController.IGNORE);
         /* Drawmode Actions */
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_PLACE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_PLACE, null, ACTIONID_DRAWMODE_PLACE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_PLACE), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_PLACE);
-        STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_TRANSITION, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_TRANSITION, null, ACTIONID_DRAWMODE_TRANSITION));
+        STATIC_ACTION_MAP
+                .put(ACTIONID_DRAWMODE_TRANSITION, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_TRANSITION, null, ACTIONID_DRAWMODE_TRANSITION));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_TRANSITION), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_TRANSITION);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_ANDSPLIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_ANDSPLIT, null, ACTIONID_DRAWMODE_ANDSPLIT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_ANDSPLIT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_AND_SPLIT);
@@ -154,8 +157,10 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLIT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLIT);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_XORJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_XORJOIN, null, ACTIONID_DRAWMODE_XORJOIN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORJOIN), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_XOR_JOIN);
-        STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_XORSPLITJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_XORSPLITJOIN, null, ACTIONID_DRAWMODE_XORSPLITJOIN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLITJOIN), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLITJOIN);
+        STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_XORSPLITJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_XORSPLITJOIN, null,
+                ACTIONID_DRAWMODE_XORSPLITJOIN));
+        VisualController.getInstance()
+                .addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORSPLITJOIN), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_XOR_SPLITJOIN);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_SUB, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_SUB, null, ACTIONID_DRAWMODE_SUB));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_SUB), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_SUBPROCESS);
 
@@ -183,17 +188,18 @@ public class ActionFactory
         //
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE, null, ACTIONID_REMOVE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE), VisualController.ANY_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
-        
+
         STATIC_ACTION_MAP.put(ACTIONID_RENAME, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.RENAME, null, ACTIONID_RENAME));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_RENAME), VisualController.ANY_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
-        
+
         STATIC_ACTION_MAP.put(ACTIONID_ACTIVATE_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ACTIVE, null, ACTIONID_ACTIVATE_ROUTING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ACTIVATE_ROUTING), VisualController.ARC_SELECTION, VisualController.UNROUTED_ARC_SELECTION, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_DEACTIVATE_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_DEACTIVE, null, ACTIONID_DEACTIVATE_ROUTING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DEACTIVATE_ROUTING), VisualController.ARC_SELECTION, VisualController.ROUTED_ARC_SELECTION, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ACTIVATE_ALL_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ALL_ACTIVE, null, ACTIONID_ACTIVATE_ALL_ROUTING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ACTIVATE_ALL_ROUTING), VisualController.ALWAYS, VisualController.ALWAYS, VisualController.IGNORE);
-        STATIC_ACTION_MAP.put(ACTIONID_DEACTIVATE_ALL_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ALL_DEACTIVE, null, ACTIONID_DEACTIVATE_ALL_ROUTING));
+        STATIC_ACTION_MAP
+                .put(ACTIONID_DEACTIVATE_ALL_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ALL_DEACTIVE, null, ACTIONID_DEACTIVATE_ALL_ROUTING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DEACTIVATE_ALL_ROUTING), VisualController.ALWAYS, VisualController.ALWAYS, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_POINT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_POINT, null, ACTIONID_ADD_POINT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_POINT), VisualController.ARC_SELECTION, VisualController.UNROUTED_ARC_SELECTION, VisualController.IGNORE);
@@ -223,12 +229,13 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLIT), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_XORSPLITJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_XORSPLITJOIN, null, ACTIONID_ADD_XORSPLITJOIN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLITJOIN), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
-        
+
         STATIC_ACTION_MAP.put(ACTIONID_ADD_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_SUBPROCESS, null, ACTIONID_ADD_SUBPROCESS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_SUBPROCESS), VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);       
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_SUBPROCESS), VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_OPEN_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_SUBPROCESS, null, ACTIONID_OPEN_SUBPROCESS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION,
+                VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_ADD_TOKEN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_TOKEN, null, ACTIONID_ADD_TOKEN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TOKEN), VisualController.PLACE_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
@@ -256,8 +263,7 @@ public class ActionFactory
 
         STATIC_ACTION_MAP.put(ACTIONID_CASCADE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CASCADE, null, ACTIONID_CASCADE));
         STATIC_ACTION_MAP.put(ACTIONID_ARRANGE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.ARRANGE, null, ACTIONID_ARRANGE));
-        
-        
+
         return STATIC_ACTION_MAP;
     }
 
@@ -271,39 +277,40 @@ public class ActionFactory
     {
         return (WoPeDAction) getStaticActionMap().get(id);
     }
-    
-    public static Action getSelectEditorAction(IEditor editor){
-    	if (!(SELECT_EDITOR_SELECT_ACTION.get(editor) instanceof Action))
-    	{
-    		Action result = new EditorSelectAction(editor);
-    			SELECT_EDITOR_SELECT_ACTION.put(editor, result);
-    	}
-    	return (Action)SELECT_EDITOR_SELECT_ACTION.get(editor);
-    	
+
+    public static Action getSelectEditorAction(IEditor editor)
+    {
+        if (!(SELECT_EDITOR_SELECT_ACTION.get(editor) instanceof Action))
+        {
+            Action result = new EditorSelectAction(editor);
+            SELECT_EDITOR_SELECT_ACTION.put(editor, result);
+        }
+        return (Action) SELECT_EDITOR_SELECT_ACTION.get(editor);
+
     }
+
     private static class EditorSelectAction extends WoPeDAction
     {
-    	
-    	private IEditor m_editor = null;
 
-		public EditorSelectAction(IEditor editor) {
-			super("Action.SelectEditor",new Object[]{editor});
-			m_editor=editor;
-			
-		}
+        private IEditor m_editor = null;
 
-		public void actionPerformed(ActionEvent e) {
-			if (!isSelected())
-			{
-				AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
-			}
-			else
-			{
-				AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.INCONIFY_EDITOR));
-			}
-		}
-    	
+        public EditorSelectAction(IEditor editor)
+        {
+            super("Action.SelectEditor", new Object[] { editor });
+            m_editor = editor;
+
+        }
+
+        public void actionPerformed(ActionEvent e)
+        {
+            if (!isSelected())
+            {
+                AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
+            } else
+            {
+                AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.INCONIFY_EDITOR));
+            }
+        }
+
     }
 }
-    
-

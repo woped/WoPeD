@@ -35,18 +35,18 @@ import java.util.Vector;
 public class FileFilterImpl extends javax.swing.filechooser.FileFilter
 {
 
-    //private String          ext;
+    //private String ext;
     private String          desc;
     private Hashtable       exts;
-    //private String          fullDescription = null;
+    //private String fullDescription = null;
     private int             type;
-    public final static int JPGFilter       = 1;
-    public final static int PNMLFilter      = 2;
-    public final static int TPNFilter       = 3;
-    public final static int SAMPLEFilter    = 4;
-    public final static int FOLDERFilter    = 5;
-    public final static int XMLFilter       = 6;
-    public final static int OLDPNMLFilter   = 7;
+    public final static int JPGFilter     = 1;
+    public final static int PNMLFilter    = 2;
+    public final static int TPNFilter     = 3;
+    public final static int SAMPLEFilter  = 4;
+    public final static int FOLDERFilter  = 5;
+    public final static int XMLFilter     = 6;
+    public final static int OLDPNMLFilter = 7;
 
     public FileFilterImpl(int type, String descritption)
     {

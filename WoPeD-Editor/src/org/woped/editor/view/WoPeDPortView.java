@@ -87,7 +87,7 @@ public class WoPeDPortView extends PortView
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(2, 2, d.width - 3, d.height - 3);
                 g.drawRect(3, 3, d.width - 5, d.height - 5);
-                g.drawRect(d.width/2, d.height/2, 4, 4);
+                g.drawRect(d.width / 2, d.height / 2, 4, 4);
             }
             boolean offset = (GraphConstants.getOffset(view.getAllAttributes()) != null);
             g.setColor(getForeground());
@@ -97,7 +97,7 @@ public class WoPeDPortView extends PortView
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(2, 2, d.width - 4, d.height - 4);
                 g.drawRect(3, 3, d.width - 6, d.height - 6);
-                g.fillOval((d.width-1)/2, (d.height-1)/2, 6, 6);
+                g.fillOval((d.width - 1) / 2, (d.height - 1) / 2, 6, 6);
             }
 
             if (offset)

@@ -164,12 +164,12 @@ public class EditorEventProcessor extends AbstractEventProcessor
                     if (element instanceof TransitionModel)
                     {
                         TransitionPropertyEditor prop = new TransitionPropertyEditor((JFrame) getMediator().getUi(), (TransitionModel) element, editor);
-                    } 
+                    }
                     if (element instanceof PlaceModel)
                     {
                         PlacePropertyEditor prop = new PlacePropertyEditor((JFrame) getMediator().getUi(), (PlaceModel) element, editor);
                     }
-               }
+                }
                 break;
             case AbstractViewEvent.ADD_POINT:
                 editor.addPointToSelectedArc();

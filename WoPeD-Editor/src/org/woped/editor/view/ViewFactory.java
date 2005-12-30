@@ -66,105 +66,130 @@ import org.woped.editor.view.uml.StateView;
  * 
  * Created on: 29.01.2005 Last Change on: 29.01.2005
  */
-public class ViewFactory extends AbstractViewFactory {
+public class ViewFactory extends AbstractViewFactory
+{
 
-	public CellView createView(GraphModel model, Object cell) {
-		CellView view = null;
-		if (cell instanceof PortCell)
-			view = createPortView(cell);
-		else if (model.isEdge(cell))
-			view = new ArcView(cell);
-		else
-			view = createVertexView(cell);
-		// cm.putMapping(cell, view);
-		// view.refresh(true); // Create Dependent Views
-		view.update();
-		return view;
-	}
+    public CellView createView(GraphModel model, Object cell)
+    {
+        CellView view = null;
+        if (cell instanceof PortCell) view = createPortView(cell);
+        else if (model.isEdge(cell)) view = new ArcView(cell);
+        else view = createVertexView(cell);
+        // cm.putMapping(cell, view);
+        // view.refresh(true); // Create Dependent Views
+        view.update();
+        return view;
+    }
 
-	protected EdgeView createEdgeView(Object cell) {
-		ArcView view = new ArcView(cell);
-		view.update();
-		return view;
-	}
+    protected EdgeView createEdgeView(Object cell)
+    {
+        ArcView view = new ArcView(cell);
+        view.update();
+        return view;
+    }
 
-	protected PortView createPortView(Object cell) {
-		return new WoPeDPortView(cell);
-	}
+    protected PortView createPortView(Object cell)
+    {
+        return new WoPeDPortView(cell);
+    }
 
-	protected VertexView createVertexView(Object cell) {
-		if (cell instanceof NameModel) {
-			return new NameView(cell);
-		} else if (cell instanceof PlaceModel) {
-			return new PlaceView(cell);
-		} else if (cell instanceof SubProcessModel) {
-			return new SubProcessView(cell);
-		} else if (cell instanceof OperatorTransitionModel) {
+    protected VertexView createVertexView(Object cell)
+    {
+        if (cell instanceof NameModel)
+        {
+            return new NameView(cell);
+        } else if (cell instanceof PlaceModel)
+        {
+            return new PlaceView(cell);
+        } else if (cell instanceof SubProcessModel)
+        {
+            return new SubProcessView(cell);
+        } else if (cell instanceof OperatorTransitionModel)
+        {
 
-			OperatorTransitionModel aTCell = (OperatorTransitionModel) cell;
-			if (aTCell.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE) {
+            OperatorTransitionModel aTCell = (OperatorTransitionModel) cell;
+            if (aTCell.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE)
+            {
 
-				return new TransAndSplitView(cell);
-			} else if (aTCell.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE) {
+                return new TransAndSplitView(cell);
+            } else if (aTCell.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE)
+            {
 
-				return new TransAndJoinView(cell);
-			} else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE) {
+                return new TransAndJoinView(cell);
+            } else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
+            {
 
-				return new TransXOrSplitView(cell);
-			} else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE) {
+                return new TransXOrSplitView(cell);
+            } else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
+            {
 
-				return new TransXOrJoinView(cell);
+                return new TransXOrJoinView(cell);
 
-			} else if (aTCell.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE) {
+            } else if (aTCell.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE)
+            {
 
-				return new TransOrSplitView(cell);
+                return new TransOrSplitView(cell);
 
-			} else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+            } else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+            {
 
-				return new TransXOrSplitJoinView(cell);
+                return new TransXOrSplitJoinView(cell);
 
-			} else {
-				LoggerManager.error(Constants.EDITOR_LOGGER, " Not known Aalst ViewType" + cell.getClass().toString());
-				// return null;
-				return super.createVertexView(cell);
-			}
-		} else if (cell instanceof TransitionModel) {
-			return new TransSimpleView(cell);
-		} else if (cell instanceof TransitionResourceModel) {
-			return new TransitionResourceView(cell);
-		} else if (cell instanceof TriggerModel) {
-			TriggerModel aTCell = (TriggerModel) cell;
-			/* Hier die Überprüfung ob Besondere View ? */
-			if (aTCell.getTriggertype() == TriggerModel.TRIGGER_EXTERNAL) {
+            } else
+            {
+                LoggerManager.error(Constants.EDITOR_LOGGER, " Not known Aalst ViewType" + cell.getClass().toString());
+                // return null;
+                return super.createVertexView(cell);
+            }
+        } else if (cell instanceof TransitionModel)
+        {
+            return new TransSimpleView(cell);
+        } else if (cell instanceof TransitionResourceModel)
+        {
+            return new TransitionResourceView(cell);
+        } else if (cell instanceof TriggerModel)
+        {
+            TriggerModel aTCell = (TriggerModel) cell;
+            /* Hier die Überprüfung ob Besondere View ? */
+            if (aTCell.getTriggertype() == TriggerModel.TRIGGER_EXTERNAL)
+            {
 
-				return new TriggerExtView(cell);
+                return new TriggerExtView(cell);
 
-			} else if (aTCell.getTriggertype() == TriggerModel.TRIGGER_RESOURCE) {
+            } else if (aTCell.getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
+            {
 
-				return new TriggerResView(cell);
+                return new TriggerResView(cell);
 
-			} else if (aTCell.getTriggertype() == TriggerModel.TRIGGER_TIME) {
+            } else if (aTCell.getTriggertype() == TriggerModel.TRIGGER_TIME)
+            {
 
-				return new TriggerTimeView(cell);
+                return new TriggerTimeView(cell);
 
-			} else {
-				LoggerManager.error(Constants.EDITOR_LOGGER, "Not known Trigger ViewType " + cell.getClass().toString());
-				// return null;
-				return super.createVertexView(cell);
-			}
+            } else
+            {
+                LoggerManager.error(Constants.EDITOR_LOGGER, "Not known Trigger ViewType " + cell.getClass().toString());
+                // return null;
+                return super.createVertexView(cell);
+            }
 
-		} else if (cell instanceof GroupModel) {
-			return super.createVertexView(cell);
-		} else if (cell instanceof ActivityModel) {
-			return new ActivityView(cell);
-		} else if (cell instanceof StateModel) {
-			return new StateView(cell);
-		} else if (cell instanceof OperatorModel) {
-			return new OperatorView(cell);
-		} else {
-			LoggerManager.error(Constants.EDITOR_LOGGER, "Not known ViewType " + cell.getClass().getName().toString());
-			// return null;
-			return super.createVertexView(cell);
-		}
-	}
+        } else if (cell instanceof GroupModel)
+        {
+            return super.createVertexView(cell);
+        } else if (cell instanceof ActivityModel)
+        {
+            return new ActivityView(cell);
+        } else if (cell instanceof StateModel)
+        {
+            return new StateView(cell);
+        } else if (cell instanceof OperatorModel)
+        {
+            return new OperatorView(cell);
+        } else
+        {
+            LoggerManager.error(Constants.EDITOR_LOGGER, "Not known ViewType " + cell.getClass().getName().toString());
+            // return null;
+            return super.createVertexView(cell);
+        }
+    }
 }

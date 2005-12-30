@@ -30,7 +30,7 @@ public class ActivityView extends AbstractElementView
     /**
      * 
      * this inner class contains the render information of a place
-     * 
+     *  
      */
     private class ActivityRenderer extends VertexRenderer
     {
@@ -61,7 +61,9 @@ public class ActivityView extends AbstractElementView
             {
                 ImageIcon img = ((ActivityModel) ActivityView.this.getCell()).getIcon();
                 g2.drawImage(img.getImage(), 2, 2, img.getImageObserver());
-                //((ActivityModel) ActivityView.this.getCell()).setSize(img.getIconWidth()+4, img.getIconHeight()+4);
+                //((ActivityModel)
+                // ActivityView.this.getCell()).setSize(img.getIconWidth()+4,
+                // img.getIconHeight()+4);
                 if (selected)
                 {
                     g2.drawRect(0, 0, d.width - 1, d.height - 1);
@@ -79,7 +81,7 @@ public class ActivityView extends AbstractElementView
                 if (selected)
                 {
                     g2.drawRect(0, 0, d.width - 1, d.height - 1); // , 15,
-                                                                    // 15);
+                    // 15);
                 }
             }
             // try

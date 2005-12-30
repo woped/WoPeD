@@ -85,7 +85,7 @@ public class StateView extends AbstractElementView
             if (selected)
             {
                 g2.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                g2.drawRect(b, b, d.width - b -2, d.height - b -2);
+                g2.drawRect(b, b, d.width - b - 2, d.height - b - 2);
             }
             if (StateView.this.getStateType() == StateModel.STATE_START_TYPE)
             {

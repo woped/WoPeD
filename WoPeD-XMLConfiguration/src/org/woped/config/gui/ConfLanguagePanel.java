@@ -38,26 +38,24 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
 import org.woped.editor.utilities.Messages;
 
-
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
  *         The <code>ConfLanguagePanel</code> ist the
- *         <code>AbstractConfPanel</code> for the configruation of the language.
- *         <br>
+ *         <code>AbstractConfPanel</code> for the configruation of the
+ *         language. <br>
  *         Created on: 26.11.2004 Last Change on: 14.11.2005
  */
 
-
 public class ConfLanguagePanel extends AbstractConfPanel
 {
-	private Component  guiObject;
-	// Language selection
-    private JPanel     languagePanel           = null;
-    private JComboBox  languageComboBox        = null;
-    private JLabel     languageLabel  	 	   = null;
+    private Component      guiObject;
+    // Language selection
+    private JPanel         languagePanel    = null;
+    private JComboBox      languageComboBox = null;
+    private JLabel         languageLabel    = null;
 
-    private final Locale[] language     = {Locale.ENGLISH, Locale.GERMAN};
+    private final Locale[] language         = { Locale.ENGLISH, Locale.GERMAN };
 
     /**
      * Constructor for ConfToolsPanel.
@@ -73,116 +71,112 @@ public class ConfLanguagePanel extends AbstractConfPanel
      */
     public boolean applyConfiguration()
     {
-    		int selected = getLanguageComboBox().getSelectedIndex();
-    		Locale locale = language[selected];
+        int selected = getLanguageComboBox().getSelectedIndex();
+        Locale locale = language[selected];
 
-    	
-    		boolean changed = (!locale.equals(ConfigurationManager.getConfiguration().getLocale()));
-    		ConfigurationManager.getConfiguration().setLocaleLanguage(locale.getLanguage());
-    		ConfigurationManager.getConfiguration().setLocaleCountry(locale.getCountry());
-    		ConfigurationManager.getConfiguration().setLocaleVariant(locale.getVariant());
-    		
-    		
-    		if (changed) {
-    			JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Language.Dialog.Restart.Message"), Messages.getString("Configuration.Language.Dialog.Restart.Title"), JOptionPane.INFORMATION_MESSAGE);
-    			ConfigurationManager.getConfiguration().setLocale();
-    		}
-    		return true;
+        boolean changed = (!locale.equals(ConfigurationManager.getConfiguration().getLocale()));
+        ConfigurationManager.getConfiguration().setLocaleLanguage(locale.getLanguage());
+        ConfigurationManager.getConfiguration().setLocaleCountry(locale.getCountry());
+        ConfigurationManager.getConfiguration().setLocaleVariant(locale.getVariant());
+
+        if (changed)
+        {
+            JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Language.Dialog.Restart.Message"), Messages.getString("Configuration.Language.Dialog.Restart.Title"),
+                    JOptionPane.INFORMATION_MESSAGE);
+            ConfigurationManager.getConfiguration().setLocale();
+        }
+        return true;
     }
 
     /**
-	 * @see AbstractConfPanel#readConfigruation()
-	 */
+     * @see AbstractConfPanel#readConfigruation()
+     */
     public void readConfigruation()
     {
-    		int selected = 0;
-    		for (int i = 0; i < language.length; i++) {
-    			if (language[i].equals(ConfigurationManager.getConfiguration().getLocale())) {
-    				selected = i;
-    				break;
-    			}
-    		}
-    		getLanguageComboBox().setSelectedIndex(selected);
+        int selected = 0;
+        for (int i = 0; i < language.length; i++)
+        {
+            if (language[i].equals(ConfigurationManager.getConfiguration().getLocale()))
+            {
+                selected = i;
+                break;
+            }
+        }
+        getLanguageComboBox().setSelectedIndex(selected);
     }
 
     private void initialize()
     {
-    		JPanel contentPanel = new JPanel();
-    		contentPanel.setLayout(new GridBagLayout());
-    		GridBagConstraints c = new GridBagConstraints();
-    		c.anchor = GridBagConstraints.NORTH;
-    		c.fill = GridBagConstraints.HORIZONTAL;
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.anchor = GridBagConstraints.NORTH;
+        c.fill = GridBagConstraints.HORIZONTAL;
 
-    		c.weightx = 1;
-    		c.gridx = 0;
-    		c.gridy = 0;
-    		contentPanel.add(getLanguagePanel(), c);
-    		// dummy
-    		c.fill = GridBagConstraints.VERTICAL;
-    		c.weighty = 1;
-    		c.gridy = 1;
-    		contentPanel.add(new JPanel(), c);
-    		setMainPanel(contentPanel);
+        c.weightx = 1;
+        c.gridx = 0;
+        c.gridy = 0;
+        contentPanel.add(getLanguagePanel(), c);
+        // dummy
+        c.fill = GridBagConstraints.VERTICAL;
+        c.weighty = 1;
+        c.gridy = 1;
+        contentPanel.add(new JPanel(), c);
+        setMainPanel(contentPanel);
     }
-
 
     // ################## GUI COMPONENTS #################### */
 
-    
-
-
     private JComboBox getLanguageComboBox()
     {
-    		if (languageComboBox == null)
-    		{
-    			String[] languageBoxItems = new String[language.length];
-    			int maxlength = 0;
-    			for (int i = 0; i < language.length; i++) {
-    				languageBoxItems[i] = language[i].getDisplayLanguage(language[i]);
-    			}
-    			languageComboBox = new JComboBox(languageBoxItems);
-    			languageComboBox.setMinimumSize(new Dimension(100, 20));
-    			languageComboBox.setToolTipText("<html>" + Messages.getString("Configuration.Language.Tooltip") + "</html>");
-    		}
-    		return languageComboBox;
+        if (languageComboBox == null)
+        {
+            String[] languageBoxItems = new String[language.length];
+            int maxlength = 0;
+            for (int i = 0; i < language.length; i++)
+            {
+                languageBoxItems[i] = language[i].getDisplayLanguage(language[i]);
+            }
+            languageComboBox = new JComboBox(languageBoxItems);
+            languageComboBox.setMinimumSize(new Dimension(100, 20));
+            languageComboBox.setToolTipText("<html>" + Messages.getString("Configuration.Language.Tooltip") + "</html>");
+        }
+        return languageComboBox;
     }
-
 
     private JPanel getLanguagePanel()
     {
-    		if (languagePanel == null)
-    		{
-    			languagePanel = new JPanel();
-    			languagePanel.setLayout(new GridBagLayout());
-    			GridBagConstraints c = new GridBagConstraints();
-    			c.anchor = GridBagConstraints.WEST;
+        if (languagePanel == null)
+        {
+            languagePanel = new JPanel();
+            languagePanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.anchor = GridBagConstraints.WEST;
 
+            languagePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Language.Panel.Language.Title")), BorderFactory
+                    .createEmptyBorder(5, 5, 10, 5)));
 
-    			languagePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Language.Panel.Language.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            c.weightx = 1;
+            c.gridx = 0;
+            c.gridy = 0;
+            languagePanel.add(getLanguageLabel(), c);
 
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 0;
+            languagePanel.add(getLanguageComboBox(), c);
 
-    			c.weightx = 1;
-    			c.gridx = 0;
-    			c.gridy = 0;
-    			languagePanel.add(getLanguageLabel(), c);
-
-
-    			c.weightx = 1;
-    			c.gridx = 1;
-    			c.gridy = 0;
-    			languagePanel.add(getLanguageComboBox(), c);
-
-    		}
-    		return languagePanel;
+        }
+        return languagePanel;
     }
 
     private JLabel getLanguageLabel()
     {
-    		if (languageLabel == null)
-    		{
-    			languageLabel = new JLabel("<html>" + Messages.getString("Configuration.Language.Label.SelectLanguage") + "</html>");
-    			languageLabel.setHorizontalAlignment(JLabel.RIGHT);
-    		}
-    		return languageLabel;
+        if (languageLabel == null)
+        {
+            languageLabel = new JLabel("<html>" + Messages.getString("Configuration.Language.Label.SelectLanguage") + "</html>");
+            languageLabel.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return languageLabel;
     }
 }

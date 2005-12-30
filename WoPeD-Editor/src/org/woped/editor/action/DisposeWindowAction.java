@@ -30,7 +30,6 @@ import java.awt.Component;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 
-
 /**
  * Disposes the Window the caller is in.
  * 

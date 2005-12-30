@@ -23,15 +23,15 @@ import org.woped.gui.help.action.LaunchDefaultBrowserAction;
 
 public class BugReportUI extends JDialog
 {
-    private JLabel              logoLabel       = null;
-    private JLabel              bugReportLabel  = null;
-    private JLabel              bugPageLabel    = null;
-    private JButton             closeButton     = null;
-    private JScrollPane         bugReportPanel  = null;
-    private JPanel              buttonPanel = null;
- 
+    private JLabel              logoLabel      = null;
+    private JLabel              bugReportLabel = null;
+    private JLabel              bugPageLabel   = null;
+    private JButton             closeButton    = null;
+    private JScrollPane         bugReportPanel = null;
+    private JPanel              buttonPanel    = null;
+
     // TODO: move in propertie files (tfreytag)
-    private static final String bugReportText = Messages.getString("BugReport.Text"); ;
+    private static final String bugReportText  = Messages.getString("BugReport.Text"); ;
 
     public BugReportUI()
     {
@@ -61,15 +61,14 @@ public class BugReportUI extends JDialog
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getBugReportPanel(), BorderLayout.NORTH);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-  
+
         this.setUndecorated(true);
         this.pack();
 
         if (getOwner() != null)
         {
             this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2), getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
-        } 
-        else
+        } else
         {
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
@@ -105,12 +104,12 @@ public class BugReportUI extends JDialog
             bugPageLabel = new JLabel(Messages.getString("BugReport.Link"));
             bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://woped.ba-karlsruhe.de/bugs", bugPageLabel));
             panel.add(bugPageLabel, c);
-            
+
             bugReportPanel = new JScrollPane(panel);
-        }       
+        }
         return bugReportPanel;
     }
-    
+
     private JPanel getButtonPanel()
     {
         if (buttonPanel == null)
@@ -121,7 +120,7 @@ public class BugReportUI extends JDialog
             closeButton = new JButton(new DisposeWindowAction());
             closeButton.setMnemonic(KeyEvent.VK_C);
             closeButton.requestFocus();
-            c.insets = new Insets(20, 0, 20, 0); 
+            c.insets = new Insets(20, 0, 20, 0);
             c.anchor = GridBagConstraints.CENTER;
             buttonPanel.add(closeButton, c);
         }

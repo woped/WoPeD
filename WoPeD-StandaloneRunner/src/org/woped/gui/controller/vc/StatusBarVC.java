@@ -46,149 +46,163 @@ import org.woped.gui.controller.DefaultApplicationMediator;
  *         TODO: DOCUMENTATION (silenco) Created on: 05.03.2005 Last Change on:
  *         05.03.2005
  */
-public class StatusBarVC extends JPanel implements IViewController, IStatusBar {
-	private JLabel m_EditorNumberLabel = null;
+public class StatusBarVC extends JPanel implements IViewController, IStatusBar
+{
+    private JLabel             m_EditorNumberLabel = null;
 
-	private JProgressBar m_progressBar = null;
+    private JProgressBar       m_progressBar       = null;
 
-	private JLabel m_statusLabel = null;
+    private JLabel             m_statusLabel       = null;
 
-	private String id = null;
-	
-	private int progressBarCount;
-	
-	public static final String ID_PREFIX = "STATUSBAR_VC_";
+    private String             id                  = null;
 
-	private Vector viewListener = new Vector(1, 3);
+    private int                progressBarCount;
 
-	SynchonizeTask task;
+    public static final String ID_PREFIX           = "STATUSBAR_VC_";
 
-	/**
-	 * TODO: DOCUMENTATION (silenco)
-	 */
-	public StatusBarVC(String id) {
-		initialize();
-	}
+    private Vector             viewListener        = new Vector(1, 3);
 
-	private void initialize() {
-		this.setLayout(new GridBagLayout());
-		this.setBorder(new BevelBorder(BevelBorder.LOWERED));
-		this.setPreferredSize(new Dimension(800, 20));
+    SynchonizeTask             task;
 
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 1;
-		c.gridy = 1;
+    /**
+     * TODO: DOCUMENTATION (silenco)
+     */
+    public StatusBarVC(String id)
+    {
+        initialize();
+    }
 
-		c.gridx = 1;
-		this.add(getEditorNumberLabel(), c);
-		// c.gridx = 2;
-		// this.add(new JLabel(), c);
-		c.gridx = 2;
-		getStatusLabel().setText("");
-		this.add(getStatusLabel(), c);
-		c.gridx = 3;
-		this.add(getProgressBar(), c);
-		progressBarCount = -1;
-	}
+    private void initialize()
+    {
+        this.setLayout(new GridBagLayout());
+        this.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        this.setPreferredSize(new Dimension(800, 20));
 
-	private JLabel getEditorNumberLabel() {
-		if (m_EditorNumberLabel == null) {
-			m_EditorNumberLabel = new JLabel(Messages.getString("Statusbar.Editors") 
-                    + ": " + String.valueOf(0));
-			m_EditorNumberLabel.setHorizontalAlignment(JLabel.LEFT);
-		}
-		return m_EditorNumberLabel;
-	}
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 1;
+        c.gridy = 1;
 
-	/**
-	 * TODO: DOCUMENTATION (silenco)
-	 * 
-	 * @return
-	 */
-	public SynchonizeTask getSyncTask() {
-		return task;
-	}
+        c.gridx = 1;
+        this.add(getEditorNumberLabel(), c);
+        // c.gridx = 2;
+        // this.add(new JLabel(), c);
+        c.gridx = 2;
+        getStatusLabel().setText("");
+        this.add(getStatusLabel(), c);
+        c.gridx = 3;
+        this.add(getProgressBar(), c);
+        progressBarCount = -1;
+    }
 
-	
-	public void addViewListener(IViewListener listener) {
-		viewListener.addElement(listener);
-	}
+    private JLabel getEditorNumberLabel()
+    {
+        if (m_EditorNumberLabel == null)
+        {
+            m_EditorNumberLabel = new JLabel(Messages.getString("Statusbar.Editors") + ": " + String.valueOf(0));
+            m_EditorNumberLabel.setHorizontalAlignment(JLabel.LEFT);
+        }
+        return m_EditorNumberLabel;
+    }
 
-	public String getId() {
-		return id;
-	}
+    /**
+     * TODO: DOCUMENTATION (silenco)
+     * 
+     * @return
+     */
+    public SynchonizeTask getSyncTask()
+    {
+        return task;
+    }
 
-	public void removeViewListener(IViewListener listenner) {
-		viewListener.removeElement(listenner);
-	}
+    public void addViewListener(IViewListener listener)
+    {
+        viewListener.addElement(listener);
+    }
 
-	public int getViewControllerType() {
-		return DefaultApplicationMediator.VIEWCONTROLLER_STATUSBAR;
-	}
+    public String getId()
+    {
+        return id;
+    }
 
-	/**
-	 * Fires a ViewEvent to each listener as long as the event is not consumed.
-	 * The event is also set with a reference to the current listener.
-	 */
-	public final void fireViewEvent(AbstractViewEvent viewevent) {
-		if (viewevent == null)
-			return;
-		java.util.Vector vector;
-		synchronized (viewListener) {
-			vector = (java.util.Vector) viewListener.clone();
-		}
-		if (vector == null)
-			return;
-		int i = vector.size();
-		for (int j = 0; !viewevent.isConsumed() && j < i; j++) {
-			IViewListener viewlistener = (IViewListener) vector.elementAt(j);
-			viewevent.setViewListener(viewlistener);
-			viewlistener.viewEventPerformed(viewevent);
-		}
-	}
+    public void removeViewListener(IViewListener listenner)
+    {
+        viewListener.removeElement(listenner);
+    }
 
-	public JLabel getStatusLabel() {
-		if (m_statusLabel == null) {
-			m_statusLabel = new JLabel();
-			m_statusLabel.setHorizontalAlignment(JLabel.RIGHT);
-		}
-		return m_statusLabel;
-	}
+    public int getViewControllerType()
+    {
+        return DefaultApplicationMediator.VIEWCONTROLLER_STATUSBAR;
+    }
 
-	public JProgressBar getProgressBar() {
-		if (m_progressBar == null) {
-			m_progressBar = new JProgressBar();
-		}
-		return m_progressBar;
-	}
+    /**
+     * Fires a ViewEvent to each listener as long as the event is not consumed.
+     * The event is also set with a reference to the current listener.
+     */
+    public final void fireViewEvent(AbstractViewEvent viewevent)
+    {
+        if (viewevent == null) return;
+        java.util.Vector vector;
+        synchronized (viewListener)
+        {
+            vector = (java.util.Vector) viewListener.clone();
+        }
+        if (vector == null) return;
+        int i = vector.size();
+        for (int j = 0; !viewevent.isConsumed() && j < i; j++)
+        {
+            IViewListener viewlistener = (IViewListener) vector.elementAt(j);
+            viewevent.setViewListener(viewlistener);
+            viewlistener.viewEventPerformed(viewevent);
+        }
+    }
 
-	public boolean startProgress(String description, int maxValue) {
-		if (isRunning())
-			return false;
-		getProgressBar().setMaximum(maxValue);
-		getStatusLabel().setText(description);
-		progressBarCount = 0;
-		return true;
-	}
+    public JLabel getStatusLabel()
+    {
+        if (m_statusLabel == null)
+        {
+            m_statusLabel = new JLabel();
+            m_statusLabel.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return m_statusLabel;
+    }
 
-	public boolean nextStep() {
-		if(!isRunning())
-			return false;
-		progressBarCount++;
-		getProgressBar().setValue(progressBarCount);
-		if(progressBarCount == getProgressBar().getMaximum()){
-			progressBarCount = -1;
-			getProgressBar().setMaximum(0);
-			getProgressBar().setValue(0);
-			getStatusLabel().setText("");
-		}
-		return true;
-	}
+    public JProgressBar getProgressBar()
+    {
+        if (m_progressBar == null)
+        {
+            m_progressBar = new JProgressBar();
+        }
+        return m_progressBar;
+    }
 
-	public boolean isRunning() {
-		if(progressBarCount == -1)
-			return false;
-		return true;
-	}
+    public boolean startProgress(String description, int maxValue)
+    {
+        if (isRunning()) return false;
+        getProgressBar().setMaximum(maxValue);
+        getStatusLabel().setText(description);
+        progressBarCount = 0;
+        return true;
+    }
+
+    public boolean nextStep()
+    {
+        if (!isRunning()) return false;
+        progressBarCount++;
+        getProgressBar().setValue(progressBarCount);
+        if (progressBarCount == getProgressBar().getMaximum())
+        {
+            progressBarCount = -1;
+            getProgressBar().setMaximum(0);
+            getProgressBar().setValue(0);
+            getStatusLabel().setText("");
+        }
+        return true;
+    }
+
+    public boolean isRunning()
+    {
+        if (progressBarCount == -1) return false;
+        return true;
+    }
 }

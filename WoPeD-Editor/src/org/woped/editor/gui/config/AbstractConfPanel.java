@@ -47,18 +47,22 @@ public abstract class AbstractConfPanel extends JPanel
     private JPanel namePanel = null;
 
     /**
-     * Applys the configuration. Writes the displayed values in the configration object. 
+     * Applys the configuration. Writes the displayed values in the configration
+     * object.
+     * 
      * @return
      */
     public abstract boolean applyConfiguration();
 
     /**
-     * Reads the configuration. Reads the stored values from the configration object into the displayed fields.
+     * Reads the configuration. Reads the stored values from the configration
+     * object into the displayed fields.
      */
     public abstract void readConfigruation();
 
     /**
      * Constructor for AbstractConfPanel.
+     * 
      * @param name
      */
     public AbstractConfPanel(String name)

@@ -62,6 +62,7 @@ public class HelpToolBar extends JToolBar
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @param controlledWindow
      * @return
      */
@@ -94,6 +95,7 @@ public class HelpToolBar extends JToolBar
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public AbstractButton getCloseButton()
@@ -107,6 +109,7 @@ public class HelpToolBar extends JToolBar
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public AbstractButton getBackButton()
@@ -121,6 +124,7 @@ public class HelpToolBar extends JToolBar
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public AbstractButton getRefreshButton()
@@ -134,6 +138,7 @@ public class HelpToolBar extends JToolBar
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public AbstractButton getHomeButton()
@@ -147,6 +152,7 @@ public class HelpToolBar extends JToolBar
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public AbstractButton getContentsButton()
@@ -174,6 +180,7 @@ public class HelpToolBar extends JToolBar
 
     /**
      * TODO: DOCUMENTATION (tfreytag)
+     * 
      * @return
      */
     public AbstractButton getWWWButton()

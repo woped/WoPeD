@@ -35,20 +35,19 @@ import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.EditorVC;
 
 /**
- * @author Thomas Pohl
- * TODO: DOCUMENTATION (xraven)
- *
- * Created on: 16.03.2005
- * Last Change on: 16.03.2005
+ * @author Thomas Pohl TODO: DOCUMENTATION (xraven)
+ * 
+ * Created on: 16.03.2005 Last Change on: 16.03.2005
  */
 public class WoPeDUndoManager extends GraphUndoManager
 {
-    protected EditorVC        m_editor;
+    protected EditorVC m_editor;
 
-    protected boolean       m_enabled = true;
+    protected boolean  m_enabled = true;
 
     /**
      * TODO: DOCUMENTATION (xraven)
+     * 
      * @param petriNet
      */
     public WoPeDUndoManager(EditorVC petriNet)
@@ -56,7 +55,9 @@ public class WoPeDUndoManager extends GraphUndoManager
         m_editor = petriNet;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.swing.event.UndoableEditListener#undoableEditHappened(javax.swing.event.UndoableEditEvent)
      */
     public void undoableEditHappened(UndoableEditEvent e)
@@ -65,7 +66,9 @@ public class WoPeDUndoManager extends GraphUndoManager
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "UndoRedo", null, null));
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.jgraph.graph.GraphUndoManager#undo(java.lang.Object)
      */
     public void undo(Object arg0)
@@ -74,7 +77,9 @@ public class WoPeDUndoManager extends GraphUndoManager
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "UndoRedo", null, null));
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.jgraph.graph.GraphUndoManager#redo(java.lang.Object)
      */
     public void redo(Object arg0)
@@ -83,7 +88,9 @@ public class WoPeDUndoManager extends GraphUndoManager
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "UndoRedo", null, null));
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.swing.undo.UndoManager#discardAllEdits()
      */
     public synchronized void discardAllEdits()
@@ -92,29 +99,35 @@ public class WoPeDUndoManager extends GraphUndoManager
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "UndoRedo", null, null));
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.swing.undo.UndoableEdit#addEdit(javax.swing.undo.UndoableEdit)
      */
     public synchronized boolean addEdit(UndoableEdit arg0)
     {
         if (m_enabled)
         {
-            WoPeDUndoableEdit edit =new WoPeDUndoableEdit((DefaultGraphModel.GraphModelEdit)arg0, m_editor);
+            WoPeDUndoableEdit edit = new WoPeDUndoableEdit((DefaultGraphModel.GraphModelEdit) arg0, m_editor);
             LoggerManager.debug(Constants.EDITOR_LOGGER, edit.toString());
             return super.addEdit(edit);
         }
         return false;
     }
+
     /**
      * TODO: DOCUMENTATION (xraven)
+     * 
      * @return
      */
     public boolean isEnabled()
     {
         return m_enabled;
     }
+
     /**
      * TODO: DOCUMENTATION (xraven)
+     * 
      * @param disabled
      */
     public void setEnabled(boolean disabled)

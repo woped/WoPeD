@@ -1,4 +1,3 @@
-
 package org.woped.editor.controller;
 
 import org.woped.core.controller.AbstractViewEvent;

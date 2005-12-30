@@ -43,122 +43,136 @@ import org.woped.core.view.AbstractElementView;
  * Window>Preferences>Java>Templates. To enable and disable the creation of type
  * comments go to Window>Preferences>Java>Code Generation.
  */
-public class SubProcessView extends AbstractElementView {
+public class SubProcessView extends AbstractElementView
+{
 
-	private SubProcessRenderer renderer = new SubProcessRenderer();
+    private SubProcessRenderer renderer = new SubProcessRenderer();
 
-	/**
-	 * Constructor for TransitionView.
-	 * 
-	 * @param cell
-	 * @param graph
-	 * @param mapper
-	 */
-	public SubProcessView(Object cell) {
-		super(cell);
+    /**
+     * Constructor for TransitionView.
+     * 
+     * @param cell
+     * @param graph
+     * @param mapper
+     */
+    public SubProcessView(Object cell)
+    {
+        super(cell);
 
-	}
+    }
 
-	public Point2D getPerimeterPoint(Point2D source, Point2D p) {
+    public Point2D getPerimeterPoint(Point2D source, Point2D p)
+    {
 
-		return super.getPerimeterPoint(source, p);
+        return super.getPerimeterPoint(source, p);
 
-	}
+    }
 
-	public CellViewRenderer getRenderer() {
+    public CellViewRenderer getRenderer()
+    {
 
-		return renderer;
+        return renderer;
 
-	}
+    }
 
-	public boolean isActivated() {
-		return ((TransitionModel) getCell()).isActivated();
-	}
+    public boolean isActivated()
+    {
+        return ((TransitionModel) getCell()).isActivated();
+    }
 
-	public boolean isFireing() {
-		return ((TransitionModel) getCell()).isFireing();
-	}
+    public boolean isFireing()
+    {
+        return ((TransitionModel) getCell()).isFireing();
+    }
 
-	/**
-	 * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
-	 * 
-	 * this inner class contains the Renderer information of an transition
-	 * 
-	 * 28.03.2003
-	 */
-	private class SubProcessRenderer extends VertexRenderer {
+    /**
+     * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+     * 
+     * this inner class contains the Renderer information of an transition
+     * 
+     * 28.03.2003
+     */
+    private class SubProcessRenderer extends VertexRenderer
+    {
 
-		public void paint(Graphics g) {
+        public void paint(Graphics g)
+        {
 
-			/* Trigger hinzufügen */
-			int b = borderWidth;
-			Graphics2D g2 = (Graphics2D) g;
-			Dimension d = getSize();
-			boolean tmp = selected;
-			if (super.isOpaque()) {
-				// g.setColor(super.getBackground());
-				g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
-			}
-			try {
-				setBorder(null);
-				setOpaque(false);
-				selected = false;
-				super.paint(g);
-			} finally {
-				selected = tmp;
-			}
-			if (bordercolor != null) {
-				g.setColor(bordercolor);
-				g2.setStroke(new BasicStroke(b));
-				g.drawRect(b - 1, b - 1, d.width - b, d.height - b);
-			}
-			if (selected) {
-				g2.setStroke(GraphConstants.SELECTION_STROKE);
-				g.setColor(graph.getHighlightColor());
-				g.drawRect(b - 1, b - 1, d.width - b, d.height - b);
-			}
-			// SubProcess Lines
-			g.drawLine(5, 5, 35, 5);
-			g.drawLine(5, 5, 5, 34);
-			g.drawLine(5, 34, 34, 34);
-			g.drawLine(34, 34, 34, 5);
-			if (isFireing()) {
-				// g.setColor(Color.BLACK);
-				ImageIcon img = new ImageIcon(getClass().getResource(
-						"/org/woped/gui/images/tokenGame_fire.gif"));
-				g2.drawImage(img.getImage(), 5, 22, 18, 11, img
-						.getImageObserver());
-				g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-				g2.drawString("fire", 5, 18);
-			}
+            /* Trigger hinzufügen */
+            int b = borderWidth;
+            Graphics2D g2 = (Graphics2D) g;
+            Dimension d = getSize();
+            boolean tmp = selected;
+            if (super.isOpaque())
+            {
+                // g.setColor(super.getBackground());
+                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
+            }
+            try
+            {
+                setBorder(null);
+                setOpaque(false);
+                selected = false;
+                super.paint(g);
+            } finally
+            {
+                selected = tmp;
+            }
+            if (bordercolor != null)
+            {
+                g.setColor(bordercolor);
+                g2.setStroke(new BasicStroke(b));
+                g.drawRect(b - 1, b - 1, d.width - b, d.height - b);
+            }
+            if (selected)
+            {
+                g2.setStroke(GraphConstants.SELECTION_STROKE);
+                g.setColor(graph.getHighlightColor());
+                g.drawRect(b - 1, b - 1, d.width - b, d.height - b);
+            }
+            // SubProcess Lines
+            g.drawLine(5, 5, 35, 5);
+            g.drawLine(5, 5, 5, 34);
+            g.drawLine(5, 34, 34, 34);
+            g.drawLine(34, 34, 34, 5);
+            if (isFireing())
+            {
+                // g.setColor(Color.BLACK);
+                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/gui/images/tokenGame_fire.gif"));
+                g2.drawImage(img.getImage(), 5, 22, 18, 11, img.getImageObserver());
+                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
+                g2.drawString("fire", 5, 18);
+            }
 
-		}
+        }
 
-		/**
-		 * @return
-		 */
-		public boolean isActive() {
-			return SubProcessView.this.isActivated();
-		}
+        /**
+         * @return
+         */
+        public boolean isActive()
+        {
+            return SubProcessView.this.isActivated();
+        }
 
-		/**
-		 * @return
-		 */
-		public boolean isFireing() {
-			return SubProcessView.this.isFireing();
-		}
-	}
+        /**
+         * @return
+         */
+        public boolean isFireing()
+        {
+            return SubProcessView.this.isFireing();
+        }
+    }
 
-	/**
-	 * @see org.woped.editor.core.view.AbstractElementView#paint()
-	 */
-	public void paint() {
-	}
+    /**
+     * @see org.woped.editor.core.view.AbstractElementView#paint()
+     */
+    public void paint()
+    {}
 
-	/**
-	 * @see org.woped.editor.core.view.AbstractElementView#refresh()
-	 */
-	public void refresh() {
-	}
+    /**
+     * @see org.woped.editor.core.view.AbstractElementView#refresh()
+     */
+    public void refresh()
+    {}
 
 }

@@ -25,16 +25,15 @@ package org.woped.editor.utilities;
 import javax.swing.JProgressBar;
 
 /**
- * @author <a href="mailto:slandes@kybeidos.de">Simon Landes</a><br><br>
- *
- * Created on: 12.03.2005
- * Last Change on: 12.03.2005
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+ *         <br>
+ * 
+ * Created on: 12.03.2005 Last Change on: 12.03.2005
  */
 public abstract class SynchonizeTask
 {
-    int      taskLength = 0;
-    int      current    = 0;
-    
+    int taskLength = 0;
+    int current    = 0;
 
     public SynchonizeTask()
     {
@@ -42,7 +41,6 @@ public abstract class SynchonizeTask
     }
 
     public abstract void go(JProgressBar bar);
-    
 
     public void setTaskLength(int i)
     {
@@ -75,4 +73,3 @@ public abstract class SynchonizeTask
         else return false;
     }
 }
-

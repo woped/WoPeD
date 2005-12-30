@@ -135,11 +135,13 @@ public class ConfFilePanel extends AbstractConfPanel
             return true;
         } else
         {
-            if (JOptionPane.showConfirmDialog(this, Messages.getString("Configuration.Files.Error.InvalidHomeDirectory"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION)
+            if (JOptionPane.showConfirmDialog(this, Messages.getString("Configuration.Files.Error.InvalidHomeDirectory"), Messages.getString("Configuration.Error.General.Title"),
+                    JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION)
             {
                 if (!new File(ConfigurationManager.getStandardConfiguration().getHomedir()).exists() && !new File(ConfigurationManager.getStandardConfiguration().getHomedir()).mkdir())
                 {
-                    JOptionPane.showMessageDialog(this, Messages.getString("Configuration.Files.Error.NoDefaultDirectory"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, Messages.getString("Configuration.Files.Error.NoDefaultDirectory"), Messages.getString("Configuration.Error.General.Title"),
+                            JOptionPane.ERROR_MESSAGE);
                     return false;
                 } else
                 {
@@ -184,7 +186,8 @@ public class ConfFilePanel extends AbstractConfPanel
             homeDirPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            homeDirPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.HomeDirectory.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            homeDirPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.HomeDirectory.Title")), BorderFactory
+                    .createEmptyBorder(5, 5, 10, 5)));
 
             c.weightx = 1;
             c.weighty = 0;
@@ -276,7 +279,8 @@ public class ConfFilePanel extends AbstractConfPanel
             c.anchor = GridBagConstraints.FIRST_LINE_START;
             c.gridx = 0;
             c.weightx = 1;
-            recentFilePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.RecentFiles.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            recentFilePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.RecentFiles.Title")), BorderFactory
+                    .createEmptyBorder(5, 5, 10, 5)));
             recentFilePanel.add(getRecentFilesDelete(), c);
 
         }
@@ -323,7 +327,8 @@ public class ConfFilePanel extends AbstractConfPanel
             TPNPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            TPNPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.TPN.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            TPNPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.TPN.Title")), BorderFactory.createEmptyBorder(5, 5,
+                    10, 5)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
@@ -352,7 +357,8 @@ public class ConfFilePanel extends AbstractConfPanel
             PNMLPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            PNMLPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.PNML.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            PNMLPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Files.Panel.PNML.Title")), BorderFactory.createEmptyBorder(5, 5,
+                    10, 5)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;

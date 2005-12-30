@@ -154,7 +154,7 @@ public class PopupMenuUML extends JPopupMenu
         }
         return addXorMenuItem;
     }
-    
+
     private JMenuItem getRemoveMenuItem()
     {
         if (removeMenuItem == null)

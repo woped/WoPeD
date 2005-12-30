@@ -43,66 +43,77 @@ import org.woped.core.model.petrinet.TransitionModel;
  * 
  * @author Thomas Pohl
  */
-public class DefaultPropertiesDialog extends JDialog implements IEditorProperties {
+public class DefaultPropertiesDialog extends JDialog implements IEditorProperties
+{
 
-	private Object[] m_selection;
+    private Object[]            m_selection;
 
-	private Hashtable m_parameters;
+    private Hashtable           m_parameters;
 
-	private static final String NAME = "Name";
+    private static final String NAME   = "Name";
 
-	private static final String TOKENS = "Tokens";
+    private static final String TOKENS = "Tokens";
 
-	/**
-	 * TODO: DOCUMENTATION (xraven)
-	 * 
-	 * @param selection
-	 * @throws IllegalArgumentException
-	 */
-	public DefaultPropertiesDialog(JFrame owner) {
-		super(owner, true);
-		setUndecorated(true);
-	}
+    /**
+     * TODO: DOCUMENTATION (xraven)
+     * 
+     * @param selection
+     * @throws IllegalArgumentException
+     */
+    public DefaultPropertiesDialog(JFrame owner)
+    {
+        super(owner, true);
+        setUndecorated(true);
+    }
 
-	public DefaultPropertiesDialog() {
-		setUndecorated(true);
-	}
+    public DefaultPropertiesDialog()
+    {
+        setUndecorated(true);
+    }
 
-	public void show(AbstractPetriNetModelElement element) {
-		// TODO: !
-	}
+    public void show(AbstractPetriNetModelElement element)
+    {
+    // TODO: !
+    }
 
-	/**
-	 * TODO: DOCUMENTATION (xraven)
-	 * 
-	 * @throws NumberFormatException
-	 */
-	public void save() throws NumberFormatException {
-		if (m_selection != null) {
-			if (m_selection.length == 1) {
-				if (m_selection[0] instanceof GroupModel) {
-					m_selection[0] = ((GroupModel) m_selection[0]).getMainElement();
-				}
-				if (m_selection[0] instanceof PetriNetModelElement) {
-					PetriNetModelElement element = (PetriNetModelElement) m_selection[0];
+    /**
+     * TODO: DOCUMENTATION (xraven)
+     * 
+     * @throws NumberFormatException
+     */
+    public void save() throws NumberFormatException
+    {
+        if (m_selection != null)
+        {
+            if (m_selection.length == 1)
+            {
+                if (m_selection[0] instanceof GroupModel)
+                {
+                    m_selection[0] = ((GroupModel) m_selection[0]).getMainElement();
+                }
+                if (m_selection[0] instanceof PetriNetModelElement)
+                {
+                    PetriNetModelElement element = (PetriNetModelElement) m_selection[0];
 
-					if (element instanceof PlaceModel) {
-						//logger.info("Changing PlaceModel");
-						// OLDUserInterface.getInstance().getActiveEditor().getGraph().getGraphLayoutCache().valueForCellChanged(((PlaceModel)element).getNameModel(),
-						// ((JTextField) m_parameters.get(NAME)).getText());
-						// ((PlaceModel) element).setNameValue(((JTextField)
-						// m_parameters.get(NAME)).getText());
-						((PlaceModel) element).setTokens(Integer.parseInt(((JTextField) m_parameters.get(TOKENS)).getText()));
-					} else if (element instanceof TransitionModel) {
-						// OLDUserInterface.getInstance().getActiveEditor().getGraph().getGraphLayoutCache().valueForCellChanged(((TransitionModel)element).getNameModel(),
-						// ((JTextField) m_parameters.get(NAME)).getText());
-						// ((TransitionModel)
-						// element).setNameValue(((JTextField)
-						// m_parameters.get(NAME)).getText());
-					}
-				}
-			}
-		}
-	}
+                    if (element instanceof PlaceModel)
+                    {
+                        //logger.info("Changing PlaceModel");
+                        // OLDUserInterface.getInstance().getActiveEditor().getGraph().getGraphLayoutCache().valueForCellChanged(((PlaceModel)element).getNameModel(),
+                        // ((JTextField) m_parameters.get(NAME)).getText());
+                        // ((PlaceModel) element).setNameValue(((JTextField)
+                        // m_parameters.get(NAME)).getText());
+                        ((PlaceModel) element).setTokens(Integer.parseInt(((JTextField) m_parameters.get(TOKENS)).getText()));
+                    } else if (element instanceof TransitionModel)
+                    {
+                        // OLDUserInterface.getInstance().getActiveEditor().getGraph().getGraphLayoutCache().valueForCellChanged(((TransitionModel)element).getNameModel(),
+                        // ((JTextField) m_parameters.get(NAME)).getText());
+                        // ((TransitionModel)
+                        // element).setNameValue(((JTextField)
+                        // m_parameters.get(NAME)).getText());
+                    }
+                }
+            }
+        }
+    }
 
 }

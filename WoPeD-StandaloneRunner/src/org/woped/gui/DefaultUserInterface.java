@@ -65,8 +65,8 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
 
         setTitle("WoPeD Version " + Messages.getWoPeDVersion(false));
-        setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(), (int) ConfigurationManager
-                .getConfiguration().getWindowSize().getHeight());
+        setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(),
+                (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         addWindowListener(new WindowAdapter()
@@ -85,16 +85,16 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
         // Prepare Status & Taskbar
         JPanel toolPanel = new JPanel();
-        GridLayout gL = new GridLayout(2,1);
+        GridLayout gL = new GridLayout(2, 1);
         toolPanel.setLayout(gL);
-       toolPanel.add(taskBar);
-       toolPanel.add(statusBar);
-       getContentPane().add(toolPanel, BorderLayout.SOUTH);
-        
+        toolPanel.add(taskBar);
+        toolPanel.add(statusBar);
+        getContentPane().add(toolPanel, BorderLayout.SOUTH);
+
         // addKeyListener(this);
         SplashWindow splash = new SplashWindow(this);
         splash.kill();
-        
+
         setVisible(true);
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
 

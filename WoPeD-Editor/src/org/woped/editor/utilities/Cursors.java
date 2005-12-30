@@ -21,14 +21,14 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
  */
 public class Cursors
 {
-    public static Cursor placeCursor      = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawPlace").getImage(), new Point(), "Cursor");
-    public static Cursor andSplitCursor   = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawAndSplit").getImage(), new Point(), "Cursor");
-    public static Cursor andJoinCursor    = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawAndJoin").getImage(), new Point(), "Cursor");
-    public static Cursor xorSplitCursor   = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorSplit").getImage(), new Point(), "Cursor");
-    public static Cursor xorJoinCursor    = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorJoin").getImage(), new Point(), "Cursor");
-    public static Cursor xorSplitJoinCursor  = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorSplitJoin").getImage(), new Point(), "Cursor");
-    public static Cursor transitionCursor = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawTransition").getImage(), new Point(), "Cursor");
-    public static Cursor subProcessCursor = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawSubProcess").getImage(), new Point(), "Cursor");
+    public static Cursor placeCursor        = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawPlace").getImage(), new Point(), "Cursor");
+    public static Cursor andSplitCursor     = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawAndSplit").getImage(), new Point(), "Cursor");
+    public static Cursor andJoinCursor      = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawAndJoin").getImage(), new Point(), "Cursor");
+    public static Cursor xorSplitCursor     = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorSplit").getImage(), new Point(), "Cursor");
+    public static Cursor xorJoinCursor      = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorJoin").getImage(), new Point(), "Cursor");
+    public static Cursor xorSplitJoinCursor = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawXorSplitJoin").getImage(), new Point(), "Cursor");
+    public static Cursor transitionCursor   = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawTransition").getImage(), new Point(), "Cursor");
+    public static Cursor subProcessCursor   = Toolkit.getDefaultToolkit().createCustomCursor(Messages.getImageIcon("ToolBar.DrawSubProcess").getImage(), new Point(), "Cursor");
 
     public static Cursor getElementCreationCursor(int petrinetType)
     {
@@ -45,7 +45,7 @@ public class Cursors
         case OperatorTransitionModel.XOR_JOIN_TYPE:
             return xorJoinCursor;
         case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
-        	return xorSplitJoinCursor;
+            return xorSplitJoinCursor;
         case PetriNetModelElement.TRANS_SIMPLE_TYPE:
             return transitionCursor;
         case OperatorTransitionModel.SUBP_TYPE:

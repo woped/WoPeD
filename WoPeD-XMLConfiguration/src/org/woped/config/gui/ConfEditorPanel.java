@@ -38,7 +38,6 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
 import org.woped.editor.utilities.Messages;
 
-
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
@@ -145,8 +144,8 @@ public class ConfEditorPanel extends AbstractConfPanel
         getInsertCopyCheckBox().setSelected(ConfigurationManager.getConfiguration().isInsertCOPYwhenCopied());
         getShowGridCheckBox().setSelected(ConfigurationManager.getConfiguration().isShowGrid());
         if (ConfigurationManager.getConfiguration().getArrowheadSize() == ConfigurationManager.getStandardConfiguration().getArrowheadSize()) getArrowheadSizeJComboBox().setSelectedIndex(0);
-        else if (0 < ConfigurationManager.getConfiguration().getArrowheadSize() && ConfigurationManager.getConfiguration().getArrowheadSize() <= arrowHeadSize.length) getArrowheadSizeJComboBox().setSelectedItem(
-                arrowHeadSize[ConfigurationManager.getConfiguration().getArrowheadSize()]);
+        else if (0 < ConfigurationManager.getConfiguration().getArrowheadSize() && ConfigurationManager.getConfiguration().getArrowheadSize() <= arrowHeadSize.length) getArrowheadSizeJComboBox()
+                .setSelectedItem(arrowHeadSize[ConfigurationManager.getConfiguration().getArrowheadSize()]);
         if (ConfigurationManager.getConfiguration().getArrowWidth() == ConfigurationManager.getStandardConfiguration().getArrowWidth()) getArrowWidthJComboBox().setSelectedIndex(0);
         else if (0 < ConfigurationManager.getConfiguration().getArrowWidth() && ConfigurationManager.getConfiguration().getArrowWidth() <= arrowWidth.length) getArrowWidthJComboBox().setSelectedItem(
                 arrowWidth[ConfigurationManager.getConfiguration().getArrowWidth()]);
@@ -195,7 +194,8 @@ public class ConfEditorPanel extends AbstractConfPanel
         if (onCreationPanel == null)
         {
             onCreationPanel = new JPanel();
-            onCreationPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.SmartEdit.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            onCreationPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.SmartEdit.Title")), BorderFactory
+                    .createEmptyBorder(5, 5, 10, 5)));
             onCreationPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.NORTH;
@@ -228,7 +228,8 @@ public class ConfEditorPanel extends AbstractConfPanel
             editingPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            editingPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.Grid.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            editingPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.Grid.Title")), BorderFactory.createEmptyBorder(5,
+                    5, 10, 5)));
 
             c.weightx = 1;
             c.weighty = 0;
@@ -294,7 +295,8 @@ public class ConfEditorPanel extends AbstractConfPanel
             arcPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            arcPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.Arcs.Title")), BorderFactory.createEmptyBorder(5, 5, 10, 5)));
+            arcPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.Arcs.Title")), BorderFactory.createEmptyBorder(5, 5,
+                    10, 5)));
             buttonGroup = new ButtonGroup();
             buttonGroup.add(getRoundRounting());
             buttonGroup.add(getSquaredRouting());

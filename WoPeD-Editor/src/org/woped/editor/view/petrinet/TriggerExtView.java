@@ -69,7 +69,6 @@ public class TriggerExtView extends AbstractElementView
         return renderer;
 
     }
-    
 
     /**
      * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
