@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.AccessControlException;
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
@@ -17,6 +18,7 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
+import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.LoggerManager;
@@ -54,22 +56,21 @@ public class FileEventProcessor extends AbstractEventProcessor
             {
                 currentEditor = openEditor();
             }
-            ((TaskBarVC) getMediator().getViewController(TaskBarVC.ID_PREFIX)).addEditor(currentEditor);
-            if (getMediator().getUi() != null)
+            Iterator editorIter = getMediator().getEditorAwareVCs().iterator();
+            while (editorIter.hasNext())
             {
-                getMediator().getUi().addEditor(currentEditor);
+                ((IEditorAware) editorIter.next()).addEditor(currentEditor);
             }
-            // TODO: update MenuVC
             break;
         case AbstractViewEvent.OPEN_SAMPLE:
             currentEditor = openFile((File) event.getData(), FileFilterImpl.SAMPLEFilter);
             ((TaskBarVC) getMediator().getViewController(TaskBarVC.ID_PREFIX)).addEditor(currentEditor);
-            if (getMediator().getUi() != null)
+
+            editorIter = getMediator().getEditorAwareVCs().iterator();
+            while (editorIter.hasNext())
             {
-                getMediator().getUi().addEditor(currentEditor);
+                ((IEditorAware) editorIter.next()).addEditor(currentEditor);
             }
-            getMediator().fireViewEvent(new EditorViewEvent(currentEditor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
-            // TODO: update MenuVC
             break;
         case AbstractViewEvent.SAVE:
             save((EditorVC) getMediator().getUi().getEditorFocus());
