@@ -30,6 +30,7 @@ import java.awt.Graphics2D;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexRenderer;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.view.AbstractElementView;
 
 /**
@@ -105,7 +106,7 @@ public class NameView extends AbstractElementView
             if (selected)
             {
                 g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(graph.getHighlightColor());
+                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
 

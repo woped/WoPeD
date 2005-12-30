@@ -35,7 +35,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Iterator;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -51,7 +50,6 @@ import javax.swing.JTextField;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.Utils;

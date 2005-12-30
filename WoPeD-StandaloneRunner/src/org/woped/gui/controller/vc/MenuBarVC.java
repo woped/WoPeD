@@ -235,7 +235,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
         {
             m_helpMenu = new JMenu(Messages.getString("Menu.Help.Title")); //$NON-NLS-1$
             m_helpMenu.setMnemonic(KeyEvent.VK_H);
-
+            
             m_helpMenu.add(getIndexMenuItem());
             m_helpMenu.add(getContextMenuItem());
             m_helpMenu.addSeparator();

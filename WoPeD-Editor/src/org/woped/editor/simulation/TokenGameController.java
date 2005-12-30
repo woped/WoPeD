@@ -148,24 +148,17 @@ public class TokenGameController
      */
     public void enableVisualTokenGame()
     {
-        if (getGraph() != null)
-        {
-            this.visualTokenGame = true;
-            // disable editor access
-            getGraph().enableMarqueehandler(false);
-            getGraph().clearSelection();
-            getGraph().setEnabled(false);
-            getGraph().setPortsVisible(false);
-            getGraph().setGridVisible(false);
-            getGraph().setBackground(new Color(245, 245, 230));
-            // register own MouseHandler
-            getGraph().addMouseListener(tokenGameMouseHandler);
-            getGraph().validate();
-            getGraph().updateUI();
-        } else
-        {
-            LoggerManager.error(Constants.EDITOR_LOGGER, "You cannot enable the visual TokenGame without a JGraph Object.");
-        }
+        this.visualTokenGame = true;
+        // disable editor access
+        getGraph().enableMarqueehandler(false);
+        getGraph().clearSelection();
+        getGraph().setEnabled(false);
+        getGraph().setPortsVisible(false);
+        getGraph().setGridVisible(false);
+        getGraph().setBackground(new Color(245, 245, 230));
+        // register own MouseHandler
+        getGraph().addMouseListener(tokenGameMouseHandler);
+        getGraph().refreshNet();
     }
 
     /**
@@ -182,8 +175,7 @@ public class TokenGameController
         getGraph().setBackground(Color.WHITE);
         // remove own MouseHandler
         getGraph().removeMouseListener(tokenGameMouseHandler);
-        getGraph().validate();
-        getGraph().updateUI();
+        getGraph().refreshNet();
     }
 
     /*

@@ -1,6 +1,5 @@
 package org.woped.core.config;
 
-
 public class ConfigurationManager
 {
     private static IConfiguration             configuration       = null;

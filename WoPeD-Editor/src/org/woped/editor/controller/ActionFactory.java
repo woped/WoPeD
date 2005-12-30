@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import javax.swing.Action;
 
-import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.action.WoPeDAction;

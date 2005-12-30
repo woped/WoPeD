@@ -25,13 +25,14 @@ package org.woped.editor.view.petrinet;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -113,7 +114,7 @@ public class TransXOrSplitView extends TransSimpleView
             if (selected)
             {
                 //				g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(graph.getHighlightColor());
+                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
             // XOR Split Lines
@@ -123,7 +124,7 @@ public class TransXOrSplitView extends TransSimpleView
             if (isFireing())
             {
                 g2.setColor(Color.RED);
-                g2.setFont(new Font("Verdana", Font.ITALIC, 10));
+                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
                 g2.drawString("choose", 3, 20);
                 g2.drawString("arc", 3, 27);
                 g.setColor(Color.LIGHT_GRAY);

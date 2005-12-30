@@ -25,7 +25,6 @@ package org.woped.editor.view.petrinet;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
@@ -34,6 +33,8 @@ import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.view.AbstractElementView;
 
@@ -126,13 +127,13 @@ public class TransSimpleView extends AbstractElementView
             if (selected)
             {
                 //				g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(graph.getHighlightColor());
+                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
             if (isActive() || isFireing())
             {
                 g2.setColor(Color.RED);
-                g2.setFont(new Font("Verdana", Font.ITALIC, 10));
+                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
             }
             if (isActive() && !isFireing())
             {

@@ -31,6 +31,7 @@ import java.awt.geom.Rectangle2D;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.CreationMap;
 
 /**
@@ -53,13 +54,14 @@ public class NameModel extends DefaultGraphCell
     public NameModel(CreationMap creationMap)
     {
         super(creationMap.getName());
-        if (creationMap.getName() != null)
-        {
-            setUserObject(creationMap.getName());
-        }
+//        if (creationMap.getName() != null)
+//        {
+//            setUserObject(creationMap.getName());
+//        }
         this.m_ownerId = creationMap.getId();
-        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+//        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         AttributeMap map = getAttributes();
+        GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
         GraphConstants.setOpaque(map, false);
         // GraphConstants.setBorderColor(map, Color.black);
         GraphConstants.setEditable(map, true);

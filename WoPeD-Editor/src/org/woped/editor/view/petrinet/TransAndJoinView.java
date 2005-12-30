@@ -25,7 +25,6 @@ package org.woped.editor.view.petrinet;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
@@ -34,6 +33,8 @@ import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -114,7 +115,7 @@ public class TransAndJoinView extends TransSimpleView
             if (selected)
             {
                 //				g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(graph.getHighlightColor());
+                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
             // XOR JOIN Lines
@@ -128,7 +129,7 @@ public class TransAndJoinView extends TransSimpleView
                 g.drawLine(b, b, d.width / 3, d.height / 2);
                 g.drawLine(d.width / 3, d.height / 2, b, d.height - b);
                 g2.setColor(Color.RED);
-                g2.setFont(new Font("Verdana", Font.ITALIC, 10));
+                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
             }
             if (isActive() && !isFireing())
             {

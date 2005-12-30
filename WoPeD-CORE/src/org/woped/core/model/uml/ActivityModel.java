@@ -23,7 +23,7 @@ public class ActivityModel extends AbstractUMLElementModel
         // TODO: creationMap.setImageIconPath(icon.;
         return creationMap;
     }
-    
+
     public int getType()
     {
         return AbstractUMLElementModel.ACTIVITY_TYPE;
@@ -53,9 +53,10 @@ public class ActivityModel extends AbstractUMLElementModel
     {
         this.icon = icon;
         this.setSize(icon.getIconWidth(), icon.getIconHeight());
-//        AttributeMap portmap = getPort().getAttributes();
-//        GraphConstants.setSize(portmap, new Dimension(icon.getIconWidth()+4, icon.getIconHeight())+4);
-//        getPort().setAttributes(null);
+        //        AttributeMap portmap = getPort().getAttributes();
+        //        GraphConstants.setSize(portmap, new Dimension(icon.getIconWidth()+4,
+        // icon.getIconHeight())+4);
+        //        getPort().setAttributes(null);
     }
 
 }

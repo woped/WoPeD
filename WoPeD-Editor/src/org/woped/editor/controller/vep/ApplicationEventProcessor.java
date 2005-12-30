@@ -21,7 +21,6 @@ import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.controller.vc.TaskBarVC;
 
 public class ApplicationEventProcessor extends AbstractEventProcessor
 {

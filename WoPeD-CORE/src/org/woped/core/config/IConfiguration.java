@@ -19,18 +19,18 @@ public interface IConfiguration
     public boolean saveConfig();
 
     public void setLocale();
-    
+
     public Locale getLocale();
-    
+
     //    
     public boolean isEditingOnCreation();
 
     //
     public int getModelProcessorType();
-    
+
     //
     public void setModelProcessorType(int type);
-    
+
     //    
     public void setEditingOnCreation(boolean editingOnCreation);
 
@@ -144,27 +144,25 @@ public interface IConfiguration
     public String getCurrentWorkingDir();
 
     public void setCurrentWorkingDir(String dir);
-    
+
     public Color getSelectionColor();
-    
+
     public void setSelectionColor(Color color);
-    
+
     public Color getPortColor();
-    
+
     public void setPortColor(Color color);
-    
+
     public void setLocaleLanguage(String language);
 
     public String getLocaleLanguage();
 
-  	public void setLocaleCountry(String country);
+    public void setLocaleCountry(String country);
 
-  	public String getLocaleCountry();
+    public String getLocaleCountry();
 
-   	public void setLocaleVariant(String variant);
+    public void setLocaleVariant(String variant);
 
     public String getLocaleVariant();
-    
 
-    
 }

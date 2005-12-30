@@ -108,4 +108,3 @@ public class GraphTreeModel extends DefaultTreeModel implements GraphModelListen
     }
 
 }
-

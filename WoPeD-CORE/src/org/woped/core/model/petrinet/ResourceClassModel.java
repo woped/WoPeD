@@ -29,13 +29,16 @@ public class ResourceClassModel implements Serializable
     {
         return name;
     }
+
     /**
-     * @param name The name to set.
+     * @param name
+     *            The name to set.
      */
     public void setName(String name)
     {
         this.name = name;
     }
+
     /**
      * @return Returns the type.
      */
@@ -43,15 +46,19 @@ public class ResourceClassModel implements Serializable
     {
         return type;
     }
+
     /**
-     * @param type The type to set.
+     * @param type
+     *            The type to set.
      */
     public void setType(int type)
     {
         this.type = type;
     }
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString()

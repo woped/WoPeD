@@ -21,7 +21,6 @@ import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.model.uml.OperatorModel;
 import org.woped.core.model.uml.StateModel;
-import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;

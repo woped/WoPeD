@@ -33,6 +33,8 @@ import javax.swing.ImageIcon;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexRenderer;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.view.AbstractElementView;
 
@@ -127,7 +129,7 @@ public class SubProcessView extends AbstractElementView
             if (selected)
             {
                 g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(graph.getHighlightColor());
+                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(b - 1, b - 1, d.width - b, d.height - b);
             }
             // SubProcess Lines
@@ -138,6 +140,7 @@ public class SubProcessView extends AbstractElementView
             if (isFireing())
             {
                 // g.setColor(Color.BLACK);
+                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
                 ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/gui/images/tokenGame_fire.gif"));
                 g2.drawImage(img.getImage(), 5, 22, 18, 11, img.getImageObserver());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);

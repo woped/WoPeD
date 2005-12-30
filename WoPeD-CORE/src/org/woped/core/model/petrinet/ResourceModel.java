@@ -16,6 +16,7 @@ public class ResourceModel implements Serializable
     {
         this.name = name;
     }
+
     /**
      * @return Returns the name.
      */
@@ -23,14 +24,19 @@ public class ResourceModel implements Serializable
     {
         return name;
     }
+
     /**
-     * @param name The name to set.
+     * @param name
+     *            The name to set.
      */
     public void setName(String name)
     {
         this.name = name;
-    }   
-    /* (non-Javadoc)
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString()

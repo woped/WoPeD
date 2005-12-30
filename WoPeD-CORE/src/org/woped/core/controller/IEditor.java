@@ -17,10 +17,10 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
  * An Editor has to implement the IEditor interface.
  */
 
-
 public interface IEditor extends IViewController
 {
-	public static int TYPE = 1;
+    public static int TYPE = 1;
+
     /**
      * Returns the Graph for the Editor
      * 
@@ -76,16 +76,16 @@ public interface IEditor extends IViewController
 
     /**
      * Adds an routing point to the arc.
-     * 
+     *  
      */
     public void addPointToSelectedArc();
 
     /**
      * 
-     *
+     *  
      */
     public void removeSelectedPoint();
-    
+
     /**
      * Returns the drawing mode. If the net is in drawing mode, clicking the
      * left mouse button will draw the Element with the set creation type.
@@ -137,8 +137,8 @@ public interface IEditor extends IViewController
      * @param container
      */
     public void setContainer(JComponent container);
-   
+
     public void deleteCells(Object toDelete[]);
-    
+
     public void deleteCell(DefaultGraphCell toDelete);
 }

@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author <a href="mailto:lai@kybeidos.de">Simon Landes</a>
+ * @author <a href="mailto:lai@kybeidos.de">Simon Landes </a>
  * 
  * The <code>VEPController</code> stores all
- * <code>AbstractEventProcessor</code>-objects and offers the access to each
+ * <code>AbstractEventProcessor</code> -objects and offers the access to each
  * processor with the special major-code.
- * 
+ *  
  */
 public class VEPController
 {

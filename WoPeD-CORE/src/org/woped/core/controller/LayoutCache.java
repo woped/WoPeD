@@ -39,68 +39,75 @@ import org.woped.core.utilities.LoggerManager;
  * 
  * Created on: 16.03.2005 Last Change on: 16.03.2005
  */
-public class LayoutCache extends GraphLayoutCache {
+public class LayoutCache extends GraphLayoutCache
+{
 
-	/**
-	 * TODO: DOCUMENTATION (xraven)
-	 * 
-	 * @param model
-	 * @param factory
-	 */
-	public LayoutCache(GraphModel model, AbstractViewFactory factory) {
-		super(model, factory);
-	}
+    /**
+     * TODO: DOCUMENTATION (xraven)
+     * 
+     * @param model
+     * @param factory
+     */
+    public LayoutCache(GraphModel model, AbstractViewFactory factory)
+    {
+        super(model, factory);
+    }
 
-	/**
-	 * TODO: DOCUMENTATION (xraven)
-	 * 
-	 * @param model
-	 * @param factory
-	 * @param partial
-	 */
-	public LayoutCache(GraphModel model, AbstractViewFactory factory,
-			boolean partial) {
-		super(model, factory, partial);
-	}
+    /**
+     * TODO: DOCUMENTATION (xraven)
+     * 
+     * @param model
+     * @param factory
+     * @param partial
+     */
+    public LayoutCache(GraphModel model, AbstractViewFactory factory, boolean partial)
+    {
+        super(model, factory, partial);
+    }
 
-	/**
-	 * TODO: DOCUMENTATION (xraven)
-	 * 
-	 * @param model
-	 * @param factory
-	 * @param cellViews
-	 * @param hiddenCellViews
-	 * @param partial
-	 */
-	public LayoutCache(GraphModel model, AbstractViewFactory factory,
-			CellView[] cellViews, CellView[] hiddenCellViews, boolean partial) {
-		super(model, factory, cellViews, hiddenCellViews, partial);
-	}
+    /**
+     * TODO: DOCUMENTATION (xraven)
+     * 
+     * @param model
+     * @param factory
+     * @param cellViews
+     * @param hiddenCellViews
+     * @param partial
+     */
+    public LayoutCache(GraphModel model, AbstractViewFactory factory, CellView[] cellViews, CellView[] hiddenCellViews, boolean partial)
+    {
+        super(model, factory, cellViews, hiddenCellViews, partial);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.jgraph.graph.GraphLayoutCache#valueForCellChanged(java.lang.Object,
-	 *      java.lang.Object)
-	 */
-	public void valueForCellChanged(Object cell, Object newValue) {
-		if (cell instanceof DefaultMutableTreeNode) {
-			if (((DefaultMutableTreeNode) cell).getUserObject() == null) {
-				if (newValue == null) {
-					LoggerManager.debug(Constants.CORE_LOGGER,
-							"Edit not added: No change.");
-				} else {
-					super.valueForCellChanged(cell, newValue);
-				}
-			} else if (!((DefaultMutableTreeNode) cell).getUserObject().equals(
-					newValue)) {
-				super.valueForCellChanged(cell, newValue);
-			} else {
-				LoggerManager.debug(Constants.CORE_LOGGER,
-						"Edit not added: No change.");
-			}
-		} else {
-			super.valueForCellChanged(cell, newValue);
-		}
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.jgraph.graph.GraphLayoutCache#valueForCellChanged(java.lang.Object,
+     *      java.lang.Object)
+     */
+    public void valueForCellChanged(Object cell, Object newValue)
+    {
+        if (cell instanceof DefaultMutableTreeNode)
+        {
+            if (((DefaultMutableTreeNode) cell).getUserObject() == null)
+            {
+                if (newValue == null)
+                {
+                    LoggerManager.debug(Constants.CORE_LOGGER, "Edit not added: No change.");
+                } else
+                {
+                    super.valueForCellChanged(cell, newValue);
+                }
+            } else if (!((DefaultMutableTreeNode) cell).getUserObject().equals(newValue))
+            {
+                super.valueForCellChanged(cell, newValue);
+            } else
+            {
+                LoggerManager.debug(Constants.CORE_LOGGER, "Edit not added: No change.");
+            }
+        } else
+        {
+            super.valueForCellChanged(cell, newValue);
+        }
+    }
 }

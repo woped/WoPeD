@@ -48,8 +48,10 @@ public class Utils
 {
 
     /**
-     * This method returns the location that should place a component with <code>componentDimension</code>
-     * in the center of the owner component (<code>ownerBounds</code>).
+     * This method returns the location that should place a component with
+     * <code>componentDimension</code> in the center of the owner component (
+     * <code>ownerBounds</code>).
+     * 
      * @param ownerBounds
      * @param componentDimension
      * @return
@@ -93,8 +95,8 @@ public class Utils
 
     public static boolean isFileOverride(Frame owner, String fileName)
     {
-        return JOptionPane.showConfirmDialog(owner, "<HTML><p align=\"center\">The file<br><i>" + fileName + "</i><br>does already exist.<br>Do you want to overwrite it?</p></HTML>", "File already exists.",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION;
+        return JOptionPane.showConfirmDialog(owner, "<HTML><p align=\"center\">The file<br><i>" + fileName + "</i><br>does already exist.<br>Do you want to overwrite it?</p></HTML>",
+                "File already exists.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION;
     }
 
     /**

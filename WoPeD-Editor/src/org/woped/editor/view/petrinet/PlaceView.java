@@ -25,7 +25,6 @@ package org.woped.editor.view.petrinet;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
@@ -33,6 +32,8 @@ import java.awt.geom.Rectangle2D;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.view.AbstractElementView;
 
@@ -162,7 +163,7 @@ public class PlaceView extends AbstractElementView
             }
             if (selected)
             {
-                g.setColor(graph.getHighlightColor());
+                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
 
             }
@@ -186,7 +187,7 @@ public class PlaceView extends AbstractElementView
                 break;
             default:
                 g.setColor(Color.BLACK);
-                g.setFont(new Font(g.getFont().getFamily(), Font.BOLD, 20));
+                g.setFont(DefaultStaticConfiguration.DEFAULT_TOKEN_FONT);
                 if (relevantTokens > 3 && relevantTokens < 10)
                 {
                     g.drawString("" + relevantTokens, 14, 30);

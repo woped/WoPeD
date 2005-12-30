@@ -43,75 +43,92 @@ import org.woped.core.utilities.LoggerManager;
  * <code>PetriNetModelElement</code>. It creates initial id's for the
  * Elements. 29.04.2003
  */
-public class ModelElementFactory {
+public class ModelElementFactory
+{
 
-	/**
-	 * Method createModelElement. Creates a ModelElement.
-	 * 
-	 * @param map
-	 * @return
-	 */
-	public static AbstractElementModel createModelElement(CreationMap map) {
+    /**
+     * Method createModelElement. Creates a ModelElement.
+     * 
+     * @param map
+     * @return
+     */
+    public static AbstractElementModel createModelElement(CreationMap map)
+    {
 
-		AbstractElementModel modElement = null;
-		if (map.getId() != null) {
-			try {
-				// Check basetype of Element
-				if (map.getType() == PetriNetModelElement.PLACE_TYPE) {
-					// Creating a new ModelElement with
-					modElement = new PlaceModel(map);
-				} else if (map.getType() == PetriNetModelElement.SUBP_TYPE) {
-					/* CREATING A SUBPROCESS */
-					modElement = new SubProcessModel(map);
-				} else if (map.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE && map.getOperatorType() == -1) {
-					/* CREATING A SIMPLE TRANSITION */
-					modElement = new TransitionModel(map);
-				} else if (map.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
-					/* CREATING A AALST TRANSITION */
-					modElement = new OperatorTransitionModel(map);
-					// modElement.setId(id);
-					// create inital simple trans
-					TransitionModel simpleTrans = ((OperatorTransitionModel) modElement).addNewSimpleTrans();
-					// ((OperatorTransitionModel)
-					// modElement).setInitalSimpleTrans(simpleTrans);
-				} else if (map.getType() == AbstractUMLElementModel.ACTIVITY_TYPE) {
-					modElement = new ActivityModel(map);
-				} else if (map.getType() == AbstractUMLElementModel.OPERATOR_TYPE) {
-					modElement = new OperatorModel(map);
-				} else if (map.getType() == AbstractUMLElementModel.STATE_TYPE) {
-					modElement = new StateModel(map);
+        AbstractElementModel modElement = null;
+        if (map.getId() != null)
+        {
+            try
+            {
+                // Check basetype of Element
+                if (map.getType() == PetriNetModelElement.PLACE_TYPE)
+                {
+                    // Creating a new ModelElement with
+                    modElement = new PlaceModel(map);
+                } else if (map.getType() == PetriNetModelElement.SUBP_TYPE)
+                {
+                    /* CREATING A SUBPROCESS */
+                    modElement = new SubProcessModel(map);
+                } else if (map.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE && map.getOperatorType() == -1)
+                {
+                    /* CREATING A SIMPLE TRANSITION */
+                    modElement = new TransitionModel(map);
+                } else if (map.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+                {
+                    /* CREATING A AALST TRANSITION */
+                    modElement = new OperatorTransitionModel(map);
+                    // modElement.setId(id);
+                    // create inital simple trans
+                    TransitionModel simpleTrans = ((OperatorTransitionModel) modElement).addNewSimpleTrans();
+                    // ((OperatorTransitionModel)
+                    // modElement).setInitalSimpleTrans(simpleTrans);
+                } else if (map.getType() == AbstractUMLElementModel.ACTIVITY_TYPE)
+                {
+                    modElement = new ActivityModel(map);
+                } else if (map.getType() == AbstractUMLElementModel.OPERATOR_TYPE)
+                {
+                    modElement = new OperatorModel(map);
+                } else if (map.getType() == AbstractUMLElementModel.STATE_TYPE)
+                {
+                    modElement = new StateModel(map);
 
-				}
+                }
 
-				if (modElement != null) {
-					// add the DefaultPort as child to the DefaultGraphCell
-					modElement.add(new PortCell());
-				}
-				return modElement;
+                if (modElement != null)
+                {
+                    // add the DefaultPort as child to the DefaultGraphCell
+                    modElement.add(new PortCell());
+                }
+                return modElement;
 
-			} catch (Exception ee) {
-				LoggerManager.error(Constants.CORE_LOGGER, "Could not create model! Type not supported (" + map.getType() + ")");
-				ee.printStackTrace();
-				return null;
-			}
-		} else {
-			LoggerManager.error(Constants.CORE_LOGGER, "ID must be set");
-			return null;
-		}
+            } catch (Exception ee)
+            {
+                LoggerManager.error(Constants.CORE_LOGGER, "Could not create model! Type not supported (" + map.getType() + ")");
+                ee.printStackTrace();
+                return null;
+            }
+        } else
+        {
+            LoggerManager.error(Constants.CORE_LOGGER, "ID must be set");
+            return null;
+        }
 
-	}
+    }
 
-	public static ArcModel createArcModel(String arcId, DefaultPort source, DefaultPort target) {
+    public static ArcModel createArcModel(String arcId, DefaultPort source, DefaultPort target)
+    {
 
-		if (arcId != null) {
-			ArcModel arc = new ArcModel();
-			arc.setId(arcId);
-			arc.setSource(source);
-			arc.setTarget(target);
-			return arc;
-		} else {
-			LoggerManager.error(Constants.CORE_LOGGER, "ID must be set");
-			return null;
-		}
-	}
+        if (arcId != null)
+        {
+            ArcModel arc = new ArcModel();
+            arc.setId(arcId);
+            arc.setSource(source);
+            arc.setTarget(target);
+            return arc;
+        } else
+        {
+            LoggerManager.error(Constants.CORE_LOGGER, "ID must be set");
+            return null;
+        }
+    }
 }

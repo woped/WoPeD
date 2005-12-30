@@ -51,7 +51,6 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
-import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.gui.ToolBarButton;
 import org.woped.editor.utilities.Messages;
 

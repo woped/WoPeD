@@ -2,6 +2,7 @@ package org.woped.core.config;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.io.File;
 import java.util.Locale;
 import java.util.Vector;
@@ -12,45 +13,50 @@ import org.woped.core.model.AbstractModelProcessor;
 
 public class DefaultStaticConfiguration implements IConfiguration
 {
-    public static int             DEFAULT_ARROW_WIDTH       = 1;
-    public static int             DEFAULT_ARROW_HEADSIZE    = 7;
-    public static boolean         DEFAULT_ARROW_FILLHEAD    = false;
-    public static final ImageIcon DEFAULTEDITORFRAMEICON    = null;
-    public Locale locale = null;
+    // Default values
+    public static int             DEFAULT_ARROW_WIDTH        = 1;
+    public static int             DEFAULT_ARROW_HEADSIZE     = 7;
+    public static boolean         DEFAULT_ARROW_FILLHEAD     = false;
+    public static final ImageIcon DEFAULTEDITORFRAMEICON     = null;
+    public static Color           DEFAULT_SELECTION_COLOR    = Color.BLUE;
+    public static Font            DEFAULT_LABEL_FONT         = new Font("Verdana", Font.PLAIN, 10);
+    public static Font            DEFAULT_TOKENGAME_FONT     = new Font("Verdana", Font.PLAIN, 9);
+    public static Font            DEFAULT_RESOURCE_ROLE_FONT = new Font("Verdana", Font.PLAIN, 9);
+    public static Font            DEFAULT_RESOURCE_ORG_FONT  = new Font("Verdana", Font.ITALIC, 9);
+    public static Font            DEFAULT_TOKEN_FONT         = new Font("Verdana", Font.ITALIC, 19);
+    public static Color           DEFAULT_PORT_COLOR         = Color.RED;
+    public static String          DEFAULT_LANGUAGE           = "en";
+    public static String          DEFAULT_COUNTRY            = "";
+    public static String          DEFAULT_VARIANT            = "";
+    // File
+    private String                homedir                    = "";
+    private String                workingDir                 = "";
+    // Editor
+    private boolean               insertCopy                 = false;
+    private boolean               importToolspec             = true;
+    private boolean               exportToolspec             = true;
+    private boolean               editoncreation             = true;
+    private boolean               showgrid                   = true;
+    private boolean               roundRouting               = false;
+    private boolean               smartediting               = true;
+    private int                   headsize                   = DEFAULT_ARROW_HEADSIZE;
+    private int                   arrowwidth                 = DEFAULT_ARROW_WIDTH;
+    private boolean               fillArrow                  = false;
+    private int                   modelProcessor             = AbstractModelProcessor.MODEL_PROCESSOR_PETRINET;
+    private Color                 selectionColor             = DEFAULT_SELECTION_COLOR;
+    private Color                 portColor                  = DEFAULT_PORT_COLOR;
+    // GUI
+    private String                lnf                        = null;
+    // Language
+    public Locale                 locale                     = null;
+    private String                language                   = DEFAULT_LANGUAGE;
+    private String                country                    = DEFAULT_COUNTRY;
+    private String                variant                    = DEFAULT_VARIANT;
 
-    private boolean               insertCopy                = false;
-    private boolean               importToolspec            = true;
-    private boolean               exportToolspec            = true;
-    private boolean               editoncreation            = true;
-    private boolean               showgrid                  = true;
-    private boolean               roundRouting              = false;
-    private boolean               smartediting              = true;
-    private int                   headsize                  = DEFAULT_ARROW_HEADSIZE;
-    private int                   arrowwidth                = DEFAULT_ARROW_WIDTH;
-    private boolean               fillArrow                 = false;
-    private int                   modelProcessor            = AbstractModelProcessor.MODEL_PROCESSOR_PETRINET;
-    private Color                 selectionColor            = DEFAULT_SELECTION_COLOR;
-    private Color                 portColor                 = DEFAULT_PORT_COLOR;
-    
-    private String lnf = null;
-
-    private String 				language					= DEFAULT_LANGUAGE;
-    private String 				country					= DEFAULT_COUNTRY;
-    private String 				variant					= DEFAULT_VARIANT;
-    
     // Booleans for alpha-functions (TEST) later integration in conf&gui
-    public static boolean         ACTIVATE_TREE_VIEW        = false;
-    public static boolean         ACTIVATE_NET_ROUTING      = false;
-    public static boolean         ACTIVATE_ANNEALING_LAYOUT = false;
-
-    public static Color           DEFAULT_SELECTION_COLOR   = new Color(0, 103, 178);
-    public static Color           DEFAULT_PORT_COLOR        = Color.RED;
-    public static String		  	DEFAULT_LANGUAGE			= "en";
-    public static String		  	DEFAULT_COUNTRY			= "";
-    public static String		  	DEFAULT_VARIANT			= "";
-
-    private String                homedir                   = "";
-    private String                workingDir                = "";
+    public static boolean         ACTIVATE_TREE_VIEW         = false;
+    public static boolean         ACTIVATE_NET_ROUTING       = false;
+    public static boolean         ACTIVATE_ANNEALING_LAYOUT  = false;
 
     public void addRecentFile(String name, String path)
     {
@@ -234,7 +240,7 @@ public class DefaultStaticConfiguration implements IConfiguration
 
     public void setLookAndFeel(String className)
     {
-    	lnf = className;
+        lnf = className;
 
     }
 
@@ -344,98 +350,110 @@ public class DefaultStaticConfiguration implements IConfiguration
         portColor = color;
 
     }
-    
+
     /*
      * (non-Javadoc)
      * 
      * @see org.woped.config.IConfiguration#getLocaleLanguage()
      */
-    public String getLocaleLanguage() {
-    		return language;
+    public String getLocaleLanguage()
+    {
+        return language;
     }
-
 
     /*
      * (non-Javadoc)
      * 
      * @see org.woped.config.IConfiguration#setLocaleLanguage(java.lang.String)
      */
-    public void setLocaleLanguage(String language) {
-		this.language = language;
-	}
+    public void setLocaleLanguage(String language)
+    {
+        this.language = language;
+    }
 
     /*
      * (non-Javadoc)
      * 
      * @see org.woped.config.IConfiguration#getLocaleCountry()
      */
-    public String getLocaleCountry() {
-		return country;
-	}
+    public String getLocaleCountry()
+    {
+        return country;
+    }
 
     /*
      * (non-Javadoc)
      * 
      * @see org.woped.config.IConfiguration#setLocaleCountry(java.lang.String)
      */
-    public void setLocaleCountry(String country) {
-		this.country = country;
-	}
+    public void setLocaleCountry(String country)
+    {
+        this.country = country;
+    }
 
     /*
      * (non-Javadoc)
      * 
      * @see org.woped.config.IConfiguration#getLocaleVariant()
      */
-    public String getLocaleVariant() {
-		return variant;
-	}
+    public String getLocaleVariant()
+    {
+        return variant;
+    }
 
-	 /*
+    /*
      * (non-Javadoc)
      * 
      * @see org.woped.config.IConfiguration#setLocaleVariant(java.lang.String)
      */
-    public void setLocaleVariant(String variant) {
-		this.variant = variant;
-	}
+    public void setLocaleVariant(String variant)
+    {
+        this.variant = variant;
+    }
 
-	public void setLocale() {
-		String language = null;
-		String country = null;
-		String variant = null;
+    public void setLocale()
+    {
+        String language = null;
+        String country = null;
+        String variant = null;
 
-    		Locale userLocale = null;
+        Locale userLocale = null;
 
         if (getLocaleLanguage() != null)
         {
-        		language = getLocaleLanguage();
+            language = getLocaleLanguage();
         }
-        if (getLocaleCountry() != null) 
+        if (getLocaleCountry() != null)
         {
-        		country = getLocaleCountry();
+            country = getLocaleCountry();
         }
-        if (getLocaleVariant() != null) {
-        		variant = getLocaleVariant();
+        if (getLocaleVariant() != null)
+        {
+            variant = getLocaleVariant();
         }
 
-        if (language != null && country != null && variant != null) {
-        		userLocale = new Locale(language, country, variant);
-        } else if (language != null && country != null) {
-        		userLocale = new Locale(language, country);
-        } else {
-        		userLocale = new Locale(language);
+        if (language != null && country != null && variant != null)
+        {
+            userLocale = new Locale(language, country, variant);
+        } else if (language != null && country != null)
+        {
+            userLocale = new Locale(language, country);
+        } else
+        {
+            userLocale = new Locale(language);
         }
-        if (userLocale == null) {
-        		userLocale = Locale.ENGLISH;
-        		setLocaleLanguage(this.locale.getLanguage());
+        if (userLocale == null)
+        {
+            userLocale = Locale.ENGLISH;
+            setLocaleLanguage(this.locale.getLanguage());
         }
-        
+
         this.locale = userLocale;
-	}
-	
-	public Locale getLocale() {
-		return this.locale;
-	}
+    }
+
+    public Locale getLocale()
+    {
+        return this.locale;
+    }
 
 }

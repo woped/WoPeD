@@ -10,7 +10,7 @@ import org.woped.core.model.uml.AbstractUMLElementModel;
  * This class provides the translation between a uml View and a Petrinet Model
  * 
  * @author landess
- * 
+ *  
  */
 public class UMLModelProcessor extends AbstractModelProcessor implements Serializable
 {

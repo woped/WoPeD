@@ -1,11 +1,9 @@
 package org.woped.core.controller;
 
-
-
 public abstract class AbstractEventProcessor
 {
     AbstractApplicationMediator mediator = null;
-    private int         vepId    = -1;
+    private int                 vepId    = -1;
 
     /**
      * Constructor for the <code>AbstractVEP</code> stores the
