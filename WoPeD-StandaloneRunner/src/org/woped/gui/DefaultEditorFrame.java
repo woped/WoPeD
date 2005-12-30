@@ -57,7 +57,7 @@ public class DefaultEditorFrame extends JInternalFrame
 
     public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor)
     {
-        super(editor.getFileName(), true, true, true, true);
+        super(editor.getName(), true, true, true, true);
         this.setVisible(false);
         m_editor = editor;
         m_petriNetResourceEditor = propEditor;
@@ -95,7 +95,7 @@ public class DefaultEditorFrame extends JInternalFrame
         statusBar.add(m_statusBarInfo, BorderLayout.CENTER);
         statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
         this.getContentPane().add(statusBar, BorderLayout.SOUTH);
-        setTitle(editor.getFileName());
+        setTitle(editor.getName());
 
         this.pack();
         this.repaint();

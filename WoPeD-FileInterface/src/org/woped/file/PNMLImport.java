@@ -37,6 +37,7 @@ import javax.swing.JOptionPane;
 
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
@@ -84,17 +85,12 @@ import org.woped.pnml.TransitionType;
  */
 public class PNMLImport
 {
-    private EditorVC[]   editor     = null;
-
-    private PnmlDocument pnmlDoc    = null;
-
-    private XmlOptions   opt        = new XmlOptions();
-
-    private Vector       warnings   = new Vector();
-
-    private IStatusBar[] statusBars = null;
-
-    ApplicationMediator  mediator   = null;
+    private IEditor[]           editor     = null;
+    private PnmlDocument        pnmlDoc    = null;
+    private XmlOptions          opt        = new XmlOptions();
+    private Vector              warnings   = new Vector();
+    private IStatusBar[]        statusBars = null;
+    private ApplicationMediator mediator   = null;
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -195,7 +191,7 @@ public class PNMLImport
      * 
      * @return
      */
-    public EditorVC[] getEditor()
+    public IEditor[] getEditor()
     {
         return editor;
     }
@@ -203,7 +199,7 @@ public class PNMLImport
     private void importNets(PnmlType pnml) throws Exception
     {
 
-        editor = new EditorVC[pnml.getNetArray().length];
+        editor = new IEditor[pnml.getNetArray().length];
         NetType currentNet;
         Dimension dim;
         Point location;
@@ -212,7 +208,7 @@ public class PNMLImport
         for (int i = 0; i < pnml.getNetArray().length; i++)
         {
             currentNet = pnml.getNetArray(i);
-            editor[i] = mediator.createEditorVC(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
+            editor[i] = mediator.createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
             if (((WoPeDUndoManager) editor[i].getGraph().getUndoManager()) != null)
             {
                 ((WoPeDUndoManager) editor[i].getGraph().getUndoManager()).setEnabled(false);
@@ -238,10 +234,13 @@ public class PNMLImport
                         {
                             dim = new Dimension(currentNet.getToolspecificArray(j).getBounds().getDimension().getX().intValue(), currentNet.getToolspecificArray(j).getBounds().getDimension().getY()
                                     .intValue());
-                            editor[i].setSavedSize(dim);
                             location = new Point(currentNet.getToolspecificArray(j).getBounds().getPosition().getX().intValue(), currentNet.getToolspecificArray(j).getBounds().getPosition().getY()
                                     .intValue());
-                            editor[i].setSavedLocation(location);
+                            if (editor[i] instanceof EditorVC)
+                            {
+                                ((EditorVC) editor[i]).setSavedSize(dim);
+                                ((EditorVC) editor[i]).setSavedLocation(location);
+                            }
                         }
                         if (currentNet.getToolspecificArray(j).isSetResources())
                         {
@@ -491,6 +490,7 @@ public class PNMLImport
         PetriNetModelElement currentSourceModel = null;
         PetriNetModelElement currentTargetModel = null;
         ArcModel arc = null;
+        CreationMap map;
         for (int i = 0; i < arcs.length; i++)
         {
             try
@@ -518,7 +518,10 @@ public class PNMLImport
                             }
                             if (isOperator(getEditor()[editorIndex].getModelProcessor(), tempID))
                             {
-                                arc = getEditor()[editorIndex].createArc(arcs[i].getSource(), tempID);
+                                map = CreationMap.createMap();
+                                map.setArcSourceId(arcs[i].getSource());
+                                map.setArcTargetId(tempID);
+                                arc = getEditor()[editorIndex].createArc(map);
                             }
                         }
                         if (currentSourceModel == null && currentTargetModel != null)
@@ -533,12 +536,18 @@ public class PNMLImport
 
                             if (isOperator(getEditor()[editorIndex].getModelProcessor(), tempID))
                             {
-                                arc = getEditor()[editorIndex].createArc(tempID, arcs[i].getTarget());
+                                map = CreationMap.createMap();
+                                map.setArcSourceId(tempID);
+                                map.setArcTargetId(arcs[i].getTarget());
+                                arc = getEditor()[editorIndex].createArc(map);
                             }
                         }
                         if (currentTargetModel != null && currentSourceModel != null)
                         {
-                            arc = getEditor()[editorIndex].createArc(arcs[i].getSource(), arcs[i].getTarget());
+                            map = CreationMap.createMap();
+                            map.setArcSourceId(arcs[i].getSource());
+                            map.setArcTargetId(arcs[i].getTarget());
+                            arc = getEditor()[editorIndex].createArc(map);
                         }
                         // toolspecific
                         for (int j = 0; j < arcs[i].getToolspecificArray().length; j++)
@@ -557,7 +566,10 @@ public class PNMLImport
                     }
                 } else
                 {
-                    arc = getEditor()[editorIndex].createArc(arcs[i].getSource(), arcs[i].getTarget());
+                    map = CreationMap.createMap();
+                    map.setArcSourceId(arcs[i].getSource());
+                    map.setArcTargetId(arcs[i].getTarget());
+                    arc = getEditor()[editorIndex].createArc(map);
                 }
                 if (arcs[i].isSetGraphics() && arc != null)
                 {
@@ -587,4 +599,11 @@ public class PNMLImport
         }
     }
 
+    /**
+     * @return Returns the mediator.
+     */
+    protected ApplicationMediator getMediator()
+    {
+        return mediator;
+    }
 }

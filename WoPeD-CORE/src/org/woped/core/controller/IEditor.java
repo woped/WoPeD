@@ -141,4 +141,10 @@ public interface IEditor extends IViewController
     public void deleteCells(Object toDelete[]);
 
     public void deleteCell(DefaultGraphCell toDelete);
+
+    public void updateNet();
+
+    public void setName(String name);
+
+    public String getName();
 }

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
 import org.woped.core.model.AbstractModelProcessor;
@@ -42,7 +43,7 @@ public class FileEventProcessor extends AbstractEventProcessor
 
     public void processViewEvent(AbstractViewEvent event)
     {
-        EditorVC currentEditor;
+        IEditor currentEditor;
         switch (event.getOrder())
         {
         case AbstractViewEvent.OPEN:
@@ -67,7 +68,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             {
                 getMediator().getUi().addEditor(currentEditor);
             }
-            getMediator().fireViewEvent(new EditorViewEvent(currentEditor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
+            getMediator().fireViewEvent(new EditorViewEvent(currentEditor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
             // TODO: update MenuVC
             break;
         case AbstractViewEvent.SAVE:
@@ -198,65 +199,57 @@ public class FileEventProcessor extends AbstractEventProcessor
             // Open save dialog
             if (editor != null)
             {
-                if (editor.getFileName() == null && editor.getDefaultFileType() == -1)
+                if (editor != null)
                 {
-                    LoggerManager.debug(Constants.FILE_LOGGER, "File was not saved before. Call \"Save as\" instead.");
-                    return saveAs(editor);
-                } else
-                {
-                    if (editor != null)
+                    if (editor.getFilePath() == null)
                     {
-                        ;
+                        LoggerManager.debug(Constants.FILE_LOGGER, "File was not saved before. Call \"Save as\" instead.");
+                        saveAs(editor);
+                    } else
+                    {
 
-                        if (editor.getFilePath() == null)
+                        /* Tool for JPG Export */
+                        if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter)
                         {
-                            saveAs(editor);
+                            succeed = JPGExport.save(editor.getFilePath(), editor);
+                            // TODO: !!! Working dir
+                        }
+                        /* Tool for PNML Export */
+                        else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter)
+                        {
+                            IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
+                            IStatusBar iSB[] = new IStatusBar[iVC.length];
+                            for (int i = 0; i < iSB.length; i++)
+                            {
+                                iSB[i] = (IStatusBar) iVC[i];
+                            }
+                            PNMLExport pe = new PNMLExport(iSB);
+                            editor.setSavedSize(editor.getSize());
+                            pe.saveToFile(editor, editor.getFilePath());
+                            LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in file: " + editor.getFilePath());
+
+                            ConfigurationManager.getConfiguration().addRecentFile(new File(editor.getFilePath()).getName(), editor.getFilePath());
+                            // TODO: !!!
+                            // OLDUserInterface.getInstance().updateRecentMenu();
+                            editor.setSaved(true);
+                            ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
+                            succeed = true;
+                        }
+                        /* Tool for TPN Export */
+                        else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter)
+                        {
+                            succeed = TPNExport.save(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
+                            ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
+                        } else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter)
+                        {
+                            JOptionPane.showMessageDialog(null, "You cannot save sample files.\nPlease call \"save as\" instead to save your modification.", "Save Error", JOptionPane.ERROR_MESSAGE);
+                            succeed = false;
                         } else
                         {
-
-                            /* Tool for JPG Export */
-                            if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter)
-                            {
-                                succeed = JPGExport.save(editor.getFilePath(), editor);
-                                // TODO: !!! Working dir
-                            }
-                            /* Tool for PNML Export */
-                            else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter)
-                            {
-                                IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
-                                IStatusBar iSB[] = new IStatusBar[iVC.length];
-                                for (int i = 0; i < iSB.length; i++)
-                                {
-                                    iSB[i] = (IStatusBar) iVC[i];
-                                }
-                                PNMLExport pe = new PNMLExport(iSB);
-                                editor.setSavedSize(editor.getSize());
-                                pe.saveToFile(editor, editor.getFilePath());
-                                LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in file: " + editor.getFilePath());
-
-                                ConfigurationManager.getConfiguration().addRecentFile(new File(editor.getFilePath()).getName(), editor.getFilePath());
-                                // TODO: !!!
-                                // OLDUserInterface.getInstance().updateRecentMenu();
-                                editor.setSaved(true);
-                                ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
-                                succeed = true;
-                            }
-                            /* Tool for TPN Export */
-                            else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter)
-                            {
-                                succeed = TPNExport.save(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
-                                ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
-                            } else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter)
-                            {
-                                JOptionPane.showMessageDialog(null, "You cannot save sample files.\nPlease call \"save as\" instead to save your modification.", "Save Error",
-                                        JOptionPane.ERROR_MESSAGE);
-                                succeed = false;
-                            } else
-                            {
-                                LoggerManager.warn(Constants.FILE_LOGGER, "Unable to save File. Filetype not known: " + editor.getDefaultFileType());
-                                succeed = false;
-                            }
+                            LoggerManager.warn(Constants.FILE_LOGGER, "Unable to save File. Filetype not known: " + editor.getDefaultFileType());
+                            succeed = false;
                         }
+
                     }
                 }
             }
@@ -307,9 +300,9 @@ public class FileEventProcessor extends AbstractEventProcessor
                 jfc.setFileFilter(PNMLFilter);
             }
             jfc.setDialogTitle("Save as");
-            jfc.showSaveDialog(null);
+            int returnVal = jfc.showSaveDialog(null);
             boolean doSave = false;
-            if (jfc.getSelectedFile() != null)
+            if (jfc.getSelectedFile() != null && returnVal == JFileChooser.APPROVE_OPTION)
             {
                 String savePath = jfc.getSelectedFile().getAbsolutePath().substring(0, jfc.getSelectedFile().getAbsolutePath().length() - jfc.getSelectedFile().getName().length());
                 String fileName = Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), extensions);
@@ -321,7 +314,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                         editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
                         // setting the new filename to editor, and Title to
                         // Frame
-                        editor.setFileName(fileName);
+                        editor.setName(fileName);
                         editor.setFilePath(savePath.concat(fileName));
                         // getTaskBar().getsetToolTipText(getActiveEditor().getFileName());
                         // ... and saving
@@ -351,7 +344,7 @@ public class FileEventProcessor extends AbstractEventProcessor
     /**
      * TODO: DOCUMENTATION (silenco)
      */
-    public EditorVC openEditor()
+    public IEditor openEditor()
     {
         JFileChooser jfc;
 
@@ -391,9 +384,9 @@ public class FileEventProcessor extends AbstractEventProcessor
      * @param file
      * @param filter
      */
-    private EditorVC openFile(File file, int filter)
+    private IEditor openFile(File file, int filter)
     {
-        EditorVC editor = null;
+        IEditor editor = null;
         final PNMLImport pr;
         if (filter == FileFilterImpl.PNMLFilter || filter == FileFilterImpl.SAMPLEFilter)
         {
@@ -436,9 +429,12 @@ public class FileEventProcessor extends AbstractEventProcessor
                 editor = pr.getEditor()[pr.getEditor().length - 1];
                 for (int i = 0; i < pr.getEditor().length; i++)
                 {
-                    pr.getEditor()[i].setDefaultFileType(filter);
-                    pr.getEditor()[i].setFileName(file.getName());
-                    pr.getEditor()[i].setFilePath(file.getAbsolutePath());
+                    if (editor instanceof EditorVC)
+                    {
+                        ((EditorVC) pr.getEditor()[i]).setDefaultFileType(filter);
+                        ((EditorVC) pr.getEditor()[i]).setName(file.getName());
+                        ((EditorVC) pr.getEditor()[i]).setFilePath(file.getAbsolutePath());
+                    }
                     // add recent
                     if (filter == FileFilterImpl.PNMLFilter) ConfigurationManager.getConfiguration().addRecentFile(file.getName(), file.getAbsolutePath());
                     if (filter != FileFilterImpl.SAMPLEFilter) ConfigurationManager.getConfiguration().setCurrentWorkingDir(file.getAbsolutePath());

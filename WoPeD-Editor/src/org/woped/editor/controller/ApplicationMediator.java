@@ -1,3 +1,25 @@
+/*
+ * 
+ * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ *
+ * For contact information please visit http://woped.ba-karlsruhe.de
+ *
+ */
 package org.woped.editor.controller;
 
 import java.beans.PropertyChangeSupport;
@@ -8,6 +30,7 @@ import javax.swing.JFrame;
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
@@ -25,24 +48,18 @@ import org.woped.editor.controller.vep.EditorEventProcessor;
  * perform actions. The Method is calles by the Mediator... The actions must be
  * an AbstractWopedAction, which get the VC in the Constructor!
  * 
- * @author Simon Isaak Landes
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *  
  */
 public class ApplicationMediator extends AbstractApplicationMediator
 {
 
     public static final int  VIEWCONTROLLER_EDITOR  = 0;
-
     public static final int  VIEWCONTROLLER_TASKBAR = 1;
-
     public static final int  VIEWCONTROLLER_CONFIG  = 2;
-
     private int              editorCounter          = 0;
-
     private EditorClipboard  clipboard              = new EditorClipboard();
-
     private VisualController visualController       = null;
-
     private HashMap          actionMap              = null;
 
     public ApplicationMediator()
@@ -60,11 +77,6 @@ public class ApplicationMediator extends AbstractApplicationMediator
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, new ApplicationEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, this));
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT, new EditorEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_EDIT, this));
 
-        if (ui != null)
-        {
-            PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(ui.getPropertyChangeSupportBean());
-            propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
-        }
     }
 
     public void addViewController(IViewController viewController)
@@ -91,7 +103,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
         }
     }
 
-    public EditorVC createEditorVC(int modelProcessorType, boolean undoSupport)
+    public IEditor createEditor(int modelProcessorType, boolean undoSupport)
     {
         EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport);
         addViewController(editor);
@@ -125,5 +137,20 @@ public class ApplicationMediator extends AbstractApplicationMediator
     public VisualController getVisualController()
     {
         return visualController;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.woped.core.controller.AbstractApplicationMediator#setUi(org.woped.core.gui.IUserInterface)
+     */
+    public void setUi(IUserInterface ui)
+    {
+        if (ui != null)
+        {
+            PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(ui.getPropertyChangeSupportBean());
+            propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
+        }
+        super.setUi(ui);
     }
 }

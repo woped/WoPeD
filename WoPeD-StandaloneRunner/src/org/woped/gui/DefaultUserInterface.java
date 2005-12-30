@@ -9,7 +9,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyVetoException;
-import java.security.AccessControlException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -140,40 +139,9 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     public void quit()
     {
-        boolean usercanceled = false;
-        JInternalFrame frame = null;
-        JInternalFrame oldFrame = null;
-        for (int i = 0; i < desktop.getAllFrames().length && !usercanceled; i++)
-        {
-            frame = desktop.getAllFrames()[i];
-            if (oldFrame == frame)
-            {
-                usercanceled = true;
-            } else
-            {
-                oldFrame = frame;
-                frame.dispose();
-            }
-        }
-        if (!usercanceled)
-        {
-            setExtendedState(NORMAL);
-            ConfigurationManager.getConfiguration().setWindowX(getX());
-            ConfigurationManager.getConfiguration().setWindowY(getY());
-            ConfigurationManager.getConfiguration().setWindowSize(getSize());
-            ConfigurationManager.getConfiguration().saveConfig();
-            try
-            {
-                LoggerManager.info(Constants.GUI_LOGGER, "EXIT WoPeD");
-                System.exit(0);
-            } catch (AccessControlException ace)
-            {
-                setVisible(false);
-            }
-        } else
-        {
-            LoggerManager.debug(Constants.GUI_LOGGER, "User has canceled quit-operation.");
-        }
+        WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_EXIT);
+        action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT));
+        setExtendedState(NORMAL);
     }
 
     public Component getComponent()
@@ -206,7 +174,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     }
 
-    public void requestEditorFocus(IEditor editor)
+    public void selectEditor(IEditor editor)
     {
         try
         {
@@ -374,7 +342,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     public void internalFrameActivated(InternalFrameEvent e)
     {
-        getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
+        getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
     }
 
     public void internalFrameClosed(InternalFrameEvent e)
@@ -387,7 +355,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         EditorVC editor = ((DefaultEditorFrame) e.getSource()).getEditor();
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_CLOSE);
-        if (action != null) action.actionPerformed(new ViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CLOSE));
+        action.actionPerformed(new ViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE));
 
     }
 

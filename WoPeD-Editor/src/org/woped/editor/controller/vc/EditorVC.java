@@ -119,60 +119,36 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 {
 
     private String                 id                      = null;
-
     public static final String     ID_PREFIX               = "EDITOR_VC_";
-
     private JComponent             container               = null;
-
     private static ViewFactory     viewFactory             = new ViewFactory();
-
     // GRAPHICAL Components
     private WoPeDJGraph            m_graph                 = null;
-
     private JScrollPane            m_scrollPane            = null;
 
     // Petrinet
     // private PetriNetModelProcessor m_itsPetriNet = null;
     private AbstractModelProcessor modelProcessor          = null;
-
-    private String                 m_fileName              = null;
-
     private String                 m_filePath              = null;
-
     private int                    m_defaultFileType       = -1;
-
     // TokenGame
     private TokenGameController    m_tokenGameController   = null;
-
     // zoom
     public static final double     MIN_SCALE               = 0.1;
-
     public static final double     MAX_SCALE               = 5;
-
     // not nedded private boolean m_keyPressed = false;
     private int                    m_createElementType     = -1;
-
     private boolean                m_saved                 = true;
-
     private Dimension              m_savedSize             = null;
-
     private Point                  m_savedLocation         = null;
-
     // not needed private double m_zoomScale = 1;
     private boolean                m_drawingMode           = false;
-
     private boolean                m_tokenGameMode         = false;
-
     private Point2D                m_lastMousePosition     = null;
-
     private PropertyChangeSupport  m_propertyChangeSupport = null;
-
     private EditorClipboard        m_clipboard             = null;
-
     private boolean                smartEditActive         = true;
-
     private IEditorProperties      elementProperties       = null;
-
     // ViewControll
     private Vector                 viewListener            = new Vector(1, 3);
 
@@ -594,6 +570,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             }
         }
         deleteOnlyCells(result.toArray(), withGraph);
+
     }
 
     /**
@@ -1484,9 +1461,9 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
      * 
      * @return String
      */
-    public String getFileName()
+    public String getName()
     {
-        return m_fileName == null ? "Untitled" : m_fileName;
+        return super.getName() == null ? "Untitled" : super.getName();
     }
 
     /**
@@ -1498,17 +1475,6 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public String getFilePath()
     {
         return m_filePath;
-    }
-
-    /**
-     * Sets the filename. Should be called when the net was saved in a file.
-     * 
-     * @param fileName
-     *            The filename to set
-     */
-    public void setFileName(String fileName)
-    {
-        this.m_fileName = fileName;
     }
 
     /**
@@ -1662,6 +1628,6 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 
     public String toString()
     {
-        return getFileName();
+        return getName();
     }
 }

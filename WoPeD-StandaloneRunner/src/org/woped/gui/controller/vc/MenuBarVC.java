@@ -49,7 +49,7 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
-import org.woped.core.gui.IEditorList;
+import org.woped.core.gui.IEditorAware;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.utilities.Messages;
@@ -62,7 +62,7 @@ import org.woped.gui.controller.ViewEvent;
  * 
  * @author Thomas Pohl
  */
-public class MenuBarVC extends JMenuBar implements IViewController, IEditorList
+public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 {
     // ViewControll
     private Vector             viewListener             = new Vector(1, 3);

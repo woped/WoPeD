@@ -3,14 +3,13 @@ package org.woped.editor.controller.vep;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import java.beans.PropertyChangeEvent;
 import java.util.Iterator;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.gui.IEditorList;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
@@ -18,7 +17,6 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.EditorVC;
 
@@ -34,53 +32,19 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
 
     public void processViewEvent(AbstractViewEvent event)
     {
-        EditorVC currentEditor;
+        IEditor currentEditor;
         if (event.getSource() instanceof EditorVC)
         {
             currentEditor = (EditorVC) event.getSource();
         } else
         {
-            currentEditor = (EditorVC) getMediator().getUi().getEditorFocus();
+            currentEditor = getMediator().getUi().getEditorFocus();
         }
         switch (event.getOrder())
         {
         case AbstractViewEvent.NEW:
-            currentEditor = getWopedMediator().createEditorVC(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
-            Iterator editorListIt = getMediator().getEditorLists().iterator();
-            while (editorListIt.hasNext())
-            {
-                ((IEditorList) editorListIt.next()).addEditor(currentEditor);
-            }
-            if (getMediator().getUi() != null)
-            {
-                getMediator().getUi().addEditor(currentEditor);
-            }
-            VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, currentEditor));
+            currentEditor = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
             break;
-        case AbstractViewEvent.CLOSE:
-            editorListIt = getMediator().getEditorLists().iterator();
-            while (editorListIt.hasNext())
-            {
-                ((IEditorList) editorListIt.next()).removeEditor(currentEditor);
-            }
-            getMediator().removeViewController(currentEditor);
-            getMediator().getUi().removeEditor(currentEditor);
-            VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, currentEditor));
-            break;
-        case AbstractViewEvent.SELECT_EDITOR:
-            selectEditor(currentEditor);
-            editorListIt = getMediator().getEditorLists().iterator();
-            while (editorListIt.hasNext())
-            {
-                ((IEditorList) editorListIt.next()).selectEditor(currentEditor);
-            }
-            break;
-
-        case AbstractViewEvent.INCONIFY_EDITOR:
-            getMediator().getUi().hideEditor(currentEditor);
-            VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, currentEditor));
-            break;
-
         case AbstractViewEvent.DRAWMODE_PLACE:
             setDrawMode(PetriNetModelElement.PLACE_TYPE, true);
             break;
@@ -167,16 +131,6 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
          */
         default:
             break;
-        }
-    }
-
-    private void selectEditor(EditorVC editor)
-    {
-        editor.getContainer().setVisible(true);
-        VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "FrameSelection", null, editor));
-        if (getMediator().getUi().getEditorFocus() != editor)
-        {
-            getMediator().getUi().requestEditorFocus(editor);
         }
     }
 

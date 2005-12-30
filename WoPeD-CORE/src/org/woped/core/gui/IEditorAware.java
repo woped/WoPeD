@@ -2,7 +2,7 @@ package org.woped.core.gui;
 
 import org.woped.core.controller.IEditor;
 
-public interface IEditorList
+public interface IEditorAware
 {
 
     public void addEditor(IEditor editor);

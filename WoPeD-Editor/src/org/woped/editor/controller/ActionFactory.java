@@ -105,11 +105,11 @@ public class ActionFactory
         AM = am;
         STATIC_ACTION_MAP = new HashMap();
 
-        STATIC_ACTION_MAP.put(ACTIONID_NEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.NEW, null, ACTIONID_NEW));
+        STATIC_ACTION_MAP.put(ACTIONID_NEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.NEW, null, ACTIONID_NEW));
         // 
-        STATIC_ACTION_MAP.put(ACTIONID_CLOSE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CLOSE, null, ACTIONID_CLOSE));
+        STATIC_ACTION_MAP.put(ACTIONID_CLOSE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE, null, ACTIONID_CLOSE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_CLOSE), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
-        STATIC_ACTION_MAP.put(ACTIONID_SELECT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
+        STATIC_ACTION_MAP.put(ACTIONID_SELECT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
         // 
         STATIC_ACTION_MAP.put(ACTIONID_SAVE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.SAVE, null, ACTIONID_SAVE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SAVE), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
@@ -129,7 +129,7 @@ public class ActionFactory
         //
         STATIC_ACTION_MAP.put(ACTIONID_SHOWHELPCONTENTS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.HELP_CONTENTS, null, ACTIONID_SHOWHELPCONTENTS));
         //
-        STATIC_ACTION_MAP.put(ACTIONID_EXIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.EXIT, null, ACTIONID_EXIT));
+        STATIC_ACTION_MAP.put(ACTIONID_EXIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT, null, ACTIONID_EXIT));
         //
         STATIC_ACTION_MAP.put(ACTIONID_PRINT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.PRINT, null, ACTIONID_PRINT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_PRINT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
@@ -304,10 +304,10 @@ public class ActionFactory
         {
             if (!isSelected())
             {
-                AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
+                AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
             } else
             {
-                AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.INCONIFY_EDITOR));
+                AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.INCONIFY_EDITOR));
             }
         }
 

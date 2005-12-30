@@ -31,6 +31,7 @@ import java.util.Map;
 
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
@@ -40,7 +41,6 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.controller.vc.EditorVC;
 import org.woped.oldpnml.Arc;
 import org.woped.oldpnml.Net;
 import org.woped.oldpnml.Place;
@@ -66,7 +66,7 @@ import org.woped.oldpnml.Transition;
  */
 public class OLDPNMLImport2 extends PNMLImport
 {
-    private EditorVC[] editor  = null;
+    private IEditor[]  editor  = null;
 
     private XmlOptions opt     = new XmlOptions();
 
@@ -136,7 +136,7 @@ public class OLDPNMLImport2 extends PNMLImport
         createEditorFromBeans(pnmlDoc.getPnml());
     }
 
-    public EditorVC[] getEditor()
+    public IEditor[] getEditor()
     {
         return editor;
     }
@@ -145,9 +145,9 @@ public class OLDPNMLImport2 extends PNMLImport
     {
         // parse through PNML an create Model Elements
         Net aNet = pnml.getNet();
-        editor = new EditorVC[1];
+        editor = new IEditor[1];
 
-        editor[0] = (EditorVC) mediator.createEditorVC(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
+        editor[0] = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
         // attr. id
         ((PetriNetModelProcessor) editor[0].getModelProcessor()).setId(aNet.getId());
         // attr. type
@@ -264,6 +264,7 @@ public class OLDPNMLImport2 extends PNMLImport
         PetriNetModelElement currentSourceModel = null;
         PetriNetModelElement currentTargetModel = null;
         ArcModel arc = null;
+        CreationMap map;
         for (int i = 0; i < arcs.length; i++)
         {
             currentSourceModel = (PetriNetModelElement) getEditor()[editorIndex].getModelProcessor().getElementContainer().getElementById(arcs[i].getSource());
@@ -283,7 +284,10 @@ public class OLDPNMLImport2 extends PNMLImport
                     }
                     if (isOperator(getEditor()[editorIndex].getModelProcessor(), tempID))
                     {
-                        arc = getEditor()[editorIndex].createArc(arcs[i].getSource(), tempID);
+                        map = CreationMap.createMap();
+                        map.setArcSourceId(arcs[i].getSource());
+                        map.setArcTargetId(tempID);
+                        arc = getEditor()[editorIndex].createArc(map);
                     }
                 }
                 if (currentSourceModel == null && currentTargetModel != null)
@@ -298,16 +302,25 @@ public class OLDPNMLImport2 extends PNMLImport
 
                     if (isOperator(getEditor()[editorIndex].getModelProcessor(), tempID))
                     {
-                        arc = getEditor()[editorIndex].createArc(tempID, arcs[i].getTarget());
+                        map = CreationMap.createMap();
+                        map.setArcSourceId(tempID);
+                        map.setArcTargetId(arcs[i].getTarget());
+                        arc = getEditor()[editorIndex].createArc(map);
                     }
                 }
                 if (currentTargetModel != null && currentSourceModel != null)
                 {
-                    arc = getEditor()[editorIndex].createArc(arcs[i].getSource(), arcs[i].getTarget());
+                    map = CreationMap.createMap();
+                    map.setArcSourceId(arcs[i].getSource());
+                    map.setArcTargetId(arcs[i].getTarget());
+                    arc = getEditor()[editorIndex].createArc(map);
                 }
             } else
             {
-                arc = getEditor()[editorIndex].createArc(arcs[i].getSource(), arcs[i].getTarget());
+                map = CreationMap.createMap();
+                map.setArcSourceId(arcs[i].getSource());
+                map.setArcTargetId(arcs[i].getTarget());
+                arc = getEditor()[editorIndex].createArc(map);
             }
             if (arcs[i].isSetGraphics() && arc != null)
             {

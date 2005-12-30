@@ -17,12 +17,12 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
-import org.woped.core.gui.IEditorList;
+import org.woped.core.gui.IEditorAware;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
 
-public class TaskBarVC extends JPanel implements IViewController, IEditorList
+public class TaskBarVC extends JPanel implements IViewController, IEditorAware
 {
 
     private String             id             = null;
@@ -129,10 +129,10 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorList
         {
             if (!editor.equals(getSelectedEditor()) || isSelected())
             {
-                fireViewEvent(new EditorViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.SELECT_EDITOR));
+                fireViewEvent(new EditorViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
             } else
             {//if (!((TaskBarButton)e.getSource()).isSelected()) {
-                fireViewEvent(new EditorViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.INCONIFY_EDITOR));
+                fireViewEvent(new EditorViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.INCONIFY_EDITOR));
             }
         }
     }

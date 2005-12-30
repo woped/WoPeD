@@ -1,8 +1,24 @@
 /*
- * Created on 19.10.2005
+ * 
+ * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
+ *
+ * For contact information please visit http://woped.ba-karlsruhe.de
+ *
  */
 package org.woped.core.controller;
 
@@ -20,30 +36,25 @@ import javax.swing.UIManager;
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IConfiguration;
-import org.woped.core.gui.IEditorList;
+import org.woped.core.gui.IEditorAware;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 
 /**
- * @author lai
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+ *  
  */
 public abstract class AbstractApplicationMediator implements IViewListener
 {
     private HashMap        viewControllerMap = null;
-
     private VEPController  vepController     = null;
-
     private IUserInterface ui                = null;
-
-    LinkedList             editorLists       = new LinkedList();
+    private LinkedList     editorLists       = new LinkedList();
 
     public AbstractApplicationMediator(IUserInterface ui, IConfiguration conf)
     {
         viewControllerMap = new HashMap();
-        this.ui = ui;
+        setUi(ui);
         LoggerManager.info(Constants.CORE_LOGGER, "START INIT Application");
         boolean confOK = true;
         if (conf != null)
@@ -79,6 +90,8 @@ public abstract class AbstractApplicationMediator implements IViewListener
             LoggerManager.error(Constants.CORE_LOGGER, "Could not set System Look-And-Feel" + ConfigurationManager.getConfiguration().getLookAndFeel());
         }
     }
+
+    public abstract IEditor createEditor(int modelProcessorType, boolean undoSupport);
 
     public static IViewController createViewController(String className, String id)
     {
@@ -154,7 +167,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
     {
         viewController.addViewListener(this);
         viewControllerMap.put(viewController.getId(), viewController);
-        if (viewController instanceof IEditorList)
+        if (viewController instanceof IEditorAware)
         {
             editorLists.add(viewController);
         }
@@ -178,6 +191,10 @@ public abstract class AbstractApplicationMediator implements IViewListener
     public void setUi(IUserInterface ui)
     {
         this.ui = ui;
+        if (ui != null)
+        {
+            editorLists.add(ui);
+        }
     }
 
     public IViewController[] findViewController(int type)
@@ -208,7 +225,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
         return iwC;
     }
 
-    public List getEditorLists()
+    public List getEditorAwareVCs()
     {
 
         return (List) editorLists.clone();
