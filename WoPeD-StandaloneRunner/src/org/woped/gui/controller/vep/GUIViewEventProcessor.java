@@ -43,6 +43,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.AboutUI;
+import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.ViewEvent;
@@ -110,18 +111,27 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             }
             about.setVisible(true);
             break;
-        /*
-         * case AbstractViewEvent.BUGREPORT: BugReportUI bugreport = null; if
-         * (getMediator().getUi() != null &&
-         * getMediator().getUi().getComponent() instanceof JFrame) { bugreport =
-         * new BugReportUI((JFrame) getMediator().getUi()); } else { bugreport =
-         * new BugReportUI(); } bugreport.setVisible(true); break;
-         */
+        
+         case AbstractViewEvent.BUGREPORT: 
+             BugReportUI bugreport = null; 
+             if (getMediator().getUi() != null &&
+                     getMediator().getUi().getComponent() instanceof JFrame) 
+             { 
+                 bugreport = new BugReportUI((JFrame) getMediator().getUi()); 
+             } 
+             else 
+             { 
+                 bugreport = new BugReportUI(); 
+             } 
+             bugreport.setVisible(true); 
+             break;
+         
         case AbstractViewEvent.HELP:
             try
             {
                 showHelp((String) event.getData(), false);
-            } catch (Exception e)
+            } 
+            catch (Exception e)
             {
                 LoggerManager.error(Constants.GUI_LOGGER, "Cannot find HTML manual files. " + e.getMessage());
                 JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString("Help.Message.HTMLManualFileNotFound"), Messages.getString("Help.Message.notFound"),
@@ -132,7 +142,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             try
             {
                 showHelp(null, true);
-            } catch (Exception e)
+            } 
+            catch (Exception e)
             {
                 LoggerManager.error(Constants.GUI_LOGGER, "Cannot find HTML contents file. " + e.getMessage());
                 JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString("Help.Message.HTMLManualFileNotFound"), Messages.getString("Help.Message.notFound"),
