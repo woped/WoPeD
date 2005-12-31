@@ -287,8 +287,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         if (url != null)
         {
             // locate HTML files in jarfile
-            filename = url.toExternalForm().concat("/html/").concat(filename);
-            contentFileName = url.toExternalForm().concat("/html/").concat(contentFileName);
+            filename = url.toExternalForm().concat("/html/").concat(Messages.getString("Help.Dir")).concat("/" + filename);
+            contentFileName = url.toExternalForm().concat("/html/").concat(Messages.getString("Help.Dir")).concat("/" + contentFileName);
         } 
         else
         {
