@@ -278,20 +278,21 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             // locate HTML files in jarfile
             filename = url.toExternalForm().concat("/html/").concat(filename);
             contentFileName = url.toExternalForm().concat("/html/").concat(contentFileName);
-        } else
+        } 
+        else
         {
             // locate HTML files in local folder
-            filename = this.getClass().getResource("/").toExternalForm().concat("../doc/").concat(Messages.getString("Help.Dir")).concat("/html/").concat(filename);
-            contentFileName = this.getClass().getResource("/").toExternalForm().concat("../doc/").concat(Messages.getString("Help.Dir")).concat("/html/").concat(contentFileName);
+            filename = this.getClass().getResource("/").toExternalForm().concat("../doc/doc/html/").concat(Messages.getString("Help.Dir")).concat("/" + filename);
+            contentFileName = this.getClass().getResource("/").toExternalForm().concat("../doc/doc/html/").concat(Messages.getString("Help.Dir")).concat("/" + contentFileName);
         }
 
         HelpBrowser br = HelpBrowser.getInstance();
         if (showContents)
         {
-            br.init(filename, filename, contentFileName);
+            br.init(contentFileName, filename, contentFileName);
         } else
         {
-            br.init(filename, contentFileName, filename);
+            br.init(filename, filename, contentFileName);
         }
     }
 }
