@@ -463,7 +463,6 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                 public void actionPerformed(ActionEvent e)
                 {
                     addResourceClass();
-                    getEditor().setSaved(false);
                 }
             });
         }
@@ -486,7 +485,6 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     if (!(roleList.isSelectionEmpty() && groupList.isSelectionEmpty()))
                     {
                         removeResourceClass();
-                        getEditor().setSaved(false);
                     }
                 }
             });
@@ -778,6 +776,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         }
         
         resetClassEditing();
+        getEditor().setSaved(false);
     }
 
     // Check if group is used by any transition
@@ -906,6 +905,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         }
 
         resetClassEditing();
+        getEditor().setSaved(false);
     }
 
     private void resetClassEditing()

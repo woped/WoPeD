@@ -101,6 +101,7 @@ import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDJGraph;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.gui.IEditorProperties;
+import org.woped.editor.gui.StatusBarLabel;
 import org.woped.editor.simulation.TokenGameController;
 import org.woped.editor.utilities.ImageSelection;
 import org.woped.editor.view.ViewFactory;
@@ -151,6 +152,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     private IEditorProperties      elementProperties       = null;
     // ViewControll
     private Vector                 viewListener            = new Vector(1, 3);
+    private StatusBarLabel         m_statusbar;
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -1520,6 +1522,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public void setSaved(boolean savedFlag)
     {
         this.m_saved = savedFlag;
+        m_statusbar.updateStatus();
     }
 
     /**
@@ -1629,5 +1632,10 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public String toString()
     {
         return getName();
+    }
+
+    public void registerStatusBar(StatusBarLabel statusBar)
+    {
+        m_statusbar = statusBar;        
     }
 }

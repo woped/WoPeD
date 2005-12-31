@@ -89,17 +89,20 @@ public class DefaultEditorFrame extends JInternalFrame
         {
             this.getContentPane().add(editor, BorderLayout.CENTER);
         }
+        
+        setTitle(editor.getName());
+        
         // Statusbar
         JPanel statusBar = new JPanel(new BorderLayout());
-        m_statusBarInfo = new StatusBarLabel(m_editor);
+        m_statusBarInfo = new StatusBarLabel(editor);
         statusBar.add(m_statusBarInfo, BorderLayout.CENTER);
         statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
         this.getContentPane().add(statusBar, BorderLayout.SOUTH);
-        setTitle(editor.getName());
+        editor.registerStatusBar(m_statusBarInfo);
+        editor.setSaved(true);
 
         this.pack();
         this.repaint();
-        editor.setSaved(true);
         this.setVisible(true);
     }
 
@@ -120,14 +123,4 @@ public class DefaultEditorFrame extends JInternalFrame
     {
         return m_petriNetResourceEditor;
     }
-
-    /**
-     * 
-     * @str Text to be displayed in status bar.
-     */
-    public void setStatusBarInfo(String str)
-    {
-        m_statusBarInfo.setText(str);
-    }
-
 }
