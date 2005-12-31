@@ -30,6 +30,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -49,15 +50,19 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
+import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.gui.ToolBarButton;
 import org.woped.editor.utilities.Messages;
 
 /**
  * @author waschtl
  * 
- * TODO: DOCUMENTATION (waschtl) TODO: implement as VC (simon)
+ * TODO: DOCUMENTATION (waschtl) 
+ * TODO: implement as VC (simon)
  */
 public class PetriNetResourceEditor extends JPanel implements ListSelectionListener
 {
@@ -127,15 +132,22 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private static final Object[]  ResourceClassTypeA                = { COMBOBOX_ROLE_TEXT, COMBOBOX_GROUP_TEXT };
 
     private PetriNetModelProcessor petrinet;
+    private EditorVC               editor;
+
+    public EditorVC getEditor()
+    {
+        return editor;
+    }
 
     public PetriNetModelProcessor getPetrinet()
     {
         return petrinet;
     }
 
-    public PetriNetResourceEditor(PetriNetModelProcessor petrinet)
+    public PetriNetResourceEditor(EditorVC editor)
     {
-        this.petrinet = petrinet;
+        this.editor = editor;
+        this.petrinet = (PetriNetModelProcessor) editor.getModelProcessor();
         initialize();
     }
 
@@ -451,6 +463,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                 public void actionPerformed(ActionEvent e)
                 {
                     addResourceClass();
+                    getEditor().setSaved(false);
                 }
             });
         }
@@ -473,6 +486,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     if (!(roleList.isSelectionEmpty() && groupList.isSelectionEmpty()))
                     {
                         removeResourceClass();
+                        getEditor().setSaved(false);
                     }
                 }
             });
@@ -699,14 +713,16 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     ResourceClassModel newRole = new ResourceClassModel(getResourceClassNameTextField().getText(), 0);
                     getPetrinet().addRole(newRole);
                     roleListModel.addElement((ResourceClassModel) newRole);
-                } else
+                } 
+                else
                 {
                     ResourceClassModel newGroup = new ResourceClassModel(getResourceClassNameTextField().getText(), 1);
                     getPetrinet().addOrgUnit(newGroup);
                     groupListModel.addElement((ResourceClassModel) newGroup);
-                }
+                }               
             }
-        } else
+        } 
+        else
         {
             if (roleList.isSelectionEmpty())
             {
@@ -722,6 +738,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     int index = getGroupList().getSelectedIndex();
                     groupListModel.set(index, groupModel);
                 }
+                
                 // name unchanged
                 if (resourceClassTypeJComboBox.getSelectedItem() == COMBOBOX_ROLE_TEXT)
                 {
@@ -732,7 +749,8 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     int index4 = getGroupList().getSelectedIndex();
                     groupListModel.remove(index4);
                 }
-            } else
+            } 
+            else
             {
                 String oldName = getRoleList().getSelectedValue().toString();
                 String newName = getResourceClassNameTextField().getText();
@@ -758,23 +776,54 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                 }
             }
         }
-
+        
         resetClassEditing();
     }
 
+    // Check if group is used by any transition
     private boolean groupIsUsed(String groupName)
     {
         boolean isUsed = false;
+               
+        HashMap alltrans = new HashMap();
+        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
+        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
 
-        // TODO: Check if group is used by any transition
+        for (Iterator transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
+        {
+            TransitionModel transition = (TransitionModel)(transIter.next());
+            if (transition.getToolSpecific() != null &&
+                    transition.getToolSpecific().getTransResource() != null &&
+                    transition.getToolSpecific().getTransResource().getTransOrgUnitName() != null &&
+                    transition.getToolSpecific().getTransResource().getTransOrgUnitName().equals(groupName))
+                 {
+                isUsed = true;
+            }
+         }
+        
         return isUsed;
     }
 
+    // Check if role is used by any transition
     private boolean roleIsUsed(String roleName)
     {
         boolean isUsed = false;
-
-        // TODO: Check if role is used by any transition
+        HashMap alltrans = new HashMap();
+        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
+        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
+        
+        for (Iterator transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
+        {
+            TransitionModel transition = (TransitionModel)(transIter.next());
+            if (transition.getToolSpecific() != null &&
+                transition.getToolSpecific().getTransResource() != null &&
+                transition.getToolSpecific().getTransResource().getTransRoleName() != null &&
+                transition.getToolSpecific().getTransResource().getTransRoleName().equals(roleName))
+            {
+                isUsed = true;
+            }
+         }
+        
         return isUsed;
     }
 
@@ -782,7 +831,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     {
         if (roleList.isSelectionEmpty())
         {
-            // Remove role
+            // Remove group
             String group2remove = getGroupList().getSelectedValue().toString();
             if (!groupIsUsed(group2remove))
             {
@@ -811,13 +860,16 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                 // Mapping löschen
                 getPetrinet().getResourceMapping().remove(group2remove);
                 getResourceClassNameTextField().setText("");
-            } else
+            } 
+            else
             {
-                // TODO: JOptionPane error message
+                JOptionPane.showMessageDialog(this, Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
+                        JOptionPane.ERROR_MESSAGE);
             }
-        } else
+        } 
+        else
         {
-            // Remove group
+            // Remove role
             String role2remove = getRoleList().getSelectedValue().toString();
             if (!roleIsUsed(role2remove))
             {
@@ -845,9 +897,11 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                 // Mapping löschen
                 getPetrinet().getResourceMapping().remove(role2remove);
                 getResourceClassNameTextField().setText("");
-            } else
+            } 
+            else
             {
-                // TODO: JOptionPane error message
+                JOptionPane.showMessageDialog(this, Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -867,7 +921,6 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getResourceClassNewButton().setEnabled(true);
         getResourceClassOkButton().setEnabled(false);
         getResourceClassNewButton().requestFocus();
-
     }
 
     /* Resources ------------------------------------------------------------- */
@@ -876,7 +929,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourcePanel == null)
         {
             resourcePanel = new JPanel();
-            resourcePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Title")), BorderFactory.createEmptyBorder()));
+            resourcePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Objects")), BorderFactory.createEmptyBorder()));
             resourcePanel.setMinimumSize(new Dimension(750, 300));
             resourcePanel.setPreferredSize(new Dimension(750, 300));
             resourcePanel.setMaximumSize(new Dimension(750, 300));
@@ -1264,6 +1317,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                 public void actionPerformed(ActionEvent e)
                 {
                     addResource();
+                    getEditor().setSaved(false);
                 }
             });
         }
@@ -1282,48 +1336,53 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             {
                 public void actionPerformed(ActionEvent e)
                 {
-                    if (!resourceList.isSelectionEmpty())
-                    {
-                        String re2remove = getResourceList().getSelectedValue().toString();
-                        int j = getPetrinet().containsResource(re2remove);
-                        getPetrinet().getResources().remove(j);
-                        int index = getResourceList().getSelectedIndex();
-                        resourceListModel.remove(index);
-                        int size = resourceListModel.getSize();
-                        if (size == 0)
-                        { // Nobody's left, disable button.
-                            resourceRemoveButton.setEnabled(false);
-
-                        } else
-                        { // Select an index.
-                            if (index == resourceListModel.getSize())
-                            {
-                                // removed item in last position
-                                index--;
-                            }
-                            getResourceList().setSelectedIndex(index);
-                            getResourceList().ensureIndexIsVisible(index);
-                        }
-
-                        resourceEditNameTextField.setText("");
-                        // Mapping löschen
-                        for (Iterator iter = getPetrinet().getResourceMapping().keySet().iterator(); iter.hasNext();)
-                        {
-                            Vector resourcevalues = (Vector) getPetrinet().getResourceMapping().get(iter.next());
-                            for (int i = 0; i < resourcevalues.size(); i++)
-                            {
-                                if (resourcevalues.get(i).equals(re2remove)) resourcevalues.remove(i);
-                            }
-                        }
-                    }
+                    removeResource();
+                    getEditor().setSaved(false);
                 }
             });
-
         }
 
         return resourceRemoveButton;
     }
 
+    private void removeResource()
+    {
+        if (!resourceList.isSelectionEmpty())
+        {
+            String re2remove = getResourceList().getSelectedValue().toString();
+            int j = getPetrinet().containsResource(re2remove);
+            getPetrinet().getResources().remove(j);
+            int index = getResourceList().getSelectedIndex();
+            resourceListModel.remove(index);
+            int size = resourceListModel.getSize();
+            if (size == 0)
+            { // Nobody's left, disable button.
+                resourceRemoveButton.setEnabled(false);
+
+            } else
+            { // Select an index.
+                if (index == resourceListModel.getSize())
+                {
+                    // removed item in last position
+                    index--;
+                }
+                getResourceList().setSelectedIndex(index);
+                getResourceList().ensureIndexIsVisible(index);
+            }
+
+            resourceEditNameTextField.setText("");
+            // Mapping löschen
+            for (Iterator iter = getPetrinet().getResourceMapping().keySet().iterator(); iter.hasNext();)
+            {
+                Vector resourcevalues = (Vector) getPetrinet().getResourceMapping().get(iter.next());
+                for (int i = 0; i < resourcevalues.size(); i++)
+                {
+                    if (resourcevalues.get(i).equals(re2remove)) resourcevalues.remove(i);
+                }
+            }
+        }
+    }
+    
     private void editNewResource()
     {
         getResourceEditNameTextField().setText("");
@@ -1344,7 +1403,6 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getResourceEditNameTextField().setEditable(true);
         getResourceOkButton().setEnabled(true);
         getResourceEditNameTextField().requestFocus();
-
     }
 
     private boolean checkSyntax(String str)
@@ -1385,7 +1443,8 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                 getResourceList().clearSelection();
                 getResourceEditNameTextField().setText("");
             }
-        } else
+        } 
+        else
         {
             String oldName = getResourceList().getSelectedValue().toString();
             String newName = getResourceEditNameTextField().getText();
@@ -1398,7 +1457,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                 resourceListModel.set(index, resourceModel);
             }
         }
-
+        
         resetEditing();
     }
 
@@ -1508,7 +1567,6 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                         currentUnAssignedResourceClass = resourceUnAssignedList.getModel().getElementAt(resourceUnAssignedList.getSelectedIndex()).toString();
                         getResourceAssignedList().clearSelection();
                     }
-
                 }
             });
         }
@@ -1534,7 +1592,8 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                         // assignedListModel.addElement((ResourceClassModel)
                         // currentUnAssignedResourceClass);
                         unassignedListModel.removeElement(currentUnAssignedResourceClass);
-                    }
+                        getEditor().setSaved(false);
+                   }
                 }
             });
         }
@@ -1559,7 +1618,8 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                         getPetrinet().removeResourceMapping(currentAssignedResourceClass, currentResource.getName());
                         unassignedListModel.addElement(currentAssignedResourceClass);
                         assignedListModel.removeElement((String) currentAssignedResourceClass);
-                    }
+                        getEditor().setSaved(false);
+                   }
                 }
 
             });
