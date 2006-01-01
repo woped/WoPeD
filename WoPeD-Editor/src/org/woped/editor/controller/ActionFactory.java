@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.util.HashMap;
 
 import javax.swing.Action;
+import javax.swing.JInternalFrame;
 
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
@@ -302,12 +303,12 @@ public class ActionFactory
 
         public void actionPerformed(ActionEvent e)
         {
-            if (!isSelected())
-            {
-                AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
-            } else
+            if (m_editor.getContainer() instanceof JInternalFrame && ((JInternalFrame)m_editor.getContainer()).isSelected() && ((JInternalFrame)m_editor.getContainer()).isVisible())
             {
                 AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.INCONIFY_EDITOR));
+            } else
+            {
+                AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
             }
         }
 

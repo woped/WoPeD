@@ -113,7 +113,7 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
         }
     }
 
-    class TaskBarButton extends JToggleButton implements ActionListener
+    class TaskBarButton extends JToggleButton
     {
         IEditor editor;
 
@@ -122,19 +122,9 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
             super(editor.toString(), DefaultStaticConfiguration.DEFAULTEDITORFRAMEICON);
             this.editor = editor;
             this.setPreferredSize(new Dimension(100, 20));
-            addActionListener(this);
         }
 
-        public void actionPerformed(ActionEvent e)
-        {
-            if (!editor.equals(getSelectedEditor()) || isSelected())
-            {
-                fireViewEvent(new EditorViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
-            } else
-            {//if (!((TaskBarButton)e.getSource()).isSelected()) {
-                fireViewEvent(new EditorViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.INCONIFY_EDITOR));
-            }
-        }
+
     }
 
     public IEditor getSelectedEditor()
