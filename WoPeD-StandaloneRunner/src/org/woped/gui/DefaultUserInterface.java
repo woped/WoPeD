@@ -105,7 +105,6 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         if (editor != null)
         {
-            Point position = getNextEditorPosition();
             DefaultEditorFrame frame;
             if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
             {
@@ -115,6 +114,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             {
                 frame = new DefaultEditorFrame((EditorVC) editor, null);
             }
+            Point position = getNextEditorPosition();
             frame.setAlignmentX((float) position.getX());
             frame.setAlignmentY((float) position.getY());
             frame.addInternalFrameListener(this);
