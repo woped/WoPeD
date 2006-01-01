@@ -28,10 +28,13 @@ package org.woped.gui;
 import java.awt.BorderLayout;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.beans.PropertyVetoException;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.border.BevelBorder;
 
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.controller.PetriNetResourceEditor;
@@ -96,11 +99,6 @@ public class DefaultEditorFrame extends JInternalFrame
         this.setVisible(true);
     }
 
-    /**
-     * 
-     * @return returns the containing Editor.
-     */
-
     private StatusBarLabel getStatusBar()
     {
         if (m_statusBar == null)
@@ -111,6 +109,11 @@ public class DefaultEditorFrame extends JInternalFrame
         return m_statusBar;
     }
     
+
+    /**
+     * 
+     * @return returns the containing Editor.
+     */
     public EditorVC getEditor()
     {
         return m_editor;
@@ -122,5 +125,13 @@ public class DefaultEditorFrame extends JInternalFrame
     public PetriNetResourceEditor getPetriNetResourceEditor()
     {
         return m_petriNetResourceEditor;
+    }
+	/**
+	 * When a Frame isIconified it should be invisible.
+	 */
+	public void setIcon(boolean arg0) throws PropertyVetoException
+    {
+        super.setIcon(arg0);
+        setVisible(!arg0);
     }
 }

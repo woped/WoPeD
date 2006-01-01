@@ -23,12 +23,14 @@
 package org.woped.gui.controller.vep;
 
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyVetoException;
 import java.net.URL;
 import java.security.AccessControlException;
 import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import org.woped.core.config.ConfigurationManager;
@@ -209,6 +211,16 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
     private void selectEditor(IEditor editor)
     {
         editor.getContainer().setVisible(true);
+        if (editor.getContainer() instanceof JInternalFrame)
+        {
+            try
+            {
+                ((JInternalFrame) editor.getContainer()).setIcon(false);
+            } catch (PropertyVetoException e)
+            {
+				LoggerManager.warn(Constants.GUI_LOGGER, "Could not deiconify the editor");
+            }
+        }
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "FrameSelection", null, editor));
         // notify the editor aware vc
         Iterator editorIter = getMediator().getEditorAwareVCs().iterator();
