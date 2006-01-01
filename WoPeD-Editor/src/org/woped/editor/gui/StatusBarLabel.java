@@ -6,6 +6,7 @@ import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
@@ -15,44 +16,61 @@ import org.woped.editor.utilities.Messages;
 
 public class StatusBarLabel extends JPanel implements Observer
 {
-    private ModelElementContainer mEC;
-    private JLabel                m_CounterLabel = null;
-    private JLabel                m_SaveIcon = null;
-    private EditorVC              editor;
+    private ModelElementContainer m_elementContainer;
+    private JLabel                m_counterLabel = null;
+    private JLabel                m_saveIcon = null;
+    private EditorVC              m_editor;
 
-    public StatusBarLabel(IEditor e)
+    public StatusBarLabel(IEditor editor)
     {
-        mEC = e.getModelProcessor().getElementContainer();
-        editor = (EditorVC)e;
+        m_editor = (EditorVC)editor;
+        m_elementContainer = editor.getModelProcessor().getElementContainer();
         setLayout(new BorderLayout());
-        m_CounterLabel = new JLabel();
-        add(m_CounterLabel, BorderLayout.WEST);
-        m_SaveIcon = new JLabel(Messages.getImageIcon("Button.Ok"));
-        add(m_SaveIcon, BorderLayout.EAST);
-        updateStatus();
+        setBorder(new BevelBorder(BevelBorder.LOWERED));
+        add(getCounterLabel(), BorderLayout.WEST);
+        add(getSaveIcon(), BorderLayout.EAST);
+        m_editor.registerStatusBar(this);
+    }
+    
+    private JLabel getCounterLabel()
+    {
+        if (m_counterLabel == null)
+        {
+            m_counterLabel = new JLabel();
+        }
+        return m_counterLabel;
+    }
+
+    private JLabel getSaveIcon()
+    {
+        if (m_saveIcon == null)
+        {
+            m_saveIcon = new JLabel();
+        }
+        return m_saveIcon;
     }
 
     public void updateStatus()
     {
-        int placeC = mEC.getElementsByType(OperatorTransitionModel.PLACE_TYPE).size();
-        int subPC = mEC.getElementsByType(OperatorTransitionModel.SUBP_TYPE).size();
-        int transOpC = mEC.getElementsByType(OperatorTransitionModel.TRANS_OPERATOR_TYPE).size();
-        int transSimpleC = mEC.getElementsByType(OperatorTransitionModel.TRANS_SIMPLE_TYPE).size();
+        int placeC = m_elementContainer.getElementsByType(OperatorTransitionModel.PLACE_TYPE).size();
+        int subPC = m_elementContainer.getElementsByType(OperatorTransitionModel.SUBP_TYPE).size();
+        int transOpC = m_elementContainer.getElementsByType(OperatorTransitionModel.TRANS_OPERATOR_TYPE).size();
+        int transSimpleC = m_elementContainer.getElementsByType(OperatorTransitionModel.TRANS_SIMPLE_TYPE).size();
         
-        m_CounterLabel.setText(
+        getCounterLabel().setText(
                 Messages.getString("Statusbar.Places") + ": " + placeC + "  " +
                 Messages.getString("Statusbar.Transitions") + ": " + (transSimpleC + transOpC) + "  " +
                 Messages.getString("Statusbar.Subprocesses") + ": " + subPC + "     ");
         
-        if (editor.isSaved())
+        if (m_editor.isSaved())
         {
-            m_SaveIcon.setText(Messages.getString("Button.Saved.Title"));
-            m_SaveIcon.setIcon(Messages.getImageIcon("Button.Saved"));
+            getSaveIcon().setText(Messages.getString("Button.Saved.Title"));
+            getSaveIcon().setIcon(Messages.getImageIcon("Button.Saved"));
         }
         else
         {
-           m_SaveIcon.setText(Messages.getString("Button.NotSaved.Title"));
-           m_SaveIcon.setIcon(Messages.getImageIcon("Button.NotSaved"));
+            getSaveIcon().setText(Messages.getString("Button.NotSaved.Title"));
+            getSaveIcon().setIcon(Messages.getImageIcon("Button.NotSaved"));
         }
     }
 

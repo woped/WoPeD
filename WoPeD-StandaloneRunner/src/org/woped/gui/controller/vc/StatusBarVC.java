@@ -93,6 +93,7 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
         c.gridx = 3;
         this.add(getProgressBar(), c);
         progressBarCount = -1;
+        getProgressBar().setBorderPainted(false);
     }
 
     private JLabel getEditorNumberLabel()

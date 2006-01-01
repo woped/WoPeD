@@ -30,10 +30,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.border.BevelBorder;
 
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.controller.PetriNetResourceEditor;
@@ -50,16 +48,14 @@ public class DefaultEditorFrame extends JInternalFrame
 {
     private EditorVC               m_editor                 = null;
     private PetriNetResourceEditor m_petriNetResourceEditor = null;
-    private StatusBarLabel         m_statusBarInfo          = null;
-
-    private static final int       DEFAULT_WIDTH            = 500;
-    private static final int       DEFAULT_HEIGHT           = 500;
+    private StatusBarLabel         m_statusBar              = null;
 
     public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor)
     {
         super(editor.getName(), true, true, true, true);
         this.setVisible(false);
         m_editor = editor;
+        this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
         m_petriNetResourceEditor = propEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
         this.setFrameIcon(DefaultStaticConfiguration.DEFAULTEDITORFRAMEICON);
@@ -70,7 +66,7 @@ public class DefaultEditorFrame extends JInternalFrame
             // TabbedPane
             JTabbedPane tabbedPane = new JTabbedPane();
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
-            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), getEditor());
+            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
             propScrollPane.addFocusListener(new FocusListener()
@@ -87,19 +83,13 @@ public class DefaultEditorFrame extends JInternalFrame
             });
         } else
         {
-            this.getContentPane().add(editor, BorderLayout.CENTER);
+            this.getContentPane().add(m_editor, BorderLayout.CENTER);
         }
         
-        setTitle(editor.getName());
+        setTitle(m_editor.getName());
         
         // Statusbar
-        JPanel statusBar = new JPanel(new BorderLayout());
-        m_statusBarInfo = new StatusBarLabel(editor);
-        statusBar.add(m_statusBarInfo, BorderLayout.CENTER);
-        statusBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
-        this.getContentPane().add(statusBar, BorderLayout.SOUTH);
-        editor.registerStatusBar(m_statusBarInfo);
-        editor.setSaved(true);
+        m_editor.setSaved(true);
 
         this.pack();
         this.repaint();
@@ -111,6 +101,16 @@ public class DefaultEditorFrame extends JInternalFrame
      * @return returns the containing Editor.
      */
 
+    private StatusBarLabel getStatusBar()
+    {
+        if (m_statusBar == null)
+        {
+           m_statusBar = new StatusBarLabel(m_editor);
+        }
+        
+        return m_statusBar;
+    }
+    
     public EditorVC getEditor()
     {
         return m_editor;

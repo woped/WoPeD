@@ -1522,7 +1522,8 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public void setSaved(boolean savedFlag)
     {
         this.m_saved = savedFlag;
-        m_statusbar.updateStatus();
+        if (m_statusbar != null)
+            m_statusbar.updateStatus();
     }
 
     /**
