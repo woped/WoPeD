@@ -37,7 +37,10 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
         this.id = id;
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(new BevelBorder(BevelBorder.LOWERED));
-        setPreferredSize(new Dimension(800, 25));
+        setPreferredSize(new Dimension(800, 22));
+        setMinimumSize(new Dimension(400, 22));
+        setMaximumSize(new Dimension(800, 22));
+
     }
 
     public void selectEditor(IEditor editor)

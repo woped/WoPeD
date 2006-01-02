@@ -48,20 +48,13 @@ import org.woped.gui.controller.DefaultApplicationMediator;
  */
 public class StatusBarVC extends JPanel implements IViewController, IStatusBar
 {
-    private JLabel             m_EditorNumberLabel = null;
-
-    private JProgressBar       m_progressBar       = null;
-
     private JLabel             m_statusLabel       = null;
-
-    private String             id                  = null;
-
-    private int                progressBarCount;
-
+    private JProgressBar       m_progressBar       = null;
+    private String             id                  = "";
+    private int                progressBarCount    = -1;
+    
     public static final String ID_PREFIX           = "STATUSBAR_VC_";
-
     private Vector             viewListener        = new Vector(1, 3);
-
     SynchonizeTask             task;
 
     /**
@@ -76,36 +69,19 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
     {
         this.setLayout(new GridBagLayout());
         this.setBorder(new BevelBorder(BevelBorder.LOWERED));
-        this.setPreferredSize(new Dimension(800, 20));
-
+        this.setMinimumSize(new Dimension(200, 22));
+        this.setMaximumSize(new Dimension(200, 22));
+        this.setPreferredSize(new Dimension(200, 22));
         GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.fill = GridBagConstraints.BOTH;
         c.weightx = 1;
-        c.gridy = 1;
+        c.weighty = 1;
+        c.gridx = 0;
+        c.gridy = 0;
 
-        c.gridx = 1;
-        this.add(getEditorNumberLabel(), c);
-        // c.gridx = 2;
-        // this.add(new JLabel(), c);
-        c.gridx = 2;
-        getStatusLabel().setText("");
-        this.add(getStatusLabel(), c);
-        c.gridx = 3;
         this.add(getProgressBar(), c);
-        progressBarCount = -1;
-        getProgressBar().setBorderPainted(false);
     }
-
-    private JLabel getEditorNumberLabel()
-    {
-        if (m_EditorNumberLabel == null)
-        {
-            m_EditorNumberLabel = new JLabel(Messages.getString("Statusbar.Editors") + ": " + String.valueOf(0));
-            m_EditorNumberLabel.setHorizontalAlignment(JLabel.LEFT);
-        }
-        return m_EditorNumberLabel;
-    }
-
+    
     /**
      * TODO: DOCUMENTATION (silenco)
      * 
@@ -162,7 +138,7 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
     {
         if (m_statusLabel == null)
         {
-            m_statusLabel = new JLabel();
+            m_statusLabel = new JLabel("");
             m_statusLabel.setHorizontalAlignment(JLabel.RIGHT);
         }
         return m_statusLabel;
@@ -173,6 +149,8 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
         if (m_progressBar == null)
         {
             m_progressBar = new JProgressBar();
+            progressBarCount = -1;
+            m_progressBar.setVisible(false);
         }
         return m_progressBar;
     }
@@ -180,6 +158,7 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
     public boolean startProgress(String description, int maxValue)
     {
         if (isRunning()) return false;
+        getProgressBar().setVisible(true);
         getProgressBar().setMaximum(maxValue);
         getStatusLabel().setText(description);
         progressBarCount = 0;
@@ -197,6 +176,7 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
             getProgressBar().setMaximum(0);
             getProgressBar().setValue(0);
             getStatusLabel().setText("");
+            getProgressBar().setVisible(false);
         }
         return true;
     }

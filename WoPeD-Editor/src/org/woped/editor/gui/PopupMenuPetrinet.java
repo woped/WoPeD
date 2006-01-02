@@ -88,7 +88,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         add(getAddXorSplitMenuItem());
         add(getAddAndJoinMenuItem());
         add(getAddXorJoinMenuItem());
-        add(getAddXorSplitJoinMenuItem());
+//        add(getAddXorSplitJoinMenuItem()); // TEMPORARILY DISABLED - TF
         add(getSubProcessMenuItem());
 
         addSeparator();

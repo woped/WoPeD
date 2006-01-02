@@ -39,7 +39,7 @@ import javax.swing.border.BevelBorder;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.controller.PetriNetResourceEditor;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.gui.StatusBarLabel;
+import org.woped.editor.controller.vc.EditorStatusBarVC;
 import org.woped.editor.utilities.Messages;
 
 /**
@@ -51,7 +51,7 @@ public class DefaultEditorFrame extends JInternalFrame
 {
     private EditorVC               m_editor                 = null;
     private PetriNetResourceEditor m_petriNetResourceEditor = null;
-    private StatusBarLabel         m_statusBar              = null;
+    private EditorStatusBarVC      m_statusBar              = null;
 
     public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor)
     {
@@ -99,11 +99,11 @@ public class DefaultEditorFrame extends JInternalFrame
         this.setVisible(true);
     }
 
-    private StatusBarLabel getStatusBar()
+    private EditorStatusBarVC getStatusBar()
     {
         if (m_statusBar == null)
         {
-           m_statusBar = new StatusBarLabel(m_editor);
+           m_statusBar = new EditorStatusBarVC(m_editor);
         }
         
         return m_statusBar;

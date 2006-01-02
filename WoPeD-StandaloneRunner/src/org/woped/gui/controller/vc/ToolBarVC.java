@@ -132,8 +132,8 @@ public class ToolBarVC extends JToolBar implements IViewController
         addSeparator(new Dimension(5, 5));
         add(getAndJoinButton());
         add(getXorJoinButton());
-        addSeparator(new Dimension(5, 5));
-        add(getXorSplitJoinButton());
+//        addSeparator(new Dimension(5, 5));  TEMPORARILY DISABLED TF
+//        add(getXorSplitJoinButton());       TEMPORARILY DISABLED TF
         // add(getOrSplitButton());
         addSeparator(new Dimension(5, 5));
         add(getSubProcessButton());

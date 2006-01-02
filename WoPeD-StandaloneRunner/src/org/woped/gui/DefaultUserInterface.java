@@ -2,6 +2,7 @@ package org.woped.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -25,7 +26,6 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.model.AbstractModelProcessor;
-import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
@@ -84,10 +84,10 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
         // Prepare Status & Taskbar
         JPanel toolPanel = new JPanel();
-        GridLayout gL = new GridLayout(2, 1);
-        toolPanel.setLayout(gL);
-        toolPanel.add(taskBar);
-        toolPanel.add(statusBar);
+        toolPanel.setLayout(new BorderLayout());
+        toolPanel.add(taskBar, BorderLayout.WEST);
+        toolPanel.add(statusBar);          
+        toolPanel.setPreferredSize(new Dimension(800, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
 
         // addKeyListener(this);

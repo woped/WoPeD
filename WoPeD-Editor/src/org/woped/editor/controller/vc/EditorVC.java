@@ -101,7 +101,6 @@ import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDJGraph;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.gui.IEditorProperties;
-import org.woped.editor.gui.StatusBarLabel;
 import org.woped.editor.simulation.TokenGameController;
 import org.woped.editor.utilities.ImageSelection;
 import org.woped.editor.view.ViewFactory;
@@ -152,7 +151,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     private IEditorProperties      elementProperties       = null;
     // ViewControll
     private Vector                 viewListener            = new Vector(1, 3);
-    private StatusBarLabel         m_statusbar;
+    private EditorStatusBarVC      m_statusbar;
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -411,7 +410,9 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                     if (map.getTokens() > 0) ((PlaceModel) element).setTokens(map.getTokens());
                 }
                 // edit
-                if (ConfigurationManager.getConfiguration().isEditingOnCreation() && map.isEditOnCreation() && isSmartEditActive())
+                if (ConfigurationManager.getConfiguration().isEditingOnCreation() &&
+//                        map.isEditOnCreation() &&  --> does this work properly - TF??
+                        isSmartEditActive())
                 {
                     getGraph().startEditingAtCell(((PetriNetModelElement) element).getNameModel());
                 }
@@ -1635,7 +1636,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         return getName();
     }
 
-    public void registerStatusBar(StatusBarLabel statusBar)
+    public void registerStatusBar(EditorStatusBarVC statusBar)
     {
         m_statusbar = statusBar;        
     }

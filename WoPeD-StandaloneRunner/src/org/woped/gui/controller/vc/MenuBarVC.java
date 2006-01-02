@@ -664,7 +664,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 
                                 public void actionPerformed(ActionEvent e)
                                 {
-                                    fireViewEvent(new ViewEvent(null, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN_SAMPLE, new File(e.getActionCommand())));
+                                    fireViewEvent(new ViewEvent(MenuBarVC.this, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN_SAMPLE, new File(e.getActionCommand())));
                                 }
 
                             });
@@ -675,7 +675,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
                 // Normal dir access
                 else
                 {
-                    path = "bin/" + innerPath;
+                    path = "../WoPeD-FileInterface/bin/" + innerPath;
                     File sampleDir = new File(path);
                     if (sampleDir.isDirectory())
                     {

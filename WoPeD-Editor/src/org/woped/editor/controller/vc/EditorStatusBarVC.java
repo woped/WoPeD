@@ -1,27 +1,35 @@
-package org.woped.editor.gui;
+package org.woped.editor.controller.vc;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
+import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
+import org.woped.core.controller.IStatusBar;
+import org.woped.core.controller.IViewController;
+import org.woped.core.controller.IViewListener;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
 
-public class StatusBarLabel extends JPanel implements Observer
+public class EditorStatusBarVC extends JPanel implements Observer
 {
-    private ModelElementContainer m_elementContainer;
+    private ModelElementContainer m_elementContainer = null;
     private JLabel                m_counterLabel = null;
-    private JLabel                m_saveIcon = null;
-    private EditorVC              m_editor;
+    private JLabel                m_saveIcon    = null;
+    private EditorVC              m_editor      = null;
 
-    public StatusBarLabel(IEditor editor)
+    public EditorStatusBarVC(IEditor editor)
     {
         m_editor = (EditorVC)editor;
         m_elementContainer = editor.getModelProcessor().getElementContainer();
@@ -77,5 +85,5 @@ public class StatusBarLabel extends JPanel implements Observer
     public void update(Observable arg0, Object arg1)
     {
         updateStatus();
-    }
-}
+    }   
+ }
