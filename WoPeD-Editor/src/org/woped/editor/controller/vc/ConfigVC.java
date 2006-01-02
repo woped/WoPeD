@@ -354,6 +354,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
             applyButton = new JButton();
             applyButton.setMnemonic(KeyEvent.VK_A);
             applyButton.setText(Messages.getString("Button.Apply.Title"));
+            applyButton.setIcon(Messages.getImageIcon("Button.Apply"));
             applyButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)
@@ -373,6 +374,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
             cancelButton.setIcon(null);
             cancelButton.setMnemonic(KeyEvent.VK_C);
             cancelButton.setText(Messages.getString("Button.Cancel.Title"));
+            cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
         }
         return cancelButton;
     }
@@ -383,6 +385,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         {
             okButton = new JButton();
             okButton.setText(Messages.getString("Button.Ok.Title"));
+            okButton.setIcon(Messages.getImageIcon("Button.Ok"));
             okButton.setMnemonic(KeyEvent.VK_O);
             okButton.addActionListener(new ActionListener()
             {
@@ -403,6 +406,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
             exportButton = new JButton();
             exportButton.setText(Messages.getString("Button.Export.Title"));
             exportButton.setMnemonic(KeyEvent.VK_E);
+            exportButton.setIcon(Messages.getImageIcon("Button.Export"));
             exportButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)
@@ -423,6 +427,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         {
             importButton = new JButton();
             importButton.setText(Messages.getString("Button.Import.Title"));
+            importButton.setIcon(Messages.getImageIcon("Button.Import"));
             importButton.setMnemonic(KeyEvent.VK_I);
             importButton.addActionListener(new ActionListener()
             {
