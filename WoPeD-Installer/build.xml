@@ -4,13 +4,13 @@
 
 	<property name="JGRAPHVERSION" value="5.4.4" />
 	<property name="LOG4JVERSION" value="1.2.8" />
-	<property name="WOPEDVERSION" value="0.9.5" />
-	<property name="COREVERSION" value="0.9.5" />
-	<property name="EDITORVERSION" value="0.9.5" />
-	<property name="FILEINTERFACEVERSION" value="0.9.5" />
-	<property name="GUIVERSION" value="0.9.5" />
-	<property name="CONFIGURATIONVERSION" value="0.9.5" />
-	<property name="SNAPSHOT" value="-SNAPSHOT" />
+	<property name="WOPEDVERSION" value="1.0.0" />
+	<property name="COREVERSION" value="1.0.0" />
+	<property name="EDITORVERSION" value="1.0.0" />
+	<property name="FILEINTERFACEVERSION" value="1.0.0" />
+	<property name="GUIVERSION" value="1.0.0" />
+	<property name="CONFIGURATIONVERSION" value="1.0.0" />
+	<property name="SNAPSHOT" value="-ALPHA" />
 
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
@@ -25,7 +25,7 @@
 	<!--<taskdef resource="genjar.properties"/>	-->
 
 	<target name="makedistribution" 
-		    depends="makedir, makesubprojects, setversion, copyfiles, makeinstaller, purge" />
+    depends="makedir, makesubprojects, setversion, copyfiles, makeinstaller, purge" />
 	<!--	depends="makebindist, makesrcdist, purge" /> -->
 
 	<target name="clean">
@@ -35,8 +35,11 @@
 	<target name="makedir" depends="clean">
 		<mkdir dir="dist" />
 		<mkdir dir="dist/lib" />
+		<mkdir dir="dist/nets" />
 		<mkdir dir="dist/doc" />
 		<mkdir dir="dist/doc/html" />
+		<mkdir dir="dist/doc/html/de" />
+		<mkdir dir="dist/doc/html/en" />
 		<mkdir dir="dist/doc/html/images" />
 	</target>
 
@@ -59,18 +62,23 @@
 		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
+		<copy todir="dist/nets" file="build-tools/setup/Example.pnml" />
 
 		<copy todir="dist" file="../WoPeD-XMLConfiguration/configuration.xml" />
 	
-		<copy todir="dist/doc/html">
-			<fileset file="doc/html/*.htm" />
+		<copy todir="dist/doc/html/en">
+			<fileset file="../WoPeD-StandaloneRunner/doc/doc/html/en/*.htm" />
 		</copy>
 		
-		<copy file="doc/html/woped-big.css" tofile="dist/doc/html/woped.css" />
+		<copy todir="dist/doc/html/de">
+			<fileset file="../WoPeD-StandaloneRunner/doc/doc/html/de/*.htm" />
+		</copy>
+
+		<copy file="../WoPeD-StandaloneRunner/doc/doc/html/woped-big.css" tofile="dist/doc/html/woped.css" />
 		
 		<copy todir="dist/doc/html/images">
-			<fileset file="doc/html/images/*.gif" />
-			<fileset file="doc/html/images/*.jpg" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/doc/html/images/*.gif" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/doc/html/images/*.jpg" />
 		</copy>
 
 		<copy todir="dist">
@@ -139,7 +147,9 @@
 
 	<target name="purge">
 		<delete dir="dist/bin" />
+		<delete dir="dist/nets" />
 		<delete dir="dist/doc/html/images" />
+		<delete dir="dist/doc/html/de" />
 		<delete dir="dist/doc/html" />
 		<delete dir="dist/doc" />
 		<delete dir="dist/lib" />
