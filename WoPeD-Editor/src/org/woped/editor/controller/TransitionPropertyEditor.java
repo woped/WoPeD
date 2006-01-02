@@ -50,6 +50,8 @@ import javax.swing.JTextField;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.Utils;
@@ -108,8 +110,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private static final String   COMBOBOX_HOURS_TEXT           = Messages.getString("Transition.Properties.Hours");
     private static final String   COMBOBOX_MINUTES_TEXT         = Messages.getString("Transition.Properties.Minutes");
     private static final String   COMBOBOX_SECONDS_TEXT         = Messages.getString("Transition.Properties.Seconds");
-    private static final Object[] durationValues                = { COMBOBOX_SECONDS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT, COMBOBOX_WEEKS_TEXT, COMBOBOX_MONTHS_TEXT,
-            COMBOBOX_YEARS_TEXT                                };
+    private static final Object[] durationValues                = { COMBOBOX_SECONDS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT, 
+                                                                    COMBOBOX_WEEKS_TEXT, COMBOBOX_MONTHS_TEXT, COMBOBOX_YEARS_TEXT };
     // Trigger
     private JPanel                triggerPanel                  = null;
     private JRadioButton          triggerNoneRadioButton        = null;
@@ -595,9 +597,38 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             c.gridy = 1;
             c.insets = new Insets(0, 0, 0, 0);
             branchingPanel.add(getBranchingXorJoinEntry(), c);
+            checkBranching();
         }
 
         return branchingPanel;
+    }
+
+    private void checkBranching()
+    {
+        switch (transition.getType())
+        {
+            case PetriNetModelElement.TRANS_SIMPLE_TYPE: 
+                getBranchingNoneRadioButton().setSelected(true);
+                break;
+            case PetriNetModelElement.TRANS_OPERATOR_TYPE: 
+                switch (transition.getToolSpecific().getOperatorType())
+                {
+                    case OperatorTransitionModel.AND_SPLIT_TYPE:
+                        getBranchingAndSplitRadioButton().setSelected(true);
+                        break;
+                    case OperatorTransitionModel.XOR_SPLIT_TYPE:
+                        getBranchingXorSplitRadioButton().setSelected(true);
+                        break;
+                    case OperatorTransitionModel.AND_JOIN_TYPE:
+                        getBranchingAndJoinRadioButton().setSelected(true);
+                        break;
+                    case OperatorTransitionModel.XOR_JOIN_TYPE:
+                        getBranchingXorJoinRadioButton().setSelected(true);
+                        break;
+                    default:
+                }
+            default:
+        }
     }
 
     private JRadioButton getBranchingNoneRadioButton()
