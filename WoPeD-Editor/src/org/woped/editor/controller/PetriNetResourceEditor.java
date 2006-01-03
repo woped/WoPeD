@@ -735,6 +735,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     getPetrinet().replaceResourceClassMapping(oldName, newName);
                     int index = getGroupList().getSelectedIndex();
                     groupListModel.set(index, groupModel);
+                    replaceGroupInModel(oldName, newName);
                 }
                 
                 // name unchanged
@@ -761,6 +762,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     getPetrinet().replaceResourceClassMapping(oldName, newName);
                     int index3 = getRoleList().getSelectedIndex();
                     roleListModel.set(index3, roleModel);
+                    replaceRoleInModel(oldName, newName);
                 }
                 // name unchanged
                 if (resourceClassTypeJComboBox.getSelectedItem() == COMBOBOX_GROUP_TEXT)
@@ -779,6 +781,44 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getEditor().setSaved(false);
     }
 
+    private void replaceGroupInModel(String oldName, String newName)
+    {
+        HashMap alltrans = new HashMap();
+        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
+        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
+
+        for (Iterator transIter = alltrans.values().iterator(); transIter.hasNext();)
+        {
+            TransitionModel transition = (TransitionModel)(transIter.next());
+            if (transition.getToolSpecific() != null &&
+                    transition.getToolSpecific().getTransResource() != null &&
+                    transition.getToolSpecific().getTransResource().getTransOrgUnitName() != null &&
+                    transition.getToolSpecific().getTransResource().getTransOrgUnitName().equals(oldName))
+            {
+                transition.getToolSpecific().getTransResource().setTransOrgUnitName(newName);
+            }
+        }        
+    }
+
+    private void replaceRoleInModel(String oldName, String newName)
+    {
+        HashMap alltrans = new HashMap();
+        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
+        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
+
+        for (Iterator transIter = alltrans.values().iterator(); transIter.hasNext();)
+        {
+            TransitionModel transition = (TransitionModel)(transIter.next());
+            if (transition.getToolSpecific() != null &&
+                    transition.getToolSpecific().getTransResource() != null &&
+                    transition.getToolSpecific().getTransResource().getTransRoleName() != null &&
+                    transition.getToolSpecific().getTransResource().getTransRoleName().equals(oldName))
+            {
+                transition.getToolSpecific().getTransResource().setTransRoleName(newName);
+            }
+        }                
+    }
+
     // Check if group is used by any transition
     private boolean groupIsUsed(String groupName)
     {
@@ -795,7 +835,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     transition.getToolSpecific().getTransResource() != null &&
                     transition.getToolSpecific().getTransResource().getTransOrgUnitName() != null &&
                     transition.getToolSpecific().getTransResource().getTransOrgUnitName().equals(groupName))
-                 {
+            {
                 isUsed = true;
             }
          }
