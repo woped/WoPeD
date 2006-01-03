@@ -297,17 +297,18 @@ public class PNMLImport
                 statusBars[f].startProgress("Loading from File", currentNet.getPlaceArray().length + currentNet.getArcArray().length + currentNet.getTransitionArray().length);
             }
             importPlaces(currentNet.getPlaceArray(), i);
-            getEditor()[i].updateNet();
+//            getEditor()[i].updateNet();
             importTransitions(currentNet.getTransitionArray(), i);
             // important... import arcs in the end
-            getEditor()[i].updateNet();
+//            getEditor()[i].updateNet();
             importArcs(currentNet.getArcArray(), i);
-            getEditor()[i].updateNet();
+//            getEditor()[i].updateNet();
             getEditor()[i].getGraph().clearSelection();
             if (editor[i].getGraph().getUndoManager() != null)
             {
                 ((WoPeDUndoManager) editor[i].getGraph().getUndoManager()).setEnabled(true);
             }
+            getEditor()[i].updateNet();
         }
     }
 
