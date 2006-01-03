@@ -24,7 +24,6 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.utilities.FileFilterImpl;

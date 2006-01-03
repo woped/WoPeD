@@ -1,8 +1,6 @@
 package org.woped.editor.controller.vc;
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
@@ -20,7 +18,6 @@ import org.woped.core.controller.IViewListener;
 import org.woped.core.gui.IEditorAware;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.controller.EditorViewEvent;
 
 public class TaskBarVC extends JPanel implements IViewController, IEditorAware
 {

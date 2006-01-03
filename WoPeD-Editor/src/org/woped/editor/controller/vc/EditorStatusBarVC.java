@@ -1,25 +1,16 @@
 package org.woped.editor.controller.vc;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
-import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
-import org.woped.core.controller.IStatusBar;
-import org.woped.core.controller.IViewController;
-import org.woped.core.controller.IViewListener;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
 
 public class EditorStatusBarVC extends JPanel implements Observer
