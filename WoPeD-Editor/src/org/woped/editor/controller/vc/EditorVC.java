@@ -410,9 +410,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                     if (map.getTokens() > 0) ((PlaceModel) element).setTokens(map.getTokens());
                 }
                 // edit
-                if (ConfigurationManager.getConfiguration().isEditingOnCreation() &&
-//                        map.isEditOnCreation() &&  --> does this work properly - TF??
-                        isSmartEditActive())
+                if (ConfigurationManager.getConfiguration().isEditingOnCreation() && map.isEditOnCreation() && isSmartEditActive())
                 {
                     getGraph().startEditingAtCell(((PetriNetModelElement) element).getNameModel());
                 }
@@ -1523,8 +1521,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public void setSaved(boolean savedFlag)
     {
         this.m_saved = savedFlag;
-        if (m_statusbar != null)
-            m_statusbar.updateStatus();
+        if (m_statusbar != null) m_statusbar.updateStatus();
     }
 
     /**
@@ -1638,6 +1635,6 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 
     public void registerStatusBar(EditorStatusBarVC statusBar)
     {
-        m_statusbar = statusBar;        
+        m_statusbar = statusBar;
     }
 }

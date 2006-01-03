@@ -52,7 +52,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
             {
                 map.setPosition((int) editor.getLastMousePosition().getX(), (int) editor.getLastMousePosition().getY());
             }
-            map.setEditOnCreation(false);
+//            map.setEditOnCreation(false);
             switch (event.getOrder())
             {
             // Petrinet

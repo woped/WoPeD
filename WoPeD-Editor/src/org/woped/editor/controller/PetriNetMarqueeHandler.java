@@ -115,7 +115,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
         {
             CreationMap map = CreationMap.createMap();
             map.setPosition((int) l.getX() - 7, (int) l.getY() - 7);
-            map.setEditOnCreation(false);
+//            map.setEditOnCreation(false);
             if (getEditor().getCreateElementType() > 100 && getEditor().getCreateElementType() < 110)
             {
                 map.setType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
