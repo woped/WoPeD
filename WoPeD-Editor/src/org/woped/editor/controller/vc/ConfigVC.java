@@ -84,7 +84,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
 
     private HashMap               confPanels     = new HashMap();
 
-    public static final Dimension CONF_DIM       = new Dimension(600, 430);
+    public static final Dimension CONF_DIM       = new Dimension(650, 430);
     public static final Dimension SCROLL_DIM     = new Dimension(450, 370);
     public static final Dimension TREE_DIM       = new Dimension(140, 370);
     public static final Color     BACK_COLOR     = new Color(255, 255, 255);
