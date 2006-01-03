@@ -68,12 +68,12 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
     private void initialize()
     {
         this.setLayout(new GridBagLayout());
-        this.setMinimumSize(new Dimension(200, 22));
-        this.setMaximumSize(new Dimension(200, 22));
-        this.setPreferredSize(new Dimension(200, 22));
+        this.setMinimumSize(new Dimension(200, 20));
+        this.setMaximumSize(new Dimension(200, 20));
+        this.setPreferredSize(new Dimension(200, 20));
         this.setBorder(new BevelBorder(BevelBorder.LOWERED));
         GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.NONE;
+        c.fill = GridBagConstraints.BOTH;
         c.weightx = 1;
         c.weighty = 1;
         c.gridx = 0;

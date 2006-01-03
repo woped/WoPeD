@@ -3,6 +3,8 @@ package org.woped.gui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
@@ -17,6 +19,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
@@ -83,10 +86,21 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
         // Prepare Status & Taskbar
         JPanel toolPanel = new JPanel();
+        JPanel p1 = new JPanel();
+        p1.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 1;
+        c.weighty = 1;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = GridBagConstraints.REMAINDER;
+        p1.add(taskBar, c);
+ 
         toolPanel.setLayout(new BorderLayout());
-        toolPanel.add(taskBar, BorderLayout.WEST);
+        toolPanel.add(p1, BorderLayout.WEST);
         toolPanel.add(statusBar, BorderLayout.EAST);          
-        toolPanel.setPreferredSize(new Dimension(800, 25));
+        toolPanel.setPreferredSize(new Dimension(100, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
         
         // addKeyListener(this);

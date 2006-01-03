@@ -8,7 +8,6 @@ import java.util.Vector;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import javax.swing.border.BevelBorder;
 
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
@@ -33,11 +32,7 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
     {
         this.id = id;
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        setBorder(new BevelBorder(BevelBorder.LOWERED));
-        setPreferredSize(new Dimension(800, 22));
-        setMinimumSize(new Dimension(400, 22));
-        setMaximumSize(new Dimension(800, 22));
-
+//        setBorder(new BevelBorder(BevelBorder.LOWERED));
     }
 
     public void selectEditor(IEditor editor)
