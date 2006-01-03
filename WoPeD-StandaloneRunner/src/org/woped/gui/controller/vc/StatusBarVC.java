@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.Vector;
 
+import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -14,7 +15,6 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
-import org.woped.editor.utilities.Messages;
 import org.woped.editor.utilities.SynchonizeTask;
 import org.woped.gui.controller.DefaultApplicationMediator;
 
@@ -68,18 +68,20 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
     private void initialize()
     {
         this.setLayout(new GridBagLayout());
-        this.setBorder(new BevelBorder(BevelBorder.LOWERED));
         this.setMinimumSize(new Dimension(200, 22));
         this.setMaximumSize(new Dimension(200, 22));
         this.setPreferredSize(new Dimension(200, 22));
+        this.setBorder(new BevelBorder(BevelBorder.LOWERED));
         GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
+        c.fill = GridBagConstraints.NONE;
         c.weightx = 1;
         c.weighty = 1;
         c.gridx = 0;
         c.gridy = 0;
-
         this.add(getProgressBar(), c);
+        c.gridx = 0;
+        c.gridy = 1;
+        this.add(Box.createHorizontalStrut(200), c);
     }
     
     /**

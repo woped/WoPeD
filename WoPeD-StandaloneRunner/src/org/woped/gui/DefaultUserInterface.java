@@ -3,7 +3,6 @@ package org.woped.gui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
@@ -86,10 +85,10 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         JPanel toolPanel = new JPanel();
         toolPanel.setLayout(new BorderLayout());
         toolPanel.add(taskBar, BorderLayout.WEST);
-        toolPanel.add(statusBar);          
+        toolPanel.add(statusBar, BorderLayout.EAST);          
         toolPanel.setPreferredSize(new Dimension(800, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
-
+        
         // addKeyListener(this);
         SplashWindow splash = new SplashWindow(this);
         splash.kill();
