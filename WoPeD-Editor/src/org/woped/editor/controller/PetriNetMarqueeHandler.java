@@ -115,7 +115,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
         {
             CreationMap map = CreationMap.createMap();
             map.setPosition((int) l.getX() - 7, (int) l.getY() - 7);
-//            map.setEditOnCreation(false);
+//            map.setEditOnCreation(true);
             if (getEditor().getCreateElementType() > 100 && getEditor().getCreateElementType() < 110)
             {
                 map.setType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
@@ -202,7 +202,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
                     DefaultPort source = (DefaultPort) firstPort.getCell();
                     CreationMap map = CreationMap.createMap();
                     map.setPosition((int) getEditor().getLastMousePosition().getX() - 20, (int) getEditor().getLastMousePosition().getY() - 20);
-                    map.setEditOnCreation(false);
+ //                   map.setEditOnCreation(false);
                     if (source.getParent() instanceof TransitionModel)
                     {
                         map.setType(PetriNetModelElement.PLACE_TYPE);
