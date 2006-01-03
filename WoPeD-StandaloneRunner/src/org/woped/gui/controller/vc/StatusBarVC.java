@@ -3,6 +3,7 @@ package org.woped.gui.controller.vc;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.Vector;
 
 import javax.swing.Box;
@@ -78,9 +79,11 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
         c.weighty = 1;
         c.gridx = 0;
         c.gridy = 0;
+        c.insets = new Insets(3, 0, 0, 0);
         this.add(getProgressBar(), c);
         c.gridx = 0;
         c.gridy = 1;
+        c.insets = new Insets(0, 0, 0, 0);
         this.add(Box.createHorizontalStrut(200), c);
     }
     

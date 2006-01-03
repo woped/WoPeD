@@ -98,6 +98,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         p1.add(taskBar, c);
  
         toolPanel.setLayout(new BorderLayout());
+        toolPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
         toolPanel.add(p1, BorderLayout.WEST);
         toolPanel.add(statusBar, BorderLayout.EAST);          
         toolPanel.setPreferredSize(new Dimension(100, 25));
