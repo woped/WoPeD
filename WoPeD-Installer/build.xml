@@ -25,7 +25,7 @@
 	<!--<taskdef resource="genjar.properties"/>	-->
 
 	<target name="makedistribution" 
-    depends="makedir, makesubprojects, setversion, copyfiles, makeinstaller, purge" />
+    depends="makedir, makesubprojects, setversion, copyfiles, makeinstaller, start, purge" />
 	<!--	depends="makebindist, makesrcdist, purge" /> -->
 
 	<target name="clean">
@@ -145,6 +145,12 @@
 		</tar>
 	</target>
 
+	<target name="start">
+		<exec dir="dist" executable="cmd">
+			<arg line="/c WoPeD-install.exe" />
+		</exec>
+	</target>
+	
 	<target name="purge">
 		<delete dir="dist/bin" />
 		<delete dir="dist/nets" />
