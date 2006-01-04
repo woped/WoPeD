@@ -1,8 +1,24 @@
 /*
- * Created on 19.10.2005
+ * 
+ * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
+ *
+ * For contact information please visit http://woped.ba-karlsruhe.de
+ *
  */
 package org.woped.core.controller;
 
@@ -34,10 +50,11 @@ import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.utilities.LoggerManager;
 
 /**
- * @author lai
  * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
+ *  @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+ *         <br>
+ *
+ * TODO DOCUMENTATION (lai)
  */
 public abstract class AbstractGraph extends org.jgraph.JGraph implements Printable
 {
@@ -47,8 +64,6 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
 
     public AbstractGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, GraphUndoManager undoManager, AbstractViewFactory viewFactory, int modelPorcessorType)
     {
-        this.setMarqueeHandler(editorMarquee);
-        this.editorMarquee = editorMarquee;
         if (undoManager != null)
         {
             this.undoManager = undoManager;
@@ -59,6 +74,9 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
         this.modelPorcessorType = modelPorcessorType;
         this.setGridVisible(ConfigurationManager.getConfiguration().isShowGrid());
         ToolTipManager.sharedInstance().registerComponent(this);
+        this.setMarqueeHandler(editorMarquee);
+        this.editorMarquee = editorMarquee;
+
     }
 
     abstract public void undo();

@@ -30,6 +30,7 @@ import java.awt.geom.Point2D;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.view.AbstractElementView;
 
 /**
@@ -101,7 +102,7 @@ public class TriggerResView extends AbstractElementView
             }
             if (selected)
             {
-                g.setColor(graph.getHighlightColor());
+                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
             }
             g.drawLine(5, 0, 15, 0);
             g.drawLine(15, 0, 15, 5);

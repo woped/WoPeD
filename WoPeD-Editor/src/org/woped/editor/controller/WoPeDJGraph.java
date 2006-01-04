@@ -22,7 +22,6 @@
  */
 package org.woped.editor.controller;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
@@ -37,6 +36,7 @@ import org.jgraph.graph.BasicMarqueeHandler;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.plaf.GraphUI;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
@@ -95,18 +95,17 @@ public class WoPeDJGraph extends AbstractGraph
         // Use the Grid (but don't make it Visible)
         this.setGridEnabled(true);
         // Set the Grid Size to 10 Pixel
-        this.setGridSize(10);
+        this.setGridMode(JGraph.DOT_GRID_MODE);
+        this.setGridEnabled(true);
+        this.setGridSize(10.00);
         // Set the Snap Size to 2 Pixel
         this.setMinimumMove(1);
         this.setEditClickCount(1);
         this.setAntiAliased(true);
-        this.setGridMode(JGraph.DOT_GRID_MODE);
-        this.setGridEnabled(true);
-        this.setGridSize(10.00);
         this.setInvokesStopCellEditing(true);
         this.setEditable(true);
         this.setSize(300, 500);
-        this.setHighlightColor(Color.BLUE);
+        this.setHighlightColor(ConfigurationManager.getConfiguration().getSelectionColor());
 
         // TODO: setAutoSizeOnValueChange(true);
         if (undoManager != null) this.getModel().addUndoableEditListener(undoManager);

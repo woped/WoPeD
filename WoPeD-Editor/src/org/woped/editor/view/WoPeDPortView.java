@@ -79,8 +79,8 @@ public class WoPeDPortView extends PortView
         public void paint(Graphics g)
         {
             Dimension d = getSize();
-            g.setColor(graph.getBackground());
-            g.setXORMode(graph.getBackground());
+            g.setColor(getBackground());
+            g.setXORMode(getBackground());
             Graphics2D g2 = (Graphics2D) g;
             if (hasFocus)
             {
@@ -126,11 +126,16 @@ public class WoPeDPortView extends PortView
 
     public Rectangle2D getBounds()
     {
-        Rectangle2D rect = super.getBounds();
-        if (rect == null)
-        {
-            rect = getAttributes().createRect();
-        }
-        return rect;
+		Rectangle2D bounds = getAttributes().createRect(getLocation(null));
+		if (bounds != null)
+			bounds.setFrame(bounds.getX() - SIZE / 2, bounds.getY() - SIZE / 2,
+					bounds.getWidth() + SIZE, bounds.getHeight() + SIZE);
+		return bounds;
+//        Rectangle2D rect = super.getBounds();
+//        if (rect == null)
+//        {
+//            rect = getAttributes().createRect();
+//        }
+//        return rect;
     }
 }

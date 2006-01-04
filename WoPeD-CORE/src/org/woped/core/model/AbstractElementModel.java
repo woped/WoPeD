@@ -55,7 +55,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
             if (creationMap.getNamePosition() != null)
             {
                 nameModel.setPosition(new Point(creationMap.getNamePosition().getX1(), creationMap.getNamePosition().getX2()));
-            } else
+            } else if (getPosition() != null)
             {
                 nameModel.setPosition(getPosition().x + ((this.getWidth() - getNameModel().getWidth()) / 2), getPosition().y + getHeight() + 5);
             }

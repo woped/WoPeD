@@ -97,7 +97,8 @@ public class ModelElementFactory
                 if (modElement != null)
                 {
                     // add the DefaultPort as child to the DefaultGraphCell
-                    modElement.add(new PortCell());
+                    PortCell port = new PortCell();
+                    modElement.add(port);
                 }
                 return modElement;
 

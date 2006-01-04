@@ -23,6 +23,7 @@
 package org.woped.editor.view;
 
 import org.jgraph.graph.CellView;
+import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.PortView;
@@ -72,7 +73,7 @@ public class ViewFactory extends AbstractViewFactory
     public CellView createView(GraphModel model, Object cell)
     {
         CellView view = null;
-        if (cell instanceof PortCell) view = createPortView(cell);
+        if (cell instanceof DefaultPort) view = createPortView(cell);
         else if (model.isEdge(cell)) view = new ArcView(cell);
         else view = createVertexView(cell);
         // cm.putMapping(cell, view);
@@ -91,6 +92,7 @@ public class ViewFactory extends AbstractViewFactory
     protected PortView createPortView(Object cell)
     {
         return new WoPeDPortView(cell);
+//        return new PortView(cell);
     }
 
     protected VertexView createVertexView(Object cell)

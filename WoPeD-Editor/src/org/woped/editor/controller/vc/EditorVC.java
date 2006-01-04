@@ -27,6 +27,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
@@ -134,7 +135,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     // TokenGame
     private TokenGameController    m_tokenGameController   = null;
     // zoom
-    public static final double     MIN_SCALE               = 0.1;
+    public static final double     MIN_SCALE               = 0.2;
     public static final double     MAX_SCALE               = 5;
     // not nedded private boolean m_keyPressed = false;
     private int                    m_createElementType     = -1;
@@ -370,31 +371,46 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     {
         if (map.isValid())
         {
+            // Create Element
+            AbstractElementModel element = getModelProcessor().createElement(map);
+
             // ensure that There is an Position
             if (map.getPosition() != null)
             {
                 Point point = new Point((int) (map.getPosition().getX1() / getGraph().getScale()), (int) (map.getPosition().getX2() / getGraph().getScale()));
-                map.setPosition(new IntPair((Point) getGraph().snap(point)));
+                //                map.setPosition(new IntPair());
+                element.setPosition((Point) getGraph().snap(point));
             } else if (getLastMousePosition() != null)
             {
-                Point point = new Point((int) ((getLastMousePosition().getX() - 20) / getGraph().getScale()), (int) ((getLastMousePosition().getY() - 20) / getGraph().getScale()));
-                map.setPosition(new IntPair((Point) getGraph().snap(point)));
-            } else map.setPosition(10, 10);
-
-            // Create Element
-            AbstractElementModel element = getModelProcessor().createElement(map);
+                Point point = new Point((int) ((getLastMousePosition().getX() - element.getWidth() * getGraph().getScale() / 2) / getGraph().getScale()),
+                        (int) ((getLastMousePosition().getY() - element.getHeight() * getGraph().getScale() / 2) / getGraph().getScale()));
+                //map.setPosition(new IntPair((Point) getGraph().snap(point)));
+                element.setPosition((Point) getGraph().snap(point));
+            } else map.setPosition(30, 30);
 
             if (element instanceof PetriNetModelElement)
             {
+
                 // Name
-                if (map.getNamePosition() == null) map.setNamePosition((int) (element.getX() - 1), (int) (element.getY() + (element.getHeight())));
-                if (map.getName() == null) map.setName(element.getId().toString());
-                ((PetriNetModelElement) element).getNameModel().setPosition(map.getNamePosition().getX1(), map.getNamePosition().getX2());
-                ((PetriNetModelElement) element).setNameValue(map.getName());
+                if (map.getNamePosition() == null)
+                {
+                    ((PetriNetModelElement) element).getNameModel().setPosition((int) (element.getX() - 1), (int) (element.getY() + element.getHeight()));
+                } else
+                {
+                    ((PetriNetModelElement) element).getNameModel().setPosition(map.getNamePosition().getX1(), map.getNamePosition().getX2());
+                }
+                if (map.getName() == null)
+                {
+                    ((PetriNetModelElement) element).setNameValue(element.getId().toString());
+                } else
+                {
+                    ((PetriNetModelElement) element).setNameValue(map.getName());
+                }
 
                 // Grouping
                 GroupModel group = getGraph().groupName((PetriNetModelElement) element, ((PetriNetModelElement) element).getNameModel());
                 group.setUngroupable(false);
+
                 getGraph().getGraphLayoutCache().insertGroup(group, new Object[] { element, ((PetriNetModelElement) element).getNameModel() });
                 if (map.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || map.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE || map.getType() == PetriNetModelElement.SUBP_TYPE)
                 {
@@ -584,41 +600,38 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 
         toDelete = Utils.sortArcsFirst(toDelete);
         Object tempToDelete[] = new Object[1];
+        Vector allPorts = new Vector();
+        Vector allCells = new Vector();
         for (short i = 0; i < toDelete.length; i++)
         {
 
             if (toDelete[i] instanceof ArcModel)
             {
+                allPorts.add(toDelete[i]);
                 getModelProcessor().removeArc(((ArcModel) toDelete[i]).getId());
             } else if (toDelete[i] instanceof TriggerModel)
             {
                 TransitionModel owner = (TransitionModel) getModelProcessor().getElementContainer().getElementById(((TriggerModel) toDelete[i]).getOwnerId());
                 if (owner != null)
                 {
-                    if (owner.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
+                    if (owner.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE && owner.getToolSpecific().getTransResource() != null)
                     {
-                        if (owner.getToolSpecific().getTransResource() != null)
-                        {
-                            owner.getToolSpecific().removeTransResource();
-                        }
+                        owner.getToolSpecific().removeTransResource();
                     }
-                    // getGraph().getModel().remove(new Object[] {
-                    // owner.getToolSpecific().getTrigger() });
                     owner.getToolSpecific().removeTrigger();
                 }
+                allPorts.add(toDelete[i]);
             } else if (toDelete[i] instanceof TransitionResourceModel)
             {
                 TransitionModel owner = (TransitionModel) getModelProcessor().getElementContainer().getElementById(((TransitionResourceModel) toDelete[i]).getOwnerId());
-                if (owner != null)
-                    owner.getToolSpecific().removeTransResource();
+                if (owner != null) owner.getToolSpecific().removeTransResource();
+                allPorts.add(toDelete[i]);
             } else if (toDelete[i] instanceof NameModel)
             {
-                // toDelete[i] = new DefaultGraphCell();
+                allPorts.add(toDelete[i]);
             } else if (toDelete[i] instanceof GroupModel)
             {
-                // Deleteall Elements in the Group
-                // deleteCells(((GroupModel)
-                // toDelete[i]).getChildren().toArray(), withGraph);
+                allPorts.add(toDelete[i]);
             } else if (toDelete[i] instanceof AbstractElementModel)
             {
 
@@ -644,14 +657,18 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                         if (withGraph) getGraph().getModel().remove(tempToDelete);
                     }
                 }
-
+                allPorts.add(element.getPort());
+                allPorts.add(toDelete[i]);
                 getModelProcessor().getElementContainer().removeOnlyElement(element.getId());
 
             }
         }
-        if (withGraph) getGraph().getModel().remove(toDelete);
+        if (withGraph)
+        {
+            getGraph().getModel().remove(allPorts.toArray());
+            getGraph().getModel().remove(allCells.toArray());
+        }
         updateNet();
-        getGraph().repaint();
     }
 
     public void deleteCell(DefaultGraphCell cell)
@@ -1010,9 +1027,8 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                 List points = GraphConstants.getPoints(tempMap);
                 if (bounds != null)
                 {
-
-                    bounds = new Rectangle2D.Double(bounds.getX() + dx, bounds.getY() + dy, bounds.getWidth(), bounds.getHeight());
-                    GraphConstants.setBounds(newMap, bounds);
+                    bounds = new Rectangle((int) bounds.getX() + dx, (int)bounds.getY() + dy,(int) bounds.getWidth(), (int) bounds.getHeight());
+                    tempMap.applyValue(GraphConstants.BOUNDS, bounds);
                     // noGroupElement.changeAttributes(tempMap);
                 }
                 if (points != null)
@@ -1146,8 +1162,21 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
      */
     public void zoom(double factor, boolean absolute)
     {
+        /**
+         * scale = Math.max(Math.min(scale, 16), .01);
+         * 
+         * 
+         * if (graphpad.getCurrentGraph() .getScale() < 8) { // "Zero Length
+         * String passed to TextLayout constructor"
+         * graphpad.getCurrentDocument() . setScale(getGraph().getScale() * 2);
+         * if (getGraph().getSelectionCell() != null)
+         * getGraph().scrollCellToVisible(graphpad.getCurrentGraph().getSelectionCell()); }
+         * 
+         *  
+         */
         Rectangle2D oldVisRect = getGraph().fromScreen(m_scrollPane.getViewport().getViewRect());
         double scale;
+        // Check if absolute
         if (absolute)
         {
             scale = factor / 100;
@@ -1155,6 +1184,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         {
             scale = getGraph().getScale() + factor;
         }
+        // ste to max resp. min if out of range
         if (scale < MIN_SCALE)
         {
             scale = MIN_SCALE;
@@ -1163,12 +1193,16 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         {
             scale = MAX_SCALE;
         }
+        // set scale and move to center of old visible rect
+
         getGraph().setScale(scale);
         oldVisRect = getGraph().toScreen(oldVisRect);
-        Rectangle2D newVisRect = m_scrollPane.getViewport().getViewRect();
-        getGraph().scrollRectToVisible(
-                new Rectangle2D.Double(newVisRect.getX() + oldVisRect.getCenterX() - newVisRect.getCenterX(), newVisRect.getY() + oldVisRect.getCenterY() - newVisRect.getCenterY(), newVisRect
-                        .getWidth(), newVisRect.getHeight()).getBounds());
+        Rectangle2D visibleRect = m_scrollPane.getViewport().getViewRect();
+        Rectangle newVisRect = new Rectangle2D.Double(visibleRect.getX() + oldVisRect.getCenterX() - visibleRect.getCenterX(), visibleRect.getY() + oldVisRect.getCenterY() - visibleRect.getCenterY(),
+                visibleRect.getWidth(), visibleRect.getHeight()).getBounds();
+        getGraph().scrollRectToVisible(newVisRect);
+        if (m_statusbar != null) m_statusbar.updateStatus();
+
     }
 
     /* ########## LISTENER METHODS ########## */

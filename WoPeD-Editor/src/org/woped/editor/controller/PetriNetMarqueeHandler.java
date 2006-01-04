@@ -43,6 +43,7 @@ import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.petrinet.GroupModel;
+import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
@@ -114,8 +115,9 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
         else if (getEditor().isDrawingMode())
         {
             CreationMap map = CreationMap.createMap();
-            map.setPosition((int) l.getX() - 7, (int) l.getY() - 7);
-//            map.setEditOnCreation(true);
+            //map.setPosition((int) l.getX() - 7, (int) l.getY() - 7);
+            //            map.setEditOnCreation(false);
+            getEditor().setLastMousePosition(e.getPoint());
             if (getEditor().getCreateElementType() > 100 && getEditor().getCreateElementType() < 110)
             {
                 map.setType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
@@ -201,8 +203,6 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
                 {
                     DefaultPort source = (DefaultPort) firstPort.getCell();
                     CreationMap map = CreationMap.createMap();
-                    map.setPosition((int) getEditor().getLastMousePosition().getX() - 20, (int) getEditor().getLastMousePosition().getY() - 20);
- //                   map.setEditOnCreation(false);
                     if (source.getParent() instanceof TransitionModel)
                     {
                         map.setType(PetriNetModelElement.PLACE_TYPE);
@@ -256,7 +256,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
      */
     public void mouseMoved(MouseEvent e)
     {
-
+        //        System.out.println("moved");
         if (e != null && getEditor().isDrawingMode())
         {
             getEditor().getGraph().setCursor(Cursors.getElementCreationCursor(getEditor().getCreateElementType()));
@@ -264,16 +264,25 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
         } else
         {
             getEditor().getGraph().setCursor(Cursor.getDefaultCursor());
+            Object cell = getEditor().getGraph().getFirstCellForLocation(e.getX(), e.getY());
+            if (e != null)
+            {
+                if (getEditor().getGraph().getPortForLocation(e.getPoint().getX(), e.getPoint().getY()) != null && getEditor().getGraph().isPortsVisible())
+                {
+                    // Set Cusor on Graph (Automatically Reset)
+                    getEditor().getGraph().setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    // Consume Event
+                    e.consume();
+                } else if (cell instanceof GroupModel || cell instanceof AbstractElementModel || cell instanceof NameModel)
+                {
+                    // Set Cusor on Graph (Automatically Reset)
+                    getEditor().getGraph().setCursor(new Cursor(Cursor.MOVE_CURSOR));
+                    // Consume Event
+                    e.consume();
+                }
+            }
         }
 
-        // Check Mode and Find Port
-        if (e != null && getSourcePortAt(e.getPoint()) != null && !e.isConsumed() && getEditor().getGraph().isPortsVisible())
-        {
-            // Set Cusor on Graph (Automatically Reset)
-            getEditor().getGraph().setCursor(new Cursor(Cursor.HAND_CURSOR));
-            // Consume Event
-            e.consume();
-        } // Call Superclass
         super.mouseMoved(e);
     }
 

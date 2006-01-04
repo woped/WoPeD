@@ -83,10 +83,8 @@ public abstract class AbstractMarqueeHandler extends BasicMarqueeHandler
      */
     protected PortView getSourcePortAt(Point2D point)
     {
-        // Scale from Screen to Model
-        Point2D tmp = getEditor().getGraph().fromScreen(point);
         // Find a Port View in Model Coordinates and Remember
-        return getEditor().getGraph().getPortViewAt(tmp.getX(), tmp.getY());
+        return getEditor().getGraph().getPortViewAt(point.getX(), point.getY());
     }
 
     /**
