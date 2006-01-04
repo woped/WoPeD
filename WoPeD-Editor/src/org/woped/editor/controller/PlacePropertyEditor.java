@@ -396,6 +396,7 @@ public class PlacePropertyEditor extends JDialog
         // name changing handling
         place.setNameValue(getNameTextField().getText());
         place.setTokens(Integer.valueOf(markingTextField.getText()).intValue());
+        getEditor().setSaved(false);
     }
 
     /*
