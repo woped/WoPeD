@@ -107,9 +107,10 @@ public class ToolBarVC extends JToolBar implements IViewController
         addSeparator();
         addSeparator(new Dimension(12, 0));
         addSeparator();
-        add(getCutButton());
-        add(getCopyButton());
-        add(getPasteButton());
+        /* TODO: Disabled because of Visual Controller Problems */
+//        add(getCutButton());
+//        add(getCopyButton());
+//        add(getPasteButton());
         add(getUndoButton());
         add(getRedoButton());
         addSeparator();
@@ -117,28 +118,31 @@ public class ToolBarVC extends JToolBar implements IViewController
         addSeparator();
         add(getGroupButton());
         add(getUngroupButton());
-        addSeparator(new Dimension(5, 5));
+        addSeparator(new Dimension(12, 0));
         add(getZoomInButton());
         add(getZoomOutButton());
-        addSeparator(new Dimension(5, 5));
+        addSeparator();
+        addSeparator(new Dimension(12, 0));
         // TODO: add(controlledWindow.getZoomChooser());
         // ZoomChooser
         addSeparator();
         add(getPlaceButton());
         add(getTransitionButton());
-        addSeparator(new Dimension(5, 5));
+        addSeparator(new Dimension(5, 0));
         add(getAndSplitButton());
         add(getXorSplitButton());
-        addSeparator(new Dimension(5, 5));
+        addSeparator(new Dimension(5, 0));
         add(getAndJoinButton());
         add(getXorJoinButton());
 //        addSeparator(new Dimension(5, 5));  TEMPORARILY DISABLED TF
 //        add(getXorSplitJoinButton());       TEMPORARILY DISABLED TF
         // add(getOrSplitButton());
-        addSeparator(new Dimension(5, 5));
+        addSeparator(new Dimension(5, 0));
         add(getSubProcessButton());
         // TokenGameController
+        addSeparator();
         addSeparator(new Dimension(12, 0));
+        addSeparator();
         add(getTokenGameButton());
         add(getWoflanButton());
     }
