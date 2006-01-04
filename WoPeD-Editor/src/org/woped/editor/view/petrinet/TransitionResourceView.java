@@ -64,7 +64,7 @@ public class TransitionResourceView extends AbstractElementView
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
             }
 
-            g.setColor(Color.LIGHT_GRAY);
+            g.setColor(new Color(192,192,192));
             g.fillRect(0, TransitionResourceModel.DEFAULT_HEIGHT / 2, TransitionResourceModel.DEFAULT_WIDTH - 1, TransitionResourceModel.DEFAULT_HEIGHT / 2 - 1);
             g.setColor(Color.BLACK);
             g.drawRect(0, TransitionResourceModel.DEFAULT_HEIGHT / 2, TransitionResourceModel.DEFAULT_WIDTH - 1, TransitionResourceModel.DEFAULT_HEIGHT / 2 - 1);
