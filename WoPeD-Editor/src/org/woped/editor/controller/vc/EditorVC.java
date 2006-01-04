@@ -609,7 +609,8 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             } else if (toDelete[i] instanceof TransitionResourceModel)
             {
                 TransitionModel owner = (TransitionModel) getModelProcessor().getElementContainer().getElementById(((TransitionResourceModel) toDelete[i]).getOwnerId());
-                owner.getToolSpecific().removeTransResource();
+                if (owner != null)
+                    owner.getToolSpecific().removeTransResource();
             } else if (toDelete[i] instanceof NameModel)
             {
                 // toDelete[i] = new DefaultGraphCell();
