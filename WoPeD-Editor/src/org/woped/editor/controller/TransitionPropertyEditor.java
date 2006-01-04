@@ -21,7 +21,6 @@
  *
  */
 package org.woped.editor.controller;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -43,6 +42,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -157,7 +157,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         this.editor = editor;
         this.setVisible(false);
         initialize();
-        this.setSize(400, 420);
+        this.setSize(450, 420);
         this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
         this.setVisible(true);
     }
@@ -971,7 +971,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         if (numResourcesLabel == null)
         {
-            numResourcesLabel = new JLabel("Assigned resource objects: ");
+            numResourcesLabel = new JLabel(Messages.getString("Transition.Properties.AssignedResources")+ ": ");
         }
 
         return numResourcesLabel;
@@ -1155,16 +1155,29 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             buttonOk = new ToolBarButton(Messages.getImageIcon("Button.Ok"), Messages.getString("Button.Ok.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
 
             buttonOk.setMnemonic(KeyEvent.VK_O);
-            buttonOk.setPreferredSize(new Dimension(100, 25));
+            buttonOk.setPreferredSize(new Dimension(120, 25));
             buttonOk.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
                 {
-                    apply();
-                    TransitionPropertyEditor.this.dispose();
+                    String selectedRole = getRoleComboxBoxModel().getSelectedItem().toString();
+                    String selectedGroup = getGroupComboxBoxModel().getSelectedItem().toString();
+
+                    if (selectedRole.equals(ROLE_NONE) && selectedGroup.equals(GROUP_NONE)
+                        || !selectedRole.equals(ROLE_NONE) && !selectedGroup.equals(GROUP_NONE))
+                    {
+                        apply();
+                        TransitionPropertyEditor.this.dispose();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(getContentPanel(), 
+                                Messages.getString("TransitionEditor.Properties.ResourceError.Text"), 
+                                Messages.getString("TransitionEditor.Properties.ResourceError.Title"),
+                                JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             });
-
         }
 
         return buttonOk;
@@ -1176,7 +1189,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         {
             buttonCancel = new ToolBarButton(Messages.getImageIcon("Button.Cancel"), Messages.getString("Button.Cancel.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
             buttonCancel.setMnemonic(KeyEvent.VK_C);
-            buttonCancel.setPreferredSize(new Dimension(100, 25));
+            buttonCancel.setPreferredSize(new Dimension(120, 25));
             buttonCancel.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -1200,49 +1213,36 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
 
     private void apply()
     {
-        // Trigger Handling
         int selectedTriggerType = -1;
+        CreationMap map = transition.getCreationMap();
+        
+        // Check selected trigger type
         if (getTriggerNoneRadioButton().isSelected())
         {
             if (transition.hasTrigger())
             {
                 getEditor().deleteCell(transition.getToolSpecific().getTrigger(), true);
             }
-        } else if (getTriggerResourceRadioButton().isSelected())
+        } 
+        else if (getTriggerResourceRadioButton().isSelected())
         {
             selectedTriggerType = TriggerModel.TRIGGER_RESOURCE;
-        } else if (getTriggerTimeRadioButton().isSelected())
+        } 
+        else if (getTriggerTimeRadioButton().isSelected())
         {
             selectedTriggerType = TriggerModel.TRIGGER_TIME;
-        } else if (getTriggerMessageRadioButton().isSelected())
+        } 
+        else if (getTriggerMessageRadioButton().isSelected())
         {
             selectedTriggerType = TriggerModel.TRIGGER_EXTERNAL;
         }
-        // Rescource Handling
-        if (selectedTriggerType == TriggerModel.TRIGGER_RESOURCE)
+        
+        if (transition.hasResource())
         {
-            String selectedRole = getRoleComboxBoxModel().getSelectedItem().toString();
-            String selectedGroup = getGroupComboxBoxModel().getSelectedItem().toString();
-            if (!selectedRole.equals(TRIGGER_NONE) && !selectedGroup.equals(TRIGGER_NONE))
-            {
-                CreationMap map = transition.getCreationMap();
-                map.setResourceOrgUnit(selectedGroup);
-                map.setResourceRole(selectedRole);
-                if (transition.hasResource())
-                {
-                    map.setResourcePosition(new IntPair(transition.getToolSpecific().getTransResource().getPosition()));
-                }
-                getEditor().createTransitionResource(map);
-            } else
-            {
-                getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
-            }
-        } else
-        {
-            getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
+           getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
         }
-        // trigger Handling
-        CreationMap map = transition.getCreationMap();
+        
+        // Trigger Handling
         map.setTriggerType(selectedTriggerType);
         if (transition.hasTrigger())
         {
@@ -1253,13 +1253,37 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
                 map.setTriggerPosition(p.x, p.y);
                 getEditor().createTrigger(map);
             }
-
-        } else if (selectedTriggerType != -1)
+        } 
+        else if (selectedTriggerType != -1)
         {
             getEditor().createTrigger(map);
         }
-        // name changing handling
+        
+        // Rescource Handling
+        if (selectedTriggerType == TriggerModel.TRIGGER_RESOURCE)
+        {
+            String selectedRole = getRoleComboxBoxModel().getSelectedItem().toString();
+            String selectedGroup = getGroupComboxBoxModel().getSelectedItem().toString();
+
+            if (!selectedRole.equals(ROLE_NONE) && !selectedGroup.equals(GROUP_NONE))
+            {
+                map.setResourceOrgUnit(selectedGroup);
+                map.setResourceRole(selectedRole);
+                if (transition.hasResource())
+                    map.setResourcePosition(new IntPair(transition.getToolSpecific().getTransResource().getPosition()));
+                getEditor().createTransitionResource(map);
+            } 
+            else
+            {
+                getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
+            }
+        } 
+
+        // Name changing handling
         transition.setNameValue(getNameTextField().getText());
+        
+        // Set change flag
+        getEditor().setSaved(false);
     }
 
     /*
@@ -1275,7 +1299,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             getResourceGroupComboBox().setEnabled(false);
             getNumResourcesLabel().setEnabled(false);
             getNumResourcesTextField().setEnabled(false);
-        } else if (e.getActionCommand().equals(TRIGGER_RESOURCE))
+        } 
+        else if (e.getActionCommand().equals(TRIGGER_RESOURCE))
         {
             getResourceRoleComboBox().setEnabled(true);
             getResourceGroupComboBox().setEnabled(true);

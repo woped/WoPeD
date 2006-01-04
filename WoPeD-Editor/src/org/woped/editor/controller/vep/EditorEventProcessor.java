@@ -148,7 +148,6 @@ public class EditorEventProcessor extends AbstractEventProcessor
                 editor.getGraph().groupSelection();
                 break;
             case AbstractViewEvent.OPEN_PROPERTIES:
-
                 cell = editor.getGraph().getSelectionCell();
                 AbstractElementModel element = null;
                 if (cell instanceof GroupModel)
@@ -177,24 +176,29 @@ public class EditorEventProcessor extends AbstractEventProcessor
                 editor.removeSelectedPoint();
                 break;
             case AbstractViewEvent.ADD_EXT_TRIGGER:
+                cell = editor.getGraph().getSelectionCell();
+                removeResources(editor, cell);
                 editor.createTrigger(getCreateTriggerMap(editor.getGraph().getSelectionCell(), TriggerModel.TRIGGER_EXTERNAL));
                 break;
             case AbstractViewEvent.ADD_RES_TRIGGER:
                 editor.createTrigger(getCreateTriggerMap(editor.getGraph().getSelectionCell(), TriggerModel.TRIGGER_RESOURCE));
                 break;
             case AbstractViewEvent.ADD_TIME_TRIGGER:
+                cell = editor.getGraph().getSelectionCell();
+                removeResources(editor, cell);
                 editor.createTrigger(getCreateTriggerMap(editor.getGraph().getSelectionCell(), TriggerModel.TRIGGER_TIME));
                 break;
             case AbstractViewEvent.REMOVE_TRIGGER:
                 cell = editor.getGraph().getSelectionCell();
+                removeResources(editor, cell);
                 if (cell instanceof GroupModel)
                 {
-                    cell = ((GroupModel) cell).getMainElement();
+                    cell = ((GroupModel)cell).getMainElement();
                 }
                 if (cell instanceof TransitionModel)
                 {
-                    editor.deleteCell(((TransitionModel) cell).getToolSpecific().getTrigger(), true);
-                }
+                    editor.deleteCell(((TransitionModel)cell).getToolSpecific().getTrigger(), true);
+                 }
                 break;
             case AbstractViewEvent.ADD_SUBPROCESS:
                 editor.createElement(AbstractPetriNetModelElement.SUBP_TYPE, -1, editor.getLastMousePosition(), false);
@@ -250,6 +254,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
                         ((PlaceModel) cell).addToken();
                     }
                     editor.updateNet();
+                    editor.setSaved(false);
                 }
                 break;
             case AbstractViewEvent.REMOVE_TOKEN:
@@ -264,6 +269,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
                         ((PlaceModel) cell).removeToken();
                     }
                     editor.updateNet();
+                    editor.setSaved(false);
                 }
                 break;
             case AbstractViewEvent.ZOOM_IN:
@@ -290,6 +296,22 @@ public class EditorEventProcessor extends AbstractEventProcessor
         }
     }
 
+    private void removeResources(EditorVC editor, Object cell)
+    {
+        if (cell instanceof GroupModel)
+        {
+            cell = ((GroupModel)cell).getMainElement();
+        }
+        if (cell instanceof TransitionModel)
+        {
+            TransitionModel trans = (TransitionModel)cell;
+            if (trans.hasResource())
+            {
+                editor.deleteCell(trans.getToolSpecific().getTransResource(), true);
+            }
+        }
+    }
+
     private CreationMap getCreateTriggerMap(Object cell, int triggertype)
     {
         if (cell != null)
@@ -310,5 +332,5 @@ public class EditorEventProcessor extends AbstractEventProcessor
             return map;
         }
         return null;
-    }
+    }    
 }
