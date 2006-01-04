@@ -735,7 +735,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         DefaultGraphCell cell = (DefaultGraphCell) getGraph().getNextCellForLocation(null, getLastMousePosition().getX(), getLastMousePosition().getY());
         if (cell instanceof ArcModel)
         {
-            addPointToArc((ArcModel) cell, getLastMousePosition());
+            addPointToArc((ArcModel) cell, getGraph().fromScreen(getLastMousePosition()));
         }
     }
 
