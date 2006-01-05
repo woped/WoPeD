@@ -39,6 +39,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -56,7 +57,6 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.gui.ToolBarButton;
 import org.woped.editor.utilities.Messages;
 
 /**
@@ -146,9 +146,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
 
     // Buttons
     private JPanel                buttonPanel                   = null;
-    private ToolBarButton         buttonOk                      = null;
-    private ToolBarButton         buttonCancel                  = null;
-    private ToolBarButton         buttonApply                   = null;
+    private JButton               buttonOk                      = null;
+    private JButton               buttonCancel                  = null;
+    private JButton               buttonApply                   = null;
 
     public TransitionPropertyEditor(Frame owner, TransitionModel transition, EditorVC editor)
     {
@@ -1148,11 +1148,13 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         return buttonPanel;
     }
 
-    private ToolBarButton getButtonOk()
+    private JButton getButtonOk()
     {
         if (buttonOk == null)
         {
-            buttonOk = new ToolBarButton(Messages.getImageIcon("Button.Ok"), Messages.getString("Button.Ok.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
+            buttonOk = new JButton();
+            buttonOk.setIcon(Messages.getImageIcon("Button.Ok"));
+            buttonOk.setText(Messages.getString("Button.Ok.Title"));
 
             buttonOk.setMnemonic(KeyEvent.VK_O);
             buttonOk.setPreferredSize(new Dimension(120, 25));
@@ -1183,11 +1185,14 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         return buttonOk;
     }
 
-    private ToolBarButton getButtonCancel()
+    private JButton getButtonCancel()
     {
         if (buttonCancel == null)
         {
-            buttonCancel = new ToolBarButton(Messages.getImageIcon("Button.Cancel"), Messages.getString("Button.Cancel.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
+            buttonCancel = new JButton();
+            buttonCancel.setText(Messages.getString("Button.Cancel.Title"));
+            buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
+ 
             buttonCancel.setMnemonic(KeyEvent.VK_C);
             buttonCancel.setPreferredSize(new Dimension(120, 25));
             buttonCancel.addActionListener(new ActionListener()
