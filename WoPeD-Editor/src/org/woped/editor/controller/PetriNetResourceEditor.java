@@ -36,6 +36,7 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -55,7 +56,6 @@ import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.gui.ToolBarButton;
 import org.woped.editor.utilities.Messages;
 
 /**
@@ -78,9 +78,9 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private JScrollPane            resourceClassGroupsScrollPane     = null;
 
     private JPanel                 resourceClassButtonPanel          = null;
-    private ToolBarButton          resourceClassRemoveButton         = null;
-    private ToolBarButton          resourceClassNewButton            = null;
-    private ToolBarButton          resourceClassOkButton             = null;
+    private JButton                resourceClassRemoveButton         = null;
+    private JButton                resourceClassNewButton            = null;
+    private JButton                resourceClassOkButton             = null;
 
     private JPanel                 resourceClassEditLabelPanel       = null;
     private JLabel                 resourceClassNameLabel            = null;
@@ -110,16 +110,16 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private JTextField             resourceEditNameTextField         = null;
     private JTextField             resourceEditDescriptionTextField  = null;
     private JPanel                 resourceButtonPanel               = null;
-    private ToolBarButton          resourceNewButton                 = null;
-    private ToolBarButton          resourceRemoveButton              = null;
+    private JButton                resourceNewButton                 = null;
+    private JButton                resourceRemoveButton              = null;
     private JPanel                 resourceAssignPanel               = null;
     private JList                  resourceAssignedList              = null;
     private JList                  resourceUnAssignedList            = null;
     private JLabel                 resourceAssignedLabel             = null;
     private JLabel                 resourceUnAssignedLabel           = null;
-    private ToolBarButton          resourceAssignToButton            = null;
-    private ToolBarButton          resourceUnAssignButton            = null;
-    private ToolBarButton          resourceOkButton                  = null;
+    private JButton                resourceAssignToButton            = null;
+    private JButton                resourceUnAssignButton            = null;
+    private JButton                resourceOkButton                  = null;
     private ResourceModel          currentResource                   = null;
     private DefaultListModel       resourceListModel                 = null;
     private String                 currentUnAssignedResourceClass    = null;
@@ -433,12 +433,13 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceClassButtonPanel;
     }
 
-    private ToolBarButton getResourceClassNewButton()
+    private JButton getResourceClassNewButton()
     {
         if (resourceClassNewButton == null)
         {
-            resourceClassNewButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.New"), Messages.getString("PetriNet.Resources.New.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
-
+            resourceClassNewButton = new JButton();
+            resourceClassNewButton.setIcon(Messages.getImageIcon("PetriNet.Resources.New"));
+            resourceClassNewButton.setText(Messages.getString("PetriNet.Resources.New.Title"));
             resourceClassNewButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -451,12 +452,14 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceClassNewButton;
     }
 
-    private ToolBarButton getResourceClassOkButton()
+    private JButton getResourceClassOkButton()
     {
         if (resourceClassOkButton == null)
         {
-            resourceClassOkButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.Ok"), Messages.getString("PetriNet.Resources.Ok.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
-
+            resourceClassOkButton = new JButton();
+            resourceClassOkButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Ok"));
+            resourceClassOkButton.setText(Messages.getString("PetriNet.Resources.Ok.Title"));
+ 
             resourceClassOkButton.setEnabled(false);
             resourceClassOkButton.addActionListener(new ActionListener()
             {
@@ -470,13 +473,14 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceClassOkButton;
     }
 
-    private ToolBarButton getResourceClassRemoveButton()
+    private JButton getResourceClassRemoveButton()
     {
         if (resourceClassRemoveButton == null)
         {
-            resourceClassRemoveButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.Delete"), Messages.getString("PetriNet.Resources.Delete.Title"),
-                    ToolBarButton.TEXTORIENTATION_RIGHT);
-
+            resourceClassRemoveButton = new JButton();
+            resourceClassRemoveButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
+            resourceClassRemoveButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
+            
             resourceClassRemoveButton.setEnabled(false);
             resourceClassRemoveButton.addActionListener(new ActionListener()
             {
@@ -658,12 +662,12 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         resourceClassNewButton.setEnabled(false);
         getRoleList().setEnabled(false);
         getGroupList().setEnabled(false);
-        resetEditing();
         getResourceClassNameTextField().requestFocus();
     }
 
     private void editResourceClass()
     {
+        resetEditing();
         getResourceClassOkButton().setEnabled(true);
         getResourceClassTypeJComboBox().setEnabled(true);
         getResourceClassNameTextField().setEditable(true);
@@ -683,11 +687,13 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
 
         for (Iterator iter = getPetrinet().getOrganizationUnits().iterator(); !nameExists & iter.hasNext();)
         {
-            if (iter.next().toString().equals(str)) nameExists = true;
+            if (iter.next().toString().equals(str)) 
+                nameExists = true;
         }
         for (Iterator iter = getPetrinet().getRoles().iterator(); !nameExists & iter.hasNext();)
         {
-            if (iter.next().toString().equals(str)) nameExists = true;
+            if (iter.next().toString().equals(str)) 
+                nameExists = true;
         }
 
         if (nameExists)
@@ -701,79 +707,113 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     }
 
     private void addResourceClass()
-    {
+    {        
+        // No existing class to be changed - add new
         if (roleList.isSelectionEmpty() && groupList.isSelectionEmpty())
         {
-            if (checkClassSyntax(getResourceClassNameTextField().getText()))
-            {
+           String newName = getResourceClassNameTextField().getText();
+           if (checkClassSyntax(newName))
+           {
+                // add new role
                 if (resourceClassTypeJComboBox.getSelectedItem() == COMBOBOX_ROLE_TEXT)
                 {
-                    ResourceClassModel newRole = new ResourceClassModel(getResourceClassNameTextField().getText(), 0);
+                    ResourceClassModel newRole = new ResourceClassModel(newName, ResourceClassModel.TYPE_ROLE);
                     getPetrinet().addRole(newRole);
-                    roleListModel.addElement((ResourceClassModel) newRole);
+                    roleListModel.addElement(newRole);
                 } 
+                // add new group
                 else
                 {
-                    ResourceClassModel newGroup = new ResourceClassModel(getResourceClassNameTextField().getText(), 1);
+                    ResourceClassModel newGroup = new ResourceClassModel(newName, ResourceClassModel.TYPE_ORGUNIT);
                     getPetrinet().addOrgUnit(newGroup);
-                    groupListModel.addElement((ResourceClassModel) newGroup);
-                }               
+                    groupListModel.addElement(newGroup);         
+                }
             }
-        } 
-        else
-        {
-            if (roleList.isSelectionEmpty())
-            {
-                String oldName = getGroupList().getSelectedValue().toString();
-                String newName = getResourceClassNameTextField().getText();
-                ResourceClassModel groupModel = (ResourceClassModel) getPetrinet().getOrganizationUnits().get(getPetrinet().containsOrgunit(oldName));
+        }
 
-                // name changed
-                if (!oldName.equals(newName))
+        // Role to be changed - edit
+        if (!roleList.isSelectionEmpty())
+        {
+            String newName = getResourceClassNameTextField().getText();
+            String oldName = getRoleList().getSelectedValue().toString();            
+ 
+            if (!oldName.equals(newName) && !checkClassSyntax(newName))
+               return;
+
+            // change role into group 
+            if (resourceClassTypeJComboBox.getSelectedItem() == COMBOBOX_GROUP_TEXT)
+            {
+                if (!roleIsUsed(oldName))
                 {
-                    groupModel.setName(newName);
-                    getPetrinet().replaceResourceClassMapping(oldName, newName);
-                    int index = getGroupList().getSelectedIndex();
-                    groupListModel.set(index, groupModel);
-                    replaceGroupInModel(oldName, newName);
+                    ResourceClassModel roleModel = (ResourceClassModel) getPetrinet().getRoles().get(getPetrinet().containsRole(oldName));
+                    getPetrinet().getRoles().remove(roleModel);
+                    roleListModel.remove(getRoleList().getSelectedIndex());
+                    
+                    ResourceClassModel groupModel = new ResourceClassModel(newName, ResourceClassModel.TYPE_ORGUNIT);
+                    getPetrinet().getOrganizationUnits().add(groupModel);
+                    groupListModel.addElement(groupModel);
                 }
-                
-                // name unchanged
-                if (resourceClassTypeJComboBox.getSelectedItem() == COMBOBOX_ROLE_TEXT)
+                else
                 {
-                    groupModel.setType(ResourceClassModel.TYPE_ROLE);
-                    getPetrinet().getOrganizationUnits().remove(groupModel);
-                    getPetrinet().getRoles().add(groupModel);
-                    roleListModel.addElement((ResourceClassModel) groupModel);
-                    int index4 = getGroupList().getSelectedIndex();
-                    groupListModel.remove(index4);
+                    JOptionPane.showMessageDialog(this, 
+                            Messages.getString("ResourceEditor.Error.UnmovableResourceClass.Text"), 
+                            Messages.getString("ResourceEditor.Error.UnmovableResourceClass.Title"),
+                            JOptionPane.ERROR_MESSAGE);
                 }
-            } 
+            }
             else
             {
-                String oldName = getRoleList().getSelectedValue().toString();
-                String newName = getResourceClassNameTextField().getText();
-                ResourceClassModel roleModel = (ResourceClassModel) getPetrinet().getRoles().get(getPetrinet().containsRole(oldName));
-
-                // name changed
+                // change name of role
                 if (!oldName.equals(newName))
                 {
+                    ResourceClassModel roleModel = (ResourceClassModel) getPetrinet().getRoles().get(getPetrinet().containsRole(oldName));
                     roleModel.setName(newName);
-                    getPetrinet().replaceResourceClassMapping(oldName, newName);
-                    int index3 = getRoleList().getSelectedIndex();
-                    roleListModel.set(index3, roleModel);
-                    replaceRoleInModel(oldName, newName);
+                    roleListModel.set(getRoleList().getSelectedIndex(), roleModel);
+                    updateRolesInPetrinet(oldName, newName);
                 }
-                // name unchanged
-                if (resourceClassTypeJComboBox.getSelectedItem() == COMBOBOX_GROUP_TEXT)
+            }
+        }
+        
+        // Role to be changed - edit
+        if (!groupList.isSelectionEmpty())
+        {
+            String newName = getResourceClassNameTextField().getText();
+            String oldName = getGroupList().getSelectedValue().toString();
+
+            if (!oldName.equals(newName) && !checkClassSyntax(newName))
+                return;
+
+            // change group into role 
+            if (resourceClassTypeJComboBox.getSelectedItem() == COMBOBOX_ROLE_TEXT)
+            {
+                if (!groupIsUsed(oldName))
                 {
-                    roleModel.setType(ResourceClassModel.TYPE_ORGUNIT);
-                    getPetrinet().getRoles().remove(roleModel);
-                    getPetrinet().getOrganizationUnits().add(roleModel);
-                    groupListModel.addElement((ResourceClassModel) roleModel);
-                    int index2 = getRoleList().getSelectedIndex();
-                    roleListModel.remove(index2);
+                    ResourceClassModel groupModel = (ResourceClassModel) getPetrinet().getOrganizationUnits().get(getPetrinet().containsOrgunit(oldName));
+                    getPetrinet().getOrganizationUnits().remove(groupModel);
+                    groupListModel.remove(getGroupList().getSelectedIndex());
+                                       
+                    ResourceClassModel roleModel = new ResourceClassModel(newName, ResourceClassModel.TYPE_ROLE);
+                    getPetrinet().getRoles().add(roleModel);
+                    roleListModel.addElement(roleModel);
                 }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, 
+                        Messages.getString("ResourceEditor.Error.UnmovableResourceClass.Text"), 
+                        Messages.getString("ResourceEditor.Error.UnmovableResourceClass.Title"),
+                        JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else
+            {
+                // change name of group
+                if (!oldName.equals(newName))
+                {
+                    ResourceClassModel groupModel = (ResourceClassModel) getPetrinet().getOrganizationUnits().get(getPetrinet().containsOrgunit(oldName));
+                    groupModel.setName(newName);
+                    groupListModel.set(getGroupList().getSelectedIndex(), groupModel);
+                    updateGroupsInPetrinet(oldName, newName);
+                } 
             }
         }
         
@@ -781,7 +821,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getEditor().setSaved(false);
     }
 
-    private void replaceGroupInModel(String oldName, String newName)
+    private void updateGroupsInPetrinet(String oldName, String newName)
     {
         HashMap alltrans = new HashMap();
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
@@ -797,10 +837,12 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             {
                 transition.getToolSpecific().getTransResource().setTransOrgUnitName(newName);
             }
-        }        
+        }   
+        
+        getPetrinet().replaceResourceClassMapping(oldName, newName);
     }
 
-    private void replaceRoleInModel(String oldName, String newName)
+    private void updateRolesInPetrinet(String oldName, String newName)
     {
         HashMap alltrans = new HashMap();
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
@@ -816,7 +858,9 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             {
                 transition.getToolSpecific().getTransResource().setTransRoleName(newName);
             }
-        }                
+        }    
+        
+        getPetrinet().replaceResourceClassMapping(oldName, newName);
     }
 
     // Check if group is used by any transition
@@ -961,7 +1005,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getResourceClassNewButton().setEnabled(true);
         getResourceClassOkButton().setEnabled(false);
         getResourceClassNewButton().requestFocus();
-    }
+     }
 
     /* Resources ------------------------------------------------------------- */
     private JPanel getResourcePanel()
@@ -1102,9 +1146,9 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     if (!e.getValueIsAdjusting() && resourceList.getSelectedIndex() > -1)
                     {
                         getResourceRemoveButton().setEnabled(true);
+                        String str = resourceList.getModel().getElementAt(resourceList.getSelectedIndex()).toString();
                         editResource();
-                        getResourceEditNameTextField().setText(resourceList.getModel().getElementAt(resourceList.getSelectedIndex()).toString());
-                        showResourceAssignments();
+                        getResourceEditNameTextField().setText(str);
                     }
                 }
             });
@@ -1328,11 +1372,14 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceEditDescriptionTextField;
     }
 
-    private ToolBarButton getResourceNewButton()
+    private JButton getResourceNewButton()
     {
         if (resourceNewButton == null)
         {
-            resourceNewButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.New"), Messages.getString("PetriNet.Resources.New.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
+            resourceNewButton = new JButton();
+            resourceNewButton.setIcon(Messages.getImageIcon("PetriNet.Resources.New"));
+            resourceNewButton.setText(Messages.getString("PetriNet.Resources.New.Title"));
+            
             resourceNewButton.setEnabled(true);
             resourceNewButton.addActionListener(new ActionListener()
             {
@@ -1346,13 +1393,15 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceNewButton;
     }
 
-    private ToolBarButton getResourceOkButton()
+    private JButton getResourceOkButton()
     {
         if (resourceOkButton == null)
         {
-            resourceOkButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.Ok"), Messages.getString("PetriNet.Resources.Ok.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
+            resourceOkButton = new JButton();
+            resourceOkButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Ok"));
+            resourceOkButton.setText(Messages.getString("PetriNet.Resources.Ok.Title"));
             resourceOkButton.setEnabled(false);
-            resourceOkButton.addActionListener(new ActionListener()
+             resourceOkButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
                 {
@@ -1365,11 +1414,13 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceOkButton;
     }
 
-    private ToolBarButton getResourceRemoveButton()
+    private JButton getResourceRemoveButton()
     {
         if (resourceRemoveButton == null)
         {
-            resourceRemoveButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.Delete"), Messages.getString("PetriNet.Resources.Delete.Title"), ToolBarButton.TEXTORIENTATION_RIGHT);
+            resourceRemoveButton = new JButton();
+            resourceRemoveButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
+            resourceRemoveButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
 
             resourceRemoveButton.setEnabled(false);
             resourceRemoveButton.addActionListener(new ActionListener()
@@ -1578,8 +1629,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                             index = getPetrinet().containsOrgunit(tempResourceClassName);
                             currentAssignedResourceClass = getPetrinet().getOrganizationUnits().get(index).toString();
                         }
-                        // currentAssignedResourceClass = (ResourceClassModel)
-                        // resourceAssignedList.getModel().getElementAt(resourceAssignedList.getSelectedIndex());
+ 
                         getResourceUnAssignedList().clearSelection();
                     }
 
@@ -1614,11 +1664,13 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceUnAssignedList;
     }
 
-    private ToolBarButton getResourceAssignToButton()
+    private JButton getResourceAssignToButton()
     {
         if (resourceAssignToButton == null)
         {
-            resourceAssignToButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.Assign"), Messages.getString("PetriNet.Resources.Assign.Title"), ToolBarButton.TEXTORIENTATION_LEFT);
+            resourceAssignToButton = new JButton();
+            resourceAssignToButton.setText(Messages.getString("PetriNet.Resources.Assign.Title"));
+            resourceAssignToButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Assign"));
             resourceAssignToButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -1641,12 +1693,13 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceAssignToButton;
     }
 
-    private ToolBarButton getResourceUnAssignButton()
+    private JButton getResourceUnAssignButton()
     {
         if (resourceUnAssignButton == null)
         {
-            resourceUnAssignButton = new ToolBarButton(Messages.getImageIcon("PetriNet.Resources.Unassign"), Messages.getString("PetriNet.Resources.Unassign.Title"),
-                    ToolBarButton.TEXTORIENTATION_RIGHT);
+            resourceUnAssignButton = new JButton();
+            resourceUnAssignButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Unassign"));
+            resourceUnAssignButton.setText(Messages.getString("PetriNet.Resources.Unassign.Title"));
             resourceUnAssignButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
