@@ -365,7 +365,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                         resourceClassTypeJComboBox.setSelectedItem(COMBOBOX_ROLE_TEXT);
                     }
                     getGroupList().clearSelection();
-                    getResourceList().clearSelection();
+//                    getResourceList().clearSelection();
                 }
             });
         }
@@ -398,7 +398,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                         resourceClassTypeJComboBox.setSelectedItem(COMBOBOX_GROUP_TEXT);
                     }
                     getRoleList().clearSelection();
-                    getResourceList().clearSelection();
+ //                   getResourceList().clearSelection();
                 }
             });
         }
@@ -1146,9 +1146,8 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
                     if (!e.getValueIsAdjusting() && resourceList.getSelectedIndex() > -1)
                     {
                         getResourceRemoveButton().setEnabled(true);
-                        String str = resourceList.getModel().getElementAt(resourceList.getSelectedIndex()).toString();
                         editResource();
-                        getResourceEditNameTextField().setText(str);
+                        getResourceEditNameTextField().setText(resourceList.getModel().getElementAt(resourceList.getSelectedIndex()).toString());
                     }
                 }
             });
@@ -1554,8 +1553,6 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
 
     private void resetEditing()
     {
-        getResourceList().setEnabled(true);
-        getResourceList().clearSelection();
         getResourceEditNameTextField().setEditable(false);
         getResourceEditNameTextField().setText("");
         getResourceRemoveButton().setEnabled(false);
@@ -1563,6 +1560,8 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         getResourceNewButton().setEnabled(true);
         getResourceOkButton().setEnabled(false);
         getResourceNewButton().requestFocus();
+        getResourceList().setEnabled(true);
+        getResourceList().clearSelection();
     }
 
     private JLabel getResourceUnAssignedLabel()
