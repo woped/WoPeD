@@ -63,7 +63,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             break;
         case AbstractViewEvent.OPEN_SAMPLE:
             currentEditor = openFile((File) event.getData(), FileFilterImpl.SAMPLEFilter);
-            ((TaskBarVC) getMediator().getViewController(TaskBarVC.ID_PREFIX)).addEditor(currentEditor);
+//            ((TaskBarVC) getMediator().getViewController(TaskBarVC.ID_PREFIX)).addEditor(currentEditor);
 
             editorIter = getMediator().getEditorAwareVCs().iterator();
             while (editorIter.hasNext())
