@@ -102,6 +102,7 @@ import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDJGraph;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.gui.IEditorProperties;
+import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.simulation.TokenGameController;
 import org.woped.editor.utilities.ImageSelection;
 import org.woped.editor.view.ViewFactory;
@@ -119,40 +120,40 @@ import org.woped.editor.view.ViewFactory;
 public class EditorVC extends JPanel implements KeyListener, GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor
 {
 
-    private String                 id                      = null;
-    public static final String     ID_PREFIX               = "EDITOR_VC_";
-    private JComponent             container               = null;
-    private static ViewFactory     viewFactory             = new ViewFactory();
+    private String                  id                      = null;
+    public static final String      ID_PREFIX               = "EDITOR_VC_";
+    private JComponent              container               = null;
+    public static final ViewFactory viewFactory             = new ViewFactory();
     // GRAPHICAL Components
-    private WoPeDJGraph            m_graph                 = null;
-    private JScrollPane            m_scrollPane            = null;
+    private WoPeDJGraph             m_graph                 = null;
+    private JScrollPane             m_scrollPane            = null;
 
     // Petrinet
     // private PetriNetModelProcessor m_itsPetriNet = null;
-    private AbstractModelProcessor modelProcessor          = null;
-    private String                 m_filePath              = null;
-    private int                    m_defaultFileType       = -1;
+    private AbstractModelProcessor  modelProcessor          = null;
+    private String                  m_filePath              = null;
+    private int                     m_defaultFileType       = -1;
     // TokenGame
-    private TokenGameController    m_tokenGameController   = null;
+    private TokenGameController     m_tokenGameController   = null;
     // zoom
-    public static final double     MIN_SCALE               = 0.2;
-    public static final double     MAX_SCALE               = 5;
+    public static final double      MIN_SCALE               = 0.2;
+    public static final double      MAX_SCALE               = 5;
     // not nedded private boolean m_keyPressed = false;
-    private int                    m_createElementType     = -1;
-    private boolean                m_saved                 = true;
-    private Dimension              m_savedSize             = null;
-    private Point                  m_savedLocation         = null;
+    private int                     m_createElementType     = -1;
+    private boolean                 m_saved                 = true;
+    private Dimension               m_savedSize             = null;
+    private Point                   m_savedLocation         = null;
     // not needed private double m_zoomScale = 1;
-    private boolean                m_drawingMode           = false;
-    private boolean                m_tokenGameMode         = false;
-    private Point2D                m_lastMousePosition     = null;
-    private PropertyChangeSupport  m_propertyChangeSupport = null;
-    private EditorClipboard        m_clipboard             = null;
-    private boolean                smartEditActive         = true;
-    private IEditorProperties      elementProperties       = null;
+    private boolean                 m_drawingMode           = false;
+    private boolean                 m_tokenGameMode         = false;
+    private Point2D                 m_lastMousePosition     = null;
+    private PropertyChangeSupport   m_propertyChangeSupport = null;
+    private EditorClipboard         m_clipboard             = null;
+    private boolean                 smartEditActive         = true;
+    private IEditorProperties       elementProperties       = null;
     // ViewControll
-    private Vector                 viewListener            = new Vector(1, 3);
-    private EditorStatusBarVC      m_statusbar;
+    private Vector                  viewListener            = new Vector(1, 3);
+    private EditorStatusBarVC       m_statusbar;
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -197,7 +198,10 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             tree.setRootVisible(false);
             m_scrollPane = new JScrollPane(getGraph());
             JScrollPane sTree = new JScrollPane(tree);
-            JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, sTree, m_scrollPane);
+            OverviewPanel overview = new OverviewPanel(this);
+            JScrollPane sOverview = new JScrollPane(overview);
+            JSplitPane splitLeft = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overview, sTree);
+            JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, splitLeft, m_scrollPane);
             split.setDividerLocation(100);
             add(split);
         }
@@ -1027,7 +1031,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                 List points = GraphConstants.getPoints(tempMap);
                 if (bounds != null)
                 {
-                    bounds = new Rectangle((int) bounds.getX() + dx, (int)bounds.getY() + dy,(int) bounds.getWidth(), (int) bounds.getHeight());
+                    bounds = new Rectangle((int) bounds.getX() + dx, (int) bounds.getY() + dy, (int) bounds.getWidth(), (int) bounds.getHeight());
                     tempMap.applyValue(GraphConstants.BOUNDS, bounds);
                     // noGroupElement.changeAttributes(tempMap);
                 }
@@ -1671,5 +1675,10 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public void registerStatusBar(EditorStatusBarVC statusBar)
     {
         m_statusbar = statusBar;
+    }
+
+    public JScrollPane getScrollPane()
+    {
+        return m_scrollPane;
     }
 }
