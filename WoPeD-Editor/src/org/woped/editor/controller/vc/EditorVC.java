@@ -26,6 +26,9 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -46,6 +49,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -160,7 +164,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
      * 
      * @param clipboard
      */
-    public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, boolean undoSupport)
+public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, boolean undoSupport)
     {
         // initialize
         this.setLayout(new BorderLayout());
@@ -193,14 +197,24 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         } else
         { // Furute Feature with treeview
             GraphTreeModel gtModel = new GraphTreeModel(getGraph().getModel());
+            m_scrollPane = new JScrollPane(getGraph());
+            // Element Tree
             JTree tree = new JTree(gtModel);
             getGraph().getModel().addGraphModelListener(gtModel);
             tree.setRootVisible(false);
-            m_scrollPane = new JScrollPane(getGraph());
             JScrollPane sTree = new JScrollPane(tree);
+            JPanel treePanel = new JPanel(new GridBagLayout());
+            treePanel.add(new JLabel("Elemente:"), new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
+            treePanel.add(sTree, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
+            // Overview Panel
             OverviewPanel overview = new OverviewPanel(this);
             JScrollPane sOverview = new JScrollPane(overview);
-            JSplitPane splitLeft = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overview, sTree);
+            JPanel overviewPanel  = new JPanel(new GridBagLayout());
+            overviewPanel.add(new JLabel("Überblick:"), new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
+            overviewPanel.add(sOverview, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
+            // Splits
+            JSplitPane splitLeft = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overviewPanel, treePanel);
+            splitLeft.setDividerLocation(100);
             JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, splitLeft, m_scrollPane);
             split.setDividerLocation(100);
             add(split);
@@ -210,7 +224,6 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             this.m_tokenGameController = new TokenGameController(((PetriNetModelProcessor) getModelProcessor()), getGraph());
         }
     }
-
     // IS NOT WORKING YET
     // /**
     // * ATTENTION: Be careful with this !!
