@@ -24,6 +24,7 @@ package org.woped.gui.controller.vep;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyVetoException;
+import java.io.File;
 import java.net.URL;
 import java.security.AccessControlException;
 import java.util.Iterator;
@@ -294,6 +295,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         {
             contentFileName = "contents.htm";
         }
+        
         URL url = this.getClass().getResource("/doc");
 
         if (url != null)
@@ -303,11 +305,20 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             contentFileName = url.toExternalForm().concat("/html/").concat(Messages.getString("Help.Dir")).concat("/" + contentFileName);
         } 
         else
-        {
+        {     	
             // locate HTML files in local folder
-            filename = this.getClass().getResource("/").toExternalForm().concat("../doc/doc/html/").concat(Messages.getString("Help.Dir")).concat("/" + filename);
-            contentFileName = this.getClass().getResource("/").toExternalForm().concat("../doc/doc/html/").concat(Messages.getString("Help.Dir")).concat("/" + contentFileName);
+            File f = new File(".");
+            String filePath = "file:/" + f.getAbsolutePath();
+            int dotAt = filePath.lastIndexOf(".");
+            filename = filePath.substring(0,dotAt) + "doc/html/" + Messages.getString("Help.Dir")+ "/" + filename;
+            contentFileName = filePath.substring(0,dotAt) + "doc/html/" + Messages.getString("Help.Dir")+ "/" + contentFileName;
         }
+/*        {     	
+            // locate HTML files in local folder
+            filename = this.getClass().getResource("/").toExternalForm().concat("../doc/doc/html/").concat(Messages.getString("Help.Dir")).concat("/" + filename);                      
+            contentFileName = this.getClass().getResource("/").toExternalForm().concat("../doc/doc/html/").concat(Messages.getString("Help.Dir")).concat("/" + contentFileName);
+            System.out.println(filename);
+        }*/
 
         HelpBrowser br = HelpBrowser.getInstance();
         if (showContents)
