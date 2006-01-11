@@ -3,22 +3,8 @@
    draw, manage, simulate and analyse workflow process definitions 
    using an extended Petrinet notation called "workflow nets".
    
-   Copyright (C) 2005		
+   Copyright (C) 2003-2006		
  
-   Developer team:
-
-   Alexander Assall
-   Andreas Eckleder
-   Christian Flender
-   Thomas Freytag
-   Steffen Gegenheimer
-   Mona Ketterer
-   Simon Isaak Landes
-   Alexis Nagy
-   Sebastian Orts
-   Thomas Pohl
-   Valentino Pola
-
    Contact:
 
    Prof. Dr. Thomas Freytag

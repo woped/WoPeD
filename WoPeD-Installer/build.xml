@@ -25,8 +25,8 @@
 	<!--<taskdef resource="genjar.properties"/>	-->
 
 	<target name="makedistribution" 
-    depends="makedir, makesubprojects, setversion, copyfiles, makeinstaller, start, purge" />
-	<!--	depends="makebindist, makesrcdist, purge" /> -->
+         depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, start, purge" />
+<!--		depends="makebindist, makesrcdist, purge" /> -->
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -50,35 +50,41 @@
 		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Editor/bin/org/woped/editor/properties/Messages_de.properties" />
 	</target>
 
+  	<target name="buildjar">
+		<jar destfile="dist/woped-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.MF">
+			<fileset dir="../WoPeD-CORE/bin" />
+			<fileset dir="../WoPeD-Editor/bin" />
+			<fileset dir="../WoPeD-FileInterface/bin" />
+			<fileset dir="../WoPeD-StandaloneRunner/bin" />
+			<fileset dir="../WoPeD-XMLConfiguration/bin" />
+		</jar>
+	</target>	
+			
 	<target name="copyfiles">
-		<copy todir="dist/lib" file="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
-		<copy todir="dist/lib" file="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}${SNAPSHOT}.jar" />
-		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar" />
-		<copy todir="dist/lib" file="../WoPeD-StandaloneRunner/lib/woped-gui-${GUIVERSION}${SNAPSHOT}.jar" />
-		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/woped-configuration-${CONFIGURATIONVERSION}${SNAPSHOT}.jar" />
+	    <copy todir="dist/nets" file="build-tools/setup/Example.pnml" />
+		
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
 		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
-		<copy todir="dist/nets" file="build-tools/setup/Example.pnml" />
 
 		<copy todir="dist" file="../WoPeD-XMLConfiguration/configuration.xml" />
 	
 		<copy todir="dist/doc/html/en">
-			<fileset file="../WoPeD-StandaloneRunner/doc/doc/html/en/*.htm" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/en/*.htm" />
 		</copy>
 		
 		<copy todir="dist/doc/html/de">
-			<fileset file="../WoPeD-StandaloneRunner/doc/doc/html/de/*.htm" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/de/*.htm" />
 		</copy>
 
-		<copy file="../WoPeD-StandaloneRunner/doc/doc/html/woped-big.css" tofile="dist/doc/html/woped.css" />
+		<copy file="../WoPeD-StandaloneRunner/doc/html/woped-big.css" tofile="dist/doc/html/woped.css" />
 		
 		<copy todir="dist/doc/html/images">
-			<fileset file="../WoPeD-StandaloneRunner/doc/doc/html/images/*.gif" />
-			<fileset file="../WoPeD-StandaloneRunner/doc/doc/html/images/*.jpg" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.gif" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.jpg" />
 		</copy>
 
 		<copy todir="dist">
@@ -111,8 +117,8 @@
 	</target>
 	
 	<target name="makeinstaller">
-		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST.mf">
-			<fileset file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
+		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST3.MF">
+			<fileset file="RunWoPeD.class" />
 		</jar>
 		<exec dir="dist" executable="cmd">
 			<arg line="/c launch4j.exe buildexe.cfg" />
