@@ -109,6 +109,7 @@ import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.simulation.TokenGameController;
 import org.woped.editor.utilities.ImageSelection;
+import org.woped.editor.utilities.Messages;
 import org.woped.editor.view.ViewFactory;
 
 /**
@@ -204,13 +205,15 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
             tree.setRootVisible(false);
             JScrollPane sTree = new JScrollPane(tree);
             JPanel treePanel = new JPanel(new GridBagLayout());
-            treePanel.add(new JLabel("Elemente:"), new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
+            treePanel.add(new JLabel(Messages.getString("TreeView.Elements.Title")), 
+            		new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
             treePanel.add(sTree, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
             // Overview Panel
             OverviewPanel overview = new OverviewPanel(this);
             JScrollPane sOverview = new JScrollPane(overview);
             JPanel overviewPanel  = new JPanel(new GridBagLayout());
-            overviewPanel.add(new JLabel("Überblick:"), new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
+            overviewPanel.add(new JLabel(Messages.getString("TreeView.Overview.Title")), 
+            		new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
             overviewPanel.add(sOverview, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
             // Splits
             JSplitPane splitLeft = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overviewPanel, treePanel);
