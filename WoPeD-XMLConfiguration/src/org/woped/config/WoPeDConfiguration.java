@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
@@ -32,11 +34,11 @@ public class WoPeDConfiguration implements IConfiguration
     private static String                currentWorkingDir  = null;
 
     // DEFAULT Values
-    public static String                 CONFIG_FILE        = "." + File.separator + "configuration.xml";
+    public static String                 CONFIG_FILE        = "." + File.separator + "WoPeDconfig.xml";
 
     public static String                 DEFAULT_HOME       = "." + File.separator + "nets" + File.separator;
 
-    public static String                 CONFIG_BACKUP_FILE = "/org/woped/config/configuration.xml";
+    public static String                 CONFIG_BACKUP_FILE = "/org/woped/config/WoPeDconfig.xml";
 
     public Locale                        locale             = null;
 
@@ -77,10 +79,18 @@ public class WoPeDConfiguration implements IConfiguration
         if (new File(CONFIG_FILE).exists())
         {
             return readConfig(new File(CONFIG_FILE));
-        } else
+        } 
+        else
         {
             LoggerManager.warn(Constants.CONFIG_LOGGER, "User-Configuration not found. Try using Backup Configuration.");
-            return readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BACKUP_FILE));
+            boolean confOk = readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BACKUP_FILE));
+            if (!confOk)
+            {
+            	JOptionPane.showMessageDialog(null, "Configuration file not found", 
+            			"Init error", JOptionPane.ERROR_MESSAGE);
+            	System.exit(0);
+            }
+            return confOk;
         }
     }
 
