@@ -30,7 +30,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import org.woped.core.Constants;
@@ -70,7 +69,6 @@ public abstract class AbstractApplicationMediator implements IViewListener
                 // This should NEVER happen!
                 LoggerManager.fatal(Constants.CORE_LOGGER, "Could really not load any configuration.");
                 LoggerManager.info(Constants.CORE_LOGGER, "EXIT WoPeD - LOGGING DEACTIVATED");
-                JOptionPane.showMessageDialog(null, "Could really not load any configuration!", "Init Error", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             } else
             {
