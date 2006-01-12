@@ -257,7 +257,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         {
             ace.printStackTrace();
             LoggerManager.warn(Constants.FILE_LOGGER, "Could not save Editor. No rights to write the file to " + editor.getFilePath() + ". " + ace.getMessage());
-            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), "You don't have any Permissions. Running as Applet?" + " \n(More information in 'woped.log')", "Inane error",
+            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), "You don't have any Permissions. Running as Applet?" + " \n(More information in 'WoPeD.log')", "Inane error",
                     JOptionPane.ERROR_MESSAGE);
         } finally
         {
@@ -444,7 +444,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             } else
             {
                 ConfigurationManager.getConfiguration().removeRecentFile(file.getName(), file.getAbsolutePath());
-                JOptionPane.showMessageDialog(null, "Could not read file.\n " + file.getAbsolutePath() + " \n(More information in 'woped.log')", "Open Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Could not read file.\n " + file.getAbsolutePath() + " \n(More information in 'WoPeD.log')", "Open Error", JOptionPane.ERROR_MESSAGE);
             }
 
             // TODO: !!! OLDUserInterface.getInstance().updateRecentMenu();
