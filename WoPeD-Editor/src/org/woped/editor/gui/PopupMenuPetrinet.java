@@ -96,10 +96,10 @@ public class PopupMenuPetrinet extends JPopupMenu
         add(getRenameMenuItem());
         addSeparator();
         add(getRemoveMenuItem());
- //       add(getCutMenuItem());
- //       add(getCopyMenuItem());
- //       add(getPasteMenuItem());  /* Temporarily disabled */
- //       addSeparator();
+        add(getCutMenuItem());
+        add(getCopyMenuItem());
+        add(getPasteMenuItem());  
+        addSeparator();
         add(getAddTokenMenuItem());
         add(getRemoveTokenMenuItem());
         add(getExternalTriggerMenuItem());
