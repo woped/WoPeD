@@ -3,6 +3,7 @@ package org.woped.editor.controller.vep;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.beans.PropertyChangeEvent;
 import java.util.Iterator;
 
 import org.woped.core.config.ConfigurationManager;
@@ -17,6 +18,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.ApplicationMediator;
+import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.EditorVC;
 
@@ -99,6 +101,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
                 }
 
                 currentEditor.updateNet();
+                VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "Update", null, null));
             }
             break;
 

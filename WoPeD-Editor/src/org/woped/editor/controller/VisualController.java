@@ -367,6 +367,9 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             } else if ("UndoRedo".equals(arg0.getPropertyName()))
             {
                 checkUndoRedo();
+            } else if ("Update".equals(arg0.getPropertyName()))
+            {
+                checkWoflan();
             }
         }
 
