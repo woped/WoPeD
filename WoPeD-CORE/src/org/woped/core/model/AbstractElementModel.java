@@ -77,6 +77,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
         creationMap.setName(getNameValue());
         creationMap.setSize(new IntPair(GraphConstants.getSize(getAttributes())));
         creationMap.setNamePosition(new IntPair(getNameModel().getPosition()));
+        creationMap.setType(getType());
         return creationMap;
     }
 

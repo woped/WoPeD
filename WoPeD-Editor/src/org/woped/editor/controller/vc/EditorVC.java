@@ -817,7 +817,7 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
             {
                 tempElement = (AbstractElementModel) cells[idx];
                 // copy the element
-                m_clipboard.getCopiedElementsList().put(tempElement.getId(), tempElement.getCreationMap().clone());
+                m_clipboard.putElement(tempElement);
                 Iterator arcIter = getModelProcessor().getElementContainer().getOutgoingArcs(tempElement.getId()).keySet().iterator();
                 /*
                  * copy all the elements arcs TODO: Release 0.9.0 "implicite arc
@@ -843,9 +843,9 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
             if (cells[idx] instanceof ArcModel)
             {
                 tempArc = (ArcModel) cells[idx];
-                if (m_clipboard.getCopiedElementsList().containsKey(tempArc.getSourceId()) && m_clipboard.getCopiedElementsList().containsKey(tempArc.getTargetId()))
+                if (m_clipboard.containsElement(tempArc.getSourceId()) && m_clipboard.containsElement(tempArc.getTargetId()))
                 {
-                    m_clipboard.getCopiedArcsList().put(tempArc.getId(), tempArc.getCreationMap().clone());
+                    m_clipboard.putArc(tempArc);
                 }
             }
         }
@@ -885,8 +885,8 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
     {
         getGraph().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         long begin = System.currentTimeMillis();
-        HashMap pasteElements = (HashMap) m_clipboard.getCopiedElementsList().clone();
-        HashMap pasteArcs = (HashMap) m_clipboard.getCopiedArcsList().clone();
+        Map pasteElements = m_clipboard.getCopiedElementsList();
+        Map pasteArcs =  m_clipboard.getCopiedArcsList();
 
         /* find delta for Position */
         int deltaX, deltaY;

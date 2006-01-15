@@ -184,11 +184,10 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_editMenu.add(getUndoMenuItem());
             m_editMenu.add(getRedoMenuItem());
             
-            /* TODO: Disabled because of Visual Controller Problems */
-//            m_editMenu.addSeparator();
-//            m_editMenu.add(getCutMenuItem());
-//            m_editMenu.add(getCopyMenuItem());
-//            m_editMenu.add(getPasteMenuItem());
+            m_editMenu.addSeparator();
+            m_editMenu.add(getCutMenuItem());
+            m_editMenu.add(getCopyMenuItem());
+            m_editMenu.add(getPasteMenuItem());
             //            m_editMenu.addSeparator();
             // deactivated because we have jpeg export
             // m_editMenu.add(getScreenshotMenuItem());

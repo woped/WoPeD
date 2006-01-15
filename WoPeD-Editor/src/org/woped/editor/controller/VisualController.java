@@ -54,7 +54,7 @@ import org.woped.editor.controller.vc.EditorVC;
  * selection status. Changes are initiated from external events via
  * PropertyChangeEvents and GraphSelectionEvents.
  */
-public class VisualController implements PropertyChangeListener, GraphSelectionListener
+public class VisualController implements PropertyChangeListener, GraphSelectionListener, IClipboaredListener
 {
     private ApplicationMediator     am                             = null;
 
@@ -118,6 +118,8 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     public static final int         DRAWMODE_XOR_SPLITJOIN         = 27;
 
     public static final int         ELEMENT_SELECTION              = 28;
+
+    public static final int         CAN_PASTE                      = 29;
 
     private static final int        MAX_ID                         = 30;
 
@@ -347,6 +349,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             {
                 checkActiveEditor();
                 checkWoflan();
+                checkUndoRedo();
             } else if ("FrameSelection".equals(arg0.getPropertyName()))
             {
                 checkDrawMode();
@@ -582,6 +585,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
         setStatus(CAN_UNDO, undo);
         setStatus(CAN_REDO, redo);
     }
+    
 
     public boolean isActive()
     {
@@ -591,5 +595,10 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     public void setActive(boolean active)
     {
         this.active = active;
+    }
+
+    public void notify(boolean isEmpty)
+    {
+        setStatus(CAN_PASTE,am.getUi().getAllEditors().size() >0 && !isEmpty);
     }
 }

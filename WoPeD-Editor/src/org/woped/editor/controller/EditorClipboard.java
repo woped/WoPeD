@@ -23,6 +23,11 @@
 package org.woped.editor.controller;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Vector;
+
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.ArcModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -34,30 +39,63 @@ public class EditorClipboard
 {
     private HashMap copiedElementsList = new HashMap();
     private HashMap copiedArcsList     = new HashMap();
+    
+    private Vector m_listeners = new Vector();
+
+    public EditorClipboard()
+    {
+        super();
+    }
 
     public void clearClipboard()
     {
-        getCopiedArcsList().clear();
-        getCopiedElementsList().clear();
+        copiedArcsList.clear();
+        copiedElementsList.clear();
+        fireClipboardChange();
     }
 
-    public HashMap getCopiedArcsList()
+    public Map getCopiedArcsList()
     {
-        return copiedArcsList;
+        return (Map)copiedArcsList.clone();
     }
 
-    public void setCopiedArcsList(HashMap copiedArcsList)
+    public Map getCopiedElementsList()
     {
-        this.copiedArcsList = copiedArcsList;
+        return (Map)copiedElementsList.clone();
     }
 
-    public HashMap getCopiedElementsList()
+     public void addClipboardListener(IClipboaredListener listener)
     {
-        return copiedElementsList;
+        m_listeners.add(listener);
     }
-
-    public void setCopiedElementsList(HashMap copiedElementsList)
+    
+    public boolean isEmpty()
     {
-        this.copiedElementsList = copiedElementsList;
+        return (getCopiedArcsList().size()==0 && getCopiedElementsList().size()==0);
+    }
+    
+    private void fireClipboardChange()
+    {
+        for (int i = 0;i<m_listeners.size();i++)
+        {
+            ((IClipboaredListener)m_listeners.get(i)).notify(isEmpty());
+        }
+    }
+    
+    public void putArc(ArcModel arc)
+    {
+        copiedArcsList.put(arc.getId(), arc.getCreationMap().clone());
+        fireClipboardChange();
+    }
+    
+    public void putElement(AbstractElementModel element)
+    {
+        copiedElementsList.put(element.getId(), element.getCreationMap().clone());
+        fireClipboardChange();
+    }
+    
+    public boolean containsElement(String key)
+    {
+        return copiedElementsList.containsKey(key);
     }
 }

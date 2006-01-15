@@ -76,6 +76,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
 
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, new ApplicationEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, this));
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT, new EditorEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_EDIT, this));
+        clipboard.addClipboardListener(visualController);
 
     }
 

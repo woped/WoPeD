@@ -107,10 +107,9 @@ public class ToolBarVC extends JToolBar implements IViewController
         addSeparator();
         addSeparator(new Dimension(12, 0));
         addSeparator();
-        /* TODO: Disabled because of Visual Controller Problems */
-//        add(getCutButton());
-//        add(getCopyButton());
-//        add(getPasteButton());
+        add(getCutButton());
+        add(getCopyButton());
+        add(getPasteButton());
         add(getUndoButton());
         add(getRedoButton());
         addSeparator();
