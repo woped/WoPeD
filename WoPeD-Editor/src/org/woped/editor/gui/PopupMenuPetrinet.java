@@ -91,15 +91,15 @@ public class PopupMenuPetrinet extends JPopupMenu
 //        add(getAddXorSplitJoinMenuItem()); // TEMPORARILY DISABLED - TF
         add(getSubProcessMenuItem());
 
-        addSeparator();
+//        addSeparator();
         add(getPropertiesMenuItem());
         add(getRenameMenuItem());
-        addSeparator();
+//        addSeparator();
         add(getRemoveMenuItem());
         add(getCutMenuItem());
         add(getCopyMenuItem());
         add(getPasteMenuItem());  
-        addSeparator();
+//        addSeparator();
         add(getAddTokenMenuItem());
         add(getRemoveTokenMenuItem());
         add(getExternalTriggerMenuItem());
@@ -344,7 +344,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_pasteMenuItem == null)
         {
             m_pasteMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_PASTE));
-            VisualController.getInstance().addElement(m_pasteMenuItem, VisualController.ANY_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_pasteMenuItem, VisualController.CAN_PASTE, VisualController.IGNORE, VisualController.IGNORE);
         }
         return m_pasteMenuItem;
     }
