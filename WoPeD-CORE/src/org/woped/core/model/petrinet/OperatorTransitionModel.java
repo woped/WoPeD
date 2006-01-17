@@ -113,7 +113,8 @@ public class OperatorTransitionModel extends TransitionModel
         CreationMap map = CreationMap.createMap();
         map.setId(getnewSimpleTransId());
         map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-        map.setPosition(new IntPair(getPosition()));
+        if (getPosition() != null)
+        	map.setPosition(new IntPair(getPosition()));
         aTranstitonModel = (TransitionModel) ModelElementFactory.createModelElement(map);
 
         return aTranstitonModel;
