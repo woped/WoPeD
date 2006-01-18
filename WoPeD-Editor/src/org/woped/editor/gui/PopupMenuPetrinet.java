@@ -29,6 +29,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import org.woped.core.controller.AbstractGraph;
+import org.woped.core.model.ArcModel;
+import org.woped.core.model.petrinet.GroupModel;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 
@@ -120,7 +123,7 @@ public class PopupMenuPetrinet extends JPopupMenu
      */
     public static PopupMenuPetrinet getInstance()
     {
-        if (c_instance == null)
+       	if (c_instance == null)
         {
             c_instance = new PopupMenuPetrinet();
         }
@@ -128,6 +131,12 @@ public class PopupMenuPetrinet extends JPopupMenu
         return c_instance;
     }
 
+    public void show(Object obj, AbstractGraph graph, int x, int y)
+    {
+   	   	if (obj == null || obj instanceof GroupModel || obj instanceof ArcModel)
+    		super.show(graph, x, y);
+    }
+    
     private JMenuItem getRenameMenuItem()
     {
         if (m_renameMenuItem == null)

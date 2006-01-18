@@ -191,9 +191,9 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
                 // Find Cell in Model Coordinates
                 Object c = getEditor().getGraph().getFirstCellForLocation(getEditor().getLastMousePosition().getX(), getEditor().getLastMousePosition().getY());
                 // Display PopupMenu
-                PopupMenuPetrinet.getInstance().show(getEditor().getGraph(), (int) getEditor().getLastMousePosition().getX(), (int) getEditor().getLastMousePosition().getY());
-                // Else if in ConnectMode and Remembered Port is Valid
-                getEditor().setDrawingMode(false);
+                PopupMenuPetrinet.getInstance().show(c, getEditor().getGraph(), (int) getEditor().getLastMousePosition().getX(), (int) getEditor().getLastMousePosition().getY());
+               	// Else if in ConnectMode and Remembered Port is Valid
+               	getEditor().setDrawingMode(false);
             } else if (e.getClickCount() == 2)
             {
                 getEditor().fireViewEvent(new EditorViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_PROPERTIES));
