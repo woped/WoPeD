@@ -8,10 +8,12 @@ package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexRenderer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
@@ -47,6 +49,7 @@ public class TransitionResourceView extends AbstractElementView
         public void paint(Graphics g)
         {
             int b = borderWidth;
+            Dimension d = getSize();
             Graphics2D g2 = (Graphics2D) g;
             if (super.isOpaque())
             {
@@ -59,9 +62,12 @@ public class TransitionResourceView extends AbstractElementView
                 g.setColor(Color.BLACK);
                 g2.setStroke(new BasicStroke(b));
             }
+            
             if (selected)
             {
+                g2.setStroke(GraphConstants.SELECTION_STROKE);
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
+                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
 
             g.setColor(new Color(192,192,192));
