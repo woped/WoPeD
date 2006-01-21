@@ -36,4 +36,6 @@ public interface IUserInterface extends IEditorAware
     public Dimension getSize();
 
     public void setVisible(boolean visible);
+    
+    public void updateRecentMenu();
 }

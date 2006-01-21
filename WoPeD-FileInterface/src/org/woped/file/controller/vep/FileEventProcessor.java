@@ -221,6 +221,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                             IStatusBar iSB[] = new IStatusBar[iVC.length];
                             for (int i = 0; i < iSB.length; i++)
                             {
+                                
                                 iSB[i] = (IStatusBar) iVC[i];
                             }
                             PNMLExport pe = new PNMLExport(iSB);
@@ -229,8 +230,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                             LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in file: " + editor.getFilePath());
 
                             ConfigurationManager.getConfiguration().addRecentFile(new File(editor.getFilePath()).getName(), editor.getFilePath());
-                            // TODO: !!!
-                            // OLDUserInterface.getInstance().updateRecentMenu();
+                            getMediator().getUi().updateRecentMenu();
                             editor.setSaved(true);
                             ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
                             succeed = true;
@@ -447,7 +447,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                 JOptionPane.showMessageDialog(null, "Could not read file.\n " + file.getAbsolutePath() + " \n(More information in 'WoPeD.log')", "Open Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            // TODO: !!! OLDUserInterface.getInstance().updateRecentMenu();
+            getMediator().getUi().updateRecentMenu();
         } else
         {}
         return editor;

@@ -49,6 +49,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private StatusBarVC           statusBar              = null;
     private TaskBarVC             taskBar                = null;
     private ToolBarVC             toolBar                = null;
+    private MenuBarVC menuBar = null;
 
     private PropertyChangeSupport propertyChangeSupport  = null;
     private int                   m_numEditors           = 0;
@@ -60,6 +61,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         this.toolBar = toolBar;
         this.statusBar = statusBar;
         this.taskBar = taskBar;
+        this.menuBar = menuBar;
 
         desktop = new JDesktopPane();
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
@@ -309,6 +311,14 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     public List getAllEditors()
     {
         return editorList;
+    }
+    
+    
+
+    public void updateRecentMenu()
+    {
+        menuBar.updateRecentMenu();
+        
     }
 
     /**
