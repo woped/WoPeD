@@ -85,7 +85,7 @@ public class ConfToolsPanel extends AbstractConfPanel
         } else
         {
             JOptionPane
-                    .showMessageDialog(this, Messages.getString("Configuration.Options.Error.WoflanPathInvalid"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE);
+                    .showMessageDialog(this, Messages.getString("Configuration.Tools.Error.WoflanPathInvalid"), Messages.getString("Configuration.Error.General.Title"), JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
@@ -126,8 +126,8 @@ public class ConfToolsPanel extends AbstractConfPanel
         if (woflanCheckBox == null)
         {
             woflanCheckBox = new JCheckBox();
-            woflanCheckBox.setText(Messages.getString("Configuration.Options.Panel.Woflan.UseWoflan.Text"));
-            woflanCheckBox.setToolTipText("<HTML>" + Messages.getString("Configuration.Options.Panel.Woflan.UseWoflan.Text.ToolTip") + "</HTML>");
+            woflanCheckBox.setText(Messages.getString("Configuration.Tools.Panel.Woflan.UseWoflan.Text"));
+            woflanCheckBox.setToolTipText("<HTML>" + Messages.getString("Configuration.Tools.Panel.Woflan.UseWoflan.Text.ToolTip") + "</HTML>");
             woflanCheckBox.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -161,7 +161,7 @@ public class ConfToolsPanel extends AbstractConfPanel
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
 
-            woflanPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Options.Panel.Woflan.Title")), BorderFactory.createEmptyBorder(
+            woflanPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Tools.Panel.Woflan.Title")), BorderFactory.createEmptyBorder(
                     5, 5, 10, 5)));
 
             c.weightx = 1;
@@ -198,7 +198,7 @@ public class ConfToolsPanel extends AbstractConfPanel
             woflanTextField = new JTextField();
             woflanTextField.setPreferredSize(new Dimension(300, 20));
             //woflanTextField.setFont(ConfigureUI.CONFIG_FONT);
-            woflanTextField.setToolTipText("<HTML>" + Messages.getString("Configuration.Options.Panel.Woflan.WoflanPath.Text.ToolTip") + "</HTML>");
+            woflanTextField.setToolTipText("<HTML>" + Messages.getString("Configuration.Tools.Panel.Woflan.WoflanPath.Text.ToolTip") + "</HTML>");
             //woflanTextField.setColumns(25);
         }
         return woflanTextField;
@@ -254,7 +254,7 @@ public class ConfToolsPanel extends AbstractConfPanel
     {
         if (getWoflanLabel == null)
         {
-            getWoflanLabel = new JLabel("<html><u>" + Messages.getString("Configuration.Options.Panel.Woflan.WhatsWoflan.Label") + "</u></html>");
+            getWoflanLabel = new JLabel("<html><u>" + Messages.getString("Configuration.Tools.Panel.Woflan.WhatsWoflan.Label") + "</u></html>");
             //getWoflanLabel.getFont().getFamily(),
             // getWoflanLabel.getFont().getSize(), Font.);
             getWoflanLabel.setHorizontalAlignment(JLabel.RIGHT);

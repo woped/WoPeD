@@ -80,7 +80,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
             // TODO: addConfNodePanel(null, new ConfGuiPanel("GUI"));
             config.addConfNodePanel(null, new ConfEditorPanel(Messages.getString("Configuration.Editor.Title")));
             config.addConfNodePanel(null, new ConfFilePanel(Messages.getString("Configuration.Files.Title")));
-            config.addConfNodePanel(null, new ConfToolsPanel(Messages.getString("Configuration.Options.Title")));
+            config.addConfNodePanel(null, new ConfToolsPanel(Messages.getString("Configuration.Tools.Title")));
             config.addConfNodePanel(null, new ConfLanguagePanel(Messages.getString("Configuration.Language.Title")));
             config.setSelectedPanel(Messages.getString("Configuration.Editor.Title"));
 
