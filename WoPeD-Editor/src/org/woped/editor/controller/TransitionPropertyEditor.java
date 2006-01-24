@@ -1224,37 +1224,42 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         // Check selected trigger type
         if (getTriggerNoneRadioButton().isSelected())
         {
+            if (transition.hasResource())
+            {
+               getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
+            }
+
             if (transition.hasTrigger())
             {
                 getEditor().deleteCell(transition.getToolSpecific().getTrigger(), true);
             }
         } 
         else if (getTriggerResourceRadioButton().isSelected())
-        {
-            selectedTriggerType = TriggerModel.TRIGGER_RESOURCE;
-        } 
-        else if (getTriggerTimeRadioButton().isSelected())
-        {
-            selectedTriggerType = TriggerModel.TRIGGER_TIME;
-        } 
-        else if (getTriggerMessageRadioButton().isSelected())
-        {
-            selectedTriggerType = TriggerModel.TRIGGER_EXTERNAL;
-        }
-        
+       	{
+       		selectedTriggerType = TriggerModel.TRIGGER_RESOURCE;
+       	} 
+       	else if (getTriggerTimeRadioButton().isSelected())
+       	{
+       		selectedTriggerType = TriggerModel.TRIGGER_TIME;
+       	} 
+       	else if (getTriggerMessageRadioButton().isSelected())
+       	{
+       		selectedTriggerType = TriggerModel.TRIGGER_EXTERNAL;
+       	}
+               
         if (transition.hasResource())
         {
            getEditor().deleteCell(transition.getToolSpecific().getTransResource(), true);
         }
-        
+
         // Trigger Handling
-        map.setTriggerType(selectedTriggerType);
-        if (transition.hasTrigger())
-        {
-            if (transition.getToolSpecific().getTrigger().getTriggertype() != selectedTriggerType)
-            {
-                Point p = transition.getToolSpecific().getTrigger().getPosition();
-                getEditor().deleteCell(transition.getToolSpecific().getTrigger(), true);
+       	map.setTriggerType(selectedTriggerType);
+       	if (transition.hasTrigger())
+       	{
+       		if (transition.getToolSpecific().getTrigger().getTriggertype() != selectedTriggerType)
+       		{
+       			Point p = transition.getToolSpecific().getTrigger().getPosition();
+       			getEditor().deleteCell(transition.getToolSpecific().getTrigger(), true);
                 map.setTriggerPosition(p.x, p.y);
                 getEditor().createTrigger(map);
             }
