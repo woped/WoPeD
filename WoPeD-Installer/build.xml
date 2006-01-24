@@ -50,7 +50,7 @@
 	</target>
 
   	<target name="buildjar">
-		<jar destfile="dist/woped-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.MF">
+		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.MF">
 			<fileset dir="../WoPeD-CORE/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
@@ -91,6 +91,7 @@
 			<fileset dir="build-tools/setup/Windows" />
 			<fileset dir="build-tools/setup/Linux" />
 			<fileset dir="build-tools/setup/MacOS" />
+			<fileset file="woped-logo.jpg" />
 		</copy>
 
 		<copy todir="dist" filtering="true" overwrite="true">
