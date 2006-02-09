@@ -25,8 +25,8 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.utilities.FileFilterImpl;
+import org.woped.editor.utilities.Messages;
 import org.woped.file.Constants;
 import org.woped.file.JPGExport;
 import org.woped.file.OLDPNMLImport2;
@@ -106,13 +106,19 @@ public class FileEventProcessor extends AbstractEventProcessor
                     }
                     if (process == null || !f.exists())
                     {
-                        JOptionPane.showMessageDialog(null, "Cannot start Woflan!\nPath configuration correct?\n\"" + ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn"
-                                + "\"", "Warning: Woflan", JOptionPane.WARNING_MESSAGE);
+                    	String arg[] = {ConfigurationManager.getConfiguration().getHomedir()};
+                        JOptionPane.showMessageDialog(null, 
+                        		Messages.getString("File.Error.Woflan.Text", arg),
+                        	    Messages.getString("File.Error.Woflan.Title"),
+                        	    JOptionPane.WARNING_MESSAGE);
                     }
                 }
             } else
             {
-                JOptionPane.showMessageDialog(null, "No Petri Net open.", "Warning", JOptionPane.WARNING_MESSAGE);
+                 JOptionPane.showMessageDialog(null, 
+                		Messages.getString("File.Error.NoNet.Text"),
+                	    Messages.getString("File.Error.NoNet.Title"),
+                	    JOptionPane.WARNING_MESSAGE);
             }
 
             break;
@@ -139,7 +145,6 @@ public class FileEventProcessor extends AbstractEventProcessor
             {
                 jfc = new JFileChooser();
             }
-            String extensions[] = null;
 
             // FileFilters
             Vector tpnExtensions = new Vector();
@@ -242,7 +247,11 @@ public class FileEventProcessor extends AbstractEventProcessor
                             ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
                         } else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter)
                         {
-                            JOptionPane.showMessageDialog(null, "You cannot save sample files.\nPlease call \"save as\" instead to save your modification.", "Save Error", JOptionPane.ERROR_MESSAGE);
+                        	String arg[] = {editor.getName()};
+                            JOptionPane.showMessageDialog(null, 
+                            		Messages.getString("File.Error.SampleSave.Text", arg),
+                            	    Messages.getString("File.Error.SampleSave.Title"),
+                            	    JOptionPane.ERROR_MESSAGE);
                             succeed = false;
                         } else
                         {
@@ -257,7 +266,9 @@ public class FileEventProcessor extends AbstractEventProcessor
         {
             ace.printStackTrace();
             LoggerManager.warn(Constants.FILE_LOGGER, "Could not save Editor. No rights to write the file to " + editor.getFilePath() + ". " + ace.getMessage());
-            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), "You don't have any Permissions. Running as Applet?" + " \n(More information in 'WoPeD.log')", "Inane error",
+            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), 
+            		Messages.getString("File.Error.Applet.Text"),
+            	    Messages.getString("File.Error.Appleat.Title"),
                     JOptionPane.ERROR_MESSAGE);
         } finally
         {
@@ -444,7 +455,11 @@ public class FileEventProcessor extends AbstractEventProcessor
             } else
             {
                 ConfigurationManager.getConfiguration().removeRecentFile(file.getName(), file.getAbsolutePath());
-                JOptionPane.showMessageDialog(null, "Could not read file.\n " + file.getAbsolutePath() + " \n(More information in 'WoPeD.log')", "Open Error", JOptionPane.ERROR_MESSAGE);
+                String arg[] = {file.getAbsolutePath()};
+                JOptionPane.showMessageDialog(null, 
+                		Messages.getString("File.Error.OpenFile.Text", arg),
+                	    Messages.getString("File.Error.OpenFile.Title"),
+                	    JOptionPane.ERROR_MESSAGE);
             }
 
             getMediator().getUi().updateRecentMenu();
