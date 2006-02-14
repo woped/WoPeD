@@ -310,8 +310,9 @@ public class PNMLExport
                 while (innerArcIter.hasNext())
                 {
                     currentInnerArc = (ArcModel) ((OperatorTransitionModel) currentTargetModel).getSimpleTransContainer().getArcMap().get(innerArcIter.next());
-                    if (currentInnerArc.getSourceId().equals(currentSourceModel.getId())
-                            || ((OperatorTransitionModel) currentTargetModel).getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+                    if (currentInnerArc.getSourceId().equals(currentSourceModel.getId()))
+                            //|| ((OperatorTransitionModel) currentTargetModel).getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+//                              || ((PlaceModel)currentSourceModel.getId() == ((OperatorTransitionModel)currentTargetModel).getCenterPlace().getId()));
                     {
                         initArc(iNet.addNewArc(), currentArc, currentInnerArc);
                     }
