@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
@@ -294,46 +296,59 @@ public class PNMLExport
                 statusBars[i].nextStep();
         }
         /* ##### ARCS ##### */
+        
+        // When iterating through our arcs, we remember all
+        // transitions that are either source or destination of
+        // any arc we encounter
+        // Instead of serializing the arc itself, we serialize
+        // the "inner arcs" of all such transitions
+        // To sort out duplicates, we create a set
+        Set connectedTransitions= new HashSet();  
         Iterator arcIter = elementContainer.getArcMap().keySet().iterator();
-        ArcModel currentArc;
-        ArcModel currentInnerArc;
-        PetriNetModelElement currentTargetModel;
-        PetriNetModelElement currentSourceModel;
         while (arcIter.hasNext())
         {
-            currentArc = elementContainer.getArcById(arcIter.next());
-            currentTargetModel = (PetriNetModelElement) elementContainer.getElementById(currentArc.getTargetId());
-            currentSourceModel = (PetriNetModelElement) elementContainer.getElementById(currentArc.getSourceId());
+            ArcModel currentArc = elementContainer.getArcById(arcIter.next());
+            PetriNetModelElement currentTargetModel = (PetriNetModelElement) elementContainer.getElementById(currentArc.getTargetId());
+            PetriNetModelElement currentSourceModel = (PetriNetModelElement) elementContainer.getElementById(currentArc.getSourceId());
+            // Remember either source or target if it is a transition
+            // Please note that one special condition of petri nets is that
+            // a transition is never directly connected to another transition
+            // so either source or target may be a transition, never both
             if (currentTargetModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            	connectedTransitions.add(currentTargetModel);
+            else if (currentSourceModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            	connectedTransitions.add(currentSourceModel);
+            else
             {
-                Iterator innerArcIter = ((OperatorTransitionModel) currentTargetModel).getSimpleTransContainer().getArcMap().keySet().iterator();
-                while (innerArcIter.hasNext())
-                {
-                    currentInnerArc = (ArcModel) ((OperatorTransitionModel) currentTargetModel).getSimpleTransContainer().getArcMap().get(innerArcIter.next());
-                    if (currentInnerArc.getSourceId().equals(currentSourceModel.getId()))
-                            //|| ((OperatorTransitionModel) currentTargetModel).getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
-//                              || ((PlaceModel)currentSourceModel.getId() == ((OperatorTransitionModel)currentTargetModel).getCenterPlace().getId()));
-                    {
-                        initArc(iNet.addNewArc(), currentArc, currentInnerArc);
-                    }
-                }
-            } else if (currentSourceModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
-            {
-                Iterator innerArcIter = ((OperatorTransitionModel) currentSourceModel).getSimpleTransContainer().getArcMap().keySet().iterator();
-                while (innerArcIter.hasNext())
-                {
-                    currentInnerArc = (ArcModel) ((OperatorTransitionModel) currentSourceModel).getSimpleTransContainer().getArcMap().get(innerArcIter.next());
-                    if (currentInnerArc.getTargetId().equals(currentTargetModel.getId()))
-                    {
-                        initArc(iNet.addNewArc(), currentArc, currentInnerArc);
-                    }
-                }
-            } else
-            {
+            	// The current arc is not connected to any transition
+            	// We do not need to take care of any inner arcs
+            	// and instead store the currentArc itself
                 initArc(iNet.addNewArc(), currentArc, null);
             }
             for (int i = 0; i < statusBars.length; i++)
                 statusBars[i].nextStep();
+        }
+    	// A transition can be a very complex construct consisting
+    	// of a lot more than just one primitive petri-net transition (e.g.
+    	// XOR Split, XOR Join, ...
+    	// When dumping the PNML structure we must create primitive petri-net
+    	// objects for applications that cannot read our tool specific
+    	// complex transitions
+    	// This is why all transitions store a map of primitive transitions
+    	// with (ID, Object-Reference) entries.
+        // For all transitions connected to at least one arc we will
+        // dump the internal arcs now instead of the (previously ignored) visible arcs
+        Iterator currentTransition = connectedTransitions.iterator();
+        while (currentTransition.hasNext())
+        {
+        	OperatorTransitionModel currentConnectedModel = (OperatorTransitionModel)currentTransition.next();
+        	Iterator innerArcIter = currentConnectedModel.getSimpleTransContainer().getArcMap().keySet().iterator();
+        	while (innerArcIter.hasNext())
+        	{
+        		// Dump all inner arcs of connected transitions
+        		ArcModel currentInnerArc = (ArcModel) currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
+        		initArc(iNet.addNewArc(), currentInnerArc, null);
+        	}
         }
     }
 
