@@ -397,13 +397,13 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
             // ensure that There is an Position
             if (map.getPosition() != null)
             {
-                Point point = new Point((int) (map.getPosition().getX1() / getGraph().getScale()), (int) (map.getPosition().getX2() / getGraph().getScale()));
+                Point point = new Point((int) (map.getPosition().getX1() ), (int) (map.getPosition().getX2()));
                 //                map.setPosition(new IntPair());
                 element.setPosition((Point) getGraph().snap(point));
             } else if (getLastMousePosition() != null)
             {
-                Point point = new Point((int) ((getLastMousePosition().getX() - element.getWidth() * getGraph().getScale() / 2) / getGraph().getScale()),
-                        (int) ((getLastMousePosition().getY() - element.getHeight() * getGraph().getScale() / 2) / getGraph().getScale()));
+                Point point = new Point((int) ((getLastMousePosition().getX() - element.getWidth()  / 2) ),
+                        (int) ((getLastMousePosition().getY() - element.getHeight()  / 2) ));
                 //map.setPosition(new IntPair((Point) getGraph().snap(point)));
                 element.setPosition((Point) getGraph().snap(point));
             } else map.setPosition(30, 30);
@@ -870,7 +870,7 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
     {
         if (getLastMousePosition() != null)
         {
-            pasteAtPosition((int) getLastMousePosition().getX(), (int) getLastMousePosition().getY());
+            pasteAtPosition((int) (getLastMousePosition().getX()/getGraph().getScale()), (int) (getLastMousePosition().getY()/getGraph().getScale()));
         } else
         {
             LoggerManager.warn(Constants.EDITOR_LOGGER, "No last mouse position found. Elements pasted free will instead.");
