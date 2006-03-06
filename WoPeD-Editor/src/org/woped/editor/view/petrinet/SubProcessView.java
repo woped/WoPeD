@@ -23,6 +23,7 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -131,6 +132,26 @@ public class SubProcessView extends AbstractElementView
                 g2.setStroke(GraphConstants.SELECTION_STROKE);
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(b - 1, b - 1, d.width - b, d.height - b);
+            }
+            if (isActive() || isFireing())
+            {
+                g2.setColor(Color.RED);
+                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
+            }
+            if (isActive() && !isFireing())
+            {
+                g2.drawString("enabled", 3, 18);
+                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_active.gif"));
+                g2.drawImage(img.getImage(), 5, 22, 6, 11, img.getImageObserver());
+
+            }
+            if (isFireing())
+            {
+                // g.setColor(Color.BLACK);
+                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_fire.gif"));
+                g2.drawImage(img.getImage(), 5, 22, 18, 11, img.getImageObserver());
+                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
+                g2.drawString("fire", 5, 18);
             }
             // SubProcess Lines
             g.drawLine(5, 5, 35, 5);
