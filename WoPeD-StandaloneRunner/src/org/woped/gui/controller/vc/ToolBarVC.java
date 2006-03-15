@@ -122,7 +122,7 @@ public class ToolBarVC extends JToolBar implements IViewController
         add(getZoomOutButton());
         addSeparator();
         addSeparator(new Dimension(12, 0));
-        // TODO: add(controlledWindow.getZoomChooser());
+        add(getZoomChooser());
         // ZoomChooser
         addSeparator();
         add(getPlaceButton());
@@ -428,7 +428,7 @@ public class ToolBarVC extends JToolBar implements IViewController
 
                 public void itemStateChanged(ItemEvent e)
                 {
-                    fireViewEvent(new ViewEvent(ToolBarVC.this, AbstractViewEvent.EDIT, AbstractViewEvent.ZOOM_ABSOLUTE, zoomChooser.getSelectedItem()));
+                    fireViewEvent(new ViewEvent(ToolBarVC.this, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ZOOM_ABSOLUTE, zoomChooser.getSelectedItem()));
                 }
             });
             VisualController.getInstance().addElement(zoomChooser, VisualController.WITH_EDITOR, VisualController.ALWAYS, VisualController.IGNORE);
