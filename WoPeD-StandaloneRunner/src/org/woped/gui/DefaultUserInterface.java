@@ -263,31 +263,33 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
                 allOpenFrames.add(0, allFrames[i]);
             }
         }
-
-        int xCount = (int) Math.ceil(Math.sqrt(allOpenFrames.size()));
-        int yCount = (int) Math.ceil((double) allOpenFrames.size() / xCount);
-
-        int frameWidth = desktop.getWidth() / xCount;
-        int frameHeight = desktop.getHeight() / yCount;
-        int lastRowWidth = desktop.getWidth() / (xCount - (xCount * yCount - allOpenFrames.size()));
-
-        LoggerManager.debug(Constants.GUI_LOGGER, "Frames" + allOpenFrames.size() + ":" + xCount + "x" + yCount);
-
-        for (int i = 0; i < allOpenFrames.size(); i++)
+        if (allOpenFrames.size()!=0)
         {
-            JInternalFrame currentFrame = ((JInternalFrame) allOpenFrames.get(i));
-            int row = i / xCount;
-            int col = i % xCount;
-
-            if ((row + 1) == yCount)
+            int xCount = (int) Math.ceil(Math.sqrt(allOpenFrames.size()));
+            int yCount = (int) Math.ceil((double) allOpenFrames.size() / xCount);
+    
+            int frameWidth = desktop.getWidth() / xCount;
+            int frameHeight = desktop.getHeight() / yCount;
+            int lastRowWidth = desktop.getWidth() / (xCount - (xCount * yCount - allOpenFrames.size()));
+    
+            LoggerManager.debug(Constants.GUI_LOGGER, "Frames" + allOpenFrames.size() + ":" + xCount + "x" + yCount);
+    
+            for (int i = 0; i < allOpenFrames.size(); i++)
             {
-                // LastRow
-                currentFrame.setBounds(new Rectangle(col * lastRowWidth, row * frameHeight, lastRowWidth, frameHeight));
-            } else
-            {
-                currentFrame.setBounds(new Rectangle(col * frameWidth, row * frameHeight, frameWidth, frameHeight));
+                JInternalFrame currentFrame = ((JInternalFrame) allOpenFrames.get(i));
+                int row = i / xCount;
+                int col = i % xCount;
+    
+                if ((row + 1) == yCount)
+                {
+                    // LastRow
+                    currentFrame.setBounds(new Rectangle(col * lastRowWidth, row * frameHeight, lastRowWidth, frameHeight));
+                } else
+                {
+                    currentFrame.setBounds(new Rectangle(col * frameWidth, row * frameHeight, frameWidth, frameHeight));
+                }
+    
             }
-
         }
     }
 
