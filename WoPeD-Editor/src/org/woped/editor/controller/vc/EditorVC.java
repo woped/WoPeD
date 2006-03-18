@@ -402,8 +402,8 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
                 element.setPosition((Point) getGraph().snap(point));
             } else if (getLastMousePosition() != null)
             {
-                Point point = new Point((int) ((getLastMousePosition().getX() - element.getWidth()  / 2) ),
-                        (int) ((getLastMousePosition().getY() - element.getHeight()  / 2) ));
+                Point point = new Point((int) ((getLastMousePosition().getX() / getGraph().getScale() - element.getWidth()  / 2) ),
+                        (int) ((getLastMousePosition().getY() / getGraph().getScale() - element.getHeight()  / 2) ));
                 //map.setPosition(new IntPair((Point) getGraph().snap(point)));
                 element.setPosition((Point) getGraph().snap(point));
             } else map.setPosition(30, 30);
