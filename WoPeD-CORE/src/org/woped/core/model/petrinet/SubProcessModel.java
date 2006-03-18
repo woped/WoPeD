@@ -50,4 +50,11 @@ public class SubProcessModel extends TransitionModel
         return "Subprocess\nID: " + getId() + "\nName: " + getNameValue() + "\nSubprocess feature is not implemented, yet.";
     }
 
+    public int getType()
+    {
+        return PetriNetModelElement.SUBP_TYPE;
+    }
+    
+    
+
 }
