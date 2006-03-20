@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import org.woped.core.config.ConfigurationManager;
@@ -336,9 +337,8 @@ public class FileEventProcessor extends AbstractEventProcessor
                         succeed = save(editor);
                         if (succeed)
                         {
-                            // TODO:
-                            // editorFrame.setTitle(editorFrame.getEditor().getFileName());
-                            // editorFrame.setStatusBarInfo(editorFrame.getEditor().getFilePath());
+                            JInternalFrame frame = (JInternalFrame) editor.getContainer();
+                            frame.setTitle(editor.getName());
                         }
                     } else
                     {
