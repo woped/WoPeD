@@ -426,7 +426,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                 loadSuccess = pr.run(is);
             } catch (FileNotFoundException e)
             {                
-                String jarPath = file.getPath().replace("\\", "/");;
+                String jarPath = file.getPath().replace('\\', '/');
 
                 is = this.getClass().getResourceAsStream(jarPath);
                 loadSuccess = pr.run(is);
