@@ -36,6 +36,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int DRAWMODE_TRANSITION       = 1021;
     public static final int DRAWMODE_ANDSPLIT         = 1022;
     public static final int DRAWMODE_ANDJOIN          = 1023;
+    public static final int DRAWMODE_ANDSPLITJOIN     = 1073;
     public static final int DRAWMODE_XORSPLIT         = 1024;
     public static final int DRAWMODE_XORSPLITJOIN     = 1027;
     public static final int DRAWMODE_XORJOIN          = 1025;
@@ -69,6 +70,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int REMOVE_TOKEN              = 1052;
     public static final int ADD_TOKEN                 = 1053;
     public static final int ADD_XORSPLITJOIN          = 1054;
+    public static final int ADD_ANDSPLITJOIN		  = 1055;
     // UML Elements
     public static final int ADD_ACTIVITY              = 1100;
     public static final int ADD_START                 = 1101;

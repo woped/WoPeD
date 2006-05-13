@@ -43,9 +43,9 @@ import org.woped.core.config.DefaultStaticConfiguration;
  * 
  * 29.04.2003
  */
-public class TransAndJoinView extends TransSimpleView
+public class TransAndSplitJoinView extends TransSimpleView
 {
-    private TransAndJoinRenderer renderer = new TransAndJoinRenderer();
+    private TransAndSplitJoinRenderer renderer = new TransAndSplitJoinRenderer();
 
     /**
      * Constructor for TransAndJoinView.
@@ -54,7 +54,7 @@ public class TransAndJoinView extends TransSimpleView
      * @param graph
      * @param mapper
      */
-    public TransAndJoinView(Object cell)
+    public TransAndSplitJoinView(Object cell)
     {
         super(cell);
     }
@@ -80,9 +80,8 @@ public class TransAndJoinView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransAndJoinRenderer extends VertexRenderer
+    private class TransAndSplitJoinRenderer extends VertexRenderer
     {
-
         public void paint(Graphics g)
         {
 
@@ -118,19 +117,34 @@ public class TransAndJoinView extends TransSimpleView
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            // AND JOIN Lines
+            
+            // AND SPLIT JOIN Lines
+            // Consists of the symbol for split and the symbol for join
+
+            
             g.drawLine(d.width / 3, b, d.width / 3, d.height - b);
             g.drawLine(b, b, d.width / 3, d.height / 2);
             g.drawLine(d.width / 3, d.height / 2, b, d.height - b);
+
+            g.drawLine(d.width * 2 / 3, b, d.width * 2 / 3, d.height - b);
+            g.drawLine(d.width * 2 / 3, d.height / 2, d.width - b, d.height - b);
+            g.drawLine(d.width - b, b, d.width * 2 / 3, d.height / 2);
+
             if (isActive() || isFireing())
             {
                 g.setColor(Color.LIGHT_GRAY);
                 g.drawLine(d.width / 3, b, d.width / 3, d.height - b);
                 g.drawLine(b, b, d.width / 3, d.height / 2);
                 g.drawLine(d.width / 3, d.height / 2, b, d.height - b);
+                
+                g.drawLine(d.width * 2 / 3, b, d.width * 2 / 3, d.height - b);
+                g.drawLine(d.width * 2 / 3, d.height / 2, d.width - b, d.height - b);
+                g.drawLine(d.width - b, b, d.width * 2 / 3, d.height / 2);
+                
                 g2.setColor(Color.RED);
                 g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
             }
+                  
             if (isActive() && !isFireing())
             {
                 g2.drawString("enabled", 3, 18);
@@ -154,7 +168,7 @@ public class TransAndJoinView extends TransSimpleView
          */
         public boolean isActive()
         {
-            return TransAndJoinView.this.isActivated();
+            return TransAndSplitJoinView.this.isActivated();
         }
 
         /**
@@ -162,7 +176,7 @@ public class TransAndJoinView extends TransSimpleView
          */
         public boolean isFireing()
         {
-            return TransAndJoinView.this.isFireing();
+            return TransAndSplitJoinView.this.isFireing();
         }
     }
 

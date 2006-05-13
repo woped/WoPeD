@@ -108,6 +108,7 @@ public class TokenGameController
      */
     public void start()
     {
+    	
         if (isVisualTokenGame())
         {
             enableVisualTokenGame();
@@ -213,7 +214,8 @@ public class TokenGameController
         } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
         {
             OperatorTransitionModel operator = (OperatorTransitionModel) transition;
-            if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE)
+            if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE 
+            		|| operator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
             {
                 if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size()) transition.setActivated(true);
 
@@ -282,7 +284,8 @@ public class TokenGameController
             } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
                 OperatorTransitionModel operator = (OperatorTransitionModel) transition;
-                if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE)
+                if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE
+                		|| operator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
                 {
                     //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
                     // FIRE AND-Transition:

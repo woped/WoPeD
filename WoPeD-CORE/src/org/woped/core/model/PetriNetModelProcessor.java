@@ -301,7 +301,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
                         }
                     }
 
-                } else if (operatorModel.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE)
+                } else if (operatorModel.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE || operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
                 {
                     // get simple trans
                     Object simpleId = operatorModel.getSimpleTransContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE).keySet().iterator().next();
@@ -399,8 +399,8 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
                         }
                     }
                 }
-                /* IF target is AND SPLIT / JOIN */
-                else if (operatorModel.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE)
+                /* IF target is AND SPLIT / JOIN OR COMBINED AND SPLIT JOIN */
+                else if (operatorModel.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE|| operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
                 {
                     // get simple trans
                     Object simpleTransId = operatorModel.getSimpleTransContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE).keySet().iterator().next();

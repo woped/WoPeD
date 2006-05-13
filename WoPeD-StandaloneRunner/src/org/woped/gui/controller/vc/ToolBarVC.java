@@ -82,6 +82,7 @@ public class ToolBarVC extends JToolBar implements IViewController
 
     private AbstractButton     m_andSplitButton     = null;
     private AbstractButton     m_andJoinButton      = null;
+    private AbstractButton	   m_andSplitJoinButton	= null;
 
     private AbstractButton     m_xorSplitButton     = null;
     private AbstractButton     m_xorJoinButton      = null;
@@ -135,6 +136,7 @@ public class ToolBarVC extends JToolBar implements IViewController
         add(getXorJoinButton());
         addSeparator(new Dimension(5, 5));
         add(getXorSplitJoinButton());
+        add(getAndSplitJoinButton());
         // add(getOrSplitButton());
         addSeparator(new Dimension(5, 0));
         add(getSubProcessButton());
@@ -326,6 +328,14 @@ public class ToolBarVC extends JToolBar implements IViewController
         return m_xorSplitJoinButton;
     }
 
+    private AbstractButton getAndSplitJoinButton()
+    {
+        if (m_andSplitJoinButton == null)
+        {
+            m_andSplitJoinButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_DRAWMODE_ANDSPLITJOIN), true);
+        }
+        return m_andSplitJoinButton;
+    }
     // private AbstractButton getOrSplitButton()
     // {
     // if (m_orSplitButton == null)

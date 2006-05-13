@@ -66,6 +66,8 @@ public class OperatorTransitionModel extends TransitionModel
     public static final int       XOR_JOIN_TYPE         = 105;
 
     public static final int       XOR_SPLITJOIN_TYPE    = 106;
+    
+    public static final int		  AND_SPLITJOIN_TYPE	= 107;
 
     public final static int[][][] OR_SPLIT_TABLE        = {
             { { 0 } },

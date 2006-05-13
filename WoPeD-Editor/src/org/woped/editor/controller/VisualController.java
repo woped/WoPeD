@@ -120,8 +120,10 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     public static final int         ELEMENT_SELECTION              = 28;
 
     public static final int         CAN_PASTE                      = 29;
+    
+    public static final int         DRAWMODE_AND_SPLITJOIN         = 30;    
 
-    private static final int        MAX_ID                         = 30;
+    private static final int        MAX_ID                         = 31;
 
     private Vector[]                m_enable                       = new Vector[MAX_ID + 1];
 
@@ -467,6 +469,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
         boolean xorSplit = false;
         boolean xorJoin = false;
         boolean xorSplitJoin = false;
+        boolean andSplitJoin = false;
         boolean orSplit = false;
         boolean subprocess = false;
 
@@ -486,6 +489,9 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             case (OperatorTransitionModel.AND_JOIN_TYPE):
                 andJoin = true;
                 break;
+            case (OperatorTransitionModel.AND_SPLITJOIN_TYPE):
+            	andSplitJoin = true;
+            	break;
             case (OperatorTransitionModel.XOR_SPLIT_TYPE):
                 xorSplit = true;
                 break;
@@ -508,6 +514,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
         setStatus(DRAWMODE_TRANSITION, transition);
         setStatus(DRAWMODE_AND_SPLIT, andSplit);
         setStatus(DRAWMODE_AND_JOIN, andJoin);
+        setStatus(DRAWMODE_AND_SPLITJOIN, andSplitJoin);
         setStatus(DRAWMODE_XOR_SPLIT, xorSplit);
         setStatus(DRAWMODE_XOR_JOIN, xorJoin);
         setStatus(DRAWMODE_XOR_SPLITJOIN, xorSplitJoin);

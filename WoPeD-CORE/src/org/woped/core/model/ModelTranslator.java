@@ -122,7 +122,8 @@ public class ModelTranslator
                 tempOperator = (OperatorTransitionModel) tempElement;
                 tempCreateMap = tempElement.getCreationMap();
                 tempCreateMap.setType(AbstractUMLElementModel.OPERATOR_TYPE);
-                if (tempOperator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE)
+                if (tempOperator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE
+                		|| tempOperator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
                 {
                     tempCreateMap.setOperatorType(OperatorModel.AND_TYPE);
                     uml.createElement(tempCreateMap).setElementContext(tempElement.getElementContext());

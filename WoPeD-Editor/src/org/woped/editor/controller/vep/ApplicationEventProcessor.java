@@ -59,6 +59,9 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
         case AbstractViewEvent.DRAWMODE_ANDSPLIT:
             setDrawMode(OperatorTransitionModel.AND_SPLIT_TYPE, true);
             break;
+        case AbstractViewEvent.DRAWMODE_ANDSPLITJOIN:
+            setDrawMode(OperatorTransitionModel.AND_SPLITJOIN_TYPE, true);
+            break;
         case AbstractViewEvent.DRAWMODE_XORJOIN:
             setDrawMode(OperatorTransitionModel.XOR_JOIN_TYPE, true);
             break;
