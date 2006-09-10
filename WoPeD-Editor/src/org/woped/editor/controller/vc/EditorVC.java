@@ -47,6 +47,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
+import java.util.ArrayList;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -1232,18 +1233,37 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
      * 
      * @see GraphSelectionListener#valueChanged(org.jgraph.event.GraphSelectionEvent)
      */
+    private boolean valueChangedActive = false;
     public void valueChanged(GraphSelectionEvent arg0)
     {
-        // If the selected Cell is any PetriNetModel the parent gets selected.
-        // Elements can only be draged together with their name.
-        if (arg0.getCell() instanceof PetriNetModelElement)
-        {
-            TreeNode parent = ((PetriNetModelElement) arg0.getCell()).getParent();
-            if (parent != null)
-            {
-                getGraph().setSelectionCell(parent);
-            }
-        }
+    	if (valueChangedActive)
+    		// Do not call ourselves endlessly
+    		// We have to make a call to setSelectionCells()
+    		// which once again would trigger this method call
+    		// This is by design.
+    		return;
+    	
+        // If the selected Cell(s) are any PetriNetModel their respective parents get selected.
+        // Elements can only be dragged together with their name.
+    	Object cells[] = arg0.getCells();
+    	ArrayList addedCells = new ArrayList();
+    	for (int i = 0;i<cells.length;++i)
+    	{
+    		if (arg0.isAddedCell(cells[i]))
+    		{			
+    			Object toBeAdded = cells[i];
+    			if (toBeAdded instanceof PetriNetModelElement)
+    			{    				
+    				TreeNode parent = ((PetriNetModelElement) toBeAdded).getParent();    				
+    				if (parent != null)
+    					toBeAdded = parent;
+    			}
+    			addedCells.add(toBeAdded);
+    		};
+    	};
+    	valueChangedActive = true;
+		getGraph().addSelectionCells(addedCells.toArray());
+		valueChangedActive = false;
     }
 
     /**

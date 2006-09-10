@@ -34,9 +34,14 @@ import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
+import org.woped.woflan.NetAnalysisDialog;
+import org.processmining.framework.models.petrinet.algorithms.*;
 
 public class FileEventProcessor extends AbstractEventProcessor
 {
+	//! Set this to true to run WofLan from the WofLAN DLL 
+	//! using the java native interface
+	private static boolean bRunWofLanDLL = false; 
 
     public FileEventProcessor(int vepID, ApplicationMediator mediator)
     {
@@ -92,20 +97,47 @@ public class FileEventProcessor extends AbstractEventProcessor
                 if (succeed)
                 {
                     File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn");
-                    Process process = null;
                     if (f.exists())
                     {
-                        try
-                        {
-                            process = Runtime.getRuntime().exec(ConfigurationManager.getConfiguration().getWoflanPath() + " " + "\"" + f.getAbsolutePath() + "\"");
-                            LoggerManager.info(Constants.FILE_LOGGER, "WOFLAN Started.");
-                        } catch (IOException e)
-                        {
-                            LoggerManager.warn(Constants.FILE_LOGGER, "COULD NOT START WOFLAN PROCESS.");
-                        }
+                    	if (!bRunWofLanDLL)
+                    	{
+                    		Process process = null;
+                    		try
+                    		{
+                    			process = Runtime.getRuntime().exec(ConfigurationManager.getConfiguration().getWoflanPath() + " " + "\"" + f.getAbsolutePath() + "\"");
+                    			LoggerManager.info(Constants.FILE_LOGGER, "WOFLAN Started.");
+                    		} catch (IOException e)
+                    		{
+                    			LoggerManager.warn(Constants.FILE_LOGGER, "COULD NOT START WOFLAN PROCESS.");
+                    		}
+                    		// Success in this context means that
+                    		// we could run the woflan process
+                    		succeed = process != null;
+                    	}
+                    	else
+                    	{                    	
+                    		try
+                    		{                        	
+                    			// Instantiate net analysis dialog and display it
+                    			// Arguments are the Woflan TPN file and the model processor
+                    			// for the petri-net model that is in focus
+                    			NetAnalysisDialog myDialog = new NetAnalysisDialog(f,
+                    					getMediator().getUi().getEditorFocus());
+                    			myDialog.setVisible(true);                        	
+                    			
+                    			LoggerManager.info(Constants.FILE_LOGGER, "WOFLAN Started.");
+                    		} catch (Exception e)
+                    		{
+                    			LoggerManager.warn(Constants.FILE_LOGGER, "COULD NOT START WOFLAN PROCESS.");
+                    		}
+                    	}
 
-                    }
-                    if (process == null || !f.exists())
+                    }    
+                    else 
+                    	// The temporary file doesn't exist
+                    	// This most definitely means failure!
+                    	succeed = false;
+                    if (!succeed)
                     {
                     	String arg[] = {ConfigurationManager.getConfiguration().getHomedir()};
                         JOptionPane.showMessageDialog(null, 
