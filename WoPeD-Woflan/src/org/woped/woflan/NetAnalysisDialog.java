@@ -38,7 +38,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     	if (m_netHandle!=-1)
     	{
         	setSize(640,480);
-        	setLayout(new GridLayout(1,1));
+        	getContentPane().setLayout(new GridLayout(1,1));
         	// Add tree control to display the output of our WOFLAN library
         	DefaultMutableTreeNode top =
                 new NetInfo("Net Analysis");
