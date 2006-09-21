@@ -1,0 +1,29 @@
+<project default="makejar" name="WOFLAN">
+	
+	<property name="JGRAPHVERSION" value="5.4.4" />
+	<property name="LOG4JVERSION" value="1.2.8" />
+	<property name="WOFLANVERSION" value="1.0.0" />
+	<property name="COREVERSION" value="1.0.0" />	
+	<property name="SNAPSHOT" value="-beta" />
+		
+	<target name="compile">
+			<javac srcdir="src" destdir="bin" compiler="extJavac">
+				<classpath>
+					<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}.jar" />
+					<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+					<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+				</classpath>
+			</javac>
+	</target>
+	
+	<target name="makejar" depends="compile">
+		<jar destfile="lib/woped-woflan-${WOFLANVERSION}${SNAPSHOT}.jar">
+			<fileset dir="bin" />
+		</jar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="bin/org" />
+	</target>
+
+</project>

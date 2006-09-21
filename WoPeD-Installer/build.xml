@@ -7,6 +7,7 @@
 	<property name="COREVERSION" value="1.0.0" />
 	<property name="EDITORVERSION" value="1.0.0" />
 	<property name="FILEINTERFACEVERSION" value="1.0.0" />
+	<property name="WOLFANVERSION" value="1.0.0" />
 	<property name="GUIVERSION" value="1.0.0" />
 	<property name="CONFIGURATIONVERSION" value="1.0.0" />
 	<property name="SNAPSHOT" value="-beta" />
@@ -16,6 +17,7 @@
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="coreversion" value="${COREVERSION}${SNAPSHOT}" />
 	<filter token="editorversion" value="${EDITORVERSION}${SNAPSHOT}" />
+	<filter token="woflanversion" value="${WOFLANVERSION}${SNAPSHOT}" />
 	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}${SNAPSHOT}" />
 	<filter token="guiversion" value="${GUIVERSION}${SNAPSHOT}" />
 	<filter token="configurationversion" value="${CONFIGURATIONVERSION}${SNAPSHOT}" />
@@ -55,6 +57,7 @@
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
 			<fileset dir="../WoPeD-StandaloneRunner/bin" />
+			<fileset dir="../WoPeD-Woflan/bin" />
 			<fileset dir="../WoPeD-XMLConfiguration/bin" />
 		</jar>
 	</target>	
@@ -65,6 +68,7 @@
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
 		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
+		<copy todir="dist" file="../WoPeD-StandaloneRunner/WofJava.dll" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
@@ -112,6 +116,7 @@
 		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
 		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
+		<ant antfile="../WoPeD-Woflan/build.xml" dir="../WoPeD-Woflan" />
 	</target>
 	
 	<target name="makeinstaller">
