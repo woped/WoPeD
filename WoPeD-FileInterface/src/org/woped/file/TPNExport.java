@@ -120,6 +120,7 @@ public class TPNExport
         }
         line += currentModel.getId();
 
+
         // Input
         PetriNetModelElement tempPlace;
         line += " in";
@@ -128,10 +129,12 @@ public class TPNExport
         {
             tempPlace = (PetriNetModelElement) container.getElementById(tempIter.next());
             line += " #";
-            if (ConfigurationManager.getConfiguration().isTpnSaveElementAsName())
-            {
-                line += tempPlace.getNameValue().replaceAll("[[\\W]&&[\\S|\\s]]", "") + "_";
-            }
+            // Should given name be appended to the transition ID ?
+            // If so, check whether such a name exists and add
+            String nameValue = tempPlace.getNameValue();
+            if ((ConfigurationManager.getConfiguration().isTpnSaveElementAsName())&&
+            		(nameValue!=null))
+            	line+=nameValue.replaceAll("[[\\W]&&[\\S|\\s]]", "") + "_";
 
             line += tempPlace.getId();
         }
@@ -143,9 +146,13 @@ public class TPNExport
         {
             tempPlace = (PetriNetModelElement) container.getElementById(tempIter.next());
             line += " #";
-            if (ConfigurationManager.getConfiguration().isTpnSaveElementAsName())
+            // Should given name be appended to the transition ID ?
+            // If so, check whether such a name exists and add
+            String nameValue = tempPlace.getNameValue();
+            if ((ConfigurationManager.getConfiguration().isTpnSaveElementAsName())&&
+            		(nameValue!=null))
             {
-                line += tempPlace.getNameValue().replaceAll("[[\\W]&&[\\S|\\s]]", "") + "_";
+                line += nameValue.replaceAll("[[\\W]&&[\\S|\\s]]", "") + "_";
             }
 
             line += tempPlace.getId();
