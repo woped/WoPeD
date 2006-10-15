@@ -47,7 +47,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
         	getContentPane().add(new JScrollPane(m_treeObject));
         	
         	BuildBasicInfo(top);
-        	BuildWorkflowInfo(top);
+        	BuildStructuralAnalysis(top);
     	}		
     	
     	// Listen to close event to be able to dispose of our temporary file
@@ -76,9 +76,61 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			"Number of arcs: ", 
     			m_myWofLan.InfoNofC, 0, 0));			
 	}
+	private void BuildStructuralAnalysis(DefaultMutableTreeNode parent)
+	{
+		DefaultMutableTreeNode current = new NetInfo("Structural Analysis");
+		parent.add(current);
+
+    	BuildWorkflowInfo(current);
+    	// Enable the creation of non-free choice info
+    	m_myWofLan.Info(m_netHandle, 
+    			m_myWofLan.SetNFCC, 0, 0);
+    	current.add(new MultipleGroupsNetInfo(m_currentEditor,
+    			this, 
+    			"Number of non-free choice clusters: ",
+    			m_myWofLan.InfoNofNFCC,
+    			m_myWofLan.InfoNFCCNofN,
+    			"Non-free choice cluster, Number of elements: ",
+    			"",
+    			m_myWofLan.InfoNFCCNName));   
+    	BuildHandleInformation(current);
+		
+	}
+	private void BuildHandleInformation(DefaultMutableTreeNode parent)
+	{
+		DefaultMutableTreeNode current = new NetInfo("Well-Handledness");
+		parent.add(current);
+
+		// Yes, create well-handledness info
+    	m_myWofLan.Info(m_netHandle, 
+    			m_myWofLan.SetPTH, 0, 0);
+    	m_myWofLan.Info(m_netHandle, 
+    			m_myWofLan.SetTPH, 0, 0);
+		
+		// Display conflicts and parallelizations that
+		// are not well-handled
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of PT-Handles: ",
+				m_myWofLan.InfoNofPTH,
+				m_myWofLan.InfoPTHNofN1,
+				"Non-well-handled path, Number of elements: ",
+				"",
+				m_myWofLan.InfoPTHN1Name));
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of TP-Handles: ",
+				m_myWofLan.InfoNofTPH,
+				m_myWofLan.InfoTPHNofN1,
+				"Non-well-handled path, Number of elements: ",
+				"",
+				m_myWofLan.InfoTPHN1Name));
+		
+	}
+	
 	private void BuildWorkflowInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Workflow analysis");
+		DefaultMutableTreeNode current = new NetInfo("Workflow Analysis");
 		parent.add(current);
 				
     	// Enumerate source places
@@ -93,18 +145,35 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			m_myWofLan.InfoNofSnkP ,
     			"",
     			m_myWofLan.InfoSnkPName));
-    	
-    	// Enable the creation of non-free choice info
-    	m_myWofLan.Info(m_netHandle, 
-    			m_myWofLan.SetNFCC, 0, 0);
-    	current.add(new MultipleGroupsNetInfo(m_currentEditor,
-    			this, 
-    			"Number of non-free choice clusters: ",
-    			m_myWofLan.InfoNofNFCC,
-    			m_myWofLan.InfoNFCCNofN,
-    			"Non-free choice cluster, Number of elements: ",
+    	// Enumerate source transitions
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of source transitions: ", 
+    			m_myWofLan.InfoNofSrcT ,
     			"",
-    			m_myWofLan.InfoNFCCNName));    	
+    			m_myWofLan.InfoSrcTName));
+    	// Enumerate sink transitions
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of sink transitions: ", 
+    			m_myWofLan.InfoNofSnkT ,
+    			"",
+    			m_myWofLan.InfoSnkTName));
+
+    	// Determine connectedness
+    	m_myWofLan.Info(m_netHandle, 
+    			m_myWofLan.SetSUnc, 0, 0);
+    	
+    	// Show nodes that are not connected to the source 
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of unconnected nodes: ",
+    			m_myWofLan.InfoNofUncN,
+    			"",
+    			m_myWofLan.InfoUncNName));
+    	// Show nodes that are not strongly connected to the source
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of not strongly connected nodes: ",
+    			m_myWofLan.InfoNofSncN,
+    			"",
+    			m_myWofLan.InfoSncNName));    	
 	}
 	public void windowClosing(WindowEvent e) {
 		// When receiving a windowClosing() event we will
