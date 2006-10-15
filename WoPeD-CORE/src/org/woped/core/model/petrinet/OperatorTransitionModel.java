@@ -54,6 +54,8 @@ public class OperatorTransitionModel extends TransitionModel
     public static final String    INNERID_SEPERATOR_OLD = "#";
 
     public static final String    INNERID_SEPERATOR     = "_";
+    
+    public static final String 	  OPERATOR_SEPERATOR    = INNERID_SEPERATOR + "op" + INNERID_SEPERATOR; 
 
     public static final int       AND_SPLIT_TYPE        = 101;
 
@@ -125,7 +127,7 @@ public class OperatorTransitionModel extends TransitionModel
     public String getnewSimpleTransId()
     {
         simpleTransCounter++;
-        return getId() + INNERID_SEPERATOR + "op" + INNERID_SEPERATOR + simpleTransCounter;
+        return getId() + OPERATOR_SEPERATOR + simpleTransCounter;
     }
 
     /**

@@ -35,7 +35,6 @@ import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
 import org.woped.woflan.NetAnalysisDialog;
-import org.processmining.framework.models.petrinet.algorithms.*;
 
 public class FileEventProcessor extends AbstractEventProcessor
 {

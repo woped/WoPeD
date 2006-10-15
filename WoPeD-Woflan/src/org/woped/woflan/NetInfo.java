@@ -14,8 +14,7 @@ public class NetInfo extends DefaultMutableTreeNode {
 	//! It is called when the selection changes
 	//! to select the corresponding items in the
 	//! graph view
-	//! The returned object's toString() method will
-	//! be used to derive the identifier of the
-	//! graph model element to be selected
+	//! The returned objects are the graph model elements 
+	//! to be selected
 	Object[] getReferencedElements() { return new Object[0]; };
 }

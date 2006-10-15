@@ -62,17 +62,17 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		parent.add(current);
 				
     	// Now get some information about the net
-    	current.add(new GroupNetInfo(this,
+    	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of places: ", 
-    			m_myWofLan.InfoNofP, 0, 0,
+    			m_myWofLan.InfoNofP, 
     			"",
     			m_myWofLan.InfoPName));
-    	current.add(new GroupNetInfo(this,
+    	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of transitions: ", 
-    			m_myWofLan.InfoNofT, 0, 0,
+    			m_myWofLan.InfoNofT,
     			"",
     			m_myWofLan.InfoTName));			
-    	current.add(new UnaryNetInfo(this,
+    	current.add(new UnaryNetInfo(m_currentEditor, this,
     			"Number of arcs: ", 
     			m_myWofLan.InfoNofC, 0, 0));			
 	}
@@ -82,17 +82,29 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		parent.add(current);
 				
     	// Enumerate source places
-    	current.add(new GroupNetInfo(this,
+    	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of source places: ", 
-    			m_myWofLan.InfoNofSrcP , 0, 0,
+    			m_myWofLan.InfoNofSrcP ,
     			"",
     			m_myWofLan.InfoSrcPName));
     	// Enumerate sink places
-    	current.add(new GroupNetInfo(this,
+    	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of sink places: ", 
-    			m_myWofLan.InfoNofSnkP , 0, 0,
+    			m_myWofLan.InfoNofSnkP ,
     			"",
     			m_myWofLan.InfoSnkPName));
+    	
+    	// Enable the creation of non-free choice info
+    	m_myWofLan.Info(m_netHandle, 
+    			m_myWofLan.SetNFCC, 0, 0);
+    	current.add(new MultipleGroupsNetInfo(m_currentEditor,
+    			this, 
+    			"Number of non-free choice clusters: ",
+    			m_myWofLan.InfoNofNFCC,
+    			m_myWofLan.InfoNFCCNofN,
+    			"Non-free choice cluster, Number of elements: ",
+    			"",
+    			m_myWofLan.InfoNFCCNName));    	
 	}
 	public void windowClosing(WindowEvent e) {
 		// When receiving a windowClosing() event we will
@@ -128,7 +140,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		// eliminate those double entries)
 		TreePath selection[] = currentSelection.getSelectionPaths();
 		HashSet processedSelection = new HashSet();
-		for (int i=0;i<selection.length;++i)
+		for (int i=0;(selection!=null)&&(i<selection.length);++i)
 		{
 			// One tree node can reference more than one petri-net
 			// element that is to be selected
@@ -147,12 +159,9 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		LoggerManager.info(Constants.WOFLAN_LOGGER, "New Selection: {");
 		for (Iterator i=processedSelection.iterator();i.hasNext();)
 		{
-			String objectID = i.next().toString();
-			objectID = objectID.substring(objectID.lastIndexOf('_')+1);
-			Object current =
-				elements.getElementById(objectID);
-			newSelection.add(current);
-			LoggerManager.info(Constants.WOFLAN_LOGGER, objectID);
+			Object currentObject = i.next();
+			newSelection.add(currentObject);
+			LoggerManager.info(Constants.WOFLAN_LOGGER, currentObject.toString());
 		}
 		LoggerManager.info(Constants.WOFLAN_LOGGER, "}\n");
 		// Need to have an intermediary for our new selection

@@ -5,24 +5,30 @@ import java.util.*;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.controller.*;
 
-public class GroupNetInfo extends UnaryNetInfo {
-	public GroupNetInfo(
+public class MultipleGroupsNetInfo extends UnaryNetInfo {
+	public MultipleGroupsNetInfo(
 			IEditor currentEditor,
 			NetAnalysisDialog parent,
 			String displayString,
-			int numElementsInfo,
+			int numGroupsInfo, 
+			int numGroupMembers,
+			String groupDisplayString,
 			String subItemDisplayString,
-			int elementInfo)
+			int groupIterator)
 	{
 		// First of all, initialize the element itself
-		super(currentEditor, parent, displayString, 
-				numElementsInfo, 0, 0);
-		// Get number of sub elements
-		String elementCount = parent.m_myWofLan.Info(parent.m_netHandle, 
-				numElementsInfo, 0, 0);
-		int nElementCount = Integer.parseInt(elementCount);
+		super(currentEditor, parent, displayString, numGroupsInfo, 0, 0);
+		// Get number of groups
+		String groupCount = parent.m_myWofLan.Info(parent.m_netHandle, 
+				numGroupsInfo, 0, 0);
+		int nElementCount = Integer.parseInt(groupCount);
 		for (int i=0;i<nElementCount;++i)
-			add(new UnaryNetInfo(currentEditor, parent, subItemDisplayString, elementInfo, i, 0));		
+			add(new SubGroupNetInfo(currentEditor, parent, 
+					groupDisplayString,
+					numGroupMembers, i,
+					subItemDisplayString,
+					groupIterator));
+					
 	}
 	public Object[] getReferencedElements() {
 		// This is a group item
