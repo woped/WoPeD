@@ -47,6 +47,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
         	
         	BuildBasicInfo(top);
         	BuildStructuralAnalysis(top);
+        	BuildSemanticalAnalysis(top);
     	}		
     	
     	// Listen to close event to be able to dispose of our temporary file
@@ -75,6 +76,223 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			"Number of arcs: ", 
     			m_myWofLan.InfoNofC, 0, 0));			
 	}
+	
+	private void BuildSemanticalAnalysis(DefaultMutableTreeNode parent)
+	{
+		DefaultMutableTreeNode current = new NetInfo("Semantical Analysis");
+		parent.add(current);
+		
+		BuildInvariantsInfo(current);
+		BuildSoundnessInfo(current);
+	}
+	
+	private void BuildSoundnessInfo(DefaultMutableTreeNode parent)
+	{
+		DefaultMutableTreeNode current = new NetInfo("Soundness checks");
+		parent.add(current);
+		
+		BuildBoundednessInfo(current);	
+		BuildLivenessInfo(current);
+	}
+	
+	private void BuildBoundednessInfo(DefaultMutableTreeNode parent)
+	{
+		DefaultMutableTreeNode current = new NetInfo("Boundedness Info");
+		parent.add(current);
+		
+		// Calculate boundedness information
+		m_myWofLan.Info(m_netHandle, m_myWofLan.SetUnb, 0, 0);
+
+		// Show unbounded places
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of unbounded places: ", 
+    			m_myWofLan.InfoNofUnbP,
+    			"",
+    			m_myWofLan.InfoUnbPName,
+    			
+    			-1,
+    			0,
+    			false
+    	));
+    	
+		// Display unbounded sequences
+    	// that is, transition sequences that will 
+    	// keep increasing the number of total tokens
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of unbounded sequences: ",
+				m_myWofLan.InfoNofUnbS,
+				m_myWofLan.InfoUnbSNofT,
+				"Unbounded sequence, Number of transitions: ",
+				"",
+				m_myWofLan.InfoUnbSTName,
+				
+				-1, 0, false));		
+	}
+	
+	private void BuildLivenessInfo(DefaultMutableTreeNode parent)
+	{
+		DefaultMutableTreeNode current = new NetInfo("Liveness Info");
+		parent.add(current);
+
+		// Calculate Liveness information
+		m_myWofLan.Info(m_netHandle, m_myWofLan.SetNLive, 0, 0);
+
+		// Show dead transitions
+		// (transitions that will not ever be active for any marking)
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of dead transitions: ", 
+    			m_myWofLan.InfoNofDeadT,
+    			"",
+    			m_myWofLan.InfoDeadTName,
+    			
+    			-1,
+    			0,
+    			false
+    	));
+		// Show zombie transitions
+    	// (transitions that ain't quite dead yet)
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of non-live transitions: ", 
+    			m_myWofLan.InfoNofNLiveT,
+    			"",
+    			m_myWofLan.InfoNLiveTName,
+    			
+    			-1,
+    			0,
+    			false
+    	));
+		// Display non-live sequences
+    	// that is a sequence to "kill" a zombie transition
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of non-live sequences: ",
+				m_myWofLan.InfoNofNLiveS,
+				m_myWofLan.InfoNLiveSNofT,
+				"Non-live sequence, Number of transitions: ",
+				"",
+				m_myWofLan.InfoNLiveSTName,
+				
+				-1, 0, false));		    					
+	}
+	
+	private void BuildInvariantsInfo(DefaultMutableTreeNode parent)
+	{
+		DefaultMutableTreeNode current = new NetInfo("Invariants information");
+		parent.add(current);
+		
+		// Calculate all invariants information we can get
+		m_myWofLan.Info(m_netHandle, m_myWofLan.SetPInv, 0, 0);
+		m_myWofLan.Info(m_netHandle, m_myWofLan.SetSPIn, 0, 0);
+		m_myWofLan.Info(m_netHandle, m_myWofLan.SetTInv, 0, 0);
+		m_myWofLan.Info(m_netHandle, m_myWofLan.SetSTIn, 0, 0);
+		
+		// Display the P-Invariants of this net
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of P-Invariants: ",
+				m_myWofLan.InfoNofPInv,
+				m_myWofLan.InfoPInvNofP,
+				"P-Invariant, Number of elements: ",
+				"",
+				m_myWofLan.InfoPInvPName,
+				
+				-1, 1, true));
+
+		// Show the places that are not covered by any P-Invariant
+		// of the net.
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of places not covered by P-Invariant: ", 
+    			m_myWofLan.InfoNofPotPInv ,
+    			"",
+    			m_myWofLan.InfoNotPInvPName,
+    			
+    			-1,
+    			0,
+    			false
+    	));				
+
+    	// Display the Semi-positive P-Invariants of this net
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of semi-positive P-Invariants: ",
+				m_myWofLan.InfoNofSPIn,
+				m_myWofLan.InfoSPInNofP,
+				"Semi-positive P-Invariant, Number of elements: ",
+				"",
+				m_myWofLan.InfoSPInPName,
+				
+				-1, 1, true));
+
+		// Show the places that are not covered by any 
+		// Semi-positive P-Invariant
+		// of the net.
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of places not covered by semi-positive P-Invariant: ", 
+    			m_myWofLan.InfoNofPotSPIn ,
+    			"",
+    			m_myWofLan.InfoNotSPInPName,
+    			
+    			-1,
+    			0,
+    			false
+    	));
+
+		
+		// Display the T-Invariants of this net
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of T-Invariants: ",
+				m_myWofLan.InfoNofTInv,
+				m_myWofLan.InfoTInvNofP,
+				"T-Invariant, Number of elements: ",
+				"",
+				m_myWofLan.InfoTInvPName,
+				
+				-1, 1, true));
+
+		// Show the places that are not covered by any T-Invariant
+		// of the net.
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number of transitions not covered by T-Invariant: ", 
+    			m_myWofLan.InfoNofPotTInv ,
+    			"",
+    			m_myWofLan.InfoNotTInvPName,
+    			
+    			-1,
+    			0,
+    			false
+    	));				
+
+    	// Display the Semi-positive T-Invariants of this net
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of semi-positive T-Invariants: ",
+				m_myWofLan.InfoNofSTIn,
+				m_myWofLan.InfoSTInNofP,
+				"Semi-positive T-Invariant, Number of elements: ",
+				"",
+				m_myWofLan.InfoSTInPName,
+				
+				-1, 1, true));
+
+		// Show the places that are not covered by any 
+		// Semi-positive P-Invariant
+		// of the net.
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number places not covered by semi-positive T-Invariant: ", 
+    			m_myWofLan.InfoNofPotSTIn ,
+    			"",
+    			m_myWofLan.InfoNotSTInPName,
+    			
+    			-1,
+    			0,
+    			false
+    	));    	
+			    	
+		
+	}
+
 	private void BuildStructuralAnalysis(DefaultMutableTreeNode parent)
 	{
 		DefaultMutableTreeNode current = new NetInfo("Structural Analysis");
@@ -97,8 +315,41 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			0,
     			false));   
     	BuildHandleInformation(current);
-		
+    	BuildSComponentInformation(current);
 	}
+	private void BuildSComponentInformation(DefaultMutableTreeNode parent)
+	{
+		DefaultMutableTreeNode current = new NetInfo("S-Components");
+		parent.add(current);
+		
+		// Create S-Component information
+		m_myWofLan.Info(m_netHandle, m_myWofLan.SetSCom, 0, 0);
+		
+		// Display the S-Components of this net
+		current.add(new MultipleGroupsNetInfo(m_currentEditor,
+				this,
+				"Number of S-Components: ",
+				m_myWofLan.InfoNofSCom,
+				m_myWofLan.InfoSComNofN,
+				"S-Component, Number of elements: ",
+				"",
+				m_myWofLan.InfoSComNName,
+				
+				-1, -1, true));
+
+		// Show the places that are not covered by any S-Component
+		// of the net. If such a place exists the net is not s-coverable
+    	current.add(new GroupNetInfo(m_currentEditor, this,
+    			"Number places not covered by S-Component: ", 
+    			m_myWofLan.InfoNofNotSCom ,
+    			"",
+    			m_myWofLan.InfoNotSComNName,
+    			
+    			-1,
+    			0,
+    			false
+    	));		
+	}	
 	private void BuildHandleInformation(DefaultMutableTreeNode parent)
 	{
 		DefaultMutableTreeNode current = new NetInfo("Well-Handledness");
