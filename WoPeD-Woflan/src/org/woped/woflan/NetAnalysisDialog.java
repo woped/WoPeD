@@ -1,19 +1,17 @@
 package org.woped.woflan;
 
 import java.io.File;
-import java.lang.reflect.Method;
 
 import javax.swing.*;
 import javax.swing.tree.*;
 import javax.swing.event.*;
 
-import org.jgraph.graph.GraphModel.*;
-import org.jgraph.graph.GraphSelectionModel;
 import org.processmining.framework.models.petrinet.algorithms.Woflan;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.model.*;
-import org.woped.core.model.petrinet.*;
+
 import org.woped.core.controller.*;
+import org.woped.woflan.NetInfoTreeRenderer;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -43,6 +41,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
         	DefaultMutableTreeNode top =
                 new NetInfo("Net Analysis");
         	m_treeObject = new JTree(top);
+    		m_treeObject.setCellRenderer(new NetInfoTreeRenderer());        	
         	m_treeObject.setShowsRootHandles(true);
         	getContentPane().add(new JScrollPane(m_treeObject));
         	
@@ -66,12 +65,12 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			"Number of places: ", 
     			m_myWofLan.InfoNofP, 
     			"",
-    			m_myWofLan.InfoPName));
+    			m_myWofLan.InfoPName,-1,-1,true));
     	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of transitions: ", 
     			m_myWofLan.InfoNofT,
     			"",
-    			m_myWofLan.InfoTName));			
+    			m_myWofLan.InfoTName,-1,-1,true));			
     	current.add(new UnaryNetInfo(m_currentEditor, this,
     			"Number of arcs: ", 
     			m_myWofLan.InfoNofC, 0, 0));			
@@ -92,7 +91,11 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			m_myWofLan.InfoNFCCNofN,
     			"Non-free choice cluster, Number of elements: ",
     			"",
-    			m_myWofLan.InfoNFCCNName));   
+    			m_myWofLan.InfoNFCCNName,
+    			
+    			-1,
+    			0,
+    			false));   
     	BuildHandleInformation(current);
 		
 	}
@@ -116,7 +119,9 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 				m_myWofLan.InfoPTHNofN1,
 				"Non-well-handled path, Number of elements: ",
 				"",
-				m_myWofLan.InfoPTHN1Name));
+				m_myWofLan.InfoPTHN1Name,
+				
+				-1, 0, false));
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
 				"Number of TP-Handles: ",
@@ -124,7 +129,9 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 				m_myWofLan.InfoTPHNofN1,
 				"Non-well-handled path, Number of elements: ",
 				"",
-				m_myWofLan.InfoTPHN1Name));
+				m_myWofLan.InfoTPHN1Name,
+				
+				-1, 0, false));
 		
 	}
 	
@@ -138,25 +145,36 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			"Number of source places: ", 
     			m_myWofLan.InfoNofSrcP ,
     			"",
-    			m_myWofLan.InfoSrcPName));
+    			m_myWofLan.InfoSrcPName,
+    			
+    			1,
+    			1,
+    			false
+    	));
     	// Enumerate sink places
     	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of sink places: ", 
     			m_myWofLan.InfoNofSnkP ,
     			"",
-    			m_myWofLan.InfoSnkPName));
+    			m_myWofLan.InfoSnkPName,
+    			
+    			1,
+    			1,
+    			false
+    	));
     	// Enumerate source transitions
     	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of source transitions: ", 
     			m_myWofLan.InfoNofSrcT ,
     			"",
-    			m_myWofLan.InfoSrcTName));
+    			m_myWofLan.InfoSrcTName,
+    			0,0,false));
     	// Enumerate sink transitions
     	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of sink transitions: ", 
     			m_myWofLan.InfoNofSnkT ,
     			"",
-    			m_myWofLan.InfoSnkTName));
+    			m_myWofLan.InfoSnkTName,0,0,false));
 
     	// Determine connectedness
     	m_myWofLan.Info(m_netHandle, 
@@ -167,13 +185,13 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			"Number of unconnected nodes: ",
     			m_myWofLan.InfoNofUncN,
     			"",
-    			m_myWofLan.InfoUncNName));
+    			m_myWofLan.InfoUncNName,-1,0,false));
     	// Show nodes that are not strongly connected to the source
     	current.add(new GroupNetInfo(m_currentEditor, this,
     			"Number of not strongly connected nodes: ",
     			m_myWofLan.InfoNofSncN,
     			"",
-    			m_myWofLan.InfoSncNName));    	
+    			m_myWofLan.InfoSncNName,-1,0,false));    	
 	}
 	public void windowClosing(WindowEvent e) {
 		// When receiving a windowClosing() event we will

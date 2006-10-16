@@ -14,10 +14,19 @@ public class MultipleGroupsNetInfo extends UnaryNetInfo {
 			int numGroupMembers,
 			String groupDisplayString,
 			String subItemDisplayString,
-			int groupIterator)
+			int groupIterator,
+			
+			int minGroupCount,
+			int maxGroupCount,
+			boolean infoOnly)
 	{
 		// First of all, initialize the element itself
 		super(currentEditor, parent, displayString, numGroupsInfo, 0, 0);
+		
+		m_nMinGroupCount = minGroupCount;
+		m_nMaxGroupCount = maxGroupCount;
+		m_bInfoOnly = infoOnly;
+		
 		// Get number of groups
 		String groupCount = parent.m_myWofLan.Info(parent.m_netHandle, 
 				numGroupsInfo, 0, 0);
@@ -56,6 +65,27 @@ public class MultipleGroupsNetInfo extends UnaryNetInfo {
 			}			
 		}
 		return collectedItems.toArray();
+	};
+	public int GetInfoState() {
+		int result = InfoStateInfo; 
+		if (m_bInfoOnly==false)
+		{
+			boolean isError = false;
+			int numChildren = getChildCount();
+			if ((m_nMinGroupCount!=-1)&&
+				(numChildren<m_nMinGroupCount))
+				isError = true;
+			if ((m_nMaxGroupCount!=-1)&&
+					(numChildren>m_nMaxGroupCount))
+					isError = true;
+			result = ((isError)?InfoStateERROR:InfoStateOK);
+		}		
+		return result;
 	};	
-
+	
+	//! This information is required to calculate the
+	//! correct info state for this item
+	private int m_nMinGroupCount;
+	private int m_nMaxGroupCount;
+	private boolean m_bInfoOnly;
 }

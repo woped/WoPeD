@@ -12,11 +12,20 @@ public class GroupNetInfo extends UnaryNetInfo {
 			String displayString,
 			int numElementsInfo,
 			String subItemDisplayString,
-			int elementInfo)
+			int elementInfo,
+			
+			int minElements,
+			int maxElements,
+			boolean infoOnly
+			)
 	{
 		// First of all, initialize the element itself
 		super(currentEditor, parent, displayString, 
 				numElementsInfo, 0, 0);
+		m_minElements = minElements;
+		m_maxElements = maxElements;
+		m_infoOnly = infoOnly;
+		
 		// Get number of sub elements
 		String elementCount = parent.m_myWofLan.Info(parent.m_netHandle, 
 				numElementsInfo, 0, 0);
@@ -51,5 +60,30 @@ public class GroupNetInfo extends UnaryNetInfo {
 		}
 		return collectedItems.toArray();
 	};	
+	public int GetInfoState() {
+		int result = InfoStateInfo; 
+		if (m_infoOnly==false)
+		{
+			boolean isError = false;
+			int numChildren = getChildCount();
+			if ((m_minElements!=-1)&&
+				(numChildren<m_minElements))
+				isError = true;
+			if ((m_maxElements!=-1)&&
+					(numChildren>m_maxElements))
+					isError = true;
+			result = ((isError)?InfoStateERROR:InfoStateOK);
+		}		
+		return result;
+	};	
+	
+	//! Specifies the minimum number of elements that need to be
+	//! present in this group or -1
+	private int m_minElements;
+	//! Specifies the maximum number of elements that need to be
+	//! present in this group or -1
+	private int m_maxElements;	
+	//! true if this group is serving information purposes only
+	private boolean m_infoOnly;
 
 }
