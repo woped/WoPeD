@@ -824,14 +824,12 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
 
     public void removeElement(AbstractElementModel element)
     {
-    // TODO Auto-generated method stub
-
+    	removeElement(element.getId());
     }
 
     public void removeElement(Object id)
     {
-    // TODO Auto-generated method stub
-
+    	getElementContainer().removeElement(id);
     }
 
 }

@@ -1,3 +1,6 @@
+// FIXME: This object must create a local copy of the
+// petri-net or inhibit editing (become a modal dialog etc.)
+
 package org.woped.woflan;
 
 import java.io.File;
@@ -26,6 +29,10 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		// Remember a reference to our model
 		// We need it to deal with selections
 		m_currentEditor = editor;
+		
+		// Instantiate our analysis object
+		m_structuralAnalysis = new StructuralAnalysis(m_currentEditor);
+		
     	// This code will try to talk to WofLan
     	// through the JNI
 		m_tempFile = temporaryFile;
@@ -61,20 +68,11 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		DefaultMutableTreeNode current = new NetInfo("Basic net information");
 		parent.add(current);
 				
-    	// Now get some information about the net
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of places: ", 
-    			m_myWofLan.InfoNofP, 
-    			"",
-    			m_myWofLan.InfoPName,-1,-1,true));
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of transitions: ", 
-    			m_myWofLan.InfoNofT,
-    			"",
-    			m_myWofLan.InfoTName,-1,-1,true));			
-    	current.add(new UnaryNetInfo(m_currentEditor, this,
-    			"Number of arcs: ", 
-    			m_myWofLan.InfoNofC, 0, 0));			
+		current.add(new NodeGroupNetInfo("Number of places: " + m_structuralAnalysis.GetNumPlaces(),
+				m_structuralAnalysis.GetPlacesIterator()));
+		current.add(new NodeGroupNetInfo("Number of transitions: " + m_structuralAnalysis.GetNumTransitions(),
+				m_structuralAnalysis.GetTransitionsIterator()));
+		current.add(new NetInfo("Number of arcs: "+ m_structuralAnalysis.GetNumArcs()));
 	}
 	
 	private void BuildSemanticalAnalysis(DefaultMutableTreeNode parent)
@@ -390,59 +388,79 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 	{
 		DefaultMutableTreeNode current = new NetInfo("Workflow Analysis");
 		parent.add(current);
-				
-    	// Enumerate source places
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of source places: ", 
-    			m_myWofLan.InfoNofSrcP ,
-    			"",
-    			m_myWofLan.InfoSrcPName,
-    			
-    			1,
-    			1,
-    			false
-    	));
-    	// Enumerate sink places
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of sink places: ", 
-    			m_myWofLan.InfoNofSnkP ,
-    			"",
-    			m_myWofLan.InfoSnkPName,
-    			
-    			1,
-    			1,
-    			false
-    	));
-    	// Enumerate source transitions
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of source transitions: ", 
-    			m_myWofLan.InfoNofSrcT ,
-    			"",
-    			m_myWofLan.InfoSrcTName,
-    			0,0,false));
-    	// Enumerate sink transitions
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of sink transitions: ", 
-    			m_myWofLan.InfoNofSnkT ,
-    			"",
-    			m_myWofLan.InfoSnkTName,0,0,false));
+		
+		
+		Iterator i = m_structuralAnalysis.GetNotStronglyConnectedNodes();
+		LoggerManager.info(Constants.WOFLAN_LOGGER, "Not strongly connected {");
+		while (i.hasNext())
+		{
+			AbstractElementModel element = (AbstractElementModel)i.next();
+			LoggerManager.info(Constants.WOFLAN_LOGGER, element.getId() + "," + element.getNameValue());
+		}
+		LoggerManager.info(Constants.WOFLAN_LOGGER, "}");
+		
+		current.add(new NodeGroupNetInfo("Number of source places: " + m_structuralAnalysis.GetNumSourcePlaces(),
+				m_structuralAnalysis.GetSourcePlacesIterator()) {
+			// We want exactly one source place
+			public int GetInfoState() {
+				if (getChildCount()!=1)
+					return InfoStateERROR;
+				else
+					return InfoStateOK;
+			}
+		});				
+		current.add(new NodeGroupNetInfo("Number of sink places: " + m_structuralAnalysis.GetNumSinkPlaces(),
+				m_structuralAnalysis.GetSinkPlacesIterator()) {
+					// We want exactly one sink place
+					public int GetInfoState() {
+						if (getChildCount()!=1)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});	
+		current.add(new NodeGroupNetInfo("Number of source transitions: " + m_structuralAnalysis.GetNumSourceTransitions(),
+				m_structuralAnalysis.GetSourceTransitionsIterator()) {
+					// Source transitions are not good and should trigger an error
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});					
+		current.add(new NodeGroupNetInfo("Number of sink transitions: " + m_structuralAnalysis.GetNumSinkTransitions(),
+				m_structuralAnalysis.GetSinkTransitionsIterator()) {
+					// Sink transitions are not good and should trigger an error
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});	
 
-    	// Determine connectedness
-    	m_myWofLan.Info(m_netHandle, 
-    			m_myWofLan.SetSUnc, 0, 0);
-    	
-    	// Show nodes that are not connected to the source 
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of unconnected nodes: ",
-    			m_myWofLan.InfoNofUncN,
-    			"",
-    			m_myWofLan.InfoUncNName,-1,0,false));
-    	// Show nodes that are not strongly connected to the source
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of not strongly connected nodes: ",
-    			m_myWofLan.InfoNofSncN,
-    			"",
-    			m_myWofLan.InfoSncNName,-1,0,false));    	
+		current.add(new NodeGroupNetInfo("Number of unconnected nodes: " + m_structuralAnalysis.GetNumNotConnectedNodes(),
+				m_structuralAnalysis.GetNotConnectedNodes()) {
+					// Any unconnected nodes must trigger an error
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});
+		
+		current.add(new NodeGroupNetInfo("Number of not strongly connected nodes: " + m_structuralAnalysis.GetNumNotStronglyConnectedNodes(),
+				m_structuralAnalysis.GetNotStronglyConnectedNodes()) {
+					// Any nodes that are not strongly connected must trigger an error
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});	
 	}
 	public void windowClosing(WindowEvent e) {
 		// When receiving a windowClosing() event we will
@@ -491,8 +509,6 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		// First, clear the current selection 
 		currentGraph.clearSelection();
 		// Finally, select all elements selected in the tree view
-		ModelElementContainer elements
-			= m_currentEditor.getModelProcessor().getElementContainer();
 		ArrayList newSelection = new ArrayList();
 		LoggerManager.info(Constants.WOFLAN_LOGGER, "New Selection: {");
 		for (Iterator i=processedSelection.iterator();i.hasNext();)
@@ -540,4 +556,9 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 
 	//! Remember a reference to the tree object
 	private JTree m_treeObject;
+	
+	//! Structural analysis is performed
+	//! without woflan.
+	//! This object implements all the necessary algorithms
+	private StructuralAnalysis m_structuralAnalysis;
 }
