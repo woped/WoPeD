@@ -287,8 +287,6 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     			0,
     			false
     	));    	
-			    	
-		
 	}
 
 	private void BuildStructuralAnalysis(DefaultMutableTreeNode parent)
@@ -297,21 +295,21 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		parent.add(current);
 
     	BuildWorkflowInfo(current);
-    	// Enable the creation of non-free choice info
-    	m_myWofLan.Info(m_netHandle, 
-    			m_myWofLan.SetNFCC, 0, 0);
-    	current.add(new MultipleGroupsNetInfo(m_currentEditor,
-    			this, 
-    			"Number of non-free choice clusters: ",
-    			m_myWofLan.InfoNofNFCC,
-    			m_myWofLan.InfoNFCCNofN,
-    			"Non-free choice cluster, Number of elements: ",
-    			"",
-    			m_myWofLan.InfoNFCCNName,
-    			
-    			-1,
-    			0,
-    			false));   
+ 
+    	current.add(new NodeGroupListNetInfo("Number of free-choice violations: "+ m_structuralAnalysis.GetNumFreeChoiceViolations(),
+    			m_structuralAnalysis.GetFreeChoiceViolations()) {
+    		public String GetGroupDisplayString(int nIndex, Collection gorup) {
+    			return "Non-free-choice group " + (nIndex+1);
+    		}
+    		// Free-choice violations are not good and should trigger an error
+    		public int GetInfoState() {
+    			if (getChildCount()>0)
+    				return InfoStateERROR;
+    			else
+    				return InfoStateOK;
+    		}
+    	});
+    	
     	BuildHandleInformation(current);
     	BuildSComponentInformation(current);
 	}
@@ -386,7 +384,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 	
 	private void BuildWorkflowInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Workflow Analysis");
+		DefaultMutableTreeNode current = new NetInfo("Well-formedness");
 		parent.add(current);
 		
 		

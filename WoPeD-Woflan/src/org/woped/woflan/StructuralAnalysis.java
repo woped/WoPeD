@@ -112,8 +112,23 @@ public class StructuralAnalysis {
 	public Iterator GetNotStronglyConnectedNodes()
 	{
 		Calculate_Connections();
-		return m_notStronglyConnectedNodes.iterator();
-		
+		return m_notStronglyConnectedNodes.iterator();		
+	}
+	
+	public int GetNumFreeChoiceViolations()
+	{
+		Calculate_FreeChoice();
+		return m_freeChoiceViolations.size();		
+	}
+	//! Return a list of free-choice violations
+	//! Each free-choice violation is represented 
+	//! by a Set of nodes defining the violation
+	//! @return Iterator through a list of sets 
+	//!         of nodes violating the free-choice property
+	public Iterator GetFreeChoiceViolations()
+	{
+		Calculate_FreeChoice();
+		return m_freeChoiceViolations.iterator();		
 	}
 	
 	//! Remember a reference to the current editor
@@ -152,91 +167,65 @@ public class StructuralAnalysis {
 	//! and places that are not strongly connected)
 	HashSet m_notStronglyConnectedNodes = new HashSet();
 	
+	boolean m_bFreeChoiceInfoAvailable = false;
+	//! Stores a list of free-choice violations
+	//! consisting of node sets
+	HashSet m_freeChoiceViolations = new HashSet();
+	
 	//! Trigger the calculation of basic net information
 	private void Calculate_BasicNetInfo()
 	{
 		// We cache all calculated information
 		// Check if we already know what we need to know
-		if (!m_bBasicNetInfoAvailable)
+		if (m_bBasicNetInfoAvailable)
+			return;
+		m_bBasicNetInfoAvailable = true;
+		
+		// Get the element container containing all our elements
+		ModelElementContainer elements
+		= m_currentEditor.getModelProcessor().getElementContainer();
+		// Iterate through all elements and 
+		// take notes
+		Iterator i=elements.getRootElements().iterator();
+		NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration();
+		while (i.hasNext())
 		{
-			// Get the element container containing all our elements
-			ModelElementContainer elements
-			= m_currentEditor.getModelProcessor().getElementContainer();
-			// Iterate through all elements and 
-			// take notes
-			Iterator i=elements.getRootElements().iterator();
-			ArcConfiguration arcConfig = new ArcConfiguration();
-			while (i.hasNext())
+			try
 			{
-				try
+				AbstractElementModel currentNode =				
+					(AbstractElementModel)i.next();
+				NetAlgorithms.GetArcConfiguration(currentNode, arcConfig);
+				switch (currentNode.getType())
 				{
-					AbstractElementModel currentNode =				
-						(AbstractElementModel)i.next();
-					GetArcConfiguration(currentNode, arcConfig);
-					switch (currentNode.getType())
-					{
-					case AbstractPetriNetModelElement.PLACE_TYPE:
-						m_places.add(currentNode);
-						if (arcConfig.m_numIncoming == 0)
-							m_sourcePlaces.add(currentNode);
-						if (arcConfig.m_numOutgoing==0)
-							m_sinkPlaces.add(currentNode);
-						break;
-					case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:					
-						// Treat simple and complex (operator) transitions
-						// equally
-					case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
-						m_transitions.add(currentNode);
-						if (arcConfig.m_numIncoming == 0)
-							m_sourceTransitions.add(currentNode);
-						if (arcConfig.m_numOutgoing==0)
-							m_sinkTransitions.add(currentNode);						
-						break;												
-					default:
-						// Ignore all the rest
-					}
-						
+				case AbstractPetriNetModelElement.PLACE_TYPE:
+					m_places.add(currentNode);
+					if (arcConfig.m_numIncoming == 0)
+						m_sourcePlaces.add(currentNode);
+					if (arcConfig.m_numOutgoing==0)
+						m_sinkPlaces.add(currentNode);
+					break;
+				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:					
+					// Treat simple and complex (operator) transitions
+					// equally
+				case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
+					m_transitions.add(currentNode);
+					if (arcConfig.m_numIncoming == 0)
+						m_sourceTransitions.add(currentNode);
+					if (arcConfig.m_numOutgoing==0)
+						m_sinkTransitions.add(currentNode);						
+					break;												
+				default:
+					// Ignore all the rest
 				}
-				catch(Exception e)
-				{
-					LoggerManager.info(Constants.WOFLAN_LOGGER, "Illegal object type found!");					
-				}
+				
 			}
-			// Just ask the arc map for its size...
-			m_nNumArcs = elements.getArcMap().size();
-			m_bBasicNetInfoAvailable = true;
-		}		
-	}
-	private class ArcConfiguration
-	{
-		int m_numIncoming = 0;
-		int m_numOutgoing = 0;
-	}
-	//! Get the configuration of the arcs connected to the
-	//! specified element
-	//! @param element specifies the element to be analysed
-	//! @param config specifies the object that will receive the
-	//!        number of incoming and outgoing arcs for the
-	//!        specified element
-	private void GetArcConfiguration(AbstractElementModel element,
-			ArcConfiguration config)
-	{
-		// Reset values
-		config.m_numIncoming = 0;
-		config.m_numOutgoing = 0;
-		Port port = element.getPort();
-		for (Iterator i=port.edges();i.hasNext();)
-		{
-			Edge current = (Edge)i.next();
-			// If the current port is the target
-			// the edge is incoming
-			if (current.getTarget()==port)
-				++config.m_numIncoming;
-			// If the current port is the source
-			// the edge is outgoing
-			if (current.getSource()==port)
-				++config.m_numOutgoing;
+			catch(Exception e)
+			{
+				LoggerManager.info(Constants.WOFLAN_LOGGER, "Illegal object type found!");					
+			}
 		}
+		// Just ask the arc map for its size...
+		m_nNumArcs = elements.getArcMap().size();
 	}
 	
 	private void Calculate_Connections()
@@ -289,185 +278,111 @@ public class StructuralAnalysis {
 		// First check for connectedness:
 		// Return connection map presuming that all arcs may be
 		// used in both directions
-		RouteInfo[][] connectionGraph = GetAllConnections(netElements, true);
+		NetAlgorithms.RouteInfo[][] connectionGraph = NetAlgorithms.GetAllConnections(netElements, true);
 		if (connectionGraph!=null)
-			GetUnconnectedNodes(ttemp, connectionGraph, m_notConnectedNodes);	
+			NetAlgorithms.GetUnconnectedNodes(ttemp, connectionGraph, m_notConnectedNodes);	
 		
 		// Now get the graph for strong connectedness
 		// This will also give us all shortest distances
 		// according to Moore's algorithm (no arc weights) 
-		RouteInfo[][] strongConnectionGraph = GetAllConnections(netElements, false);
+		NetAlgorithms.RouteInfo[][] strongConnectionGraph = NetAlgorithms.GetAllConnections(netElements, false);
 		if (strongConnectionGraph!=null)
-			GetUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
+			NetAlgorithms.GetUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
 		
 		// Remove the element from the graph
 		m_currentEditor.getModelProcessor().removeElement(tempID);		
 	}
-	//! Extract unconnected nodes from the given RouteInfo array and store
-	//! it in the set
-	//! An unconnected node is a node that has no connection to or from
-	//! the specified node
-	//! @param centralNode specifies the node all nodes need to be connected to
-	//! @param connectionGraph specifies the RouteInfo array
-	//! @param unconnectedNodes set that receives the unconnected nodes
-	void GetUnconnectedNodes(
-			AbstractElementModel centralNode,
-			RouteInfo[][] connectionGraph, Set unconnectedNodes)
+	
+	void Calculate_FreeChoice()
 	{
-		int nNumElements = connectionGraph.length;
-		int nCentralNodeIndex = -1;
-		for (int i=0;i<nNumElements;++i)
-			if (connectionGraph[i][i].m_thisElement==centralNode)
-				nCentralNodeIndex = i;
-		if (nCentralNodeIndex!=-1)
-		{
-			// Add all elements that do not have a connection to or from the
-			// specified "centralNode"
-			for (int i=0;i<nNumElements;++i)
+		if (m_bFreeChoiceInfoAvailable)
+			return;
+		m_bFreeChoiceInfoAvailable = true;
+		
+		// First, calculate basic net information
+		Calculate_BasicNetInfo();
+
+		// The first thing we look for are forward-branched places (conflicts)
+		// and their follow-up transitions
+		Set placeResults = GetNonFreeChoiceGroups(m_places.iterator(),
+				new FreeChoiceNavigator() {
+			public Set GetPredecessors(AbstractElementModel element) 
 			{
-				if (connectionGraph[nCentralNodeIndex][i].m_nDistanceToSource==-1)
-					unconnectedNodes.add(connectionGraph[nCentralNodeIndex][i].m_thisElement);
-				if (connectionGraph[i][nCentralNodeIndex].m_nDistanceToSource==-1)
-					// If item i does not have a connection to nCentralNodeIndex,
-					// item i (whose reference is always stored in [i][i]) must be added 
-					// to the unconnected list
-					unconnectedNodes.add(connectionGraph[i][i].m_thisElement);
+				return NetAlgorithms.GetPredecessors(element);
 			}
-		}
-	}				
-	private class RouteInfo
-	{
-		//! Store a reference to the predecessor
-		//! on the route back to the source
-		//! null if no connection to the source exists
-		public RouteInfo m_predecessor = null;
-		//! stores the number of arcs between the
-		//! source and this element
-		//! or -1 if no connection exists
-		public int m_nDistanceToSource = -1;
-		//! Stores a reference to the actual petri-net
-		//! element this entry has been created for
-		public AbstractElementModel m_thisElement = null;  
+			public Set GetSuccessors(AbstractElementModel element)
+			{
+				return NetAlgorithms.GetSuccessors(element);
+			}
+						
+		});
+		// Now look for backward-branched transitions (synchronization)
+		// and their preceeding places
+		Set transitionResults = GetNonFreeChoiceGroups(m_transitions.iterator(),
+				new FreeChoiceNavigator() {
+			// For transition analysis, we simply swap the method implementations
+			// of our navigator so successor becomes predecessor and vice versa
+			public Set GetPredecessors(AbstractElementModel element) 
+			{
+				return NetAlgorithms.GetSuccessors(element);
+			}
+			public Set GetSuccessors(AbstractElementModel element)
+			{
+				return NetAlgorithms.GetPredecessors(element);
+			}						
+		});
+		
+		m_freeChoiceViolations.addAll(placeResults);
+		m_freeChoiceViolations.addAll(transitionResults);
 	}
-	//! This method calculates all shortest connections between net elements
-	//! according to Moore's algorithm. Arc weights are ignored.
-	//! @param netElements specifies a collection of net elements that should be 
-	//!                    taken into account (we typically don't want all of them)
-	//! @param ignoreArcDirection specifies whether the direction of arcs should be
-	//!                           taken into account
-	//! @return Returns a two-dimensional array of RouteInfo
-	//!         containing one row for each element in netElements,
-	//!         specifying for each element in netElements what is the distance
-	//!         to that element. For each element in a row,
-	//!         the shortest route to the element described by the row
-	//!         can be reconstructed by following the m_predecessor back-references
-	private RouteInfo[][] GetAllConnections(Collection netElements, boolean ignoreArcDirection)
+	//! Abstract forward-branched places
+	//! and backward-branched transitions so only
+	//! one implementation of the actual free-choice
+	//! detector is required
+	//! Note that for transitions GetPredecessors and GetSuccessors 
+	//! simply need to be swapped!
+	interface FreeChoiceNavigator
 	{
-		int nNumNetElements = netElements.size();
-		RouteInfo routeInfo[][] = new RouteInfo[nNumNetElements][nNumNetElements];
-		HashMap nodeToIndex=new HashMap();
-		
-		// Build a map from node to index
-		// We will need this when traversing the graph
-		// (the graph doesn't know about our collection of input
-		// net elements)
-		Iterator nodeIndexIterator = netElements.iterator();
-		int nNodeIndex = 0;
-		while (nodeIndexIterator.hasNext())
-		{
-			nodeToIndex.put(nodeIndexIterator.next(),new Integer(nNodeIndex));
-			++nNodeIndex;
-		}
-		
-		try
-		{
-			// Iterate through outer index
-			for (int i=0;i<nNumNetElements;++i)
-			{							
-				int j=0;
-				Iterator innerIterator=netElements.iterator();
-				while (innerIterator.hasNext())
+		public abstract Set GetPredecessors(AbstractElementModel element);
+		public abstract Set GetSuccessors(AbstractElementModel element);
+	}
+	Set GetNonFreeChoiceGroups(Iterator i, FreeChoiceNavigator navigator)
+	{
+		Set result = new HashSet();
+		// Look for forward-branched places (conflicts)
+		// and their follow-up transitions
+		while (i.hasNext()){
+			// Determine the arc configuration of the current place
+			AbstractElementModel currentPlace = (AbstractElementModel)i.next();
+			
+			// Have a closer look at the follow-up transitions			
+			// Collect all affected nodes a priori just in case
+			HashSet violationGroup = new HashSet();
+			boolean violation = false;
+			Set compareSet = null;
+			Set successors = navigator.GetSuccessors(currentPlace);
+			for (Iterator s=successors.iterator();s.hasNext();)
+			{
+				AbstractElementModel successor = (AbstractElementModel)s.next();
+				Set predecessors = navigator.GetPredecessors(successor);
+				if (compareSet==null)
+					compareSet = predecessors;
+				else
 				{
-					routeInfo[i][j]= new RouteInfo();
-					routeInfo[i][j].m_thisElement = 
-						(AbstractElementModel)innerIterator.next();
-					++j;
-				}				
-				// Apply Moore's algorithm
-				// We have a distance of zero to ourselves
-				routeInfo[i][i].m_nDistanceToSource = 0;
-				// Define the starting point
-				LinkedList currentList =
-					new LinkedList();
-				currentList.add(routeInfo[i][i]);
-				// Keep going until no more elements need to be processed
-				while (currentList.size()>0)
-				{
-					// Create the follow-up list
-					LinkedList newList = new LinkedList();
-					for (Iterator listContent=currentList.iterator();listContent.hasNext();)
-					{
-						RouteInfo currentRouteInfo = (RouteInfo)listContent.next();
-						// Look up all connections (to and from, only from if directed
-						// and iterate them)
-						Port currentPort = currentRouteInfo.m_thisElement.getPort();
-						Iterator edges =
-							currentPort.edges();
-						while (edges.hasNext())
-						{
-							Edge currentEdge = (Edge)edges.next();
-							// Add destinations of edges
-							// Interestingly we need a reference to DefaultPort
-							// here, the port interface itself does not expose a getParent()
-							// method
-							// (Excourse: arcs connect to ports which are part of the node
-							// the arc connects to. Ports and nodes have a child parent relation)
-							DefaultPort targetPort = 
-								(DefaultPort)currentEdge.getTarget();
-							DefaultPort sourcePort = 
-								(DefaultPort)currentEdge.getSource();
-							AbstractElementModel target = null;
-							if (targetPort!=currentPort)
-								target =
-									(AbstractElementModel)targetPort.getParent();
-							// Depending on our configuration we care about the
-							// direction of the edge or not
-							if ((sourcePort!=currentPort)&&ignoreArcDirection)
-								target =
-									(AbstractElementModel)sourcePort.getParent();
-							// Did we find anything useful ?
-							if (target!=null)
-							{
-								// Use our node to index lookup table to
-								// find the RouteInfo object corresponding to the
-								// target
-								RouteInfo newRouteInfo =
-									routeInfo[i][((Integer)nodeToIndex.get(target)).intValue()];
-								// See whether this node has already been visited
-								if (newRouteInfo.m_nDistanceToSource==-1)
-								{
-									// Update the information on this node
-									newRouteInfo.m_predecessor = currentRouteInfo;
-									newRouteInfo.m_nDistanceToSource = currentRouteInfo.m_nDistanceToSource + 1;
-									// Add it to the new node list
-									newList.add(newRouteInfo);
-								}
-							}
-						}
-					}
-					// Iterate through the new list and
-					// see what's left
-					currentList = newList;
+					// All predecessors of all successors of our
+					// original place must be the same
+					violation = violation || (!compareSet.equals(predecessors));
 				}
+				// Add the element and all its predecessors
+				violationGroup.addAll(predecessors);							
+				violationGroup.add(successor);
+			}
+			if (violation)
+			{
+				// We have a violation, store the group in the list
+				result.add(violationGroup);	
 			}
 		}
-		catch(Exception e)
-		{
-			LoggerManager.info(Constants.WOFLAN_LOGGER, "Illegal object type found!");
-			// Can't calculate if non petri-net element has been 
-			// passed as input
-			routeInfo = null;
-		}
-		return routeInfo;
-	}
+		return result;
+	}	
 }
