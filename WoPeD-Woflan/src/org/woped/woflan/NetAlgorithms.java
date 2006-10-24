@@ -91,51 +91,37 @@ public class NetAlgorithms {
 						RouteInfo currentRouteInfo = (RouteInfo)listContent.next();
 						// Look up all connections (to and from, only from if directed
 						// and iterate them)
-						Port currentPort = currentRouteInfo.m_thisElement.getPort();
-						Iterator edges =
-							currentPort.edges();
-						while (edges.hasNext())
+						Set connectedNodes = GetDirectlyConnectedNodes(currentRouteInfo.m_thisElement,
+								connectionTypeOUTBOUND);
+						if (ignoreArcDirection==true)
 						{
-							Edge currentEdge = (Edge)edges.next();
-							// Add destinations of edges
-							// Interestingly we need a reference to DefaultPort
-							// here, the port interface itself does not expose a getParent()
-							// method
-							// (Excourse: arcs connect to ports which are part of the node
-							// the arc connects to. Ports and nodes have a child parent relation)
-							DefaultPort targetPort = 
-								(DefaultPort)currentEdge.getTarget();
-							DefaultPort sourcePort = 
-								(DefaultPort)currentEdge.getSource();
-							AbstractElementModel target = null;
-							if (targetPort!=currentPort)
-								target =
-									(AbstractElementModel)targetPort.getParent();
 							// Depending on our configuration we care about the
 							// direction of the edge or not
-							if ((sourcePort!=currentPort)&&ignoreArcDirection)
-								target =
-									(AbstractElementModel)sourcePort.getParent();
-							// Did we find anything useful ?
-							if (target!=null)
+							Set wrongDirection = GetDirectlyConnectedNodes(currentRouteInfo.m_thisElement,
+									connectionTypeINBOUND);
+							connectedNodes.addAll(wrongDirection);
+							
+						}
+						Iterator nodeIterator = connectedNodes.iterator();
+						while (nodeIterator.hasNext())
+						{
+							AbstractElementModel target = (AbstractElementModel)nodeIterator.next();
+							// Use our node to index lookup table to
+							// find the RouteInfo object corresponding to the
+							// target
+							Integer targetIndex = (Integer)nodeToIndex.get(target);
+							if (targetIndex!=null)
 							{
-								// Use our node to index lookup table to
-								// find the RouteInfo object corresponding to the
-								// target
-								Integer targetIndex = (Integer)nodeToIndex.get(target);
-								if (targetIndex!=null)
+								RouteInfo newRouteInfo =
+									routeInfo[i][targetIndex.intValue()];
+								// See whether this node has already been visited
+								if (newRouteInfo.m_nDistanceToSource==-1)
 								{
-									RouteInfo newRouteInfo =
-										routeInfo[i][targetIndex.intValue()];
-									// See whether this node has already been visited
-									if (newRouteInfo.m_nDistanceToSource==-1)
-									{
-										// Update the information on this node
-										newRouteInfo.m_predecessor = currentRouteInfo;
-										newRouteInfo.m_nDistanceToSource = currentRouteInfo.m_nDistanceToSource + 1;
-										// Add it to the new node list
-										newList.add(newRouteInfo);
-									}
+									// Update the information on this node
+									newRouteInfo.m_predecessor = currentRouteInfo;
+									newRouteInfo.m_nDistanceToSource = currentRouteInfo.m_nDistanceToSource + 1;
+									// Add it to the new node list
+									newList.add(newRouteInfo);
 								}
 							}
 						}
@@ -201,63 +187,47 @@ public class NetAlgorithms {
 	public static void GetArcConfiguration(AbstractElementModel element,			
 			ArcConfiguration config)
 	{
-		// Reset values
-		config.m_numIncoming = 0;
-		config.m_numOutgoing = 0;
-		Port port = element.getPort();
-		for (Iterator i=port.edges();i.hasNext();)
-		{
-			Edge current = (Edge)i.next();
-			// If the current port is the target
-			// the edge is incoming
-			if (current.getTarget()==port)
-				++config.m_numIncoming;
-			// If the current port is the source
-			// the edge is outgoing
-			if (current.getSource()==port)
-				++config.m_numOutgoing;
-		}
+		config.m_numIncoming = GetDirectlyConnectedNodes(element,connectionTypeINBOUND).size();
+		config.m_numOutgoing = GetDirectlyConnectedNodes(element,connectionTypeOUTBOUND).size();
 	}
+	//! These constants define mask entries specifying
+	//! the type of connections to be retrieved in the
+	//! method below
+	public static int connectionTypeINBOUND = 1;
+	public static int connectionTypeOUTBOUND = 2;
+	public static int connectionTypeALL = Integer.MAX_VALUE;
+	
 	//! Return a set of elements preceding a given element
+	//! All other methods of NetAlgorithms must use this method
+	//! to navigate the graph!!
+	//! 
 	//! @param element specifies the element which is to be examined
-	//! @return Returns a set of predecessors
-	public static Set GetPredecessors(AbstractElementModel element)
+	//! @param specifies the type of connection to be taken into account
+	//! @return Returns a set of predecessors, successors or both
+	public static Set GetDirectlyConnectedNodes(AbstractElementModel element,
+			int connectionType)
 	{
 		HashSet result = new HashSet();
 		Port port = element.getPort();
 		for (Iterator edgeIterator=port.edges();edgeIterator.hasNext();)
 		{
 			Edge current = (Edge)edgeIterator.next();
+			DefaultPort connectedPort = null;
 			// If the current port is the target
 			// the edge is incoming and we have a predecessor
-			if (current.getTarget()==port)
+			if ((current.getTarget()==port)&&((connectionType&connectionTypeINBOUND)>0))
+				connectedPort = (DefaultPort)current.getSource();			
+			// If the current port is the source
+			// the edge is outgoing and we have a successor
+			if ((current.getSource()==port)&&((connectionType&connectionTypeOUTBOUND)>0))
+				connectedPort = (DefaultPort)current.getTarget();
+			if (connectedPort!=null)
 			{
-				DefaultPort sourcePort = (DefaultPort)current.getSource();
-				Object source = sourcePort.getParent();
-				result.add(source);
+				// Found a port, get it's parent
+				Object connectedNode = connectedPort.getParent();
+				result.add(connectedNode);
 			}
 		}				
 		return result;
 	}
-	//! Return a set of elements succeeding a given element
-	//! @param element specifies the element which is to be examined
-	//! @return Returns a set of successors
-	public static Set GetSuccessors(AbstractElementModel element)
-	{
-		HashSet result = new HashSet();
-		Port port = element.getPort();
-		for (Iterator edgeIterator=port.edges();edgeIterator.hasNext();)
-		{
-			Edge current = (Edge)edgeIterator.next();
-			// If the current port is the source
-			// the edge is outgoing and we have a successor
-			if (current.getSource()==port)
-			{
-				DefaultPort targetPort = (DefaultPort)current.getTarget();
-				Object target = targetPort.getParent();
-				result.add(target);
-			}
-		}				
-		return result;
-	}	
 }

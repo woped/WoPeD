@@ -304,49 +304,15 @@ public class StructuralAnalysis {
 
 		// The first thing we look for are forward-branched places (conflicts)
 		// and their follow-up transitions
-		Set placeResults = GetNonFreeChoiceGroups(m_places.iterator(),
-				new FreeChoiceNavigator() {
-			public Set GetPredecessors(AbstractElementModel element) 
-			{
-				return NetAlgorithms.GetPredecessors(element);
-			}
-			public Set GetSuccessors(AbstractElementModel element)
-			{
-				return NetAlgorithms.GetSuccessors(element);
-			}
-						
-		});
+		Set placeResults = GetNonFreeChoiceGroups(m_places.iterator(),false);
 		// Now look for backward-branched transitions (synchronization)
 		// and their preceeding places
-		Set transitionResults = GetNonFreeChoiceGroups(m_transitions.iterator(),
-				new FreeChoiceNavigator() {
-			// For transition analysis, we simply swap the method implementations
-			// of our navigator so successor becomes predecessor and vice versa
-			public Set GetPredecessors(AbstractElementModel element) 
-			{
-				return NetAlgorithms.GetSuccessors(element);
-			}
-			public Set GetSuccessors(AbstractElementModel element)
-			{
-				return NetAlgorithms.GetPredecessors(element);
-			}						
-		});
+		Set transitionResults = GetNonFreeChoiceGroups(m_transitions.iterator(),true);
 		
 		m_freeChoiceViolations.addAll(placeResults);
 		m_freeChoiceViolations.addAll(transitionResults);
 	}
-	//! Abstract forward-branched places
-	//! and backward-branched transitions so only
-	//! one implementation of the actual free-choice
-	//! detector is required
-	//! Note that for transitions GetPredecessors and GetSuccessors 
-	//! simply need to be swapped!
-	interface FreeChoiceNavigator
-	{
-		public abstract Set GetPredecessors(AbstractElementModel element);
-		public abstract Set GetSuccessors(AbstractElementModel element);
-	}
-	Set GetNonFreeChoiceGroups(Iterator i, FreeChoiceNavigator navigator)
+	Set GetNonFreeChoiceGroups(Iterator i, boolean swapArcDirection)
 	{
 		Set result = new HashSet();
 		// Look for forward-branched places (conflicts)
@@ -360,11 +326,15 @@ public class StructuralAnalysis {
 			HashSet violationGroup = new HashSet();
 			boolean violation = false;
 			Set compareSet = null;
-			Set successors = navigator.GetSuccessors(currentPlace);
+			Set successors = NetAlgorithms.GetDirectlyConnectedNodes(currentPlace,
+					swapArcDirection?NetAlgorithms.connectionTypeINBOUND
+							:NetAlgorithms.connectionTypeOUTBOUND);
 			for (Iterator s=successors.iterator();s.hasNext();)
 			{
 				AbstractElementModel successor = (AbstractElementModel)s.next();
-				Set predecessors = navigator.GetPredecessors(successor);
+				Set predecessors = NetAlgorithms.GetDirectlyConnectedNodes(successor,
+						swapArcDirection?NetAlgorithms.connectionTypeOUTBOUND
+								:NetAlgorithms.connectionTypeINBOUND);
 				if (compareSet==null)
 					compareSet = predecessors;
 				else
