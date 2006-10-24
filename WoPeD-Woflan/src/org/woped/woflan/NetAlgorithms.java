@@ -1,21 +1,21 @@
 package org.woped.woflan;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.Port;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.*;
+import org.woped.core.model.petrinet.*;
 import org.woped.core.utilities.LoggerManager;
 
 //! This class provides a number of algorithms
 //! for dealing with graphs and especially petri-nets
 public class NetAlgorithms {
+	NetAlgorithms(ModelElementContainer rootContainer)
+	{
+		
+	}	
 	public static class RouteInfo
 	{
 		//! Store a reference to the predecessor
@@ -208,26 +208,44 @@ public class NetAlgorithms {
 			int connectionType)
 	{
 		HashSet result = new HashSet();
-		Port port = element.getPort();
-		for (Iterator edgeIterator=port.edges();edgeIterator.hasNext();)
+		// An object can have multiple owning containers
+		// Iterate through all of them to get all connections
+		Iterator ownerIterator=element.getOwningContainers();
+		while (ownerIterator.hasNext())
 		{
-			Edge current = (Edge)edgeIterator.next();
-			DefaultPort connectedPort = null;
-			// If the current port is the target
-			// the edge is incoming and we have a predecessor
-			if ((current.getTarget()==port)&&((connectionType&connectionTypeINBOUND)>0))
-				connectedPort = (DefaultPort)current.getSource();			
-			// If the current port is the source
-			// the edge is outgoing and we have a successor
-			if ((current.getSource()==port)&&((connectionType&connectionTypeOUTBOUND)>0))
-				connectedPort = (DefaultPort)current.getTarget();
-			if (connectedPort!=null)
+			ModelElementContainer currentContainer = (ModelElementContainer)ownerIterator.next();
+			if ((connectionType&connectionTypeINBOUND)>0)
 			{
-				// Found a port, get it's parent
-				Object connectedNode = connectedPort.getParent();
-				result.add(connectedNode);
+				// Detect inbound connections
+				// Return only those that do not connect any operators
+				Map sourceElements = currentContainer.getSourceElements(element.getId());
+				AppendNonOperators(result,sourceElements.values().iterator());
 			}
-		}				
+			if ((connectionType&connectionTypeOUTBOUND)>0)
+			{
+				// Detect outbound connections
+				// Return only those that do not connect any operators
+				Map targetElements = currentContainer.getTargetElements(element.getId());
+				AppendNonOperators(result,targetElements.values().iterator());
+			}
+		}	
 		return result;
+	}
+	//! Append all objects to target that are not of TRANS_OPERATOR_TYPE	
+	private static void AppendNonOperators(HashSet target, Iterator source)
+	{
+		while (source.hasNext())
+		{
+			try {
+				AbstractElementModel element = 
+					(AbstractElementModel)source.next();
+				if (element.getType()!=AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)
+					target.add(element);
+			}
+			catch (ClassCastException e)
+			{
+				// Ignore objects that are not of type AbstractElementModel				
+			}
+		}
 	}
 }

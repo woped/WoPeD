@@ -7,6 +7,9 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
@@ -16,6 +19,8 @@ import org.woped.core.Constants;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.utilities.LoggerManager;
 
+
+
 public abstract class AbstractElementModel extends DefaultGraphCell implements Serializable
 {
 
@@ -24,7 +29,27 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     private String         id                 = null;
     private ElementContext elementContext     = null;
     private NameModel      nameModel          = null;
-
+    //! In order to be able to navigate between the different levels
+    //! of element container (e.g. simple transition container of an operator)
+    //! we need to store a reference to each owning container
+    //! (a model element can be owned by more than one ModelElementContainer)
+    //! This reference will be maintained by the ModelElementContainer methods
+    //! addElement() and removeOnlyElement() which will call addOwningContainer() and
+    //! removeOwningContainer() to do so.
+    private Set owningContainers = new HashSet();
+    public void addOwningContainer(ModelElementContainer owningContainer)
+    {
+    	owningContainers.add(owningContainer);    	
+    }
+    public void removeOwningContainer(ModelElementContainer owningContainer)
+    {
+    	owningContainers.remove(owningContainer);
+    }
+    public Iterator getOwningContainers()
+    {
+    	return owningContainers.iterator();
+    }
+    
     public AbstractElementModel(CreationMap creationMap, Object userObject, int modelProcessorType)
     {
         super(null);

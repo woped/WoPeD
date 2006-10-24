@@ -52,6 +52,22 @@ import org.woped.core.utilities.LoggerManager;
 public class ModelElementContainer implements Serializable
 {
 
+	//! Just as we own elements, elements own us
+	//! if we're a simple transition element container
+	//! Again, it is important for navigation to know these things
+	//! The owningElement member may be null (which is in fact the default)
+	//! if we're not owned by an AbstractElementModel instance at all
+	private AbstractElementModel owningElement = null;
+	
+	public void setOwningElement(AbstractElementModel element)
+	{
+		owningElement = element;
+	}
+	public AbstractElementModel getOwningElement()
+	{
+		return owningElement;
+	}
+	
     private Map                idMap   = null;
 
     private Map                arcs    = null;
@@ -100,6 +116,10 @@ public class ModelElementContainer implements Serializable
             referenceMap.put(SELF_ID, theElement);
             // ... and to the idMap
             getIdMap().put(theElement.getId(), referenceMap);
+            
+            // Tell the element that it is now owned
+            theElement.addOwningContainer(this);
+            
             LoggerManager.debug(Constants.CORE_LOGGER, "Element: " + theElement.getId() + " added");
         } else
         {
@@ -167,7 +187,10 @@ public class ModelElementContainer implements Serializable
 
     public void removeOnlyElement(Object id)
     {
-        getIdMap().remove(id);
+    	AbstractElementModel element = getElementById(id);
+    	// The element is no longer owned by anybody
+    	element.removeOwningContainer(this); 
+        getIdMap().remove(id);        
         LoggerManager.debug(Constants.CORE_LOGGER, "Element (ID:" + id + ") deleted.");
     }
 

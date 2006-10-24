@@ -139,24 +139,24 @@ public class StructuralAnalysis {
 	//! the basic net info has been calculated
 	boolean m_bBasicNetInfoAvailable = false;
 	
-	//! Stores a linked list of all the places of
+	//! Stores a set of all the places of
 	//! the processed net
-	LinkedList m_places = new LinkedList();
-	//! Stores a linked list of all the transitions of
+	HashSet m_places = new HashSet();
+	//! Stores a set of all the transitions of
 	//! the processed net
-	LinkedList m_transitions = new LinkedList();
+	HashSet m_transitions = new HashSet();
 	//! Stores the number of arcs contained in this net
 	int m_nNumArcs=0;
 	
-	//! Stores a linked list of source places
-	LinkedList m_sourcePlaces = new LinkedList();
-	//! Stores a linked list of sink places
-	LinkedList m_sinkPlaces = new LinkedList();
+	//! Stores a set of source places
+	HashSet m_sourcePlaces = new HashSet();
+	//! Stores a set of sink places
+	HashSet m_sinkPlaces = new HashSet();
 	
-	//! Stores a linked list of source transitions
-	LinkedList m_sourceTransitions = new LinkedList();
-	//! Stores a linked list of sink transitions
-	LinkedList m_sinkTransitions = new LinkedList();
+	//! Stores a set of source transitions
+	HashSet m_sourceTransitions = new HashSet();
+	//! Stores a set of sink transitions
+	HashSet m_sinkTransitions = new HashSet();
 	
 	boolean m_bConnectionInfoAvailable = false;
 	
@@ -186,7 +186,15 @@ public class StructuralAnalysis {
 		= m_currentEditor.getModelProcessor().getElementContainer();
 		// Iterate through all elements and 
 		// take notes
+		m_nNumArcs = 0;
 		Iterator i=elements.getRootElements().iterator();
+		UpdateStatistics(i);
+		// Just ask the arc map for its size...
+		m_nNumArcs+= elements.getArcMap().size();		
+	}
+	
+	private void UpdateStatistics(Iterator i)
+	{
 		NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration();
 		while (i.hasNext())
 		{
@@ -204,10 +212,22 @@ public class StructuralAnalysis {
 					if (arcConfig.m_numOutgoing==0)
 						m_sinkPlaces.add(currentNode);
 					break;
-				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:					
-					// Treat simple and complex (operator) transitions
-					// equally
 				case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
+				{
+					OperatorTransitionModel operator = (OperatorTransitionModel)currentNode;
+					ModelElementContainer simpleTransContainer =
+						operator.getSimpleTransContainer();
+					// Recursively call ourselves to add inner nodes
+					Iterator innerIterator =simpleTransContainer.getRootElements().iterator();
+					UpdateStatistics(innerIterator);
+					// To have the total number of arcs we must subtract 
+					// the number of incoming and outgoing arcs from the
+					// number of inner arcs of the operator
+					m_nNumArcs += simpleTransContainer.getArcMap().size()
+						- (arcConfig.m_numIncoming + arcConfig.m_numOutgoing);
+				}
+				break;
+				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:					
 					m_transitions.add(currentNode);
 					if (arcConfig.m_numIncoming == 0)
 						m_sourceTransitions.add(currentNode);
@@ -224,8 +244,6 @@ public class StructuralAnalysis {
 				LoggerManager.info(Constants.WOFLAN_LOGGER, "Illegal object type found!");					
 			}
 		}
-		// Just ask the arc map for its size...
-		m_nNumArcs = elements.getArcMap().size();
 	}
 	
 	private void Calculate_Connections()
@@ -247,7 +265,7 @@ public class StructuralAnalysis {
 			return;
 
 		// Create transition 't*'
-        CreationMap tempMap = ((AbstractElementModel)m_transitions.getFirst()).getCreationMap();
+        CreationMap tempMap = ((AbstractElementModel)m_transitions.iterator().next()).getCreationMap();
         tempMap.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
         String tempID = "t*";
         tempMap.setName(tempID);
@@ -263,9 +281,9 @@ public class StructuralAnalysis {
         // a unique source and a unique sink
         if ((m_sourcePlaces.size()==1)&&(m_sinkPlaces.size()==1))        	
         {                
-        	AbstractElementModel source = (AbstractElementModel)m_sourcePlaces.getFirst(); 
+        	AbstractElementModel source = (AbstractElementModel)m_sourcePlaces.iterator().next(); 
         	String sourceID =source.getId();
-        	AbstractElementModel target = (AbstractElementModel)m_sinkPlaces.getFirst(); 
+        	AbstractElementModel target = (AbstractElementModel)m_sinkPlaces.iterator().next(); 
         	String targetID = target.getId();        		
         	Object newEdge = m_currentEditor.getModelProcessor().createArc(tempID,sourceID);   
         	ttemp.getPort().addEdge(newEdge);

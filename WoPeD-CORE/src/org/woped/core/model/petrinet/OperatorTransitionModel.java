@@ -101,6 +101,9 @@ public class OperatorTransitionModel extends TransitionModel
             setOperatorType(map.getOperatorType());
         }
         simpleTransContainer = new ModelElementContainer();
+        // The simple transition container
+        // is owned by the operator
+        simpleTransContainer.setOwningElement(this);
         // Setting Toolspecific
         this.getToolSpecific().setOperatorId(this.getId());
         // inital ONE transition
@@ -199,7 +202,7 @@ public class OperatorTransitionModel extends TransitionModel
     }
 
     /**
-     * ONLY USE FOR XOR SPLITJOIN ! Does only work for splifoin anyway...
+     * ONLY USE FOR XOR SPLITJOIN ! Does only work for split-join anyway...
      * 
      * @return
      */
