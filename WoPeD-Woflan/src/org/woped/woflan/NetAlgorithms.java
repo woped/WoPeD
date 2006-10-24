@@ -122,16 +122,20 @@ public class NetAlgorithms {
 								// Use our node to index lookup table to
 								// find the RouteInfo object corresponding to the
 								// target
-								RouteInfo newRouteInfo =
-									routeInfo[i][((Integer)nodeToIndex.get(target)).intValue()];
-								// See whether this node has already been visited
-								if (newRouteInfo.m_nDistanceToSource==-1)
+								Integer targetIndex = (Integer)nodeToIndex.get(target);
+								if (targetIndex!=null)
 								{
-									// Update the information on this node
-									newRouteInfo.m_predecessor = currentRouteInfo;
-									newRouteInfo.m_nDistanceToSource = currentRouteInfo.m_nDistanceToSource + 1;
-									// Add it to the new node list
-									newList.add(newRouteInfo);
+									RouteInfo newRouteInfo =
+										routeInfo[i][targetIndex.intValue()];
+									// See whether this node has already been visited
+									if (newRouteInfo.m_nDistanceToSource==-1)
+									{
+										// Update the information on this node
+										newRouteInfo.m_predecessor = currentRouteInfo;
+										newRouteInfo.m_nDistanceToSource = currentRouteInfo.m_nDistanceToSource + 1;
+										// Add it to the new node list
+										newList.add(newRouteInfo);
+									}
 								}
 							}
 						}
