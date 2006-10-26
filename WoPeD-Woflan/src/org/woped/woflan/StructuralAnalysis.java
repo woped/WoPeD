@@ -131,6 +131,23 @@ public class StructuralAnalysis {
 		return m_freeChoiceViolations.iterator();		
 	}
 	
+	public int GetNumWellStructurednessViolations()
+	{
+		Calculate_WellStructuredness();
+		return m_wellStructurednessViolations.size();
+	}
+	
+	//! Return a list of wellstructuredness violations
+	//! Each violation is represented by a Set of nodes
+	//! defining the violation
+	//! @return Iterator through a list of sets
+	//!         of nodes violating the well-structured property
+	public Iterator GetWellStructurednessViolations()
+	{
+		Calculate_WellStructuredness();
+		return m_wellStructurednessViolations.iterator();
+	}
+	
 	//! Remember a reference to the current editor
 	//! as we need it to access the net
 	private IEditor m_currentEditor;
@@ -171,6 +188,11 @@ public class StructuralAnalysis {
 	//! Stores a list of free-choice violations
 	//! consisting of node sets
 	HashSet m_freeChoiceViolations = new HashSet();
+	
+	boolean m_bWellStructurednessInfoAvailable = false;
+	//! Stores a list of well-structuredness violations
+	//! consisting of node sets
+	HashSet m_wellStructurednessViolations = new HashSet();
 	
 	//! Trigger the calculation of basic net information
 	private void Calculate_BasicNetInfo()
@@ -264,6 +286,30 @@ public class StructuralAnalysis {
 		if (m_transitions.size()==0)
 			return;
 
+		// Add temporary transition t*, connecting sink to source
+		AbstractElementModel ttemp =
+			AddTStar();
+        netElements.add(ttemp);
+        		
+		// First check for connectedness:
+		// Return connection map presuming that all arcs may be
+		// used in both directions
+		NetAlgorithms.RouteInfo[][] connectionGraph = NetAlgorithms.GetAllConnections(netElements, true);
+		if (connectionGraph!=null)
+			NetAlgorithms.GetUnconnectedNodes(ttemp, connectionGraph, m_notConnectedNodes);	
+		
+		// Now get the graph for strong connectedness
+		// This will also give us all shortest distances
+		// according to Moore's algorithm (no arc weights) 
+		NetAlgorithms.RouteInfo[][] strongConnectionGraph = NetAlgorithms.GetAllConnections(netElements, false);
+		if (strongConnectionGraph!=null)
+			NetAlgorithms.GetUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
+
+		RemoveTStar(ttemp);
+	}
+	
+	AbstractElementModel AddTStar()
+	{
 		// Create transition 't*'
         CreationMap tempMap = ((AbstractElementModel)m_transitions.iterator().next()).getCreationMap();
         tempMap.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
@@ -272,8 +318,6 @@ public class StructuralAnalysis {
         tempMap.setId(tempID);
         tempMap.setEditOnCreation(false);
         AbstractElementModel ttemp = m_currentEditor.getModelProcessor().createElement(tempMap);
-        netElements.add(ttemp);
-        
         
         // Now connect the new transition 't*' to
         // the source and the target
@@ -291,24 +335,15 @@ public class StructuralAnalysis {
         	newEdge = m_currentEditor.getModelProcessor().createArc(targetID,tempID);
         	ttemp.getPort().addEdge(newEdge);
         	target.getPort().addEdge(newEdge);
-        }        
-        		
-		// First check for connectedness:
-		// Return connection map presuming that all arcs may be
-		// used in both directions
-		NetAlgorithms.RouteInfo[][] connectionGraph = NetAlgorithms.GetAllConnections(netElements, true);
-		if (connectionGraph!=null)
-			NetAlgorithms.GetUnconnectedNodes(ttemp, connectionGraph, m_notConnectedNodes);	
-		
-		// Now get the graph for strong connectedness
-		// This will also give us all shortest distances
-		// according to Moore's algorithm (no arc weights) 
-		NetAlgorithms.RouteInfo[][] strongConnectionGraph = NetAlgorithms.GetAllConnections(netElements, false);
-		if (strongConnectionGraph!=null)
-			NetAlgorithms.GetUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
-		
+        }         
+        
+        return ttemp;
+	}
+	
+	void RemoveTStar(AbstractElementModel tstar)
+	{
 		// Remove the element from the graph
-		m_currentEditor.getModelProcessor().removeElement(tempID);		
+		m_currentEditor.getModelProcessor().removeElement(tstar.getId());		
 	}
 	
 	void Calculate_FreeChoice()
@@ -372,5 +407,92 @@ public class StructuralAnalysis {
 			}
 		}
 		return result;
-	}	
+	}
+	
+	void Calculate_WellStructuredness()
+	{
+		if (m_bWellStructurednessInfoAvailable)
+			return;
+		m_bWellStructurednessInfoAvailable = true;
+
+		// First, calculate basic net information
+		Calculate_BasicNetInfo();
+		
+		LinkedList netElements = new LinkedList();
+		// A WoPeD graph contains more than just places
+		// and transitions. We are only interested in those
+		// however
+		netElements.addAll(m_places);
+		netElements.addAll(m_transitions);
+
+		// Add the temporary transition 't*'
+		AbstractElementModel tStar = AddTStar();
+		netElements.add(tStar);
+		
+		Iterator sourceIterator = netElements.iterator();
+		while (sourceIterator.hasNext())
+		{
+			// Reset all markings of all places and transitions
+			for (Iterator blank=netElements.iterator();blank.hasNext();)
+			{
+				AbstractElementModel currentBlank = (AbstractElementModel)blank.next();
+				currentBlank.setMarking(-1);
+			}
+			// Iterate through all objects and
+			// analyse them for well-structuredness violations
+			AbstractElementModel currentSource =
+				(AbstractElementModel) sourceIterator.next();
+			// Now look into all successors
+			Set successors = NetAlgorithms.GetDirectlyConnectedNodes(currentSource, 
+					NetAlgorithms.connectionTypeOUTBOUND);
+			Iterator successorIterator = successors.iterator();
+			// Each outgoing arc gets its own number
+			// This way we can tell which node was reached by which arc
+			int arcCounter = 0;
+			while (successorIterator.hasNext())
+			{
+				AbstractElementModel currentSuccessor =
+					(AbstractElementModel)successorIterator.next();
+				// We mark all reachable elements using breadth-first search 
+				// Clearly, we need a stack for that
+				LinkedList elementStack = new LinkedList();
+				// Mark the source as visited in any case
+				currentSource.setMarking(arcCounter);
+				elementStack.addLast(currentSuccessor);
+				while (elementStack.size()>0)
+				{
+					AbstractElementModel currentElement = 
+						(AbstractElementModel) elementStack.removeLast();
+					int currentMarking = currentElement.getMarking();
+					if (currentMarking==-1)
+					{
+						// Mark the current node as it hasn't been visited before
+						currentElement.setMarking(arcCounter);						
+						// Recursively add all nodes reachable directly from the
+						// current node
+						Set recurseSet =
+							NetAlgorithms.GetDirectlyConnectedNodes(currentElement,
+									NetAlgorithms.connectionTypeOUTBOUND);
+						for (Iterator recIt=recurseSet.iterator();recIt.hasNext();)
+							elementStack.addLast(recIt.next());
+					}
+					else
+						if ((currentMarking!=arcCounter)&&
+								(currentElement.getType()!=currentSource.getType()))
+					{
+							Set notWellStructuredSet = new HashSet();
+							// Found well-structuredness violation
+							// Add to current set
+							notWellStructuredSet.add(currentSource);
+							notWellStructuredSet.add(currentElement);
+							m_wellStructurednessViolations.add(notWellStructuredSet);
+					}
+				}
+				++arcCounter;
+			}
+		}
+
+		// Remove temporary transition from the net
+		RemoveTStar(tStar);
+	}
 }

@@ -348,9 +348,10 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 	}	
 	private void BuildHandleInformation(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Well-Handledness");
+		DefaultMutableTreeNode current = new NetInfo("Well-Structuredness");
 		parent.add(current);
 
+		/* Just commented out for now, might need it later
 		// Yes, create well-handledness info
     	m_myWofLan.Info(m_netHandle, 
     			m_myWofLan.SetPTH, 0, 0);
@@ -379,6 +380,22 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 				m_myWofLan.InfoTPHN1Name,
 				
 				-1, 0, false));
+		*/
+		
+    	current.add(new NodeGroupListNetInfo("Number of PT/TP handles: "+ m_structuralAnalysis.GetNumWellStructurednessViolations(),
+    			m_structuralAnalysis.GetWellStructurednessViolations()) {
+    		public String GetGroupDisplayString(int nIndex, Collection gorup) {
+    			return "PT/TP handle group " + (nIndex+1);
+    		}
+    		// Free-choice violations are not good and should trigger an error
+    		public int GetInfoState() {
+    			if (getChildCount()>0)
+    				return InfoStateERROR;
+    			else
+    				return InfoStateOK;
+    		}
+    	});
+    	
 		
 	}
 	

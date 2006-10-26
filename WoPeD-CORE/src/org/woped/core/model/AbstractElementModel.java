@@ -24,6 +24,12 @@ import org.woped.core.utilities.LoggerManager;
 public abstract class AbstractElementModel extends DefaultGraphCell implements Serializable
 {
 
+	//! The following methods and members are used for
+	//! structural analysis and not needed for anything else
+	int m_marking = -1;
+	public int getMarking() { return m_marking; }
+	public void setMarking(int marking) { m_marking = marking; }
+	
     private int            modelProcessorType = -1;
     private CreationMap    creationMap        = null;
     private String         id                 = null;
