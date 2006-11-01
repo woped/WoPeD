@@ -72,6 +72,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 				m_structuralAnalysis.GetPlacesIterator()));
 		current.add(new NodeGroupNetInfo("Number of transitions: " + m_structuralAnalysis.GetNumTransitions(),
 				m_structuralAnalysis.GetTransitionsIterator()));
+		current.add(new NodeGroupNetInfo("Number of operators: " + m_structuralAnalysis.GetNumOperators(),
+				m_structuralAnalysis.GetOperatorsIterator()));
 		current.add(new NetInfo("Number of arcs: "+ m_structuralAnalysis.GetNumArcs()));
 	}
 	
@@ -309,6 +311,17 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     				return InfoStateOK;
     		}
     	});
+
+    	current.add(new NodeGroupNetInfo("Number of operators with wrong arc configuration: "+ m_structuralAnalysis.GetNumMisusedOperators(),
+    			m_structuralAnalysis.GetMisusedOperatorsIterator()) {
+			// We want exactly one source place
+			public int GetInfoState() {
+				if (getChildCount()>0)
+					return InfoStateERROR;
+				else
+					return InfoStateOK;
+			}
+    	});
     	
     	BuildHandleInformation(current);
     	BuildSComponentInformation(current);
@@ -401,7 +414,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 	
 	private void BuildWorkflowInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Well-formedness");
+		DefaultMutableTreeNode current = new NetInfo("Workflow-Property");
 		parent.add(current);
 		
 		

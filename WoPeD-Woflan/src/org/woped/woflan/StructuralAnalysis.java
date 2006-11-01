@@ -43,6 +43,18 @@ public class StructuralAnalysis {
 		Calculate_BasicNetInfo();
 		return m_transitions.iterator();
 	}
+	
+	public int GetNumOperators()
+	{
+		Calculate_BasicNetInfo();
+		return m_operators.size();
+	}
+	public Iterator GetOperatorsIterator()
+	{
+		Calculate_BasicNetInfo();
+		return m_operators.iterator();
+	}
+	
 	public int GetNumArcs()
 	{
 		return m_nNumArcs;		
@@ -90,6 +102,17 @@ public class StructuralAnalysis {
 		return m_sinkTransitions.iterator();		
 	}
 
+	public int GetNumMisusedOperators()
+	{
+		Calculate_BasicNetInfo();
+		return m_misusedOperators.size();
+	}
+	public Iterator GetMisusedOperatorsIterator()
+	{
+		Calculate_BasicNetInfo();
+		return m_misusedOperators.iterator();		
+	}
+	
 	public int GetNumNotConnectedNodes()
 	{
 		Calculate_Connections();
@@ -162,6 +185,13 @@ public class StructuralAnalysis {
 	//! Stores a set of all the transitions of
 	//! the processed net
 	HashSet m_transitions = new HashSet();
+	
+	//! Stores a set of all operators.
+	//! Operators are AND-split, AND-join
+	//! XOR-Split, XOR-Join, AND-Split-Join
+	//! XOR-Split-Join
+	HashSet m_operators = new HashSet();
+	
 	//! Stores the number of arcs contained in this net
 	int m_nNumArcs=0;
 	
@@ -174,6 +204,12 @@ public class StructuralAnalysis {
 	HashSet m_sourceTransitions = new HashSet();
 	//! Stores a set of sink transitions
 	HashSet m_sinkTransitions = new HashSet();
+	
+	//! Misused operators are operators that
+	//! do not have a specific minimum or maximum of
+	//! input/output arcs
+	//! as is required by their operator type
+	HashSet m_misusedOperators = new HashSet();
 	
 	boolean m_bConnectionInfoAvailable = false;
 	
@@ -237,6 +273,14 @@ public class StructuralAnalysis {
 				case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
 				{
 					OperatorTransitionModel operator = (OperatorTransitionModel)currentNode;
+					// Remember the operator
+					// A list of operators is provided for
+					// statistical reasons
+					m_operators.add(operator);
+					// Verify that the operator has the correct arc configuration
+					// If this is not the case it will be added to the
+					// misused operators list
+					VerifyOperatorArcConfiguration(operator,arcConfig);
 					ModelElementContainer simpleTransContainer =
 						operator.getSimpleTransContainer();
 					// Recursively call ourselves to add inner nodes
@@ -267,6 +311,46 @@ public class StructuralAnalysis {
 			}
 		}
 	}
+	
+	//! Check whether the specified operator has the correct arc configuration
+	//! and add it to the misused operators list if it doesn't
+	//! @param operator the operator to be verified
+	//! @param arcConfig specifies the previously determined arc configuration
+	void VerifyOperatorArcConfiguration(OperatorTransitionModel operator,
+			NetAlgorithms.ArcConfiguration arcConfig)
+	{
+		boolean isCorrectConfiguration = true;
+		switch (operator.getOperatorType())
+		{
+		// All pure split operators must have exactly one input
+		// and at least two outputs
+		case OperatorTransitionModel.AND_SPLIT_TYPE:
+		case OperatorTransitionModel.XOR_SPLIT_TYPE:
+			isCorrectConfiguration =
+				((arcConfig.m_numIncoming==1)&&
+						(arcConfig.m_numOutgoing>1));
+			break;
+		// All pure join operators must have exactly one output
+		// and at least two inputs 
+		case OperatorTransitionModel.AND_JOIN_TYPE:
+		case OperatorTransitionModel.XOR_JOIN_TYPE:
+			isCorrectConfiguration =
+				((arcConfig.m_numIncoming>1)&&
+						(arcConfig.m_numOutgoing==1));
+			break;
+		// All split-join types must have at least two inputs
+		// as well as at least two outputs
+		case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
+		case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
+			isCorrectConfiguration =
+				((arcConfig.m_numIncoming>1)&&
+						(arcConfig.m_numOutgoing>1));
+			break;			
+		}
+		if (!isCorrectConfiguration)
+			m_misusedOperators.add(operator);
+	}
+	
 	
 	private void Calculate_Connections()
 	{
