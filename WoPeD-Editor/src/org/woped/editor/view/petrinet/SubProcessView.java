@@ -153,11 +153,10 @@ public class SubProcessView extends AbstractElementView
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
                 g2.drawString("fire", 5, 18);
             }
+            
             // SubProcess Lines
-            g.drawLine(5, 5, 35, 5);
-            g.drawLine(5, 5, 5, 34);
-            g.drawLine(5, 34, 34, 34);
-            g.drawLine(34, 34, 34, 5);
+            g.drawRect(5, 5, 29, 29);
+            
             if (isFireing())
             {
                 // g.setColor(Color.BLACK);
