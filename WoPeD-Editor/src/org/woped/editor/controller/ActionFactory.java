@@ -191,73 +191,73 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_EDIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.EDIT, null, ACTIONID_EDIT));
         //
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE, null, ACTIONID_REMOVE));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE), VisualController.ANY_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE), VisualController.ANY_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_RENAME, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.RENAME, null, ACTIONID_RENAME));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_RENAME), VisualController.ANY_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_RENAME), VisualController.ANY_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_ACTIVATE_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ACTIVE, null, ACTIONID_ACTIVATE_ROUTING));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ACTIVATE_ROUTING), VisualController.ARC_SELECTION, VisualController.UNROUTED_ARC_SELECTION, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ACTIVATE_ROUTING), VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_DEACTIVATE_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_DEACTIVE, null, ACTIONID_DEACTIVATE_ROUTING));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DEACTIVATE_ROUTING), VisualController.ARC_SELECTION, VisualController.ROUTED_ARC_SELECTION, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DEACTIVATE_ROUTING), VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ACTIVATE_ALL_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ALL_ACTIVE, null, ACTIONID_ACTIVATE_ALL_ROUTING));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ACTIVATE_ALL_ROUTING), VisualController.ALWAYS, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ACTIVATE_ALL_ROUTING), VisualController.IGNORE/*zurück*/, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP
                 .put(ACTIONID_DEACTIVATE_ALL_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ALL_DEACTIVE, null, ACTIONID_DEACTIVATE_ALL_ROUTING));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DEACTIVATE_ALL_ROUTING), VisualController.ALWAYS, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DEACTIVATE_ALL_ROUTING), VisualController.ALWAYS, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_POINT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_POINT, null, ACTIONID_ADD_POINT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_POINT), VisualController.ARC_SELECTION, VisualController.UNROUTED_ARC_SELECTION, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_POINT), VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE_POINT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE_POINT, null, ACTIONID_REMOVE_POINT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_POINT), VisualController.ARC_SELECTION, VisualController.UNROUTED_ARC_SELECTION, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_POINT), VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_OPEN_PROPERTIES, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_PROPERTIES, null, ACTIONID_OPEN_PROPERTIES));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_PROPERTIES), VisualController.ANY_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_PROPERTIES), VisualController.ANY_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_EXT_TRIGGER, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_EXT_TRIGGER, null, ACTIONID_ADD_EXT_TRIGGER));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_EXT_TRIGGER), VisualController.TRANSITION_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_EXT_TRIGGER), VisualController.TRANSITION_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_RES_TRIGGER, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_RES_TRIGGER, null, ACTIONID_ADD_RES_TRIGGER));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_RES_TRIGGER), VisualController.TRANSITION_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_RES_TRIGGER), VisualController.TRANSITION_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_TIME_TRIGGER, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_TIME_TRIGGER, null, ACTIONID_ADD_TIME_TRIGGER));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TIME_TRIGGER), VisualController.TRANSITION_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TIME_TRIGGER), VisualController.TRANSITION_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE_TIRGGER, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE_TRIGGER, null, ACTIONID_REMOVE_TIRGGER));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_TIRGGER), VisualController.TRIGGERED_TRANSITION_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_TIRGGER), VisualController.TRIGGERED_TRANSITION_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_PLACE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_PLACE, null, ACTIONID_ADD_PLACE));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_PLACE), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_PLACE), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_TRANSITION, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_TRANSITION, null, ACTIONID_ADD_TRANSITION));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TRANSITION), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TRANSITION), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_ANDJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_ANDJOIN, null, ACTIONID_ADD_ANDJOIN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_ANDJOIN), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_ANDJOIN), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_ANDSPLIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_ANDSPLIT, null, ACTIONID_ADD_ANDSPLIT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_ANDSPLITJOIN), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_ANDSPLITJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_ANDSPLITJOIN, null, ACTIONID_ADD_ANDSPLITJOIN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_ANDSPLIT), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_ANDSPLIT), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_XORJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_XORJOIN, null, ACTIONID_ADD_XORJOIN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORJOIN), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORJOIN), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_XORSPLIT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_XORSPLIT, null, ACTIONID_ADD_XORSPLIT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLIT), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLIT), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_XORSPLITJOIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_XORSPLITJOIN, null, ACTIONID_ADD_XORSPLITJOIN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLITJOIN), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XORSPLITJOIN), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_ADD_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_SUBPROCESS, null, ACTIONID_ADD_SUBPROCESS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_SUBPROCESS), VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_SUBPROCESS), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_OPEN_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_SUBPROCESS, null, ACTIONID_OPEN_SUBPROCESS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION,
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.TRANSITION_SELECTION, VisualController.IGNORE,
                 VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_ADD_TOKEN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_TOKEN, null, ACTIONID_ADD_TOKEN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TOKEN), VisualController.PLACE_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_TOKEN), VisualController.PLACE_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE_TOKEN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE_TOKEN, null, ACTIONID_REMOVE_TOKEN));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_TOKEN), VisualController.TOKEN_PLACE_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_TOKEN), VisualController.TOKEN_PLACE_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         // UML ELements
         STATIC_ACTION_MAP.put(ACTIONID_ADD_ACTIVITY, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_ACTIVITY, null, ACTIONID_ADD_ACTIVITY));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_ACTIVITY), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_ACTIVITY), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_START, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_START, null, ACTIONID_ADD_START));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_START), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_START), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_STOP, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_STOP, null, ACTIONID_ADD_STOP));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_STOP), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_STOP), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_AND, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_AND, null, ACTIONID_ADD_AND));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_AND), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_AND), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_XOR, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_XOR, null, ACTIONID_ADD_XOR));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XOR), VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_XOR), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
 
         //
         STATIC_ACTION_MAP.put(ACTIONID_COPY, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.COPY, null, ACTIONID_COPY));
