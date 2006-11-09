@@ -122,6 +122,10 @@ public class EditorEventProcessor extends AbstractEventProcessor
             // General
             case AbstractViewEvent.RENAME:
                 cell = editor.getGraph().getSelectionCell();
+                if (cell instanceof TriggerModel)
+                {
+                    cell = ((TriggerModel)cell).getParent();
+                }
                 if (cell instanceof GroupModel)
                 {
                     cell = ((GroupModel) cell).getMainElement();
@@ -155,6 +159,10 @@ public class EditorEventProcessor extends AbstractEventProcessor
             case AbstractViewEvent.OPEN_PROPERTIES:
                 cell = editor.getGraph().getSelectionCell();
                 AbstractElementModel element = null;
+                if (cell instanceof TriggerModel)
+                {
+                    cell=((TriggerModel)cell).getParent();
+                }
                 if (cell instanceof GroupModel)
                 {
                     element = ((GroupModel) cell).getMainElement();
@@ -322,6 +330,10 @@ public class EditorEventProcessor extends AbstractEventProcessor
         if (cell != null)
         {
             CreationMap map = null;
+            if (cell instanceof TriggerModel)
+            {
+                cell=((TriggerModel)cell).getParent();
+            }
             if (cell instanceof GroupModel)
             {
                 cell = ((GroupModel) cell).getMainElement();

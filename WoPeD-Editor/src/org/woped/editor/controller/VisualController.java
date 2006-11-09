@@ -43,6 +43,7 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.EditorVC;
@@ -438,11 +439,14 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
                 {
                     tokenPlaceSelected = true;
                 }
-            }
-            if (selectedCell instanceof SubProcessModel)
+            } else if (selectedCell instanceof SubProcessModel)
             {
                 subprocessSelected = true;
                 transitionSelected = false; // changed, TF
+            } else if (selectedCell instanceof TriggerModel)
+            {
+                transitionSelected=true;
+                triggeredTransitionSelected = true;
             }
 
             setStatus(NO_SELECTION, noSelection);
