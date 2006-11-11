@@ -555,10 +555,15 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 	//! Clean up when done...
 	protected void Cleanup()
 	{
-    	m_myWofLan.Close(m_netHandle);
-    	m_netHandle = -1;
+		if (m_netHandle != -1) {
+			m_myWofLan.Close(m_netHandle);
+			m_netHandle = -1;
+		}
     	// Delete the temporary file containing the petri-net dump
-    	m_tempFile.delete();
+		if (m_tempFile!=null) {    	
+			m_tempFile.delete();
+			m_tempFile = null;
+		}
     	
         LoggerManager.info(Constants.WOFLAN_LOGGER, "Deleted temporary file for Workflow analysis.");
     	
@@ -569,9 +574,9 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		Cleanup();		
 	}
 	//! Stores a private reference to the WOFLAN analysis DLL
-	public Woflan m_myWofLan;
+	public Woflan m_myWofLan=null;
 	//! Remember a handle to the petri-net that is currently open
-	public int m_netHandle;
+	public int m_netHandle=-1;
 	//! Remember a reference to the temporary file 
 	//! containing a dump of our net
 	//! It will be deleted when no longer needed (when this object is destroyed)
