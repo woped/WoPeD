@@ -38,10 +38,6 @@ import org.woped.woflan.NetAnalysisDialog;
 
 public class FileEventProcessor extends AbstractEventProcessor
 {
-	//! Set this to true to run WofLan from the WofLAN DLL 
-	//! using the java native interface
-	private static boolean bRunWofLanDLL = false; 
-
     public FileEventProcessor(int vepID, ApplicationMediator mediator)
     {
         super(vepID, mediator);
@@ -50,6 +46,7 @@ public class FileEventProcessor extends AbstractEventProcessor
     public void processViewEvent(AbstractViewEvent event)
     {
         IEditor currentEditor;
+        boolean bRunWofLanDLL = false;
         switch (event.getOrder())
         {
         case AbstractViewEvent.OPEN:
@@ -85,6 +82,10 @@ public class FileEventProcessor extends AbstractEventProcessor
         case AbstractViewEvent.EXPORT:
             export((EditorVC) getMediator().getUi().getEditorFocus());
             break;
+        case AbstractViewEvent.ANALYSIS_WOPED:
+        	// This veriable determines whether we will run internal
+        	// or external analysis below
+        	bRunWofLanDLL = true;
         case AbstractViewEvent.ANALYSIS_WOFLAN:
 
             if (getMediator().getUi().getEditorFocus() != null && getMediator().getUi().getEditorFocus().getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
@@ -124,10 +125,10 @@ public class FileEventProcessor extends AbstractEventProcessor
                     					getMediator().getUi().getEditorFocus());
                     			myDialog.setVisible(true);                        	
                     			
-                    			LoggerManager.info(Constants.FILE_LOGGER, "WOFLAN Started.");
+                    			LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
                     		} catch (Exception e)
                     		{
-                    			LoggerManager.warn(Constants.FILE_LOGGER, "COULD NOT START WOFLAN PROCESS.");
+                    			LoggerManager.warn(Constants.FILE_LOGGER, "Local WoPeD analysis failed.");
                     		}
                     	}
 

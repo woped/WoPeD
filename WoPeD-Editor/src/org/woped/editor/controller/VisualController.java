@@ -124,7 +124,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     
     public static final int         DRAWMODE_AND_SPLITJOIN         = 30;    
 
-    private static final int        MAX_ID                         = 31;
+    private static final int        MAX_ID                         = 32;
 
     private Vector[]                m_enable                       = new Vector[MAX_ID + 1];
 

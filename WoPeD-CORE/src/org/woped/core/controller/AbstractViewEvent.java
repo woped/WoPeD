@@ -80,6 +80,10 @@ public abstract class AbstractViewEvent extends ActionEvent
 
     public static final int OPEN_PROPERTIES           = 1060;
     public static final int ANALYSIS_WOFLAN           = 1061;
+    //! Besides analysis using Woflan, we now support
+    //! local analysis using some woped-internal routines
+    //! and some calls to the Woflan DLL
+    public static final int ANALYSIS_WOPED			  = 1062;
 
     public static final int TOGGLE_TOKENGAME          = 1070;
 

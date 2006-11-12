@@ -28,6 +28,7 @@ public class ActionFactory
     public final static String         ACTIONID_SHOWHELPCONTENTS       = "Menu.Help.Contents";
     public final static String         ACTIONID_EXIT                   = "Action.QuitApplication";
     public final static String         ACTIONID_WOFLAN                 = "ToolBar.Woflan";
+    public final static String		   ACTIONID_WOPED				   = "ToolBar.Woped";
     public final static String         ACTIONID_TOGGLE_TOKENGAME       = "ToolBar.TokenGame";
     public final static String         ACTIONID_PRINT                  = "Action.PrintEditor";
     // utils
@@ -145,6 +146,9 @@ public class ActionFactory
         //
         STATIC_ACTION_MAP.put(ACTIONID_WOFLAN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_WOFLAN, null, ACTIONID_WOFLAN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_WOFLAN), VisualController.WOFLAN, VisualController.IGNORE, VisualController.IGNORE);
+        // Add local analysis using WoPeD internal dialog
+        STATIC_ACTION_MAP.put(ACTIONID_WOPED, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_WOPED, null, ACTIONID_WOPED));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_WOPED), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         /* Drawmode Actions */
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_PLACE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_PLACE, null, ACTIONID_DRAWMODE_PLACE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_PLACE), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_PLACE);

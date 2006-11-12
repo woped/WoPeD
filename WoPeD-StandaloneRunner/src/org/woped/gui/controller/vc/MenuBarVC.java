@@ -105,6 +105,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenu              m_analyseMenu            = null;
     private JMenuItem          m_stateSpaceMenuItem     = null;
     private JMenuItem          m_woflanMenuItem         = null;
+    private JMenuItem		   m_wopedMenuItem			= null;
     private JMenu              m_optionsMenu            = null;
     private JMenuItem          m_optionsMenuItem        = null;
 
@@ -157,6 +158,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             // m_analyseMenu.add(getStateSpaceMenuItem());
             m_analyseMenu.add(getWoflanMenuItem());
             getWoflanMenuItem().setEnabled(ConfigurationManager.getConfiguration().isUseWoflan());
+            m_analyseMenu.add(getWopedMenuItem());
         }
         return m_analyseMenu;
     }
@@ -617,6 +619,18 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_woflanMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_WOFLAN));
         }
         return m_woflanMenuItem;
+    }
+    
+    /**
+     * @return Returns the wopedMenuItem.
+     */
+    public JMenuItem getWopedMenuItem()
+    {
+    	if (m_wopedMenuItem == null)
+    	{
+    		m_wopedMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_WOPED));    		
+    	}
+    	return m_wopedMenuItem;
     }
 
     /**

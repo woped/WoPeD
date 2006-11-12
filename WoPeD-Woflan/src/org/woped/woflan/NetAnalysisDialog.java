@@ -12,6 +12,7 @@ import javax.swing.event.*;
 import org.processmining.framework.models.petrinet.algorithms.Woflan;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.model.*;
+import org.woped.editor.utilities.*;
 
 import org.woped.core.controller.*;
 import org.woped.woflan.NetInfoTreeRenderer;
@@ -43,6 +44,10 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     	if (m_netHandle!=-1)
     	{
         	setSize(640,480);
+        	// Center the window on the desktop
+        	setLocationRelativeTo(null);
+        	setIconImage(Messages.getImageIcon("ToolBar.Woped").getImage());
+        	
         	getContentPane().setLayout(new GridLayout(1,1));
         	// Add tree control to display the output of our WOFLAN library
         	DefaultMutableTreeNode top =
@@ -63,6 +68,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     	m_treeObject.addTreeSelectionListener(this);
     	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}	
+	
 	private void BuildBasicInfo(DefaultMutableTreeNode parent)
 	{
 		DefaultMutableTreeNode current = new NetInfo("Basic net information");
