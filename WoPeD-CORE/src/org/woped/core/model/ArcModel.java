@@ -234,10 +234,14 @@ public class ArcModel extends DefaultEdge implements Serializable
     {
         AttributeMap map = getAttributes();
         List points = GraphConstants.getPoints(map);
-        Point2D[] result = new Point2D[points.size()];
-        for (int i = 0; i < points.size(); i++)
+        Point2D[] result = new Point2D[] {};
+        if (points != null)
         {
-            result[i] = (Point2D) points.get(i);
+            result = new Point2D[points.size()];
+            for (int i = 0; i < points.size(); i++)
+            {
+                result[i] = (Point2D) points.get(i);
+            }
         }
         return result;
     }

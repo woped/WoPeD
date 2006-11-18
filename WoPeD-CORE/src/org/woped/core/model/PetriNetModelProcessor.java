@@ -446,7 +446,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
                     // remove the source simpleTrans for this arc!
                     currentOperator.getSimpleTransContainer().removeAllSourceElements(arcToDelete.getTargetId());
                 }
-                currentOperator.getSimpleTransContainer().removeArcsFromElement(arcToDelete.getTargetId());
+                currentOperator.getSimpleTransContainer().removeSourceArcsFromElement(arcToDelete.getTargetId());
                 // System.out.println("INNER ARC TO TARGET deleted");
             } else if (getElementContainer().getElementById(arcToDelete.getTargetId()).getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
@@ -468,7 +468,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
                     // remove the target simpleTrans for this arc!
                     currentOperator.getSimpleTransContainer().removeAllTargetElements(arcToDelete.getSourceId());
                 }
-                currentOperator.getSimpleTransContainer().removeArcsFromElement(arcToDelete.getSourceId());
+                currentOperator.getSimpleTransContainer().removeTargetArcsFromElement(arcToDelete.getSourceId());
                 LoggerManager.debug(Constants.CORE_LOGGER, "INNER ARC TO SOURCE deleted");
             }
             getElementContainer().removeArc(arcToDelete);

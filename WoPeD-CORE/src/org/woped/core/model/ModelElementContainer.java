@@ -194,6 +194,25 @@ public class ModelElementContainer implements Serializable
         LoggerManager.debug(Constants.CORE_LOGGER, "Element (ID:" + id + ") deleted.");
     }
 
+    public void removeTargetArcsFromElement(Object id) {
+        // remove all Target Arcs
+        Iterator arcsToRemove2 = getOutgoingArcs(id).keySet().iterator();
+        // arcsToRemove2.next();
+        while (arcsToRemove2.hasNext())
+        {
+            removeArc(arcsToRemove2.next());
+        }
+    }
+    
+    public void removeSourceArcsFromElement(Object id) {
+        // remove all Source Arcs
+        Iterator arcsToRemove = getIncomingArcs(id).keySet().iterator();
+        while (arcsToRemove.hasNext())
+        {
+            removeArc(arcsToRemove.next());
+        }
+    }
+    
     /**
      * Method removeRefElements. Removes only all Arcs from a
      * <code>PetriNetModelElement</code>, not the Element itselfs.
@@ -202,20 +221,8 @@ public class ModelElementContainer implements Serializable
      */
     public void removeArcsFromElement(Object id)
     {
-
-        // remove all Target Arcs
-        Iterator arcsToRemove2 = getOutgoingArcs(id).keySet().iterator();
-        // arcsToRemove2.next();
-        while (arcsToRemove2.hasNext())
-        {
-            removeArc(arcsToRemove2.next());
-        }
-        // remove all Source Arcs
-        Iterator arcsToRemove = getIncomingArcs(id).keySet().iterator();
-        while (arcsToRemove.hasNext())
-        {
-            removeArc(arcsToRemove.next());
-        }
+        removeSourceArcsFromElement(id);
+        removeTargetArcsFromElement(id);
 
         LoggerManager.debug(Constants.CORE_LOGGER, "All References from/to (ID:" + id + ") deleted");
     }
