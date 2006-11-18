@@ -86,7 +86,7 @@ public class ArcModel extends DefaultEdge implements Serializable
                 .getConfiguration().getArrowWidth());
         GraphConstants.setDisconnectable(map, false);
         // GraphConstants.setRouting(map, Edge.)
-        changeAttributes(map);
+        getAttributes().applyMap(map);
     }
 
     public int getWeight()
@@ -183,7 +183,7 @@ public class ArcModel extends DefaultEdge implements Serializable
             map.remove(GraphConstants.ROUTING);
             map.remove(GraphConstants.POINTS);
         }
-        this.changeAttributes(map);
+        getAttributes().applyMap(map);
     }
 
     public boolean isRoute()
@@ -246,13 +246,16 @@ public class ArcModel extends DefaultEdge implements Serializable
     {
         AttributeMap map = getAttributes();
         List pointList = GraphConstants.getPoints(map);
-        while (pointList.size() > 2)
-            pointList.remove(1);
-        for (int i = points.length - 1; i >= 0; i--)
+        if (pointList != null)
         {
-            pointList.add(1, points[i]);
+            while (pointList.size() > 2)
+                pointList.remove(1);
+            for (int i = points.length - 1; i >= 0; i--)
+            {
+                pointList.add(1, points[i]);
+            }
+            GraphConstants.setPoints(map, pointList);
         }
-        GraphConstants.setPoints(map, pointList);
     }
 
     /**
@@ -265,7 +268,7 @@ public class ArcModel extends DefaultEdge implements Serializable
         List points = GraphConstants.getPoints(map);
         points.remove(pos);
         GraphConstants.setPoints(map, points);
-        changeAttributes(map);
+        getAttributes().applyMap(map);
         LoggerManager.debug(Constants.CORE_LOGGER, "Point removed");
 
     }

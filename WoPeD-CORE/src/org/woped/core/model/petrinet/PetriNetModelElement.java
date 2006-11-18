@@ -83,7 +83,7 @@ public abstract class PetriNetModelElement extends AbstractPetriNetModelElement
     {
         AttributeMap map = getAttributes();
         GraphConstants.setSize(map, dim);
-        changeAttributes(map);
+        getAttributes().applyMap(map);
     }
 
     public void setSize(int width, int height)

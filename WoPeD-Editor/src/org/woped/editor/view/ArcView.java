@@ -58,6 +58,9 @@ public class ArcView extends EdgeView
     public ArcView(Object cell)
     {
         super(cell);
+        if (cell instanceof ArcModel){
+            setAttributes(((ArcModel)cell).getAttributes());
+        }
     }
 
     /*
@@ -139,7 +142,7 @@ public class ArcView extends EdgeView
                     if (view.lineShape != null) g2.draw(view.lineShape);
                     if (view.endShape != null) g2.draw(view.endShape);
                 }
-                if (graph.getEditingCell() != view.getCell())
+                /*if (graph.getEditingCell() != view.getCell())
                 {
                     Object label = graph.convertValueToString(view);
                     if (label != null)
@@ -148,7 +151,7 @@ public class ArcView extends EdgeView
                         g.setFont(getFont());
                         paintLabel(g, label.toString(), getLocation(), true);
                     }
-                }
+                }*/
                 if (isActivated())
                 {
                     g2.setColor(Color.RED);

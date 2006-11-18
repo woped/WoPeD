@@ -33,7 +33,7 @@ public class OperatorModel extends AbstractUMLElementModel
         {
             GraphConstants.setSize(amap, new Dimension(map.getSize().getX1(), map.getSize().getX2()));
         }
-        changeAttributes(amap);
+        getAttributes().applyMap(map);
     }
 
     public int getType()

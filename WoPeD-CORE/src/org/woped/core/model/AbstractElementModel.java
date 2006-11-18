@@ -167,7 +167,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     {
         AttributeMap map = getAttributes();
         GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
-        changeAttributes(map);
+        getAttributes().applyMap(map);
     }
 
     public abstract String getToolTipText();

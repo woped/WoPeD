@@ -48,7 +48,7 @@ public class WoPeDPortView extends PortView
 
     protected boolean shouldInvokePortMagic(EdgeView arg0)
     {
-        return !(getParentView() instanceof PlaceView);
+        return false;
     }
 
     /** Renderer for the class. */

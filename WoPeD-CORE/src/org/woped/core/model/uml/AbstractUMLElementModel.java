@@ -39,7 +39,7 @@ public abstract class AbstractUMLElementModel extends AbstractElementModel imple
     {
         AttributeMap map = getAttributes();
         GraphConstants.setSize(map, dim);
-        changeAttributes(map);
+        getAttributes().applyMap(map);
     }
 
     public void setSize(int width, int height)
@@ -76,7 +76,7 @@ public abstract class AbstractUMLElementModel extends AbstractElementModel imple
     {
         AttributeMap map = getAttributes();
         GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
-        changeAttributes(map);
+        getAttributes().applyMap(map);
     }
 
     public int getX()

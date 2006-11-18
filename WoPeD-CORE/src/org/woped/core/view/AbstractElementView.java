@@ -22,6 +22,7 @@
  */
 package org.woped.core.view;
 
+import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphCellEditor;
 import org.jgraph.graph.VertexView;
 
@@ -45,6 +46,11 @@ public abstract class AbstractElementView extends VertexView
     public AbstractElementView(Object cell)
     {
         super(cell);
+        if (cell instanceof DefaultGraphCell){
+            DefaultGraphCell cellEl = (DefaultGraphCell)cell;
+            setAttributes(cellEl.getAttributes());
+            
+        }
     }
 
     /**

@@ -154,7 +154,7 @@ public class TransitionResourceModel extends DefaultGraphCell
     {
         AttributeMap map = getAttributes();
         GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
-        changeAttributes(map);
+        getAttributes().applyMap(map);
     }
 
     public int getX()

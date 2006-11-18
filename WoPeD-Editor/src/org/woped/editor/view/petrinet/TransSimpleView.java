@@ -27,7 +27,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 
 import javax.swing.ImageIcon;
 
@@ -59,13 +58,6 @@ public class TransSimpleView extends AbstractElementView
     public TransSimpleView(Object cell)
     {
         super(cell);
-
-    }
-
-    public Point2D getPerimeterPoint(Point2D source, Point2D p)
-    {
-
-        return super.getPerimeterPoint(source, p);
 
     }
 

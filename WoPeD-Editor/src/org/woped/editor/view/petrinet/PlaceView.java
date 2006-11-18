@@ -31,6 +31,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexRenderer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
@@ -82,7 +83,7 @@ public class PlaceView extends AbstractElementView
         return ((PlaceModel) getCell()).getVirtualTokenCount();
     }
 
-    public Point2D getPerimeterPoint(Point2D source, Point2D p)
+    public Point2D getPerimeterPoint(EdgeView edge, Point2D source, Point2D p)
     {
 
         // liefert die Größe und die Koordinaten der Stelle.
