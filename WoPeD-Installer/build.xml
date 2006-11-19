@@ -1,7 +1,7 @@
 <project default="makedistribution" name="INSTALLER">
 
 	<tstamp />
-	<property name="JGRAPHVERSION" value="5.4.4" />
+	<property name="JGRAPHVERSION" value="5.9.1" />
 	<property name="LOG4JVERSION" value="1.2.8" />
 	<property name="WOPEDVERSION" value="1.0.0" />
 	<property name="COREVERSION" value="1.0.0" />
@@ -52,7 +52,7 @@
 	</target>
 
   	<target name="buildjar">
-		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.MF">
+		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
 			<fileset dir="../WoPeD-CORE/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
@@ -113,14 +113,14 @@
 	<target name="makesubprojects">
 		<ant antfile="../WoPeD-CORE/build.xml" dir="../WoPeD-CORE" />
 		<ant antfile="../WoPeD-Editor/build.xml" dir="../WoPeD-Editor" />
-		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
-		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
-		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
 		<ant antfile="../WoPeD-Woflan/build.xml" dir="../WoPeD-Woflan" />
+		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
+		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
+		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
 	</target>
 	
 	<target name="makeinstaller">
-		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST3.MF">
+		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST3.mf">
 			<fileset file="RunWoPeD.class" />
 		</jar>
 		<exec dir="dist" executable="cmd">

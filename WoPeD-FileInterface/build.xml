@@ -4,6 +4,8 @@
 	<property name="JGRAPHVERSION" value="5.4.4" />
 	<property name="FILEINTERFACEVERSION" value="1.0.0" />
 	<property name="COREVERSION" value="1.0.0" />	
+	<property name="EDITORVERSION" value="1.0.0" />	
+	<property name="WOFLANVERSION" value="1.0.0" />	
 	<property name="SNAPSHOT" value="-beta" />
 
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
@@ -12,7 +14,9 @@
 	<target name="compile" depends="generateOldPnmlXMLBeans">
 		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
-				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}.jar" />
+				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
+				<pathelement path="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}${SNAPSHOT}.jar" />
+				<pathelement path="../WoPeD-Woflan/lib/woped-woflan-${WOFLANVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="lib/pnmlBeans.jar" />
 				<pathelement path="lib/pnmlBeans_old.jar" />
 				<pathelement path="../CommonLibs/lib/xbean.jar" />

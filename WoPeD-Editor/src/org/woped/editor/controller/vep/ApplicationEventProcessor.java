@@ -114,6 +114,9 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
         case AbstractViewEvent.ARRANGE:
             getMediator().getUi().arrangeFrames();
             break;
+        case AbstractViewEvent.PRINT:
+            print(currentEditor);
+            break;
 
         /*
          * SCREENSHOT m_controlledWindow.makeScreenshot(); }
@@ -145,7 +148,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
      * 
      * @param editor
      */
-    public void print(EditorVC editor)
+    public void print(IEditor editor)
     {
         AbstractGraph graph = editor.getGraph();
         if (graph != null)
