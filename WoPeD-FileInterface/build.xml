@@ -1,12 +1,6 @@
 <project default="makejar" name="FileInterface">
 
-	<property name="LOG4JVERSION" value="1.2.8" />
-	<property name="JGRAPHVERSION" value="5.4.4" />
-	<property name="FILEINTERFACEVERSION" value="1.0.0" />
-	<property name="COREVERSION" value="1.0.0" />	
-	<property name="EDITORVERSION" value="1.0.0" />	
-	<property name="WOFLANVERSION" value="1.0.0" />	
-	<property name="SNAPSHOT" value="-beta" />
+	<property file="../CommonLibs/build.properties" />
 
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
