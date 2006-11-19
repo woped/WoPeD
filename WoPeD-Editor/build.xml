@@ -14,6 +14,9 @@
 					<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 				</classpath>
 			</javac>
+		<copy todir="bin/org/woped/editor/gui/images">
+			<fileset dir="src/org/woped/editor/gui/images"/>
+		</copy>
 	</target>
 	
 	<target name="makejar" depends="compile">

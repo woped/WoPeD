@@ -17,12 +17,12 @@
 				<pathelement path="lib/confBeans.jar" />
 			</classpath>
 		</javac>
+		<copy todir="bin/org/woped/config" file="src/org/woped/config/WoPeDconfig.xml"/>
 	</target>
 	
 	<target name="makejar" depends="compile">
 		<jar destfile="lib/woped-configuration-${CONFIGURATIONVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
-			<fileset file="bin/org/woped/config/WoPeDconfig.xml" />
 			<fileset dir="lib" file="lib/confBeans.jar" />
 		</jar>
 	</target>
