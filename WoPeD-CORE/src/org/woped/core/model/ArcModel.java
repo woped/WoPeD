@@ -25,6 +25,7 @@ package org.woped.core.model;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
@@ -32,6 +33,7 @@ import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
+import org.jgraph.graph.PortView;
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
@@ -176,19 +178,19 @@ public class ArcModel extends DefaultEdge implements Serializable
         AttributeMap map = this.getAttributes();
         if (route)
         {
-            GraphConstants.setRouting(map, GraphConstants.ROUTING_SIMPLE);
-            map.remove(GraphConstants.POINTS);
+            getAttributes().applyValue(GraphConstants.ROUTING, GraphConstants.ROUTING_SIMPLE);
+            getAttributes().remove(GraphConstants.POINTS);
         } else
         {
-            map.remove(GraphConstants.ROUTING);
-            map.remove(GraphConstants.POINTS);
+            getAttributes().remove(GraphConstants.ROUTING);
+            getAttributes().remove(GraphConstants.POINTS);
         }
-        getAttributes().applyMap(map);
     }
 
     public boolean isRoute()
     {
-        return (GraphConstants.getRouting(getAttributes()) != null);
+        return (!GraphConstants.ROUTING_DEFAULT.equals(GraphConstants.getRouting(getAttributes())));
+        
     }
 
     /**
@@ -200,7 +202,14 @@ public class ArcModel extends DefaultEdge implements Serializable
      */
     public void addPoint(Point2D c, int index)
     {
-        GraphConstants.getPoints(getAttributes()).add(index, c);
+        List points = GraphConstants.getPoints(getAttributes());
+        if (points == null) {
+            points=new Vector();
+        }
+        points.add(index, c);
+        HashMap map = new HashMap();
+        GraphConstants.setPoints(map, points);
+        getAttributes().applyMap(map);
         LoggerManager.debug(Constants.CORE_LOGGER, "Point added " + c.toString());
     }
 
@@ -213,13 +222,30 @@ public class ArcModel extends DefaultEdge implements Serializable
     {
         AttributeMap map = getAttributes();
         List points = GraphConstants.getPoints(map);
+        if (points==null){
+            points=new Vector();
+            Point2D[] currentPoints = getPoints();
+            for (int i=0;i<currentPoints.length;i++){
+                points.add(currentPoints[i]);
+            }
+        }
 
         int index = 0;
         double min = Double.MAX_VALUE, dist = 0;
         for (int i = 0; i < points.size() - 1; i++)
         {
-            Point2D p = (Point2D) points.get(i);
-            Point2D p1 = (Point2D) points.get(i + 1);
+            Point2D p=null;
+            Point2D p1=null;
+            if  (points.get(i) instanceof Point2D){
+                p= (Point2D)points.get(i);
+            } else if (points.get(i) instanceof PortView){
+                p=((PortView)points.get(i)).getLocation();
+            }
+            if  (points.get(i+1) instanceof Point2D){
+                p1= (Point2D)points.get(i+1);
+            } else if (points.get(i+1) instanceof PortView){
+                p1=((PortView)points.get(i+1)).getLocation();
+            }
             dist = new Line2D.Double(p, p1).ptLineDistSq(c);
             if (dist < min)
             {
@@ -240,7 +266,11 @@ public class ArcModel extends DefaultEdge implements Serializable
             result = new Point2D[points.size()];
             for (int i = 0; i < points.size(); i++)
             {
-                result[i] = (Point2D) points.get(i);
+                if (points.get(i) instanceof PortView){
+                    result[i] = ((PortView) points.get(i)).getLocation();
+                } else {
+                    result[i] = (Point2D) points.get(i);
+                }
             }
         }
         return result;

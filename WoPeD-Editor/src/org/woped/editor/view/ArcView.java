@@ -29,10 +29,13 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
+import org.jgraph.graph.GraphConstants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.ArcModel;
 
@@ -60,6 +63,12 @@ public class ArcView extends EdgeView
         super(cell);
         if (cell instanceof ArcModel){
             setAttributes(((ArcModel)cell).getAttributes());
+        }
+        if (GraphConstants.getPoints(getAttributes())==null ){
+            List points = new ArrayList(2);
+            points.add(getAttributes().createPoint(10, 10));
+            points.add(getAttributes().createPoint(20, 20));
+            GraphConstants.setPoints(getAttributes(), points);
         }
     }
 
