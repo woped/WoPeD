@@ -212,7 +212,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_ADD_POINT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_POINT, null, ACTIONID_ADD_POINT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_POINT), VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE_POINT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE_POINT, null, ACTIONID_REMOVE_POINT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_POINT), VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_POINT), VisualController.ARC_POINT, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_OPEN_PROPERTIES, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_PROPERTIES, null, ACTIONID_OPEN_PROPERTIES));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_PROPERTIES), VisualController.ANY_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_EXT_TRIGGER, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_EXT_TRIGGER, null, ACTIONID_ADD_EXT_TRIGGER));

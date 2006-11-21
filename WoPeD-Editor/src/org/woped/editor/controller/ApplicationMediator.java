@@ -108,6 +108,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
     {
         EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport);
         addViewController(editor);
+        editor.getGraph().addMouseListener(visualController);
         return editor;
     }
 

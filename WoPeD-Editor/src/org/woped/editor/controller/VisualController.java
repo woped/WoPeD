@@ -25,6 +25,9 @@
  */
 package org.woped.editor.controller;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.geom.Point2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
@@ -55,7 +58,7 @@ import org.woped.editor.controller.vc.EditorVC;
  * selection status. Changes are initiated from external events via
  * PropertyChangeEvents and GraphSelectionEvents.
  */
-public class VisualController implements PropertyChangeListener, GraphSelectionListener, IClipboaredListener
+public class VisualController implements PropertyChangeListener, GraphSelectionListener, IClipboaredListener, MouseListener
 {
     private ApplicationMediator     am                             = null;
 
@@ -124,6 +127,8 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     
     public static final int         DRAWMODE_AND_SPLITJOIN         = 30;    
 
+    public static final int         ARC_POINT                      = 31;    
+
     private static final int        MAX_ID                         = 32;
 
     private Vector[]                m_enable                       = new Vector[MAX_ID + 1];
@@ -171,6 +176,9 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
      */
     public void addElement(Object obj, int enable, int visible, int selected)
     {
+        if (enable==31 || visible==31 || selected==31){
+            System.out.println(obj);
+        }
         if (enable > IGNORE && enable <= MAX_ID)
         {
             if (setEnabled(obj, m_status[enable]))
@@ -614,5 +622,54 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     public void notify(boolean isEmpty)
     {
         setStatus(CAN_PASTE,am.getUi().getAllEditors().size() >0 && !isEmpty);
+    }
+
+    public void mouseClicked(MouseEvent arg0)
+    {
+    }
+
+    public void mouseEntered(MouseEvent arg0)
+    {
+    }
+
+    public void mouseExited(MouseEvent arg0)
+    {
+    }
+
+    public void mousePressed(MouseEvent arg0)
+    {
+        if (isActive())
+        {
+            boolean pointClicked = false;
+            AbstractGraph graph = null;
+            Object selectedCell = null;
+            if (am.getUi().getEditorFocus() != null)
+            {
+
+                graph = am.getUi().getEditorFocus().getGraph();
+                selectedCell = graph.getSelectionCell();
+            }
+            if (selectedCell instanceof ArcModel){
+                Point2D clickPoint = graph.fromScreen(arg0.getPoint());
+                Point2D[] points = ((ArcModel)selectedCell).getPoints();
+                double minDist = Double.MAX_VALUE;
+                int pos = -1;
+                for (int i=1;i<points.length-1;i++) {
+                    if (clickPoint.distance(points[i])<minDist) {
+                        pos=i;
+                        minDist=clickPoint.distance(points[i]);
+                    }
+                }
+                if (pos!=-1 && minDist<10) {
+                    pointClicked=true;
+                }
+            }
+            setStatus(ARC_POINT, pointClicked);
+        }
+        
+    }
+
+    public void mouseReleased(MouseEvent arg0)
+    {
     }
 }
