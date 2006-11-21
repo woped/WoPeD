@@ -34,7 +34,6 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.PortRenderer;
 import org.jgraph.graph.PortView;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.editor.view.petrinet.PlaceView;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
