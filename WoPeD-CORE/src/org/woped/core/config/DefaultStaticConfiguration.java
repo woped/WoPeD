@@ -140,7 +140,7 @@ public class DefaultStaticConfiguration implements IConfiguration
 
     public boolean isHomedirSet()
     {
-        return getHomedir() != null && getHomedir() != "";
+        return getHomedir() != null && !getHomedir().equals("");
     }
 
     public boolean isImportToolspecific()
