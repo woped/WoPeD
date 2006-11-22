@@ -97,6 +97,7 @@ public class ActionFactory
     // window
     public final static String         ACTIONID_CASCADE                = "Action.Frames.Cascade";
     public final static String         ACTIONID_ARRANGE                = "Menu.Window.Arrange";
+    public final static String		   ACTIONID_SHOWSIDEBAR			   = "Menu.Window.ShowSideBar";
 
     private static HashMap             STATIC_ACTION_MAP               = null;
 
@@ -273,6 +274,8 @@ public class ActionFactory
 
         STATIC_ACTION_MAP.put(ACTIONID_CASCADE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CASCADE, null, ACTIONID_CASCADE));
         STATIC_ACTION_MAP.put(ACTIONID_ARRANGE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.ARRANGE, null, ACTIONID_ARRANGE));
+        STATIC_ACTION_MAP.put(ACTIONID_SHOWSIDEBAR, 
+        		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.SHOWSIDEBAR,  null, ACTIONID_SHOWSIDEBAR));
 
         return STATIC_ACTION_MAP;
     }

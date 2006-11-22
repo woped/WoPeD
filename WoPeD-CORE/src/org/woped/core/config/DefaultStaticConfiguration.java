@@ -54,7 +54,6 @@ public class DefaultStaticConfiguration implements IConfiguration
     private String                variant                    = DEFAULT_VARIANT;
 
     // Booleans for alpha-functions (TEST) later integration in conf&gui
-    public static boolean         ACTIVATE_TREE_VIEW         = true;
     public static boolean         ACTIVATE_NET_ROUTING       = false;
     public static boolean         ACTIVATE_ANNEALING_LAYOUT  = false;
 

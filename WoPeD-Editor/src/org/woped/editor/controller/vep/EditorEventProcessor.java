@@ -297,6 +297,10 @@ public class EditorEventProcessor extends AbstractEventProcessor
             case AbstractViewEvent.TOGGLE_TOKENGAME:
                 editor.toggleTokenGame();
                 break;
+            case AbstractViewEvent.SHOWSIDEBAR:
+            	// Toggle visibility of side tree view
+            	editor.setSideTreeViewVisible(!editor.isSideTreeViewVisible());
+            	break;                
             case AbstractViewEvent.PRESS:
                 editor.scaleNet(0.5);
                 break;

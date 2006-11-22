@@ -90,6 +90,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     //
     public static final int CASCADE                   = 1071;
     public static final int ARRANGE                   = 1072;
+    public static final int SHOWSIDEBAR				  = 1074;
 
     // General Orders
     public static final int VIEWEVENT_FIRST           = 0;

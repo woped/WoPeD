@@ -160,6 +160,13 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     // ViewControll
     private Vector                  viewListener            = new Vector(1, 3);
     private EditorStatusBarVC       m_statusbar;
+    
+    //! Stores a reference to the tree view and overview window
+    //! for the net
+    //! It is kept as a member to be able to show / hide this part of the
+    //! editor window as required
+    private JSplitPane				m_leftSideTreeView	= null;
+    private JSplitPane				m_mainSplitPane = null;
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -192,37 +199,33 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
         getGraph().getSelectionModel().addGraphSelectionListener(this);
         getGraph().getModel().addGraphModelListener(this);
         getGraph().addKeyListener(this);
-        if (!DefaultStaticConfiguration.ACTIVATE_TREE_VIEW)
-        {
-            m_scrollPane = new JScrollPane(getGraph());
-            add(m_scrollPane);
-        } else
-        { // Furute Feature with treeview
-            GraphTreeModel gtModel = new GraphTreeModel(getGraph().getModel());
-            m_scrollPane = new JScrollPane(getGraph());
-            // Element Tree
-            JTree tree = new JTree(gtModel);
-            getGraph().getModel().addGraphModelListener(gtModel);
-            tree.setRootVisible(false);
-            JScrollPane sTree = new JScrollPane(tree);
-            JPanel treePanel = new JPanel(new GridBagLayout());
-            treePanel.add(new JLabel(Messages.getString("TreeView.Elements.Title")), 
-            		new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
-            treePanel.add(sTree, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
-            // Overview Panel
-            OverviewPanel overview = new OverviewPanel(this);
-            JScrollPane sOverview = new JScrollPane(overview);
-            JPanel overviewPanel  = new JPanel(new GridBagLayout());
-            overviewPanel.add(new JLabel(Messages.getString("TreeView.Overview.Title")), 
-            		new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
-            overviewPanel.add(sOverview, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
-            // Splits
-            JSplitPane splitLeft = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overviewPanel, treePanel);
-            splitLeft.setDividerLocation(100);
-            JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, splitLeft, m_scrollPane);
-            split.setDividerLocation(100);
-            add(split);
-        }
+        
+        // Future Feature with treeview
+        GraphTreeModel gtModel = new GraphTreeModel(getGraph().getModel());
+        m_scrollPane = new JScrollPane(getGraph());
+        // Element Tree
+        JTree tree = new JTree(gtModel);
+        getGraph().getModel().addGraphModelListener(gtModel);
+        tree.setRootVisible(false);
+        JScrollPane sTree = new JScrollPane(tree);
+        JPanel treePanel = new JPanel(new GridBagLayout());
+        treePanel.add(new JLabel(Messages.getString("TreeView.Elements.Title")), 
+        		new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
+        treePanel.add(sTree, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
+        // Overview Panel
+        OverviewPanel overview = new OverviewPanel(this);
+        JScrollPane sOverview = new JScrollPane(overview);
+        JPanel overviewPanel  = new JPanel(new GridBagLayout());
+        overviewPanel.add(new JLabel(Messages.getString("TreeView.Overview.Title")), 
+        		new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0,0,0,0), 0 , 0));
+        overviewPanel.add(sOverview, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
+        // Splits
+        m_leftSideTreeView = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overviewPanel, treePanel);
+        m_leftSideTreeView.setDividerLocation(100);
+        m_mainSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_leftSideTreeView, m_scrollPane);
+        setSideTreeViewVisible(false);
+        add(m_mainSplitPane);
+                
         if (modelProcessorType == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
         {
             this.m_tokenGameController = new TokenGameController(((PetriNetModelProcessor) getModelProcessor()), getGraph());
@@ -1716,5 +1719,20 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
     public JScrollPane getScrollPane()
     {
         return m_scrollPane;
+    }
+    
+    //! Use this method to show or hide the tree view
+    //! on the left side of the editor window
+    //! @param specifies whether the tree view should be shown or not as a boolean variable
+    public void setSideTreeViewVisible(boolean showTreeView)
+    {
+    	m_leftSideTreeView.setVisible(showTreeView);
+        m_mainSplitPane.setDividerLocation(showTreeView?100:0);
+    }    
+    //! Returns whether or not the tree view is currently visible
+    //! @return true if the tree view is currently visible, false otherwise
+    public boolean isSideTreeViewVisible()
+    {
+    	return m_leftSideTreeView.isVisible();    	
     }
 }

@@ -364,7 +364,6 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
             } else if ("FrameSelection".equals(arg0.getPropertyName()))
             {
                 checkDrawMode();
-                activateFrameMenuItem();
                 checkMode();
                 checkSelection();
                 checkUndoRedo();
@@ -552,30 +551,6 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     {
         boolean woflan = ConfigurationManager.getConfiguration().isUseWoflan();
         setStatus(WOFLAN, woflan && am.getUi().getAllEditors().size() > 0);
-    }
-
-    /**
-     * Activates the MenuItem in the Window Menu according to the selected
-     * frame.
-     *  
-     */
-    protected void activateFrameMenuItem()
-    {
-    // TODO: Window Menu
-    // if (am.getUi().getEditorFocus() != null)
-    // {
-    // DefaultEditorFrame editorFrame =
-    // OLDUserInterface.getInstance().getActiveEditorFrame();
-    // Enumeration frames = SelectFrameAction.c_frames.keys();
-    // while (frames.hasMoreElements())
-    // {
-    // Object curElement = frames.nextElement();
-    // ((SelectFrameAction)
-    // SelectFrameAction.c_frames.get(curElement)).setSelected(editorFrame
-    // ==
-    // curElement);
-    // }
-    // }
     }
 
     protected void checkMode()

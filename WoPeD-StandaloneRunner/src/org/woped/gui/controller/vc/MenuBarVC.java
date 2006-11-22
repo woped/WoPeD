@@ -112,6 +112,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenu              m_windowMenu             = null;
     private JMenuItem          m_cascadeWindowsMenuItem = null;
     private JMenuItem          m_arrangeWindowsMenuItem = null;
+    private JCheckBoxMenuItem  m_showSideBarMenuItem    = null;
     private JMenu              m_framesMenu             = null;
 
     private JMenu              m_helpMenu               = null;
@@ -782,6 +783,15 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         }
         return m_arrangeWindowsMenuItem;
     }
+    
+    public JMenuItem getShowSideBarMenuItem()
+    {
+    	if (m_showSideBarMenuItem == null)
+    	{
+    		m_showSideBarMenuItem = new JCheckBoxMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SHOWSIDEBAR));
+    	}
+    	return m_showSideBarMenuItem;
+    }
 
     public JMenu getWindowMenu()
     {
@@ -792,6 +802,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 
             m_windowMenu.add(getCascadeWindowsMenuItem());
             m_windowMenu.add(getArrangeWindowsMenuItem());
+            m_windowMenu.add(getShowSideBarMenuItem());
             m_windowMenu.addSeparator();
             m_windowEmptyItem = new JMenuItem(Messages.getString("Menu.Window.Frames.empty"));
             m_windowEmptyItem.setEnabled(false);
