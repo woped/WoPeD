@@ -111,10 +111,34 @@ public abstract class Messages
     {
         return getString(propertiesPrefix + ".Icon");
     }
+    
+    public static String getCursorIconLocation(String propertiesPrefix)
+    {
+        return getString(propertiesPrefix + ".CursorIcon");
+    }
 
     public static ImageIcon getImageIcon(String propertiesPrefix)
     {
         String iconLocation = getIconLocation(propertiesPrefix);
+        URL iconURL = IUserInterface.class.getResource(iconLocation);
+        if (iconURL != null)
+        {
+            ImageIcon result = null;
+            try
+            {
+                result = new ImageIcon(iconURL);
+            } catch (RuntimeException e)
+            {
+                e.printStackTrace();
+            }
+            return result;
+        }
+        return null;
+    }
+    
+    public static ImageIcon getCursorImageIcon(String propertiesPrefix)
+    {
+        String iconLocation = getCursorIconLocation(propertiesPrefix);
         URL iconURL = IUserInterface.class.getResource(iconLocation);
         if (iconURL != null)
         {

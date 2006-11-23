@@ -23,15 +23,15 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
  */
 public class Cursors
 {
-    private static ImageIcon placeIcon = Messages.getImageIcon("ToolBar.DrawPlace");
-    private static ImageIcon andSpliIcon = Messages.getImageIcon("ToolBar.DrawAndSplit");
-    private static ImageIcon  andJoinIcon = Messages.getImageIcon("ToolBar.DrawAndJoin");
-    private static ImageIcon andSplitJoinIcon = Messages.getImageIcon("ToolBar.DrawAndSplitJoin");
-    private static ImageIcon xorSplitIcon = Messages.getImageIcon("ToolBar.DrawXorSplit");
-    private static ImageIcon xorJoinIcon = Messages.getImageIcon("ToolBar.DrawXorJoin");
-    private static ImageIcon xorSplitJoinIcon = Messages.getImageIcon("ToolBar.DrawXorSplitJoin");
-    private static ImageIcon transitionIcon = Messages.getImageIcon("ToolBar.DrawTransition");
-    private static ImageIcon subProcessIcon = Messages.getImageIcon("ToolBar.DrawSubProcess");
+    private static ImageIcon placeIcon = Messages.getCursorImageIcon("ToolBar.DrawPlace");
+    private static ImageIcon andSpliIcon = Messages.getCursorImageIcon("ToolBar.DrawAndSplit");
+    private static ImageIcon andJoinIcon = Messages.getCursorImageIcon("ToolBar.DrawAndJoin");
+    private static ImageIcon andSplitJoinIcon = Messages.getCursorImageIcon("ToolBar.DrawAndSplitJoin");
+    private static ImageIcon xorSplitIcon = Messages.getCursorImageIcon("ToolBar.DrawXorSplit");
+    private static ImageIcon xorJoinIcon = Messages.getCursorImageIcon("ToolBar.DrawXorJoin");
+    private static ImageIcon xorSplitJoinIcon = Messages.getCursorImageIcon("ToolBar.DrawXorSplitJoin");
+    private static ImageIcon transitionIcon = Messages.getCursorImageIcon("ToolBar.DrawTransition");
+    private static ImageIcon subProcessIcon = Messages.getCursorImageIcon("ToolBar.DrawSubProcess");
     
     public static Cursor placeCursor        = Toolkit.getDefaultToolkit().createCustomCursor(placeIcon.getImage(), new Point(placeIcon.getIconWidth()/2, placeIcon.getIconHeight()/2), "Cursor");
     public static Cursor andSplitCursor     = Toolkit.getDefaultToolkit().createCustomCursor(andSpliIcon.getImage(), new Point(andSpliIcon.getIconWidth()/2, andSpliIcon.getIconHeight()/2), "Cursor");
