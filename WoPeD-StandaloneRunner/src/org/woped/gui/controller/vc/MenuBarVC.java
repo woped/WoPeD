@@ -139,7 +139,6 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         add(getOptionsMenu());
         add(getWindowMenu());
         // containingWindow.getSdp().registerMenuBar(this);
-        add(Box.createHorizontalGlue());
         add(getHelpMenu());
 
     }
