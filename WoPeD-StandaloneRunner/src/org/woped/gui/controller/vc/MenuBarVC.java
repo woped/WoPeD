@@ -53,6 +53,7 @@ import org.woped.core.gui.IEditorAware;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.utilities.Messages;
+import org.woped.editor.controller.vc.*;
 import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.ViewEvent;
@@ -928,5 +929,14 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             JMenuItem curElement = ((JMenuItem) itr.next());
             curElement.setSelected(menuItem == curElement);
         }
+        // Adapt flag indicating activation of the        
+        // tree view of the editor window
+        boolean isActivated = false;
+        if (editor instanceof EditorVC)
+        {
+        	EditorVC currentVC = (EditorVC)editor;
+        	isActivated = currentVC.isSideTreeViewVisible();
+        }
+        m_showSideBarMenuItem.setSelected(isActivated);
     }
 }

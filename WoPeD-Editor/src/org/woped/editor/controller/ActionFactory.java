@@ -276,6 +276,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_ARRANGE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.ARRANGE, null, ACTIONID_ARRANGE));
         STATIC_ACTION_MAP.put(ACTIONID_SHOWSIDEBAR, 
         		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.SHOWSIDEBAR,  null, ACTIONID_SHOWSIDEBAR));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SHOWSIDEBAR), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
 
         return STATIC_ACTION_MAP;
     }
