@@ -9,6 +9,7 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.controller.*;
 import org.woped.core.model.petrinet.*;
+import org.woped.editor.controller.vc.NetInfo;
 
 //! This class implements a tree node that displays
 //! one single piece of information extracted from 

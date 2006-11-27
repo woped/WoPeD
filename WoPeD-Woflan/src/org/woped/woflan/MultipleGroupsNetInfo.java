@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.controller.*;
+import org.woped.editor.controller.vc.NetInfo;
 
 public class MultipleGroupsNetInfo extends UnaryNetInfo {
 	public MultipleGroupsNetInfo(

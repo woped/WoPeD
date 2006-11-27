@@ -84,7 +84,6 @@ import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
-import org.woped.core.model.petrinet.GraphTreeModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
@@ -167,6 +166,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     //! editor window as required
     private JSplitPane				m_leftSideTreeView	= null;
     private JSplitPane				m_mainSplitPane = null;
+    private int                     m_splitPosition = 200;
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -201,12 +201,13 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
         getGraph().addKeyListener(this);
         
         // Future Feature with treeview
-        GraphTreeModel gtModel = new GraphTreeModel(getGraph().getModel());
+        GraphTreeModel gtModel = new GraphTreeModel(this);
         m_scrollPane = new JScrollPane(getGraph());
         // Element Tree
         JTree tree = new JTree(gtModel);
         getGraph().getModel().addGraphModelListener(gtModel);
         tree.setRootVisible(false);
+    	tree.setShowsRootHandles(true);
         JScrollPane sTree = new JScrollPane(tree);
         JPanel treePanel = new JPanel(new GridBagLayout());
         treePanel.add(new JLabel(Messages.getString("TreeView.Elements.Title")), 
@@ -221,8 +222,9 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
         overviewPanel.add(sOverview, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
         // Splits
         m_leftSideTreeView = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overviewPanel, treePanel);
-        m_leftSideTreeView.setDividerLocation(100);
         m_mainSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_leftSideTreeView, m_scrollPane);
+        // Initially, show side tree to correctly initialize default divider position
+        setSideTreeViewVisible(true);
         setSideTreeViewVisible(false);
         add(m_mainSplitPane);
                 
@@ -1727,7 +1729,10 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
     public void setSideTreeViewVisible(boolean showTreeView)
     {
     	m_leftSideTreeView.setVisible(showTreeView);
-        m_mainSplitPane.setDividerLocation(showTreeView?100:0);
+    	if (!showTreeView)
+    		// Remember the split position if we're to hide the tree view
+    		m_splitPosition = m_mainSplitPane.getDividerLocation();
+        m_mainSplitPane.setDividerLocation(showTreeView?m_splitPosition:0);
     }    
     //! Returns whether or not the tree view is currently visible
     //! @return true if the tree view is currently visible, false otherwise

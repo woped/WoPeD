@@ -12,6 +12,8 @@ import javax.swing.event.*;
 import org.processmining.framework.models.petrinet.algorithms.Woflan;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.model.*;
+import org.woped.editor.controller.vc.NetInfo;
+import org.woped.editor.controller.vc.NodeGroupNetInfo;
 import org.woped.editor.utilities.*;
 
 import org.woped.core.controller.*;

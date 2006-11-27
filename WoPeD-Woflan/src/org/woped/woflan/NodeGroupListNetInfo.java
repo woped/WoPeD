@@ -2,6 +2,9 @@ package org.woped.woflan;
 
 import java.util.*;
 
+import org.woped.editor.controller.vc.NetInfo;
+import org.woped.editor.controller.vc.NodeGroupNetInfo;
+
 public abstract class NodeGroupListNetInfo extends NetInfo {
 	//! Construct node group list net info object
 	//! @param displayString name of the tree node to be displayed

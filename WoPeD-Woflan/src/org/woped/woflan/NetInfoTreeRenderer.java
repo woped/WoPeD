@@ -2,6 +2,9 @@ package org.woped.woflan;
 
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.*;
+
+import org.woped.editor.controller.vc.NetInfo;
+
 import java.awt.Component;
 
 public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
