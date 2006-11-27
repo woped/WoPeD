@@ -177,7 +177,7 @@ public class VisualController implements PropertyChangeListener, GraphSelectionL
     public void addElement(Object obj, int enable, int visible, int selected)
     {
         if (enable==31 || visible==31 || selected==31){
-            System.out.println(obj);
+  //          System.out.println(obj);
         }
         if (enable > IGNORE && enable <= MAX_ID)
         {
