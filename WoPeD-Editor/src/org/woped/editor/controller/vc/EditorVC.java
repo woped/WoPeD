@@ -222,6 +222,7 @@ public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, bo
         overviewPanel.add(sOverview, new GridBagConstraints(0,1,1,1,1.0,1.0,GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0,0,0,0), 0 , 0));
         // Splits
         m_leftSideTreeView = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overviewPanel, treePanel);
+        m_leftSideTreeView.setDividerLocation(100);
         m_mainSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_leftSideTreeView, m_scrollPane);
         // Initially, show side tree to correctly initialize default divider position
         setSideTreeViewVisible(true);
