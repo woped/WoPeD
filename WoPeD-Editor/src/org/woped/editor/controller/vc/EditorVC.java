@@ -85,6 +85,7 @@ import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
@@ -112,6 +113,7 @@ import org.woped.editor.simulation.TokenGameController;
 import org.woped.editor.utilities.ImageSelection;
 import org.woped.editor.utilities.Messages;
 import org.woped.editor.view.ViewFactory;
+import org.woped.editor.view.petrinet.TransSimpleView;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -1779,7 +1781,24 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	public void setSubprocessEditor(boolean subprocess) {
 		if (subprocess) {
-			m_graph.setBackground(new Color(220, 220, 220));
+			m_graph.setBackground(new Color(210, 210, 210));
+			
+			CreationMap map = CreationMap.createMap();
+			
+			//Start
+			map.setPosition(10, 100);
+			map.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
+			map.setName("Start");
+			map.setEditOnCreation(false);
+			createElement(map);
+			
+			//Ende
+			map = CreationMap.createMap();
+			map.setPosition(400, 100);
+			map.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
+			map.setName("Ende");
+			map.setEditOnCreation(false);
+			createElement(map);
 		}
 	}
 }
