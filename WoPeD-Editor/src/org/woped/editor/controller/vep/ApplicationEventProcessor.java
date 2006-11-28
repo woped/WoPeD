@@ -12,8 +12,10 @@ import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
@@ -44,9 +46,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
         }
         switch (event.getOrder())
         {
-        case AbstractViewEvent.NEW:
-            currentEditor = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
-            break;
+
         case AbstractViewEvent.DRAWMODE_PLACE:
             setDrawMode(PetriNetModelElement.PLACE_TYPE, true);
             break;
@@ -117,6 +117,8 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
         case AbstractViewEvent.PRINT:
             print(currentEditor);
             break;
+            
+       
 
         /*
          * SCREENSHOT m_controlledWindow.makeScreenshot(); }

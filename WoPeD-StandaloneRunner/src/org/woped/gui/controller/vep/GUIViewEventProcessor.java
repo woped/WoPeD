@@ -40,6 +40,8 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.petrinet.GroupModel;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
@@ -92,6 +94,48 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             }
             VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
             break;
+        case AbstractViewEvent.OPEN_SUBPROCESS:
+        	
+			if (event.getSource() instanceof EditorVC) {
+				editor = (EditorVC) event.getSource();
+			} else {
+				editor = (EditorVC) getMediator().getUi().getEditorFocus();
+			}
+
+			Object cell = editor.getGraph().getSelectionCell();
+			if (cell instanceof GroupModel) {
+				cell = ((GroupModel) cell).getMainElement();
+
+				if (cell instanceof SubProcessModel) {
+					SubProcessModel model = (SubProcessModel) cell;
+					
+					System.out.println("Subprocess Editor : " + model.getId());
+					
+					 editor = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
+			            editor.setName("Subprocess " + model.getNameValue() + " (ID="+ model.getId()+")");
+			            editor.setSubprocessEditor(true);
+			            
+			            // notify the editor aware vc
+			            editorIter = getMediator().getEditorAwareVCs().iterator();
+			            while (editorIter.hasNext())
+			            {
+			                ((IEditorAware) editorIter.next()).addEditor(editor);
+			            }
+			            VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
+			            break;
+					
+
+				} else {
+					// error
+				}
+			} else {
+				// error
+			}
+			break;
+            
+            
+            
+            
         case AbstractViewEvent.SELECT_EDITOR:
             selectEditor(editor);
             break;

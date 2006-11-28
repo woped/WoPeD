@@ -216,14 +216,14 @@ public class EditorEventProcessor extends AbstractEventProcessor
             case AbstractViewEvent.ADD_SUBPROCESS:
                 editor.createElement(AbstractPetriNetModelElement.SUBP_TYPE, -1, editor.getLastMousePosition(), false);
                 break;
-            case AbstractViewEvent.OPEN_SUBPROCESS:
-                // logger.warn("opening Subprocess is not implemented, yet");
-                // super("Action.Subprocess.Open");
-                // VisualController.getInstance().addElement(this,
-                // VisualController.NEVER, VisualController.IGNORE,
-                // VisualController.IGNORE);
-                JOptionPane.showMessageDialog(editor, "Subprocessing is not implemted, yet.", "Beta Version Error", JOptionPane.ERROR_MESSAGE);
-                break;
+//            case AbstractViewEvent.OPEN_SUBPROCESS:
+//                // logger.warn("opening Subprocess is not implemented, yet");
+//                // super("Action.Subprocess.Open");
+//                // VisualController.getInstance().addElement(this,
+//                // VisualController.NEVER, VisualController.IGNORE,
+//                // VisualController.IGNORE);
+//                JOptionPane.showMessageDialog(editor, "Subprocessing is not implemted, yet.", "Beta Version Error", JOptionPane.ERROR_MESSAGE);
+//                break;
             case AbstractViewEvent.ROUTING_ACTIVE:
                 cell = editor.getGraph().getSelectionCell();
                 ((ArcModel) cell).setRoute(true);

@@ -244,7 +244,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_ADD_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_SUBPROCESS, null, ACTIONID_ADD_SUBPROCESS));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_SUBPROCESS), VisualController.NO_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
 
-        STATIC_ACTION_MAP.put(ACTIONID_OPEN_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_SUBPROCESS, null, ACTIONID_OPEN_SUBPROCESS));
+        STATIC_ACTION_MAP.put(ACTIONID_OPEN_SUBPROCESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.OPEN_SUBPROCESS, null, ACTIONID_OPEN_SUBPROCESS));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_SUBPROCESS), VisualController.TRANSITION_SELECTION, VisualController.IGNORE,
                 VisualController.IGNORE);
 
