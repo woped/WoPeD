@@ -382,7 +382,7 @@ public class VisualController implements PropertyChangeListener,
 			boolean subprocessSelected = false;
 			boolean arcSelected = false;
 
-			if (selectedCell instanceof GroupModel) {
+			while (selectedCell instanceof GroupModel) {
 				selectedCell = ((GroupModel) selectedCell).getMainElement();
 			}
 			if (selectedCell instanceof ArcModel) {
