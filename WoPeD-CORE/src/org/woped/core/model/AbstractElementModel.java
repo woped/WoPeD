@@ -35,6 +35,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     private String         id                 = null;
     private ElementContext elementContext     = null;
     private NameModel      nameModel          = null;
+    private boolean 	   readOnly           = false;
     //! In order to be able to navigate between the different levels
     //! of element container (e.g. simple transition container of an operator)
     //! we need to store a reference to each owning container
@@ -222,4 +223,10 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     {
         this.nameModel = nameModel;
     }
+	public boolean isReadOnly() {
+		return readOnly;
+	}
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
+	}
 }

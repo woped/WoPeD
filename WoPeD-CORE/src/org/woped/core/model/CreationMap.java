@@ -62,6 +62,7 @@ public class CreationMap extends HashMap
     public static final String RESOURCE_ORGUNIT      = "RESOURCE_ORGUNIT";
     public static final String IMAGEICON             = "IMAGEICON";
     public static final String STATE_TYPE            = "STATETYPE";
+    public static final String READ_ONLY             = "READ_ONLY";
 
     public static CreationMap createMap()
     {
@@ -472,4 +473,20 @@ public class CreationMap extends HashMap
             return -1;
         }
     }
+    
+    public void setReadOnly(boolean readOnly)
+    {
+    	put(READ_ONLY, readOnly);;
+    }
+
+	public Boolean getReadOnly() {
+		 if (containsKey(READ_ONLY))
+	     {
+	        return (Boolean) get(READ_ONLY);
+	     } 
+		 else
+	     {
+	        return false;
+	     }
+	}
 }
