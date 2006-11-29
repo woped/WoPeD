@@ -50,10 +50,12 @@ import org.woped.gui.controller.ViewEvent;
  * the icon. 1999 Marty Hall, http://www.apl.jhu.edu/~hall/java/ TODO:
  * DOCUMENTATION (silenco)
  */
+
+@SuppressWarnings("serial")
 public class ToolBarVC extends JToolBar implements IViewController
 {
     // ViewControll
-    private Vector             viewListener         = new Vector(1, 3);
+    private Vector<IViewListener>             viewListener         = new Vector<IViewListener>(1, 3);
     private String             id                   = null;
     public static final String ID_PREFIX            = "TOOLBAR_VC_";
 
@@ -88,7 +90,6 @@ public class ToolBarVC extends JToolBar implements IViewController
     private AbstractButton     m_xorJoinButton      = null;
     private AbstractButton     m_xorSplitJoinButton = null;
 
-    private AbstractButton     m_orSplitButton      = null;
 
     private AbstractButton     m_subProcessButton   = null;
 

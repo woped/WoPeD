@@ -37,7 +37,6 @@ import java.util.Vector;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
-import javax.swing.Box;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -52,8 +51,8 @@ import org.woped.core.controller.IViewListener;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ActionFactory;
+import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
-import org.woped.editor.controller.vc.*;
 import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.ViewEvent;
@@ -63,14 +62,16 @@ import org.woped.gui.controller.ViewEvent;
  * 
  * @author Thomas Pohl
  */
+
+@SuppressWarnings("serial")
 public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 {
     // ViewControll
-    private Vector             viewListener             = new Vector(1, 3);
+    private Vector<IViewListener>   viewListener        = new Vector<IViewListener>(1, 3);
     private String             id                       = null;
     public static final String ID_PREFIX                = "MENUBAR_VC_";
 
-    private Hashtable          m_editorMenuItems        = new Hashtable();
+    private Hashtable<IEditor, JMenuItem> m_editorMenuItems = new Hashtable<IEditor, JMenuItem>();
     private JMenuItem          m_windowEmptyItem        = null;
 
     // private UserInterface m_containingWindow;
@@ -92,7 +93,6 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_cutMenuItem            = null;
     private JMenuItem          m_copyMenuItem           = null;
     private JMenuItem          m_pasteMenuItem          = null;
-    private JMenuItem          m_screenshotMenuItem     = null;
     private JMenuItem          m_editMenuItem           = null;
 
     private JMenu              m_viewMenu               = null;
@@ -104,7 +104,6 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_zoomOutMenuItem        = null;
 
     private JMenu              m_analyseMenu            = null;
-    private JMenuItem          m_stateSpaceMenuItem     = null;
     private JMenuItem          m_woflanMenuItem         = null;
     private JMenuItem		   m_wopedMenuItem			= null;
     private JMenu              m_optionsMenu            = null;

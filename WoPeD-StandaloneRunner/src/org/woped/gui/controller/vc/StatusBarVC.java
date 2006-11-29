@@ -47,6 +47,8 @@ import org.woped.gui.controller.DefaultApplicationMediator;
  *         TODO: DOCUMENTATION (silenco) Created on: 05.03.2005 Last Change on:
  *         05.03.2005
  */
+
+@SuppressWarnings("serial")
 public class StatusBarVC extends JPanel implements IViewController, IStatusBar
 {
     private JLabel             m_statusLabel       = null;
@@ -55,7 +57,7 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
     private int                progressBarCount    = -1;
     
     public static final String ID_PREFIX           = "STATUSBAR_VC_";
-    private Vector             viewListener        = new Vector(1, 3);
+    private Vector<IViewListener>   viewListener   = new Vector<IViewListener>(1, 3);
     SynchonizeTask             task;
 
     /**
