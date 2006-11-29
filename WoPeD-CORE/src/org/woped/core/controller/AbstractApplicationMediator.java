@@ -25,7 +25,6 @@ package org.woped.core.controller;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -45,14 +44,14 @@ import org.woped.core.utilities.LoggerManager;
  */
 public abstract class AbstractApplicationMediator implements IViewListener
 {
-    private HashMap        viewControllerMap = null;
+    private HashMap<String, IViewController>        viewControllerMap = null;
     private VEPController  vepController     = null;
     private IUserInterface ui                = null;
-    private LinkedList     editorLists       = new LinkedList();
+    private LinkedList<Object> editorLists = new LinkedList<Object>();
 
     public AbstractApplicationMediator(IUserInterface ui, IConfiguration conf)
     {
-        viewControllerMap = new HashMap();
+        viewControllerMap = new HashMap<String, IViewController>();
         setUi(ui);
         LoggerManager.info(Constants.CORE_LOGGER, "START INIT Application");
         boolean confOK = true;
@@ -197,28 +196,31 @@ public abstract class AbstractApplicationMediator implements IViewListener
 
     public IViewController[] findViewController(int type)
     {
-        ArrayList aL = new ArrayList();
+        ArrayList<IViewController> aL = new ArrayList<IViewController>();
         switch (type)
         {
         case IStatusBar.TYPE:
-            for (Iterator iter = viewControllerMap.values().iterator(); iter.hasNext();)
-            {
-                IViewController iViewC = (IViewController) iter.next();
-                if (iViewC instanceof IStatusBar) aL.add(iViewC);
+            for (IViewController iViewC : viewControllerMap.values()) {
+        	if (iViewC instanceof IStatusBar) {
+                    aL.add(iViewC);
+                }
             }
+            
             break;
 
         case IEditor.TYPE:
-            for (Iterator iter = viewControllerMap.values().iterator(); iter.hasNext();)
-            {
-                IViewController iViewC = (IViewController) iter.next();
-                if (iViewC instanceof IEditor) aL.add(iViewC);
+            for (IViewController iViewC : viewControllerMap.values()) {
+        	if (iViewC instanceof IEditor) {
+                    aL.add(iViewC);
+                }
             }
+            
             break;
         }
         IViewController[] iwC = new IViewController[aL.size()];
-        for (int i = 0; i < aL.size(); i++)
+        for (int i = 0; i < aL.size(); i++) {
             iwC[i] = (IViewController) aL.get(i);
+        }
 
         return iwC;
     }
