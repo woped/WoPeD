@@ -43,12 +43,12 @@ public class BrowserHistory
     /**
      * Stack of visited pages in backward direction
      */
-    protected Stack  history = new Stack();
+    protected Stack<String> history = new Stack<String>();
 
     /**
      * Stack of visited pages in forward direction
      */
-    protected Stack  future  = new Stack();
+    protected Stack<String> future = new Stack<String>();
 
     /**
      * URL of currently displayed page (<tt>null</tt> if none)
@@ -61,7 +61,10 @@ public class BrowserHistory
      */
     public void add(String url)
     {
-        if (current != null && !current.equals(url)) history.push(current);
+        if (current != null 
+        	&& !current.equals(url)) {
+            history.push(current);
+        }
 
         future.removeAllElements(); // drop forward stack
         current = url;
