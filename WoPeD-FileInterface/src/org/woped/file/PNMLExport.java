@@ -115,7 +115,7 @@ public class PNMLExport
             opt.setUseDefaultNamespace();
             opt.setSavePrettyPrint();
             opt.setSavePrettyPrintIndent(2);
-            Map map = new HashMap();
+            Map<String, String> map = new HashMap<String, String>();
             map.put("", "pnml.woped.org");
             opt.setSaveImplicitNamespaces(map);
 
@@ -303,7 +303,7 @@ public class PNMLExport
         // Instead of serializing the arc itself, we serialize
         // the "inner arcs" of all such transitions
         // To sort out duplicates, we create a set
-        Set connectedTransitions= new HashSet();  
+        Set<PetriNetModelElement> connectedTransitions = new HashSet<PetriNetModelElement>();  
         Iterator arcIter = elementContainer.getArcMap().keySet().iterator();
         while (arcIter.hasNext())
         {
