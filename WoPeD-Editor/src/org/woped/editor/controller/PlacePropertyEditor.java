@@ -48,10 +48,9 @@ import org.woped.editor.utilities.Messages;
 
 /**
  * @author tfreytag
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
  */
+
+@SuppressWarnings("serial")
 public class PlacePropertyEditor extends JDialog
 {
     // General
@@ -75,7 +74,6 @@ public class PlacePropertyEditor extends JDialog
     private JPanel        buttonPanel      = null;
     private JButton     buttonOk         = null;
     private JButton     buttonCancel     = null;
-    private JButton     buttonApply      = null;
 
     public PlacePropertyEditor(Frame owner, PlaceModel place, EditorVC editor)
     {
@@ -366,36 +364,6 @@ public class PlacePropertyEditor extends JDialog
 
         return buttonCancel;
     }
-
-    private JButton getButtonApply()
-    {
-        if (buttonApply == null)
-        {
-            buttonApply = new JButton();
-            buttonApply.setIcon(Messages.getImageIcon("Button.Apply"));
-            buttonApply.setText(Messages.getString("Button.Apply.Title"));
-            buttonApply.setMnemonic(KeyEvent.VK_A);
-            buttonApply.setPreferredSize(new Dimension(100, 25));
-            buttonApply.addActionListener(new ActionListener()
-            {
-                public void actionPerformed(ActionEvent e)
-                {
-                    apply();
-                }
-            });
-
-        }
-        return buttonApply;
-    }
-
-    // public static void main(String[] args)
-    // {
-    // TransitionPropertyEditor p = new TransitionPropertyEditor();
-    // JFrame f = new JFrame();
-    // f.getContentPane().add(p);
-    // f.setSize(350, 350);
-    // f.setVisible(true);
-    // }
 
     private void apply()
     {
