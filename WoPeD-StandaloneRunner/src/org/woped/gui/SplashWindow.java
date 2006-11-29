@@ -74,6 +74,7 @@ class WindowKiller extends Thread
     }
 }
 
+@SuppressWarnings("serial")
 public class SplashWindow extends JWindow
 {
     private JPanel       jPanel         = null;
@@ -84,7 +85,6 @@ public class SplashWindow extends JWindow
     private JLabel       copyrightLabel = null;
     private long         delayTime      = 0;
     private WindowKiller killer         = null;
-    private JFrame       owner          = null;
 
     /**
      * TODO: DOCUMENTATION (xraven)
@@ -194,7 +194,7 @@ public class SplashWindow extends JWindow
     {
         if (copyrightLabel == null)
         {
-            copyrightLabel = new JLabel("woped.org (c) 2003-2005");
+            copyrightLabel = new JLabel("woped.org (c) 2003-2006");
             copyrightLabel.setFont(new Font("Verdana", Font.PLAIN, 10));
             copyrightLabel.setForeground(Color.WHITE);
         }
