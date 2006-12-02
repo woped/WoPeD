@@ -3,6 +3,7 @@ package org.woped.editor.controller.vc;
 import org.woped.core.model.*;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.editor.controller.vc.NetAlgorithms;
 
 import java.util.Iterator;
 
@@ -62,11 +63,55 @@ public class NodeNetInfo extends NetInfo {
 		}
 		return result;
 	}
+	//! Get a string with the following layout: "(node, node, ...)" 
+	//! if any nodes are found matching the specified criteria, "" otherwise
+	//! @param node Specifies the node whose connected nodes are to be enumerated
+	//! @param connectionType specifies the type of connection as
+	//! NetAlgorithms.connectionTypeINBOUND,
+	//! NetAlgorithms.connectionTypeOUTBOUND or 
+	//! NetAlgorithms..connectionTypeALL
+	//! @param superOnly if true, only connections going to a super-net are going
+	//! to be listed
+	private static String getConnectedNodesString(AbstractElementModel node, int connectionType,
+			boolean superOnly)
+	{
+		StringBuffer result = new StringBuffer();
+		Iterator relevantNodes = NetAlgorithms.GetDirectlyConnectedNodes(node, connectionType).iterator();
+		boolean isFirst = true;
+		while (relevantNodes.hasNext())
+		{
+			AbstractElementModel currentNode 
+				= (AbstractElementModel)relevantNodes.next();
+			// If superOnly is specified
+			// only nodes that are contained in the root container are relevant for us
+			// FIXME: We will need to change this later to be the "next higher"
+			// Level container once sub-processes are implemented
+			if ((!superOnly)||(GetNodeOwner(currentNode)==null))
+			{
+				if (isFirst)
+					isFirst = false;
+				else
+					result.append(", ");
+				result.append(currentNode.getId());
+			}			
+		}
+		if (result.length()>0)
+			result = new StringBuffer("(" + result.toString() + ")");
+		return result.toString();
+	}
+	
 	private static String getNodeString(AbstractElementModel node,
 			AbstractElementModel nodeOwner)
 	{
 		// FIXME: Translate
-		String result = "Node ID: " + node.getId() + ", Name: " + node.getNameValue();
+		String predecessors = getConnectedNodesString(node,NetAlgorithms.connectionTypeINBOUND,true);
+		String successors = getConnectedNodesString(node,NetAlgorithms.connectionTypeOUTBOUND,true);
+		String result = "Node ID: " + ((nodeOwner!=null)?predecessors:"") +
+			node.getId() + ((nodeOwner!=null)?successors:"");
+		// Specify name only if it exists
+		if (node.getNameValue()!=null)
+			result = result + ", Name: " + node.getNameValue();
+		
 		if (nodeOwner!=null)
 			result = result + " ,Owner: (" + getNodeString(nodeOwner,null) + ")"; 
 		return result;

@@ -4,6 +4,7 @@ import org.woped.core.controller.*;
 import org.woped.core.model.*;
 import org.woped.core.model.petrinet.*;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.controller.vc.NetAlgorithms;
 import org.jgraph.graph.*;
 
 

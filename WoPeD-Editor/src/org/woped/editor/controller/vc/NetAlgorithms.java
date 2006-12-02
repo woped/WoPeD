@@ -1,4 +1,4 @@
-package org.woped.woflan;
+package org.woped.editor.controller.vc;
 
 import java.util.*;
 
@@ -134,7 +134,6 @@ public class NetAlgorithms {
 		}
 		catch(Exception e)
 		{
-			LoggerManager.info(Constants.WOFLAN_LOGGER, "Illegal object type found!");
 			// Can't calculate if non petri-net element has been 
 			// passed as input
 			routeInfo = null;
@@ -175,8 +174,8 @@ public class NetAlgorithms {
 	}				
 	public static class ArcConfiguration
 	{
-		int m_numIncoming = 0;
-		int m_numOutgoing = 0;
+		public int m_numIncoming = 0;
+		public int m_numOutgoing = 0;
 	}
 	//! Get the configuration of the arcs connected to the
 	//! specified element
