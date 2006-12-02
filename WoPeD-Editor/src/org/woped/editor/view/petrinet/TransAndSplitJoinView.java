@@ -27,7 +27,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 
 import javax.swing.ImageIcon;
 
@@ -43,6 +42,8 @@ import org.woped.core.config.DefaultStaticConfiguration;
  * 
  * 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class TransAndSplitJoinView extends TransSimpleView
 {
     private TransAndSplitJoinRenderer renderer = new TransAndSplitJoinRenderer();
@@ -57,13 +58,6 @@ public class TransAndSplitJoinView extends TransSimpleView
     public TransAndSplitJoinView(Object cell)
     {
         super(cell);
-    }
-
-    public Point2D getPerimeterPoint(Point2D source, Point2D p)
-    {
-
-        return super.getPerimeterPoint(source, p);
-
     }
 
     public CellViewRenderer getRenderer()

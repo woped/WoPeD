@@ -27,7 +27,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 
 import javax.swing.ImageIcon;
 
@@ -46,6 +45,8 @@ import org.woped.core.view.AbstractElementView;
  * Window>Preferences>Java>Templates. To enable and disable the creation of type
  * comments go to Window>Preferences>Java>Code Generation.
  */
+
+@SuppressWarnings("serial")
 public class SubProcessView extends AbstractElementView
 {
 
@@ -64,12 +65,6 @@ public class SubProcessView extends AbstractElementView
 
     }
 
-    public Point2D getPerimeterPoint(Point2D source, Point2D p)
-    {
-
-        return super.getPerimeterPoint(source, p);
-
-    }
 
     public CellViewRenderer getRenderer()
     {

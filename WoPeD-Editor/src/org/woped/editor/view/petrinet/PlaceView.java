@@ -45,6 +45,8 @@ import org.woped.core.view.AbstractElementView;
  * 
  * 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class PlaceView extends AbstractElementView
 {
 
@@ -88,8 +90,6 @@ public class PlaceView extends AbstractElementView
 
         // liefert die Größe und die Koordinaten der Stelle.
         Rectangle2D r = getBounds();
-        double x = r.getX();
-        double y = r.getY();
         // Berechnet den relative Mittelpunkt der Stelle.
         double a = (r.getWidth() - 1) / 2;
         double b = (r.getHeight() - 1) / 2;

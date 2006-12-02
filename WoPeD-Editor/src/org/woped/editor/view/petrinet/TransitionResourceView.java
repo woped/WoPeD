@@ -22,10 +22,9 @@ import org.woped.core.view.AbstractElementView;
 
 /**
  * @author waschtl
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
  */
+
+@SuppressWarnings("serial")
 public class TransitionResourceView extends AbstractElementView
 {
     private TransitionResourceRenderer renderer = new TransitionResourceRenderer();
@@ -36,7 +35,6 @@ public class TransitionResourceView extends AbstractElementView
     public TransitionResourceView(Object cell)
     {
         super(cell);
-        // TODO Auto-generated constructor stub
     }
 
     public CellViewRenderer getRenderer()

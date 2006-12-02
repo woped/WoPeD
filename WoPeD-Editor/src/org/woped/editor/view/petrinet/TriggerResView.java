@@ -23,10 +23,8 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
@@ -40,6 +38,8 @@ import org.woped.core.view.AbstractElementView;
  * 
  * 10.05.2003
  */
+
+@SuppressWarnings("serial")
 public class TriggerResView extends AbstractElementView
 {
 
@@ -55,13 +55,6 @@ public class TriggerResView extends AbstractElementView
     public TriggerResView(Object cell)
     {
         super(cell);
-    }
-
-    public Point2D getPerimeterPoint(Point2D source, Point2D p)
-    {
-
-        return super.getPerimeterPoint(source, p);
-
     }
 
     public CellViewRenderer getRenderer()
@@ -86,8 +79,6 @@ public class TriggerResView extends AbstractElementView
 
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
-            Dimension d = getSize();
-            boolean tmp = selected;
             if (super.isOpaque())
             {
                 g.setColor(super.getBackground());

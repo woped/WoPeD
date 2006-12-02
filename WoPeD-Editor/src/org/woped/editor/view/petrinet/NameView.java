@@ -40,6 +40,8 @@ import org.woped.core.view.AbstractElementView;
  * 
  * 21.09.2003
  */
+
+@SuppressWarnings("serial")
 public class NameView extends AbstractElementView
 {
 
@@ -71,6 +73,8 @@ public class NameView extends AbstractElementView
      * 
      * 28.03.2003
      */
+    
+    @SuppressWarnings("serial")
     static class NameViewRenderer extends VertexRenderer
     {
 

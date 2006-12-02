@@ -44,6 +44,8 @@ import org.woped.core.view.AbstractElementView;
  * 
  * 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class TransSimpleView extends AbstractElementView
 {
     private TransSimpleRenderer renderer = new TransSimpleRenderer();
