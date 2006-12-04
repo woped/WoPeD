@@ -158,12 +158,16 @@ public class PlaceView extends AbstractElementView
             }
             if (bordercolor != null)
             {
+        	g.setColor(Color.WHITE);
+                g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
             }
             if (selected)
             {
+                g.setColor(Color.WHITE);
+                g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
                 g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
 

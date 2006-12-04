@@ -114,6 +114,8 @@ public class TransSimpleView extends AbstractElementView
             }
             if (bordercolor != null)
             {
+        	g.setColor(Color.WHITE);
+        	g.fillRect(b, b, d.width - b - 1, d.height - b - 1);
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);

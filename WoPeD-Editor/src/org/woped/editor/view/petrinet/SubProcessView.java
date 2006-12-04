@@ -118,6 +118,8 @@ public class SubProcessView extends AbstractElementView
             }
             if (bordercolor != null)
             {
+        	g.setColor(Color.WHITE);
+        	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b - 1, b - 1, d.width - b, d.height - b);

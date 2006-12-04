@@ -103,6 +103,8 @@ public class TransAndJoinView extends TransSimpleView
             }
             if (bordercolor != null)
             {
+        	g.setColor(Color.WHITE);
+        	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
