@@ -21,6 +21,7 @@
  *
  */
 package org.woped.editor.controller;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -61,10 +62,8 @@ import org.woped.editor.utilities.Messages;
 
 /**
  * @author waschtl
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
  */
+@SuppressWarnings("serial")
 public class TransitionPropertyEditor extends JDialog implements ActionListener
 {
     // General
@@ -154,7 +153,6 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private JPanel                buttonPanel                   = null;
     private JButton               buttonOk                      = null;
     private JButton               buttonCancel                  = null;
-    private JButton               buttonApply                   = null;
 
     public TransitionPropertyEditor(Frame owner, TransitionModel transition, EditorVC editor)
     {
