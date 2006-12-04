@@ -31,15 +31,12 @@ import java.awt.event.FocusListener;
 import java.beans.PropertyVetoException;
 
 import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.border.BevelBorder;
 
-import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.controller.PetriNetResourceEditor;
-import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.EditorStatusBarVC;
+import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
 
 /**
@@ -47,6 +44,7 @@ import org.woped.editor.utilities.Messages;
  * 
  * @author Thomas Pohl
  */
+@SuppressWarnings("serial")
 public class DefaultEditorFrame extends JInternalFrame
 {
     private EditorVC               m_editor                 = null;
@@ -61,7 +59,7 @@ public class DefaultEditorFrame extends JInternalFrame
         this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
         m_petriNetResourceEditor = propEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
-        this.setFrameIcon(DefaultStaticConfiguration.DEFAULTEDITORFRAMEICON);
+        this.setFrameIcon(Messages.getImageIcon("Document"));
         // Size
         editor.setPreferredSize(editor.getSavedSize());
         if (propEditor != null)

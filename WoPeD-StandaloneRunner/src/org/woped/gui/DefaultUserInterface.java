@@ -41,6 +41,7 @@ import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 
+@SuppressWarnings("serial")
 public class DefaultUserInterface extends JFrame implements IUserInterface, InternalFrameListener
 {
     private JDesktopPane          desktop                = null;
@@ -51,9 +52,8 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private ToolBarVC             toolBar                = null;
     private MenuBarVC menuBar = null;
 
-    private PropertyChangeSupport propertyChangeSupport  = null;
     private int                   m_numEditors           = 0;
-    private List                  editorList             = new ArrayList();
+    private List<IEditor>                  editorList             = new ArrayList<IEditor>();
 
     public DefaultUserInterface(ToolBarVC toolBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar)
     {
@@ -66,7 +66,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         desktop = new JDesktopPane();
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
         propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
-
+        setIconImage(Messages.getImageIcon("Application").getImage());
         setTitle("WoPeD Version " + Messages.getWoPeDVersion(false));
         setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(),
                 (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
@@ -374,7 +374,6 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     public void internalFrameClosed(InternalFrameEvent e)
     {
-    // TODO Auto-generated method stub
 
     }
 
@@ -388,25 +387,21 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     public void internalFrameDeactivated(InternalFrameEvent e)
     {
-    // TODO Auto-generated method stub
 
     }
 
     public void internalFrameDeiconified(InternalFrameEvent e)
     {
-    // TODO Auto-generated method stub
 
     }
 
     public void internalFrameIconified(InternalFrameEvent e)
     {
-    // TODO Auto-generated method stub
 
     }
 
     public void internalFrameOpened(InternalFrameEvent e)
     {
-    // TODO Auto-generated method stub
 
     }
 
