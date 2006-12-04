@@ -173,7 +173,6 @@ public class TokenGameController
         getGraph().setPortsVisible(true);
         getGraph().setGridVisible(ConfigurationManager.getConfiguration().isShowGrid());
         //getGraph().setSelectNewCells(true);
-        getGraph().setBackground(Color.WHITE);
         // remove own MouseHandler
         getGraph().removeMouseListener(tokenGameMouseHandler);
         getGraph().refreshNet();
