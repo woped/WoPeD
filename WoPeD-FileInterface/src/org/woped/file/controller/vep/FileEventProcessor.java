@@ -180,19 +180,19 @@ public class FileEventProcessor extends AbstractEventProcessor
             }
 
             // FileFilters
-            Vector tpnExtensions = new Vector();
+            Vector<String> tpnExtensions = new Vector<String>();
             tpnExtensions.add("tpn");
             FileFilterImpl TPNFilter = new FileFilterImpl(FileFilterImpl.TPNFilter, "TPN (*.tpn)", tpnExtensions);
             jfc.setFileFilter(TPNFilter);
 
             // FileFilters
-            Vector jpgExtensions = new Vector();
+            Vector<String> jpgExtensions = new Vector<String>();
             jpgExtensions.add("jpg");
             jpgExtensions.add("jpeg");
             FileFilterImpl JPGFilter = new FileFilterImpl(FileFilterImpl.JPGFilter, "JPG (*.jpg)", jpgExtensions);
             jfc.setFileFilter(JPGFilter);
 
-            jfc.setDialogTitle("Export as");
+            jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
             jfc.showSaveDialog(null);
             if (jfc.getSelectedFile() != null && editor != null)
             {
@@ -323,7 +323,8 @@ public class FileEventProcessor extends AbstractEventProcessor
         {
             // Open save as Dialog
             JFileChooser jfc;
-            if (ConfigurationManager.getConfiguration().getCurrentWorkingDir() != null && ConfigurationManager.getConfiguration().getCurrentWorkingDir() != "")
+            if (ConfigurationManager.getConfiguration().getCurrentWorkingDir() != null 
+        	    && !ConfigurationManager.getConfiguration().getCurrentWorkingDir().equals(""))
             {
                 jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getCurrentWorkingDir()));
             } else if (ConfigurationManager.getConfiguration().getHomedir() != null)
@@ -335,7 +336,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             }
 
             // FileFilters
-            Vector extensions = new Vector();
+            Vector<String> extensions = new Vector<String>();
             if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
             {
                 extensions.add("pnml");
@@ -343,9 +344,11 @@ public class FileEventProcessor extends AbstractEventProcessor
                 FileFilterImpl PNMLFilter = new FileFilterImpl(FileFilterImpl.PNMLFilter, "Petri Net Markup Language (1.3.2) (*.pnml)", extensions);
                 jfc.setFileFilter(PNMLFilter);
             }
-            jfc.setDialogTitle("Save as");
+            jfc.setDialogTitle(Messages.getString("Action.EditorSaveAs.Title"));
+            
+            
             int returnVal = jfc.showSaveDialog(null);
-            boolean doSave = false;
+            
             if (jfc.getSelectedFile() != null && returnVal == JFileChooser.APPROVE_OPTION)
             {
                 String savePath = jfc.getSelectedFile().getAbsolutePath().substring(0, jfc.getSelectedFile().getAbsolutePath().length() - jfc.getSelectedFile().getName().length());
@@ -370,7 +373,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                         if (succeed)
                         {
                             JInternalFrame frame = (JInternalFrame) editor.getContainer();
-                            frame.setTitle(editor.getName());
+                            frame.setTitle(editor.getName());                            
                         }
                     } else
                     {
@@ -402,7 +405,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             jfc = new JFileChooser();
         }
         // FileFilters
-        Vector extensions = new Vector();
+        Vector<String> extensions = new Vector<String>();
 
         extensions.add("pnml");
         extensions.add("xml");
