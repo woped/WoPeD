@@ -147,6 +147,7 @@ public interface IEditor extends IViewController
     public void setName(String name);
 
     public String getName();
-    
-    public void setSubprocessEditor(boolean sub);
+
+	public boolean isSubprocessEditor();
+   
 }
