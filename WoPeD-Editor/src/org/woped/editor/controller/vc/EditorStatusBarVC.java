@@ -10,13 +10,13 @@ import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.editor.utilities.Messages;
 
+@SuppressWarnings("serial")
 public class EditorStatusBarVC extends JPanel implements Observer
 {
     private ModelElementContainer m_elementContainer = null;
@@ -30,11 +30,11 @@ public class EditorStatusBarVC extends JPanel implements Observer
         m_editor = (EditorVC) editor;
         m_elementContainer = editor.getModelProcessor().getElementContainer();
         setLayout(new BorderLayout());
-        setBorder(new BevelBorder(BevelBorder.LOWERED));
+        //setBorder(new BevelBorder(0));
         add(getCounterLabel(), BorderLayout.WEST);
         JPanel eastPanel = new JPanel(new GridBagLayout());
         eastPanel.add(getZoomLabel(), new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 20), 0, 0));
-        eastPanel.add(getSaveIcon(), new GridBagConstraints(1, 0, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 10), 0, 0));
+        eastPanel.add(getSaveIcon(), new GridBagConstraints(1, 0, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0, 0, 2, 3), 0, 0));
         add(eastPanel, BorderLayout.EAST);
         m_editor.registerStatusBar(this);
     }
@@ -44,6 +44,7 @@ public class EditorStatusBarVC extends JPanel implements Observer
         if (m_counterLabel == null)
         {
             m_counterLabel = new JLabel();
+            m_counterLabel.setBounds(5, 5, 1, 1);
         }
         return m_counterLabel;
     }
@@ -73,9 +74,22 @@ public class EditorStatusBarVC extends JPanel implements Observer
         int transOpC = m_elementContainer.getElementsByType(OperatorTransitionModel.TRANS_OPERATOR_TYPE).size();
         int transSimpleC = m_elementContainer.getElementsByType(OperatorTransitionModel.TRANS_SIMPLE_TYPE).size();
 
-        getCounterLabel().setText(
-                Messages.getString("Statusbar.Places") + ": " + placeC + "  " + Messages.getString("Statusbar.Transitions") + ": " + (transSimpleC + transOpC) + "  "
-                        + Messages.getString("Statusbar.Subprocesses") + ": " + subPC + "     ");
+        StringBuilder builder = new StringBuilder();
+        builder.append(" ");
+        builder.append(Messages.getString("Statusbar.Places"));
+        builder.append(": ");
+        builder.append(placeC);
+        builder.append("  ");
+        builder.append(Messages.getString("Statusbar.Transitions"));
+        builder.append(": ");
+        builder.append(transSimpleC + transOpC);
+        builder.append("  ");
+        builder.append(Messages.getString("Statusbar.Subprocesses"));
+        builder.append(": ");
+        builder.append(subPC);
+        builder.append("   ");
+        
+        getCounterLabel().setText(builder.toString());
 
         getZoomLabel().setText("Zoom: " + DecimalFormat.getPercentInstance().format(m_editor.getGraph().getScale()));
 
