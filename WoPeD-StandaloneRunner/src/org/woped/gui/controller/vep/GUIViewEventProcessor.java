@@ -95,53 +95,69 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
             break;
         case AbstractViewEvent.OPEN_SUBPROCESS:
-        	
-			if (event.getSource() instanceof EditorVC) {
+
+			if (event.getSource() instanceof EditorVC)
+			{
 				editor = (EditorVC) event.getSource();
-			} else {
+			} else
+			{
 				editor = (EditorVC) getMediator().getUi().getEditorFocus();
 			}
 
 			Object cell = editor.getGraph().getSelectionCell();
-			if (cell instanceof GroupModel) {
+			if (cell instanceof GroupModel)
+			{
+
 				cell = ((GroupModel) cell).getMainElement();
 
-				if (cell instanceof SubProcessModel) {
+				if (cell instanceof SubProcessModel)
+				{
 					SubProcessModel model = (SubProcessModel) cell;
-					
-					 editor = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
-			            // Get all the inner elements of the sub-process and 
-			            // create a working copy within the new editor
-			            editor.getModelProcessor().setElementContainer(model.getSimpleTransContainer());
-			            
-			            editor.setName("Subprocess " + model.getNameValue() + " (ID="+ model.getId()+")");
-			            editor.setSubprocessEditor(true);
-			            
-			            editor.getGraph().drawNet(editor.getModelProcessor());
-			            editor.updateNet();
-			            
-			            
-			            // notify the editor aware vc
-			            editorIter = getMediator().getEditorAwareVCs().iterator();
-			            while (editorIter.hasNext())
-			            {
-			                ((IEditorAware) editorIter.next()).addEditor(editor);
-			            }
-			            VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
-			            break;
-					
 
-				} else {
+					// Subprozess darf momentan nur jeweils einen Ein- und
+					// Ausgang haben
+					if (editor.getModelProcessor().getElementContainer()
+							.getIncomingArcs(model.getId()).size() != 1
+							|| editor.getModelProcessor().getElementContainer()
+									.getOutgoingArcs(model.getId()).size() != 1)
+					{
+						
+						JOptionPane.showMessageDialog(null,"Subprozess muss genau einen Ein- und Ausgang haben!","Error (TODO)",
+							    JOptionPane.PLAIN_MESSAGE); 
+
+					} else
+					{
+
+						editor = getMediator()
+								.createSubprocessEditor(
+										AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
+										true, editor);
+
+						newEditorCounter++;
+						// notify the editor aware vc
+						editorIter = getMediator().getEditorAwareVCs()
+								.iterator();
+						while (editorIter.hasNext())
+						{
+							((IEditorAware) editorIter.next())
+									.addEditor(editor);
+						}
+						VisualController.getInstance().propertyChange(
+								new PropertyChangeEvent(this,
+										"InternalFrameCount", null, editor));
+					}
+
+				} else
+				{
 					// error
 				}
-			} else {
+			} else
+			{
 				// error
 			}
 			break;
-            
-            
-            
-            
+  
+			
         case AbstractViewEvent.SELECT_EDITOR:
             selectEditor(editor);
             break;
