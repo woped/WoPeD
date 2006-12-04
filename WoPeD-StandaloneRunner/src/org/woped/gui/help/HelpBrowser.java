@@ -49,6 +49,7 @@ import javax.swing.event.HyperlinkListener;
 import javax.swing.text.Document;
 
 import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.utilities.Messages;
 import org.woped.gui.Constants;
 import org.woped.gui.help.action.LaunchDefaultBrowserAction;
 
@@ -95,6 +96,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
             }
         });
 
+        this.setIconImage(Messages.getImageIcon("Menu.Help.Index").getImage());
         JPanel topPanel = new JPanel(new BorderLayout());
         JPanel jp1 = new JPanel(new BorderLayout());
         jp1.add(getMenubar(), BorderLayout.CENTER);
