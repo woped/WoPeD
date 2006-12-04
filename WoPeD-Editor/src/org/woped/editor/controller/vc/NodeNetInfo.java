@@ -3,6 +3,7 @@ package org.woped.editor.controller.vc;
 import org.woped.core.model.*;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.InnerElementContainer;
 import org.woped.editor.controller.vc.NetAlgorithms;
 
 import java.util.Iterator;
@@ -22,12 +23,12 @@ public class NodeNetInfo extends NetInfo {
 		m_nodeOwner = GetNodeOwner(m_nodeObject);
 		setUserObject(getNodeString(m_nodeObject, m_nodeOwner));
 		
-		if (addChildren &&
-				(node.getType()==AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE))
+		// Generic approach to detect whether this element has any children:
+		// Elements with children implement InnerElementContainer
+		if (addChildren && (node instanceof InnerElementContainer))
 		{
-			// Currently, only operators support sub-elements
-			// Add them as tree items
-			OperatorTransitionModel operator = (OperatorTransitionModel)node;
+			// Add sub-elements as tree items
+			InnerElementContainer operator = (InnerElementContainer)node;
 			ModelElementContainer simpleTransContainer =
 				operator.getSimpleTransContainer();
 			// Recursively call ourselves to add inner nodes

@@ -110,9 +110,15 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 					SubProcessModel model = (SubProcessModel) cell;
 					
 					 editor = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
+			            // Get all the inner elements of the sub-process and 
+			            // create a working copy within the new editor
+			            editor.getModelProcessor().setElementContainer(model.getSimpleTransContainer());
+			            
 			            editor.setName("Subprocess " + model.getNameValue() + " (ID="+ model.getId()+")");
 			            editor.setSubprocessEditor(true);
 			            
+			            editor.getGraph().drawNet(editor.getModelProcessor());
+			            editor.updateNet();
 			            
 			            
 			            // notify the editor aware vc

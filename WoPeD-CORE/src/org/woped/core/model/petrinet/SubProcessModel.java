@@ -22,7 +22,11 @@
  */
 package org.woped.core.model.petrinet;
 
+import org.jgraph.graph.DefaultPort;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.ModelElementFactory;
 
 /**
  * @author lai
@@ -31,7 +35,7 @@ import org.woped.core.model.CreationMap;
  * Window>Preferences>Java>Templates. To enable and disable the creation of type
  * comments go to Window>Preferences>Java>Code Generation.
  */
-public class SubProcessModel extends TransitionModel
+public class SubProcessModel extends TransitionModel implements InnerElementContainer
 {
 
     public static final int WIDTH  = 40;
@@ -43,6 +47,31 @@ public class SubProcessModel extends TransitionModel
         super(map);
         setSize(WIDTH, HEIGHT);
         getToolSpecific().setSubprocess(true);
+        
+        // The sub element container
+        // is owned by the subprocess
+        subElementContainer.setOwningElement(this);
+        
+		CreationMap subItemMap = CreationMap.createMap();
+		// Start
+		subItemMap.setPosition(10, 100);
+		subItemMap.setId(getNewElementId());
+		subItemMap.setType(AbstractPetriNetModelElement.PLACE_TYPE);
+		subItemMap.setName("Start");
+		subItemMap.setEditOnCreation(false);
+		subItemMap.setReadOnly(true);
+		PlaceModel start = (PlaceModel) ModelElementFactory.createModelElement(subItemMap);
+        subElementContainer.addElement(start);
+
+		// End
+        subItemMap.setPosition(400, 100);
+		subItemMap.setId(getNewElementId());
+        subItemMap.setType(AbstractPetriNetModelElement.PLACE_TYPE);
+        subItemMap.setName("End");
+        subItemMap.setEditOnCreation(false);
+        subItemMap.setReadOnly(true);
+		PlaceModel end = (PlaceModel) ModelElementFactory.createModelElement(subItemMap);
+        subElementContainer.addElement(end);        
     }
 
     public String getToolTipText()
@@ -55,6 +84,30 @@ public class SubProcessModel extends TransitionModel
         return PetriNetModelElement.SUBP_TYPE;
     }
     
-    
-
+    private int                   subElementCounter    = 0;
+    private ModelElementContainer subElementContainer  = new ModelElementContainer();
+    private static final String    SUBELEMENT_SEPERATOR     = "_";
+        
+    public ModelElementContainer getSimpleTransContainer()
+    {
+    	return subElementContainer;
+    }
+	
+    public AbstractElementModel addElement(AbstractElementModel element)
+    {
+    	return subElementContainer.addElement(element);    	
+    }
+    public void addReference(String arcId, DefaultPort sourceId, DefaultPort targetId)
+    {
+        subElementContainer.addReference(ModelElementFactory.createArcModel(arcId, sourceId, targetId));
+    }
+    public AbstractElementModel getElement(Object elementId)
+    {
+    	return subElementContainer.getElementById(elementId);
+    }
+    public String getNewElementId()
+    {
+        subElementCounter++;
+        return getId() + SUBELEMENT_SEPERATOR + subElementCounter;    	
+    }
 }

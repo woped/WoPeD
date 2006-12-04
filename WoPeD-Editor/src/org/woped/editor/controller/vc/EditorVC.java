@@ -2019,27 +2019,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		if (subprocess)
 		{			
 			m_graph.setBorder(new LineBorder(Color.BLACK, 2, false));
-			m_graph.setBackground(new Color(225, 225, 225));
-			
-			//Start and End Transition
-			CreationMap map = CreationMap.createMap();
-
-			// Start
-			map.setPosition(10, 100);
-			map.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
-			map.setName("Start");
-			map.setEditOnCreation(false);
-			map.setReadOnly(true);
-			createElement(map);
-
-			// End
-			map = CreationMap.createMap();
-			map.setPosition(400, 100);
-			map.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
-			map.setName("End");
-			map.setEditOnCreation(false);
-			map.setReadOnly(true);
-			createElement(map);
+			m_graph.setBackground(new Color(225, 225, 225));			
 		}
 	}
 }

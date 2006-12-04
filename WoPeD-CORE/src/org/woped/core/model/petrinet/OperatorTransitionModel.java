@@ -41,7 +41,8 @@ import org.woped.core.model.ModelElementFactory;
  * 
  * 29.04.2003
  */
-public class OperatorTransitionModel extends TransitionModel
+
+public class OperatorTransitionModel extends TransitionModel implements InnerElementContainer
 {
 
     // ... contains all Transition that are connected;
@@ -118,7 +119,7 @@ public class OperatorTransitionModel extends TransitionModel
 
         TransitionModel aTranstitonModel;
         CreationMap map = CreationMap.createMap();
-        map.setId(getnewSimpleTransId());
+        map.setId(getNewElementId());
         map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
         if (getPosition() != null)
         	map.setPosition(new IntPair(getPosition()));
@@ -127,7 +128,7 @@ public class OperatorTransitionModel extends TransitionModel
         return aTranstitonModel;
     }
 
-    public String getnewSimpleTransId()
+    public String getNewElementId()
     {
         simpleTransCounter++;
         return getId() + OPERATOR_SEPERATOR + simpleTransCounter;
@@ -225,8 +226,8 @@ public class OperatorTransitionModel extends TransitionModel
         getSimpleTransContainer().addReference(ModelElementFactory.createArcModel(arcId, sourceId, targetId));
     }
 
-    public TransitionModel getSimpleTrans(Object simpleTransId)
+    public AbstractElementModel getElement(Object elementId)    
     {
-        return (TransitionModel) getSimpleTransContainer().getElementById(simpleTransId);
+        return (AbstractElementModel) getSimpleTransContainer().getElementById(elementId);
     }
 }

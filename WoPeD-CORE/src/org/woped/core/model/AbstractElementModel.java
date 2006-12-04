@@ -19,8 +19,6 @@ import org.woped.core.Constants;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.utilities.LoggerManager;
 
-
-
 public abstract class AbstractElementModel extends DefaultGraphCell implements Serializable
 {
 

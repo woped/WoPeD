@@ -50,13 +50,14 @@ public class GraphTreeModel extends DefaultTreeModel implements GraphModelListen
     	parentEditor = currentEditor;
     	PopulateNode((NetInfo)getRoot(),
     			parentEditor.getModelProcessor().getElementContainer());
+    	reload();
     }
 
     public void graphChanged(GraphModelEvent e)
     {
-        reload();        
         PopulateNode((NetInfo)getRoot(),
         		parentEditor.getModelProcessor().getElementContainer());
+        reload();        
     }
     
     public void PopulateNode(NetInfo root,

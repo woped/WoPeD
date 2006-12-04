@@ -247,7 +247,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
                     {
                         // get simple trans
                         Object simpleTransId = operatorModel.getSimpleTransContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE).keySet().iterator().next();
-                        TransitionModel simpleTrans = (TransitionModel) operatorModel.getSimpleTrans(simpleTransId);
+                        TransitionModel simpleTrans = (TransitionModel) operatorModel.getElement(simpleTransId);
                         // create an reference entry
                         operatorModel.addReference(getNexArcId(), (DefaultPort) simpleTrans.getChildAt(0), (DefaultPort) targetModel.getChildAt(0));
 
@@ -306,7 +306,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
                     // get simple trans
                     Object simpleId = operatorModel.getSimpleTransContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE).keySet().iterator().next();
                     TransitionModel simpleTrans;
-                    if ((simpleTrans = (TransitionModel) operatorModel.getSimpleTrans(simpleId)) == null)
+                    if ((simpleTrans = (TransitionModel) operatorModel.getElement(simpleId)) == null)
                     {
                         simpleTrans = operatorModel.addNewSimpleTrans();
                     }
@@ -405,7 +405,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
                     // get simple trans
                     Object simpleTransId = operatorModel.getSimpleTransContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE).keySet().iterator().next();
                     TransitionModel simpleTrans;
-                    if ((simpleTrans = (TransitionModel) operatorModel.getSimpleTrans(simpleTransId)) == null)
+                    if ((simpleTrans = (TransitionModel) operatorModel.getElement(simpleTransId)) == null)
                     {
                         simpleTrans = operatorModel.addNewSimpleTrans();
                     }
