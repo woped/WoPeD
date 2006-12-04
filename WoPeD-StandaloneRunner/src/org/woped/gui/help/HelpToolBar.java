@@ -46,6 +46,8 @@ import org.woped.gui.help.action.BrowserWebpageAction;
  * @author Thomas Freytag
  *  
  */
+
+@SuppressWarnings("serial")
 public class HelpToolBar extends JToolBar
 {
     private static HelpToolBar c_instance       = null;
