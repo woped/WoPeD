@@ -62,13 +62,11 @@ import org.woped.gui.help.HelpBrowser;
  */
 public class GUIViewEventProcessor extends AbstractEventProcessor
 {
-    private DefaultApplicationMediator mediator         = null;
     private int                        newEditorCounter = 0;
 
     public GUIViewEventProcessor(int vepID, DefaultApplicationMediator mediator)
     {
         super(vepID, mediator);
-        this.mediator = mediator;
     }
 
     public void processViewEvent(AbstractViewEvent event)
@@ -85,7 +83,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         {
         case AbstractViewEvent.NEW:
             editor = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
-            editor.setName("Untitled " + newEditorCounter++);
+            editor.setName(Messages.getString("Document.Title.Untitled") + " - " + newEditorCounter++);
             // notify the editor aware vc
             Iterator editorIter = getMediator().getEditorAwareVCs().iterator();
             while (editorIter.hasNext())
