@@ -36,6 +36,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IConfiguration;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.gui.IUserInterface;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -89,6 +90,8 @@ public abstract class AbstractApplicationMediator implements IViewListener
     }
 
     public abstract IEditor createEditor(int modelProcessorType, boolean undoSupport);
+    
+    public abstract IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor);
 
     public static IViewController createViewController(String className, String id)
     {
