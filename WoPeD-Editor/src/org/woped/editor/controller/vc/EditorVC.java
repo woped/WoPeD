@@ -127,7 +127,7 @@ import org.woped.editor.view.ViewFactory;
 public class EditorVC extends JPanel implements KeyListener,
 		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor
 {
-
+    
 	private String id = null;
 
 	public static final String ID_PREFIX = "EDITOR_VC_";
@@ -1873,7 +1873,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	 */
 	public String getName()
 	{
-		return super.getName() == null ? "Untitled" : super.getName();
+		return super.getName() == null ? Messages
+			.getString("Document.Title.Untitled") : super.getName();
 	}
 
 	/**
