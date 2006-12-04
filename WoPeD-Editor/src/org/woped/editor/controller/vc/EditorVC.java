@@ -288,7 +288,8 @@ public class EditorVC extends JPanel implements KeyListener,
 			int modelProcessorType, boolean undoSupport, IEditor parentEditor)
 	{
 		this(string, clipboard, modelProcessorType, undoSupport);
-		m_subprocessEditor = true;
+		setSubprocessEditor(true);
+		
 
 		// m_graph.setBorder(new LineBorder(Color.BLACK, 3, false));
 		m_graph.setBackground(new Color(200, 200, 200));
@@ -2074,11 +2075,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	public void setSubprocessEditor(boolean subprocess)
 	{
-		if (subprocess)
-		{			
-			m_graph.setBorder(new LineBorder(Color.BLACK, 2, false));
-			m_graph.setBackground(new Color(225, 225, 225));			
-		}
+		m_subprocessEditor = subprocess;
 	}
 	
 	public boolean isSubprocessEditor()
