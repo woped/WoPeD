@@ -73,7 +73,6 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.graph.Port;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractMarqueeHandler;
 import org.woped.core.controller.AbstractViewEvent;
@@ -86,12 +85,12 @@ import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
@@ -114,7 +113,6 @@ import org.woped.editor.simulation.TokenGameController;
 import org.woped.editor.utilities.ImageSelection;
 import org.woped.editor.utilities.Messages;
 import org.woped.editor.view.ViewFactory;
-import org.woped.editor.view.petrinet.TransSimpleView;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -197,6 +195,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	private JSplitPane m_mainSplitPane = null;
 
 	private int m_splitPosition = 200;
+	
+	private boolean m_subprocessEditor = false;
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
@@ -283,6 +283,64 @@ public class EditorVC extends JPanel implements KeyListener,
 			this.m_tokenGameController = new TokenGameController(
 					((PetriNetModelProcessor) getModelProcessor()), getGraph());
 		}
+	}
+	public EditorVC(String string, EditorClipboard clipboard,
+			int modelProcessorType, boolean undoSupport, IEditor parentEditor)
+	{
+		this(string, clipboard, modelProcessorType, undoSupport);
+		m_subprocessEditor = true;
+
+		// m_graph.setBorder(new LineBorder(Color.BLACK, 3, false));
+		m_graph.setBackground(new Color(200, 200, 200));
+
+		Object cell = parentEditor.getGraph().getSelectionCell();
+
+		SubProcessModel model = (SubProcessModel) ((GroupModel) cell)
+				.getMainElement();
+
+		setName("Subprocess " + model.getNameValue());
+
+		// Es wurde vor den Öffnen geprüft, dass genau ein Ein- und ein Ausgang
+		// vorhanden ist!
+
+		// Eingang
+		Map sourceMap = parentEditor.getModelProcessor().getElementContainer()
+				.getSourceElements(model.getId());
+		Set sourceKeySet = sourceMap.keySet();
+
+		Iterator sourceKeyIterator = sourceKeySet.iterator();
+
+		String sourceKey = (String) sourceKeyIterator.next();
+
+		AbstractElementModel sourceModel = (AbstractElementModel) sourceMap
+				.get(sourceKey);
+
+		CreationMap sourceCreationMap = sourceModel.getCreationMap();
+		sourceCreationMap.setPosition(10, 100);
+		sourceCreationMap.setReadOnly(true);
+		sourceCreationMap.setNamePosition(30, 140);
+		sourceCreationMap.setEditOnCreation(false);
+		createElement(sourceCreationMap);
+
+		// Ausgang
+		Map targetMap = parentEditor.getModelProcessor().getElementContainer()
+				.getTargetElements(model.getId());
+		Set targetKeySet = targetMap.keySet();
+
+		Iterator targetKeyIterator = targetKeySet.iterator();
+
+		String targetKey = (String) targetKeyIterator.next();
+
+		AbstractElementModel targetModel = (AbstractElementModel) targetMap
+				.get(targetKey);
+
+		CreationMap targetCreationMap = targetModel.getCreationMap();
+		targetCreationMap.setPosition(200, 100);
+		targetCreationMap.setReadOnly(true);
+		targetCreationMap.setNamePosition(230, 140);
+		targetCreationMap.setEditOnCreation(false);
+		createElement(targetCreationMap);
+
 	}
 
 	// IS NOT WORKING YET
@@ -2021,5 +2079,10 @@ public class EditorVC extends JPanel implements KeyListener,
 			m_graph.setBorder(new LineBorder(Color.BLACK, 2, false));
 			m_graph.setBackground(new Color(225, 225, 225));			
 		}
+	}
+	
+	public boolean isSubprocessEditor()
+	{
+		return m_subprocessEditor;
 	}
 }
