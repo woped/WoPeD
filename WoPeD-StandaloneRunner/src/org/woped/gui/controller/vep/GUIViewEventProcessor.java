@@ -315,8 +315,18 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
                 if (editorVC.getDefaultFileType() != FileFilterImpl.SAMPLEFilter)
                 {
                     String args[] = {editorVC.getName()};
-                    int value = JOptionPane.showConfirmDialog(editorVC, Messages.getStringReplaced("Action.SaveEditor.Confirmation.Message", args), Messages
+                    
+                    int value;
+                    if(editorVC.isSubprocessEditor())
+                    {
+                    	value = JOptionPane.NO_OPTION;
+                    	//TODO Inhalt sichern
+                    }
+                    else
+                    {
+                    	value = JOptionPane.showConfirmDialog(editorVC, Messages.getStringReplaced("Action.SaveEditor.Confirmation.Message", args), Messages
                             .getString("Action.SaveEditor.Confirmation.Title"), JOptionPane.YES_NO_CANCEL_OPTION);
+                    }
                     if (value == (JOptionPane.YES_OPTION))
                     {
                         // try to save
