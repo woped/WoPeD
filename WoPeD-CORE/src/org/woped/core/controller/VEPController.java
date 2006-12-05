@@ -14,7 +14,7 @@ import java.util.Map;
 public class VEPController
 {
 
-    private Map veps;
+    private Map<Integer, AbstractEventProcessor> veps;
 
     /**
      * Constructor for the <code>VEPController</code>.
@@ -54,9 +54,9 @@ public class VEPController
         return (AbstractEventProcessor) getVeps().get(new Integer(vepId));
     }
 
-    private Map getVeps()
+    private Map<Integer, AbstractEventProcessor> getVeps()
     {
-        if (veps == null) veps = new HashMap();
+        if (veps == null) veps = new HashMap<Integer, AbstractEventProcessor>();
         return veps;
     }
 

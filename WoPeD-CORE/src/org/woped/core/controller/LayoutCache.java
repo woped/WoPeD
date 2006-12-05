@@ -39,6 +39,8 @@ import org.woped.core.utilities.LoggerManager;
  * 
  * Created on: 16.03.2005 Last Change on: 16.03.2005
  */
+
+@SuppressWarnings("serial")
 public class LayoutCache extends GraphLayoutCache
 {
 
