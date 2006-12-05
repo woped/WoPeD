@@ -34,6 +34,7 @@ import java.awt.event.ActionEvent;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.gui.help.HelpBrowser;
 
+@SuppressWarnings("serial")
 public class BrowserHomeAction extends WoPeDAction
 {
     private HelpBrowser              helpBrowser;

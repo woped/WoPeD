@@ -33,6 +33,8 @@ import org.woped.gui.help.HelpBrowser;
  * @author Thomas Freytag
  *  
  */
+
+@SuppressWarnings("serial")
 public class BrowserBackAction extends WoPeDAction
 {
     private HelpBrowser              helpBrowser;

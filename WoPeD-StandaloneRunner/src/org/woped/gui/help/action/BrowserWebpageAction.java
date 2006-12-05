@@ -35,6 +35,8 @@ import org.woped.gui.help.HelpBrowser;
  * @author Thomas Freytag
  *  
  */
+
+@SuppressWarnings("serial")
 public class BrowserWebpageAction extends WoPeDAction
 {
     private static final String         PROPERTIES_PREFIX = "Action.Browser.WWW";
