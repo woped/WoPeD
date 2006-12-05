@@ -41,7 +41,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.HyperlinkEvent;
@@ -58,11 +57,12 @@ import org.woped.gui.help.action.LaunchDefaultBrowserAction;
  * 
  * TODO: DOCUMENTATION (tfreytag)
  */
+
+@SuppressWarnings("serial")
 public class HelpBrowser extends JFrame implements HyperlinkListener
 {
     public static HelpBrowser c_instance = null;
 
-    private JTextField        urlField;
     private JEditorPane       htmlPane;
     private JLabel            statusBarInfo;
     private String            currURL;
