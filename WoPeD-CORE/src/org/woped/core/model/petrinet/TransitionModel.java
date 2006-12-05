@@ -33,6 +33,8 @@ import org.woped.core.model.IntPair;
  * 
  * 29.03.2003
  */
+
+@SuppressWarnings("serial")
 public class TransitionModel extends PetriNetModelElement
 {
 
@@ -41,7 +43,6 @@ public class TransitionModel extends PetriNetModelElement
     private boolean         activated = false;
     public static final int WIDTH     = 40;
     public static final int HEIGHT    = 40;
-    private int             transType = 0;
 
     public TransitionModel(CreationMap map)
     {

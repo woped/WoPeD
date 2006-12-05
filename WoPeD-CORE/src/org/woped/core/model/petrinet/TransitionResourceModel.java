@@ -20,10 +20,9 @@ import org.woped.core.model.CreationMap;
 
 /**
  * @author waschtl
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
  */
+
+@SuppressWarnings("serial")
 public class TransitionResourceModel extends DefaultGraphCell
 {
     public static final int DEFAULT_WIDTH  = 60;

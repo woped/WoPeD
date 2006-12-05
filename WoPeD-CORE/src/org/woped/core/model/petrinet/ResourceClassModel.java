@@ -4,10 +4,9 @@ import java.io.Serializable;
 
 /**
  * @author waschtl
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
  */
+
+@SuppressWarnings("serial")
 public class ResourceClassModel implements Serializable
 {
     private String          name         = null;

@@ -6,6 +6,7 @@ import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.model.CreationMap;
 
+@SuppressWarnings("serial")
 public class OperatorModel extends AbstractUMLElementModel
 {
     public static final int WIDTH        = 40;

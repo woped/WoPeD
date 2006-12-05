@@ -2,6 +2,7 @@ package org.woped.core.model.uml;
 
 import org.woped.core.model.CreationMap;
 
+@SuppressWarnings("serial")
 public class StateModel extends AbstractUMLElementModel
 {
     public static final int STATE_STOP_TYPE  = 0;
@@ -10,7 +11,6 @@ public class StateModel extends AbstractUMLElementModel
     public static final int HEIGHT           = 30;
 
     private int             stateType        = -1;
-    private CreationMap     map              = null;
 
     public StateModel(CreationMap map)
     {

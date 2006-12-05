@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 
 import org.woped.core.model.CreationMap;
 
+@SuppressWarnings("serial")
 public class ActivityModel extends AbstractUMLElementModel
 {
     public static final int WIDTH  = 60;

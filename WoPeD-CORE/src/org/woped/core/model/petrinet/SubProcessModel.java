@@ -35,6 +35,8 @@ import org.woped.core.model.ModelElementFactory;
  * Window>Preferences>Java>Templates. To enable and disable the creation of type
  * comments go to Window>Preferences>Java>Code Generation.
  */
+
+@SuppressWarnings("serial")
 public class SubProcessModel extends TransitionModel implements InnerElementContainer
 {
 

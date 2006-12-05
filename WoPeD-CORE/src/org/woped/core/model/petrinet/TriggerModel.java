@@ -41,6 +41,8 @@ import org.woped.core.model.CreationMap;
  * 
  * 10.05.2003
  */
+
+@SuppressWarnings("serial")
 public class TriggerModel extends DefaultGraphCell
 {
 

@@ -3,7 +3,6 @@ package org.woped.core.model.petrinet;
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.ModelElementFactory;
 
 //! Interface exported by all elements that contain children
 public interface InnerElementContainer {

@@ -35,6 +35,8 @@ import org.woped.core.utilities.LoggerManager;
  * 
  * 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class Toolspecific implements Serializable
 {
 

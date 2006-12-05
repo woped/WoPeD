@@ -42,6 +42,7 @@ import org.woped.core.model.ModelElementFactory;
  * 29.04.2003
  */
 
+@SuppressWarnings("serial")
 public class OperatorTransitionModel extends TransitionModel implements InnerElementContainer
 {
 

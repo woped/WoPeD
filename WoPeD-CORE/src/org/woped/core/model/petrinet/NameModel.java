@@ -41,6 +41,8 @@ import org.woped.core.model.CreationMap;
  * 
  * 20.09.2003
  */
+
+@SuppressWarnings("serial")
 public class NameModel extends DefaultGraphCell
 {
 

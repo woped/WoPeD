@@ -32,6 +32,8 @@ import org.woped.core.model.CreationMap;
  * 
  * 29.03.2003
  */
+
+@SuppressWarnings("serial")
 public class PlaceModel extends PetriNetModelElement
 {
 

@@ -35,6 +35,8 @@ import org.woped.core.model.AbstractElementModel;
  * 
  * 21.09.2003
  */
+
+@SuppressWarnings("serial")
 public class GroupModel extends DefaultGraphCell
 {
 
