@@ -34,6 +34,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.model.petrinet.SubProcessModel;
+import org.woped.core.model.ModelElementContainer;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.ConfigVC;
@@ -113,9 +114,9 @@ public class ApplicationMediator extends AbstractApplicationMediator
         return editor;
     }
     
-    public IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor)
+    public IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor, SubProcessModel subProcess)
     {
-        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, parentEditor);
+        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, parentEditor, subProcess);
         addViewController(editor);
         editor.getGraph().addMouseListener(visualController);
         return editor;

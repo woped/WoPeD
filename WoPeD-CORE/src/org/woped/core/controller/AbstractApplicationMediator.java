@@ -91,7 +91,8 @@ public abstract class AbstractApplicationMediator implements IViewListener
 
     public abstract IEditor createEditor(int modelProcessorType, boolean undoSupport);
     
-    public abstract IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor);
+    public abstract IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor,
+    		SubProcessModel subProcess);
 
     public static IViewController createViewController(String className, String id)
     {

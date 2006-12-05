@@ -125,11 +125,10 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 
 					} else
 					{
-
-						editor = getMediator()
+						IEditor subProcessEditor = getMediator()
 								.createSubprocessEditor(
 										AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
-										true, editor);
+										true, editor, model);
 
 						newEditorCounter++;
 						// notify the editor aware vc
@@ -138,11 +137,11 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 						while (editorIter.hasNext())
 						{
 							((IEditorAware) editorIter.next())
-									.addEditor(editor);
+									.addEditor(subProcessEditor);
 						}
 						VisualController.getInstance().propertyChange(
 								new PropertyChangeEvent(this,
-										"InternalFrameCount", null, editor));
+										"InternalFrameCount", null, subProcessEditor));
 					}
 
 				} else

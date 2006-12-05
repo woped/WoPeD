@@ -51,27 +51,7 @@ public class SubProcessModel extends TransitionModel implements InnerElementCont
         // The sub element container
         // is owned by the subprocess
         subElementContainer.setOwningElement(this);
-        
-		CreationMap subItemMap = CreationMap.createMap();
-		// Start
-		subItemMap.setPosition(10, 100);
-		subItemMap.setId(getNewElementId());
-		subItemMap.setType(AbstractPetriNetModelElement.PLACE_TYPE);
-		subItemMap.setName("Start");
-		subItemMap.setEditOnCreation(false);
-		subItemMap.setReadOnly(true);
-		PlaceModel start = (PlaceModel) ModelElementFactory.createModelElement(subItemMap);
-        subElementContainer.addElement(start);
-
-		// End
-        subItemMap.setPosition(400, 100);
-		subItemMap.setId(getNewElementId());
-        subItemMap.setType(AbstractPetriNetModelElement.PLACE_TYPE);
-        subItemMap.setName("End");
-        subItemMap.setEditOnCreation(false);
-        subItemMap.setReadOnly(true);
-		PlaceModel end = (PlaceModel) ModelElementFactory.createModelElement(subItemMap);
-        subElementContainer.addElement(end);        
+                
     }
 
     public String getToolTipText()

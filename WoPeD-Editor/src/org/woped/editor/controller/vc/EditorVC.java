@@ -83,6 +83,7 @@ import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
+import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
 import org.woped.core.model.petrinet.GroupModel;
@@ -285,22 +286,21 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 	}
 	public EditorVC(String string, EditorClipboard clipboard,
-			int modelProcessorType, boolean undoSupport, IEditor parentEditor)
+			int modelProcessorType, boolean undoSupport, IEditor parentEditor, SubProcessModel model)
 	{
 		this(string, clipboard, modelProcessorType, undoSupport);
 		setSubprocessEditor(true);
-		
-
 		// m_graph.setBorder(new LineBorder(Color.BLACK, 3, false));
 		m_graph.setBackground(new Color(200, 200, 200));
 
-		Object cell = parentEditor.getGraph().getSelectionCell();
-
-		SubProcessModel model = (SubProcessModel) ((GroupModel) cell)
-				.getMainElement();
-
 		setName("Subprocess " + model.getNameValue());
 
+		// Switch editor to use the model element container of the subprocess
+        ModelElementContainer container = model.getSimpleTransContainer();
+        getModelProcessor().setElementContainer(container);
+        
+		
+		
 		// Es wurde vor den Öffnen geprüft, dass genau ein Ein- und ein Ausgang
 		// vorhanden ist!
 
@@ -316,12 +316,16 @@ public class EditorVC extends JPanel implements KeyListener,
 		AbstractElementModel sourceModel = (AbstractElementModel) sourceMap
 				.get(sourceKey);
 
-		CreationMap sourceCreationMap = sourceModel.getCreationMap();
-		sourceCreationMap.setPosition(10, 100);
-		sourceCreationMap.setReadOnly(true);
-		sourceCreationMap.setNamePosition(30, 140);
-		sourceCreationMap.setEditOnCreation(false);
-		createElement(sourceCreationMap);
+		// Check whether the source element already exists
+		if (container.getElementById(sourceModel.getId())==null)
+		{		
+			CreationMap sourceCreationMap = sourceModel.getCreationMap();
+			sourceCreationMap.setPosition(10, 100);
+			sourceCreationMap.setReadOnly(true);
+			sourceCreationMap.setNamePosition(30, 140);
+			sourceCreationMap.setEditOnCreation(false);
+			createElement(sourceCreationMap);
+		}
 
 		// Ausgang
 		Map targetMap = parentEditor.getModelProcessor().getElementContainer()
@@ -335,13 +339,23 @@ public class EditorVC extends JPanel implements KeyListener,
 		AbstractElementModel targetModel = (AbstractElementModel) targetMap
 				.get(targetKey);
 
-		CreationMap targetCreationMap = targetModel.getCreationMap();
-		targetCreationMap.setPosition(200, 100);
-		targetCreationMap.setReadOnly(true);
-		targetCreationMap.setNamePosition(230, 140);
-		targetCreationMap.setEditOnCreation(false);
-		createElement(targetCreationMap);
+		// Check whether the target element already exists
+		if (container.getElementById(targetModel.getId())==null)		
+		{
+			CreationMap targetCreationMap = targetModel.getCreationMap();
+			targetCreationMap.setPosition(200, 100);
+			targetCreationMap.setReadOnly(true);
+			targetCreationMap.setNamePosition(230, 140);
+			targetCreationMap.setEditOnCreation(false);
+			createElement(targetCreationMap);
+		}
 
+		// We must create a JGraph model
+		// representation of the new model element container 
+		getGraph().drawNet(getModelProcessor());
+        updateNet();
+        // Clear selection, we do not want newly created elements to be selected
+		getGraph().clearSelection();
 	}
 
 	// IS NOT WORKING YET
