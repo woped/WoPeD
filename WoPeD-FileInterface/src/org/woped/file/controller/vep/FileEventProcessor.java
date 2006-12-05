@@ -116,7 +116,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                     	}
                     	else
                     	{                    	
-                    		try
+//                    		try
                     		{                        	
                     			// Instantiate net analysis dialog and display it
                     			// Arguments are the Woflan TPN file and the model processor
@@ -126,10 +126,10 @@ public class FileEventProcessor extends AbstractEventProcessor
                     			myDialog.setVisible(true);                        	
                     			
                     			LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
-                    		} catch (Exception e)
+                    		}/* catch (Exception e)
                     		{
                     			LoggerManager.warn(Constants.FILE_LOGGER, "Local WoPeD analysis failed.");
-                    		}
+                    		}*/
                     	}
 
                     }    

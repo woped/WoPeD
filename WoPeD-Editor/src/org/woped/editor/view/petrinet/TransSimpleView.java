@@ -146,8 +146,8 @@ public class TransSimpleView extends AbstractElementView
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
                 g2.drawString("fire", 5, 18);
             }
-
         }
+        
 
         /**
          * @return

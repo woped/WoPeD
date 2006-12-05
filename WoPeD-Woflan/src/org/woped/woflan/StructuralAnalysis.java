@@ -294,7 +294,9 @@ public class StructuralAnalysis {
 						- (arcConfig.m_numIncoming + arcConfig.m_numOutgoing);
 				}
 				break;
-				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:					
+				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
+				// Default behaviour for sub processes is to treat them as a single transition
+				case AbstractPetriNetModelElement.SUBP_TYPE:
 					m_transitions.add(currentNode);
 					if (arcConfig.m_numIncoming == 0)
 						m_sourceTransitions.add(currentNode);
@@ -374,7 +376,8 @@ public class StructuralAnalysis {
 		// Add temporary transition t*, connecting sink to source
 		AbstractElementModel ttemp =
 			AddTStar();
-        netElements.add(ttemp);
+		if (ttemp!=null)
+			netElements.add(ttemp);
         		
 		// First check for connectedness:
 		// Return connection map presuming that all arcs may be
@@ -390,38 +393,44 @@ public class StructuralAnalysis {
 		if (strongConnectionGraph!=null)
 			NetAlgorithms.GetUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
 
-		RemoveTStar(ttemp);
+		if (ttemp!=null)
+			RemoveTStar(ttemp);
 	}
 	
 	AbstractElementModel AddTStar()
 	{
+		AbstractElementModel ttemp = null;
 		// Create transition 't*'
-        CreationMap tempMap = ((AbstractElementModel)m_transitions.iterator().next()).getCreationMap();
-        tempMap.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
-        String tempID = "t*";
-        tempMap.setName(tempID);
-        tempMap.setId(tempID);
-        tempMap.setEditOnCreation(false);
-        AbstractElementModel ttemp = m_currentEditor.getModelProcessor().createElement(tempMap);
-        
-        // Now connect the new transition 't*' to
-        // the source and the target
-        // For this to be possible, we will need
-        // a unique source and a unique sink
-        if ((m_sourcePlaces.size()==1)&&(m_sinkPlaces.size()==1))        	
-        {                
-        	AbstractElementModel source = (AbstractElementModel)m_sourcePlaces.iterator().next(); 
-        	String sourceID =source.getId();
-        	AbstractElementModel target = (AbstractElementModel)m_sinkPlaces.iterator().next(); 
-        	String targetID = target.getId();        		
-        	Object newEdge = m_currentEditor.getModelProcessor().createArc(tempID,sourceID);   
-        	ttemp.getPort().addEdge(newEdge);
-        	source.getPort().addEdge(newEdge);        	
-        	newEdge = m_currentEditor.getModelProcessor().createArc(targetID,tempID);
-        	ttemp.getPort().addEdge(newEdge);
-        	target.getPort().addEdge(newEdge);
-        }         
-        
+		Iterator i = m_transitions.iterator();
+		AbstractElementModel transitionTemplate = ((i.hasNext())?(AbstractElementModel)i.next():null);
+		if (transitionTemplate!=null)
+		{
+			CreationMap tempMap = transitionTemplate.getCreationMap();
+			tempMap.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
+			String tempID = "t*";
+			tempMap.setName(tempID);
+			tempMap.setId(tempID);
+			tempMap.setEditOnCreation(false);
+			ttemp = m_currentEditor.getModelProcessor().createElement(tempMap);
+
+			// Now connect the new transition 't*' to
+			// the source and the target
+			// For this to be possible, we will need
+			// a unique source and a unique sink
+			if ((m_sourcePlaces.size()==1)&&(m_sinkPlaces.size()==1))        	
+			{                
+				AbstractElementModel source = (AbstractElementModel)m_sourcePlaces.iterator().next(); 
+				String sourceID =source.getId();
+				AbstractElementModel target = (AbstractElementModel)m_sinkPlaces.iterator().next(); 
+				String targetID = target.getId();        		
+				Object newEdge = m_currentEditor.getModelProcessor().createArc(tempID,sourceID);   
+				ttemp.getPort().addEdge(newEdge);
+				source.getPort().addEdge(newEdge);        	
+				newEdge = m_currentEditor.getModelProcessor().createArc(targetID,tempID);
+				ttemp.getPort().addEdge(newEdge);
+				target.getPort().addEdge(newEdge);
+			}         
+		}
         return ttemp;
 	}
 	
@@ -512,7 +521,8 @@ public class StructuralAnalysis {
 
 		// Add the temporary transition 't*'
 		AbstractElementModel tStar = AddTStar();
-		netElements.add(tStar);
+		if (tStar!=null)
+			netElements.add(tStar);
 		
 		Iterator sourceIterator = netElements.iterator();
 		while (sourceIterator.hasNext())
@@ -578,6 +588,7 @@ public class StructuralAnalysis {
 		}
 
 		// Remove temporary transition from the net
-		RemoveTStar(tStar);
+		if (tStar!=null)
+			RemoveTStar(tStar);
 	}
 }

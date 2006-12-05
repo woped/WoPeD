@@ -53,6 +53,7 @@ public class GroupModel extends DefaultGraphCell
         GraphConstants.setEditable(map, false);
         GraphConstants.setSizeable(map, false);
         GraphConstants.setChildrenSelectable(map, true);
+        GraphConstants.setInset(map, 10);
         getAttributes().applyMap(map);
     }
 

@@ -22,12 +22,19 @@
  */
 package org.woped.editor.view;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
 import org.jgraph.graph.CellView;
+import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.PortView;
+import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewFactory;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
@@ -181,7 +188,32 @@ public class ViewFactory extends AbstractViewFactory
 
         } else if (cell instanceof GroupModel)
         {
-            return super.createVertexView(cell);
+            // return super.createVertexView(cell);
+        	return new VertexView(cell) {
+        		private VertexRenderer renderer = new VertexRenderer()
+        		{
+        			protected void paintSelectionBorder(Graphics g) {
+        				if (selected)
+        				{
+        					Dimension d = getSize();
+        					Color primary = ConfigurationManager.getConfiguration().getSelectionColor(); 
+        					Color trans = new Color(primary.getRed(), primary.getGreen(), primary.getBlue(), 32);
+        					g.setColor(trans);
+        					g.fillRect(0,0,d.width-1, d.height-1);
+        					g.setColor(primary);
+        					g.drawRect(0,0,d.width-1, d.height-1);
+        				}
+        			}
+        		};
+        		
+        	    public CellViewRenderer getRenderer()
+        	    {
+        	    	return renderer;
+        	    	
+        	    }
+        	    
+        	};
+        	
         } else if (cell instanceof ActivityModel)
         {
             return new ActivityView(cell);
