@@ -63,7 +63,14 @@ import org.woped.editor.controller.vc.EditorVC;
  * 
  * TODO DOCUMENTATION (lai)
  */
-public class OverviewPanel extends JPanel implements ComponentListener, GraphModelListener, GraphLayoutCacheListener, PropertyChangeListener
+
+@SuppressWarnings("serial")
+public class OverviewPanel extends JPanel 
+	implements 
+		ComponentListener, 
+		GraphModelListener, 
+		GraphLayoutCacheListener, 
+		PropertyChangeListener
 {
     protected AbstractGraph    graph;
     protected EditorVC         editor;

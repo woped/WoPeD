@@ -31,6 +31,8 @@ import javax.swing.JToolTip;
 /**
  * @author Thomas Pohl TODO: DOCUMENTATION (xraven)
  */
+
+@SuppressWarnings("serial")
 public class EditorToolTip extends JToolTip
 {
     /**

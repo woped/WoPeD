@@ -45,6 +45,8 @@ import org.woped.editor.utilities.Messages;
  * text labels (if any) below the icon, not to the right of it. 1999 Marty Hall,
  * http://www.apl.jhu.edu/~hall/java/
  */
+
+@SuppressWarnings("serial")
 public class ToolBarButton extends JToggleButton implements MouseListener
 {
     //private static final Insets margins = new Insets(0, 0, 0, 0);

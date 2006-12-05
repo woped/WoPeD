@@ -7,6 +7,7 @@ import javax.swing.JPopupMenu;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 
+@SuppressWarnings("serial")
 public class PopupMenuUML extends JPopupMenu
 {
 

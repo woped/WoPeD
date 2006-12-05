@@ -43,6 +43,8 @@ import org.woped.editor.controller.VisualController;
  * @author Thomas Pohl
  *  
  */
+
+@SuppressWarnings("serial")
 public class PopupMenuPetrinet extends JPopupMenu
 {
     private static PopupMenuPetrinet c_instance                = null;
