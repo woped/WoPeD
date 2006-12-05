@@ -53,6 +53,8 @@ import org.woped.gui.help.action.LaunchDefaultBrowserAction;
  * 
  * 17.01.2005
  */
+
+@SuppressWarnings("serial")
 public class AboutUI extends JDialog
 {
     private JLabel              logoLabel       = null;
@@ -178,7 +180,7 @@ public class AboutUI extends JDialog
             c1.anchor = GridBagConstraints.WEST;
 
             // TODO: read changelog information out of the file !!! (silenco)
-            String changeLog = "<html><p><font size=3>" + "<b>WoPeD 0.8.0</b> (2005/03/28)" + "<br>- first official binary release"
+            String changeLog = "<html><p><font size=\"2,5\">" + "<b>WoPeD 0.8.0</b> (2005/03/28)" + "<br>- first official binary release"
                     + "<br><b>WoPeD untagged versions</b><br>- since May 2003.</font></p></html>";
             JLabel text = new JLabel(changeLog, JLabel.LEFT);
             panel.add(text, c1);
@@ -214,7 +216,7 @@ public class AboutUI extends JDialog
 
             aboutButton.setMnemonic(KeyEvent.VK_A);
             aboutButton.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-            aboutButton.setText("About");
+            aboutButton.setText(Messages.getString("Action.ShowAbout.Title"));
             aboutButton.setEnabled(false);
             c1.gridy = 0;
             c1.gridx = 0;
@@ -237,8 +239,8 @@ public class AboutUI extends JDialog
             });
 
             changelogButton.setMnemonic(KeyEvent.VK_L);
-            changelogButton.setText("Versions");
-            changelogButton.setIcon(new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/changelog16.gif")));
+            changelogButton.setText(Messages.getString("Window.About.Versions"));
+            changelogButton.setIcon(Messages.getImageIcon("Window.About.Versions"));
             c1.gridy = 0;
             c1.gridx = 1;
             c1.insets = new Insets(0, 0, 0, 0);
