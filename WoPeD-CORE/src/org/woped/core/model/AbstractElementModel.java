@@ -62,7 +62,12 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
         nameModel = new NameModel(creationMap);
         AttributeMap map = getAttributes();
         GraphConstants.setOpaque(map, false);
-        GraphConstants.setBorderColor(map, Color.black);
+        if (creationMap.containsKey(CreationMap.READ_ONLY)
+				&& (Boolean) creationMap.get(CreationMap.READ_ONLY)) {
+			GraphConstants.setBorderColor(map, new Color(125, 125, 125));
+		} else {
+			GraphConstants.setBorderColor(map, Color.BLACK);
+		}
         GraphConstants.setEditable(map, true);
         if (creationMap.getSize() == null)
         {
