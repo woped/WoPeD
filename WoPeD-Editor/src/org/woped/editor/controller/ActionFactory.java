@@ -117,10 +117,10 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_SELECT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
         // 
         STATIC_ACTION_MAP.put(ACTIONID_SAVE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.SAVE, null, ACTIONID_SAVE));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SAVE), VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE, VisualController.SUBPROCESS_EDITOR);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SAVE), VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         
         STATIC_ACTION_MAP.put(ACTIONID_SAVEAS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.SAVEAS, null, ACTIONID_SAVEAS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SAVEAS), VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE, VisualController.SUBPROCESS_EDITOR);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SAVEAS), VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         
              
         
