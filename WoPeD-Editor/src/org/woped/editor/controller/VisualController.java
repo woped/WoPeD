@@ -562,10 +562,16 @@ public class VisualController implements PropertyChangeListener,
 	{
 		boolean noEditors = (am.getUi().getAllEditors().size() < 1);
 		setStatus(WITH_EDITOR, !noEditors);
-
+		
 		if (am.getUi().getEditorFocus() != null)
+		{
 			setStatus(SUBPROCESS_EDITOR, !am.getUi().getEditorFocus()
 					.isSubprocessEditor());
+		}
+		else
+		{
+			setStatus(SUBPROCESS_EDITOR, false);
+		}
 	}
 
 	/**
