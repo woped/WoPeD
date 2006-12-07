@@ -46,7 +46,7 @@ public class FileEventProcessor extends AbstractEventProcessor
     public void processViewEvent(AbstractViewEvent event)
     {
         IEditor currentEditor;
-        boolean bRunWofLanDLL = false;
+        boolean bRunWofLanDLL = true;
         switch (event.getOrder())
         {
         case AbstractViewEvent.OPEN:
