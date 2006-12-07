@@ -62,6 +62,7 @@ public class AboutUI extends JDialog
     private JLabel              homepageLabel   = null;
     private JLabel              mailtoLabel     = null;
     private JLabel              sfLabel         = null;
+    private JLabel              icLabel         = null;    
     private JButton             closeButton     = null;
     private JButton             aboutButton     = null;
     private JButton             changelogButton = null;
@@ -69,9 +70,6 @@ public class AboutUI extends JDialog
     private JScrollPane         aboutPanel      = null;
     private JScrollPane         changeLogPanel  = null;
     private JPanel              buttonPanel     = null;
-
-    private static String[]     aboutArgs       = { Messages.getWoPeDVersion(true) };
-    private static final String aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) + "</p></html>";
 
     public AboutUI()
     {
@@ -121,8 +119,11 @@ public class AboutUI extends JDialog
     }
 
     private JScrollPane getAboutPanel()
-    {
-        if (aboutPanel == null)
+    {    	
+       	String[] aboutArgs       = { Messages.getWoPeDVersion(true) };
+       	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) + "</p></html>";
+       
+    	if (aboutPanel == null)
         {
             JPanel panel = new JPanel();
             panel.setLayout(new GridBagLayout());
@@ -144,24 +145,28 @@ public class AboutUI extends JDialog
 
             c.gridy = 2;
             c.insets = new Insets(0, 10, 0, 10);
-            // TODO: move in propertie files (tfreytag)
             homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
-            homepageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://www.woped.org", homepageLabel));
+            homepageLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Homepage.Link"), homepageLabel));
             panel.add(homepageLabel, c);
 
             c.gridy = 3;
             c.insets = new Insets(0, 10, 0, 10);
-            // TODO: move in propertie files (tfreytag)
             mailtoLabel = new JLabel("<html><p>" + Messages.getString("About.Email") + "</p></html>");
-            mailtoLabel.addMouseListener(new LaunchDefaultBrowserAction("mailto:info@woped.org", mailtoLabel));
+            mailtoLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Email.Link"), mailtoLabel));
             panel.add(mailtoLabel, c);
 
             c.gridy = 4;
             c.insets = new Insets(0, 10, 0, 10);
-            // TODO: move in propertie files (tfreytag)
             sfLabel = new JLabel("<html><p>" + Messages.getString("About.Development") + "</p></html>");
-            sfLabel.addMouseListener(new LaunchDefaultBrowserAction("http://sourceforge.net/projects/woped", sfLabel));
+            sfLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Development.Link"), sfLabel));
             panel.add(sfLabel, c);
+
+            c.gridy = 5;
+            c.insets = new Insets(0, 10, 0, 10);
+            icLabel = new JLabel("<html><p>" + Messages.getString("About.Iconset") + "</p></html>");
+            icLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Iconset.Link"), icLabel));
+            panel.add(icLabel, c);
+
             aboutPanel = new JScrollPane(panel);
         }
         return aboutPanel;
