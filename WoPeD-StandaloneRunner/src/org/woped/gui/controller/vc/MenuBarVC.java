@@ -552,7 +552,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     /**
      * @return Returns the pressMenuItem.
      */
-    public JMenuItem getPressMenuItem()
+/*    public JMenuItem getPressMenuItem()
     {
         if (m_pressMenuItem == null)
         {
@@ -560,18 +560,18 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         }
         return m_pressMenuItem;
     }
-
+*/
     /**
      * @return Returns the stretchMenuItem.
      */
-    public JMenuItem getStretchMenuItem()
+ /*   public JMenuItem getStretchMenuItem()
     {
         if (m_stretchMenuItem == null)
         {
             m_stretchMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_STRETCH));
         }
         return m_stretchMenuItem;
-    }
+    }*/
 
     /**
      * @return Returns the ungroupMenuItem.

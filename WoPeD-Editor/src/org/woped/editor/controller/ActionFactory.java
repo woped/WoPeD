@@ -89,8 +89,8 @@ public class ActionFactory
     public final static String         ACTIONID_ADD_XOR                = "Action.Add.Xor";
 
     // view
-    public final static String         ACTIONID_STRETCH                = "Menu.View.Stretch";
-    public final static String         ACTIONID_PRESS                  = "Menu.View.Press";
+//    public final static String         ACTIONID_STRETCH                = "Menu.View.Stretch";
+//    public final static String         ACTIONID_PRESS                  = "Menu.View.Press";
     public final static String         ACTIONID_ZOOMIN                 = "Action.ZoomIn";
     public final static String         ACTIONID_ZOOMOUT                = "Action.ZoomOut";
 
@@ -178,10 +178,10 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_SUB), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_SUBPROCESS);
 
         /* VIEW */
-        STATIC_ACTION_MAP.put(ACTIONID_STRETCH, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.STRETCH, null, ACTIONID_STRETCH));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_STRETCH), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
-        STATIC_ACTION_MAP.put(ACTIONID_PRESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.PRESS, null, ACTIONID_PRESS));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_PRESS), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
+//        STATIC_ACTION_MAP.put(ACTIONID_STRETCH, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.STRETCH, null, ACTIONID_STRETCH));
+//        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_STRETCH), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
+//        STATIC_ACTION_MAP.put(ACTIONID_PRESS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.PRESS, null, ACTIONID_PRESS));
+//        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_PRESS), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ZOOMIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ZOOM_IN, null, ACTIONID_ZOOMIN));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ZOOMIN), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ZOOMOUT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ZOOM_OUT, null, ACTIONID_ZOOMOUT));
