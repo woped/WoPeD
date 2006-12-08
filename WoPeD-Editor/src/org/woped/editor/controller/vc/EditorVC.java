@@ -246,6 +246,9 @@ public class EditorVC extends JPanel implements KeyListener,
 		getGraph().getModel().addGraphModelListener(gtModel);
 		tree.setRootVisible(false);
 		tree.setShowsRootHandles(true);
+		// Handle selection of tree items
+		// by selecting corresponding item in graph
+		tree.addTreeSelectionListener(new GraphTreeModelSelector(this));
 		JScrollPane sTree = new JScrollPane(tree);
 		JPanel treePanel = new JPanel(new GridBagLayout());
 		treePanel.add(

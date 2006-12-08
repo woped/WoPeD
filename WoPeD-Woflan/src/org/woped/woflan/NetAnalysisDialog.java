@@ -3,28 +3,30 @@
 
 package org.woped.woflan;
 
+import java.awt.GridLayout;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
+import java.util.Collection;
+import java.util.Iterator;
 
-import javax.swing.*;
-import javax.swing.tree.*;
-import javax.swing.event.*;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.processmining.framework.models.petrinet.algorithms.Woflan;
+import org.woped.core.controller.IEditor;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.core.model.*;
+import org.woped.editor.controller.vc.GraphTreeModelSelector;
 import org.woped.editor.controller.vc.NetInfo;
 import org.woped.editor.controller.vc.NodeGroupNetInfo;
-import org.woped.editor.utilities.*;
-
-import org.woped.core.controller.*;
-import org.woped.woflan.NetInfoTreeRenderer;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import org.woped.editor.utilities.Messages;
 
 
-public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSelectionListener{
+public class NetAnalysisDialog extends JFrame implements WindowListener{
 	public NetAnalysisDialog(File temporaryFile, IEditor editor)
 	{		
 		super("Analysis Dialog");
@@ -35,6 +37,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 		
 		// Instantiate our analysis object
 		m_structuralAnalysis = new StructuralAnalysis(m_currentEditor);
+		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor);
 		
     	// This code will try to talk to WofLan
     	// through the JNI
@@ -67,7 +70,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
     	// Listen to close event to be able to dispose of our temporary file
     	addWindowListener(this);
     	// We need to know about selection changes inside the tree
-    	m_treeObject.addTreeSelectionListener(this);
+    	m_treeObject.addTreeSelectionListener(m_treeSelectionChangeHandler);
     	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}	
 	
@@ -520,45 +523,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 	public void windowStateChanged(WindowEvent e) {}	
 	//! @}
 	
-	//! Called when the selection of the tree changes
-	//! Note that we will not add/remove selections but
-	//! rebuild all of them from scratch
-	public void valueChanged(TreeSelectionEvent e) {
-		// We need to know the current selection
-		TreeSelectionModel currentSelection = m_treeObject.getSelectionModel();
-		LoggerManager.info(Constants.WOFLAN_LOGGER, "Selection changed");
-		// We now create a set of selected graph elements
-		// (some elements may be selected twice so we have to 
-		// eliminate those double entries)
-		TreePath selection[] = currentSelection.getSelectionPaths();
-		HashSet processedSelection = new HashSet();
-		for (int i=0;(selection!=null)&&(i<selection.length);++i)
-		{
-			// One tree node can reference more than one petri-net
-			// element that is to be selected
-			NetInfo current = (NetInfo)selection[i].getLastPathComponent();
-			Object[] sme = current.getReferencedElements();
-			for (int j=0;j<sme.length;++j)
-				processedSelection.add(sme[j]);			
-		}
-		AbstractGraph currentGraph = m_currentEditor.getGraph();
-		// First, clear the current selection 
-		currentGraph.clearSelection();
-		// Finally, select all elements selected in the tree view
-		ArrayList newSelection = new ArrayList();
-		LoggerManager.info(Constants.WOFLAN_LOGGER, "New Selection: {");
-		for (Iterator i=processedSelection.iterator();i.hasNext();)
-		{
-			Object currentObject = i.next();
-			newSelection.add(currentObject);
-			LoggerManager.info(Constants.WOFLAN_LOGGER, currentObject.toString());
-		}
-		LoggerManager.info(Constants.WOFLAN_LOGGER, "}\n");
-		// Need to have an intermediary for our new selection
-		// as for some reason addSelection will clear all
-		// previously selected items
-		currentGraph.setSelectionCells(newSelection.toArray());
-	}
+
 	
 	//! Clean up when done...
 	protected void Cleanup()
@@ -602,4 +567,6 @@ public class NetAnalysisDialog extends JFrame implements WindowListener, TreeSel
 	//! without woflan.
 	//! This object implements all the necessary algorithms
 	private StructuralAnalysis m_structuralAnalysis;
+	
+	private GraphTreeModelSelector m_treeSelectionChangeHandler = null;
 }
