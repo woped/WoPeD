@@ -303,6 +303,9 @@ public class WoPeDJGraph extends AbstractGraph
                 {
                     PetriNetModelElement element = (PetriNetModelElement) iter.next();
                     GroupModel group = groupName(element, (element.getNameModel()));
+                    // The combination of element and element name plus all additional 
+                    // cells (resources) is in general not ungroupable
+    				group.setUngroupable(false);
                     if (element.getType() == AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE || element.getType() == AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)
                     {
                         if (((TransitionModel) element).hasTrigger())
