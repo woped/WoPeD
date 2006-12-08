@@ -195,7 +195,8 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	private JSplitPane m_mainSplitPane = null;
 
-	private int m_splitPosition = 200;
+	private static final int m_splitPosition = 200;
+	private static final int m_splitSize = 10;
 	
 	private boolean m_subprocessEditor = false;
 
@@ -278,9 +279,13 @@ public class EditorVC extends JPanel implements KeyListener,
 				m_leftSideTreeView, m_scrollPane);
 		// Initially, show side tree to correctly initialize default divider
 		// position
-		setSideTreeViewVisible(true);
-		setSideTreeViewVisible(false);
+		m_mainSplitPane.setOneTouchExpandable(true);
+		m_mainSplitPane.setDividerSize(m_splitSize);
+
 		add(m_mainSplitPane);
+		m_mainSplitPane.addPropertyChangeListener(VisualController.getInstance());
+		setSideTreeViewVisible(false);
+		m_mainSplitPane.setLastDividerLocation(m_splitPosition);
 
 		if (modelProcessorType == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
 		{
@@ -2077,18 +2082,14 @@ public class EditorVC extends JPanel implements KeyListener,
 	// boolean variable
 	public void setSideTreeViewVisible(boolean showTreeView)
 	{
-		m_leftSideTreeView.setVisible(showTreeView);
-		if (!showTreeView)
-			// Remember the split position if we're to hide the tree view
-			m_splitPosition = m_mainSplitPane.getDividerLocation();
-		m_mainSplitPane.setDividerLocation(showTreeView ? m_splitPosition : 0);
+		m_mainSplitPane.setDividerLocation(showTreeView ? m_mainSplitPane.getLastDividerLocation() : 0);
 	}
 
 	// ! Returns whether or not the tree view is currently visible
 	// ! @return true if the tree view is currently visible, false otherwise
 	public boolean isSideTreeViewVisible()
 	{
-		return m_leftSideTreeView.isVisible();
+		return (m_mainSplitPane.getDividerLocation()>1);
 	}
 
 	public void setSubprocessEditor(boolean subprocess)

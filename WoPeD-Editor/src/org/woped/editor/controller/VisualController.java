@@ -33,6 +33,7 @@ import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
 import java.util.Vector;
 
+import javax.swing.JSplitPane;
 import javax.swing.undo.UndoManager;
 
 import org.jgraph.event.GraphSelectionEvent;
@@ -132,7 +133,11 @@ public class VisualController implements PropertyChangeListener,
 
 	public static final int SUBPROCESS_EDITOR = 32;
 
-	private static final int MAX_ID = 33;
+	//! Condition that is activated if the tree view of the
+	//! editor that currently has the focus is activated
+	public static final int TREEVIEW_VISIBLE = 33;
+
+	private static final int MAX_ID = 34;
 
 	private Vector[] m_enable = new Vector[MAX_ID + 1];
 
@@ -394,6 +399,11 @@ public class VisualController implements PropertyChangeListener,
 			} else if ("Update".equals(arg0.getPropertyName()))
 			{
 				checkWoflan();
+			} else if (JSplitPane.DIVIDER_LOCATION_PROPERTY.equals(arg0.getPropertyName()))
+			{
+				int dividerLocation = ((Integer)arg0.getNewValue()).intValue();
+				boolean treeVisible = dividerLocation>1;
+				setStatus(TREEVIEW_VISIBLE, treeVisible);				
 			}
 		}
 
