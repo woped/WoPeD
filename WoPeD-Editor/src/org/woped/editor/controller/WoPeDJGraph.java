@@ -26,8 +26,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import javax.swing.JToolTip;
 
@@ -116,6 +120,33 @@ public class WoPeDJGraph extends AbstractGraph
         VisualController.getInstance().checkUndoRedo();
     }
 
+    
+    //! This map contains all possible connections from a given node type
+    private static final Map<Integer,Set<Integer> > connectionTypes;
+    static
+    {
+    	Map<Integer, Set<Integer> >  tmp = new HashMap<Integer, Set<Integer> >();
+    	
+    	Set<Integer> currentSet = new HashSet<Integer>();
+    	currentSet.add(new Integer(PetriNetModelElement.PLACE_TYPE));
+    	// All these node types may only connect to places
+    	tmp.put(new Integer(PetriNetModelElement.TRANS_SIMPLE_TYPE),
+    			currentSet);
+    	tmp.put(new Integer(PetriNetModelElement.TRANS_OPERATOR_TYPE),
+    			currentSet);
+    	tmp.put(new Integer(PetriNetModelElement.SUBP_TYPE),
+    			currentSet);
+    	
+    	currentSet = new HashSet<Integer>();
+    	currentSet.add(new Integer(PetriNetModelElement.TRANS_SIMPLE_TYPE));
+    	currentSet.add(new Integer(PetriNetModelElement.TRANS_OPERATOR_TYPE));
+    	currentSet.add(new Integer(PetriNetModelElement.SUBP_TYPE));
+    	// Places may connect to all the node types above
+    	tmp.put(new Integer(PetriNetModelElement.PLACE_TYPE),
+    			currentSet);
+    	connectionTypes = Collections.unmodifiableMap(tmp);
+    }
+    
     /**
      * @param sourceCell
      * @param targetCell
@@ -123,26 +154,15 @@ public class WoPeDJGraph extends AbstractGraph
      */
     public boolean isValidConnection(AbstractElementModel sourceCell, AbstractElementModel targetCell)
     {
-        // Keine Gleichartigen Verbindungen
         if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
         {
-            if (sourceCell.getType() != targetCell.getType())
-            {
-                // und keine aalst <-> simpletrans verbundungen
-                if ((sourceCell.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE && targetCell.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
-                        || (sourceCell.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE && targetCell.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE))
-                {
-                    LoggerManager.warn(Constants.EDITOR_LOGGER, sourceCell.getId() + "->" + targetCell.getId() + ") Not a valid Connection! Arc not created!");
-                    return false;
-                } else
-                {
-                    return true;
-                }
-            } else
-            {
-                LoggerManager.warn(Constants.EDITOR_LOGGER, sourceCell.getId() + "->" + targetCell.getId() + ") Not a valid Connection! Arc not created!");
-                return false;
-            }
+        	boolean result = false;
+        	Set<Integer> destinations = connectionTypes.get(new Integer(sourceCell.getType()));
+        	if (destinations!=null)
+        	{
+        		result = (destinations.contains(new Integer(targetCell.getType())));
+        	}
+        	return result;
         } else
         {
             return true;
