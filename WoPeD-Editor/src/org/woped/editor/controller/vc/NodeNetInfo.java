@@ -20,7 +20,8 @@ public class NodeNetInfo extends NetInfo {
 		// Initialize the display of this item
 		super("");    
 		m_nodeObject = node;
-		m_nodeOwner = GetNodeOwner(m_nodeObject);
+		ModelElementContainer rootOwningContainer = m_nodeObject.getRootOwningContainer();
+		m_nodeOwner = rootOwningContainer!=null?rootOwningContainer.getOwningElement():null;
 		setUserObject(getNodeString(m_nodeObject, m_nodeOwner));
 		
 		// Generic approach to detect whether this element has any children:
@@ -38,7 +39,8 @@ public class NodeNetInfo extends NetInfo {
 				try
 				{			
 					AbstractElementModel current = (AbstractElementModel)innerIterator.next();
-					if (operator.equals(GetNodeOwner(current)))
+					AbstractElementModel owningElement = current.getRootOwningContainer().getOwningElement();
+					if ((owningElement!=null)&&(operator.equals(current.getRootOwningContainer().getOwningElement())))
 						add(new NodeNetInfo(current, true));
 				}
 				catch (ClassCastException e)
@@ -47,22 +49,6 @@ public class NodeNetInfo extends NetInfo {
 				}
 			}			
 		}
-	}
-	//! Return a node owner only if the node is not a root node
-	//! (A node may be contained in more than one element container)
-	private static AbstractElementModel GetNodeOwner(AbstractElementModel node)
-	{
-		AbstractElementModel result = null;
-		boolean isRootNode = false;
-		Iterator i = node.getOwningContainers();
-		while (i.hasNext()&&(isRootNode==false)){
-			ModelElementContainer current = 
-				(ModelElementContainer)i.next();
-			result = current.getOwningElement();
-			if (result == null)
-				isRootNode = true;
-		}
-		return result;
 	}
 	//! Get a string with the following layout: "(node, node, ...)" 
 	//! if any nodes are found matching the specified criteria, "" otherwise
@@ -78,16 +64,15 @@ public class NodeNetInfo extends NetInfo {
 	{
 		StringBuffer result = new StringBuffer();
 		Iterator relevantNodes = NetAlgorithms.GetDirectlyConnectedNodes(node, connectionType).iterator();
+		int nodeHierarchyLevel = node.getHierarchyLevel();
 		boolean isFirst = true;
 		while (relevantNodes.hasNext())
 		{
 			AbstractElementModel currentNode 
 				= (AbstractElementModel)relevantNodes.next();
 			// If superOnly is specified
-			// only nodes that are contained in the root container are relevant for us
-			// FIXME: We will need to change this later to be the "next higher"
-			// Level container once sub-processes are implemented
-			if ((!superOnly)||(GetNodeOwner(currentNode)==null))
+			// only nodes that are contained in the next lower level container are relevant for us
+			if ((!superOnly)||(currentNode.getHierarchyLevel()<nodeHierarchyLevel))
 			{
 				if (isFirst)
 					isFirst = false;

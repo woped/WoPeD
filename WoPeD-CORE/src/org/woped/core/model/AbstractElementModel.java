@@ -41,14 +41,78 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     //! This reference will be maintained by the ModelElementContainer methods
     //! addElement() and removeOnlyElement() which will call addOwningContainer() and
     //! removeOwningContainer() to do so.
-    private Set owningContainers = new HashSet();
+    private Set<ModelElementContainer> owningContainers = new HashSet<ModelElementContainer>();
+    
+    //! Stores a reference to the owning container with the lowest hierarchical level
+    //! (root container == 0)
+    private ModelElementContainer rootOwningContainer = null;
+    
+    //! Return the owning container with the lowest hierarchical level
+    //! @return retuns the lowest model element container owning this element
+    public ModelElementContainer getRootOwningContainer()
+    {
+    	return rootOwningContainer;
+    }
+    
+    //! Determine the hierarchy level of this element
+    //! using the root owning container
+    //! @return hierarchy level starting at zero for elements owned by the root container
+    //! or -1 if the element is not currently owned
+    public int getHierarchyLevel() 
+    {
+    	int result = -1;
+    	if (rootOwningContainer!=null)
+    	{
+    		result = 0;
+    		AbstractElementModel owningElement = rootOwningContainer.getOwningElement();
+    		if (owningElement!=null)
+    			result = owningElement.getHierarchyLevel() + 1;
+    	}
+    	return result;    	
+    }
     public void addOwningContainer(ModelElementContainer owningContainer)
     {
-    	owningContainers.add(owningContainer);    	
+    	owningContainers.add(owningContainer);
+    	
+    	// We may have a new element to own us
+    	AbstractElementModel newOwningElement = owningContainer.getOwningElement();
+    	int nNewHiearchyLevel = ((newOwningElement!=null)?(newOwningElement.getHierarchyLevel() + 1):0);
+    	if ((rootOwningContainer==null)||(nNewHiearchyLevel<getHierarchyLevel()))
+    		// We climbed in the hierarchy, reflect this by making the new container
+    		// our 'root owning container'
+    		rootOwningContainer = owningContainer;
     }
     public void removeOwningContainer(ModelElementContainer owningContainer)
     {
     	owningContainers.remove(owningContainer);
+    	if (owningContainer==rootOwningContainer)
+    	{
+    		// Huh, we lost our 'root owning container'
+    		// and need to find the closest one in the remaining set
+    		Iterator<ModelElementContainer> i = owningContainers.iterator();
+    		// Do we still *have* any owners ?
+    		if (i.hasNext())
+    		{
+    			// Start with the first one
+    			rootOwningContainer = i.next();    		
+    			AbstractElementModel owningElement = rootOwningContainer.getOwningElement();
+    			int newLowest = ((owningElement!=null)?owningElement.getHierarchyLevel()+1:0);
+    			while (i.hasNext())
+    			{
+    				ModelElementContainer candidate = i.next();
+    				owningElement = candidate.getOwningElement();
+    				int candidateHierarchy = ((owningElement!=null)?owningElement.getHierarchyLevel()+1:0);
+    				if (candidateHierarchy<newLowest)
+    				{
+    					rootOwningContainer = candidate;
+    					newLowest = candidateHierarchy;
+    				}
+    			}
+    		}
+    		else
+    			rootOwningContainer = null;
+    	}
+    	
     }
     public Iterator getOwningContainers()
     {
