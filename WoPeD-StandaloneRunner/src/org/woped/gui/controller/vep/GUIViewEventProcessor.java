@@ -62,8 +62,6 @@ import org.woped.gui.help.HelpBrowser;
  */
 public class GUIViewEventProcessor extends AbstractEventProcessor
 {
-    private int                        newEditorCounter = 0;
-
     public GUIViewEventProcessor(int vepID, DefaultApplicationMediator mediator)
     {
         super(vepID, mediator);
@@ -83,14 +81,6 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         {
         case AbstractViewEvent.NEW:
             editor = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
-            editor.setName(Messages.getString("Document.Title.Untitled") + " - " + newEditorCounter++);
-            // notify the editor aware vc
-            Iterator editorIter = getMediator().getEditorAwareVCs().iterator();
-            while (editorIter.hasNext())
-            {
-                ((IEditorAware) editorIter.next()).addEditor(editor);
-            }
-            VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
             break;
         case AbstractViewEvent.OPEN_SUBPROCESS:
 
@@ -111,39 +101,10 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				if (cell instanceof SubProcessModel)
 				{
 					SubProcessModel model = (SubProcessModel) cell;
-
-					// Subprozess darf momentan nur jeweils einen Ein- und
-					// Ausgang haben
-					if (editor.getModelProcessor().getElementContainer()
-							.getIncomingArcs(model.getId()).size() != 1
-							|| editor.getModelProcessor().getElementContainer()
-									.getOutgoingArcs(model.getId()).size() != 1)
-					{
-						
-						JOptionPane.showMessageDialog(null,"Subprozess muss genau einen Ein- und Ausgang haben!","Error (TODO)",
-							    JOptionPane.PLAIN_MESSAGE); 
-
-					} else
-					{
-						IEditor subProcessEditor = getMediator()
-								.createSubprocessEditor(
-										AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
-										true, editor, model);
-
-						newEditorCounter++;
-						// notify the editor aware vc
-						editorIter = getMediator().getEditorAwareVCs()
-								.iterator();
-						while (editorIter.hasNext())
-						{
-							((IEditorAware) editorIter.next())
-									.addEditor(subProcessEditor);
-						}
-						VisualController.getInstance().propertyChange(
-								new PropertyChangeEvent(this,
-										"InternalFrameCount", null, subProcessEditor));
-					}
-
+					IEditor subProcessEditor = getMediator()
+					.createSubprocessEditor(
+							AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
+							true, editor, model);
 				} else
 				{
 					// error

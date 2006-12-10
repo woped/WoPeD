@@ -22,26 +22,31 @@
  */
 package org.woped.editor.controller;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
+import org.woped.core.gui.IEditorAware;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.model.petrinet.SubProcessModel;
-import org.woped.core.model.ModelElementContainer;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.NetAlgorithms;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
+import org.woped.editor.utilities.Messages;
 
 /**
  * This Class should be the Mediator for the Editor VC... It must be implemented
@@ -63,6 +68,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
     private EditorClipboard  clipboard              = new EditorClipboard();
     private VisualController visualController       = null;
     private HashMap          actionMap              = null;
+    private int              newEditorCounter = 0;
 
     public ApplicationMediator()
     {
@@ -108,17 +114,56 @@ public class ApplicationMediator extends AbstractApplicationMediator
 
     public IEditor createEditor(int modelProcessorType, boolean undoSupport)
     {
-        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport);
+        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, this);
         addViewController(editor);
         editor.getGraph().addMouseListener(visualController);
+        
+        editor.setName(Messages.getString("Document.Title.Untitled") + " - " + newEditorCounter++);
+        // notify the editor aware vc
+        Iterator editorIter = getEditorAwareVCs().iterator();
+        while (editorIter.hasNext())
+        {
+            ((IEditorAware) editorIter.next()).addEditor(editor);
+        }
+        VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
+        
         return editor;
     }
     
     public IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor, SubProcessModel subProcess)
     {
-        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, parentEditor, subProcess);
+
+		// Subprozess darf momentan nur jeweils einen Ein- und
+		// Ausgang haben
+    	NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration(); 
+    	NetAlgorithms.GetArcConfiguration(subProcess, arcConfig);
+    	
+		if ((arcConfig.m_numIncoming!=1)||(arcConfig.m_numOutgoing!=1))
+		{
+			
+			JOptionPane.showMessageDialog(null,"Subprozess muss genau einen Ein- und Ausgang haben!","Error (TODO)",
+				    JOptionPane.PLAIN_MESSAGE);
+			
+			return null;
+		} 
+			
+        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, parentEditor, subProcess, this );
         addViewController(editor);
         editor.getGraph().addMouseListener(visualController);
+        
+		newEditorCounter++;
+		// notify the editor aware vc
+		Iterator editorIter = getEditorAwareVCs()
+				.iterator();
+		while (editorIter.hasNext())
+		{
+			((IEditorAware) editorIter.next())
+					.addEditor(editor);
+		}
+		VisualController.getInstance().propertyChange(
+				new PropertyChangeEvent(this,
+						"InternalFrameCount", null, editor));
+        
         return editor;
     }
     

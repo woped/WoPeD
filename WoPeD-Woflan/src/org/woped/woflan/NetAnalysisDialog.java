@@ -13,10 +13,10 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.processmining.framework.models.petrinet.algorithms.Woflan;
+import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.utilities.LoggerManager;
@@ -27,7 +27,7 @@ import org.woped.editor.utilities.Messages;
 
 
 public class NetAnalysisDialog extends JFrame implements WindowListener{
-	public NetAnalysisDialog(File temporaryFile, IEditor editor)
+	public NetAnalysisDialog(File temporaryFile, IEditor editor, AbstractApplicationMediator mediator)
 	{		
 		super("Analysis Dialog");
 		
@@ -37,7 +37,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		
 		// Instantiate our analysis object
 		m_structuralAnalysis = new StructuralAnalysis(m_currentEditor);
-		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor);
+		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor, mediator);
 		
     	// This code will try to talk to WofLan
     	// through the JNI

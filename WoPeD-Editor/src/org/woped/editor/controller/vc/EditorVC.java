@@ -56,7 +56,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTree;
-import javax.swing.border.LineBorder;
 import javax.swing.tree.TreeNode;
 
 import org.jgraph.event.GraphModelEvent;
@@ -73,6 +72,7 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.graph.Port;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractMarqueeHandler;
 import org.woped.core.controller.AbstractViewEvent;
@@ -199,15 +199,20 @@ public class EditorVC extends JPanel implements KeyListener,
 	private static final int m_splitSize = 10;
 	
 	private boolean m_subprocessEditor = false;
-
+	//! Store a reference to the application mediator.
+	//! It is used to create a new subprocess editor if required
+	private AbstractApplicationMediator m_centralMediator = null;
+	
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
 	 * @param clipboard
 	 */
 	public EditorVC(String id, EditorClipboard clipboard,
-			int modelProcessorType, boolean undoSupport)
+			int modelProcessorType, boolean undoSupport,
+			AbstractApplicationMediator mediator)
 	{
+		this.m_centralMediator = mediator;
 		// initialize
 		this.setLayout(new BorderLayout());
 		this.m_clipboard = clipboard;
@@ -249,7 +254,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		tree.setShowsRootHandles(true);
 		// Handle selection of tree items
 		// by selecting corresponding item in graph
-		tree.addTreeSelectionListener(new GraphTreeModelSelector(this));
+		tree.addTreeSelectionListener(new GraphTreeModelSelector(this,m_centralMediator));
 		JScrollPane sTree = new JScrollPane(tree);
 		JPanel treePanel = new JPanel(new GridBagLayout());
 		treePanel.add(
@@ -294,9 +299,10 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 	}
 	public EditorVC(String string, EditorClipboard clipboard,
-			int modelProcessorType, boolean undoSupport, IEditor parentEditor, SubProcessModel model)
+			int modelProcessorType, boolean undoSupport, IEditor parentEditor, SubProcessModel model,
+			AbstractApplicationMediator mediator)
 	{
-		this(string, clipboard, modelProcessorType, undoSupport);
+		this(string, clipboard, modelProcessorType, undoSupport, mediator);
 		setSubprocessEditor(true);
 		// m_graph.setBorder(new LineBorder(Color.BLACK, 3, false));
 		m_graph.setBackground(new Color(200, 200, 200));

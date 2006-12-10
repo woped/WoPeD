@@ -122,7 +122,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                     			// Arguments are the Woflan TPN file and the model processor
                     			// for the petri-net model that is in focus
                     			NetAnalysisDialog myDialog = new NetAnalysisDialog(f,
-                    					getMediator().getUi().getEditorFocus());
+                    					getMediator().getUi().getEditorFocus(), this.getMediator());
                     			myDialog.setVisible(true);                        	
                     			
                     			LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");

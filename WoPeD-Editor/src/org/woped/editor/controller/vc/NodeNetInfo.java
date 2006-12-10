@@ -104,7 +104,10 @@ public class NodeNetInfo extends NetInfo {
 	}
 	public Object[] getReferencedElements() {
 		Object[] result = new Object[1];
-		result[0] =((m_nodeOwner!=null)?m_nodeOwner:m_nodeObject);
+		// If the owner is a sub-process
+		// the object can be displayed and thus will be returned as the item to be selected
+		result[0] =(((m_nodeOwner!=null)&&
+				(m_nodeOwner.getType()!=AbstractPetriNetModelElement.SUBP_TYPE))?m_nodeOwner:m_nodeObject);
 		return result;
 	};	
 	//! Store the node object this tree item represents
