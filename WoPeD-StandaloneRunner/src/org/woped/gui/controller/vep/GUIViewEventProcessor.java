@@ -105,29 +105,10 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				{
 					SubProcessModel model = (SubProcessModel) cell;
 
-					List editors = getMediator().getUi().getAllEditors();
-					Iterator editorIter = editors.iterator();
-
-					boolean open = false;
-
-					while (editorIter.hasNext())
-					{
-						IEditor currentEditor = (IEditor) editorIter.next();
-
-						// test
-						if (currentEditor.getName().equals(
-								"Subprocess " + model.getNameValue()))
-							open = true;
-					}
-
-					if (!open)
-					{
-
-						IEditor subProcessEditor = getMediator()
-								.createSubprocessEditor(
-										AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
-										true, editor, model);
-					}
+					IEditor subProcessEditor = getMediator()
+					.createSubprocessEditor(
+							AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
+							true, editor, model);
 				}
 			} else
 			{

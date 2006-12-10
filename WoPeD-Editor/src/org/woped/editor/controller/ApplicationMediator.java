@@ -26,8 +26,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import org.woped.core.config.IConfiguration;
@@ -133,7 +136,8 @@ public class ApplicationMediator extends AbstractApplicationMediator
         
         return editor;
     }
-    //! Create a sub-process editor window and register it with all visual controllers
+    //! Create a sub-process editor window and register it with all visual controllers.
+    //! If a sub-process editor window already exists for the given sub-process return it.
     //! @param modelProcessorType specifies the model processor type for the new editor
     //! @param undoSupport if set to true undo support is to be enabled
     //! @param parentEditor specifies the parent editor for this sub-process
@@ -141,7 +145,37 @@ public class ApplicationMediator extends AbstractApplicationMediator
     //! @return reference to new editor object    
     public IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor, SubProcessModel subProcess)
     {
+    	IEditor editor = null;
 
+		List editors = getUi().getAllEditors();
+		Iterator editorIter = editors.iterator();
+
+		boolean open = false;
+
+		while (editorIter.hasNext())
+		{
+			IEditor currentEditor = (IEditor) editorIter.next();
+
+			if (currentEditor.getName().equals(
+					"Subprocess " + subProcess.getNameValue()))
+			{
+				// Found a matching editor
+				// Before we return it, give it the focus
+				JComponent frame = currentEditor.getContainer();
+				if (frame instanceof JInternalFrame)
+				{
+					JInternalFrame internalFrame = (JInternalFrame)frame;
+					try
+					{					
+						internalFrame.setSelected(true);
+					} catch (Exception e)
+					{}
+				}
+				return currentEditor;
+			}
+		}
+    	
+    	
 		// Subprozess darf momentan nur jeweils einen Ein- und
 		// Ausgang haben
     	NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration(); 
@@ -156,13 +190,13 @@ public class ApplicationMediator extends AbstractApplicationMediator
 			return null;
 		} 
 			
-        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, parentEditor, subProcess, this );
+        editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, parentEditor, subProcess, this );
         addViewController(editor);
         editor.getGraph().addMouseListener(visualController);
         
 		newEditorCounter++;
 		// notify the editor aware vc
-		Iterator editorIter = getEditorAwareVCs()
+		editorIter = getEditorAwareVCs()
 				.iterator();
 		while (editorIter.hasNext())
 		{
