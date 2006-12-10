@@ -42,7 +42,7 @@ public class FileEventProcessor extends AbstractEventProcessor
     {
         super(vepID, mediator);
     }
-
+  
     public void processViewEvent(AbstractViewEvent event)
     {
         IEditor currentEditor;
@@ -57,21 +57,9 @@ public class FileEventProcessor extends AbstractEventProcessor
             {
                 currentEditor = openEditor();
             }
-            Iterator editorIter = getMediator().getEditorAwareVCs().iterator();
-            while (editorIter.hasNext())
-            {
-                ((IEditorAware) editorIter.next()).addEditor(currentEditor);
-            }
             break;
         case AbstractViewEvent.OPEN_SAMPLE:
             currentEditor = openFile((File) event.getData(), FileFilterImpl.SAMPLEFilter);
-//            ((TaskBarVC) getMediator().getViewController(TaskBarVC.ID_PREFIX)).addEditor(currentEditor);
-
-            editorIter = getMediator().getEditorAwareVCs().iterator();
-            while (editorIter.hasNext())
-            {
-                ((IEditorAware) editorIter.next()).addEditor(currentEditor);
-            }
             break;
         case AbstractViewEvent.SAVE:
             save((EditorVC) getMediator().getUi().getEditorFocus());

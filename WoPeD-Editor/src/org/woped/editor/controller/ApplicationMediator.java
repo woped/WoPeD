@@ -112,6 +112,10 @@ public class ApplicationMediator extends AbstractApplicationMediator
         }
     }
 
+    //! Create a new editor window and register it with all visual controllers
+    //! @param modelProcessorType specifies the model processor type for the new editor
+    //! @param undoSupport if set to true undo support is to be enabled
+    //! @return reference to new editor object
     public IEditor createEditor(int modelProcessorType, boolean undoSupport)
     {
         EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, this);
@@ -129,7 +133,12 @@ public class ApplicationMediator extends AbstractApplicationMediator
         
         return editor;
     }
-    
+    //! Create a sub-process editor window and register it with all visual controllers
+    //! @param modelProcessorType specifies the model processor type for the new editor
+    //! @param undoSupport if set to true undo support is to be enabled
+    //! @param parentEditor specifies the parent editor for this sub-process
+    //! @param subProcess specifies the sub process element to be edited
+    //! @return reference to new editor object    
     public IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor, SubProcessModel subProcess)
     {
 
