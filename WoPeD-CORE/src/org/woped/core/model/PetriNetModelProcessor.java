@@ -505,7 +505,12 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
     public String getNewElementId(int elementType)
     {
         String id;
-        if (elementType == PetriNetModelElement.PLACE_TYPE)
+        if (elementType == PetriNetModelElement.SUBP_TYPE)
+        {
+            id = "sub" + ++subprocessCounter;
+            return getElementContainer().getElementById(id) != null ? getNewElementId(elementType) : id;
+        }
+        else if (elementType == PetriNetModelElement.PLACE_TYPE)
         {
             id = "p" + ++placeCouter;
             return getElementContainer().getElementById(id) != null ? getNewElementId(elementType) : id;
