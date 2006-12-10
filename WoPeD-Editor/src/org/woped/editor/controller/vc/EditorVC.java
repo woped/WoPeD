@@ -56,7 +56,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTree;
+import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 
 import org.jgraph.event.GraphModelEvent;
 import org.jgraph.event.GraphModelListener;
@@ -192,8 +194,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	// ! It is kept as a member to be able to show / hide this part of the
 	// ! editor window as required
 	private JSplitPane m_leftSideTreeView = null;
-
 	private JSplitPane m_mainSplitPane = null;
+	private JTree m_treeObject = null;
 
 	private static final int m_splitPosition = 200;
 	private static final int m_splitSize = 10;
@@ -248,14 +250,16 @@ public class EditorVC extends JPanel implements KeyListener,
 		GraphTreeModel gtModel = new GraphTreeModel(this);
 		m_scrollPane = new JScrollPane(getGraph());
 		// Element Tree
-		JTree tree = new JTree(gtModel);
+		m_treeObject = new JTree(gtModel);
 		getGraph().getModel().addGraphModelListener(gtModel);
-		tree.setRootVisible(false);
-		tree.setShowsRootHandles(true);
+		m_treeObject.setRootVisible(false);
+		m_treeObject.setShowsRootHandles(true);
 		// Handle selection of tree items
 		// by selecting corresponding item in graph
-		tree.addTreeSelectionListener(new GraphTreeModelSelector(this,m_centralMediator));
-		JScrollPane sTree = new JScrollPane(tree);
+		GraphTreeModelSelector selectionHandler = new GraphTreeModelSelector(this,m_treeObject, m_centralMediator); 
+		m_treeObject.addTreeSelectionListener(selectionHandler);
+		getGraph().getSelectionModel().addGraphSelectionListener(selectionHandler);
+		JScrollPane sTree = new JScrollPane(m_treeObject);
 		JPanel treePanel = new JPanel(new GridBagLayout());
 		treePanel.add(
 				new JLabel(Messages.getString("TreeView.Elements.Title")),
@@ -1584,18 +1588,22 @@ public class EditorVC extends JPanel implements KeyListener,
 	private boolean valueChangedActive = false;
 
 	public void valueChanged(GraphSelectionEvent arg0)
-	{
+	{		
 		if (valueChangedActive)
 			// Do not call ourselves endlessly
 			// We have to make a call to setSelectionCells()
 			// which once again would trigger this method call
 			// This is by design.
 			return;
-
+		
+		// Before doing anything else,
+		// select all PetriNetModelElement objects
+		// in the tree view
+		Object cells[] = arg0.getCells();
+		
 		// If the selected Cell(s) are any PetriNetModel their respective
 		// parents get selected.
 		// Elements can only be dragged together with their name.
-		Object cells[] = arg0.getCells();
 		ArrayList addedCells = new ArrayList();
 		for (int i = 0; i < cells.length; ++i)
 		{

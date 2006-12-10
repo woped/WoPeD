@@ -37,7 +37,6 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		
 		// Instantiate our analysis object
 		m_structuralAnalysis = new StructuralAnalysis(m_currentEditor);
-		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor, mediator);
 		
     	// This code will try to talk to WofLan
     	// through the JNI
@@ -62,6 +61,10 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
         	m_treeObject.setShowsRootHandles(true);
         	getContentPane().add(new JScrollPane(m_treeObject));
         	
+    		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor, m_treeObject, mediator);
+        	// We need to know about selection changes inside the tree
+        	m_treeObject.addTreeSelectionListener(m_treeSelectionChangeHandler);        	
+        	
         	BuildBasicInfo(top);
         	BuildStructuralAnalysis(top);
         	BuildSemanticalAnalysis(top);
@@ -69,8 +72,6 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
     	
     	// Listen to close event to be able to dispose of our temporary file
     	addWindowListener(this);
-    	// We need to know about selection changes inside the tree
-    	m_treeObject.addTreeSelectionListener(m_treeSelectionChangeHandler);
     	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}	
 	
