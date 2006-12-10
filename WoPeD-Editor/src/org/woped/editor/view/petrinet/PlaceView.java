@@ -35,6 +35,7 @@ import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexRenderer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.view.AbstractElementView;
 
@@ -50,170 +51,216 @@ import org.woped.core.view.AbstractElementView;
 public class PlaceView extends AbstractElementView
 {
 
-    private static final int TOKEN_RADIUS = 5;
-    private PlaceRenderer    renderer     = new PlaceRenderer();
+	private static final int TOKEN_RADIUS = 5;
 
-    /**
-     * Constructor for PlaceView.
-     * 
-     * @param cell
-     * @param graph
-     * @param mapper
-     */
-    public PlaceView(Object cell)
-    {
-        super(cell);
-    }
+	private PlaceRenderer renderer = null;
 
-    /**
-     * Returns the token.
-     * 
-     * @return boolean
-     */
-    public boolean hasTokens()
-    {
-        return ((PlaceModel) getCell()).hasTokens();
-    }
+	/**
+	 * Constructor for PlaceView.
+	 * 
+	 * @param cell
+	 * @param graph
+	 * @param mapper
+	 */
+	public PlaceView(Object cell)
+	{
+		super(cell);
+		renderer = new PlaceRenderer(cell);
+	}
 
-    public int getTokenCount()
-    {
-        return ((PlaceModel) getCell()).getTokenCount();
-    }
+	/**
+	 * Returns the token.
+	 * 
+	 * @return boolean
+	 */
+	public boolean hasTokens()
+	{
+		return ((PlaceModel) getCell()).hasTokens();
+	}
 
-    public int getVirtualTokenCount()
-    {
-        return ((PlaceModel) getCell()).getVirtualTokenCount();
-    }
+	public int getTokenCount()
+	{
+		return ((PlaceModel) getCell()).getTokenCount();
+	}
 
-    public Point2D getPerimeterPoint(EdgeView edge, Point2D source, Point2D p)
-    {
+	public int getVirtualTokenCount()
+	{
+		return ((PlaceModel) getCell()).getVirtualTokenCount();
+	}
 
-        // liefert die Größe und die Koordinaten der Stelle.
-        Rectangle2D r = getBounds();
-        // Berechnet den relative Mittelpunkt der Stelle.
-        double a = (r.getWidth() - 1) / 2;
-        double b = (r.getHeight() - 1) / 2;
-        // Berechnet den absoluten Mittelpunkt der Stelle.
-        double absCenterX = r.getCenterX();
-        double absCenterY = r.getCenterY();
-        // Berechnet den Winkel von dem Punkt p zum Mittelpunkt der Stelle.
-        double dx = p.getX() - absCenterX;
-        double dy = p.getY() - absCenterY;
-        // Winkelberechnung siehe Abb. 16. Tangens(aplha) = dy/dx.
-        double aplha = Math.atan2(dy, dx);
-        // Berechne Berührungspunkt mit Außenhülle der Stelle.
-        double dockPointX = (absCenterX + (a * Math.cos(aplha)));
-        double dockPointY = (absCenterY + (b * Math.sin(aplha)));
+	public Point2D getPerimeterPoint(EdgeView edge, Point2D source, Point2D p)
+	{
 
-        return new Point2D.Double(dockPointX, dockPointY);
+		// liefert die Größe und die Koordinaten der Stelle.
+		Rectangle2D r = getBounds();
+		// Berechnet den relative Mittelpunkt der Stelle.
+		double a = (r.getWidth() - 1) / 2;
+		double b = (r.getHeight() - 1) / 2;
+		// Berechnet den absoluten Mittelpunkt der Stelle.
+		double absCenterX = r.getCenterX();
+		double absCenterY = r.getCenterY();
+		// Berechnet den Winkel von dem Punkt p zum Mittelpunkt der Stelle.
+		double dx = p.getX() - absCenterX;
+		double dy = p.getY() - absCenterY;
+		// Winkelberechnung siehe Abb. 16. Tangens(aplha) = dy/dx.
+		double aplha = Math.atan2(dy, dx);
+		// Berechne Berührungspunkt mit Außenhülle der Stelle.
+		double dockPointX = (absCenterX + (a * Math.cos(aplha)));
+		double dockPointY = (absCenterY + (b * Math.sin(aplha)));
 
-    }
+		return new Point2D.Double(dockPointX, dockPointY);
 
-    /**
-     * @see org.woped.editor.core.view.AbstractElementView#paint()
-     */
-    public void paint()
-    {}
+	}
 
-    /**
-     * @see org.woped.editor.core.view.AbstractElementView#refresh()
-     */
-    public void refresh()
-    {}
+	/**
+	 * @see org.woped.editor.core.view.AbstractElementView#paint()
+	 */
+	public void paint()
+	{
+	}
 
-    public CellViewRenderer getRenderer()
-    {
-        return renderer;
-    }
+	/**
+	 * @see org.woped.editor.core.view.AbstractElementView#refresh()
+	 */
+	public void refresh()
+	{
+	}
 
-    /**
-     * 
-     * this inner class contains the render information of a place
-     *  
-     */
-    private class PlaceRenderer extends VertexRenderer
-    {
+	public CellViewRenderer getRenderer()
+	{
+		return renderer;
+	}
 
-        public void paint(Graphics g)
-        {
+	/**
+	 * 
+	 * this inner class contains the render information of a place
+	 * 
+	 */
+	private class PlaceRenderer extends VertexRenderer
+	{
+		private boolean readOnly;
+		private Color readOnlyColor = new Color(225, 225, 225);
 
-            int b = borderWidth;
-            Graphics2D g2 = (Graphics2D) g;
-            Dimension d = getSize();
-            boolean tmp = selected;
-            if (super.isOpaque())
-            {
-                g.setColor(super.getBackground());
-                g.fillOval(b - 1, b - 1, d.width - b, d.height - b);
-            }
-            try
-            {
-                setBorder(null);
-                setOpaque(false);
-                selected = false;
-                super.paint(g);
-            } finally
-            {
-                selected = tmp;
-            }
-            if (bordercolor != null)
-            {
-        	g.setColor(Color.WHITE);
-                g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
-                g.setColor(bordercolor);
-                g2.setStroke(new BasicStroke(b));
-                g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
-            }
-            if (selected)
-            {
-                g.setColor(Color.WHITE);
-                g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
-                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
+		public PlaceRenderer(Object cell)
+		{
+			AbstractElementModel model = (AbstractElementModel) cell;
+			readOnly = model.isReadOnly();
+		}
 
-            }
-            int relevantTokens = (PlaceView.this.getVirtualTokenCount() == PlaceView.this.getTokenCount()) ? PlaceView.this.getTokenCount() : PlaceView.this.getVirtualTokenCount();
-            switch (relevantTokens)
-            {
-            case 1:
-                g.setColor(Color.BLACK);
-                g.fillOval(b + (int) (d.getWidth() / 2) - TOKEN_RADIUS, b + (int) (d.getHeight() / 2) - TOKEN_RADIUS, TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
-                break;
-            case 2:
-                g.setColor(Color.BLACK);
-                g.fillOval(b + (int) (d.getWidth() / 3) - TOKEN_RADIUS, b + (int) (d.getHeight() / 2) - TOKEN_RADIUS, TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
-                g.fillOval(b + (int) (d.getWidth() / 3 * 2) - TOKEN_RADIUS, b + (int) (d.getHeight() / 2) - TOKEN_RADIUS, TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
-                break;
-            case 3:
-                g.setColor(Color.BLACK);
-                g.fillOval(b + (int) (d.getWidth() / 2) - TOKEN_RADIUS, b + (int) (d.getHeight() / 3) - TOKEN_RADIUS, TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
-                g.fillOval(b + (int) (d.getWidth() / 3) - TOKEN_RADIUS, b + (int) (d.getHeight() / 3 * 2) - TOKEN_RADIUS, TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
-                g.fillOval(b + (int) (d.getWidth() / 3 * 2) - TOKEN_RADIUS, b + (int) (d.getHeight() / 3 * 2) - TOKEN_RADIUS, TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
-                break;
-            default:
-                g.setColor(Color.BLACK);
-                g.setFont(DefaultStaticConfiguration.DEFAULT_TOKEN_FONT);
-                if (relevantTokens > 3 && relevantTokens < 10)
-                {
-                    g.drawString("" + relevantTokens, 14, 30);
-                } else if (relevantTokens > 9)
-                {
-                    g.drawString("" + '\u221E', 14, 30);
-                }
-                break;
+		public void paint(Graphics g)
+		{
 
-            }
+			int b = borderWidth;
+			Graphics2D g2 = (Graphics2D) g;
+			Dimension d = getSize();
+			boolean tmp = selected;
+			if (super.isOpaque())
+			{
+				if (readOnly)
+				{
+					g.setColor(readOnlyColor);
+				} else
+				{
+					g.setColor(super.getBackground());
+				}
 
-        }
+				g.fillOval(b - 1, b - 1, d.width - b, d.height - b);
+			}
+			try
+			{
+				setBorder(null);
+				setOpaque(false);
+				selected = false;
+				super.paint(g);
+			} finally
+			{
+				selected = tmp;
+			}
+			if (bordercolor != null)
+			{
+				if (readOnly)
+				{
+					g.setColor(readOnlyColor);
+				} else
+				{
+					g.setColor(Color.WHITE);
+				}
+				g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
+				g.setColor(bordercolor);
+				g2.setStroke(new BasicStroke(b));
+				g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
+			}
+			if (selected)
+			{
+				if (readOnly)
+				{
+					g.setColor(readOnlyColor);
+				} else
+				{
+					g.setColor(Color.WHITE);
+				}
+				g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
+				g.setColor(ConfigurationManager.getConfiguration()
+						.getSelectionColor());
+				g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
 
-        /**
-         * Returns the token.
-         * 
-         * @return boolean
-         */
-        public boolean hasTokens()
-        {
-            return PlaceView.this.hasTokens();
-        }
-    }
+			}
+			int relevantTokens = (PlaceView.this.getVirtualTokenCount() == PlaceView.this
+					.getTokenCount()) ? PlaceView.this.getTokenCount()
+					: PlaceView.this.getVirtualTokenCount();
+			switch (relevantTokens)
+			{
+			case 1:
+				g.setColor(Color.BLACK);
+				g.fillOval(b + (int) (d.getWidth() / 2) - TOKEN_RADIUS, b
+						+ (int) (d.getHeight() / 2) - TOKEN_RADIUS,
+						TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
+				break;
+			case 2:
+				g.setColor(Color.BLACK);
+				g.fillOval(b + (int) (d.getWidth() / 3) - TOKEN_RADIUS, b
+						+ (int) (d.getHeight() / 2) - TOKEN_RADIUS,
+						TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
+				g.fillOval(b + (int) (d.getWidth() / 3 * 2) - TOKEN_RADIUS, b
+						+ (int) (d.getHeight() / 2) - TOKEN_RADIUS,
+						TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
+				break;
+			case 3:
+				g.setColor(Color.BLACK);
+				g.fillOval(b + (int) (d.getWidth() / 2) - TOKEN_RADIUS, b
+						+ (int) (d.getHeight() / 3) - TOKEN_RADIUS,
+						TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
+				g.fillOval(b + (int) (d.getWidth() / 3) - TOKEN_RADIUS, b
+						+ (int) (d.getHeight() / 3 * 2) - TOKEN_RADIUS,
+						TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
+				g.fillOval(b + (int) (d.getWidth() / 3 * 2) - TOKEN_RADIUS, b
+						+ (int) (d.getHeight() / 3 * 2) - TOKEN_RADIUS,
+						TOKEN_RADIUS * 2, TOKEN_RADIUS * 2);
+				break;
+			default:
+				g.setColor(Color.BLACK);
+				g.setFont(DefaultStaticConfiguration.DEFAULT_TOKEN_FONT);
+				if (relevantTokens > 3 && relevantTokens < 10)
+				{
+					g.drawString("" + relevantTokens, 14, 30);
+				} else if (relevantTokens > 9)
+				{
+					g.drawString("" + '\u221E', 14, 30);
+				}
+				break;
+
+			}
+
+		}
+
+		/**
+		 * Returns the token.
+		 * 
+		 * @return boolean
+		 */
+		public boolean hasTokens()
+		{
+			return PlaceView.this.hasTokens();
+		}
+	}
 }
