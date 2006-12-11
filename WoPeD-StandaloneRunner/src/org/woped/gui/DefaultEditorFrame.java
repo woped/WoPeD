@@ -59,7 +59,15 @@ public class DefaultEditorFrame extends JInternalFrame
         this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
         m_petriNetResourceEditor = propEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
+        
+        if(editor.isSubprocessEditor())
+        {
+        	this.setFrameIcon(Messages.getImageIcon("Popup.Add.Subprocess"));
+        }
+        else
+        {
         this.setFrameIcon(Messages.getImageIcon("Document"));
+        }
         // Size
         editor.setPreferredSize(editor.getSavedSize());
         if (propEditor != null)
