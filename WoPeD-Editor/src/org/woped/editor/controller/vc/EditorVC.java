@@ -200,6 +200,10 @@ public class EditorVC extends JPanel implements KeyListener,
 	private static final int m_splitSize = 10;
 	
 	private boolean m_subprocessEditor = false;
+	
+	//for subprocess
+	AbstractElementModel m_parentElement;
+	
 	//! Store a reference to the application mediator.
 	//! It is used to create a new subprocess editor if required
 	private AbstractApplicationMediator m_centralMediator = null;
@@ -306,6 +310,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			AbstractApplicationMediator mediator)
 	{
 		this(string, clipboard, modelProcessorType, undoSupport, mediator);
+		m_parentElement = model;
 		setSubprocessEditor(true);
 		m_graph.setBorder(new LineBorder(Color.BLUE, 5, false));
 
@@ -578,9 +583,18 @@ public class EditorVC extends JPanel implements KeyListener,
 		if (map.isValid())
 		{
 			// Create Element
-			AbstractElementModel element = getModelProcessor().createElement(
-					map);
-
+			AbstractElementModel element;
+			if(isSubprocessEditor())
+			{
+				element = getModelProcessor().createElement(
+						map, m_parentElement.getId() + "_");
+			}
+			else
+			{
+			 element = getModelProcessor().createElement(
+					map, "");
+			}
+			
 			// ensure that There is an Position
 			if (map.getPosition() != null)
 			{

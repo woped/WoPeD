@@ -40,7 +40,7 @@ public class UMLModelProcessor extends AbstractModelProcessor implements Seriali
         return arc;
     }
 
-    public AbstractElementModel createElement(CreationMap map)
+    public AbstractElementModel createElement(CreationMap map, String idPreFix)
     {
         if (map.isValid())
         {

@@ -411,7 +411,7 @@ public class StructuralAnalysis {
 			tempMap.setName(tempID);
 			tempMap.setId(tempID);
 			tempMap.setEditOnCreation(false);
-			ttemp = m_currentEditor.getModelProcessor().createElement(tempMap);
+			ttemp = m_currentEditor.getModelProcessor().createElement(tempMap, "");
 
 			// Now connect the new transition 't*' to
 			// the source and the target

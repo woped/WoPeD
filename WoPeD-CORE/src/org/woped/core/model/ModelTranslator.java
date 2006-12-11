@@ -48,14 +48,14 @@ public class ModelTranslator
                 tempCreateMap.setType(AbstractUMLElementModel.STATE_TYPE);
                 tempCreateMap.setStateType(StateModel.STATE_START_TYPE);
                 startStopList.add(tempCreateMap.getId());
-                uml.createElement(tempCreateMap).setElementContext(place.getElementContext());
+                uml.createElement(tempCreateMap, "").setElementContext(place.getElementContext());
             } else if ("STOP".equals(place.getNameValue()))
             {
                 tempCreateMap = place.getCreationMap();
                 tempCreateMap.setType(AbstractUMLElementModel.STATE_TYPE);
                 tempCreateMap.setStateType(StateModel.STATE_STOP_TYPE);
                 startStopList.add(tempCreateMap.getId());
-                uml.createElement(tempCreateMap).setElementContext(place.getElementContext());
+                uml.createElement(tempCreateMap, "").setElementContext(place.getElementContext());
             }
 
             // if (tempSourceElements.size() == 0)
@@ -116,7 +116,7 @@ public class ModelTranslator
                 {
                     tempCreateMap.setType(AbstractUMLElementModel.ACTIVITY_TYPE);
                 }
-                uml.createElement(tempCreateMap).setElementContext(tempElement.getElementContext());
+                uml.createElement(tempCreateMap, "").setElementContext(tempElement.getElementContext());
             } else if (tempElement.getType() == AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
                 tempOperator = (OperatorTransitionModel) tempElement;
@@ -126,7 +126,7 @@ public class ModelTranslator
                 		|| tempOperator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
                 {
                     tempCreateMap.setOperatorType(OperatorModel.AND_TYPE);
-                    uml.createElement(tempCreateMap).setElementContext(tempElement.getElementContext());
+                    uml.createElement(tempCreateMap, "").setElementContext(tempElement.getElementContext());
                     // and.getElementContext().setANDType(true);
                 } else if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
                 {
@@ -136,7 +136,7 @@ public class ModelTranslator
                     {
                         tempCreateMap.setId((String) idMapper.get(tempOperator.getId()));
                     }
-                    uml.createElement(tempCreateMap).setElementContext(tempElement.getElementContext());
+                    uml.createElement(tempCreateMap, "").setElementContext(tempElement.getElementContext());
                 }
             }
         }
@@ -205,7 +205,7 @@ public class ModelTranslator
             if (tempElement.getType() == AbstractUMLElementModel.ACTIVITY_TYPE)
             {
                 tempMap.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-                petrinet.createElement(tempMap).setElementContext(tempElement.getElementContext());
+                petrinet.createElement(tempMap, "").setElementContext(tempElement.getElementContext());
             } else if (tempElement.getType() == AbstractUMLElementModel.OPERATOR_TYPE)
             {
                 Map outgoingArcs = uml.getElementContainer().getOutgoingArcs(tempElement.getId());
@@ -229,9 +229,9 @@ public class ModelTranslator
                         placeMap.setType(PetriNetModelElement.PLACE_TYPE);
                         placeMap.setPosition(tempMap.getPosition());
                         // .. and connect them
-                        petrinet.createElement(tempMap).setElementContext(tempElement.getElementContext());
-                        petrinet.createElement(tempMap2).setElementContext(tempElement.getElementContext());
-                        tempPlaceElement = petrinet.createElement(placeMap);
+                        petrinet.createElement(tempMap, "").setElementContext(tempElement.getElementContext());
+                        petrinet.createElement(tempMap2, "").setElementContext(tempElement.getElementContext());
+                        tempPlaceElement = petrinet.createElement(placeMap, "");
                         petrinet.createArc(tempMap.getId(), tempPlaceElement.getId());
                         petrinet.createArc(tempPlaceElement.getId(), tempMap2.getId());
                         // Store them in the ID Mapper
@@ -243,19 +243,19 @@ public class ModelTranslator
                     {
                         // Only Split
                         tempMap.setOperatorType(OperatorTransitionModel.XOR_SPLIT_TYPE);
-                        petrinet.createElement(tempMap).setElementContext(tempElement.getElementContext());
+                        petrinet.createElement(tempMap, "").setElementContext(tempElement.getElementContext());
 
                     } else if (outgoingArcs.size() <= 1 && incomingArcs.size() > 1)
                     {
                         // Only Join
                         tempMap.setOperatorType(OperatorTransitionModel.XOR_JOIN_TYPE);
-                        petrinet.createElement(tempMap).setElementContext(tempElement.getElementContext());
+                        petrinet.createElement(tempMap, "").setElementContext(tempElement.getElementContext());
                     } else
                     {
                         // Simple
                         tempMap.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
                         tempMap.setOperatorType(-1);
-                        tempPetriElement = petrinet.createElement(tempMap);
+                        tempPetriElement = petrinet.createElement(tempMap, "");
                         tempPetriElement.setElementContext(tempElement.getElementContext());
                         tempPetriElement.getElementContext().setXORType(true);
                     }
@@ -265,7 +265,7 @@ public class ModelTranslator
                     // AND Splist & Joins will be not translated
                     tempMap.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
                     tempMap.setOperatorType(-1);
-                    tempPetriElement = petrinet.createElement(tempMap);
+                    tempPetriElement = petrinet.createElement(tempMap, "");
                     tempPetriElement.setElementContext(tempElement.getElementContext());
                     tempPetriElement.getElementContext().setANDType(true);
                 }
@@ -279,7 +279,7 @@ public class ModelTranslator
                 {
                     tempMap.setName("STOP");
                 }
-                petrinet.createElement(tempMap).setElementContext(tempElement.getElementContext());
+                petrinet.createElement(tempMap, "").setElementContext(tempElement.getElementContext());
             }
         }
         // ##### 2. Try Connect old arcs... if fails create new one ##### //
@@ -321,7 +321,7 @@ public class ModelTranslator
                     CreationMap tempPlace = CreationMap.createMap();
                     tempPlace.setType(AbstractPetriNetModelElement.PLACE_TYPE);
                     tempPlace.setPosition((tempSource.getX() + tempTarget.getX()) / 2, (tempSource.getY() + tempTarget.getY()) / 2);
-                    tempPlaceElement = petrinet.createElement(tempPlace);
+                    tempPlaceElement = petrinet.createElement(tempPlace, "");
                     petrinet.createArc(selectedSourceId, tempPlaceElement.getId());
                     petrinet.createArc(tempPlaceElement.getId(), selectedTargetId);
                 } else if (AbstractUMLElementModel.STATE_TYPE == tempTarget.getType())
