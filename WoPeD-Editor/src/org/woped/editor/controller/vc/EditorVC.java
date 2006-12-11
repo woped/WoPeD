@@ -56,9 +56,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTree;
-import javax.swing.tree.TreeModel;
+import javax.swing.border.LineBorder;
 import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
 
 import org.jgraph.event.GraphModelEvent;
 import org.jgraph.event.GraphModelListener;
@@ -308,8 +307,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		this(string, clipboard, modelProcessorType, undoSupport, mediator);
 		setSubprocessEditor(true);
-		// m_graph.setBorder(new LineBorder(Color.BLACK, 3, false));
-		m_graph.setBackground(new Color(200, 200, 200));
+		m_graph.setBorder(new LineBorder(Color.BLUE, 5, false));
 
 		setName("Subprocess " + model.getNameValue());
 
