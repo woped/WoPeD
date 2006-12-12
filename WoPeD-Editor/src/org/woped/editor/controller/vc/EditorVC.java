@@ -296,6 +296,9 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		add(m_mainSplitPane);
 		m_mainSplitPane.addPropertyChangeListener(VisualController.getInstance());
+		Dimension d= m_leftSideTreeView.getMinimumSize();
+		d.width = 0;
+		m_leftSideTreeView.setMinimumSize(d);
 		setSideTreeViewVisible(false);
 		m_mainSplitPane.setLastDividerLocation(m_splitPosition);
 
