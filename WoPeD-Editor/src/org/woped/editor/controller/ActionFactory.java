@@ -99,16 +99,16 @@ public class ActionFactory
     public final static String         ACTIONID_ARRANGE                = "Menu.Window.Arrange";
     public final static String		   ACTIONID_SHOWSIDEBAR			   = "Menu.Window.ShowSideBar";
 
-    private static HashMap             STATIC_ACTION_MAP               = null;
+    private static HashMap<String, WoPeDAction>             STATIC_ACTION_MAP               = null;
 
-    private static HashMap             SELECT_EDITOR_SELECT_ACTION     = new HashMap();
+    private static HashMap<IEditor, Action>             SELECT_EDITOR_SELECT_ACTION     = new HashMap<IEditor, Action>();
 
     private static ApplicationMediator AM                              = null;
 
-    public static HashMap createStaticActions(ApplicationMediator am)
+    public static HashMap<String, WoPeDAction> createStaticActions(ApplicationMediator am)
     {
         AM = am;
-        STATIC_ACTION_MAP = new HashMap();
+        STATIC_ACTION_MAP = new HashMap<String, WoPeDAction>();
 
         STATIC_ACTION_MAP.put(ACTIONID_NEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.NEW, null, ACTIONID_NEW));
         // 
@@ -289,7 +289,7 @@ public class ActionFactory
 
     public static HashMap getStaticActionMap()
     {
-        if (STATIC_ACTION_MAP == null) STATIC_ACTION_MAP = new HashMap();
+        if (STATIC_ACTION_MAP == null) STATIC_ACTION_MAP = new HashMap<String, WoPeDAction>();
         return STATIC_ACTION_MAP;
     }
 
@@ -309,6 +309,7 @@ public class ActionFactory
 
     }
 
+    @SuppressWarnings("serial")
     private static class EditorSelectAction extends WoPeDAction
     {
 
@@ -321,13 +322,12 @@ public class ActionFactory
 
         }
 
-        public void actionPerformed(ActionEvent e)
-        {
-            if (m_editor.getContainer() instanceof JInternalFrame && ((JInternalFrame)m_editor.getContainer()).isSelected() && ((JInternalFrame)m_editor.getContainer()).isVisible())
-            {
+        public void actionPerformed(ActionEvent e) {
+            if (m_editor.getContainer() instanceof JInternalFrame 
+        	    && ((JInternalFrame) m_editor.getContainer()).isSelected() 
+        	    && ((JInternalFrame) m_editor.getContainer()).isVisible()) {
                 AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.INCONIFY_EDITOR));
-            } else
-            {
+            } else {
                 AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
             }
         }
