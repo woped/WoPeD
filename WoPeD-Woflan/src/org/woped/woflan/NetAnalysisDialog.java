@@ -25,7 +25,7 @@ import org.woped.editor.controller.vc.NetInfo;
 import org.woped.editor.controller.vc.NodeGroupNetInfo;
 import org.woped.editor.utilities.Messages;
 
-
+@SuppressWarnings("serial")
 public class NetAnalysisDialog extends JFrame implements WindowListener{
 	public NetAnalysisDialog(File temporaryFile, IEditor editor, AbstractApplicationMediator mediator)
 	{		

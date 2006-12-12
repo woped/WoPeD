@@ -35,6 +35,8 @@ import java.awt.event.ActionEvent;
  * 
  * @author Thomas Pohl
  */
+
+@SuppressWarnings("serial")
 public class DisposeWindowAction extends WoPeDAction
 {
     public DisposeWindowAction(String propertiesPrefix)

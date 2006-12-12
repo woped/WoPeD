@@ -39,6 +39,8 @@ import org.woped.editor.utilities.Messages;
  *         The Tree listing the <code>AbstractNodePanel</code>s. Created on:
  *         26.11.2004 Last Change on: 26.11.2004
  */
+
+@SuppressWarnings("serial")
 public class ConfPanelTree extends JTree
 {
     private DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
