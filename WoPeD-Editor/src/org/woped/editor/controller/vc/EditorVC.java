@@ -51,6 +51,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JComponent;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -1928,6 +1929,18 @@ public class EditorVC extends JPanel implements KeyListener,
 			.getString("Document.Title.Untitled") : super.getName();
 	}
 
+	//! Set the document name
+	//! Overridden to also update the title bar of the editor window
+	//! @param name specifies the name of the edited document
+	public void setName(String name)
+	{
+		super.setName(name);
+		// Update document title of editor window
+		JInternalFrame frame = (JInternalFrame) getContainer();
+        if (frame!=null)
+        	frame.setTitle(name);                            
+	}
+	
 	/**
 	 * Returns the filepath if the net was saved before or was opened from a
 	 * file.

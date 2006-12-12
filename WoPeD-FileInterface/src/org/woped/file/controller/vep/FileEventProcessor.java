@@ -358,11 +358,6 @@ public class FileEventProcessor extends AbstractEventProcessor
                         editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
                         editor.setFilePath(savePath.concat(fileName));
                         succeed = save(editor);
-                        if (succeed)
-                        {
-                            JInternalFrame frame = (JInternalFrame) editor.getContainer();
-                            frame.setTitle(editor.getName());                            
-                        }
                     } else
                     {
                         LoggerManager.debug(Constants.FILE_LOGGER, "\"Save as\" canceled or nothing to save at all.");
