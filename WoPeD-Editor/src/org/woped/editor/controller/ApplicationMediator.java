@@ -187,7 +187,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
 			JOptionPane.showMessageDialog(null, 
             		Messages.getString("Editor.Message.Subprocess.Text"),
             	    Messages.getString("Editor.Message.Subprocess.Title"),
-				    JOptionPane.PLAIN_MESSAGE);
+				    JOptionPane.ERROR_MESSAGE);
 			
 			return null;
 		} 
