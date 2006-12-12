@@ -53,6 +53,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.utilities.Messages;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.NetType;
 import org.woped.pnml.OrganizationUnitType;
@@ -157,7 +158,9 @@ public class PNMLImport
                 {
                     warningStrings.append(iter.next());
                 }
-                JOptionPane.showMessageDialog(null, "XML-File is not a proper PNML. Imported Petrinet with lost of information:\n".concat(warningStrings.toString()), "Import Warning",
+                JOptionPane.showMessageDialog(null, 
+                		Messages.getString("Import.PNML.Text"), 
+                		Messages.getString("Import.PNML.Title"),
                         JOptionPane.WARNING_MESSAGE);
             }
             return true;

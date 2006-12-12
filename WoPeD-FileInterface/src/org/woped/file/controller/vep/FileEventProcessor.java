@@ -477,8 +477,8 @@ public class FileEventProcessor extends AbstractEventProcessor
                 ConfigurationManager.getConfiguration().removeRecentFile(file.getName(), file.getAbsolutePath());
                 String arg[] = {file.getAbsolutePath()};
                 JOptionPane.showMessageDialog(null, 
-                		Messages.getString("File.Error.OpenFile.Text", arg),
-                	    Messages.getString("File.Error.OpenFile.Title"),
+                		Messages.getString("File.Error.FileOpen.Text", arg),
+                	    Messages.getString("File.Error.FileOpen.Title"),
                 	    JOptionPane.ERROR_MESSAGE);
             }
 
