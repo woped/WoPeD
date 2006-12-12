@@ -59,41 +59,42 @@ public class DefaultEditorFrame extends JInternalFrame
         this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
         m_petriNetResourceEditor = propEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
+
         
-        if(editor.isSubprocessEditor())
-        {
-        	this.setFrameIcon(Messages.getImageIcon("Popup.Add.Subprocess"));
-        }
-        else
-        {
-        this.setFrameIcon(Messages.getImageIcon("Document"));
-        }
-        // Size
-        editor.setPreferredSize(editor.getSavedSize());
-        if (propEditor != null)
-        {
+        if (editor.isSubprocessEditor()) {
+            this.setFrameIcon(Messages.getImageIcon("Popup.Add.Subprocess"));
+            this.getContentPane().add(m_editor, BorderLayout.CENTER);
+        } else {
+            this.setFrameIcon(Messages.getImageIcon("Document"));
+            
             // TabbedPane
-            JTabbedPane tabbedPane = new JTabbedPane();
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
+            JTabbedPane tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
-            propScrollPane.addFocusListener(new FocusListener()
+            if (propEditor != null)
             {
-                public void focusGained(FocusEvent e)
-                {
-                    getPetriNetResourceEditor().reset();
-                }
-
-                public void focusLost(FocusEvent e)
-                {
-                    ;
-                }
-            });
-        } else
-        {
-            this.getContentPane().add(m_editor, BorderLayout.CENTER);
+        	propScrollPane.addFocusListener(new FocusListener()
+        	{
+        	    public void focusGained(FocusEvent e)
+        	    {
+        		getPetriNetResourceEditor().reset();
+        	    }
+        	    
+        	    public void focusLost(FocusEvent e)
+        	    {
+        		;
+        	    }
+        	});
+            } else
+            {
+        	this.getContentPane().add(m_editor, BorderLayout.CENTER);
+            }
         }
+        
+        // Size
+        editor.setPreferredSize(editor.getSavedSize());
         
         setTitle(m_editor.getName());
         
