@@ -184,7 +184,9 @@ public class ApplicationMediator extends AbstractApplicationMediator
 		if ((arcConfig.m_numIncoming!=1)||(arcConfig.m_numOutgoing!=1))
 		{
 			
-			JOptionPane.showMessageDialog(null,"Subprozess muss genau einen Ein- und Ausgang haben!","Error (TODO)",
+			JOptionPane.showMessageDialog(null, 
+            		Messages.getString("Editor.Message.Subprocess.Text"),
+            	    Messages.getString("Editor.Message.Subprocess.Title"),
 				    JOptionPane.PLAIN_MESSAGE);
 			
 			return null;
