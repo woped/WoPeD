@@ -22,6 +22,7 @@
  */
 package org.woped.editor.controller;
 
+import java.awt.Component;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
@@ -32,6 +33,10 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.MouseInputAdapter;
 
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -147,71 +152,75 @@ public class ApplicationMediator extends AbstractApplicationMediator
     {
     	IEditor editor = null;
 
-		List editors = getUi().getAllEditors();
-		Iterator editorIter = editors.iterator();
+    	List editors = getUi().getAllEditors();
+    	Iterator editorIter = editors.iterator();
 
-		boolean open = false;
+    	while (editorIter.hasNext())
+    	{
+    		IEditor currentEditor = (IEditor) editorIter.next();
 
-		while (editorIter.hasNext())
+    		if (currentEditor.getName().equals(
+    				"Subprocess " + subProcess.getNameValue()))
+    		{
+    			editor =  currentEditor;
+    		}
+    	}
+
+    	if (editor == null)
+    	{
+    		// Editor doesn't already exist,
+    		// we need to create it
+    		
+    		// Subprozess darf momentan nur jeweils einen Ein- und
+    		// Ausgang haben
+    		NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration(); 
+    		NetAlgorithms.GetArcConfiguration(subProcess, arcConfig);
+
+    		if ((arcConfig.m_numIncoming!=1)||(arcConfig.m_numOutgoing!=1))
+    		{
+
+    			JOptionPane.showMessageDialog(null, 
+    					Messages.getString("Editor.Message.Subprocess.Text"),
+    					Messages.getString("Editor.Message.Subprocess.Title"),
+    					JOptionPane.ERROR_MESSAGE);
+
+    			return null;
+    		} 
+
+    		editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, parentEditor, subProcess, this );
+    		addViewController(editor);
+    		editor.getGraph().addMouseListener(visualController);
+
+    		newEditorCounter++;
+    		// notify the editor aware vc
+    		editorIter = getEditorAwareVCs()
+    		.iterator();
+    		while (editorIter.hasNext())
+    		{
+    			((IEditorAware) editorIter.next())
+    			.addEditor(editor);
+    		}
+    		VisualController.getInstance().propertyChange(
+    				new PropertyChangeEvent(this,
+    						"InternalFrameCount", null, editor));
+    	}
+
+    	// Found a matching editor
+    	// Before we return it, give it the focus
+    	JComponent frame = editor.getContainer();
+		if (frame instanceof JInternalFrame)
 		{
-			IEditor currentEditor = (IEditor) editorIter.next();
-
-			if (currentEditor.getName().equals(
-					"Subprocess " + subProcess.getNameValue()))
-			{
-				// Found a matching editor
-				// Before we return it, give it the focus
-				JComponent frame = currentEditor.getContainer();
-				if (frame instanceof JInternalFrame)
-				{
-					JInternalFrame internalFrame = (JInternalFrame)frame;
-					try
-					{					
-						internalFrame.setSelected(true);
-					} catch (Exception e)
-					{}
-				}
-				return currentEditor;
-			}
+			JInternalFrame internalFrame = (JInternalFrame)frame;
+			try
+			{					
+				internalFrame.setSelected(true);
+			} catch (Exception e)
+			{}
 		}
-    	
-    	
-		// Subprozess darf momentan nur jeweils einen Ein- und
-		// Ausgang haben
-    	NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration(); 
-    	NetAlgorithms.GetArcConfiguration(subProcess, arcConfig);
-    	
-		if ((arcConfig.m_numIncoming!=1)||(arcConfig.m_numOutgoing!=1))
-		{
-			
-			JOptionPane.showMessageDialog(null, 
-            		Messages.getString("Editor.Message.Subprocess.Text"),
-            	    Messages.getString("Editor.Message.Subprocess.Title"),
-				    JOptionPane.ERROR_MESSAGE);
-			
-			return null;
-		} 
-			
-        editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport, parentEditor, subProcess, this );
-        addViewController(editor);
-        editor.getGraph().addMouseListener(visualController);
-        
-		newEditorCounter++;
-		// notify the editor aware vc
-		editorIter = getEditorAwareVCs()
-				.iterator();
-		while (editorIter.hasNext())
-		{
-			((IEditorAware) editorIter.next())
-					.addEditor(editor);
-		}
-		VisualController.getInstance().propertyChange(
-				new PropertyChangeEvent(this,
-						"InternalFrameCount", null, editor));
-        
+
+		
         return editor;
     }
-    
 
     public IViewController createViewController(int type)
     {

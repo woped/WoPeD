@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -22,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
+import javax.swing.event.MouseInputAdapter;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
@@ -55,6 +57,9 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private int                   m_numEditors           = 0;
     private List<IEditor>                  editorList             = new ArrayList<IEditor>();
 
+    //! Stores a list of internal frames that should stay in foreground
+    private List<DefaultEditorFrame>  m_modalityStack = new ArrayList<DefaultEditorFrame>();
+    
     public DefaultUserInterface(ToolBarVC toolBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar)
     {
         super();
@@ -136,6 +141,13 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             frame.addInternalFrameListener(this);
             frame.setLocation(position);
             desktop.add(frame, BorderLayout.CENTER);
+            
+            if (editor.isSubprocessEditor())
+            {
+            	// Make subprocess editor window stay in foreground
+            	m_modalityStack.add(0,frame);
+            }
+            
             editorList.add(frame.getEditor());
             frame.getEditor().setContainer(frame);
             // frame.setBounds((int) position.getX(), (int) position.getY(),
@@ -146,7 +158,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             try
             {
                 frame.setSelected(true);
-            } catch (PropertyVetoException e)
+            } catch (Exception e)
             {
                 LoggerManager.error(Constants.GUI_LOGGER, "VetoException Could not Select Frame");
             }
@@ -367,18 +379,48 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
      * ########################## interface methods ##########################
      */
 
+    private void FixModality()
+    {
+    	DefaultEditorFrame modalFrame =
+    		(m_modalityStack.size()>0)?m_modalityStack.get(0):null;
+    	JInternalFrame frames[] = desktop.getAllFrames();
+    	for (int i = 0;i<frames.length;++i)
+    	{
+    		if (frames[i] instanceof DefaultEditorFrame)
+    		{
+    			DefaultEditorFrame current = (DefaultEditorFrame)frames[i];
+    			if (current!=modalFrame)
+    				current.acceptMouseEvents(modalFrame == null);
+    		}
+    	}
+    	// Always activate the first modal frame
+    	if (modalFrame!=null)    	
+    	{
+    		modalFrame.acceptMouseEvents(true);
+    		try {
+    			modalFrame.setSelected(true);
+    		}
+    		catch (PropertyVetoException e)
+    		{}
+    	}
+    		
+    }
+    
     public void internalFrameActivated(InternalFrameEvent e)
     {
-        getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
+    	FixModality();
+		getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
     }
 
     public void internalFrameClosed(InternalFrameEvent e)
     {
-
+    	// Remove the frame from the modality stack
+    	m_modalityStack.remove(e.getInternalFrame());
+    	FixModality();
     }
 
     public void internalFrameClosing(InternalFrameEvent e)
-    {
+    {    	
         EditorVC editor = ((DefaultEditorFrame) e.getSource()).getEditor();
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_CLOSE);
         action.actionPerformed(new ViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE));

@@ -26,13 +26,16 @@
 package org.woped.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.beans.PropertyVetoException;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.event.MouseInputAdapter;
 
 import org.woped.editor.controller.PetriNetResourceEditor;
 import org.woped.editor.controller.vc.EditorStatusBarVC;
@@ -52,7 +55,7 @@ public class DefaultEditorFrame extends JInternalFrame
     private EditorStatusBarVC      m_statusBar              = null;
 
     public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor)
-    {
+    {          
         super(editor.getName(), true, true, true, true);
         this.setVisible(false);
         m_editor = editor;
@@ -60,7 +63,6 @@ public class DefaultEditorFrame extends JInternalFrame
         m_petriNetResourceEditor = propEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
-        
         if (editor.isSubprocessEditor()) {
             this.setFrameIcon(Messages.getImageIcon("Popup.Add.Subprocess"));
             this.getContentPane().add(m_editor, BorderLayout.CENTER);
@@ -100,7 +102,8 @@ public class DefaultEditorFrame extends JInternalFrame
         
         // Statusbar
         m_editor.setSaved(true);
-
+        
+        
         this.pack();
         this.repaint();
         this.setVisible(true);
@@ -141,4 +144,43 @@ public class DefaultEditorFrame extends JInternalFrame
         super.setIcon(arg0);
         setVisible(!arg0);
     }
+	
+
+	//! Enable or disable the processing of all mouse events
+	//! (also for all child components)
+	//! @param if true, mouse events are accepted (default)
+	//!        if false, mouse events are disabled
+	public void acceptMouseEvents(boolean accept)
+	{
+        this.setClosable(accept);
+        this.setResizable(accept);
+        
+		if (accept==false)
+		{
+	        glass.setOpaque(false);
+	     
+	        glass.addMouseListener(mouseGrabber);
+	        glass.addMouseMotionListener(mouseGrabber);
+	        glass.setVisible(true);
+	        // Change glass pane to our panel
+	        if (old==null)
+	        	old = getRootPane().getGlassPane();
+	        getRootPane().setGlassPane(glass);	        
+		}
+		else
+		{
+			glass.removeMouseListener(mouseGrabber);
+			glass.removeMouseMotionListener(mouseGrabber);
+			glass.setVisible(false);
+			if (old!=null)
+			{
+				getRootPane().setGlassPane(old);
+				old = null;
+			}
+		}
+	}
+	
+	private JPanel glass = new JPanel();
+	private Component old = null;
+	private MouseInputAdapter mouseGrabber = new MouseInputAdapter() {};
 }
