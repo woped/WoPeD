@@ -325,21 +325,13 @@ public class EditorVC extends JPanel implements KeyListener,
         getModelProcessor().setElementContainer(container);
         
 		
-		
 		// Es wurde vor den Öffnen geprüft, dass genau ein Ein- und ein Ausgang
 		// vorhanden ist!
 
-		// Eingang
-		Map sourceMap = parentEditor.getModelProcessor().getElementContainer()
-				.getSourceElements(model.getId());
-		Set sourceKeySet = sourceMap.keySet();
-
-		Iterator sourceKeyIterator = sourceKeySet.iterator();
-
-		String sourceKey = (String) sourceKeyIterator.next();
-
-		AbstractElementModel sourceModel = (AbstractElementModel) sourceMap
-				.get(sourceKey);
+        // Get list of input nodes
+        Set sources = NetAlgorithms.GetDirectlyConnectedNodes(model, NetAlgorithms.connectionTypeINBOUND);
+		Iterator<AbstractElementModel> sourceKeyIterator = sources.iterator();
+		AbstractElementModel sourceModel = sourceKeyIterator.next();
 
 		// Check whether the source element already exists
 		if (container.getElementById(sourceModel.getId())==null)
@@ -353,16 +345,10 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 
 		// Ausgang
-		Map targetMap = parentEditor.getModelProcessor().getElementContainer()
-				.getTargetElements(model.getId());
-		Set targetKeySet = targetMap.keySet();
-
-		Iterator targetKeyIterator = targetKeySet.iterator();
-
-		String targetKey = (String) targetKeyIterator.next();
-
-		AbstractElementModel targetModel = (AbstractElementModel) targetMap
-				.get(targetKey);
+        // Get list of output nodes
+        Set targets = NetAlgorithms.GetDirectlyConnectedNodes(model, NetAlgorithms.connectionTypeOUTBOUND);
+		Iterator<AbstractElementModel> targetKeyIterator = targets.iterator();
+		AbstractElementModel targetModel = targetKeyIterator.next();
 
 		// Check whether the target element already exists
 		if (container.getElementById(targetModel.getId())==null)		

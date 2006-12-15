@@ -203,10 +203,10 @@ public class NetAlgorithms {
 	//! @param element specifies the element which is to be examined
 	//! @param specifies the type of connection to be taken into account
 	//! @return Returns a set of predecessors, successors or both
-	public static Set GetDirectlyConnectedNodes(AbstractElementModel element,
+	public static Set<AbstractElementModel> GetDirectlyConnectedNodes(AbstractElementModel element,
 			int connectionType)
 	{
-		HashSet result = new HashSet();
+		HashSet<AbstractElementModel> result = new HashSet<AbstractElementModel>();
 		// An object can have multiple owning containers
 		// Iterate through all of them to get all connections
 		Iterator ownerIterator=element.getOwningContainers();
