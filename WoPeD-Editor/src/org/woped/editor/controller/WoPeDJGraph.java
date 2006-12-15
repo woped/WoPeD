@@ -38,6 +38,7 @@ import javax.swing.JToolTip;
 import org.jgraph.JGraph;
 import org.jgraph.graph.BasicMarqueeHandler;
 import org.jgraph.graph.DefaultGraphModel;
+import org.jgraph.graph.Edge;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.plaf.GraphUI;
 import org.woped.core.config.ConfigurationManager;
@@ -52,6 +53,7 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
+import org.woped.editor.controller.vc.NetAlgorithms;
 import org.woped.editor.gui.EditorToolTip;
 import org.woped.editor.view.ViewFactory;
 
@@ -162,6 +164,49 @@ public class WoPeDJGraph extends AbstractGraph
         	{
         		result = (destinations.contains(new Integer(targetCell.getType())));
         	}
+        	if (result == true)
+        	{
+        		// Apart from general connectability
+        		// some elements require special attention:
+        		// The sub-process element does not allow more than one input and output connection
+        		// to be made
+        		// We check for actual JGraph connections here because we're being called multiple
+        		// times during the creation of an arc and arc creation within the ModelElementContainer
+        		// is the first thing to happen so we would return "not connectable" for the second call
+        		// as NetAlgorithms already sees the connection even if it doesn't exist in the jgraph model yet
+        		if (sourceCell.getType()==PetriNetModelElement.SUBP_TYPE)
+        		{
+        			int nNumOutgoing = 0;
+        			for (Iterator i = sourceCell.getPort().edges(); i.hasNext();)
+        			{
+        				Object o = i.next();
+        				if (o instanceof Edge)
+        				{        				
+        					Edge e = (Edge)o;
+        					if (e.getSource()==sourceCell.getPort())
+        						++nNumOutgoing;
+        				}
+        			}
+        			result = (nNumOutgoing == 0);
+        		}
+        		if (targetCell.getType()==PetriNetModelElement.SUBP_TYPE)
+        		{
+        			int nNumIncoming = 0;
+        			for (Iterator i = targetCell.getPort().edges(); i.hasNext();)
+        			{
+        				Object o = i.next();
+        				if (o instanceof Edge)
+        				{        				
+        					Edge e = (Edge)o;
+        					if (e.getTarget()==targetCell.getPort())
+        						++nNumIncoming;
+        				}
+        			}
+        			result = (nNumIncoming == 0);
+        		}
+
+        	}
+        	
         	return result;
         } else
         {
