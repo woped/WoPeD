@@ -196,6 +196,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	private JSplitPane m_leftSideTreeView = null;
 	private JSplitPane m_mainSplitPane = null;
 	private JTree m_treeObject = null;
+	private GraphTreeModel m_treeModel = null;
 
 	private static final int m_splitPosition = 200;
 	private static final int m_splitSize = 10;
@@ -208,6 +209,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	//! Store a reference to the application mediator.
 	//! It is used to create a new subprocess editor if required
 	private AbstractApplicationMediator m_centralMediator = null;
+	
+	public GraphTreeModel GetTreeModel() { return m_treeModel; }
 	
 	/**
 	 * TODO: DOCUMENTATION (silenco)
@@ -251,11 +254,11 @@ public class EditorVC extends JPanel implements KeyListener,
 		getGraph().addKeyListener(this);
 
 		// Future Feature with treeview
-		GraphTreeModel gtModel = new GraphTreeModel(this);
+		m_treeModel = new GraphTreeModel(this);
 		m_scrollPane = new JScrollPane(getGraph());
 		// Element Tree
-		m_treeObject = new JTree(gtModel);
-		getGraph().getModel().addGraphModelListener(gtModel);
+		m_treeObject = new JTree(m_treeModel);
+		getGraph().getModel().addGraphModelListener(m_treeModel);
 		m_treeObject.setRootVisible(false);
 		m_treeObject.setShowsRootHandles(true);
 		// Handle selection of tree items
@@ -367,6 +370,13 @@ public class EditorVC extends JPanel implements KeyListener,
         updateNet();
         // Clear selection, we do not want newly created elements to be selected
 		getGraph().clearSelection();
+
+		// Keep the tree model of the parent editor up to date
+		if ((parentEditor!=null)&&(m_treeModel!=null)&&(parentEditor instanceof EditorVC))
+		{
+			m_treeModel.addTreeModelListener(((EditorVC)parentEditor).GetTreeModel());			
+		}
+		
 	}
 
 	// IS NOT WORKING YET

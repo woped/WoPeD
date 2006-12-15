@@ -24,6 +24,8 @@ package org.woped.editor.controller.vc;
 
 import java.util.Iterator;
 
+import javax.swing.event.TreeModelEvent;
+import javax.swing.event.TreeModelListener;
 import javax.swing.tree.DefaultTreeModel;
 
 import org.jgraph.event.GraphModelEvent;
@@ -39,7 +41,10 @@ import org.woped.core.model.ModelElementContainer;
  * 
  * 20.09.2003
  */
-public class GraphTreeModel extends DefaultTreeModel implements GraphModelListener
+
+//! Our graph tree model can receive update events from both the graph model as well as 
+//! other tree models to keep tree models in sync with each other
+public class GraphTreeModel extends DefaultTreeModel implements GraphModelListener, TreeModelListener
 {
 
 	private IEditor parentEditor = null;
@@ -53,11 +58,15 @@ public class GraphTreeModel extends DefaultTreeModel implements GraphModelListen
     	reload();
     }
 
-    public void graphChanged(GraphModelEvent e)
+    public void refresh()
     {
         PopulateNode((NetInfo)getRoot(),
         		parentEditor.getModelProcessor().getElementContainer());
-        reload();        
+        reload();            	
+    }
+    public void graphChanged(GraphModelEvent e)
+    {
+    	refresh();
     }
     
     public void PopulateNode(NetInfo root,
@@ -71,5 +80,22 @@ public class GraphTreeModel extends DefaultTreeModel implements GraphModelListen
 				(AbstractElementModel)i.next();
 			root.add(new NodeNetInfo(currentNode, true));
 		}
+    }
+   
+    public void treeNodesChanged(TreeModelEvent e)
+    {
+    	refresh();
+    }
+    public void treeNodesInserted(TreeModelEvent e)
+    {
+    	refresh();
+    }
+    public void treeNodesRemoved(TreeModelEvent e)
+    {
+    	refresh();
+    }
+    public void treeStructureChanged(TreeModelEvent e)
+    {
+    	refresh();
     }
 }
