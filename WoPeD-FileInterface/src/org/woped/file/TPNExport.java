@@ -72,7 +72,8 @@ public class TPNExport
                     if (net2save.getElementContainer().getSourceElements(currentModel.getId()).size() == 0) fos.write(" init 1");
                     fos.write(";\n");
 
-                } else if (currentModel.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
+                } else if ((currentModel.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)||
+                		(currentModel.getType() == PetriNetModelElement.SUBP_TYPE))
                 {
                     fos.write(getLine4Transition(currentModel.getNameValue(), currentModel, net2save.getElementContainer()));
 

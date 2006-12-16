@@ -572,15 +572,25 @@ public class StructuralAnalysis {
 							elementStack.addLast(recIt.next());
 					}
 					else
-						if ((currentMarking!=arcCounter)&&
-								(currentElement.getType()!=currentSource.getType()))
 					{
+						// Treat sub-processes like transitions
+						int currentElementType = currentElement.getType();
+						if (currentElementType == PetriNetModelElement.SUBP_TYPE)
+							currentElementType = PetriNetModelElement.TRANS_SIMPLE_TYPE;
+						int currentSourceType = currentSource.getType();
+						if (currentSourceType == PetriNetModelElement.SUBP_TYPE)
+							currentSourceType = PetriNetModelElement.TRANS_SIMPLE_TYPE;
+						
+						if ((currentMarking!=arcCounter)&&
+								(currentElementType!=currentSourceType))
+						{
 							Set notWellStructuredSet = new HashSet();
 							// Found well-structuredness violation
 							// Add to current set
 							notWellStructuredSet.add(currentSource);
 							notWellStructuredSet.add(currentElement);
 							m_wellStructurednessViolations.add(notWellStructuredSet);
+						}
 					}
 				}
 				++arcCounter;
