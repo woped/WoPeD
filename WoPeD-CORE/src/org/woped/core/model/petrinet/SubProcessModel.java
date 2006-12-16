@@ -22,7 +22,10 @@
  */
 package org.woped.core.model.petrinet;
 
+import java.util.Iterator;
+
 import org.jgraph.graph.DefaultPort;
+import org.jgraph.graph.Edge;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
@@ -92,4 +95,25 @@ public class SubProcessModel extends TransitionModel implements InnerElementCont
         subElementCounter++;
         return getId() + SUBELEMENT_SEPERATOR + subElementCounter;    	
     }
+    
+    //! Overwritten to allow new outgoing connections only
+    //! if there is not already an outgoing connection 
+    //! (Sub-processes must have exactly one input and one output)
+	public boolean getAllowOutgoingConnections()
+	{
+		boolean result = true;
+		int nNumOutgoing = 0;
+		for (Iterator i = getPort().edges(); i.hasNext();)
+		{
+			Object o = i.next();
+			if (o instanceof Edge)
+			{        				
+				Edge e = (Edge)o;
+				if (e.getSource()==getPort())
+					++nNumOutgoing;
+			}
+		}
+		result = (nNumOutgoing == 0);
+		return result;
+	}    
 }

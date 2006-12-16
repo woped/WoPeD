@@ -296,4 +296,11 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	public void setReadOnly(boolean readOnly) {
 		this.readOnly = readOnly;
 	}
+
+	//! Specifies whether outgoing arcs may be created for this element
+	//! @return returns true if outgoing arcs may be connected, false otherwise
+	public boolean getAllowOutgoingConnections()
+	{
+		return true;
+	}
 }

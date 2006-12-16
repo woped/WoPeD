@@ -79,18 +79,26 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
      */
     public void mousePressed(final MouseEvent e)
     {
-
         // Fixing Startpoint
         if (port != null && !e.isConsumed() && getEditor().getGraph().isPortsVisible())
         {
-            // Remember Start Location
-            start = getEditor().getGraph().toScreen(port.getLocation(null));
-            // Remember First Port
-            firstPort = port;
-            // Consume Event
-            // e.consume();
+        	boolean allowConnection = true;
+        	Object element = ((DefaultPort)port.getCell()).getParent(); 
+        	if (element instanceof AbstractElementModel)
+        	{
+        		allowConnection = ((AbstractElementModel)element).getAllowOutgoingConnections();
+        	}
+        	if (allowConnection)
+        	{
+        		// Remember Start Location
+        		start = getEditor().getGraph().toScreen(port.getLocation(null));
+        		// Remember First Port
+        		firstPort = port;
+        		// Consume Event
+        		// e.consume();
+        	}
         }
-
+        
         Point2D l = getEditor().getGraph().snap(e.getPoint());
 
         // If Right Mouse Button
@@ -215,7 +223,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
                     port = getTargetPortAt(getEditor().getLastMousePosition());
                 }
                 // If Valid Event, Current and First Port
-                if (e != null && !e.isConsumed() && port != null && firstPort != port)
+                if (e != null && !e.isConsumed() && port != null && firstPort != null && firstPort != port)
                 {
                     // Fetch the Underlying Source Port
                     Port source = (Port) firstPort.getCell();
