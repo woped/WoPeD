@@ -23,6 +23,7 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -79,6 +80,10 @@ public class TriggerTimeView extends AbstractElementView
 
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
+            g.setColor(Color.WHITE);
+            g.fillOval(1, 1, 16, 16);
+            
+            
             if (super.isOpaque())
             {
                 g.setColor(super.getBackground());
@@ -94,6 +99,7 @@ public class TriggerTimeView extends AbstractElementView
             {
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
             }
+            
             g.drawOval(1, 1, 16, 16);
             g.drawLine(9, 9, 6, 2);
             g.drawLine(9, 9, 6, 13);

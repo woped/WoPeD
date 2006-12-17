@@ -23,6 +23,7 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -78,6 +79,9 @@ public class TriggerExtView extends AbstractElementView
 
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
+            g.setColor(Color.WHITE);
+            g.fillRect(0, 0, 20, 15);
+            
             if (super.isOpaque())
             {
                 g.setColor(super.getBackground());
@@ -91,6 +95,7 @@ public class TriggerExtView extends AbstractElementView
             {
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
             }
+            
             g.drawRect(0, 0, 20, 15);
             g.drawLine(0, 0, 10, 10);
             g.drawLine(10, 10, 20, 0);

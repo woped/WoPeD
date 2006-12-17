@@ -23,8 +23,10 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
@@ -79,6 +81,21 @@ public class TriggerResView extends AbstractElementView
 
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
+
+            // define the arrow-polygon
+            Polygon arrow = new Polygon();
+            arrow.addPoint(10, 15);
+            arrow.addPoint(20, 5);
+            arrow.addPoint(15, 5);
+            arrow.addPoint(15, 0);
+            arrow.addPoint(5, 0);
+            arrow.addPoint(5, 5);
+            arrow.addPoint(0, 5);
+            arrow.addPoint(10, 15);
+            
+            g.setColor(Color.WHITE);
+            g.fillPolygon(arrow);
+            
             if (super.isOpaque())
             {
                 g.setColor(super.getBackground());
@@ -95,13 +112,9 @@ public class TriggerResView extends AbstractElementView
             {
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
             }
-            g.drawLine(5, 0, 15, 0);
-            g.drawLine(15, 0, 15, 5);
-            g.drawLine(5, 0, 5, 5);
-            g.drawLine(5, 5, 0, 5);
-            g.drawLine(15, 5, 20, 5);
-            g.drawLine(0, 5, 10, 15);
-            g.drawLine(20, 5, 10, 15);
+            
+            g.drawPolygon(arrow);
+            
         }
     }
 
