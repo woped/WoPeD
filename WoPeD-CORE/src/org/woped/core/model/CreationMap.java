@@ -36,7 +36,9 @@ import org.woped.core.config.ConfigurationManager;
  * 
  * Created on: 20.01.2005 Last Change on: 20.01.2005
  */
-public class CreationMap extends HashMap
+
+@SuppressWarnings("serial")
+public class CreationMap extends HashMap<String, Object>
 {
 
     public static final String ELEMENT_ID            = "ELEMENT_ID";
