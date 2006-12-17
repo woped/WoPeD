@@ -527,21 +527,26 @@ public class PNMLImport
                     	// Get the corresponding page from the PNML document
                     	// and restore the sub-process elements by recursively calling importNet()
                     	Page pages[] = currentNet.getPageArray();
-                    	for (int currentPage = 0;i<pages.length;++i)
+                    	if (pages!=null)
                     	{
-                    		if (pages[currentPage].getId().equals(element.getId()))                    			
+                    		for (int currentPage = 0;currentPage<pages.length;++currentPage)
                     		{
-                    			// Only one sub-process net per page may be defined for now
-                    			// Ignore the rest
-                    			NetType subProcessNets[] = pages[currentPage].getNetArray();
-                    			if (subProcessNets.length>0)
+                    			if (pages[currentPage].getId().equals(element.getId()))                    			
                     			{
-                    				if (subProcessNets.length>1)
-                    					warnings.add("- SKIP SUBPROCESS NET: Only one sub-process net may be defined per sub-process.");
-                    				importNet(subProcessNets[0], ((SubProcessModel)element).getSimpleTransContainer());
+                    				// Only one sub-process net per page may be defined for now
+                    				// Ignore the rest
+                    				NetType subProcessNets[] = pages[currentPage].getNetArray();
+                    				if (subProcessNets.length>0)
+                    				{
+                    					if (subProcessNets.length>1)
+                    						warnings.add("- SKIP SUBPROCESS NET: Only one sub-process net may be defined per sub-process.");
+                    					importNet(subProcessNets[0], ((SubProcessModel)element).getSimpleTransContainer());
+                    				}
                     			}
                     		}
                     	}
+                    	else
+                    		warnings.add("- EXPECTED PAGE NOT FOUND: Subprocess information lost during import.");
                     }
                 }
             } catch (Exception e)
