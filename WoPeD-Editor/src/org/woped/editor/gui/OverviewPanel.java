@@ -92,7 +92,11 @@ public class OverviewPanel extends JPanel
         v = new PannerViewfinder(this, editor.getScrollPane().getViewport());
         GraphLayoutCache view = new ViewRedirector(editor.getGraph().getGraphLayoutCache());
 
-        graph = new WoPeDJGraph((DefaultGraphModel) editor.getGraph().getModel(), editor.getGraph().getMarqueeHandler(), EditorVC.viewFactory, editor.getModelProcessor().getProcessorType());
+        graph = new WoPeDJGraph((DefaultGraphModel) editor.getGraph().getModel(), 
+        	editor.getGraph().getMarqueeHandler(), 
+        	EditorVC.viewFactory, 
+        	editor.getModelProcessor().getProcessorType());
+        
         graph.setModel(editor.getGraph().getModel());
         graph.setGraphLayoutCache(view);
         graph.setAntiAliased(true);
@@ -344,13 +348,11 @@ public class OverviewPanel extends JPanel
             {
                 updatePannerLocation(e);
                 updateViewPort(e);
-            } else if (isResizing)
-            {
+            } else if (isResizing) {
                 Cursor c = container.getCursor();
                 int cursorType = c.getType();
 
-                switch (cursorType)
-                {
+                switch (cursorType) {
                 case Cursor.SE_RESIZE_CURSOR:
                     SECornerResize(e);
                     break;

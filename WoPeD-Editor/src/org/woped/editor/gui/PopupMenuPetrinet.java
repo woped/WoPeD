@@ -25,7 +25,6 @@
  */
 package org.woped.editor.gui;
 
-import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -52,7 +51,6 @@ public class PopupMenuPetrinet extends JPopupMenu
     private JMenuItem                m_openSubprocessMenuItem  = null;
     private JMenuItem                m_propertiesMenuItem      = null;
 
-    private JMenu                    m_arcMenu                 = null;
     private JMenuItem                m_routeMenuItem           = null;
     private JMenuItem                m_unrouteMenuItem         = null;
     private JMenuItem                m_addPointMenuItem        = null;
@@ -76,15 +74,18 @@ public class PopupMenuPetrinet extends JPopupMenu
     private JMenuItem                m_addTransitionMenuItem   = null;
     private JMenuItem                m_addAndSplitMenuItem     = null;
     private JMenuItem                m_addAndJoinMenuItem      = null;
-    private JMenuItem				 m_addAndSplitJoinMenuItem = null;
+    private JMenuItem		     m_addAndSplitJoinMenuItem = null;
     private JMenuItem                m_addXorSplitMenuItem     = null;
     private JMenuItem                m_addXorJoinMenuItem      = null;
     private JMenuItem                m_addXorSplitJoinMenuItem = null;
     private JMenuItem                m_subProcessMenuItem      = null;
 
+    /*
+    private JMenu                    m_arcMenu                 = null;
     private JMenu                    m_netMenu                 = null;
     private JMenuItem                m_routeAllItem            = null;
     private JMenuItem                m_routeNoneItem           = null;
+    */
 
     private PopupMenuPetrinet()
     {
@@ -137,8 +138,12 @@ public class PopupMenuPetrinet extends JPopupMenu
 
     public void show(Object obj, AbstractGraph graph, int x, int y)
     {
-   	   	if (obj == null || obj instanceof GroupModel || obj instanceof ArcModel)
-    		super.show(graph, x, y);
+        if (obj == null 
+        	|| obj instanceof GroupModel 
+        	|| obj instanceof ArcModel) {
+            
+            super.show(graph, x, y);
+        }
     }
     
     private JMenuItem getRenameMenuItem()
@@ -401,7 +406,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         }
         return m_propertiesMenuItem;
     }
-
+/*
     private JMenu getNetMenu()
     {
         if (m_netMenu == null)
@@ -432,4 +437,5 @@ public class PopupMenuPetrinet extends JPopupMenu
         }
         return m_routeNoneItem;
     }
+    */
 }
