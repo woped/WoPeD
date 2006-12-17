@@ -149,5 +149,20 @@ public interface IEditor extends IViewController
     public String getName();
 
 	public boolean isSubprocessEditor();
-   
+ 
+	/**
+	 * Returns the saved flag for the editor.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSaved();
+
+	/**
+	 * Sets the saved flag for the editor. true when net was saved, or just
+	 * loaded.
+	 * 
+	 * @param savedFlag
+	 *            The savedFlag to set
+	 */
+	public void setSaved(boolean savedFlag);	
 }

@@ -47,6 +47,14 @@
 			<xs:element name="arc" type="arcType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="toolspecific" type="netToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="graphics" minOccurs="0"/>
+			<xs:element name="page" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="pageType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="referencePlace" type="referencePlaceType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:ID" use="required"/>
 		<xs:attribute name="type" type="xs:anyURI" use="required"/>
@@ -311,5 +319,37 @@
 	<xs:complexType name="positionType">
 		<xs:attribute name="x" type="xs:decimal" use="required"/>
 		<xs:attribute name="y" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<!--structured & modular PNML Types-->
+	<xs:complexType name="pageType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="net" type="netType"/>
+		</xs:choice>
+		<xs:attribute name="id" type="xs:ID"/>
+	</xs:complexType>
+	<xs:complexType name="referencePlaceType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="graphics" type="graphicsNodeType"/>
+			<xs:element name="toolspecific" type="toolspecificType"/>
+		</xs:choice>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="ref" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="instanceType">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="importPlace" type="importPlaceType"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="ref" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="importPlaceType">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="graphics" type="graphicsNodeType"/>
+			<xs:element name="toolspecific" type="toolspecificType"/>
+		</xs:choice>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="instance" type="xs:IDREF"/>
+		<xs:attribute name="ref" type="xs:NCName" use="required"/>
+		<xs:attribute name="parameter" type="xs:NCName" use="required"/>
 	</xs:complexType>
 </xs:schema>

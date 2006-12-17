@@ -26,11 +26,11 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Vector;
 import java.util.Set;
-import java.util.HashSet;
+import java.util.Vector;
 
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
@@ -46,6 +46,7 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
@@ -78,6 +79,7 @@ import org.woped.pnml.TransitionResourceType;
 import org.woped.pnml.TransitionToolspecificType;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.TriggerType;
+import org.woped.pnml.NetType.Page;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -136,7 +138,6 @@ public class PNMLExport
     {
         ModelElementContainer elementContainer = editor.getModelProcessor().getElementContainer();
         PetriNetModelProcessor petrinetModel = (PetriNetModelProcessor) editor.getModelProcessor();
-        PetriNetModelElement currentModel = null;
         pnmlDoc = PnmlDocument.Factory.newInstance();
         PnmlType iPnml = pnmlDoc.addNewPnml();
 
@@ -250,11 +251,25 @@ public class PNMLExport
                 }
             }
         }
+        // Now save the root model element container into the 
+        // NetType XMLBean holding our net
+        saveModelElementContainer(iNet, elementContainer);
 
+    }
+    
+    //! Dump the specified ModelElementContainer into the specified XMLBeans bean responsible for
+    //! the net layout
+    //! This method may be called multiple times:
+    //! It is called once for the main model (the root net)
+    //! and recursively for all sub-process ModelElementContainer instances found
+    //! @param iNet specifies the XMLBeans object representing the PNML section that will store the specified net
+    //! @param modelElementContainer specifies the ModelElementContainer to be stored to the specified XMLBean
+    private void saveModelElementContainer(NetType iNet, ModelElementContainer elementContainer)
+    {
         Iterator root2Iter = elementContainer.getRootElements().iterator();
         while (root2Iter.hasNext())
         {
-            currentModel = (PetriNetModelElement) root2Iter.next();
+            PetriNetModelElement currentModel = (PetriNetModelElement) root2Iter.next();
             /* ##### PLACES ##### */
             if (currentModel.getType() == PetriNetModelElement.PLACE_TYPE)
             {
@@ -266,10 +281,27 @@ public class PNMLExport
 
             } else if (currentModel.getType() == PetriNetModelElement.SUBP_TYPE)
             {
-                // entspricht Reference Transition mit Page
+                // A sub-process is a reference transition with an associated page 
+            	// First, generate the transition itself
                 initTransition(iNet.addNewTransition(), (TransitionModel) currentModel, null);
+                // Create the page and add the sub-net to it
+                // by calling ourselves recursively
+                Page newPage = iNet.addNewPage();
+                // Associate the new page with the ID of the sub-process model
+                // so it can be assigned back later on when importing the net
+                newPage.setId(currentModel.getId());
+                // Create a new XMLBean representing the sub-net
+                NetType newNet = newPage.addNewNet();
+                // Call ourselves recursively to store the sub-process net
+                saveModelElementContainer(newNet, ((SubProcessModel)currentModel).getSimpleTransContainer());                
             } else if (currentModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
+            	// Special handling code for operators:
+            	// Instead of the operator itself, the inner transitions and places 
+            	// will be written to the PNML file
+            	// Their location (screen coordinates) are those of the original operator
+            	// (and also have to be because the operator screen location is not stored separately
+            	// but restored from its replacement elements)
 
                 LoggerManager.debug(Constants.FILE_LOGGER, "   ... Setting InnerTtransitions for Operator (ID:" + currentModel.getId() + ")");
                 OperatorTransitionModel operatorModel = (OperatorTransitionModel) currentModel;
@@ -349,7 +381,7 @@ public class PNMLExport
         		ArcModel currentInnerArc = (ArcModel) currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
         		initArc(iNet.addNewArc(), currentInnerArc, null);
         	}
-        }
+        }    	
     }
 
     private PlaceType initPlace(PlaceType iPlace, PlaceModel currentModel)

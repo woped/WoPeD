@@ -39,15 +39,19 @@ import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.ModelElementFactory;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
@@ -64,6 +68,7 @@ import org.woped.pnml.ResourceMappingType;
 import org.woped.pnml.ResourceType;
 import org.woped.pnml.RoleType;
 import org.woped.pnml.TransitionType;
+import org.woped.pnml.NetType.Page;
 
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
@@ -299,23 +304,40 @@ public class PNMLImport
             {
                 statusBars[f].startProgress("Loading from File", currentNet.getPlaceArray().length + currentNet.getArcArray().length + currentNet.getTransitionArray().length);
             }
-            importPlaces(currentNet.getPlaceArray(), i);
-//            getEditor()[i].updateNet();
-            importTransitions(currentNet.getTransitionArray(), i);
-            // important... import arcs in the end
-//            getEditor()[i].updateNet();
-            importArcs(currentNet.getArcArray(), i);
-//            getEditor()[i].updateNet();
+            
+            // Import the net into the current ModelElementContainer
+            importNet(currentNet, editor[i].getModelProcessor().getElementContainer());
+            
+            // Now build the graph from the ModelElementContainer
+            getEditor()[i].getGraph().drawNet(editor[i].getModelProcessor());
+            getEditor()[i].updateNet();
+            
             getEditor()[i].getGraph().clearSelection();
             if (editor[i].getGraph().getUndoManager() != null)
             {
                 ((WoPeDUndoManager) editor[i].getGraph().getUndoManager()).setEnabled(true);
             }
             getEditor()[i].updateNet();
+            getEditor()[i].setSaved(true);
         }
     }
+    
+    //! Import the specified net into the specified ModelElementContainer
+    //! This is a rather new approach of importing a net which does not depend
+    //! on an actual editor window to be open
+    //! (Note that for sub-processes we do not have such a windows)
+    //! @param currentNet specifies the source XMLBean for the current net
+    //! @param currentContainer specifies the ModelElementContainer that will receive all the places,
+    //! transitions and arcs from the net stored in the XMLBean
+    private void importNet(NetType currentNet, ModelElementContainer currentContainer) throws Exception
+    {
+        importPlaces(currentNet.getPlaceArray(), currentContainer);
+        importTransitions(currentNet, currentContainer);
+        // important... import arcs in the end
+        importArcs(currentNet.getArcArray(), currentContainer);
+    }
 
-    private void importPlaces(PlaceType[] places, int editorIndex) throws Exception
+    private void importPlaces(PlaceType[] places, ModelElementContainer currentContainer) throws Exception
     {
         int tokens;
         CreationMap map;
@@ -387,7 +409,16 @@ public class PNMLImport
                 {
                     warnings.add("- PLACE LOST INFORMATION (" + places[i].getId() + ") Exception while importing lesser important information.\n");
                 }
-                if (!doNOTcreate) getEditor()[editorIndex].createElement(map);
+                if (!doNOTcreate)
+                {
+                	// Seems like we're supposed to actually create this place
+                	// (A reason *not* to do so would be e.g. that the place was part of the inner
+                	// workings of an XOR split-join)
+                	// Create the element using the element factory and the
+                	// already configured creation map and add it to the model element container
+                	AbstractElementModel element = ModelElementFactory.createModelElement(map);
+                	currentContainer.addElement(element);                	
+                }
                 doNOTcreate = false;
                 LoggerManager.debug(Constants.FILE_LOGGER, "   ... Place (ID:" + places[i].getId() + ") imported");
             } catch (Exception e)
@@ -399,8 +430,9 @@ public class PNMLImport
         }
     }
 
-    private void importTransitions(TransitionType[] transitions, int editorIndex) throws Exception
+    private void importTransitions(NetType currentNet, ModelElementContainer currentContainer) throws Exception
     {
+    	TransitionType transitions[] = currentNet.getTransitionArray();
         CreationMap map;
         int x;
         int y;
@@ -476,11 +508,41 @@ public class PNMLImport
                     warnings.add("- TRANSITION LOST INFORMATION (" + transitions[i].getId() + "): Exception while importing lesser important information.");
                 }
 
-                if (!getEditor()[editorIndex].getModelProcessor().getElementContainer().containsElement(map.getId()))
+                if (!currentContainer.containsElement(map.getId()))
                 {
-                    getEditor()[editorIndex].createElement(map);
+                	// There is one fun thing about transitions:
+                	// They may be inner transitions which are treated specially by carrying
+                	// some tool-specific information as to which operator they belong.
+                	// Now, instead of the transition, an operator is created for each of those inner transitions
+                	// and all but the first such instance are discarded here because an element
+                	// with the same id already exists at this point
+                	AbstractElementModel element = ModelElementFactory.createModelElement(map);
+                	currentContainer.addElement(element);                	
                     LoggerManager.debug(Constants.FILE_LOGGER, " ... Transition (ID:" + map.getId() + ")imported");
                     // increaseCurrent();
+                    
+                    if (element.getType()==PetriNetModelElement.SUBP_TYPE)
+                    {
+                    	// The element we just created is a sub-process element
+                    	// Get the corresponding page from the PNML document
+                    	// and restore the sub-process elements by recursively calling importNet()
+                    	Page pages[] = currentNet.getPageArray();
+                    	for (int currentPage = 0;i<pages.length;++i)
+                    	{
+                    		if (pages[currentPage].getId().equals(element.getId()))                    			
+                    		{
+                    			// Only one sub-process net per page may be defined for now
+                    			// Ignore the rest
+                    			NetType subProcessNets[] = pages[currentPage].getNetArray();
+                    			if (subProcessNets.length>0)
+                    			{
+                    				if (subProcessNets.length>1)
+                    					warnings.add("- SKIP SUBPROCESS NET: Only one sub-process net may be defined per sub-process.");
+                    				importNet(subProcessNets[0], ((SubProcessModel)element).getSimpleTransContainer());
+                    			}
+                    		}
+                    	}
+                    }
                 }
             } catch (Exception e)
             {
@@ -489,8 +551,15 @@ public class PNMLImport
         }
     }
 
-    private void importArcs(ArcType[] arcs, int editorIndex) throws Exception
+    private void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) throws Exception
     {
+    	// The model element processor is the only object that knows how to properly connect
+    	// petri-net model elements, taking into account inner transitions
+    	// for operators
+    	// So we will be using it here to instantiate the serialized arcs
+    	PetriNetModelProcessor processor = new PetriNetModelProcessor();
+    	processor.setElementContainer(currentContainer);
+    	
         PetriNetModelElement currentSourceModel = null;
         PetriNetModelElement currentTargetModel = null;
         ArcModel arc = null;
@@ -503,8 +572,8 @@ public class PNMLImport
                 {
                     statusBars[f].nextStep();
                 }
-                currentSourceModel = (PetriNetModelElement) getEditor()[editorIndex].getModelProcessor().getElementContainer().getElementById(arcs[i].getSource());
-                currentTargetModel = (PetriNetModelElement) getEditor()[editorIndex].getModelProcessor().getElementContainer().getElementById(arcs[i].getTarget());
+                currentSourceModel = (PetriNetModelElement)currentContainer.getElementById(arcs[i].getSource());
+                currentTargetModel = (PetriNetModelElement)currentContainer.getElementById(arcs[i].getTarget());
                 String tempID;
 
                 if (ConfigurationManager.getConfiguration().isImportToolspecific())
@@ -520,12 +589,11 @@ public class PNMLImport
                             {
                                 tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
                             }
-                            if (isOperator(getEditor()[editorIndex].getModelProcessor(), tempID))
+                            if (isOperator(currentContainer, tempID))
                             {
-                                map = CreationMap.createMap();
-                                map.setArcSourceId(arcs[i].getSource());
-                                map.setArcTargetId(tempID);
-                                arc = getEditor()[editorIndex].createArc(map);
+                        		String sourceId = arcs[i].getSource();
+                        		String targetId = tempID;
+                        		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
                             }
                         }
                         if (currentSourceModel == null && currentTargetModel != null)
@@ -538,20 +606,18 @@ public class PNMLImport
                                 tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
                             }
 
-                            if (isOperator(getEditor()[editorIndex].getModelProcessor(), tempID))
+                            if (isOperator(currentContainer, tempID))
                             {
-                                map = CreationMap.createMap();
-                                map.setArcSourceId(tempID);
-                                map.setArcTargetId(arcs[i].getTarget());
-                                arc = getEditor()[editorIndex].createArc(map);
+                        		String sourceId = tempID;
+                        		String targetId = arcs[i].getTarget();
+                        		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
                             }
                         }
                         if (currentTargetModel != null && currentSourceModel != null)
                         {
-                            map = CreationMap.createMap();
-                            map.setArcSourceId(arcs[i].getSource());
-                            map.setArcTargetId(arcs[i].getTarget());
-                            arc = getEditor()[editorIndex].createArc(map);
+                    		String sourceId = arcs[i].getSource();
+                    		String targetId = arcs[i].getTarget();
+                    		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
                         }
                         // toolspecific
                         for (int j = 0; j < arcs[i].getToolspecificArray().length; j++)
@@ -570,10 +636,9 @@ public class PNMLImport
                     }
                 } else
                 {
-                    map = CreationMap.createMap();
-                    map.setArcSourceId(arcs[i].getSource());
-                    map.setArcTargetId(arcs[i].getTarget());
-                    arc = getEditor()[editorIndex].createArc(map);
+            		String sourceId = arcs[i].getSource();
+            		String targetId = arcs[i].getTarget();
+            		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
                 }
                 if (arcs[i].isSetGraphics() && arc != null)
                 {
@@ -591,10 +656,10 @@ public class PNMLImport
         }
     }
 
-    private boolean isOperator(AbstractModelProcessor net, String elementId) throws Exception
+    private boolean isOperator(ModelElementContainer elementContainer, String elementId) throws Exception
     {
-        if (elementId != null && net.getElementContainer().getElementById(elementId) != null
-                && net.getElementContainer().getElementById(elementId).getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+        if (elementId != null && elementContainer.getElementById(elementId) != null
+                && elementContainer.getElementById(elementId).getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
         {
             return true;
         } else
