@@ -357,7 +357,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			sourceCreationMap.setReadOnly(true);
 			sourceCreationMap.setNamePosition(30, 140);
 			sourceCreationMap.setEditOnCreation(false);
-			sourceCreationMap.setRealElement(sourceModel);
+			sourceCreationMap.setUpperElement(sourceModel);
 			createElement(sourceCreationMap);
 		}
 
@@ -376,7 +376,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			targetCreationMap.setReadOnly(true);
 			targetCreationMap.setNamePosition(230, 140);
 			targetCreationMap.setEditOnCreation(false);
-			targetCreationMap.setRealElement(targetModel);
+			targetCreationMap.setUpperElement(targetModel);
 			createElement(targetCreationMap);
 		}
 
