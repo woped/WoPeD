@@ -106,10 +106,7 @@ public class DefaultEditorFrame extends JInternalFrame
         	this.getContentPane().add(m_editor, BorderLayout.CENTER);
             }
         }
-        
-        // Size
-        editor.setPreferredSize(editor.getSavedSize());
-        
+                
         setTitle(m_editor.getName());
         
         // Statusbar

@@ -42,6 +42,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -165,10 +166,6 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	private boolean m_saved = true;
 
-	private Dimension m_savedSize = null;
-
-	private Point m_savedLocation = null;
-
 	// not needed private double m_zoomScale = 1;
 	private boolean m_drawingMode = false;
 
@@ -205,13 +202,13 @@ public class EditorVC extends JPanel implements KeyListener,
 	
 	//for subprocess
 	AbstractElementModel m_parentElement;
-	
+		
 	//! Store a reference to the application mediator.
 	//! It is used to create a new subprocess editor if required
 	private AbstractApplicationMediator m_centralMediator = null;
 	
 	public GraphTreeModel GetTreeModel() { return m_treeModel; }
-	
+		
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
@@ -1801,26 +1798,6 @@ public class EditorVC extends JPanel implements KeyListener,
 	}
 
 	/**
-	 * Returns the location of the Editor. Only used in a MDI.
-	 * 
-	 * @return Returns the savedLocation.
-	 */
-	public Point getSavedLocation()
-	{
-		return this.m_savedLocation;
-	}
-
-	/**
-	 * Stes the location of the Editor. Only used in a MDI.
-	 * 
-	 * @param location
-	 */
-	public void setSavedLocation(Point location)
-	{
-		this.m_savedLocation = location;
-	}
-
-	/**
 	 * Returns the type of the element, which will be created in drawing mode.
 	 * 
 	 * @see PetriNetModelElement for element types
@@ -1970,26 +1947,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			m_statusbar.updateStatus();
 	}
 
-	/**
-	 * Returns the saved Size of the Editor.
-	 * 
-	 * @return Dimension
-	 */
-	public Dimension getSavedSize()
-	{
-		return m_savedSize;
-	}
 
-	/**
-	 * Sets the saved Size of the Editor.
-	 * 
-	 * @param savedSize
-	 *            The savedSize to set
-	 */
-	public void setSavedSize(Dimension savedSize)
-	{
-		this.m_savedSize = savedSize;
-	}
 
 	/**
 	 * Returns the drawing mode. If the net is in drawing mode, clicking the
@@ -2113,5 +2071,34 @@ public class EditorVC extends JPanel implements KeyListener,
 	public boolean isSubprocessEditor()
 	{
 		return m_subprocessEditor;
+	}
+
+	//! Get layout information about this editor that 
+	//! should be made persistent
+	//! @return EditorLayoutInfo object that contains all relevant information
+	public EditorLayoutInfo getSavedLayoutInfo() {
+		EditorLayoutInfo result = new EditorLayoutInfo();
+		result.setTreeViewWidth(m_mainSplitPane.getDividerLocation());
+		result.setSavedSize(getSize());
+		result.setSavedLocation(getLocation());
+
+		return result;
+	}
+
+	//! Set layout information for this editor
+	//! from a persistant information object
+	//! Called after loading a document or opening a sub-process editor
+	//! @param layoutInfo specifies the information about this editor that should be restored
+	public void setSavedLayoutInfo(EditorLayoutInfo layoutInfo) 
+	{                           
+		if (layoutInfo!=null)
+		{		
+			if (m_mainSplitPane!=null)
+				m_mainSplitPane.setDividerLocation(layoutInfo.getTreeViewWidth());		
+			// Size
+			setSize(layoutInfo.getSavedSize());
+			// Currently, we ignore the position
+			// It's unwanted sometimes, especially if things like desktop resolution change
+		}
 	}
 }

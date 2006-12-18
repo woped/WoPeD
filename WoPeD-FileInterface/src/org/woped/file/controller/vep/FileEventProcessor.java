@@ -251,7 +251,6 @@ public class FileEventProcessor extends AbstractEventProcessor
                                 iSB[i] = (IStatusBar) iVC[i];
                             }
                             PNMLExport pe = new PNMLExport(iSB);
-                            editor.setSavedSize(editor.getSize());
                             pe.saveToFile(editor, editor.getFilePath());
                             LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in file: " + editor.getFilePath());
 

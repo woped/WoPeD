@@ -56,6 +56,7 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.WoPeDUndoManager;
+import org.woped.editor.controller.vc.EditorLayoutInfo;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
 import org.woped.pnml.ArcType;
@@ -246,8 +247,15 @@ public class PNMLImport
                                     .intValue());
                             if (editor[i] instanceof EditorVC)
                             {
-                                ((EditorVC) editor[i]).setSavedSize(dim);
-                                ((EditorVC) editor[i]).setSavedLocation(location);
+                            	// Pass read layout information on to the editor
+                            	EditorLayoutInfo layout= new EditorLayoutInfo();
+                            	layout.setSavedSize(dim);
+                            	layout.setSavedLocation(location);
+                            	// Only if also the remaining information is available,
+                            	// try to import the width of the tree view
+                            	if (currentNet.getToolspecificArray(j).isSetTreeWidth())
+                            		layout.setTreeViewWidth(currentNet.getToolspecificArray(j).getTreeWidth());
+                                ((EditorVC) editor[i]).setSavedLayoutInfo(layout);
                             }
                         }
                         if (currentNet.getToolspecificArray(j).isSetResources())

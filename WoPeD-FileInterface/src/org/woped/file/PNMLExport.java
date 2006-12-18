@@ -51,6 +51,7 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.controller.vc.EditorLayoutInfo;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.pnml.AnnotationGraphisType;
 import org.woped.pnml.ArcNameType;
@@ -176,15 +177,21 @@ public class PNMLExport
             iNetToolSpec.setVersion("1.0");
             // graphics
             GraphicsSimpleType iGraphicsNet = iNetToolSpec.addNewBounds();
-            if (editor.getSavedSize() != null)
+            EditorLayoutInfo layoutInfo = editor.getSavedLayoutInfo();
+            if (layoutInfo.getSavedSize() != null)
             {
                 DimensionType dim = iGraphicsNet.addNewDimension();
-                dim.setX(new BigDecimal(editor.getSavedSize().getWidth()));
-                dim.setY(new BigDecimal(editor.getSavedSize().getHeight()));
+                dim.setX(new BigDecimal(layoutInfo.getSavedSize().getWidth()));
+                dim.setY(new BigDecimal(layoutInfo.getSavedSize().getHeight()));
             }
-            PositionType location = iGraphicsNet.addNewPosition();
-            location.setX(new BigDecimal(editor.getLocation().getX()));
-            location.setY(new BigDecimal(editor.getLocation().getY()));
+            if (layoutInfo.getSavedLocation() != null)
+            {
+            	PositionType location = iGraphicsNet.addNewPosition();
+                location.setX(new BigDecimal(layoutInfo.getSavedLocation().getX()));
+                location.setY(new BigDecimal(layoutInfo.getSavedLocation().getY()));
+            }
+            // Store the width of the tree view
+            iNetToolSpec.setTreeWidth(layoutInfo.getTreeViewWidth());
             // resources
             ResourcesType iNetResources = iNetToolSpec.addNewResources();
             // Rescources
