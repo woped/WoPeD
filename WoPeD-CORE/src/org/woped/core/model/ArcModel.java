@@ -55,6 +55,14 @@ public class ArcModel extends DefaultEdge implements Serializable
 
     private ElementContext elementContext   = null;
 
+    //! Stores the probability for this arc to be chosen
+    //! Currently, this is a dummy value
+    //! It is stored to the PNML file as a tool-specific extension
+    //! and read back but not used for anything.
+    //! It will, however, be used in the future for quantitative analysis of 
+    //! workflow nets. Time of this writing: 2006/12/18, A.Eckleder 
+    private double         probability = 0.0d;
+
     /**
      * Constructor for ArcModel.
      */
@@ -499,5 +507,13 @@ public class ArcModel extends DefaultEdge implements Serializable
     // }
     // }
     // }
+
+	public double getProbability() {
+		return probability;
+	}
+
+	public void setProbability(double probability) {
+		this.probability = probability;
+	}
 
 }

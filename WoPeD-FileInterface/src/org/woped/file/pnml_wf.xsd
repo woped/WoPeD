@@ -177,6 +177,7 @@
 							</xs:complexContent>
 						</xs:complexType>
 					</xs:element>
+					<xs:element name="time" type="xs:int" minOccurs="0"/>					
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -215,6 +216,7 @@
 			<xs:extension base="toolspecificType">
 				<xs:sequence>
 					<xs:element name="route" type="xs:boolean" minOccurs="0"/>
+					<xs:element name="probability" type="xs:double" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

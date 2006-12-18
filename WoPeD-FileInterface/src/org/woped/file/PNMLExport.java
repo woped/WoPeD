@@ -509,6 +509,8 @@ public class PNMLExport
             initTransResource(iToolspecific.addNewTransitionResource(), currentModel.getToolSpecific().getTransResource());
             LoggerManager.debug(Constants.FILE_LOGGER, "   ... Resource for Transition (ID:" + currentModel.getId() + ") set");
         }
+        // Store the timing of this transition
+        iToolspecific.setTime(currentModel.getToolSpecific().getTime());
         return iToolspecific;
     }
 
@@ -568,13 +570,12 @@ public class PNMLExport
         iArc.setSource(useArc.getSourceId());
         if (ConfigurationManager.getConfiguration().isExportToolspecific())
         {
+            ArcToolspecificType iArcTool = iArc.addNewToolspecific();
+            iArcTool.setTool("WoPeD");
+            iArcTool.setVersion("1.0");
             if (outerArc.isRoute())
-            {
-                ArcToolspecificType iArcTool = iArc.addNewToolspecific();
-                iArcTool.setTool("WoPeD");
-                iArcTool.setVersion("1.0");
                 iArcTool.setRoute(true);
-            }
+            iArcTool.setProbability(outerArc.getProbability());
             // toolspecific
             for (short i = 0; i < outerArc.getUnknownToolSpecs().size(); i++)
             {

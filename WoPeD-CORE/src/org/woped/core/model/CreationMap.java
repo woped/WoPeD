@@ -65,6 +65,7 @@ public class CreationMap extends HashMap<String, Object>
     public static final String IMAGEICON             = "IMAGEICON";
     public static final String STATE_TYPE            = "STATETYPE";
     public static final String READ_ONLY             = "READ_ONLY";
+    public static final String TRANSITION_TIME		 = "TRANSITION_TIME";
 
     public static CreationMap createMap()
     {
@@ -491,4 +492,20 @@ public class CreationMap extends HashMap<String, Object>
 	        return false;
 	     }
 	}
+	
+    public void setTransitionTime(int time)
+    {
+    	put(TRANSITION_TIME, time);
+    }
+
+	public int getTransitionTime() {
+		 if (containsKey(TRANSITION_TIME))
+	     {
+	        return ((Integer) get(TRANSITION_TIME)).intValue();
+	     } 
+		 else
+	     {
+	        return -1;
+	     }
+	}	
 }

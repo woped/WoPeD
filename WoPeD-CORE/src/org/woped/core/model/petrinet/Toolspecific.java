@@ -52,6 +52,14 @@ public class Toolspecific implements Serializable
 
     private String                  ownerId;
 
+    //! Stores the timing for this transition
+    //! Currently, this is a dummy value
+    //! It is stored to the PNML file as a tool-specific extension
+    //! and read back but not used for anything.
+    //! It will, however, be used in the future for quantitative analysis of 
+    //! workflow nets. Time of this writing: 2006/12/18, A.Eckleder 
+    private int						time = 0;
+
     /**
      * Constructor for Toolspecific. ownerid must not be null.
      */
@@ -219,4 +227,12 @@ public class Toolspecific implements Serializable
         LoggerManager.debug(Constants.CORE_LOGGER, "TransResource added to " + getOwnerId() + ".");
         return transResource;
     }
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
 }

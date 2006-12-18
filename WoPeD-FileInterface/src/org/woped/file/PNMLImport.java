@@ -473,6 +473,10 @@ public class PNMLImport
                         {
                             if (transitions[i].getToolspecificArray(j).getTool().equals("WoPeD"))
                             {
+                            	if (transitions[i].getToolspecificArray(j).isSetTime())
+                            	{
+                            		map.setTransitionTime(transitions[i].getToolspecificArray(j).getTime());
+                            	}
                                 if (transitions[i].getToolspecificArray(j).isSetOperator())
                                 {
                                     map.setOperatorType(transitions[i].getToolspecificArray(j).getOperator().getType());
@@ -632,9 +636,13 @@ public class PNMLImport
                         // toolspecific
                         for (int j = 0; j < arcs[i].getToolspecificArray().length; j++)
                         {
-                            if (arcs[i].getToolspecificArray(j).getTool().equals("WoPeD"))
+                            if ((arcs[i].getToolspecificArray(j).getTool()!=null)&&
+                            (arcs[i].getToolspecificArray(j).getTool().equals("WoPeD")))
                             {
                                 if (arcs[i].getToolspecificArray(j).isSetRoute() && arcs[i].getToolspecificArray(j).getRoute()) arc.setRoute(true);
+                                if (arcs[i].getToolspecificArray(j).isSetProbability())
+                                	arc.setProbability(arcs[i].getToolspecificArray(j).getProbability());
+                                		
                             } else
                             {
                                 arc.addUnknownToolSpecs(arcs[i].getToolspecificArray(j));
