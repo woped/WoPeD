@@ -221,7 +221,7 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
             // Insert wants an Object-Array
             Object[] arg = new Object[] { edge };
             // Insert the Edge and its Attributes
-            getGraphLayoutCache().insert(new Object[] { edge }, nest, cs, null, null);
+            getGraphLayoutCache().insert(arg, nest, cs, null, null);
             //
         } else
         {
@@ -324,9 +324,10 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
                         // Add to List of Groups
                         groups.add(cells[i]);
                         // Loop Children of Cell
-                        for (int j = 0; j < m.getChildCount(cells[i]); j++)
+                        for (int j = 0; j < m.getChildCount(cells[i]); j++) {
                             // Get Child from Model
                             children.add(m.getChild(cells[i], j));
+                        }
                     }
                 }
                 // Remove Groups from Model (Without Children)
