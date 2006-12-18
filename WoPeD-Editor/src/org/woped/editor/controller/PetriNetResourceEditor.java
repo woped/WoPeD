@@ -174,6 +174,17 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     {
         resetClassEditing();
         resetEditing();
+        refreshFromModel(); 
+    }
+    
+    //! This rather important method will refresh the resource editor view
+    //! if the resources have changed in the Petri-Net model
+    //! It is called when the resource editor gains focus    
+    private void refreshFromModel()
+    {
+    	refreshRoleListFromModel();
+    	refreshGroupListFromModel();
+    	refreshResourceListFromModel();
     }
 
     private JPanel getResourceClassPanel()
@@ -341,17 +352,26 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceClassGroupsScrollPane;
     }
 
+    private void refreshRoleListFromModel()
+    {
+    	if (roleListModel == null)
+    		return;
+    		
+    	roleListModel.clear();
+        for (int i = 0; i < getPetrinet().getRoles().size(); i++)
+        {
+            roleListModel.addElement((ResourceClassModel) getPetrinet().getRoles().get(i));
+        }
+    }
+    
     private JList getRoleList()
     {
         if (roleList == null)
         {
             roleListModel = new DefaultListModel();
-            for (int i = 0; i < getPetrinet().getRoles().size(); i++)
-            {
-                roleListModel.addElement((ResourceClassModel) getPetrinet().getRoles().get(i));
-            }
             roleList = new JList(roleListModel);
             roleList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            refreshRoleListFromModel();
 
             roleList.addListSelectionListener(new ListSelectionListener()
             {
@@ -372,19 +392,29 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
 
         return roleList;
     }
+    
+    private void refreshGroupListFromModel()
+    {
+    	if (groupListModel == null)
+    		return;
+    	
+    	groupListModel.clear();
+        for (int i = 0; i < getPetrinet().getOrganizationUnits().size(); i++)
+        {
+            groupListModel.addElement((ResourceClassModel) getPetrinet().getOrganizationUnits().get(i));
+        }    	
+    }
 
     private JList getGroupList()
     {
         if (groupList == null)
         {
             groupListModel = new DefaultListModel();
-            for (int i = 0; i < getPetrinet().getOrganizationUnits().size(); i++)
-            {
-                groupListModel.addElement((ResourceClassModel) getPetrinet().getOrganizationUnits().get(i));
-            }
 
             groupList = new JList(groupListModel);
             groupList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            
+            refreshGroupListFromModel();
 
             groupList.addListSelectionListener(new ListSelectionListener()
             {
@@ -1126,19 +1156,29 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         return resourceButtonPanel;
     }
 
+    private void refreshResourceListFromModel()
+    {
+    	if (resourceListModel == null)
+    		return;
+    	
+    	resourceListModel.clear();
+        for (int i = 0; i < getPetrinet().getResources().size(); i++)
+        {
+            resourceListModel.addElement((ResourceModel) getPetrinet().getResources().get(i));
+        }
+    }
+    
     private JList getResourceList()
     {
         if (resourceList == null)
         {
             resourceListModel = new DefaultListModel();
-            for (int i = 0; i < getPetrinet().getResources().size(); i++)
-            {
-                resourceListModel.addElement((ResourceModel) getPetrinet().getResources().get(i));
-            }
 
             resourceList = new JList(resourceListModel);
             resourceList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
+            refreshResourceListFromModel();
+            
             resourceList.addListSelectionListener(new ListSelectionListener()
             {
                 public void valueChanged(ListSelectionEvent e)

@@ -35,6 +35,8 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.MouseInputAdapter;
 
 import org.woped.editor.controller.PetriNetResourceEditor;
@@ -74,6 +76,16 @@ public class DefaultEditorFrame extends JInternalFrame
             JTabbedPane tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
+            tabbedPane.getModel().addChangeListener(new ChangeListener()
+            		{
+            	public void stateChanged(ChangeEvent e)
+            	{
+            		getPetriNetResourceEditor().reset();
+            		
+            	}
+            	
+            		});
+            
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
             if (propEditor != null)
             {
