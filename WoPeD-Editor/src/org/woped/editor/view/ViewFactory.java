@@ -74,11 +74,14 @@ import org.woped.editor.view.uml.StateView;
  * 
  * Created on: 29.01.2005 Last Change on: 29.01.2005
  */
+
+@SuppressWarnings("serial")
 public class ViewFactory extends AbstractViewFactory
 {
 
     public CellView createView(GraphModel model, Object cell)
     {
+    	
         CellView view = null;
         if (cell instanceof DefaultPort) view = createPortView(cell);
         else if (model.isEdge(cell)) view = new ArcView(cell);
@@ -197,11 +200,12 @@ public class ViewFactory extends AbstractViewFactory
         				{
         					Dimension d = getSize();
         					Color primary = ConfigurationManager.getConfiguration().getSelectionColor(); 
-        					Color trans = new Color(primary.getRed(), primary.getGreen(), primary.getBlue(), 32);
-        					g.setColor(trans);
-        					g.fillRect(0,0,d.width-1, d.height-1);
-        					g.setColor(primary);
-        					g.drawRect(0,0,d.width-1, d.height-1);
+        					Color borderColor = new Color(209, 209, 255);
+        					Color backgroundColor = new Color(primary.getRed(), primary.getGreen(), primary.getBlue(), 22);
+        					g.setColor(backgroundColor);
+        					g.fillRect(0, 0, d.width - 1, d.height - 1);
+        					g.setColor(borderColor);
+        					g.drawRect(0, 0, d.width - 1, d.height - 1);
         				}
         			}
         		};
