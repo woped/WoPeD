@@ -98,7 +98,6 @@ public class ModelElementFactory
                     modElement = new StateModel(map);
 
                 }
-
                 if (modElement != null)
                 {
                     // add the DefaultPort as child to the DefaultGraphCell

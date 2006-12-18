@@ -658,27 +658,7 @@ public class EditorVC extends JPanel implements KeyListener,
 										element,
 										((PetriNetModelElement) element)
 												.getNameModel() });
-				if (map.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE
-						|| map.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE
-						|| map.getType() == PetriNetModelElement.SUBP_TYPE)
-				{
-					// Trigger
-					if (map.getTriggerType() != -1)
-						createTrigger(map);
-					if (map.getTriggerPosition() != null)
-						((TransitionModel) element).getToolSpecific()
-								.getTrigger().setPosition(
-										map.getTriggerPosition().getX1(),
-										map.getTriggerPosition().getX2());
-					if (map.getResourceOrgUnit() != null
-							&& map.getResourceRole() != null)
-						createTransitionResource(map);
-					if (map.getResourcePosition() != null)
-						((TransitionModel) element).getToolSpecific()
-								.getTransResource().setPosition(
-										map.getResourcePosition().getX1(),
-										map.getResourcePosition().getX2());
-				}
+				
 				// edit
 				if (ConfigurationManager.getConfiguration()
 						.isEditingOnCreation()

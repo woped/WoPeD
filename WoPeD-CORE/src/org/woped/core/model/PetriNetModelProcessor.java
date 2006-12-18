@@ -31,7 +31,9 @@ import java.util.LinkedHashMap;
 import java.util.Vector;
 
 import org.jgraph.graph.DefaultPort;
+import org.jgraph.graph.ParentMap;
 import org.woped.core.Constants;
+import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
@@ -100,7 +102,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		setId(id);
 
 	}
-
+	
 	/**
 	 * Method getNewPetriNetElement. Creates a new PetriNetElement with a
 	 * special type (@see PetriNetElementModel) and a Aalst type respectivley
@@ -121,7 +123,30 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 			AbstractElementModel anElement = ModelElementFactory
 					.createModelElement(map);
 			getElementContainer().addElement(anElement);
-
+			
+            if (map.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE
+					|| map.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE
+					|| map.getType() == PetriNetModelElement.SUBP_TYPE)
+			{
+				// Trigger
+				if (map.getTriggerType() != -1)
+					newTrigger(map);
+				if (map.getTriggerPosition() != null)
+					((TransitionModel) anElement).getToolSpecific()
+							.getTrigger().setPosition(
+									map.getTriggerPosition().getX1(),
+									map.getTriggerPosition().getX2());
+				if (map.getResourceOrgUnit() != null
+						&& map.getResourceRole() != null)
+					newTransResource(map);
+				if (map.getResourcePosition() != null)
+					((TransitionModel) anElement).getToolSpecific()
+							.getTransResource().setPosition(
+									map.getResourcePosition().getX1(),
+									map.getResourcePosition().getX2());
+			}
+			
+			
 			return anElement;
 		}
 		return null;

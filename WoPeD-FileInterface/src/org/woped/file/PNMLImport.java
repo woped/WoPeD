@@ -432,6 +432,11 @@ public class PNMLImport
 
     private void importTransitions(NetType currentNet, ModelElementContainer currentContainer) throws Exception
     {
+    	// The model element processor can correctly create resources and triggers
+    	// for transitions so we use it at this point to do so
+    	PetriNetModelProcessor processor = new PetriNetModelProcessor();
+    	processor.setElementContainer(currentContainer);
+    	
     	TransitionType transitions[] = currentNet.getTransitionArray();
         CreationMap map;
         int x;
@@ -516,7 +521,7 @@ public class PNMLImport
                 	// Now, instead of the transition, an operator is created for each of those inner transitions
                 	// and all but the first such instance are discarded here because an element
                 	// with the same id already exists at this point
-                	AbstractElementModel element = ModelElementFactory.createModelElement(map);
+                	AbstractElementModel element = processor.createElement(map, "");
                 	currentContainer.addElement(element);                	
                     LoggerManager.debug(Constants.FILE_LOGGER, " ... Transition (ID:" + map.getId() + ")imported");
                     // increaseCurrent();
