@@ -40,6 +40,7 @@ import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
@@ -51,7 +52,6 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.controller.vc.EditorLayoutInfo;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.pnml.AnnotationGraphisType;
 import org.woped.pnml.ArcNameType;
@@ -299,8 +299,40 @@ public class PNMLExport
                 newPage.setId(currentModel.getId());
                 // Create a new XMLBean representing the sub-net
                 NetType newNet = newPage.addNewNet();
+                
+                ModelElementContainer subProcessContainer =                 
+                	((SubProcessModel)currentModel).getSimpleTransContainer();
+                
+                EditorLayoutInfo subProcessLayout =subProcessContainer.getEditorLayoutInfo();
+                if (subProcessLayout!=null)
+                {
+                	// This sub-process model stores some information about
+                	// the layout of the subprocessor editor
+                	// Convert it to XMLBeans information and store it
+                	NetToolspecificType subPToolSpec = newNet.addNewToolspecific();
+                	
+                	subPToolSpec.setTool("WoPeD");
+                	subPToolSpec.setVersion("1.0");
+                	// graphics
+                	GraphicsSimpleType iGraphicsNet = subPToolSpec.addNewBounds();
+                	if (subProcessLayout.getSavedSize() != null)
+                	{
+                		DimensionType dim = iGraphicsNet.addNewDimension();
+                		dim.setX(new BigDecimal(subProcessLayout.getSavedSize().getWidth()));
+                		dim.setY(new BigDecimal(subProcessLayout.getSavedSize().getHeight()));
+                	}
+                	if (subProcessLayout.getSavedLocation() != null)
+                	{
+                		PositionType location = iGraphicsNet.addNewPosition();
+                		location.setX(new BigDecimal(subProcessLayout.getSavedLocation().getX()));
+                		location.setY(new BigDecimal(subProcessLayout.getSavedLocation().getY()));
+                	}
+                	// Store the width of the tree view
+                	subPToolSpec.setTreeWidth(subProcessLayout.getTreeViewWidth());
+                }
+                
                 // Call ourselves recursively to store the sub-process net
-                saveModelElementContainer(newNet, ((SubProcessModel)currentModel).getSimpleTransContainer());                
+                saveModelElementContainer(newNet, subProcessContainer);                
             } else if (currentModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
             	// Special handling code for operators:

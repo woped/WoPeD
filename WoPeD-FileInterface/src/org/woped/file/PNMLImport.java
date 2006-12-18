@@ -47,6 +47,7 @@ import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
@@ -56,7 +57,6 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.WoPeDUndoManager;
-import org.woped.editor.controller.vc.EditorLayoutInfo;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
 import org.woped.pnml.ArcType;
@@ -557,7 +557,36 @@ public class PNMLImport
                     				{
                     					if (subProcessNets.length>1)
                     						warnings.add("- SKIP SUBPROCESS NET: Only one sub-process net may be defined per sub-process.");
-                    					importNet(subProcessNets[0], ((SubProcessModel)element).getSimpleTransContainer());
+                    					
+                    					NetType subProcessNet = subProcessNets[0];
+                    					ModelElementContainer container = ((SubProcessModel)element).getSimpleTransContainer(); 
+                    					
+                    					importNet(subProcessNet, container);
+                    					
+                    					// Now see whether we have any tool-specific information 
+                    					// attached to the sub-net
+                    					// This might contain layout information for the sub-process editor
+                    					for (int j=0;j<subProcessNet.getToolspecificArray().length;++j)                    						
+                    						if (subProcessNet.getToolspecificArray(j).getTool().equals("WoPeD"))
+                    						{
+                    							if (subProcessNet.getToolspecificArray(j).isSetBounds())
+                    							{
+                    								Dimension dim = new Dimension(subProcessNet.getToolspecificArray(j).getBounds().getDimension().getX().intValue(), subProcessNet.getToolspecificArray(j).getBounds().getDimension().getY()
+                    										.intValue());
+                    								Point location = new Point(subProcessNet.getToolspecificArray(j).getBounds().getPosition().getX().intValue(), subProcessNet.getToolspecificArray(j).getBounds().getPosition().getY()
+                    										.intValue());
+                    								EditorLayoutInfo layout = new EditorLayoutInfo();
+
+                    								layout.setSavedSize(dim);                    								
+                    								layout.setSavedLocation(location);
+                    								// Only if also the remaining information is available,
+                    								// try to import the width of the tree view
+                    								if (subProcessNet.getToolspecificArray(j).isSetTreeWidth())
+                    									layout.setTreeViewWidth(subProcessNet.getToolspecificArray(j).getTreeWidth());
+                    								
+                    								container.setEditorLayoutInfo(layout);
+                    							}                    					
+                    						}                    					
                     				}
                     			}
                     		}

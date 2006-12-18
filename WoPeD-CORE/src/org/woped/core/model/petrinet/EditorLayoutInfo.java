@@ -1,10 +1,13 @@
-package org.woped.editor.controller.vc;
+package org.woped.core.model.petrinet;
 
 import java.awt.Dimension;
 import java.awt.Point;
 
 //! Stores the layout of the editor window:
 //! Dimension, Position, state of the tree view etc. 
+//! This is part of the model because namely the sub-process model
+//! remembers that exact information for the editor
+//! The editor is then instantiated based on the content of this object
 public class EditorLayoutInfo {
 
 	public EditorLayoutInfo() {

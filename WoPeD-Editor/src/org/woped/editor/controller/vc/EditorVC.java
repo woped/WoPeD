@@ -42,7 +42,6 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeSupport;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -59,6 +58,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTree;
 import javax.swing.border.LineBorder;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 import javax.swing.tree.TreeNode;
 
 import org.jgraph.event.GraphModelEvent;
@@ -89,11 +90,11 @@ import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
+import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
-import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
@@ -129,7 +130,7 @@ import org.woped.editor.view.ViewFactory;
  * Created on 29.04.2003
  */
 public class EditorVC extends JPanel implements KeyListener,
-		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor
+		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor, InternalFrameListener
 {
     
 	private String id = null;
@@ -373,6 +374,12 @@ public class EditorVC extends JPanel implements KeyListener,
 		{
 			m_treeModel.addTreeModelListener(((EditorVC)parentEditor).GetTreeModel());			
 		}
+		
+		// Try to retrieve saved layout information from the Model Element container
+		// and set it for this editor window
+		EditorLayoutInfo layoutInfo = container.getEditorLayoutInfo();
+		if (layoutInfo!=null)
+			setSavedLayoutInfo(layoutInfo);
 		
 	}
 
@@ -2101,4 +2108,20 @@ public class EditorVC extends JPanel implements KeyListener,
 			// It's unwanted sometimes, especially if things like desktop resolution change
 		}
 	}
+	
+	public void internalFrameActivated(InternalFrameEvent e) {};
+	public void internalFrameClosed(InternalFrameEvent e) {};
+	public void internalFrameClosing(InternalFrameEvent e)
+	{
+		// Remember our layout if this is a sub-process editor
+		if (this.isSubprocessEditor())
+		{
+			this.getModelProcessor().getElementContainer().setEditorLayoutInfo(getSavedLayoutInfo());			
+		}
+		
+	}
+	public void internalFrameDeactivated(InternalFrameEvent e) {};
+	public void internalFrameDeiconified(InternalFrameEvent e) {};
+	public void internalFrameIconified(InternalFrameEvent e) {};
+	public void internalFrameOpened(InternalFrameEvent e) {};	
 }

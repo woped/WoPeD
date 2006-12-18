@@ -63,6 +63,7 @@ public class DefaultEditorFrame extends JInternalFrame
         m_editor = editor;
         this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
         m_petriNetResourceEditor = propEditor;
+    	addInternalFrameListener(m_editor);
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
         if (editor.isSubprocessEditor()) {

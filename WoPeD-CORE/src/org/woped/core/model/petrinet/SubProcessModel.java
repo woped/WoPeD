@@ -115,5 +115,6 @@ public class SubProcessModel extends TransitionModel implements InnerElementCont
 		}
 		result = (nNumOutgoing == 0);
 		return result;
-	}    
+	}
+  
 }

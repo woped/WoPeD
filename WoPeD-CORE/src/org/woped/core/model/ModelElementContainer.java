@@ -31,6 +31,7 @@ import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.Constants;
+import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -51,7 +52,18 @@ import org.woped.core.utilities.LoggerManager;
  */
 public class ModelElementContainer implements Serializable
 {
+    //! If !=null, stores editor layout info for the editor
+    //! that is to be used to edit the sub-process
+    private EditorLayoutInfo      editorLayoutInfo = null;
 
+	public EditorLayoutInfo getEditorLayoutInfo() {
+		return editorLayoutInfo;
+	}
+
+	public void setEditorLayoutInfo(EditorLayoutInfo editorLayoutInfo) {
+		this.editorLayoutInfo = editorLayoutInfo;
+	}  
+	
 	//! Just as we own elements, elements own us
 	//! if we're a simple transition element container
 	//! Again, it is important for navigation to know these things
