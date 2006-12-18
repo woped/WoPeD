@@ -50,6 +50,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.management.remote.TargetedNotification;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -356,6 +357,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			sourceCreationMap.setReadOnly(true);
 			sourceCreationMap.setNamePosition(30, 140);
 			sourceCreationMap.setEditOnCreation(false);
+			sourceCreationMap.setRealElement(sourceModel);
 			createElement(sourceCreationMap);
 		}
 
@@ -374,6 +376,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			targetCreationMap.setReadOnly(true);
 			targetCreationMap.setNamePosition(230, 140);
 			targetCreationMap.setEditOnCreation(false);
+			targetCreationMap.setRealElement(targetModel);
 			createElement(targetCreationMap);
 		}
 
