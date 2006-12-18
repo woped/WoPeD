@@ -90,6 +90,7 @@ import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
@@ -130,9 +131,10 @@ import org.woped.editor.view.ViewFactory;
  * Created on 29.04.2003
  */
 public class EditorVC extends JPanel implements KeyListener,
-		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor, InternalFrameListener
+		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor,
+		InternalFrameListener
 {
-    
+
 	private String id = null;
 
 	public static final String ID_PREFIX = "EDITOR_VC_";
@@ -192,24 +194,31 @@ public class EditorVC extends JPanel implements KeyListener,
 	// ! It is kept as a member to be able to show / hide this part of the
 	// ! editor window as required
 	private JSplitPane m_leftSideTreeView = null;
+
 	private JSplitPane m_mainSplitPane = null;
+
 	private JTree m_treeObject = null;
+
 	private GraphTreeModel m_treeModel = null;
 
 	private static final int m_splitPosition = 200;
+
 	private static final int m_splitSize = 10;
-	
+
 	private boolean m_subprocessEditor = false;
-	
-	//for subprocess
+
+	// for subprocess
 	AbstractElementModel m_parentElement;
-		
-	//! Store a reference to the application mediator.
-	//! It is used to create a new subprocess editor if required
+
+	// ! Store a reference to the application mediator.
+	// ! It is used to create a new subprocess editor if required
 	private AbstractApplicationMediator m_centralMediator = null;
-	
-	public GraphTreeModel GetTreeModel() { return m_treeModel; }
-		
+
+	public GraphTreeModel GetTreeModel()
+	{
+		return m_treeModel;
+	}
+
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
@@ -261,9 +270,11 @@ public class EditorVC extends JPanel implements KeyListener,
 		m_treeObject.setShowsRootHandles(true);
 		// Handle selection of tree items
 		// by selecting corresponding item in graph
-		GraphTreeModelSelector selectionHandler = new GraphTreeModelSelector(this,m_treeObject, m_centralMediator); 
+		GraphTreeModelSelector selectionHandler = new GraphTreeModelSelector(
+				this, m_treeObject, m_centralMediator);
 		m_treeObject.addTreeSelectionListener(selectionHandler);
-		getGraph().getSelectionModel().addGraphSelectionListener(selectionHandler);
+		getGraph().getSelectionModel().addGraphSelectionListener(
+				selectionHandler);
 		JScrollPane sTree = new JScrollPane(m_treeObject);
 		JPanel treePanel = new JPanel(new GridBagLayout());
 		treePanel.add(
@@ -297,8 +308,9 @@ public class EditorVC extends JPanel implements KeyListener,
 		m_mainSplitPane.setDividerSize(m_splitSize);
 
 		add(m_mainSplitPane);
-		m_mainSplitPane.addPropertyChangeListener(VisualController.getInstance());
-		Dimension d= m_leftSideTreeView.getMinimumSize();
+		m_mainSplitPane.addPropertyChangeListener(VisualController
+				.getInstance());
+		Dimension d = m_leftSideTreeView.getMinimumSize();
 		d.width = 0;
 		m_leftSideTreeView.setMinimumSize(d);
 		setSideTreeViewVisible(false);
@@ -310,33 +322,35 @@ public class EditorVC extends JPanel implements KeyListener,
 					((PetriNetModelProcessor) getModelProcessor()), getGraph());
 		}
 	}
+
 	public EditorVC(String string, EditorClipboard clipboard,
-			int modelProcessorType, boolean undoSupport, IEditor parentEditor, SubProcessModel model,
-			AbstractApplicationMediator mediator)
+			int modelProcessorType, boolean undoSupport, IEditor parentEditor,
+			SubProcessModel model, AbstractApplicationMediator mediator)
 	{
 		this(string, clipboard, modelProcessorType, undoSupport, mediator);
 		m_parentElement = model;
+
 		setSubprocessEditor(true);
 		m_graph.setBorder(new LineBorder(Color.BLUE, 5, false));
 
 		setName("Subprocess " + model.getNameValue());
 
 		// Switch editor to use the model element container of the subprocess
-        ModelElementContainer container = model.getSimpleTransContainer();
-        getModelProcessor().setElementContainer(container);
-        
-		
+		ModelElementContainer container = model.getSimpleTransContainer();
+		getModelProcessor().setElementContainer(container);
+
 		// Es wurde vor den Öffnen geprüft, dass genau ein Ein- und ein Ausgang
 		// vorhanden ist!
 
-        // Get list of input nodes
-        Set sources = NetAlgorithms.GetDirectlyConnectedNodes(model, NetAlgorithms.connectionTypeINBOUND);
+		// Get list of input nodes
+		Set sources = NetAlgorithms.GetDirectlyConnectedNodes(model,
+				NetAlgorithms.connectionTypeINBOUND);
 		Iterator<AbstractElementModel> sourceKeyIterator = sources.iterator();
 		AbstractElementModel sourceModel = sourceKeyIterator.next();
 
 		// Check whether the source element already exists
-		if (container.getElementById(sourceModel.getId())==null)
-		{		
+		if (container.getElementById(sourceModel.getId()) == null)
+		{
 			CreationMap sourceCreationMap = sourceModel.getCreationMap();
 			sourceCreationMap.setPosition(10, 100);
 			sourceCreationMap.setReadOnly(true);
@@ -346,13 +360,14 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 
 		// Ausgang
-        // Get list of output nodes
-        Set targets = NetAlgorithms.GetDirectlyConnectedNodes(model, NetAlgorithms.connectionTypeOUTBOUND);
+		// Get list of output nodes
+		Set targets = NetAlgorithms.GetDirectlyConnectedNodes(model,
+				NetAlgorithms.connectionTypeOUTBOUND);
 		Iterator<AbstractElementModel> targetKeyIterator = targets.iterator();
 		AbstractElementModel targetModel = targetKeyIterator.next();
 
 		// Check whether the target element already exists
-		if (container.getElementById(targetModel.getId())==null)		
+		if (container.getElementById(targetModel.getId()) == null)
 		{
 			CreationMap targetCreationMap = targetModel.getCreationMap();
 			targetCreationMap.setPosition(200, 100);
@@ -363,24 +378,46 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 
 		// We must create a JGraph model
-		// representation of the new model element container 
+		// representation of the new model element container
 		getGraph().drawNet(getModelProcessor());
-        updateNet();
-        // Clear selection, we do not want newly created elements to be selected
+		updateNet();
+		// Clear selection, we do not want newly created elements to be selected
 		getGraph().clearSelection();
 
 		// Keep the tree model of the parent editor up to date
-		if ((parentEditor!=null)&&(m_treeModel!=null)&&(parentEditor instanceof EditorVC))
+		if ((parentEditor != null) && (m_treeModel != null)
+				&& (parentEditor instanceof EditorVC))
 		{
-			m_treeModel.addTreeModelListener(((EditorVC)parentEditor).GetTreeModel());			
+			m_treeModel.addTreeModelListener(((EditorVC) parentEditor)
+					.GetTreeModel());
 		}
-		
-		// Try to retrieve saved layout information from the Model Element container
+
+		// Try to retrieve saved layout information from the Model Element
+		// container
 		// and set it for this editor window
 		EditorLayoutInfo layoutInfo = container.getEditorLayoutInfo();
-		if (layoutInfo!=null)
+		if (layoutInfo != null)
 			setSavedLayoutInfo(layoutInfo);
-		
+
+		PetriNetModelProcessor processor = (PetriNetModelProcessor) getModelProcessor();
+
+		int numPlace = getModelProcessor().getElementContainer()
+				.getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE)
+				.size();
+		int numArc = getModelProcessor().getElementContainer().getArcMap()
+				.size();
+		int numSub = getModelProcessor().getElementContainer()
+				.getElementsByType(AbstractPetriNetModelElement.SUBP_TYPE)
+				.size();
+		int numTrans = getModelProcessor().getElementContainer()
+				.getElementsByType(
+						AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).size();
+
+		processor.setArcCounter(numArc);
+		processor.setPlaceCouter(numPlace);
+		processor.setSubprocessCounter(numSub);
+		processor.setTransitionCounter(numTrans);
+
 	}
 
 	// IS NOT WORKING YET
@@ -588,17 +625,15 @@ public class EditorVC extends JPanel implements KeyListener,
 		{
 			// Create Element
 			AbstractElementModel element;
-			if(isSubprocessEditor())
+			if (isSubprocessEditor())
 			{
-				element = getModelProcessor().createElement(
-						map, m_parentElement.getId() + "_");
-			}
-			else
+				element = getModelProcessor().createElement(map,
+						m_parentElement.getId() + "_");
+			} else
 			{
-			 element = getModelProcessor().createElement(
-					map, "");
+				element = getModelProcessor().createElement(map, "");
 			}
-			
+
 			// ensure that There is an Position
 			if (map.getPosition() != null)
 			{
@@ -662,7 +697,7 @@ public class EditorVC extends JPanel implements KeyListener,
 										element,
 										((PetriNetModelElement) element)
 												.getNameModel() });
-				
+
 				// edit
 				if (ConfigurationManager.getConfiguration()
 						.isEditingOnCreation()
@@ -847,15 +882,12 @@ public class EditorVC extends JPanel implements KeyListener,
 						result.add(tempGroup.getChildAt(j));
 					}
 
-				} 
-			}
-			else
+				}
+			} else
 			{
 
-					result.add(toDelete[i]);
+				result.add(toDelete[i]);
 			}
-
-			
 
 		}
 
@@ -1579,19 +1611,19 @@ public class EditorVC extends JPanel implements KeyListener,
 	private boolean valueChangedActive = false;
 
 	public void valueChanged(GraphSelectionEvent arg0)
-	{		
+	{
 		if (valueChangedActive)
 			// Do not call ourselves endlessly
 			// We have to make a call to setSelectionCells()
 			// which once again would trigger this method call
 			// This is by design.
 			return;
-		
+
 		// Before doing anything else,
 		// select all PetriNetModelElement objects
 		// in the tree view
 		Object cells[] = arg0.getCells();
-		
+
 		// If the selected Cell(s) are any PetriNetModel their respective
 		// parents get selected.
 		// Elements can only be dragged together with their name.
@@ -1881,21 +1913,21 @@ public class EditorVC extends JPanel implements KeyListener,
 	public String getName()
 	{
 		return super.getName() == null ? Messages
-			.getString("Document.Title.Untitled") : super.getName();
+				.getString("Document.Title.Untitled") : super.getName();
 	}
 
-	//! Set the document name
-	//! Overridden to also update the title bar of the editor window
-	//! @param name specifies the name of the edited document
+	// ! Set the document name
+	// ! Overridden to also update the title bar of the editor window
+	// ! @param name specifies the name of the edited document
 	public void setName(String name)
 	{
 		super.setName(name);
 		// Update document title of editor window
 		JInternalFrame frame = (JInternalFrame) getContainer();
-        if (frame!=null)
-        	frame.setTitle(name);                            
+		if (frame != null)
+			frame.setTitle(name);
 	}
-	
+
 	/**
 	 * Returns the filepath if the net was saved before or was opened from a
 	 * file.
@@ -1953,8 +1985,6 @@ public class EditorVC extends JPanel implements KeyListener,
 		if (m_statusbar != null)
 			m_statusbar.updateStatus();
 	}
-
-
 
 	/**
 	 * Returns the drawing mode. If the net is in drawing mode, clicking the
@@ -2060,30 +2090,32 @@ public class EditorVC extends JPanel implements KeyListener,
 	// boolean variable
 	public void setSideTreeViewVisible(boolean showTreeView)
 	{
-		m_mainSplitPane.setDividerLocation(showTreeView ? m_mainSplitPane.getLastDividerLocation() : 0);
+		m_mainSplitPane.setDividerLocation(showTreeView ? m_mainSplitPane
+				.getLastDividerLocation() : 0);
 	}
 
 	// ! Returns whether or not the tree view is currently visible
 	// ! @return true if the tree view is currently visible, false otherwise
 	public boolean isSideTreeViewVisible()
 	{
-		return (m_mainSplitPane.getDividerLocation()>1);
+		return (m_mainSplitPane.getDividerLocation() > 1);
 	}
 
 	public void setSubprocessEditor(boolean subprocess)
 	{
 		m_subprocessEditor = subprocess;
 	}
-	
+
 	public boolean isSubprocessEditor()
 	{
 		return m_subprocessEditor;
 	}
 
-	//! Get layout information about this editor that 
-	//! should be made persistent
-	//! @return EditorLayoutInfo object that contains all relevant information
-	public EditorLayoutInfo getSavedLayoutInfo() {
+	// ! Get layout information about this editor that
+	// ! should be made persistent
+	// ! @return EditorLayoutInfo object that contains all relevant information
+	public EditorLayoutInfo getSavedLayoutInfo()
+	{
 		EditorLayoutInfo result = new EditorLayoutInfo();
 		result.setTreeViewWidth(m_mainSplitPane.getDividerLocation());
 		result.setSavedSize(getSize());
@@ -2092,36 +2124,58 @@ public class EditorVC extends JPanel implements KeyListener,
 		return result;
 	}
 
-	//! Set layout information for this editor
-	//! from a persistant information object
-	//! Called after loading a document or opening a sub-process editor
-	//! @param layoutInfo specifies the information about this editor that should be restored
-	public void setSavedLayoutInfo(EditorLayoutInfo layoutInfo) 
-	{                           
-		if (layoutInfo!=null)
-		{		
-			if (m_mainSplitPane!=null)
-				m_mainSplitPane.setDividerLocation(layoutInfo.getTreeViewWidth());		
+	// ! Set layout information for this editor
+	// ! from a persistant information object
+	// ! Called after loading a document or opening a sub-process editor
+	// ! @param layoutInfo specifies the information about this editor that
+	// should be restored
+	public void setSavedLayoutInfo(EditorLayoutInfo layoutInfo)
+	{
+		if (layoutInfo != null)
+		{
+			if (m_mainSplitPane != null)
+				m_mainSplitPane.setDividerLocation(layoutInfo
+						.getTreeViewWidth());
 			// Size
 			setSize(layoutInfo.getSavedSize());
 			// Currently, we ignore the position
-			// It's unwanted sometimes, especially if things like desktop resolution change
+			// It's unwanted sometimes, especially if things like desktop
+			// resolution change
 		}
 	}
-	
-	public void internalFrameActivated(InternalFrameEvent e) {};
-	public void internalFrameClosed(InternalFrameEvent e) {};
+
+	public void internalFrameActivated(InternalFrameEvent e)
+	{
+	};
+
+	public void internalFrameClosed(InternalFrameEvent e)
+	{
+	};
+
 	public void internalFrameClosing(InternalFrameEvent e)
 	{
 		// Remember our layout if this is a sub-process editor
 		if (this.isSubprocessEditor())
 		{
-			this.getModelProcessor().getElementContainer().setEditorLayoutInfo(getSavedLayoutInfo());			
+			this.getModelProcessor().getElementContainer().setEditorLayoutInfo(
+					getSavedLayoutInfo());
 		}
-		
+
 	}
-	public void internalFrameDeactivated(InternalFrameEvent e) {};
-	public void internalFrameDeiconified(InternalFrameEvent e) {};
-	public void internalFrameIconified(InternalFrameEvent e) {};
-	public void internalFrameOpened(InternalFrameEvent e) {};	
+
+	public void internalFrameDeactivated(InternalFrameEvent e)
+	{
+	};
+
+	public void internalFrameDeiconified(InternalFrameEvent e)
+	{
+	};
+
+	public void internalFrameIconified(InternalFrameEvent e)
+	{
+	};
+
+	public void internalFrameOpened(InternalFrameEvent e)
+	{
+	};
 }

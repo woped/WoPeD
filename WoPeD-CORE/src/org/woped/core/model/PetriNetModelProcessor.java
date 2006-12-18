@@ -1042,4 +1042,44 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		getElementContainer().removeElement(id);
 	}
 
+	public int getArcCounter()
+	{
+		return arcCounter;
+	}
+
+	public void setArcCounter(int arcCounter)
+	{
+		this.arcCounter = arcCounter;
+	}
+
+	public int getPlaceCouter()
+	{
+		return placeCouter;
+	}
+
+	public void setPlaceCouter(int placeCouter)
+	{
+		this.placeCouter = placeCouter;
+	}
+
+	public int getSubprocessCounter()
+	{
+		return subprocessCounter;
+	}
+
+	public void setSubprocessCounter(int subprocessCounter)
+	{
+		this.subprocessCounter = subprocessCounter;
+	}
+
+	public int getTransitionCounter()
+	{
+		return transitionCounter;
+	}
+
+	public void setTransitionCounter(int transitionCounter)
+	{
+		this.transitionCounter = transitionCounter;
+	}
+
 }
