@@ -169,7 +169,8 @@ public class WoPeDJGraph extends AbstractGraph
         		// Apart from general connectability
         		// some elements require special attention:
         		// The sub-process element does not allow more than one input and output connection
-        		// to be made
+        		// to be made. For sub-processes, this method will return true if that criteria is met
+        		// or the connection to be made is one that already exists
         		// We check for actual JGraph connections here because we're being called multiple
         		// times during the creation of an arc and arc creation within the ModelElementContainer
         		// is the first thing to happen so we would return "not connectable" for the second call
@@ -183,7 +184,8 @@ public class WoPeDJGraph extends AbstractGraph
         				if (o instanceof Edge)
         				{        				
         					Edge e = (Edge)o;
-        					if (e.getSource()==sourceCell.getPort())
+        					if ((e.getSource()==sourceCell.getPort())&&
+        							(e.getTarget()!=targetCell.getPort()))
         						++nNumOutgoing;
         				}
         			}
@@ -198,7 +200,8 @@ public class WoPeDJGraph extends AbstractGraph
         				if (o instanceof Edge)
         				{        				
         					Edge e = (Edge)o;
-        					if (e.getTarget()==targetCell.getPort())
+        					if ((e.getTarget()==targetCell.getPort())&&
+        							(e.getSource()!=sourceCell.getPort()))
         						++nNumIncoming;
         				}
         			}
@@ -386,7 +389,7 @@ public class WoPeDJGraph extends AbstractGraph
                 }
                 for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
                 {
-                    ArcModel arc = (ArcModel) iter.next();
+                    ArcModel arc = (ArcModel) iter.next();                    
                     connect(arc);
                 }
             } else if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_UML)
