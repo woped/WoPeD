@@ -23,6 +23,7 @@
 package org.woped.editor.simulation;
 
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
@@ -194,7 +195,15 @@ public class TokenGameController
         {
             checkTransition((TransitionModel) allTransitions.get(transIter.next()));
         }
-        getGraph().updateUI();
+        // updateUI() may never be called from the main thread but must be added
+        // to the event queue. Otherwise, multithreading problems result
+        // (The event dispatcher will try to repaint the model while parts of the model are uninitialized)
+        EventQueue.invokeLater( new Runnable()
+        {
+        public void run() {
+            getGraph().updateUI();
+        }} );
+
         LoggerManager.debug(Constants.EDITOR_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
     }
 
