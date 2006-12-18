@@ -678,11 +678,6 @@ public class EditorVC extends JPanel implements KeyListener,
 								.getTransResource().setPosition(
 										map.getResourcePosition().getX1(),
 										map.getResourcePosition().getX2());
-				} else if (map.getType() == PetriNetModelElement.PLACE_TYPE)
-				{
-					// Tokens
-					if (map.getTokens() > 0)
-						((PlaceModel) element).setTokens(map.getTokens());
 				}
 				// edit
 				if (ConfigurationManager.getConfiguration()

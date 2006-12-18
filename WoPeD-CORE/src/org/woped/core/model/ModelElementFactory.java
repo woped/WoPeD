@@ -65,6 +65,11 @@ public class ModelElementFactory
                 {
                     // Creating a new ModelElement with
                     modElement = new PlaceModel(map);
+                    
+                    // Tokens
+                    if (map.getTokens() > 0)
+                    	((PlaceModel) modElement).setTokens(map.getTokens());
+                    
                 } else if (map.getType() == PetriNetModelElement.SUBP_TYPE)
                 {
                     /* CREATING A SUBPROCESS */
