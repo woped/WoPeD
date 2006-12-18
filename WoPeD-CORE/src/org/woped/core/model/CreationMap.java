@@ -66,6 +66,7 @@ public class CreationMap extends HashMap<String, Object>
     public static final String STATE_TYPE            = "STATETYPE";
     public static final String READ_ONLY             = "READ_ONLY";
     public static final String TRANSITION_TIME		 = "TRANSITION_TIME";
+    public static final String REAL_ELEMENT          = "REAL_ELEMENT";
 
     public static CreationMap createMap()
     {
@@ -507,5 +508,23 @@ public class CreationMap extends HashMap<String, Object>
 	     {
 	        return -1;
 	     }
-	}	
+	}
+
+	public void setRealElement(AbstractElementModel realElement)
+	{
+		put(REAL_ELEMENT, realElement);
+		
+	}
+	
+	public AbstractElementModel getRealElement()
+	{
+		 if (containsKey(REAL_ELEMENT))
+	     {
+	        return (AbstractElementModel) get(REAL_ELEMENT);
+	     } 
+		 else
+	     {
+	        return null;
+	     }
+	}
 }
