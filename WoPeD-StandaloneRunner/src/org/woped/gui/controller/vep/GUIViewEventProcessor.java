@@ -57,6 +57,9 @@ import org.woped.gui.controller.ViewEvent;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.gui.help.HelpBrowser;
+import org.woped.woflan.StructuralAnalysis;
+
+import com.sun.media.sound.AlawCodec;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -106,9 +109,9 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 					SubProcessModel model = (SubProcessModel) cell;
 
 					IEditor subProcessEditor = getMediator()
-					.createSubprocessEditor(
-							AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
-							true, editor, model);
+							.createSubprocessEditor(
+									AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
+									true, editor, model);
 				}
 			} else
 			{
@@ -287,21 +290,64 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		if (editor instanceof EditorVC)
 		{
 			EditorVC editorVC = (EditorVC) editor;
-			if (!editorVC.isSaved())
-			{
-				// Check sample net
-				if (editorVC.getDefaultFileType() != FileFilterImpl.SAMPLEFilter)
-				{
-					String args[] = { editorVC.getName() };
 
-					int value;
-					if (editorVC.isSubprocessEditor())
+			if (editor.isSubprocessEditor())
+			{
+				StructuralAnalysis analysis = new StructuralAnalysis(editor);
+
+				if (analysis.GetNumNotStronglyConnectedNodes() > 0
+						|| analysis.GetNumSinkPlaces() > 1
+						|| analysis.GetNumSourcePlaces() > 1)
+				{
+					String errorMessage = Messages
+							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Start");
+
+					if (analysis.GetNumNotStronglyConnectedNodes() > 0)
 					{
-						value = JOptionPane.NO_OPTION;
-						// TODO Inhalt sichern
-					} else
+						errorMessage += Messages
+								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.StronglyConnected");
+					}
+					if (analysis.GetNumSourcePlaces() > 1)
 					{
-						value = JOptionPane
+						errorMessage += Messages
+								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Source");
+					}
+					if (analysis.GetNumSourcePlaces() > 1)
+					{
+						errorMessage += Messages
+								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Sink");
+					}
+
+					errorMessage += Messages
+							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.End");
+
+					int value = JOptionPane
+							.showConfirmDialog(
+									editorVC,
+									errorMessage,
+									Messages
+											.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Title"),
+									JOptionPane.YES_NO_OPTION);
+
+					if (value == JOptionPane.NO_OPTION)
+					{
+						closeEditor = true;
+					}
+
+				} else
+				{
+					closeEditor = true;
+				}
+			} else
+			{
+				if (!editorVC.isSaved())
+				{
+					// Check sample net
+					if (editorVC.getDefaultFileType() != FileFilterImpl.SAMPLEFilter)
+					{
+						String args[] = { editorVC.getName() };
+
+						int value = JOptionPane
 								.showConfirmDialog(
 										editorVC,
 										Messages
@@ -311,30 +357,33 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 										Messages
 												.getString("Action.SaveEditor.Confirmation.Title"),
 										JOptionPane.YES_NO_CANCEL_OPTION);
-					}
-					if (value == (JOptionPane.YES_OPTION))
-					{
-						// try to save
-						getMediator().processViewEvent(
-								new ViewEvent(editor,
-										AbstractViewEvent.VIEWEVENTTYPE_FILE,
-										AbstractViewEvent.SAVE));
-						closeEditor = editorVC.isSaved();
-					} else if (value == JOptionPane.NO_OPTION)
+
+						if (value == (JOptionPane.YES_OPTION))
+						{
+							// try to save
+							getMediator()
+									.processViewEvent(
+											new ViewEvent(
+													editor,
+													AbstractViewEvent.VIEWEVENTTYPE_FILE,
+													AbstractViewEvent.SAVE));
+							closeEditor = editorVC.isSaved();
+						} else if (value == JOptionPane.NO_OPTION)
+						{
+							closeEditor = true;
+						} else if (value == JOptionPane.CANCEL_OPTION)
+						{
+							closeEditor = false;
+						}
+
+					} else
 					{
 						closeEditor = true;
-					} else if (value == JOptionPane.CANCEL_OPTION)
-					{
-						closeEditor = false;
 					}
-
 				} else
 				{
 					closeEditor = true;
 				}
-			} else
-			{
-				closeEditor = true;
 			}
 		}
 
