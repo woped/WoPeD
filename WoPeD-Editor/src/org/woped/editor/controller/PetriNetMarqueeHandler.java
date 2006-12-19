@@ -82,21 +82,12 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
         // Fixing Startpoint
         if (port != null && !e.isConsumed() && getEditor().getGraph().isPortsVisible())
         {
-        	boolean allowConnection = true;
-        	Object element = ((DefaultPort)port.getCell()).getParent(); 
-        	if (element instanceof AbstractElementModel)
-        	{
-        		allowConnection = ((AbstractElementModel)element).getAllowOutgoingConnections();
-        	}
-        	if (allowConnection)
-        	{
-        		// Remember Start Location
-        		start = getEditor().getGraph().toScreen(port.getLocation(null));
-        		// Remember First Port
-        		firstPort = port;
-        		// Consume Event
-        		// e.consume();
-        	}
+        	// Remember Start Location
+        	start = getEditor().getGraph().toScreen(port.getLocation(null));
+        	// Remember First Port
+        	firstPort = port;
+        	// Consume Event
+        	// e.consume();
         }
         
         Point2D l = getEditor().getGraph().snap(e.getPoint());
@@ -209,18 +200,28 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
             {
                 if (ConfigurationManager.getConfiguration().isSmartEditing() && port == null && firstPort != null && firstPort != port)
                 {
-                    DefaultPort source = (DefaultPort) firstPort.getCell();
-                    CreationMap map = CreationMap.createMap();
-                    if (source.getParent() instanceof TransitionModel)
-                    {
-                        map.setType(PetriNetModelElement.PLACE_TYPE);
-                        getEditor().createElement(map);
-                    } else if (source.getParent() instanceof PlaceModel)
-                    {
-                        map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-                        getEditor().createElement(map);
-                    }
-                    port = getTargetPortAt(getEditor().getLastMousePosition());
+                	
+                	boolean allowConnection = true;
+                	Object element = ((firstPort!=null)?((DefaultPort)firstPort.getCell()).getParent():null); 
+                	if (element instanceof AbstractElementModel)
+                	{
+                		allowConnection = ((AbstractElementModel)element).getAllowOutgoingConnections();
+                	}
+                	if (allowConnection)
+                	{                	
+                		DefaultPort source = (DefaultPort) firstPort.getCell();
+                		CreationMap map = CreationMap.createMap();
+                		if (source.getParent() instanceof TransitionModel)
+                		{
+                			map.setType(PetriNetModelElement.PLACE_TYPE);
+                			getEditor().createElement(map);
+                		} else if (source.getParent() instanceof PlaceModel)
+                		{
+                			map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+                			getEditor().createElement(map);
+                		}
+                		port = getTargetPortAt(getEditor().getLastMousePosition());
+                	}
                 }
                 // If Valid Event, Current and First Port
                 if (e != null && !e.isConsumed() && port != null && firstPort != null && firstPort != port)
