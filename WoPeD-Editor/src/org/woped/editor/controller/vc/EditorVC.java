@@ -2161,8 +2161,12 @@ public class EditorVC extends JPanel implements KeyListener,
 		if (layoutInfo != null)
 		{
 			if (m_mainSplitPane != null)
-				m_mainSplitPane.setDividerLocation(layoutInfo
-						.getTreeViewWidth());
+			{
+				int divLoc = layoutInfo.getTreeViewWidth();
+				m_mainSplitPane.setDividerLocation(divLoc);
+				if (divLoc<=1)
+					m_mainSplitPane.setLastDividerLocation(EditorVC.m_splitPosition);
+			}
 			// Size
 			setSize(layoutInfo.getSavedSize());
 			// Currently, we ignore the position
