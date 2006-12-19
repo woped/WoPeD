@@ -37,6 +37,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.view.AbstractElementView;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author rey
@@ -137,9 +138,11 @@ public class SubProcessView extends AbstractElementView
             }
             if (isActive() && !isFireing())
             {
-                g2.drawString("enabled", 3, 18);
-                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_active.gif"));
-                g2.drawImage(img.getImage(), 5, 22, 6, 11, img.getImageObserver());
+                //g2.drawString("enabled", 3, 18);
+        	ImageIcon img1 = Messages.getImageIcon("TokenGame.Subprocess.StepInto");
+                ImageIcon img2 = Messages.getImageIcon("TokenGame.Subprocess.StepOver");
+                g2.drawImage(img1.getImage(), 5, 20, 16, 16, img1.getImageObserver());
+                g2.drawImage(img2.getImage(), 5, 5, 16, 16, img2.getImageObserver());
 
             }
             if (isFireing())

@@ -34,6 +34,7 @@ import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -130,9 +131,9 @@ public class TransXOrJoinView extends TransSimpleView
             }
             if (isActive() && !isFireing())
             {
-                g2.drawString("enabled", 3, 18);
-                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_active.gif"));
-                g2.drawImage(img.getImage(), 5, 22, 6, 11, img.getImageObserver());
+                //g2.drawString("enabled", 3, 18);
+        	ImageIcon img = Messages.getImageIcon("TokenGame.Active");
+                g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
             }
             if (isFireing())
             {
