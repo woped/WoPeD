@@ -396,6 +396,8 @@ public class EditorVC extends JPanel implements KeyListener,
 					.GetTreeModel());
 		}
 
+		// Set some default size for the subprocess window
+		setPreferredSize(new Dimension(600, 400));				
 		// Try to retrieve saved layout information from the Model Element
 		// container
 		// and set it for this editor window
@@ -435,10 +437,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		
 		Vector roles = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getRoles();
 		((PetriNetModelProcessor) (getModelProcessor())).setRoles(roles);
-		
-		
-		setPreferredSize(new Dimension(600, 400));		
-		
+				
 	}
 
 	// IS NOT WORKING YET
@@ -2168,7 +2167,7 @@ public class EditorVC extends JPanel implements KeyListener,
 					m_mainSplitPane.setLastDividerLocation(EditorVC.m_splitPosition);
 			}
 			// Size
-			setSize(layoutInfo.getSavedSize());
+			setPreferredSize(layoutInfo.getSavedSize());
 			// Currently, we ignore the position
 			// It's unwanted sometimes, especially if things like desktop
 			// resolution change
