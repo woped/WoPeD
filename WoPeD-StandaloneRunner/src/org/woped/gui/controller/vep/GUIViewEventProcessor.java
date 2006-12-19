@@ -312,7 +312,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Source");
 					}
-					if (analysis.GetNumSourcePlaces() > 1)
+					if (analysis.GetNumSinkPlaces() > 1)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Sink");
