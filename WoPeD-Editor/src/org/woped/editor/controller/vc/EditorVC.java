@@ -207,7 +207,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	private static final int m_splitSize = 10;
 
-	private boolean m_subprocessEditor = false;
+	private IEditor m_parentEditor = null;
 
 	// for subprocess
 	AbstractElementModel m_parentElement;
@@ -332,7 +332,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		this(string, clipboard, modelProcessorType, undoSupport, mediator);
 		m_parentElement = model;
 
-		setSubprocessEditor(true);
+		setParentEditor(parentEditor);
 		m_graph.setBorder(new LineBorder(Color.BLUE, 5, false));
 
 		setName("Subprocess " + model.getNameValue());
@@ -1680,7 +1680,14 @@ public class EditorVC extends JPanel implements KeyListener,
 	 */
 	public void graphChanged(GraphModelEvent e)
 	{
-		setSaved(false);
+		if(isSubprocessEditor())
+        {
+        	getParentEditor().setSaved(false);
+        }
+        else
+        {
+            setSaved(false);
+        }
 	}
 
 	/**
@@ -2116,14 +2123,13 @@ public class EditorVC extends JPanel implements KeyListener,
 		return (m_mainSplitPane.getDividerLocation() > 1);
 	}
 
-	public void setSubprocessEditor(boolean subprocess)
-	{
-		m_subprocessEditor = subprocess;
-	}
-
 	public boolean isSubprocessEditor()
 	{
-		return m_subprocessEditor;
+		if(getParentEditor() != null)
+		{
+			return true;
+		}
+		return false;
 	}
 
 	// ! Get layout information about this editor that
@@ -2192,5 +2198,13 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	public void internalFrameOpened(InternalFrameEvent e)
 	{
+	}
+
+	public IEditor getParentEditor() {
+		return m_parentEditor;
+	}
+
+	public void setParentEditor(IEditor editor) {
+		m_parentEditor = editor;
 	};
 }
