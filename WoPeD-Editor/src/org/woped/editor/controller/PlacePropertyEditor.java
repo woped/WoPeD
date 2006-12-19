@@ -82,7 +82,7 @@ public class PlacePropertyEditor extends JDialog
         this.editor = editor;
         this.setVisible(false);
         initialize();
-        this.setSize(350, 180);
+        this.setSize(350, 190);
         this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
         this.setVisible(true);
     }
