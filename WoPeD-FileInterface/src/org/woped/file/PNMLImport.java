@@ -28,8 +28,10 @@ import java.awt.geom.Point2D;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -697,9 +699,18 @@ public class PNMLImport
                 }
                 if (arcs[i].isSetGraphics() && arc != null)
                 {
+                	// Create two standard points that need to be always present
+                	// When created using the editor, those points are added automatically
+                	// by the view
+                	// but if we want to restore arc points from the PNML file we have to 
+                	// add those points manually
+                	arc.addPoint(arc.getAttributes().createPoint(10, 10));
+                    arc.addPoint(arc.getAttributes().createPoint(20, 20));
+
                     for (int j = 0; j < arcs[i].getGraphics().getPositionArray().length; j++)
                     {
-                        arc.addPoint(new Point2D.Double(arcs[i].getGraphics().getPositionArray(j).getX().doubleValue(), arcs[i].getGraphics().getPositionArray(j).getY().doubleValue()), j + 1);
+                        arc.addPoint(new Point2D.Double(arcs[i].getGraphics().getPositionArray(j).getX().doubleValue(), 
+                        		arcs[i].getGraphics().getPositionArray(j).getY().doubleValue()), j + 1);
                     }
                 }
                 LoggerManager.debug(Constants.FILE_LOGGER, " ... Arc (ID:" + arcs[i].getId() + "( " + arcs[i].getSource() + " -> " + arcs[i].getTarget() + ") created");
