@@ -269,7 +269,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 				else if (operatorModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
 				{
 
-					// für jede simpletrans ne connection auf das target
+					// fï¿½r jede simpletrans ne connection auf das target
 					Iterator simpleRootIter = operatorModel
 							.getSimpleTransContainer().getRootElements()
 							.iterator();
@@ -464,7 +464,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 								.getSimpleTransContainer().getElementsByType(
 										PetriNetModelElement.TRANS_SIMPLE_TYPE)
 								.values().iterator().next();
-						// dann füge nur die Reference hinzu
+						// dann fï¿½ge nur die Reference hinzu
 						operatorModel.addReference(getNexArcId(),
 								(DefaultPort) sourceModel.getChildAt(0),
 								(DefaultPort) simpleTrans.getChildAt(0));
@@ -568,7 +568,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 					{
 						simpleTrans = operatorModel.addNewSimpleTrans();
 					}
-					// dann füge nur die Reference hinzu
+					// dann fï¿½ge nur die Reference hinzu
 					operatorModel.addReference(getNexArcId(),
 							(DefaultPort) sourceModel.getChildAt(0),
 							(DefaultPort) simpleTrans.getChildAt(0));
@@ -1080,6 +1080,14 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	public void setTransitionCounter(int transitionCounter)
 	{
 		this.transitionCounter = transitionCounter;
+	}
+
+	public void setResources(Vector resources) {
+		this.resources = resources;
+	}
+
+	public void setResourceMapping(HashMap resourceMapping) {
+		this.resourceMapping = resourceMapping;
 	}
 
 }

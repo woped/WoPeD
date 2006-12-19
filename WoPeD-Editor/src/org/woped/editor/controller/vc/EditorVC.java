@@ -45,6 +45,7 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -340,7 +341,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		ModelElementContainer container = model.getSimpleTransContainer();
 		getModelProcessor().setElementContainer(container);
 
-		// Es wurde vor den Öffnen geprüft, dass genau ein Ein- und ein Ausgang
+		// Es wurde vor den ï¿½ffnen geprï¿½ft, dass genau ein Ein- und ein Ausgang
 		// vorhanden ist!
 
 		// Get list of input nodes
@@ -420,7 +421,18 @@ public class EditorVC extends JPanel implements KeyListener,
 		processor.setPlaceCouter(numPlace);
 		processor.setSubprocessCounter(numSub);
 		processor.setTransitionCounter(numTrans);
-
+		
+		Vector res = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResources();
+		((PetriNetModelProcessor) (getModelProcessor())).setResources(res);
+		
+		HashMap mapping = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResourceMapping();
+		((PetriNetModelProcessor) (getModelProcessor())).setResourceMapping(mapping);
+		
+		Vector units = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getOrganizationUnits();
+		((PetriNetModelProcessor) (getModelProcessor())).setOrganizationUnits(units);
+		
+		Vector roles = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getRoles();
+		((PetriNetModelProcessor) (getModelProcessor())).setRoles(roles);
 	}
 
 	// IS NOT WORKING YET
