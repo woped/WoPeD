@@ -354,9 +354,9 @@ public class EditorVC extends JPanel implements KeyListener,
 		if (container.getElementById(sourceModel.getId()) == null)
 		{
 			CreationMap sourceCreationMap = sourceModel.getCreationMap();
-			sourceCreationMap.setPosition(10, 100);
+			sourceCreationMap.setPosition(10, 160);
 			sourceCreationMap.setReadOnly(true);
-			sourceCreationMap.setNamePosition(30, 140);
+			sourceCreationMap.setNamePosition(30, 200);
 			sourceCreationMap.setEditOnCreation(false);
 			sourceCreationMap.setUpperElement(sourceModel);
 			createElement(sourceCreationMap);
@@ -373,9 +373,9 @@ public class EditorVC extends JPanel implements KeyListener,
 		if (container.getElementById(targetModel.getId()) == null)
 		{
 			CreationMap targetCreationMap = targetModel.getCreationMap();
-			targetCreationMap.setPosition(200, 100);
+			targetCreationMap.setPosition(520, 160);
 			targetCreationMap.setReadOnly(true);
-			targetCreationMap.setNamePosition(230, 140);
+			targetCreationMap.setNamePosition(540, 200);
 			targetCreationMap.setEditOnCreation(false);
 			targetCreationMap.setUpperElement(targetModel);
 			createElement(targetCreationMap);
@@ -405,6 +405,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		PetriNetModelProcessor processor = (PetriNetModelProcessor) getModelProcessor();
 
+		//Counter for ID generation
 		int numPlace = getModelProcessor().getElementContainer()
 				.getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE)
 				.size();
@@ -422,6 +423,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		processor.setSubprocessCounter(numSub);
 		processor.setTransitionCounter(numTrans);
 		
+		//Copy resources from parentEditor to subprocessEditor
 		Vector res = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResources();
 		((PetriNetModelProcessor) (getModelProcessor())).setResources(res);
 		
@@ -433,6 +435,10 @@ public class EditorVC extends JPanel implements KeyListener,
 		
 		Vector roles = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getRoles();
 		((PetriNetModelProcessor) (getModelProcessor())).setRoles(roles);
+		
+		
+		setPreferredSize(new Dimension(600, 400));		
+		
 	}
 
 	// IS NOT WORKING YET
