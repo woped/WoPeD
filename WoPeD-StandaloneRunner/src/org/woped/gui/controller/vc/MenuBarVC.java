@@ -37,6 +37,7 @@ import java.util.Vector;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
+import javax.swing.Icon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -96,8 +97,6 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_editMenuItem           = null;
 
     private JMenu              m_viewMenu               = null;
-    private JMenuItem          m_stretchMenuItem        = null;
-    private JMenuItem          m_pressMenuItem          = null;
     private JMenuItem          m_groupMenuItem          = null;
     private JMenuItem          m_ungroupMenuItem        = null;
     private JMenuItem          m_zoomInMenuItem         = null;
@@ -389,6 +388,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 
     public void updateRecentMenu()
     {
+	Icon documentIcon = Messages.getImageIcon("Document");
         Vector v = ConfigurationManager.getConfiguration().getRecentFiles();
         getRecentMenu().removeAll();
         if (v.size() != 0)
@@ -400,6 +400,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 
                 JMenuItem recentMenuItem = new JMenuItem(name);
                 recentMenuItem.setActionCommand(path);
+                recentMenuItem.setIcon(documentIcon);
                 recentMenuItem.addActionListener(new ActionListener()
                 {
                     public void actionPerformed(ActionEvent e)
@@ -427,6 +428,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         {
             m_recentMenu = new JMenu(Messages.getString("Menu.File.RecentMenu.Title"));
             m_recentMenu.setMnemonic(KeyEvent.VK_R);
+            m_recentMenu.setIcon(Messages.getImageIcon("Document"));
             updateRecentMenu();
         }
         return m_recentMenu;
@@ -638,11 +640,14 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
      */
     public JMenu getSampleMenu()
     {
+	
+	Icon documentIcon = Messages.getImageIcon("Document");
         if (m_sampleMenu == null)
         {
 
             m_sampleMenu = new JMenu(Messages.getString("Menu.Help.SampleNets.Title"));
             m_sampleMenu.setMnemonic(KeyEvent.VK_S);
+            m_sampleMenu.setIcon(documentIcon);
 
             try
             {
@@ -674,6 +679,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
                             name = ze.getName().substring(ze.getName().lastIndexOf("/") + 1);
                             JMenuItem sampleItem = new JMenuItem(name);
                             sampleItem.setActionCommand(samplepath);
+                            sampleItem.setIcon(documentIcon);
                             sampleItem.addActionListener(new ActionListener()
                             {
 
@@ -700,6 +706,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
                             {
                                 JMenuItem sampleItem = new JMenuItem(sampleDir.listFiles()[idx].getName());
                                 sampleItem.setActionCommand(sampleDir.listFiles()[idx].getAbsolutePath());
+                                sampleItem.setIcon(documentIcon);
                                 sampleItem.addActionListener(new ActionListener()
                                 {
 
