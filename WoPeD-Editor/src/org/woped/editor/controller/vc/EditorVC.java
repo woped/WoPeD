@@ -331,6 +331,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		this(string, clipboard, modelProcessorType, undoSupport, mediator);
 		m_parentElement = model;
+		
+		boolean origStatus = parentEditor.isSaved();
 
 		setParentEditor(parentEditor);
 		m_graph.setBorder(new LineBorder(Color.BLUE, 5, false));
@@ -437,6 +439,11 @@ public class EditorVC extends JPanel implements KeyListener,
 		
 		Vector roles = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getRoles();
 		((PetriNetModelProcessor) (getModelProcessor())).setRoles(roles);
+		
+		// Restore original "edited" status of parent editor
+		// because creation of source and target places should not 
+		// influence the parent model
+		parentEditor.setSaved(origStatus);
 				
 	}
 
