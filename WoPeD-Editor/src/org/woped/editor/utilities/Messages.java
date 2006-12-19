@@ -176,19 +176,17 @@ public abstract class Messages
         return result;
     }
 
-    public static String getWoPeDVersion(boolean withStamp)
-    {
+    public static String getWoPeDVersionWithTimestamp() {
         String version = getString("Application.Version");
         String builtstamp = getString("Application.Builtstamp");
-        if ("@builtstamp@".equals(builtstamp) | !withStamp)
-        {
+        if ("@builtstamp@".equals(builtstamp)) {
             return version;
-        } else
-        {
+        } 
+        else {
             return version + "." + builtstamp;
         }
     }
-
+    
     /**
      * 
      * @param key
