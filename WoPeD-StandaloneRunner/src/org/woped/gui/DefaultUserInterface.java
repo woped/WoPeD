@@ -72,7 +72,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
         propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
         setIconImage(Messages.getImageIcon("Application").getImage());
-        setTitle("WoPeD Version " + Messages.getWoPeDVersion(false));
+        setTitle("WoPeD Version " + Messages.getWoPeDVersionWithTimestamp());
         setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(),
                 (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

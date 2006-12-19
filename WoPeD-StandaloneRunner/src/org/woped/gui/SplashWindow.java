@@ -37,6 +37,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.utilities.Messages;
 
 /**
@@ -183,9 +184,9 @@ public class SplashWindow extends JWindow
     {
         if (versionLabel == null)
         {
-            versionLabel = new JLabel("Version " + Messages.getWoPeDVersion(false));
-            versionLabel.setFont(new Font("Verdana", Font.PLAIN, 10));
-            versionLabel.setForeground(Color.WHITE);
+            versionLabel = new JLabel("Version " + Messages.getString("Application.Version"));
+            versionLabel.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+            versionLabel.setForeground(DefaultStaticConfiguration.DEFAULT_INVERSE_COLOR);
         }
         return versionLabel;
     }
@@ -194,9 +195,9 @@ public class SplashWindow extends JWindow
     {
         if (copyrightLabel == null)
         {
-            copyrightLabel = new JLabel("woped.org (c) 2003-2006");
-            copyrightLabel.setFont(new Font("Verdana", Font.PLAIN, 10));
-            copyrightLabel.setForeground(Color.WHITE);
+            copyrightLabel = new JLabel(Messages.getString("Splash.Text.Copyright"));
+            copyrightLabel.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+            copyrightLabel.setForeground(DefaultStaticConfiguration.DEFAULT_INVERSE_COLOR);
         }
         return copyrightLabel;
     }

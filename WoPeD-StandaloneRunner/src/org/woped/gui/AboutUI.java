@@ -33,6 +33,9 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -41,7 +44,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.help.action.LaunchDefaultBrowserAction;
@@ -98,7 +103,6 @@ public class AboutUI extends JDialog
      */
     private void initialize()
     {
-        GridBagConstraints c = new GridBagConstraints();
         this.setVisible(false);
         this.getContentPane().setLayout(new BorderLayout());
         this.setUndecorated(true);
@@ -120,7 +124,7 @@ public class AboutUI extends JDialog
 
     private JScrollPane getAboutPanel()
     {    	
-       	String[] aboutArgs       = { Messages.getWoPeDVersion(true) };
+       	String[] aboutArgs       = { Messages.getWoPeDVersionWithTimestamp() };
        	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) + "</p></html>";
        
     	if (aboutPanel == null)
@@ -176,6 +180,30 @@ public class AboutUI extends JDialog
     {
         if (changeLogPanel == null)
         {
+ 			String changeLog = "";
+        	String path = System.getProperty("user.dir");
+         	
+        	int pos = path.indexOf("\\WoPeD-StandaloneRunner");
+        	if (pos > -1)
+        	{
+        		path = path.substring(0, pos);
+        		path += "\\WoPeD-Installer\\build-tools";
+        	}
+        	
+        	path += "\\Changelog.txt";
+        	
+        	try {
+        		int c;
+            	FileReader f = new FileReader(path);
+            	while ((c = f.read()) != -1) {
+            		changeLog += (char)c;
+            	}
+            	f.close();
+            } 
+        	catch (IOException e) {
+            	changeLog = path + " not found";
+            }
+
             JPanel panel = new JPanel();
             panel.setLayout(new GridBagLayout());
             GridBagConstraints c1 = new GridBagConstraints();
@@ -183,11 +211,11 @@ public class AboutUI extends JDialog
             c1.gridx = 0;
             c1.insets = new Insets(10, 10, 10, 10);
             c1.anchor = GridBagConstraints.WEST;
-
-            // TODO: read changelog information out of the file !!! (silenco)
-            String changeLog = "<html><p><font size=\"2,5\">" + "<b>WoPeD 0.8.0</b> (2005/03/28)" + "<br>- first official binary release"
-                    + "<br><b>WoPeD untagged versions</b><br>- since May 2003.</font></p></html>";
-            JLabel text = new JLabel(changeLog, JLabel.LEFT);
+            
+            JTextArea text = new JTextArea();
+            text.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+            text.setBackground(panel.getBackground());
+            text.append(changeLog);
             panel.add(text, c1);
             JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
             panel2.add(panel);
