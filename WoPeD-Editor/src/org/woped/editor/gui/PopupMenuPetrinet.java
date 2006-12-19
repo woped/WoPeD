@@ -151,7 +151,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_renameMenuItem == null)
         {
             m_renameMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_RENAME));
-            VisualController.getInstance().addElement(m_renameMenuItem, VisualController.ANY_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_renameMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ELEMENT_SELECTION, VisualController.IGNORE);
         }
         return m_renameMenuItem;
     }
@@ -191,7 +191,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_copyMenuItem == null)
         {
             m_copyMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_COPY));
-            VisualController.getInstance().addElement(m_copyMenuItem, VisualController.NO_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_copyMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ELEMENT_SELECTION, VisualController.IGNORE);
         }
         return m_copyMenuItem;
     }
@@ -201,7 +201,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_cutMenuItem == null)
         {
             m_cutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_CUT));
-            VisualController.getInstance().addElement(m_cutMenuItem, VisualController.NO_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_cutMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ELEMENT_SELECTION, VisualController.IGNORE);
         }
         return m_cutMenuItem;
     }
