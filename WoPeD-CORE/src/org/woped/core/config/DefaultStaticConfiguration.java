@@ -19,6 +19,7 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static boolean         DEFAULT_ARROW_FILLHEAD     = false;
     public static final ImageIcon DEFAULTEDITORFRAMEICON     = null;
     public static Color           DEFAULT_SELECTION_COLOR    = Color.BLUE;
+    public static Color           DEFAULT_INVERSE_COLOR    	 = Color.WHITE;
     public static Font            DEFAULT_LABEL_FONT         = new Font("Verdana", Font.PLAIN, 10);
     public static Font            DEFAULT_TOKENGAME_FONT     = new Font("Verdana", Font.PLAIN, 9);
     public static Font            DEFAULT_RESOURCE_ROLE_FONT = new Font("Verdana", Font.PLAIN, 9);
