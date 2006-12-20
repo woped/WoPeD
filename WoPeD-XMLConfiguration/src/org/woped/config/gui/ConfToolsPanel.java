@@ -221,6 +221,7 @@ public class ConfToolsPanel extends AbstractConfPanel
         {
             woflanBrowse = new JButton();
             //woflanBrowse.setFont(ConfigureUI.CONFIG_FONT);
+            woflanBrowse.setIcon(Messages.getImageIcon("Button.Browse"));
             woflanBrowse.setText(Messages.getString("Button.Browse.Title"));
             woflanBrowse.addActionListener(new ActionListener()
             {

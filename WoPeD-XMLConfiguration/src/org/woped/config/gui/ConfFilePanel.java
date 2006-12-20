@@ -239,7 +239,7 @@ public class ConfFilePanel extends AbstractConfPanel
         if (homeDirChoose == null)
         {
             homeDirChoose = new JButton();
-            //homeDirChoose.setFont(ConfigureUI.CONFIG_FONT);
+            homeDirChoose.setIcon(Messages.getImageIcon("Button.Browse"));
             homeDirChoose.setText(Messages.getString("Button.Browse.Title"));
             homeDirChoose.addActionListener(new ActionListener()
             {
