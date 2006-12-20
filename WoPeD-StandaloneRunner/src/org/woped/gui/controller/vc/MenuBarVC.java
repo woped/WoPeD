@@ -102,6 +102,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_zoomInMenuItem         = null;
     private JMenuItem          m_zoomOutMenuItem        = null;
 
+    private JMenuItem          m_startTokenGameMenuItem = null;
     private JMenu              m_analyseMenu            = null;
     private JMenuItem          m_woflanMenuItem         = null;
     private JMenuItem		   m_wopedMenuItem			= null;
@@ -153,8 +154,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         {
             m_analyseMenu = new JMenu(Messages.getString("Menu.Analyse.Title")); //$NON-NLS-1$
             m_analyseMenu.setMnemonic(KeyEvent.VK_A);
-
-            // m_analyseMenu.add(getStateSpaceMenuItem());
+            m_analyseMenu.add(getStartTokenGameMenuItem());
             m_analyseMenu.add(getWoflanMenuItem());
             getWoflanMenuItem().setEnabled(ConfigurationManager.getConfiguration().isUseWoflan());
             m_analyseMenu.add(getWopedMenuItem());
@@ -470,6 +470,19 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         return m_cutMenuItem;
     }
 
+    
+    /**
+     * @return Returns the cutMenuItem.
+     */
+    public JMenuItem getStartTokenGameMenuItem()
+    {
+        if (m_startTokenGameMenuItem == null)
+        {
+            m_startTokenGameMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_TOGGLE_TOKENGAME));
+        }
+        return m_startTokenGameMenuItem;
+    }
+    
     /**
      * @return Returns the pasteMenuItem.
      */
