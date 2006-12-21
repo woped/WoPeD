@@ -46,6 +46,7 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.controller.vep.EditorEventProcessor;
 import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.editor.utilities.Messages;
@@ -57,7 +58,6 @@ import org.woped.gui.controller.ViewEvent;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.gui.help.HelpBrowser;
-import org.woped.woflan.StructuralAnalysis;
 
 import com.sun.media.sound.AlawCodec;
 

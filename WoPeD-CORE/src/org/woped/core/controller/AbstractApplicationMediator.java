@@ -91,6 +91,12 @@ public abstract class AbstractApplicationMediator implements IViewListener
 
     public abstract IEditor createEditor(int modelProcessorType, boolean undoSupport);
     
+    //! Create a sub-process editor window for the specified sub-process
+    //! @param modelProcessorType specifies the model processor type for the underlying model
+    //! @param undoSupport specifies whether or not undo should be supported
+    //! @param parentEditor specifies a pointer to the parent editor
+    //! @param subProcess specifies the sub-process element whose content should be edited
+    //! @return new editor object
     public abstract IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor,
     		SubProcessModel subProcess);
 

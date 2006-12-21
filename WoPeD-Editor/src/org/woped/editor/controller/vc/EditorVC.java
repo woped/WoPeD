@@ -45,13 +45,11 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import javax.management.remote.TargetedNotification;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -99,6 +97,7 @@ import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
@@ -321,8 +320,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		if (modelProcessorType == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
 		{
-			this.m_tokenGameController = new TokenGameController(
-					((PetriNetModelProcessor) getModelProcessor()), getGraph());
+			this.m_tokenGameController = new TokenGameController(this);
 		}
 	}
 
@@ -2232,4 +2230,24 @@ public class EditorVC extends JPanel implements KeyListener,
 	public void setParentEditor(IEditor editor) {
 		m_parentEditor = editor;
 	};
+
+	//! Open a sub-process for the specified sub process model
+	//! and enable the token game for it
+	//! The source of the sub-process will receive a virtual token for the game
+	//! @param subProcess specifies the sub-process to be opened
+	public void openTokenGameSubProcess(SubProcessModel subProcess)
+	{
+		EditorVC newEditorWindow = (EditorVC)m_centralMediator.createSubprocessEditor(getModelProcessor().getProcessorType(),
+				true, this, subProcess);
+		ModelElementContainer subPElements = newEditorWindow.getModelProcessor().getElementContainer();
+		StructuralAnalysis analysis = new StructuralAnalysis(newEditorWindow);
+		if (analysis.GetNumSourcePlaces()==1)
+		{
+			// Hand an initial token to the sub-process for the token game
+			Iterator i = analysis.GetSourcePlacesIterator();
+			((PlaceModel)i.next()).receiveToken();
+		}
+		// Enable token game mode
+		newEditorWindow.toggleTokenGame();
+	}
 }

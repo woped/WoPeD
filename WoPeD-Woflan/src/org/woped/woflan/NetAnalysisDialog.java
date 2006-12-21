@@ -23,6 +23,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.GraphTreeModelSelector;
 import org.woped.editor.controller.vc.NetInfo;
 import org.woped.editor.controller.vc.NodeGroupNetInfo;
+import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.utilities.Messages;
 
 @SuppressWarnings("serial")

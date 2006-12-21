@@ -31,17 +31,21 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
+import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.WoPeDJGraph;
+import org.woped.editor.controller.vc.EditorVC;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -78,16 +82,19 @@ public class TokenGameController
 
     private boolean                visualTokenGame       = false;
 
+    private EditorVC			   thisEditor 			 = null;
+    
     /**
      * Constructor for the model and visual sided TokenGame.
      * 
      * @param petrinet
      * @param graph
      */
-    public TokenGameController(PetriNetModelProcessor petrinet, AbstractGraph graph)
+    public TokenGameController(EditorVC thisEditor)
     {
-        this.petrinet = petrinet;
-        this.graph = graph;
+        this.petrinet = (PetriNetModelProcessor)thisEditor.getModelProcessor();
+        this.graph = thisEditor.getGraph();
+        this.thisEditor = thisEditor;
         setVisualTokenGame(graph != null);
         tokenGameMouseHandler = new MouseHandler();
     }
@@ -99,7 +106,11 @@ public class TokenGameController
      */
     public TokenGameController(PetriNetModelProcessor petrinet)
     {
-        this(petrinet, null);
+        this.petrinet = petrinet;
+        this.graph = null;
+        this.thisEditor = null;
+        setVisualTokenGame(false);
+        tokenGameMouseHandler = new MouseHandler();
     }
 
     /* ###################### Controller Methods ###################### */
@@ -132,17 +143,36 @@ public class TokenGameController
         resetTransitionStatus();
         resetArcStatus();
         // restore origin tokencount
-        Iterator placeIter = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.PLACE_TYPE).keySet().iterator();
-        while (placeIter.hasNext())
-        {
-            ((PlaceModel) getPetriNet().getElementContainer().getElementById(placeIter.next())).resetVirtualTokens();
-        }
+        resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
         // disable visualTokenGame
         if (isVisualTokenGame())
         {
             disableVisualTokenGame();
         }
         //animator.stop();
+    }
+
+    
+    //! Reset the virtual token count for the specified element container
+    //! If the element container contains subprocess elements,
+    //! this method is called recursively to reset token counts in sub-processes
+    //! @param container specifies the container that should be processed
+    private void resetVirtualTokensInElementContainer(ModelElementContainer container)
+    {
+        // restore origin tokencount
+        Iterator placeIter = container.getElementsByType(PetriNetModelElement.PLACE_TYPE).keySet().iterator();
+        while (placeIter.hasNext())
+        {
+            ((PlaceModel) container.getElementById(placeIter.next())).resetVirtualTokens();
+        }    	
+        Iterator subpIter = container.getElementsByType(PetriNetModelElement.SUBP_TYPE).keySet().iterator();
+        while (subpIter.hasNext())
+        {
+        	// Now we call ourselves recursively for all sub-processes
+        	ModelElementContainer innerContainer =
+        		((SubProcessModel) container.getElementById(subpIter.next())).getSimpleTransContainer();
+        	resetVirtualTokensInElementContainer(innerContainer);
+        }    	        
     }
 
     /**
@@ -275,7 +305,7 @@ public class TokenGameController
     /*
      * Handles a click on any Transition in any state
      */
-    private void transitionClicked(TransitionModel transition)
+    private void transitionClicked(TransitionModel transition, MouseEvent e)
     {
         if (transition.isActivated())
         {
@@ -289,6 +319,17 @@ public class TokenGameController
                 // "+transition.getId());
                 receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
                 sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+                if (transition.getType() == PetriNetModelElement.SUBP_TYPE)
+                {
+                	
+                	int relativeX = e.getX() - transition.getX();
+                	int relativeY = e.getY() - transition.getY();
+                	// the lower left half of the transition will trigger 'step into'
+                	if (relativeY>=relativeX)
+                		// Step into sub-process and process it in a new modal editor
+                		// dialog in token-game mode
+                		thisEditor.openTokenGameSubProcess((SubProcessModel)transition);
+                }
                 actionPerformed = true;
             } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
@@ -679,7 +720,7 @@ public class TokenGameController
             ArcModel arc = findArcInCell(getGraph().getFirstCellForLocation(e.getPoint().x, e.getPoint().y));
             if (transition != null && transition.isActivated() && transition.isFireing())
             {
-                transitionClicked(transition);
+                transitionClicked(transition, e);
             } else if (arc != null && arc.isActivated())
             {
                 arcClicked(arc);

@@ -1,10 +1,9 @@
-package org.woped.woflan;
+package org.woped.editor.controller.vc;
 
 import org.woped.core.controller.*;
 import org.woped.core.model.*;
 import org.woped.core.model.petrinet.*;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.controller.vc.NetAlgorithms;
 import org.jgraph.graph.*;
 
 
@@ -310,7 +309,6 @@ public class StructuralAnalysis {
 			}
 			catch(Exception e)
 			{
-				LoggerManager.info(Constants.WOFLAN_LOGGER, "Illegal object type found!");					
 			}
 		}
 	}

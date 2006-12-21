@@ -27,6 +27,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 
@@ -141,15 +142,21 @@ public class SubProcessView extends AbstractElementView
                 //g2.drawString("enabled", 3, 18);
         	ImageIcon img1 = Messages.getImageIcon("TokenGame.Subprocess.StepInto");
                 ImageIcon img2 = Messages.getImageIcon("TokenGame.Subprocess.StepOver");
-                g2.drawImage(img1.getImage(), 5, 20, 16, 16, img1.getImageObserver());
-                g2.drawImage(img2.getImage(), 5, 5, 16, 16, img2.getImageObserver());
+                g2.drawImage(img1.getImage(), b + 5, d.height - b - 16 - 5, 16, 16, img1.getImageObserver());
+                g2.drawImage(img2.getImage(), d.width - b -16 - 5, b + 5, 16, 16, img2.getImageObserver());
+                g2.drawLine(b + 6,b + 6,d.width-b-7,d.height-b-7);
 
             }
             if (isFireing())
             {
                 // g.setColor(Color.BLACK);
-                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_fire.gif"));
-                g2.drawImage(img.getImage(), 5, 22, 18, 11, img.getImageObserver());
+            	Class myClass = getClass();
+            	URL resource = ((myClass!=null)?myClass.getResource("/org/woped/editor/gui/images/tokenGame_fire.gif"):null);
+            	if (resource!=null)
+            	{
+            		ImageIcon img = new ImageIcon(resource);
+            		g2.drawImage(img.getImage(), 5, 22, 18, 11, img.getImageObserver());
+            	}
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
                 g2.drawString("fire", 5, 18);
             }
