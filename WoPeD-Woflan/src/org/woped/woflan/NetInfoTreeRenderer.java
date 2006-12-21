@@ -1,12 +1,15 @@
 package org.woped.woflan;
 
-import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.*;
-
-import org.woped.editor.controller.vc.NetInfo;
-
 import java.awt.Component;
 
+import javax.swing.Icon;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultTreeCellRenderer;
+
+import org.woped.editor.controller.vc.NetInfo;
+import org.woped.editor.utilities.Messages;
+
+@SuppressWarnings("serial")
 public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
 {
 	Icon iconInfo = null;
@@ -15,9 +18,9 @@ public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
 	
 	public NetInfoTreeRenderer()
 	{
-		iconOK = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/apply16.gif"));
-		iconInfo = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/italic16.gif"));
-		iconERROR = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/lightning16.gif"));		
+	    iconOK = Messages.getImageIcon("Analysis.Tree.Okay");
+	    iconInfo = Messages.getImageIcon("Analysis.Tree.Info");
+	    iconERROR = Messages.getImageIcon("Analysis.Tree.Warning");		
 	}
 	
 	public Component getTreeCellRendererComponent(
