@@ -958,4 +958,11 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         }
         m_showSideBarMenuItem.setSelected(isActivated);
     }
+    
+    public void renameEditor(IEditor editor)
+    {
+    	JMenuItem menuItem = (JMenuItem) m_editorMenuItems.get(editor);
+    	if (menuItem!=null)
+    		menuItem.setText(editor.getName());
+    }
 }

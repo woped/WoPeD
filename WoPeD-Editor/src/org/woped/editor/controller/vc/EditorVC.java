@@ -84,6 +84,7 @@ import org.woped.core.controller.AbstractMarqueeHandler;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewListener;
+import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
@@ -1960,6 +1961,14 @@ public class EditorVC extends JPanel implements KeyListener,
 		JInternalFrame frame = (JInternalFrame) getContainer();
 		if (frame != null)
 			frame.setTitle(name);
+		
+		// notify the editor aware vc
+		Iterator editorIter = m_centralMediator.getEditorAwareVCs().iterator();
+		while (editorIter.hasNext())
+		{
+			((IEditorAware) editorIter.next()).renameEditor(this);
+		}
+		
 	}
 
 	/**

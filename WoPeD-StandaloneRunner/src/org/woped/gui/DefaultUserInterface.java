@@ -218,6 +218,11 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             LoggerManager.debug(Constants.GUI_LOGGER, "Could not select Frame");
         }
     }
+    
+    public void renameEditor(IEditor editor)
+    {
+    	// Nothing to do here
+    }
 
     public IEditor getEditorFocus()
     {

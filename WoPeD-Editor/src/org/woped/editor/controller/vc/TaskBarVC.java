@@ -34,6 +34,13 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 //        setBorder(new BevelBorder(BevelBorder.LOWERED));
     }
+    
+    public void renameEditor(IEditor editor)
+    {
+    	JToggleButton taskButton = (JToggleButton)actions.get(editor);
+    	if (taskButton!=null)
+    		taskButton.setText(editor.getName());
+    }
 
     public void selectEditor(IEditor editor)
     {
