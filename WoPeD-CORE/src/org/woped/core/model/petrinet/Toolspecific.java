@@ -59,6 +59,9 @@ public class Toolspecific implements Serializable
     //! It will, however, be used in the future for quantitative analysis of 
     //! workflow nets. Time of this writing: 2006/12/18, A.Eckleder 
     private int						time = 0;
+    //! Specifies the unit for the time value (enum). The exact values are 
+    //! not defined yet
+    private int						timeUnit = 0;
 
     /**
      * Constructor for Toolspecific. ownerid must not be null.
@@ -234,5 +237,13 @@ public class Toolspecific implements Serializable
 
 	public void setTime(int time) {
 		this.time = time;
+	}
+
+	public int getTimeUnit() {
+		return timeUnit;
+	}
+
+	public void setTimeUnit(int timeUnit) {
+		this.timeUnit = timeUnit;
 	}
 }

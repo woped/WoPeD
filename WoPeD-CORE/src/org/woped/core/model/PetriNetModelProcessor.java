@@ -146,6 +146,8 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 									map.getResourcePosition().getX2());
 				if (map.getTransitionTime()!=-1)
 					((TransitionModel)anElement).getToolSpecific().setTime(map.getTransitionTime());
+				if (map.getTransitionTimeUnit()!=-1)
+					((TransitionModel)anElement).getToolSpecific().setTimeUnit(map.getTransitionTimeUnit());
 			}
 			
 			

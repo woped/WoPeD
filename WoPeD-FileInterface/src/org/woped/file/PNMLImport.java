@@ -485,7 +485,11 @@ public class PNMLImport
                             {
                             	if (transitions[i].getToolspecificArray(j).isSetTime())
                             	{
-                            		map.setTransitionTime(transitions[i].getToolspecificArray(j).getTime());
+                            		map.setTransitionTime(transitions[i].getToolspecificArray(j).getTime());                            		
+                            	}
+                            	if (transitions[i].getToolspecificArray(j).isSetTimeUnit())
+                            	{
+                            		map.setTransitionTimeUnit(transitions[i].getToolspecificArray(j).getTimeUnit());                            		
                             	}
                                 if (transitions[i].getToolspecificArray(j).isSetOperator())
                                 {

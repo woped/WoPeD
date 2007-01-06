@@ -550,6 +550,7 @@ public class PNMLExport
         }
         // Store the timing of this transition
         iToolspecific.setTime(currentModel.getToolSpecific().getTime());
+        iToolspecific.setTimeUnit(currentModel.getToolSpecific().getTimeUnit());
         return iToolspecific;
     }
 
