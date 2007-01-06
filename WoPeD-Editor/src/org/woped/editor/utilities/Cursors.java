@@ -26,6 +26,7 @@ public class Cursors
     private static ImageIcon xorSplitJoinIcon = Messages.getCursorImageIcon("ToolBar.DrawXorSplitJoin");
     private static ImageIcon transitionIcon = Messages.getCursorImageIcon("ToolBar.DrawTransition");
     private static ImageIcon subProcessIcon = Messages.getCursorImageIcon("ToolBar.DrawSubProcess");
+    private static ImageIcon andJoinXorSplitIcon = Messages.getCursorImageIcon("ToolBar.DrawAndJoinXorSplit");
     
     public static Cursor placeCursor        = Toolkit.getDefaultToolkit().createCustomCursor(placeIcon.getImage(), new Point(placeIcon.getIconWidth()/2, placeIcon.getIconHeight()/2), "Cursor");
     public static Cursor andSplitCursor     = Toolkit.getDefaultToolkit().createCustomCursor(andSpliIcon.getImage(), new Point(andSpliIcon.getIconWidth()/2, andSpliIcon.getIconHeight()/2), "Cursor");
@@ -36,6 +37,7 @@ public class Cursors
     public static Cursor xorSplitJoinCursor = Toolkit.getDefaultToolkit().createCustomCursor(xorSplitJoinIcon.getImage(), new Point(xorSplitJoinIcon.getIconWidth()/2, xorSplitJoinIcon.getIconHeight()/2), "Cursor");
     public static Cursor transitionCursor   = Toolkit.getDefaultToolkit().createCustomCursor(transitionIcon.getImage(), new Point(transitionIcon.getIconWidth()/2, transitionIcon.getIconHeight()/2), "Cursor");
     public static Cursor subProcessCursor   = Toolkit.getDefaultToolkit().createCustomCursor(subProcessIcon.getImage(), new Point(subProcessIcon.getIconWidth()/2, subProcessIcon.getIconHeight()/2), "Cursor");
+    public static Cursor andJoinXorSplitCursor = Toolkit.getDefaultToolkit().createCustomCursor(andJoinXorSplitIcon.getImage(), new Point(andJoinXorSplitIcon.getIconWidth()/2, andJoinXorSplitIcon.getIconHeight()/2), "Cursor");
 
     public static Cursor getElementCreationCursor(int petrinetType)
     {
@@ -55,6 +57,8 @@ public class Cursors
             return xorJoinCursor;
         case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
             return xorSplitJoinCursor;
+        case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
+        	return andJoinXorSplitCursor;
         case PetriNetModelElement.TRANS_SIMPLE_TYPE:
             return transitionCursor;
         case OperatorTransitionModel.SUBP_TYPE:

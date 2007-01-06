@@ -78,6 +78,7 @@ public class PopupMenuPetrinet extends JPopupMenu
     private JMenuItem                m_addXorSplitMenuItem     = null;
     private JMenuItem                m_addXorJoinMenuItem      = null;
     private JMenuItem                m_addXorSplitJoinMenuItem = null;
+    private JMenuItem                m_addAndJoinXorSplitMenuItem = null;
     private JMenuItem                m_subProcessMenuItem      = null;
 
     /*
@@ -97,6 +98,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         add(getAddXorJoinMenuItem());
         add(getAddAndSplitJoinMenuItem());
         add(getAddXorSplitJoinMenuItem());
+        add(getAddAndJoinXorSplitMenuItem());
         add(getSubProcessMenuItem());
 
 //        addSeparator();
@@ -357,6 +359,16 @@ public class PopupMenuPetrinet extends JPopupMenu
         return m_addXorSplitJoinMenuItem;
     }
 
+    private JMenuItem getAddAndJoinXorSplitMenuItem()
+    {
+        if (m_addAndJoinXorSplitMenuItem == null)
+        {
+        	m_addAndJoinXorSplitMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_ANDJOINXORSPLIT));
+            VisualController.getInstance().addElement(m_addAndJoinXorSplitMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+        }
+        return m_addAndJoinXorSplitMenuItem;
+    }
+    
     private JMenuItem getSubProcessMenuItem()
     {
         if (m_subProcessMenuItem == null)

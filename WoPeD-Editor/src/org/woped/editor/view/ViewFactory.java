@@ -53,6 +53,7 @@ import org.woped.editor.view.petrinet.NameView;
 import org.woped.editor.view.petrinet.PlaceView;
 import org.woped.editor.view.petrinet.SubProcessView;
 import org.woped.editor.view.petrinet.TransAndJoinView;
+import org.woped.editor.view.petrinet.TransAndJoinXOrSplitView;
 import org.woped.editor.view.petrinet.TransAndSplitJoinView;
 import org.woped.editor.view.petrinet.TransAndSplitView;
 import org.woped.editor.view.petrinet.TransOrSplitView;
@@ -150,6 +151,10 @@ public class ViewFactory extends AbstractViewFactory
             {
 
                 return new TransXOrSplitJoinView(cell);
+
+            } else if (aTCell.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
+            {
+                return new TransAndJoinXOrSplitView(cell);
 
             } else
             {

@@ -87,6 +87,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private JRadioButton          branchingXorSplittRadioButton = null;
     private JRadioButton          branchingXorJoinRadioButton   = null;
     private JRadioButton		  branchingXorSplitJoinRadioButton = null;
+    private JRadioButton		  branchingAndJoinXorSplitRadioButton = null;
     private ButtonGroup           branchingButtonGroup          = null;
     private JPanel                branchingNoneEntry            = null;
     private JPanel                branchingAndSplitEntry        = null;
@@ -95,6 +96,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private JPanel                branchingXorSplitEntry        = null;
     private JPanel                branchingXorJoinEntry         = null;
     private JPanel				  branchingXorSplitJoinEntry	= null;
+    private JPanel                branchingAndJoinXorSplitEntry = null;
     private JLabel                branchingNoneIcon             = null;
     private JLabel                branchingAndSplitIcon         = null;
     private JLabel                branchingAndJoinIcon          = null;
@@ -102,6 +104,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private JLabel                branchingXorSplitIcon         = null;
     private JLabel                branchingXorJoinIcon          = null;
     private JLabel				  branchingXorSplitJoinIcon		= null;
+    private JLabel				  branchingAndJoinXorSplitIcon = null;
 
     // Duration
     private JPanel                durationPanel                 = null;
@@ -575,6 +578,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             branchingButtonGroup.add(getBranchingXorSplitRadioButton());
             branchingButtonGroup.add(getBranchingXorJoinRadioButton());
             branchingButtonGroup.add(getBranchingXorSplitJoinRadioButton());
+            branchingButtonGroup.add(getBranchingAndJoinXorSplitRadioButton());
 
             branchingPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
@@ -591,10 +595,12 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             c.gridy = 0;
             c.insets = new Insets(0, 20, 0, 20);
             branchingPanel.add(getBranchingAndSplitEntry(), c);
+            
             c.gridx = 2;
             c.gridy = 0;
             c.insets = new Insets(0, 0, 0, 0);
             branchingPanel.add(getBranchingAndJoinEntry(), c);
+            
             c.gridx = 1;
             c.gridy = 1;
             c.insets = new Insets(0, 20, 0, 20);
@@ -612,6 +618,11 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             c.gridy = 2;
             c.insets = new Insets(0, 0, 0, 0);
             branchingPanel.add(getBranchingAndSplitJoinEntry(), c);
+
+            c.gridx = 1;
+            c.gridy = 3;
+            c.insets = new Insets(0, 20, 0, 20);
+            branchingPanel.add(getBranchingAndJoinXorSplitEntry(), c);
             
             checkBranching();
         }
@@ -646,7 +657,10 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
                         break;
                     case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
                         getBranchingAndSplitJoinRadioButton().setSelected(true);
-                        break;                                          	
+                        break;              
+                    case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
+                    	getBranchingAndJoinXorSplitRadioButton().setSelected(true);
+                    	break;
                     default:
                 }
             default:
@@ -722,6 +736,16 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         return branchingXorSplitJoinRadioButton;
     }
 
+    private JRadioButton getBranchingAndJoinXorSplitRadioButton()
+    {
+        if (branchingAndJoinXorSplitRadioButton == null)
+        {
+            branchingAndJoinXorSplitRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit"));
+            branchingAndJoinXorSplitRadioButton.setEnabled(false);
+        }
+        return branchingAndJoinXorSplitRadioButton;
+    }
+    
     private JPanel getBranchingNoneEntry()
     {
         if (branchingNoneEntry == null)
@@ -883,6 +907,29 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         return branchingXorSplitJoinEntry;
     }
 
+    private JPanel getBranchingAndJoinXorSplitEntry()
+    {
+        if (branchingAndJoinXorSplitEntry == null)
+        {
+            branchingAndJoinXorSplitEntry = new JPanel();
+            branchingAndJoinXorSplitEntry.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.weightx = 1;
+            c.weighty = 1;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            branchingAndJoinXorSplitEntry.add(getBranchingAndJoinXorSplitRadioButton(), c);
+            c.gridx = 1;
+            c.gridy = 0;
+            c.insets = new Insets(0, 0, 0, 0);
+            branchingAndJoinXorSplitEntry.add(getBranchingAndJoinXorSplitIcon(), c);
+        }
+
+        return branchingAndJoinXorSplitEntry;
+    }
+    
     private JLabel getBranchingNoneIcon()
     {
         if (branchingNoneIcon == null)
@@ -946,6 +993,13 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     	return branchingXorSplitJoinIcon;
     }
 
+    private JLabel getBranchingAndJoinXorSplitIcon()
+    {
+    	if (branchingAndJoinXorSplitIcon == null)
+    		branchingAndJoinXorSplitIcon = new JLabel(Messages.getImageIcon("Popup.Add.AndJoinXorSplit"));
+    	return branchingAndJoinXorSplitIcon;
+    }
+    
     // *********************************DurationPanel*****************************************************
     private JPanel getDurationPanel()
     {

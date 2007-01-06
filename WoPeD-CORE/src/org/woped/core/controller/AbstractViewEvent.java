@@ -38,9 +38,9 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int DRAWMODE_ANDJOIN          = 1023;
     public static final int DRAWMODE_ANDSPLITJOIN     = 1073;
     public static final int DRAWMODE_XORSPLIT         = 1024;
-    public static final int DRAWMODE_XORSPLITJOIN     = 1027;
     public static final int DRAWMODE_XORJOIN          = 1025;
     public static final int DRAWMODE_SUB              = 1026;
+    public static final int DRAWMODE_XORSPLITJOIN     = 1027;
 
     public static final int CHECK_SELECTION           = 1028;
     public static final int ARC_SELECTED              = 1029;
@@ -71,13 +71,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ADD_TOKEN                 = 1053;
     public static final int ADD_XORSPLITJOIN          = 1054;
     public static final int ADD_ANDSPLITJOIN		  = 1055;
-    // UML Elements
-    public static final int ADD_ACTIVITY              = 1100;
-    public static final int ADD_START                 = 1101;
-    public static final int ADD_STOP                  = 1102;
-    public static final int ADD_AND                   = 1103;
-    public static final int ADD_XOR                   = 1104;
-
+    public static final int ADD_ANDJOINXORSPLIT       = 1056;
+    
     public static final int OPEN_PROPERTIES           = 1060;
     public static final int ANALYSIS_WOFLAN           = 1061;
     //! Besides analysis using Woflan, we now support
@@ -91,6 +86,16 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int CASCADE                   = 1071;
     public static final int ARRANGE                   = 1072;
     public static final int SHOWSIDEBAR				  = 1074;
+    
+    public static final int DRAWMODE_ANDJOIN_XORSPLIT = 1075;
+    
+    // UML Elements
+    public static final int ADD_ACTIVITY              = 1100;
+    public static final int ADD_START                 = 1101;
+    public static final int ADD_STOP                  = 1102;
+    public static final int ADD_AND                   = 1103;
+    public static final int ADD_XOR                   = 1104;
+
 
     // General Orders
     public static final int VIEWEVENT_FIRST           = 0;

@@ -216,7 +216,8 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 								"Connection from Aalst Model detected... resolve Inner-Transitions ...");
 
 				/* IF SOURCE IS XOR SPLIT */
-				if (operatorModel.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
+				if ((operatorModel.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE) ||						
+						(operatorModel.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
 				{
 
 					// Wenn die Referenztabelle von dem Operator nur diesen
@@ -527,7 +528,8 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 				}
 				/* IF target ist XOR SPLIT OR OR SPLIT */
 				else if (operatorModel.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE
-						|| operatorModel.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE)
+						|| operatorModel.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE 
+						|| operatorModel.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
 				{
 
 					// create & add new arc From EACH Source to EACH SimpleTrans
@@ -598,7 +600,8 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 				// SOURCE IS XOR-SPLIT OPERATOR => delete inner Transition that
 				// is source to place IF more than 1 inner transition
 
-				if (currentOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
+				if ((currentOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)||
+						(currentOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
 				{
 					if (currentOperator.getSimpleTransContainer()
 							.getElementsByType(

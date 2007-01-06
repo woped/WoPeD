@@ -343,6 +343,7 @@ public class StructuralAnalysis {
 		// as well as at least two outputs
 		case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
 		case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
+		case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
 			isCorrectConfiguration =
 				((arcConfig.m_numIncoming>1)&&
 						(arcConfig.m_numOutgoing>1));

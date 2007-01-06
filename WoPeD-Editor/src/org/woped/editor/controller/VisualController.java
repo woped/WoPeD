@@ -136,8 +136,10 @@ public class VisualController implements PropertyChangeListener,
 	//! Condition that is activated if the tree view of the
 	//! editor that currently has the focus is activated
 	public static final int TREEVIEW_VISIBLE = 33;
+	
+	public static final int DRAWMODE_ANDJOIN_XORSPLIT = 34;
 
-	private static final int MAX_ID = 34;
+	private static final int MAX_ID = 35;
 
 	private Vector[] m_enable = new Vector[MAX_ID + 1];
 
@@ -512,6 +514,7 @@ public class VisualController implements PropertyChangeListener,
 		boolean xorJoin = false;
 		boolean xorSplitJoin = false;
 		boolean andSplitJoin = false;
+		boolean andJoinXorSplit = false;
 		boolean orSplit = false;
 		boolean subprocess = false;
 
@@ -543,6 +546,9 @@ public class VisualController implements PropertyChangeListener,
 			case (OperatorTransitionModel.XOR_JOIN_TYPE):
 				xorJoin = true;
 				break;
+			case (OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE):
+				andJoinXorSplit = true;
+				break;
 			case (OperatorTransitionModel.OR_SPLIT_TYPE):
 				orSplit = true;
 				break;
@@ -560,6 +566,7 @@ public class VisualController implements PropertyChangeListener,
 		setStatus(DRAWMODE_XOR_SPLIT, xorSplit);
 		setStatus(DRAWMODE_XOR_JOIN, xorJoin);
 		setStatus(DRAWMODE_XOR_SPLITJOIN, xorSplitJoin);
+		setStatus(DRAWMODE_ANDJOIN_XORSPLIT, andJoinXorSplit);
 		setStatus(DRAWMODE_OR_SPLIT, orSplit);
 		setStatus(DRAWMODE_SUBPROCESS, subprocess);
 	}

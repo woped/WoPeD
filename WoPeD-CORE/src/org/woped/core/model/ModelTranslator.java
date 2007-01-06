@@ -84,10 +84,11 @@ public class ModelTranslator
                         for (Iterator targetIter = tempTargetElements.values().iterator(); targetIter.hasNext();)
                         {
                             tempTarget = (AbstractElementModel) sourceIter.next();
-                            if (tempTarget.getType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
+                            if ((tempTarget.getType() == OperatorTransitionModel.XOR_SPLIT_TYPE)||
+                            	(tempTarget.getType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
                             {
                                 // referenc on each other
-                                Object newId = uml.getNewElementId(OperatorTransitionModel.XOR_SPLIT_TYPE);
+                                Object newId = uml.getNewElementId(tempTarget.getType());
                                 idMapper.put(tempSource.getId(), newId);
                                 idMapper.put(tempTarget.getId(), newId);
                             }
@@ -128,7 +129,9 @@ public class ModelTranslator
                     tempCreateMap.setOperatorType(OperatorModel.AND_TYPE);
                     uml.createElement(tempCreateMap, "").setElementContext(tempElement.getElementContext());
                     // and.getElementContext().setANDType(true);
-                } else if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
+                } else if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || 
+                		tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE ||
+                		tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
                 {
                     tempCreateMap.setOperatorType(OperatorModel.XOR_TYPE);
                     // Change ID if Split-Join

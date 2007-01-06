@@ -258,7 +258,8 @@ public class TokenGameController
             {
                 if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size()) transition.setActivated(true);
 
-            } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
+            } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)||
+            		(operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
             {
                 if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size())
                 {
@@ -344,7 +345,8 @@ public class TokenGameController
                     sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
                     actionPerformed = true;
 
-                } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
+                } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)||
+                		(operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
                 {
                     // Do nothing: Only controlled by Arc Clicking
                 } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
@@ -397,7 +399,8 @@ public class TokenGameController
                 tempOperator = (OperatorTransitionModel) source;
                 if (tempOperator.isFireing())
                 {
-                    if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+                    if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE ||
+                    		tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
                     {
                         receiveTokens(arc);
                         if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) sendTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
