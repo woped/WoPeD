@@ -1,16 +1,18 @@
 package org.woped.editor.controller.vc;
 
-import org.woped.core.model.*;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
-import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.InnerElementContainer;
-import org.woped.editor.controller.vc.NetAlgorithms;
-
 import java.util.Iterator;
+
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.InnerElementContainer;
+import org.woped.editor.utilities.Messages;
 
 //! This class implements a tree node representing
 //! one single node of a petri-net that is currently begin
 //! analyzed
+
+@SuppressWarnings("serial")
 public class NodeNetInfo extends NetInfo {
 	//! Instantiate this class with an element model node and a flag
 	//! specifying whether children of that node (sub-processes,
@@ -21,7 +23,7 @@ public class NodeNetInfo extends NetInfo {
 		super("");    
 		m_nodeObject = node;
 		ModelElementContainer rootOwningContainer = m_nodeObject.getRootOwningContainer();
-		m_nodeOwner = rootOwningContainer!=null?rootOwningContainer.getOwningElement():null;
+		m_nodeOwner = rootOwningContainer != null ? rootOwningContainer.getOwningElement() : null;
 		setUserObject(getNodeString(m_nodeObject, m_nodeOwner));
 		
 		// Generic approach to detect whether this element has any children:
@@ -33,15 +35,16 @@ public class NodeNetInfo extends NetInfo {
 			ModelElementContainer simpleTransContainer =
 				operator.getSimpleTransContainer();
 			// Recursively call ourselves to add inner nodes
-			Iterator innerIterator =simpleTransContainer.getRootElements().iterator();			
+			Iterator innerIterator = simpleTransContainer.getRootElements().iterator();			
 			while (innerIterator.hasNext())
 			{
 				try
 				{			
 					AbstractElementModel current = (AbstractElementModel)innerIterator.next();
 					AbstractElementModel owningElement = current.getRootOwningContainer().getOwningElement();
-					if ((owningElement!=null)&&(operator.equals(current.getRootOwningContainer().getOwningElement())))
-						add(new NodeNetInfo(current, true));
+					if ((owningElement != null) 
+						&& (operator.equals(current.getRootOwningContainer().getOwningElement())))
+					    add(new NodeNetInfo(current, true));
 				}
 				catch (ClassCastException e)
 				{
@@ -72,7 +75,7 @@ public class NodeNetInfo extends NetInfo {
 				= (AbstractElementModel)relevantNodes.next();
 			// If superOnly is specified
 			// only nodes that are contained in the next lower level container are relevant for us
-			if ((!superOnly)||(currentNode.getHierarchyLevel()<nodeHierarchyLevel))
+			if ((!superOnly)||(currentNode.getHierarchyLevel() < nodeHierarchyLevel))
 			{
 				if (isFirst)
 					isFirst = false;
@@ -81,33 +84,40 @@ public class NodeNetInfo extends NetInfo {
 				result.append(currentNode.getId());
 			}			
 		}
-		if (result.length()>0)
+		if (result.length() > 0)
 			result = new StringBuffer("(" + result.toString() + ")");
 		return result.toString();
 	}
 	
 	private static String getNodeString(AbstractElementModel node,
-			AbstractElementModel nodeOwner)
+		AbstractElementModel nodeOwner)
 	{
-		// FIXME: Translate
-		String predecessors = getConnectedNodesString(node,NetAlgorithms.connectionTypeINBOUND,true);
-		String successors = getConnectedNodesString(node,NetAlgorithms.connectionTypeOUTBOUND,true);
-		String result = "Node ID: " + ((nodeOwner!=null)?predecessors:"") +
-			node.getId() + ((nodeOwner!=null)?successors:"");
-		// Specify name only if it exists
-		if (node.getNameValue()!=null)
-			result = result + ", Name: " + node.getNameValue();
-		
-		if (nodeOwner!=null)
-			result = result + " ,Owner: (" + getNodeString(nodeOwner,null) + ")"; 
-		return result;
+	    String predecessors = getConnectedNodesString(node, NetAlgorithms.connectionTypeINBOUND, true);
+       	    String successors = getConnectedNodesString(node, NetAlgorithms.connectionTypeOUTBOUND, true);
+            String nodeId = Messages.getString("TreeView.Element.Node.ID");
+            String nodeOwnerString = Messages.getString("TreeView.Element.Owner");
+            String nodeNameString = Messages.getString("TreeView.Element.Name");
+        	
+            String result = nodeId + ": " + ((nodeOwner != null) ? predecessors : "") 
+        		+ node.getId() + ((nodeOwner != null) ? successors : "");
+        	
+            // Specify name only if it exists
+            if (node.getNameValue() != null) {
+        	result += ", " + nodeNameString + ": " + node.getNameValue();
+            }
+        	
+            if (nodeOwner != null) {
+        	result += ", " + nodeOwnerString + ": (" + getNodeString(nodeOwner, null) + ")"; 
+            }
+            return result;
 	}
+	
 	public Object[] getReferencedElements() {
 		Object[] result = new Object[1];
 		// If the owner is a sub-process
 		// the object can be displayed and thus will be returned as the item to be selected
-		result[0] =(((m_nodeOwner!=null)&&
-				(m_nodeOwner.getType()!=AbstractPetriNetModelElement.SUBP_TYPE))?m_nodeOwner:m_nodeObject);
+		result[0] = (((m_nodeOwner != null)
+			&& (m_nodeOwner.getType() != AbstractPetriNetModelElement.SUBP_TYPE)) ? m_nodeOwner: m_nodeObject);
 		return result;
 	};	
 	//! Store the node object this tree item represents
@@ -115,5 +125,5 @@ public class NodeNetInfo extends NetInfo {
 	//! Sometimes it is better to reference the node owner
 	//! instead of the node itself (inner transitions and places
 	//! of a complex operator)
-	private AbstractElementModel m_nodeOwner=null;
+	private AbstractElementModel m_nodeOwner = null;
 }
