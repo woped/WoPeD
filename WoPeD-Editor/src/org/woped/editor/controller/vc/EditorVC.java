@@ -267,6 +267,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		m_scrollPane = new JScrollPane(getGraph());
 		// Element Tree
 		m_treeObject = new JTree(m_treeModel);
+		m_treeObject.setCellRenderer(new NetInfoTreeRenderer());
 		getGraph().getModel().addGraphModelListener(m_treeModel);
 		m_treeObject.setRootVisible(false);
 		m_treeObject.setShowsRootHandles(true);
