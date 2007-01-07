@@ -6,6 +6,7 @@ import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.InnerElementContainer;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.editor.utilities.Messages;
 
 //! This class implements a tree node representing
@@ -14,6 +15,17 @@ import org.woped.editor.utilities.Messages;
 
 @SuppressWarnings("serial")
 public class NodeNetInfo extends NetInfo {
+    
+    	private int typeId = 0;
+        
+	public int getTypeId() {
+	    return typeId;
+	}
+	
+	public void setTypeId(int typeId) {
+	    this.typeId = typeId;
+	}
+	
 	//! Instantiate this class with an element model node and a flag
 	//! specifying whether children of that node (sub-processes,
 	//! inner transitions) should be added to the tree item
@@ -25,6 +37,16 @@ public class NodeNetInfo extends NetInfo {
 		ModelElementContainer rootOwningContainer = m_nodeObject.getRootOwningContainer();
 		m_nodeOwner = rootOwningContainer != null ? rootOwningContainer.getOwningElement() : null;
 		setUserObject(getNodeString(m_nodeObject, m_nodeOwner));
+		
+		// set the type of the element
+		typeId = node.getType();
+		
+		// if the element is a transition-operator
+		if (node instanceof OperatorTransitionModel) {
+		    OperatorTransitionModel otm = (OperatorTransitionModel) node;
+		    typeId = otm.getOperatorType();
+		}
+		
 		
 		// Generic approach to detect whether this element has any children:
 		// Elements with children implement InnerElementContainer
