@@ -45,7 +45,7 @@ import org.woped.core.config.DefaultStaticConfiguration;
 public class TransOrSplitView extends TransSimpleView
 {
 
-    private TransOrSplitRenderer renderer = new TransOrSplitRenderer();
+    private TransOrSplitRenderer renderer = null;
 
     /**
      * Constructor for OrSplitView.
@@ -57,6 +57,7 @@ public class TransOrSplitView extends TransSimpleView
     public TransOrSplitView(Object cell)
     {
         super(cell);
+        renderer = new TransOrSplitRenderer(cell);
     }
 
     public CellViewRenderer getRenderer()
@@ -73,8 +74,12 @@ public class TransOrSplitView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransOrSplitRenderer extends VertexRenderer
+    private class TransOrSplitRenderer extends AbstractElementRenderer
     {
+    	TransOrSplitRenderer(Object cell)
+    	{
+    		super(cell);
+    	}
 
         public void paint(Graphics g)
         {
@@ -86,7 +91,7 @@ public class TransOrSplitView extends TransSimpleView
             boolean tmp = selected;
             if (super.isOpaque())
             {
-                //g.setColor(super.getBackground());
+                g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
             try
@@ -101,6 +106,9 @@ public class TransOrSplitView extends TransSimpleView
             }
             if (bordercolor != null)
             {
+                g.setColor(getFillColor());
+            	g.fillRect(b, b, d.width - b - 1, d.height - b - 1);
+
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);

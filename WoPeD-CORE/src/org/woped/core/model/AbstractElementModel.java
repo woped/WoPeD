@@ -21,6 +21,12 @@ import org.woped.core.utilities.LoggerManager;
 
 public abstract class AbstractElementModel extends DefaultGraphCell implements Serializable
 {
+	//! Specifies whether the element represented by this model
+	//! is highlighted
+	//! Highlighted elements are drawn differently by their respective view
+	//! This is used for structural analysis, to show that an element is selected
+	//! in the analysis dialog
+	boolean highlighted = false;	
 
 	//! The following methods and members are used for
 	//! structural analysis and not needed for anything else
@@ -302,5 +308,11 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	public boolean getAllowOutgoingConnections()
 	{
 		return true;
+	}
+	public boolean isHighlighted() {
+		return highlighted;
+	}
+	public void setHighlighted(boolean highlighted) {
+		this.highlighted = highlighted;
 	}
 }

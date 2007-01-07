@@ -22,9 +22,19 @@
  */
 package org.woped.core.view;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphCellEditor;
+import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.model.AbstractElementModel;
 
 /**
  * @author Simon Landes
@@ -60,4 +70,33 @@ public abstract class AbstractElementView extends VertexView
     {
         return cellEditor;
     }
+    
+	protected abstract class AbstractElementRenderer extends VertexRenderer
+	{
+		private boolean readOnly;
+		
+		private Color readOnlyColor = new Color(225, 225, 225);
+		private Color highLightedColor = new Color(255,0,0,128);
+
+		public AbstractElementRenderer(Object cell)
+		{
+			AbstractElementModel model = (AbstractElementModel) cell;
+			readOnly = model.isReadOnly();
+		}
+		
+		protected Color getFillColor()
+		{
+			Color result = null;
+			if (((AbstractElementModel)(AbstractElementView.this.getCell())).isHighlighted())
+				result = highLightedColor;
+			else if (readOnly)
+			{
+				result =  readOnlyColor;
+			} else
+			{
+				result = super.getBackground();
+			}
+			return result;
+		}
+	}    
 }

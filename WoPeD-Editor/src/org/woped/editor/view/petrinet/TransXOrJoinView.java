@@ -48,7 +48,7 @@ import org.woped.editor.utilities.Messages;
 public class TransXOrJoinView extends TransSimpleView
 {
 
-    private TransXOrJoinRenderer renderer = new TransXOrJoinRenderer();
+    private TransXOrJoinRenderer renderer = null;
 
     /**
      * Constructor for TransAndJoinView.
@@ -60,6 +60,7 @@ public class TransXOrJoinView extends TransSimpleView
     public TransXOrJoinView(Object cell)
     {
         super(cell);
+        renderer = new TransXOrJoinRenderer(cell);
     }
 
     public CellViewRenderer getRenderer()
@@ -76,8 +77,12 @@ public class TransXOrJoinView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransXOrJoinRenderer extends VertexRenderer
+    private class TransXOrJoinRenderer extends AbstractElementRenderer
     {
+    	TransXOrJoinRenderer(Object cell)
+    	{
+    		super(cell);
+    	}
 
         public void paint(Graphics g)
         {
@@ -89,7 +94,7 @@ public class TransXOrJoinView extends TransSimpleView
             boolean tmp = selected;
             if (super.isOpaque())
             {
-                //g.setColor(super.getBackground());
+                g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
             try
@@ -104,8 +109,8 @@ public class TransXOrJoinView extends TransSimpleView
             }
             if (bordercolor != null)
             {
-        	g.setColor(Color.WHITE);
-        	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
+                g.setColor(getFillColor());        	
+                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	        	
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);

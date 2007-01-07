@@ -47,7 +47,7 @@ import org.woped.editor.utilities.Messages;
 @SuppressWarnings("serial")
 public class TransAndSplitJoinView extends TransSimpleView
 {
-    private TransAndSplitJoinRenderer renderer = new TransAndSplitJoinRenderer();
+    private TransAndSplitJoinRenderer renderer = null;
 
     /**
      * Constructor for TransAndJoinView.
@@ -59,6 +59,7 @@ public class TransAndSplitJoinView extends TransSimpleView
     public TransAndSplitJoinView(Object cell)
     {
         super(cell);
+        renderer = new TransAndSplitJoinRenderer(cell);
     }
 
     public CellViewRenderer getRenderer()
@@ -75,8 +76,13 @@ public class TransAndSplitJoinView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransAndSplitJoinRenderer extends VertexRenderer
+    private class TransAndSplitJoinRenderer extends AbstractElementRenderer
     {
+    	TransAndSplitJoinRenderer(Object cell)
+    	{
+    		super(cell);
+    	}
+    	
         public void paint(Graphics g)
         {
 
@@ -87,7 +93,7 @@ public class TransAndSplitJoinView extends TransSimpleView
             boolean tmp = selected;
             if (super.isOpaque())
             {
-                //g.setColor(super.getBackground());
+                g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
             try
@@ -102,8 +108,8 @@ public class TransAndSplitJoinView extends TransSimpleView
             }
             if (bordercolor != null)
             {
-        	g.setColor(Color.WHITE);
-        	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
+                g.setColor(getFillColor());
+                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);

@@ -274,7 +274,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		// Handle selection of tree items
 		// by selecting corresponding item in graph
 		GraphTreeModelSelector selectionHandler = new GraphTreeModelSelector(
-				this, m_treeObject, m_centralMediator);
+				this, m_treeObject, m_centralMediator, false);
 		m_treeObject.addTreeSelectionListener(selectionHandler);
 		getGraph().getSelectionModel().addGraphSelectionListener(
 				selectionHandler);

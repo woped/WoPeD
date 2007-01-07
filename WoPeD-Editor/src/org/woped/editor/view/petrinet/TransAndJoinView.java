@@ -47,7 +47,7 @@ import org.woped.editor.utilities.Messages;
 @SuppressWarnings("serial")
 public class TransAndJoinView extends TransSimpleView
 {
-    private TransAndJoinRenderer renderer = new TransAndJoinRenderer();
+    private TransAndJoinRenderer renderer = null;
 
     /**
      * Constructor for TransAndJoinView.
@@ -59,6 +59,7 @@ public class TransAndJoinView extends TransSimpleView
     public TransAndJoinView(Object cell)
     {
         super(cell);
+        renderer = new TransAndJoinRenderer(cell);
     }
 
 
@@ -76,8 +77,12 @@ public class TransAndJoinView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransAndJoinRenderer extends VertexRenderer
+    private class TransAndJoinRenderer extends AbstractElementRenderer
     {
+    	public TransAndJoinRenderer(Object cell)
+    	{
+    		super(cell);
+    	}
 
         public void paint(Graphics g)
         {
@@ -89,7 +94,7 @@ public class TransAndJoinView extends TransSimpleView
             boolean tmp = selected;
             if (super.isOpaque())
             {
-                //g.setColor(super.getBackground());
+                g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
             try
@@ -104,7 +109,7 @@ public class TransAndJoinView extends TransSimpleView
             }
             if (bordercolor != null)
             {
-        	g.setColor(Color.WHITE);
+            g.setColor(getFillColor());
         	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));

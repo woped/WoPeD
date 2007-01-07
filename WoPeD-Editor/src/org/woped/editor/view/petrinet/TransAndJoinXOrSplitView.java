@@ -48,7 +48,7 @@ import org.woped.editor.utilities.Messages;
 public class TransAndJoinXOrSplitView extends TransSimpleView
 {
 
-    private TransAndJoinXOrSplitRenderer renderer = new TransAndJoinXOrSplitRenderer();
+    private TransAndJoinXOrSplitRenderer renderer = null;
 
     /**
      * Constructor for TransAndJoinXOrSplitView.
@@ -60,6 +60,7 @@ public class TransAndJoinXOrSplitView extends TransSimpleView
     public TransAndJoinXOrSplitView(Object cell)
     {
         super(cell);
+        renderer = new TransAndJoinXOrSplitRenderer(cell);
     }
 
     public CellViewRenderer getRenderer()
@@ -76,8 +77,13 @@ public class TransAndJoinXOrSplitView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransAndJoinXOrSplitRenderer extends VertexRenderer
+    private class TransAndJoinXOrSplitRenderer extends AbstractElementRenderer
     {
+    	TransAndJoinXOrSplitRenderer(Object cell)
+    	{
+    		super(cell);
+    	}
+    	
         public void paint(Graphics g)
         {
 
@@ -88,7 +94,7 @@ public class TransAndJoinXOrSplitView extends TransSimpleView
             boolean tmp = selected;
             if (super.isOpaque())
             {
-                //g.setColor(super.getBackground());
+                g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
             try
@@ -103,8 +109,8 @@ public class TransAndJoinXOrSplitView extends TransSimpleView
             }
             if (bordercolor != null)
             {
-        	g.setColor(Color.WHITE);
-        	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
+                g.setColor(getFillColor());
+                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);

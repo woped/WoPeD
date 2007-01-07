@@ -62,7 +62,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
         	m_treeObject.setShowsRootHandles(true);
         	getContentPane().add(new JScrollPane(m_treeObject));
         	
-    		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor, m_treeObject, mediator);
+    		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor, m_treeObject, mediator, true);
         	// We need to know about selection changes inside the tree
         	m_treeObject.addTreeSelectionListener(m_treeSelectionChangeHandler);        	
         	
@@ -504,6 +504,9 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 				});	
 	}
 	public void windowClosing(WindowEvent e) {
+		// Before closing the window, deselect all tree elements
+		// to clear highlighting 
+		m_treeObject.clearSelection();
 		// When receiving a windowClosing() event we will
 		// initiate immediate disposal of the affected dialog
 		dispose();

@@ -130,21 +130,17 @@ public class PlaceView extends AbstractElementView
 	{
 		return renderer;
 	}
-
+	
 	/**
 	 * 
 	 * this inner class contains the render information of a place
 	 * 
 	 */
-	private class PlaceRenderer extends VertexRenderer
+	private class PlaceRenderer extends AbstractElementRenderer
 	{
-		private boolean readOnly;
-		private Color readOnlyColor = new Color(225, 225, 225);
-
 		public PlaceRenderer(Object cell)
 		{
-			AbstractElementModel model = (AbstractElementModel) cell;
-			readOnly = model.isReadOnly();
+			super(cell);
 		}
 
 		public void paint(Graphics g)
@@ -156,14 +152,7 @@ public class PlaceView extends AbstractElementView
 			boolean tmp = selected;
 			if (super.isOpaque())
 			{
-				if (readOnly)
-				{
-					g.setColor(readOnlyColor);
-				} else
-				{
-					g.setColor(super.getBackground());
-				}
-
+				g.setColor(getFillColor());
 				g.fillOval(b - 1, b - 1, d.width - b, d.height - b);
 			}
 			try
@@ -178,13 +167,7 @@ public class PlaceView extends AbstractElementView
 			}
 			if (bordercolor != null)
 			{
-				if (readOnly)
-				{
-					g.setColor(readOnlyColor);
-				} else
-				{
-					g.setColor(Color.WHITE);
-				}
+				g.setColor(getFillColor());
 				g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
 				g.setColor(bordercolor);
 				g2.setStroke(new BasicStroke(b));
@@ -192,13 +175,7 @@ public class PlaceView extends AbstractElementView
 			}
 			if (selected)
 			{
-				if (readOnly)
-				{
-					g.setColor(readOnlyColor);
-				} else
-				{
-					g.setColor(Color.WHITE);
-				}
+				g.setColor(getFillColor());
 				g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
 				g.setColor(ConfigurationManager.getConfiguration()
 						.getSelectionColor());

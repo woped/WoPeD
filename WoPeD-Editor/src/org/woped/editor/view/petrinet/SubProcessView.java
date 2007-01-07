@@ -52,7 +52,7 @@ import org.woped.editor.utilities.Messages;
 public class SubProcessView extends AbstractElementView
 {
 
-    private SubProcessRenderer renderer = new SubProcessRenderer();
+    private SubProcessRenderer renderer = null;
 
     /**
      * Constructor for TransitionView.
@@ -64,7 +64,7 @@ public class SubProcessView extends AbstractElementView
     public SubProcessView(Object cell)
     {
         super(cell);
-
+        renderer = new SubProcessRenderer(cell);
     }
 
 
@@ -92,8 +92,12 @@ public class SubProcessView extends AbstractElementView
      * 
      * 28.03.2003
      */
-    private class SubProcessRenderer extends VertexRenderer
+    private class SubProcessRenderer extends AbstractElementRenderer
     {
+    	public SubProcessRenderer(Object cell)
+    	{
+    		super(cell);
+    	}
 
         public void paint(Graphics g)
         {
@@ -105,7 +109,7 @@ public class SubProcessView extends AbstractElementView
             boolean tmp = selected;
             if (super.isOpaque())
             {
-                // g.setColor(super.getBackground());
+                g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
             try
@@ -120,7 +124,8 @@ public class SubProcessView extends AbstractElementView
             }
             if (bordercolor != null)
             {
-        	g.setColor(Color.WHITE);
+
+            	g.setColor(getFillColor());
         	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));

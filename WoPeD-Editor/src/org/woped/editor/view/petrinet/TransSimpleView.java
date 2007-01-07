@@ -49,7 +49,7 @@ import org.woped.editor.utilities.Messages;
 @SuppressWarnings("serial")
 public class TransSimpleView extends AbstractElementView
 {
-    private TransSimpleRenderer renderer = new TransSimpleRenderer();
+    private TransSimpleRenderer renderer = null;
 
     /**
      * Constructor for TransitionView.
@@ -61,6 +61,7 @@ public class TransSimpleView extends AbstractElementView
     public TransSimpleView(Object cell)
     {
         super(cell);
+        renderer = new TransSimpleRenderer(cell);
 
     }
 
@@ -87,8 +88,12 @@ public class TransSimpleView extends AbstractElementView
      * 
      * 28.03.2003
      */
-    private class TransSimpleRenderer extends VertexRenderer
+    private class TransSimpleRenderer extends AbstractElementRenderer
     {
+    	TransSimpleRenderer(Object cell)
+    	{
+    		super(cell);
+    	}
 
         public void paint(Graphics g)
         {
@@ -100,7 +105,7 @@ public class TransSimpleView extends AbstractElementView
             boolean tmp = selected;
             if (super.isOpaque())
             {
-                g.setColor(super.getBackground());
+                g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
             try
@@ -115,8 +120,8 @@ public class TransSimpleView extends AbstractElementView
             }
             if (bordercolor != null)
             {
-        	g.setColor(Color.WHITE);
-        	g.fillRect(b, b, d.width - b - 1, d.height - b - 1);
+                g.setColor(getFillColor());
+                g.fillRect(b, b, d.width - b - 1, d.height - b - 1);
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);

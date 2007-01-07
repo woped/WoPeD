@@ -27,10 +27,11 @@ import org.woped.core.model.petrinet.SubProcessModel;
 public class GraphTreeModelSelector implements TreeSelectionListener, GraphSelectionListener {
 
 	public GraphTreeModelSelector(IEditor e, JTree treeObject,
-			AbstractApplicationMediator mediator) {
+			AbstractApplicationMediator mediator, boolean highlightOnly) {
 		m_currentEditor = e;
 		m_treeObject = treeObject;
 		m_mediator = mediator;
+		this.highlightOnly = highlightOnly;
 	}
 
 	private boolean valueChangedActive = false;
@@ -86,12 +87,19 @@ public class GraphTreeModelSelector implements TreeSelectionListener, GraphSelec
 				}
 			}
 		}
-		valueChangedActive = true;
-		// Need to have an intermediary for our new selection
-		// as for some reason addSelection will clear all
-		// previously selected items
-		currentGraph.setSelectionCells(newSelection.toArray());
-		valueChangedActive = false;
+		if (highlightOnly==false)
+		{
+			valueChangedActive = true;
+			// Need to have an intermediary for our new selection
+			// as for some reason addSelection will clear all
+			// previously selected items
+			currentGraph.setSelectionCells(newSelection.toArray());
+			valueChangedActive = false;
+		}
+		else
+		{
+			highlightElements(newSelection.iterator());
+		}
 	}
 
 	public void valueChanged(GraphSelectionEvent arg0)
@@ -166,7 +174,25 @@ public class GraphTreeModelSelector implements TreeSelectionListener, GraphSelec
 		newPaths = (newSelection.toArray(newPaths));
 		m_treeObject.setSelectionPaths(newPaths);
 		valueChangedActive = false;
-	}	
+	}
+	
+	public void highlightElements(Iterator<AbstractPetriNetModelElement> j)
+	{
+		// First, de-highlight all elements
+		Iterator i = m_currentEditor.getModelProcessor().getElementContainer().getRootElements().iterator();
+		while (i.hasNext())
+		{
+			AbstractElementModel current = (AbstractElementModel)i.next();
+			current.setHighlighted(false);
+		}
+		// Then, highlight the selected one
+		while (j.hasNext())
+		{
+			AbstractPetriNetModelElement currentHigh = j.next();
+			currentHigh.setHighlighted(true);
+		}
+		m_currentEditor.getGraph().repaint();		
+	}
 	
 	//! Remember a pointer to the currently active editor
 	//! (the one for which this window was created)
@@ -176,4 +202,7 @@ public class GraphTreeModelSelector implements TreeSelectionListener, GraphSelec
 	private JTree   m_treeObject;
 	//! Required to be able to open sub processes as required
 	private AbstractApplicationMediator m_mediator;
+	
+	//! If specified, highlight elements rather than selecting them 
+	private boolean highlightOnly = false;
 }
