@@ -28,7 +28,6 @@ import java.io.File;
 import java.net.URL;
 import java.security.AccessControlException;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -47,7 +46,6 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.StructuralAnalysis;
-import org.woped.editor.controller.vep.EditorEventProcessor;
 import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.AboutUI;
@@ -58,8 +56,6 @@ import org.woped.gui.controller.ViewEvent;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.gui.help.HelpBrowser;
-
-import com.sun.media.sound.AlawCodec;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -295,24 +291,24 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			{
 				StructuralAnalysis analysis = new StructuralAnalysis(editor);
 
-				if (analysis.GetNumNotStronglyConnectedNodes() > 0
-						|| analysis.GetNumSinkPlaces() > 1
-						|| analysis.GetNumSourcePlaces() > 1)
+				if (analysis.getNumNotStronglyConnectedNodes() > 0
+						|| analysis.getNumSinkPlaces() > 1
+						|| analysis.getNumSourcePlaces() > 1)
 				{
 					String errorMessage = Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Start");
 
-					if (analysis.GetNumNotStronglyConnectedNodes() > 0)
+					if (analysis.getNumNotStronglyConnectedNodes() > 0)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.StronglyConnected");
 					}
-					if (analysis.GetNumSourcePlaces() > 1)
+					if (analysis.getNumSourcePlaces() > 1)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Source");
 					}
-					if (analysis.GetNumSinkPlaces() > 1)
+					if (analysis.getNumSinkPlaces() > 1)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Sink");

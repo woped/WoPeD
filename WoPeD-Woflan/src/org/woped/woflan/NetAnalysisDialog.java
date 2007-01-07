@@ -81,13 +81,13 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		DefaultMutableTreeNode current = new NetInfo("Basic net information");
 		parent.add(current);
 				
-		current.add(new NodeGroupNetInfo("Number of places: " + m_structuralAnalysis.GetNumPlaces(),
-				m_structuralAnalysis.GetPlacesIterator()));
-		current.add(new NodeGroupNetInfo("Number of transitions: " + m_structuralAnalysis.GetNumTransitions(),
-				m_structuralAnalysis.GetTransitionsIterator()));
-		current.add(new NodeGroupNetInfo("Number of operators: " + m_structuralAnalysis.GetNumOperators(),
-				m_structuralAnalysis.GetOperatorsIterator()));
-		current.add(new NetInfo("Number of arcs: "+ m_structuralAnalysis.GetNumArcs()));
+		current.add(new NodeGroupNetInfo("Number of places: " + m_structuralAnalysis.getNumPlaces(),
+				m_structuralAnalysis.getPlacesIterator()));
+		current.add(new NodeGroupNetInfo("Number of transitions: " + m_structuralAnalysis.getNumTransitions(),
+				m_structuralAnalysis.getTransitionsIterator()));
+		current.add(new NodeGroupNetInfo("Number of operators: " + m_structuralAnalysis.getNumOperators(),
+				m_structuralAnalysis.getOperatorsIterator()));
+		current.add(new NetInfo("Number of arcs: "+ m_structuralAnalysis.getNumArcs()));
 	}
 	
 	private void BuildSemanticalAnalysis(DefaultMutableTreeNode parent)
@@ -311,8 +311,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 
     	BuildWorkflowInfo(current);
  
-    	current.add(new NodeGroupListNetInfo("Number of free-choice violations: "+ m_structuralAnalysis.GetNumFreeChoiceViolations(),
-    			m_structuralAnalysis.GetFreeChoiceViolations()) {
+    	current.add(new NodeGroupListNetInfo("Number of free-choice violations: "+ m_structuralAnalysis.getNumFreeChoiceViolations(),
+    			m_structuralAnalysis.getFreeChoiceViolations()) {
     		public String GetGroupDisplayString(int nIndex, Collection gorup) {
     			return "Non-free-choice group " + (nIndex+1);
     		}
@@ -325,8 +325,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
     		}
     	});
 
-    	current.add(new NodeGroupNetInfo("Number of operators with wrong arc configuration: "+ m_structuralAnalysis.GetNumMisusedOperators(),
-    			m_structuralAnalysis.GetMisusedOperatorsIterator()) {
+    	current.add(new NodeGroupNetInfo("Number of operators with wrong arc configuration: "+ m_structuralAnalysis.getNumMisusedOperators(),
+    			m_structuralAnalysis.getMisusedOperatorsIterator()) {
 			// We want exactly one source place
 			public int GetInfoState() {
 				if (getChildCount()>0)
@@ -408,8 +408,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 				-1, 0, false));
 		*/
 		
-    	current.add(new NodeGroupListNetInfo("Number of PT/TP handles: "+ m_structuralAnalysis.GetNumWellStructurednessViolations(),
-    			m_structuralAnalysis.GetWellStructurednessViolations()) {
+    	current.add(new NodeGroupListNetInfo("Number of PT/TP handles: "+ m_structuralAnalysis.getNumWellStructurednessViolations(),
+    			m_structuralAnalysis.getWellStructurednessViolations()) {
     		public String GetGroupDisplayString(int nIndex, Collection gorup) {
     			return "PT/TP handle group " + (nIndex+1);
     		}
@@ -431,7 +431,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		parent.add(current);
 		
 		
-		Iterator i = m_structuralAnalysis.GetNotStronglyConnectedNodes();
+		Iterator i = m_structuralAnalysis.getNotStronglyConnectedNodes();
 		LoggerManager.info(Constants.WOFLAN_LOGGER, "Not strongly connected {");
 		while (i.hasNext())
 		{
@@ -440,8 +440,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		}
 		LoggerManager.info(Constants.WOFLAN_LOGGER, "}");
 		
-		current.add(new NodeGroupNetInfo("Number of source places: " + m_structuralAnalysis.GetNumSourcePlaces(),
-				m_structuralAnalysis.GetSourcePlacesIterator()) {
+		current.add(new NodeGroupNetInfo("Number of source places: " + m_structuralAnalysis.getNumSourcePlaces(),
+				m_structuralAnalysis.getSourcePlacesIterator()) {
 			// We want exactly one source place
 			public int GetInfoState() {
 				if (getChildCount()!=1)
@@ -450,8 +450,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 					return InfoStateOK;
 			}
 		});				
-		current.add(new NodeGroupNetInfo("Number of sink places: " + m_structuralAnalysis.GetNumSinkPlaces(),
-				m_structuralAnalysis.GetSinkPlacesIterator()) {
+		current.add(new NodeGroupNetInfo("Number of sink places: " + m_structuralAnalysis.getNumSinkPlaces(),
+				m_structuralAnalysis.getSinkPlacesIterator()) {
 					// We want exactly one sink place
 					public int GetInfoState() {
 						if (getChildCount()!=1)
@@ -460,8 +460,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 							return InfoStateOK;
 					}
 				});	
-		current.add(new NodeGroupNetInfo("Number of source transitions: " + m_structuralAnalysis.GetNumSourceTransitions(),
-				m_structuralAnalysis.GetSourceTransitionsIterator()) {
+		current.add(new NodeGroupNetInfo("Number of source transitions: " + m_structuralAnalysis.getNumSourceTransitions(),
+				m_structuralAnalysis.getSourceTransitionsIterator()) {
 					// Source transitions are not good and should trigger an error
 					public int GetInfoState() {
 						if (getChildCount()>0)
@@ -470,8 +470,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 							return InfoStateOK;
 					}
 				});					
-		current.add(new NodeGroupNetInfo("Number of sink transitions: " + m_structuralAnalysis.GetNumSinkTransitions(),
-				m_structuralAnalysis.GetSinkTransitionsIterator()) {
+		current.add(new NodeGroupNetInfo("Number of sink transitions: " + m_structuralAnalysis.getNumSinkTransitions(),
+				m_structuralAnalysis.getSinkTransitionsIterator()) {
 					// Sink transitions are not good and should trigger an error
 					public int GetInfoState() {
 						if (getChildCount()>0)
@@ -481,8 +481,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 					}
 				});	
 
-		current.add(new NodeGroupNetInfo("Number of unconnected nodes: " + m_structuralAnalysis.GetNumNotConnectedNodes(),
-				m_structuralAnalysis.GetNotConnectedNodes()) {
+		current.add(new NodeGroupNetInfo("Number of unconnected nodes: " + m_structuralAnalysis.getNumNotConnectedNodes(),
+				m_structuralAnalysis.getNotConnectedNodes()) {
 					// Any unconnected nodes must trigger an error
 					public int GetInfoState() {
 						if (getChildCount()>0)
@@ -492,8 +492,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 					}
 				});
 		
-		current.add(new NodeGroupNetInfo("Number of not strongly connected nodes: " + m_structuralAnalysis.GetNumNotStronglyConnectedNodes(),
-				m_structuralAnalysis.GetNotStronglyConnectedNodes()) {
+		current.add(new NodeGroupNetInfo("Number of not strongly connected nodes: " + m_structuralAnalysis.getNumNotStronglyConnectedNodes(),
+				m_structuralAnalysis.getNotStronglyConnectedNodes()) {
 					// Any nodes that are not strongly connected must trigger an error
 					public int GetInfoState() {
 						if (getChildCount()>0)

@@ -1,13 +1,17 @@
 package org.woped.editor.controller.vc;
 
-import org.woped.core.controller.*;
-import org.woped.core.model.*;
-import org.woped.core.model.petrinet.*;
-import org.woped.core.utilities.LoggerManager;
-import org.jgraph.graph.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Set;
 
-
-import java.util.*;
+import org.woped.core.controller.IEditor;
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.CreationMap;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.PetriNetModelElement;
 
 public class StructuralAnalysis {
 
@@ -21,126 +25,126 @@ public class StructuralAnalysis {
 		m_currentEditor = currentEditor;
 	}
 	
-	public int GetNumPlaces()
+	public int getNumPlaces()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_places.size();
 	}
 	//! Returns an iterator over all places of the net
-	public Iterator GetPlacesIterator()
+	public Iterator getPlacesIterator()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_places.iterator();
 	}
 	
-	public int GetNumTransitions()
+	public int getNumTransitions()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_transitions.size();
 	}
-	public Iterator GetTransitionsIterator()
+	public Iterator getTransitionsIterator()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_transitions.iterator();
 	}
 	
-	public int GetNumOperators()
+	public int getNumOperators()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_operators.size();
 	}
-	public Iterator GetOperatorsIterator()
+	public Iterator getOperatorsIterator()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_operators.iterator();
 	}
 	
-	public int GetNumArcs()
+	public int getNumArcs()
 	{
 		return m_nNumArcs;		
 	}
 
-	public int GetNumSourcePlaces()
+	public int getNumSourcePlaces()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_sourcePlaces.size();
 	}
-	public Iterator GetSourcePlacesIterator()
+	public Iterator getSourcePlacesIterator()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_sourcePlaces.iterator();		
 	}
-	public int GetNumSourceTransitions()
+	public int getNumSourceTransitions()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_sourceTransitions.size();
 	}
-	public Iterator GetSourceTransitionsIterator()
+	public Iterator getSourceTransitionsIterator()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_sourceTransitions.iterator();		
 	}
 
-	public int GetNumSinkPlaces()
+	public int getNumSinkPlaces()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_sinkPlaces.size();
 	}
-	public Iterator GetSinkPlacesIterator()
+	public Iterator getSinkPlacesIterator()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_sinkPlaces.iterator();		
 	}
-	public int GetNumSinkTransitions()
+	public int getNumSinkTransitions()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_sinkTransitions.size();
 	}
-	public Iterator GetSinkTransitionsIterator()
+	public Iterator getSinkTransitionsIterator()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_sinkTransitions.iterator();		
 	}
 
-	public int GetNumMisusedOperators()
+	public int getNumMisusedOperators()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_misusedOperators.size();
 	}
-	public Iterator GetMisusedOperatorsIterator()
+	public Iterator getMisusedOperatorsIterator()
 	{
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		return m_misusedOperators.iterator();		
 	}
 	
-	public int GetNumNotConnectedNodes()
+	public int getNumNotConnectedNodes()
 	{
-		Calculate_Connections();
+		calculateConnections();
 		return m_notConnectedNodes.size();
 	}
 	//! Return all nodes of the current net that
 	//! are not connected	
-	public Iterator GetNotConnectedNodes()
+	public Iterator getNotConnectedNodes()
 	{
-		Calculate_Connections();
+		calculateConnections();
 		return m_notConnectedNodes.iterator();		
 	}
-	public int GetNumNotStronglyConnectedNodes()
+	public int getNumNotStronglyConnectedNodes()
 	{
-		Calculate_Connections();
+		calculateConnections();
 		return m_notStronglyConnectedNodes.size();		
 	}
 	//! Return all nodes of the current net that 
 	//! are not strongly connected
-	public Iterator GetNotStronglyConnectedNodes()
+	public Iterator getNotStronglyConnectedNodes()
 	{
-		Calculate_Connections();
+		calculateConnections();
 		return m_notStronglyConnectedNodes.iterator();		
 	}
 	
-	public int GetNumFreeChoiceViolations()
+	public int getNumFreeChoiceViolations()
 	{
-		Calculate_FreeChoice();
+		calculateFreeChoice();
 		return m_freeChoiceViolations.size();		
 	}
 	//! Return a list of free-choice violations
@@ -148,15 +152,15 @@ public class StructuralAnalysis {
 	//! by a Set of nodes defining the violation
 	//! @return Iterator through a list of sets 
 	//!         of nodes violating the free-choice property
-	public Iterator GetFreeChoiceViolations()
+	public Iterator getFreeChoiceViolations()
 	{
-		Calculate_FreeChoice();
+		calculateFreeChoice();
 		return m_freeChoiceViolations.iterator();		
 	}
 	
-	public int GetNumWellStructurednessViolations()
+	public int getNumWellStructurednessViolations()
 	{
-		Calculate_WellStructuredness();
+		calculateWellStructuredness();
 		return m_wellStructurednessViolations.size();
 	}
 	
@@ -165,9 +169,9 @@ public class StructuralAnalysis {
 	//! defining the violation
 	//! @return Iterator through a list of sets
 	//!         of nodes violating the well-structured property
-	public Iterator GetWellStructurednessViolations()
+	public Iterator getWellStructurednessViolations()
 	{
-		Calculate_WellStructuredness();
+		calculateWellStructuredness();
 		return m_wellStructurednessViolations.iterator();
 	}
 	
@@ -181,57 +185,57 @@ public class StructuralAnalysis {
 	
 	//! Stores a set of all the places of
 	//! the processed net
-	HashSet m_places = new HashSet();
+	HashSet<AbstractElementModel> m_places = new HashSet<AbstractElementModel>();
 	//! Stores a set of all the transitions of
 	//! the processed net
-	HashSet m_transitions = new HashSet();
+	HashSet<AbstractElementModel> m_transitions = new HashSet<AbstractElementModel>();
 	
 	//! Stores a set of all operators.
 	//! Operators are AND-split, AND-join
 	//! XOR-Split, XOR-Join, AND-Split-Join
 	//! XOR-Split-Join
-	HashSet m_operators = new HashSet();
+	HashSet<AbstractElementModel> m_operators = new HashSet<AbstractElementModel>();
 	
 	//! Stores the number of arcs contained in this net
 	int m_nNumArcs=0;
 	
 	//! Stores a set of source places
-	HashSet m_sourcePlaces = new HashSet();
+	HashSet<AbstractElementModel> m_sourcePlaces = new HashSet<AbstractElementModel>();
 	//! Stores a set of sink places
-	HashSet m_sinkPlaces = new HashSet();
+	HashSet<AbstractElementModel> m_sinkPlaces = new HashSet<AbstractElementModel>();
 	
 	//! Stores a set of source transitions
-	HashSet m_sourceTransitions = new HashSet();
+	HashSet<AbstractElementModel> m_sourceTransitions = new HashSet<AbstractElementModel>();
 	//! Stores a set of sink transitions
-	HashSet m_sinkTransitions = new HashSet();
+	HashSet<AbstractElementModel> m_sinkTransitions = new HashSet<AbstractElementModel>();
 	
 	//! Misused operators are operators that
 	//! do not have a specific minimum or maximum of
 	//! input/output arcs
 	//! as is required by their operator type
-	HashSet m_misusedOperators = new HashSet();
+	HashSet<AbstractElementModel> m_misusedOperators = new HashSet<AbstractElementModel>();
 	
 	boolean m_bConnectionInfoAvailable = false;
 	
 	//! Stores a list of all nodes (transitions 
 	//! and places that are not connected)
-	HashSet m_notConnectedNodes = new HashSet();
+	HashSet<AbstractElementModel> m_notConnectedNodes = new HashSet<AbstractElementModel>();
 	//! Stores a list of all nodes (transitions 
 	//! and places that are not strongly connected)
-	HashSet m_notStronglyConnectedNodes = new HashSet();
+	HashSet<AbstractElementModel> m_notStronglyConnectedNodes = new HashSet<AbstractElementModel>();
 	
 	boolean m_bFreeChoiceInfoAvailable = false;
 	//! Stores a list of free-choice violations
 	//! consisting of node sets
-	HashSet m_freeChoiceViolations = new HashSet();
+	HashSet<Set<AbstractElementModel>> m_freeChoiceViolations = new HashSet<Set<AbstractElementModel>>();
 	
 	boolean m_bWellStructurednessInfoAvailable = false;
 	//! Stores a list of well-structuredness violations
 	//! consisting of node sets
-	HashSet m_wellStructurednessViolations = new HashSet();
+	HashSet<Set<AbstractElementModel>> m_wellStructurednessViolations = new HashSet<Set<AbstractElementModel>>();
 	
 	//! Trigger the calculation of basic net information
-	private void Calculate_BasicNetInfo()
+	private void calculateBasicNetInfo()
 	{
 		// We cache all calculated information
 		// Check if we already know what we need to know
@@ -246,12 +250,12 @@ public class StructuralAnalysis {
 		// take notes
 		m_nNumArcs = 0;
 		Iterator i=elements.getRootElements().iterator();
-		UpdateStatistics(i);
+		updateStatistics(i);
 		// Just ask the arc map for its size...
 		m_nNumArcs+= elements.getArcMap().size();		
 	}
 	
-	private void UpdateStatistics(Iterator i)
+	private void updateStatistics(Iterator i)
 	{
 		NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration();
 		while (i.hasNext())
@@ -280,12 +284,12 @@ public class StructuralAnalysis {
 					// Verify that the operator has the correct arc configuration
 					// If this is not the case it will be added to the
 					// misused operators list
-					VerifyOperatorArcConfiguration(operator,arcConfig);
+					verifyOperatorArcConfiguration(operator,arcConfig);
 					ModelElementContainer simpleTransContainer =
 						operator.getSimpleTransContainer();
 					// Recursively call ourselves to add inner nodes
 					Iterator innerIterator =simpleTransContainer.getRootElements().iterator();
-					UpdateStatistics(innerIterator);
+					updateStatistics(innerIterator);
 					// To have the total number of arcs we must subtract 
 					// the number of incoming and outgoing arcs from the
 					// number of inner arcs of the operator
@@ -317,7 +321,7 @@ public class StructuralAnalysis {
 	//! and add it to the misused operators list if it doesn't
 	//! @param operator the operator to be verified
 	//! @param arcConfig specifies the previously determined arc configuration
-	void VerifyOperatorArcConfiguration(OperatorTransitionModel operator,
+	void verifyOperatorArcConfiguration(OperatorTransitionModel operator,
 			NetAlgorithms.ArcConfiguration arcConfig)
 	{
 		boolean isCorrectConfiguration = true;
@@ -354,15 +358,15 @@ public class StructuralAnalysis {
 	}
 	
 	
-	private void Calculate_Connections()
+	private void calculateConnections()
 	{
 		if (m_bConnectionInfoAvailable==true)
 			return;
 		m_bConnectionInfoAvailable=true;
 		
 		// First, calculate basic net information
-		Calculate_BasicNetInfo();
-		LinkedList netElements = new LinkedList();
+		calculateBasicNetInfo();
+		LinkedList<AbstractElementModel> netElements = new LinkedList<AbstractElementModel>();
 		// A WoPeD graph contains more than just places
 		// and transitions. We are only interested in those
 		// however
@@ -374,7 +378,7 @@ public class StructuralAnalysis {
 
 		// Add temporary transition t*, connecting sink to source
 		AbstractElementModel ttemp =
-			AddTStar();
+			addTStar();
 		if (ttemp!=null)
 			netElements.add(ttemp);
         		
@@ -393,10 +397,10 @@ public class StructuralAnalysis {
 			NetAlgorithms.GetUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
 
 		if (ttemp!=null)
-			RemoveTStar(ttemp);
+			removeTStar(ttemp);
 	}
 	
-	AbstractElementModel AddTStar()
+	AbstractElementModel addTStar()
 	{
 		AbstractElementModel ttemp = null;
 		// Create transition 't*'
@@ -433,34 +437,34 @@ public class StructuralAnalysis {
         return ttemp;
 	}
 	
-	void RemoveTStar(AbstractElementModel tstar)
+	void removeTStar(AbstractElementModel tstar)
 	{
 		// Remove the element from the graph
 		m_currentEditor.getModelProcessor().removeElement(tstar.getId());		
 	}
 	
-	void Calculate_FreeChoice()
+	void calculateFreeChoice()
 	{
 		if (m_bFreeChoiceInfoAvailable)
 			return;
 		m_bFreeChoiceInfoAvailable = true;
 		
 		// First, calculate basic net information
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 
 		// The first thing we look for are forward-branched places (conflicts)
 		// and their follow-up transitions
-		Set placeResults = GetNonFreeChoiceGroups(m_places.iterator(),false);
+		Set<Set<AbstractElementModel>> placeResults = getNonFreeChoiceGroups(m_places.iterator(),false);
 		// Now look for backward-branched transitions (synchronization)
 		// and their preceeding places
-		Set transitionResults = GetNonFreeChoiceGroups(m_transitions.iterator(),true);
+		Set<Set<AbstractElementModel>> transitionResults = getNonFreeChoiceGroups(m_transitions.iterator(),true);
 		
 		m_freeChoiceViolations.addAll(placeResults);
 		m_freeChoiceViolations.addAll(transitionResults);
 	}
-	Set GetNonFreeChoiceGroups(Iterator i, boolean swapArcDirection)
+	Set<Set<AbstractElementModel>> getNonFreeChoiceGroups(Iterator i, boolean swapArcDirection)
 	{
-		Set result = new HashSet();
+		Set<Set<AbstractElementModel>> result = new HashSet<Set<AbstractElementModel>>();
 		// Look for forward-branched places (conflicts)
 		// and their follow-up transitions
 		while (i.hasNext()){
@@ -469,16 +473,16 @@ public class StructuralAnalysis {
 			
 			// Have a closer look at the follow-up transitions			
 			// Collect all affected nodes a priori just in case
-			HashSet violationGroup = new HashSet();
+			HashSet<AbstractElementModel> violationGroup = new HashSet<AbstractElementModel>();
 			boolean violation = false;
-			Set compareSet = null;
-			Set successors = NetAlgorithms.GetDirectlyConnectedNodes(currentPlace,
+			Set<AbstractElementModel> compareSet = null;
+			Set<AbstractElementModel> successors = NetAlgorithms.GetDirectlyConnectedNodes(currentPlace,
 					swapArcDirection?NetAlgorithms.connectionTypeINBOUND
 							:NetAlgorithms.connectionTypeOUTBOUND);
 			for (Iterator s=successors.iterator();s.hasNext();)
 			{
 				AbstractElementModel successor = (AbstractElementModel)s.next();
-				Set predecessors = NetAlgorithms.GetDirectlyConnectedNodes(successor,
+				Set<AbstractElementModel> predecessors = NetAlgorithms.GetDirectlyConnectedNodes(successor,
 						swapArcDirection?NetAlgorithms.connectionTypeOUTBOUND
 								:NetAlgorithms.connectionTypeINBOUND);
 				if (compareSet==null)
@@ -502,16 +506,16 @@ public class StructuralAnalysis {
 		return result;
 	}
 	
-	void Calculate_WellStructuredness()
+	void calculateWellStructuredness()
 	{
 		if (m_bWellStructurednessInfoAvailable)
 			return;
 		m_bWellStructurednessInfoAvailable = true;
 
 		// First, calculate basic net information
-		Calculate_BasicNetInfo();
+		calculateBasicNetInfo();
 		
-		LinkedList netElements = new LinkedList();
+		LinkedList<AbstractElementModel> netElements = new LinkedList<AbstractElementModel>();
 		// A WoPeD graph contains more than just places
 		// and transitions. We are only interested in those
 		// however
@@ -519,7 +523,7 @@ public class StructuralAnalysis {
 		netElements.addAll(m_transitions);
 
 		// Add the temporary transition 't*'
-		AbstractElementModel tStar = AddTStar();
+		AbstractElementModel tStar = addTStar();
 		if (tStar!=null)
 			netElements.add(tStar);
 		
@@ -549,7 +553,7 @@ public class StructuralAnalysis {
 					(AbstractElementModel)successorIterator.next();
 				// We mark all reachable elements using breadth-first search 
 				// Clearly, we need a stack for that
-				LinkedList elementStack = new LinkedList();
+				LinkedList<AbstractElementModel> elementStack = new LinkedList<AbstractElementModel>();
 				// Mark the source as visited in any case
 				currentSource.setMarking(arcCounter);
 				elementStack.addLast(currentSuccessor);
@@ -564,11 +568,13 @@ public class StructuralAnalysis {
 						currentElement.setMarking(arcCounter);						
 						// Recursively add all nodes reachable directly from the
 						// current node
-						Set recurseSet =
+						Set<AbstractElementModel> recurseSet =
 							NetAlgorithms.GetDirectlyConnectedNodes(currentElement,
 									NetAlgorithms.connectionTypeOUTBOUND);
-						for (Iterator recIt=recurseSet.iterator();recIt.hasNext();)
-							elementStack.addLast(recIt.next());
+						
+						for (AbstractElementModel aem : recurseSet) {
+						    elementStack.addLast(aem);
+						}						
 					}
 					else
 					{
@@ -583,7 +589,7 @@ public class StructuralAnalysis {
 						if ((currentMarking!=arcCounter)&&
 								(currentElementType!=currentSourceType))
 						{
-							Set notWellStructuredSet = new HashSet();
+							Set<AbstractElementModel> notWellStructuredSet = new HashSet<AbstractElementModel>();
 							// Found well-structuredness violation
 							// Add to current set
 							notWellStructuredSet.add(currentSource);
@@ -598,6 +604,6 @@ public class StructuralAnalysis {
 
 		// Remove temporary transition from the net
 		if (tStar!=null)
-			RemoveTStar(tStar);
+			removeTStar(tStar);
 	}
 }

@@ -2242,10 +2242,10 @@ public class EditorVC extends JPanel implements KeyListener,
 				true, this, subProcess);
 		ModelElementContainer subPElements = newEditorWindow.getModelProcessor().getElementContainer();
 		StructuralAnalysis analysis = new StructuralAnalysis(newEditorWindow);
-		if (analysis.GetNumSourcePlaces()==1)
+		if (analysis.getNumSourcePlaces()==1)
 		{
 			// Hand an initial token to the sub-process for the token game
-			Iterator i = analysis.GetSourcePlacesIterator();
+			Iterator i = analysis.getSourcePlacesIterator();
 			((PlaceModel)i.next()).receiveToken();
 		}
 		// Enable token game mode
