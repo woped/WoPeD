@@ -39,6 +39,8 @@ import org.woped.editor.controller.vc.EditorVC;
  * 
  * Created on: 16.03.2005 Last Change on: 16.03.2005
  */
+
+@SuppressWarnings("serial")
 public class WoPeDUndoManager extends GraphUndoManager
 {
     protected EditorVC m_editor;

@@ -26,10 +26,9 @@ import org.woped.core.controller.AbstractViewEvent;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
  */
+
+@SuppressWarnings("serial")
 public class EditorViewEvent extends AbstractViewEvent
 {
 
