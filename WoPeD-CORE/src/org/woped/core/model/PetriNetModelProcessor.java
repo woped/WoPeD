@@ -31,9 +31,7 @@ import java.util.LinkedHashMap;
 import java.util.Vector;
 
 import org.jgraph.graph.DefaultPort;
-import org.jgraph.graph.ParentMap;
 import org.woped.core.Constants;
-import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
@@ -54,33 +52,24 @@ import org.woped.core.utilities.LoggerManager;
  * <br>
  * Created on 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		Serializable
 {
 
 	static final int PNMLFILE = 1;
-
 	private String type = "http://www.informatik.hu-berlin.de/top/pntd/ptNetb";
-
 	private Dimension netWindowSize = null;
-
 	private int placeCouter = 0;
-
 	private int transitionCounter = 0;
-
 	private int subprocessCounter = 0;
-
 	private int arcCounter = 0;
-
-	private Vector unknownToolSpecs = new Vector();
-
-	private Vector roles = null;
-
-	private Vector resources = null;
-
-	private Vector organizationUnits = null;
-
-	private HashMap resourceMapping = new HashMap();
+	private Vector<Object> unknownToolSpecs = new Vector<Object>();
+	private Vector<ResourceClassModel> roles = null;
+	private Vector<ResourceModel> resources = null;
+	private Vector<ResourceClassModel> organizationUnits = null;
+	private HashMap<String, Vector<String>> resourceMapping = new HashMap<String, Vector<String>>();
 
 	/**
 	 * Empty Constructor creates a new PetriNet without ID (ID "noID").s
@@ -728,7 +717,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 
 	public void addResourceMapping(String resourceClass, String resourceId)
 	{
-		Vector resourcesVector;
+		Vector<String> resourcesVector;
 		if (containsRole(resourceClass) != -1
 				|| containsOrgunit(resourceClass) != -1)
 		{
@@ -736,13 +725,12 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 			{
 				if (getResourceMapping().get(resourceClass) == null)
 				{
-					resourcesVector = new Vector();
+					resourcesVector = new Vector<String>();
 					resourcesVector.add(resourceId);
 					getResourceMapping().put(resourceClass, resourcesVector);
 				} else
 				{
-					((Vector) getResourceMapping().get(resourceClass))
-							.add(resourceId);
+					getResourceMapping().get(resourceClass).add(resourceId);
 				}
 			} else
 			{
@@ -772,13 +760,13 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	 */
 	public Vector getResourceClassesResourceIsAssignedTo(String resourceId)
 	{
-		Vector assignedVector = new Vector();
+		Vector<String> assignedVector = new Vector<String>();
 		String resourceClassIdTemp;
 		for (Iterator iter = getResourceMapping().keySet().iterator(); iter
 				.hasNext();)
 		{
 			resourceClassIdTemp = iter.next().toString();
-			Vector resourceVector = (Vector) getResourceMapping().get(
+			Vector<String> resourceVector = getResourceMapping().get(
 					resourceClassIdTemp);
 			if (containsResource(resourceVector, resourceId) != -1)
 			{
@@ -862,12 +850,12 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		return type;
 	}
 
-	public Vector getUnknownToolSpecs()
+	public Vector<Object> getUnknownToolSpecs()
 	{
 		return unknownToolSpecs;
 	}
 
-	public void setUnknownToolSpecs(Vector unknownToolSpecs)
+	public void setUnknownToolSpecs(Vector<Object> unknownToolSpecs)
 	{
 		this.unknownToolSpecs = unknownToolSpecs;
 	}
@@ -880,11 +868,11 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	/**
 	 * @return Returns the organizationUnits.
 	 */
-	public Vector getOrganizationUnits()
+	public Vector<ResourceClassModel> getOrganizationUnits()
 	{
 		if (organizationUnits == null)
 		{
-			organizationUnits = new Vector();
+			organizationUnits = new Vector<ResourceClassModel>();
 		}
 		return organizationUnits;
 	}
@@ -893,7 +881,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	 * @param organizationUnits
 	 *            The organizationUnits to set.
 	 */
-	public void setOrganizationUnits(Vector organizationUnits)
+	public void setOrganizationUnits(Vector<ResourceClassModel> organizationUnits)
 	{
 		this.organizationUnits = organizationUnits;
 	}
@@ -901,11 +889,11 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	/**
 	 * @return Returns the resourceMap.
 	 */
-	public HashMap getResourceMapping()
+	public HashMap<String, Vector<String>> getResourceMapping()
 	{
 		if (resourceMapping == null)
 		{
-			resourceMapping = new HashMap();
+			resourceMapping = new HashMap<String, Vector<String>>();
 		}
 		return resourceMapping;
 	}
@@ -914,7 +902,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	 * @param resourceMap
 	 *            The resourceMap to set.
 	 */
-	public void setResourceMapping(LinkedHashMap resourceMapping)
+	public void setResourceMapping(LinkedHashMap<String, Vector<String>> resourceMapping)
 	{
 		this.resourceMapping = resourceMapping;
 	}
@@ -922,11 +910,11 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	/**
 	 * @return Returns the roles.
 	 */
-	public Vector getRoles()
+	public Vector<ResourceClassModel> getRoles()
 	{
 		if (roles == null)
 		{
-			roles = new Vector();
+			roles = new Vector<ResourceClassModel>();
 		}
 		return roles;
 	}
@@ -935,7 +923,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	 * @param roles
 	 *            The roles to set.
 	 */
-	public void setRoles(Vector roles)
+	public void setRoles(Vector<ResourceClassModel> roles)
 	{
 		this.roles = roles;
 	}
@@ -943,11 +931,11 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	/**
 	 * @return Returns the resources.
 	 */
-	public Vector getResources()
+	public Vector<ResourceModel> getResources()
 	{
 		if (resources == null)
 		{
-			resources = new Vector();
+			resources = new Vector<ResourceModel>();
 		}
 		return resources;
 	}
@@ -1017,7 +1005,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		for (Iterator iter = getResourceMapping().keySet().iterator(); iter
 				.hasNext();)
 		{
-			Vector resourcevalues = (Vector) getResourceMapping().get(
+			Vector<String> resourcevalues = getResourceMapping().get(
 					iter.next());
 			for (int i = 0; i < resourcevalues.size(); i++)
 			{
@@ -1087,11 +1075,11 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		this.transitionCounter = transitionCounter;
 	}
 
-	public void setResources(Vector resources) {
+	public void setResources(Vector<ResourceModel> resources) {
 		this.resources = resources;
 	}
 
-	public void setResourceMapping(HashMap resourceMapping) {
+	public void setResourceMapping(HashMap<String, Vector<String>> resourceMapping) {
 		this.resourceMapping = resourceMapping;
 	}
 

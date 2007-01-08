@@ -29,8 +29,8 @@ public class ModelTranslator
         CreationMap tempCreateMap;
         AbstractPetriNetModelElement tempElement;
         OperatorTransitionModel tempOperator;
-        HashMap idMapper = new HashMap();
-        List startStopList = new ArrayList();
+        HashMap<String, String> idMapper = new HashMap<String, String>();
+        List<String> startStopList = new ArrayList<String>();
         Map tempSourceElements;
         Map tempTargetElements;
         AbstractElementModel tempSource;
@@ -88,7 +88,7 @@ public class ModelTranslator
                             	(tempTarget.getType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
                             {
                                 // referenc on each other
-                                Object newId = uml.getNewElementId(tempTarget.getType());
+                                String newId = uml.getNewElementId(tempTarget.getType());
                                 idMapper.put(tempSource.getId(), newId);
                                 idMapper.put(tempTarget.getId(), newId);
                             }
@@ -195,7 +195,7 @@ public class ModelTranslator
          * object containing the nwe element ids! ATTENTION first entry is the
          * join (incoming arcs) second entry is the split (outgoing arcs)
          */
-        HashMap idMapper = new HashMap();
+        HashMap<String, ArrayList<String>> idMapper = new HashMap<String, ArrayList<String>>();
         CreationMap tempMap;
         AbstractElementModel tempElement;
         AbstractElementModel tempPetriElement;
@@ -238,7 +238,7 @@ public class ModelTranslator
                         petrinet.createArc(tempMap.getId(), tempPlaceElement.getId());
                         petrinet.createArc(tempPlaceElement.getId(), tempMap2.getId());
                         // Store them in the ID Mapper
-                        ArrayList ids = new ArrayList();
+                        ArrayList<String> ids = new ArrayList<String>();
                         ids.add(tempMap.getId()); // join
                         ids.add(tempMap2.getId()); // split
                         idMapper.put(tempElement.getId(), ids);

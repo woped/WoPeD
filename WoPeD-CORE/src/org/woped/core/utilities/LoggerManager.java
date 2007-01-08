@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class LoggerManager
 {
 
-    private static HashMap list = new HashMap();
+    private static HashMap<String, Object> list = new HashMap<String, Object>();
 
     public static void register(Object logger, String loggerName)
     {
