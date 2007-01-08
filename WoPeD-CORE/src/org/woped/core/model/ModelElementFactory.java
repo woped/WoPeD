@@ -84,7 +84,7 @@ public class ModelElementFactory
                     modElement = new OperatorTransitionModel(map);
                     // modElement.setId(id);
                     // create inital simple trans
-                    TransitionModel simpleTrans = ((OperatorTransitionModel) modElement).addNewSimpleTrans();
+                    // TransitionModel simpleTrans = ((OperatorTransitionModel) modElement).addNewSimpleTrans();
                     // ((OperatorTransitionModel)
                     // modElement).setInitalSimpleTrans(simpleTrans);
                 } else if (map.getType() == AbstractUMLElementModel.ACTIVITY_TYPE)
