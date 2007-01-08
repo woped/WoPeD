@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 
+@SuppressWarnings("serial")
 public class ModelProcessorContext implements Serializable
 {
-    private HashMap contextMap = null;
+    private HashMap<Object, Object> contextMap = null;
 
     public ModelProcessorContext()
     {
-        contextMap = new HashMap();
+        contextMap = new HashMap<Object, Object>();
     }
 
     public void addContext(Object key, Object value)
