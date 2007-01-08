@@ -80,7 +80,7 @@ public class OLDPNMLImport2 extends PNMLImport
     {
         super(am, null);
         opt.setUseDefaultNamespace();
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<String, String>();
         map.put("", "oldpnml.woped.org");
         map.put("pnml.woped.org", "oldpnml.woped.org");
         opt.setLoadSubstituteNamespaces(map);

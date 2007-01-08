@@ -12,7 +12,6 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -23,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
-import javax.swing.event.MouseInputAdapter;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
@@ -241,7 +239,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         JInternalFrame[] allFrames = desktop.getAllFrames();
 
-        Vector allOpenFrames = new Vector();
+        Vector<JInternalFrame> allOpenFrames = new Vector<JInternalFrame>();
 
         for (int i = 0; i < allFrames.length; i++)
         {
@@ -271,7 +269,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         JInternalFrame[] allFrames = desktop.getAllFrames();
 
-        Vector allOpenFrames = new Vector();
+        Vector<JInternalFrame> allOpenFrames = new Vector<JInternalFrame>();
 
         for (int i = 0; i < allFrames.length; i++)
         {

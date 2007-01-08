@@ -28,10 +28,8 @@ import java.awt.geom.Point2D;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -97,7 +95,7 @@ public class PNMLImport
     private IEditor[]           editor     = null;
     private PnmlDocument        pnmlDoc    = null;
     private XmlOptions          opt        = new XmlOptions();
-    private Vector              warnings   = new Vector();
+    private Vector<String>      warnings   = new Vector<String>();
     private IStatusBar[]        statusBars = null;
     private ApplicationMediator mediator   = null;
 
@@ -110,7 +108,7 @@ public class PNMLImport
     {
         opt.setUseDefaultNamespace();
         mediator = am;
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<String, String>();
         map.put("", "pnml.woped.org");
         this.statusBars = statusBars;
         opt.setLoadSubstituteNamespaces(map);
@@ -620,7 +618,7 @@ public class PNMLImport
         PetriNetModelElement currentSourceModel = null;
         PetriNetModelElement currentTargetModel = null;
         ArcModel arc = null;
-        CreationMap map;
+
         for (int i = 0; i < arcs.length; i++)
         {
             try
