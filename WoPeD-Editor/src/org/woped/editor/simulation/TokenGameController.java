@@ -26,13 +26,12 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -44,7 +43,6 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
-import org.woped.editor.controller.WoPeDJGraph;
 import org.woped.editor.controller.vc.EditorVC;
 
 /**
@@ -73,15 +71,10 @@ public class TokenGameController
 {
 
     private PetriNetModelProcessor petrinet              = null;
-
     private AbstractGraph          graph                 = null;
-
-    private Map                    allTransitions        = null;
-
+    private Map<String, AbstractElementModel>                    allTransitions        = null;
     private MouseHandler           tokenGameMouseHandler = null;
-
     private boolean                visualTokenGame       = false;
-
     private EditorVC			   thisEditor 			 = null;
     
     /**
@@ -218,7 +211,7 @@ public class TokenGameController
         long begin = System.currentTimeMillis();
         LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: CHECK NET");
         Iterator transIter = allTransitions.keySet().iterator();
-        TransitionModel transition;
+
         resetArcStatus();
         // Iterate over all Transitions
         while (transIter.hasNext())
@@ -246,7 +239,7 @@ public class TokenGameController
         transition.setFireing(false);
         Map incomingArcs = getPetriNet().getElementContainer().getIncomingArcs(transition.getId());
         // temporary variables
-        int activePlaces = 0;
+
         if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
         {
             if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size()) transition.setActivated(true);
@@ -613,7 +606,7 @@ public class TokenGameController
     /*
      * Returns a Map containing the fireing Transitions.
      */
-    private Map getFireingTransitions()
+/*    private Map getFireingTransitions()
     {
         Iterator transIter = allTransitions.keySet().iterator();
         TransitionModel transition;
@@ -630,7 +623,7 @@ public class TokenGameController
         }
         return fireingTrans;
     }
-
+*/
     /*
      * ################################### Getter & Setter
      * ########################################
@@ -667,11 +660,11 @@ public class TokenGameController
     /*
      * @param graph The graph to set.
      */
-    private void setGraph(WoPeDJGraph graph)
+/*    private void setGraph(WoPeDJGraph graph)
     {
         this.graph = graph;
     }
-
+*/
     /*
      * @return Returns the petrinet.
      */
@@ -683,11 +676,11 @@ public class TokenGameController
     /*
      * @param petrinet The petrinet to set.
      */
-    private void setPetriNet(PetriNetModelProcessor petrinet)
+/*    private void setPetriNet(PetriNetModelProcessor petrinet)
     {
         this.petrinet = petrinet;
     }
-
+*/
     /*
      * ################################### Mouse Handler
      * ########################################

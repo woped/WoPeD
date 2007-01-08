@@ -500,7 +500,7 @@ public class ModelElementContainer implements Serializable
         this.arcs = arcs;
     }
 
-    public Map getElementsByType(int type)
+    public Map<String, AbstractElementModel> getElementsByType(int type)
     {
         Map<String, AbstractElementModel> elements = new HashMap<String, AbstractElementModel>();
         Iterator elementsIter = getIdMap().keySet().iterator();
