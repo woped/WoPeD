@@ -1,9 +1,12 @@
 package org.woped.editor.controller.vc;
 
-import java.util.*;
-import org.woped.core.model.*;
-import org.woped.core.utilities.LoggerManager;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Iterator;
 
+import org.woped.core.model.AbstractElementModel;
+
+@SuppressWarnings("serial")
 public class NodeGroupNetInfo extends NetInfo {
 	public NodeGroupNetInfo(
 			String displayString,
@@ -29,7 +32,7 @@ public class NodeGroupNetInfo extends NetInfo {
 	public Object[] getReferencedElements() {
 		// This is a group item
 		// Retrieve all subitems and get their referenced elements
-		ArrayList collectedItems = new ArrayList();
+		ArrayList<Object> collectedItems = new ArrayList<Object>();
 		// Iterate through all children
 		for (Enumeration e = children();e.hasMoreElements();)
 		{
@@ -41,7 +44,8 @@ public class NodeGroupNetInfo extends NetInfo {
 			}
 			catch (Exception exception)
 			{}
-			if (myInfo!=null)
+			
+			if (myInfo != null)
 			{
 				// Add the returned items to our collector
 				Object[] references = myInfo.getReferencedElements();

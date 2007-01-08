@@ -18,15 +18,16 @@ import org.woped.core.gui.IEditorAware;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.ApplicationMediator;
 
+@SuppressWarnings("serial")
 public class TaskBarVC extends JPanel implements IViewController, IEditorAware
 {
 
     private String             id             = null;
-    private Vector             viewListener   = new Vector(1, 3);
+    private Vector<IViewListener> viewListener = new Vector<IViewListener>(1, 3);
     public static final String ID_PREFIX      = "TASKBAR_VC";
 
     private IEditor            selectedEditor = null;
-    private HashMap            actions        = new HashMap();
+    private HashMap<IEditor, JToggleButton> actions = new HashMap<IEditor, JToggleButton>();
 
     public TaskBarVC(String id)
     {
@@ -37,9 +38,10 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
     
     public void renameEditor(IEditor editor)
     {
-    	JToggleButton taskButton = (JToggleButton)actions.get(editor);
-    	if (taskButton!=null)
+    	JToggleButton taskButton = (JToggleButton) actions.get(editor);
+    	if (taskButton != null) {
     		taskButton.setText(editor.getName());
+    	}
     }
 
     public void selectEditor(IEditor editor)
