@@ -50,6 +50,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
@@ -64,6 +65,8 @@ import org.woped.editor.utilities.Messages;
  * TODO: DOCUMENTATION (waschtl) 
  * TODO: implement as VC (simon)
  */
+
+@SuppressWarnings("serial")
 public class PetriNetResourceEditor extends JPanel implements ListSelectionListener
 {
     // Resource classes
@@ -853,7 +856,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
 
     private void updateGroupsInPetrinet(String oldName, String newName)
     {
-        HashMap alltrans = new HashMap();
+        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
 
@@ -874,7 +877,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
 
     private void updateRolesInPetrinet(String oldName, String newName)
     {
-        HashMap alltrans = new HashMap();
+        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
 
@@ -898,7 +901,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     {
         boolean isUsed = false;
                
-        HashMap alltrans = new HashMap();
+        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
 
@@ -921,7 +924,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private boolean roleIsUsed(String roleName)
     {
         boolean isUsed = false;
-        HashMap alltrans = new HashMap();
+        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
         alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
         
