@@ -31,7 +31,6 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.jgraph.graph.VertexRenderer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.utilities.Messages;

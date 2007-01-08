@@ -29,7 +29,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.jgraph.graph.VertexRenderer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 

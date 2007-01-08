@@ -33,7 +33,6 @@ import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
-import org.jgraph.graph.VertexRenderer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.TransitionModel;
