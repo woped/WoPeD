@@ -22,18 +22,12 @@
  */
 package org.woped.core.view;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphCellEditor;
 import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
-import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.AbstractElementModel;
 
 /**
