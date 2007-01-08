@@ -35,6 +35,7 @@ import java.io.Serializable;
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
  */
+@SuppressWarnings("serial")
 public class IntPair implements Serializable
 {
 
