@@ -44,6 +44,8 @@ import org.woped.core.model.ModelElementContainer;
 
 //! Our graph tree model can receive update events from both the graph model as well as 
 //! other tree models to keep tree models in sync with each other
+
+@SuppressWarnings("serial")
 public class GraphTreeModel extends DefaultTreeModel implements GraphModelListener, TreeModelListener
 {
 
