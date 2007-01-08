@@ -6,11 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.AccessControlException;
-import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import org.woped.core.config.ConfigurationManager;
@@ -19,7 +17,6 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
-import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.LoggerManager;
@@ -45,21 +42,21 @@ public class FileEventProcessor extends AbstractEventProcessor
   
     public void processViewEvent(AbstractViewEvent event)
     {
-        IEditor currentEditor;
+        
         boolean bRunWofLanDLL = false;
         switch (event.getOrder())
         {
         case AbstractViewEvent.OPEN:
             if (event.getData() != null && event.getData() instanceof File)
             {
-                currentEditor = openFile((File) event.getData(), FileFilterImpl.PNMLFilter);
+                openFile((File) event.getData(), FileFilterImpl.PNMLFilter);
             } else
             {
-                currentEditor = openEditor();
+                openEditor();
             }
             break;
         case AbstractViewEvent.OPEN_SAMPLE:
-            currentEditor = openFile((File) event.getData(), FileFilterImpl.SAMPLEFilter);
+            openFile((File) event.getData(), FileFilterImpl.SAMPLEFilter);
             break;
         case AbstractViewEvent.SAVE:
             save((EditorVC) getMediator().getUi().getEditorFocus());
@@ -294,7 +291,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         {
             // TODO: Cursor Handling setCursor(Cursor.getDefaultCursor());
         }
-        return true;
+        return succeed;
     }
 
     /**
