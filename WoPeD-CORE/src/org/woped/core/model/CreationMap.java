@@ -373,18 +373,18 @@ public class CreationMap extends HashMap<String, Object>
         }
     }
 
-    @SuppressWarnings("unchecked")
-	public List<IntPair> getArcPoints()
+	public List getArcPoints()
     {
         if (containsKey(ARC_POINTS))
         {
-            return ((List<IntPair>) get(ARC_POINTS));
+            return ((List) get(ARC_POINTS));
         } else
         {
-            return new Vector<IntPair>();
+            return new Vector();
         }
     }
 
+	@SuppressWarnings("unchecked")
     public void addArcPoint(IntPair intPair)
     {
         getArcPoints().add(intPair);
