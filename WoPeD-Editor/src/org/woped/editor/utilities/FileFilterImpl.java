@@ -37,7 +37,7 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
 
     //private String ext;
     private String          desc;
-    private Hashtable       exts;
+    private Hashtable<String, FileFilterImpl>       exts;
     //private String fullDescription = null;
     private int             type;
     public final static int JPGFilter     = 1;
@@ -139,11 +139,9 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
      * @see #getExtension
      * @see FileFilter#accept
      */
-    public Hashtable getExtensions()
+    public Hashtable<String, FileFilterImpl> getExtensions()
     {
-
         return exts;
-
     }
 
     /**
@@ -161,7 +159,7 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
     {
         if (exts == null)
         {
-            exts = new Hashtable(5);
+            exts = new Hashtable<String, FileFilterImpl>(5);
         }
         exts.put(extension.toLowerCase(), this);
         //fullDescription = null;
