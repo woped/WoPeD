@@ -50,6 +50,8 @@ import org.woped.core.utilities.LoggerManager;
  *         <br>
  *         Created on 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class ModelElementContainer implements Serializable
 {
     //! If !=null, stores editor layout info for the editor
@@ -80,10 +82,8 @@ public class ModelElementContainer implements Serializable
 		return owningElement;
 	}
 	
-    private Map                idMap   = null;
-
-    private Map                arcs    = null;
-
+    private Map<String, Map<String, Object>> idMap = null;
+    private Map<String, ArcModel> arcs = null;
     public static final String SELF_ID = "_#_";
 
     /**
@@ -91,9 +91,8 @@ public class ModelElementContainer implements Serializable
      */
     public ModelElementContainer()
     {
-        idMap = new HashMap();
-        arcs = new HashMap();
-
+        idMap = new HashMap<String, Map<String, Object>>();
+        arcs = new HashMap<String, ArcModel>();
     }
 
     /**
@@ -103,7 +102,7 @@ public class ModelElementContainer implements Serializable
      * 
      * @return Map
      */
-    public Map getIdMap()
+    public Map<String, Map<String, Object>> getIdMap()
     {
 
         return idMap;
@@ -119,10 +118,10 @@ public class ModelElementContainer implements Serializable
      */
     public AbstractElementModel addElement(AbstractElementModel theElement)
     {
-        if ((Map) getIdMap().get(theElement.getId()) == null)
+        if (getIdMap().get(theElement.getId()) == null)
         {
             // if referenceMap does not exits, create it
-            Map referenceMap = new HashMap();
+            Map<String, Object> referenceMap = new HashMap<String, Object>();
             // =>frist time adding element, first add Element itself with
             // SELF_ID to the referenceMap
             referenceMap.put(SELF_ID, theElement);
@@ -163,7 +162,7 @@ public class ModelElementContainer implements Serializable
             LoggerManager.debug(Constants.CORE_LOGGER, "Arc already exists!");
         } else
         {
-            ((Map) getIdMap().get(arc.getSourceId())).put(arc.getId(), arc);
+            getIdMap().get(arc.getSourceId()).put(arc.getId(), arc);
             arcs.put(arc.getId(), arc);
             LoggerManager.debug(Constants.CORE_LOGGER, "Reference: " + arc.getId() + " (" + arc.getSourceId() + " -> " + arc.getTargetId() + ") added.");
         }
@@ -294,7 +293,7 @@ public class ModelElementContainer implements Serializable
         {
 
             Iterator refIter = ((Map) getIdMap().get(id)).keySet().iterator();
-            Map targetMap = new HashMap();
+            Map<String, AbstractElementModel> targetMap = new HashMap<String, AbstractElementModel>();
             while (refIter.hasNext())
             {
                 Object arc = ((Map) getIdMap().get(id)).get(refIter.next());
@@ -316,7 +315,7 @@ public class ModelElementContainer implements Serializable
 
         if ((Map) getIdMap().get(id) != null)
         {
-            Map arcOut = new HashMap((Map) getIdMap().get(id));
+            Map<String, Object> arcOut = new HashMap<String, Object>(getIdMap().get(id));
             arcOut.remove("_#_");
             return arcOut;
         } else return new HashMap();
@@ -351,7 +350,7 @@ public class ModelElementContainer implements Serializable
     public List getRootElements()
     {
 
-        List rootElements = new ArrayList();
+        List<AbstractElementModel> rootElements = new ArrayList<AbstractElementModel>();
         Iterator allIter = getIdMap().keySet().iterator();
         while (allIter.hasNext())
         {
@@ -373,7 +372,7 @@ public class ModelElementContainer implements Serializable
     protected Map findSourceElements(Object targetId)
     {
 
-        Map sourceMap = new HashMap();
+        Map<String, AbstractElementModel> sourceMap = new HashMap<String, AbstractElementModel>();
         Iterator sourceArcIter = findSourceArcs(targetId).keySet().iterator();
         ArcModel tempArc;
         while (sourceArcIter.hasNext())
@@ -388,12 +387,16 @@ public class ModelElementContainer implements Serializable
     {
 
         Iterator arcIter = arcs.keySet().iterator();
-        Map sourceArcs = new HashMap();
+        Map<String, ArcModel> sourceArcs = new HashMap<String, ArcModel>();
         ArcModel tempArc;
         while (arcIter.hasNext())
         {
             tempArc = (ArcModel) arcs.get(arcIter.next());
-            if (tempArc.getTargetId() != null) if (tempArc.getTargetId().equals(id)) sourceArcs.put(tempArc.getId(), tempArc);
+            if (tempArc.getTargetId() != null) {
+            	if (tempArc.getTargetId().equals(id)) {
+            		sourceArcs.put(tempArc.getId(), tempArc);
+            	}
+            }
         }
         return sourceArcs;
 
@@ -434,7 +437,7 @@ public class ModelElementContainer implements Serializable
     }
 
     /* only for debugging use */
-    private void printContent()
+/*    private void printContent()
     {
 
         Iterator rootTier = getRootElements().iterator();
@@ -456,7 +459,7 @@ public class ModelElementContainer implements Serializable
         System.out.println("#######################################");
 
     }
-
+*/
     public boolean containsArc(ArcModel arc)
     {
 
@@ -492,21 +495,24 @@ public class ModelElementContainer implements Serializable
      * @param arcs
      *            The arcs to set
      */
-    public void setArcMap(Map arcs)
+    public void setArcMap(Map<String, ArcModel> arcs)
     {
         this.arcs = arcs;
     }
 
     public Map getElementsByType(int type)
     {
-        Map elements = new HashMap();
+        Map<String, AbstractElementModel> elements = new HashMap<String, AbstractElementModel>();
         Iterator elementsIter = getIdMap().keySet().iterator();
         AbstractElementModel element;
         // try {
         while (elementsIter.hasNext())
         {
             element = getElementById(elementsIter.next());
-            if (element != null && element.getType() == type) elements.put(element.getId(), element);
+            if (element != null 
+            		&& element.getType() == type) {
+            	elements.put(element.getId(), element);
+            }
         }
         // } catch (Exception e) {
         // e.printStackTrace();
