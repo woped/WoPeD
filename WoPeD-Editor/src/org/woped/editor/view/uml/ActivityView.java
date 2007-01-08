@@ -13,6 +13,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.uml.ActivityModel;
 import org.woped.core.view.AbstractElementView;
 
+@SuppressWarnings("serial")
 public class ActivityView extends AbstractElementView
 {
     private ActivityRenderer renderer = new ActivityRenderer();
@@ -41,7 +42,6 @@ public class ActivityView extends AbstractElementView
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
-            boolean tmp = selected;
 
             if (super.isOpaque())
             {

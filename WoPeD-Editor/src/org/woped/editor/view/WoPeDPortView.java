@@ -25,7 +25,6 @@ package org.woped.editor.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 import org.jgraph.graph.CellViewRenderer;
@@ -42,6 +41,8 @@ import org.woped.core.config.ConfigurationManager;
  * 
  * 01.05.2003
  */
+
+@SuppressWarnings("serial")
 public class WoPeDPortView extends PortView
 {
 
@@ -80,7 +81,7 @@ public class WoPeDPortView extends PortView
             Dimension d = getSize();
             g.setColor(getBackground());
             g.setXORMode(getBackground());
-            Graphics2D g2 = (Graphics2D) g;
+
             if (hasFocus)
             {
                 g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
