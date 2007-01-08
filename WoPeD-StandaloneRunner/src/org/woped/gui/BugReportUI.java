@@ -21,6 +21,7 @@ import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.help.action.LaunchDefaultBrowserAction;
 
+@SuppressWarnings("serial")
 public class BugReportUI extends JDialog
 {
     private JLabel              logoLabel      = null;
