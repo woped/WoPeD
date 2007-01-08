@@ -347,7 +347,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		// vorhanden ist!
 
 		// Get list of input nodes
-		Set sources = NetAlgorithms.GetDirectlyConnectedNodes(model,
+		Set sources = NetAlgorithms.getDirectlyConnectedNodes(model,
 				NetAlgorithms.connectionTypeINBOUND);
 		Iterator<AbstractElementModel> sourceKeyIterator = sources.iterator();
 		AbstractElementModel sourceModel = sourceKeyIterator.next();
@@ -366,7 +366,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		// Ausgang
 		// Get list of output nodes
-		Set targets = NetAlgorithms.GetDirectlyConnectedNodes(model,
+		Set targets = NetAlgorithms.getDirectlyConnectedNodes(model,
 				NetAlgorithms.connectionTypeOUTBOUND);
 		Iterator<AbstractElementModel> targetKeyIterator = targets.iterator();
 		AbstractElementModel targetModel = targetKeyIterator.next();

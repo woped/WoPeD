@@ -88,7 +88,7 @@ public class NodeNetInfo extends NetInfo {
 			boolean superOnly)
 	{
 		StringBuffer result = new StringBuffer();
-		Iterator relevantNodes = NetAlgorithms.GetDirectlyConnectedNodes(node, connectionType).iterator();
+		Iterator relevantNodes = NetAlgorithms.getDirectlyConnectedNodes(node, connectionType).iterator();
 		int nodeHierarchyLevel = node.getHierarchyLevel();
 		boolean isFirst = true;
 		while (relevantNodes.hasNext())

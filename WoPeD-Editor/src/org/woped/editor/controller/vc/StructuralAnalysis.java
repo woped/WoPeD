@@ -385,16 +385,16 @@ public class StructuralAnalysis {
 		// First check for connectedness:
 		// Return connection map presuming that all arcs may be
 		// used in both directions
-		NetAlgorithms.RouteInfo[][] connectionGraph = NetAlgorithms.GetAllConnections(netElements, true);
+		NetAlgorithms.RouteInfo[][] connectionGraph = NetAlgorithms.getAllConnections(netElements, true);
 		if (connectionGraph!=null)
-			NetAlgorithms.GetUnconnectedNodes(ttemp, connectionGraph, m_notConnectedNodes);	
+			NetAlgorithms.getUnconnectedNodes(ttemp, connectionGraph, m_notConnectedNodes);	
 		
 		// Now get the graph for strong connectedness
 		// This will also give us all shortest distances
 		// according to Moore's algorithm (no arc weights) 
-		NetAlgorithms.RouteInfo[][] strongConnectionGraph = NetAlgorithms.GetAllConnections(netElements, false);
+		NetAlgorithms.RouteInfo[][] strongConnectionGraph = NetAlgorithms.getAllConnections(netElements, false);
 		if (strongConnectionGraph!=null)
-			NetAlgorithms.GetUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
+			NetAlgorithms.getUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
 
 		if (ttemp!=null)
 			removeTStar(ttemp);
@@ -476,13 +476,13 @@ public class StructuralAnalysis {
 			HashSet<AbstractElementModel> violationGroup = new HashSet<AbstractElementModel>();
 			boolean violation = false;
 			Set<AbstractElementModel> compareSet = null;
-			Set<AbstractElementModel> successors = NetAlgorithms.GetDirectlyConnectedNodes(currentPlace,
+			Set<AbstractElementModel> successors = NetAlgorithms.getDirectlyConnectedNodes(currentPlace,
 					swapArcDirection?NetAlgorithms.connectionTypeINBOUND
 							:NetAlgorithms.connectionTypeOUTBOUND);
 			for (Iterator s=successors.iterator();s.hasNext();)
 			{
 				AbstractElementModel successor = (AbstractElementModel)s.next();
-				Set<AbstractElementModel> predecessors = NetAlgorithms.GetDirectlyConnectedNodes(successor,
+				Set<AbstractElementModel> predecessors = NetAlgorithms.getDirectlyConnectedNodes(successor,
 						swapArcDirection?NetAlgorithms.connectionTypeOUTBOUND
 								:NetAlgorithms.connectionTypeINBOUND);
 				if (compareSet==null)
@@ -541,7 +541,7 @@ public class StructuralAnalysis {
 			AbstractElementModel currentSource =
 				(AbstractElementModel) sourceIterator.next();
 			// Now look into all successors
-			Set successors = NetAlgorithms.GetDirectlyConnectedNodes(currentSource, 
+			Set successors = NetAlgorithms.getDirectlyConnectedNodes(currentSource, 
 					NetAlgorithms.connectionTypeOUTBOUND);
 			Iterator successorIterator = successors.iterator();
 			// Each outgoing arc gets its own number
@@ -569,7 +569,7 @@ public class StructuralAnalysis {
 						// Recursively add all nodes reachable directly from the
 						// current node
 						Set<AbstractElementModel> recurseSet =
-							NetAlgorithms.GetDirectlyConnectedNodes(currentElement,
+							NetAlgorithms.getDirectlyConnectedNodes(currentElement,
 									NetAlgorithms.connectionTypeOUTBOUND);
 						
 						for (AbstractElementModel aem : recurseSet) {
