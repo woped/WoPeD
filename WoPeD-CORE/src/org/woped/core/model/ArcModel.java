@@ -44,16 +44,15 @@ import org.woped.core.utilities.LoggerManager;
  * 
  * 19.04.2003
  */
+
+@SuppressWarnings("serial")
 public class ArcModel extends DefaultEdge implements Serializable
 {
 
-    private String         id;
-
-    private boolean        activated        = false;
-
-    private Vector         unknownToolSpecs = new Vector();
-
-    private ElementContext elementContext   = null;
+    private String id;
+    private boolean activated = false;
+    private Vector<Object> unknownToolSpecs = new Vector<Object>();
+    private ElementContext elementContext = null;
 
     //! Stores the probability for this arc to be chosen
     //! Currently, this is a dummy value
@@ -61,7 +60,7 @@ public class ArcModel extends DefaultEdge implements Serializable
     //! and read back but not used for anything.
     //! It will, however, be used in the future for quantitative analysis of 
     //! workflow nets. Time of this writing: 2006/12/18, A.Eckleder 
-    private double         probability = 0.0d;
+    private double probability = 0.0d;
 
     /**
      * Constructor for ArcModel.
@@ -183,7 +182,7 @@ public class ArcModel extends DefaultEdge implements Serializable
      */
     public void setRoute(boolean route)
     {
-        AttributeMap map = this.getAttributes();
+        
         if (route)
         {
             getAttributes().applyValue(GraphConstants.ROUTING, GraphConstants.ROUTING_SIMPLE);
@@ -210,9 +209,10 @@ public class ArcModel extends DefaultEdge implements Serializable
      */
     public void addPoint(Point2D c, int index)
     {
-        List points = GraphConstants.getPoints(getAttributes());
+        @SuppressWarnings("unchecked")	
+    		List<Object> points = GraphConstants.getPoints(getAttributes());
         if (points == null) {
-            points=new Vector();
+            points = new Vector<Object>();
         }
         points.add(index, c);
         HashMap map = new HashMap();
@@ -229,11 +229,12 @@ public class ArcModel extends DefaultEdge implements Serializable
     public void addPoint(Point2D c)
     {
         AttributeMap map = getAttributes();
-        List points = GraphConstants.getPoints(map);
-        if (points==null){
-            points=new Vector();
+        @SuppressWarnings("unchecked")
+        	List<Object> points = GraphConstants.getPoints(map);
+        if (points == null){
+            points = new Vector<Object>();
             Point2D[] currentPoints = getPoints();
-            for (int i=0;i<currentPoints.length;i++){
+            for (int i = 0; i < currentPoints.length; i++){
                 points.add(currentPoints[i]);
             }
         }
@@ -242,17 +243,17 @@ public class ArcModel extends DefaultEdge implements Serializable
         double min = Double.MAX_VALUE, dist = 0;
         for (int i = 0; i < points.size() - 1; i++)
         {
-            Point2D p=null;
-            Point2D p1=null;
+            Point2D p = null;
+            Point2D p1 = null;
             if  (points.get(i) instanceof Point2D){
-                p= (Point2D)points.get(i);
+                p = (Point2D) points.get(i);
             } else if (points.get(i) instanceof PortView){
-                p=((PortView)points.get(i)).getLocation();
+                p =((PortView) points.get(i)).getLocation();
             }
-            if  (points.get(i+1) instanceof Point2D){
-                p1= (Point2D)points.get(i+1);
-            } else if (points.get(i+1) instanceof PortView){
-                p1=((PortView)points.get(i+1)).getLocation();
+            if  (points.get(i + 1) instanceof Point2D){
+                p1 = (Point2D) points.get(i+1);
+            } else if (points.get(i + 1) instanceof PortView){
+                p1 = ((PortView) points.get(i + 1)).getLocation();
             }
             dist = new Line2D.Double(p, p1).ptLineDistSq(c);
             if (dist < min)
@@ -287,7 +288,8 @@ public class ArcModel extends DefaultEdge implements Serializable
     public void setPoints(Point2D[] points)
     {
         AttributeMap map = getAttributes();
-        List pointList = GraphConstants.getPoints(map);
+        @SuppressWarnings("unchecked")
+        	List<Object> pointList = GraphConstants.getPoints(map);
         if (pointList != null)
         {
             while (pointList.size() > 2)
@@ -370,12 +372,12 @@ public class ArcModel extends DefaultEdge implements Serializable
         this.activated = activated;
     }
 
-    public Vector getUnknownToolSpecs()
+    public Vector<Object> getUnknownToolSpecs()
     {
         return unknownToolSpecs;
     }
 
-    public void setUnknownToolSpecs(Vector unknownToolSpecs)
+    public void setUnknownToolSpecs(Vector<Object> unknownToolSpecs)
     {
         this.unknownToolSpecs = unknownToolSpecs;
     }
@@ -393,7 +395,7 @@ public class ArcModel extends DefaultEdge implements Serializable
         map.setArcSourceId(getSourceId());
         map.setArcTargetId(getTargetId());
         List points = GraphConstants.getPoints(getAttributes());
-        Vector newPoints = new Vector();
+        Vector<Object> newPoints = new Vector<Object>();
         for (int i = 1; i < points.size() - 1; i++)
         {
             newPoints.add(new IntPair((int) ((Point2D) points.get(i)).getX(), (int) ((Point2D) points.get(i)).getY()));

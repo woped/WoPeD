@@ -31,16 +31,18 @@ import java.util.Iterator;
  *         <br>
  *  
  */
+
+@SuppressWarnings("serial")
 public class ElementContext implements Serializable
 {
-    private HashMap      contextMap           = null;
+    private HashMap<Object, Object> contextMap = null;
 
     public static String UML_CONTEXT_AND_TYPE = "AND_TYPE";
     public static String UML_CONTEXT_XOR_TYPE = "XOR_TYPE";
 
     public ElementContext()
     {
-        contextMap = new HashMap();
+        contextMap = new HashMap<Object, Object>();
     }
 
     public void setANDType(boolean splitType)

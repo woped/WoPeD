@@ -301,10 +301,12 @@ public class CreationMap extends HashMap<String, Object>
         put(UNKNOWN_TOOLSPEC, toolSpec);
     }
 
-    public void addUnknownToolSpec(Object toolSpec)
+    @SuppressWarnings("unchecked")
+	public void addUnknownToolSpec(Object toolSpec)
     {
-        if (get(UNKNOWN_TOOLSPEC) == null) setUnknownToolSpec(new Vector());
-        ((Vector) get(UNKNOWN_TOOLSPEC)).add(toolSpec);
+        if (get(UNKNOWN_TOOLSPEC) == null) setUnknownToolSpec(new Vector<Object>());
+        
+        ((Vector<Object>) get(UNKNOWN_TOOLSPEC)).add(toolSpec);
     }
 
     public String getArcId()
@@ -371,14 +373,15 @@ public class CreationMap extends HashMap<String, Object>
         }
     }
 
-    public List getArcPoints()
+    @SuppressWarnings("unchecked")
+	public List<IntPair> getArcPoints()
     {
         if (containsKey(ARC_POINTS))
         {
-            return ((List) get(ARC_POINTS));
+            return ((List<IntPair>) get(ARC_POINTS));
         } else
         {
-            return new Vector();
+            return new Vector<IntPair>();
         }
     }
 
