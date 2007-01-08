@@ -43,15 +43,13 @@ import org.woped.core.model.petrinet.TransitionModel;
  * 
  * @author Thomas Pohl
  */
+
+@SuppressWarnings("serial")
 public class DefaultPropertiesDialog extends JDialog implements IEditorProperties
 {
 
     private Object[]            m_selection;
-
     private Hashtable           m_parameters;
-
-    private static final String NAME   = "Name";
-
     private static final String TOKENS = "Tokens";
 
     /**
