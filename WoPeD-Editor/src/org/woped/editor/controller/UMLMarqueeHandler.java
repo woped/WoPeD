@@ -51,8 +51,7 @@ public class UMLMarqueeHandler extends AbstractMarqueeHandler
             getEditor().setLastMousePosition(e.getPoint());
             if (SwingUtilities.isRightMouseButton(e))
             {
-                // Find Cell in Model Coordinates
-                Object c = getEditor().getGraph().getFirstCellForLocation(getEditor().getLastMousePosition().getX(), getEditor().getLastMousePosition().getY());
+                
                 // Display PopupMenu
                 PopupMenuUML.getInstance().show(getEditor().getGraph(), (int) getEditor().getLastMousePosition().getX(), (int) getEditor().getLastMousePosition().getY());
                 // Else if in ConnectMode and Remembered Port is Valid
