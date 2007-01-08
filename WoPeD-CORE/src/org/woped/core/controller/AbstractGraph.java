@@ -215,7 +215,7 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
             // Add a Line End Attribute
             GraphConstants.setLineEnd(attr, GraphConstants.ARROW_CLASSIC);
             // Construct a Map from cells to Maps (for insert)
-            Hashtable nest = new Hashtable();
+            Hashtable<DefaultEdge, AttributeMap> nest = new Hashtable<DefaultEdge, AttributeMap>();
             // Associate the Edge with its Attributes
             nest.put(edge, attr);
             // Insert wants an Object-Array
@@ -303,15 +303,15 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
     public void ungroup(Object[] cells)
     {
         // Shortcut to the model
-        GraphModel m = getModel();
+        GraphModel graphModel = getModel();
         GroupModel aGroup;
         // If any Cells
         if (cells != null && cells.length > 0)
         {
             // List that Holds the Groups
-            ArrayList groups = new ArrayList();
+            ArrayList<Object> groups = new ArrayList<Object>();
             // List that Holds the Children
-            ArrayList children = new ArrayList();
+            ArrayList<Object> children = new ArrayList<Object>();
             // Loop Cells
             for (int i = 0; i < cells.length; i++)
             {
@@ -324,14 +324,14 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
                         // Add to List of Groups
                         groups.add(cells[i]);
                         // Loop Children of Cell
-                        for (int j = 0; j < m.getChildCount(cells[i]); j++) {
+                        for (int j = 0; j < graphModel.getChildCount(cells[i]); j++) {
                             // Get Child from Model
-                            children.add(m.getChild(cells[i], j));
+                            children.add(graphModel.getChild(cells[i], j));
                         }
                     }
                 }
                 // Remove Groups from Model (Without Children)
-                m.remove(groups.toArray());
+                graphModel.remove(groups.toArray());
                 // Select Children
                 setSelectionCells(children.toArray());
                 LoggerManager.debug(Constants.CORE_LOGGER, "Grouping of Elements deleted. ");
