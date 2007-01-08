@@ -36,6 +36,7 @@ import java.util.Set;
 import javax.swing.JToolTip;
 
 import org.jgraph.JGraph;
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.BasicMarqueeHandler;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.Edge;
@@ -53,7 +54,6 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
-import org.woped.editor.controller.vc.NetAlgorithms;
 import org.woped.editor.gui.EditorToolTip;
 import org.woped.editor.view.ViewFactory;
 
@@ -66,6 +66,8 @@ import org.woped.editor.view.ViewFactory;
  * 
  * 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class WoPeDJGraph extends AbstractGraph
 {
 
@@ -383,7 +385,7 @@ public class WoPeDJGraph extends AbstractGraph
                         {
                             ParentMap pm = new ParentMap();
                             pm.addEntry(((TransitionModel) element).getToolSpecific().getTrigger(), group);
-                            HashMap hm = new HashMap();
+                            HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
                             hm.put(group, group.getAttributes());
                             getModel().insert(new Object[] { ((TransitionModel) element).getToolSpecific().getTrigger() }, hm, null, pm, null);
                         }
@@ -393,7 +395,7 @@ public class WoPeDJGraph extends AbstractGraph
             			{
                             ParentMap pm = new ParentMap();
                             pm.addEntry(((TransitionModel) element).getToolSpecific().getTransResource(), group);
-                            HashMap hm = new HashMap();
+                            HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
                             hm.put(group, group.getAttributes());
                             getModel().insert(new Object[] { ((TransitionModel) element).getToolSpecific().getTransResource() }, hm, null, pm, null);
             			}
