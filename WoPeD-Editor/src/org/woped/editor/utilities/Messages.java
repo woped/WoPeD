@@ -195,7 +195,7 @@ public abstract class Messages
      */
     public static String getStringReplaced(String key, String[] args)
     {
-        return MessageFormat.format(Messages.getString(key), args);
+        return MessageFormat.format(Messages.getString(key), (Object[]) args);
     }
 
 }
