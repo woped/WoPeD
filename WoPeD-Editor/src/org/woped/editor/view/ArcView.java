@@ -29,6 +29,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,8 @@ import org.woped.core.model.ArcModel;
  * 
  * 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class ArcView extends EdgeView
 {
 
@@ -64,8 +67,8 @@ public class ArcView extends EdgeView
         if (cell instanceof ArcModel){
             setAttributes(((ArcModel)cell).getAttributes());
         }
-        if (GraphConstants.getPoints(getAttributes())==null ){
-            List points = new ArrayList(2);
+        if (GraphConstants.getPoints(getAttributes()) == null ){
+            List<Point2D> points = new ArrayList<Point2D>(2);
             points.add(getAttributes().createPoint(10, 10));
             points.add(getAttributes().createPoint(20, 20));
             GraphConstants.setPoints(getAttributes(), points);
@@ -77,11 +80,15 @@ public class ArcView extends EdgeView
      * 
      * @see org.jgraph.graph.EdgeView#getEdgeRenderer()
      */
-    public EdgeRenderer getEdgeRenderer()
+/*    
+    EdgeRenderer getEdgeRenderer()
     {
         return arcViewRenderer;
     }
 
+*/    
+    
+    
     /*
      * (non-Javadoc)
      * 
