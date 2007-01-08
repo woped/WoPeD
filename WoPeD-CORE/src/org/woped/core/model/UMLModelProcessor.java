@@ -12,6 +12,8 @@ import org.woped.core.model.uml.AbstractUMLElementModel;
  * @author landess
  *  
  */
+
+@SuppressWarnings("serial")
 public class UMLModelProcessor extends AbstractModelProcessor implements Serializable
 {
     private int activityCounter = 0;

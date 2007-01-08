@@ -32,6 +32,8 @@ import org.jgraph.graph.Port;
  * 
  * 14.05.2003
  */
+
+@SuppressWarnings("serial")
 public class PortCell extends DefaultPort
 {
 
