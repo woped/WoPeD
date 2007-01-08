@@ -14,6 +14,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.uml.StateModel;
 import org.woped.core.view.AbstractElementView;
 
+@SuppressWarnings("serial")
 public class StateView extends AbstractElementView
 {
     private StateRenderer renderer = new StateRenderer();
@@ -38,8 +39,6 @@ public class StateView extends AbstractElementView
 
         // liefert die Größe und die Koordinaten der Stelle.
         Rectangle2D r = getBounds();
-        double x = r.getX();
-        double y = r.getY();
         // Berechnet den relative Mittelpunkt der Stelle.
         double a = (16 - 1) / 2;
         double b = (16 - 1) / 2;
@@ -70,7 +69,6 @@ public class StateView extends AbstractElementView
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
-            boolean tmp = selected;
 
             if (super.isOpaque())
             {

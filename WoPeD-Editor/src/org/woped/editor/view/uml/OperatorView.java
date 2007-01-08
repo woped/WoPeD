@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.VertexRenderer;
@@ -16,10 +14,9 @@ import org.woped.core.view.AbstractElementView;
 
 /**
  * @author lai
- * 
- * TODO To change the template for this generated type comment go to Window -
- * Preferences - Java - Code Style - Code Templates
  */
+
+@SuppressWarnings("serial")
 public class OperatorView extends AbstractElementView
 {
     private OperatorRenderer renderer = new OperatorRenderer();
@@ -39,7 +36,8 @@ public class OperatorView extends AbstractElementView
         return ((OperatorModel) getCell()).getOperatorType();
     }
 
-    public Point2D getPerimeterPoint(Point2D source, Point2D p)
+    
+/*    public Point2D getPerimeterPoint(Point2D source, Point2D p)
     {
         Rectangle2D r = getBounds();
         if (getOperatorType() == OperatorModel.XOR_TYPE)
@@ -73,7 +71,7 @@ public class OperatorView extends AbstractElementView
         //            double dockPointY = (absCenterY + (b * Math.sin(aplha)));
 
     }
-
+*/
     /**
      * this inner class contains the render information of an UML Operator
      */
@@ -86,7 +84,7 @@ public class OperatorView extends AbstractElementView
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
-            boolean tmp = selected;
+
             if (super.isOpaque())
             {
                 g2.setColor(super.getBackground());
