@@ -11,11 +11,8 @@ import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractModelProcessor;
-import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
-import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
@@ -188,11 +185,6 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
             currentEditor.setDrawingMode(active);
             currentEditor.setCreateElementType(type);
         }
-    }
-
-    private void resetDrawMode()
-    {
-        setDrawMode(-1, false);
     }
 
     /**
