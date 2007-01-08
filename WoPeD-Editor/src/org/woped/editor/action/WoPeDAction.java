@@ -40,6 +40,8 @@ import org.woped.editor.utilities.Messages;
  * 
  * 13.10.2003
  */
+
+@SuppressWarnings("serial")
 public class WoPeDAction extends AbstractAction
 {
 
