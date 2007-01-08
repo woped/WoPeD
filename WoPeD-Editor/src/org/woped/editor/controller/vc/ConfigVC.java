@@ -75,14 +75,16 @@ import org.woped.editor.utilities.Messages;
  * 
  * Created on: 26.11.2004 Last Change on: 26.11.2004
  */
+
+@SuppressWarnings("serial")
 public class ConfigVC extends JDialog implements TreeSelectionListener, IViewController
 {
     // ViewControll
-    private Vector                viewListener   = new Vector(1, 3);
+    private Vector<IViewListener> viewListener   = new Vector<IViewListener>(1, 3);
     private String                id             = null;
     public static final String    ID_PREFIX      = "CONFIG_VC_";
 
-    private HashMap               confPanels     = new HashMap();
+    private HashMap<String, AbstractConfPanel>               confPanels     = new HashMap<String, AbstractConfPanel>();
 
     public static final Dimension CONF_DIM       = new Dimension(650, 430);
     public static final Dimension SCROLL_DIM     = new Dimension(450, 370);
@@ -90,7 +92,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
     public static final Color     BACK_COLOR     = new Color(255, 255, 255);
 
     private static JFileChooser   jfc            = null;
-    private static Vector         xmlExtensions  = new Vector();
+    private static Vector<String> xmlExtensions  = new Vector<String>();
     // GUI Components
     private ConfPanelTree         confPanelTree;
     private JSplitPane            splitPane      = null;
