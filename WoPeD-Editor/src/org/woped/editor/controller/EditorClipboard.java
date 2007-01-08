@@ -28,6 +28,7 @@ import java.util.Vector;
 
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
+import org.woped.core.model.CreationMap;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -37,10 +38,10 @@ import org.woped.core.model.ArcModel;
  */
 public class EditorClipboard
 {
-    private HashMap copiedElementsList = new HashMap();
-    private HashMap copiedArcsList     = new HashMap();
+    private HashMap<String, CreationMap> copiedElementsList = new HashMap<String, CreationMap>();
+    private HashMap<String, CreationMap> copiedArcsList     = new HashMap<String, CreationMap>();
     
-    private Vector m_listeners = new Vector();
+    private Vector<IClipboaredListener> m_listeners = new Vector<IClipboaredListener>();
 
     public EditorClipboard()
     {
@@ -84,13 +85,13 @@ public class EditorClipboard
     
     public void putArc(ArcModel arc)
     {
-        copiedArcsList.put(arc.getId(), arc.getCreationMap().clone());
+        copiedArcsList.put(arc.getId(), (CreationMap) arc.getCreationMap().clone());
         fireClipboardChange();
     }
     
     public void putElement(AbstractElementModel element)
     {
-        copiedElementsList.put(element.getId(), element.getCreationMap().clone());
+        copiedElementsList.put(element.getId(), (CreationMap) element.getCreationMap().clone());
         fireClipboardChange();
     }
     
