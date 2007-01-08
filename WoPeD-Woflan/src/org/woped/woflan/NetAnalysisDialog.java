@@ -51,7 +51,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
         	setSize(640,480);
         	// Center the window on the desktop
         	setLocationRelativeTo(null);
-        	setIconImage(Messages.getImageIcon("ToolBar.Woped").getImage());
+        	setIconImage(Messages.getImageIcon("Menu.Analysis.Woped").getImage());
         	
         	getContentPane().setLayout(new GridLayout(1,1));
         	// Add tree control to display the output of our WOFLAN library
