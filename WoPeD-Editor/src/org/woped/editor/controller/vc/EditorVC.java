@@ -132,6 +132,8 @@ import org.woped.editor.view.ViewFactory;
  * 
  * Created on 29.04.2003
  */
+
+@SuppressWarnings("serial")
 public class EditorVC extends JPanel implements KeyListener,
 		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor,
 		InternalFrameListener
@@ -187,7 +189,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	private IEditorProperties elementProperties = null;
 
 	// ViewControll
-	private Vector viewListener = new Vector(1, 3);
+	private Vector<IViewListener> viewListener = new Vector<IViewListener>(1, 3);
 
 	private EditorStatusBarVC m_statusbar;
 
@@ -544,7 +546,7 @@ public class EditorVC extends JPanel implements KeyListener,
 							map.getTriggerPosition().getX2());
 					ParentMap pm = new ParentMap();
 					pm.addEntry(triggerModel, group);
-					HashMap hm = new HashMap();
+					HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
 					hm.put(group, group.getAttributes());
 
 					getGraph().getModel().insert(new Object[] { triggerModel },
@@ -603,7 +605,7 @@ public class EditorVC extends JPanel implements KeyListener,
 						.getX1(), map.getResourcePosition().getX2());
 				ParentMap pm = new ParentMap();
 				pm.addEntry(transResourceModell, group);
-				HashMap hm = new HashMap();
+				HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
 				hm.put(group, group.getAttributes());
 
 				getGraph().getModel().insert(
@@ -871,7 +873,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	}
 
-	public void deleteCells(Object toDelete[])
+	public void deleteCells(Object[] toDelete)
 	{
 		deleteCells(toDelete, true);
 	}
@@ -882,9 +884,9 @@ public class EditorVC extends JPanel implements KeyListener,
 	 * @param toDelete
 	 * @param withGraph
 	 */
-	public void deleteCells(Object toDelete[], boolean withGraph)
+	public void deleteCells(Object[] toDelete, boolean withGraph)
 	{
-		Vector result = new Vector();
+		Vector<Object> result = new Vector<Object>();
 
 		for (int i = 0; i < toDelete.length; i++)
 		{
@@ -940,13 +942,13 @@ public class EditorVC extends JPanel implements KeyListener,
 	 * 
 	 * @param toDelete
 	 */
-	public void deleteOnlyCells(Object toDelete[], boolean withGraph)
+	public void deleteOnlyCells(Object[] toDelete, boolean withGraph)
 	{
 
 		toDelete = Utils.sortArcsFirst(toDelete);
-		Object tempToDelete[] = new Object[1];
-		Vector allPorts = new Vector();
-		Vector allCells = new Vector();
+		Object[] tempToDelete = new Object[1];
+		Vector<Object> allPorts = new Vector<Object>();
+		Vector<Object> allCells = new Vector<Object>();
 		for (int i = 0; i < toDelete.length; i++)
 		{
 
@@ -1090,7 +1092,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	public void addPointToArc(ArcModel arc, Point2D point)
 	{
 		arc.addPoint(point);
-		Map map = new HashMap();
+		Map<ArcModel, AttributeMap> map = new HashMap<ArcModel, AttributeMap>();
 		map.put(arc, arc.getAttributes());
 		getGraph().getModel().edit(map, null, null, null);
 	}
@@ -1171,10 +1173,10 @@ public class EditorVC extends JPanel implements KeyListener,
 				tempElement = (AbstractElementModel) cells[idx];
 				// copy the element
 				m_clipboard.putElement(tempElement);
+				/*
 				Iterator arcIter = getModelProcessor().getElementContainer()
 						.getOutgoingArcs(tempElement.getId()).keySet()
 						.iterator();
-				/*
 				 * copy all the elements arcs TODO: Release 0.9.0 "implicite arc
 				 * copy" while (arcIter.hasNext()) { tempArc =
 				 * getPetriNet().getElementContainer().getArcById(arcIter.next());
@@ -1402,14 +1404,12 @@ public class EditorVC extends JPanel implements KeyListener,
 		move(toMove, dx, dy, null, false);
 	}
 
-	private void move(Object toMove[], int dx, int dy, HashMap changes,
+	private void move(Object toMove[], int dx, int dy, HashMap<GraphCell, AttributeMap> changes,
 			boolean isrecursiv)
 	{
-		AbstractElementModel currentModel;
-		Object tempMove[];
 		if (changes == null)
 		{
-			changes = new HashMap();
+			changes = new HashMap<GraphCell, AttributeMap>();
 		}
 		for (short i = 0; i < toMove.length; i++)
 		{
@@ -1439,7 +1439,7 @@ public class EditorVC extends JPanel implements KeyListener,
 				}
 				if (points != null)
 				{
-					Vector newPoints = new Vector();
+					Vector<Point2D> newPoints = new Vector<Point2D>();
 					Point2D tempPoint;
 					for (short k = 0; k < points.size(); k++)
 					{
@@ -1654,7 +1654,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		// If the selected Cell(s) are any PetriNetModel their respective
 		// parents get selected.
 		// Elements can only be dragged together with their name.
-		ArrayList addedCells = new ArrayList();
+		ArrayList<Object> addedCells = new ArrayList<Object>();
 		for (int i = 0; i < cells.length; ++i)
 		{
 			if (arg0.isAddedCell(cells[i]))
@@ -2240,7 +2240,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		EditorVC newEditorWindow = (EditorVC)m_centralMediator.createSubprocessEditor(getModelProcessor().getProcessorType(),
 				true, this, subProcess);
-		ModelElementContainer subPElements = newEditorWindow.getModelProcessor().getElementContainer();
+		newEditorWindow.getModelProcessor().getElementContainer();
 		StructuralAnalysis analysis = new StructuralAnalysis(newEditorWindow);
 		if (analysis.getNumSourcePlaces()==1)
 		{
