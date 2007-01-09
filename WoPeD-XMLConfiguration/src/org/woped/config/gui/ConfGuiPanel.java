@@ -47,12 +47,14 @@ import org.woped.editor.gui.config.AbstractConfPanel;
  *         <code>AbstractConfPanel</code> for the gui configruation. <br>
  *         Created on: 26.11.2004 Last Change on: 26.11.2004
  */
+
+@SuppressWarnings("serial")
 public class ConfGuiPanel extends AbstractConfPanel
 {
     private Component guiObject;
     // LookAndFeel
     private JComboBox lnfChooser = null;
-    private Vector    lnfClasses = new Vector();
+    private Vector<String>    lnfClasses = new Vector<String>();
     private JPanel    lnfPanel   = null;
 
     /**
