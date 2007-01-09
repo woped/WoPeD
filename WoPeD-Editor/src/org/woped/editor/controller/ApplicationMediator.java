@@ -22,7 +22,6 @@
  */
 package org.woped.editor.controller;
 
-import java.awt.Component;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
@@ -33,10 +32,6 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.event.InternalFrameAdapter;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.MouseInputAdapter;
 
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
