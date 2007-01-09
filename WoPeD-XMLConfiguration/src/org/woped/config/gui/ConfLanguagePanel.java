@@ -22,7 +22,6 @@
  */
 package org.woped.config.gui;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -47,9 +46,10 @@ import org.woped.editor.utilities.Messages;
  *         Created on: 26.11.2004 Last Change on: 14.11.2005
  */
 
+@SuppressWarnings("serial")
 public class ConfLanguagePanel extends AbstractConfPanel
 {
-    private Component      guiObject;
+    //private Component      guiObject;
     // Language selection
     private JPanel         languagePanel    = null;
     private JComboBox      languageComboBox = null;
@@ -132,7 +132,7 @@ public class ConfLanguagePanel extends AbstractConfPanel
         if (languageComboBox == null)
         {
             String[] languageBoxItems = new String[language.length];
-            int maxlength = 0;
+            
             for (int i = 0; i < language.length; i++)
             {
                 languageBoxItems[i] = language[i].getDisplayLanguage(language[i]);
