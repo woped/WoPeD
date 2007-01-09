@@ -46,6 +46,8 @@ import org.woped.gui.help.action.BrowserWebpageAction;
  *         TODO: DOCUMENTATION (tfreytag) Represents the HelpMenubar
  *  
  */
+
+@SuppressWarnings("serial")
 public class HelpMenuBar extends JMenuBar
 {
 
