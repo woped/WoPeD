@@ -35,6 +35,8 @@ import org.woped.editor.gui.config.AbstractConfPanel;
  * 
  * Created on: 02.12.2004 Last Change on: 02.12.2004
  */
+
+@SuppressWarnings("serial")
 public class DummyNodePanel extends AbstractConfPanel
 {
     /**
