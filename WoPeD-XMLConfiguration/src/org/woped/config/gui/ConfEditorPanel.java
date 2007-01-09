@@ -46,6 +46,8 @@ import org.woped.editor.utilities.Messages;
  *         <br>
  *         Created on: 26.11.2004 Last Change on: 16.12.2004
  */
+
+@SuppressWarnings("serial")
 public class ConfEditorPanel extends AbstractConfPanel
 {
 
