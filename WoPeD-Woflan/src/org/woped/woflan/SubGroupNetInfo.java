@@ -1,11 +1,13 @@
 package org.woped.woflan;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Enumeration;
 
+import org.woped.core.controller.IEditor;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.core.controller.*;
 import org.woped.editor.controller.vc.NetInfo;
 
+@SuppressWarnings("serial")
 public class SubGroupNetInfo extends UnaryNetInfo {
 	public SubGroupNetInfo(
 			IEditor currentEditor,
@@ -28,7 +30,7 @@ public class SubGroupNetInfo extends UnaryNetInfo {
 	public Object[] getReferencedElements() {
 		// This is a group item
 		// Retrieve all subitems and get their referenced elements
-		ArrayList collectedItems = new ArrayList();
+		ArrayList<Object> collectedItems = new ArrayList<Object>();
 		// Iterate through all children
 		for (Enumeration e = children();e.hasMoreElements();)
 		{
