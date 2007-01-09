@@ -24,7 +24,7 @@ public class UnaryNetInfo extends NetInfo {
 		m_currentEditor = currentEditor;
 	}
 	public Object[] getReferencedElements() {
-		Object translatedObject = TranslateToNetObject(toString());		
+		Object translatedObject = translateToNetObject(toString());		
 		// Return a list containing only the single element that is ourselves
 		// or an empty list if we have no matching in the net
 		Object[] result = new Object[(translatedObject!=null)?1:0];
@@ -35,7 +35,7 @@ public class UnaryNetInfo extends NetInfo {
 	//! Translate a string identifier as returned by the WOFLAN
 	//! analyser DLL into an object within the net that is currently
 	//! opened in the editor
-	private Object TranslateToNetObject(String name) {
+	private Object translateToNetObject(String name) {
 		ModelElementContainer elements
 		= m_currentEditor.getModelProcessor().getElementContainer();
 		String objectID = null;
