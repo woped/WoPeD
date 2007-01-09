@@ -104,8 +104,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				{
 					SubProcessModel model = (SubProcessModel) cell;
 
-					IEditor subProcessEditor = getMediator()
-							.createSubprocessEditor(
+					getMediator().createSubprocessEditor(
 									AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
 									true, editor, model);
 				}
@@ -211,7 +210,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 
 	private void quit()
 	{
-		Vector editorList = new Vector(getMediator().getUi().getAllEditors());
+		Vector<IEditor> editorList = new Vector<IEditor>(getMediator().getUi().getAllEditors());
 		boolean canceled = false;
 		for (Iterator iter = editorList.iterator(); iter.hasNext();)
 		{

@@ -53,7 +53,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private MenuBarVC menuBar = null;
 
     private int                   m_numEditors           = 0;
-    private List<IEditor>                  editorList             = new ArrayList<IEditor>();
+    private List<IEditor>         editorList             = new ArrayList<IEditor>();
 
     //! Stores a list of internal frames that should stay in foreground
     private List<DefaultEditorFrame>  m_modalityStack = new ArrayList<DefaultEditorFrame>();
@@ -325,7 +325,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         return toolBar;
     }
 
-    public List getAllEditors()
+    public List<IEditor> getAllEditors()
     {
         return editorList;
     }

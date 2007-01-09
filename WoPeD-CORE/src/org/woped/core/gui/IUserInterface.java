@@ -13,7 +13,7 @@ public interface IUserInterface extends IEditorAware
 
     public IEditor getEditorFocus();
 
-    public List getAllEditors();
+    public List<IEditor> getAllEditors();
 
     public void quit();
 
