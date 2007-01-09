@@ -38,7 +38,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -55,10 +54,10 @@ import org.woped.editor.utilities.Messages;
  *         handling. <br>
  *         Created on: 26.11.2004 Last Change on: 26.11.2004
  */
+
+@SuppressWarnings("serial")
 public class ConfFilePanel extends AbstractConfPanel
 {
-    // GUI COMPONENTS
-    private JScrollPane contentPanel                   = null;
     // PNML
     private JPanel      PNMLPanel                      = null;
     private JCheckBox   exportToolspecCheckBox         = null;
@@ -66,8 +65,6 @@ public class ConfFilePanel extends AbstractConfPanel
     // TPN
     private JPanel      TPNPanel                       = null;
     private JCheckBox   exportTpnElementAsNameCheckBox = null;
-    // JPG
-    private JPanel      JPGPanel                       = null;
     // HomeDir
     private JCheckBox   homeDirDefaultCheckBox         = null;
     private JPanel      homeDirPanel                   = null;
