@@ -30,7 +30,7 @@ import org.woped.editor.utilities.Messages;
 public class NetAnalysisDialog extends JFrame implements WindowListener{
 	public NetAnalysisDialog(File temporaryFile, IEditor editor, AbstractApplicationMediator mediator)
 	{		
-		super("Analysis Dialog");
+		super(Messages.getString("Analysis.Dialog.Title"));
 		
 		// Remember a reference to our model
 		// We need it to deal with selections
@@ -51,12 +51,12 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
         	setSize(640,480);
         	// Center the window on the desktop
         	setLocationRelativeTo(null);
-        	setIconImage(Messages.getImageIcon("Menu.Analysis.Woped").getImage());
+        	setIconImage(Messages.getImageIcon("Analysis.Dialog").getImage());
         	
         	getContentPane().setLayout(new GridLayout(1,1));
         	// Add tree control to display the output of our WOFLAN library
         	DefaultMutableTreeNode top =
-                new NetInfo("Net Analysis");
+                new NetInfo(Messages.getString("Analysis.Tree.Title"));
         	m_treeObject = new JTree(top);
     		m_treeObject.setCellRenderer(new NetInfoTreeRenderer());        	
         	m_treeObject.setShowsRootHandles(true);
@@ -78,21 +78,25 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 	
 	private void BuildBasicInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Basic net information");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.BasicInfo"));
 		parent.add(current);
 				
-		current.add(new NodeGroupNetInfo("Number of places: " + m_structuralAnalysis.getNumPlaces(),
-				m_structuralAnalysis.getPlacesIterator()));
-		current.add(new NodeGroupNetInfo("Number of transitions: " + m_structuralAnalysis.getNumTransitions(),
-				m_structuralAnalysis.getTransitionsIterator()));
-		current.add(new NodeGroupNetInfo("Number of operators: " + m_structuralAnalysis.getNumOperators(),
-				m_structuralAnalysis.getOperatorsIterator()));
-		current.add(new NetInfo("Number of arcs: "+ m_structuralAnalysis.getNumArcs()));
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumPlaces") + ": " +
+														m_structuralAnalysis.getNumPlaces(),
+														m_structuralAnalysis.getPlacesIterator()));
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumTransitions")  + ": " + 
+														m_structuralAnalysis.getNumTransitions(),
+														m_structuralAnalysis.getTransitionsIterator()));
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumOperators")  + ": " + 
+														m_structuralAnalysis.getNumOperators(),
+														m_structuralAnalysis.getOperatorsIterator()));
+		current.add(new NetInfo(Messages.getString("Analysis.Tree.NumArcs")  + ": " + 
+														m_structuralAnalysis.getNumArcs()));
 	}
 	
 	private void BuildSemanticalAnalysis(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Semantical Analysis");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Behaviour"));
 		parent.add(current);
 		
 		BuildInvariantsInfo(current);
@@ -101,7 +105,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 	
 	private void BuildSoundnessInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Soundness checks");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Soundness"));
 		parent.add(current);
 		
 		BuildBoundednessInfo(current);	
@@ -110,7 +114,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 	
 	private void BuildBoundednessInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Boundedness Info");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Boundedness"));
 		parent.add(current);
 		
 		// Calculate boundedness information
@@ -118,34 +122,33 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 
 		// Show unbounded places
     	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of unbounded places: ", 
+    			Messages.getString("Analysis.Tree.NumUnboundedPlaces") + ": ", 
     			m_myWofLan.InfoNofUnbP,
     			"",
     			m_myWofLan.InfoUnbPName,
-    			
     			-1,
     			0,
-    			false
-    	));
+    			false));
     	
 		// Display unbounded sequences
     	// that is, transition sequences that will 
     	// keep increasing the number of total tokens
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of unbounded sequences: ",
+				Messages.getString("Analysis.Tree.NumUnboundedSeq") + ": ",
 				m_myWofLan.InfoNofUnbS,
 				m_myWofLan.InfoUnbSNofT,
-				"Unbounded sequence, Number of transitions: ",
+				Messages.getString("Analysis.Tree.UnboundedSeqNumTrans") + ": ",
 				"",
-				m_myWofLan.InfoUnbSTName,
-				
-				-1, 0, false));		
+				m_myWofLan.InfoUnbSTName,			
+				-1, 
+				0, 
+				false));		
 	}
 	
 	private void BuildLivenessInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Liveness Info");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Liveness"));
 		parent.add(current);
 
 		// Calculate Liveness information
@@ -154,44 +157,41 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		// Show dead transitions
 		// (transitions that will not ever be active for any marking)
     	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of dead transitions: ", 
+    			Messages.getString("Analysis.Tree.NumDeadTrans") + ": ", 
     			m_myWofLan.InfoNofDeadT,
     			"",
-    			m_myWofLan.InfoDeadTName,
-    			
+    			m_myWofLan.InfoDeadTName,  			
     			-1,
     			0,
-    			false
-    	));
+    			false));
 		// Show zombie transitions
     	// (transitions that ain't quite dead yet)
     	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of non-live transitions: ", 
+    			Messages.getString("Analysis.Tree.NumNonLiveTrans") + ": ", 
     			m_myWofLan.InfoNofNLiveT,
     			"",
-    			m_myWofLan.InfoNLiveTName,
-    			
+    			m_myWofLan.InfoNLiveTName,  			
     			-1,
     			0,
-    			false
-    	));
+    			false));
 		// Display non-live sequences
     	// that is a sequence to "kill" a zombie transition
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of non-live sequences: ",
+				Messages.getString("Analysis.Tree.NumNonLiveSeq") + ": ", 
 				m_myWofLan.InfoNofNLiveS,
 				m_myWofLan.InfoNLiveSNofT,
-				"Non-live sequence, Number of transitions: ",
+				Messages.getString("Analysis.Tree.NonLiveSeqNumTrans") + ": ",
 				"",
-				m_myWofLan.InfoNLiveSTName,
-				
-				-1, 0, false));		    					
+				m_myWofLan.InfoNLiveSTName,			
+				-1, 
+				0, 
+				false));		    					
 	}
 	
 	private void BuildInvariantsInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Invariants information");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Invariants"));
 		parent.add(current);
 		
 		// Calculate all invariants information we can get
@@ -203,118 +203,115 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		// Display the P-Invariants of this net
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of P-Invariants: ",
+				Messages.getString("Analysis.Tree.NumPInvariants") + ": ", 
 				m_myWofLan.InfoNofPInv,
 				m_myWofLan.InfoPInvNofP,
-				"P-Invariant, Number of elements: ",
+				Messages.getString("Analysis.Tree.PInvNumPlaces") + ": ",
 				"",
-				m_myWofLan.InfoPInvPName,
-				
-				-1, 1, true));
+				m_myWofLan.InfoPInvPName,				
+				-1, 
+				1, 
+				true));
 
 		// Show the places that are not covered by any P-Invariant
 		// of the net.
     	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of places not covered by P-Invariant: ", 
+    			Messages.getString("Analysis.Tree.PInvNumUncoveredPlaces") + ": ",  
     			m_myWofLan.InfoNofPotPInv ,
     			"",
-    			m_myWofLan.InfoNotPInvPName,
-    			
+    			m_myWofLan.InfoNotPInvPName,  			
     			-1,
     			0,
-    			false
-    	));				
+    			false));				
 
     	// Display the Semi-positive P-Invariants of this net
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of semi-positive P-Invariants: ",
+				Messages.getString("Analysis.Tree.NumNonnegPInvariants") + ": ", 
 				m_myWofLan.InfoNofSPIn,
 				m_myWofLan.InfoSPInNofP,
-				"Semi-positive P-Invariant, Number of elements: ",
+				Messages.getString("Analysis.Tree.NonnegPInvNumPlaces") + ": ",
 				"",
-				m_myWofLan.InfoSPInPName,
-				
-				-1, 1, true));
+				m_myWofLan.InfoSPInPName,			
+				-1, 
+				1, 
+				true));
 
 		// Show the places that are not covered by any 
 		// Semi-positive P-Invariant
 		// of the net.
     	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of places not covered by semi-positive P-Invariant: ", 
+    			Messages.getString("Analysis.Tree.NonnegPInvNumUncoveredPlaces") + ": ", 
     			m_myWofLan.InfoNofPotSPIn ,
     			"",
-    			m_myWofLan.InfoNotSPInPName,
-    			
+    			m_myWofLan.InfoNotSPInPName,   			
     			-1,
     			0,
-    			false
-    	));
+    			false));
 
-		
+/*		
 		// Display the T-Invariants of this net
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of T-Invariants: ",
+				Messages.getString("Analysis.Tree.NumTInvariants") + ": ", 
 				m_myWofLan.InfoNofTInv,
 				m_myWofLan.InfoTInvNofP,
-				"T-Invariant, Number of elements: ",
+				Messages.getString("Analysis.Tree.TInvNumTrans") + ": ",
 				"",
 				m_myWofLan.InfoTInvPName,
-				
-				-1, 1, true));
+				-1, 
+				1, 
+				true));
 
 		// Show the places that are not covered by any T-Invariant
 		// of the net.
     	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number of transitions not covered by T-Invariant: ", 
+    			Messages.getString("Analysis.Tree.TInvNumUncoveredTrans") + ": ", 
     			m_myWofLan.InfoNofPotTInv ,
     			"",
-    			m_myWofLan.InfoNotTInvPName,
-    			
+    			m_myWofLan.InfoNotTInvPName,			
     			-1,
     			0,
-    			false
-    	));				
+    			false));				
 
     	// Display the Semi-positive T-Invariants of this net
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of semi-positive T-Invariants: ",
+				Messages.getString("Analysis.Tree.NumNonnegTInvariants") + ": ", 
 				m_myWofLan.InfoNofSTIn,
 				m_myWofLan.InfoSTInNofP,
-				"Semi-positive T-Invariant, Number of elements: ",
+				Messages.getString("Analysis.Tree.NonnegTInvNumTrans") + ": ",
 				"",
-				m_myWofLan.InfoSTInPName,
-				
-				-1, 1, true));
+				m_myWofLan.InfoSTInPName,			
+				-1, 
+				1, 
+				true));
 
 		// Show the places that are not covered by any 
-		// Semi-positive P-Invariant
+		// Semi-positive T-Invariant
 		// of the net.
     	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number places not covered by semi-positive T-Invariant: ", 
+    			Messages.getString("Analysis.Tree.NonnegTInvNumUncoveredTrans") + ": ", 
     			m_myWofLan.InfoNofPotSTIn ,
     			"",
-    			m_myWofLan.InfoNotSTInPName,
-    			
+    			m_myWofLan.InfoNotSTInPName,  			
     			-1,
     			0,
-    			false
-    	));    	
+    			false));    	*/
 	}
 
 	private void BuildStructuralAnalysis(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Structural Analysis");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Structural"));
 		parent.add(current);
 
     	BuildWorkflowInfo(current);
  
-    	current.add(new NodeGroupListNetInfo("Number of free-choice violations: "+ m_structuralAnalysis.getNumFreeChoiceViolations(),
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumFreechoiceViolations") + ": " + 
+    			m_structuralAnalysis.getNumFreeChoiceViolations(),
     			m_structuralAnalysis.getFreeChoiceViolations()) {
     		public String GetGroupDisplayString(int nIndex, Collection gorup) {
-    			return "Non-free-choice group " + (nIndex+1);
+    			return Messages.getString("Analysis.Tree.NonFreeChoiceGroup") + " " + (nIndex+1);
     		}
     		// Free-choice violations are not good and should trigger an error
     		public int GetInfoState() {
@@ -325,7 +322,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
     		}
     	});
 
-    	current.add(new NodeGroupNetInfo("Number of operators with wrong arc configuration: "+ m_structuralAnalysis.getNumMisusedOperators(),
+    	current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumWrongOperators") + ": " + 
+    			m_structuralAnalysis.getNumMisusedOperators(),
     			m_structuralAnalysis.getMisusedOperatorsIterator()) {
 			// We want exactly one source place
 			public int GetInfoState() {
@@ -341,7 +339,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 	}
 	private void BuildSComponentInformation(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("S-Components");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.SComponents"));
 		parent.add(current);
 		
 		// Create S-Component information
@@ -350,36 +348,34 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		// Display the S-Components of this net
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of S-Components: ",
+				Messages.getString("Analysis.Tree.NumSComponents") + ": ",
 				m_myWofLan.InfoNofSCom,
 				m_myWofLan.InfoSComNofN,
-				"S-Component, Number of elements: ",
+				Messages.getString("Analysis.Tree.SComponentNumPlaces") + ": ",
 				"",
-				m_myWofLan.InfoSComNName,
-				
-				-1, -1, true));
+				m_myWofLan.InfoSComNName,				
+				-1, 
+				-1, 
+				true));
 
 		// Show the places that are not covered by any S-Component
 		// of the net. If such a place exists the net is not s-coverable
     	current.add(new GroupNetInfo(m_currentEditor, this,
-    			"Number places not covered by S-Component: ", 
+    			Messages.getString("Analysis.Tree.SCompUncoveredPlaces") + ": ", 
     			m_myWofLan.InfoNofNotSCom ,
     			"",
-    			m_myWofLan.InfoNotSComNName,
-    			
+    			m_myWofLan.InfoNotSComNName,   			
     			-1,
     			0,
-    			false
-    	));		
+    			false));		
 	}	
 	private void BuildHandleInformation(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Well-Structuredness");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Wellstructuredness"));
 		parent.add(current);
 
-		/* Just commented out for now, might need it later
 		// Yes, create well-handledness info
-    	m_myWofLan.Info(m_netHandle, 
+/*    	m_myWofLan.Info(m_netHandle, 
     			m_myWofLan.SetPTH, 0, 0);
     	m_myWofLan.Info(m_netHandle, 
     			m_myWofLan.SetTPH, 0, 0);
@@ -388,30 +384,32 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		// are not well-handled
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of PT-Handles: ",
+				Messages.getString("Analysis.Tree.NumPTHandles") + ": ",
 				m_myWofLan.InfoNofPTH,
 				m_myWofLan.InfoPTHNofN1,
-				"Non-well-handled path, Number of elements: ",
 				"",
-				m_myWofLan.InfoPTHN1Name,
-				
-				-1, 0, false));
+				"",
+				m_myWofLan.InfoPTHN1Name,		
+				-1, 
+				0, 
+				false));
 		current.add(new MultipleGroupsNetInfo(m_currentEditor,
 				this,
-				"Number of TP-Handles: ",
+				Messages.getString("Analysis.Tree.NumTPHandles") + ": ",
 				m_myWofLan.InfoNofTPH,
 				m_myWofLan.InfoTPHNofN1,
-				"Non-well-handled path, Number of elements: ",
+				"",
 				"",
 				m_myWofLan.InfoTPHN1Name,
-				
-				-1, 0, false));
+				-1, 
+				0, 
+				false));
 		*/
-		
-    	current.add(new NodeGroupListNetInfo("Number of PT/TP handles: "+ m_structuralAnalysis.getNumWellStructurednessViolations(),
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumHandles") + ": " +
+    			m_structuralAnalysis.getNumWellStructurednessViolations(),
     			m_structuralAnalysis.getWellStructurednessViolations()) {
     		public String GetGroupDisplayString(int nIndex, Collection gorup) {
-    			return "PT/TP handle group " + (nIndex+1);
+    			return Messages.getString("Analysis.Tree.HandlePair") + " " + (nIndex+1);
     		}
     		// Free-choice violations are not good and should trigger an error
     		public int GetInfoState() {
@@ -420,19 +418,17 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
     			else
     				return InfoStateOK;
     		}
-    	});
-    	
-		
+    	});	
 	}
 	
 	private void BuildWorkflowInfo(DefaultMutableTreeNode parent)
 	{
-		DefaultMutableTreeNode current = new NetInfo("Workflow-Property");
+		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.WorkflowNet"));
 		parent.add(current);
 		
 		
 		Iterator i = m_structuralAnalysis.getNotStronglyConnectedNodes();
-		LoggerManager.info(Constants.WOFLAN_LOGGER, "Not strongly connected {");
+		LoggerManager.info(Constants.WOFLAN_LOGGER, Messages.getString("Analysis.Tree.NotStronglyConnected") + " {");
 		while (i.hasNext())
 		{
 			AbstractElementModel element = (AbstractElementModel)i.next();
@@ -440,7 +436,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		}
 		LoggerManager.info(Constants.WOFLAN_LOGGER, "}");
 		
-		current.add(new NodeGroupNetInfo("Number of source places: " + m_structuralAnalysis.getNumSourcePlaces(),
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumSourcePlaces") + ": " + 
+				m_structuralAnalysis.getNumSourcePlaces(),
 				m_structuralAnalysis.getSourcePlacesIterator()) {
 			// We want exactly one source place
 			public int GetInfoState() {
@@ -450,7 +447,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 					return InfoStateOK;
 			}
 		});				
-		current.add(new NodeGroupNetInfo("Number of sink places: " + m_structuralAnalysis.getNumSinkPlaces(),
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumSinkPlaces") + ": " +
+				m_structuralAnalysis.getNumSinkPlaces(),
 				m_structuralAnalysis.getSinkPlacesIterator()) {
 					// We want exactly one sink place
 					public int GetInfoState() {
@@ -460,7 +458,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 							return InfoStateOK;
 					}
 				});	
-		current.add(new NodeGroupNetInfo("Number of source transitions: " + m_structuralAnalysis.getNumSourceTransitions(),
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumSourceTrans") + ": " + 
+				m_structuralAnalysis.getNumSourceTransitions(),
 				m_structuralAnalysis.getSourceTransitionsIterator()) {
 					// Source transitions are not good and should trigger an error
 					public int GetInfoState() {
@@ -470,7 +469,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 							return InfoStateOK;
 					}
 				});					
-		current.add(new NodeGroupNetInfo("Number of sink transitions: " + m_structuralAnalysis.getNumSinkTransitions(),
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumSinkTrans") + ": " + 
+				m_structuralAnalysis.getNumSinkTransitions(),
 				m_structuralAnalysis.getSinkTransitionsIterator()) {
 					// Sink transitions are not good and should trigger an error
 					public int GetInfoState() {
@@ -481,7 +481,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 					}
 				});	
 
-		current.add(new NodeGroupNetInfo("Number of unconnected nodes: " + m_structuralAnalysis.getNumNotConnectedNodes(),
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumUnconnectedNodes") + ": " + + 
+				m_structuralAnalysis.getNumNotConnectedNodes(),
 				m_structuralAnalysis.getNotConnectedNodes()) {
 					// Any unconnected nodes must trigger an error
 					public int GetInfoState() {
@@ -492,7 +493,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 					}
 				});
 		
-		current.add(new NodeGroupNetInfo("Number of not strongly connected nodes: " + m_structuralAnalysis.getNumNotStronglyConnectedNodes(),
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumNotStronglyConnectedNodes") + ": " 
+				+ m_structuralAnalysis.getNumNotStronglyConnectedNodes(),
 				m_structuralAnalysis.getNotStronglyConnectedNodes()) {
 					// Any nodes that are not strongly connected must trigger an error
 					public int GetInfoState() {

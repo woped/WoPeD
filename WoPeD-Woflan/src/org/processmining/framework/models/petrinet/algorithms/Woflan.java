@@ -5,7 +5,7 @@ public class Woflan {
     public native int Close(int theNet);
     public native String Info(int theNet, int theInfo, int theIndex, int theSubIndex);
     
-    public String SCTransition = "*";
+    public String SCTransition = "t*";
     public String SilentLabel = " t";
     
     // Valid values for theInfo (these should match the values as defined in woflan.h)
