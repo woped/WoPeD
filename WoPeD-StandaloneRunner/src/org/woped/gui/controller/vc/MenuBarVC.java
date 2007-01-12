@@ -143,7 +143,48 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 
     }
 
-    /**
+    // /**
+	// * @return Returns the containingWindow.
+	// */
+	// public UserInterface getContainingWindow()
+	// {
+	// return m_containingWindow;
+	// }
+	
+	
+	private int getMnemonic(String mnemonic) {
+		int mInt = 0;
+		if (mnemonic.toUpperCase().equals("A")) mInt = KeyEvent.VK_A;
+		else if (mnemonic.toUpperCase().equals("B")) mInt = KeyEvent.VK_B;
+		else if (mnemonic.toUpperCase().equals("C")) mInt = KeyEvent.VK_C;
+		else if (mnemonic.toUpperCase().equals("D")) mInt = KeyEvent.VK_D;
+		else if (mnemonic.toUpperCase().equals("E")) mInt = KeyEvent.VK_E;
+		else if (mnemonic.toUpperCase().equals("F")) mInt = KeyEvent.VK_F;
+		else if (mnemonic.toUpperCase().equals("G")) mInt = KeyEvent.VK_G;
+		else if (mnemonic.toUpperCase().equals("H")) mInt = KeyEvent.VK_H;
+		else if (mnemonic.toUpperCase().equals("I")) mInt = KeyEvent.VK_I;
+		else if (mnemonic.toUpperCase().equals("J")) mInt = KeyEvent.VK_J;
+		else if (mnemonic.toUpperCase().equals("K")) mInt = KeyEvent.VK_K;
+		else if (mnemonic.toUpperCase().equals("L")) mInt = KeyEvent.VK_L;
+		else if (mnemonic.toUpperCase().equals("M")) mInt = KeyEvent.VK_M;
+		else if (mnemonic.toUpperCase().equals("N")) mInt = KeyEvent.VK_N;
+		else if (mnemonic.toUpperCase().equals("O")) mInt = KeyEvent.VK_O;
+		else if (mnemonic.toUpperCase().equals("P")) mInt = KeyEvent.VK_P;
+		else if (mnemonic.toUpperCase().equals("Q")) mInt = KeyEvent.VK_Q;
+		else if (mnemonic.toUpperCase().equals("R")) mInt = KeyEvent.VK_R;
+		else if (mnemonic.toUpperCase().equals("S")) mInt = KeyEvent.VK_S;
+		else if (mnemonic.toUpperCase().equals("T")) mInt = KeyEvent.VK_T;
+		else if (mnemonic.toUpperCase().equals("U")) mInt = KeyEvent.VK_U;
+		else if (mnemonic.toUpperCase().equals("V")) mInt = KeyEvent.VK_V;
+		else if (mnemonic.toUpperCase().equals("W")) mInt = KeyEvent.VK_W;
+		else if (mnemonic.toUpperCase().equals("X")) mInt = KeyEvent.VK_X;
+		else if (mnemonic.toUpperCase().equals("Y")) mInt = KeyEvent.VK_Y;
+		else if (mnemonic.toUpperCase().equals("Z")) mInt = KeyEvent.VK_Z;
+		
+		return mInt;	
+	}
+
+	/**
      * Creates the analyseMenu if necessary.
      * 
      * @return Returns the analyseMenu.
@@ -153,7 +194,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_analyseMenu == null)
         {
             m_analyseMenu = new JMenu(Messages.getString("Menu.Analyse.Title")); //$NON-NLS-1$
-            m_analyseMenu.setMnemonic(KeyEvent.VK_A);
+            m_analyseMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Analyse.Mnemonic")));
             m_analyseMenu.add(getStartTokenGameMenuItem());
             m_analyseMenu.add(getWoflanMenuItem());
             getWoflanMenuItem().setEnabled(ConfigurationManager.getConfiguration().isUseWoflan());
@@ -170,6 +211,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     // return m_containingWindow;
     // }
 
+    
     /**
      * Creates the editMenu if necessary.
      * 
@@ -180,7 +222,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_editMenu == null)
         {
             m_editMenu = new JMenu(Messages.getString("Menu.Edit.Title")); //$NON-NLS-1$
-            m_editMenu.setMnemonic(KeyEvent.VK_E);
+            m_editMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Edit.Mnemonic")));
 
             m_editMenu.add(getUndoMenuItem());
             m_editMenu.add(getRedoMenuItem());
@@ -207,7 +249,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_fileMenu == null)
         {
             m_fileMenu = new JMenu(Messages.getString("Menu.File.Title")); //$NON-NLS-1$
-            m_fileMenu.setMnemonic(KeyEvent.VK_F);
+            m_fileMenu.setMnemonic(getMnemonic(Messages.getString("Menu.File.Mnemonic")));
 
             m_fileMenu.add(getNewMenuItem());
             m_fileMenu.add(getOpenMenuItem());
@@ -236,7 +278,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_helpMenu == null)
         {
             m_helpMenu = new JMenu(Messages.getString("Menu.Help.Title")); //$NON-NLS-1$
-            m_helpMenu.setMnemonic(KeyEvent.VK_H);
+            m_helpMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Help.Mnemonic")));
             
             m_helpMenu.add(getIndexMenuItem());
             m_helpMenu.add(getContextMenuItem());
@@ -259,7 +301,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_optionsMenu == null)
         {
             m_optionsMenu = new JMenu(Messages.getString("Menu.Options.Title")); //$NON-NLS-1$
-            m_optionsMenu.setMnemonic(KeyEvent.VK_O);
+            m_optionsMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Options.Mnemonic")));
             m_optionsMenu.add(getOptionsMenuItem());
         }
         return m_optionsMenu;
@@ -275,7 +317,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_viewMenu == null)
         {
             m_viewMenu = new JMenu(Messages.getString("Menu.View.Title")); //$NON-NLS-1$
-            m_viewMenu.setMnemonic(KeyEvent.VK_V);
+            m_viewMenu.setMnemonic(getMnemonic(Messages.getString("Menu.View.Mnemonic")));
 
             // m_viewMenu.add(getStretchMenuItem());
             // m_viewMenu.add(getPressMenuItem());
@@ -817,7 +859,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_windowMenu == null)
         {
             m_windowMenu = new JMenu(Messages.getTitle("Menu.Window"));
-            m_windowMenu.setMnemonic(KeyEvent.VK_W);
+            m_windowMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Window.Mnemonic")));
 
             m_windowMenu.add(getCascadeWindowsMenuItem());
             m_windowMenu.add(getArrangeWindowsMenuItem());
