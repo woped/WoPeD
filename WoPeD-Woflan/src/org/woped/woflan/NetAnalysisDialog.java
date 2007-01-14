@@ -374,8 +374,12 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Wellstructuredness"));
 		parent.add(current);
 
+		// FIXME: We currently have to use Woflan for P/T and T/P handle
+		// detection as our own algorithm is broken
+		// This will be fixed soon (@see StructuralAnalysis.java for details)
+				
 		// Yes, create well-handledness info
-/*    	m_myWofLan.Info(m_netHandle, 
+    	m_myWofLan.Info(m_netHandle, 
     			m_myWofLan.SetPTH, 0, 0);
     	m_myWofLan.Info(m_netHandle, 
     			m_myWofLan.SetTPH, 0, 0);
@@ -387,7 +391,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 				Messages.getString("Analysis.Tree.NumPTHandles") + ": ",
 				m_myWofLan.InfoNofPTH,
 				m_myWofLan.InfoPTHNofN1,
-				"",
+				Messages.getString("Analysis.Tree.HandlePath") + ": ",
 				"",
 				m_myWofLan.InfoPTHN1Name,		
 				-1, 
@@ -398,13 +402,19 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
 				Messages.getString("Analysis.Tree.NumTPHandles") + ": ",
 				m_myWofLan.InfoNofTPH,
 				m_myWofLan.InfoTPHNofN1,
-				"",
+				Messages.getString("Analysis.Tree.HandlePath") + ": ",
 				"",
 				m_myWofLan.InfoTPHN1Name,
 				-1, 
 				0, 
 				false));
-		*/
+		
+		/*
+		// FIXME: We currently have to use Woflan for P/T and T/P handle
+		// detection as our own algorithm is broken
+		// This will be fixed soon (@see StructuralAnalysis.java for details)
+		// Jan. 14th 2007, AE
+		
     	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumHandles") + ": " +
     			m_structuralAnalysis.getNumWellStructurednessViolations(),
     			m_structuralAnalysis.getWellStructurednessViolations()) {
@@ -418,7 +428,8 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
     			else
     				return InfoStateOK;
     		}
-    	});	
+    	});
+    	*/	
 	}
 	
 	private void BuildWorkflowInfo(DefaultMutableTreeNode parent)
