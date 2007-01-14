@@ -3,7 +3,6 @@
 
 package org.woped.woflan;
 
-import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -31,10 +30,11 @@ import org.woped.editor.utilities.Messages;
 @SuppressWarnings("serial")
 public class NetAnalysisDialog extends JDialog implements WindowListener{
 	public NetAnalysisDialog(
-			Frame owner, 
+			JFrame owner, 
 			File temporaryFile, IEditor editor, AbstractApplicationMediator mediator)
-	{		
-		super(owner, Messages.getString("Analysis.Dialog.Title"), true);
+	{	
+		// Ignore the dialog owner and set our own instead to be able to change the dialog icon
+		super(/*owner*/new JFrame(), Messages.getString("Analysis.Dialog.Title"), true);
 		
 		// Remember a reference to our model
 		// We need it to deal with selections
@@ -55,7 +55,9 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
         	setSize(640,480);
         	// Center the window on the desktop
         	setLocationRelativeTo(null);
-//        	setIconImage(Messages.getImageIcon("Analysis.Dialog").getImage());
+
+        	// Set the icon of this dialog by specifying it as the icon of the parent frame
+        	((java.awt.Frame)getOwner()).setIconImage(Messages.getImageIcon("Analysis.Dialog").getImage());
         	
         	getContentPane().setLayout(new GridLayout(1,1));
         	// Add tree control to display the output of our WOFLAN library
