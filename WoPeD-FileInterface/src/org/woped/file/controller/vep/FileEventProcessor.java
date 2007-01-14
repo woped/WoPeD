@@ -9,6 +9,7 @@ import java.security.AccessControlException;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.woped.core.config.ConfigurationManager;
@@ -106,7 +107,9 @@ public class FileEventProcessor extends AbstractEventProcessor
                     			// Instantiate net analysis dialog and display it
                     			// Arguments are the Woflan TPN file and the model processor
                     			// for the petri-net model that is in focus
-                    			NetAnalysisDialog myDialog = new NetAnalysisDialog(f,
+                    			NetAnalysisDialog myDialog = new NetAnalysisDialog(
+                    					(JFrame) getMediator().getUi(),
+                    					f,
                     					getMediator().getUi().getEditorFocus(), this.getMediator());
                     			myDialog.setVisible(true);                        	
                     			

@@ -3,6 +3,7 @@
 
 package org.woped.woflan;
 
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -27,10 +29,12 @@ import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.utilities.Messages;
 
 @SuppressWarnings("serial")
-public class NetAnalysisDialog extends JFrame implements WindowListener{
-	public NetAnalysisDialog(File temporaryFile, IEditor editor, AbstractApplicationMediator mediator)
+public class NetAnalysisDialog extends JDialog implements WindowListener{
+	public NetAnalysisDialog(
+			Frame owner, 
+			File temporaryFile, IEditor editor, AbstractApplicationMediator mediator)
 	{		
-		super(Messages.getString("Analysis.Dialog.Title"));
+		super(owner, Messages.getString("Analysis.Dialog.Title"), true);
 		
 		// Remember a reference to our model
 		// We need it to deal with selections
@@ -51,7 +55,7 @@ public class NetAnalysisDialog extends JFrame implements WindowListener{
         	setSize(640,480);
         	// Center the window on the desktop
         	setLocationRelativeTo(null);
-        	setIconImage(Messages.getImageIcon("Analysis.Dialog").getImage());
+//        	setIconImage(Messages.getImageIcon("Analysis.Dialog").getImage());
         	
         	getContentPane().setLayout(new GridLayout(1,1));
         	// Add tree control to display the output of our WOFLAN library
