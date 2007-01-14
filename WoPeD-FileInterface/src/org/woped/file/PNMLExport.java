@@ -418,7 +418,24 @@ public class PNMLExport
         	{
         		// Dump all inner arcs of connected transitions
         		ArcModel currentInnerArc = (ArcModel) currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
-        		initArc(iNet.addNewArc(), currentInnerArc, null);
+        		// Find outer arc corresponding to inner arc
+        		// (carries graphics information)
+        		ArcModel currentOuterArc = null;
+        		if (elementContainer.getElementById(currentInnerArc.getSourceId())!=null)
+        		{
+        			currentOuterArc = elementContainer.findArc(currentInnerArc.getSourceId(),
+        					currentConnectedModel.getId()); 
+        		}
+        		if (elementContainer.getElementById(currentInnerArc.getTargetId())!=null)
+        		{
+        			currentOuterArc = elementContainer.findArc(currentConnectedModel.getId(), 
+        					currentInnerArc.getTargetId()); 
+        		}
+        		
+        		// Always try to pass an outer arc with graphics information
+        		// (contains way points)
+        		initArc(iNet.addNewArc(), (currentOuterArc!=null)?currentOuterArc:currentInnerArc, 
+        				currentInnerArc);
         	}
         }    	
     }
@@ -597,6 +614,13 @@ public class PNMLExport
         return iTransResource;
     }
 
+    //! Initialize arc dump to XML beans
+    //! @param outerArc specifies the outer arc to be dumped.
+    //!        The outerArc argument may not be null. It is the element whose
+    //!        graphics information (way-points) will be dumped
+    //! @param innerArc specifies the (optional) inner arc to be dumped
+    //!        If !=null, this arc will be dumped to PNML, together with the graphics
+    //!        information of the specified outerArc
     private ArcType initArc(ArcType iArc, ArcModel outerArc, ArcModel innerArc)
     {
         ArcModel useArc = innerArc == null ? outerArc : innerArc;
