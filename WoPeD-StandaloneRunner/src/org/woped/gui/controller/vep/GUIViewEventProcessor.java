@@ -39,6 +39,7 @@ import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorAware;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.SubProcessModel;
@@ -105,8 +106,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 					SubProcessModel model = (SubProcessModel) cell;
 
 					getMediator().createSubprocessEditor(
-									AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
-									true, editor, model);
+							AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
+							true, editor, model);
 				}
 			} else
 			{
@@ -210,7 +211,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 
 	private void quit()
 	{
-		Vector<IEditor> editorList = new Vector<IEditor>(getMediator().getUi().getAllEditors());
+		Vector<IEditor> editorList = new Vector<IEditor>(getMediator().getUi()
+				.getAllEditors());
 		boolean canceled = false;
 		for (Iterator iter = editorList.iterator(); iter.hasNext();)
 		{
@@ -285,14 +287,19 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		if (editor instanceof EditorVC)
 		{
 			EditorVC editorVC = (EditorVC) editor;
-
 			if (editor.isSubprocessEditor())
 			{
+
 				StructuralAnalysis analysis = new StructuralAnalysis(editor);
+
+				AbstractElementModel input = editor.getSubprocessInput();
+				AbstractElementModel output = editor.getSubprocessOutput();
 
 				if (analysis.getNumNotStronglyConnectedNodes() > 0
 						|| analysis.getNumSinkPlaces() > 1
-						|| analysis.getNumSourcePlaces() > 1)
+						|| analysis.getNumSourcePlaces() > 1
+						|| output != analysis.getSinkPlacesIterator().next()
+						|| input != analysis.getSourcePlacesIterator().next())
 				{
 					String errorMessage = Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Start");
@@ -306,11 +313,26 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Source");
+					} else
+					{
+						if (input != analysis.getSourcePlacesIterator().next())
+						{
+							errorMessage += Messages
+							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Input");
+						}
 					}
+
 					if (analysis.getNumSinkPlaces() > 1)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Sink");
+					} else
+					{
+						if (output != analysis.getSinkPlacesIterator().next())
+						{
+							errorMessage += Messages
+							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Output");
+						}
 					}
 
 					errorMessage += Messages

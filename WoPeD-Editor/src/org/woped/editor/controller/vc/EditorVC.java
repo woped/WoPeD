@@ -213,6 +213,9 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	// for subprocess
 	AbstractElementModel m_parentElement;
+	
+	AbstractElementModel m_subprocessInput = null;
+	AbstractElementModel m_subprocessOutput = null;
 
 	// ! Store a reference to the application mediator.
 	// ! It is used to create a new subprocess editor if required
@@ -353,7 +356,7 @@ public class EditorVC extends JPanel implements KeyListener,
 				NetAlgorithms.connectionTypeINBOUND);
 		Iterator<AbstractElementModel> sourceKeyIterator = sources.iterator();
 		AbstractElementModel sourceModel = sourceKeyIterator.next();
-
+		setSubprocessInput(sourceModel);
 		// Check whether the source element already exists
 		if (container.getElementById(sourceModel.getId()) == null)
 		{
@@ -372,7 +375,7 @@ public class EditorVC extends JPanel implements KeyListener,
 				NetAlgorithms.connectionTypeOUTBOUND);
 		Iterator<AbstractElementModel> targetKeyIterator = targets.iterator();
 		AbstractElementModel targetModel = targetKeyIterator.next();
-
+		setSubprocessOutput(targetModel);
 		// Check whether the target element already exists
 		if (container.getElementById(targetModel.getId()) == null)
 		{
@@ -2250,5 +2253,25 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 		// Enable token game mode
 		newEditorWindow.toggleTokenGame();
+	}
+
+	public AbstractElementModel getSubprocessInput()
+	{
+		return m_subprocessInput;
+	}
+
+	public void setSubprocessInput(AbstractElementModel p_subprocessInput)
+	{
+		m_subprocessInput = p_subprocessInput;
+	}
+
+	public AbstractElementModel getSubprocessOutput()
+	{
+		return m_subprocessOutput;
+	}
+
+	public void setSubprocessOutput(AbstractElementModel p_subprocessOutput)
+	{
+		m_subprocessOutput = p_subprocessOutput;
 	}
 }

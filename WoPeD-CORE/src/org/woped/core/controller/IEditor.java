@@ -164,5 +164,13 @@ public interface IEditor extends IViewController
 	 * @param savedFlag
 	 *            The savedFlag to set
 	 */
-	public void setSaved(boolean savedFlag);	
+	public void setSaved(boolean savedFlag);
+	
+	public AbstractElementModel getSubprocessInput();
+
+	public void setSubprocessInput(AbstractElementModel p_subprocessInput);
+
+	public AbstractElementModel getSubprocessOutput();
+
+	public void setSubprocessOutput(AbstractElementModel p_subprocessOutput);
 }
