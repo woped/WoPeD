@@ -140,6 +140,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getSplitPane(), BorderLayout.CENTER);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+        ((java.awt.Frame) getOwner()).setIconImage(Messages.getImageIcon("Application").getImage());
         // Test & HowTo for Node-Panels
         /*
          * addConfNodePanel(null, new DummyNodePanel("TEST1"));
