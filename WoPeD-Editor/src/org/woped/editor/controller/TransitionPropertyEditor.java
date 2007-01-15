@@ -164,7 +164,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         this.editor = editor;
         this.setVisible(false);
         initialize();
-        this.setSize(450, 460);
+        this.setSize(480, 480);
         this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
         this.setVisible(true);
     }

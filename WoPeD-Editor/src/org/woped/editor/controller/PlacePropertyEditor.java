@@ -352,7 +352,7 @@ public class PlacePropertyEditor extends JDialog
             buttonCancel.setText(Messages.getString("Button.Cancel.Title"));
             buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
             buttonCancel.setMnemonic(KeyEvent.VK_C);
-            buttonCancel.setPreferredSize(new Dimension(100, 25));
+            buttonCancel.setPreferredSize(new Dimension(120, 25));
             buttonCancel.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
