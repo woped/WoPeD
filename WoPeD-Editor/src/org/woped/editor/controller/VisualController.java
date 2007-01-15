@@ -499,7 +499,7 @@ public class VisualController implements PropertyChangeListener,
 			setStatus(ROUTED_ARC_SELECTION, routedArcSelected);
 			setStatus(UNROUTED_ARC_SELECTION, unroutedArcSelected);
 			setStatus(TRANSITION_SELECTION, transitionSelected);
-			setStatus(TRANSITION_PLACE_SELECTION, transitionSelected | placeSelected);
+			setStatus(TRANSITION_PLACE_SELECTION, transitionSelected | placeSelected | subprocessSelected);
 			setStatus(TRIGGERED_TRANSITION_SELECTION,
 					triggeredTransitionSelected);
 			setStatus(ARC_SELECTION, arcSelected);
