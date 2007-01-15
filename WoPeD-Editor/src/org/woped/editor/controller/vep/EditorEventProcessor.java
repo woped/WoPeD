@@ -2,9 +2,12 @@ package org.woped.editor.controller.vep;
 
 import java.util.Iterator;
 
+import javax.swing.JFrame;
+
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -17,6 +20,8 @@ import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.model.uml.OperatorModel;
 import org.woped.core.model.uml.StateModel;
+import org.woped.editor.controller.PlacePropertyEditor;
+import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
 
 public class EditorEventProcessor extends AbstractEventProcessor
@@ -157,13 +162,29 @@ public class EditorEventProcessor extends AbstractEventProcessor
                 break;
             case AbstractViewEvent.OPEN_PROPERTIES:
                 cell = editor.getGraph().getSelectionCell();
-                
+                AbstractElementModel element = null;
                 if (cell instanceof TriggerModel)
                 {
-                    cell = ((TriggerModel)cell).getParent();
+                    cell=((TriggerModel)cell).getParent();
                 }
-                
-                
+                if (cell instanceof GroupModel)
+                {
+                    element = ((GroupModel) cell).getMainElement();
+                } else if (cell instanceof AbstractElementModel)
+                {
+                    element = (AbstractElementModel) cell;
+                }
+                if (element != null && editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET)
+                {
+                    if (element instanceof TransitionModel)
+                    {
+                        TransitionPropertyEditor prop = new TransitionPropertyEditor((JFrame) getMediator().getUi(), (TransitionModel) element, editor);
+                    }
+                    if (element instanceof PlaceModel)
+                    {
+                        PlacePropertyEditor prop = new PlacePropertyEditor((JFrame) getMediator().getUi(), (PlaceModel) element, editor);
+                    }
+                }
                 break;
             case AbstractViewEvent.ADD_POINT:
                 editor.addPointToSelectedArc();
