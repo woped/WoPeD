@@ -302,8 +302,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				if (analysis.getNumNotStronglyConnectedNodes() > 0
 						|| analysis.getNumSinkPlaces() > 1
 						|| analysis.getNumSourcePlaces() > 1
-						|| !inputID.equals(ainputID)
-						|| !outputID.equals(aoutputID))
+						|| inputID.equals(ainputID)
+						|| outputID.equals(aoutputID))
 				{
 					String errorMessage = Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Start");
@@ -319,7 +319,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Source");
 					} else
 					{
-						if (!inputID.equals(ainputID))
+						if (inputID.equals(ainputID))
 						{
 							errorMessage += Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Input");
@@ -332,7 +332,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Sink");
 					} else
 					{
-						if (!outputID.equals(aoutputID))
+						if (outputID.equals(aoutputID))
 						{
 							errorMessage += Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Output");
