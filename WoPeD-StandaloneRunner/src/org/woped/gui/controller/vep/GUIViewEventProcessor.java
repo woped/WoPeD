@@ -292,14 +292,18 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 
 				StructuralAnalysis analysis = new StructuralAnalysis(editor);
 
-				AbstractElementModel input = editor.getSubprocessInput();
-				AbstractElementModel output = editor.getSubprocessOutput();
+				String inputID = editor.getSubprocessInput().getId();
+				String outputID = editor.getSubprocessOutput().getId();
+							
+				String ainputID = ((AbstractElementModel) analysis.getSinkPlacesIterator().next()).getId();
+				String aoutputID = ((AbstractElementModel) analysis.getSourcePlacesIterator().next()).getId();
 
+				
 				if (analysis.getNumNotStronglyConnectedNodes() > 0
 						|| analysis.getNumSinkPlaces() > 1
 						|| analysis.getNumSourcePlaces() > 1
-						|| output != analysis.getSinkPlacesIterator().next()
-						|| input != analysis.getSourcePlacesIterator().next())
+						|| !inputID.equals(ainputID)
+						|| !outputID.equals(aoutputID))
 				{
 					String errorMessage = Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Start");
@@ -315,7 +319,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Source");
 					} else
 					{
-						if (input != analysis.getSourcePlacesIterator().next())
+						if (!inputID.equals(ainputID))
 						{
 							errorMessage += Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Input");
@@ -328,7 +332,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Sink");
 					} else
 					{
-						if (output != analysis.getSinkPlacesIterator().next())
+						if (!outputID.equals(aoutputID))
 						{
 							errorMessage += Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Output");
