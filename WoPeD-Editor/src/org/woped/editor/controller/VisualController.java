@@ -138,8 +138,10 @@ public class VisualController implements PropertyChangeListener,
 	public static final int TREEVIEW_VISIBLE = 33;
 	
 	public static final int DRAWMODE_ANDJOIN_XORSPLIT = 34;
+	
+	public static final int TRANSITION_PLACE_SELECTION = 35;
 
-	private static final int MAX_ID = 35;
+	private static final int MAX_ID = 36;
 
 	private Vector[] m_enable = new Vector[MAX_ID + 1];
 
@@ -497,6 +499,7 @@ public class VisualController implements PropertyChangeListener,
 			setStatus(ROUTED_ARC_SELECTION, routedArcSelected);
 			setStatus(UNROUTED_ARC_SELECTION, unroutedArcSelected);
 			setStatus(TRANSITION_SELECTION, transitionSelected);
+			setStatus(TRANSITION_PLACE_SELECTION, transitionSelected | placeSelected);
 			setStatus(TRIGGERED_TRANSITION_SELECTION,
 					triggeredTransitionSelected);
 			setStatus(ARC_SELECTION, arcSelected);

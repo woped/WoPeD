@@ -278,11 +278,11 @@ public class ActionFactory
 
         //
         STATIC_ACTION_MAP.put(ACTIONID_COPY, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.COPY, null, ACTIONID_COPY));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COPY), VisualController.ANY_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COPY), VisualController.TRANSITION_PLACE_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_PASTE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.PASTE, null, ACTIONID_PASTE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_PASTE), VisualController.CAN_PASTE, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_CUT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.CUT, null, ACTIONID_CUT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_CUT), VisualController.ANY_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_CUT), VisualController.TRANSITION_PLACE_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_CASCADE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CASCADE, null, ACTIONID_CASCADE));
         STATIC_ACTION_MAP.put(ACTIONID_ARRANGE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.ARRANGE, null, ACTIONID_ARRANGE));
