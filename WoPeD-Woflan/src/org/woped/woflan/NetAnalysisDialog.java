@@ -42,40 +42,32 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		
 		// Instantiate our analysis object
 		m_structuralAnalysis = new StructuralAnalysis(m_currentEditor);
+		m_woflanAnalysis = new WoflanAnalysis(m_currentEditor, temporaryFile);
 		
-    	// This code will try to talk to WofLan
-    	// through the JNI
-		m_tempFile = temporaryFile;
-		m_myWofLan = new Woflan();
 		
-    	// Open previously exported petri-net
-    	m_netHandle = m_myWofLan.Open( m_tempFile.getAbsolutePath());
-    	if (m_netHandle!=-1)
-    	{
-        	setSize(640,480);
-        	// Center the window on the desktop
-        	setLocationRelativeTo(null);
-
-        	// Set the icon of this dialog by specifying it as the icon of the parent frame
-        	((java.awt.Frame)getOwner()).setIconImage(Messages.getImageIcon("Analysis.Dialog").getImage());
-        	
-        	getContentPane().setLayout(new GridLayout(1,1));
-        	// Add tree control to display the output of our WOFLAN library
-        	DefaultMutableTreeNode top =
-                new NetInfo(Messages.getString("Analysis.Tree.Title"));
-        	m_treeObject = new JTree(top);
-    		m_treeObject.setCellRenderer(new NetInfoTreeRenderer());        	
-        	m_treeObject.setShowsRootHandles(true);
-        	getContentPane().add(new JScrollPane(m_treeObject));
-        	
-    		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor, m_treeObject, mediator, true);
-        	// We need to know about selection changes inside the tree
-        	m_treeObject.addTreeSelectionListener(m_treeSelectionChangeHandler);        	
-        	
-        	BuildBasicInfo(top);
-        	BuildStructuralAnalysis(top);
-        	BuildSemanticalAnalysis(top);
-    	}		
+		setSize(640,480);
+		// Center the window on the desktop
+		setLocationRelativeTo(null);
+		
+		// Set the icon of this dialog by specifying it as the icon of the parent frame
+		((java.awt.Frame)getOwner()).setIconImage(Messages.getImageIcon("Analysis.Dialog").getImage());
+		
+		getContentPane().setLayout(new GridLayout(1,1));
+		// Add tree control to display the output of our WOFLAN library
+		DefaultMutableTreeNode top =
+			new NetInfo(Messages.getString("Analysis.Tree.Title"));
+		m_treeObject = new JTree(top);
+		m_treeObject.setCellRenderer(new NetInfoTreeRenderer());        	
+		m_treeObject.setShowsRootHandles(true);
+		getContentPane().add(new JScrollPane(m_treeObject));
+		
+		m_treeSelectionChangeHandler = new GraphTreeModelSelector(m_currentEditor, m_treeObject, mediator, true);
+		// We need to know about selection changes inside the tree
+		m_treeObject.addTreeSelectionListener(m_treeSelectionChangeHandler);        	
+		
+		BuildBasicInfo(top);
+		BuildStructuralAnalysis(top);
+		BuildSemanticalAnalysis(top);
     	
     	// Listen to close event to be able to dispose of our temporary file
     	addWindowListener(this);
@@ -124,75 +116,85 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		parent.add(current);
 		
 		// Calculate boundedness information
-		m_myWofLan.Info(m_netHandle, m_myWofLan.SetUnb, 0, 0);
-
-		// Show unbounded places
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			Messages.getString("Analysis.Tree.NumUnboundedPlaces") + ": ", 
-    			m_myWofLan.InfoNofUnbP,
-    			"",
-    			m_myWofLan.InfoUnbPName,
-    			-1,
-    			0,
-    			false));
+		
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumUnboundedPlaces") + ": " + 
+				m_woflanAnalysis.getNumUnboundedPlaces(),
+				m_woflanAnalysis.getUnboundedPlacesIterator()) {
+					// Unbounded places are not good and should trigger an error
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});					
+		
     	
 		// Display unbounded sequences
     	// that is, transition sequences that will 
     	// keep increasing the number of total tokens
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumUnboundedSeq") + ": ",
-				m_myWofLan.InfoNofUnbS,
-				m_myWofLan.InfoUnbSNofT,
-				Messages.getString("Analysis.Tree.UnboundedSeqNumTrans") + ": ",
-				"",
-				m_myWofLan.InfoUnbSTName,			
-				-1, 
-				0, 
-				false));		
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumUnboundedSeq") + ": " +
+    			m_woflanAnalysis.getNumUnboundedSequences(),
+    			m_woflanAnalysis.getUnboundedSequencesIterator()) {
+    		public String GetGroupDisplayString(int nIndex, Collection group) {
+    			return Messages.getString("Analysis.Tree.UnboundedSeqNumTrans") + ":" + group.size();
+    		}
+    		// Unbounded sequences are not good and should trigger an error
+    		public int GetInfoState() {
+    			if (getChildCount()>0)
+    				return InfoStateERROR;
+    			else
+    				return InfoStateOK;
+    		}
+    	});
 	}
 	
 	private void BuildLivenessInfo(DefaultMutableTreeNode parent)
 	{
 		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Liveness"));
 		parent.add(current);
-
-		// Calculate Liveness information
-		m_myWofLan.Info(m_netHandle, m_myWofLan.SetNLive, 0, 0);
-
 		// Show dead transitions
 		// (transitions that will not ever be active for any marking)
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			Messages.getString("Analysis.Tree.NumDeadTrans") + ": ", 
-    			m_myWofLan.InfoNofDeadT,
-    			"",
-    			m_myWofLan.InfoDeadTName,  			
-    			-1,
-    			0,
-    			false));
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumDeadTrans") + ": " + 
+				m_woflanAnalysis.getNumDeadTransitions(),
+				m_woflanAnalysis.getDeadTransitionsIterator()) {
+					// dead transitions are not good and should trigger an error
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});					
 		// Show zombie transitions
     	// (transitions that ain't quite dead yet)
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			Messages.getString("Analysis.Tree.NumNonLiveTrans") + ": ", 
-    			m_myWofLan.InfoNofNLiveT,
-    			"",
-    			m_myWofLan.InfoNLiveTName,  			
-    			-1,
-    			0,
-    			false));
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumNonLiveTrans") + ": " + 
+				m_woflanAnalysis.getNumNonLiveTransitions(),
+				m_woflanAnalysis.getNonLiveTransitionsIterator()) {
+					// non-live transitions are not good and should trigger an error
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});					
 		// Display non-live sequences
     	// that is a sequence to "kill" a zombie transition
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumNonLiveSeq") + ": ", 
-				m_myWofLan.InfoNofNLiveS,
-				m_myWofLan.InfoNLiveSNofT,
-				Messages.getString("Analysis.Tree.NonLiveSeqNumTrans") + ": ",
-				"",
-				m_myWofLan.InfoNLiveSTName,			
-				-1, 
-				0, 
-				false));		    					
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumNonLiveSeq") + ": " +
+    			m_woflanAnalysis.getNumNonLiveSequences(),
+    			m_woflanAnalysis.getNonLiveSequencesIterator()) {
+    		public String GetGroupDisplayString(int nIndex, Collection group) {
+    			return Messages.getString("Analysis.Tree.NonLiveSeqNumTrans") + ":" + group.size();
+    		}
+    		// non-live sequences are not good and should trigger an error
+    		public int GetInfoState() {
+    			if (getChildCount()>0)
+    				return InfoStateERROR;
+    			else
+    				return InfoStateOK;
+    		}
+    	});
 	}
 	
 	private void BuildInvariantsInfo(DefaultMutableTreeNode parent)
@@ -200,110 +202,54 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Invariants"));
 		parent.add(current);
 		
-		// Calculate all invariants information we can get
-		m_myWofLan.Info(m_netHandle, m_myWofLan.SetPInv, 0, 0);
-		m_myWofLan.Info(m_netHandle, m_myWofLan.SetSPIn, 0, 0);
-		m_myWofLan.Info(m_netHandle, m_myWofLan.SetTInv, 0, 0);
-		m_myWofLan.Info(m_netHandle, m_myWofLan.SetSTIn, 0, 0);
-		
 		// Display the P-Invariants of this net
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumPInvariants") + ": ", 
-				m_myWofLan.InfoNofPInv,
-				m_myWofLan.InfoPInvNofP,
-				Messages.getString("Analysis.Tree.PInvNumPlaces") + ": ",
-				"",
-				m_myWofLan.InfoPInvPName,				
-				-1, 
-				1, 
-				true));
-
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumPInvariants") + ": " +
+    			m_woflanAnalysis.getNumPInvariants(),
+    			m_woflanAnalysis.getPInvariantsIterator()) {
+    		public String GetGroupDisplayString(int nIndex, Collection group) {
+    			return Messages.getString("Analysis.Tree.PInvNumPlaces") + ":" + group.size();
+    		}
+    		public int GetInfoState() {
+    			return InfoStateInfo;
+    		}
+    	});				
 		// Show the places that are not covered by any P-Invariant
 		// of the net.
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			Messages.getString("Analysis.Tree.PInvNumUncoveredPlaces") + ": ",  
-    			m_myWofLan.InfoNofPotPInv ,
-    			"",
-    			m_myWofLan.InfoNotPInvPName,  			
-    			-1,
-    			0,
-    			false));				
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.PInvNumUncoveredPlaces") + ": " + 
+				m_woflanAnalysis.getNumNotPInvariantCovered(),
+				m_woflanAnalysis.getNotPInvariantCoveredIterator()) {
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});			    	
 
     	// Display the Semi-positive P-Invariants of this net
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumNonnegPInvariants") + ": ", 
-				m_myWofLan.InfoNofSPIn,
-				m_myWofLan.InfoSPInNofP,
-				Messages.getString("Analysis.Tree.NonnegPInvNumPlaces") + ": ",
-				"",
-				m_myWofLan.InfoSPInPName,			
-				-1, 
-				1, 
-				true));
-
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumNonnegPInvariants") + ": " +
+    			m_woflanAnalysis.getNumNonNegPInvariants(),
+    			m_woflanAnalysis.getNonNegPInvariantsIterator()) {
+    		public String GetGroupDisplayString(int nIndex, Collection group) {
+    			return Messages.getString("Analysis.Tree.NonnegPInvNumPlaces") + ":" + group.size();
+    		}
+    		public int GetInfoState() {
+    			return InfoStateInfo;
+    		}
+    	});			
 		// Show the places that are not covered by any 
 		// Semi-positive P-Invariant
 		// of the net.
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			Messages.getString("Analysis.Tree.NonnegPInvNumUncoveredPlaces") + ": ", 
-    			m_myWofLan.InfoNofPotSPIn ,
-    			"",
-    			m_myWofLan.InfoNotSPInPName,   			
-    			-1,
-    			0,
-    			false));
-
-/*		
-		// Display the T-Invariants of this net
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumTInvariants") + ": ", 
-				m_myWofLan.InfoNofTInv,
-				m_myWofLan.InfoTInvNofP,
-				Messages.getString("Analysis.Tree.TInvNumTrans") + ": ",
-				"",
-				m_myWofLan.InfoTInvPName,
-				-1, 
-				1, 
-				true));
-
-		// Show the places that are not covered by any T-Invariant
-		// of the net.
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			Messages.getString("Analysis.Tree.TInvNumUncoveredTrans") + ": ", 
-    			m_myWofLan.InfoNofPotTInv ,
-    			"",
-    			m_myWofLan.InfoNotTInvPName,			
-    			-1,
-    			0,
-    			false));				
-
-    	// Display the Semi-positive T-Invariants of this net
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumNonnegTInvariants") + ": ", 
-				m_myWofLan.InfoNofSTIn,
-				m_myWofLan.InfoSTInNofP,
-				Messages.getString("Analysis.Tree.NonnegTInvNumTrans") + ": ",
-				"",
-				m_myWofLan.InfoSTInPName,			
-				-1, 
-				1, 
-				true));
-
-		// Show the places that are not covered by any 
-		// Semi-positive T-Invariant
-		// of the net.
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			Messages.getString("Analysis.Tree.NonnegTInvNumUncoveredTrans") + ": ", 
-    			m_myWofLan.InfoNofPotSTIn ,
-    			"",
-    			m_myWofLan.InfoNotSTInPName,  			
-    			-1,
-    			0,
-    			false));    	*/
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NonnegPInvNumUncoveredPlaces") + ": " + 
+				m_woflanAnalysis.getNumNotNonNegPInvariantCovered(),
+				m_woflanAnalysis.getNotNonNegPInvariantCoveredIterator()) {
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});			    	
 	}
 
 	private void BuildStructuralAnalysis(DefaultMutableTreeNode parent)
@@ -348,33 +294,32 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.SComponents"));
 		parent.add(current);
 		
-		// Create S-Component information
-		m_myWofLan.Info(m_netHandle, m_myWofLan.SetSCom, 0, 0);
-		
 		// Display the S-Components of this net
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumSComponents") + ": ",
-				m_myWofLan.InfoNofSCom,
-				m_myWofLan.InfoSComNofN,
-				Messages.getString("Analysis.Tree.SComponentNumPlaces") + ": ",
-				"",
-				m_myWofLan.InfoSComNName,				
-				-1, 
-				-1, 
-				true));
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumSComponents") + ": " +
+    			m_woflanAnalysis.getNumSComponents(),
+    			m_woflanAnalysis.getSComponentsIterator()) {
+    		public String GetGroupDisplayString(int nIndex, Collection group) {
+    			return Messages.getString("Analysis.Tree.SComponentNumPlaces") + ":" + group.size();
+    		}
+    		public int GetInfoState() {
+    			return InfoStateInfo;
+    		}
+    	});				
 
 		// Show the places that are not covered by any S-Component
 		// of the net. If such a place exists the net is not s-coverable
-    	current.add(new GroupNetInfo(m_currentEditor, this,
-    			Messages.getString("Analysis.Tree.SCompUncoveredPlaces") + ": ", 
-    			m_myWofLan.InfoNofNotSCom ,
-    			"",
-    			m_myWofLan.InfoNotSComNName,   			
-    			-1,
-    			0,
-    			false));		
+		current.add(new NodeGroupNetInfo(Messages.getString("Analysis.Tree.SCompUncoveredPlaces") + ": " + 
+				m_woflanAnalysis.getNumNotSCovered(),
+				m_woflanAnalysis.getNotSCoveredIterator()) {
+					public int GetInfoState() {
+						if (getChildCount()>0)
+							return InfoStateERROR;
+						else
+							return InfoStateOK;
+					}
+				});	    	
 	}	
+	
 	private void BuildHandleInformation(DefaultMutableTreeNode parent)
 	{
 		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Wellstructuredness"));
@@ -383,38 +328,37 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		// FIXME: We currently have to use Woflan for P/T and T/P handle
 		// detection as our own algorithm is broken
 		// This will be fixed soon (@see StructuralAnalysis.java for details)
-				
-		// Yes, create well-handledness info
-    	m_myWofLan.Info(m_netHandle, 
-    			m_myWofLan.SetPTH, 0, 0);
-    	m_myWofLan.Info(m_netHandle, 
-    			m_myWofLan.SetTPH, 0, 0);
 		
 		// Display conflicts and parallelizations that
 		// are not well-handled
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumPTHandles") + ": ",
-				m_myWofLan.InfoNofPTH,
-				m_myWofLan.InfoPTHNofN1,
-				Messages.getString("Analysis.Tree.HandlePath") + ": ",
-				"",
-				m_myWofLan.InfoPTHN1Name,		
-				-1, 
-				0, 
-				false));
-		current.add(new MultipleGroupsNetInfo(m_currentEditor,
-				this,
-				Messages.getString("Analysis.Tree.NumTPHandles") + ": ",
-				m_myWofLan.InfoNofTPH,
-				m_myWofLan.InfoTPHNofN1,
-				Messages.getString("Analysis.Tree.HandlePath") + ": ",
-				"",
-				m_myWofLan.InfoTPHN1Name,
-				-1, 
-				0, 
-				false));
-		
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumPTHandles") + ": " +
+    			m_woflanAnalysis.getNumPTHandles(),
+    			m_woflanAnalysis.getPTHandlesIterator()) {
+    		public String GetGroupDisplayString(int nIndex, Collection group) {
+    			return Messages.getString("Analysis.Tree.HandlePair") + " #" + (nIndex+1);
+    		}
+    		public int GetInfoState() {
+				if (getChildCount()>0)
+					return InfoStateERROR;
+				else
+					return InfoStateOK;
+    		}
+    	});	
+    	
+    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumTPHandles") + ": " +
+    			m_woflanAnalysis.getNumTPHandles(),
+    			m_woflanAnalysis.getTPHandlesIterator()) {
+    		public String GetGroupDisplayString(int nIndex, Collection group) {
+    			return Messages.getString("Analysis.Tree.HandlePair") + " #" + (nIndex+1);
+    		}
+    		public int GetInfoState() {
+				if (getChildCount()>0)
+					return InfoStateERROR;
+				else
+					return InfoStateOK;
+    		}
+    	});
+    	
 		/*
 		// FIXME: We currently have to use Woflan for P/T and T/P handle
 		// detection as our own algorithm is broken
@@ -531,9 +475,23 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		dispose();
 	}	
 	public void windowClosed(WindowEvent e) {
-		// Call our cleanup method to get rid of temporary files etc.
 		Cleanup();
 	}	
+	protected void finalize()
+	{
+		// Call cleanup if we happen to receive a finalize() call from the garbage collector
+		Cleanup();		
+	}
+	
+	protected void Cleanup()
+	{
+		// Call the woflan object's cleanup method to get rid of temporary files etc.
+		if (m_woflanAnalysis!=null)
+		{
+			m_woflanAnalysis.Cleanup();
+			m_woflanAnalysis = null;
+		}
+	}
 	
 	//! @{
 	//! Some dummy implementations to fulfill the requirements of the WindowListener interface
@@ -547,38 +505,7 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 	public void windowStateChanged(WindowEvent e) {}	
 	//! @}
 	
-
 	
-	//! Clean up when done...
-	protected void Cleanup()
-	{
-		if (m_netHandle != -1) {
-			m_myWofLan.Close(m_netHandle);
-			m_netHandle = -1;
-		}
-    	// Delete the temporary file containing the petri-net dump
-		if (m_tempFile!=null) {    	
-			m_tempFile.delete();
-			m_tempFile = null;
-		}
-    	
-        LoggerManager.info(Constants.WOFLAN_LOGGER, "Deleted temporary file for Workflow analysis.");
-    	
-	}
-	protected void finalize()
-	{
-		// Call cleanup if we happen to receive a finalize() call from the garbage collector
-		Cleanup();		
-	}
-	//! Stores a private reference to the WOFLAN analysis DLL
-	public Woflan m_myWofLan=null;
-	//! Remember a handle to the petri-net that is currently open
-	public int m_netHandle=-1;
-	//! Remember a reference to the temporary file 
-	//! containing a dump of our net
-	//! It will be deleted when no longer needed (when this object is destroyed)
-	private File   m_tempFile;
-
 	//! Remember a pointer to the currently active editor
 	//! (the one for which this window was created)
 	//! This is the central access point for model, graph etc.
@@ -591,6 +518,9 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 	//! without woflan.
 	//! This object implements all the necessary algorithms
 	private StructuralAnalysis m_structuralAnalysis;
+	//! Woflan analysis object
+	//! that wraps around the thin woflan api
+	private WoflanAnalysis m_woflanAnalysis;
 	
 	private GraphTreeModelSelector m_treeSelectionChangeHandler = null;
 }
