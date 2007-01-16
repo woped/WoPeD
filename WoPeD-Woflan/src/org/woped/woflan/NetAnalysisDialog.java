@@ -335,7 +335,7 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
     			m_woflanAnalysis.getNumPTHandles(),
     			m_woflanAnalysis.getPTHandlesIterator()) {
     		public String GetGroupDisplayString(int nIndex, Collection group) {
-    			return Messages.getString("Analysis.Tree.HandlePair") + " #" + (nIndex+1);
+    			return Messages.getString("Analysis.Tree.PTHandlePair") + " #" + (nIndex+1);
     		}
     		public int GetInfoState() {
 				if (getChildCount()>0)
@@ -349,7 +349,7 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
     			m_woflanAnalysis.getNumTPHandles(),
     			m_woflanAnalysis.getTPHandlesIterator()) {
     		public String GetGroupDisplayString(int nIndex, Collection group) {
-    			return Messages.getString("Analysis.Tree.HandlePair") + " #" + (nIndex+1);
+    			return Messages.getString("Analysis.Tree.TPHandlePair") + " #" + (nIndex+1);
     		}
     		public int GetInfoState() {
 				if (getChildCount()>0)
