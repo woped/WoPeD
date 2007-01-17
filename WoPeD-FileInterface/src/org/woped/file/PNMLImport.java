@@ -639,7 +639,7 @@ public class PNMLImport
                         {
                             if (arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != 0)
                             {
-                                tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR));
+                                tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR));
                             } else
                             {
                                 tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
@@ -655,7 +655,7 @@ public class PNMLImport
                         {
                             if (arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != 0)
                             {
-                                tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR));
+                                tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR));
                             } else
                             {
                                 tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
@@ -674,20 +674,28 @@ public class PNMLImport
                     		String targetId = arcs[i].getTarget();
                     		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
                         }
-                        // toolspecific
-                        for (int j = 0; j < arcs[i].getToolspecificArray().length; j++)
+                        if (arc!=null)
                         {
-                            if ((arcs[i].getToolspecificArray(j).getTool()!=null)&&
-                            (arcs[i].getToolspecificArray(j).getTool().equals("WoPeD")))
-                            {
-                                if (arcs[i].getToolspecificArray(j).isSetRoute() && arcs[i].getToolspecificArray(j).getRoute()) arc.setRoute(true);
-                                if (arcs[i].getToolspecificArray(j).isSetProbability())
-                                	arc.setProbability(arcs[i].getToolspecificArray(j).getProbability());
-                                		
-                            } else
-                            {
-                                arc.addUnknownToolSpecs(arcs[i].getToolspecificArray(j));
-                            }
+                        	// Check whether we actually have an arc. If not, it does not make sense
+                        	// to import any tool-specific information.
+                        	// Note that internal arcs with no connection to any outer nodes 
+                        	// will not be imported, they will be implicitly re-generated,
+                        	// e.g. XOR Split-Join
+                        	// Import toolspecific information for the arc
+                        	for (int j = 0; j < arcs[i].getToolspecificArray().length; j++)
+                        	{
+                        		if ((arcs[i].getToolspecificArray(j).getTool()!=null)&&
+                        				(arcs[i].getToolspecificArray(j).getTool().equals("WoPeD")))
+                        		{
+                        			if (arcs[i].getToolspecificArray(j).isSetRoute() && arcs[i].getToolspecificArray(j).getRoute()) arc.setRoute(true);
+                        			if (arcs[i].getToolspecificArray(j).isSetProbability())
+                        				arc.setProbability(arcs[i].getToolspecificArray(j).getProbability());
+                        			
+                        		} else
+                        		{
+                        			arc.addUnknownToolSpecs(arcs[i].getToolspecificArray(j));
+                        		}
+                        	}
                         }
                     } catch (Exception e)
                     {
