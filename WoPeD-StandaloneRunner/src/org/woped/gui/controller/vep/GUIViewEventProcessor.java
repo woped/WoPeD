@@ -352,7 +352,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.End");
 
 					String textMessages[] = { 	Messages.getString("Dialog.Yes"),
-							Messages.getString("Dialog.No")
+												Messages.getString("Dialog.No")
 						};
 
 					int value = JOptionPane.showOptionDialog(editorVC,
@@ -382,16 +382,22 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 					{
 						String args[] = { editorVC.getName() };
 
-						int value = JOptionPane
-								.showConfirmDialog(
-										editorVC,
-										Messages
-												.getStringReplaced(
-														"Action.SaveEditor.Confirmation.Message",
-														args),
-										Messages
-												.getString("Action.SaveEditor.Confirmation.Title"),
-										JOptionPane.YES_NO_CANCEL_OPTION);
+						String textMessages[] = { 	Messages.getString("Dialog.Yes"),
+													Messages.getString("Dialog.No"),
+													Messages.getString("Dialog.Cancel")
+						};
+
+						int value = JOptionPane.showOptionDialog(editorVC,
+								Messages
+								.getStringReplaced(
+										"Action.Confirm.File.Save.Text",
+										args),
+								Messages.getString("Action.Confirm.File.Save.Title"),
+								JOptionPane.YES_NO_CANCEL_OPTION,
+								JOptionPane.ERROR_MESSAGE,
+								null, 
+								textMessages,
+								textMessages[0]);
 
 						if (value == (JOptionPane.YES_OPTION))
 						{
