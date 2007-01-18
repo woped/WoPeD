@@ -53,10 +53,10 @@ import org.woped.core.gui.IEditorAware;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
-import org.woped.gui.controller.ViewEvent;
 
 /**
  * Represents the Manubar TODO: DOCUMENTATION (xraven)

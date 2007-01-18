@@ -30,12 +30,16 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+import javax.swing.ImageIcon;
+
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.view.AbstractElementView;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -85,6 +89,11 @@ public class PlaceView extends AbstractElementView
 	{
 		return ((PlaceModel) getCell()).getVirtualTokenCount();
 	}
+
+    public boolean isActivated()
+    {
+        return ((PlaceModel) getCell()).isActivated();
+    }
 
 	public Point2D getPerimeterPoint(EdgeView edge, Point2D source, Point2D p)
 	{
@@ -226,6 +235,14 @@ public class PlaceView extends AbstractElementView
 
 			}
 
+			if (isActive())
+			{
+				// Activate return to parent process switch
+				ImageIcon img = Messages.getImageIcon("TokenGame.Subprocess.StepReturn");
+				if (img!=null)
+					g2.drawImage(img.getImage(), 0, 24, 16, 16, img.getImageObserver());
+			}			
+
 		}
 
 		/**
@@ -237,5 +254,11 @@ public class PlaceView extends AbstractElementView
 		{
 			return PlaceView.this.hasTokens();
 		}
+		
+        public boolean isActive()
+        {
+            return PlaceView.this.isActivated();
+        }
+		
 	}
 }

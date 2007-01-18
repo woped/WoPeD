@@ -39,6 +39,10 @@ public class PlaceModel extends PetriNetModelElement
 
     private int             m_token        = 0;
     private int             m_virtualToken = 0;
+    
+    //! This member is true if the place is used to trigger a return to a parent process
+    //! (sink place of a sub-process in token-game mode)
+    private boolean 		activated = false;
 
     public static final int WIDTH          = 40;
     public static final int HEIGHT         = 40;
@@ -150,4 +154,14 @@ public class PlaceModel extends PetriNetModelElement
     {
         return PetriNetModelElement.PLACE_TYPE;
     }
+    
+    public void setActivated(boolean activated)
+    {
+        this.activated = activated;
+    }
+
+    public boolean isActivated()
+    {
+        return activated;
+    }    
 }

@@ -35,6 +35,7 @@ import org.woped.core.gui.IUserInterface;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.TaskBarVC;
+import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.utilities.Messages;
 import org.woped.file.controller.vep.FileEventProcessor;
 import org.woped.gui.DefaultUserInterface;

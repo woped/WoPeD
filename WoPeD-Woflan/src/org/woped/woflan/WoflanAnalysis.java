@@ -254,7 +254,13 @@ public class WoflanAnalysis {
 	{
 		String resultString = m_myWofLan.Info(m_netHandle, 
 				nInfo, nIndex, nSubIndex);
-		int result = Integer.parseInt(resultString);
+		int result = 0;
+		try
+		{
+			result = Integer.parseInt(resultString);
+		}
+		catch (NumberFormatException e)
+		{}
 		return result;
 	}
 	

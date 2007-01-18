@@ -26,11 +26,14 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
+import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
@@ -44,6 +47,8 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.StructuralAnalysis;
+import org.woped.editor.controller.vep.ViewEvent;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -73,6 +78,10 @@ public class TokenGameController
     private PetriNetModelProcessor petrinet              = null;
     private AbstractGraph          graph                 = null;
     private Map<String, AbstractElementModel>                    allTransitions        = null;
+    //! Stores a set containing all sink places of the simulated net
+    //! Used to manage return handling for sub-processes
+    //! (Visual token game only!)
+    private Set<PlaceModel>        sinkPlaces = null;
     private MouseHandler           tokenGameMouseHandler = null;
     private boolean                visualTokenGame       = false;
     private EditorVC			   thisEditor 			 = null;
@@ -89,7 +98,7 @@ public class TokenGameController
         this.graph = thisEditor.getGraph();
         this.thisEditor = thisEditor;
         setVisualTokenGame(graph != null);
-        tokenGameMouseHandler = new MouseHandler();
+        tokenGameMouseHandler = new MouseHandler();    
     }
 
     /**
@@ -174,6 +183,7 @@ public class TokenGameController
     public void enableVisualTokenGame()
     {
         this.visualTokenGame = true;
+               
         // disable editor access
         getGraph().enableMarqueehandler(false);
         getGraph().clearSelection();
@@ -183,6 +193,13 @@ public class TokenGameController
         getGraph().setBackground(new Color(245, 245, 230));
         // register own MouseHandler
         getGraph().addMouseListener(tokenGameMouseHandler);
+        
+        sinkPlaces = new HashSet<PlaceModel>();
+        StructuralAnalysis analysis = new StructuralAnalysis(thisEditor);
+        Iterator i = analysis.getSinkPlacesIterator();
+        while (i.hasNext())
+        	sinkPlaces.add((PlaceModel)i.next());               
+        
         getGraph().refreshNet();
     }
 
@@ -218,6 +235,20 @@ public class TokenGameController
         {
             checkTransition((TransitionModel) allTransitions.get(transIter.next()));
         }
+        // Have a look at sink places
+        // and see whether we need to activate them
+        // Do so only inside of sub-processes
+        if ((petrinet.getElementContainer().getOwningElement()!=null)&&(sinkPlaces!=null))
+        {
+        	Iterator<PlaceModel> i = sinkPlaces.iterator();
+        	while (i.hasNext())
+        	{
+        		PlaceModel currentSink = i.next();
+        		currentSink.setActivated(currentSink.getVirtualTokenCount()>0);
+        	}        	
+        }
+        
+        
         // updateUI() may never be called from the main thread but must be added
         // to the event queue. Otherwise, multithreading problems result
         // (The event dispatcher will try to repaint the model while parts of the model are uninitialized)
@@ -712,14 +743,22 @@ public class TokenGameController
          */
         public void mouseReleased(MouseEvent e)
         {
-            TransitionModel transition = findTransitionInCell(getGraph().getFirstCellForLocation(e.getPoint().x, e.getPoint().y));
-            ArcModel arc = findArcInCell(getGraph().getFirstCellForLocation(e.getPoint().x, e.getPoint().y));
+        	Object cell = getGraph().getFirstCellForLocation(e.getPoint().x, e.getPoint().y);
+            TransitionModel transition = findTransitionInCell(cell);
+            PlaceModel place = findPlaceInCell(cell);
+            ArcModel arc = findArcInCell(cell);
             if (transition != null && transition.isActivated() && transition.isFireing())
             {
                 transitionClicked(transition, e);
             } else if (arc != null && arc.isActivated())
             {
                 arcClicked(arc);
+            } else if (place != null && place.isActivated())
+            {            	
+            	// If an active place has been clicked there is only one reasonable explanation for this:
+            	// It is a sink place of a sub-process and we need to close the sub-process editing window
+                thisEditor.fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE, null));
+
             }
             e.consume();
         }
@@ -736,6 +775,26 @@ public class TokenGameController
         public void mouseExited(MouseEvent arg0)
         {}
 
+
+        /*
+         * Checks if cell is a Place or if a Place is nested in a
+         * Group.
+         */
+        private PlaceModel findPlaceInCell(Object cell)
+        {
+            if (cell instanceof GroupModel)
+            {
+                cell = ((GroupModel) cell).getMainElement();
+            }
+            if (cell instanceof PlaceModel)
+            {
+                return (PlaceModel) cell;
+            } else
+            {
+                return null;
+            }
+        }
+        
         /*
          * Checks if cell is a Transition or if a Transition is nested in a
          * Group.
