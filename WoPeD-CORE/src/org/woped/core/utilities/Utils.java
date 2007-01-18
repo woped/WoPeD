@@ -23,7 +23,6 @@
 package org.woped.core.utilities;
 
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.print.PageFormat;
