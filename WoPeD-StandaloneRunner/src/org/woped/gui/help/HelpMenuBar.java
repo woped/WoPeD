@@ -97,7 +97,7 @@ public class HelpMenuBar extends JMenuBar
     /**
      * @return Returns the containingWindow.
      */
-    public HelpBrowser getContainingWindow()
+    public HelpBrowser getWindow()
     {
         return m_containingWindow;
     }
@@ -152,7 +152,7 @@ public class HelpMenuBar extends JMenuBar
     {
         if (m_closeMenuItem == null)
         {
-            m_closeMenuItem = new JMenuItem(BrowserCloseAction.getInstance(getContainingWindow()));
+            m_closeMenuItem = new JMenuItem(BrowserCloseAction.getInstance(getWindow()));
         }
         return m_closeMenuItem;
     }
@@ -166,7 +166,7 @@ public class HelpMenuBar extends JMenuBar
     {
         if (m_refreshMenuItem == null)
         {
-            m_refreshMenuItem = new JMenuItem(BrowserRefreshAction.getInstance(getContainingWindow()));
+            m_refreshMenuItem = new JMenuItem(BrowserRefreshAction.getInstance(getWindow()));
         }
         return m_refreshMenuItem;
     }
@@ -180,7 +180,7 @@ public class HelpMenuBar extends JMenuBar
     {
         if (m_homeMenuItem == null)
         {
-            m_homeMenuItem = new JMenuItem(BrowserHomeAction.getInstance(getContainingWindow()));
+            m_homeMenuItem = new JMenuItem(BrowserHomeAction.getInstance(getWindow()));
         }
         return m_homeMenuItem;
     }
@@ -194,7 +194,7 @@ public class HelpMenuBar extends JMenuBar
     {
         if (m_contentsMenuItem == null)
         {
-            m_contentsMenuItem = new JMenuItem(BrowserContentsAction.getInstance(getContainingWindow()));
+            m_contentsMenuItem = new JMenuItem(BrowserContentsAction.getInstance(getWindow()));
         }
         return m_contentsMenuItem;
     }
@@ -208,7 +208,7 @@ public class HelpMenuBar extends JMenuBar
     {
         if (m_forwardMenuItem == null)
         {
-            m_forwardMenuItem = new JMenuItem(BrowserForwardAction.getInstance(getContainingWindow()));
+            m_forwardMenuItem = new JMenuItem(BrowserForwardAction.getInstance(getWindow()));
         }
         return m_forwardMenuItem;
     }
@@ -222,7 +222,7 @@ public class HelpMenuBar extends JMenuBar
     {
         if (m_backMenuItem == null)
         {
-            m_backMenuItem = new JMenuItem(BrowserBackAction.getInstance(getContainingWindow()));
+            m_backMenuItem = new JMenuItem(BrowserBackAction.getInstance(getWindow()));
         }
         return m_backMenuItem;
     }
@@ -236,7 +236,7 @@ public class HelpMenuBar extends JMenuBar
     {
         if (m_wwwMenuItem == null)
         {
-            m_wwwMenuItem = new JMenuItem(BrowserWebpageAction.getInstance(getContainingWindow()));
+            m_wwwMenuItem = new JMenuItem(BrowserWebpageAction.getInstance(getWindow()));
         }
         return m_wwwMenuItem;
     }
