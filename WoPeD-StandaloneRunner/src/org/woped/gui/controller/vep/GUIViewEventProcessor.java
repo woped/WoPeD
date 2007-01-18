@@ -351,15 +351,20 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 					errorMessage += Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.End");
 
-					int value = JOptionPane
-							.showConfirmDialog(
-									editorVC,
-									errorMessage,
-									Messages
-											.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Title"),
-									JOptionPane.YES_NO_OPTION);
+					String textMessages[] = { 	Messages.getString("Dialog.Yes"),
+							Messages.getString("Dialog.No")
+						};
 
-					if (value == JOptionPane.NO_OPTION)
+					int value = JOptionPane.showOptionDialog(editorVC,
+									errorMessage,
+									Messages.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Title"),
+									JOptionPane.YES_NO_OPTION,
+									JOptionPane.ERROR_MESSAGE,
+									null, 
+									textMessages,
+									textMessages[0]);
+
+					if (value == JOptionPane.YES_OPTION)
 					{
 						closeEditor = true;
 					}

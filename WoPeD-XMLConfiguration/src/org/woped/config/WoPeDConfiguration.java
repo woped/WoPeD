@@ -16,6 +16,7 @@ import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IConfiguration;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -86,8 +87,8 @@ public class WoPeDConfiguration implements IConfiguration
             boolean confOk = readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BACKUP_FILE));
             if (!confOk)
             {
-            	JOptionPane.showMessageDialog(null, "Configuration file not found", 
-            			"Init error", JOptionPane.ERROR_MESSAGE);
+            	JOptionPane.showMessageDialog(null, Messages.getString("Init.ConfigFileNotFound"), 
+            			Messages.getString("Init.ConfigError"), JOptionPane.ERROR_MESSAGE);
             	System.exit(0);
             }
             return confOk;
