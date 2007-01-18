@@ -41,8 +41,7 @@ public class BrowserWebpageAction extends WoPeDAction
 {
     private static final String         PROPERTIES_PREFIX = "Action.Browser.WWW";
     private static BrowserWebpageAction c_instance;
-    private HelpBrowser                 helpBrowser;
-
+ 
     public static BrowserWebpageAction getInstance(HelpBrowser helpBrowser)
     {
         if (c_instance == null) c_instance = new BrowserWebpageAction(helpBrowser);
@@ -52,7 +51,6 @@ public class BrowserWebpageAction extends WoPeDAction
     private BrowserWebpageAction(HelpBrowser helpBrowser)
     {
         super(PROPERTIES_PREFIX);
-        this.helpBrowser = helpBrowser;
     }
 
     public void actionPerformed(ActionEvent arg0)

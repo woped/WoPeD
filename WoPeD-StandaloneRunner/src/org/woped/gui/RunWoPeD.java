@@ -68,7 +68,7 @@ public class RunWoPeD
             }
             // create & init GUI
             Locale.setDefault(Locale.ENGLISH);
-            DefaultApplicationMediator mediator = new DefaultApplicationMediator(null, new WoPeDConfiguration(), args);
+            new DefaultApplicationMediator(null, new WoPeDConfiguration(), args);
         } catch (RuntimeException e1)
         {
             e1.printStackTrace();

@@ -115,7 +115,7 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
             {
                 // cmd = 'rundll32 url.dll,FileProtocolHandler http://...'
                 cmd = WIN_PATH + " " + WIN_FLAG + " " + url;
-                Process p = Runtime.getRuntime().exec(cmd);
+                Runtime.getRuntime().exec(cmd);
             } else
             {
                 if (isMacOSXPlatform())
@@ -125,7 +125,7 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
                     cmd = "open -a /Applications/Safari.app " + url;
                     try
                     {
-                        Process p = Runtime.getRuntime().exec(cmd);
+                        Runtime.getRuntime().exec(cmd);
                     } catch (Exception e)
                     {}
                 } else

@@ -24,7 +24,6 @@ package org.woped.editor.controller;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -70,7 +69,6 @@ public class ApplicationMediator extends AbstractApplicationMediator
     private int              editorCounter          = 0;
     private EditorClipboard  clipboard              = new EditorClipboard();
     private VisualController visualController       = null;
-    private HashMap          actionMap              = null;
     private int              newEditorCounter = 0;
 
     public ApplicationMediator()
@@ -83,7 +81,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
         super(ui, conf);
 
         visualController = new VisualController(this);
-        actionMap = ActionFactory.createStaticActions(this);
+        ActionFactory.createStaticActions(this);
 
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, new ApplicationEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, this));
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT, new EditorEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_EDIT, this));
