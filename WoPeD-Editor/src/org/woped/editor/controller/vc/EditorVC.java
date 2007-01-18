@@ -411,26 +411,6 @@ public class EditorVC extends JPanel implements KeyListener,
 		EditorLayoutInfo layoutInfo = container.getEditorLayoutInfo();
 		if (layoutInfo != null)
 			setSavedLayoutInfo(layoutInfo);
-
-		PetriNetModelProcessor processor = (PetriNetModelProcessor) getModelProcessor();
-
-		//Counter for ID generation
-		int numPlace = getModelProcessor().getElementContainer()
-				.getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE)
-				.size();
-		int numArc = getModelProcessor().getElementContainer().getArcMap()
-				.size();
-		int numSub = getModelProcessor().getElementContainer()
-				.getElementsByType(AbstractPetriNetModelElement.SUBP_TYPE)
-				.size();
-		int numTrans = getModelProcessor().getElementContainer()
-				.getElementsByType(
-						AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).size();
-
-		processor.setArcCounter(numArc);
-		processor.setPlaceCouter(numPlace);
-		processor.setSubprocessCounter(numSub);
-		processor.setTransitionCounter(numTrans);
 		
 		//Copy resources from parentEditor to subprocessEditor
 		Vector res = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResources();
@@ -655,16 +635,10 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		if (map.isValid())
 		{
-			// Create Element
-			AbstractElementModel element;
-			if (isSubprocessEditor())
-			{
-				element = getModelProcessor().createElement(map,
-						m_parentElement.getId() + "_");
-			} else
-			{
-				element = getModelProcessor().createElement(map, "");
-			}
+			// Create Element, this will assign a new id if none has been defined
+			// This id will be unique even across sub-process borders by prepending the
+			// id of the sub-process
+			AbstractElementModel element = getModelProcessor().createElement(map);
 
 			// ensure that There is an Position
 			if (map.getPosition() != null)

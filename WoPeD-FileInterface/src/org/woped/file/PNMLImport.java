@@ -537,7 +537,7 @@ public class PNMLImport
                 	// Now, instead of the transition, an operator is created for each of those inner transitions
                 	// and all but the first such instance are discarded here because an element
                 	// with the same id already exists at this point
-                	AbstractElementModel element = processor.createElement(map, "");
+                	AbstractElementModel element = processor.createElement(map);
                 	currentContainer.addElement(element);                	
                     LoggerManager.debug(Constants.FILE_LOGGER, " ... Transition (ID:" + map.getId() + ")imported");
                     // increaseCurrent();
@@ -615,12 +615,12 @@ public class PNMLImport
     	PetriNetModelProcessor processor = new PetriNetModelProcessor();
     	processor.setElementContainer(currentContainer);
     	
-        PetriNetModelElement currentSourceModel = null;
-        PetriNetModelElement currentTargetModel = null;
-        ArcModel arc = null;
-
         for (int i = 0; i < arcs.length; i++)
         {
+            PetriNetModelElement currentSourceModel = null;
+            PetriNetModelElement currentTargetModel = null;
+            ArcModel arc = null;
+            
             try
             {
                 for (int f = 0; f < statusBars.length; f++)

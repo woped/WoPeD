@@ -100,14 +100,14 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	 * @param aalsttype
 	 * @return PetriNetElementModel
 	 */
-	public AbstractElementModel createElement(CreationMap map, String idPreFix)
+	public AbstractElementModel createElement(CreationMap map)
 	{
 		// creating a new ModelElement through Factory
 		if (map.isValid())
 		{
 			if (map.getId() == null)
 			{
-				map.setId(idPreFix + getNewElementId(map.getType()));
+				map.setId(getNewElementId(map.getType()));
 			}
 			AbstractElementModel anElement = ModelElementFactory
 					.createModelElement(map);
@@ -682,30 +682,38 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 
 	public String getNewElementId(int elementType)
 	{
-		String id;
-		if (elementType == PetriNetModelElement.SUBP_TYPE)
+		String id = null;
+		
+		String prefix = "";
+		AbstractElementModel owningElement = getElementContainer().getOwningElement();
+		if (owningElement!=null)
 		{
+			prefix = owningElement.getId() + OperatorTransitionModel.INNERID_SEPERATOR;			
+		}
+		
+		switch (elementType)
+		{
+		case PetriNetModelElement.SUBP_TYPE:
 			id = "sub" + ++subprocessCounter;
-			return getElementContainer().getElementById(id) != null ? getNewElementId(elementType)
-					: id;
-		} else if (elementType == PetriNetModelElement.PLACE_TYPE)
-		{
+			break;
+		case PetriNetModelElement.PLACE_TYPE:
 			id = "p" + ++placeCouter;
-			return getElementContainer().getElementById(id) != null ? getNewElementId(elementType)
-					: id;
-		} else if (elementType == PetriNetModelElement.TRANS_SIMPLE_TYPE
-				|| elementType == PetriNetModelElement.TRANS_OPERATOR_TYPE)
-		{
+			break;
+		case PetriNetModelElement.TRANS_SIMPLE_TYPE:
+		case PetriNetModelElement.TRANS_OPERATOR_TYPE:
 			id = "t" + ++transitionCounter;
-			return getElementContainer().getElementById(id) != null ? getNewElementId(elementType)
-					: id;
-		} else if (elementType == PetriNetModelElement.SUBP_TYPE)
+			break;
+		}
+		if (id!=null)
 		{
-			id = "t" + ++subprocessCounter;
-			return getElementContainer().getElementById(id) != null ? getNewElementId(elementType)
-					: id;
-		} else
-			return null;
+			// Prepend the prefix (used for sub-processes to make identifiers unique)
+			id = prefix + id;
+			// Check whether an element with the same ID already exists. 
+			// If so, recursively call ourselves to obtain a new one
+			if (getElementContainer().getElementById(id)!=null)
+				id = getNewElementId(elementType);
+		}
+		return id;
 	}
 
 	public String getNexArcId()

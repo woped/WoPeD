@@ -294,10 +294,19 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 
 				String inputID = editor.getSubprocessInput().getId();
 				String outputID = editor.getSubprocessOutput().getId();
-							
-				String ainputID = ((AbstractElementModel) analysis.getSinkPlacesIterator().next()).getId();
-				String aoutputID = ((AbstractElementModel) analysis.getSourcePlacesIterator().next()).getId();
 
+				// Try to get the first source place of the model as well as the 
+				// first sink place
+				// Note that there is a chance neither a source nor a sink actually exist
+				// so we need to check whether the iterator is valid!!
+				String ainputID = null;
+				String aoutputID = null;
+				Iterator i = analysis.getSinkPlacesIterator();
+				if (i.hasNext())
+					ainputID = ((AbstractElementModel) i.next()).getId();
+				i = analysis.getSourcePlacesIterator();
+				if (i.hasNext())
+					aoutputID = ((AbstractElementModel) i.next()).getId();
 				
 				if (analysis.getNumNotStronglyConnectedNodes() > 0
 						|| analysis.getNumSinkPlaces() > 1

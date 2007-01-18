@@ -21,7 +21,7 @@ public abstract class AbstractModelProcessor implements Serializable
     public static int             MODEL_PROCESSOR_UML      = 1;
     public static int             MODEL_PROCESSOR_PETRINET = 0;
 
-    abstract public AbstractElementModel createElement(CreationMap map, String idPreFix);
+    abstract public AbstractElementModel createElement(CreationMap map);
 
     abstract public void removeElement(Object id);
 
