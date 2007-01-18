@@ -469,10 +469,12 @@ public class StructuralAnalysis {
 		Set<Set<AbstractElementModel>> placeResults = getNonFreeChoiceGroups(m_places.iterator(),false);
 		// Now look for backward-branched transitions (synchronization)
 		// and their preceeding places
-		Set<Set<AbstractElementModel>> transitionResults = getNonFreeChoiceGroups(m_transitions.iterator(),true);
+		// Commented out: Probably not really needed as this condition is already covered with
+		// the detection of forward-branched places 2007-01-15, AE
+		// Set<Set<AbstractElementModel>> transitionResults = getNonFreeChoiceGroups(m_transitions.iterator(),true);
 		
 		m_freeChoiceViolations.addAll(placeResults);
-		m_freeChoiceViolations.addAll(transitionResults);
+		//m_freeChoiceViolations.addAll(transitionResults);
 	}
 	Set<Set<AbstractElementModel>> getNonFreeChoiceGroups(Iterator i, boolean swapArcDirection)
 	{
