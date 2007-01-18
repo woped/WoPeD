@@ -2,14 +2,17 @@ package org.woped.woflan;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.processmining.framework.models.petrinet.algorithms.Woflan;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.utilities.LoggerManager;
 
 public class WoflanAnalysis {
@@ -88,12 +91,12 @@ public class WoflanAnalysis {
 	
 	public int getNumNotSCovered() {
 		calculateSComponents();
-		return getIntInfo(m_myWofLan.InfoNofNotSCom,0,0);
+		return uncoveredPlaces.size();
 	}
 	public Iterator<AbstractElementModel> getNotSCoveredIterator()
 	{		
 		calculateSComponents();
-		return getListIterator(getNumNotSCovered(),m_myWofLan.InfoNotSComNName);
+		return uncoveredPlaces.iterator();
 	}		
 	
 	public int getNumSComponents()
@@ -303,6 +306,8 @@ public class WoflanAnalysis {
 	}
 	
 	private boolean m_sComponentsCalculated = false;
+	private Set<AbstractElementModel> uncoveredPlaces = new HashSet<AbstractElementModel>();
+	
 	private void calculateSComponents()
 	{
 		if (m_sComponentsCalculated)
@@ -310,6 +315,18 @@ public class WoflanAnalysis {
 		
 		// Create S-Component information
 		m_myWofLan.Info(m_netHandle, m_myWofLan.SetSCom, 0, 0);
+		
+		// Retrieve Woflan results immediately and store after some post-processing
+		uncoveredPlaces.clear();
+		Iterator <AbstractElementModel> i = getListIterator(getIntInfo(m_myWofLan.InfoNofNotSCom,0,0),m_myWofLan.InfoNotSComNName);
+		while (i.hasNext())
+		{
+			AbstractElementModel current = i.next();
+			// Add only places to the uncovered list
+			if (current.getType() == PetriNetModelElement.PLACE_TYPE)
+				uncoveredPlaces.add(current);			
+		}
+		
 		m_sComponentsCalculated = true;
 	}
 
