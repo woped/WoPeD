@@ -1,5 +1,6 @@
 package org.woped.file.controller.vep;
 
+import java.awt.Frame;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -297,6 +298,25 @@ public class FileEventProcessor extends AbstractEventProcessor
         return succeed;
     }
 
+    public static boolean isFileOverride(Frame owner, String fileName)
+    {
+		String textMessages[] = { 	org.woped.editor.utilities.Messages.getString("Dialog.Yes"),
+									org.woped.editor.utilities.Messages.getString("Dialog.No")
+								};
+		String[] args = {fileName};
+		
+		return JOptionPane.showOptionDialog(owner, 
+					org.woped.editor.utilities.Messages.getStringReplaced(
+							"Action.Confirm.File.Overwrite.Text",
+							args),
+					org.woped.editor.utilities.Messages.getString("Action.Confirm.File.Overwrite.Title"),
+					JOptionPane.YES_NO_OPTION, 
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					textMessages,
+					textMessages[1]) == JOptionPane.YES_OPTION;
+    }
+    
     /**
      * TODO: Documentation
      * 
@@ -340,7 +360,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             {
                 String savePath = jfc.getSelectedFile().getAbsolutePath().substring(0, jfc.getSelectedFile().getAbsolutePath().length() - jfc.getSelectedFile().getName().length());
                 String fileName = Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), extensions);
-                if (!new File(savePath.concat(fileName)).exists() || (Utils.isFileOverride(null, jfc.getSelectedFile().getPath())))
+                if (!new File(savePath.concat(fileName)).exists() || (isFileOverride(null, jfc.getSelectedFile().getPath())))
                 {
                     if (editor != null && new File(savePath).exists())
                     {

@@ -31,8 +31,6 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.Vector;
 
-import javax.swing.JOptionPane;
-
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
@@ -91,12 +89,6 @@ public class Utils
         }
         if (!extensionFound & extensions.get(0).toString() != null) fileName += "." + extensions.get(0).toString();
         return fileName;
-    }
-
-    public static boolean isFileOverride(Frame owner, String fileName)
-    {
-        return JOptionPane.showConfirmDialog(owner, "<HTML><p align=\"center\">The file<br><i>" + fileName + "</i><br>does already exist.<br>Do you want to overwrite it?</p></HTML>",
-                "File already exists.", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION;
     }
 
     /**
