@@ -97,6 +97,8 @@ import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.core.model.petrinet.ResourceClassModel;
+import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
@@ -257,7 +259,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		this.m_propertyChangeSupport = new PropertyChangeSupport(this);
 		this.m_propertyChangeSupport.addPropertyChangeListener(VisualController
 				.getInstance());
-		this.viewListener = new Vector();
+		this.viewListener = new Vector<IViewListener>();
 		this.id = id;
 		// Listener for the graph
 		getGraph().getSelectionModel().addGraphSelectionListener(
@@ -351,7 +353,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		// vorhanden ist!
 
 		// Get list of input nodes
-		Set sources = NetAlgorithms.getDirectlyConnectedNodes(model,
+		Set<AbstractElementModel> sources = NetAlgorithms.getDirectlyConnectedNodes(model,
 				NetAlgorithms.connectionTypeINBOUND);
 		Iterator<AbstractElementModel> sourceKeyIterator = sources.iterator();
 		AbstractElementModel sourceModel = sourceKeyIterator.next();
@@ -370,7 +372,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		// Ausgang
 		// Get list of output nodes
-		Set targets = NetAlgorithms.getDirectlyConnectedNodes(model,
+		Set<AbstractElementModel> targets = NetAlgorithms.getDirectlyConnectedNodes(model,
 				NetAlgorithms.connectionTypeOUTBOUND);
 		Iterator<AbstractElementModel> targetKeyIterator = targets.iterator();
 		AbstractElementModel targetModel = targetKeyIterator.next();
@@ -412,16 +414,16 @@ public class EditorVC extends JPanel implements KeyListener,
 			setSavedLayoutInfo(layoutInfo);
 		
 		//Copy resources from parentEditor to subprocessEditor
-		Vector res = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResources();
+		Vector<ResourceModel> res = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResources();
 		((PetriNetModelProcessor) (getModelProcessor())).setResources(res);
 		
-		HashMap mapping = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResourceMapping();
+		HashMap<String, Vector<String>> mapping = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResourceMapping();
 		((PetriNetModelProcessor) (getModelProcessor())).setResourceMapping(mapping);
 		
-		Vector units = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getOrganizationUnits();
+		Vector<ResourceClassModel> units = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getOrganizationUnits();
 		((PetriNetModelProcessor) (getModelProcessor())).setOrganizationUnits(units);
 		
-		Vector roles = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getRoles();
+		Vector<ResourceClassModel> roles = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getRoles();
 		((PetriNetModelProcessor) (getModelProcessor())).setRoles(roles);
 		
 		// Restore original "edited" status of parent editor
@@ -1260,12 +1262,12 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		/* insert elements */
 		CreationMap currentMap, currentArcMap;
-		HashMap correctedSourceId = new HashMap();
-		HashMap correctedTargetId = new HashMap();
+		HashMap<String, Object> correctedSourceId = new HashMap<String, Object>();
+		HashMap<String, Object> correctedTargetId = new HashMap<String, Object>();
 		IntPair currentPosition;
 		AbstractElementModel tempElement;
 		String oldElementId;
-		Vector selectElements = new Vector();
+		Vector<Object> selectElements = new Vector<Object>();
 		Iterator eleIter = pasteElements.keySet().iterator();
 		while (eleIter.hasNext())
 		{
