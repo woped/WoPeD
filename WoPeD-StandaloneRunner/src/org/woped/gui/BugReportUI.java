@@ -103,7 +103,7 @@ public class BugReportUI extends JDialog
             c.insets = new Insets(0, 10, 10, 10);
             // TODO: move in propertie files (tfreytag)
             bugPageLabel = new JLabel(Messages.getString("BugReport.Link"));
-            bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction("BugReport.URL", bugPageLabel));
+            bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("BugReport.URL"), bugPageLabel));
             panel.add(bugPageLabel, c);
 
             bugReportPanel = new JScrollPane(panel);
