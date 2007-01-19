@@ -359,7 +359,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 									errorMessage,
 									Messages.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Title"),
 									JOptionPane.YES_NO_OPTION,
-									JOptionPane.ERROR_MESSAGE,
+									JOptionPane.WARNING_MESSAGE,
 									null, 
 									textMessages,
 									textMessages[0]);
