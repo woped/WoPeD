@@ -44,6 +44,7 @@ import javax.swing.JTextField;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
+import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.utilities.Messages;
 
 /**
@@ -63,7 +64,7 @@ public class ConfToolsPanel extends AbstractConfPanel
     private JCheckBox  woflanCheckBox  = null;
     private JTextField woflanTextField = null;
     private JButton    woflanBrowse    = null;
-    private JLabel     getWoflanLabel  = null;
+    private JButton    woflanHelp	   = null;
 
     /**
      * Constructor for ConfToolsPanel.
@@ -170,11 +171,11 @@ public class ConfToolsPanel extends AbstractConfPanel
             c.gridx = 0;
             c.gridy = 0;
             woflanPanel.add(getWoflanCheckBox(), c);
-
-            /*
-             * c.weightx = 1; c.gridx = 1; c.gridy = 0;
-             * woflanPanel.add(getGetWoflanLabel(), c);
-             */
+            
+            c.weightx = 1; 
+            c.gridx = 2; 
+            c.gridy = 0;
+            woflanPanel.add(getGetWoflanHelp(), c);
 
             c.weightx = 1;
             c.gridx = 0;
@@ -253,43 +254,43 @@ public class ConfToolsPanel extends AbstractConfPanel
         return woflanBrowse;
     }
 
-    private JLabel getGetWoflanLabel()
+    private JButton getGetWoflanHelp()
     {
-        if (getWoflanLabel == null)
+        if (woflanHelp == null)
         {
-            getWoflanLabel = new JLabel("<html><u>" + Messages.getString("Configuration.Tools.Panel.Woflan.WhatsWoflan.Label") + "</u></html>");
-            //getWoflanLabel.getFont().getFamily(),
-            // getWoflanLabel.getFont().getSize(), Font.);
-            getWoflanLabel.setHorizontalAlignment(JLabel.RIGHT);
-            getWoflanLabel.addMouseListener(new MouseListener()
+        	woflanHelp = new JButton();
+            woflanHelp.setIcon(Messages.getImageIcon("Button.Help"));
+            woflanHelp.setText(Messages.getString("Configuration.Tools.Panel.Woflan.WhatsWoflan.Label"));
+        	woflanHelp.setHorizontalAlignment(JLabel.RIGHT);
+ //       	setModal(true);
+        	
+        	woflanHelp.addMouseListener(new MouseListener()
             {
                 public void mouseClicked(MouseEvent arg0)
                 {
-                //                    // TODO: USE ACTION INSTEAD
-                //                    OLDUserInterface.getInstance().showIndex("woflan.htm");
-                }
+                	HelpBrowser br = HelpBrowser.getInstance();
+           			br.init("woflan.htm");
+                	}
 
                 public void mouseEntered(MouseEvent arg0)
                 {
-                    getWoflanLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                	woflanHelp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 }
 
                 public void mouseExited(MouseEvent arg0)
                 {
-                    getWoflanLabel.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                	woflanHelp.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 }
 
                 public void mousePressed(MouseEvent arg0)
                 {
-
                 }
 
                 public void mouseReleased(MouseEvent arg0)
                 {
-
                 }
             });
         }
-        return getWoflanLabel;
+        return woflanHelp;
     }
 }
