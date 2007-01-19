@@ -17,7 +17,7 @@
 	<!--<taskdef resource="genjar.properties"/>	-->
 
 	<target name="makedistribution" 
-         depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, purge, start" />
+         depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, start, purge" />
 <!--		depends="makebindist, makesrcdist, purge" /> -->
 
 	<target name="clean">
@@ -77,6 +77,7 @@
 		<copy todir="dist/doc/html/images">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.gif" />
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.jpg" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.png" />
 		</copy>
 
 		<copy todir="dist">
