@@ -24,8 +24,6 @@ package org.woped.gui.controller.vep;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyVetoException;
-import java.io.File;
-import java.net.URL;
 import java.security.AccessControlException;
 import java.util.Iterator;
 import java.util.Vector;
@@ -56,7 +54,7 @@ import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
-import org.woped.gui.help.HelpBrowser;
+import org.woped.editor.help.HelpBrowser;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -157,7 +155,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		case AbstractViewEvent.HELP:
 			try
 			{
-				showHelp((String) event.getData(), false);
+				showHelpPage((String)event.getData());
 			} catch (Exception e)
 			{
 				LoggerManager.error(Constants.GUI_LOGGER,
@@ -172,7 +170,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		case AbstractViewEvent.HELP_CONTENTS:
 			try
 			{
-				showHelp(null, true);
+				showHelpContents();
 			} catch (Exception e)
 			{
 				LoggerManager.error(Constants.GUI_LOGGER,
@@ -444,51 +442,15 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		return closeEditor;
 	}
 
-	private void showHelp(String contentFileName, boolean showContents)
+	private void showHelpPage(String fileName)
 			throws Exception
 	{
-		String filename = "index.htm";
-		if (contentFileName == null)
-		{
-			contentFileName = "contents.htm";
-		}
-
-		URL url = this.getClass().getResource("/doc");
-
-		if (url != null)
-		{
-			// locate HTML files in jarfile
-			filename = url.toExternalForm().concat("/html/").concat(
-					Messages.getString("Help.Dir")).concat("/" + filename);
-			contentFileName = url.toExternalForm().concat("/html/").concat(
-					Messages.getString("Help.Dir")).concat(
-					"/" + contentFileName);
-		} else
-		{
-			// locate HTML files in local folder
-			File f = new File(".");
-			String filePath = "file:/" + f.getAbsolutePath();
-			int dotAt = filePath.lastIndexOf(".");
-			filename = filePath.substring(0, dotAt) + "doc/html/"
-					+ Messages.getString("Help.Dir") + "/" + filename;
-			contentFileName = filePath.substring(0, dotAt) + "doc/html/"
-					+ Messages.getString("Help.Dir") + "/" + contentFileName;
-		}
-		/*
-		 * { // locate HTML files in local folder filename =
-		 * this.getClass().getResource("/").toExternalForm().concat("../doc/doc/html/").concat(Messages.getString("Help.Dir")).concat("/" +
-		 * filename); contentFileName =
-		 * this.getClass().getResource("/").toExternalForm().concat("../doc/doc/html/").concat(Messages.getString("Help.Dir")).concat("/" +
-		 * contentFileName); System.out.println(filename); }
-		 */
-
 		HelpBrowser br = HelpBrowser.getInstance();
-		if (showContents)
-		{
-			br.init(contentFileName, filename, contentFileName);
-		} else
-		{
-			br.init(filename, filename, contentFileName);
-		}
+		br.init(fileName);
+	}
+	private void showHelpContents() throws Exception
+	{
+		HelpBrowser br = HelpBrowser.getInstance();
+		br.init(Messages.getString("Help.File.Contents"));
 	}
 }

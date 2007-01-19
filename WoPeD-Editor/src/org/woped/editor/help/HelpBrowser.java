@@ -25,7 +25,7 @@
  *  
  */
 
-package org.woped.gui.help;
+package org.woped.editor.help;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -34,6 +34,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.EmptyStackException;
 
 import javax.swing.JEditorPane;
@@ -49,8 +50,8 @@ import javax.swing.text.Document;
 
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.utilities.Messages;
-import org.woped.gui.Constants;
-import org.woped.gui.help.action.LaunchDefaultBrowserAction;
+import org.woped.editor.Constants;
+import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>
@@ -68,7 +69,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
     private String            currURL;
     private String            homeURL;
     private String            contentsURL;
-    private BrowserHistory    history    = new BrowserHistory();
+    private BrowserHistory    history = new BrowserHistory();
 
     public static HelpBrowser getInstance()
     {
@@ -85,7 +86,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e)
         {
-            LoggerManager.error(Constants.GUI_LOGGER, "Error setting Look and Feel: " + e);
+            LoggerManager.error(Constants.EDITOR_LOGGER, "Error setting Look and Feel: " + e);
         }
 
         addWindowListener(new WindowAdapter()
@@ -129,11 +130,41 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
      * @param homeURL
      * @param contentsURL
      */
-    public void init(String currURL, String homeURL, String contentsURL)
+    public void init(String currFileName)
     {
-        this.homeURL = homeURL;
-        this.currURL = currURL;
-        this.contentsURL = contentsURL;
+    	String contentFileName = Messages.getString("Help.File.Contents");
+    	String indexFileName = Messages.getString("Help.File.Index");
+    	if (currFileName == null)
+        	currFileName = Messages.getString("Help.File.Index");
+   	
+    	URL url = this.getClass().getResource("/doc");
+
+		if (url != null)
+		{
+			// locate HTML files in jarfile
+			currFileName = url.toExternalForm().concat(
+					Messages.getString("Help.Dir")).concat(currFileName);
+			contentFileName = url.toExternalForm().concat(
+					Messages.getString("Help.Dir")).concat(contentFileName);
+			indexFileName = url.toExternalForm().concat(
+					Messages.getString("Help.Dir")).concat(indexFileName);
+		} else
+		{
+			// locate HTML files in local folder
+			File f = new File(".");
+			String filePath = "file:/" + f.getAbsolutePath();
+			int dotAt = filePath.lastIndexOf(".");
+			currFileName = filePath.substring(0, dotAt) + "doc/"
+					+ Messages.getString("Help.Dir") + currFileName;
+			contentFileName = filePath.substring(0, dotAt) + "doc/"
+					+ Messages.getString("Help.Dir") + contentFileName;
+			indexFileName = filePath.substring(0, dotAt) + "doc/"
+					+ Messages.getString("Help.Dir") + indexFileName;
+		}
+
+        this.currURL = currFileName;
+        this.homeURL = indexFileName;
+        this.contentsURL = contentFileName;
         showPage(currURL, false, false);
         setVisible(true);
     }
@@ -186,7 +217,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
             }
         } catch (IOException ioe)
         {
-            LoggerManager.error(Constants.GUI_LOGGER, "Can't open URL " + url + ": " + ioe);
+            LoggerManager.error(Constants.EDITOR_LOGGER, "Can't open URL " + url + ": " + ioe);
         }
     }
 
@@ -229,7 +260,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
             showPage(prevURL, false, true);
         } catch (EmptyStackException e)
         {
-            LoggerManager.warn(Constants.GUI_LOGGER, "No backward operation allowed");
+            LoggerManager.warn(Constants.EDITOR_LOGGER, "No backward operation allowed");
         }
     }
 
@@ -244,7 +275,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
             showPage(nextURL, false, true);
         } catch (EmptyStackException e)
         {
-            LoggerManager.warn(Constants.GUI_LOGGER, "No forward operation allowed");
+            LoggerManager.warn(Constants.EDITOR_LOGGER, "No forward operation allowed");
         }
     }
 

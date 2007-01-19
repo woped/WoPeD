@@ -27,12 +27,12 @@
  *  
  */
 
-package org.woped.gui.help.action;
+package org.woped.editor.help.action;
 
 import java.awt.event.ActionEvent;
 
 import org.woped.editor.action.WoPeDAction;
-import org.woped.gui.help.HelpBrowser;
+import org.woped.editor.help.HelpBrowser;
 
 @SuppressWarnings("serial")
 public class BrowserForwardAction extends WoPeDAction

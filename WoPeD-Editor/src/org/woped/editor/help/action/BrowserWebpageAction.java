@@ -20,42 +20,42 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.gui.help.action;
+/*
+ * Created on Jan 24, 2005
+ *
+ */
+package org.woped.editor.help.action;
 
 import java.awt.event.ActionEvent;
 
 import org.woped.editor.action.WoPeDAction;
-import org.woped.gui.help.HelpBrowser;
+import org.woped.editor.help.HelpBrowser;
 
 /**
- * Created on Jan 20, 2005
- * 
  * @author Thomas Freytag
  *  
  */
 
 @SuppressWarnings("serial")
-public class BrowserBackAction extends WoPeDAction
+public class BrowserWebpageAction extends WoPeDAction
 {
-    private HelpBrowser              helpBrowser;
-
-    private static final String      PROPERTIES_PREFIX = "Action.Browser.Back";
-    private static BrowserBackAction c_instance;
-
-    public static BrowserBackAction getInstance(HelpBrowser helpBrowser)
+    private static final String         PROPERTIES_PREFIX = "Action.Browser.WWW";
+    private static BrowserWebpageAction c_instance;
+ 
+    public static BrowserWebpageAction getInstance(HelpBrowser helpBrowser)
     {
-        if (c_instance == null) c_instance = new BrowserBackAction(helpBrowser);
+        if (c_instance == null) c_instance = new BrowserWebpageAction(helpBrowser);
         return c_instance;
     }
 
-    private BrowserBackAction(HelpBrowser helpBrowser)
+    private BrowserWebpageAction(HelpBrowser helpBrowser)
     {
         super(PROPERTIES_PREFIX);
-        this.helpBrowser = helpBrowser;
     }
 
     public void actionPerformed(ActionEvent arg0)
     {
-        helpBrowser.back();
+        LaunchDefaultBrowserAction lda = new LaunchDefaultBrowserAction("http://www.woped.org", null);
+        lda.displayURL();
     }
 }

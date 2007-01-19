@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.utilities.Messages;
-import org.woped.gui.help.action.LaunchDefaultBrowserAction;
+import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 
 @SuppressWarnings("serial")
 public class BugReportUI extends JDialog
@@ -103,7 +103,7 @@ public class BugReportUI extends JDialog
             c.insets = new Insets(0, 10, 10, 10);
             // TODO: move in propertie files (tfreytag)
             bugPageLabel = new JLabel(Messages.getString("BugReport.Link"));
-            bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction("http://woped.ba-karlsruhe.de/bugs", bugPageLabel));
+            bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction("BugReport.URL", bugPageLabel));
             panel.add(bugPageLabel, c);
 
             bugReportPanel = new JScrollPane(panel);

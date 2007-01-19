@@ -27,34 +27,34 @@
  *  
  */
 
-package org.woped.gui.help.action;
+package org.woped.editor.help.action;
 
 import java.awt.event.ActionEvent;
 
 import org.woped.editor.action.WoPeDAction;
-import org.woped.gui.help.HelpBrowser;
+import org.woped.editor.help.HelpBrowser;
 
 @SuppressWarnings("serial")
-public class BrowserContentsAction extends WoPeDAction
+public class BrowserHomeAction extends WoPeDAction
 {
-    private HelpBrowser                  helpBrowser;
+    private HelpBrowser              helpBrowser;
 
-    private static BrowserContentsAction c_instance;
+    private static BrowserHomeAction c_instance;
 
-    public static BrowserContentsAction getInstance(HelpBrowser helpBrowser)
+    public static BrowserHomeAction getInstance(HelpBrowser helpBrowser)
     {
-        if (c_instance == null) c_instance = new BrowserContentsAction(helpBrowser);
+        if (c_instance == null) c_instance = new BrowserHomeAction(helpBrowser);
         return c_instance;
     }
 
-    private BrowserContentsAction(HelpBrowser helpBrowser)
+    private BrowserHomeAction(HelpBrowser helpBrowser)
     {
-        super("Action.Browser.Contents");
+        super("Action.Browser.Home");
         this.helpBrowser = helpBrowser;
     }
 
     public void actionPerformed(ActionEvent arg0)
     {
-        helpBrowser.contents();
+        helpBrowser.home();
     }
 }

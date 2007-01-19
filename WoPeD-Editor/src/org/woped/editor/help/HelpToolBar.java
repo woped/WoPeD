@@ -24,7 +24,7 @@
  * Created on Jan 24, 2005
  *
  *  */
-package org.woped.gui.help;
+package org.woped.editor.help;
 
 import java.awt.Dimension;
 
@@ -34,13 +34,13 @@ import javax.swing.Box;
 import javax.swing.JToolBar;
 
 import org.woped.editor.gui.ToolBarButton;
-import org.woped.gui.help.action.BrowserBackAction;
-import org.woped.gui.help.action.BrowserCloseAction;
-import org.woped.gui.help.action.BrowserContentsAction;
-import org.woped.gui.help.action.BrowserForwardAction;
-import org.woped.gui.help.action.BrowserHomeAction;
-import org.woped.gui.help.action.BrowserRefreshAction;
-import org.woped.gui.help.action.BrowserWebpageAction;
+import org.woped.editor.help.action.BrowserBackAction;
+import org.woped.editor.help.action.BrowserCloseAction;
+import org.woped.editor.help.action.BrowserContentsAction;
+import org.woped.editor.help.action.BrowserForwardAction;
+import org.woped.editor.help.action.BrowserHomeAction;
+import org.woped.editor.help.action.BrowserRefreshAction;
+import org.woped.editor.help.action.BrowserWebpageAction;
 
 /**
  * @author Thomas Freytag

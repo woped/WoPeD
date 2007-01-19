@@ -27,7 +27,7 @@
  *	@author Thomas Freytag
  */
 
-package org.woped.gui.help;
+package org.woped.editor.help;
 
 import java.util.EmptyStackException;
 import java.util.Stack;

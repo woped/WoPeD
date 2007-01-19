@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.gui.help.action;
+package org.woped.editor.help.action;
 
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
