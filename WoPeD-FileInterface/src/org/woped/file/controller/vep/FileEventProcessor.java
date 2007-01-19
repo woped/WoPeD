@@ -300,16 +300,16 @@ public class FileEventProcessor extends AbstractEventProcessor
 
     public static boolean isFileOverride(Frame owner, String fileName)
     {
-		String textMessages[] = { 	org.woped.editor.utilities.Messages.getString("Dialog.Yes"),
-									org.woped.editor.utilities.Messages.getString("Dialog.No")
+		String textMessages[] = { 	Messages.getString("Dialog.Yes"),
+									Messages.getString("Dialog.No")
 								};
 		String[] args = {fileName};
 		
 		return JOptionPane.showOptionDialog(owner, 
-					org.woped.editor.utilities.Messages.getStringReplaced(
+					Messages.getStringReplaced(
 							"Action.Confirm.File.Overwrite.Text",
 							args),
-					org.woped.editor.utilities.Messages.getString("Action.Confirm.File.Overwrite.Title"),
+					Messages.getString("Action.Confirm.File.Overwrite.Title"),
 					JOptionPane.YES_NO_OPTION, 
 					JOptionPane.QUESTION_MESSAGE,
 					null,
