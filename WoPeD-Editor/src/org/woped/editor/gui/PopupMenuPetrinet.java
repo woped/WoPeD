@@ -31,7 +31,6 @@ import javax.swing.JPopupMenu;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.NameModel;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 
