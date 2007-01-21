@@ -27,6 +27,7 @@ package org.woped.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.beans.PropertyVetoException;
@@ -190,6 +191,18 @@ public class DefaultEditorFrame extends JInternalFrame
 		}
 	}
 	
+	
+
+	@Override
+	public void setBounds(int p_arg0, int p_arg1, int p_arg2, int p_arg3)
+	{
+		super.setBounds(p_arg0, p_arg1, p_arg2, p_arg3);
+		// editor resized -> set dirty
+		m_editor.setSaved(false);
+	}
+
+
+
 	private JPanel glass = new JPanel();
 	private Component old = null;
 	private MouseInputAdapter mouseGrabber = new MouseInputAdapter() {};
