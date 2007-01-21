@@ -31,6 +31,7 @@ import javax.swing.JPopupMenu;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
+import org.woped.core.model.petrinet.NameModel;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 
@@ -142,10 +143,12 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (obj == null 
         	|| obj instanceof GroupModel 
-        	|| obj instanceof ArcModel) {
-            
+        	|| obj instanceof ArcModel) 
+        {
+        	pack();
             super.show(graph, x, y);
         }
+    	
     }
     
     private JMenuItem getRenameMenuItem()
@@ -163,7 +166,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_removeMenuItem == null)
         {
             m_removeMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_REMOVE));
-            VisualController.getInstance().addElement(m_removeMenuItem, VisualController.ANY_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_removeMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
         }
         return m_removeMenuItem;
     }
@@ -193,7 +196,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_copyMenuItem == null)
         {
             m_copyMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_COPY));
-            VisualController.getInstance().addElement(m_copyMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ELEMENT_SELECTION, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_copyMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
         }
         return m_copyMenuItem;
     }
@@ -203,7 +206,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_cutMenuItem == null)
         {
             m_cutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_CUT));
-            VisualController.getInstance().addElement(m_cutMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ELEMENT_SELECTION, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_cutMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
         }
         return m_cutMenuItem;
     }
@@ -394,7 +397,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_addPointMenuItem == null)
         {
             m_addPointMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_POINT));
-            VisualController.getInstance().addElement(m_addPointMenuItem, VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_addPointMenuItem, VisualController.ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
         }
         return m_addPointMenuItem;
     }
@@ -404,7 +407,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         if (m_removePointMenuItem == null)
         {
             m_removePointMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_REMOVE_POINT));
-            VisualController.getInstance().addElement(m_removePointMenuItem, VisualController.ARC_POINT, VisualController.IGNORE, VisualController.IGNORE);
+            VisualController.getInstance().addElement(m_removePointMenuItem, VisualController.ARC_POINT, VisualController.ARC_SELECTION, VisualController.IGNORE);
         }
         return m_removePointMenuItem;
     }

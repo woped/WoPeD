@@ -42,6 +42,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
+import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
@@ -445,6 +446,7 @@ public class VisualController implements PropertyChangeListener,
 			boolean tokenPlaceSelected = false;
 			boolean subprocessSelected = false;
 			boolean arcSelected = false;
+			boolean nameSelection = false;
 
 			while (selectedCell instanceof GroupModel)
 			{
@@ -474,7 +476,8 @@ public class VisualController implements PropertyChangeListener,
 				{
 					triggeredTransitionSelected = true;
 				}
-			} else if (selectedCell instanceof PlaceModel)
+			} 
+			else if (selectedCell instanceof PlaceModel)
 			{
 				placeSelected = true;
 				if (((PlaceModel) selectedCell).hasTokens())
@@ -482,12 +485,16 @@ public class VisualController implements PropertyChangeListener,
 					tokenPlaceSelected = true;
 				}
 			}
-
 			else if (selectedCell instanceof TriggerModel)
 			{
 				transitionSelected = true;
 				triggeredTransitionSelected = true;
 			}
+			else if (selectedCell instanceof NameModel)
+			{
+				nameSelection = true;
+			}
+		
 
 			setStatus(NO_SELECTION, noSelection);
 			setStatus(ANY_SELECTION, !noSelection);
@@ -503,7 +510,7 @@ public class VisualController implements PropertyChangeListener,
 			setStatus(TRIGGERED_TRANSITION_SELECTION,
 					triggeredTransitionSelected);
 			setStatus(ARC_SELECTION, arcSelected);
-			setStatus(ELEMENT_SELECTION, !noSelection && !arcSelected);
+			setStatus(ELEMENT_SELECTION, !noSelection && !arcSelected && !nameSelection);
 		}
 	}
 
