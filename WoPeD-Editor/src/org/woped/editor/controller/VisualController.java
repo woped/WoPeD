@@ -31,6 +31,7 @@ import java.awt.geom.Point2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JSplitPane;
@@ -144,12 +145,10 @@ public class VisualController implements PropertyChangeListener,
 
 	private static final int MAX_ID = 36;
 
-	private Vector[] m_enable = new Vector[MAX_ID + 1];
-
-	private Vector[] m_visible = new Vector[MAX_ID + 1];
-
-	private Vector[] m_selected = new Vector[MAX_ID + 1];
-
+	private ArrayList<Vector<Object>> m_enable = new ArrayList<Vector<Object>>();
+	private ArrayList<Vector<Object>> m_visible = new ArrayList<Vector<Object>>();
+	private ArrayList<Vector<Object>> m_selected = new ArrayList<Vector<Object>>();
+	
 	private boolean[] m_status = new boolean[MAX_ID + 1];
 
 	private static VisualController instance = null;
@@ -166,9 +165,10 @@ public class VisualController implements PropertyChangeListener,
 		this.am = am;
 		for (int i = 0; i <= MAX_ID; i++)
 		{
-			m_enable[i] = new Vector();
-			m_visible[i] = new Vector();
-			m_selected[i] = new Vector();
+		    	//m_enable2.get(i) = new Vector<Object>();
+			m_enable.add(new Vector<Object>());
+			m_visible.add(new Vector<Object>());
+			m_selected.add(new Vector<Object>());
 			m_status[i] = false;
 		}
 		m_status[ALWAYS] = true;
@@ -197,21 +197,21 @@ public class VisualController implements PropertyChangeListener,
 		{
 			if (setEnabled(obj, m_status[enable]))
 			{
-				m_enable[enable].add(obj);
+				m_enable.get(enable).add(obj);
 			}
 		}
 		if (visible > IGNORE && visible <= MAX_ID)
 		{
 			if (setVisible(obj, m_status[visible]))
 			{
-				m_visible[visible].add(obj);
+				m_visible.get(visible).add(obj);
 			}
 		}
 		if (selected > IGNORE && selected <= MAX_ID)
 		{
 			if (setSelected(obj, m_status[selected]))
 			{
-				m_selected[selected].add(obj);
+				m_selected.get(selected).add(obj);
 			}
 		}
 	}
@@ -358,9 +358,9 @@ public class VisualController implements PropertyChangeListener,
 		if (m_status[attribute] != status)
 		{
 			m_status[attribute] = status;
-			setSelected(m_selected[attribute], status);
-			setVisible(m_visible[attribute], status);
-			setEnabled(m_enable[attribute], status);
+			setSelected(m_selected.get(attribute), status);
+			setVisible(m_visible.get(attribute), status);
+			setEnabled(m_enable.get(attribute), status);
 		}
 	}
 
