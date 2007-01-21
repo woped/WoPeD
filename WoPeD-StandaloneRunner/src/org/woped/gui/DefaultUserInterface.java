@@ -24,6 +24,7 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IUserInterface;
@@ -67,6 +68,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         this.menuBar = menuBar;
 
         desktop = new JDesktopPane();
+        desktop.setBackground(DefaultStaticConfiguration.DEFAULT_UI_BACKGROUND_COLOR);
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
         propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
         setIconImage(Messages.getImageIcon("Application").getImage());
