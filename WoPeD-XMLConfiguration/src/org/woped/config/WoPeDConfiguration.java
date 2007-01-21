@@ -49,7 +49,7 @@ public class WoPeDConfiguration implements IConfiguration
 
     private static XmlOptions            xmlOptions         = new XmlOptions();
 
-    private Vector                       runtimeRecentFiles = new Vector(RECENTFILES_SIZE);
+    private Vector<WoPeDRecentFile>                       runtimeRecentFiles = new Vector<WoPeDRecentFile>(RECENTFILES_SIZE);
 
     public WoPeDConfiguration()
     {
@@ -179,7 +179,7 @@ public class WoPeDConfiguration implements IConfiguration
 
             // SYSTEM
             // Recent
-            runtimeRecentFiles = new Vector();
+            runtimeRecentFiles = new Vector<WoPeDRecentFile>();
             for (int i = 0; i < getDocument().getConfiguration().getGeneral().getRecentFilesArray().length; i++)
             {
                 if (getDocument().getConfiguration().getGeneral().getRecentFilesArray()[i].getName() != null) runtimeRecentFiles.addElement(new WoPeDRecentFile(getDocument().getConfiguration()
@@ -413,7 +413,7 @@ public class WoPeDConfiguration implements IConfiguration
 
     public void removeAllRecentFiles()
     {
-        runtimeRecentFiles = new Vector(RECENTFILES_SIZE);
+        runtimeRecentFiles = new Vector<WoPeDRecentFile>(RECENTFILES_SIZE);
     }
 
     /**
