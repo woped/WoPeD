@@ -1317,12 +1317,6 @@ public class EditorVC extends JPanel implements KeyListener,
 		{
 			currentMap = (CreationMap) pasteElements.get(eleIter.next());
 
-			// Test
-			if (currentMap.getType() == PetriNetModelElement.SUBP_TYPE)
-				System.out.println("-------------Subprozess wird kopiert!");
-			if (currentMap.getSubElementContainer() != null)
-				System.out.println("-------------subElementContainer != null");
-
 			// position for element
 			currentPosition = currentMap.getPosition();
 			currentMap.setPosition(currentPosition.getX1() + deltaX,
