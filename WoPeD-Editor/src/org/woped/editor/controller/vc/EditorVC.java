@@ -91,14 +91,13 @@ import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.model.petrinet.ResourceClassModel;
-import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
@@ -214,8 +213,9 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	// for subprocess
 	AbstractElementModel m_parentElement;
-	
+
 	AbstractElementModel m_subprocessInput = null;
+
 	AbstractElementModel m_subprocessOutput = null;
 
 	// ! Store a reference to the application mediator.
@@ -259,7 +259,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		this.m_propertyChangeSupport = new PropertyChangeSupport(this);
 		this.m_propertyChangeSupport.addPropertyChangeListener(VisualController
 				.getInstance());
-		this.viewListener = new Vector<IViewListener>();
+		this.viewListener = new Vector();
 		this.id = id;
 		// Listener for the graph
 		getGraph().getSelectionModel().addGraphSelectionListener(
@@ -337,7 +337,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		this(string, clipboard, modelProcessorType, undoSupport, mediator);
 		m_parentElement = model;
-		
+
 		boolean origStatus = parentEditor.isSaved();
 
 		setParentEditor(parentEditor);
@@ -349,11 +349,12 @@ public class EditorVC extends JPanel implements KeyListener,
 		ModelElementContainer container = model.getSimpleTransContainer();
 		getModelProcessor().setElementContainer(container);
 
-		// Es wurde vor den �ffnen gepr�ft, dass genau ein Ein- und ein Ausgang
+		// Es wurde vor den �ffnen gepr�ft, dass genau ein Ein- und ein
+		// Ausgang
 		// vorhanden ist!
 
 		// Get list of input nodes
-		Set<AbstractElementModel> sources = NetAlgorithms.getDirectlyConnectedNodes(model,
+		Set sources = NetAlgorithms.getDirectlyConnectedNodes(model,
 				NetAlgorithms.connectionTypeINBOUND);
 		Iterator<AbstractElementModel> sourceKeyIterator = sources.iterator();
 		AbstractElementModel sourceModel = sourceKeyIterator.next();
@@ -372,7 +373,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		// Ausgang
 		// Get list of output nodes
-		Set<AbstractElementModel> targets = NetAlgorithms.getDirectlyConnectedNodes(model,
+		Set targets = NetAlgorithms.getDirectlyConnectedNodes(model,
 				NetAlgorithms.connectionTypeOUTBOUND);
 		Iterator<AbstractElementModel> targetKeyIterator = targets.iterator();
 		AbstractElementModel targetModel = targetKeyIterator.next();
@@ -405,32 +406,58 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 
 		// Set some default size for the subprocess window
-		setPreferredSize(new Dimension(600, 400));				
+		setPreferredSize(new Dimension(600, 400));
 		// Try to retrieve saved layout information from the Model Element
 		// container
 		// and set it for this editor window
 		EditorLayoutInfo layoutInfo = container.getEditorLayoutInfo();
 		if (layoutInfo != null)
 			setSavedLayoutInfo(layoutInfo);
-		
-		//Copy resources from parentEditor to subprocessEditor
-		Vector<ResourceModel> res = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResources();
+
+		PetriNetModelProcessor processor = (PetriNetModelProcessor) getModelProcessor();
+
+		// Counter for ID generation
+		int numPlace = getModelProcessor().getElementContainer()
+				.getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE)
+				.size();
+		int numArc = getModelProcessor().getElementContainer().getArcMap()
+				.size();
+		int numSub = getModelProcessor().getElementContainer()
+				.getElementsByType(AbstractPetriNetModelElement.SUBP_TYPE)
+				.size();
+		int numTrans = getModelProcessor().getElementContainer()
+				.getElementsByType(
+						AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).size();
+
+		processor.setArcCounter(numArc);
+		processor.setPlaceCouter(numPlace);
+		processor.setSubprocessCounter(numSub);
+		processor.setTransitionCounter(numTrans);
+
+		// Copy resources from parentEditor to subprocessEditor
+		Vector res = ((PetriNetModelProcessor) (parentEditor
+				.getModelProcessor())).getResources();
 		((PetriNetModelProcessor) (getModelProcessor())).setResources(res);
-		
-		HashMap<String, Vector<String>> mapping = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResourceMapping();
-		((PetriNetModelProcessor) (getModelProcessor())).setResourceMapping(mapping);
-		
-		Vector<ResourceClassModel> units = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getOrganizationUnits();
-		((PetriNetModelProcessor) (getModelProcessor())).setOrganizationUnits(units);
-		
-		Vector<ResourceClassModel> roles = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getRoles();
+
+		HashMap mapping = ((PetriNetModelProcessor) (parentEditor
+				.getModelProcessor())).getResourceMapping();
+		((PetriNetModelProcessor) (getModelProcessor()))
+				.setResourceMapping(mapping);
+
+		Vector units = ((PetriNetModelProcessor) (parentEditor
+				.getModelProcessor())).getOrganizationUnits();
+		((PetriNetModelProcessor) (getModelProcessor()))
+				.setOrganizationUnits(units);
+
+		Vector roles = ((PetriNetModelProcessor) (parentEditor
+				.getModelProcessor())).getRoles();
 		((PetriNetModelProcessor) (getModelProcessor())).setRoles(roles);
-		
+
 		// Restore original "edited" status of parent editor
-		// because creation of source and target places should not 
+		// because creation of source and target places should not
 		// influence the parent model
 		parentEditor.setSaved(origStatus);
-				
+
 	}
 
 	// IS NOT WORKING YET
@@ -636,10 +663,16 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		if (map.isValid())
 		{
-			// Create Element, this will assign a new id if none has been defined
-			// This id will be unique even across sub-process borders by prepending the
-			// id of the sub-process
-			AbstractElementModel element = getModelProcessor().createElement(map);
+			// Create Element
+			AbstractElementModel element;
+			if (isSubprocessEditor())
+			{
+				element = getModelProcessor().createElement(map,
+						m_parentElement.getId() + "_");
+			} else
+			{
+				element = getModelProcessor().createElement(map, "");
+			}
 
 			// ensure that There is an Position
 			if (map.getPosition() != null)
@@ -864,8 +897,20 @@ public class EditorVC extends JPanel implements KeyListener,
 	 */
 	public void deleteCells(Object[] toDelete, boolean withGraph)
 	{
-		Vector<Object> result = new Vector<Object>();
+		//A single NameModel can't be deleted
+		if (toDelete.length == 1)
+		{
+			if (toDelete[0] instanceof GroupModel)
+			{
 
+			} else
+			{
+				if (toDelete[0] instanceof NameModel)
+					return;
+			}
+		}
+
+		Vector<Object> result = new Vector<Object>();
 		for (int i = 0; i < toDelete.length; i++)
 		{
 
@@ -1152,9 +1197,8 @@ public class EditorVC extends JPanel implements KeyListener,
 				// copy the element
 				m_clipboard.putElement(tempElement);
 				/*
-				Iterator arcIter = getModelProcessor().getElementContainer()
-						.getOutgoingArcs(tempElement.getId()).keySet()
-						.iterator();
+				 * Iterator arcIter = getModelProcessor().getElementContainer()
+				 * .getOutgoingArcs(tempElement.getId()).keySet() .iterator();
 				 * copy all the elements arcs TODO: Release 0.9.0 "implicite arc
 				 * copy" while (arcIter.hasNext()) { tempArc =
 				 * getPetriNet().getElementContainer().getArcById(arcIter.next());
@@ -1262,16 +1306,23 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		/* insert elements */
 		CreationMap currentMap, currentArcMap;
-		HashMap<String, Object> correctedSourceId = new HashMap<String, Object>();
-		HashMap<String, Object> correctedTargetId = new HashMap<String, Object>();
+		HashMap correctedSourceId = new HashMap();
+		HashMap correctedTargetId = new HashMap();
 		IntPair currentPosition;
 		AbstractElementModel tempElement;
 		String oldElementId;
-		Vector<Object> selectElements = new Vector<Object>();
+		Vector selectElements = new Vector();
 		Iterator eleIter = pasteElements.keySet().iterator();
 		while (eleIter.hasNext())
 		{
 			currentMap = (CreationMap) pasteElements.get(eleIter.next());
+
+			// Test
+			if (currentMap.getType() == PetriNetModelElement.SUBP_TYPE)
+				System.out.println("-------------Subprozess wird kopiert!");
+			if (currentMap.getSubElementContainer() != null)
+				System.out.println("-------------subElementContainer != null");
+
 			// position for element
 			currentPosition = currentMap.getPosition();
 			currentMap.setPosition(currentPosition.getX1() + deltaX,
@@ -1382,8 +1433,8 @@ public class EditorVC extends JPanel implements KeyListener,
 		move(toMove, dx, dy, null, false);
 	}
 
-	private void move(Object toMove[], int dx, int dy, HashMap<GraphCell, AttributeMap> changes,
-			boolean isrecursiv)
+	private void move(Object toMove[], int dx, int dy,
+			HashMap<GraphCell, AttributeMap> changes, boolean isrecursiv)
 	{
 		if (changes == null)
 		{
@@ -1670,14 +1721,13 @@ public class EditorVC extends JPanel implements KeyListener,
 	 */
 	public void graphChanged(GraphModelEvent e)
 	{
-		if(isSubprocessEditor())
-        {
-        	getParentEditor().setSaved(false);
-        }
-        else
-        {
-            setSaved(false);
-        }
+		if (isSubprocessEditor())
+		{
+			getParentEditor().setSaved(false);
+		} else
+		{
+			setSaved(false);
+		}
 	}
 
 	/**
@@ -1938,14 +1988,14 @@ public class EditorVC extends JPanel implements KeyListener,
 		JInternalFrame frame = (JInternalFrame) getContainer();
 		if (frame != null)
 			frame.setTitle(name);
-		
+
 		// notify the editor aware vc
 		Iterator editorIter = m_centralMediator.getEditorAwareVCs().iterator();
 		while (editorIter.hasNext())
 		{
 			((IEditorAware) editorIter.next()).renameEditor(this);
 		}
-		
+
 	}
 
 	/**
@@ -2123,7 +2173,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	public boolean isSubprocessEditor()
 	{
-		if(getParentEditor() != null)
+		if (getParentEditor() != null)
 		{
 			return true;
 		}
@@ -2156,8 +2206,9 @@ public class EditorVC extends JPanel implements KeyListener,
 			{
 				int divLoc = layoutInfo.getTreeViewWidth();
 				m_mainSplitPane.setDividerLocation(divLoc);
-				if (divLoc<=1)
-					m_mainSplitPane.setLastDividerLocation(EditorVC.m_splitPosition);
+				if (divLoc <= 1)
+					m_mainSplitPane
+							.setLastDividerLocation(EditorVC.m_splitPosition);
 			}
 			// Size
 			setPreferredSize(layoutInfo.getSavedSize());
@@ -2202,29 +2253,32 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 	}
 
-	public IEditor getParentEditor() {
+	public IEditor getParentEditor()
+	{
 		return m_parentEditor;
 	}
 
-	public void setParentEditor(IEditor editor) {
+	public void setParentEditor(IEditor editor)
+	{
 		m_parentEditor = editor;
 	};
 
-	//! Open a sub-process for the specified sub process model
-	//! and enable the token game for it
-	//! The source of the sub-process will receive a virtual token for the game
-	//! @param subProcess specifies the sub-process to be opened
+	// ! Open a sub-process for the specified sub process model
+	// ! and enable the token game for it
+	// ! The source of the sub-process will receive a virtual token for the game
+	// ! @param subProcess specifies the sub-process to be opened
 	public void openTokenGameSubProcess(SubProcessModel subProcess)
 	{
-		EditorVC newEditorWindow = (EditorVC)m_centralMediator.createSubprocessEditor(getModelProcessor().getProcessorType(),
-				true, this, subProcess);
+		EditorVC newEditorWindow = (EditorVC) m_centralMediator
+				.createSubprocessEditor(getModelProcessor().getProcessorType(),
+						true, this, subProcess);
 		newEditorWindow.getModelProcessor().getElementContainer();
 		StructuralAnalysis analysis = new StructuralAnalysis(newEditorWindow);
-		if (analysis.getNumSourcePlaces()==1)
+		if (analysis.getNumSourcePlaces() == 1)
 		{
 			// Hand an initial token to the sub-process for the token game
 			Iterator i = analysis.getSourcePlacesIterator();
-			((PlaceModel)i.next()).receiveToken();
+			((PlaceModel) i.next()).receiveToken();
 		}
 		// Enable token game mode
 		newEditorWindow.toggleTokenGame();
