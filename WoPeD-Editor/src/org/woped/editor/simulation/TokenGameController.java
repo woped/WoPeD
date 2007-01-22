@@ -246,17 +246,8 @@ public class TokenGameController
         		PlaceModel currentSink = i.next();
         		currentSink.setActivated(currentSink.getVirtualTokenCount()>0);
         	}        	
-        }
-        
-        
-        // updateUI() may never be called from the main thread but must be added
-        // to the event queue. Otherwise, multithreading problems result
-        // (The event dispatcher will try to repaint the model while parts of the model are uninitialized)
-        EventQueue.invokeLater( new Runnable()
-        {
-        public void run() {
-            getGraph().updateUI();
-        }} );
+        }              
+        getGraph().updateUI();
 
         LoggerManager.debug(Constants.EDITOR_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
     }
