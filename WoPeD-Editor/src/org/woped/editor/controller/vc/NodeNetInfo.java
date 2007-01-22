@@ -103,7 +103,8 @@ public class NodeNetInfo extends NetInfo {
 					isFirst = false;
 				else
 					result.append(", ");
-				result.append(currentNode.getId());
+				String currentNodeName = currentNode.getNameValue();
+				result.append((currentNodeName!=null)?currentNodeName:currentNode.getId());
 			}			
 		}
 		if (result.length() > 0)
@@ -116,18 +117,12 @@ public class NodeNetInfo extends NetInfo {
 	{
 	    String predecessors = getConnectedNodesString(node, NetAlgorithms.connectionTypeINBOUND, true);
        	    String successors = getConnectedNodesString(node, NetAlgorithms.connectionTypeOUTBOUND, true);
-            String nodeId = Messages.getString("TreeView.Element.Node.ID");
             String nodeOwnerString = Messages.getString("TreeView.Element.Owner");
-            String nodeNameString = Messages.getString("TreeView.Element.Name");
         	
-            String result = nodeId + ": " + ((nodeOwner != null) ? predecessors : "") 
-        		+ node.getId() + ((nodeOwner != null) ? successors : "");
-        	
-            // Specify name only if it exists
-            if (node.getNameValue() != null) {
-        	result += ", " + nodeNameString + ": " + node.getNameValue();
-            }
-        	
+            String nameValue = node.getNameValue();
+            String result = ((nodeOwner != null) ? predecessors : "") 
+        		+ ((nameValue!=null)?nameValue:node.getId()) + ((nodeOwner != null) ? successors : "");
+        	        	
             if (nodeOwner != null) {
         	result += ", " + nodeOwnerString + ": (" + getNodeString(nodeOwner, null) + ")"; 
             }
