@@ -22,30 +22,25 @@
  */
 package org.woped.config.gui;
 
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
-import org.woped.editor.help.HelpBrowser;
-import org.woped.editor.utilities.Messages;
+ import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -64,7 +59,7 @@ public class ConfToolsPanel extends AbstractConfPanel
     private JCheckBox  woflanCheckBox  = null;
     private JTextField woflanTextField = null;
     private JButton    woflanBrowse    = null;
-    private JButton    woflanHelp	   = null;
+//    private JButton    woflanHelp	   = null;
 
     /**
      * Constructor for ConfToolsPanel.
@@ -172,10 +167,10 @@ public class ConfToolsPanel extends AbstractConfPanel
             c.gridy = 0;
             woflanPanel.add(getWoflanCheckBox(), c);
             
-            c.weightx = 1; 
+ /*           c.weightx = 1; 
             c.gridx = 2; 
             c.gridy = 0;
-            woflanPanel.add(getGetWoflanHelp(), c);
+            woflanPanel.add(getGetWoflanHelp(), c);*/
 
             c.weightx = 1;
             c.gridx = 0;
@@ -254,7 +249,7 @@ public class ConfToolsPanel extends AbstractConfPanel
         return woflanBrowse;
     }
 
-    private JButton getGetWoflanHelp()
+ /*   private JButton getGetWoflanHelp()
     {
         if (woflanHelp == null)
         {
@@ -288,9 +283,9 @@ public class ConfToolsPanel extends AbstractConfPanel
 
                 public void mouseReleased(MouseEvent arg0)
                 {
-                }
+                } 
             });
         }
         return woflanHelp;
-    }
+    }*/
 }
