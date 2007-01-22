@@ -1523,43 +1523,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
 	}
-
-	/**
-	 * Copies a image of the current to the SystemClipboard TODO: move to Utils?
-	 * makeScreenshot(JGraph graph)
-	 */
-	public void makeScreenshot()
-	{
-		getGraph().clearSelection();
-		Object[] cells = getGraph().getRoots();
-		if (cells.length > 0)
-		{
-			Rectangle2D bounds = getGraph().getCellBounds(cells);
-
-			getGraph().toScreen(bounds);
-			// Create a Buffered Image
-			Dimension d = bounds.getBounds().getSize();
-			BufferedImage img = new BufferedImage(d.width + 10, d.height + 10,
-					BufferedImage.TYPE_INT_RGB);
-			Graphics2D graphics = img.createGraphics();
-			graphics.translate(-bounds.getX() + 10, -bounds.getY() + 10);
-			getGraph().paint(graphics);
-
-			try
-			{
-				ImageSelection myImageSelection = new ImageSelection(img);
-				Toolkit.getDefaultToolkit().getSystemClipboard().setContents(
-						myImageSelection, this);
-				LoggerManager.debug(Constants.EDITOR_LOGGER,
-						"Copied Net to Clipboard.");
-
-			} catch (Exception e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-
+	
 	/**
 	 * Zooms the net. <br>
 	 * The factor should be between <code>MIN_SCALE</code> and
