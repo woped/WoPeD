@@ -68,7 +68,8 @@ public class CreationMap extends HashMap<String, Object>
     public static final String TRANSITION_TIME		 = "TRANSITION_TIME";
     public static final String TRANSITION_TIMEUNIT	 = "TRANSITION_TIMEUNIT";
     public static final String UPPER_ELEMENT         = "UPPER_ELEMENT";
-
+    public static final String SUBELEMENT_CONTAINER  = "SUBELEMENT_CONTAINER";
+    
     public static CreationMap createMap()
     {
         return new CreationMap();
@@ -546,5 +547,19 @@ public class CreationMap extends HashMap<String, Object>
 	     {
 	        return null;
 	     }
+	}
+	
+	public void setSubElementContainer(ModelElementContainer container)
+	{
+		put(SUBELEMENT_CONTAINER, container);
+	}
+	
+	public ModelElementContainer getSubElementContainer()
+	{
+		if(containsKey(SUBELEMENT_CONTAINER))
+		{
+			return (ModelElementContainer) get(SUBELEMENT_CONTAINER);
+		}
+		return null;
 	}
 }
