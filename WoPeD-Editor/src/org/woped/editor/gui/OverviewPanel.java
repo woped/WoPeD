@@ -174,7 +174,7 @@ public class OverviewPanel extends JPanel
 
         Dimension d = v.getViewport().getView().getSize();
         d.setSize(d.width * 1 / v.zoomScale, d.height * 1 / v.zoomScale);
-        Dimension s = getSize();
+        Dimension s = this.getParent().getSize();
         double sx = s.getWidth() / d.getWidth();
         double sy = s.getHeight() / d.getHeight();
         graphWindowToPannerScale = Math.min(sx, sy);
@@ -182,7 +182,7 @@ public class OverviewPanel extends JPanel
         v.synchViewportWithPanner();
         repaint();
     }
-
+    
     public void componentShown(ComponentEvent e)
     {
         componentResized(e);
