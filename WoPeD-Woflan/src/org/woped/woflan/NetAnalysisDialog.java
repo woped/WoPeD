@@ -33,7 +33,7 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 			File temporaryFile, IEditor editor, AbstractApplicationMediator mediator)
 	{	
 		// Ignore the dialog owner and set our own instead to be able to change the dialog icon
-		super(/*owner*/new JFrame(), Messages.getString("Analysis.Dialog.Title"), true);
+		super(owner, Messages.getString("Analysis.Dialog.Title"), true);
 		
 		// Remember a reference to our model
 		// We need it to deal with selections
@@ -47,9 +47,6 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		setSize(640,480);
 		// Center the window on the desktop
 		setLocationRelativeTo(null);
-		
-		// Set the icon of this dialog by specifying it as the icon of the parent frame
-		((java.awt.Frame)getOwner()).setIconImage(Messages.getImageIcon("Analysis.Dialog").getImage());
 		
 		getContentPane().setLayout(new GridLayout(1,1));
 		// Add tree control to display the output of our WOFLAN library
