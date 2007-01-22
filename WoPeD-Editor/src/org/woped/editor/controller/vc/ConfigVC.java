@@ -102,8 +102,6 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
     private JButton               okButton       = null;
     private JButton               cancelButton   = null;
     private JButton               applyButton    = null;
-    private JButton               exportButton   = null;
-    private JButton               importButton   = null;
 
     public ConfigVC(boolean modal, String id)
     {
@@ -335,8 +333,6 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
             buttonPanel.setLayout(new GridLayout(1, 2));
             JPanel innerPanelLeft = new JPanel();
             innerPanelLeft.setLayout(new FlowLayout(FlowLayout.LEFT));
-            innerPanelLeft.add(getExportButton());
-            innerPanelLeft.add(getImportButton());
 
             JPanel innerPanelRight = new JPanel();
             innerPanelRight.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -400,50 +396,6 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
             });
         }
         return okButton;
-    }
-
-    private JButton getExportButton()
-    {
-        if (exportButton == null)
-        {
-            exportButton = new JButton();
-            exportButton.setText(Messages.getString("Button.Export.Title"));
-            exportButton.setMnemonic(KeyEvent.VK_E);
-            exportButton.setIcon(Messages.getImageIcon("Button.Export"));
-            exportButton.addActionListener(new ActionListener()
-            {
-                public void actionPerformed(ActionEvent arg0)
-                {
-                    if (applyConfiguration()) export();
-                }
-            });
-        }
-        // TODO: export configuration
-        exportButton.setToolTipText("development in progress");
-        exportButton.setEnabled(false);
-        return exportButton;
-    }
-
-    private JButton getImportButton()
-    {
-        if (importButton == null)
-        {
-            importButton = new JButton();
-            importButton.setText(Messages.getString("Button.Import.Title"));
-            importButton.setIcon(Messages.getImageIcon("Button.Import"));
-            importButton.setMnemonic(KeyEvent.VK_I);
-            importButton.addActionListener(new ActionListener()
-            {
-                public void actionPerformed(ActionEvent arg0)
-                {
-                    importConf();
-                }
-            });
-        }
-        // TODO: import configuration
-        importButton.setToolTipText("development in progress");
-        importButton.setEnabled(false);
-        return importButton;
     }
 
     public void addViewListener(IViewListener listener)
