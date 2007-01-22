@@ -349,6 +349,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		// Switch editor to use the model element container of the subprocess
 		ModelElementContainer container = model.getSimpleTransContainer();
 		getModelProcessor().setElementContainer(container);
+		model.getCreationMap().setSubElementContainer(container);
 
 		// Es wurde vor den �ffnen gepr�ft, dass genau ein Ein- und ein
 		// Ausgang
