@@ -23,7 +23,6 @@
 package org.woped.editor.simulation;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashSet;
