@@ -20,7 +20,10 @@ public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
 	Icon xorJoin = null;
 	Icon andSplit = null;
 	Icon andJoin = null;	
+	Icon xorSplitJoin = null;
+	Icon andSplitJoin = null;
 	Icon andJoinXorSplit = null;
+	Icon xorJoinAndSplit = null;
 	
 	public NetInfoTreeRenderer()
 	{	
@@ -31,7 +34,10 @@ public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
 	    xorJoin = Messages.getImageIcon("Popup.Add.XorJoin");
 	    andSplit = Messages.getImageIcon("Popup.Add.AndSplit");
 	    andJoin = Messages.getImageIcon("Popup.Add.AndJoin");	    
+	    xorSplitJoin = Messages.getImageIcon("Popup.Add.XorSplitJoin");
+	    andSplitJoin = Messages.getImageIcon("Popup.Add.AndSplitJoin");
 	    andJoinXorSplit = Messages.getImageIcon("Popup.Add.AndJoinXorSplit");
+	    xorJoinAndSplit = Messages.getImageIcon("Popup.Add.XorJoinAndSplit");
 	}
 	
 	public Component getTreeCellRendererComponent(
@@ -88,9 +94,16 @@ public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
 		case OperatorTransitionModel.XOR_SPLIT_TYPE:
 		    result = xorSplit;
 		    break;
+		case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
+		    result = andSplitJoin;
+		    break;
+		case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
+		    result = xorSplitJoin;
+		    break;
 		case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
 		    result = andJoinXorSplit;
-		    break;
+		    break;		
+		    
 		}
 	    }
 
