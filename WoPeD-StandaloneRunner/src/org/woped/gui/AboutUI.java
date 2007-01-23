@@ -104,7 +104,7 @@ public class AboutUI extends JDialog
     {
         this.setVisible(false);
         this.getContentPane().setLayout(new BorderLayout());
-        this.setUndecorated(true);
+        this.setUndecorated(false);
         this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
         this.pack();

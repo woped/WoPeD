@@ -63,7 +63,7 @@ public class BugReportUI extends JDialog
         this.getContentPane().add(getBugReportPanel(), BorderLayout.NORTH);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
 
-        this.setUndecorated(true);
+        this.setUndecorated(false);
         this.pack();
 
         if (getOwner() != null)
