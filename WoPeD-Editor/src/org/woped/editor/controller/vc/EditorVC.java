@@ -293,13 +293,12 @@ public class EditorVC extends JPanel implements KeyListener,
 				new Insets(0, 0, 0, 0), 0, 0));
 		// Overview Panel
 		OverviewPanel overview = new OverviewPanel(this);
-		JScrollPane sOverview = new JScrollPane(overview);
 		JPanel overviewPanel = new JPanel(new GridBagLayout());
 		overviewPanel.add(new JLabel(Messages
 				.getString("TreeView.Overview.Title")), new GridBagConstraints(
 				0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-		overviewPanel.add(sOverview, new GridBagConstraints(0, 1, 1, 1, 1.0,
+		overviewPanel.add(overview, new GridBagConstraints(0, 1, 1, 1, 1.0,
 				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 0), 0, 0));
 		// Splits
