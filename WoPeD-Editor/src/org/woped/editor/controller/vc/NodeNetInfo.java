@@ -117,14 +117,15 @@ public class NodeNetInfo extends NetInfo {
 	{
 	    String predecessors = getConnectedNodesString(node, NetAlgorithms.connectionTypeINBOUND, true);
        	    String successors = getConnectedNodesString(node, NetAlgorithms.connectionTypeOUTBOUND, true);
-            String nodeOwnerString = Messages.getString("TreeView.Element.Owner");
+//            String nodeOwnerString = Messages.getString("TreeView.Element.Owner");
         	
             String nameValue = node.getNameValue();
             String result = ((nodeOwner != null) ? predecessors : "") 
         		+ ((nameValue!=null)?nameValue:node.getId()) + ((nodeOwner != null) ? successors : "");
         	        	
             if (nodeOwner != null) {
-        	result += ", " + nodeOwnerString + ": (" + getNodeString(nodeOwner, null) + ")"; 
+//        	result += ", " + nodeOwnerString + ": (" + getNodeString(nodeOwner, null) + ")"; 
+           	result += " (in " + getNodeString(nodeOwner, null) + ")"; 
             }
             return result;
 	}
