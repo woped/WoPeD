@@ -39,8 +39,6 @@ public class TransitionModel extends PetriNetModelElement
 {
 
     private Toolspecific    toolSpecific;
-    private boolean         fireing   = false;
-    private boolean         activated = false;
     public static final int WIDTH     = 40;
     public static final int HEIGHT    = 40;
 
@@ -86,21 +84,6 @@ public class TransitionModel extends PetriNetModelElement
         return (getToolSpecific().getTransResource() != null);
     }
 
-    /**
-     * @return
-     */
-    public boolean isFireing()
-    {
-        return fireing;
-    }
-
-    /**
-     * @param b
-     */
-    public void setFireing(boolean b)
-    {
-        fireing = b;
-    }
 
     public int getDefaultWidth()
     {
@@ -110,14 +93,6 @@ public class TransitionModel extends PetriNetModelElement
     public int getDefaultHeight()
     {
         return HEIGHT;
-    }
-
-    /**
-     * @return Returns the activated.
-     */
-    public boolean isActivated()
-    {
-        return activated;
     }
 
     public CreationMap getCreationMap()
@@ -135,15 +110,6 @@ public class TransitionModel extends PetriNetModelElement
         }
 
         return map;
-    }
-
-    /**
-     * @param activated
-     *            The activated to set.
-     */
-    public void setActivated(boolean activated)
-    {
-        this.activated = activated;
     }
 
     public String getToolTipText()

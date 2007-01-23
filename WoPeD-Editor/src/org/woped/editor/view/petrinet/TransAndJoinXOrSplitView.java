@@ -23,17 +23,12 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.ImageIcon;
-
 import org.jgraph.graph.CellViewRenderer;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.DefaultStaticConfiguration;
-import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -90,69 +85,29 @@ public class TransAndJoinXOrSplitView extends TransSimpleView
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
-            boolean tmp = selected;
+            
             if (super.isOpaque())
             {
                 g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
-            try
-            {
-                setBorder(null);
-                setOpaque(false);
-                selected = false;
-                super.paint(g);
-            } finally
-            {
-                selected = tmp;
-            }
+            g.setColor(getFillColor());
+            g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
+                        
+            g2.setStroke(new BasicStroke(b));
+            g.setColor(getInnerDrawingsColor());
+            	
+            // AND JOIN Lines
+            drawOperatorArrow(g,false,true);
+            // XOR Split Lines
+            drawOperatorArrow(g,true,true);
+
             if (bordercolor != null)
             {
-                g.setColor(getFillColor());
-                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
                 g.setColor(bordercolor);
-                g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            if (selected)
-            {
-                //				g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-            }
-            // AND JOIN Lines
-            g.drawLine(d.width / 3, b, d.width / 3, d.height - b);
-            g.drawLine(b, b, d.width / 3, d.height / 2);
-            g.drawLine(d.width / 3, d.height / 2, b, d.height - b);
-            // XOR Split Lines
-            g.drawLine(d.width * 2 / 3, b, d.width * 2 / 3, d.height - b);
-            g.drawLine(d.width * 2 / 3, b, d.width - b, d.height / 2);
-            g.drawLine(d.width - b, d.height / 2, d.width * 2 / 3, d.height - b);
-
-            if (isActive() || isFireing())
-            {
-                g.setColor(Color.LIGHT_GRAY);
-                g.drawLine(d.width / 3, b, d.width / 3, d.height - b);
-                g.drawLine(d.width / 3, b, b, d.height / 2);
-                g.drawLine(b, d.height / 2, d.width / 3, d.height - b);
-                g2.setColor(Color.RED);
-                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
-            }
-            if (isActive() && !isFireing())
-            {
-                //g2.drawString("enabled", 3, 18);
-        	ImageIcon img = Messages.getImageIcon("TokenGame.Active");
-                g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
-            }
-            if (isFireing())
-            {
-                // g.setColor(Color.BLACK);
-                g2.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-                g2.drawString("choose", 3, 20);
-                g2.drawString("arc", 3, 27);
-                ;
-            }
-
+            
         }
         /**
          * @return

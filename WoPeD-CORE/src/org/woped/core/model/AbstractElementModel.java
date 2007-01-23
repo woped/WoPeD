@@ -28,6 +28,12 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	//! in the analysis dialog
 	boolean highlighted = false;	
 
+	//! An element is fireing if the mouse button is pressed
+    private boolean         fireing   = false;
+    //! An element is activated if it can be clicked to trigger an action
+    //! during simulation
+    private boolean         activated = false;
+	
 	//! The following methods and members are used for
 	//! structural analysis and not needed for anything else
 	int m_marking = -1;
@@ -315,4 +321,37 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	public void setHighlighted(boolean highlighted) {
 		this.highlighted = highlighted;
 	}
+	
+    /**
+     * @return
+     */
+    public boolean isFireing()
+    {
+        return fireing;
+    }
+
+    /**
+     * @param b
+     */
+    public void setFireing(boolean b)
+    {
+        fireing = b;
+    }
+
+    /**
+     * @return Returns the activated.
+     */
+    public boolean isActivated()
+    {
+        return activated;
+    }
+
+    /**
+     * @param activated
+     *            The activated to set.
+     */
+    public void setActivated(boolean activated)
+    {
+        this.activated = activated;
+    }
 }

@@ -90,65 +90,30 @@ public class TransAndJoinView extends TransSimpleView
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
-            boolean tmp = selected;
             if (super.isOpaque())
             {
                 g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
             }
-            try
-            {
-                setBorder(null);
-                setOpaque(false);
-                selected = false;
-                super.paint(g);
-            } finally
-            {
-                selected = tmp;
-            }
             if (bordercolor != null)
             {
-            g.setColor(getFillColor());
-        	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
+            	g.setColor(getFillColor());
+            	g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
                 g.setColor(bordercolor);
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            if (selected)
-            {
-                //				g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-            }
+            
+            g.setColor(this.getInnerDrawingsColor());
             // AND JOIN Lines
-            g.drawLine(d.width / 3, b, d.width / 3, d.height - b);
-            g.drawLine(b, b, d.width / 3, d.height / 2);
-            g.drawLine(d.width / 3, d.height / 2, b, d.height - b);
+            this.drawOperatorArrow(g, false, true);
+            
             if (isActive() || isFireing())
             {
-                g.setColor(Color.LIGHT_GRAY);
-                g.drawLine(d.width / 3, b, d.width / 3, d.height - b);
-                g.drawLine(b, b, d.width / 3, d.height / 2);
-                g.drawLine(d.width / 3, d.height / 2, b, d.height - b);
-                g2.setColor(Color.RED);
-                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
-            }
-            if (isActive() && !isFireing())
-            {
-                //g2.drawString("enabled", 3, 18);
-        	ImageIcon img = Messages.getImageIcon("TokenGame.Active");
+            	ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
 
             }
-            if (isFireing())
-            {
-                // g.setColor(Color.BLACK);
-                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_fire.gif"));
-                g2.drawImage(img.getImage(), 5, 22, 18, 11, img.getImageObserver());
-                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-                g2.drawString("fire", 5, 18);
-            }
-
         }
 
         /**

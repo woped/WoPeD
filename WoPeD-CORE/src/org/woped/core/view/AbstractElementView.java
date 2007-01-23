@@ -23,6 +23,8 @@
 package org.woped.core.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphCellEditor;
@@ -65,6 +67,17 @@ public abstract class AbstractElementView extends VertexView
         return cellEditor;
     }
     
+    public boolean isActivated()
+    {
+        return ((AbstractElementModel) getCell()).isActivated();
+    }
+
+    public boolean isFireing()
+    {
+        return ((AbstractElementModel) getCell()).isFireing();
+    }
+
+    
 	protected abstract class AbstractElementRenderer extends VertexRenderer
 	{
 		private boolean readOnly;
@@ -92,5 +105,79 @@ public abstract class AbstractElementView extends VertexView
 			}
 			return result;
 		}
+		
+		//! Get the color to be used for inner drawings
+		//! Note that this color is context-sensitive
+		//! and will change if an element is active
+		//! @return Color to be used for inner drawings
+		protected Color getInnerDrawingsColor()
+		{
+            // When active during the token game,
+            // draw the inner symbols in gray
+            if (isActive() || isFireing())
+            	return (Color.LIGHT_GRAY);
+            else
+            {
+            	if (bordercolor==null)
+            		return Color.BLACK;
+            	else
+            		return bordercolor;
+            }
+		}
+		
+        /**
+         * @return
+         */
+        public boolean isActive()
+        {
+            return AbstractElementView.this.isActivated();
+        }
+
+        /**
+         * @return
+         */
+        public boolean isFireing()
+        {
+            return AbstractElementView.this.isFireing();
+        }
+        
+        //! Draw one of the famous operator arrows
+        //! @param g specifies the graphical context to be used for drawing
+        //! @param positionRightSide if true, draw the arrow on the right third of the operator element
+        //! @param directionRightSide if true, draw the arrow such that it points to the right side of the element
+        protected void drawOperatorArrow(Graphics g,
+        		boolean positionRightSide, boolean directionRightSide)
+        {
+        	Dimension d = getSize();
+        	int b = borderWidth;
+        	
+        	int tipy = 0;
+        	int tipx = 0;
+        	int basex = 0;
+        	int linex = 0;
+        	
+        	// To be positioned on the right side ?
+        	if (positionRightSide)
+        	{
+            	// Determine direction of the arrow
+            	tipy = d.height / 2;
+            	tipx = directionRightSide?(d.width - b):(2*d.width / 3);
+            	basex = directionRightSide?(2*d.width / 3):(d.width - b);
+            	linex = 2*d.width / 3;
+        	}
+        	else
+        	{
+            	// Determine direction of the arrow
+            	tipy = d.height / 2;
+            	tipx = directionRightSide?(d.width / 3):b;
+            	basex = directionRightSide?b:(d.width / 3);
+            	linex = d.width / 3;
+        	}
+        	
+            g.drawLine(linex, b, linex, d.height - b);
+            g.drawLine(basex, b, tipx , tipy);
+            g.drawLine(basex, d.height - b, tipx, tipy);
+        }
+		
 	}    
 }

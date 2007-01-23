@@ -28,10 +28,13 @@ import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
@@ -39,6 +42,7 @@ import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.ArcModel;
+import org.woped.editor.utilities.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -158,26 +162,22 @@ public class ArcView extends EdgeView
                     if (view.lineShape != null) g2.draw(view.lineShape);
                     if (view.endShape != null) g2.draw(view.endShape);
                 }
-                /*if (graph.getEditingCell() != view.getCell())
-                {
-                    Object label = graph.convertValueToString(view);
-                    if (label != null)
-                    {
-                        g2.setStroke(new BasicStroke(1));
-                        g.setFont(getFont());
-                        paintLabel(g, label.toString(), getLocation(), true);
-                    }
-                }*/
                 if (isActivated())
                 {
-                    g2.setColor(Color.RED);
-                    g.setColor(Color.RED);
-                    g.setFont(new Font("Verdana", Font.ITALIC, 10));
+                    g2.setColor(Color.GREEN);
+                    g.setColor(Color.GREEN);
                     g2.setStroke(new BasicStroke(1));
-                    g2.drawString("FIRE", 0, 0);
                     if (view.beginShape != null) g2.draw(view.beginShape);
                     if (view.lineShape != null) g2.draw(view.lineShape);
                     if (view.endShape != null) g2.draw(view.endShape);
+                    
+                    // Draw 'play' button to indicate that the
+                    // arc is activated and can be clicked
+                    ImageIcon img = Messages.getImageIcon("TokenGame.Active");
+                    Rectangle labelPos = this.getBounds();
+                    int buttonX  = (int)(labelPos.x+labelPos.width/2);
+                    int buttonY  = (int)(labelPos.y+labelPos.height/2);
+                    g2.drawImage(img.getImage(), buttonX, buttonY , 16, 16, img.getImageObserver());
 
                 }
             }

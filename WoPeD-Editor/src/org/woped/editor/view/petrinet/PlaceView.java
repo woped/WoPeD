@@ -89,11 +89,6 @@ public class PlaceView extends AbstractElementView
 		return ((PlaceModel) getCell()).getVirtualTokenCount();
 	}
 
-    public boolean isActivated()
-    {
-        return ((PlaceModel) getCell()).isActivated();
-    }
-
 	public Point2D getPerimeterPoint(EdgeView edge, Point2D source, Point2D p)
 	{
 
@@ -155,21 +150,10 @@ public class PlaceView extends AbstractElementView
 			int b = borderWidth;
 			Graphics2D g2 = (Graphics2D) g;
 			Dimension d = getSize();
-			boolean tmp = selected;
 			if (super.isOpaque())
 			{
 				g.setColor(getFillColor());
 				g.fillOval(b - 1, b - 1, d.width - b, d.height - b);
-			}
-			try
-			{
-				setBorder(null);
-				setOpaque(false);
-				selected = false;
-				super.paint(g);
-			} finally
-			{
-				selected = tmp;
 			}
 			if (bordercolor != null)
 			{
@@ -178,15 +162,6 @@ public class PlaceView extends AbstractElementView
 				g.setColor(bordercolor);
 				g2.setStroke(new BasicStroke(b));
 				g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
-			}
-			if (selected)
-			{
-				g.setColor(getFillColor());
-				g.fillOval(b, b, d.width - b - 1, d.height - b - 1);
-				g.setColor(ConfigurationManager.getConfiguration()
-						.getSelectionColor());
-				g.drawOval(b, b, d.width - b - 1, d.height - b - 1);
-
 			}
 			int relevantTokens = (PlaceView.this.getVirtualTokenCount() == PlaceView.this
 					.getTokenCount()) ? PlaceView.this.getTokenCount()
@@ -253,11 +228,6 @@ public class PlaceView extends AbstractElementView
 		{
 			return PlaceView.this.hasTokens();
 		}
-		
-        public boolean isActive()
-        {
-            return PlaceView.this.isActivated();
-        }
-		
+				
 	}
 }

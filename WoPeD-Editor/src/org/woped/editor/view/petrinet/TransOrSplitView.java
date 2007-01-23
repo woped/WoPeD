@@ -87,21 +87,10 @@ public class TransOrSplitView extends TransSimpleView
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
-            boolean tmp = selected;
             if (super.isOpaque())
             {
                 g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
-            }
-            try
-            {
-                setBorder(null);
-                setOpaque(false);
-                selected = false;
-                super.paint(g);
-            } finally
-            {
-                selected = tmp;
             }
             if (bordercolor != null)
             {
@@ -112,36 +101,9 @@ public class TransOrSplitView extends TransSimpleView
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            if (selected)
-            {
-                //				g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-            }
+            g.setColor(this.getInnerDrawingsColor());
             // OR Split Lines
-            g.drawLine(d.width * 2 / 3, b, d.width * 2 / 3, d.height - b);
-            g.drawLine(d.width * 2 / 3, d.height / 3, d.width - b, d.height / 3);
-            g.drawLine(d.width * 2 / 3, d.height * 2 / 3, d.width - b, d.height * 2 / 3);
-            if (isFireing() || isActivated())
-            {
-                g.setColor(Color.LIGHT_GRAY);
-                g.drawLine(d.width * 2 / 3, b, d.width * 2 / 3, d.height - b);
-                g.drawLine(d.width * 2 / 3, d.height / 3, d.width - b, d.height / 3);
-                g.drawLine(d.width * 2 / 3, d.height * 2 / 3, d.width - b, d.height * 2 / 3);
-                g2.setColor(Color.RED);
-                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
-            }
-            if (isFireing() && !isActivated())
-            {
-                g2.drawString("choose", 3, 20);
-                g2.drawString("arc", 3, 27);
-            }
-            if (isActivated())
-            {
-                g2.drawString("click to", 3, 20);
-                g2.drawString("finish", 3, 27);
-            }
-
+            this.drawOperatorArrow(g, true, true);
         }
 
         /**

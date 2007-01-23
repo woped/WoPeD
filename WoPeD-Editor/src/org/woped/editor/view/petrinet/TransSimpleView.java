@@ -27,13 +27,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
 
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
-import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.view.AbstractElementView;
 import org.woped.editor.utilities.Messages;
 
@@ -70,16 +70,6 @@ public class TransSimpleView extends AbstractElementView
 
     }
 
-    public boolean isActivated()
-    {
-        return ((TransitionModel) getCell()).isActivated();
-    }
-
-    public boolean isFireing()
-    {
-        return ((TransitionModel) getCell()).isFireing();
-    }
-
     /**
      * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
      * 
@@ -96,26 +86,14 @@ public class TransSimpleView extends AbstractElementView
 
         public void paint(Graphics g)
         {
-
             /* Trigger hinzufügen */
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
-            boolean tmp = selected;
             if (super.isOpaque())
             {
                 g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
-            }
-            try
-            {
-                setBorder(null);
-                setOpaque(false);
-                selected = false;
-                super.paint(g);
-            } finally
-            {
-                selected = tmp;
             }
             if (bordercolor != null)
             {
@@ -125,51 +103,12 @@ public class TransSimpleView extends AbstractElementView
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            if (selected)
-            {
-                //				g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-            }
             if (isActive() || isFireing())
             {
-                g2.setColor(Color.RED);
-                g2.setFont(DefaultStaticConfiguration.DEFAULT_TOKENGAME_FONT);
-            }
-            if (isActive() && !isFireing())
-            {
-                //g2.drawString("enabled", 3, 18);
                 ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
-
             }
-            if (isFireing())
-            {
-                // g.setColor(Color.BLACK);
-                ImageIcon img = new ImageIcon(getClass().getResource("/org/woped/editor/gui/images/tokenGame_fire.gif"));
-                g2.drawImage(img.getImage(), 5, 22, 18, 11, img.getImageObserver());
-                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-                g2.drawString("fire", 5, 18);
-            }
-        }
-        
-
-        /**
-         * @return
-         */
-        public boolean isActive()
-        {
-            return TransSimpleView.this.isActivated();
-        }
-
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return TransSimpleView.this.isFireing();
-        }
-
+        }        
     }
 
     /**
