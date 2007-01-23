@@ -7,7 +7,6 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.InnerElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.editor.utilities.Messages;
 
 //! This class implements a tree node representing
 //! one single node of a petri-net that is currently begin
