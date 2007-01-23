@@ -150,13 +150,13 @@ public class SplashWindow extends JWindow
             gridBagConstraints2.gridx = 0;
             gridBagConstraints2.gridy = 0;
             gridBagConstraints2.anchor = GridBagConstraints.SOUTHWEST;
-            gridBagConstraints2.insets = new Insets(0, 1, 0, 0);
+            gridBagConstraints2.insets = new Insets(0, 6, 4, 0);
 
             GridBagConstraints gridBagConstraints3 = new GridBagConstraints();
             gridBagConstraints3.gridx = 1;
             gridBagConstraints3.gridy = 0;
             gridBagConstraints3.anchor = GridBagConstraints.SOUTHEAST;
-            gridBagConstraints3.insets = new Insets(0, 0, 0, 1);
+            gridBagConstraints3.insets = new Insets(0, 0, 4, 6);
             jPanel.add(getCopyrightLabel(), gridBagConstraints3);
             jPanel.add(getVersionLabel(), gridBagConstraints2);
             jPanel.add(getLogoLabel(), gridBagConstraints1);

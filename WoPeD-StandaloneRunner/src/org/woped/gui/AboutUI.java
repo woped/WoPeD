@@ -137,7 +137,7 @@ public class AboutUI extends JDialog
             c.gridy = 0;
             c.anchor = GridBagConstraints.CENTER;
             c.insets = new Insets(10, 10, 10, 10);
-            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Splash.Image"))));
+            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("About.Image"))));
             panel.add(logoLabel, c);
 
             c.gridy = 1;
