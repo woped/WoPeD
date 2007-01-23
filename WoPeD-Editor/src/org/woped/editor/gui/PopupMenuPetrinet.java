@@ -51,8 +51,6 @@ public class PopupMenuPetrinet extends JPopupMenu
     private JMenuItem                m_openSubprocessMenuItem  = null;
     private JMenuItem                m_propertiesMenuItem      = null;
 
-    private JMenuItem                m_routeMenuItem           = null;
-    private JMenuItem                m_unrouteMenuItem         = null;
     private JMenuItem                m_addPointMenuItem        = null;
     private JMenuItem                m_removePointMenuItem     = null;
 
@@ -74,7 +72,7 @@ public class PopupMenuPetrinet extends JPopupMenu
     private JMenuItem                m_addTransitionMenuItem   = null;
     private JMenuItem                m_addAndSplitMenuItem     = null;
     private JMenuItem                m_addAndJoinMenuItem      = null;
-    private JMenuItem		     m_addAndSplitJoinMenuItem = null;
+    private JMenuItem		     	 m_addAndSplitJoinMenuItem = null;
     private JMenuItem                m_addXorSplitMenuItem     = null;
     private JMenuItem                m_addXorJoinMenuItem      = null;
     private JMenuItem                m_addXorSplitJoinMenuItem = null;
@@ -86,6 +84,8 @@ public class PopupMenuPetrinet extends JPopupMenu
     private JMenu                    m_netMenu                 = null;
     private JMenuItem                m_routeAllItem            = null;
     private JMenuItem                m_routeNoneItem           = null;
+    private JMenuItem                m_routeMenuItem           = null;
+    private JMenuItem                m_unrouteMenuItem         = null;
     */
 
     private PopupMenuPetrinet()
@@ -116,11 +116,12 @@ public class PopupMenuPetrinet extends JPopupMenu
         add(getResourceTriggerMenuItem());
         add(getTimeTriggerMenuItem());
         add(getRemoveTriggerMenuItem());
-        add(getRouteMenuItem());
-        add(getUnrouteMenuItem());
+//        add(getRouteMenuItem());
+//        add(getUnrouteMenuItem());
         add(getAddPointMenuItem());
         add(getRemovePointMenuItem());
         add(getOpenSubprocessMenuItem());
+        pack();
     }
 
     /**
@@ -170,27 +171,7 @@ public class PopupMenuPetrinet extends JPopupMenu
         return m_removeMenuItem;
     }
 
-    private JMenuItem getRouteMenuItem()
-    {
-        if (m_routeMenuItem == null)
-        {
-            m_routeMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ACTIVATE_ROUTING));
-            VisualController.getInstance().addElement(m_routeMenuItem, VisualController.UNROUTED_ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
-        }
-        return m_routeMenuItem;
-    }
-
-    private JMenuItem getUnrouteMenuItem()
-    {
-        if (m_unrouteMenuItem == null)
-        {
-            m_unrouteMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_DEACTIVATE_ROUTING));
-            VisualController.getInstance().addElement(m_unrouteMenuItem, VisualController.ROUTED_ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
-        }
-        return m_unrouteMenuItem;
-    }
-
-    private JMenuItem getCopyMenuItem()
+     private JMenuItem getCopyMenuItem()
     {
         if (m_copyMenuItem == null)
         {
@@ -450,6 +431,26 @@ public class PopupMenuPetrinet extends JPopupMenu
             m_routeNoneItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_DEACTIVATE_ALL_ROUTING));
         }
         return m_routeNoneItem;
+    }
+    
+    private JMenuItem getRouteMenuItem()
+    {
+        if (m_routeMenuItem == null)
+        {
+            m_routeMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ACTIVATE_ROUTING));
+            VisualController.getInstance().addElement(m_routeMenuItem, VisualController.UNROUTED_ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
+        }
+        return m_routeMenuItem;
+    }
+
+    private JMenuItem getUnrouteMenuItem()
+    {
+        if (m_unrouteMenuItem == null)
+        {
+            m_unrouteMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_DEACTIVATE_ROUTING));
+            VisualController.getInstance().addElement(m_unrouteMenuItem, VisualController.ROUTED_ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
+        }
+        return m_unrouteMenuItem;
     }
     */
 }
