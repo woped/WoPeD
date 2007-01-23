@@ -33,6 +33,9 @@
 		<mkdir dir="dist/doc/html/de" />
 		<mkdir dir="dist/doc/html/en" />
 		<mkdir dir="dist/doc/html/images" />
+		<mkdir dir="dist/doc/html/images/icons" />
+		<mkdir dir="dist/doc/html/images/icons/tango" />
+		<mkdir dir="dist/doc/html/images/elements" />
 	</target>
 
 	<target name="setversion">
@@ -72,12 +75,26 @@
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/de/*.htm" />
 		</copy>
 
-		<copy file="../WoPeD-StandaloneRunner/doc/html/woped-big.css" tofile="dist/doc/html/woped.css" />
+		<copy file="../WoPeD-StandaloneRunner/doc/html/woped.css" tofile="dist/doc/html/woped.css" />
 		
 		<copy todir="dist/doc/html/images">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.gif" />
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.jpg" />
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.png" />
+		</copy>
+		
+		<copy todir="dist/doc/html/images/elements">
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/elements/*.gif" />
+		</copy>
+		
+		<copy todir="dist/doc/html/images/icons">
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/*.gif" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/*.jpg" />
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/*.png" />
+		</copy>
+		
+		<copy todir="dist/doc/html/images/icons/tango">
+			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/tango/*.gif" />
 		</copy>
 
 		<copy todir="dist">
