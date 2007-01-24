@@ -34,7 +34,6 @@ import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.view.AbstractElementView;

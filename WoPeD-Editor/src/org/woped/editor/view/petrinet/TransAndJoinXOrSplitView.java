@@ -28,7 +28,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.woped.core.config.ConfigurationManager;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

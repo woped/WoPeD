@@ -23,17 +23,13 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.view.AbstractElementView;
 import org.woped.editor.utilities.Messages;
 

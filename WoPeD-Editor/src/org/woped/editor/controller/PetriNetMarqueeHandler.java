@@ -265,7 +265,6 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
      */
     public void mouseMoved(MouseEvent e)
     {
-        //        System.out.println("moved");
         if (e != null && getEditor().isDrawingMode())
         {
             getEditor().getGraph().setCursor(Cursors.getElementCreationCursor(getEditor().getCreateElementType()));
