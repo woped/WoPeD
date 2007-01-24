@@ -36,6 +36,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import org.jgraph.JGraph;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
@@ -107,6 +108,25 @@ public class ArcView extends EdgeView
     public boolean isActivated()
     {
         return ((ArcModel) cell).isActivated();
+    }
+
+    public boolean intersects(JGraph graph,
+            Rectangle2D rect)
+    {
+    	boolean result = super.intersects(graph, rect); 
+
+    	if ((result == false)&&isActivated())
+    	{
+    		int iconHeight = (activeIcon!=null)?activeIcon.getIconHeight():0;
+    		int iconWidth  = (activeIcon!=null)?activeIcon.getIconWidth():0;
+    		Rectangle2D labelPos = this.getBounds();
+    		
+    		double buttonX  = (int)(labelPos.getMinX()+labelPos.getHeight()/2)-(iconWidth/2);
+    		double buttonY  = (int)(labelPos.getMinY()+labelPos.getHeight()/2)-(iconHeight/2);
+    		
+    		result =  rect.intersects(buttonX, buttonY, iconWidth, iconHeight);
+    	}
+    	return result;
     }
     
     public Rectangle2D getBounds()
@@ -190,9 +210,14 @@ public class ArcView extends EdgeView
                     // Draw 'play' button to indicate that the
                     // arc is activated and can be clicked
                     Rectangle labelPos = this.getBounds();
-                    int buttonX  = (int)(labelPos.x+labelPos.width/2)-8;
-                    int buttonY  = (int)(labelPos.y+labelPos.height/2)-8;
-                    g2.drawImage(activeIcon.getImage(), buttonX, buttonY , 16, 16, activeIcon.getImageObserver());
+                    
+                	int iconHeight = (activeIcon!=null)?activeIcon.getIconHeight():0;
+                	int iconWidth  = (activeIcon!=null)?activeIcon.getIconWidth():0;
+                    
+                    int buttonX  = (int)(labelPos.x+labelPos.width/2)-(iconWidth/2);
+                    int buttonY  = (int)(labelPos.y+labelPos.height/2)-(iconHeight/2);
+                    g2.drawImage(activeIcon.getImage(), buttonX, buttonY , 
+                    		iconWidth, iconHeight, activeIcon.getImageObserver());
 
                 }
             }
