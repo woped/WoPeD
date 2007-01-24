@@ -108,6 +108,7 @@ import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorClipboard;
+import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.controller.PetriNetMarqueeHandler;
 import org.woped.editor.controller.UMLMarqueeHandler;
 import org.woped.editor.controller.VisualController;
@@ -1543,6 +1544,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		 * 
 		 * 
 		 */
+        getGraph().stopEditing();
 		Rectangle2D oldVisRect = getGraph().fromScreen(
 				m_scrollPane.getViewport().getViewRect());
 		double scale;
@@ -1577,6 +1579,8 @@ public class EditorVC extends JPanel implements KeyListener,
 		if (m_statusbar != null)
 			m_statusbar.updateStatus();
 
+        
+        fireViewEvent(new EditorViewEvent(this,AbstractViewEvent.VIEWEVENTTYPE_GUI,AbstractViewEvent.ZOOMED,new Double(scale*100) ));
 	}
 
 	/* ########## LISTENER METHODS ########## */

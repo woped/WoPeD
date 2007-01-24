@@ -471,4 +471,15 @@ public class ToolBarVC extends JToolBar implements IViewController
 
         return zoomChooser;
     }
+    
+    public void changeZoomChooserValueWithoutListeners(String value) {
+        ItemListener[] listeners = zoomChooser.getItemListeners();
+        for (int i=0;i<listeners.length;i++) {
+            zoomChooser.removeItemListener(listeners[i]);
+        }
+        zoomChooser.setSelectedItem(value);
+        for (int i=0;i<listeners.length;i++) {
+            zoomChooser.addItemListener(listeners[i]);
+        }
+    }
 }
