@@ -28,10 +28,12 @@ import java.util.Set;
 
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
+import org.woped.core.Constants;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
+import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author lai
@@ -79,7 +81,7 @@ public class SubProcessModel extends TransitionModel implements
 	private ModelElementContainer copySubElementContainer(
 			ModelElementContainer container)
 	{
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>cloneSubElementContainer");
+		LoggerManager.info(Constants.CORE_LOGGER, ">>>>>>>>>>>>>>>>>>>>>>cloneSubElementContainer");
 		ModelElementContainer newContainer = null;
 
 		newContainer = new ModelElementContainer();
@@ -94,8 +96,9 @@ public class SubProcessModel extends TransitionModel implements
 			{
 				AbstractElementModel currentElement = (AbstractElementModel) container
 						.getElementById(keyIterator.next());
-				System.out.println(currentElement.getId() + ": "
-						+ currentElement.getNameValue());
+				LoggerManager.info(Constants.CORE_LOGGER, 
+							(currentElement.getId() + ": "
+						+ currentElement.getNameValue()));
 				CreationMap newMap = (CreationMap) currentElement
 						.getCreationMap().clone();
 				newMap.setId("copyof_" + newMap.getId());
