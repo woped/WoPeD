@@ -30,6 +30,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +57,8 @@ public class ArcView extends EdgeView
 {
 
     private ArcViewRenderer arcViewRenderer = new ArcViewRenderer();
-
+    private ImageIcon activeIcon = Messages.getImageIcon("TokenGame.Active");
+    
     /**
      * Constructor for ArcView.
      * 
@@ -105,6 +107,21 @@ public class ArcView extends EdgeView
     public boolean isActivated()
     {
         return ((ArcModel) cell).isActivated();
+    }
+    
+    public Rectangle2D getBounds()
+    {
+    	Rectangle2D bounds = super.getBounds();
+    	double height = bounds.getHeight();
+    	double width = bounds.getWidth();
+    	int minHeight = (activeIcon!=null)?activeIcon.getIconHeight():0;
+    	int minWidth  = (activeIcon!=null)?activeIcon.getIconWidth():0;
+    	if (isActivated()&&((width<minWidth)||(height<minHeight)))
+    	{
+    		// Need to extend our bounds to be able to at least draw our icon
+    		bounds.add(bounds.getMinX()+minWidth, bounds.getMinY()+minHeight);
+    	}
+    	return bounds;
     }
 
     /**
@@ -172,11 +189,10 @@ public class ArcView extends EdgeView
                     
                     // Draw 'play' button to indicate that the
                     // arc is activated and can be clicked
-                    ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                     Rectangle labelPos = this.getBounds();
-                    int buttonX  = (int)(labelPos.x+labelPos.width/2);
-                    int buttonY  = (int)(labelPos.y+labelPos.height/2);
-                    g2.drawImage(img.getImage(), buttonX, buttonY , 16, 16, img.getImageObserver());
+                    int buttonX  = (int)(labelPos.x+labelPos.width/2)-8;
+                    int buttonY  = (int)(labelPos.y+labelPos.height/2)-8;
+                    g2.drawImage(activeIcon.getImage(), buttonX, buttonY , 16, 16, activeIcon.getImageObserver());
 
                 }
             }
