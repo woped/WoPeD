@@ -501,9 +501,6 @@ public class PNMLImport
                                 if (transitions[i].getToolspecificArray(j).isSetTrigger())
                                 {
                                     map.setTriggerType(transitions[i].getToolspecificArray(j).getTrigger().getType());
-                                    // int test
-                                    // =transitions[i].getToolspecificArray(j).getTrigger().getType();
-                                    // System.out.println("TriggerType:" +test);
                                     map.setTriggerPosition(transitions[i].getToolspecificArray(j).getTrigger().getGraphics().getPosition().getX().intValue(), transitions[i].getToolspecificArray(j)
                                             .getTrigger().getGraphics().getPosition().getY().intValue());
                                 }
