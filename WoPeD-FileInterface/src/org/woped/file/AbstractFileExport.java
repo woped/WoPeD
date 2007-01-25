@@ -65,6 +65,26 @@ public abstract class AbstractFileExport
                     fileName = fileName + ".jpg";
                 }
             } else fileName = fileName + ".jpg";
+        } else if (type == FileFilterImpl.PNGFilter)
+        {
+
+            if (fileName.length() >= 5)
+            {
+                if (!(fileName.substring(fileName.length() - 4, fileName.length()).equals(".png")))
+                {
+                    fileName = fileName + ".png";
+                }
+            } else fileName = fileName + ".png";
+        } else if (type == FileFilterImpl.GIFFilter)
+        {
+
+            if (fileName.length() >= 5)
+            {
+                if (!(fileName.substring(fileName.length() - 4, fileName.length()).equals(".gif")))
+                {
+                    fileName = fileName + ".gif";
+                }
+            } else fileName = fileName + ".gif";
         } else if (type == FileFilterImpl.PNMLFilter)
         {
 

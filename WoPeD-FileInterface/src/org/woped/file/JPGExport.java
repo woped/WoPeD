@@ -26,16 +26,15 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
-import java.io.FileOutputStream;
+
+import javax.imageio.ImageIO;
 
 import org.jgraph.JGraph;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.EditorVC;
-
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -68,14 +67,11 @@ public class JPGExport
             graph.paint(graphics);
 
             graph.setGridVisible(ConfigurationManager.getConfiguration().isShowGrid() & !editor.isTokenGameMode());
-
             try
             {
-                FileOutputStream fos = new FileOutputStream(new File(absFileName));
-                JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(fos);
-                encoder.encode(img);
-                fos.flush();
-                fos.close();
+            	//ImageIO.write((RenderedImage) img, "png", new File(absFileName + ".png"));
+            	ImageIO.write((RenderedImage) img, "jpg", new File(absFileName));
+
                 LoggerManager.info(Constants.FILE_LOGGER, "File saved to: " + absFileName);
                 return true;
             } catch (Exception e)

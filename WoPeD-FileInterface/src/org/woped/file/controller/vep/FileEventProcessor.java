@@ -181,6 +181,16 @@ public class FileEventProcessor extends AbstractEventProcessor
             FileFilterImpl JPGFilter = new FileFilterImpl(FileFilterImpl.JPGFilter, "JPG (*.jpg)", jpgExtensions);
             jfc.setFileFilter(JPGFilter);
 
+            Vector<String> pngExtensions = new Vector<String>();
+            jpgExtensions.add("png");
+            FileFilterImpl PNGFilter = new FileFilterImpl(FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
+            jfc.setFileFilter(PNGFilter);
+            
+            Vector<String> gifExtensions = new Vector<String>();
+            jpgExtensions.add("gif");
+            FileFilterImpl GIFFilter = new FileFilterImpl(FileFilterImpl.GIFFilter, "GIF (*.gif)", gifExtensions);
+            jfc.setFileFilter(GIFFilter);
+            
             jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
             jfc.showSaveDialog(null);
             if (jfc.getSelectedFile() != null && editor != null)
@@ -193,7 +203,13 @@ public class FileEventProcessor extends AbstractEventProcessor
                 } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.JPGFilter)
                 {
                     savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), jpgExtensions);
-                } else
+                } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.PNGFilter)
+                {
+                    savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), pngExtensions);
+                } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.GIFFilter)
+                {
+                    savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), gifExtensions);
+                } else 
                 {
                     LoggerManager.error(Constants.FILE_LOGGER, "\"Export\" NOT SUPPORTED FILE TYPE.");
                 }
@@ -240,6 +256,12 @@ public class FileEventProcessor extends AbstractEventProcessor
                         {
                             succeed = JPGExport.save(editor.getFilePath(), editor);
                             // TODO: !!! Working dir
+                        } else if (editor.getDefaultFileType() == FileFilterImpl.PNGFilter)
+                        {
+                            succeed = JPGExport.save(editor.getFilePath(), editor);
+                        } else if (editor.getDefaultFileType() == FileFilterImpl.GIFFilter)
+                        {
+                            succeed = JPGExport.save(editor.getFilePath(), editor);
                         }
                         /* Tool for PNML Export */
                         else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter)

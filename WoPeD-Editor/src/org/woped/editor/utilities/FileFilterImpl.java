@@ -47,6 +47,8 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
     public final static int FOLDERFilter  = 5;
     public final static int XMLFilter     = 6;
     public final static int OLDPNMLFilter = 7;
+    public final static int PNGFilter = 8;
+    public final static int GIFFilter = 9;
 
     public FileFilterImpl(int type, String descritption)
     {
