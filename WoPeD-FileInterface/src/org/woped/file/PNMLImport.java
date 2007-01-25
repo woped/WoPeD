@@ -172,7 +172,7 @@ public class PNMLImport
             return true;
         } catch (Exception e)
         {
-            e.printStackTrace();
+//            e.printStackTrace();
             LoggerManager.warn(Constants.FILE_LOGGER, "   ... Could parse PNML file. Perhaps OLD PNML file-format. When saving, new pnml file-format will be created.");
             // e.printStackTrace();
             /*
