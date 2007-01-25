@@ -75,16 +75,16 @@ public abstract class AbstractFileExport
                     fileName = fileName + ".png";
                 }
             } else fileName = fileName + ".png";
-        } else if (type == FileFilterImpl.GIFFilter)
+        } else if (type == FileFilterImpl.BMPFilter)
         {
 
             if (fileName.length() >= 5)
             {
-                if (!(fileName.substring(fileName.length() - 4, fileName.length()).equals(".gif")))
+                if (!(fileName.substring(fileName.length() - 4, fileName.length()).equals(".bmp")))
                 {
-                    fileName = fileName + ".gif";
+                    fileName = fileName + ".bmp";
                 }
-            } else fileName = fileName + ".gif";
+            } else fileName = fileName + ".bmp";
         } else if (type == FileFilterImpl.PNMLFilter)
         {
 

@@ -28,10 +28,10 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.editor.utilities.Messages;
 import org.woped.file.Constants;
-import org.woped.file.JPGExport;
 import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
+import org.woped.file.ImageExport;
 import org.woped.file.TPNExport;
 import org.woped.woflan.NetAnalysisDialog;
 
@@ -169,27 +169,28 @@ public class FileEventProcessor extends AbstractEventProcessor
             }
 
             // FileFilters
-            Vector<String> tpnExtensions = new Vector<String>();
-            tpnExtensions.add("tpn");
-            FileFilterImpl TPNFilter = new FileFilterImpl(FileFilterImpl.TPNFilter, "TPN (*.tpn)", tpnExtensions);
-            jfc.setFileFilter(TPNFilter);
+            Vector<String> pngExtensions = new Vector<String>();
+            pngExtensions.add("png");
+            FileFilterImpl PNGFilter = new FileFilterImpl(FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
+            jfc.setFileFilter(PNGFilter);
+            
+            Vector<String> bmpExtensions = new Vector<String>();
+            bmpExtensions.add("bmp");
+            FileFilterImpl BMPFilter = new FileFilterImpl(FileFilterImpl.BMPFilter, "BMP (*.bmp)", bmpExtensions);
+            jfc.setFileFilter(BMPFilter);
 
-            // FileFilters
             Vector<String> jpgExtensions = new Vector<String>();
             jpgExtensions.add("jpg");
             jpgExtensions.add("jpeg");
             FileFilterImpl JPGFilter = new FileFilterImpl(FileFilterImpl.JPGFilter, "JPG (*.jpg)", jpgExtensions);
             jfc.setFileFilter(JPGFilter);
 
-            Vector<String> pngExtensions = new Vector<String>();
-            jpgExtensions.add("png");
-            FileFilterImpl PNGFilter = new FileFilterImpl(FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
-            jfc.setFileFilter(PNGFilter);
+            Vector<String> tpnExtensions = new Vector<String>();
+            tpnExtensions.add("tpn");
+            FileFilterImpl TPNFilter = new FileFilterImpl(FileFilterImpl.TPNFilter, "TPN (*.tpn)", tpnExtensions);
+            jfc.setFileFilter(TPNFilter);            
             
-            Vector<String> gifExtensions = new Vector<String>();
-            jpgExtensions.add("gif");
-            FileFilterImpl GIFFilter = new FileFilterImpl(FileFilterImpl.GIFFilter, "GIF (*.gif)", gifExtensions);
-            jfc.setFileFilter(GIFFilter);
+            jfc.setFileFilter(PNGFilter);
             
             jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
             jfc.showSaveDialog(null);
@@ -206,9 +207,9 @@ public class FileEventProcessor extends AbstractEventProcessor
                 } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.PNGFilter)
                 {
                     savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), pngExtensions);
-                } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.GIFFilter)
+                } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.BMPFilter)
                 {
-                    savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), gifExtensions);
+                    savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), bmpExtensions);
                 } else 
                 {
                     LoggerManager.error(Constants.FILE_LOGGER, "\"Export\" NOT SUPPORTED FILE TYPE.");
@@ -251,17 +252,19 @@ public class FileEventProcessor extends AbstractEventProcessor
                     } else
                     {
 
-                        /* Tool for JPG Export */
                         if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter)
                         {
-                            succeed = JPGExport.save(editor.getFilePath(), editor);
+                            succeed = ImageExport.saveJPG(ImageExport.getRenderedImage(editor), 
+                        	    new File(editor.getFilePath()));
                             // TODO: !!! Working dir
                         } else if (editor.getDefaultFileType() == FileFilterImpl.PNGFilter)
                         {
-                            succeed = JPGExport.save(editor.getFilePath(), editor);
-                        } else if (editor.getDefaultFileType() == FileFilterImpl.GIFFilter)
+                            succeed = ImageExport.savePNG(ImageExport.getRenderedImage(editor), 
+                        	    new File(editor.getFilePath()));
+                        } else if (editor.getDefaultFileType() == FileFilterImpl.BMPFilter)
                         {
-                            succeed = JPGExport.save(editor.getFilePath(), editor);
+                            succeed = ImageExport.saveBMP(ImageExport.getRenderedImage(editor), 
+                        	    new File(editor.getFilePath()));
                         }
                         /* Tool for PNML Export */
                         else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter)
