@@ -26,7 +26,9 @@
 package org.woped.editor.gui;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Insets;
 
 import javax.swing.CellRendererPane;
 import javax.swing.JComponent;
@@ -98,6 +100,8 @@ public class EditorToolTipUI extends BasicToolTipUI
                 return null;
             }
             m_textPane = new JTextArea(text);
+            m_textPane.setFont(new Font("SansSerif", Font.PLAIN, 11));
+            m_textPane.setMargin(new Insets(3, 5, 3, 5));
             m_renderPane.add(m_textPane);
 
             Dimension dim = m_textPane.getPreferredSize();
