@@ -73,6 +73,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ADD_XORSPLITJOIN          = 1054;
     public static final int ADD_ANDSPLITJOIN		  = 1055;
     public static final int ADD_ANDJOINXORSPLIT       = 1056;
+    public static final int ADD_XORJOINANDSPLIT		  = 1057;
     
     public static final int OPEN_PROPERTIES           = 1060;
     public static final int ANALYSIS_WOFLAN           = 1061;
@@ -89,6 +90,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int SHOWSIDEBAR				  = 1074;
     
     public static final int DRAWMODE_ANDJOIN_XORSPLIT = 1075;
+    public static final int DRAWMODE_XORJOIN_ANDSPLIT = 1076;
     
     // UML Elements
     public static final int ADD_ACTIVITY              = 1100;

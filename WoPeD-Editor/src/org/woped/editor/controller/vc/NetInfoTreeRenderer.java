@@ -69,42 +69,44 @@ public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
 	    if (value instanceof NodeNetInfo) 
 	    {
 		
-		NodeNetInfo node = (NodeNetInfo) value;
-
-		switch (node.getTypeId()) 
-		{
-		case AbstractPetriNetModelElement.PLACE_TYPE:
-		    result = place;
-		    break;
-		case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
-		    result = transition;
-		    break;
-		case AbstractPetriNetModelElement.SUBP_TYPE:
-		    result = subprocess;
-		    break;
-		case OperatorTransitionModel.AND_JOIN_TYPE:
-		    result = andJoin;
-		    break;
-		case OperatorTransitionModel.AND_SPLIT_TYPE:
-		    result = andSplit;
-		    break;
-		case OperatorTransitionModel.XOR_JOIN_TYPE:
-		    result = xorJoin;
-		    break;
-		case OperatorTransitionModel.XOR_SPLIT_TYPE:
-		    result = xorSplit;
-		    break;
-		case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
-		    result = andSplitJoin;
-		    break;
-		case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
-		    result = xorSplitJoin;
-		    break;
-		case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
-		    result = andJoinXorSplit;
-		    break;		
-		    
-		}
+	    	NodeNetInfo node = (NodeNetInfo) value;
+	    	
+	    	switch (node.getTypeId()) 
+	    	{
+	    	case AbstractPetriNetModelElement.PLACE_TYPE:
+	    		result = place;
+	    		break;
+	    	case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
+	    		result = transition;
+	    		break;
+	    	case AbstractPetriNetModelElement.SUBP_TYPE:
+	    		result = subprocess;
+	    		break;
+	    	case OperatorTransitionModel.AND_JOIN_TYPE:
+	    		result = andJoin;
+	    		break;
+	    	case OperatorTransitionModel.AND_SPLIT_TYPE:
+	    		result = andSplit;
+	    		break;
+	    	case OperatorTransitionModel.XOR_JOIN_TYPE:
+	    		result = xorJoin;
+	    		break;
+	    	case OperatorTransitionModel.XOR_SPLIT_TYPE:
+	    		result = xorSplit;
+	    		break;
+	    	case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
+	    		result = andSplitJoin;
+	    		break;
+	    	case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
+	    		result = xorSplitJoin;
+	    		break;
+	    	case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
+	    		result = andJoinXorSplit;
+	    		break;
+	    	case OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE:
+	    		result = xorJoinAndSplit;
+	    		break;		    
+	    	}
 	    }
 
 	} catch (Exception e) 

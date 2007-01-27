@@ -61,6 +61,7 @@ import org.woped.editor.view.petrinet.TransSimpleView;
 import org.woped.editor.view.petrinet.TransXOrJoinView;
 import org.woped.editor.view.petrinet.TransXOrSplitJoinView;
 import org.woped.editor.view.petrinet.TransXOrSplitView;
+import org.woped.editor.view.petrinet.TransXorJoinAndSplitView;
 import org.woped.editor.view.petrinet.TransitionResourceView;
 import org.woped.editor.view.petrinet.TriggerExtView;
 import org.woped.editor.view.petrinet.TriggerResView;
@@ -155,6 +156,10 @@ public class ViewFactory extends AbstractViewFactory
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
             {
                 return new TransAndJoinXOrSplitView(cell);
+
+            } else if (aTCell.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
+            {
+                return new TransXorJoinAndSplitView(cell);
 
             } else
             {

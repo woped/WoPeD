@@ -258,7 +258,8 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 
 				}
 				/* IF SOURCE IS XOR JOIN */
-				else if (operatorModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
+				else if ((operatorModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE) ||
+						(operatorModel.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
 				{
 
 					// f�r jede simpletrans ne connection auf das target
@@ -436,7 +437,8 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 						sourceModel.getId()));
 
 				/* IF target is XOR JOIN */
-				if (operatorModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
+				if ((operatorModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
+						(operatorModel.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
 				{
 					// GENAU WIE XOR SPILT BEI SOURCE !!
 					/*
@@ -621,7 +623,8 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 				// TARGET IS XOR-JOIN OPERATOR => delete inner Transition that
 				// is Target to place ID more than 1 inner transition
 
-				if (currentOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
+				if ((currentOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
+						(currentOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
 				{
 					if (currentOperator.getSimpleTransContainer()
 							.getElementsByType(

@@ -350,7 +350,7 @@ public class StructuralAnalysis {
 		// All pure join operators must have exactly one output
 		// and at least two inputs 
 		case OperatorTransitionModel.AND_JOIN_TYPE:
-		case OperatorTransitionModel.XOR_JOIN_TYPE:
+		case OperatorTransitionModel.XOR_JOIN_TYPE:			
 			isCorrectConfiguration =
 				((arcConfig.m_numIncoming>1)&&
 						(arcConfig.m_numOutgoing==1));
@@ -360,6 +360,7 @@ public class StructuralAnalysis {
 		case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
 		case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
 		case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
+		case OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE:
 			isCorrectConfiguration =
 				((arcConfig.m_numIncoming>1)&&
 						(arcConfig.m_numOutgoing>1));

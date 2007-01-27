@@ -73,9 +73,12 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     
     public static final int		  AND_SPLITJOIN_TYPE	= 107;
     
-    //! The AND-Join XOR-Split is just an alias for the XOR join operator
+    //! The AND-Join XOR-Split is just an alias for the XOR split operator
     //! It has a different visual representation but behaves exactly the same
     public static final int       ANDJOIN_XORSPLIT_TYPE = 108;
+    //! The XOR-Join AND-Split is just an alias for the XOR join operator
+    //! It has a different visual representation but behaves exactly the same
+    public static final int		  XORJOIN_ANDSPLIT_TYPE = 109;
 
     public final static int[][][] OR_SPLIT_TABLE        = {
             { { 0 } },

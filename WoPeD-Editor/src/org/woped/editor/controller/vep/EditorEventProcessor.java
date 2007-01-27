@@ -98,6 +98,11 @@ public class EditorEventProcessor extends AbstractEventProcessor
                 map.setOperatorType(OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
                 editor.createElement(map);
                 break;
+            case AbstractViewEvent.ADD_XORJOINANDSPLIT:
+                map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
+                map.setOperatorType(OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
+                editor.createElement(map);
+                break;
             // UML
             case AbstractViewEvent.ADD_ACTIVITY:
                 map.setType(AbstractUMLElementModel.ACTIVITY_TYPE);

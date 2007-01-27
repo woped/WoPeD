@@ -79,7 +79,8 @@ public class ModelTranslator
                 for (Iterator sourceIter = tempSourceElements.values().iterator(); sourceIter.hasNext();)
                 {
                     tempSource = (AbstractElementModel) sourceIter.next();
-                    if (tempSource.getType() == OperatorTransitionModel.XOR_JOIN_TYPE)
+                    if ((tempSource.getType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
+                    	(tempSource.getType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
                     {
                         for (Iterator targetIter = tempTargetElements.values().iterator(); targetIter.hasNext();)
                         {
@@ -131,7 +132,8 @@ public class ModelTranslator
                     // and.getElementContext().setANDType(true);
                 } else if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || 
                 		tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE ||
-                		tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
+                		tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE ||
+                		tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
                 {
                     tempCreateMap.setOperatorType(OperatorModel.XOR_TYPE);
                     // Change ID if Split-Join

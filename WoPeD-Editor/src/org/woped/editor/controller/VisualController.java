@@ -143,7 +143,9 @@ public class VisualController implements PropertyChangeListener,
 	
 	public static final int TRANSITION_PLACE_SELECTION = 35;
 
-	private static final int MAX_ID = 36;
+	public static final int DRAWMODE_XORJOIN_ANDSPLIT = 36;
+
+	private static final int MAX_ID = 37;
 
 	private ArrayList<Vector<Object>> m_enable = new ArrayList<Vector<Object>>();
 	private ArrayList<Vector<Object>> m_visible = new ArrayList<Vector<Object>>();
@@ -521,6 +523,7 @@ public class VisualController implements PropertyChangeListener,
 		boolean xorSplitJoin = false;
 		boolean andSplitJoin = false;
 		boolean andJoinXorSplit = false;
+		boolean xorJoinAndSplit = false;
 		boolean orSplit = false;
 		boolean subprocess = false;
 
@@ -555,6 +558,9 @@ public class VisualController implements PropertyChangeListener,
 			case (OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE):
 				andJoinXorSplit = true;
 				break;
+			case (OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE):
+				xorJoinAndSplit = true;
+				break;
 			case (OperatorTransitionModel.OR_SPLIT_TYPE):
 				orSplit = true;
 				break;
@@ -573,6 +579,7 @@ public class VisualController implements PropertyChangeListener,
 		setStatus(DRAWMODE_XOR_JOIN, xorJoin);
 		setStatus(DRAWMODE_XOR_SPLITJOIN, xorSplitJoin);
 		setStatus(DRAWMODE_ANDJOIN_XORSPLIT, andJoinXorSplit);
+		setStatus(DRAWMODE_XORJOIN_ANDSPLIT, xorJoinAndSplit);
 		setStatus(DRAWMODE_OR_SPLIT, orSplit);
 		setStatus(DRAWMODE_SUBPROCESS, subprocess);
 	}
