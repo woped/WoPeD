@@ -25,6 +25,7 @@ package org.woped.core.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Polygon;
 
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphCellEditor;
@@ -115,10 +116,10 @@ public abstract class AbstractElementView extends VertexView
             // When active during the token game,
             // draw the inner symbols in gray
             if (isActive() || isFireing())
-            	return (Color.LIGHT_GRAY);
+            	return (new Color(50, 200, 100));
             else
             {
-            	if (bordercolor==null)
+            	if (bordercolor == null)
             		return Color.BLACK;
             	else
             		return bordercolor;
@@ -174,9 +175,29 @@ public abstract class AbstractElementView extends VertexView
             	linex = d.width / 3;
         	}
         	
-            g.drawLine(linex, b, linex, d.height - b);
+        	// draw light gray polygons
+        	Color drawingColor = getInnerDrawingsColor();
+        	g.setColor(new Color(drawingColor.getRed(), drawingColor.getGreen(), drawingColor.getBlue(), 25));
+        	
+        	Polygon p = new Polygon();
+        	p.addPoint(tipx, tipy);
+        	p.addPoint(tipx, b);
+        	p.addPoint(basex, b);
+        	g.fillPolygon(p);
+        	
+        	p = new Polygon();
+        	p.addPoint(tipx, tipy);
+        	p.addPoint(tipx, d.height - b);
+        	p.addPoint(basex, d.height - b);
+        	g.fillPolygon(p);
+        	
+        	// draw arrow
+        	g.setColor(getInnerDrawingsColor());
+        	g.drawLine(linex, b, linex, d.height - b);
             g.drawLine(basex, b, tipx , tipy);
             g.drawLine(basex, d.height - b, tipx, tipy);
+            
+            
         }
 		
 	}    
