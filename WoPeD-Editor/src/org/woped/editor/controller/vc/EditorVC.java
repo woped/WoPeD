@@ -210,8 +210,6 @@ public class EditorVC extends JPanel implements KeyListener,
 	private IEditor m_parentEditor = null;
 
 	// for subprocess
-	private AbstractElementModel m_parentElement;
-
 	private AbstractElementModel m_subprocessInput = null;
 	private AbstractElementModel m_subprocessOutput = null;
 	
@@ -333,7 +331,6 @@ public class EditorVC extends JPanel implements KeyListener,
 			SubProcessModel model, AbstractApplicationMediator mediator)
 	{
 		this(string, clipboard, modelProcessorType, undoSupport, mediator);
-		m_parentElement = model;
 
 		boolean origStatus = parentEditor.isSaved();
 
