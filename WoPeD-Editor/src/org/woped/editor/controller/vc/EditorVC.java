@@ -88,6 +88,7 @@ import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
@@ -210,12 +211,12 @@ public class EditorVC extends JPanel implements KeyListener,
 	private IEditor m_parentEditor = null;
 
 	// for subprocess
-	AbstractElementModel m_parentElement;
+	private AbstractElementModel m_parentElement;
 
-	AbstractElementModel m_subprocessInput = null;
-
-	AbstractElementModel m_subprocessOutput = null;
-
+	private AbstractElementModel m_subprocessInput = null;
+	private AbstractElementModel m_subprocessOutput = null;
+	
+	
 	// ! Store a reference to the application mediator.
 	// ! It is used to create a new subprocess editor if required
 	private AbstractApplicationMediator m_centralMediator = null;
@@ -368,6 +369,11 @@ public class EditorVC extends JPanel implements KeyListener,
 			sourceCreationMap.setUpperElement(sourceModel);
 			createElement(sourceCreationMap);
 		}
+		else
+		{
+			container.getElementById(sourceModel.getId()).setNameValue(getSubprocessInput().getNameValue());
+			container.getElementById(sourceModel.getId()).setReadOnly(true);
+		}
 
 		// Ausgang
 		// Get list of output nodes
@@ -386,7 +392,14 @@ public class EditorVC extends JPanel implements KeyListener,
 			targetCreationMap.setEditOnCreation(false);
 			targetCreationMap.setUpperElement(targetModel);
 			createElement(targetCreationMap);
+
 		}
+		else
+		{
+			container.getElementById(targetModel.getId()).setNameValue(getSubprocessOutput().getNameValue());
+			container.getElementById(targetModel.getId()).setReadOnly(true);
+		}
+		
 
 		// We must create a JGraph model
 		// representation of the new model element container
