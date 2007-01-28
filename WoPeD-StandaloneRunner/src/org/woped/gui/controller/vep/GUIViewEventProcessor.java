@@ -36,6 +36,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
+import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
@@ -297,7 +298,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		if (editor instanceof EditorVC)
 		{
 			EditorVC editorVC = (EditorVC) editor;
-			if (editor.isSubprocessEditor())
+			if (editorVC.isSubprocessEditor() && !editorVC.isTokenGameMode())
 			{
 
 				StructuralAnalysis analysis = new StructuralAnalysis(editor);
@@ -383,7 +384,12 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				{
 					closeEditor = true;
 				}
-			} else
+			} 
+			else if(editorVC.isSubprocessEditor() && editorVC.isTokenGameMode())
+			{
+				closeEditor = true;
+			}
+			else
 			{
 				if (!editorVC.isSaved())
 				{
