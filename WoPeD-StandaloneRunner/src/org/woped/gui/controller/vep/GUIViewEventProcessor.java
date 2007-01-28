@@ -36,7 +36,6 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
-import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
@@ -47,6 +46,7 @@ import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.AboutUI;
@@ -55,7 +55,6 @@ import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
-import org.woped.editor.help.HelpBrowser;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
