@@ -81,7 +81,7 @@ public class SubProcessModel extends TransitionModel implements
 	private ModelElementContainer copySubElementContainer(
 			ModelElementContainer container)
 	{
-		LoggerManager.info(Constants.CORE_LOGGER, ">>>>>>>>>>>>>>>>>>>>>>cloneSubElementContainer");
+		LoggerManager.info(Constants.CORE_LOGGER, "copySubElementContainer");
 		ModelElementContainer newContainer = null;
 
 		newContainer = new ModelElementContainer();
@@ -89,52 +89,45 @@ public class SubProcessModel extends TransitionModel implements
 		// copy elements
 		{
 			Map idMap = container.getIdMap();
-			Set idMapKeys = idMap.keySet();
-			Iterator keyIterator = idMapKeys.iterator();
+			Iterator keyIterator = idMap.keySet().iterator();
 
 			while (keyIterator.hasNext())
 			{
 				AbstractElementModel currentElement = (AbstractElementModel) container
 						.getElementById(keyIterator.next());
-				LoggerManager.info(Constants.CORE_LOGGER, 
-							(currentElement.getId() + ": "
-						+ currentElement.getNameValue()));
-				CreationMap newMap = (CreationMap) currentElement
-						.getCreationMap().clone();
-				newMap.setId("copyof_" + newMap.getId());
-				newMap.setName("copyof_" + newMap.getName());
 
-				if (newMap.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
+				if (!currentElement.getCreationMap().getReadOnly())
 				{
-					AbstractElementModel newElement = new TransitionModel(
-							newMap);
-					newContainer.addElement(newElement);
-				} else if (newMap.getType() == PetriNetModelElement.PLACE_TYPE)
-				{
+					CreationMap newMap = (CreationMap) currentElement
+							.getCreationMap().clone();
 
-					AbstractElementModel newElement = new PlaceModel(newMap);
-					newContainer.addElement(newElement);
+					// TODO Proper ID
+					newMap.setId("copyof_" + newMap.getId());
+					newMap.setName("copyof_" + newMap.getName());
 
+					AbstractElementModel newElement = ModelElementFactory
+							.createModelElement(newMap);
+
+					newContainer.addElement(newElement);
 				}
-
 			}
 		}
 
 		// copy arcs
 //		{
 //			Map arcMap = container.getArcMap();
-//			Map newArcMap = new HashMap();
-//			Set arcMapKeys = arcMap.keySet();
-//			Iterator arcIterator = arcMapKeys.iterator();
+//			Map newArcMap = newContainer.getArcMap();
+//			Iterator arcIterator = arcMap.keySet().iterator();
 //
-//			int counter = 1;
+//			//test
+//			int counter = 999;
 //
 //			while (arcIterator.hasNext())
 //			{
-//				ArcModel currentArcModell = (ArcModel) arcMap.get(arcIterator
+//				ArcModel currentArcModel = (ArcModel) arcMap.get(arcIterator
 //						.next());
 //
-//				CreationMap arcCreationMap = (CreationMap) currentArcModell
+//				CreationMap arcCreationMap = (CreationMap) currentArcModel
 //						.getCreationMap().clone();
 //
 //				arcCreationMap.setArcSourceId("copyof_"
@@ -143,35 +136,53 @@ public class SubProcessModel extends TransitionModel implements
 //						+ arcCreationMap.getArcTargetId());
 //				arcCreationMap.setArcId("copyof_" + arcCreationMap.getArcId());
 //
-//				System.out.println(":::::::::::::createArc");
 //				ArcModel newArc = new ArcModel(arcCreationMap);
-//				System.out.println(":::::::::::::addArc");
-//				// newContainer.addReference(newArc);
+//				
+//				
+////				newArc = ModelElementFactory.createArcModel(arcId, source, target)
+//				//modelelementprosecor nutzen
+//				//private void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) throws Exception
+//				
+//				newArcMap.put(("a" + counter++), newArc);
+//			}
+		
+		
+		
+//		{
+//			Map arcMap = container.getArcMap();
+//			Map newArcMap = newContainer.getArcMap();
+//			Iterator arcIterator = arcMap.keySet().iterator();
 //
-//				newArcMap.put("a" + counter++, newArc);
+//			//test
+//			int counter = 1;
+//
+//			while (arcIterator.hasNext())
+//			{
+//				ArcModel currentArcModel = (ArcModel) arcMap.get(arcIterator
+//						.next());
+//				
+//				ArcModel newArc = (ArcModel) currentArcModel.clone();
+//
+//
+//				CreationMap arcCreationMap = newArc.getCreationMap();
+//				
+//				arcCreationMap.setArcSourceId("copyof_"
+//						+ arcCreationMap.getArcSourceId());
+//				arcCreationMap.setArcTargetId("copyof_"
+//						+ arcCreationMap.getArcTargetId());
+//				arcCreationMap.setArcId("copyof_" + arcCreationMap.getArcId());
+//
+//				
+//				
+////				newArc = ModelElementFactory.createArcModel(arcId, source, target)
+//				//modelelementprosecor nutzen
+//				//private void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) throws Exception
+//				
+//				newArcMap.put(("a" + counter++), newArc);
 //			}
 //
 //			newContainer.setArcMap(newArcMap);
 //		}
-
-		// remove old input and output
-		// they are read-only...
-		Map places = newContainer
-				.getElementsByType(PetriNetModelElement.PLACE_TYPE);
-
-		Iterator placeKeyIterator = places.keySet().iterator();
-
-		while (placeKeyIterator.hasNext())
-		{
-			PlaceModel currentPlace = (PlaceModel) places.get(placeKeyIterator
-					.next());
-
-			if (currentPlace.isReadOnly())
-			{
-				newContainer.removeElement(currentPlace.getId());
-			}
-
-		}
 
 		return newContainer;
 	}
