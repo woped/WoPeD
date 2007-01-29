@@ -92,7 +92,7 @@ public abstract class AbstractElementView extends VertexView {
 		result = highLightedColor;
 	    else if (readOnly) {
 		result = readOnlyColor;
-	    } else if (isActive()) {
+	    } else if (isActive() || isFireing()) {
 		return (new Color(50, 200, 100, 25));
 	    } else {
 		result = super.getBackground();
