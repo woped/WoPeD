@@ -30,6 +30,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.border.LineBorder;
+
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractViewEvent;
@@ -189,7 +191,10 @@ public class TokenGameController
         getGraph().setEnabled(false);
         getGraph().setPortsVisible(false);
         getGraph().setGridVisible(false);
-        getGraph().setBackground(new Color(245, 245, 230));
+        getGraph().setBackground(new Color(250, 250, 250));
+        getGraph().setBorder(new LineBorder(
+		new Color(0, 175, 20), 3, false));
+        
         // register own MouseHandler
         getGraph().addMouseListener(tokenGameMouseHandler);
         
@@ -213,6 +218,7 @@ public class TokenGameController
         getGraph().setPortsVisible(true);
         getGraph().setGridVisible(ConfigurationManager.getConfiguration().isShowGrid());
         getGraph().setBackground(Color.WHITE);
+        getGraph().setBorder(null);
         //getGraph().setSelectNewCells(true);
         // remove own MouseHandler
         getGraph().removeMouseListener(tokenGameMouseHandler);
