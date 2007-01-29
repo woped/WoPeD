@@ -188,8 +188,7 @@ public class SubProcessModel extends TransitionModel implements
 	
 	public String getToolTipText()
 	{
-		return "Subprocess\nID: " + getId() + "\nName: " + getNameValue()
-				+ "\nSubprocess feature is not implemented, yet.";
+		return "Subprocess\nID: " + getId() + "\nName: " + getNameValue();
 	}
 
 	public int getType()
