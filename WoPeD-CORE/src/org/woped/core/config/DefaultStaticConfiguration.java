@@ -27,6 +27,7 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static Font            DEFAULT_TOKEN_FONT         = new Font("Verdana", Font.ITALIC, 19);
     public static Color           DEFAULT_PORT_COLOR         = Color.RED;
     public static Color           DEFAULT_UI_BACKGROUND_COLOR = Color.GRAY;
+    public static Color		  DEFAULT_SUBPROCESS_FRAME_COLOR = new Color(255, 151, 5);
     public static String          DEFAULT_LANGUAGE           = "en";
     public static String          DEFAULT_COUNTRY            = "";
     public static String          DEFAULT_VARIANT            = "";

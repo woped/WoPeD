@@ -23,7 +23,6 @@
 package org.woped.editor.controller.vc;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -73,6 +72,7 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.graph.Port;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractMarqueeHandler;
@@ -335,7 +335,8 @@ public class EditorVC extends JPanel implements KeyListener,
 		boolean origStatus = parentEditor.isSaved();
 
 		setParentEditor(parentEditor);
-		m_graph.setBorder(new LineBorder(Color.BLUE, 5, false));
+		m_graph.setBorder(new LineBorder(
+			DefaultStaticConfiguration.DEFAULT_SUBPROCESS_FRAME_COLOR, 3, false));
 
 		setName("Subprocess " + model.getNameValue());
 
