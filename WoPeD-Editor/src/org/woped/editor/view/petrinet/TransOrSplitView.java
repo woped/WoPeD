@@ -94,7 +94,7 @@ public class TransOrSplitView extends TransSimpleView
                 g.setColor(getFillColor());
             	g.fillRect(b, b, d.width - b - 1, d.height - b - 1);
 
-                g.setColor(bordercolor);
+                g.setColor(getInnerDrawingsColor());
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }

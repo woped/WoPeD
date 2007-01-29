@@ -103,7 +103,7 @@ public class TransXorJoinAndSplitView extends TransSimpleView
 
             if (bordercolor != null)
             {
-                g.setColor(bordercolor);
+                g.setColor(getInnerDrawingsColor());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
             

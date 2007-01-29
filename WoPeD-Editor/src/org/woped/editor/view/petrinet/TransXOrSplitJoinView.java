@@ -93,7 +93,7 @@ public class TransXOrSplitJoinView extends TransSimpleView
             {
                 g.setColor(getFillColor());
                 g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
-                g.setColor(bordercolor);
+                g.setColor(getInnerDrawingsColor());
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
