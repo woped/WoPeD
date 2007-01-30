@@ -100,6 +100,7 @@ public class OverviewPanel extends JPanel
         graph.setModel(editor.getGraph().getModel());
         graph.setGraphLayoutCache(view);
         graph.setAntiAliased(true);
+        graph.setGridVisible(false);
         graph.getModel().addGraphModelListener(this);
         graph.setEnabled(false);
         graph.addMouseListener(v);
