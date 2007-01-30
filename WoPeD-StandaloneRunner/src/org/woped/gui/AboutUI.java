@@ -107,6 +107,7 @@ public class AboutUI extends JDialog
         this.setUndecorated(false);
         this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+        this.setTitle(Messages.getTitle("Action.ShowAbout"));
         this.pack();
 
         if (getOwner() != null)
