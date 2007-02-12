@@ -105,6 +105,7 @@ public class AboutUI extends JDialog
         this.setVisible(false);
         this.getContentPane().setLayout(new BorderLayout());
         this.setUndecorated(false);
+        this.setResizable(false);
         this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
         this.setTitle(Messages.getTitle("Action.ShowAbout"));
@@ -209,7 +210,7 @@ public class AboutUI extends JDialog
             GridBagConstraints c1 = new GridBagConstraints();
             c1.gridy = 0;
             c1.gridx = 0;
-            c1.insets = new Insets(10, 10, 10, 10);
+            c1.insets = new Insets(5, 5, 5, 5);
             c1.anchor = GridBagConstraints.WEST;
             
             JTextArea text = new JTextArea();
