@@ -24,11 +24,11 @@ public class XORJoinANDSplitOperatorTransitionModel extends
 		TransitionModel inTransition =
 			getCreateUnusedSimpleTrans();
 		// Connect the new IN transition to our center place
-		addReference(processor.getNexArcId(),
+		addReference(getNextFreeArcID(processor),
 				(DefaultPort) inTransition.getChildAt(0),
 				(DefaultPort) getCenterPlace().getChildAt(0));
 		// Connect the source model to the in transition
-		addReference(processor.getNexArcId(),
+		addReference(getNextFreeArcID(processor),
 				(DefaultPort) sourceModel.getChildAt(0),
 				(DefaultPort) inTransition.getChildAt(0));	
 	}
@@ -41,7 +41,7 @@ public class XORJoinANDSplitOperatorTransitionModel extends
 		TransitionModel outTransition =
 			getCreateOUTTransition(processor);
 		// Connect our OUT transition to the new target object
-		addReference(processor.getNexArcId(),    		
+		addReference(getNextFreeArcID(processor),    		
 				(DefaultPort) outTransition.getChildAt(0),
 				(DefaultPort) targetModel.getChildAt(0));
 	}
@@ -72,7 +72,7 @@ public class XORJoinANDSplitOperatorTransitionModel extends
     	PlaceModel centerPlace = getCenterPlace();
     	Map centerTargetElements = 
     		getSimpleTransContainer().getTargetElements(centerPlace.getId());
-    	if (!centerTargetElements.isEmpty())
+    	if ((centerTargetElements!=null)&&(!centerTargetElements.isEmpty()))
     		result = (TransitionModel)getSimpleTransContainer().
     			getElementById(centerTargetElements.keySet().iterator().next());
     	if (result == null)
@@ -80,7 +80,7 @@ public class XORJoinANDSplitOperatorTransitionModel extends
     		// It seems like we have to create a new OUT transition.
     		result = getCreateUnusedSimpleTrans();
     		// Create connection from center place to OUT transition
-    		addReference(processor.getNexArcId(),					
+    		addReference(getNextFreeArcID(processor),					
     				(DefaultPort) centerPlace.getChildAt(0),
     				(DefaultPort) result.getChildAt(0));
     	}

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
 
@@ -22,9 +23,9 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
 			AbstractElementModel sourceModel) 
 	{
 		TransitionModel inTransition =
-			getCreateINTransition(processor);
-		// Connect the new source object to our IN transition
-		addReference(processor.getNexArcId(),    			
+			getCreateINTransition(processor);			
+		
+		addReference(getNextFreeArcID(processor),    			
 				(DefaultPort) sourceModel.getChildAt(0),
 				(DefaultPort) inTransition.getChildAt(0));
 	}
@@ -38,11 +39,11 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
 		TransitionModel outTransition =
 			getCreateUnusedSimpleTrans();
 		// Connect the new out transition to our center place
-		addReference(processor.getNexArcId(),    			
+		addReference(getNextFreeArcID(processor),    			
 				(DefaultPort) getCenterPlace().getChildAt(0),
 				(DefaultPort) outTransition.getChildAt(0));
 		// Connect the out transition to the target model
-		addReference(processor.getNexArcId(),    			
+		addReference(getNextFreeArcID(processor),    			
 				(DefaultPort) outTransition.getChildAt(0),
 				(DefaultPort) targetModel.getChildAt(0));
 	}
@@ -74,7 +75,7 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
     	PlaceModel centerPlace = getCenterPlace();
     	Map centerSourceElements = 
     		getSimpleTransContainer().getSourceElements(centerPlace.getId());
-    	if (!centerSourceElements.isEmpty())
+    	if ((centerSourceElements!=null)&&(!centerSourceElements.isEmpty()))
     		result = (TransitionModel)getSimpleTransContainer().
     			getElementById(centerSourceElements.keySet().iterator().next());
     	if (result == null)
@@ -82,7 +83,7 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
     		// It seems like we have to create a new IN transition.
     		result = getCreateUnusedSimpleTrans();
     		// Connect it to the center place
-			addReference(processor.getNexArcId(),
+			addReference(getNextFreeArcID(processor),
 					(DefaultPort) result.getChildAt(0),
 					(DefaultPort) centerPlace.getChildAt(0));
     	}

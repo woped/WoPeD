@@ -26,6 +26,7 @@ import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
@@ -143,7 +144,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     		simpleTrans = addNewSimpleTrans();
     	}
     	// dann f�ge nur die Reference hinzu
-    	addReference(processor.getNexArcId(),
+    	addReference(getNextFreeArcID(processor),
     			(DefaultPort) sourceModel.getChildAt(0),
     			(DefaultPort) simpleTrans.getChildAt(0));
     }
@@ -173,7 +174,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
 			simpleTrans = addNewSimpleTrans();
 		}
 		// create an reference entry
-		addReference(processor.getNexArcId(),
+		addReference(getNextFreeArcID(processor),
 				(DefaultPort) simpleTrans.getChildAt(0),
 				(DefaultPort) targetModel.getChildAt(0));    	    	
     }
@@ -361,4 +362,21 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     	}
     	return result;
     }	    
+    
+    //! Create a unique arc id for the inner container
+    //! Note that you may *never ever* use the next free arc returned by the outer
+    //! model processor directly because that arc may already exist inside the
+    //! inner transition container and would be overwritten which results in a broken net
+    protected String getNextFreeArcID(PetriNetModelProcessor processor)
+    {
+		// Connect the new source object to our IN transition
+    	String nextArcId = null;
+		ArcModel exists = null;
+		do
+		{		
+			nextArcId = processor.getNexArcId();
+			exists = getSimpleTransContainer().getArcById(nextArcId);
+		} while (exists!=null);
+		return nextArcId;
+    }
 }

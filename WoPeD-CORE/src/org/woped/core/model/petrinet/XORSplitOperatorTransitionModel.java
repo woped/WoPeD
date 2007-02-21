@@ -36,7 +36,7 @@ public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
     			PetriNetModelElement tempTarget = (PetriNetModelElement) simpleRootIter
     			.next();
     			if (tempTarget.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
-    				addReference(processor.getNexArcId(),
+    				addReference(getNextFreeArcID(processor),
     						(DefaultPort) tempSource.getChildAt(0),
     						(DefaultPort) tempTarget.getChildAt(0));
     		}
@@ -60,7 +60,7 @@ public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
     				PetriNetModelElement.TRANS_SIMPLE_TYPE)
     				.values().iterator().next();
     		// create an reference entry
-    		addReference(processor.getNexArcId(),
+    		addReference(getNextFreeArcID(processor),
     				(DefaultPort) simpleTrans.getChildAt(0),
     				(DefaultPort) targetModel.getChildAt(0));
     		
@@ -71,7 +71,7 @@ public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
     		TransitionModel simpleTrans = addNewSimpleTrans();
     		// create an reference entry for the existing
     		// simpleTrans
-    		addReference(processor.getNexArcId(),
+    		addReference(getNextFreeArcID(processor),
     				(DefaultPort) simpleTrans.getChildAt(0),
     				(DefaultPort) targetModel.getChildAt(0));
     		
@@ -80,7 +80,7 @@ public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
     		Iterator sourceIter = upperContainer.getSourceElements(getId()).keySet().iterator();
     		while (sourceIter.hasNext())
     		{
-    			addReference(processor.getNexArcId(),
+    			addReference(getNextFreeArcID(processor),
     					(DefaultPort) upperContainer.getElementById(sourceIter.next()).getChildAt(0),
     					(DefaultPort) simpleTrans.getChildAt(0));
     		}

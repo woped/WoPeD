@@ -39,7 +39,7 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 					PetriNetModelElement.TRANS_SIMPLE_TYPE)
 					.values().iterator().next();
 			// dann f�ge nur die Reference hinzu
-			addReference(processor.getNexArcId(),
+			addReference(getNextFreeArcID(processor),
 					(DefaultPort) sourceModel.getChildAt(0),
 					(DefaultPort) simpleTrans.getChildAt(0));
 		} else
@@ -50,7 +50,7 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 			
 			// add new arc from new source to cew simpleTrans in
 			// SimpleTransConatainer
-			addReference(processor.getNexArcId(),
+			addReference(getNextFreeArcID(processor),
 					(DefaultPort) sourceModel.getChildAt(0),
 					(DefaultPort) simpleTrans.getChildAt(0));
 			
@@ -60,7 +60,7 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 			.keySet().iterator();
 			while (targetIter.hasNext())
 			{
-				addReference(processor.getNexArcId(),
+				addReference(getNextFreeArcID(processor),
 						(DefaultPort) simpleTrans.getChildAt(0),
 						(DefaultPort) outerContainer
 						.getElementById(targetIter.next())
@@ -82,7 +82,7 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 			PetriNetModelElement pec = (PetriNetModelElement) simpleRootIter
 			.next();
 			if (pec.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
-				addReference(processor.getNexArcId(), pec
+				addReference(getNextFreeArcID(processor), pec
 						.getPort(), targetModel.getPort());
 		}
 	}

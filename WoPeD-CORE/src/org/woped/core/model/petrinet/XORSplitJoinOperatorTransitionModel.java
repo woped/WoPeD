@@ -33,11 +33,11 @@ public class XORSplitJoinOperatorTransitionModel extends
 		}
 		PlaceModel centerPlace = getCenterPlace();
 		// simpletrans with centerplace
-		addReference(processor.getNexArcId(),
+		addReference(getNextFreeArcID(processor),
 				(DefaultPort) simpleTrans.getChildAt(0),
 				(DefaultPort) centerPlace.getChildAt(0));
 		// source with simpletrans
-		addReference(processor.getNexArcId(),
+		addReference(getNextFreeArcID(processor),
 				(DefaultPort) sourceModel.getChildAt(0),
 				(DefaultPort) simpleTrans.getChildAt(0));
 	}
@@ -62,11 +62,11 @@ public class XORSplitJoinOperatorTransitionModel extends
 		}
 		PlaceModel centerPlace = getCenterPlace();
 		// centerplace with simpletrans
-		addReference(processor.getNexArcId(),
+		addReference(getNextFreeArcID(processor),
 				(DefaultPort) centerPlace.getChildAt(0),
 				(DefaultPort) simpleTrans.getChildAt(0));
 		// simpletrans with target
-		addReference(processor.getNexArcId(),
+		addReference(getNextFreeArcID(processor),
 				(DefaultPort) simpleTrans.getChildAt(0),
 				(DefaultPort) targetModel.getChildAt(0));
 	}

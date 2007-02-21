@@ -258,16 +258,30 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 								
 				currentOperator.getSimpleTransContainer()
 						.removeSourceArcsFromElement(arcToDelete.getTargetId());
+				
+				// Each inner transition container contains a local copy of each
+				// element connecting to an operator
+				// We have to remove this local copy
+				currentOperator.getSimpleTransContainer()
+						.removeElement(targetElement.getId());					
+				
 				// System.out.println("INNER ARC TO TARGET deleted");
 			} else if (targetElement.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
 			{
-				OperatorTransitionModel currentOperator = (OperatorTransitionModel) getElementContainer()
-						.getElementById(arcToDelete.getTargetId());
+				OperatorTransitionModel currentOperator = (OperatorTransitionModel) targetElement;
 				// Register the removal of an incoming arc
 				currentOperator.registerIncomingConnectionRemoval(this, sourceElement);
 				
 				currentOperator.getSimpleTransContainer()
 						.removeTargetArcsFromElement(arcToDelete.getSourceId());
+
+				// Each inner transition container contains a local copy of each
+				// element connecting to an operator
+				// We have to remove this local copy
+				currentOperator.getSimpleTransContainer()
+						.removeElement(sourceElement.getId());
+				
+				
 				LoggerManager.debug(Constants.CORE_LOGGER,
 						"INNER ARC TO SOURCE deleted");
 			}
