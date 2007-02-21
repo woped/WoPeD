@@ -22,12 +22,15 @@
  */
 package org.woped.core.model.petrinet;
 
+import java.util.Map;
+
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
+import org.woped.core.model.PetriNetModelProcessor;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -100,15 +103,13 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
      * @param type
      * @param jGraphModel
      */
-    public OperatorTransitionModel(CreationMap map)
+    public OperatorTransitionModel(CreationMap map, int operatorType)
     {
 
         // its an ordinary Model Element
         super(map);
-        if (map.getOperatorType() != -1)
-        {
-            setOperatorType(map.getOperatorType());
-        }
+        setOperatorType(map.getOperatorType());
+
         simpleTransContainer = new ModelElementContainer();
         // The simple transition container
         // is owned by the operator
@@ -121,6 +122,83 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         // this.initalSimpleTrans = initalSimpleTrans;
 
     }
+    
+    //! This method is called by the PetriNetModelProcessor to register
+    //! a new incoming connection
+    //! This will update the arcs of the inner model of the operator
+    //! @param processor specifies the model element processor that handles the model element
+    //!        container in which the connection was made
+    //! @param sourceModel specifies the source model of the arc that has been created
+    public void registerIncomingConnection(
+    		PetriNetModelProcessor processor,
+    		AbstractElementModel sourceModel)
+    {
+    	// get simple trans
+    	Object simpleTransId = getSimpleTransContainer().getElementsByType(
+    			PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    			.keySet().iterator().next();
+    	TransitionModel simpleTrans;
+    	if ((simpleTrans = (TransitionModel) getElement(simpleTransId)) == null)
+    	{
+    		simpleTrans = addNewSimpleTrans();
+    	}
+    	// dann f�ge nur die Reference hinzu
+    	addReference(processor.getNexArcId(),
+    			(DefaultPort) sourceModel.getChildAt(0),
+    			(DefaultPort) simpleTrans.getChildAt(0));
+    }
+    
+    //! This method is called by the PetriNetModelProcessor to register
+    //! a new outgoing connection
+    //! This will update the arcs of the inner model of the operator
+    //! The implementation in this class is the default implementation.
+    //! It will maintain one single simple transition that will mimic the connections
+    //! of its owning operator. This is used for AND SPLIT-JOIN, AND JOIN, AND SPLIT operators
+    //! You may want to OVERRIDE THIS METHOD if you need any complex arc management for your operator!
+    //! @param processor specifies the model element processor that handles the model element
+    //!        container in which the connection was made
+    //! @param targetModel specifies the target model of the arc that has been created
+    public void registerOutgoingConnection(
+    		PetriNetModelProcessor processor,    		
+    		AbstractElementModel targetModel)
+    {
+		// get simple trans
+		Object simpleId = getSimpleTransContainer()
+				.getElementsByType(
+						PetriNetModelElement.TRANS_SIMPLE_TYPE)
+				.keySet().iterator().next();
+		TransitionModel simpleTrans;
+		if ((simpleTrans = (TransitionModel) getElement(simpleId)) == null)
+		{
+			simpleTrans = addNewSimpleTrans();
+		}
+		// create an reference entry
+		addReference(processor.getNexArcId(),
+				(DefaultPort) simpleTrans.getChildAt(0),
+				(DefaultPort) targetModel.getChildAt(0));    	    	
+    }
+    
+    //! This method is called when an outgoing arc is deleted from the model
+    //! It give the operator a chance to update its inner arcs and transitions
+    //! accordingly
+    //! @param processor specifies the model element processor that handles the model element
+    //!        container from which the connection was removed
+    //! @param otherModel specifies the model of the object the connection to which has been removed    
+    public void registerOutgoingConnectionRemoval(
+    		PetriNetModelProcessor processor,
+    		AbstractElementModel otherModel)
+    {}
+    
+    //! This method is called when an incoming arc is deleted from the model
+    //! It give the operator a chance to update its inner arcs and transitions
+    //! accordingly
+    //! @param processor specifies the model element processor that handles the model element
+    //!        container from which the connection was removed
+    //! @param otherModel specifies the model of the object the connection to which has been removed    
+    public void registerIncomingConnectionRemoval(
+    		PetriNetModelProcessor processor,
+    		AbstractElementModel otherModel)
+    {}
 
     private TransitionModel createSimpleTransition()
     {
@@ -213,15 +291,27 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     }
 
     /**
-     * ONLY USE FOR XOR SPLITJOIN ! Does only work for split-join anyway...
+     * ONLY USE FOR XOR SPLITJOIN, AND-JOIN XOR SPLIT and XOR JOIN AND-SPLIT ! 
+     * 
      * 
      * @return
      */
     public PlaceModel getCenterPlace()
     {
-        if (centerPlace == null && getOperatorType() == XOR_SPLITJOIN_TYPE)
+        if (centerPlace == null)
         {
-            centerPlace = addNewCenterPlace();
+        	switch (getOperatorType())
+        	{        	
+        	case XOR_SPLITJOIN_TYPE:
+        	case ANDJOIN_XORSPLIT_TYPE:
+        	case XORJOIN_ANDSPLIT_TYPE:
+                centerPlace = addNewCenterPlace();
+                break;
+            default:
+            	// The center place is available only for certain
+            	// types of operators
+            	centerPlace = null;
+        	}
         }
         return centerPlace;
     }
@@ -240,4 +330,35 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     {
         return (AbstractElementModel) getSimpleTransContainer().getElementById(elementId);
     }
+    
+    //! Check whether our only inner transition so far is unused
+    //! If so, return it. Otherwise,
+    //! create a new simple transition
+    protected TransitionModel getCreateUnusedSimpleTrans()
+    {
+    	TransitionModel result = null;
+    	
+    	Map existingTransitions = getSimpleTransContainer().getElementsByType(
+				PetriNetModelElement.TRANS_SIMPLE_TYPE);
+    	if (existingTransitions.size() == 1)
+    	{
+    		// One single transition exists
+    		// Check whether it has any connections
+    		// If so, discard it
+    		result = (TransitionModel)getSimpleTransContainer().getElementById(
+    				existingTransitions.keySet().iterator().next());
+    		Map sourceElements = getSimpleTransContainer().getSourceElements(result.getId()); 
+    		Map targetElements = getSimpleTransContainer().getTargetElements(result.getId());     		
+    		if (((sourceElements!=null)&&(sourceElements.size()>0))||
+    			((targetElements!=null)&&(targetElements.size()>0)))
+    			result = null;
+    	}
+    	if (result == null)
+    	{
+    		// No reusable transition found
+    		// Create a new one
+    		result = this.addNewSimpleTrans();
+    	}
+    	return result;
+    }	    
 }

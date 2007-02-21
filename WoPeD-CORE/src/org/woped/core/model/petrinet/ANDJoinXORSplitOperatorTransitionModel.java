@@ -1,0 +1,93 @@
+package org.woped.core.model.petrinet;
+
+import java.util.Map;
+
+import org.jgraph.graph.DefaultPort;
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.CreationMap;
+import org.woped.core.model.PetriNetModelProcessor;
+
+@SuppressWarnings("serial")
+public class ANDJoinXORSplitOperatorTransitionModel extends
+		OperatorTransitionModel {
+
+	public ANDJoinXORSplitOperatorTransitionModel(CreationMap map) {
+		super(map, ANDJOIN_XORSPLIT_TYPE);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void registerIncomingConnection(
+    		PetriNetModelProcessor processor,
+			AbstractElementModel sourceModel) 
+	{
+		TransitionModel inTransition =
+			getCreateINTransition(processor);
+		// Connect the new source object to our IN transition
+		addReference(processor.getNexArcId(),    			
+				(DefaultPort) sourceModel.getChildAt(0),
+				(DefaultPort) inTransition.getChildAt(0));
+	}
+
+	@Override
+	public void registerOutgoingConnection(
+    		PetriNetModelProcessor processor,
+    		AbstractElementModel targetModel) 
+	{
+		// Create a new out transition for the XOR split part of this operator
+		TransitionModel outTransition =
+			getCreateUnusedSimpleTrans();
+		// Connect the new out transition to our center place
+		addReference(processor.getNexArcId(),    			
+				(DefaultPort) getCenterPlace().getChildAt(0),
+				(DefaultPort) outTransition.getChildAt(0));
+		// Connect the out transition to the target model
+		addReference(processor.getNexArcId(),    			
+				(DefaultPort) outTransition.getChildAt(0),
+				(DefaultPort) targetModel.getChildAt(0));
+	}
+
+    public void registerOutgoingConnectionRemoval(
+    		PetriNetModelProcessor processor,
+    		AbstractElementModel otherModel)
+    {    
+    	// SOURCE IS XOR-SPLIT OPERATOR => delete inner Transition that
+    	// is source to place IF more than 1 inner transition
+    	
+    	if (getSimpleTransContainer()
+    			.getElementsByType(
+    					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    					.size() != 1)
+    	{
+    		getSimpleTransContainer().removeAllSourceElements(otherModel.getId());
+    		// System.out.println("INNER Source Elements deleted");
+    	}
+    }    
+    
+    
+    //! Get or create the single IN transition that exists for this operator
+    private TransitionModel getCreateINTransition(PetriNetModelProcessor processor)
+    {
+    	TransitionModel result = null;
+    	// First check, if the IN transition already exists.
+    	// If so, we simply return it
+    	PlaceModel centerPlace = getCenterPlace();
+    	Map centerSourceElements = 
+    		getSimpleTransContainer().getSourceElements(centerPlace.getId());
+    	if (!centerSourceElements.isEmpty())
+    		result = (TransitionModel)getSimpleTransContainer().
+    			getElementById(centerSourceElements.keySet().iterator().next());
+    	if (result == null)
+    	{
+    		// It seems like we have to create a new IN transition.
+    		result = getCreateUnusedSimpleTrans();
+    		// Connect it to the center place
+			addReference(processor.getNexArcId(),
+					(DefaultPort) result.getChildAt(0),
+					(DefaultPort) centerPlace.getChildAt(0));
+    	}
+    	return result;
+    }
+ 
+
+}

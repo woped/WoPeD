@@ -65,7 +65,9 @@ public class TPNExport
                     fos.write("place #");
                     if (ConfigurationManager.getConfiguration().isTpnSaveElementAsName())
                     {
-                        fos.write(currentModel.getNameValue().replaceAll("[[\\W]&&[\\S|\\s]]", "") + "_");
+                    	String nameValue = currentModel.getNameValue();
+                    	if (nameValue!=null)                        
+                    		fos.write(nameValue.replaceAll("[[\\W]&&[\\S|\\s]]", "") + "_");
                     }
                     fos.write(currentModel.getId());
 

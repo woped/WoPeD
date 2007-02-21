@@ -24,11 +24,19 @@ package org.woped.core.model;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.Constants;
+import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.ANDJoinXORSplitOperatorTransitionModel;
+import org.woped.core.model.petrinet.ANDSplitJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.ANDSplitOperatorTransitionModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.XORJoinANDSplitOperatorTransitionModel;
+import org.woped.core.model.petrinet.XORJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.XORSplitJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.model.uml.ActivityModel;
 import org.woped.core.model.uml.OperatorModel;
@@ -81,7 +89,35 @@ public class ModelElementFactory
                 } else if (map.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
                 {
                     /* CREATING A AALST TRANSITION */
-                    modElement = new OperatorTransitionModel(map);
+                	switch (map.getOperatorType())
+                	{
+                	case OperatorTransitionModel.XOR_SPLIT_TYPE:
+                		modElement = new XORSplitOperatorTransitionModel(map);
+                		break;
+                	case OperatorTransitionModel.XOR_JOIN_TYPE:
+                		modElement = new XORJoinOperatorTransitionModel(map);
+                		break;
+                	case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
+                		modElement = new XORSplitJoinOperatorTransitionModel(map);
+                		break;
+                	case OperatorTransitionModel.AND_SPLIT_TYPE:
+                		modElement = new ANDSplitOperatorTransitionModel(map);
+                		break;
+                	case OperatorTransitionModel.AND_JOIN_TYPE:
+                		modElement = new ANDJoinOperatorTransitionModel(map);
+                		break;
+                	case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
+                		modElement = new ANDSplitJoinOperatorTransitionModel(map);
+                		break;
+                	case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
+                		modElement = new ANDJoinXORSplitOperatorTransitionModel(map);
+                		break;
+                	case OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE:
+                		modElement = new XORJoinANDSplitOperatorTransitionModel(map);
+                		break;
+                	default:
+                        LoggerManager.error(Constants.CORE_LOGGER, "Unknown Operator Type (" + map.getOperatorType() + ")");
+                	}
                     // modElement.setId(id);
                     // create inital simple trans
                    ((OperatorTransitionModel) modElement).addNewSimpleTrans();

@@ -34,7 +34,6 @@ import org.jgraph.graph.DefaultPort;
 import org.woped.core.Constants;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
-import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.Toolspecific;
@@ -179,6 +178,9 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		AbstractElementModel targetModel = getElementContainer()
 				.getElementById(targetId);
 		OperatorTransitionModel operatorModel;
+		
+		if ((sourceModel == null)||(targetModel == null))
+			return null;
 
 		// falls aalst source oder target -> update Model
 		ArcModel displayedArc = ModelElementFactory.createArcModel(
@@ -204,220 +206,10 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 						.debug(Constants.CORE_LOGGER,
 								"Connection from Aalst Model detected... resolve Inner-Transitions ...");
 
-				/* IF SOURCE IS XOR SPLIT */
-				if ((operatorModel.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE) ||						
-						(operatorModel.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
-				{
+				// Register new outgoing connection with the operator.
+				// This will generate all the necessary inner arcs
+				operatorModel.registerOutgoingConnection(this, targetModel);
 
-					// Wenn die Referenztabelle von dem Operator nur diesen
-					// neuen Eintrag hat
-					if (getElementContainer().getTargetElements(
-							operatorModel.getId()).size() == 1
-							&& operatorModel
-									.getSimpleTransContainer()
-									.getElementsByType(
-											PetriNetModelElement.TRANS_SIMPLE_TYPE)
-									.size() == 1)
-					{
-						// get simple trans
-						TransitionModel simpleTrans = (TransitionModel) operatorModel
-								.getSimpleTransContainer().getElementsByType(
-										PetriNetModelElement.TRANS_SIMPLE_TYPE)
-								.values().iterator().next();
-						// create an reference entry
-						operatorModel.addReference(getNexArcId(),
-								(DefaultPort) simpleTrans.getChildAt(0),
-								(DefaultPort) targetModel.getChildAt(0));
-
-					} else
-					{
-
-						// create simple trans
-						TransitionModel simpleTrans = operatorModel
-								.addNewSimpleTrans();
-						// create an reference entry for the existing
-						// simpleTrans
-						operatorModel.addReference(getNexArcId(),
-								(DefaultPort) simpleTrans.getChildAt(0),
-								(DefaultPort) targetModel.getChildAt(0));
-
-						// create reference from each source to each inner
-						// transition
-						Iterator sourceIter = getElementContainer()
-								.getSourceElements(operatorModel.getId())
-								.keySet().iterator();
-						while (sourceIter.hasNext())
-						{
-							operatorModel.addReference(getNexArcId(),
-									(DefaultPort) getElementContainer()
-											.getElementById(sourceIter.next())
-											.getChildAt(0),
-									(DefaultPort) simpleTrans.getChildAt(0));
-						}
-					}
-
-				}
-				/* IF SOURCE IS XOR JOIN */
-				else if ((operatorModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE) ||
-						(operatorModel.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
-				{
-
-					// f�r jede simpletrans ne connection auf das target
-					Iterator simpleRootIter = operatorModel
-							.getSimpleTransContainer().getRootElements()
-							.iterator();
-					while (simpleRootIter.hasNext())
-					{
-						PetriNetModelElement pec = (PetriNetModelElement) simpleRootIter
-								.next();
-						if (pec.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
-							operatorModel.addReference(getNexArcId(), pec
-									.getPort(), targetModel.getPort());
-					}
-				}
-				/* IF SOURCE IS XOR SPLITJOIN */
-				else if (operatorModel.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
-				{
-					// For EACH outgoing connection we need a new simpletrans as
-					// target for centerplace
-					TransitionModel simpleTrans;
-					if (operatorModel.getSimpleTransContainer().getArcMap()
-							.size() > 0)
-					{
-						simpleTrans = operatorModel.addNewSimpleTrans();
-					} else
-					{
-						simpleTrans = (TransitionModel) operatorModel
-								.getSimpleTransContainer().getElementsByType(
-										PetriNetModelElement.TRANS_SIMPLE_TYPE)
-								.values().iterator().next();
-					}
-					PlaceModel centerPlace = operatorModel.getCenterPlace();
-					// centerplace with simpletrans
-					operatorModel.addReference(getNexArcId(),
-							(DefaultPort) centerPlace.getChildAt(0),
-							(DefaultPort) simpleTrans.getChildAt(0));
-					// simpletrans with target
-					operatorModel.addReference(getNexArcId(),
-							(DefaultPort) simpleTrans.getChildAt(0),
-							(DefaultPort) targetModel.getChildAt(0));
-				}
-				/* IF SOURCE IS OR SPLIT */
-				else if (operatorModel.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE)
-				{
-					int z = getElementContainer().getTargetElements(
-							operatorModel.getId()).size();
-					// Wenn die Referenztabelle von dem Aalst Element nur diesen
-					// neuen Eintrag hat
-					if (z == 1
-							&& operatorModel
-									.getSimpleTransContainer()
-									.getElementsByType(
-											PetriNetModelElement.TRANS_SIMPLE_TYPE)
-									.size() == 1)
-					{
-						// get simple trans
-						Object simpleTransId = operatorModel
-								.getSimpleTransContainer().getElementsByType(
-										PetriNetModelElement.TRANS_SIMPLE_TYPE)
-								.keySet().iterator().next();
-						TransitionModel simpleTrans = (TransitionModel) operatorModel
-								.getElement(simpleTransId);
-						// create an reference entry
-						operatorModel.addReference(getNexArcId(),
-								(DefaultPort) simpleTrans.getChildAt(0),
-								(DefaultPort) targetModel.getChildAt(0));
-
-					} else if (z > 5 | z == 0)
-					{
-						LoggerManager
-								.error(Constants.CORE_LOGGER,
-										"The Maximum for OR Split is 5 following places.");
-					} else
-					{
-
-						Iterator targetIter = getElementContainer()
-								.getTargetElements(operatorModel.getId())
-								.keySet().iterator();
-						Object[] targets = new Object[OperatorTransitionModel.OR_SPLIT_TABLE[z].length];
-						int j = z - 2;
-						// new target must be first entry
-						targets[z - 1] = targetId;
-						while (targetIter.hasNext())
-						{
-							// fill array (from back to front) with old targets
-							Object tempId = targetIter.next();
-							if (!tempId.equals(targetId))
-							{
-								targets[j] = tempId;
-								j--;
-							}
-						}
-
-						int trans = (int) Math.pow(2, z) - 1;
-						int newTrans = trans - ((int) Math.pow(2, z - 1) - 1);
-						// create all inner transitions
-						TransitionModel simpleTrans;
-						Iterator sourceIter;
-						for (int k = trans - newTrans; k < trans; k++)
-						{
-							// create simple trans
-							simpleTrans = operatorModel.addNewSimpleTrans();
-							// create outgoing references for simple trans
-							for (short l = 0; l < z; l++)
-							{
-								if (OperatorTransitionModel.OR_SPLIT_TABLE[z][k][l] == 1)
-								{
-									operatorModel.addReference(getNexArcId(),
-											(DefaultPort) simpleTrans
-													.getChildAt(0),
-											(DefaultPort) operatorModel
-													.getSimpleTransContainer()
-													.getElementById(targets[l])
-													.getChildAt(0));
-								}
-							}
-							sourceIter = getElementContainer()
-									.getSourceElements(operatorModel.getId())
-									.keySet().iterator();
-							// Connect each Source with each Inner transition
-							while (sourceIter.hasNext())
-							{
-								operatorModel
-										.addReference(
-												getNexArcId(),
-												(DefaultPort) getElementContainer()
-														.getElementById(
-																sourceIter
-																		.next())
-														.getChildAt(0),
-												(DefaultPort) simpleTrans
-														.getChildAt(0));
-
-							}
-						}
-					}
-
-				} else if (operatorModel.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE
-						|| operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE
-						|| operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
-				{
-					// get simple trans
-					Object simpleId = operatorModel.getSimpleTransContainer()
-							.getElementsByType(
-									PetriNetModelElement.TRANS_SIMPLE_TYPE)
-							.keySet().iterator().next();
-					TransitionModel simpleTrans;
-					if ((simpleTrans = (TransitionModel) operatorModel
-							.getElement(simpleId)) == null)
-					{
-						simpleTrans = operatorModel.addNewSimpleTrans();
-					}
-					// create an reference entry
-					operatorModel.addReference(getNexArcId(),
-							(DefaultPort) simpleTrans.getChildAt(0),
-							(DefaultPort) targetModel.getChildAt(0));
-				}
 				LoggerManager.debug(Constants.CORE_LOGGER,
 						"... Inner-Transition resolving completed");
 			}
@@ -435,139 +227,11 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 				// add the source to the SimpleTransContainer
 				operatorModel.addElement(getElementContainer().getElementById(
 						sourceModel.getId()));
+				
+				// Register new incoming connection with the operator.
+				// This will generate all the necessary inner arcs
+				operatorModel.registerIncomingConnection(this, sourceModel);
 
-				/* IF target is XOR JOIN */
-				if ((operatorModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
-						(operatorModel.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
-				{
-					// GENAU WIE XOR SPILT BEI SOURCE !!
-					/*
-					 * If operator have only one Source AND container does only
-					 * have one simple trans
-					 */
-					if (getElementContainer().getSourceElements(
-							operatorModel.getId()).size() == 1
-							&& operatorModel
-									.getSimpleTransContainer()
-									.getElementsByType(
-											PetriNetModelElement.TRANS_SIMPLE_TYPE)
-									.size() == 1)
-					{
-						// get simple trans
-						TransitionModel simpleTrans = (TransitionModel) operatorModel
-								.getSimpleTransContainer().getElementsByType(
-										PetriNetModelElement.TRANS_SIMPLE_TYPE)
-								.values().iterator().next();
-						// dann f�ge nur die Reference hinzu
-						operatorModel.addReference(getNexArcId(),
-								(DefaultPort) sourceModel.getChildAt(0),
-								(DefaultPort) simpleTrans.getChildAt(0));
-					} else
-					{
-						// create new SimpleTrans
-						// add simpletrans to SimpleTransContainer
-						TransitionModel simpleTrans = operatorModel
-								.addNewSimpleTrans();
-
-						// add new arc from new source to cew simpleTrans in
-						// SimpleTransConatainer
-						operatorModel.addReference(getNexArcId(),
-								(DefaultPort) sourceModel.getChildAt(0),
-								(DefaultPort) simpleTrans.getChildAt(0));
-
-						// create a new arc from EACH SimpleTrans to EACH Target
-						// of the Operator
-						Iterator targetIter = getElementContainer()
-								.getTargetElements(operatorModel.getId())
-								.keySet().iterator();
-						while (targetIter.hasNext())
-						{
-							operatorModel.addReference(getNexArcId(),
-									(DefaultPort) simpleTrans.getChildAt(0),
-									(DefaultPort) getElementContainer()
-											.getElementById(targetIter.next())
-											.getChildAt(0));
-						}
-					}
-				}
-				/* IF target IS XOR SPLITJOIN */
-				else if (operatorModel.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
-				{
-					// For EACH incomming connection we need a new simpletrans
-					// as source for centerplace
-					TransitionModel simpleTrans;
-					if (operatorModel.getSimpleTransContainer().getArcMap()
-							.size() > 0)
-					{
-						simpleTrans = operatorModel.addNewSimpleTrans();
-					} else
-					{
-						simpleTrans = (TransitionModel) operatorModel
-								.getSimpleTransContainer().getElementsByType(
-										PetriNetModelElement.TRANS_SIMPLE_TYPE)
-								.values().iterator().next();
-					}
-					PlaceModel centerPlace = operatorModel.getCenterPlace();
-					// simpletrans with centerplace
-					operatorModel.addReference(getNexArcId(),
-							(DefaultPort) simpleTrans.getChildAt(0),
-							(DefaultPort) centerPlace.getChildAt(0));
-					// source with simpletrans
-					operatorModel.addReference(getNexArcId(),
-							(DefaultPort) sourceModel.getChildAt(0),
-							(DefaultPort) simpleTrans.getChildAt(0));
-				}
-				/* IF target ist XOR SPLIT OR OR SPLIT */
-				else if (operatorModel.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE
-						|| operatorModel.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE 
-						|| operatorModel.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
-				{
-
-					// create & add new arc From EACH Source to EACH SimpleTrans
-					// of Operator
-					Iterator sourceIter = getElementContainer()
-							.getSourceElements(operatorModel.getId()).keySet()
-							.iterator();
-					while (sourceIter.hasNext())
-					{
-						Iterator simpleRootIter = operatorModel
-								.getSimpleTransContainer().getRootElements()
-								.iterator();
-						AbstractElementModel tempSource = getElementContainer()
-								.getElementById(sourceIter.next());
-						while (simpleRootIter.hasNext())
-						{
-							// wenn simpletrans dann reference
-							PetriNetModelElement tempTarget = (PetriNetModelElement) simpleRootIter
-									.next();
-							if (tempTarget.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
-								operatorModel.addReference(getNexArcId(),
-										(DefaultPort) tempSource.getChildAt(0),
-										(DefaultPort) tempTarget.getChildAt(0));
-						}
-					}
-				}
-				/* IF target is AND SPLIT / JOIN OR COMBINED AND SPLIT JOIN */
-				else if (operatorModel.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE
-						|| operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE
-						|| operatorModel.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
-				{
-					// get simple trans
-					Object simpleTransId = operatorModel
-							.getSimpleTransContainer().getElementsByType(
-									PetriNetModelElement.TRANS_SIMPLE_TYPE)
-							.keySet().iterator().next();
-					TransitionModel simpleTrans;
-					if ((simpleTrans = (TransitionModel) operatorModel
-							.getElement(simpleTransId)) == null)
-					{
-						simpleTrans = operatorModel.addNewSimpleTrans();
-					}
-					// dann f�ge nur die Reference hinzu
-					operatorModel.addReference(getNexArcId(),
-							(DefaultPort) sourceModel.getChildAt(0),
-							(DefaultPort) simpleTrans.getChildAt(0));
-				}
 				LoggerManager.debug(Constants.CORE_LOGGER,
 						"... Inner-Transition resolving completed");
 
@@ -583,68 +247,25 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		ArcModel arcToDelete = getElementContainer().getArcById(id);
 		if (arcToDelete != null)
 		{
-			if (getElementContainer().getElementById(arcToDelete.getSourceId())
-					.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+			AbstractElementModel sourceElement = getElementContainer().getElementById(arcToDelete.getSourceId());
+			AbstractElementModel targetElement = getElementContainer().getElementById(arcToDelete.getTargetId());
+			
+			if (sourceElement.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
 			{
-				OperatorTransitionModel currentOperator = (OperatorTransitionModel) getElementContainer()
-						.getElementById(arcToDelete.getSourceId());
-				// SOURCE IS XOR-SPLIT OPERATOR => delete inner Transition that
-				// is source to place IF more than 1 inner transition
-
-				if ((currentOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)||
-						(currentOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
-				{
-					if (currentOperator.getSimpleTransContainer()
-							.getElementsByType(
-									PetriNetModelElement.TRANS_SIMPLE_TYPE)
-							.size() != 1)
-					{
-						currentOperator.getSimpleTransContainer()
-								.removeAllSourceElements(
-										arcToDelete.getTargetId());
-						// System.out.println("INNER Source Elements deleted");
-					}
-				}
-				/* IF SOURCE IS XOR SPLITJOIN */
-				else if (currentOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
-				{
-					// remove the source simpleTrans for this arc!
-					currentOperator.getSimpleTransContainer()
-							.removeAllSourceElements(arcToDelete.getTargetId());
-				}
+				OperatorTransitionModel currentOperator = (OperatorTransitionModel) sourceElement;
+				// Register the removal of an outgoing arc
+				currentOperator.registerOutgoingConnectionRemoval(this, targetElement);
+								
 				currentOperator.getSimpleTransContainer()
 						.removeSourceArcsFromElement(arcToDelete.getTargetId());
 				// System.out.println("INNER ARC TO TARGET deleted");
-			} else if (getElementContainer().getElementById(
-					arcToDelete.getTargetId()).getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+			} else if (targetElement.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
 			{
 				OperatorTransitionModel currentOperator = (OperatorTransitionModel) getElementContainer()
 						.getElementById(arcToDelete.getTargetId());
-				// TARGET IS XOR-JOIN OPERATOR => delete inner Transition that
-				// is Target to place ID more than 1 inner transition
-
-				if ((currentOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
-						(currentOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
-				{
-					if (currentOperator.getSimpleTransContainer()
-							.getElementsByType(
-									PetriNetModelElement.TRANS_SIMPLE_TYPE)
-							.size() != 1)
-					{
-						currentOperator.getSimpleTransContainer()
-								.removeAllTargetElements(
-										arcToDelete.getSourceId());
-						LoggerManager.debug(Constants.CORE_LOGGER,
-								"INNER Target Elements deleted");
-					}
-				}
-				/* IF TARGET IS XOR SPLITJOIN */
-				else if (currentOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
-				{
-					// remove the target simpleTrans for this arc!
-					currentOperator.getSimpleTransContainer()
-							.removeAllTargetElements(arcToDelete.getSourceId());
-				}
+				// Register the removal of an incoming arc
+				currentOperator.registerIncomingConnectionRemoval(this, sourceElement);
+				
 				currentOperator.getSimpleTransContainer()
 						.removeTargetArcsFromElement(arcToDelete.getSourceId());
 				LoggerManager.debug(Constants.CORE_LOGGER,

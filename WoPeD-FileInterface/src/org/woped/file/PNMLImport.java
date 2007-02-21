@@ -406,7 +406,15 @@ public class PNMLImport
                         {
                             if (places[i].getToolspecificArray(j).getTool().equals("WoPeD"))
                             {
-                                if (places[i].getToolspecificArray(j).getOperator().getType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) doNOTcreate = true;
+                            	switch (places[i].getToolspecificArray(j).getOperator().getType())
+                            	{                            	
+                            	case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
+                            	case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
+                            	case OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE:
+                                	doNOTcreate = true;
+                                	break;                                
+                            	default:
+                            	};
                             } else
                             {
                                 map.addUnknownToolSpec(places[i].getToolspecificArray(j));

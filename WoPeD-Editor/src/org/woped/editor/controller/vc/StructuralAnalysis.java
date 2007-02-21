@@ -443,8 +443,11 @@ public class StructuralAnalysis {
 				ttemp.getPort().addEdge(newEdge);
 				source.getPort().addEdge(newEdge);        	
 				newEdge = m_currentEditor.getModelProcessor().createArc(targetID,tempID);
-				ttemp.getPort().addEdge(newEdge);
-				target.getPort().addEdge(newEdge);
+				if (newEdge != null)
+				{
+					ttemp.getPort().addEdge(newEdge);
+					target.getPort().addEdge(newEdge);
+				}
 			}         
 		}
         return ttemp;
