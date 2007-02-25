@@ -121,7 +121,7 @@ public class ArcView extends EdgeView
     		int iconWidth  = (activeIcon!=null)?activeIcon.getIconWidth():0;
     		Rectangle2D labelPos = this.getBounds();
     		
-    		double buttonX  = (int)(labelPos.getMinX()+labelPos.getHeight()/2)-(iconWidth/2);
+    		double buttonX  = (int)(labelPos.getMinX()+labelPos.getWidth()/2)-(iconWidth/2);
     		double buttonY  = (int)(labelPos.getMinY()+labelPos.getHeight()/2)-(iconHeight/2);
     		
     		result =  rect.intersects(buttonX, buttonY, iconWidth, iconHeight);
