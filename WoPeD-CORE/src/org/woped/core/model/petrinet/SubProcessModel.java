@@ -22,6 +22,7 @@
  */
 package org.woped.core.model.petrinet;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -29,9 +30,11 @@ import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
 import org.woped.core.Constants;
 import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -77,111 +80,108 @@ public class SubProcessModel extends TransitionModel implements
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	private ModelElementContainer copySubElementContainer(
 			ModelElementContainer container)
 	{
 		LoggerManager.info(Constants.CORE_LOGGER, "copySubElementContainer");
-		ModelElementContainer newContainer = null;
+		ModelElementContainer newContainer = new ModelElementContainer();
 
-		newContainer = new ModelElementContainer();
+		// The model element processor is the only object that knows how to
+		// properly connect
+		// petri-net model elements, taking into account inner transitions
+		// for operators
+		// So we will be using it here to instantiate the serialized arcs
+		PetriNetModelProcessor processor = new PetriNetModelProcessor();
+		processor.setElementContainer(newContainer);
 
 		// copy elements
+		Map arcMap = container.getArcMap();
+		Map pasteArcs = new HashMap();
+		Iterator iter = arcMap.keySet().iterator();
+		
+		
+		while (iter.hasNext())
 		{
-			Map idMap = container.getIdMap();
-			Iterator keyIterator = idMap.keySet().iterator();
-
-			while (keyIterator.hasNext())
-			{
-				AbstractElementModel currentElement = (AbstractElementModel) container
-						.getElementById(keyIterator.next());
-
-				if (!currentElement.getCreationMap().getReadOnly())
-				{
-					CreationMap newMap = (CreationMap) currentElement
-							.getCreationMap().clone();
-
-					// TODO Proper ID
-					newMap.setId("copyof_" + newMap.getId());
-					newMap.setName("copyof_" + newMap.getName());
-
-					AbstractElementModel newElement = ModelElementFactory
-							.createModelElement(newMap);
-
-					newContainer.addElement(newElement);
-				}
-			}
+			String key = (String) iter.next();
+			ArcModel model = (ArcModel) arcMap.get(key);
+			
+			pasteArcs.put(key, model.getCreationMap());
+			
 		}
+		
+		
 
 		// copy arcs
-//		{
-//			Map arcMap = container.getArcMap();
-//			Map newArcMap = newContainer.getArcMap();
-//			Iterator arcIterator = arcMap.keySet().iterator();
-//
-//			//test
-//			int counter = 999;
-//
-//			while (arcIterator.hasNext())
-//			{
-//				ArcModel currentArcModel = (ArcModel) arcMap.get(arcIterator
-//						.next());
-//
-//				CreationMap arcCreationMap = (CreationMap) currentArcModel
-//						.getCreationMap().clone();
-//
-//				arcCreationMap.setArcSourceId("copyof_"
-//						+ arcCreationMap.getArcSourceId());
-//				arcCreationMap.setArcTargetId("copyof_"
-//						+ arcCreationMap.getArcTargetId());
-//				arcCreationMap.setArcId("copyof_" + arcCreationMap.getArcId());
-//
-//				ArcModel newArc = new ArcModel(arcCreationMap);
-//				
-//				
-////				newArc = ModelElementFactory.createArcModel(arcId, source, target)
-//				//modelelementprosecor nutzen
-//				//private void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) throws Exception
-//				
-//				newArcMap.put(("a" + counter++), newArc);
-//			}
-		
-		
-		
-//		{
-//			Map arcMap = container.getArcMap();
-//			Map newArcMap = newContainer.getArcMap();
-//			Iterator arcIterator = arcMap.keySet().iterator();
-//
-//			//test
-//			int counter = 1;
-//
-//			while (arcIterator.hasNext())
-//			{
-//				ArcModel currentArcModel = (ArcModel) arcMap.get(arcIterator
-//						.next());
-//				
-//				ArcModel newArc = (ArcModel) currentArcModel.clone();
-//
-//
-//				CreationMap arcCreationMap = newArc.getCreationMap();
-//				
-//				arcCreationMap.setArcSourceId("copyof_"
-//						+ arcCreationMap.getArcSourceId());
-//				arcCreationMap.setArcTargetId("copyof_"
-//						+ arcCreationMap.getArcTargetId());
-//				arcCreationMap.setArcId("copyof_" + arcCreationMap.getArcId());
-//
-//				
-//				
-////				newArc = ModelElementFactory.createArcModel(arcId, source, target)
-//				//modelelementprosecor nutzen
-//				//private void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) throws Exception
-//				
-//				newArcMap.put(("a" + counter++), newArc);
-//			}
-//
-//			newContainer.setArcMap(newArcMap);
-//		}
+		// {
+		// Map arcMap = container.getArcMap();
+		// Map newArcMap = newContainer.getArcMap();
+		// Iterator arcIterator = arcMap.keySet().iterator();
+		//
+		// //test
+		// int counter = 999;
+		//
+		// while (arcIterator.hasNext())
+		// {
+		// ArcModel currentArcModel = (ArcModel) arcMap.get(arcIterator
+		// .next());
+		//
+		// CreationMap arcCreationMap = (CreationMap) currentArcModel
+		// .getCreationMap().clone();
+		//
+		// arcCreationMap.setArcSourceId("copyof_"
+		// + arcCreationMap.getArcSourceId());
+		// arcCreationMap.setArcTargetId("copyof_"
+		// + arcCreationMap.getArcTargetId());
+		// arcCreationMap.setArcId("copyof_" + arcCreationMap.getArcId());
+		//
+		// ArcModel newArc = new ArcModel(arcCreationMap);
+		//				
+		//				
+		// // newArc = ModelElementFactory.createArcModel(arcId, source, target)
+		// //modelelementprosecor nutzen
+		// //private void importArcs(ArcType[] arcs, ModelElementContainer
+		// currentContainer) throws Exception
+		//				
+		// newArcMap.put(("a" + counter++), newArc);
+		// }
+
+		// {
+		// Map arcMap = container.getArcMap();
+		// Map newArcMap = newContainer.getArcMap();
+		// Iterator arcIterator = arcMap.keySet().iterator();
+		//
+		// //test
+		// int counter = 1;
+		//
+		// while (arcIterator.hasNext())
+		// {
+		// ArcModel currentArcModel = (ArcModel) arcMap.get(arcIterator
+		// .next());
+		//				
+		// ArcModel newArc = (ArcModel) currentArcModel.clone();
+		//
+		//
+		// CreationMap arcCreationMap = newArc.getCreationMap();
+		//				
+		// arcCreationMap.setArcSourceId("copyof_"
+		// + arcCreationMap.getArcSourceId());
+		// arcCreationMap.setArcTargetId("copyof_"
+		// + arcCreationMap.getArcTargetId());
+		// arcCreationMap.setArcId("copyof_" + arcCreationMap.getArcId());
+		//
+		//				
+		//				
+		// // newArc = ModelElementFactory.createArcModel(arcId, source, target)
+		// //modelelementprosecor nutzen
+		// //private void importArcs(ArcType[] arcs, ModelElementContainer
+		// currentContainer) throws Exception
+		//				
+		// newArcMap.put(("a" + counter++), newArc);
+		// }
+		//
+		// newContainer.setArcMap(newArcMap);
+		// }
 
 		return newContainer;
 	}
