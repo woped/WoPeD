@@ -193,8 +193,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     {
         if (m_analyseMenu == null)
         {
-            m_analyseMenu = new JMenu(Messages.getString("Menu.Analyse.Title")); //$NON-NLS-1$
-            m_analyseMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Analyse.Mnemonic")));
+            m_analyseMenu = new JMenu(Messages.getTitle("Menu.Analyse")); //$NON-NLS-1$
+            m_analyseMenu.setMnemonic(Messages.getMnemonic("Menu.Analyse"));
             m_analyseMenu.add(getStartTokenGameMenuItem());
             m_analyseMenu.add(getWoflanMenuItem());
             getWoflanMenuItem().setEnabled(ConfigurationManager.getConfiguration().isUseWoflan());
@@ -221,8 +221,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     {
         if (m_editMenu == null)
         {
-            m_editMenu = new JMenu(Messages.getString("Menu.Edit.Title")); //$NON-NLS-1$
-            m_editMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Edit.Mnemonic")));
+            m_editMenu = new JMenu(Messages.getTitle("Menu.Edit")); //$NON-NLS-1$
+            m_editMenu.setMnemonic(Messages.getMnemonic("Menu.Edit"));
 
             m_editMenu.add(getUndoMenuItem());
             m_editMenu.add(getRedoMenuItem());
@@ -248,8 +248,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     {
         if (m_fileMenu == null)
         {
-            m_fileMenu = new JMenu(Messages.getString("Menu.File.Title")); //$NON-NLS-1$
-            m_fileMenu.setMnemonic(getMnemonic(Messages.getString("Menu.File.Mnemonic")));
+            m_fileMenu = new JMenu(Messages.getTitle("Menu.File")); //$NON-NLS-1$
+            m_fileMenu.setMnemonic(Messages.getMnemonic("Menu.File")); //$NON-NLS-1$
 
             m_fileMenu.add(getNewMenuItem());
             m_fileMenu.add(getOpenMenuItem());
@@ -277,8 +277,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     {
         if (m_helpMenu == null)
         {
-            m_helpMenu = new JMenu(Messages.getString("Menu.Help.Title")); //$NON-NLS-1$
-            m_helpMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Help.Mnemonic")));
+            m_helpMenu = new JMenu(Messages.getTitle("Menu.Help")); //$NON-NLS-1$
+            m_helpMenu.setMnemonic(Messages.getMnemonic("Menu.Help"));
             
             m_helpMenu.add(getIndexMenuItem());
             m_helpMenu.add(getContextMenuItem());
@@ -300,8 +300,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     {
         if (m_optionsMenu == null)
         {
-            m_optionsMenu = new JMenu(Messages.getString("Menu.Options.Title")); //$NON-NLS-1$
-            m_optionsMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Options.Mnemonic")));
+            m_optionsMenu = new JMenu(Messages.getTitle("Menu.Options")); //$NON-NLS-1$
+            m_optionsMenu.setMnemonic(Messages.getMnemonic("Menu.Options"));
             m_optionsMenu.add(getOptionsMenuItem());
         }
         return m_optionsMenu;
@@ -316,8 +316,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     {
         if (m_viewMenu == null)
         {
-            m_viewMenu = new JMenu(Messages.getString("Menu.View.Title")); //$NON-NLS-1$
-            m_viewMenu.setMnemonic(getMnemonic(Messages.getString("Menu.View.Mnemonic")));
+            m_viewMenu = new JMenu(Messages.getTitle("Menu.View")); //$NON-NLS-1$
+            m_viewMenu.setMnemonic(Messages.getMnemonic("Menu.View"));
 
             // m_viewMenu.add(getStretchMenuItem());
             // m_viewMenu.add(getPressMenuItem());
@@ -468,8 +468,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     {
         if (m_recentMenu == null)
         {
-            m_recentMenu = new JMenu(Messages.getString("Menu.File.RecentMenu.Title"));
-            m_recentMenu.setMnemonic(KeyEvent.VK_R);
+            m_recentMenu = new JMenu(Messages.getTitle("Menu.File.RecentMenu"));
+            m_recentMenu.setMnemonic(Messages.getMnemonic("Menu.File.RecentMenu"));
             m_recentMenu.setIcon(Messages.getImageIcon("Document"));
             updateRecentMenu();
         }
@@ -700,8 +700,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_sampleMenu == null)
         {
 
-            m_sampleMenu = new JMenu(Messages.getString("Menu.Help.SampleNets.Title"));
-            m_sampleMenu.setMnemonic(KeyEvent.VK_S);
+            m_sampleMenu = new JMenu(Messages.getTitle("Menu.Help.SampleNets"));
+            m_sampleMenu.setMnemonic(Messages.getMnemonic("Menu.Help.SampleNets"));
             m_sampleMenu.setIcon(documentIcon);
 
             try
@@ -859,7 +859,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_windowMenu == null)
         {
             m_windowMenu = new JMenu(Messages.getTitle("Menu.Window"));
-            m_windowMenu.setMnemonic(getMnemonic(Messages.getString("Menu.Window.Mnemonic")));
+            m_windowMenu.setMnemonic(Messages.getMnemonic("Menu.Window"));
 
             m_windowMenu.add(getCascadeWindowsMenuItem());
             m_windowMenu.add(getArrangeWindowsMenuItem());

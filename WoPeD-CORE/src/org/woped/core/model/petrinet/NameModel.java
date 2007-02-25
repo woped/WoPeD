@@ -70,7 +70,7 @@ public class NameModel extends DefaultGraphCell
         GraphConstants.setMoveable(map, true);
         GraphConstants.setSizeable(map, false);
         GraphConstants.setAutoSize(map, true);
-        GraphConstants.setInset(map, 1);
+        GraphConstants.setInset(map, 2);
         setAttributes(map);
 
     }

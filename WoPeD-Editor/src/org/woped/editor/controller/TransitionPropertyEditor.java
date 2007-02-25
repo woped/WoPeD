@@ -1359,9 +1359,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         {
             buttonOk = new JButton();
             buttonOk.setIcon(Messages.getImageIcon("Button.Ok"));
-            buttonOk.setText(Messages.getString("Button.Ok.Title"));
+            buttonOk.setText(Messages.getTitle("Button.Ok"));
 
-            buttonOk.setMnemonic(KeyEvent.VK_O);
+            buttonOk.setMnemonic(Messages.getMnemonic("Button.Ok"));
             buttonOk.setPreferredSize(new Dimension(120, 25));
             buttonOk.addActionListener(new ActionListener()
             {
@@ -1395,10 +1395,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (buttonCancel == null)
         {
             buttonCancel = new JButton();
-            buttonCancel.setText(Messages.getString("Button.Cancel.Title"));
+            buttonCancel.setText(Messages.getTitle("Button.Cancel"));
             buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
- 
-            buttonCancel.setMnemonic(KeyEvent.VK_C);
+            buttonCancel.setMnemonic(Messages.getMnemonic("Button.Cancel"));
             buttonCancel.setPreferredSize(new Dimension(120, 25));
             buttonCancel.addActionListener(new ActionListener()
             {

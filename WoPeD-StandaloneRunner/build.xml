@@ -25,6 +25,9 @@
 				<pathelement path="lib/confBeans.jar" />
 			</classpath>
 		</javac>
+		<copy todir="bin/org/woped/gui/images">
+			<fileset dir="src/org/woped/gui/images"/>
+		</copy>
 	</target>
 	
 	<target name="makejar" depends="compile">

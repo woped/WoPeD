@@ -119,7 +119,6 @@ public class BugReportUI extends JDialog
             GridBagConstraints c = new GridBagConstraints();
 
             closeButton = new JButton(new DisposeWindowAction());
-            closeButton.setMnemonic(KeyEvent.VK_C);
             closeButton.requestFocus();
             c.insets = new Insets(20, 0, 20, 0);
             c.anchor = GridBagConstraints.CENTER;

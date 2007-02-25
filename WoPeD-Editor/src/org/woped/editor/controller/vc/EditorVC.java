@@ -71,6 +71,7 @@ import org.jgraph.graph.GraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.graph.Port;
+import org.jgraph.graph.PortView;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -813,8 +814,12 @@ public class EditorVC extends JPanel implements KeyListener,
 			if (points.get(i) instanceof Point2D)
 			{
 				pointArray[i] = (Point2D) points.get(i);
+			}        
+			else if (points.get(i) instanceof IntPair) 
+			{            
+				pointArray[i] = new Point2D.Double(((IntPair)points.get(i)).getX1(),((IntPair)points.get(i)).getX2());
 			}
-		}
+}
 
 		// CHECK if connection is valid
 		if (getGraph().isValidConnection(
@@ -1355,11 +1360,9 @@ public class EditorVC extends JPanel implements KeyListener,
 				tempArc = createArc(cmap);
 				for (short k = 0; k < currentArcMap.getArcPoints().size(); k++)
 				{
-					point = (Point2D) ((Point2D) currentArcMap.getArcPoints()
-							.get(k)).clone();
-					point.setLocation(point.getX() + deltaX, point.getY()
-							+ deltaY);
-					tempArc.addPoint(point);
+                    IntPair ip = (IntPair) currentArcMap.getArcPoints().get(k);
+                    point= new Point2D.Double(ip.getX1() + deltaX, ip.getX2() + deltaY);
+                    tempArc.addPoint(point);
 				}
 				selectElements.add(tempArc);
 			}
@@ -1369,6 +1372,7 @@ public class EditorVC extends JPanel implements KeyListener,
 				+ (System.currentTimeMillis() - begin) + " ms)");
 		updateNet();
 		getGraph().setSelectionCells(selectElements.toArray());
+        copySelection();		
 		getGraph().setCursor(Cursor.getDefaultCursor());
 	}
 
@@ -1441,7 +1445,12 @@ public class EditorVC extends JPanel implements KeyListener,
 					Point2D tempPoint;
 					for (short k = 0; k < points.size(); k++)
 					{
-						tempPoint = (Point2D) points.get(k);
+                        if (points.get(k) instanceof PortView){
+                            tempPoint=((PortView)points.get(k)).getLocation();
+                        }
+                        else {
+                            tempPoint = (Point2D) points.get(k);
+                        }
 						if (k == 0 || k == points.size() - 1)
 						{
 							newPoints.add(new Point2D.Double(tempPoint.getX(),

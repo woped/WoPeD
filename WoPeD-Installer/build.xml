@@ -18,8 +18,7 @@
 
 	<target name="makedistribution" 
          depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, start, purge" />
-<!--		depends="makebindist, makesrcdist, purge" /> -->
-
+	<!-- makesrcdist -->
 	<target name="clean">
 		<delete dir="dist" />
 	</target>
@@ -117,7 +116,12 @@
 	</target>
 
 	<target name="makejavadoc">
-<!--		<javadoc packagenames="org.woped.*" sourcepath="src" destdir="doc/api-doc" />-->
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Core/src" destdir="dist/doc/WoPeD-Core/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Editor/src" destdir="dist/doc/WoPeD-Editor/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-StandaloneRunner/src" destdir="dist/doc/WoPeD-StandaloneRunner/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-FileInterface/src" destdir="dist/doc/WoPeD-FileInterface/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Woflan/src" destdir="dist/doc/WoPeD-Woflan/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-XMLConfiguration/src" destdir="dist/doc/WoPeD-XMLConfiguration/api-doc" />
 	</target>
 
 	<target name="makesubprojects">
@@ -143,9 +147,9 @@
 			<arg line="/c launch4j.exe buildsetup.cfg" />
 		</exec>
 
-		<zip destfile="dist/WoPeD-install-windows-${WOPEDVERSION}.zip" basedir="dist" includes="WoPeD-install.exe" />
+		<zip destfile="dist/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
 
-		<tar destfile="dist/WoPeD-install-linux-${WOPEDVERSION}.tgz" compression="gzip">
+		<tar destfile="dist/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
 			<tarfileset dir="dist" mode="755">
 				<include name="WoPeD-install" />
 			</tarfileset>
@@ -154,7 +158,7 @@
 			</tarfileset>
 		</tar>
 
-		<tar destfile="dist/WoPeD-install-macos-${WOPEDVERSION}.tgz" compression="gzip">
+		<tar destfile="dist/WoPeD-install-macos-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
 			<tarfileset dir="dist" mode="755">
 				<include name="WoPeD-install.app" />
 			</tarfileset>
@@ -175,6 +179,7 @@
 		<delete dir="dist/nets" />
 		<delete dir="dist/doc/html/images" />
 		<delete dir="dist/doc/html/de" />
+		<delete dir="dist/doc/html/en" />
 		<delete dir="dist/doc/html" />
 		<delete dir="dist/doc" />
 		<delete dir="dist/lib" />
@@ -191,29 +196,22 @@
 		<delete dir="doc/api-doc" />
 	</target>
 
-	<!--
-	<target name="makesrcdist" depends="copybuildtools, makejavadoc">
+	<target name="makesrcdist">
 		<zip destfile="dist/WoPeD-src-${WOPEDVERSION}.zip">
-			<zipfileset dir="." includes="src/**/*" />
-			<zipfileset dir="." includes="lib/*.*" />
-			<zipfileset dir="." includes="doc/**/*" />
-			<zipfileset dir="." includes=".classpath" />
+			<zipfileset dir="WoPeD-${WOPEDVERSION}-src"   includes="**/*" />
 			<zipfileset dir="dist" includes="Readme.txt" />
 			<zipfileset dir="dist" includes="License.txt" />
 			<zipfileset dir="dist" includes="Changelog.txt" />
 		</zip>
 		<tar destfile="dist/WoPeD-src-${WOPEDVERSION}.tgz" compression="gzip">
-			<tarfileset dir="." includes="src/**/*" />
-			<tarfileset dir="." includes="lib/*.*" />
-			<tarfileset dir="." includes="doc/**/*" />
-			<tarfileset dir="." includes=".classpath" />
+			<tarfileset dir="WoPeD-${WOPEDVERSION}-src"   includes="**/*" />
 			<tarfileset dir="dist" includes="Readme.txt" />
 			<tarfileset dir="dist" includes="License.txt" />
 			<tarfileset dir="dist" includes="Changelog.txt" />
 		</tar>
 	</target>
 
-	<target name="makebindist">
+<!--	<target name="makebindist">
 		<zip destfile="dist/WoPeD-bin-${WOPEDVERSION}.zip">
 			<zipfileset dir="." includes="lib/*.*" />
 			<zipfileset dir="dist" includes="WoPeD.jar" />
@@ -231,8 +229,8 @@
 			<tarfileset dir="dist" includes="Changelog.txt" />
 		</tar>
 	</target>
--->
-	<!--<target name="genjar" depends="copylibs">
+
+	<target name="genjar">
 		<unjar dest="dist/genjarsrc">
 			<fileset dir="dist/lib"/>
 		</unjar>

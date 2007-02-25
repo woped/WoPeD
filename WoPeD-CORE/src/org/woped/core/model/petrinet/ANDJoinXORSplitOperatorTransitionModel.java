@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
 

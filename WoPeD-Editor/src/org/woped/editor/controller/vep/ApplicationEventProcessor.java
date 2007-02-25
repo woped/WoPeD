@@ -160,20 +160,15 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
         {
             PrinterJob printJob = PrinterJob.getPrinterJob();
             printJob.setPrintable(graph);
-            PageFormat oldPage = new PageFormat();
-            PageFormat pageFormat = printJob.pageDialog(oldPage);
-            if (oldPage != pageFormat)
+            if (printJob.printDialog())
             {
-                if (printJob.printDialog())
+                try
                 {
-                    try
-                    {
-                        printJob.print();
-                    } catch (PrinterException e)
-                    {
-                        LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not Print");
-                        LoggerManager.debug(Constants.EDITOR_LOGGER, "Exception" + e);
-                    }
+                    printJob.print();
+                } catch (PrinterException e)
+                {
+                    LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not Print");
+                    LoggerManager.debug(Constants.EDITOR_LOGGER, "Exception" + e);
                 }
             }
         }

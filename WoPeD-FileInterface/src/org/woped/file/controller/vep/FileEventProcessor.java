@@ -103,22 +103,16 @@ public class FileEventProcessor extends AbstractEventProcessor
                     	}
                     	else
                     	{                    	
-//                    		try
-                    		{                        	
-                    			// Instantiate net analysis dialog and display it
-                    			// Arguments are the Woflan TPN file and the model processor
-                    			// for the petri-net model that is in focus
-                    			NetAnalysisDialog myDialog = new NetAnalysisDialog(
-                    					(JFrame) getMediator().getUi(),
-                    					f,
-                    					getMediator().getUi().getEditorFocus(), this.getMediator());
-                    			myDialog.setVisible(true);                        	
-                    			
-                    			LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
-                    		}/* catch (Exception e)
-                    		{
-                    			LoggerManager.warn(Constants.FILE_LOGGER, "Local WoPeD analysis failed.");
-                    		}*/
+                    		// Instantiate net analysis dialog and display it
+                    		// Arguments are the Woflan TPN file and the model processor
+                    		// for the petri-net model that is in focus
+                    		NetAnalysisDialog myDialog = new NetAnalysisDialog(
+                    				(JFrame) getMediator().getUi(),
+                    				f,
+                    				getMediator().getUi().getEditorFocus(), this.getMediator());
+                    		myDialog.setVisible(true);                        	
+                    		
+                    		LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
                     	}
 
                     }    
@@ -377,8 +371,6 @@ public class FileEventProcessor extends AbstractEventProcessor
                 jfc.setFileFilter(PNMLFilter);
             }
             jfc.setDialogTitle(Messages.getString("Action.EditorSaveAs.Title"));
-            
-            
             int returnVal = jfc.showSaveDialog(null);
             
             if (jfc.getSelectedFile() != null && returnVal == JFileChooser.APPROVE_OPTION)
@@ -413,7 +405,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         return succeed;
 
     }
-
+    
     /**
      * TODO: DOCUMENTATION (silenco)
      */

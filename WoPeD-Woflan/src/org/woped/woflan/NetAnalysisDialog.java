@@ -364,6 +364,7 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
     	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumHandles") + ": " +
     			m_structuralAnalysis.getNumWellStructurednessViolations(),
     			m_structuralAnalysis.getWellStructurednessViolations()) {
+
     		public String GetGroupDisplayString(int nIndex, Collection gorup) {
     			return Messages.getString("Analysis.Tree.HandlePair") + " " + (nIndex+1);
     		}

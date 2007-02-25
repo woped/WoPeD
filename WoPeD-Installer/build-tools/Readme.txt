@@ -54,7 +54,6 @@ Download and Run
 ----------------
  
 Download the latest version via the WoPeD website www.woped.org.
-   
 For Microsoft Windows, download the file WoPeD-install-X.Y.Z.zip 
 (where X.Y.Z stands for the current WoPeD version), unpack it with
 an archiving tool (e. g. Winzip) and run the contained executable

@@ -416,7 +416,7 @@ public class PNMLExport
         	Iterator innerArcIter = currentConnectedModel.getSimpleTransContainer().getArcMap().keySet().iterator();
         	while (innerArcIter.hasNext())
         	{
-        		// Dump all inner arcs of connected transitions
+           		// Dump all inner arcs of connected transitions
         		ArcModel currentInnerArc = (ArcModel) currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
         		// Find outer arc corresponding to inner arc
         		// (carries graphics information)

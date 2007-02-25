@@ -30,7 +30,6 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -351,8 +350,8 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         if (applyButton == null)
         {
             applyButton = new JButton();
-            applyButton.setMnemonic(KeyEvent.VK_A);
-            applyButton.setText(Messages.getString("Button.Apply.Title"));
+            applyButton.setMnemonic(Messages.getMnemonic("Button.Apply"));
+            applyButton.setText(Messages.getTitle("Button.Apply"));
             applyButton.setIcon(Messages.getImageIcon("Button.Apply"));
             applyButton.addActionListener(new ActionListener()
             {
@@ -371,8 +370,8 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         {
             cancelButton = new JButton(new DisposeWindowAction());
             cancelButton.setIcon(null);
-            cancelButton.setMnemonic(KeyEvent.VK_C);
-            cancelButton.setText(Messages.getString("Button.Cancel.Title"));
+            cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
+            cancelButton.setText(Messages.getTitle("Button.Cancel"));
             cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
         }
         return cancelButton;
@@ -383,9 +382,9 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         if (okButton == null)
         {
             okButton = new JButton();
-            okButton.setText(Messages.getString("Button.Ok.Title"));
+            okButton.setText(Messages.getTitle("Button.Ok"));
             okButton.setIcon(Messages.getImageIcon("Button.Ok"));
-            okButton.setMnemonic(KeyEvent.VK_O);
+            okButton.setMnemonic(Messages.getMnemonic("Button.Ok"));
             okButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)

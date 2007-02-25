@@ -18,6 +18,9 @@
 				<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 			</classpath>
 		</javac>
+		<copy todir="bin/org/woped/file/samples">
+			<fileset dir="src/org/woped/file/samples"/>
+		</copy>
 	</target>
 	
 	<target name="makejar" depends="compile">

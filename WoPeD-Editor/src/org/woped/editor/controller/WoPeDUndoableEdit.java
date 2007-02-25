@@ -31,6 +31,7 @@ import javax.swing.undo.UndoableEdit;
 
 import org.jgraph.graph.DefaultGraphModel;
 import org.woped.core.model.ArcModel;
+import org.woped.core.model.PortCell;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
@@ -126,7 +127,10 @@ public class WoPeDUndoableEdit implements UndoableEdit
                 {
                     // m_editor.createArc(((ArcModel)
                     // elements[i]).getCreationMap(), false);
-                    m_editor.getModelProcessor().getElementContainer().addReference((ArcModel) elements[i]);
+                    //m_editor.getModelProcessor().getElementContainer().addReference((ArcModel) elements[i]);
+                    ArcModel newArc = m_editor.getModelProcessor().createArc(((ArcModel)elements[i]).getSourceId(), ((ArcModel)elements[i]).getTargetId());
+                    newArc.setAttributes(((ArcModel)elements[i]).getAttributes());
+                    //PetriNetModelProcessor createArc
                 } else if (elements[i] instanceof GroupModel)
                 {} else if (elements[i] instanceof TriggerModel)
                 {

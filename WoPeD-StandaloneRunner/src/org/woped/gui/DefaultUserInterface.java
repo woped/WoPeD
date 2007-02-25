@@ -248,6 +248,16 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             if (!allFrames[i].isIcon())
             {
                 allOpenFrames.add(0, allFrames[i]);
+                if (allFrames[i].isMaximum()) 
+                {
+                    try
+                    {
+                        allFrames[i].setMaximum(false);
+                    } catch (PropertyVetoException e)
+                    {
+                        //nothing to do
+                    }
+                }
             }
         }
         for (int i = 0; i < allOpenFrames.size(); i++)
@@ -278,7 +288,18 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             if (!allFrames[i].isIcon())
             {
                 allOpenFrames.add(0, allFrames[i]);
+                if (allFrames[i].isMaximum()) 
+                {
+                    try
+                    {
+                        allFrames[i].setMaximum(false);
+                    } catch (PropertyVetoException e)
+                    {
+                        //nothing to do
+                    }
+                }
             }
+            
         }
         if (allOpenFrames.size()!=0)
         {
