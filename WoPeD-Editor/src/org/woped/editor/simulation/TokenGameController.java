@@ -144,6 +144,8 @@ public class TokenGameController
     {
         // set all transistions/arcs inactive & not fireing
         resetTransitionStatus();
+        // reset and sink places that may have been activated
+        resetSinkPlacesStatus();
         resetArcStatus();
         // restore origin tokencount
         resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
@@ -595,6 +597,21 @@ public class TokenGameController
         {
             LoggerManager.warn(Constants.EDITOR_LOGGER, "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
         }
+    }
+    
+    //! Reset status of destination places which may be active if they carry
+    //! any tokens to allow returning from a sub-process
+    private void resetSinkPlacesStatus()
+    {
+        if ((petrinet.getElementContainer().getOwningElement()!=null)&&(sinkPlaces!=null))
+        {
+        	Iterator<PlaceModel> i = sinkPlaces.iterator();
+        	while (i.hasNext())
+        	{
+        		PlaceModel currentSink = i.next();
+        		currentSink.setActivated(false);
+        	}        	
+        }              
     }
 
     /*
