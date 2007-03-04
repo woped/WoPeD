@@ -1634,9 +1634,12 @@ public class EditorVC extends JPanel implements KeyListener,
 			if (arg0.isAddedCell(cells[i]))
 			{
 				Object toBeAdded = cells[i];
-				if (toBeAdded instanceof PetriNetModelElement)
+				if ((toBeAdded instanceof PetriNetModelElement)||
+						(toBeAdded instanceof NameModel)||
+						(toBeAdded instanceof TriggerModel)||
+						(toBeAdded instanceof TransitionResourceModel))
 				{
-					TreeNode parent = ((PetriNetModelElement) toBeAdded)
+					TreeNode parent = ((DefaultGraphCell) toBeAdded)
 							.getParent();
 					if (parent != null)
 						toBeAdded = parent;
