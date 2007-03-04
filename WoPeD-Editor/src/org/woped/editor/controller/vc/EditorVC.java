@@ -23,6 +23,7 @@
 package org.woped.editor.controller.vc;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -2159,13 +2160,37 @@ public class EditorVC extends JPanel implements KeyListener,
 							.setLastDividerLocation(EditorVC.m_splitPosition);
 			}
 			// Size
-			setPreferredSize(layoutInfo.getSavedSize());
+			Dimension d = layoutInfo.getSavedSize();
+			setPreferredSize(d);
+			// Setting our own size won't help us much since
+			// we're the child of a scrolling pane
+			// Instead, look into our parents
+			// to find the one that is a JInternalFrame
+			Container currentParent = getParent();
+			while ((currentParent!=null)&&(!(currentParent instanceof JInternalFrame)))
+				currentParent = currentParent.getParent();
+			if (currentParent!=null)
+			{
+				Dimension editorDim = new Dimension();
+				getSize(editorDim);
+				Dimension frameDim = new Dimension();
+				currentParent.getSize(frameDim);				
+				
+				// There is some overhead that must be taken into account here...
+				d.width += frameDim.width - editorDim.width;
+				d.height+= frameDim.height - editorDim.height;
+				
+				currentParent.setSize(d);
+				
+				
+			}
+			
 			// Currently, we ignore the position
 			// It's unwanted sometimes, especially if things like desktop
 			// resolution change
 		}
 	}
-
+	
 	public void internalFrameActivated(InternalFrameEvent e)
 	{
 	};
