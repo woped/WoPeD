@@ -24,6 +24,9 @@ package org.woped.editor.controller;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Dimension2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.util.Collections;
@@ -424,5 +427,68 @@ public class WoPeDJGraph extends AbstractGraph
         }
 
     }
+    
+	/*
+	 * The following methods are overridden as a bug fix for a rounding problem
+	 * with high scaling factors:
+	 * This varient will expect a point in model coordinates
+	 * rather than screen coordinates which is really
+	 * what JGraph expects all over the place as well
+	 * FIXME: SO THIS IS REALLY A BUGFIX FOR JGRAPH 5.9.1
+	 * WE MIGHT WANT TO REMOVE THIS ROUTINE WHEN UPDATING TO A FIXED VERSION!
+	 * MARKED WITH A FIXME BECAUSE OF THAT.*/
+    
+	//
+	// Grid and Scale
+	//
+	/**
+	 * Returns the given point applied to the grid.
+	 * 
+	 * @param p
+	 *            a point in model coordinates.
+	 * @return the same point applied to the grid.
+	 */
+	public Point2D snap(Point2D p) {
+		if (gridEnabled && p != null) {
+			double sgs = gridSize /** getScale()*/;
+			p.setLocation(Math.round(Math.round(p.getX() / sgs) * sgs), Math
+					.round(Math.round(p.getY() / sgs) * sgs));
+		}
+		return p;
+	}
+
+	/**
+	 * Returns the given rectangle applied to the grid.
+	 * 
+	 * @param r
+	 *            a rectangle in model coordinates.
+	 * @return the same rectangle applied to the grid.
+	 */
+	public Rectangle2D snap(Rectangle2D r) {
+		if (gridEnabled && r != null) {
+			double sgs = gridSize /** getScale()*/;
+			r.setFrame(Math.round(Math.round(r.getX() / sgs) * sgs), Math
+					.round(Math.round(r.getY() / sgs) * sgs), 1 + Math
+					.round(Math.round(r.getWidth() / sgs) * sgs), 1 + Math
+					.round(Math.round(r.getHeight() / sgs) * sgs));
+		}
+		return r;
+	}
+
+	/**
+	 * Returns the given dimension applied to the grid.
+	 * 
+	 * @param d
+	 *            a dimension in model coordinates to snap to.
+	 * @return the same dimension applied to the grid.
+	 */
+	public Dimension2D snap(Dimension2D d) {
+		if (gridEnabled && d != null) {
+			double sgs = gridSize /** getScale()*/;
+			d.setSize(1 + Math.round(Math.round(d.getWidth() / sgs) * sgs),
+					1 + Math.round(Math.round(d.getHeight() / sgs) * sgs));
+		}
+		return d;
+	}
 
 }
