@@ -31,7 +31,6 @@ import javax.swing.undo.UndoableEdit;
 
 import org.jgraph.graph.DefaultGraphModel;
 import org.woped.core.model.ArcModel;
-import org.woped.core.model.PortCell;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;

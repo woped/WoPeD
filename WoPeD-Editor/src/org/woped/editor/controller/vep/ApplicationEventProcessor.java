@@ -1,6 +1,5 @@
 package org.woped.editor.controller.vep;
 
-import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.beans.PropertyChangeEvent;

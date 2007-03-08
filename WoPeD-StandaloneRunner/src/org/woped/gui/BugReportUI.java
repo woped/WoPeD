@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,8 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.woped.editor.action.DisposeWindowAction;
-import org.woped.editor.utilities.Messages;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.editor.utilities.Messages;
 
 @SuppressWarnings("serial")
 public class BugReportUI extends JDialog
