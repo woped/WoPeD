@@ -13,7 +13,6 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
 
 	public ANDJoinXORSplitOperatorTransitionModel(CreationMap map) {
 		super(map, ANDJOIN_XORSPLIT_TYPE);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
