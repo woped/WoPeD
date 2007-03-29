@@ -20,6 +20,7 @@ import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.model.uml.OperatorModel;
 import org.woped.core.model.uml.StateModel;
+import org.woped.editor.controller.ArcPropertyEditor;
 import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
@@ -168,6 +169,11 @@ public class EditorEventProcessor extends AbstractEventProcessor
             case AbstractViewEvent.OPEN_PROPERTIES:
                 cell = editor.getGraph().getSelectionCell();
                 AbstractElementModel element = null;
+                
+                if (cell instanceof ArcModel){
+                	new ArcPropertyEditor((JFrame) getMediator().getUi(), (ArcModel) cell, editor);
+                }
+                
                 if (cell instanceof TriggerModel)
                 {
                     cell=((TriggerModel)cell).getParent();

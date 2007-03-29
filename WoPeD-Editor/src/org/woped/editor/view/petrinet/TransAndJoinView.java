@@ -111,6 +111,8 @@ public class TransAndJoinView extends TransSimpleView
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
 
             }
+            
+            drawTime(g2, d);
         }
 
         /**

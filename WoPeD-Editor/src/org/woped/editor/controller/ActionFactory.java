@@ -103,6 +103,9 @@ public class ActionFactory
     public final static String         ACTIONID_ARRANGE                = "Menu.Window.Arrange";
     public final static String		   ACTIONID_SHOWSIDEBAR			   = "Menu.Window.ShowSideBar";
 
+    public final static String         ACTIONID_QUANT                  = "ToolBar.QuantAna";
+    
+    
     private static HashMap<String, WoPeDAction>             STATIC_ACTION_MAP               = null;
 
     private static HashMap<IEditor, Action>             SELECT_EDITOR_SELECT_ACTION     = new HashMap<IEditor, Action>();
@@ -189,6 +192,12 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_SUB, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_SUB, null, ACTIONID_DRAWMODE_SUB));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_SUB), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_SUBPROCESS);
 
+        
+        STATIC_ACTION_MAP.put(ACTIONID_QUANT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.QUANTANA, null, ACTIONID_QUANT));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_QUANT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
+        
+        
+        
         /* VIEW */
 //        STATIC_ACTION_MAP.put(ACTIONID_STRETCH, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.STRETCH, null, ACTIONID_STRETCH));
 //        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_STRETCH), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);

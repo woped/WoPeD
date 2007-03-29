@@ -102,6 +102,8 @@ public class TransXOrSplitJoinView extends TransSimpleView
             this.drawOperatorArrow(g, false, false);
             // XOR Split Lines
             this.drawOperatorArrow(g, true, true);
+            
+            drawTime(g2, d);
         }
 
         /**

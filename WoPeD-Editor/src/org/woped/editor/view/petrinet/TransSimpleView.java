@@ -23,13 +23,17 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
 
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.view.AbstractElementView;
 import org.woped.editor.utilities.Messages;
 
@@ -104,7 +108,9 @@ public class TransSimpleView extends AbstractElementView
                 ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
             }
-        }        
+            
+           drawTime(g2, d);
+        }
     }
 
     /**
@@ -118,5 +124,16 @@ public class TransSimpleView extends AbstractElementView
      */
     public void refresh()
     {}
-
+    
+    public void drawTime(Graphics2D g2, Dimension d){
+    	String time = Integer.toString(((TransitionModel)this.getCell()).getToolSpecific().getTime());
+    	
+    	if (!time.equals("0")){
+    		Font timeFont = new Font(null, Font.BOLD, 12);
+    		g2.setFont(timeFont);
+    		Rectangle2D bounds = timeFont.getStringBounds(time, g2.getFontRenderContext());
+    		g2.setColor(new Color(0, 128, 0));
+    		g2.drawString(time, (int)((d.width - bounds.getWidth())/2), (int)((d.height - bounds.getHeight() - bounds.getY())/2));
+    	}
+    }
 }

@@ -107,6 +107,7 @@ public class TransXorJoinAndSplitView extends TransSimpleView
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
             
+            drawTime(g2, d);
         }
         /**
          * @return

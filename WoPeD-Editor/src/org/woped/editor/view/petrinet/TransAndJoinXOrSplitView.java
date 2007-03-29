@@ -106,7 +106,8 @@ public class TransAndJoinXOrSplitView extends TransSimpleView
                 g.setColor(getInnerDrawingsColor());
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            
+
+            drawTime(g2, d);
         }
         /**
          * @return

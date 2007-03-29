@@ -105,6 +105,8 @@ public class TransAndSplitView extends TransSimpleView
             	ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
             }
+            
+            drawTime(g2, d);
         }
 
         /**
@@ -122,6 +124,7 @@ public class TransAndSplitView extends TransSimpleView
         {
             return TransAndSplitView.this.isFireing();
         }
+        
     }
 
     /**

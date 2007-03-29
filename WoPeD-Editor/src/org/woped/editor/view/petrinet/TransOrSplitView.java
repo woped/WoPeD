@@ -101,6 +101,8 @@ public class TransOrSplitView extends TransSimpleView
             g.setColor(this.getInnerDrawingsColor());
             // OR Split Lines
             this.drawOperatorArrow(g, true, true);
+            
+            drawTime(g2, d);
         }
 
         /**

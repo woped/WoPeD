@@ -100,6 +100,8 @@ public class TransXOrSplitView extends TransSimpleView
             g.setColor(this.getInnerDrawingsColor());
             // XOR Split Lines
             this.drawOperatorArrow(g, true, true);
+            
+            drawTime(g2, d);
         }
 
         /**

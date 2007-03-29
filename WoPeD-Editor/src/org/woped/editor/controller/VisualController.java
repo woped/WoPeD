@@ -495,7 +495,7 @@ public class VisualController implements PropertyChangeListener,
 		
 
 			setStatus(NO_SELECTION, noSelection);
-			setStatus(ANY_SELECTION, !noSelection);
+			setStatus(ANY_SELECTION, !noSelection && !nameSelection); // <----
 			setStatus(WOFLAN, ConfigurationManager.getConfiguration()
 					.isUseWoflan());
 			setStatus(SUBPROCESS_SELECTION, subprocessSelected);

@@ -100,6 +100,8 @@ public class TransXOrJoinView extends TransSimpleView
             g.setColor(this.getInnerDrawingsColor());
             // XOR JOIN Lines
             this.drawOperatorArrow(g, false, false);
+            
+            drawTime(g2, d);
         }
 
         /**

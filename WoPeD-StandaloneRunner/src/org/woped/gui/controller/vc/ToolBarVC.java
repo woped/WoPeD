@@ -99,6 +99,7 @@ public class ToolBarVC extends JToolBar implements IViewController
     private AbstractButton     m_tokenGameButton    = null;
     private AbstractButton     m_woflanButton       = null;
     private AbstractButton	   m_analysisButton		= null;
+    private AbstractButton	   m_quantAnaButton		= null;
 
     public ToolBarVC(String id)
     {
@@ -154,6 +155,7 @@ public class ToolBarVC extends JToolBar implements IViewController
         add(getTokenGameButton());
         add(getWoflanButton());
         add(getAnalysisButton());
+        add(getQuantAnaButton());
     }
 
     private AbstractButton getNewButton()
@@ -408,6 +410,15 @@ public class ToolBarVC extends JToolBar implements IViewController
     		m_analysisButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_WOPED), false);
     	}
     	return m_analysisButton;
+    }
+    
+    public AbstractButton getQuantAnaButton()
+    {
+    	if (m_quantAnaButton == null)
+    	{
+    		m_quantAnaButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANT), false);
+    	}
+    	return m_quantAnaButton;
     }
 
     public void addViewListener(IViewListener listener)
