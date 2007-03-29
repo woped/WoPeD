@@ -22,6 +22,8 @@
  */
 package org.woped.core.model;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.io.Serializable;
@@ -60,7 +62,9 @@ public class ArcModel extends DefaultEdge implements Serializable
     //! and read back but not used for anything.
     //! It will, however, be used in the future for quantitative analysis of 
     //! workflow nets. Time of this writing: 2006/12/18, A.Eckleder 
-    private double probability = 0.0d;
+    private double probability = 1.0;//0.0d;
+    private boolean displayOn = false;
+    //private GraphLayoutCache graphLayoutCache = null;
 
     /**
      * Constructor for ArcModel.
@@ -95,7 +99,18 @@ public class ArcModel extends DefaultEdge implements Serializable
                 .getConfiguration().getArrowWidth());
         GraphConstants.setDisconnectable(map, false);
         // GraphConstants.setRouting(map, Edge.)
-        getAttributes().applyMap(map);
+        
+        // Add Probability
+        //GraphConstants.setValue(map, Integer.toString(Double.valueOf(probability * 100).intValue()));
+        GraphConstants.setForeground(map, new Color(255, 0, 0));
+        GraphConstants.setFont(map, new Font(null, Font.BOLD, 12));
+    	//GraphConstants.setLabelPosition(map, new Point2D.Double(GraphConstants.PERMILLE/2, 0));
+    	//GraphConstants.setSelectable(map, true);
+        Point2D[] pos = { new Point2D.Double(GraphConstants.PERMILLE/2, 0) };
+        GraphConstants.setExtraLabelPositions(map, pos);
+        Object[] labels = { Integer.toString(Double.valueOf(probability * 100).intValue()) };
+        GraphConstants.setExtraLabels(map, labels);
+    	getAttributes().applyMap(map);
     }
 
     public int getWeight()
@@ -518,4 +533,20 @@ public class ArcModel extends DefaultEdge implements Serializable
 		this.probability = probability;
 	}
 
+	public boolean isDisplayOn() {
+		return displayOn;
+	}
+
+	public void setDisplayOn(boolean displayOn) {
+		this.displayOn = displayOn;
+	}
+	/*
+	public GraphLayoutCache getGraphLayoutCache() {
+		return graphLayoutCache;
+	}
+
+	public void setGraphLayoutCache(GraphLayoutCache graphLayoutCache) {
+		this.graphLayoutCache = graphLayoutCache;
+	}
+	*/
 }
