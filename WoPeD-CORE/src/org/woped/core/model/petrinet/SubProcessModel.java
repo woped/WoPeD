@@ -22,7 +22,6 @@
  */
 package org.woped.core.model.petrinet;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -50,11 +49,11 @@ public class SubProcessModel extends TransitionModel implements
 		InnerElementContainer
 {
 
-	public static final int WIDTH = 40;
-	public static final int HEIGHT = 40;
-	private int subElementCounter = 0;
-	private ModelElementContainer subElementContainer;
-	private static final String SUBELEMENT_SEPERATOR = "_";
+	public static final int			WIDTH					= 40;
+	public static final int			HEIGHT					= 40;
+	private int						subElementCounter		= 0;
+	private ModelElementContainer	subElementContainer;
+	private static final String		SUBELEMENT_SEPERATOR	= "_";
 
 	public SubProcessModel(CreationMap map)
 	{
@@ -62,14 +61,14 @@ public class SubProcessModel extends TransitionModel implements
 		setSize(WIDTH, HEIGHT);
 		getToolSpecific().setSubprocess(true);
 
-		//there is already a container -> make a copy
+		// there is already a container -> make a copy
 		if (map.getSubElementContainer() != null)
 		{
 			ModelElementContainer newContainer = copySubElementContainer(map
 					.getSubElementContainer());
 			newContainer.setOwningElement(this);
 			subElementContainer = newContainer;
-		} 
+		}
 		else
 		{
 			// The sub element container
@@ -77,7 +76,7 @@ public class SubProcessModel extends TransitionModel implements
 			subElementContainer = new ModelElementContainer();
 			subElementContainer.setOwningElement(this);
 		}
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -87,105 +86,65 @@ public class SubProcessModel extends TransitionModel implements
 		LoggerManager.info(Constants.CORE_LOGGER, "copySubElementContainer");
 		ModelElementContainer newContainer = new ModelElementContainer();
 
-		// The model element processor is the only object that knows how to
-		// properly connect
-		// petri-net model elements, taking into account inner transitions
-		// for operators
-		// So we will be using it here to instantiate the serialized arcs
 		PetriNetModelProcessor processor = new PetriNetModelProcessor();
 		processor.setElementContainer(newContainer);
 
+		// HashMap<String, String> idMapper = new HashMap<String, String>();
+
 		// copy elements
-		Map arcMap = container.getArcMap();
-		Map pasteArcs = new HashMap();
-		Iterator iter = arcMap.keySet().iterator();
-		
-		
-		while (iter.hasNext())
 		{
-			String key = (String) iter.next();
-			ArcModel model = (ArcModel) arcMap.get(key);
-			
-			pasteArcs.put(key, model.getCreationMap());
-			
+			Map idMap = container.getIdMap();
+			Iterator keyIterator = idMap.keySet().iterator();
+
+			while (keyIterator.hasNext())
+			{
+				AbstractElementModel currentElement = (AbstractElementModel) container
+						.getElementById(keyIterator.next());
+
+				if (!currentElement.isReadOnly())
+				{
+
+					CreationMap newMap = (CreationMap) currentElement
+							.getCreationMap().clone();
+
+					newMap.setId("copyof_" + newMap.getId());
+
+					AbstractElementModel newElement = ModelElementFactory
+							.createModelElement(newMap);
+
+					newContainer.addElement(newElement);
+
+					// // get a proper ID
+					// newMap.setId(null);
+					//
+					// AbstractElementModel newElement = processor
+					// .createElement(newMap);
+					//
+					// idMapper.put(currentElement.getId(), newElement.getId());
+
+				}
+			}
 		}
-		
-		
 
 		// copy arcs
-		// {
-		// Map arcMap = container.getArcMap();
-		// Map newArcMap = newContainer.getArcMap();
-		// Iterator arcIterator = arcMap.keySet().iterator();
-		//
-		// //test
-		// int counter = 999;
-		//
-		// while (arcIterator.hasNext())
-		// {
-		// ArcModel currentArcModel = (ArcModel) arcMap.get(arcIterator
-		// .next());
-		//
-		// CreationMap arcCreationMap = (CreationMap) currentArcModel
-		// .getCreationMap().clone();
-		//
-		// arcCreationMap.setArcSourceId("copyof_"
-		// + arcCreationMap.getArcSourceId());
-		// arcCreationMap.setArcTargetId("copyof_"
-		// + arcCreationMap.getArcTargetId());
-		// arcCreationMap.setArcId("copyof_" + arcCreationMap.getArcId());
-		//
-		// ArcModel newArc = new ArcModel(arcCreationMap);
-		//				
-		//				
-		// // newArc = ModelElementFactory.createArcModel(arcId, source, target)
-		// //modelelementprosecor nutzen
-		// //private void importArcs(ArcType[] arcs, ModelElementContainer
-		// currentContainer) throws Exception
-		//				
-		// newArcMap.put(("a" + counter++), newArc);
-		// }
+		Iterator arcIter = container.getArcMap().keySet().iterator();
+		while (arcIter.hasNext())
+		{
+			ArcModel arcModel = (ArcModel) container.getArcMap().get(
+					arcIter.next());
 
-		// {
-		// Map arcMap = container.getArcMap();
-		// Map newArcMap = newContainer.getArcMap();
-		// Iterator arcIterator = arcMap.keySet().iterator();
-		//
-		// //test
-		// int counter = 1;
-		//
-		// while (arcIterator.hasNext())
-		// {
-		// ArcModel currentArcModel = (ArcModel) arcMap.get(arcIterator
-		// .next());
-		//				
-		// ArcModel newArc = (ArcModel) currentArcModel.clone();
-		//
-		//
-		// CreationMap arcCreationMap = newArc.getCreationMap();
-		//				
-		// arcCreationMap.setArcSourceId("copyof_"
-		// + arcCreationMap.getArcSourceId());
-		// arcCreationMap.setArcTargetId("copyof_"
-		// + arcCreationMap.getArcTargetId());
-		// arcCreationMap.setArcId("copyof_" + arcCreationMap.getArcId());
-		//
-		//				
-		//				
-		// // newArc = ModelElementFactory.createArcModel(arcId, source, target)
-		// //modelelementprosecor nutzen
-		// //private void importArcs(ArcType[] arcs, ModelElementContainer
-		// currentContainer) throws Exception
-		//				
-		// newArcMap.put(("a" + counter++), newArc);
-		// }
-		//
-		// newContainer.setArcMap(newArcMap);
-		// }
+			processor.createArc("copyof_" + arcModel.getSourceId(), "copyof_"
+					+ arcModel.getTargetId());
+
+			// ok
+			// processor.createArc(idMapper.get(arcModel.getSourceId()),
+			// idMapper
+			// .get(arcModel.getSourceId()));
+		}
 
 		return newContainer;
 	}
-	
+
 	public String getToolTipText()
 	{
 		return "Subprocess\nID: " + getId() + "\nName: " + getNameValue();
@@ -210,7 +169,9 @@ public class SubProcessModel extends TransitionModel implements
 			DefaultPort targetId)
 	{
 		subElementContainer.addReference(ModelElementFactory.createArcModel(
-				arcId, sourceId, targetId));
+				arcId,
+				sourceId,
+				targetId));
 	}
 
 	public AbstractElementModel getElement(Object elementId)
