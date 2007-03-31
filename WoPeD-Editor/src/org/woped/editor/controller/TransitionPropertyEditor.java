@@ -123,6 +123,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private static final String   COMBOBOX_SECONDS_TEXT         = Messages.getString("Transition.Properties.Seconds");
     private static final Object[] durationValues                = { COMBOBOX_SECONDS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT, 
                                                                     COMBOBOX_WEEKS_TEXT, COMBOBOX_MONTHS_TEXT, COMBOBOX_YEARS_TEXT };
+    private String oldTime;
+    private String oldTimeUnit;
+    
     // Trigger
     private JPanel                triggerPanel                  = null;
     private JRadioButton          triggerNoneRadioButton        = null;
@@ -177,6 +180,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         this.setTitle(Messages.getString("Transition.Properties"));
         this.getContentPane().add(getContentPanel(), BorderLayout.NORTH);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+        this.oldTime = durationTextField.getText();
+        this.oldTimeUnit = durationComboBox.getSelectedItem().toString();
         getNameTextField().requestFocus();
     }
 
@@ -1099,9 +1104,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (durationTextField == null)
         {
             durationTextField = new JTextField();
-            durationTextField.setText("");
+            durationTextField.setText(Integer.toString(transition.getToolSpecific().getTime()));
             durationTextField.setMinimumSize(new Dimension(80, 20));
-            durationTextField.setEnabled(false);
+            durationTextField.setEnabled(true);
         }
 
         return durationTextField;
@@ -1113,7 +1118,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         {
             durationComboBox = new JComboBox(durationValues);
             durationComboBox.setMinimumSize(new Dimension(80, 20));
-            durationComboBox.setEnabled(false);
+            durationComboBox.setSelectedIndex(transition.getToolSpecific().getTimeUnit());
+            durationComboBox.setEnabled(true);
         }
 
         return durationComboBox;
@@ -1495,6 +1501,13 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
 
         // Name changing handling
         transition.setNameValue(getNameTextField().getText());
+        
+        // Duration
+        if (!oldTime.equals(durationTextField.getText()))
+        	transition.getToolSpecific().setTime(Integer.parseInt(durationTextField.getText()));
+        
+        if (!oldTimeUnit.equals(durationComboBox.getSelectedItem().toString()))
+        	transition.getToolSpecific().setTimeUnit(durationComboBox.getSelectedIndex());
         
         // Set change flag
         getEditor().setSaved(false);

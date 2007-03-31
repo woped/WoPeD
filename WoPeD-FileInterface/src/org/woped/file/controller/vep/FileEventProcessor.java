@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.AccessControlException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
@@ -20,24 +22,31 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
 import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.ArcModel;
+import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.editor.utilities.Messages;
 import org.woped.file.Constants;
+import org.woped.file.ImageExport;
 import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
-import org.woped.file.ImageExport;
 import org.woped.file.TPNExport;
+import org.woped.quantanalysis.CapacityPlan;
 import org.woped.woflan.NetAnalysisDialog;
+import org.woped.woflan.WoflanAnalysis;
 
 public class FileEventProcessor extends AbstractEventProcessor
 {
-    public FileEventProcessor(int vepID, ApplicationMediator mediator)
+	public FileEventProcessor(int vepID, ApplicationMediator mediator)
     {
         super(vepID, mediator);
     }
@@ -111,7 +120,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                     				f,
                     				getMediator().getUi().getEditorFocus(), this.getMediator());
                     		myDialog.setVisible(true);                        	
-                    		
+
                     		LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
                     	}
 
@@ -137,6 +146,90 @@ public class FileEventProcessor extends AbstractEventProcessor
                 	    JOptionPane.WARNING_MESSAGE);
             }
 
+            break;
+
+        case AbstractViewEvent.QUANTANA:
+        	EditorVC edit = (EditorVC) getMediator().getUi().getEditorFocus();
+        	File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "temp.tpn");
+        	WoflanAnalysis wa  = new WoflanAnalysis(edit, f);
+        	StructuralAnalysis sa = new StructuralAnalysis(edit);
+        	int sound = wa.getNumUnboundedPlaces() + wa.getNumNonLiveTransitions();
+        	int soPl = sa.getNumSourcePlaces();
+        	int soTr = sa.getNumSourceTransitions();
+        	int siPl = sa.getNumSinkPlaces();
+        	int siTr = sa.getNumSinkTransitions();
+        	boolean wfpn = (soPl >= 1 && soPl + soTr == 1) && (siPl >= 1 && siPl + siTr == 1);
+        	
+        	if (sound == 0 && wfpn) {
+        		ModelElementContainer mec = edit.getModelProcessor().getElementContainer();
+        		boolean isBranchingOK = true;
+        		//Iterator transes = sa.getTransitionsIterator();
+        		Iterator transes1 = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE)).values().iterator();
+        		Iterator transes2 = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values().iterator();
+        		Iterator places = sa.getPlacesIterator();
+        		AbstractPetriNetModelElement end = (AbstractPetriNetModelElement)sa.getSinkPlacesIterator().next();
+
+        		while (transes1.hasNext()){
+        			AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement)transes1.next();
+        			Map outArcs = mec.getOutgoingArcs(trans.getId());
+        			int sum = 0;
+        			for (Object v : outArcs.values()){
+        				double p = ((ArcModel) v).getProbability();
+        				sum += (Double.valueOf(p * 100)).intValue();
+        			}
+
+        			if (sum != 100){
+        				isBranchingOK = false;
+        				break;
+        			}
+        			
+        			/*if (trans.getType() == AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE){
+        				int type = ((OperatorTransitionModel)trans).getType();
+        				if (type == OperatorTransitionModel.AND_SPLIT_TYPE || type == OperatorTransitionModel.AND_SPLITJOIN_TYPE || type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
+        					isBranchingOK = true;
+        			}*/
+        		}
+        		
+        		while (transes2.hasNext()){
+        			AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement)transes2.next();
+        			Map outArcs = mec.getOutgoingArcs(trans.getId());
+        			int sum = 0;
+        			for (Object v : outArcs.values()){
+        				double p = ((ArcModel) v).getProbability();
+        				sum += (Double.valueOf(p * 100)).intValue();
+        			}
+
+        			if (sum != 100){
+        				isBranchingOK = false;
+        			}
+        			
+        			int type = ((OperatorTransitionModel)trans).getOperatorType();
+        			if (type == OperatorTransitionModel.AND_SPLIT_TYPE || type == OperatorTransitionModel.AND_SPLITJOIN_TYPE || type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
+        				isBranchingOK = true;
+        		}
+
+        		while (places.hasNext()){
+        			AbstractPetriNetModelElement place = (AbstractPetriNetModelElement)places.next();
+        			if (!place.equals(end)) {
+        				Map outArcs = mec.getOutgoingArcs(place.getId());
+        				int sum = 0;
+        				for (Object v : outArcs.values()){
+        					double p = ((ArcModel) v).getProbability();
+        					sum += (Double.valueOf(p * 100)).intValue();
+        				}
+
+        				if (sum != 100) isBranchingOK = false;
+        			}
+        		}
+
+        		if (isBranchingOK)
+        			new CapacityPlan(edit);
+        		else
+        			JOptionPane.showMessageDialog(null, "Branching ist nicht OK!");
+        	} else {
+        		JOptionPane.showMessageDialog(null, "Netz ist nicht sound!");
+        	}
+        	
             break;
         }
     }
@@ -371,6 +464,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                 jfc.setFileFilter(PNMLFilter);
             }
             jfc.setDialogTitle(Messages.getString("Action.EditorSaveAs.Title"));
+
             int returnVal = jfc.showSaveDialog(null);
             
             if (jfc.getSelectedFile() != null && returnVal == JFileChooser.APPROVE_OPTION)
@@ -405,7 +499,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         return succeed;
 
     }
-    
+
     /**
      * TODO: DOCUMENTATION (silenco)
      */
