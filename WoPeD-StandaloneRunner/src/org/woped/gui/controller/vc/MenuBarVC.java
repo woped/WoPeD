@@ -106,9 +106,11 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenu              m_analyseMenu            = null;
     private JMenuItem          m_woflanMenuItem         = null;
     private JMenuItem		   m_wopedMenuItem			= null;
+
+    private JMenuItem		   m_quantAnaMenuItem		= null;
+
     private JMenu              m_optionsMenu            = null;
     private JMenuItem          m_optionsMenuItem        = null;
-
     private JMenu              m_windowMenu             = null;
     private JMenuItem          m_cascadeWindowsMenuItem = null;
     private JMenuItem          m_arrangeWindowsMenuItem = null;
@@ -197,6 +199,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_analyseMenu.setMnemonic(Messages.getMnemonic("Menu.Analyse"));
             m_analyseMenu.add(getStartTokenGameMenuItem());
             m_analyseMenu.add(getWoflanMenuItem());
+            m_analyseMenu.add(getQuantAnaMenuItem());
             m_analyseMenu.add(getWopedMenuItem());
         }
         return m_analyseMenu;
@@ -248,7 +251,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         if (m_fileMenu == null)
         {
             m_fileMenu = new JMenu(Messages.getTitle("Menu.File")); //$NON-NLS-1$
-            m_fileMenu.setMnemonic(Messages.getMnemonic("Menu.File")); //$NON-NLS-1$
+            m_fileMenu.setMnemonic(Messages.getMnemonic("Menu.File"));
 
             m_fileMenu.add(getNewMenuItem());
             m_fileMenu.add(getOpenMenuItem());
@@ -688,6 +691,15 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     	}
     	return m_wopedMenuItem;
     }
+    
+    public JMenuItem getQuantAnaMenuItem()
+    {
+        if (m_quantAnaMenuItem == null)
+        {
+        	m_quantAnaMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANT));
+        }
+        return m_quantAnaMenuItem;
+    }
 
     /**
      * @return Returns the sampleMenu.
@@ -698,7 +710,6 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 	Icon documentIcon = Messages.getImageIcon("Document");
         if (m_sampleMenu == null)
         {
-
             m_sampleMenu = new JMenu(Messages.getTitle("Menu.Help.SampleNets"));
             m_sampleMenu.setMnemonic(Messages.getMnemonic("Menu.Help.SampleNets"));
             m_sampleMenu.setIcon(documentIcon);
