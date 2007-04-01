@@ -551,7 +551,7 @@ public class ArcModel extends DefaultEdge implements Serializable
 	}
 	*/
 	private void updateLabel(){
-		Object[] labels = null;
+		Object[] labels = {};
 		if (displayOn){
 			labels = new Object[]{ Integer.toString(Double.valueOf(probability * 100).intValue()) };
 		}
