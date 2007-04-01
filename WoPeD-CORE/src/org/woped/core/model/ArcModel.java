@@ -108,8 +108,7 @@ public class ArcModel extends DefaultEdge implements Serializable
     	//GraphConstants.setSelectable(map, true);
         Point2D[] pos = { new Point2D.Double(GraphConstants.PERMILLE/2, 0) };
         GraphConstants.setExtraLabelPositions(map, pos);
-        Object[] labels = { Integer.toString(Double.valueOf(probability * 100).intValue()) };
-        GraphConstants.setExtraLabels(map, labels);
+        
     	getAttributes().applyMap(map);
     }
 
@@ -531,6 +530,7 @@ public class ArcModel extends DefaultEdge implements Serializable
 
 	public void setProbability(double probability) {
 		this.probability = probability;
+		updateLabel();
 	}
 
 	public boolean isDisplayOn() {
@@ -539,6 +539,7 @@ public class ArcModel extends DefaultEdge implements Serializable
 
 	public void setDisplayOn(boolean displayOn) {
 		this.displayOn = displayOn;
+		updateLabel();
 	}
 	/*
 	public GraphLayoutCache getGraphLayoutCache() {
@@ -549,4 +550,13 @@ public class ArcModel extends DefaultEdge implements Serializable
 		this.graphLayoutCache = graphLayoutCache;
 	}
 	*/
+	private void updateLabel(){
+		Object[] labels = null;
+		if (displayOn){
+			labels = new Object[]{ Integer.toString(Double.valueOf(probability * 100).intValue()) };
+		}
+        HashMap map = new HashMap();
+        GraphConstants.setExtraLabels(map, labels);
+        getAttributes().applyMap(map);
+	}
 }

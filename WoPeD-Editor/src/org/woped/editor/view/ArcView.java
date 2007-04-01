@@ -191,6 +191,17 @@ public class ArcView extends EdgeView
                 g2.setStroke(new BasicStroke(lineWidth, c, j, 10.0f, lineDash, dashOffset));
                 if (view.lineShape != null) g2.draw(view.lineShape);
 
+				Object[] labels = GraphConstants.getExtraLabels(view
+						.getAllAttributes());
+				JGraph graph = (JGraph)this.graph.get();
+				if (labels != null) {
+					for (int i = 0; i < labels.length; i++)
+						paintLabel(g, graph.convertValueToString(labels[i]),
+								getExtraLabelPosition(view, i),
+								false || !simpleExtraLabels);
+				}
+
+                
                 if (selected)
                 {
                     g2.setColor(ConfigurationManager.getConfiguration().getSelectionColor());

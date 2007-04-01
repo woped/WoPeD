@@ -1511,6 +1511,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         
         // Set change flag
         getEditor().setSaved(false);
+        getEditor().updateNet();
+
     }
 
     /*

@@ -318,6 +318,8 @@ public class ArcPropertyEditor extends JDialog {
     		arc.setDisplayOn(displayToggle.isSelected());
 
         getEditor().setSaved(false);
+        getEditor().updateNet();
+
     }
 
     /*
