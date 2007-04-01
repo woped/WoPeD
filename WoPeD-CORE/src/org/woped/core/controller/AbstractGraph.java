@@ -26,6 +26,7 @@ import java.awt.event.MouseEvent;
 import java.awt.print.Printable;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Vector;
 
 import javax.swing.ToolTipManager;
 
@@ -351,4 +352,16 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
         if (view != null) return !view.isLeaf();
         return false;
     }
+    
+	public Vector<Object> getAllCellsForLocation(double x, double y) {
+		Object cell = getFirstCellForLocation(x, y);
+		Object topMostCell = cell;
+		Vector<Object> allCells = new Vector<Object>();
+		allCells.add(cell);
+
+		for (cell = getNextCellForLocation(cell, x, y); cell != topMostCell; cell = getNextCellForLocation(cell, x, y)) {
+			allCells.add(cell);
+		}
+		return allCells;
+	}
 }

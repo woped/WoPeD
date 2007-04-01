@@ -29,6 +29,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import javax.swing.border.LineBorder;
 
@@ -747,7 +748,7 @@ public class TokenGameController
          */
         public void mousePressed(final MouseEvent e)
         {
-            TransitionModel transition = findTransitionInCell(getGraph().getFirstCellForLocation(e.getPoint().x, e.getPoint().y));
+            TransitionModel transition = findTransitionInCell(getGraph().getAllCellsForLocation(e.getPoint().x, e.getPoint().y));
             if (transition != null && transition.isActivated())
             {
                 transition.setFireing(true);
@@ -760,10 +761,10 @@ public class TokenGameController
          */
         public void mouseReleased(MouseEvent e)
         {
-        	Object cell = getGraph().getFirstCellForLocation(e.getPoint().x, e.getPoint().y);
-            TransitionModel transition = findTransitionInCell(cell);
-            PlaceModel place = findPlaceInCell(cell);
-            ArcModel arc = findArcInCell(cell);
+        	Vector<Object> allCells = getGraph().getAllCellsForLocation(e.getPoint().x, e.getPoint().y);
+            TransitionModel transition = findTransitionInCell(allCells);
+            PlaceModel place = findPlaceInCell(allCells);
+            ArcModel arc = findArcInCell(allCells);
             if (transition != null && transition.isActivated() && transition.isFireing())
             {
                 transitionClicked(transition, e);
@@ -797,56 +798,41 @@ public class TokenGameController
          * Checks if cell is a Place or if a Place is nested in a
          * Group.
          */
-        private PlaceModel findPlaceInCell(Object cell)
+        private PlaceModel findPlaceInCell(Vector<Object> cells)
         {
-            if (cell instanceof GroupModel)
-            {
-                cell = ((GroupModel) cell).getMainElement();
-            }
-            if (cell instanceof PlaceModel)
-            {
-                return (PlaceModel) cell;
-            } else
-            {
-                return null;
-            }
+           	for (Object cell : cells){
+        		if (cell instanceof PlaceModel){
+        			return (PlaceModel)cell;
+        		}
+        	}
+        	return null;
         }
         
         /*
          * Checks if cell is a Transition or if a Transition is nested in a
          * Group.
          */
-        private TransitionModel findTransitionInCell(Object cell)
+        private TransitionModel findTransitionInCell(Vector<Object> cells)
         {
-            if (cell instanceof GroupModel)
-            {
-                cell = ((GroupModel) cell).getMainElement();
-            }
-            if (cell instanceof TransitionModel || cell instanceof OperatorTransitionModel)
-            {
-                return (TransitionModel) cell;
-            } else
-            {
-                return null;
-            }
+        	for (Object cell : cells){
+        		if (cell instanceof TransitionModel){
+        			return (TransitionModel)cell;
+        		}
+        	}
+        	return null;
         }
 
         /*
          * Checks if cell is a ArcModel or if a ArcModel is nested in a Group.
          */
-        private ArcModel findArcInCell(Object cell)
+        private ArcModel findArcInCell(Vector<Object> cells)
         {
-            if (cell instanceof GroupModel)
-            {
-                cell = ((GroupModel) cell).getMainElement();
-            }
-            if (cell instanceof ArcModel)
-            {
-                return (ArcModel) cell;
-            } else
-            {
-                return null;
-            }
+        	for (Object cell : cells){
+        		if (cell instanceof ArcModel){
+        			return (ArcModel)cell;
+        		}
+        	}
+        	return null;                	
         }
     }
 
