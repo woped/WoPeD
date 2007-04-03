@@ -695,7 +695,8 @@ public class PNMLImport
                         			if (arcs[i].getToolspecificArray(j).isSetRoute() && arcs[i].getToolspecificArray(j).getRoute()) arc.setRoute(true);
                         			if (arcs[i].getToolspecificArray(j).isSetProbability())
                         				arc.setProbability(arcs[i].getToolspecificArray(j).getProbability());
-                        			
+                        			if (arcs[i].getToolspecificArray(j).isSetDisplayProbabilityOn())
+                        				arc.setDisplayOn(arcs[i].getToolspecificArray(j).getDisplayProbabilityOn());
                         		} else
                         		{
                         			arc.addUnknownToolSpecs(arcs[i].getToolspecificArray(j));

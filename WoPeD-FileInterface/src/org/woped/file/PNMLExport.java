@@ -640,6 +640,7 @@ public class PNMLExport
             if (outerArc.isRoute())
                 iArcTool.setRoute(true);
             iArcTool.setProbability(outerArc.getProbability());
+            iArcTool.setDisplayProbabilityOn(outerArc.isDisplayOn());
             // toolspecific
             for (short i = 0; i < outerArc.getUnknownToolSpecs().size(); i++)
             {
