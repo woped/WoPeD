@@ -202,6 +202,7 @@ public class WorkflowNetGraph {
 					case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
 						postNode.type = Node.TYPE_TRANS;
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
+						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						break;
 					default:
 						postNode.type = 0;
