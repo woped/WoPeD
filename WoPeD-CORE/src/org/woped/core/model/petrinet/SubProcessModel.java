@@ -86,10 +86,15 @@ public class SubProcessModel extends TransitionModel implements
 		LoggerManager.info(Constants.CORE_LOGGER, "copySubElementContainer");
 		ModelElementContainer newContainer = new ModelElementContainer();
 
+		newContainer.setOwningElement(container.getOwningElement());
+		
 		PetriNetModelProcessor processor = new PetriNetModelProcessor();
 		processor.setElementContainer(newContainer);
+		
+		
+		
 
-		// HashMap<String, String> idMapper = new HashMap<String, String>();
+//		 HashMap<String, String> idMapper = new HashMap<String, String>();
 
 		// copy elements
 		{
@@ -107,20 +112,22 @@ public class SubProcessModel extends TransitionModel implements
 					CreationMap newMap = (CreationMap) currentElement
 							.getCreationMap().clone();
 
-					newMap.setId("copyof_" + newMap.getId());
+//					newMap.setId("copyof_" + newMap.getId());
 
 					AbstractElementModel newElement = ModelElementFactory
 							.createModelElement(newMap);
 
 					newContainer.addElement(newElement);
 
-					// // get a proper ID
-					// newMap.setId(null);
-					//
-					// AbstractElementModel newElement = processor
-					// .createElement(newMap);
-					//
-					// idMapper.put(currentElement.getId(), newElement.getId());
+					
+					
+//					 // get a proper ID
+//					 newMap.setId(null);
+//					
+//					 AbstractElementModel newElement = processor
+//					 .createElement(newMap);
+//					
+//					 idMapper.put(currentElement.getId(), newElement.getId());
 
 				}
 			}
@@ -133,13 +140,12 @@ public class SubProcessModel extends TransitionModel implements
 			ArcModel arcModel = (ArcModel) container.getArcMap().get(
 					arcIter.next());
 
-			processor.createArc("copyof_" + arcModel.getSourceId(), "copyof_"
-					+ arcModel.getTargetId());
+			processor.createArc(arcModel.getSourceId(), arcModel.getTargetId());
 
-			// ok
-			// processor.createArc(idMapper.get(arcModel.getSourceId()),
-			// idMapper
-			// .get(arcModel.getSourceId()));
+//			 ok
+//			 processor.createArc(idMapper.get(arcModel.getSourceId()),
+//			 idMapper
+//			 .get(arcModel.getSourceId()));
 		}
 
 		return newContainer;
