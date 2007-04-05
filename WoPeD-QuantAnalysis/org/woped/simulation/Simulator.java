@@ -38,8 +38,8 @@ public class Simulator {
 	private long seed = 0;
 	private int typeOfDistForCases = 0;
 	private int typeOfDistForServer = 0;
-	private double servParam1 = 0.0;
-	private double servParam2 = 0.0;
+//	private double servParam1 = 0.0;
+//	private double servParam2 = 0.0;
 	private double caseParam1 = 0.0;
 	private double caseParam2 = 0.0;
 	private int queueDiscipline = 0;
@@ -66,8 +66,8 @@ public class Simulator {
 		this.typeOfDistForServer = sp.getDistServ();
 		this.caseParam1 = sp.getCPara1();
 		this.caseParam2 = sp.getCPara2();
-		this.servParam1 = sp.getSPara1();
-		this.servParam2 = sp.getSPara2();
+//		this.servParam1 = sp.getSPara1();
+//		this.servParam2 = sp.getSPara2();
 		this.queueDiscipline = sp.getQueue();
 		this.stopRule = sp.getStop();
 		this.lambda = sp.getLambda();
@@ -132,8 +132,9 @@ public class Simulator {
 		for (int i = 0; i < nodes.length; i++){
 			String id = nodes[i].getId();
 			String name = nodes[i].getName();
+			double t = nodes[i].getTime();
 			if (process.isTransition(id)){
-				Server s = new Server(id, name, new ProbabilityDistribution(typeOfDistForServer, servParam1, servParam2, ++seed));
+				Server s = new Server(id, name, new ProbabilityDistribution(typeOfDistForServer, 1/t, 1.0, ++seed));
 				s.setStatus(Server.STATUS_IDLE);
 				serverList.put(id, s);
 			}
