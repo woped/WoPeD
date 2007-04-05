@@ -99,13 +99,16 @@ public class TimeModel {
 
 		if (u != stdUnit){
 			switch (u){
-			case 1:		// u is TM_SECOND
+			case 0:		// u is TM_SECOND
 				switch (stdUnit){
-				case 3:		// stdUnit is TM_HOUR
+				case 2:		// stdUnit is TM_HOUR
 					val = m / cvHourToSec;
 					break;
-				case 4:		// stdUnit is TM_DAY
+				case 3:		// stdUnit is TM_DAY
 					val = m / cvDayToSec;
+					break;
+				case 4:		// stdUnit is TM_WEEK
+					val = m / cvWeekToSec;
 					break;
 				case 5:		// stdUnit is TM_MONTH
 					val = m / cvMonthToSec;
@@ -118,13 +121,16 @@ public class TimeModel {
 				}
 				break;
 
-			case 3:		// u is TM_HOUR
+			case 2:		// u is TM_HOUR
 				switch (stdUnit){
-				case 1:		// stdUnit is TM_Sec
+				case 0:		// stdUnit is TM_SECOND
 					val = m * cvHourToSec;
 					break;
-				case 4:		// stdUnit is TM_DAY
+				case 3:		// stdUnit is TM_DAY
 					val = m / cvDayToHour;
+					break;
+				case 4:		// stdUnit is TM_WEEK
+					val = m / cvWeekToHour;
 					break;
 				case 5:		// stdUnit is TM_MONTH
 					val = m / cvMonthToHour;
@@ -137,13 +143,16 @@ public class TimeModel {
 				}
 				break;
 
-			case 4:		// u is TM_DAY
+			case 3:		// u is TM_DAY
 				switch (stdUnit){
-				case 1:		// stdUnit is TM_SEC
+				case 0:		// stdUnit is TM_SECOND
 					val = m * cvDayToSec;
 					break;
-				case 3:		// stdUnit is TM_HOUR
+				case 2:		// stdUnit is TM_HOUR
 					val = m * cvDayToHour;
+					break;
+				case 4:		// stdUnit is TM_WEEK
+					val = m / cvWeekToDay;
 					break;
 				case 5:		// stdUnit is TM_MONTH
 					val = m / cvMonthToDay;
@@ -156,16 +165,41 @@ public class TimeModel {
 				}
 				break;
 
+			case 4:		// u is TM_WEEK
+				switch (stdUnit){
+				case 0:		// stdUnit is TM_SECOND
+					val = m * cvWeekToSec;
+					break;
+				case 2:		// stdUnit is TM_HOUR
+					val = m * cvWeekToHour;
+					break;
+				case 3:		// stdUnit is TM_DAY
+					val = m * cvWeekToDay;
+					break;
+				case 5:		// stdUnit is TM_MONTH
+					val = m / cvMonthToWeek;
+					break;
+				case 6:		// stdUnit is TM_YEAR
+					val = m / cvYearToWeek;
+					break;
+				default:	// stdUnit is TM_MINUTE
+					val = m * cvWeekToMin;
+				}
+				break;
+
 			case 5:		// u is TM_MONTH
 				switch (stdUnit){
-				case 1:		// stdUnit is TM_SEC
+				case 0:		// stdUnit is TM_SECOND
 					val = m * cvMonthToSec;
 					break;
-				case 3:		// stdUnit is TM_HOUR
+				case 2:		// stdUnit is TM_HOUR
 					val = m * cvMonthToHour;
 					break;
-				case 4:		// stdUnit is TM_DAY
+				case 3:		// stdUnit is TM_DAY
 					val = m * cvMonthToDay;
+					break;
+				case 4:		// stdUnit is TM_WEEK
+					val = m * cvMonthToWeek;
 					break;
 				case 6:		// stdUnit is TM_YEAR
 					val = m / cvYearToMonth;
@@ -177,14 +211,17 @@ public class TimeModel {
 
 			case 6:		// u is TM_YEAR
 				switch (stdUnit){
-				case 1:		// stdUnit is TM_SEC
+				case 0:		// stdUnit is TM_SECOND
 					val = m * cvYearToSec;
 					break;
-				case 3:		// stdUnit is TM_HOUR
+				case 2:		// stdUnit is TM_HOUR
 					val = m * cvYearToHour;
 					break;
-				case 4:		// stdUnit is TM_DAY
+				case 3:		// stdUnit is TM_DAY
 					val = m * cvYearToDay;
+					break;
+				case 4:		// stdUnit is TM_WEEK
+					val = m * cvYearToWeek;
 					break;
 				case 5:		// stdUnit is TM_MONTH
 					val = m * cvYearToMonth;
@@ -195,7 +232,25 @@ public class TimeModel {
 				break;
 
 			default:	// u is TM_MINUTE
-				val = m;
+				switch (stdUnit){
+				case 0:		// stdUnit is TM_SECOND
+					val = m * cvMinToSec;
+					break;
+				case 2:		// stdUnit is TM_HOUR
+					val = m / cvHourToMin;
+					break;
+				case 3:		// stdUnit is TM_DAY
+					val = m / cvDayToMin;
+					break;
+				case 4:		// stdUnit is TM_WEEK
+					val = m / cvWeekToMin;
+					break;
+				case 5:		// stdUnit is TM_MONTH
+					val = m / cvMonthToMin;
+					break;
+				case 6:		// stdUnit is TM_YEAR
+					val = m / cvYearToMin;
+				}
 			}
 
 			return val / stdUnitMultiple;
@@ -206,26 +261,32 @@ public class TimeModel {
 
 	public void setCvDayToHour(double cvDayToHour) {
 		this.cvDayToHour = cvDayToHour;
+		init();
 	}
 
 	public void setCvHourToMin(double cvHourToMin) {
 		this.cvHourToMin = cvHourToMin;
+		init();
 	}
 
 	public void setCvMinToSec(double cvMinToSec) {
 		this.cvMinToSec = cvMinToSec;
+		init();
 	}
 
 	public void setCvMonthToDay(double cvMonthToDay) {
 		this.cvMonthToDay = cvMonthToDay;
+		init();
 	}
 
 	public void setCvYearToMonth(double cvYearToMonth) {
 		this.cvYearToMonth = cvYearToMonth;
+		init();
 	}
 
 	public void setCvWeekToDay(double cvWeekToDay) {
 		this.cvWeekToDay = cvWeekToDay;
+		init();
 	}
 	
 	private void init(){
