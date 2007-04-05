@@ -9,6 +9,7 @@ public class Node {
 	
 	public final static int TYPE_PLACE	=	1;
 	public final static int TYPE_TRANS	=	2;
+	public final static int TYPE_SUBP	=	3;
 	
 	String id;
 	String name;
