@@ -40,7 +40,7 @@ import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
-import org.woped.quantanalysis.CapacityPlan;
+import org.woped.quantanalysis.QuantAnaStart;
 import org.woped.woflan.NetAnalysisDialog;
 import org.woped.woflan.WoflanAnalysis;
 
@@ -182,12 +182,6 @@ public class FileEventProcessor extends AbstractEventProcessor
         				isBranchingOK = false;
         				break;
         			}
-        			
-        			/*if (trans.getType() == AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE){
-        				int type = ((OperatorTransitionModel)trans).getType();
-        				if (type == OperatorTransitionModel.AND_SPLIT_TYPE || type == OperatorTransitionModel.AND_SPLITJOIN_TYPE || type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
-        					isBranchingOK = true;
-        			}*/
         		}
         		
         		while (transes2.hasNext()){
@@ -223,7 +217,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         		}
 
         		if (isBranchingOK)
-        			new CapacityPlan(edit);
+        			new QuantAnaStart(edit);
         		else
         			JOptionPane.showMessageDialog(null, "Branching ist nicht OK!");
         	} else {
