@@ -61,7 +61,7 @@ public class Toolspecific implements Serializable
     private int						time = 0;
     //! Specifies the unit for the time value (enum). The exact values are 
     //! not defined yet
-    private int						timeUnit = 2;
+    private int						timeUnit = 1;
     
     /**
      * Constructor for Toolspecific. ownerid must not be null.
