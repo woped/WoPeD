@@ -1,18 +1,21 @@
 package org.woped.simulation.output;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Frame;
-import java.util.Vector;
+import java.util.HashMap;
 
 import javax.swing.JDialog;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeSelectionModel;
 
 import org.woped.simulation.Server;
 import org.woped.simulation.Simulator;
@@ -21,11 +24,13 @@ public class SimOutputDialog extends JDialog{
 	
 	private static final long serialVersionUID = 2L;
 	private JPanel jContentPane = null;
-	private JList itemList = null;
+//	private JList itemList = null;
+	private JTree itemTree = null;
 	private JPanel content = new JPanel();
 	private JPanel curPanel = null;
 	private JSplitPane splitPane = null;
-	private Vector<JPanel> panelList = new Vector<JPanel>();
+//	private Vector<JPanel> panelList = new Vector<JPanel>();
+	private HashMap<String, JPanel> panelList = new HashMap<String, JPanel>();
 	
 	private Simulator simulator;
 	
@@ -35,7 +40,7 @@ public class SimOutputDialog extends JDialog{
 		
 		initialize();
 		
-		curPanel = panelList.get(0);
+		curPanel = panelList.get("Protocol");
 		content.add(curPanel);
 		curPanel.setVisible(true);
 		
@@ -61,11 +66,12 @@ public class SimOutputDialog extends JDialog{
 	
 	private JSplitPane getSplitPane(){
 		if (splitPane == null){
-			JScrollPane scrollPane = new JScrollPane(getList());
+			JScrollPane scrollPane = new JScrollPane(getTree());
+			scrollPane.setWheelScrollingEnabled(true);
 			splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, content);
 			splitPane.setOneTouchExpandable(true);
 			splitPane.setDividerSize(8);
-			splitPane.setDividerLocation(150);
+			splitPane.setDividerLocation(200);
 			splitPane.setResizeWeight(1);
 			//splitPane.setMinimumSize(new Dimension(100, (int)splitPane.getSize().getHeight()));
 		}
@@ -73,7 +79,7 @@ public class SimOutputDialog extends JDialog{
 		return splitPane;
 	}
 	
-	private JList getList(){
+	/*private JList getList(){
 		if (itemList == null){
 			Vector<String> items = new Vector<String>();
 			items.add("Protocol");
@@ -99,13 +105,56 @@ public class SimOutputDialog extends JDialog{
 			});
 		}
 		
-		//itemList.validate();
-		
 		return itemList;
+	}*/
+	
+	private JTree getTree(){
+		if (itemTree == null){
+			DefaultMutableTreeNode root = new DefaultMutableTreeNode("Items");
+			DefaultMutableTreeNode curRoot = root;
+			
+			DefaultMutableTreeNode proto = new DefaultMutableTreeNode("Protocol");
+			curRoot.add(proto);
+//			panelList.add(new ProtocolPanel());
+			panelList.put("Protocol", new ProtocolPanel());
+			DefaultMutableTreeNode proc = new DefaultMutableTreeNode("Process");
+			curRoot.add(proc);
+//			panelList.add(new ProcessPanel());
+			panelList.put("Process", new ProcessPanel());
+			curRoot = proc;
+			
+			for (Server s : simulator.getServerList().values()){
+				String name = s.toString();
+				curRoot.add(new DefaultMutableTreeNode(name));
+//				panelList.add(new ServerPanel(s.toString()));
+				panelList.put(name, new ServerPanel(name));
+			}
+			
+			generatePanelContent();
+
+			itemTree = new JTree(root);
+			itemTree.setRootVisible(false);
+			itemTree.putClientProperty("JTree.lineStyle", "Angled");
+			
+			itemTree.setCellRenderer(new TreeRenderer());
+			
+			itemTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+			itemTree.addTreeSelectionListener(new TreeSelectionListener(){
+				public void valueChanged(TreeSelectionEvent e){
+					TreePath path = itemTree.getSelectionPath();
+					if (path == null) return;
+					DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode)path.getLastPathComponent();
+					String s = (String)selectedNode.getUserObject();
+					updatePanelView(s);
+				}
+			});
+		}
+
+		return itemTree;
 	}
 	
 	private void generatePanelContent(){
-		for (JPanel p : panelList){
+		for (JPanel p : panelList.values()){
 			JTextField txtOutput = new JTextField("anonym");
 			if (p instanceof ProtocolPanel){
 				txtOutput.setText("Protocol");
@@ -119,10 +168,11 @@ public class SimOutputDialog extends JDialog{
 		}
 	}
 	
-	private void updatePanelView(int index){
+//	private void updatePanelView(int index){
+	private void updatePanelView(String key){
 		content.getComponent(0).setVisible(false);
 		content.remove(curPanel);
-		curPanel = panelList.get(index);
+		curPanel = panelList.get(key);
 		content.add(curPanel);
 		curPanel.setVisible(true);
 	}
