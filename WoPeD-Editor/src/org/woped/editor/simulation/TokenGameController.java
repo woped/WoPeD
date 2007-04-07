@@ -40,7 +40,6 @@ import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;

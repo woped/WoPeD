@@ -109,11 +109,7 @@ public class DefaultEditorFrame extends JInternalFrame
         }
                 
         setTitle(m_editor.getName());
-        
-        // Statusbar
-        m_editor.setSaved(true);
-        
-        
+                       
         this.pack();
         this.repaint();
         this.setVisible(true);

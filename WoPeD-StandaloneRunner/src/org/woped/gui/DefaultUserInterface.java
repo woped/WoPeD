@@ -134,7 +134,9 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             else
             {
                 frame = new DefaultEditorFrame((EditorVC) editor, null);
+ 
             }
+            
             Point position = getNextEditorPosition();
             frame.setAlignmentX((float) position.getX());
             frame.setAlignmentY((float) position.getY());

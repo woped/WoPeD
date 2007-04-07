@@ -132,6 +132,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
         }
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
         
+        editor.setSaved(true);
         return editor;
     }
     //! Create a sub-process editor window and register it with all visual controllers.
