@@ -697,6 +697,13 @@ public class PNMLImport
                         				arc.setProbability(arcs[i].getToolspecificArray(j).getProbability());
                         			if (arcs[i].getToolspecificArray(j).isSetDisplayProbabilityOn())
                         				arc.setDisplayOn(arcs[i].getToolspecificArray(j).getDisplayProbabilityOn());
+                        			if (arcs[i].getToolspecificArray(j).isSetDisplayProbabilityPosition())
+                        			{
+        								Point location = new Point(
+        										arcs[i].getToolspecificArray(j).getDisplayProbabilityPosition().getX().intValue(),
+        										arcs[i].getToolspecificArray(j).getDisplayProbabilityPosition().getY().intValue());
+                        				arc.setLabelPosition(location);                        				
+                        			}
                         		} else
                         		{
                         			arc.addUnknownToolSpecs(arcs[i].getToolspecificArray(j));

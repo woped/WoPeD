@@ -106,10 +106,35 @@ public class ArcModel extends DefaultEdge implements Serializable
         GraphConstants.setFont(map, new Font(null, Font.BOLD, 12));
     	//GraphConstants.setLabelPosition(map, new Point2D.Double(GraphConstants.PERMILLE/2, 0));
     	//GraphConstants.setSelectable(map, true);
-        Point2D[] pos = { new Point2D.Double(GraphConstants.PERMILLE/2, 0) };
+        Point2D[] pos = { getDefaultLabelPosition() };
         GraphConstants.setExtraLabelPositions(map, pos);
         
     	getAttributes().applyMap(map);
+    }
+    
+    public void setLabelPosition(Point2D newLabelPos)
+    {
+        AttributeMap map = getAttributes();
+        Point2D[] pos = { newLabelPos };
+        GraphConstants.setExtraLabelPositions(map, pos);
+        
+    	getAttributes().applyMap(map);
+    }
+    
+    public Point2D getDefaultLabelPosition()
+    {
+    	return new Point2D.Double(GraphConstants.PERMILLE/2, 0);
+    }
+    
+    public Point2D getLabelPosition()
+    {
+    	Point2D result = null;
+    	Point2D positions[] = GraphConstants.getExtraLabelPositions(getAttributes());
+    	if (positions.length>0)
+    		result = positions[0];
+    	if (result==null)
+    		result = getDefaultLabelPosition();
+    	return result;
     }
 
     public int getWeight()

@@ -68,6 +68,9 @@ public abstract class AbstractMarqueeHandler extends BasicMarqueeHandler
     {
         // Wants to Display the PopupMenu
         if (SwingUtilities.isRightMouseButton(e)) return true;
+        // We want to be able to catch double clicks in order to display 
+        // the properties dialog
+        if (e.getClickCount() == 2) return true;
         // Find and Remember Port
         port = getSourcePortAt(e.getPoint());
         // If Port Found and in ConnectMode (=Ports Visible)

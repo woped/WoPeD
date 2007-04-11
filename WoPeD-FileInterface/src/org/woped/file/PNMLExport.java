@@ -22,6 +22,7 @@
  */
 package org.woped.file;
 
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -641,6 +642,12 @@ public class PNMLExport
                 iArcTool.setRoute(true);
             iArcTool.setProbability(outerArc.getProbability());
             iArcTool.setDisplayProbabilityOn(outerArc.isDisplayOn());
+            PositionType probPos = iArcTool.addNewDisplayProbabilityPosition();
+            Point2D probPosPoint = outerArc.getLabelPosition();
+            probPos.setX(BigDecimal.valueOf(probPosPoint.getX()));
+            probPos.setY(BigDecimal.valueOf(probPosPoint.getY()));
+
+            iArcTool.setDisplayProbabilityPosition(probPos);
             // toolspecific
             for (short i = 0; i < outerArc.getUnknownToolSpecs().size(); i++)
             {
