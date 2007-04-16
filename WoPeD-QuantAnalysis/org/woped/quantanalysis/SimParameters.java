@@ -15,11 +15,13 @@ public class SimParameters {
 	private double lambda;
 	private double timeOfPeriod;
 	
+	private int resUse;
+	
 	public SimParameters(){
 		super();
 	}
 	
-	public SimParameters(int runs, int dc, int ds, int q, int s, double cp1, double cp2){
+	public SimParameters(int runs, int dc, int ds, int q, int s, double cp1, double cp2, int res){
 		this.runs = runs;
 		distCases = dc;
 		distServ = ds;
@@ -29,6 +31,7 @@ public class SimParameters {
 		cPara2 = cp2;
 //		sPara1 = sp1;
 //		sPara2 = sp2;
+		resUse = res;
 	}
 
 	public double getCPara1() {
@@ -117,5 +120,13 @@ public class SimParameters {
 
 	public void setTimeOfPeriod(double timeOfPeriod) {
 		this.timeOfPeriod = timeOfPeriod;
+	}
+
+	public int getResUse() {
+		return resUse;
+	}
+
+	public void setResUse(int resUse) {
+		this.resUse = resUse;
 	}
 }
