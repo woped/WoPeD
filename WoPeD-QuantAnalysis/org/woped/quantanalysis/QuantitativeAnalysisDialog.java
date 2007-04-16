@@ -56,7 +56,6 @@ import org.woped.resourcealloc.ResourceClassTaskAllocationTable;
 import org.woped.resourcealloc.ResourceUtilization;
 import org.woped.simulation.ProbabilityDistribution;
 import org.woped.simulation.Simulator;
-import org.woped.simulation.output.SimOutputDialog;
 
 public class QuantitativeAnalysisDialog extends JDialog {
 
@@ -749,6 +748,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		stop1 = new JCheckBox('\u03BB' + " cases have completed service");
 		stop2 = new JCheckBox("Time period has expired");
 		stop1.setSelected(true);
+		stop2.setSelected(true);
 		p5.add(stop1);
 		p5.add(stop2);
 		
@@ -1144,12 +1144,12 @@ public class QuantitativeAnalysisDialog extends JDialog {
 			sp.setStop(Simulator.STOP_NONE);
 		}
 		
+		sp.setResUse(Simulator.RES_NOT_USED);
+		
 		Simulator sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp);
-//		sim.start();
-		sim.generateServerList();
-		SimOutputDialog sod = new SimOutputDialog(null, true, sim); // <---------
-//		sod.setAlwaysOnTop(true); // <---------
-		sod.setVisible(true); // <---------
+		sim.start();
+//		SimOutputDialog sod = new SimOutputDialog(null, true, sim); // <---------
+//		sod.setVisible(true); // <---------
 	}
 	
 	private void getConfiguration(){
@@ -1360,6 +1360,11 @@ public class QuantitativeAnalysisDialog extends JDialog {
 			tr[i][2] = String.format("%12." + prec + "f", numRes);//Double.valueOf((sum / period) / capaLevel);
 			tmRes.fireTableCellUpdated(i, 2);
 		}
+	}
+	
+	public void updateParams(String p1, String p2){
+		txt_p2_12.setText(p1);
+		txt_p2_21.setText(p2);
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="4,4"

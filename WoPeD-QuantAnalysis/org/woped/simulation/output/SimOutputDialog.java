@@ -1,7 +1,6 @@
 package org.woped.simulation.output;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Frame;
 import java.util.HashMap;
 
@@ -11,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JTree;
+import javax.swing.JViewport;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -24,13 +24,13 @@ public class SimOutputDialog extends JDialog{
 	
 	private static final long serialVersionUID = 2L;
 	private JPanel jContentPane = null;
-//	private JList itemList = null;
 	private JTree itemTree = null;
 	private JPanel content = new JPanel();
 	private JPanel curPanel = null;
+//	private JScrollPane curPanel = null;
 	private JSplitPane splitPane = null;
-//	private Vector<JPanel> panelList = new Vector<JPanel>();
 	private HashMap<String, JPanel> panelList = new HashMap<String, JPanel>();
+//	private HashMap<String, JScrollPane> panelList = new HashMap<String, JScrollPane>();
 	
 	private Simulator simulator;
 	
@@ -124,10 +124,11 @@ public class SimOutputDialog extends JDialog{
 			curRoot = proc;
 			
 			for (Server s : simulator.getServerList().values()){
-				String name = s.toString();
-				curRoot.add(new DefaultMutableTreeNode(name));
+				String name = s.getName();
+				String id = s.getId();
+				curRoot.add(new DefaultMutableTreeNode(s.toString()));
 //				panelList.add(new ServerPanel(s.toString()));
-				panelList.put(name, new ServerPanel(name));
+				panelList.put(s.getId(), new ServerPanel(id, name));
 			}
 			
 			generatePanelContent();
@@ -156,24 +157,48 @@ public class SimOutputDialog extends JDialog{
 	private void generatePanelContent(){
 		for (JPanel p : panelList.values()){
 			JTextField txtOutput = new JTextField("anonym");
+//			JPanel p = (JPanel)(((JViewport)s.getComponent(0)).getView());
+			
 			if (p instanceof ProtocolPanel){
 				txtOutput.setText("Protocol");
+				p.add(txtOutput);
 			} else if (p instanceof ProcessPanel){
 				txtOutput.setText("Process");
+				p.add(txtOutput);
 			} else {
-				txtOutput.setText(p.getName());
+//				txtOutput.setText(p.getName());
+				ServerPanel q = (ServerPanel)p;
+				Server s = simulator.getServerList().get(q.getId());
+				q.setValues(
+						s.getNumCalls(),
+						s.getBusy(),
+						s.getQueueLen(),
+						s.getMaxWaitTimeOfCase(),
+						s.getMaxQueueLength(),
+						s.getZeroDelays(),
+						s.getNumAccess(),
+						s.getNumDeparture(),
+						s.getMaxNumCasesInParallel(),
+						s.getNumCasesInParallel());
 			}
 			
-			p.add(txtOutput);
+//			p.add(txtOutput);
 		}
 	}
 	
 //	private void updatePanelView(int index){
 	private void updatePanelView(String key){
+		String id = produceID(key);
+		
 		content.getComponent(0).setVisible(false);
 		content.remove(curPanel);
-		curPanel = panelList.get(key);
+		curPanel = panelList.get(id);
 		content.add(curPanel);
 		curPanel.setVisible(true);
+	}
+	
+	private String produceID(String key){
+		if (key.equals("Protocol") || key.equals("Process")) return key;
+		else return key.substring(key.indexOf("(") + 1, key.indexOf(")"));
 	}
 }

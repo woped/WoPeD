@@ -1,6 +1,6 @@
 package org.woped.simulation;
 
-public abstract class SimEvent {
+public abstract class SimEvent implements Comparable<SimEvent> {
 	public static final int ARRIVAL_EVENT	= 1;
 	public static final int DEPARTURE_EVENT	= 2;
 	
@@ -8,14 +8,14 @@ public abstract class SimEvent {
 	private int type = 0;
 	private Server server = null;
 	private double moment = 0;
-	private int caseID = 0;
+	private Case c = null;
 	
-	public SimEvent(int type, Simulator sim, Server serv, double time, int caseID){
+	public SimEvent(int type, Simulator sim, Server serv, double time, Case c){
 		this.type = type;
 		this.sim = sim;
 		server = serv;
 		moment = time;
-		this.caseID = caseID;
+		this.c = c;
 	}
 
 	public double getMoment() {
@@ -44,12 +44,12 @@ public abstract class SimEvent {
 	
 	public abstract void invoke();
 
-	public int getCaseID() {
-		return caseID;
+	public Case getCase() {
+		return c;
 	}
 
-	public void setCaseID(int caseID) {
-		this.caseID = caseID;
+	public void setCase(Case c) {
+		this.c = c;
 	}
 
 	public Simulator getSim() {
@@ -58,5 +58,12 @@ public abstract class SimEvent {
 
 	public void setSim(Simulator sim) {
 		this.sim = sim;
+	}
+	
+	public int compareTo(SimEvent e){
+		double t = e.getMoment();
+		if (this.moment < t) return -1;
+		else if (t < this.moment) return 1;
+		else return 0;
 	}
 }

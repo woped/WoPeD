@@ -1,9 +1,10 @@
 package org.woped.simulation;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-
-import javax.swing.JOptionPane;
+import java.util.PriorityQueue;
+import java.util.Random;
 
 import org.woped.graph.Arc;
 import org.woped.graph.Node;
@@ -23,11 +24,15 @@ public class Simulator {
 	public static final int STOP_TIME_DRIVEN	= 2;
 	public static final int STOP_BOTH			= 3;
 	
-	private static final double VERY_LATE_TIME	= Double.POSITIVE_INFINITY;
+	public static final int RES_USED		= 1;
+	public static final int RES_NOT_USED	= 2;
+	
+//	private static final double VERY_LATE_TIME	= Double.POSITIVE_INFINITY;
 	
 	private WorkflowNetGraph process;
 	private ResourceAllocation resAlloc;
 	private ResourceUtilization resUtil;
+	private int useResAlloc;
 	private CaseGenerator caseGenerator;
 	private int numRuns;
 	private int countCaseFinished;
@@ -46,12 +51,17 @@ public class Simulator {
 	private int stopRule = 0;
 	private double lambda = 1.0;
 	private double timeOfPeriod = 8.0;
+//	private Server firstServer
+	private Random fstServChoice = new Random(new Date().getTime());
+	private int[][] fstServList;
 	
 	private SimEvent nextEvent = null;
 	//private ArrayList<Server> serverList = new ArrayList<Server>();
 	private HashMap<String, Server> serverList = new HashMap<String, Server>();
-	private ArrayList<SimEvent> eventList = new ArrayList<SimEvent>();
+	//private ArrayList<SimEvent> eventList = new ArrayList<SimEvent>();
+	private PriorityQueue<SimEvent> eventList = new PriorityQueue<SimEvent>();
 	private static ArrayList<ProtocolItem> protocol = new ArrayList<ProtocolItem>();
+	private HashMap<Integer, Case> caseList	 = new HashMap<Integer, Case>();
 	
 //	public static boolean stopped = false;
 	
@@ -72,15 +82,18 @@ public class Simulator {
 		this.stopRule = sp.getStop();
 		this.lambda = sp.getLambda();
 		this.timeOfPeriod = sp.getTimeOfPeriod();
+		this.useResAlloc = sp.getResUse();
 		
-//		generateServerList(); // <---------
+//		generateServerList();
 //		printServerList(); // <---------
+		
+		getFstServList();
 	}
 	
 	public void start() {
 		for (int i = 0; i < numRuns; i++){
 			ProtocolItem pi = new ProtocolItem(this);
-			String init = "Simulationsprotokoll\n Durchlauf: " + i + "\n\n";
+			String init = "simulation protocol\n run #: " + i + "\n\n";
 			pi.setTime(0.0);
 			pi.setDescription(init);
 			protocolUpdate(pi);
@@ -98,12 +111,22 @@ public class Simulator {
 	
 	private void init(){
 		ProtocolItem pi = new ProtocolItem(this);
+		pi.setTime(clock);
+		String description = "Initialization started:\n";
 		
 		clock = 0.0;
 		caseNo = 0;
+		description += "Clock set to Zero.\n";
+		description += "System starts 'empty and idle'.\n";
 		
 		generateServerList();
+		description += "List of Servers generated.\n";
+		
 		initEventList();
+		description += "List of Events initialized.\n";
+		description += "Initialization finished. System is ready.\n\n";
+		
+		pi.setDescription(description);
 		
 		protocolUpdate(pi);
 	}
@@ -112,22 +135,30 @@ public class Simulator {
 		ProtocolItem pi = new ProtocolItem(this);
 		
 		// nextEvent bestimmen
+		nextEvent = eventList.remove();
+		
+		// Systemuhr setzen
 		clock += nextEvent.getMoment();
+		
+		// neuen Case erzeugen
+		if (nextEvent instanceof ArrivalEvent){
+			generateNextCase();
+		}
 		
 		protocolUpdate(pi);
 	}
 	
 	private void generateReport(){
 		SimOutputDialog sod = new SimOutputDialog(null, true, this);
-		sod.setAlwaysOnTop(true);
+//		sod.setAlwaysOnTop(true);
 		sod.setVisible(true);
 	}
 	
-	public static void protocolUpdate(ProtocolItem pi){
+	public void protocolUpdate(ProtocolItem pi){
 		protocol.add(pi);
 	}
 	
-	public void generateServerList(){ // <--------  private Methode !!!
+	private void generateServerList(){ // <--------  private Methode !!!
 		Node[] nodes = process.getNodeArray();
 		for (int i = 0; i < nodes.length; i++){
 			String id = nodes[i].getId();
@@ -156,8 +187,11 @@ public class Simulator {
 	}
 	
 	private void initEventList(){
-		caseGenerator = new CaseGenerator(new ProbabilityDistribution(typeOfDistForCases, caseParam1, caseParam2, ++seed));
+		caseGenerator = new CaseGenerator(new ProbabilityDistribution(typeOfDistForCases, caseParam1, caseParam2, ++seed), this);
+//		DepartureEvent unreachableDepartureEvent = new DepartureEvent(this, getStartServer(), VERY_LATE_TIME, 0);
+//		eventList.add(unreachableDepartureEvent);
 		
+		generateNextCase();
 	}
 
 	public HashMap<String, Server> getServerList() {
@@ -168,7 +202,7 @@ public class Simulator {
 		this.serverList = serverList;
 	}
 	
-	private void printServerList(){
+	/*private void printServerList(){
 		String text = "";
 		for (Server s : serverList.values()){
 			text += "\n" + s + " --> ";
@@ -177,7 +211,7 @@ public class Simulator {
 			}
 		}
 		JOptionPane.showMessageDialog(null, text);
-	}
+	}*/
 	
 	private boolean isCaseNumReached(){
 		return countCaseFinished >= lambda;
@@ -196,7 +230,123 @@ public class Simulator {
 		case Simulator.STOP_BOTH:
 			return isCaseNumReached() || isTimeRunOut();
 		default:
-			return false;
+			return true;
 		}
+	}
+	
+	private Server getStartServer(){
+		Node start = process.getStartPlace();
+		int succs = start.getSuccessor().size();
+		int rnd = fstServChoice.nextInt(100);
+		int idx = -1;
+		for (int i = 0; i < succs; i++){
+			if (i == 0){
+				if (rnd < (fstServList[i][2] * 100)){
+					idx = i;
+				}
+			} else {
+				if ((rnd >= fstServList[i-1][2]) && (rnd < fstServList[i][2])){
+					idx = i;
+				}
+			}
+		}
+		
+		return serverList.get(start.getSuccessor().get(idx).getTarget().getId());
+	}
+	
+	private void getFstServList(){
+		Node start = process.getStartPlace();
+		int succs = start.getSuccessor().size();
+		fstServList = new int[succs][3];
+		
+		switch (succs){
+		case 1:
+			fstServList[0][0] = 1;
+			fstServList[0][1] = 1;
+			fstServList[0][2] = 1;
+			break;
+		default:
+			for (int i = 0; i < succs; i++){
+				fstServList[i][0] = i;
+				fstServList[i][1] = (Double.valueOf(start.getSuccessor().get(i).getProbability() * 100)).intValue();
+				if (i > 0){
+					fstServList[i][2] = fstServList[i][1] + fstServList[i-1][2];
+				} else {
+					fstServList[i][2] = fstServList[i][1];
+				}
+			}
+		}
+	}
+
+	public double getClock() {
+		return clock;
+	}
+
+	public void setClock(double clock) {
+		this.clock = clock;
+	}
+	
+	private void generateNextCase(){
+		Case c = caseGenerator.generateNextCase();
+		caseNo++;
+		caseList.put(Integer.valueOf(c.getId()), c);
+		ArrivalEvent ae = new ArrivalEvent(this, getStartServer(), c.getCurrentArrivalTime(), c);
+		eventList.add(ae);
+	}
+
+	public int getMaxNumCasesInSystem() {
+		return maxNumCasesInSystem;
+	}
+
+	public void setMaxNumCasesInSystem(int maxNumCasesInSystem) {
+		this.maxNumCasesInSystem = maxNumCasesInSystem;
+	}
+
+	public int getNumCasesInSystem() {
+		return numCasesInSystem;
+	}
+
+	public void setNumCasesInSystem(int numCasesInSystem) {
+		this.numCasesInSystem = numCasesInSystem;
+	}
+
+	public int getQueueDiscipline() {
+		return queueDiscipline;
+	}
+
+	public void setQueueDiscipline(int queueDiscipline) {
+		this.queueDiscipline = queueDiscipline;
+	}
+
+	public ResourceAllocation getResAlloc() {
+		return resAlloc;
+	}
+
+	public void setResAlloc(ResourceAllocation resAlloc) {
+		this.resAlloc = resAlloc;
+	}
+
+	public ResourceUtilization getResUtil() {
+		return resUtil;
+	}
+
+	public void setResUtil(ResourceUtilization resUtil) {
+		this.resUtil = resUtil;
+	}
+
+	public int getUseResAlloc() {
+		return useResAlloc;
+	}
+
+	public void setUseResAlloc(int useResAlloc) {
+		this.useResAlloc = useResAlloc;
+	}
+
+	public PriorityQueue<SimEvent> getEventList() {
+		return eventList;
+	}
+
+	public void setEventList(PriorityQueue<SimEvent> eventList) {
+		this.eventList = eventList;
 	}
 }

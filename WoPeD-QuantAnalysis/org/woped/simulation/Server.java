@@ -4,41 +4,33 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
-import flanagan.math.PsRandom;
-
 public class Server {
 	public static final int STATUS_IDLE	= 1;
 	public static final int STATUS_BUSY = 2;
 	
-//	public static final int DIST_TYPE_UNIFORM	= 1;
-//	public static final int DIST_TYPE_EXP		= 2;
-//	public static final int DIST_TYPE_GAUSS		= 3;
-	
 	private String id;
 	private String name;
 	private int numCalls = 0;
-	private double busy = 0.0;
-	private double curServTime = 0.0;
+	private double busy = 0.0;				// B(t)
+	private double queueLen = 0.0;			// Q(t)
+	private double maxWaitTimeOfCase = 0.0;
 	private int maxQueueLength = 0;
+	private int zeroDelays = 0;
+	private int numAccess = 0;
+	private int numDeparture = 0;
+	private int numCasesInParallel = 0;
+	private int maxNumCasesInParallel = 0;
 	private int status = 0;
 	private ProbabilityDistribution distribution;
-//	private int typeOfDist = 0;
-	//private int curCase = 0;
 	private Case curCase = null;
-	//private LinkedList<ArrivalEvent> queue = new LinkedList<ArrivalEvent>();
 	private LinkedList<Case> queue = new LinkedList<Case>();
 	private ArrayList<SuccServer> successor = new ArrayList<SuccServer>();
 	private Random choice;
-//	private PsRandom generator;
-//	private long seed = 0;
 	
 	public Server(String id, String name, ProbabilityDistribution dist){
 		this.id = id;
 		this.name = name;
-//		this.seed = seed;
 		this.choice = new Random();
-//		this.generator = new PsRandom(seed);
-//		this.typeOfDist = type;
 		this.distribution = dist;
 	}
 
@@ -138,42 +130,109 @@ public class Server {
 		}
 	}
 
-	/*public long getSeed() {
-		return seed;
-	}
-
-	public void setSeed(long seed) {
-		this.seed = seed;
-	}*/
-	
 	public double getNextServTime(){
-		/*double time = 0;
-		switch (typeOfDist){
-		case DIST_TYPE_UNIFORM:
-			time = generator.nextDouble();
-			break;
-		case DIST_TYPE_GAUSS:
-			time = generator.nextGaussian(0, 0);
-			break;
-		default:
-			time = generator.nextExponential(0, 0);
-		}
-		
-		return time;*/
 		return distribution.getNextRandomValue();
 	}
 	
-	public void deliverNewCase(Case c){
+	/*public void deliverNewCase(Case c){
 		if (status == Server.STATUS_IDLE){
 			setCurCase(c);
 			setStatus(Server.STATUS_BUSY);
 		} else {
 			getQueue().add(c);
 		}
-	}
+	}*/
 	
 	public String toString(){
 		return name + "(" + id + ")";
+	}
+
+	public int getMaxNumCasesInParallel() {
+		return maxNumCasesInParallel;
+	}
+
+	public void setMaxNumCasesInParallel(int maxNumCasesInParallel) {
+		this.maxNumCasesInParallel = maxNumCasesInParallel;
+	}
+
+	public int getMaxQueueLength() {
+		return maxQueueLength;
+	}
+
+	public void setMaxQueueLength(int maxQueueLength) {
+		this.maxQueueLength = maxQueueLength;
+	}
+
+	public double getMaxWaitTimeOfCase() {
+		return maxWaitTimeOfCase;
+	}
+
+	public void setMaxWaitTimeOfCase(double maxWaitTimeOfCase) {
+		this.maxWaitTimeOfCase = maxWaitTimeOfCase;
+	}
+
+	public int getNumAccess() {
+		return numAccess;
+	}
+
+	public void setNumAccess(int numAccess) {
+		this.numAccess = numAccess;
+	}
+
+	public int getNumDeparture() {
+		return numDeparture;
+	}
+
+	public void setNumDeparture(int numDeparture) {
+		this.numDeparture = numDeparture;
+	}
+
+	public double getQueueLen() {
+		return queueLen;
+	}
+
+	public void setQueueLen(double queueLen) {
+		this.queueLen = queueLen;
+	}
+
+	public int getZeroDelays() {
+		return zeroDelays;
+	}
+
+	public void setZeroDelays(int zeroDelays) {
+		this.zeroDelays = zeroDelays;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public void incNumCalls(int n){
+		numCalls += n;
+	}
+	
+	public void incZeroDelays(int n){
+		zeroDelays += n;
+	}
+	
+	public void incNumAccess(int n){
+		numAccess += n;
+	}
+	
+	public void incNumDeparture(int n){
+		numDeparture += n;
+	}
+
+	public int getNumCasesInParallel() {
+		return numCasesInParallel;
+	}
+
+	public void setNumCasesInParallel(int numCasesInParallel) {
+		this.numCasesInParallel = numCasesInParallel;
+	}
+	
+	public void incNumCasesInParallel(int n){
+		numCasesInParallel += n;
 	}
 }
 

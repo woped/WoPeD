@@ -1,6 +1,5 @@
 package org.woped.simulation;
 
-import flanagan.math.PsRandom;
 
 public class CaseGenerator {
 //	public static final int DIST_TYPE_UNIFORM	= 1;
@@ -12,9 +11,11 @@ public class CaseGenerator {
 	private ProbabilityDistribution distribution;
 	private int caseCount = 0;
 	private double lastArrivalTime = 0.0;
+	private Simulator sim = null;
 	
-	public CaseGenerator(ProbabilityDistribution dist){
+	public CaseGenerator(ProbabilityDistribution dist, Simulator sim){
 		this.distribution = dist;
+		this.sim = sim;
 	}
 
 	public int getCaseCount() {
@@ -45,8 +46,23 @@ public class CaseGenerator {
 		default:
 			next.setSysArrivalTime(generator.nextExponential(0, 0));
 		}*/
-		next.setSysArrivalTime(distribution.getNextRandomValue());
+		
+		lastArrivalTime += distribution.getNextRandomValue();
+		next.setSysArrivalTime(lastArrivalTime);
+		
+		ProtocolItem pi = new ProtocolItem(sim);
+		pi.setTime(sim.getClock());
+		pi.setDescription("New Case generated. ID: " + next.getId());
+		sim.protocolUpdate(pi);
 		
 		return next;
+	}
+
+	public double getLastArrivalTime() {
+		return lastArrivalTime;
+	}
+
+	public void setLastArrivalTime(double lastArrivalTime) {
+		this.lastArrivalTime = lastArrivalTime;
 	}
 }
