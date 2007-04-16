@@ -3,12 +3,13 @@ package org.woped.quantanalysis;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -39,12 +40,14 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.JTableHeader;
 
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.StructuralAnalysis;
+import org.woped.editor.utilities.Messages;
 import org.woped.graph.Arc;
 import org.woped.graph.Key;
 import org.woped.graph.Node;
@@ -59,11 +62,11 @@ import org.woped.simulation.Simulator;
 
 public class QuantitativeAnalysisDialog extends JDialog {
 
-	private static final long serialVersionUID	= 1L;
-	
-//	public static final int CALL_CAPA	= 1;
-//	public static final int CALL_SIM	= 2;
-	
+	private static final long serialVersionUID = 1L;
+
+	// public static final int CALL_CAPA = 1;
+	// public static final int CALL_SIM = 2;
+
 	private EditorVC editor = null;
 	private JPanel jContentPane = null;
 	private JTabbedPane register = null;
@@ -77,95 +80,103 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	private double lambda = 50.0;
 	private double epsilon = 0.001;
 	private double capaLevel = 0.8;
-	
-	StructuralAnalysis sa;
-	ModelElementContainer mec;
-	WorkflowNetGraph graph;
-	ResourceAllocation resAlloc;
-	GeneralPropertiesDialog props = null;
-	boolean usedAlready = false;
-	int numResCls;
-	int numTrans = 0;
-	HashMap<Key, Node> unfoldedNet = new HashMap<Key, Node>();
-	
+
+	private StructuralAnalysis sa;
+	private ModelElementContainer mec;
+	private WorkflowNetGraph graph;
+	private ResourceAllocation resAlloc;
+	private GeneralPropertiesDialog props = null;
+	private boolean usedAlready = false;
+	private int numResCls;
+	private int numTrans = 0;
+	private HashMap<Key, Node> unfoldedNet = new HashMap<Key, Node>();
+
 	// Capacity Plan Tab
-	String[] colNames = {"Task", "Runs per Case", "Cases per Period", "Servicetime per Task", "Servicetime per Case", "Servicetime per Period"};
-	String[] colNames2 = {"Resource class", "Average number of minutes", "Number of resources"};
-	String[] colToolTips1 = {
+	private String[] colNames = {
+			Messages.getString("QuantAna.CapacityPlanning.Column.Taskname"),
+			Messages
+					.getString("QuantAna.CapacityPlanning.Column.Executionspercase"),
+			Messages
+					.getString("QuantAna.CapacityPlanning.Column.Casesperperiod"),
+			Messages.getString("QuantAna.CapacityPlanning.Column.Servicetime"),
+			Messages
+					.getString("QuantAna.CapacityPlanning.Column.Servicetimepercase"),
+			Messages
+					.getString("QuantAna.CapacityPlanning.Column.Servicetimeperperiod") };
+
+	private String[] colNames2 = {
+			Messages
+					.getString("QuantAna.CapacityPlanning.Column.Resourceclass"),
+			Messages.getString("QuantAna.CapacityPlanning.Column.AverageTime"),
+			Messages.getString("QuantAna.CapacityPlanning.Column.Numesources") };
+
+	private String[] colToolTips1 = {
 			"Task: Name and ID of all tasks of the process",
 			"Runs per Case: The number of runs for a single case through the regarding task",
 			"Cases per Period: The number of runs through a task in a whole period",
 			"Servicetime per Task: The average service time a task needs to get the work done",
 			"Servicetime per Case: The average service time the task needs for a single case (including loops)",
-			"Servicetime per Period: The average service time of the task in the whole period"
-	};
-	String[] colToolTips2 = {
+			"Servicetime per Period: The average service time of the task in the whole period" };
+
+	private String[] colToolTips2 = {
 			"Resource class: The name of the resource class",
 			"Average number of minutes: The sum of the average service times of all tasks per period using this resource class",
-			"Number of resources: The number of resource objects needed to perform all tasks per resource class"
-	};
-	Object[][] tableTasksMatrix;
-	Object[][] tableResMatrix;
-	double[][] tasksMatrix;
-	double[][] resMatrix;
-	TasksTableModel tmTasks;
-	ResTableModel tmRes;
-	JTable tableTasks;
-	JTable tableRes;
-	JScrollPane tableTasksPane;
-	JScrollPane tableResPane;
-	JLabel lblDummy;
-	JLabel lblDummy2;
-	JLabel lblHeading1;
-	JLabel lblHeading2;
-	JLabel lblUnfolding;
-	JLabel lblDeviation;
-	JPanel messagePanel;
-	JPanel panelHeading1;
-	JPanel panelHeading2;
-	JLabel lblPrecision;
-//	JSpinner jspPrecision;
-	JSlider jslPrecision;
-	
-	JLabel lblCapaLevel;
-	JLabel lblLevelDisplay;
-	JSlider jslCapaLevel;
-	
+			"Number of resources: The number of resource objects needed to perform all tasks per resource class" };
+
+	private Object[][] tableTasksMatrix;
+	private Object[][] tableResMatrix;
+	private double[][] tasksMatrix;
+	private double[][] resMatrix;
+	private TasksTableModel tmTasks;
+	private ResTableModel tmRes;
+	private JTable tableTasks;
+	private JTable tableRes;
+	private JScrollPane tableTasksPane;
+	private JScrollPane tableResPane;
+	private JLabel lblDummy;
+	private JLabel lblDummy2;
+	private JLabel lblUnfolding;
+	private JLabel lblDeviation;
+	private JPanel messagePanel;
+	private JPanel panelHeading1;
+	private JPanel panelHeading2;
+	private JLabel lblPrecision;
+	// JSpinner jspPrecision;
+	private JSlider jslPrecision;
+	private JLabel lblCapaLevel;
+	private JLabel lblLevelDisplay;
+	private JSlider jslCapaLevel;
+
 	// Simulation Tab
-	JTextField txtRuns;
-	ButtonGroup groupIAT;
-	ButtonGroup groupST;
-	ButtonGroup groupQD;
-	JTextField txt_p2_11;
-	JTextField txt_p2_12;
-	JTextField txt_p2_21;
-	JTextField txt_p2_22;
-	JTextField txt_p2_31;
-	JTextField txt_p2_32;
-	JTextField txt_p3_11;
-	JTextField txt_p3_12;
-	JTextField txt_p3_21;
-	JTextField txt_p3_22;
-	JTextField txt_p3_31;
-	JTextField txt_p3_32;
-	JCheckBox stop1;
-	JCheckBox stop2;
-	JLabel lblDummy3;
-	JLabel lblDummy4;
+	private JTextField txtRuns;
+	private ButtonGroup groupIAT;
+	private ButtonGroup groupST;
+	private ButtonGroup groupQD;
+	private JTextField txt_p2_11;
+	private JTextField txt_p2_12;
+	private JTextField txt_p2_21;
+	private JTextField txt_p2_22;
+	private JTextField txt_p2_31;
+	private JTextField txt_p2_32;
+	private JCheckBox stop1;
+	private JCheckBox stop2;
+	private JLabel lblDummy3;
+	private JLabel lblDummy4;
 
 	/**
 	 * This is the default constructor
 	 */
-	public QuantitativeAnalysisDialog(Frame owner, boolean modal, EditorVC editor) {
+	public QuantitativeAnalysisDialog(Frame owner, boolean modal,
+			EditorVC editor) {
 		super(owner, modal);
 		this.editor = editor;
-		
-		sa = new StructuralAnalysis(editor);//, new File(ConfigurationManager.getConfiguration().getHomedir() + "temp"));
+
+		sa = new StructuralAnalysis(editor);
 		mec = editor.getModelProcessor().getElementContainer();
-		
+
 		graph = new WorkflowNetGraph(sa, mec);
 		numTrans = graph.getNumTransitions();
-		
+
 		initialize();
 	}
 
@@ -175,16 +186,20 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(800, 600);
-		this.setResizable(false);
-		this.setLocation(20, 20);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setBounds((screenSize.width - 850) / 2,
+				(screenSize.height - 700) / 2, 850, 700);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Quantitative Analysis");
-		
-		if (!usedAlready){
-			register.setEnabledAt(register.indexOfTab("Capacity Plan"), false);
-			register.setEnabledAt(register.indexOfTab("Simulation"), false);
+		this.setTitle(Messages.getTitle("QuantAna"));
+
+		if (!usedAlready) {
+			register.setEnabledAt(register.indexOfTab(Messages
+					.getTitle("QuantAna.CapacityPlanning")), false);
+			register.setEnabledAt(register.indexOfTab(Messages
+					.getTitle("QuantAna.Simulation")), false);
 			getConfiguration();
+		} else {
+			this.setVisible(true);
 		}
 	}
 
@@ -203,297 +218,285 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	}
 
 	/**
-	 * This method initializes register	
-	 * 	
-	 * @return javax.swing.JTabbedPane	
+	 * This method initializes register
+	 * 
+	 * @return javax.swing.JTabbedPane
 	 */
 	private JTabbedPane getRegister() {
-//		getRegisterTab1();
+		// getRegisterTab1();
 		getRegisterTab2();
 		getRegisterTab3();
-		
+
 		if (register == null) {
 			register = new JTabbedPane();
-			
-//			register.addTab("General Information", genPanel);
-			register.addTab("Capacity Plan", capaPanel);
-			register.addTab("Simulation", simuPanel);
+
+			// register.addTab("General Information", genPanel);
+			register.addTab(Messages.getTitle("QuantAna.CapacityPlanning"), capaPanel);
+			register.addTab(Messages.getTitle("QuantAna.Simulation"), simuPanel);
 		}
 		return register;
 	}
-	
-	/*private void getRegisterTab1()
-	{
-		lblTimeUnit = new JLabel();
-		lblTimeUnit.setText("time unit:");
-		lblTimeUnit.setAlignmentX(0);
-		lblPeriod = new JLabel();
-		lblPeriod.setText("period:");
-		lblPeriod.setAlignmentX(0);
-		lblCases = new JLabel();
-		lblCases.setText("new cases per period (" + '\u03BB' + "):");
-		lblCases.setAlignmentX(0);
-		txtTimeUnit = new JTextField();
-		txtTimeUnit.setText(Double.valueOf(timeUnit).toString());
-		txtTimeUnit.setPreferredSize(new Dimension(100, 20));
-		txtPeriod = new JTextField();
-		txtPeriod.setText(Double.valueOf(period).toString());
-		txtCases = new JTextField();
-		txtCases.setText(Double.valueOf(lambda).toString());
-		txtPrecision = new JTextField();
-		txtPrecision.setText(Double.valueOf(epsilon).toString());
-		lblPrecision = new JLabel("precision ("+ '\u03B5' + "): ");
-		btnApply = new JButton("Apply");
-		btnApply.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
-				applyProperties();
-			}
-		});
-		
-		//String[] units = {"minute(s)", "second(s)", "hour(s)", "day(s)", "month(s)", "year(s)"};
-		String[] units = {TIME_SECOND, TIME_MINUTE, TIME_HOUR, TIME_DAY, TIME_WEEK, TIME_MONTH, TIME_YEAR};
-		cboTimeUnit = new JComboBox(units);
-		cboTimeUnit.setSelectedItem(timeIntervall);
-		cboTimeUnit.setPreferredSize(new Dimension(100, txtTimeUnit.getHeight()));
-		cboPeriodUnit = new JComboBox(units);
-		cboPeriodUnit.setSelectedItem(periodIntervall);
-		
-		GridBagLayout genLayout = new GridBagLayout();
-		genPanel.setLayout(genLayout);
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.BOTH;
-		constraints.insets = new Insets(5,5,5,5);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 0;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(lbl2, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(lblTimeUnit, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 2;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(lblPeriod, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 3;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(lblCases, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 4;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(lblPrecision, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 1;
-		constraints.gridy = 1;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(txtTimeUnit, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 1;
-		constraints.gridy = 2;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(txtPeriod, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 1;
-		constraints.gridy = 3;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(txtCases, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 1;
-		constraints.gridy = 4;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(txtPrecision, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 2;
-		constraints.gridy = 1;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(cboTimeUnit, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 2;
-		constraints.gridy = 2;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(cboPeriodUnit, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 5;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(lbl, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 1;
-		constraints.gridy = 6;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(btnApply, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 1;
-		constraints.gridx = 0;
-		constraints.gridy = 7;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		genPanel.add(lbl3, constraints);
-	}*/
-	
-	private void getRegisterTab2()
-	{
+
+	/*
+	 * private void getRegisterTab1() { lblTimeUnit = new JLabel();
+	 * lblTimeUnit.setText("time unit:"); lblTimeUnit.setAlignmentX(0);
+	 * lblPeriod = new JLabel(); lblPeriod.setText("period:");
+	 * lblPeriod.setAlignmentX(0); lblCases = new JLabel();
+	 * lblCases.setText("new cases per period (" + '\u03BB' + "):");
+	 * lblCases.setAlignmentX(0); txtTimeUnit = new JTextField();
+	 * txtTimeUnit.setText(Double.valueOf(timeUnit).toString());
+	 * txtTimeUnit.setPreferredSize(new Dimension(100, 20)); txtPeriod = new
+	 * JTextField(); txtPeriod.setText(Double.valueOf(period).toString());
+	 * txtCases = new JTextField();
+	 * txtCases.setText(Double.valueOf(lambda).toString()); txtPrecision = new
+	 * JTextField(); txtPrecision.setText(Double.valueOf(epsilon).toString());
+	 * lblPrecision = new JLabel("precision ("+ '\u03B5' + "): "); btnApply =
+	 * new JButton("Apply"); btnApply.addActionListener(new ActionListener(){
+	 * public void actionPerformed(ActionEvent event){ applyProperties(); } });
+	 * 
+	 * //String[] units = {"minute(s)", "second(s)", "hour(s)", "day(s)",
+	 * "month(s)", "year(s)"}; String[] units = {TIME_SECOND, TIME_MINUTE,
+	 * TIME_HOUR, TIME_DAY, TIME_WEEK, TIME_MONTH, TIME_YEAR}; cboTimeUnit = new
+	 * JComboBox(units); cboTimeUnit.setSelectedItem(timeIntervall);
+	 * cboTimeUnit.setPreferredSize(new Dimension(100,
+	 * txtTimeUnit.getHeight())); cboPeriodUnit = new JComboBox(units);
+	 * cboPeriodUnit.setSelectedItem(periodIntervall);
+	 * 
+	 * GridBagLayout genLayout = new GridBagLayout();
+	 * genPanel.setLayout(genLayout); GridBagConstraints constraints = new
+	 * GridBagConstraints(); constraints.fill = GridBagConstraints.BOTH;
+	 * constraints.insets = new Insets(5,5,5,5);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 0;
+	 * constraints.gridy = 0; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(lbl2, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 0;
+	 * constraints.gridy = 1; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(lblTimeUnit, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 0;
+	 * constraints.gridy = 2; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(lblPeriod, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 0;
+	 * constraints.gridy = 3; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(lblCases, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 0;
+	 * constraints.gridy = 4; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(lblPrecision, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 1;
+	 * constraints.gridy = 1; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(txtTimeUnit, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 1;
+	 * constraints.gridy = 2; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(txtPeriod, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 1;
+	 * constraints.gridy = 3; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(txtCases, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 1;
+	 * constraints.gridy = 4; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(txtPrecision, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 2;
+	 * constraints.gridy = 1; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(cboTimeUnit, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 2;
+	 * constraints.gridy = 2; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(cboPeriodUnit, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 0;
+	 * constraints.gridy = 5; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(lbl, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 0; constraints.gridx = 1;
+	 * constraints.gridy = 6; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(btnApply, constraints);
+	 * 
+	 * constraints.weightx = 0; constraints.weighty = 1; constraints.gridx = 0;
+	 * constraints.gridy = 7; constraints.gridwidth = 1; constraints.gridheight =
+	 * 1; genPanel.add(lbl3, constraints); }
+	 */
+
+	private void getRegisterTab2() {
 		calculateNumOfRuns(graph);
 		initResourceAlloc();
 		numResCls = resAlloc.getNumOfResClasses();
-		
-		Font fnt = new Font("Arial Bold", Font.PLAIN, 12);
-		
-//		getTables();
-		
+
 		lblDummy = new JLabel();
 		lblDummy2 = new JLabel();
-		lblHeading1 = new JLabel("The capacity required per Task: ", JLabel.LEFT);
-		lblHeading1.setFont(fnt);
-		lblHeading1.setAlignmentX(JLabel.LEFT_ALIGNMENT);
-		lblHeading1.setPreferredSize(new Dimension(400,20));
-		lblPrecision = new JLabel("precision: ");
+		lblPrecision = new JLabel(Messages
+				.getString("QuantAna.CapacityPlanning.Precision"));
 		lblPrecision.setAlignmentX(JLabel.RIGHT_ALIGNMENT);
-		lblPrecision.setPreferredSize(new Dimension(90,20));
-		/*jspPrecision = new JSpinner(new SpinnerNumberModel(2, 0, 5, 1));
-		jspPrecision.setPreferredSize(new Dimension(50,20));
-		jspPrecision.setToolTipText("Sets the number of decimal places");
-		jspPrecision.addChangeListener(new ChangeListener(){
-			public void stateChanged(ChangeEvent e){
-				String prec = ((Integer)jspPrecision.getValue()).toString();
-				showPrecision(prec);
-//				int i = ((Integer)(jspPrecision.getValue())).intValue();
-//				JOptionPane.showMessageDialog(null, Integer.valueOf(i));
-			}
-		});*/
+		/*
+		 * jspPrecision = new JSpinner(new SpinnerNumberModel(2, 0, 5, 1));
+		 * jspPrecision.setPreferredSize(new Dimension(50,20));
+		 * jspPrecision.setToolTipText("Sets the number of decimal places");
+		 * jspPrecision.addChangeListener(new ChangeListener(){ public void
+		 * stateChanged(ChangeEvent e){ String prec =
+		 * ((Integer)jspPrecision.getValue()).toString(); showPrecision(prec); //
+		 * int i = ((Integer)(jspPrecision.getValue())).intValue(); //
+		 * JOptionPane.showMessageDialog(null, Integer.valueOf(i)); } });
+		 */
 		jslPrecision = new JSlider(0, 5, 2);
 		jslPrecision.setPaintLabels(true);
 		jslPrecision.setPaintTicks(true);
 		jslPrecision.setMajorTickSpacing(1);
-		jslPrecision.setToolTipText("Sets the number of decimal places");
-		jslPrecision.addMouseListener(new MouseListener(){
-			public void mouseClicked(MouseEvent e){}
-			public void mouseReleased(MouseEvent e){
+		jslPrecision.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+		jslPrecision.setPreferredSize(new Dimension(100, 40));
+		// jslPrecision.setToolTipText("Adjust decimal precision");
+		jslPrecision.addMouseListener(new MouseListener() {
+			public void mouseClicked(MouseEvent e) {
+			}
+
+			public void mouseReleased(MouseEvent e) {
 				String p = Integer.valueOf(jslPrecision.getValue()).toString();
 				showPrecision(p);
 			}
-			public void mouseExited(MouseEvent e){}
-			public void mousePressed(MouseEvent e){}
-			public void mouseEntered(MouseEvent e){}
+
+			public void mouseExited(MouseEvent e) {
+			}
+
+			public void mousePressed(MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+			}
 		});
-		JLabel lblPrecDisplay = new JLabel();
-		lblPrecDisplay.setPreferredSize(new Dimension(60, 20));
 		panelHeading1 = new JPanel();
-		panelHeading1.add(lblHeading1);
-		panelHeading1.add(lblPrecision);
-		panelHeading1.add(jslPrecision);
-		panelHeading1.add(lblPrecDisplay);
-		
-		lblHeading2 = new JLabel("The capacity requirement per resource class: ", JLabel.LEFT);
-		lblHeading2.setFont(fnt);
-		lblHeading2.setAlignmentX(JLabel.LEFT_ALIGNMENT);
-		lblHeading2.setPreferredSize(new Dimension(400,20));
-		lblCapaLevel = new JLabel("capacity level: ");
+		panelHeading1.setLayout(new BorderLayout());
+		panelHeading1.add(lblPrecision, BorderLayout.LINE_START);
+		panelHeading1.add(jslPrecision, BorderLayout.LINE_END);
+
+		lblCapaLevel = new JLabel(Messages.getString("QuantAna.CapacityPlanning.Utilization"));
 		lblCapaLevel.setAlignmentX(JLabel.RIGHT_ALIGNMENT);
-		lblCapaLevel.setPreferredSize(new Dimension(90,20));
 		jslCapaLevel = new JSlider(10, 100, 80);
 		jslCapaLevel.setPaintTicks(true);
 		jslCapaLevel.setPaintLabels(true);
 		jslCapaLevel.setMajorTickSpacing(10);
 		jslCapaLevel.setMinorTickSpacing(5);
-		jslCapaLevel.setToolTipText("Choose the percentage of average resource utilization");
-//		jslCapaLevel.setPreferredSize(new Dimension(180, (int)jslCapaLevel.getSize().getHeight()));
-		jslCapaLevel.addChangeListener(new ChangeListener(){
-			public void stateChanged(ChangeEvent e){
-				int val = ((JSlider)e.getSource()).getValue();
-				lblLevelDisplay.setText(Integer.toString(val));
+		jslCapaLevel.setPreferredSize(new Dimension(200, 40));
+		// jslCapaLevel.setToolTipText("Choose the percentage of average
+		// resource utilization");
+		// jslCapaLevel.setPreferredSize(new Dimension(180,
+		// (int)jslCapaLevel.getSize().getHeight()));
+		jslCapaLevel.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				int val = ((JSlider) e.getSource()).getValue();
+				lblLevelDisplay.setText(Integer.toString(val) + " %");
 			}
 		});
-		jslCapaLevel.addMouseListener(new MouseListener(){
-			public void mouseClicked(MouseEvent e){}
-			public void mouseReleased(MouseEvent e){
+		jslCapaLevel.addMouseListener(new MouseListener() {
+			public void mouseClicked(MouseEvent e) {
+			}
+
+			public void mouseReleased(MouseEvent e) {
 				updateResAlloc();
 			}
-			public void mouseExited(MouseEvent e){}
-			public void mousePressed(MouseEvent e){}
-			public void mouseEntered(MouseEvent e){}
+
+			public void mouseExited(MouseEvent e) {
+			}
+
+			public void mousePressed(MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+			}
 		});
 		capaLevel = jslCapaLevel.getValue() / 100.0;
-		lblLevelDisplay = new JLabel(Integer.toString(jslCapaLevel.getValue()), JLabel.CENTER);
-		lblLevelDisplay.setPreferredSize(new Dimension(60,20));
+		lblLevelDisplay = new JLabel(Integer.toString(jslCapaLevel.getValue()) + " %", JLabel.CENTER);
 		lblLevelDisplay.setAlignmentX(JLabel.RIGHT_ALIGNMENT);
-		lblLevelDisplay.setFont(fnt);
+		lblLevelDisplay.setFont(DefaultStaticConfiguration.DEFAULT_TABLE_FONT);
 		lblLevelDisplay.setBorder(BorderFactory.createEtchedBorder());
+		lblLevelDisplay.setPreferredSize(new Dimension(50, 30));
 		panelHeading2 = new JPanel();
-		panelHeading2.add(lblHeading2);
+		panelHeading2.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelHeading2.add(lblCapaLevel);
-		panelHeading2.add(jslCapaLevel);
 		panelHeading2.add(lblLevelDisplay);
-		
+		panelHeading2.add(jslCapaLevel);
+
 		lblUnfolding = new JLabel("");
 		lblDeviation = new JLabel("");
-		lblUnfolding.setFont(fnt);
-		lblDeviation.setFont(fnt);
+		lblUnfolding.setFont(DefaultStaticConfiguration.DEFAULT_TABLE_FONT);
+		lblDeviation.setFont(DefaultStaticConfiguration.DEFAULT_TABLE_FONT);
 		messagePanel = new JPanel();
 		messagePanel.add(lblUnfolding);
 		messagePanel.add(lblDeviation);
-		
+
 		getTables();
+
+		JPanel p1 = new JPanel();
+		p1.setBorder(BorderFactory.createCompoundBorder(
+				BorderFactory.createTitledBorder(Messages
+						.getString("QuantAna.CapacityPlanning.Heading1")),
+				BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 		
 		GridBagLayout genLayout = new GridBagLayout();
-		capaPanel.setLayout(genLayout);
+		p1.setLayout(genLayout);
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.BOTH;
-		constraints.insets = new Insets(5,5,5,5);
-		
-		constraints.weightx = 1;
+		constraints.fill = GridBagConstraints.VERTICAL;
+		constraints.insets = new Insets(0,0,0,0);	
+		constraints.weightx = 0;
 		constraints.weighty = 0;
 		constraints.gridx = 0;
 		constraints.gridy = 0;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		capaPanel.add(lblDummy, constraints);
+		constraints.anchor = GridBagConstraints.LINE_END;
+		panelHeading1.setMinimumSize(new Dimension(200, 45));
+		p1.add(panelHeading1, constraints);
+
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.weightx = 0;
+		constraints.weighty = 0;
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		p1.add(tableTasksPane, constraints);
+
+		JPanel p2 = new JPanel();
+		p2.setBorder(BorderFactory.createCompoundBorder(
+				BorderFactory.createTitledBorder(Messages
+						.getString("QuantAna.CapacityPlanning.Heading2")),
+				BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
+		p2.setLayout(genLayout);
+
+		constraints.insets = new Insets(0,0,0,0);
+		constraints.fill = GridBagConstraints.VERTICAL;
+		constraints.weightx = 0;
+		constraints.weighty = 0;
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		panelHeading2.setMinimumSize(new Dimension(450, 45));
+		p2.add(panelHeading2, constraints);
+
+		constraints.fill = GridBagConstraints.BOTH;
+		constraints.weightx = 0;
+		constraints.weighty = 0;
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		p2.add(tableResPane, constraints);
+
+		capaPanel.setLayout(genLayout);
+		constraints.weightx = 0;
+		constraints.weighty = 0;
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		constraints.gridwidth = 1;
+		constraints.gridheight = 1;
+		capaPanel.add(p1, constraints);
 		
 		constraints.weightx = 0;
 		constraints.weighty = 0;
@@ -501,50 +504,28 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		constraints.gridy = 1;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		capaPanel.add(panelHeading1, constraints);
-		
+		capaPanel.add(p2, constraints);
+
 		constraints.weightx = 0;
 		constraints.weighty = 0;
 		constraints.gridx = 0;
 		constraints.gridy = 2;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		capaPanel.add(tableTasksPane, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 3;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		capaPanel.add(panelHeading2, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 4;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		capaPanel.add(tableResPane, constraints);
-		
-		constraints.weightx = 0;
-		constraints.weighty = 0;
-		constraints.gridx = 0;
-		constraints.gridy = 5;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		capaPanel.add(messagePanel, constraints);
-		
-		JButton btnConf = new JButton("Configure");
+		capaPanel.add(messagePanel, constraints);		
+
+		JButton btnConf = new JButton(Messages
+				.getString("QuantAna.CapacityPlanning.Configure"));
 		btnConf.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event){
-//				callee = CALL_CAPA;
+			public void actionPerformed(ActionEvent event) {
+				// callee = CALL_CAPA;
 				getConfiguration();
 			}
 		});
-		JButton btnCalc = new JButton("Calculate");
-		btnCalc.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
+		JButton btnCalc = new JButton(Messages
+				.getString("QuantAna.CapacityPlanning.Compute"));
+		btnCalc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
 				calculateTables();
 			}
 		});
@@ -552,7 +533,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		buttonPanel.add(btnCalc);
 		buttonPanel.add(btnConf);
 		getRootPane().setDefaultButton(btnCalc);
-		
+
 		constraints.weightx = 0;
 		constraints.weighty = 0;
 		constraints.gridx = 0;
@@ -560,7 +541,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		capaPanel.add(buttonPanel, constraints);
-		
+
 		constraints.weightx = 0;
 		constraints.weighty = 1;
 		constraints.gridx = 0;
@@ -569,7 +550,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		constraints.gridheight = 1;
 		capaPanel.add(lblDummy2, constraints);
 	}
-	
+
 	private void getRegisterTab3()
 	{
 //		simuPanel.setLayout(new GridLayout(6,1));
@@ -859,189 +840,193 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		simuPanel.add(lblDummy4, constraints);
 	}
 	
-	private void calculateNumOfRuns(WorkflowNetGraph g){
+	private void calculateNumOfRuns(WorkflowNetGraph g) {
 		unfoldNet(graph, lambda, epsilon);
-		
+
 		Node[] origNet = graph.getNodeArray();
-		for (Key k : unfoldedNet.keySet()){
+		for (Key k : unfoldedNet.keySet()) {
 			String id = k.getId();
 			Node n = origNet[graph.getNodeIdx(id)];
 			n.setNumOfRuns(n.getNumOfRuns() + k.getRuns());
 			n.setIteration(n.getIteration() + 1);
 		}
 	}
-	
-	private void unfoldNet(WorkflowNetGraph g, double l, double e){
+
+	private void unfoldNet(WorkflowNetGraph g, double l, double e) {
 		unfoldedNet.clear();
-		for (Node n : g.getNodeArray()){
+		for (Node n : g.getNodeArray()) {
 			if (n.isJoinReached())
 				n.setJoinReached(false);
-			
+
 			n.setNumOfRuns(0);
 		}
-		
+
 		Node s = g.getStartPlace();
 		Node n = new Node(s.getId(), s.getName());
 		n.setTempRuns(lambda);
 		Key start = new Key(n.getId(), lambda);
 		unfoldedNet.put(start, n);
-		
+
 		LinkedList<NodePair> queue = new LinkedList<NodePair>();
 		queue.add(new NodePair(s, n));
 		runThroughNet(queue);
 	}
-	
+
 	// rekursive Funktion mit Breitensuche
-	private void runThroughNet(LinkedList<NodePair> q){
-		if (!(q.isEmpty())){
+	private void runThroughNet(LinkedList<NodePair> q) {
+		if (!(q.isEmpty())) {
 			NodePair np = q.removeFirst();
-			for (Arc a : np.getFirst().getSuccessor()){
+			for (Arc a : np.getFirst().getSuccessor()) {
 				Node m = a.getTarget();
-				if (!m.isJoinReached()){
-					double val = a.getProbability() * np.getSecond().getTempRuns();
-					if (!(val < epsilon)){
+				if (!m.isJoinReached()) {
+					double val = a.getProbability()
+							* np.getSecond().getTempRuns();
+					if (!(val < epsilon)) {
 						Node y = new Node(m.getId(), m.getName());
 						y.setTempRuns(val);
-						if (m.isAndJoin()) m.setJoinReached(true);
-						np.getSecond().getSuccessor().add(new Arc(y, a.getProbability()));
+						if (m.isAndJoin())
+							m.setJoinReached(true);
+						np.getSecond().getSuccessor().add(
+								new Arc(y, a.getProbability()));
 						Key k = new Key(m.getId(), val);
 						unfoldedNet.put(k, y);
-						
-						if (!(containsElement(q, m))) q.add(new NodePair(m, y));
+
+						if (!(containsElement(q, m)))
+							q.add(new NodePair(m, y));
 						runThroughNet(q);
 					}
 				}
 			}
 		}
 	}
-	
-	private boolean containsElement(LinkedList<NodePair> q, Node n){
+
+	private boolean containsElement(LinkedList<NodePair> q, Node n) {
 		boolean contains = false;
 		Iterator<NodePair> i = q.iterator();
-		while (i.hasNext()){
+		while (i.hasNext()) {
 			NodePair p = i.next();
-			if (n.equals(p.getFirst())){
+			if (n.equals(p.getFirst())) {
 				contains = true;
 				break;
 			}
 		}
-		
+
 		return contains;
 	}
-	
-	private void initResourceAlloc(){
-		PetriNetModelProcessor pmp = (PetriNetModelProcessor)editor.getModelProcessor();
-		
+
+	private void initResourceAlloc() {
+		PetriNetModelProcessor pmp = (PetriNetModelProcessor) editor
+				.getModelProcessor();
+
 		ArrayList<String> roles = new ArrayList<String>();
 		ArrayList<String> groups = new ArrayList<String>();
-		Vector rVec = (Vector)pmp.getRoles();
-		Vector gVec = (Vector)pmp.getOrganizationUnits();
+		Vector rVec = (Vector) pmp.getRoles();
+		Vector gVec = (Vector) pmp.getOrganizationUnits();
 		for (int i = 0; i < rVec.size(); i++)
-			roles.add(((ResourceClassModel)rVec.get(i)).getName());
-		
+			roles.add(((ResourceClassModel) rVec.get(i)).getName());
+
 		for (int i = 0; i < gVec.size(); i++)
-			groups.add(((ResourceClassModel)gVec.get(i)).getName());
-		
+			groups.add(((ResourceClassModel) gVec.get(i)).getName());
+
 		Iterator iter = getTransModels().iterator();
-		
+
 		resAlloc = new ResourceAllocation(roles, groups, iter, pmp);
-		
-//		JOptionPane.showMessageDialog(null, resAlloc);
+
+		// JOptionPane.showMessageDialog(null, resAlloc);
 	}
-	
-	private LinkedList<TransitionModel> getTransModels(){
+
+	private LinkedList<TransitionModel> getTransModels() {
 		LinkedList<TransitionModel> lst = new LinkedList<TransitionModel>();
 		ArrayList<String> ids = new ArrayList<String>();
 		Node[] nodes = graph.getNodeArray();
-		
+
 		for (int i = 0; i < nodes.length; i++)
 			if (graph.isTransition(nodes[i].getId()))
 				ids.add(nodes[i].getId());
-				
-		for (int i = 0; i < ids.size(); i++){
-			lst.add((TransitionModel)mec.getElementById(ids.get(i)));
+
+		for (int i = 0; i < ids.size(); i++) {
+			lst.add((TransitionModel) mec.getElementById(ids.get(i)));
 		}
-		
+
 		return lst;
 	}
-	
-	/*private JTable getResClassTable(){
-		Object[][] content = new Object[numResCls][3];
-		ResourceClassTaskAllocationTable rcta = resAlloc.getResClsTskAlloc();
-		
-		for (int i = 0; i < numResCls; i++){
-			content[i][0] = rcta.getTable().get(i).getResClass();
 
-			double sum = 0.0;
-			ArrayList<String> min = rcta.getTable().get(i).getTasks();
-			for (int j = 0; j < min.size(); j++){
-				int idx = -1;
-				for (int k = 0; k < numTrans; k++){
-					if (((String)obj[k][0]).equals(min.get(j))) idx = k;
-				}
-				
-				if (idx != -1) sum += ((Double)obj[idx][5]).doubleValue();
-			}
-			
-			content[i][1] = Double.valueOf(sum);
-			
-			content[i][2] = Double.valueOf(sum / period);
-		}
-		
-		return new JTable(content, colNames2);
-	}*/
-	
-	private void getTables(){
+	/*
+	 * private JTable getResClassTable(){ Object[][] content = new
+	 * Object[numResCls][3]; ResourceClassTaskAllocationTable rcta =
+	 * resAlloc.getResClsTskAlloc();
+	 * 
+	 * for (int i = 0; i < numResCls; i++){ content[i][0] =
+	 * rcta.getTable().get(i).getResClass();
+	 * 
+	 * double sum = 0.0; ArrayList<String> min =
+	 * rcta.getTable().get(i).getTasks(); for (int j = 0; j < min.size(); j++){
+	 * int idx = -1; for (int k = 0; k < numTrans; k++){ if
+	 * (((String)obj[k][0]).equals(min.get(j))) idx = k; }
+	 * 
+	 * if (idx != -1) sum += ((Double)obj[idx][5]).doubleValue(); }
+	 * 
+	 * content[i][1] = Double.valueOf(sum);
+	 * 
+	 * content[i][2] = Double.valueOf(sum / period); }
+	 * 
+	 * return new JTable(content, colNames2); }
+	 */
+
+	private void getTables() {
 		tasksMatrix = new double[numTrans + 1][colNames.length - 1];
 		resMatrix = new double[numResCls][colNames2.length - 1];
-		
-		tableTasksMatrix = new Object[numTrans+1][colNames.length];
+
+		tableTasksMatrix = new Object[numTrans + 1][colNames.length];
 		tableResMatrix = new Object[numResCls][colNames2.length];
-		
+
 		String[] trans = graph.getTransitions();
 		double[] times = graph.getTimes();
 		double[] runs = graph.getRuns();
 		int j = trans.length;
 		String prec = Integer.valueOf(jslPrecision.getValue()).toString();
-		for (int i = 0; i < j; i++){
+		for (int i = 0; i < j; i++) {
 			tasksMatrix[i][2] = runs[i];
 			tasksMatrix[i][3] = times[i];
-			
+
 			tableTasksMatrix[i][0] = trans[i];
-			tableTasksMatrix[i][2] = String.format("%12." + prec + "f", runs[i]);
-			tableTasksMatrix[i][3] = String.format("%12." + prec + "f", times[i]);
+			tableTasksMatrix[i][2] = String
+					.format("%12." + prec + "f", runs[i]);
+			tableTasksMatrix[i][3] = String.format("%12." + prec + "f",
+					times[i]);
 		}
-		
+
 		tasksMatrix[j][2] = 0.0;
 		tasksMatrix[j][3] = 0.0;
-		
-		tableTasksMatrix[j][0] = "Sum";
-		
-		ArrayList<ResourceClassTaskAllocation> resTab = resAlloc.getResClsTskAlloc().getTable();
-		for (int i = 0; i < resTab.size(); i++){
+
+		tableTasksMatrix[j][0] = Messages
+				.getString("QuantAna.CapacityPlanning.Aggregate");
+
+		ArrayList<ResourceClassTaskAllocation> resTab = resAlloc
+				.getResClsTskAlloc().getTable();
+		for (int i = 0; i < resTab.size(); i++) {
 			tableResMatrix[i][0] = resTab.get(i).getResClass();
 		}
-		
-		Font fnt = new Font("Arial Bold", Font.PLAIN, 12);
-		
+
 		tmTasks = new TasksTableModel(colNames, tableTasksMatrix);
-		tmTasks.addTableModelListener(new TableModelListener(){
-			public void tableChanged(TableModelEvent e){
-				//JOptionPane.showMessageDialog(null, e.toString());
+		tmTasks.addTableModelListener(new TableModelListener() {
+			public void tableChanged(TableModelEvent e) {
+				// JOptionPane.showMessageDialog(null, e.toString());
 			}
 		});
-		tableTasks = new JTable(tmTasks){
+		tableTasks = new JTable(tmTasks) {
 			private static final long serialVersionUID = 11L;
-			
-			// Implement table header tool tips. 
+
+			// Implement table header tool tips.
 			protected JTableHeader createDefaultTableHeader() {
 				return new JTableHeader(columnModel) {
 					private static final long serialVersionUID = 12L;
-					
+
 					public String getToolTipText(MouseEvent e) {
 						java.awt.Point p = e.getPoint();
 						int index = columnModel.getColumnIndexAtX(p.x);
-						int realIndex = columnModel.getColumn(index).getModelIndex();
+						int realIndex = columnModel.getColumn(index)
+								.getModelIndex();
 						return colToolTips1[realIndex];
 					}
 				};
@@ -1049,26 +1034,29 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		};
 		tableTasks.setEnabled(false);
 		tableTasks.setBackground(capaPanel.getBackground());
-		tableTasks.getTableHeader().setFont(fnt);
-		
+		tableTasks.getTableHeader().setFont(
+				DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
+
 		tmRes = new ResTableModel(colNames2, tableResMatrix);
-		tmRes.addTableModelListener(new TableModelListener(){
-			public void tableChanged(TableModelEvent e){
-				//JOptionPane.showMessageDialog(null, e.toString());
+		tmRes.addTableModelListener(new TableModelListener() {
+			public void tableChanged(TableModelEvent e) {
+				// JOptionPane.showMessageDialog(null, e.toString());
 			}
 		});
-		tableRes = new JTable(tmRes){
+
+		tableRes = new JTable(tmRes) {
 			private static final long serialVersionUID = 21L;
-			
-			// Implement table header tool tips. 
+
+			// Implement table header tool tips.
 			protected JTableHeader createDefaultTableHeader() {
 				return new JTableHeader(columnModel) {
 					private static final long serialVersionUID = 22L;
-					
+
 					public String getToolTipText(MouseEvent e) {
 						java.awt.Point p = e.getPoint();
 						int index = columnModel.getColumnIndexAtX(p.x);
-						int realIndex = columnModel.getColumn(index).getModelIndex();
+						int realIndex = columnModel.getColumn(index)
+								.getModelIndex();
 						return colToolTips2[realIndex];
 					}
 				};
@@ -1076,32 +1064,33 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		};
 		tableRes.setEnabled(false);
 		tableRes.setBackground(capaPanel.getBackground());
-		tableRes.getTableHeader().setFont(fnt);
-		
+		tableRes.getTableHeader().setFont(
+				DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
+
 		tableTasksPane = new JScrollPane(tableTasks);
 		tableTasksPane.setMinimumSize(new Dimension(780, 200));
 		tableTasksPane.setBorder(BorderFactory.createEmptyBorder());
 		tableTasksPane.setWheelScrollingEnabled(true);
 		tableResPane = new JScrollPane(tableRes);
-		tableResPane.setMinimumSize(new Dimension(780, 100));
+		tableResPane.setMinimumSize(new Dimension(780, 200));
 		tableResPane.setBorder(BorderFactory.createEmptyBorder());
 		tableResPane.setWheelScrollingEnabled(true);
 	}
-	
-	private void startSimulation(){
+
+	private void startSimulation() {
 		SimParameters sp = new SimParameters();
-		
+
 		sp.setLambda(lambda);
 		sp.setTimeOfPeriod(period);
-		
+
 		sp.setRuns(Integer.parseInt(txtRuns.getText()));
-		
+
 		String op1 = groupIAT.getSelection().getActionCommand();
-		if (op1.equals("IAT_UNIFORM")){
+		if (op1.equals("IAT_UNIFORM")) {
 			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_UNIFORM);
 			sp.setCPara1(Double.parseDouble(txt_p2_11.getText()));
 			sp.setCPara2(Double.parseDouble(txt_p2_12.getText()));
-		} else if (op1.equals("IAT_GAUSS")){
+		} else if (op1.equals("IAT_GAUSS")) {
 			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_GAUSS);
 			sp.setCPara1(Double.parseDouble(txt_p2_31.getText()));
 			sp.setCPara2(Double.parseDouble(txt_p2_32.getText()));
@@ -1110,35 +1099,35 @@ public class QuantitativeAnalysisDialog extends JDialog {
 			sp.setCPara1(Double.parseDouble(txt_p2_21.getText()));
 			sp.setCPara2(Double.parseDouble(txt_p2_22.getText()));
 		}
-		
+
 		String op2 = groupST.getSelection().getActionCommand();
-		if (op2.equals("ST_UNIFORM")){
+		if (op2.equals("ST_UNIFORM")) {
 			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_UNIFORM);
-//			sp.setSPara1(Double.parseDouble(txt_p3_11.getText()));
-//			sp.setSPara2(Double.parseDouble(txt_p3_12.getText()));
-		} else if (op2.equals("ST_GAUSS")){
+			// sp.setSPara1(Double.parseDouble(txt_p3_11.getText()));
+			// sp.setSPara2(Double.parseDouble(txt_p3_12.getText()));
+		} else if (op2.equals("ST_GAUSS")) {
 			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_GAUSS);
-//			sp.setSPara1(Double.parseDouble(txt_p3_31.getText()));
-//			sp.setSPara2(Double.parseDouble(txt_p3_32.getText()));
+			// sp.setSPara1(Double.parseDouble(txt_p3_31.getText()));
+			// sp.setSPara2(Double.parseDouble(txt_p3_32.getText()));
 		} else {
 			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_EXP);
-//			sp.setSPara1(Double.parseDouble(txt_p3_21.getText()));
-//			sp.setSPara2(Double.parseDouble(txt_p3_22.getText()));
+			// sp.setSPara1(Double.parseDouble(txt_p3_21.getText()));
+			// sp.setSPara2(Double.parseDouble(txt_p3_22.getText()));
 		}
-		
+
 		String op3 = groupQD.getSelection().getActionCommand();
-		if (op3.equals("QUEUE_LIFO")){
+		if (op3.equals("QUEUE_LIFO")) {
 			sp.setQueue(Simulator.QD_LIFO);
 		} else {
 			sp.setQueue(Simulator.QD_FIFO);
 		}
-		
-		if (stop1.isSelected()){
+
+		if (stop1.isSelected()) {
 			if (stop2.isSelected())
 				sp.setStop(Simulator.STOP_BOTH);
 			else
 				sp.setStop(Simulator.STOP_CASE_DRIVEN);
-		} else if (stop2.isSelected()){
+		} else if (stop2.isSelected()) {
 			sp.setStop(Simulator.STOP_TIME_DRIVEN);
 		} else {
 			sp.setStop(Simulator.STOP_NONE);
@@ -1151,14 +1140,17 @@ public class QuantitativeAnalysisDialog extends JDialog {
 //		SimOutputDialog sod = new SimOutputDialog(null, true, sim); // <---------
 //		sod.setVisible(true); // <---------
 	}
-	
-	private void getConfiguration(){
-		if (props == null){
+
+	private void getConfiguration() {
+		if (props == null) {
 			props = new GeneralPropertiesDialog(this, true);
-			props.setTitle("General Properties");
-			props.setBounds(300, 200, 600, 400);
+			props.setTitle(Messages.getTitle("QuantAna.Config"));
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			props.setBounds((screenSize.width - 400) / 2,
+					(screenSize.height - 370) / 2, 400, 370);
 		}
-		
+
+		setVisible(false);
 		props.setVisible(true);
 	}
 
@@ -1217,8 +1209,8 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	public void setGraph(WorkflowNetGraph graph) {
 		this.graph = graph;
 	}
-	
-	public JTabbedPane getTabbedPane(){
+
+	public JTabbedPane getTabbedPane() {
 		return register;
 	}
 
@@ -1229,83 +1221,94 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	public void setUsedAlready(boolean usedAlready) {
 		this.usedAlready = usedAlready;
 	}
-	
-	private void calculateTables(){
+
+	private void calculateTables() {
 		Object[][] tb = tableTasksMatrix;
 		Object[][] tr = tableResMatrix;
 		String prec = Integer.valueOf(jslPrecision.getValue()).toString();
 		double sumCase = 0.0;
 		double sumPeriod = 0.0;
-		
+
 		calculateNumOfRuns(graph);
 		double[] runs = graph.getRuns();
 		double[] times = graph.getTimes();
-		
-		for (int r = 0; r < numTrans; r++){
+
+		for (int r = 0; r < numTrans; r++) {
 			tasksMatrix[r][1] = runs[r];
 			tasksMatrix[r][2] = times[r];
-			
-			tb[r][2] = String.format("%12." + prec + "f", runs[r]);//Double.valueOf(runs[r]);
+
+			tb[r][2] = String.format("%12." + prec + "f", runs[r]);// Double.valueOf(runs[r]);
 			tmTasks.fireTableCellUpdated(r, 2);
-			tb[r][3] = String.format("%12." + prec + "f", times[r]);//Double.valueOf(times[r]);
+			tb[r][3] = String.format("%12." + prec + "f", times[r]);// Double.valueOf(times[r]);
 			tmTasks.fireTableCellUpdated(r, 3);
-			
-			double n = tasksMatrix[r][1];//Double.valueOf((String)tb[r][2]);
+
+			double n = tasksMatrix[r][1];// Double.valueOf((String)tb[r][2]);
 			double n1 = n / lambda;
-			double t = tasksMatrix[r][2];//Double.valueOf((String)tb[r][3]);
-			
+			double t = tasksMatrix[r][2];// Double.valueOf((String)tb[r][3]);
+
 			sumCase += n1 * t;
 			sumPeriod += n * t;
-			
+
 			tasksMatrix[r][0] = n1;
 			tasksMatrix[r][3] = n1 * t;
 			tasksMatrix[r][4] = n * t;
-			
-			tb[r][1] = String.format("%12." + prec + "f", n1);//Double.valueOf(n1);
+
+			tb[r][1] = String.format("%12." + prec + "f", n1);// Double.valueOf(n1);
 			tmTasks.fireTableCellUpdated(r, 1);
-			tb[r][4] = String.format("%12." + prec + "f", n1 * t);//Double.valueOf(n1 * t);
+			tb[r][4] = String.format("%12." + prec + "f", n1 * t);// Double.valueOf(n1
+																	// * t);
 			tmTasks.fireTableCellUpdated(r, 4);
-			tb[r][5] = String.format("%12." + prec + "f", n * t);//Double.valueOf(n * t);
+			tb[r][5] = String.format("%12." + prec + "f", n * t);// Double.valueOf(n
+																	// * t);
 			tmTasks.fireTableCellUpdated(r, 5);
 		}
-		
+
 		tasksMatrix[numTrans][0] = 0.0;
 		tasksMatrix[numTrans][3] = sumCase;
 		tasksMatrix[numTrans][4] = sumPeriod;
-		
-		tb[numTrans][4] = String.format("%12." + prec + "f", sumCase);//Double.valueOf(sumCase);
+
+		tb[numTrans][4] = String.format("%12." + prec + "f", sumCase);// Double.valueOf(sumCase);
 		tmTasks.fireTableCellUpdated(numTrans, 4);
-		tb[numTrans][5] = String.format("%12." + prec + "f", sumPeriod);//Double.valueOf(sumPeriod);
+		tb[numTrans][5] = String.format("%12." + prec + "f", sumPeriod);// Double.valueOf(sumPeriod);
 		tmTasks.fireTableCellUpdated(numTrans, 5);
-		
+
 		ResourceClassTaskAllocationTable rcta = resAlloc.getResClsTskAlloc();
 		capaLevel = jslCapaLevel.getValue() / 100.0;
 
-		for (int i = 0; i < numResCls; i++){
+		for (int i = 0; i < numResCls; i++) {
 			double sum = 0.0;
 			ArrayList<String> min = rcta.getTable().get(i).getTasks();
-			for (int j = 0; j < min.size(); j++){
+			for (int j = 0; j < min.size(); j++) {
 				int idx = -1;
-				for (int k = 0; k < numTrans; k++){
-					if (((String)tb[k][0]).equals(min.get(j))) idx = k;
+				for (int k = 0; k < numTrans; k++) {
+					if (((String) tb[k][0]).equals(min.get(j)))
+						idx = k;
 				}
 
-				if (idx != -1) sum += tasksMatrix[idx][4];//Double.valueOf((String)tb[idx][5]);
+				if (idx != -1)
+					sum += tasksMatrix[idx][4];// Double.valueOf((String)tb[idx][5]);
 			}
-			
+
 			double numRes = (sum / period) / capaLevel;
 			resMatrix[i][0] = sum;
 			resMatrix[i][1] = numRes;
 
-			tr[i][1] = String.format("%12." + prec + "f", sum);//Double.valueOf(sum);
+			tr[i][1] = String.format("%12." + prec + "f", sum);// Double.valueOf(sum);
 			tmRes.fireTableCellUpdated(i, 1);
-			tr[i][2] = String.format("%12." + prec + "f", numRes);//Double.valueOf((sum / period) / capaLevel);
+			tr[i][2] = String.format("%12." + prec + "f", numRes);// Double.valueOf((sum
+																	// / period)
+																	// /
+																	// capaLevel);
 			tmRes.fireTableCellUpdated(i, 2);
 		}
-		
-		lblUnfolding.setText("The unfolded net comprises " + unfoldedNet.size() + " nodes.");
-		String dev = String.format("%6.1f", (1 - graph.getSinkPlace().getNumOfRuns() / lambda) * 100);
-		lblDeviation.setText("The relative deviation is (estimated): " + dev + "%");
+
+		lblUnfolding.setText("The unfolded net comprises " + unfoldedNet.size()
+				+ " nodes.");
+		String dev = String.format("%6.1f", (1 - graph.getSinkPlace()
+				.getNumOfRuns()
+				/ lambda) * 100);
+		lblDeviation.setText("The relative deviation is (estimated): " + dev
+				+ "%");
 	}
 	
 	private void showPrecision(String precision){

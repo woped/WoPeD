@@ -2,12 +2,13 @@ package org.woped.quantanalysis;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,20 +17,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.JFrame;
 
+import org.woped.editor.utilities.Messages;
 import org.woped.graph.Node;
 
 public class GeneralPropertiesDialog extends JDialog {
 
 	private static final long serialVersionUID	= 5L;
 	
-	public static final String TIME_MINUTE	= "minute(s)";
-	public static final String TIME_SECOND	= "second(s)";
-	public static final String TIME_HOUR	= "hour(s)";
-	public static final String TIME_DAY		= "day(s)";
-	public static final String TIME_WEEK	= "week(s)";
-	public static final String TIME_MONTH	= "month(s)";
-	public static final String TIME_YEAR	= "year(s)";
+	public static final String TIME_SECOND	= Messages.getString("Transition.Properties.Seconds");
+	public static final String TIME_MINUTE	= Messages.getString("Transition.Properties.Minutes");
+	public static final String TIME_HOUR	= Messages.getString("Transition.Properties.Hours");
+	public static final String TIME_DAY		= Messages.getString("Transition.Properties.Days");
+	public static final String TIME_WEEK	= Messages.getString("Transition.Properties.Weeks");
+	public static final String TIME_MONTH	= Messages.getString("Transition.Properties.Months");
+	public static final String TIME_YEAR	= Messages.getString("Transition.Properties.Years");
 	
 //	public static final int CALLER_CAPA	= 6;
 //	public static final int CALLER_SIM	= 7;
@@ -79,22 +82,19 @@ public class GeneralPropertiesDialog extends JDialog {
 	private TimeModel tm;
 
 	public GeneralPropertiesDialog(QuantitativeAnalysisDialog dlg, boolean modal) {
-		super(new Frame(), modal);
+		super(new JFrame(), modal);
 		
 		owner = dlg;
-//		this.caller = caller;
 		initialize();
 	}
 
 	private void initialize(){
 		lblTimeUnit = new JLabel();
-		lblTimeUnit.setText("time unit:");
+		lblTimeUnit.setText(Messages.getString("QuantAna.Config.TimeUnit"));
 		lblTimeUnit.setAlignmentX(0);
-		lblPeriod = new JLabel();
-		lblPeriod.setText("period:");
+		lblPeriod = new JLabel(Messages.getString("QuantAna.Config.ObservationPeriod"));
 		lblPeriod.setAlignmentX(0);
-		lblCases = new JLabel();
-		lblCases.setText("new cases per period (" + '\u03BB' + "):");
+		lblCases = new JLabel(Messages.getString("QuantAna.Config.ArrivalRate"));
 		lblCases.setAlignmentX(0);
 		txtTimeUnit = new JTextField();
 		txtTimeUnit.setText(Double.valueOf(timeUnit).toString());
@@ -105,19 +105,19 @@ public class GeneralPropertiesDialog extends JDialog {
 		txtCases.setText(Double.valueOf(lambda).toString());
 		txtPrecision = new JTextField();
 		txtPrecision.setText(Double.valueOf(epsilon).toString());
-		lblPrecision = new JLabel("abortion ("+ '\u03B5' + "): ");
+		lblPrecision = new JLabel(Messages.getString("QuantAna.Config.TerminationThreshold"));
 
-		lblTimeModel = new JLabel("Time Model: ");
+		lblTimeModel = new JLabel(Messages.getString("QuantAna.Config.TimeModel"));
 		lblTimeModel.setAlignmentX(0);
-		lblHourToMin = new JLabel("1 hour has ");
+		lblHourToMin = new JLabel(Messages.getString("QuantAna.Config.OneHourHas"));
 		lblHourToMin.setAlignmentX(0);
-		lblDayToHour = new JLabel("1 day has ");
+		lblDayToHour = new JLabel(Messages.getString("QuantAna.Config.OneDayHas"));
 		lblDayToHour.setAlignmentX(0);
-		lblWeekToDay = new JLabel("1 week has ");
+		lblWeekToDay = new JLabel(Messages.getString("QuantAna.Config.OneWeekHas"));
 		lblWeekToDay.setAlignmentX(0);
-		lblMonToDay = new JLabel("1 month has ");
+		lblMonToDay = new JLabel(Messages.getString("QuantAna.Config.OneMonthHas"));
 		lblMonToDay.setAlignmentX(0);
-		lblYearToMon = new JLabel("1 year has ");
+		lblYearToMon = new JLabel(Messages.getString("QuantAna.Config.OneYearHas"));
 		lblYearToMon.setAlignmentX(0);
 		txtHourToMin = new JTextField("60");
 		txtHourToMin.setPreferredSize(new Dimension(50, 20));
@@ -135,14 +135,24 @@ public class GeneralPropertiesDialog extends JDialog {
 		lblDay2.setAlignmentX(0);
 		lblMon.setAlignmentX(0);
 		
-		btnApply = new JButton("Apply");
+		btnApply = new JButton(Messages.getString("QuantAna.Config.Apply"));
 		btnApply.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
 				applyProperties();
 				
 			}
 		});
-
+		
+        this.addWindowListener(new WindowAdapter()
+        {
+            public void windowClosing(WindowEvent e)
+            {
+            	dispose();
+            	owner.setVisible(false);
+            	owner.dispose();    
+            }
+        });
+		
 		String[] units = {TIME_SECOND, TIME_MINUTE, TIME_HOUR, TIME_DAY, TIME_WEEK, TIME_MONTH, TIME_YEAR};
 		cboTimeUnit = new JComboBox(units);
 		cboTimeUnit.setSelectedItem(timeIntervall);
@@ -170,7 +180,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		constraints.gridy = 1;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		genPanel.add(lblTimeUnit, constraints);
+		genPanel.add(lblPeriod, constraints);
 
 		constraints.weightx = 0;
 		constraints.weighty = 0;
@@ -178,7 +188,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		constraints.gridy = 2;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		genPanel.add(lblPeriod, constraints);
+		genPanel.add(lblTimeUnit, constraints);
 
 		constraints.weightx = 0;
 		constraints.weighty = 0;
@@ -202,7 +212,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		constraints.gridy = 1;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		genPanel.add(txtTimeUnit, constraints);
+		genPanel.add(txtPeriod, constraints);
 
 		constraints.weightx = 0;
 		constraints.weighty = 0;
@@ -210,7 +220,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		constraints.gridy = 2;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		genPanel.add(txtPeriod, constraints);
+		genPanel.add(txtTimeUnit, constraints);
 
 		constraints.weightx = 0;
 		constraints.weighty = 0;
@@ -234,7 +244,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		constraints.gridy = 1;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		genPanel.add(cboTimeUnit, constraints);
+		genPanel.add(cboPeriodUnit, constraints);
 
 		constraints.weightx = 0;
 		constraints.weighty = 0;
@@ -242,7 +252,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		constraints.gridy = 2;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		genPanel.add(cboPeriodUnit, constraints);
+		genPanel.add(cboTimeUnit, constraints);
 
 		constraints.weightx = 0;
 		constraints.weighty = 0;
@@ -407,7 +417,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		genPanel.add(lbl3, constraints);
 		
 		this.getContentPane().add(genPanel, BorderLayout.CENTER);
-		this.getRootPane().setDefaultButton(btnApply);
+//		this.getRootPane().setDefaultButton(btnApply);
 	}
 
 	private void applyProperties(){
@@ -442,9 +452,10 @@ public class GeneralPropertiesDialog extends JDialog {
 		
 		// close operations
 		JTabbedPane register = owner.getTabbedPane();
-		register.setEnabledAt(register.indexOfTab("Capacity Plan"), true);
-		register.setEnabledAt(register.indexOfTab("Simulation"), true);
+		register.setEnabledAt(register.indexOfTab(Messages.getTitle("QuantAna.CapacityPlanning")), true);
+		register.setEnabledAt(register.indexOfTab(Messages.getTitle("QuantAna.Simulation")), true);
 		this.dispose();
+		owner.setVisible(true);
 	}
 
 	private void createTimeModel(int unit, double val){

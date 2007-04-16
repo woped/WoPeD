@@ -19,7 +19,6 @@ public class QuantAnaStart {
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "Quantitative Analyse läuft.");
 		
 		qa = new QuantitativeAnalysisDialog(null ,true, editor);
-		qa.setVisible(true);
 	}
 	
 	public void message(String msg)
