@@ -438,6 +438,8 @@ public class GeneralPropertiesDialog extends JDialog {
 		owner.setPeriod(period);
 		owner.setPeriodIntervall(periodIntervall);
 		
+		owner.updateParams(Double.toString(2/lambda), Double.toString(1/lambda));
+		
 		// close operations
 		JTabbedPane register = owner.getTabbedPane();
 		register.setEnabledAt(register.indexOfTab("Capacity Plan"), true);
