@@ -25,7 +25,9 @@ public class SimOutputDialog extends JDialog{
 	private static final long serialVersionUID = 2L;
 	private JPanel jContentPane = null;
 	private JTree itemTree = null;
-	private JPanel content = new JPanel();
+//	private JPanel content = new JPanel();
+	private JPanel contentPanel = new JPanel();
+	private JScrollPane contentPane = new JScrollPane(contentPanel);
 	private JPanel curPanel = null;
 //	private JScrollPane curPanel = null;
 	private JSplitPane splitPane = null;
@@ -41,7 +43,7 @@ public class SimOutputDialog extends JDialog{
 		initialize();
 		
 		curPanel = panelList.get("Protocol");
-		content.add(curPanel);
+		contentPanel.add(curPanel);
 		curPanel.setVisible(true);
 		
 		validate();
@@ -50,7 +52,7 @@ public class SimOutputDialog extends JDialog{
 	private void initialize() {
 		this.setSize(800, 600);
 		this.setResizable(false);
-		this.setLocation(50, 40);
+		this.setLocation(150, 40);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Simulation Output");
 	}
@@ -68,7 +70,7 @@ public class SimOutputDialog extends JDialog{
 		if (splitPane == null){
 			JScrollPane scrollPane = new JScrollPane(getTree());
 			scrollPane.setWheelScrollingEnabled(true);
-			splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, content);
+			splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, contentPane);
 			splitPane.setOneTouchExpandable(true);
 			splitPane.setDividerSize(8);
 			splitPane.setDividerLocation(200);
@@ -190,10 +192,10 @@ public class SimOutputDialog extends JDialog{
 	private void updatePanelView(String key){
 		String id = produceID(key);
 		
-		content.getComponent(0).setVisible(false);
-		content.remove(curPanel);
+		contentPanel.getComponent(0).setVisible(false);
+		contentPanel.remove(curPanel);
 		curPanel = panelList.get(id);
-		content.add(curPanel);
+		contentPanel.add(curPanel);
 		curPanel.setVisible(true);
 	}
 	
