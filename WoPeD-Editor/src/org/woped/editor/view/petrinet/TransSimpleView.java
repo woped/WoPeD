@@ -33,6 +33,7 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.view.AbstractElementView;
 import org.woped.editor.utilities.Messages;
@@ -124,42 +125,4 @@ public class TransSimpleView extends AbstractElementView
      */
     public void refresh()
     {}
-    
-    public void drawTime(Graphics2D g2, Dimension d){
-    	String time = Integer.toString(((TransitionModel)this.getCell()).getToolSpecific().getTime());
-    	int timeUnit = ((TransitionModel)this.getCell()).getToolSpecific().getTimeUnit();
-    	String tuString = getAbbrev(timeUnit);
-    	
-    	if (!time.equals("0")){
-    		Font timeFont = new Font(null, Font.BOLD, 12);
-    		g2.setFont(timeFont);
-    		Rectangle2D bounds = timeFont.getStringBounds(time, g2.getFontRenderContext());
-    		g2.setColor(new Color(0, 128, 0));
-    		int xCoord = (int)((d.width - bounds.getWidth())/2);
-    		int yCoord = (int)((d.height - bounds.getHeight() - bounds.getY())/2);
-    		g2.drawString(time, xCoord, yCoord);
-    		g2.drawString(tuString, xCoord, yCoord + 15);
-    	}
-    }
-    
-    private String getAbbrev(int u){
-    	switch (u){
-    	case 0:
-    		return "s";
-    	case 1:
-    		return "m";
-    	case 2:
-    		return "h";
-    	case 3:
-    		return "d";
-    	case 4:
-    		return "w";
-    	case 5:
-    		return "M";
-    	case 6:
-    		return "y";
-    	default:
-    		return "";
-    	}
-    }
 }

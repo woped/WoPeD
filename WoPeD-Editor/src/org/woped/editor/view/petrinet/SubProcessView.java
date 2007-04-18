@@ -124,7 +124,9 @@ public class SubProcessView extends AbstractElementView
             	g2.drawImage(img1.getImage(), b + 5, d.height - b - 16 - 5, 16, 16, img1.getImageObserver());
             	g2.drawImage(img2.getImage(), d.width - b -16 - 5, b + 5, 16, 16, img2.getImageObserver());
             	g2.drawLine(b + 6,b + 6,d.width-b-7,d.height-b-7);
-            }           
+            }    
+            
+            drawTime(g2, d);
         }
 
         /**
