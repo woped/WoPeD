@@ -198,7 +198,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         					sum += (Double.valueOf(p * 100)).intValue();
         				}
 
-        				if (sum != 100) {
+        				if (outArcs.size() > 1 && sum != 100) {
         					isBranchingOK = false;
             				param[0] = Messages.getString("QuantAna.Place");
             				param[1] = place.getNameValue();
