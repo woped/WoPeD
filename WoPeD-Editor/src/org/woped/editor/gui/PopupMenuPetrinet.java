@@ -25,6 +25,8 @@
  */
 package org.woped.editor.gui;
 
+import java.awt.EventQueue;
+
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -32,6 +34,7 @@ import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.editor.controller.ActionFactory;
+import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.VisualController;
 
 /**
@@ -141,16 +144,25 @@ public class PopupMenuPetrinet extends JPopupMenu
         return c_instance;
     }
 
-    public void show(Object obj, AbstractGraph graph, int x, int y)
+    public void show(final Object obj, final AbstractGraph graph, final int x, final int y)
     {
-        if (obj == null 
-        	|| obj instanceof GroupModel 
-        	|| obj instanceof ArcModel) 
-        {
-        	pack();
-            super.show(graph, x, y);
-        }
-    	
+    	// Wait with displaying the popup until the
+    	// selection event has been processed.
+    	// This way, the size of the popup menu will be correct
+    	// according to the selected item
+    	Runnable runner = new Runnable() {
+            public void run() {
+    			Object selectedCell = graph.getSelectionCell();            	            	
+                if (selectedCell == null 
+                    	|| selectedCell instanceof GroupModel 
+                    	|| selectedCell instanceof ArcModel) 
+                    {
+                    	pack();
+                        PopupMenuPetrinet.super.show(graph, x, y);
+                    }
+              };
+    	};
+    	EventQueue.invokeLater(runner);
     }
     
     private JMenuItem getRenameMenuItem()
