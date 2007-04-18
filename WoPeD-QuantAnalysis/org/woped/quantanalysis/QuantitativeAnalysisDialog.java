@@ -94,19 +94,14 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	// Capacity Plan Tab
 	private String[] colNames = {
 			Messages.getString("QuantAna.CapacityPlanning.Column.Taskname"),
-			Messages
-					.getString("QuantAna.CapacityPlanning.Column.Executionspercase"),
-			Messages
-					.getString("QuantAna.CapacityPlanning.Column.Casesperperiod"),
+			Messages.getString("QuantAna.CapacityPlanning.Column.Executionspercase"),
+			Messages.getString("QuantAna.CapacityPlanning.Column.Casesperperiod"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Servicetime"),
-			Messages
-					.getString("QuantAna.CapacityPlanning.Column.Servicetimepercase"),
-			Messages
-					.getString("QuantAna.CapacityPlanning.Column.Servicetimeperperiod") };
+			Messages.getString("QuantAna.CapacityPlanning.Column.Servicetimepercase"),
+			Messages.getString("QuantAna.CapacityPlanning.Column.Servicetimeperperiod") };
 
 	private String[] colNames2 = {
-			Messages
-					.getString("QuantAna.CapacityPlanning.Column.Resourceclass"),
+			Messages.getString("QuantAna.CapacityPlanning.Column.Resourceclass"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.AverageTime"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Numesources") };
 
@@ -133,7 +128,6 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	private JTable tableRes;
 	private JScrollPane tableTasksPane;
 	private JScrollPane tableResPane;
-	private JLabel lblDummy;
 	private JLabel lblDummy2;
 	private JLabel lblUnfolding;
 	private JLabel lblDeviation;
@@ -141,6 +135,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	private JPanel panelHeading1;
 	private JPanel panelHeading2;
 	private JLabel lblPrecision;
+	
 	// JSpinner jspPrecision;
 	private JSlider jslPrecision;
 	private JLabel lblCapaLevel;
@@ -166,8 +161,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	/**
 	 * This is the default constructor
 	 */
-	public QuantitativeAnalysisDialog(Frame owner, boolean modal,
-			EditorVC editor) {
+	public QuantitativeAnalysisDialog(Frame owner, boolean modal, EditorVC editor) {
 		super(owner, modal);
 		this.editor = editor;
 
@@ -187,8 +181,11 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	 */
 	private void initialize() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setBounds((screenSize.width - 850) / 2,
-				(screenSize.height - 700) / 2, 850, 700);
+		int width = screenSize.width > 850 ? 850 : screenSize.width;
+		int x = screenSize.width > width  ? (screenSize.width - width)/2 : 0;
+		int height = screenSize.height > 700 ? 700 : screenSize.height;
+		int y = screenSize.height > height ? (screenSize.height - height)/2 : 0;
+		this.setBounds(x, y, width, height);
 		this.setContentPane(getJContentPane());
 		this.setTitle(Messages.getTitle("QuantAna"));
 
@@ -329,10 +326,8 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		initResourceAlloc();
 		numResCls = resAlloc.getNumOfResClasses();
 
-		lblDummy = new JLabel();
 		lblDummy2 = new JLabel();
-		lblPrecision = new JLabel(Messages
-				.getString("QuantAna.CapacityPlanning.Precision"));
+		lblPrecision = new JLabel(Messages.getString("QuantAna.CapacityPlanning.Precision"));
 		lblPrecision.setAlignmentX(JLabel.RIGHT_ALIGNMENT);
 		/*
 		 * jspPrecision = new JSpinner(new SpinnerNumberModel(2, 0, 5, 1));
@@ -348,6 +343,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		jslPrecision.setPaintLabels(true);
 		jslPrecision.setPaintTicks(true);
 		jslPrecision.setMajorTickSpacing(1);
+		jslPrecision.setSnapToTicks(true);
 		jslPrecision.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
 		jslPrecision.setPreferredSize(new Dimension(100, 40));
 		// jslPrecision.setToolTipText("Adjust decimal precision");
@@ -449,7 +445,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
 		constraints.anchor = GridBagConstraints.LINE_END;
-		panelHeading1.setMinimumSize(new Dimension(200, 45));
+		panelHeading1.setMinimumSize(new Dimension(230, 45));
 		p1.add(panelHeading1, constraints);
 
 		constraints.fill = GridBagConstraints.BOTH;
@@ -514,16 +510,14 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		constraints.gridheight = 1;
 		capaPanel.add(messagePanel, constraints);		
 
-		JButton btnConf = new JButton(Messages
-				.getString("QuantAna.CapacityPlanning.Configure"));
+		JButton btnConf = new JButton(Messages.getString("QuantAna.CapacityPlanning.Configure"));
 		btnConf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				// callee = CALL_CAPA;
 				getConfiguration();
 			}
 		});
-		JButton btnCalc = new JButton(Messages
-				.getString("QuantAna.CapacityPlanning.Compute"));
+		JButton btnCalc = new JButton(Messages.getString("QuantAna.CapacityPlanning.Compute"));
 		btnCalc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				calculateTables();
@@ -562,7 +556,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		JPanel p5 = new JPanel();
 		
 		// Panel 1
-		JLabel lblRuns = new JLabel("Number of simulation runs: ");
+		JLabel lblRuns = new JLabel(Messages.getString("QuantAna.Simulation.NumRuns"));
 		txtRuns = new JTextField("1");
 		txtRuns.setPreferredSize(new Dimension(100, 20));
 		p1.add(lblRuns);
@@ -572,13 +566,13 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		p1.setBorder(borderRuns);
 
 		// Panel 2
-		String title = "Probabilty Distribution of interarrival times";
+		String title = Messages.getString("QuantAna.Simulation.ArrivalRateDistribution");
 		groupIAT = new ButtonGroup();
 		p2.setLayout(new GridLayout(3,3));
 		
-		JRadioButton opt_p2_1 = new JRadioButton("Uniform distribution", false);
-		JRadioButton opt_p2_2 = new JRadioButton("Exponential distribution", true);
-		JRadioButton opt_p2_3 = new JRadioButton("Gaussian distribution", false);
+		JRadioButton opt_p2_1 = new JRadioButton(Messages.getString("QuantAna.Simulation.Constant"), false);
+		JRadioButton opt_p2_2 = new JRadioButton(Messages.getString("QuantAna.Simulation.Poisson"), true);
+		JRadioButton opt_p2_3 = new JRadioButton(Messages.getString("QuantAna.Simulation.Gaussian"), false);
 		opt_p2_1.setActionCommand("IAT_UNIFORM");
 		opt_p2_2.setActionCommand("IAT_EXP");
 		opt_p2_3.setActionCommand("IAT_GAUSS");
@@ -618,18 +612,18 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		txt_p2_32.setPreferredSize(new Dimension(100, 20));
 		txt_p2_32.setEnabled(false);
 		
-		JLabel lbl_p2_11 = new JLabel("From");
+		JLabel lbl_p2_11 = new JLabel(Messages.getString("QuantAna.Simulation.From"));
 		lbl_p2_11.setPreferredSize(new Dimension(100, 20));
-		JLabel lbl_p2_12 = new JLabel("To");
+		JLabel lbl_p2_12 = new JLabel(Messages.getString("QuantAna.Simulation.To"));
 		lbl_p2_12.setPreferredSize(new Dimension(100, 20));
-		JLabel lbl_p2_21 = new JLabel("Mean");
+		JLabel lbl_p2_21 = new JLabel(Messages.getString("QuantAna.Simulation.Mean"));
 		lbl_p2_21.setPreferredSize(new Dimension(100, 20));
-		JLabel lbl_p2_22 = new JLabel("Position");
+		JLabel lbl_p2_22 = new JLabel(Messages.getString("QuantAna.Simulation.Position"));
 		lbl_p2_22.setPreferredSize(new Dimension(100, 20));
 		lbl_p2_22.setEnabled(false);
-		JLabel lbl_p2_31 = new JLabel("Mean");
+		JLabel lbl_p2_31 = new JLabel(Messages.getString("QuantAna.Simulation.Mean"));
 		lbl_p2_31.setPreferredSize(new Dimension(100, 20));
-		JLabel lbl_p2_32 = new JLabel("Std. deviation");
+		JLabel lbl_p2_32 = new JLabel(Messages.getString("QuantAna.Simulation.Deviation"));
 		lbl_p2_32.setPreferredSize(new Dimension(100, 20));
 		
 		p2_11.add(lbl_p2_11);
@@ -689,12 +683,12 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		p2.setBorder(border);
 		
 		// Panel 3
-		String title2 = "Probabilty Distribution of service times";
+		String title2 = Messages.getString("QuantAna.Simulation.ServiceTimeDistribution");
 		groupST = new ButtonGroup();
 		p3.setLayout(new GridLayout(3,1));
-		JRadioButton opt_p3_1 = new JRadioButton("Uniform distribution", false);
-		JRadioButton opt_p3_2 = new JRadioButton("Exponential distribution", true);
-		JRadioButton opt_p3_3 = new JRadioButton("Gaussian distribution", false);
+		JRadioButton opt_p3_1 = new JRadioButton(Messages.getString("QuantAna.Simulation.Constant"), false);
+		JRadioButton opt_p3_2 = new JRadioButton(Messages.getString("QuantAna.Simulation.Poisson"), true);
+		JRadioButton opt_p3_3 = new JRadioButton(Messages.getString("QuantAna.Simulation.Gaussian"), false);
 		opt_p3_1.setActionCommand("ST_UNIFORM");
 		opt_p3_2.setActionCommand("ST_EXP");
 		opt_p3_3.setActionCommand("ST_GAUSS");
@@ -710,10 +704,10 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		p3.setBorder(border2);
 		
 		// Panel 4
-		String title3 = "Queueing discipline";
+		String title3 = Messages.getString("QuantAna.Simulation.QueueingDiscipline");
 		groupQD = new ButtonGroup();
-		JRadioButton opt_q_1 = new JRadioButton("First in - First out (FIFO)", true);
-		JRadioButton opt_q_2 = new JRadioButton("Last in - First out (LIFO)", false);
+		JRadioButton opt_q_1 = new JRadioButton(Messages.getString("QuantAna.Simulation.QueueingFIFO"), true);
+		JRadioButton opt_q_2 = new JRadioButton(Messages.getString("QuantAna.Simulation.QueueingLIFO"), false);
 		opt_q_1.setActionCommand("QUEUE_FIFO");
 		opt_q_2.setActionCommand("QUEUE_LIFO");
 		groupQD.add(opt_q_1);
@@ -725,9 +719,9 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		p4.setBorder(border3);
 		
 		// Panel 5
-		String title4 = "Stopping rule";
-		stop1 = new JCheckBox('\u03BB' + " cases have completed service");
-		stop2 = new JCheckBox("Time period has expired");
+		String title4 = Messages.getString("QuantAna.Simulation.TerminationRule");
+		stop1 = new JCheckBox(Messages.getString("QuantAna.Simulation.CasesCompleted"));
+		stop2 = new JCheckBox(Messages.getString("QuantAna.Simulation.TimeElapsed"));
 		stop1.setSelected(true);
 		stop2.setSelected(true);
 		p5.add(stop1);
@@ -737,7 +731,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		p5.setBorder(border4);
 		
 		// Button Panel
-		JButton btnStart = new JButton("Start");
+		JButton btnStart = new JButton(Messages.getString("QuantAna.Simulation.Start"));
 		
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event){
@@ -749,7 +743,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		buttonPanel.add(btnStart);
 		getRootPane().setDefaultButton(btnStart);
 		
-		JButton btnConf = new JButton("Configure");
+		JButton btnConf = new JButton(Messages.getString("QuantAna.Simulation.Configure"));
 		btnConf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event){
 //				callee = CALL_SIM;
@@ -990,8 +984,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 			tasksMatrix[i][3] = times[i];
 
 			tableTasksMatrix[i][0] = trans[i];
-			tableTasksMatrix[i][2] = String
-					.format("%12." + prec + "f", runs[i]);
+			tableTasksMatrix[i][2] = String.format("%12." + prec + "f", runs[i]);
 			tableTasksMatrix[i][3] = String.format("%12." + prec + "f",
 					times[i]);
 		}
@@ -1064,8 +1057,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		};
 		tableRes.setEnabled(false);
 		tableRes.setBackground(capaPanel.getBackground());
-		tableRes.getTableHeader().setFont(
-				DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
+		tableRes.getTableHeader().setFont(DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
 
 		tableTasksPane = new JScrollPane(tableTasks);
 		tableTasksPane.setMinimumSize(new Dimension(780, 200));
@@ -1146,8 +1138,11 @@ public class QuantitativeAnalysisDialog extends JDialog {
 			props = new GeneralPropertiesDialog(this, true);
 			props.setTitle(Messages.getTitle("QuantAna.Config"));
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			props.setBounds((screenSize.width - 400) / 2,
-					(screenSize.height - 370) / 2, 400, 370);
+			int width = screenSize.width > 450 ? 450 : screenSize.width;
+			int x = screenSize.width > width ? (screenSize.width - width)/2 : 0;
+			int height = screenSize.height > 370 ? 370 : screenSize.height;
+			int y = screenSize.height > height  ? (screenSize.height - height)/2 : 0;
+			props.setBounds(x, y, width, height);
 		}
 
 		setVisible(false);

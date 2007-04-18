@@ -98,8 +98,8 @@ public class GeneralPropertiesDialog extends JDialog {
 		lblCases.setAlignmentX(0);
 		txtTimeUnit = new JTextField();
 		txtTimeUnit.setText(Double.valueOf(timeUnit).toString());
-		txtTimeUnit.setPreferredSize(new Dimension(100, 20));
 		txtPeriod = new JTextField();
+		txtPeriod.setPreferredSize(new Dimension(100, 20));
 		txtPeriod.setText(Double.valueOf(period).toString());
 		txtCases = new JTextField();
 		txtCases.setText(Double.valueOf(lambda).toString());
@@ -156,8 +156,9 @@ public class GeneralPropertiesDialog extends JDialog {
 		String[] units = {TIME_SECOND, TIME_MINUTE, TIME_HOUR, TIME_DAY, TIME_WEEK, TIME_MONTH, TIME_YEAR};
 		cboTimeUnit = new JComboBox(units);
 		cboTimeUnit.setSelectedItem(timeIntervall);
-		cboTimeUnit.setPreferredSize(new Dimension(100, txtTimeUnit.getHeight()));
+		cboTimeUnit.setMinimumSize(new Dimension(110, txtTimeUnit.getHeight()));
 		cboPeriodUnit = new JComboBox(units);
+		cboPeriodUnit.setMinimumSize(new Dimension(110, txtTimeUnit.getHeight()));
 		cboPeriodUnit.setSelectedItem(periodIntervall);
 
 		GridBagLayout genLayout = new GridBagLayout();
@@ -406,6 +407,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		constraints.gridy = 12;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
+		constraints.anchor = GridBagConstraints.CENTER;
 		genPanel.add(btnApply, constraints);
 
 		constraints.weightx = 0;
