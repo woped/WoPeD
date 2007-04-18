@@ -159,7 +159,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         	int siPl = sa.getNumSinkPlaces();
         	int siTr = sa.getNumSinkTransitions();
         	boolean wfpn = (soPl >= 1 && soPl + soTr == 1) && (siPl >= 1 && siPl + siTr == 1);
-        	String tName[] = {""};
+        	String param[] = {"", ""};
         	
         	if (sound == 0 && wfpn) {
         		ModelElementContainer mec = edit.getModelProcessor().getElementContainer();
@@ -181,9 +181,10 @@ public class FileEventProcessor extends AbstractEventProcessor
         			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE || 
         					type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || 
         						type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) 
-        							& sum != 100){
+        							& sum != 100) {
         				isBranchingOK = false;
-        				tName[0] = trans.getNameValue();
+        				param[0] = Messages.getString("QuantAna.Transition");
+        				param[1] = trans.getNameValue();
         			}
         		}
         		
@@ -197,15 +198,18 @@ public class FileEventProcessor extends AbstractEventProcessor
         					sum += (Double.valueOf(p * 100)).intValue();
         				}
 
-        				if (sum != 100) 
+        				if (sum != 100) {
         					isBranchingOK = false;
+            				param[0] = Messages.getString("QuantAna.Place");
+            				param[1] = place.getNameValue();
+        				}
         			}
         		}
 
         		if (isBranchingOK)
         			new QuantAnaStart(edit);
         		else
-        			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.BranchingProbabilityViolation", tName));
+        			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.BranchingProbabilityViolation", param));
         	} else {
         		JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.SoundnessViolation"));
         	}
