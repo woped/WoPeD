@@ -159,18 +159,17 @@ public class FileEventProcessor extends AbstractEventProcessor
         	int siPl = sa.getNumSinkPlaces();
         	int siTr = sa.getNumSinkTransitions();
         	boolean wfpn = (soPl >= 1 && soPl + soTr == 1) && (siPl >= 1 && siPl + siTr == 1);
+        	String tName[] = {""};
         	
         	if (sound == 0 && wfpn) {
         		ModelElementContainer mec = edit.getModelProcessor().getElementContainer();
         		boolean isBranchingOK = true;
-        		//Iterator transes = sa.getTransitionsIterator();
-        		Iterator transes1 = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE)).values().iterator();
-        		Iterator transes2 = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values().iterator();
+        		Iterator transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values().iterator();
         		Iterator places = sa.getPlacesIterator();
         		AbstractPetriNetModelElement end = (AbstractPetriNetModelElement)sa.getSinkPlacesIterator().next();
 
-        		while (transes1.hasNext()){
-        			AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement)transes1.next();
+        		while (transes.hasNext()){
+        			AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement)transes.next();
         			Map outArcs = mec.getOutgoingArcs(trans.getId());
         			int sum = 0;
         			for (Object v : outArcs.values()){
@@ -178,30 +177,16 @@ public class FileEventProcessor extends AbstractEventProcessor
         				sum += (Double.valueOf(p * 100)).intValue();
         			}
 
-        			if (sum != 100){
+        			int type = ((OperatorTransitionModel)trans).getOperatorType();
+        			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE || 
+        					type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || 
+        						type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) 
+        							& sum != 100){
         				isBranchingOK = false;
-        				break;
+        				tName[0] = trans.getNameValue();
         			}
         		}
         		
-        		while (transes2.hasNext()){
-        			AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement)transes2.next();
-        			Map outArcs = mec.getOutgoingArcs(trans.getId());
-        			int sum = 0;
-        			for (Object v : outArcs.values()){
-        				double p = ((ArcModel) v).getProbability();
-        				sum += (Double.valueOf(p * 100)).intValue();
-        			}
-
-        			if (sum != 100){
-        				isBranchingOK = false;
-        			}
-        			
-        			int type = ((OperatorTransitionModel)trans).getOperatorType();
-        			if (type == OperatorTransitionModel.AND_SPLIT_TYPE || type == OperatorTransitionModel.AND_SPLITJOIN_TYPE || type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
-        				isBranchingOK = true;
-        		}
-
         		while (places.hasNext()){
         			AbstractPetriNetModelElement place = (AbstractPetriNetModelElement)places.next();
         			if (!place.equals(end)) {
@@ -212,16 +197,17 @@ public class FileEventProcessor extends AbstractEventProcessor
         					sum += (Double.valueOf(p * 100)).intValue();
         				}
 
-        				if (sum != 100) isBranchingOK = false;
+        				if (sum != 100) 
+        					isBranchingOK = false;
         			}
         		}
 
         		if (isBranchingOK)
         			new QuantAnaStart(edit);
         		else
-        			JOptionPane.showMessageDialog(null, "Branching ist nicht OK!");
+        			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.BranchingProbabilityViolation", tName));
         	} else {
-        		JOptionPane.showMessageDialog(null, "Netz ist nicht sound!");
+        		JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.SoundnessViolation"));
         	}
         	
             break;
