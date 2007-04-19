@@ -35,6 +35,8 @@ import javax.swing.JComponent;
 import javax.swing.JTextArea;
 import javax.swing.plaf.basic.BasicToolTipUI;
 
+import org.woped.core.config.DefaultStaticConfiguration;
+
 /**
  * @author Thomas Pohl TODO: DOCUMENTATION (xraven)
  */
@@ -100,7 +102,7 @@ public class EditorToolTipUI extends BasicToolTipUI
                 return null;
             }
             m_textPane = new JTextArea(text);
-            m_textPane.setFont(new Font("SansSerif", Font.PLAIN, 11));
+            m_textPane.setFont(DefaultStaticConfiguration.DEFAULT_TOOLTIP_FONT);
             m_textPane.setMargin(new Insets(3, 5, 3, 5));
             m_renderPane.add(m_textPane);
 

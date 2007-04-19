@@ -32,6 +32,7 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static Font            DEFAULT_TOKEN_FONT         = new Font("Verdana", Font.ITALIC, 19);
     public static Font            DEFAULT_TABLE_FONT         = new Font("Verdana", Font.PLAIN, 11);
     public static Font            DEFAULT_TABLE_BOLDFONT     = new Font("Verdana", Font.BOLD, 11);
+    public static Font			  DEFAULT_TOOLTIP_FONT		 = new Font("Verdana", Font.PLAIN, 10);
     public static String          DEFAULT_LANGUAGE           = "en";
     public static String          DEFAULT_COUNTRY            = "";
     public static String          DEFAULT_VARIANT            = "";

@@ -38,6 +38,7 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.PortView;
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -113,7 +114,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		// GraphConstants.setValue(map,
 		// Integer.toString(Double.valueOf(probability * 100).intValue()));
 		GraphConstants.setForeground(map, new Color(255, 0, 0));
-		GraphConstants.setFont(map, new Font(null, Font.BOLD, 12));
+		GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
 		// GraphConstants.setLabelPosition(map, new
 		// Point2D.Double(GraphConstants.PERMILLE/2, 0));
 		// GraphConstants.setSelectable(map, true);
@@ -554,7 +555,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		Object[] labels = {};
 		if (displayOn) {
 			labels = new Object[] { Integer.toString(Double.valueOf(
-					probability * 100).intValue()) };
+					probability * 100).intValue()) + "%" };
 		}
 		HashMap map = new HashMap();
 		GraphConstants.setExtraLabels(map, labels);
