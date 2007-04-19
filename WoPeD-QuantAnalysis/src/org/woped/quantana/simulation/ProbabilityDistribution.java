@@ -93,7 +93,7 @@ public class ProbabilityDistribution {
 			result = generator.nextDouble() * (param1 - param2) + param1;
 			break;
 		case 2:
-			result = generator.nextExponential(0, 1/param1);
+			result = generator.nextExponential(0, param1);
 			break;
 		case 3:
 			result = generator.nextGaussian(param1, param2);

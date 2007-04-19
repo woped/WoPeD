@@ -450,7 +450,7 @@ public class GeneralPropertiesDialog extends JDialog {
 		owner.setPeriod(period);
 		owner.setPeriodIntervall(periodIntervall);
 		
-		owner.updateParams(Double.toString(2/lambda), Double.toString(1/lambda));
+		owner.updateParams(Double.toString(2/lambda * period), Double.toString(1/lambda * period));
 		
 		// close operations
 		JTabbedPane register = owner.getTabbedPane();
