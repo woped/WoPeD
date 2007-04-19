@@ -204,6 +204,11 @@ public class WorkflowNetGraph {
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						break;
+					case AbstractPetriNetModelElement.SUBP_TYPE:
+						postNode.type = Node.TYPE_SUBP;
+						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
+						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
+						break;
 					default:
 						postNode.type = 0;
 					}
@@ -241,6 +246,10 @@ public class WorkflowNetGraph {
 					break;
 				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
 					preNode.type = Node.TYPE_TRANS;
+					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
+					break;
+				case AbstractPetriNetModelElement.SUBP_TYPE:
+					preNode.type = Node.TYPE_SUBP;
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;
 				default:
@@ -351,7 +360,8 @@ public class WorkflowNetGraph {
 	}
 	
 	public boolean isTransition(String id){
-		return nodeArray[getNodeIdx(id)].type == Node.TYPE_TRANS;
+		int type = nodeArray[getNodeIdx(id)].type;
+		return ((type == Node.TYPE_TRANS) || (type == Node.TYPE_SUBP));
 	}
 	
 	public int getNumTransitions(){
