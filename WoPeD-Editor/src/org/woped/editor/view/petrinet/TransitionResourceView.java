@@ -63,9 +63,16 @@ public class TransitionResourceView extends AbstractElementView
             
             if (selected)
             {
-                g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
+				Color primary = ConfigurationManager.getConfiguration().getSelectionColor(); 
+				Color borderColor = new Color(209, 209, 255);
+				Color backgroundColor = new Color(primary.getRed(), primary.getGreen(), primary.getBlue(), 22);
+				g.setColor(backgroundColor);
+				g.fillRect(b, b, d.width - b - 1, d.height - b - 1);
+				g.setColor(borderColor);
+				g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
+//                g2.setStroke(GraphConstants.SELECTION_STROKE);
+//                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
+//                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
 
             g.setColor(new Color(192,192,192));
