@@ -40,7 +40,7 @@ import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
-import org.woped.quantanalysis.QuantAnaStart;
+import org.woped.quantana.gui.QuantAnaStart;
 import org.woped.woflan.NetAnalysisDialog;
 import org.woped.woflan.WoflanAnalysis;
 
