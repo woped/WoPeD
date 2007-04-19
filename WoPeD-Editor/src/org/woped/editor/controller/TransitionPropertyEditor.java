@@ -1491,19 +1491,31 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
      */
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getActionCommand().equals(TRIGGER_MESSAGE) || e.getActionCommand().equals(TRIGGER_TIME) || e.getActionCommand().equals(TRIGGER_NONE))
+        if (e.getActionCommand().equals(TRIGGER_MESSAGE) || 
+        		e.getActionCommand().equals(TRIGGER_TIME) || 
+        			e.getActionCommand().equals(TRIGGER_NONE))
         {
             getResourceRoleComboBox().setEnabled(false);
             getResourceGroupComboBox().setEnabled(false);
             getNumResourcesLabel().setEnabled(false);
+            getResourceRoleLabel().setEnabled(false);
+            getResourceGroupLabel().setEnabled(false);
             getNumResourcesTextField().setEnabled(false);
+            getserviceTimeLabel().setEnabled(false);
+            getserviceTimeTextfield().setEnabled(false);
+            getserviceTimeComboBox().setEnabled(false);
         } 
         else if (e.getActionCommand().equals(TRIGGER_RESOURCE))
         {
             getResourceRoleComboBox().setEnabled(true);
             getResourceGroupComboBox().setEnabled(true);
+            getResourceRoleLabel().setEnabled(true);
+            getResourceGroupLabel().setEnabled(true);
             getNumResourcesLabel().setEnabled(true);
             getNumResourcesTextField().setEnabled(true);
+            getserviceTimeLabel().setEnabled(true);
+            getserviceTimeTextfield().setEnabled(true);
+            getserviceTimeComboBox().setEnabled(true);
         }
     }
 
