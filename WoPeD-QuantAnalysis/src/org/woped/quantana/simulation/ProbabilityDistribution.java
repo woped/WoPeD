@@ -101,4 +101,12 @@ public class ProbabilityDistribution {
 		
 		return result;
 	}
+
+	public void setSeed(long seed) {
+		this.seed = seed;
+	}
+
+	public long getSeed() {
+		return seed;
+	}
 }
