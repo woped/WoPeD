@@ -579,20 +579,18 @@ public class EditorVC extends JPanel implements KeyListener,
 						.newTransResource(map);
 				if (map.getResourcePosition() == null)
 				{
-					map.setResourcePosition(transition.getX()
-							- TransitionResourceModel.DEFAULT_WIDTH - 5,
+					map.setResourcePosition(transition.getX() - 10,
 							transition.getY()
 									- TransitionResourceModel.DEFAULT_HEIGHT
-									- 5);
+									- 25);
 				} else
 				{
-					map
-							.setResourcePosition(
+					map.setResourcePosition(
 									map.getResourcePosition().getX1() == -1 ? transition
-											.getX() - 65
+											.getX() - 5
 											: map.getResourcePosition().getX1(),
 									map.getResourcePosition().getX2() == -1 ? transition
-											.getY() - 20
+											.getY() - 5
 											: map.getResourcePosition().getX2());
 				}
 				transResourceModell.setPosition(map.getResourcePosition()
