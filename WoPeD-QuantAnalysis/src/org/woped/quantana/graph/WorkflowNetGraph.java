@@ -222,6 +222,10 @@ public class WorkflowNetGraph {
 
 			try{
 				double p = (mec.findArc(n.getId(), currentPlace.getId())).getProbability();
+				
+				// Kompatibilität zu alten Netzen
+				if (p == 0.0) p = 1.0;
+				
 				Arc a = new Arc(nodeArray[nodeIdx], p);
 				a.setSource(n);
 				n.successor.add(a);
