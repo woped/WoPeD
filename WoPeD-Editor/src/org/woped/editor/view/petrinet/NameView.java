@@ -23,6 +23,7 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -31,6 +32,7 @@ import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexRenderer;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.view.AbstractElementView;
 
 /**
@@ -42,79 +44,72 @@ import org.woped.core.view.AbstractElementView;
  */
 
 @SuppressWarnings("serial")
-public class NameView extends AbstractElementView
-{
+public class NameView extends AbstractElementView {
 
-    static NameViewRenderer renderer = new NameViewRenderer();
+	static NameViewRenderer renderer = new NameViewRenderer();
 
-    /**
-     * Constructor for TransitionView.
-     * 
-     * @param cell
-     * @param graph
-     * @param mapper
-     */
-    public NameView(Object cell)
-    {
-        super(cell);
-    }
+	/**
+	 * Constructor for TransitionView.
+	 * 
+	 * @param cell
+	 * @param graph
+	 * @param mapper
+	 */
+	public NameView(Object cell) {
+		super(cell);
+	}
 
-    public CellViewRenderer getRenderer()
-    {
+	public CellViewRenderer getRenderer() {
 
-        return renderer;
+		return renderer;
 
-    }
+	}
 
-    /**
-     * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
-     * 
-     * this inner class contains the Renderer information of an transition
-     * 
-     * 28.03.2003
-     */
-    
-    @SuppressWarnings("serial")
-    static class NameViewRenderer extends VertexRenderer
-    {
+	/**
+	 * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+	 * 
+	 * this inner class contains the Renderer information of an transition
+	 * 
+	 * 28.03.2003
+	 */
 
-        public void paint(Graphics g)
-        {
+	static class NameViewRenderer extends VertexRenderer {
 
-            /* Trigger hinzufügen */
-            int b = borderWidth;
-            Graphics2D g2 = (Graphics2D) g;
-            Dimension d = getSize();
-            boolean tmp = selected;
-            if (super.isOpaque())
-            {
-                g.setColor(super.getBackground());
-                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
-            }
-            try
-            {
-                setBorder(null);
-                setOpaque(false);
-                selected = false;
-                super.paint(g);
-            } finally
-            {
-                selected = tmp;
-            }
-            if (bordercolor != null)
-            {
-                g.setColor(bordercolor);
-                g2.setStroke(new BasicStroke(b));
-                //g.drawRect(b , b , d.width - b -1, d.height - b -1);
-            }
-            if (selected)
-            {
-                g2.setStroke(GraphConstants.SELECTION_STROKE);
-                g.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
-            }
+		public void paint(Graphics g) {
 
-        }
-    }
+			/* Trigger hinzufügen */
+			int b = borderWidth;
+			Graphics2D g2 = (Graphics2D) g;
+			Dimension d = getSize();
+			boolean tmp = selected;
+			if (super.isOpaque()) {
+				g.setColor(super.getBackground());
+				g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
+			}
+			try {
+				setBorder(null);
+				setOpaque(false);
+				selected = false;
+				super.paint(g);
+			} finally {
+				selected = tmp;
+			}
+			if (bordercolor != null) {
+				g.setColor(bordercolor);
+				g2.setStroke(new BasicStroke(b));
+				// g.drawRect(b , b , d.width - b -1, d.height - b -1);
+			}
+			if (selected) {
+				Color primary = ConfigurationManager.getConfiguration().getSelectionColor(); 
+				Color borderColor = new Color(209, 209, 255);
+				Color backgroundColor = new Color(primary.getRed(), primary.getGreen(), primary.getBlue(), 22);
+				g.setColor(backgroundColor);
+				g.fillRect(0, 0, d.width - b - 1, d.height - 1);
+				g.setColor(borderColor);
+				g.drawRect(0, 0, d.width - b - 1, d.height - 1);
+			}
+
+		}
+	}
 
 }
