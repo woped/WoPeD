@@ -159,7 +159,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         	int siPl = sa.getNumSinkPlaces();
         	int siTr = sa.getNumSinkTransitions();
         	boolean wfpn = (soPl >= 1 && soPl + soTr == 1) && (siPl >= 1 && siPl + siTr == 1);
-        	String param[] = {"", ""};
+        	String param[] = {"", "", ""};
         	
         	if (sound == 0 && wfpn) {
         		ModelElementContainer mec = edit.getModelProcessor().getElementContainer();
@@ -185,6 +185,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         				isBranchingOK = false;
         				param[0] = Messages.getString("QuantAna.Transition");
         				param[1] = trans.getNameValue();
+        				param[2] = sum + "";
         			}
         		}
         		
@@ -202,6 +203,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         					isBranchingOK = false;
             				param[0] = Messages.getString("QuantAna.Place");
             				param[1] = place.getNameValue();
+            				param[2] = sum + "";
         				}
         			}
         		}
