@@ -52,10 +52,13 @@ public class TreeRenderer extends DefaultTreeCellRenderer {
 		String val = (String)(((DefaultMutableTreeNode)value).getUserObject());
 		try 
 		{
+			int start = val.indexOf("(") + 1;
 			if (val.equals("Protocol")){
 				result = protocol;
 			} else if (val.equals("Process")){
 				result = process;
+			} else if (val.substring(start, start + 3).equals("sub")){
+				result = subprocess;
 			} else {
 				result = server;
 			}
