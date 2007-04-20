@@ -39,6 +39,10 @@ import org.jgraph.graph.PortView;
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.model.petrinet.GroupModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -154,6 +158,35 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	public void setWeight(int weight) {
 		setUserObject(String.valueOf(weight));
 	}
+
+	public boolean isXORsplit(AbstractModelProcessor mp) {
+		Object cell = ((DefaultPort)getSource()).getParent();
+		
+		if (cell instanceof GroupModel) {
+			cell = ((GroupModel) cell).getMainElement();
+		}
+		
+		if (cell instanceof TransitionModel) {
+			TransitionModel trans = (TransitionModel) cell;
+			int opType = trans.getToolSpecific().getOperatorType();
+			if (opType == OperatorTransitionModel.XOR_SPLIT_TYPE
+					|| opType == OperatorTransitionModel.XOR_SPLITJOIN_TYPE
+					|| opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
+				return true;
+			}
+		}
+		
+		if (cell instanceof PlaceModel) {
+			PlaceModel place = (PlaceModel) cell; 
+			int num = mp.getElementContainer().
+				getOutgoingArcs(place.getId()).size();
+
+			return num > 1;
+		}
+
+		return false;
+	}
+
 
 	/**
 	 * Returns the inscriptionValue.
