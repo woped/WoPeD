@@ -1,11 +1,9 @@
 package org.woped.editor.controller.vep;
 
 import java.util.Iterator;
-import java.util.Map;
 
 import javax.swing.JFrame;
 
-import org.jgraph.graph.DefaultPort;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
@@ -164,10 +162,10 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 			case AbstractViewEvent.OPEN_PROPERTIES:
 				cell = editor.getGraph().getSelectionCell();
 				AbstractElementModel element = null;
-
-				if (cell instanceof ArcModel && isXORsplit((ArcModel) cell, editor)) {
-					new ArcPropertyEditor((JFrame) getMediator().getUi(),
-							(ArcModel) cell, editor);
+				
+				if (cell instanceof ArcModel  && 
+						((ArcModel)cell).isXORsplit(editor.getModelProcessor())) {
+					new ArcPropertyEditor((JFrame) getMediator().getUi(), (ArcModel) cell, editor);
 				}
 
 				if (cell instanceof TriggerModel) {
@@ -320,33 +318,6 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 				break;
 			}
 		}
-	}
-
-	private boolean isXORsplit(ArcModel a, EditorVC e) {
-		Object cell = ((DefaultPort)a.getSource()).getParent();
-		
-		if (cell instanceof GroupModel) {
-			cell = ((GroupModel) cell).getMainElement();
-		}
-		
-		if (cell instanceof TransitionModel) {
-			TransitionModel trans = (TransitionModel) cell;
-			int opType = trans.getToolSpecific().getOperatorType();
-			if (opType == OperatorTransitionModel.XOR_SPLIT_TYPE
-					|| opType == OperatorTransitionModel.XOR_SPLITJOIN_TYPE
-					|| opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
-				return true;
-			}
-		}
-		
-		if (cell instanceof PlaceModel) {
-			PlaceModel place = (PlaceModel) cell; 
-			int num = e.getModelProcessor().getElementContainer().
-								getOutgoingArcs(place.getId()).size();
-			return num > 1;
-		}
-
-		return false;
 	}
 
 	private void removeResources(EditorVC editor, Object cell) {

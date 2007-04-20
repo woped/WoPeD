@@ -84,6 +84,8 @@ public class VisualController implements PropertyChangeListener,
 
 	public static final int ROUTED_ARC_SELECTION = 6;
 
+	public static final int NOXOR_ARC_SELECTION = 37;
+
 	public static final int UNROUTED_ARC_SELECTION = 7;
 
 	public static final int TRANSITION_SELECTION = 8;
@@ -145,7 +147,7 @@ public class VisualController implements PropertyChangeListener,
 
 	public static final int DRAWMODE_XORJOIN_ANDSPLIT = 36;
 
-	private static final int MAX_ID = 37;
+	private static final int MAX_ID = 38;
 
 	private ArrayList<Vector<Object>> m_enable = new ArrayList<Vector<Object>>();
 	private ArrayList<Vector<Object>> m_visible = new ArrayList<Vector<Object>>();
@@ -437,6 +439,7 @@ public class VisualController implements PropertyChangeListener,
 			}
 			boolean noSelection = (selectedCell == null);
 			boolean routedArcSelected = false;
+			boolean NoXorArcSelected = true;
 			boolean unroutedArcSelected = false;
 			boolean transitionSelected = false;
 			boolean triggeredTransitionSelected = false;
@@ -453,6 +456,11 @@ public class VisualController implements PropertyChangeListener,
 			if (selectedCell instanceof ArcModel)
 			{
 				arcSelected = true;
+				ArcModel a = (ArcModel)selectedCell;
+				if (!a.isXORsplit(am.getUi().getEditorFocus().getModelProcessor())) 
+				{
+					NoXorArcSelected = false;
+				}
 				if (((ArcModel) selectedCell).isRoute())
 				{
 					routedArcSelected = true;
@@ -502,6 +510,7 @@ public class VisualController implements PropertyChangeListener,
 			setStatus(PLACE_SELECTION, placeSelected);
 			setStatus(TOKEN_PLACE_SELECTION, tokenPlaceSelected);
 			setStatus(ROUTED_ARC_SELECTION, routedArcSelected);
+			setStatus(NOXOR_ARC_SELECTION, NoXorArcSelected);
 			setStatus(UNROUTED_ARC_SELECTION, unroutedArcSelected);
 			setStatus(TRANSITION_SELECTION, transitionSelected);
 			setStatus(TRANSITION_PLACE_SELECTION, transitionSelected | placeSelected | subprocessSelected);
