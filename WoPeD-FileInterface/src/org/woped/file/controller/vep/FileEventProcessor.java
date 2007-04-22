@@ -150,10 +150,20 @@ public class FileEventProcessor extends AbstractEventProcessor
 
         case AbstractViewEvent.QUANTANA:
         	EditorVC edit = (EditorVC) getMediator().getUi().getEditorFocus();
-        	File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "temp.tpn");
+        	
+//        	boolean succeed = 
+        	TPNExport.save(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn", (PetriNetModelProcessor) getMediator().getUi().getEditorFocus()
+                    .getModelProcessor());
+        	File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn");
+        	
+//        	File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "temp.tpn");
         	WoflanAnalysis wa  = new WoflanAnalysis(edit, f);
         	StructuralAnalysis sa = new StructuralAnalysis(edit);
-        	int sound = wa.getNumUnboundedPlaces() + wa.getNumNonLiveTransitions();
+        	
+        	int unbound = wa.getNumUnboundedPlaces();
+        	int nonlive = wa.getNumNonLiveTransitions();
+        	
+        	int sound = unbound + nonlive;
         	int soPl = sa.getNumSourcePlaces();
         	int soTr = sa.getNumSourceTransitions();
         	int siPl = sa.getNumSinkPlaces();

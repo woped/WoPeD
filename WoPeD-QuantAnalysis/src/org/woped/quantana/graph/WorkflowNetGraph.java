@@ -35,11 +35,11 @@ public class WorkflowNetGraph {
 		
 		AbstractPetriNetModelElement source = (AbstractPetriNetModelElement)sa.getSourcePlacesIterator().next();
 		sourcePlace = new Node(source.getId(), source.getNameValue());
-		sourcePlace.type = Node.TYPE_PLACE;
+		sourcePlace.setType(Node.TYPE_PLACE);
 		
 		AbstractPetriNetModelElement sink = (AbstractPetriNetModelElement)sa.getSinkPlacesIterator().next();
 		sinkPlace = new Node(sink.getId(), sink.getNameValue());
-		sinkPlace.type = Node.TYPE_PLACE;
+		sinkPlace.setType(Node.TYPE_PLACE);
 		
 		initNodeArray();
 		
@@ -56,7 +56,7 @@ public class WorkflowNetGraph {
 		
 		for (int i = 0; i < nodeArray.length; i++){
 			Node n = nodeArray[i];
-			cycleArray[i] = new Node(n.id, n.name);
+			cycleArray[i] = new Node(n.getId(), n.getName());
 			//cycleArray[i].successor.clear();
 		}
 	}
@@ -79,7 +79,7 @@ public class WorkflowNetGraph {
 	public int getNodeIdx(String id){
 		int f = nodeArray.length;
 		for (int i = 0; i < f; i++){
-			if (nodeArray[i].id.equals(id))
+			if (nodeArray[i].getId().equals(id))
 				f = i;
 		}
 		
@@ -113,7 +113,7 @@ public class WorkflowNetGraph {
 	
 	public void resetMarking(){
 		for (Node n : nodeArray){
-			n.markiert = Node.NOT_STARTED;
+			n.setMarkiert(Node.NOT_STARTED);
 		}
 	}
 	
@@ -124,7 +124,7 @@ public class WorkflowNetGraph {
 			Node n = nodeArray[i];
 			text += n + " >> [ ";
 			
-			for (Arc a : n.successor){
+			for (Arc a : n.getSuccessor()){
 				text += "(" +a.target + "(" + a.getProbability() + "))";
 			}
 
@@ -133,7 +133,7 @@ public class WorkflowNetGraph {
 			//Vorgänger
 			text += n + " << [ ";
 
-			for (Arc a : n.predecessor){
+			for (Arc a : n.getPredecessor()){
 				text += a.target;
 			}
 
@@ -150,7 +150,7 @@ public class WorkflowNetGraph {
 			Node n = cycleArray[i];
 			text += n + " >> [ ";
 			
-			for (Arc a : n.successor){
+			for (Arc a : n.getSuccessor()){
 				text += a.target;
 			}
 			
@@ -165,10 +165,10 @@ public class WorkflowNetGraph {
 	}
 	
 	private void buildGraph(Node n){
-		Iterator postNodes = mec.getTargetElements(n.id).values().iterator();
-		Iterator preNodes = mec.getSourceElements(n.id).values().iterator();
+		Iterator postNodes = mec.getTargetElements(n.getId()).values().iterator();
+		Iterator preNodes = mec.getSourceElements(n.getId()).values().iterator();
 
-		if (mec.getTargetElements(n.id).size() > 1)
+		if (mec.getTargetElements(n.getId()).size() > 1)
 			n.setFork(true);
 		
 		while (postNodes.hasNext()){
@@ -178,17 +178,17 @@ public class WorkflowNetGraph {
 			Node postNode = null;
 			if (nodeIdx >= nodeArray.length){
 				String id = currentPlace.getId();
-				if (id.equals(sinkPlace.id)){
+				if (id.equals(sinkPlace.getId())){
 					postNode = sinkPlace;
 				} else {
 					postNode = new Node(id, currentPlace.getNameValue());
 					//double m = 1.0;
 					switch (currentPlace.getType()){
 					case AbstractPetriNetModelElement.PLACE_TYPE:
-						postNode.type = Node.TYPE_PLACE;
+						postNode.setType(Node.TYPE_PLACE);
 						break;
 					case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
-						postNode.type = Node.TYPE_TRANS;
+						postNode.setType(Node.TYPE_TRANS);
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						int type = ((OperatorTransitionModel)currentPlace).getOperatorType();
@@ -200,17 +200,17 @@ public class WorkflowNetGraph {
 						}
 						break;
 					case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
-						postNode.type = Node.TYPE_TRANS;
+						postNode.setType(Node.TYPE_TRANS);
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						break;
 					case AbstractPetriNetModelElement.SUBP_TYPE:
-						postNode.type = Node.TYPE_SUBP;
+						postNode.setType(Node.TYPE_SUBP);
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						break;
 					default:
-						postNode.type = 0;
+						postNode.setType(0);
 					}
 				}
 
@@ -228,7 +228,7 @@ public class WorkflowNetGraph {
 				
 				Arc a = new Arc(nodeArray[nodeIdx], p);
 				a.setSource(n);
-				n.successor.add(a);
+				n.getSuccessor().add(a);
 			} catch(Exception e){
 				e.printStackTrace();
 			}
@@ -242,22 +242,22 @@ public class WorkflowNetGraph {
 				Node preNode = new Node(currentNode.getId(), currentNode.getNameValue());
 				switch (currentNode.getType()){
 				case AbstractPetriNetModelElement.PLACE_TYPE:
-					preNode.type = Node.TYPE_PLACE;
+					preNode.setType(Node.TYPE_PLACE);
 					break;
 				case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
-					preNode.type = Node.TYPE_TRANS;
+					preNode.setType(Node.TYPE_TRANS);
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;
 				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
-					preNode.type = Node.TYPE_TRANS;
+					preNode.setType(Node.TYPE_TRANS);
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;
 				case AbstractPetriNetModelElement.SUBP_TYPE:
-					preNode.type = Node.TYPE_SUBP;
+					preNode.setType(Node.TYPE_SUBP);
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;
 				default:
-					preNode.type = 0;
+					preNode.setType(0);
 				}
 				nodeIdx = findNextFreeIndex();
 				nodeArray[nodeIdx] = preNode;
@@ -268,7 +268,7 @@ public class WorkflowNetGraph {
 				Arc a = new Arc(nodeArray[nodeIdx], p);
 				a.setSource(a.getTarget());
 				a.setTarget(n);
-				n.predecessor.add(a);
+				n.getPredecessor().add(a);
 				
 				//n.predecessor.add(new Arc(nodeArray[nodeIdx]));
 			} catch(Exception e){
@@ -282,7 +282,7 @@ public class WorkflowNetGraph {
 		boolean found = false;
 		
 		for (int j = 0; j < nodeArray.length; j++){
-			if (nodeArray[j].id.equals("") && !found){
+			if (nodeArray[j].getId().equals("") && !found){
 				i = j;
 				found = true;
 			}
@@ -356,22 +356,22 @@ public class WorkflowNetGraph {
 	}*/
 	
 	public boolean isPartOfCycle(String id){
-		return (cycleArray[getNodeIdx(id)].successor.size() > 1);
+		return (cycleArray[getNodeIdx(id)].getSuccessor().size() > 1);
 	}
 	
 	public ArrayList<Arc> getCycle(String id){
-		return cycleArray[getNodeIdx(id)].successor;
+		return cycleArray[getNodeIdx(id)].getSuccessor();
 	}
 	
 	public boolean isTransition(String id){
-		int type = nodeArray[getNodeIdx(id)].type;
+		int type = nodeArray[getNodeIdx(id)].getType();
 		return ((type == Node.TYPE_TRANS) || (type == Node.TYPE_SUBP));
 	}
 	
 	public int getNumTransitions(){
 		int num = 0;
 		for (int i = 0; i < nodeArray.length; i++){
-			if (isTransition(nodeArray[i].id))
+			if (isTransition(nodeArray[i].getId()))
 				num++;
 		}
 		
@@ -382,8 +382,8 @@ public class WorkflowNetGraph {
 		String[] trans = new String[getNumTransitions()];
 		int idx = 0;
 		for (int i = 0; i < nodeArray.length; i++){
-			if (isTransition(nodeArray[i].id)){
-				trans[idx] = nodeArray[i].name + " (" + nodeArray[i].id + ")";
+			if (isTransition(nodeArray[i].getId())){
+				trans[idx] = nodeArray[i].getName() + " (" + nodeArray[i].getId() + ")";
 				idx++;
 			}
 		}
@@ -395,7 +395,7 @@ public class WorkflowNetGraph {
 		double[] times = new double[getNumTransitions()];
 		int idx = 0;
 		for (int i = 0; i < nodeArray.length; i++){
-			if (isTransition(nodeArray[i].id)){
+			if (isTransition(nodeArray[i].getId())){
 				times[idx] = nodeArray[i].getTime();
 				idx++;
 			}
@@ -408,7 +408,7 @@ public class WorkflowNetGraph {
 		double[] runs = new double[getNumTransitions()];
 		int idx = 0;
 		for (int i = 0; i < nodeArray.length; i++){
-			if (isTransition(nodeArray[i].id)){
+			if (isTransition(nodeArray[i].getId())){
 				runs[idx] = nodeArray[i].getNumOfRuns();
 				//runs[idx] = nodeArray[i].getTempSum();
 				idx++;
@@ -439,7 +439,7 @@ public class WorkflowNetGraph {
 	public ArrayList<Node> getInputNodes(Node n){
 		ArrayList<Node> list = new ArrayList<Node>();
 		for (int i = 0; i < nodeArray.length; i++){
-			for (Arc a: nodeArray[i].successor){
+			for (Arc a: nodeArray[i].getSuccessor()){
 				if (n.equals(a.target))
 					list.add(nodeArray[i]);
 			}

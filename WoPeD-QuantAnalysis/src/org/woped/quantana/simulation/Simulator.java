@@ -1,6 +1,5 @@
 package org.woped.quantana.simulation;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.PriorityQueue;
@@ -10,6 +9,7 @@ import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.gui.SimParameters;
+import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
 import org.woped.quantana.simulation.output.SimOutputDialog;
@@ -27,44 +27,38 @@ public class Simulator {
 	public static final int RES_USED		= 1;
 	public static final int RES_NOT_USED	= 2;
 	
-//	private static final double VERY_LATE_TIME	= Double.POSITIVE_INFINITY;
-	
 	private WorkflowNetGraph process;
 	private ResourceAllocation resAlloc;
 	private ResourceUtilization resUtil;
 	private int useResAlloc;
 	private CaseGenerator caseGenerator;
+	private SeedGenerator seedGenerator;
 	private int numRuns;
-	private int countCaseFinished;
 	private double clock;
 	private int numCasesInSystem = 0;
 	private int maxNumCasesInSystem = 0;
-	private int caseNo = 0;
-	private long seed = 0;
+	private int caseCount = 0;
+	private int finishedCases = 0;
+	private double avgCasesInSystem = 0.0;
+	private double timeOfLastEvent = 0.0;
+	private double timeOfLastCaseNumChange = 0.0;
+	private double throughPut = 0.0;
 	private int typeOfDistForCases = 0;
 	private int typeOfDistForServer = 0;
-//	private double servParam1 = 0.0;
-//	private double servParam2 = 0.0;
 	private double caseParam1 = 0.0;
 	private double caseParam2 = 0.0;
 	private int queueDiscipline = 0;
 	private int stopRule = 0;
 	private double lambda = 1.0;
 	private double timeOfPeriod = 8.0;
-//	private Server firstServer
 	private Random fstServChoice = new Random(new Date().getTime());
 	private int[][] fstServList;
 	
 	private SimEvent nextEvent = null;
-	//private ArrayList<Server> serverList = new ArrayList<Server>();
 	private HashMap<String, Server> serverList = new HashMap<String, Server>();
-	//private ArrayList<SimEvent> eventList = new ArrayList<SimEvent>();
 	private PriorityQueue<SimEvent> eventList = new PriorityQueue<SimEvent>();
-	private static ArrayList<ProtocolItem> protocol = new ArrayList<ProtocolItem>();
+//	private static ArrayList<ProtocolItem> protocol = new ArrayList<ProtocolItem>();
 	private HashMap<Integer, Case> caseList	 = new HashMap<Integer, Case>();
-	
-//	public static boolean stopped = false;
-	
 	
 	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
 		process = wfpn;
@@ -76,87 +70,88 @@ public class Simulator {
 		this.typeOfDistForServer = sp.getDistServ();
 		this.caseParam1 = sp.getCPara1();
 		this.caseParam2 = sp.getCPara2();
-//		this.servParam1 = sp.getSPara1();
-//		this.servParam2 = sp.getSPara2();
 		this.queueDiscipline = sp.getQueue();
 		this.stopRule = sp.getStop();
 		this.lambda = sp.getLambda();
 		this.timeOfPeriod = sp.getTimeOfPeriod();
 		this.useResAlloc = sp.getResUse();
 		
-//		generateServerList();
-//		printServerList(); // <---------
-		
 		getFstServList();
+		seedGenerator = new SeedGenerator();
 	}
 	
 	public void start() {
+		
+		generateServerList();
+		
 		for (int i = 0; i < numRuns; i++){
-			ProtocolItem pi = new ProtocolItem(this);
-			String init = "simulation protocol\n run #: " + i + "\n\n";
-			pi.setTime(0.0);
-			pi.setDescription(init);
-			protocolUpdate(pi);
-			
 			init();
 			
 			while (!shouldStopNow()){
 				timing();
-				nextEvent.invoke();
+				
+				if (nextEvent != null)
+					nextEvent.invoke();
+				else
+					break;
 			}
+			
+			// sämtliche Resourcen befreien und BusyTime berechnen !!!
 			
 			generateReport();
 		}
 	}
 	
 	private void init(){
-		ProtocolItem pi = new ProtocolItem(this);
-		pi.setTime(clock);
-		String description = "Initialization started:\n";
-		
+
 		clock = 0.0;
-		caseNo = 0;
-		description += "Clock set to Zero.\n";
-		description += "System starts 'empty and idle'.\n";
 		
-		generateServerList();
-		description += "List of Servers generated.\n";
+		// sämtliche Counter zurücksetzen
+		avgCasesInSystem = 0.0;
+		caseCount = 0;
+		finishedCases = 0;
+		maxNumCasesInSystem = 0;
+		numCasesInSystem = 0;
+		throughPut = 0.0;
+		timeOfLastCaseNumChange = 0.0;
+		timeOfLastEvent = 0.0;
+		
+		caseList.clear();
+		
+		nextEvent = null;
+		
+		// alle Server zurücksetzen
+		for (Server s : serverList.values()){
+			s.reset();
+		}
+		
+		// alle Ressourcen befreien
+		for (Resource r : resUtil.getUsedResources().values()){
+			resUtil.freeResource(r);
+		}
 		
 		initEventList();
-		description += "List of Events initialized.\n";
-		description += "Initialization finished. System is ready.\n\n";
-		
-		pi.setDescription(description);
-		
-		protocolUpdate(pi);
 	}
 	
 	private void timing(){
-		ProtocolItem pi = new ProtocolItem(this);
-		
 		// nextEvent bestimmen
-		nextEvent = eventList.remove();
+		if (!(eventList.isEmpty()))
+			nextEvent = eventList.remove();
+		else
+			nextEvent = null;
 		
 		// Systemuhr setzen
-		clock += nextEvent.getMoment();
-		
-		// neuen Case erzeugen
-		if (nextEvent instanceof ArrivalEvent){
-			generateNextCase();
-		}
-		
-		protocolUpdate(pi);
+		if (nextEvent != null) clock += nextEvent.getTime();
 	}
 	
 	private void generateReport(){
 		SimOutputDialog sod = new SimOutputDialog(null, true, this);
-//		sod.setAlwaysOnTop(true);
 		sod.setVisible(true);
 	}
 	
-	public void protocolUpdate(ProtocolItem pi){
+	/*public void protocolUpdate(ProtocolItem pi){
 		protocol.add(pi);
-	}
+	}*/
 	
 	private void generateServerList(){ // <--------  private Methode !!!
 		Node[] nodes = process.getNodeArray();
@@ -165,8 +160,11 @@ public class Simulator {
 			String name = nodes[i].getName();
 			double t = nodes[i].getTime();
 			if (process.isTransition(id)){
-				Server s = new Server(id, name, new ProbabilityDistribution(typeOfDistForServer, 1/t, 1.0, ++seed));
+				Server s = new Server(this, id, name, new ProbabilityDistribution(typeOfDistForServer, 1/t, 1.0, seedGenerator.nextSeed()));
 				s.setStatus(Server.STATUS_IDLE);
+				String nid = name + " (" + id + ")";
+				s.setRole(resAlloc.getRole(nid));
+				s.setGroup(resAlloc.getGroup(nid));
 				serverList.put(id, s);
 			}
 		}
@@ -187,11 +185,12 @@ public class Simulator {
 	}
 	
 	private void initEventList(){
-		caseGenerator = new CaseGenerator(new ProbabilityDistribution(typeOfDistForCases, caseParam1, caseParam2, ++seed), this);
-//		DepartureEvent unreachableDepartureEvent = new DepartureEvent(this, getStartServer(), VERY_LATE_TIME, 0);
-//		eventList.add(unreachableDepartureEvent);
+		eventList.clear();
 		
-		generateNextCase();
+		caseGenerator = new CaseGenerator(new ProbabilityDistribution(typeOfDistForCases, caseParam1, caseParam2, seedGenerator.nextSeed()), this);
+		
+		BirthEvent be = new BirthEvent(this, clock);
+		eventList.add(be);
 	}
 
 	public HashMap<String, Server> getServerList() {
@@ -214,7 +213,7 @@ public class Simulator {
 	}*/
 	
 	private boolean isCaseNumReached(){
-		return countCaseFinished >= lambda;
+		return finishedCases >= lambda;
 	}
 	
 	private boolean isTimeRunOut(){
@@ -234,7 +233,7 @@ public class Simulator {
 		}
 	}
 	
-	private Server getStartServer(){
+	public Server getStartServer(){
 		Node start = process.getStartPlace();
 		int succs = start.getSuccessor().size();
 		int rnd = fstServChoice.nextInt(100);
@@ -286,13 +285,13 @@ public class Simulator {
 		this.clock = clock;
 	}
 	
-	private void generateNextCase(){
+	/*private void generateNextCase(){
 		Case c = caseGenerator.generateNextCase();
 		caseNo++;
 		caseList.put(Integer.valueOf(c.getId()), c);
 		ArrivalEvent ae = new ArrivalEvent(this, getStartServer(), c.getCurrentArrivalTime(), c);
 		eventList.add(ae);
-	}
+	}*/
 
 	public int getMaxNumCasesInSystem() {
 		return maxNumCasesInSystem;
@@ -348,5 +347,85 @@ public class Simulator {
 
 	public void setEventList(PriorityQueue<SimEvent> eventList) {
 		this.eventList = eventList;
+	}
+
+	public double getAvgCasesInSystem() {
+		return avgCasesInSystem;
+	}
+
+	public void setAvgCasesInSystem(double avgCasesInSystem) {
+		this.avgCasesInSystem = avgCasesInSystem;
+	}
+
+	public CaseGenerator getCaseGenerator() {
+		return caseGenerator;
+	}
+
+	public void setCaseGenerator(CaseGenerator caseGenerator) {
+		this.caseGenerator = caseGenerator;
+	}
+
+	public int getFinishedCases() {
+		return finishedCases;
+	}
+
+	public void setFinishedCases(int finishedCases) {
+		this.finishedCases = finishedCases;
+	}
+
+	public double getTimeOfLastEvent() {
+		return timeOfLastEvent;
+	}
+
+	public void setTimeOfLastEvent(double timeOfLastEvent) {
+		this.timeOfLastEvent = timeOfLastEvent;
+	}
+
+	public HashMap<Integer, Case> getCaseList() {
+		return caseList;
+	}
+
+	public void setCaseList(HashMap<Integer, Case> caseList) {
+		this.caseList = caseList;
+	}
+
+	public int getStopRule() {
+		return stopRule;
+	}
+
+	public int getCaseCount() {
+		return caseCount;
+	}
+
+	public void setCaseCount(int caseCount) {
+		this.caseCount = caseCount;
+	}
+
+	public double getLambda() {
+		return lambda;
+	}
+
+	public void setLambda(double lambda) {
+		this.lambda = lambda;
+	}
+
+	public double getThroughPut() {
+		return throughPut;
+	}
+
+	public void setThroughPut(double throughPut) {
+		this.throughPut = throughPut;
+	}
+	
+	public void updateCaseNumStats(double now, double lastEvent){
+		avgCasesInSystem += caseCount * (now - lastEvent);
+	}
+
+	public double getTimeOfLastCaseNumChange() {
+		return timeOfLastCaseNumChange;
+	}
+
+	public void setTimeOfLastCaseNumChange(double timeOfLastCaseNumChange) {
+		this.timeOfLastCaseNumChange = timeOfLastCaseNumChange;
 	}
 }

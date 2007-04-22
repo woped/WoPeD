@@ -22,6 +22,7 @@ import org.woped.quantana.simulation.Simulator;
 public class SimOutputDialog extends JDialog{
 	
 	private static final long serialVersionUID = 2L;
+	
 	private JPanel jContentPane = null;
 	private JTree itemTree = null;
 //	private JPanel content = new JPanel();
@@ -117,11 +118,11 @@ public class SimOutputDialog extends JDialog{
 			DefaultMutableTreeNode proto = new DefaultMutableTreeNode("Protocol");
 			curRoot.add(proto);
 //			panelList.add(new ProtocolPanel());
-			panelList.put("Protocol", new ProtocolPanel());
+			panelList.put("Protocol", new ProtocolPanel(this));
 			DefaultMutableTreeNode proc = new DefaultMutableTreeNode("Process");
 			curRoot.add(proc);
 //			panelList.add(new ProcessPanel());
-			panelList.put("Process", new ProcessPanel());
+			panelList.put("Process", new ProcessPanel(this));
 			curRoot = proc;
 			
 			for (Server s : simulator.getServerList().values()){
@@ -129,7 +130,7 @@ public class SimOutputDialog extends JDialog{
 				String id = s.getId();
 				curRoot.add(new DefaultMutableTreeNode(s.toString()));
 //				panelList.add(new ServerPanel(s.toString()));
-				panelList.put(s.getId(), new ServerPanel(id, name));
+				panelList.put(s.getId(), new ServerPanel(this, id, name));
 			}
 			
 			generatePanelContent();
@@ -165,9 +166,7 @@ public class SimOutputDialog extends JDialog{
 				p.add(txtOutput);
 			} else if (p instanceof ProcessPanel){
 				txtOutput.setText("Process");
-				p.add(txtOutput);
 			} else {
-//				txtOutput.setText(p.getName());
 				ServerPanel q = (ServerPanel)p;
 				Server s = simulator.getServerList().get(q.getId());
 				q.setValues(
@@ -182,12 +181,9 @@ public class SimOutputDialog extends JDialog{
 						s.getMaxNumCasesInParallel(),
 						s.getNumCasesInParallel());
 			}
-			
-//			p.add(txtOutput);
 		}
 	}
 	
-//	private void updatePanelView(int index){
 	private void updatePanelView(String key){
 		String id = produceID(key);
 		
@@ -201,5 +197,13 @@ public class SimOutputDialog extends JDialog{
 	private String produceID(String key){
 		if (key.equals("Protocol") || key.equals("Process")) return key;
 		else return key.substring(key.indexOf("(") + 1, key.indexOf(")"));
+	}
+
+	public Simulator getSimulator() {
+		return simulator;
+	}
+
+	public void setSimulator(Simulator simulator) {
+		this.simulator = simulator;
 	}
 }

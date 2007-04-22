@@ -11,30 +11,28 @@ public class Node {
 	public final static int TYPE_TRANS	=	2;
 	public final static int TYPE_SUBP	=	3;
 	
-	String id;
-	String name;
-	int markiert;
-	int type;
+	private String id;
+	private String name;
+	private int markiert;
+	private int type;
 	
-	//int dfs;
-	//int lowlink;
-	boolean isFork = false;
-	boolean foundCycle = false;
-	//boolean useSum = false;
+	private boolean isFork = false;
+	private boolean foundCycle = false;
 	
-	ArrayList<Arc> successor;
-	ArrayList<Arc> predecessor;
+	private ArrayList<Arc> successor;
+	private ArrayList<Arc> predecessor;
 	
-	double numOfRuns = 0.0;
-	//double tempSum = 0.0;
-	int iteration = 0;
-	//double multiply = 1.0;
-	double tempRuns = 0.0;
-	boolean andJoin = false;
-	boolean joinReached = false;
+	private double numOfRuns = 0.0;
+	private int iteration = 0;
+	private double tempRuns = 0.0;
+	private boolean andJoin = false;
+	private boolean joinReached = false;
 	
-	double time = 0.0;
-	int timeUnit = 2;
+	private double time = 0.0;
+	private int timeUnit = 2;
+	
+	private String role = "none";
+	private String group = "none";
 	
 	ArrayList<Arc> tempArcs = new ArrayList<Arc>();
 	
@@ -202,5 +200,21 @@ public class Node {
 
 	public void setTimeUnit(int timeUnit) {
 		this.timeUnit = timeUnit;
+	}
+
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

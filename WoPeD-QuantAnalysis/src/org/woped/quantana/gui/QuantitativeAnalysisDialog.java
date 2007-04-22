@@ -64,14 +64,13 @@ public class QuantitativeAnalysisDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
-	// public static final int CALL_CAPA = 1;
-	// public static final int CALL_SIM = 2;
-
 	private EditorVC editor = null;
 	private JPanel jContentPane = null;
 	private JTabbedPane register = null;
 	private JPanel capaPanel = new JPanel();
 	private JPanel simuPanel = new JPanel();
+	private int groupRoleNum = 0;
+	private int resObjNum = 0;
 	
 	private double timeUnit = 1.0;
 	private String timeIntervall = GeneralPropertiesDialog.TIME_MINUTE;
@@ -329,16 +328,6 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		lblDummy2 = new JLabel();
 		lblPrecision = new JLabel(Messages.getString("QuantAna.CapacityPlanning.Precision"));
 		lblPrecision.setAlignmentX(JLabel.RIGHT_ALIGNMENT);
-		/*
-		 * jspPrecision = new JSpinner(new SpinnerNumberModel(2, 0, 5, 1));
-		 * jspPrecision.setPreferredSize(new Dimension(50,20));
-		 * jspPrecision.setToolTipText("Sets the number of decimal places");
-		 * jspPrecision.addChangeListener(new ChangeListener(){ public void
-		 * stateChanged(ChangeEvent e){ String prec =
-		 * ((Integer)jspPrecision.getValue()).toString(); showPrecision(prec); //
-		 * int i = ((Integer)(jspPrecision.getValue())).intValue(); //
-		 * JOptionPane.showMessageDialog(null, Integer.valueOf(i)); } });
-		 */
 		jslPrecision = new JSlider(0, 5, 2);
 		jslPrecision.setPaintLabels(true);
 		jslPrecision.setPaintTicks(true);
@@ -346,7 +335,6 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		jslPrecision.setSnapToTicks(true);
 		jslPrecision.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
 		jslPrecision.setPreferredSize(new Dimension(100, 40));
-		// jslPrecision.setToolTipText("Adjust decimal precision");
 		jslPrecision.addMouseListener(new MouseListener() {
 			public void mouseClicked(MouseEvent e) {
 			}
@@ -916,6 +904,9 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		ArrayList<String> groups = new ArrayList<String>();
 		Vector rVec = (Vector) pmp.getRoles();
 		Vector gVec = (Vector) pmp.getOrganizationUnits();
+		
+		groupRoleNum = rVec.size() + gVec.size();
+		
 		for (int i = 0; i < rVec.size(); i++)
 			roles.add(((ResourceClassModel) rVec.get(i)).getName());
 
@@ -926,7 +917,7 @@ public class QuantitativeAnalysisDialog extends JDialog {
 
 		resAlloc = new ResourceAllocation(roles, groups, iter, pmp);
 
-		// JOptionPane.showMessageDialog(null, resAlloc);
+		resObjNum = resAlloc.getResources().size();
 	}
 
 	private LinkedList<TransitionModel> getTransModels() {
@@ -980,8 +971,8 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		int j = trans.length;
 		String prec = Integer.valueOf(jslPrecision.getValue()).toString();
 		for (int i = 0; i < j; i++) {
-			tasksMatrix[i][2] = runs[i];
-			tasksMatrix[i][3] = times[i];
+			tasksMatrix[i][1] = runs[i];
+			tasksMatrix[i][2] = times[i];
 
 			tableTasksMatrix[i][0] = trans[i];
 			tableTasksMatrix[i][2] = String.format("%12." + prec + "f", runs[i]);
@@ -1095,16 +1086,10 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		String op2 = groupST.getSelection().getActionCommand();
 		if (op2.equals("ST_UNIFORM")) {
 			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_UNIFORM);
-			// sp.setSPara1(Double.parseDouble(txt_p3_11.getText()));
-			// sp.setSPara2(Double.parseDouble(txt_p3_12.getText()));
 		} else if (op2.equals("ST_GAUSS")) {
 			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_GAUSS);
-			// sp.setSPara1(Double.parseDouble(txt_p3_31.getText()));
-			// sp.setSPara2(Double.parseDouble(txt_p3_32.getText()));
 		} else {
 			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_EXP);
-			// sp.setSPara1(Double.parseDouble(txt_p3_21.getText()));
-			// sp.setSPara2(Double.parseDouble(txt_p3_22.getText()));
 		}
 
 		String op3 = groupQD.getSelection().getActionCommand();
@@ -1125,12 +1110,14 @@ public class QuantitativeAnalysisDialog extends JDialog {
 			sp.setStop(Simulator.STOP_NONE);
 		}
 		
-		sp.setResUse(Simulator.RES_NOT_USED);
+		if (groupRoleNum > 2 && resObjNum > 1){
+			sp.setResUse(Simulator.RES_USED);
+		} else {
+			sp.setResUse(Simulator.RES_NOT_USED);
+		}
 		
 		Simulator sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp);
 		sim.start();
-//		SimOutputDialog sod = new SimOutputDialog(null, true, sim); // <---------
-//		sod.setVisible(true); // <---------
 	}
 
 	private void getConfiguration() {
@@ -1232,14 +1219,14 @@ public class QuantitativeAnalysisDialog extends JDialog {
 			tasksMatrix[r][1] = runs[r];
 			tasksMatrix[r][2] = times[r];
 
-			tb[r][2] = String.format("%12." + prec + "f", runs[r]);// Double.valueOf(runs[r]);
+			tb[r][2] = String.format("%12." + prec + "f", runs[r]);
 			tmTasks.fireTableCellUpdated(r, 2);
-			tb[r][3] = String.format("%12." + prec + "f", times[r]);// Double.valueOf(times[r]);
+			tb[r][3] = String.format("%12." + prec + "f", times[r]);
 			tmTasks.fireTableCellUpdated(r, 3);
 
-			double n = tasksMatrix[r][1];// Double.valueOf((String)tb[r][2]);
+			double n = tasksMatrix[r][1];
 			double n1 = n / lambda;
-			double t = tasksMatrix[r][2];// Double.valueOf((String)tb[r][3]);
+			double t = tasksMatrix[r][2];
 
 			sumCase += n1 * t;
 			sumPeriod += n * t;
@@ -1248,13 +1235,11 @@ public class QuantitativeAnalysisDialog extends JDialog {
 			tasksMatrix[r][3] = n1 * t;
 			tasksMatrix[r][4] = n * t;
 
-			tb[r][1] = String.format("%12." + prec + "f", n1);// Double.valueOf(n1);
+			tb[r][1] = String.format("%12." + prec + "f", n1);
 			tmTasks.fireTableCellUpdated(r, 1);
-			tb[r][4] = String.format("%12." + prec + "f", n1 * t);// Double.valueOf(n1
-																	// * t);
+			tb[r][4] = String.format("%12." + prec + "f", n1 * t);
 			tmTasks.fireTableCellUpdated(r, 4);
-			tb[r][5] = String.format("%12." + prec + "f", n * t);// Double.valueOf(n
-																	// * t);
+			tb[r][5] = String.format("%12." + prec + "f", n * t);
 			tmTasks.fireTableCellUpdated(r, 5);
 		}
 
@@ -1281,19 +1266,16 @@ public class QuantitativeAnalysisDialog extends JDialog {
 				}
 
 				if (idx != -1)
-					sum += tasksMatrix[idx][4];// Double.valueOf((String)tb[idx][5]);
+					sum += tasksMatrix[idx][4];
 			}
 
 			double numRes = (sum / period) / capaLevel;
 			resMatrix[i][0] = sum;
 			resMatrix[i][1] = numRes;
 
-			tr[i][1] = String.format("%12." + prec + "f", sum);// Double.valueOf(sum);
+			tr[i][1] = String.format("%12." + prec + "f", sum);
 			tmRes.fireTableCellUpdated(i, 1);
-			tr[i][2] = String.format("%12." + prec + "f", numRes);// Double.valueOf((sum
-																	// / period)
-																	// /
-																	// capaLevel);
+			tr[i][2] = String.format("%12." + prec + "f", numRes);
 			tmRes.fireTableCellUpdated(i, 2);
 		}
 
@@ -1307,8 +1289,6 @@ public class QuantitativeAnalysisDialog extends JDialog {
 	}
 	
 	private void showPrecision(String precision){
-//		double p = Math.pow(10, precision);
-		
 		int numCols1 = colNames.length;
 		
 		for (int i = 0; i < numTrans; i++){
@@ -1333,10 +1313,6 @@ public class QuantitativeAnalysisDialog extends JDialog {
 		capaLevel = jslCapaLevel.getValue() / 100.0;
 		String prec = Integer.valueOf(jslPrecision.getValue()).toString();
 		
-		/*for (int i = 0; i < numResCls; i++){
-			tmRes.setValueAt(String.format("%12." + prec + "f", (resMatrix[i][1] * oldCapaLevel) / capaLevel), i, 2);
-		}*/
-		
 		for (int i = 0; i < numResCls; i++){
 			double sum = 0.0;
 			ArrayList<String> min = rcta.getTable().get(i).getTasks();
@@ -1346,16 +1322,16 @@ public class QuantitativeAnalysisDialog extends JDialog {
 					if (((String)tb[k][0]).equals(min.get(j))) idx = k;
 				}
 
-				if (idx != -1) sum += tasksMatrix[idx][4];//Double.valueOf((String)tb[idx][5]);
+				if (idx != -1) sum += tasksMatrix[idx][4];
 			}
 			
 			double numRes = (sum / period) / capaLevel;
 			resMatrix[i][0] = sum;
 			resMatrix[i][1] = numRes;
 
-			tr[i][1] = String.format("%12." + prec + "f", sum);//Double.valueOf(sum);
+			tr[i][1] = String.format("%12." + prec + "f", sum);
 			tmRes.fireTableCellUpdated(i, 1);
-			tr[i][2] = String.format("%12." + prec + "f", numRes);//Double.valueOf((sum / period) / capaLevel);
+			tr[i][2] = String.format("%12." + prec + "f", numRes);
 			tmRes.fireTableCellUpdated(i, 2);
 		}
 	}

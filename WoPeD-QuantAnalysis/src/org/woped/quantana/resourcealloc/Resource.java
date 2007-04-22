@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 public class Resource {
 	private String name;
-	//private String role = "none";
-	//private String group = "none";
 	private ArrayList<String> roles = new ArrayList<String>();
 	private ArrayList<String> groups = new ArrayList<String>();
-	private double busyTime = 0;
+	private double busyTime = 0.0;
+	private double lastStartTime = 0.0;
 	
 	public double getBusyTime() {
 		return busyTime;
@@ -20,8 +19,8 @@ public class Resource {
 
 	public Resource(String name){
 		this.name = name;
-		roles.add("none");
-		groups.add("none");
+//		roles.add("none");
+//		groups.add("none");
 	}
 
 	public String getName() {
@@ -46,6 +45,14 @@ public class Resource {
 
 	public void setRoles(ArrayList<String> roles) {
 		this.roles = roles;
+	}
+
+	public double getLastStartTime() {
+		return lastStartTime;
+	}
+
+	public void setLastStartTime(double lastStartTime) {
+		this.lastStartTime = lastStartTime;
 	}
 
 	

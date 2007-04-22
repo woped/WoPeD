@@ -10,10 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("unused")
 public class ServerPanel extends JPanel {
+	
 	private static final long serialVersionUID = 5L;
+	
 	private String name = "";
 	private String id = "";
+	private SimOutputDialog sod;
 	
 	/*private JScrollPane scrollPane;
 	private JSplitPane splitPane;
@@ -43,11 +47,12 @@ public class ServerPanel extends JPanel {
 	JLabel lblHeading = new JLabel("Server Statistics:");
 	JTextArea txtCounters = new JTextArea(10, 30);
 	
-	public ServerPanel(String id, String name){
+	public ServerPanel(SimOutputDialog sod, String id, String name){
 		this.id = id;
 		this.name = name;
+		this.sod = sod;
 		
-		this.setPreferredSize(new Dimension(580,600));
+		this.setPreferredSize(new Dimension(500,500));
 		init();
 	}
 

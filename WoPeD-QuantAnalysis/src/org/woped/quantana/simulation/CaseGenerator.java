@@ -1,13 +1,7 @@
 package org.woped.quantana.simulation;
 
-
+@SuppressWarnings("unused")
 public class CaseGenerator {
-//	public static final int DIST_TYPE_UNIFORM	= 1;
-//	public static final int DIST_TYPE_EXP		= 2;
-//	public static final int DIST_TYPE_GAUSS		= 3;
-	
-//	private PsRandom generator = new PsRandom(0);
-//	private int typeOfDist = 0;
 	private ProbabilityDistribution distribution;
 	private int caseCount = 0;
 	private double lastArrivalTime = 0.0;
@@ -49,11 +43,6 @@ public class CaseGenerator {
 		
 		lastArrivalTime += distribution.getNextRandomValue();
 		next.setSysArrivalTime(lastArrivalTime);
-		
-		ProtocolItem pi = new ProtocolItem(sim);
-		pi.setTime(sim.getClock());
-		pi.setDescription("New Case generated. ID: " + next.getId());
-		sim.protocolUpdate(pi);
 		
 		return next;
 	}

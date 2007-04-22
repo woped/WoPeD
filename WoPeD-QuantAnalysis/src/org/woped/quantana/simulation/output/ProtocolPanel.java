@@ -4,21 +4,15 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("unused")
 public class ProtocolPanel extends JPanel {
+	
 	private static final long serialVersionUID = 3L;
-//	private String name = "";
 	
-	public ProtocolPanel(){
-		this.setPreferredSize(new Dimension(600,600));
+	private SimOutputDialog sod;
+	
+	public ProtocolPanel(SimOutputDialog sod){
+		this.setPreferredSize(new Dimension(500,500));
+		this.sod = sod;
 	}
-
-	/*public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}*/
-	
-	
 }

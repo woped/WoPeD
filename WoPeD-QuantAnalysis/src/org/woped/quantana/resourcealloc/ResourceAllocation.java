@@ -14,7 +14,8 @@ import org.woped.core.model.petrinet.TransitionResourceModel;
 public class ResourceAllocation {
 	private ArrayList<String> roles = new ArrayList<String>();
 	private ArrayList<String> groups = new ArrayList<String>();
-	private ArrayList<Resource> resources = new ArrayList<Resource>();
+//	private ArrayList<Resource> resources = new ArrayList<Resource>();
+	HashMap<String, Resource> resources = new HashMap<String, Resource>();
 	private AllocationTable taskAlloc2;
 	private PetriNetModelProcessor proc;
 	private ResourceClassTaskAllocationTable resClsTskAlloc;
@@ -39,7 +40,8 @@ public class ResourceAllocation {
 			
 			String tsk = transMod.getNameValue() + " (" + transMod.getId() + ")";
 			
-			taskAlloc2.getTable().add(new AllocationTableItem(tsk, rNames, gNames));
+			//taskAlloc2.getTable().add(new AllocationTableItem(tsk, rNames, gNames));
+			taskAlloc2.getTable().put(tsk, new AllocationTableItem(tsk, rNames, gNames));
 			
 			Vector res = proc.getResources();
 			
@@ -54,7 +56,7 @@ public class ResourceAllocation {
 			for (int i = 0; i < res.size(); i++){
 				String name = ((ResourceModel)res.get(i)).getName();
 				Resource resObj = new Resource(name);
-				resources.add(resObj);
+				resources.put(name, resObj);
 				
 				Vector classes = proc.getResourceClassesResourceIsAssignedTo(name);
 				for (int j = 0; j < classes.size(); j++){
@@ -72,8 +74,12 @@ public class ResourceAllocation {
 			Iterator iter = classes.iterator();
 			while (iter.hasNext()){
 				ResourceClassTaskAllocation rcta = new ResourceClassTaskAllocation((String)iter.next());
-				for (int i = 0; i < taskAlloc2.getTable().size(); i++){
+				/*for (int i = 0; i < taskAlloc2.getTable().size(); i++){
 					AllocationTableItem t = taskAlloc2.getTable().get(i);
+					if (t.getRoles().contains(rcta.getResClass()) || t.getGroups().contains(rcta.getResClass()))
+						rcta.getTasks().add(t.getTask());
+				}*/
+				for (AllocationTableItem t : taskAlloc2.getTable().values()){
 					if (t.getRoles().contains(rcta.getResClass()) || t.getGroups().contains(rcta.getResClass()))
 						rcta.getTasks().add(t.getTask());
 				}
@@ -90,11 +96,11 @@ public class ResourceAllocation {
 		this.groups = groups;
 	}
 	
-	public ArrayList<Resource> getResources() {
+	public HashMap<String, Resource> getResources() {
 		return resources;
 	}
 	
-	public void setResources(ArrayList<Resource> resources) {
+	public void setResources(HashMap<String, Resource> resources) {
 		this.resources = resources;
 	}
 	
@@ -107,7 +113,7 @@ public class ResourceAllocation {
 	}
 	
 	public void addResource(Resource res){
-		resources.add(res);
+		resources.put(res.getName(), res);
 	}
 	
 	public int getNumPerRole(String role){
@@ -122,7 +128,7 @@ public class ResourceAllocation {
 		ArrayList<Resource> list = new ArrayList<Resource>();
 		
 		if (roles.contains(role)){
-			for (Resource r : resources){
+			for (Resource r : resources.values()){
 				if (r.getRoles().contains(role))
 					list.add(r);
 			}
@@ -135,7 +141,7 @@ public class ResourceAllocation {
 		ArrayList<Resource> list = new ArrayList<Resource>();
 		
 		if (roles.contains(group)){
-			for (Resource r : resources){
+			for (Resource r : resources.values()){
 				if (r.getGroups().contains(group))
 					list.add(r);
 			}
@@ -146,7 +152,8 @@ public class ResourceAllocation {
 
 	public ArrayList<String> getTasksForRole(String role){
 		ArrayList<String> list = new ArrayList<String>();
-		ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
+		//ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
+		HashMap<String, AllocationTableItem> table = taskAlloc2.getTable();
 		
 		for (int i = 0; i < table.size(); i++){
 			if (table.get(i).getRoles().contains(role))
@@ -158,7 +165,8 @@ public class ResourceAllocation {
 	
 	public ArrayList<String> getTasksForGroup(String group){
 		ArrayList<String> list = new ArrayList<String>();
-		ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
+		//ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
+		HashMap<String, AllocationTableItem> table = taskAlloc2.getTable();
 		
 		for (int i = 0; i < table.size(); i++){
 			if (table.get(i).getGroups().contains(group))
@@ -170,7 +178,8 @@ public class ResourceAllocation {
 	
 	public ArrayList<String> getTasksForGroupRole(String group, String role){
 		ArrayList<String> list = new ArrayList<String>();
-		ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
+		//ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
+		HashMap<String, AllocationTableItem> table = taskAlloc2.getTable();
 
 		for (int i = 0; i < table.size(); i++){
 			if (table.get(i).getGroups().contains(group) && table.get(i).getRoles().contains(role))
@@ -190,8 +199,11 @@ public class ResourceAllocation {
 	
 	public String toString(){
 		String text = "";
-		for (int i = 0; i < taskAlloc2.getTable().size(); i++){
+		/*for (int i = 0; i < taskAlloc2.getTable().size(); i++){
 			text += "\n" + taskAlloc2.getTable().get(i);
+		}*/
+		for (AllocationTableItem t : taskAlloc2.getTable().values()){
+			text += "\n" + t;
 		}
 		
 		return text;
@@ -209,5 +221,17 @@ public class ResourceAllocation {
 		return resClsTskAlloc.getTable().size();
 	}
 	
+	public String getRole(String id){
+		ArrayList<String> roles = taskAlloc2.getTable().get(id).getRoles();
+		
+		if (roles.size() <= 0) return "";
+		else return roles.get(0);
+	}
 	
+	public String getGroup(String id){
+		ArrayList<String> roles = taskAlloc2.getTable().get(id).getGroups();
+		
+		if (roles.size() <= 0) return "";
+		else return roles.get(0);
+	}
 }

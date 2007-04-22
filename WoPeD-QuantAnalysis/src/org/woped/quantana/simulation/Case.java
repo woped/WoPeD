@@ -7,6 +7,7 @@ public class Case {
 	private double sysArrivalTime = 0.0;
 	private double sysDepartureTime = 0.0;
 	private double currentArrivalTime = 0.0;
+	private double currentDepartureTime = 0.0;
 	private double nextServiceTime = 0.0;
 	
 	public Case(int id){
@@ -68,5 +69,13 @@ public class Case {
 
 	public void setNextServiceTime(double nextServiceTime) {
 		this.nextServiceTime = nextServiceTime;
+	}
+
+	public double getCurrentDepartureTime() {
+		return currentDepartureTime;
+	}
+
+	public void setCurrentDepartureTime(double currentDepartureTime) {
+		this.currentDepartureTime = currentDepartureTime;
 	}
 }

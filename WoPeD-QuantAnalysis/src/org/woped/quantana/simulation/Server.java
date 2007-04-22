@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
+import org.woped.quantana.resourcealloc.Resource;
+import org.woped.quantana.resourcealloc.ResourceUtilization;
+
 public class Server {
 	public static final int STATUS_IDLE	= 1;
 	public static final int STATUS_BUSY = 2;
 	
 	private String id;
 	private String name;
+	private Simulator sim;
 	private int numCalls = 0;
 	private double busy = 0.0;				// B(t)
 	private double queueLen = 0.0;			// Q(t)
 	private double maxWaitTimeOfCase = 0.0;
+	private double waitTime = 0.0;
 	private int maxQueueLength = 0;
 	private int zeroDelays = 0;
 	private int numAccess = 0;
@@ -27,9 +32,13 @@ public class Server {
 	private ArrayList<SuccServer> successor = new ArrayList<SuccServer>();
 	private Random choice;
 	
-	public Server(String id, String name, ProbabilityDistribution dist){
+	private String role;
+	private String group;
+	
+	public Server(Simulator sim, String id, String name, ProbabilityDistribution dist){
 		this.id = id;
 		this.name = name;
+		this.sim = sim;
 		this.choice = new Random();
 		this.distribution = dist;
 	}
@@ -233,6 +242,86 @@ public class Server {
 	
 	public void incNumCasesInParallel(int n){
 		numCasesInParallel += n;
+	}
+
+	public double getWaitTime() {
+		return waitTime;
+	}
+
+	public void setWaitTime(double waitTime) {
+		this.waitTime = waitTime;
+	}
+	
+	public boolean hasFreeCapacity(){
+		if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
+			return true;
+		} else {
+			ResourceUtilization ru = sim.getResUtil();
+			ArrayList<Resource> r = ru.getFreeResPerGroupRole(group, role);
+			if (r.size() > 0) return true;
+			else return false;
+		}
+	}
+	
+	public boolean isIdle(){
+		if (status == Server.STATUS_IDLE){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	public void enqueue(Case c){
+		queue.add(c);
+		
+		int l = queue.size();
+		if (l > maxQueueLength) maxQueueLength += 1;
+	}
+	
+	public Case dequeue(){
+		int qDisc = sim.getQueueDiscipline();
+		
+		if (qDisc == Simulator.QD_FIFO) return queue.removeFirst();
+		else return queue.removeLast();
+	}
+	
+	public void updateUtilStats(double now, double lastEvent){
+		queueLen += queue.size() * (now - lastEvent);
+		
+		if (status == STATUS_BUSY) busy += now - lastEvent;
+	}
+	
+	public void reset(){
+		status = STATUS_IDLE;
+		
+		busy = 0.0;
+		curCase = null;
+		maxNumCasesInParallel = 0;
+		maxQueueLength = 0;
+		maxWaitTimeOfCase = 0.0;
+		numAccess = 0;
+		numCalls = 0;
+		numCasesInParallel = 0;
+		numDeparture = 0;
+		queueLen = 0.0;
+		
+		queue.clear();
 	}
 }
 
