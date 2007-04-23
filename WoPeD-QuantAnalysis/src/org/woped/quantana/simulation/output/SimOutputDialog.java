@@ -165,14 +165,15 @@ public class SimOutputDialog extends JDialog{
 				txtOutput.setText("Protocol");
 				p.add(txtOutput);
 			} else if (p instanceof ProcessPanel){
-				txtOutput.setText("Process");
+				
 			} else {
 				ServerPanel q = (ServerPanel)p;
 				Server s = simulator.getServerList().get(q.getId());
+				double t = simulator.getClock();
 				q.setValues(
 						s.getNumCalls(),
-						s.getBusy(),
-						s.getQueueLen(),
+						s.getBusy() / t,
+						s.getQueueLen() / t,
 						s.getMaxWaitTimeOfCase(),
 						s.getMaxQueueLength(),
 						s.getZeroDelays(),

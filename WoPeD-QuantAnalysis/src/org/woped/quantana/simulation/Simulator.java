@@ -35,7 +35,7 @@ public class Simulator {
 	private SeedGenerator seedGenerator;
 	private int numRuns;
 	private double clock;
-	private int numCasesInSystem = 0;
+	//private int numCasesInSystem = 0;
 	private int maxNumCasesInSystem = 0;
 	private int caseCount = 0;
 	private int finishedCases = 0;
@@ -43,14 +43,16 @@ public class Simulator {
 	private double timeOfLastEvent = 0.0;
 	private double timeOfLastCaseNumChange = 0.0;
 	private double throughPut = 0.0;
+	private double caseBusy = 0.0;
+	private double caseWait = 0.0;
 	private int typeOfDistForCases = 0;
 	private int typeOfDistForServer = 0;
 	private double caseParam1 = 0.0;
 	private double caseParam2 = 0.0;
 	private int queueDiscipline = 0;
 	private int stopRule = 0;
-	private double lambda = 1.0;
-	private double timeOfPeriod = 8.0;
+	private double lambda = 50.0;
+	private double timeOfPeriod = 480.0;
 	private Random fstServChoice = new Random(new Date().getTime());
 	private int[][] fstServList;
 	
@@ -111,7 +113,7 @@ public class Simulator {
 		caseCount = 0;
 		finishedCases = 0;
 		maxNumCasesInSystem = 0;
-		numCasesInSystem = 0;
+		//numCasesInSystem = 0;
 		throughPut = 0.0;
 		timeOfLastCaseNumChange = 0.0;
 		timeOfLastEvent = 0.0;
@@ -141,7 +143,7 @@ public class Simulator {
 			nextEvent = null;
 		
 		// Systemuhr setzen
-		if (nextEvent != null) clock += nextEvent.getTime();
+		if (nextEvent != null) clock = nextEvent.getTime();
 	}
 	
 	private void generateReport(){
@@ -160,7 +162,7 @@ public class Simulator {
 			String name = nodes[i].getName();
 			double t = nodes[i].getTime();
 			if (process.isTransition(id)){
-				Server s = new Server(this, id, name, new ProbabilityDistribution(typeOfDistForServer, 1/t, 1.0, seedGenerator.nextSeed()));
+				Server s = new Server(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, 1.0, seedGenerator.nextSeed()));
 				s.setStatus(Server.STATUS_IDLE);
 				String nid = name + " (" + id + ")";
 				s.setRole(resAlloc.getRole(nid));
@@ -301,13 +303,13 @@ public class Simulator {
 		this.maxNumCasesInSystem = maxNumCasesInSystem;
 	}
 
-	public int getNumCasesInSystem() {
+	/*public int getNumCasesInSystem() {
 		return numCasesInSystem;
 	}
 
 	public void setNumCasesInSystem(int numCasesInSystem) {
 		this.numCasesInSystem = numCasesInSystem;
-	}
+	}*/
 
 	public int getQueueDiscipline() {
 		return queueDiscipline;
@@ -418,7 +420,8 @@ public class Simulator {
 	}
 	
 	public void updateCaseNumStats(double now, double lastEvent){
-		avgCasesInSystem += caseCount * (now - lastEvent);
+		int cc = caseList.size();
+		avgCasesInSystem += cc * (now - lastEvent);
 	}
 
 	public double getTimeOfLastCaseNumChange() {
@@ -427,5 +430,21 @@ public class Simulator {
 
 	public void setTimeOfLastCaseNumChange(double timeOfLastCaseNumChange) {
 		this.timeOfLastCaseNumChange = timeOfLastCaseNumChange;
+	}
+
+	public double getCaseBusy() {
+		return caseBusy;
+	}
+
+	public void setCaseBusy(double caseBusy) {
+		this.caseBusy = caseBusy;
+	}
+
+	public double getCaseWait() {
+		return caseWait;
+	}
+
+	public void setCaseWait(double caseWait) {
+		this.caseWait = caseWait;
 	}
 }

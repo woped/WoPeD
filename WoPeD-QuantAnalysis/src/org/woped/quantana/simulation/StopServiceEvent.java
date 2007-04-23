@@ -28,6 +28,8 @@ public class StopServiceEvent extends SimEvent {
 		
 		server.incNumCasesInParallel(-1);
 		server.setCurCase(null);
+		
+		r.setBusyTime(r.getBusyTime() + time - r.getLastStartTime());
 		ru.freeResource(r);
 		
 		if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){

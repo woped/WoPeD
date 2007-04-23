@@ -19,9 +19,12 @@ public class DeathEvent extends SimEvent {
 		c.setSysDepartureTime(t);
 		sim.setFinishedCases(sim.getFinishedCases() + 1);
 		sim.setThroughPut(sim.getThroughPut() + c.getSysDepartureTime() - c.getSysArrivalTime());
+		sim.setCaseBusy(sim.getCaseBusy() + c.getTimeService());
+		sim.setCaseWait(sim.getCaseWait() + c.getTimeWait());
 		sim.updateCaseNumStats(getTime(), sim.getTimeOfLastCaseNumChange());
-		sim.setCaseCount(sim.getCaseCount() - 1);
 		
-		sim.getCaseList().remove(c);
+		sim.getCaseList().remove(c.getId());
+		
+		sim.setTimeOfLastCaseNumChange(getTime());
 	}
 }

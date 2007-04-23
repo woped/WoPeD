@@ -16,7 +16,10 @@ public class ResourceUtilization {
 	
 	public ResourceUtilization(ResourceAllocation resAlloc){
 		this.resAlloc = resAlloc;
-		freeResources = this.resAlloc.getResources();
+		HashMap<String, Resource> resources = this.resAlloc.getResources();
+		
+		for (Resource r : resources.values()) freeResources.put(r.getName(), r);
+		
 		for (Resource r: freeResources.values())
 			r.setBusyTime(0.0);
 		
@@ -111,13 +114,13 @@ public class ResourceUtilization {
 	public void freeResource(Resource r){
 		if (r != null){
 			freeResources.put(r.getName(), r);
-			usedResources.remove(r);
+			usedResources.remove(r.getName());
 		}
 	}
 
 	public void useResource(Resource r){
 		if (r != null){
-			freeResources.remove(r);
+			freeResources.remove(r.getName());
 			usedResources.put(r.getName(), r);
 		}
 	}

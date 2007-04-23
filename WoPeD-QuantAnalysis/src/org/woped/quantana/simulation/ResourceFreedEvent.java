@@ -22,7 +22,7 @@ public class ResourceFreedEvent extends SimEvent {
 		
 		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 		
-		if ((!(server.getQueue().isEmpty())) && (server.hasFreeCapacity())){
+		while ((!(server.getQueue().isEmpty())) && (server.hasFreeCapacity())){
 			Case c2 = server.dequeue();
 			Resource r = ru.chooseResourceFromFreeResources(server.getGroup(), server.getRole());
 			

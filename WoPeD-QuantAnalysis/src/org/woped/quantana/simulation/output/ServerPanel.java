@@ -399,16 +399,16 @@ public class ServerPanel extends JPanel {
 			int		numCasesInParallel){
 		
 		String text = "";
-		text += "numCalls:\t\t" + numCalls + "\n";
-		text += "busy:\t\t\t" + busy + "\n";
-		text += "queueLength:\t\t" + queueLength + "\n";
-		text += "maxWaitTimeOfCase:\t" + maxWaitTimeOfCase + "\n";
-		text += "maxQueueLength:\t\t" + maxQueueLength + "\n";
-		text += "zeroDelays:\t\t" + zeroDelays + "\n";
-		text += "numAccess:\t\t" + numAccess + "\n";
-		text += "numDepature:\t\t" + numDeparture + "\n";
-		text += "maxNumCasesInParallel:\t" + maxNumCasesInParallel + "\n";
-		text += "numCasesInParallel:\t" + numCasesInParallel + "\n";
+		text += String.format("numCalls:\t\t%d\n", numCalls);
+		text += String.format("busy:\t\t\t%7.2f\n", busy);
+		text += String.format("queueLength:\t\t%7.2f\n", queueLength);
+		text += String.format("maxWaitTimeOfCase:\t%7.2f\n", maxWaitTimeOfCase);
+		text += String.format("maxQueueLength:\t\t%d\n", maxQueueLength);
+		text += String.format("zeroDelays:\t\t%d\n", zeroDelays);
+		text += String.format("numAccess:\t\t%d\n", numAccess);
+		text += String.format("numDepature:\t\t%d\n", numDeparture);
+		text += String.format("maxNumCasesInParallel:\t%d\n", maxNumCasesInParallel);
+		text += String.format("numCasesInParallel:\t%d\n", numCasesInParallel);
 		
 		txtCounters.setText(text);
 	}

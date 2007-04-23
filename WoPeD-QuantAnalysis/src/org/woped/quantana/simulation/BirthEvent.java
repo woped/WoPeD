@@ -14,13 +14,18 @@ public class BirthEvent extends SimEvent {
 		CaseGenerator cg = sim.getCaseGenerator();
 		Case c = cg.generateNextCase();
 		
-		c.setSysArrivalTime(getTime());
+		//c.setSysArrivalTime(getTime());
 		sim.getCaseList().put(c.getId(), c);
 		sim.updateCaseNumStats(getTime(), sim.getTimeOfLastCaseNumChange());
 		sim.setCaseCount(sim.getCaseCount() + 1);
-		ArrivalEvent ae = new ArrivalEvent(sim, sim.getClock(), sim.getStartServer(), c);
+		
+		int cc = sim.getCaseCount();
+		if (cc > sim.getMaxNumCasesInSystem()) sim.setMaxNumCasesInSystem(cc);
+		
+		//ArrivalEvent ae = new ArrivalEvent(sim, sim.getClock(), sim.getStartServer(), c);
+		ArrivalEvent ae = new ArrivalEvent(sim, c.getCurrentArrivalTime(), sim.getStartServer(), c);
 		sim.getEventList().add(ae);
 		
-//		s.setTimeOfLastEvent(getTime());
+		sim.setTimeOfLastCaseNumChange(getTime());
 	}
 }

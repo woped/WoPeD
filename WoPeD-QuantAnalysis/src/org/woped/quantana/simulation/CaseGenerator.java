@@ -20,27 +20,9 @@ public class CaseGenerator {
 		this.caseCount = caseCount;
 	}
 
-	/*public int getTypeOfDist() {
-		return typeOfDist;
-	}
-
-	public void setTypeOfDist(int typeOfDist) {
-		this.typeOfDist = typeOfDist;
-	}*/
-	
 	public Case generateNextCase(){
 		Case next = new Case(++caseCount);
-		/*switch (typeOfDist){
-		case DIST_TYPE_UNIFORM:
-			next.setSysArrivalTime(generator.nextDouble());
-			break;
-		case DIST_TYPE_GAUSS:
-			next.setSysArrivalTime(generator.nextGaussian(0, 0));
-			break;
-		default:
-			next.setSysArrivalTime(generator.nextExponential(0, 0));
-		}*/
-		
+
 		lastArrivalTime += distribution.getNextRandomValue();
 		next.setSysArrivalTime(lastArrivalTime);
 		

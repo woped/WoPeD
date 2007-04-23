@@ -14,7 +14,6 @@ import org.woped.core.model.petrinet.TransitionResourceModel;
 public class ResourceAllocation {
 	private ArrayList<String> roles = new ArrayList<String>();
 	private ArrayList<String> groups = new ArrayList<String>();
-//	private ArrayList<Resource> resources = new ArrayList<Resource>();
 	HashMap<String, Resource> resources = new HashMap<String, Resource>();
 	private AllocationTable taskAlloc2;
 	private PetriNetModelProcessor proc;
@@ -68,17 +67,11 @@ public class ResourceAllocation {
 				}
 			}
 			
-//			HashMap rm = proc.getResourceMapping();
 			resClsTskAlloc = new ResourceClassTaskAllocationTable();
 			Set<String> classes = resClsType.keySet();
 			Iterator iter = classes.iterator();
 			while (iter.hasNext()){
 				ResourceClassTaskAllocation rcta = new ResourceClassTaskAllocation((String)iter.next());
-				/*for (int i = 0; i < taskAlloc2.getTable().size(); i++){
-					AllocationTableItem t = taskAlloc2.getTable().get(i);
-					if (t.getRoles().contains(rcta.getResClass()) || t.getGroups().contains(rcta.getResClass()))
-						rcta.getTasks().add(t.getTask());
-				}*/
 				for (AllocationTableItem t : taskAlloc2.getTable().values()){
 					if (t.getRoles().contains(rcta.getResClass()) || t.getGroups().contains(rcta.getResClass()))
 						rcta.getTasks().add(t.getTask());
@@ -152,7 +145,6 @@ public class ResourceAllocation {
 
 	public ArrayList<String> getTasksForRole(String role){
 		ArrayList<String> list = new ArrayList<String>();
-		//ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
 		HashMap<String, AllocationTableItem> table = taskAlloc2.getTable();
 		
 		for (int i = 0; i < table.size(); i++){
@@ -165,7 +157,6 @@ public class ResourceAllocation {
 	
 	public ArrayList<String> getTasksForGroup(String group){
 		ArrayList<String> list = new ArrayList<String>();
-		//ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
 		HashMap<String, AllocationTableItem> table = taskAlloc2.getTable();
 		
 		for (int i = 0; i < table.size(); i++){
@@ -178,7 +169,6 @@ public class ResourceAllocation {
 	
 	public ArrayList<String> getTasksForGroupRole(String group, String role){
 		ArrayList<String> list = new ArrayList<String>();
-		//ArrayList<AllocationTableItem> table = taskAlloc2.getTable();
 		HashMap<String, AllocationTableItem> table = taskAlloc2.getTable();
 
 		for (int i = 0; i < table.size(); i++){
@@ -199,9 +189,6 @@ public class ResourceAllocation {
 	
 	public String toString(){
 		String text = "";
-		/*for (int i = 0; i < taskAlloc2.getTable().size(); i++){
-			text += "\n" + taskAlloc2.getTable().get(i);
-		}*/
 		for (AllocationTableItem t : taskAlloc2.getTable().values()){
 			text += "\n" + t;
 		}
