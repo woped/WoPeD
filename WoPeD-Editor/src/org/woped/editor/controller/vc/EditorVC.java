@@ -402,7 +402,16 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		// We must create a JGraph model
 		// representation of the new model element container
+		// Disable undo while doing so just as we do for loading a PNML file
+        if (getGraph().getUndoManager() != null)
+        {
+            ((WoPeDUndoManager) getGraph().getUndoManager()).setEnabled(false);
+        }		
 		getGraph().drawNet(getModelProcessor());
+        if (getGraph().getUndoManager() != null)
+        {
+            ((WoPeDUndoManager) getGraph().getUndoManager()).setEnabled(true);
+        }		
 		updateNet();
 		// Clear selection, we do not want newly created elements to be selected
 		getGraph().clearSelection();
