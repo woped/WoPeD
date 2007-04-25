@@ -40,7 +40,7 @@ import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
-import org.woped.quantana.gui.QuantAnaStart;
+import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.woflan.NetAnalysisDialog;
 import org.woped.woflan.WoflanAnalysis;
 
@@ -149,7 +149,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             break;
 
         case AbstractViewEvent.QUANTANA:
-        	EditorVC edit = (EditorVC) getMediator().getUi().getEditorFocus();
+        	EditorVC editor = (EditorVC) getMediator().getUi().getEditorFocus();
         	
 //        	boolean succeed = 
         	TPNExport.save(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn", (PetriNetModelProcessor) getMediator().getUi().getEditorFocus()
@@ -157,8 +157,8 @@ public class FileEventProcessor extends AbstractEventProcessor
         	File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn");
         	
 //        	File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "temp.tpn");
-        	WoflanAnalysis wa  = new WoflanAnalysis(edit, f);
-        	StructuralAnalysis sa = new StructuralAnalysis(edit);
+        	WoflanAnalysis wa  = new WoflanAnalysis(editor, f);
+        	StructuralAnalysis sa = new StructuralAnalysis(editor);
         	
         	int unbound = wa.getNumUnboundedPlaces();
         	int nonlive = wa.getNumNonLiveTransitions();
@@ -172,7 +172,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         	String param[] = {"", "", ""};
         	
         	if (sound == 0 && wfpn) {
-        		ModelElementContainer mec = edit.getModelProcessor().getElementContainer();
+        		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
         		boolean isBranchingOK = true;
         		Iterator transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values().iterator();
         		Iterator places = sa.getPlacesIterator();
@@ -218,8 +218,9 @@ public class FileEventProcessor extends AbstractEventProcessor
         			}
         		}
 
-        		if (isBranchingOK)
-        			new QuantAnaStart(edit);
+        		if (isBranchingOK) {
+        			new CapacityAnalysisDialog(null, editor);
+        		}
         		else
         			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.BranchingProbabilityViolation", param));
         	} else {
