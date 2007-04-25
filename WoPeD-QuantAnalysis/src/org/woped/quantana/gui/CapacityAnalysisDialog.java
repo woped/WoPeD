@@ -2,7 +2,6 @@ package org.woped.quantana.gui;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -20,6 +19,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -179,13 +179,13 @@ public class CapacityAnalysisDialog extends JDialog {
 
 	private JTextField txtResourceUtil = null;
 
-	private static TimeModel tm = null;
+	private TimeModel tm = null;
 
 	/**
 	 * This is the default constructor
 	 */
-	public CapacityAnalysisDialog(Frame owner, EditorVC editor) {
-		super(owner, true);
+	public CapacityAnalysisDialog(EditorVC editor) {
+		super(new JFrame(), true);
 		this.editor = editor;
 		sa = new StructuralAnalysis(editor);
 		mec = editor.getModelProcessor().getElementContainer();
@@ -206,11 +206,7 @@ public class CapacityAnalysisDialog extends JDialog {
 		calculateNumOfRuns(graph);
 		initResourceAlloc();
 		numResCls = resAlloc.getNumOfResClasses();
-
-		if (tm == null) {
-			tm = new TimeModel(1, 1.0);
-		}
-
+		tm = new TimeModel(1, 1.0);
 		setLayout(new GridBagLayout());
 		constraints.insets = new Insets(5, 5, 5, 5);
 		constraints.fill = GridBagConstraints.BOTH;
@@ -243,7 +239,7 @@ public class CapacityAnalysisDialog extends JDialog {
 		this.setBounds(x, y, width, height);
 		this.setTitle(Messages.getTitle("QuantAna.CapacityPlanning"));
 
-		this.updTableContents();
+		this.updContents();
 		this.setVisible(true);
 	}
 
@@ -376,7 +372,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			btnCalc.setPreferredSize(new Dimension(120, 25));
 			btnCalc.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
-					updTableContents();
+					updContents();
 				}
 			});
 			constraints.gridx = 0;
@@ -784,6 +780,8 @@ public class CapacityAnalysisDialog extends JDialog {
 	}
 
 	private void calculateNumOfRuns(WorkflowNetGraph g) {
+
+		LoggerManager.info(Constants.QUANTANA_LOGGER, "Epsilon: " + epsilon);
 		unfoldNet(graph, lambda, epsilon);
 
 		Node[] origNet = graph.getNodeArray();
@@ -1004,7 +1002,7 @@ public class CapacityAnalysisDialog extends JDialog {
 				);
 	}
 
-	public void updTableContents() {
+	public void updContents() {
 		Object[][] tb = tableTasksMatrix;
 		Object[][] tr = tableResMatrix;
 		double sumCase = 0.0;

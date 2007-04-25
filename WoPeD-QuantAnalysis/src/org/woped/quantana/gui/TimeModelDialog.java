@@ -54,10 +54,10 @@ public class TimeModelDialog extends JDialog {
 	private JLabel lblMon = new JLabel(TIME_MONTH);
 
 	private JButton 	btnApply = null;
-	private CapacityAnalysisDialog 	dlg;
+	private JDialog 	dlg;
 	private TimeModel 	tm;
 
-	public TimeModelDialog(CapacityAnalysisDialog dlg, TimeModel tm) {
+	public TimeModelDialog(JDialog dlg, TimeModel tm) {
 		super(new JFrame(), true);	
 		this.dlg = dlg; 
 		this.tm = tm;
@@ -240,12 +240,20 @@ public class TimeModelDialog extends JDialog {
 
 	private void applyProperties(){
 		createTimeModel();
-		dlg.updTableContents();
+		if (dlg instanceof CapacityAnalysisDialog)
+			((CapacityAnalysisDialog)dlg).updContents();
+		else
+			((QuantitativeSimulationDialog)dlg).updContents();
 		this.dispose();
 	}
 
 	private void createTimeModel(){
-		Node[] nodes = dlg.getGraph().getNodeArray();
+		Node[] nodes;
+
+		if (dlg instanceof CapacityAnalysisDialog)
+			nodes = ((CapacityAnalysisDialog)dlg).getGraph().getNodeArray();
+		else
+			nodes = ((QuantitativeSimulationDialog)dlg).getGraph().getNodeArray();
 
 		tm.setCvDayToHour(Double.parseDouble(txtDayToHour.getText()));
 		tm.setCvHourToMin(Double.parseDouble(txtHourToMin.getText()));
