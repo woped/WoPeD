@@ -7,8 +7,6 @@ import java.util.Random;
 
 public class ResourceUtilization {
 	
-//	private ArrayList<Resource> freeResources = new ArrayList<Resource>();
-//	private ArrayList<Resource> usedResources = new ArrayList<Resource>();
 	private HashMap<String, Resource> freeResources = new HashMap<String, Resource>();
 	private HashMap<String, Resource> usedResources = new HashMap<String, Resource>();
 	private ResourceAllocation resAlloc;

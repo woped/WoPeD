@@ -2,22 +2,29 @@ package org.woped.quantana.simulation.output;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
+import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
+import org.woped.core.utilities.LoggerManager;
+import org.woped.quantana.gui.Constants;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.Simulator;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class SimOutputDialog extends JDialog{
 	
@@ -35,6 +42,9 @@ public class SimOutputDialog extends JDialog{
 //	private HashMap<String, JScrollPane> panelList = new HashMap<String, JScrollPane>();
 	
 	private Simulator simulator;
+	private String protocolText = "";
+	private SAXParser parser;
+	private DefaultHandler handler;
 	
 	public SimOutputDialog(Frame owner, boolean modal, Simulator sim) {
 		super(owner, modal);
@@ -158,12 +168,8 @@ public class SimOutputDialog extends JDialog{
 	
 	private void generatePanelContent(){
 		for (JPanel p : panelList.values()){
-			JTextField txtOutput = new JTextField("anonym");
-//			JPanel p = (JPanel)(((JViewport)s.getComponent(0)).getView());
-			
 			if (p instanceof ProtocolPanel){
-				txtOutput.setText("Protocol");
-				p.add(txtOutput);
+				
 			} else if (p instanceof ProcessPanel){
 				
 			} else {
@@ -206,5 +212,96 @@ public class SimOutputDialog extends JDialog{
 
 	public void setSimulator(Simulator simulator) {
 		this.simulator = simulator;
+	}
+	
+	public String getProtocol(){
+		File f = new File(simulator.getProtocolName());
+		
+		LoggerManager.info(Constants.QUANTANA_LOGGER, "File: " + f.toString());
+		
+		SAXParserFactory factory = SAXParserFactory.newInstance();
+		factory.setNamespaceAware(true);
+		
+		try {
+			handler = new DefaultHandler(){
+				
+				private long min = new Date().getTime();
+				private long max = 0;
+				private int count = 0;
+				private int rec = 0;
+				
+				public void startDocument(){
+					protocolText += "--- Protocol Start ---\n\n";
+				}
+				
+				public void startElement(String uri, String lname, String qname, Attributes attr){
+//					long val = 0;
+					
+					try {
+						/*if (lname.equalsIgnoreCase("millis")){
+							val = Long.parseLong(attr.getValue(0));
+							if (val < min) min = val;
+							if (val > max) max = val;
+							
+//							protocolText += uri + " | " + lname + " | " + qname + " | " + attr.toString() + "\n";
+						}
+						
+						if (lname.equalsIgnoreCase("message")){
+							protocolText += attr.getValue(0) + "\n";
+						}*/
+						
+						if (lname.equalsIgnoreCase("record")) rec++;
+						
+						if (lname.equalsIgnoreCase("date")) count = 0;
+						
+					} catch (Exception e) {
+						//e.printStackTrace();
+					}
+				}
+				
+				public void characters(char[] ch, int start, int length){
+					count++;
+					if (rec == 1 && count == 2){
+						String s = String.copyValueOf(ch);
+						long l = Long.parseLong(s);
+						min = l;
+						max = l;
+					}
+					
+					if (rec > 1 && count == 2){
+						String s = String.copyValueOf(ch);
+						long l = Long.parseLong(s);
+						if (l > max) max = l;
+					}
+					
+					if (count == 9){
+						String s = String.copyValueOf(ch);
+						protocolText += s + "\n";
+					}
+				}
+				
+				public void endElement(String uri, String lname, String qname){
+					rec = 0;
+				}
+
+				/*public void endDocument(){
+					protocolText += "\n\nsimulation took " + (max - min) + " ms";
+					protocolText += "\n\n--- Protocol End ---";
+				}*/
+			};
+
+			parser = factory.newSAXParser();
+			
+			try {
+				parser.parse(f, handler);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return protocolText;
 	}
 }

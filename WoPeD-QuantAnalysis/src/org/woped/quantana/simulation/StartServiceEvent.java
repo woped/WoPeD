@@ -24,31 +24,33 @@ public class StartServiceEvent extends SimEvent {
 		double time = getTime();
 		ResourceUtilization ru = sim.getResUtil();
 		
-		server.updateUtilStats(time, sim.getTimeOfLastEvent());
-		
-		server.setStatus(Server.STATUS_BUSY);
-		server.setCurCase(c);
-		server.incNumAccess(1);
-		server.incNumCasesInParallel(1);
-		
-		int par = server.getNumCasesInParallel();
-		int max = server.getMaxNumCasesInParallel();
-		if (par > max) server.setMaxNumCasesInParallel(par);
-		
-		double wait = time - c.getCurrentArrivalTime();
-		if (wait > server.getMaxWaitTimeOfCase()) server.setMaxWaitTimeOfCase(wait);
-		c.setTimeWait(c.getTimeWait() + wait);
-		c.setTimeService(c.getTimeService() + c.getNextServiceTime());
-		
-		double depart = time + c.getNextServiceTime();
-		c.setCurrentDepartureTime(depart);
-		
-		ru.useResource(r);
-		if (r != null) r.setLastStartTime(time);
-		
-		StopServiceEvent se = new StopServiceEvent(sim, depart, server, c, r);
-		sim.getEventList().add(se);
-		
-		sim.setTimeOfLastEvent(getTime());
+		if (sim.getUseResAlloc() == Simulator.RES_NOT_USED || r != null){
+			server.updateUtilStats(time, sim.getTimeOfLastEvent());
+
+			server.setStatus(Server.STATUS_BUSY);
+			//server.setCurCase(c);
+			server.incNumAccess(1);
+			server.incNumCasesInParallel(1);
+
+			int par = server.getNumCasesInParallel();
+			int max = server.getMaxNumCasesInParallel();
+			if (par > max) server.setMaxNumCasesInParallel(par);
+
+			double wait = time - c.getCurrentArrivalTime();
+			if (wait > server.getMaxWaitTimeOfCase()) server.setMaxWaitTimeOfCase(wait);
+			c.setTimeWait(c.getTimeWait() + wait);
+			c.setTimeService(c.getTimeService() + c.getNextServiceTime());
+
+			double depart = time + c.getNextServiceTime();
+			c.setCurrentDepartureTime(depart);
+
+			ru.useResource(r);
+			if (r != null) r.setLastStartTime(time);
+
+			StopServiceEvent se = new StopServiceEvent(sim, depart, server, c, r);
+			sim.getEventList().add(se);
+
+			sim.setTimeOfLastEvent(getTime());
+		}
 	}
 }

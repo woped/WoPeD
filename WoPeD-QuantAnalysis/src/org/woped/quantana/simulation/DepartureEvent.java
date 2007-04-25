@@ -18,40 +18,30 @@ public class DepartureEvent extends SimEvent {
 	}
 	
 	public void invoke(){
-		/*ProtocolItem pi = new ProtocolItem(getSim());
-		
-		if (!(server.getQueue().isEmpty())){
-			updateServerStatistics(server, c);
-			scheduleDeparture(c);
-		} else {
-			server.setStatus(Server.STATUS_IDLE);
-			server.incNumCasesInParallel(-1);
-		}
-		
-		double t = getSim().getClock();
-		double wt = t - c.getCurrentArrivalTime();
-		if (wt > server.getMaxWaitTimeOfCase()) server.setMaxWaitTimeOfCase(wt);
-
-		if (server.getSuccessor().size() == 0) c.setSysDepartureTime(t);
-		else {
-			ArrivalEvent ae = new ArrivalEvent(getSim(), t, server.gotoNextServer(), c);
-			getSim().getEventList().add(ae);
-		}
-		
-		getSim().protocolUpdate(pi);*/
-		
 		Simulator sim = getSim();
 		double time = getTime();
 		ResourceUtilization ru = sim.getResUtil();
 		
 		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 		
-		if (server.hasFreeCapacity() && server.isIdle() && !(server.getQueue().isEmpty())){
+		/*if (server.hasFreeCapacity() && server.isIdle() && !(server.getQueue().isEmpty())){
 			Case c2 = server.dequeue();
 			Resource r = ru.chooseResourceFromFreeResources(server.getGroup(), server.getRole());
 			
 			StartServiceEvent se = new StartServiceEvent(sim, time, server, c2, r);
 			sim.getEventList().add(se);
+		}*/
+		
+		if (!(server.getQueue().isEmpty())){
+			Case c2 = server.dequeue();
+			
+			if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
+				if (server.isIdle())
+					nextStartServiceEvent(sim, time, c2);
+			} else {
+				if (server.hasFreeCapacity())
+					nextStartServiceEvent(sim, time, c2);
+			}
 		}
 		
 		Server nextServer = server.gotoNextServer();
@@ -68,12 +58,12 @@ public class DepartureEvent extends SimEvent {
 		sim.setTimeOfLastEvent(time);
 	}
 	
-	/*private void updateServerStatistics(Server s, Case c){
-		s.incNumCalls(1);
-		s.incNumDeparture(1);
-	}
-	
-	private void scheduleDeparture(Case c){
+	private void nextStartServiceEvent(Simulator sim, double time, Case c){
+		Resource r = sim.getResUtil().chooseResourceFromFreeResources(server.getGroup(), server.getRole());
 		
-	}*/
+		if (sim.getUseResAlloc() == Simulator.RES_USED && r == null) return;
+		
+		StartServiceEvent se = new StartServiceEvent(sim, time, server, c, r);
+		sim.getEventList().add(se);
+	}
 }

@@ -27,7 +27,7 @@ public class Server {
 	private int maxNumCasesInParallel = 0;
 	private int status = 0;
 	private ProbabilityDistribution distribution;
-	private Case curCase = null;
+	//private Case curCase = null;
 	private LinkedList<Case> queue = new LinkedList<Case>();
 	private ArrayList<SuccServer> successor = new ArrayList<SuccServer>();
 	private Random choice;
@@ -67,13 +67,13 @@ public class Server {
 		this.numCalls = numCalls;
 	}
 
-	public Case getCurCase() {
+	/*public Case getCurCase() {
 		return curCase;
 	}
 
 	public void setCurCase(Case curCase) {
 		this.curCase = curCase;
-	}
+	}*/
 
 	public int getStatus() {
 		return status;
@@ -311,7 +311,7 @@ public class Server {
 		status = STATUS_IDLE;
 		
 		busy = 0.0;
-		curCase = null;
+		//curCase = null;
 		maxNumCasesInParallel = 0;
 		maxQueueLength = 0;
 		maxWaitTimeOfCase = 0.0;

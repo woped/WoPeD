@@ -20,14 +20,18 @@ public class ResourceFreedEvent extends SimEvent {
 		double time = getTime();
 		ResourceUtilization ru = sim.getResUtil();
 		
-		server.updateUtilStats(time, sim.getTimeOfLastEvent());
-		
-		while ((!(server.getQueue().isEmpty())) && (server.hasFreeCapacity())){
-			Case c2 = server.dequeue();
-			Resource r = ru.chooseResourceFromFreeResources(server.getGroup(), server.getRole());
-			
-			StartServiceEvent se = new StartServiceEvent(sim, time, server, c2, r);
-			sim.getEventList().add(se);
+		if (sim.getUseResAlloc() == Simulator.RES_USED){
+			server.updateUtilStats(time, sim.getTimeOfLastEvent());
+
+			while ((!(server.getQueue().isEmpty())) && (server.hasFreeCapacity())){
+				Case c2 = server.dequeue();
+				Resource r = ru.chooseResourceFromFreeResources(server.getGroup(), server.getRole());
+
+				if (r != null){
+					StartServiceEvent se = new StartServiceEvent(sim, time, server, c2, r);
+					sim.getEventList().add(se);
+				}
+			}
 		}
 	}
 }

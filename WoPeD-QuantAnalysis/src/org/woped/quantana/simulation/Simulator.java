@@ -1,10 +1,15 @@
 package org.woped.quantana.simulation;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.Random;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import org.woped.core.config.ConfigurationManager;
 import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
@@ -27,6 +32,12 @@ public class Simulator {
 	public static final int RES_USED		= 1;
 	public static final int RES_NOT_USED	= 2;
 	
+	public static final Logger protocol = Logger.getLogger("org.woped.quantana.simulation");
+	
+	private FileHandler handler;
+	private String protocolName;
+	//private String protocolPath;
+	
 	private WorkflowNetGraph process;
 	private ResourceAllocation resAlloc;
 	private ResourceUtilization resUtil;
@@ -35,7 +46,6 @@ public class Simulator {
 	private SeedGenerator seedGenerator;
 	private int numRuns;
 	private double clock;
-	//private int numCasesInSystem = 0;
 	private int maxNumCasesInSystem = 0;
 	private int caseCount = 0;
 	private int finishedCases = 0;
@@ -84,7 +94,11 @@ public class Simulator {
 	
 	public void start() {
 		
+		initProtocol();
+		protocol.info("Simulation wird gestartet!");
+		
 		generateServerList();
+		protocol.info("Server-Liste wurde erzeugt.");
 		
 		for (int i = 0; i < numRuns; i++){
 			init();
@@ -147,6 +161,8 @@ public class Simulator {
 	}
 	
 	private void generateReport(){
+		protocol.info("Simulation beendet. Ausgabe der Ergebnisse.");
+		
 		SimOutputDialog sod = new SimOutputDialog(null, true, this);
 		sod.setVisible(true);
 	}
@@ -447,4 +463,32 @@ public class Simulator {
 	public void setCaseWait(double caseWait) {
 		this.caseWait = caseWait;
 	}
+	
+	private void initProtocol(){
+		protocolName = ConfigurationManager.getConfiguration().getHomedir() + "/simproto.log";
+		
+		protocol.setLevel(Level.ALL);
+		protocol.setUseParentHandlers(false);
+		
+		try {
+			handler = new FileHandler(protocolName);
+			handler.setLevel(Level.ALL);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		protocol.addHandler(handler);
+	}
+
+	public String getProtocolName() {
+		return protocolName;
+	}
+
+	/*public String getProtocolPath() {
+		return protocolPath;
+	}*/
 }

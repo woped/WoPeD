@@ -27,7 +27,7 @@ public class StopServiceEvent extends SimEvent {
 		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 		
 		server.incNumCasesInParallel(-1);
-		server.setCurCase(null);
+		//server.setCurCase(null);
 		
 		r.setBusyTime(r.getBusyTime() + time - r.getLastStartTime());
 		ru.freeResource(r);
