@@ -28,7 +28,6 @@ package org.woped.gui.controller.vc;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -153,7 +152,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 	// return m_containingWindow;
 	// }
 	
-	
+	/*
 	private int getMnemonic(String mnemonic) {
 		int mInt = 0;
 		if (mnemonic.toUpperCase().equals("A")) mInt = KeyEvent.VK_A;
@@ -185,7 +184,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 		
 		return mInt;	
 	}
-
+*/
 	/**
      * Creates the analyseMenu if necessary.
      * 
