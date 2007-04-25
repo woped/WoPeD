@@ -3,6 +3,7 @@ package org.woped.quantana.simulation.output;
 import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.io.File;
+import java.io.FileReader;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -16,15 +17,16 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 import org.woped.core.utilities.LoggerManager;
 import org.woped.quantana.gui.Constants;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.Simulator;
 import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 public class SimOutputDialog extends JDialog{
 	
@@ -40,7 +42,6 @@ public class SimOutputDialog extends JDialog{
 	
 	private Simulator simulator;
 	private String protocolText = "";
-	private SAXParser parser;
 	private DefaultHandler handler;
 	
 	public SimOutputDialog(Frame owner, boolean modal, Simulator sim) {
@@ -82,7 +83,6 @@ public class SimOutputDialog extends JDialog{
 			splitPane.setDividerSize(8);
 			splitPane.setDividerLocation(200);
 			splitPane.setResizeWeight(1);
-			//splitPane.setMinimumSize(new Dimension(100, (int)splitPane.getSize().getHeight()));
 		}
 		
 		return splitPane;
@@ -184,10 +184,9 @@ public class SimOutputDialog extends JDialog{
 		
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "File: " + f.toString());
 		
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		factory.setNamespaceAware(true);
-		
 		try {
+			XMLReader xr = XMLReaderFactory.createXMLReader();
+			
 			handler = new DefaultHandler(){
 				
 				private long min = new Date().getTime();
@@ -200,24 +199,10 @@ public class SimOutputDialog extends JDialog{
 				}
 				
 				public void startElement(String uri, String lname, String qname, Attributes attr){
-//					long val = 0;
-					
 					try {
-						/*if (lname.equalsIgnoreCase("millis")){
-							val = Long.parseLong(attr.getValue(0));
-							if (val < min) min = val;
-							if (val > max) max = val;
-							
-//							protocolText += uri + " | " + lname + " | " + qname + " | " + attr.toString() + "\n";
-						}
-						
-						if (lname.equalsIgnoreCase("message")){
-							protocolText += attr.getValue(0) + "\n";
-						}*/
-						
 						if (lname.equalsIgnoreCase("record")) rec++;
 						
-						if (lname.equalsIgnoreCase("date")) count = 0;
+//						if (lname.equalsIgnoreCase("date")) count = 0;
 						
 					} catch (Exception e) {
 						//e.printStackTrace();
@@ -227,41 +212,39 @@ public class SimOutputDialog extends JDialog{
 				public void characters(char[] ch, int start, int length){
 					count++;
 					if (rec == 1 && count == 2){
-						String s = String.copyValueOf(ch);
+						String s = String.copyValueOf(ch, start, length);
 						long l = Long.parseLong(s);
 						min = l;
 						max = l;
 					}
 					
 					if (rec > 1 && count == 2){
-						String s = String.copyValueOf(ch);
+						String s = String.copyValueOf(ch, start, length);
 						long l = Long.parseLong(s);
 						if (l > max) max = l;
 					}
 					
 					if (count == 9){
-						String s = String.copyValueOf(ch);
+						String s = String.copyValueOf(ch, start, length);
 						protocolText += s + "\n";
 					}
 				}
 				
 				public void endElement(String uri, String lname, String qname){
-					rec = 0;
+					if (lname.equalsIgnoreCase("record")) count = 0;
 				}
 
-				/*public void endDocument(){
+				public void endDocument(){
 					protocolText += "\n\nsimulation took " + (max - min) + " ms";
 					protocolText += "\n\n--- Protocol End ---";
-				}*/
+				}
 			};
 
-			parser = factory.newSAXParser();
+			xr.setContentHandler(handler);
+			xr.setErrorHandler(handler);
 			
-			try {
-				parser.parse(f, handler);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			FileReader r = new FileReader(f);
+			xr.parse(new InputSource(r));
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -29,13 +29,12 @@ public class ProtocolPanel extends JPanel {
 	}
 	
 	private void init(){
-		txtProtocol.setPreferredSize(new Dimension(460, 400));
+//		txtProtocol.setPreferredSize(new Dimension(460, 400));
 		txtProtocol.setEditable(false);
 		txtProtocol.setText(sod.getProtocol());
 		
 		scrollPane = new JScrollPane(txtProtocol);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setPreferredSize(new Dimension(460, 500));
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints constraints = new GridBagConstraints();

@@ -36,7 +36,6 @@ public class Simulator {
 	
 	private FileHandler handler;
 	private String protocolName;
-	//private String protocolPath;
 	
 	private WorkflowNetGraph process;
 	private ResourceAllocation resAlloc;
@@ -162,6 +161,7 @@ public class Simulator {
 	
 	private void generateReport(){
 		protocol.info("Simulation beendet. Ausgabe der Ergebnisse.");
+		((FileHandler)((protocol.getHandlers())[0])).close();
 		
 		SimOutputDialog sod = new SimOutputDialog(null, true, this);
 		sod.setVisible(true);
@@ -465,7 +465,7 @@ public class Simulator {
 	}
 	
 	private void initProtocol(){
-		protocolName = ConfigurationManager.getConfiguration().getHomedir() + "/simproto.log";
+		protocolName = ConfigurationManager.getConfiguration().getHomedir() + "/simproto.xml";
 		
 		protocol.setLevel(Level.ALL);
 		protocol.setUseParentHandlers(false);

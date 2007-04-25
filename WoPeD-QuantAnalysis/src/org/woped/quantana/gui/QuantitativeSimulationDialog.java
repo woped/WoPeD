@@ -211,10 +211,10 @@ public class QuantitativeSimulationDialog extends JDialog {
 			txt_p2_11 = new JTextField("0");
 			txt_p2_11.setPreferredSize(new Dimension(100, 20));
 			txt_p2_11.setEnabled(false);
-			txt_p2_12 = new JTextField(Double.toString(2 / lambda * period)); // <------
+			txt_p2_12 = new JTextField(Double.toString(2 / lambda * period));
 			txt_p2_12.setPreferredSize(new Dimension(100, 20));
 			txt_p2_12.setEnabled(false);
-			txt_p2_21 = new JTextField(Double.toString(1 / lambda * period)); // <------
+			txt_p2_21 = new JTextField(Double.toString(1 / lambda * period));
 			txt_p2_21.setPreferredSize(new Dimension(100, 20));
 			txt_p2_21.setEnabled(true);
 			txt_p2_22 = new JTextField("0");
