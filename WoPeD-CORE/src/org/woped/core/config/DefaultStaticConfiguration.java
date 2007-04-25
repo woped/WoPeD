@@ -22,6 +22,8 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static Color           DEFAULT_INVERSE_COLOR    	 = Color.WHITE;
     public static Color           DEFAULT_PORT_COLOR         = Color.RED;
     public static Color           DEFAULT_UI_BACKGROUND_COLOR = Color.GRAY;
+    public static Color           DEFAULT_CELL_BACKGROUND_COLOR = new Color(225,225,225);
+    public static Color           DEFAULT_HEADER_BACKGROUND_COLOR = Color.LIGHT_GRAY;
     public static Color           DEFAULT_TIME_COLOR 		 = new Color(0, 128, 0);
     public static Color		  	  DEFAULT_SUBPROCESS_FRAME_COLOR = new Color(255, 151, 5);
     public static Font            DEFAULT_LABEL_FONT         = new Font("Verdana", Font.PLAIN, 10);
