@@ -41,6 +41,7 @@ import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
+import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.woflan.NetAnalysisDialog;
 import org.woped.woflan.WoflanAnalysis;
 
@@ -53,8 +54,10 @@ public class FileEventProcessor extends AbstractEventProcessor
   
     public void processViewEvent(AbstractViewEvent event)
     {
+   		String param[] = {"", "", ""};
+    	EditorVC editor = (EditorVC) getMediator().getUi().getEditorFocus();
+    	boolean bRunWofLanDLL = false;
         
-        boolean bRunWofLanDLL = false;
         switch (event.getOrder())
         {
         case AbstractViewEvent.OPEN:
@@ -148,78 +151,10 @@ public class FileEventProcessor extends AbstractEventProcessor
 
             break;
 
-        case AbstractViewEvent.QUANTANA:
-        	EditorVC editor = (EditorVC) getMediator().getUi().getEditorFocus();
-        	
-//        	boolean succeed = 
-        	TPNExport.save(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn", (PetriNetModelProcessor) getMediator().getUi().getEditorFocus()
-                    .getModelProcessor());
-        	File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn");
-        	
-//        	File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "temp.tpn");
-        	WoflanAnalysis wa  = new WoflanAnalysis(editor, f);
-        	StructuralAnalysis sa = new StructuralAnalysis(editor);
-        	
-        	int unbound = wa.getNumUnboundedPlaces();
-        	int nonlive = wa.getNumNonLiveTransitions();
-        	
-        	int sound = unbound + nonlive;
-        	int soPl = sa.getNumSourcePlaces();
-        	int soTr = sa.getNumSourceTransitions();
-        	int siPl = sa.getNumSinkPlaces();
-        	int siTr = sa.getNumSinkTransitions();
-        	boolean wfpn = (soPl >= 1 && soPl + soTr == 1) && (siPl >= 1 && siPl + siTr == 1);
-        	String param[] = {"", "", ""};
-        	
-        	if (sound == 0 && wfpn) {
-        		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
-        		boolean isBranchingOK = true;
-        		Iterator transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values().iterator();
-        		Iterator places = sa.getPlacesIterator();
-        		AbstractPetriNetModelElement end = (AbstractPetriNetModelElement)sa.getSinkPlacesIterator().next();
-
-        		while (transes.hasNext()){
-        			AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement)transes.next();
-        			Map outArcs = mec.getOutgoingArcs(trans.getId());
-        			int sum = 0;
-        			for (Object v : outArcs.values()){
-        				double p = ((ArcModel) v).getProbability();
-        				sum += (Double.valueOf(p * 100)).intValue();
-        			}
-
-        			int type = ((OperatorTransitionModel)trans).getOperatorType();
-        			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE || 
-        					type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || 
-        						type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) 
-        							& sum != 100) {
-        				isBranchingOK = false;
-        				param[0] = Messages.getString("QuantAna.Transition");
-        				param[1] = trans.getNameValue();
-        				param[2] = sum + "";
-        			}
-        		}
-        		
-        		while (places.hasNext()){
-        			AbstractPetriNetModelElement place = (AbstractPetriNetModelElement)places.next();
-        			if (!place.equals(end)) {
-        				Map outArcs = mec.getOutgoingArcs(place.getId());
-        				int sum = 0;
-        				for (Object v : outArcs.values()){
-        					double p = ((ArcModel) v).getProbability();
-        					sum += (Double.valueOf(p * 100)).intValue();
-        				}
-
-        				if (outArcs.size() > 1 && sum != 100) {
-        					isBranchingOK = false;
-            				param[0] = Messages.getString("QuantAna.Place");
-            				param[1] = place.getNameValue();
-            				param[2] = sum + "";
-        				}
-        			}
-        		}
-
-        		if (isBranchingOK) {
-        			new CapacityAnalysisDialog(null, editor);
+        case AbstractViewEvent.QUANTCAP:
+    		if (isSound(editor)) {
+        		if (branchingOk(editor, param)) {
+        			new CapacityAnalysisDialog(editor);
         		}
         		else
         			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.BranchingProbabilityViolation", param));
@@ -228,7 +163,20 @@ public class FileEventProcessor extends AbstractEventProcessor
         	}
         	
             break;
-        }
+            
+        case AbstractViewEvent.QUANTSIM:
+    		if (isSound(editor)) {
+    			if (branchingOk(editor, param)) {
+    				new QuantitativeSimulationDialog(editor);
+    			}
+    			else
+    				JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.BranchingProbabilityViolation", param));
+    		} else {
+    			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.SoundnessViolation"));
+    		}
+    		
+    		break;
+    	}
     }
 
     /**
@@ -236,7 +184,78 @@ public class FileEventProcessor extends AbstractEventProcessor
      * 
      * @param editor
      */
-    public void export(EditorVC editor)
+
+	private boolean isSound(EditorVC editor) {
+		TPNExport.save(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn", (PetriNetModelProcessor) getMediator().getUi().getEditorFocus()
+				.getModelProcessor());
+		File f = new File(ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn");
+
+		WoflanAnalysis wa  = new WoflanAnalysis(editor, f);
+		StructuralAnalysis sa = new StructuralAnalysis(editor);
+
+		int unbound = wa.getNumUnboundedPlaces();
+		int nonlive = wa.getNumNonLiveTransitions();
+
+		int sound = unbound + nonlive;
+		int soPl = sa.getNumSourcePlaces();
+		int soTr = sa.getNumSourceTransitions();
+		int siPl = sa.getNumSinkPlaces();
+		int siTr = sa.getNumSinkTransitions();
+		boolean wfpn = (soPl >= 1 && soPl + soTr == 1) && (siPl >= 1 && siPl + siTr == 1);
+		return (sound == 0) & wfpn;
+	}
+
+	private boolean branchingOk(EditorVC editor, String[] param) {
+		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
+		boolean isBranchingOk = true;
+		Iterator transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values().iterator();
+		StructuralAnalysis sa = new StructuralAnalysis(editor);
+		Iterator places = sa.getPlacesIterator();
+		AbstractPetriNetModelElement end = (AbstractPetriNetModelElement)sa.getSinkPlacesIterator().next();
+
+		while (transes.hasNext()){
+			AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement)transes.next();
+			Map outArcs = mec.getOutgoingArcs(trans.getId());
+			int sum = 0;
+			for (Object v : outArcs.values()){
+				double p = ((ArcModel) v).getProbability();
+				sum += (Double.valueOf(p * 100)).intValue();
+			}
+
+			int type = ((OperatorTransitionModel)trans).getOperatorType();
+			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE || 
+					type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || 
+						type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) 
+							& sum != 100) {
+				isBranchingOk = false;
+				param[0] = Messages.getString("QuantAna.Transition");
+				param[1] = trans.getNameValue();
+				param[2] = sum + "";
+			}
+		}
+	
+		while (places.hasNext()){
+			AbstractPetriNetModelElement place = (AbstractPetriNetModelElement)places.next();
+			if (!place.equals(end)) {
+				Map outArcs = mec.getOutgoingArcs(place.getId());
+				int sum = 0;
+				for (Object v : outArcs.values()){
+					double p = ((ArcModel) v).getProbability();
+					sum += (Double.valueOf(p * 100)).intValue();
+				}
+
+				if (outArcs.size() > 1 && sum != 100) {
+					isBranchingOk = false;
+					param[0] = Messages.getString("QuantAna.Place");
+					param[1] = place.getNameValue();
+					param[2] = sum + "";
+				}
+			}
+		}
+		return isBranchingOk;
+	}
+	
+	public void export(EditorVC editor)
     {
         // TODO: Cursor Handling
         // setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

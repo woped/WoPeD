@@ -103,7 +103,8 @@ public class ActionFactory
     public final static String         ACTIONID_ARRANGE                = "Menu.Window.Arrange";
     public final static String		   ACTIONID_SHOWSIDEBAR			   = "Menu.Window.ShowSideBar";
 
-    public final static String         ACTIONID_QUANT                  = "ToolBar.QuantAna";
+    public final static String         ACTIONID_QUANTCAP                = "ToolBar.QuantCap";
+    public final static String         ACTIONID_QUANTSIM                = "ToolBar.QuantSim";
     
     
     private static HashMap<String, WoPeDAction>             STATIC_ACTION_MAP               = null;
@@ -191,13 +192,12 @@ public class ActionFactory
                 .addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_XORJOINANDSPLIT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_XORJOIN_ANDSPLIT);
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_SUB, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_SUB, null, ACTIONID_DRAWMODE_SUB));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_SUB), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_SUBPROCESS);
+     
+        STATIC_ACTION_MAP.put(ACTIONID_QUANTCAP, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.QUANTCAP, null, ACTIONID_QUANTCAP));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_QUANTCAP), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);        
+        STATIC_ACTION_MAP.put(ACTIONID_QUANTSIM, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.QUANTSIM, null, ACTIONID_QUANTSIM));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_QUANTSIM), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);   
 
-        
-        STATIC_ACTION_MAP.put(ACTIONID_QUANT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.QUANTANA, null, ACTIONID_QUANT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_QUANT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
-        
-        
-        
         /* VIEW */
 //        STATIC_ACTION_MAP.put(ACTIONID_STRETCH, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.STRETCH, null, ACTIONID_STRETCH));
 //        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_STRETCH), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);

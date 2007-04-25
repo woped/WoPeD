@@ -254,7 +254,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ACTION_EVENT              = 903;
     public static final int VIEWEVENT_LAST            = 1000;
     
-    public static final int QUANTANA				  = 1080;
+    public static final int QUANTCAP				  = 1081;
+    public static final int QUANTSIM				  = 1082;
 
     public AbstractViewEvent(Object source, int type, int order, Object data)
     {

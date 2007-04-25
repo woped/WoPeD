@@ -91,16 +91,15 @@ public class ToolBarVC extends JToolBar implements IViewController
     private AbstractButton     m_xorSplitJoinButton = null;
     
     private AbstractButton     m_andJoinXorSplitButton = null;
-    private AbstractButton     m_xorJoinAndSplitButton = null;
-    
+    private AbstractButton     m_xorJoinAndSplitButton = null;    
 
     private AbstractButton     m_subProcessButton   = null;
 
     private AbstractButton     m_tokenGameButton    = null;
     private AbstractButton     m_woflanButton       = null;
     private AbstractButton	   m_analysisButton		= null;
-    private AbstractButton	   m_quantAnaButton		= null;
-
+    private AbstractButton	   m_quantCapButton		= null;
+    private AbstractButton	   m_quantSimButton		= null;
     public ToolBarVC(String id)
     {
         this.id = id;
@@ -155,7 +154,8 @@ public class ToolBarVC extends JToolBar implements IViewController
         add(getTokenGameButton());
         add(getWoflanButton());
         add(getAnalysisButton());
-        add(getQuantAnaButton());
+        add(getQuantCapButton());
+        add(getQuantSimButton());
     }
 
     private AbstractButton getNewButton()
@@ -412,13 +412,22 @@ public class ToolBarVC extends JToolBar implements IViewController
     	return m_analysisButton;
     }
     
-    public AbstractButton getQuantAnaButton()
+    public AbstractButton getQuantCapButton()
     {
-    	if (m_quantAnaButton == null)
+    	if (m_quantCapButton == null)
     	{
-    		m_quantAnaButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANT), false);
+    		m_quantCapButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANTCAP), false);
     	}
-    	return m_quantAnaButton;
+    	return m_quantCapButton;
+    }
+
+    public AbstractButton getQuantSimButton()
+    {
+    	if (m_quantSimButton == null)
+    	{
+    		m_quantSimButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANTSIM), false);
+    	}
+    	return m_quantSimButton;
     }
 
     public void addViewListener(IViewListener listener)

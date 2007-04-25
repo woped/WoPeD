@@ -106,7 +106,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_woflanMenuItem         = null;
     private JMenuItem		   m_wopedMenuItem			= null;
 
-    private JMenuItem		   m_quantAnaMenuItem		= null;
+    private JMenuItem		   m_capPlanningMenuItem	= null;
+    private JMenuItem		   m_quantSimMenuItem		= null;
 
     private JMenu              m_optionsMenu            = null;
     private JMenuItem          m_optionsMenuItem        = null;
@@ -198,8 +199,9 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_analyseMenu.setMnemonic(Messages.getMnemonic("Menu.Analyse"));
             m_analyseMenu.add(getStartTokenGameMenuItem());
             m_analyseMenu.add(getWoflanMenuItem());
-            m_analyseMenu.add(getQuantAnaMenuItem());
             m_analyseMenu.add(getWopedMenuItem());
+            m_analyseMenu.add(getCapPlanningMenuItem());
+            m_analyseMenu.add(getQuantSimMenuItem());
         }
         return m_analyseMenu;
     }
@@ -691,13 +693,22 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     	return m_wopedMenuItem;
     }
     
-    public JMenuItem getQuantAnaMenuItem()
+    public JMenuItem getQuantSimMenuItem()
     {
-        if (m_quantAnaMenuItem == null)
+        if (m_quantSimMenuItem == null)
         {
-        	m_quantAnaMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANT));
+        	m_quantSimMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANTSIM));
         }
-        return m_quantAnaMenuItem;
+        return m_quantSimMenuItem;
+    }
+
+    public JMenuItem getCapPlanningMenuItem()
+    {
+        if (m_capPlanningMenuItem == null)
+        {
+        	m_capPlanningMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANTCAP));
+        }
+        return m_capPlanningMenuItem;
     }
 
     /**
