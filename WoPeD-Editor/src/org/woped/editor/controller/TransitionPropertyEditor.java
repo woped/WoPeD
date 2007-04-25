@@ -331,7 +331,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             idTextField = new JTextField();
             idTextField.setText("" + transition.getId());
             idTextField.setEditable(false);
-            idTextField.setPreferredSize(new Dimension(40, 20));
+            idTextField.setPreferredSize(new Dimension(100, 20));
         }
 
         return idTextField;
@@ -840,7 +840,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             j1.add(getBranchingAndSplitJoinRadioButton(), BorderLayout.LINE_START);
             JPanel j2 = new JPanel();
             j2.setLayout(new BorderLayout());
-            j2.add(getBranchingAndSplitIcon(), BorderLayout.LINE_END);
+            j2.add(getBranchingAndSplitJoinIcon(), BorderLayout.LINE_END);
             branchingAndSplitJoinEntry.add(j1, BorderLayout.LINE_START);
             branchingAndSplitJoinEntry.add(j2, BorderLayout.CENTER);
             branchingAndSplitJoinEntry.add(new JLabel("  "), BorderLayout.LINE_END);
@@ -1051,7 +1051,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             serviceTimePanel.add(getserviceTimeTextfield(), c);
             c.gridx = 2;
             c.gridy = 0;
-            c.insets = new Insets(0, 0, 0, 10);
+            c.insets = new Insets(0, 0, 0, 5);
             serviceTimePanel.add(getserviceTimeComboBox(), c);
         }
 

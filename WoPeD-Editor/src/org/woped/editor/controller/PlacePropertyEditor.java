@@ -82,7 +82,7 @@ public class PlacePropertyEditor extends JDialog
         this.editor = editor;
         this.setVisible(false);
         initialize();
-        this.setSize(350, 190);
+        this.setSize(400, 190);
         this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
         this.setVisible(true);
     }
@@ -226,7 +226,7 @@ public class PlacePropertyEditor extends JDialog
             idTextField = new JTextField();
             idTextField.setText("" + place.getId());
             idTextField.setEditable(false);
-            idTextField.setPreferredSize(new Dimension(40, 20));
+            idTextField.setPreferredSize(new Dimension(100, 20));
         }
 
         return idTextField;

@@ -160,9 +160,9 @@ public class ArcPropertyEditor extends JDialog {
         if (valueTextField == null)
         {
             valueTextField = new JTextField(Integer.toString((Double.valueOf(arc.getProbability() * 100)).intValue()));
-            valueTextField.setPreferredSize(new Dimension(150, 20));
-            valueTextField.setMinimumSize(new Dimension(150, 20));
-            valueTextField.setMaximumSize(new Dimension(150, 20));
+            valueTextField.setPreferredSize(new Dimension(80, 20));
+            valueTextField.setMinimumSize(new Dimension(80, 20));
+            valueTextField.setMaximumSize(new Dimension(80, 20));
             valueTextField.addKeyListener(new KeyListener()
             {
                 public void keyPressed(KeyEvent e)
@@ -204,12 +204,12 @@ public class ArcPropertyEditor extends JDialog {
         if (idTextField == null)
         {
             idTextField = new JTextField();
+            idTextField.setPreferredSize(new Dimension(80, 20));
+            idTextField.setMinimumSize(new Dimension(80, 20));
+            idTextField.setMaximumSize(new Dimension(80, 20));
             idTextField.setText("" + arc.getId());
             idTextField.setEditable(false);
-            idTextField.setPreferredSize(new Dimension(20, 20));
-            idTextField.setMinimumSize(new Dimension(20, 20));
-            idTextField.setMaximumSize(new Dimension(20, 20));
-        }
+         }
 
         return idTextField;
     }
@@ -232,7 +232,7 @@ public class ArcPropertyEditor extends JDialog {
             c.gridx = 2;
             c.gridy = 0;
             c.gridwidth = 2;
-            c.insets = new Insets(0, 10, 0, 0);
+            c.insets = new Insets(0, 0, 0, 0);
             displayPanel.add(getCheckBox(), c);
         }
 
@@ -244,9 +244,6 @@ public class ArcPropertyEditor extends JDialog {
         if (displayToggle == null)
         {
             displayToggle = new JCheckBox(Messages.getString("Arc.Properties.Display.Check"), arc.isDisplayOn());
-            displayToggle.setPreferredSize(new Dimension(50, 20));
-            displayToggle.setMinimumSize(new Dimension(50, 20));
-            displayToggle.setMaximumSize(new Dimension(50, 20));
         }
 
         return displayToggle;
