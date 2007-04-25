@@ -32,14 +32,11 @@ public class SimOutputDialog extends JDialog{
 	
 	private JPanel jContentPane = null;
 	private JTree itemTree = null;
-//	private JPanel content = new JPanel();
 	private JPanel contentPanel = new JPanel();
 	private JScrollPane contentPane = new JScrollPane(contentPanel);
 	private JPanel curPanel = null;
-//	private JScrollPane curPanel = null;
 	private JSplitPane splitPane = null;
 	private HashMap<String, JPanel> panelList = new HashMap<String, JPanel>();
-//	private HashMap<String, JScrollPane> panelList = new HashMap<String, JScrollPane>();
 	
 	private Simulator simulator;
 	private String protocolText = "";
@@ -91,35 +88,6 @@ public class SimOutputDialog extends JDialog{
 		return splitPane;
 	}
 	
-	/*private JList getList(){
-		if (itemList == null){
-			Vector<String> items = new Vector<String>();
-			items.add("Protocol");
-			panelList.add(new ProtocolPanel());
-			items.add("Process");
-			panelList.add(new ProcessPanel());
-			for (Server s : simulator.getServerList().values()){
-				items.add(s.toString());
-				panelList.add(new ServerPanel(s.toString()));
-			}
-			
-			generatePanelContent();
-
-			itemList = new JList(items);
-			itemList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			
-			itemList.addListSelectionListener(new ListSelectionListener() {
-				public void valueChanged(ListSelectionEvent event){
-					//String select = (String)itemList.getSelectedValue();
-					int idx = itemList.getSelectedIndex();
-					updatePanelView(idx);
-				}
-			});
-		}
-		
-		return itemList;
-	}*/
-	
 	private JTree getTree(){
 		if (itemTree == null){
 			DefaultMutableTreeNode root = new DefaultMutableTreeNode("Items");
@@ -127,11 +95,9 @@ public class SimOutputDialog extends JDialog{
 			
 			DefaultMutableTreeNode proto = new DefaultMutableTreeNode("Protocol");
 			curRoot.add(proto);
-//			panelList.add(new ProtocolPanel());
 			panelList.put("Protocol", new ProtocolPanel(this));
 			DefaultMutableTreeNode proc = new DefaultMutableTreeNode("Process");
 			curRoot.add(proc);
-//			panelList.add(new ProcessPanel());
 			panelList.put("Process", new ProcessPanel(this));
 			curRoot = proc;
 			
@@ -139,7 +105,6 @@ public class SimOutputDialog extends JDialog{
 				String name = s.getName();
 				String id = s.getId();
 				curRoot.add(new DefaultMutableTreeNode(s.toString()));
-//				panelList.add(new ServerPanel(s.toString()));
 				panelList.put(s.getId(), new ServerPanel(this, id, name));
 			}
 			
