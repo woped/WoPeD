@@ -190,14 +190,17 @@ public class CapacityAnalysisDialog extends JDialog {
 	/**
 	 * This is the default constructor
 	 */
-	public CapacityAnalysisDialog(EditorVC editor) {
-		super(new JFrame(), true);
+	public CapacityAnalysisDialog(JFrame owner, EditorVC editor) {
+		super(owner, "QuantAna.CapacityPlanning", true);
 		this.editor = editor;
 		sa = new StructuralAnalysis(editor);
 		mec = editor.getModelProcessor().getElementContainer();
 		graph = new WorkflowNetGraph(sa, mec);
-//		numTrans = graph.getNumTransitions();
 		numTransGT0 = graph.getNumTransitionsGT0();
+		calculateNumOfRuns(graph);
+		initResourceAlloc();
+		numResCls = resAlloc.getNumOfResClasses();
+		tm = new TimeModel(1, 1.0);
 		initialize();
 		LoggerManager.info(Constants.QUANTANA_LOGGER, Messages
 				.getString("QuantAna.Started"));
@@ -210,10 +213,6 @@ public class CapacityAnalysisDialog extends JDialog {
 	 */
 	private void initialize() {
 		GridBagConstraints constraints = new GridBagConstraints();
-		calculateNumOfRuns(graph);
-		initResourceAlloc();
-		numResCls = resAlloc.getNumOfResClasses();
-		tm = new TimeModel(1, 1.0);
 		setLayout(new GridBagLayout());
 		constraints.insets = new Insets(5, 5, 5, 5);
 		constraints.fill = GridBagConstraints.BOTH;
@@ -223,42 +222,41 @@ public class CapacityAnalysisDialog extends JDialog {
 		constraints.gridy = 0;
 		constraints.gridwidth = 1;
 		constraints.gridheight = 1;
-		add(getParamPanel(), constraints);
+		getContentPane().add(getParamPanel(), constraints);
 
 		constraints.gridx = 0;
 		constraints.gridy = 1;
-		add(getTasksPanel(), constraints);
+		getContentPane().add(getTasksPanel(), constraints);
 
 		constraints.gridx = 0;
 		constraints.gridy = 2;
-		add(getResourcesPanel(), constraints);
+		getContentPane().add(getResourcesPanel(), constraints);
 
 		constraints.gridx = 0;
 		constraints.gridy = 3;
-		add(getStatisticPanel(), constraints);
+		getContentPane().add(getStatisticPanel(), constraints);
 
+		updContents();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = screenSize.width > 800 ? 800 : screenSize.width;
+		int width = screenSize.width > 900 ? 900 : screenSize.width;
 		int x = screenSize.width > width ? (screenSize.width - width) / 2 : 0;
 		int height = screenSize.height > 700 ? 700 : screenSize.height;
 		int y = screenSize.height > height ? (screenSize.height - height) / 2
 				: 0;
 		this.setBounds(x, y, width, height);
-		this.setTitle(Messages.getTitle("QuantAna.CapacityPlanning"));
-
-		this.updContents();
 		this.setVisible(true);
 	}
 
 	private JPanel getParamPanel() {
 		if (paramPanel == null) {
 			paramPanel = new JPanel();
-			paramPanel.setBorder(BorderFactory.createCompoundBorder(
+			JPanel jp = new JPanel();
+			jp.setBorder(BorderFactory.createCompoundBorder(
 					BorderFactory.createTitledBorder(Messages
 							.getString("QuantAna.CapacityPlanning.Heading0")),
 					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
-			paramPanel.setLayout(new GridBagLayout());
+			jp.setLayout(new GridBagLayout());
 			GridBagConstraints constraints = new GridBagConstraints();
 			constraints.insets = new Insets(5, 5, 5, 5);
 			constraints.weightx = 0;
@@ -269,12 +267,18 @@ public class CapacityAnalysisDialog extends JDialog {
 			constraints.gridy = 0;
 			constraints.anchor = GridBagConstraints.WEST;
 			constraints.fill = GridBagConstraints.HORIZONTAL;
-			paramPanel.add(getValuePanel(), constraints);
+			jp.add(getValuePanel(), constraints);
+			jp.setMinimumSize(new Dimension(750, 115));
+			paramPanel.setLayout(new GridBagLayout());
+			constraints.insets = new Insets(0, 30, 0, 0);
+			constraints.gridx = 0;
+			constraints.gridy = 0;
+			paramPanel.add(jp);
+			constraints.insets = new Insets(0, 0, 0, 30);
 			constraints.gridx = 1;
 			constraints.gridy = 0;
-			constraints.insets = new Insets(5, 195, 5, 5);
-			paramPanel.add(getButtonPanel(), constraints);
-			paramPanel.setMinimumSize(new Dimension(780, 115));
+			paramPanel.add(getButtonPanel());
+//			paramPanel.setMinimumSize(new Dimension(890, 120));
 		}
 		return paramPanel;
 	}
@@ -429,7 +433,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			constraints.gridx = 0;
 			constraints.gridy = 1;
 			tasksPanel.add(getTasksTablePane(), constraints);
-			tasksPanel.setMinimumSize(new Dimension(780, 240));
+			tasksPanel.setMinimumSize(new Dimension(880, 240));
 		}
 		return tasksPanel;
 	}
@@ -517,7 +521,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			tasksTablePane = new JScrollPane(getTasksTable());
 			tasksTablePane.setBorder(BorderFactory.createEmptyBorder());
 			tasksTablePane.setWheelScrollingEnabled(true);
-			tasksTablePane.setMinimumSize(new Dimension(750, 180));
+			tasksTablePane.setMinimumSize(new Dimension(870, 180));
 
 		}
 		return tasksTablePane;
@@ -548,7 +552,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			constraints.gridx = 0;
 			constraints.gridy = 1;
 			resourcesPanel.add(getResourcesTablePane(), constraints);
-			resourcesPanel.setMinimumSize(new Dimension(780, 240));
+			resourcesPanel.setMinimumSize(new Dimension(880, 240));
 		}
 		return resourcesPanel;
 	}
@@ -623,50 +627,12 @@ public class CapacityAnalysisDialog extends JDialog {
 		return resourceUtilPanel;
 	}
 
-	/*
-	 * private JPanel getResourceUtilPanel1() { if (resourceUtilPanel == null) {
-	 * resourceUtilPanel = new JPanel(); resourceUtilPanel.setLayout(new
-	 * FlowLayout(FlowLayout.RIGHT));
-	 * 
-	 * lblCapaLevel = new JLabel(Messages
-	 * .getString("QuantAna.CapacityPlanning.Utilization"));
-	 * lblCapaLevel.setAlignmentX(JLabel.RIGHT_ALIGNMENT); jslCapaLevel = new
-	 * JSlider(10, 100, 80); jslCapaLevel.setPaintTicks(true);
-	 * jslCapaLevel.setPaintLabels(true); jslCapaLevel.setMajorTickSpacing(10);
-	 * jslCapaLevel.setMinorTickSpacing(5); jslCapaLevel.setPreferredSize(new
-	 * Dimension(200, 40)); jslCapaLevel.addChangeListener(new ChangeListener() {
-	 * public void stateChanged(ChangeEvent e) { int val = ((JSlider)
-	 * e.getSource()).getValue(); lblLevelDisplay.setText(Integer.toString(val) + "
-	 * %"); } });
-	 * 
-	 * jslCapaLevel.addMouseListener(new MouseListener() { public void
-	 * mouseClicked(MouseEvent e) { }
-	 * 
-	 * public void mouseReleased(MouseEvent e) { updateResAlloc(); }
-	 * 
-	 * public void mouseExited(MouseEvent e) { }
-	 * 
-	 * public void mousePressed(MouseEvent e) { }
-	 * 
-	 * public void mouseEntered(MouseEvent e) { } });
-	 * 
-	 * capaLevel = jslCapaLevel.getValue() / 100.0; lblLevelDisplay = new
-	 * JLabel(Integer.toString(jslCapaLevel .getValue()) + " %", JLabel.CENTER);
-	 * lblLevelDisplay.setAlignmentX(JLabel.RIGHT_ALIGNMENT); lblLevelDisplay
-	 * .setFont(DefaultStaticConfiguration.DEFAULT_TABLE_FONT);
-	 * lblLevelDisplay.setBorder(BorderFactory.createEtchedBorder());
-	 * lblLevelDisplay.setPreferredSize(new Dimension(50, 30));
-	 * resourceUtilPanel.add(lblCapaLevel);
-	 * resourceUtilPanel.add(lblLevelDisplay);
-	 * resourceUtilPanel.add(jslCapaLevel); resourceUtilPanel.setMinimumSize(new
-	 * Dimension(450, 45)); } return resourceUtilPanel; }
-	 */
 	private JScrollPane getResourcesTablePane() {
 		if (resourcesTablePane == null) {
 			resourcesTablePane = new JScrollPane(getResourcesTable());
 			resourcesTablePane.setBorder(BorderFactory.createEmptyBorder());
 			resourcesTablePane.setWheelScrollingEnabled(true);
-			resourcesTablePane.setMinimumSize(new Dimension(750, 180));
+			resourcesTablePane.setMinimumSize(new Dimension(870, 180));
 		}
 		return resourcesTablePane;
 	}
