@@ -465,7 +465,7 @@ public class CapacityAnalysisDialog extends JDialog {
 						currPrec--;
 					txtPrecision.setText(String.format("%8." + currPrec + "f",
 							1.0));
-					showPrecision();
+					updPrecision();
 				}
 			});
 			precisionPanel.add(leftButton, constraints);
@@ -496,7 +496,7 @@ public class CapacityAnalysisDialog extends JDialog {
 						currPrec++;
 					txtPrecision.setText(String.format("%8." + currPrec + "f",
 							1.0));
-					showPrecision();
+					updPrecision();
 				}
 			});
 			precisionPanel.add(rightButton, constraints);
@@ -1017,9 +1017,8 @@ public class CapacityAnalysisDialog extends JDialog {
 			tasksMatrix[r][1] = runs[r];
 			tasksMatrix[r][2] = times[r];
 			tb[r][2] = String.format("%15." + currPrec + "f", runs[r]);
-			;
 			tmTasks.fireTableCellUpdated(r, 2);
-			tb[r][3] = String.format("%15." + currPrec + "f", runs[r]);
+			tb[r][3] = String.format("%15." + currPrec + "f", times[r]);
 			tmTasks.fireTableCellUpdated(r, 3);
 
 			double n = tasksMatrix[r][1];
@@ -1085,7 +1084,7 @@ public class CapacityAnalysisDialog extends JDialog {
 				+ "%");
 	}
 
-	private void showPrecision() {
+	private void updPrecision() {
 		int numCols1 = colNames.length;
 
 		for (int i = 0; i < numTrans; i++) {
