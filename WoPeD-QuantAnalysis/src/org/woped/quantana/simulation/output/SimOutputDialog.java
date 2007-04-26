@@ -28,35 +28,43 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-public class SimOutputDialog extends JDialog{
+public class SimOutputDialog extends JDialog {
 	
 	private static final long serialVersionUID = 2L;
-	
+
 	private JPanel jContentPane = null;
+
 	private JTree itemTree = null;
+
 	private JPanel contentPanel = new JPanel();
+
 	private JScrollPane contentPane = new JScrollPane(contentPanel);
+
 	private JPanel curPanel = null;
+
 	private JSplitPane splitPane = null;
+
 	private HashMap<String, JPanel> panelList = new HashMap<String, JPanel>();
-	
+
 	private Simulator simulator;
+
 	private String protocolText = "";
+
 	private DefaultHandler handler;
-	
+
 	public SimOutputDialog(Frame owner, boolean modal, Simulator sim) {
 		super(owner, modal);
 		simulator = sim;
-		
+
 		initialize();
-		
+
 		curPanel = panelList.get("Protocol");
 		contentPanel.add(curPanel);
 		curPanel.setVisible(true);
-		
+
 		validate();
 	}
-	
+
 	private void initialize() {
 		this.setSize(800, 600);
 		this.setResizable(false);
@@ -64,7 +72,7 @@ public class SimOutputDialog extends JDialog{
 		this.setContentPane(getJContentPane());
 		this.setTitle("Simulation Output");
 	}
-	
+
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
@@ -73,56 +81,61 @@ public class SimOutputDialog extends JDialog{
 		}
 		return jContentPane;
 	}
-	
-	private JSplitPane getSplitPane(){
-		if (splitPane == null){
+
+	private JSplitPane getSplitPane() {
+		if (splitPane == null) {
 			JScrollPane scrollPane = new JScrollPane(getTree());
 			scrollPane.setWheelScrollingEnabled(true);
-			splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, contentPane);
+			splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane,
+					contentPane);
 			splitPane.setOneTouchExpandable(true);
 			splitPane.setDividerSize(8);
 			splitPane.setDividerLocation(200);
 			splitPane.setResizeWeight(1);
 		}
-		
+
 		return splitPane;
 	}
-	
-	private JTree getTree(){
-		if (itemTree == null){
+
+	private JTree getTree() {
+		if (itemTree == null) {
 			DefaultMutableTreeNode root = new DefaultMutableTreeNode("Items");
 			DefaultMutableTreeNode curRoot = root;
-			
-			DefaultMutableTreeNode proto = new DefaultMutableTreeNode("Protocol");
+
+			DefaultMutableTreeNode proto = new DefaultMutableTreeNode(
+					"Protocol");
 			curRoot.add(proto);
 			panelList.put("Protocol", new ProtocolPanel(this));
 			DefaultMutableTreeNode proc = new DefaultMutableTreeNode("Process");
 			curRoot.add(proc);
 			panelList.put("Process", new ProcessPanel(this));
 			curRoot = proc;
-			
-			for (Server s : simulator.getServerList().values()){
+
+			for (Server s : simulator.getServerList().values()) {
 				String name = s.getName();
 				String id = s.getId();
 				curRoot.add(new DefaultMutableTreeNode(s.toString()));
 				panelList.put(s.getId(), new ServerPanel(this, id, name));
 			}
-			
+
 			generatePanelContent();
 
 			itemTree = new JTree(root);
 			itemTree.setRootVisible(false);
 			itemTree.putClientProperty("JTree.lineStyle", "Angled");
-			
+
 			itemTree.setCellRenderer(new TreeRenderer());
-			
-			itemTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-			itemTree.addTreeSelectionListener(new TreeSelectionListener(){
-				public void valueChanged(TreeSelectionEvent e){
+
+			itemTree.getSelectionModel().setSelectionMode(
+					TreeSelectionModel.SINGLE_TREE_SELECTION);
+			itemTree.addTreeSelectionListener(new TreeSelectionListener() {
+				public void valueChanged(TreeSelectionEvent e) {
 					TreePath path = itemTree.getSelectionPath();
-					if (path == null) return;
-					DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode)path.getLastPathComponent();
-					String s = (String)selectedNode.getUserObject();
+					if (path == null)
+						return;
+					DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) path
+							.getLastPathComponent();
+					String s = (String) selectedNode.getUserObject();
 					updatePanelView(s);
 				}
 			});
@@ -130,45 +143,41 @@ public class SimOutputDialog extends JDialog{
 
 		return itemTree;
 	}
-	
-	private void generatePanelContent(){
-		for (JPanel p : panelList.values()){
-			if (p instanceof ProtocolPanel){
-				
-			} else if (p instanceof ProcessPanel){
-				
+
+	private void generatePanelContent() {
+		for (JPanel p : panelList.values()) {
+			if (p instanceof ProtocolPanel) {
+
+			} else if (p instanceof ProcessPanel) {
+
 			} else {
-				ServerPanel q = (ServerPanel)p;
+				ServerPanel q = (ServerPanel) p;
 				Server s = simulator.getServerList().get(q.getId());
 				double t = simulator.getClock();
-				q.setValues(
-						s.getNumCalls(),
-						s.getBusy() / t,
-						s.getQueueLen() / t,
-						s.getMaxWaitTimeOfCase(),
-						s.getMaxQueueLength(),
-						s.getZeroDelays(),
-						s.getNumAccess(),
-						s.getNumDeparture(),
-						s.getMaxNumCasesInParallel(),
-						s.getNumCasesInParallel());
+				q.setValues(s.getNumCalls(), s.getBusy() / t, s.getQueueLen()
+						/ t, s.getMaxWaitTimeOfCase(), s.getMaxQueueLength(), s
+						.getZeroDelays(), s.getNumAccess(),
+						s.getNumDeparture(), s.getMaxNumCasesInParallel(), s
+								.getNumCasesInParallel());
 			}
 		}
 	}
-	
-	private void updatePanelView(String key){
+
+	private void updatePanelView(String key) {
 		String id = produceID(key);
-		
+
 		contentPanel.getComponent(0).setVisible(false);
 		contentPanel.remove(curPanel);
 		curPanel = panelList.get(id);
 		contentPanel.add(curPanel);
 		curPanel.setVisible(true);
 	}
-	
-	private String produceID(String key){
-		if (key.equals("Protocol") || key.equals("Process")) return key;
-		else return key.substring(key.indexOf("(") + 1, key.indexOf(")"));
+
+	private String produceID(String key) {
+		if (key.equals("Protocol") || key.equals("Process"))
+			return key;
+		else
+			return key.substring(key.indexOf("(") + 1, key.indexOf(")"));
 	}
 
 	public Simulator getSimulator() {
@@ -178,78 +187,86 @@ public class SimOutputDialog extends JDialog{
 	public void setSimulator(Simulator simulator) {
 		this.simulator = simulator;
 	}
-	
-	public String getProtocol(){
+
+	public String getProtocol() {
 		File f = new File(simulator.getProtocolName());
-		
+
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "File: " + f.toString());
-		
+
 		try {
 			XMLReader xr = XMLReaderFactory.createXMLReader();
-			
-			handler = new DefaultHandler(){
-				
+
+			handler = new DefaultHandler() {
+
 				private long min = new Date().getTime();
+
 				private long max = 0;
+
 				private int count = 0;
+
 				private int rec = 0;
-				
-				public void startDocument(){
+
+				public void startDocument() {
 					protocolText += "--- Protocol Start ---\n\n";
 				}
-				
-				public void startElement(String uri, String lname, String qname, Attributes attr){
+
+				public void startElement(String uri, String lname,
+						String qname, Attributes attr) {
 					try {
-						if (lname.equalsIgnoreCase("record")) rec++;
-						
-//						if (lname.equalsIgnoreCase("date")) count = 0;
-						
+						if (lname.equalsIgnoreCase("record"))
+							rec++;
+
+						// if (lname.equalsIgnoreCase("date")) count = 0;
+
 					} catch (Exception e) {
-						//e.printStackTrace();
+						// e.printStackTrace();
 					}
 				}
-				
-				public void characters(char[] ch, int start, int length){
+
+				public void characters(char[] ch, int start, int length) {
 					count++;
-					if (rec == 1 && count == 2){
+					if (rec == 1 && count == 2) {
 						String s = String.copyValueOf(ch, start, length);
 						long l = Long.parseLong(s);
 						min = l;
 						max = l;
 					}
-					
-					if (rec > 1 && count == 2){
+
+					if (rec > 1 && count == 2) {
 						String s = String.copyValueOf(ch, start, length);
 						long l = Long.parseLong(s);
-						if (l > max) max = l;
+						if (l > max)
+							max = l;
 					}
-					
-					if (count == 9){
+
+					if (count == 9) {
 						String s = String.copyValueOf(ch, start, length);
 						protocolText += s + "\n";
 					}
 				}
-				
-				public void endElement(String uri, String lname, String qname){
-					if (lname.equalsIgnoreCase("record")) count = 0;
+
+				public void endElement(String uri, String lname, String qname) {
+					if (lname.equalsIgnoreCase("record"))
+						count = 0;
 				}
 
-				public void endDocument(){
-					protocolText += "\n\nsimulation took " + (max - min) + " ms";
+				public void endDocument() {
+					protocolText += "\n\nsimulation took " + (max - min)
+							+ " ms";
 					protocolText += "\n\n--- Protocol End ---";
 				}
 			};
 
 			xr.setContentHandler(handler);
 			xr.setErrorHandler(handler);
-			
+
 			FileReader r = new FileReader(f);
 			xr.parse(new InputSource(r));
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return protocolText;
 	}
 }
