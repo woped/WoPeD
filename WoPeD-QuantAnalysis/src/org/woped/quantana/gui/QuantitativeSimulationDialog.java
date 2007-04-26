@@ -53,7 +53,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 	private int resObjNum = 0;
 
-	private double period = 8.0;
+	private double period = 480.0;
 
 	private double lambda = 50.0;
 
@@ -149,7 +149,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 		int y = screenSize.height > height ? (screenSize.height - height) / 2
 				: 0;
 		this.setBounds(x, y, width, height);
-		this.setTitle(Messages.getTitle("QuantAna.QuantitativeSimulation"));
+		this.setTitle(Messages.getTitle("QuantAna.QuantitativeSimulation.Title"));
 
 		// this.updTableContents();
 		this.setVisible(true);

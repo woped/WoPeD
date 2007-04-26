@@ -92,7 +92,9 @@ public class CapacityAnalysisDialog extends JDialog {
 
 	private int numResCls;
 
-	private int numTrans = 0;
+//	private int numTrans = 0;
+	
+	private int numTransGT0 = 0;
 
 	private int currPrec = 2;
 
@@ -105,8 +107,8 @@ public class CapacityAnalysisDialog extends JDialog {
 			Messages.getString("QuantAna.CapacityPlanning.Column.Taskname"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Servicetime"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Workitemspercase"),
-			Messages.getString("QuantAna.CapacityPlanning.Column.Workitemsperperiod"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Timepercase"),
+			Messages.getString("QuantAna.CapacityPlanning.Column.Workitemsperperiod"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Timeperperiod"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Grouprole")
 			};
@@ -121,8 +123,8 @@ public class CapacityAnalysisDialog extends JDialog {
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Taskname"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Servicetime"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Workitemspercase"),
-			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Workitemsperperiod"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Timepercase"),
+			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Workitemsperperiod"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Timeperperiod"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Grouprole")
 			};
@@ -194,7 +196,8 @@ public class CapacityAnalysisDialog extends JDialog {
 		sa = new StructuralAnalysis(editor);
 		mec = editor.getModelProcessor().getElementContainer();
 		graph = new WorkflowNetGraph(sa, mec);
-		numTrans = graph.getNumTransitions();
+//		numTrans = graph.getNumTransitions();
+		numTransGT0 = graph.getNumTransitionsGT0();
 		initialize();
 		LoggerManager.info(Constants.QUANTANA_LOGGER, Messages
 				.getString("QuantAna.Started"));
@@ -670,27 +673,27 @@ public class CapacityAnalysisDialog extends JDialog {
 
 	private JTable getTasksTable() {
 		if (tasksTable == null) {
-			tasksMatrix = new double[numTrans + 1][colNames.length - 2];
-			tableTasksMatrix = new Object[numTrans + 1][colNames.length];
-			String[] trans = graph.getTransitions();
+			tasksMatrix = new double[numTransGT0 + 1][colNames.length - 2];
+			tableTasksMatrix = new Object[numTransGT0 + 1][colNames.length];
+			String[] trans = graph.getTransitionsGT0();
 			String[] gr = getGroupRoles(trans);
-			double[] times = graph.getTimes();
-			double[] runs = graph.getRuns();
+			double[] times = graph.getTimesGT0();
+			double[] runs = graph.getRunsGT0();
 			int j = trans.length;
 
 			for (int i = 0; i < j; i++) {
-				tasksMatrix[i][2] = runs[i];
+				tasksMatrix[i][3] = runs[i];
 				tasksMatrix[i][0] = times[i];
 
 				tableTasksMatrix[i][0] = trans[i];
 				tableTasksMatrix[i][6] = gr[i];
-				tableTasksMatrix[i][3] = String.format("%15." + currPrec + "f",
+				tableTasksMatrix[i][4] = String.format("%15." + currPrec + "f",
 						runs[i]);
 				tableTasksMatrix[i][1] = String.format("%15." + currPrec + "f",
 						times[i]);
 			}
 
-			tasksMatrix[j][3] = 0.0;
+			tasksMatrix[j][2] = 0.0;
 			tasksMatrix[j][4] = 0.0;
 
 			tableTasksMatrix[j][0] = Messages
@@ -906,7 +909,7 @@ public class CapacityAnalysisDialog extends JDialog {
 				int column) {
 			super.getTableCellRendererComponent(table, value, isSelected,
 					hasFocus, row, column);
-			if (column == 0)
+			if (column == 0 || column == 6)
 				setHorizontalAlignment(LEFT);
 			else
 				setHorizontalAlignment(RIGHT);
@@ -914,7 +917,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			setBackground(DefaultStaticConfiguration.DEFAULT_CELL_BACKGROUND_COLOR);
 			
 			//if ((table.getColumnCount() == 7) && (column == 0 || column == 6)) setToolTipText(value.toString());
-			setToolTipText(value.toString());
+			//setToolTipText(value.toString());
 			
 			return this;
 		}
@@ -1021,18 +1024,18 @@ public class CapacityAnalysisDialog extends JDialog {
 
 		updParameters();
 		calculateNumOfRuns(graph);
-		double[] runs = graph.getRuns();
-		double[] times = graph.getTimes();
+		double[] runs = graph.getRunsGT0();
+		double[] times = graph.getTimesGT0();
 
-		for (int r = 0; r < numTrans; r++) {
-			tasksMatrix[r][2] = runs[r];
+		for (int r = 0; r < numTransGT0; r++) {
+			tasksMatrix[r][3] = runs[r];
 			tasksMatrix[r][0] = times[r];
-			tb[r][3] = String.format("%15." + currPrec + "f", runs[r]);
-			tmTasks.fireTableCellUpdated(r, 3);
+			tb[r][4] = String.format("%15." + currPrec + "f", runs[r]);
+			tmTasks.fireTableCellUpdated(r, 4);
 			tb[r][1] = String.format("%15." + currPrec + "f", times[r]);
 			tmTasks.fireTableCellUpdated(r, 1);
 
-			double n = tasksMatrix[r][2];
+			double n = tasksMatrix[r][3];
 			double n1 = n / lambda;
 			double t = tasksMatrix[r][0];
 
@@ -1040,25 +1043,25 @@ public class CapacityAnalysisDialog extends JDialog {
 			sumPeriod += n * t;
 
 			tasksMatrix[r][1] = n1;
-			tasksMatrix[r][3] = n1 * t;
+			tasksMatrix[r][2] = n1 * t;
 			tasksMatrix[r][4] = n * t;
 
 			tb[r][2] = String.format("%15." + currPrec + "f", n1);
 			tmTasks.fireTableCellUpdated(r, 2);
-			tb[r][4] = String.format("%15." + currPrec + "f", n1 * t);
-			tmTasks.fireTableCellUpdated(r, 4);
+			tb[r][3] = String.format("%15." + currPrec + "f", n1 * t);
+			tmTasks.fireTableCellUpdated(r, 3);
 			tb[r][5] = String.format("%15." + currPrec + "f", n * t);
 			tmTasks.fireTableCellUpdated(r, 5);
 		}
 
-		tasksMatrix[numTrans][0] = 0.0;
-		tasksMatrix[numTrans][3] = sumCase;
-		tasksMatrix[numTrans][4] = sumPeriod;
+		tasksMatrix[numTransGT0][0] = 0.0;
+		tasksMatrix[numTransGT0][2] = sumCase;
+		tasksMatrix[numTransGT0][4] = sumPeriod;
 
-		tb[numTrans][4] = String.format("%15." + currPrec + "f", sumCase);// Double.valueOf(sumCase);
-		tmTasks.fireTableCellUpdated(numTrans, 4);
-		tb[numTrans][5] = String.format("%15." + currPrec + "f", sumPeriod);// Double.valueOf(sumPeriod);
-		tmTasks.fireTableCellUpdated(numTrans, 5);
+		tb[numTransGT0][3] = String.format("%15." + currPrec + "f", sumCase);// Double.valueOf(sumCase);
+		tmTasks.fireTableCellUpdated(numTransGT0, 3);
+		tb[numTransGT0][5] = String.format("%15." + currPrec + "f", sumPeriod);// Double.valueOf(sumPeriod);
+		tmTasks.fireTableCellUpdated(numTransGT0, 5);
 
 		ResourceClassTaskAllocationTable rcta = resAlloc.getResClsTskAlloc();
 
@@ -1067,7 +1070,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			ArrayList<String> min = rcta.getTable().get(i).getTasks();
 			for (int j = 0; j < min.size(); j++) {
 				int idx = -1;
-				for (int k = 0; k < numTrans; k++) {
+				for (int k = 0; k < numTransGT0; k++) {
 					if (((String) tb[k][0]).equals(min.get(j)))
 						idx = k;
 				}
@@ -1098,7 +1101,7 @@ public class CapacityAnalysisDialog extends JDialog {
 	private void updPrecision() {
 		int numCols1 = colNames.length;
 
-		for (int i = 0; i < numTrans; i++) {
+		for (int i = 0; i < numTransGT0; i++) {
 			for (int j = 0; j < numCols1 - 2; j++) {
 				tmTasks.setValueAt(String.format("%15." + currPrec + "f",
 						tasksMatrix[i][j]), i, j + 1);
@@ -1106,9 +1109,9 @@ public class CapacityAnalysisDialog extends JDialog {
 		}
 
 		tmTasks.setValueAt(String.format("%15." + currPrec + "f",
-				tasksMatrix[numTrans][3]), numTrans, 4);
+				tasksMatrix[numTransGT0][2]), numTransGT0, 3);
 		tmTasks.setValueAt(String.format("%15." + currPrec + "f",
-				tasksMatrix[numTrans][4]), numTrans, 5);
+				tasksMatrix[numTransGT0][4]), numTransGT0, 5);
 
 		for (int i = 0; i < numResCls; i++) {
 			tmRes.setValueAt(String.format("%15." + currPrec + "f",
@@ -1128,7 +1131,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			ArrayList<String> min = rcta.getTable().get(i).getTasks();
 			for (int j = 0; j < min.size(); j++) {
 				int idx = -1;
-				for (int k = 0; k < numTrans; k++) {
+				for (int k = 0; k < numTransGT0; k++) {
 					if (((String) tb[k][0]).equals(min.get(j)))
 						idx = k;
 				}

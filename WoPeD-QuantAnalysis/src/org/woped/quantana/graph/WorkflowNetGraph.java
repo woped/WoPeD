@@ -368,10 +368,26 @@ public class WorkflowNetGraph {
 		return ((type == Node.TYPE_TRANS) || (type == Node.TYPE_SUBP));
 	}
 	
+	public boolean isTransitionGT0(String id){
+		Node n = nodeArray[getNodeIdx(id)];
+		int type = n.getType();
+		return (((type == Node.TYPE_TRANS) || (type == Node.TYPE_SUBP)) && n.getTime() > 0);
+	}
+	
 	public int getNumTransitions(){
 		int num = 0;
 		for (int i = 0; i < nodeArray.length; i++){
 			if (isTransition(nodeArray[i].getId()))
+				num++;
+		}
+		
+		return num;
+	}
+	
+	public int getNumTransitionsGT0(){
+		int num = 0;
+		for (int i = 0; i < nodeArray.length; i++){
+			if (isTransitionGT0(nodeArray[i].getId()))
 				num++;
 		}
 		
@@ -383,6 +399,19 @@ public class WorkflowNetGraph {
 		int idx = 0;
 		for (int i = 0; i < nodeArray.length; i++){
 			if (isTransition(nodeArray[i].getId())){
+				trans[idx] = nodeArray[i].getName() + " (" + nodeArray[i].getId() + ")";
+				idx++;
+			}
+		}
+		
+		return trans;
+	}
+	
+	public String[] getTransitionsGT0(){
+		String[] trans = new String[getNumTransitionsGT0()];
+		int idx = 0;
+		for (int i = 0; i < nodeArray.length; i++){
+			if (isTransitionGT0(nodeArray[i].getId())){
 				trans[idx] = nodeArray[i].getName() + " (" + nodeArray[i].getId() + ")";
 				idx++;
 			}
@@ -404,6 +433,19 @@ public class WorkflowNetGraph {
 		return times;
 	}
 	
+	public double[] getTimesGT0(){
+		double[] times = new double[getNumTransitionsGT0()];
+		int idx = 0;
+		for (int i = 0; i < nodeArray.length; i++){
+			if (isTransitionGT0(nodeArray[i].getId())){
+				times[idx] = nodeArray[i].getTime();
+				idx++;
+			}
+		}
+		
+		return times;
+	}
+	
 	public double[] getRuns(){
 		double[] runs = new double[getNumTransitions()];
 		int idx = 0;
@@ -417,7 +459,20 @@ public class WorkflowNetGraph {
 		return runs;
 	}
 	
-	public String[] getGroupRoles(){
+	public double[] getRunsGT0(){
+		double[] runs = new double[getNumTransitionsGT0()];
+		int idx = 0;
+		for (int i = 0; i < nodeArray.length; i++){
+			if (isTransitionGT0(nodeArray[i].getId())){
+				runs[idx] = nodeArray[i].getNumOfRuns();
+				idx++;
+			}
+		}
+		
+		return runs;
+	}
+	
+	/*public String[] getGroupRoles(){
 		String[] gr = new String[getNumTransitions()];
 		int idx = 0;
 		for (int i = 0; i < nodeArray.length; i++){
@@ -429,6 +484,19 @@ public class WorkflowNetGraph {
 		
 		return gr;
 	}
+	
+	public String[] getGroupRolesGT0(){
+		String[] gr = new String[getNumTransitionsGT0()];
+		int idx = 0;
+		for (int i = 0; i < nodeArray.length; i++){
+			if (isTransitionGT0(nodeArray[i].getId())){
+				gr[idx] = nodeArray[i].getGroupRole();
+				idx++;
+			}
+		}
+		
+		return gr;
+	}*/
 	
 	public Node[] getNodeArray(){
 		return nodeArray.clone();

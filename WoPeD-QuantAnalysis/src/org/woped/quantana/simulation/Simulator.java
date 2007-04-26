@@ -94,10 +94,10 @@ public class Simulator {
 	public void start() {
 		
 		initProtocol();
-		protocol.info("Simulation wird gestartet!");
+		protocol.info(clckS() + "Simulation wird gestartet!");
 		
 		generateServerList();
-		protocol.info("Server-Liste wurde erzeugt.");
+		protocol.info(clckS() + "Server-Liste wurde erzeugt.");
 		
 		for (int i = 0; i < numRuns; i++){
 			init();
@@ -160,18 +160,14 @@ public class Simulator {
 	}
 	
 	private void generateReport(){
-		protocol.info("Simulation beendet. Ausgabe der Ergebnisse.");
+		protocol.info(clckS() + "Simulation beendet.");
 		((FileHandler)((protocol.getHandlers())[0])).close();
 		
 		SimOutputDialog sod = new SimOutputDialog(null, true, this);
 		sod.setVisible(true);
 	}
 	
-	/*public void protocolUpdate(ProtocolItem pi){
-		protocol.add(pi);
-	}*/
-	
-	private void generateServerList(){ // <--------  private Methode !!!
+	private void generateServerList(){
 		Node[] nodes = process.getNodeArray();
 		for (int i = 0; i < nodes.length; i++){
 			String id = nodes[i].getId();
@@ -488,7 +484,8 @@ public class Simulator {
 		return protocolName;
 	}
 
-	/*public String getProtocolPath() {
-		return protocolPath;
-	}*/
+	public String clckS() {
+		String c = String.format("%,.2f", clock);
+		return "(" + c + "): ";
+	}
 }

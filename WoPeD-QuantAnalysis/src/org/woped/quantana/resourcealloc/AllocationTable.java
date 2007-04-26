@@ -29,7 +29,7 @@ public class AllocationTable {
 			if (r.size() > 0) role = r.get(0);
 			else role = "none";
 			
-			sa[i] = group + " / " + role;
+			sa[i] = group + "/" + role;
 		}
 		
 		return sa;
