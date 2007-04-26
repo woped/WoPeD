@@ -217,4 +217,8 @@ public class Node {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	public String getGroupRole(){
+		return getGroup() + " / " + getRole();
+	}
 }

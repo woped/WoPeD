@@ -1,6 +1,7 @@
 package org.woped.quantana.resourcealloc;
 
 //import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AllocationTable {
@@ -15,11 +16,22 @@ public class AllocationTable {
 		this.table = table;
 	}
 
-	/*public ArrayList<AllocationTableItem> getTable() {
-		return table;
+	public String[] getGroupRoles(String[] tasks){
+		String[] sa = new String[tasks.length];
+		String group = "";
+		String role = "";
+		for (int i = 0; i < tasks.length; i++){
+			ArrayList<String> g = table.get(tasks[i]).getGroups();
+			ArrayList<String> r = table.get(tasks[i]).getRoles();
+			
+			if (g.size() > 0) group = g.get(0);
+			else group = "none";
+			if (r.size() > 0) role = r.get(0);
+			else role = "none";
+			
+			sa[i] = group + " / " + role;
+		}
+		
+		return sa;
 	}
-
-	public void setTable(ArrayList<AllocationTableItem> table) {
-		this.table = table;
-	}*/
 }

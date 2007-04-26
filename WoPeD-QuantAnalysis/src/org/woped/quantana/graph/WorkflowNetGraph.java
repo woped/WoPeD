@@ -410,7 +410,6 @@ public class WorkflowNetGraph {
 		for (int i = 0; i < nodeArray.length; i++){
 			if (isTransition(nodeArray[i].getId())){
 				runs[idx] = nodeArray[i].getNumOfRuns();
-				//runs[idx] = nodeArray[i].getTempSum();
 				idx++;
 			}
 		}
@@ -418,21 +417,20 @@ public class WorkflowNetGraph {
 		return runs;
 	}
 	
-	public Node[] getNodeArray(){
-		/*Node[] nodes = new Node[nodeArray.length];
-		for (int i = 0; i < nodes.length; i++){
-			nodes[i] = new Node(nodeArray[i].id, nodeArray[i].name);
-		}
-		
-		for (int i = 0; i < nodes.length; i++){
-			Iterator iter = nodeArray[i].successor.iterator();
-			while (iter.hasNext()){
-				int idx = getNodeIdx(((Node)iter.next()).id);
-				nodes[i].successor.add(new Arc(nodes[idx]));
+	public String[] getGroupRoles(){
+		String[] gr = new String[getNumTransitions()];
+		int idx = 0;
+		for (int i = 0; i < nodeArray.length; i++){
+			if (isTransition(nodeArray[i].getId())){
+				gr[idx] = nodeArray[i].getGroupRole();
+				idx++;
 			}
 		}
 		
-		return nodes;*/
+		return gr;
+	}
+	
+	public Node[] getNodeArray(){
 		return nodeArray.clone();
 	}
 	
