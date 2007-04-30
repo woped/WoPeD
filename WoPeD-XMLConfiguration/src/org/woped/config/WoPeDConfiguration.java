@@ -39,6 +39,8 @@ public class WoPeDConfiguration implements IConfiguration
 
     public static String                 DEFAULT_HOME       = "." + File.separator + "nets" + File.separator;
 
+    public static String                 DEFAULT_LOG       = "." + File.separator + "log" + File.separator;
+
     public static String                 CONFIG_BACKUP_FILE = "/org/woped/config/WoPeDconfig.xml";
 
     public Locale                        locale             = null;
@@ -496,6 +498,11 @@ public class WoPeDConfiguration implements IConfiguration
         return !(getDocument().getConfiguration().getGeneral().getHomedir() == null || getDocument().getConfiguration().getGeneral().getHomedir() == "");
     }
 
+    public String getLogdir()
+    {
+        return DEFAULT_LOG;
+    }
+
     /**
      * Sets the homedir.
      * 
@@ -505,6 +512,17 @@ public class WoPeDConfiguration implements IConfiguration
     public void setHomedir(String homedir)
     {
         getDocument().getConfiguration().getGeneral().setHomedir(homedir);
+    }
+
+    /**
+     * Sets the homedir.
+     * 
+     * @param homedir
+     *            The homedir to set
+     */
+    public void setLogdir(String logdir)
+    {
+    	// Not yet contained in XML configuration
     }
 
     /**

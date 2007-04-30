@@ -86,8 +86,14 @@ public interface IConfiguration
     public String getHomedir();
 
     //
+    public String getLogdir();
+
+    //
     public boolean isHomedirSet();
 
+    //
+    public void setLogdir(String logdir);
+    
     //
     public void setHomedir(String homedir);
 

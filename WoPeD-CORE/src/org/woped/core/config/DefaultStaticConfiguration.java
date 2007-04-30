@@ -40,6 +40,7 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static String          DEFAULT_VARIANT            = "";
     // File
     private String                homedir                    = "";
+    private String                logdir                     = "/log";
     private String                workingDir                 = "";
     // Editor
     private boolean               insertCopy                 = false;
@@ -100,6 +101,11 @@ public class DefaultStaticConfiguration implements IConfiguration
     public String getHomedir()
     {
         return homedir;
+    }
+
+    public String getLogdir()
+    {
+        return logdir;
     }
 
     public String getLookAndFeel()
@@ -235,6 +241,11 @@ public class DefaultStaticConfiguration implements IConfiguration
     public void setHomedir(String homedir)
     {
         this.homedir = homedir;
+    }
+
+    public void setLogdir(String logdir)
+    {
+        this.logdir = logdir;
     }
 
     public void setImportToolspecific(boolean importToolspecific)
