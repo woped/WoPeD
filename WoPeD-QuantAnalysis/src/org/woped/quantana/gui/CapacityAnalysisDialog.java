@@ -785,7 +785,7 @@ public class CapacityAnalysisDialog extends JDialog {
 		unfoldedNet.put(start, n);
 
 		LinkedList<NodePair> queue = new LinkedList<NodePair>();
-		queue.add(new NodePair(s, n));
+		queue.addLast(new NodePair(s, n));
 		runThroughNet(queue);
 	}
 
@@ -793,6 +793,7 @@ public class CapacityAnalysisDialog extends JDialog {
 	private void runThroughNet(LinkedList<NodePair> q) {
 		if (!(q.isEmpty())) {
 			NodePair np = q.removeFirst();
+			
 			for (Arc a : np.getFirst().getSuccessor()) {
 				Node m = a.getTarget();
 				if (!m.isJoinReached()) {
@@ -807,13 +808,14 @@ public class CapacityAnalysisDialog extends JDialog {
 								new Arc(y, a.getProbability()));
 						Key k = new Key(m.getId(), val);
 						unfoldedNet.put(k, y);
-
+						
 						if (!(containsElement(q, m)))
-							q.add(new NodePair(m, y));
-						runThroughNet(q);
+							q.addLast(new NodePair(m, y));
 					}
 				}
 			}
+			
+			runThroughNet(q);
 		}
 	}
 
