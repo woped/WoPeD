@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import org.woped.quantana.gui.QuantitativeSimulationDialog;
+
 @SuppressWarnings("unused")
 public class ServerPanel extends JPanel {
 	
@@ -17,42 +19,17 @@ public class ServerPanel extends JPanel {
 	
 	private String name = "";
 	private String id = "";
-	private SimOutputDialog sod;
-	
-	/*private JScrollPane scrollPane;
-	private JSplitPane splitPane;
-	private JPanel statsPanel;
-	private JPanel graphPanel;
-	private JLabel lblNumCalls = new JLabel("NumCalls");
-	private JTextField txtNumCalls = new JTextField("0");
-	private JLabel lblBusy = new JLabel("Busy");
-	private JTextField txtBusy = new JTextField("0");
-	private JLabel lblQueueLength = new JLabel("QueueLength");
-	private JTextField txtQueueLength = new JTextField("0");
-	private JLabel lblMaxWaitTimeOfCase = new JLabel("MaxWaitTimeOfCase");
-	private JTextField txtMaxWaitTimeOfCase = new JTextField("0");
-	private JLabel lblMaxQueueLength = new JLabel("MaxQueueLength");
-	private JTextField txtMaxQueueLength = new JTextField("0");
-	private JLabel lblZeroDelays = new JLabel("ZeroDelays");
-	private JTextField txtZeroDelays = new JTextField("0");
-	private JLabel lblNumAccess = new JLabel("NumAccess");
-	private JTextField txtNumAccess = new JTextField("0");
-	private JLabel lblNumDeparture = new JLabel("NumDeparture");
-	private JTextField txtNumDeparture = new JTextField("0");
-	private JLabel lblMaxNumCasesInParallel = new JLabel("MaxNumCasesInParallel");
-	private JTextField txtMaxNumCasesInParallel = new JTextField("0");
-	private JLabel lblNumCasesInParallel = new JLabel("NumCasesInParallel");
-	private JTextField txtNumCasesInParallel = new JTextField("0");*/
+	private QuantitativeSimulationDialog sod;
 	
 	JLabel lblHeading = new JLabel("Server Statistics:");
 	JTextArea txtCounters = new JTextArea(10, 30);
 	
-	public ServerPanel(SimOutputDialog sod, String id, String name){
+	public ServerPanel(QuantitativeSimulationDialog sod, String id, String name){
 		this.id = id;
 		this.name = name;
 		this.sod = sod;
 		
-		this.setPreferredSize(new Dimension(500,500));
+		this.setPreferredSize(new Dimension(500,400));
 		init();
 	}
 

@@ -1,5 +1,6 @@
 package org.woped.quantana.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,7 +8,11 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -21,8 +26,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JTextField;
+import javax.swing.JTree;
 import javax.swing.SwingConstants;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeSelectionModel;
 
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -37,7 +50,17 @@ import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
 import org.woped.quantana.simulation.ProbabilityDistribution;
+import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.Simulator;
+import org.woped.quantana.simulation.output.ProcessPanel;
+import org.woped.quantana.simulation.output.ProtocolPanel;
+import org.woped.quantana.simulation.output.ServerPanel;
+import org.woped.quantana.simulation.output.TreeRenderer;
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.DefaultHandler;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 public class QuantitativeSimulationDialog extends JDialog {
 
@@ -63,7 +86,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 	private int resObjNum = 0;
 
-	private double period = 8.0;
+	private double period = 480.0;
 
 	private double lambda = 50.0;
 
@@ -101,6 +124,29 @@ public class QuantitativeSimulationDialog extends JDialog {
 	private JCheckBox stop2;
 
 	private TimeModel tm = null;
+	
+//	private JLabel lblResult;
+	
+	// ResultPanel
+	private Simulator sim;
+	
+	private JTree itemTree = null;
+
+	private JPanel contentPanel = new JPanel();
+
+	private JScrollPane contentPane = new JScrollPane(contentPanel);
+
+	private JPanel curPanel = null;
+
+	private JSplitPane splitPane = null;
+	
+	private JScrollPane scrollPane = null;
+
+	private HashMap<String, JPanel> panelList = new HashMap<String, JPanel>();
+
+	private String protocolText = "";
+
+	private DefaultHandler handler;
 
 	/**
 	 * This is the default constructor
@@ -157,8 +203,11 @@ public class QuantitativeSimulationDialog extends JDialog {
 							BorderFactory.createEtchedBorder(),
 							Messages
 									.getString("QuantAna.Simulation.SimResults")));
-			GridBagConstraints constraints = new GridBagConstraints();
+			/*GridBagConstraints constraints = new GridBagConstraints();
 			simResultPanel.setLayout(new GridBagLayout());
+			
+			lblResult = new JLabel("Results go here");
+			
 			constraints.insets = new Insets(5, 0, 5, 0);
 			constraints.fill = GridBagConstraints.BOTH;
 			constraints.weightx = 0;
@@ -167,9 +216,13 @@ public class QuantitativeSimulationDialog extends JDialog {
 			constraints.gridheight = 1;
 			constraints.gridx = 0;
 			constraints.gridy = 0;
-			simResultPanel.add(new JLabel("Results go here"), constraints);
+			simResultPanel.add(lblResult, constraints);*/
+			
+			simResultPanel.setLayout(new BorderLayout());
 		}
 		simResultPanel.setMinimumSize(new Dimension(790, 400));
+		simResultPanel.setPreferredSize(new Dimension(790, 400));
+		
 		return simResultPanel;
 	}
 
@@ -243,13 +296,13 @@ public class QuantitativeSimulationDialog extends JDialog {
 			txt_p2_12.setMinimumSize(new Dimension(100, 20));
 			txt_p2_12.setMaximumSize(new Dimension(100, 20));
 			txt_p2_12.setEnabled(false);
-			txt_p2_21 = new JTextField(Double.toString(1 / lambda * period));
+			txt_p2_21 = new JTextField(Double.toString(lambda));//(1 / lambda * period));
 			txt_p2_21.setPreferredSize(new Dimension(100, 20));
 			txt_p2_21.setMinimumSize(new Dimension(100, 20));
 			txt_p2_21.setMaximumSize(new Dimension(100, 20));
 			txt_p2_21.setEnabled(true);
-			txt_p2_22 = new JTextField("0");
-			txt_p2_22.setEnabled(false);
+			txt_p2_22 = new JTextField("480.0");
+			txt_p2_22.setEnabled(true);
 			txt_p2_22.setPreferredSize(new Dimension(100, 20));
 			txt_p2_22.setMinimumSize(new Dimension(100, 20));
 			txt_p2_22.setMaximumSize(new Dimension(100, 20));
@@ -283,11 +336,11 @@ public class QuantitativeSimulationDialog extends JDialog {
 			lbl_p2_21.setMaximumSize(new Dimension(120, 20));
 			lbl_p2_21.setHorizontalAlignment(SwingConstants.RIGHT);
 			JLabel lbl_p2_22 = new JLabel(Messages
-					.getString("QuantAna.Simulation.Position"));
+					.getString("QuantAna.Simulation.Period"));
 			lbl_p2_22.setPreferredSize(new Dimension(120, 20));
 			lbl_p2_22.setMinimumSize(new Dimension(120, 20));
 			lbl_p2_22.setMaximumSize(new Dimension(120, 20));
-			lbl_p2_22.setEnabled(false);
+			lbl_p2_22.setEnabled(true);
 			lbl_p2_22.setHorizontalAlignment(SwingConstants.RIGHT);
 			JLabel lbl_p2_31 = new JLabel(Messages
 					.getString("QuantAna.Simulation.Mean"));
@@ -326,12 +379,16 @@ public class QuantitativeSimulationDialog extends JDialog {
 			constraints.gridx = 2;
 			constraints.gridy = 1;
 			jp.add(txt_p2_21, constraints);
-/*			constraints.gridx = 3;
+			
+			
+			constraints.gridx = 3;
 			constraints.gridy = 1;
 			jp.add(lbl_p2_22, constraints);
 			constraints.gridx = 4;
 			constraints.gridy = 1;
-			jp.add(txt_p2_22, constraints);*/
+			jp.add(txt_p2_22, constraints);
+			
+			
 			constraints.gridx = 0;
 			constraints.gridy = 2;
 			jp.add(opt_p2_3, constraints);
@@ -353,6 +410,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 					txt_p2_11.setEnabled(true);
 					txt_p2_12.setEnabled(true);
 					txt_p2_21.setEnabled(false);
+					txt_p2_22.setEnabled(false);
 					txt_p2_31.setEnabled(false);
 					txt_p2_32.setEnabled(false);
 				}
@@ -363,6 +421,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 					txt_p2_11.setEnabled(false);
 					txt_p2_12.setEnabled(false);
 					txt_p2_21.setEnabled(true);
+					txt_p2_22.setEnabled(true);
 					txt_p2_31.setEnabled(false);
 					txt_p2_32.setEnabled(false);
 				}
@@ -373,10 +432,12 @@ public class QuantitativeSimulationDialog extends JDialog {
 					txt_p2_11.setEnabled(false);
 					txt_p2_12.setEnabled(false);
 					txt_p2_21.setEnabled(false);
+					txt_p2_22.setEnabled(false);
 					txt_p2_31.setEnabled(true);
 					txt_p2_32.setEnabled(true);
 				}
 			});
+			
 			jp.setMinimumSize(new Dimension(750, 115));
 			arrivalRateDistributionPanel.add(jp);
 			arrivalRateDistributionPanel.add(getButtonPanel());
@@ -613,6 +674,10 @@ public class QuantitativeSimulationDialog extends JDialog {
 	private void startSimulation() {
 		SimParameters sp = new SimParameters();
 
+//		sp.setLambda(lambda);
+//		sp.setTimeOfPeriod(period);
+		lambda = Double.parseDouble(txt_p2_21.getText());
+		period = Double.parseDouble(txt_p2_22.getText());
 		sp.setLambda(lambda);
 		sp.setTimeOfPeriod(period);
 
@@ -629,8 +694,10 @@ public class QuantitativeSimulationDialog extends JDialog {
 			sp.setCPara2(Double.parseDouble(txt_p2_32.getText()));
 		} else {
 			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_EXP);
-			sp.setCPara1(Double.parseDouble(txt_p2_21.getText()));
-			sp.setCPara2(Double.parseDouble(txt_p2_22.getText()));
+//			sp.setCPara1(Double.parseDouble(txt_p2_21.getText()));
+//			sp.setCPara2(Double.parseDouble(txt_p2_22.getText()));
+			sp.setCPara1(1/lambda*period);
+			sp.setCPara2(0);
 		}
 
 		String op2 = groupST.getSelection().getActionCommand();
@@ -666,8 +733,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 			sp.setResUse(Simulator.RES_NOT_USED);
 		}
 
-		Simulator sim = new Simulator(graph, new ResourceUtilization(resAlloc),
-				sp);
+		sim = new Simulator(this, graph, new ResourceUtilization(resAlloc), sp);
 		sim.start();
 	}
 
@@ -709,6 +775,200 @@ public class QuantitativeSimulationDialog extends JDialog {
 		}
 
 		return lst;
+	}
+	
+	public void updSimResultPanel(){
+		JPanel panel = simResultPanel;
+		panel.add(getSplitPane(), BorderLayout.CENTER);
+		panel.validate();
+		getContentPane().validate();
+//		lblResult.setText("Done.");
+	}
+	
+	private JSplitPane getSplitPane() {
+		if (splitPane == null) {
+			scrollPane = new JScrollPane(getTree());
+			scrollPane.setWheelScrollingEnabled(true);
+			splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane,
+					contentPane);
+			splitPane.setOneTouchExpandable(true);
+			splitPane.setDividerSize(8);
+			splitPane.setDividerLocation(200);
+			splitPane.setResizeWeight(1);
+		}
+
+		return splitPane;
+	}
+
+	private JTree getTree() {
+		if (itemTree == null) {
+			DefaultMutableTreeNode root = new DefaultMutableTreeNode("Items");
+			DefaultMutableTreeNode curRoot = root;
+
+			DefaultMutableTreeNode proto = new DefaultMutableTreeNode(
+					"Protocol");
+			curRoot.add(proto);
+			panelList.put("Protocol", new ProtocolPanel(this));
+			DefaultMutableTreeNode proc = new DefaultMutableTreeNode("Process");
+			curRoot.add(proc);
+			panelList.put("Process", new ProcessPanel(this));
+			curRoot = proc;
+
+			for (Server s : sim.getServerList().values()) {
+				String name = s.getName();
+				String id = s.getId();
+				curRoot.add(new DefaultMutableTreeNode(s.toString()));
+				panelList.put(s.getId(), new ServerPanel(this, id, name));
+			}
+
+			generatePanelContent();
+
+			itemTree = new JTree(root);
+			itemTree.setRootVisible(false);
+			itemTree.putClientProperty("JTree.lineStyle", "Angled");
+
+			itemTree.setCellRenderer(new TreeRenderer());
+
+			itemTree.getSelectionModel().setSelectionMode(
+					TreeSelectionModel.SINGLE_TREE_SELECTION);
+			itemTree.addTreeSelectionListener(new TreeSelectionListener() {
+				public void valueChanged(TreeSelectionEvent e) {
+					TreePath path = itemTree.getSelectionPath();
+					if (path == null)
+						return;
+					DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) path
+							.getLastPathComponent();
+					String s = (String) selectedNode.getUserObject();
+					updatePanelView(s);
+				}
+			});
+		}
+
+		return itemTree;
+	}
+
+	private void generatePanelContent() {
+		curPanel = panelList.get("Protocol");
+		contentPanel.add(curPanel);
+		curPanel.setVisible(true);
+		
+		for (JPanel p : panelList.values()) {
+			if (p instanceof ProtocolPanel) {
+
+			} else if (p instanceof ProcessPanel) {
+
+			} else {
+				ServerPanel q = (ServerPanel) p;
+				Server s = sim.getServerList().get(q.getId());
+				double t = sim.getClock();
+				q.setValues(s.getNumCalls(), s.getBusy() / t, s.getQueueLen()
+						/ t, s.getMaxWaitTimeOfCase(), s.getMaxQueueLength(), s
+						.getZeroDelays(), s.getNumAccess(),
+						s.getNumDeparture(), s.getMaxNumCasesInParallel(), s
+								.getNumCasesInParallel());
+			}
+		}
+	}
+
+	private void updatePanelView(String key) {
+		String id = produceID(key);
+
+		contentPanel.getComponent(0).setVisible(false);
+		contentPanel.remove(curPanel);
+		curPanel = panelList.get(id);
+		contentPanel.add(curPanel);
+		curPanel.setVisible(true);
+	}
+
+	private String produceID(String key) {
+		if (key.equals("Protocol") || key.equals("Process"))
+			return key;
+		else
+			return key.substring(key.indexOf("(") + 1, key.indexOf(")"));
+	}
+	
+	public String getProtocol() {
+		File f = (new File(sim.getProtocolName())).getAbsoluteFile();
+
+		try {
+			XMLReader xr = XMLReaderFactory.createXMLReader();
+
+			handler = new DefaultHandler() {
+
+				private long min = new Date().getTime();
+
+				private long max = 0;
+
+				private int count = 0;
+
+				private int rec = 0;
+
+				public void startDocument() {
+					protocolText += "--- Protocol Start ---\n\n";
+				}
+
+				public void startElement(String uri, String lname,
+						String qname, Attributes attr) {
+					try {
+						if (lname.equalsIgnoreCase("record"))
+							rec++;
+
+						// if (lname.equalsIgnoreCase("date")) count = 0;
+
+					} catch (Exception e) {
+						// e.printStackTrace();
+					}
+				}
+
+				public void characters(char[] ch, int start, int length) {
+					count++;
+					if (rec == 1 && count == 2) {
+						String s = String.copyValueOf(ch, start, length);
+						long l = Long.parseLong(s);
+						min = l;
+						max = l;
+					}
+
+					if (rec > 1 && count == 2) {
+						String s = String.copyValueOf(ch, start, length);
+						long l = Long.parseLong(s);
+						if (l > max)
+							max = l;
+					}
+
+					if (count == 9) {
+						String s = String.copyValueOf(ch, start, length);
+						protocolText += s + "\n";
+					}
+				}
+
+				public void endElement(String uri, String lname, String qname) {
+					if (lname.equalsIgnoreCase("record"))
+						count = 0;
+				}
+
+				public void endDocument() {
+					protocolText += "\n\nsimulation took " + (max - min)
+							+ " ms";
+					protocolText += "\n\n--- Protocol End ---";
+				}
+			};
+
+			xr.setContentHandler(handler);
+			xr.setErrorHandler(handler);
+
+			FileReader r = new FileReader(f);
+			xr.parse(new InputSource(r));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return protocolText;
+	}
+	
+	public Simulator getSimulator() {
+		return sim;
 	}
 
 } // @jve:decl-index=0:visual-constraint="4,4"

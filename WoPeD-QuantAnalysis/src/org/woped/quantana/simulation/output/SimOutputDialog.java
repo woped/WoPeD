@@ -18,8 +18,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.woped.core.utilities.LoggerManager;
-import org.woped.quantana.gui.Constants;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.Simulator;
 import org.xml.sax.Attributes;
@@ -77,12 +75,12 @@ public class SimOutputDialog extends JDialog {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
 			jContentPane.setLayout(new BorderLayout());
-			jContentPane.add(getSplitPane(), BorderLayout.CENTER);
+//			jContentPane.add(getSplitPane(), BorderLayout.CENTER);
 		}
 		return jContentPane;
 	}
 
-	private JSplitPane getSplitPane() {
+	/*private JSplitPane getSplitPane() {
 		if (splitPane == null) {
 			JScrollPane scrollPane = new JScrollPane(getTree());
 			scrollPane.setWheelScrollingEnabled(true);
@@ -189,9 +187,7 @@ public class SimOutputDialog extends JDialog {
 	}
 
 	public String getProtocol() {
-		File f = new File(simulator.getProtocolName());
-
-		LoggerManager.info(Constants.QUANTANA_LOGGER, "File: " + f.toString());
+		File f = (new File(simulator.getProtocolName())).getAbsoluteFile();
 
 		try {
 			XMLReader xr = XMLReaderFactory.createXMLReader();
@@ -268,5 +264,5 @@ public class SimOutputDialog extends JDialog {
 		}
 
 		return protocolText;
-	}
+	}*/
 }

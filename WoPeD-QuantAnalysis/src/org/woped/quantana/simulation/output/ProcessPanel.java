@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
 import org.woped.quantana.simulation.Simulator;
@@ -34,11 +35,11 @@ public class ProcessPanel extends JPanel {
 	private JLabel lblAvgCases = new JLabel("Avg. # Cases in System: ");
 	private JTextField txtAvgCases = new JTextField();
 	
-	private SimOutputDialog sod;
+	private QuantitativeSimulationDialog sod;
 	private ResourceUtilization util;
 	
-	public ProcessPanel(SimOutputDialog sod){
-		this.setPreferredSize(new Dimension(500,500));
+	public ProcessPanel(QuantitativeSimulationDialog sod){
+		this.setPreferredSize(new Dimension(500,400));
 		this.sod = sod;
 		this.util = sod.getSimulator().getResUtil();
 		
@@ -49,7 +50,7 @@ public class ProcessPanel extends JPanel {
 		JLabel lblDummy = new JLabel();
 		JLabel lblRight = new JLabel();
 		
-		txtResources.setPreferredSize(new Dimension(250, 200));
+		txtResources.setPreferredSize(new Dimension(200, 140));
 		txtResources.setBorder(BorderFactory.createEmptyBorder());
 		txtResources.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
 		txtResources.setEditable(false);

@@ -13,11 +13,11 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
+import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.quantana.gui.SimParameters;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
-import org.woped.quantana.simulation.output.SimOutputDialog;
 
 public class Simulator {
 	
@@ -35,8 +35,10 @@ public class Simulator {
 	public static final Logger protocol = Logger.getLogger("org.woped.quantana.simulation");
 	
 	private FileHandler handler;
+	private String protocolPath;
 	private String protocolName;
 	
+	private QuantitativeSimulationDialog dlgSim;
 	private WorkflowNetGraph process;
 	private ResourceAllocation resAlloc;
 	private ResourceUtilization resUtil;
@@ -68,10 +70,10 @@ public class Simulator {
 	private SimEvent nextEvent = null;
 	private HashMap<String, Server> serverList = new HashMap<String, Server>();
 	private PriorityQueue<SimEvent> eventList = new PriorityQueue<SimEvent>();
-//	private static ArrayList<ProtocolItem> protocol = new ArrayList<ProtocolItem>();
 	private HashMap<Integer, Case> caseList	 = new HashMap<Integer, Case>();
 	
-	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
+	public Simulator(QuantitativeSimulationDialog qsd, WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
+		dlgSim = qsd;
 		process = wfpn;
 		resUtil = ru;
 		resAlloc = ru.getResAlloc();
@@ -163,8 +165,9 @@ public class Simulator {
 		protocol.info(clckS() + "Simulation beendet.");
 		((FileHandler)((protocol.getHandlers())[0])).close();
 		
-		SimOutputDialog sod = new SimOutputDialog(null, true, this);
-		sod.setVisible(true);
+//		SimOutputDialog sod = new SimOutputDialog(null, true, this);
+//		sod.setVisible(true);
+		dlgSim.updSimResultPanel();
 	}
 	
 	private void generateServerList(){
@@ -461,7 +464,8 @@ public class Simulator {
 	}
 	
 	private void initProtocol(){
-		protocolName = ConfigurationManager.getConfiguration().getHomedir() + "/simproto.xml";
+		protocolPath = ConfigurationManager.getConfiguration().getLogdir();
+		protocolName = protocolPath + "/simproto.xml";
 		
 		protocol.setLevel(Level.ALL);
 		protocol.setUseParentHandlers(false);
@@ -469,6 +473,7 @@ public class Simulator {
 		try {
 			handler = new FileHandler(protocolName);
 			handler.setLevel(Level.ALL);
+			handler.setFormatter(new SimXMLFormatter(protocolPath));
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
