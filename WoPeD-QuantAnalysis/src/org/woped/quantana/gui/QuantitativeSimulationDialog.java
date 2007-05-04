@@ -27,6 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.SwingConstants;
@@ -44,6 +45,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.utilities.Messages;
+import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.model.TimeModel;
@@ -53,7 +55,6 @@ import org.woped.quantana.simulation.ProbabilityDistribution;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.SimParameters;
 import org.woped.quantana.simulation.Simulator;
-import org.woped.quantana.Constants;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -136,7 +137,8 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 	private HashMap<String, JPanel> panelList = new HashMap<String, JPanel>();
 
-	private String protocolText = "";
+//	private String protocolText = "";
+	private JTextArea txtProtocol = new JTextArea(Integer.MAX_VALUE, 100);
 
 	private DefaultHandler handler;
 
@@ -858,7 +860,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 			return key.substring(key.indexOf("(") + 1, key.indexOf(")"));
 	}
 	
-	public String getProtocol() {
+	public void getProtocol() {
 		File f = (new File(sim.getProtocolName())).getAbsoluteFile();
 
 		try {
@@ -870,21 +872,28 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 				private long max = 0;
 
-				private int count = 0;
-
-				private int rec = 0;
+//				private int count = 0;
+//				private int rec = 0;
+				
+				private boolean millis = false;
+				private boolean msg = false;
 
 				public void startDocument() {
-					protocolText += "--- Protocol Start ---\n\n";
+//					protocolText += "--- Protocol Start ---\n\n";
+					txtProtocol.append("--- Protocol Start ---\n\n");
 				}
 
 				public void startElement(String uri, String lname,
 						String qname, Attributes attr) {
 					try {
-						if (lname.equalsIgnoreCase("record"))
-							rec++;
-
-						// if (lname.equalsIgnoreCase("date")) count = 0;
+//						if (lname.equalsIgnoreCase("record"))
+//							rec++;
+//
+//						// if (lname.equalsIgnoreCase("date")) count = 0;
+						
+						if (lname.equalsIgnoreCase("millis")) millis = true;
+						
+						if (lname.equalsIgnoreCase("message")) msg = true;
 
 					} catch (Exception e) {
 						// e.printStackTrace();
@@ -892,7 +901,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 				}
 
 				public void characters(char[] ch, int start, int length) {
-					count++;
+					/*count++;
 					if (rec == 1 && count == 2) {
 						String s = String.copyValueOf(ch, start, length);
 						long l = Long.parseLong(s);
@@ -909,19 +918,36 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 					if (count == 9) {
 						String s = String.copyValueOf(ch, start, length);
-						protocolText += s + "\n";
+//						protocolText += s + "\n";
+						txtProtocol.append(s + "\n");
+					}*/
+					
+					String s = String.copyValueOf(ch, start, length);
+					
+					if (msg) txtProtocol.append(s + "\n");
+					
+					if (millis)	{
+						long l = Long.parseLong(s);
+						if (l > 0 && l < min) min = l;
+						if (l > max) max = l;
 					}
 				}
 
 				public void endElement(String uri, String lname, String qname) {
-					if (lname.equalsIgnoreCase("record"))
-						count = 0;
+//					if (lname.equalsIgnoreCase("record"))
+//						count = 0;
+					
+					if (lname.equalsIgnoreCase("millis")) millis = false;
+					
+					if (lname.equalsIgnoreCase("message")) msg = false;
 				}
 
 				public void endDocument() {
-					protocolText += "\n\nsimulation took " + (max - min)
-							+ " ms";
-					protocolText += "\n\n--- Protocol End ---";
+//					protocolText += "\n\nsimulation took " + (max - min) + " ms";
+//					protocolText += "\n\n--- Protocol End ---";
+					
+					txtProtocol.append("\n\nsimulation took " + (max - min) + " ms");
+					txtProtocol.append("\n\n--- Protocol End ---");
 				}
 			};
 
@@ -935,10 +961,15 @@ public class QuantitativeSimulationDialog extends JDialog {
 			e.printStackTrace();
 		}
 
-		return protocolText;
+//		return protocolText;
 	}
 	
 	public Simulator getSimulator() {
 		return sim;
 	}
+
+	public JTextArea getTxtProtocol() {
+		return txtProtocol;
+	}
+	
 } // @jve:decl-index=0:visual-constraint="4,4"

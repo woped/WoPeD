@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import org.woped.quantana.gui.QuantitativeSimulationDialog;
 
 @SuppressWarnings("unused")
 public class ProtocolPanel extends JPanel {
@@ -19,12 +20,13 @@ public class ProtocolPanel extends JPanel {
 	private QuantitativeSimulationDialog sod;
 	
 	private JLabel lblHeading = new JLabel("Protocol: ");
-	private JTextArea txtProtocol = new JTextArea();
+	private JTextArea txtProtocol;// = new JTextArea();
 	private JScrollPane scrollPane;
 	
 	public ProtocolPanel(QuantitativeSimulationDialog sod){
 		this.setPreferredSize(new Dimension(500,350));
 		this.sod = sod;
+		txtProtocol = sod.getTxtProtocol();
 		
 		init();
 	}
@@ -32,7 +34,8 @@ public class ProtocolPanel extends JPanel {
 	private void init(){
 //		txtProtocol.setPreferredSize(new Dimension(460, 400));
 		txtProtocol.setEditable(false);
-		txtProtocol.setText(sod.getProtocol());
+		txtProtocol.setText("");
+		sod.getProtocol();
 		
 		scrollPane = new JScrollPane(txtProtocol);
 		scrollPane.setPreferredSize(new Dimension(460, 300));

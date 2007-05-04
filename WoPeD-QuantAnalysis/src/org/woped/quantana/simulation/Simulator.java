@@ -1,5 +1,6 @@
 package org.woped.quantana.simulation;
 
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,6 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
@@ -17,6 +20,7 @@ import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
+
 
 public class Simulator {
 	
@@ -96,33 +100,48 @@ public class Simulator {
 		
 		initProtocol();
 		protocol.info(clckS() + "Simulation wird gestartet!");
+		protocol.info(clckS() + "Verwendung Ressourcenmodell: " + printResModUsed());
+		protocol.info(clckS() + "Warteschlangendisziplin: " + printQueueDiscipline());
 		
 		generateServerList();
 		protocol.info(clckS() + "Server-Liste wurde erzeugt.");
 		
+		protocol.info(clckS() + "Anzahl der Simulationsläufe: " + numRuns);
 		for (int i = 0; i < numRuns; i++){
-			init();
+			protocol.info(clckS() + "**************************************************");
+			protocol.info(clckS() + "Lauf # " + (i + 1) + ": ");
 			
+			protocol.info(clckS() + "Initialisierung des Simulators: ");
+			init(i + 1);
+			
+			protocol.info(clckS() + "Start: ");
 			while (!shouldStopNow()){
+				protocol.info(clckS() + "Anzahl abgearbeiteter Cases ist " + finishedCases);
+				
 				timing();
 				
-				if (nextEvent != null)
+				if (nextEvent != null){
+//					LoggerManager.info(Constants.QUANTANA_LOGGER, printEventList() + "::" + nextEvent.getName());
+					protocol.info(clckS() + nextEvent.getEventTypeName());
 					nextEvent.invoke();
+				}
 				else
 					break;
 			}
 			
-			// sämtliche Resourcen befreien und BusyTime berechnen !!!
-			
+			LoggerManager.info(Constants.QUANTANA_LOGGER, "Report wird erzeugt.");
+			protocol.info(clckS() + "Simulationsbericht wird generiert.");
 			generateReport();
 		}
 	}
 	
-	private void init(){
+	private void init(int run){
 
+		protocol.info(clckS() + "Simulationsuhr wird auf 00:00 gesetzt.");
 		clock = 0.0;
 		
 		// sämtliche Counter zurücksetzen
+		protocol.info(clckS() + "Statistikzähler werden zurückgesetzt.");
 		avgCasesInSystem = 0.0;
 		caseCount = 0;
 		finishedCases = 0;
@@ -137,33 +156,42 @@ public class Simulator {
 		nextEvent = null;
 		
 		// alle Server zurücksetzen
+		protocol.info(clckS() + "Server werden zurückgesetzt.");
 		for (Server s : serverList.values()){
 			s.reset();
 		}
 		
 		// alle Ressourcen befreien
+		protocol.info(clckS() + "Ressourcen werden befreit.");
 		for (Resource r : resUtil.getUsedResources().values()){
 			resUtil.freeResource(r);
 		}
 		
+		protocol.info(clckS() + "Ereignisliste wird initialisiert.");
 		initEventList();
+		
+		LoggerManager.info(Constants.QUANTANA_LOGGER, "Simulation run # " + run + " initialized.");
 	}
 	
 	private void timing(){
 		// nextEvent bestimmen
+		protocol.info(clckS() + "Nächstes Ereignis wird bestimmt:");
 		if (!(eventList.isEmpty()))
 			nextEvent = eventList.remove();
 		else
 			nextEvent = null;
 		
+		protocol.info(clckS() + "Inhalt der Ereignisliste: " + printEventList());
+		
 		// Systemuhr setzen
+		protocol.info(clckS() + "Simulationsuhr wird auf Ereigniszeitpunkt gesetzt.");
 		if (nextEvent != null) clock = nextEvent.getTime();
 	}
 	
 	private void generateReport(){
 		protocol.info(clckS() + "Simulation beendet.");
 		((FileHandler)((protocol.getHandlers())[0])).close();
-		
+		LoggerManager.info(Constants.QUANTANA_LOGGER, "Protokoll wurde erstellt.");
 //		SimOutputDialog sod = new SimOutputDialog(null, true, this);
 //		sod.setVisible(true);
 		dlgSim.validate();
@@ -198,6 +226,8 @@ public class Simulator {
 				}
 			}
 		}
+		
+		LoggerManager.info(Constants.QUANTANA_LOGGER, "List of servers for quantitative simulation generated.");
 	}
 	
 	private void initEventList(){
@@ -207,6 +237,7 @@ public class Simulator {
 		
 		BirthEvent be = new BirthEvent(this, clock);
 		eventList.add(be);
+		protocol.info(clckS() + "BIRTH_EVENT \"" + be.getName() + "\" wurde erzeugt.");
 	}
 
 	public HashMap<String, Server> getServerList() {
@@ -301,14 +332,6 @@ public class Simulator {
 		this.clock = clock;
 	}
 	
-	/*private void generateNextCase(){
-		Case c = caseGenerator.generateNextCase();
-		caseNo++;
-		caseList.put(Integer.valueOf(c.getId()), c);
-		ArrivalEvent ae = new ArrivalEvent(this, getStartServer(), c.getCurrentArrivalTime(), c);
-		eventList.add(ae);
-	}*/
-
 	public int getMaxNumCasesInSystem() {
 		return maxNumCasesInSystem;
 	}
@@ -316,14 +339,6 @@ public class Simulator {
 	public void setMaxNumCasesInSystem(int maxNumCasesInSystem) {
 		this.maxNumCasesInSystem = maxNumCasesInSystem;
 	}
-
-	/*public int getNumCasesInSystem() {
-		return numCasesInSystem;
-	}
-
-	public void setNumCasesInSystem(int numCasesInSystem) {
-		this.numCasesInSystem = numCasesInSystem;
-	}*/
 
 	public int getQueueDiscipline() {
 		return queueDiscipline;
@@ -436,6 +451,9 @@ public class Simulator {
 	public void updateCaseNumStats(double now, double lastEvent){
 		int cc = caseList.size();
 		avgCasesInSystem += cc * (now - lastEvent);
+		
+		protocol.info(clckS() + "Aktuelle Zahl von Cases im Prozess ist " + cc);
+		protocol.info(clckS() + "Durchschnittliche Anzahl Cases im Prozess ist " + (avgCasesInSystem / clock));
 	}
 
 	public double getTimeOfLastCaseNumChange() {
@@ -482,14 +500,54 @@ public class Simulator {
 		}
 		
 		protocol.addHandler(handler);
+		
+		LoggerManager.info(Constants.QUANTANA_LOGGER, "Protocol for quantitative simulation initialized.");
+	}
+	
+	private String printResModUsed(){
+		switch(useResAlloc){
+		case RES_USED:
+			return "ja";
+		default:
+			return "nein";
+		}
+	}
+	
+	private String printQueueDiscipline(){
+		switch(queueDiscipline){
+		case QD_LIFO:
+			return "Last in - First out (LIFO)";
+		default:
+			return "First in - First out (FIFO)";
+		}
 	}
 
 	public String getProtocolName() {
 		return protocolName;
 	}
+	
+	public Logger getProtocol(){
+		return protocol;
+	}
 
 	public String clckS() {
 		String c = String.format("%,.2f", clock);
 		return "(" + c + "): ";
+	}
+	
+	public String printEventList(){
+		String s = "[";
+		Object[] list = eventList.toArray();
+		int l = list.length;
+		
+		if (l > 1){
+			for (int i = 0; i < l - 1; i++){
+				s += ((SimEvent)list[i]).getName() + ",";
+			}
+		}
+		
+		if (l > 0) s += ((SimEvent)list[l - 1]).getName();
+		
+		return s + "]";
 	}
 }

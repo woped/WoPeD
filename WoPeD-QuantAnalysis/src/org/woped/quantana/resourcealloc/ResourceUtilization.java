@@ -134,4 +134,36 @@ public class ResourceUtilization {
 	public void setResAlloc(ResourceAllocation resAlloc) {
 		this.resAlloc = resAlloc;
 	}
+	
+	public String printFreeResources(){
+		String s = "[";
+		int l = freeResources.size();
+		Object[] fr = freeResources.values().toArray();
+		
+		if (l > 1){
+			for (int i = 0; i < l - 1; i++){
+				s += ((Resource)fr[i]).getName() + ",";
+			}
+		}
+		
+		if (l > 0) s += ((Resource)fr[l - 1]).getName();
+		
+		return s + "]";
+	}
+	
+	public String printUsedResources(){
+		String s = "[";
+		int l = usedResources.size();
+		Object[] fr = usedResources.values().toArray();
+		
+		if (l > 1){
+			for (int i = 0; i < l - 1; i++){
+				s += ((Resource)fr[i]).getName() + ",";
+			}
+		}
+		
+		if (l > 0) s += ((Resource)fr[l - 1]).getName();
+		
+		return s + "]";
+	}
 }

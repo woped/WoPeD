@@ -23,8 +23,10 @@ public class CaseGenerator {
 	public Case generateNextCase(){
 		Case next = new Case(++caseCount);
 
-		lastArrivalTime += distribution.getNextRandomValue();
+		double time = distribution.getNextRandomValue();
+		lastArrivalTime += time;
 		next.setSysArrivalTime(lastArrivalTime);
+		sim.getProtocol().info(sim.clckS() + "Zwischenankunftszeit: " + time);
 		
 		return next;
 	}

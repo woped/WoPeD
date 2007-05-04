@@ -3,6 +3,7 @@ package org.woped.quantana.simulation;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
@@ -10,6 +11,8 @@ import org.woped.quantana.resourcealloc.ResourceUtilization;
 public class Server {
 	public static final int STATUS_IDLE	= 1;
 	public static final int STATUS_BUSY = 2;
+	
+	private Logger protocol;
 	
 	private String id;
 	private String name;
@@ -41,6 +44,7 @@ public class Server {
 		this.sim = sim;
 		this.choice = new Random();
 		this.distribution = dist;
+		protocol = sim.getProtocol();
 	}
 
 	public double getBusy() {
@@ -66,14 +70,6 @@ public class Server {
 	public void setNumCalls(int numCalls) {
 		this.numCalls = numCalls;
 	}
-
-	/*public Case getCurCase() {
-		return curCase;
-	}
-
-	public void setCurCase(Case curCase) {
-		this.curCase = curCase;
-	}*/
 
 	public int getStatus() {
 		return status;
@@ -140,17 +136,10 @@ public class Server {
 	}
 
 	public double getNextServTime(){
-		return distribution.getNextRandomValue();
+		double time = distribution.getNextRandomValue();
+		sim.getProtocol().info(sim.clckS() + "(Server \"" + name + "(" + id + ")\")Bedienzeit: " + time);
+		return time;
 	}
-	
-	/*public void deliverNewCase(Case c){
-		if (status == Server.STATUS_IDLE){
-			setCurCase(c);
-			setStatus(Server.STATUS_BUSY);
-		} else {
-			getQueue().add(c);
-		}
-	}*/
 	
 	public String toString(){
 		return name + "(" + id + ")";
@@ -289,22 +278,33 @@ public class Server {
 	
 	public void enqueue(Case c){
 		queue.add(c);
+		protocol.info(sim.clckS() + "Case # " + c.getId() + " zur Warteschlange von \"" + name + "(" + id + ")\" hinzugefügt.");
+		protocol.info(sim.clckS() + "Warteschlange von Server \"" + name + "(" + id + ")\" : " + printQueue());
 		
 		int l = queue.size();
 		if (l > maxQueueLength) maxQueueLength += 1;
+		protocol.info(sim.clckS() + "Maximale Länge der Warteschlange bisher ist " + maxQueueLength);
 	}
 	
 	public Case dequeue(){
 		int qDisc = sim.getQueueDiscipline();
+		Case c;
 		
-		if (qDisc == Simulator.QD_FIFO) return queue.removeFirst();
-		else return queue.removeLast();
+		if (qDisc == Simulator.QD_FIFO) c = queue.removeFirst();
+		else c = queue.removeLast();
+		
+		protocol.info(sim.clckS() + "Case # " + c.getId() + " wurde aus Warteschlange von Server \"" + name + "(" + id + ")\" entfernt.");
+		protocol.info(sim.clckS() + "Warteschlange von Server \"" + name + "(" + id + ")\" : " + printQueue());
+		
+		return c;
 	}
 	
 	public void updateUtilStats(double now, double lastEvent){
 		queueLen += queue.size() * (now - lastEvent);
+		protocol.info(sim.clckS() + "Durchschnittliche Warteschlangenlänge von Server \"" + name + "(" + id + ")\" bisher ist: " + (queueLen / sim.getClock()));
 		
 		if (status == STATUS_BUSY) busy += now - lastEvent;
+		protocol.info(sim.clckS() + "Durchschnittliche Bedienzeit von Server \"" + name + "(" + id + ")\" bisher ist: " + (busy / sim.getClock()));
 	}
 	
 	public void reset(){
@@ -322,6 +322,21 @@ public class Server {
 		queueLen = 0.0;
 		
 		queue.clear();
+	}
+	
+	public String printQueue(){
+		int l = queue.size();
+		String s = "[";
+		
+		if (l > 1){
+			for (int i = 0; i < l - 1; i++) {
+				s += queue.get(i).getId() + ",";
+			}
+		}
+		
+		if (l > 0) s += queue.get(l - 1).getId();
+		
+		return s + "]";
 	}
 }
 
