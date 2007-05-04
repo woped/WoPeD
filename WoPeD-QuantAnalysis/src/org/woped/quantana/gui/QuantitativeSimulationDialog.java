@@ -1,6 +1,5 @@
 package org.woped.quantana.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -47,15 +46,14 @@ import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.utilities.Messages;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
+import org.woped.quantana.model.TimeModel;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
 import org.woped.quantana.simulation.ProbabilityDistribution;
 import org.woped.quantana.simulation.Server;
+import org.woped.quantana.simulation.SimParameters;
 import org.woped.quantana.simulation.Simulator;
-import org.woped.quantana.simulation.output.ProcessPanel;
-import org.woped.quantana.simulation.output.ProtocolPanel;
-import org.woped.quantana.simulation.output.ServerPanel;
-import org.woped.quantana.simulation.output.TreeRenderer;
+import org.woped.quantana.Constants;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -70,7 +68,9 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 	private JPanel simParamPanel = null;
 
-	private JPanel simResultPanel = null;
+	private JSplitPane simResultPanel = null;
+
+	private JPanel contentPanel = null;
 
 	private JPanel arrivalRateDistributionPanel = null;
 
@@ -132,15 +132,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 	
 	private JTree itemTree = null;
 
-	private JPanel contentPanel = new JPanel();
-
-	private JScrollPane contentPane = new JScrollPane(contentPanel);
-
 	private JPanel curPanel = null;
-
-	private JSplitPane splitPane = null;
-	
-	private JScrollPane scrollPane = null;
 
 	private HashMap<String, JPanel> panelList = new HashMap<String, JPanel>();
 
@@ -172,7 +164,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 	private void initialize() {
 		GridBagConstraints constraints = new GridBagConstraints();
 		setLayout(new GridBagLayout());
-		constraints.insets = new Insets(5, 5, 5, 5);
+		constraints.insets = new Insets(5, 0, 5, 0);
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.weightx = 0;
 		constraints.weighty = 0;
@@ -184,31 +176,32 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 		constraints.gridx = 0;
 		constraints.gridy = 1;
+		constraints.insets = new Insets(5, 10, 5, 10);
 		getContentPane().add(getSimResultPanel(), constraints);
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = screenSize.width > 800 ? 800 : screenSize.width;
+		int width = screenSize.width > 760 ? 760 : screenSize.width;
 		int x = screenSize.width > width ? (screenSize.width - width) / 2 : 0;
-		int height = screenSize.height > 900 ? 900 : screenSize.height;
-		int y = screenSize.height > height ? (screenSize.height - height) / 2
-				: 0;
+		int height = screenSize.height > 740 ? 740 : screenSize.height;
+		int y = screenSize.height > height ? (screenSize.height - height) / 2 : 0;
 		this.setBounds(x, y, width, height);
 		this.setVisible(true);
 	}
 
-	private JPanel getSimResultPanel() {
+	private JSplitPane getSimResultPanel() {
 		if (simResultPanel == null) {
-			simResultPanel = new JPanel();
+			startSimulation();
+			JScrollPane contentPane = new JScrollPane(getContentPanel());
+			JScrollPane scrollPane = new JScrollPane(getTree());
+			scrollPane.setWheelScrollingEnabled(true);
+			simResultPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, contentPane);
 			simResultPanel.setBorder(BorderFactory.createTitledBorder(
 							BorderFactory.createEtchedBorder(),
 							Messages
 									.getString("QuantAna.Simulation.SimResults")));
-			/*GridBagConstraints constraints = new GridBagConstraints();
+			GridBagConstraints constraints = new GridBagConstraints();
 			simResultPanel.setLayout(new GridBagLayout());
-			
-			lblResult = new JLabel("Results go here");
-			
-			constraints.insets = new Insets(5, 0, 5, 0);
+			constraints.insets = new Insets(5, 5, 5, 5);
 			constraints.fill = GridBagConstraints.BOTH;
 			constraints.weightx = 0;
 			constraints.weighty = 0;
@@ -216,13 +209,11 @@ public class QuantitativeSimulationDialog extends JDialog {
 			constraints.gridheight = 1;
 			constraints.gridx = 0;
 			constraints.gridy = 0;
-			simResultPanel.add(lblResult, constraints);*/
-			
-			simResultPanel.setLayout(new BorderLayout());
+			simResultPanel.setOneTouchExpandable(true);
+			simResultPanel.setDividerSize(8);
+			simResultPanel.setDividerLocation(200);
+			simResultPanel.setResizeWeight(1);
 		}
-		simResultPanel.setMinimumSize(new Dimension(790, 400));
-		simResultPanel.setPreferredSize(new Dimension(790, 400));
-		
 		return simResultPanel;
 	}
 
@@ -231,26 +222,34 @@ public class QuantitativeSimulationDialog extends JDialog {
 			simParamPanel = new JPanel();
 			GridBagConstraints constraints = new GridBagConstraints();
 			simParamPanel.setLayout(new GridBagLayout());
-			constraints.insets = new Insets(5, 0, 5, 0);
-			constraints.fill = GridBagConstraints.BOTH;
+			constraints.insets = new Insets(5, 5, 5, 5);
+			constraints.anchor = GridBagConstraints.LINE_START;
 			constraints.weightx = 0;
 			constraints.weighty = 0;
 			constraints.gridwidth = 3;
 			constraints.gridheight = 1;
 			constraints.gridx = 0;
 			constraints.gridy = 0;
-			simParamPanel.add(getArrivalRateDistributionPanel(), constraints);
-			constraints.insets = new Insets(5, 5, 5, 5);
+			simParamPanel.add(getArrivalRateDistributionPanel(), constraints);		
+
+			JPanel jp = new JPanel();
+			jp.setLayout(new GridBagLayout());
+			constraints.gridwidth = 1;
+			constraints.gridheight = 1;
+			constraints.gridx = 0;
+			constraints.gridy = 0;
+			jp.add(getServiceTimeDistributionPanel(), constraints);
+			constraints.gridx = 1;
+			constraints.gridy = 0;
+			jp.add(getQueueingDisciplinePanel(), constraints);
+			constraints.gridx = 2;
+			constraints.gridy = 0;
+			jp.add(getTerminationConditionPanel(), constraints);
+			
 			constraints.gridwidth = 1;
 			constraints.gridx = 0;
 			constraints.gridy = 1;
-			simParamPanel.add(getServiceTimeDistributionPanel(), constraints);
-			constraints.gridx = 1;
-			constraints.gridy = 1;
-			simParamPanel.add(getQueueingDisciplinePanel(), constraints);
-			constraints.gridx = 2;
-			constraints.gridy = 1;
-			simParamPanel.add(getTerminationConditionPanel(), constraints);
+			simParamPanel.add(jp, constraints);		
 		}
 		return simParamPanel;
 	}
@@ -262,8 +261,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 			jp.setBorder(BorderFactory
 							.createTitledBorder(
 									BorderFactory.createEtchedBorder(),
-									Messages
-											.getString("QuantAna.Simulation.ArrivalRateDistribution")));
+									Messages.getString("QuantAna.Simulation.ArrivalRateDistribution")));
 			GridBagConstraints constraints = new GridBagConstraints();
 			jp.setLayout(new GridBagLayout());
 			constraints.insets = new Insets(5, 5, 5, 5);
@@ -378,17 +376,13 @@ public class QuantitativeSimulationDialog extends JDialog {
 			jp.add(lbl_p2_21, constraints);
 			constraints.gridx = 2;
 			constraints.gridy = 1;
-			jp.add(txt_p2_21, constraints);
-			
-			
+			jp.add(txt_p2_21, constraints);			
 			constraints.gridx = 3;
 			constraints.gridy = 1;
 			jp.add(lbl_p2_22, constraints);
 			constraints.gridx = 4;
 			constraints.gridy = 1;
-			jp.add(txt_p2_22, constraints);
-			
-			
+			jp.add(txt_p2_22, constraints);				
 			constraints.gridx = 0;
 			constraints.gridy = 2;
 			jp.add(opt_p2_3, constraints);
@@ -438,9 +432,9 @@ public class QuantitativeSimulationDialog extends JDialog {
 				}
 			});
 			
-			jp.setMinimumSize(new Dimension(750, 115));
-			arrivalRateDistributionPanel.add(jp);
-			arrivalRateDistributionPanel.add(getButtonPanel());
+			jp.setMinimumSize(new Dimension(780, 115));
+			arrivalRateDistributionPanel.add(jp, constraints);
+			arrivalRateDistributionPanel.add(getButtonPanel(), constraints);
 
 		}
 		return arrivalRateDistributionPanel;
@@ -491,7 +485,6 @@ public class QuantitativeSimulationDialog extends JDialog {
 			groupST.add(opt_p3_2);
 			groupST.add(opt_p3_3);
 			
-			constraints.insets = new Insets(5, 5, 5, 5);
 			constraints.gridx = 0;
 			constraints.gridy = 0;
 			serviceTimeDistributionPanel.add(opt_p3_1, constraints);
@@ -547,7 +540,6 @@ public class QuantitativeSimulationDialog extends JDialog {
 			dummy.setMinimumSize(new Dimension(180, 20));
 			dummy.setMaximumSize(new Dimension(180, 20));
 			
-			constraints.insets = new Insets(5, 5, 5, 5);
 			constraints.gridx = 0;
 			constraints.gridy = 0;
 			queueingDisciplinePanel.add(opt_q_1, constraints);
@@ -596,11 +588,9 @@ public class QuantitativeSimulationDialog extends JDialog {
 					.getString("QuantAna.Simulation.TimeElapsed"));
 			stop1.setSelected(true);
 			stop2.setSelected(true);
-			constraints.insets = new Insets(5, 10, 5, 5);
 			constraints.gridx = 0;
 			constraints.gridy = 0;
 			terminationConditionPanel.add(lblRuns, constraints);
-			constraints.insets = new Insets(5, 5, 5, 5);
 			constraints.gridx = 1;
 			constraints.gridy = 0;
 			terminationConditionPanel.add(txtRuns, constraints);
@@ -619,12 +609,12 @@ public class QuantitativeSimulationDialog extends JDialog {
 			buttonPanel = new JPanel();
 			buttonPanel.setLayout(new GridBagLayout());
 			GridBagConstraints constraints = new GridBagConstraints();
-			constraints.insets = new Insets(5, 15, 5, 5);
+			constraints.insets = new Insets(5, 25, 5, 5);
 			constraints.weightx = 0;
 			constraints.weighty = 0;
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
-			constraints.anchor = GridBagConstraints.EAST;
+			constraints.anchor = GridBagConstraints.LINE_END;
 			constraints.fill = GridBagConstraints.HORIZONTAL;
 
 			JButton btnStart = new JButton();
@@ -665,6 +655,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 	}
 
 	public void updContents() {
+		getContentPanel().validate();
 	}
 
 	public WorkflowNetGraph getGraph() {
@@ -673,9 +664,6 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 	private void startSimulation() {
 		SimParameters sp = new SimParameters();
-
-//		sp.setLambda(lambda);
-//		sp.setTimeOfPeriod(period);
 		lambda = Double.parseDouble(txt_p2_21.getText());
 		period = Double.parseDouble(txt_p2_22.getText());
 		sp.setLambda(lambda);
@@ -694,8 +682,6 @@ public class QuantitativeSimulationDialog extends JDialog {
 			sp.setCPara2(Double.parseDouble(txt_p2_32.getText()));
 		} else {
 			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_EXP);
-//			sp.setCPara1(Double.parseDouble(txt_p2_21.getText()));
-//			sp.setCPara2(Double.parseDouble(txt_p2_22.getText()));
 			sp.setCPara1(1/lambda*period);
 			sp.setCPara2(0);
 		}
@@ -735,6 +721,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 		sim = new Simulator(this, graph, new ResourceUtilization(resAlloc), sp);
 		sim.start();
+		updContents();
 	}
 
 	private void initResourceAlloc() {
@@ -777,29 +764,13 @@ public class QuantitativeSimulationDialog extends JDialog {
 		return lst;
 	}
 	
-	public void updSimResultPanel(){
-		JPanel panel = simResultPanel;
-		panel.add(getSplitPane(), BorderLayout.CENTER);
-		panel.validate();
-		getContentPane().validate();
-//		lblResult.setText("Done.");
+	private JPanel getContentPanel() {
+		if (contentPanel == null) {
+			contentPanel = new JPanel();
 	}
+	return contentPanel;
+}
 	
-	private JSplitPane getSplitPane() {
-		if (splitPane == null) {
-			scrollPane = new JScrollPane(getTree());
-			scrollPane.setWheelScrollingEnabled(true);
-			splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane,
-					contentPane);
-			splitPane.setOneTouchExpandable(true);
-			splitPane.setDividerSize(8);
-			splitPane.setDividerLocation(200);
-			splitPane.setResizeWeight(1);
-		}
-
-		return splitPane;
-	}
-
 	private JTree getTree() {
 		if (itemTree == null) {
 			DefaultMutableTreeNode root = new DefaultMutableTreeNode("Items");
@@ -970,5 +941,4 @@ public class QuantitativeSimulationDialog extends JDialog {
 	public Simulator getSimulator() {
 		return sim;
 	}
-
 } // @jve:decl-index=0:visual-constraint="4,4"
