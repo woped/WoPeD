@@ -655,7 +655,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 	}
 
 	public void updContents() {
-		getContentPanel().validate();
+//		getContentPanel().validate();
 	}
 
 	public WorkflowNetGraph getGraph() {
@@ -721,7 +721,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 
 		sim = new Simulator(this, graph, new ResourceUtilization(resAlloc), sp);
 		sim.start();
-		updContents();
+//		updContents();
 	}
 
 	private void initResourceAlloc() {
