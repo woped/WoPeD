@@ -1,4 +1,4 @@
-package org.woped.quantana.gui;
+package org.woped.quantana.model;
 
 public class NodeProperties {
 	

@@ -1,4 +1,4 @@
-package org.woped.quantana.simulation.output;
+package org.woped.quantana.gui;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import org.woped.quantana.gui.QuantitativeSimulationDialog;
 
 @SuppressWarnings("unused")
 public class ProtocolPanel extends JPanel {

@@ -14,7 +14,6 @@ import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.quantana.gui.SimParameters;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
@@ -167,7 +166,7 @@ public class Simulator {
 		
 //		SimOutputDialog sod = new SimOutputDialog(null, true, this);
 //		sod.setVisible(true);
-		dlgSim.updSimResultPanel();
+		dlgSim.validate();
 	}
 	
 	private void generateServerList(){

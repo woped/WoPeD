@@ -1,4 +1,4 @@
-package org.woped.quantana.gui;
+package org.woped.quantana.simulation;
 
 public class SimParameters {
 	private int runs;

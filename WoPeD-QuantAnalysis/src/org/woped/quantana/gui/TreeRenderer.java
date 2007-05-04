@@ -1,4 +1,4 @@
-package org.woped.quantana.simulation.output;
+package org.woped.quantana.gui;
 
 import java.awt.Component;
 

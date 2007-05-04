@@ -1,4 +1,4 @@
-package org.woped.quantana.simulation.output;
+package org.woped.quantana.gui;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -13,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
 import org.woped.quantana.simulation.Simulator;

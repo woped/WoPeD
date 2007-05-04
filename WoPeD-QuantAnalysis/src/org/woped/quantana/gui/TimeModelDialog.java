@@ -19,6 +19,8 @@ import javax.swing.JFrame;
 
 import org.woped.editor.utilities.Messages;
 import org.woped.quantana.graph.Node;
+import org.woped.quantana.model.TimeModel;
+import org.woped.quantana.Constants;
 
 public class TimeModelDialog extends JDialog {
 

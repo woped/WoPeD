@@ -1,4 +1,4 @@
-package org.woped.quantana.gui;
+package org.woped.quantana;
 
 import org.woped.editor.utilities.Messages;
 
