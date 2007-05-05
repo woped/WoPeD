@@ -67,7 +67,7 @@ public class UMLMarqueeHandler extends AbstractMarqueeHandler
                     CreationMap map = CreationMap.createMap();
                     map.setArcSourceId(((AbstractElementModel) ((DefaultPort) source).getParent()).getId());
                     map.setArcTargetId(((AbstractElementModel) ((DefaultPort) target).getParent()).getId());
-                    getEditor().createArc(map);
+                    getEditor().create(map);
                     e.consume();
                 }
                 // Add Point for Shortcut

@@ -25,11 +25,14 @@
  */
 package org.woped.editor.controller;
 
+import java.util.Arrays;
+
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoableEdit;
 
 import org.jgraph.graph.DefaultGraphModel;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
@@ -131,7 +134,11 @@ public class WoPeDUndoableEdit implements UndoableEdit
 //                    newArc.setAttributes(((ArcModel)elements[i]).getAttributes());
                     //PetriNetModelProcessor createArc
                 } else if (elements[i] instanceof GroupModel)
-                {} else if (elements[i] instanceof TriggerModel)
+                {
+                    AbstractElementModel mainModel = ((GroupModel)elements[i]).getMainElement();
+                    if (!Arrays.asList(elements).contains(mainModel))
+                        m_editor.getModelProcessor().getElementContainer().addElement(mainModel);
+                } else if (elements[i] instanceof TriggerModel)
                 {
                     TriggerModel trigger = (TriggerModel) elements[i];
                     ((TransitionModel) ((GroupModel) trigger.getParent()).getMainElement()).getToolSpecific().setTrigger((TriggerModel) elements[i]);

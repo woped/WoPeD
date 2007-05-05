@@ -51,78 +51,78 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 			// Petrinet
 			case AbstractViewEvent.ADD_PLACE:
 				map.setType(AbstractPetriNetModelElement.PLACE_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_TRANSITION:
 				map.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_ANDJOIN:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
 				map.setOperatorType(OperatorTransitionModel.AND_JOIN_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_ANDSPLIT:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
 				map.setOperatorType(OperatorTransitionModel.AND_SPLIT_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_ANDSPLITJOIN:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
 				map.setOperatorType(OperatorTransitionModel.AND_SPLITJOIN_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_XORJOIN:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
 				map.setOperatorType(OperatorTransitionModel.XOR_JOIN_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_XORSPLIT:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
 				map.setOperatorType(OperatorTransitionModel.XOR_SPLIT_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_XORSPLITJOIN:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
 				map.setOperatorType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_ANDJOINXORSPLIT:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
 				map
 						.setOperatorType(OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_XORJOINANDSPLIT:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
 				map
 						.setOperatorType(OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			// UML
 			case AbstractViewEvent.ADD_ACTIVITY:
 				map.setType(AbstractUMLElementModel.ACTIVITY_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_START:
 				map.setType(AbstractUMLElementModel.STATE_TYPE);
 				map.setStateType(StateModel.STATE_START_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_STOP:
 				map.setType(AbstractUMLElementModel.STATE_TYPE);
 				map.setStateType(StateModel.STATE_STOP_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_AND:
 				map.setType(AbstractUMLElementModel.OPERATOR_TYPE);
 				map.setOperatorType(OperatorModel.AND_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_XOR:
 				map.setType(AbstractUMLElementModel.OPERATOR_TYPE);
 				map.setOperatorType(OperatorModel.XOR_TYPE);
-				editor.createElement(map);
+				editor.create(map);
 				break;
 			// General
 			case AbstractViewEvent.RENAME:

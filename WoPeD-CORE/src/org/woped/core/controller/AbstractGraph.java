@@ -199,11 +199,16 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
         return undoManager;
     }
 
+
     /**
-     * Uses the Edge between source and target Connecting two ports
+     * TODO: DOCUMENTATION (silenco)
+     * 
+     * @param edge
      */
-    public void connect(DefaultEdge edge, Port source, Port target)
+    public void connect(DefaultEdge edge)
     {
+        Port source = (Port) edge.getSource();
+        Port target = (Port) edge.getTarget();
         // TODO: move validation in Editor
         if (isValidConnection(source, target))
         {
@@ -229,28 +234,6 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
             LoggerManager.warn(Constants.CORE_LOGGER, "Not a valid connection, did nothing!");
         }
 
-    }
-
-    /**
-     * Insert a new Edge between source and target Connecting two ports
-     * 
-     * @deprecated
-     */
-    public void connect(Port source, Port target)
-    {
-        // Construct Edge with no label
-        ArcModel edge = new ArcModel();
-        connect(edge, source, target);
-    }
-
-    /**
-     * TODO: DOCUMENTATION (silenco)
-     * 
-     * @param edge
-     */
-    public void connect(DefaultEdge edge)
-    {
-        connect(edge, (Port) edge.getSource(), (Port) edge.getTarget());
     }
 
     /**

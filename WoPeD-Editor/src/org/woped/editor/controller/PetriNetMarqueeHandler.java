@@ -28,11 +28,14 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Vector;
 
 import javax.swing.SwingUtilities;
 
 import org.jgraph.graph.BasicMarqueeHandler;
+import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultPort;
+import org.jgraph.graph.GraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.Port;
 import org.woped.core.config.ConfigurationManager;
@@ -121,11 +124,11 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
             {
                 map.setType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
                 map.setOperatorType(getEditor().getCreateElementType());
-                getEditor().createElement(map);
+                getEditor().create(map);
             } else
             {
                 map.setType(getEditor().getCreateElementType());
-                getEditor().createElement(map);
+                getEditor().create(map);
             }
             getEditor().setCreateElementType(-1);
             getEditor().setDrawingMode(false);
@@ -200,7 +203,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
             {
                 if (ConfigurationManager.getConfiguration().isSmartEditing() && port == null && firstPort != null && firstPort != port)
                 {
-                	
+                    CreationMap[] maps = new CreationMap[2];
                 	boolean allowConnection = true;
                 	Object element = ((firstPort!=null)?((DefaultPort)firstPort.getCell()).getParent():null); 
                 	if (element instanceof AbstractElementModel)
@@ -214,17 +217,25 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
                 		if (source.getParent() instanceof TransitionModel)
                 		{
                 			map.setType(PetriNetModelElement.PLACE_TYPE);
-                			getEditor().createElement(map);
+                            map.setId(getEditor().getModelProcessor().getNewElementId(map.getType()));
+                            maps[0]=map;
                 		} else if (source.getParent() instanceof PlaceModel)
                 		{
                 			map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-                			getEditor().createElement(map);
+                            map.setId(getEditor().getModelProcessor().getNewElementId(map.getType()));
+                            maps[0]=map;
                 		}
-                		port = getTargetPortAt(getEditor().getLastMousePosition());
+                        String targetId= map.getId();
+                        map = CreationMap.createMap();
+                        map.setArcSourceId(((AbstractElementModel) ((DefaultPort) source).getParent()).getId());
+                        map.setArcTargetId(targetId);
+                        maps[1]=map;
                 	}
-                }
+                    GraphCell[] result = getEditor().createAll(maps);
+                        getEditor().getGraph().startEditingAtCell(result[0]);
+                } 
                 // If Valid Event, Current and First Port
-                if (e != null && !e.isConsumed() && port != null && firstPort != null && firstPort != port)
+                else if (e != null && !e.isConsumed() && port != null && firstPort != null && firstPort != port)
                 {
                     // Fetch the Underlying Source Port
                     Port source = (Port) firstPort.getCell();
@@ -234,7 +245,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
                     CreationMap map = CreationMap.createMap();
                     map.setArcSourceId(((AbstractElementModel) ((DefaultPort) source).getParent()).getId());
                     map.setArcTargetId(((AbstractElementModel) ((DefaultPort) target).getParent()).getId());
-                    getEditor().createArc(map);
+                    getEditor().create(map);
                     e.consume();
                 }
                 if (getEditor().getGraph().getFirstCellForLocation(e.getX(), e.getY()) instanceof ArcModel && e.isShiftDown())

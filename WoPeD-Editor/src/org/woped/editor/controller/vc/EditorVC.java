@@ -41,6 +41,7 @@ import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -65,6 +66,7 @@ import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.BasicMarqueeHandler;
+import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.DefaultPort;
@@ -90,6 +92,7 @@ import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.UMLModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
@@ -366,7 +369,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			sourceCreationMap.setNamePosition(30, 200);
 			sourceCreationMap.setEditOnCreation(false);
 			sourceCreationMap.setUpperElement(sourceModel);
-			createElement(sourceCreationMap);
+			createElement(sourceCreationMap, true);
 		}
 		else
 		{
@@ -390,7 +393,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			targetCreationMap.setNamePosition(540, 200);
 			targetCreationMap.setEditOnCreation(false);
 			targetCreationMap.setUpperElement(targetModel);
-			createElement(targetCreationMap);
+			createElement(targetCreationMap, true);
 
 		}
 		else
@@ -619,14 +622,14 @@ public class EditorVC extends JPanel implements KeyListener,
 		return null;
 	}
 
-	public AbstractElementModel createElement(int type, int additionalType,
+	public GraphCell createElement(int type, int additionalType,
 			Point2D p, boolean doNotEdit)
 	{
 		return createElement(type, additionalType, (int) p.getX(), (int) p
 				.getY(), doNotEdit);
 	}
 
-	public AbstractElementModel createElement(int type, int additionalType,
+	public GraphCell createElement(int type, int additionalType,
 			int x, int y, boolean doNotEdit)
 	{
 		CreationMap map = CreationMap.createMap();
@@ -640,7 +643,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			map.setStateType(additionalType);
 		if (x != -1 && y != -1)
 			map.setPosition(x, y);
-		return createElement(map);
+		return createElement(map, true);
 	}
 
 	/**
@@ -649,7 +652,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	 * @param map
 	 * @return
 	 */
-	public AbstractElementModel createElement(CreationMap map)
+	private GraphCell createElement(CreationMap map, boolean insertIntoCache)
 	{
 		if (map.isValid())
 		{
@@ -713,14 +716,10 @@ public class EditorVC extends JPanel implements KeyListener,
 						(PetriNetModelElement) element,
 						((PetriNetModelElement) element).getNameModel());
 				group.setUngroupable(false);
-
-				getGraph().getGraphLayoutCache()
-						.insertGroup(
-								group,
-								new Object[] {
-										element,
-										((PetriNetModelElement) element)
-												.getNameModel() });
+                group.add(element);
+                group.add(element.getNameModel());
+				if (insertIntoCache)
+				getGraph().getGraphLayoutCache().insert(group);
 
 				// edit
 				if (ConfigurationManager.getConfiguration()
@@ -730,6 +729,7 @@ public class EditorVC extends JPanel implements KeyListener,
 					getGraph().startEditingAtCell(
 							((PetriNetModelElement) element).getNameModel());
 				}
+                return group;//@@@TODO
 			} else if (element instanceof AbstractUMLElementModel)
 			{
 				if (element.getType() == AbstractUMLElementModel.ACTIVITY_TYPE
@@ -747,7 +747,9 @@ public class EditorVC extends JPanel implements KeyListener,
 								.getIconHeight() + 4);
 					}
 				}
-				getGraph().getGraphLayoutCache().insert(element);
+                if (insertIntoCache){
+                    getGraph().getGraphLayoutCache().insert(element);
+                }
 				// edit
 				if (ConfigurationManager.getConfiguration()
 						.isEditingOnCreation()
@@ -800,7 +802,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		CreationMap map = CreationMap.createMap();
 		map.setArcSourceId(sourceId);
 		map.setArcTargetId(targetId);
-		return createArc(map);
+		return createArc(map, true);
 
 	}
 
@@ -810,7 +812,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	 * @param map
 	 * @return
 	 */
-	public ArcModel createArc(CreationMap map)
+	private ArcModel createArc(CreationMap map, boolean insertIntoCache)
 	{
 		ArcModel arc = null;
 		String sourceId = map.getArcSourceId();
@@ -841,7 +843,9 @@ public class EditorVC extends JPanel implements KeyListener,
 			{
 				arc = getModelProcessor().createArc(map.getArcId(), sourceId,
 						targetId, pointArray, true);
-				getGraph().connect(arc);
+                if (insertIntoCache){
+                    getGraph().getGraphLayoutCache().insert(new Object[]{arc}, null, null, null, null);
+                }
 			} else if (getModelProcessor().getElementContainer()
 					.getElementById(sourceId).getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE
 					|| getModelProcessor().getElementContainer()
@@ -849,7 +853,10 @@ public class EditorVC extends JPanel implements KeyListener,
 			{
 				arc = getModelProcessor().createArc(map.getArcId(), sourceId,
 						targetId, pointArray, true);
-				getGraph().connect(arc);
+                if (insertIntoCache){
+                    getGraph().getGraphLayoutCache().insert(new Object[]{arc}, null, null, null, null);
+                }
+				//getGraph().connect(arc);
 				LoggerManager.debug(Constants.EDITOR_LOGGER,
 						"TODO: check this: " + sourceId + " -> " + targetId
 								+ " does already exists. DID IT ANYWAY ");
@@ -931,8 +938,10 @@ public class EditorVC extends JPanel implements KeyListener,
 
 		}
 
+        HashSet<Object> uniqueResult = new HashSet<Object>();
 		for (int i = 0; i < result.size(); i++)
 		{
+            uniqueResult.add(result.get(i));
 			if (result.get(i) instanceof AbstractElementModel
 					&& ((AbstractElementModel) result.get(i)).getPort() != null)
 			{
@@ -940,11 +949,11 @@ public class EditorVC extends JPanel implements KeyListener,
 						.getPort().edges();
 				while (edges.hasNext())
 				{
-					result.add(edges.next());
+					uniqueResult.add(edges.next());
 				}
 			}
 		}
-		deleteOnlyCells(result.toArray(), withGraph);
+		deleteOnlyCells(uniqueResult.toArray(), withGraph);
 
 	}
 
@@ -1002,12 +1011,9 @@ public class EditorVC extends JPanel implements KeyListener,
 
 				AbstractElementModel element = (AbstractElementModel) toDelete[i];
 				// if there are trigger, delete their jgraph model
-				if (toDelete[i] instanceof TransitionModel
-						|| toDelete[i] instanceof OperatorTransitionModel)
+				if (toDelete[i] instanceof TransitionModel)
 				{
-					if (((TransitionModel) getModelProcessor()
-							.getElementContainer().getElementById(
-									element.getId())).getToolSpecific()
+					if (((TransitionModel) toDelete[i]).getToolSpecific()
 							.getTrigger() != null)
 					{
 						deleteCell(((TransitionModel) getModelProcessor()
@@ -1041,8 +1047,10 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 		if (withGraph)
 		{
-			getGraph().getModel().remove(allPorts.toArray());
-			getGraph().getModel().remove(allCells.toArray());
+            Vector<Object> allDeletedObjects = new Vector<Object>();
+            allDeletedObjects.addAll(allPorts);
+            allDeletedObjects.addAll(allCells);
+			getGraph().getModel().remove(allDeletedObjects.toArray());
 		}
 		updateNet();
 	}
@@ -1325,7 +1333,7 @@ public class EditorVC extends JPanel implements KeyListener,
 					.isInsertCOPYwhenCopied())
 				currentMap.setName(currentMap.getName() + "_copy");
 			currentMap.setEditOnCreation(false);
-			tempElement = createElement(currentMap);
+			tempElement = (AbstractElementModel)create(currentMap);
 			/* change arc source/target */
 			Iterator arcIter = pasteArcs.keySet().iterator();
 			while (arcIter.hasNext())
@@ -1365,7 +1373,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			{
 				cmap.setArcSourceId(currentArcMap.getArcSourceId());
 				cmap.setArcTargetId(currentArcMap.getArcTargetId());
-				tempArc = createArc(cmap);
+				tempArc = createArc(cmap,true);
 				for (short k = 0; k < currentArcMap.getArcPoints().size(); k++)
 				{
                     IntPair ip = (IntPair) currentArcMap.getArcPoints().get(k);
@@ -2283,4 +2291,29 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		m_subprocessOutput = p_subprocessOutput;
 	}
+    
+    public GraphCell create(CreationMap map){
+        return create(map, true);
+    }
+    public GraphCell create(CreationMap map, boolean insertIntoCache){
+        if (map.getArcSourceId()!=null){//Maybe there should be a ArcCreationMap
+            return createArc(map, insertIntoCache);
+        }
+        else {
+            return createElement(map, insertIntoCache);
+        }
+    }
+
+    public GraphCell[] createAll(CreationMap[] maps){
+        Vector<GraphCell> result  = new Vector<GraphCell>();
+        for (int i=0;i<maps.length;i++){
+            if (maps[i]!=null){
+                GraphCell element = create(maps[i], false);
+                result.add(element);
+            }
+        }
+        GraphCell[] resultArray = result.toArray(new GraphCell[]{});
+        getGraph().getGraphLayoutCache().insert(resultArray);
+        return resultArray;
+    }
 }

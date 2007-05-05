@@ -5,9 +5,9 @@ import java.awt.geom.Point2D;
 import javax.swing.JComponent;
 
 import org.jgraph.graph.DefaultGraphCell;
+import org.jgraph.graph.GraphCell;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
-import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 
@@ -28,21 +28,21 @@ public interface IEditor extends IViewController
      */
     public AbstractGraph getGraph();
 
+    
     /**
      * Creates the Element in the Graph and stores it in the used ModelProcessor
      * 
      * @param creationMap
      * @return
      */
-    public AbstractElementModel createElement(CreationMap creationMap);
-
+    public GraphCell create(CreationMap map);
     /**
-     * Creates the Arc in the Graph and stores it in the used ModelProcessor
+     * Creates the Elements in the Graph and stores them in the used ModelProcessor
      * 
-     * @param map
+     * @param creationMap
      * @return
      */
-    public ArcModel createArc(CreationMap map);
+    public GraphCell[] createAll(CreationMap[] maps);
 
     /**
      * Returns the used ModelProcessor

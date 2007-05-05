@@ -123,6 +123,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		// GraphConstants.setSelectable(map, true);
 		Point2D[] pos = { getDefaultLabelPosition() };
 		GraphConstants.setExtraLabelPositions(map, pos);
+        GraphConstants.setLineEnd(map, GraphConstants.ARROW_CLASSIC);
 
 		getAttributes().applyMap(map);
 	}
