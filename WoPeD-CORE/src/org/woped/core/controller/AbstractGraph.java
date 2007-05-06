@@ -37,7 +37,6 @@ import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.DefaultPort;
-import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.GraphUndoManager;
 import org.jgraph.graph.Port;
@@ -204,7 +203,7 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
      * 
      * @param edge
      */
-    public void connect(DefaultEdge edge)
+    public void connect(DefaultEdge edge, boolean insertIntoCache)
     {
         Port source = (Port) edge.getSource();
         Port target = (Port) edge.getTarget();
@@ -217,8 +216,6 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
             ConnectionSet cs = new ConnectionSet(edge, source, target);
             // Create a Map that holds the attributes for the edge
             AttributeMap attr = edge.getAttributes();// GraphConstants.createMap();
-            // Add a Line End Attribute
-            GraphConstants.setLineEnd(attr, GraphConstants.ARROW_CLASSIC);
             // Construct a Map from cells to Maps (for insert)
             Hashtable<DefaultEdge, AttributeMap> nest = new Hashtable<DefaultEdge, AttributeMap>();
             // Associate the Edge with its Attributes
@@ -226,7 +223,9 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
             // Insert wants an Object-Array
             Object[] arg = new Object[] { edge };
             // Insert the Edge and its Attributes
-            getGraphLayoutCache().insert(arg, nest, cs, null, null);
+            if (insertIntoCache){
+            	getGraphLayoutCache().insert(arg, nest, cs, null, null);	
+            }
             //
         } else
         {

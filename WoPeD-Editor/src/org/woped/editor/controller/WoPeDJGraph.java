@@ -408,7 +408,7 @@ public class WoPeDJGraph extends AbstractGraph
                 for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
                 {
                     ArcModel arc = (ArcModel) iter.next();                    
-                    connect(arc);
+                    connect(arc, true);
                 }
             } else if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_UML)
             {
@@ -420,7 +420,7 @@ public class WoPeDJGraph extends AbstractGraph
                 for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
                 {
                     ArcModel arc = (ArcModel) iter.next();
-                    connect(arc);
+                    connect(arc, true);
                 }
             }
 

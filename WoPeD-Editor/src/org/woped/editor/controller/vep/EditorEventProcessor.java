@@ -238,12 +238,12 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 			case AbstractViewEvent.ROUTING_ACTIVE:
 				cell = editor.getGraph().getSelectionCell();
 				((ArcModel) cell).setRoute(true);
-				editor.getGraph().connect(((ArcModel) cell));
+				editor.getGraph().connect(((ArcModel) cell), true);
 				break;
 			case AbstractViewEvent.ROUTING_DEACTIVE:
 				cell = editor.getGraph().getSelectionCell();
 				((ArcModel) cell).setRoute(false);
-				editor.getGraph().connect(((ArcModel) cell));
+				editor.getGraph().connect(((ArcModel) cell), true);
 				break;
 			case AbstractViewEvent.ROUTING_ALL_ACTIVE:
 				anIter = editor.getModelProcessor().getElementContainer()
@@ -253,7 +253,7 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 					anArc = editor.getModelProcessor().getElementContainer()
 							.getArcById(anIter.next());
 					anArc.setRoute(true);
-					editor.getGraph().connect(anArc);
+					editor.getGraph().connect(anArc, true);
 				}
 				editor.updateNet();
 				break;
@@ -264,7 +264,7 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 					anArc = editor.getModelProcessor().getElementContainer()
 							.getArcById(anIter.next());
 					anArc.setRoute(false);
-					editor.getGraph().connect(anArc);
+					editor.getGraph().connect(anArc, true);
 				}
 				editor.updateNet();
 				break;

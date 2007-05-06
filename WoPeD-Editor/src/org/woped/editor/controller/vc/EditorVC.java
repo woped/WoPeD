@@ -841,9 +841,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			{
 				arc = getModelProcessor().createArc(map.getArcId(), sourceId,
 						targetId, pointArray, true);
-                if (insertIntoCache){
-                    getGraph().getGraphLayoutCache().insert(new Object[]{arc}, null, null, null, null);
-                }
+				getGraph().connect(arc, insertIntoCache);
 			} else if (getModelProcessor().getElementContainer()
 					.getElementById(sourceId).getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE
 					|| getModelProcessor().getElementContainer()
@@ -851,10 +849,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			{
 				arc = getModelProcessor().createArc(map.getArcId(), sourceId,
 						targetId, pointArray, true);
-                if (insertIntoCache){
-                    getGraph().getGraphLayoutCache().insert(new Object[]{arc}, null, null, null, null);
-                }
-				//getGraph().connect(arc);
+				getGraph().connect(arc, insertIntoCache);
 				LoggerManager.debug(Constants.EDITOR_LOGGER,
 						"TODO: check this: " + sourceId + " -> " + targetId
 								+ " does already exists. DID IT ANYWAY ");
