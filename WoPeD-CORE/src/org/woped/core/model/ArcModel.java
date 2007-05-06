@@ -68,9 +68,9 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	// ! and read back but not used for anything.
 	// ! It will, however, be used in the future for quantitative analysis of
 	// ! workflow nets. Time of this writing: 2006/12/18, A.Eckleder
-	private double probability = 1.0;// 0.0d;
-
-	private boolean displayOn = false;
+//	private double probability = 1.0;// 0.0d;
+//
+//	private boolean displayOn = false;
 
 	// private GraphLayoutCache graphLayoutCache = null;
 
@@ -561,20 +561,34 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	// }
 
 	public double getProbability() {
-		return probability;
+		Object probability = getAttributes().get("Probability");
+		if (probability instanceof Double){
+			return ((Double)probability).doubleValue();
+		}
+		else
+		{
+			return 1.0;
+		}
 	}
 
 	public void setProbability(double probability) {
-		this.probability = probability;
+		getAttributes().put("Probability", new Double(probability));
 		updateLabel();
 	}
 
 	public boolean isDisplayOn() {
-		return displayOn;
+		Object probability = getAttributes().get("DisplayProbability");
+		if (probability instanceof Boolean){
+			return ((Boolean)probability).booleanValue();
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public void setDisplayOn(boolean displayOn) {
-		this.displayOn = displayOn;
+		getAttributes().put("DisplayProbability", new Boolean(displayOn));
 		updateLabel();
 	}
 
@@ -586,9 +600,9 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	 */
 	private void updateLabel() {
 		Object[] labels = {};
-		if (displayOn) {
+		if (isDisplayOn()) {
 			labels = new Object[] { Integer.toString(Double.valueOf(
-					probability * 100).intValue()) + "%" };
+					getProbability() * 100).intValue()) + "%" };
 		}
 		HashMap map = new HashMap();
 		GraphConstants.setExtraLabels(map, labels);

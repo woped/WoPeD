@@ -129,9 +129,9 @@ public class WoPeDUndoableEdit implements UndoableEdit
                 {
                     // m_editor.createArc(((ArcModel)
                     // elements[i]).getCreationMap(), false);
-                    m_editor.getModelProcessor().getElementContainer().addReference((ArcModel) elements[i]);
-//                    ArcModel newArc = m_editor.getModelProcessor().createArc(((ArcModel)elements[i]).getSourceId(), ((ArcModel)elements[i]).getTargetId());
-//                    newArc.setAttributes(((ArcModel)elements[i]).getAttributes());
+//                    m_editor.getModelProcessor().getElementContainer().addReference((ArcModel) elements[i]);
+                    ArcModel newArc = m_editor.getModelProcessor().createArc(((ArcModel)elements[i]).getSourceId(), ((ArcModel)elements[i]).getTargetId());
+                    newArc.setAttributes(((ArcModel)elements[i]).getAttributes());
                     //PetriNetModelProcessor createArc
                 } else if (elements[i] instanceof GroupModel)
                 {
