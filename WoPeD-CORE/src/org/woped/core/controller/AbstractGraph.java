@@ -45,7 +45,6 @@ import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
-import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.utilities.LoggerManager;
