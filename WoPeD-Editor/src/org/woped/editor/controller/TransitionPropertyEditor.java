@@ -629,7 +629,6 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             c.gridy = 3;
             c.insets = new Insets(0, 0, 0, 0);
             branchingPanel.add(getBranchingXorJoinAndSplitEntry(), c);
-
             
             checkBranching();
         }
@@ -1501,9 +1500,11 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             getResourceRoleLabel().setEnabled(false);
             getResourceGroupLabel().setEnabled(false);
             getNumResourcesTextField().setEnabled(false);
-            getserviceTimeLabel().setEnabled(false);
-            getserviceTimeTextfield().setEnabled(false);
-            getserviceTimeComboBox().setEnabled(false);
+            if (! transition.getToolSpecific().isSubprocess()) {
+            	getserviceTimeLabel().setEnabled(false);
+            	getserviceTimeTextfield().setEnabled(false);
+            	getserviceTimeComboBox().setEnabled(false);
+            }
         } 
         else if (e.getActionCommand().equals(TRIGGER_RESOURCE))
         {
