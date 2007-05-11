@@ -272,17 +272,19 @@ public class CapacityAnalysisDialog extends JDialog {
 			constraints.anchor = GridBagConstraints.WEST;
 			constraints.fill = GridBagConstraints.HORIZONTAL;
 			jp.add(getValuePanel(), constraints);
-			jp.setMinimumSize(new Dimension(750, 115));
 			paramPanel.setLayout(new GridBagLayout());
-			constraints.insets = new Insets(0, 30, 0, 0);
+			constraints.weightx = 0;
+			constraints.weighty = 0;
+			constraints.gridwidth = 1;
+			constraints.gridheight = 1;
+			constraints.insets = new Insets(0, 0, 0, 165);
 			constraints.gridx = 0;
 			constraints.gridy = 0;
-			paramPanel.add(jp);
-			constraints.insets = new Insets(0, 0, 0, 30);
+			paramPanel.add(jp, constraints);
+			constraints.insets = new Insets(20, 100, 0, 10);
 			constraints.gridx = 1;
 			constraints.gridy = 0;
-			paramPanel.add(getButtonPanel());
-//			paramPanel.setMinimumSize(new Dimension(890, 120));
+			paramPanel.add(getButtonPanel(), constraints);
 		}
 		return paramPanel;
 	}
