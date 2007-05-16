@@ -22,6 +22,8 @@ public class Server {
 	private double queueLen = 0.0;			// Q(t)
 	private double maxWaitTimeOfCase = 0.0;
 	private double waitTime = 0.0;
+	private double avgServiceTime = 0.0;
+	private double avgNumCasesServing = 0.0;
 	private int maxQueueLength = 0;
 	private int zeroDelays = 0;
 	private int numAccess = 0;
@@ -303,6 +305,8 @@ public class Server {
 		queueLen += queue.size() * (now - lastEvent);
 		protocol.info(sim.clckS() + "Durchschnittliche Warteschlangenlänge von Server \"" + name + "(" + id + ")\" bisher ist: " + (queueLen / sim.getClock()));
 		
+		avgNumCasesServing += numCasesInParallel * (now - lastEvent);
+		
 		if (status == STATUS_BUSY) busy += now - lastEvent;
 		protocol.info(sim.clckS() + "Durchschnittliche Bedienzeit von Server \"" + name + "(" + id + ")\" bisher ist: " + (busy / sim.getClock()));
 	}
@@ -311,7 +315,6 @@ public class Server {
 		status = STATUS_IDLE;
 		
 		busy = 0.0;
-		//curCase = null;
 		maxNumCasesInParallel = 0;
 		maxQueueLength = 0;
 		maxWaitTimeOfCase = 0.0;
@@ -320,6 +323,9 @@ public class Server {
 		numCasesInParallel = 0;
 		numDeparture = 0;
 		queueLen = 0.0;
+		waitTime = 0.0;
+		avgServiceTime = 0.0;
+		avgNumCasesServing = 0.0;
 		
 		queue.clear();
 	}
@@ -337,6 +343,22 @@ public class Server {
 		if (l > 0) s += queue.get(l - 1).getId();
 		
 		return s + "]";
+	}
+
+	public double getAvgNumCasesServing() {
+		return avgNumCasesServing;
+	}
+
+	public void setAvgNumCasesServing(double avgNumCasesServing) {
+		this.avgNumCasesServing = avgNumCasesServing;
+	}
+
+	public double getAvgServiceTime() {
+		return avgServiceTime;
+	}
+
+	public void setAvgServiceTime(double avgServiceTime) {
+		this.avgServiceTime = avgServiceTime;
 	}
 }
 

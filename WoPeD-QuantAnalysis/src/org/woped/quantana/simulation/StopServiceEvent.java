@@ -36,7 +36,7 @@ public class StopServiceEvent extends SimEvent {
 		server.incNumCasesInParallel(-1);
 		protocol.info(sim.clckS() + "Anzahl der parallel bearbeiteten Cases am Server \"" + server.getName() + "(" + server.getId() + ")\" ist " + server.getNumCasesInParallel());
 		
-		//server.setCurCase(null);
+		server.setAvgServiceTime(server.getAvgServiceTime() + time - c.getCurrentArrivalTime());
 		
 		if (r != null) {
 			r.setBusyTime(r.getBusyTime() + time - r.getLastStartTime());

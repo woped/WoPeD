@@ -39,6 +39,7 @@ public class StartServiceEvent extends SimEvent {
 			
 			//server.setCurCase(c);
 			server.incNumAccess(1);
+			server.setWaitTime(server.getWaitTime() + time - c.getCurrentArrivalTime());
 			protocol.info(sim.clckS() + "Anzahl der bedienten Cases am Server \"" + server.getName() + "(" + server.getId() + ")\" steigt auf " + server.getNumAccess());
 			
 			server.incNumCasesInParallel(1);

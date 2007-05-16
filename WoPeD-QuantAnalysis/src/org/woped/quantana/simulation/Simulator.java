@@ -1,14 +1,17 @@
 package org.woped.quantana.simulation;
 
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.Random;
-import java.util.logging.FileHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
@@ -16,7 +19,6 @@ import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
-import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
@@ -37,11 +39,12 @@ public class Simulator {
 	
 	public static final Logger protocol = Logger.getLogger("org.woped.quantana.simulation");
 	
-	private FileHandler handler;
+	private ByteArrayOutputStream out;
+
 	private String protocolPath;
 	private String protocolName;
 	
-	private QuantitativeSimulationDialog dlgSim;
+//	private QuantitativeSimulationDialog dlgSim;
 	private WorkflowNetGraph process;
 	private ResourceAllocation resAlloc;
 	private ResourceUtilization resUtil;
@@ -75,8 +78,9 @@ public class Simulator {
 	private PriorityQueue<SimEvent> eventList = new PriorityQueue<SimEvent>();
 	private HashMap<Integer, Case> caseList	 = new HashMap<Integer, Case>();
 	
-	public Simulator(QuantitativeSimulationDialog qsd, WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
-		dlgSim = qsd;
+	public Simulator(//QuantitativeSimulationDialog qsd, 
+			WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
+//		dlgSim = qsd;
 		process = wfpn;
 		resUtil = ru;
 		resAlloc = ru.getResAlloc();
@@ -190,11 +194,20 @@ public class Simulator {
 	
 	private void generateReport(){
 		protocol.info(clckS() + "Simulation beendet.");
-		((FileHandler)((protocol.getHandlers())[0])).close();
+		
+		try {
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		((Handler)((protocol.getHandlers())[0])).close();
+		
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "Protokoll wurde erstellt.");
 //		SimOutputDialog sod = new SimOutputDialog(null, true, this);
 //		sod.setVisible(true);
-		dlgSim.validate();
+//		dlgSim.validate();
 	}
 	
 	private void generateServerList(){
@@ -487,7 +500,7 @@ public class Simulator {
 		protocol.setLevel(Level.ALL);
 		protocol.setUseParentHandlers(false);
 		
-		try {
+		/*try {
 			handler = new FileHandler(protocolName);
 			handler.setLevel(Level.ALL);
 			handler.setFormatter(new SimXMLFormatter(protocolPath));
@@ -497,7 +510,10 @@ public class Simulator {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
+		
+		out = new ByteArrayOutputStream();
+		Handler handler = new StreamHandler(new BufferedOutputStream(out), new SimXMLFormatter(protocolPath));
 		
 		protocol.addHandler(handler);
 		
@@ -529,6 +545,10 @@ public class Simulator {
 	public Logger getProtocol(){
 		return protocol;
 	}
+	
+	public byte[] getProtocolContent(){
+		return out.toByteArray();
+	}
 
 	public String clckS() {
 		String c = String.format("%,.2f", clock);
@@ -549,5 +569,13 @@ public class Simulator {
 		if (l > 0) s += ((SimEvent)list[l - 1]).getName();
 		
 		return s + "]";
+	}
+
+	public String getProtocolPath() {
+		return protocolPath;
+	}
+
+	public void setProtocolPath(String protocolPath) {
+		this.protocolPath = protocolPath;
 	}
 }

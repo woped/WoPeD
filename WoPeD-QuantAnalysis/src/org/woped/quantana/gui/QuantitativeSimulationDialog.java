@@ -1,16 +1,21 @@
 package org.woped.quantana.gui;
 
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -23,7 +28,6 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -54,10 +58,12 @@ import org.woped.quantana.model.TimeModel;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
+import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.SimParameters;
 import org.woped.quantana.simulation.Simulator;
 
-public class QuantitativeSimulationDialog extends JDialog {
+@SuppressWarnings("unused")
+public class QuantitativeSimulationDialog extends JDialog implements MouseMotionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -151,8 +157,8 @@ public class QuantitativeSimulationDialog extends JDialog {
 			Messages.getString("QuantAna.Simulation.Column.Lq"),
 			Messages.getString("QuantAna.Simulation.Column.Ls"),
 			Messages.getString("QuantAna.Simulation.Column.W"),
-			Messages.getString("QuantAna.Simulation.Column.Wq"),
-			Messages.getString("QuantAna.Simulation.Column.Details")
+			Messages.getString("QuantAna.Simulation.Column.Wq")//,
+			//Messages.getString("QuantAna.Simulation.Column.Details")
 	};
 	
 	private String[] ttipsServers = {
@@ -161,8 +167,8 @@ public class QuantitativeSimulationDialog extends JDialog {
 			Messages.getString("QuantAna.Simulation.ToolTip.Lq"),
 			Messages.getString("QuantAna.Simulation.ToolTip.Ls"),
 			Messages.getString("QuantAna.Simulation.ToolTip.W"),
-			Messages.getString("QuantAna.Simulation.ToolTip.Wq"),
-			Messages.getString("QuantAna.Simulation.ToolTip.Details")
+			Messages.getString("QuantAna.Simulation.ToolTip.Wq")//,
+			//Messages.getString("QuantAna.Simulation.ToolTip.Details")
 	};
 	
 	private String[] colResUtil = {
@@ -177,6 +183,18 @@ public class QuantitativeSimulationDialog extends JDialog {
 	
 	private int numServers;
 	
+	private Dialog thisDialog = this;
+	
+	private JButton btnProtocol;
+	
+	private String[] servNames;
+	
+	private ArrayList<JButton> buttonList = new ArrayList<JButton>();
+	
+	private WaitDialog wd;
+	
+	private boolean isRunning = false;
+	
 	/**
 	 * This is the default constructor
 	 */
@@ -187,14 +205,15 @@ public class QuantitativeSimulationDialog extends JDialog {
 		mec = editor.getModelProcessor().getElementContainer();
 		graph = new WorkflowNetGraph(sa, mec);
 		tm = new TimeModel(1, 1.0);
+//		wd = new WaitDialog(this);
+		
+		servNames = graph.getTransitions();
 		
 		initResourceAlloc();
 		
 		numServers = graph.getNumTransitions();
 		
 		initialize();
-		LoggerManager.info(Constants.QUANTANA_LOGGER, Messages
-				.getString("QuantAna.Started"));
 	}
 
 	/**
@@ -380,21 +399,69 @@ public class QuantitativeSimulationDialog extends JDialog {
 			JLabel lblDummy = new JLabel();
 			lblDummy.setMinimumSize(new Dimension(100, 10));
 			statsPanel.add(lblDummy, constraints);
+			
+			JPanel detailsPanel = new JPanel();
+			detailsPanel.setLayout(new GridLayout(numServers, 1));
+			for (int i = 0; i < numServers; i++){
+				JButton b = new JButton("...");
+				b.setActionCommand(Integer.toString(i));
+				b.setEnabled(false);
+				buttonList.add(b);
+				b.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						String cmd = ((JButton)e.getSource()).getActionCommand();
+						int idx = Integer.parseInt(cmd);
+						String name = (String)tableServers.getValueAt(idx, 0);
+						DetailsDialog dd = new DetailsDialog(thisDialog, name);
+					}
+				});
+				
+				b.setMaximumSize(new Dimension(20,10));
+				b.setPreferredSize(new Dimension(20,10));
+				detailsPanel.add(b);
+			}
+			
+			detailsPanel.setMaximumSize(new Dimension(24, numServers * 11));
+			detailsPanel.setPreferredSize(new Dimension(24, numServers * 11));
 
 			constraints.fill = GridBagConstraints.BOTH;
 			constraints.gridx = 0;
 			constraints.gridy = 1;
 			constraints.weighty = 1;
-			statsPanel.add(getServerTablePane(), constraints);
+			statsPanel.add(getServerTablePane(detailsPanel), constraints);
+
 			statsPanel.setMinimumSize(new Dimension(730, 240));
 		}
 		
 		return statsPanel;
 	}
 	
-	private JScrollPane getServerTablePane() {
+	private JScrollPane getServerTablePane(JPanel dp) {
 		if (serverTablePane == null) {
-			serverTablePane = new JScrollPane(getServerTable());
+			JPanel serversPanel = new JPanel();
+			
+			serversPanel.setLayout(new GridBagLayout());
+			GridBagConstraints constraints = new GridBagConstraints();
+			constraints.insets = new Insets(5, 5, 5, 5);
+			constraints.fill = GridBagConstraints.VERTICAL;
+			constraints.anchor = GridBagConstraints.EAST;
+			constraints.weightx = 1;
+			constraints.weighty = 0;
+			constraints.gridx = 0;
+			constraints.gridy = 0;
+			constraints.gridwidth = 1;
+			constraints.gridheight = 1;
+			serversPanel.add(getServerTable(), constraints);
+			
+			constraints.gridx = 1;
+			constraints.gridy = 0;
+			constraints.weightx = 0;
+			serversPanel.add(dp, constraints);
+			
+			serversPanel.setMinimumSize(new Dimension(720, 210));
+			
+//			serverTablePane = new JScrollPane(getServerTable());
+			serverTablePane = new JScrollPane(serversPanel);
 			serverTablePane.setBorder(BorderFactory.createEmptyBorder());
 			serverTablePane.setWheelScrollingEnabled(true);
 			serverTablePane.setMinimumSize(new Dimension(720, 210));
@@ -405,7 +472,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 	private JTable getServerTable(){
 		if (tableServers == null) {
 			serverTableMatrix = new Object[numServers][colServers.length];
-			String[] servNames = graph.getTransitions();
+//			String[] servNames = graph.getTransitions();
 			
 			for (int i = 0; i < numServers; i++){
 				serverTableMatrix[i][0] = servNames[i];
@@ -440,8 +507,12 @@ public class QuantitativeSimulationDialog extends JDialog {
 			
 			tableServers.setDefaultRenderer(Object.class,
 					new MyTableCellRenderer());
-
-			tableServers.setDefaultEditor(JButton.class, new ButtonCellEditor());
+			
+//			tableServers.setDefaultRenderer(JButton.class, new ButtonCellRenderer());
+//
+//			tableServers.setDefaultEditor(JButton.class, new ButtonCellEditor());
+			
+			tableServers.setEnabled(false);
 		}
 		
 		return tableServers;
@@ -522,6 +593,8 @@ public class QuantitativeSimulationDialog extends JDialog {
 			
 			tableResUtil.setDefaultRenderer(Object.class,
 					new MyTableCellRenderer());
+			
+			tableResUtil.setEnabled(false);
 		}
 		
 		return tableResUtil;
@@ -546,7 +619,7 @@ public class QuantitativeSimulationDialog extends JDialog {
 			}
 			else if (column == 6){
 				setHorizontalAlignment(CENTER);
-				JButton b = new JButton("...");
+				/*JButton b = new JButton("...");
 				b.setSize(20,10);
 				b.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
@@ -554,7 +627,8 @@ public class QuantitativeSimulationDialog extends JDialog {
 					}
 				});
 				
-				return b;
+				return b;*/
+				return this;
 			}
 			else {
 				setHorizontalAlignment(RIGHT);
@@ -976,8 +1050,6 @@ public class QuantitativeSimulationDialog extends JDialog {
 			constraints.weighty = 0;
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
-//			constraints.anchor = GridBagConstraints.LINE_END;
-//			constraints.fill = GridBagConstraints.HORIZONTAL;
 
 			JButton btnStart = new JButton();
 			btnStart.setText(Messages.getTitle("QuantAna.Button.Start"));
@@ -1009,17 +1081,20 @@ public class QuantitativeSimulationDialog extends JDialog {
 			constraints.gridy = 1;
 			buttonPanel.add(btnConf, constraints);
 			
-			JButton btnProtocol = new JButton();
+			btnProtocol = new JButton();
 			btnProtocol.setText(Messages.getTitle("QuantAna.Button.Protocol"));
 			btnProtocol.setIcon(Messages.getImageIcon("QuantAna.Button.Protocol"));
+			btnProtocol.setEnabled(false);
 			btnProtocol.setMinimumSize(new Dimension(120, 25));
 			btnProtocol.setMaximumSize(new Dimension(120, 25));
 			btnProtocol.setPreferredSize(new Dimension(120, 25));
 			btnProtocol.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
 //					getProtocol();
+					ProtocolDialog pd = new ProtocolDialog(thisDialog, sim.getProtocolContent());
 				}
 			});
+			
 			constraints.gridx = 0;
 			constraints.gridy = 2;
 			buttonPanel.add(btnProtocol, constraints);
@@ -1033,7 +1108,44 @@ public class QuantitativeSimulationDialog extends JDialog {
 	}
 
 	public void updContents() {
-//		getContentPanel().validate();
+		ServerTableModel stm = serverTableModel;
+		ResUtilTableModel rtm = resUtilTableModel;
+		double clock = sim.getClock();
+		HashMap<String, Server> serv = sim.getServerList();
+		HashMap<String, Resource> res = resAlloc.getResources();
+		
+		for (int i = 0; i < numServers; i++){
+			String id = produceID((String)stm.getValueAt(i, 0));
+			Server s = serv.get(id);
+			int servStarted = s.getNumAccess();
+			int servFinished = s.getNumDeparture();
+			double qlen = s.getQueueLen() / clock;
+			double nsrv = s.getAvgNumCasesServing() / clock; 
+			String l = String.format("%,.2f", qlen + nsrv);
+			String lq = String.format("%,.2f", qlen);
+			String ls = String.format("%,.2f", nsrv);
+			String w = String.format("%,.2f", s.getAvgServiceTime() / servFinished);
+			String wq = String.format("%,.2f", s.getWaitTime() / servStarted);
+			stm.setValueAt(l, i, 1);
+			stm.setValueAt(lq, i, 2);
+			stm.setValueAt(ls, i, 3);
+			stm.setValueAt(w, i, 4);
+			stm.setValueAt(wq, i, 5);
+		}
+		
+		for (int i = 0; i < resObjNum; i++){
+			String name = (String)rtm.getValueAt(i, 0);
+			Resource r = res.get(name);
+			String util = String.format("%,.2f", Double.valueOf(r.getBusyTime() / clock));
+			rtm.setValueAt(util, i, 1);
+		}
+	}
+	
+	private String produceID(String key) {
+		if (key.equals("Protocol") || key.equals("Process"))
+			return key;
+		else
+			return key.substring(key.indexOf("(") + 1, key.indexOf(")"));
 	}
 
 	public WorkflowNetGraph getGraph() {
@@ -1041,6 +1153,14 @@ public class QuantitativeSimulationDialog extends JDialog {
 	}
 
 	private void startSimulation() {
+		LoggerManager.info(Constants.QUANTANA_LOGGER, Messages
+				.getString("QuantAna.Started"));
+		
+		isRunning = true;
+		/*Runnable r = new WaitDialogRunnable();
+		Thread t = new Thread(r);
+		t.start();*/
+		
 		SimParameters sp = new SimParameters();
 		lambda = Double.parseDouble(txtLambda.getText());
 		period = Double.parseDouble(txtPeriod.getText());
@@ -1097,9 +1217,15 @@ public class QuantitativeSimulationDialog extends JDialog {
 			sp.setResUse(Simulator.RES_NOT_USED);
 		}
 
-		sim = new Simulator(this, graph, new ResourceUtilization(resAlloc), sp);
+		sim = new Simulator(//this, 
+				graph, new ResourceUtilization(resAlloc), sp);
 		sim.start();
-//		updContents();
+		
+//		wd.setVisible(false);
+		isRunning = false;
+
+		activateDetails();
+		updContents();
 	}
 
 	private void initResourceAlloc() {
@@ -1236,73 +1362,44 @@ public class QuantitativeSimulationDialog extends JDialog {
 			return key;
 		else
 			return key.substring(key.indexOf("(") + 1, key.indexOf(")"));
-	}
+	}*/
 	
-	public void getProtocol() {
-		File f = (new File(sim.getProtocolName())).getAbsoluteFile();
+	/*public void getProtocol() {
 
 		try {
 			XMLReader xr = XMLReaderFactory.createXMLReader();
 
-			handler = new DefaultHandler() {
+			DefaultHandler handler = new DefaultHandler() {
 
 				private long min = new Date().getTime();
 
 				private long max = 0;
-
-//				private int count = 0;
-//				private int rec = 0;
 				
 				private boolean millis = false;
 				private boolean msg = false;
 
 				public void startDocument() {
-//					protocolText += "--- Protocol Start ---\n\n";
-					txtProtocol.append("--- Protocol Start ---\n\n");
+					protocol += "--- Protocol Start ---\n\n";
+//					txtProtocol.append("--- Protocol Start ---\n\n");
 				}
 
 				public void startElement(String uri, String lname,
 						String qname, Attributes attr) {
 					try {
-//						if (lname.equalsIgnoreCase("record"))
-//							rec++;
-//
-//						// if (lname.equalsIgnoreCase("date")) count = 0;
-						
 						if (lname.equalsIgnoreCase("millis")) millis = true;
 						
 						if (lname.equalsIgnoreCase("message")) msg = true;
 
 					} catch (Exception e) {
-						// e.printStackTrace();
+						e.printStackTrace();
 					}
 				}
 
 				public void characters(char[] ch, int start, int length) {
-					count++;
-					if (rec == 1 && count == 2) {
-						String s = String.copyValueOf(ch, start, length);
-						long l = Long.parseLong(s);
-						min = l;
-						max = l;
-					}
-
-					if (rec > 1 && count == 2) {
-						String s = String.copyValueOf(ch, start, length);
-						long l = Long.parseLong(s);
-						if (l > max)
-							max = l;
-					}
-
-					if (count == 9) {
-						String s = String.copyValueOf(ch, start, length);
-//						protocolText += s + "\n";
-						txtProtocol.append(s + "\n");
-					}
 					
 					String s = String.copyValueOf(ch, start, length);
 					
-					if (msg) txtProtocol.append(s + "\n");
+					if (msg) protocol += s + "\n";
 					
 					if (millis)	{
 						long l = Long.parseLong(s);
@@ -1312,38 +1409,62 @@ public class QuantitativeSimulationDialog extends JDialog {
 				}
 
 				public void endElement(String uri, String lname, String qname) {
-//					if (lname.equalsIgnoreCase("record"))
-//						count = 0;
-					
 					if (lname.equalsIgnoreCase("millis")) millis = false;
 					
 					if (lname.equalsIgnoreCase("message")) msg = false;
 				}
 
 				public void endDocument() {
-//					protocolText += "\n\nsimulation took " + (max - min) + " ms";
-//					protocolText += "\n\n--- Protocol End ---";
+					protocol += "\n\nsimulation took " + (max - min) + " ms";
+					protocol += "\n\n--- Protocol End ---";
 					
-					txtProtocol.append("\n\nsimulation took " + (max - min) + " ms");
-					txtProtocol.append("\n\n--- Protocol End ---");
+//					txtProtocol.append("\n\nsimulation took " + (max - min) + " ms");
+//					txtProtocol.append("\n\n--- Protocol End ---");
 				}
 			};
 
 			xr.setContentHandler(handler);
 			xr.setErrorHandler(handler);
 
-			FileReader r = new FileReader(f);
-			xr.parse(new InputSource(r));
+			in = new ByteArrayInputStream(sim.getProtocolContent());
+			xr.parse(new InputSource(in));
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-//		return protocolText;
 	}*/
 	
 	public Simulator getSimulator() {
 		return sim;
+	}
+	
+	private void activateDetails(){
+		for (JButton b : buttonList) b.setEnabled(true);
+		
+		btnProtocol.setEnabled(true);
+	}
+
+	public boolean isRunning() {
+		return isRunning;
+	}
+	
+	/*class WaitDialogRunnable implements Runnable {
+		
+		public void run(){
+			if (wd == null) wd = new WaitDialog(QuantitativeSimulationDialog.this);
+			
+			wd.setVisible(true);
+			while (isRunning) {}
+			wd.setVisible(false);
+		}
+	}*/
+	
+	public void mouseMoved(MouseEvent e){
+		if (isRunning) setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+	}
+	
+	public void mouseDragged(MouseEvent e){
+		
 	}
 	
 } // @jve:decl-index=0:visual-constraint="4,4"
