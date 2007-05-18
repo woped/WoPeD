@@ -28,7 +28,6 @@
 		<mkdir dir="dist" />
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
-		<mkdir dir="dist/log" />
 		<mkdir dir="dist/doc" />
 		<mkdir dir="dist/doc/html" />
 		<mkdir dir="dist/doc/html/de" />
@@ -61,7 +60,6 @@
 			
 	<target name="copyfiles">
 	    <copy todir="dist/nets" file="build-tools/setup/Example.pnml" />
-	    <copy todir="dist/log"  file="../WoPeD-StandaloneRunner/log/logger.dtd" />	
 		<copy todir="dist/lib"  file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
 		<copy todir="dist/lib"  file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
 		<copy todir="dist/lib"  file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
@@ -181,7 +179,6 @@
 	<target name="purge">
 		<delete dir="dist/bin" />
 		<delete dir="dist/nets" />
-		<delete dir="dist/log" />
 		<delete dir="dist/doc/html/images" />
 		<delete dir="dist/doc/html/de" />
 		<delete dir="dist/doc/html/en" />
