@@ -95,8 +95,6 @@ public class CapacityAnalysisDialog extends JDialog {
 	private ResourceAllocation resAlloc;
 
 	private int numResCls;
-
-//	private int numTrans = 0;
 	
 	private int numTransGT0 = 0;
 
@@ -106,8 +104,7 @@ public class CapacityAnalysisDialog extends JDialog {
 	
 	private HashMap<Key, Node> unfoldedNet = new HashMap<Key, Node>();
 
-	// Capacity Plan Tab
-	private String[] colNames = {
+	private String[] colTasks = {
 			Messages.getString("QuantAna.CapacityPlanning.Column.Taskname"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Servicetime"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Workitemspercase"),
@@ -117,13 +114,13 @@ public class CapacityAnalysisDialog extends JDialog {
 			Messages.getString("QuantAna.CapacityPlanning.Column.Grouprole")
 			};
 
-	private String[] colNames2 = {
+	private String[] colResources = {
 			Messages.getString("QuantAna.CapacityPlanning.Column.Resourceclass"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.AggregateTime"),
 			Messages.getString("QuantAna.CapacityPlanning.Column.Numresources") 
 			};
 
-	private String[] colToolTips1 = {
+	private String[] colToolTipsTasks = {
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Taskname"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Servicetime"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Workitemspercase"),
@@ -133,7 +130,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Grouprole")
 			};
 	
-	private String[] colToolTips2 = {
+	private String[] colToolTipsResources = {
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Resourceclass"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.AggregateTime"),
 			Messages.getString("QuantAna.CapacityPlanning.Tooltip.Numresources") 
@@ -281,7 +278,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			constraints.gridx = 0;
 			constraints.gridy = 0;
 			paramPanel.add(jp, constraints);
-			constraints.insets = new Insets(20, 100, 0, 10);
+			constraints.insets = new Insets(10, 100, 0, 5);
 			constraints.gridx = 1;
 			constraints.gridy = 0;
 			paramPanel.add(getButtonPanel(), constraints);
@@ -410,6 +407,21 @@ public class CapacityAnalysisDialog extends JDialog {
 			constraints.gridx = 0;
 			constraints.gridy = 1;
 			buttonPanel.add(btnConf, constraints);
+
+			JButton btnClose = new JButton();
+			btnClose.setText(Messages.getTitle("QuantAna.Button.Close"));
+			btnClose.setIcon(Messages.getImageIcon("QuantAna.Button.Close"));
+			btnClose.setMinimumSize(new Dimension(120, 25));
+			btnClose.setMaximumSize(new Dimension(120, 25));
+			btnClose.setPreferredSize(new Dimension(120, 25));
+			btnClose.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					dispose();
+				}
+			});
+			constraints.gridx = 0;
+			constraints.gridy = 2;
+			buttonPanel.add(btnClose, constraints);		
 		}
 		return buttonPanel;
 	}
@@ -645,8 +657,8 @@ public class CapacityAnalysisDialog extends JDialog {
 
 	private JTable getTasksTable() {
 		if (tasksTable == null) {
-			tasksMatrix = new double[numTransGT0 + 1][colNames.length - 2];
-			tableTasksMatrix = new Object[numTransGT0 + 1][colNames.length];
+			tasksMatrix = new double[numTransGT0 + 1][colTasks.length - 2];
+			tableTasksMatrix = new Object[numTransGT0 + 1][colTasks.length];
 			String[] trans = graph.getTransitionsGT0();
 			String[] gr = getGroupRoles(trans);
 			double[] times = graph.getTimesGT0();
@@ -671,7 +683,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			tableTasksMatrix[j][0] = Messages
 					.getString("QuantAna.CapacityPlanning.Aggregate");
 
-			tmTasks = new TasksTableModel(colNames, tableTasksMatrix);
+			tmTasks = new TasksTableModel(colTasks, tableTasksMatrix);
 			tmTasks.addTableModelListener(new TableModelListener() {
 				public void tableChanged(TableModelEvent e) {
 				}
@@ -689,7 +701,7 @@ public class CapacityAnalysisDialog extends JDialog {
 							int index = columnModel.getColumnIndexAtX(p.x);
 							int realIndex = columnModel.getColumn(index)
 									.getModelIndex();
-							return colToolTips1[realIndex];
+							return colToolTipsTasks[realIndex];
 						}
 					};
 					jt.setDefaultRenderer(new MyTableHeaderRenderer());
@@ -706,14 +718,14 @@ public class CapacityAnalysisDialog extends JDialog {
 
 	private JTable getResourcesTable() {
 		if (resourcesTable == null) {
-			resMatrix = new double[numResCls][colNames2.length - 1];
-			tableResMatrix = new Object[numResCls][colNames2.length];
+			resMatrix = new double[numResCls][colResources.length - 1];
+			tableResMatrix = new Object[numResCls][colResources.length];
 			ArrayList<ResourceClassTaskAllocation> resTab = resAlloc
 					.getResClsTskAlloc().getTable();
 			for (int i = 0; i < resTab.size(); i++) {
 				tableResMatrix[i][0] = resTab.get(i).getResClass();
 			}
-			tmRes = new ResTableModel(colNames2, tableResMatrix);
+			tmRes = new ResTableModel(colResources, tableResMatrix);
 			tmRes.addTableModelListener(new TableModelListener() {
 				public void tableChanged(TableModelEvent e) {
 					// JOptionPane.showMessageDialog(null, e.toString());
@@ -733,7 +745,7 @@ public class CapacityAnalysisDialog extends JDialog {
 							int index = columnModel.getColumnIndexAtX(p.x);
 							int realIndex = columnModel.getColumn(index)
 									.getModelIndex();
-							return colToolTips2[realIndex];
+							return colToolTipsResources[realIndex];
 						}
 					};
 					jt.setDefaultRenderer(new MyTableHeaderRenderer());
@@ -1073,7 +1085,7 @@ public class CapacityAnalysisDialog extends JDialog {
 	}
 
 	private void updPrecision() {
-		int numCols1 = colNames.length;
+		int numCols1 = colTasks.length;
 
 		for (int i = 0; i < numTransGT0; i++) {
 			for (int j = 0; j < numCols1 - 2; j++) {
