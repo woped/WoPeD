@@ -1326,7 +1326,10 @@ public class EditorVC extends JPanel implements KeyListener,
 					.isInsertCOPYwhenCopied())
 				currentMap.setName(currentMap.getName() + "_copy");
 			currentMap.setEditOnCreation(false);
-			tempElement = (AbstractElementModel)create(currentMap);
+			
+			GroupModel tempElement2 = (GroupModel)(create(currentMap));
+			tempElement = tempElement2.getMainElement();
+			
 			/* change arc source/target */
 			Iterator arcIter = pasteArcs.keySet().iterator();
 			while (arcIter.hasNext())
