@@ -1,5 +1,7 @@
 package org.woped.quantana.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dialog;
@@ -33,7 +35,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.RootPaneContainer;
 import javax.swing.SwingConstants;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -440,7 +441,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private JPanel getServerTablePanel(){
 		if (serverTablePanel == null) {
 			serverTablePanel = new JPanel();
-			serverTablePanel.add(getServerTable());
+			serverTablePanel.setLayout(new BorderLayout());
+			
+			getServerTable();
+			
+			serverTablePanel.add(tableServers.getTableHeader(), BorderLayout.PAGE_START);
+			serverTablePanel.add(tableServers, BorderLayout.CENTER);
 		}
 		
 		return serverTablePanel;
@@ -497,7 +503,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			
 			JLabel lblDetails = new JLabel();
 			lblDetails.setFont(DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
-			lblDetails.setBackground(DefaultStaticConfiguration.DEFAULT_HEADER_BACKGROUND_COLOR);
+			lblDetails.setBackground(Color.DARK_GRAY);//DefaultStaticConfiguration.DEFAULT_HEADER_BACKGROUND_COLOR);
 			lblDetails.setPreferredSize(new Dimension(40,10));
 			lblDetails.setText(Messages.getString("QuantAna.Simulation.Column.Details"));
 			lblDetails.setToolTipText(Messages.getString("QuantAna.Simulation.ToolTip.Details"));
@@ -518,9 +524,9 @@ public class QuantitativeSimulationDialog extends JDialog implements
 					}
 				});
 
-				b.setMinimumSize(new Dimension(20, 10));
-				b.setMaximumSize(new Dimension(20, 10));
-				b.setPreferredSize(new Dimension(20, 10));
+				b.setMinimumSize(new Dimension(20, 15));
+				b.setMaximumSize(new Dimension(20, 15));
+				b.setPreferredSize(new Dimension(20, 15));
 				detailsPanel.add(b);
 			}
 		}
