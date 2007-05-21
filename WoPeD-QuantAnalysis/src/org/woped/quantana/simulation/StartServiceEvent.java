@@ -8,15 +8,17 @@ public class StartServiceEvent extends SimEvent {
 	
 	private int type = SimEvent.START_SERVICE_EVENT;
 	
+	private Activity act;
 	private Server server;
 	private Case c;
 	private Resource r;
 	
-	public StartServiceEvent(Simulator sim, double time, Server server, Case c, Resource r){
+	public StartServiceEvent(Simulator sim, double time, Activity a) {//Server server, Case c, Resource r){
 		super(sim, time);
-		this.server = server;
-		this.c = c;
-		this.r = r;
+		act = a;
+		this.server = a.getServer();
+		this.c = a.get_case();
+		this.r = a.getResource();
 		
 		setName(getNewName());
 	}
@@ -73,7 +75,7 @@ public class StartServiceEvent extends SimEvent {
 				protocol.info(sim.clckS() + "Gebundene Ressourcen: " + ru.printUsedResources());
 			}
 			
-			StopServiceEvent se = new StopServiceEvent(sim, depart, server, c, r);
+			StopServiceEvent se = new StopServiceEvent(sim, depart, act);
 			sim.getEventList().add(se);
 			s = sim.clckS() + "STOP_SERVICE_EVENT \"" + se.getName() + "\" für Case # " + c.getId();
 			if (r != null) s  += " und Ressource \"" + r.getName() + "\" wurde erzeugt.";

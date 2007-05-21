@@ -32,13 +32,15 @@ public class Server {
 	private int maxNumCasesInParallel = 0;
 	private int status = 0;
 	private ProbabilityDistribution distribution;
-	//private Case curCase = null;
-	private LinkedList<Case> queue = new LinkedList<Case>();
+//	private LinkedList<Case> queue = new LinkedList<Case>();
+	private LinkedList<WorkItem> queue = new LinkedList<WorkItem>();
 	private ArrayList<SuccServer> successor = new ArrayList<SuccServer>();
 	private Random choice;
 	
 	private String role;
 	private String group;
+	
+	private int type;
 	
 	public Server(Simulator sim, String id, String name, ProbabilityDistribution dist){
 		this.id = id;
@@ -81,11 +83,11 @@ public class Server {
 		this.status = status;
 	}
 
-	public LinkedList<Case> getQueue() {
+	public LinkedList<WorkItem> getQueue() {
 		return queue;
 	}
 
-	public void setQueue(LinkedList<Case> queue) {
+	public void setQueue(LinkedList<WorkItem> queue) {
 		this.queue = queue;
 	}
 
@@ -97,44 +99,52 @@ public class Server {
 		this.successor = successor;
 	}
 	
-	public Server gotoNextServer(){
+	public ArrayList<Server> gotoNextServer(){
 		int num = this.successor.size();
-		
+		ArrayList<Server> list = new ArrayList<Server>();
+
 		switch (num){
 		case 0:
-			return null;
-			
+			list = null;
+			break;
 		case 1:
-			return this.successor.get(0).getServer();
-			
+			list.add(this.successor.get(0).getServer());
+			break;
 		default:
-			int[][] probs = new int[num][3];
-			for (int i = 0; i < num; i++){
-				probs[i][0] = i;
-				probs[i][1] = (Double.valueOf(successor.get(i).getProbability() * 100)).intValue();
-				if (i > 0){
-					probs[i][2] = probs[i][1] + probs[i-1][2];
-				} else {
-					probs[i][2] = probs[i][1];
-				}
-			}
-			
-			int rnd = choice.nextInt(100);
-			int idx = -1;
-			for (int i = 0; i < num; i++){
-				if (i == 0){
-					if (rnd < probs[i][2]){
-						idx = i;
-					}
-				} else {
-					if ((rnd >= probs[i-1][2]) && (rnd < probs[i][2])){
-						idx = i;
+			if (this instanceof ANDSplitServer){
+				for (SuccServer s : successor)
+					list.add(s.getServer());
+			} else {
+				int[][] probs = new int[num][3];
+				for (int i = 0; i < num; i++){
+					probs[i][0] = i;
+					probs[i][1] = (Double.valueOf(successor.get(i).getProbability() * 100)).intValue();
+					if (i > 0){
+						probs[i][2] = probs[i][1] + probs[i-1][2];
+					} else {
+						probs[i][2] = probs[i][1];
 					}
 				}
+
+				int rnd = choice.nextInt(100);
+				int idx = -1;
+				for (int i = 0; i < num; i++){
+					if (i == 0){
+						if (rnd < probs[i][2]){
+							idx = i;
+						}
+					} else {
+						if ((rnd >= probs[i-1][2]) && (rnd < probs[i][2])){
+							idx = i;
+						}
+					}
+				}
+
+				list.add(successor.get(idx).getServer());
 			}
-			
-			return successor.get(idx).getServer();
 		}
+
+		return list;
 	}
 
 	public double getNextServTime(){
@@ -278,9 +288,9 @@ public class Server {
 		this.role = role;
 	}
 	
-	public void enqueue(Case c){
-		queue.add(c);
-		protocol.info(sim.clckS() + "Case # " + c.getId() + " zur Warteschlange von \"" + name + "(" + id + ")\" hinzugefügt.");
+	public void enqueue(WorkItem wi){
+		queue.add(wi);
+		protocol.info(sim.clckS() + "Case # " + wi.get_case().getId() + " zur Warteschlange von \"" + name + "(" + id + ")\" hinzugefügt.");
 		protocol.info(sim.clckS() + "Warteschlange von Server \"" + name + "(" + id + ")\" : " + printQueue());
 		
 		int l = queue.size();
@@ -288,17 +298,17 @@ public class Server {
 		protocol.info(sim.clckS() + "Maximale Länge der Warteschlange bisher ist " + maxQueueLength);
 	}
 	
-	public Case dequeue(){
+	public WorkItem dequeue(){
 		int qDisc = sim.getQueueDiscipline();
-		Case c;
+		WorkItem wi;
 		
-		if (qDisc == Simulator.QD_FIFO) c = queue.removeFirst();
-		else c = queue.removeLast();
+		if (qDisc == Simulator.QD_FIFO) wi = queue.removeFirst();
+		else wi = queue.removeLast();
 		
-		protocol.info(sim.clckS() + "Case # " + c.getId() + " wurde aus Warteschlange von Server \"" + name + "(" + id + ")\" entfernt.");
+		protocol.info(sim.clckS() + "Case # " + wi.get_case().getId() + " wurde aus Warteschlange von Server \"" + name + "(" + id + ")\" entfernt.");
 		protocol.info(sim.clckS() + "Warteschlange von Server \"" + name + "(" + id + ")\" : " + printQueue());
 		
-		return c;
+		return wi;
 	}
 	
 	public void updateUtilStats(double now, double lastEvent){
@@ -336,13 +346,15 @@ public class Server {
 		
 		if (l > 1){
 			for (int i = 0; i < l - 1; i++) {
-				s += queue.get(i).getId() + ",";
+				s += queue.get(i).get_case().getId() + ",";
 			}
 		}
 		
-		if (l > 0) s += queue.get(l - 1).getId();
+		if (l > 0) s += queue.get(l - 1).get_case().getId();
 		
-		return s + "]";
+		s += "]";
+		
+		return s;
 	}
 
 	public double getAvgNumCasesServing() {
@@ -359,6 +371,18 @@ public class Server {
 
 	public void setAvgServiceTime(double avgServiceTime) {
 		this.avgServiceTime = avgServiceTime;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+	
+	public void doService(){
+		
 	}
 }
 

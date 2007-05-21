@@ -33,7 +33,8 @@ public class BirthEvent extends SimEvent {
 		if (cc > sim.getMaxNumCasesInSystem()) sim.setMaxNumCasesInSystem(cc);
 		protocol.info(sim.clckS() + "Maximale Anzahl von Cases im Prozess bisher ist " + sim.getMaxNumCasesInSystem());
 		
-		ArrivalEvent ae = new ArrivalEvent(sim, c.getCurrentArrivalTime(), sim.getStartServer(), c);
+		WorkItem wi = new WorkItem(c, sim.getStartServer());
+		ArrivalEvent ae = new ArrivalEvent(sim, c.getCurrentArrivalTime(), wi);
 		sim.getEventList().add(ae);
 		protocol.info(sim.clckS() + "ARRIVAL_EVENT \"" + ae.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
 		

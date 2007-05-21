@@ -1,5 +1,7 @@
 package org.woped.quantana.simulation;
 
+import java.util.ArrayList;
+
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
 
@@ -8,13 +10,15 @@ public class DepartureEvent extends SimEvent {
 	
 	private int type = SimEvent.DEPARTURE_EVENT;
 	
+	private WorkItem wi;
 	private Server server;
 	private Case c;
 	
-	public DepartureEvent(Simulator sim, double time, Server server, Case c){
+	public DepartureEvent(Simulator sim, double time, WorkItem wi) {//Server server, Case c){
 		super(sim, time);
-		this.server = server;
-		this.c = c;
+		this.wi = wi;
+		this.server = wi.getServer();
+		this.c = wi.get_case();
 		
 		setName(getNewName());
 	}
@@ -28,17 +32,9 @@ public class DepartureEvent extends SimEvent {
 		
 		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 		
-		/*if (server.hasFreeCapacity() && server.isIdle() && !(server.getQueue().isEmpty())){
-			Case c2 = server.dequeue();
-			Resource r = ru.chooseResourceFromFreeResources(server.getGroup(), server.getRole());
-			
-			StartServiceEvent se = new StartServiceEvent(sim, time, server, c2, r);
-			sim.getEventList().add(se);
-		}*/
-		
 		if (!(server.getQueue().isEmpty())){
 			protocol.info(sim.clckS() + "Inhalt der Warteschlange von Server \"" + server.getName() + "(" + server.getId() + ")\": " + server.printQueue());
-			Case c2 = server.dequeue();
+			Case c2 = server.dequeue().get_case();
 			protocol.info(sim.clckS() + "Case # " + c2.getId() + " wurde aus Warteschlange entfernt.");
 			
 			if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
@@ -50,17 +46,19 @@ public class DepartureEvent extends SimEvent {
 			}
 		}
 		
-		Server nextServer = server.gotoNextServer();
+		ArrayList<Server> nextServer = server.gotoNextServer();
 		if (nextServer == null){
 			DeathEvent de = new DeathEvent(sim, time, c);
 			sim.getEventList().add(de);
 			protocol.info(sim.clckS() + "Case # " + c.getId() + " verläßt den Prozess.");
 			protocol.info(sim.clckS() + "DEATH_EVENT \"" + de.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
 		} else {
-			ArrivalEvent ae = new ArrivalEvent(sim, time, nextServer, c);
-			sim.getEventList().add(ae);
-			protocol.info(sim.clckS() + "Case # " + c.getId() + " wird an Server \"" + nextServer.getName() + "(" + nextServer.getId() + ")\" weitergeleitet.");
-			protocol.info(sim.clckS() + "ARRIVAL_EVENT \"" + ae.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
+			for (Server s : nextServer){
+				ArrivalEvent ae = new ArrivalEvent(sim, time, wi);
+				sim.getEventList().add(ae);
+				protocol.info(sim.clckS() + "Case # " + c.getId() + " wird an Server \"" + s.getName() + "(" + s.getId() + ")\" weitergeleitet.");
+				protocol.info(sim.clckS() + "ARRIVAL_EVENT \"" + ae.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
+			}
 		}
 		
 		server.incNumDeparture(1);
@@ -80,7 +78,8 @@ public class DepartureEvent extends SimEvent {
 			protocol.info(sim.clckS() + "Gebundene Ressourcen: " + ru.printUsedResources());
 		}
 		
-		StartServiceEvent se = new StartServiceEvent(sim, time, server, c, r);
+		Activity act = new Activity(wi, r);
+		StartServiceEvent se = new StartServiceEvent(sim, time, act);
 		sim.getEventList().add(se);
 		protocol.info(sim.clckS() + "START_SERVICE_EVENT \"" + se.getName() + "\" für Case # " + c.getId() + " am Server \"" + server.getName() + "(" + server.getId() + ")\" wurde erzeugt.");
 	}

@@ -26,6 +26,7 @@ public class Node {
 	private int iteration = 0;
 	private double tempRuns = 0.0;
 	private boolean andJoin = false;
+	private boolean andSplit = false;
 	private boolean joinReached = false;
 	
 	private double time = 0.0;
@@ -220,5 +221,13 @@ public class Node {
 	
 	public String getGroupRole(){
 		return getGroup() + " / " + getRole();
+	}
+
+	public boolean isAndSplit() {
+		return andSplit;
+	}
+
+	public void setAndSplit(boolean andSplit) {
+		this.andSplit = andSplit;
 	}
 }

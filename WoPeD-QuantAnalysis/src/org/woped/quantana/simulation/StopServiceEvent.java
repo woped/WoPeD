@@ -12,11 +12,11 @@ public class StopServiceEvent extends SimEvent {
 	private Case c;
 	private Resource r;
 	
-	public StopServiceEvent(Simulator sim, double time, Server server, Case c, Resource r){
+	public StopServiceEvent(Simulator sim, double time, Activity a) {//Server server, Case c, Resource r){
 		super(sim, time);
-		this.server = server;
-		this.c = c;
-		this.r = r;
+		this.server = a.getServer();
+		this.c = a.get_case();
+		this.r = a.getResource();
 		
 		setName(getNewName());
 	}
@@ -61,7 +61,8 @@ public class StopServiceEvent extends SimEvent {
 			}
 		}
 		
-		DepartureEvent de = new DepartureEvent(sim, time, server, c);
+		WorkItem wi = new WorkItem(c, server);
+		DepartureEvent de = new DepartureEvent(sim, time, wi);
 		sim.getEventList().add(de);
 		protocol.info(sim.clckS() + "DEPARTURE_EVENT \"" + de.getName() + "\" für Case # " + c.getId() + " vom Server \"" + server.getName() + "(" + server.getId() + ")\" wurde erzeugt.");
 		

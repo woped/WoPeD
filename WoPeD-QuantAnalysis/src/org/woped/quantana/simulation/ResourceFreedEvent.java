@@ -29,12 +29,13 @@ public class ResourceFreedEvent extends SimEvent {
 
 			while ((!(server.getQueue().isEmpty())) && (server.hasFreeCapacity())){
 				protocol.info(sim.clckS() + "Inhalt der Warteschlange von Server \"" + server.getName() + "(" + server.getId() + ")\": " + server.printQueue());
-				Case c2 = server.dequeue();
+				Case c2 = server.dequeue().get_case();
 				Resource r = ru.chooseResourceFromFreeResources(server.getGroup(), server.getRole());
 				protocol.info(sim.clckS() + "Server \"" + server.getName() + "(" + server.getId() + ")\" bedient als nächstes Case # " + c2.getId() + " durch Ressource \"" + r.getName() + "\".");
 
 				if (r != null){
-					StartServiceEvent se = new StartServiceEvent(sim, time, server, c2, r);
+					Activity act = new Activity(c2, server, r);
+					StartServiceEvent se = new StartServiceEvent(sim, time, act);
 					sim.getEventList().add(se);
 					protocol.info(sim.clckS() + "START_SERVICE_EVENT \"" + se.getName() + "\" für Case # " + c2.getId() + "am Server \"" + server.getName() + "(" + server.getId() + ")\" wurde erzeugt.");
 				}

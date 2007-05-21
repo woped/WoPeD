@@ -136,6 +136,10 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private JTable tableServers;
 
 	private JScrollPane serverTablePane;
+	
+	private JPanel serverTablePanel;
+	
+	private JPanel detailsPanel;
 
 	private Object[][] serverTableMatrix;
 
@@ -153,7 +157,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private Simulator sim;
 	
-	private Thread thr;
+//	private Thread thr;
 
 	private String[] colServers = {
 			Messages.getString("QuantAna.Simulation.Column.Names"),
@@ -161,8 +165,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Messages.getString("QuantAna.Simulation.Column.Lq"),
 			Messages.getString("QuantAna.Simulation.Column.Ls"),
 			Messages.getString("QuantAna.Simulation.Column.W"),
-			Messages.getString("QuantAna.Simulation.Column.Wq") // ,
-	// Messages.getString("QuantAna.Simulation.Column.Details")
+			Messages.getString("QuantAna.Simulation.Column.Wq")
 	};
 
 	private String[] ttipsServers = {
@@ -171,8 +174,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Messages.getString("QuantAna.Simulation.ToolTip.Lq"),
 			Messages.getString("QuantAna.Simulation.ToolTip.Ls"),
 			Messages.getString("QuantAna.Simulation.ToolTip.W"),
-			Messages.getString("QuantAna.Simulation.ToolTip.Wq") // ,
-	// Messages.getString("QuantAna.Simulation.ToolTip.Details")
+			Messages.getString("QuantAna.Simulation.ToolTip.Wq")
 	};
 
 	private String[] colResUtil = {
@@ -391,39 +393,14 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.fill = GridBagConstraints.BOTH;
 			constraints.anchor = GridBagConstraints.WEST;
 			constraints.weightx = 0;
-			constraints.weighty = 0;
+			constraints.weighty = 1;
 			constraints.gridx = 0;
 			constraints.gridy = 0;
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
-
-			JPanel detailsPanel = new JPanel();
-			detailsPanel.setLayout(new GridLayout(numServers, 1));
-			for (int i = 0; i < numServers; i++) {
-				JButton b = new JButton("...");
-				b.setActionCommand(Integer.toString(i));
-				b.setEnabled(false);
-				buttonList.add(b);
-				b.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String cmd = ((JButton) e.getSource())
-								.getActionCommand();
-						int idx = Integer.parseInt(cmd);
-						String name = (String) tableServers.getValueAt(idx, 0);
-						DetailsDialog dd = new DetailsDialog(thisDialog, name);
-					}
-				});
-
-				b.setMaximumSize(new Dimension(20, 10));
-				b.setPreferredSize(new Dimension(20, 10));
-				detailsPanel.add(b);
-			}
-
-			constraints.gridx = 0;
-			constraints.gridy = 1;
-			constraints.weighty = 1;
-			statsPanel.setMinimumSize(new Dimension(720, 140));
 			statsPanel.add(getServerTablePane(), constraints);
+
+			statsPanel.setMinimumSize(new Dimension(720, 140));
 		}
 
 		return statsPanel;
@@ -431,27 +408,42 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private JScrollPane getServerTablePane() {
 		if (serverTablePane == null) {
-			JPanel serversPanel = new JPanel();
-
-			serversPanel.setLayout(new GridBagLayout());
+			
+			JPanel jp = new JPanel();
+			jp.setLayout(new GridBagLayout());
 			GridBagConstraints constraints = new GridBagConstraints();
-			constraints.insets = new Insets(0, 0, 0, 0);
+			constraints.insets = new Insets(0, 5, 5, 5);
 			constraints.fill = GridBagConstraints.BOTH;
 			constraints.anchor = GridBagConstraints.WEST;
-			constraints.weightx = 1;
-			constraints.weighty = 0;
+			constraints.weightx = 0;
+			constraints.weighty = 1;
 			constraints.gridx = 0;
 			constraints.gridy = 0;
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
-			serversPanel.add(getServerTable(), constraints);
+			jp.add(getServerTablePanel(), constraints);
 
-			serverTablePane = new JScrollPane(serversPanel);
+			constraints.weightx = 1;
+			constraints.weighty = 0;
+			constraints.gridx = 1;
+			constraints.gridy = 0;
+			jp.add(getDetailsPanel(), constraints);
+			
+			serverTablePane = new JScrollPane(jp);
 			serverTablePane.setBorder(BorderFactory.createEmptyBorder());
 			serverTablePane.setWheelScrollingEnabled(true);
-			serverTablePane.setMinimumSize(new Dimension(720, 140));
+			serverTablePane.setMinimumSize(new Dimension(720, 120));
 		}
 		return serverTablePane;
+	}
+	
+	private JPanel getServerTablePanel(){
+		if (serverTablePanel == null) {
+			serverTablePanel = new JPanel();
+			serverTablePanel.add(getServerTable());
+		}
+		
+		return serverTablePanel;
 	}
 
 	private JTable getServerTable() {
@@ -496,6 +488,44 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		}
 
 		return tableServers;
+	}
+	
+	private JPanel getDetailsPanel(){
+		if (detailsPanel == null) {
+			detailsPanel = new JPanel();
+			detailsPanel.setLayout(new GridLayout(numServers + 1, 1));
+			
+			JLabel lblDetails = new JLabel();
+			lblDetails.setFont(DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
+			lblDetails.setBackground(DefaultStaticConfiguration.DEFAULT_HEADER_BACKGROUND_COLOR);
+			lblDetails.setPreferredSize(new Dimension(40,10));
+			lblDetails.setText(Messages.getString("QuantAna.Simulation.Column.Details"));
+			lblDetails.setToolTipText(Messages.getString("QuantAna.Simulation.ToolTip.Details"));
+			detailsPanel.add(lblDetails);
+			
+			for (int i = 0; i < numServers; i++) {
+				JButton b = new JButton("...");
+				b.setActionCommand(Integer.toString(i));
+				b.setEnabled(false);
+				buttonList.add(b);
+				b.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String cmd = ((JButton) e.getSource())
+								.getActionCommand();
+						int idx = Integer.parseInt(cmd);
+						String name = (String) tableServers.getValueAt(idx, 0);
+						DetailsDialog dd = new DetailsDialog(thisDialog, name);
+					}
+				});
+
+				b.setMinimumSize(new Dimension(20, 10));
+				b.setMaximumSize(new Dimension(20, 10));
+				b.setPreferredSize(new Dimension(20, 10));
+				detailsPanel.add(b);
+			}
+		}
+		
+		return detailsPanel;
 	}
 
 	private JPanel getUtilPanel() {

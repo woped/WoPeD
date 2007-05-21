@@ -193,10 +193,10 @@ public class WorkflowNetGraph {
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						int type = ((OperatorTransitionModel)currentPlace).getOperatorType();
 						if ((type == OperatorTransitionModel.AND_JOIN_TYPE) || (type == OperatorTransitionModel.AND_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)){
-							//int input = mec.getSourceElements(currentPlace.getId()).values().size();
-							//postNode.setMultiply(1.0 / input);
-							//m = 1.0 / input;
 							postNode.setAndJoin(true);
+						}
+						if ((type == OperatorTransitionModel.AND_SPLIT_TYPE) || (type == OperatorTransitionModel.AND_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)){
+							postNode.setAndSplit(true);
 						}
 						break;
 					case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:

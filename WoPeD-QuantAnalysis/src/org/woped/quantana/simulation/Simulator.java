@@ -1,6 +1,5 @@
 package org.woped.quantana.simulation;
 
-
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -22,7 +21,6 @@ import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
-
 
 public class Simulator {
 	
@@ -77,6 +75,7 @@ public class Simulator {
 	private HashMap<String, Server> serverList = new HashMap<String, Server>();
 	private PriorityQueue<SimEvent> eventList = new PriorityQueue<SimEvent>();
 	private HashMap<Integer, Case> caseList	 = new HashMap<Integer, Case>();
+	private HashMap<Integer, Case> copiedCasesList = new HashMap<Integer, Case>();
 	
 	public Simulator(//QuantitativeSimulationDialog qsd, 
 			WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
@@ -213,11 +212,24 @@ public class Simulator {
 	private void generateServerList(){
 		Node[] nodes = process.getNodeArray();
 		for (int i = 0; i < nodes.length; i++){
-			String id = nodes[i].getId();
-			String name = nodes[i].getName();
-			double t = nodes[i].getTime();
+			Node n = nodes[i];
+			String id = n.getId();
+			String name = n.getName();
+			double t = n.getTime();
 			if (process.isTransition(id)){
-				Server s = new Server(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, 1.0, seedGenerator.nextSeed()));
+				Server s;
+				if (n.isAndJoin()) {
+					s = new ANDJoinServer(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, 1.0, seedGenerator.nextSeed()));
+//					s.setType(Server.TYPE_AND_JOIN);
+				}
+				else if (n.isAndSplit()) {
+					s = new ANDSplitServer(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, 1.0, seedGenerator.nextSeed()));
+//					s.setType(Server.TYPE_AND_SPLIT);
+				}
+				else {
+					s = new Server(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, 1.0, seedGenerator.nextSeed()));
+//					s.setType(Server.TYPE_OTHER);
+				}
 				s.setStatus(Server.STATUS_IDLE);
 				String nid = name + " (" + id + ")";
 				s.setRole(resAlloc.getRole(nid));
@@ -577,5 +589,13 @@ public class Simulator {
 
 	public void setProtocolPath(String protocolPath) {
 		this.protocolPath = protocolPath;
+	}
+
+	public HashMap<Integer, Case> getCopiedCasesList() {
+		return copiedCasesList;
+	}
+
+	public void setCopiedCasesList(HashMap<Integer, Case> copiedCasesList) {
+		this.copiedCasesList = copiedCasesList;
 	}
 }

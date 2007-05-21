@@ -8,13 +8,15 @@ public class ArrivalEvent extends SimEvent{
 	
 	private int type = SimEvent.ARRIVAL_EVENT;
 	
+	private WorkItem wi;
 	private Server server;
 	private Case c;
 	
-	public ArrivalEvent(Simulator sim, double time, Server serv, Case c){
+	public ArrivalEvent(Simulator sim, double time, WorkItem wi) {//Server serv, Case c){
 		super(sim, time);
-		server = serv;
-		this.c = c;
+		this.wi = wi;
+		server = wi.getServer();//serv;
+		this.c = wi.get_case();//c;
 		
 		setName(getNewName());
 	}
@@ -41,14 +43,14 @@ public class ArrivalEvent extends SimEvent{
 					if (server.getQueue().isEmpty()){
 						nextStartServiceEvent(sim, time, c, ru);
 					} else {
-						server.enqueue(c);
-						nextStartServiceEvent(sim, time, server.dequeue(), ru);
+						server.enqueue(wi);
+						nextStartServiceEvent(sim, time, server.dequeue().get_case(), ru);
 					}
 				} else {
 					nextStartServiceEvent(sim, time, c, ru);
 				}
 			} else {
-				server.enqueue(c);
+				server.enqueue(new WorkItem(c, server));
 			}
 		} else {
 			if (server.hasFreeCapacity()){
@@ -56,14 +58,14 @@ public class ArrivalEvent extends SimEvent{
 					if (server.getQueue().isEmpty()){
 						nextStartServiceEvent(sim, time, c, ru);
 					} else {
-						server.enqueue(c);
-						nextStartServiceEvent(sim, time, server.dequeue(), ru);
+						server.enqueue(new WorkItem(c, server));
+						nextStartServiceEvent(sim, time, server.dequeue().get_case(), ru);
 					}
 				} else {
 					nextStartServiceEvent(sim, time, c, ru);
 				}
 			} else {
-				server.enqueue(c);
+				server.enqueue(new WorkItem(c, server));
 			}
 		}
 		
@@ -99,7 +101,8 @@ public class ArrivalEvent extends SimEvent{
 			protocol.info(sim.clckS() + "Gebundene Ressourcen: " + ru.printUsedResources());
 		}
 		
-		StartServiceEvent se = new StartServiceEvent(sim, time, server, c, r);
+		Activity act = new Activity(c, server, r);
+		StartServiceEvent se = new StartServiceEvent(sim, time, act);
 		sim.getEventList().add(se);
 		protocol.info(sim.clckS() + "START_SERVICE_EVENT \"" + se.getName() + "\" für Case # " + c.getId() + " am Server \"" + server.getName() + "(" + server.getId() + ")\" wurde erzeugt.");
 	}

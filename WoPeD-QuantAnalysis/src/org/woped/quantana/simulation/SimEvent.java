@@ -23,7 +23,6 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 	private static int cntDT = 0;
 	private static int cntUK = 0;
 	
-//	private int type;
 	private Simulator sim = null;
 	private double time = 0.0;
 	private String name;
@@ -63,25 +62,6 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 	}
 	
 	public String getEventTypeName(){
-		/*switch(type){
-		case 1:
-			return "BIRTH_EVENT";
-		case 2:
-			return "ARRIVAL_EVENT";
-		case 3:
-			return "START_SERVICE_EVENT";
-		case 4:
-			return "RESOURCE_FREED_EVENT";
-		case 5:
-			return "STOP_SERVICE_EVENT";
-		case 6:
-			return "DEPARTURE_EVENT";
-		case 7:
-			return "DEATH_EVENT";
-		default:
-			return "UNKNOWN_EVENT";
-		}*/
-		
 		if (this instanceof BirthEvent) 				return "BIRTH_EVENT";
 		else if (this instanceof ArrivalEvent) 			return "ARRIVAL_EVENT";
 		else if (this instanceof StartServiceEvent) 	return "START_SERVICE_EVENT";
@@ -133,32 +113,6 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 	
 	public String getNewName(){
 		String s = "";
-		/*switch(type){
-		case 1:
-			s += "BT" + getCount();
-			break;
-		case 2:
-			s += "AR" + getCount();
-			break;
-		case 3:
-			s += "ST" + getCount();
-			break;
-		case 4:
-			s += "RF" + getCount();
-			break;
-		case 5:
-			s += "SP" + getCount();
-			break;
-		case 6:
-			s += "DP" + getCount();
-			break;
-		case 7:
-			s += "DT" + getCount();
-			break;
-		default:
-			s += "UK" + getCount();
-		}*/
-		
 		if (this instanceof BirthEvent) 				s += "BT" + SimEvent.getCount(this);
 		else if (this instanceof ArrivalEvent) 			s += "AR" + SimEvent.getCount(this);
 		else if (this instanceof StartServiceEvent) 	s += "ST" + SimEvent.getCount(this);
