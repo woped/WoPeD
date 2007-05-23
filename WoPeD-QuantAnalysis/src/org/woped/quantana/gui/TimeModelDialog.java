@@ -245,7 +245,7 @@ public class TimeModelDialog extends JDialog {
 		if (dlg instanceof CapacityAnalysisDialog)
 			((CapacityAnalysisDialog)dlg).updContents();
 		else
-			((QuantitativeSimulationDialog)dlg).updContents();
+			((QuantitativeSimulationDialog)dlg).updTimeModel();
 		this.dispose();
 	}
 

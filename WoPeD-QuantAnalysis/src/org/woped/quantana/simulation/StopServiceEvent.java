@@ -32,6 +32,9 @@ public class StopServiceEvent extends SimEvent {
 		protocol.info(s);
 		
 		server.updateUtilStats(time, sim.getTimeOfLastEvent());
+
+		int cc = server.getQueue().size() + server.getNumCasesInParallel();
+		server.setAvgNumCasesServing(server.getAvgNumCasesServing() + cc * (time - sim.getTimeOfLastEvent()));
 		
 		server.incNumCasesInParallel(-1);
 		protocol.info(sim.clckS() + "Anzahl der parallel bearbeiteten Cases am Server \"" + server.getName() + "(" + server.getId() + ")\" ist " + server.getNumCasesInParallel());
@@ -47,7 +50,7 @@ public class StopServiceEvent extends SimEvent {
 			protocol.info(sim.clckS() + "Gebundene Ressourcen: " + ru.printUsedResources());
 		}
 		
-		if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
+		if (sim.getUseResAlloc() == Simulator.RES_NOT_USED || r == null){
 			server.setStatus(Server.STATUS_IDLE);
 			protocol.info(sim.clckS() + "Server \"" + server.getName() + "(" + server.getId() + ")\" ist untätig.");
 		} else {

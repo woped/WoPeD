@@ -37,10 +37,10 @@ public class Server {
 	private ArrayList<SuccServer> successor = new ArrayList<SuccServer>();
 	private Random choice;
 	
-	private String role;
-	private String group;
+	private String role = null;
+	private String group = null;
 	
-	private int type;
+//	private int type;
 	
 	public Server(Simulator sim, String id, String name, ProbabilityDistribution dist){
 		this.id = id;
@@ -255,12 +255,17 @@ public class Server {
 	
 	public boolean hasFreeCapacity(){
 		if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
-			return true;
+			if (status == Server.STATUS_IDLE) return true;
+			else return false;
 		} else {
 			ResourceUtilization ru = sim.getResUtil();
-			ArrayList<Resource> r = ru.getFreeResPerGroupRole(group, role);
-			if (r.size() > 0) return true;
-			else return false;
+			if ((!group.equals("")) && (!role.equals(""))) {
+				ArrayList<Resource> r = ru.getFreeResPerGroupRole(group, role);
+				if (r.size() > 0) return true;
+				else return false;
+			} else {
+				return true;
+			}
 		}
 	}
 	
@@ -296,6 +301,8 @@ public class Server {
 		int l = queue.size();
 		if (l > maxQueueLength) maxQueueLength += 1;
 		protocol.info(sim.clckS() + "Maximale Länge der Warteschlange bisher ist " + maxQueueLength);
+		
+		
 	}
 	
 	public WorkItem dequeue(){
@@ -373,16 +380,42 @@ public class Server {
 		this.avgServiceTime = avgServiceTime;
 	}
 
-	public int getType() {
+	/*public int getType() {
 		return type;
 	}
 
 	public void setType(int type) {
 		this.type = type;
-	}
+	}*/
 	
 	public void doService(){
 		
 	}
+	
+	public void updStatistics(int type){
+		switch (type) {
+		case SimEvent.BIRTH_EVENT:
+			// Nichts zu tun
+			break;
+		case SimEvent.ARRIVAL_EVENT:
+			
+			break;
+		case SimEvent.START_SERVICE_EVENT:
+			
+			break;
+		case SimEvent.STOP_SERVICE_EVENT:
+			
+			break;
+		case SimEvent.RESOURCE_FREED_EVENT:
+			
+			break;
+		case SimEvent.DEPARTURE_EVENT:
+			
+			break;
+		case SimEvent.DEATH_EVENT:
+			 // Nichts zu tun
+			break;
+		default:
+		}
+	}
 }
-

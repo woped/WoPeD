@@ -9,18 +9,17 @@ public class ProbabilityDistribution {
 	public static final int DIST_TYPE_GAUSS		= 3;
 	
 	private int typeOfDist = 0;
-	private double param1 = 0.0;
-	private double param2 = 0.0;
+	private double param = 0.0;
 	private long seed = 0;
 	
 	private double mean;
 	private double variance;
 	private PsRandom generator;
 	
-	public ProbabilityDistribution(int type, double param1, double param2, long seed){
+	public ProbabilityDistribution(int type, double mean, double param, long seed){
 		this.typeOfDist = type;
-		this.param1 = param1;
-		this.param2 = param2;
+		this.mean = mean;
+		this.param = param;
 		this.seed = seed;
 		
 		generator = new PsRandom(seed);
@@ -28,20 +27,12 @@ public class ProbabilityDistribution {
 		getCharacteristics();
 	}
 
-	public double getParam1() {
-		return param1;
+	public double getParam() {
+		return param;
 	}
 
-	public void setParam1(double param1) {
-		this.param1 = param1;
-	}
-
-	public double getParam2() {
-		return param2;
-	}
-
-	public void setParam2(double param2) {
-		this.param2 = param2;
+	public void setParam(double param) {
+		this.param = param;
 	}
 
 	public int getTypeOfDist() {
@@ -55,22 +46,13 @@ public class ProbabilityDistribution {
 	private void getCharacteristics(){
 		switch (typeOfDist){
 		case 1:
-			// param1 = untere Grenze
-			// param2 = obere Grenze
-			mean = (param1 + param2)/2;
-			variance = (param2 - param1)/2;
+			variance = mean * param;
 			break;
 		case 2:
-			// param1 = Erwartungswert
-			// param2 = Position (i.d.R. = 0)
-			mean = param1;
-			variance = param1 * param1;
+			variance = mean * mean;
 			break;
 		case 3:
-			// param1 = Erwartungswert
-			// param2 = Standardabweichung
-			mean = param1;
-			variance = param2 * param2;
+			variance = param * param;
 			break;
 		default:
 			mean = 0.0;
@@ -90,13 +72,13 @@ public class ProbabilityDistribution {
 		double result = 0;
 		switch (typeOfDist){
 		case 1:
-			result = generator.nextDouble() * (param1 - param2) + param1;
+			result = ((generator.nextDouble() * 2 - 1) * param + 1) * mean;
 			break;
 		case 2:
-			result = generator.nextExponential(0, param1);
+			result = generator.nextExponential(param, mean);
 			break;
 		case 3:
-			result = generator.nextGaussian(param1, param2);
+			result = generator.nextGaussian(mean, param);
 		}
 		
 		return result;

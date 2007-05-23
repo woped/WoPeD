@@ -17,7 +17,6 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -63,6 +62,8 @@ public class ProtocolDialog extends JDialog {
 	
 	private Simulator sim;
 	
+	private File dir;
+	
 	private final ExtensionFileFilter eff = new ExtensionFileFilter();
 	
 	public ProtocolDialog(Dialog owner, byte[] protocol){
@@ -70,6 +71,7 @@ public class ProtocolDialog extends JDialog {
 		this.owner = owner;
 		this.protocol = protocol;
 		sim = ((QuantitativeSimulationDialog)owner).getSimulator();
+		dir = new File(sim.getProtocolPath());
 		
 		fileChooser = new JFileChooser();
 		getFileFilter();
@@ -185,12 +187,13 @@ public class ProtocolDialog extends JDialog {
 	}
 	
 	private void save(){
-		fileChooser.setCurrentDirectory(new File(sim.getProtocolPath()));
+		fileChooser.setCurrentDirectory(dir);
 		fileChooser.setMultiSelectionEnabled(false);
 		
 		int result = fileChooser.showSaveDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION){
 			String fname = fileChooser.getSelectedFile().getAbsolutePath();
+			dir = fileChooser.getCurrentDirectory();
 			String ext = "";
 			int idx = fname.lastIndexOf(".");
 			if (idx > -1){
@@ -211,7 +214,6 @@ public class ProtocolDialog extends JDialog {
 					fos.close();
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -227,7 +229,6 @@ public class ProtocolDialog extends JDialog {
 			if (job.printDialog(aset))
 				job.print();
 		} catch (PrinterException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -257,11 +258,11 @@ public class ProtocolDialog extends JDialog {
 
 			DefaultHandler handler = new DefaultHandler() {
 
-				private long min = new Date().getTime();
-
-				private long max = 0;
+//				private long min = new Date().getTime();
+//
+//				private long max = 0;
 				
-				private boolean millis = false;
+//				private boolean millis = false;
 				private boolean msg = false;
 
 				public void startDocument() {
@@ -271,7 +272,7 @@ public class ProtocolDialog extends JDialog {
 				public void startElement(String uri, String lname,
 						String qname, Attributes attr) {
 					try {
-						if (lname.equalsIgnoreCase("millis")) millis = true;
+//						if (lname.equalsIgnoreCase("millis")) millis = true;
 						
 						if (lname.equalsIgnoreCase("message")) msg = true;
 
@@ -286,21 +287,21 @@ public class ProtocolDialog extends JDialog {
 					
 					if (msg) txtProtocol.append(s + "\n");
 					
-					if (millis)	{
+					/*if (millis)	{
 						long l = Long.parseLong(s);
 						if (l > 0 && l < min) min = l;
 						if (l > max) max = l;
-					}
+					}*/
 				}
 
 				public void endElement(String uri, String lname, String qname) {
-					if (lname.equalsIgnoreCase("millis")) millis = false;
+//					if (lname.equalsIgnoreCase("millis")) millis = false;
 					
 					if (lname.equalsIgnoreCase("message")) msg = false;
 				}
 
 				public void endDocument() {
-					txtProtocol.append("\n\nsimulation took " + (max - min) + " ms");
+					txtProtocol.append("\n\nsimulation took " + sim.getDuration() + " ms");
 					txtProtocol.append("\n\n--- Protocol End ---");
 				}
 			};

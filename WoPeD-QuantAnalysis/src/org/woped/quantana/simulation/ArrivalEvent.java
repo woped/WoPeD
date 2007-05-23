@@ -29,7 +29,7 @@ public class ArrivalEvent extends SimEvent{
 		protocol.info(sim.clckS() + "Case # " + c.getId() + " kommt am Server \"" + server.getName() + "(" + server.getId() + ")\" an.");
 		
 		c.setCurrentArrivalTime(time);
-		c.setNextServiceTime(server.getNextServTime());
+//		c.setNextServiceTime(server.getNextServTime());
 //		protocol.info(sim.clckS() + "Bedienzeit für Case # " + c.getId() + " ist " + c.getNextServiceTime());
 		
 		server.incNumCalls(1);
@@ -43,29 +43,33 @@ public class ArrivalEvent extends SimEvent{
 					if (server.getQueue().isEmpty()){
 						nextStartServiceEvent(sim, time, c, ru);
 					} else {
-						server.enqueue(wi);
+						wi.enqueue();
 						nextStartServiceEvent(sim, time, server.dequeue().get_case(), ru);
 					}
 				} else {
 					nextStartServiceEvent(sim, time, c, ru);
 				}
 			} else {
-				server.enqueue(new WorkItem(c, server));
+				wi.enqueue();
 			}
 		} else {
 			if (server.hasFreeCapacity()){
 				if (sim.getQueueDiscipline() == Simulator.QD_FIFO){
 					if (server.getQueue().isEmpty()){
 						nextStartServiceEvent(sim, time, c, ru);
+						server.incZeroDelays(1);
+						protocol.info(sim.clckS() + "Anzahl Cases ohne Wartezeit von Server \"" + server.getName() + "(" + server.getId() + ")\" erhöht auf " + server.getZeroDelays());
 					} else {
-						server.enqueue(new WorkItem(c, server));
+						wi.enqueue();
 						nextStartServiceEvent(sim, time, server.dequeue().get_case(), ru);
 					}
 				} else {
 					nextStartServiceEvent(sim, time, c, ru);
+					server.incZeroDelays(1);
+					protocol.info(sim.clckS() + "Anzahl Cases ohne Wartezeit von Server \"" + server.getName() + "(" + server.getId() + ")\" erhöht auf " + server.getZeroDelays());
 				}
 			} else {
-				server.enqueue(new WorkItem(c, server));
+				wi.enqueue();
 			}
 		}
 		
@@ -89,12 +93,9 @@ public class ArrivalEvent extends SimEvent{
 	}
 	
 	private void nextStartServiceEvent(Simulator sim, double time, Case c, ResourceUtilization ru){
-		server.incZeroDelays(1);
-		protocol.info(sim.clckS() + "Anzahl Cases ohne Wartezeit von Server \"" + server.getName() + "(" + server.getId() + ")\" erhöht auf " + server.getZeroDelays());
-		
 		Resource r = sim.getResUtil().chooseResourceFromFreeResources(server.getGroup(), server.getRole());
 		
-		if (sim.getUseResAlloc() == Simulator.RES_USED && r == null) return;
+//		if (sim.getUseResAlloc() == Simulator.RES_USED && r == null) return;
 		if (r != null) {
 			protocol.info(sim.clckS() + "Ressource \"" + r.getName() + "\" wird Server \"" + server.getName() + "(" + server.getId() + ")\" und Case # " + c.getId() + " zugeordnet.");
 			protocol.info(sim.clckS() + "Freie Ressourcen: " + ru.printFreeResources());

@@ -53,8 +53,26 @@ public class DepartureEvent extends SimEvent {
 			protocol.info(sim.clckS() + "Case # " + c.getId() + " verläßt den Prozess.");
 			protocol.info(sim.clckS() + "DEATH_EVENT \"" + de.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
 		} else {
-			for (Server s : nextServer){
-				ArrivalEvent ae = new ArrivalEvent(sim, time, wi);
+			if (server instanceof ANDSplitServer){
+				sim.getCopiedCasesList().put(c.getId(), c);
+				int copies = nextServer.size();
+				c.setCopies(copies);
+				c.cpyCnt = 0;
+				c.setTimeOfSplit(time);
+				for (Server s : nextServer){
+					CaseGenerator cg = sim.getCaseGenerator();
+					int count = cg.getCaseCount() + 1;
+					cg.setCaseCount(count);
+					Case cc = new CaseCopy(count, c);
+
+					ArrivalEvent ae = new ArrivalEvent(sim, time, new WorkItem(cc, s));
+					sim.getEventList().add(ae);
+					protocol.info(sim.clckS() + "Case # " + c.getId() + " wird an Server \"" + s.getName() + "(" + s.getId() + ")\" weitergeleitet.");
+					protocol.info(sim.clckS() + "ARRIVAL_EVENT \"" + ae.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
+				}
+			} else {
+				Server s = nextServer.get(0);
+				ArrivalEvent ae = new ArrivalEvent(sim, time, new WorkItem(c, s));
 				sim.getEventList().add(ae);
 				protocol.info(sim.clckS() + "Case # " + c.getId() + " wird an Server \"" + s.getName() + "(" + s.getId() + ")\" weitergeleitet.");
 				protocol.info(sim.clckS() + "ARRIVAL_EVENT \"" + ae.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");

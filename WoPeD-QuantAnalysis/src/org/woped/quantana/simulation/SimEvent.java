@@ -132,4 +132,16 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 	public void setName(String name){
 		this.name = name;
 	}
+	
+	public static void reset(){
+		count = 0;
+		cntBT = 0;
+		cntAR = 0;
+		cntST = 0;
+		cntRF = 0;
+		cntSP = 0;
+		cntDP = 0;
+		cntDT = 0;
+		cntUK = 0;
+	}
 }

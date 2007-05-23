@@ -9,6 +9,10 @@ public class Case {
 	private double currentArrivalTime = 0.0;
 	private double currentDepartureTime = 0.0;
 	private double nextServiceTime = 0.0;
+	private double timeOfSplit = 0.0;
+	
+	private int copies = 0;
+	public int cpyCnt = 0;
 	
 	public Case(int id){
 		this.id = id;
@@ -77,5 +81,21 @@ public class Case {
 
 	public void setCurrentDepartureTime(double currentDepartureTime) {
 		this.currentDepartureTime = currentDepartureTime;
+	}
+
+	public int getCopies() {
+		return copies;
+	}
+
+	public void setCopies(int copies) {
+		this.copies = copies;
+	}
+
+	public double getTimeOfSplit() {
+		return timeOfSplit;
+	}
+
+	public void setTimeOfSplit(double timeOfSplit) {
+		this.timeOfSplit = timeOfSplit;
 	}
 }

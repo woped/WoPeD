@@ -60,6 +60,7 @@ import org.woped.quantana.model.TimeModel;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
+import org.woped.quantana.simulation.ProbabilityDistribution;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.SimParameters;
 import org.woped.quantana.simulation.Simulator;
@@ -121,6 +122,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private JTextField txtSTStdDev;
 
 	private JComboBox cboTimeUnits;
+	
+	private int timeUnit = 1;
 
 	private int periodIndex = 2;
 
@@ -1073,6 +1076,28 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private void getTimeModelDialog() {
 		new TimeModelDialog(this, tm);
 	}
+	
+	public void updTimeModel(){
+		lambda = Double.parseDouble(txtLambda.getText());
+		periodIndex = cboTimeUnits.getSelectedIndex();
+		period = tm.cv(periodIndex, Double.parseDouble(txtPeriod.getText()));
+		
+		if (serverTableModel.getValueAt(0, 4) != null){
+			ServerTableModel stm = serverTableModel;
+			
+			for (int i = 0; i < stm.getRowCount(); i++){
+				double val = Double.parseDouble(((String)stm.getValueAt(i, 4)));
+				val = tm.cv(timeUnit, val);
+				stm.setValueAt(val, i, 4);
+				
+				val = Double.parseDouble(((String)stm.getValueAt(i, 5)));
+				val = tm.cv(timeUnit, val);
+				stm.setValueAt(val, i, 5);
+			}
+		}
+		
+		timeUnit = tm.getStdUnit();
+	}
 
 	public void updContents() {
 		ServerTableModel stm = serverTableModel;
@@ -1127,12 +1152,35 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		LoggerManager.info(Constants.QUANTANA_LOGGER, Messages
 				.getString("QuantAna.Started"));
         
-		SimParameters sp = new SimParameters();
-		lambda = Double.parseDouble(txtLambda.getText());
-		period = Double.parseDouble(txtPeriod.getText());
-		sp.setLambda(lambda);
-		sp.setTimeOfPeriod(period);
+		updTimeModel();
+		SimParameters sp = new SimParameters(lambda, period);
 		sp.setRuns(Integer.parseInt(txtRuns.getText()));
+		
+		String op1 = groupIAT.getSelection().getActionCommand();
+		if (op1.equals("IAT_UNIFORM")) {
+			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_UNIFORM);
+			double cp = Double.parseDouble(txtIATInterval.getText()) / 100;
+			sp.setCParam(cp);
+		} else if (op1.equals("IAT_GAUSS")) {
+			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_GAUSS);
+			double cp = Double.parseDouble(txtIATStdDev.getText());
+			sp.setCParam(cp);
+		} else {
+			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_EXP);
+		}
+		
+		String op2 = groupST.getSelection().getActionCommand();
+		if (op2.equals("ST_UNIFORM")) {
+			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_UNIFORM);
+			double spa = Double.parseDouble(txtSTInterval.getText()) / 100;
+			sp.setSParam(spa);
+		} else if (op2.equals("ST_GAUSS")) {
+			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_GAUSS);
+			double spa = Double.parseDouble(txtSTStdDev.getText());
+			sp.setSParam(spa);
+		} else {
+			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_EXP);
+		}
 
 		String op3 = groupQD.getSelection().getActionCommand();
 		if (op3.equals("QUEUE_LIFO")) {
@@ -1164,6 +1212,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		activateDetails();
 		updContents();
 		wd.stop();
+		sim.setDuration(wd.getDuration());
 	}
 
 	private void initResourceAlloc() {

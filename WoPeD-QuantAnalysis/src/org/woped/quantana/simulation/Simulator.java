@@ -41,8 +41,7 @@ public class Simulator {
 
 	private String protocolPath;
 	private String protocolName;
-	
-//	private QuantitativeSimulationDialog dlgSim;
+
 	private WorkflowNetGraph process;
 	private ResourceAllocation resAlloc;
 	private ResourceUtilization resUtil;
@@ -62,14 +61,15 @@ public class Simulator {
 	private double caseWait = 0.0;
 	private int typeOfDistForCases = 0;
 	private int typeOfDistForServer = 0;
-	private double caseParam1 = 0.0;
-	private double caseParam2 = 0.0;
+	private double caseParam = 0.0;
+	private double servParam = 0.0;
 	private int queueDiscipline = 0;
 	private int stopRule = 0;
 	private double lambda = 50.0;
-	private double timeOfPeriod = 480.0;
+	private double period = 480.0;
 	private Random fstServChoice = new Random(new Date().getTime());
 	private int[][] fstServList;
+	private double duration;
 	
 	private SimEvent nextEvent = null;
 	private HashMap<String, Server> serverList = new HashMap<String, Server>();
@@ -77,9 +77,7 @@ public class Simulator {
 	private HashMap<Integer, Case> caseList	 = new HashMap<Integer, Case>();
 	private HashMap<Integer, Case> copiedCasesList = new HashMap<Integer, Case>();
 	
-	public Simulator(//QuantitativeSimulationDialog qsd, 
-			WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
-//		dlgSim = qsd;
+	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
 		process = wfpn;
 		resUtil = ru;
 		resAlloc = ru.getResAlloc();
@@ -87,12 +85,12 @@ public class Simulator {
 		this.numRuns = sp.getRuns();
 		this.typeOfDistForCases = sp.getDistCases();
 		this.typeOfDistForServer = sp.getDistServ();
-		this.caseParam1 = sp.getCPara1();
-		this.caseParam2 = sp.getCPara2();
+		this.caseParam = sp.getCParam();
+		this.servParam = sp.getSParam();
 		this.queueDiscipline = sp.getQueue();
 		this.stopRule = sp.getStop();
 		this.lambda = sp.getLambda();
-		this.timeOfPeriod = sp.getTimeOfPeriod();
+		this.period = sp.getPeriod();
 		this.useResAlloc = sp.getResUse();
 		
 		getFstServList();
@@ -107,6 +105,7 @@ public class Simulator {
 		protocol.info(clckS() + "Warteschlangendisziplin: " + printQueueDiscipline());
 		
 		generateServerList();
+		LoggerManager.info(Constants.QUANTANA_LOGGER, printServerList());
 		protocol.info(clckS() + "Server-Liste wurde erzeugt.");
 		
 		protocol.info(clckS() + "Anzahl der Simulationsläufe: " + numRuns);
@@ -198,15 +197,11 @@ public class Simulator {
 			out.flush();
 			out.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		((Handler)((protocol.getHandlers())[0])).close();
 		
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "Protokoll wurde erstellt.");
-//		SimOutputDialog sod = new SimOutputDialog(null, true, this);
-//		sod.setVisible(true);
-//		dlgSim.validate();
 	}
 	
 	private void generateServerList(){
@@ -219,16 +214,13 @@ public class Simulator {
 			if (process.isTransition(id)){
 				Server s;
 				if (n.isAndJoin()) {
-					s = new ANDJoinServer(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, 1.0, seedGenerator.nextSeed()));
-//					s.setType(Server.TYPE_AND_JOIN);
+					s = new ANDJoinServer(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, servParam, seedGenerator.nextSeed()));
 				}
 				else if (n.isAndSplit()) {
-					s = new ANDSplitServer(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, 1.0, seedGenerator.nextSeed()));
-//					s.setType(Server.TYPE_AND_SPLIT);
+					s = new ANDSplitServer(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, servParam, seedGenerator.nextSeed()));
 				}
 				else {
-					s = new Server(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, 1.0, seedGenerator.nextSeed()));
-//					s.setType(Server.TYPE_OTHER);
+					s = new Server(this, id, name, new ProbabilityDistribution(typeOfDistForServer, t, servParam, seedGenerator.nextSeed()));
 				}
 				s.setStatus(Server.STATUS_IDLE);
 				String nid = name + " (" + id + ")";
@@ -257,8 +249,9 @@ public class Simulator {
 	
 	private void initEventList(){
 		eventList.clear();
+		SimEvent.reset();
 		
-		caseGenerator = new CaseGenerator(new ProbabilityDistribution(typeOfDistForCases, caseParam1, caseParam2, seedGenerator.nextSeed()), this);
+		caseGenerator = new CaseGenerator(new ProbabilityDistribution(typeOfDistForCases, period / lambda, caseParam, seedGenerator.nextSeed()), this);
 		
 		BirthEvent be = new BirthEvent(this, clock);
 		eventList.add(be);
@@ -273,7 +266,7 @@ public class Simulator {
 		this.serverList = serverList;
 	}
 	
-	/*private void printServerList(){
+	public String printServerList(){
 		String text = "";
 		for (Server s : serverList.values()){
 			text += "\n" + s + " --> ";
@@ -281,15 +274,16 @@ public class Simulator {
 				text += t.getServer() + "(" + t.getProbability() + "), ";
 			}
 		}
-		JOptionPane.showMessageDialog(null, text);
-	}*/
+
+		return text;
+	}
 	
 	private boolean isCaseNumReached(){
 		return finishedCases >= lambda;
 	}
 	
 	private boolean isTimeRunOut(){
-		return clock >= timeOfPeriod;
+		return clock >= period;
 	}
 	
 	private boolean shouldStopNow(){
@@ -507,22 +501,10 @@ public class Simulator {
 	
 	private void initProtocol(){
 		protocolPath = ConfigurationManager.getConfiguration().getLogdir();
-		protocolName = protocolPath + "/simproto.xml";
+		protocolName = protocolPath + "simproto.xml";
 		
 		protocol.setLevel(Level.ALL);
 		protocol.setUseParentHandlers(false);
-		
-		/*try {
-			handler = new FileHandler(protocolName);
-			handler.setLevel(Level.ALL);
-			handler.setFormatter(new SimXMLFormatter(protocolPath));
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
 		
 		out = new ByteArrayOutputStream();
 		Handler handler = new StreamHandler(new BufferedOutputStream(out), new SimXMLFormatter(protocolPath));
@@ -597,5 +579,40 @@ public class Simulator {
 
 	public void setCopiedCasesList(HashMap<Integer, Case> copiedCasesList) {
 		this.copiedCasesList = copiedCasesList;
+	}
+	
+	public void updStatistics(int type){
+		switch (type) {
+		case SimEvent.BIRTH_EVENT:
+			
+			break;
+		case SimEvent.ARRIVAL_EVENT:
+			
+			break;
+		case SimEvent.START_SERVICE_EVENT:
+			
+			break;
+		case SimEvent.STOP_SERVICE_EVENT:
+			
+			break;
+		case SimEvent.RESOURCE_FREED_EVENT:
+			
+			break;
+		case SimEvent.DEPARTURE_EVENT:
+			
+			break;
+		case SimEvent.DEATH_EVENT:
+			
+			break;
+		default:
+		}
+	}
+
+	public double getDuration() {
+		return duration;
+	}
+
+	public void setDuration(double duration) {
+		this.duration = duration;
 	}
 }

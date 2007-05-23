@@ -7,13 +7,11 @@ public class SimParameters {
 	private int queue;
 	private int stop;
 	
-	private double cPara1;
-	private double cPara2;
-//	private double sPara1;
-//	private double sPara2;
+	private double cParam	= 0.0;
+	private double sParam	= 0.0;
 	
 	private double lambda;
-	private double timeOfPeriod;
+	private double period;
 	
 	private int resUse;
 	
@@ -21,33 +19,39 @@ public class SimParameters {
 		super();
 	}
 	
-	public SimParameters(int runs, int dc, int ds, int q, int s, double cp1, double cp2, int res){
-		this.runs = runs;
+	public SimParameters(double l, double pd, int r, int dc, int ds, int q,
+			int s, double cp, double sp, int res) {
+		lambda = l;
+		period = pd;
+		runs = r;
 		distCases = dc;
 		distServ = ds;
 		queue = q;
 		stop = s;
-		cPara1 = cp1;
-		cPara2 = cp2;
-//		sPara1 = sp1;
-//		sPara2 = sp2;
+		cParam = cp;
+		sParam = sp;
 		resUse = res;
 	}
-
-	public double getCPara1() {
-		return cPara1;
+	
+	public SimParameters(double l, double pd){
+		lambda = l;
+		period = pd;
 	}
 
-	public void setCPara1(double para1) {
-		cPara1 = para1;
+	public double getCParam() {
+		return cParam;
 	}
 
-	public double getCPara2() {
-		return cPara2;
+	public void setCParam(double cp) {
+		cParam = cp;
 	}
 
-	public void setCPara2(double para2) {
-		cPara2 = para2;
+	public double getSParam() {
+		return sParam;
+	}
+
+	public void setSParam(double sp) {
+		sParam = sp;
 	}
 
 	public int getDistCases() {
@@ -82,22 +86,6 @@ public class SimParameters {
 		this.runs = runs;
 	}
 
-	/*public double getSPara1() {
-		return sPara1;
-	}
-
-	public void setSPara1(double para1) {
-		sPara1 = para1;
-	}
-
-	public double getSPara2() {
-		return sPara2;
-	}
-
-	public void setSPara2(double para2) {
-		sPara2 = para2;
-	}*/
-
 	public int getStop() {
 		return stop;
 	}
@@ -114,12 +102,12 @@ public class SimParameters {
 		this.lambda = lambda;
 	}
 
-	public double getTimeOfPeriod() {
-		return timeOfPeriod;
+	public double getPeriod() {
+		return period;
 	}
 
-	public void setTimeOfPeriod(double timeOfPeriod) {
-		this.timeOfPeriod = timeOfPeriod;
+	public void setPeriod(double timeOfPeriod) {
+		this.period = timeOfPeriod;
 	}
 
 	public int getResUse() {

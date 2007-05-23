@@ -3,6 +3,8 @@ package org.woped.quantana.gui;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Date;
+
 import javax.swing.JDialog;
 
 public class WaitDialog extends JDialog implements Runnable {
@@ -17,6 +19,10 @@ public class WaitDialog extends JDialog implements Runnable {
 	
 	private JDialog owner;
 	
+	private double start;
+	
+	private double finish;
+	
 	public WaitDialog(JDialog owner, String msg) {
 		super(owner, msg, false);
 		this.owner = owner;
@@ -29,6 +35,7 @@ public class WaitDialog extends JDialog implements Runnable {
 	}
 		
 	public void start() {
+		start = new Date().getTime();
 		thr = new Thread(this);
 		thr.start();
 	}
@@ -37,8 +44,13 @@ public class WaitDialog extends JDialog implements Runnable {
 	}
 
 	public void stop() {
+		finish = new Date().getTime();
 		owner.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		setVisible(false);
 		dispose();
+	}
+	
+	public double getDuration(){
+		return (finish - start);
 	}
 }
