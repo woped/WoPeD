@@ -987,8 +987,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 			btnProtocol = new JButton();
 			btnProtocol.setText(Messages.getTitle("QuantAna.Button.Protocol"));
-			btnProtocol.setIcon(Messages
-					.getImageIcon("QuantAna.Button.Protocol"));
+			btnProtocol.setIcon(Messages.getImageIcon("QuantAna.Button.Protocol"));
 			btnProtocol.setEnabled(false);
 			btnProtocol.setMinimumSize(new Dimension(120, 25));
 			btnProtocol.setMaximumSize(new Dimension(120, 25));
@@ -1160,6 +1159,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		sim.start();
 
 //		activateDetails();
+		btnProtocol.setEnabled(true);
 		updContents();
 		wd.stop();
 		sim.setDuration(wd.getDuration());
