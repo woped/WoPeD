@@ -31,7 +31,8 @@ public class ServerTableModel extends AbstractTableModel {
 	}
 
 	public boolean isCellEditable(int row, int col) {
-		return false;
+//		return false;
+		return col == (columnNames.length - 1);
 	}
 
 	public void setValueAt(Object value, int row, int col) {

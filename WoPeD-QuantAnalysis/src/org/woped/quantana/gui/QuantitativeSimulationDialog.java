@@ -451,6 +451,20 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			};
 
 			btnColumn = new JButton[numServers + 1];
+			for (int i = 0; i < btnColumn.length; i++){
+				btnColumn[i] = new JButton("Edit...");
+				btnColumn[i].setSize(20, 10);
+				btnColumn[i].setEnabled(false);
+				btnColumn[i].setActionCommand(new Integer(i).toString());
+				btnColumn[i].addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int row = Integer.parseInt(e.getActionCommand());
+						String name = (String)serverTableModel.getValueAt(row, 0);
+						new DetailsDialog(thisDialog, name);
+					}
+				});
+			}
+			
 			MyTableCellRenderer mt = new MyTableCellRenderer();
 			tableServers.setDefaultRenderer(Object.class, mt);
 			tableServers.setDefaultEditor(Object.class, mt);
@@ -536,7 +550,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			tableResUtil.setDefaultRenderer(Object.class,
 					new MyTableCellRenderer());
 
-			tableResUtil.setEnabled(true);
+			tableResUtil.setEnabled(false);
 		}
 
 		return tableResUtil;
@@ -559,14 +573,17 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				setHorizontalAlignment(LEFT);
 			} else if (column == 6) {
 				setHorizontalAlignment(CENTER);
-				btnColumn[row] = new JButton("Edit...");
+				/*btnColumn[row] = new JButton("Edit...");
 				btnColumn[row].setSize(20, 10);
-				System.out.println("render" + row);
+				btnColumn[row].setEnabled(false);
+				btnColumn[row].setActionCommand(new Integer(row).toString());
 				btnColumn[row].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("pressed");
+						int row = Integer.parseInt(e.getActionCommand());
+						String name = (String)serverTableModel.getValueAt(row, 0);
+						new DetailsDialog(thisDialog, name);
 					}
-				});
+				});*/
 				return btnColumn[row];
 			} else {
 				setHorizontalAlignment(RIGHT);
@@ -576,7 +593,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		
 		public Component getTableCellEditorComponent(JTable table,
 				Object value, boolean isSelected, int row, int column) {
-			System.out.println("call");
+//			System.out.println("call");
 			return btnColumn[row];
 		}
 
@@ -1234,6 +1251,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	}
 
 	private void activateDetails() {
+		for (JButton b : btnColumn) b.setEnabled(true);
 		btnProtocol.setEnabled(true);
 		btnExport.setEnabled(true);
 	}

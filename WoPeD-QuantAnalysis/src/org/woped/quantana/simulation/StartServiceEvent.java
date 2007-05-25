@@ -68,7 +68,7 @@ public class StartServiceEvent extends SimEvent {
 			CaseCopy copy = (CaseCopy)c;
 			Case orig = sim.getCopiedCasesList().get(copy.getOriginal().getId());
 			orig.cpyCnt += 1;
-			if (sv.getBranches() == 0) sv.setBranches(copy.getCopies());
+			if (sv.getBranches() == 0) sv.setBranches(orig.getCopies());
 			if (orig.cpyCnt == orig.getCopies()){
 				ArrayList<CaseCopy> list = ((ANDJoinServer)server).getCopyList().get(orig);
 				double st = copy.getTimeService();
