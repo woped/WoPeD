@@ -11,12 +11,12 @@ public class ExportStatistics {
 	
 	private QuantitativeSimulationDialog qsd;
 	private Simulator sim;
-	private byte[] protocol;
+//	private byte[] protocol;
 	
 	public ExportStatistics(QuantitativeSimulationDialog qsd){
 		this.qsd = qsd;
 		this.sim = qsd.getSimulator();
-		this.protocol = sim.getProtocolContent();
+//		this.protocol = sim.getProtocolContent();
 	}
 	
 	public String getStatsTable(){
@@ -62,7 +62,7 @@ public class ExportStatistics {
 			String servID = servName.substring(servName.indexOf("(") + 1, servName.indexOf(")"));
 			server = sim.getServerList().get(servID);
 			
-			for (int j = 1; j < stm.getColumnCount(); j++)
+			for (int j = 1; j < stm.getColumnCount() - 1; j++)
 				srvD += Double.parseDouble((String)stm.getValueAt(i, j)) + ";";
 			
 			srvD += Double.parseDouble(String.format("%,.2f", server.getBusy() / sim.getClock() * 100)) + ";";
