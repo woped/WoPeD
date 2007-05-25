@@ -29,8 +29,6 @@ public class ArrivalEvent extends SimEvent{
 		protocol.info(sim.clckS() + "Case # " + c.getId() + " kommt am Server \"" + server.getName() + "(" + server.getId() + ")\" an.");
 		
 		c.setCurrentArrivalTime(time);
-//		c.setNextServiceTime(server.getNextServTime());
-//		protocol.info(sim.clckS() + "Bedienzeit für Case # " + c.getId() + " ist " + c.getNextServiceTime());
 		
 		server.incNumCalls(1);
 		protocol.info(sim.clckS() + "Anzahl Ankünfte am Server \"" + server.getName() + "(" + server.getId() + ")\": " + server.getNumCalls());
@@ -42,12 +40,15 @@ public class ArrivalEvent extends SimEvent{
 				if (sim.getQueueDiscipline() == Simulator.QD_FIFO){
 					if (server.getQueue().isEmpty()){
 						nextStartServiceEvent(sim, time, c, ru);
+						server.incZeroDelays(1);
+						
 					} else {
 						wi.enqueue();
 						nextStartServiceEvent(sim, time, server.dequeue().get_case(), ru);
 					}
 				} else {
 					nextStartServiceEvent(sim, time, c, ru);
+					server.incZeroDelays(1);
 				}
 			} else {
 				wi.enqueue();
@@ -73,9 +74,13 @@ public class ArrivalEvent extends SimEvent{
 			}
 		}
 		
-		int caseCount = sim.getCaseCount();
+		if (sim.getStartServerList().contains(this)) sim.setCaseCount(sim.getCaseCount() + 1);
+		int cc = sim.getCaseCount();
+		if (cc > sim.getMaxNumCasesInSystem()) sim.setMaxNumCasesInSystem(cc);
+		protocol.info(sim.clckS() + "Maximale Anzahl von Cases im Prozess bisher ist " + sim.getMaxNumCasesInSystem());
+		
 		if ((sim.getStopRule() == Simulator.STOP_CASE_DRIVEN) || (sim.getStopRule() == Simulator.STOP_BOTH)){
-			if (caseCount < sim.getLambda()){
+			if (cc < sim.getLambda()){
 				generateBirthEvent(sim);
 			}
 		} else {
@@ -83,7 +88,7 @@ public class ArrivalEvent extends SimEvent{
 		}
 		
 		sim.setTimeOfLastEvent(time);
-		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + time);
+		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + String.format("%,.2f", time));
 	}
 	
 	private void generateBirthEvent(Simulator sim){
@@ -95,9 +100,14 @@ public class ArrivalEvent extends SimEvent{
 	private void nextStartServiceEvent(Simulator sim, double time, Case c, ResourceUtilization ru){
 		Resource r = sim.getResUtil().chooseResourceFromFreeResources(server.getGroup(), server.getRole());
 		
-//		if (sim.getUseResAlloc() == Simulator.RES_USED && r == null) return;
 		if (r != null) {
-			protocol.info(sim.clckS() + "Ressource \"" + r.getName() + "\" wird Server \"" + server.getName() + "(" + server.getId() + ")\" und Case # " + c.getId() + " zugeordnet.");
+//			protocol.info(sim.clckS() + "Ressource \"" + r.getName() + "\" wird Server \"" + server.getName() + "(" + server.getId() + ")\" und Case # " + c.getId() + " zugeordnet.");
+//			protocol.info(sim.clckS() + "Freie Ressourcen: " + ru.printFreeResources());
+//			protocol.info(sim.clckS() + "Gebundene Ressourcen: " + ru.printUsedResources());
+
+			ru.useResource(r);
+			r.setLastStartTime(time);
+			protocol.info(sim.clckS() + "Ressource \"" + r.getName() + "\" wird an Server \"" + server.getName() + "(" + server.getId() + ")\"  gebunden.");
 			protocol.info(sim.clckS() + "Freie Ressourcen: " + ru.printFreeResources());
 			protocol.info(sim.clckS() + "Gebundene Ressourcen: " + ru.printUsedResources());
 		}

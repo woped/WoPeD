@@ -1,5 +1,7 @@
 package org.woped.quantana.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dialog;
@@ -13,20 +15,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.EventObject;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,14 +39,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.event.CellEditorListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellEditor;
 
-
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -62,11 +65,14 @@ import org.woped.quantana.model.TimeModel;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
+import org.woped.quantana.simulation.ANDJoinServer;
 import org.woped.quantana.simulation.ProbabilityDistribution;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.SimParameters;
 import org.woped.quantana.simulation.Simulator;
+import org.woped.quantana.utilities.ExportStatistics;
 
+@SuppressWarnings("unused")
 public class QuantitativeSimulationDialog extends JDialog implements
 		MouseMotionListener {
 
@@ -96,7 +102,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private int resObjNum = 0;
 
-	private double period = 60.0;
+	private double period = 480.0;
 
 	private double lambda = 50.0;
 
@@ -140,7 +146,11 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private JTable tableServers;
 
-	private JScrollPane serverTableScrollPane;
+	private JScrollPane serverTablePane;
+	
+	private JPanel serverTablePanel;
+	
+	private JPanel detailsPanel;
 
 	private Object[][] serverTableMatrix;
 
@@ -148,7 +158,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private JTable tableResUtil;
 
-	private JScrollPane resUtilTableScrollPane;
+	private JScrollPane resUtilTablePane;
 
 	private Object[][] resUtilTableMatrix;
 
@@ -157,6 +167,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private TimeModel tm = null;
 
 	private Simulator sim;
+	
+//	private JFileChooser fileChooser;
+//	
+//	private File dir;
+//	
+//	private final ExtensionFileFilter eff = new ExtensionFileFilter();
 
 	private String[] colServers = {
 			Messages.getString("QuantAna.Simulation.Column.Names"),
@@ -164,8 +180,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Messages.getString("QuantAna.Simulation.Column.Lq"),
 			Messages.getString("QuantAna.Simulation.Column.Ls"),
 			Messages.getString("QuantAna.Simulation.Column.W"),
-			Messages.getString("QuantAna.Simulation.Column.Wq"),
-			Messages.getString("QuantAna.Simulation.Column.Details") };
+			Messages.getString("QuantAna.Simulation.Column.Wq")
+	};
 
 	private String[] ttipsServers = {
 			Messages.getString("QuantAna.Simulation.ToolTip.Names"),
@@ -173,8 +189,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Messages.getString("QuantAna.Simulation.ToolTip.Lq"),
 			Messages.getString("QuantAna.Simulation.ToolTip.Ls"),
 			Messages.getString("QuantAna.Simulation.ToolTip.W"),
-			Messages.getString("QuantAna.Simulation.ToolTip.Wq"),
-			Messages.getString("QuantAna.Simulation.TooTip.Details") };
+			Messages.getString("QuantAna.Simulation.ToolTip.Wq")
+	};
 
 	private String[] colResUtil = {
 			Messages.getString("QuantAna.Simulation.Column.Object"),
@@ -188,11 +204,15 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private Dialog thisDialog = this;
 
-	private JButton btnProtocol = null;
+	private JButton btnProtocol;
 	
-	private JButton btnColumn[];
+	private JButton btnExport;
 
 	private String[] servNames;
+
+	private ArrayList<JButton> buttonList = new ArrayList<JButton>();
+
+	private boolean isRunning = false;
 
 	/**
 	 * This is the default constructor
@@ -206,6 +226,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		tm = new TimeModel(1, 1.0);
 		servNames = graph.getTransitions();
 		numServers = graph.getNumTransitions();
+		
+		/*dir = new File(ConfigurationManager.getConfiguration().getLogdir());
+		
+		fileChooser = new JFileChooser();
+		getFileFilter();*/
+		
 		initResourceAlloc();
 		initialize();
 	}
@@ -395,33 +421,69 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridy = 0;
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
-			statsPanel.add(getServerTableScrollPane(), constraints);
+			statsPanel.add(getServerTablePane(), constraints);
+
 			statsPanel.setMinimumSize(new Dimension(720, 140));
 		}
 
 		return statsPanel;
 	}
 
-	private JScrollPane getServerTableScrollPane() {
-		if (serverTableScrollPane == null) {
-			serverTableScrollPane = new JScrollPane(getServerTable());
-			serverTableScrollPane.setBorder(BorderFactory.createEmptyBorder());
-			serverTableScrollPane.setWheelScrollingEnabled(true);
-			serverTableScrollPane.setMinimumSize(new Dimension(720, 120));
+	private JScrollPane getServerTablePane() {
+		if (serverTablePane == null) {
+			
+			JPanel jp = new JPanel();
+			jp.setLayout(new GridBagLayout());
+			GridBagConstraints constraints = new GridBagConstraints();
+			constraints.insets = new Insets(0, 5, 5, 5);
+			constraints.fill = GridBagConstraints.BOTH;
+			constraints.anchor = GridBagConstraints.WEST;
+			constraints.weightx = 0;
+			constraints.weighty = 1;
+			constraints.gridx = 0;
+			constraints.gridy = 0;
+			constraints.gridwidth = 1;
+			constraints.gridheight = 1;
+			jp.add(getServerTablePanel(), constraints);
+
+			constraints.weightx = 1;
+			constraints.weighty = 0;
+			constraints.gridx = 1;
+			constraints.gridy = 0;
+			jp.add(getDetailsPanel(), constraints);
+			
+			serverTablePane = new JScrollPane(jp);
+			serverTablePane.setBorder(BorderFactory.createEmptyBorder());
+			serverTablePane.setWheelScrollingEnabled(true);
+			serverTablePane.setMinimumSize(new Dimension(720, 120));
 		}
-		return serverTableScrollPane;
+		return serverTablePane;
+	}
+	
+	private JPanel getServerTablePanel(){
+		if (serverTablePanel == null) {
+			serverTablePanel = new JPanel();
+			serverTablePanel.setLayout(new BorderLayout());
+			
+			getServerTable();
+			
+			serverTablePanel.add(tableServers.getTableHeader(), BorderLayout.PAGE_START);
+			serverTablePanel.add(tableServers, BorderLayout.CENTER);
+		}
+		
+		return serverTablePanel;
 	}
 
 	private JTable getServerTable() {
 		if (tableServers == null) {
-			serverTableMatrix = new Object[numServers][colServers.length];
+			serverTableMatrix = new Object[numServers + 1][colServers.length];
 
+			serverTableMatrix[0][0] = Messages.getString("QuantAna.Simulation.Process");
 			for (int i = 0; i < numServers; i++) {
-				serverTableMatrix[i][0] = servNames[i];
+				serverTableMatrix[i+1][0] = servNames[i];
 			}
 
-			serverTableModel = new ServerTableModel(colServers,
-					serverTableMatrix);
+			serverTableModel = new ServerTableModel(colServers,	serverTableMatrix);
 			serverTableModel.addTableModelListener(new TableModelListener() {
 				public void tableChanged(TableModelEvent e) {
 				}
@@ -448,14 +510,68 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				}
 			};
 
-			btnColumn = new JButton[numServers];
-			MyTableCellRenderer mt = new MyTableCellRenderer();
-			tableServers.setDefaultRenderer(Object.class, mt);
-			tableServers.setDefaultEditor(Object.class, mt);
+			tableServers.setDefaultRenderer(Object.class,
+					new MyTableCellRenderer());
+
 			tableServers.setEnabled(false);
 		}
 
 		return tableServers;
+	}
+	
+	private JPanel getDetailsPanel(){
+		if (detailsPanel == null) {
+			detailsPanel = new JPanel();
+//			detailsPanel.setLayout(new GridLayout(numServers + 1, 1));
+			detailsPanel.setLayout(new GridBagLayout());
+			GridBagConstraints constraints = new GridBagConstraints();
+//			constraints.insets = new Insets(0, 1, 1, 1);
+			constraints.fill = GridBagConstraints.BOTH;
+			constraints.anchor = GridBagConstraints.WEST;
+			constraints.weightx = 1;
+			constraints.weighty = 0;
+			constraints.gridwidth = 1;
+			constraints.gridheight = 1;
+			
+			JLabel lblDetails = new JLabel();
+			lblDetails.setFont(DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
+			lblDetails.setBackground(Color.DARK_GRAY);//DefaultStaticConfiguration.DEFAULT_HEADER_BACKGROUND_COLOR);
+			lblDetails.setPreferredSize(new Dimension(40,15));
+			lblDetails.setText(Messages.getString("QuantAna.Simulation.Column.Details"));
+			lblDetails.setToolTipText(Messages.getString("QuantAna.Simulation.ToolTip.Details"));
+
+			constraints.insets = new Insets(0, 1, 2, 1);
+			constraints.gridx = 0;
+			constraints.gridy = 0;
+			detailsPanel.add(lblDetails, constraints);
+			
+			for (int i = 0; i <= numServers; i++) {
+				JButton b = new JButton("...");
+				b.setActionCommand(Integer.toString(i));
+				b.setEnabled(false);
+				buttonList.add(b);
+				b.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String cmd = ((JButton) e.getSource())
+								.getActionCommand();
+						int idx = Integer.parseInt(cmd);
+						String name = (String) tableServers.getValueAt(idx, 0);
+						DetailsDialog dd = new DetailsDialog(thisDialog, name);
+					}
+				});
+
+				b.setMinimumSize(new Dimension(20, 15));
+				b.setMaximumSize(new Dimension(20, 15));
+				b.setPreferredSize(new Dimension(20, 15));
+
+				constraints.insets = new Insets(0, 1, 1, 1);
+				constraints.gridx = 0;
+				constraints.gridy = i+1;
+				detailsPanel.add(b, constraints);
+			}
+		}
+		
+		return detailsPanel;
 	}
 
 	private JPanel getUtilPanel() {
@@ -477,20 +593,20 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridy = 0;
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
-			utilPanel.add(getResUtilTableScrollPane(), constraints);
+			utilPanel.add(getResUtilTablePane(), constraints);
 			utilPanel.setMinimumSize(new Dimension(720, 120));
 		}
 		return utilPanel;
 	}
 
-	private JScrollPane getResUtilTableScrollPane() {
-		if (resUtilTableScrollPane == null) {
-			resUtilTableScrollPane = new JScrollPane(getResUtilTable());
-			resUtilTableScrollPane.setBorder(BorderFactory.createEmptyBorder());
-			resUtilTableScrollPane.setWheelScrollingEnabled(true);
-			resUtilTableScrollPane.setMinimumSize(new Dimension(720, 120));
+	private JScrollPane getResUtilTablePane() {
+		if (resUtilTablePane == null) {
+			resUtilTablePane = new JScrollPane(getResUtilTable());
+			resUtilTablePane.setBorder(BorderFactory.createEmptyBorder());
+			resUtilTablePane.setWheelScrollingEnabled(true);
+			resUtilTablePane.setMinimumSize(new Dimension(720, 120));
 		}
-		return resUtilTableScrollPane;
+		return resUtilTablePane;
 	}
 
 	private JTable getResUtilTable() {
@@ -499,8 +615,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Object[] resObjNames = resAlloc.getResources().values().toArray();
 
 			for (int i = 0; i < resObjNum; i++) {
-				resUtilTableMatrix[i][0] = ((Resource) resObjNames[i])
-						.getName();
+				resUtilTableMatrix[i][0] = ((Resource) resObjNames[i]).getName();
 			}
 
 			resUtilTableModel = new ResUtilTableModel(colResUtil,
@@ -534,19 +649,19 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			tableResUtil.setDefaultRenderer(Object.class,
 					new MyTableCellRenderer());
 
-			tableResUtil.setEnabled(true);
+			tableResUtil.setEnabled(false);
 		}
 
 		return tableResUtil;
 	}
 
-	class MyTableCellRenderer extends DefaultTableCellRenderer implements
-		TableCellEditor {
+	static class MyTableCellRenderer extends DefaultTableCellRenderer {
 
 		private static final long serialVersionUID = 1L;
 
 		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+				Object value, boolean isSelected, boolean hasFocus, int row,
+				int column) {
 			super.getTableCellRendererComponent(table, value, isSelected,
 					hasFocus, row, column);
 
@@ -555,52 +670,23 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 			if (column == 0) {
 				setHorizontalAlignment(LEFT);
+				return this;
 			} else if (column == 6) {
 				setHorizontalAlignment(CENTER);
-				btnColumn[row] = new JButton("Edit...");
-				btnColumn[row].setSize(20, 10);
-				System.out.println("render" + row);
-				btnColumn[row].addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("pressed");
-					}
-				});
-				return btnColumn[row];
+				/*
+				 * JButton b = new JButton("..."); b.setSize(20,10);
+				 * b.addActionListener(new ActionListener(){ public void
+				 * actionPerformed(ActionEvent e){
+				 * JOptionPane.showMessageDialog(null, "Details are shown
+				 * here."); } });
+				 * 
+				 * return b;
+				 */
+				return this;
 			} else {
 				setHorizontalAlignment(RIGHT);
+				return this;
 			}
-			return this;
-		}
-		
-		public Component getTableCellEditorComponent(JTable table,
-				Object value, boolean isSelected, int row, int column) {
-			System.out.println("call");
-			return btnColumn[row];
-		}
-
-		public String getCellEditorValue() {
-			return "Edit...";
-		}	
-		
-		public void addCellEditorListener(CellEditorListener l) {
-		}
-
-		public void cancelCellEditing() {
-		}
-
-		public boolean isCellEditable(EventObject anEvent) {
-			return true;
-		}
-
-		public void removeCellEditorListener(CellEditorListener l) {
-		}
-
-		public boolean shouldSelectCell(EventObject anEvent) {
-			return false;
-		}
-
-		public boolean stopCellEditing() {
-			return true;
 		}
 	}
 
@@ -995,14 +1081,34 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			btnProtocol.setPreferredSize(new Dimension(120, 25));
 			btnProtocol.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
-					// getProtocol();
-					new ProtocolDialog(thisDialog, sim.getProtocolContent());
+					WaitDialog wd = new WaitDialog(QuantitativeSimulationDialog.this, Messages.getString("QuantAna.Simulation.Wait")); 
+					wd.start();
+					ProtocolDialog pd = new ProtocolDialog(thisDialog, sim
+							.getProtocolContent());
+					wd.stop();
 				}
 			});
 
 			constraints.gridx = 0;
 			constraints.gridy = 2;
 			buttonPanel.add(btnProtocol, constraints);
+
+			btnExport = new JButton();
+			btnExport.setText(Messages.getTitle("QuantAna.Button.Export"));
+			btnExport.setIcon(Messages.getImageIcon("QuantAna.Button.Export"));
+			btnExport.setEnabled(false);
+			btnExport.setMinimumSize(new Dimension(120, 25));
+			btnExport.setMaximumSize(new Dimension(120, 25));
+			btnExport.setPreferredSize(new Dimension(120, 25));
+			btnExport.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+//					exportStatistics();
+					ExportDialog ed = new ExportDialog(thisDialog);
+				}
+			});
+			constraints.gridx = 0;
+			constraints.gridy = 3;
+			buttonPanel.add(btnExport, constraints);
 
 			JButton btnClose = new JButton();
 			btnClose.setText(Messages.getTitle("QuantAna.Button.Close"));
@@ -1016,7 +1122,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				}
 			});
 			constraints.gridx = 0;
-			constraints.gridy = 3;
+			constraints.gridy = 4;
 			buttonPanel.add(btnClose, constraints);
 		}
 
@@ -1056,14 +1162,29 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		HashMap<String, Server> serv = sim.getServerList();
 		HashMap<String, Resource> res = resAlloc.getResources();
 
-		for (int i = 0; i < numServers; i++) {
+		double wP = sim.getThroughPut() / clock;
+		double wqP = sim.getCaseWait() / clock;
+		double wsP = sim.getCaseBusy() / clock;
+		stm.setValueAt("-", 0, 1);
+		stm.setValueAt("-", 0, 2);
+		stm.setValueAt("-", 0, 3);
+		stm.setValueAt(String.format("%,.2f", wP), 0, 4);
+		stm.setValueAt(String.format("%,.2f", wqP), 0, 5);
+		
+		for (int i = 1; i <= numServers; i++) {
 			String id = produceID((String) stm.getValueAt(i, 0));
 			Server s = serv.get(id);
 			int servStarted = s.getNumAccess();
 			int servFinished = s.getNumDeparture();
+			if (s instanceof ANDJoinServer){
+				ANDJoinServer sv = (ANDJoinServer)s;
+				int br = sv.getBranches();
+				if (br != 0) {servStarted /= br; servFinished /= br;}
+			}
+			double lv = s.getAvgNumCasesAtServer() / clock;
 			double qlen = s.getQueueLen() / clock;
 			double nsrv = s.getAvgNumCasesServing() / clock;
-			String l = String.format("%,.2f", qlen + nsrv);
+			String l = String.format("%,.2f", lv);
 			String lq = String.format("%,.2f", qlen);
 			String ls = String.format("%,.2f", nsrv);
 			String w = String.format("%,.2f", s.getAvgServiceTime()
@@ -1080,7 +1201,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			String name = (String) rtm.getValueAt(i, 0);
 			Resource r = res.get(name);
 			String util = String.format("%,.2f", Double.valueOf(r.getBusyTime()
-					/ clock));
+					/ clock * 100));
 			rtm.setValueAt(util, i, 1);
 		}
 	}
@@ -1159,7 +1280,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp);
 		sim.start();
 
-//		activateDetails();
+		activateDetails();
 		updContents();
 		wd.stop();
 		sim.setDuration(wd.getDuration());
@@ -1209,78 +1330,164 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		return sim;
 	}
 
-	/*
-	 * private void activateDetails() { for (JButton b : buttonList)
-	 * b.setEnabled(true);
-	 * 
-	 * btnProtocol.setEnabled(true); }
-	 * 
-	 * public boolean isRunning() { return isRunning; }
-	 */
+	private void activateDetails() {
+		for (JButton b : buttonList)
+			b.setEnabled(true);
+
+		btnProtocol.setEnabled(true);
+		btnExport.setEnabled(true);
+	}
+
+	public boolean isRunning() {
+		return isRunning;
+	}
+
 	public void mouseMoved(MouseEvent e) {
-		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		if (isRunning)
+			setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	}
 
 	public void mouseDragged(MouseEvent e) {
+
 	}
 
-/*	class ButtonColumn extends AbstractCellEditor implements TableCellRenderer,
-			TableCellEditor, ActionListener {
-		private static final long serialVersionUID = 1L;
+	public ResUtilTableModel getResUtilTableModel() {
+		return resUtilTableModel;
+	}
 
-		private JTable table;
-
-		private JButton editButton;
-
-		private JButton renderButton;
-
-		private String text = "";
-
-		public ButtonColumn(JTable table, int column) {
-			super();
-			this.table = table;
-			editButton = new JButton("Edit...");
-			editButton.addActionListener(this);
-
-			renderButton = new JButton("Edit...");
-			renderButton.addActionListener(this);
-
-			TableColumnModel columnModel = table.getColumnModel();
-			columnModel.getColumn(column).setCellRenderer(this);
-			columnModel.getColumn(column).setCellEditor(this);
-		}
-
-		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-			if (hasFocus) {
-				renderButton.setForeground(table.getForeground());
-				renderButton.setBackground(Color.white);
-			} else if (isSelected) {
-				renderButton.setForeground(table.getForeground());
-				renderButton.setBackground(table.getBackground());
+	public ServerTableModel getServerTableModel() {
+		return serverTableModel;
+	}
+	
+	/*private void exportStatistics(){
+		fileChooser.setCurrentDirectory(dir);
+		fileChooser.setMultiSelectionEnabled(false);
+		
+		int result = fileChooser.showSaveDialog(this);
+		if (result == JFileChooser.APPROVE_OPTION){
+			String fname = fileChooser.getSelectedFile().getAbsolutePath();
+			dir = fileChooser.getCurrentDirectory();
+			String ext = "";
+			int idx = fname.lastIndexOf(".");
+			if (idx > -1){
+				ext = fname.substring(idx + 1);
 			} else {
-				renderButton.setForeground(table.getForeground());
-				renderButton.setBackground(Color.black);
+				ext = "csv";
+				fname += "." + ext;
 			}
+			
+			try {
+				if (ext.equals("csv")) {
+					FileWriter fw = new FileWriter(fname);
+					fw.write(getExportString());
+					fw.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private void getFileFilter(){
+		eff.addExtension("csv");
+		eff.setDescription(Messages.getString("QuantAna.Simulation.Export.FileFilter"));
+		fileChooser.setFileFilter(eff);
+	}*/
+	
+	/*private String getExportString(){
+		String text = "";
+		ServerTableModel stm = serverTableModel;
+		ResUtilTableModel rtm = resUtilTableModel;
+		
+		String pro = Messages.getString("QuantAna.Simulation.Process") + ";";
+		pro += Messages.getString("QuantAna.Simulation.Column.W") + ";";
+		pro += Messages.getString("QuantAna.Simulation.Column.Wq") + ";";
+		pro += Messages.getString("QuantAna.Simulation.Details.Clock") + ";";
+		pro += Messages.getString("QuantAna.Simulation.Details.FinishedCases") + ";";
+		pro += Messages.getString("QuantAna.Simulation.Details.MaxCasesInSystem") + "\n";
+		
+		String proD = ";" + Double.parseDouble((String)stm.getValueAt(0, 4)) + ";";
+		proD += Double.parseDouble((String)stm.getValueAt(0, 5)) + ";";
+		proD += Double.parseDouble(String.format("%,.2f", sim.getClock())) + ";";
+		proD += Double.parseDouble(String.format("%d", sim.getFinishedCases())) + ";";
+		proD += Double.parseDouble(String.format("%d", sim.getMaxNumCasesInSystem())) + "\n";
+		
+		String hdg = Messages.getString("QuantAna.Simulation.Server") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Column.L") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Column.Lq") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Column.Ls") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Column.W") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Column.Wq") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Details.Utilization") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Details.ZeroDelays") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Details.NumCalls") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Details.NumAccess") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Details.NumDeparture") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Details.MaxQueueLength") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Details.MaxCasesParallel") + ";";
+		hdg += Messages.getString("QuantAna.Simulation.Details.MaxWaitTime") + "\n";
+		
+		String srvD = "";
+		String servName;
+		Server server;
+		for (int i = 1; i < stm.getRowCount(); i++){
+			servName = (String)stm.getValueAt(i, 0);
+			srvD += servName + ";";
+			
+			String servID = servName.substring(servName.indexOf("(") + 1, servName.indexOf(")"));
+			server = sim.getServerList().get(servID);
+			
+			for (int j = 1; j < stm.getColumnCount(); j++)
+				srvD += Double.parseDouble((String)stm.getValueAt(i, j)) + ";";
+			
+			srvD += Double.parseDouble(String.format("%,.2f", server.getBusy() / sim.getClock() * 100)) + ";";
+			srvD += Double.parseDouble(String.format("%d", server.getZeroDelays())) + ";";
+			srvD += Double.parseDouble(String.format("%d", server.getNumCalls())) + ";";
+			srvD += Double.parseDouble(String.format("%d", server.getNumAccess())) + ";";
+			srvD += Double.parseDouble(String.format("%d", server.getNumDeparture())) + ";";
+			srvD += Double.parseDouble(String.format("%d", server.getMaxQueueLength())) + ";";
+			srvD += Double.parseDouble(String.format("%d", server.getMaxNumCasesInParallel())) + ";";
+			srvD += Double.parseDouble(String.format("%,.2f", server.getMaxWaitTimeOfCase())) + "\n";
+		}
+		
+		String res = "\n\n";
+		res += Messages.getString("QuantAna.Simulation.Column.Object") + ";";
+		res += Messages.getString("QuantAna.Simulation.Column.Util") + "\n";
+		for (int i = 0; i < rtm.getRowCount(); i++)
+			res += (String)rtm.getValueAt(i, 0) + ";" + Double.parseDouble((String)rtm.getValueAt(i, 1)) + "\n";
+		
+		text += pro + proD + "\n" + hdg + srvD + "\n" + res;
+		
+		return text;
+	}*/
+	
+	/*class ExtensionFileFilter extends FileFilter {
 
-			return renderButton;
+		private ArrayList<String> extensions = new ArrayList<String>();
+		private String description = " ";
+
+		public void addExtension(String ext){
+			if (!ext.startsWith(".")) ext = "." + ext;
+			extensions.add(ext.toLowerCase());
 		}
 
-		public Component getTableCellEditorComponent(JTable table,
-				Object value, boolean isSelected, int row, int column) {
-			return editButton;
+		public boolean accept(File f){
+			if (f.isDirectory()) return true;
+
+			String name = f.getName().toLowerCase();
+			for (String ext : extensions)
+				if (name.endsWith(ext))
+					return true;
+
+			return false;
 		}
 
-		public Object getCellEditorValue() {
-			return text;
+		public String getDescription() {
+			return description;
 		}
 
-		public void actionPerformed(ActionEvent e) {
-			fireEditingStopped();
-			String cmd = ((JButton) e.getSource()).getActionCommand();
-			String name = (String) tableServers.getValueAt(Integer.parseInt(cmd), 0);
-			new DetailsDialog(thisDialog, name);
-			System.out.println(e.getActionCommand() + " : "	+ table.getSelectedRow());
+		public void setDescription(String description) {
+			this.description = description;
 		}
 	}*/
 

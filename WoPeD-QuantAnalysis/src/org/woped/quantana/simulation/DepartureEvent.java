@@ -83,7 +83,7 @@ public class DepartureEvent extends SimEvent {
 		protocol.info(sim.clckS() + "Anzahl der von Server \"" + server.getName() + "(" + server.getId() + ")\" bedienten Cases beträgt " + server.getNumDeparture());
 		
 		sim.setTimeOfLastEvent(time);
-		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + time);
+		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + String.format("%,.2f", time));
 	}
 	
 	private void nextStartServiceEvent(Simulator sim, double time, Case c, ResourceUtilization ru){

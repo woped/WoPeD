@@ -45,7 +45,7 @@ public class StopServiceEvent extends SimEvent {
 			r.setBusyTime(r.getBusyTime() + time - r.getLastStartTime());
 			ru.freeResource(r);
 			protocol.info(sim.clckS() + "Ressource \"" + r.getName() + "\" wird befreit.");
-			protocol.info(sim.clckS() + "Servicezeit von Ressource \"" + r.getName() + "\" bisher: " + r.getBusyTime());
+			protocol.info(sim.clckS() + "Servicezeit von Ressource \"" + r.getName() + "\" bisher: " + String.format("%,.2f", r.getBusyTime()));
 			protocol.info(sim.clckS() + "Freie Ressourcen: " + ru.printFreeResources());
 			protocol.info(sim.clckS() + "Gebundene Ressourcen: " + ru.printUsedResources());
 		}
@@ -70,6 +70,6 @@ public class StopServiceEvent extends SimEvent {
 		protocol.info(sim.clckS() + "DEPARTURE_EVENT \"" + de.getName() + "\" für Case # " + c.getId() + " vom Server \"" + server.getName() + "(" + server.getId() + ")\" wurde erzeugt.");
 		
 		sim.setTimeOfLastEvent(time);
-		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + time);
+		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + String.format("%,.2f", time));
 	}
 }

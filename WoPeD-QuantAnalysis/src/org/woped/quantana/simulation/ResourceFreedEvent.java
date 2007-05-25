@@ -43,6 +43,6 @@ public class ResourceFreedEvent extends SimEvent {
 		}
 		
 		sim.setTimeOfLastEvent(time);
-		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + time);
+		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + String.format("%,.2f", time));
 	}
 }

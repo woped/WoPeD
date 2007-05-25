@@ -3,6 +3,7 @@ package org.woped.quantana.simulation;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.PriorityQueue;
@@ -72,6 +73,7 @@ public class Simulator {
 	private double duration;
 	
 	private SimEvent nextEvent = null;
+	private ArrayList<Server> startServerList;
 	private HashMap<String, Server> serverList = new HashMap<String, Server>();
 	private PriorityQueue<SimEvent> eventList = new PriorityQueue<SimEvent>();
 	private HashMap<Integer, Case> caseList	 = new HashMap<Integer, Case>();
@@ -93,7 +95,8 @@ public class Simulator {
 		this.period = sp.getPeriod();
 		this.useResAlloc = sp.getResUse();
 		
-		getFstServList();
+		makeFstServList();
+		startServerList = makeStartServerList();
 		seedGenerator = new SeedGenerator();
 	}
 	
@@ -103,9 +106,14 @@ public class Simulator {
 		protocol.info(clckS() + "Simulation wird gestartet!");
 		protocol.info(clckS() + "Verwendung Ressourcenmodell: " + printResModUsed());
 		protocol.info(clckS() + "Warteschlangendisziplin: " + printQueueDiscipline());
+		protocol.info(clckS() + "Periode beträgt: " + period + " Zeiteinheiten.");
+		protocol.info(clckS() + "Lambda: " + lambda);
+		protocol.info(clckS() + "Abbruch-Bedingung: " + printTerminationRule());
+		protocol.info(clckS() + "Verteilung ZAZ: " + printDistIAT());
+		protocol.info(clckS() + "Verteilung BZ: " + printDistST());
 		
 		generateServerList();
-		LoggerManager.info(Constants.QUANTANA_LOGGER, printServerList());
+//		LoggerManager.info(Constants.QUANTANA_LOGGER, printServerList());
 		protocol.info(clckS() + "Server-Liste wurde erzeugt.");
 		
 		protocol.info(clckS() + "Anzahl der Simulationsläufe: " + numRuns);
@@ -124,7 +132,7 @@ public class Simulator {
 				
 				if (nextEvent != null){
 //					LoggerManager.info(Constants.QUANTANA_LOGGER, printEventList() + "::" + nextEvent.getName());
-					protocol.info(clckS() + nextEvent.getEventTypeName());
+					protocol.info(clckS() + nextEvent.getEventTypeName() + " (" + nextEvent.getName() + ")");
 					nextEvent.invoke();
 				}
 				else
@@ -177,12 +185,14 @@ public class Simulator {
 	
 	private void timing(){
 		// nextEvent bestimmen
-		protocol.info(clckS() + "Nächstes Ereignis wird bestimmt:");
 		if (!(eventList.isEmpty()))
 			nextEvent = eventList.remove();
 		else
 			nextEvent = null;
 		
+		String evt = "Nächstes Ereignis wird bestimmt: ";
+		if (nextEvent != null) evt += nextEvent.getName();
+		protocol.info(clckS() + evt);
 		protocol.info(clckS() + "Inhalt der Ereignisliste: " + printEventList());
 		
 		// Systemuhr setzen
@@ -295,6 +305,7 @@ public class Simulator {
 		case Simulator.STOP_BOTH:
 			return isCaseNumReached() || isTimeRunOut();
 		default:
+			LoggerManager.info(Constants.QUANTANA_LOGGER, "No termination rule defined. Simulation stopped immediately.");
 			return true;
 		}
 	}
@@ -319,7 +330,7 @@ public class Simulator {
 		return serverList.get(start.getSuccessor().get(idx).getTarget().getId());
 	}
 	
-	private void getFstServList(){
+	private void makeFstServList(){
 		Node start = process.getStartPlace();
 		int succs = start.getSuccessor().size();
 		fstServList = new int[succs][3];
@@ -472,7 +483,7 @@ public class Simulator {
 		avgCasesInSystem += cc * (now - lastEvent);
 		
 		protocol.info(clckS() + "Aktuelle Zahl von Cases im Prozess ist " + cc);
-		protocol.info(clckS() + "Durchschnittliche Anzahl Cases im Prozess ist " + (avgCasesInSystem / clock));
+		protocol.info(clckS() + "Durchschnittliche Anzahl Cases im Prozess ist " + String.format("%,.2f", (avgCasesInSystem / clock)));
 	}
 
 	public double getTimeOfLastCaseNumChange() {
@@ -614,5 +625,58 @@ public class Simulator {
 
 	public void setDuration(double duration) {
 		this.duration = duration;
+	}
+	
+	private String printTerminationRule(){
+		switch (stopRule){
+		case STOP_CASE_DRIVEN:
+			return "Anzahl abgeschlossener Fälle erreicht.";
+		case STOP_TIME_DRIVEN:
+			return "Periode ist abgelaufen.";
+		case STOP_BOTH:
+			return "Anzahl erreicht oder Periode abgelaufen.";
+		default:
+			return "keine";
+		}
+	}
+	
+	private String printDistIAT(){
+		switch (typeOfDistForCases){
+		case ProbabilityDistribution.DIST_TYPE_UNIFORM:
+			return "Gleichverteilt mit " + String.format("", caseParam) + " Toleranz";
+		case ProbabilityDistribution.DIST_TYPE_GAUSS:
+			return "Normalverteilt mit Standardabweichung " + String.format("", caseParam);
+		default:
+			return "Exponentialverteilt";
+		}
+	}
+	
+	private String printDistST(){
+		switch (typeOfDistForServer){
+		case ProbabilityDistribution.DIST_TYPE_UNIFORM:
+			return "Gleichverteilt mit " + String.format("", servParam) + " Toleranz";
+		case ProbabilityDistribution.DIST_TYPE_GAUSS:
+			return "Normalverteilt mit Standardabweichung " + String.format("", servParam);
+		default:
+			return "Exponentialverteilt";
+		}
+	}
+	
+	public ArrayList<Server> makeStartServerList(){
+		ArrayList<Server> list = new ArrayList<Server>();
+		Node start = process.getStartPlace();
+		
+		for (int i = 0; i < start.getSuccessor().size(); i++){
+			Node n = start.getSuccessor().get(i).getTarget();
+			String id = n.getId();
+			Server s = serverList.get(id);
+			list.add(s);
+		}
+		
+		return list;
+	}
+
+	public ArrayList<Server> getStartServerList() {
+		return startServerList;
 	}
 }

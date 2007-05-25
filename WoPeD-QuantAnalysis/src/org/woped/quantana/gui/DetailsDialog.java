@@ -12,6 +12,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 import org.woped.editor.utilities.Messages;
+import org.woped.quantana.simulation.ANDJoinServer;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.Simulator;
 
@@ -227,9 +228,11 @@ public class DetailsDialog extends JDialog {
 		} else if (server != null){
 			// Server-Statistik
 			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Utilization"));
-			lblDetail_1.setText(String.format("%,.2f", server.getBusy() / clock));
+			lblDetail_1.setText(String.format("%,.2f", server.getBusy() / clock * 100));
+			int zd = server.getZeroDelays();
+			if (server instanceof ANDJoinServer) zd /= ((ANDJoinServer)server).getBranches();
 			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.ZeroDelays"));
-			lblDetail_2.setText(String.format("%d", server.getZeroDelays()));
+			lblDetail_2.setText(String.format("%d", zd));
 			lblDesc_3.setText(Messages.getString("QuantAna.Simulation.Details.NumCalls"));
 			lblDetail_3.setText(String.format("%d", server.getNumCalls()));
 			lblDesc_4.setText(Messages.getString("QuantAna.Simulation.Details.NumAccess"));

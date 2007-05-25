@@ -24,6 +24,7 @@ public class Server {
 	private double waitTime = 0.0;
 	private double avgServiceTime = 0.0;
 	private double avgNumCasesServing = 0.0;
+	private double avgNumCasesAtServer = 0.0;
 	private int maxQueueLength = 0;
 	private int zeroDelays = 0;
 	private int numAccess = 0;
@@ -149,7 +150,7 @@ public class Server {
 
 	public double getNextServTime(){
 		double time = distribution.getNextRandomValue();
-		sim.getProtocol().info(sim.clckS() + "(Server \"" + name + "(" + id + ")\")Bedienzeit: " + time);
+		protocol.info(sim.clckS() + "(Server \"" + name + "(" + id + ")\")Bedienzeit: " + String.format("%,.2f", time));
 		return time;
 	}
 	
@@ -320,12 +321,14 @@ public class Server {
 	
 	public void updateUtilStats(double now, double lastEvent){
 		queueLen += queue.size() * (now - lastEvent);
-		protocol.info(sim.clckS() + "Durchschnittliche Warteschlangenlänge von Server \"" + name + "(" + id + ")\" bisher ist: " + (queueLen / sim.getClock()));
+		protocol.info(sim.clckS() + "Durchschnittliche Warteschlangenlänge von Server \"" + name + "(" + id + ")\" bisher ist: " + String.format("%,.2f", (queueLen / sim.getClock())));
 		
 		avgNumCasesServing += numCasesInParallel * (now - lastEvent);
 		
+		avgNumCasesAtServer += (numCasesInParallel + queue.size()) * (now - lastEvent);
+		
 		if (status == STATUS_BUSY) busy += now - lastEvent;
-		protocol.info(sim.clckS() + "Durchschnittliche Bedienzeit von Server \"" + name + "(" + id + ")\" bisher ist: " + (busy / sim.getClock()));
+		protocol.info(sim.clckS() + "Durchschnittliche Bedienzeit von Server \"" + name + "(" + id + ")\" bisher ist: " + String.format("%,.2f", (busy / sim.getClock())));
 	}
 	
 	public void reset(){
@@ -343,6 +346,7 @@ public class Server {
 		waitTime = 0.0;
 		avgServiceTime = 0.0;
 		avgNumCasesServing = 0.0;
+		avgNumCasesAtServer = 0.0;
 		
 		queue.clear();
 	}
@@ -380,14 +384,6 @@ public class Server {
 		this.avgServiceTime = avgServiceTime;
 	}
 
-	/*public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}*/
-	
 	public void doService(){
 		
 	}
@@ -417,5 +413,13 @@ public class Server {
 			break;
 		default:
 		}
+	}
+
+	public double getAvgNumCasesAtServer() {
+		return avgNumCasesAtServer;
+	}
+
+	public void setAvgNumCasesAtServer(double avgNumCasesAtServer) {
+		this.avgNumCasesAtServer = avgNumCasesAtServer;
 	}
 }

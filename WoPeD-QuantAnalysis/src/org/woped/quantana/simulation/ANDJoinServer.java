@@ -7,6 +7,8 @@ public class ANDJoinServer extends Server {
 	
 	private HashMap<Case, ArrayList<CaseCopy>> copyList = new HashMap<Case, ArrayList<CaseCopy>>();
 	
+	private int branches = 0;
+	
 	public ANDJoinServer(Simulator sim, String id, String name, ProbabilityDistribution dist){
 		super(sim, id, name, dist);
 	}
@@ -22,5 +24,13 @@ public class ANDJoinServer extends Server {
 
 	public void setCopyList(HashMap<Case, ArrayList<CaseCopy>> copyList) {
 		this.copyList = copyList;
+	}
+
+	public int getBranches() {
+		return branches;
+	}
+
+	public void setBranches(int branches) {
+		this.branches = branches;
 	}
 }
