@@ -450,7 +450,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				}
 			};
 
-			btnColumn = new JButton[numServers];
+			btnColumn = new JButton[numServers + 1];
 			MyTableCellRenderer mt = new MyTableCellRenderer();
 			tableServers.setDefaultRenderer(Object.class, mt);
 			tableServers.setDefaultEditor(Object.class, mt);
