@@ -1,14 +1,11 @@
 package org.woped.quantana.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -17,11 +14,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
+import javax.swing.AbstractCellEditor;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -36,10 +35,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.event.CellEditorListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellEditor;
+
 
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.ModelElementContainer;
@@ -65,7 +67,6 @@ import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.SimParameters;
 import org.woped.quantana.simulation.Simulator;
 
-@SuppressWarnings("unused")
 public class QuantitativeSimulationDialog extends JDialog implements
 		MouseMotionListener {
 
@@ -95,7 +96,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private int resObjNum = 0;
 
-	private double period = 480.0;
+	private double period = 60.0;
 
 	private double lambda = 50.0;
 
@@ -139,11 +140,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private JTable tableServers;
 
-	private JScrollPane serverTablePane;
-	
-	private JPanel serverTablePanel;
-	
-	private JPanel detailsPanel;
+	private JScrollPane serverTableScrollPane;
 
 	private Object[][] serverTableMatrix;
 
@@ -151,7 +148,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private JTable tableResUtil;
 
-	private JScrollPane resUtilTablePane;
+	private JScrollPane resUtilTableScrollPane;
 
 	private Object[][] resUtilTableMatrix;
 
@@ -160,8 +157,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private TimeModel tm = null;
 
 	private Simulator sim;
-	
-//	private Thread thr;
 
 	private String[] colServers = {
 			Messages.getString("QuantAna.Simulation.Column.Names"),
@@ -169,8 +164,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Messages.getString("QuantAna.Simulation.Column.Lq"),
 			Messages.getString("QuantAna.Simulation.Column.Ls"),
 			Messages.getString("QuantAna.Simulation.Column.W"),
-			Messages.getString("QuantAna.Simulation.Column.Wq")
-	};
+			Messages.getString("QuantAna.Simulation.Column.Wq"),
+			Messages.getString("QuantAna.Simulation.Column.Details") };
 
 	private String[] ttipsServers = {
 			Messages.getString("QuantAna.Simulation.ToolTip.Names"),
@@ -178,8 +173,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Messages.getString("QuantAna.Simulation.ToolTip.Lq"),
 			Messages.getString("QuantAna.Simulation.ToolTip.Ls"),
 			Messages.getString("QuantAna.Simulation.ToolTip.W"),
-			Messages.getString("QuantAna.Simulation.ToolTip.Wq")
-	};
+			Messages.getString("QuantAna.Simulation.ToolTip.Wq"),
+			Messages.getString("QuantAna.Simulation.TooTip.Details") };
 
 	private String[] colResUtil = {
 			Messages.getString("QuantAna.Simulation.Column.Object"),
@@ -193,13 +188,11 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private Dialog thisDialog = this;
 
-	private JButton btnProtocol;
+	private JButton btnProtocol = null;
+	
+	private JButton btnColumn[];
 
 	private String[] servNames;
-
-	private ArrayList<JButton> buttonList = new ArrayList<JButton>();
-
-	private boolean isRunning = false;
 
 	/**
 	 * This is the default constructor
@@ -402,57 +395,21 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridy = 0;
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
-			statsPanel.add(getServerTablePane(), constraints);
-
+			statsPanel.add(getServerTableScrollPane(), constraints);
 			statsPanel.setMinimumSize(new Dimension(720, 140));
 		}
 
 		return statsPanel;
 	}
 
-	private JScrollPane getServerTablePane() {
-		if (serverTablePane == null) {
-			
-			JPanel jp = new JPanel();
-			jp.setLayout(new GridBagLayout());
-			GridBagConstraints constraints = new GridBagConstraints();
-			constraints.insets = new Insets(0, 5, 5, 5);
-			constraints.fill = GridBagConstraints.BOTH;
-			constraints.anchor = GridBagConstraints.WEST;
-			constraints.weightx = 0;
-			constraints.weighty = 1;
-			constraints.gridx = 0;
-			constraints.gridy = 0;
-			constraints.gridwidth = 1;
-			constraints.gridheight = 1;
-			jp.add(getServerTablePanel(), constraints);
-
-			constraints.weightx = 1;
-			constraints.weighty = 0;
-			constraints.gridx = 1;
-			constraints.gridy = 0;
-			jp.add(getDetailsPanel(), constraints);
-			
-			serverTablePane = new JScrollPane(jp);
-			serverTablePane.setBorder(BorderFactory.createEmptyBorder());
-			serverTablePane.setWheelScrollingEnabled(true);
-			serverTablePane.setMinimumSize(new Dimension(720, 120));
+	private JScrollPane getServerTableScrollPane() {
+		if (serverTableScrollPane == null) {
+			serverTableScrollPane = new JScrollPane(getServerTable());
+			serverTableScrollPane.setBorder(BorderFactory.createEmptyBorder());
+			serverTableScrollPane.setWheelScrollingEnabled(true);
+			serverTableScrollPane.setMinimumSize(new Dimension(720, 120));
 		}
-		return serverTablePane;
-	}
-	
-	private JPanel getServerTablePanel(){
-		if (serverTablePanel == null) {
-			serverTablePanel = new JPanel();
-			serverTablePanel.setLayout(new BorderLayout());
-			
-			getServerTable();
-			
-			serverTablePanel.add(tableServers.getTableHeader(), BorderLayout.PAGE_START);
-			serverTablePanel.add(tableServers, BorderLayout.CENTER);
-		}
-		
-		return serverTablePanel;
+		return serverTableScrollPane;
 	}
 
 	private JTable getServerTable() {
@@ -463,7 +420,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				serverTableMatrix[i][0] = servNames[i];
 			}
 
-			serverTableModel = new ServerTableModel(colServers,	serverTableMatrix);
+			serverTableModel = new ServerTableModel(colServers,
+					serverTableMatrix);
 			serverTableModel.addTableModelListener(new TableModelListener() {
 				public void tableChanged(TableModelEvent e) {
 				}
@@ -490,51 +448,14 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				}
 			};
 
-			tableServers.setDefaultRenderer(Object.class,
-					new MyTableCellRenderer());
-
+			btnColumn = new JButton[numServers];
+			MyTableCellRenderer mt = new MyTableCellRenderer();
+			tableServers.setDefaultRenderer(Object.class, mt);
+			tableServers.setDefaultEditor(Object.class, mt);
 			tableServers.setEnabled(false);
 		}
 
 		return tableServers;
-	}
-	
-	private JPanel getDetailsPanel(){
-		if (detailsPanel == null) {
-			detailsPanel = new JPanel();
-			detailsPanel.setLayout(new GridLayout(numServers + 1, 1));
-			
-			JLabel lblDetails = new JLabel();
-			lblDetails.setFont(DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
-			lblDetails.setBackground(Color.DARK_GRAY);//DefaultStaticConfiguration.DEFAULT_HEADER_BACKGROUND_COLOR);
-			lblDetails.setPreferredSize(new Dimension(40,10));
-			lblDetails.setText(Messages.getString("QuantAna.Simulation.Column.Details"));
-			lblDetails.setToolTipText(Messages.getString("QuantAna.Simulation.ToolTip.Details"));
-			detailsPanel.add(lblDetails);
-			
-			for (int i = 0; i < numServers; i++) {
-				JButton b = new JButton("...");
-				b.setActionCommand(Integer.toString(i));
-				b.setEnabled(false);
-				buttonList.add(b);
-				b.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String cmd = ((JButton) e.getSource())
-								.getActionCommand();
-						int idx = Integer.parseInt(cmd);
-						String name = (String) tableServers.getValueAt(idx, 0);
-						DetailsDialog dd = new DetailsDialog(thisDialog, name);
-					}
-				});
-
-				b.setMinimumSize(new Dimension(20, 15));
-				b.setMaximumSize(new Dimension(20, 15));
-				b.setPreferredSize(new Dimension(20, 15));
-				detailsPanel.add(b);
-			}
-		}
-		
-		return detailsPanel;
 	}
 
 	private JPanel getUtilPanel() {
@@ -556,20 +477,20 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridy = 0;
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
-			utilPanel.add(getResUtilTablePane(), constraints);
+			utilPanel.add(getResUtilTableScrollPane(), constraints);
 			utilPanel.setMinimumSize(new Dimension(720, 120));
 		}
 		return utilPanel;
 	}
 
-	private JScrollPane getResUtilTablePane() {
-		if (resUtilTablePane == null) {
-			resUtilTablePane = new JScrollPane(getResUtilTable());
-			resUtilTablePane.setBorder(BorderFactory.createEmptyBorder());
-			resUtilTablePane.setWheelScrollingEnabled(true);
-			resUtilTablePane.setMinimumSize(new Dimension(720, 120));
+	private JScrollPane getResUtilTableScrollPane() {
+		if (resUtilTableScrollPane == null) {
+			resUtilTableScrollPane = new JScrollPane(getResUtilTable());
+			resUtilTableScrollPane.setBorder(BorderFactory.createEmptyBorder());
+			resUtilTableScrollPane.setWheelScrollingEnabled(true);
+			resUtilTableScrollPane.setMinimumSize(new Dimension(720, 120));
 		}
-		return resUtilTablePane;
+		return resUtilTableScrollPane;
 	}
 
 	private JTable getResUtilTable() {
@@ -578,7 +499,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Object[] resObjNames = resAlloc.getResources().values().toArray();
 
 			for (int i = 0; i < resObjNum; i++) {
-				resUtilTableMatrix[i][0] = ((Resource) resObjNames[i]).getName();
+				resUtilTableMatrix[i][0] = ((Resource) resObjNames[i])
+						.getName();
 			}
 
 			resUtilTableModel = new ResUtilTableModel(colResUtil,
@@ -612,19 +534,19 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			tableResUtil.setDefaultRenderer(Object.class,
 					new MyTableCellRenderer());
 
-			tableResUtil.setEnabled(false);
+			tableResUtil.setEnabled(true);
 		}
 
 		return tableResUtil;
 	}
 
-	static class MyTableCellRenderer extends DefaultTableCellRenderer {
+	class MyTableCellRenderer extends DefaultTableCellRenderer implements
+		TableCellEditor {
 
 		private static final long serialVersionUID = 1L;
 
 		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row,
-				int column) {
+				Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 			super.getTableCellRendererComponent(table, value, isSelected,
 					hasFocus, row, column);
 
@@ -633,23 +555,52 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 			if (column == 0) {
 				setHorizontalAlignment(LEFT);
-				return this;
 			} else if (column == 6) {
 				setHorizontalAlignment(CENTER);
-				/*
-				 * JButton b = new JButton("..."); b.setSize(20,10);
-				 * b.addActionListener(new ActionListener(){ public void
-				 * actionPerformed(ActionEvent e){
-				 * JOptionPane.showMessageDialog(null, "Details are shown
-				 * here."); } });
-				 * 
-				 * return b;
-				 */
-				return this;
+				btnColumn[row] = new JButton("Edit...");
+				btnColumn[row].setSize(20, 10);
+				System.out.println("render" + row);
+				btnColumn[row].addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("pressed");
+					}
+				});
+				return btnColumn[row];
 			} else {
 				setHorizontalAlignment(RIGHT);
-				return this;
 			}
+			return this;
+		}
+		
+		public Component getTableCellEditorComponent(JTable table,
+				Object value, boolean isSelected, int row, int column) {
+			System.out.println("call");
+			return btnColumn[row];
+		}
+
+		public String getCellEditorValue() {
+			return "Edit...";
+		}	
+		
+		public void addCellEditorListener(CellEditorListener l) {
+		}
+
+		public void cancelCellEditing() {
+		}
+
+		public boolean isCellEditable(EventObject anEvent) {
+			return true;
+		}
+
+		public void removeCellEditorListener(CellEditorListener l) {
+		}
+
+		public boolean shouldSelectCell(EventObject anEvent) {
+			return false;
+		}
+
+		public boolean stopCellEditing() {
+			return true;
 		}
 	}
 
@@ -1045,8 +996,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			btnProtocol.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
 					// getProtocol();
-					ProtocolDialog pd = new ProtocolDialog(thisDialog, sim
-							.getProtocolContent());
+					new ProtocolDialog(thisDialog, sim.getProtocolContent());
 				}
 			});
 
@@ -1209,7 +1159,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp);
 		sim.start();
 
-		activateDetails();
+//		activateDetails();
 		updContents();
 		wd.stop();
 		sim.setDuration(wd.getDuration());
@@ -1259,24 +1209,79 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		return sim;
 	}
 
-	private void activateDetails() {
-		for (JButton b : buttonList)
-			b.setEnabled(true);
-
-		btnProtocol.setEnabled(true);
-	}
-
-	public boolean isRunning() {
-		return isRunning;
-	}
-
+	/*
+	 * private void activateDetails() { for (JButton b : buttonList)
+	 * b.setEnabled(true);
+	 * 
+	 * btnProtocol.setEnabled(true); }
+	 * 
+	 * public boolean isRunning() { return isRunning; }
+	 */
 	public void mouseMoved(MouseEvent e) {
-		if (isRunning)
-			setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	}
 
 	public void mouseDragged(MouseEvent e) {
-
 	}
+
+/*	class ButtonColumn extends AbstractCellEditor implements TableCellRenderer,
+			TableCellEditor, ActionListener {
+		private static final long serialVersionUID = 1L;
+
+		private JTable table;
+
+		private JButton editButton;
+
+		private JButton renderButton;
+
+		private String text = "";
+
+		public ButtonColumn(JTable table, int column) {
+			super();
+			this.table = table;
+			editButton = new JButton("Edit...");
+			editButton.addActionListener(this);
+
+			renderButton = new JButton("Edit...");
+			renderButton.addActionListener(this);
+
+			TableColumnModel columnModel = table.getColumnModel();
+			columnModel.getColumn(column).setCellRenderer(this);
+			columnModel.getColumn(column).setCellEditor(this);
+		}
+
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+			if (hasFocus) {
+				renderButton.setForeground(table.getForeground());
+				renderButton.setBackground(Color.white);
+			} else if (isSelected) {
+				renderButton.setForeground(table.getForeground());
+				renderButton.setBackground(table.getBackground());
+			} else {
+				renderButton.setForeground(table.getForeground());
+				renderButton.setBackground(Color.black);
+			}
+
+			return renderButton;
+		}
+
+		public Component getTableCellEditorComponent(JTable table,
+				Object value, boolean isSelected, int row, int column) {
+			return editButton;
+		}
+
+		public Object getCellEditorValue() {
+			return text;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			fireEditingStopped();
+			String cmd = ((JButton) e.getSource()).getActionCommand();
+			String name = (String) tableServers.getValueAt(Integer.parseInt(cmd), 0);
+			new DetailsDialog(thisDialog, name);
+			System.out.println(e.getActionCommand() + " : "	+ table.getSelectedRow());
+		}
+	}*/
 
 } // @jve:decl-index=0:visual-constraint="4,4"
