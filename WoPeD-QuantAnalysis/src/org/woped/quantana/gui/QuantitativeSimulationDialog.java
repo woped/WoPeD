@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
-import javax.swing.AbstractCellEditor;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -41,7 +40,6 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
-
 
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.ModelElementContainer;
@@ -188,7 +186,9 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private Dialog thisDialog = this;
 
-	private JButton btnProtocol = null;
+	private JButton btnProtocol;
+	
+	private JButton btnExport;
 	
 	private JButton btnColumn[];
 
@@ -414,10 +414,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private JTable getServerTable() {
 		if (tableServers == null) {
-			serverTableMatrix = new Object[numServers][colServers.length];
+			serverTableMatrix = new Object[numServers + 1][colServers.length];
 
-			for (int i = 0; i < numServers; i++) {
-				serverTableMatrix[i][0] = servNames[i];
+			serverTableMatrix[0][0] = Messages.getString("QuantAna.Simulation.Process");
+
+			for (int i = 1; i <= numServers; i++) {
+				serverTableMatrix[i][0] = servNames[i-1];
 			}
 
 			serverTableModel = new ServerTableModel(colServers,
@@ -452,7 +454,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			MyTableCellRenderer mt = new MyTableCellRenderer();
 			tableServers.setDefaultRenderer(Object.class, mt);
 			tableServers.setDefaultEditor(Object.class, mt);
-			tableServers.setEnabled(false);
+//			tableServers.setEnabled(false);
 		}
 
 		return tableServers;
@@ -994,7 +996,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			btnProtocol.setPreferredSize(new Dimension(120, 25));
 			btnProtocol.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
-					// getProtocol();
 					new ProtocolDialog(thisDialog, sim.getProtocolContent());
 				}
 			});
@@ -1002,6 +1003,22 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridx = 0;
 			constraints.gridy = 2;
 			buttonPanel.add(btnProtocol, constraints);
+
+			btnExport = new JButton();
+			btnExport.setText(Messages.getTitle("QuantAna.Button.Export"));
+			btnExport.setIcon(Messages.getImageIcon("QuantAna.Button.Export"));
+			btnExport.setEnabled(false);
+			btnExport.setMinimumSize(new Dimension(120, 25));
+			btnExport.setMaximumSize(new Dimension(120, 25));
+			btnExport.setPreferredSize(new Dimension(120, 25));
+			btnExport.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					new ExportDialog(thisDialog);
+				}
+			});
+			constraints.gridx = 0;
+			constraints.gridy = 3;
+			buttonPanel.add(btnExport, constraints);
 
 			JButton btnClose = new JButton();
 			btnClose.setText(Messages.getTitle("QuantAna.Button.Close"));
@@ -1015,7 +1032,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				}
 			});
 			constraints.gridx = 0;
-			constraints.gridy = 3;
+			constraints.gridy = 4;
 			buttonPanel.add(btnClose, constraints);
 		}
 
@@ -1055,7 +1072,16 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		HashMap<String, Server> serv = sim.getServerList();
 		HashMap<String, Resource> res = resAlloc.getResources();
 
-		for (int i = 0; i < numServers; i++) {
+		double wP = sim.getThroughPut() / clock;
+		double wqP = sim.getCaseWait() / clock;
+//		double wsP = sim.getCaseBusy() / clock;
+		stm.setValueAt("-", 0, 1);
+		stm.setValueAt("-", 0, 2);
+		stm.setValueAt("-", 0, 3);
+		stm.setValueAt(String.format("%,.2f", wP), 0, 4);
+		stm.setValueAt(String.format("%,.2f", wqP), 0, 5);
+
+		for (int i = 1; i <= numServers; i++) {
 			String id = produceID((String) stm.getValueAt(i, 0));
 			Server s = serv.get(id);
 			int servStarted = s.getNumAccess();
@@ -1078,8 +1104,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		for (int i = 0; i < resObjNum; i++) {
 			String name = (String) rtm.getValueAt(i, 0);
 			Resource r = res.get(name);
-			String util = String.format("%,.2f", Double.valueOf(r.getBusyTime()
-					/ clock));
+			String util = String.format("%,.2f", Double.valueOf(r.getBusyTime() / clock * 100));
 			rtm.setValueAt(util, i, 1);
 		}
 	}
@@ -1158,8 +1183,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp);
 		sim.start();
 
-//		activateDetails();
-		btnProtocol.setEnabled(true);
+		activateDetails();
 		updContents();
 		wd.stop();
 		sim.setDuration(wd.getDuration());
@@ -1209,19 +1233,24 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		return sim;
 	}
 
-	/*
-	 * private void activateDetails() { for (JButton b : buttonList)
-	 * b.setEnabled(true);
-	 * 
-	 * btnProtocol.setEnabled(true); }
-	 * 
-	 * public boolean isRunning() { return isRunning; }
-	 */
+	private void activateDetails() {
+		btnProtocol.setEnabled(true);
+		btnExport.setEnabled(true);
+	}
+	
 	public void mouseMoved(MouseEvent e) {
 		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	}
 
 	public void mouseDragged(MouseEvent e) {
+	}
+
+	public ResUtilTableModel getResUtilTableModel() {
+		return resUtilTableModel;
+	}
+
+	public ServerTableModel getServerTableModel() {
+		return serverTableModel;
 	}
 
 /*	class ButtonColumn extends AbstractCellEditor implements TableCellRenderer,
