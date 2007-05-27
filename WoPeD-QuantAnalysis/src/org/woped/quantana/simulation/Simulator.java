@@ -6,8 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.PriorityQueue;
+import java.util.PropertyResourceBundle;
 import java.util.Random;
+import java.util.ResourceBundle;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +38,10 @@ public class Simulator {
 	
 	public static final int RES_USED		= 1;
 	public static final int RES_NOT_USED	= 2;
+	
+	private static final String         BUNDLE_NAME     = "org.woped.quantana.properties.ProtocolEntries";
+    private static final Locale         LOCALE          = ConfigurationManager.getConfiguration().getLocale();
+    public static final ResourceBundle	ENTRY			= PropertyResourceBundle.getBundle(BUNDLE_NAME, LOCALE);
 	
 	public static final Logger protocol = Logger.getLogger("org.woped.quantana.simulation");
 	
@@ -103,30 +110,30 @@ public class Simulator {
 	public void start() {
 		
 		initProtocol();
-		protocol.info(clckS() + "Simulation wird gestartet!");
-		protocol.info(clckS() + "Verwendung Ressourcenmodell: " + printResModUsed());
-		protocol.info(clckS() + "Warteschlangendisziplin: " + printQueueDiscipline());
-		protocol.info(clckS() + "Periode beträgt: " + period + " Zeiteinheiten.");
-		protocol.info(clckS() + "Lambda: " + lambda);
-		protocol.info(clckS() + "Abbruch-Bedingung: " + printTerminationRule());
-		protocol.info(clckS() + "Verteilung ZAZ: " + printDistIAT());
-		protocol.info(clckS() + "Verteilung BZ: " + printDistST());
+		protocol.info(clckS() + ENTRY.getString("Sim.Start"));
+		protocol.info(clckS() + ENTRY.getString("Sim.ResModel") + printResModUsed());
+		protocol.info(clckS() + ENTRY.getString("Sim.QueueDiscipline") + printQueueDiscipline());
+		protocol.log(Level.INFO, clckS() + ENTRY.getString("Sim.Period"), period);
+		protocol.info(clckS() + ENTRY.getString("Sim.Lambda") + lambda);
+		protocol.info(clckS() + ENTRY.getString("Sim.TerminationRule") + printTerminationRule());
+		protocol.info(clckS() + ENTRY.getString("Sim.Distribution.Arrival") + printDistIAT());
+		protocol.info(clckS() + ENTRY.getString("Sim.Distribution.Server") + printDistST());
 		
 		generateServerList();
 //		LoggerManager.info(Constants.QUANTANA_LOGGER, printServerList());
-		protocol.info(clckS() + "Server-Liste wurde erzeugt.");
+		protocol.info(clckS() + ENTRY.getString("Sim.ServerList.Generated"));
 		
-		protocol.info(clckS() + "Anzahl der Simulationsläufe: " + numRuns);
+		protocol.info(clckS() + ENTRY.getString("Sim.Runs") + numRuns);
 		for (int i = 0; i < numRuns; i++){
-			protocol.info(clckS() + "**************************************************");
-			protocol.info(clckS() + "Lauf # " + (i + 1) + ": ");
+			protocol.info(clckS() + ENTRY.getString("Sim.Delimiter"));
+			protocol.log(Level.INFO, clckS() + ENTRY.getString("Sim.Runs.Number"), (i + 1));
 			
-			protocol.info(clckS() + "Initialisierung des Simulators: ");
+			protocol.info(clckS() + ENTRY.getString("Sim.Init"));
 			init(i + 1);
 			
-			protocol.info(clckS() + "Start: ");
+			protocol.info(clckS() + ENTRY.getString("Sim.Start"));
 			while (!shouldStopNow()){
-				protocol.info(clckS() + "Anzahl abgearbeiteter Cases ist " + finishedCases);
+				protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Finished") + finishedCases);
 				
 				timing();
 				
@@ -140,18 +147,18 @@ public class Simulator {
 			}
 			
 			LoggerManager.info(Constants.QUANTANA_LOGGER, "Report wird erzeugt.");
-			protocol.info(clckS() + "Simulationsbericht wird generiert.");
+			protocol.info(clckS() + ENTRY.getString("Sim.Report.Generated"));
 			generateReport();
 		}
 	}
 	
 	private void init(int run){
 
-		protocol.info(clckS() + "Simulationsuhr wird auf 00:00 gesetzt.");
+		protocol.info(clckS() + ENTRY.getString("Sim.Clock.Init"));
 		clock = 0.0;
 		
 		// sämtliche Counter zurücksetzen
-		protocol.info(clckS() + "Statistikzähler werden zurückgesetzt.");
+		protocol.info(clckS() + ENTRY.getString("Sim.Counters.Reset"));
 		avgCasesInSystem = 0.0;
 		caseCount = 0;
 		finishedCases = 0;
@@ -166,18 +173,18 @@ public class Simulator {
 		nextEvent = null;
 		
 		// alle Server zurücksetzen
-		protocol.info(clckS() + "Server werden zurückgesetzt.");
+		protocol.info(clckS() + ENTRY.getString("Sim.Servers.Reset"));
 		for (Server s : serverList.values()){
 			s.reset();
 		}
 		
 		// alle Ressourcen befreien
-		protocol.info(clckS() + "Ressourcen werden befreit.");
+		protocol.info(clckS() + ENTRY.getString("Sim.Resources.Freed"));
 		for (Resource r : resUtil.getUsedResources().values()){
 			resUtil.freeResource(r);
 		}
 		
-		protocol.info(clckS() + "Ereignisliste wird initialisiert.");
+		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Init"));
 		initEventList();
 		
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "Simulation run # " + run + " initialized.");
@@ -190,18 +197,18 @@ public class Simulator {
 		else
 			nextEvent = null;
 		
-		String evt = "Nächstes Ereignis wird bestimmt: ";
+		String evt = ENTRY.getString("Sim.Event.Next");
 		if (nextEvent != null) evt += nextEvent.getName();
 		protocol.info(clckS() + evt);
-		protocol.info(clckS() + "Inhalt der Ereignisliste: " + printEventList());
+		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Content") + printEventList());
 		
 		// Systemuhr setzen
-		protocol.info(clckS() + "Simulationsuhr wird auf Ereigniszeitpunkt gesetzt.");
+		protocol.info(clckS() + ENTRY.getString("Sim.Clock.NextEvent.Set"));
 		if (nextEvent != null) clock = nextEvent.getTime();
 	}
 	
 	private void generateReport(){
-		protocol.info(clckS() + "Simulation beendet.");
+		protocol.info(clckS() + ENTRY.getString("Sim.Stop"));
 		
 		try {
 			out.flush();
@@ -265,7 +272,7 @@ public class Simulator {
 		
 		BirthEvent be = new BirthEvent(this, clock);
 		eventList.add(be);
-		protocol.info(clckS() + "BIRTH_EVENT \"" + be.getName() + "\" wurde erzeugt.");
+		protocol.info(clckS() + ENTRY.getString("Sim.Event.Birth") + be.getName() + ENTRY.getString("Sim.Event.Generated"));
 	}
 
 	public HashMap<String, Server> getServerList() {
@@ -482,8 +489,8 @@ public class Simulator {
 		int cc = caseList.size();
 		avgCasesInSystem += cc * (now - lastEvent);
 		
-		protocol.info(clckS() + "Aktuelle Zahl von Cases im Prozess ist " + cc);
-		protocol.info(clckS() + "Durchschnittliche Anzahl Cases im Prozess ist " + String.format("%,.2f", (avgCasesInSystem / clock)));
+		protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Current") + cc);
+		protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Average") + String.format("%,.2f", (avgCasesInSystem / clock)));
 	}
 
 	public double getTimeOfLastCaseNumChange() {
@@ -528,18 +535,18 @@ public class Simulator {
 	private String printResModUsed(){
 		switch(useResAlloc){
 		case RES_USED:
-			return "ja";
+			return ENTRY.getString("Sim.Yes");
 		default:
-			return "nein";
+			return ENTRY.getString("Sim.No");
 		}
 	}
 	
 	private String printQueueDiscipline(){
 		switch(queueDiscipline){
 		case QD_LIFO:
-			return "Last in - First out (LIFO)";
+			return ENTRY.getString("Sim.QueueDiscipline.LIFO");
 		default:
-			return "First in - First out (FIFO)";
+			return ENTRY.getString("Sim.QueueDiscipline.FIFO");
 		}
 	}
 
@@ -630,35 +637,35 @@ public class Simulator {
 	private String printTerminationRule(){
 		switch (stopRule){
 		case STOP_CASE_DRIVEN:
-			return "Anzahl abgeschlossener Fälle erreicht.";
+			return ENTRY.getString("Sim.TerminationRule.CaseDriven");
 		case STOP_TIME_DRIVEN:
-			return "Periode ist abgelaufen.";
+			return ENTRY.getString("Sim.TerminationRule.TimeDriven");
 		case STOP_BOTH:
-			return "Anzahl erreicht oder Periode abgelaufen.";
+			return ENTRY.getString("Sim.TerminationRule.Both");
 		default:
-			return "keine";
+			return ENTRY.getString("Sim.TerminationRule.No");
 		}
 	}
 	
 	private String printDistIAT(){
 		switch (typeOfDistForCases){
 		case ProbabilityDistribution.DIST_TYPE_UNIFORM:
-			return "Gleichverteilt mit " + String.format("", caseParam) + " Toleranz";
+			return ENTRY.getString("Sim.Distribution.Uniform") + String.format("%,.2f", caseParam);
 		case ProbabilityDistribution.DIST_TYPE_GAUSS:
-			return "Normalverteilt mit Standardabweichung " + String.format("", caseParam);
+			return ENTRY.getString("Sim.Distribution.Gaussian") + String.format("%,.2f", caseParam);
 		default:
-			return "Exponentialverteilt";
+			return ENTRY.getString("Sim.Distribution.Exponential");
 		}
 	}
 	
 	private String printDistST(){
 		switch (typeOfDistForServer){
 		case ProbabilityDistribution.DIST_TYPE_UNIFORM:
-			return "Gleichverteilt mit " + String.format("", servParam) + " Toleranz";
+			return ENTRY.getString("Sim.Distribution.Uniform") + String.format("%,.2f", servParam);
 		case ProbabilityDistribution.DIST_TYPE_GAUSS:
-			return "Normalverteilt mit Standardabweichung " + String.format("", servParam);
+			return ENTRY.getString("Sim.Distribution.Gaussian") + String.format("%,.2f", servParam);
 		default:
-			return "Exponentialverteilt";
+			return ENTRY.getString("Sim.Distribution.Exponential");
 		}
 	}
 	
@@ -678,5 +685,9 @@ public class Simulator {
 
 	public ArrayList<Server> getStartServerList() {
 		return startServerList;
+	}
+
+	public static ResourceBundle getENTRY() {
+		return ENTRY;
 	}
 }

@@ -258,11 +258,6 @@ public class ProtocolDialog extends JDialog {
 
 			DefaultHandler handler = new DefaultHandler() {
 
-//				private long min = new Date().getTime();
-//
-//				private long max = 0;
-				
-//				private boolean millis = false;
 				private boolean msg = false;
 
 				public void startDocument() {
@@ -272,8 +267,6 @@ public class ProtocolDialog extends JDialog {
 				public void startElement(String uri, String lname,
 						String qname, Attributes attr) {
 					try {
-//						if (lname.equalsIgnoreCase("millis")) millis = true;
-						
 						if (lname.equalsIgnoreCase("message")) msg = true;
 
 					} catch (Exception e) {
@@ -286,17 +279,9 @@ public class ProtocolDialog extends JDialog {
 					String s = String.copyValueOf(ch, start, length);
 					
 					if (msg) txtProtocol.append(s + "\n");
-					
-					/*if (millis)	{
-						long l = Long.parseLong(s);
-						if (l > 0 && l < min) min = l;
-						if (l > max) max = l;
-					}*/
 				}
 
 				public void endElement(String uri, String lname, String qname) {
-//					if (lname.equalsIgnoreCase("millis")) millis = false;
-					
 					if (lname.equalsIgnoreCase("message")) msg = false;
 				}
 

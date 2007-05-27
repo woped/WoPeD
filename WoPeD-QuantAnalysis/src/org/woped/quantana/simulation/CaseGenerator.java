@@ -26,7 +26,7 @@ public class CaseGenerator {
 		double time = distribution.getNextRandomValue();
 		lastArrivalTime += time;
 		next.setSysArrivalTime(lastArrivalTime);
-		sim.getProtocol().info(sim.clckS() + "Zwischenankunftszeit: " + String.format("%,.2f", time));
+		sim.getProtocol().info(sim.clckS() + Simulator.getENTRY().getString("Sim.Case.Time.Interarrival") + String.format("%,.2f", time));
 		
 		return next;
 	}

@@ -1,11 +1,14 @@
 package org.woped.quantana.simulation;
 
-import java.util.logging.Logger;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 @SuppressWarnings("unused")
 public class BirthEvent extends SimEvent {
 	
 	private int type = SimEvent.BIRTH_EVENT;
+	
+	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
 	public BirthEvent(Simulator sim, double time){
 		super(sim, time);
@@ -19,12 +22,12 @@ public class BirthEvent extends SimEvent {
 		CaseGenerator cg = sim.getCaseGenerator();
 		
 		Case c = cg.generateNextCase();
-		protocol.info(sim.clckS() + "Neuer Case # " + c.getId() + " wurde erzeugt. Ankunft im Prozess: " + String.format("%,.2f", c.getSysArrivalTime()));
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Birth.Info") + String.format("%,.2f", c.getSysArrivalTime()), c.getId());
 
 		sim.updateCaseNumStats(getTime(), sim.getTimeOfLastCaseNumChange());
 		
 		sim.getCaseList().put(c.getId(), c);
-		protocol.info(sim.clckS() + "Neuer Case wurde in Liste aufgenommen.");
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Birth.Case.Added"));
 //		sim.setCaseCount(sim.getCaseCount() + 1);
 //		
 //		int cc = sim.getCaseCount();
@@ -35,9 +38,9 @@ public class BirthEvent extends SimEvent {
 		WorkItem wi = new WorkItem(c, sim.getStartServer());
 		ArrivalEvent ae = new ArrivalEvent(sim, c.getSysArrivalTime(), wi);
 		sim.getEventList().add(ae);
-		protocol.info(sim.clckS() + "ARRIVAL_EVENT \"" + ae.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.Arrival") + ae.getName() + ENTRY.getString("Sim.Generated.Event"), c.getId());
 		
 		sim.setTimeOfLastCaseNumChange(time);
-		protocol.info(sim.clckS() + "Zeit der letzten Änderung der Anzahl von Cases ist " + String.format("%,.2f", getTime()));
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent.CaseNum") + String.format("%,.2f", getTime()));
 	}
 }

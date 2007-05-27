@@ -1254,6 +1254,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		for (JButton b : btnColumn) b.setEnabled(true);
 		btnProtocol.setEnabled(true);
 		btnExport.setEnabled(true);
+		
+		pack();
 	}
 	
 	public void mouseMoved(MouseEvent e) {
@@ -1270,7 +1272,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	public ServerTableModel getServerTableModel() {
 		return serverTableModel;
 	}
-
+	
 /*	class ButtonColumn extends AbstractCellEditor implements TableCellRenderer,
 			TableCellEditor, ActionListener {
 		private static final long serialVersionUID = 1L;

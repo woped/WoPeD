@@ -1,9 +1,14 @@
 package org.woped.quantana.simulation;
 
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+
 @SuppressWarnings("unused")
 public class DeathEvent extends SimEvent {
 	
 	private int type = SimEvent.DEATH_EVENT;
+	
+	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
 	private Case c;
 	
@@ -19,26 +24,26 @@ public class DeathEvent extends SimEvent {
 		double time = getTime();
 		
 		c.setSysDepartureTime(time);
-		protocol.info(sim.clckS() + "Case # " + c.getId() + " verläßt Prozess zur Zeit: " + String.format("%,.2f", time));
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Death.Case.Exit") + String.format("%,.2f", time), c.getId());
 		
 		sim.setFinishedCases(sim.getFinishedCases() + 1);
-		protocol.info(sim.clckS() + "Anzahl beendeter Cases bisher: " + sim.getFinishedCases());
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Death.Cases.Finished") + sim.getFinishedCases());
 		
 		sim.setThroughPut(sim.getThroughPut() + c.getSysDepartureTime() - c.getSysArrivalTime());
-		protocol.info(sim.clckS() + "Durchschnittlicher Durchsatz des Prozesses bisher: " + String.format("%,.2f", (sim.getThroughPut() / sim.getClock())));
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Death.Throughput") + String.format("%,.2f", (sim.getThroughPut() / sim.getClock())));
 		
 		sim.setCaseBusy(sim.getCaseBusy() + c.getTimeService());
-		protocol.info(sim.clckS() + "Bedienzeit des Prozesses bisher: " + String.format("%,.2f", sim.getCaseBusy()));
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Death.Time.Service") + String.format("%,.2f", sim.getCaseBusy()));
 		
 		sim.setCaseWait(sim.getCaseWait() + c.getTimeWait());
-		protocol.info(sim.clckS() + "Wartezeit des Prozesses bisher: " + String.format("%,.2f", sim.getCaseWait()));
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Death.Time.Wait") + String.format("%,.2f", sim.getCaseWait()));
 		
 		sim.updateCaseNumStats(getTime(), sim.getTimeOfLastCaseNumChange());
 		
 		sim.getCaseList().remove(c.getId());
-		protocol.info(sim.clckS() + "Case # " + c.getId() + " wurde aus Liste entfernt.");
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Death.Case.Deleted"), c.getId());
 		
 		sim.setTimeOfLastCaseNumChange(getTime());
-		protocol.info(sim.clckS() + "Zeit der letzten Änderung der Anzahl von Cases ist " + String.format("%,.2f", time));
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent.CaseNum") + String.format("%,.2f", time));
 	}
 }

@@ -1,6 +1,8 @@
 package org.woped.quantana.simulation;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
@@ -9,6 +11,8 @@ import org.woped.quantana.resourcealloc.ResourceUtilization;
 public class DepartureEvent extends SimEvent {
 	
 	private int type = SimEvent.DEPARTURE_EVENT;
+	
+	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
 	private WorkItem wi;
 	private Server server;
@@ -28,14 +32,14 @@ public class DepartureEvent extends SimEvent {
 		double time = getTime();
 		ResourceUtilization ru = sim.getResUtil();
 		
-		protocol.info(sim.clckS() + "Case # " + c.getId() + " verläßt Server \"" + server.getName() + "(" + server.getId() + ")\".");
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Departure.Info"), new Object[] {c.getId(), server.getName(), server.getId()});
 		
 		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 		
 		if (!(server.getQueue().isEmpty())){
-			protocol.info(sim.clckS() + "Inhalt der Warteschlange von Server \"" + server.getName() + "(" + server.getId() + ")\": " + server.printQueue());
+			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Content") + server.printQueue(), new Object[] {server.getName(), server.getId()});
 			Case c2 = server.dequeue().get_case();
-			protocol.info(sim.clckS() + "Case # " + c2.getId() + " wurde aus Warteschlange entfernt.");
+//			protocol.info(sim.clckS() + ENTRY.getString("Case # " + c2.getId() + " wurde aus Warteschlange entfernt.");
 			
 			if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
 				if (server.isIdle())
@@ -50,8 +54,8 @@ public class DepartureEvent extends SimEvent {
 		if (nextServer == null){
 			DeathEvent de = new DeathEvent(sim, time, c);
 			sim.getEventList().add(de);
-			protocol.info(sim.clckS() + "Case # " + c.getId() + " verläßt den Prozess.");
-			protocol.info(sim.clckS() + "DEATH_EVENT \"" + de.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
+//			protocol.info(sim.clckS() + ENTRY.getString("Case # " + c.getId() + " verläßt den Prozess.");
+			protocol.info(sim.clckS() + ENTRY.getString("Sim.Event.Death") + de.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.Generated"));
 		} else {
 			if (server instanceof ANDSplitServer){
 				sim.getCopiedCasesList().put(c.getId(), c);
@@ -67,38 +71,39 @@ public class DepartureEvent extends SimEvent {
 
 					ArrivalEvent ae = new ArrivalEvent(sim, time, new WorkItem(cc, s));
 					sim.getEventList().add(ae);
-					protocol.info(sim.clckS() + "Case # " + c.getId() + " wird an Server \"" + s.getName() + "(" + s.getId() + ")\" weitergeleitet.");
-					protocol.info(sim.clckS() + "ARRIVAL_EVENT \"" + ae.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
+					protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Departure.Convey"), new Object[] {cc.getId(), s.getName(), s.getId()});
+					protocol.info(sim.clckS() + ENTRY.getString("Sim.Event.Arrival") + ae.getName() + ENTRY.getString("Sim.Generated.ForCase") + cc.getId() + ENTRY.getString("Sim.Generated"));
 				}
 			} else {
 				Server s = nextServer.get(0);
 				ArrivalEvent ae = new ArrivalEvent(sim, time, new WorkItem(c, s));
 				sim.getEventList().add(ae);
-				protocol.info(sim.clckS() + "Case # " + c.getId() + " wird an Server \"" + s.getName() + "(" + s.getId() + ")\" weitergeleitet.");
-				protocol.info(sim.clckS() + "ARRIVAL_EVENT \"" + ae.getName() + "\" für Case # " + c.getId() + " wurde erzeugt.");
+				protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Departure.Convey"), new Object[] {c.getId(), s.getName(), s.getId()});
+				protocol.info(sim.clckS() + ENTRY.getString("Sim.Event.Arrival") + ae.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.Generated"));
 			}
 		}
 		
 		server.incNumDeparture(1);
-		protocol.info(sim.clckS() + "Anzahl der von Server \"" + server.getName() + "(" + server.getId() + ")\" bedienten Cases beträgt " + server.getNumDeparture());
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.StartService.Cases.Serviced") + server.getNumDeparture(), new Object[] {server.getName(), server.getId()});
 		
 		sim.setTimeOfLastEvent(time);
-		protocol.info(sim.clckS() + "Zeit des letzten Ereignisses ist " + String.format("%,.2f", time));
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent") + String.format("%,.2f", time));
 	}
 	
 	private void nextStartServiceEvent(Simulator sim, double time, Case c, ResourceUtilization ru){
 		Resource r = sim.getResUtil().chooseResourceFromFreeResources(server.getGroup(), server.getRole());
 		
-		if (sim.getUseResAlloc() == Simulator.RES_USED && r == null) return;
+//		if (sim.getUseResAlloc() == Simulator.RES_USED && r == null) return;
 		if (r != null) {
-			protocol.info(sim.clckS() + "Ressource \"" + r.getName() + "\" wird Server \"" + server.getName() + "(" + server.getId() + ")\" und Case # " + c.getId() + " zugeordnet.");
-			protocol.info(sim.clckS() + "Freie Ressourcen: " + ru.printFreeResources());
-			protocol.info(sim.clckS() + "Gebundene Ressourcen: " + ru.printUsedResources());
+			ru.useResource(r);
+			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Arrival.Resource.Bind"), new Object[] {r.getName(), server.getName(), server.getId()});
+			protocol.info(sim.clckS() + ENTRY.getString("Sim.Resources.Free") + ru.printFreeResources());
+			protocol.info(sim.clckS() + ENTRY.getString("Sim.Resources.Used") + ru.printUsedResources());
 		}
 		
 		Activity act = new Activity(wi, r);
 		StartServiceEvent se = new StartServiceEvent(sim, time, act);
 		sim.getEventList().add(se);
-		protocol.info(sim.clckS() + "START_SERVICE_EVENT \"" + se.getName() + "\" für Case # " + c.getId() + " am Server \"" + server.getName() + "(" + server.getId() + ")\" wurde erzeugt.");
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.StartService") + se.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.StopService.ForServer"), new Object[] {server.getName(), server.getId()});
 	}
 }
