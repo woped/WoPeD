@@ -93,13 +93,13 @@ public class ArrivalEvent extends SimEvent{
 		}
 		
 		sim.setTimeOfLastEvent(time);
-		protocol.info(sim.clckS() + "Sim.Time.LastEvent" + String.format("%,.2f", time));
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent") + String.format("%,.2f", time));
 	}
 	
 	private void generateBirthEvent(Simulator sim){
 		BirthEvent be = new BirthEvent(getSim(), getTime());
 		getSim().getEventList().add(be);
-		protocol.info(sim.clckS() + ENTRY.getString("Sim.Event.Birth") + be.getName() + ENTRY.getString("Sim.Generated"));
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Event.Birth") + be.getName() + ENTRY.getString("Sim.Event.Generated"));
 	}
 	
 	private void nextStartServiceEvent(Simulator sim, double time, Case c, ResourceUtilization ru){
