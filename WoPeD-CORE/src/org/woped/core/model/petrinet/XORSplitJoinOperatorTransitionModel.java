@@ -51,7 +51,7 @@ public class XORSplitJoinOperatorTransitionModel extends
 		// target for centerplace
 		TransitionModel simpleTrans;
 		if (getSimpleTransContainer().getArcMap()
-				.size() > 0)
+				.size() == 0)
 		{
 			simpleTrans = addNewSimpleTrans();
 		} else

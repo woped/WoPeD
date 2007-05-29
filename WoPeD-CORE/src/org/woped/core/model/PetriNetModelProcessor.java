@@ -177,7 +177,6 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 				.getElementById(sourceId);
 		AbstractElementModel targetModel = getElementContainer()
 				.getElementById(targetId);
-		OperatorTransitionModel operatorModel;
 		
 		if ((sourceModel == null)||(targetModel == null))
 			return null;
@@ -187,59 +186,67 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 				getNexArcId(), (DefaultPort) sourceModel.getChildAt(0),
 				(DefaultPort) targetModel.getChildAt(0));
 		displayedArc.setPoints(points);
-		getElementContainer().addReference(displayedArc);
-
-		/* IF transform Operators into classic petrinet */
-		if (transformOperators)
-		{
-			/* IF THE SOURCE IS AN OPERATOR */
-			if (sourceModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
-			{
-
-				// storing the source as operator
-				operatorModel = (OperatorTransitionModel) sourceModel;
-				// put the Target in the SimpleContainer of the operator
-				operatorModel.addElement(getElementContainer().getElementById(
-						targetModel.getId()));
-
-				LoggerManager
-						.debug(Constants.CORE_LOGGER,
-								"Connection from Aalst Model detected... resolve Inner-Transitions ...");
-
-				// Register new outgoing connection with the operator.
-				// This will generate all the necessary inner arcs
-				operatorModel.registerOutgoingConnection(this, targetModel);
-
-				LoggerManager.debug(Constants.CORE_LOGGER,
-						"... Inner-Transition resolving completed");
-			}
-			/* IF OPERATOR IS TARGET */
-			else if (targetModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
-			{
-
-				LoggerManager
-						.debug(Constants.CORE_LOGGER,
-								"Connection to Aalst Model detected... resolve Inner-Transitions ...");
-				// stor the target as operatorModel
-				operatorModel = (OperatorTransitionModel) getElementContainer()
-						.getElementById(targetModel.getId());
-
-				// add the source to the SimpleTransContainer
-				operatorModel.addElement(getElementContainer().getElementById(
-						sourceModel.getId()));
-				
-				// Register new incoming connection with the operator.
-				// This will generate all the necessary inner arcs
-				operatorModel.registerIncomingConnection(this, sourceModel);
-
-				LoggerManager.debug(Constants.CORE_LOGGER,
-						"... Inner-Transition resolving completed");
-
-			}
-		}
-
+		insertArc(displayedArc, transformOperators);
 		return displayedArc;
 	}
+    
+    public void insertArc(ArcModel arc, boolean transformOperators){
+        AbstractElementModel sourceModel = getElementContainer()
+        .getElementById(arc.getSourceId());
+AbstractElementModel targetModel = getElementContainer()
+        .getElementById(arc.getTargetId());
+        getElementContainer().addReference(arc);
+
+        /* IF transform Operators into classic petrinet */
+        if (transformOperators)
+        {
+            OperatorTransitionModel operatorModel;
+            /* IF THE SOURCE IS AN OPERATOR */
+            if (sourceModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            {
+
+                // storing the source as operator
+                operatorModel = (OperatorTransitionModel) sourceModel;
+                // put the Target in the SimpleContainer of the operator
+                operatorModel.addElement(getElementContainer().getElementById(
+                        targetModel.getId()));
+
+                LoggerManager
+                        .debug(Constants.CORE_LOGGER,
+                                "Connection from Aalst Model detected... resolve Inner-Transitions ...");
+
+                // Register new outgoing connection with the operator.
+                // This will generate all the necessary inner arcs
+                operatorModel.registerOutgoingConnection(this, targetModel);
+
+                LoggerManager.debug(Constants.CORE_LOGGER,
+                        "... Inner-Transition resolving completed");
+            }
+            /* IF OPERATOR IS TARGET */
+            else if (targetModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            {
+
+                LoggerManager
+                        .debug(Constants.CORE_LOGGER,
+                                "Connection to Aalst Model detected... resolve Inner-Transitions ...");
+                // stor the target as operatorModel
+                operatorModel = (OperatorTransitionModel) getElementContainer()
+                        .getElementById(targetModel.getId());
+
+                // add the source to the SimpleTransContainer
+                operatorModel.addElement(getElementContainer().getElementById(
+                        sourceModel.getId()));
+                
+                // Register new incoming connection with the operator.
+                // This will generate all the necessary inner arcs
+                operatorModel.registerIncomingConnection(this, sourceModel);
+
+                LoggerManager.debug(Constants.CORE_LOGGER,
+                        "... Inner-Transition resolving completed");
+
+            }
+        }
+    }
 
 	public void removeArc(Object id)
 	{
