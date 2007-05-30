@@ -170,14 +170,18 @@ public class ModelElementContainer implements Serializable
     }
 
     /**
-     * 
+     * Check whether a reference from sourceID to targetID exists.
+     * Note that this will check for top-level references, not low-level
+     * components of van der Aalst operators.
+     * This means that only actual, visible arcs as present in the graphical
+     * Petri-Net representation will be found
      * @param sourceId
-     * @param tragetId
+     * @param targetId
      * @return
      */
     public boolean hasReference(Object sourceId, Object targetId)
     {
-        return getTargetElements(sourceId).containsKey(targetId);
+    	return (findArc(sourceId.toString(),targetId.toString())!=null);
     }
 
     /**
