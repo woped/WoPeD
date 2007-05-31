@@ -104,7 +104,8 @@ public class ExportDialog extends JDialog {
 			btnServer.setPreferredSize(new Dimension(200, 25));
 			btnServer.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e){
-					exportServer();
+//					exportServer();
+					new ServerStatisticsDialog(owner);
 				}
 			});
 			constraints.gridx = 0;
@@ -125,6 +126,8 @@ public class ExportDialog extends JDialog {
 			constraints.gridx = 0;
 			constraints.gridy = 2;
 			buttonPanel.add(btnResource, constraints);
+			
+			btnResource.setEnabled(false);
 			
 			btnClose = new JButton();
 			btnClose.setText(Messages.getTitle("QuantAna.Button.Close"));
@@ -149,9 +152,9 @@ public class ExportDialog extends JDialog {
 		save(export.getStatsTable());
 	}
 
-	private void exportServer(){
-		save(export.getServerStats());
-	}
+//	private void exportServer(){
+//		save(export.getServerStats());
+//	}
 
 	private void exportResource(){
 		save(export.getResourceStats());

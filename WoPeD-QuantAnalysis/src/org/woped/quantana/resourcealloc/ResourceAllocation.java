@@ -10,14 +10,16 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
+import org.woped.quantana.utilities.ColorFactory;
 
 public class ResourceAllocation {
 	private ArrayList<String> roles = new ArrayList<String>();
 	private ArrayList<String> groups = new ArrayList<String>();
-	HashMap<String, Resource> resources = new HashMap<String, Resource>();
+	private HashMap<String, Resource> resources = new HashMap<String, Resource>();
 	private AllocationTable taskAlloc2;
 	private PetriNetModelProcessor proc;
 	private ResourceClassTaskAllocationTable resClsTskAlloc;
+	private ColorFactory colorFactory = new ColorFactory();
 	
 	public ResourceAllocation(ArrayList<String> roles, ArrayList<String> groups, Iterator tasks, PetriNetModelProcessor pmp){
 		this.roles = (ArrayList<String>)roles;
@@ -56,6 +58,8 @@ public class ResourceAllocation {
 				String name = ((ResourceModel)res.get(i)).getName();
 				Resource resObj = new Resource(name);
 				resources.put(name, resObj);
+				
+				resObj.setColor(colorFactory.nextColor());
 				
 				Vector classes = proc.getResourceClassesResourceIsAssignedTo(name);
 				for (int j = 0; j < classes.size(); j++){
@@ -216,9 +220,41 @@ public class ResourceAllocation {
 	}
 	
 	public String getGroup(String id){
-		ArrayList<String> roles = taskAlloc2.getTable().get(id).getGroups();
+		ArrayList<String> groups = taskAlloc2.getTable().get(id).getGroups();
 		
-		if (roles.size() <= 0) return "";
-		else return roles.get(0);
+		if (groups.size() <= 0) return "";
+		else return groups.get(0);
+	}
+	
+	public ArrayList<Resource> getResourcesPerTask(String id){
+		ArrayList<Resource> list = new ArrayList<Resource>();
+		ArrayList<String> roles = taskAlloc2.getTable().get(id).getRoles();
+		ArrayList<String> groups = taskAlloc2.getTable().get(id).getGroups();
+		
+		if (roles != null && groups != null){
+			for (String r : roles){
+				for (String g : groups){
+					for (Resource res : resources.values()){
+						if (res.getRoles().contains(r) && res.getGroups().contains(g))
+							list.add(res);
+					}
+				}
+			}
+		}
+		
+		return list;
+	}
+	
+	public String printResourcesPerTasks(String[] tasks){
+		String text = "";
+		for (String s : tasks){
+			ArrayList<Resource> list = getResourcesPerTask(s);
+			text += "\n" + s + ": ";
+			for (Resource r : list){
+				text += r.getName() + ",";
+			}
+		}
+		
+		return text;
 	}
 }

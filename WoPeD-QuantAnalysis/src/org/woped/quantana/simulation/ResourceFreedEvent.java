@@ -39,6 +39,8 @@ public class ResourceFreedEvent extends SimEvent {
 				protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.ResFreed.Next"), new Object[] {server.getName(), server.getId(), c2.getId(), r.getName()});
 
 				if (r != null){
+					ru.useResource(r);
+					r.setLastStartTime(time);
 					Activity act = new Activity(c2, server, r);
 					StartServiceEvent se = new StartServiceEvent(sim, time, act);
 					sim.getEventList().add(se);

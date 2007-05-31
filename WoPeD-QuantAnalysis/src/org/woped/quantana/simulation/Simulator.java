@@ -22,6 +22,7 @@ import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
+import org.woped.quantana.gui.ActivityPanel;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
@@ -38,6 +39,8 @@ public class Simulator {
 	
 	public static final int RES_USED		= 1;
 	public static final int RES_NOT_USED	= 2;
+	
+//	private static final int COLOR_STEPS	= 8; // = 2^3
 	
 	private static final String         BUNDLE_NAME     = "org.woped.quantana.properties.ProtocolEntries";
     private static final Locale         LOCALE          = ConfigurationManager.getConfiguration().getLocale();
@@ -85,6 +88,9 @@ public class Simulator {
 	private PriorityQueue<SimEvent> eventList = new PriorityQueue<SimEvent>();
 	private HashMap<Integer, Case> caseList	 = new HashMap<Integer, Case>();
 	private HashMap<Integer, Case> copiedCasesList = new HashMap<Integer, Case>();
+	
+	private ArrayList<ActivityPanel> actPanelList = new ArrayList<ActivityPanel>();
+//	private Color lastColor = Color.WHITE;
 	
 	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
 		process = wfpn;
@@ -690,4 +696,37 @@ public class Simulator {
 	public static ResourceBundle getENTRY() {
 		return ENTRY;
 	}
+
+	public ArrayList<ActivityPanel> getActPanelList() {
+		return actPanelList;
+	}
+	
+	/*public Color getNextColor(){
+		int r = lastColor.getRed();
+		int g = lastColor.getGreen();
+		int b = lastColor.getBlue();
+		
+		b = nextValue(b);
+		if (b == 0) {
+			g = nextValue(g);
+			if (g == 0)
+				r = nextValue(r);
+		}
+		
+		Color c = new Color(r, g, b);
+		lastColor = c;
+		return c;
+	}
+	
+	private int nextValue(int val){
+		int delta = 256 / COLOR_STEPS;
+		int next = val + delta;
+		
+		if (val < 255) {
+			if (next > 255) next = 255;
+		}
+		else next = 0;
+		
+		return next;
+	}*/
 }

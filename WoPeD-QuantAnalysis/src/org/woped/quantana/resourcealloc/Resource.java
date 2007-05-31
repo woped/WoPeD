@@ -1,5 +1,6 @@
 package org.woped.quantana.resourcealloc;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class Resource {
@@ -8,6 +9,8 @@ public class Resource {
 	private ArrayList<String> groups = new ArrayList<String>();
 	private double busyTime = 0.0;
 	private double lastStartTime = 0.0;
+	
+	private Color color = Color.WHITE;
 	
 	public double getBusyTime() {
 		return busyTime;
@@ -53,6 +56,14 @@ public class Resource {
 
 	public void setLastStartTime(double lastStartTime) {
 		this.lastStartTime = lastStartTime;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 	

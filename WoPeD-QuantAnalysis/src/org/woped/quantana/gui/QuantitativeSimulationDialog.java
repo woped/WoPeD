@@ -56,6 +56,7 @@ import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.gui.CapacityAnalysisDialog.MyTableHeaderRenderer;
 import org.woped.quantana.model.ResUtilTableModel;
 import org.woped.quantana.model.ServerTableModel;
+import org.woped.quantana.model.TasksResourcesAllocation;
 import org.woped.quantana.model.TimeModel;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
@@ -193,6 +194,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private JButton btnColumn[];
 
 	private String[] servNames;
+	
+	private TasksResourcesAllocation tasksAndResources;
 
 	/**
 	 * This is the default constructor
@@ -270,13 +273,14 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		constraints.weighty = 1;
 		constraints.insets = new Insets(5, 10, 5, 10);
 		getContentPane().add(getUtilPanel(), constraints);
+		
+		makeTasksAndResources();
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = screenSize.width > 770 ? 770 : screenSize.width;
 		int x = screenSize.width > width ? (screenSize.width - width) / 2 : 0;
 		int height = screenSize.height > 740 ? 740 : screenSize.height;
-		int y = screenSize.height > height ? (screenSize.height - height) / 2
-				: 0;
+		int y = screenSize.height > height ? (screenSize.height - height) / 2 : 0;
 		this.setBounds(x, y, width, height);
 		this.setVisible(true);
 	}
@@ -1228,8 +1232,10 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		resAlloc = new ResourceAllocation(roles, groups, iter, pmp);
 
 		resObjNum = resAlloc.getResources().size();
+		
+//		JOptionPane.showMessageDialog(null, resAlloc.printResourcesPerTasks(graph.getTransitionsGT0()));
 	}
-
+	
 	private LinkedList<TransitionModel> getTransModels() {
 		LinkedList<TransitionModel> lst = new LinkedList<TransitionModel>();
 		ArrayList<String> ids = new ArrayList<String>();
@@ -1271,6 +1277,19 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	public ServerTableModel getServerTableModel() {
 		return serverTableModel;
+	}
+	
+	private void makeTasksAndResources(){
+		String[] tasks = graph.getTransitionsGT0();
+		tasksAndResources = new TasksResourcesAllocation();
+		
+		for (String s : tasks){
+			tasksAndResources.addTaskResourcesPair(s, resAlloc.getResourcesPerTask(s));
+		}
+	}
+
+	public TasksResourcesAllocation getTasksAndResources() {
+		return tasksAndResources;
 	}
 	
 /*	class ButtonColumn extends AbstractCellEditor implements TableCellRenderer,

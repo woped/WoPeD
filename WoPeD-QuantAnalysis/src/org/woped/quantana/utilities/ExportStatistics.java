@@ -133,6 +133,9 @@ public class ExportStatistics {
 						if (t1 < 0) return;
 						
 						int t2 = s.indexOf(")", t1+1);
+						
+						if (t2 < 0) return;
+						
 						String time = s.substring(t1+1, t2);
 						int d = s.indexOf(":");
 						s = s.substring(d+2);
@@ -167,13 +170,13 @@ public class ExportStatistics {
 						
 						if (s.startsWith(ENTRY.getString("Export.Service"))) {
 							int i = s.indexOf("# ");
-							int j = s.indexOf(" ", i+1);
-							String cNo = s.substring(i+1, j);
+							int j = s.indexOf(" ", i+2);
+							String cNo = s.substring(i+2, j);
 							
 							i = s.indexOf('"');
 							j = s.indexOf('"', i+1);
-							i = s.indexOf('"', j+1);
-							j = s.indexOf('"', i+1);
+//							i = s.indexOf('"', j+1);
+//							j = s.indexOf('"', i+1);
 							String name = s.substring(i+1, j);
 							
 							String line = resList.get(name);

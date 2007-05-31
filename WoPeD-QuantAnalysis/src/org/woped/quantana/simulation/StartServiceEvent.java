@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 
+import org.woped.quantana.gui.ActivityPanel;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
 
@@ -88,6 +89,12 @@ public class StartServiceEvent extends SimEvent {
 				orig.setNextServiceTime(server.getNextServTime());
 				double depart = time + orig.getNextServiceTime();
 				orig.setCurrentDepartureTime(depart);
+				
+				if (r != null){
+					ActivityPanel ap = new ActivityPanel(time, depart, server.getName() + " (" + server.getId() + ")", r.getName(), orig.getId(), r.getColor());
+					sim.getActPanelList().add(ap);
+				}
+				
 				protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.StartService.Time.Departure") + String.format("%,.2f", depart), new Object[] {orig.getId(), server.getName(), server.getId()});
 
 				StopServiceEvent se = new StopServiceEvent(sim, depart, new Activity(orig, server, r));
@@ -116,6 +123,12 @@ public class StartServiceEvent extends SimEvent {
 			c.setNextServiceTime(server.getNextServTime());
 			double depart = time + c.getNextServiceTime();
 			c.setCurrentDepartureTime(depart);
+			
+			if (r != null){
+				ActivityPanel ap = new ActivityPanel(time, depart, server.getName() + " (" + server.getId() + ")", r.getName(), c.getId(), r.getColor());
+				sim.getActPanelList().add(ap);
+			}
+			
 			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.StartService.Time.Departure") + String.format("%,.2f", depart), new Object[] {c.getId(), server.getName(), server.getId()});
 
 			StopServiceEvent se = new StopServiceEvent(sim, depart, act);
