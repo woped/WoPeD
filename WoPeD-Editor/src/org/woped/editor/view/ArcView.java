@@ -37,6 +37,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 
 import org.jgraph.JGraph;
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
@@ -70,9 +71,7 @@ public class ArcView extends EdgeView
     public ArcView(Object cell)
     {
         super(cell);
-        if (cell instanceof ArcModel){
-            setAttributes(((ArcModel)cell).getAttributes());
-        }
+        setAttributes(new AttributeMap());
         if (GraphConstants.getPoints(getAttributes()) == null ){
             List<Point2D> points = new ArrayList<Point2D>(2);
             points.add(getAttributes().createPoint(10, 10));

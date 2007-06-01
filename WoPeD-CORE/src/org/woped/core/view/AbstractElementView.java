@@ -30,7 +30,7 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.geom.Rectangle2D;
 
-import org.jgraph.graph.DefaultGraphCell;
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphCellEditor;
 import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
@@ -56,10 +56,7 @@ public abstract class AbstractElementView extends VertexView {
      */
     public AbstractElementView(Object cell) {
     	super(cell);
-    	if (cell instanceof DefaultGraphCell) {
-    		DefaultGraphCell cellEl = (DefaultGraphCell) cell;
-    		setAttributes(cellEl.getAttributes());
-    	}
+        setAttributes(new AttributeMap());
     }
 
     /**
