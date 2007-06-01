@@ -1428,17 +1428,23 @@ public class EditorVC extends JPanel implements KeyListener,
 			if (toMove[i] instanceof GraphCell)
 			{
 				GraphCell noGroupElement = (GraphCell) toMove[i];
-				AttributeMap tempMap = noGroupElement.getAttributes();
-				AttributeMap newMap = new AttributeMap();
-				Rectangle2D bounds = GraphConstants.getBounds(tempMap);
-				List points = GraphConstants.getPoints(tempMap);
-				if (bounds != null)
-				{
-					bounds = new Rectangle((int) bounds.getX() + dx,
-							(int) bounds.getY() + dy, (int) bounds.getWidth(),
-							(int) bounds.getHeight());
-					tempMap.applyValue(GraphConstants.BOUNDS, bounds);
-					// noGroupElement.changeAttributes(tempMap);
+                AttributeMap tempMap = (AttributeMap)noGroupElement.getAttributes().clone();
+                AttributeMap newMap = new AttributeMap();
+                Rectangle2D bounds = GraphConstants.getBounds(tempMap);
+                List points = GraphConstants.getPoints(tempMap);
+                if (bounds != null)
+                {
+                    bounds = new Rectangle((int) bounds.getX() + dx,
+                            (int) bounds.getY() + dy, (int) bounds.getWidth(),
+                            (int) bounds.getHeight());
+                    AttributeMap changeMap = changes.get(noGroupElement);
+                    if (changeMap==null){
+                        changeMap=new AttributeMap();
+                        changes.put(noGroupElement, changeMap);
+                    }
+                    changeMap.applyValue(GraphConstants.BOUNDS, bounds);
+                    //tempMap.applyValue(GraphConstants.BOUNDS, bounds);
+                     //noGroupElement.changeAttributes(tempMap);
 				}
 				if (points != null)
 				{
