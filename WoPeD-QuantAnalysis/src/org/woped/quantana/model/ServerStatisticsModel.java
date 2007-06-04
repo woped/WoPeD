@@ -30,7 +30,9 @@ public class ServerStatisticsModel {
 			ArrayList<Resource> list = tra.getResources(s);
 			HashMap<String, ArrayList<ActivityPanel>> hl = new HashMap<String, ArrayList<ActivityPanel>>();
 			
-			rowNum += list.size();
+			int l = list.size();
+			if (l == 0) l = 1;
+			rowNum += l;
 			numTasks++;
 			
 			for (Resource r : list){

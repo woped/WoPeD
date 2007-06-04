@@ -125,7 +125,14 @@ public class StartServiceEvent extends SimEvent {
 			c.setCurrentDepartureTime(depart);
 			
 			if (r != null){
-				ActivityPanel ap = new ActivityPanel(time, depart, server.getName() + " (" + server.getId() + ")", r.getName(), c.getId(), r.getColor());
+				ActivityPanel ap;
+				if (c instanceof CaseCopy){
+					int oID = ((CaseCopy)c).getOriginal().getId();
+					ap = new ActivityPanel(time, depart, server.getName() + " (" + server.getId() + ")", r.getName(), oID, r.getColor());
+				} else {
+					ap = new ActivityPanel(time, depart, server.getName() + " (" + server.getId() + ")", r.getName(), c.getId(), r.getColor());
+				}
+				
 				sim.getActPanelList().add(ap);
 			}
 			

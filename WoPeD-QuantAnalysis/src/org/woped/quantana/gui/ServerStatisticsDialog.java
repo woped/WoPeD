@@ -47,6 +47,8 @@ public class ServerStatisticsDialog extends JDialog {
 	
 	private static final int TIME_HEIGHT	= 25;
 	
+	private static final int TIME_STEPS		= 100;
+	
 	private QuantitativeSimulationDialog owner;
 	
 	private ServerStatisticsModel ssm;
@@ -135,7 +137,7 @@ public class ServerStatisticsDialog extends JDialog {
 			mainPanel.add(getTextPanel());
 			mainPanel.add(getGraphPanel());
 			
-			int w = 2 * textWidth + graphWidth;
+			int w = textWidth + graphWidth + 200;
 			mainPanel.setMinimumSize(new Dimension(w, panelHeight));
 			mainPanel.setMaximumSize(new Dimension(w, panelHeight));
 			mainPanel.setPreferredSize(new Dimension(w, panelHeight));
@@ -353,6 +355,7 @@ public class ServerStatisticsDialog extends JDialog {
 			int x = (int)(clock * scale);
 			g2.setPaint(Color.RED);
 			line.setLine(x, 0, x, getHeight());
+			g2.draw(line);
 			
 			FontRenderContext cntxt = g2.getFontRenderContext();
 			Rectangle2D bounds;
@@ -360,9 +363,9 @@ public class ServerStatisticsDialog extends JDialog {
 			
 			g2.setPaint(Color.BLACK);
 			g2.setFont(ftServer);
-			int numT = (int)Math.floor((graphWidth - MARGIN_RIGHT) / 100);
+			int numT = (int)Math.floor((graphWidth - MARGIN_RIGHT) / TIME_STEPS);
 			for (int i = 1; i <= numT; i++){
-				x = i * 100;
+				x = i * TIME_STEPS;
 				double time = x / scale;
 				String s = String.format("%,.2f", time);
 				bounds = ftServer.getStringBounds(s, cntxt);
@@ -393,11 +396,11 @@ public class ServerStatisticsDialog extends JDialog {
 									(int) ((ap.getTimeStop() - ap
 											.getTimeStart()) * scale),
 									ROW_HEIGHT - 10);
-//							ap.setBounds(bounds);
-//							ap.setVisible(true);
-//							graphPanel.add(ap);
-							g2.setPaint(ap.getColor());
-							g2.fill(bounds);
+							ap.setBounds(bounds);
+							ap.setVisible(true);
+							graphPanel.add(ap);
+//							g2.setPaint(ap.getColor());
+//							g2.fill(bounds);
 						}
 					}
 				} else {
