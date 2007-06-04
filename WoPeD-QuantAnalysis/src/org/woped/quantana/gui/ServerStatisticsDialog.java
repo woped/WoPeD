@@ -1,6 +1,7 @@
 package org.woped.quantana.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -78,6 +79,8 @@ public class ServerStatisticsDialog extends JDialog {
 	
 	private int textWidth;
 	
+	private int graphWidth;
+	
 	private int panelHeight;
 	
 	public ServerStatisticsDialog(Dialog owner){
@@ -86,12 +89,13 @@ public class ServerStatisticsDialog extends JDialog {
 		this.clock = this.owner.getSimulator().getClock();
 		ssm = new ServerStatisticsModel(this.owner.getTasksAndResources(), this.owner.getSimulator().getActPanelList());
 		numRows = ssm.getRowNum();
-		panelHeight = numRows * ROW_HEIGHT + TIME_HEIGHT;
+		panelHeight = MARGIN_TOP + numRows * ROW_HEIGHT + TIME_HEIGHT;
 		getLineOrdinates();
 		this.ftServer = DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT;
 		this.ftResource = DefaultStaticConfiguration.DEFAULT_TABLE_FONT;
 		
 		initialize();
+		pack();
 	}
 	
 	private void getLineOrdinates(){
@@ -100,6 +104,7 @@ public class ServerStatisticsDialog extends JDialog {
 		for (int i = 0; i < tasks.length; i++){
 			String s = tasks[i];
 			int n = ssm.getSortedResources(s).length;
+			if (n == 0) n = 1;
 			if (i == 0)
 				lineOrdinates[i] = MARGIN_TOP + n * ROW_HEIGHT - 15;
 			else
@@ -110,48 +115,30 @@ public class ServerStatisticsDialog extends JDialog {
 	private void initialize(){
 		getContentPane().setLayout(new BorderLayout());
 		
-		getContentPane().add(getMainPanel(), BorderLayout.CENTER);
-		getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-		
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		Rectangle bounds = new Rectangle(0, 0, screen.width, screen.height);
 		this.setBounds(bounds);
 		SSD_WIDTH = bounds.width;
 		SSD_HEIGHT = bounds.height;
+		graphWidth = bounds.width * FACTOR;
+		
+		getContentPane().add(getScrollPane(), BorderLayout.CENTER);
+		getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+		
 		this.setVisible(true);
 	}
 	
 	private JPanel getMainPanel(){
 		if (mainPanel == null){
 			mainPanel = new JPanel();
-			mainPanel.setLayout(new GridBagLayout());
-			GridBagConstraints constraints = new GridBagConstraints();
-			constraints.insets = new Insets(5, 5, 5, 5);
-			constraints.weightx = 0;
-			constraints.weighty = 1;
-			constraints.gridwidth = 1;
-			constraints.gridheight = 1;
 			
-			constraints.gridx = 0;
-			constraints.gridy = 0;
-			mainPanel.add(getTextPanel(), constraints);
+			mainPanel.add(getTextPanel());
+			mainPanel.add(getGraphPanel());
 			
-			constraints.gridx = 1;
-			constraints.gridy = 0;
-			constraints.weightx = 1;
-			mainPanel.add(getScrollPane(), constraints);
-			
-			int w = SSD_WIDTH - textPanel.getWidth();
-			int h = SSD_HEIGHT;
-			scrollPane.setMinimumSize(new Dimension(w, h));
-			scrollPane.setMaximumSize(new Dimension(w, h));
-			scrollPane.setPreferredSize(new Dimension(w, h));
-			
-			JLabel lblDummy = new JLabel();
-			constraints.gridx = 0;
-			constraints.gridy = 1;
-			constraints.weighty = 1;
-			mainPanel.add(lblDummy, constraints);
+			int w = 2 * textWidth + graphWidth;
+			mainPanel.setMinimumSize(new Dimension(w, panelHeight));
+			mainPanel.setMaximumSize(new Dimension(w, panelHeight));
+			mainPanel.setPreferredSize(new Dimension(w, panelHeight));
 		}
 		
 		return mainPanel;
@@ -198,6 +185,7 @@ public class ServerStatisticsDialog extends JDialog {
 	private TextPanel getTextPanel(){
 		if (textPanel == null){
 			textPanel = new TextPanel();
+//			textPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.BLUE));
 		}
 		
 		return textPanel;
@@ -205,7 +193,13 @@ public class ServerStatisticsDialog extends JDialog {
 	
 	private JScrollPane getScrollPane(){
 		if (scrollPane == null) {
-			scrollPane = new JScrollPane(getGraphPanel());
+			scrollPane = new JScrollPane(getMainPanel());
+			
+			int w = SSD_WIDTH - 20;
+			int h = SSD_HEIGHT - 60;
+			scrollPane.setMinimumSize(new Dimension(w, h));
+			scrollPane.setMaximumSize(new Dimension(w, h));
+			scrollPane.setPreferredSize(new Dimension(w, h));
 		}
 		
 		return scrollPane;
@@ -214,14 +208,15 @@ public class ServerStatisticsDialog extends JDialog {
 	private JPanel getGraphPanel(){
 		if (graphPanel == null){
 			graphPanel = new GraphPanel();
-			graphPanel.setLayout(null);
-			positionPanels();
+//			graphPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.GREEN));
+//			graphPanel.setLayout(null);
+//			positionPanels();
 		}
 		
 		return graphPanel;
 	}
 	
-	private void positionPanels(){
+	/*private void positionPanels(){
 		ArrayList<ArrayList<ArrayList<ActivityPanel>>> matrix = ssm.getSortedMatrix();
 		int numTasks = ssm.getNumTasks();
 		double scale = (graphPanel.getWidth() - MARGIN_RIGHT) / clock;
@@ -239,11 +234,12 @@ public class ServerStatisticsDialog extends JDialog {
 							(int)((ap.getTimeStop() - ap.getTimeStart())*scale),
 							ROW_HEIGHT - 5);
 					ap.setBounds(bounds);
+					ap.setVisible(true);
 					graphPanel.add(ap);
 				}
 			}
 		}		
-	}
+	}*/
 	
 	class TextPanel extends JPanel {
 		
@@ -263,10 +259,10 @@ public class ServerStatisticsDialog extends JDialog {
 			
 			textWidth = getPanelWidth();
 			setSize(textWidth, panelHeight);
+			setLocation(0, MARGIN_TOP);
+			
 			hLine.setLine(textWidth-1, 0, textWidth-1, getHeight());
 			g2.draw(hLine);
-			
-//			setBackground(Color.DARK_GRAY);
 
 			int x = MARGIN_LEFT;
 			int y = MARGIN_TOP;
@@ -325,23 +321,89 @@ public class ServerStatisticsDialog extends JDialog {
 	class GraphPanel extends JPanel {
 		private static final long serialVersionUID = 101L;
 		
+		private double scale = 1.0;
+		
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D)g;
 			
-			setSize(SSD_WIDTH += FACTOR, panelHeight);
-//			setBackground(Color.WHITE);
+			setSize(graphWidth, panelHeight);
+			setLocation(textWidth + 1, MARGIN_TOP);
+			
+			scale = (graphWidth - MARGIN_RIGHT) / clock;
 			
 			drawLines(g2);
+			
+			drawTimes(g2);
+			
+			drawRects(g2);
 		}
 		
 		private void drawLines(Graphics2D g2){
 			Line2D line = new Line2D.Double();
 			
 			for (int h : lineOrdinates){
-				line.setLine(0, h, getWidth() - MARGIN_RIGHT, h);
+				line.setLine(0, h, graphWidth, h);
 				g2.draw(line);
 			}
+		}
+		
+		private void drawTimes(Graphics2D g2){
+			Line2D line = new Line2D.Double();
+			int x = (int)(clock * scale);
+			g2.setPaint(Color.RED);
+			line.setLine(x, 0, x, getHeight());
+			
+			FontRenderContext cntxt = g2.getFontRenderContext();
+			Rectangle2D bounds;
+			int len = getHeight() - 35;
+			
+			g2.setPaint(Color.BLACK);
+			g2.setFont(ftServer);
+			int numT = (int)Math.floor((graphWidth - MARGIN_RIGHT) / 100);
+			for (int i = 1; i <= numT; i++){
+				x = i * 100;
+				double time = x / scale;
+				String s = String.format("%,.2f", time);
+				bounds = ftServer.getStringBounds(s, cntxt);
+				
+				line.setLine(x, 0, x, len);
+				g2.draw(line);
+				
+				g2.drawString(s, (int)(x - bounds.getWidth()/2), len + 20);
+			}
+		}
+		
+		private void drawRects(Graphics2D g2){
+			ArrayList<ArrayList<ArrayList<ActivityPanel>>> matrix = ssm.getSortedMatrix();
+			int numTasks = ssm.getNumTasks();
+			int y = 0;
+			int count = 0;
+			
+			for (int i = 0; i < numTasks; i++) {
+				int n = matrix.get(i).size();
+				
+				if (n > 0) {
+					for (int j = 0; j < n; j++) {
+						ArrayList<ActivityPanel> list = matrix.get(i).get(j);
+						y = count++ * ROW_HEIGHT; //+ MARGIN_TOP;
+						for (ActivityPanel ap : list) {
+							Rectangle bounds = new Rectangle((int) (ap
+									.getTimeStart() * scale), y,
+									(int) ((ap.getTimeStop() - ap
+											.getTimeStart()) * scale),
+									ROW_HEIGHT - 10);
+//							ap.setBounds(bounds);
+//							ap.setVisible(true);
+//							graphPanel.add(ap);
+							g2.setPaint(ap.getColor());
+							g2.fill(bounds);
+						}
+					}
+				} else {
+					y = count++ * ROW_HEIGHT + MARGIN_TOP;
+				}
+			}		
 		}
 	}
 }

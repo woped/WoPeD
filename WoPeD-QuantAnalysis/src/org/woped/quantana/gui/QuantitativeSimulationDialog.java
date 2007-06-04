@@ -1257,11 +1257,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	}
 
 	private void activateDetails() {
-		for (JButton b : btnColumn) b.setEnabled(true);
+		for (JButton b : btnColumn){
+			b.setEnabled(true);
+//			b.repaint();
+		}
 		btnProtocol.setEnabled(true);
 		btnExport.setEnabled(true);
-		
-		pack();
 	}
 	
 	public void mouseMoved(MouseEvent e) {
