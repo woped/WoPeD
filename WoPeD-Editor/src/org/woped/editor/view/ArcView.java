@@ -71,7 +71,10 @@ public class ArcView extends EdgeView
     public ArcView(Object cell)
     {
         super(cell);
-        setAttributes(new AttributeMap());
+        if (cell instanceof ArcModel){
+            setAttributes(((ArcModel)cell).getAttributes());
+        }
+//        setAttributes(new AttributeMap());
         if (GraphConstants.getPoints(getAttributes()) == null ){
             List<Point2D> points = new ArrayList<Point2D>(2);
             points.add(getAttributes().createPoint(10, 10));
