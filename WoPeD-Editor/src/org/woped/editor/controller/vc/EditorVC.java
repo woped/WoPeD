@@ -1319,6 +1319,47 @@ public class EditorVC extends JPanel implements KeyListener,
 			GroupModel tempElement2 = (GroupModel)(create(currentMap));
 			tempElement = tempElement2.getMainElement();
 			
+			if (tempElement instanceof TransitionModel)
+			{
+				// new element
+				TransitionModel tempTrans = (TransitionModel) tempElement;
+				// source element
+				TransitionModel sourceTrans = (TransitionModel) getModelProcessor()
+						.getElementContainer().getElementById(oldElementId);
+
+				// copy time
+				tempTrans.getToolSpecific().setTime(
+						sourceTrans.getToolSpecific().getTime());
+				tempTrans.getToolSpecific().setTimeUnit(
+						sourceTrans.getToolSpecific().getTimeUnit());
+
+				// copy trigger model
+				CreationMap map = tempTrans.getCreationMap();
+				map.setTriggerType(sourceTrans.getCreationMap()
+						.getTriggerType());
+				if (sourceTrans.hasTrigger())
+				{
+					Point p = tempTrans.getToolSpecific().getTrigger()
+							.getPosition();
+					deleteCell(tempTrans.getToolSpecific().getTrigger(), true);
+					map.setTriggerPosition(p.x, p.y);
+					createTrigger(map);
+
+				} 
+
+				// copy resource model
+				if (sourceTrans.hasResource())
+				{
+					map.setResourceOrgUnit(sourceTrans.getCreationMap()
+							.getResourceOrgUnit());
+					map.setResourceRole(sourceTrans.getCreationMap()
+							.getResourceRole());
+
+					createTransitionResource(map);
+				}
+
+			}
+			
 			/* change arc source/target */
 			Iterator arcIter = pasteArcs.keySet().iterator();
 			while (arcIter.hasNext())
