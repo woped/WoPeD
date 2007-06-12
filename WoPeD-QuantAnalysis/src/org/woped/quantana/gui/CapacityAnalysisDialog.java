@@ -192,7 +192,7 @@ public class CapacityAnalysisDialog extends JDialog {
 	 * This is the default constructor
 	 */
 	public CapacityAnalysisDialog(JFrame owner, EditorVC editor) {
-		super(owner, "QuantAna.CapacityPlanning", true);
+		super(owner, Messages.getTitle("QuantAna.CapacityPlanning"), true);
 		this.editor = editor;
 		sa = new StructuralAnalysis(editor);
 		mec = editor.getModelProcessor().getElementContainer();
