@@ -41,7 +41,7 @@ refer to the online user manual available from WoPeD or on the WoPeD
 website.
    
 Note: WoPeD is written in Java. It is necessary that you have installed 
-Java 1.5 or higher on your machine. Otherwise download it from 
+Java 5.0 or higher on your machine. Otherwise download it from 
 http://java.sun.com. 
 
 WoPeD is known to run on Microsoft Windows platforms (2000, ME, XP), on 
