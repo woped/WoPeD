@@ -201,7 +201,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_analyseMenu.add(getWoflanMenuItem());
             m_analyseMenu.add(getWopedMenuItem());
             m_analyseMenu.add(getCapPlanningMenuItem());
-            m_analyseMenu.add(getQuantSimMenuItem());
+ //           m_analyseMenu.add(getQuantSimMenuItem());
         }
         return m_analyseMenu;
     }
