@@ -37,7 +37,6 @@ import java.util.List;
 import javax.swing.ImageIcon;
 
 import org.jgraph.JGraph;
-import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
