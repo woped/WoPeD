@@ -681,7 +681,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingNoneRadioButton == null)
         {
             branchingNoneRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.None"));
-            branchingNoneRadioButton.setEnabled(false);
+            branchingNoneRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.None"));
         }
 
         return branchingNoneRadioButton;
@@ -692,7 +692,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingAndJoinRadioButton == null)
         {
             branchingAndJoinRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.AndJoin"));
-            branchingAndJoinRadioButton.setEnabled(false);
+            branchingAndJoinRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.AndJoin"));
         }
         return branchingAndJoinRadioButton;
     }
@@ -702,7 +702,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingAndSplitRadioButton == null)
         {
             branchingAndSplitRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.AndSplit"));
-            branchingAndSplitRadioButton.setEnabled(false);
+            branchingAndSplitRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.AndSplit"));
         }
         return branchingAndSplitRadioButton;
     }
@@ -711,7 +711,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     	if (branchingAndSplitJoinRadioButton == null)
     	{
     		branchingAndSplitJoinRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.AndSplitJoin"));
-    		branchingAndSplitJoinRadioButton.setEnabled(false);
+    		branchingAndSplitJoinRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.AndSplitJoin"));
     	}
     	return branchingAndSplitJoinRadioButton;
     }
@@ -721,7 +721,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingXorSplittRadioButton == null)
         {
             branchingXorSplittRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.XorSplit"));
-            branchingXorSplittRadioButton.setEnabled(false);
+            branchingXorSplittRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.XorSplit"));
         }
         return branchingXorSplittRadioButton;
     }
@@ -731,7 +731,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingXorJoinRadioButton == null)
         {
             branchingXorJoinRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.XorJoin"));
-            branchingXorJoinRadioButton.setEnabled(false);
+            branchingXorJoinRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.XorJoin"));
         }
         return branchingXorJoinRadioButton;
     }
@@ -740,7 +740,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingXorSplitJoinRadioButton == null)
         {
             branchingXorSplitJoinRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.XorSplitJoin"));
-            branchingXorSplitJoinRadioButton.setEnabled(false);
+            branchingXorSplitJoinRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.XorSplitJoin"));
         }
         return branchingXorSplitJoinRadioButton;
     }
@@ -750,7 +750,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingAndJoinXorSplitRadioButton == null)
         {
             branchingAndJoinXorSplitRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit"));
-            branchingAndJoinXorSplitRadioButton.setEnabled(false);
+            branchingAndJoinXorSplitRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit"));
         }
         return branchingAndJoinXorSplitRadioButton;
     }
@@ -760,7 +760,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
         if (branchingXorJoinAndSplitRadioButton == null)
         {
         	branchingXorJoinAndSplitRadioButton = new JRadioButton(Messages.getString("Transition.Properties.Branching.XorJoinAndSplit"));
-        	branchingXorJoinAndSplitRadioButton.setEnabled(false);
+        	branchingXorJoinAndSplitRadioButton.setActionCommand(Messages.getString("Transition.Properties.Branching.XorJoinAndSplit"));
         }
         return branchingXorJoinAndSplitRadioButton;
     }
@@ -1527,4 +1527,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     {
         return editor;
     }
+
+	public ButtonGroup getBranchingButtonGroup()
+	{
+		return branchingButtonGroup;
+	}
 }
