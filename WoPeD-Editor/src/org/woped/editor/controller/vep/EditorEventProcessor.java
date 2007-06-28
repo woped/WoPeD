@@ -1,9 +1,13 @@
 package org.woped.editor.controller.vep;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JFrame;
 
+import org.jgraph.graph.GraphCell;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
@@ -20,34 +24,45 @@ import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.model.uml.OperatorModel;
 import org.woped.core.model.uml.StateModel;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.Constants;
 import org.woped.editor.controller.ArcPropertyEditor;
 import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.utilities.Messages;
 
-public class EditorEventProcessor extends AbstractEventProcessor {
-	public EditorEventProcessor(int vepID, AbstractApplicationMediator mediator) {
+public class EditorEventProcessor extends AbstractEventProcessor
+{
+	public EditorEventProcessor(int vepID, AbstractApplicationMediator mediator)
+	{
 		super(vepID, mediator);
 	}
 
-	public void processViewEvent(AbstractViewEvent event) {
+	public void processViewEvent(AbstractViewEvent event)
+	{
 		EditorVC editor;
-		if (event.getSource() instanceof EditorVC) {
+		if (event.getSource() instanceof EditorVC)
+		{
 			editor = (EditorVC) event.getSource();
-		} else {
+		}
+		else
+		{
 			editor = (EditorVC) getMediator().getUi().getEditorFocus();
 		}
 		Object cell;
 		ArcModel anArc;
 		Iterator anIter;
-		if (editor != null) {
+		if (editor != null)
+		{
 			CreationMap map = CreationMap.createMap();
-			if (editor.getLastMousePosition() != null) {
-				map.setPosition((int) editor.getLastMousePosition().getX(),
-						(int) editor.getLastMousePosition().getY());
+			if (editor.getLastMousePosition() != null)
+			{
+				map.setPosition((int) editor.getLastMousePosition().getX(), (int) editor.getLastMousePosition().getY());
 			}
 			// map.setEditOnCreation(false);
-			switch (event.getOrder()) {
+			switch (event.getOrder())
+			{
 			// Petrinet
 			case AbstractViewEvent.ADD_PLACE:
 				map.setType(AbstractPetriNetModelElement.PLACE_TYPE);
@@ -89,14 +104,12 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 				break;
 			case AbstractViewEvent.ADD_ANDJOINXORSPLIT:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
-				map
-						.setOperatorType(OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
+				map.setOperatorType(OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
 				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_XORJOINANDSPLIT:
 				map.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
-				map
-						.setOperatorType(OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
+				map.setOperatorType(OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
 				editor.create(map);
 				break;
 			// UML
@@ -127,10 +140,12 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 			// General
 			case AbstractViewEvent.RENAME:
 				cell = editor.getGraph().getSelectionCell();
-				if (cell instanceof TriggerModel) {
+				if (cell instanceof TriggerModel)
+				{
 					cell = ((TriggerModel) cell).getParent();
 				}
-				if (cell instanceof GroupModel) {
+				if (cell instanceof GroupModel)
+				{
 					cell = ((GroupModel) cell).getMainElement();
 				}
 				editor.edit(cell);
@@ -162,29 +177,75 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 			case AbstractViewEvent.OPEN_PROPERTIES:
 				cell = editor.getGraph().getSelectionCell();
 				AbstractElementModel element = null;
-				
-				if (cell instanceof ArcModel  && 
-						((ArcModel)cell).isXORsplit(editor.getModelProcessor())) {
+
+				if (cell instanceof ArcModel && ((ArcModel) cell).isXORsplit(editor.getModelProcessor()))
+				{
 					new ArcPropertyEditor((JFrame) getMediator().getUi(), (ArcModel) cell, editor);
 				}
 
-				if (cell instanceof TriggerModel) {
+				if (cell instanceof TriggerModel)
+				{
 					cell = ((TriggerModel) cell).getParent();
 				}
-				if (cell instanceof GroupModel) {
+				if (cell instanceof GroupModel)
+				{
 					element = ((GroupModel) cell).getMainElement();
-				} else if (cell instanceof AbstractElementModel) {
+				}
+				else if (cell instanceof AbstractElementModel)
+				{
 					element = (AbstractElementModel) cell;
 				}
 				if (element != null
-						&& editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET) {
-					if (element instanceof TransitionModel) {
-						new TransitionPropertyEditor((JFrame) getMediator()
+						&& editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET)
+				{
+					if (element instanceof TransitionModel)
+					{
+						TransitionPropertyEditor transEditor = new TransitionPropertyEditor((JFrame) getMediator()
 								.getUi(), (TransitionModel) element, editor);
+
+						String command = transEditor.getBranchingButtonGroup().getSelection().getActionCommand();
+
+						if (command.equals(Messages.getString("Transition.Properties.Branching.None")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.TRANS_SIMPLE_TYPE);
+						}
+						else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoin")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.AND_JOIN_TYPE);
+						}
+						else if (command.equals(Messages.getString("Transition.Properties.Branching.AndSplit")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.AND_SPLIT_TYPE);
+						}
+						else if (command.equals(Messages.getString("Transition.Properties.Branching.AndSplitJoin")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.AND_SPLITJOIN_TYPE);
+						}
+						else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplit")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.XOR_SPLIT_TYPE);
+						}
+						else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoin")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.XOR_JOIN_TYPE);
+						}
+						else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplitJoin")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+						}
+						else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
+						}
+						else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoinAndSplit")))
+						{
+							transformTransition(editor, element, OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
+						}
+
 					}
-					if (element instanceof PlaceModel) {
-						new PlacePropertyEditor((JFrame) getMediator().getUi(),
-								(PlaceModel) element, editor);
+					if (element instanceof PlaceModel)
+					{
+						new PlacePropertyEditor((JFrame) getMediator().getUi(), (PlaceModel) element, editor);
 					}
 				}
 				break;
@@ -197,33 +258,33 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 			case AbstractViewEvent.ADD_EXT_TRIGGER:
 				cell = editor.getGraph().getSelectionCell();
 				removeResources(editor, cell);
-				editor.createTrigger(getCreateTriggerMap(editor.getGraph()
-						.getSelectionCell(), TriggerModel.TRIGGER_EXTERNAL));
+				editor.createTrigger(getCreateTriggerMap(editor.getGraph().getSelectionCell(),
+						TriggerModel.TRIGGER_EXTERNAL));
 				break;
 			case AbstractViewEvent.ADD_RES_TRIGGER:
-				editor.createTrigger(getCreateTriggerMap(editor.getGraph()
-						.getSelectionCell(), TriggerModel.TRIGGER_RESOURCE));
+				editor.createTrigger(getCreateTriggerMap(editor.getGraph().getSelectionCell(),
+						TriggerModel.TRIGGER_RESOURCE));
 				break;
 			case AbstractViewEvent.ADD_TIME_TRIGGER:
 				cell = editor.getGraph().getSelectionCell();
 				removeResources(editor, cell);
-				editor.createTrigger(getCreateTriggerMap(editor.getGraph()
-						.getSelectionCell(), TriggerModel.TRIGGER_TIME));
+				editor.createTrigger(getCreateTriggerMap(editor.getGraph().getSelectionCell(),
+						TriggerModel.TRIGGER_TIME));
 				break;
 			case AbstractViewEvent.REMOVE_TRIGGER:
 				cell = editor.getGraph().getSelectionCell();
 				removeResources(editor, cell);
-				if (cell instanceof GroupModel) {
+				if (cell instanceof GroupModel)
+				{
 					cell = ((GroupModel) cell).getMainElement();
 				}
-				if (cell instanceof TransitionModel) {
-					editor.deleteCell(((TransitionModel) cell)
-							.getToolSpecific().getTrigger(), true);
+				if (cell instanceof TransitionModel)
+				{
+					editor.deleteCell(((TransitionModel) cell).getToolSpecific().getTrigger(), true);
 				}
 				break;
 			case AbstractViewEvent.ADD_SUBPROCESS:
-				editor.createElement(AbstractPetriNetModelElement.SUBP_TYPE,
-						-1, editor.getLastMousePosition(), false);
+				editor.createElement(AbstractPetriNetModelElement.SUBP_TYPE, -1, editor.getLastMousePosition(), false);
 				break;
 			// case AbstractViewEvent.OPEN_SUBPROCESS:
 			// // logger.warn("opening Subprocess is not implemented, yet");
@@ -246,34 +307,35 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 				editor.getGraph().connect(((ArcModel) cell), true);
 				break;
 			case AbstractViewEvent.ROUTING_ALL_ACTIVE:
-				anIter = editor.getModelProcessor().getElementContainer()
-						.getArcMap().keySet().iterator();
+				anIter = editor.getModelProcessor().getElementContainer().getArcMap().keySet().iterator();
 
-				while (anIter.hasNext()) {
-					anArc = editor.getModelProcessor().getElementContainer()
-							.getArcById(anIter.next());
+				while (anIter.hasNext())
+				{
+					anArc = editor.getModelProcessor().getElementContainer().getArcById(anIter.next());
 					anArc.setRoute(true);
 					editor.getGraph().connect(anArc, true);
 				}
 				editor.updateNet();
 				break;
 			case AbstractViewEvent.ROUTING_ALL_DEACTIVE:
-				anIter = editor.getModelProcessor().getElementContainer()
-						.getArcMap().keySet().iterator();
-				while (anIter.hasNext()) {
-					anArc = editor.getModelProcessor().getElementContainer()
-							.getArcById(anIter.next());
+				anIter = editor.getModelProcessor().getElementContainer().getArcMap().keySet().iterator();
+				while (anIter.hasNext())
+				{
+					anArc = editor.getModelProcessor().getElementContainer().getArcById(anIter.next());
 					anArc.setRoute(false);
 					editor.getGraph().connect(anArc, true);
 				}
 				editor.updateNet();
 				break;
 			case AbstractViewEvent.ADD_TOKEN:
-				if (editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET) {
-					if ((cell = editor.getGraph().getSelectionCell()) instanceof GroupModel) {
+				if (editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET)
+				{
+					if ((cell = editor.getGraph().getSelectionCell()) instanceof GroupModel)
+					{
 						cell = ((GroupModel) cell).getMainElement();
 					}
-					if (cell instanceof PlaceModel) {
+					if (cell instanceof PlaceModel)
+					{
 						((PlaceModel) cell).addToken();
 					}
 					editor.updateNet();
@@ -281,11 +343,14 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 				}
 				break;
 			case AbstractViewEvent.REMOVE_TOKEN:
-				if (editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET) {
-					if ((cell = editor.getGraph().getSelectionCell()) instanceof GroupModel) {
+				if (editor.getModelProcessor().getProcessorType() == PetriNetModelProcessor.MODEL_PROCESSOR_PETRINET)
+				{
+					if ((cell = editor.getGraph().getSelectionCell()) instanceof GroupModel)
+					{
 						cell = ((GroupModel) cell).getMainElement();
 					}
-					if (cell instanceof PlaceModel) {
+					if (cell instanceof PlaceModel)
+					{
 						((PlaceModel) cell).removeToken();
 					}
 					editor.updateNet();
@@ -320,36 +385,93 @@ public class EditorEventProcessor extends AbstractEventProcessor {
 		}
 	}
 
-	private void removeResources(EditorVC editor, Object cell) {
-		if (cell instanceof GroupModel) {
+	private void removeResources(EditorVC editor, Object cell)
+	{
+		if (cell instanceof GroupModel)
+		{
 			cell = ((GroupModel) cell).getMainElement();
 		}
-		if (cell instanceof TransitionModel) {
+		if (cell instanceof TransitionModel)
+		{
 			TransitionModel trans = (TransitionModel) cell;
-			if (trans.hasResource()) {
-				editor.deleteCell(trans.getToolSpecific().getTransResource(),
-						true);
+			if (trans.hasResource())
+			{
+				editor.deleteCell(trans.getToolSpecific().getTransResource(), true);
 			}
 		}
 	}
 
-	private CreationMap getCreateTriggerMap(Object cell, int triggertype) {
-		if (cell != null) {
+	private CreationMap getCreateTriggerMap(Object cell, int triggertype)
+	{
+		if (cell != null)
+		{
 			CreationMap map = null;
-			if (cell instanceof TriggerModel) {
+			if (cell instanceof TriggerModel)
+			{
 				cell = ((TriggerModel) cell).getParent();
 			}
-			if (cell instanceof GroupModel) {
+			if (cell instanceof GroupModel)
+			{
 				cell = ((GroupModel) cell).getMainElement();
 			}
-			if (cell instanceof TransitionModel) {
+			if (cell instanceof TransitionModel)
+			{
 				map = ((TransitionModel) cell).getCreationMap();
 			}
-			if (map != null) {
+			if (map != null)
+			{
 				map.setTriggerType(triggertype);
 			}
 			return map;
 		}
 		return null;
 	}
+
+	private void transformTransition(EditorVC p_editor, AbstractElementModel p_element, int p_newTyp)
+	{
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "transformTransition()");
+
+		CreationMap oldMap = p_element.getCreationMap();
+		CreationMap newMap = CreationMap.createMap();
+
+		newMap.setPosition(oldMap.getPosition());
+
+		newMap.setType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE);
+		newMap.setOperatorType(p_newTyp);
+		newMap.setId(oldMap.getId());
+		newMap.setName(oldMap.getName());
+
+		ArrayList<String> incAcrs = new ArrayList<String>();
+		ArrayList<String> outAcrs = new ArrayList<String>();
+
+		Map arcMap = p_editor.getModelProcessor().getElementContainer().getArcMap();
+
+		Iterator arcIterator = arcMap.keySet().iterator();
+
+		while (arcIterator.hasNext())
+		{
+			ArcModel curArc = (ArcModel) arcMap.get(arcIterator.next());
+
+			if (curArc.getSourceId().equals(oldMap.getId()))
+				outAcrs.add(curArc.getTargetId());
+
+			if (curArc.getTargetId().equals(oldMap.getId()))
+				incAcrs.add(curArc.getSourceId());
+
+		}
+
+		p_editor.deleteSelection();
+		p_editor.create(newMap);
+
+		for (int i = 0; i < outAcrs.size(); i++)
+		{
+			p_editor.createArc(oldMap.getId(), outAcrs.get(i));
+		}
+
+		for (int i = 0; i < incAcrs.size(); i++)
+		{
+			p_editor.createArc(incAcrs.get(i), oldMap.getId());
+		}
+	}
+
 }
