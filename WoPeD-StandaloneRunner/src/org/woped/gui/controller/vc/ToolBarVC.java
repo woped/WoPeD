@@ -155,7 +155,7 @@ public class ToolBarVC extends JToolBar implements IViewController
         add(getWoflanButton());
         add(getAnalysisButton());
         add(getQuantCapButton());
-//        add(getQuantSimButton());
+        add(getQuantSimButton());
     }
 
     private AbstractButton getNewButton()
