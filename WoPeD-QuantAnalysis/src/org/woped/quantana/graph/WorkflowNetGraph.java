@@ -14,7 +14,7 @@ public class WorkflowNetGraph {
 	static String zyklen = "";
 
 	Node[] nodeArray;
-	Node[] cycleArray;
+//	Node[] cycleArray;
 	Node sourcePlace = null;
 	Node sinkPlace = null;
 	LinkedList<Node> path = new LinkedList<Node>();
@@ -30,7 +30,7 @@ public class WorkflowNetGraph {
 //			numNodes++;
 		
 		nodeArray = new Node[numNodes];
-		cycleArray = new Node[numNodes];
+//		cycleArray = new Node[numNodes];
 		int nextIdx = 0;
 		
 		AbstractPetriNetModelElement source = (AbstractPetriNetModelElement)sa.getSourcePlacesIterator().next();
@@ -56,8 +56,14 @@ public class WorkflowNetGraph {
 		
 		for (int i = 0; i < nodeArray.length; i++){
 			Node n = nodeArray[i];
-			cycleArray[i] = new Node(n.getId(), n.getName());
+//			cycleArray[i] = new Node(n.getId(), n.getName());
 			//cycleArray[i].successor.clear();
+			if (n.getType() == Node.TYPE_TRANS){
+				int s = n.getSuccessor().size();
+				int p = n.getPredecessor().size();
+				if (s > 1) n.setAndSplit(true);
+				if (p > 1) n.setAndJoin(true);
+			}
 		}
 	}
 	
@@ -143,7 +149,7 @@ public class WorkflowNetGraph {
 		return text;
 	}
 	
-	public String cylcesToString(){
+	/*public String cylcesToString(){
 		String text = "Cycles in Graph\n\n";
 		
 		for (int i = 0; i < cycleArray.length; i++){
@@ -158,7 +164,7 @@ public class WorkflowNetGraph {
 		}
 		
 		return text;
-	}
+	}*/
 	
 	public Node getStartPlace(){
 		return sourcePlace;
@@ -355,13 +361,13 @@ public class WorkflowNetGraph {
 		}
 	}*/
 	
-	public boolean isPartOfCycle(String id){
+	/*public boolean isPartOfCycle(String id){
 		return (cycleArray[getNodeIdx(id)].getSuccessor().size() > 1);
 	}
 	
 	public ArrayList<Arc> getCycle(String id){
 		return cycleArray[getNodeIdx(id)].getSuccessor();
-	}
+	}*/
 	
 	public boolean isTransition(String id){
 		int type = nodeArray[getNodeIdx(id)].getType();

@@ -15,16 +15,16 @@ public class Activity {
 	}
 	
 	public Activity(WorkItem wi, Resource r){
-		_case = wi.get_case();
+		_case = wi.getCase();
 		server = wi.getServer();
 		resource = r;
 	}
 
-	public Case get_case() {
+	public Case getCase() {
 		return _case;
 	}
 
-	public void set_case(Case _case) {
+	public void setCase(Case _case) {
 		this._case = _case;
 	}
 
@@ -44,7 +44,7 @@ public class Activity {
 		this.server = server;
 	}
 	
-	public void startService(){
+	/*public void startService(){
 		
-	}
+	}*/
 }

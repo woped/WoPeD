@@ -5,14 +5,14 @@ public class Case {
 	private double timeService = 0.0;
 	private double timeWait = 0.0;
 	private double sysArrivalTime = 0.0;
-	private double sysDepartureTime = 0.0;
-	private double currentArrivalTime = 0.0;
-	private double currentDepartureTime = 0.0;
-	private double nextServiceTime = 0.0;
+//	private double sysDepartureTime = 0.0;
+	private double currArrivalTime = 0.0;
+//	private double currDepartureTime = 0.0;
+	private double nextServTime = 0.0;
 	private double timeOfSplit = 0.0;
 	
 	private int copies = 0;
-	public int cpyCnt = 0;
+	private int cpyCnt = 0;
 	
 	public Case(int id){
 		this.id = id;
@@ -48,40 +48,40 @@ public class Case {
 
 	public void setSysArrivalTime(double sysArrivalTime) {
 		this.sysArrivalTime = sysArrivalTime;
-		this.currentArrivalTime = sysArrivalTime;
+//		this.currArrivalTime = sysArrivalTime;
 	}
 
-	public double getSysDepartureTime() {
+	/*public double getSysDepartureTime() {
 		return sysDepartureTime;
 	}
 
 	public void setSysDepartureTime(double sysDepartureTime) {
 		this.sysDepartureTime = sysDepartureTime;
+	}*/
+
+	public double getCurrArrivalTime() {
+		return currArrivalTime;
 	}
 
-	public double getCurrentArrivalTime() {
-		return currentArrivalTime;
+	public void setCurrArrivalTime(double currArrivalTime) {
+		this.currArrivalTime = currArrivalTime;
 	}
 
-	public void setCurrentArrivalTime(double currentArrivalTime) {
-		this.currentArrivalTime = currentArrivalTime;
+	public double getNextServTime() {
+		return nextServTime;
 	}
 
-	public double getNextServiceTime() {
-		return nextServiceTime;
+	public void setNextServTime(double nextServTime) {
+		this.nextServTime = nextServTime;
 	}
 
-	public void setNextServiceTime(double nextServiceTime) {
-		this.nextServiceTime = nextServiceTime;
-	}
-
-	public double getCurrentDepartureTime() {
-		return currentDepartureTime;
+	/*public double getCurrentDepartureTime() {
+		return currDepartureTime;
 	}
 
 	public void setCurrentDepartureTime(double currentDepartureTime) {
-		this.currentDepartureTime = currentDepartureTime;
-	}
+		this.currDepartureTime = currentDepartureTime;
+	}*/
 
 	public int getCopies() {
 		return copies;
@@ -97,5 +97,33 @@ public class Case {
 
 	public void setTimeOfSplit(double timeOfSplit) {
 		this.timeOfSplit = timeOfSplit;
+	}
+	
+	public void updServTime(){
+		timeService += nextServTime;
+	}
+
+	public int getCpyCnt() {
+		return cpyCnt;
+	}
+
+	public void setCpyCnt(int cpyCnt) {
+		this.cpyCnt = cpyCnt;
+	}
+	
+	public void addWaitTime(double time){
+		timeWait += time;
+	}
+	
+	public void addServiceTime(double time){
+		timeService += time;
+	}
+	
+	public void incCpyCnt(){
+		cpyCnt++;
+	}
+	
+	public boolean copiesCollected(){
+		return cpyCnt == copies;
 	}
 }

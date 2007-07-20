@@ -23,18 +23,18 @@ public class ResourceFreedEvent extends SimEvent {
 	}
 	
 	public void invoke(){
-		Simulator sim = getSim();
+		/*Simulator sim = getSim();
 		double time = getTime();
 		ResourceUtilization ru = sim.getResUtil();
 		
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.ResFreed.Info"), new Object[] {server.getName(), server.getId()});
 		
 		if (sim.getUseResAlloc() == Simulator.RES_USED){
-			server.updateUtilStats(time, sim.getTimeOfLastEvent());
+//			server.updateUtilStats(time, sim.getTimeOfLastEvent());
 
 			while ((!(server.getQueue().isEmpty())) && (server.hasFreeCapacity())){
 				protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Content") + server.printQueue(), new Object[] {server.getName(), server.getId()});
-				Case c2 = server.dequeue().get_case();
+				Case c2 = server.dequeue().getCase();
 				Resource r = ru.chooseResourceFromFreeResources(server.getGroup(), server.getRole());
 				protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.ResFreed.Next"), new Object[] {server.getName(), server.getId(), c2.getId(), r.getName()});
 
@@ -51,5 +51,6 @@ public class ResourceFreedEvent extends SimEvent {
 		
 		sim.setTimeOfLastEvent(time);
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent") + String.format("%,.2f", time));
+		*/
 	}
 }

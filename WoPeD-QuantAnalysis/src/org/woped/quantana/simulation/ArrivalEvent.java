@@ -14,22 +14,24 @@ public class ArrivalEvent extends SimEvent{
 	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
 	private WorkItem wi;
-	private Server server;
+	private Server s;
 	private Case c;
 	
 	public ArrivalEvent(Simulator sim, double time, WorkItem wi) {
 		super(sim, time);
 		this.wi = wi;
-		server = wi.getServer();
-		this.c = wi.get_case();
+		s = wi.getServer();
+		this.c = wi.getCase();
 		
 		setName(getNewName());
+		
+		sim.incCntArrivalEvents();
 	}
 	
 	public void invoke(){
 		Simulator sim = getSim();
 		double time = getTime();
-		ResourceUtilization ru = sim.getResUtil();
+		/*ResourceUtilization ru = sim.getResUtil();
 		
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Arrival.Info"), new Object[] {c.getId(), server.getName(), server.getId()});
 		
@@ -38,7 +40,7 @@ public class ArrivalEvent extends SimEvent{
 		server.incNumCalls(1);
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Arrival.Number") + server.getNumCalls(), new Object[] {server.getName(), server.getId()});
 		
-		server.updateUtilStats(time, sim.getTimeOfLastEvent());
+//		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 		
 		if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
 			if (server.isIdle()){
@@ -48,15 +50,15 @@ public class ArrivalEvent extends SimEvent{
 						server.incZeroDelays(1);
 						
 					} else {
-						wi.enqueue();
-						nextStartServiceEvent(sim, time, server.dequeue().get_case(), ru);
+//						wi.enqueue();
+						nextStartServiceEvent(sim, time, server.dequeue().getCase(), ru);
 					}
 				} else {
 					nextStartServiceEvent(sim, time, c, ru);
 					server.incZeroDelays(1);
 				}
 			} else {
-				wi.enqueue();
+//				wi.enqueue();
 			}
 		} else {
 			if (server.hasFreeCapacity()){
@@ -66,8 +68,8 @@ public class ArrivalEvent extends SimEvent{
 						server.incZeroDelays(1);
 						protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Arrival.ZeroDelays") + server.getZeroDelays(), new Object[] {server.getName(), server.getId()});
 					} else {
-						wi.enqueue();
-						nextStartServiceEvent(sim, time, server.dequeue().get_case(), ru);
+//						wi.enqueue();
+						nextStartServiceEvent(sim, time, server.dequeue().getCase(), ru);
 					}
 				} else {
 					nextStartServiceEvent(sim, time, c, ru);
@@ -75,7 +77,7 @@ public class ArrivalEvent extends SimEvent{
 					protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Arrival.ZeroDelays") + server.getZeroDelays(), new Object[] {server.getName(), server.getId()});
 				}
 			} else {
-				wi.enqueue();
+//				wi.enqueue();
 			}
 		}
 		
@@ -117,5 +119,31 @@ public class ArrivalEvent extends SimEvent{
 		StartServiceEvent se = new StartServiceEvent(sim, time, act);
 		sim.getEventList().add(se);
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.StartService") + se.getName() + ENTRY.getString("Sim.Generated.Event.Server"), new Object[] {c.getId(), server.getName(), server.getId()});
+		*/
+		
+		c.setCurrArrivalTime(time);
+		s.incNumCalls();
+		BirthEvent be = new BirthEvent(sim, time);
+		sim.enroleEvent(be);
+		
+		if (s.hasFreeCapacity()){
+			Resource r = s.getResource();
+			sim.bind(r);
+			Activity act = new Activity(c, s, r);
+			StartServiceEvent st = new StartServiceEvent(sim, time, act);
+			sim.enroleEvent(st);
+			s.incZeroDelays();
+			s.incTmpNumCParallel();
+		} else {
+			s.updQStats(time, 1);
+			s.enqueue(c);
+		}
+		
+		sim.decCntArrivalEvents();
+		sim.getTmp().getTxtArea().append("AE: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
 	}
+	
+	/*public WorkItem getWorkItem(){
+		return wi;
+	}*/
 }

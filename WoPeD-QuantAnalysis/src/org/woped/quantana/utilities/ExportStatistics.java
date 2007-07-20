@@ -78,14 +78,14 @@ public class ExportStatistics {
 			for (int j = 1; j < stm.getColumnCount() - 1; j++)
 				srvD += Double.parseDouble((String)stm.getValueAt(i, j)) + ";";
 			
-			srvD += Double.parseDouble(String.format("%,.2f", server.getBusy() / sim.getClock() * 100)) + ";";
+			srvD += Double.parseDouble(String.format("%,.2f", server.getAvgNumRes() / sim.getClock() * 100)) + ";";
 			srvD += Double.parseDouble(String.format("%d", server.getZeroDelays())) + ";";
 			srvD += Double.parseDouble(String.format("%d", server.getNumCalls())) + ";";
 			srvD += Double.parseDouble(String.format("%d", server.getNumAccess())) + ";";
 			srvD += Double.parseDouble(String.format("%d", server.getNumDeparture())) + ";";
-			srvD += Double.parseDouble(String.format("%d", server.getMaxQueueLength())) + ";";
+			srvD += Double.parseDouble(String.format("%d", server.getMaxQLength())) + ";";
 			srvD += Double.parseDouble(String.format("%d", server.getMaxNumCasesInParallel())) + ";";
-			srvD += Double.parseDouble(String.format("%,.2f", server.getMaxWaitTimeOfCase())) + "\n";
+			srvD += Double.parseDouble(String.format("%,.2f", server.getMaxWaitTime())) + "\n";
 		}
 		
 		String res = "\n\n";

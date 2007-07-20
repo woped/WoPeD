@@ -1,6 +1,7 @@
 package org.woped.quantana.simulation;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -8,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.woped.quantana.resourcealloc.Resource;
-import org.woped.quantana.resourcealloc.ResourceUtilization;
 
 public class Server {
 	public static final int STATUS_IDLE	= 1;
@@ -20,14 +20,15 @@ public class Server {
 	private String name;
 	private Simulator sim;
 	private int numCalls = 0;
-	private double busy = 0.0;				// B(t)
-	private double queueLen = 0.0;			// Q(t)
-	private double maxWaitTimeOfCase = 0.0;
+//	private double busy = 0.0;				// B(t)
+	private double avgNumRes = 0.0;
+	private double queueLength = 0.0;			// Q(t)
+	private double maxWaitTime = 0.0;
 	private double waitTime = 0.0;
 	private double avgServiceTime = 0.0;
 	private double avgNumCasesServing = 0.0;
 	private double avgNumCasesAtServer = 0.0;
-	private int maxQueueLength = 0;
+	private int maxQLength = 0;
 	private int zeroDelays = 0;
 	private int numAccess = 0;
 	private int numDeparture = 0;
@@ -35,13 +36,22 @@ public class Server {
 	private int maxNumCasesInParallel = 0;
 	private int status = 0;
 	private ProbabilityDistribution distribution;
-//	private LinkedList<Case> queue = new LinkedList<Case>();
-	private LinkedList<WorkItem> queue = new LinkedList<WorkItem>();
+	private LinkedList<Case> queue = new LinkedList<Case>();
+//	private LinkedList<WorkItem> queue = new LinkedList<WorkItem>();
 	private ArrayList<SuccServer> successor = new ArrayList<SuccServer>();
 	private Random choice;
 	
 	private String role = null;
 	private String group = null;
+	
+//	private int lastNumCasesInParallel;  // Anzahl gerade bedienter Fälle, als Sim stoppte
+//	private int lastQueueLength;		 // Anzahl Fälle in Queue, als Simulation stoppte
+	private ArrayList<Double> waitTimes = new ArrayList<Double>(); // speichert die Wartezeiten aller Fälle
+	private int tmpNumCParallel;
+	private double timeQueueChangedLast = 0.0;
+	private double timeNumResChangedLast = 0.0;
+	private ArrayList<Double> qProps = new ArrayList<Double>();
+	private ArrayList<Double> rProps = new ArrayList<Double>();
 	
 	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
@@ -54,13 +64,13 @@ public class Server {
 		protocol = sim.getProtocol();
 	}
 
-	public double getBusy() {
+	/*public double getBusy() {
 		return busy;
 	}
 
 	public void setBusy(double busy) {
 		this.busy = busy;
-	}
+	}*/
 
 	public String getId() {
 		return id;
@@ -86,13 +96,21 @@ public class Server {
 		this.status = status;
 	}
 
-	public LinkedList<WorkItem> getQueue() {
+	/*public LinkedList<WorkItem> getQueue() {
 		return queue;
 	}
 
 	public void setQueue(LinkedList<WorkItem> queue) {
 		this.queue = queue;
+	}*/
+	
+	public LinkedList<Case> getQueue() {
+		return queue;
 	}
+
+	/*public void setQueue(LinkedList<Case> queue) {
+		this.queue = queue;
+	}*/
 
 	public ArrayList<SuccServer> getSuccessor() {
 		return successor;
@@ -168,20 +186,20 @@ public class Server {
 		this.maxNumCasesInParallel = maxNumCasesInParallel;
 	}
 
-	public int getMaxQueueLength() {
-		return maxQueueLength;
+	public int getMaxQLength() {
+		return maxQLength;
 	}
 
-	public void setMaxQueueLength(int maxQueueLength) {
-		this.maxQueueLength = maxQueueLength;
+	public void setMaxQLength(int maxQueueLength) {
+		this.maxQLength = maxQueueLength;
 	}
 
-	public double getMaxWaitTimeOfCase() {
-		return maxWaitTimeOfCase;
+	public double getMaxWaitTime() {
+		return maxWaitTime;
 	}
 
-	public void setMaxWaitTimeOfCase(double maxWaitTimeOfCase) {
-		this.maxWaitTimeOfCase = maxWaitTimeOfCase;
+	public void setMaxWaitTime(double maxWaitTimeOfCase) {
+		this.maxWaitTime = maxWaitTimeOfCase;
 	}
 
 	public int getNumAccess() {
@@ -200,12 +218,12 @@ public class Server {
 		this.numDeparture = numDeparture;
 	}
 
-	public double getQueueLen() {
-		return queueLen;
+	public double getQueueLength() {
+		return queueLength;
 	}
 
-	public void setQueueLen(double queueLen) {
-		this.queueLen = queueLen;
+	public void setQueueLength(double queueLen) {
+		this.queueLength = queueLen;
 	}
 
 	public int getZeroDelays() {
@@ -220,20 +238,20 @@ public class Server {
 		return name;
 	}
 	
-	public void incNumCalls(int n){
-		numCalls += n;
+	public void incNumCalls(){
+		numCalls++;
 	}
 	
-	public void incZeroDelays(int n){
-		zeroDelays += n;
+	public void incZeroDelays(){
+		zeroDelays++;
 	}
 	
-	public void incNumAccess(int n){
-		numAccess += n;
+	public void incNumAccess(){
+		numAccess++;
 	}
 	
-	public void incNumDeparture(int n){
-		numDeparture += n;
+	public void incNumDeparture(){
+		numDeparture++;
 	}
 
 	public int getNumCasesInParallel() {
@@ -256,8 +274,12 @@ public class Server {
 		this.waitTime = waitTime;
 	}
 	
+	public void incWaitTime(double time){
+		waitTime += time;
+	}
+	
 	public boolean hasFreeCapacity(){
-		if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
+		/*if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
 			if (status == Server.STATUS_IDLE) return true;
 			else return false;
 		} else {
@@ -269,7 +291,29 @@ public class Server {
 			} else {
 				return true;
 			}
+		}*/
+		
+		boolean free;
+		int nc;
+		
+		if (sim.getUseResAlloc() == Simulator.RES_USED){
+			boolean g = group.equals("");
+			boolean r = role.equals("");
+			
+			if (!g && !r){
+				ArrayList<Resource> rl = sim.getResUtil().getFreeResPerGroupRole(group, role);
+				
+				if (rl.size() > 0) free = true;
+				else free = false;
+			} else {
+				nc = tmpNumCParallel;
+				free = (nc == 0);
+			}
+		} else {
+			free = (tmpNumCParallel == 0);
 		}
+		
+		return free;
 	}
 	
 	public boolean isIdle(){
@@ -296,32 +340,46 @@ public class Server {
 		this.role = role;
 	}
 	
-	public void enqueue(WorkItem wi){
+	/*public void enqueue(WorkItem wi){
 		queue.add(wi);
-		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Enqueue"), new Object[] {wi.get_case().getId(), name, id});
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Enqueue"), new Object[] {wi.getCase().getId(), name, id});
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Content") + printQueue(), new Object[] {name, id});
 		
-		int l = queue.size();
-		if (l > maxQueueLength) maxQueueLength += 1;
+		//int l = queue.size();
+		//if (l > maxQueueLength) maxQueueLength += 1;
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Queue.Length.Max") + maxQueueLength);
 		
 		
+	}*/
+	
+	public void enqueue(Case c){
+		queue.add(c);
 	}
 	
-	public WorkItem dequeue(){
+	/*public WorkItem dequeue(){
 		int qDisc = sim.getQueueDiscipline();
 		WorkItem wi;
 		
 		if (qDisc == Simulator.QD_FIFO) wi = queue.removeFirst();
 		else wi = queue.removeLast();
 		
-		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Dequeued"), new Object[] {wi.get_case().getId(), name, id});
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Dequeued"), new Object[] {wi.getCase().getId(), name, id});
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Content") + printQueue(), new Object[] {name, id});
 		
 		return wi;
+	}*/
+	
+	public Case dequeue(){
+		int qDisc = sim.getQueueDiscipline();
+		Case c;
+		
+		if (qDisc == Simulator.QD_FIFO) c = queue.removeFirst();
+		else c = queue.removeLast();
+		
+		return c;
 	}
 	
-	public void updateUtilStats(double now, double lastEvent){
+	/*public void updateUtilStats(double now, double lastEvent){
 		queueLen += queue.size() * (now - lastEvent);
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Length.Average") + String.format("%,.2f", (queueLen / sim.getClock())), new Object[] {name, id});
 		
@@ -331,20 +389,20 @@ public class Server {
 		
 		if (status == STATUS_BUSY) busy += now - lastEvent;
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Server.Time.Service.Average") + String.format("%,.2f", (busy / sim.getClock())), new Object[] {name, id});
-	}
+	}*/
 	
 	public void reset(){
 		status = STATUS_IDLE;
 		
-		busy = 0.0;
+//		busy = 0.0;
 		maxNumCasesInParallel = 0;
-		maxQueueLength = 0;
-		maxWaitTimeOfCase = 0.0;
+		maxQLength = 0;
+		maxWaitTime = 0.0;
 		numAccess = 0;
 		numCalls = 0;
 		numCasesInParallel = 0;
 		numDeparture = 0;
-		queueLen = 0.0;
+		queueLength = 0.0;
 		waitTime = 0.0;
 		avgServiceTime = 0.0;
 		avgNumCasesServing = 0.0;
@@ -359,11 +417,13 @@ public class Server {
 		
 		if (l > 1){
 			for (int i = 0; i < l - 1; i++) {
-				s += queue.get(i).get_case().getId() + ",";
+//				s += queue.get(i).getCase().getId() + ",";
+				s += queue.get(i).getId() + ",";
 			}
 		}
 		
-		if (l > 0) s += queue.get(l - 1).get_case().getId();
+		if (l > 0) //s += queue.get(l - 1).getCase().getId();
+			s += queue.get(l - 1).getId();
 		
 		s += "]";
 		
@@ -386,11 +446,11 @@ public class Server {
 		this.avgServiceTime = avgServiceTime;
 	}
 
-	public void doService(){
+	/*public void doService(){
 		
-	}
+	}*/
 	
-	public void updStatistics(int type){
+	/*public void updStatistics(int type){
 		switch (type) {
 		case SimEvent.BIRTH_EVENT:
 			// Nichts zu tun
@@ -415,7 +475,7 @@ public class Server {
 			break;
 		default:
 		}
-	}
+	}*/
 
 	public double getAvgNumCasesAtServer() {
 		return avgNumCasesAtServer;
@@ -423,5 +483,178 @@ public class Server {
 
 	public void setAvgNumCasesAtServer(double avgNumCasesAtServer) {
 		this.avgNumCasesAtServer = avgNumCasesAtServer;
+	}
+
+	/*public int getLastNumCasesInParallel() {
+		return lastNumCasesInParallel;
+	}
+
+	public void setLastNumCasesInParallel(int lastNumCasesInParallel) {
+		this.lastNumCasesInParallel = lastNumCasesInParallel;
+	}
+
+	public int getLastQueueLength() {
+		return lastQueueLength;
+	}
+
+	public void setLastQueueLength(int lastQueueLength) {
+		this.lastQueueLength = lastQueueLength;
+	}*/
+
+	public ArrayList<Double> getWaitTimes() {
+		return waitTimes;
+	}
+
+	public void setWaitTimes(ArrayList<Double> waitTimes) {
+		this.waitTimes = waitTimes;
+	}
+
+	public int getTmpNumCParallel() {
+		return tmpNumCParallel;
+	}
+
+	public void setTmpNumCParallel(int tmpNumCParallel) {
+		this.tmpNumCParallel = tmpNumCParallel;
+	}
+	
+	public void incTmpNumCParallel(){
+		tmpNumCParallel++;
+	}
+	
+	public Resource getResource(){
+		return sim.getResUtil().chooseResourceFromFreeResources(group, role); 
+	}
+	
+	public void updQStats(double time, int type){
+		int qlen = queue.size();
+		double tnew = (time - timeQueueChangedLast)/time;
+		queueLength = (1 - tnew)*queueLength + tnew*qlen;
+		
+		if (maxQLength > 0){
+			for (int i = 0; i < maxQLength; i++){
+				double p = qProps.get(i).doubleValue();
+				p *= 1-tnew;
+
+				if (qlen > i){
+					p += tnew * qlen;
+				}
+
+				qProps.set(i, new Double(p));
+			}
+		}
+		
+		timeQueueChangedLast = time;
+		
+		if (type > 0){
+			if (qlen >= maxQLength){
+				maxQLength = qlen + 1;
+				qProps.add(new Double(0));
+			}
+		}
+	}
+	
+	public void updRStats(double time, int type){
+		int num = numCasesInParallel;
+		int max = maxNumCasesInParallel;
+		double tnew = (time - timeNumResChangedLast)/time;
+		avgNumRes = (1 - tnew)*avgNumRes + tnew*num;
+		
+		if (max > 0){
+			for (int i = 0; i < max; i++){
+				double p = rProps.get(i).doubleValue();
+				p *= 1-tnew;
+
+				if (num > i){
+					p += tnew * num;
+				}
+
+				rProps.set(i, new Double(p));
+			}
+		}
+		
+		timeNumResChangedLast = time;
+		
+		if (type > 0){
+			if (num >= max){
+				maxNumCasesInParallel = num + 1;
+				rProps.add(new Double(0));
+			}
+			
+			numCasesInParallel++;
+		} else {
+			numCasesInParallel--;
+		}
+	}
+	
+	public void handleFIFO(double time){
+		tmpNumCParallel = numCasesInParallel;
+		boolean cap = hasFreeCapacity();
+		boolean qe = queue.isEmpty();
+		updQStats(time, -1);
+		
+		while (cap && !qe){
+			Resource r = getResource();
+			Case c = dequeue();
+			Activity act = new Activity(c, this, r);
+			StartServiceEvent st = new StartServiceEvent(sim, time, act);
+			sim.enroleEvent(st);
+			tmpNumCParallel++;
+			cap = hasFreeCapacity();
+			qe = queue.isEmpty();
+		}
+	}
+	
+	public void handleLIFO(double time){
+		tmpNumCParallel = numCasesInParallel;
+		boolean cap = hasFreeCapacity();
+		
+		if (cap){
+			Iterator<SimEvent> it = sim.getEventListIterator();
+			
+			while (it.hasNext()){
+				SimEvent next = it.next();
+				
+				if (next instanceof ArrivalEvent){
+					double t = next.getTime();
+					
+					if (t <= time){
+						it.remove();
+						next.invoke();
+						tmpNumCParallel++;
+					}
+				}
+			}
+		}
+		
+		cap = hasFreeCapacity();
+		boolean qe = queue.isEmpty();
+		updQStats(time, -1);
+		
+		while (cap && !qe){
+			Resource r = getResource();
+			Case c = dequeue();
+			Activity act = new Activity(c, this, r);
+			StartServiceEvent st = new StartServiceEvent(sim, time, act);
+			sim.enroleEvent(st);
+			tmpNumCParallel++;
+			cap = hasFreeCapacity();
+			qe = queue.isEmpty();
+		}
+	}
+
+	public double getAvgNumRes() {
+		return avgNumRes;
+	}
+
+	public void setAvgNumRes(double avgNumRes) {
+		this.avgNumRes = avgNumRes;
+	}
+
+	public ArrayList<Double> getQProps() {
+		return qProps;
+	}
+
+	public ArrayList<Double> getRProps() {
+		return rProps;
 	}
 }

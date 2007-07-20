@@ -4,22 +4,28 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import org.woped.quantana.simulation.Case;
+import org.woped.quantana.simulation.CaseCopy;
+
 public class ActivityPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static final int AP_ALPHA	= 128;
 	
 	private double timeStart;
 	private double timeStop;
 	private String server;
 	private String resource;
-	private int _case;
+//	private int _case;
+	private Case _case;
 	private Color color;
 	
 	public ActivityPanel(){
 		super();
 	}
 	
-	public ActivityPanel(double start, double stop, String server, String resource, int _case, Color color){
+	public ActivityPanel(double start, double stop, String server, String resource, Case _case, Color color){
 		super();
 		this.timeStart = start;
 		this.timeStop = stop;
@@ -32,14 +38,21 @@ public class ActivityPanel extends JPanel {
 		
 		String st = String.format("%,.2f", timeStart);
 		String sp = String.format("%,.2f", timeStop);
-		this.setToolTipText("Case #" + _case + "; Start: " + st + ", Stop: " + sp);
+		
+		if (_case instanceof CaseCopy){
+			CaseCopy cc = (CaseCopy)_case;
+			String ccs = _case.getId() + "(" + cc.getOriginal().getId() + ")";
+			this.setToolTipText("Case #" + ccs + "; Start: " + st + ", Stop: " + sp);
+		} else {
+			this.setToolTipText("Case #" + _case.getId() + "; Start: " + st + ", Stop: " + sp);
+		}
 	}
 
-	public int get_case() {
+	public Case get_case() {
 		return _case;
 	}
 
-	public void set_case(int _case) {
+	public void set_case(Case _case) {
 		this._case = _case;
 	}
 

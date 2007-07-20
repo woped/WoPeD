@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.PriorityQueue;
 import java.util.PropertyResourceBundle;
@@ -23,6 +24,12 @@ import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.gui.ActivityPanel;
+import org.woped.quantana.gui.TmpProtocolDialog;
+import org.woped.quantana.model.ReportServerStats;
+import org.woped.quantana.model.ReportStats;
+import org.woped.quantana.model.ResourceStats;
+import org.woped.quantana.model.RunStats;
+import org.woped.quantana.model.ServerStats;
 import org.woped.quantana.resourcealloc.Resource;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceUtilization;
@@ -40,7 +47,7 @@ public class Simulator {
 	public static final int RES_USED		= 1;
 	public static final int RES_NOT_USED	= 2;
 	
-//	private static final int COLOR_STEPS	= 8; // = 2^3
+	public static final int LIMIT_EVENT_ARRIVAL	= 3;
 	
 	private static final String         BUNDLE_NAME     = "org.woped.quantana.properties.ProtocolEntries";
     private static final Locale         LOCALE          = ConfigurationManager.getConfiguration().getLocale();
@@ -62,14 +69,14 @@ public class Simulator {
 	private int numRuns;
 	private double clock;
 	private int maxNumCasesInSystem = 0;
-	private int caseCount = 0;
+//	private int caseCount = 0;
 	private int finishedCases = 0;
-	private double avgCasesInSystem = 0.0;
+	/*private double avgCasesInSystem = 0.0;
 	private double timeOfLastEvent = 0.0;
 	private double timeOfLastCaseNumChange = 0.0;
 	private double throughPut = 0.0;
 	private double caseBusy = 0.0;
-	private double caseWait = 0.0;
+	private double caseWait = 0.0;*/
 	private int typeOfDistForCases = 0;
 	private int typeOfDistForServer = 0;
 	private double caseParam = 0.0;
@@ -81,6 +88,9 @@ public class Simulator {
 	private Random fstServChoice = new Random(new Date().getTime());
 	private int[][] fstServList;
 	private double duration;
+	private double avgProcessWaitTime = 0.0;
+	private double avgProcessServiceTime = 0.0;
+	private double avgProcessCompletionTime = 0.0;
 	
 	private SimEvent nextEvent = null;
 	private ArrayList<Server> startServerList;
@@ -90,12 +100,19 @@ public class Simulator {
 	private HashMap<Integer, Case> copiedCasesList = new HashMap<Integer, Case>();
 	
 	private ArrayList<ActivityPanel> actPanelList = new ArrayList<ActivityPanel>();
-//	private Color lastColor = Color.WHITE;
 	
-	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp){
+	private ArrayList<RunStats> runStats = new ArrayList<RunStats>();
+	private ReportStats repStats = new ReportStats();
+	
+	private int cntArrivalEvents = 0;
+	
+	private TmpProtocolDialog tmp;
+	
+	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp, TmpProtocolDialog tmp){
 		process = wfpn;
 		resUtil = ru;
 		resAlloc = ru.getResAlloc();
+		this.tmp = tmp;
 		
 		this.numRuns = sp.getRuns();
 		this.typeOfDistForCases = sp.getDistCases();
@@ -154,8 +171,10 @@ public class Simulator {
 			
 			LoggerManager.info(Constants.QUANTANA_LOGGER, "Report wird erzeugt.");
 			protocol.info(clckS() + ENTRY.getString("Sim.Report.Generated"));
-			generateReport();
+			finishRun();
 		}
+		
+		generateReport();
 	}
 	
 	private void init(int run){
@@ -165,14 +184,14 @@ public class Simulator {
 		
 		// sämtliche Counter zurücksetzen
 		protocol.info(clckS() + ENTRY.getString("Sim.Counters.Reset"));
-		avgCasesInSystem = 0.0;
-		caseCount = 0;
+		/*avgCasesInSystem = 0.0;
+		caseCount = 0;*/
 		finishedCases = 0;
 		maxNumCasesInSystem = 0;
 		//numCasesInSystem = 0;
-		throughPut = 0.0;
+		/*throughPut = 0.0;
 		timeOfLastCaseNumChange = 0.0;
-		timeOfLastEvent = 0.0;
+		timeOfLastEvent = 0.0;*/
 		
 		caseList.clear();
 		
@@ -213,6 +232,82 @@ public class Simulator {
 		if (nextEvent != null) clock = nextEvent.getTime();
 	}
 	
+	private void finishRun(){
+		RunStats stats = new RunStats();
+		HashMap<Server, ServerStats> sStats = stats.getServStats();
+		HashMap<Resource, ResourceStats> rStats = stats.getResStats();
+		
+		for (Server s : serverList.values()){
+			ServerStats sst = new ServerStats(s.getName(), s.getId());
+			sst.setNumServedWhenStopped(s.getNumCasesInParallel());
+			sst.setQLengthWhenStopped(s.getQueue().size());
+			
+			sStats.put(s, sst);
+		}
+		
+		Object[] events = eventList.toArray();
+		for (Object o : events){
+			SimEvent se = (SimEvent)o;
+			if (se instanceof DepartureEvent){
+				DepartureEvent dp = (DepartureEvent)se;
+				dp.invoke();
+				eventList.remove(se);
+			}
+		}
+		
+		events = eventList.toArray();
+		for (Object o : events){
+			SimEvent se = (SimEvent)o;
+			if (se instanceof DeathEvent){
+				DeathEvent de = (DeathEvent)se;
+				de.invoke();
+				eventList.remove(se);
+			}
+		}
+		
+		for (Server s : serverList.values()){
+			s.updQStats(clock, 0);
+			s.updRStats(clock, 0);
+			
+			ServerStats sst = new ServerStats(s.getName(), s.getId());
+			sst.setZeroDelays(s.getZeroDelays());
+			sst.setCalls(s.getNumCalls());
+			sst.setAccesses(s.getNumAccess());
+			sst.setDepartures(s.getNumDeparture());
+			sst.setAvgQLength(s.getQueueLength());
+			sst.setMaxQLength(s.getMaxQLength());
+			sst.setQueueProportions(s.getQProps());
+			sst.setAvgResNumber(s.getAvgNumRes());
+			sst.setMaxResNumber(s.getMaxNumCasesInParallel());
+			sst.setResNumProperties(s.getRProps());
+			sst.setAvgWaitTime(s.getWaitTime() / s.getNumDeparture());
+			sst.setMaxWaitTime(s.getMaxWaitTime());
+			sst.setWTable(s.getWaitTimes());
+			
+			sStats.put(s, sst);
+		}
+		
+//		stats.setServStats(sStats);
+		
+		for (Resource r : resAlloc.getResources().values()){
+			ResourceStats rst = new ResourceStats(r.getName());
+			rst.setIdleTime(clock - r.getBusyTime());
+			rst.setUtilizationRatio(r.getBusyTime() / clock);
+			rStats.put(r, rst);
+		}
+		
+//		stats.setResStats(rStats);
+		
+		stats.setDuration(clock);
+		stats.setFinishedCases(finishedCases);
+		stats.setProcWaitTime(avgProcessWaitTime / finishedCases);
+		stats.setProcServTime(avgProcessServiceTime / finishedCases);
+		stats.setProcCompTime(avgProcessCompletionTime / finishedCases);
+		stats.setThroughPut(finishedCases / clock * period);
+		
+		runStats.add(stats);
+	}
+	
 	private void generateReport(){
 		protocol.info(clckS() + ENTRY.getString("Sim.Stop"));
 		
@@ -225,6 +320,102 @@ public class Simulator {
 		((Handler)((protocol.getHandlers())[0])).close();
 		
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "Protokoll wurde erstellt.");
+
+		int sum = 0;
+		double sumDur = 0;
+		double sumPST = 0;
+		double sumPWT = 0;
+		double sumPCT = 0;
+		double sumThp = 0;
+		
+		for (RunStats rs : runStats){
+			sum += rs.getFinishedCases();
+			sumDur += rs.getDuration();
+			sumPST += rs.getProcServTime();
+			sumPWT += rs.getProcWaitTime();
+			sumPCT += rs.getProcCompTime();
+			sumThp += rs.getThroughPut();
+			
+			for (ServerStats ss : rs.getServStats().values()){
+				Server s = serverList.get(ss.getId());
+				if (repStats.getServStats().containsKey(s)){
+					ReportServerStats rss = (ReportServerStats)repStats.getServStats().get(s);
+					rss.incAvgZeroDelays(ss.getZeroDelays());
+					rss.incAvgCalls(ss.getCalls());
+					rss.incAvgAccesses(ss.getAccesses());
+					rss.incAvgDepartures(ss.getDepartures());
+					rss.incAvgMaxQLength(ss.getMaxQLength());
+					rss.incAvgMaxResNumber(ss.getMaxResNumber());
+					rss.incAvgNumServedWhenStopped(ss.getNumServedWhenStopped());
+					rss.incAvgQLengthWhenStopped(ss.getQLengthWhenStopped());
+					rss.incAvgAvgQLength(ss.getAvgQLength());
+					rss.incAvgAvgResNumber(ss.getAvgResNumber());
+					rss.incAvgAvgWaitTime(ss.getAvgWaitTime());
+					rss.incAvgMaxWaitTime(ss.getMaxWaitTime());
+				} else {
+					ReportServerStats rss = new ReportServerStats(ss.getName(), ss.getId());
+					rss.setAvgZeroDelays(ss.getZeroDelays());
+					rss.setAvgCalls(ss.getCalls());
+					rss.setAvgAccesses(ss.getAccesses());
+					rss.setAvgDepartures(ss.getDepartures());
+					rss.setAvgMaxQLength(ss.getMaxQLength());
+					rss.setAvgMaxResNumber(ss.getMaxResNumber());
+					rss.setAvgNumServedWhenStopped(ss.getNumServedWhenStopped());
+					rss.setAvgQLengthWhenStopped(ss.getQLengthWhenStopped());
+					rss.setAvgQLength(ss.getAvgQLength());
+					rss.setAvgResNumber(ss.getAvgResNumber());
+					rss.setAvgWaitTime(ss.getAvgWaitTime());
+					rss.setMaxWaitTime(ss.getMaxWaitTime());
+					
+					repStats.getServStats().put(s, rss);
+				}
+			}
+			
+			for (ResourceStats rr : rs.getResStats().values()){
+				Resource r = resAlloc.getResources().get(rr.getName());
+				if (repStats.getResStats().containsKey(r)){
+					ResourceStats rrs = repStats.getResStats().get(r);
+					rrs.incIdleTime(rr.getIdleTime());
+					rrs.incUtilizationRatio(rr.getUtilizationRatio());
+				} else {
+					ResourceStats rrs = new ResourceStats(rr.getName());
+					rrs.setIdleTime(rr.getIdleTime());
+					rrs.setUtilizationRatio(rr.getUtilizationRatio());
+					
+					repStats.getResStats().put(r, rrs);
+				}
+			}
+		}
+		
+		repStats.setAvgFinishedCases(sum / numRuns);
+		repStats.setDuration(sumDur / numRuns);
+		repStats.setProcWaitTime(sumPWT / numRuns);
+		repStats.setProcServTime(sumPST / numRuns);
+		repStats.setProcCompTime(sumPCT / numRuns);
+		repStats.setThroughPut(sumThp / numRuns);
+		
+		for (ServerStats ss : repStats.getServStats().values()){
+			ReportServerStats rss = (ReportServerStats)ss;
+			rss.setAvgZeroDelays(rss.getAvgZeroDelays() / numRuns);
+			rss.setAvgCalls(rss.getAvgCalls() / numRuns);
+			rss.setAvgAccesses(rss.getAvgAccesses() / numRuns);
+			rss.setAvgDepartures(rss.getAvgDepartures() / numRuns);
+			rss.setAvgMaxQLength(rss.getAvgMaxQLength() / numRuns);
+			rss.setAvgMaxResNumber(rss.getAvgMaxResNumber() / numRuns);
+			rss.setAvgNumServedWhenStopped(rss.getAvgNumServedWhenStopped() / numRuns);
+			rss.setAvgQLengthWhenStopped(rss.getAvgQLengthWhenStopped() / numRuns);
+			rss.setAvgQLength(rss.getAvgQLength() / numRuns);
+			rss.setAvgResNumber(rss.getAvgResNumber() / numRuns);
+			rss.setAvgWaitTime(rss.getAvgWaitTime() / numRuns);
+			rss.setMaxWaitTime(rss.getMaxWaitTime() / numRuns);
+		}
+		
+		for (ResourceStats rrs : repStats.getResStats().values()){
+			rrs.setIdleTime(rrs.getIdleTime() / numRuns);
+			rrs.setUtilizationRatio(rrs.getUtilizationRatio() / numRuns);
+		}
+		
+		runStats.add(repStats);
 	}
 	
 	private void generateServerList(){
@@ -330,7 +521,7 @@ public class Simulator {
 		int idx = -1;
 		for (int i = 0; i < succs; i++){
 			if (i == 0){
-				if (rnd < (fstServList[i][2] * 100)){
+				if (rnd < (fstServList[i][2])){
 					idx = i;
 				}
 			} else {
@@ -351,8 +542,8 @@ public class Simulator {
 		switch (succs){
 		case 1:
 			fstServList[0][0] = 1;
-			fstServList[0][1] = 1;
-			fstServList[0][2] = 1;
+			fstServList[0][1] = 100;
+			fstServList[0][2] = 100;
 			break;
 		default:
 			for (int i = 0; i < succs; i++){
@@ -414,22 +605,34 @@ public class Simulator {
 	public void setUseResAlloc(int useResAlloc) {
 		this.useResAlloc = useResAlloc;
 	}
+	
+	public void enroleEvent(SimEvent se){
+		eventList.add(se);
+	}
+	
+	public void bind(Resource r){
+		resUtil.useResource(r);
+	}
+	
+	public void free(Resource r){
+		resUtil.freeResource(r);
+	}
 
-	public PriorityQueue<SimEvent> getEventList() {
+	/*public PriorityQueue<SimEvent> getEventList() {
 		return eventList;
 	}
 
 	public void setEventList(PriorityQueue<SimEvent> eventList) {
 		this.eventList = eventList;
-	}
+	}*/
 
-	public double getAvgCasesInSystem() {
+	/*public double getAvgCasesInSystem() {
 		return avgCasesInSystem;
 	}
 
 	public void setAvgCasesInSystem(double avgCasesInSystem) {
 		this.avgCasesInSystem = avgCasesInSystem;
-	}
+	}*/
 
 	public CaseGenerator getCaseGenerator() {
 		return caseGenerator;
@@ -447,13 +650,13 @@ public class Simulator {
 		this.finishedCases = finishedCases;
 	}
 
-	public double getTimeOfLastEvent() {
+	/*public double getTimeOfLastEvent() {
 		return timeOfLastEvent;
 	}
 
 	public void setTimeOfLastEvent(double timeOfLastEvent) {
 		this.timeOfLastEvent = timeOfLastEvent;
-	}
+	}*/
 
 	public HashMap<Integer, Case> getCaseList() {
 		return caseList;
@@ -467,20 +670,20 @@ public class Simulator {
 		return stopRule;
 	}
 
-	public int getCaseCount() {
-		return caseCount;
-	}
-
-	public void setCaseCount(int caseCount) {
-		this.caseCount = caseCount;
-	}
-
 	public double getLambda() {
 		return lambda;
 	}
 
 	public void setLambda(double lambda) {
 		this.lambda = lambda;
+	}
+
+	/*public int getCaseCount() {
+		return caseCount;
+	}
+
+	public void setCaseCount(int caseCount) {
+		this.caseCount = caseCount;
 	}
 
 	public double getThroughPut() {
@@ -521,7 +724,7 @@ public class Simulator {
 
 	public void setCaseWait(double caseWait) {
 		this.caseWait = caseWait;
-	}
+	}*/
 	
 	private void initProtocol(){
 		protocolPath = ConfigurationManager.getConfiguration().getLogdir();
@@ -700,33 +903,72 @@ public class Simulator {
 	public ArrayList<ActivityPanel> getActPanelList() {
 		return actPanelList;
 	}
-	
-	/*public Color getNextColor(){
-		int r = lastColor.getRed();
-		int g = lastColor.getGreen();
-		int b = lastColor.getBlue();
-		
-		b = nextValue(b);
-		if (b == 0) {
-			g = nextValue(g);
-			if (g == 0)
-				r = nextValue(r);
-		}
-		
-		Color c = new Color(r, g, b);
-		lastColor = c;
-		return c;
+
+	public double getAvgProcessCompletionTime() {
+		return avgProcessCompletionTime;
+	}
+
+	public void setAvgProcessCompletionTime(double avgProcessCompletionTime) {
+		this.avgProcessCompletionTime = avgProcessCompletionTime;
+	}
+
+	public double getAvgProcessServiceTime() {
+		return avgProcessServiceTime;
+	}
+
+	public void setAvgProcessServiceTime(double avgProcessServiceTime) {
+		this.avgProcessServiceTime = avgProcessServiceTime;
+	}
+
+	public double getAvgProcessWaitTime() {
+		return avgProcessWaitTime;
+	}
+
+	public void setAvgProcessWaitTime(double avgProcessWaitTime) {
+		this.avgProcessWaitTime = avgProcessWaitTime;
 	}
 	
-	private int nextValue(int val){
-		int delta = 256 / COLOR_STEPS;
-		int next = val + delta;
-		
-		if (val < 255) {
-			if (next > 255) next = 255;
-		}
-		else next = 0;
-		
-		return next;
-	}*/
+	public void incFinishedCases(){
+		finishedCases++;
+	}
+	
+	public void incAvgProcessWaitTime(double time){
+		avgProcessWaitTime += time;
+	}
+	
+	public void incAvgProcessServiceTime(double time){
+		avgProcessServiceTime += time;
+	}
+
+	public void incAvgProcessCompletionTime(double time){
+		avgProcessCompletionTime += time;
+	}
+	
+	public void addToCopyList(Case c){
+		copiedCasesList.put(c.getId(), c);
+	}
+	
+	public Iterator<SimEvent> getEventListIterator(){
+		return eventList.iterator();
+	}
+
+	public ArrayList<RunStats> getRunStats() {
+		return runStats;
+	}
+	
+	public void incCntArrivalEvents(){
+		cntArrivalEvents++;
+	}
+	
+	public void decCntArrivalEvents(){
+		cntArrivalEvents--;
+	}
+
+	public int getCntArrivalEvents() {
+		return cntArrivalEvents;
+	}
+
+	public TmpProtocolDialog getTmp() {
+		return tmp;
+	}
 }

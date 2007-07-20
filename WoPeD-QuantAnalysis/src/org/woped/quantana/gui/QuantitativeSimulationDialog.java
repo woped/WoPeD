@@ -54,7 +54,10 @@ import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.gui.CapacityAnalysisDialog.MyTableHeaderRenderer;
+import org.woped.quantana.model.ReportServerStats;
 import org.woped.quantana.model.ResUtilTableModel;
+import org.woped.quantana.model.ResourceStats;
+import org.woped.quantana.model.RunStats;
 import org.woped.quantana.model.ServerTableModel;
 import org.woped.quantana.model.TasksResourcesAllocation;
 import org.woped.quantana.model.TimeModel;
@@ -196,6 +199,10 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private String[] servNames;
 	
 	private TasksResourcesAllocation tasksAndResources;
+	
+	private ArrayList<RunStats> simStatistics;
+	
+	private TmpProtocolDialog tmp = new TmpProtocolDialog(thisDialog);
 
 	/**
 	 * This is the default constructor
@@ -1089,14 +1096,15 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	public void updContents() {
 		ServerTableModel stm = serverTableModel;
 		ResUtilTableModel rtm = resUtilTableModel;
-		double clock = sim.getClock();
+//		double clock = sim.getClock();
 		HashMap<String, Server> serv = sim.getServerList();
 		HashMap<String, Resource> res = resAlloc.getResources();
 
-		double wP = sim.getThroughPut() / clock;
-		double wqP = sim.getCaseWait() / clock;
+//		double wP = sim.getThroughPut() / clock;
+//		double wqP = sim.getCaseWait() / clock;
 //		double wsP = sim.getCaseBusy() / clock;
-		stm.setValueAt("-", 0, 1);
+		
+		/*stm.setValueAt("-", 0, 1);
 		stm.setValueAt("-", 0, 2);
 		stm.setValueAt("-", 0, 3);
 		stm.setValueAt(String.format("%,.2f", wP), 0, 4);
@@ -1107,7 +1115,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Server s = serv.get(id);
 			int servStarted = s.getNumAccess();
 			int servFinished = s.getNumDeparture();
-			double qlen = s.getQueueLen() / clock;
+			double qlen = s.getQueueLength() / clock;
 			double nsrv = s.getAvgNumCasesServing() / clock;
 			String l = String.format("%,.2f", qlen + nsrv);
 			String lq = String.format("%,.2f", qlen);
@@ -1127,6 +1135,36 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			Resource r = res.get(name);
 			String util = String.format("%,.2f", Double.valueOf(r.getBusyTime() / clock * 100));
 			rtm.setValueAt(util, i, 1);
+		}*/
+		
+		simStatistics = sim.getRunStats();
+		RunStats rs = simStatistics.get(simStatistics.size() - 1);
+		
+		stm.setValueAt(String.format("%,.2f", rs.getProcCompTime()*lambda), 0, 1);
+		stm.setValueAt(String.format("%,.2f", rs.getProcWaitTime()*lambda), 0, 2);
+		stm.setValueAt(String.format("%,.2f", rs.getProcServTime()*lambda), 0, 3);
+		stm.setValueAt(String.format("%,.2f", rs.getProcCompTime()), 0, 4);
+		stm.setValueAt(String.format("%,.2f", rs.getProcWaitTime()), 0, 5);
+		
+		for (int i = 1; i <= numServers; i++) {
+			String id = produceID((String) stm.getValueAt(i, 0));
+			Server s = serv.get(id);
+			ReportServerStats sst = (ReportServerStats)rs.getServStats().get(s);
+			
+			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()+sst.getAvgResNumber()), i, 1);
+			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()), i, 2);
+			stm.setValueAt(String.format("%,.2f", sst.getAvgResNumber()), i, 3);
+			stm.setValueAt(String.format("%,.2f", (sst.getAvgQLength()+sst.getAvgResNumber())/lambda), i, 4);
+			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()/lambda), i, 5);
+		}
+		
+		for (int i = 0; i < resObjNum; i++) {
+			String name = (String) rtm.getValueAt(i, 0);
+			Resource r = res.get(name);
+			ResourceStats rst = rs.getResStats().get(r);
+			
+			String util = String.format("%,.2f", rst.getUtilizationRatio()*100);
+			rtm.setValueAt(util, i, 1);
 		}
 	}
 
@@ -1141,16 +1179,16 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		return graph;
 	}
  
-   private void startSimulation() {
+	private void startSimulation() {
 		WaitDialog wd = new WaitDialog(this, Messages.getString("QuantAna.Simulation.Wait")); 
 		wd.start();
 		LoggerManager.info(Constants.QUANTANA_LOGGER, Messages
 				.getString("QuantAna.Started"));
-        
+
 		updTimeModel();
 		SimParameters sp = new SimParameters(lambda, period);
 		sp.setRuns(Integer.parseInt(txtRuns.getText()));
-		
+
 		String op1 = groupIAT.getSelection().getActionCommand();
 		if (op1.equals("IAT_UNIFORM")) {
 			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_UNIFORM);
@@ -1163,7 +1201,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		} else {
 			sp.setDistCases(ProbabilityDistribution.DIST_TYPE_EXP);
 		}
-		
+
 		String op2 = groupST.getSelection().getActionCommand();
 		if (op2.equals("ST_UNIFORM")) {
 			sp.setDistServ(ProbabilityDistribution.DIST_TYPE_UNIFORM);
@@ -1201,13 +1239,15 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			sp.setResUse(Simulator.RES_NOT_USED);
 		}
 
-		sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp);
+		sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp, tmp);
 		sim.start();
 
 		activateDetails();
 		updContents();
 		wd.stop();
 		sim.setDuration(wd.getDuration());
+		
+		tmp.setVisible(true);
 	}
 
 	private void initResourceAlloc() {

@@ -228,7 +228,7 @@ public class DetailsDialog extends JDialog {
 		} else if (server != null){
 			// Server-Statistik
 			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Utilization"));
-			lblDetail_1.setText(String.format("%,.2f", server.getBusy() / clock * 100));
+			lblDetail_1.setText(String.format("%,.2f", server.getAvgNumRes() / clock * 100));
 			int zd = server.getZeroDelays();
 			if (server instanceof ANDJoinServer) zd /= ((ANDJoinServer)server).getBranches();
 			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.ZeroDelays"));
@@ -240,11 +240,11 @@ public class DetailsDialog extends JDialog {
 			lblDesc_5.setText(Messages.getString("QuantAna.Simulation.Details.NumDeparture"));
 			lblDetail_5.setText(String.format("%d", server.getNumDeparture()));
 			lblDesc_6.setText(Messages.getString("QuantAna.Simulation.Details.MaxQueueLength"));
-			lblDetail_6.setText(String.format("%d", server.getMaxQueueLength()));
+			lblDetail_6.setText(String.format("%d", server.getMaxQLength()));
 			lblDesc_7.setText(Messages.getString("QuantAna.Simulation.Details.MaxCasesParallel"));
 			lblDetail_7.setText(String.format("%d", server.getMaxNumCasesInParallel()));
 			lblDesc_8.setText(Messages.getString("QuantAna.Simulation.Details.MaxWaitTime"));
-			lblDetail_8.setText(String.format("%,.2f", server.getMaxWaitTimeOfCase()));
+			lblDetail_8.setText(String.format("%,.2f", server.getMaxWaitTime()));
 		}
 		
 		Rectangle bounds = owner.getBounds();

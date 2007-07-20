@@ -13,14 +13,14 @@ public class StopServiceEvent extends SimEvent {
 	
 	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
-	private Server server;
+	private Server s;
 	private Case c;
 	private Resource r;
 	
 	public StopServiceEvent(Simulator sim, double time, Activity a) {//Server server, Case c, Resource r){
 		super(sim, time);
-		this.server = a.getServer();
-		this.c = a.get_case();
+		this.s = a.getServer();
+		this.c = a.getCase();
 		this.r = a.getResource();
 		
 		setName(getNewName());
@@ -29,14 +29,14 @@ public class StopServiceEvent extends SimEvent {
 	public void invoke(){
 		Simulator sim = getSim();
 		double time = getTime();
-		ResourceUtilization ru = sim.getResUtil();
+		/*ResourceUtilization ru = sim.getResUtil();
 		
 		String s = sim.clckS() + ENTRY.getString("Sim.StartService.Info.A");
 		if (r != null) s += ENTRY.getString("Sim.StartService.Info.B") + r.getName() + ENTRY.getString("Sim.StopService.Info.C");
 		else s += ENTRY.getString("Sim.StopService.Info.D");
 		protocol.log(Level.INFO, s, new Object[] {c.getId(), server.getName(), server.getId()});
 		
-		server.updateUtilStats(time, sim.getTimeOfLastEvent());
+//		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 
 		int cc = server.getQueue().size() + server.getNumCasesInParallel();
 		server.setAvgNumCasesServing(server.getAvgNumCasesServing() + cc * (time - sim.getTimeOfLastEvent()));
@@ -76,5 +76,26 @@ public class StopServiceEvent extends SimEvent {
 		
 		sim.setTimeOfLastEvent(time);
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent") + String.format("%,.2f", time));
+		*/
+		
+		s.updRStats(time, -1);
+		
+		if (r != null){
+			sim.free(r);
+			r.updStats(time);
+		}
+		
+		int num = s.getNumCasesInParallel();
+		int ql = s.getQueue().size();
+		
+		if ((num == 0) && (ql == 0)) s.setStatus(Server.STATUS_IDLE);
+		
+		WorkItem wi = new WorkItem(c, s);
+		DepartureEvent dp = new DepartureEvent(sim, time, wi);
+		sim.enroleEvent(dp);
+		
+		s.incNumDeparture();
+		c.updServTime();
+		sim.getTmp().getTxtArea().append("SP: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
 	}
 }

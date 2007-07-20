@@ -66,5 +66,7 @@ public class Resource {
 		this.color = color;
 	}
 
-	
+	public void updStats(double time){
+		busyTime += time - lastStartTime;
+	}
 }

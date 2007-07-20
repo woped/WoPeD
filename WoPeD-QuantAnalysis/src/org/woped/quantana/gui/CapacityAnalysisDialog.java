@@ -198,7 +198,7 @@ public class CapacityAnalysisDialog extends JDialog {
 		mec = editor.getModelProcessor().getElementContainer();
 		graph = new WorkflowNetGraph(sa, mec);
 		numTransGT0 = graph.getNumTransitionsGT0();
-		calculateNumOfRuns(graph);
+		//calculateNumOfRuns();
 		initResourceAlloc();
 		numResCls = resAlloc.getNumOfResClasses();
 		tm = new TimeModel(1, 1.0);
@@ -773,7 +773,7 @@ public class CapacityAnalysisDialog extends JDialog {
 		return statisticPanel;
 	}
 
-	private void calculateNumOfRuns(WorkflowNetGraph g) {
+	private void calculateNumOfRuns() {
 
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "Epsilon: " + epsilon);
 		unfoldNet(graph, lambda, epsilon);
@@ -815,15 +815,13 @@ public class CapacityAnalysisDialog extends JDialog {
 			for (Arc a : np.getFirst().getSuccessor()) {
 				Node m = a.getTarget();
 				if (!m.isJoinReached()) {
-					double val = a.getProbability()
-							* np.getSecond().getTempRuns();
+					double val = a.getProbability() * np.getSecond().getTempRuns();
 					if (!(val < epsilon)) {
 						Node y = new Node(m.getId(), m.getName());
 						y.setTempRuns(val);
 						if (m.isAndJoin())
 							m.setJoinReached(true);
-						np.getSecond().getSuccessor().add(
-								new Arc(y, a.getProbability()));
+						np.getSecond().getSuccessor().add(new Arc(y, a.getProbability()));
 						Key k = new Key(m.getId(), val);
 						unfoldedNet.put(k, y);
 						
@@ -842,7 +840,7 @@ public class CapacityAnalysisDialog extends JDialog {
 		Iterator<NodePair> i = q.iterator();
 		while (i.hasNext()) {
 			NodePair p = i.next();
-			if (n.equals(p.getFirst())) {
+			if (n.equals(p.getSecond())) {
 				contains = true;
 				break;
 			}
@@ -1009,7 +1007,7 @@ public class CapacityAnalysisDialog extends JDialog {
 		double sumPeriod = 0.0;
 
 		updParameters();
-		calculateNumOfRuns(graph);
+		calculateNumOfRuns();
 		double[] runs = graph.getRunsGT0();
 		double[] times = graph.getTimesGT0();
 

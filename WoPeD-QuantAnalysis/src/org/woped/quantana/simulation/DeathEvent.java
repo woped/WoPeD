@@ -23,14 +23,15 @@ public class DeathEvent extends SimEvent {
 		Simulator sim = getSim();
 		double time = getTime();
 		
-		c.setSysDepartureTime(time);
-		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Death.Case.Exit") + String.format("%,.2f", time), c.getId());
+		/*
+//		c.setSysDepartureTime(time);
+//		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Death.Case.Exit") + String.format("%,.2f", time), c.getId());
 		
 		sim.setFinishedCases(sim.getFinishedCases() + 1);
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Death.Cases.Finished") + sim.getFinishedCases());
 		
-		sim.setThroughPut(sim.getThroughPut() + c.getSysDepartureTime() - c.getSysArrivalTime());
-		protocol.info(sim.clckS() + ENTRY.getString("Sim.Death.Throughput") + String.format("%,.2f", (sim.getThroughPut() / sim.getClock())));
+//		sim.setThroughPut(sim.getThroughPut() + c.getSysDepartureTime() - c.getSysArrivalTime());
+//		protocol.info(sim.clckS() + ENTRY.getString("Sim.Death.Throughput") + String.format("%,.2f", (sim.getThroughPut() / sim.getClock())));
 		
 		sim.setCaseBusy(sim.getCaseBusy() + c.getTimeService());
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Death.Time.Service") + String.format("%,.2f", sim.getCaseBusy()));
@@ -45,5 +46,13 @@ public class DeathEvent extends SimEvent {
 		
 		sim.setTimeOfLastCaseNumChange(getTime());
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent.CaseNum") + String.format("%,.2f", time));
+		*/
+		
+		sim.incAvgProcessWaitTime(c.getTimeWait());
+		sim.incAvgProcessServiceTime(c.getTimeService());
+		sim.incAvgProcessCompletionTime(time - c.getSysArrivalTime());
+		
+		sim.incFinishedCases();
+		sim.getTmp().getTxtArea().append("DE: (Case# " + c.getId() + "): " + time + "\n");
 	}
 }

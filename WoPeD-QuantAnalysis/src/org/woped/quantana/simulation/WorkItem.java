@@ -10,15 +10,15 @@ public class WorkItem {
 		server = s;
 	}
 	
-	public void enqueue(){
+	/*public void enqueue(){
 		server.enqueue(this);
-	}
+	}*/
 
-	public Case get_case() {
+	public Case getCase() {
 		return _case;
 	}
 
-	public void set_case(Case _case) {
+	public void setCase(Case _case) {
 		this._case = _case;
 	}
 

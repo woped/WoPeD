@@ -21,7 +21,7 @@ public class BirthEvent extends SimEvent {
 		double time = getTime();
 		CaseGenerator cg = sim.getCaseGenerator();
 		
-		Case c = cg.generateNextCase();
+		/*Case c = cg.generateNextCase();
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Birth.Info") + String.format("%,.2f", c.getSysArrivalTime()), c.getId());
 
 		sim.updateCaseNumStats(getTime(), sim.getTimeOfLastCaseNumChange());
@@ -42,5 +42,16 @@ public class BirthEvent extends SimEvent {
 		
 		sim.setTimeOfLastCaseNumChange(time);
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent.CaseNum") + String.format("%,.2f", getTime()));
+		*/
+		
+		if (sim.getCntArrivalEvents() < Simulator.LIMIT_EVENT_ARRIVAL){
+			Case c = cg.generateNextCase();
+			Server s = sim.getStartServer();
+			WorkItem wi = new WorkItem(c, s);
+			ArrivalEvent ae = new ArrivalEvent(sim, c.getSysArrivalTime(), wi);
+			sim.enroleEvent(ae);
+			
+			sim.getTmp().getTxtArea().append("BE: (Case# " + c.getId() + ") erzeugt: " + time + "\n");
+		}
 	}
 }

@@ -15,14 +15,14 @@ public class DepartureEvent extends SimEvent {
 	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
 	private WorkItem wi;
-	private Server server;
+	private Server s;
 	private Case c;
 	
 	public DepartureEvent(Simulator sim, double time, WorkItem wi) {//Server server, Case c){
 		super(sim, time);
 		this.wi = wi;
-		this.server = wi.getServer();
-		this.c = wi.get_case();
+		this.s = wi.getServer();
+		this.c = wi.getCase();
 		
 		setName(getNewName());
 	}
@@ -30,15 +30,15 @@ public class DepartureEvent extends SimEvent {
 	public void invoke(){
 		Simulator sim = getSim();
 		double time = getTime();
-		ResourceUtilization ru = sim.getResUtil();
+		/*ResourceUtilization ru = sim.getResUtil();
 		
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Departure.Info"), new Object[] {c.getId(), server.getName(), server.getId()});
 		
-		server.updateUtilStats(time, sim.getTimeOfLastEvent());
+//		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 		
 		if (!(server.getQueue().isEmpty())){
 			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Queue.Content") + server.printQueue(), new Object[] {server.getName(), server.getId()});
-			Case c2 = server.dequeue().get_case();
+			Case c2 = server.dequeue().getCase();
 //			protocol.info(sim.clckS() + ENTRY.getString("Case # " + c2.getId() + " wurde aus Warteschlange entfernt.");
 			
 			if (sim.getUseResAlloc() == Simulator.RES_NOT_USED){
@@ -63,8 +63,8 @@ public class DepartureEvent extends SimEvent {
 				c.setCopies(copies);
 				c.cpyCnt = 0;
 				c.setTimeOfSplit(time);
+				CaseGenerator cg = sim.getCaseGenerator();
 				for (Server s : nextServer){
-					CaseGenerator cg = sim.getCaseGenerator();
 					int count = cg.getCaseCount() + 1;
 					cg.setCaseCount(count);
 					Case cc = new CaseCopy(count, c);
@@ -105,5 +105,30 @@ public class DepartureEvent extends SimEvent {
 		StartServiceEvent se = new StartServiceEvent(sim, time, act);
 		sim.getEventList().add(se);
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.StartService") + se.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.StopService.ForServer"), new Object[] {server.getName(), server.getId()});
+		*/
+		
+		ArrayList<Server> slist = s.gotoNextServer();
+		
+		if (slist == null){
+			DeathEvent de = new DeathEvent(sim, time, c);
+			sim.enroleEvent(de);
+		} else {
+			if (s instanceof ANDSplitServer){
+				ANDSplitServer as = (ANDSplitServer)s;
+				as.handleSplit(sim, time, c, slist);
+			} else {
+				Server s_ = slist.get(0);
+				WorkItem wi_ = new WorkItem(c, s_);
+				ArrivalEvent ae = new ArrivalEvent(sim, time, wi_);
+				sim.enroleEvent(ae);
+			}
+		}
+		
+		int qd = sim.getQueueDiscipline();
+		
+		if (qd == Simulator.QD_FIFO)
+			s.handleFIFO(time);
+		else
+			s.handleLIFO(time);
 	}
 }

@@ -1,5 +1,6 @@
 package org.woped.quantana.simulation;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -17,15 +18,15 @@ public class StartServiceEvent extends SimEvent {
 	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
 	private Activity act;
-	private Server server;
+	private Server s;
 	private Case c;
 	private Resource r;
 	
 	public StartServiceEvent(Simulator sim, double time, Activity a) {//Server server, Case c, Resource r){
 		super(sim, time);
 		act = a;
-		this.server = a.getServer();
-		this.c = a.get_case();
+		this.s = a.getServer();
+		this.c = a.getCase();
 		this.r = a.getResource();
 		
 		setName(getNewName());
@@ -34,14 +35,14 @@ public class StartServiceEvent extends SimEvent {
 	public void invoke(){
 		Simulator sim = getSim();
 		double time = getTime();
-		ResourceUtilization ru = sim.getResUtil();
+		/*ResourceUtilization ru = sim.getResUtil();
 
 		String s = sim.clckS() + ENTRY.getString("Sim.StartService.Info.A");
 		if (r != null) s += ENTRY.getString("Sim.StartService.Info.B") + r.getName() + ENTRY.getString("Sim.StartService.Info.C");
 		else s += ENTRY.getString("Sim.StartService.Info.D");
 		protocol.log(Level.INFO, s, new Object[] {c.getId(), server.getName(), server.getId()});
 
-		server.updateUtilStats(time, sim.getTimeOfLastEvent());
+//		server.updateUtilStats(time, sim.getTimeOfLastEvent());
 
 		server.setStatus(Server.STATUS_BUSY);
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Server.Busy"), new Object[] {server.getName(), server.getId()});
@@ -82,13 +83,13 @@ public class StartServiceEvent extends SimEvent {
 				}
 				st /= orig.getCopies();
 				double wt = time - orig.getTimeOfSplit() - st;
-				orig.setTimeService(st);
-				orig.setTimeWait(wt);
+				orig.setTimeService(orig.getTimeService()+st);
+				orig.setTimeWait(orig.getTimeWait()+wt);
 
 				sim.getCopiedCasesList().remove(orig.getId());
-				orig.setNextServiceTime(server.getNextServTime());
-				double depart = time + orig.getNextServiceTime();
-				orig.setCurrentDepartureTime(depart);
+				orig.setNextServTime(server.getNextServTime());
+				double depart = time + orig.getNextServTime();
+//				orig.setCurrentDepartureTime(depart);
 				
 				if (r != null){
 					ActivityPanel ap = new ActivityPanel(time, depart, server.getName() + " (" + server.getId() + ")", r.getName(), orig.getId(), r.getColor());
@@ -116,13 +117,13 @@ public class StartServiceEvent extends SimEvent {
 			}
 		} else {
 			c.setTimeWait(c.getTimeWait() + wait);
-			c.setTimeService(c.getTimeService() + c.getNextServiceTime());
+			c.setTimeService(c.getTimeService() + c.getNextServTime());
 			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Time.Wait.Accumulated") + String.format("%,.2f", c.getTimeService()), c.getId());
 			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Time.Service.Accumulated") + String.format("%,.2f", c.getTimeService()), c.getId());
 
-			c.setNextServiceTime(server.getNextServTime());
-			double depart = time + c.getNextServiceTime();
-			c.setCurrentDepartureTime(depart);
+			c.setNextServTime(server.getNextServTime());
+			double depart = time + c.getNextServTime();
+//			c.setCurrentDepartureTime(depart);
 			
 			if (r != null){
 				ActivityPanel ap;
@@ -148,5 +149,52 @@ public class StartServiceEvent extends SimEvent {
 
 		sim.setTimeOfLastEvent(getTime());
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent") + String.format("%,.2f", time));
+		*/
+		
+		s.setStatus(Server.STATUS_BUSY);
+		
+		if (s instanceof ANDJoinServer){
+			ANDJoinServer aj = (ANDJoinServer)s;
+			aj.handleJoin(sim, time, c, r);
+		} else {
+			s.updRStats(time, 1);
+			double wait = time - c.getCurrArrivalTime();
+			s.incWaitTime(wait);
+			s.getWaitTimes().add(new Double(wait));
+			
+			if (wait > s.getMaxWaitTime()){
+				s.setMaxWaitTime(wait);
+			}
+			
+			c.addWaitTime(wait);
+			
+			if (r != null){
+				r.setLastStartTime(time);
+			}
+			
+			double serv = s.getNextServTime();
+			double depart = time + serv;
+			c.setNextServTime(serv);
+			
+			if (r != null){
+				ActivityPanel ap;
+				if (c instanceof CaseCopy){
+					int oID = ((CaseCopy)c).getOriginal().getId();
+					Color rc = r.getColor();
+					Color co = new Color(rc.getRed(), rc.getGreen(), rc.getBlue(), ActivityPanel.AP_ALPHA);
+					ap = new ActivityPanel(time, depart, s.getName() + " (" + s.getId() + ")", r.getName(), c, co);
+				} else {
+					ap = new ActivityPanel(time, depart, s.getName() + " (" + s.getId() + ")", r.getName(), c, r.getColor());
+				}
+				
+				sim.getActPanelList().add(ap);
+			}
+			
+			StopServiceEvent sp = new StopServiceEvent(sim, depart, act);
+			sim.enroleEvent(sp);
+		}
+		
+		s.incNumAccess();
+		sim.getTmp().getTxtArea().append("ST: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
 	}
 }
