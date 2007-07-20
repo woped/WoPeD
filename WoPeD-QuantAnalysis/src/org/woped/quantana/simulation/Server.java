@@ -46,12 +46,14 @@ public class Server {
 	
 //	private int lastNumCasesInParallel;  // Anzahl gerade bedienter Fälle, als Sim stoppte
 //	private int lastQueueLength;		 // Anzahl Fälle in Queue, als Simulation stoppte
-	private ArrayList<Double> waitTimes = new ArrayList<Double>(); // speichert die Wartezeiten aller Fälle
+	private ArrayList<Double> waitTimes; // = new ArrayList<Double>(); // speichert die Wartezeiten aller Fälle
 	private int tmpNumCParallel;
 	private double timeQueueChangedLast = 0.0;
 	private double timeNumResChangedLast = 0.0;
-	private ArrayList<Double> qProps = new ArrayList<Double>();
-	private ArrayList<Double> rProps = new ArrayList<Double>();
+	private ArrayList<Double> qProps; // = new ArrayList<Double>();
+	private ArrayList<Double> rProps; // = new ArrayList<Double>();
+	
+	private LinkedList<Resource> reservedResources = new LinkedList<Resource>();
 	
 	private static final ResourceBundle ENTRY = Simulator.getENTRY();
 	
@@ -294,7 +296,6 @@ public class Server {
 		}*/
 		
 		boolean free;
-		int nc;
 		
 		if (sim.getUseResAlloc() == Simulator.RES_USED){
 			boolean g = group.equals("");
@@ -306,8 +307,7 @@ public class Server {
 				if (rl.size() > 0) free = true;
 				else free = false;
 			} else {
-				nc = tmpNumCParallel;
-				free = (nc == 0);
+				free = (tmpNumCParallel == 0);
 			}
 		} else {
 			free = (tmpNumCParallel == 0);
@@ -316,13 +316,13 @@ public class Server {
 		return free;
 	}
 	
-	public boolean isIdle(){
+	/*public boolean isIdle(){
 		if (status == Server.STATUS_IDLE){
 			return true;
 		} else {
 			return false;
 		}
-	}
+	}*/
 
 	public String getGroup() {
 		return group;
@@ -403,12 +403,21 @@ public class Server {
 		numCasesInParallel = 0;
 		numDeparture = 0;
 		queueLength = 0.0;
+		avgNumRes = 0;
 		waitTime = 0.0;
 		avgServiceTime = 0.0;
 		avgNumCasesServing = 0.0;
 		avgNumCasesAtServer = 0.0;
+		timeNumResChangedLast = 0;
+		timeQueueChangedLast = 0;
+		zeroDelays = 0;
 		
 		queue.clear();
+		reservedResources.clear();
+		
+		qProps = new ArrayList<Double>();
+		rProps = new ArrayList<Double>();
+		waitTimes = new ArrayList<Double>();
 	}
 	
 	public String printQueue(){
@@ -522,7 +531,12 @@ public class Server {
 	}
 	
 	public Resource getResource(){
-		return sim.getResUtil().chooseResourceFromFreeResources(group, role); 
+		Resource r = sim.getResUtil().chooseResourceFromFreeResources(group, role);
+		if (r != null){
+			sim.reserveResource(this, r);
+		}
+		
+		return r;
 	}
 	
 	public void updQStats(double time, int type){
@@ -656,5 +670,13 @@ public class Server {
 
 	public ArrayList<Double> getRProps() {
 		return rProps;
+	}
+	
+	public void addReservedResource(Resource r){
+		reservedResources.add(r);
+	}
+	
+	public Resource useReservedResource(){
+		return reservedResources.remove();
 	}
 }

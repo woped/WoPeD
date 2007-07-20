@@ -9,6 +9,8 @@ public class ResourceUtilization {
 	
 	private HashMap<String, Resource> freeResources = new HashMap<String, Resource>();
 	private HashMap<String, Resource> usedResources = new HashMap<String, Resource>();
+	private HashMap<String, Resource> reservedResources = new HashMap<String, Resource>();
+	
 	private ResourceAllocation resAlloc;
 	private Random choice;
 	
@@ -118,8 +120,15 @@ public class ResourceUtilization {
 
 	public void useResource(Resource r){
 		if (r != null){
-			freeResources.remove(r.getName());
+			reservedResources.remove(r.getName());
 			usedResources.put(r.getName(), r);
+		}
+	}
+	
+	public void reserveResource(Resource r){
+		if (r != null){
+			freeResources.remove(r.getName());
+			reservedResources.put(r.getName(), r);
 		}
 	}
 	
@@ -165,5 +174,13 @@ public class ResourceUtilization {
 		if (l > 0) s += ((Resource)fr[l - 1]).getName();
 		
 		return s + "]";
+	}
+
+	public HashMap<String, Resource> getReservedResources() {
+		return reservedResources;
+	}
+
+	public void setReservedResources(HashMap<String, Resource> reservedResources) {
+		this.reservedResources = reservedResources;
 	}
 }

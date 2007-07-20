@@ -783,7 +783,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			String id = k.getId();
 			Node n = origNet[graph.getNodeIdx(id)];
 			n.setNumOfRuns(n.getNumOfRuns() + k.getRuns());
-			n.setIteration(n.getIteration() + 1);
+//			n.setIteration(n.getIteration() + 1);
 		}
 	}
 
@@ -799,6 +799,8 @@ public class CapacityAnalysisDialog extends JDialog {
 		Node s = g.getStartPlace();
 		Node n = new Node(s.getId(), s.getName());
 		n.setTempRuns(lambda);
+		s.incIteration();
+		n.setIteration(s.getIteration());
 		Key start = new Key(n.getId(), lambda);
 		unfoldedNet.put(start, n);
 
@@ -819,6 +821,8 @@ public class CapacityAnalysisDialog extends JDialog {
 					if (!(val < epsilon)) {
 						Node y = new Node(m.getId(), m.getName());
 						y.setTempRuns(val);
+						m.incIteration();
+						y.setIteration(m.getIteration());
 						if (m.isAndJoin())
 							m.setJoinReached(true);
 						np.getSecond().getSuccessor().add(new Arc(y, a.getProbability()));

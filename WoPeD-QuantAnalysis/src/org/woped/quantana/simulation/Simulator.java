@@ -24,7 +24,7 @@ import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.graph.WorkflowNetGraph;
 import org.woped.quantana.gui.ActivityPanel;
-import org.woped.quantana.gui.TmpProtocolDialog;
+import org.woped.quantana.gui.WaitDialog;
 import org.woped.quantana.model.ReportServerStats;
 import org.woped.quantana.model.ReportStats;
 import org.woped.quantana.model.ResourceStats;
@@ -106,13 +106,15 @@ public class Simulator {
 	
 	private int cntArrivalEvents = 0;
 	
-	private TmpProtocolDialog tmp;
+//	private TmpProtocolDialog tmp;
+	private WaitDialog wd;
 	
-	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp, TmpProtocolDialog tmp){
+	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp, WaitDialog wd){ //TmpProtocolDialog tmp){
 		process = wfpn;
 		resUtil = ru;
 		resAlloc = ru.getResAlloc();
-		this.tmp = tmp;
+//		this.tmp = tmp;
+		this.wd = wd;
 		
 		this.numRuns = sp.getRuns();
 		this.typeOfDistForCases = sp.getDistCases();
@@ -182,12 +184,18 @@ public class Simulator {
 		protocol.info(clckS() + ENTRY.getString("Sim.Clock.Init"));
 		clock = 0.0;
 		
+		cntArrivalEvents = 0;
+		
 		// sämtliche Counter zurücksetzen
 		protocol.info(clckS() + ENTRY.getString("Sim.Counters.Reset"));
 		/*avgCasesInSystem = 0.0;
 		caseCount = 0;*/
 		finishedCases = 0;
-		maxNumCasesInSystem = 0;
+		duration = 0;
+		avgProcessServiceTime = 0;
+		avgProcessWaitTime = 0;
+		avgProcessCompletionTime = 0;
+		//maxNumCasesInSystem = 0;
 		//numCasesInSystem = 0;
 		/*throughPut = 0.0;
 		timeOfLastCaseNumChange = 0.0;
@@ -205,9 +213,17 @@ public class Simulator {
 		
 		// alle Ressourcen befreien
 		protocol.info(clckS() + ENTRY.getString("Sim.Resources.Freed"));
-		for (Resource r : resUtil.getUsedResources().values()){
-			resUtil.freeResource(r);
+		for (Object o : resUtil.getReservedResources().values().toArray()){
+			resUtil.useResource((Resource)o);
 		}
+		
+		for (Object o : resUtil.getUsedResources().values().toArray()){
+			resUtil.freeResource((Resource)o);
+		}
+		
+		// alle Resourcen zurücksetzen
+		for (Resource r : resAlloc.getResources().values())
+			r.reset();
 		
 		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Init"));
 		initEventList();
@@ -617,6 +633,11 @@ public class Simulator {
 	public void free(Resource r){
 		resUtil.freeResource(r);
 	}
+	
+	public void reserveResource(Server s, Resource r){
+		resUtil.reserveResource(r);
+		s.addReservedResource(r);
+	}
 
 	/*public PriorityQueue<SimEvent> getEventList() {
 		return eventList;
@@ -968,7 +989,7 @@ public class Simulator {
 		return cntArrivalEvents;
 	}
 
-	public TmpProtocolDialog getTmp() {
-		return tmp;
+	public WaitDialog getWd() {
+		return wd;
 	}
 }

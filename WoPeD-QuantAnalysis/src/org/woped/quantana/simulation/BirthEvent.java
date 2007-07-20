@@ -51,7 +51,7 @@ public class BirthEvent extends SimEvent {
 			ArrivalEvent ae = new ArrivalEvent(sim, c.getSysArrivalTime(), wi);
 			sim.enroleEvent(ae);
 			
-			sim.getTmp().getTxtArea().append("BE: (Case# " + c.getId() + ") erzeugt: " + time + "\n");
+//			sim.getTmp().getTxtArea().append("BE: (Case# " + c.getId() + ") erzeugt: " + time + "\n");
 		}
 	}
 }

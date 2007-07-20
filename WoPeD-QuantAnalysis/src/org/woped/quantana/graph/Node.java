@@ -7,9 +7,13 @@ public class Node {
 	public final static int BUSY		=	2;
 	public final static int FINISHED	=	3;
 	
-	public final static int TYPE_PLACE	=	1;
-	public final static int TYPE_TRANS	=	2;
-	public final static int TYPE_SUBP	=	3;
+	public final static int TYPE_PLACE			=	1;
+	public final static int TYPE_TRANS_SIMPLE	=	2;
+	public final static int TYPE_AND_JOIN		=	3;
+	public final static int TYPE_AND_SPLIT		=	4;
+	public final static int TYPE_XOR_JOIN		=	5;
+	public final static int TYPE_XOR_SPLIT		=	6;
+	public final static int TYPE_SUBP			=	9;
 	
 	private String id;
 	private String name;
@@ -162,6 +166,10 @@ public class Node {
 	public void setIteration(int iteration) {
 		this.iteration = iteration;
 	}
+	
+	public void incIteration(){
+		this.iteration++;
+	}
 
 	/*public double getMultiply() {
 		return multiply;
@@ -229,5 +237,14 @@ public class Node {
 
 	public void setAndSplit(boolean andSplit) {
 		this.andSplit = andSplit;
+	}
+	
+	public boolean isTransition(){
+		return (type == TYPE_TRANS_SIMPLE 
+				|| type == TYPE_AND_JOIN 
+				|| type == TYPE_AND_SPLIT 
+				|| type == TYPE_XOR_JOIN
+				|| type == TYPE_XOR_SPLIT
+				|| type == TYPE_SUBP);
 	}
 }

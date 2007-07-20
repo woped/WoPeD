@@ -195,6 +195,6 @@ public class StartServiceEvent extends SimEvent {
 		}
 		
 		s.incNumAccess();
-		sim.getTmp().getTxtArea().append("ST: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
+		sim.getWd().getTxtArea().append("ST: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
 	}
 }

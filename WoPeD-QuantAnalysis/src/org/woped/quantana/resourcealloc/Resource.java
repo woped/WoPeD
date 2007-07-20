@@ -69,4 +69,9 @@ public class Resource {
 	public void updStats(double time){
 		busyTime += time - lastStartTime;
 	}
+	
+	public void reset(){
+		busyTime = 0;
+		lastStartTime = 0;
+	}
 }

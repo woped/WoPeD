@@ -1,19 +1,22 @@
 package org.woped.quantana.gui;
 
+import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Date;
 
 import javax.swing.JDialog;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class WaitDialog extends JDialog implements Runnable {//, ActionListener {
 
 	private static final long serialVersionUID = 22L;
 
-	private static final int WIDTH = 200;
+	private static final int WIDTH = 500; //200;
 
-	private static final int HEIGHT = 80;
+	private static final int HEIGHT = 400; //80;
 
 	private Thread thr;
 	
@@ -28,10 +31,18 @@ public class WaitDialog extends JDialog implements Runnable {//, ActionListener 
 //	private double tcount = 0;
 //	
 //	private Timer timer;
+		
+	private JTextArea txtArea;
+	private Container contentPane;
 	
 	public WaitDialog(JDialog owner, String msg) {
 		super(owner, msg, false);
 		this.owner = owner;
+		
+		contentPane = this.getContentPane();
+		txtArea = new JTextArea();
+		contentPane.add(new JScrollPane(txtArea));
+		
 		owner.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (screenSize.width - WIDTH) / 2;
@@ -72,4 +83,8 @@ public class WaitDialog extends JDialog implements Runnable {//, ActionListener 
 //	public void actionPerformed(ActionEvent e){
 //		lblTime.setText(++tcount + " sec");
 //	}
+
+	public JTextArea getTxtArea() {
+		return txtArea;
+	}
 }

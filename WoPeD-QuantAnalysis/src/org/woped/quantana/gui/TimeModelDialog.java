@@ -266,7 +266,7 @@ public class TimeModelDialog extends JDialog {
 		tm.setStdUnitMultiple(Double.parseDouble(txtTimeUnit.getText()));
 
 		for (int i = 0; i < nodes.length; i++){
-			if (nodes[i].getType() == Node.TYPE_TRANS || nodes[i].getType() == Node.TYPE_SUBP){
+			if (nodes[i].isTransition() || nodes[i].getType() == Node.TYPE_SUBP){
 				nodes[i].setTime(tm.cv(nodes[i].getTimeUnit(), nodes[i].getTime()));
 				nodes[i].setTimeUnit(tm.getStdUnit());
 			}

@@ -53,6 +53,6 @@ public class DeathEvent extends SimEvent {
 		sim.incAvgProcessCompletionTime(time - c.getSysArrivalTime());
 		
 		sim.incFinishedCases();
-		sim.getTmp().getTxtArea().append("DE: (Case# " + c.getId() + "): " + time + "\n");
+		sim.getWd().getTxtArea().append("DE: (Case# " + c.getId() + "): " + time + "\n");
 	}
 }

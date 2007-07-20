@@ -126,6 +126,7 @@ public class ArrivalEvent extends SimEvent{
 		BirthEvent be = new BirthEvent(sim, time);
 		sim.enroleEvent(be);
 		
+		s.setTmpNumCParallel(s.getNumCasesInParallel());
 		if (s.hasFreeCapacity()){
 			Resource r = s.getResource();
 			sim.bind(r);
@@ -140,7 +141,7 @@ public class ArrivalEvent extends SimEvent{
 		}
 		
 		sim.decCntArrivalEvents();
-		sim.getTmp().getTxtArea().append("AE: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
+		sim.getWd().getTxtArea().append("AE: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
 	}
 	
 	/*public WorkItem getWorkItem(){

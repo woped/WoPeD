@@ -58,7 +58,7 @@ public class WorkflowNetGraph {
 			Node n = nodeArray[i];
 //			cycleArray[i] = new Node(n.getId(), n.getName());
 			//cycleArray[i].successor.clear();
-			if (n.getType() == Node.TYPE_TRANS){
+			if (n.getType() == Node.TYPE_TRANS_SIMPLE){
 				int s = n.getSuccessor().size();
 				int p = n.getPredecessor().size();
 				if (s > 1) n.setAndSplit(true);
@@ -194,19 +194,27 @@ public class WorkflowNetGraph {
 						postNode.setType(Node.TYPE_PLACE);
 						break;
 					case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
-						postNode.setType(Node.TYPE_TRANS);
+						postNode.setType(Node.TYPE_TRANS_SIMPLE);
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						int type = ((OperatorTransitionModel)currentPlace).getOperatorType();
 						if ((type == OperatorTransitionModel.AND_JOIN_TYPE) || (type == OperatorTransitionModel.AND_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)){
 							postNode.setAndJoin(true);
+							postNode.setType(Node.TYPE_AND_JOIN);
 						}
 						if ((type == OperatorTransitionModel.AND_SPLIT_TYPE) || (type == OperatorTransitionModel.AND_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)){
 							postNode.setAndSplit(true);
+							postNode.setType(Node.TYPE_AND_SPLIT);
+						}
+						if ((type == OperatorTransitionModel.XOR_JOIN_TYPE) || (type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)){
+							postNode.setType(Node.TYPE_XOR_JOIN);
+						}
+						if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE) || (type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)){
+							postNode.setType(Node.TYPE_XOR_SPLIT);
 						}
 						break;
 					case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
-						postNode.setType(Node.TYPE_TRANS);
+						postNode.setType(Node.TYPE_TRANS_SIMPLE);
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						break;
@@ -251,11 +259,11 @@ public class WorkflowNetGraph {
 					preNode.setType(Node.TYPE_PLACE);
 					break;
 				case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
-					preNode.setType(Node.TYPE_TRANS);
+					preNode.setType(Node.TYPE_TRANS_SIMPLE);
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;
 				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
-					preNode.setType(Node.TYPE_TRANS);
+					preNode.setType(Node.TYPE_TRANS_SIMPLE);
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;
 				case AbstractPetriNetModelElement.SUBP_TYPE:
@@ -370,14 +378,13 @@ public class WorkflowNetGraph {
 	}*/
 	
 	public boolean isTransition(String id){
-		int type = nodeArray[getNodeIdx(id)].getType();
-		return ((type == Node.TYPE_TRANS) || (type == Node.TYPE_SUBP));
+		Node n = nodeArray[getNodeIdx(id)];
+		return n.isTransition();
 	}
 	
 	public boolean isTransitionGT0(String id){
 		Node n = nodeArray[getNodeIdx(id)];
-		int type = n.getType();
-		return (((type == Node.TYPE_TRANS) || (type == Node.TYPE_SUBP)) && n.getTime() > 0);
+		return (n.isTransition() && n.getTime() > 0);
 	}
 	
 	public int getNumTransitions(){

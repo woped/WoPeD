@@ -202,7 +202,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	
 	private ArrayList<RunStats> simStatistics;
 	
-	private TmpProtocolDialog tmp = new TmpProtocolDialog(thisDialog);
+//	private TmpProtocolDialog tmp = new TmpProtocolDialog(thisDialog);
 
 	/**
 	 * This is the default constructor
@@ -1080,11 +1080,21 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			ServerTableModel stm = serverTableModel;
 			
 			for (int i = 0; i < stm.getRowCount(); i++){
-				double val = Double.parseDouble(((String)stm.getValueAt(i, 4)));
+				double val;
+				Object o = stm.getValueAt(i, 4);
+				if (o instanceof String)
+					val = Double.parseDouble(((String)o));
+				else
+					val = ((Double)o).doubleValue();
 				val = tm.cv(timeUnit, val);
 				stm.setValueAt(val, i, 4);
 				
-				val = Double.parseDouble(((String)stm.getValueAt(i, 5)));
+				o = stm.getValueAt(i, 5);
+				if (o instanceof String)
+					val = Double.parseDouble((String)o);
+				else
+					val = ((Double)o).doubleValue();
+						
 				val = tm.cv(timeUnit, val);
 				stm.setValueAt(val, i, 5);
 			}
@@ -1239,7 +1249,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			sp.setResUse(Simulator.RES_NOT_USED);
 		}
 
-		sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp, tmp);
+		sim = new Simulator(graph, new ResourceUtilization(resAlloc), sp, wd);
 		sim.start();
 
 		activateDetails();
@@ -1247,7 +1257,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		wd.stop();
 		sim.setDuration(wd.getDuration());
 		
-		tmp.setVisible(true);
+//		tmp.setVisible(true);
 	}
 
 	private void initResourceAlloc() {
