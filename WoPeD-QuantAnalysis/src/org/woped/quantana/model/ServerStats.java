@@ -18,6 +18,7 @@ public class ServerStats {
 	protected ArrayList<Double> wTable;
 	protected int numServedWhenStopped;
 	protected int qLengthWhenStopped;
+	protected double avgServTime;
 	
 	protected String name;
 	protected String id;
@@ -161,5 +162,13 @@ public class ServerStats {
 
 	public void setZeroDelays(int zeroDelays) {
 		this.zeroDelays = zeroDelays;
+	}
+
+	public double getAvgServTime() {
+		return avgServTime;
+	}
+
+	public void setAvgServTime(double avgServTime) {
+		this.avgServTime = avgServTime;
 	}
 }

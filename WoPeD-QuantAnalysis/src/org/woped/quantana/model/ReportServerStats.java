@@ -125,4 +125,8 @@ public class ReportServerStats extends ServerStats {
 	public void incAvgMaxWaitTime(double v){
 		maxWaitTime += v;
 	}
+	
+	public void incAvgServTime(double v){
+		avgServTime += v;
+	}
 }

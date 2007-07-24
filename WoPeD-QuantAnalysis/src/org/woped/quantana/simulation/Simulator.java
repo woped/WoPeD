@@ -101,7 +101,7 @@ public class Simulator {
 	
 	private ArrayList<ActivityPanel> actPanelList = new ArrayList<ActivityPanel>();
 	
-	private ArrayList<RunStats> runStats = new ArrayList<RunStats>();
+	private ArrayList<RunStats> runStats;
 	private ReportStats repStats = new ReportStats();
 	
 	private int cntArrivalEvents = 0;
@@ -148,15 +148,17 @@ public class Simulator {
 //		LoggerManager.info(Constants.QUANTANA_LOGGER, printServerList());
 		protocol.info(clckS() + ENTRY.getString("Sim.ServerList.Generated"));
 		
+		runStats = new ArrayList<RunStats>();
+		
 		protocol.info(clckS() + ENTRY.getString("Sim.Runs") + numRuns);
 		for (int i = 0; i < numRuns; i++){
-			protocol.info(clckS() + ENTRY.getString("Sim.Delimiter"));
-			protocol.log(Level.INFO, clckS() + ENTRY.getString("Sim.Runs.Number"), (i + 1));
+//			protocol.info(clckS() + ENTRY.getString("Sim.Delimiter"));
+//			protocol.log(Level.INFO, clckS() + ENTRY.getString("Sim.Runs.Number"), (i + 1));
 			
-			protocol.info(clckS() + ENTRY.getString("Sim.Init"));
+//			protocol.info(clckS() + ENTRY.getString("Sim.Init"));
 			init(i + 1);
 			
-			protocol.info(clckS() + ENTRY.getString("Sim.Start"));
+//			protocol.info(clckS() + ENTRY.getString("Sim.Start"));
 			while (!shouldStopNow()){
 				protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Finished") + finishedCases);
 				
@@ -172,7 +174,7 @@ public class Simulator {
 			}
 			
 			LoggerManager.info(Constants.QUANTANA_LOGGER, "Report wird erzeugt.");
-			protocol.info(clckS() + ENTRY.getString("Sim.Report.Generated"));
+//			protocol.info(clckS() + ENTRY.getString("Sim.Report.Generated"));
 			finishRun();
 		}
 		
@@ -181,13 +183,13 @@ public class Simulator {
 	
 	private void init(int run){
 
-		protocol.info(clckS() + ENTRY.getString("Sim.Clock.Init"));
+//		protocol.info(clckS() + ENTRY.getString("Sim.Clock.Init"));
 		clock = 0.0;
 		
 		cntArrivalEvents = 0;
 		
 		// sämtliche Counter zurücksetzen
-		protocol.info(clckS() + ENTRY.getString("Sim.Counters.Reset"));
+//		protocol.info(clckS() + ENTRY.getString("Sim.Counters.Reset"));
 		/*avgCasesInSystem = 0.0;
 		caseCount = 0;*/
 		finishedCases = 0;
@@ -206,13 +208,13 @@ public class Simulator {
 		nextEvent = null;
 		
 		// alle Server zurücksetzen
-		protocol.info(clckS() + ENTRY.getString("Sim.Servers.Reset"));
+//		protocol.info(clckS() + ENTRY.getString("Sim.Servers.Reset"));
 		for (Server s : serverList.values()){
 			s.reset();
 		}
 		
 		// alle Ressourcen befreien
-		protocol.info(clckS() + ENTRY.getString("Sim.Resources.Freed"));
+//		protocol.info(clckS() + ENTRY.getString("Sim.Resources.Freed"));
 		for (Object o : resUtil.getReservedResources().values().toArray()){
 			resUtil.useResource((Resource)o);
 		}
@@ -225,7 +227,7 @@ public class Simulator {
 		for (Resource r : resAlloc.getResources().values())
 			r.reset();
 		
-		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Init"));
+//		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Init"));
 		initEventList();
 		
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "Simulation run # " + run + " initialized.");
@@ -240,11 +242,11 @@ public class Simulator {
 		
 		String evt = ENTRY.getString("Sim.Event.Next");
 		if (nextEvent != null) evt += nextEvent.getName();
-		protocol.info(clckS() + evt);
-		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Content") + printEventList());
+//		protocol.info(clckS() + evt);
+//		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Content") + printEventList());
 		
 		// Systemuhr setzen
-		protocol.info(clckS() + ENTRY.getString("Sim.Clock.NextEvent.Set"));
+//		protocol.info(clckS() + ENTRY.getString("Sim.Clock.NextEvent.Set"));
 		if (nextEvent != null) clock = nextEvent.getTime();
 	}
 	
@@ -285,20 +287,32 @@ public class Simulator {
 			s.updQStats(clock, 0);
 			s.updRStats(clock, 0);
 			
-			ServerStats sst = new ServerStats(s.getName(), s.getId());
+//			ServerStats sst = new ServerStats(s.getName(), s.getId());
+			ServerStats sst = sStats.get(s);
+			int nd = s.getNumDeparture();
 			sst.setZeroDelays(s.getZeroDelays());
 			sst.setCalls(s.getNumCalls());
 			sst.setAccesses(s.getNumAccess());
-			sst.setDepartures(s.getNumDeparture());
+			sst.setDepartures(nd);
 			sst.setAvgQLength(s.getQueueLength());
 			sst.setMaxQLength(s.getMaxQLength());
 			sst.setQueueProportions(s.getQProps());
 			sst.setAvgResNumber(s.getAvgNumRes());
 			sst.setMaxResNumber(s.getMaxNumCasesInParallel());
 			sst.setResNumProperties(s.getRProps());
-			sst.setAvgWaitTime(s.getWaitTime() / s.getNumDeparture());
+			
+			if (nd == 0)
+				sst.setAvgWaitTime(0);
+			else
+				sst.setAvgWaitTime(s.getWaitTime() / s.getNumDeparture());
+			
 			sst.setMaxWaitTime(s.getMaxWaitTime());
 			sst.setWTable(s.getWaitTimes());
+			
+			if (nd == 0)
+				sst.setAvgServTime(0);
+			else
+				sst.setAvgServTime(s.getServiceTime() / s.getNumDeparture());
 			
 			sStats.put(s, sst);
 		}
@@ -368,6 +382,7 @@ public class Simulator {
 					rss.incAvgAvgResNumber(ss.getAvgResNumber());
 					rss.incAvgAvgWaitTime(ss.getAvgWaitTime());
 					rss.incAvgMaxWaitTime(ss.getMaxWaitTime());
+					rss.incAvgServTime(ss.getAvgServTime());
 				} else {
 					ReportServerStats rss = new ReportServerStats(ss.getName(), ss.getId());
 					rss.setAvgZeroDelays(ss.getZeroDelays());
@@ -382,6 +397,7 @@ public class Simulator {
 					rss.setAvgResNumber(ss.getAvgResNumber());
 					rss.setAvgWaitTime(ss.getAvgWaitTime());
 					rss.setMaxWaitTime(ss.getMaxWaitTime());
+					rss.setAvgServTime(ss.getAvgServTime());
 					
 					repStats.getServStats().put(s, rss);
 				}
@@ -424,6 +440,7 @@ public class Simulator {
 			rss.setAvgResNumber(rss.getAvgResNumber() / numRuns);
 			rss.setAvgWaitTime(rss.getAvgWaitTime() / numRuns);
 			rss.setMaxWaitTime(rss.getMaxWaitTime() / numRuns);
+			rss.setAvgServTime(rss.getAvgServTime() / numRuns);
 		}
 		
 		for (ResourceStats rrs : repStats.getResStats().values()){
@@ -967,6 +984,22 @@ public class Simulator {
 	
 	public void addToCopyList(Case c){
 		copiedCasesList.put(c.getId(), c);
+	}
+	
+	/*public boolean containsOrig(CaseCopy copy){
+		return copiedCasesList.containsKey(copy.getId());
+	}*/
+	
+	public Case getOrig(CaseCopy copy){
+		int id = copy.getOriginal().getId();
+		if (copiedCasesList.containsKey(id))
+			return copiedCasesList.get(id);
+		else
+			return null;
+	}
+	
+	public void removeOrig(Case c){
+		copiedCasesList.remove(c.getId());
 	}
 	
 	public Iterator<SimEvent> getEventListIterator(){

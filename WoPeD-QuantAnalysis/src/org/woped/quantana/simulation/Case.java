@@ -11,6 +11,8 @@ public class Case {
 	private double nextServTime = 0.0;
 	private double timeOfSplit = 0.0;
 	
+	private boolean joinFinished = true;
+	
 	private int copies = 0;
 	private int cpyCnt = 0;
 	
@@ -125,5 +127,13 @@ public class Case {
 	
 	public boolean copiesCollected(){
 		return cpyCnt == copies;
+	}
+
+	public boolean isJoinFinished() {
+		return joinFinished;
+	}
+
+	public void setJoinFinished(boolean joinFinished) {
+		this.joinFinished = joinFinished;
 	}
 }

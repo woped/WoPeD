@@ -2,8 +2,8 @@ package org.woped.quantana.simulation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
-import org.woped.quantana.gui.ActivityPanel;
 import org.woped.quantana.resourcealloc.Resource;
 
 public class ANDJoinServer extends Server {
@@ -11,59 +11,72 @@ public class ANDJoinServer extends Server {
 	private HashMap<Case, ArrayList<CaseCopy>> copyList = new HashMap<Case, ArrayList<CaseCopy>>();
 	
 	private int branches = 0;
+
+	private HashMap<Integer,Case> queue = new HashMap<Integer,Case>();
 	
 	public ANDJoinServer(Simulator sim, String id, String name, ProbabilityDistribution dist){
 		super(sim, id, name, dist);
 	}
 	
-	public void handleJoin(Simulator sim, double time, Case c, Resource r){
-		CaseCopy copy = (CaseCopy)c;
+	public void handleJoin(Simulator sim, double time, CaseCopy copy){
 		ArrayList<CaseCopy> list;
-		
-		Case orig = sim.getCopiedCasesList().get(copy.getOriginal().getId());
-		orig.incCpyCnt();
-		
-		if (branches == 0){
-			branches = orig.getCopies();
-		}
-		
-		if (orig.copiesCollected()){
-			list = copyList.get(orig);
-			int sz = list.size();
-			double st = copy.getTimeService();
-			
-			for (int i = 0; i < sz; i++){
-				Case cs = list.get(i);
-				st += cs.getTimeService();
+
+		Case orig = sim.getOrig(copy);
+		if (orig != null){
+			sim.removeOrig(orig);
+			updQStats(time, 1);
+			enqueue(orig);
+			orig.setCurrArrivalTime(time);
+			orig.incCpyCnt();
+			incNumCalls();
+			if (branches == 0){
+				branches = orig.getCopies();
 			}
-			
-			st /= orig.getCopies();
-			double wt = time - orig.getTimeOfSplit() - st;
-			orig.addServiceTime(st);
-			orig.addWaitTime(wt);
-			getWaitTimes().add(getWaitTimeServer(orig, time));
-			sim.getCopiedCasesList().remove(orig.getId());
-			orig.setNextServTime(getNextServTime());
-			
-			double depart = time + orig.getNextServTime();
-			if (r != null){
-				ActivityPanel ap = new ActivityPanel(time, depart, getName() + " (" + getId() + ")", r.getName(), orig, r.getColor());
-				sim.getActPanelList().add(ap);
-			}
-			
-			Activity act = new Activity(orig, this, r);
-			StopServiceEvent sp = new StopServiceEvent(sim, time, act);
-			sim.enroleEvent(sp);
-			updRStats(time, 1);
-		} else {
-			if (copyList.containsKey(orig)){
-				list = copyList.get(orig);
-			} else {
-				list = new ArrayList<CaseCopy>();
-				copyList.put(orig, list);
-			}
-			
+			list = new ArrayList<CaseCopy>();
 			list.add(copy);
+			copyList.put(orig, list);
+		} else {
+			orig = queue.get(copy.getOriginal().getId());
+			orig.incCpyCnt();
+			if (orig.copiesCollected()){
+				list = copyList.get(orig);
+				int sz = list.size();
+				double st = copy.getTimeService();
+
+				for (int i = 0; i < sz; i++){
+					Case cs = list.get(i);
+					st += cs.getTimeService();
+				}
+
+				st /= orig.getCopies();
+				double wt = time - orig.getTimeOfSplit() - st;
+				orig.addServiceTime(st);
+				orig.addWaitTime(wt);
+
+//				orig.setNextServTime(getNextServTime());
+//				double depart = time + orig.getNextServTime();
+				
+				setTmpNumCParallel(this.getNumCasesInParallel());
+
+				if (hasFreeCapacity()){
+					Resource r = getResource();
+					sim.bind(r);
+					Activity act = new Activity(orig, this, r);
+					StartServiceEvent ste = new StartServiceEvent(sim, time, act);
+					sim.enroleEvent(ste);
+					incZeroDelays();
+					incTmpNumCParallel();
+					
+					updQStats(time, 1);
+					queue.remove(orig.getId());
+					orig.setJoinFinished(true);
+				} else {
+					
+				}
+			} else {
+				list = copyList.get(orig);
+				list.add(copy);
+			}
 		}
 	}
 
@@ -83,7 +96,7 @@ public class ANDJoinServer extends Server {
 		this.branches = branches;
 	}
 	
-	private Double getWaitTimeServer(Case o, double time){
+	/*private Double getWaitTimeServer(Case o, double time){
 		ArrayList<CaseCopy> list = copyList.get(o);
 		double at = time;
 		for (CaseCopy c : list){
@@ -92,5 +105,33 @@ public class ANDJoinServer extends Server {
 		}
 		
 		return new Double(time - at);
+	}*/
+	
+	public void enqueue(Case c){
+		queue.put(c.getId(), c);
+	}
+	
+	public void dequeueAJ(Simulator sim, double time){
+		Iterator<Case> it = queue.values().iterator();
+		setTmpNumCParallel(getNumCasesInParallel());
+		while(it.hasNext()){
+			Case c = it.next();
+			if (c.isJoinFinished()){
+				boolean cap = hasFreeCapacity();
+				if (cap){
+					Resource r = getResource();
+					updQStats(time, -1);
+					queue.remove(c.getId());
+					Activity act = new Activity(c, this, r);
+					StartServiceEvent st = new StartServiceEvent(sim, time, act);
+					sim.enroleEvent(st);
+					incTmpNumCParallel();
+				}
+			}
+		}
+	}
+	
+	public int getAJQueueLength(){
+		return queue.size();
 	}
 }

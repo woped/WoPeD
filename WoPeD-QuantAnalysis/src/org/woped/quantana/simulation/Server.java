@@ -25,7 +25,7 @@ public class Server {
 	private double queueLength = 0.0;			// Q(t)
 	private double maxWaitTime = 0.0;
 	private double waitTime = 0.0;
-	private double avgServiceTime = 0.0;
+	private double serviceTime = 0.0;
 	private double avgNumCasesServing = 0.0;
 	private double avgNumCasesAtServer = 0.0;
 	private int maxQLength = 0;
@@ -405,7 +405,7 @@ public class Server {
 		queueLength = 0.0;
 		avgNumRes = 0;
 		waitTime = 0.0;
-		avgServiceTime = 0.0;
+		serviceTime = 0.0;
 		avgNumCasesServing = 0.0;
 		avgNumCasesAtServer = 0.0;
 		timeNumResChangedLast = 0;
@@ -447,12 +447,16 @@ public class Server {
 		this.avgNumCasesServing = avgNumCasesServing;
 	}
 
-	public double getAvgServiceTime() {
-		return avgServiceTime;
+	public double getServiceTime() {
+		return serviceTime;
 	}
 
-	public void setAvgServiceTime(double avgServiceTime) {
-		this.avgServiceTime = avgServiceTime;
+	public void setServiceTime(double serviceTime) {
+		this.serviceTime = serviceTime;
+	}
+	
+	public void incServiceTime(double time){
+		serviceTime += time;
 	}
 
 	/*public void doService(){
@@ -540,7 +544,12 @@ public class Server {
 	}
 	
 	public void updQStats(double time, int type){
-		int qlen = queue.size();
+		int qlen; // = queue.size();
+		if (this instanceof ANDJoinServer){
+			qlen = ((ANDJoinServer)this).getAJQueueLength();
+		} else {
+			qlen = this.queue.size();
+		}
 		double tnew = (time - timeQueueChangedLast)/time;
 		queueLength = (1 - tnew)*queueLength + tnew*qlen;
 		
@@ -608,13 +617,20 @@ public class Server {
 		
 		while (cap && !qe){
 			Resource r = getResource();
-			Case c = dequeue();
-			Activity act = new Activity(c, this, r);
-			StartServiceEvent st = new StartServiceEvent(sim, time, act);
-			sim.enroleEvent(st);
-			tmpNumCParallel++;
-			cap = hasFreeCapacity();
-			qe = queue.isEmpty();
+			Case c; // = dequeue();
+			
+			if (this instanceof ANDJoinServer){
+				ANDJoinServer aj = (ANDJoinServer)this;
+				aj.dequeueAJ(sim, time);
+			} else {
+				c = dequeue();
+				Activity act = new Activity(c, this, r);
+				StartServiceEvent st = new StartServiceEvent(sim, time, act);
+				sim.enroleEvent(st);
+				tmpNumCParallel++;
+				cap = hasFreeCapacity();
+				qe = queue.isEmpty();
+			}
 		}
 	}
 	
@@ -646,13 +662,20 @@ public class Server {
 		
 		while (cap && !qe){
 			Resource r = getResource();
-			Case c = dequeue();
-			Activity act = new Activity(c, this, r);
-			StartServiceEvent st = new StartServiceEvent(sim, time, act);
-			sim.enroleEvent(st);
-			tmpNumCParallel++;
-			cap = hasFreeCapacity();
-			qe = queue.isEmpty();
+			Case c; // = dequeue();
+
+			if (this instanceof ANDJoinServer){
+				ANDJoinServer aj = (ANDJoinServer)this;
+				aj.dequeueAJ(sim, time);
+			} else {
+				c = dequeue();
+				Activity act = new Activity(c, this, r);
+				StartServiceEvent st = new StartServiceEvent(sim, time, act);
+				sim.enroleEvent(st);
+				tmpNumCParallel++;
+				cap = hasFreeCapacity();
+				qe = queue.isEmpty();
+			}
 		}
 	}
 

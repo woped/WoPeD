@@ -10,6 +10,7 @@ public class ANDSplitServer extends Server {
 	
 	public void handleSplit(Simulator sim, double time, Case c, ArrayList<Server> slist){
 		sim.addToCopyList(c);
+		c.setJoinFinished(false);
 		int copies = slist.size();
 		c.setCopies(copies);
 		c.setCpyCnt(0);

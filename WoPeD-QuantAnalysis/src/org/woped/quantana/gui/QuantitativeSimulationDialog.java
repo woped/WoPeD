@@ -1149,12 +1149,14 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		
 		simStatistics = sim.getRunStats();
 		RunStats rs = simStatistics.get(simStatistics.size() - 1);
+		double l_ = lambda / period;
 		
-		stm.setValueAt(String.format("%,.2f", rs.getProcCompTime()*lambda), 0, 1);
-		stm.setValueAt(String.format("%,.2f", rs.getProcWaitTime()*lambda), 0, 2);
-		stm.setValueAt(String.format("%,.2f", rs.getProcServTime()*lambda), 0, 3);
+		stm.setValueAt(String.format("%,.2f", rs.getProcCompTime()*l_), 0, 1);
+		stm.setValueAt(String.format("%,.2f", rs.getProcWaitTime()*l_), 0, 2);
+		stm.setValueAt(String.format("%,.2f", rs.getProcServTime()*l_), 0, 3);
 		stm.setValueAt(String.format("%,.2f", rs.getProcCompTime()), 0, 4);
-		stm.setValueAt(String.format("%,.2f", rs.getProcWaitTime()), 0, 5);
+//		stm.setValueAt(String.format("%,.2f", rs.getProcWaitTime()), 0, 5);
+		stm.setValueAt(String.format("%,.2f", rs.getProcCompTime()-rs.getProcServTime()), 0, 5);
 		
 		for (int i = 1; i <= numServers; i++) {
 			String id = produceID((String) stm.getValueAt(i, 0));
@@ -1164,8 +1166,10 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()+sst.getAvgResNumber()), i, 1);
 			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()), i, 2);
 			stm.setValueAt(String.format("%,.2f", sst.getAvgResNumber()), i, 3);
-			stm.setValueAt(String.format("%,.2f", (sst.getAvgQLength()+sst.getAvgResNumber())/lambda), i, 4);
-			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()/lambda), i, 5);
+//			stm.setValueAt(String.format("%,.2f", (sst.getAvgQLength()+sst.getAvgResNumber())/l_), i, 4);
+			stm.setValueAt(String.format("%,.2f", sst.getAvgServTime()+sst.getAvgWaitTime()), i, 4);
+			stm.setValueAt(String.format("%,.2f", sst.getAvgWaitTime()), i, 5);
+//			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()/l_), i, 5);
 		}
 		
 		for (int i = 0; i < resObjNum; i++) {

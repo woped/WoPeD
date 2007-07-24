@@ -152,48 +152,43 @@ public class StartServiceEvent extends SimEvent {
 		*/
 		
 		s.setStatus(Server.STATUS_BUSY);
-		
-		if (s instanceof ANDJoinServer){
-			ANDJoinServer aj = (ANDJoinServer)s;
-			aj.handleJoin(sim, time, c, r);
-		} else {
-			s.updRStats(time, 1);
-			double wait = time - c.getCurrArrivalTime();
-			s.incWaitTime(wait);
-			s.getWaitTimes().add(new Double(wait));
-			
-			if (wait > s.getMaxWaitTime()){
-				s.setMaxWaitTime(wait);
-			}
-			
-			c.addWaitTime(wait);
-			
-			if (r != null){
-				r.setLastStartTime(time);
-			}
-			
-			double serv = s.getNextServTime();
-			double depart = time + serv;
-			c.setNextServTime(serv);
-			
-			if (r != null){
-				ActivityPanel ap;
-				if (c instanceof CaseCopy){
-					int oID = ((CaseCopy)c).getOriginal().getId();
-					Color rc = r.getColor();
-					Color co = new Color(rc.getRed(), rc.getGreen(), rc.getBlue(), ActivityPanel.AP_ALPHA);
-					ap = new ActivityPanel(time, depart, s.getName() + " (" + s.getId() + ")", r.getName(), c, co);
-				} else {
-					ap = new ActivityPanel(time, depart, s.getName() + " (" + s.getId() + ")", r.getName(), c, r.getColor());
-				}
-				
-				sim.getActPanelList().add(ap);
-			}
-			
-			StopServiceEvent sp = new StopServiceEvent(sim, depart, act);
-			sim.enroleEvent(sp);
+
+		s.updRStats(time, 1);
+		double wait = time - c.getCurrArrivalTime();
+		s.incWaitTime(wait);
+		s.getWaitTimes().add(new Double(wait));
+
+		if (wait > s.getMaxWaitTime()){
+			s.setMaxWaitTime(wait);
 		}
-		
+
+		c.addWaitTime(wait);
+
+		if (r != null){
+			r.setLastStartTime(time);
+		}
+
+		double serv = s.getNextServTime();
+		double depart = time + serv;
+		c.setNextServTime(serv);
+
+		if (r != null){
+			ActivityPanel ap;
+			if (c instanceof CaseCopy){
+				int oID = ((CaseCopy)c).getOriginal().getId();
+				Color rc = r.getColor();
+				Color co = new Color(rc.getRed(), rc.getGreen(), rc.getBlue(), ActivityPanel.AP_ALPHA);
+				ap = new ActivityPanel(time, depart, s.getName() + " (" + s.getId() + ")", r.getName(), c, co);
+			} else {
+				ap = new ActivityPanel(time, depart, s.getName() + " (" + s.getId() + ")", r.getName(), c, r.getColor());
+			}
+
+			sim.getActPanelList().add(ap);
+		}
+
+		StopServiceEvent sp = new StopServiceEvent(sim, depart, act);
+		sim.enroleEvent(sp);
+
 		s.incNumAccess();
 		sim.getWd().getTxtArea().append("ST: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
 	}

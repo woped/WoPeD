@@ -95,6 +95,7 @@ public class StopServiceEvent extends SimEvent {
 		sim.enroleEvent(dp);
 		
 		s.incNumDeparture();
+		s.incServiceTime(c.getNextServTime());
 		c.updServTime();
 		sim.getWd().getTxtArea().append("SP: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
 	}
