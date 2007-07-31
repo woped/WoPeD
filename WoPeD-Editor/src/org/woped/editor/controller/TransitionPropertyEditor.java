@@ -162,6 +162,16 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
     private JPanel                buttonPanel                   = null;
     private JButton               buttonOk                      = null;
     private JButton               buttonCancel                  = null;
+    
+    public static int etOK = 0;
+    public static int etCancel = 1;
+    private int exitType = etCancel;
+    
+    //! Returns the type of exit button that was pressed
+    public int getExitType()
+    {
+    	return exitType;
+    }
 
     public TransitionPropertyEditor(Frame owner, TransitionModel transition, EditorVC editor)
     {
@@ -1348,6 +1358,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
                         || !selectedRole.equals(ROLE_NONE) && !selectedGroup.equals(GROUP_NONE))
                     {
                         apply();
+                        exitType = etOK;
                         TransitionPropertyEditor.this.dispose();
                     }
                     else
@@ -1377,6 +1388,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener
             {
                 public void actionPerformed(ActionEvent e)
                 {
+                    exitType = etCancel;                	
                     TransitionPropertyEditor.this.dispose();
                 }
             });
