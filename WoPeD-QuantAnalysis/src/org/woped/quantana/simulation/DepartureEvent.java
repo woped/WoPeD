@@ -107,11 +107,14 @@ public class DepartureEvent extends SimEvent {
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.StartService") + se.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.StopService.ForServer"), new Object[] {server.getName(), server.getId()});
 		*/
 		
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Departure.Info"), new Object[] {c.getId(), s.getName(), s.getId()});
+		
 		ArrayList<Server> slist = s.gotoNextServer();
 		
 		if (slist == null){
 			DeathEvent de = new DeathEvent(sim, time, c);
 			sim.enroleEvent(de);
+			protocol.info(sim.clckS() + ENTRY.getString("Sim.Event.Death") + de.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.Generated"));
 		} else {
 			if (s instanceof ANDSplitServer){
 				ANDSplitServer as = (ANDSplitServer)s;
@@ -121,6 +124,7 @@ public class DepartureEvent extends SimEvent {
 				WorkItem wi_ = new WorkItem(c, s_);
 				ArrivalEvent ae = new ArrivalEvent(sim, time, wi_);
 				sim.enroleEvent(ae);
+				protocol.info(sim.clckS() + ENTRY.getString("Sim.Event.Arrival") + ae.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.Generated"));
 			}
 		}
 		

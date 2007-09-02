@@ -46,10 +46,13 @@ public class BirthEvent extends SimEvent {
 		
 		if (sim.getCntArrivalEvents() < Simulator.LIMIT_EVENT_ARRIVAL){
 			Case c = cg.generateNextCase();
+			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Birth.Info") + String.format("%,.2f", c.getSysArrivalTime()), c.getId());
+			
 			Server s = sim.getStartServer();
 			WorkItem wi = new WorkItem(c, s);
 			ArrivalEvent ae = new ArrivalEvent(sim, c.getSysArrivalTime(), wi);
 			sim.enroleEvent(ae);
+			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.Arrival") + ae.getName() + ENTRY.getString("Sim.Generated.Event"), c.getId());
 			
 //			sim.getTmp().getTxtArea().append("BE: (Case# " + c.getId() + ") erzeugt: " + time + "\n");
 		}

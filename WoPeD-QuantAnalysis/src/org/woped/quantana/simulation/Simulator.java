@@ -68,7 +68,7 @@ public class Simulator {
 	private SeedGenerator seedGenerator;
 	private int numRuns;
 	private double clock;
-	private int maxNumCasesInSystem = 0;
+//	private int maxNumCasesInSystem = 0;
 //	private int caseCount = 0;
 	private int finishedCases = 0;
 	/*private double avgCasesInSystem = 0.0;
@@ -152,15 +152,15 @@ public class Simulator {
 		
 		protocol.info(clckS() + ENTRY.getString("Sim.Runs") + numRuns);
 		for (int i = 0; i < numRuns; i++){
-//			protocol.info(clckS() + ENTRY.getString("Sim.Delimiter"));
-//			protocol.log(Level.INFO, clckS() + ENTRY.getString("Sim.Runs.Number"), (i + 1));
+			protocol.info(clckS() + ENTRY.getString("Sim.Delimiter"));
+			protocol.log(Level.INFO, clckS() + ENTRY.getString("Sim.Runs.Number"), (i + 1));
 			
-//			protocol.info(clckS() + ENTRY.getString("Sim.Init"));
+			protocol.info(clckS() + ENTRY.getString("Sim.Init"));
 			init(i + 1);
 			
-//			protocol.info(clckS() + ENTRY.getString("Sim.Start"));
+			protocol.info(clckS() + ENTRY.getString("Sim.Start"));
 			while (!shouldStopNow()){
-				protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Finished") + finishedCases);
+//				protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Finished") + finishedCases);
 				
 				timing();
 				
@@ -174,7 +174,7 @@ public class Simulator {
 			}
 			
 			LoggerManager.info(Constants.QUANTANA_LOGGER, "Report wird erzeugt.");
-//			protocol.info(clckS() + ENTRY.getString("Sim.Report.Generated"));
+			protocol.info(clckS() + ENTRY.getString("Sim.Report.Generated"));
 			finishRun();
 		}
 		
@@ -599,13 +599,13 @@ public class Simulator {
 		this.clock = clock;
 	}
 	
-	public int getMaxNumCasesInSystem() {
+	/*public int getMaxNumCasesInSystem() {
 		return maxNumCasesInSystem;
 	}
 
 	public void setMaxNumCasesInSystem(int maxNumCasesInSystem) {
 		this.maxNumCasesInSystem = maxNumCasesInSystem;
-	}
+	}*/
 
 	public int getQueueDiscipline() {
 		return queueDiscipline;
@@ -1024,5 +1024,13 @@ public class Simulator {
 
 	public WaitDialog getWd() {
 		return wd;
+	}
+	
+	public ReportStats getReportStats(){
+		return repStats;
+	}
+
+	public double getPeriod() {
+		return period;
 	}
 }

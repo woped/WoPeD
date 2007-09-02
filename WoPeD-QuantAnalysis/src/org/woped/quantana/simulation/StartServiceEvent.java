@@ -151,6 +151,11 @@ public class StartServiceEvent extends SimEvent {
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent") + String.format("%,.2f", time));
 		*/
 		
+		String x = sim.clckS() + ENTRY.getString("Sim.StartService.Info.A");
+		if (r != null) x += ENTRY.getString("Sim.StartService.Info.B") + r.getName() + ENTRY.getString("Sim.StartService.Info.C");
+		else x += ENTRY.getString("Sim.StartService.Info.D");
+		protocol.log(Level.INFO, x, new Object[] {c.getId(), s.getName(), s.getId()});
+		
 		s.setStatus(Server.STATUS_BUSY);
 
 		s.updRStats(time, 1);
@@ -188,6 +193,11 @@ public class StartServiceEvent extends SimEvent {
 
 		StopServiceEvent sp = new StopServiceEvent(sim, depart, act);
 		sim.enroleEvent(sp);
+		
+		x = sim.clckS() + ENTRY.getString("Sim.Event.StopService") + sp.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId();
+		if (r != null) x  += ENTRY.getString("Sim.Generated.ForResource") + r.getName() + ENTRY.getString("Sim.Event.Generated");
+		else x += ENTRY.getString("Sim.Generated");
+		protocol.info(x);
 
 		s.incNumAccess();
 		sim.getWd().getTxtArea().append("ST: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");

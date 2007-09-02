@@ -32,6 +32,9 @@ public class ArrivalEvent extends SimEvent{
 	public void invoke(){
 		Simulator sim = getSim();
 		double time = getTime();
+		
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Arrival.Info"), new Object[] {c.getId(), s.getName(), s.getId()});
+		
 		/*ResourceUtilization ru = sim.getResUtil();
 
 		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Arrival.Info"), new Object[] {c.getId(), server.getName(), server.getId()});
@@ -130,6 +133,7 @@ public class ArrivalEvent extends SimEvent{
 			s.incNumCalls();
 			BirthEvent be = new BirthEvent(sim, time);
 			sim.enroleEvent(be);
+			protocol.info(sim.clckS() + ENTRY.getString("Sim.Event.Birth") + be.getName() + ENTRY.getString("Sim.Event.Generated"));
 
 			s.setTmpNumCParallel(s.getNumCasesInParallel());
 
@@ -139,16 +143,20 @@ public class ArrivalEvent extends SimEvent{
 				Activity act = new Activity(c, s, r);
 				StartServiceEvent st = new StartServiceEvent(sim, time, act);
 				sim.enroleEvent(st);
+				String x = "";
+				if (r != null) x = r.getName();
+				protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.StartService") + st.getName() + ENTRY.getString("Sim.Generated.Event.Server"), new Object[] {c.getId(), x, s.getName(), s.getId()});
+				
 				s.incZeroDelays();
 				s.incTmpNumCParallel();
 			} else {
 				s.updQStats(time, 1);
 				s.enqueue(c);
 			}
-
-			sim.decCntArrivalEvents();
-			sim.getWd().getTxtArea().append("AE: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
+//			sim.getWd().getTxtArea().append("AE: (Case# " + c.getId() + ", Server: " + s + "): " + time + "\n");
 		}
+
+		sim.decCntArrivalEvents();
 	}
 	
 	/*private void handleANDJoin(){

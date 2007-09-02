@@ -48,11 +48,14 @@ public class DeathEvent extends SimEvent {
 		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent.CaseNum") + String.format("%,.2f", time));
 		*/
 		
+		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Death.Case.Exit") + String.format("%,.2f", time), c.getId());
+		
 		sim.incAvgProcessWaitTime(c.getTimeWait());
 		sim.incAvgProcessServiceTime(c.getTimeService());
 		sim.incAvgProcessCompletionTime(time - c.getSysArrivalTime());
 		
 		sim.incFinishedCases();
-		sim.getWd().getTxtArea().append("DE: (Case# " + c.getId() + "): " + time + "\n");
+		protocol.info(sim.clckS() + ENTRY.getString("Sim.Number.Cases.Finished") + sim.getFinishedCases());
+//		sim.getWd().getTxtArea().append("DE: (Case# " + c.getId() + "): " + time + "\n");
 	}
 }

@@ -89,7 +89,7 @@ public class ExportDialog extends JDialog {
 			btnTable.setPreferredSize(new Dimension(200, 25));
 			btnTable.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e){
-					exportTable();
+//					exportTable();
 				}
 			});
 			constraints.gridx = 0;
@@ -120,7 +120,7 @@ public class ExportDialog extends JDialog {
 			btnResource.setPreferredSize(new Dimension(200, 25));
 			btnResource.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e){
-					exportResource();
+//					exportResource();
 				}
 			});
 			constraints.gridx = 0;
@@ -148,7 +148,7 @@ public class ExportDialog extends JDialog {
 		return buttonPanel;
 	}
 	
-	private void exportTable(){
+	/*private void exportTable(){
 		save(export.getStatsTable());
 	}
 
@@ -158,7 +158,7 @@ public class ExportDialog extends JDialog {
 
 	private void exportResource(){
 		save(export.getResourceStats());
-	}
+	}*/
 	
 	private void save(String text){
 		fileChooser.setCurrentDirectory(dir);

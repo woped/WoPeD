@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.HashMap;
@@ -26,6 +29,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,10 +41,12 @@ import javax.swing.SwingConstants;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
 
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -68,6 +74,7 @@ import org.woped.quantana.simulation.ProbabilityDistribution;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.SimParameters;
 import org.woped.quantana.simulation.Simulator;
+import org.woped.quantana.utilities.ExportStatistics;
 
 public class QuantitativeSimulationDialog extends JDialog implements
 		MouseMotionListener {
@@ -194,6 +201,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	
 	private JButton btnExport;
 	
+	private JButton btnDiagram;
+	
 	private JButton btnColumn[];
 
 	private String[] servNames;
@@ -201,6 +210,16 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private TasksResourcesAllocation tasksAndResources;
 	
 	private ArrayList<RunStats> simStatistics;
+	
+
+	
+	private ExportStatistics export;
+	
+	private JFileChooser fileChooser;
+	
+	private File dir;
+	
+	private final ExtensionFileFilter eff = new ExtensionFileFilter();
 	
 //	private TmpProtocolDialog tmp = new TmpProtocolDialog(thisDialog);
 
@@ -463,7 +482,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 			btnColumn = new JButton[numServers + 1];
 			for (int i = 0; i < btnColumn.length; i++){
-				btnColumn[i] = new JButton("Edit...");
+				btnColumn[i] = new JButton("...");
 				btnColumn[i].setSize(20, 10);
 				btnColumn[i].setEnabled(false);
 				btnColumn[i].setActionCommand(new Integer(i).toString());
@@ -1041,12 +1060,36 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			btnExport.setPreferredSize(new Dimension(120, 25));
 			btnExport.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
-					new ExportDialog(thisDialog);
+//					new ExportDialog(thisDialog);
+					export = new ExportStatistics((QuantitativeSimulationDialog)thisDialog);
+					
+					dir = new File(ConfigurationManager.getConfiguration().getLogdir());
+					
+					fileChooser = new JFileChooser();
+					getFileFilter();
+//					save(export.getStatsTable());
+					save(Integer.parseInt(txtRuns.getText()));
 				}
 			});
 			constraints.gridx = 0;
 			constraints.gridy = 3;
 			buttonPanel.add(btnExport, constraints);
+
+			btnDiagram = new JButton();
+			btnDiagram.setText(Messages.getTitle("QuantAna.Button.Diagram"));
+			btnDiagram.setIcon(Messages.getImageIcon("QuantAna.Button.Diagram"));
+			btnDiagram.setEnabled(false);
+			btnDiagram.setMinimumSize(new Dimension(120, 25));
+			btnDiagram.setMaximumSize(new Dimension(120, 25));
+			btnDiagram.setPreferredSize(new Dimension(120, 25));
+			btnDiagram.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					new ServerStatisticsDialog(thisDialog);
+				}
+			});
+			constraints.gridx = 0;
+			constraints.gridy = 4;
+			buttonPanel.add(btnDiagram, constraints);
 
 			JButton btnClose = new JButton();
 			btnClose.setText(Messages.getTitle("QuantAna.Button.Close"));
@@ -1060,7 +1103,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				}
 			});
 			constraints.gridx = 0;
-			constraints.gridy = 4;
+			constraints.gridy = 5;
 			buttonPanel.add(btnClose, constraints);
 		}
 
@@ -1317,6 +1360,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		}
 		btnProtocol.setEnabled(true);
 		btnExport.setEnabled(true);
+		btnDiagram.setEnabled(true);
 	}
 	
 	public void mouseMoved(MouseEvent e) {
@@ -1406,5 +1450,87 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			System.out.println(e.getActionCommand() + " : "	+ table.getSelectedRow());
 		}
 	}*/
+	
+//	private void save(String text){
+	private void save(int runs){
+		fileChooser.setCurrentDirectory(dir);
+		fileChooser.setMultiSelectionEnabled(false);
+
+		int result = fileChooser.showSaveDialog(this);
+		if (result == JFileChooser.APPROVE_OPTION){
+			String fname = fileChooser.getSelectedFile().getAbsolutePath();
+			dir = fileChooser.getCurrentDirectory();
+			String ext = "";
+			int idx = fname.lastIndexOf(".");
+			if (idx > -1){
+				ext = fname.substring(idx + 1);
+				fname = fname.substring(0, idx);
+			} else {
+				ext = "csv";
+//				fname += "." + ext;
+			}
+			
+			String text = "";
+			
+			if (ext.equals("")) ext = "csv";
+			
+			for (int i = 0; i <= runs; i++){
+				if (i < runs)
+					text = export.getStatsTable(i, false);
+				else
+					text = export.getStatsTable(i, true);
+				
+				try {
+					if (ext.equals("csv")) {
+						FileWriter fw;
+						if (i == runs)
+							fw = new FileWriter(fname + "." + ext);
+						else 
+							fw = new FileWriter(fname + "_" + (i+1) + "." + ext);
+						fw.write(text);
+						fw.close();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	private void getFileFilter(){
+		eff.addExtension("csv");
+		eff.setDescription(Messages.getString("QuantAna.Simulation.Export.FileFilter"));
+		fileChooser.setFileFilter(eff);
+	}
+	
+	class ExtensionFileFilter extends FileFilter {
+
+		private ArrayList<String> extensions = new ArrayList<String>();
+		private String description = " ";
+
+		public void addExtension(String ext){
+			if (!ext.startsWith(".")) ext = "." + ext;
+			extensions.add(ext.toLowerCase());
+		}
+
+		public boolean accept(File f){
+			if (f.isDirectory()) return true;
+
+			String name = f.getName().toLowerCase();
+			for (String ext : extensions)
+				if (name.endsWith(ext))
+					return true;
+
+			return false;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public void setDescription(String description) {
+			this.description = description;
+		}
+	}
 
 } // @jve:decl-index=0:visual-constraint="4,4"

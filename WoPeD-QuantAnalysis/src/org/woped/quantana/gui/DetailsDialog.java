@@ -7,11 +7,15 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Rectangle;
+import java.util.HashMap;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 import org.woped.editor.utilities.Messages;
+import org.woped.quantana.model.ReportServerStats;
+import org.woped.quantana.model.ReportStats;
+import org.woped.quantana.model.ServerStats;
 import org.woped.quantana.simulation.ANDJoinServer;
 import org.woped.quantana.simulation.Server;
 import org.woped.quantana.simulation.Simulator;
@@ -32,9 +36,15 @@ public class DetailsDialog extends JDialog {
 	
 	private Simulator sim;
 	
-	private double clock;
+	private ReportStats repStats;
+	
+//	private double clock;
 	
 	private Server server;
+	
+	private HashMap<Server, ServerStats> servStatsList;
+	
+	private ReportServerStats servStats;
 	
 	private boolean isProcess = false;
 	
@@ -62,10 +72,17 @@ public class DetailsDialog extends JDialog {
 	private JLabel lblDesc_8;
 	private JLabel lblDetail_8;
 	
+	private JLabel lblDesc_9;
+	private JLabel lblDetail_9;
+	
 	public DetailsDialog(Dialog owner, String sname){
 		super(owner, Messages.getString("QuantAna.Simulation.Details") + " " + sname, true);
 		this.owner = owner;
 		servName = sname;
+		
+		sim = ((QuantitativeSimulationDialog)owner).getSimulator();
+		repStats = sim.getReportStats();
+		servStatsList = repStats.getServStats();
 		
 		getServer();
 		
@@ -107,6 +124,10 @@ public class DetailsDialog extends JDialog {
 		lblDesc_8.setPreferredSize(new Dimension(200, 20));
 		lblDetail_8 = new JLabel();
 		lblDetail_8.setPreferredSize(new Dimension(80, 20));
+		lblDesc_9 = new JLabel();
+		lblDesc_9.setPreferredSize(new Dimension(200, 20));
+		lblDetail_9 = new JLabel();
+		lblDetail_9.setPreferredSize(new Dimension(80, 20));
 		
 		contentPane.setLayout(new GridBagLayout());
 		GridBagConstraints constraints = new GridBagConstraints();
@@ -211,40 +232,68 @@ public class DetailsDialog extends JDialog {
 		constraints.gridy = 7;
 		contentPane.add(lblDetail_8, constraints);
 		
+		constraints.weightx = 0;
+		constraints.weighty = 0;
+		constraints.gridx = 0;
+		constraints.gridy = 8;
+		contentPane.add(lblDesc_9, constraints);
+		
+		constraints.weightx = 1;
+		constraints.weighty = 0;
+		constraints.gridx = 1;
+		constraints.gridy = 8;
+		contentPane.add(lblDetail_9, constraints);
+		
 		constraints.weightx = 1;
 		constraints.weighty = 1;
 		constraints.gridx = 0;
-		constraints.gridy = 8;
+		constraints.gridy = 9;
 		contentPane.add(new JLabel(), constraints);
 		
 		if (server == null && isProcess){
 			// Prozess-Statistik
-			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Clock"));
+			/*lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Clock"));
 			lblDetail_1.setText(String.format("%,.2f", sim.getClock()));
 			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.FinishedCases"));
 			lblDetail_2.setText(String.format("%d", sim.getFinishedCases()));
 			lblDesc_3.setText(Messages.getString("QuantAna.Simulation.Details.MaxCasesInSystem"));
-			lblDetail_3.setText(String.format("%d", sim.getMaxNumCasesInSystem()));
+			lblDetail_3.setText(String.format("%d", sim.getMaxNumCasesInSystem()));*/
+			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Clock"));
+			lblDetail_1.setText(String.format("%,.2f", repStats.getDuration()));
+			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.FinishedCases"));
+			lblDetail_2.setText(String.format("%,.2f", repStats.getAvgFinishedCases()));
+			lblDesc_3.setText(Messages.getString("QuantAna.Simulation.Details.Throughput"));
+			lblDetail_3.setText(String.format("%,.2f", repStats.getThroughPut()));
+			lblDesc_4.setText(Messages.getString("QuantAna.Simulation.Details.ProcCompletionTime"));
+			lblDetail_4.setText(String.format("%,.2f", repStats.getProcCompTime()));
+			lblDesc_5.setText(Messages.getString("QuantAna.Simulation.Details.ProcServiceTime"));
+			lblDetail_5.setText(String.format("%,.2f", repStats.getProcServTime()));
+			lblDesc_6.setText(Messages.getString("QuantAna.Simulation.Details.ProcWaitTime"));
+			lblDetail_6.setText(String.format("%,.2f", repStats.getProcWaitTime()));
 		} else if (server != null){
 			// Server-Statistik
-			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Utilization"));
-			lblDetail_1.setText(String.format("%,.2f", server.getAvgNumRes() / clock * 100));
-			int zd = server.getZeroDelays();
+//			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Utilization"));
+//			lblDetail_1.setText(String.format("%,.2f", server.getAvgNumRes() * 100));
+			double zd = servStats.getZeroDelays();//server.getZeroDelays();
 			if (server instanceof ANDJoinServer) zd /= ((ANDJoinServer)server).getBranches();
-			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.ZeroDelays"));
-			lblDetail_2.setText(String.format("%d", zd));
-			lblDesc_3.setText(Messages.getString("QuantAna.Simulation.Details.NumCalls"));
-			lblDetail_3.setText(String.format("%d", server.getNumCalls()));
-			lblDesc_4.setText(Messages.getString("QuantAna.Simulation.Details.NumAccess"));
-			lblDetail_4.setText(String.format("%d", server.getNumAccess()));
-			lblDesc_5.setText(Messages.getString("QuantAna.Simulation.Details.NumDeparture"));
-			lblDetail_5.setText(String.format("%d", server.getNumDeparture()));
-			lblDesc_6.setText(Messages.getString("QuantAna.Simulation.Details.MaxQueueLength"));
-			lblDetail_6.setText(String.format("%d", server.getMaxQLength()));
-			lblDesc_7.setText(Messages.getString("QuantAna.Simulation.Details.MaxCasesParallel"));
-			lblDetail_7.setText(String.format("%d", server.getMaxNumCasesInParallel()));
-			lblDesc_8.setText(Messages.getString("QuantAna.Simulation.Details.MaxWaitTime"));
-			lblDetail_8.setText(String.format("%,.2f", server.getMaxWaitTime()));
+			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.ZeroDelays"));
+			lblDetail_1.setText(String.format("%,.2f", zd));
+			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.NumCalls"));
+			lblDetail_2.setText(String.format("%,.2f", servStats.getAvgCalls()));
+			lblDesc_3.setText(Messages.getString("QuantAna.Simulation.Details.NumAccess"));
+			lblDetail_3.setText(String.format("%,.2f", servStats.getAvgAccesses()));
+			lblDesc_4.setText(Messages.getString("QuantAna.Simulation.Details.NumDeparture"));
+			lblDetail_4.setText(String.format("%,.2f", servStats.getAvgDepartures()));
+			lblDesc_5.setText(Messages.getString("QuantAna.Simulation.Details.MaxQueueLength"));
+			lblDetail_5.setText(String.format("%,.2f", servStats.getAvgMaxQLength()));
+			lblDesc_6.setText(Messages.getString("QuantAna.Simulation.Details.MaxCasesParallel"));
+			lblDetail_6.setText(String.format("%,.2f", servStats.getAvgMaxResNumber()));
+			lblDesc_7.setText(Messages.getString("QuantAna.Simulation.Details.MaxWaitTime"));
+			lblDetail_7.setText(String.format("%,.2f", servStats.getMaxWaitTime()));
+			lblDesc_8.setText(Messages.getString("QuantAna.Simulation.Details.NumServedWhenStopped"));
+			lblDetail_8.setText(String.format("%,.2f", servStats.getAvgNumServedWhenStopped()));
+			lblDesc_9.setText(Messages.getString("QuantAna.Simulation.Details.QLenWhenStopped"));
+			lblDetail_9.setText(String.format("%,.2f", servStats.getAvgQLengthWhenStopped()));
 		}
 		
 		Rectangle bounds = owner.getBounds();
@@ -256,8 +305,8 @@ public class DetailsDialog extends JDialog {
 	
 	private void getServer(){
 		String key = produceID(servName);
-		sim = ((QuantitativeSimulationDialog)owner).getSimulator();
-		clock = sim.getClock();
+//		sim = ((QuantitativeSimulationDialog)owner).getSimulator();
+//		clock = sim.getClock();
 		
 		if (key.equals(Messages.getString("QuantAna.Simulation.Process"))){
 			server = null;
@@ -266,10 +315,12 @@ public class DetailsDialog extends JDialog {
 			isProcess = false;
 			server = sim.getServerList().get(key);
 		}
+		
+		servStats = (ReportServerStats)servStatsList.get(server);
 	}
 	
 	private String produceID(String key) {
-		if (key.equals("Protocol") || key.equals("Process"))
+		if (key.equals(Messages.getString("QuantAna.Simulation.Process")))
 			return key;
 		else
 			return key.substring(key.indexOf("(") + 1, key.indexOf(")"));

@@ -123,8 +123,8 @@ public class ProtocolDialog extends JDialog {
 			buttonPanel = new JPanel();
 			
 			JButton btnOK = new JButton();
-			btnOK.setText(Messages.getTitle("QuantAna.Button.OK"));
-			btnOK.setIcon(Messages.getImageIcon("QuantAna.Button.OK"));
+			btnOK.setText(Messages.getTitle("QuantAna.Button.Close"));
+			btnOK.setIcon(Messages.getImageIcon("QuantAna.Button.Close"));
 			btnOK.setMinimumSize(new Dimension(120, 25));
 			btnOK.setMaximumSize(new Dimension(120, 25));
 			btnOK.setPreferredSize(new Dimension(120, 25));
@@ -146,7 +146,7 @@ public class ProtocolDialog extends JDialog {
 				}
 			});
 			
-			JButton btnPrint = new JButton();
+			/*JButton btnPrint = new JButton();
 			btnPrint.setText(Messages.getTitle("QuantAna.Button.Print"));
 			btnPrint.setIcon(Messages.getImageIcon("QuantAna.Button.Print"));
 			btnPrint.setMinimumSize(new Dimension(120, 25));
@@ -156,7 +156,7 @@ public class ProtocolDialog extends JDialog {
 				public void actionPerformed(ActionEvent event) {
 					print();
 				}
-			});
+			});*/
 			
 			buttonPanel.setLayout(new GridBagLayout());
 			GridBagConstraints constraints = new GridBagConstraints();
@@ -168,15 +168,15 @@ public class ProtocolDialog extends JDialog {
 			
 			constraints.gridx = 0;
 			constraints.gridy = 0;
-			buttonPanel.add(btnOK, constraints);
+			buttonPanel.add(btnSave, constraints);
 			
 			constraints.gridx = 1;
 			constraints.gridy = 0;
-			buttonPanel.add(btnSave, constraints);
+			buttonPanel.add(btnOK, constraints);
 			
-			constraints.gridx = 2;
+			/*constraints.gridx = 2;
 			constraints.gridy = 0;
-			buttonPanel.add(btnPrint, constraints);
+			buttonPanel.add(btnPrint, constraints);*/
 		}
 		
 		return buttonPanel;
@@ -219,7 +219,7 @@ public class ProtocolDialog extends JDialog {
 		}
 	}
 	
-	private void print(){
+	/*private void print(){
 //		txtProtocol.print(getGraphics());
 
 		try {
@@ -232,7 +232,7 @@ public class ProtocolDialog extends JDialog {
 			e.printStackTrace();
 		}
 
-		/*DocFlavor flavor = DocFlavor.STRING.TEXT_PLAIN;
+		DocFlavor flavor = DocFlavor.STRING.TEXT_PLAIN;
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
 //		aset.add(MediaSizeName.ISO_A4);
 		
@@ -248,8 +248,8 @@ public class ProtocolDialog extends JDialog {
 				pj.print(doc, aset);
 			} catch (PrintException e) { 
 			}
-		}*/
-	}
+		}
+	}*/
 	
 	public void getProtocol() {
 

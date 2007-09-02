@@ -12,7 +12,8 @@ public class ANDJoinServer extends Server {
 	
 	private int branches = 0;
 
-	private HashMap<Integer,Case> queue = new HashMap<Integer,Case>();
+//	private HashMap<Integer,Case> queue = new HashMap<Integer,Case>();
+	private HashMap<Integer,Case> caseList = new HashMap<Integer,Case>();
 	
 	public ANDJoinServer(Simulator sim, String id, String name, ProbabilityDistribution dist){
 		super(sim, id, name, dist);
@@ -36,7 +37,7 @@ public class ANDJoinServer extends Server {
 			list.add(copy);
 			copyList.put(orig, list);
 		} else {
-			orig = queue.get(copy.getOriginal().getId());
+			orig = caseList.get(copy.getOriginal().getId());
 			orig.incCpyCnt();
 			if (orig.copiesCollected()){
 				list = copyList.get(orig);
@@ -68,7 +69,7 @@ public class ANDJoinServer extends Server {
 					incTmpNumCParallel();
 					
 					updQStats(time, 1);
-					queue.remove(orig.getId());
+					caseList.remove(orig.getId());
 					orig.setJoinFinished(true);
 				} else {
 					
@@ -108,11 +109,11 @@ public class ANDJoinServer extends Server {
 	}*/
 	
 	public void enqueue(Case c){
-		queue.put(c.getId(), c);
+		caseList.put(c.getId(), c);
 	}
 	
 	public void dequeueAJ(Simulator sim, double time){
-		Iterator<Case> it = queue.values().iterator();
+		Iterator<Case> it = caseList.values().iterator();
 		setTmpNumCParallel(getNumCasesInParallel());
 		while(it.hasNext()){
 			Case c = it.next();
@@ -121,7 +122,7 @@ public class ANDJoinServer extends Server {
 				if (cap){
 					Resource r = getResource();
 					updQStats(time, -1);
-					queue.remove(c.getId());
+					caseList.remove(c.getId());
 					Activity act = new Activity(c, this, r);
 					StartServiceEvent st = new StartServiceEvent(sim, time, act);
 					sim.enroleEvent(st);
@@ -132,6 +133,6 @@ public class ANDJoinServer extends Server {
 	}
 	
 	public int getAJQueueLength(){
-		return queue.size();
+		return caseList.size();
 	}
 }

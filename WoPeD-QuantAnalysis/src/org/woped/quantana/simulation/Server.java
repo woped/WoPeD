@@ -403,13 +403,13 @@ public class Server {
 		numCasesInParallel = 0;
 		numDeparture = 0;
 		queueLength = 0.0;
-		avgNumRes = 0;
+		avgNumRes = 0.0;
 		waitTime = 0.0;
 		serviceTime = 0.0;
 		avgNumCasesServing = 0.0;
 		avgNumCasesAtServer = 0.0;
-		timeNumResChangedLast = 0;
-		timeQueueChangedLast = 0;
+		timeNumResChangedLast = 0.0;
+		timeQueueChangedLast = 0.0;
 		zeroDelays = 0;
 		
 		queue.clear();
@@ -627,6 +627,7 @@ public class Server {
 				Activity act = new Activity(c, this, r);
 				StartServiceEvent st = new StartServiceEvent(sim, time, act);
 				sim.enroleEvent(st);
+				protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.StartService") + st.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.StopService.ForServer"), new Object[] {this.getName(), this.getId()});
 				tmpNumCParallel++;
 				cap = hasFreeCapacity();
 				qe = queue.isEmpty();
@@ -672,6 +673,7 @@ public class Server {
 				Activity act = new Activity(c, this, r);
 				StartServiceEvent st = new StartServiceEvent(sim, time, act);
 				sim.enroleEvent(st);
+				protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.StartService") + st.getName() + ENTRY.getString("Sim.Generated.ForCase") + c.getId() + ENTRY.getString("Sim.StopService.ForServer"), new Object[] {this.getName(), this.getId()});
 				tmpNumCParallel++;
 				cap = hasFreeCapacity();
 				qe = queue.isEmpty();

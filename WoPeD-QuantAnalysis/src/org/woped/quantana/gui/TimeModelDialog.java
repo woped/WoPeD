@@ -120,6 +120,9 @@ public class TimeModelDialog extends JDialog {
 		lblTimeUnit = new JLabel();
 		lblTimeUnit.setText(Messages.getString("QuantAna.Config.TimeUnit"));
 		lblTimeUnit.setAlignmentX(0);
+		lblTimeUnit.setMinimumSize(new Dimension(80, 20));
+		lblTimeUnit.setMaximumSize(new Dimension(80, 20));
+		lblTimeUnit.setPreferredSize(new Dimension(80, 20));
 		txtTimeUnit = new JTextField();
 		txtTimeUnit.setText(tm.getStdUnitMultiple()+"");
 		cboTimeUnit = new JComboBox(Constants.TIMEUNITS);
@@ -231,9 +234,9 @@ public class TimeModelDialog extends JDialog {
 		
 		setTitle(Messages.getTitle("QuantAna.TimeModel"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = screenSize.width > 300 ? 300 : screenSize.width;
+		int width = 330;//screenSize.width > 300 ? 300 : screenSize.width;
 		int x = screenSize.width > width ? (screenSize.width - width)/2 : 0;
-		int height = screenSize.height > 315 ? 315 : screenSize.height;
+		int height = 300;//screenSize.height > 315 ? 315 : screenSize.height;
 		int y = screenSize.height > height  ? (screenSize.height - height)/2 : 0;
 		setBounds(x, y, width, height);
 
