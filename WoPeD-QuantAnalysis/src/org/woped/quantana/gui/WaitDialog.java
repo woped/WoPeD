@@ -10,13 +10,13 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class WaitDialog extends JDialog implements Runnable {//, ActionListener {
+public class WaitDialog extends JDialog implements Runnable {
 
 	private static final long serialVersionUID = 22L;
 
-	private static final int WIDTH = 500; //200;
+	private static final int WIDTH = 200;
 
-	private static final int HEIGHT = 400; //80;
+	private static final int HEIGHT = 80;
 
 	private Thread thr;
 	
@@ -25,12 +25,6 @@ public class WaitDialog extends JDialog implements Runnable {//, ActionListener 
 	private double start;
 	
 	private double finish;
-	
-//	private JLabel lblTime;
-//	
-//	private double tcount = 0;
-//	
-//	private Timer timer;
 		
 	private JTextArea txtArea;
 	private Container contentPane;
@@ -49,19 +43,12 @@ public class WaitDialog extends JDialog implements Runnable {//, ActionListener 
 		int y = (screenSize.height - HEIGHT) / 2;
 		setBounds(x, y, WIDTH, HEIGHT);
 		
-//		lblTime = new JLabel();
-//		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
-//		add(lblTime);
-		
 		setVisible(true);
 	}
 		
 	public void start() {
 		start = new Date().getTime();
-//		timer = new Timer(1000, this);
 		thr = new Thread(this);
-		
-//		timer.start();
 		thr.start();
 	}
 
@@ -71,18 +58,13 @@ public class WaitDialog extends JDialog implements Runnable {//, ActionListener 
 	public void stop() {
 		finish = new Date().getTime();
 		owner.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-		setVisible(false); 
-//		timer.stop();
+		setVisible(false);
 		dispose();
 	}
 	
 	public double getDuration(){
 		return (finish - start);
 	}
-	
-//	public void actionPerformed(ActionEvent e){
-//		lblTime.setText(++tcount + " sec");
-//	}
 
 	public JTextArea getTxtArea() {
 		return txtArea;

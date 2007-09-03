@@ -43,8 +43,4 @@ public class Activity {
 	public void setServer(Server server) {
 		this.server = server;
 	}
-	
-	/*public void startService(){
-		
-	}*/
 }

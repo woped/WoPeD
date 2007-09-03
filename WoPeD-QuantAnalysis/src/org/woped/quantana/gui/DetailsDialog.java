@@ -38,8 +38,6 @@ public class DetailsDialog extends JDialog {
 	
 	private ReportStats repStats;
 	
-//	private double clock;
-	
 	private Server server;
 	
 	private HashMap<Server, ServerStats> servStatsList;
@@ -252,12 +250,6 @@ public class DetailsDialog extends JDialog {
 		
 		if (server == null && isProcess){
 			// Prozess-Statistik
-			/*lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Clock"));
-			lblDetail_1.setText(String.format("%,.2f", sim.getClock()));
-			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.FinishedCases"));
-			lblDetail_2.setText(String.format("%d", sim.getFinishedCases()));
-			lblDesc_3.setText(Messages.getString("QuantAna.Simulation.Details.MaxCasesInSystem"));
-			lblDetail_3.setText(String.format("%d", sim.getMaxNumCasesInSystem()));*/
 			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Clock"));
 			lblDetail_1.setText(String.format("%,.2f", repStats.getDuration()));
 			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.FinishedCases"));
@@ -272,8 +264,6 @@ public class DetailsDialog extends JDialog {
 			lblDetail_6.setText(String.format("%,.2f", repStats.getProcWaitTime()));
 		} else if (server != null){
 			// Server-Statistik
-//			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Utilization"));
-//			lblDetail_1.setText(String.format("%,.2f", server.getAvgNumRes() * 100));
 			double zd = servStats.getZeroDelays();//server.getZeroDelays();
 			if (server instanceof ANDJoinServer) zd /= ((ANDJoinServer)server).getBranches();
 			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.ZeroDelays"));
@@ -305,8 +295,6 @@ public class DetailsDialog extends JDialog {
 	
 	private void getServer(){
 		String key = produceID(servName);
-//		sim = ((QuantitativeSimulationDialog)owner).getSimulator();
-//		clock = sim.getClock();
 		
 		if (key.equals(Messages.getString("QuantAna.Simulation.Process"))){
 			server = null;

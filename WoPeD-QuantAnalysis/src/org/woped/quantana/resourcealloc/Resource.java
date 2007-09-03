@@ -22,8 +22,6 @@ public class Resource {
 
 	public Resource(String name){
 		this.name = name;
-//		roles.add("none");
-//		groups.add("none");
 	}
 
 	public String getName() {

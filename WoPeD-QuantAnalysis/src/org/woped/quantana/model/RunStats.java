@@ -13,8 +13,6 @@ public class RunStats {
 	private double throughPut;
 	private int finishedCases;
 	
-//	private ArrayList<ServerStats> servStats = new ArrayList<ServerStats>();
-//	private ArrayList<ResourceStats> resStats = new ArrayList<ResourceStats>();
 	private HashMap<Server, ServerStats> servStats = new HashMap<Server, ServerStats>();
 	private HashMap<Resource, ResourceStats> resStats = new HashMap<Resource, ResourceStats>();
 	
@@ -57,22 +55,6 @@ public class RunStats {
 	public void setProcWaitTime(double procWaitTime) {
 		this.procWaitTime = procWaitTime;
 	}
-	
-	/*public ArrayList<ResourceStats> getResStats() {
-		return resStats;
-	}
-	
-	public void setResStats(ArrayList<ResourceStats> resStats) {
-		this.resStats = resStats;
-	}
-	
-	public ArrayList<ServerStats> getServStats() {
-		return servStats;
-	}
-	
-	public void setServStats(ArrayList<ServerStats> servStats) {
-		this.servStats = servStats;
-	}*/
 	
 	public double getThroughPut() {
 		return throughPut;

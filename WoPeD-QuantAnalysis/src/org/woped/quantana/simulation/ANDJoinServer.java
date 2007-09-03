@@ -12,7 +12,6 @@ public class ANDJoinServer extends Server {
 	
 	private int branches = 0;
 
-//	private HashMap<Integer,Case> queue = new HashMap<Integer,Case>();
 	private HashMap<Integer,Case> caseList = new HashMap<Integer,Case>();
 	
 	public ANDJoinServer(Simulator sim, String id, String name, ProbabilityDistribution dist){
@@ -53,9 +52,6 @@ public class ANDJoinServer extends Server {
 				double wt = time - orig.getTimeOfSplit() - st;
 				orig.addServiceTime(st);
 				orig.addWaitTime(wt);
-
-//				orig.setNextServTime(getNextServTime());
-//				double depart = time + orig.getNextServTime();
 				
 				setTmpNumCParallel(this.getNumCasesInParallel());
 
@@ -96,17 +92,6 @@ public class ANDJoinServer extends Server {
 	public void setBranches(int branches) {
 		this.branches = branches;
 	}
-	
-	/*private Double getWaitTimeServer(Case o, double time){
-		ArrayList<CaseCopy> list = copyList.get(o);
-		double at = time;
-		for (CaseCopy c : list){
-			double t = c.getCurrArrivalTime();
-			if (t < at) at = t;
-		}
-		
-		return new Double(time - at);
-	}*/
 	
 	public void enqueue(Case c){
 		caseList.put(c.getId(), c);

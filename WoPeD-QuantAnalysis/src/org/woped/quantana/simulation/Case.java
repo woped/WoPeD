@@ -5,9 +5,7 @@ public class Case {
 	private double timeService = 0.0;
 	private double timeWait = 0.0;
 	private double sysArrivalTime = 0.0;
-//	private double sysDepartureTime = 0.0;
 	private double currArrivalTime = 0.0;
-//	private double currDepartureTime = 0.0;
 	private double nextServTime = 0.0;
 	private double timeOfSplit = 0.0;
 	
@@ -50,16 +48,7 @@ public class Case {
 
 	public void setSysArrivalTime(double sysArrivalTime) {
 		this.sysArrivalTime = sysArrivalTime;
-//		this.currArrivalTime = sysArrivalTime;
 	}
-
-	/*public double getSysDepartureTime() {
-		return sysDepartureTime;
-	}
-
-	public void setSysDepartureTime(double sysDepartureTime) {
-		this.sysDepartureTime = sysDepartureTime;
-	}*/
 
 	public double getCurrArrivalTime() {
 		return currArrivalTime;
@@ -76,14 +65,6 @@ public class Case {
 	public void setNextServTime(double nextServTime) {
 		this.nextServTime = nextServTime;
 	}
-
-	/*public double getCurrentDepartureTime() {
-		return currDepartureTime;
-	}
-
-	public void setCurrentDepartureTime(double currentDepartureTime) {
-		this.currDepartureTime = currentDepartureTime;
-	}*/
 
 	public int getCopies() {
 		return copies;

@@ -33,7 +33,6 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 		this.sim = sim;
 		this.time = time;
 		this.protocol = sim.getProtocol();
-//		name = getNewName();
 	}
 
 	public abstract void invoke();
@@ -65,7 +64,6 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 		if (this instanceof BirthEvent) 				return "BIRTH_EVENT";
 		else if (this instanceof ArrivalEvent) 			return "ARRIVAL_EVENT";
 		else if (this instanceof StartServiceEvent) 	return "START_SERVICE_EVENT";
-		else if (this instanceof ResourceFreedEvent)	return "RESOURCE_FREED_EVENT";
 		else if (this instanceof StopServiceEvent) 		return "STOP_SERVICE_EVENT";
 		else if (this instanceof DepartureEvent) 		return "DEPARTURE_EVENT";
 		else if (this instanceof DeathEvent) 			return "DEATH_EVENT";
@@ -73,7 +71,6 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 	}
 	
 	public static int getCount(SimEvent se){
-//		count += 1;
 		
 		if (se instanceof BirthEvent) {
 			cntBT++;
@@ -86,10 +83,6 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 		else if (se instanceof StartServiceEvent) {
 			cntST++;
 			count = cntST;
-		}
-		else if (se instanceof ResourceFreedEvent)	{
-			cntRF++;
-			count = cntRF;
 		}
 		else if (se instanceof StopServiceEvent) {
 			cntSP++;
@@ -116,7 +109,6 @@ public abstract class SimEvent implements Comparable<SimEvent> {
 		if (this instanceof BirthEvent) 				s += "BT" + SimEvent.getCount(this);
 		else if (this instanceof ArrivalEvent) 			s += "AR" + SimEvent.getCount(this);
 		else if (this instanceof StartServiceEvent) 	s += "ST" + SimEvent.getCount(this);
-		else if (this instanceof ResourceFreedEvent)	s += "RF" + SimEvent.getCount(this);
 		else if (this instanceof StopServiceEvent) 		s += "SP" + SimEvent.getCount(this);
 		else if (this instanceof DepartureEvent) 		s += "DP" + SimEvent.getCount(this);
 		else if (this instanceof DeathEvent) 			s += "DT" + SimEvent.getCount(this);

@@ -68,15 +68,7 @@ public class Simulator {
 	private SeedGenerator seedGenerator;
 	private int numRuns;
 	private double clock;
-//	private int maxNumCasesInSystem = 0;
-//	private int caseCount = 0;
 	private int finishedCases = 0;
-	/*private double avgCasesInSystem = 0.0;
-	private double timeOfLastEvent = 0.0;
-	private double timeOfLastCaseNumChange = 0.0;
-	private double throughPut = 0.0;
-	private double caseBusy = 0.0;
-	private double caseWait = 0.0;*/
 	private int typeOfDistForCases = 0;
 	private int typeOfDistForServer = 0;
 	private double caseParam = 0.0;
@@ -106,14 +98,12 @@ public class Simulator {
 	
 	private int cntArrivalEvents = 0;
 	
-//	private TmpProtocolDialog tmp;
 	private WaitDialog wd;
 	
 	public Simulator(WorkflowNetGraph wfpn, ResourceUtilization ru, SimParameters sp, WaitDialog wd){ //TmpProtocolDialog tmp){
 		process = wfpn;
 		resUtil = ru;
 		resAlloc = ru.getResAlloc();
-//		this.tmp = tmp;
 		this.wd = wd;
 		
 		this.numRuns = sp.getRuns();
@@ -145,7 +135,6 @@ public class Simulator {
 		protocol.info(clckS() + ENTRY.getString("Sim.Distribution.Server") + printDistST());
 		
 		generateServerList();
-//		LoggerManager.info(Constants.QUANTANA_LOGGER, printServerList());
 		protocol.info(clckS() + ENTRY.getString("Sim.ServerList.Generated"));
 		
 		runStats = new ArrayList<RunStats>();
@@ -160,12 +149,10 @@ public class Simulator {
 			
 			protocol.info(clckS() + ENTRY.getString("Sim.Start"));
 			while (!shouldStopNow()){
-//				protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Finished") + finishedCases);
 				
 				timing();
 				
 				if (nextEvent != null){
-//					LoggerManager.info(Constants.QUANTANA_LOGGER, printEventList() + "::" + nextEvent.getName());
 					protocol.info(clckS() + nextEvent.getEventTypeName() + " (" + nextEvent.getName() + ")");
 					nextEvent.invoke();
 				}
@@ -183,38 +170,27 @@ public class Simulator {
 	
 	private void init(int run){
 
-//		protocol.info(clckS() + ENTRY.getString("Sim.Clock.Init"));
 		clock = 0.0;
 		
 		cntArrivalEvents = 0;
 		
 		// sämtliche Counter zurücksetzen
-//		protocol.info(clckS() + ENTRY.getString("Sim.Counters.Reset"));
-		/*avgCasesInSystem = 0.0;
-		caseCount = 0;*/
 		finishedCases = 0;
 		duration = 0;
 		avgProcessServiceTime = 0;
 		avgProcessWaitTime = 0;
 		avgProcessCompletionTime = 0;
-		//maxNumCasesInSystem = 0;
-		//numCasesInSystem = 0;
-		/*throughPut = 0.0;
-		timeOfLastCaseNumChange = 0.0;
-		timeOfLastEvent = 0.0;*/
 		
 		caseList.clear();
 		
 		nextEvent = null;
 		
 		// alle Server zurücksetzen
-//		protocol.info(clckS() + ENTRY.getString("Sim.Servers.Reset"));
 		for (Server s : serverList.values()){
 			s.reset();
 		}
 		
 		// alle Ressourcen befreien
-//		protocol.info(clckS() + ENTRY.getString("Sim.Resources.Freed"));
 		for (Object o : resUtil.getReservedResources().values().toArray()){
 			resUtil.useResource((Resource)o);
 		}
@@ -227,7 +203,6 @@ public class Simulator {
 		for (Resource r : resAlloc.getResources().values())
 			r.reset();
 		
-//		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Init"));
 		initEventList();
 		
 		LoggerManager.info(Constants.QUANTANA_LOGGER, "Simulation run # " + run + " initialized.");
@@ -242,11 +217,8 @@ public class Simulator {
 		
 		String evt = ENTRY.getString("Sim.Event.Next");
 		if (nextEvent != null) evt += nextEvent.getName();
-//		protocol.info(clckS() + evt);
-//		protocol.info(clckS() + ENTRY.getString("Sim.EventList.Content") + printEventList());
 		
 		// Systemuhr setzen
-//		protocol.info(clckS() + ENTRY.getString("Sim.Clock.NextEvent.Set"));
 		if (nextEvent != null) clock = nextEvent.getTime();
 	}
 	
@@ -287,7 +259,6 @@ public class Simulator {
 			s.updQStats(clock, 0);
 			s.updRStats(clock, 0);
 			
-//			ServerStats sst = new ServerStats(s.getName(), s.getId());
 			ServerStats sst = sStats.get(s);
 			int nd = s.getNumDeparture();
 			sst.setZeroDelays(s.getZeroDelays());
@@ -317,16 +288,12 @@ public class Simulator {
 			sStats.put(s, sst);
 		}
 		
-//		stats.setServStats(sStats);
-		
 		for (Resource r : resAlloc.getResources().values()){
 			ResourceStats rst = new ResourceStats(r.getName());
 			rst.setIdleTime(clock - r.getBusyTime());
 			rst.setUtilizationRatio(r.getBusyTime() / clock);
 			rStats.put(r, rst);
 		}
-		
-//		stats.setResStats(rStats);
 		
 		stats.setDuration(clock);
 		stats.setFinishedCases(finishedCases);
@@ -598,14 +565,6 @@ public class Simulator {
 	public void setClock(double clock) {
 		this.clock = clock;
 	}
-	
-	/*public int getMaxNumCasesInSystem() {
-		return maxNumCasesInSystem;
-	}
-
-	public void setMaxNumCasesInSystem(int maxNumCasesInSystem) {
-		this.maxNumCasesInSystem = maxNumCasesInSystem;
-	}*/
 
 	public int getQueueDiscipline() {
 		return queueDiscipline;
@@ -656,22 +615,6 @@ public class Simulator {
 		s.addReservedResource(r);
 	}
 
-	/*public PriorityQueue<SimEvent> getEventList() {
-		return eventList;
-	}
-
-	public void setEventList(PriorityQueue<SimEvent> eventList) {
-		this.eventList = eventList;
-	}*/
-
-	/*public double getAvgCasesInSystem() {
-		return avgCasesInSystem;
-	}
-
-	public void setAvgCasesInSystem(double avgCasesInSystem) {
-		this.avgCasesInSystem = avgCasesInSystem;
-	}*/
-
 	public CaseGenerator getCaseGenerator() {
 		return caseGenerator;
 	}
@@ -687,14 +630,6 @@ public class Simulator {
 	public void setFinishedCases(int finishedCases) {
 		this.finishedCases = finishedCases;
 	}
-
-	/*public double getTimeOfLastEvent() {
-		return timeOfLastEvent;
-	}
-
-	public void setTimeOfLastEvent(double timeOfLastEvent) {
-		this.timeOfLastEvent = timeOfLastEvent;
-	}*/
 
 	public HashMap<Integer, Case> getCaseList() {
 		return caseList;
@@ -715,54 +650,6 @@ public class Simulator {
 	public void setLambda(double lambda) {
 		this.lambda = lambda;
 	}
-
-	/*public int getCaseCount() {
-		return caseCount;
-	}
-
-	public void setCaseCount(int caseCount) {
-		this.caseCount = caseCount;
-	}
-
-	public double getThroughPut() {
-		return throughPut;
-	}
-
-	public void setThroughPut(double throughPut) {
-		this.throughPut = throughPut;
-	}
-	
-	public void updateCaseNumStats(double now, double lastEvent){
-		int cc = caseList.size();
-		avgCasesInSystem += cc * (now - lastEvent);
-		
-		protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Current") + cc);
-		protocol.info(clckS() + ENTRY.getString("Sim.Number.Cases.Average") + String.format("%,.2f", (avgCasesInSystem / clock)));
-	}
-
-	public double getTimeOfLastCaseNumChange() {
-		return timeOfLastCaseNumChange;
-	}
-
-	public void setTimeOfLastCaseNumChange(double timeOfLastCaseNumChange) {
-		this.timeOfLastCaseNumChange = timeOfLastCaseNumChange;
-	}
-
-	public double getCaseBusy() {
-		return caseBusy;
-	}
-
-	public void setCaseBusy(double caseBusy) {
-		this.caseBusy = caseBusy;
-	}
-
-	public double getCaseWait() {
-		return caseWait;
-	}
-
-	public void setCaseWait(double caseWait) {
-		this.caseWait = caseWait;
-	}*/
 	
 	private void initProtocol(){
 		protocolPath = ConfigurationManager.getConfiguration().getLogdir();
@@ -985,10 +872,6 @@ public class Simulator {
 	public void addToCopyList(Case c){
 		copiedCasesList.put(c.getId(), c);
 	}
-	
-	/*public boolean containsOrig(CaseCopy copy){
-		return copiedCasesList.containsKey(copy.getId());
-	}*/
 	
 	public Case getOrig(CaseCopy copy){
 		int id = copy.getOriginal().getId();

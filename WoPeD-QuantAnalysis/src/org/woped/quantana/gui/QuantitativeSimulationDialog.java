@@ -32,6 +32,7 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -221,7 +222,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	
 	private final ExtensionFileFilter eff = new ExtensionFileFilter();
 	
-//	private TmpProtocolDialog tmp = new TmpProtocolDialog(thisDialog);
+	private boolean errorDetected = false;
 
 	/**
 	 * This is the default constructor
@@ -498,7 +499,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			MyTableCellRenderer mt = new MyTableCellRenderer();
 			tableServers.setDefaultRenderer(Object.class, mt);
 			tableServers.setDefaultEditor(Object.class, mt);
-//			tableServers.setEnabled(false);
 		}
 
 		return tableServers;
@@ -603,17 +603,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				setHorizontalAlignment(LEFT);
 			} else if (column == 6) {
 				setHorizontalAlignment(CENTER);
-				/*btnColumn[row] = new JButton("Edit...");
-				btnColumn[row].setSize(20, 10);
-				btnColumn[row].setEnabled(false);
-				btnColumn[row].setActionCommand(new Integer(row).toString());
-				btnColumn[row].addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						int row = Integer.parseInt(e.getActionCommand());
-						String name = (String)serverTableModel.getValueAt(row, 0);
-						new DetailsDialog(thisDialog, name);
-					}
-				});*/
+				
 				return btnColumn[row];
 			} else {
 				setHorizontalAlignment(RIGHT);
@@ -623,7 +613,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		
 		public Component getTableCellEditorComponent(JTable table,
 				Object value, boolean isSelected, int row, int column) {
-//			System.out.println("call");
 			return btnColumn[row];
 		}
 
@@ -1012,7 +1001,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			btnStart.setPreferredSize(new Dimension(120, 25));
 			btnStart.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
-					startSimulation();
+					checkParams();
+					if(!errorDetected) startSimulation();
 				}
 			});
 			constraints.gridx = 0;
@@ -1060,14 +1050,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			btnExport.setPreferredSize(new Dimension(120, 25));
 			btnExport.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
-//					new ExportDialog(thisDialog);
 					export = new ExportStatistics((QuantitativeSimulationDialog)thisDialog);
 					
 					dir = new File(ConfigurationManager.getConfiguration().getLogdir());
 					
 					fileChooser = new JFileChooser();
 					getFileFilter();
-//					save(export.getStatsTable());
 					save(Integer.parseInt(txtRuns.getText()));
 				}
 			});
@@ -1149,46 +1137,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	public void updContents() {
 		ServerTableModel stm = serverTableModel;
 		ResUtilTableModel rtm = resUtilTableModel;
-//		double clock = sim.getClock();
 		HashMap<String, Server> serv = sim.getServerList();
 		HashMap<String, Resource> res = resAlloc.getResources();
-
-//		double wP = sim.getThroughPut() / clock;
-//		double wqP = sim.getCaseWait() / clock;
-//		double wsP = sim.getCaseBusy() / clock;
-		
-		/*stm.setValueAt("-", 0, 1);
-		stm.setValueAt("-", 0, 2);
-		stm.setValueAt("-", 0, 3);
-		stm.setValueAt(String.format("%,.2f", wP), 0, 4);
-		stm.setValueAt(String.format("%,.2f", wqP), 0, 5);
-
-		for (int i = 1; i <= numServers; i++) {
-			String id = produceID((String) stm.getValueAt(i, 0));
-			Server s = serv.get(id);
-			int servStarted = s.getNumAccess();
-			int servFinished = s.getNumDeparture();
-			double qlen = s.getQueueLength() / clock;
-			double nsrv = s.getAvgNumCasesServing() / clock;
-			String l = String.format("%,.2f", qlen + nsrv);
-			String lq = String.format("%,.2f", qlen);
-			String ls = String.format("%,.2f", nsrv);
-			String w = String.format("%,.2f", s.getAvgServiceTime()
-					/ servFinished);
-			String wq = String.format("%,.2f", s.getWaitTime() / servStarted);
-			stm.setValueAt(l, i, 1);
-			stm.setValueAt(lq, i, 2);
-			stm.setValueAt(ls, i, 3);
-			stm.setValueAt(w, i, 4);
-			stm.setValueAt(wq, i, 5);
-		}
-
-		for (int i = 0; i < resObjNum; i++) {
-			String name = (String) rtm.getValueAt(i, 0);
-			Resource r = res.get(name);
-			String util = String.format("%,.2f", Double.valueOf(r.getBusyTime() / clock * 100));
-			rtm.setValueAt(util, i, 1);
-		}*/
 		
 		simStatistics = sim.getRunStats();
 		RunStats rs = simStatistics.get(simStatistics.size() - 1);
@@ -1198,7 +1148,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		stm.setValueAt(String.format("%,.2f", rs.getProcWaitTime()*l_), 0, 2);
 		stm.setValueAt(String.format("%,.2f", rs.getProcServTime()*l_), 0, 3);
 		stm.setValueAt(String.format("%,.2f", rs.getProcCompTime()), 0, 4);
-//		stm.setValueAt(String.format("%,.2f", rs.getProcWaitTime()), 0, 5);
 		stm.setValueAt(String.format("%,.2f", rs.getProcCompTime()-rs.getProcServTime()), 0, 5);
 		
 		for (int i = 1; i <= numServers; i++) {
@@ -1209,10 +1158,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()+sst.getAvgResNumber()), i, 1);
 			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()), i, 2);
 			stm.setValueAt(String.format("%,.2f", sst.getAvgResNumber()), i, 3);
-//			stm.setValueAt(String.format("%,.2f", (sst.getAvgQLength()+sst.getAvgResNumber())/l_), i, 4);
 			stm.setValueAt(String.format("%,.2f", sst.getAvgServTime()+sst.getAvgWaitTime()), i, 4);
 			stm.setValueAt(String.format("%,.2f", sst.getAvgWaitTime()), i, 5);
-//			stm.setValueAt(String.format("%,.2f", sst.getAvgQLength()/l_), i, 5);
 		}
 		
 		for (int i = 0; i < resObjNum; i++) {
@@ -1303,8 +1250,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		updContents();
 		wd.stop();
 		sim.setDuration(wd.getDuration());
-		
-//		tmp.setVisible(true);
 	}
 
 	private void initResourceAlloc() {
@@ -1329,8 +1274,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		resAlloc = new ResourceAllocation(roles, groups, iter, pmp);
 
 		resObjNum = resAlloc.getResources().size();
-		
-//		JOptionPane.showMessageDialog(null, resAlloc.printResourcesPerTasks(graph.getTransitionsGT0()));
 	}
 	
 	private LinkedList<TransitionModel> getTransModels() {
@@ -1391,67 +1334,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		return tasksAndResources;
 	}
 	
-/*	class ButtonColumn extends AbstractCellEditor implements TableCellRenderer,
-			TableCellEditor, ActionListener {
-		private static final long serialVersionUID = 1L;
-
-		private JTable table;
-
-		private JButton editButton;
-
-		private JButton renderButton;
-
-		private String text = "";
-
-		public ButtonColumn(JTable table, int column) {
-			super();
-			this.table = table;
-			editButton = new JButton("Edit...");
-			editButton.addActionListener(this);
-
-			renderButton = new JButton("Edit...");
-			renderButton.addActionListener(this);
-
-			TableColumnModel columnModel = table.getColumnModel();
-			columnModel.getColumn(column).setCellRenderer(this);
-			columnModel.getColumn(column).setCellEditor(this);
-		}
-
-		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-			if (hasFocus) {
-				renderButton.setForeground(table.getForeground());
-				renderButton.setBackground(Color.white);
-			} else if (isSelected) {
-				renderButton.setForeground(table.getForeground());
-				renderButton.setBackground(table.getBackground());
-			} else {
-				renderButton.setForeground(table.getForeground());
-				renderButton.setBackground(Color.black);
-			}
-
-			return renderButton;
-		}
-
-		public Component getTableCellEditorComponent(JTable table,
-				Object value, boolean isSelected, int row, int column) {
-			return editButton;
-		}
-
-		public Object getCellEditorValue() {
-			return text;
-		}
-
-		public void actionPerformed(ActionEvent e) {
-			fireEditingStopped();
-			String cmd = ((JButton) e.getSource()).getActionCommand();
-			String name = (String) tableServers.getValueAt(Integer.parseInt(cmd), 0);
-			new DetailsDialog(thisDialog, name);
-			System.out.println(e.getActionCommand() + " : "	+ table.getSelectedRow());
-		}
-	}*/
-	
-//	private void save(String text){
 	private void save(int runs){
 		fileChooser.setCurrentDirectory(dir);
 		fileChooser.setMultiSelectionEnabled(false);
@@ -1467,7 +1349,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				fname = fname.substring(0, idx);
 			} else {
 				ext = "csv";
-//				fname += "." + ext;
 			}
 			
 			String text = "";
@@ -1533,4 +1414,92 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		}
 	}
 
+	private void checkParams() throws InvalidRunsException, InvalidIntervalException {
+		double tmp;
+		int i;
+		boolean isInteger = false;
+		JTextField tf = null;
+
+		try {
+			tf = txtLambda;
+			isInteger = false;
+			tmp = Double.parseDouble(txtLambda.getText());
+
+			tf = txtPeriod;
+			isInteger = false;
+			tmp = Double.parseDouble(txtPeriod.getText());
+
+			tf = txtIATStdDev;
+			if (tf.isEnabled()){
+				isInteger = false;
+				tmp = Double.parseDouble(txtIATStdDev.getText());
+			}
+
+			tf = txtSTStdDev;
+			if (tf.isEnabled()){
+				isInteger = false;
+				tmp = Double.parseDouble(txtSTStdDev.getText());
+			}
+
+			tf = txtRuns;
+			isInteger = true;
+			i = Integer.parseInt(txtRuns.getText());
+			if (i < 1) throw new InvalidRunsException();
+
+			tf = txtIATInterval;
+			if (tf.isEnabled()){
+				isInteger = true;
+				i = Integer.parseInt(txtIATInterval.getText());
+				if ((i < 0) || (i > 100)) throw new InvalidIntervalException();
+			}
+
+			tf = txtSTInterval;
+			if (tf.isEnabled()){
+				isInteger = true;
+				i = Integer.parseInt(txtSTInterval.getText());
+				if ((i < 0) || (i > 100)) throw new InvalidIntervalException();
+			}
+
+			errorDetected = false;
+		} catch(InvalidRunsException ire){
+			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.InvalidRuns"));
+			tf.requestFocus();
+			tf.selectAll();
+			errorDetected = true;
+		} catch(InvalidIntervalException iie){
+			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.InvalidInterval"));
+			tf.requestFocus();
+			tf.selectAll();
+			errorDetected = true;
+		} catch(NumberFormatException nfe) {
+			if (isInteger)
+				JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.NumberFormatErrorInt"));
+			else
+				JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.NumberFormatErrorDouble"));
+			tf.requestFocus();
+			tf.selectAll();
+			errorDetected = true;
+		}
+	}
+	
+	class InvalidRunsException extends NumberFormatException {
+		private static final long serialVersionUID = 1L;
+		
+		public InvalidRunsException() {}
+		
+		public InvalidRunsException(String msg){
+			super(msg);
+		}
+	}
+
+	
+	class InvalidIntervalException extends NumberFormatException {
+		private static final long serialVersionUID = 1L;
+		
+		public InvalidIntervalException() {}
+		
+		public InvalidIntervalException(String msg){
+			super(msg);
+		}
+	}
 } // @jve:decl-index=0:visual-constraint="4,4"

@@ -51,7 +51,6 @@ public class Node {
 
 	public String toString()
 	{
-		//return " " + id + " " + name + ",";
 		return " " + id + ",";
 	}
 
@@ -111,14 +110,6 @@ public class Node {
 		this.isFork = stacked;
 	}
 
-	/*public double getTempSum() {
-		return tempSum;
-	}
-
-	public void setTempSum(double tempSum) {
-		this.tempSum = tempSum;
-	}*/
-
 	public int getType() {
 		return type;
 	}
@@ -143,14 +134,6 @@ public class Node {
 		this.foundCycle = foundCycle;
 	}
 
-	/*public boolean isUseSum() {
-		return useSum;
-	}
-
-	public void setUseSum(boolean useSum) {
-		this.useSum = useSum;
-	}*/
-
 	public ArrayList<Arc> getTempArcs() {
 		return tempArcs;
 	}
@@ -170,14 +153,6 @@ public class Node {
 	public void incIteration(){
 		this.iteration++;
 	}
-
-	/*public double getMultiply() {
-		return multiply;
-	}
-
-	public void setMultiply(double multiply) {
-		this.multiply = multiply;
-	}*/
 
 	public double getTempRuns() {
 		return tempRuns;

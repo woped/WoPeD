@@ -187,7 +187,6 @@ public class ServerStatisticsDialog extends JDialog {
 	private TextPanel getTextPanel(){
 		if (textPanel == null){
 			textPanel = new TextPanel();
-//			textPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.BLUE));
 		}
 		
 		return textPanel;
@@ -210,38 +209,10 @@ public class ServerStatisticsDialog extends JDialog {
 	private JPanel getGraphPanel(){
 		if (graphPanel == null){
 			graphPanel = new GraphPanel();
-//			graphPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.GREEN));
-//			graphPanel.setLayout(null);
-//			positionPanels();
 		}
 		
 		return graphPanel;
 	}
-	
-	/*private void positionPanels(){
-		ArrayList<ArrayList<ArrayList<ActivityPanel>>> matrix = ssm.getSortedMatrix();
-		int numTasks = ssm.getNumTasks();
-		double scale = (graphPanel.getWidth() - MARGIN_RIGHT) / clock;
-		int y = 0;
-		int count = 0;
-		
-		for (int i = 0; i < numTasks; i++) {
-			for (int j = 0; j < matrix.get(i).size(); j++){
-				ArrayList<ActivityPanel> list = matrix.get(i).get(j);
-				y = count++ * ROW_HEIGHT + MARGIN_TOP;
-				for (ActivityPanel ap : list){
-					Rectangle bounds = new Rectangle(
-							(int)(ap.getTimeStart()*scale),
-							y,
-							(int)((ap.getTimeStop() - ap.getTimeStart())*scale),
-							ROW_HEIGHT - 5);
-					ap.setBounds(bounds);
-					ap.setVisible(true);
-					graphPanel.add(ap);
-				}
-			}
-		}		
-	}*/
 	
 	class TextPanel extends JPanel {
 		
@@ -399,8 +370,6 @@ public class ServerStatisticsDialog extends JDialog {
 							ap.setBounds(bounds);
 							ap.setVisible(true);
 							graphPanel.add(ap);
-//							g2.setPaint(ap.getColor());
-//							g2.fill(bounds);
 						}
 					}
 				} else {

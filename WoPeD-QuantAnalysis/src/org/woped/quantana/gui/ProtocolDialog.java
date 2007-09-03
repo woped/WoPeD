@@ -146,18 +146,6 @@ public class ProtocolDialog extends JDialog {
 				}
 			});
 			
-			/*JButton btnPrint = new JButton();
-			btnPrint.setText(Messages.getTitle("QuantAna.Button.Print"));
-			btnPrint.setIcon(Messages.getImageIcon("QuantAna.Button.Print"));
-			btnPrint.setMinimumSize(new Dimension(120, 25));
-			btnPrint.setMaximumSize(new Dimension(120, 25));
-			btnPrint.setPreferredSize(new Dimension(120, 25));
-			btnPrint.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent event) {
-					print();
-				}
-			});*/
-			
 			buttonPanel.setLayout(new GridBagLayout());
 			GridBagConstraints constraints = new GridBagConstraints();
 			constraints.insets = new Insets(5, 25, 5, 5);
@@ -173,10 +161,6 @@ public class ProtocolDialog extends JDialog {
 			constraints.gridx = 1;
 			constraints.gridy = 0;
 			buttonPanel.add(btnOK, constraints);
-			
-			/*constraints.gridx = 2;
-			constraints.gridy = 0;
-			buttonPanel.add(btnPrint, constraints);*/
 		}
 		
 		return buttonPanel;
@@ -218,38 +202,6 @@ public class ProtocolDialog extends JDialog {
 			}
 		}
 	}
-	
-	/*private void print(){
-//		txtProtocol.print(getGraphics());
-
-		try {
-			PrinterJob job = PrinterJob.getPrinterJob();
-			PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-			
-			if (job.printDialog(aset))
-				job.print();
-		} catch (PrinterException e) {
-			e.printStackTrace();
-		}
-
-		DocFlavor flavor = DocFlavor.STRING.TEXT_PLAIN;
-		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-//		aset.add(MediaSizeName.ISO_A4);
-		
-		PrinterJob.getPrinterJob().printDialog(aset);
-		
-		PrintService[] pservices =
-			PrintServiceLookup.lookupPrintServices(flavor, aset);
-		if (pservices.length > 0) {
-			DocPrintJob pj = pservices[0].createPrintJob();
-			try {
-				String s = txtProtocol.getText();
-				Doc doc = new SimpleDoc(s, flavor, null);
-				pj.print(doc, aset);
-			} catch (PrintException e) { 
-			}
-		}
-	}*/
 	
 	public void getProtocol() {
 

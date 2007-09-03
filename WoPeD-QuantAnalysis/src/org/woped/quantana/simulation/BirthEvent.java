@@ -21,29 +21,6 @@ public class BirthEvent extends SimEvent {
 		double time = getTime();
 		CaseGenerator cg = sim.getCaseGenerator();
 		
-		/*Case c = cg.generateNextCase();
-		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Birth.Info") + String.format("%,.2f", c.getSysArrivalTime()), c.getId());
-
-		sim.updateCaseNumStats(getTime(), sim.getTimeOfLastCaseNumChange());
-		
-		sim.getCaseList().put(c.getId(), c);
-		protocol.info(sim.clckS() + ENTRY.getString("Sim.Birth.Case.Added"));
-//		sim.setCaseCount(sim.getCaseCount() + 1);
-//		
-//		int cc = sim.getCaseCount();
-//		
-//		if (cc > sim.getMaxNumCasesInSystem()) sim.setMaxNumCasesInSystem(cc);
-//		protocol.info(sim.clckS() + "Maximale Anzahl von Cases im Prozess bisher ist " + sim.getMaxNumCasesInSystem());
-		
-		WorkItem wi = new WorkItem(c, sim.getStartServer());
-		ArrivalEvent ae = new ArrivalEvent(sim, c.getSysArrivalTime(), wi);
-		sim.getEventList().add(ae);
-		protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.Arrival") + ae.getName() + ENTRY.getString("Sim.Generated.Event"), c.getId());
-		
-		sim.setTimeOfLastCaseNumChange(time);
-		protocol.info(sim.clckS() + ENTRY.getString("Sim.Time.LastEvent.CaseNum") + String.format("%,.2f", getTime()));
-		*/
-		
 		if (sim.getCntArrivalEvents() < Simulator.LIMIT_EVENT_ARRIVAL){
 			Case c = cg.generateNextCase();
 			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Birth.Info") + String.format("%,.2f", c.getSysArrivalTime()), c.getId());
@@ -53,8 +30,6 @@ public class BirthEvent extends SimEvent {
 			ArrivalEvent ae = new ArrivalEvent(sim, c.getSysArrivalTime(), wi);
 			sim.enroleEvent(ae);
 			protocol.log(Level.INFO, sim.clckS() + ENTRY.getString("Sim.Event.Arrival") + ae.getName() + ENTRY.getString("Sim.Generated.Event"), c.getId());
-			
-//			sim.getTmp().getTxtArea().append("BE: (Case# " + c.getId() + ") erzeugt: " + time + "\n");
 		}
 	}
 }

@@ -41,7 +41,6 @@ public class ResourceAllocation {
 			
 			String tsk = transMod.getNameValue() + " (" + transMod.getId() + ")";
 			
-			//taskAlloc2.getTable().add(new AllocationTableItem(tsk, rNames, gNames));
 			taskAlloc2.getTable().put(tsk, new AllocationTableItem(tsk, rNames, gNames));
 			
 			Vector res = proc.getResources();

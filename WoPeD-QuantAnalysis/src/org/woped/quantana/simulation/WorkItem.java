@@ -9,10 +9,6 @@ public class WorkItem {
 		_case = c;
 		server = s;
 	}
-	
-	/*public void enqueue(){
-		server.enqueue(this);
-	}*/
 
 	public Case getCase() {
 		return _case;

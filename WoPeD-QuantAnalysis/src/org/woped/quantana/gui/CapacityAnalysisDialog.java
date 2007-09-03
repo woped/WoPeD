@@ -22,6 +22,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -187,6 +188,8 @@ public class CapacityAnalysisDialog extends JDialog {
 	private JTextField txtResourceUtil = null;
 
 	private TimeModel tm = null;
+	
+	private boolean errorDetected = false;
 
 	/**
 	 * This is the default constructor
@@ -386,7 +389,8 @@ public class CapacityAnalysisDialog extends JDialog {
 			btnCalc.setPreferredSize(new Dimension(120, 25));
 			btnCalc.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
-					updContents();
+					checkParams();
+					if (!errorDetected) updContents();
 				}
 			});
 			constraints.gridx = 0;
@@ -728,7 +732,6 @@ public class CapacityAnalysisDialog extends JDialog {
 			tmRes = new ResTableModel(colResources, tableResMatrix);
 			tmRes.addTableModelListener(new TableModelListener() {
 				public void tableChanged(TableModelEvent e) {
-					// JOptionPane.showMessageDialog(null, e.toString());
 				}
 			});
 
@@ -783,7 +786,6 @@ public class CapacityAnalysisDialog extends JDialog {
 			String id = k.getId();
 			Node n = origNet[graph.getNodeIdx(id)];
 			n.setNumOfRuns(n.getNumOfRuns() + k.getRuns());
-//			n.setIteration(n.getIteration() + 1);
 		}
 	}
 
@@ -903,9 +905,6 @@ public class CapacityAnalysisDialog extends JDialog {
 				setHorizontalAlignment(RIGHT);
 			setFont(DefaultStaticConfiguration.DEFAULT_TABLE_FONT);
 			setBackground(DefaultStaticConfiguration.DEFAULT_CELL_BACKGROUND_COLOR);
-			
-			//if ((table.getColumnCount() == 7) && (column == 0 || column == 6)) setToolTipText(value.toString());
-			//setToolTipText(value.toString());
 			
 			return this;
 		}
@@ -1163,6 +1162,46 @@ public class CapacityAnalysisDialog extends JDialog {
 			return Constants.TIME_YEAR;
 		default:
 			return "ERROR";
+		}
+	}
+	
+	private void checkParams() throws InvalidThresholdException {
+		double tmp;
+		JTextField tf = null;
+		
+		try {
+			tf = txtPeriod;
+			tmp = Double.parseDouble(txtPeriod.getText());
+			
+			tf = txtCases;
+			tmp = Double.parseDouble(txtCases.getText());
+			
+			tf = txtThreshold;
+			tmp = Double.parseDouble(txtThreshold.getText());
+			
+			if (!(tmp < 1)) throw new InvalidThresholdException();
+			
+			errorDetected = false;
+		} catch(InvalidThresholdException ite){
+			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.InvalidThreshold"));
+			tf.requestFocus();
+			tf.selectAll();
+			errorDetected = true;
+		} catch(NumberFormatException nfe) {
+			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.NumberFormatErrorDouble"));
+			tf.requestFocus();
+			tf.selectAll();
+			errorDetected = true;
+		}
+	}
+	
+	class InvalidThresholdException extends NumberFormatException {
+		private static final long serialVersionUID = 1L;
+		
+		public InvalidThresholdException() {}
+		
+		public InvalidThresholdException(String msg){
+			super(msg);
 		}
 	}
 } // @jve:decl-index=0:visual-constraint="4,4"

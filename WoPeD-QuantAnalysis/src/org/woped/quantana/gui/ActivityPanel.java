@@ -17,7 +17,6 @@ public class ActivityPanel extends JPanel {
 	private double timeStop;
 	private String server;
 	private String resource;
-//	private int _case;
 	private Case _case;
 	private Color color;
 	

@@ -25,10 +25,6 @@ public class TmpProtocolDialog extends JDialog {
 		txtArea = new JTextArea();
 		
 		contentPane.add(new JScrollPane(txtArea));
-		
-//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//		int x = (screenSize.width - WIDTH) / 2;
-//		int y = (screenSize.height - HEIGHT) / 2;
 		this.setBounds(0, 0, WIDTH, HEIGHT);
 		this.setVisible(true);
 	}

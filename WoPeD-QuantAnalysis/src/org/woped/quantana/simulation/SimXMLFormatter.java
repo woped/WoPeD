@@ -5,17 +5,14 @@ import java.util.logging.XMLFormatter;
 
 public class SimXMLFormatter extends XMLFormatter {
 	
-//	private String path;
-	
 	public SimXMLFormatter(String dtdPath){
 		super();
-//		path = dtdPath;
 	}
 	
 	public String getHead(Handler h){
 		String head = "";
 		head += "<?xml version=\"1.0\" encoding=\"windows-1252\" standalone=\"no\"?>\n";
-		head += "<!DOCTYPE log [\n"; //SYSTEM \"" + path + "logger.dtd\">\n";
+		head += "<!DOCTYPE log [\n";
 		head += "\t<!ELEMENT log (record*)>\n";
 		head += "\t<!ELEMENT record (date, millis, sequence, logger?, level, class?, method?, thread?, message, key?, catalog?, param*, exception?)>\n";
 		head += "\t<!ELEMENT date (#PCDATA)>\n";
