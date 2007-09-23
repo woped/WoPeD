@@ -15,6 +15,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.core.gui.IEditorAware;
+import org.woped.core.utilities.SwingUtils;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.ApplicationMediator;
 
@@ -125,7 +126,7 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
         {
             super(editor.toString(), DefaultStaticConfiguration.DEFAULTEDITORFRAMEICON);
             this.editor = editor;
-            this.setPreferredSize(new Dimension(100, 20));
+            SwingUtils.setPreferredWidth(this, 100);
         }
 
 

@@ -56,6 +56,7 @@ import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.utilities.SwingUtils;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.utilities.Messages;
 
@@ -197,9 +198,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
             resourceClassPanel = new JPanel();
             resourceClassPanel.setBorder(BorderFactory
                     .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.ResourceClass")), BorderFactory.createEmptyBorder()));
-            resourceClassPanel.setMinimumSize(new Dimension(750, 200));
-            resourceClassPanel.setPreferredSize(new Dimension(750, 200));
-            resourceClassPanel.setMaximumSize(new Dimension(750, 200));
+            SwingUtils.setFixedSize(resourceClassPanel, 750, 200);
             resourceClassPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
 
@@ -242,9 +241,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceClassRolesLabel == null)
         {
             resourceClassRolesLabel = new JLabel(Messages.getString("PetriNet.Resources.Roles") + ":");
-            resourceClassRolesLabel.setMinimumSize(new Dimension(80, 20));
-            resourceClassRolesLabel.setMaximumSize(new Dimension(80, 20));
-            resourceClassRolesLabel.setPreferredSize(new Dimension(80, 20));
+            SwingUtils.setFixedWidth(resourceClassRolesLabel, 80);
         }
 
         return resourceClassRolesLabel;
@@ -255,9 +252,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceClassGroupsLabel == null)
         {
             resourceClassGroupsLabel = new JLabel(Messages.getString("PetriNet.Resources.Groups") + ":");
-            resourceClassGroupsLabel.setPreferredSize(new Dimension(80, 20));
-            resourceClassGroupsLabel.setMaximumSize(new Dimension(80, 20));
-            resourceClassGroupsLabel.setMinimumSize(new Dimension(80, 20));
+            SwingUtils.setFixedWidth(resourceClassGroupsLabel, 80);
         }
 
         return resourceClassGroupsLabel;
@@ -624,9 +619,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceClassNameTextField == null)
         {
             resourceClassNameTextField = new JTextField();
-            resourceClassNameTextField.setPreferredSize(new Dimension(200, 20));
-            resourceClassNameTextField.setMinimumSize(new Dimension(200, 20));
-            resourceClassNameTextField.setMaximumSize(new Dimension(200, 20));
+            SwingUtils.setFixedWidth(resourceClassNameTextField, 200);
             resourceClassNameTextField.setEditable(false);
             resourceClassNameTextField.addKeyListener(new KeyListener()
             {
@@ -662,9 +655,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceClassDescriptionTextField == null)
         {
             resourceClassDescriptionTextField = new JTextField();
-            resourceClassDescriptionTextField.setPreferredSize(new Dimension(200, 20));
-            resourceClassDescriptionTextField.setMinimumSize(new Dimension(200, 20));
-            resourceClassDescriptionTextField.setMaximumSize(new Dimension(200, 20));
+            SwingUtils.setFixedWidth(resourceClassDescriptionTextField, 200);
             resourceClassDescriptionTextField.setEditable(false);
         }
 
@@ -676,9 +667,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceClassTypeJComboBox == null)
         {
             resourceClassTypeJComboBox = new JComboBox(ResourceClassTypeA);
-            resourceClassTypeJComboBox.setPreferredSize(new Dimension(200, 20));
-            resourceClassTypeJComboBox.setMinimumSize(new Dimension(200, 20));
-            resourceClassTypeJComboBox.setMaximumSize(new Dimension(200, 20));
+            SwingUtils.setFixedWidth(resourceClassTypeJComboBox, 200);
             resourceClassTypeJComboBox.setEnabled(false);
         }
 
@@ -1047,9 +1036,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         {
             resourcePanel = new JPanel();
             resourcePanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Objects")), BorderFactory.createEmptyBorder()));
-            resourcePanel.setMinimumSize(new Dimension(750, 300));
-            resourcePanel.setPreferredSize(new Dimension(750, 300));
-            resourcePanel.setMaximumSize(new Dimension(750, 300));
+            SwingUtils.setFixedSize(resourcePanel, 750, 300);
             resourcePanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
 
@@ -1085,9 +1072,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceListLabel == null)
         {
             resourceListLabel = new JLabel(Messages.getString("PetriNet.Resources.Resource") + ":");
-            resourceListLabel.setMinimumSize(new Dimension(80, 20));
-            resourceListLabel.setMaximumSize(new Dimension(80, 20));
-            resourceListLabel.setPreferredSize(new Dimension(80, 20));
+            SwingUtils.setFixedWidth(resourceListLabel, 80);
         }
 
         return resourceListLabel;
@@ -1124,9 +1109,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceListScrollPane == null)
         {
             resourceListScrollPane = new JScrollPane(getResourceList());
-            resourceListScrollPane.setPreferredSize(new Dimension(150, 160));
-            resourceListScrollPane.setMinimumSize(new Dimension(150, 160));
-            resourceListScrollPane.setMaximumSize(new Dimension(150, 160));
+            SwingUtils.setFixedSize(resourceListScrollPane, 150, 160);
         }
 
         return resourceListScrollPane;
@@ -1367,9 +1350,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceEditNameTextField == null)
         {
             resourceEditNameTextField = new JTextField();
-            resourceEditNameTextField.setPreferredSize(new Dimension(200, 20));
-            resourceEditNameTextField.setMinimumSize(new Dimension(200, 20));
-            resourceEditNameTextField.setMaximumSize(new Dimension(200, 20));
+            SwingUtils.setFixedWidth(resourceEditNameTextField, 200);
             resourceEditNameTextField.setEditable(false);
             resourceEditNameTextField.addKeyListener(new KeyListener()
             {
@@ -1405,9 +1386,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
         if (resourceEditDescriptionTextField == null)
         {
             resourceEditDescriptionTextField = new JTextField();
-            resourceEditDescriptionTextField.setPreferredSize(new Dimension(200, 20));
-            resourceEditDescriptionTextField.setMinimumSize(new Dimension(200, 20));
-            resourceEditDescriptionTextField.setMaximumSize(new Dimension(200, 20));
+            SwingUtils.setFixedWidth(resourceEditDescriptionTextField, 200);
             resourceEditDescriptionTextField.setEditable(false);
         }
 
@@ -1630,9 +1609,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private JScrollPane getResourceUnAssignedScrollPane()
     {
         JScrollPane listScrollPane3 = new JScrollPane(getResourceUnAssignedList());
-        listScrollPane3.setMaximumSize(new Dimension(145, 140));
-        listScrollPane3.setMinimumSize(new Dimension(145, 140));
-        listScrollPane3.setPreferredSize(new Dimension(145, 140));
+        SwingUtils.setFixedSize(listScrollPane3, 145, 140);
         return listScrollPane3;
 
     }
@@ -1640,9 +1617,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     private JScrollPane getResourceAssignedScrollPane()
     {
         JScrollPane listScrollPane4 = new JScrollPane(getResourceAssignedList());
-        listScrollPane4.setMaximumSize(new Dimension(145, 140));
-        listScrollPane4.setMinimumSize(new Dimension(145, 140));
-        listScrollPane4.setPreferredSize(new Dimension(145, 140));
+        SwingUtils.setFixedSize(listScrollPane4, 145, 140);
         return listScrollPane4;
     }
 

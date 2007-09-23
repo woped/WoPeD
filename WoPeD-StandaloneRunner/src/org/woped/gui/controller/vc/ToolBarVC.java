@@ -40,6 +40,7 @@ import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.gui.ToolBarButton;
+import org.woped.core.utilities.SwingUtils;
 import org.woped.gui.controller.DefaultApplicationMediator;
 
 /**
@@ -486,9 +487,7 @@ public class ToolBarVC extends JToolBar implements IViewController
             zoomChooser.setSelectedIndex(3);
             zoomChooser.setBorder(BorderFactory.createEtchedBorder());
             zoomChooser.setEditable(true);
-            zoomChooser.setMaximumSize(new Dimension(50, 22));
-            zoomChooser.setPreferredSize(new Dimension(50, 22));
-            zoomChooser.setMinimumSize(new Dimension(50, 22));
+            SwingUtils.setFixedWidth(zoomChooser, 70);
             zoomChooser.addItemListener(new ItemListener()
             {
 

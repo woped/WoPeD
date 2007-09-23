@@ -154,7 +154,7 @@ public class ToolBarButton extends JToggleButton implements MouseListener
         }
         button.setIcon(icon);
         button.setToolTipText(text);
-        button.setMargin(new Insets(0, 0, 0, 0));
+        //button.setMargin(new Insets(0, 0, 0, 0));
 
         VisualController.getInstance().addElement(button, enableing, visible, selected);
         return button;
