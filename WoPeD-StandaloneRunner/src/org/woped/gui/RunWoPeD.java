@@ -49,6 +49,16 @@ public class RunWoPeD
      */
     public static void main(String[] args)
     {
+    	final String arguments[] = args;
+    	javax.swing.SwingUtilities.invokeLater(new Runnable() {
+    		public void run() {
+    			RunWoPeD.run(arguments);
+    		}
+    	});
+    }
+    
+    private static void run(String[] args)
+    {  	
         try
         {
             // Loading Logger!

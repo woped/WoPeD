@@ -28,6 +28,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
@@ -35,6 +39,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
+import javax.swing.Timer;
 
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.utilities.Messages;
@@ -83,8 +88,8 @@ public class SplashWindow extends JWindow
     private JLabel       logoLabel      = null;
     private JLabel       versionLabel   = null;
     private JLabel       copyrightLabel = null;
-    private long         delayTime      = 0;
-    private WindowKiller killer         = null;
+    private Timer        timer          = null;
+    private boolean      closed         = false;
 
     /**
      * TODO: DOCUMENTATION (xraven)
@@ -99,8 +104,6 @@ public class SplashWindow extends JWindow
 
     private void initialize()
     {
-        delayTime = Long.valueOf(delayValue).longValue();
-        killer = new WindowKiller(this, delayTime);
         setVisible(false);
         setContentPane(getJPanel());
         pack();
@@ -115,21 +118,38 @@ public class SplashWindow extends JWindow
         }
 
         setVisible(true);
-    }
+        
+        // Set a timer that will close the splash screen after a while.
+        int delayTime = Integer.valueOf(delayValue).intValue();
+		timer = new Timer(delayTime, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				close();
+			}
+		});
+		timer.start();
 
-    public void kill()
-    {
-        killer.run();
+		// Close the splash screen when the user clicks it.
+		this.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				close();
+			}
+		});
     }
 
     /**
-     * TODO: DOCUMENTATION (xraven)
+     * Closes the splash screen.
      *  
      */
     public void close()
     {
-        setVisible(false);
-        dispose();
+    	// Prevent nested calls to close().
+    	if (!closed) {
+    		closed = true;
+    		
+	    	timer.stop();
+	        setVisible(false);
+	        dispose();
+    	}
     }
 
     private JPanel getJPanel()
