@@ -77,6 +77,11 @@ public class RunWoPeD
             {
                 System.err.println("ERROR ACTIVATING LOGGER");
             }
+            
+            // Enable Mac specific behaviour.
+            // The menu bar goes to the top of the screen, instead of the top of the window.
+            System.setProperty("apple.laf.useScreenMenuBar", "true");
+            
             // create & init GUI
             Locale.setDefault(Locale.ENGLISH);
             new DefaultApplicationMediator(null, new WoPeDConfiguration(), args);
