@@ -107,23 +107,11 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
             if (getEditor().getGraph().getFirstCellForLocation(l.getX(), l.getY()) != getEditor().getGraph().getSelectionCell()) getEditor().getGraph().clearSelection();
             // super.mousePressed(e);
             getEditor().getGraph().setSelectionCell(getEditor().getGraph().getFirstCellForLocation(l.getX(), l.getY()));
-            if (getEditor().getGraph().getSelectionCell() instanceof GroupModel)
-            {
-                // if (((GroupModel)
-                // getGraph().getSelectionCell()).isUngroupable())
-                // {} else{
-                // getGraph().setSelectionCell(getGraph().getNextCellForLocation(getGraph().getSelectionCell(),
-                // l.x, l.y));}
-            }
-            // e.consume();setDrawingMode(false);turnOffDrawingMode();
-
         }
         // Check for Shortcut-drawing
         else if (getEditor().isDrawingMode())
         {
             CreationMap map = CreationMap.createMap();
-            //map.setPosition((int) l.getX() - 7, (int) l.getY() - 7);
-            //            map.setEditOnCreation(false);
             getEditor().setLastMousePosition(e.getPoint());
             if (getEditor().getCreateElementType() > 100 && getEditor().getCreateElementType() < 110)
             {
@@ -137,7 +125,6 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
             }
             getEditor().setCreateElementType(-1);
             getEditor().setDrawingMode(false);
-            // e.consume();
         }
         super.mousePressed(e);
     }
@@ -296,9 +283,6 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
                 }
                 super.mouseReleased(e);
 
-                // Consume Event
-                // e.consume();
-                // Else Repaint the Graph
                 getEditor().getGraph().repaint();
             } // Reset Global Vars
 
