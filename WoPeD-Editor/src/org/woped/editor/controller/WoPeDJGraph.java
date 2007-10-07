@@ -22,6 +22,7 @@
  */
 package org.woped.editor.controller;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Dimension2D;
@@ -73,7 +74,10 @@ import org.woped.editor.view.ViewFactory;
 @SuppressWarnings("serial")
 public class WoPeDJGraph extends AbstractGraph
 {
-
+	private int minPreferredWidth = 0; /// Minimal preferred width. Used to override the preferred width of the JGraph.
+	private int minPreferredHeight = 0; /// Minimal preferred height. Used to override the preferred height of the JGraph.
+	
+	
     public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, ViewFactory viewFactory, int modelPorcessorType)
     {
         this(model, editorMarquee, null, null, viewFactory, modelPorcessorType);
@@ -490,5 +494,36 @@ public class WoPeDJGraph extends AbstractGraph
 		}
 		return d;
 	}
-
+	
+	/**
+	 * Sets the minimum preferred width returned by getPreferredSize()-
+	 * Allows overriding of the graph's preferred width.
+	 * @param width The minimum width. Set to zero to stop overriding the graph's value.
+	 */
+	public void setMinPreferredWidth(int width)
+	{
+		minPreferredWidth = width;
+	}
+	
+	/**
+	 * Sets the minimum preferred height returned by getPreferredSize().
+	 * Allows overriding of the graph's preferred height.
+	 * @param height The minimum height. Set to zero to stop overriding the graph's value.
+	 */
+	public void setMinPreferredHeight(int height)
+	{
+		minPreferredHeight = height;
+	}
+	
+	/**
+	 * Returns the preferred size of the graph.
+	 * The returned values are those returned by super.getPreferredSize(),
+	 * except when overridden by setMinPreferredWidth() and setMinPreferredHeight().
+	 */
+	public Dimension getPreferredSize() {
+		Dimension size = super.getPreferredSize();
+		size.width = Math.max(size.width, minPreferredWidth);
+		size.height = Math.max(size.height, minPreferredHeight);
+		return size;
+	}
 }

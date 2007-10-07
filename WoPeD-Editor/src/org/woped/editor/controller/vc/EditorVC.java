@@ -1940,6 +1940,11 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		return m_graph;
 	}
+	
+	public WoPeDJGraph getWoPeDJGraph()
+	{
+		return m_graph;
+	}
 
 	/**
 	 * Returns the default filetype for saving the net.

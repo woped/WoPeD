@@ -24,6 +24,7 @@ package org.woped.editor.controller;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -39,7 +40,6 @@ import org.jgraph.graph.Port;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractMarqueeHandler;
 import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
@@ -48,6 +48,7 @@ import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.gui.PopupMenuPetrinet;
 import org.woped.editor.utilities.Cursors;
 
@@ -61,15 +62,21 @@ import org.woped.editor.utilities.Cursors;
  */
 public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
 {
-
+	private static int SCROLL_BORDER = 18;
+	private static int SCROLL_SIZE_INCREMENT = 25;
+	
+	private EditorVC editorVC;
+	
+	
     /**
      * Constructor, the editor must not be <code>null</code>.
      * 
      * @param editor
      */
-    public PetriNetMarqueeHandler(IEditor editor)
+    public PetriNetMarqueeHandler(EditorVC editor)
     {
         super(editor);
+        editorVC = editor;
     }
 
     /**
@@ -133,7 +140,6 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
             // e.consume();
         }
         super.mousePressed(e);
-
     }
 
     /**
@@ -146,22 +152,52 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
      */
     public void mouseDragged(MouseEvent e)
     {
+    	WoPeDJGraph graph = getEditorVC().getWoPeDJGraph();
+    	
         // If remembered Start Point is Valid
         if (start != null && !e.isConsumed())
-        {
+        {        	  	
+        	Dimension graphSize = graph.getSize();
+        	int graphWidth = graphSize.width;
+        	int graphHeight = graphSize.height;
+        	boolean changedSize = false;
+        	        	        	
+        	// Are we in reach of the right border?
+        	if ((graphWidth - e.getX()) < SCROLL_BORDER)
+        	{
+        		// Make the graph wider.
+        		graph.setMinPreferredWidth(graphWidth + SCROLL_SIZE_INCREMENT);
+        		changedSize = true;
+        	}
+        	
+        	if ((graphHeight - e.getY()) < SCROLL_BORDER)
+        	{
+        		// Make the graph higher.
+        		graph.setMinPreferredHeight(graphHeight + SCROLL_SIZE_INCREMENT);
+        		changedSize = true;
+        	}
+        	       	
             // Fetch Graphics from Graph
-            Graphics g = getEditor().getGraph().getGraphics();
+            Graphics g = graph.getGraphics();
             // Xor-Paint the old Connector (Hide old Connector)
-            paintConnector(Color.black, getEditor().getGraph().getBackground(), g);
+            paintConnector(Color.black, graph.getBackground(), g);
+            
+            // Resize the graph if necessary.
+        	if (changedSize)
+        	{
+        		graph.revalidate();
+        		graph.scrollPointToVisible(e.getPoint());
+        	}        	
+            
             // Reset Remembered Port
             port = getTargetPortAt(e.getPoint());
             // If Port was found then Point to Port Location
-            if (port != null) current = getEditor().getGraph().toScreen(port.getLocation(null));
+            if (port != null) current = graph.toScreen(port.getLocation(null));
             // Else If no Port found Point to Mouse Location
-            else current = getEditor().getGraph().snap(e.getPoint());
+            else current = graph.snap(e.getPoint());
 
             // Xor-Paint the new Connector
-            paintConnector(getEditor().getGraph().getBackground(), Color.black, g);
+            paintConnector(graph.getBackground(), Color.black, g);
             // Consume Event
             e.consume();
         }
@@ -178,6 +214,13 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
      */
     public void mouseReleased(MouseEvent e)
     {
+    	WoPeDJGraph graph = getEditorVC().getWoPeDJGraph();
+    	
+    	// Undo setting of minimum preferred size during mouse dragging,
+    	// so that JGraph can return its newly calculated values.
+    	graph.setMinPreferredWidth(0);
+    	graph.setMinPreferredHeight(0);
+    	
         if (e != null)// can be called when a key is pressed
         {
             // Scale From Screen to Model
@@ -230,7 +273,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
                         maps[1]=map;
                 	}
                     GraphCell[] result = getEditor().createAll(maps);
-                        getEditor().getGraph().startEditingAtCell(result[0]);
+					getEditor().getGraph().startEditingAtCell(result[0]);
                 } 
                 // If Valid Event, Current and First Port
                 else if (e != null && !e.isConsumed() && port != null && firstPort != null && firstPort != port)
@@ -318,5 +361,9 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
             // Paint Port in Preview (=Highlight) Mode
             getEditor().getGraph().getUI().paintCell(g, port, r, true);
         }
+    }
+    
+    EditorVC getEditorVC() {
+    	return editorVC;
     }
 }
