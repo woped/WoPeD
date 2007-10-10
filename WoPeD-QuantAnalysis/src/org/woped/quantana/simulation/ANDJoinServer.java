@@ -68,7 +68,7 @@ public class ANDJoinServer extends Server {
 					caseList.remove(orig.getId());
 					orig.setJoinFinished(true);
 				} else {
-					
+					this.getQueue().add(orig);
 				}
 			} else {
 				list = copyList.get(orig);
