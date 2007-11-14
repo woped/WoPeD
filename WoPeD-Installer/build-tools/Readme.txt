@@ -44,8 +44,8 @@ Note: WoPeD is written in Java. It is necessary that you have installed
 Java 5.0 or higher on your machine. Otherwise download it from 
 http://java.sun.com. 
 
-WoPeD is known to run on Microsoft Windows platforms (2000, ME, XP), on 
-MacOS X and on many Linux systems. Any reports of successfully having 
+WoPeD is known to run on Microsoft Windows platforms (2000, XP, Vista), 
+on MacOS X and on many Linux systems. Any reports of successfully having 
 installed WoPeD on any other systems are very much appreciated, as 
 well as negative experiences.
    
@@ -103,7 +103,7 @@ lib directory
   ./lib/xbean.jar                   (Bean generation library)
 
 doc directory
-  ./doc/html/de                     (Complete HTML online manual in German - still rudimentary)
+  ./doc/html/de                    	(Complete HTML online manual in German - still rudimentary)
   ./doc/html/en                     (Complete HTML online manual in English)
   ./doc/html/images                 (Auxiliary files for online manual)
 

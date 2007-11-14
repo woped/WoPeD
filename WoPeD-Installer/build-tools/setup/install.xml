@@ -53,6 +53,7 @@
 			<author name="Sebastian Orts" email="orts@woped.org"></author>
 			<author name="Thomas Pohl" email="pohl@woped.org"></author>
 			<author name="Valentino Pola" email="pola@woped.org"></author>
+			<author name="Rolf Schaeuble" email="schaueble@woped.org"></author>
 		</authors>
 		<url>http://www.woped.org</url>
 	</info>
@@ -112,7 +113,12 @@
 		
 		<pack name="HTML Manual" required="no">
 			<description>Separate HTML Manual files</description>
-			<file src="doc/" targetdir="$INSTALL_PATH"/>
+			<file src="doc/html" targetdir="$INSTALL_PATH/doc"/>
+		</pack>
+
+		<pack name="PDF Documentation" required="no">
+			<description>Additional manual and user doc files</description>
+			<file src="doc/pdf" targetdir="$INSTALL_PATH/doc"/>
 		</pack>
 	</packs>
 </installation>

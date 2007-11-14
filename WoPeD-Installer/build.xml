@@ -12,6 +12,7 @@
 	<filter token="woflanversion" value="${WOFLANVERSION}${SNAPSHOT}" />
 	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}${SNAPSHOT}" />
 	<filter token="guiversion" value="${GUIVERSION}${SNAPSHOT}" />
+	<filter token="quantanaversion" value="${QUANTANAVERSION}${SNAPSHOT}" />
 	<filter token="configurationversion" value="${CONFIGURATIONVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
@@ -36,6 +37,9 @@
 		<mkdir dir="dist/doc/html/images/icons" />
 		<mkdir dir="dist/doc/html/images/icons/tango" />
 		<mkdir dir="dist/doc/html/images/elements" />
+		<mkdir dir="dist/doc/pdf" />
+		<mkdir dir="dist/doc/pdf/de" />
+		<mkdir dir="dist/doc/pdf/en" />
 	</target>
 
 	<target name="setversion">
@@ -68,6 +72,14 @@
 		<copy todir="dist/lib"  file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib"  file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
 		<copy todir="dist/lib"  file="../CommonLibs/lib/xbean.jar" />
+
+		<copy todir="dist/doc/pdf/en">
+			<fileset file="../WoPeD-StandaloneRunner/doc/pdf/en/*.pdf" />
+		</copy>
+		
+		<copy todir="dist/doc/pdf/de">
+			<fileset file="../WoPeD-StandaloneRunner/doc/pdf/de/*.pdf" />
+		</copy>
 
 		<copy todir="dist/doc/html/en">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/en/*.htm" />
@@ -133,6 +145,7 @@
 		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
 		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
+		<ant antfile="../WoPeD-QuantAnalysis/build.xml" dir="../WoPeD-QuantAnalysis" />
 	</target>
 	
 	<target name="makeinstaller">
@@ -183,6 +196,9 @@
 		<delete dir="dist/doc/html/de" />
 		<delete dir="dist/doc/html/en" />
 		<delete dir="dist/doc/html" />
+		<delete dir="dist/doc/pdf/de" />
+		<delete dir="dist/doc/pdf/en" />
+		<delete dir="dist/doc/pdf" />
 		<delete dir="dist/doc" />
 		<delete dir="dist/lib" />
 		<delete dir="dist/build" />
