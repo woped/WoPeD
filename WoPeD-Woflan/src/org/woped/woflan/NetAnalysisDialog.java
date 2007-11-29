@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
@@ -23,7 +24,6 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.GraphTreeModelSelector;
 import org.woped.editor.controller.vc.NetInfo;
 import org.woped.editor.controller.vc.NodeGroupNetInfo;
-import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.utilities.Messages;
 
 @SuppressWarnings("serial")

@@ -1,4 +1,4 @@
-package org.woped.editor.controller.vc;
+package org.woped.core.analysis;
 
 import java.util.Collection;
 import java.util.HashMap;

@@ -74,6 +74,8 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.graph.Port;
 import org.jgraph.graph.PortView;
+import org.woped.core.analysis.NetAlgorithms;
+import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -117,11 +119,12 @@ import org.woped.editor.controller.UMLMarqueeHandler;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDJGraph;
 import org.woped.editor.controller.WoPeDUndoManager;
+import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
-import org.woped.editor.simulation.TokenGameController;
 import org.woped.editor.utilities.Messages;
 import org.woped.editor.view.ViewFactory;
+import org.woped.simulation.TokenGameController;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -221,6 +224,11 @@ public class EditorVC extends JPanel implements KeyListener,
 	// ! It is used to create a new subprocess editor if required
 	private AbstractApplicationMediator m_centralMediator = null;
 
+	public void closeEditor()
+	{		
+        this.fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE, null));	
+	}
+	
 	public GraphTreeModel GetTreeModel()
 	{
 		return m_treeModel;

@@ -32,6 +32,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
+import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -39,7 +40,6 @@ import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.utilities.Messages;
 import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Arc;

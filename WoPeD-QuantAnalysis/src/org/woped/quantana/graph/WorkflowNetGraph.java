@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.editor.controller.vc.StructuralAnalysis;
 
 public class WorkflowNetGraph {
 	static String zyklen = "";

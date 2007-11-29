@@ -32,6 +32,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
+import org.woped.core.analysis.NetAlgorithms;
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
@@ -44,7 +45,6 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.controller.vc.NetAlgorithms;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;

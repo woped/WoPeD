@@ -32,6 +32,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
+import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
@@ -44,7 +45,6 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.controller.vc.StructuralAnalysis;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.utilities.FileFilterImpl;

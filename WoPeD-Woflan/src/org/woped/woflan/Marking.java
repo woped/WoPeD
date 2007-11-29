@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.editor.controller.vc.StructuralAnalysis;
 
 //! Specifies a particular marking of a reachability / coverability graph
 //! along with the corresponding model

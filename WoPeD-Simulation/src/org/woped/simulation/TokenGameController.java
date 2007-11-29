@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.editor.simulation;
+package org.woped.simulation;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -33,9 +33,10 @@ import java.util.Vector;
 
 import javax.swing.border.LineBorder;
 
+import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
-import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
@@ -46,10 +47,7 @@ import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.Constants;
-import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.controller.vc.StructuralAnalysis;
-import org.woped.editor.controller.vep.ViewEvent;
+
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -85,7 +83,7 @@ public class TokenGameController
     private Set<PlaceModel>        sinkPlaces = null;
     private MouseHandler           tokenGameMouseHandler = null;
     private boolean                visualTokenGame       = false;
-    private EditorVC			   thisEditor 			 = null;
+    private IEditor				   thisEditor 			 = null;
     
     /**
      * Constructor for the model and visual sided TokenGame.
@@ -93,7 +91,7 @@ public class TokenGameController
      * @param petrinet
      * @param graph
      */
-    public TokenGameController(EditorVC thisEditor)
+    public TokenGameController(IEditor thisEditor)
     {
         this.petrinet = (PetriNetModelProcessor)thisEditor.getModelProcessor();
         this.graph = thisEditor.getGraph();
@@ -233,7 +231,7 @@ public class TokenGameController
     private void checkNet()
     {
         long begin = System.currentTimeMillis();
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: CHECK NET");
+        LoggerManager.debug(Constants.SIMULATOR_LOGGER, "TokenGame: CHECK NET");
         Iterator transIter = allTransitions.keySet().iterator();
 
         resetArcStatus();
@@ -256,7 +254,7 @@ public class TokenGameController
         }              
         getGraph().updateUI();
 
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
+        LoggerManager.debug(Constants.SIMULATOR_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
     }
 
     /*
@@ -487,7 +485,7 @@ public class TokenGameController
                 }
             } catch (ClassCastException cce)
             {
-                LoggerManager.warn(Constants.EDITOR_LOGGER, "TokenGame: Source not a Place. Ignore arc: " + arc.getId());
+                LoggerManager.warn(Constants.SIMULATOR_LOGGER, "TokenGame: Source not a Place. Ignore arc: " + arc.getId());
             }
         }
         return activePlaces;
@@ -562,7 +560,7 @@ public class TokenGameController
             }
         } catch (ClassCastException cce)
         {
-            LoggerManager.warn(Constants.EDITOR_LOGGER, "TokenGame: Cannot send token. Source is not a place. Ignore arc: " + arc.getId());
+            LoggerManager.warn(Constants.SIMULATOR_LOGGER, "TokenGame: Cannot send token. Source is not a place. Ignore arc: " + arc.getId());
         }
     }
 
@@ -595,7 +593,7 @@ public class TokenGameController
             }
         } catch (ClassCastException cce)
         {
-            LoggerManager.warn(Constants.EDITOR_LOGGER, "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
+            LoggerManager.warn(Constants.SIMULATOR_LOGGER, "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
         }
     }
     
@@ -774,7 +772,7 @@ public class TokenGameController
             {            	
             	// If an active place has been clicked there is only one reasonable explanation for this:
             	// It is a sink place of a sub-process and we need to close the sub-process editing window
-                thisEditor.fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE, null));
+                thisEditor.closeEditor();
 
             }
             e.consume();

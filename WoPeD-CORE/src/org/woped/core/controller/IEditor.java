@@ -10,6 +10,7 @@ import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.SubProcessModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -28,6 +29,8 @@ public interface IEditor extends IViewController
      */
     public AbstractGraph getGraph();
 
+	public void openTokenGameSubProcess(SubProcessModel subProcess);
+    
     
     /**
      * Creates the Element in the Graph and stores it in the used ModelProcessor
@@ -173,4 +176,6 @@ public interface IEditor extends IViewController
 	public AbstractElementModel getSubprocessOutput();
 
 	public void setSubprocessOutput(AbstractElementModel p_subprocessOutput);
+	
+	public void closeEditor();
 }

@@ -1,17 +1,20 @@
-package org.woped.editor.controller.vc;
+package org.woped.core.analysis;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 
+import org.woped.core.analysis.NetAlgorithms;
+import org.woped.core.analysis.NetAlgorithms.ArcConfiguration;
+import org.woped.core.analysis.NetAlgorithms.RouteInfo;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.CreationMap;
-import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.CreationMap;
+import org.woped.core.model.ModelElementContainer;
 
 public class StructuralAnalysis {
 

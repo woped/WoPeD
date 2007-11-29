@@ -2,6 +2,7 @@ package org.woped.editor.controller.vc;
 
 import java.util.Iterator;
 
+import org.woped.core.analysis.NetAlgorithms;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
