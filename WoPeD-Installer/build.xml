@@ -9,6 +9,7 @@
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="coreversion" value="${COREVERSION}${SNAPSHOT}" />
 	<filter token="editorversion" value="${EDITORVERSION}${SNAPSHOT}" />
+	<filter token="simulationversion" value="${SIMULATIONVERSION}${SNAPSHOT}" />
 	<filter token="woflanversion" value="${WOFLANVERSION}${SNAPSHOT}" />
 	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}${SNAPSHOT}" />
 	<filter token="guiversion" value="${GUIVERSION}${SNAPSHOT}" />
@@ -58,6 +59,7 @@
 			<fileset dir="../WoPeD-StandaloneRunner/bin" />
 			<fileset dir="../WoPeD-Woflan/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
+			<fileset dir="../WoPeD-Simulation/bin" />
 			<fileset dir="../WoPeD-XMLConfiguration/bin" />
 		</jar>
 	</target>	
@@ -146,6 +148,7 @@
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
 		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
 		<ant antfile="../WoPeD-QuantAnalysis/build.xml" dir="../WoPeD-QuantAnalysis" />
+		<ant antfile="../WoPeD-Simulation/build.xml" dir="../WoPeD-Simulation" />
 	</target>
 	
 	<target name="makeinstaller">
