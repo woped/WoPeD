@@ -40,6 +40,7 @@ import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.utilities.Messages;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
+import org.woped.gui.controller.vc.TokengameBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 
 @SuppressWarnings("serial")
@@ -110,10 +111,14 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         toolPanel.add(statusBar, BorderLayout.EAST);          
         toolPanel.setPreferredSize(new Dimension(100, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
-        
+       
         // addKeyListener(this);
         SplashWindow splash = new SplashWindow(this);
-
+        
+        //Tokengame Shortcut here
+        //TokengameBarVC RCFenster = new TokengameBarVC();
+        //desktop.add(RCFenster);
+    
         setVisible(true);
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
     }
