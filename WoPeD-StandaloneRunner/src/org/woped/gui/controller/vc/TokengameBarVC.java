@@ -60,7 +60,6 @@ public class TokengameBarVC extends JInternalFrame {
 		this.setFrameIcon(Messages.getImageIcon("Tokengame.RemoteControl"));
 	    this.setToolTipText(Messages.getTitle("Tokengame.RemoteControl"));//setAlignmentY(300);
 		this.setSize(910,140);
-		this.reshape(910, 140, 0, 400);
 		this.setVisible(true);
 		//RC will disappear
 		this.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);  
