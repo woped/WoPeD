@@ -44,6 +44,7 @@ import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.woflan.NetAnalysisDialog;
 import org.woped.woflan.WoflanAnalysis;
+import org.woped.bpel.BPEL_MAIN;
 
 public class FileEventProcessor extends AbstractEventProcessor
 {
@@ -293,6 +294,9 @@ public class FileEventProcessor extends AbstractEventProcessor
             
             jfc.setFileFilter(PNGFilter);
             
+            //insert of the BPEL Export filefilter
+            jfc.setFileFilter(BPEL_MAIN.get_BPEL_MAIN_CLASS().get_filefilter());
+            
             jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
             jfc.showSaveDialog(null);
             if (jfc.getSelectedFile() != null && editor != null)
@@ -311,6 +315,9 @@ public class FileEventProcessor extends AbstractEventProcessor
                 } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.BMPFilter)
                 {
                     savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), bmpExtensions);
+                } else if(BPEL_MAIN.get_BPEL_MAIN_CLASS().check_file_extension(jfc))
+                {
+                	savePath = BPEL_MAIN.get_BPEL_MAIN_CLASS().get_SavePath(savePath, jfc);
                 } else 
                 {
                     LoggerManager.error(Constants.FILE_LOGGER, "\"Export\" NOT SUPPORTED FILE TYPE.");
@@ -387,10 +394,16 @@ public class FileEventProcessor extends AbstractEventProcessor
                             ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
                             succeed = true;
                         }
+                        //BPEL-Export
+                        else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter)
+                        {
+                            succeed = TPNExport.save(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
+                            ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
+                        }
                         /* Tool for TPN Export */
                         else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter)
                         {
-                            succeed = TPNExport.save(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
+                            succeed = BPEL_MAIN.get_BPEL_MAIN_CLASS().save_file(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
                             ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
                         } else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter)
                         {
