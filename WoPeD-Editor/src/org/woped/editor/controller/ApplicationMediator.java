@@ -48,7 +48,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 /**
  * This Class should be the Mediator for the Editor VC... It must be implemented

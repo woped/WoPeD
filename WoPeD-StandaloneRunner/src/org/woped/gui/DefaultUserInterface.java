@@ -41,7 +41,7 @@ import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.TokengameBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
 public class DefaultUserInterface extends JFrame implements IUserInterface, InternalFrameListener

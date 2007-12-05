@@ -55,7 +55,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 /**
  * Represents the Manubar TODO: DOCUMENTATION (xraven)

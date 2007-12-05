@@ -37,7 +37,7 @@ import org.jgraph.graph.EdgeView;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.view.AbstractElementView;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

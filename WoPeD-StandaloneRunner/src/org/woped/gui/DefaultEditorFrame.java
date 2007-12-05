@@ -42,7 +42,7 @@ import javax.swing.event.MouseInputAdapter;
 import org.woped.editor.controller.PetriNetResourceEditor;
 import org.woped.editor.controller.vc.EditorStatusBarVC;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 /**
  * The EditorFrame is the container for each <code>Editor</code>.

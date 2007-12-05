@@ -26,7 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.woped.core.config.DefaultStaticConfiguration;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 import org.woped.quantana.model.ServerStatisticsModel;
 
 public class ServerStatisticsDialog extends JDialog {

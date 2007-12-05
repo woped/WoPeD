@@ -44,7 +44,7 @@ import javax.swing.JTextField;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 /**
  * @author tfreytag

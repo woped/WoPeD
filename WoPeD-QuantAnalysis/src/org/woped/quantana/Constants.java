@@ -1,6 +1,6 @@
 package org.woped.quantana;
 
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 public class Constants {
 	public final static String QUANTANA_LOGGER = "QUANTANA_LOGGER";

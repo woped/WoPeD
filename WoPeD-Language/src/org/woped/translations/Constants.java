@@ -1,4 +1,4 @@
-package org.woped.language;
+package org.woped.translations;
 
 public class Constants
 {

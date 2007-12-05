@@ -8,7 +8,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
 public class NetInfoTreeRenderer extends DefaultTreeCellRenderer

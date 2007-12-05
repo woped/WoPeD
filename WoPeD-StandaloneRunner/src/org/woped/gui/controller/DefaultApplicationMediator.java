@@ -42,7 +42,7 @@ import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 /**
  * 

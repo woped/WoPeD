@@ -39,7 +39,7 @@ import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.woflan.NetAnalysisDialog;

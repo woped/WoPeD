@@ -1,7 +1,7 @@
 package org.woped.gui.controller.vc;
 import javax.swing.*;
 
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 import java.awt.*;
 

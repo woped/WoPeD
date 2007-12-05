@@ -58,7 +58,7 @@ import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.SwingUtils;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 /**
  * @author waschtl

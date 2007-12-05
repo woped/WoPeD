@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
 public class EditorStatusBarVC extends JPanel implements Observer

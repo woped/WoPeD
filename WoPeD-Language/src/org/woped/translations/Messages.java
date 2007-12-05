@@ -24,7 +24,7 @@
  * Created on 29.08.2004
  *
  */
-package org.woped.language;
+package org.woped.translations;
 
 import java.awt.event.KeyEvent;
 import java.net.URL;
@@ -47,7 +47,7 @@ import org.woped.core.utilities.LoggerManager;
 public abstract class Messages
 {
 
-    private static final String         BUNDLE_NAME     = "org.woped.language.Messages";               //$NON-NLS-1$
+    private static final String         BUNDLE_NAME     = "org.woped.translations.Messages";               //$NON-NLS-1$
     private static final Locale         LOCALE          = ConfigurationManager.getConfiguration().getLocale();
     private static final ResourceBundle RESOURCE_BUNDLE = PropertyResourceBundle.getBundle(BUNDLE_NAME, LOCALE);
 

@@ -32,7 +32,7 @@ import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.EditorViewEvent;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 /**
  * @author Thomas Pohl

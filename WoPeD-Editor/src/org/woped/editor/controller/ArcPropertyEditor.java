@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import org.woped.core.model.ArcModel;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
 public class ArcPropertyEditor extends JDialog {

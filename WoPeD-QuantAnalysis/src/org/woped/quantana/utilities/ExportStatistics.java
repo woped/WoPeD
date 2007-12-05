@@ -2,7 +2,7 @@ package org.woped.quantana.utilities;
 
 import java.util.ResourceBundle;
 
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.quantana.model.ReportServerStats;
 import org.woped.quantana.model.ReportStats;

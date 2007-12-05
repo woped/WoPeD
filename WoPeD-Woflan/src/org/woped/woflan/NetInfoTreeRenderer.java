@@ -7,7 +7,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.woped.editor.controller.vc.NetInfo;
-import org.woped.language.Messages;
+import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
 public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
