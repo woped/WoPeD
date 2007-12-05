@@ -98,7 +98,7 @@ public class TokenGameController
         this.graph = thisEditor.getGraph();
         this.thisEditor = thisEditor;
         setVisualTokenGame(graph != null);
-        tokenGameMouseHandler = new MouseHandler();    
+        tokenGameMouseHandler = new MouseHandler();
     }
 
     /**

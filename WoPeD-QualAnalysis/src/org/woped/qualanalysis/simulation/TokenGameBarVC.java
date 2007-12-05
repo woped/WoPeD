@@ -13,7 +13,7 @@ import java.awt.*;
  * @author Tilmann Glaser
  * 
  */
-public class TokengameBarVC extends JInternalFrame {
+public class TokenGameBarVC extends JInternalFrame {
 	
 	//Declaration of all JPanels
 	private JPanel PropertiesPanel    = null;
@@ -54,7 +54,7 @@ public class TokengameBarVC extends JInternalFrame {
 	private GridBagConstraints gbc    = null;
 	
 	//Constructor(s)
-	public TokengameBarVC()
+	public TokenGameBarVC()
 	{
 		super(Messages.getTitle("Tokengame.RemoteControl"), false, true);
 		this.setFrameIcon(Messages.getImageIcon("Tokengame.RemoteControl"));
