@@ -9,12 +9,14 @@
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="coreversion" value="${COREVERSION}${SNAPSHOT}" />
 	<filter token="editorversion" value="${EDITORVERSION}${SNAPSHOT}" />
-	<filter token="simulationversion" value="${SIMULATIONVERSION}${SNAPSHOT}" />
+	<filter token="qualanaversion" value="${QUALANAVERSION}${SNAPSHOT}" />
 	<filter token="woflanversion" value="${WOFLANVERSION}${SNAPSHOT}" />
 	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}${SNAPSHOT}" />
 	<filter token="guiversion" value="${GUIVERSION}${SNAPSHOT}" />
 	<filter token="quantanaversion" value="${QUANTANAVERSION}${SNAPSHOT}" />
 	<filter token="configurationversion" value="${CONFIGURATIONVERSION}${SNAPSHOT}" />
+	<filter token="translationversion" value="${TRANSLATIONVERSION}${SNAPSHOT}" />
+	<filter token="bpelexportversion" value="${BPELEXPORTVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
 	<!--<taskdef resource="genjar.properties"/>	-->
@@ -44,22 +46,25 @@
 	</target>
 
 	<target name="setversion">
-		<copy file="../WoPeD-Editor/src/org/woped/editor/properties/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
-		<copy file="../WoPeD-Editor/src/org/woped/editor/properties/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
-		<copy file="dist/Messages.properties" tofile="../WoPeD-Editor/bin/org/woped/editor/properties/Messages.properties" />
-		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Editor/bin/org/woped/editor/properties/Messages_de.properties" />
+		<copy file="../WoPeD-Translations/src/org/woped/translations/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
+		<copy file="../WoPeD-Translations/src/org/woped/translations/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
+		<copy file="dist/Messages.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages.properties" />
+		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages_de.properties" />
 		<copy file="log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" />
 	</target>
 
   	<target name="buildjar">
 		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
 			<fileset dir="../WoPeD-CORE/bin" />
+			<fileset dir="../WoPeD-BPELExport/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
 			<fileset dir="../WoPeD-StandaloneRunner/bin" />
 			<fileset dir="../WoPeD-Woflan/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
-			<fileset dir="../WoPeD-Simulation/bin" />
+			<fileset dir="../WoPeD-QualAnalysis/bin" />
+			<fileset dir="../WoPeD-QuantAnalysis/bin" />
+			<fileset dir="../WoPeD-Translations/bin" />
 			<fileset dir="../WoPeD-XMLConfiguration/bin" />
 		</jar>
 	</target>	
@@ -132,23 +137,29 @@
 	</target>
 
 	<target name="makejavadoc">
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Core/src" destdir="dist/doc/WoPeD-Core/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-CORE/src" destdir="dist/doc/WoPeD-CORE/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Editor/src" destdir="dist/doc/WoPeD-Editor/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-StandaloneRunner/src" destdir="dist/doc/WoPeD-StandaloneRunner/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-FileInterface/src" destdir="dist/doc/WoPeD-FileInterface/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Woflan/src" destdir="dist/doc/WoPeD-Woflan/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-XMLConfiguration/src" destdir="dist/doc/WoPeD-XMLConfiguration/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Translations/src" destdir="dist/doc/WoPeD-Translations/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QuantAnalysis/src" destdir="dist/doc/QuantAnalysis/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QualAnalysis/src" destdir="dist/doc/WoPeD-QualAnalysis/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-BPELExport/src" destdir="dist/doc/WoPeD-BPELExport/api-doc" />
 	</target>
 
 	<target name="makesubprojects">
 		<ant antfile="../WoPeD-CORE/build.xml" dir="../WoPeD-CORE" />
+		<ant antfile="../WoPeD-BPELExport/build.xml" dir="../WoPeD-BPELExport" />
 		<ant antfile="../WoPeD-Editor/build.xml" dir="../WoPeD-Editor" />
 		<ant antfile="../WoPeD-Woflan/build.xml" dir="../WoPeD-Woflan" />
 		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
 		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
 		<ant antfile="../WoPeD-QuantAnalysis/build.xml" dir="../WoPeD-QuantAnalysis" />
-		<ant antfile="../WoPeD-Simulation/build.xml" dir="../WoPeD-Simulation" />
+		<ant antfile="../WoPeD-QualAnalysis/build.xml" dir="../WoPeD-QualAnalysis" />
+		<ant antfile="../WoPeD-Translations/build.xml" dir="../WoPeD-Translations" />
 	</target>
 	
 	<target name="makeinstaller">
