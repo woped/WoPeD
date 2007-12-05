@@ -25,9 +25,9 @@ public class BPEL_MAIN {
 
 	private final void INIT_FILEFILTER() {
 		this._extensions = new Vector<String>();
-		this._extensions.add("bpel");
+		this._extensions.add("bpek");
 		this._filter = new FileFilterImpl(FileFilterImpl.BPELFilter,
-				"Bpel (*.bpel)", this._extensions);
+				"BPEL (*.bpel)", this._extensions);
 	}
 
 	public static final BPEL_MAIN get_BPEL_MAIN_CLASS() {
