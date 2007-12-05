@@ -30,7 +30,7 @@ import org.woped.editor.controller.ArcPropertyEditor;
 import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 public class EditorEventProcessor extends AbstractEventProcessor
 {

@@ -73,6 +73,7 @@ public class RunWoPeD
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.woflan.Constants.WOFLAN_LOGGER)), org.woped.woflan.Constants.WOFLAN_LOGGER);
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.quantana.Constants.QUANTANA_LOGGER)), org.woped.quantana.Constants.QUANTANA_LOGGER);
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.simulation.Constants.SIMULATOR_LOGGER)), org.woped.simulation.Constants.SIMULATOR_LOGGER);
+                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.language.Constants.LANGUAGE_LOGGER)), org.woped.language.Constants.LANGUAGE_LOGGER);
                 LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
             } catch (Exception e)
             {

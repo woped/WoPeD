@@ -32,7 +32,7 @@ import java.net.URL;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 /**
  * A simple, static class to display a URL in the system browser.

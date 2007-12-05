@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.language.Messages;
 
 /**
  * @author lai

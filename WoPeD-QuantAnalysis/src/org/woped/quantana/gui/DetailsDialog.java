@@ -12,7 +12,7 @@ import java.util.HashMap;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 import org.woped.quantana.model.ReportServerStats;
 import org.woped.quantana.model.ReportStats;
 import org.woped.quantana.model.ServerStats;

@@ -30,7 +30,7 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

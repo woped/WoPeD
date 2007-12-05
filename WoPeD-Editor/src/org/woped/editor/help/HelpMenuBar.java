@@ -32,7 +32,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.woped.editor.utilities.Messages;
 import org.woped.editor.help.action.BrowserBackAction;
 import org.woped.editor.help.action.BrowserCloseAction;
 import org.woped.editor.help.action.BrowserContentsAction;
@@ -40,6 +39,7 @@ import org.woped.editor.help.action.BrowserForwardAction;
 import org.woped.editor.help.action.BrowserHomeAction;
 import org.woped.editor.help.action.BrowserRefreshAction;
 import org.woped.editor.help.action.BrowserWebpageAction;
+import org.woped.language.Messages;
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>

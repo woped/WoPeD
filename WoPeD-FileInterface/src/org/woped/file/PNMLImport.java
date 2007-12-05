@@ -58,7 +58,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.NetType;
 import org.woped.pnml.OrganizationUnitType;

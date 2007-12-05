@@ -49,9 +49,9 @@ import javax.swing.event.HyperlinkListener;
 import javax.swing.text.Document;
 
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.utilities.Messages;
 import org.woped.editor.Constants;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.language.Messages;
 
 /**
  * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>

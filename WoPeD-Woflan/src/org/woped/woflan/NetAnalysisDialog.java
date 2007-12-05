@@ -24,7 +24,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.vc.GraphTreeModelSelector;
 import org.woped.editor.controller.vc.NetInfo;
 import org.woped.editor.controller.vc.NodeGroupNetInfo;
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 @SuppressWarnings("serial")
 public class NetAnalysisDialog extends JDialog implements WindowListener{

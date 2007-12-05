@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
 
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 import org.woped.quantana.graph.Node;
 import org.woped.quantana.model.TimeModel;
 import org.woped.quantana.Constants;

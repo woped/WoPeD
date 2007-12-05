@@ -28,7 +28,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileFilter;
 
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 import org.woped.quantana.simulation.Simulator;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;

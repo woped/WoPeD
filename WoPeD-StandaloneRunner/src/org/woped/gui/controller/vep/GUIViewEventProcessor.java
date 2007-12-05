@@ -48,13 +48,13 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.utilities.FileFilterImpl;
-import org.woped.editor.utilities.Messages;
 import org.woped.gui.AboutUI;
 import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
+import org.woped.language.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

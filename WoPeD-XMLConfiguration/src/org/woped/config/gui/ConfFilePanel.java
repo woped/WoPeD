@@ -44,7 +44,7 @@ import javax.swing.event.ChangeListener;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

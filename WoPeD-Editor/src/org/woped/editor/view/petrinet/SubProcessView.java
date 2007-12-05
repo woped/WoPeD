@@ -32,7 +32,7 @@ import javax.swing.ImageIcon;
 import org.jgraph.graph.CellViewRenderer;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.view.AbstractElementView;
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 /**
  * @author rey

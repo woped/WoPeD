@@ -122,8 +122,8 @@ import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
-import org.woped.editor.utilities.Messages;
 import org.woped.editor.view.ViewFactory;
+import org.woped.language.Messages;
 import org.woped.simulation.TokenGameController;
 
 /**

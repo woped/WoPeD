@@ -7,7 +7,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 public class TreeRenderer extends DefaultTreeCellRenderer {
 

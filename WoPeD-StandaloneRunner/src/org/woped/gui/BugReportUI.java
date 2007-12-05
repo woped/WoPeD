@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 @SuppressWarnings("serial")
 public class BugReportUI extends JDialog

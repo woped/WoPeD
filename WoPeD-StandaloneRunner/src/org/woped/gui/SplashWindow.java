@@ -42,7 +42,7 @@ import javax.swing.JWindow;
 import javax.swing.Timer;
 
 import org.woped.core.config.DefaultStaticConfiguration;
-import org.woped.editor.utilities.Messages;
+import org.woped.language.Messages;
 
 /**
  * TODO: DOCUMENTATION (xraven)
