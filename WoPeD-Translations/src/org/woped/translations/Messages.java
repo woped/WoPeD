@@ -58,7 +58,7 @@ public abstract class Messages
             return RESOURCE_BUNDLE.getString(key);
         } catch (MissingResourceException e)
         {
-            LoggerManager.debug(Constants.LANGUAGE_LOGGER, "Resource not found: " + key);
+            LoggerManager.debug(Constants.TRANSLATIONS_LOGGER, "Resource not found: " + key);
             return '!' + key + '!';
         }
     }
@@ -91,7 +91,7 @@ public abstract class Messages
             return tempRB.getString(key);
         } catch (MissingResourceException e)
         {
-            LoggerManager.debug(Constants.LANGUAGE_LOGGER, "Resource not found: " + key);
+            LoggerManager.debug(Constants.TRANSLATIONS_LOGGER, "Resource not found: " + key);
             return '!' + key + '!';
         }
     }

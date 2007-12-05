@@ -2,5 +2,5 @@ package org.woped.translations;
 
 public class Constants
 {
-    public final static String LANGUAGE_LOGGER = "LANGUAGE_LOGGER";
+    public final static String TRANSLATIONS_LOGGER = "TRANSLATIONS_LOGGER";
 }
