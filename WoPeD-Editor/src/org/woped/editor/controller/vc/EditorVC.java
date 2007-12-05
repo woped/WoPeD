@@ -124,7 +124,7 @@ import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.view.ViewFactory;
 import org.woped.translations.Messages;
-import org.woped.simulation.TokenGameController;
+import org.woped.qualanalysis.simulation.TokenGameController;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
