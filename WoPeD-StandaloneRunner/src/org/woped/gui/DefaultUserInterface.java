@@ -40,7 +40,7 @@ import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
-import org.woped.qualanalysis.simulation.TokengameBarVC;
+import org.woped.qualanalysis.simulation.TokenGameBarVC;
 import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
