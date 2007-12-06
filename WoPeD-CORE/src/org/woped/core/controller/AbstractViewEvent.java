@@ -256,6 +256,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     
     public static final int QUANTCAP				  = 1081;
     public static final int QUANTSIM				  = 1082;
+    public static final int REACHGRAPH				  = 1083;
 
     public AbstractViewEvent(Object source, int type, int order, Object data)
     {

@@ -147,7 +147,9 @@ public class VisualController implements PropertyChangeListener,
 
 	public static final int DRAWMODE_XORJOIN_ANDSPLIT = 36;
 
-	private static final int MAX_ID = 38;
+	public static final int REACH_GRAPH_START = 38;
+
+	private static final int MAX_ID = 39;
 
 	private ArrayList<Vector<Object>> m_enable = new ArrayList<Vector<Object>>();
 	private ArrayList<Vector<Object>> m_visible = new ArrayList<Vector<Object>>();

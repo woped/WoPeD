@@ -101,6 +101,7 @@ public class ToolBarVC extends JToolBar implements IViewController
     private AbstractButton	   m_analysisButton		= null;
     private AbstractButton	   m_quantCapButton		= null;
     private AbstractButton	   m_quantSimButton		= null;
+    private AbstractButton     m_reachabilityGraphButton = null;
     public ToolBarVC(String id)
     {
         this.id = id;
@@ -157,6 +158,7 @@ public class ToolBarVC extends JToolBar implements IViewController
         add(getAnalysisButton());
         add(getQuantCapButton());
         add(getQuantSimButton());
+        add(getReachabilityGraphButton());
     }
 
     private AbstractButton getNewButton()
@@ -429,6 +431,15 @@ public class ToolBarVC extends JToolBar implements IViewController
     		m_quantSimButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_QUANTSIM), false);
     	}
     	return m_quantSimButton;
+    }
+    
+    public AbstractButton getReachabilityGraphButton()
+    {
+    	if (m_reachabilityGraphButton == null)
+    	{
+    		m_reachabilityGraphButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_REACHGRAPH_START));
+    	}
+    	return m_reachabilityGraphButton;
     }
 
     public void addViewListener(IViewListener listener)

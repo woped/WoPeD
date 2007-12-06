@@ -103,8 +103,9 @@ public class ActionFactory
     public final static String         ACTIONID_ARRANGE                = "Menu.Window.Arrange";
     public final static String		   ACTIONID_SHOWSIDEBAR			   = "Menu.Window.ShowSideBar";
 
-    public final static String         ACTIONID_QUANTCAP                = "ToolBar.QuantCap";
-    public final static String         ACTIONID_QUANTSIM                = "ToolBar.QuantSim";
+    public final static String         ACTIONID_QUANTCAP               = "ToolBar.QuantCap";
+    public final static String         ACTIONID_QUANTSIM               = "ToolBar.QuantSim";
+    public final static String         ACTIONID_REACHGRAPH_START       = "ToolBar.ReachabilityGraph";
     
     
     private static HashMap<String, WoPeDAction>             STATIC_ACTION_MAP               = null;
@@ -197,7 +198,8 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_QUANTCAP), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);        
         STATIC_ACTION_MAP.put(ACTIONID_QUANTSIM, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.QUANTSIM, null, ACTIONID_QUANTSIM));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_QUANTSIM), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);   
-
+        STATIC_ACTION_MAP.put(ACTIONID_REACHGRAPH_START, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REACHGRAPH, null, ACTIONID_REACHGRAPH_START));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REACHGRAPH_START), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.REACH_GRAPH_START);
         /* VIEW */
 //        STATIC_ACTION_MAP.put(ACTIONID_STRETCH, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.STRETCH, null, ACTIONID_STRETCH));
 //        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_STRETCH), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
