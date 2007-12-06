@@ -50,12 +50,12 @@ import javax.swing.table.TableCellEditor;
 import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Node;
@@ -82,7 +82,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private static final long serialVersionUID = 1L;
 
-	private EditorVC editor = null;
+	private IEditor editor = null;
 
 	private JPanel iatPanel = null;
 
@@ -227,7 +227,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	/**
 	 * This is the default constructor
 	 */
-	public QuantitativeSimulationDialog(JFrame owner, EditorVC editor) {
+	public QuantitativeSimulationDialog(JFrame owner, IEditor editor) {
 		super(owner, Messages.getTitle("QuantAna.Simulation"), true);
 		this.editor = editor;
 		sa = new StructuralAnalysis(editor);

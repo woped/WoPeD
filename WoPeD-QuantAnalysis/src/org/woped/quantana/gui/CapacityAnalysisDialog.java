@@ -34,12 +34,12 @@ import javax.swing.table.JTableHeader;
 
 import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Arc;
@@ -59,7 +59,7 @@ public class CapacityAnalysisDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
-	private EditorVC editor = null;
+	private IEditor editor = null;
 
 	private JLabel lblPeriod = null;
 
@@ -194,7 +194,7 @@ public class CapacityAnalysisDialog extends JDialog {
 	/**
 	 * This is the default constructor
 	 */
-	public CapacityAnalysisDialog(JFrame owner, EditorVC editor) {
+	public CapacityAnalysisDialog(JFrame owner, IEditor editor) {
 		super(owner, Messages.getTitle("QuantAna.CapacityPlanning"), true);
 		this.editor = editor;
 		sa = new StructuralAnalysis(editor);
