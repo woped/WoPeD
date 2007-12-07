@@ -106,9 +106,10 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_woflanMenuItem         = null;
     private JMenuItem		   m_wopedMenuItem			= null;
 
-    private JMenuItem		   m_capPlanningMenuItem	= null;
-    private JMenuItem		   m_quantSimMenuItem		= null;
-
+    private JMenuItem		   m_capPlanningMenuItem	   = null;
+    private JMenuItem		   m_quantSimMenuItem		   = null;
+    private JMenuItem		   m_reachabilityGraphMenuItem = null;
+    
     private JMenu              m_optionsMenu            = null;
     private JMenuItem          m_optionsMenuItem        = null;
     private JMenu              m_windowMenu             = null;
@@ -202,6 +203,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_analyseMenu.add(getWopedMenuItem());
             m_analyseMenu.add(getCapPlanningMenuItem());
             m_analyseMenu.add(getQuantSimMenuItem());
+            m_analyseMenu.add(getReachabilityGraphMenuItem());
         }
         return m_analyseMenu;
     }
@@ -214,8 +216,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     // return m_containingWindow;
     // }
 
-    
-    /**
+	/**
      * Creates the editMenu if necessary.
      * 
      * @return Returns the editMenu.
@@ -710,6 +711,15 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         }
         return m_capPlanningMenuItem;
     }
+    
+    
+    private JMenuItem getReachabilityGraphMenuItem() {
+        if (m_reachabilityGraphMenuItem == null)
+        {
+        	m_reachabilityGraphMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_REACHGRAPH_START));
+        }
+        return m_reachabilityGraphMenuItem;
+	}
 
     /**
      * @return Returns the sampleMenu.
