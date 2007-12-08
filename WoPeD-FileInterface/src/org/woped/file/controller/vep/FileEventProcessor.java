@@ -40,10 +40,10 @@ import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
 import org.woped.translations.Messages;
+import org.woped.qualanalysis.NetAnalysisDialog;
+import org.woped.qualanalysis.WoflanAnalysis;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.woflan.NetAnalysisDialog;
-import org.woped.woflan.WoflanAnalysis;
 import org.woped.bpel.BPEL_MAIN;
 
 public class FileEventProcessor extends AbstractEventProcessor

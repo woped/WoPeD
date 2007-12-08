@@ -70,7 +70,6 @@ public class RunWoPeD
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.file.Constants.FILE_LOGGER)), org.woped.file.Constants.FILE_LOGGER);
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.config.Constants.CONFIG_LOGGER)), org.woped.config.Constants.CONFIG_LOGGER);
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.core.Constants.CORE_LOGGER)), org.woped.core.Constants.CORE_LOGGER);
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.woflan.Constants.WOFLAN_LOGGER)), org.woped.woflan.Constants.WOFLAN_LOGGER);
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.quantana.Constants.QUANTANA_LOGGER)), org.woped.quantana.Constants.QUANTANA_LOGGER);
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER)), org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER);
                 LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.translations.Constants.TRANSLATIONS_LOGGER)), org.woped.translations.Constants.TRANSLATIONS_LOGGER);

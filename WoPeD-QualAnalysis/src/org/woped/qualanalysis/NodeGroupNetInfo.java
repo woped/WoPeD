@@ -1,4 +1,4 @@
-package org.woped.editor.controller.vc;
+package org.woped.qualanalysis;
 
 import java.util.ArrayList;
 import java.util.Enumeration;

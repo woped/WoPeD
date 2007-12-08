@@ -124,6 +124,7 @@ import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.view.ViewFactory;
 import org.woped.translations.Messages;
+import org.woped.qualanalysis.GraphTreeModelSelector;
 import org.woped.qualanalysis.simulation.TokenGameController;
 
 /**
