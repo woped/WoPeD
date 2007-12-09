@@ -10,7 +10,6 @@
 	<filter token="coreversion" value="${COREVERSION}${SNAPSHOT}" />
 	<filter token="editorversion" value="${EDITORVERSION}${SNAPSHOT}" />
 	<filter token="qualanaversion" value="${QUALANAVERSION}${SNAPSHOT}" />
-	<filter token="woflanversion" value="${WOFLANVERSION}${SNAPSHOT}" />
 	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}${SNAPSHOT}" />
 	<filter token="guiversion" value="${GUIVERSION}${SNAPSHOT}" />
 	<filter token="quantanaversion" value="${QUANTANAVERSION}${SNAPSHOT}" />
@@ -60,7 +59,6 @@
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
 			<fileset dir="../WoPeD-StandaloneRunner/bin" />
-			<fileset dir="../WoPeD-Woflan/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
@@ -141,7 +139,6 @@
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Editor/src" destdir="dist/doc/WoPeD-Editor/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-StandaloneRunner/src" destdir="dist/doc/WoPeD-StandaloneRunner/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-FileInterface/src" destdir="dist/doc/WoPeD-FileInterface/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Woflan/src" destdir="dist/doc/WoPeD-Woflan/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-XMLConfiguration/src" destdir="dist/doc/WoPeD-XMLConfiguration/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Translations/src" destdir="dist/doc/WoPeD-Translations/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QuantAnalysis/src" destdir="dist/doc/QuantAnalysis/api-doc" />
@@ -153,7 +150,6 @@
 		<ant antfile="../WoPeD-CORE/build.xml" dir="../WoPeD-CORE" />
 		<ant antfile="../WoPeD-BPELExport/build.xml" dir="../WoPeD-BPELExport" />
 		<ant antfile="../WoPeD-Editor/build.xml" dir="../WoPeD-Editor" />
-		<ant antfile="../WoPeD-Woflan/build.xml" dir="../WoPeD-Woflan" />
 		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
 		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
