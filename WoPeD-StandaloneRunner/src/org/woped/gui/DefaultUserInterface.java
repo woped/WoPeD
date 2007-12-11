@@ -42,6 +42,7 @@ import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.qualanalysis.simulation.TokenGameBarVC;
 import org.woped.translations.Messages;
+import org.woped.qualanalysis.test.*;
 
 @SuppressWarnings("serial")
 public class DefaultUserInterface extends JFrame implements IUserInterface, InternalFrameListener
@@ -67,7 +68,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         this.statusBar = statusBar;
         this.taskBar = taskBar;
         this.menuBar = menuBar;
-
+    
         desktop = new JDesktopPane();
         desktop.setBackground(DefaultStaticConfiguration.DEFAULT_UI_BACKGROUND_COLOR);
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
@@ -114,10 +115,14 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
        
         // addKeyListener(this);
         SplashWindow splash = new SplashWindow(this);
-        
-        //Tokengame Shortcut here
-        //TokengameBarVC RCFenster = new TokengameBarVC();
-        //desktop.add(RCFenster);
+
+        //Helper for adding Tokengame
+        //see Java-Doc for explanation
+        ReferenceProvider helper = new ReferenceProvider();
+        helper.setDesktopReference(desktop);
+        helper.setUIReference(this);
+       
+    
     
         setVisible(true);
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
@@ -158,6 +163,9 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             // frame.getBounds().getHeight());
             m_numEditors++;
             frame.setVisible(true);
+           
+           
+            
             try
             {
                 frame.setSelected(true);

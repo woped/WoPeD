@@ -29,6 +29,7 @@ import org.woped.config.WoPeDConfiguration;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
+import org.woped.qualanalysis.test.ReferenceProvider;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -85,7 +86,10 @@ public class RunWoPeD
             
             // create & init GUI
             Locale.setDefault(Locale.ENGLISH);
-            new DefaultApplicationMediator(null, new WoPeDConfiguration(), args);
+            DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDConfiguration(), args);
+            ReferenceProvider helper = new ReferenceProvider();
+            helper.setMediatorReference(mainwindow);
+            
         } catch (RuntimeException e1)
         {
             e1.printStackTrace();

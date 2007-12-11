@@ -80,7 +80,6 @@ public class ApplicationMediator extends AbstractApplicationMediator
     public ApplicationMediator(IUserInterface ui, IConfiguration conf)
     {
         super(ui, conf);
-
         visualController = new VisualController(this);
         ActionFactory.createStaticActions(this);
 

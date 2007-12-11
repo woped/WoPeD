@@ -1,9 +1,11 @@
 package org.woped.qualanalysis.simulation;
 import javax.swing.*;
 
+
 import org.woped.translations.Messages;
 
 import java.awt.*;
+import org.woped.qualanalysis.test.*;
 
 /**
  * This class specifies the remote control UI of the Tokengame-simulator
@@ -52,6 +54,8 @@ public class TokenGameBarVC extends JInternalFrame {
 	private int    xtYsize            = 25;
 	private GridBagConstraints hgbc   = null;
 	private GridBagConstraints gbc    = null;
+	private ReferenceProvider MainWindowReference = null;
+	private TokenGameHistoryManagerVC HistoryDialog = null;
 	
 	//Constructor(s)
 	public TokenGameBarVC()
@@ -70,6 +74,13 @@ public class TokenGameBarVC extends JInternalFrame {
 		this.add(addPlaybackNavigation());
 		this.add(addAutoChoice());
 		this.add(addHistory());
+		
+		//Calling the Dialog-Box of the HistoryManager
+		//Gets Reference out of Help-Class: ReferenceProvider
+		MainWindowReference = new ReferenceProvider();
+		HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference());
+		HistoryDialog.setVisible(false);
+
 	}
 	
 	

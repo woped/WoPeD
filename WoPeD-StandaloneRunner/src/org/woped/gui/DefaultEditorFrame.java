@@ -178,6 +178,7 @@ public class DefaultEditorFrame extends JInternalFrame
 			glass.removeMouseListener(mouseGrabber);
 			glass.removeMouseMotionListener(mouseGrabber);
 			glass.setVisible(false);
+			
 			if (old!=null)
 			{
 				getRootPane().setGlassPane(old);

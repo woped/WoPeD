@@ -48,6 +48,7 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.test.*;
 
 
 /**
@@ -85,6 +86,8 @@ public class TokenGameController
     private MouseHandler           tokenGameMouseHandler = null;
     private boolean                visualTokenGame       = false;
     private IEditor				   thisEditor 			 = null;
+    private ReferenceProvider      desktop               = null;
+    private TokenGameBarVC         RemoteControl         = null; 
     
     /**
      * Constructor for the model and visual sided TokenGame.
@@ -99,6 +102,7 @@ public class TokenGameController
         this.thisEditor = thisEditor;
         setVisualTokenGame(graph != null);
         tokenGameMouseHandler = new MouseHandler();
+       
     }
 
     /**
@@ -126,6 +130,7 @@ public class TokenGameController
         if (isVisualTokenGame())
         {
             enableVisualTokenGame();
+            
         }
         // Storing Transition Reference (simple and operator)
         allTransitions = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
@@ -134,6 +139,23 @@ public class TokenGameController
         // Find and show active Transitions/Arcs
         checkNet();
         //animator.start();
+        
+        //displays the TokenGame Remote-Control if it already exist
+        if(RemoteControl != null)
+        {
+        	desktop.getDesktopReference().add(RemoteControl);
+        	RemoteControl.setVisible(true);
+        }
+        //Creates the Tokengame if it does not exist, yet
+        if((RemoteControl == null))// && (desktop == null))
+        {
+          RemoteControl = new TokenGameBarVC();
+          desktop = new ReferenceProvider();
+          desktop.getDesktopReference().add(RemoteControl);
+          //RemoteControl.setVisible(true);
+        }
+        
+        
     }
 
     /**
@@ -154,6 +176,18 @@ public class TokenGameController
             disableVisualTokenGame();
         }
         //animator.stop();
+        
+        //Hide and remove Tokengame Remote-Control
+        if((RemoteControl != null) && (desktop != null))
+        {
+        	RemoteControl.setVisible(false);
+        	desktop.getDesktopReference().remove(RemoteControl);
+        	
+        	//BUG IN HERE!
+        	//As soon as the focus is set on the Remote-Control, the TokenGame Cannot be switched of
+        	//Anthy, please care about it, if you find time to investigate.
+        	//Alignment-Issue still exists as well
+        }
     }
 
     
