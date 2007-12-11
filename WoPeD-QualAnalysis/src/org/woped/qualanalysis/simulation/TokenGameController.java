@@ -23,6 +23,7 @@
 package org.woped.qualanalysis.simulation;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashSet;
@@ -140,21 +141,24 @@ public class TokenGameController
         checkNet();
         //animator.start();
         
-        //displays the TokenGame Remote-Control if it already exist
+        //displays the TokenGame Remote-Control if it already exist, if not create
         if(RemoteControl != null)
         {
         	desktop.getDesktopReference().add(RemoteControl);
-        	RemoteControl.setVisible(true);
+        	RemoteControl.setVisible(true);        	
         }
-        //Creates the Tokengame if it does not exist, yet
-        if((RemoteControl == null))// && (desktop == null))
+        else
         {
           RemoteControl = new TokenGameBarVC();
           desktop = new ReferenceProvider();
-          desktop.getDesktopReference().add(RemoteControl);
+          //AS: getLocation, not finally implemented. Add RemoteControl at Point Location
+          Point p = desktop.getDesktopReference().getLocation();
+          p.setLocation(desktop.getDesktopReference().getLocation().getX(), desktop.getDesktopReference().getLocation().getY()*14);
+          desktop.getDesktopReference().add(RemoteControl).setLocation(p);
+          //desktop.getDesktopReference().
           //RemoteControl.setVisible(true);
         }
-        
+               
         
     }
 
