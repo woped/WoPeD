@@ -1,13 +1,11 @@
 package org.woped.editor.controller.vep;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JFrame;
 
-import org.jgraph.graph.GraphCell;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
@@ -204,7 +202,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 								.getUi(), (TransitionModel) element, editor);
 
 						// Transform only if the OK button was pressed
-						if (transEditor.getExitType()==transEditor.etOK)
+						if (transEditor.getExitType() == TransitionPropertyEditor.etOK)
 						{
 							String command = transEditor.getBranchingButtonGroup().getSelection().getActionCommand();
 
@@ -466,8 +464,10 @@ public class EditorEventProcessor extends AbstractEventProcessor
 
 		}
 
+		// THIS DOES NOT WORK - "ghost transition" remains in editor!!! 
 		p_editor.deleteSelection();
-		p_editor.create(newMap);
+		//-------------------------------------------
+		p_editor.create(newMap, true, false);
 
 		for (int i = 0; i < outAcrs.size(); i++)
 		{

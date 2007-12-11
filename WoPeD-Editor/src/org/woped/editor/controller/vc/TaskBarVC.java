@@ -1,6 +1,5 @@
 package org.woped.editor.controller.vc;
 
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;

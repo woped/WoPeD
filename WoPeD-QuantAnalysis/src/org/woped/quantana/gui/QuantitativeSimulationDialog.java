@@ -1415,7 +1415,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	}
 
 	private void checkParams() throws InvalidRunsException, InvalidIntervalException {
-		double tmp;
 		int i;
 		boolean isInteger = false;
 		JTextField tf = null;
@@ -1423,22 +1422,22 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		try {
 			tf = txtLambda;
 			isInteger = false;
-			tmp = Double.parseDouble(txtLambda.getText());
+			Double.parseDouble(txtLambda.getText());
 
 			tf = txtPeriod;
 			isInteger = false;
-			tmp = Double.parseDouble(txtPeriod.getText());
+			Double.parseDouble(txtPeriod.getText());
 
 			tf = txtIATStdDev;
 			if (tf.isEnabled()){
 				isInteger = false;
-				tmp = Double.parseDouble(txtIATStdDev.getText());
+				Double.parseDouble(txtIATStdDev.getText());
 			}
 
 			tf = txtSTStdDev;
 			if (tf.isEnabled()){
 				isInteger = false;
-				tmp = Double.parseDouble(txtSTStdDev.getText());
+				Double.parseDouble(txtSTStdDev.getText());
 			}
 
 			tf = txtRuns;

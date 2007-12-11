@@ -2,13 +2,10 @@ package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.Dimension;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Vector;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.controller.IViewListener;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 
