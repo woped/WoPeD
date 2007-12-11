@@ -376,7 +376,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			sourceCreationMap.setNamePosition(30, 200);
 			sourceCreationMap.setEditOnCreation(false);
 			sourceCreationMap.setUpperElement(sourceModel);
-			createElement(sourceCreationMap, true);
+			createElement(sourceCreationMap, true, true);
 		}
 		else
 		{
@@ -400,7 +400,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			targetCreationMap.setNamePosition(540, 200);
 			targetCreationMap.setEditOnCreation(false);
 			targetCreationMap.setUpperElement(targetModel);
-			createElement(targetCreationMap, true);
+			createElement(targetCreationMap, true, true);
 
 		}
 		else
@@ -538,25 +538,9 @@ public class EditorVC extends JPanel implements KeyListener,
 					GroupModel group = (GroupModel) transition.getParent();
 					TriggerModel triggerModel = ((PetriNetModelProcessor) getModelProcessor())
 							.newTrigger(map);
-					if (map.getTriggerPosition() == null)
-					{
-						map.setTriggerPosition(transition.getX() + 10,
-								transition.getY() - 20);
-					} else
-					{
-						map
-								.setTriggerPosition(
-										map.getTriggerPosition().getX1() == -1 ? transition
-												.getX() + 10
-												: map.getTriggerPosition()
-														.getX1(),
-										map.getTriggerPosition().getX2() == -1 ? transition
-												.getY() - 20
-												: map.getTriggerPosition()
-														.getX2());
-					}
-					triggerModel.setPosition(map.getTriggerPosition().getX1(),
-							map.getTriggerPosition().getX2());
+					
+					triggerModel.setPosition(map.getTriggerPosition().x,
+							map.getTriggerPosition().y);
 					ParentMap pm = new ParentMap();
 					pm.addEntry(triggerModel, group);
 					HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
@@ -596,24 +580,9 @@ public class EditorVC extends JPanel implements KeyListener,
 				GroupModel group = (GroupModel) transition.getParent();
 				TransitionResourceModel transResourceModell = ((PetriNetModelProcessor) getModelProcessor())
 						.newTransResource(map);
-				if (map.getResourcePosition() == null)
-				{
-					map.setResourcePosition(transition.getX() - 10,
-							transition.getY()
-									- TransitionResourceModel.DEFAULT_HEIGHT
-									- 25);
-				} else
-				{
-					map.setResourcePosition(
-									map.getResourcePosition().getX1() == -1 ? transition
-											.getX() - 5
-											: map.getResourcePosition().getX1(),
-									map.getResourcePosition().getX2() == -1 ? transition
-											.getY() - 5
-											: map.getResourcePosition().getX2());
-				}
-				transResourceModell.setPosition(map.getResourcePosition()
-						.getX1(), map.getResourcePosition().getX2());
+				
+				transResourceModell.setPosition(map.getResourcePosition().x, 
+						map.getResourcePosition().y);
 				ParentMap pm = new ParentMap();
 				pm.addEntry(transResourceModell, group);
 				HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
@@ -650,7 +619,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			map.setStateType(additionalType);
 		if (x != -1 && y != -1)
 			map.setPosition(x, y);
-		return createElement(map, true);
+		return createElement(map, true, doNotEdit);
 	}
 
 	/**
@@ -659,7 +628,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	 * @param map
 	 * @return
 	 */
-	private GraphCell createElement(CreationMap map, boolean insertIntoCache)
+	private GraphCell createElement(CreationMap map, boolean insertIntoCache, boolean editNameTag)
 	{
 		if (map.isValid())
 		{
@@ -671,8 +640,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			// ensure that There is an Position
 			if (map.getPosition() != null)
 			{
-				Point point = new Point((int) (map.getPosition().getX1()),
-						(int) (map.getPosition().getX2()));
+				Point point = new Point(map.getPosition().x, map.getPosition().y);
 				// map.setPosition(new IntPair());
 				element.setPosition((Point) getGraph().snap(point));
 			} else if (getLastMousePosition() != null)
@@ -701,8 +669,8 @@ public class EditorVC extends JPanel implements KeyListener,
 				} else
 				{
 					((PetriNetModelElement) element).getNameModel()
-							.setPosition(map.getNamePosition().getX1(),
-									map.getNamePosition().getX2());
+							.setPosition(map.getNamePosition().x,
+									map.getNamePosition().y);
 				}
 				if (map.getName() == null)
 				{
@@ -729,7 +697,7 @@ public class EditorVC extends JPanel implements KeyListener,
 				getGraph().getGraphLayoutCache().insert(group);
 
 				// edit
-				if (ConfigurationManager.getConfiguration()
+				if (editNameTag && ConfigurationManager.getConfiguration()
 						.isEditingOnCreation()
 						&& map.isEditOnCreation() && isSmartEditActive())
 				{
@@ -758,7 +726,7 @@ public class EditorVC extends JPanel implements KeyListener,
                     getGraph().getGraphLayoutCache().insert(element);
                 }
 				// edit
-				if (ConfigurationManager.getConfiguration()
+				if (editNameTag && ConfigurationManager.getConfiguration()
 						.isEditingOnCreation()
 						&& map.isEditOnCreation() && isSmartEditActive())
 				{
@@ -1269,33 +1237,33 @@ public class EditorVC extends JPanel implements KeyListener,
 			deltaY = 10;
 		} else
 		{
-			CreationMap leftestElement;
+			CreationMap leftmostElement;
 			// find delta
 			Iterator eleIter = pasteElements.keySet().iterator();
-			leftestElement = (CreationMap) pasteElements.get(eleIter.next());
+			leftmostElement = (CreationMap) pasteElements.get(eleIter.next());
 			CreationMap currentMap;
 			while (eleIter.hasNext())
 			{
 				currentMap = (CreationMap) pasteElements.get(eleIter.next());
-				if (leftestElement.getPosition().getX1() > currentMap
-						.getPosition().getX1())
-					leftestElement = (CreationMap) currentMap.clone();
-				else if (leftestElement.getPosition().getX1() == currentMap
-						.getPosition().getX1()
-						&& leftestElement.getPosition().getX2() < currentMap
-								.getPosition().getX2())
-					leftestElement = (CreationMap) currentMap.clone();
+				if (leftmostElement.getPosition().x > currentMap
+						.getPosition().x)
+					leftmostElement = (CreationMap) currentMap.clone();
+				else if (leftmostElement.getPosition().x == currentMap
+						.getPosition().x
+						&& leftmostElement.getPosition().y < currentMap
+								.getPosition().y)
+					leftmostElement = (CreationMap) currentMap.clone();
 			}
-			IntPair position = leftestElement.getPosition();
-			deltaX = x - position.getX1();
-			deltaY = y - position.getX2();
+			Point position = leftmostElement.getPosition();
+			deltaX = x - position.x;
+			deltaY = y - position.y;
 		}
 
 		/* insert elements */
 		CreationMap currentMap, currentArcMap;
 		HashMap<String, Object> correctedSourceId = new HashMap<String, Object>();
 		HashMap<String, Object> correctedTargetId = new HashMap<String, Object>();
-		IntPair currentPosition;
+		Point currentPosition;
 		AbstractElementModel tempElement;
 		String oldElementId;
 		Vector<Object> selectElements = new Vector<Object>();
@@ -1306,17 +1274,17 @@ public class EditorVC extends JPanel implements KeyListener,
 
 			// position for element
 			currentPosition = currentMap.getPosition();
-			currentMap.setPosition(currentPosition.getX1() + deltaX,
-					currentPosition.getX2() + deltaY);
+			currentMap.setPosition(currentPosition.y + deltaX,
+					currentPosition.x + deltaY);
 			// position for name
 			currentPosition = currentMap.getNamePosition();
-			currentMap.setNamePosition(currentPosition.getX1() + deltaX,
-					currentPosition.getX2() + deltaY);
+			currentMap.setNamePosition(currentPosition.x + deltaX,
+					currentPosition.y + deltaY);
 			// position for trigger
 			if ((currentPosition = currentMap.getTriggerPosition()) != null)
 			{
-				currentMap.setTriggerPosition(currentPosition.getX1() + deltaX,
-						currentPosition.getX2() + deltaY);
+				currentMap.setTriggerPosition(currentPosition.x + deltaX,
+						currentPosition.y + deltaY);
 			}
 			oldElementId = currentMap.getId();
 			currentMap.setId(null);
@@ -2339,14 +2307,14 @@ public class EditorVC extends JPanel implements KeyListener,
 	}
     
     public GraphCell create(CreationMap map){
-        return create(map, true);
+        return create(map, true, true);
     }
-    public GraphCell create(CreationMap map, boolean insertIntoCache){
+    public GraphCell create(CreationMap map, boolean insertIntoCache, boolean doNotEdit){
         if (map.getArcSourceId()!=null){//Maybe there should be a ArcCreationMap
             return createArc(map, insertIntoCache);
         }
         else {
-            return createElement(map, insertIntoCache);
+            return createElement(map, insertIntoCache, doNotEdit);
         }
     }
 
@@ -2354,7 +2322,7 @@ public class EditorVC extends JPanel implements KeyListener,
         Vector<GraphCell> result  = new Vector<GraphCell>();
         for (int i=0;i<maps.length;i++){
             if (maps[i]!=null){
-                GraphCell element = create(maps[i], false);
+                GraphCell element = create(maps[i], false, true);
                 result.add(element);
             }
         }
