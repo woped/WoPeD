@@ -14,6 +14,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int VIEWEVENTTYPE_APPLICATION = 1;
     public static final int VIEWEVENTTYPE_FILE        = 2;
     public static final int VIEWEVENTTYPE_GUI         = 3;
+    public static final int VIEWEVENTTYPE_REACHGRAPH  = 4;
 
     // WoPeD Orders
     public static final int SELECT_EDITOR             = 1000;

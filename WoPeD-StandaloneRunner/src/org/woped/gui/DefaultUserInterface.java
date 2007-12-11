@@ -229,7 +229,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     public IEditor getEditorFocus()
     {
-        if (desktop.getSelectedFrame() != null)
+        if (desktop.getSelectedFrame() != null && desktop.getSelectedFrame() instanceof DefaultEditorFrame)
         {
             return ((DefaultEditorFrame) desktop.getSelectedFrame()).getEditor();
         }

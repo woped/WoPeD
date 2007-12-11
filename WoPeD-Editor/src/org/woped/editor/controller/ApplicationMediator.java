@@ -48,6 +48,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
+import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphEventProcessor;
 import org.woped.translations.Messages;
 
 /**
@@ -85,6 +86,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
 
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, new ApplicationEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, this));
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT, new EditorEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_EDIT, this));
+        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH, new ReachabilityGraphEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH, this));
         clipboard.addClipboardListener(visualController);
 
     }
