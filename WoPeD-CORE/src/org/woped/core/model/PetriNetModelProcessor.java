@@ -122,16 +122,16 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 				if (map.getTriggerPosition() != null)
 					((TransitionModel) anElement).getToolSpecific()
 							.getTrigger().setPosition(
-									map.getTriggerPosition().getX1(),
-									map.getTriggerPosition().getX2());
+									map.getTriggerPosition().x,
+									map.getTriggerPosition().y);
 				if (map.getResourceOrgUnit() != null
 						&& map.getResourceRole() != null)
 					newTransResource(map);
 				if (map.getResourcePosition() != null)
 					((TransitionModel) anElement).getToolSpecific()
 							.getTransResource().setPosition(
-									map.getResourcePosition().getX1(),
-									map.getResourcePosition().getX2());
+									map.getResourcePosition().x,
+									map.getResourcePosition().y);
 				if (map.getTransitionTime()!=-1)
 					((TransitionModel)anElement).getToolSpecific().setTime(map.getTransitionTime());
 				if (map.getTransitionTimeUnit()!=-1)

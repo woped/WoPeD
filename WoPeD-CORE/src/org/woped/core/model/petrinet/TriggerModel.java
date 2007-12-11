@@ -86,7 +86,7 @@ public class TriggerModel extends DefaultGraphCell
 
         if (creationMap.getTriggerPosition() != null)
         {
-            setPosition(new Point(creationMap.getTriggerPosition().getX1(), creationMap.getTriggerPosition().getX2()));
+            setPosition(new Point(creationMap.getTriggerPosition().x, creationMap.getTriggerPosition().y));
         }
     }
 
@@ -158,8 +158,8 @@ public class TriggerModel extends DefaultGraphCell
     {
         setPosition((int) p.getX(), (int) p.getY());
     }
-
-    public Point getPosition()
+    
+   public Point getPosition()
     {
         Rectangle2D rect = GraphConstants.getBounds(getAttributes());
         if (rect != null)

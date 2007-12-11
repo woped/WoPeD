@@ -22,6 +22,7 @@
  */
 package org.woped.core.model;
 
+import java.awt.Point;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
@@ -129,21 +130,21 @@ public class CreationMap extends HashMap<String, Object>
         }
     }
 
-    public void setPosition(IntPair intPair)
+    public void setPosition(Point point)
     {
-        put(ELEMENT_POSITION, intPair);
+        put(ELEMENT_POSITION, point);
     }
 
     public void setPosition(int x, int y)
     {
-        put(ELEMENT_POSITION, new IntPair(x, y));
+        put(ELEMENT_POSITION, new Point(x, y));
     }
 
-    public IntPair getPosition()
+    public Point getPosition()
     {
         if (containsKey(ELEMENT_POSITION))
         {
-            return (IntPair) get(ELEMENT_POSITION);
+            return (Point) get(ELEMENT_POSITION);
         } else
         {
             return null;
@@ -184,19 +185,19 @@ public class CreationMap extends HashMap<String, Object>
 
     public void setNamePosition(int x, int y)
     {
-        put(ELEMENT_NAME_POSITION, new IntPair(x, y));
+        put(ELEMENT_NAME_POSITION, new Point(x, y));
     }
 
-    public void setNamePosition(IntPair intPair)
+    public void setNamePosition(Point point)
     {
-        put(ELEMENT_NAME_POSITION, intPair);
+        put(ELEMENT_NAME_POSITION, point);
     }
 
-    public IntPair getNamePosition()
+    public Point getNamePosition()
     {
         if (containsKey(ELEMENT_NAME_POSITION))
         {
-            return (IntPair) get(ELEMENT_NAME_POSITION);
+            return (Point) get(ELEMENT_NAME_POSITION);
         } else
         {
             return null;
@@ -250,22 +251,22 @@ public class CreationMap extends HashMap<String, Object>
             return -1;
         }
     }
-
-    public void setTriggerPosition(IntPair intPair)
+    
+    public void setTriggerPosition(Point point)
     {
-        put(TRIGGER_POSITION, intPair);
+        put(TRIGGER_POSITION, point);
     }
 
     public void setTriggerPosition(int x, int y)
     {
-        put(TRIGGER_POSITION, new IntPair(x, y));
+        put(TRIGGER_POSITION, new Point(x, y));
     }
 
-    public IntPair getTriggerPosition()
+    public Point getTriggerPosition()
     {
         if (containsKey(TRIGGER_POSITION))
         {
-            return (IntPair) get(TRIGGER_POSITION);
+            return (Point) get(TRIGGER_POSITION);
         } else
         {
             return null;
@@ -386,9 +387,9 @@ public class CreationMap extends HashMap<String, Object>
     }
 
 	@SuppressWarnings("unchecked")
-    public void addArcPoint(IntPair intPair)
+    public void addArcPoint(Point point)
     {
-        getArcPoints().add(intPair);
+        getArcPoints().add(point);
     }
 
     public void setArcPoints(List points)
@@ -396,29 +397,27 @@ public class CreationMap extends HashMap<String, Object>
         put(ARC_POINTS, points);
     }
 
-    // TRAnSITION_RESOURCES!!
-    // TODO: documentation Sebastian!!
-    public void setResourcePosition(IntPair intPair)
+    public void setResourcePosition(Point point)
     {
-        put(RESOURCE_POSITION, intPair);
+        put(RESOURCE_POSITION, point);
     }
 
     public void setResourcePosition(int x, int y)
     {
-        put(RESOURCE_POSITION, new IntPair(x, y));
+        put(RESOURCE_POSITION, new Point(x, y));
     }
 
-    public IntPair getResourcePosition()
+    public Point getResourcePosition()
     {
         if (containsKey(RESOURCE_POSITION))
         {
-            return (IntPair) get(RESOURCE_POSITION);
+            return (Point) get(RESOURCE_POSITION);
         } else
         {
             return null;
         }
     }
-
+    
     public void setResourceRole(String roleName)
     {
         put(RESOURCE_ROLE, roleName);

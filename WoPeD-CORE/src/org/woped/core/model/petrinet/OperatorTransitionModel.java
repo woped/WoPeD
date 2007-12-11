@@ -22,13 +22,13 @@
  */
 package org.woped.core.model.petrinet;
 
+import java.awt.Point;
 import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
-import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -209,9 +209,9 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         map.setId(getNewElementId());
         map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
         if (getPosition() != null)
-        	map.setPosition(new IntPair(getPosition()));
+        	map.setPosition(getPosition());
         else
-        	map.setPosition(new IntPair(0,0));
+        	map.setPosition(new Point(0,0));
         aTranstitonModel = (TransitionModel) ModelElementFactory.createModelElement(map);
 
         return aTranstitonModel;
@@ -285,7 +285,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         CreationMap map = CreationMap.createMap();
         map.setId("CENTER_PLACE_" + getId());
         map.setType(PetriNetModelElement.PLACE_TYPE);
-        map.setPosition(new IntPair(getPosition()));
+        map.setPosition(getPosition());
         centerPlace = (PlaceModel) ModelElementFactory.createModelElement(map);
         getSimpleTransContainer().addElement(centerPlace);
         return centerPlace;

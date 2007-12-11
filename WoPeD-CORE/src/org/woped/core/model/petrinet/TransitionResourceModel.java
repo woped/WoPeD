@@ -58,7 +58,7 @@ public class TransitionResourceModel extends DefaultGraphCell
 
         if (creationMap.getResourcePosition() != null)
         {
-            setPosition(new Point(creationMap.getResourcePosition().getX1(), creationMap.getResourcePosition().getX2()));
+            setPosition(new Point(creationMap.getResourcePosition().x, creationMap.getResourcePosition().y));
         }
     }
 

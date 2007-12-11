@@ -160,12 +160,12 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
             setId(creationMap.getId());
             if (creationMap.getPosition() != null)
             {
-                setPosition(new Point(creationMap.getPosition().getX1(), creationMap.getPosition().getX2()));
+                setPosition(new Point(creationMap.getPosition().x, creationMap.getPosition().y));
             }
 
             if (creationMap.getNamePosition() != null)
             {
-                nameModel.setPosition(new Point(creationMap.getNamePosition().getX1(), creationMap.getNamePosition().getX2()));
+                nameModel.setPosition(new Point(creationMap.getNamePosition().x, creationMap.getNamePosition().y));
             } else if (getPosition() != null)
             {
                 nameModel.setPosition(getPosition().x + ((this.getWidth() - getNameModel().getWidth()) / 2), getPosition().y + getHeight() + 5);
@@ -183,11 +183,11 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
         {
             creationMap = CreationMap.createMap();
         }
-        creationMap.setPosition(new IntPair(getPosition()));
+        creationMap.setPosition(getPosition());
         creationMap.setId(getId());
         creationMap.setName(getNameValue());
         creationMap.setSize(new IntPair(GraphConstants.getSize(getAttributes())));
-        creationMap.setNamePosition(new IntPair(getNameModel().getPosition()));
+        creationMap.setNamePosition(getNameModel().getPosition());
         creationMap.setType(getType());
         return creationMap;
     }
