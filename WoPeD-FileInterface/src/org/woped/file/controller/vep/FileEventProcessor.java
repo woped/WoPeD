@@ -44,7 +44,7 @@ import org.woped.qualanalysis.NetAnalysisDialog;
 import org.woped.qualanalysis.WoflanAnalysis;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.bpel.BPEL_MAIN;
+import org.woped.bpel.BPEL;
 
 public class FileEventProcessor extends AbstractEventProcessor
 {
@@ -52,12 +52,12 @@ public class FileEventProcessor extends AbstractEventProcessor
     {
         super(vepID, mediator);
     }
-  
+
     public void processViewEvent(AbstractViewEvent event)
     {
     	EditorVC editor = (EditorVC) getMediator().getUi().getEditorFocus();
     	boolean bRunWofLanDLL = false;
-        
+
         switch (event.getOrder())
         {
         case AbstractViewEvent.OPEN:
@@ -114,7 +114,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                     		succeed = process != null;
                     	}
                     	else
-                    	{                    	
+                    	{
                     		// Instantiate net analysis dialog and display it
                     		// Arguments are the Woflan TPN file and the model processor
                     		// for the petri-net model that is in focus
@@ -122,20 +122,20 @@ public class FileEventProcessor extends AbstractEventProcessor
                     				(JFrame) getMediator().getUi(),
                     				f,
                     				getMediator().getUi().getEditorFocus(), this.getMediator());
-                    		myDialog.setVisible(true);                        	
+                    		myDialog.setVisible(true);
 
                     		LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
                     	}
 
-                    }    
-                    else 
+                    }
+                    else
                     	// The temporary file doesn't exist
                     	// This most definitely means failure!
                     	succeed = false;
                     if (!succeed)
                     {
                     	String arg[] = {ConfigurationManager.getConfiguration().getHomedir()};
-                        JOptionPane.showMessageDialog(null, 
+                        JOptionPane.showMessageDialog(null,
                         		Messages.getString("File.Error.Woflan.Text", arg),
                         	    Messages.getString("File.Error.Woflan.Title"),
                         	    JOptionPane.WARNING_MESSAGE);
@@ -143,7 +143,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                 }
             } else
             {
-                 JOptionPane.showMessageDialog(null, 
+                 JOptionPane.showMessageDialog(null,
                 		Messages.getString("File.Error.NoNet.Text"),
                 	    Messages.getString("File.Error.NoNet.Title"),
                 	    JOptionPane.WARNING_MESSAGE);
@@ -152,12 +152,12 @@ public class FileEventProcessor extends AbstractEventProcessor
             break;
 
         case AbstractViewEvent.QUANTCAP:
-    		if (isSound(editor) & isBranchingOk(editor)) 
+    		if (isSound(editor) & isBranchingOk(editor))
         			new CapacityAnalysisDialog((JFrame) getMediator().getUi(), editor);
              break;
-            
+
         case AbstractViewEvent.QUANTSIM:
-       		if (isSound(editor) & isBranchingOk(editor)) 
+       		if (isSound(editor) & isBranchingOk(editor))
        		 		new QuantitativeSimulationDialog((JFrame) getMediator().getUi(), editor);
      		break;
     	}
@@ -165,7 +165,7 @@ public class FileEventProcessor extends AbstractEventProcessor
 
     /**
      * TODO: DOCUMENTATION (silenco)
-     * 
+     *
      * @param editor
      */
 
@@ -190,7 +190,7 @@ public class FileEventProcessor extends AbstractEventProcessor
     		return true;
     		}
 		else {
-			JOptionPane.showMessageDialog(null, 
+			JOptionPane.showMessageDialog(null,
 					Messages.getString("QuantAna.Message.SoundnessViolation"));
 			return false;
 		}
@@ -215,9 +215,9 @@ public class FileEventProcessor extends AbstractEventProcessor
 			}
 
 			int type = ((OperatorTransitionModel)trans).getOperatorType();
-			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE || 
-					type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || 
-						type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) 
+			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE ||
+					type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE ||
+						type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
 							& sum != 100) {
 				branchingOk = false;
 				param[0] = Messages.getString("QuantAna.Transition");
@@ -225,7 +225,7 @@ public class FileEventProcessor extends AbstractEventProcessor
 				param[2] = sum + "";
 			}
 		}
-	
+
 		while (places.hasNext()){
 			AbstractPetriNetModelElement place = (AbstractPetriNetModelElement)places.next();
 			if (!place.equals(end)) {
@@ -248,12 +248,12 @@ public class FileEventProcessor extends AbstractEventProcessor
 			return true;
 		}
 		else {
-			JOptionPane.showMessageDialog(null, 
+			JOptionPane.showMessageDialog(null,
 					Messages.getString("QuantAna.Message.BranchingProbabilityViolation", param));
 			return false;
 		}
 	}
-	
+
 	public void export(EditorVC editor)
     {
         // TODO: Cursor Handling
@@ -275,7 +275,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             pngExtensions.add("png");
             FileFilterImpl PNGFilter = new FileFilterImpl(FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
             jfc.setFileFilter(PNGFilter);
-            
+
             Vector<String> bmpExtensions = new Vector<String>();
             bmpExtensions.add("bmp");
             FileFilterImpl BMPFilter = new FileFilterImpl(FileFilterImpl.BMPFilter, "BMP (*.bmp)", bmpExtensions);
@@ -290,13 +290,13 @@ public class FileEventProcessor extends AbstractEventProcessor
             Vector<String> tpnExtensions = new Vector<String>();
             tpnExtensions.add("tpn");
             FileFilterImpl TPNFilter = new FileFilterImpl(FileFilterImpl.TPNFilter, "TPN (*.tpn)", tpnExtensions);
-            jfc.setFileFilter(TPNFilter);            
-            
+            jfc.setFileFilter(TPNFilter);
+
             jfc.setFileFilter(PNGFilter);
-            
+
             //insert of the BPEL Export filefilter
-            jfc.setFileFilter(BPEL_MAIN.get_BPEL_MAIN_CLASS().get_filefilter());
-            
+            jfc.setFileFilter(BPEL.getBPELMainClass().getFilefilter());
+
             jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
             jfc.showSaveDialog(null);
             if (jfc.getSelectedFile() != null && editor != null)
@@ -315,10 +315,10 @@ public class FileEventProcessor extends AbstractEventProcessor
                 } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.BMPFilter)
                 {
                     savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), bmpExtensions);
-                } else if(BPEL_MAIN.get_BPEL_MAIN_CLASS().check_file_extension(jfc))
+                } else if(BPEL.getBPELMainClass().checkFileExtension(jfc))
                 {
-                	savePath = BPEL_MAIN.get_BPEL_MAIN_CLASS().get_SavePath(savePath, jfc);
-                } else 
+                	savePath = BPEL.getBPELMainClass().getSavePath(savePath, jfc);
+                } else
                 {
                     LoggerManager.error(Constants.FILE_LOGGER, "\"Export\" NOT SUPPORTED FILE TYPE.");
                 }
@@ -337,7 +337,7 @@ public class FileEventProcessor extends AbstractEventProcessor
 
     /**
      * TODO: DOCUMENTATION (silenco)
-     * 
+     *
      * @param editor
      * @return
      */
@@ -362,16 +362,16 @@ public class FileEventProcessor extends AbstractEventProcessor
 
                         if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter)
                         {
-                            succeed = ImageExport.saveJPG(ImageExport.getRenderedImage(editor), 
+                            succeed = ImageExport.saveJPG(ImageExport.getRenderedImage(editor),
                         	    new File(editor.getFilePath()));
                             // TODO: !!! Working dir
                         } else if (editor.getDefaultFileType() == FileFilterImpl.PNGFilter)
                         {
-                            succeed = ImageExport.savePNG(ImageExport.getRenderedImage(editor), 
+                            succeed = ImageExport.savePNG(ImageExport.getRenderedImage(editor),
                         	    new File(editor.getFilePath()));
                         } else if (editor.getDefaultFileType() == FileFilterImpl.BMPFilter)
                         {
-                            succeed = ImageExport.saveBMP(ImageExport.getRenderedImage(editor), 
+                            succeed = ImageExport.saveBMP(ImageExport.getRenderedImage(editor),
                         	    new File(editor.getFilePath()));
                         }
                         /* Tool for PNML Export */
@@ -381,7 +381,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                             IStatusBar iSB[] = new IStatusBar[iVC.length];
                             for (int i = 0; i < iSB.length; i++)
                             {
-                                
+
                                 iSB[i] = (IStatusBar) iVC[i];
                             }
                             PNMLExport pe = new PNMLExport(iSB);
@@ -403,12 +403,12 @@ public class FileEventProcessor extends AbstractEventProcessor
                         /* Tool for TPN Export */
                         else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter)
                         {
-                            succeed = BPEL_MAIN.get_BPEL_MAIN_CLASS().save_file(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
+                            succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
                             ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
                         } else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter)
                         {
                         	String arg[] = {editor.getName()};
-                            JOptionPane.showMessageDialog(null, 
+                            JOptionPane.showMessageDialog(null,
                             		Messages.getString("File.Error.SampleSave.Text", arg),
                             	    Messages.getString("File.Error.SampleSave.Title"),
                             	    JOptionPane.ERROR_MESSAGE);
@@ -426,7 +426,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         {
             ace.printStackTrace();
             LoggerManager.warn(Constants.FILE_LOGGER, "Could not save Editor. No rights to write the file to " + editor.getFilePath() + ". " + ace.getMessage());
-            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), 
+            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(),
             		Messages.getString("File.Error.Applet.Text"),
             	    Messages.getString("File.Error.Appleat.Title"),
                     JOptionPane.ERROR_MESSAGE);
@@ -443,22 +443,22 @@ public class FileEventProcessor extends AbstractEventProcessor
 									Messages.getString("Dialog.No")
 								};
 		String[] args = {fileName};
-		
-		return JOptionPane.showOptionDialog(owner, 
+
+		return JOptionPane.showOptionDialog(owner,
 					Messages.getStringReplaced(
 							"Action.Confirm.File.Overwrite.Text",
 							args),
 					Messages.getString("Action.Confirm.File.Overwrite.Title"),
-					JOptionPane.YES_NO_OPTION, 
+					JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE,
 					null,
 					textMessages,
 					textMessages[1]) == JOptionPane.YES_OPTION;
     }
-    
+
     /**
      * TODO: Documentation
-     * 
+     *
      * @param editor
      * @return
      */
@@ -469,7 +469,7 @@ public class FileEventProcessor extends AbstractEventProcessor
         {
             // Open save as Dialog
             JFileChooser jfc;
-            if (ConfigurationManager.getConfiguration().getCurrentWorkingDir() != null 
+            if (ConfigurationManager.getConfiguration().getCurrentWorkingDir() != null
         	    && !ConfigurationManager.getConfiguration().getCurrentWorkingDir().equals(""))
             {
                 jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getCurrentWorkingDir()));
@@ -493,7 +493,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             jfc.setDialogTitle(Messages.getString("Action.EditorSaveAs.Title"));
 
             int returnVal = jfc.showSaveDialog(null);
-            
+
             if (jfc.getSelectedFile() != null && returnVal == JFileChooser.APPROVE_OPTION)
             {
                 String savePath = jfc.getSelectedFile().getAbsolutePath().substring(0, jfc.getSelectedFile().getAbsolutePath().length() - jfc.getSelectedFile().getName().length());
@@ -566,7 +566,7 @@ public class FileEventProcessor extends AbstractEventProcessor
 
     /**
      * For open files outside the jar file
-     * 
+     *
      * @param file
      * @param filter
      */
@@ -600,7 +600,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                 is = new FileInputStream(file.getAbsolutePath());
                 loadSuccess = pr.run(is);
             } catch (FileNotFoundException e)
-            {                
+            {
                 String jarPath = file.getPath().replace('\\', '/');
 
                 is = this.getClass().getResourceAsStream(jarPath);
@@ -633,7 +633,7 @@ public class FileEventProcessor extends AbstractEventProcessor
             {
                 ConfigurationManager.getConfiguration().removeRecentFile(file.getName(), file.getAbsolutePath());
                 String arg[] = {file.getAbsolutePath()};
-                JOptionPane.showMessageDialog(null, 
+                JOptionPane.showMessageDialog(null,
                 		Messages.getString("File.Error.FileOpen.Text", arg),
                 	    Messages.getString("File.Error.FileOpen.Title"),
                 	    JOptionPane.ERROR_MESSAGE);
