@@ -30,7 +30,7 @@ public class BPEL {
 	//TODO method description
 	private final void initFilefilter() {
 		this.extensions = new Vector<String>();
-		this.extensions.add("bpek");
+		this.extensions.add("bpel");
 		this.filter = new FileFilterImpl(FileFilterImpl.BPELFilter,
 				"BPEL (*.bpel)", this.extensions);
 	}
