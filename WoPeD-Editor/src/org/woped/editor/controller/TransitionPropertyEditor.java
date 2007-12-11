@@ -325,6 +325,11 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 			c.gridy = 4;
 			c.insets = new Insets(0, 0, 0, 0);
 			contentPanel.add(getResourcePanel(), c);
+			
+			c.gridx = 0;
+			c.gridy = 5;
+			c.insets = new Insets(0, 0, 0, 0);
+			contentPanel.add(getWebservicePanel(), c);
 		}
 
 		return contentPanel;
@@ -1370,6 +1375,94 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 		return resourceGroupComboBox;
 	}
 
+	
+	// **************************WebservicePanel******************************
+	private JPanel getWebservicePanel() {
+		if (webservicePanel == null) {
+			webservicePanel = new JPanel();
+			webservicePanel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+			webservicePanel
+					.setBorder(BorderFactory
+							.createCompoundBorder(
+									BorderFactory
+											.createTitledBorder(Messages
+													.getString("Transition.Properties.Identification")),
+									BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
+			c.weightx = 1;
+			c.weighty = 1;
+			c.anchor = GridBagConstraints.WEST;
+			c.fill = GridBagConstraints.HORIZONTAL;
+
+			c.gridx = 0;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			c.insets = new Insets(0, 2, 0, 0);
+			webservicePanel.add(getUddiLabel(), c);
+
+			c.gridx = 1;
+			c.gridy = 0;
+			c.gridwidth = 2;
+			c.insets = new Insets(0, 10, 0, 10);
+			webservicePanel.add(getUddiTextField(), c);
+
+			c.gridx = 3;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			c.insets = new Insets(0, 10, 0, 0);
+			webservicePanel.add(getIdLabel(), c);
+
+			c.gridx = 4;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			c.insets = new Insets(0, 10, 0, 10);
+			webservicePanel.add(getIdTextField(), c);
+		}
+
+		return webservicePanel;
+	}
+	
+	
+    private JLabel getUddiLabel()
+    {
+        if (uddiLabel == null)
+        {
+        	uddiLabel = new JLabel(Messages.getString("Transition.Properties.UDDI") + ":");
+        }
+
+        return uddiLabel;
+    }
+
+    
+    private JTextField getUddiTextField() {
+		if (uddiTextField == null) {
+			uddiTextField = new JTextField();
+			uddiTextField.setPreferredSize(new Dimension(150, 20));
+			uddiTextField.setMinimumSize(new Dimension(150, 20));
+			uddiTextField.setMaximumSize(new Dimension(150, 20));
+			uddiTextField.addKeyListener(new KeyListener() {
+				public void keyPressed(KeyEvent e) {
+					keyReleased(e);
+				}
+
+				public void keyTyped(KeyEvent e) {
+					keyReleased(e);
+				}
+
+				public void keyReleased(KeyEvent e) {
+					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+						apply();
+						TransitionPropertyEditor.this.dispose();
+					}
+				}
+			});
+		}
+
+		return uddiTextField;
+	}
+	
+	
 	// *****************************************************ButtonPanel****************************************************
 	private JPanel getButtonPanel() {
 		if (buttonPanel == null) {
