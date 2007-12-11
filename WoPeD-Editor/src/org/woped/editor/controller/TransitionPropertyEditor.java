@@ -243,6 +243,14 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 	private static final String GROUP_NONE = Messages
 			.getString("Transition.Properties.Group.None");
 
+	// WebService
+	private JPanel webservicePanel = null;
+    private JLabel uddiLabel = null;
+    private JTextField uddiTextField = null;
+    private JLabel webserviceLabel = null;
+    private JTextField webserviceTextField = null;
+
+	
 	// Buttons
 	private JPanel buttonPanel = null;
 
