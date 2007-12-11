@@ -153,7 +153,7 @@ public class TokenGameController
           desktop = new ReferenceProvider();
           //AS: getLocation, not finally implemented. Add RemoteControl at Point Location
           Point p = desktop.getDesktopReference().getLocation();
-          p.setLocation(desktop.getDesktopReference().getLocation().getX(), desktop.getDesktopReference().getLocation().getY()*14);
+          p.setLocation(desktop.getDesktopReference().getLocation().getX(), (int)desktop.getDesktopReference().getHeight()-RemoteControl.getHeight());
           desktop.getDesktopReference().add(RemoteControl).setLocation(p);
           //desktop.getDesktopReference().
           //RemoteControl.setVisible(true);
