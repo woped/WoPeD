@@ -59,8 +59,11 @@ public class TokenGameBarVC extends JInternalFrame {
 	private ReferenceProvider MainWindowReference = null;
 	private TokenGameHistoryManagerVC HistoryDialog = null;
 	
+	// TokenGame
+	private TokenGameController m_tokenGameController = null;
+	
 	//Constructor(s)
-	public TokenGameBarVC()
+	public TokenGameBarVC(TokenGameController tgcontroller)
 	{
 		super(Messages.getTitle("Tokengame.RemoteControl"), false, true);
 		this.setFrameIcon(Messages.getImageIcon("Tokengame.RemoteControl"));
@@ -82,10 +85,15 @@ public class TokenGameBarVC extends JInternalFrame {
 		//MainWindowReference = new ReferenceProvider();
 		//HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference());
 		//HistoryDialog.setVisible(false);
+		
+		m_tokenGameController = tgcontroller;
 
 	}
 	
-	
+	public TokenGameController getTokenGameControlle()
+	{
+		return m_tokenGameController;
+	}
 
 	/**
 	 * this is the Left Bar of Buttons in the Remote Control
@@ -169,6 +177,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		
 		//Define Button-Actions
 		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, this));
+		pbnStop.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STOP, this));
 		
 		//Create Playback&Navigation-Panel and add Buttons
 		NavigationPlayback = new JPanel();
