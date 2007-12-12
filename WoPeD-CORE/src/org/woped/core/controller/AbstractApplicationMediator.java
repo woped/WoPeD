@@ -166,7 +166,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
 
     public void processViewEvent(AbstractViewEvent viewevent)
     {
-        AbstractEventProcessor vep;
+        AbstractEventProcessor vep = null;
         if ((vep = (AbstractEventProcessor) getVepController().lookup(viewevent.getType())) != null) vep.processViewEvent(viewevent);
     }
 

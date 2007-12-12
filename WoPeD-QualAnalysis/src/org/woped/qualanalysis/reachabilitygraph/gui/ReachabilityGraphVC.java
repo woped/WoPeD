@@ -1,17 +1,15 @@
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.Dimension;
-import java.util.HashMap;
+import java.util.HashSet;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-
 import org.woped.core.controller.IEditor;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 
 public class ReachabilityGraphVC extends JInternalFrame {
 	
-	private HashMap<String, IEditor> editors = new HashMap<String, IEditor>();
+	private HashSet<ReachabilityGraphPanel> panels = new HashSet<ReachabilityGraphPanel>();
 	
 	private static final long serialVersionUID = 1L;
 	private static ReachabilityGraphVC myInstance = null;
@@ -32,12 +30,20 @@ public class ReachabilityGraphVC extends JInternalFrame {
 	}
 	
 	private void addEditor(IEditor editor){
-		this.editors.put(editor.getId(), editor);
-		someText.setText(editor.getId());
+		ReachabilityGraphPanel rgp =  new ReachabilityGraphPanel(editor);
+		this.panels.add(rgp);
+		this.add(rgp);
+		this.updatePanelsVisibility(editor);
 	}
 	
-	
-	private JLabel someText = null;
+	public boolean hasEditor(IEditor editor){
+		for (ReachabilityGraphPanel rgp : panels) {
+			if(rgp.getEditor() == editor){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	private void init() {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
@@ -48,10 +54,13 @@ public class ReachabilityGraphVC extends JInternalFrame {
         this.setMaximizable(true);
         this.setIconifiable(true);
         this.setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
-        
-        someText = new JLabel("");
-        this.add(someText);
-        
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
 	}
+
+	public void updatePanelsVisibility(IEditor editor){
+		for (ReachabilityGraphPanel rgp : panels) {
+			rgp.updateVisibility(editor);
+		}
+	}
+	
 }
