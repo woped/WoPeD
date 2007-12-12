@@ -16,23 +16,24 @@ public class BPEL {
 
 	private static BPEL bpelMainClass;
 
-	private Vector<String> extensions;
+	private Vector<String> _extensions;
 
-	private FileFilter filter;
+	private FileFilter _filter;
 
 
 	//TODO method description
 	public BPEL() {
+		if(BPEL.bpelMainClass != null) return;
 		this.initFilefilter();
 		bpelMainClass = this;
 	}
 
 	//TODO method description
 	private final void initFilefilter() {
-		this.extensions = new Vector<String>();
-		this.extensions.add("bpel");
-		this.filter = new FileFilterImpl(FileFilterImpl.BPELFilter,
-				"BPEL (*.bpel)", this.extensions);
+		this._extensions = new Vector<String>();
+		this._extensions.add("bpel");
+		this._filter = new FileFilterImpl(FileFilterImpl.BPELFilter,
+				"BPEL (*.bpel)", this._extensions);
 	}
 
 	//TODO method description
@@ -45,7 +46,7 @@ public class BPEL {
 
 	//TODO method description
 	public FileFilter getFilefilter() {
-		return this.filter;
+		return this._filter;
 	}
 
 	//TODO method description
@@ -55,9 +56,9 @@ public class BPEL {
 	}
 
 	//TODO method description
-	public String getSavePath(String basicPath,JFileChooser jfc)
+	public String getSavePath(String basicPath, JFileChooser jfc)
 	{
-		return basicPath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), this.extensions);
+		return basicPath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), this._extensions);
 	}
 
 	//TODO method description
