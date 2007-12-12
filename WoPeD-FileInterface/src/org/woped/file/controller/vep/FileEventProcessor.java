@@ -397,14 +397,16 @@ public class FileEventProcessor extends AbstractEventProcessor
                         //BPEL-Export
                         else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter)
                         {
-                            succeed = TPNExport.save(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
+                        	succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
                             ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
+                            
                         }
                         /* Tool for TPN Export */
                         else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter)
                         {
-                            succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
+                        	succeed = TPNExport.save(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
                             ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
+                            
                         } else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter)
                         {
                         	String arg[] = {editor.getName()};
