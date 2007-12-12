@@ -99,6 +99,7 @@ public class TokenGameBarListener implements ActionListener  {
 		 case 5:
 			 break;
 		 case 6:
+			 stopAction();
 			 break;
 		 case CLICK_PLAY:
 			 playbackActions();
@@ -198,5 +199,10 @@ public class TokenGameBarListener implements ActionListener  {
 		HistoryChanged = true;
 		TestItems = TokenGameTest.createTestdata();
 		RemoteControl.addHistoryData(TestItems);
+	}
+	
+	private void stopAction()
+	{
+		RemoteControl.getTokenGameControlle().stop();
 	}
 }
