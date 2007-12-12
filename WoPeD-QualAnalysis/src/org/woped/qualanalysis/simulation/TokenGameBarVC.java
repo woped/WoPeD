@@ -3,7 +3,7 @@ import javax.swing.*;
 
 
 import org.woped.translations.Messages;
-
+import org.woped.qualanalysis.simulation.controller.*;
 import java.awt.*;
 import org.woped.qualanalysis.test.*;
 
@@ -16,6 +16,7 @@ import org.woped.qualanalysis.test.*;
  * 
  */
 public class TokenGameBarVC extends JInternalFrame {
+	
 	
 	//Declaration of all JPanels
 	private JPanel PropertiesPanel    = null;
@@ -46,6 +47,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	private JScrollPane acoScroll     = null;
 	private JList       ahxChoice     = null;
 	private JScrollPane ahxScroll     = null;
+	private DefaultListModel HistoryContent = null;
 	
 	//Other Variables
 	private int    stXsize            = 50;
@@ -77,9 +79,9 @@ public class TokenGameBarVC extends JInternalFrame {
 		
 		//Calling the Dialog-Box of the HistoryManager
 		//Gets Reference out of Help-Class: ReferenceProvider
-		MainWindowReference = new ReferenceProvider();
-		HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference());
-		HistoryDialog.setVisible(false);
+		//MainWindowReference = new ReferenceProvider();
+		//HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference());
+		//HistoryDialog.setVisible(false);
 
 	}
 	
@@ -163,6 +165,10 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnPause.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Pause")); 
 		pbnFW.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Forward")); 
 		pbnFastFW.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.FastForward")); 
+		
+		
+		//Define Button-Actions
+		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, this));
 		
 		//Create Playback&Navigation-Panel and add Buttons
 		NavigationPlayback = new JPanel();
@@ -266,6 +272,10 @@ public class TokenGameBarVC extends JInternalFrame {
 		ahySave.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.SaveHistory"));
 		ahyDelete.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.DeleteHistory"));
 		
+		//Define ActionListeners
+		ahySave.addActionListener(new TokenGameBarListener(TokenGameBarListener.OPEN_HISTORY_MANAGER, this));
+		ahyDelete.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_DELETE_CURRENT, this));
+		
 		//Define Panel and add Buttons
 		History = new JPanel();
 		History.setLayout(new GridBagLayout());
@@ -287,7 +297,8 @@ public class TokenGameBarVC extends JInternalFrame {
 		History.add(ahyDelete, hgbc);
 
 		//Define Scrollbars, Listbox-Size and add to Panel
-		ahxChoice = new JList();
+		HistoryContent = new DefaultListModel();
+		ahxChoice = new JList(HistoryContent);
 		ahxChoice.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		ahxChoice.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.HistoryList"));
 		
@@ -301,12 +312,27 @@ public class TokenGameBarVC extends JInternalFrame {
 		hgbc.gridheight = 3;
 		hgbc.insets = new Insets(0,5,0,0);
 		hgbc.fill = GridBagConstraints.VERTICAL;
-		History.add(ahxScroll, hgbc);
-		
+		History.add(ahxScroll, hgbc);	
 		return History;
 	}
 	
+	//All Actions regarding the TokenGame-Remote-Control
+	public void addHistoryData(String[] Data)
+	{
+		HistoryContent.clear();
+		for(int i = 0; i < Data.length; i++)
+		{
+	      HistoryContent.addElement(Data[i]);
+		}
+	}
+	
+	public DefaultListModel getHistoryData()
+	{
+		return HistoryContent;
+	}
+	
+	public void clearHistoryData()
+	{
+		HistoryContent.clear();
+	}
 }
-
-
-

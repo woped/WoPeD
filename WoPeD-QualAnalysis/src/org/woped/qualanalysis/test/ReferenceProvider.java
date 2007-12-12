@@ -20,7 +20,7 @@ import javax.swing.*;
  */
 public class ReferenceProvider {
  	private static AbstractApplicationMediator MediatorReference = null;
- 	private static IUserInterface              UIReference    = null;
+ 	private static IUserInterface              UIReference       = null;
 	private static JDesktopPane                DesktopReference  = null;
 	
 	/**
