@@ -98,15 +98,26 @@ public class TokenGameBarListener implements ActionListener  {
 			 break;
 		 case 5:
 			 break;
-		 case 6:
-			 stopAction();
+		 case CLICK_STOP:
+		       stopAction();
 			 break;
 		 case CLICK_PLAY:
+			 
+			 /*
+			  *  TODO: Enable "Start TokenGame"
+			  */
 			 playbackActions();
 			 break;
 		 case 8:
 			 break;
-		 case 9:
+		 case CLICK_FORWARD:
+			 /*
+			  *  TODO: 1.) When click is done (in Stepwise-Mode) let the next enabled transition occur
+			  *  
+			  *  (Not Now, but later)
+			  *  TODO: 2.) For Automatic Playback just enable direction <forward> or <backward>
+			  *            so that the net will be played in that direction
+			  */
 			 break;
 		 case 10:
 			 break;
@@ -201,8 +212,10 @@ public class TokenGameBarListener implements ActionListener  {
 		RemoteControl.addHistoryData(TestItems);
 	}
 	
+
 	private void stopAction()
 	{
-		RemoteControl.getTokenGameControlle().stop();
+		RemoteControl.getTokenGameController().stop();
 	}
+
 }

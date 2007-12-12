@@ -80,20 +80,13 @@ public class TokenGameBarVC extends JInternalFrame {
 		this.add(addAutoChoice());
 		this.add(addHistory());
 		
-		//Calling the Dialog-Box of the HistoryManager
-		//Gets Reference out of Help-Class: ReferenceProvider
-		//MainWindowReference = new ReferenceProvider();
-		//HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference());
-		//HistoryDialog.setVisible(false);
+
 		
 		m_tokenGameController = tgcontroller;
 
 	}
 	
-	public TokenGameController getTokenGameControlle()
-	{
-		return m_tokenGameController;
-	}
+	
 
 	/**
 	 * this is the Left Bar of Buttons in the Remote Control
@@ -343,5 +336,14 @@ public class TokenGameBarVC extends JInternalFrame {
 	public void clearHistoryData()
 	{
 		HistoryContent.clear();
+	}
+	
+	/**
+	 * 
+	 * @return Reference to TokenGameController
+	 */
+	public TokenGameController getTokenGameController()
+	{
+		return m_tokenGameController;
 	}
 }
