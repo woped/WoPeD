@@ -149,7 +149,7 @@ public class TokenGameController
         }
         else
         {
-          RemoteControl = new TokenGameBarVC();
+          RemoteControl = new TokenGameBarVC(this);
           desktop = new ReferenceProvider();
           //AS: getLocation, not finally implemented. Add RemoteControl at Point Location
           Point p = desktop.getDesktopReference().getLocation();
