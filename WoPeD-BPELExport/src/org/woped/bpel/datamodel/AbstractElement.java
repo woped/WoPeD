@@ -2,6 +2,7 @@ package org.woped.bpel.datamodel;
 
 //standard java objects
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * @author Frank Schüler
@@ -9,7 +10,7 @@ import java.util.HashSet;
  * This class is the basic object for an element at the data model, for the easy navigation
  * between the elements.
  * 
- * status: finish
+ * status: at work
  * date: 12.12.2007
  */
 public abstract class AbstractElement
@@ -48,6 +49,31 @@ public abstract class AbstractElement
 		}
 		return true;
 	}
+	
+	/**
+	 * This method remove all links from pre object to this object and from this object to the 
+	 * pre object.
+	 * 
+	 * @param pre AbstractElement
+	 */
+	public void remove_pre_object_relationship(AbstractElement pre)
+	{
+		pre.remove_post_object(this);
+		this.remove_pre_object(pre);
+	}
+	
+	/**
+	 * Removed all relations between this object and alle pre object.
+	 */
+	public void remove_all_pre_relationship()
+	{
+		Iterator<AbstractElement> list = this._pre.iterator();
+		while(list.hasNext())
+		{
+			list.next().remove_post_object(this);
+		}
+		this._pre.clear();
+	}
 
 	/**
 	 * This is a method to remove an AbstractObject from the list of pre
@@ -60,6 +86,14 @@ public abstract class AbstractElement
 	public boolean remove_pre_object(AbstractElement e)
 	{
 		return this._pre.remove(e);
+	}
+	
+	/**
+	 * This method delete all links to pre objects.
+	 */
+	public void remove_all_pre_objects()
+	{
+		this._pre.clear();
 	}
 
 	/**
@@ -117,6 +151,39 @@ public abstract class AbstractElement
 	public boolean remove_post_object(AbstractElement e)
 	{
 		return this._post.remove(e);
+	}
+	
+	/**
+	 * This method delete all links to post objects.
+	 */
+	public void remove_all_post_objects()
+	{
+		this._post.clear();
+	}
+	
+	/**
+	 * This method remove all links from post object to this object and from this object to the 
+	 * post object.
+	 * 
+	 * @param pre AbstractElement
+	 */
+	public void remove_post_object_relationship(AbstractElement pre)
+	{
+		pre.remove_post_object(this);
+		this.remove_pre_object(pre);
+	}
+	
+	/**
+	 * Removed all relations between this object and alle post object.
+	 */
+	public void remove_all_post_relationship()
+	{
+		Iterator<AbstractElement> list = this._post.iterator();
+		while(list.hasNext())
+		{
+			list.next().remove_pre_object(this);
+		}
+		this._post.clear();
 	}
 
 	/**
@@ -185,4 +252,5 @@ public abstract class AbstractElement
 	 * @return boolean
 	 */
 	abstract public boolean equals(AbstractElement e);
+	
 }
