@@ -7,23 +7,36 @@ import java.util.Iterator;
 /**
  * @author Frank Schüler
  * 
- * This class is the basic object for an element at the data model, for the easy navigation
- * between the elements.
+ * This class is the basic object for an element at the data model, for the easy
+ * navigation between the elements.
  * 
- * status: at work
- * date: 12.12.2007
+ * status: at work date: 12.12.2007
  */
 public abstract class AbstractElement
 {
 
-	private HashSet<AbstractElement>	_pre	= new HashSet<AbstractElement>();
-	private HashSet<AbstractElement>	_post	= new HashSet<AbstractElement>();
+	private static long					IdCounter	= 0L;
+
+	private HashSet<AbstractElement>	_pre		= new HashSet<AbstractElement>();
+	private HashSet<AbstractElement>	_post		= new HashSet<AbstractElement>();
+	private long						_id;
 
 	/**
 	 * abstract constructor
 	 */
 	public AbstractElement()
 	{
+		this._id = AbstractElement.IdCounter++;
+	}
+
+	/**
+	 * Returned the id form the object
+	 * 
+	 * @return long
+	 */
+	public long getID()
+	{
+		return this._id;
 	}
 
 	/* methoden for the pre objects */
@@ -49,26 +62,60 @@ public abstract class AbstractElement
 		}
 		return true;
 	}
-	
+
 	/**
-	 * This method remove all links from pre object to this object and from this object to the 
-	 * pre object.
+	 * Find an Element at pre objects by ID.
 	 * 
-	 * @param pre AbstractElement
+	 * @param id
+	 *            long
+	 * 
+	 * @return AbstractElement, returned null if no matching
+	 */
+	public AbstractElement find_pre_object_by_id(long id)
+	{
+		Iterator<AbstractElement> list = this._pre.iterator();
+		AbstractElement erg = null;
+		while (list.hasNext())
+		{
+			if ((erg = list.next()).getID() == id)
+				return erg;
+		}
+		return null;
+	}
+
+	/**
+	 * This method remove all links from pre object to this object and from this
+	 * object to the pre object.
+	 * 
+	 * @param pre
+	 *            AbstractElement
 	 */
 	public void remove_pre_object_relationship(AbstractElement pre)
 	{
 		pre.remove_post_object(this);
 		this.remove_pre_object(pre);
 	}
-	
+
+	/**
+	 * This is a method to remove an AbstractObject from the list of pre by this
+	 * ID. objects.
+	 * 
+	 * @param id
+	 *            long
+	 * @return boolean
+	 */
+	public boolean remove_pre_object(long id)
+	{
+		return this._pre.remove(this.find_pre_object_by_id(id));
+	}
+
 	/**
 	 * Removed all relations between this object and alle pre object.
 	 */
 	public void remove_all_pre_relationship()
 	{
 		Iterator<AbstractElement> list = this._pre.iterator();
-		while(list.hasNext())
+		while (list.hasNext())
 		{
 			list.next().remove_post_object(this);
 		}
@@ -87,7 +134,7 @@ public abstract class AbstractElement
 	{
 		return this._pre.remove(e);
 	}
-	
+
 	/**
 	 * This method delete all links to pre objects.
 	 */
@@ -141,6 +188,26 @@ public abstract class AbstractElement
 	}
 
 	/**
+	 * Find an Element at post objects by ID.
+	 * 
+	 * @param id
+	 *            long
+	 * 
+	 * @return AbstractElement, returned null if no matching
+	 */
+	public AbstractElement find_post_object_by_id(long id)
+	{
+		Iterator<AbstractElement> list = this._post.iterator();
+		AbstractElement erg = null;
+		while (list.hasNext())
+		{
+			if ((erg = list.next()).getID() == id)
+				return erg;
+		}
+		return null;
+	}
+
+	/**
 	 * This is a method to remove an AbstractObject from the list of post
 	 * objects.
 	 * 
@@ -152,7 +219,20 @@ public abstract class AbstractElement
 	{
 		return this._post.remove(e);
 	}
-	
+
+	/**
+	 * This is a method to remove an AbstractObject from the list of post by
+	 * this ID. objects.
+	 * 
+	 * @param id
+	 *            long
+	 * @return boolean
+	 */
+	public boolean remove_post_object(long id)
+	{
+		return this._post.remove(this.find_post_object_by_id(id));
+	}
+
 	/**
 	 * This method delete all links to post objects.
 	 */
@@ -160,26 +240,27 @@ public abstract class AbstractElement
 	{
 		this._post.clear();
 	}
-	
+
 	/**
-	 * This method remove all links from post object to this object and from this object to the 
-	 * post object.
+	 * This method remove all links from post object to this object and from
+	 * this object to the post object.
 	 * 
-	 * @param pre AbstractElement
+	 * @param pre
+	 *            AbstractElement
 	 */
 	public void remove_post_object_relationship(AbstractElement pre)
 	{
 		pre.remove_post_object(this);
 		this.remove_pre_object(pre);
 	}
-	
+
 	/**
 	 * Removed all relations between this object and alle post object.
 	 */
 	public void remove_all_post_relationship()
 	{
 		Iterator<AbstractElement> list = this._post.iterator();
-		while(list.hasNext())
+		while (list.hasNext())
 		{
 			list.next().remove_pre_object(this);
 		}
@@ -240,6 +321,8 @@ public abstract class AbstractElement
 	{
 		if (!AbstractElement.class.isInstance(e))
 			return false;
+		if (((AbstractElement) e).getID() != this._id)
+			return false;
 		return this.equals((AbstractElement) e);
 	}
 
@@ -252,5 +335,5 @@ public abstract class AbstractElement
 	 * @return boolean
 	 */
 	abstract public boolean equals(AbstractElement e);
-	
+
 }

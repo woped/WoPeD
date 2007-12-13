@@ -3,6 +3,8 @@ package org.woped.bpel;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -74,6 +76,7 @@ public class BPEL {
 	//TODO method description
 	public boolean saveFile(String Path, PetriNetModelProcessor pnp)
 	{
+		this.test(pnp);
 		//new File(Path);
 		bpelDoc = ProcessDocument.Factory.newInstance();
 		TProcess iProcess = bpelDoc.addNewProcess();
@@ -95,6 +98,20 @@ public class BPEL {
         {
             return false;
         }
+	}
+	
+	/**
+	 * Testing method
+	 */
+	private void test(PetriNetModelProcessor pnp)
+	{
+		List l = pnp.getElementContainer().getRootElements();
+		Iterator iter = l.iterator();
+		System.out.println("Counter = "+l.size());
+		while(iter.hasNext())
+		{
+			
+		}
 	}
 
 }
