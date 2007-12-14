@@ -89,6 +89,8 @@ public class TokenGameBarListener implements ActionListener  {
 		switch(ID)
 		{
 		 case 1:
+			 RemoteControl.removePanel();
+			 System.out.println("Panel removed");
 			 break;
 		 case 2:
 			 break;
@@ -111,6 +113,7 @@ public class TokenGameBarListener implements ActionListener  {
 		 case 8:
 			 break;
 		 case CLICK_FORWARD:
+			 RemoteControl.occurTransition();
 			 /*
 			  *  TODO: 1.) When click is done (in Stepwise-Mode) let the next enabled transition occur
 			  *  
@@ -209,6 +212,7 @@ public class TokenGameBarListener implements ActionListener  {
 	{
 		HistoryChanged = true;
 		TestItems = TokenGameTest.createTestdata();
+		RemoteControl.clearChoiceBox();
 		RemoteControl.addHistoryData(TestItems);
 	}
 	

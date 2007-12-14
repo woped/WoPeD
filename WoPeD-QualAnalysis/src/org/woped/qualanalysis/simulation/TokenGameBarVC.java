@@ -1,10 +1,12 @@
 package org.woped.qualanalysis.simulation;
 import javax.swing.*;
-
+import org.woped.core.model.petrinet.*;
 
 import org.woped.translations.Messages;
 import org.woped.qualanalysis.simulation.controller.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+
 import org.woped.qualanalysis.test.*;
 
 /**
@@ -47,7 +49,8 @@ public class TokenGameBarVC extends JInternalFrame {
 	private JScrollPane acoScroll     = null;
 	private JList       ahxChoice     = null;
 	private JScrollPane ahxScroll     = null;
-	private DefaultListModel HistoryContent = null;
+	private DefaultListModel ahxHistoryContent = null;
+	private DefaultListModel acoChoiceItems = null;
 	
 	//Other Variables
 	private int    stXsize            = 50;
@@ -58,6 +61,9 @@ public class TokenGameBarVC extends JInternalFrame {
 	private GridBagConstraints gbc    = null;
 	private ReferenceProvider MainWindowReference = null;
 	private TokenGameHistoryManagerVC HistoryDialog = null;
+	private TransitionModel[] ChoiceArray       = null;
+	private TransitionModel[] HelpArray         = null;
+	private TransitionModel   TransitionToOccur = null;
 	
 	// TokenGame
 	private TokenGameController m_tokenGameController = null;
@@ -109,7 +115,10 @@ public class TokenGameBarVC extends JInternalFrame {
 		ppbSteps.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Stepwise"));
 		ppbPlay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Playback"));
 		ppbDelay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Delay"));
-				
+		
+		//Define Button's Actions
+		ppbSteps.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_STEPWISE, this));
+		
 		//Define Panel and Layout
 		PropertiesPanel = new JPanel();
 		PropertiesPanel.setLayout(new GridLayout(3,1,0,5));
@@ -169,8 +178,10 @@ public class TokenGameBarVC extends JInternalFrame {
 		
 		
 		//Define Button-Actions
-		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, this));
 		pbnStop.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STOP, this));
+		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, this));
+		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, this));
+
 		
 		//Create Playback&Navigation-Panel and add Buttons
 		NavigationPlayback = new JPanel();
@@ -235,7 +246,8 @@ public class TokenGameBarVC extends JInternalFrame {
 		acoAuto.setPreferredSize(new Dimension(stXsize, stYsize));
 				
 		//... the easychoice List
-		acoChoice = new JList();
+		acoChoiceItems = new DefaultListModel();
+		acoChoice = new JList(acoChoiceItems);
 		acoChoice.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		acoChoice.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.ChoiceList"));
 		
@@ -299,8 +311,8 @@ public class TokenGameBarVC extends JInternalFrame {
 		History.add(ahyDelete, hgbc);
 
 		//Define Scrollbars, Listbox-Size and add to Panel
-		HistoryContent = new DefaultListModel();
-		ahxChoice = new JList(HistoryContent);
+		ahxHistoryContent = new DefaultListModel();
+		ahxChoice = new JList(ahxHistoryContent);
 		ahxChoice.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		ahxChoice.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.HistoryList"));
 		
@@ -319,24 +331,111 @@ public class TokenGameBarVC extends JInternalFrame {
 	}
 	
 	//All Actions regarding the TokenGame-Remote-Control
+	
+	/*
+	 * List-Boxes' section
+	 */
+	
+	//Choice Listbox
+	//get Active Transitions
+	public void addChoiceItem(String itemName, String itemID, TransitionModel transition)
+	{
+		int newArrayLength = 0;
+		
+		
+		if(ChoiceArray == null)
+		{
+			ChoiceArray = new TransitionModel[1];
+            ChoiceArray[0] = transition;
+            TransitionToOccur = transition;
+		}
+		else
+		{
+			HelpArray = ChoiceArray.clone();
+            newArrayLength = HelpArray.length+1;
+			ChoiceArray = new TransitionModel[(newArrayLength)];
+			
+			for(int i = 0; i < (newArrayLength-1); i++)
+			{
+				ChoiceArray[i] = HelpArray[i];
+			}
+			ChoiceArray[newArrayLength-1] = transition; 
+		}
+		acoChoiceItems.addElement(itemName);
+		
+		//if more then one element is in the box, for first a choice has to be 
+		//done until the user may continue with stepping forward
+		if(acoChoiceItems.getSize() > 1)
+		{
+			//disable the step-forward-button(s)
+			disableForwardButtons();
+		}
+		
+	}
+	
+	public void clearChoiceBox()
+	{
+		acoChoiceItems.clear();
+		enableForwardButtons();
+	}
+	
+	
+	//HistoryListbox
 	public void addHistoryData(String[] Data)
 	{
-		HistoryContent.clear();
+		ahxHistoryContent.clear();
 		for(int i = 0; i < Data.length; i++)
 		{
-	      HistoryContent.addElement(Data[i]);
+	      ahxHistoryContent.addElement(Data[i]);
 		}
 	}
 	
+	
 	public DefaultListModel getHistoryData()
 	{
-		return HistoryContent;
+		return ahxHistoryContent;
 	}
 	
 	public void clearHistoryData()
 	{
-		HistoryContent.clear();
+		ahxHistoryContent.clear();
 	}
+	
+	/*
+	 * disable / enable Buttons - Sektion
+	 * 
+	 */
+	
+	public void disableForwardButtons()
+	{
+		pbnFW.setEnabled(false);
+		pbnFastFW.setEnabled(false);
+	}
+	
+	public void enableForwardButtons()
+	{
+		pbnFW.setEnabled(true);
+		pbnFastFW.setEnabled(true);
+	}
+	
+	/*
+	 * Transition-Actions 
+	 */
+	
+	/**
+	 * This method let the active transition occur (currently only for sequences, as soon
+	 * as two transitions are active, the method cannot occur so far)
+	 */
+	
+	public void occurTransition()
+	{
+		clearChoiceBox();
+		ChoiceArray = null;
+		m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur);
+		
+	}
+	
+	
 	
 	/**
 	 * 
@@ -345,5 +444,17 @@ public class TokenGameBarVC extends JInternalFrame {
 	public TokenGameController getTokenGameController()
 	{
 		return m_tokenGameController;
+	}
+	
+	
+	
+	/**
+	 * Only done for some test, that Ben needs.
+	 * will be removed in nearer future.
+	 */
+	public void removePanel()
+	{
+		this.remove(NavigationPlayback);
+		this.repaint();
 	}
 }

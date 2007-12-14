@@ -133,15 +133,8 @@ public class TokenGameController
             enableVisualTokenGame();
             
         }
-        // Storing Transition Reference (simple and operator)
-        allTransitions = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-        allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
-        allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
-        // Find and show active Transitions/Arcs
-        checkNet();
-        //animator.start();
         
-        //displays the TokenGame Remote-Control if it already exist, if not create
+      //displays the TokenGame Remote-Control if it already exist, if not create
         if(RemoteControl != null)
         {
         	desktop.getDesktopReference().add(RemoteControl);
@@ -158,6 +151,16 @@ public class TokenGameController
           //desktop.getDesktopReference().
           //RemoteControl.setVisible(true);
         }
+        
+        // Storing Transition Reference (simple and operator)
+        allTransitions = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+        allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
+        allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
+        // Find and show active Transitions/Arcs
+        checkNet();
+        //animator.start();
+        
+        
                
         
     }
@@ -308,7 +311,15 @@ public class TokenGameController
 
         if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
         {
-            if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size()) transition.setActivated(true);
+        	
+            if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size()) 
+            {
+            	transition.setActivated(true);
+                //This will add all currently active Transitions to the TokenGameBarVC-Autochoice-List
+            	RemoteControl.addChoiceItem(transition.getNameValue(), transition.getId(), transition);
+            	
+            }
+            	
         } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
         {
             OperatorTransitionModel operator = (OperatorTransitionModel) transition;
@@ -872,4 +883,12 @@ public class TokenGameController
         }
     }
 
+   /**
+    * will be called by TokenGameBarVC to let active transitions occur
+    * @param transition
+    */ 
+    public void occurTransitionbyTokenGameBarVC(TransitionModel transition)
+    {
+    	transitionClicked(transition, null);
+    }
 }
