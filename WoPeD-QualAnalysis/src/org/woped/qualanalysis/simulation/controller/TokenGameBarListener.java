@@ -212,7 +212,6 @@ public class TokenGameBarListener implements ActionListener  {
 	{
 		HistoryChanged = true;
 		TestItems = TokenGameTest.createTestdata();
-		RemoteControl.clearChoiceBox();
 		RemoteControl.addHistoryData(TestItems);
 	}
 	

@@ -437,6 +437,7 @@ public class TokenGameController
                 // transitions and activating them
                 // if their input conditions are fulfilled
                 // This will also trigger a redraw
+            	RemoteControl.clearChoiceBox();
                 checkNet();
             }
         }

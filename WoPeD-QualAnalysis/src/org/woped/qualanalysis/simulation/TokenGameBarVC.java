@@ -359,10 +359,12 @@ public class TokenGameBarVC extends JInternalFrame {
 			{
 				ChoiceArray[i] = HelpArray[i];
 			}
-			ChoiceArray[newArrayLength-1] = transition; 
+			ChoiceArray[newArrayLength-1] = transition;
+			TransitionToOccur = null;
+			
 		}
 		acoChoiceItems.addElement(itemName);
-		
+
 		//if more then one element is in the box, for first a choice has to be 
 		//done until the user may continue with stepping forward
 		if(acoChoiceItems.getSize() > 1)
