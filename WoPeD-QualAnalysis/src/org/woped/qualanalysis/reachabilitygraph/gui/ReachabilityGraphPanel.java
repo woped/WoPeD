@@ -10,8 +10,8 @@ public class ReachabilityGraphPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 
-	ReachabilityGraphVC reachGraphVC = null;
-	IEditor editor = null;
+	private ReachabilityGraphVC reachGraphVC = null;
+	private IEditor editor = null;
 	
 	private JLabel someText = null;
 	
@@ -30,8 +30,8 @@ public class ReachabilityGraphPanel extends JPanel {
 	}
 
 	public void updateVisibility(IEditor editor){
-		if(this.editor == editor){
-			this.setVisible(true);
+		if(this.editor.equals(editor)){
+			this.setVisible(true);			
 		} else {
 			this.setVisible(false);
 		}
@@ -42,7 +42,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	}
 	
 	
-	public void setTestText(String text){
+	private void setTestText(String text){
 		someText.setText(text);
 	}
 	

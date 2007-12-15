@@ -2,37 +2,39 @@ package org.woped.qualanalysis.reachabilitygraph.controller;
 
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
-
 import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.qualanalysis.Constants;
+import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
 
 public class ReachabilityGraphVCListener implements InternalFrameListener{
 	
-	ReachabilityGraphVC reachGraphVC = null;
-	AbstractApplicationMediator aam = null;
+	private ReachabilityGraphVC reachGraphVC = null;
+	private AbstractApplicationMediator aam = null;
+	private IEditor toBeClosed = null;
 	
 	public ReachabilityGraphVCListener(ReachabilityGraphVC rgvc, AbstractApplicationMediator aam) {
 		this.reachGraphVC = rgvc;
 		this.aam = aam;
 	}
-
+	
 	public void internalFrameActivated(InternalFrameEvent arg0) {
-		//LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-- activated " + this.getClass().getName() + " Focus on " + aam.getUi().getEditorFocus().getName());
 		reachGraphVC.updatePanelsVisibility(aam.getUi().getEditorFocus());
 	}
 
 	public void internalFrameClosed(InternalFrameEvent arg0) {
-		//LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-- closed " + this.getClass().getName() + " ");
+		if(this.toBeClosed == null){
+			this.reachGraphVC.updatePanelsVisibility(aam.getUi().getEditorFocus());
+		} else {
+			this.reachGraphVC.removePanel(toBeClosed);
+		}
 	}
 
 	public void internalFrameClosing(InternalFrameEvent arg0) {
-		
+		this.toBeClosed = aam.getUi().getEditorFocus();
 	}
 
 	public void internalFrameDeactivated(InternalFrameEvent arg0) {
-		//LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-- deactivated " + this.getClass().getName() + " ");
+		
 	}
 
 	public void internalFrameDeiconified(InternalFrameEvent arg0) {
