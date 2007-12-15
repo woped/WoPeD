@@ -458,7 +458,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     public void internalFrameClosing(InternalFrameEvent e)
     {    	
-        EditorVC editor = ((DefaultEditorFrame) e.getSource()).getEditor();
+        IEditor editor = ((DefaultEditorFrame) e.getSource()).getEditor();
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_CLOSE);
         action.actionPerformed(new ViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE));
 

@@ -39,6 +39,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.MouseInputAdapter;
 
+import org.woped.core.controller.IEditor;
+import org.woped.core.gui.IEditorFrame;
 import org.woped.editor.controller.PetriNetResourceEditor;
 import org.woped.editor.controller.vc.EditorStatusBarVC;
 import org.woped.editor.controller.vc.EditorVC;
@@ -50,7 +52,7 @@ import org.woped.translations.Messages;
  * @author Thomas Pohl
  */
 @SuppressWarnings("serial")
-public class DefaultEditorFrame extends JInternalFrame
+public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 {
     private EditorVC               m_editor                 = null;
     private PetriNetResourceEditor m_petriNetResourceEditor = null;
@@ -130,7 +132,7 @@ public class DefaultEditorFrame extends JInternalFrame
      * 
      * @return returns the containing Editor.
      */
-    public EditorVC getEditor()
+    public IEditor getEditor()
     {
         return m_editor;
     }
