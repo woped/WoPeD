@@ -46,6 +46,7 @@ public class BPELwaitPanel extends JPanel{
 		this.editor = editor;
 		contentPanel = transitionPropertiesPanel;
 		c_ContentPanel = transitionPropertiesConstraints;
+// Parameter des Konstruktors noch entfernen
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
