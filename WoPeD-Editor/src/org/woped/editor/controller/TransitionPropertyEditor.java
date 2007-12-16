@@ -1500,7 +1500,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 
 		return webserviceTextField;
 	}
- // evt. noch Eingabehilfe für WS und Abfrage, dass WS-Feld gefüllt sein muss   
+  
     
 	
 	// *****************************************************ButtonPanel****************************************************
