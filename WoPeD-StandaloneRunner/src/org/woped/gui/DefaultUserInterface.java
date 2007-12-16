@@ -23,6 +23,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 
+import org.woped.bpel.gui.EditorData;
+import org.woped.bpel.gui.EditorOperations;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
@@ -135,11 +137,11 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             DefaultEditorFrame frame;
             if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
             {
-                frame = new DefaultEditorFrame((EditorVC) editor, new PetriNetResourceEditor((EditorVC) editor));
+                frame = new DefaultEditorFrame((EditorVC) editor, new PetriNetResourceEditor((EditorVC) editor), new EditorOperations(), new EditorData());
             } 
             else
             {
-                frame = new DefaultEditorFrame((EditorVC) editor, null);
+                frame = new DefaultEditorFrame((EditorVC) editor, null, null, null);
  
             }
             

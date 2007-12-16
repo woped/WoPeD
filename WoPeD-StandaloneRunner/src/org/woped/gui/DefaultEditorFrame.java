@@ -39,6 +39,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.MouseInputAdapter;
 
+import org.woped.bpel.gui.EditorData;
+import org.woped.bpel.gui.EditorOperations;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorFrame;
 import org.woped.editor.controller.PetriNetResourceEditor;
@@ -57,8 +59,10 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
     private EditorVC               m_editor                 = null;
     private PetriNetResourceEditor m_petriNetResourceEditor = null;
     private EditorStatusBarVC      m_statusBar              = null;
+    private EditorOperations       m_operationsEditor		= null;
+    private EditorData             m_dataEditor				= null;
 
-    public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor)
+    public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor, EditorOperations opEditor, EditorData dEditor)
     {          
         super(editor.getName(), true, true, true, true);
         this.setVisible(false);
@@ -66,6 +70,8 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
         m_petriNetResourceEditor = propEditor;
     	addInternalFrameListener(m_editor);
+    	m_operationsEditor = opEditor;
+    	m_dataEditor = dEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
         if (editor.isSubprocessEditor()) {
@@ -79,6 +85,8 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             JTabbedPane tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
+            tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
+            tabbedPane.addTab(Messages.getString("PetriNet.Data.Title"), m_dataEditor);
             tabbedPane.getModel().addChangeListener(new ChangeListener()
             		{
             	public void stateChanged(ChangeEvent e)
