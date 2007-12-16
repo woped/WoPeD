@@ -10,6 +10,7 @@ import javax.swing.JPanel;
  * Created on 16.12.2007
  *
  */
+
 public class EditorData extends JPanel{
 
 }
