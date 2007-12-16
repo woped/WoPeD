@@ -1387,7 +1387,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 							.createCompoundBorder(
 									BorderFactory
 											.createTitledBorder(Messages
-													.getString("Transition.Properties.Identification")),
+													.getString("Transition.Properties.Webservice")),
 									BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 			c.weightx = 1;
@@ -1411,13 +1411,13 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 10, 0, 0);
-			webservicePanel.add(getIdLabel(), c);
+			webservicePanel.add(getWebserviceLabel(), c);
 
 			c.gridx = 4;
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 10, 0, 10);
-			webservicePanel.add(getIdTextField(), c);
+			webservicePanel.add(getWebserviceTextField(), c);
 		}
 
 		return webservicePanel;
@@ -1462,6 +1462,46 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 		return uddiTextField;
 	}
 	
+    
+    private JLabel getWebserviceLabel()
+    {
+        if (webserviceLabel == null)
+        {
+        	webserviceLabel = new JLabel(Messages.getString("Transition.Properties.Webservice") + ":");
+        }
+
+        return webserviceLabel;
+    }
+    
+    
+    private JTextField getWebserviceTextField() {
+		if (webserviceTextField == null) {
+			webserviceTextField = new JTextField();
+			webserviceTextField.setPreferredSize(new Dimension(150, 20));
+			webserviceTextField.setMinimumSize(new Dimension(150, 20));
+			webserviceTextField.setMaximumSize(new Dimension(150, 20));
+			webserviceTextField.addKeyListener(new KeyListener() {
+				public void keyPressed(KeyEvent e) {
+					keyReleased(e);
+				}
+
+				public void keyTyped(KeyEvent e) {
+					keyReleased(e);
+				}
+
+				public void keyReleased(KeyEvent e) {
+					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+						apply();
+						TransitionPropertyEditor.this.dispose();
+					}
+				}
+			});
+		}
+
+		return webserviceTextField;
+	}
+ // evt. noch Eingabehilfe für WS und Abfrage, dass WS-Feld gefüllt sein muss   
+    
 	
 	// *****************************************************ButtonPanel****************************************************
 	private JPanel getButtonPanel() {
