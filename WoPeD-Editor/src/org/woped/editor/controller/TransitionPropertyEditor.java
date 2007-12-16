@@ -48,6 +48,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import org.woped.bpel.gui.transitionproperties.*;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -58,6 +59,7 @@ import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
+
 
 /**
  * @author waschtl
@@ -70,6 +72,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 	private EditorVC editor = null;
 
 	private JPanel contentPanel = null;
+	
+	private GridBagConstraints c = new GridBagConstraints();
 
 	// Name
 	private JPanel namePanel = null;
@@ -243,14 +247,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 	private static final String GROUP_NONE = Messages
 			.getString("Transition.Properties.Group.None");
 
-	// WebService
-	private JPanel webservicePanel = null;
-    private JLabel uddiLabel = null;
-    private JTextField uddiTextField = null;
-    private JLabel webserviceLabel = null;
-    private JTextField webserviceTextField = null;
-
-	
+	// BPEL Activity
+	private JPanel bpelActivityChoosePanel = null;
+    
 	// Buttons
 	private JPanel buttonPanel = null;
 
@@ -296,7 +295,6 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 			contentPanel = new JPanel();
 			contentPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 			contentPanel.setLayout(new GridBagLayout());
-			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
 			c.weightx = 1;
 			c.weighty = 1;
@@ -329,7 +327,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 			c.gridx = 0;
 			c.gridy = 5;
 			c.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getWebservicePanel(), c);
+			contentPanel.add(getBPELActivityChoosePanel(), c);
 		}
 
 		return contentPanel;
@@ -1376,129 +1374,13 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener 
 	}
 
 	
-	// **************************WebservicePanel******************************
-	private JPanel getWebservicePanel() {
-		if (webservicePanel == null) {
-			webservicePanel = new JPanel();
-			webservicePanel.setLayout(new GridBagLayout());
-			GridBagConstraints c = new GridBagConstraints();
-			webservicePanel
-					.setBorder(BorderFactory
-							.createCompoundBorder(
-									BorderFactory
-											.createTitledBorder(Messages
-													.getString("Transition.Properties.Webservice")),
-									BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+	// **************************BPELActivityPanel******************************
 
-			c.weightx = 1;
-			c.weighty = 1;
-			c.anchor = GridBagConstraints.WEST;
-			c.fill = GridBagConstraints.HORIZONTAL;
-
-			c.gridx = 0;
-			c.gridy = 0;
-			c.gridwidth = 1;
-			c.insets = new Insets(0, 2, 0, 0);
-			webservicePanel.add(getUddiLabel(), c);
-
-			c.gridx = 1;
-			c.gridy = 0;
-			c.gridwidth = 2;
-			c.insets = new Insets(0, 10, 0, 10);
-			webservicePanel.add(getUddiTextField(), c);
-
-			c.gridx = 3;
-			c.gridy = 0;
-			c.gridwidth = 1;
-			c.insets = new Insets(0, 10, 0, 0);
-			webservicePanel.add(getWebserviceLabel(), c);
-
-			c.gridx = 4;
-			c.gridy = 0;
-			c.gridwidth = 1;
-			c.insets = new Insets(0, 10, 0, 10);
-			webservicePanel.add(getWebserviceTextField(), c);
+	private JPanel getBPELActivityChoosePanel() {
+		if (bpelActivityChoosePanel == null) {
+			bpelActivityChoosePanel = new BPELActivityChoosePanel(this, contentPanel, c);
 		}
-
-		return webservicePanel;
-	}
-	
-	
-    private JLabel getUddiLabel()
-    {
-        if (uddiLabel == null)
-        {
-        	uddiLabel = new JLabel(Messages.getString("Transition.Properties.UDDI") + ":");
-        }
-
-        return uddiLabel;
-    }
-
-    
-    private JTextField getUddiTextField() {
-		if (uddiTextField == null) {
-			uddiTextField = new JTextField();
-			uddiTextField.setPreferredSize(new Dimension(150, 20));
-			uddiTextField.setMinimumSize(new Dimension(150, 20));
-			uddiTextField.setMaximumSize(new Dimension(150, 20));
-			uddiTextField.addKeyListener(new KeyListener() {
-				public void keyPressed(KeyEvent e) {
-					keyReleased(e);
-				}
-
-				public void keyTyped(KeyEvent e) {
-					keyReleased(e);
-				}
-
-				public void keyReleased(KeyEvent e) {
-					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-						apply();
-						TransitionPropertyEditor.this.dispose();
-					}
-				}
-			});
-		}
-
-		return uddiTextField;
-	}
-	
-    
-    private JLabel getWebserviceLabel()
-    {
-        if (webserviceLabel == null)
-        {
-        	webserviceLabel = new JLabel(Messages.getString("Transition.Properties.Webservice") + ":");
-        }
-
-        return webserviceLabel;
-    }
-    
-    
-    private JTextField getWebserviceTextField() {
-		if (webserviceTextField == null) {
-			webserviceTextField = new JTextField();
-			webserviceTextField.setPreferredSize(new Dimension(150, 20));
-			webserviceTextField.setMinimumSize(new Dimension(150, 20));
-			webserviceTextField.setMaximumSize(new Dimension(150, 20));
-			webserviceTextField.addKeyListener(new KeyListener() {
-				public void keyPressed(KeyEvent e) {
-					keyReleased(e);
-				}
-
-				public void keyTyped(KeyEvent e) {
-					keyReleased(e);
-				}
-
-				public void keyReleased(KeyEvent e) {
-					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-						apply();
-						TransitionPropertyEditor.this.dispose();
-					}
-				}
-			});
-		}
-
-		return webserviceTextField;
+		return bpelActivityChoosePanel;
 	}
   
     
