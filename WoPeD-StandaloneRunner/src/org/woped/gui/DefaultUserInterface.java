@@ -237,13 +237,16 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     	// Nothing to do here
     }
 
+    //! Return the last editor window that had the focus
+    //! @return last editor window that had the focus for null if no editor window open
     public IEditor getEditorFocus()
     {
-        if (desktop.getSelectedFrame() != null && desktop.getSelectedFrame() instanceof DefaultEditorFrame)
-        {
-            return ((DefaultEditorFrame) desktop.getSelectedFrame()).getEditor();
-        }
-        return null;
+    	JInternalFrame[] frames = desktop.getAllFrames();
+    	IEditor result = null;
+    	for (int i=0;(result==null)&&(i<frames.length);++i)
+    		if (frames[i] instanceof DefaultEditorFrame)
+    			result = ((DefaultEditorFrame)frames[i]).getEditor();
+    	return result;
     }
 
     /**
