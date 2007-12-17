@@ -66,6 +66,7 @@
 					<xs:element name="bounds" type="graphicsSimpleType" minOccurs="0"/>
 					<xs:element name="treeWidth" type="xs:int" minOccurs="0"/>
 					<xs:element name="resources" type="resourcesType" minOccurs="0"/>
+					<xs:element name="simulations" type="simulationsType" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -357,5 +358,32 @@
 		<xs:attribute name="instance" type="xs:IDREF"/>
 		<xs:attribute name="ref" type="xs:NCName" use="required"/>
 		<xs:attribute name="parameter" type="xs:NCName" use="required"/>
+	</xs:complexType>
+	<!-- Simulation Types -->
+	<xs:complexType name="simulationsType">
+		<xs:sequence>
+			<xs:element name="simulation" type="simulationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="simulationType">
+		<xs:sequence>
+			<xs:element name="simulationname" type="xs:string"/>
+			<xs:element name="transitionsequence" type="transitionsequenceType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="nethash" type="nethashType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="transitionsequenceType">
+		<xs:sequence>
+			<xs:element name="firedtransition" type="firedtransitionType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="firedtransitionType">
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="transition" type="xs:IDREF"/>
+	</xs:complexType>
+	<xs:complexType name="nethashType">
+		<xs:attribute name="id" type="xs:ID" use="required"/>
 	</xs:complexType>
 </xs:schema>
