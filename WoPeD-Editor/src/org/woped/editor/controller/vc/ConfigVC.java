@@ -52,6 +52,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
+import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
@@ -60,7 +61,6 @@ import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.gui.config.AbstractConfPanel;
 import org.woped.editor.gui.config.ConfPanelTree;
-import org.woped.editor.utilities.FileFilterImpl;
 import org.woped.translations.Messages;
 
 /**

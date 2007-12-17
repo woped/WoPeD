@@ -12,8 +12,8 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
-import org.woped.editor.utilities.FileFilterImpl;
 
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;

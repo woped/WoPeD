@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.core.controller.IDialog;
 import org.woped.translations.Messages;
 
 /**
@@ -37,13 +37,13 @@ public class BPELActivityChoosePanel extends JPanel {
 	
 //	private JPanel testPanel = null;
 	
-	private TransitionPropertyEditor editor = null;
+	private IDialog editor = null;
 	
 	private JPanel contentPanel = null;
 	private GridBagConstraints c_ContentPanel = null;
 	
 	
-	public BPELActivityChoosePanel(TransitionPropertyEditor editor, JPanel transitionPropertiesPanel, GridBagConstraints transitionPropertiesConstraints){
+	public BPELActivityChoosePanel(IDialog editor, JPanel transitionPropertiesPanel, GridBagConstraints transitionPropertiesConstraints){
 		
 		this.editor = editor;
 		contentPanel = transitionPropertiesPanel;
@@ -188,7 +188,6 @@ public class BPELActivityChoosePanel extends JPanel {
 							c_ContentPanel.gridwidth = 1;
 							c_ContentPanel.insets = new Insets(0, 10, 0, 10);
 							contentPanel.add(new BPELwaitPanel(editor, contentPanel, c_ContentPanel), c_ContentPanel);
-							editor.pack();
 						}
 					}
 				/*buttonEdit.setIcon(Messages.getImageIcon("Button.Ok"));

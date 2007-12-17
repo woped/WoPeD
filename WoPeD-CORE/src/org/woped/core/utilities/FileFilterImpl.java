@@ -20,11 +20,12 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.editor.utilities;
+package org.woped.core.utilities;
 
 import java.io.File;
 import java.util.Hashtable;
 import java.util.Vector;
+
 
 /**
  * "Generic" file filter. Accepts any file extension.
@@ -32,7 +33,7 @@ import java.util.Vector;
  * @author <a href="mailto:ricardo_padilha@users.sourceforge.net">Ricardo Sangoi
  *         Padilha </a>
  */
-public class FileFilterImpl extends javax.swing.filechooser.FileFilter
+public class FileFilterImpl extends javax.swing.filechooser.FileFilter 
 {
 
     //private String ext;

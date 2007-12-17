@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.core.controller.IDialog;
 import org.woped.translations.Messages;
 
 /**
@@ -26,7 +26,7 @@ import org.woped.translations.Messages;
 
 public class BPELwaitPanel extends JPanel{
 
-	private TransitionPropertyEditor editor = null;
+	private IDialog editor = null;
 	private JPanel contentPanel = null;
 	private GridBagConstraints c_ContentPanel = null;
 	
@@ -42,7 +42,7 @@ public class BPELwaitPanel extends JPanel{
 	private static final String WAIT_DEADLINE = Messages.getString("Transition.Properties.BPELActivityWait.Deadline");
 	
 	
-	public BPELwaitPanel(TransitionPropertyEditor editor, JPanel transitionPropertiesPanel, GridBagConstraints transitionPropertiesConstraints){
+	public BPELwaitPanel(IDialog editor, JPanel transitionPropertiesPanel, GridBagConstraints transitionPropertiesConstraints){
 		this.editor = editor;
 		contentPanel = transitionPropertiesPanel;
 		c_ContentPanel = transitionPropertiesConstraints;

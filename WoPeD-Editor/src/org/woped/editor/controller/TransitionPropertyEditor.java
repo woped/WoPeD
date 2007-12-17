@@ -49,8 +49,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import org.woped.bpel.gui.transitionproperties.*;
+import org.woped.core.controller.IDialog;
 import org.woped.core.model.CreationMap;
-import org.woped.core.model.IntPair;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
@@ -65,7 +65,7 @@ import org.woped.translations.Messages;
  * @author waschtl
  */
 @SuppressWarnings("serial")
-public class TransitionPropertyEditor extends JDialog implements ActionListener {
+public class TransitionPropertyEditor extends JDialog implements ActionListener, IDialog {
 	// General
 	private TransitionModel transition = null;
 

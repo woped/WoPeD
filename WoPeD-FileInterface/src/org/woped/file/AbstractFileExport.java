@@ -22,7 +22,7 @@
  */
 package org.woped.file;
 
-import org.woped.editor.utilities.FileFilterImpl;
+import org.woped.core.utilities.FileFilterImpl;
 
 /**
  * @author lai
