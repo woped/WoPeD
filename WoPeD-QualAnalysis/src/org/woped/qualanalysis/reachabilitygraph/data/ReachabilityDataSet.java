@@ -33,6 +33,9 @@ public class ReachabilityDataSet {
 		}
 		System.out.println("");
 	}
+	public HashMap<Integer,TransitionObject> getMap(){
+		return netTransitions;
+	}
 }
 
 

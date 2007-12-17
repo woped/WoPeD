@@ -40,4 +40,7 @@ public class MarkingList {
 	public int gross(){
 		return netMarkings.size();
 	}
+	public HashMap <Integer,Marking> getMap(){
+		return netMarkings;
+	}
 }

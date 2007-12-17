@@ -25,6 +25,8 @@ public class BuildReachability {
 	IEditor thisEditor=null;
 	private Map<String, AbstractElementModel>                    allTransitions        = null;
 	private PetriNetModelProcessor petrinet              = null;
+	private MarkingList markings=null;
+	private ReachabilityDataSet transactions=null;
 	public BuildReachability(IEditor thisEditor){
 		this.thisEditor=thisEditor;
 		this.petrinet = (PetriNetModelProcessor)thisEditor.getModelProcessor();
@@ -36,11 +38,11 @@ public class BuildReachability {
         checkNet();
         
         //Create MarkingList and add Current Status to List
-        MarkingList markings=new MarkingList();
+        markings=new MarkingList();
         markings.addMarking(new Marking(thisEditor));
         
         //Create Reachabilitylist
-        ReachabilityDataSet transactions=new ReachabilityDataSet();
+        transactions=new ReachabilityDataSet();
         
         //Start Iterator and mark current status
         markings.getIterator();
@@ -520,5 +522,14 @@ private void resetTransitionStatus()
 private PetriNetModelProcessor getPetriNet()
 {
     return petrinet;
+}
+
+//MF_001: Returns all markings as a hash map 
+public HashMap <Integer ,Marking> getMarkings(){
+	return markings.getMap();
+}
+//MF_002: Returns all transitions that can be activated
+public HashMap <Integer ,TransitionObject> getTransactions(){
+	return transactions.getMap();
 }
 }
