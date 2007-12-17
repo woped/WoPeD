@@ -2,15 +2,19 @@ package org.woped.bpel;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
+import org.woped.core.model.ArcModel;
+import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
@@ -105,13 +109,19 @@ public class BPEL {
 	 */
 	private void test(PetriNetModelProcessor pnp)
 	{
-		List l = pnp.getElementContainer().getRootElements();
-		Iterator iter = l.iterator();
-		System.out.println("Counter = "+l.size());
-		while(iter.hasNext())
-		{
-			
+		System.out.println("begin test");
+		Map<String, ArcModel> map = pnp.getElementContainer().getArcMap();
+		System.out.println(map.size());
+		Collection<ArcModel> test = map.values();
+		Iterator<ArcModel> list = test.iterator();
+		while(list.hasNext())
+		{	
+			ArcModel arc = list.next();
+			System.out.println("Source: " + arc.getSourceId());
+			System.out.println("Target: " + arc.getTargetId());
 		}
+		System.out.println("end test");
+		
 	}
 
 }

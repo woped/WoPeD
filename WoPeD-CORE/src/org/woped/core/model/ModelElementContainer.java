@@ -488,7 +488,7 @@ public class ModelElementContainer implements Serializable
      * 
      * @return Map
      */
-    public Map getArcMap()
+    public Map<String, ArcModel> getArcMap()
     {
         return arcs;
     }
