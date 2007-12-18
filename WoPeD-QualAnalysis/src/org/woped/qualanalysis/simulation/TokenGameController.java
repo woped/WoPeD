@@ -124,15 +124,16 @@ public class TokenGameController
 
     /**
      * Starts the TokenGame.
+     * TokenGame Start method changed. Now it will only open the RemoteController
+	 * No "checkNet()" this will be done later.
      */
     public void start()
-    {
-    	
-        if (isVisualTokenGame())
-        {
-            enableVisualTokenGame();
-            
-        }
+    {    	
+//        if (isVisualTokenGame())
+//        {
+//            enableVisualTokenGame();
+//            
+//        }
         
       //displays the TokenGame Remote-Control if it already exist, if not create
         if(RemoteControl != null)
@@ -157,7 +158,7 @@ public class TokenGameController
         allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
         allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
         // Find and show active Transitions/Arcs
-        checkNet();
+        //checkNet();
         //animator.start();
         
         
@@ -189,11 +190,6 @@ public class TokenGameController
         {
         	RemoteControl.setVisible(false);
         	desktop.getDesktopReference().remove(RemoteControl);
-        	
-        	//BUG IN HERE!
-        	//As soon as the focus is set on the Remote-Control, the TokenGame Cannot be switched of
-        	//Anthy, please care about it, if you find time to investigate.
-        	//Alignment-Issue still exists as well
         }
     }
 
@@ -892,4 +888,28 @@ public class TokenGameController
     {
     	transitionClicked(transition, null);
     }
+    
+    /**
+     * method to call private checkNet() method from TokenGameBar
+     */ 
+    public void TokenGameCheckNet()
+    {
+    	checkNet();
+    }
+    
+    /**
+     * this method is similiar to stop(). it will reset all tokens and playactions
+     * but il will not activate editor. throw play button you could simulate again
+     */ 
+    public void TokenGameRetore()
+    {
+        resetTransitionStatus();
+        resetSinkPlacesStatus();
+        resetArcStatus();
+        resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
+        getGraph().setPortsVisible(true);
+        getGraph().removeMouseListener(tokenGameMouseHandler);
+        getGraph().refreshNet();
+    }
+    
 }
