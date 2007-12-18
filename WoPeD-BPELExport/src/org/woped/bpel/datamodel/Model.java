@@ -2,7 +2,6 @@ package org.woped.bpel.datamodel;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Vector;
 
 import org.woped.core.model.AbstractElementModel;
@@ -39,7 +38,7 @@ public class Model
 
 		if (this.get_registrated_element(e) != null)
 			return true;
-		System.out.println("createModel " + e.getId());
+		//System.out.println("createModel " + e.getId());
 		AbstractElement element = this.createElement(e);
 		if (element == null)
 			return false;
@@ -47,7 +46,7 @@ public class Model
 			this._oneelement = element;
 		this.regist_element(element);
 
-		System.out.println("Prelist from " + e.getId());
+		//System.out.println("Prelist from " + e.getId());
 		Collection<AbstractElementModel> list = con
 				.getSourceElements(e.getId()).values();
 		Iterator<AbstractElementModel> iter = list.iterator();
@@ -68,7 +67,7 @@ public class Model
 			}
 		}
 
-		System.out.println("postlist from " + e.getId());
+		//System.out.println("postlist from " + e.getId());
 		list = con.getTargetElements(e.getId()).values();
 		iter = list.iterator();
 		while (iter.hasNext())
@@ -81,7 +80,7 @@ public class Model
 				AbstractElement abs = this
 						.get_registrated_element((PetriNetModelElement) tmp);
 
-				System.out.println(abs.getClass().getSimpleName());
+				//System.out.println(abs.getClass().getSimpleName());
 				if (!abs.add_pre_object(element))
 					return false;
 				if (!element.add_post_object(abs))
@@ -131,7 +130,7 @@ public class Model
 			AbstractElement erg = iter.next();
 			if (erg.equals(e))
 			{
-				System.out.println("found regist object");
+				//System.out.println("found regist object");
 				return erg;
 			}
 		}

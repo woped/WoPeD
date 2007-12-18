@@ -1,13 +1,9 @@
 package org.woped.bpel.datamodel;
 
 //standard java objects
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.TreeSet;
-import java.util.Vector;
 
 /**
  * @author Frank Schüler
