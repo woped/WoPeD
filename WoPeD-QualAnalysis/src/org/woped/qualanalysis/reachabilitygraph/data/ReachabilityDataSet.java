@@ -52,6 +52,9 @@ class TransitionObject{
 	public String print(){
 		return start.print() + " "+transition+" "+ende.print();
 	}
+	public String toString(){
+		return this.print();
+	}
 	public Integer getKey(){
 		return start.getKey()+transition.hashCode()+ende.getKey();
 	}

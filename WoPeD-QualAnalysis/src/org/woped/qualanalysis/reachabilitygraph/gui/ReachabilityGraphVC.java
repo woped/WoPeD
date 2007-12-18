@@ -2,16 +2,13 @@ package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashSet;
+import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.InternalFrameListener;
-
 import org.woped.core.controller.IEditor;
-import org.woped.core.gui.IToolBar;
-import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.translations.Messages;
@@ -74,7 +71,9 @@ public class ReachabilityGraphVC extends JInternalFrame {
         this.setMaximizable(true);
         this.setIconifiable(false);
         this.setLayout(new BorderLayout());
-        this.add(BorderLayout.NORTH, new JLabel("Toolbar"));
+        JButton refreshButton = new JButton("RefreshGraph");
+        refreshButton.addActionListener(new RefreshGraphButtonListener(this));
+        this.add(BorderLayout.NORTH, refreshButton);
         this.add(BorderLayout.SOUTH, new JLabel("Bottom"));
         this.setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
@@ -104,6 +103,15 @@ public class ReachabilityGraphVC extends JInternalFrame {
 		}
 	}
 
+	public void refreshGraph(){
+		for (ReachabilityGraphPanel rgp : panels) {
+			if(rgp.isShowing()){
+				rgp.refreshGraph();
+			}
+		}
+		this.repaint();
+	}
+	
 	public void updatePanelsVisibility(IEditor editor){
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- updateVisibility " + this.getClass().getName() + " ItemsCount " + this.panels.size());
 		for (ReachabilityGraphPanel rgp : panels) {
@@ -114,5 +122,18 @@ public class ReachabilityGraphVC extends JInternalFrame {
 			}
 		}
 		this.repaint();
+	}
+}
+
+class RefreshGraphButtonListener implements ActionListener {
+
+	ReachabilityGraphVC rgvc = null;
+	
+	public RefreshGraphButtonListener(ReachabilityGraphVC rgvc){
+		this.rgvc = rgvc;
+	}
+	
+	public void actionPerformed(ActionEvent arg0) {
+		rgvc.refreshGraph();
 	}
 }

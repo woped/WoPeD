@@ -96,6 +96,11 @@ public class Marking {
 		value=value+")";
 		return value;
 	}
+	
+	public String toString(){
+		return this.print();
+	}
+	
 	public void printseq(){
 		Iterator it=currentMarking.keySet().iterator();
 		while(it.hasNext()){
