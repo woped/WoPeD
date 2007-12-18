@@ -22,7 +22,7 @@
  */
 package org.woped.gui;
 
-import java.util.Locale;
+import javax.swing.JApplet;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.WoPeDConfiguration;
@@ -40,62 +40,80 @@ import org.woped.qualanalysis.test.ReferenceProvider;
  * 
  * 29.04.2003
  */
-public class RunWoPeD
-{
+public class RunWoPeD extends JApplet {
+	/**
+	 * 
+	 * Main Entry Point. Starts the GUI.
+	 * 
+	 */
+	public void init() {
+		final String arguments[] = null;
+		RunWoPeD.run(arguments);
+	}
 
-    /**
-     * 
-     * Main Entry Point. Starts the GUI.
-     *  
-     */
-    public static void main(String[] args)
-    {
-    	final String arguments[] = args;
-    	javax.swing.SwingUtilities.invokeLater(new Runnable() {
-    		public void run() {
-    			RunWoPeD.run(arguments);
-    		}
-    	});
-    }
-    
-    private static void run(String[] args)
-    {  	
-        try
-        {
-            // Loading Logger!
-            try
-            {
-                DOMConfigurator.configure(RunWoPeD.class.getResource("/org/woped/gui/utilities/log4j.xml"));
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(Constants.GUI_LOGGER)), Constants.GUI_LOGGER);
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.editor.Constants.EDITOR_LOGGER)), org.woped.editor.Constants.EDITOR_LOGGER);
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.file.Constants.FILE_LOGGER)), org.woped.file.Constants.FILE_LOGGER);
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.config.Constants.CONFIG_LOGGER)), org.woped.config.Constants.CONFIG_LOGGER);
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.core.Constants.CORE_LOGGER)), org.woped.core.Constants.CORE_LOGGER);
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.quantana.Constants.QUANTANA_LOGGER)), org.woped.quantana.Constants.QUANTANA_LOGGER);
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER)), org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER);
-                LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.translations.Constants.TRANSLATIONS_LOGGER)), org.woped.translations.Constants.TRANSLATIONS_LOGGER);
-                LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
-            } catch (Exception e)
-            {
-                System.err.println("ERROR ACTIVATING LOGGER");
-            }
-            
-            // Enable Mac specific behaviour.
-            // The menu bar goes to the top of the screen, instead of the top of the window.
-            System.setProperty("apple.laf.useScreenMenuBar", "true");
-            
-            // create & init GUI
-            Locale.setDefault(Locale.ENGLISH);
-            DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDConfiguration(), args);
-            ReferenceProvider helper = new ReferenceProvider();
-            helper.setMediatorReference(mainwindow);
-            
-        } catch (RuntimeException e1)
-        {
-            e1.printStackTrace();
-            // Error occured while init -> quit
-            System.exit(1);
-        }
-    }
+	private static void run(String[] args) {
+		try {
+			// Loading Logger!
+			try {
+				DOMConfigurator.configure(RunWoPeD.class
+						.getResource("/org/woped/gui/utilities/log4j.xml"));
+				LoggerManager
+						.register(new WopedLogger(org.apache.log4j.Logger
+								.getLogger(Constants.GUI_LOGGER)),
+								Constants.GUI_LOGGER);
+				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
+						.getLogger(org.woped.editor.Constants.EDITOR_LOGGER)),
+						org.woped.editor.Constants.EDITOR_LOGGER);
+				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
+						.getLogger(org.woped.file.Constants.FILE_LOGGER)),
+						org.woped.file.Constants.FILE_LOGGER);
+				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
+						.getLogger(org.woped.config.Constants.CONFIG_LOGGER)),
+						org.woped.config.Constants.CONFIG_LOGGER);
+				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
+						.getLogger(org.woped.core.Constants.CORE_LOGGER)),
+						org.woped.core.Constants.CORE_LOGGER);
+				LoggerManager
+						.register(
+								new WopedLogger(
+										org.apache.log4j.Logger
+												.getLogger(org.woped.quantana.Constants.QUANTANA_LOGGER)),
+								org.woped.quantana.Constants.QUANTANA_LOGGER);
+				LoggerManager
+						.register(
+								new WopedLogger(
+										org.apache.log4j.Logger
+												.getLogger(org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER)),
+								org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER);
+				LoggerManager
+						.register(
+								new WopedLogger(
+										org.apache.log4j.Logger
+												.getLogger(org.woped.translations.Constants.TRANSLATIONS_LOGGER)),
+								org.woped.translations.Constants.TRANSLATIONS_LOGGER);
+				LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
+			} catch (Exception e) {
+				System.err.println("ERROR ACTIVATING LOGGER");
+			}
+
+			// Enable Mac specific behaviour.
+			// The menu bar goes to the top of the screen, instead of the top of
+			// the window.
+			// TODO are the possibilities to integrate this code line
+			// System.setProperty("apple.laf.useScreenMenuBar", "true");
+
+			// create & init GUI
+			// TODO Locale.setDefault(Locale.ENGLISH);
+			DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(
+					null, new WoPeDConfiguration(), args);
+			ReferenceProvider helper = new ReferenceProvider();
+			helper.setMediatorReference(mainwindow);
+
+		} catch (RuntimeException e1) {
+			e1.printStackTrace();
+			// Error occured while init -> quit
+			System.exit(1);
+		}
+	}
 
 }

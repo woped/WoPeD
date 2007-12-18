@@ -36,12 +36,11 @@ import javax.swing.JToolBar;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
-import org.woped.core.gui.IToolBar;
+import org.woped.core.utilities.SwingUtils;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.gui.ToolBarButton;
-import org.woped.core.utilities.SwingUtils;
 import org.woped.gui.controller.DefaultApplicationMediator;
 
 /**
