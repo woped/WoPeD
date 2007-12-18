@@ -12,14 +12,14 @@ public class Place extends NonterminalElement<PlaceModel>
 	@Override
 	public boolean accept_post_object(AbstractElement e)
 	{
-		if(Transition.class.isInstance(e)||TerminalElement.class.isInstance(e))return true;
+		if(!Place.class.isInstance(e))return true;
 		return false;
 	}
 
 	@Override
 	public boolean accept_pre_object(AbstractElement e)
 	{
-		if(Transition.class.isInstance(e)||TerminalElement.class.isInstance(e))return true;
+		if(!Place.class.isInstance(e))return true;
 		return false;
 	}
 

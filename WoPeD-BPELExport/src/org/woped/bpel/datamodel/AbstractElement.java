@@ -68,14 +68,9 @@ public abstract class AbstractElement<E>
 	{
 		if (!this.accept_pre_object(e))
 			return false;
-		if (!this._pre.add(e))
-			return false;
 		if (!e.add_post_object(this))
-		{
-			System.out.println("not accept this object as pre");
-			this.remove_pre_object(e);
 			return false;
-		}
+		this._pre.add(e);
 		return true;
 	}
 
@@ -211,14 +206,10 @@ public abstract class AbstractElement<E>
 	{
 		if (!this.accept_post_object(e))
 			return false;
-		if (!this._post.add(e))
-			return false;
 		if (!e.accept_pre_object(this))
-		{
-			System.out.println("not accept this object as post");
-			this.remove_post_object(e);
 			return false;
-		}
+		this._post.add(e);
+
 		return true;
 	}
 

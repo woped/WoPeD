@@ -102,7 +102,7 @@ public class Model
 	private AbstractElement createElement(PetriNetModelElement e)
 	{
 
-		System.out.println(e.getClass().getSimpleName());
+		//System.out.println(e.getClass().getSimpleName());
 		if (PlaceModel.class.isInstance(e))
 			return new Place((PlaceModel) e);
 		if (TransitionModel.class.isInstance(e))
