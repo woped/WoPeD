@@ -36,6 +36,7 @@ import javax.swing.JToolBar;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
+import org.woped.core.gui.IToolBar;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
@@ -53,7 +54,7 @@ import org.woped.gui.controller.DefaultApplicationMediator;
  */
 
 @SuppressWarnings("serial")
-public class ToolBarVC extends JToolBar implements IViewController
+public class ToolBarVC extends JToolBar implements IViewController, IToolBar
 {
     // ViewControll
     private Vector<IViewListener>             viewListener         = new Vector<IViewListener>(1, 3);

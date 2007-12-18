@@ -99,6 +99,14 @@ public interface IEditor extends IViewController
     public boolean isDrawingMode();
 
     /**
+     * Returns if the reachability graph is enabled for this editor.
+     * 
+     * @see getCreateElementType
+     * @return drawing mode
+     */
+    public boolean isReachabilityEnabled();
+    
+    /**
      * Sets the drawing mode. If the net is in drawing mode, clicking the left
      * mouse button will draw the Element with the set creation type.
      * 
@@ -106,6 +114,14 @@ public interface IEditor extends IViewController
      * @param flag
      */
     public void setDrawingMode(boolean flag);
+    
+    /**
+     * Sets if the reachability graph for this editor is enabled
+     * 
+     * @see getCreateElementType
+     * @return drawing mode
+     */
+    public void setReachabilityEnabled(boolean flag);
 
     /**
      * Returns the type of the element, which will be created in drawing mode.

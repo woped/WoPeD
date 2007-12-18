@@ -1,11 +1,20 @@
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.HashSet;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
+
 import org.woped.core.controller.IEditor;
+import org.woped.core.gui.IToolBar;
+import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.translations.Messages;
 
 public class ReachabilityGraphVC extends JInternalFrame {
 	
@@ -40,6 +49,8 @@ public class ReachabilityGraphVC extends JInternalFrame {
 			ReachabilityGraphPanel rgp =  new ReachabilityGraphPanel(editor);
 			this.panels.add(rgp);
 			this.add(rgp);	
+			this.add(BorderLayout.CENTER, rgp);
+			editor.setReachabilityEnabled(true);
 		}
 		this.updatePanelsVisibility(editor);
 	}
@@ -56,11 +67,15 @@ public class ReachabilityGraphVC extends JInternalFrame {
 	private void init() {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
 		this.setSize(new Dimension(640, 480));
-		this.setTitle("REACHGRAPH");
+		this.setMinimumSize(new Dimension(320,240));
+		this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title"));
         this.setClosable(true);
         this.setResizable(true);
         this.setMaximizable(true);
-        this.setIconifiable(true);
+        this.setIconifiable(false);
+        this.setLayout(new BorderLayout());
+        this.add(BorderLayout.NORTH, new JLabel("Toolbar"));
+        this.add(BorderLayout.SOUTH, new JLabel("Bottom"));
         this.setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
 	}
@@ -92,8 +107,12 @@ public class ReachabilityGraphVC extends JInternalFrame {
 	public void updatePanelsVisibility(IEditor editor){
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- updateVisibility " + this.getClass().getName() + " ItemsCount " + this.panels.size());
 		for (ReachabilityGraphPanel rgp : panels) {
-			rgp.updateVisibility(editor);
+			if(rgp.getEditor().equals(editor)){
+				this.add(rgp);
+			} else {
+				this.remove(rgp);
+			}
 		}
+		this.repaint();
 	}
-	
 }

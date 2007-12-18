@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.List;
-
 import org.woped.core.controller.IEditor;
 
 public interface IUserInterface extends IEditorAware
@@ -38,4 +37,10 @@ public interface IUserInterface extends IEditorAware
     public void setVisible(boolean visible);
     
     public void updateRecentMenu();
+    
+    //public StatusBarVC getStatusBar();
+
+    //public TaskBarVC getTaskBar();
+
+    public IToolBar getToolBar();
 }

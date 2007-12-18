@@ -180,6 +180,8 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	// not needed private double m_zoomScale = 1;
 	private boolean m_drawingMode = false;
+	
+	private boolean m_reachGraphEnabled = false;
 
 	private boolean m_tokenGameMode = false;
 
@@ -2046,6 +2048,11 @@ public class EditorVC extends JPanel implements KeyListener,
 		return m_drawingMode;
 	}
 
+	public boolean isReachabilityEnabled()
+	{
+		return m_reachGraphEnabled;
+	}
+	
 	/**
 	 * Sets the drawing mode. If the net is in drawing mode, clicking the left
 	 * mouse button will draw the Element with the set creation type.
@@ -2058,6 +2065,11 @@ public class EditorVC extends JPanel implements KeyListener,
 		m_drawingMode = flag;
 	}
 
+	public void setReachabilityEnabled(boolean flag)
+	{
+		m_reachGraphEnabled = flag;
+	}
+	
 	// /**
 	// * Returns the PetriNet (Model Controllet) USE WITH CARE!
 	// *
@@ -2222,6 +2234,9 @@ public class EditorVC extends JPanel implements KeyListener,
 	
 	public void internalFrameActivated(InternalFrameEvent e)
 	{
+		if(!this.isReachabilityEnabled() && !this.isSubprocessEditor()){
+			m_centralMediator.getUi().getToolBar().getReachabilityGraphButton().setEnabled(true);	
+		}
 	};
 
 	public void internalFrameClosed(InternalFrameEvent e)
@@ -2241,6 +2256,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	public void internalFrameDeactivated(InternalFrameEvent e)
 	{
+		m_centralMediator.getUi().getToolBar().getReachabilityGraphButton().setEnabled(false);
 	};
 
 	public void internalFrameDeiconified(InternalFrameEvent e)
