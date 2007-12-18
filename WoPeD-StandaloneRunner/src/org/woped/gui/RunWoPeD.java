@@ -48,10 +48,10 @@ public class RunWoPeD extends JApplet {
 	 */
 	public void init() {
 		final String arguments[] = null;
-		RunWoPeD.run(arguments);
+		RunWoPeD.main(arguments);
 	}
 
-	private static void run(String[] args) {
+	public  static void main(String[] args) {
 		try {
 			// Loading Logger!
 			try {
@@ -115,5 +115,4 @@ public class RunWoPeD extends JApplet {
 			System.exit(1);
 		}
 	}
-
 }
