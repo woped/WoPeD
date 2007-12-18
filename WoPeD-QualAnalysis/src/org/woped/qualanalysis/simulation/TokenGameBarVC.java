@@ -1,11 +1,11 @@
 package org.woped.qualanalysis.simulation;
 import javax.swing.*;
+
 import org.woped.core.model.petrinet.*;
 
 import org.woped.translations.Messages;
 import org.woped.qualanalysis.simulation.controller.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 
 import org.woped.qualanalysis.test.*;
 
@@ -77,7 +77,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		this.setSize(910,140);
 		this.setVisible(true);
 		//RC will disappear
-		this.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);  
+		this.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
 		
 		this.getContentPane();
 		this.setLayout(new FlowLayout(1,5,10)); //1 = Align Center
@@ -181,7 +181,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnStop.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STOP, this));
 		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, this));
 		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, this));
-
+		pbnFastFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_FORWARD, this));
 		
 		//Create Playback&Navigation-Panel and add Buttons
 		NavigationPlayback = new JPanel();
@@ -342,7 +342,6 @@ public class TokenGameBarVC extends JInternalFrame {
 	{
 		int newArrayLength = 0;
 		
-		
 		if(ChoiceArray == null)
 		{
 			ChoiceArray = new TransitionModel[1];
@@ -420,6 +419,16 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnFastFW.setEnabled(true);
 	}
 	
+	public void enablePlayButton()
+	{
+		pbnPlay.setEnabled(true);
+	}
+	
+	public void disablePlayButton()
+	{
+		pbnPlay.setEnabled(false);
+	}
+	
 	/*
 	 * Transition-Actions 
 	 */
@@ -436,8 +445,6 @@ public class TokenGameBarVC extends JInternalFrame {
 		m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur);
 		
 	}
-	
-	
 	
 	/**
 	 * 
