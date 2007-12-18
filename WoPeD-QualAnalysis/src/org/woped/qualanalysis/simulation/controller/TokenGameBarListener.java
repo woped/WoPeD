@@ -2,6 +2,7 @@ package org.woped.qualanalysis.simulation.controller;
 import java.awt.event.*;
 
 
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.qualanalysis.test.*;
 import org.woped.qualanalysis.simulation.*;
 
@@ -83,7 +84,6 @@ public class TokenGameBarListener implements ActionListener  {
 	  	ID = ButtonID;
 	}
 	
-	
 	public void actionPerformed(ActionEvent e)
 	{
 		switch(ID)
@@ -101,14 +101,19 @@ public class TokenGameBarListener implements ActionListener  {
 		 case 5:
 			 break;
 		 case CLICK_STOP:
+			 /*
+			  *  Reset TokenGame to Startposition and Enable PlayButton
+			  */
 		       stopAction();
+		       RemoteControl.enablePlayButton();
 			 break;
 		 case CLICK_PLAY:
 			 
 			 /*
-			  *  TODO: Enable "Start TokenGame"
+			  *  Start "TokenGame" and disable Editor. Disable Play Button to prevent multiple TokenGame instances
 			  */
 			 playbackActions();
+			 RemoteControl.disablePlayButton();
 			 break;
 		 case 8:
 			 break;
@@ -213,12 +218,19 @@ public class TokenGameBarListener implements ActionListener  {
 		HistoryChanged = true;
 		TestItems = TokenGameTest.createTestdata();
 		RemoteControl.addHistoryData(TestItems);
+		
+		//Active TokenGame, disable DrawMode, checkNet and activate transition
+		if(RemoteControl.getTokenGameController().isVisualTokenGame())
+		{
+			RemoteControl.getTokenGameController().enableVisualTokenGame();
+			RemoteControl.getTokenGameController().TokenGameCheckNet();
+		}
 	}
-	
 
 	private void stopAction()
 	{
-		RemoteControl.getTokenGameController().stop();
+		RemoteControl.getTokenGameController().TokenGameRetore();
+		RemoteControl.clearChoiceBox();
 	}
 
 }
