@@ -15,9 +15,9 @@ import org.woped.core.model.petrinet.TransitionModel;
 //! their start and end marking object
 //! and the transition that was activated leading from start to end
 public class ReachabilityDataSet {
-	private HashMap <Integer ,TransitionObject> netTransitions;
+	private HashMap <String,TransitionObject> netTransitions;
 	public ReachabilityDataSet(){
-		netTransitions=new HashMap<Integer,TransitionObject>();
+		netTransitions=new HashMap<String,TransitionObject>();
 	}
 	public void add(Marking start ,String transition, Marking ende){
 		TransitionObject trans=new TransitionObject(start,transition,ende);
@@ -33,7 +33,7 @@ public class ReachabilityDataSet {
 		}
 		System.out.println("");
 	}
-	public HashMap<Integer,TransitionObject> getMap(){
+	public HashMap<String,TransitionObject> getMap(){
 		return netTransitions;
 	}
 }
@@ -41,21 +41,23 @@ public class ReachabilityDataSet {
 
 //! Object that Contains a Transaction with its start and end status (Marking object)
 class TransitionObject{
-	Marking start=null;
-	String transition=null;
-	Marking ende=null;
+	public Marking start=null;
+	public String transition=null;
+	public Marking ende=null;
 	public TransitionObject(Marking start,String transition,Marking ende){
 		this.start=start;
 		this.transition=transition;
 		this.ende=ende;
+		System.out.println(this.print()+" "+this.getKey());
 	}
 	public String print(){
 		return start.print() + " "+transition+" "+ende.print();
 	}
+	public String getKey(){
+		return ""+start.getKey()+transition.hashCode()+ende.getKey();
+	}
 	public String toString(){
 		return this.print();
 	}
-	public Integer getKey(){
-		return start.getKey()+transition.hashCode()+ende.getKey();
-	}
+
 }

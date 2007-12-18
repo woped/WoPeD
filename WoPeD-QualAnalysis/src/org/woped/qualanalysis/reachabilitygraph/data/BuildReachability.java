@@ -86,7 +86,11 @@ public class BuildReachability {
          		    	arcClicked(arc);
         		    	checkNet();
         		    	Marking ende=new Marking(thisEditor);
-                		markings.addMarking(ende);
+        		    	if(markings.containsMarking(ende)){
+        		    		ende=markings.getMarking(ende.getKey());
+        		    	}else{
+        		    		markings.addMarking(ende);
+        		    	}
                 		transactions.add(start, trans.getId(), ende);
         		    	}
         		    }
@@ -96,7 +100,11 @@ public class BuildReachability {
         		transitionClicked(trans);
         		checkNet();
         		Marking ende=new Marking(thisEditor);
-        		markings.addMarking(ende);
+		    	if(markings.containsMarking(ende)){
+		    		ende=markings.getMarking(ende.getKey());
+		    	}else{
+		    		markings.addMarking(ende);
+		    	}
         		transactions.add(start, trans.getId(), ende);
         		}
         	}
@@ -525,11 +533,11 @@ private PetriNetModelProcessor getPetriNet()
 }
 
 //MF_001: Returns all markings as a hash map 
-public HashMap <Integer ,Marking> getMarkings(){
+public HashMap <String ,Marking> getMarkings(){
 	return markings.getMap();
 }
 //MF_002: Returns all transitions that can be activated
-public HashMap <Integer ,TransitionObject> getTransactions(){
+public HashMap <String ,TransitionObject> getTransactions(){
 	return transactions.getMap();
 }
 }

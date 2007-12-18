@@ -31,8 +31,8 @@ public class ReachabilityGraphModel {
 		GraphLayoutCache view = new GraphLayoutCache(model,	new	DefaultCellViewFactory()); 
 		JGraph graph = new JGraph(model, view); 
 		BuildReachability dataSource = new BuildReachability(editor);
-		HashMap<Integer, Marking> markings = dataSource.getMarkings();
-		HashMap<Integer, TransitionObject> transactions = dataSource.getTransactions();
+		HashMap<String, Marking> markings = dataSource.getMarkings();
+		HashMap<String, TransitionObject> transactions = dataSource.getTransactions();
 		//DefaultGraphCell[] cells = new DefaultGraphCell[markings.size() + transactions.size()];
 		// Cells
 		HashSet<DefaultGraphCell> cellsList = new HashSet<DefaultGraphCell>();

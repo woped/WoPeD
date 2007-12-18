@@ -120,12 +120,12 @@ public class Marking {
 	public TreeMap<String,Integer> getMarking(){
 		return currentMarking;
 	}
-	public Integer getKey(){
+	public String getKey(){
 		Iterator it= currentMarking.keySet().iterator();
-		int hash=0;
+		String hash="";
 		while(it.hasNext()){
 			String temp=(String) it.next();
-			hash=hash+temp.hashCode()*currentMarking.get(temp).hashCode();
+			hash=hash+temp+"_"+currentMarking.get(temp).intValue();
 		}
 		return (hash);
 	}
