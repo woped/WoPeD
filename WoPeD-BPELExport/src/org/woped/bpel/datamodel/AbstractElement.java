@@ -1,8 +1,13 @@
 package org.woped.bpel.datamodel;
 
 //standard java objects
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.TreeSet;
+import java.util.Vector;
 
 /**
  * @author Frank Schüler
@@ -12,7 +17,7 @@ import java.util.Iterator;
  * 
  * status: at work date: 12.12.2007
  */
-public abstract class AbstractElement
+public abstract class AbstractElement<E>
 {
 
 	private static long					IdCounter	= 0L;
@@ -20,13 +25,23 @@ public abstract class AbstractElement
 	private HashSet<AbstractElement>	_pre		= new HashSet<AbstractElement>();
 	private HashSet<AbstractElement>	_post		= new HashSet<AbstractElement>();
 	private long						_id;
+	private E							_data;
 
 	/**
 	 * abstract constructor
 	 */
-	public AbstractElement()
+	public AbstractElement(E data)
 	{
 		this._id = AbstractElement.IdCounter++;
+		this._data = data;
+	}
+
+	/**
+	 * 
+	 */
+	public E getData()
+	{
+		return this._data;
 	}
 
 	/**
@@ -57,6 +72,7 @@ public abstract class AbstractElement
 			return false;
 		if (!e.add_post_object(this))
 		{
+			System.out.println("not accept this object as pre");
 			this.remove_pre_object(e);
 			return false;
 		}
@@ -78,6 +94,24 @@ public abstract class AbstractElement
 		while (list.hasNext())
 		{
 			if ((erg = list.next()).getID() == id)
+				return erg;
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 */
+	public AbstractElement find_pre_object_by_Source(AbstractElement e)
+	{
+		if (!this.accept_pre_object(e))
+			return null;
+		HashSet<AbstractElement> list = this.get_all_post_objects();
+		Iterator<AbstractElement> iter = list.iterator();
+		while (iter.hasNext())
+		{
+			AbstractElement erg = iter.next();
+			if (e.equals(erg))
 				return erg;
 		}
 		return null;
@@ -181,6 +215,7 @@ public abstract class AbstractElement
 			return false;
 		if (!e.accept_pre_object(this))
 		{
+			System.out.println("not accept this object as post");
 			this.remove_post_object(e);
 			return false;
 		}
@@ -202,6 +237,24 @@ public abstract class AbstractElement
 		while (list.hasNext())
 		{
 			if ((erg = list.next()).getID() == id)
+				return erg;
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 */
+	public AbstractElement find_post_object_by_Source(AbstractElement e)
+	{
+		if (!this.accept_pre_object(e))
+			return null;
+		HashSet<AbstractElement> list = this.get_all_post_objects();
+		Iterator<AbstractElement> iter = list.iterator();
+		while (iter.hasNext())
+		{
+			AbstractElement erg = iter.next();
+			if (e.equals(erg))
 				return erg;
 		}
 		return null;
@@ -335,5 +388,58 @@ public abstract class AbstractElement
 	 * @return boolean
 	 */
 	abstract public boolean equals(AbstractElement e);
+
+	abstract public String getBpelCode();
+
+	/**
+	 * dont use
+	 */
+	public AbstractElement findElement(AbstractElement e)
+	{
+
+		return this.findElement(this, e, new LinkedList<AbstractElement>());
+	}
+
+	/**
+	 * dont use
+	 */
+	private AbstractElement findElement(AbstractElement begin,
+			AbstractElement e, LinkedList<AbstractElement> usedNotes)
+	{
+		if (begin == null)
+			return null;
+		AbstractElement erg = null;
+
+		erg = begin.find_post_object_by_Source(e);
+		if (erg != null)
+			return erg;
+		erg = begin.find_pre_object_by_Source(e);
+		if (erg != null)
+			return erg;
+		usedNotes.add(begin);
+
+		HashSet<AbstractElement> prelist = begin.get_all_pre_objects();
+		HashSet<AbstractElement> postlist = begin.get_all_post_objects();
+		Iterator<AbstractElement> preiter = prelist.iterator();
+		Iterator<AbstractElement> postiter = postlist.iterator();
+		while (preiter.hasNext() || postiter.hasNext())
+		{
+			AbstractElement tmp = preiter.next();
+			if (usedNotes.indexOf(tmp) == -1)
+			{
+				erg = this.findElement(tmp, e, usedNotes);
+				if (erg != null)
+					return erg;
+			}
+			tmp = postiter.next();
+			if (usedNotes.indexOf(tmp) == -1)
+			{
+				erg = this.findElement(tmp, e, usedNotes);
+				if (erg != null)
+					return erg;
+			}
+		}
+		return null;
+	}
 
 }

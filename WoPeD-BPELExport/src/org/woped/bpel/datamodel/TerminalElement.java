@@ -1,12 +1,12 @@
 package org.woped.bpel.datamodel;
 
 
-public abstract class TerminalElement extends AbstractElement
+public abstract class TerminalElement extends AbstractElement<String>
 {
-	public TerminalElement()
+	public TerminalElement(String data)
 	{
-		super();
+		super(data);
 	}
 	
-	abstract public String get_BpelCode();
+	
 }

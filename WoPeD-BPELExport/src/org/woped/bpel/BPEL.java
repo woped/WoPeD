@@ -5,17 +5,17 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
-import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
 
@@ -23,6 +23,7 @@ import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.bpel.ProcessDocument;
 import org.woped.bpel.TProcess;
+import org.woped.bpel.datamodel.Model;
 
 
 //TODO class description
@@ -109,6 +110,11 @@ public class BPEL {
 	 */
 	private void test(PetriNetModelProcessor pnp)
 	{
+		Model m = new Model();
+		System.out.println(m.createModel(pnp.getElementContainer()));
+		System.out.println(m.count_elements());
+		
+		/*
 		System.out.println("begin test");
 		Map<String, ArcModel> map = pnp.getElementContainer().getArcMap();
 		System.out.println(map.size());
@@ -117,10 +123,20 @@ public class BPEL {
 		while(list.hasNext())
 		{	
 			ArcModel arc = list.next();
-			System.out.println("Source: " + arc.getSourceId());
-			System.out.println("Target: " + arc.getTargetId());
+			System.out.print("Source: " + arc.getSourceId()+ " ");
+			
+			AbstractElementModel tmp = pnp.getElementContainer().getElementById(arc.getSourceId());
+			//System.out.print("Class: " + tmp.getClass().getName() + " ");
+			if(PlaceModel.class.isInstance(tmp) )System.out.println("!Place!");
+			else if(TransitionModel.class.isInstance(tmp))System.out.println("!Transition!");
+			System.out.print("Target: " + arc.getTargetId());
+			tmp = pnp.getElementContainer().getElementById(arc.getTargetId());
+			//System.out.print("Class: " + tmp.getClass().getName() + " ");
+			if(PlaceModel.class.isInstance(tmp) )System.out.println("!Place!");
+			else if(TransitionModel.class.isInstance(tmp))System.out.println("!Transition!");
+			
 		}
-		System.out.println("end test");
+		System.out.println("end test");*/
 		
 	}
 
