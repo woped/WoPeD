@@ -47,7 +47,7 @@ import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.help.HelpBrowser;
-import org.woped.editor.utilities.FileFilterImpl;
+import org.woped.core.utilities.FileFilterImpl;
 import org.woped.gui.AboutUI;
 import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;

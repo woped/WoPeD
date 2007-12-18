@@ -29,6 +29,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
+import org.woped.core.gui.IToolBar;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.utilities.LoggerManager;
@@ -359,7 +360,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         return taskBar;
     }
 
-    public ToolBarVC getToolBar()
+    public IToolBar getToolBar()
     {
         return toolBar;
     }
