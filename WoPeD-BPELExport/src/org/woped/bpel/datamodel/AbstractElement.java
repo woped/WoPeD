@@ -33,7 +33,9 @@ public abstract class AbstractElement<E>
 	}
 
 	/**
+	 * This returned the saved data.
 	 * 
+	 * @return E
 	 */
 	public E getData()
 	{
@@ -91,7 +93,11 @@ public abstract class AbstractElement<E>
 	}
 
 	/**
+	 * Find a AbstractElement at the pre list by the saved data.
 	 * 
+	 * @param e AbstractElement
+	 * 
+	 * @return AbstractElement
 	 */
 	public AbstractElement find_pre_object_by_Source(AbstractElement e)
 	{
@@ -230,7 +236,11 @@ public abstract class AbstractElement<E>
 	}
 
 	/**
+	 * Find a AbstractElement at the post list by the saved data.
 	 * 
+	 * @param e AbstractElement
+	 * 
+	 * @return AbstractElement
 	 */
 	public AbstractElement find_post_object_by_Source(AbstractElement e)
 	{
@@ -379,7 +389,7 @@ public abstract class AbstractElement<E>
 	abstract public String getBpelCode();
 
 	/**
-	 * dont use
+	 * With this method, you can find an AbstractElement 
 	 */
 	public AbstractElement findElement(AbstractElement e)
 	{
