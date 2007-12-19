@@ -22,6 +22,8 @@
  */
 package org.woped.gui;
 
+import java.util.Locale;
+
 import javax.swing.JApplet;
 
 import org.apache.log4j.xml.DOMConfigurator;
@@ -99,11 +101,10 @@ public class RunWoPeD extends JApplet {
 			// Enable Mac specific behaviour.
 			// The menu bar goes to the top of the screen, instead of the top of
 			// the window.
-			// TODO are the possibilities to integrate this code line
-			// System.setProperty("apple.laf.useScreenMenuBar", "true");
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
 
 			// create & init GUI
-			// TODO Locale.setDefault(Locale.ENGLISH);
+			Locale.setDefault(Locale.ENGLISH);
 			DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(
 					null, new WoPeDConfiguration(), args);
 			ReferenceProvider helper = new ReferenceProvider();
