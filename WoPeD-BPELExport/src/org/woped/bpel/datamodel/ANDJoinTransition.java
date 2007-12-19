@@ -14,6 +14,8 @@ public class ANDJoinTransition extends
 	@Override
 	public boolean equals(AbstractElement e)
 	{
+		if(ANDJoinTransition.class.isInstance(e))return true;
+		if(this.getData().getId() == ((ANDJoinTransition)e).getData().getId()) return true;
 		return false;
 	}
 

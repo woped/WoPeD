@@ -3,7 +3,7 @@ package org.woped.bpel.datamodel;
 import org.woped.core.model.petrinet.TransitionModel;
 
 abstract public class Transition<E extends TransitionModel> extends
-		NonterminalElement<E>
+		NonterminalElement<TransitionModel>
 {
 
 	public Transition(E data)
@@ -16,6 +16,8 @@ abstract public class Transition<E extends TransitionModel> extends
 	{
 		if (Place.class.isInstance(e))
 			return true;
+		
+		System.out.println("Cant accept the post object!");
 		return false;
 	}
 
@@ -24,6 +26,8 @@ abstract public class Transition<E extends TransitionModel> extends
 	{
 		if (Place.class.isInstance(e))
 			return true;
+		
+		System.out.println("Cant accept the pre object!");
 		return false;
 	}
 }

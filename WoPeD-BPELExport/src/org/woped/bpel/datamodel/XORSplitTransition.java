@@ -1,31 +1,20 @@
 package org.woped.bpel.datamodel;
 
-import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
 
-public class XORSplitTransition extends Transition
+public class XORSplitTransition extends Transition<XORSplitOperatorTransitionModel>
 {
-
-	public XORSplitTransition(TransitionModel data)
+	public XORSplitTransition(XORSplitOperatorTransitionModel data)
 	{
 		super(data);
 	}
 
 	@Override
-	public boolean accept_post_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean accept_pre_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
 	public boolean equals(AbstractElement e)
 	{
+		if(XORSplitTransition.class.isInstance(e))return true;
+		if(this.getData().getId() == ((XORSplitTransition)e).getData().getId()) return true;
 		return false;
 	}
 

@@ -95,7 +95,8 @@ public abstract class AbstractElement<E>
 	/**
 	 * Find a AbstractElement at the pre list by the saved data.
 	 * 
-	 * @param e AbstractElement
+	 * @param e
+	 *            AbstractElement
 	 * 
 	 * @return AbstractElement
 	 */
@@ -238,7 +239,8 @@ public abstract class AbstractElement<E>
 	/**
 	 * Find a AbstractElement at the post list by the saved data.
 	 * 
-	 * @param e AbstractElement
+	 * @param e
+	 *            AbstractElement
 	 * 
 	 * @return AbstractElement
 	 */
@@ -389,7 +391,7 @@ public abstract class AbstractElement<E>
 	abstract public String getBpelCode();
 
 	/**
-	 * With this method, you can find an AbstractElement 
+	 * With this method, you can find an AbstractElement
 	 */
 	public AbstractElement findElement(AbstractElement e)
 	{
