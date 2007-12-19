@@ -173,6 +173,7 @@ public class Parser
 	 */
 	private void regist_element(AbstractElement e)
 	{
+		System.out.println("i am regist the element!");
 		if (Place.class.isInstance(e))
 			this._regist_places.add(e);
 		else
