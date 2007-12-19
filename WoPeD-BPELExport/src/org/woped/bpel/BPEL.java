@@ -23,7 +23,7 @@ import org.woped.core.utilities.Utils;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
-import org.woped.bpel.datamodel.Model;
+import org.woped.bpel.datamodel.Parser;
 
 
 //TODO class description
@@ -116,7 +116,7 @@ public class BPEL {
 	 */
 	private void test(PetriNetModelProcessor pnp)
 	{
-		Model m = new Model();
+		Parser m = new Parser();
 		System.out.println(m.createModel(pnp.getElementContainer()));
 		System.out.println(m.count_elements());
 		
