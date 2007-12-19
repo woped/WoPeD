@@ -178,7 +178,7 @@ public class BPELActivityChoosePanel extends JPanel {
 	 
 		private JButton getButtonEdit() {
 			if (buttonEdit == null) {
-				buttonEdit = new JButton("Messages.getString("Transition.Properties.BPELActivity.Button"); //Text wird später durch das unten ersetzt
+				buttonEdit = new JButton(Messages.getString("Transition.Properties.BPELActivity.Button")); //Text wird später durch das unten ersetzt
 				buttonEdit.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						String selectedActivity = getActivityComboBoxModel().getSelectedItem().toString();
