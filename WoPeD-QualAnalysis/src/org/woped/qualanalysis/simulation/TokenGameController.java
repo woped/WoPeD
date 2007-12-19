@@ -250,7 +250,7 @@ public class TokenGameController
      */
     public void disableVisualTokenGame()
     {
-        // enalbe editor access
+        // enable editor access
         getGraph().setEnabled(true);
         getGraph().enableMarqueehandler(true);
         getGraph().setPortsVisible(true);
@@ -300,6 +300,7 @@ public class TokenGameController
      */
     private void checkTransition(TransitionModel transition)
     {
+    	
         transition.setActivated(false);
         transition.setFireing(false);
         Map incomingArcs = getPetriNet().getElementContainer().getIncomingArcs(transition.getId());
@@ -311,11 +312,11 @@ public class TokenGameController
             if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size()) 
             {
             	transition.setActivated(true);
-                //This will add all currently active Transitions to the TokenGameBarVC-Autochoice-List
+            	//This will add all currently active Transitions to the TokenGameBarVC-Autochoice-List
             	RemoteControl.addChoiceItem(transition.getNameValue(), transition.getId(), transition);
-            	
             }
-            	
+            
+            
         } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
         {
             OperatorTransitionModel operator = (OperatorTransitionModel) transition;
@@ -330,7 +331,7 @@ public class TokenGameController
                 if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size())
                 {
                     setOutgoingArcsActive(transition.getId(), true);
-                    operator.setFireing(true);
+                    operator.setFireing(true);                   
                 }
             } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
             		(operator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
@@ -399,6 +400,9 @@ public class TokenGameController
                 		thisEditor.openTokenGameSubProcess((SubProcessModel)transition);
                 }
                 actionPerformed = true;
+                //Cleans up the RemoteControl. Needed to make sure that in-Editor-click and Remote-click work properly
+                RemoteControl.cleanupTransition();
+         
             } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
                 OperatorTransitionModel operator = (OperatorTransitionModel) transition;

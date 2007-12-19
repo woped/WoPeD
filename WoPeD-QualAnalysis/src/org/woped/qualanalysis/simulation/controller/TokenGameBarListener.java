@@ -13,7 +13,7 @@ import org.woped.translations.Messages;
 
 import java.awt.*;
 
-public class TokenGameBarListener implements ActionListener  {
+public class TokenGameBarListener implements ActionListener, MouseListener {
 	
 	//Constants
 	//======================  
@@ -48,6 +48,9 @@ public class TokenGameBarListener implements ActionListener  {
 	public final static int HM_DELETE_SELECTED     = 18;
 	public final static int HM_OVERWRITE_SELECTED  = 19;
 	public final static int HM_OPEN_SELECTED       = 20;
+	
+	//AutoChoice List
+	public final static int CHOOSE_TRANSITION      = 21;
 
 
 		
@@ -61,7 +64,7 @@ public class TokenGameBarListener implements ActionListener  {
 	private TokenGameBarVC            RemoteControl = null;
 	private String[]                  TestItems     = null;
 	private static boolean            HistoryChanged= false;
-	
+
 
 	public TokenGameBarListener(int ButtonID, TokenGameBarVC RC, TokenGameHistoryManagerVC ToGaHiMan)
 	{
@@ -69,7 +72,6 @@ public class TokenGameBarListener implements ActionListener  {
 	  	RemoteControl = RC;
 	  	HistoryDialog = ToGaHiMan;
 	}
-	
 	
 	//Needed for RemoteControlElements
 	public TokenGameBarListener(int ButtonID, TokenGameBarVC RC)
@@ -84,7 +86,36 @@ public class TokenGameBarListener implements ActionListener  {
 	  	ID = ButtonID;
 	}
 	
+	
 	public void actionPerformed(ActionEvent e)
+	{
+	    //Calls the method for the centralized Action-Handling
+		actionRouter();	
+	}
+
+	public void mouseClicked(MouseEvent e)
+	{
+		//Calls the method for the centralized Action-Handling
+        actionRouter();	
+	}
+	
+	public void mouseEntered(MouseEvent e)
+	{
+	}
+	
+	public void mousePressed(MouseEvent e)
+	{
+	}
+	
+	public void mouseReleased(MouseEvent e)
+	{
+	}
+	
+	public void mouseExited(MouseEvent e)
+	{
+	}
+	
+	private void actionRouter()
 	{
 		switch(ID)
 		{
@@ -108,7 +139,6 @@ public class TokenGameBarListener implements ActionListener  {
 		       RemoteControl.enablePlayButton();
 			 break;
 		 case CLICK_PLAY:
-			 
 			 /*
 			  *  Start "TokenGame" and disable Editor. Disable Play Button to prevent multiple TokenGame instances
 			  */
@@ -120,8 +150,6 @@ public class TokenGameBarListener implements ActionListener  {
 		 case CLICK_FORWARD:
 			 RemoteControl.occurTransition();
 			 /*
-			  *  TODO: 1.) When click is done (in Stepwise-Mode) let the next enabled transition occur
-			  *  
 			  *  (Not Now, but later)
 			  *  TODO: 2.) For Automatic Playback just enable direction <forward> or <backward>
 			  *            so that the net will be played in that direction
@@ -153,12 +181,19 @@ public class TokenGameBarListener implements ActionListener  {
 		 case HM_OPEN_SELECTED:
 			 loadExistingHistory();
 			 break;
-
+		
+		 case CHOOSE_TRANSITION:
+			 if(RemoteControl.getSelectedChoiceID() > -1)
+			 {
+				 RemoteControl.proceedTransitionChoice(RemoteControl.getSelectedChoiceID());
+			 }
+			 break;
 		 default:
 			 break;
 		}
-	}
 
+	}
+	
 	private void showHistoryManager()
 	{
 		//Calling the Dialog-Box of the HistoryManager

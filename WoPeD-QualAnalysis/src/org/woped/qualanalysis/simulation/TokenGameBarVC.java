@@ -251,6 +251,9 @@ public class TokenGameBarVC extends JInternalFrame {
 		acoChoice.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		acoChoice.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.ChoiceList"));
 		
+		//add Listener
+		acoChoice.addMouseListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_TRANSITION, this));
+		
 		//... the easychoice Scroll-Bars and Listbox Sizedefinition
 		acoScroll = new JScrollPane(acoChoice);
 		acoScroll.setPreferredSize(new Dimension(200,85));
@@ -362,16 +365,28 @@ public class TokenGameBarVC extends JInternalFrame {
 			TransitionToOccur = null;
 			
 		}
-		acoChoiceItems.addElement(itemName);
+		
 
-		//if more then one element is in the box, for first a choice has to be 
-		//done until the user may continue with stepping forward
-		if(acoChoiceItems.getSize() > 1)
+		//if more then one element is available, they will be listed in the easy-choice  box.
+		//only after a choice was done, the user may continue with stepping forward
+		if(ChoiceArray.length == 2)
 		{
-			//disable the step-forward-button(s)
+			acoChoiceItems.addElement(ChoiceArray[0].getNameValue());
+			acoChoiceItems.addElement(ChoiceArray[1].getNameValue());
 			disableForwardButtons();
 		}
+		if(ChoiceArray.length > 2)
+		{
+			disableForwardButtons();
+			acoChoiceItems.addElement(ChoiceArray[ChoiceArray.length-1].getNameValue());
+		}
 		
+	}
+	
+	public int getSelectedChoiceID()
+	{
+		return acoChoice.getSelectedIndex();
+	
 	}
 	
 	public void clearChoiceBox()
@@ -433,17 +448,40 @@ public class TokenGameBarVC extends JInternalFrame {
 	 * Transition-Actions 
 	 */
 	
+	
+	/**
+	 * This method will be called by the EasyChoice-Event and will handover the
+	 * chosen transition to the occurTransition() method 
+	 */
+	public void proceedTransitionChoice(int index)
+	{
+		if((ChoiceArray != null) && (index < ChoiceArray.length))
+		{
+			TransitionToOccur = ChoiceArray[index];
+		    occurTransition();
+		}	
+	}
+	
+	
 	/**
 	 * This method let the active transition occur (currently only for sequences, as soon
 	 * as two transitions are active, the method cannot occur so far)
 	 */
-	
 	public void occurTransition()
+	{
+		m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur);
+		
+	}
+	
+	/**
+	 * Cleans up the ChoiceBox and the ChoiceArray.
+	 * Is called by the TokenGameController.transitionClicked method and therefore
+	 * makes it possible to step through the net with in-Editor-clicks or Remote-clicks
+	 */
+	public void cleanupTransition()
 	{
 		clearChoiceBox();
 		ChoiceArray = null;
-		m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur);
-		
 	}
 	
 	/**
