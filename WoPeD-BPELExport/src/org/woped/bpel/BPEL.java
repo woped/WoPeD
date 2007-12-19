@@ -11,6 +11,7 @@ import java.util.Vector;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -21,8 +22,7 @@ import org.woped.core.utilities.Utils;
 
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
-import org.woped.bpel.ProcessDocument;
-import org.woped.bpel.TProcess;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
 import org.woped.bpel.datamodel.Model;
 
 
@@ -79,22 +79,28 @@ public class BPEL {
 	}
 
 	//TODO method description
-	public boolean saveFile(String Path, PetriNetModelProcessor pnp)
+	public boolean saveFile(String Path, IEditor editor)
 	{
+		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor.getModelProcessor();
 		this.test(pnp);
 		//new File(Path);
-		bpelDoc = ProcessDocument.Factory.newInstance();
-		TProcess iProcess = bpelDoc.addNewProcess();
-		XmlCursor cursor = iProcess.newCursor();
-		cursor.insertComment("Hello World");
-		
-        XmlOptions opt = new XmlOptions();
+		XmlOptions opt = new XmlOptions();
         opt.setUseDefaultNamespace();
         opt.setSavePrettyPrint();
         opt.setSavePrettyPrintIndent(2);
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("", "bpel.woped.org");
-        opt.setSaveImplicitNamespaces(map);
+        //Map<String, String> map = new HashMap<String, String>();
+        //map.put("xmlns:bpel", "bpel.woped.org");
+        //map.put("xmlns:bpel","");
+        //map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
+        //opt = opt.setSaveImplicitNamespaces(map);
+        
+		bpelDoc = ProcessDocument.Factory.newInstance(opt);
+		TProcess iProcess = bpelDoc.addNewProcess();
+		iProcess.setName("TestProcess");
+		TDocumentation iDocumentation = iProcess.addNewDocumentation();
+		iDocumentation.setLang("EN");
+		iDocumentation.newCursor().setTextValue("This process is for testing purposes only");
+		TSequence iSequence = iProcess.addNewSequence();
         try
         {
         	bpelDoc.save(new File(Path), opt);

@@ -397,7 +397,7 @@ public class FileEventProcessor extends AbstractEventProcessor
                         //BPEL-Export
                         else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter)
                         {
-                        	succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), (PetriNetModelProcessor) editor.getModelProcessor());
+                        	succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), editor);
                             ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
                             
                         }
