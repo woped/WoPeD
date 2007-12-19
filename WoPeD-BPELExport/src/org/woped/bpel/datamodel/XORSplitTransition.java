@@ -3,10 +3,10 @@ package org.woped.bpel.datamodel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 
 
-public class XORTransition extends NonterminalElement
+public class XORSplitTransition extends NonterminalElement
 {
 
-	public XORTransition(PetriNetModelElement data)
+	public XORSplitTransition(PetriNetModelElement data)
 	{
 		super(data);
 	}

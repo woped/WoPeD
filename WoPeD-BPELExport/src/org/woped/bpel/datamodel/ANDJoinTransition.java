@@ -3,10 +3,10 @@ package org.woped.bpel.datamodel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 
 
-public class ANDTransition extends NonterminalElement
+public class ANDJoinTransition extends NonterminalElement
 {
 
-	public ANDTransition(PetriNetModelElement data)
+	public ANDJoinTransition(PetriNetModelElement data)
 	{
 		super(data);
 	}
