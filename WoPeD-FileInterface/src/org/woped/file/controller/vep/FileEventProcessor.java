@@ -44,7 +44,7 @@ import org.woped.qualanalysis.NetAnalysisDialog;
 import org.woped.qualanalysis.WoflanAnalysis;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.bpel.BPEL;
+import org.woped.bpel.BPEL;;
 
 public class FileEventProcessor extends AbstractEventProcessor
 {
