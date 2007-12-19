@@ -165,6 +165,11 @@ public class SubProcessModel extends TransitionModel implements
 	{
 		return subElementContainer;
 	}
+	
+	public ModelElementContainer getElementContainer()
+	{
+		return this.subElementContainer;
+	} 
 
 	public AbstractElementModel addElement(AbstractElementModel element)
 	{
