@@ -395,10 +395,21 @@ public class FileEventProcessor extends AbstractEventProcessor
                             succeed = true;
                         }
                         //BPEL-Export
-                        else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter)
+                        else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter & this.isSound(editor))
                         {
-                        	succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), editor);
-                            ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
+                        	StructuralAnalysis sa = new StructuralAnalysis(editor);
+                        	int wellStruct = sa.getNumWellStructurednessViolations();
+                        	int freeChoice = sa.getNumFreeChoiceViolations();
+                        	int sound = wellStruct+freeChoice;
+                        	System.out.print("Sound:" + sound+"|");
+                        	if (sound==0){
+                        		succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), editor);
+                        		ConfigurationManager.getConfiguration().setCurrentWorkingDir(editor.getFilePath());
+                        	}
+                        	else{
+                        		JOptionPane.showMessageDialog(null,
+                    			Messages.getString("QuantAna.Message.SoundnessViolation"));
+                        	}
                             
                         }
                         /* Tool for TPN Export */
