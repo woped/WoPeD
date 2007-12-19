@@ -1,24 +1,11 @@
 package org.woped.bpel.datamodel;
 
-
 public class FlowTransition extends TerminalElement
 {
 
 	public FlowTransition(String data)
 	{
 		super(data);
-	}
-
-	@Override
-	public boolean accept_post_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean accept_pre_object(AbstractElement e)
-	{
-		return false;
 	}
 
 	@Override

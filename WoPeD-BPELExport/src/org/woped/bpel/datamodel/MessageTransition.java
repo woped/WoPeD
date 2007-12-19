@@ -1,12 +1,11 @@
 package org.woped.bpel.datamodel;
 
-import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.TransitionModel;
 
 
-public class MessageTransition extends NonterminalElement
+public class MessageTransition extends Transition
 {
-
-	public MessageTransition(PetriNetModelElement data)
+	public MessageTransition(TransitionModel data)
 	{
 		super(data);
 	}

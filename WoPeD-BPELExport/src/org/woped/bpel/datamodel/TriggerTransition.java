@@ -1,12 +1,13 @@
 package org.woped.bpel.datamodel;
 
-import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.TransitionModel;
 
 
-public class TriggerTransition extends NonterminalElement
+public class TriggerTransition extends Transition
 {
 
-	public TriggerTransition(PetriNetModelElement data)
+
+	public TriggerTransition(TransitionModel data)
 	{
 		super(data);
 	}

@@ -1,12 +1,12 @@
 package org.woped.bpel.datamodel;
 
-import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.TransitionModel;
 
 
-public class XORSplitTransition extends NonterminalElement
+public class XORSplitTransition extends Transition
 {
 
-	public XORSplitTransition(PetriNetModelElement data)
+	public XORSplitTransition(TransitionModel data)
 	{
 		super(data);
 	}

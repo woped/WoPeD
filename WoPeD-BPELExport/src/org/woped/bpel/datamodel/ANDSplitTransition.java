@@ -1,26 +1,14 @@
 package org.woped.bpel.datamodel;
 
-import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.ANDSplitOperatorTransitionModel;
 
-
-public class ANDSplitTransition extends NonterminalElement
+public class ANDSplitTransition extends
+		Transition<ANDSplitOperatorTransitionModel>
 {
 
-	public ANDSplitTransition(PetriNetModelElement data)
+	public ANDSplitTransition(ANDSplitOperatorTransitionModel data)
 	{
 		super(data);
-	}
-
-	@Override
-	public boolean accept_post_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean accept_pre_object(AbstractElement e)
-	{
-		return false;
 	}
 
 	@Override
