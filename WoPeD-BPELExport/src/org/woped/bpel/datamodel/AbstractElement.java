@@ -26,9 +26,13 @@ public abstract class AbstractElement<E>
 	/**
 	 * abstract constructor
 	 */
-	public AbstractElement(E data)
+	public AbstractElement()
 	{
 		this._id = AbstractElement.IdCounter++;
+	}
+	
+	protected void setData(E data)
+	{
 		this._data = data;
 	}
 
@@ -66,7 +70,7 @@ public abstract class AbstractElement<E>
 	{
 		if (!this.accept_pre_object(e))
 			return false;
-		if (!e.add_post_object(this))
+		if (!e.accept_post_object(this))
 			return false;
 		this._pre.add(e);
 		return true;
@@ -113,6 +117,16 @@ public abstract class AbstractElement<E>
 				return erg;
 		}
 		return null;
+	}
+	
+	/**
+	 * This method retured the first element at the pre list.
+	 * 
+	 * @return AbstractElement
+	 */
+	public AbstractElement get_first_pre_element()
+	{
+		return this._pre.iterator().next();
 	}
 
 	/**
@@ -212,7 +226,6 @@ public abstract class AbstractElement<E>
 		if (!e.accept_pre_object(this))
 			return false;
 		this._post.add(e);
-
 		return true;
 	}
 
@@ -257,6 +270,16 @@ public abstract class AbstractElement<E>
 				return erg;
 		}
 		return null;
+	}
+	
+	/**
+	 * This method retured the first element at the post list.
+	 * 
+	 * @return AbstractElement
+	 */
+	public AbstractElement get_first_post_element()
+	{
+		return this._post.iterator().next();
 	}
 
 	/**

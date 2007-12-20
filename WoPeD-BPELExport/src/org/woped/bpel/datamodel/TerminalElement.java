@@ -5,7 +5,8 @@ public abstract class TerminalElement extends AbstractElement<String>
 {
 	public TerminalElement(String data)
 	{
-		super(data);
+		super();
+		this.setData(data);
 	}
 	
 	@Override

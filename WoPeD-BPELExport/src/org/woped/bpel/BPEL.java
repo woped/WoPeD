@@ -24,6 +24,8 @@ import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
 import org.woped.bpel.datamodel.Parser;
+import org.woped.bpel.datamodel.Place;
+import org.woped.bpel.datamodel.SimpleTransition;
 
 
 //TODO class description
@@ -120,7 +122,7 @@ public class BPEL {
 		Parser m = new Parser();
 		System.out.println(m.createModel(pnp.getElementContainer()));
 		System.out.println(m.count_elements());
-		
+		m.eliminate_all_picks();
 		/*
 		System.out.println("begin test");
 		Map<String, ArcModel> map = pnp.getElementContainer().getArcMap();

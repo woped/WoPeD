@@ -1,12 +1,13 @@
 package org.woped.bpel.datamodel;
 
 
-public class SeqenceTransition extends TerminalElement
+public class SequenceTransition extends TerminalElement
 {
 
-	public SeqenceTransition(String data)
+	public SequenceTransition(AbstractElement begin)
 	{
-		super(data);
+		super("test");
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -4,9 +4,9 @@ package org.woped.bpel.datamodel;
 public class PickTransition extends TerminalElement
 {
 
-	public PickTransition(String data)
+	public PickTransition(AbstractElement begin)
 	{
-		super(data);
+		super("test");
 	}
 
 	@Override

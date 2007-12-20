@@ -253,5 +253,117 @@ public class Parser
 	{
 		return this._regist_places.size() + this._regist_transition.size();
 	}
+	
+	/**
+	 * This method test of sequens and return the endelement of sequence.
+	 * @param e AbstractElement startelement of sequence
+	 * @return AbstractElement
+	 */
+	public AbstractElement isSequense(AbstractElement e)
+	{
+		if(e == null) return null;
+		if(Place.class.isInstance(e)) return null;
+		if(e.count_post_objects() != 1) return null;
+		AbstractElement tmp = e.get_first_post_element();
+		if(tmp.count_post_objects() != 1) return null;
+		tmp = tmp.get_first_post_element();
+		return tmp;
+	}
+	
+	/**
+	 * This method eliminate all sequences and replace all contained elements
+	 * the sequence as the SequenceTransition element.
+	 */
+	public void eliminate_all_seqences()
+	{
+		Iterator<AbstractElement> list = this._regist_transition.iterator();
+		while(list.hasNext())
+		{
+			AbstractElement begin = list.next();
+			AbstractElement end = this.isSequense(begin);
+			if(end != null)
+			{
+				System.out.println("<Sequense> \n" + 
+						"\tbegin = " + begin + "\n" + 
+						"\tend = " + end + "\n</Sequence>");
+				Iterator<AbstractElement> pre_list = begin.get_all_pre_objects().iterator();
+				Iterator<AbstractElement> post_list = end.get_all_post_objects().iterator();
+				
+				begin.remove_all_pre_relationship();
+				end.remove_all_post_relationship();
+				
+				AbstractElement e = new SequenceTransition(begin);
+				AbstractElement tmp;
+				while(pre_list.hasNext())
+				{
+					tmp = pre_list.next();
+					tmp.add_post_object(e);
+					e.add_pre_object(tmp);
+				}
+				while(post_list.hasNext())
+				{
+					tmp = post_list.next();
+					tmp.add_pre_object(e);
+					e.add_post_object(tmp);
+				}
+				
+			}
+		}
+	}
+	
+	/**
+	 * This method test of pick and search for the endelement.
+	 * @param e AbstractElement begin of pick
+	 * @return AbstractElement
+	 */
+	public AbstractElement isPick(AbstractElement e)
+	{
+		if(!Place.class.isInstance(e)) return null;
+		if(e.count_post_objects() < 2) return null; 
+		AbstractElement end;
+		AbstractElement tmp;
+		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
+		tmp = list.next();
+		if(tmp.count_post_objects() != 1) return null;
+		end = tmp.get_first_post_element();
+		while(list.hasNext())
+		{
+			tmp = list.next();
+			if(tmp.count_post_objects() != 1) return null;
+			if(!end.equals(tmp.get_first_post_element())) return null;
+		}
+		
+		return e;
+	}
+	
+	/**
+	 * This method eliminate all picks and replace all contained elements
+	 * the picks as the PickTransition element.
+	 */
+	public void eliminate_all_picks()
+	{
+		Iterator<AbstractElement> list = this._regist_transition.iterator();
+		while(list.hasNext())
+		{
+			AbstractElement begin = list.next();
+			AbstractElement end = this.isPick(begin);
+			if(end != null)
+			{
+				System.out.println("<Pick> \n" + 
+						"\tbegin = " + begin + "\n" + 
+						"\tend = " + end + "\n</Pick>");
+				
+				AbstractElement e = new SequenceTransition(begin);
+				begin.remove_all_post_relationship();
+				begin.add_post_object(e);
+				e.add_pre_object(begin);
+				
+				end.remove_all_pre_relationship();
+				end.add_pre_object(e);
+				e.add_post_object(end);
+				
+			}
+		}
+	}
 
 }
