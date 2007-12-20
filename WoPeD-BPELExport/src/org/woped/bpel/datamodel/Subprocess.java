@@ -27,5 +27,10 @@ public class Subprocess extends Transition<SubProcessModel>
 	{
 		return null;
 	}
+	
+	public String toString()
+	{
+		return Subprocess.class.getSimpleName() + " Stored element " + this.getData().getId();
+	}
 
 }

@@ -76,27 +76,20 @@ public class Parser
 	private boolean createModel(PetriNetModelElement e,
 			ModelElementContainer con)
 	{
-		System.out.println("\n******************\n" +
-				"Working an PetrinetElement " + e.getId() + "\n" +
-				"**************\n");
+		//System.out.println("\n******************\n"
+			//	+ "Working an PetrinetElement " + e.getId() + "\n"
+			//	+ "**************\n");
 
-		if (this.get_registrated_element(e) != null)
-		{
-			System.out.println("Element is registed!" + e.getId());
-			return true;
-		}
-		//System.out.println("createModel " + e.getId());
+		if (this.get_registrated_element(e) != null)return true;
+		// System.out.println("createModel " + e.getId());
 		AbstractElement element = this.createElement(e);
 		if (element == null)
-		{
-			System.out.println("cant generate an Element!");
 			return false;
-		}
 		if (this._oneelement == null)
 			this._oneelement = element;
 		this.regist_element(element);
 
-		System.out.println("***\nPrelist from " + e.getId() + "\n***");
+		//System.out.println("***\nPrelist from " + e.getId() + "\n***");
 		Collection<AbstractElementModel> list = con
 				.getSourceElements(e.getId()).values();
 		Iterator<AbstractElementModel> iter = list.iterator();
@@ -110,27 +103,13 @@ public class Parser
 				AbstractElement abs = this
 						.get_registrated_element((PetriNetModelElement) tmp);
 
-				if (abs == null)
-				{
-					System.out.println("Cant find the element as registed!");
-					return false;
-				}
-				if (!abs.add_post_object(element))
-				{
-					System.out
-							.println("cant add the element to abs as post element!");
-					return false;
-				}
-				if (!element.add_pre_object(abs))
-				{
-					System.out
-							.println("cant add the abs to element as pre element!");
-					return false;
-				}
+				if (abs == null)return false;
+				if (!abs.add_post_object(element))return false;
+				if (!element.add_pre_object(abs))return false;
 			}
 		}
 
-		System.out.println("***\nPostlist from " + e.getId() + "\n***");
+		//System.out.println("***\nPostlist from " + e.getId() + "\n***");
 		list = con.getTargetElements(e.getId()).values();
 		iter = list.iterator();
 		while (iter.hasNext())
@@ -144,22 +123,11 @@ public class Parser
 						.get_registrated_element((PetriNetModelElement) tmp);
 
 				if (abs == null)
-				{
-					System.out.println("Cant find the element as registed!");
 					return false;
-				}
 				if (!abs.add_pre_object(element))
-				{
-					System.out
-							.println("cant add the element to abs as pre element!");
 					return false;
-				}
 				if (!element.add_post_object(abs))
-				{
-					System.out
-							.println("cant add the abs to element as post element!");
 					return false;
-				}
 			}
 		}
 		return true;
@@ -173,7 +141,7 @@ public class Parser
 	 */
 	private void regist_element(AbstractElement e)
 	{
-		System.out.println("i am regist the element!");
+		System.out.println("i am regist the element!" + e);
 		if (Place.class.isInstance(e))
 			this._regist_places.add(e);
 		else
@@ -204,6 +172,7 @@ public class Parser
 	 */
 	public AbstractElement get_registrated_element(PetriNetModelElement e)
 	{
+		//System.out.println("search for element " + e.getClass().toString());
 		return this.get_registrated_element(this.createElement(e));
 	}
 
@@ -217,7 +186,7 @@ public class Parser
 	 */
 	public AbstractElement get_registrated_element(AbstractElement e)
 	{
-
+		//System.out.println("search " + e.getClass().toString());
 		if (Place.class.isInstance(e))
 		{
 			Iterator<AbstractElement> iter = this._regist_places.iterator();
@@ -254,13 +223,11 @@ public class Parser
 	 * 
 	 * @return AbstractElement
 	 */
-	private AbstractElement createElement(PetriNetModelElement e)
+	private static AbstractElement createElement(PetriNetModelElement e)
 	{
-		System.out.println(e.getClass().getSimpleName() + " " + e.getId());
+		//System.out.println(e.getClass().getSimpleName() + " " + e.getId());
 		if (PlaceModel.class.isInstance(e))
 			return new Place((PlaceModel) e);
-		if (TransitionModel.class.isInstance(e))
-			return new SimpleTransition((TransitionModel) e);
 		if (ANDSplitOperatorTransitionModel.class.isInstance(e))
 			return new ANDSplitTransition((ANDSplitOperatorTransitionModel) e);
 		if (ANDJoinOperatorTransitionModel.class.isInstance(e))
@@ -271,9 +238,11 @@ public class Parser
 			return new XORSplitTransition((XORSplitOperatorTransitionModel) e);
 		if (SubProcessModel.class.isInstance(e))
 			return new Subprocess((SubProcessModel) e);
+		if (TransitionModel.class.isInstance(e))
+			return new SimpleTransition((TransitionModel) e);
 
-		System.out
-				.println("cant find the right object to generate the correct AbstractElement!");
+		//System.out
+		//		.println("cant find the right object to generate the correct AbstractElement!");
 		return null;
 	}
 

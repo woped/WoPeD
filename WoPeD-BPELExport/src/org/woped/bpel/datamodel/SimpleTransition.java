@@ -17,13 +17,18 @@ public class SimpleTransition extends Transition<TransitionModel>
 			return false;
 		if (this.getData().getId() != ((SimpleTransition) e).getData().getId())
 			return false;
-		return false;
+		return true;
 	}
 
 	@Override
 	public String getBpelCode()
 	{
 		return null;
+	}
+	
+	public String toString()
+	{
+		return SimpleTransition.class.getSimpleName() + " Stored element " + this.getData().getId();
 	}
 
 }

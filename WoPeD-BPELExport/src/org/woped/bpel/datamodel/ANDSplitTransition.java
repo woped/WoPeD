@@ -14,9 +14,9 @@ public class ANDSplitTransition extends
 	@Override
 	public boolean equals(AbstractElement e)
 	{
-		if(ANDSplitTransition.class.isInstance(e))return true;
-		if(this.getData().getId() == ((ANDSplitTransition)e).getData().getId()) return true;
-		return false;
+		if(!ANDSplitTransition.class.isInstance(e))return false;
+		if(this.getData().getId() != ((ANDSplitTransition)e).getData().getId()) return false;
+		return true;
 	}
 
 	@Override
@@ -25,4 +25,8 @@ public class ANDSplitTransition extends
 		return null;
 	}
 
+	public String toString()
+	{
+		return ANDSplitTransition.class.getSimpleName() + " Stored element " + this.getData().getId();
+	}
 }

@@ -14,15 +14,20 @@ public class ANDJoinTransition extends
 	@Override
 	public boolean equals(AbstractElement e)
 	{
-		if(ANDJoinTransition.class.isInstance(e))return true;
-		if(this.getData().getId() == ((ANDJoinTransition)e).getData().getId()) return true;
-		return false;
+		if(!ANDJoinTransition.class.isInstance(e))return false;
+		if(this.getData().getId() != ((ANDJoinTransition)e).getData().getId()) return false;
+		return true;
 	}
 
 	@Override
 	public String getBpelCode()
 	{
 		return null;
+	}
+	
+	public String toString()
+	{
+		return ANDJoinTransition.class.getSimpleName() + " Stored element " + this.getData().getId();
 	}
 
 }

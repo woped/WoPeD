@@ -93,7 +93,7 @@ public class BPEL {
         //map.put("xmlns:bpel","");
         //map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
         //opt = opt.setSaveImplicitNamespaces(map);
-        
+        /*
 		bpelDoc = ProcessDocument.Factory.newInstance(opt);
 		TProcess iProcess = bpelDoc.addNewProcess();
 		iProcess.setName("TestProcess");
@@ -108,7 +108,8 @@ public class BPEL {
         } catch (IOException e)
         {
             return false;
-        }
+        }*/
+        return true;
 	}
 	
 	/**

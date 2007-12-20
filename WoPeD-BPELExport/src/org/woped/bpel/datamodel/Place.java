@@ -37,4 +37,8 @@ public class Place extends NonterminalElement<PlaceModel>
 		return null;
 	}
 
+	public String toString()
+	{
+		return Place.class.getSimpleName() + " Stored element " + this.getData().getId();
+	}
 }

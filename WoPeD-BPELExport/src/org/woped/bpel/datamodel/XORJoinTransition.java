@@ -14,17 +14,22 @@ public class XORJoinTransition extends
 	@Override
 	public boolean equals(AbstractElement e)
 	{
-		if (XORJoinTransition.class.isInstance(e))
-			return true;
-		if (this.getData().getId() == ((XORJoinTransition) e).getData().getId())
-			return true;
-		return false;
+		if (!XORJoinTransition.class.isInstance(e))
+			return false;
+		if (this.getData().getId() != ((XORJoinTransition) e).getData().getId())
+			return false;
+		return true;
 	}
 
 	@Override
 	public String getBpelCode()
 	{
 		return null;
+	}
+	
+	public String toString()
+	{
+		return XORJoinTransition.class.getSimpleName() + " Stored element " + this.getData().getId();
 	}
 
 }
