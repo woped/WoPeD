@@ -20,7 +20,7 @@ import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
  * 
  * This class reprasents the model a petrinet.
  */
-public class Parser
+public class BpelParserModel
 {
 
 	private static long					MODELCONTER			= 0;
@@ -33,15 +33,33 @@ public class Parser
 	/**
 	 * Constructor to generate an empty object.
 	 */
-	public Parser()
+	public BpelParserModel()
 	{
-		this._id = Parser.MODELCONTER++;
+		this._id = BpelParserModel.MODELCONTER++;
+	}
+	
+	/**
+	 * Retured a copy registet places list.
+	 * @return HashSet<AbstractElement>
+	 */
+	public HashSet<AbstractElement> get_copy_of_regist_places()
+	{
+		return (HashSet<AbstractElement>)this._regist_places.clone();
+	}
+	
+	/**
+	 * Retured a copy registet transition list
+	 * @return HashSet<AbstractElement>
+	 */
+	public HashSet<AbstractElement> get_copy_of_regist_transition()
+	{
+		return (HashSet<AbstractElement>)this._regist_places.clone();
 	}
 
 	/**
 	 * This constructor generate an object with a petrinet model.
 	 */
-	public Parser(ModelElementContainer container)
+	public BpelParserModel(ModelElementContainer container)
 	{
 		this();
 		this.createModel(container);
@@ -76,11 +94,12 @@ public class Parser
 	private boolean createModel(PetriNetModelElement e,
 			ModelElementContainer con)
 	{
-		//System.out.println("\n******************\n"
-			//	+ "Working an PetrinetElement " + e.getId() + "\n"
-			//	+ "**************\n");
+		// System.out.println("\n******************\n"
+		// + "Working an PetrinetElement " + e.getId() + "\n"
+		// + "**************\n");
 
-		if (this.get_registrated_element(e) != null)return true;
+		if (this.get_registrated_element(e) != null)
+			return true;
 		// System.out.println("createModel " + e.getId());
 		AbstractElement element = this.createElement(e);
 		if (element == null)
@@ -89,7 +108,7 @@ public class Parser
 			this._oneelement = element;
 		this.regist_element(element);
 
-		//System.out.println("***\nPrelist from " + e.getId() + "\n***");
+		// System.out.println("***\nPrelist from " + e.getId() + "\n***");
 		Collection<AbstractElementModel> list = con
 				.getSourceElements(e.getId()).values();
 		Iterator<AbstractElementModel> iter = list.iterator();
@@ -103,13 +122,16 @@ public class Parser
 				AbstractElement abs = this
 						.get_registrated_element((PetriNetModelElement) tmp);
 
-				if (abs == null)return false;
-				if (!abs.add_post_object(element))return false;
-				if (!element.add_pre_object(abs))return false;
+				if (abs == null)
+					return false;
+				if (!abs.add_post_object(element))
+					return false;
+				if (!element.add_pre_object(abs))
+					return false;
 			}
 		}
 
-		//System.out.println("***\nPostlist from " + e.getId() + "\n***");
+		// System.out.println("***\nPostlist from " + e.getId() + "\n***");
 		list = con.getTargetElements(e.getId()).values();
 		iter = list.iterator();
 		while (iter.hasNext())
@@ -141,7 +163,7 @@ public class Parser
 	 */
 	private void regist_element(AbstractElement e)
 	{
-		System.out.println("i am regist the element!" + e);
+		// System.out.println("i am regist the element!" + e);
 		if (Place.class.isInstance(e))
 			this._regist_places.add(e);
 		else
@@ -161,6 +183,22 @@ public class Parser
 		else if (Transition.class.isInstance(e))
 			this._regist_transition.remove(e);
 	}
+	
+	/**
+	 * This method deregist all elements who has a relation to this element
+	 * and deregist this element.
+	 * @param e AbstractElement 
+	 */
+	private void deregist_submodel(AbstractElement e)
+	{
+		if(this.get_registrated_element(e) == null) return;
+		this.deregist_element(e);
+		Iterator<AbstractElement> pre = e.get_all_pre_objects().iterator();
+		Iterator<AbstractElement> post = e.get_all_post_objects().iterator();
+		
+		while(pre.hasNext()) this.deregist_submodel(pre.next());
+		while(post.hasNext()) this.deregist_submodel(post.next());
+	}
 
 	/**
 	 * With this method you can find an element at the model.
@@ -172,7 +210,7 @@ public class Parser
 	 */
 	public AbstractElement get_registrated_element(PetriNetModelElement e)
 	{
-		//System.out.println("search for element " + e.getClass().toString());
+		// System.out.println("search for element " + e.getClass().toString());
 		return this.get_registrated_element(this.createElement(e));
 	}
 
@@ -186,7 +224,7 @@ public class Parser
 	 */
 	public AbstractElement get_registrated_element(AbstractElement e)
 	{
-		//System.out.println("search " + e.getClass().toString());
+		// System.out.println("search " + e.getClass().toString());
 		if (Place.class.isInstance(e))
 		{
 			Iterator<AbstractElement> iter = this._regist_places.iterator();
@@ -225,7 +263,7 @@ public class Parser
 	 */
 	private static AbstractElement createElement(PetriNetModelElement e)
 	{
-		//System.out.println(e.getClass().getSimpleName() + " " + e.getId());
+		// System.out.println(e.getClass().getSimpleName() + " " + e.getId());
 		if (PlaceModel.class.isInstance(e))
 			return new Place((PlaceModel) e);
 		if (ANDSplitOperatorTransitionModel.class.isInstance(e))
@@ -241,8 +279,9 @@ public class Parser
 		if (TransitionModel.class.isInstance(e))
 			return new SimpleTransition((TransitionModel) e);
 
-		//System.out
-		//		.println("cant find the right object to generate the correct AbstractElement!");
+		// System.out
+		// .println("cant find the right object to generate the correct
+		// AbstractElement!");
 		return null;
 	}
 
@@ -255,115 +294,245 @@ public class Parser
 	}
 	
 	/**
+	 * This method generate the complete Bpel code and reduced the model.
+	 * @return String
+	 */
+	public String generate_bpel()
+	{
+		while(this.count_elements() != 3)
+		{
+			this.eliminate_all_sequences();
+			this.eliminate_all_picks();
+			this.eliminate_all_flows();
+		}
+		
+		return this._regist_transition.iterator().next().getBpelCode();
+	}
+
+	/**
 	 * This method test of sequens and return the endelement of sequence.
-	 * @param e AbstractElement startelement of sequence
+	 * 
+	 * @param e
+	 *            AbstractElement startelement of sequence
 	 * @return AbstractElement
 	 */
 	public AbstractElement isSequense(AbstractElement e)
 	{
-		if(e == null) return null;
-		if(Place.class.isInstance(e)) return null;
-		if(e.count_post_objects() != 1) return null;
+		if (e == null)
+			return null;
+		if (Place.class.isInstance(e))
+			return null;
+		if (e.count_post_objects() != 1)
+			return null;
 		AbstractElement tmp = e.get_first_post_element();
-		if(tmp.count_post_objects() != 1) return null;
+		if (tmp.count_post_objects() != 1)
+			return null;
+		if (tmp.count_pre_objects() != 1)
+			return null;
 		tmp = tmp.get_first_post_element();
 		return tmp;
 	}
-	
+
 	/**
 	 * This method eliminate all sequences and replace all contained elements
 	 * the sequence as the SequenceTransition element.
 	 */
-	public void eliminate_all_seqences()
+	public void eliminate_all_sequences()
 	{
-		Iterator<AbstractElement> list = this._regist_transition.iterator();
-		while(list.hasNext())
+		Iterator<AbstractElement> list = this.get_copy_of_regist_transition().iterator();
+		while (list.hasNext())
 		{
 			AbstractElement begin = list.next();
 			AbstractElement end = this.isSequense(begin);
-			if(end != null)
+			if (end != null)
 			{
-				System.out.println("<Sequense> \n" + 
-						"\tbegin = " + begin + "\n" + 
-						"\tend = " + end + "\n</Sequence>");
-				Iterator<AbstractElement> pre_list = begin.get_all_pre_objects().iterator();
-				Iterator<AbstractElement> post_list = end.get_all_post_objects().iterator();
-				
+				System.out.println("<Sequense> \n" + "\tbegin = " + begin
+						+ "\n" + "\tend = " + end + "\n</Sequence>");
+				Iterator<AbstractElement> pre_list = begin.get_pre_list().iterator();
+				Iterator<AbstractElement> post_list = end.get_post_list().iterator();
+
 				begin.remove_all_pre_relationship();
 				end.remove_all_post_relationship();
-				
+
 				AbstractElement e = new SequenceTransition(begin);
+				this.regist_element(e);
+				this.deregist_submodel(begin);
 				AbstractElement tmp;
-				while(pre_list.hasNext())
+				while (pre_list.hasNext())
 				{
 					tmp = pre_list.next();
 					tmp.add_post_object(e);
 					e.add_pre_object(tmp);
 				}
-				while(post_list.hasNext())
+				while (post_list.hasNext())
 				{
 					tmp = post_list.next();
 					tmp.add_pre_object(e);
 					e.add_post_object(tmp);
 				}
-				
 			}
 		}
 	}
-	
+
 	/**
 	 * This method test of pick and search for the endelement.
-	 * @param e AbstractElement begin of pick
+	 * 
+	 * @param e
+	 *            AbstractElement begin of pick
 	 * @return AbstractElement
 	 */
 	public AbstractElement isPick(AbstractElement e)
 	{
-		if(!Place.class.isInstance(e)) return null;
-		if(e.count_post_objects() < 2) return null; 
+		if (e == null)
+			return null;
+		if (!Place.class.isInstance(e))
+			return null;
+		if (e.count_post_objects() < 2)
+			return null;
 		AbstractElement end;
 		AbstractElement tmp;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
 		tmp = list.next();
-		if(tmp.count_post_objects() != 1) return null;
+		if (tmp.count_post_objects() != 1)
+			return null;
+		if (tmp.count_pre_objects() != 1)
+			return null;
 		end = tmp.get_first_post_element();
-		while(list.hasNext())
+		while (list.hasNext())
 		{
 			tmp = list.next();
-			if(tmp.count_post_objects() != 1) return null;
-			if(!end.equals(tmp.get_first_post_element())) return null;
+			if (tmp.count_post_objects() != 1)
+				return null;
+			if (tmp.count_pre_objects() != 1)
+				return null;
+			if (!end.equals(tmp.get_first_post_element()))
+				return null;
 		}
-		
-		return e;
+
+		return tmp;
 	}
-	
+
 	/**
-	 * This method eliminate all picks and replace all contained elements
-	 * the picks as the PickTransition element.
+	 * This method eliminate all picks and replace all contained elements the
+	 * picks as the PickTransition element.
 	 */
 	public void eliminate_all_picks()
 	{
-		Iterator<AbstractElement> list = this._regist_transition.iterator();
-		while(list.hasNext())
+		Iterator<AbstractElement> list = this.get_copy_of_regist_places().iterator();
+		while (list.hasNext())
 		{
 			AbstractElement begin = list.next();
 			AbstractElement end = this.isPick(begin);
-			if(end != null)
+			if (end != null)
 			{
-				System.out.println("<Pick> \n" + 
-						"\tbegin = " + begin + "\n" + 
-						"\tend = " + end + "\n</Pick>");
+				System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n"
+						+ "\tend = " + end + "\n</Pick>");
+
+				AbstractElement e = new PickTransition(begin);
+				this.regist_element(e);
 				
-				AbstractElement e = new SequenceTransition(begin);
+				Iterator<AbstractElement> deregist = begin.get_post_list().iterator();				
 				begin.remove_all_post_relationship();
 				begin.add_post_object(e);
 				e.add_pre_object(begin);
-				
+
 				end.remove_all_pre_relationship();
 				end.add_pre_object(e);
 				e.add_post_object(end);
 				
+				while(deregist.hasNext())this.deregist_submodel(deregist.next());
+
 			}
 		}
 	}
+
+	/**
+	 * This method test of flow and search for the endelement.
+	 * 
+	 * @param e
+	 *            AbstractElement begin of flow
+	 * @return AbstractElement
+	 */
+	public AbstractElement isFlow(AbstractElement e)
+	{
+		if (e == null)
+			return null;
+		if (!ANDSplitTransition.class.isInstance(e))
+			return null;
+		if (e.count_post_objects() < 2)
+			return null;
+		AbstractElement end = null;
+		AbstractElement tmp = null;
+		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
+		tmp = list.next();
+		boolean firstrun = true;
+		while (list.hasNext())
+		{
+			tmp = list.next();
+			for (int i = 0; i < 3; i++)
+			{
+				if (tmp.count_post_objects() != 1)
+					return null;
+				if (tmp.count_pre_objects() != 1)
+					return null;
+				tmp = tmp.get_first_post_element();
+			}
+			if (firstrun)
+			{
+				if (!ANDJoinTransition.class.isInstance(tmp))
+					return null;
+				end = tmp;
+				firstrun = false;
+			} else
+			{
+				if (!end.equals(tmp))
+					return null;
+			}
+		}
+		return tmp;
+	}
+
+	/**
+	 * This method eliminate all flows and replace all contained elements the
+	 * flows as the FlowTransition element.
+	 */
+	public void eliminate_all_flows()
+	{
+		Iterator<AbstractElement> list = this.get_copy_of_regist_transition().iterator();
+		while (list.hasNext())
+		{
+			AbstractElement begin = list.next();
+			AbstractElement end = this.isFlow(begin);
+			if (end != null)
+			{
+				System.out.println("<Flow> \n" + "\tbegin = " + begin
+						+ "\n" + "\tend = " + end + "\n</Flow>");
+				Iterator<AbstractElement> pre_list = begin.get_pre_list().iterator();
+				Iterator<AbstractElement> post_list = end.get_post_list().iterator();
+
+				begin.remove_all_pre_relationship();
+				end.remove_all_post_relationship();
+
+				AbstractElement e = new FlowTransition(begin);
+				this.regist_element(e);
+				this.deregist_submodel(begin);
+				AbstractElement tmp;
+				while (pre_list.hasNext())
+				{
+					tmp = pre_list.next();
+					tmp.add_post_object(e);
+					e.add_pre_object(tmp);
+				}
+				while (post_list.hasNext())
+				{
+					tmp = post_list.next();
+					tmp.add_pre_object(e);
+					e.add_post_object(tmp);
+				}
+			}
+		}
+	}
+	
+	
 
 }

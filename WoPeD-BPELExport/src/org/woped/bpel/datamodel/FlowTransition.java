@@ -3,9 +3,9 @@ package org.woped.bpel.datamodel;
 public class FlowTransition extends TerminalElement
 {
 
-	public FlowTransition(String data)
+	public FlowTransition(AbstractElement begin)
 	{
-		super(data);
+		super("test");
 	}
 
 	@Override

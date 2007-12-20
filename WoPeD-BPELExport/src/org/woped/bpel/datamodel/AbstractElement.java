@@ -4,6 +4,7 @@ package org.woped.bpel.datamodel;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Vector;
 
 /**
  * @author Frank Schüler
@@ -30,7 +31,7 @@ public abstract class AbstractElement<E>
 	{
 		this._id = AbstractElement.IdCounter++;
 	}
-	
+
 	protected void setData(E data)
 	{
 		this._data = data;
@@ -118,7 +119,7 @@ public abstract class AbstractElement<E>
 		}
 		return null;
 	}
-	
+
 	/**
 	 * This method retured the first element at the pre list.
 	 * 
@@ -200,6 +201,20 @@ public abstract class AbstractElement<E>
 	}
 
 	/**
+	 * This method make a copy of the list of pre objects.
+	 * 
+	 * @return Vector<AbstractElement>
+	 */
+	public Vector<AbstractElement> get_pre_list()
+	{
+		Vector<AbstractElement> list = new Vector<AbstractElement>();
+		Iterator<AbstractElement> iter = this._pre.iterator();
+		while (iter.hasNext())
+			list.add(iter.next());
+		return list;
+	}
+
+	/**
 	 * Retured the nummer of pre objects.
 	 * 
 	 * @return int
@@ -271,7 +286,7 @@ public abstract class AbstractElement<E>
 		}
 		return null;
 	}
-	
+
 	/**
 	 * This method retured the first element at the post list.
 	 * 
@@ -350,6 +365,20 @@ public abstract class AbstractElement<E>
 	public HashSet<AbstractElement> get_all_post_objects()
 	{
 		return this._post;
+	}
+	
+	/**
+	 * This method make a copy of the list of post objects.
+	 * 
+	 * @return Vector<AbstractElement>
+	 */
+	public Vector<AbstractElement> get_post_list()
+	{
+		Vector<AbstractElement> list = new Vector<AbstractElement>();
+		Iterator<AbstractElement> iter = this._post.iterator();
+		while (iter.hasNext())
+			list.add(iter.next());
+		return list;
 	}
 
 	/**

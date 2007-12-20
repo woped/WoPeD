@@ -23,7 +23,7 @@ import org.woped.core.utilities.Utils;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
-import org.woped.bpel.datamodel.Parser;
+import org.woped.bpel.datamodel.BpelParserModel;
 import org.woped.bpel.datamodel.Place;
 import org.woped.bpel.datamodel.SimpleTransition;
 
@@ -85,7 +85,7 @@ public class BPEL {
 	{
 		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor.getModelProcessor();
 		this.test(pnp);
-		//new File(Path);
+		new File(Path);
 		XmlOptions opt = new XmlOptions();
         opt.setUseDefaultNamespace();
         opt.setSavePrettyPrint();
@@ -119,10 +119,13 @@ public class BPEL {
 	 */
 	private void test(PetriNetModelProcessor pnp)
 	{
-		Parser m = new Parser();
+		BpelParserModel m = new BpelParserModel();
 		System.out.println(m.createModel(pnp.getElementContainer()));
 		System.out.println(m.count_elements());
-		m.eliminate_all_picks();
+		//m.eliminate_all_sequences();
+		//m.eliminate_all_picks();
+		m.eliminate_all_flows();
+		System.out.println(m.count_elements());
 		/*
 		System.out.println("begin test");
 		Map<String, ArcModel> map = pnp.getElementContainer().getArcMap();
