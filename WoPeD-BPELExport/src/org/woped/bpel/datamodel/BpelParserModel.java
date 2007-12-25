@@ -354,21 +354,17 @@ public class BpelParserModel
 			return new Subprocess((SubProcessModel) e);
 		if (TransitionModel.class.isInstance(e))
 		{
-			System.out.println(e + " has Trigger "
-					+ ((TransitionModel) e).hasTrigger());
-			System.out.println(e + " has Resource "
-					+ ((TransitionModel) e).hasResource());
 			if (((TransitionModel) e).hasTrigger())
 			{
 				TriggerModel m = ((TransitionModel) e).getToolSpecific()
 						.getTrigger();
-				System.out.println("code-Nr: " + m.getTriggertype());
+				// System.out.println("code-Nr: " + m.getTriggertype());
 				if (m.getTriggertype() == TriggerModel.TRIGGER_TIME)
-					return new TriggerTransition((TransitionModel) e);
+					return new TimeTriggerTransition((TransitionModel) e);
 				if (m.getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
-					return new ResourceTransition((TransitionModel) e);
-				if (m.getTriggertype() == TriggerModel.TRIGGER_TIME)
-					return new MessageTransition((TransitionModel) e);
+					return new ResourceTriggerTransition((TransitionModel) e);
+				if (m.getTriggertype() == TriggerModel.TRIGGER_EXTERNAL)
+					return new MessageTriggerTransition((TransitionModel) e);
 			}
 			return new SimpleTransition((TransitionModel) e);
 		}
@@ -393,15 +389,18 @@ public class BpelParserModel
 	 */
 	public String generate_bpel()
 	{
-		int counter = this.count_elements();
+		int counter = 0;
 		this.toString();
-		while (this.count_elements() != 3 && counter > 0)
+		while (true)
 		{
+			int pre = this.count_elements();
 			this.eliminate_all_picks();
-			// this.eliminate_all_sequences();
+			this.eliminate_all_sequences();
 			this.eliminate_all_flows();
 			this.eliminate_all_ifs();
-			counter--;
+			if (pre == this.count_elements())
+				break;
+			counter++;
 			System.out.println("Durchlauf " + counter + "\nAnzahl Elemente "
 					+ this.count_elements());
 		}
@@ -500,20 +499,30 @@ public class BpelParserModel
 		AbstractElement tmp;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
 		boolean firstrun = true;
+		boolean timetrigger = false;
 		boolean hastrigger = false;
 		while (list.hasNext())
 		{
+			// 1. element
 			tmp = list.next();
-			if (!TriggerTransition.class.isInstance(tmp)
-					&& !ResourceTransition.class.isInstance(tmp)
-					&& !MessageTransition.class.isInstance(tmp))
-				return null;
-			if (TriggerTransition.class.isInstance(tmp) && hastrigger)
-				return null;
-			else
+			if (TimeTriggerTransition.class.isInstance(tmp)
+					|| ResourceTriggerTransition.class.isInstance(tmp)
+					|| MessageTriggerTransition.class.isInstance(tmp))
 				hastrigger = true;
-			tmp = tmp.get_first_post_element();
 
+			if (TimeTriggerTransition.class.isInstance(tmp) && timetrigger)
+				return null;
+			else if (TimeTriggerTransition.class.isInstance(tmp))
+				timetrigger = true;
+
+			if (tmp.count_post_objects() != 1)
+				return null;
+			if (tmp.count_pre_objects() != 1)
+				return null;
+			// 2. element
+			tmp = tmp.get_first_post_element();
+			if (!Place.class.isInstance(tmp))
+				return null;
 			if (firstrun)
 			{
 				end = tmp;
@@ -521,6 +530,11 @@ public class BpelParserModel
 			} else if (!end.equals(tmp))
 				return null;
 		}
+
+		if (e.count_post_objects() != end.count_pre_objects())
+			return null;
+		if (!hastrigger)
+			return null;
 		return end;
 	}
 
@@ -543,41 +557,43 @@ public class BpelParserModel
 		AbstractElement tmp;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
 		boolean firstrun = true;
+		boolean timetrigger = false;
 		boolean hastrigger = false;
 		while (list.hasNext())
 		{
 			tmp = list.next();
-			
-			//test 1, element
-			if (!TriggerTransition.class.isInstance(tmp)
-					&& !ResourceTransition.class.isInstance(tmp)
-					&& !MessageTransition.class.isInstance(tmp))
-				return null;
-			if (TriggerTransition.class.isInstance(tmp) && hastrigger)
-				return null;
-			else
+
+			// test 1, element
+			if (TimeTriggerTransition.class.isInstance(tmp)
+					|| ResourceTriggerTransition.class.isInstance(tmp)
+					|| MessageTriggerTransition.class.isInstance(tmp))
 				hastrigger = true;
+			if (TimeTriggerTransition.class.isInstance(tmp) && timetrigger)
+				return null;
+			else if (TimeTriggerTransition.class.isInstance(tmp))
+				timetrigger = true;
+
 			if (tmp.count_post_objects() != 1)
 				return null;
 			if (tmp.count_pre_objects() != 1)
 				return null;
-			//test 2. element, it is a place
+			// test 2. element, it is a place
 			tmp = tmp.get_first_post_element();
-			if (tmp.count_post_objects() != 1)
+			if (!Place.class.isInstance(tmp))
 				return null;
-			if (tmp.count_pre_objects() != 1)
+			if ((tmp.count_post_objects() != 1)
+					|| (tmp.count_pre_objects() != 1))
 				return null;
 			// test 3. element
 			tmp = tmp.get_first_post_element();
-			if (TriggerTransition.class.isInstance(tmp)
-					&& ResourceTransition.class.isInstance(tmp)
-					&& MessageTransition.class.isInstance(tmp))
+			if (TimeTriggerTransition.class.isInstance(tmp)
+					&& ResourceTriggerTransition.class.isInstance(tmp)
+					&& MessageTriggerTransition.class.isInstance(tmp))
 				return null;
-			if (tmp.count_post_objects() != 1)
+			if ((tmp.count_post_objects() != 1)
+					|| (tmp.count_pre_objects() != 1))
 				return null;
-			if (tmp.count_pre_objects() != 1)
-				return null;
-			//test endelement
+			// test endelement
 			tmp = tmp.get_first_post_element();
 			if (firstrun)
 			{
@@ -586,6 +602,11 @@ public class BpelParserModel
 			} else if (!end.equals(tmp))
 				return null;
 		}
+
+		if (e.count_post_objects() != end.count_pre_objects())
+			return null;
+		if (!hastrigger)
+			return null;
 		return end;
 	}
 
@@ -603,6 +624,7 @@ public class BpelParserModel
 			AbstractElement end = null;
 			if ((end = this.isSimplePick(begin)) == null)
 				end = this.isPick(begin);
+			
 			if (end != null)
 			{
 				System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n"
@@ -654,12 +676,13 @@ public class BpelParserModel
 			tmp = list.next();
 			for (int i = 0; i < 3; i++)
 			{
-				if (tmp.count_post_objects() != 1)
-					return null;
-				if (tmp.count_pre_objects() != 1)
+				if ((tmp.count_post_objects() != 1)
+						|| (tmp.count_pre_objects() != 1))
 					return null;
 				tmp = tmp.get_first_post_element();
 			}
+
+			// test end element
 			if (firstrun)
 			{
 				if (!ANDJoinTransition.class.isInstance(tmp))
@@ -672,7 +695,10 @@ public class BpelParserModel
 					return null;
 			}
 		}
-		return tmp;
+
+		if (e.count_post_objects() != end.count_pre_objects())
+			return null;
+		return end;
 	}
 
 	/**
