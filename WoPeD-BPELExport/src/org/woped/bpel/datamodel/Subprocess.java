@@ -24,8 +24,8 @@ public class Subprocess extends Transition<SubProcessModel>
 
 	@Override
 	public String getBpelCode()
-	{
-		return null;
+	{		
+		return new BpelParserModel(((SubProcessModel)this.getData()).getElementContainer()).generate_bpel();
 	}
 	
 	public String toString()

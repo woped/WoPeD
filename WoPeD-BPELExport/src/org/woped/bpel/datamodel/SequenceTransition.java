@@ -1,6 +1,5 @@
 package org.woped.bpel.datamodel;
 
-
 public class SequenceTransition extends TerminalElement
 {
 
@@ -11,21 +10,13 @@ public class SequenceTransition extends TerminalElement
 	}
 
 	@Override
-	public boolean accept_post_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean accept_pre_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
 	public boolean equals(AbstractElement e)
 	{
-		return false;
+		if (!SequenceTransition.class.isInstance(e))
+			return false;
+		if (this.getID() != e.getID())
+			return false;
+		return true;
 	}
 
 	@Override
@@ -33,7 +24,5 @@ public class SequenceTransition extends TerminalElement
 	{
 		return null;
 	}
-	
-	
 
 }

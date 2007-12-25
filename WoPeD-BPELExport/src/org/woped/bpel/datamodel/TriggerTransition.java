@@ -3,7 +3,7 @@ package org.woped.bpel.datamodel;
 import org.woped.core.model.petrinet.TransitionModel;
 
 
-public class TriggerTransition extends Transition
+public class TriggerTransition extends Transition<TransitionModel>
 {
 
 
@@ -11,23 +11,15 @@ public class TriggerTransition extends Transition
 	{
 		super(data);
 	}
-
-	@Override
-	public boolean accept_post_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean accept_pre_object(AbstractElement e)
-	{
-		return false;
-	}
-
+	
 	@Override
 	public boolean equals(AbstractElement e)
 	{
-		return false;
+		if (!TriggerTransition.class.isInstance(e))
+			return false;
+		if (this.getData().getId() != ((TriggerTransition) e).getData().getId())
+			return false;
+		return true;
 	}
 
 	@Override

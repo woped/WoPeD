@@ -2,35 +2,29 @@ package org.woped.bpel.datamodel;
 
 import org.woped.core.model.petrinet.TransitionModel;
 
-
-public class MessageTransition extends Transition
+public class MessageTransition extends Transition<TransitionModel>
 {
+
 	public MessageTransition(TransitionModel data)
 	{
 		super(data);
-	}
-
-	@Override
-	public boolean accept_post_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean accept_pre_object(AbstractElement e)
-	{
-		return false;
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public boolean equals(AbstractElement e)
 	{
-		return false;
+		if (!MessageTransition.class.isInstance(e))
+			return false;
+		if (this.getData().getId() != ((MessageTransition) e).getData().getId())
+			return false;
+		return true;
 	}
 
 	@Override
 	public String getBpelCode()
 	{
+		// TODO Auto-generated method stub
 		return null;
 	}
 

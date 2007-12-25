@@ -9,5 +9,4 @@ public abstract class NonterminalElement<E extends PetriNetModelElement> extends
 		super();
 		this.setData(data);
 	}
-
 }

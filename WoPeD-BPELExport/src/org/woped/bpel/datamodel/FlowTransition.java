@@ -11,7 +11,9 @@ public class FlowTransition extends TerminalElement
 	@Override
 	public boolean equals(AbstractElement e)
 	{
-		return false;
+		if(!FlowTransition.class.isInstance(e)) return false;
+		if(this.getID() != e.getID()) return false;
+		return true;
 	}
 
 	@Override

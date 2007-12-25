@@ -1,6 +1,5 @@
 package org.woped.bpel.datamodel;
 
-
 public class PickTransition extends TerminalElement
 {
 
@@ -10,21 +9,13 @@ public class PickTransition extends TerminalElement
 	}
 
 	@Override
-	public boolean accept_post_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
-	public boolean accept_pre_object(AbstractElement e)
-	{
-		return false;
-	}
-
-	@Override
 	public boolean equals(AbstractElement e)
 	{
-		return false;
+		if (!PickTransition.class.isInstance(e))
+			return false;
+		if (this.getID() != e.getID())
+			return false;
+		return true;
 	}
 
 	@Override

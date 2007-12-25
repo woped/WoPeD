@@ -4,7 +4,6 @@ package org.woped.bpel.datamodel;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Vector;
 
 /**
  * @author Frank Schüler
@@ -75,6 +74,61 @@ public abstract class AbstractElement<E>
 			return false;
 		this._pre.add(e);
 		return true;
+	}
+
+	/**
+	 * This is the method to a new AbstractElement as pre object and add this
+	 * object as post object to the new AbstractElement.
+	 * 
+	 * @param e
+	 *            AbstractElement
+	 * 
+	 * @return boolean
+	 */
+	public boolean add_pre_object_relationship(AbstractElement e)
+	{
+		if (!this.accept_pre_object(e))
+			return false;
+		if (!e.add_post_object(this))
+			return false;
+		this._pre.add(e);
+		return true;
+	}
+
+	/**
+	 * This method add a list of pre objects to this object and add this object
+	 * to the elements of the list as post object.
+	 * 
+	 * @param list
+	 *            HashSet<AbstractElement>
+	 * @return returned false, if one object not added
+	 */
+	public boolean add_pre_object_list(HashSet<AbstractElement> list)
+	{
+		Iterator<AbstractElement> iter = list.iterator();
+		boolean erg = true;
+		while (iter.hasNext())
+			if (!this.add_pre_object(iter.next()))
+				erg = false;
+		return erg;
+	}
+
+	/**
+	 * This method add a list of pre objects
+	 * 
+	 * @param list
+	 *            HashSet<AbstractElement>
+	 * @return returned false, if one object not added
+	 */
+	public boolean add_pre_object_list_relationship(
+			HashSet<AbstractElement> list)
+	{
+		Iterator<AbstractElement> iter = list.iterator();
+		boolean erg = true;
+		while (iter.hasNext())
+			if (!this.add_pre_object_relationship(iter.next()))
+				erg = false;
+		return erg;
 	}
 
 	/**
@@ -201,13 +255,23 @@ public abstract class AbstractElement<E>
 	}
 
 	/**
+	 * Retured the iterator of the pre object list.
+	 * 
+	 * @return Iterator<AbstractElement>
+	 */
+	public Iterator<AbstractElement> get_pre_list_iterator()
+	{
+		return this._pre.iterator();
+	}
+
+	/**
 	 * This method make a copy of the list of pre objects.
 	 * 
 	 * @return Vector<AbstractElement>
 	 */
-	public Vector<AbstractElement> get_pre_list()
+	public HashSet<AbstractElement> get_pre_list_copy()
 	{
-		Vector<AbstractElement> list = new Vector<AbstractElement>();
+		HashSet<AbstractElement> list = new HashSet<AbstractElement>();
 		Iterator<AbstractElement> iter = this._pre.iterator();
 		while (iter.hasNext())
 			list.add(iter.next());
@@ -242,6 +306,61 @@ public abstract class AbstractElement<E>
 			return false;
 		this._post.add(e);
 		return true;
+	}
+
+	/**
+	 * This is the method to a new AbstractElement as post object and add this
+	 * object as pre object to the new AbstractElement.
+	 * 
+	 * @param e
+	 *            AbstractElement
+	 * 
+	 * @return boolean
+	 */
+	public boolean add_post_object_Relationship(AbstractElement e)
+	{
+		if (!this.accept_post_object(e))
+			return false;
+		if (!e.add_pre_object(this))
+			return false;
+		this._post.add(e);
+		return true;
+	}
+
+	/**
+	 * This method add a list of post objects
+	 * 
+	 * @param list
+	 *            HashSet<AbstractElement>
+	 * @return returned false, if one object not added
+	 */
+	public boolean add_post_object_list(HashSet<AbstractElement> list)
+	{
+		Iterator<AbstractElement> iter = list.iterator();
+		boolean erg = true;
+		while (iter.hasNext())
+			if (!this.add_post_object(iter.next()))
+				erg = false;
+		return erg;
+	}
+
+	/**
+	 * This method add a list of post objects and add this object to the objects
+	 * of the list as pre object.
+	 * 
+	 * @param list
+	 *            HashSet<AbstractElement>
+	 * @return returned false, if one object not added
+	 */
+	public boolean add_post_object_list_relationship(
+			HashSet<AbstractElement> list)
+	{
+		Iterator<AbstractElement> iter = list.iterator();
+		boolean erg = true;
+		while (iter.hasNext())
+			if (!this.add_post_object_Relationship(iter.next()))
+				erg = false;
+		return erg;
 	}
 
 	/**
@@ -366,15 +485,25 @@ public abstract class AbstractElement<E>
 	{
 		return this._post;
 	}
-	
+
+	/**
+	 * Returned the Iterator of the post object list.
+	 * 
+	 * @return Iterator<AbstractElement>
+	 */
+	public Iterator<AbstractElement> get_post_list_iterator()
+	{
+		return this._post.iterator();
+	}
+
 	/**
 	 * This method make a copy of the list of post objects.
 	 * 
 	 * @return Vector<AbstractElement>
 	 */
-	public Vector<AbstractElement> get_post_list()
+	public HashSet<AbstractElement> get_post_list_copy()
 	{
-		Vector<AbstractElement> list = new Vector<AbstractElement>();
+		HashSet<AbstractElement> list = new HashSet<AbstractElement>();
 		Iterator<AbstractElement> iter = this._post.iterator();
 		while (iter.hasNext())
 			list.add(iter.next());
@@ -492,5 +621,4 @@ public abstract class AbstractElement<E>
 		}
 		return null;
 	}
-
 }

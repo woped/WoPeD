@@ -122,9 +122,7 @@ public class BPEL {
 		BpelParserModel m = new BpelParserModel();
 		System.out.println(m.createModel(pnp.getElementContainer()));
 		System.out.println(m.count_elements());
-		//m.eliminate_all_sequences();
-		//m.eliminate_all_picks();
-		m.eliminate_all_flows();
+		m.generate_bpel();
 		System.out.println(m.count_elements());
 		/*
 		System.out.println("begin test");
