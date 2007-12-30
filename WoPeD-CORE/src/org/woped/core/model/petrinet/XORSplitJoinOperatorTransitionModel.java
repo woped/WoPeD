@@ -77,7 +77,12 @@ public class XORSplitJoinOperatorTransitionModel extends
     {    	
 		/* IF SOURCE IS XOR SPLITJOIN */
     	// remove the source simpleTrans for this arc!
-    	getSimpleTransContainer().removeAllSourceElements(otherModel.getId());
+    	// However, keep the last inner transition as it is always required!
+    	if (getSimpleTransContainer()
+    			.getElementsByType(
+    					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    					.size() != 1)
+    		getSimpleTransContainer().removeAllSourceElements(otherModel.getId());
     }	
     
     public void registerIncomingConnectionRemoval(
@@ -85,6 +90,11 @@ public class XORSplitJoinOperatorTransitionModel extends
     		AbstractElementModel otherModel)
     {
 		// remove the target simpleTrans for this arc!
+    	// However, keep the last inner transition as it is always required!
+    	if (getSimpleTransContainer()
+    			.getElementsByType(
+    					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    					.size() != 1)
 		getSimpleTransContainer()
 				.removeAllTargetElements(otherModel.getId());
 	}    
