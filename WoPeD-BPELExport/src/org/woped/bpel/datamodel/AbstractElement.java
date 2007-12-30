@@ -11,7 +11,8 @@ import java.util.LinkedList;
  * This class is the basic object for an element at the data model, for the easy
  * navigation between the elements.
  * 
- * status: at work date: 12.12.2007
+ * status: at work 
+ * date: 12.12.2007
  */
 public abstract class AbstractElement<E>
 {
@@ -20,7 +21,7 @@ public abstract class AbstractElement<E>
 
 	private HashSet<AbstractElement>	_pre		= new HashSet<AbstractElement>();
 	private HashSet<AbstractElement>	_post		= new HashSet<AbstractElement>();
-	private long						_id;
+	private long						_id			= IdCounter++;
 	private E							_data;
 
 	/**
@@ -28,9 +29,13 @@ public abstract class AbstractElement<E>
 	 */
 	public AbstractElement()
 	{
-		this._id = AbstractElement.IdCounter++;
 	}
 
+	/**
+	 * With this method, you can set the internal stored data.
+	 * 
+	 * @param data E
+	 */
 	protected void setData(E data)
 	{
 		this._data = data;
@@ -569,10 +574,20 @@ public abstract class AbstractElement<E>
 	 */
 	abstract public boolean equals(AbstractElement e);
 
-	abstract public String getBpelCode();
-
 	/**
-	 * With this method, you can find an AbstractElement
+	 * Returned the Bpel code of this element.
+	 * 
+	 * @return String
+	 */
+	abstract public String getBpelCode();
+	
+	/**
+	 * With this method, you can find an AbstractElement.
+	 * Searched by source.
+	 * 
+	 * @param e AbstractElement
+	 * 
+	 * @return AbstractElement
 	 */
 	public AbstractElement findElement(AbstractElement e)
 	{
@@ -581,7 +596,14 @@ public abstract class AbstractElement<E>
 	}
 
 	/**
-	 * dont use
+	 * 
+	 * This method is the reccuriv algorithm to find a element
+	 * at the model of the AbstractElements.
+	 * 
+	 * @param begin
+	 * @param e
+	 * @param usedNotes
+	 * @return
 	 */
 	private AbstractElement findElement(AbstractElement begin,
 			AbstractElement e, LinkedList<AbstractElement> usedNotes)
@@ -598,10 +620,8 @@ public abstract class AbstractElement<E>
 			return erg;
 		usedNotes.add(begin);
 
-		HashSet<AbstractElement> prelist = begin.get_all_pre_objects();
-		HashSet<AbstractElement> postlist = begin.get_all_post_objects();
-		Iterator<AbstractElement> preiter = prelist.iterator();
-		Iterator<AbstractElement> postiter = postlist.iterator();
+		Iterator<AbstractElement> preiter = begin.get_all_pre_objects().iterator();
+		Iterator<AbstractElement> postiter = begin.get_all_post_objects().iterator();
 		while (preiter.hasNext() || postiter.hasNext())
 		{
 			AbstractElement tmp = preiter.next();

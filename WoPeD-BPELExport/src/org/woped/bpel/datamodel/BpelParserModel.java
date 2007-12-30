@@ -3,6 +3,7 @@ package org.woped.bpel.datamodel;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Stack;
 
 import org.woped.core.model.AbstractElementModel;
@@ -48,6 +49,16 @@ public class BpelParserModel
 	{
 		this();
 		this.createModel(container);
+	}
+	
+	/**
+	 * Retuned the ID of the Bpel parser model.
+	 * 
+	 * @return long
+	 */
+	public long getID()
+	{
+		return this._id;
 	}
 
 	/**
@@ -126,7 +137,7 @@ public class BpelParserModel
 		if (this.get_registrated_element(e) != null)
 			return true;
 		// System.out.println("createModel " + e.getId());
-		AbstractElement element = this.createElement(e);
+		AbstractElement element = BpelParserModel.createElement(e);
 		if (element == null)
 			return false;
 		if (this._oneelement == null)
@@ -134,8 +145,8 @@ public class BpelParserModel
 		this.regist_element(element);
 
 		// System.out.println("***\nPrelist from " + e.getId() + "\n***");
-		Collection<AbstractElementModel> list = con
-				.getSourceElements(e.getId()).values();
+		Map<String, AbstractElementModel> map = con.getSourceElements(e.getId());
+		Collection<AbstractElementModel> list = map.values();
 		Iterator<AbstractElementModel> iter = list.iterator();
 		while (iter.hasNext())
 		{
@@ -261,6 +272,7 @@ public class BpelParserModel
 	 * @param e
 	 *            AbstractElement
 	 */
+	 
 	private void reg_to_deregist_submodel(AbstractElement e)
 	{
 		if (this._reg_to_deregist.search(e) != -1)
@@ -287,7 +299,7 @@ public class BpelParserModel
 	public AbstractElement get_registrated_element(PetriNetModelElement e)
 	{
 		// System.out.println("search for element " + e.getClass().toString());
-		return this.get_registrated_element(this.createElement(e));
+		return this.get_registrated_element(BpelParserModel.createElement(e));
 	}
 
 	/**

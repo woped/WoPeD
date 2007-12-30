@@ -290,7 +290,7 @@ public class ModelElementContainer implements Serializable
      * @param id
      * @return Map
      */
-    public Map getTargetElements(Object id)
+    public Map<String, AbstractElementModel> getTargetElements(Object id)
     {
 
         if ((Map) getIdMap().get(id) != null)
@@ -338,7 +338,7 @@ public class ModelElementContainer implements Serializable
      * @param id
      * @return Map
      */
-    public Map getSourceElements(Object targetId)
+    public Map<String, AbstractElementModel> getSourceElements(Object targetId)
     {
 
         return findSourceElements(targetId);
@@ -373,7 +373,7 @@ public class ModelElementContainer implements Serializable
      * @param id
      * @return List
      */
-    protected Map findSourceElements(Object targetId)
+    protected Map<String, AbstractElementModel> findSourceElements(Object targetId)
     {
 
         Map<String, AbstractElementModel> sourceMap = new HashMap<String, AbstractElementModel>();
