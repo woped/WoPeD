@@ -36,6 +36,7 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
+import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
@@ -64,10 +65,12 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 	private int transitionCounter = 0;
 	private int subprocessCounter = 0;
 	private int arcCounter = 0;
+	private int simulationCounter = 0;
 	private Vector<Object> unknownToolSpecs = new Vector<Object>();
 	private Vector<ResourceClassModel> roles = null;
 	private Vector<ResourceModel> resources = null;
 	private Vector<ResourceClassModel> organizationUnits = null;
+	private Vector<SimulationModel> simulations = null;
 	private HashMap<String, Vector<String>> resourceMapping = new HashMap<String, Vector<String>>();
 
 	/**
@@ -348,6 +351,9 @@ AbstractElementModel targetModel = getElementContainer()
 		case PetriNetModelElement.TRANS_OPERATOR_TYPE:
 			id = "t" + ++transitionCounter;
 			break;
+		case PetriNetModelElement.SIMULATION_TYPE:
+			id = "s" + ++simulationCounter;
+			break;
 		}
 		if (id!=null)
 		{
@@ -593,6 +599,18 @@ AbstractElementModel targetModel = getElementContainer()
 		return resources;
 	}
 
+	/**
+	 * @return Returns the simulations.
+	 */
+	public Vector<SimulationModel> getSimulations()
+	{
+		if (simulations == null)
+		{
+			simulations = new Vector<SimulationModel>();
+		}
+		return simulations;
+	}
+	
 	public void addRole(ResourceClassModel role)
 	{
 		getRoles().add(role);
@@ -606,6 +624,11 @@ AbstractElementModel targetModel = getElementContainer()
 	public void addResource(ResourceModel resource)
 	{
 		getResources().add(resource);
+	}
+	
+	public void addSimulation(SimulationModel simulation)
+	{
+		getSimulations().add(simulation);
 	}
 
 	public int containsRole(String name)
