@@ -48,6 +48,7 @@ public abstract class AbstractPetriNetModelElement extends AbstractElementModel
     public static final int NAME_TYPE           = 6;
     public static final int GROUP_TYPE          = 7;
     public static final int RESOURCE_TYPE       = 8;
+    public static final int SIMULATION_TYPE		= 9;
 
     /**
      * Constructor for PetriNetElementModel.
