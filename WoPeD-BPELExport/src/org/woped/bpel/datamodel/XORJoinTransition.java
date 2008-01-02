@@ -1,5 +1,6 @@
 package org.woped.bpel.datamodel;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.woped.core.model.petrinet.XORJoinOperatorTransitionModel;
 
 public class XORJoinTransition extends
@@ -22,7 +23,7 @@ public class XORJoinTransition extends
 	}
 
 	@Override
-	public String getBpelCode()
+	public TActivity getBpelCode()
 	{
 		return null;
 	}

@@ -1,5 +1,6 @@
 package org.woped.bpel.datamodel;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.woped.core.model.petrinet.TransitionModel;
 
 public class MessageTriggerTransition extends Transition<TransitionModel>
@@ -22,7 +23,7 @@ public class MessageTriggerTransition extends Transition<TransitionModel>
 	}
 
 	@Override
-	public String getBpelCode()
+	public TActivity getBpelCode()
 	{
 		// TODO Auto-generated method stub
 		return null;

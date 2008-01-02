@@ -1,4 +1,5 @@
 package org.woped.bpel.datamodel;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.woped.core.model.petrinet.PlaceModel;
 
 public class Place extends NonterminalElement<PlaceModel>
@@ -32,7 +33,7 @@ public class Place extends NonterminalElement<PlaceModel>
 	}
 
 	@Override
-	public String getBpelCode()
+	public TActivity getBpelCode()
 	{		
 		return null;
 	}

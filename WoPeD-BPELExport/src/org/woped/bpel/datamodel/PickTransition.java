@@ -1,5 +1,7 @@
 package org.woped.bpel.datamodel;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
+
 public class PickTransition extends TerminalElement
 {
 
@@ -19,7 +21,7 @@ public class PickTransition extends TerminalElement
 	}
 
 	@Override
-	public String getBpelCode()
+	public TActivity getBpelCode()
 	{
 		return null;
 	}

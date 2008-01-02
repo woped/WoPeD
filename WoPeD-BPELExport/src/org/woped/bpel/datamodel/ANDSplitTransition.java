@@ -1,5 +1,6 @@
 package org.woped.bpel.datamodel;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.woped.core.model.petrinet.ANDSplitOperatorTransitionModel;
 
 public class ANDSplitTransition extends
@@ -20,7 +21,7 @@ public class ANDSplitTransition extends
 	}
 
 	@Override
-	public String getBpelCode()
+	public TActivity getBpelCode()
 	{
 		return null;
 	}
