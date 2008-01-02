@@ -399,7 +399,7 @@ public class BpelParserModel
 	 * 
 	 * @return String
 	 */
-	public String generate_bpel()
+	public Object generate_bpel()
 	{
 		int counter = 0;
 		this.toString();

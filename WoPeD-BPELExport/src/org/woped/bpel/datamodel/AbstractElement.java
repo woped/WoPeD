@@ -579,7 +579,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return String
 	 */
-	abstract public String getBpelCode();
+	abstract public Object getBpelCode();
 	
 	/**
 	 * With this method, you can find an AbstractElement.
