@@ -20,125 +20,188 @@ import org.woped.core.model.petrinet.TransitionModel;
 //! along with the corresponding model
 public class Marking {
 
-	//! Construct a marking from the specified ModelElementContainer
-	//! @param source specifies the element container that should serve
-	//!        as a source. The container will be kept as a reference
-	//!        for preserving the structure only. The initial marking
-	//!        will be copied and stored locally.
-	public Marking(IEditor source)
-	{
+	// ! Construct a marking from the specified ModelElementContainer
+	// ! @param source specifies the element container that should serve
+	// ! as a source. The container will be kept as a reference
+	// ! for preserving the structure only. The initial marking
+	// ! will be copied and stored locally.
+	public Marking(IEditor source) {
 		StructuralAnalysis sa = new StructuralAnalysis(source);
-		currentMarking = new TreeMap<String,Integer>();
+		currentMarking = new TreeMap<String, Integer>();
 		// Store the marking of each place
 		Iterator places = sa.getPlacesIterator();
-		while (places.hasNext())
-		{
-			PlaceModel currentPlace = (PlaceModel)places.next();
-			currentMarking.put(currentPlace.getId(), currentPlace.getVirtualTokenCount());
-		}		
-		// Store the active transitions		
+		while (places.hasNext()) {
+			PlaceModel currentPlace = (PlaceModel) places.next();
+			currentMarking.put(currentPlace.getId(), currentPlace
+					.getVirtualTokenCount());
+		}
+		// Store the active transitions
 		netTransitions = new HashSet<String>();
-		allTransitions = source.getModelProcessor().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-        allTransitions.putAll(source.getModelProcessor().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
-        allTransitions.putAll(source.getModelProcessor().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE)); 
+		allTransitions = source.getModelProcessor().getElementContainer()
+				.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+		allTransitions.putAll(source.getModelProcessor().getElementContainer()
+				.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
+		allTransitions.putAll(source.getModelProcessor().getElementContainer()
+				.getElementsByType(PetriNetModelElement.SUBP_TYPE));
 		Iterator transitions = allTransitions.values().iterator();
-		while (transitions.hasNext())
-		{
-			TransitionModel currentTransition = (TransitionModel)transitions.next();
-			if(currentTransition.isActivated()){
-			netTransitions.add(currentTransition.getId());
+		while (transitions.hasNext()) {
+			TransitionModel currentTransition = (TransitionModel) transitions
+					.next();
+			if (currentTransition.isActivated()) {
+				netTransitions.add(currentTransition.getId());
 			}
-		}		
-		
+		}
+
 		netStructure = source.getModelProcessor().getElementContainer();
 	}
-	
-	//! Return the active transitions of this marking.
-	//! An active transition can be used to 
-	//! create a follow-up marking
-	//! @return Returns an iterator iterating through all active
-	//! transitions under the current marking
-	public Iterator<ReachabilityArc> getActiveTransitions()
-	{
+
+	// ! Return the active transitions of this marking.
+	// ! An active transition can be used to
+	// ! create a follow-up marking
+	// ! @return Returns an iterator iterating through all active
+	// ! transitions under the current marking
+	public Iterator<ReachabilityArc> getActiveTransitions() {
 		return null;
 	}
 
-	//! Compares the current marking to otherMarking.
-	//! This method is required to build the coverability graph.
-	//! @param otherMarking specifies the marking to which
-	//!        the current marking should be compared
-	//! @return true if the current marking is bigger than otherMarking.
-	//!         Returns false if otherMarking is smaller or equal
-	//!         and if the two markings are not comparable
-	boolean isGreaterThan(Marking otherMarking)
-	{
+	// ! Compares the current marking to otherMarking.
+	// ! This method is required to build the coverability graph.
+	// ! @param otherMarking specifies the marking to which
+	// ! the current marking should be compared
+	// ! @return true if the current marking is bigger than otherMarking.
+	// ! Returns false if otherMarking is smaller or equal
+	// ! and if the two markings are not comparable
+	boolean isGreaterThan(Marking otherMarking) {
 		// Both markings must have the same size for this method to return true
-		if (otherMarking.currentMarking.size()!=currentMarking.size())
+		if (otherMarking.currentMarking.size() != currentMarking.size())
 			return false;
 		boolean isGreater = true;
 		Iterator currentThisMarking = currentMarking.values().iterator();
-		Iterator currentOtherMarking = otherMarking.currentMarking.values().iterator();
-		while (isGreater&&currentThisMarking.hasNext())
-		{
-			isGreater = 
-				(((Integer)currentThisMarking.next()).compareTo((Integer)currentOtherMarking.next())>0);
+		Iterator currentOtherMarking = otherMarking.currentMarking.values()
+				.iterator();
+		Integer oh;
+		while (isGreater && currentThisMarking.hasNext()) {
+			isGreater = (((Integer) currentThisMarking.next())
+					.compareTo(oh = (Integer) currentOtherMarking.next()) >= 0);
 		}
-		return isGreater;
+
+		if (isGreater && otherMarking.isfirst()) {
+			this.setnotfirst();
+			return false;
+		} else {
+			return isGreater;
+		}
+
 	}
-	
-	// Prints the Current Objects Tokenstatus
-	public String print(){
-		String value="( ";
-		Iterator it=currentMarking.values().iterator();
-		while(it.hasNext()){
-			value=value+it.next().toString()+" ";
+    // Method for setting the Coverability Object
+	public void setCoverability(Marking otherMarking) {
+		Iterator currentThisMarking = currentMarking.keySet().iterator();
+		Iterator currentOtherMarking = otherMarking.currentMarking.values()
+				.iterator();
+		String wert = null;
+		while (currentThisMarking.hasNext()) {
+			if ((Integer) currentMarking.get(
+					(wert = (String) currentThisMarking.next())).compareTo(
+					(Integer) currentOtherMarking.next()) < 0
+					&& currentMarking.get(wert) < 60000) {
+				currentMarking.put(wert, 63000);
+				BuildReachability.reachBuilt = true;
+				this.setreachabilitynotbuilt();
+			}
 		}
-		value=value+")";
+	}
+
+	// Prints the Current Objects Tokenstatus
+	public String print() {
+		String value = "( ";
+		Iterator it = currentMarking.values().iterator();
+		while (it.hasNext()) {
+			value = value + it.next().toString() + " ";
+		}
+		value = value + ")";
 		return value;
 	}
-	
-	public String toString(){
-		return this.print();
+
+	public String toString() {
+		String value = "( ";
+		Iterator it = currentMarking.values().iterator();
+		while (it.hasNext()) {
+			Integer i;
+			if ((i = (Integer) it.next()) >= 60000) {
+				value = value + "w" + " ";
+			} else {
+				value = value + i.toString() + " ";
+			}
+		}
+		value = value + ")";
+		return value;
 	}
-	
-	public void printseq(){
-		Iterator it=currentMarking.keySet().iterator();
-		while(it.hasNext()){
-			System.out.print(it.next()+" ");
+
+	public void printseq() {
+		Iterator it = currentMarking.keySet().iterator();
+		while (it.hasNext()) {
+			System.out.print(it.next() + " ");
 		}
 		System.out.println("");
 	}
-	
-	
-	public HashSet<String> getTransitions(){
+
+	public HashSet<String> getTransitions() {
 		return netTransitions;
 	}
-	public boolean equals(Object o){
-		Marking compare=(Marking)o;
+
+	public boolean equals(Object o) {
+		Marking compare = (Marking) o;
 		return this.currentMarking.equals(compare.currentMarking);
 	}
-	public TreeMap<String,Integer> getMarking(){
+
+	public TreeMap<String, Integer> getMarking() {
 		return currentMarking;
 	}
-	public String getKey(){
-		Iterator it= currentMarking.keySet().iterator();
-		String hash="";
-		while(it.hasNext()){
-			String temp=(String) it.next();
-			hash=hash+temp+"_"+currentMarking.get(temp).intValue();
+
+	public boolean reachabilitybuilt() {
+		return reachabilityBuilt;
+	}
+
+	public void setreachabilitybuilt() {
+		reachabilityBuilt = true;
+	}
+
+	public void setreachabilitynotbuilt() {
+		reachabilityBuilt = false;
+	}
+
+	public String getKey() {
+		Iterator it = currentMarking.keySet().iterator();
+		String hash = "";
+		while (it.hasNext()) {
+			String temp = (String) it.next();
+			hash = hash + temp + "_" + currentMarking.get(temp).intValue();
 		}
 		return (hash);
 	}
-	
-	//! Stores a reference to the net structure which is useful
-	//! to determine which transitions are active etc.
-	private ModelElementContainer netStructure;
-	//! Stores an array of int for the number of tokens in each place
-	//! For effective transition handling this is a map
-	//! ID->num_tokens
-	private TreeMap<String,Integer> currentMarking;
-	//! Stores a set of transitions
-	private HashSet<String> netTransitions;
-	private Map<String, AbstractElementModel>                    allTransitions        = null;
-}
+    // Help value for Coverability
+	public void setfirst() {
+		first = true;
+	}
 
+	public void setnotfirst() {
+		first = false;
+	}
+
+	public boolean isfirst() {
+		return first;
+	}
+
+	// ! Stores a reference to the net structure which is useful
+	// ! to determine which transitions are active etc.
+	private ModelElementContainer netStructure;
+	// ! Stores an array of int for the number of tokens in each place
+	// ! For effective transition handling this is a map
+	// ! ID->num_tokens
+	private TreeMap<String, Integer> currentMarking;
+	private boolean first = false;
+	// ! Stores a set of transitions
+	private HashSet<String> netTransitions;
+	private Map<String, AbstractElementModel> allTransitions = null;
+	private boolean reachabilityBuilt = false;
+}

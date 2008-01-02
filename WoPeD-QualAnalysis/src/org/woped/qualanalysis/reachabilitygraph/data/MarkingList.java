@@ -12,6 +12,15 @@ public class MarkingList {
 		it=netMarkings.values().iterator();
 	}
 	public Marking addMarking(Marking marking){
+		Marking help;
+		if(this.containsMarking(marking)){
+			return netMarkings.get(marking.getKey());
+		}
+		else if((help=MarkingGreater(marking))!=null){
+			help.setCoverability(marking);
+			return help;
+		}
+
 		netMarkings.put(marking.getKey(),marking);
 		return marking;
 	}
@@ -23,6 +32,22 @@ public class MarkingList {
 			return false;
 		}
 	}
+	public Marking MarkingGreater(Marking marking){
+		Iterator marks=netMarkings.values().iterator();
+		marking.setfirst();
+		Marking current=null;
+		while(marks.hasNext()){
+			if(marking.isGreaterThan(current=(Marking)marks.next()))
+			 {
+				return current;
+			 }
+			
+		}
+		marks=null;
+		return null;
+	}
+	
+	
 	public void print(){
 		Iterator ma=netMarkings.values().iterator();
 		while(ma.hasNext()){
