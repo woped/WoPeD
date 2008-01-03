@@ -33,6 +33,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     //! An element is activated if it can be clicked to trigger an action
     //! during simulation
     private boolean         activated = false;
+    private boolean         backwardActivated = false;
 	
 	//! The following methods and members are used for
 	//! structural analysis and not needed for anything else
@@ -353,5 +354,22 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     public void setActivated(boolean activated)
     {
         this.activated = activated;
+    }
+    
+    /**
+     * @return Returns the backwardActivated value.
+     */
+    public boolean isBackwardActivated()
+    {
+        return backwardActivated;
+    }
+
+    /**
+     * @param activated
+     *            Sets backwardActivated.
+     */
+    public void setBackwardActivated(boolean activated)
+    {
+        this.backwardActivated = activated;
     }
 }
