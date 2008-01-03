@@ -3,15 +3,17 @@ package org.woped.core.model.petrinet;
 import java.util.Vector;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 
-public class SimulationModel extends PetriNetModelElement 
+public class SimulationModel  
 {
+	private String id = null;
 	private String name = null;
 	private Vector<TransitionModel> firedTransitions = null;
+	//private ??? nethash  TODO: an anderer Stelle einen Algorithmus für einen Hash über das (logische) Netz schreiben und hier einen passenden Datentyp/Methodenn dazu einfügen
 	
-	public SimulationModel(String name)
+	public SimulationModel(String id, String name)
 	{
-		super(null); //TODO: Check what the superconstructor needs as parameter "CreationMap"
 		this.name = name;
+		this.id = id;
 		firedTransitions = new Vector<TransitionModel>();
 	}
 	
@@ -32,6 +34,14 @@ public class SimulationModel extends PetriNetModelElement
         this.name = name;
     }
     
+    /**
+     * @return Returns the vector with the fired tranisitions
+     */
+    public Vector<TransitionModel> getFiredTransitions()
+    {
+    	return firedTransitions;
+    }
+    
     /*
      * (non-Javadoc)
      * 
@@ -42,32 +52,20 @@ public class SimulationModel extends PetriNetModelElement
         return getName();
     }
 
-	@Override
+	/*
 	public int getType() {
 		return AbstractPetriNetModelElement.SIMULATION_TYPE;
 	}
 	
-	/*
-	 * the following two Methods are inherited but not used for simulations, because they aren't
-	 * shown as graphical Objects like e.g. tranisitions
-	 * (non-Javadoc)
-	 * @see org.woped.core.model.AbstractElementModel#getDefaultHeight()
-	 */
-	@Override
-	public int getDefaultHeight() {
-		return 0;
-	}
-	@Override
-	public int getDefaultWidth() {
-		return 0;
+
+	public String getToolTipText() 
+	{
+		return "ID: "+getId()+"\nName: "+getName(); //TODO port to use Messages
+	}*/
+	
+	public String getId()
+	{
+		return id;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see org.woped.core.model.AbstractElementModel#getToolTipText()
-	 */
-	@Override
-	public String getToolTipText() {
-		return "ID: "+getId()+"\nName: "+getName(); //TODO port to use Messages
-	}
 }
