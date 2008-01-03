@@ -155,7 +155,11 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			  *            so that the net will be played in that direction
 			  */
 			 break;
-		 case 10:
+		 case CLICK_FAST_FORWARD:
+			 RemoteControl.occurTransitionMulti();
+			 /*
+			  * TODO: look at Method definition!
+			  */
 			 break;
 		 case 11:
 			 break;

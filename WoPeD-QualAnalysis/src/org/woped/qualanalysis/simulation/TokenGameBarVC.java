@@ -474,6 +474,24 @@ public class TokenGameBarVC extends JInternalFrame {
 	}
 	
 	/**
+	 * This method let the multiple transition occur (now 3 times) (only for sequences,
+	 * as two transitions are active, the methode will stop)
+	 * TODO: 
+	 * 1) replace occurtimes 3 with a parameter. On default 3 but User can
+	 * define this parameter, but this will be
+	 * 2) intruduce parameter to define if it is fast forward or fast rewind
+	 */
+	public void occurTransitionMulti()
+	{
+		int i = 0;
+		while (i != 3)
+		{
+			m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur);
+			i++;
+		}
+	}
+	
+	/**
 	 * Cleans up the ChoiceBox and the ChoiceArray.
 	 * Is called by the TokenGameController.transitionClicked method and therefore
 	 * makes it possible to step through the net with in-Editor-clicks or Remote-clicks
