@@ -43,9 +43,7 @@ public class SequenceTransition extends TerminalElement
 			return null;
 		TSequence iSeq = null;
 		//if the begin transition is a SequenceTransition
-		if(TSequence.class.isInstance(begin)){
-			iSeq = (TSequence)begin;
-		}
+		
 		//cases for the several transitions
 		
 		//place between transitions
