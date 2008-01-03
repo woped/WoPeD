@@ -303,7 +303,9 @@ public class TokenGameController
     	
         transition.setActivated(false);
         transition.setFireing(false);
+        transition.setBackwardActivated(false);
         Map incomingArcs = getPetriNet().getElementContainer().getIncomingArcs(transition.getId());
+        Map outgoingArcs = getPetriNet().getElementContainer().getOutgoingArcs(transition.getId());
         // temporary variables
 
         if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
@@ -312,10 +314,19 @@ public class TokenGameController
             if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size()) 
             {
             	transition.setActivated(true);
-            	//This will add all currently active Transitions to the TokenGameBarVC-Autochoice-List
-            	RemoteControl.addChoiceItem(transition.getNameValue(), transition.getId(), transition);
+            	//This will add all currently active postSet Transitions to the TokenGameBarVC-Autochoice-List
+            	RemoteControl.addFollowingItem(transition);
             }
-            
+           
+            //If the Transition has all PostSets covered with at least one token, it will be listed as Backward-Activated
+            if ((outgoingArcs.size() != 0) && (countDirectFollowingActivePlaces(outgoingArcs) == outgoingArcs.size()))
+            {
+            	transition.setBackwardActivated(true);
+            	RemoteControl.addPreviousItem(transition);
+                //Add to the previousActivatedTransition - List of each place
+            	//Add a method "setBackwardActivated" into the AbstractElementModel Class
+            }
+           
             
         } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
         {
@@ -400,8 +411,7 @@ public class TokenGameController
                 		thisEditor.openTokenGameSubProcess((SubProcessModel)transition);
                 }
                 actionPerformed = true;
-                //Cleans up the RemoteControl. Needed to make sure that in-Editor-click and Remote-click work properly
-                RemoteControl.cleanupTransition();
+                
          
             } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
             {
@@ -437,7 +447,7 @@ public class TokenGameController
                 // transitions and activating them
                 // if their input conditions are fulfilled
                 // This will also trigger a redraw
-            	RemoteControl.clearChoiceBox();
+            	RemoteControl.cleanupTransition();
                 checkNet();
             }
         }
@@ -515,6 +525,81 @@ public class TokenGameController
         }
     }
 
+    
+    
+  //**********************************************************************************
+    /*
+     * Handles Backward-Processing of activated Items
+     */
+    private void backwardItem(TransitionModel transition)
+    {
+        if (transition.isBackwardActivated())
+        {
+            // Rememeber whether we actually did something here
+            // and only deactivate the transition after a *successful* click
+            boolean actionPerformed = false;
+            if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
+            {
+            	receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+            	sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
+               
+                if (transition.getType() == PetriNetModelElement.SUBP_TYPE)
+                {
+                	
+               /* 	int relativeX = e.getX() - transition.getX();
+                	int relativeY = e.getY() - transition.getY();
+                	// the lower left half of the transition will trigger 'step into'
+                	if (relativeY>=relativeX)
+                		// Step into sub-process and process it in a new modal editor
+                		// dialog in token-game mode
+                		thisEditor.openTokenGameSubProcess((SubProcessModel)transition);
+                */}
+                actionPerformed = true;
+                //Cleans up the RemoteControl. Needed to make sure that in-Editor-click and Remote-click work properly
+                RemoteControl.cleanupTransition();
+         
+            } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            {
+                OperatorTransitionModel operator = (OperatorTransitionModel) transition;
+                if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE
+                		|| operator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
+                {
+                    //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
+                    // FIRE AND-Transition:
+                    // "+transition.getId());
+                    receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
+                    sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+                    actionPerformed = true;
+
+                } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)||
+                		(operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
+                {
+                    // Do nothing: Only controlled by Arc Clicking
+                } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
+                		(operator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
+                {
+                    // Do nothing: Only controlled by Arc Clicking
+                } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+                {
+                    // Do nothing: Only controlled by Arc Clicking as the user
+                    // has to select the
+                    // token source
+                }
+            }
+            if (actionPerformed == true)
+            {
+                // Now update the status of the petri net by checking all
+                // transitions and activating them
+                // if their input conditions are fulfilled
+                // This will also trigger a redraw
+            	RemoteControl.clearChoiceBox();
+                checkNet();
+            }
+        }
+    }
+	
+//**********************************************************************************
+
     /*
      * Counts the token-filled Places which are the source of the Map filled
      * Arcs. ATTENTION: use only for Arcs with Places as source!
@@ -542,6 +627,36 @@ public class TokenGameController
         return activePlaces;
     }
 
+    /**
+     * needed for backward-playback
+     * 
+     * @param arcsFromPlaces
+     * @return number of active postSetPlaces
+     */
+  
+    private int countDirectFollowingActivePlaces(Map arcsFromPlaces)
+    {
+        Iterator outgoingArcsIter = arcsFromPlaces.keySet().iterator();
+        int activePostPlaces = 0;
+        while (outgoingArcsIter.hasNext())
+        {
+            ArcModel arc = getPetriNet().getElementContainer().getArcById(outgoingArcsIter.next());
+            try
+            {
+                PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getTargetId());
+                if (place != null && place.getVirtualTokenCount() > 0)
+                {
+                    // 	TODO: when ARC WEIGTH implemented check tokens >= weigth
+                    activePostPlaces++;
+                }
+            } catch (ClassCastException cce)
+            {
+                LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Source not a Place. Ignore arc: " + arc.getId());
+            }
+        }
+        return activePostPlaces;
+    }
+    
     /*
      * Sets incoming Arcs of an Transition active, if the Place before has
      * Tokens. Sets incoming Arcs of an Transition inactive, without any
@@ -624,7 +739,8 @@ public class TokenGameController
         Iterator arcIter = arcsToFire.keySet().iterator();
         while (arcIter.hasNext())
         {
-            receiveTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
+        	receiveTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
+        
         }
     }
 
@@ -647,6 +763,77 @@ public class TokenGameController
             LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
         }
     }
+    
+    /*
+     * Send (subtract) Tokens from the places that are the target of the
+     * arcs. 
+     * ATTENTION: target of the arcs must be always a place
+     */
+    
+    private void sendBackwardTokens(Map arcsToFire)
+    {
+        Iterator arcIter = arcsToFire.keySet().iterator();
+        while (arcIter.hasNext())
+        {
+            sendBackwardTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
+
+        }
+    }
+
+    /*
+     * Send (subtract) Tokens from the arc's target on Backward stepping. 
+     * ATTENTION: target must be a
+     * Place.
+     */
+    private void sendBackwardTokens(ArcModel arc)
+    {
+        try
+        {
+            PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getTargetId());
+            if (place != null)
+            {
+                place.sendToken();
+                // TODO: when ARC WEIGTH implemented send tokens weigth times
+            }
+        } catch (ClassCastException cce)
+        {
+            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Cannot send token. Source is not a place. Ignore arc: " + arc.getId());
+        }
+    }
+
+    /*
+     * Receive Tokens when doing backward steps 
+     */    
+    private void receiveBackwardTokens(Map arcsToFire)
+    {
+        Iterator arcIter = arcsToFire.keySet().iterator();
+        while (arcIter.hasNext())
+        {
+        	receiveBackwardTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
+        
+        }
+    }
+
+    /*
+     * Receive (add) Tokens to the place that is the source of the arc.
+     * ATTENTION: Target must be a place.
+     */
+    private void receiveBackwardTokens(ArcModel arc)
+    {
+        try
+        {
+            PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getSourceId());
+            if (place != null)
+            {
+                place.receiveToken();
+                // TODO: when ARC WEIGTH implemented receive tokens weigth times
+            }
+        } catch (ClassCastException cce)
+        {
+            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
+        }
+    }
+    
     
     //! Reset status of destination places which may be active if they carry
     //! any tokens to allow returning from a sub-process
@@ -888,9 +1075,16 @@ public class TokenGameController
     * will be called by TokenGameBarVC to let active transitions occur
     * @param transition
     */ 
-    public void occurTransitionbyTokenGameBarVC(TransitionModel transition)
+    public void occurTransitionbyTokenGameBarVC(TransitionModel transition, boolean BackWard)
     {
-    	transitionClicked(transition, null);
+    	if(BackWard)
+    	{
+    	  backwardItem(transition);
+    	}
+    	else
+    	{
+    	  transitionClicked(transition, null);
+    	}
     }
     
     /**

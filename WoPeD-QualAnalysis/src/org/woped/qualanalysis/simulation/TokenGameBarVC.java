@@ -1,5 +1,6 @@
 package org.woped.qualanalysis.simulation;
 import javax.swing.*;
+import java.util.LinkedList;
 
 import org.woped.core.model.petrinet.*;
 
@@ -61,10 +62,15 @@ public class TokenGameBarVC extends JInternalFrame {
 	private GridBagConstraints gbc    = null;
 	private ReferenceProvider MainWindowReference = null;
 	private TokenGameHistoryManagerVC HistoryDialog = null;
-	private TransitionModel[] ChoiceArray       = null;
-	private TransitionModel[] HelpArray         = null;
-	private TransitionModel   TransitionToOccur = null;
+	private TransitionModel   TransitionToOccur         = null;
+	private TransitionModel   BackwardTransitionToOccur = null;
+	private TransitionModel   helpTransition    = null;
+
 	
+	//Linked Lists 
+	private LinkedList       followingActivatedTransitions           = null;
+	private LinkedList       previousActivatedTransitions            = null;
+		
 	// TokenGame
 	private TokenGameController m_tokenGameController = null;
 	
@@ -178,6 +184,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		
 		
 		//Define Button-Actions
+		pbnBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_BACKWARD, this));
 		pbnStop.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STOP, this));
 		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, this));
 		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, this));
@@ -341,47 +348,51 @@ public class TokenGameBarVC extends JInternalFrame {
 	
 	//Choice Listbox
 	//get Active Transitions
-	public void addChoiceItem(String itemName, String itemID, TransitionModel transition)
+	public void addFollowingItem(TransitionModel transition)
 	{
-		int newArrayLength = 0;
+		if(followingActivatedTransitions == null)
+		{
+			followingActivatedTransitions = new LinkedList();
+		}
+		followingActivatedTransitions.addLast(transition);
 		
-		if(ChoiceArray == null)
+		//List will be displayed
+		if(followingActivatedTransitions.size() == 2)
 		{
-			ChoiceArray = new TransitionModel[1];
-            ChoiceArray[0] = transition;
-            TransitionToOccur = transition;
+			helpTransition = (TransitionModel)followingActivatedTransitions.get(0);
+			acoChoiceItems.addElement(helpTransition.getNameValue());
+			helpTransition = (TransitionModel)followingActivatedTransitions.get(1);
+			acoChoiceItems.addElement(helpTransition.getNameValue());
+    		disableForwardButtons();
 		}
-		else
+		if(followingActivatedTransitions.size() > 2)
 		{
-			HelpArray = ChoiceArray.clone();
-            newArrayLength = HelpArray.length+1;
-			ChoiceArray = new TransitionModel[(newArrayLength)];
+			helpTransition = (TransitionModel)followingActivatedTransitions.get(followingActivatedTransitions.size()-1);
+			acoChoiceItems.addElement(helpTransition.getNameValue());
+		    disableForwardButtons();
+		}
+		if(followingActivatedTransitions.size() == 1)
+		{
+			TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(0);
+		}
+	}
+	
+	//Get previous "BackwardActive" Transitions
+	/**
+	 *  List of previousActivated Transitions is built up here
+	 */
+	public void addPreviousItem(TransitionModel transition)
+	{
+		if(previousActivatedTransitions == null)
+		{
+			previousActivatedTransitions = new LinkedList();
+		}
+		previousActivatedTransitions.addLast(transition);
 			
-			for(int i = 0; i < (newArrayLength-1); i++)
-			{
-				ChoiceArray[i] = HelpArray[i];
-			}
-			ChoiceArray[newArrayLength-1] = transition;
-			TransitionToOccur = null;
-			
-		}
-		
-
-		//if more then one element is available, they will be listed in the easy-choice  box.
-		//only after a choice was done, the user may continue with stepping forward
-		if(ChoiceArray.length == 2)
-		{
-			acoChoiceItems.addElement(ChoiceArray[0].getNameValue());
-			acoChoiceItems.addElement(ChoiceArray[1].getNameValue());
-			disableForwardButtons();
-		}
-		if(ChoiceArray.length > 2)
-		{
-			disableForwardButtons();
-			acoChoiceItems.addElement(ChoiceArray[ChoiceArray.length-1].getNameValue());
-		}
+			BackwardTransitionToOccur = (TransitionModel)previousActivatedTransitions.get(previousActivatedTransitions.size()-1);
 		
 	}
+	
 	
 	public int getSelectedChoiceID()
 	{
@@ -455,10 +466,10 @@ public class TokenGameBarVC extends JInternalFrame {
 	 */
 	public void proceedTransitionChoice(int index)
 	{
-		if((ChoiceArray != null) && (index < ChoiceArray.length))
+		if((followingActivatedTransitions != null) && (index < followingActivatedTransitions.size()))
 		{
-			TransitionToOccur = ChoiceArray[index];
-		    occurTransition();
+			TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
+		    occurTransition(false);
 		}	
 	}
 	
@@ -467,9 +478,29 @@ public class TokenGameBarVC extends JInternalFrame {
 	 * This method let the active transition occur (currently only for sequences, as soon
 	 * as two transitions are active, the method cannot occur so far)
 	 */
-	public void occurTransition()
+	public void occurTransition(boolean BackWard)
 	{
-		m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur);
+		if((BackWard) && (BackwardTransitionToOccur != null))
+		{
+			TransitionToOccur = BackwardTransitionToOccur;
+			// = Let the transition occur backward.
+			/*
+			 * Currently always the last added Transition in the "previousActivatedTransition"-List is taken
+			 * TODO: @Anthy: 
+			 * Two lists exist:
+			 * 1.) followingActivatedTransitions:
+			 *     All possible transitions for a Forward-Step are listed in there
+			 * 2.) previousActivatedTransitions:
+			 *     All possible transitions for a Backward-Step are listed in there
+			 *
+			 * For the first List, the choice-structure has already been established
+			 * For the second List (backward) a choice algorithm and appearing rules are needed
+			 * The chosen Backward-Transition should be Stored in "BackwardTransitionToOccur" and
+			 * the occurTransition - Method should be called with "BackWard == true" 
+			 * 
+			 */
+		}
+		m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 		
 	}
 	
@@ -486,7 +517,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		int i = 0;
 		while (i != 3)
 		{
-			m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur);
+			m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, false);
 			i++;
 		}
 	}
@@ -499,7 +530,14 @@ public class TokenGameBarVC extends JInternalFrame {
 	public void cleanupTransition()
 	{
 		clearChoiceBox();
-		ChoiceArray = null;
+		if(followingActivatedTransitions != null)
+		{
+			followingActivatedTransitions.clear();
+		}
+		if(previousActivatedTransitions != null)
+		{
+			previousActivatedTransitions.clear();
+		}
 	}
 	
 	/**
@@ -509,17 +547,5 @@ public class TokenGameBarVC extends JInternalFrame {
 	public TokenGameController getTokenGameController()
 	{
 		return m_tokenGameController;
-	}
-	
-	
-	
-	/**
-	 * Only done for some test, that Ben needs.
-	 * will be removed in nearer future.
-	 */
-	public void removePanel()
-	{
-		this.remove(NavigationPlayback);
-		this.repaint();
 	}
 }

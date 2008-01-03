@@ -120,8 +120,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		switch(ID)
 		{
 		 case 1:
-			 RemoteControl.removePanel();
-			 System.out.println("Panel removed");
 			 break;
 		 case 2:
 			 break;
@@ -129,7 +127,11 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			 break;
 		 case 4:
 			 break;
-		 case 5:
+		 case CLICK_BACKWARD:
+			 /*
+			  * Will make a step back
+			  */
+			 RemoteControl.occurTransition(true);
 			 break;
 		 case CLICK_STOP:
 			 /*
@@ -144,11 +146,14 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			  */
 			 playbackActions();
 			 RemoteControl.disablePlayButton();
+			 
+			 //Cleanup needed to avoid double ENtries in the ChoiceBox
+			 RemoteControl.cleanupTransition();
 			 break;
 		 case 8:
 			 break;
 		 case CLICK_FORWARD:
-			 RemoteControl.occurTransition();
+			 RemoteControl.occurTransition(false);
 			 /*
 			  *  (Not Now, but later)
 			  *  TODO: 2.) For Automatic Playback just enable direction <forward> or <backward>
