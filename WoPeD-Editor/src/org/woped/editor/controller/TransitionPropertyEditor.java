@@ -46,6 +46,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import org.woped.bpel.gui.transitionproperties.*;
@@ -72,6 +73,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 	private EditorVC editor = null;
 
 	private JPanel contentPanel = null;
+	
+	private JPanel bpelPanel = null; //Lavi
 	
 	private GridBagConstraints c = new GridBagConstraints();
 
@@ -274,8 +277,12 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 		this.transition = transition;
 		this.editor = editor;
 		this.setVisible(false);
+		JTabbedPane tabPanel = new JTabbedPane(); //Lavi
 		initialize();
-		this.setSize(550, 560);
+		tabPanel.add("General", contentPanel); //Lavi
+		tabPanel.add("BPEL-Activities", bpelPanel); //Lavi
+		this.add(tabPanel); //Lavi
+		this.setSize(550, 580);
 		this.setLocation(Utils
 				.getCenterPoint(owner.getBounds(), this.getSize()));
 		this.setVisible(true);
@@ -291,7 +298,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 	}
 
 	private JPanel getContentPanel() {
+		
 		if (contentPanel == null) {
+			bpelPanel = new JPanel(); //Lavi
 			contentPanel = new JPanel();
 			contentPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 			contentPanel.setLayout(new GridBagLayout());
