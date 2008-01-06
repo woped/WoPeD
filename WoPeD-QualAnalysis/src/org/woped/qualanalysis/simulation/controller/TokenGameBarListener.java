@@ -125,7 +125,8 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			 break;
 		 case 3:
 			 break;
-		 case 4:
+		 case CLICK_FAST_BACKWARD:
+			 RemoteControl.occurTransitionMulti(true);
 			 break;
 		 case CLICK_BACKWARD:
 			 /*
@@ -161,7 +162,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			  */
 			 break;
 		 case CLICK_FAST_FORWARD:
-			 RemoteControl.occurTransitionMulti();
+			 RemoteControl.occurTransitionMulti(false);
 			 /*
 			  * TODO: look at Method definition!
 			  */
