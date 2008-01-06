@@ -511,7 +511,6 @@ public class TokenGameBarVC extends JInternalFrame {
 	 * TODO: 
 	 * 1) replace occurtimes 3 with a parameter. On default 3 but User can
 	 * define this parameter, but this will be
-	 * 2) intruduce parameter to define if it is fast forward or fast rewind
 	 */
 	public void occurTransitionMulti(boolean BackWard)
 	{
