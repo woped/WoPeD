@@ -189,6 +189,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, this));
 		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, this));
 		pbnFastFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_FORWARD, this));
+		pbnFastBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_BACKWARD, this));
 		
 		//Create Playback&Navigation-Panel and add Buttons
 		NavigationPlayback = new JPanel();
@@ -512,14 +513,32 @@ public class TokenGameBarVC extends JInternalFrame {
 	 * define this parameter, but this will be
 	 * 2) intruduce parameter to define if it is fast forward or fast rewind
 	 */
-	public void occurTransitionMulti()
+	public void occurTransitionMulti(boolean BackWard)
 	{
 		int i = 0;
-		while (i != 3)
+		if(BackWard)
 		{
-			m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, false);
-			i++;
+			while (i != 3)
+			{
+				if(previousActivatedTransitions.size() < 2)
+				{
+					occurTransition(BackWard);
+				}
+				i++;
+			}
 		}
+		else
+		{
+			while (i != 3)
+			{
+				if(followingActivatedTransitions.size() < 2)
+				{
+					occurTransition(BackWard);
+				}
+				i++;
+			}
+		}
+		
 	}
 	
 	/**
