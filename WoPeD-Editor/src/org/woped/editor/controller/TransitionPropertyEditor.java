@@ -280,7 +280,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 		JTabbedPane tabPanel = new JTabbedPane(); //Lavi
 		initialize();
 		tabPanel.add("General", contentPanel); //Lavi
-		tabPanel.add("BPEL-Activities", bpelPanel); //Lavi
+		tabPanel.add("BPEL", bpelPanel); //Lavi
 		this.add(tabPanel); //Lavi
 		this.setSize(550, 580);
 		this.setLocation(Utils
