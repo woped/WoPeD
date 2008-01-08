@@ -1,0 +1,58 @@
+﻿<?xml version="1.0"?>
+<definitions xmlns:tns="http://test.demo.MyBPELExport" xmlns:bpel="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:q1="http://MyBPELTest.Schema1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MyBPELTest" targetNamespace="http://test.demo.MyBPELExport" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <plnk:partnerLinkType name="Port_1Type">
+    <plnk:role name="portRole">
+      <plnk:portType name="tns:PortType_1" />
+    </plnk:role>
+    <plnk:role name="portRole2">
+      <plnk:portType name="tns:PortType_2" />
+    </plnk:role>
+  </plnk:partnerLinkType>
+<plnk:partnerLinkType name="Port_2Type">
+    <plnk:role name="portRole">
+      <plnk:portType name="tns:PortType_1" />
+    </plnk:role>
+    <plnk:role name="portRole2">
+      <plnk:portType name="tns:PortType_2" />
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="Port_3Type">
+    <plnk:role name="portRole">
+      <plnk:portType name="tns:PortType_1" />
+    </plnk:role>
+    <plnk:role name="portRole2">
+      <plnk:portType name="tns:PortType_2" />
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <types>
+    <xsd:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" xmlns="http://MyBPELTest.Schema1" targetNamespace="http://MyBPELTest.Schema1">
+      <xs:element name="Root">
+        <xs:complexType />
+      </xs:element>
+    </xsd:schema>
+  </types>
+    <message name="PO">
+        <part name="po" element="tns:PO"/>
+        <part name="invoice" element="tns:Invoice"/>
+    </message>
+  <message name="__messagetype_MyBPELTest_Schema1">
+    <part name="part" element="q1:Root" />
+  </message>
+  <message name="GetLastTradePriceInput">
+    <part name="part" element="q1:Root" />
+  </message>
+    <message name="GetLastTradePriceOutput">
+    <part name="part" element="q1:Root" />
+  </message>
+  <portType name="PortType_1">
+    <operation name="Operation_1">
+           <input message="tns:GetLastTradePriceInput"/>
+           <output message="tns:GetLastTradePriceOutput"/>
+    </operation>
+  </portType>
+    <portType name="PortType_2">
+    <operation name="Operation_2">
+      <input message="tns:__messagetype_MyBPELTest_Schema2" />
+    </operation>
+  </portType>
+</definitions>
