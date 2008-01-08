@@ -13,6 +13,7 @@ import org.woped.bpel.wsdl.wsdlFileRepresentation.WsdlFileRepresentation;
 /*
  *	Eine Beispiel-Main Datei, die die Repräsentation einer WSDL-Datei ausliest.
  *	--> Auf jeden Fall wieder zu löschen!
+ *		Selbiges gilt für die Datei Test-Files.example.wsdl
  */
 
 public class WsdlMain {
@@ -24,7 +25,7 @@ public class WsdlMain {
 		try {
 
 //			wsdlFileRepresentation = wsdl.readDataFromWSDL("HTTP://www-db.informatik.tu-muenchen.de/UniVerwaltung.wsdl");
-			wsdlFileRepresentation = wsdl.readDataFromWSDL("example.wsdl");
+			wsdlFileRepresentation = wsdl.readDataFromWSDL("Test-Files/example.wsdl");
 //			wsdlFileRepresentation = wsdl.readDataFromWSDL("http://www.webservicex.net/globalweather.asmx?WSDL");
 
 
