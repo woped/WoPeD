@@ -42,11 +42,7 @@ public class BPELwaitPanel extends JPanel{
 	private static final String WAIT_DEADLINE = Messages.getString("Transition.Properties.BPELActivityWait.Deadline");
 	
 	
-	public BPELwaitPanel(IDialog editor, JPanel transitionPropertiesPanel, GridBagConstraints transitionPropertiesConstraints){
-		this.editor = editor;
-		contentPanel = transitionPropertiesPanel;
-		c_ContentPanel = transitionPropertiesConstraints;
-// Parameter des Konstruktors noch entfernen
+	public BPELwaitPanel(){
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
