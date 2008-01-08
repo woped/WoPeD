@@ -42,6 +42,8 @@ public class BPELActivityChoosePanel extends JPanel {
 	private JPanel contentPanel = null;
 	private GridBagConstraints c_ContentPanel = null;
 	
+	GridBagConstraints c = new GridBagConstraints();
+	
 	
 	public BPELActivityChoosePanel(IDialog editor, JPanel transitionPropertiesPanel, GridBagConstraints transitionPropertiesConstraints){
 		
@@ -50,7 +52,7 @@ public class BPELActivityChoosePanel extends JPanel {
 		c_ContentPanel = transitionPropertiesConstraints;
 		
 		setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+//		GridBagConstraints c = new GridBagConstraints();
 		setBorder(BorderFactory
 						.createCompoundBorder(
 								BorderFactory
@@ -75,7 +77,7 @@ public class BPELActivityChoosePanel extends JPanel {
 		c.insets = new Insets(0, 10, 0, 10);
 		add(getActivityComboBox(), c);
 		
-		c.gridx = 4;
+/*		c.gridx = 4;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 10, 0, 0);
@@ -85,7 +87,7 @@ public class BPELActivityChoosePanel extends JPanel {
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 10, 0, 10);
-		add(getNameTextField(), c);
+		add(getNameTextField(), c);*/
 		
 		c.gridx = 0;
 		c.gridy = 1;
@@ -107,7 +109,7 @@ public class BPELActivityChoosePanel extends JPanel {
 	private JComboBox getActivityComboBox() {
 		if (activityComboBox == null) {
 			activityComboBox = new JComboBox(getActivityComboBoxModel());
-			activityComboBox.setSelectedIndex(2);
+//			activityComboBox.setSelectedIndex(2);
 			activityComboBox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 //					updateNumResources();
@@ -130,6 +132,7 @@ public class BPELActivityChoosePanel extends JPanel {
 	private DefaultComboBoxModel getActivityComboBoxModel() {
 		if (activityComboBoxModel == null) {
 				activityComboBoxModel = new DefaultComboBoxModel();	
+				activityComboBoxModel.addElement("-keine Aktivität-");
 				activityComboBoxModel.addElement("assign");
 				activityComboBoxModel.addElement("invoke");
 				activityComboBoxModel.addElement("receive");
@@ -139,7 +142,7 @@ public class BPELActivityChoosePanel extends JPanel {
 		return activityComboBoxModel;
 	}
 	
-	private JLabel getNameLabel()
+	/*private JLabel getNameLabel()
     {
         if (nameLabel == null)
         {
@@ -155,7 +158,7 @@ public class BPELActivityChoosePanel extends JPanel {
 				nameTextField.setPreferredSize(new Dimension(100, 20));
 				nameTextField.setMinimumSize(new Dimension(150, 20));
 				nameTextField.setMaximumSize(new Dimension(150, 20));
-				/*nameTextField.addKeyListener(new KeyListener() {
+				nameTextField.addKeyListener(new KeyListener() {
 					public void keyPressed(KeyEvent e) {
 						keyReleased(e);
 					}
@@ -170,11 +173,11 @@ public class BPELActivityChoosePanel extends JPanel {
 							TransitionPropertyEditor.this.dispose();
 						}
 					}
-				});*/
+				});
 			}
 
 			return nameTextField;
-	}
+	}*/
 	 
 		private JButton getButtonEdit() {
 			if (buttonEdit == null) {
@@ -184,10 +187,15 @@ public class BPELActivityChoosePanel extends JPanel {
 						String selectedActivity = getActivityComboBoxModel().getSelectedItem().toString();
 						if (selectedActivity.equals("wait")){
 							c_ContentPanel.gridx = 0;
-							c_ContentPanel.gridy = 6;
-							c_ContentPanel.gridwidth = 1;
+							c_ContentPanel.gridy = 6; //1
+	//						c_ContentPanel.gridwidth = 1;
 							c_ContentPanel.insets = new Insets(0, 10, 0, 10);
-							contentPanel.add(new BPELwaitPanel(editor, contentPanel, c_ContentPanel), c_ContentPanel);
+//							c.gridx = 0;
+//							c.gridy = 2;
+//							c.gridwidth = 1;
+//							c.insets = new Insets(0, 10, 0, 10);
+//							contentPanel.add(new BPELwaitPanel(editor, contentPanel, c_ContentPanel), c_ContentPanel);
+							contentPanel.add(new BPELwaitPanel(), c_ContentPanel);
 						}
 					}
 				/*buttonEdit.setIcon(Messages.getImageIcon("Button.Ok"));
