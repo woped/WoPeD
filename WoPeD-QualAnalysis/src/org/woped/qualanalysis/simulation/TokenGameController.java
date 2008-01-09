@@ -42,6 +42,7 @@ import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
@@ -278,6 +279,7 @@ public class TokenGameController
         {
             checkTransition((TransitionModel) allTransitions.get(transIter.next()));
         }
+        
         // Have a look at sink places
         // and see whether we need to activate them
         // Do so only inside of sub-processes
@@ -291,8 +293,9 @@ public class TokenGameController
         	}        	
         }              
         getGraph().updateUI();
-
+        RemoteControl.fillChoiceBox(); //Fills the Choicebox with the active Transitions that have been encountered through checkTransition()
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
+        
     }
 
     /*
@@ -307,7 +310,7 @@ public class TokenGameController
         Map incomingArcs = getPetriNet().getElementContainer().getIncomingArcs(transition.getId());
         Map outgoingArcs = getPetriNet().getElementContainer().getOutgoingArcs(transition.getId());
         // temporary variables
-
+        
         if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
         {
         	
@@ -341,6 +344,30 @@ public class TokenGameController
             {
                 if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size())
                 {
+                	String XorName, ID;
+                	Iterator outArcs = outgoingArcs.keySet().iterator();
+                	Iterator simpleTransIter = operator.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
+                	TransitionModel helpTransition; //needed to build virtual Transitions.
+                	AbstractElementModel helpPlace;                 	
+                	
+                	/*
+                	 * In this while-loop, Virtual Transitions will be build which represent the Arcs in the OccurenceList.
+                	 * If a virtual Transition is chosen by the user, it will be identified by its ID as Arc and the depending Arc
+                	 * will be taken instead to be occured
+                	 */
+                	while (outArcs.hasNext())
+                	{
+                		helpTransition = (TransitionModel)simpleTransIter.next(); 
+                		ID = (String)outArcs.next(); //get the Arc's ID
+                		helpTransition.setId(ID); //set HelpTransition's ID to Arc's ID
+                		helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getTargetId());
+                		XorName = transition.getNameValue() + " -> ("+  helpPlace.getNameValue()+")";
+                        helpTransition.setNameValue(XorName);
+                		RemoteControl.addFollowingItem(helpTransition);
+                		helpTransition = null;
+                		XorName = "";
+                  	}
+                		
                     setOutgoingArcsActive(transition.getId(), true);
                     operator.setFireing(true);                   
                 }
@@ -520,6 +547,7 @@ public class TokenGameController
             }
             // Update net status
             // and trigger redraw
+            RemoteControl.cleanupTransition();
             checkNet();
 
         }
@@ -1077,13 +1105,22 @@ public class TokenGameController
     */ 
     public void occurTransitionbyTokenGameBarVC(TransitionModel transition, boolean BackWard)
     {
-    	if(BackWard)
+    	char checkA = transition.getId().charAt(0);
+    	if(checkA == 'a')
     	{
-    	  backwardItem(transition);
+    		System.out.println("Das ist eine Arc-Transition");
+    		arcClicked(getPetriNet().getElementContainer().getArcById(transition.getId()));
     	}
     	else
     	{
-    	  transitionClicked(transition, null);
+    	  if(BackWard)
+    	  {
+    	    backwardItem(transition);
+    	  }
+    	  else
+    	  {
+    	    transitionClicked(transition, null);
+    	  }
     	}
     }
     

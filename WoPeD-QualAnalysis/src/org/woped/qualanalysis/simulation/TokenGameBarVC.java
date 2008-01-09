@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.util.LinkedList;
 
 import org.woped.core.model.petrinet.*;
-
 import org.woped.translations.Messages;
 import org.woped.qualanalysis.simulation.controller.*;
 import java.awt.*;
@@ -65,11 +64,13 @@ public class TokenGameBarVC extends JInternalFrame {
 	private TransitionModel   TransitionToOccur         = null;
 	private TransitionModel   BackwardTransitionToOccur = null;
 	private TransitionModel   helpTransition    = null;
+	private boolean           playbacking       = false;
 
 	
 	//Linked Lists 
 	private LinkedList       followingActivatedTransitions           = null;
 	private LinkedList       previousActivatedTransitions            = null;
+	private LinkedList       followingArcs                           = null;
 		
 	// TokenGame
 	private TokenGameController m_tokenGameController = null;
@@ -356,27 +357,8 @@ public class TokenGameBarVC extends JInternalFrame {
 			followingActivatedTransitions = new LinkedList();
 		}
 		followingActivatedTransitions.addLast(transition);
-		
-		//List will be displayed
-		if(followingActivatedTransitions.size() == 2)
-		{
-			helpTransition = (TransitionModel)followingActivatedTransitions.get(0);
-			acoChoiceItems.addElement(helpTransition.getNameValue());
-			helpTransition = (TransitionModel)followingActivatedTransitions.get(1);
-			acoChoiceItems.addElement(helpTransition.getNameValue());
-    		disableForwardButtons();
-		}
-		if(followingActivatedTransitions.size() > 2)
-		{
-			helpTransition = (TransitionModel)followingActivatedTransitions.get(followingActivatedTransitions.size()-1);
-			acoChoiceItems.addElement(helpTransition.getNameValue());
-		    disableForwardButtons();
-		}
-		if(followingActivatedTransitions.size() == 1)
-		{
-			TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(0);
-		}
 	}
+	
 	
 	//Get previous "BackwardActive" Transitions
 	/**
@@ -401,12 +383,32 @@ public class TokenGameBarVC extends JInternalFrame {
 	
 	}
 	
+	/**
+	 * Adds multi-choice entries to the multi-choice box
+	 */
+	public void fillChoiceBox()
+	{
+		clearChoiceBox(); //To ensure that the box is empty
+		if(followingActivatedTransitions.size() == 1)
+		{
+			TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(0);
+		}
+		if(followingActivatedTransitions.size() > 1)
+		{
+			for(int i = 0; i < followingActivatedTransitions.size(); i++)				
+			{
+				helpTransition = (TransitionModel)followingActivatedTransitions.get(i);
+     			acoChoiceItems.addElement(helpTransition.getNameValue());
+			}
+     		disableForwardButtons();
+		}
+	}
+	
 	public void clearChoiceBox()
 	{
 		acoChoiceItems.clear();
 		enableForwardButtons();
 	}
-	
 	
 	//HistoryListbox
 	public void addHistoryData(String[] Data)
@@ -449,11 +451,22 @@ public class TokenGameBarVC extends JInternalFrame {
 	public void enablePlayButton()
 	{
 		pbnPlay.setEnabled(true);
+		playbacking = false;
 	}
 	
 	public void disablePlayButton()
 	{
 		pbnPlay.setEnabled(false);
+		playbacking = true;
+	}
+	
+	/**
+	 * This method is to avoid problems when stepping in any direction without having pressed playback in advance
+	 * @return
+	 */
+	public boolean playbackRunning()
+	{
+		return playbacking;
 	}
 	
 	/*

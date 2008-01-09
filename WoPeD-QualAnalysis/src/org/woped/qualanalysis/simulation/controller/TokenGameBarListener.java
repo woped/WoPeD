@@ -126,13 +126,19 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		 case 3:
 			 break;
 		 case CLICK_FAST_BACKWARD:
-			 RemoteControl.occurTransitionMulti(true);
+			 if (RemoteControl.playbackRunning())
+			 {
+			   RemoteControl.occurTransitionMulti(true);
+			 }
 			 break;
 		 case CLICK_BACKWARD:
 			 /*
 			  * Will make a step back
 			  */
-			 RemoteControl.occurTransition(true);
+			 if (RemoteControl.playbackRunning())
+			 {
+			   RemoteControl.occurTransition(true);
+			 }
 			 break;
 		 case CLICK_STOP:
 			 /*
@@ -154,7 +160,10 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		 case 8:
 			 break;
 		 case CLICK_FORWARD:
-			 RemoteControl.occurTransition(false);
+			 if (RemoteControl.playbackRunning())
+			 {
+			   RemoteControl.occurTransition(false);
+			 }
 			 /*
 			  *  (Not Now, but later)
 			  *  TODO: 2.) For Automatic Playback just enable direction <forward> or <backward>
@@ -162,7 +171,10 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			  */
 			 break;
 		 case CLICK_FAST_FORWARD:
-			 RemoteControl.occurTransitionMulti(false);
+			 if (RemoteControl.playbackRunning())
+			 {
+			   RemoteControl.occurTransitionMulti(false);
+			 }
 			 /*
 			  * TODO: look at Method definition!
 			  */
