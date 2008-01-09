@@ -29,41 +29,25 @@ public class SequenceTransition extends TerminalElement
 	 */
 	public TSequence getBpelCode()
 	{
-		//first transition
-		if (begin == null)
-			return null;
-		if (Place.class.isInstance(begin))
-			return null;
-		if (XORSplitTransition.class.isInstance(begin)
-				|| XORJoinTransition.class.isInstance(begin)
-				|| ANDSplitTransition.class.isInstance(begin)
-				|| ANDJoinTransition.class.isInstance(begin))
-			return null;
-		if (begin.count_post_objects() != 1)
-			return null;
 		TSequence iSeq = null;
-		//if the begin transition is a SequenceTransition
-		
-		//cases for the several transitions
+		//1.transition
+		//if the 1.transition is a SequenceTransition
+		if (SequenceTransition.class.isInstance(begin))
+		{
+			iSeq = (TSequence)begin.getBpelCode();			
+		}
+		//transitions case (1.transition)
 		
 		//place between transitions
 		AbstractElement tmp = begin.get_first_post_element();
-		if (!Place.class.isInstance(tmp))
-			return null;
-		if (tmp.count_post_objects() != 1)
-			return null;
-		if (tmp.count_pre_objects() != 1)
-			return null;
-		//last transition
-		tmp = tmp.get_first_post_element();		
-		if (tmp.count_pre_objects() != 1)
-			return null;
-		if (XORSplitTransition.class.isInstance(tmp)
-				|| XORJoinTransition.class.isInstance(tmp)
-				|| ANDSplitTransition.class.isInstance(tmp)
-				|| ANDJoinTransition.class.isInstance(tmp))
-			return null;
-		//cases for the several transitions
+		
+		//2.transition
+		tmp = tmp.get_first_post_element();			
+		//if the 2.transition is a SequenceTransition
+		if (SequenceTransition.class.isInstance(tmp)){
+			TSequence helpSequence = (TSequence)tmp.getBpelCode();			
+		}
+		//transitions case (2.transition)
 		return iSeq;
 	}
 
