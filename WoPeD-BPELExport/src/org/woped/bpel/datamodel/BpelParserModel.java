@@ -681,7 +681,7 @@ public class BpelParserModel
 		AbstractElement end = null;
 		AbstractElement tmp = null;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
-		tmp = list.next();
+		//tmp = list.next();
 		boolean firstrun = true;
 		while (list.hasNext())
 		{
@@ -777,7 +777,7 @@ public class BpelParserModel
 		AbstractElement end = null;
 		AbstractElement tmp = null;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
-		tmp = list.next();
+		
 		boolean firstrun = true;
 		while (list.hasNext())
 		{

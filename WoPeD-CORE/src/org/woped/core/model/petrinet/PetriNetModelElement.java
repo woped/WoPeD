@@ -40,6 +40,7 @@ import org.woped.core.utilities.LoggerManager;
 public abstract class PetriNetModelElement extends AbstractPetriNetModelElement
 {
     private Vector m_unknownToolspecific = null;
+    private BaseActivity BpelData = null;
 
     /**
      * Each PetriNetElement is able to return its attributes in a CreationMap;
@@ -99,6 +100,16 @@ public abstract class PetriNetModelElement extends AbstractPetriNetModelElement
     public int getWidth()
     {
         return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getWidth());
+    }
+    
+    public void setBaseActivity(BaseActivity arg)
+    {
+    	this.BpelData = arg;
+    }
+    
+    public BaseActivity getBpelData()
+    {
+    	return this.BpelData;
     }
 
 }
