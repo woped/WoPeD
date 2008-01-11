@@ -37,6 +37,7 @@ import org.jgraph.graph.VertexView;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.TriggerModel;
 
 /**
  * @author Simon Landes
@@ -211,11 +212,15 @@ public abstract class AbstractElementView extends VertexView {
     }
     
     public void drawTime(Graphics2D g2, Dimension d){
-    	String time = Integer.toString(((TransitionModel)this.getCell()).getToolSpecific().getTime());
-    	int timeUnit = ((TransitionModel)this.getCell()).getToolSpecific().getTimeUnit();
+    	TransitionModel trans = (TransitionModel)this.getCell();
+    	
+    	String time = Integer.toString(trans.getToolSpecific().getTime());
+    	int timeUnit = trans.getToolSpecific().getTimeUnit();
     	String tuString = getAbbrev(timeUnit);
     	
-    	if (!time.equals("0")){
+    	if (!time.equals("0") &&
+    			trans.getToolSpecific().getTrigger() != null &&
+     			trans.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE) {
     		Font timeFont = DefaultStaticConfiguration.DEFAULT_LABEL_FONT;
     		g2.setColor(DefaultStaticConfiguration.DEFAULT_TIME_COLOR);
     		g2.setFont(timeFont);
