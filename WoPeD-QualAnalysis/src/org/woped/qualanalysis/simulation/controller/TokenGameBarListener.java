@@ -154,11 +154,10 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			 /*
 			  *  Start "TokenGame" and disable Editor. Disable Play Button to prevent multiple TokenGame instances
 			  */
-			 playbackActions();
-			 RemoteControl.disablePlayButton();
-			 
 			 //Cleanup needed to avoid double ENtries in the ChoiceBox
 			 RemoteControl.cleanupTransition();
+			 playbackActions();
+			 RemoteControl.disablePlayButton();
 			 break;
 		 case 8:
 			 break;
