@@ -1477,8 +1477,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 		}
        	
   		// Set new trigger and resource information
-		if (getTriggerResourceRadioButton().isSelected())
-       	{
+		if (getTriggerResourceRadioButton().isSelected()) {
        		map.setTriggerType(TriggerModel.TRIGGER_RESOURCE);
             getEditor().createTrigger(map);
             

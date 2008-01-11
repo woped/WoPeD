@@ -27,7 +27,6 @@ import java.awt.Point;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.model.CreationMap;
-import org.woped.core.model.IntPair;
 
 /**
  * @author Simon Landes

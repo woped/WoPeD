@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.swing.JFrame;
 
+import org.jgraph.graph.DefaultGraphCell;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
@@ -50,7 +51,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 		}
 		Object cell;
 		ArcModel anArc;
-		Iterator anIter;
+		Iterator<String> anIter;
 		if (editor != null)
 		{
 			CreationMap map = CreationMap.createMap();
@@ -202,45 +203,55 @@ public class EditorEventProcessor extends AbstractEventProcessor
 								.getUi(), (TransitionModel) element, editor);
 
 						// Transform only if the OK button was pressed
-						if (transEditor.getExitType() == TransitionPropertyEditor.etOK)
+						if (transEditor.getExitType()==TransitionPropertyEditor.etOK)
 						{
 							String command = transEditor.getBranchingButtonGroup().getSelection().getActionCommand();
+							int type = ((TransitionModel) element).getToolSpecific().getOperatorType();
 
-							if (command.equals(Messages.getString("Transition.Properties.Branching.None")))
+							if (command.equals(Messages.getString("Transition.Properties.Branching.None")) &
+								 type != -1)
 							{
-								transformTransition(editor, element, OperatorTransitionModel.TRANS_SIMPLE_TYPE, -1);
+								transformTransition(editor, cell, element, OperatorTransitionModel.TRANS_SIMPLE_TYPE, -1);
 							}
-							else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoin")))
+							else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoin")) &
+									 type != OperatorTransitionModel.AND_JOIN_TYPE)
 							{
-								transformTransition(editor, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_JOIN_TYPE);
+								transformTransition(editor, cell, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_JOIN_TYPE);
 							}
-							else if (command.equals(Messages.getString("Transition.Properties.Branching.AndSplit")))
+							else if (command.equals(Messages.getString("Transition.Properties.Branching.AndSplit")) &
+									 type != OperatorTransitionModel.AND_SPLIT_TYPE)
 							{
-								transformTransition(editor, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_SPLIT_TYPE);
+								transformTransition(editor, cell, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_SPLIT_TYPE);
 							}
-							else if (command.equals(Messages.getString("Transition.Properties.Branching.AndSplitJoin")))
+							else if (command.equals(Messages.getString("Transition.Properties.Branching.AndSplitJoin")) &
+									 type != OperatorTransitionModel.AND_SPLITJOIN_TYPE)
 							{
-								transformTransition(editor, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_SPLITJOIN_TYPE);
+								transformTransition(editor, cell, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_SPLITJOIN_TYPE);
 							}
-							else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplit")))
+							else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplit")) &
+									 type != OperatorTransitionModel.XOR_SPLIT_TYPE)
 							{
-								transformTransition(editor, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE,  OperatorTransitionModel.XOR_SPLIT_TYPE);
+								transformTransition(editor, cell, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE,  OperatorTransitionModel.XOR_SPLIT_TYPE);
 							}
-							else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoin")))
+							else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoin")) &
+									 type != OperatorTransitionModel.XOR_JOIN_TYPE)
 							{
-								transformTransition(editor, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XOR_JOIN_TYPE);
+								transformTransition(editor, cell, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XOR_JOIN_TYPE);
 							}
-							else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplitJoin")))
+							else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplitJoin")) &
+									 type != OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
 							{
-								transformTransition(editor, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+								transformTransition(editor, cell, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
 							}
-							else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit")))
+							else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit")) &
+									 type != OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
 							{
-								transformTransition(editor, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
+								transformTransition(editor, cell, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
 							}
-							else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoinAndSplit")))
+							else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoinAndSplit")) &
+									 type != OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
 							{
-								transformTransition(editor, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
+								transformTransition(editor, cell, element, AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
 							}
 						}
 
@@ -429,7 +440,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 		return null;
 	}
 
-	private void transformTransition(EditorVC p_editor, AbstractElementModel p_element,
+	private void transformTransition(EditorVC p_editor, Object cell, AbstractElementModel p_element,
 			int p_nodeType,
 			int p_operatorType)
 	{
@@ -438,19 +449,18 @@ public class EditorEventProcessor extends AbstractEventProcessor
 		CreationMap oldMap = p_element.getCreationMap();
 		CreationMap newMap = CreationMap.createMap();
 
-		newMap.setPosition(oldMap.getPosition());
-
+		newMap = (CreationMap)oldMap.clone();
+		// Most of the settings are just taken from the old model, but some 
+		// settings need to be different, of course (operator type,...)
 		newMap.setType(p_nodeType);
 		newMap.setOperatorType(p_operatorType);
-		newMap.setId(oldMap.getId());
-		newMap.setName(oldMap.getName());
-
+		
 		ArrayList<String> incAcrs = new ArrayList<String>();
 		ArrayList<String> outAcrs = new ArrayList<String>();
 
-		Map arcMap = p_editor.getModelProcessor().getElementContainer().getArcMap();
+		Map<String, ArcModel> arcMap = p_editor.getModelProcessor().getElementContainer().getArcMap();
 
-		Iterator arcIterator = arcMap.keySet().iterator();
+		Iterator<String> arcIterator = arcMap.keySet().iterator();
 
 		while (arcIterator.hasNext())
 		{
@@ -464,10 +474,9 @@ public class EditorEventProcessor extends AbstractEventProcessor
 
 		}
 
-		// THIS DOES NOT WORK - "ghost transition" remains in editor!!! 
-		p_editor.deleteSelection();
-		//-------------------------------------------
-		p_editor.create(newMap, true, false);
+		// Remove the old transition
+		p_editor.deleteCell((DefaultGraphCell)cell);
+		p_editor.create(newMap);
 
 		for (int i = 0; i < outAcrs.size(); i++)
 		{
@@ -478,6 +487,8 @@ public class EditorEventProcessor extends AbstractEventProcessor
 		{
 			p_editor.createArc(incAcrs.get(i), oldMap.getId());
 		}
+		
+		// Refresh the net to display any copied triggers and resources...
+		p_editor.getGraph().drawNet(p_editor.getModelProcessor());
 	}
-
 }

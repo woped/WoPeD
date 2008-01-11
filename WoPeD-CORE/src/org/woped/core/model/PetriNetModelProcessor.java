@@ -120,27 +120,30 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 					|| map.getType() == PetriNetModelElement.SUBP_TYPE)
 			{
 				// Trigger
-				if (map.getTriggerType() != -1)
+				if (map.getTriggerType() != -1) {
 					newTrigger(map);
-				if (map.getTriggerPosition() != null)
-					((TransitionModel) anElement).getToolSpecific()
-							.getTrigger().setPosition(
+					if (map.getTriggerPosition() != null)
+						((TransitionModel) anElement).getToolSpecific()
+								.getTrigger().setPosition(
 									map.getTriggerPosition().x,
 									map.getTriggerPosition().y);
+				}
 				if (map.getResourceOrgUnit() != null
-						&& map.getResourceRole() != null)
+						&& map.getResourceRole() != null) {
 					newTransResource(map);
-				if (map.getResourcePosition() != null)
-					((TransitionModel) anElement).getToolSpecific()
-							.getTransResource().setPosition(
+					if (map.getResourcePosition() != null)
+						((TransitionModel) anElement).getToolSpecific()
+								.getTransResource().setPosition(
 									map.getResourcePosition().x,
 									map.getResourcePosition().y);
-				if (map.getTransitionTime()!=-1)
-					((TransitionModel)anElement).getToolSpecific().setTime(map.getTransitionTime());
-				if (map.getTransitionTimeUnit()!=-1)
-					((TransitionModel)anElement).getToolSpecific().setTimeUnit(map.getTransitionTimeUnit());
+				}
+				if (map.getTransitionTime() != -1)
+					((TransitionModel)anElement).getToolSpecific()
+						.setTime(map.getTransitionTime());
+				if (map.getTransitionTimeUnit() != -1)
+					((TransitionModel)anElement).getToolSpecific()
+						.setTimeUnit(map.getTransitionTimeUnit());
 			}
-			
 			
 			return anElement;
 		}
@@ -407,8 +410,8 @@ AbstractElementModel targetModel = getElementContainer()
 
 	public void removeResourceMapping(String resourceClass, String resourceId)
 	{
-		Vector tempResourceVector;
-		tempResourceVector = (Vector) getResourceMapping().get(resourceClass);
+		Vector<String> tempResourceVector;
+		tempResourceVector = (Vector<String>) getResourceMapping().get(resourceClass);
 		tempResourceVector.remove(resourceId);
 	}
 
@@ -417,11 +420,11 @@ AbstractElementModel targetModel = getElementContainer()
 	 * @param resourceId
 	 * @return
 	 */
-	public Vector getResourceClassesResourceIsAssignedTo(String resourceId)
+	public Vector<String> getResourceClassesResourceIsAssignedTo(String resourceId)
 	{
 		Vector<String> assignedVector = new Vector<String>();
 		String resourceClassIdTemp;
-		for (Iterator iter = getResourceMapping().keySet().iterator(); iter
+		for (Iterator<String> iter = getResourceMapping().keySet().iterator(); iter
 				.hasNext();)
 		{
 			resourceClassIdTemp = iter.next().toString();
@@ -665,7 +668,7 @@ AbstractElementModel targetModel = getElementContainer()
 		return -1;
 	}
 
-	public int containsResource(Vector resourceVector, String name)
+	public int containsResource(Vector<String> resourceVector, String name)
 	{
 		for (int i = 0; i < resourceVector.size(); i++)
 		{
@@ -678,7 +681,7 @@ AbstractElementModel targetModel = getElementContainer()
 
 	public void replaceResourceMapping(String oldName, String newName)
 	{
-		for (Iterator iter = getResourceMapping().keySet().iterator(); iter
+		for (Iterator<String> iter = getResourceMapping().keySet().iterator(); iter
 				.hasNext();)
 		{
 			Vector<String> resourcevalues = getResourceMapping().get(
