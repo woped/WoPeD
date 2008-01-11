@@ -48,6 +48,7 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
+import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
@@ -59,11 +60,13 @@ import org.woped.pnml.ArcNameType;
 import org.woped.pnml.ArcToolspecificType;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.DimensionType;
+import org.woped.pnml.FiredtransitionType;
 import org.woped.pnml.GraphicsArcType;
 import org.woped.pnml.GraphicsNodeType;
 import org.woped.pnml.GraphicsSimpleType;
 import org.woped.pnml.NetToolspecificType;
 import org.woped.pnml.NetType;
+import org.woped.pnml.NethashType;
 import org.woped.pnml.NodeNameType;
 import org.woped.pnml.OperatorType;
 import org.woped.pnml.OrganizationUnitType;
@@ -76,10 +79,13 @@ import org.woped.pnml.ResourceMappingType;
 import org.woped.pnml.ResourceType;
 import org.woped.pnml.ResourcesType;
 import org.woped.pnml.RoleType;
+import org.woped.pnml.SimulationType;
+import org.woped.pnml.SimulationsType;
 import org.woped.pnml.ToolspecificType;
 import org.woped.pnml.TransitionResourceType;
 import org.woped.pnml.TransitionToolspecificType;
 import org.woped.pnml.TransitionType;
+import org.woped.pnml.TransitionsequenceType;
 import org.woped.pnml.TriggerType;
 import org.woped.pnml.NetType.Page;
 
@@ -150,6 +156,7 @@ public class PNMLExport
         int resourcesMapping = petrinetModel.getResourceMapping().size();
         int rootElements = elementContainer.getRootElements().size();
         int arcs = elementContainer.getArcMap().size();
+        // TODO (blackfox) - extend statusbars for simulations
 
         for (int i = 0; i < statusBars.length; i++)
             statusBars[i].startProgress("Save to File", resources + roles + resourcesMapping + orgaUnits + rootElements + arcs);
@@ -175,7 +182,7 @@ public class PNMLExport
             NetToolspecificType iNetToolSpec = iNet.addNewToolspecific();
 
             iNetToolSpec.setTool("WoPeD");
-            iNetToolSpec.setVersion("1.0");
+            iNetToolSpec.setVersion("1.0"); //TODO Version aus properties übernehmen!?
             // graphics
             GraphicsSimpleType iGraphicsNet = iNetToolSpec.addNewBounds();
             EditorLayoutInfo layoutInfo = editor.getSavedLayoutInfo();
@@ -249,6 +256,31 @@ public class PNMLExport
                 for (int i = 0; i < statusBars.length; i++)
                     statusBars[i].nextStep();
             }
+            
+            // Simulations
+            SimulationsType iNetSimulations = iNetToolSpec.addNewSimulations();
+            iter = petrinetModel.getSimulations().iterator();
+            SimulationType iSimulation;
+            TransitionsequenceType iTransitionsequence;
+            FiredtransitionType iFiredTransition;
+            NethashType iNethash;
+            while (iter.hasNext())
+            {
+            	SimulationModel currSimulation = (SimulationModel) iter.next();
+            	iSimulation = iNetSimulations.addNewSimulation();
+            	iSimulation.setId(currSimulation.getId());
+            	iSimulation.setSimulationname(currSimulation.getName());
+            	iTransitionsequence = iSimulation.addNewTransitionsequence();
+            	for(Iterator iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
+            	{
+            		iFiredTransition = iTransitionsequence.addNewFiredtransition();
+            		iFiredTransition.setTransition(((TransitionModel)iterator.next()).getId());
+            	}
+            	iNethash = iSimulation.addNewNethash();
+            	//iNethash.
+            	//TODO: Complete saving the Nethash
+            }
+            
             // toolspecific
             for (short i = 0; i < petrinetModel.getUnknownToolSpecs().size(); i++)
             {
