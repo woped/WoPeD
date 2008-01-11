@@ -144,7 +144,7 @@ public class TokenGameController
         }
         else
         {
-          RemoteControl = new TokenGameBarVC(this);
+          RemoteControl = new TokenGameBarVC(this, petrinet);
           desktop = new ReferenceProvider();
           //AS: getLocation, not finally implemented. Add RemoteControl at Point Location
           Point p = desktop.getDesktopReference().getLocation();
@@ -1108,7 +1108,6 @@ public class TokenGameController
     	char checkA = transition.getId().charAt(0);
     	if(checkA == 'a')
     	{
-    		System.out.println("Das ist eine Arc-Transition");
     		arcClicked(getPetriNet().getElementContainer().getArcById(transition.getId()));
     	}
     	else
@@ -1121,6 +1120,10 @@ public class TokenGameController
     	  {
     	    transitionClicked(transition, null);
     	  }
+    	}
+    	if(RemoteControl.isRecordEnabled())
+    	{
+    	  RemoteControl.addHistoryItem(transition);
     	}
     }
     

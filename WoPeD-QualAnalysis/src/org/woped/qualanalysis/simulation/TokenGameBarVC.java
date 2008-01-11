@@ -6,9 +6,10 @@ import org.woped.core.model.petrinet.*;
 import org.woped.translations.Messages;
 import org.woped.qualanalysis.simulation.controller.*;
 import java.awt.*;
-
+import java.util.Vector;
 import org.woped.qualanalysis.test.*;
-
+import org.woped.core.model.petrinet.SimulationModel;
+import org.woped.core.model.PetriNetModelProcessor;
 /**
  * This class specifies the remote control UI of the Tokengame-simulator
  * Currently no Actions can be performed by the Buttons except the close-"x"
@@ -65,18 +66,24 @@ public class TokenGameBarVC extends JInternalFrame {
 	private TransitionModel   BackwardTransitionToOccur = null;
 	private TransitionModel   helpTransition    = null;
 	private boolean           playbacking       = false;
-
-	
+    private boolean           recordSimulation  = false;
+	private PetriNetModelProcessor           PetriNet = null;
+    
 	//Linked Lists 
 	private LinkedList       followingActivatedTransitions           = null;
 	private LinkedList       previousActivatedTransitions            = null;
 	private LinkedList       followingArcs                           = null;
+	
+	//History Variables
+	private Vector <TransitionModel>  HistoryVector           = null;
+	private SimulationModel   SaveableSimulation              = null;
+	private static int HistoryID         = 0; //Help Variable as long as no Name is available for Histories
 		
 	// TokenGame
 	private TokenGameController m_tokenGameController = null;
 	
 	//Constructor(s)
-	public TokenGameBarVC(TokenGameController tgcontroller)
+	public TokenGameBarVC(TokenGameController tgcontroller, PetriNetModelProcessor PetriNet)
 	{
 		super(Messages.getTitle("Tokengame.RemoteControl"), false, true);
 		this.setFrameIcon(Messages.getImageIcon("Tokengame.RemoteControl"));
@@ -92,6 +99,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		this.add(addPlaybackNavigation());
 		this.add(addAutoChoice());
 		this.add(addHistory());
+		this.PetriNet = PetriNet;
 		
 
 		
@@ -299,6 +307,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		ahyDelete.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.DeleteHistory"));
 		
 		//Define ActionListeners
+		ahyJump.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_JUMP_HERE, this));
 		ahySave.addActionListener(new TokenGameBarListener(TokenGameBarListener.OPEN_HISTORY_MANAGER, this));
 		ahyDelete.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_DELETE_CURRENT, this));
 		
@@ -411,16 +420,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	}
 	
 	//HistoryListbox
-	public void addHistoryData(String[] Data)
-	{
-		ahxHistoryContent.clear();
-		for(int i = 0; i < Data.length; i++)
-		{
-	      ahxHistoryContent.addElement(Data[i]);
-		}
-	}
-	
-	
+		
 	public DefaultListModel getHistoryData()
 	{
 		return ahxHistoryContent;
@@ -429,8 +429,60 @@ public class TokenGameBarVC extends JInternalFrame {
 	public void clearHistoryData()
 	{
 		ahxHistoryContent.clear();
+		if(HistoryVector != null)
+		{
+			HistoryVector.clear();
+		}
 	}
 	
+
+	/*
+	 * History Recording
+	 */
+
+	
+	public void enableRecord()
+	{
+		recordSimulation = true;
+		clearHistoryData();
+	}
+	
+	public boolean isRecordEnabled()
+	{
+		return recordSimulation;
+	}
+	
+    public void addHistoryItem(TransitionModel transition)
+    {	
+    	if (HistoryVector == null)
+    	{
+    		HistoryVector = new Vector<TransitionModel>();
+    		ahxHistoryContent.clear();
+    	}
+    	HistoryVector.add(transition);
+    	ahxHistoryContent.addElement(transition.getNameModel());
+    }
+    
+    public void createSaveableHistory()
+    {
+    	SaveableSimulation = new SimulationModel("ID"+HistoryID, "Name"+HistoryID, HistoryVector);
+    	HistoryID++;
+    	/*for(int i = 0; i < HistoryVector.size(); i++)
+    	{
+    	  System.out.println(HistoryVector.get(i).getNameValue()+ "ID: " + HistoryVector.get(i).getId());
+    	}  This is for Console Feedback while testing, only*/
+    	saveHistory();
+    }
+	
+    /**
+     * Adds the History (SimulationModel) Objekt to the Simulations Vector
+     */
+    public void saveHistory()
+    {
+    	PetriNet.addSimulation(SaveableSimulation);
+    	System.out.println("Schon: "+PetriNet.getSimulations().size()+" Histories gespeichert");
+    }
+    
 	/*
 	 * disable / enable Buttons - Sektion
 	 * 
@@ -452,6 +504,11 @@ public class TokenGameBarVC extends JInternalFrame {
 	{
 		pbnPlay.setEnabled(true);
 		playbacking = false;
+	}
+	
+	public boolean isPlayButtonEnabled()
+	{
+		return pbnPlay.isEnabled();
 	}
 	
 	public void disablePlayButton()

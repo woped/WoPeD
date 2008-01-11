@@ -222,7 +222,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 	  if (HistoryArray != null)
 	  {
 		  HistoryObject = HistoryArray[LoadIndex];
-		  RemoteControl.addHistoryData(HistoryObject.getHistoryItems());
+		//  RemoteControl.addHistoryData(HistoryObject.getHistoryItems());
 		  this.setVisible(false);
 	  }
 	  

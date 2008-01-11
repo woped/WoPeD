@@ -17,6 +17,16 @@ public class SimulationModel
 		firedTransitions = new Vector<TransitionModel>();
 	}
 	
+	/*
+	 * Constructor to hand over an Existing Vector from HistoryBox
+	 */
+	public SimulationModel(String id, String name, Vector<TransitionModel>HistoryVector)
+	{
+		this.name = name;
+		this.id = id;
+		firedTransitions = HistoryVector;
+	}
+	
     /**
      * @return Returns the name.
      */
@@ -35,7 +45,7 @@ public class SimulationModel
     }
     
     /**
-     * @return Returns the vector with the fired tranisitions
+     * @return Returns the vector with the fired transitions
      */
     public Vector<TransitionModel> getFiredTransitions()
     {

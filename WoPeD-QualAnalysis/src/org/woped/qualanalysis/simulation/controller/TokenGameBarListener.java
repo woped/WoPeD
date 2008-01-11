@@ -62,7 +62,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	//Variables
 	private int                       ID            = 0;
 	private TokenGameBarVC            RemoteControl = null;
-	private String[]                  TestItems     = null;
 	private static boolean            HistoryChanged= false;
 
 
@@ -145,6 +144,10 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			  *  Reset TokenGame to Startposition and Enable PlayButton
 			  */
 		       stopAction();
+		       if(RemoteControl.isRecordEnabled())
+		       {   
+		         RemoteControl.createSaveableHistory();
+		       }
 		       RemoteControl.enablePlayButton();
 			 break;
 		 case CLICK_PLAY:
@@ -185,7 +188,11 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			 break;
 		 case 13:
 			 break;
-		 case 14:
+		 case CHOOSE_JUMP_HERE:
+			 if(RemoteControl.isPlayButtonEnabled())
+			 {
+			   RemoteControl.enableRecord();
+			 }
 			 break;
 		 case OPEN_HISTORY_MANAGER:
 			 showHistoryManager();
@@ -215,6 +222,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		}
 
 	}
+	
 	
 	private void showHistoryManager()
 	{
@@ -273,8 +281,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	private void playbackActions()
 	{
 		HistoryChanged = true;
-		TestItems = TokenGameTest.createTestdata();
-		RemoteControl.addHistoryData(TestItems);
 		
 		//Active TokenGame, disable DrawMode, checkNet and activate transition
 		if(RemoteControl.getTokenGameController().isVisualTokenGame())
