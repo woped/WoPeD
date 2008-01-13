@@ -25,7 +25,7 @@
 		</copy>
 	</target>
 	
-	<target name="makejar" depends="compile">
+	<target name="makejar" depends="compile" unless="PNMLBeansUpToDate">
 		<jar destfile="lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="lib" file="lib/pnmlBeans.jar" />
@@ -40,15 +40,17 @@
 	
 	<!-- Please do not run this unless you really know what you're doing -->
 	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
-	<target name="generatePnmlXMLBeans">
+	<target name="generatePnmlXMLBeans" unless="PNMLBeansUpToDate">
 		<echo message="Compiling the PNML schema..." />
 		<xmlbean schema="src/org/woped/file/pnml_wf.xsd" destfile="lib/pnmlBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	</target>
+	<uptodate property="PNMLBeansUpToDate" srcfile="src/org/woped/file/pnml_wf.xsd" targetfile="lib/pnmlBeans.jar"/>
 	
-	<target name="generateOldPnmlXMLBeans" depends="generatePnmlXMLBeans">
+	<target name="generateOldPnmlXMLBeans" depends="generatePnmlXMLBeans" unless="PNMLBeans_oldUpToDate">
 		<echo message="Compiling the old PNML schema..." />
 		<xmlbean schema="src/org/woped/file/pnml_wf_old.xsd" destfile="lib/pnmlBeans_old.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	</target>
+	<uptodate property="PNMLBeans_oldUpToDate" srcfile="src/org/woped/file/pnml_wf_old.xsd" targetfile="lib/pnmlBeans_old.jar"/>
 	
 	<target name="clean">
 		<delete dir="bin/org" />
