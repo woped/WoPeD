@@ -191,6 +191,7 @@ public class TokenGameController
         {
         	RemoteControl.setVisible(false);
         	desktop.getDesktopReference().remove(RemoteControl);
+        	RemoteControl = null;
         }
     }
 
