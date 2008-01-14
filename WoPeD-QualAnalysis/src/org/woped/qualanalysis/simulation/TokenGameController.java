@@ -348,7 +348,7 @@ public class TokenGameController
                 	String XorName, ID;
                 	Iterator outArcs = outgoingArcs.keySet().iterator();
                 	Iterator simpleTransIter = operator.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
-                	TransitionModel helpTransition; //needed to build virtual Transitions.
+                	TransitionModel helpTransition, virtualTransition; //needed to build virtual Transitions.
                 	AbstractElementModel helpPlace;                 	
                 	
                 	/*
@@ -359,13 +359,14 @@ public class TokenGameController
                 	while (outArcs.hasNext())
                 	{
                 		helpTransition = (TransitionModel)simpleTransIter.next(); 
+                		virtualTransition = (TransitionModel)helpTransition.clone();
                 		ID = (String)outArcs.next(); //get the Arc's ID
-                		helpTransition.setId(ID); //set HelpTransition's ID to Arc's ID
+                		virtualTransition.setId(ID); //set HelpTransition's ID to Arc's ID
                 		helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getTargetId());
                 		XorName = transition.getNameValue() + " -> ("+  helpPlace.getNameValue()+")";
-                        helpTransition.setNameValue(XorName);
-                		RemoteControl.addFollowingItem(helpTransition);
-                		helpTransition = null;
+                        virtualTransition.setNameValue(XorName);
+                		RemoteControl.addFollowingItem(virtualTransition);
+                		virtualTransition = null;
                 		XorName = "";
                   	}
                 		

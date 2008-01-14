@@ -429,10 +429,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	public void clearHistoryData()
 	{
 		ahxHistoryContent.clear();
-		if(HistoryVector != null)
-		{
-			HistoryVector.clear();
-		}
+		HistoryVector = null; //Set reference to null, so that a new history-Vector will be created!
 	}
 	
 
