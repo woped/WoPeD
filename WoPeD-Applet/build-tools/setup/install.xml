@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<installation version="1.0">
+	<guiprefs width="640" height="550" resizable="no">
+		<laf name="looks">
+			<os family="windows" />
+			<param name="variant" value="extwin" />
+		</laf>
+		<laf name="metouia">
+			<os family="unix" />
+			<os family="mac" />
+		</laf>
+	</guiprefs>
+	
+	<native type="izpack" name="ShellLink.dll">
+		<os family="windows" />
+	</native> 
+
+	<locale>
+  		<langpack iso3="eng" /> 
+  		<langpack iso3="deu" /> 
+  	</locale>
+  	
+	<resources>
+		<res id="LicencePanel.licence" src="License.txt"></res>
+		<res id="InfoPanel.info" src="Readme.txt"></res>
+		<res id="Installer.image.0" src="helloPanel.png" />
+		<res id="Installer.image.1" src="infoPanel.png" />
+		<res id="Installer.image.2" src="licencePanel.png" />
+		<res id="Installer.image.3" src="packsPanel.png" />
+		<res id="Installer.image.4" src="targetPanel.png" />
+		<res id="Installer.image.5" src="installPanel.png" />
+		<res id="Installer.image.6" src="shortcutPanel.png" />
+		<res id="Installer.image.7" src="finishPanel.png" />
+		<res id="installer.langsel.img" src="woped-logo.jpg" />
+		<res id="Unix_shortcutSpec.xml" src="shortcut-linux.xml" />
+		<res id="shortcutSpec.xml" src="shortcut-win.xml" />
+	</resources>
+	
+	<info>
+		<appname>WoPeD</appname>
+		<appversion>@wopedversion@</appversion>
+		<authors>
+			<author name="Alexander Assall" email="assall@woped.org"></author>
+			<author name="Christian Czech" email="czech@woped.org"></author>
+			<author name="Andreas Eckleder" email="eckleder@woped.org"></author>
+			<author name="Christian Flender" email="flender@woped.org"></author>
+			<author name="Thomas Freytag" email="freytag@woped.org"></author>
+			<author name="Steffen Gegenheimer" email="gegenh@woped.org"></author>
+			<author name="Simon Isaak Landes" email="landes@woped.org"></author>
+			<author name="Mona Ketterer" email="ketterer@woped.org"></author>
+			<author name="Samuel Mellert" email="mellert@woped.org"></author>
+			<author name="Alexis Nagy" email="nagy@woped.org"></author>
+			<author name="Sebastian Orts" email="orts@woped.org"></author>
+			<author name="Thomas Pohl" email="pohl@woped.org"></author>
+			<author name="Valentino Pola" email="pola@woped.org"></author>
+			<author name="Rolf Schaeuble" email="schaueble@woped.org"></author>
+		</authors>
+		<url>http://www.woped.org</url>
+	</info>
+
+	<locale>
+		<langpack iso3="eng"></langpack>
+	</locale>
+	
+	<panels>
+		<panel classname="HelloPanel"></panel>
+		<panel classname="InfoPanel"></panel>
+		<panel classname="LicencePanel"></panel>
+		<panel classname="PacksPanel"></panel>
+		<panel classname="TargetPanel"></panel>
+		<panel classname="InstallPanel"></panel>
+		<panel classname="ShortcutPanel"></panel>
+		<panel classname="SimpleFinishPanel"></panel>
+	</panels>
+	
+	<packs>
+		<pack name="Executable" required="yes">
+			<description>Executable files</description>
+			<file src="Readme.txt" targetdir="$INSTALL_PATH"></file>
+			<file src="License.txt" targetdir="$INSTALL_PATH"></file>
+			<file src="Changelog.txt" targetdir="$INSTALL_PATH"></file>
+			<file src="WoPeD" targetdir="$INSTALL_PATH">
+				<os family="unix" />
+			</file>
+			<file src="woped-icon16.png" targetdir="$INSTALL_PATH">
+				<os family="unix" />
+				<os family="mac" />
+			</file>
+			<executable src="WoPeD" targetfile="$INSTALL_PATH/WoPeD" stage="never" 
+						keep="true" workingDirectory="$INSTALL_PATH">
+				<os family="unix" />
+			</executable>
+			<file src="WoPeD.jar" targetdir="$INSTALL_PATH">
+				<os family="unix" />
+			</file>
+			<file src="WoPeD.exe" targetdir="$INSTALL_PATH">
+				<os family="windows" />
+			</file>
+			<file src="WoPeD-Starter.zip" targetdir="$INSTALL_PATH">
+				<os family="mac" />
+			</file>
+			<file src="WoPeD-classes-@wopedversion@.jar" targetdir="$INSTALL_PATH"></file>
+			<file src="lib/jgraph-@jgraphversion@.jar" targetdir="$INSTALL_PATH/lib"></file>
+			<file src="lib/log4j-@log4jversion@.jar" targetdir="$INSTALL_PATH/lib"></file>
+			<file src="lib/flanagan-@flanaganversion@.jar" targetdir="$INSTALL_PATH/lib"></file>
+			<file src="lib/pnmlBeans.jar" targetdir="$INSTALL_PATH/lib"></file>
+			<file src="lib/pnmlBeans_old.jar" targetdir="$INSTALL_PATH/lib"></file>
+			<file src="lib/xbean.jar" targetdir="$INSTALL_PATH/lib"></file>
+			<file src="lib/confBeans.jar" targetdir="$INSTALL_PATH/lib"></file>
+			<file src="WofJava.dll" targetdir="$INSTALL_PATH"></file>
+			<file src="nets/Example.pnml" targetdir="$INSTALL_PATH/nets"></file>
+		</pack>
+		
+		<pack name="HTML Manual" required="no">
+			<description>Separate HTML Manual files</description>
+			<file src="doc/html" targetdir="$INSTALL_PATH/doc"/>
+		</pack>
+
+		<pack name="PDF Documentation" required="no">
+			<description>Additional manual and user doc files</description>
+			<file src="doc/pdf" targetdir="$INSTALL_PATH/doc"/>
+		</pack>
+	</packs>
+</installation>
