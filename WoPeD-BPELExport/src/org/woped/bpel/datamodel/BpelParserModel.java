@@ -435,6 +435,16 @@ public class BpelParserModel
 			p.addNewAssign().set(test);
 		else if(TFlow.class.isInstance(test))
 			p.addNewFlow().set(test);
+		else if(TEmpty.class.isInstance(test))
+			p.addNewEmpty().set(test);
+		else if(TWait.class.isInstance(test))
+			p.addNewWait().set(test);
+		else if(TReceive.class.isInstance(test))
+			p.addNewReceive().set(test);
+		else if(TReply.class.isInstance(test))
+			p.addNewReply().set(test);
+		else if(TInvoke.class.isInstance(test))
+			p.addNewInvoke().set(test);
 		return p;
 	}
 
