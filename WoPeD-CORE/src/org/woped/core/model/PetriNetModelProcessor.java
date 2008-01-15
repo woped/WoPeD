@@ -753,6 +753,16 @@ AbstractElementModel targetModel = getElementContainer()
 	{
 		this.transitionCounter = transitionCounter;
 	}
+	
+	public int getSimulationCounter()
+	{
+		return simulationCounter;
+	}
+	
+	public void setSimulationCounter(int simulationCounter)
+	{
+		this.simulationCounter = simulationCounter;
+	}
 
 	public void setResources(Vector<ResourceModel> resources) {
 		this.resources = resources;
