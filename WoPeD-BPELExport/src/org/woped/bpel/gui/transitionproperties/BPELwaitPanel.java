@@ -24,7 +24,7 @@ import org.woped.translations.Messages;
  * Created on 16.12.2007
  */
 
-public class BPELwaitPanel extends JPanel{
+public class BPELwaitPanel extends JPanel{ //statt JPanel
 
 	private IDialog editor = null;
 	private JPanel contentPanel = null;
@@ -46,12 +46,12 @@ public class BPELwaitPanel extends JPanel{
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		setBorder(BorderFactory
+		/*setBorder(BorderFactory
 						.createCompoundBorder(
 								BorderFactory
 										.createTitledBorder(Messages
 												.getString("Transition.Properties.BPELActivityWait")),
-								BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+								BorderFactory.createEmptyBorder(5, 5, 0, 5)));*/
 
 		waitButtonGroup = new ButtonGroup();
 		waitButtonGroup.add(getWaitDurationRadioButton());
