@@ -109,7 +109,9 @@ public abstract class PetriNetModelElement extends AbstractPetriNetModelElement
     
     public BaseActivity getBpelData()
     {
-    	return this.BpelData;
+    	Assign assign = new Assign();
+    	return assign;
+    	//return this.BpelData;
     }
 
 }

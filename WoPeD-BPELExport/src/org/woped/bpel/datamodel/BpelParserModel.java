@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
@@ -399,7 +400,7 @@ public class BpelParserModel
 	 * 
 	 * @return String
 	 */
-	public Object generate_bpel()
+	public TActivity generate_bpel()
 	{
 		int counter = 0;
 		this.toString();
@@ -416,7 +417,7 @@ public class BpelParserModel
 			System.out.println("Durchlauf " + counter + "\nAnzahl Elemente "
 					+ this.count_elements());
 		}
-		System.out.println(this.toString());
+		System.out.println(this._regist_transition.iterator().next().getBpelCode().toString());
 
 		return this._regist_transition.iterator().next().getBpelCode();
 	}

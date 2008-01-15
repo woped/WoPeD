@@ -35,7 +35,8 @@ public class BPEL {
 
 	private Vector<String> _extensions;
 
-	private ProcessDocument bpelDoc;
+	private static ProcessDocument bpelDoc;
+	private static TProcess Process;
 
 	private FileFilter _filter;
 
@@ -86,18 +87,7 @@ public class BPEL {
 		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor.getModelProcessor();
 		this.test(pnp);
 		new File(Path);
-		XmlOptions opt = new XmlOptions();
-        opt.setUseDefaultNamespace();
-        opt.setSavePrettyPrint();
-        opt.setSavePrettyPrintIndent(2);
-        //Map<String, String> map = new HashMap<String, String>();
-        //map.put("xmlns:bpel", "bpel.woped.org");
-        //map.put("xmlns:bpel","");
-        //map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
-        //opt = opt.setSaveImplicitNamespaces(map);
-        /*
-		bpelDoc = ProcessDocument.Factory.newInstance(opt);
-		TProcess iProcess = bpelDoc.addNewProcess();
+		/*
 		iProcess.setName("TestProcess");
 		TDocumentation iDocumentation = iProcess.addNewDocumentation();
 		iDocumentation.setLang("EN");
@@ -112,6 +102,23 @@ public class BPEL {
             return false;
         }*/
         return true;
+	}
+	
+	public static TProcess genBpelProsses()
+	{
+		if(BPEL.Process != null)return BPEL.Process;
+		XmlOptions opt = new XmlOptions();
+        opt.setUseDefaultNamespace();
+        opt.setSavePrettyPrint();
+        opt.setSavePrettyPrintIndent(2);
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("xmlns:bpel", "bpel.woped.org");
+        map.put("xmlns:bpel","");
+        map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
+        //opt = opt.setSaveImplicitNamespaces(map);
+        bpelDoc = ProcessDocument.Factory.newInstance(opt);
+		BPEL.Process = bpelDoc.addNewProcess();
+		return BPEL.Process;
 	}
 	
 	/**

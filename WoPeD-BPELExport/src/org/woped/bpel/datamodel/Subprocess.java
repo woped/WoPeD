@@ -1,5 +1,6 @@
 package org.woped.bpel.datamodel;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.woped.core.model.petrinet.SubProcessModel;
 
 public class Subprocess extends Transition<SubProcessModel>
@@ -23,7 +24,7 @@ public class Subprocess extends Transition<SubProcessModel>
 	}
 
 	@Override
-	public Object getBpelCode()
+	public TActivity getBpelCode()
 	{		
 		return new BpelParserModel(((SubProcessModel)this.getData()).getElementContainer()).generate_bpel();
 	}

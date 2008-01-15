@@ -30,4 +30,5 @@ abstract public class Transition<E extends TransitionModel> extends
 		//System.out.println("Cant accept the pre object!");
 		return false;
 	}
+	
 }

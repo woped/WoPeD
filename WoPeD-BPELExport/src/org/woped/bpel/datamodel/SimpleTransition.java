@@ -2,7 +2,7 @@ package org.woped.bpel.datamodel;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.woped.core.model.petrinet.TransitionModel;
-
+import org.woped.bpel.*;
 public class SimpleTransition extends Transition<TransitionModel>
 {
 
@@ -24,7 +24,7 @@ public class SimpleTransition extends Transition<TransitionModel>
 	@Override
 	public TActivity getBpelCode()
 	{
-		return null;
+		return BPEL.genBpelProsses().addNewAssign();
 	}
 	
 	public String toString()

@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
+
 /**
  * @author Frank Schüler
  * 
@@ -579,7 +581,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return String
 	 */
-	abstract public Object getBpelCode();
+	abstract public TActivity getBpelCode();
 	
 	/**
 	 * With this method, you can find an AbstractElement.
