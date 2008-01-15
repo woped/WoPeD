@@ -38,20 +38,14 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 	private JLabel timeLabel = null;
 	private JTextField timeTextField = null;
 	
-	private static final String WAIT_DURATION = Messages.getString("Transition.Properties.BPELActivityWait.Duration");
-	private static final String WAIT_DEADLINE = Messages.getString("Transition.Properties.BPELActivityWait.Deadline");
+	private static final String WAIT_DURATION = Messages.getString("Transition.Properties.BPEL.Wait.Duration");
+	private static final String WAIT_DEADLINE = Messages.getString("Transition.Properties.BPEL.Wait.Deadline");
 	
 	
 	public BPELwaitPanel(){
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		/*setBorder(BorderFactory
-						.createCompoundBorder(
-								BorderFactory
-										.createTitledBorder(Messages
-												.getString("Transition.Properties.BPELActivityWait")),
-								BorderFactory.createEmptyBorder(5, 5, 0, 5)));*/
 
 		waitButtonGroup = new ButtonGroup();
 		waitButtonGroup.add(getWaitDurationRadioButton());
@@ -143,7 +137,7 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 	private JLabel getTimeLabel(){
 		if (timeLabel == null)
         {
-        	timeLabel = new JLabel(Messages.getString("Transition.Properties.BPELActivityWait.Time") + ":");
+        	timeLabel = new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Time") + ":");
         }
 
         return timeLabel;
