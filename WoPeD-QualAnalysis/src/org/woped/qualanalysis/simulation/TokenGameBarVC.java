@@ -623,28 +623,46 @@ public class TokenGameBarVC extends JInternalFrame {
 	 * This Method occur automatic all transition if autoplayback is true. Choice transition will be
 	 * occured by random choice
 	 * 
-	 * ToDo: refreshNet after occurence
+	 * ToDo: 
+	 * 	1) refreshNet after occurence
+	 *  2) random choice only if no probabilities are set
 	 */
 	public void autoOccurAllTransitions(boolean BackWard)
 	{
 		boolean ende = false;
+		int index;
 		while(!ende)
 		{
 			if(BackWard)
 			{
-				if(previousActivatedTransitions.get(0) == null)
+				if(previousActivatedTransitions.size() == 0)
 				{
 					ende = true;
 				}
-				occurTransition(BackWard);
+				else
+				{
+					occurTransition(BackWard);
+				}
 			}
 			else
 			{
-				if(followingActivatedTransitions.get(0) == null)
+				if(followingActivatedTransitions.size() == 0)
 				{
 					ende = true;
 				}
-				occurTransition(BackWard);
+				else
+				{
+					if(followingActivatedTransitions.size() >= 2)
+					{
+						index = (int) Math.round(Math.random() * followingActivatedTransitions.size()-1);
+						TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
+						occurTransition(BackWard);
+					}
+					else
+					{
+					occurTransition(BackWard);
+					}
+				}
 			}
 		}
 	}
