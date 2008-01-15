@@ -3,8 +3,16 @@ package org.woped.bpel.datamodel;
 import javax.xml.crypto.dsig.XMLObject;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TFlow;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TIf;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPick;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.woped.core.model.petrinet.Assign;
 import org.woped.bpel.*;
 public class SequenceTransition extends TerminalElement
@@ -42,15 +50,45 @@ public class SequenceTransition extends TerminalElement
 		if (SequenceTransition.class.isInstance(begin))
 			iSeq = (TSequence)begin.getBpelCode();			
 		else{ iSeq = BPEL.genBpelProsses().addNewSequence();}
+		
 		//transitions case (1.transition)
-		
-		
-		if(TAssign.class.isInstance(begin.getBpelCode())){
-			
-			TAssign iAss = iSeq.addNewAssign();
-			iAss.set(begin.getBpelCode());
-			System.out.println("neue assign angelegt");
+				
+		if(TPick.class.isInstance(begin.getBpelCode())){
+			TPick iPick = iSeq.addNewPick();
+			iPick.set(begin.getBpelCode());			
+		}			
+		else if(TIf.class.isInstance(begin.getBpelCode())){
+			TIf iIf = iSeq.addNewIf();
+			iIf.set(begin.getBpelCode());
 		}
+		else if(TAssign.class.isInstance(begin.getBpelCode())){
+			TAssign iAss = iSeq.addNewAssign();
+			iAss.set(begin.getBpelCode());			
+		}
+		else if(TFlow.class.isInstance(begin.getBpelCode())){
+			TFlow iFlow = iSeq.addNewFlow();
+			iFlow.set(begin.getBpelCode());
+		}
+		else if(TEmpty.class.isInstance(begin.getBpelCode())){
+			TEmpty iEmpty = iSeq.addNewEmpty();
+			iEmpty.set(begin.getBpelCode());
+		}
+		else if(TWait.class.isInstance(begin.getBpelCode())){
+			TWait iWait = iSeq.addNewWait();
+			iWait.set(begin.getBpelCode());
+		}
+		else if(TReceive.class.isInstance(begin.getBpelCode())){
+			TReceive iReceive = iSeq.addNewReceive();
+			iReceive.set(begin.getBpelCode());
+		}
+		else if(TReply.class.isInstance(begin.getBpelCode())){
+			TReply iReply = iSeq.addNewReply();
+			iReply.set(begin.getBpelCode());
+		}
+		else if(TInvoke.class.isInstance(begin.getBpelCode())){
+			TInvoke iInvoke = iSeq.addNewInvoke();
+			iInvoke.set(begin.getBpelCode());
+		}	
 		
 		//place between transitions
 		AbstractElement tmp = begin.get_first_post_element();
@@ -62,12 +100,44 @@ public class SequenceTransition extends TerminalElement
 			TSequence helpSequence = (TSequence)tmp.getBpelCode();			
 		}
 		
-		if(TAssign.class.isInstance(tmp.getBpelCode())){
-			
-			TAssign iAss = iSeq.addNewAssign();
-			iAss.set(tmp.getBpelCode());
-			System.out.println("neue assign angelegt");
+		
+		if(TPick.class.isInstance(tmp.getBpelCode())){
+			TPick iPick = iSeq.addNewPick();
+			iPick.set(tmp.getBpelCode());			
+		}			
+		else if(TIf.class.isInstance(tmp.getBpelCode())){
+			TIf iIf = iSeq.addNewIf();
+			iIf.set(tmp.getBpelCode());
 		}
+		else if(TAssign.class.isInstance(tmp.getBpelCode())){
+			TAssign iAss = iSeq.addNewAssign();
+			iAss.set(tmp.getBpelCode());			
+		}
+		else if(TFlow.class.isInstance(tmp.getBpelCode())){
+			TFlow iFlow = iSeq.addNewFlow();
+			iFlow.set(tmp.getBpelCode());
+		}
+		else if(TEmpty.class.isInstance(tmp.getBpelCode())){
+			TEmpty iEmpty = iSeq.addNewEmpty();
+			iEmpty.set(tmp.getBpelCode());
+		}
+		else if(TWait.class.isInstance(tmp.getBpelCode())){
+			TWait iWait = iSeq.addNewWait();
+			iWait.set(tmp.getBpelCode());
+		}
+		else if(TReceive.class.isInstance(tmp.getBpelCode())){
+			TReceive iReceive = iSeq.addNewReceive();
+			iReceive.set(tmp.getBpelCode());
+		}
+		else if(TReply.class.isInstance(tmp.getBpelCode())){
+			TReply iReply = iSeq.addNewReply();
+			iReply.set(tmp.getBpelCode());
+		}
+		else if(TInvoke.class.isInstance(tmp.getBpelCode())){
+			TInvoke iInvoke = iSeq.addNewInvoke();
+			iInvoke.set(tmp.getBpelCode());
+		}		
+		
 		//transitions case (2.transition)
 		this.seq = iSeq;
 		return this.seq;
