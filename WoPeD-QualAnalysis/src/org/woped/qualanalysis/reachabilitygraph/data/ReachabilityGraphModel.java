@@ -31,62 +31,99 @@ public class ReachabilityGraphModel {
 		GraphLayoutCache view = new GraphLayoutCache(model,	new	DefaultCellViewFactory()); 
 		JGraph graph = new JGraph(model, view); 
 		BuildReachability dataSource = new BuildReachability(editor);
-		HashMap<String, Marking> markings = dataSource.getMarkings();
 		HashMap<String, TransitionObject> transactions = dataSource.getTransactions();
 		//DefaultGraphCell[] cells = new DefaultGraphCell[markings.size() + transactions.size()];
 		// Cells
 		HashSet<DefaultGraphCell> cellsList = new HashSet<DefaultGraphCell>();
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- simpleGraphBuilder() " + this.getClass().getName());
-		
-		
-		// Markings
-		/*Collection<Marking> markingsColl = markings.values();
-		Iterator<Marking> iterMarkings = markingsColl.iterator();
-		while(iterMarkings.hasNext()){
-			Marking actualMarking = iterMarkings.next();
-			cellsList.add(new DefaultGraphCell(actualMarking));
-		}*/
-		
 		// Transactions
 		Collection<TransitionObject> transactionsColl = transactions.values();
 		Iterator<TransitionObject> iterTransactions = transactionsColl.iterator();
-		//cellsList.iterator()
 		while(iterTransactions.hasNext()){
 			TransitionObject actualTransition = iterTransactions.next();
-			
-			DefaultEdge edge = new DefaultEdge(actualTransition);
-			GraphConstants.setLineEnd(edge.getAttributes(), GraphConstants.ARROW_CLASSIC);
-			// (x,y,w,h)
-			DefaultGraphCell src = getCell(cellsList, actualTransition.start);
-			GraphConstants.setBounds(src.getAttributes(), new Rectangle2D.Double(140,140,80,20));
-			GraphConstants.setGradientColor(src.getAttributes(), Color.red);
-			GraphConstants.setOpaque(src.getAttributes(), true);
-			
-			DefaultGraphCell tar = getCell(cellsList, actualTransition.ende);
-			GraphConstants.setBounds(tar.getAttributes(), new Rectangle2D.Double(140,140,80,20));
-			GraphConstants.setGradientColor(tar.getAttributes(), Color.red);
-			GraphConstants.setOpaque(tar.getAttributes(), true);
-			
-			edge.setSource(src);
-			edge.setTarget(tar);
+			ReachabilityEdgeModel edge = getEdge(cellsList,actualTransition);
+
+			ReachabilityPlaceModel src = getCell(cellsList, actualTransition.start);
 			cellsList.add(src);
+				
+			DefaultGraphCell tar = getCell(cellsList, actualTransition.ende);
 			cellsList.add(tar);
-			cellsList.add(edge);
+				
+			edge.setSource(src.getChildAt(0));
+			edge.setTarget(tar.getChildAt(0));
+			cellsList.add(edge);	
 		}
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- simpleGraphBuilder() " + this.getClass().getName() + " Size " + cellsList.size());
 		graph.getGraphLayoutCache().insert(cellsList.toArray());
 		return graph;
 	}
 	
-	private DefaultGraphCell getCell(HashSet<DefaultGraphCell> cellsList, Marking marking){
+	private boolean existsSameDirectionTransition(HashSet<DefaultGraphCell> cellsList, TransitionObject to){
+		Iterator<DefaultGraphCell> iterCellsList = cellsList.iterator();
+		boolean exists = false;
+		if(cellsList != null && !cellsList.isEmpty()){
+			while(iterCellsList.hasNext() && !exists){
+				DefaultGraphCell cell = iterCellsList.next();
+				if(cell instanceof ReachabilityEdgeModel){
+					ReachabilityEdgeModel edge = (ReachabilityEdgeModel) cell;
+					// Source
+					ReachabilityPortModel srcRpom = (ReachabilityPortModel) edge.getSource();
+					ReachabilityPlaceModel srcRplm = (ReachabilityPlaceModel) srcRpom.getParent();
+					
+					// Target
+					ReachabilityPortModel tarRpom = (ReachabilityPortModel) edge.getTarget();
+					ReachabilityPlaceModel tarRplm = (ReachabilityPlaceModel) tarRpom.getParent();
+					
+					if(to.ende.equals(srcRplm.getUserObject())  && to.start.equals(tarRplm.getUserObject())){
+						exists = true;
+						LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-- existsSameDirectionTransition() "  + this.getClass().getName() + " exists = true !!");
+					}	
+				}
+			}
+		}
+		return exists;
+	}
+	
+	private ReachabilityEdgeModel getEdge(HashSet<DefaultGraphCell> cellsList, TransitionObject to){
+		Iterator<DefaultGraphCell> iterCellsList = cellsList.iterator();
+		
+		if(cellsList != null && !cellsList.isEmpty()){
+			while(iterCellsList.hasNext()){
+				DefaultGraphCell cell = iterCellsList.next();
+				if(cell instanceof ReachabilityEdgeModel){
+					ReachabilityEdgeModel edge = (ReachabilityEdgeModel) cell;
+					// Source
+					ReachabilityPortModel srcRpom = (ReachabilityPortModel) edge.getSource();
+					ReachabilityPlaceModel srcRplm = (ReachabilityPlaceModel) srcRpom.getParent();
+					
+					// Target
+					ReachabilityPortModel tarRpom = (ReachabilityPortModel) edge.getTarget();
+					ReachabilityPlaceModel tarRplm = (ReachabilityPlaceModel) tarRpom.getParent();
+					
+					if(to.ende.equals(srcRplm.getUserObject())  && to.start.equals(tarRplm.getUserObject())){
+						//TransitionObject actTo = (TransitionObject) edge.getUserObject();
+						GraphConstants.setLineBegin(edge.getAttributes(), GraphConstants.ARROW_CLASSIC);
+						return edge;
+					}	
+				}
+			}
+		}
+		return new ReachabilityEdgeModel(to);
+	}
+	
+	private ReachabilityPlaceModel getCell(HashSet<DefaultGraphCell> cellsList, Marking marking){
 		Iterator<DefaultGraphCell> iter = cellsList.iterator();
 		while(iter.hasNext()){
 			DefaultGraphCell comp = iter.next();
 			if(comp.getUserObject() != null && comp.getUserObject().equals(marking)){
-				return comp;
+				return (ReachabilityPlaceModel) comp;
 			}
 		}
-		return new DefaultGraphCell(marking);
+		ReachabilityPlaceModel place = new ReachabilityPlaceModel(marking);
+		ReachabilityPortModel port = new ReachabilityPortModel();
+		place.add(port);
+		port.setParent(place);
+		return place;
 	}
 
 }
