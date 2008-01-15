@@ -31,6 +31,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Iterator;
@@ -65,6 +67,9 @@ import org.woped.translations.Messages;
 /**
  * @author waschtl
  */
+
+//preversion, no changes please
+
 @SuppressWarnings("serial")
 public class TransitionPropertyEditor extends JDialog implements ActionListener, IDialog {
 	// General
@@ -72,11 +77,21 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private EditorVC editor = null;
 
-	private JPanel contentPanel = null;
+	private JPanel contentPanel = null;	
+	private JPanel bpelPanel = null;
+	private JTabbedPane tabPane = null;
 	
-	private JPanel bpelPanel = null; //Lavi
+	private JPanel activityChoosePanel = null;
+	private JComboBox activityChooseComboBox = null;
+	private JLabel activityChooseLabel = null;
+	private JPanel assignPanel = null;
+	private JPanel invokePanel = null;
+	private JPanel receivePanel = null;
+	private JPanel replyPanel = null;
+	private JPanel waitPanel = null;
 	
-	private GridBagConstraints c = new GridBagConstraints();
+	private GridBagConstraints c1 = new GridBagConstraints();
+	private GridBagConstraints c2 = new GridBagConstraints(); //Test
 
 	// Name
 	private JPanel namePanel = null;
@@ -250,8 +265,6 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 	private static final String GROUP_NONE = Messages
 			.getString("Transition.Properties.Group.None");
 
-	// BPEL Activity
-	private JPanel bpelActivityChoosePanel = null;
     
 	// Buttons
 	private JPanel buttonPanel = null;
@@ -277,11 +290,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 		this.transition = transition;
 		this.editor = editor;
 		this.setVisible(false);
-		JTabbedPane tabPanel = new JTabbedPane(); //Lavi
 		initialize();
-		tabPanel.add("General", contentPanel); //Lavi
-		tabPanel.add("BPEL", bpelPanel); //Lavi
-		this.add(tabPanel); //Lavi
 		this.setSize(550, 580);
 		this.setLocation(Utils
 				.getCenterPoint(owner.getBounds(), this.getSize()));
@@ -290,57 +299,65 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void initialize() {
 		this.setTitle(Messages.getString("Transition.Properties"));
-		this.getContentPane().add(getContentPanel(), BorderLayout.NORTH);
+		this.getContentPane().add(getTabbedPane(), BorderLayout.NORTH);
 		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
 		this.oldTime = serviceTimeTextField.getText();
 		this.oldTimeUnit = serviceTimeComboBox.getSelectedItem().toString();
 		getNameTextField().requestFocus();
 	}
-
+	
+	private JTabbedPane getTabbedPane(){
+		if (tabPane == null){
+			tabPane = new JTabbedPane();
+			tabPane.addTab(Messages.getString("Transition.Properties.General"), getContentPanel());
+			tabPane.addTab(Messages.getString("Transition.Properties.BPEL"), getBPELPanel());
+		}
+		return tabPane;
+	}
+	
+	
+	//********************main panel 1: ContentPanel********************
+	
 	private JPanel getContentPanel() {
 		
 		if (contentPanel == null) {
-			bpelPanel = new JPanel(); //Lavi
 			contentPanel = new JPanel();
 			contentPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 			contentPanel.setLayout(new GridBagLayout());
-			c.fill = GridBagConstraints.BOTH;
-			c.weightx = 1;
-			c.weighty = 1;
+			c1.fill = GridBagConstraints.BOTH;
+			c1.weightx = 1;
+			c1.weighty = 1;
 
-			c.gridx = 0;
-			c.gridy = 0;
-			c.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getNamePanel(), c);
+			c1.gridx = 0;
+			c1.gridy = 0;
+			c1.insets = new Insets(0, 0, 0, 0);
+			contentPanel.add(getNamePanel(), c1);
 
-			c.gridx = 0;
-			c.gridy = 1;
-			c.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getBranchingPanel(), c);
+			c1.gridx = 0;
+			c1.gridy = 1;
+			c1.insets = new Insets(0, 0, 0, 0);
+			contentPanel.add(getBranchingPanel(), c1);
 
-			c.gridx = 0;
-			c.gridy = 2;
-			c.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getTriggerPanel(), c);
+			c1.gridx = 0;
+			c1.gridy = 2;
+			c1.insets = new Insets(0, 0, 0, 0);
+			contentPanel.add(getTriggerPanel(), c1);
 
-			c.gridx = 0;
-			c.gridy = 3;
-			c.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getServicetimePanel(), c);
+			c1.gridx = 0;
+			c1.gridy = 3;
+			c1.insets = new Insets(0, 0, 0, 0);
+			contentPanel.add(getServicetimePanel(), c1);
 
-			c.gridx = 0;
-			c.gridy = 4;
-			c.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getResourcePanel(), c);
-			
-			c.gridx = 0;
-			c.gridy = 5;
-			c.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getBPELActivityChoosePanel(), c);
+			c1.gridx = 0;
+			c1.gridy = 4;
+			c1.insets = new Insets(0, 0, 0, 0);
+			contentPanel.add(getResourcePanel(), c1);
 		}
 
 		return contentPanel;
 	}
+	
+	
 
 	// **************************NamePanel******************************
 	private JPanel getNamePanel() {
@@ -1381,18 +1398,272 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 		return resourceGroupComboBox;
 	}
-
-	
-	// **************************BPELActivityPanel******************************
-
-	private JPanel getBPELActivityChoosePanel() {
-		if (bpelActivityChoosePanel == null) {
-			bpelActivityChoosePanel = new BPELActivityChoosePanel(this, contentPanel, c);
-		}
-		return bpelActivityChoosePanel;
-	}
   
     
+	
+	
+//	********************main panel 2: BPELPanel*************************
+	private JPanel getBPELPanel() {
+		
+		if (bpelPanel == null) {
+			bpelPanel = new JPanel();
+			bpelPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+			bpelPanel.setLayout(new GridBagLayout());
+			c2.weightx = 1; //1
+			c2.weighty = 0; //2
+			c2.anchor = GridBagConstraints.WEST;   //hat auswirkung dass nach klein in mitte hochkommt
+			c2.fill = GridBagConstraints.HORIZONTAL; //hat auswirkung dass nach klein in mitte hochkommt
+
+			c2.gridx = 0;
+			c2.gridy = 0;
+			c2.insets = new Insets(0, 0, 0, 0);
+			bpelPanel.add(getBPELActivityChoosePanel(), c2);
+			
+			/*c2.fill = GridBagConstraints.;
+			c2.gridx = 0;
+			c2.gridy = 1;
+			c2.insets = new Insets(0, 0, 0, 0);
+			JPanel test = new JPanel();
+			test.setSize(10, 10);
+			bpelPanel.add(test, c2);*/
+		}
+
+		return bpelPanel;
+	}
+
+	//**************************BPELActivityChoosePanel*****************
+	private JPanel getBPELActivityChoosePanel(){
+		if (activityChoosePanel == null){
+			activityChoosePanel = new JPanel();
+			activityChoosePanel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+			activityChoosePanel
+			.setBorder(BorderFactory
+					.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.BPEL.ActivityChoice")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+			c.weightx = 1;
+			c.weighty = 1;
+			c.anchor = GridBagConstraints.WEST;
+			c.fill = GridBagConstraints.HORIZONTAL;
+
+			c.gridx = 0;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			c.insets = new Insets(0, 2, 0, 0);
+			activityChoosePanel.add(getActivityLabel(), c);
+
+			c.gridx = 1;
+			c.gridy = 0;
+			c.gridwidth = 2;
+			c.insets = new Insets(0, 10, 0, 10);
+			activityChoosePanel.add(getActivityComboBox(), c);	
+		}
+		return activityChoosePanel;
+	}
+
+	private JComboBox getActivityComboBox(){
+		if (activityChooseComboBox == null){
+			String[] namen = new String[] {Messages.getString("Transition.Properties.BPEL.NoActivity"), "assign", "invoke", "receive", "reply", "wait"};
+			activityChooseComboBox = new JComboBox(namen);
+			activityChooseComboBox.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent e) {
+					JComboBox cb = (JComboBox) e.getSource(); // Ereignisquelle
+					int index = cb.getSelectedIndex(); // Index des g. Eintrags
+					c2.gridx = 0;	//mit c2 hier überall, legt es alles oben an
+					c2.gridy = 1;
+					c2.insets = new Insets(0, 0, 0, 0);
+					switch (index) {
+						case 0: showNothing(); break;
+						case 1: showAssignPanel(); break;
+						case 2: showInvokePanel(); break;
+						case 3: showReceivePanel(); break;
+						case 4: showReplyPanel(); break;
+						case 5: showWaitPanel();					
+					}
+				}
+			});
+			activityChoosePanel.add(activityChooseComboBox);
+		}
+		return activityChooseComboBox;	
+	}
+	
+	private JLabel getActivityLabel(){
+		if (activityChooseLabel == null) {
+			activityChooseLabel = new JLabel(Messages
+					.getString("Transition.Properties.BPEL.Activity")
+					+ ":");
+		}
+		return activityChooseLabel;
+	}
+	
+	
+	//*****************************SelectedActivityPanel*****************
+	
+	private void showNothing(){
+		if (assignPanel != null){
+			bpelPanel.remove(assignPanel);
+		}
+		if (invokePanel != null){
+			bpelPanel.remove(invokePanel);
+		}
+		if (receivePanel != null){
+			bpelPanel.remove(receivePanel);
+		}
+		if (replyPanel != null){
+			bpelPanel.remove(replyPanel);
+		}
+		if (waitPanel != null){
+			bpelPanel.remove(waitPanel);
+		}
+		repaint();
+	}
+	
+	private void showAssignPanel(){
+		if (assignPanel == null){
+			assignPanel = new BPELassignPanel();
+			assignPanel.setBorder(BorderFactory
+					.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.BPEL.Assign")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+		}
+		
+		if (invokePanel != null){
+			bpelPanel.remove(invokePanel);
+		}
+		if (receivePanel != null){
+			bpelPanel.remove(receivePanel);
+		}
+		if (replyPanel != null){
+			bpelPanel.remove(replyPanel);
+		}
+		if (waitPanel != null){
+			bpelPanel.remove(waitPanel);
+		}
+		
+		bpelPanel.add(assignPanel, c2);
+		repaint();
+	}
+	
+	private void showInvokePanel(){
+		if (invokePanel == null){
+			invokePanel = new BPELinvokePanel();
+			invokePanel.setBorder(BorderFactory
+					.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.BPEL.Invoke")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+		}
+		
+		if (assignPanel != null){
+			bpelPanel.remove(assignPanel);
+		}
+		if (receivePanel != null){
+			bpelPanel.remove(receivePanel);
+		}
+		if (replyPanel != null){
+			bpelPanel.remove(replyPanel);
+		}
+		if (waitPanel != null){
+			bpelPanel.remove(waitPanel);
+		}
+		
+		bpelPanel.add(invokePanel, c2);
+		repaint();
+	}
+	
+	private void showReceivePanel(){
+		if (receivePanel == null){
+			receivePanel = new BPELreceivePanel();
+			receivePanel.setBorder(BorderFactory
+					.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.BPEL.Receive")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
+		}
+		if (assignPanel != null){
+			bpelPanel.remove(assignPanel);
+		}
+		if (invokePanel != null){
+			bpelPanel.remove(invokePanel);
+		}
+		if (replyPanel != null){
+			bpelPanel.remove(replyPanel);
+		}
+		if (waitPanel != null){
+			bpelPanel.remove(waitPanel);
+		}
+		
+		bpelPanel.add(receivePanel, c2);
+		repaint();
+	}
+	
+	private void showReplyPanel(){
+		if (replyPanel == null){
+			replyPanel = new BPELreplyPanel();
+			replyPanel.setBorder(BorderFactory
+					.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.BPEL.Reply")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
+		}
+		if (assignPanel != null){
+			bpelPanel.remove(assignPanel);
+		}
+		if (receivePanel != null){
+			bpelPanel.remove(receivePanel);
+		}
+		if (invokePanel != null){
+			bpelPanel.remove(invokePanel);
+		}
+		if (waitPanel != null){
+			bpelPanel.remove(waitPanel);
+		}
+		
+		bpelPanel.add(replyPanel, c2);
+		repaint();
+	}
+	
+	private void showWaitPanel(){
+		if (waitPanel == null){
+			waitPanel = new BPELwaitPanel();
+			waitPanel.setBorder(BorderFactory
+					.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.BPEL.Wait")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
+		}
+		if (assignPanel != null){
+			bpelPanel.remove(assignPanel);
+		}
+		
+		if (invokePanel != null){
+			bpelPanel.remove(invokePanel);
+		}
+		if (receivePanel != null){
+			bpelPanel.remove(receivePanel);
+		}
+		if (replyPanel != null){
+			bpelPanel.remove(replyPanel);
+		}
+		
+		bpelPanel.add(waitPanel, c2);
+		repaint();
+	}
+
+	
+	
 	
 	// *****************************************************ButtonPanel****************************************************
 	private JPanel getButtonPanel() {
