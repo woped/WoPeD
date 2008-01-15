@@ -21,6 +21,12 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 
+
+//! Class for Building the Reachability of a net
+//! returns two maps (getMarkings(), getTransactions())
+//! which can be used to display the reachability
+
+
 public class BuildReachability {
 	IEditor thisEditor = null;
 	public static boolean reachBuilt = false;
@@ -30,6 +36,7 @@ public class BuildReachability {
 	private ReachabilityDataSet transactions = null;
 
 	public BuildReachability(IEditor thisEditor) {
+		//! Get current Editor and set needed local variables
 		this.thisEditor = thisEditor;
 		this.petrinet = (PetriNetModelProcessor) thisEditor.getModelProcessor();
 		allTransitions = getPetriNet().getElementContainer().getElementsByType(
@@ -38,10 +45,19 @@ public class BuildReachability {
 				.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
 		allTransitions.putAll(getPetriNet().getElementContainer()
 				.getElementsByType(PetriNetModelElement.SUBP_TYPE));
+		
+		//! Save start state so it can be restored at the end
 		Marking begin_stat = new Marking(thisEditor);
+		
+		//! If this is a Subprocess, set begin Token on first place
+		if(this.thisEditor.isSubprocessEditor()){
+			((PlaceModel) getPetriNet().getElementContainer().getElementById("p1")).setTokens(1);
+		}
+		
+		
 		// Get Current Active Transitions
 		checkNet();
-
+		
 		// Create MarkingList and add Current Status to List
 		markings = new MarkingList();
 		markings.addMarking(new Marking(thisEditor));
@@ -60,18 +76,18 @@ public class BuildReachability {
 
 				// Set all Places according to start Marking
 				setStatus(start);
-				Iterator netIt = start.getTransitions().iterator();
 
 				// Activate every Transition that can be activated from the
 				// current Marking
+				Iterator netIt = start.getTransitions().iterator();
 				while (netIt.hasNext()) {
 					resetVirtualTokensInElementContainer(getPetriNet()
-							.getElementContainer());
+							.getElementContainer(), start);
 					checkNet();
 					TransitionModel trans = (TransitionModel) getPetriNet()
 							.getElementContainer().getElementById(netIt.next());
-
-					// Use the Arc Method for those transitions who need it
+					//! Use the Arc Method for those transitions who need it
+					//! Also handling of unusual transitions
 					if (trans.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE
 							&& (((OperatorTransitionModel) trans)
 									.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE
@@ -83,7 +99,14 @@ public class BuildReachability {
 											.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE || ((OperatorTransitionModel) trans)
 									.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)) {
 						Iterator outgoingIter;
-						if (((OperatorTransitionModel) trans).getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE) {
+						if (((OperatorTransitionModel) trans).getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE
+								|| ((OperatorTransitionModel) trans)
+										.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE
+								|| (((OperatorTransitionModel) trans)
+										.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE && !((((OperatorTransitionModel) trans)
+										.getCenterPlace() != null) && (((OperatorTransitionModel) trans)
+										.getCenterPlace()
+										.getVirtualTokenCount() > 0)))) {
 							outgoingIter = getPetriNet().getElementContainer()
 									.getIncomingArcs(trans.getId()).keySet()
 									.iterator();
@@ -93,8 +116,9 @@ public class BuildReachability {
 									.iterator();
 						}
 						while (outgoingIter.hasNext()) {
+							setStatus(start);
 							resetVirtualTokensInElementContainer(getPetriNet()
-									.getElementContainer());
+									.getElementContainer(), start);
 							checkNet();
 							ArcModel arc = getPetriNet().getElementContainer()
 									.getArcById(outgoingIter.next());
@@ -105,22 +129,24 @@ public class BuildReachability {
 								if (markings.containsMarking(ende)) {
 									ende = markings.getMarking(ende.getKey());
 								} else {
-									markings.addMarking(ende);
+									ende=markings.addMarking(ende);
 								}
 								transactions.add(start, trans.getId(), ende,
-										trans.getNameValue() + ""
-												+ arc.getTargetId());
+										trans.getNameValue() + "_"
+												+ arc.getTargetId(),trans.getType()==PetriNetModelElement.SUBP_TYPE);
 							}
 						}
 
-					} else {
+					} 
+					//Handling of 'easy' transitions
+					else {
 						transitionClicked(trans);
 						checkNet();
 						Marking ende = new Marking(thisEditor);
 						Marking help;
 						ende = markings.addMarking(ende);
 						transactions.add(start, trans.getId(), ende, trans
-								.getNameValue());
+								.getNameValue(),trans.getType()==PetriNetModelElement.SUBP_TYPE);
 					}
 				}
 			}
@@ -133,13 +159,19 @@ public class BuildReachability {
 				reachBuilt = false;
 			}
 		}
+		//! Print current status to log
 		new Marking(thisEditor).printseq();
 		markings.print();
 		transactions.print();
+		
+		//! Reset to begin status
 		setStatus(begin_stat);
 		checkNet();
 		resetTransitionStatus();
 		resetArcStatus();
+		
+		//! rebuild Reachability to be displayed correctly
+		rebuild();
 	}
 
 	private void checkNet() {
@@ -414,7 +446,7 @@ public class BuildReachability {
 	}
 
 	private void resetVirtualTokensInElementContainer(
-			ModelElementContainer container) {
+			ModelElementContainer container, Marking currentMark) {
 		// restore origin tokencount
 		Iterator placeIter = container.getElementsByType(
 				PetriNetModelElement.PLACE_TYPE).keySet().iterator();
@@ -422,13 +454,28 @@ public class BuildReachability {
 			((PlaceModel) container.getElementById(placeIter.next()))
 					.resetVirtualTokens();
 		}
+		// restore Center Places
+		Iterator transItero = allTransitions.keySet().iterator();
+		while (transItero.hasNext()) {
+			TransitionModel transition = (TransitionModel) allTransitions
+					.get(transItero.next());
+			if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+				OperatorTransitionModel akt = (OperatorTransitionModel) transition;
+				if (akt.getCenterPlace() != null) {
+					akt.getCenterPlace().setTokens(
+							currentMark.getMarking().get(
+									akt.getCenterPlace().getId()));
+				}
+			}
+		}
+
 		Iterator subpIter = container.getElementsByType(
 				PetriNetModelElement.SUBP_TYPE).keySet().iterator();
 		while (subpIter.hasNext()) {
 			// Now we call ourselves recursively for all sub-processes
 			ModelElementContainer innerContainer = ((SubProcessModel) container
 					.getElementById(subpIter.next())).getSimpleTransContainer();
-			resetVirtualTokensInElementContainer(innerContainer);
+			resetVirtualTokensInElementContainer(innerContainer, currentMark);
 		}
 	}
 
@@ -512,6 +559,21 @@ public class BuildReachability {
 			((PlaceModel) getPetriNet().getElementContainer().getElementById(
 					place)).setTokens(neu.get(place));
 		}
+		// restore Center Places
+		Iterator transItero = allTransitions.keySet().iterator();
+		while (transItero.hasNext()) {
+			TransitionModel transition = (TransitionModel) allTransitions
+					.get(transItero.next());
+			if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+				OperatorTransitionModel akt = (OperatorTransitionModel) transition;
+				if (akt.getCenterPlace() != null) {
+					akt.getCenterPlace().setTokens(
+							marking.getMarking().get(
+									akt.getCenterPlace().getId()));
+				}
+			}
+		}
+
 	}
 
 	private void resetTransitionStatus() {
@@ -535,6 +597,10 @@ public class BuildReachability {
 
 	private PetriNetModelProcessor getPetriNet() {
 		return petrinet;
+	}
+
+	private void rebuild() {
+		transactions.rebuild(markings);
 	}
 
 	// MF_001: Returns all markings as a hash map

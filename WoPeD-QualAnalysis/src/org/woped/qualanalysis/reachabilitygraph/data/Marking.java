@@ -32,6 +32,9 @@ public class Marking {
 		Iterator places = sa.getPlacesIterator();
 		while (places.hasNext()) {
 			PlaceModel currentPlace = (PlaceModel) places.next();
+			if (currentPlace.getId().contains("CENTER_PLACE_")&&currentPlace.getVirtualTokenCount()>0) {
+				centerPlace = true;
+			}
 			currentMarking.put(currentPlace.getId(), currentPlace
 					.getVirtualTokenCount());
 		}
@@ -81,10 +84,17 @@ public class Marking {
 				.iterator();
 		Integer oh;
 		while (isGreater && currentThisMarking.hasNext()) {
-			isGreater = (((Integer) currentThisMarking.next())
-					.compareTo(oh = (Integer) currentOtherMarking.next()) >= 0);
+			int currint= (Integer) currentThisMarking.next();
+			int otherint=(Integer) currentOtherMarking.next();
+			if(currint>=otherint&&otherint!=0){
+				isGreater=true;
+			}
+			else if(currint==otherint){
+				isGreater=true;
+			}
+			else 
+				isGreater=false;
 		}
-
 		if (isGreater && otherMarking.isfirst()) {
 			this.setnotfirst();
 			return false;
@@ -93,7 +103,8 @@ public class Marking {
 		}
 
 	}
-    // Method for setting the Coverability Object
+
+	// Method for setting the Coverability Object
 	public void setCoverability(Marking otherMarking) {
 		Iterator currentThisMarking = currentMarking.keySet().iterator();
 		Iterator currentOtherMarking = otherMarking.currentMarking.values()
@@ -114,9 +125,10 @@ public class Marking {
 	// Prints the Current Objects Tokenstatus
 	public String print() {
 		String value = "( ";
-		Iterator it = currentMarking.values().iterator();
+		Iterator it = currentMarking.keySet().iterator();
 		while (it.hasNext()) {
-			value = value + it.next().toString() + " ";
+			String id = it.next().toString();
+				value = value + currentMarking.get(id) + " ";
 		}
 		value = value + ")";
 		return value;
@@ -124,13 +136,15 @@ public class Marking {
 
 	public String toString() {
 		String value = "( ";
-		Iterator it = currentMarking.values().iterator();
+		Iterator it = currentMarking.keySet().iterator();
 		while (it.hasNext()) {
-			Integer i;
-			if ((i = (Integer) it.next()) >= 60000) {
-				value = value + "w" + " ";
-			} else {
-				value = value + i.toString() + " ";
+			String gel = (String) it.next();
+			if (!gel.contains("CENTER_PLACE_")) {
+				if (currentMarking.get(gel) >= 60000) {
+					value = value + "w" + " ";
+				} else {
+					value = value + currentMarking.get(gel).toString() + " ";
+				}
 			}
 		}
 		value = value + ")";
@@ -179,7 +193,8 @@ public class Marking {
 		}
 		return (hash);
 	}
-    // Help value for Coverability
+
+	// Help value for Coverability
 	public void setfirst() {
 		first = true;
 	}
@@ -191,6 +206,9 @@ public class Marking {
 	public boolean isfirst() {
 		return first;
 	}
+	public boolean centerPlace(){
+		return centerPlace;
+	}
 
 	// ! Stores a reference to the net structure which is useful
 	// ! to determine which transitions are active etc.
@@ -200,6 +218,7 @@ public class Marking {
 	// ! ID->num_tokens
 	private TreeMap<String, Integer> currentMarking;
 	private boolean first = false;
+	private boolean centerPlace = false;
 	// ! Stores a set of transitions
 	private HashSet<String> netTransitions;
 	private Map<String, AbstractElementModel> allTransitions = null;

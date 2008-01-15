@@ -3,7 +3,7 @@ package org.woped.qualanalysis.reachabilitygraph.data;
 import java.util.HashMap;
 import java.util.Iterator;;
 
-
+//! List that contains all Markings used in the Reachability Graph
 public class MarkingList {
 	private HashMap <String,Marking> netMarkings;
 	private Iterator it=null;
