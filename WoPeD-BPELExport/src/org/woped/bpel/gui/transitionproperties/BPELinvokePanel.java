@@ -23,6 +23,14 @@ import org.woped.translations.Messages;
 
 public class BPELinvokePanel extends JPanel{
 
+	JComboBox partnerLinkComboBox = null;
+	JButton newPartnerLinkButton = null;
+	JComboBox operationComboBox = null;
+	JComboBox inVariableComboBox = null;
+	JButton newInVariableButton = null;
+	JComboBox outVariableComboBox = null;
+	JButton newOutVariableButton = null;
+	
 	public BPELinvokePanel(){
 		
 		GridBagLayout gbl = new GridBagLayout();
@@ -44,13 +52,13 @@ public class BPELinvokePanel extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JComboBox(), c);
+		add(getPartnerLinkComboBox(), c);
 		
 		c.gridx = 2;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JButton("new"), c);
+		add(getNewPartnerLinkButton(), c);
 
 		c.gridx = 0;
 		c.gridy = 1;
@@ -62,7 +70,7 @@ public class BPELinvokePanel extends JPanel{
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JComboBox(), c);
+		add(getOperationComboBox(), c);
 		
 		c.gridx = 0;
 		c.gridy = 2;
@@ -74,13 +82,13 @@ public class BPELinvokePanel extends JPanel{
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JComboBox(), c);
+		add(getInVariableComboBox(), c);
 		
 		c.gridx = 2;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JButton("new"), c);
+		add(getNewInVariableButton(), c);
 		
 		c.gridx = 0;
 		c.gridy = 3;
@@ -92,12 +100,62 @@ public class BPELinvokePanel extends JPanel{
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JComboBox(), c);
+		add(getOutVariableComboBox(), c);
 		
 		c.gridx = 2;
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JButton("new"), c);
+		add(getNewOutVariableButton(), c);
 	}
+	
+	private JComboBox getPartnerLinkComboBox(){
+		if (partnerLinkComboBox == null) {
+			partnerLinkComboBox = new JComboBox();
+		}
+		return partnerLinkComboBox;
+	}
+	
+	private JButton getNewPartnerLinkButton(){
+		if (newPartnerLinkButton == null) {
+			newPartnerLinkButton = new JButton("new");
+		}
+		return newPartnerLinkButton;
+	}
+	
+	private JComboBox getOperationComboBox(){
+		if (operationComboBox == null) {
+			operationComboBox = new JComboBox();
+		}
+		return operationComboBox;
+	}
+	
+	private JComboBox getInVariableComboBox(){
+		if (inVariableComboBox == null) {
+			inVariableComboBox = new JComboBox();
+		}
+		return inVariableComboBox;
+	}
+	
+	private JButton getNewInVariableButton(){
+		if (newInVariableButton == null) {
+			newInVariableButton = new JButton("new");
+		}
+		return newInVariableButton;
+	}
+	
+	private JComboBox getOutVariableComboBox(){
+		if (outVariableComboBox == null) {
+			outVariableComboBox = new JComboBox();
+		}
+		return outVariableComboBox;
+	}
+	
+	private JButton getNewOutVariableButton(){
+		if (newOutVariableButton == null) {
+			newOutVariableButton = new JButton("new");
+		}
+		return newOutVariableButton;
+	}
+	
 }
