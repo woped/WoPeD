@@ -1,16 +1,21 @@
 package org.woped.bpel.datamodel;
 
+import javax.xml.crypto.dsig.XMLObject;
+
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.woped.core.model.petrinet.Assign;
 import org.woped.bpel.*;
 public class SequenceTransition extends TerminalElement
 {
 	AbstractElement begin;
+	TSequence seq = null;
 
 	public SequenceTransition(AbstractElement begin)
 	{
 		super("test");
+		this.begin = begin;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -30,7 +35,8 @@ public class SequenceTransition extends TerminalElement
 	 */
 	public TSequence getBpelCode()
 	{
-		TSequence iSeq = null;
+		if(this.seq != null) return this.seq;
+		TSequence iSeq= null;
 		//1.transition
 		//if the 1.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(begin))
@@ -38,10 +44,11 @@ public class SequenceTransition extends TerminalElement
 		else{ iSeq = BPEL.genBpelProsses().addNewSequence();}
 		//transitions case (1.transition)
 		
+		
 		if(TAssign.class.isInstance(begin.getBpelCode())){
 			
 			TAssign iAss = iSeq.addNewAssign();
-			iAss=(TAssign)begin.getBpelCode();
+			iAss.set(begin.getBpelCode());
 			System.out.println("neue assign angelegt");
 		}
 		
@@ -54,8 +61,16 @@ public class SequenceTransition extends TerminalElement
 		if (SequenceTransition.class.isInstance(tmp)){
 			TSequence helpSequence = (TSequence)tmp.getBpelCode();			
 		}
+		
+		if(TAssign.class.isInstance(tmp.getBpelCode())){
+			
+			TAssign iAss = iSeq.addNewAssign();
+			iAss.set(tmp.getBpelCode());
+			System.out.println("neue assign angelegt");
+		}
 		//transitions case (2.transition)
-		return iSeq;
+		this.seq = iSeq;
+		return this.seq;
 	}
 
 }

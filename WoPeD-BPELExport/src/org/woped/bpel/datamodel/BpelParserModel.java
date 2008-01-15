@@ -6,7 +6,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
 
+import org.apache.xmlbeans.XmlCursor;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPick;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
+import org.woped.bpel.BPEL;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
@@ -400,7 +405,7 @@ public class BpelParserModel
 	 * 
 	 * @return String
 	 */
-	public TActivity generate_bpel()
+	public TProcess generate_bpel()
 	{
 		int counter = 0;
 		this.toString();
@@ -417,9 +422,20 @@ public class BpelParserModel
 			System.out.println("Durchlauf " + counter + "\nAnzahl Elemente "
 					+ this.count_elements());
 		}
-		System.out.println(this._regist_transition.iterator().next().getBpelCode().toString());
-
-		return this._regist_transition.iterator().next().getBpelCode();
+		
+		TExtensibleElements test = this._regist_transition.iterator().next().getBpelCode();
+		TProcess p = BPEL.genBpelProsses();
+		if(TSequence.class.isInstance(test))
+			p.addNewSequence().set(test);
+		else if(TPick.class.isInstance(test))
+			p.addNewPick().set(test);
+		else if(TIf.class.isInstance(test))
+			p.addNewIf().set(test);
+		else if(TAssign.class.isInstance(test))
+			p.addNewAssign().set(test);
+		else if(TFlow.class.isInstance(test))
+			p.addNewFlow().set(test);
+		return p;
 	}
 
 	/**

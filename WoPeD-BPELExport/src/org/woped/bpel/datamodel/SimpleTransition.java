@@ -1,11 +1,12 @@
 package org.woped.bpel.datamodel;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.bpel.*;
 public class SimpleTransition extends Transition<TransitionModel>
 {
-
+	TActivity bpel = null;
 	public SimpleTransition(TransitionModel data)
 	{
 		super(data);
@@ -24,7 +25,11 @@ public class SimpleTransition extends Transition<TransitionModel>
 	@Override
 	public TActivity getBpelCode()
 	{
-		return BPEL.genBpelProsses().addNewAssign();
+		if(this.bpel != null) return this.bpel;
+		TAssign t = BPEL.genBpelProsses().addNewAssign();	
+		t.setName("Test-Assign");
+		this.bpel = t;
+		return this.bpel;
 	}
 	
 	public String toString()

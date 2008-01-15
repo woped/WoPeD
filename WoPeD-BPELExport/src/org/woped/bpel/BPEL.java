@@ -106,7 +106,7 @@ public class BPEL {
 	
 	public static TProcess genBpelProsses()
 	{
-		if(BPEL.Process != null)return BPEL.Process;
+		//if(BPEL.Process != null)return BPEL.Process;
 		XmlOptions opt = new XmlOptions();
         opt.setUseDefaultNamespace();
         opt.setSavePrettyPrint();
@@ -116,7 +116,7 @@ public class BPEL {
         map.put("xmlns:bpel","");
         map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
         //opt = opt.setSaveImplicitNamespaces(map);
-        bpelDoc = ProcessDocument.Factory.newInstance(opt);
+        BPEL.bpelDoc = ProcessDocument.Factory.newInstance(opt);
 		BPEL.Process = bpelDoc.addNewProcess();
 		return BPEL.Process;
 	}
@@ -129,8 +129,13 @@ public class BPEL {
 		BpelParserModel m = new BpelParserModel();
 		System.out.println(m.createModel(pnp.getElementContainer()));
 		System.out.println(m.count_elements());
-		m.generate_bpel();
+		System.out.println("********last element*************\n "+m.generate_bpel());
 		System.out.println(m.count_elements());
+		//TSequence s = BPEL.genBpelProsses().addNewSequence();
+		//s.set(m.generate_bpel());
+		BPEL.genBpelProsses();
+		BPEL.Process.set(m.generate_bpel());
+		System.out.println(BPEL.bpelDoc.toString());
 		/*
 		System.out.println("begin test");
 		Map<String, ArcModel> map = pnp.getElementContainer().getArcMap();
