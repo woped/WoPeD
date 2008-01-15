@@ -118,9 +118,17 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	{
 		switch(ID)
 		{
-		 case 1:
+		 case CHOOSE_STEPWISE:
+			 if (RemoteControl.playbackRunning())
+			 {
+				 RemoteControl.setAutoPlayback(false);
+			 }
 			 break;
-		 case 2:
+		 case CHOOSE_PLAYBACK:
+			 if (RemoteControl.playbackRunning())
+			 {
+				RemoteControl.setAutoPlayback(true);
+			 }
 			 break;
 		 case 3:
 			 break;
@@ -136,7 +144,14 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			  */
 			 if (RemoteControl.playbackRunning())
 			 {
-			   RemoteControl.occurTransition(true);
+				 if(RemoteControl.getAutoPlayBack())
+				 {
+					 RemoteControl.autoOccurAllTransitions(true);
+				 }
+				 else
+				 {
+					 RemoteControl.occurTransition(true);
+				 }
 			 }
 			 break;
 		 case CLICK_STOP:
@@ -164,7 +179,14 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		 case CLICK_FORWARD:
 			 if (RemoteControl.playbackRunning())
 			 {
-			   RemoteControl.occurTransition(false);
+				 if(RemoteControl.getAutoPlayBack())
+				 {
+					 RemoteControl.autoOccurAllTransitions(false);
+				 }
+				 else
+				 {
+					 RemoteControl.occurTransition(false);
+				 }
 			 }
 			 /*
 			  *  (Not Now, but later)

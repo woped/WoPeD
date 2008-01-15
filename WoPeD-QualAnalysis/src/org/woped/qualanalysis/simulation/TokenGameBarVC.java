@@ -67,6 +67,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	private TransitionModel   helpTransition    = null;
 	private boolean           playbacking       = false;
     private boolean           recordSimulation  = false;
+    private boolean			  autoplayback      = false;
 	private PetriNetModelProcessor           PetriNet = null;
     
 	//Linked Lists 
@@ -132,6 +133,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		ppbDelay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Delay"));
 		
 		//Define Button's Actions
+		ppbPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_PLAYBACK, this));
 		ppbSteps.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_STEPWISE, this));
 		
 		//Define Panel and Layout
@@ -514,6 +516,16 @@ public class TokenGameBarVC extends JInternalFrame {
 		playbacking = true;
 	}
 	
+	public void setAutoPlayback(boolean onoff)
+	{
+		autoplayback = onoff;
+	}
+	
+	public boolean getAutoPlayBack()
+	{
+		return autoplayback;
+	}
+	
 	/**
 	 * This method is to avoid problems when stepping in any direction without having pressed playback in advance
 	 * @return
@@ -605,6 +617,36 @@ public class TokenGameBarVC extends JInternalFrame {
 			}
 		}
 		
+	}
+	/**
+	 * Automatic TokenGame
+	 * This Method occur automatic all transition if autoplayback is true. Choice transition will be
+	 * occured by random choice
+	 * 
+	 * ToDo: refreshNet after occurence
+	 */
+	public void autoOccurAllTransitions(boolean BackWard)
+	{
+		boolean ende = false;
+		while(!ende)
+		{
+			if(BackWard)
+			{
+				if(previousActivatedTransitions.get(0) == null)
+				{
+					ende = true;
+				}
+				occurTransition(BackWard);
+			}
+			else
+			{
+				if(followingActivatedTransitions.get(0) == null)
+				{
+					ende = true;
+				}
+				occurTransition(BackWard);
+			}
+		}
 	}
 	
 	/**
