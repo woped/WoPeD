@@ -36,31 +36,31 @@ public class BPELinvokePanel extends JPanel{
 
 		c.gridx = 0;
 		c.gridy = 0;
-		c.gridwidth = 1; //GridBagConstraints.RELATIVE; //1
+		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(new JLabel("Partner Link:"), c);
 		
 		c.gridx = 1;
 		c.gridy = 0;
-		c.gridwidth = 1;//GridBagConstraints.REMAINDER; //1;
+		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(new JComboBox(), c);
 		
 		c.gridx = 2;
 		c.gridy = 0;
-		c.gridwidth = 1;//GridBagConstraints.REMAINDER; //1;
+		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(new JButton("new"), c);
 
 		c.gridx = 0;
 		c.gridy = 1;
-		c.gridwidth = 1; //GridBagConstraints.RELATIVE; //1;
+		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(new JLabel("Operation:"), c);
 		
 		c.gridx = 1;
 		c.gridy = 1;
-		c.gridwidth = 1;//GridBagConstraints.REMAINDER; //1;
+		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(new JComboBox(), c);
 		
