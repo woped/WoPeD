@@ -16,7 +16,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.woped.translations.Messages;
 import org.woped.core.utilities.SwingUtils;
-import org.woped.core.controller.IEditor;
+import org.woped.editor.controller.vc.EditorVC;
 
 /**
  * @author Lavinia Posler
@@ -38,15 +38,15 @@ public class EditorOperations extends JPanel {
 	//private JPanel                 operationBpelTextPanel               = null;
 	//private JTextField             operationBpelTextField       	    = null;
 	
-	private IEditor               editor;
+	private EditorVC               editor;
     
-	public IEditor getEditor()
+	public EditorVC getEditor()
     {
         return editor;
     }
     
 
-    public EditorOperations(IEditor editor)
+    public EditorOperations(EditorVC editor)
     {
         this.editor = editor;
         setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));

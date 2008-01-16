@@ -51,8 +51,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
-import org.woped.bpel.gui.*;
-import org.woped.bpel.gui.transitionproperties.BPELActivityChoosePanel;
 import org.woped.bpel.gui.transitionproperties.BPELassignPanel;
 import org.woped.bpel.gui.transitionproperties.BPELinvokePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreceivePanel;

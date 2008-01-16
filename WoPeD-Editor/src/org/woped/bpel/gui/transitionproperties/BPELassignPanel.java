@@ -50,12 +50,14 @@ public class BPELassignPanel extends JPanel{
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
+		c.fill = GridBagConstraints.NONE;
 		add(new JButton("new"), c);
 
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(15, 5, 0, 0);
+		c.fill = GridBagConstraints.HORIZONTAL;
 		add(new JLabel("To:"), c);
 		
 		c.gridx = 0;
@@ -66,7 +68,7 @@ public class BPELassignPanel extends JPanel{
 		
 		c.gridx = 1;
 		c.gridy = 3;
-		c.gridwidth = 1;//GridBagConstraints.REMAINDER; //1;
+		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(new JComboBox(), c);
 		
@@ -74,6 +76,7 @@ public class BPELassignPanel extends JPanel{
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
+		c.fill = GridBagConstraints.NONE;
 		add(new JButton("new"), c);
 	}
 }

@@ -46,12 +46,14 @@ public class BPELreceivePanel extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
+		c.fill = GridBagConstraints.NONE;
 		add(new JButton("new"), c);
 
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
+		c.fill = GridBagConstraints.HORIZONTAL;
 		add(new JLabel("Operation:"), c);
 		
 		c.gridx = 1;
@@ -76,6 +78,7 @@ public class BPELreceivePanel extends JPanel{
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
+		c.fill = GridBagConstraints.NONE;
 		add(new JButton("new"), c);
 	}
 	
