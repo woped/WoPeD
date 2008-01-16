@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -27,16 +28,13 @@ import org.woped.editor.controller.vc.EditorVC;
  */
 
 public class EditorOperations extends JPanel {
+	private JPanel 					operationBpelPanel 					 = null;
+	private JPanel                 	operationBpelPreviewPanel            = null;
+	private JLabel                 	operationBpelPreviewLabel            = null;
+	private JButton                	operationBpelPreviewButton           = null;
 	
-	private JPanel                 operationBpelPanel                   = null;
-	
-	private JPanel                 operationBpelPreviewPanel            = null;
-	private JLabel                 operationBpelPreviewLabel            = null;
-	private JButton                operationBpelPreviewButton           = null;
-	
-	//private GridBagConstraints 		c_c = null;
-	//private JPanel                 operationBpelTextPanel               = null;
-	//private JTextField             operationBpelTextField       	    = null;
+	private JDialog					bpelTextDialog 						 = null;
+	private JTextField             	operationBpelTextField       	     = null;
 	
 	private EditorVC               editor;
     
@@ -64,7 +62,7 @@ public class EditorOperations extends JPanel {
     }
 
     
-   /* private JPanel getOperationBpelPanel()
+  private JPanel getOperationBpelPanel()
     {
         if (operationBpelPanel == null)
         {
@@ -79,26 +77,18 @@ public class EditorOperations extends JPanel {
             c.fill = GridBagConstraints.BOTH;
             c.insets = new Insets(0, 0, 0, 0);
             operationBpelPanel.add(getOperationBpelPreviewPanel(), c);
-            /*
-            c.gridx = 1;
-            c.gridy = 0;
-            c.fill = GridBagConstraints.BOTH;
-            c.insets = new Insets(0, 0, 0, 0);
-            operationBpelPanel.add(getOperationBpelTextPanel, c);
-            */
-   /*     }
-
+        }
+		this.operationBpelPanel.setVisible(true);
         return operationBpelPanel;
     }
-   */
+   
     private JPanel getOperationBpelPreviewPanel()
     {
-    	System.out.println("gen bpel-prev-pane");
         if (operationBpelPreviewPanel == null)
         {
         	operationBpelPreviewPanel = new JPanel();
         	operationBpelPreviewPanel.setBorder(BorderFactory
-                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("BPEL Preview ?")), BorderFactory.createEmptyBorder()));
+                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("BPEL Preview")), BorderFactory.createEmptyBorder()));
             operationBpelPreviewPanel.setLayout(new GridBagLayout());
         	GridBagConstraints c = new GridBagConstraints();
 
@@ -126,7 +116,7 @@ public class EditorOperations extends JPanel {
     {
         if (operationBpelPreviewLabel == null)
         {
-        	operationBpelPreviewLabel = new JLabel("Test");
+        	operationBpelPreviewLabel = new JLabel("Press the button beside to preview the BPEL-Code.   ");
         }
         
         return operationBpelPreviewLabel;
@@ -143,14 +133,34 @@ public class EditorOperations extends JPanel {
                 public void actionPerformed(ActionEvent e)
                 {
                 	
+                	String buttonText = e.getActionCommand();
+                    
+                    if ( buttonText.equals("Preview BPEL") ) {
+                       
+                	bpelTextDialog = new JDialog();
+                	bpelTextDialog.setVisible(false);
+                	bpelTextDialog.setTitle("BPEL-Code Preview");
+                	bpelTextDialog.setSize(500,500);
+                	bpelTextDialog.setLocation(150,150);
+                	bpelTextDialog.setLayout(new GridBagLayout());
+					GridBagConstraints c = new GridBagConstraints();
+					
+					c.fill = GridBagConstraints.HORIZONTAL;
+					c.anchor = GridBagConstraints.WEST;
+					c.weightx = 1;
+					c.weighty = 1;
+					
+					c.gridx = 0;
+                    c.gridy = 0;
+                    c.fill = GridBagConstraints.BOTH;
+                    c.insets = new Insets(0, 0, 0, 0);
+                    bpelTextDialog.add(getOperationBpelTextField(), c);
+                    bpelTextDialog.setVisible(true);
+                    
+                	}
                 	
-                	/*
-                	c_c.gridx = 1;
-                    c_c.gridy = 0;
-                    c_c.fill = GridBagConstraints.BOTH;
-                    c_c.insets = new Insets(0, 10, 0, 0);
-                    operationBpelPanel.add(getOperationBpelTextPanel(), c_c);
-                    */
+                	
+                    
                 }
             });
         }
@@ -159,27 +169,7 @@ public class EditorOperations extends JPanel {
     }
     
     
-    /*
-    private JPanel getOperationBpelTextPanel()
-    {
-        if (operationBpelTextPanel == null)
-        {
-        	operationBpelTextPanel = new JPanel();
-        	operationBpelTextPanel.setLayout(new GridBagLayout());
-            GridBagConstraints c = new GridBagConstraints();
-
-            c.weightx = 1;
-            c.weighty = 1;
-            c.gridx = 0;
-            c.gridy = 0;
-            c.fill = GridBagConstraints.BOTH;
-            c.insets = new Insets(0, 0, 0, 0);
-            operationBpelPreviewPanel.add(getOperationBpelTextField(), c);
-        }
-
-        return operationBpelTextPanel;
-    }
-    
+   
     private JTextField getOperationBpelTextField()
     {
         if (operationBpelTextField == null)
@@ -188,8 +178,10 @@ public class EditorOperations extends JPanel {
             SwingUtils.setFixedWidth(operationBpelTextField, 400);
             operationBpelTextField.setText("test...lavi");
             operationBpelTextField.setEditable(false);
+            
         }
-            return operationBpelTextField;
+        operationBpelTextField.setVisible(true);    
+        return operationBpelTextField;
         }
-        */
+        
 }
