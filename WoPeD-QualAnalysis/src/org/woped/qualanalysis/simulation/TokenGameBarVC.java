@@ -410,7 +410,11 @@ public class TokenGameBarVC extends JInternalFrame {
 			   {
 			   	ahxHistoryContent.remove(ahxHistoryContent.size()-1);
 			   }
-			 }  
+			 }
+			 else
+			 {
+				 BackwardTransitionToOccur = null;
+			 }
 		}
 		else
 		{
@@ -730,6 +734,10 @@ public class TokenGameBarVC extends JInternalFrame {
 			TransitionToOccur = BackwardTransitionToOccur;
 		}
   	  }
+	  else
+	  {
+		  BackwardTransitionToOccur = TransitionToOccur;
+	  }
 	  m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 	}
 	
@@ -747,7 +755,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		{
 			while (i != 3)
 			{
-				if(previousActivatedTransitions.size() < 2)
+				if(BackwardTransitionToOccur != null)
 				{
 					occurTransition(BackWard);
 				}
@@ -785,7 +793,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		{
 			if(BackWard)
 			{
-				if(previousActivatedTransitions.size() == 0)
+				if(BackwardTransitionToOccur == null)
 				{
 					ende = true;
 				}
@@ -804,7 +812,7 @@ public class TokenGameBarVC extends JInternalFrame {
 				{
 					if(followingActivatedTransitions.size() >= 2)
 					{
-						index = (int) Math.round(Math.random() * followingActivatedTransitions.size());
+						index = (int) Math.round(Math.random() * (followingActivatedTransitions.size()-1));
 						TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
 						occurTransition(BackWard);
 					}
