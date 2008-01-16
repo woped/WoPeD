@@ -51,11 +51,16 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
+import org.woped.bpel.gui.transitionproperties.Assign;
 import org.woped.bpel.gui.transitionproperties.BPELassignPanel;
 import org.woped.bpel.gui.transitionproperties.BPELinvokePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreceivePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreplyPanel;
 import org.woped.bpel.gui.transitionproperties.BPELwaitPanel;
+import org.woped.bpel.gui.transitionproperties.Invoke;
+import org.woped.bpel.gui.transitionproperties.Receive;
+import org.woped.bpel.gui.transitionproperties.Reply;
+import org.woped.bpel.gui.transitionproperties.Wait;
 import org.woped.core.controller.IDialog;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -89,11 +94,11 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 	private JPanel activityChoosePanel = null;
 	private JComboBox activityChooseComboBox = null;
 	private JLabel activityChooseLabel = null;
-	private JPanel assignPanel = null;
-	private JPanel invokePanel = null;
-	private JPanel receivePanel = null;
-	private JPanel replyPanel = null;
-	private JPanel waitPanel = null;
+	private BPELassignPanel assignPanel = null;
+	private BPELinvokePanel invokePanel = null;
+	private BPELreceivePanel receivePanel = null;
+	private BPELreplyPanel replyPanel = null;
+	private BPELwaitPanel waitPanel = null;
 
 	private GridBagConstraints c1 = new GridBagConstraints();
 	private GridBagConstraints c2 = new GridBagConstraints();
@@ -1760,6 +1765,18 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 												.getString("TransitionEditor.Properties.ResourceError.Title"),
 										JOptionPane.ERROR_MESSAGE);
 					}
+					
+					// save BPEL settings
+					int index = activityChooseComboBox.getSelectedIndex();
+					switch(index){
+						case 0: break;
+						case 1: new Assign().saveInformation(assignPanel); break;
+						case 2: new Invoke().saveInformation(invokePanel); break;
+						case 3: new Receive().saveInformation(receivePanel); break;
+//						case 4: new Reply().saveInformation(replyPanel); break;
+//						case 5: new Wait().saveInformation(waitPanel); break;
+					}
+					
 				}
 			});
 		}

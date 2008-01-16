@@ -193,7 +193,13 @@ public abstract class BPELadditionalPanel extends JPanel{
 	
 	
 	
+
+	
+	
+	//	***************** content getter methods  **************************
 	public String getTransitionName(){
 		return this.transition.getNameValue();
 	}
+	
+	
 }
