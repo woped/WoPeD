@@ -14,6 +14,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import org.woped.core.controller.IDialog;
+import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
 
 import com.toedter.calendar.JCalendar;
@@ -28,11 +30,7 @@ import com.toedter.calendar.JCalendar;
  * Created on 16.12.2007
  */
 
-public class BPELwaitPanel extends JPanel{ //statt JPanel
-
-	private IDialog editor = null;
-	private JPanel contentPanel = null;
-	private GridBagConstraints c_ContentPanel = null;
+public class BPELwaitPanel extends BPELadditionalPanel{
 
 	private ButtonGroup waitButtonGroup = null;
 	private JPanel waitDurationEntry = null;
@@ -46,8 +44,10 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 	private static final String WAIT_DEADLINE = Messages.getString("Transition.Properties.BPEL.Wait.Deadline");
 
 
-	public BPELwaitPanel(){
-
+	public BPELwaitPanel(TransitionPropertyEditor t_editor, TransitionModel transition){
+		
+		super(t_editor, transition);
+		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 

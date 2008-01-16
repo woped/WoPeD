@@ -9,6 +9,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.editor.controller.TransitionPropertyEditor;
+
 /**
  * @author Esther Landes
  * 
@@ -17,9 +20,11 @@ import javax.swing.JPanel;
  * Created on 14.01.2008
  */
 
-public class BPELreplyPanel extends JPanel{
+public class BPELreplyPanel extends BPELadditionalPanel{
 
-	public BPELreplyPanel(){
+	public BPELreplyPanel(TransitionPropertyEditor t_editor, TransitionModel transition){
+		
+		super(t_editor, transition);
 		
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);
@@ -81,4 +86,5 @@ public class BPELreplyPanel extends JPanel{
 		c.fill = GridBagConstraints.NONE;
 		add(new JButton("new"), c);
 	}
+	
 }
