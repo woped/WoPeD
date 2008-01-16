@@ -138,7 +138,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             DefaultEditorFrame frame;
             if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
             {
-                frame = new DefaultEditorFrame((EditorVC) editor, new PetriNetResourceEditor((EditorVC) editor), new EditorOperations(), new EditorData());
+                frame = new DefaultEditorFrame((EditorVC) editor, new PetriNetResourceEditor((EditorVC) editor), new EditorOperations((EditorVC) editor), new EditorData());
             } 
             else
             {
