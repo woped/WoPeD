@@ -8,5 +8,15 @@ public class Wait extends BaseActivity
 	{
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void saveInformation(BPELreplyPanel bip)
+	{
+		
+	}
+	
+	public void setInformation(BPELreplyPanel brp)
+	{
+		
+	}
 
 }
