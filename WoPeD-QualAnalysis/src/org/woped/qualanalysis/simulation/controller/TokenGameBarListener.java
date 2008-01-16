@@ -121,13 +121,13 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		switch(ID)
 		{
 		 case CHOOSE_STEPWISE:
-			 if (RemoteControl.playbackRunning())
+			 if (RemoteControl.tokengameRunning())
 			 {
 				 RemoteControl.setAutoPlayback(false);
 			 }
 			 break;
 		 case CHOOSE_PLAYBACK:
-			 if (RemoteControl.playbackRunning())
+			 if (RemoteControl.tokengameRunning())
 			 {
 				RemoteControl.setAutoPlayback(true);
 			 }
