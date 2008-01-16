@@ -1,32 +1,23 @@
 package org.woped.bpel.datamodel;
 
+import java.util.HashSet;
 import java.util.Iterator;
 
 import org.apache.xmlbeans.XmlObject;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TOnAlarmPick;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TOnMessage;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TPick;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
+import org.woped.bpel.BPEL;
 
 public class PickTransition extends TerminalElement
 {
-	AbstractElement begin;
+	HashSet<AbstractElement> begin;
 	TPick pick = null;
 
-	public PickTransition(AbstractElement begin)
+	public PickTransition(HashSet<AbstractElement> begin)
 	{
 		super("test");
 		this.begin = begin;
 	}
 
-	@Override
 	public boolean equals(AbstractElement e)
 	{
 		if (!PickTransition.class.isInstance(e))
@@ -36,46 +27,64 @@ public class PickTransition extends TerminalElement
 		return true;
 	}
 
-	@Override
 	public TActivity getBpelCode()
 	{		
-		TPick iPick = null;
+		TPick iPick = BPEL.genBpelProsses().addNewPick();
 		XmlObject triggerTransition = null;
 		AbstractElement tmp;
-		Iterator<AbstractElement> list = begin.get_all_post_objects().iterator();		
+		Iterator<AbstractElement> list = begin.iterator();		
 		
 		while (list.hasNext())
 		{
 			tmp = list.next();
+			System.out.println(tmp);
+			
 
 			//1.element
 			if (TimeTriggerTransition.class.isInstance(tmp)){
-				TOnAlarmPick iOnAlarmPick = iPick.addNewOnAlarm();
+					TOnAlarmPick iOnAlarmPick = iPick.addNewOnAlarm();
+					iOnAlarmPick.set(tmp.getBpelCode());
 				
 				//transition case (1.transition)			
-				if(TAssign.class.isInstance(begin.getBpelCode())){
+				if(TPick.class.isInstance(tmp.getBpelCode())){
+					TPick iPickSub = iOnAlarmPick.addNewPick();
+					iPickSub.set(tmp.getBpelCode());			
+				}
+				else if(TSequence.class.isInstance(tmp.getBpelCode())){
+					TSequence iSeq = iOnAlarmPick.addNewSequence();
+					iSeq.set(tmp.getBpelCode());
+				}
+				else if(TIf.class.isInstance(tmp.getBpelCode())){
+					TIf iIf = iOnAlarmPick.addNewIf();
+					iIf.set(tmp.getBpelCode());
+				}
+				else if(TAssign.class.isInstance(tmp.getBpelCode())){
 					TAssign iAss = iOnAlarmPick.addNewAssign();
-					iAss.set(begin.getBpelCode());			
+					iAss.set(tmp.getBpelCode());			
+				}
+				else if(TFlow.class.isInstance(tmp.getBpelCode())){
+					TFlow iFlowSub = iOnAlarmPick.addNewFlow();
+					iFlowSub.set(tmp.getBpelCode());
 				}		
-				else if(TEmpty.class.isInstance(begin.getBpelCode())){
+				else if(TEmpty.class.isInstance(tmp.getBpelCode())){
 					TEmpty iEmpty = iOnAlarmPick.addNewEmpty();
-					iEmpty.set(begin.getBpelCode());
+					iEmpty.set(tmp.getBpelCode());
 				}
-				else if(TWait.class.isInstance(begin.getBpelCode())){
+				else if(TWait.class.isInstance(tmp.getBpelCode())){
 					TWait iWait = iOnAlarmPick.addNewWait();
-					iWait.set(begin.getBpelCode());
+					iWait.set(tmp.getBpelCode());
 				}
-				else if(TReceive.class.isInstance(begin.getBpelCode())){
+				else if(TReceive.class.isInstance(tmp.getBpelCode())){
 					TReceive iReceive = iOnAlarmPick.addNewReceive();
-					iReceive.set(begin.getBpelCode());
+					iReceive.set(tmp.getBpelCode());
 				}
-				else if(TReply.class.isInstance(begin.getBpelCode())){
+				else if(TReply.class.isInstance(tmp.getBpelCode())){
 					TReply iReply = iOnAlarmPick.addNewReply();
-					iReply.set(begin.getBpelCode());
+					iReply.set(tmp.getBpelCode());
 				}
-				else if(TInvoke.class.isInstance(begin.getBpelCode())){
+				else if(TInvoke.class.isInstance(tmp.getBpelCode())){
 					TInvoke iInvoke = iOnAlarmPick.addNewInvoke();
-					iInvoke.set(begin.getBpelCode());
+					iInvoke.set(tmp.getBpelCode());
 				}
 				triggerTransition = iOnAlarmPick;
 			}
@@ -83,35 +92,51 @@ public class PickTransition extends TerminalElement
 				TOnMessage iOnMessage = iPick.addNewOnMessage();
 				
 				//transition case (1.transition)			
-				if(TAssign.class.isInstance(begin.getBpelCode())){
+				if(TPick.class.isInstance(tmp.getBpelCode())){
+					TPick iPickSub = iOnMessage.addNewPick();
+					iPickSub.set(tmp.getBpelCode());			
+				}
+				else if(TSequence.class.isInstance(tmp.getBpelCode())){
+					TSequence iSeq = iOnMessage.addNewSequence();
+					iSeq.set(tmp.getBpelCode());
+				}
+				else if(TIf.class.isInstance(tmp.getBpelCode())){
+					TIf iIf = iOnMessage.addNewIf();
+					iIf.set(tmp.getBpelCode());
+				}
+				else if(TAssign.class.isInstance(tmp.getBpelCode())){
 					TAssign iAss = iOnMessage.addNewAssign();
-					iAss.set(begin.getBpelCode());			
+					iAss.set(tmp.getBpelCode());			
+				}
+				else if(TFlow.class.isInstance(tmp.getBpelCode())){
+					TFlow iFlowSub = iOnMessage.addNewFlow();
+					iFlowSub.set(tmp.getBpelCode());
 				}		
-				else if(TEmpty.class.isInstance(begin.getBpelCode())){
+				else if(TEmpty.class.isInstance(tmp.getBpelCode())){
 					TEmpty iEmpty = iOnMessage.addNewEmpty();
-					iEmpty.set(begin.getBpelCode());
+					iEmpty.set(tmp.getBpelCode());
 				}
-				else if(TWait.class.isInstance(begin.getBpelCode())){
+				else if(TWait.class.isInstance(tmp.getBpelCode())){
 					TWait iWait = iOnMessage.addNewWait();
-					iWait.set(begin.getBpelCode());
+					iWait.set(tmp.getBpelCode());
 				}
-				else if(TReceive.class.isInstance(begin.getBpelCode())){
+				else if(TReceive.class.isInstance(tmp.getBpelCode())){
 					TReceive iReceive = iOnMessage.addNewReceive();
-					iReceive.set(begin.getBpelCode());
+					iReceive.set(tmp.getBpelCode());
 				}
-				else if(TReply.class.isInstance(begin.getBpelCode())){
+				else if(TReply.class.isInstance(tmp.getBpelCode())){
 					TReply iReply = iOnMessage.addNewReply();
-					iReply.set(begin.getBpelCode());
+					iReply.set(tmp.getBpelCode());
 				}
-				else if(TInvoke.class.isInstance(begin.getBpelCode())){
+				else if(TInvoke.class.isInstance(tmp.getBpelCode())){
 					TInvoke iInvoke = iOnMessage.addNewInvoke();
-					iInvoke.set(begin.getBpelCode());
+					iInvoke.set(tmp.getBpelCode());
 				}
 				triggerTransition = iOnMessage;
 			}				
 			
 			
-			//place between the transitions
+			/*//place between the transitions
 			tmp = tmp.get_first_post_element();
 			
 			//3.element
@@ -173,7 +198,7 @@ public class PickTransition extends TerminalElement
 					TInvoke iInvoke = onMessage.addNewInvoke();
 					iInvoke.set(begin.getBpelCode());
 				}
-			}			
+			}*/			
 		}
 		this.pick = iPick;
 		return pick;
