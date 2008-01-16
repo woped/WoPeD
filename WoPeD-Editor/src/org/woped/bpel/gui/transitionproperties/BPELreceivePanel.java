@@ -12,6 +12,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
@@ -30,11 +31,10 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 	JComboBox variableComboBox = null;
 	JButton newVariableButton = null;
 	
-	TransitionPropertyEditor t_editor = null;
 	
-	public BPELreceivePanel(TransitionPropertyEditor t_editor){
+	public BPELreceivePanel(TransitionPropertyEditor t_editor, TransitionModel transition){
 		
-		super(t_editor);
+		super(t_editor, transition);
 		
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);
@@ -144,6 +144,25 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 			
 		}
 		return newVariableButton;
+	}
+	
+	
+	public String getPartnerLinkContent(){
+		if (partnerLinkComboBox.getSelectedItem() == null)
+			return null;
+		return partnerLinkComboBox.getSelectedItem().toString();
+	}
+	
+	public String getOperationContent(){
+		if (operationComboBox.getSelectedItem() == null)
+			return null;
+		return operationComboBox.getSelectedItem().toString();
+	}
+	
+	public String getVariableContent(){
+		if (variableComboBox.getSelectedItem() == null)
+			return null;
+		return variableComboBox.getSelectedItem().toString();
 	}
 	
 }

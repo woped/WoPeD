@@ -1574,7 +1574,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void showAssignPanel(){
 		if (assignPanel == null){
-			assignPanel = new BPELassignPanel(this);
+			assignPanel = new BPELassignPanel(this, this.transition);
 			assignPanel.setBorder(BorderFactory
 					.createCompoundBorder(
 							BorderFactory
@@ -1603,7 +1603,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void showInvokePanel(){
 		if (invokePanel == null){
-			invokePanel = new BPELinvokePanel(this);
+			invokePanel = new BPELinvokePanel(this, this.transition);
 			invokePanel.setBorder(BorderFactory
 					.createCompoundBorder(
 							BorderFactory
@@ -1631,7 +1631,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void showReceivePanel(){
 		if (receivePanel == null){
-			receivePanel = new BPELreceivePanel(this);
+			receivePanel = new BPELreceivePanel(this, this.transition);
 			receivePanel.setBorder(BorderFactory
 					.createCompoundBorder(
 							BorderFactory
@@ -1659,7 +1659,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void showReplyPanel(){
 		if (replyPanel == null){
-			replyPanel = new BPELreplyPanel();
+			replyPanel = new BPELreplyPanel(this, this.transition);
 			replyPanel.setBorder(BorderFactory
 					.createCompoundBorder(
 							BorderFactory
@@ -1687,7 +1687,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void showWaitPanel(){
 		if (waitPanel == null){
-			waitPanel = new BPELwaitPanel();
+			waitPanel = new BPELwaitPanel(this, this.transition);
 			waitPanel.setBorder(BorderFactory
 					.createCompoundBorder(
 							BorderFactory

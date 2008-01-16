@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.translations.Messages;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.*;
 
 
@@ -40,12 +41,10 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	JComboBox outVariableComboBox = null;
 	JButton newOutVariableButton = null;
 	
-	TransitionPropertyEditor t_editor = null;
 	
-	
-	public BPELinvokePanel(TransitionPropertyEditor t_editor){
+	public BPELinvokePanel(TransitionPropertyEditor t_editor, TransitionModel transition){
 		
-		super(t_editor);
+		super(t_editor, transition);
 		
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);

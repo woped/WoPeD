@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
 public abstract class BPELadditionalPanel extends JPanel{
@@ -19,9 +20,12 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JDialog dialogVariable = null;
 	JDialog dialogPartner = null;
 	JPanel dialogButtons = null;
+
+	TransitionModel transition = null;
 	
-	public BPELadditionalPanel(TransitionPropertyEditor t_editor){
+	public BPELadditionalPanel(TransitionPropertyEditor t_editor, TransitionModel transition){
 		this.t_editor = t_editor;
+		this.transition = transition;
 	}
 
 	
@@ -187,4 +191,9 @@ public abstract class BPELadditionalPanel extends JPanel{
 		return dialogButtons;
 	}
 	
+	
+	
+	public String getTransitionName(){
+		return this.transition.getNameValue();
+	}
 }

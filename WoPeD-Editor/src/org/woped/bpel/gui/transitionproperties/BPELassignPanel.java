@@ -1,5 +1,6 @@
 package org.woped.bpel.gui.transitionproperties;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -8,9 +9,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
@@ -28,12 +31,11 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	JComboBox toVariableComboBox = null;
 	JButton newToVariableButton = null;
 	
-	TransitionPropertyEditor t_editor;
+	JDialog dialogPartner = null;
 	
-	
-	public BPELassignPanel(TransitionPropertyEditor t_editor){
+	public BPELassignPanel(TransitionPropertyEditor t_editor, TransitionModel transition){
 		
-		super(t_editor);
+		super(t_editor,transition);
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -110,6 +112,8 @@ public class BPELassignPanel extends BPELadditionalPanel{
 			newFromVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					showNewVariableDialog();
+//					dialogPartner = showNewVariableDialog(dialogPartner);
+//					dialogPartner.setVisible(true);
 				}
 			});
 		}
@@ -132,9 +136,21 @@ public class BPELassignPanel extends BPELadditionalPanel{
 					showNewVariableDialog();
 				}
 			});
-			
+			getFromVariableContent();
 		}
 		return newToVariableButton;
+	}
+	
+	public String getFromVariableContent(){
+		if (fromVariableComboBox.getSelectedItem() == null)
+			return null;
+		return fromVariableComboBox.getSelectedItem().toString();
+	}
+	
+	public String getToVariableContent(){
+		if (toVariableComboBox.getSelectedItem() == null)
+			return null;
+		return toVariableComboBox.getSelectedItem().toString();
 	}
 	
 }
