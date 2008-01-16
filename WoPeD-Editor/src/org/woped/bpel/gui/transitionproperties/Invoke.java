@@ -20,22 +20,22 @@ public class Invoke extends BaseActivity
 		//erzeuge XML-Baum
 		TProcess p = BaseActivity.genBpelProsses();
 		TInvoke invoke = p.addNewInvoke();
-		//invoke.setPartnerLink(bip.getPartnerLink());
-		//invoke.setOperation(bip.getOperation());
-		//invoke.setPortType(bip.getPortType());????
-		//invoke.setInputVariable(bip.getInputVariable());
-		//invoke.setOutputVariable(bip.getInputVariable());
+		invoke.setPartnerLink(bip.getPartnerLink());
+		invoke.setOperation(bip.getOperation());
+		//invoke.setPortType(bip.getPortType());
+		invoke.setInputVariable(bip.getInVariable());
+		invoke.setOutputVariable(bip.getInVariable());
 	}
 	
 	public void setInformation(BPELinvokePanel bip)
 	{
 		TInvoke invoke = (TInvoke) this.getActivity();
 		
-		//bip.setPartnerLink(invoke.getPartnerLink());
-		//bip.setOperation(invoke.getOperation());
+		bip.setPartnerLink(invoke.getPartnerLink());
+		bip.setOperation(invoke.getOperation());
 		//bip.setPortType(invoke.getPortType());
-		//bip.setInputVariable(invoke.getInputVariable());
-		//bip.setOutputVariable(invoke.getOutputVariable());
+		bip.setInVariable(invoke.getInputVariable());
+		bip.setOutVariable(invoke.getOutputVariable());
 	}
 
 }
