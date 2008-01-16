@@ -96,7 +96,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 	private JPanel waitPanel = null;
 
 	private GridBagConstraints c1 = new GridBagConstraints();
-	private GridBagConstraints c2 = new GridBagConstraints(); //Test
+	private GridBagConstraints c2 = new GridBagConstraints();
 
 	// Name
 	private JPanel namePanel = null;
