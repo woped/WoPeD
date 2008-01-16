@@ -3,6 +3,8 @@ package org.woped.bpel.gui.transitionproperties;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,6 +24,13 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 
 public class BPELreplyPanel extends BPELadditionalPanel{
 
+	JComboBox partnerLinkComboBox = null;
+	JButton newPartnerLinkButton = null;
+	JComboBox operationComboBox = null;
+	JComboBox variableComboBox = null;
+	JButton newVariableButton = null;
+	
+	
 	public BPELreplyPanel(TransitionPropertyEditor t_editor, TransitionModel transition){
 		
 		super(t_editor, transition);
@@ -45,14 +54,14 @@ public class BPELreplyPanel extends BPELadditionalPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JComboBox(), c);
+		add(getPartnerLinkComboBox(), c);
 		
 		c.gridx = 2;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
-		add(new JButton("new"), c);
+		add(getNewPartnerLinkButton(), c);
 
 		c.gridx = 0;
 		c.gridy = 1;
@@ -65,7 +74,7 @@ public class BPELreplyPanel extends BPELadditionalPanel{
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JComboBox(), c);
+		add(getOperationComboBox(), c);
 		
 		c.gridx = 0;
 		c.gridy = 2;
@@ -77,14 +86,83 @@ public class BPELreplyPanel extends BPELadditionalPanel{
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JComboBox(), c);
+		add(getVariableComboBox(), c);
 		
 		c.gridx = 2;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
-		add(new JButton("new"), c);
+		add(getNewVariableButton(), c);
 	}
 	
+	
+	private JComboBox getPartnerLinkComboBox(){
+		if (partnerLinkComboBox == null) {
+			partnerLinkComboBox = new JComboBox();
+		}
+		return partnerLinkComboBox;
+	}
+	
+	private JButton getNewPartnerLinkButton(){
+		if (newPartnerLinkButton == null) {
+			newPartnerLinkButton = new JButton("new");		
+			
+			newPartnerLinkButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					showNewPartnerLinkDialog();
+				}
+			});
+		}
+		return newPartnerLinkButton;
+	}
+	
+	private JComboBox getOperationComboBox(){
+		if (operationComboBox == null) {
+			operationComboBox = new JComboBox();
+		}
+		return operationComboBox;
+	}
+	
+	private JComboBox getVariableComboBox(){
+		if (variableComboBox == null) {
+			variableComboBox = new JComboBox();
+		}
+		return variableComboBox;
+	}
+	
+	private JButton getNewVariableButton(){
+		if (newVariableButton == null) {
+			newVariableButton = new JButton("new");
+			
+			newVariableButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					showNewVariableDialog();
+				}
+			});
+			
+		}
+		return newVariableButton;
+	}
+	
+	
+	//	***************** content getter methods  **************************
+	
+	public String getPartnerLinkContent(){
+		if (partnerLinkComboBox.getSelectedItem() == null)
+			return null;
+		return partnerLinkComboBox.getSelectedItem().toString();
+	}
+	
+	public String getOperationContent(){
+		if (operationComboBox.getSelectedItem() == null)
+			return null;
+		return operationComboBox.getSelectedItem().toString();
+	}
+	
+	public String getVariableContent(){
+		if (variableComboBox.getSelectedItem() == null)
+			return null;
+		return variableComboBox.getSelectedItem().toString();
+	}
 }
