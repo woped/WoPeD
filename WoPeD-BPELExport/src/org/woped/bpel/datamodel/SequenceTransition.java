@@ -1,21 +1,13 @@
 package org.woped.bpel.datamodel;
 
-import javax.xml.crypto.dsig.XMLObject;
-
-import org.apache.xmlbeans.XmlCursor;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TFlow;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TIf;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TPick;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
-import org.woped.core.model.petrinet.Assign;
-import org.woped.bpel.*;
+import org.woped.bpel.BPEL;
 public class SequenceTransition extends TerminalElement
 {
 	AbstractElement begin;
