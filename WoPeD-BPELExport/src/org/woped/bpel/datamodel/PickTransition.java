@@ -43,7 +43,6 @@ public class PickTransition extends TerminalElement
 			//1.element
 			if (TimeTriggerTransition.class.isInstance(tmp)){
 					TOnAlarmPick iOnAlarmPick = iPick.addNewOnAlarm();
-					iOnAlarmPick.set(tmp.getBpelCode());
 				
 				//transition case (1.transition)			
 				if(TPick.class.isInstance(tmp.getBpelCode())){
