@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,9 +16,13 @@ import javax.swing.JTextField;
 import org.woped.core.controller.IDialog;
 import org.woped.translations.Messages;
 
+import com.toedter.calendar.JCalendar;
+
 /**
- * @author Esther Landes
- * 
+ * @author Esther Landes / Kristian Kindler
+ *
+ * Still in development phase.
+ *
  * This is a panel in the transition properties, which enables the user to maintain data for a "wait" BPEL activity.
  *
  * Created on 16.12.2007
@@ -29,7 +33,7 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 	private IDialog editor = null;
 	private JPanel contentPanel = null;
 	private GridBagConstraints c_ContentPanel = null;
-	
+
 	private ButtonGroup waitButtonGroup = null;
 	private JPanel waitDurationEntry = null;
 	private JPanel waitDeadlineEntry = null;
@@ -37,20 +41,20 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 	private JRadioButton waitDeadlineRadioButton = null;
 	private JLabel timeLabel = null;
 	private JTextField timeTextField = null;
-	
+
 	private static final String WAIT_DURATION = Messages.getString("Transition.Properties.BPEL.Wait.Duration");
 	private static final String WAIT_DEADLINE = Messages.getString("Transition.Properties.BPEL.Wait.Deadline");
-	
-	
+
+
 	public BPELwaitPanel(){
-		
+
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
 		waitButtonGroup = new ButtonGroup();
 		waitButtonGroup.add(getWaitDurationRadioButton());
 		waitButtonGroup.add(getWaitDeadlineRadioButton());
-		
+
 		c.weightx = 1;
 		c.weighty = 1;
 		c.anchor = GridBagConstraints.WEST;
@@ -67,20 +71,40 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 2, 0, 10);
 		add(getWaitDeadlineEntry(), c);
-		
+
 		c.gridx = 3;
 		c.gridy = 0;
 		c.gridwidth = 1;
-		c.insets = new Insets(0, 20, 0, 0);
-		add(getTimeLabel(), c);
-		
+		c.insets = new Insets(0, 2, 0, 10);
+		add(new JPanel(), c);
+
 		c.gridx = 4;
 		c.gridy = 0;
 		c.gridwidth = 1;
-		c.insets = new Insets(0, 10, 0, 10);
-		add(getTimeTextField(), c);
+		c.insets = new Insets(0, 2, 0, 10);
+		add(new JPanel(), c);
+
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 2;
+		add(new JCalendar(), c);
+
+
+		c.gridx = 0;
+		c.gridy = 2;
+		c.gridwidth = 2;
+		JPanel zeit = new JPanel();
+		zeit.setLayout(new GridLayout(2,3));
+			zeit.add(new JLabel("Hours"));
+			zeit.add(new JLabel("Minutes"));
+			zeit.add(new JLabel("Seconds"));
+			zeit.add(new JTextField("12"));
+			zeit.add(new JTextField("26"));
+			zeit.add(new JTextField("16"),c);
+		add(zeit, c);
+
 	}
-	
+
 	private JPanel getWaitDurationEntry() {
 		if (waitDurationEntry == null) {
 			waitDurationEntry = new JPanel();
@@ -98,7 +122,7 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 
 		return waitDurationEntry;
 	}
-	
+
 	private JPanel getWaitDeadlineEntry() {
 		if (waitDeadlineEntry == null) {
 			waitDeadlineEntry = new JPanel();
@@ -115,7 +139,7 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 
 		return waitDeadlineEntry;
 	}
-	
+
 	private JRadioButton getWaitDurationRadioButton(){
 			if (waitDurationRadioButton == null) {
 				waitDurationRadioButton = new JRadioButton(WAIT_DURATION);
@@ -124,7 +148,7 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 			}
 			return waitDurationRadioButton;
 	}
-	
+
 	private JRadioButton getWaitDeadlineRadioButton(){
 		if (waitDeadlineRadioButton == null) {
 			waitDeadlineRadioButton = new JRadioButton(WAIT_DEADLINE);
@@ -133,7 +157,7 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 		}
 		return waitDeadlineRadioButton;
 	}
-	
+
 	private JLabel getTimeLabel(){
 		if (timeLabel == null)
         {
@@ -142,7 +166,7 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 
         return timeLabel;
 	}
-	
+
 	private JTextField getTimeTextField() {
 		if (timeTextField == null) {
 			timeTextField = new JTextField();
@@ -169,5 +193,5 @@ public class BPELwaitPanel extends JPanel{ //statt JPanel
 
 		return timeTextField;
 }
-	
+
 }
