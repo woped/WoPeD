@@ -86,7 +86,7 @@ public class Marking {
 		while (isGreater && currentThisMarking.hasNext()) {
 			int currint= (Integer) currentThisMarking.next();
 			int otherint=(Integer) currentOtherMarking.next();
-			if(currint>=otherint&&otherint!=0){
+			if((currint>=otherint&&otherint!=0)||(currint<=otherint&&currint!=0)){
 				isGreater=true;
 			}
 			else if(currint==otherint){
