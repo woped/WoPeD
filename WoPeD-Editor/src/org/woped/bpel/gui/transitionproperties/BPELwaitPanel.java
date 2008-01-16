@@ -190,6 +190,11 @@ public class BPELwaitPanel extends BPELadditionalPanel{
 				}
 			});*/
 		}
+		
+		//setFor
+		//setUntil
+		//getFor
+		//getUntil
 
 		return timeTextField;
 }
