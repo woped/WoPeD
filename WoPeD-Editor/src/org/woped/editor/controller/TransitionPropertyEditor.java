@@ -81,6 +81,7 @@ import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
 public class TransitionPropertyEditor extends JDialog implements ActionListener, IDialog {
+	
 	// General
 	private TransitionModel transition = null;
 
