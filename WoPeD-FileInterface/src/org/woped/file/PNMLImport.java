@@ -52,6 +52,7 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
+import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
@@ -60,6 +61,7 @@ import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 import org.woped.pnml.ArcType;
+import org.woped.pnml.FiredtransitionType;
 import org.woped.pnml.NetType;
 import org.woped.pnml.OrganizationUnitType;
 import org.woped.pnml.PlaceType;
@@ -68,6 +70,8 @@ import org.woped.pnml.PnmlType;
 import org.woped.pnml.ResourceMappingType;
 import org.woped.pnml.ResourceType;
 import org.woped.pnml.RoleType;
+import org.woped.pnml.SimulationType;
+import org.woped.pnml.SimulationsType;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.NetType.Page;
 
@@ -213,10 +217,12 @@ public class PNMLImport
         Dimension dim;
         Point location;
         PetriNetModelProcessor currentPetrinet;
+        SimulationType[] simulations;
 
         for (int i = 0; i < pnml.getNetArray().length; i++)
         {
-            currentNet = pnml.getNetArray(i);
+            simulations = null;
+        	currentNet = pnml.getNetArray(i);
             editor[i] = mediator.createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
             if (((WoPeDUndoManager) editor[i].getGraph().getUndoManager()) != null)
             {
@@ -293,6 +299,14 @@ public class PNMLImport
                                 currentPetrinet.addResourceMapping(resourceMaps[n].getResourceClass(), resourceMaps[n].getResourceID());
                             }
                         }
+                        if(currentNet.getToolspecificArray(j).isSetSimulations())
+                        {
+                        	// only save the simulationsarray to local variable here - the import itself 
+                        	// has to be done after import of the transitions because the simulation
+                        	// references transitions (which otherwise result in 'null')
+                        	// see "importSimulations([...])" below
+                        	simulations = currentNet.getToolspecificArray(j).getSimulations().getSimulationArray();
+                        }
                     } else
                     {
                         currentPetrinet.addUnknownToolSpecs(currentNet.getToolspecificArray(j));
@@ -315,6 +329,12 @@ public class PNMLImport
             
             // Import the net into the current ModelElementContainer
             importNet(currentNet, editor[i].getModelProcessor().getElementContainer());
+            
+            // Import the simulations if any exist
+            if(simulations!=null)
+            {
+            	importSimulations(simulations, currentPetrinet);
+            }
             
             // Now build the graph from the ModelElementContainer
             getEditor()[i].getGraph().drawNet(editor[i].getModelProcessor());
@@ -743,6 +763,45 @@ public class PNMLImport
                 warnings.add("- SKIP ARC: Exception while importing important information.");
             }
         }
+    }
+    
+    private void importSimulations(SimulationType[] simulations, PetriNetModelProcessor currentPetrinet)
+    {
+    	SimulationModel currSimulation;
+    	String currSimulationID;
+    	int greatestSimulationIDnumber = 0;
+    	for (int k = 0; k<simulations.length; k++)
+    	{
+    		currSimulationID = simulations[k].getId();
+    		FiredtransitionType[] firedTransitions = simulations[k].getTransitionsequence().getFiredtransitionArray();
+    		Vector<TransitionModel> currentTransitions = new Vector<TransitionModel>();
+    		for(int l = 0; l<firedTransitions.length;l++)
+    		{
+    			currentTransitions.add((TransitionModel) currentPetrinet.getElementContainer().getElementById(firedTransitions[l].getTransitionID()));
+    		}
+    		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions);
+    		// TODO: Add Import for Nethash
+    		currentPetrinet.addSimulation(currSimulation);
+    		LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ")imported");
+    		try
+    		{
+    			int idNumber = Integer.parseInt(currSimulationID.substring(1));
+    			// select largest simulation-id number to correctly set the simulationcounter
+    			if(idNumber>greatestSimulationIDnumber)
+    			{
+    				greatestSimulationIDnumber = idNumber;
+    			}
+    		}
+    		catch(NumberFormatException nfe)
+    		{
+    			// if a simulationID doesn't have a correct format (like 's1', 's13',...) increment
+    			// the counter by one to avoid ID-conflicts. In the worst case this only leads to an unused id
+    			greatestSimulationIDnumber ++;
+    			LoggerManager.debug(Constants.FILE_LOGGER, "WARNING - INVALID SIMULATION-ID FOUND: found a malformed simulation-id (ID: " + currSimulationID + ")");
+    			//warnings.add("- INVALID SIMULATION-ID FOUND: found a malformed simulation-id (ID: " + currSimulationID + ")");
+    		}
+    	}
+    	currentPetrinet.setSimulationCounter(greatestSimulationIDnumber);
     }
 
     private boolean isOperator(ModelElementContainer elementContainer, String elementId) throws Exception
