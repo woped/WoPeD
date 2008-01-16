@@ -46,74 +46,80 @@ public class SequenceTransition extends TerminalElement
 		if(this.seq != null) return this.seq;
 		TSequence iSeq= null;
 		
+		
+		//1.transition
 		//if the 1.transition is a SequenceTransition
-		if (SequenceTransition.class.isInstance(begin))
-			iSeq = (TSequence)begin.getBpelCode();			
+		if (SequenceTransition.class.isInstance(begin)){
+			iSeq = (TSequence)begin.getBpelCode();	
+		}	
 		else{ 
 			iSeq = BPEL.genBpelProsses().addNewSequence();
-		}		
-		
-		//transitions case (1.transition)		
-		if(TAssign.class.isInstance(begin.getBpelCode())){
-			TAssign iAss = iSeq.addNewAssign();
-			iAss.set(begin.getBpelCode());			
-		}		
-		else if(TEmpty.class.isInstance(begin.getBpelCode())){
-			TEmpty iEmpty = iSeq.addNewEmpty();
-			iEmpty.set(begin.getBpelCode());
-		}
-		else if(TWait.class.isInstance(begin.getBpelCode())){
-			TWait iWait = iSeq.addNewWait();
-			iWait.set(begin.getBpelCode());
-		}
-		else if(TReceive.class.isInstance(begin.getBpelCode())){
-			TReceive iReceive = iSeq.addNewReceive();
-			iReceive.set(begin.getBpelCode());
-		}
-		else if(TReply.class.isInstance(begin.getBpelCode())){
-			TReply iReply = iSeq.addNewReply();
-			iReply.set(begin.getBpelCode());
-		}
-		else if(TInvoke.class.isInstance(begin.getBpelCode())){
-			TInvoke iInvoke = iSeq.addNewInvoke();
-			iInvoke.set(begin.getBpelCode());
-		}	
+			//transitions case (1.transition)		
+			if(TAssign.class.isInstance(begin.getBpelCode())){
+				TAssign iAss = iSeq.addNewAssign();
+				iAss.set(begin.getBpelCode());			
+			}		
+			else if(TEmpty.class.isInstance(begin.getBpelCode())){
+				TEmpty iEmpty = iSeq.addNewEmpty();
+				iEmpty.set(begin.getBpelCode());
+			}
+			else if(TWait.class.isInstance(begin.getBpelCode())){
+				TWait iWait = iSeq.addNewWait();
+				iWait.set(begin.getBpelCode());
+			}
+			else if(TReceive.class.isInstance(begin.getBpelCode())){
+				TReceive iReceive = iSeq.addNewReceive();
+				iReceive.set(begin.getBpelCode());
+			}
+			else if(TReply.class.isInstance(begin.getBpelCode())){
+				TReply iReply = iSeq.addNewReply();
+				iReply.set(begin.getBpelCode());
+			}
+			else if(TInvoke.class.isInstance(begin.getBpelCode())){
+				TInvoke iInvoke = iSeq.addNewInvoke();
+				iInvoke.set(begin.getBpelCode());
+			}				
+		}			
 		
 		//place between transitions
-		AbstractElement tmp = begin.get_first_post_element();
+		AbstractElement tmp = begin.get_first_post_element();		
+		
 		
 		//2.transition
 		tmp = tmp.get_first_post_element();	
 		
 		//if the 2.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(tmp)){
-			TSequence helpSequence = (TSequence)tmp.getBpelCode();			
+			TSequence helpSequence = (TSequence)tmp.getBpelCode();
+			iSeq.set(helpSequence);
 		}
 		
-		//transitions case (2.transition)
-		if(TAssign.class.isInstance(begin.getBpelCode())){
-			TAssign iAss = iSeq.addNewAssign();
-			iAss.set(begin.getBpelCode());			
-		}		
-		else if(TEmpty.class.isInstance(begin.getBpelCode())){
-			TEmpty iEmpty = iSeq.addNewEmpty();
-			iEmpty.set(begin.getBpelCode());
-		}
-		else if(TWait.class.isInstance(begin.getBpelCode())){
-			TWait iWait = iSeq.addNewWait();
-			iWait.set(begin.getBpelCode());
-		}
-		else if(TReceive.class.isInstance(begin.getBpelCode())){
-			TReceive iReceive = iSeq.addNewReceive();
-			iReceive.set(begin.getBpelCode());
-		}
-		else if(TReply.class.isInstance(begin.getBpelCode())){
-			TReply iReply = iSeq.addNewReply();
-			iReply.set(begin.getBpelCode());
-		}
-		else if(TInvoke.class.isInstance(begin.getBpelCode())){
-			TInvoke iInvoke = iSeq.addNewInvoke();
-			iInvoke.set(begin.getBpelCode());
+		else{			
+			//transitions case (2.transition)		
+			if(TAssign.class.isInstance(tmp.getBpelCode())){
+				TAssign iAss = iSeq.addNewAssign();
+				iAss.set(tmp.getBpelCode());			
+			}		
+			else if(TEmpty.class.isInstance(tmp.getBpelCode())){
+				TEmpty iEmpty = iSeq.addNewEmpty();
+				iEmpty.set(tmp.getBpelCode());
+			}
+			else if(TWait.class.isInstance(tmp.getBpelCode())){
+				TWait iWait = iSeq.addNewWait();
+				iWait.set(tmp.getBpelCode());
+			}
+			else if(TReceive.class.isInstance(tmp.getBpelCode())){
+				TReceive iReceive = iSeq.addNewReceive();
+				iReceive.set(tmp.getBpelCode());
+			}
+			else if(TReply.class.isInstance(tmp.getBpelCode())){
+				TReply iReply = iSeq.addNewReply();
+				iReply.set(tmp.getBpelCode());
+			}
+			else if(TInvoke.class.isInstance(tmp.getBpelCode())){
+				TInvoke iInvoke = iSeq.addNewInvoke();
+				iInvoke.set(tmp.getBpelCode());
+			}		
 		}		
 		
 		this.seq = iSeq;
