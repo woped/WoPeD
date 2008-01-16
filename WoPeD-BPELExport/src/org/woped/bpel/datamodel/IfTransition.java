@@ -44,8 +44,7 @@ public class IfTransition extends TerminalElement
 		{
 			tmp = list.next();
 			tmp=tmp.get_first_post_element();			
-			
-			iIf.	
+				
 			//transition case
 				//tmp = tmp.get_first_post_element();
 				if(TPick.class.isInstance(tmp.getBpelCode())){
