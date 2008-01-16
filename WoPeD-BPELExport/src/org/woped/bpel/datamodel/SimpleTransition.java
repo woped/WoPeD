@@ -26,8 +26,9 @@ public class SimpleTransition extends Transition<TransitionModel>
 	public TActivity getBpelCode()
 	{
 		if(this.bpel != null) return this.bpel;
-		TAssign t = BPEL.genBpelProsses().addNewAssign();	
-		t.setName("Test-Assign");
+		TAssign t = BPEL.genBpelProsses().addNewAssign();
+		
+		t.setName(this.getData().getNameValue());
 		this.bpel = t;
 		return this.bpel;
 	}
