@@ -1605,7 +1605,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void showInvokePanel(){
 		if (invokePanel == null){
-			invokePanel = new BPELinvokePanel();
+			invokePanel = new BPELinvokePanel(this);
 			invokePanel.setBorder(BorderFactory
 					.createCompoundBorder(
 							BorderFactory
