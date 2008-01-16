@@ -150,22 +150,40 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 	
 	//	***************** content getter methods  **************************
 	
-	public String getPartnerLinkContent(){
+	public String getPartnerLink(){
 		if (partnerLinkComboBox.getSelectedItem() == null)
 			return null;
 		return partnerLinkComboBox.getSelectedItem().toString();
 	}
 	
-	public String getOperationContent(){
+	public String getOperation(){
 		if (operationComboBox.getSelectedItem() == null)
 			return null;
 		return operationComboBox.getSelectedItem().toString();
 	}
 	
-	public String getVariableContent(){
+	public String getVariable(){
 		if (variableComboBox.getSelectedItem() == null)
 			return null;
 		return variableComboBox.getSelectedItem().toString();
+	}
+
+
+	public void setPartnerLink(String partnerLink) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void setOperation(String operation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void setVariable(String variable) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

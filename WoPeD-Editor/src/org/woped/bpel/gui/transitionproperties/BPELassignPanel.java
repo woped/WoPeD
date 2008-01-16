@@ -157,4 +157,20 @@ public class BPELassignPanel extends BPELadditionalPanel{
 		return toVariableComboBox.getSelectedItem().toString();
 	}
 	
+//	***************** content setter methods  **************************
+	
+	public void setFromVariable(String variable){
+		if (fromVariableComboBox.getSelectedItem() == null){
+			
+		}
+			
+	}
+	
+	public void setToVariable(){
+		if (toVariableComboBox.getSelectedItem() == null){
+			
+		}
+			
+	}
+	
 }

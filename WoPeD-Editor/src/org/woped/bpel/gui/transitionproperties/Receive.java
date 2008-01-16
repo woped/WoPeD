@@ -20,24 +20,17 @@ public class Receive extends BaseActivity
 		
 		TProcess p = BaseActivity.genBpelProsses();
 		TReceive receive = p.addNewReceive();
-		/*receive.setPartnerLink(brp.getPartnerLink());
-		receive.setPortType(brp.getPortType());
+		receive.setPartnerLink(brp.getPartnerLink());
 		receive.setOperation(brp.getOperation());
 		receive.setVariable(brp.getVariable());
-		receive.setCreateInstance();*/
 		this.setActivity(receive);
 	}
 	
 	public void setInformation(BPELreceivePanel brp){
 		
 		TReceive receive = (TReceive)this.getActivity();
-		/*brp.setPartnerLink(receive.getPartnerLink());
-		brp.setPortType(receive.getPortType());
+		brp.setPartnerLink(receive.getPartnerLink());
 		brp.setOperation(receive.getOperation());
-		brp.setVariable(receive.getVariable());
-		brp.setCreateInstance(receive.getCreateInstance());*/
+		brp.setVariable(receive.getVariable());		
 	}
-	
-	
-
 }
