@@ -88,7 +88,7 @@ public class EditorOperations extends JPanel {
         {
         	operationBpelPreviewPanel = new JPanel();
         	operationBpelPreviewPanel.setBorder(BorderFactory
-                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("BPEL Preview")), BorderFactory.createEmptyBorder()));
+                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Operations.BpelPrev.Title")), BorderFactory.createEmptyBorder()));
             operationBpelPreviewPanel.setLayout(new GridBagLayout());
         	GridBagConstraints c = new GridBagConstraints();
 
@@ -116,7 +116,7 @@ public class EditorOperations extends JPanel {
     {
         if (operationBpelPreviewLabel == null)
         {
-        	operationBpelPreviewLabel = new JLabel("Press the button beside to preview the BPEL-Code.   ");
+        	operationBpelPreviewLabel = new JLabel(Messages.getString("PetriNet.Operations.BpelPrev.Text"));
         }
         
         return operationBpelPreviewLabel;
@@ -127,7 +127,7 @@ public class EditorOperations extends JPanel {
         if (operationBpelPreviewButton == null)
         {
         	operationBpelPreviewButton = new JButton();
-        	operationBpelPreviewButton.setText("Preview BPEL");
+        	operationBpelPreviewButton.setText(Messages.getString("PetriNet.Operations.BpelPrev.Button"));
         	operationBpelPreviewButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -135,11 +135,11 @@ public class EditorOperations extends JPanel {
                 	
                 	String buttonText = e.getActionCommand();
                     
-                    if ( buttonText.equals("Preview BPEL") ) {
+                    if ( buttonText.equals(Messages.getString("PetriNet.Operations.BpelPrev.Button")) ) {
                        
                 	bpelTextDialog = new JDialog();
                 	bpelTextDialog.setVisible(false);
-                	bpelTextDialog.setTitle("BPEL-Code Preview");
+                	bpelTextDialog.setTitle(Messages.getString("PetriNet.Operations.BpelPrev.NewDialog"));
                 	bpelTextDialog.setSize(500,500);
                 	bpelTextDialog.setLocation(150,150);
                 	bpelTextDialog.setLayout(new GridBagLayout());
@@ -175,8 +175,8 @@ public class EditorOperations extends JPanel {
         if (operationBpelTextField == null)
         {
         	operationBpelTextField = new JTextField();
-            SwingUtils.setFixedWidth(operationBpelTextField, 400);
-            operationBpelTextField.setText("test...lavi");
+            SwingUtils.setFixedWidth(operationBpelTextField, 490);
+            operationBpelTextField.setText(Messages.getString("bitte entsprechend füllen @ Frank :-)"));
             operationBpelTextField.setEditable(false);
             
         }
