@@ -165,4 +165,19 @@ public class BPELreplyPanel extends BPELadditionalPanel{
 			return null;
 		return variableComboBox.getSelectedItem().toString();
 	}
+	
+	
+	//	***************** content setter methods  **************************
+	
+	public void setPartnerLink(String partnerLink) {
+		partnerLinkComboBox.addItem(partnerLink);
+	}
+
+	public void setOperation(String operation) {
+		operationComboBox.addItem(operation);
+	}
+
+	public void setVariable(String variable) {
+		variableComboBox.addItem(variable);
+	}
 }
