@@ -2,6 +2,7 @@ package org.woped.bpel.datamodel;
 
 import javax.xml.crypto.dsig.XMLObject;
 
+import org.apache.xmlbeans.XmlCursor;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
@@ -50,9 +51,11 @@ public class SequenceTransition extends TerminalElement
 		//1.transition
 		//if the 1.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(begin)){
-			iSeq = (TSequence)begin.getBpelCode();	
+			iSeq = (TSequence)begin.getBpelCode();
+			System.out.println("Sequence found. vorne");
 		}	
-		else{ 
+		else{
+			System.out.println("Something else found vorne.");
 			iSeq = BPEL.genBpelProsses().addNewSequence();
 			//transitions case (1.transition)		
 			if(TAssign.class.isInstance(begin.getBpelCode())){
@@ -91,10 +94,13 @@ public class SequenceTransition extends TerminalElement
 		//if the 2.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(tmp)){
 			TSequence helpSequence = (TSequence)tmp.getBpelCode();
-			iSeq.set(helpSequence);
+			TSequence iSeqSub = iSeq.addNewSequence();
+			iSeqSub.set(helpSequence);
+			System.out.println("Sequence found. hinten");
 		}
 		
-		else{			
+		else{
+			System.out.println("Something else found hinten.");
 			//transitions case (2.transition)		
 			if(TAssign.class.isInstance(tmp.getBpelCode())){
 				TAssign iAss = iSeq.addNewAssign();
