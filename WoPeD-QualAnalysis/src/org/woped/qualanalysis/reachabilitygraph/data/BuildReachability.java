@@ -60,8 +60,10 @@ public class BuildReachability {
 		
 		// Create MarkingList and add Current Status to List
 		markings = new MarkingList();
-		markings.addMarking(new Marking(thisEditor));
-
+		Marking start=new Marking(thisEditor);
+		markings.addMarking(start);
+		start.setInitial();
+		
 		// Create Reachabilitylist
 		transactions = new ReachabilityDataSet();
 
@@ -71,7 +73,7 @@ public class BuildReachability {
 
 		while (markings.hasNext()) {
 			// Get Current Marking and the possible Transitions to Activate
-			Marking start = markings.getMarking();
+			start = markings.getMarking();
 			if (!start.reachabilitybuilt()) {
 
 				// Set all Places according to start Marking

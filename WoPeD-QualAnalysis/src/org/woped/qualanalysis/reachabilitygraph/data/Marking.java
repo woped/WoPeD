@@ -57,7 +57,6 @@ public class Marking {
 
 		netStructure = source.getModelProcessor().getElementContainer();
 	}
-
 	// ! Return the active transitions of this marking.
 	// ! An active transition can be used to
 	// ! create a follow-up marking
@@ -122,7 +121,7 @@ public class Marking {
 		}
 	}
 
-	// Prints the Current Objects Tokenstatus
+	// Prints the Current Objects Tokenstatus (for Console)
 	public String print() {
 		String value = "( ";
 		Iterator it = currentMarking.keySet().iterator();
@@ -133,7 +132,7 @@ public class Marking {
 		value = value + ")";
 		return value;
 	}
-
+	//Return a String of the Marking, for graphic
 	public String toString() {
 		String value = "( ";
 		Iterator it = currentMarking.keySet().iterator();
@@ -150,7 +149,7 @@ public class Marking {
 		value = value + ")";
 		return value;
 	}
-
+	//Prints the Placekeyset
 	public void printseq() {
 		Iterator it = currentMarking.keySet().iterator();
 		while (it.hasNext()) {
@@ -209,7 +208,12 @@ public class Marking {
 	public boolean centerPlace(){
 		return centerPlace;
 	}
-
+	public void setInitial(){
+		isInitial=true;
+	}
+	public boolean isInitial(){
+		return isInitial;
+	}
 	// ! Stores a reference to the net structure which is useful
 	// ! to determine which transitions are active etc.
 	private ModelElementContainer netStructure;
@@ -223,4 +227,5 @@ public class Marking {
 	private HashSet<String> netTransitions;
 	private Map<String, AbstractElementModel> allTransitions = null;
 	private boolean reachabilityBuilt = false;
+	private boolean isInitial=false;
 }
