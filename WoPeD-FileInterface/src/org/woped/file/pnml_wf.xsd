@@ -1331,11 +1331,9 @@
 		<xs:sequence>
 			<xs:element name="firedtransition" type="firedtransitionType" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:ID" use="required"/>
 	</xs:complexType>
 	<xs:complexType name="firedtransitionType">
-		<xs:attribute name="id" type="xs:ID" use="required"/>
-		<xs:attribute name="transition" type="xs:IDREF"/>
+		<xs:attribute name="transitionID" type="xs:IDREF"/>
 	</xs:complexType>
 	<xs:complexType name="nethashType">
 		<xs:attribute name="id" type="xs:ID" use="required"/>

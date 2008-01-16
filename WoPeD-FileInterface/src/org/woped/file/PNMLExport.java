@@ -274,7 +274,7 @@ public class PNMLExport
             	for(Iterator iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
             	{
             		iFiredTransition = iTransitionsequence.addNewFiredtransition();
-            		iFiredTransition.setTransition(((TransitionModel)iterator.next()).getId());
+            		iFiredTransition.setTransitionID(((TransitionModel)iterator.next()).getId());
             	}
             	iNethash = iSimulation.addNewNethash();
             	//iNethash.
