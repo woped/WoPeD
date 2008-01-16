@@ -51,6 +51,9 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	
 	//AutoChoice List
 	public final static int CHOOSE_TRANSITION      = 21;
+	
+	//Record Simulation
+	public final static int CHOOSE_RECORD          = 22;
 
 
 		
@@ -62,7 +65,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	//Variables
 	private int                       ID            = 0;
 	private TokenGameBarVC            RemoteControl = null;
-	private static boolean            HistoryChanged= false;
 
 
 	public TokenGameBarListener(int ButtonID, TokenGameBarVC RC, TokenGameHistoryManagerVC ToGaHiMan)
@@ -133,7 +135,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		 case 3:
 			 break;
 		 case CLICK_FAST_BACKWARD:
-			 if (RemoteControl.playbackRunning())
+			 if (RemoteControl.tokengameRunning())
 			 {
 			   RemoteControl.occurTransitionMulti(true);
 			 }
@@ -142,7 +144,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			 /*
 			  * Will make a step back
 			  */
-			 if (RemoteControl.playbackRunning())
+			 if (RemoteControl.tokengameRunning())
 			 {
 				 if(RemoteControl.getAutoPlayBack())
 				 {
@@ -158,26 +160,33 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			 /*
 			  *  Reset TokenGame to Startposition and Enable PlayButton
 			  */
+			 if(RemoteControl.tokengameRunning())
+			 {
 		       stopAction();
-		       if(RemoteControl.isRecordEnabled())
+		       if(RemoteControl.isRecordSelected())
 		       {   
 		         RemoteControl.createSaveableHistory();
 		       }
 		       RemoteControl.enablePlayButton();
+		       RemoteControl.enableStepDown();
+		       RemoteControl.enableRecordButton();
+			 }
 			 break;
 		 case CLICK_PLAY:
 			 /*
 			  *  Start "TokenGame" and disable Editor. Disable Play Button to prevent multiple TokenGame instances
 			  */
 			 //Cleanup needed to avoid double ENtries in the ChoiceBox
+			 RemoteControl.disableStepDown();
+			 RemoteControl.disableRecordButton();
+			 RemoteControl.disablePlayButton();
 			 RemoteControl.cleanupTransition();
 			 playbackActions();
-			 RemoteControl.disablePlayButton();
 			 break;
 		 case 8:
 			 break;
 		 case CLICK_FORWARD:
-			 if (RemoteControl.playbackRunning())
+			 if (RemoteControl.tokengameRunning())
 			 {
 				 if(RemoteControl.getAutoPlayBack())
 				 {
@@ -195,7 +204,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			  */
 			 break;
 		 case CLICK_FAST_FORWARD:
-			 if (RemoteControl.playbackRunning())
+			 if (RemoteControl.tokengameRunning())
 			 {
 			   RemoteControl.occurTransitionMulti(false);
 			 }
@@ -205,15 +214,17 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			 break;
 		 case 11:
 			 break;
-		 case 12:
+		 case CLICK_STEP_DOWN:
+			 if (RemoteControl.tokengameRunning())
+			 {
+				RemoteControl.getTokenGameController().setStepIntoSubProcess(true);
+				RemoteControl.occurTransition(false);
+			 }
+			  
 			 break;
 		 case 13:
 			 break;
 		 case CHOOSE_JUMP_HERE:
-			 if(RemoteControl.isPlayButtonEnabled())
-			 {
-			   RemoteControl.enableRecord();
-			 }
 			 break;
 		 case OPEN_HISTORY_MANAGER:
 			 showHistoryManager();
@@ -238,6 +249,12 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 				 RemoteControl.proceedTransitionChoice(RemoteControl.getSelectedChoiceID());
 			 }
 			 break;
+		 case CHOOSE_RECORD:
+			 if(RemoteControl.isRecordSelected())
+			 {
+			   RemoteControl.clearHistoryData();
+			 }
+		     break;
 		 default:
 			 break;
 		}
@@ -253,30 +270,12 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		{	
 		    MainWindowReference = new ReferenceProvider();
 		    HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference(), RemoteControl);
-		    if (HistoryChanged)
-			{
-				HistoryDialog.enableSaveButton();
-			}
-			else
-			{
-				HistoryDialog.disableSaveButton();
-			}
 		    HistoryDialog.setVisible(true);
 		}
 		else
 		{
 			HistoryDialog.resetStates();
-			if (HistoryChanged)
-			{
-				HistoryDialog.enableSaveButton();
-			}
-			else
-			{
-				HistoryDialog.disableSaveButton();
-			}
 			HistoryDialog.setVisible(true);
-			HistoryChanged = false;
-			
 		}
 	}
 	
@@ -290,7 +289,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		if(HistoryDialog.checkSaveName())
 		{
 			HistoryDialog.saveNewHistory();
-			HistoryChanged = false;
 		}
 	}
 	
@@ -301,13 +299,15 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	
 	private void playbackActions()
 	{
-		HistoryChanged = true;
-		
 		//Active TokenGame, disable DrawMode, checkNet and activate transition
 		if(RemoteControl.getTokenGameController().isVisualTokenGame())
 		{
 			RemoteControl.getTokenGameController().enableVisualTokenGame();
 			RemoteControl.getTokenGameController().TokenGameCheckNet();
+			if (RemoteControl.playbackRunning())
+			{
+				  RemoteControl.startHistoryPlayback();
+			}
 		}
 	}
 

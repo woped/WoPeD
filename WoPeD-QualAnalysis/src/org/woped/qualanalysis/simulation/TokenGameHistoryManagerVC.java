@@ -5,7 +5,7 @@ import javax.swing.*;
 import org.woped.qualanalysis.simulation.controller.*;
 import org.woped.core.gui.*;
 import java.awt.*;
-
+import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.translations.Messages; 
 
 public class TokenGameHistoryManagerVC extends JDialog
@@ -36,12 +36,9 @@ public class TokenGameHistoryManagerVC extends JDialog
 	
 	//Declare Reference-Variables
 	private TokenGameBarVC           RemoteControl    = null;
-	private DefaultListModel         HistoryData      = null; 
-	private String[]                 HistoryItems     = null;
-	private TokenGameHistoryObject   HistoryObject    = null;
-	private TokenGameHistoryObject[] HistoryArray     = null;
-	private TokenGameHistoryObject[] HelpArray        = null;
+	private SimulationModel          HistoryData      = null; 
 	private ListSelectionModel       SelectedItems    = null;
+	
 
 	
 	
@@ -147,55 +144,17 @@ public class TokenGameHistoryManagerVC extends JDialog
 	
 	public void saveNewHistory()
 	{
-		//Declare some locale variables
-		int OldSize, NewSize, NumberOfItems = 0;
-		
-		
-		HistoryData = RemoteControl.getHistoryData();	
-	    NumberOfItems = HistoryData.getSize();
-	    HistoryItems = new String[NumberOfItems];
-	    
-	    //Fill created array with the History-Data
-	    for(int i = 0; i < NumberOfItems; i++)
-	    {
-	    	HistoryItems[i] = (String)HistoryData.getElementAt(i);
-	    }
-        //Create history-Object and add the Items-Array
-	    HistoryObject = new TokenGameHistoryObject(HistoryItems);
-	    HistoryObject.setHistoryName(NameEntry.getText());
-        //Attach the History Object into the List-Box with its name...
-	    SavedHistoryContent.addElement(NameEntry.getText());
-	    
-	    //... and into the Array at the according Position
-	    if(SavedHistoryContent.size() == 0)
-	    {
-	        HistoryArray = new TokenGameHistoryObject[1];
-	        HistoryArray[0] = HistoryObject; 
-	    }
-	    else
-	    {
-	    	//Copy current Array to help Array
-	    	OldSize = SavedHistoryContent.size()-1;
-	    	NewSize = SavedHistoryContent.size();
-	    	HelpArray = new TokenGameHistoryObject[OldSize];
-	    	for(int i = 0; i < OldSize; i++)
-	    	{
-	    		HelpArray[i] = HistoryArray[i];
-	    	}
-	    	
-	    	//enlarge current array (build new)
-	    	HistoryArray = new TokenGameHistoryObject[NewSize];
-	    	//copy back the Data
-	    	for(int i = 0; i < OldSize; i++)
-	    	{
-	    		HistoryArray[i] = HelpArray[i];
-	    	}
-	    	//add the new Item at the very end
-	    	HistoryArray[NewSize-1] = HistoryObject;
-	    	disableSaveButton();
-	    	
-	    }
-        
+		//Einfügen, dass das nur geht, wenn eine neue History verfügbar ist!
+		//Declare some locale variables		
+		if (RemoteControl.isNewHistory())
+		{
+		 HistoryData = RemoteControl.getHistoryData();
+	     SavedHistoryContent.addElement(NameEntry.getText());
+	     HistoryData.setName(NameEntry.getText());
+	     RemoteControl.saveHistory();
+	     RemoteControl.setToOldHistory();
+	     this.setVisible(false);
+		}
 	}
 	
 	public void deleteSelected()
@@ -219,9 +178,10 @@ public class TokenGameHistoryManagerVC extends JDialog
 	  }
 	  
 	  //Load From Array
-	  if (HistoryArray != null)
+	  if(SavedHistoryContent.size() != 0)
 	  {
-		  HistoryObject = HistoryArray[LoadIndex];
+	 	 RemoteControl.loadHistory(LoadIndex);
+		  //HistoryObject = HistoryArray[LoadIndex];
 		//  RemoteControl.addHistoryData(HistoryObject.getHistoryItems());
 		  this.setVisible(false);
 	  }
@@ -250,15 +210,6 @@ public class TokenGameHistoryManagerVC extends JDialog
 		return RemoteControl;
 	}
 	
-	public void disableSaveButton()
-	{
-		SaveNewHistory.setEnabled(false);
-	}
-	
-	public void enableSaveButton()
-	{
-		SaveNewHistory.setEnabled(true);
-	}
 	
 	public void resetStates()
 	{
