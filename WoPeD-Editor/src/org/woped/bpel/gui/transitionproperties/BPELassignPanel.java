@@ -141,6 +141,10 @@ public class BPELassignPanel extends BPELadditionalPanel{
 		return newToVariableButton;
 	}
 	
+	
+	
+	//	***************** content getter methods  **************************
+	
 	public String getFromVariableContent(){
 		if (fromVariableComboBox.getSelectedItem() == null)
 			return null;

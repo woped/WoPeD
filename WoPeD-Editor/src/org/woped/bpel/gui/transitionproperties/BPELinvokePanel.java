@@ -194,4 +194,32 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 		return newOutVariableButton;
 	}
 	
+	
+	
+	//	***************** content getter methods  **************************
+	
+	public String getPartnerLinkContent(){
+		if (partnerLinkComboBox.getSelectedItem() == null)
+			return null;
+		return partnerLinkComboBox.getSelectedItem().toString();
+	}
+	
+	public String getOperationContent(){
+		if (operationComboBox.getSelectedItem() == null)
+			return null;
+		return operationComboBox.getSelectedItem().toString();
+	}
+	
+	public String getInVariableContent(){
+		if (inVariableComboBox.getSelectedItem() == null)
+			return null;
+		return inVariableComboBox.getSelectedItem().toString();
+	}
+	
+	public String getOutVariableContent(){
+		if (outVariableComboBox.getSelectedItem() == null)
+			return null;
+		return outVariableComboBox.getSelectedItem().toString();
+	}	
+	
 }

@@ -147,6 +147,9 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 	}
 	
 	
+	
+	//	***************** content getter methods  **************************
+	
 	public String getPartnerLinkContent(){
 		if (partnerLinkComboBox.getSelectedItem() == null)
 			return null;
