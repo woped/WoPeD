@@ -3,7 +3,10 @@ package org.woped.bpel.datamodel;
 import org.apache.xmlbeans.XmlCursor;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TFlow;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TIf;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPick;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
@@ -18,10 +21,8 @@ public class SequenceTransition extends TerminalElement
 	{
 		super("test");
 		this.begin = begin;
-		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public boolean equals(AbstractElement e)
 	{
 		if (!SequenceTransition.class.isInstance(e))
@@ -51,9 +52,21 @@ public class SequenceTransition extends TerminalElement
 			System.out.println("Something else found vorne.");
 			iSeq = BPEL.genBpelProsses().addNewSequence();
 			//transitions case (1.transition)		
-			if(TAssign.class.isInstance(begin.getBpelCode())){
+			if(TPick.class.isInstance(begin.getBpelCode())){
+				TPick iPick = iSeq.addNewPick();
+				iPick.set(begin.getBpelCode());			
+			}
+			else if(TIf.class.isInstance(begin.getBpelCode())){
+				TIf iIf = iSeq.addNewIf();
+				iIf.set(begin.getBpelCode());
+			}
+			else if(TAssign.class.isInstance(begin.getBpelCode())){
 				TAssign iAss = iSeq.addNewAssign();
 				iAss.set(begin.getBpelCode());			
+			}
+			else if(TFlow.class.isInstance(begin.getBpelCode())){
+				TFlow iFlowSub = iSeq.addNewFlow();
+				iFlowSub.set(begin.getBpelCode());
 			}		
 			else if(TEmpty.class.isInstance(begin.getBpelCode())){
 				TEmpty iEmpty = iSeq.addNewEmpty();
@@ -97,9 +110,21 @@ public class SequenceTransition extends TerminalElement
 		else{
 			System.out.println("Something else found hinten.");
 			//transitions case (2.transition)		
-			if(TAssign.class.isInstance(tmp.getBpelCode())){
+			if(TPick.class.isInstance(tmp.getBpelCode())){
+				TPick iPick = iSeq.addNewPick();
+				iPick.set(tmp.getBpelCode());			
+			}
+			else if(TIf.class.isInstance(tmp.getBpelCode())){
+				TIf iIf = iSeq.addNewIf();
+				iIf.set(tmp.getBpelCode());
+			}
+			else if(TAssign.class.isInstance(tmp.getBpelCode())){
 				TAssign iAss = iSeq.addNewAssign();
 				iAss.set(tmp.getBpelCode());			
+			}
+			else if(TFlow.class.isInstance(tmp.getBpelCode())){
+				TFlow iFlowSub = iSeq.addNewFlow();
+				iFlowSub.set(tmp.getBpelCode());
 			}		
 			else if(TEmpty.class.isInstance(tmp.getBpelCode())){
 				TEmpty iEmpty = iSeq.addNewEmpty();
