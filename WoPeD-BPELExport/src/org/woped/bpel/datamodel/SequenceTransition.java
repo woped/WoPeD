@@ -1,5 +1,6 @@
 package org.woped.bpel.datamodel;
 
+import org.apache.xmlbeans.XmlCursor;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
@@ -44,7 +45,7 @@ public class SequenceTransition extends TerminalElement
 		//if the 1.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(begin)){
 			iSeq = (TSequence)begin.getBpelCode();
-			System.out.println("Sequence found. vorne");
+			System.out.println("Sequence found vorne");
 		}	
 		else{
 			System.out.println("Something else found vorne.");
@@ -86,9 +87,11 @@ public class SequenceTransition extends TerminalElement
 		//if the 2.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(tmp)){
 			TSequence helpSequence = (TSequence)tmp.getBpelCode();
-			TSequence iSeqSub = iSeq.addNewSequence();
-			iSeqSub.set(helpSequence);
-			System.out.println("Sequence found. hinten");
+			XmlCursor cursSeq = iSeq.newCursor();
+			XmlCursor cursSub = helpSequence.newCursor();
+			cursSeq.toEndToken();
+			cursSub.copyXmlContents(cursSeq);
+			System.out.println("Sequence found hinten");
 		}
 		
 		else{
