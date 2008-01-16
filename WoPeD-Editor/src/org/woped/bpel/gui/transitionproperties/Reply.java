@@ -6,7 +6,17 @@ public class Reply extends BaseActivity
 
 	public Reply()
 	{
-		// TODO Auto-generated constructor stub
+		
 	}
-
+	
+	public void saveInformation(BPELreplyPanel bip)
+	{
+		
+	}
+	
+	public void setInformation(BPELreplyPanel brp)
+	{
+		
+	}
+	
 }
