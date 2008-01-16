@@ -33,7 +33,7 @@ public class Invoke extends BaseActivity
 		
 		//bip.setPartnerLink(invoke.getPartnerLink());
 		//bip.setOperation(invoke.getOperation());
-		//bip.getPortType(invoke.getPortType());
+		//bip.setPortType(invoke.getPortType());
 		//bip.setInputVariable(invoke.getInputVariable());
 		//bip.setOutputVariable(invoke.getOutputVariable());
 	}
