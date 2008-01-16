@@ -14,23 +14,25 @@ public class Reply extends BaseActivity
 		
 	}
 	
-	public void saveInformation(BPELreplyPanel bip)
+	public void saveInformation(BPELreplyPanel brp)
 	{
 		TProcess p = BaseActivity.genBpelProsses();
 		TReply reply = p.addNewReply();
 		
 		//PartnerLink
-		reply.setPartnerLink(bip.getPartnerLink());
+		reply.setPartnerLink(brp.getPartnerLink());
 		//Operation
-		reply.setOperation(bip.getOperation());
+		reply.setOperation(brp.getOperation());
 		//InputVariable
-		reply.setVariable(bip.getVariable());
+		reply.setVariable(brp.getVariable());
 	}
 	
 	public void setInformation(BPELreplyPanel brp)
 	{
 		TReply reply = (TReply) this.getActivity();
-		
+		brp.setPartnerLink(reply.getPartnerLink());
+		brp.setOperation(reply.getOperation());
+		brp.setVariable(reply.getVariable());
 	}
 	
 }

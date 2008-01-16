@@ -9,12 +9,12 @@ public class Wait extends BaseActivity
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void saveInformation(BPELreplyPanel bip)
+	public void saveInformation(BPELwaitPanel bwp)
 	{
 		
 	}
 	
-	public void setInformation(BPELreplyPanel brp)
+	public void setInformation(BPELwaitPanel bwp)
 	{
 		
 	}
