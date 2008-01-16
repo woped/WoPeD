@@ -11,12 +11,12 @@ public class Wait extends BaseActivity
 	
 	public void saveInformation(BPELwaitPanel bwp)
 	{
-		
+		//Problem Unterscheidung zwischen For und Until, muss in GUI abgefragt werden
 	}
 	
 	public void setInformation(BPELwaitPanel bwp)
 	{
-		
+		//Problem Unterscheidung zwischen For und Until, muss in GUI abgefragt werden
 	}
 
 }
