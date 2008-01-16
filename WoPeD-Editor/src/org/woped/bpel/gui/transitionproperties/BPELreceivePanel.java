@@ -169,21 +169,18 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 	}
 
 
+	//	***************** content setter methods  **************************
+	
 	public void setPartnerLink(String partnerLink) {
-		// TODO Auto-generated method stub
-		
+		partnerLinkComboBox.addItem(partnerLink);
 	}
-
 
 	public void setOperation(String operation) {
-		// TODO Auto-generated method stub
-		
+		operationComboBox.addItem(operation);
 	}
 
-
 	public void setVariable(String variable) {
-		// TODO Auto-generated method stub
-		
+		variableComboBox.addItem(variable);
 	}
 	
 }
