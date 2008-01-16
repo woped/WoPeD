@@ -669,7 +669,7 @@ public class BpelParserModel
 				System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n"
 						+ "\tend = " + end + "\n</Pick>");
 
-				AbstractElement e = new PickTransition(begin);
+				AbstractElement e = new PickTransition(begin.get_post_list_copy());
 				this.regist_element(e);
 
 				Iterator<AbstractElement> deregist = begin.get_post_list_copy()
