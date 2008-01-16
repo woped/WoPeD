@@ -11,9 +11,10 @@ public class ReachabilityEdgeModel extends DefaultEdge {
 	public ReachabilityEdgeModel(TransitionObject to){
 		super(to);
         AttributeMap attributes = getAttributes();
-        GraphConstants.setMoveable(attributes, true);
+        GraphConstants.setMoveable(attributes, false);
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
+        GraphConstants.setConnectable(attributes, false);
         GraphConstants.setLabelAlongEdge(attributes, true);
         
         GraphConstants.setLineEnd(attributes, GraphConstants.ARROW_CLASSIC);

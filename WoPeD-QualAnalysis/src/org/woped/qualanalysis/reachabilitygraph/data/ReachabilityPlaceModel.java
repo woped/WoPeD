@@ -17,7 +17,7 @@ public class ReachabilityPlaceModel extends DefaultGraphCell
         GraphConstants.setMoveable(attributes, true);
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
-        GraphConstants.setAutoSize(attributes, true);
+        //GraphConstants.setAutoSize(attributes, true);
      	// (x,y,w,h)
 		GraphConstants.setBounds(attributes, new Rectangle2D.Double(0,0,80,20));
 		//GraphConstants.setBounds(attributes, new Rectangle2D.Double(140,140,80,20));
