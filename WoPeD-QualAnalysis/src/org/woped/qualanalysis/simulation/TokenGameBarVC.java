@@ -146,6 +146,9 @@ public class TokenGameBarVC extends JInternalFrame {
 		PropertiesPanel.add(ppbPlay);
 		PropertiesPanel.add(ppbDelay);
 		
+		//Disbale StepButton on Default
+		disableStepwiseButton();
+		
 		return PropertiesPanel;	
 	}
 	
@@ -597,9 +600,39 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnPlay.setEnabled(false);
 	}
 	
+	public void disableStepwiseButton()
+	{
+		ppbSteps.setEnabled(false);
+	}
+	
+	public void enableStepwiseButton()
+	{
+		ppbSteps.setEnabled(true);
+	}
+	
+	public void disableAutoPlaybackButton()
+	{
+		ppbPlay.setEnabled(false);
+	}
+	
+	public void enableAutoPlaybackButton()
+	{
+		ppbPlay.setEnabled(true);
+	}
+	
 	public void setAutoPlayback(boolean onoff)
 	{
 		autoplayback = onoff;
+		if(autoplayback)
+		{
+			enableStepwiseButton();
+			disableAutoPlaybackButton();
+		}
+		else
+		{
+			enableAutoPlaybackButton();
+			disableStepwiseButton();
+		}
 	}
 	
 	public boolean getAutoPlayBack()
@@ -771,7 +804,7 @@ public class TokenGameBarVC extends JInternalFrame {
 				{
 					if(followingActivatedTransitions.size() >= 2)
 					{
-						index = (int) Math.round(Math.random() * followingActivatedTransitions.size()-1);
+						index = (int) Math.round(Math.random() * followingActivatedTransitions.size());
 						TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
 						occurTransition(BackWard);
 					}
@@ -782,6 +815,7 @@ public class TokenGameBarVC extends JInternalFrame {
 				}
 			}
 		}
+		clearChoiceBox();
 	}
 	
 	/**
