@@ -42,6 +42,7 @@ public class BPELinvokePanel extends JPanel{
 	TransitionPropertyEditor t_editor = null;
 	JDialog dialogPartner = null;
 	JDialog dialogVariable = null;
+	JPanel dialogButtons = null;
 	
 	public BPELinvokePanel(TransitionPropertyEditor t_editor){
 		
@@ -210,12 +211,19 @@ public class BPELinvokePanel extends JPanel{
 					c.insets = new Insets(0, 5, 0, 0);
 					dialogPartner.add(new JComboBox(), c);
 					
-					c.gridx = 0;
+					/*c.gridx = 0;
 					c.gridy = 4;
 					c.gridwidth = 1;
 					c.insets = new Insets(0, 5, 0, 0);
 					c.fill = GridBagConstraints.NONE;
-					dialogPartner.add(new JButton("OK"), c);
+					dialogPartner.add(new JButton("OK"), c);*/
+					
+					c.gridx = 1;
+					c.gridy = 4;
+					c.gridwidth = 1;
+					c.insets = new Insets(0, 5, 0, 0);
+					c.fill = GridBagConstraints.NONE;
+					dialogPartner.add(addDialogButtons(), c);
 					
 					dialogPartner.setVisible(true);
 				}
@@ -273,7 +281,7 @@ public class BPELinvokePanel extends JPanel{
 	}
 	
 	private void showNewVariableDialog(){
-		dialogVariable = new JDialog(t_editor, true); //Dialog
+		dialogVariable = new JDialog(t_editor, true);
 		dialogVariable.setVisible(false);
 		dialogVariable.setTitle("Create Variable");
 		dialogVariable.setSize(400,150);
@@ -311,13 +319,44 @@ public class BPELinvokePanel extends JPanel{
 		dialogVariable.add(new JComboBox(), c);
 		
 		c.fill = GridBagConstraints.NONE;
-		c.gridx = 0;
+		c.gridx = 1;
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(new JButton("OK"), c);
+		dialogVariable.add(addDialogButtons(), c);
+		
+/*		c.gridx = 1;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		c.insets = new Insets(0, 5, 0, 0);
+		dialogVariable.add(new JButton("Abbruch"), c);*/
 		
 		dialogVariable.setVisible(true);
+	}
+	
+	public JPanel addDialogButtons(){
+		if (dialogButtons == null){
+			dialogButtons = new JPanel();
+			
+			GridBagConstraints c = new GridBagConstraints();
+			c.fill = GridBagConstraints.NONE;
+			c.anchor = GridBagConstraints.WEST;
+			c.weightx = 1;
+			c.weighty = 1;
+
+			c.gridx = 0;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			c.insets = new Insets(0, 5, 0, 0);
+			dialogButtons.add(new JButton("OK"), c);
+			
+			c.gridx = 1;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			c.insets = new Insets(0, 5, 0, 0);
+			dialogButtons.add(new JButton("Abbruch"), c);
+		}
+		return dialogButtons;
 	}
 	
 }
