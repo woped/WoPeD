@@ -223,7 +223,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	}
 	
 	
-	//	***************** content getter methods  **************************
+	//	***************** content setter methods  **************************
 	
 	public void setPartnerLink(String partnerLink) {
 		partnerLinkComboBox.addItem(partnerLink);
