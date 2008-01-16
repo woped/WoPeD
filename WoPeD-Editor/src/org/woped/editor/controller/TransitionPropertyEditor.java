@@ -1467,13 +1467,13 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 			c.gridx = 0;
 			c.gridy = 0;
 			c.gridwidth = 1;
-			c.insets = new Insets(0, 2, 0, 0);
+			c.insets = new Insets(0, 2, 10, 0);
 			activityChoosePanel.add(getActivityLabel(), c);
 
 			c.gridx = 1;
 			c.gridy = 0;
 			c.gridwidth = 2;
-			c.insets = new Insets(0, 10, 0, 10);
+			c.insets = new Insets(0, 10, 10, 10);
 			activityChoosePanel.add(getActivityComboBox(), c);
 		}
 		return activityChoosePanel;
@@ -1574,7 +1574,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void showAssignPanel(){
 		if (assignPanel == null){
-			assignPanel = new BPELassignPanel();
+			assignPanel = new BPELassignPanel(this);
 			assignPanel.setBorder(BorderFactory
 					.createCompoundBorder(
 							BorderFactory
@@ -1631,7 +1631,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	private void showReceivePanel(){
 		if (receivePanel == null){
-			receivePanel = new BPELreceivePanel();
+			receivePanel = new BPELreceivePanel(this);
 			receivePanel.setBorder(BorderFactory
 					.createCompoundBorder(
 							BorderFactory

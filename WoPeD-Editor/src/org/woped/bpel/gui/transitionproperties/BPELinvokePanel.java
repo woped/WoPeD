@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import org.woped.translations.Messages;
 import org.woped.editor.controller.*;
@@ -29,7 +30,7 @@ import org.woped.editor.controller.*;
  * Created on 08.01.2008
  */
 
-public class BPELinvokePanel extends JPanel{
+public class BPELinvokePanel extends BPELadditionalPanel{
 
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
@@ -40,13 +41,11 @@ public class BPELinvokePanel extends JPanel{
 	JButton newOutVariableButton = null;
 	
 	TransitionPropertyEditor t_editor = null;
-	JDialog dialogPartner = null;
-	JDialog dialogVariable = null;
-	JPanel dialogButtons = null;
+	
 	
 	public BPELinvokePanel(TransitionPropertyEditor t_editor){
 		
-		this.t_editor = t_editor;
+		super(t_editor);
 		
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);
@@ -111,20 +110,20 @@ public class BPELinvokePanel extends JPanel{
 		c.gridx = 0;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		c.insets = new Insets(5, 5, 0, 0);
+		c.insets = new Insets(5, 5, 10, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		add(new JLabel("Output Variable:"), c);
 		
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		c.insets = new Insets(5, 5, 0, 0);
+		c.insets = new Insets(5, 5, 10, 0);
 		add(getOutVariableComboBox(), c);
 		
 		c.gridx = 2;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		c.insets = new Insets(5, 5, 0, 0);
+		c.insets = new Insets(5, 5, 10, 0);
 		c.fill = GridBagConstraints.NONE;
 		add(getNewOutVariableButton(), c);
 	}
@@ -141,91 +140,7 @@ public class BPELinvokePanel extends JPanel{
 			newPartnerLinkButton = new JButton("new");		
 			newPartnerLinkButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					dialogPartner = new JDialog(t_editor, true);
-					dialogPartner.setVisible(false);
-					dialogPartner.setTitle("Create Partner Link");
-					dialogPartner.setSize(400,200);
-					dialogPartner.setLocation(150,150);
-					dialogPartner.setLayout(new GridBagLayout());
-					GridBagConstraints c = new GridBagConstraints();
-					
-					c.fill = GridBagConstraints.HORIZONTAL;
-					c.anchor = GridBagConstraints.WEST;
-					c.weightx = 1;
-					c.weighty = 1;
-
-					c.gridx = 0;
-					c.gridy = 0;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					dialogPartner.add(new JLabel("WSDL file:"), c);
-					
-					c.gridx = 1;
-					c.gridy = 0;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					dialogPartner.add(new JComboBox(), c);
-					
-					c.gridx = 2;
-					c.gridy = 0;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					c.fill = GridBagConstraints.NONE;
-					dialogPartner.add(new JButton("Browse"), c);
-					//evt noch zweiter Button für Internet/WWW-Adresse eingeben
-
-					c.gridx = 0;
-					c.gridy = 1;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					c.fill = GridBagConstraints.HORIZONTAL;
-					dialogPartner.add(new JLabel("Partner Link Type:"), c);
-					
-					c.gridx = 1;
-					c.gridy = 1;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					dialogPartner.add(new JComboBox(), c);
-					
-					c.gridx = 0;
-					c.gridy = 2;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					dialogPartner.add(new JLabel("Partner Role:"), c);
-					
-					c.gridx = 1;
-					c.gridy = 2;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					dialogPartner.add(new JComboBox(), c);
-					
-					c.gridx = 0;
-					c.gridy = 3;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					dialogPartner.add(new JLabel("My Role:"), c);
-					
-					c.gridx = 1;
-					c.gridy = 3;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					dialogPartner.add(new JComboBox(), c);
-					
-					/*c.gridx = 0;
-					c.gridy = 4;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					c.fill = GridBagConstraints.NONE;
-					dialogPartner.add(new JButton("OK"), c);*/
-					
-					c.gridx = 1;
-					c.gridy = 4;
-					c.gridwidth = 1;
-					c.insets = new Insets(0, 5, 0, 0);
-					c.fill = GridBagConstraints.NONE;
-					dialogPartner.add(addDialogButtons(), c);
-					
-					dialogPartner.setVisible(true);
+					showNewPartnerLinkDialog();
 				}
 			});
 		}
@@ -255,7 +170,7 @@ public class BPELinvokePanel extends JPanel{
 					showNewVariableDialog();
 				}
 			});
-			
+
 		}
 		return newInVariableButton;
 	}
@@ -278,85 +193,6 @@ public class BPELinvokePanel extends JPanel{
 			});
 		}
 		return newOutVariableButton;
-	}
-	
-	private void showNewVariableDialog(){
-		dialogVariable = new JDialog(t_editor, true);
-		dialogVariable.setVisible(false);
-		dialogVariable.setTitle("Create Variable");
-		dialogVariable.setSize(400,150);
-		dialogVariable.setLocation(150,150);
-		dialogVariable.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.WEST;
-		c.weightx = 1;
-		c.weighty = 1;
-
-		c.gridx = 0;
-		c.gridy = 0;
-		c.gridwidth = 1;
-		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(new JLabel("Name:"), c);
-		
-		c.gridx = 1;
-		c.gridy = 0;
-		c.gridwidth = 1;
-		c.insets = new Insets(0, 5, 0, 5);
-		dialogVariable.add(new JComboBox(), c);
-		
-		c.gridx = 0;
-		c.gridy = 1;
-		c.gridwidth = 1;
-		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(new JLabel("Type:"), c);
-
-		c.gridx = 1;
-		c.gridy = 1;
-		c.gridwidth = 1;
-		c.insets = new Insets(0, 5, 0, 5);
-		dialogVariable.add(new JComboBox(), c);
-		
-		c.fill = GridBagConstraints.NONE;
-		c.gridx = 1;
-		c.gridy = 3;
-		c.gridwidth = 1;
-		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(addDialogButtons(), c);
-		
-/*		c.gridx = 1;
-		c.gridy = 3;
-		c.gridwidth = 1;
-		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(new JButton("Abbruch"), c);*/
-		
-		dialogVariable.setVisible(true);
-	}
-	
-	public JPanel addDialogButtons(){
-		if (dialogButtons == null){
-			dialogButtons = new JPanel();
-			
-			GridBagConstraints c = new GridBagConstraints();
-			c.fill = GridBagConstraints.NONE;
-			c.anchor = GridBagConstraints.WEST;
-			c.weightx = 1;
-			c.weighty = 1;
-
-			c.gridx = 0;
-			c.gridy = 0;
-			c.gridwidth = 1;
-			c.insets = new Insets(0, 5, 0, 0);
-			dialogButtons.add(new JButton("OK"), c);
-			
-			c.gridx = 1;
-			c.gridy = 0;
-			c.gridwidth = 1;
-			c.insets = new Insets(0, 5, 0, 0);
-			dialogButtons.add(new JButton("Abbruch"), c);
-		}
-		return dialogButtons;
 	}
 	
 }
