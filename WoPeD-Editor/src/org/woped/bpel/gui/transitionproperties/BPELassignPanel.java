@@ -136,7 +136,6 @@ public class BPELassignPanel extends BPELadditionalPanel{
 					showNewVariableDialog();
 				}
 			});
-			getFromVariableContent();
 		}
 		return newToVariableButton;
 	}
@@ -145,13 +144,13 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	
 	//	***************** content getter methods  **************************
 	
-	public String getFromVariableContent(){
+	public String getFromVariable(){
 		if (fromVariableComboBox.getSelectedItem() == null)
 			return null;
 		return fromVariableComboBox.getSelectedItem().toString();
 	}
 	
-	public String getToVariableContent(){
+	public String getToVariable(){
 		if (toVariableComboBox.getSelectedItem() == null)
 			return null;
 		return toVariableComboBox.getSelectedItem().toString();
