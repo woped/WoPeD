@@ -45,30 +45,19 @@ public class SequenceTransition extends TerminalElement
 	{
 		if(this.seq != null) return this.seq;
 		TSequence iSeq= null;
-		//1.transition
+		
 		//if the 1.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(begin))
 			iSeq = (TSequence)begin.getBpelCode();			
-		else{ iSeq = BPEL.genBpelProsses().addNewSequence();}
+		else{ 
+			iSeq = BPEL.genBpelProsses().addNewSequence();
+		}		
 		
-		//transitions case (1.transition)
-				
-		if(TPick.class.isInstance(begin.getBpelCode())){
-			TPick iPick = iSeq.addNewPick();
-			iPick.set(begin.getBpelCode());			
-		}			
-		else if(TIf.class.isInstance(begin.getBpelCode())){
-			TIf iIf = iSeq.addNewIf();
-			iIf.set(begin.getBpelCode());
-		}
-		else if(TAssign.class.isInstance(begin.getBpelCode())){
+		//transitions case (1.transition)		
+		if(TAssign.class.isInstance(begin.getBpelCode())){
 			TAssign iAss = iSeq.addNewAssign();
 			iAss.set(begin.getBpelCode());			
-		}
-		else if(TFlow.class.isInstance(begin.getBpelCode())){
-			TFlow iFlow = iSeq.addNewFlow();
-			iFlow.set(begin.getBpelCode());
-		}
+		}		
 		else if(TEmpty.class.isInstance(begin.getBpelCode())){
 			TEmpty iEmpty = iSeq.addNewEmpty();
 			iEmpty.set(begin.getBpelCode());
@@ -94,51 +83,39 @@ public class SequenceTransition extends TerminalElement
 		AbstractElement tmp = begin.get_first_post_element();
 		
 		//2.transition
-		tmp = tmp.get_first_post_element();			
+		tmp = tmp.get_first_post_element();	
+		
 		//if the 2.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(tmp)){
 			TSequence helpSequence = (TSequence)tmp.getBpelCode();			
 		}
 		
-		
-		if(TPick.class.isInstance(tmp.getBpelCode())){
-			TPick iPick = iSeq.addNewPick();
-			iPick.set(tmp.getBpelCode());			
-		}			
-		else if(TIf.class.isInstance(tmp.getBpelCode())){
-			TIf iIf = iSeq.addNewIf();
-			iIf.set(tmp.getBpelCode());
-		}
-		else if(TAssign.class.isInstance(tmp.getBpelCode())){
+		//transitions case (2.transition)
+		if(TAssign.class.isInstance(begin.getBpelCode())){
 			TAssign iAss = iSeq.addNewAssign();
-			iAss.set(tmp.getBpelCode());			
-		}
-		else if(TFlow.class.isInstance(tmp.getBpelCode())){
-			TFlow iFlow = iSeq.addNewFlow();
-			iFlow.set(tmp.getBpelCode());
-		}
-		else if(TEmpty.class.isInstance(tmp.getBpelCode())){
+			iAss.set(begin.getBpelCode());			
+		}		
+		else if(TEmpty.class.isInstance(begin.getBpelCode())){
 			TEmpty iEmpty = iSeq.addNewEmpty();
-			iEmpty.set(tmp.getBpelCode());
+			iEmpty.set(begin.getBpelCode());
 		}
-		else if(TWait.class.isInstance(tmp.getBpelCode())){
+		else if(TWait.class.isInstance(begin.getBpelCode())){
 			TWait iWait = iSeq.addNewWait();
-			iWait.set(tmp.getBpelCode());
+			iWait.set(begin.getBpelCode());
 		}
-		else if(TReceive.class.isInstance(tmp.getBpelCode())){
+		else if(TReceive.class.isInstance(begin.getBpelCode())){
 			TReceive iReceive = iSeq.addNewReceive();
-			iReceive.set(tmp.getBpelCode());
+			iReceive.set(begin.getBpelCode());
 		}
-		else if(TReply.class.isInstance(tmp.getBpelCode())){
+		else if(TReply.class.isInstance(begin.getBpelCode())){
 			TReply iReply = iSeq.addNewReply();
-			iReply.set(tmp.getBpelCode());
+			iReply.set(begin.getBpelCode());
 		}
-		else if(TInvoke.class.isInstance(tmp.getBpelCode())){
+		else if(TInvoke.class.isInstance(begin.getBpelCode())){
 			TInvoke iInvoke = iSeq.addNewInvoke();
-			iInvoke.set(tmp.getBpelCode());
+			iInvoke.set(begin.getBpelCode());
 		}		
 		
-		//transitions case (2.transition)
 		this.seq = iSeq;
 		return this.seq;
 	}
