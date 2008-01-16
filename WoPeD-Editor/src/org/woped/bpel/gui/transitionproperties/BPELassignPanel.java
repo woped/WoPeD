@@ -112,8 +112,6 @@ public class BPELassignPanel extends BPELadditionalPanel{
 			newFromVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					showNewVariableDialog();
-//					dialogPartner = showNewVariableDialog(dialogPartner);
-//					dialogPartner.setVisible(true);
 				}
 			});
 		}
