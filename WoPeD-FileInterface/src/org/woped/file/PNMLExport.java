@@ -279,6 +279,7 @@ public class PNMLExport
             	iNethash = iSimulation.addNewNethash();
             	//iNethash.
             	//TODO: Complete saving the Nethash
+            	LoggerManager.debug(Constants.FILE_LOGGER, "   ... Simulation (ID:" + currSimulation.getId() + ") set");
             }
             
             // toolspecific
