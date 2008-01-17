@@ -25,6 +25,7 @@ public class Invoke extends BaseActivity
 		//invoke.setPortType(bip.getPortType());
 		invoke.setInputVariable(bip.getInVariable());
 		invoke.setOutputVariable(bip.getInVariable());
+		this.setActivity(invoke);
 	}
 	
 	public void setInformation(BPELinvokePanel bip)

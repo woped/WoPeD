@@ -25,6 +25,7 @@ public class Reply extends BaseActivity
 		reply.setOperation(brp.getOperation());
 		//InputVariable
 		reply.setVariable(brp.getVariable());
+		this.setActivity(reply);
 	}
 	
 	public void setInformation(BPELreplyPanel brp)
