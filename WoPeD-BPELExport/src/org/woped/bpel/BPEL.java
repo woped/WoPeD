@@ -85,23 +85,36 @@ public class BPEL {
 	public boolean saveFile(String Path, IEditor editor)
 	{
 		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor.getModelProcessor();
-		this.test(pnp);
+		
+		//Generate BPEL Model
+		BpelParserModel m = new BpelParserModel();
+		System.out.println(m.createModel(pnp.getElementContainer()));
+		System.out.println(m.count_elements());
+		System.out.println("********last element*************\n "+m.generate_bpel());
+		System.out.println(m.count_elements());
+		BPEL.genBpelProsses();
+		BPEL.Process.set(m.generate_bpel());
+		System.out.println(BPEL.bpelDoc.toString());
+		
+		//File Output
 		new File(Path);
-		/*
-		iProcess.setName("TestProcess");
-		TDocumentation iDocumentation = iProcess.addNewDocumentation();
-		iDocumentation.setLang("EN");
-		iDocumentation.newCursor().setTextValue("This process is for testing purposes only");
-		TSequence iSequence = iProcess.addNewSequence();
-        try
+		XmlOptions opt = new XmlOptions();
+        opt.setUseDefaultNamespace();
+        opt.setSavePrettyPrint();
+        opt.setSavePrettyPrintIndent(2);
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("xmlns:bpel", "bpel.woped.org");
+        map.put("xmlns:bpel","");
+        map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
+        opt = opt.setSaveImplicitNamespaces(map);
+		try
         {
-        	bpelDoc.save(new File(Path), opt);
+        	bpelDoc.save(new File(Path),opt);
         	return true;
         } catch (IOException e)
         {
             return false;
-        }*/
-        return true;
+        }
 	}
 	
 	public static TProcess genBpelProsses()
@@ -121,6 +134,7 @@ public class BPEL {
 		return BPEL.Process;
 	}
 	
+	//this method isn't used anymore. Content was copied to method 'saveFile'
 	/**
 	 * Testing method
 	 */
