@@ -1771,15 +1771,25 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 					int index = activityChooseComboBox.getSelectedIndex();
 					switch(index){
 						case 0: break;
-						case 1: 
-							Assign iAssign = new Assign();
-							iAssign.saveInformation(assignPanel); 
-							transition.setBaseActivity(iAssign);
-							break;
-						case 2: new Invoke().saveInformation(invokePanel); break;
-						case 3: new Receive().saveInformation(receivePanel); break;
-//						case 4: new Reply().saveInformation(replyPanel); break;
-//						case 5: new Wait().saveInformation(waitPanel); break;
+						case 1: Assign iAssign = new Assign();
+								iAssign.saveInformation(assignPanel); 
+								transition.setBaseActivity(iAssign);
+								break;
+						case 2: Invoke iInvoke = new Invoke();
+								iInvoke.saveInformation(invokePanel); 
+								transition.setBaseActivity(iInvoke);
+								break;
+						case 3: Receive iReceive = new Receive();
+								iReceive.saveInformation(receivePanel); 
+								transition.setBaseActivity(iReceive);
+								break;
+						case 4: Reply iReply = new Reply();
+								iReply.saveInformation(replyPanel); 
+								transition.setBaseActivity(iReply);
+								break;
+						case 5: Wait iWait = new Wait();
+								iWait.saveInformation(waitPanel); 
+								transition.setBaseActivity(iWait);
 					}
 					
 				}
