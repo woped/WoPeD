@@ -45,7 +45,7 @@ public class ReachabilityGraphPanel extends JPanel {
 		rgp_bottomPanel.add(someText);
 		
 		rgp_jgraph = this.getDefaultGraph();
-		rgp_topPanel = new JScrollPane(rgp_jgraph);
+		rgp_topPanel = new JScrollPane();
 		
 		rgp_splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, rgp_topPanel, rgp_bottomPanel);
 		rgp_splitPane.setResizeWeight(0.95);
@@ -70,6 +70,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	
 	private JGraph getDefaultGraph(){
 		ReachabilityGraphModel builder = new ReachabilityGraphModel(editor);
+		//return builder.hierarchicalGraphBuilder();
 		return builder.simpleGraphBuilder(this.getSize());
 	}
 }

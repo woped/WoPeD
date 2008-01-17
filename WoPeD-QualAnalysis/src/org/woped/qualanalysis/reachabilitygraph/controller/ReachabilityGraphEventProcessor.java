@@ -44,8 +44,9 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 					}
 				}
 				toAdd.setVisible(true);
-				dui.getToolBar().getReachabilityGraphButton().setEnabled(false);
 				toAdd.validate();
+				dui.getToolBar().getReachabilityGraphButton().setEnabled(false);
+				toAdd.refreshGraph();
 				toAdd.updatePanelsVisibility(editor);
 			}
 		}

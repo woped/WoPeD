@@ -11,6 +11,8 @@ import org.jgraph.graph.GraphConstants;
 public class ReachabilityPlaceModel extends DefaultGraphCell
 {
 
+	private boolean isBoundSet = false;
+	
     public ReachabilityPlaceModel(Object o){
     	super(o);
         AttributeMap attributes = getAttributes();
@@ -20,10 +22,17 @@ public class ReachabilityPlaceModel extends DefaultGraphCell
         //GraphConstants.setAutoSize(attributes, true);
      	// (x,y,w,h)
 		GraphConstants.setBounds(attributes, new Rectangle2D.Double(0,0,80,20));
-		//GraphConstants.setBounds(attributes, new Rectangle2D.Double(140,140,80,20));
 		GraphConstants.setGradientColor(attributes, Color.red);
 		GraphConstants.setOpaque(attributes, true);
         setAttributes(attributes);
+    }
+    
+    public boolean isSetRecursiveBounds(){
+    	return this.isBoundSet;
+    }
+    
+    public void setIsSetRecursiveBounds(boolean set){
+    	this.isBoundSet = set;
     }
     
     public String getToolTipText()
