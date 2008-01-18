@@ -8,6 +8,8 @@ import java.util.HashSet;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import org.woped.core.controller.IEditor;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
@@ -73,8 +75,10 @@ public class ReachabilityGraphVC extends JInternalFrame {
         this.setLayout(new BorderLayout());
         JButton refreshButton = new JButton("RefreshGraph");
         refreshButton.addActionListener(new RefreshGraphButtonListener(this));
-        this.add(BorderLayout.NORTH, refreshButton);
-        this.add(BorderLayout.SOUTH, new JLabel("Bottom"));
+        JPanel northPanel = new JPanel();
+        northPanel.add(new JLabel("Bottom"));
+        northPanel.add(refreshButton);
+        this.add(BorderLayout.SOUTH, northPanel);
         this.setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
 	}

@@ -57,7 +57,7 @@ public class ReachabilityGraphModel {
 				
 			DefaultGraphCell tar = getHierarchicPlace(cellsList, actualTransition.ende);
 			cellsList.add(tar);
-				
+			
 			edge.setSource(src.getChildAt(0));
 			edge.setTarget(tar.getChildAt(0));
 			cellsList.add(edge);	
@@ -65,6 +65,7 @@ public class ReachabilityGraphModel {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- hierarchicalGraphBuilder() " + this.getClass().getName());
 		graph.getGraphLayoutCache().insert(cellsList.toArray());
 		applyHierarchicLayout(graph);	
+		
 		graph.getGraphLayoutCache().reload();
 		return graph;
 	}
@@ -79,18 +80,43 @@ public class ReachabilityGraphModel {
 		}
 		ReachabilityPlaceModel initialPlace = lookupInitialMarking(markings);
 		if(initialPlace != null){
-			GraphConstants.setGradientColor(initialPlace.getAttributes(), Color.green);
+			GraphConstants.setBackground(initialPlace.getAttributes(), Color.green);
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
-
-			ReachabilityGraphModel.hierarcher(initialPlace, new Rectangle2D.Double(200, 0, bounds.getWidth(), bounds.getHeight()));	
+			LinkedList<ReachabilityPlaceModel> toProof = new LinkedList<ReachabilityPlaceModel>();
+			ReachabilityGraphModel.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), toProof);
+			ReachabilityGraphModel.hierarcherProofer(toProof);
 		}
 		System.out.println(markings.size());
 	}
 	
-	private static void hierarcher(ReachabilityPlaceModel place, Rectangle2D bounds){
+	private static void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places){
+		if(places.size() > 0){
+			ReachabilityPlaceModel first = places.removeFirst();
+			Iterator<ReachabilityPlaceModel> iter = places.iterator();
+			boolean changedOne = false;
+			while(iter.hasNext()){
+				ReachabilityPlaceModel actual = iter.next();
+				if(GraphConstants.getBounds(actual.getAttributes()).getX() == GraphConstants.getBounds(first.getAttributes()).getX() && 
+						GraphConstants.getBounds(actual.getAttributes()).getY() == GraphConstants.getBounds(first.getAttributes()).getY()){
+					Rectangle2D bounds = GraphConstants.getBounds(actual.getAttributes());
+					GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(bounds.getX() + 50 + bounds.getWidth(),bounds.getY(),bounds.getWidth(),bounds.getHeight()));
+					changedOne = true;
+				}
+			}
+			if(changedOne){
+				places.addFirst(first);
+				hierarcherProofer(places);
+			} else {
+				hierarcherProofer(places);
+			}
+		}
+	}
+	
+	private static LinkedList<ReachabilityPlaceModel> hierarcher(ReachabilityPlaceModel place, Rectangle2D bounds, LinkedList<ReachabilityPlaceModel> places){
 		if(!place.isSetRecursiveBounds()){
 			GraphConstants.setBounds(place.getAttributes(), bounds);
-			place.setIsSetRecursiveBounds(true);	
+			place.setIsSetRecursiveBounds(true);
+			places.add(place);
 		}
 		bounds = GraphConstants.getBounds(place.getAttributes());
 		LinkedList<ReachabilityEdgeModel> edges = new LinkedList<ReachabilityEdgeModel>();
@@ -101,7 +127,10 @@ public class ReachabilityGraphModel {
 				Set<ReachabilityEdgeModel> edgeSet = port.getEdges();
 		     	Iterator<ReachabilityEdgeModel> edgeIterator = edgeSet.iterator();
 		     	while(edgeIterator.hasNext()){
-		     		edges.add(edgeIterator.next());
+		     		ReachabilityEdgeModel next = edgeIterator.next();
+		     		if(ports.get(portIndex) == next.getSource()){
+		     			edges.add(next);	
+		     		}
 		     	}
 			}
 		}
@@ -115,11 +144,12 @@ public class ReachabilityGraphModel {
 			ReachabilityPlaceModel childPlace = (ReachabilityPlaceModel) otherPort.getParent();
 			if(!childPlace.isSetRecursiveBounds()){
 				int puffer = 0;
-				if(edgeCount != 0){
+				if(edgeCount > 0){
 					puffer = 50;
 				}
-				GraphConstants.setBounds(childPlace.getAttributes(), new Rectangle2D.Double(bounds.getX() + puffer + (bounds.getWidth() * edgeCount++), bounds.getY() + bounds.getHeight() + 100, bounds.getWidth(), bounds.getHeight()));
+				GraphConstants.setBounds(childPlace.getAttributes(), new Rectangle2D.Double(25 + bounds.getX() + ((puffer + bounds.getWidth()) * edgeCount++), bounds.getY() + bounds.getHeight() + 150, bounds.getWidth(), bounds.getHeight()));
 				childPlace.setIsSetRecursiveBounds(true);
+				places.add(childPlace);
 				childs.add(childPlace);
 			}	
      	}
@@ -127,8 +157,9 @@ public class ReachabilityGraphModel {
      	while(iterChilds.hasNext()){
      		ReachabilityPlaceModel actualChild = iterChilds.next(); 
      		Rectangle2D childBound = GraphConstants.getBounds(actualChild.getAttributes());
-     		hierarcher(actualChild, childBound);
+     		hierarcher(actualChild, childBound, places);
      	}
+     	return places; 
 	}
 
 	private static ReachabilityPortModel getOtherPort(ReachabilityPlaceModel place, ReachabilityEdgeModel edge){
@@ -230,7 +261,7 @@ public class ReachabilityGraphModel {
 		}
 		ReachabilityPlaceModel initialPlace = lookupInitialMarking(places);
 		if(initialPlace != null){
-			GraphConstants.setGradientColor(initialPlace.getAttributes(), Color.green);	
+			GraphConstants.setBackground(initialPlace.getAttributes(), Color.green);	
 		}
 		graph.getGraphLayoutCache().reload();
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- simpleGraphBuilder() " + this.getClass().getName() + " Size " + cellsList.size());

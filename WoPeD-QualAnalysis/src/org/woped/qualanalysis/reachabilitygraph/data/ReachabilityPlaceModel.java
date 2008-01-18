@@ -22,7 +22,8 @@ public class ReachabilityPlaceModel extends DefaultGraphCell
         //GraphConstants.setAutoSize(attributes, true);
      	// (x,y,w,h)
 		GraphConstants.setBounds(attributes, new Rectangle2D.Double(0,0,80,20));
-		GraphConstants.setGradientColor(attributes, Color.red);
+		GraphConstants.setBackground(attributes, Color.orange);
+		//GraphConstants.setGradientColor(attributes, Color.red);
 		GraphConstants.setOpaque(attributes, true);
         setAttributes(attributes);
     }

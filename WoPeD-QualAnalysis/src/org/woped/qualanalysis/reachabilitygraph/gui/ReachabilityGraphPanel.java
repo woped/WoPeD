@@ -17,10 +17,8 @@ public class ReachabilityGraphPanel extends JPanel {
 	private IEditor editor = null;
 
 	// Panels
-	private JSplitPane rgp_splitPane = null;
 	private JPanel rgp_bottomPanel = null; // bottom SplitPane
 	private JScrollPane rgp_topPanel = null; // top SplitPane
-	
 	
 	// jGraph related
 	private JGraph rgp_jgraph = null; // the jGraph
@@ -46,12 +44,7 @@ public class ReachabilityGraphPanel extends JPanel {
 		
 		rgp_jgraph = this.getDefaultGraph();
 		rgp_topPanel = new JScrollPane();
-		
-		rgp_splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, rgp_topPanel, rgp_bottomPanel);
-		rgp_splitPane.setResizeWeight(0.95);
-		rgp_splitPane.setOneTouchExpandable(true);
-
-		this.add(rgp_splitPane);
+		this.add(rgp_topPanel);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
 	}
 	
@@ -65,7 +58,10 @@ public class ReachabilityGraphPanel extends JPanel {
 	}
 	
 	public void refreshGraph(){
-		rgp_splitPane.setLeftComponent(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph()));
+		
+		this.remove(rgp_topPanel);
+		this.add(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph()));
+		this.validate();
 	}
 	
 	private JGraph getDefaultGraph(){
