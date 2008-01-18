@@ -18,7 +18,7 @@ import org.woped.core.model.PetriNetModelProcessor;
  * @author Tilmann Glaser
  * 
  */
-public class TokenGameBarVC extends JInternalFrame {
+public class TokenGameBarVC extends JInternalFrame implements Runnable {
 	
 	
 	//Declaration of all JPanels
@@ -69,6 +69,8 @@ public class TokenGameBarVC extends JInternalFrame {
 	private TransitionModel   BackwardTransitionToOccur = null;
 	private TransitionModel   helpTransition    = null;
     private boolean			  autoplayback      = false;
+    private boolean			  endofnet			= false;
+    private boolean			  backward			= false;
 	private PetriNetModelProcessor           PetriNet = null;
     
 	//Linked Lists 
@@ -467,7 +469,10 @@ public class TokenGameBarVC extends JInternalFrame {
 	public void clearChoiceBox()
 	{
 		acoChoiceItems.clear();
-		enableForwardButtons();
+		if(!autoplayback)
+		{
+			enableForwardButtons();
+		}
 	}
 	
 	//HistoryListbox
@@ -619,6 +624,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		{
 			enableStepwiseButton();
 			disableAutoPlaybackButton();
+			clearChoiceBox();
 		}
 		else
 		{
@@ -776,55 +782,122 @@ public class TokenGameBarVC extends JInternalFrame {
 		
 	}
 	
+	// Tokengame AutoPlayback Sektion - Beginn
+	
 	/**
 	 * Automatic TokenGame
 	 * This Method occur automatic all transition if autoplayback is true. Choice transition will be
 	 * occured by random choice
 	 * 
 	 * ToDo: 
-	 * 	1) refreshNet after occurence
+	 * 	1) refreshNet after occurence - done
 	 *  2) random choice only if no probabilities are set
 	 */
+	public void run() {
+		
+		auto();
+	}
+	
 	public void autoOccurAllTransitions(boolean BackWard)
 	{
-		boolean ende = false;
-		int index;
-		while(!ende)
+		backward = BackWard;
+		new Thread(this).start();
+	}
+	
+	public void auto()
+	{
+		disableButtonforAutoPlayback();
+		while(!isEndOfNet())
 		{
-			if(BackWard)
+			try {
+		    	javax.swing.SwingUtilities.invokeLater(new TokenGameRunnableObject(this));
+		    	Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			clearChoiceBox();
+		}
+		setEndOfNet(false);
+		enableButtonforAutoPlayback();
+	}
+	
+	public void moveForward()
+	{
+		if(followingActivatedTransitions.size() == 0)
+		{
+			setEndOfNet(true);
+		}
+		else
+		{
+			if(followingActivatedTransitions.size() >= 2)
 			{
-				if(BackwardTransitionToOccur == null)
-				{
-					ende = true;
-				}
-				else
-				{
-					occurTransition(BackWard);
-				}
+				int index = (int) Math.round(Math.random() * (followingActivatedTransitions.size()-1));
+				TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
+				occurTransition(false);
 			}
 			else
 			{
-				if(followingActivatedTransitions.size() == 0)
-				{
-					ende = true;
-				}
-				else
-				{
-					if(followingActivatedTransitions.size() >= 2)
-					{
-						index = (int) Math.round(Math.random() * (followingActivatedTransitions.size()-1));
-						TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
-						occurTransition(BackWard);
-					}
-					else
-					{
-					occurTransition(BackWard);
-					}
-				}
+				occurTransition(false);
+				
 			}
 		}
-		clearChoiceBox();
 	}
+	
+	public void moveBackward()
+	{
+		if(BackwardTransitionToOccur == null)
+		{
+			setEndOfNet(true);
+		}
+		else
+		{
+			occurTransition(true);
+		}
+	}
+	
+	public void setEndOfNet(boolean end)
+	{
+		endofnet = end;
+	}
+	
+	public boolean isEndOfNet()
+	{
+		return endofnet;
+	}
+	
+	public boolean isBackward()
+	{
+		return backward;
+	}
+	
+	public void disableButtonforAutoPlayback()
+	{
+		ppbDelay.setEnabled(false);
+		pbnUp.setEnabled(false);
+		pbnDown.setEnabled(false);
+		
+		pbnBW.setEnabled(false);
+		pbnFastBW.setEnabled(false);
+		pbnFW.setEnabled(false);
+		pbnFastFW.setEnabled(false);
+
+		acoAuto.setEnabled(false);
+	}
+	public void enableButtonforAutoPlayback()
+	{
+		ppbDelay.setEnabled(true);
+		pbnUp.setEnabled(true);
+		pbnDown.setEnabled(true);
+		
+		pbnBW.setEnabled(true);
+		pbnFastBW.setEnabled(true);
+		pbnFW.setEnabled(true);
+		pbnFastFW.setEnabled(true);
+
+		acoAuto.setEnabled(true);
+	}
+	// Tokengame AutoPlayback Sektion - END
 	
 	/**
 	 * Cleans up the ChoiceBox and the ChoiceArray.
