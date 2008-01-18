@@ -80,7 +80,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	private SimulationModel   SaveableSimulation              = null;
 	private static int HistoryID         = 0; //Help Variable as long as no Name is available for Histories
 	private static int HistoryIndex      = 0; //Will guide through the History when playbacking
-	private boolean backward = false;
+
 	// TokenGame
 	private TokenGameController m_tokenGameController = null;
 	
@@ -416,9 +416,19 @@ public class TokenGameBarVC extends JInternalFrame {
 				 BackwardTransitionToOccur = null;
 			 }
 		}
+		//If playback running
 		else
 		{
-			BackwardTransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex--);
+			if(HistoryIndex > 0)
+			{
+				HistoryIndex--;
+				BackwardTransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex);
+			}
+			else
+			{
+				HistoryIndex = 0;
+				BackwardTransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex);
+			}
 		}
 	  }			
 	}
@@ -450,31 +460,6 @@ public class TokenGameBarVC extends JInternalFrame {
      			acoChoiceItems.addElement(helpTransition.getNameValue());
 			}
      		disableForwardButtons();
-		}
-	  }
-	  else
-	  {
-	
-    	if(HistoryIndex < ahxHistoryContent.size())
-		{
-			if(HistoryIndex < 0)
-			{
-				HistoryIndex = 0;
-				backward = false;
-			}
-	    	TransitionToOccur = HistoryVector.get(HistoryIndex);
-			if(!backward)
-			{	
-	    	  HistoryIndex++;
-	    	  if(HistoryIndex >= ahxHistoryContent.size())
-	    	  {
-	    		  HistoryIndex = ahxHistoryContent.size()-1;
-	    	  }
-			}
-			else
-			{
-				backward = false;
-			}
 		}
 	  }
 	}
@@ -516,7 +501,10 @@ public class TokenGameBarVC extends JInternalFrame {
     		HistoryVector = new Vector<TransitionModel>(1);
     		ahxHistoryContent.clear();
     	}
-    	HistoryVector.add(transition);
+    	if(!playbackRunning())
+    	{
+    	  HistoryVector.add(transition);
+    	}
     }
 
     
@@ -569,7 +557,7 @@ public class TokenGameBarVC extends JInternalFrame {
     {
     	HistoryIndex = 0;
     	TransitionToOccur = HistoryVector.get(HistoryIndex);
-    	HistoryIndex++;   	
+    	//HistoryIndex++;   	
     }
     
 	/*
@@ -727,8 +715,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	{
 	  if( BackWard )
 	  {
-		previousItem();
-		backward = true;
+		  previousItem();
 		if(BackwardTransitionToOccur != null)
 		{
 			TransitionToOccur = BackwardTransitionToOccur;
@@ -736,7 +723,20 @@ public class TokenGameBarVC extends JInternalFrame {
   	  }
 	  else
 	  {
+		  //AFAIK needed to make automatic backward stepping
 		  BackwardTransitionToOccur = TransitionToOccur;
+		  if(playbackRunning())
+		  {
+			  if((HistoryIndex < HistoryVector.size()) && (HistoryIndex >= 0))
+			  {
+			    TransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex++);
+			  //Secure the net, so that no playback further than the last Simulation point can be done
+			  }
+			  else
+			  {
+				  HistoryIndex = HistoryVector.size();
+			  }
+		  }
 	  }
 	  m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 	}
@@ -842,6 +842,11 @@ public class TokenGameBarVC extends JInternalFrame {
 		{
 			previousActivatedTransitions.clear();
 		}
+	}
+	
+	public PetriNetModelProcessor getPetriNet()
+	{
+		return PetriNet;
 	}
 	
 	/**
