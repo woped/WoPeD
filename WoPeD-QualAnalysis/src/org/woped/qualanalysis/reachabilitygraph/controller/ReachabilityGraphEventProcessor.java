@@ -12,6 +12,7 @@ import org.woped.core.gui.IToolBar;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
 
 public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
@@ -45,8 +46,8 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 				}
 				toAdd.setVisible(true);
 				toAdd.validate();
+				toAdd.refreshGraph(ReachabilityGraphModel.HIERARCHIC);
 				dui.getToolBar().getReachabilityGraphButton().setEnabled(false);
-				toAdd.refreshGraph();
 				toAdd.updatePanelsVisibility(editor);
 			}
 		}

@@ -4,12 +4,14 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 import org.jgraph.JGraph;
 import org.woped.core.controller.IEditor;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
+import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
+import org.woped.translations.Messages;
 
 public class ReachabilityGraphPanel extends JPanel {
 	
@@ -42,7 +44,7 @@ public class ReachabilityGraphPanel extends JPanel {
 		rgp_bottomPanel = new JPanel();
 		rgp_bottomPanel.add(someText);
 		
-		rgp_jgraph = this.getDefaultGraph();
+		rgp_jgraph = this.getDefaultGraph(ReachabilityGraphModel.HIERARCHIC);
 		rgp_topPanel = new JScrollPane();
 		this.add(rgp_topPanel);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
@@ -57,16 +59,30 @@ public class ReachabilityGraphPanel extends JPanel {
 		someText.setText(text);
 	}
 	
-	public void refreshGraph(){
-		
+	public void refreshGraph(int type){
 		this.remove(rgp_topPanel);
-		this.add(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph()));
+		this.add(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph(type)));
 		this.validate();
 	}
 	
-	private JGraph getDefaultGraph(){
+	private JGraph getDefaultGraph(int type){
 		ReachabilityGraphModel builder = new ReachabilityGraphModel(editor);
-		//return builder.hierarchicalGraphBuilder();
-		return builder.simpleGraphBuilder(this.getSize());
+		return builder.getGraph(type, this.getSize());
+	}
+	
+	public String getGraphInfo(){
+		Object[] roots = this.rgp_jgraph.getRoots();
+		int vertices = 0;
+		int edges = 0;
+		for(int i = 0; i < roots.length; i++){
+			if(roots[i] instanceof ReachabilityEdgeModel){
+				edges++;
+			}
+			if(roots[i] instanceof ReachabilityPlaceModel){				
+				vertices++;
+			}
+		}
+		return Messages.getString("QuanlAna.ReachabilityGraph.Vertices")+ " " + vertices + " " + 
+			Messages.getString("QuanlAna.ReachabilityGraph.Edges")+ " " + edges;
 	}
 }

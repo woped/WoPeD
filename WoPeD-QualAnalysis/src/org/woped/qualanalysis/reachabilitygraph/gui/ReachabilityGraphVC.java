@@ -2,17 +2,24 @@ package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.translations.Messages;
 
 public class ReachabilityGraphVC extends JInternalFrame {
@@ -21,6 +28,10 @@ public class ReachabilityGraphVC extends JInternalFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private static ReachabilityGraphVC myInstance = null;
+	
+	private JRadioButton circleButton = null;
+	private JRadioButton hierarchicButton= null;
+	private JLabel bottomInfo = null;
 	
 	public static ReachabilityGraphVC getInstance(IEditor editor){
 		if(ReachabilityGraphVC.myInstance == null){
@@ -73,11 +84,24 @@ public class ReachabilityGraphVC extends JInternalFrame {
         this.setMaximizable(true);
         this.setIconifiable(false);
         this.setLayout(new BorderLayout());
-        JButton refreshButton = new JButton("RefreshGraph");
+        JButton refreshButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.RefreshButton"));
         refreshButton.addActionListener(new RefreshGraphButtonListener(this));
+        circleButton = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Circle") + " " +  
+        									Messages.getString("QuanlAna.ReachabilityGraph.Layout"));
+        hierarchicButton = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Hierarchic") + " " + 
+											 Messages.getString("QuanlAna.ReachabilityGraph.Layout"));
+        hierarchicButton.setActionCommand(ReachabilityGraphModel.HIERARCHIC + "");
+        hierarchicButton.setSelected(true);
+        circleButton.setActionCommand(ReachabilityGraphModel.CIRCLE + "");
+        ButtonGroup layoutGroup = new ButtonGroup();
+        layoutGroup.add(circleButton);
+        layoutGroup.add(hierarchicButton);
         JPanel northPanel = new JPanel();
-        northPanel.add(new JLabel("Bottom"));
+        northPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));
         northPanel.add(refreshButton);
+        northPanel.add(circleButton);
+        northPanel.add(hierarchicButton);
+        northPanel.add(bottomInfo = new JLabel(""));
         this.add(BorderLayout.SOUTH, northPanel);
         this.setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
@@ -107,10 +131,18 @@ public class ReachabilityGraphVC extends JInternalFrame {
 		}
 	}
 
-	public void refreshGraph(){
+	public void refreshGraph(int type){
+		Iterator<JRadioButton> iterButtons = getRadioButtons().iterator();
+		while(iterButtons.hasNext()){
+			JRadioButton button = iterButtons.next();
+			if(Integer.parseInt(button.getActionCommand()) == type){
+				button.setSelected(true);
+			}
+		}
 		for (ReachabilityGraphPanel rgp : panels) {
 			if(rgp.isShowing()){
-				rgp.refreshGraph();
+				rgp.refreshGraph(type);
+				bottomInfo.setText(rgp.getGraphInfo());
 			}
 		}
 		this.repaint();
@@ -121,11 +153,20 @@ public class ReachabilityGraphVC extends JInternalFrame {
 		for (ReachabilityGraphPanel rgp : panels) {
 			if(rgp.getEditor().equals(editor)){
 				this.add(rgp);
+				bottomInfo.setText(rgp.getGraphInfo());
+				this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title")+ " - " + editor.getName());
 			} else {
 				this.remove(rgp);
 			}
 		}
 		this.repaint();
+	}
+	
+	protected LinkedList<JRadioButton> getRadioButtons(){
+		LinkedList<JRadioButton> buttons = new LinkedList<JRadioButton>();
+		buttons.add(circleButton);
+		buttons.add(hierarchicButton);
+		return buttons;
 	}
 }
 
@@ -138,6 +179,12 @@ class RefreshGraphButtonListener implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		rgvc.refreshGraph();
+		Iterator<JRadioButton> iterButtons = rgvc.getRadioButtons().iterator();
+		while(iterButtons.hasNext()){
+			JRadioButton button = iterButtons.next();
+			if(button.isSelected()){
+				rgvc.refreshGraph(Integer.parseInt(button.getActionCommand()));	
+			}		
+		}
 	}
 }
