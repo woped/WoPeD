@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -27,36 +28,33 @@ public class Marking {
 	// ! will be copied and stored locally.
 	public Marking(IEditor source) {
 		StructuralAnalysis sa = new StructuralAnalysis(source);
+		this.source=source;
 		currentMarking = new TreeMap<String, Integer>();
 		// Store the marking of each place
 		Iterator places = sa.getPlacesIterator();
 		while (places.hasNext()) {
 			PlaceModel currentPlace = (PlaceModel) places.next();
-			if (currentPlace.getId().contains("CENTER_PLACE_")&&currentPlace.getVirtualTokenCount()>0) {
+			if(currentPlace.getId().contains("CENTER_PLACE_") && currentPlace.getVirtualTokenCount() > 0) {
 				centerPlace = true;
 			}
-			currentMarking.put(currentPlace.getId(), currentPlace
-					.getVirtualTokenCount());
+			currentMarking.put(currentPlace.getId(), currentPlace.getVirtualTokenCount());
 		}
 		// Store the active transitions
 		netTransitions = new HashSet<String>();
-		allTransitions = source.getModelProcessor().getElementContainer()
-				.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-		allTransitions.putAll(source.getModelProcessor().getElementContainer()
-				.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
-		allTransitions.putAll(source.getModelProcessor().getElementContainer()
-				.getElementsByType(PetriNetModelElement.SUBP_TYPE));
+		allTransitions = source.getModelProcessor().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+		allTransitions.putAll(source.getModelProcessor().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
+		allTransitions.putAll(source.getModelProcessor().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
 		Iterator transitions = allTransitions.values().iterator();
 		while (transitions.hasNext()) {
-			TransitionModel currentTransition = (TransitionModel) transitions
-					.next();
-			if (currentTransition.isActivated()) {
+			TransitionModel currentTransition = (TransitionModel) transitions.next();
+			if(currentTransition.isActivated()) {
 				netTransitions.add(currentTransition.getId());
 			}
 		}
 
 		netStructure = source.getModelProcessor().getElementContainer();
 	}
+
 	// ! Return the active transitions of this marking.
 	// ! An active transition can be used to
 	// ! create a follow-up marking
@@ -75,29 +73,32 @@ public class Marking {
 	// ! and if the two markings are not comparable
 	boolean isGreaterThan(Marking otherMarking) {
 		// Both markings must have the same size for this method to return true
-		if (otherMarking.currentMarking.size() != currentMarking.size())
+		if(otherMarking.currentMarking.size() != currentMarking.size())
 			return false;
 		boolean isGreater = true;
 		Iterator currentThisMarking = currentMarking.values().iterator();
-		Iterator currentOtherMarking = otherMarking.currentMarking.values()
-				.iterator();
+		Iterator currentOtherMarking = otherMarking.currentMarking.values().iterator();
 		Integer oh;
 		while (isGreater && currentThisMarking.hasNext()) {
-			int currint= (Integer) currentThisMarking.next();
-			int otherint=(Integer) currentOtherMarking.next();
-			if(currint>=otherint&&otherint!=0){
-				isGreater=true;
+			int currint = (Integer) currentThisMarking.next();
+			int otherint = (Integer) currentOtherMarking.next();
+			if(otherint > 60000) {
+				otherint = 2;
 			}
-			else if(currint==otherint){
-				isGreater=true;
+			if(currint >= otherint && otherint != 0) {
+				isGreater = true;
 			}
-			else 
-				isGreater=false;
+			else if(currint == otherint) {
+				isGreater = true;
+			}
+			else
+				isGreater = false;
 		}
-		if (isGreater && otherMarking.isfirst()) {
+		if(isGreater && otherMarking.isfirst()) {
 			this.setnotfirst();
 			return false;
-		} else {
+		}
+		else {
 			return isGreater;
 		}
 
@@ -106,14 +107,14 @@ public class Marking {
 	// Method for setting the Coverability Object
 	public void setCoverability(Marking otherMarking) {
 		Iterator currentThisMarking = currentMarking.keySet().iterator();
-		Iterator currentOtherMarking = otherMarking.currentMarking.values()
-				.iterator();
+		Iterator currentOtherMarking = otherMarking.currentMarking.values().iterator();
 		String wert = null;
 		while (currentThisMarking.hasNext()) {
-			if ((Integer) currentMarking.get(
-					(wert = (String) currentThisMarking.next())).compareTo(
-					(Integer) currentOtherMarking.next()) < 0
-					&& currentMarking.get(wert) < 60000) {
+			wert = (String) currentThisMarking.next();
+			int thismark = (Integer) currentMarking.get(wert);
+			int othermark = (Integer) currentOtherMarking.next();
+
+			if(thismark < othermark && thismark < 60000) {
 				currentMarking.put(wert, 63000);
 				BuildReachability.reachBuilt = true;
 				this.setreachabilitynotbuilt();
@@ -127,21 +128,23 @@ public class Marking {
 		Iterator it = currentMarking.keySet().iterator();
 		while (it.hasNext()) {
 			String id = it.next().toString();
-				value = value + currentMarking.get(id) + " ";
+			value = value + currentMarking.get(id) + " ";
 		}
 		value = value + ")";
 		return value;
 	}
-	//Return a String of the Marking, for graphic
+
+	// Return a String of the Marking, for graphic
 	public String toString() {
 		String value = "( ";
 		Iterator it = currentMarking.keySet().iterator();
 		while (it.hasNext()) {
 			String gel = (String) it.next();
-			if (!gel.contains("CENTER_PLACE_")) {
-				if (currentMarking.get(gel) >= 60000) {
+			if(!gel.contains("CENTER_PLACE_")) {
+				if(currentMarking.get(gel) >= 60000) {
 					value = value + "w" + " ";
-				} else {
+				}
+				else {
 					value = value + currentMarking.get(gel).toString() + " ";
 				}
 			}
@@ -149,13 +152,26 @@ public class Marking {
 		value = value + ")";
 		return value;
 	}
-	//Prints the Placekeyset
+
+	// Prints the Placekeyset
 	public void printseq() {
 		Iterator it = currentMarking.keySet().iterator();
 		while (it.hasNext()) {
 			System.out.print(it.next() + " ");
 		}
 		System.out.println("");
+	}
+
+	public LinkedList<PlaceModel> getKeySet() {
+		LinkedList<PlaceModel> erg = new LinkedList<PlaceModel>();
+		Iterator keyit = currentMarking.keySet().iterator();
+		while (keyit.hasNext()) {
+			String curr = keyit.next().toString();
+			if(!curr.contains("CENTER_PLACE_")) {
+				erg.add((PlaceModel)source.getModelProcessor().getElementContainer().getElementById(curr));
+			}
+		}
+		return erg;
 	}
 
 	public HashSet<String> getTransitions() {
@@ -205,15 +221,19 @@ public class Marking {
 	public boolean isfirst() {
 		return first;
 	}
-	public boolean centerPlace(){
+
+	public boolean centerPlace() {
 		return centerPlace;
 	}
-	public void setInitial(){
-		isInitial=true;
+
+	public void setInitial() {
+		isInitial = true;
 	}
-	public boolean isInitial(){
+
+	public boolean isInitial() {
 		return isInitial;
 	}
+
 	// ! Stores a reference to the net structure which is useful
 	// ! to determine which transitions are active etc.
 	private ModelElementContainer netStructure;
@@ -227,5 +247,6 @@ public class Marking {
 	private HashSet<String> netTransitions;
 	private Map<String, AbstractElementModel> allTransitions = null;
 	private boolean reachabilityBuilt = false;
-	private boolean isInitial=false;
+	private boolean isInitial = false;
+	private IEditor source=null;
 }

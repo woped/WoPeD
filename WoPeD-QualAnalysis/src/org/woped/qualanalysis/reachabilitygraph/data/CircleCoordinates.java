@@ -11,7 +11,7 @@ public class CircleCoordinates {
 		int mheight = (height / 2) - 45;
 
 		// get the steps in degrees
-		int degreestep = 360 / objectcount;
+		double degreestep = 360 / objectcount;
 		
 		//Fill the linked list with coordinates for every object
 		for(int i = 0; i < objectcount; i++) {
