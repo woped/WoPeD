@@ -41,10 +41,10 @@ public class ReachabilityGraphCircle {
 			TransitionObject actualTransition = iterTransactions.next();
 			ReachabilityEdgeModel edge = ReachabilityGraphCircle.getEdge(cellsList,actualTransition);
 
-			ReachabilityPlaceModel src = getPlace(cellsList, actualTransition.start, coordinates);
+			ReachabilityPlaceModel src = getPlace(cellsList, actualTransition.start);
 			cellsList.add(src);
 				
-			DefaultGraphCell tar = getPlace(cellsList, actualTransition.ende, coordinates);
+			DefaultGraphCell tar = getPlace(cellsList, actualTransition.ende);
 			cellsList.add(tar);
 				
 			edge.setSource(src.getChildAt(0));
@@ -60,10 +60,26 @@ public class ReachabilityGraphCircle {
 		}
 		ReachabilityPlaceModel initialPlace = lookupInitialMarking(places);
 		if(initialPlace != null){
-			GraphConstants.setBackground(initialPlace.getAttributes(), Color.green);	
+			GraphConstants.setBackground(initialPlace.getAttributes(), Color.green);
+			setPlacesOnCircle(coordinates, places);
 		}
 		graph.getGraphLayoutCache().reload();
 		return graph;
+	}
+	
+	private static void setPlacesOnCircle(LinkedList<Point> coordinates, LinkedList<ReachabilityPlaceModel> places){
+		ReachabilityPlaceModel initial = lookupInitialMarking(places);
+		Point2D position = coordinates.removeFirst();
+		Rectangle2D bounds = GraphConstants.getBounds(initial.getAttributes());
+		GraphConstants.setBounds(initial.getAttributes(), new Rectangle2D.Double(position.getX(),position.getY(),bounds.getWidth(),bounds.getHeight()));
+		places.remove(initial);
+		Iterator<ReachabilityPlaceModel> iterPlaces = places.iterator();
+		while(iterPlaces.hasNext()){
+			ReachabilityPlaceModel actual = iterPlaces.next();
+			bounds = GraphConstants.getBounds(actual.getAttributes());
+			position = coordinates.removeFirst();
+			GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(position.getX(),position.getY(),bounds.getWidth(),bounds.getHeight()));
+		}
 	}
 	
 	private static ReachabilityEdgeModel getEdge(HashSet<DefaultGraphCell> cellsList, TransitionObject to){
@@ -83,7 +99,6 @@ public class ReachabilityGraphCircle {
 					ReachabilityPlaceModel tarRplm = (ReachabilityPlaceModel) tarRpom.getParent();
 					
 					if(to.ende.equals(srcRplm.getUserObject())  && to.start.equals(tarRplm.getUserObject())){
-						//TransitionObject actTo = (TransitionObject) edge.getUserObject();
 						GraphConstants.setLineBegin(edge.getAttributes(), GraphConstants.ARROW_CLASSIC);
 						return edge;
 					}	
@@ -93,7 +108,7 @@ public class ReachabilityGraphCircle {
 		return new ReachabilityEdgeModel(to);
 	}
 	
-	private static ReachabilityPlaceModel getPlace(HashSet<DefaultGraphCell> cellsList, Marking marking, LinkedList<Point> coordinates){
+	private static ReachabilityPlaceModel getPlace(HashSet<DefaultGraphCell> cellsList, Marking marking){
 		Iterator<DefaultGraphCell> iter = cellsList.iterator();
 		while(iter.hasNext()){
 			DefaultGraphCell comp = iter.next();
@@ -103,8 +118,7 @@ public class ReachabilityGraphCircle {
 		}
 		ReachabilityPlaceModel place = new ReachabilityPlaceModel(marking);
      	// (x,y,w,h)
-		Point2D position = coordinates.removeFirst();
-		GraphConstants.setBounds(place.getAttributes(), new Rectangle2D.Double(position.getX(),position.getY(),80,20));
+		GraphConstants.setBounds(place.getAttributes(), new Rectangle2D.Double(0,0,80,20));
 		ReachabilityPortModel port = new ReachabilityPortModel();
 		place.add(port);
 		port.setParent(place);
