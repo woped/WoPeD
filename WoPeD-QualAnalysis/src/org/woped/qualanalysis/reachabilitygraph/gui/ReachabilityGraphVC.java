@@ -16,13 +16,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import org.jgraph.JGraph;
 import org.woped.core.controller.IEditor;
+import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.translations.Messages;
 
-public class ReachabilityGraphVC extends JInternalFrame {
+public class ReachabilityGraphVC extends JInternalFrame implements IReachabilityGraph {
 	
 	private HashSet<ReachabilityGraphPanel> panels = new HashSet<ReachabilityGraphPanel>();
 	
@@ -72,6 +74,15 @@ public class ReachabilityGraphVC extends JInternalFrame {
 			}
 		}
 		return false;
+	}
+	
+	public JGraph getJGraph(IEditor editor){
+		for (ReachabilityGraphPanel rgp : panels) {
+			if(rgp.getEditor() == editor){
+				return rgp.getGraph();
+			}
+		}
+		return null;
 	}
 	
 	private void init() {

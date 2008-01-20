@@ -1,5 +1,6 @@
 package org.woped.qualanalysis.reachabilitygraph.data;
 
+
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 import java.util.Collection;
@@ -29,7 +30,6 @@ public class ReachabilityLayoutHierarchic {
 		// Compute ReachabilityGraph
 		BuildReachability dataSource = new BuildReachability(editor);
 		HashMap<String, TransitionObject> transactions = dataSource.getTransactions();
-		HashMap<String, Marking> markings = dataSource.getMarkings();
 		// Cells
 		HashSet<DefaultGraphCell> cellsList = new HashSet<DefaultGraphCell>();
 		// Transactions
@@ -72,7 +72,6 @@ public class ReachabilityLayoutHierarchic {
 			ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), toProof);
 			ReachabilityLayoutHierarchic.hierarcherProofer(toProof);
 		}
-		System.out.println(markings.size());
 	}
 	
 	private static void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places){

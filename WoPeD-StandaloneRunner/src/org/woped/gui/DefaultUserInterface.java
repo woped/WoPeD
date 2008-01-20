@@ -32,6 +32,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IToolBar;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
@@ -247,6 +248,16 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     	for (int i=0;(result==null)&&(i<frames.length);++i)
     		if (frames[i] instanceof DefaultEditorFrame)
     			result = ((DefaultEditorFrame)frames[i]).getEditor();
+    	return result;
+    }
+    
+    public IReachabilityGraph getReachGraphFocus()
+    {
+    	JInternalFrame[] frames = desktop.getAllFrames();
+    	IReachabilityGraph result = null;
+    	for (int i=0;(result==null)&&(i<frames.length);++i)
+    		if (frames[i] instanceof IReachabilityGraph)
+    			result = ((IReachabilityGraph)frames[i]);
     	return result;
     }
 

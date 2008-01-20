@@ -70,6 +70,10 @@ public class ReachabilityGraphPanel extends JPanel {
 		return builder.getGraph(type, this.getSize());
 	}
 	
+	public JGraph getGraph(){
+		return this.rgp_jgraph;
+	}
+	
 	public String getGraphInfo(){
 		Object[] roots = this.rgp_jgraph.getRoots();
 		int vertices = 0;
