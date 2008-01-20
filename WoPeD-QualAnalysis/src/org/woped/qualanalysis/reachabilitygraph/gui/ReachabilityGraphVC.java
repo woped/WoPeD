@@ -34,6 +34,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	private JRadioButton circleButton = null;
 	private JRadioButton hierarchicButton= null;
 	private JLabel bottomInfo = null;
+	private JLabel legendInfo = null;
 	
 	public static ReachabilityGraphVC getInstance(IEditor editor){
 		if(ReachabilityGraphVC.myInstance == null){
@@ -95,6 +96,14 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
         this.setMaximizable(true);
         this.setIconifiable(false);
         this.setLayout(new BorderLayout());
+        // NORTH Components
+        legendInfo = new JLabel();
+        legendInfo.setText(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
+        JPanel northPanel = new JPanel();
+        northPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        northPanel.add(legendInfo);
+        this.add(BorderLayout.NORTH, northPanel);        
+        // SOUTH Components
         JButton refreshButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.RefreshButton"));
         refreshButton.addActionListener(new RefreshGraphButtonListener(this));
         circleButton = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Circle") + " " +  
@@ -107,13 +116,13 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
         ButtonGroup layoutGroup = new ButtonGroup();
         layoutGroup.add(circleButton);
         layoutGroup.add(hierarchicButton);
-        JPanel northPanel = new JPanel();
-        northPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));
-        northPanel.add(refreshButton);
-        northPanel.add(circleButton);
-        northPanel.add(hierarchicButton);
-        northPanel.add(bottomInfo = new JLabel(""));
-        this.add(BorderLayout.SOUTH, northPanel);
+        JPanel southPanel = new JPanel();
+        southPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));
+        southPanel.add(refreshButton);
+        southPanel.add(circleButton);
+        southPanel.add(hierarchicButton);
+        southPanel.add(bottomInfo = new JLabel(""));
+        this.add(BorderLayout.SOUTH, southPanel);
         this.setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
 	}
@@ -154,6 +163,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 			if(rgp.isShowing()){
 				rgp.refreshGraph(type);
 				bottomInfo.setText(rgp.getGraphInfo());
+				legendInfo.setText(rgp.getLegend());
 			}
 		}
 		this.repaint();
@@ -165,6 +175,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 			if(rgp.getEditor().equals(editor)){
 				this.add(rgp);
 				bottomInfo.setText(rgp.getGraphInfo());
+				legendInfo.setText(rgp.getLegend());
 				this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title")+ " - " + editor.getName());
 			} else {
 				this.remove(rgp);

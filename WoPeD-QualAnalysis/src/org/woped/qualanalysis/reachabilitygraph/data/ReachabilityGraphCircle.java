@@ -98,10 +98,12 @@ public class ReachabilityGraphCircle {
 					ReachabilityPortModel tarRpom = (ReachabilityPortModel) edge.getTarget();
 					ReachabilityPlaceModel tarRplm = (ReachabilityPlaceModel) tarRpom.getParent();
 					
+					/*
 					if(to.ende.equals(srcRplm.getUserObject())  && to.start.equals(tarRplm.getUserObject())){
 						GraphConstants.setLineBegin(edge.getAttributes(), GraphConstants.ARROW_CLASSIC);
 						return edge;
 					}	
+					*/
 				}
 			}
 		}

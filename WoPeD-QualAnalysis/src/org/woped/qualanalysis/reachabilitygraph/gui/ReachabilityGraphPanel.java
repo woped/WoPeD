@@ -1,13 +1,18 @@
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.GridLayout;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import org.jgraph.JGraph;
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.reachabilitygraph.data.Marking;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
@@ -74,6 +79,24 @@ public class ReachabilityGraphPanel extends JPanel {
 		return this.rgp_jgraph;
 	}
 	
+	public String getLegend(){
+		Object[] roots = this.rgp_jgraph.getRoots();
+		for(int i = 0; i < roots.length; i++){
+			if(roots[i] instanceof ReachabilityPlaceModel){				
+				ReachabilityPlaceModel place = (ReachabilityPlaceModel) roots[i];
+				Marking marking = (Marking)place.getUserObject();
+				LinkedList<PlaceModel> placeModels = marking.getKeySet();
+				String legend = "";
+				for(int placeCounter = 0; placeCounter < placeModels.size(); placeCounter++){
+					legend += placeModels.get(placeCounter).getId() + ",";
+				}
+				legend = legend.substring(0, legend.length()-1);
+				return Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legend + ")";
+			}
+		}
+		return Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()";
+	}
+	
 	public String getGraphInfo(){
 		Object[] roots = this.rgp_jgraph.getRoots();
 		int vertices = 0;
@@ -86,7 +109,7 @@ public class ReachabilityGraphPanel extends JPanel {
 				vertices++;
 			}
 		}
-		return Messages.getString("QuanlAna.ReachabilityGraph.Vertices")+ " " + vertices + " " + 
-			Messages.getString("QuanlAna.ReachabilityGraph.Edges")+ " " + edges;
+		return Messages.getString("QuanlAna.ReachabilityGraph.Vertices") + " " + vertices + " " + 
+			Messages.getString("QuanlAna.ReachabilityGraph.Edges") + " " + edges;
 	}
 }
