@@ -21,10 +21,11 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 
-
-//! Class for Building the Reachability of a net
-//! returns two maps (getMarkings(), getTransactions())
-//! which can be used to display the reachability
+/**
+ * Class for Building the Reachability of a net
+ * returns two maps (getMarkings(), getTransactions())
+ * which can be used to display the reachability
+ */ 
 
 
 public class BuildReachability {
@@ -51,7 +52,7 @@ public class BuildReachability {
 		
 		//! If this is a Subprocess, set begin Token on first place
 		if(this.thisEditor.isSubprocessEditor()){
-			((PlaceModel) getPetriNet().getElementContainer().getElementById("p1")).setTokens(1);
+			((PlaceModel) getPetriNet().getElementContainer().getElementById(((PlaceModel) thisEditor.getSubprocessInput()).getId())).setTokens(1);
 		}
 		
 		
