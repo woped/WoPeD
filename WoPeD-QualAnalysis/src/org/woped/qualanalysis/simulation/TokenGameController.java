@@ -140,6 +140,7 @@ public class TokenGameController
       //displays the TokenGame Remote-Control if it already exist, if not create
         if(RemoteControl != null)
         {
+        	//Add Default Mediator Pattern here instead of the DesktopReference-thing
         	desktop.getDesktopReference().add(RemoteControl);
         	RemoteControl.setVisible(true);        	
         }
@@ -301,14 +302,13 @@ public class TokenGameController
     }
 
     /*
-     *  
+     *  Will check transitions if they have to be activated or not
      */
     private void checkTransition(TransitionModel transition)
     {
     	
         transition.setActivated(false);
         transition.setFireing(false);
-        transition.setBackwardActivated(false);
         Map incomingArcs = getPetriNet().getElementContainer().getIncomingArcs(transition.getId());
         Map outgoingArcs = getPetriNet().getElementContainer().getOutgoingArcs(transition.getId());
         // temporary variables
@@ -326,18 +326,8 @@ public class TokenGameController
             		RemoteControl.enableStepDown(); //Enables Step-Down Navigation Button
             	}
             }
-           
-            //If the Transition has all PostSets covered with at least one token, it will be listed as Backward-Activated
-            if ((outgoingArcs.size() != 0) && (countDirectFollowingActivePlaces(outgoingArcs) == outgoingArcs.size()))
-            {
-            	transition.setBackwardActivated(true);
-            	RemoteControl.addPreviousItem(transition);
-                //Add to the previousActivatedTransition - List of each place
-            	//Add a method "setBackwardActivated" into the AbstractElementModel Class
-            }
-           
-            
-        } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+        } 
+        else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
         {
             OperatorTransitionModel operator = (OperatorTransitionModel) transition;
             if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE 
@@ -444,6 +434,7 @@ public class TokenGameController
                 	{
                 		helpTransition = (TransitionModel)simpleTransIter.next(); 
                 		virtualTransition = (TransitionModel)helpTransition.clone();
+                		
                 		ID = (String)outArcs.next(); //get the Arc's ID
                 		virtualTransition.setId(ID); //set HelpTransition's ID to Arc's ID
                 		helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getTargetId());
@@ -581,6 +572,14 @@ public class TokenGameController
                 // transitions and activating them
                 // if their input conditions are fulfilled
                 // This will also trigger a redraw
+            	
+            	//Track the "walked way"
+            	RemoteControl.addHistoryItem(transition);
+            	if(RemoteControl.isRecordSelected())
+            	{
+            	  //Track the way in the history-box 	
+            	  RemoteControl.addHistoryListItem(transition);
+            	}
             	RemoteControl.cleanupTransition();
                 checkNet();
             }
@@ -592,6 +591,7 @@ public class TokenGameController
      */
     private void arcClicked(ArcModel arc)
     {
+    	
         if (arc.isActivated())
         {
             PetriNetModelElement source = (PetriNetModelElement) getPetriNet().getElementContainer().getElementById(arc.getSourceId());
@@ -654,86 +654,106 @@ public class TokenGameController
             }
             // Update net status
             // and trigger redraw
+          
+            //Track the "walked way" by get out the transition's ID of the Choice-Box
+            TransitionModel helpTransitionReference;
+            for( int i = 0; i < RemoteControl.getFollowingActivatedTransitions().size(); i++)
+            {
+              helpTransitionReference = (TransitionModel)RemoteControl.getFollowingActivatedTransitions().get(i);
+              if (arc.getId() == helpTransitionReference.getId())
+              {
+                RemoteControl.addHistoryItem(helpTransitionReference);
+              	if(RemoteControl.isRecordSelected())
+              	{
+              	  //Track the way in the history 	
+              	  RemoteControl.addHistoryListItem(helpTransitionReference);
+              	}  
+              }
+            }
             RemoteControl.cleanupTransition();
             checkNet();
 
         }
     }
-
     
-    
-  //**********************************************************************************
-    /*
-     * Handles Backward-Processing of activated Items
-     */
-    private void backwardItem(TransitionModel transition)
+  /**
+   * This method has been implemented to allow backward-stepping through the net.
+   * It cares about stepping back transitions as well as arcs.
+   * This method is called by the TokenGameController.occurTransitionbyTokenGameBarVC
+   * 
+   * @param transition
+   * @param arc
+   */
+    private void backwardItem(TransitionModel transition, ArcModel arc)
     {
-        if (transition.isBackwardActivated())
+      //Either transition or arc has to be null
+      // Rememeber whether we actually did something here
+      // and only deactivate the transition after a *successful* click
+      boolean actionPerformed = false;
+      if(transition != null)
+      {
+        receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+        sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
+        actionPerformed = true;
+      }
+      else  //if it is an arc ==> it is some kind of XOR-Operation
+      {
+    	PetriNetModelElement source = (PetriNetModelElement) getPetriNet().getElementContainer().getElementById(arc.getSourceId());
+        PetriNetModelElement target = (PetriNetModelElement) getPetriNet().getElementContainer().getElementById(arc.getTargetId());
+        OperatorTransitionModel tempOperator;
+        if (target.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
         {
-            // Rememeber whether we actually did something here
-            // and only deactivate the transition after a *successful* click
-            boolean actionPerformed = false;
-            if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
+          tempOperator = (OperatorTransitionModel) target;
+          receiveBackwardTokens(arc);
+          if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) 
+          {
+           	sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
+           	actionPerformed = true;
+          }
+          else
+          {
+            // Special code for splitjoin. We have to take the
+            // token from the center place
+            if (tempOperator.getCenterPlace() != null)
             {
-            	receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
-            	sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
-               
-                if (transition.getType() == PetriNetModelElement.SUBP_TYPE)
-                {
-                	
-               /* 	int relativeX = e.getX() - transition.getX();
-                	int relativeY = e.getY() - transition.getY();
-                	// the lower left half of the transition will trigger 'step into'
-                	if (relativeY>=relativeX)
-                		// Step into sub-process and process it in a new modal editor
-                		// dialog in token-game mode
-                		thisEditor.openTokenGameSubProcess((SubProcessModel)transition);
-                */}
-                actionPerformed = true;
-                //Cleans up the RemoteControl. Needed to make sure that in-Editor-click and Remote-click work properly
-                RemoteControl.cleanupTransition();
-         
-            } else if (transition.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
-            {
-                OperatorTransitionModel operator = (OperatorTransitionModel) transition;
-                if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE
-                		|| operator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
-                {
-                    //LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
-                    // FIRE AND-Transition:
-                    // "+transition.getId());
-                    receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
-                    sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
-                    actionPerformed = true;
-
-                } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)||
-                		(operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
-                {
-                    // Do nothing: Only controlled by Arc Clicking
-                } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
-                		(operator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
-                {
-                    // Do nothing: Only controlled by Arc Clicking
-                } else if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
-                {
-                    // Do nothing: Only controlled by Arc Clicking as the user
-                    // has to select the
-                    // token source
-                }
+              tempOperator.getCenterPlace().sendToken();
+              actionPerformed = true;
             }
-            if (actionPerformed == true)
-            {
-                // Now update the status of the petri net by checking all
-                // transitions and activating them
-                // if their input conditions are fulfilled
-                // This will also trigger a redraw
-            	RemoteControl.clearChoiceBox();
-                checkNet();
-            }
+          }
         }
+        if (source.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+        {
+          tempOperator = (OperatorTransitionModel) source;
+          sendBackwardTokens(arc);
+          if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) 
+          {
+            receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
+            actionPerformed = true;
+          }
+          else
+          {
+            // Special code for splitjoin. We have to send the token
+            // to the center place
+            if (tempOperator.getCenterPlace() != null)
+            tempOperator.getCenterPlace().receiveToken();
+            actionPerformed = true;
+          }
+        }
+      }
+      
+      if (actionPerformed == true)
+      {
+        // Now update the status of the petri net by checking all
+        // transitions and activating them
+        // if their input conditions are fulfilled
+        // This will also trigger a redraw
+        //Cleans up the RemoteControl. Needed to make sure that in-Editor-click and Remote-click work properly
+        RemoteControl.cleanupTransition();
+    	RemoteControl.clearChoiceBox();
+        checkNet();
+      }    
     }
-	
-//**********************************************************************************
+    
 
     /*
      * Counts the token-filled Places which are the source of the Map filled
@@ -762,35 +782,6 @@ public class TokenGameController
         return activePlaces;
     }
 
-    /**
-     * needed for backward-playback
-     * 
-     * @param arcsFromPlaces
-     * @return number of active postSetPlaces
-     */
-  
-    private int countDirectFollowingActivePlaces(Map arcsFromPlaces)
-    {
-        Iterator outgoingArcsIter = arcsFromPlaces.keySet().iterator();
-        int activePostPlaces = 0;
-        while (outgoingArcsIter.hasNext())
-        {
-            ArcModel arc = getPetriNet().getElementContainer().getArcById(outgoingArcsIter.next());
-            try
-            {
-                PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getTargetId());
-                if (place != null && place.getVirtualTokenCount() > 0)
-                {
-                    // 	TODO: when ARC WEIGTH implemented check tokens >= weigth
-                    activePostPlaces++;
-                }
-            } catch (ClassCastException cce)
-            {
-                LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Source not a Place. Ignore arc: " + arc.getId());
-            }
-        }
-        return activePostPlaces;
-    }
     
     /*
      * Sets incoming Arcs of an Transition active, if the Place before has
@@ -1131,6 +1122,10 @@ public class TokenGameController
          */
         public void mouseReleased(MouseEvent e)
         {
+        	if(RemoteControl.playbackRunning())
+        	{
+        	  return;	
+        	}
         	Vector<Object> allCells = getGraph().getAllCellsForLocation(e.getPoint().x, e.getPoint().y);
             TransitionModel transition = findTransitionInCell(allCells);
             PlaceModel place = findPlaceInCell(allCells);
@@ -1215,13 +1210,20 @@ public class TokenGameController
     	char checkA = transition.getId().charAt(0);
     	if(checkA == 'a')
     	{
-    		arcClicked(getPetriNet().getElementContainer().getArcById(transition.getId()));
+    		if(BackWard)
+    		{
+    			backwardItem(null, getPetriNet().getElementContainer().getArcById(transition.getId()));	
+    		}
+    		else
+    		{
+    			arcClicked(getPetriNet().getElementContainer().getArcById(transition.getId()));
+    		}
     	}
     	else
     	{
     	  if(BackWard)
     	  {
-    	    backwardItem(transition);
+    	    backwardItem(transition, null);
     	  }
     	  else
     	  {
@@ -1235,16 +1237,6 @@ public class TokenGameController
     	     setStepIntoSubProcess(false);
     		}
     	  }
-    	}
-    	//Track the "walked way"
-    	if(!BackWard)
-    	{
-    	 RemoteControl.addHistoryItem(transition);
-    	 if(RemoteControl.isRecordSelected())
-    	 {
-    	   //Track the way in the history 	
-    	   RemoteControl.addHistoryListItem(transition);
-    	 }
     	}
     }
     
