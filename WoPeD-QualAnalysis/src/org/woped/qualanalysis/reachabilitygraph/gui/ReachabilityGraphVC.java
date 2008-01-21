@@ -51,6 +51,50 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 		init();
 	}
 	
+	private void init() {
+		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
+		this.setSize(new Dimension(640, 480));
+		this.setMinimumSize(new Dimension(320,240));
+		this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title"));
+        this.setClosable(true);
+        this.setResizable(true);
+        this.setMaximizable(true);
+        this.setIconifiable(false);
+        this.setLayout(new BorderLayout());
+        // NORTH Components
+        legendInfo = new JLabel();
+        legendInfo.setText(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
+        JPanel northPanel = new JPanel();
+        northPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        northPanel.add(legendInfo);
+        JButton export = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.ExportAsButton")); // TODO: Add to Messages
+        export.addActionListener(new ExportGraphButtonListener(this));
+        northPanel.add(export);
+        this.add(BorderLayout.NORTH, northPanel);
+        // SOUTH Components
+        JButton refreshButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.RefreshButton"));
+        refreshButton.addActionListener(new RefreshGraphButtonListener(this));
+        circleButton = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Circle") + " " +  
+        									Messages.getString("QuanlAna.ReachabilityGraph.Layout"));
+        hierarchicButton = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Hierarchic") + " " + 
+											 Messages.getString("QuanlAna.ReachabilityGraph.Layout"));
+        hierarchicButton.setActionCommand(ReachabilityGraphModel.HIERARCHIC + "");
+        hierarchicButton.setSelected(true);
+        circleButton.setActionCommand(ReachabilityGraphModel.CIRCLE + "");
+        ButtonGroup layoutGroup = new ButtonGroup();
+        layoutGroup.add(circleButton);
+        layoutGroup.add(hierarchicButton);
+        JPanel southPanel = new JPanel();
+        southPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));
+        southPanel.add(refreshButton);
+        southPanel.add(circleButton);
+        southPanel.add(hierarchicButton);
+        southPanel.add(bottomInfo = new JLabel(""));
+        this.add(BorderLayout.SOUTH, southPanel);
+        this.setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
+		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
+	}
+	
 	private void addEditor(IEditor editor){
 		boolean alreadyContainsPanel = false;
 		for(ReachabilityGraphPanel rgp : panels){
@@ -86,45 +130,13 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 		return null;
 	}
 	
-	private void init() {
-		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
-		this.setSize(new Dimension(640, 480));
-		this.setMinimumSize(new Dimension(320,240));
-		this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title"));
-        this.setClosable(true);
-        this.setResizable(true);
-        this.setMaximizable(true);
-        this.setIconifiable(false);
-        this.setLayout(new BorderLayout());
-        // NORTH Components
-        legendInfo = new JLabel();
-        legendInfo.setText(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
-        JPanel northPanel = new JPanel();
-        northPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        northPanel.add(legendInfo);
-        this.add(BorderLayout.NORTH, northPanel);        
-        // SOUTH Components
-        JButton refreshButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.RefreshButton"));
-        refreshButton.addActionListener(new RefreshGraphButtonListener(this));
-        circleButton = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Circle") + " " +  
-        									Messages.getString("QuanlAna.ReachabilityGraph.Layout"));
-        hierarchicButton = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Hierarchic") + " " + 
-											 Messages.getString("QuanlAna.ReachabilityGraph.Layout"));
-        hierarchicButton.setActionCommand(ReachabilityGraphModel.HIERARCHIC + "");
-        hierarchicButton.setSelected(true);
-        circleButton.setActionCommand(ReachabilityGraphModel.CIRCLE + "");
-        ButtonGroup layoutGroup = new ButtonGroup();
-        layoutGroup.add(circleButton);
-        layoutGroup.add(hierarchicButton);
-        JPanel southPanel = new JPanel();
-        southPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));
-        southPanel.add(refreshButton);
-        southPanel.add(circleButton);
-        southPanel.add(hierarchicButton);
-        southPanel.add(bottomInfo = new JLabel(""));
-        this.add(BorderLayout.SOUTH, southPanel);
-        this.setDefaultCloseOperation(JInternalFrame.HIDE_ON_CLOSE);
-		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
+	public JGraph getActualJGraph(){
+		for (ReachabilityGraphPanel rgp : panels) {
+			if(rgp.isVisible()){
+				return rgp.getGraph();
+			}
+		}
+		return null;
 	}
 	
 	public void removePanel(IEditor editor){
@@ -189,6 +201,19 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 		buttons.add(circleButton);
 		buttons.add(hierarchicButton);
 		return buttons;
+	}
+}
+
+class ExportGraphButtonListener implements ActionListener {
+	ReachabilityGraphVC rgvc = null;
+	
+	public ExportGraphButtonListener(ReachabilityGraphVC rgvc){
+		this.rgvc = rgvc;
+	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		rgvc.getActualJGraph();
+		// open modal dialog !
 	}
 }
 
