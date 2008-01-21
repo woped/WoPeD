@@ -75,7 +75,6 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
     
 	//Linked Lists 
 	private LinkedList       followingActivatedTransitions           = null;
-	private LinkedList       previousActivatedTransitions            = null;
 	
 	//History Variables
 	private Vector <TransitionModel>  HistoryVector           = null;
@@ -387,15 +386,7 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		followingActivatedTransitions.addLast(transition);
 	}
 	
-	
-	//Get previous "BackwardActive" Transitions
-	/**
-	 * previousActivated Transition is taken out of the HistoryVector
-	 */
-	public void addPreviousItem(TransitionModel transition)
-	{;
-	}
-	
+		
 	/**
 	 * will set the "BackwardTransitionToOccur" with Data
 	 */
@@ -425,11 +416,12 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 			{
 				HistoryIndex--;
 				BackwardTransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex);
+				return;
 			}
-			else
+			else  //if(HistoryIndex < 0)
 			{
-				HistoryIndex = 0;
-				BackwardTransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex);
+				BackwardTransitionToOccur = null;
+				return;
 			}
 		}
 	  }			
@@ -466,6 +458,11 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 	  }
 	}
 	
+	public LinkedList getFollowingActivatedTransitions()
+	{
+		return followingActivatedTransitions;
+	}
+	
 	public void clearChoiceBox()
 	{
 		acoChoiceItems.clear();
@@ -486,6 +483,7 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 	{
 		ahxHistoryContent.clear();
 		HistoryVector = null; //Set reference to null, so that a new history-Vector will be created!
+		newHistory = true;
 	}
 	
 
@@ -533,19 +531,35 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
     	PetriNet.addSimulation(SaveableSimulation);
     }
     
+    /**
+     * Overwrites an existing history with the current one. 
+     * @param index
+     */
+    public void overwriteHistory(int index)
+    {
+    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
+    	SaveableSimulation.setFiredTransitions((Vector<TransitionModel>)HistoryVector.clone());
+    }
+    
+    /**
+     * Deletes the a saved simulation 
+     * @param index
+     */
+    public void deleteHistory(int index)
+    {
+    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().remove(index);
+    }
     
     public void loadHistory(int index)
     {
-    	//HistoryIndex = 0;
     	ahxHistoryContent.clear();
-    	SaveableSimulation = PetriNet.getSimulations().elementAt(index);
+    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
     	//needs a clone, otherwise, the saved history might be erased when the user just wants to clean the history-box
     	HistoryVector = (Vector<TransitionModel>)SaveableSimulation.getFiredTransitions().clone();
     	for (int i = 0; i < HistoryVector.size(); i++)
     	{
     		ahxHistoryContent.addElement(HistoryVector.get(i).getNameValue());
     	}
-    	//TransitionToOccur = HistoryVector.get(HistoryIndex);
     }
     
     public boolean isNewHistory()
@@ -561,8 +575,7 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
     public void startHistoryPlayback()
     {
     	HistoryIndex = 0;
-    	TransitionToOccur = HistoryVector.get(HistoryIndex);
-    	//HistoryIndex++;   	
+    	TransitionToOccur = HistoryVector.get(HistoryIndex);   	
     }
     
 	/*
@@ -725,6 +738,7 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		if(BackwardTransitionToOccur != null)
 		{
 			TransitionToOccur = BackwardTransitionToOccur;
+			m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 		}
   	  }
 	  else
@@ -743,8 +757,12 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 				  HistoryIndex = HistoryVector.size();
 			  }
 		  }
-	  }
-	  m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
+		  //If end of net is not reached yet or there is still something to occur
+		  if(followingActivatedTransitions.size() > 0)
+		  {
+		    m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
+		  }
+	  } 
 	}
 	
 	/**
@@ -772,7 +790,11 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		{
 			while (i != 3)
 			{
-				if(followingActivatedTransitions.size() < 2)
+				if((followingActivatedTransitions.size() < 2) && (!playbackRunning()))
+				{
+					occurTransition(BackWard);
+				}
+				else if (playbackRunning())
 				{
 					occurTransition(BackWard);
 				}
@@ -910,10 +932,6 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		if(followingActivatedTransitions != null)
 		{
 			followingActivatedTransitions.clear();
-		}
-		if(previousActivatedTransitions != null)
-		{
-			previousActivatedTransitions.clear();
 		}
 	}
 	

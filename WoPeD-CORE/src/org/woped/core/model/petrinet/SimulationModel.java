@@ -52,6 +52,15 @@ public class SimulationModel
     	return firedTransitions;
     }
     
+    /**
+     * This method is needed to make it possible that Simulations may be overwritten with other content
+     * @param HistoryVector
+     */
+    public void setFiredTransitions(Vector<TransitionModel> HistoryVector)
+    {
+    	firedTransitions = HistoryVector;
+    }
+    
     /*
      * (non-Javadoc)
      * 

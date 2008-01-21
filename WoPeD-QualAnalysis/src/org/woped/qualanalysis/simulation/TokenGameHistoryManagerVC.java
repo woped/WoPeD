@@ -5,7 +5,10 @@ import javax.swing.*;
 import org.woped.qualanalysis.simulation.controller.*;
 import org.woped.core.gui.*;
 import java.awt.*;
+import java.util.Vector;
+
 import org.woped.core.model.petrinet.SimulationModel;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.translations.Messages; 
 
 public class TokenGameHistoryManagerVC extends JDialog
@@ -40,18 +43,10 @@ public class TokenGameHistoryManagerVC extends JDialog
 	private ListSelectionModel       SelectedItems    = null;
 	
 
-	
+	//History-From-File
+	private Vector<SimulationModel> HistoryFromFile = null;      
 	
 	//Standard-Constructor
-	public TokenGameHistoryManagerVC(IUserInterface mediator)
-	{
-		super((JFrame)mediator, Messages.getTitle("Tokengame.HistoryManager"), true);
-		this.add(addHistoryManagerPanel());
-		this.setLocationRelativeTo(null);
-		this.setSize(300,300);
-		this.setResizable(false);
-	}
-	
 	public TokenGameHistoryManagerVC(IUserInterface mediator, TokenGameBarVC RC)
 	{
 		super((JFrame)mediator, Messages.getTitle("Tokengame.HistoryManager"), true);
@@ -85,8 +80,8 @@ public class TokenGameHistoryManagerVC extends JDialog
 	    
 	    //Set ButtonActions
 	    SaveNewHistory.addActionListener(new TokenGameBarListener(TokenGameBarListener.HM_SAVE_HISTORY, RemoteControl, this));
-	    DeleteSelected.addActionListener(new TokenGameBarListener(TokenGameBarListener.HM_DELETE_SELECTED));
-	    OverwriteSelected.addActionListener(new TokenGameBarListener(TokenGameBarListener.HM_OVERWRITE_SELECTED));
+	    DeleteSelected.addActionListener(new TokenGameBarListener(TokenGameBarListener.HM_DELETE_SELECTED, RemoteControl, this));
+	    OverwriteSelected.addActionListener(new TokenGameBarListener(TokenGameBarListener.HM_OVERWRITE_SELECTED, RemoteControl, this));
 	    OpenSelected.addActionListener(new TokenGameBarListener(TokenGameBarListener.HM_OPEN_SELECTED, RemoteControl, this));
 	    
 	    
@@ -144,8 +139,6 @@ public class TokenGameHistoryManagerVC extends JDialog
 	
 	public void saveNewHistory()
 	{
-		//Einfügen, dass das nur geht, wenn eine neue History verfügbar ist!
-		//Declare some locale variables		
 		if (RemoteControl.isNewHistory())
 		{
 		 HistoryData = RemoteControl.getHistoryData();
@@ -155,13 +148,17 @@ public class TokenGameHistoryManagerVC extends JDialog
 	     RemoteControl.setToOldHistory();
 	     this.setVisible(false);
 		}
+		else
+		{
+			JOptionPane.showMessageDialog(this, Messages.getTitle("Tokengame.HistoryManager.ErrorNoNewHistory"), Messages.getTitle("Tokengame.HistoryManager.SaveError"),  JOptionPane.ERROR_MESSAGE);
+
+		}
 	}
 	
-	public void deleteSelected()
-	{
-		
-	}
-	
+	/**
+	 * Loads the selected Simulation from the List of saved Simulations directly into the
+	 * HistoryBox of the TokenGameBar 
+	 */
 	public void openSelected()
 	{
 	  int LoadIndex = 0;
@@ -181,25 +178,49 @@ public class TokenGameHistoryManagerVC extends JDialog
 	  if(SavedHistoryContent.size() != 0)
 	  {
 	 	 RemoteControl.loadHistory(LoadIndex);
-		  //HistoryObject = HistoryArray[LoadIndex];
-		//  RemoteControl.addHistoryData(HistoryObject.getHistoryItems());
-		  this.setVisible(false);
-	  }
-	  
-	  
-	  
+		 this.setVisible(false);
+	  }	  
 	}
 	
-	public void overwriteSelected()
+	public int getSelection()
 	{
-		
+		SelectedItems = SavedHistory.getSelectionModel();
+		if(SelectedItems.isSelectionEmpty())
+		{
+			 return -1; 
+		}
+		else
+		{
+		     return SelectedItems.getMinSelectionIndex();	
+		}
 	}
 	
+	/**
+	 * Checks if the chosen Name is Empty or already exists
+	 * and throws Messageboxes for the certain cases
+	 * 
+	 * If no History has been recorded, it will not save as well
+	 * @return true / false
+	 */
 	public boolean checkSaveName()
-	{
-		//TODO Program the checkmechanism to... 
-		//...determine if the TextField is empty
-		return true;
+	{				
+		if(NameEntry.getText().isEmpty())
+		{
+		   JOptionPane.showMessageDialog(this, Messages.getTitle("Tokengame.HistoryManager.ErrorNameEmpty"), Messages.getTitle("Tokengame.HistoryManager.SaveError"),  JOptionPane.ERROR_MESSAGE);
+		   return false;
+		}
+		else
+		{
+		   if(SavedHistoryContent.contains(NameEntry.getText()))
+		   {
+			   JOptionPane.showMessageDialog(this, Messages.getTitle("Tokengame.HistoryManager.ErrorNameDouble"), Messages.getTitle("Tokengame.HistoryManager.SaveError"),  JOptionPane.ERROR_MESSAGE);
+  		       return false;
+		   }
+		   else
+		   {
+ 		       return true;
+		   }
+		}
 		
 	}
 	
@@ -220,4 +241,20 @@ public class TokenGameHistoryManagerVC extends JDialog
 	    }
     }
 	
+	/**
+	 * this method fills the history-List with the already existing Simulations 
+	 */
+	public void addLoadListItem(String item)
+	{
+		SavedHistoryContent.addElement(item);	
+	}
+	
+	/**
+	 * removes a possibly deleted History-Item from the Load-List
+	 * @param index
+	 */
+	public void removeLoadListItem(int index)
+	{
+		SavedHistoryContent.remove(index);
+	}
 }

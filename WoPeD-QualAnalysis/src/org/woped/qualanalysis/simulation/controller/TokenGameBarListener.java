@@ -81,12 +81,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	  	RemoteControl = RC;
 	}
 	
-	//Needed e.g. for HistoryManager Elements
-	public TokenGameBarListener(int ButtonID)
-	{
-	  	ID = ButtonID;
-	}
-	
 	
 	public void actionPerformed(ActionEvent e)
 	{
@@ -236,8 +230,22 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			 saveRecordedHistory();
 			 break;
 		 case HM_DELETE_SELECTED:
+			 if(HistoryDialog.getSelection() > -1)
+			 {
+				 RemoteControl.deleteHistory(HistoryDialog.getSelection());
+				 HistoryDialog.removeLoadListItem(HistoryDialog.getSelection());
+			 }
 			 break;
 		 case HM_OVERWRITE_SELECTED:
+			 if(HistoryDialog.getSelection() == -1)
+			 {
+				 saveRecordedHistory();
+			 }
+			 else
+			 {
+				 RemoteControl.overwriteHistory(HistoryDialog.getSelection());
+				 HistoryDialog.setVisible(false);
+			 }
 			 break;
 		 case HM_OPEN_SELECTED:
 			 loadExistingHistory();
@@ -270,7 +278,13 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		{	
 		    MainWindowReference = new ReferenceProvider();
 		    HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference(), RemoteControl);
+		    for(int i = 0; i < RemoteControl.getPetriNet().getSimulations().size(); i++)
+		    {
+		    	HistoryDialog.addLoadListItem(RemoteControl.getPetriNet().getSimulations().get(i).getName());
+		    }
+		    	
 		    HistoryDialog.setVisible(true);
+		    
 		}
 		else
 		{
@@ -307,6 +321,10 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			if (RemoteControl.playbackRunning())
 			{
 				  RemoteControl.startHistoryPlayback();
+			}
+			else
+			{
+				RemoteControl.clearHistoryData();
 			}
 		}
 	}
