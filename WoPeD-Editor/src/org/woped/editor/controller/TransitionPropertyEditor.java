@@ -81,7 +81,7 @@ import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
 public class TransitionPropertyEditor extends JDialog implements ActionListener, IDialog {
-	
+
 	// General
 	private TransitionModel transition = null;
 
@@ -1605,6 +1605,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 		bpelPanel.add(assignPanel, c2);
 		repaint();
+		pack();
 	}
 
 	private void showInvokePanel(){
@@ -1766,32 +1767,32 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 												.getString("TransitionEditor.Properties.ResourceError.Title"),
 										JOptionPane.ERROR_MESSAGE);
 					}
-					
+
 					// save BPEL settings
 					int index = activityChooseComboBox.getSelectedIndex();
 					switch(index){
 						case 0: break;
 						case 1: Assign iAssign = new Assign();
-								iAssign.saveInformation(assignPanel); 
+								iAssign.saveInformation(assignPanel);
 								transition.setBaseActivity(iAssign);
 								break;
 						case 2: Invoke iInvoke = new Invoke();
-								iInvoke.saveInformation(invokePanel); 
+								iInvoke.saveInformation(invokePanel);
 								transition.setBaseActivity(iInvoke);
 								break;
 						case 3: Receive iReceive = new Receive();
-								iReceive.saveInformation(receivePanel); 
+								iReceive.saveInformation(receivePanel);
 								transition.setBaseActivity(iReceive);
 								break;
 						case 4: Reply iReply = new Reply();
-								iReply.saveInformation(replyPanel); 
+								iReply.saveInformation(replyPanel);
 								transition.setBaseActivity(iReply);
 								break;
 						case 5: Wait iWait = new Wait();
-								iWait.saveInformation(waitPanel); 
+								iWait.saveInformation(waitPanel);
 								transition.setBaseActivity(iWait);
 					}
-					
+
 				}
 			});
 		}
@@ -1914,5 +1915,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 
 	public ButtonGroup getBranchingButtonGroup() {
 		return branchingButtonGroup;
+	}
+
+	public void repaintTabPane(){
+		tabPane.repaint();
 	}
 }
