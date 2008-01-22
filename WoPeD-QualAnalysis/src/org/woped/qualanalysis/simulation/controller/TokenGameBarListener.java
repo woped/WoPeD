@@ -55,7 +55,8 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	//Record Simulation
 	public final static int           CHOOSE_RECORD          = 22;
 
-
+	//Playback Manager Buttons
+	public final static int			  PM_SAVE_PROPERTIES     = 23;
 		
 	//Action-Variables
 	private ReferenceProvider         MainWindowReference    = null;
@@ -65,6 +66,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	//Variables
 	private int                       ID                     = 0;
 	private TokenGameBarController    RemoteControl          = null;
+	private TokenGamePlaybackManagerVC	  PlaybackDialog		  = null;
 
 
 	public TokenGameBarListener(int ButtonID, TokenGameBarController RC, TokenGameHistoryManagerVC ToGaHiMan)
@@ -72,6 +74,13 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	  	ID = ButtonID;
 	  	RemoteControl = RC;
 	  	HistoryDialog = ToGaHiMan;
+	}
+	
+	public TokenGameBarListener(int ButtonID, TokenGameBarController RC, TokenGamePlaybackManagerVC ToGaPM)
+	{
+	  	ID = ButtonID;
+	  	RemoteControl = RC;
+	  	PlaybackDialog = ToGaPM;
 	}
 	
 	//Needed for RemoteControlElements
@@ -89,18 +98,13 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		switch(ID)
 		{
 		 case CHOOSE_STEPWISE:
-			 if (RemoteControl.tokengameRunning())
-			 {
-				 RemoteControl.setAutoPlayback(false);
-			 }
+			 RemoteControl.setAutoPlayback(false);
 			 break;
 		 case CHOOSE_PLAYBACK:
-			 if (RemoteControl.tokengameRunning())
-			 {
-				RemoteControl.setAutoPlayback(true);
-			 }
+			 RemoteControl.setAutoPlayback(true);
 			 break;
-		 case 3:
+		 case OPEN_PLAYBACK_MANAGER:
+			 showPlaybackManager();
 			 break;
 		 case CLICK_FAST_BACKWARD:
 			 if (RemoteControl.tokengameRunning())
@@ -229,12 +233,36 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			   RemoteControl.clearHistoryData();
 			 }
 		     break;
+		 case PM_SAVE_PROPERTIES:
+			 savePlaybackManagerSettings();
+			 break;
 		 default:
 			 break;
 		}
 
 	}
 	
+	private void showPlaybackManager()
+	{
+		//Calling the Dialog-Box of the HistoryManager
+		//Gets Reference out of Help-Class: ReferenceProvider
+		if(PlaybackDialog == null)
+		{	
+		    MainWindowReference = new ReferenceProvider();
+		    PlaybackDialog= new TokenGamePlaybackManagerVC(MainWindowReference.getUIReference(), RemoteControl);
+		    PlaybackDialog.setVisible(true);
+		    
+		}
+		else
+		{
+			PlaybackDialog.setVisible(true);
+		}
+	}
+	
+	private void savePlaybackManagerSettings()
+	{
+		PlaybackDialog.saveProperties();
+	}
 	
 	private void showHistoryManager()
 	{
