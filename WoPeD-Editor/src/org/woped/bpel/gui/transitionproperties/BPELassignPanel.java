@@ -108,7 +108,7 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	
 	private JButton getNewFromVariableButton(){
 		if (newFromVariableButton == null) {
-			newFromVariableButton = new JButton(Messages.getString("Transition.Properties.BPEL.New"));		
+			newFromVariableButton = new JButton(NEW);		
 			
 			newFromVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
@@ -128,7 +128,7 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	
 	private JButton getNewToVariableButton(){
 		if (newToVariableButton == null) {
-			newToVariableButton = new JButton(Messages.getString("Transition.Properties.BPEL.New"));
+			newToVariableButton = new JButton(NEW);
 			
 			newToVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){

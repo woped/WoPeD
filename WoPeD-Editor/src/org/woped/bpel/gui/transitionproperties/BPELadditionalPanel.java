@@ -22,6 +22,7 @@ import org.woped.bpel.wsdl.wsdlFileRepresentation.Role;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.WsdlFileRepresentation;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.translations.Messages;
 
 public abstract class BPELadditionalPanel extends JPanel{
 
@@ -33,8 +34,11 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JComboBox partnerLinkTypeComboBox = null;
 	JComboBox partnerRoleComboBox = null;
 	JComboBox myRoleComboBox = null;
-
-	ArrayList<PartnerLinkType> partnerLinkTypes;
+	
+	String textCreateNew = Messages.getString("Transition.Properties.BPEL.New");
+	static final String NEW= Messages.getString("Transition.Properties.BPEL.New");
+	
+;	ArrayList<PartnerLinkType> partnerLinkTypes;
 	ArrayList<Role> roles;
 
 	TransitionModel transition = null;

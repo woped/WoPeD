@@ -136,7 +136,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	
 	private JButton getNewPartnerLinkButton(){
 		if (newPartnerLinkButton == null) {
-			newPartnerLinkButton = new JButton("new");		
+			newPartnerLinkButton = new JButton(NEW);		
 			newPartnerLinkButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					showNewPartnerLinkDialog();
@@ -162,7 +162,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	
 	private JButton getNewInVariableButton(){
 		if (newInVariableButton == null) {
-			newInVariableButton = new JButton("new");
+			newInVariableButton = new JButton(NEW);
 			
 			newInVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
@@ -183,7 +183,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	
 	private JButton getNewOutVariableButton(){
 		if (newOutVariableButton == null) {
-			newOutVariableButton = new JButton("new");
+			newOutVariableButton = new JButton(NEW);
 			
 			newOutVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
