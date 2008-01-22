@@ -45,6 +45,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JDialog dialogPartner = null;
 	JPanel dialogButtons = null;
 
+	JTextField wsdlFileTextField = null;
 	JButton searchLocalWSDLButton = null;
 	JComboBox partnerLinkTypeComboBox = null;
 	JComboBox partnerRoleComboBox = null;
@@ -110,7 +111,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(new JTextField(), c);
+		dialogPartner.add(getWSDLFileTextField(), c);
 
 		c.gridx = 2;
 		c.gridy = 0;
@@ -250,6 +251,13 @@ public abstract class BPELadditionalPanel extends JPanel{
 	
 	//	************** reading WSDL data *****************
 
+	private JTextField getWSDLFileTextField(){
+		if(wsdlFileTextField == null){
+			wsdlFileTextField = new JTextField();
+		}
+		return wsdlFileTextField;
+	}
+	
 	private JButton getLocalWSDLButton(){
 		if (searchLocalWSDLButton == null){
 			searchLocalWSDLButton = new JButton();
@@ -282,7 +290,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 						System.out.println ("Datei "+chooser.getSelectedFile()+
                         " ausgewählt.");
-						
+						wsdlFileTextField.setText(""+chooser.getSelectedFile());
 					}
 					     
 					
