@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes
@@ -107,7 +108,7 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	
 	private JButton getNewFromVariableButton(){
 		if (newFromVariableButton == null) {
-			newFromVariableButton = new JButton("new");		
+			newFromVariableButton = new JButton(Messages.getString("Transition.Properties.BPEL.New"));		
 			
 			newFromVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
@@ -127,7 +128,7 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	
 	private JButton getNewToVariableButton(){
 		if (newToVariableButton == null) {
-			newToVariableButton = new JButton("new");
+			newToVariableButton = new JButton(Messages.getString("Transition.Properties.BPEL.New"));
 			
 			newToVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
