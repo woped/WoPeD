@@ -138,13 +138,13 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 			c.insets = new Insets(0,0,0,20);
 			c.gridx = 0;
 			c.gridy = 0;
-			durationSubPanel.add(new JLabel("Years"), c);
+			durationSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Years")), c);
 			c.gridx = 1;
 			c.gridy = 0;
-			durationSubPanel.add(new JLabel("Months"), c);
+			durationSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Months")), c);
 			c.gridx = 2;
 			c.gridy = 0;
-			durationSubPanel.add(new JLabel("Days"), c);
+			durationSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Days")), c);
 
 			c.insets = new Insets(0,0,5,20);
 			c.gridx = 0;
@@ -160,13 +160,13 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 			c.insets = new Insets(0,0,0,20);
 			c.gridx = 0;
 			c.gridy = 2;
-			durationSubPanel.add(new JLabel("Hours"), c);
+			durationSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Hours")), c);
 			c.gridx = 1;
 			c.gridy = 2;
-			durationSubPanel.add(new JLabel("Minutes"), c);
+			durationSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Minutes")), c);
 			c.gridx = 2;
 			c.gridy = 2;
-			durationSubPanel.add(new JLabel("Seconds"), c);
+			durationSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Seconds")), c);
 
 			c.gridx = 0;
 			c.gridy = 3;
@@ -245,13 +245,13 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 			c.gridx = 0;
 			c.gridy = 0;
 			c.insets = new Insets(0,0,0,20);
-			deadlineTimeSubPanel.add(new JLabel("Hours"), c);
+			deadlineTimeSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Hours")), c);
 			c.gridx = 1;
 			c.gridy = 0;
-			deadlineTimeSubPanel.add(new JLabel("Minutes"), c);
+			deadlineTimeSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Minutes")), c);
 			c.gridx = 2;
 			c.gridy = 0;
-			deadlineTimeSubPanel.add(new JLabel("Seconds"), c);
+			deadlineTimeSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Seconds")), c);
 			c.gridx = 0;
 			c.gridy = 1;
 			c.insets = new Insets(0,0,0,20);
@@ -406,15 +406,6 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 			waitDeadlineRadioButton.addActionListener(this);
 		}
 		return waitDeadlineRadioButton;
-	}
-
-	private JLabel getTimeLabel(){
-		if (timeLabel == null)
-        {
-        	timeLabel = new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Time") + ":");
-        }
-
-        return timeLabel;
 	}
 
 
