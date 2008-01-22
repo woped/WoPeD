@@ -25,7 +25,7 @@ public class WsdlMain {
 		try {
 
 //			wsdlFileRepresentation = wsdl.readDataFromWSDL("HTTP://www-db.informatik.tu-muenchen.de/UniVerwaltung.wsdl");
-			wsdlFileRepresentation = wsdl.readDataFromWSDL("Test-Files/example.wsdl");
+			wsdlFileRepresentation = wsdl.readDataFromWSDL("http://www.esther-landes.de/wsdlFiles/example.wsdl");
 //			wsdlFileRepresentation = wsdl.readDataFromWSDL("http://www.webservicex.net/globalweather.asmx?WSDL");
 
 
