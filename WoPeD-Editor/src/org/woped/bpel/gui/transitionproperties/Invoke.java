@@ -19,6 +19,7 @@ public class Invoke extends BaseActivity
 		//erzeuge XML-Baum
 		TProcess p = BaseActivity.genBpelProsses();
 		TInvoke invoke = p.addNewInvoke();
+		invoke.setName(""+bip.transition.getNameValue());
 		invoke.setPartnerLink(bip.getPartnerLink());
 		invoke.setOperation(bip.getOperation());
 		//invoke.setPortType(bip.getPortType());

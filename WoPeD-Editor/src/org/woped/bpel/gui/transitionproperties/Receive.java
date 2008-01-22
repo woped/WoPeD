@@ -20,6 +20,7 @@ public class Receive extends BaseActivity
 		
 		TProcess p = BaseActivity.genBpelProsses();
 		TReceive receive = p.addNewReceive();
+		receive.setName(""+brp.transition.getNameValue());
 		receive.setPartnerLink(brp.getPartnerLink());
 		receive.setOperation(brp.getOperation());
 		receive.setVariable(brp.getVariable());

@@ -20,10 +20,10 @@ public class Assign extends BaseActivity
 	{
 		TProcess p = BaseActivity.genBpelProsses();
 		TAssign assign = p.addNewAssign();
+		assign.setName(""+bip.transition.getNameValue());
 		TCopy copy = assign.addNewCopy();
 		TFrom from = copy.addNewFrom();
 		//from.setVariable(bip.getFromVariable());
-		
 		TTo to = copy.addNewTo();
 		//to.setVariable(bip.getToVariable());
 		this.setActivity(assign);

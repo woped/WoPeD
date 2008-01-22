@@ -18,6 +18,7 @@ public class Wait extends BaseActivity
 		//Problem Unterscheidung zwischen For und Until
 		TProcess p = BaseActivity.genBpelProsses();
 		TWait wait = p.addNewWait();
+		wait.setName(""+bwp.transition.getNameValue());
 		this.setActivity(wait);
 		
 		/*if(bwp.getFor() != null)

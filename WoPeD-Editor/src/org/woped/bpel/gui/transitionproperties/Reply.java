@@ -18,6 +18,7 @@ public class Reply extends BaseActivity
 	{
 		TProcess p = BaseActivity.genBpelProsses();
 		TReply reply = p.addNewReply();
+		reply.setName(""+brp.transition.getNameValue());
 		
 		//PartnerLink
 		reply.setPartnerLink(brp.getPartnerLink());
