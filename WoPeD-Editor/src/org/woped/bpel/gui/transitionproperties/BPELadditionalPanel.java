@@ -35,8 +35,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JComboBox partnerRoleComboBox = null;
 	JComboBox myRoleComboBox = null;
 	
-	String textCreateNew = Messages.getString("Transition.Properties.BPEL.New");
-	static final String NEW= Messages.getString("Transition.Properties.BPEL.New");
+	static final String NEW= Messages.getString("Transition.Properties.BPEL.Buttons.New");
 	
 ;	ArrayList<PartnerLinkType> partnerLinkTypes;
 	ArrayList<Role> roles;
@@ -74,7 +73,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 
 		dialogPartner = new JDialog(t_editor, true);
 		dialogPartner.setVisible(false);
-		dialogPartner.setTitle("Create Partner Link");
+		dialogPartner.setTitle(Messages.getString("Transition.Properties.BPEL.NewPartnerLink"));
 		dialogPartner.setSize(400,200);
 		dialogPartner.setLocation(150,150);
 		dialogPartner.setLayout(new GridBagLayout());
@@ -122,7 +121,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(new JLabel("Partner Roles:"), c);
+		dialogPartner.add(new JLabel("Partner Role:"), c);
 
 		c.gridx = 1;
 		c.gridy = 2;
@@ -158,7 +157,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 	protected void showNewVariableDialog(){
 		dialogVariable = new JDialog(t_editor, true);
 		dialogVariable.setVisible(false);
-		dialogVariable.setTitle("Create Variable");
+		dialogVariable.setTitle(Messages.getString("Transition.Properties.BPEL.NewVariable"));
 		dialogVariable.setSize(400,150);
 		dialogVariable.setLocation(150,150);
 		dialogVariable.setLayout(new GridBagLayout());
