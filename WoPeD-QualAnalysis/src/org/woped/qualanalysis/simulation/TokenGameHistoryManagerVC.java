@@ -204,7 +204,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 	 */
 	public boolean checkSaveName()
 	{				
-		if(NameEntry.getText().isEmpty())
+		if(NameEntry.getText() == "")
 		{
 		   JOptionPane.showMessageDialog(this, Messages.getTitle("Tokengame.HistoryManager.ErrorNameEmpty"), Messages.getTitle("Tokengame.HistoryManager.SaveError"),  JOptionPane.ERROR_MESSAGE);
 		   return false;
