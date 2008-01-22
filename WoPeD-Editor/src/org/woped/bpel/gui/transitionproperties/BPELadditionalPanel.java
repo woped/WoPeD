@@ -44,7 +44,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JComboBox partnerRoleComboBox = null;
 	JComboBox myRoleComboBox = null;
 	
-	static final String NEW= Messages.getString("Transition.Properties.BPEL.Buttons.New");
+	static final String NEW = Messages.getString("Transition.Properties.BPEL.Buttons.New");
 	
 ;	ArrayList<PartnerLinkType> partnerLinkTypes;
 	ArrayList<Role> roles;
@@ -110,7 +110,12 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
-		dialogPartner.add(new JButton("Browse"), c);
+		
+		JButton b = new JButton();
+		b.setIcon(Messages.getImageIcon("ToolBar.Open"));
+		dialogPartner.add(b, c);
+	//	dialogPartner.add(new JButton(Messages.getString("ToolBar.Open.Icon")), c);
+		
 		//evt noch zweiter Button für Internet/WWW-Adresse eingeben
 
 		c.gridx = 0;
