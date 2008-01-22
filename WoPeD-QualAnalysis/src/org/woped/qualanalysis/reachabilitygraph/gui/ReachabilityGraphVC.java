@@ -293,7 +293,6 @@ class ExportGraphButtonListener implements ActionListener {
 		if (filetype == FileFilterImpl.JPGFilter) {
 			ImageExport.saveJPG(ImageExport
 					.getRenderedImage(rgvc), new File(filepath));
-			// TODO: !!! Working dir
 		} else if (filetype == FileFilterImpl.PNGFilter) {
 			ImageExport.savePNG(ImageExport
 					.getRenderedImage(rgvc), new File(filepath));
