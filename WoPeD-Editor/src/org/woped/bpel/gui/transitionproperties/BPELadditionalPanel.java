@@ -45,6 +45,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JDialog dialogPartner = null;
 	JPanel dialogButtons = null;
 
+	JTextField partnerLinkNameTextField = null;
 	JTextField wsdlFileTextField = null;
 	JButton searchLocalWSDLButton = null;
 	JComboBox partnerLinkTypeComboBox = null;
@@ -91,7 +92,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		dialogPartner = new JDialog(t_editor, true);
 		dialogPartner.setVisible(false);
 		dialogPartner.setTitle(Messages.getString("Transition.Properties.BPEL.NewPartnerLink"));
-		dialogPartner.setSize(400,200);
+		dialogPartner.setSize(450,250);
 		dialogPartner.setLocation(150,150);
 		dialogPartner.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -105,60 +106,72 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(new JLabel("WSDL:"), c);
+		dialogPartner.add(new JLabel("Name:"), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
+		dialogPartner.add(getPartnerLinkNameTextField(), c);
+		
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.insets = new Insets(0, 5, 0, 0);
+		dialogPartner.add(new JLabel("WSDL:"), c);
+
+		c.gridx = 1;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.insets = new Insets(0, 5, 0, 0);
 		dialogPartner.add(getWSDLFileTextField(), c);
 
 		c.gridx = 2;
-		c.gridy = 0;
+		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
 		dialogPartner.add(getLocalWSDLButton(), c);
 
 		c.gridx = 0;
-		c.gridy = 1;
+		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		dialogPartner.add(new JLabel("Partner Link Type:"), c);
 
 		c.gridx = 1;
-		c.gridy = 1;
+		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		dialogPartner.add(getPartnerLinkTypeComboBox(), c);
 
 		c.gridx = 0;
-		c.gridy = 2;
+		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		dialogPartner.add(new JLabel("Partner Role:"), c);
 
 		c.gridx = 1;
-		c.gridy = 2;
+		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		dialogPartner.add(getPartnerRoleComboBox(), c);
 
 		c.gridx = 0;
-		c.gridy = 3;
+		c.gridy = 4;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		dialogPartner.add(new JLabel("My Role:"), c);
 
 		c.gridx = 1;
-		c.gridy = 3;
+		c.gridy = 4;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		dialogPartner.add(getMyRoleComboBox(), c);
 
 		c.gridx = 1;
-		c.gridy = 4;
+		c.gridy = 5;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
@@ -251,6 +264,13 @@ public abstract class BPELadditionalPanel extends JPanel{
 	
 	//	************** reading WSDL data *****************
 
+	private JTextField getPartnerLinkNameTextField(){
+		if(partnerLinkNameTextField == null){
+			partnerLinkNameTextField = new JTextField();
+		}
+		return partnerLinkNameTextField;
+	}
+	
 	private JTextField getWSDLFileTextField(){
 		if(wsdlFileTextField == null){
 			wsdlFileTextField = new JTextField();
@@ -331,8 +351,21 @@ public abstract class BPELadditionalPanel extends JPanel{
 	
 	
 	//	***************** content getter methods  **************************
+	
 	public String getTransitionName(){
 		return this.transition.getNameValue();
 	}
+	
+/*	public String getFromVariable(){
+		if (fromVariableComboBox.getSelectedItem() == null)
+			return null;
+		return fromVariableComboBox.getSelectedItem().toString();
+	}
+	
+	public String getToVariable(){
+		if (toVariableComboBox.getSelectedItem() == null)
+			return null;
+		return toVariableComboBox.getSelectedItem().toString();
+	}*/
 
 }
