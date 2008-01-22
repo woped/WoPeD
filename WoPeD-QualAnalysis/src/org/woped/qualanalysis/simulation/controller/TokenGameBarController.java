@@ -42,6 +42,12 @@ public class TokenGameBarController implements Runnable {
 	private boolean                  newHistory                    = false;
 	private boolean                  endofnet                      = false;
 	
+	//Playback Properties
+	private int						 occurtimes					   = 3;
+	private int						 delaytime					   = 1;
+	private boolean					 expertview					   = true;
+	
+	
 	//Integers
 	private int                      HistoryIndex                  = 0; 
     
@@ -157,7 +163,7 @@ public class TokenGameBarController implements Runnable {
 		int i = 0;
 		if(BackWard)
 		{
-			while (i != 3)
+			while (i != occurtimes)
 			{
 				if(BackwardTransitionToOccur != null)
 				{
@@ -168,7 +174,7 @@ public class TokenGameBarController implements Runnable {
 		}
 		else
 		{
-			while (i != 3)
+			while (i != occurtimes)
 			{
 				if((followingActivatedTransitions.size() < 2) && (!playbackRunning()))
 				{
@@ -434,7 +440,7 @@ public class TokenGameBarController implements Runnable {
 		{
 			try {
 		    	javax.swing.SwingUtilities.invokeLater(new TokenGameRunnableObject(this));
-		    	Thread.sleep(1500);
+		    	Thread.sleep(getDelaytime()*1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -520,6 +526,7 @@ public class TokenGameBarController implements Runnable {
 		if(autoPlayBack)
 		{
 			enableStepwiseButton();
+			ExpertView.enableForwardButtons();
 			disableAutoPlaybackButton();
 			clearChoiceBox();
 		}
@@ -527,6 +534,7 @@ public class TokenGameBarController implements Runnable {
 		{
 			enableAutoPlaybackButton();
 			disableStepwiseButton();
+			fillChoiceBox();
 		}
 	}
 	
@@ -539,6 +547,54 @@ public class TokenGameBarController implements Runnable {
 		endofnet = end;
 	}
 	
+	/**
+	 * Determines if the Expertview is switched on
+	 * @return
+	 */
+	public boolean getExpertViewMode()
+	{
+		return expertview;
+	}
+	
+	/**
+	 * Activate Expertview
+	 */
+	public void setExpertViewMode(boolean expert)
+	{
+		expertview = expert;
+	}
+	
+	/**
+	 * Determines how often fast fw / bw occure
+	 */
+	public int getOccurTimes()
+	{
+		return occurtimes;
+	}
+	
+	/**
+	 * Determines how often fast fw / bw occure
+	 */
+	public void setOccurTimes(int oc)
+	{
+		occurtimes = oc;
+	}
+	
+	/**
+	 * Determines the delay time for autoplayback
+	 */
+	public int getDelaytime()
+	{
+		return delaytime;
+	}
+	
+	/**
+	 * Set DelayTime for Autoplayback
+	 */
+	public void setDelaytime(int dt)
+	{
+		delaytime = dt;
+	}
 	
 	/*
 	 * Special Getters: Reference Providers
@@ -581,9 +637,6 @@ public class TokenGameBarController implements Runnable {
 		//Add "if(ExpertView_enabled =true)" and else case to return the really selected list
 		return ExpertView.getSelectedChoiceID();
 	}
-
-
-	
 	
 	/**
 	 * Determines if the AutoPlayback is switched on
