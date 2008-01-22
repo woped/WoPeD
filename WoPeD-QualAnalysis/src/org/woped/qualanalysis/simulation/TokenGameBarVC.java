@@ -109,6 +109,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		//Define Button's Actions
 		ppbPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_PLAYBACK, tgbController));
 		ppbSteps.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_STEPWISE, tgbController));
+		ppbDelay.addActionListener(new TokenGameBarListener(TokenGameBarListener.OPEN_PLAYBACK_MANAGER, tgbController));
 		
 		//Define Panel and Layout
 		PropertiesPanel = new JPanel();
