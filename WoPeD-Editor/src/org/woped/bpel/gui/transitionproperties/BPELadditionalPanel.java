@@ -88,7 +88,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(new JLabel("WSDL file:"), c);
+		dialogPartner.add(new JLabel("WSDL:"), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
@@ -172,7 +172,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(new JLabel("Name:"), c);
+		dialogVariable.add(new JLabel(Messages.getString("Transition.Properties.BPEL.NewVariable.Name") + ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
@@ -184,7 +184,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(new JLabel("Type:"), c);
+		dialogVariable.add(new JLabel(Messages.getString("Transition.Properties.BPEL.NewVariable.Type") + ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 1;
@@ -219,13 +219,13 @@ public abstract class BPELadditionalPanel extends JPanel{
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
-			dialogButtons.add(new JButton("OK"), c);
+			dialogButtons.add(new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK")), c);
 
 			c.gridx = 1;
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
-			dialogButtons.add(new JButton("Abbruch"), c);
+			dialogButtons.add(new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel")), c);
 		}
 		return dialogButtons;
 	}
