@@ -40,9 +40,11 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JDialog dialogPartner = null;
 	JPanel dialogButtons = null;
 
+	JButton searchLocalWSDLButton = null;
 	JComboBox partnerLinkTypeComboBox = null;
 	JComboBox partnerRoleComboBox = null;
 	JComboBox myRoleComboBox = null;
+	
 	
 	static final String NEW = Messages.getString("Transition.Properties.BPEL.Buttons.New");
 	
@@ -110,13 +112,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
-		
-		JButton b = new JButton();
-		b.setIcon(Messages.getImageIcon("ToolBar.Open"));
-		dialogPartner.add(b, c);
-	//	dialogPartner.add(new JButton(Messages.getString("ToolBar.Open.Icon")), c);
-		
-		//evt noch zweiter Button für Internet/WWW-Adresse eingeben
+		dialogPartner.add(getLocalWSDLButton(), c);
 
 		c.gridx = 0;
 		c.gridy = 1;
@@ -245,14 +241,18 @@ public abstract class BPELadditionalPanel extends JPanel{
 	}
 
 
+	
+	
+	//	************** reading WSDL data *****************
 
-
-
-
-	//	***************** content getter methods  **************************
-	public String getTransitionName(){
-		return this.transition.getNameValue();
+	private JButton getLocalWSDLButton(){
+		if (searchLocalWSDLButton == null){
+			searchLocalWSDLButton = new JButton();
+			searchLocalWSDLButton.setIcon(Messages.getImageIcon("ToolBar.Open"));
+		}
+		return searchLocalWSDLButton;
 	}
+
 
 
 	private JComboBox getPartnerLinkTypeComboBox(){
@@ -293,5 +293,13 @@ public abstract class BPELadditionalPanel extends JPanel{
 		return myRoleComboBox;
 	}
 
+	
+	
+	
+	
+	//	***************** content getter methods  **************************
+	public String getTransitionName(){
+		return this.transition.getNameValue();
+	}
 
 }
