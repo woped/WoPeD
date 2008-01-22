@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -37,7 +38,6 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 	private JPanel waitDurationEntry = null;
 	private JRadioButton waitDurationRadioButton = null;
 	private JRadioButton waitDeadlineRadioButton = null;
-	private JLabel timeLabel = null;
 
 	private JPanel radioButtonPanel;
 	private JPanel radioButtonSubPanel;
@@ -219,6 +219,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 	private JCalendar getDeadlineCalendar() {
 		if (calendar == null) {
 			calendar = new JCalendar();
+			calendar.setLocale(Locale.ENGLISH);
 		}
 		return calendar;
 	}
@@ -244,7 +245,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 			c.anchor = GridBagConstraints.WEST;
 			c.gridx = 0;
 			c.gridy = 0;
-			c.insets = new Insets(0,0,0,20);
+			c.insets = new Insets(10,0,0,20);
 			deadlineTimeSubPanel.add(new JLabel(Messages.getString("Transition.Properties.BPEL.Wait.Hours")), c);
 			c.gridx = 1;
 			c.gridy = 0;
