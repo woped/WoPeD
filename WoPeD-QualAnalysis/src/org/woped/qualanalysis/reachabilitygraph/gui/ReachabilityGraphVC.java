@@ -5,22 +5,30 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Vector;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import org.jgraph.JGraph;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.qualanalysis.IReachabilityGraph;
+import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Utils;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.ImageExport;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.translations.Messages;
 
@@ -213,7 +221,90 @@ class ExportGraphButtonListener implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 		rgvc.getActualJGraph();
-		// open modal dialog !
+		
+		int filetype = 0;
+		String filepath = null;
+		
+		JFileChooser jfc;
+		if (ConfigurationManager.getConfiguration().getHomedir() != null) {
+			jfc = new JFileChooser(new File(ConfigurationManager
+					.getConfiguration().getHomedir()));
+		} else {
+			jfc = new JFileChooser();
+		}
+		
+		// FileFilters
+		Vector<String> pngExtensions = new Vector<String>();
+		pngExtensions.add("png");
+		FileFilterImpl PNGFilter = new FileFilterImpl(
+				FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
+		jfc.setFileFilter(PNGFilter);
+
+		Vector<String> bmpExtensions = new Vector<String>();
+		bmpExtensions.add("bmp");
+		FileFilterImpl BMPFilter = new FileFilterImpl(
+				FileFilterImpl.BMPFilter, "BMP (*.bmp)", bmpExtensions);
+		jfc.setFileFilter(BMPFilter);
+
+		Vector<String> jpgExtensions = new Vector<String>();
+		jpgExtensions.add("jpg");
+		jpgExtensions.add("jpeg");
+		FileFilterImpl JPGFilter = new FileFilterImpl(
+				FileFilterImpl.JPGFilter, "JPG (*.jpg)", jpgExtensions);
+		jfc.setFileFilter(JPGFilter);
+
+		jfc.setFileFilter(JPGFilter);
+		
+		jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
+		jfc.showSaveDialog(null);
+		
+		if (jfc.getSelectedFile() != null && rgvc != null) {
+
+			String savePath = jfc.getSelectedFile().getAbsolutePath()
+					.substring(
+							0,
+							jfc.getSelectedFile().getAbsolutePath()
+									.length()
+									- jfc.getSelectedFile().getName()
+											.length());
+			if (((FileFilterImpl) jfc.getFileFilter())
+					.getFilterType() == FileFilterImpl.JPGFilter) {
+				savePath = savePath
+						+ Utils.getQualifiedFileName(jfc.getSelectedFile()
+								.getName(), jpgExtensions);
+			} else if (((FileFilterImpl) jfc.getFileFilter())
+					.getFilterType() == FileFilterImpl.PNGFilter) {
+				savePath = savePath
+						+ Utils.getQualifiedFileName(jfc.getSelectedFile()
+								.getName(), pngExtensions);
+			} else if (((FileFilterImpl) jfc.getFileFilter())
+					.getFilterType() == FileFilterImpl.BMPFilter) {
+				savePath = savePath
+						+ Utils.getQualifiedFileName(jfc.getSelectedFile()
+								.getName(), bmpExtensions);
+			} else {
+				LoggerManager.error(Constants.QUALANALYSIS_LOGGER,
+						"\"Export\" NOT SUPPORTED FILE TYPE.");
+			}
+			filetype = ((FileFilterImpl) jfc.getFileFilter()).getFilterType();
+			filepath = savePath;
+		}
+		
+		if (filetype == FileFilterImpl.JPGFilter) {
+			ImageExport.saveJPG(ImageExport
+					.getRenderedImage(rgvc), new File(filepath));
+			// TODO: !!! Working dir
+		} else if (filetype == FileFilterImpl.PNGFilter) {
+			ImageExport.savePNG(ImageExport
+					.getRenderedImage(rgvc), new File(filepath));
+		} else if (filetype == FileFilterImpl.BMPFilter) {
+			ImageExport.saveBMP(ImageExport
+					.getRenderedImage(rgvc), new File(filepath));
+		}else {
+			LoggerManager.warn(Constants.QUALANALYSIS_LOGGER,
+					"Unable to save File. Filetype not known: "
+							+ filetype);
+		}
 	}
 }
 
