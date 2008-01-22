@@ -3,6 +3,8 @@ package org.woped.bpel.gui.transitionproperties;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -249,6 +252,12 @@ public abstract class BPELadditionalPanel extends JPanel{
 		if (searchLocalWSDLButton == null){
 			searchLocalWSDLButton = new JButton();
 			searchLocalWSDLButton.setIcon(Messages.getImageIcon("ToolBar.Open"));
+			searchLocalWSDLButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					JFileChooser chooser = new JFileChooser();
+					chooser.showOpenDialog( null );
+				}
+			});
 		}
 		return searchLocalWSDLButton;
 	}
