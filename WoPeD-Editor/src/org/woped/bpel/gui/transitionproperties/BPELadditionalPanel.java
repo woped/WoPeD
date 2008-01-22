@@ -288,8 +288,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 					});
 					chooser.setMultiSelectionEnabled(false);
 					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-						System.out.println ("Datei "+chooser.getSelectedFile()+
-                        " ausgewählt.");
+//						System.out.println ("Datei "+chooser.getSelectedFile()+ " ausgewählt.");
 						wsdlFileTextField.setText(""+chooser.getSelectedFile());
 					}
 					     
