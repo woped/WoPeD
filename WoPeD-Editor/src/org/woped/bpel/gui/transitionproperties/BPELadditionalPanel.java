@@ -24,6 +24,15 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
 
+/**
+ * @author Esther Landes
+ * 
+ * This is the basic class for the different BPEL activity panels.
+ * It contains methods and data that is used in the activity panels' dialogs.
+ *
+ * Created on 16.01.2008
+ */
+
 public abstract class BPELadditionalPanel extends JPanel{
 
 	TransitionPropertyEditor t_editor;
