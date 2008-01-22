@@ -265,37 +265,22 @@ public abstract class BPELadditionalPanel extends JPanel{
 			searchLocalWSDLButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					JFileChooser chooser = new JFileChooser();
-//					chooser.showOpenDialog( null );
-					
-/*					FileFilter filter = new FileFilter();
-					 filter.addExtension("wsdl");
-					 filter.setDescription("WSDLs");
-					 chooser.setFileFilter(filter);
-					 int returnVal = chooser.showOpenDialog(null);
-					 if(returnVal == JFileChooser.APPROVE_OPTION) {
-					   System.out.println("You chose to open this file: " +
-					     chooser.getSelectedFile().getName());
-					 }*/
-
-					
-					
 					chooser.addChoosableFileFilter(new FileFilter() {
 					    public boolean accept(File f) {
-					      if (f.isDirectory()) return true;
+					      if (f.isDirectory()){
+					    	  return true;
+					      }
 					      return f.getName().toLowerCase().endsWith(".wsdl");
 					    }
-					    public String getDescription () { return "WSDLs"; } 
+					    public String getDescription () {
+					    	return "Web Service Definition Language (*.wsdl)";
+					    } 
 					});
 					chooser.setMultiSelectionEnabled(false);
+					chooser.setAcceptAllFileFilterUsed(false);
 					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-//						System.out.println ("Datei "+chooser.getSelectedFile()+ " ausgewählt.");
 						wsdlFileTextField.setText(""+chooser.getSelectedFile());
 					}
-					     
-					
-					
-					
-
 				}
 			});
 		}
