@@ -66,7 +66,6 @@ import org.woped.pnml.GraphicsNodeType;
 import org.woped.pnml.GraphicsSimpleType;
 import org.woped.pnml.NetToolspecificType;
 import org.woped.pnml.NetType;
-import org.woped.pnml.NethashType;
 import org.woped.pnml.NodeNameType;
 import org.woped.pnml.OperatorType;
 import org.woped.pnml.OrganizationUnitType;
@@ -206,7 +205,7 @@ public class PNMLExport
             ResourceType iResourceType;
             ResourceModel rModelTemp;
 
-            for (Iterator iter = petrinetModel.getResources().iterator(); iter.hasNext();)
+            for (Iterator<ResourceModel> iter = petrinetModel.getResources().iterator(); iter.hasNext();)
             {
                 rModelTemp = (ResourceModel) iter.next();
                 iResourceType = iNetResources.addNewResource();
@@ -218,7 +217,7 @@ public class PNMLExport
 
             RoleType iRoleType;
             ResourceClassModel roleModelTemp;
-            for (Iterator iter = petrinetModel.getRoles().iterator(); iter.hasNext();)
+            for (Iterator<ResourceClassModel> iter = petrinetModel.getRoles().iterator(); iter.hasNext();)
             {
                 roleModelTemp = (ResourceClassModel) iter.next();
                 iRoleType = iNetResources.addNewRole();
@@ -229,7 +228,7 @@ public class PNMLExport
             // Orga Units
             OrganizationUnitType iOrganizationUnitType;
             ResourceClassModel orgunitModelTemp;
-            for (Iterator iter = petrinetModel.getOrganizationUnits().iterator(); iter.hasNext();)
+            for (Iterator<ResourceClassModel> iter = petrinetModel.getOrganizationUnits().iterator(); iter.hasNext();)
             {
                 orgunitModelTemp = (ResourceClassModel) iter.next();
                 iOrganizationUnitType = iNetResources.addNewOrganizationUnit();
@@ -238,16 +237,15 @@ public class PNMLExport
                     statusBars[i].nextStep();
             }
             // ResourceMap
-            ResourceMappingType iNetResourceMap;
-            Iterator iter = petrinetModel.getResourceMapping().keySet().iterator();
-            while (iter.hasNext())
+            ResourceMappingType iNetResourceMap;            
+            for (Iterator<String> iter = petrinetModel.getResourceMapping().keySet().iterator();iter.hasNext();)
             {
                 String tempResourceClass = (String) iter.next();
-                Vector values = (Vector) petrinetModel.getResourceMapping().get(tempResourceClass);
+                Vector<String> values = petrinetModel.getResourceMapping().get(tempResourceClass);
                 // TODO check if mapping exists NullPointerExeption bei
                 // speicherung geänderter orgUnit die keine zugeordnete Resource
                 // hat!
-                for (Iterator iterator = values.iterator(); iterator.hasNext();)
+                for (Iterator<String> iterator = values.iterator(); iterator.hasNext();)
                 {
                     iNetResourceMap = iNetResources.addNewResourceMapping();
                     iNetResourceMap.setResourceClass(tempResourceClass);
@@ -259,26 +257,22 @@ public class PNMLExport
             
             // Simulations
             SimulationsType iNetSimulations = iNetToolSpec.addNewSimulations();
-            iter = petrinetModel.getSimulations().iterator();
             SimulationType iSimulation;
             TransitionsequenceType iTransitionsequence;
             FiredtransitionType iFiredTransition;
-            NethashType iNethash;
-            while (iter.hasNext())
+            for (Iterator<SimulationModel> iter = petrinetModel.getSimulations().iterator();iter.hasNext();)
             {
             	SimulationModel currSimulation = (SimulationModel) iter.next();
             	iSimulation = iNetSimulations.addNewSimulation();
             	iSimulation.setId(currSimulation.getId());
             	iSimulation.setSimulationname(currSimulation.getName());
             	iTransitionsequence = iSimulation.addNewTransitionsequence();
-            	for(Iterator iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
+            	for(Iterator<TransitionModel> iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
             	{
             		iFiredTransition = iTransitionsequence.addNewFiredtransition();
             		iFiredTransition.setTransitionID(((TransitionModel)iterator.next()).getId());
             	}
-            	iNethash = iSimulation.addNewNethash();
-            	//iNethash.
-            	//TODO: Complete saving the Nethash
+            	iSimulation.setNetFingerprint(currSimulation.getFingerprint());
             	LoggerManager.debug(Constants.FILE_LOGGER, "   ... Simulation (ID:" + currSimulation.getId() + ") set");
             }
             

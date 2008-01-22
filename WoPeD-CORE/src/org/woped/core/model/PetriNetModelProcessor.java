@@ -34,6 +34,7 @@ import org.jgraph.graph.DefaultPort;
 import org.woped.core.Constants;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.SimulationModel;
@@ -186,10 +187,16 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 		
 		if ((sourceModel == null)||(targetModel == null))
 			return null;
+		
+		// if the id isn't set or the id set already belongs to an existing arc then fetch a new one
+		if(id==null|this.getElementContainer().getArcById(id)!=null)
+		{
+			id = getNexArcId();
+		}
 
-		// falls aalst source oder target -> update Model
+		// if aalst source or target -> update Model
 		ArcModel displayedArc = ModelElementFactory.createArcModel(
-				getNexArcId(), (DefaultPort) sourceModel.getChildAt(0),
+				id, (DefaultPort) sourceModel.getChildAt(0),
 				(DefaultPort) targetModel.getChildAt(0));
 		displayedArc.setPoints(points);
 		insertArc(displayedArc, transformOperators);
@@ -510,6 +517,41 @@ AbstractElementModel targetModel = getElementContainer()
 	public String getType()
 	{
 		return type;
+	}
+	
+	/**
+	 * 
+	 * @return Returns a String witch logically identifys the petrinet
+	 */
+	public String getLogicalFingerprint()
+	{
+		String fingerprint = "";
+		// fingerprint of places & markings
+		Iterator iter = getElementContainer().getElementsByType(PetriNetModelElement.PLACE_TYPE).values().iterator();
+		int count = 0;
+		while(iter.hasNext())
+		{
+			count++;
+			PlaceModel currPlace = (PlaceModel) iter.next();
+			fingerprint += currPlace.getId() + currPlace.getTokenCount();
+		}
+		fingerprint = count + fingerprint;
+		fingerprint += "#";
+		// fingerprint of arcs
+		iter = this.getElementContainer().getArcMap().values().iterator();
+		count = 0;
+		String arcFingerprint = "";
+		while(iter.hasNext())
+		{
+			count++;
+			ArcModel currArc = (ArcModel) iter.next();
+			arcFingerprint += currArc.getId() + currArc.getSourceId() + currArc.getTargetId();
+		}
+		fingerprint += count + arcFingerprint;
+		// fingerprint of subprocesses
+		//iter = this.getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE).values().iterator();
+		
+		return fingerprint;
 	}
 
 	public Vector<Object> getUnknownToolSpecs()

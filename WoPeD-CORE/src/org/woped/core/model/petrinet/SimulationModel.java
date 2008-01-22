@@ -7,8 +7,8 @@ public class SimulationModel
 {
 	private String id = null;
 	private String name = null;
+	private String fingerprint = null;
 	private Vector<TransitionModel> firedTransitions = null;
-	//private ??? nethash  TODO: an anderer Stelle einen Algorithmus für einen Hash über das (logische) Netz schreiben und hier einen passenden Datentyp/Methodenn dazu einfügen
 	
 	public SimulationModel(String id, String name)
 	{
@@ -20,10 +20,23 @@ public class SimulationModel
 	/*
 	 * Constructor to hand over an Existing Vector from HistoryBox
 	 */
+	@Deprecated
 	public SimulationModel(String id, String name, Vector<TransitionModel>HistoryVector)
 	{
 		this.name = name;
 		this.id = id;
+		firedTransitions = HistoryVector;
+		fingerprint = "";
+	}
+	
+	/*
+	 * Constructor to hand over an Existing Vector from HistoryBox
+	 */
+	public SimulationModel(String id, String name, Vector<TransitionModel>HistoryVector, String fingerprint)
+	{
+		this.name = name;
+		this.id = id;
+		this.fingerprint = fingerprint;
 		firedTransitions = HistoryVector;
 	}
 	
@@ -70,17 +83,23 @@ public class SimulationModel
     {
         return getName();
     }
-
-	/*
-	public int getType() {
-		return AbstractPetriNetModelElement.SIMULATION_TYPE;
-	}
-	
-
-	public String getToolTipText() 
-	{
-		return "ID: "+getId()+"\nName: "+getName(); //TODO port to use Messages
-	}*/
+    
+    /**
+     * @return Returns the fingerprint of the petrinet the simulation was created with.
+     */
+    public String getFingerprint()
+    {
+    	return fingerprint;
+    }
+    
+    /**
+     * @param fingerprint
+     *            The fingerprint to set.
+     */
+    public void setFingerprint(String fingerprint)
+    {
+    	this.fingerprint = fingerprint;
+    }
 	
 	public String getId()
 	{

@@ -1323,7 +1323,7 @@
 		<xs:sequence>
 			<xs:element name="simulationname" type="xs:string"/>
 			<xs:element name="transitionsequence" type="transitionsequenceType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="nethash" type="nethashType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="netFingerprint" type="xs:string" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:ID" use="required"/>
 	</xs:complexType>
@@ -1334,8 +1334,5 @@
 	</xs:complexType>
 	<xs:complexType name="firedtransitionType">
 		<xs:attribute name="transitionID" type="xs:IDREF"/>
-	</xs:complexType>
-	<xs:complexType name="nethashType">
-		<xs:attribute name="id" type="xs:ID" use="required"/>
 	</xs:complexType>
 </xs:schema>

@@ -491,8 +491,8 @@ public class PNMLImport
             {
                 map.setId(transitions[i].getId());
                 map.setPosition(transitions[i].getGraphics().getPosition().getX().intValue(), transitions[i].getGraphics().getPosition().getY().intValue());
-                if (transitions[i].getGraphics().isSetDimension()) map.setSize(new IntPair(transitions[i].getGraphics().getDimension().getX().intValue(), transitions[i].getGraphics().getDimension()
-                        .getY().intValue()));
+                if (transitions[i].getGraphics().isSetDimension()) 
+                	map.setSize(new IntPair(transitions[i].getGraphics().getDimension().getX().intValue(), transitions[i].getGraphics().getDimension().getY().intValue()));
                 map.setName(transitions[i].getName().getText());
                 try
                 {
@@ -673,7 +673,7 @@ public class PNMLImport
                             {
                         		String sourceId = arcs[i].getSource();
                         		String targetId = tempID;
-                        		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
+                        		arc =processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                             }
                         }
                         if (currentSourceModel == null && currentTargetModel != null)
@@ -690,14 +690,14 @@ public class PNMLImport
                             {
                         		String sourceId = tempID;
                         		String targetId = arcs[i].getTarget();
-                        		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
+                        		arc =processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                             }
                         }
                         if (currentTargetModel != null && currentSourceModel != null)
                         {
                     		String sourceId = arcs[i].getSource();
                     		String targetId = arcs[i].getTarget();
-                    		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
+                    		arc =processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                         }
                         if (arc!=null)
                         {
@@ -712,7 +712,8 @@ public class PNMLImport
                         		if ((arcs[i].getToolspecificArray(j).getTool()!=null)&&
                         				(arcs[i].getToolspecificArray(j).getTool().equals("WoPeD")))
                         		{
-                        			if (arcs[i].getToolspecificArray(j).isSetRoute() && arcs[i].getToolspecificArray(j).getRoute()) arc.setRoute(true);
+                        			if (arcs[i].getToolspecificArray(j).isSetRoute() && arcs[i].getToolspecificArray(j).getRoute()) 
+                        				arc.setRoute(true);
                         			if (arcs[i].getToolspecificArray(j).isSetProbability())
                         				arc.setProbability(arcs[i].getToolspecificArray(j).getProbability());
                         			if (arcs[i].getToolspecificArray(j).isSetDisplayProbabilityOn())
@@ -738,7 +739,7 @@ public class PNMLImport
                 {
             		String sourceId = arcs[i].getSource();
             		String targetId = arcs[i].getTarget();
-            		arc =processor.createArc(null, sourceId, targetId, new Point2D[0], true);
+            		arc =processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                 }
                 if (arcs[i].isSetGraphics() && arc != null)
                 {
@@ -767,20 +768,64 @@ public class PNMLImport
     
     private void importSimulations(SimulationType[] simulations, PetriNetModelProcessor currentPetrinet)
     {
+    	try{ //TODO: remove this / add throws-klausel? - only for development here...
     	SimulationModel currSimulation;
+    	TransitionModel currTransition;
     	String currSimulationID;
     	int greatestSimulationIDnumber = 0;
+    	String currentFingerprint = currentPetrinet.getLogicalFingerprint();
     	for (int k = 0; k<simulations.length; k++)
     	{
     		currSimulationID = simulations[k].getId();
     		FiredtransitionType[] firedTransitions = simulations[k].getTransitionsequence().getFiredtransitionArray();
     		Vector<TransitionModel> currentTransitions = new Vector<TransitionModel>();
+    		String currTransitionID = null;
+    		String currTransitionName = null;
+    		String arcSource, arcTarget;
     		for(int l = 0; l<firedTransitions.length;l++)
     		{
-    			currentTransitions.add((TransitionModel) currentPetrinet.getElementContainer().getElementById(firedTransitions[l].getTransitionID()));
+    			currTransition = null;
+    			currTransitionID = firedTransitions[l].getTransitionID();
+    			if(currTransitionID.charAt(0)=='a')
+    			{
+    				// for XOR-transitions the simulation has to fire arcs instead of simpletransitions
+    				// because of the inner representation of van der Aalst-operators.
+    				// Therefore a virtual helper-transition with the arcs' ID and a special name is created.  
+    				
+    	            arcSource = currentPetrinet.getElementContainer().getArcById(currTransitionID).getSourceId();
+    	            arcTarget = currentPetrinet.getElementContainer().getArcById(currTransitionID).getTargetId();
+    	            if(arcSource.charAt(0)=='t')
+    	            {
+    	            	// TODO: SimpleTransition probieren - problem mit clone()...?
+    	            	currTransition = (TransitionModel) currentPetrinet.getElementContainer().getElementById(arcSource).clone();
+    	            	currTransitionName = arcSource + " -> (" + arcTarget +")";
+    	            }
+    	            else
+    	            {
+    	            	currTransition = (TransitionModel) currentPetrinet.getElementContainer().getElementById(arcTarget).clone();
+    	            	currTransitionName = "(" + arcSource + ") -> " + arcTarget;
+    	            }
+    	            currTransition.setId(currTransitionID);
+    	            //currTransition.setNameValue(currTransitionName);
+    	            currTransition.setNameValue("GenerierterName");
+    	            LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation: HelperTransition for arc ("+currTransitionID+") created");
+    			}
+    			else
+    			{
+    				currTransition = (TransitionModel) currentPetrinet.getElementContainer().getElementById(currTransitionID);
+    			}
+    			currentTransitions.add(currTransition);
     		}
     		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions);
-    		// TODO: Add Import for Nethash
+    		currSimulation.setFingerprint(simulations[k].getNetFingerprint());
+    		// check if current fingerprint of the net equals the imported one
+    		// if not display a warning
+    		if(!currentFingerprint.equals(simulations[k].getNetFingerprint()))
+    		{
+    			// TODO: show warning to user
+    			//warnings.add("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")");
+    			System.out.println("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")");
+    		}
     		currentPetrinet.addSimulation(currSimulation);
     		LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ")imported");
     		try
@@ -798,10 +843,10 @@ public class PNMLImport
     			// the counter by one to avoid ID-conflicts. In the worst case this only leads to an unused id
     			greatestSimulationIDnumber ++;
     			LoggerManager.debug(Constants.FILE_LOGGER, "WARNING - INVALID SIMULATION-ID FOUND: found a malformed simulation-id (ID: " + currSimulationID + ")");
-    			//warnings.add("- INVALID SIMULATION-ID FOUND: found a malformed simulation-id (ID: " + currSimulationID + ")");
     		}
     	}
     	currentPetrinet.setSimulationCounter(greatestSimulationIDnumber);
+    	}catch(Exception e){e.printStackTrace();}
     }
 
     private boolean isOperator(ModelElementContainer elementContainer, String elementId) throws Exception
