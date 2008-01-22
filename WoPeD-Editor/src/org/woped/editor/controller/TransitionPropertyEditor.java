@@ -51,6 +51,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.woped.bpel.gui.transitionproperties.Assign;
 import org.woped.bpel.gui.transitionproperties.BPELassignPanel;
 import org.woped.bpel.gui.transitionproperties.BPELinvokePanel;
@@ -77,10 +79,11 @@ import org.woped.translations.Messages;
  * @author waschtl
  */
 
-//preversion, no changes please
 
 @SuppressWarnings("serial")
 public class TransitionPropertyEditor extends JDialog implements ActionListener, IDialog {
+
+	Object activityType = null;
 
 	// General
 	private TransitionModel transition = null;
@@ -1438,8 +1441,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 			c2.weightx = 1;
 			c2.weighty = 1;
 
-			c2.anchor = GridBagConstraints.NORTH;   //hat auswirkung dass nach klein in mitte hochkommt
-			c2.fill = GridBagConstraints.HORIZONTAL; //hat auswirkung dass nach klein in mitte hochkommt
+			c2.anchor = GridBagConstraints.NORTH;
+			c2.fill = GridBagConstraints.HORIZONTAL;
 
 			c2.gridx = 0;
 			c2.gridy = 0;
@@ -1522,12 +1525,21 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 		if (activityChooseComboBox == null){
 			String[] namen = new String[] {Messages.getString("Transition.Properties.BPEL.NoActivity"), "assign", "invoke", "receive", "reply", "wait"};
 			activityChooseComboBox = new JComboBox(namen);
+//			activityType = (TActivity) transition.getBpelData().getClass().isInstance(new TAssign());
+			
+//			activityType = transition.getBpelData(); //liefert z.B. Assign
+//			activityChooseComboBox.setSelectedIndex(2);
+			
+//			if (TAssign.class.isInstance(transition.getBpelData())){ //funst nicht, Konstrukt muss anders lauten
+//				activityChooseComboBox.setSelectedIndex(1);
+//			}
+			
 			activityChooseComboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
-					JComboBox cb = (JComboBox) e.getSource(); // Ereignisquelle
-					int index = cb.getSelectedIndex(); // Index des g. Eintrags
+					JComboBox cb = (JComboBox) e.getSource(); 
+					int index = cb.getSelectedIndex();
 
-					c2.gridx = 0;	//mit c2 hier überall, legt es alles oben an
+					c2.gridx = 0;
 					c2.gridy = 1;
 					c2.insets = new Insets(0, 0, 0, 0);
 					c2.anchor = GridBagConstraints.NORTH;
