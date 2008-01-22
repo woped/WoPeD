@@ -76,7 +76,7 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		jsl_delaytime		= new JSlider();
 		
 		//Set Slidersproperties
-		jsl_fastfwbwoption.setMinimum(3);
+		jsl_fastfwbwoption.setMinimum(1);
 		jsl_fastfwbwoption.setMaximum(10);
 		jsl_fastfwbwoption.setLabelTable(jsl_fastfwbwoption.createStandardLabels(1));
 		jsl_fastfwbwoption.setPaintLabels(true);
