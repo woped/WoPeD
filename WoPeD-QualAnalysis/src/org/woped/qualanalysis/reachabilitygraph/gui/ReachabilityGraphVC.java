@@ -61,6 +61,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	
 	private void init() {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
+		this.setFrameIcon(Messages.getImageIcon("ToolBar.ReachabilityGraph"));
 		this.setSize(new Dimension(640, 480));
 		this.setMinimumSize(new Dimension(320,240));
 		this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title"));
