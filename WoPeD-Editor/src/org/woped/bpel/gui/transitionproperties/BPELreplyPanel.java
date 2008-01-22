@@ -150,19 +150,19 @@ public class BPELreplyPanel extends BPELadditionalPanel{
 	
 	public String getPartnerLink(){
 		if (partnerLinkComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return partnerLinkComboBox.getSelectedItem().toString();
 	}
 	
 	public String getOperation(){
 		if (operationComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return operationComboBox.getSelectedItem().toString();
 	}
 	
 	public String getVariable(){
 		if (variableComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return variableComboBox.getSelectedItem().toString();
 	}
 	

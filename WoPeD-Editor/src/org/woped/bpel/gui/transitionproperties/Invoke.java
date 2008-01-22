@@ -2,7 +2,6 @@ package org.woped.bpel.gui.transitionproperties;
 
 //package org.woped.bpel.gui.transitionproperties;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 
@@ -24,7 +23,7 @@ public class Invoke extends BaseActivity
 		invoke.setOperation(bip.getOperation());
 		//invoke.setPortType(bip.getPortType());
 		invoke.setInputVariable(bip.getInVariable());
-		invoke.setOutputVariable(bip.getInVariable());
+		invoke.setOutputVariable(bip.getOutVariable());
 		this.setActivity(invoke);
 	}
 	

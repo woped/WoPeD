@@ -200,25 +200,25 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	
 	public String getPartnerLink(){
 		if (partnerLinkComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return partnerLinkComboBox.getSelectedItem().toString();
 	}
 	
 	public String getOperation(){
 		if (operationComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return operationComboBox.getSelectedItem().toString();
 	}
 	
 	public String getInVariable(){
 		if (inVariableComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return inVariableComboBox.getSelectedItem().toString();
 	}
 	
 	public String getOutVariable(){
 		if (outVariableComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return outVariableComboBox.getSelectedItem().toString();
 	}
 	
