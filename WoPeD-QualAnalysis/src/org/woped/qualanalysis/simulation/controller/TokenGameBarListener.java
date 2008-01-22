@@ -18,56 +18,56 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	//Constants
 	//======================  
 	//Playback configuration
-	public final static int CHOOSE_STEPWISE        = 1;
-	public final static int CHOOSE_PLAYBACK        = 2;
-	public final static int OPEN_PLAYBACK_MANAGER  = 3;
+	public final static int           CHOOSE_STEPWISE        = 1;
+	public final static int           CHOOSE_PLAYBACK        = 2;
+	public final static int           OPEN_PLAYBACK_MANAGER  = 3;
 	
 	//Navigation Button
-	public final static int CLICK_FAST_BACKWARD    = 4;
-	public final static int CLICK_BACKWARD         = 5;
-	public final static int CLICK_STOP             = 6;
-	public final static int CLICK_PLAY             = 7;
-	public final static int CLICK_PAUSE            = 8;
-	public final static int CLICK_FORWARD          = 9;
-	public final static int CLICK_FAST_FORWARD     = 10;
+	public final static int           CLICK_FAST_BACKWARD    = 4;
+	public final static int           CLICK_BACKWARD         = 5;
+	public final static int           CLICK_STOP             = 6;
+	public final static int           CLICK_PLAY             = 7;
+	public final static int           CLICK_PAUSE            = 8;
+	public final static int           CLICK_FORWARD          = 9;
+	public final static int           CLICK_FAST_FORWARD     = 10;
 	
 	//Process stepping
-	public final static int CLICK_STEP_UP          = 11;
-	public final static int CLICK_STEP_DOWN        = 12;
+	public final static int           CLICK_STEP_UP          = 11;
+	public final static int           CLICK_STEP_DOWN        = 12;
 	
 	//Auto Choices
-	public final static int CHOOSE_AUTO_CHOICE     = 13;
+	public final static int           CHOOSE_AUTO_CHOICE     = 13;
 
 	//History Management
-	public final static int CHOOSE_JUMP_HERE       = 14;
-	public final static int OPEN_HISTORY_MANAGER   = 15;
-	public final static int CHOOSE_DELETE_CURRENT  = 16;
+	public final static int           CHOOSE_JUMP_HERE       = 14;
+	public final static int           OPEN_HISTORY_MANAGER   = 15;
+	public final static int           CHOOSE_DELETE_CURRENT  = 16;
 	
 	//History Manager Buttons
-	public final static int HM_SAVE_HISTORY        = 17;
-	public final static int HM_DELETE_SELECTED     = 18;
-	public final static int HM_OVERWRITE_SELECTED  = 19;
-	public final static int HM_OPEN_SELECTED       = 20;
+	public final static int           HM_SAVE_HISTORY        = 17;
+	public final static int           HM_DELETE_SELECTED     = 18;
+	public final static int           HM_OVERWRITE_SELECTED  = 19;
+	public final static int           HM_OPEN_SELECTED       = 20;
 	
 	//AutoChoice List
-	public final static int CHOOSE_TRANSITION      = 21;
+	public final static int           CHOOSE_TRANSITION      = 21;
 	
 	//Record Simulation
-	public final static int CHOOSE_RECORD          = 22;
+	public final static int           CHOOSE_RECORD          = 22;
 
 
 		
 	//Action-Variables
-	private ReferenceProvider         MainWindowReference     = null;
-	private TokenGameHistoryManagerVC HistoryDialog           = null;
+	private ReferenceProvider         MainWindowReference    = null;
+	private TokenGameHistoryManagerVC HistoryDialog          = null;
 	
 		
 	//Variables
-	private int                       ID            = 0;
-	private TokenGameBarVC            RemoteControl = null;
+	private int                       ID                     = 0;
+	private TokenGameBarController    RemoteControl          = null;
 
 
-	public TokenGameBarListener(int ButtonID, TokenGameBarVC RC, TokenGameHistoryManagerVC ToGaHiMan)
+	public TokenGameBarListener(int ButtonID, TokenGameBarController RC, TokenGameHistoryManagerVC ToGaHiMan)
 	{
 	  	ID = ButtonID;
 	  	RemoteControl = RC;
@@ -75,40 +75,14 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	}
 	
 	//Needed for RemoteControlElements
-	public TokenGameBarListener(int ButtonID, TokenGameBarVC RC)
+	public TokenGameBarListener(int ButtonID, TokenGameBarController RC)
 	{
 	  	ID = ButtonID;
 	  	RemoteControl = RC;
 	}
 	
 	
-	public void actionPerformed(ActionEvent e)
-	{
-	    //Calls the method for the centralized Action-Handling
-		actionRouter();	
-	}
-
-	public void mouseClicked(MouseEvent e)
-	{
-		//Calls the method for the centralized Action-Handling
-        actionRouter();	
-	}
 	
-	public void mouseEntered(MouseEvent e)
-	{
-	}
-	
-	public void mousePressed(MouseEvent e)
-	{
-	}
-	
-	public void mouseReleased(MouseEvent e)
-	{
-	}
-	
-	public void mouseExited(MouseEvent e)
-	{
-	}
 	
 	private void actionRouter()
 	{
@@ -191,20 +165,12 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 					 RemoteControl.occurTransition(false);
 				 }
 			 }
-			 /*
-			  *  (Not Now, but later)
-			  *  TODO: 2.) For Automatic Playback just enable direction <forward> or <backward>
-			  *            so that the net will be played in that direction
-			  */
 			 break;
 		 case CLICK_FAST_FORWARD:
 			 if (RemoteControl.tokengameRunning())
 			 {
 			   RemoteControl.occurTransitionMulti(false);
 			 }
-			 /*
-			  * TODO: look at Method definition!
-			  */
 			 break;
 		 case 11:
 			 break;
@@ -336,4 +302,35 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		RemoteControl.clearChoiceBox();
 	}
 
+	
+	/*
+	 * Action Events
+	 */
+	public void actionPerformed(ActionEvent e)
+	{
+	    //Calls the method for the centralized Action-Handling
+		actionRouter();	
+	}
+
+	public void mouseClicked(MouseEvent e)
+	{
+		//Calls the method for the centralized Action-Handling
+        actionRouter();	
+	}
+	
+	public void mouseEntered(MouseEvent e)
+	{
+	}
+	
+	public void mousePressed(MouseEvent e)
+	{
+	}
+	
+	public void mouseReleased(MouseEvent e)
+	{
+	}
+	
+	public void mouseExited(MouseEvent e)
+	{
+	}
 }

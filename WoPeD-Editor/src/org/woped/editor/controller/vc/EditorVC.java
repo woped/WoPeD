@@ -125,7 +125,7 @@ import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.view.ViewFactory;
 import org.woped.translations.Messages;
 import org.woped.qualanalysis.GraphTreeModelSelector;
-import org.woped.qualanalysis.simulation.TokenGameController;
+import org.woped.qualanalysis.simulation.controller.TokenGameController;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

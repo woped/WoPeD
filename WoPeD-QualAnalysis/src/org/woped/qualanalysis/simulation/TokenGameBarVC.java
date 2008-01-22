@@ -1,15 +1,10 @@
 package org.woped.qualanalysis.simulation;
 import javax.swing.*;
-import java.util.LinkedList;
 
-import org.woped.core.model.petrinet.*;
 import org.woped.translations.Messages;
 import org.woped.qualanalysis.simulation.controller.*;
 import java.awt.*;
-import java.util.Vector;
-import org.woped.qualanalysis.test.*;
-import org.woped.core.model.petrinet.SimulationModel;
-import org.woped.core.model.PetriNetModelProcessor;
+
 /**
  * This class specifies the remote control UI of the Tokengame-simulator
  * Currently no Actions can be performed by the Buttons except the close-"x"
@@ -18,75 +13,54 @@ import org.woped.core.model.PetriNetModelProcessor;
  * @author Tilmann Glaser
  * 
  */
-public class TokenGameBarVC extends JInternalFrame implements Runnable {
+public class TokenGameBarVC extends JInternalFrame {
 	
 	
 	//Declaration of all JPanels
-	private JPanel PropertiesPanel    = null;
-	private JPanel NavigationPlayback = null;
-	private JPanel AutoChoice         = null;
-	private JPanel History            = null;
+	private JPanel                   PropertiesPanel               = null;
+	private JPanel                   NavigationPlayback            = null;
+	private JPanel                   AutoChoice                    = null;
+	private JPanel                   History                       = null;
 	
 	//Declaration of all Buttons
-	private JButton ppbSteps          = null;
-	private JButton ppbPlay           = null;
-	private JButton ppbDelay          = null;
-	private JButton pbnUp             = null;
-	private JButton pbnDown           = null;
-    private JButton pbnFastBW         = null;
-    private JButton pbnBW             = null;
-	private JButton pbnStop           = null;
-	private JButton pbnPlay           = null;
-	private JButton pbnPause          = null;
-	private JButton pbnFW             = null;
-	private JButton pbnFastFW         = null;
-	private JButton acoAuto           = null;
-	private JButton ahyJump           = null;
-	private JButton ahySave           = null;
-	private JButton ahyDelete         = null;
-	private JToggleButton pbnRecord   = null;
+	private JButton                  ppbSteps                      = null;
+	private JButton                  ppbPlay                       = null;
+	private JButton                  ppbDelay                      = null;
+	private JButton                  pbnUp                         = null;
+	private JButton                  pbnDown                       = null;
+    private JButton                  pbnFastBW                     = null;
+    private JButton                  pbnBW                         = null;
+	private JButton                  pbnStop                       = null;
+	private JButton                  pbnPlay                       = null;
+	private JButton                  pbnPause                      = null;
+	private JButton                  pbnFW                         = null;
+	private JButton                  pbnFastFW                     = null;
+	private JButton                  acoAuto                       = null;
+	private JButton                  ahyJump                       = null;
+	private JButton                  ahySave                       = null;
+	private JButton                  ahyDelete                     = null;
+	private JToggleButton            pbnRecord                     = null;
 	
 	//Declaration of the Lists
-	private JList       acoChoice     = null; 
-	private JScrollPane acoScroll     = null;
-	private JList       ahxChoice     = null;
-	private JScrollPane ahxScroll     = null;
-	private DefaultListModel ahxHistoryContent = null;
-	private DefaultListModel acoChoiceItems = null;
+	private JList                    acoChoice                     = null; 
+	private JScrollPane              acoScroll                     = null;
+	private JList                    ahxChoice                     = null;
+	private JScrollPane              ahxScroll                     = null;
+	private DefaultListModel         acoChoiceItems                = null;
+	private DefaultListModel         ahxHistoryContent             = null;
 	
 	//Other Variables
-	private int    stXsize            = 50;
-	private int    stYsize            = 25;
-	private int    xtXsize            = 30;
-	private int    xtYsize            = 25;
-	private GridBagConstraints hgbc   = null;
-	private GridBagConstraints gbc    = null;
-	private boolean newHistory        = false;
-	
-	//private ReferenceProvider MainWindowReference = null;
-	//private TokenGameHistoryManagerVC HistoryDialog = null;
-	private TransitionModel   TransitionToOccur         = null;
-	private TransitionModel   BackwardTransitionToOccur = null;
-	private TransitionModel   helpTransition    = null;
-    private boolean			  autoplayback      = false;
-    private boolean			  endofnet			= false;
-    private boolean			  backward			= false;
-	private PetriNetModelProcessor           PetriNet = null;
-    
-	//Linked Lists 
-	private LinkedList       followingActivatedTransitions           = null;
-	
-	//History Variables
-	private Vector <TransitionModel>  HistoryVector           = null;
-	private SimulationModel   SaveableSimulation              = null;
-	private static int HistoryID         = 0; //Help Variable as long as no Name is available for Histories
-	private static int HistoryIndex      = 0; //Will guide through the History when playbacking
+	private int                      stXsize                       = 50;
+	private int                      stYsize                       = 25;
+	private int                      xtXsize                       = 30;
+	private int                      xtYsize                       = 25;
+	private GridBagConstraints       hgbc                          = null;
+	private GridBagConstraints       gbc                           = null;
 
-	// TokenGame
-	private TokenGameController m_tokenGameController = null;
+	private TokenGameBarController   tgbController                 = null;
 	
 	//Constructor(s)
-	public TokenGameBarVC(TokenGameController tgcontroller, PetriNetModelProcessor PetriNet)
+	public TokenGameBarVC(TokenGameBarController tgbController, DefaultListModel acoChoiceItems, DefaultListModel ahxHistoryContent)
 	{
 		super(Messages.getTitle("Tokengame.RemoteControl"), false, true);
 		this.setFrameIcon(Messages.getImageIcon("Tokengame.RemoteControl"));
@@ -96,18 +70,16 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		//RC will disappear
 		this.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
 		
+		this.acoChoiceItems = acoChoiceItems;
+		this.ahxHistoryContent = ahxHistoryContent;
+		this.tgbController = tgbController;
+		
 		this.getContentPane();
-		this.setLayout(new FlowLayout(1,5,10)); //1 = Align Center
+		this.setLayout(new FlowLayout(FlowLayout.CENTER,5,10));
 		this.add(addPropertiesPanel());
 		this.add(addPlaybackNavigation());
 		this.add(addAutoChoice());
 		this.add(addHistory());
-		this.PetriNet = PetriNet;
-		
-
-		
-		m_tokenGameController = tgcontroller;
-
 	}
 	
 	
@@ -135,8 +107,8 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		ppbDelay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Delay"));
 		
 		//Define Button's Actions
-		ppbPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_PLAYBACK, this));
-		ppbSteps.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_STEPWISE, this));
+		ppbPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_PLAYBACK, tgbController));
+		ppbSteps.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_STEPWISE, tgbController));
 		
 		//Define Panel and Layout
 		PropertiesPanel = new JPanel();
@@ -172,8 +144,8 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		pbnDown.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.NaviDown")); 
 		
 		//Define Navigation-Actions
-		pbnUp.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STEP_UP, this));
-		pbnDown.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STEP_DOWN, this));
+		pbnUp.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STEP_UP, tgbController));
+		pbnDown.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STEP_DOWN, tgbController));
 		
 		//Define Playback-Buttons
 		pbnFastBW = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.FastBackward"));
@@ -206,13 +178,13 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		pbnRecord.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Record"));
 		
 		//Define Button-Actions
-		pbnBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_BACKWARD, this));
-		pbnStop.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STOP, this));
-		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, this));
-		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, this));
-		pbnFastFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_FORWARD, this));
-		pbnFastBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_BACKWARD, this));
-		pbnRecord.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_RECORD, this));
+		pbnBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_BACKWARD, tgbController));
+		pbnStop.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STOP, tgbController));
+		pbnPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PLAY, tgbController));
+		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, tgbController));
+		pbnFastFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_FORWARD, tgbController));
+		pbnFastBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_BACKWARD, tgbController));
+		pbnRecord.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_RECORD, tgbController));
 				
 		//Create Playback&Navigation-Panel and add Buttons
 		NavigationPlayback = new JPanel();
@@ -281,13 +253,12 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		acoAuto.setPreferredSize(new Dimension(stXsize, stYsize));
 				
 		//... the easychoice List
-		acoChoiceItems = new DefaultListModel();
 		acoChoice = new JList(acoChoiceItems);
 		acoChoice.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		acoChoice.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.ChoiceList"));
 		
 		//add Listener
-		acoChoice.addMouseListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_TRANSITION, this));
+		acoChoice.addMouseListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_TRANSITION, tgbController));
 		
 		//... the easychoice Scroll-Bars and Listbox Sizedefinition
 		acoScroll = new JScrollPane(acoChoice);
@@ -325,9 +296,9 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		ahyDelete.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.DeleteHistory"));
 		
 		//Define ActionListeners
-		ahyJump.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_JUMP_HERE, this));
-		ahySave.addActionListener(new TokenGameBarListener(TokenGameBarListener.OPEN_HISTORY_MANAGER, this));
-		ahyDelete.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_DELETE_CURRENT, this));
+		ahyJump.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_JUMP_HERE, tgbController));
+		ahySave.addActionListener(new TokenGameBarListener(TokenGameBarListener.OPEN_HISTORY_MANAGER, tgbController));
+		ahyDelete.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_DELETE_CURRENT, tgbController));
 		
 		//Define Panel and add Buttons
 		History = new JPanel();
@@ -350,7 +321,6 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		History.add(ahyDelete, hgbc);
 
 		//Define Scrollbars, Listbox-Size and add to Panel
-		ahxHistoryContent = new DefaultListModel();
 		ahxChoice = new JList(ahxHistoryContent);
 		ahxChoice.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		ahxChoice.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.HistoryList"));
@@ -369,64 +339,11 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		return History;
 	}
 	
-	//All Actions regarding the TokenGame-Remote-Control
 	
-	/*
-	 * List-Boxes' section
-	 */
 	
-	//Choice Listbox
-	//get Active Transitions
-	public void addFollowingItem(TransitionModel transition)
-	{
-		if(followingActivatedTransitions == null)
-		{
-			followingActivatedTransitions = new LinkedList();
-		}
-		followingActivatedTransitions.addLast(transition);
-	}
-	
-		
-	/**
-	 * will set the "BackwardTransitionToOccur" with Data
-	 */
-	public void previousItem()
-	{		  
-	  if(HistoryVector != null)
-	  {  
-		if(!playbackRunning())
-		{
-			 if (HistoryVector.size() > 0)
-			 {
-			   BackwardTransitionToOccur = (TransitionModel)HistoryVector.remove(HistoryVector.size()-1);		
-			   if (isRecordSelected())
-			   {
-			   	ahxHistoryContent.remove(ahxHistoryContent.size()-1);
-			   }
-			 }
-			 else
-			 {
-				 BackwardTransitionToOccur = null;
-			 }
-		}
-		//If playback running
-		else
-		{
-			if(HistoryIndex > 0)
-			{
-				HistoryIndex--;
-				BackwardTransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex);
-				return;
-			}
-			else  //if(HistoryIndex < 0)
-			{
-				BackwardTransitionToOccur = null;
-				return;
-			}
-		}
-	  }			
-	}
-	
+   /*
+    * getter and setter
+    */
 
 	public int getSelectedChoiceID()
 	{
@@ -434,153 +351,29 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 	
 	}
 	
-	/**
-	 * Adds multi-choice entries to the multi-choice box
-	 */
-	public void fillChoiceBox()
-	{
-	  if(!playbackRunning())	
-	  {
-		clearChoiceBox(); //To ensure that the box is empty
-		if(followingActivatedTransitions.size() == 1)
-		{
-			TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(0);
-		}
-		if(followingActivatedTransitions.size() > 1)
-		{
-			for(int i = 0; i < followingActivatedTransitions.size(); i++)				
-			{
-				helpTransition = (TransitionModel)followingActivatedTransitions.get(i);
-     			acoChoiceItems.addElement(helpTransition.getNameValue());
-			}
-     		disableForwardButtons();
-		}
-	  }
-	}
-	
-	public LinkedList getFollowingActivatedTransitions()
-	{
-		return followingActivatedTransitions;
-	}
-	
-	public void clearChoiceBox()
-	{
-		acoChoiceItems.clear();
-		if(!autoplayback)
-		{
-			enableForwardButtons();
-		}
-	}
-	
-	//HistoryListbox
-		
-	public SimulationModel getHistoryData()
-	{
-		return SaveableSimulation;
-	}
-	
-	public void clearHistoryData()
-	{
-		ahxHistoryContent.clear();
-		HistoryVector = null; //Set reference to null, so that a new history-Vector will be created!
-		newHistory = true;
-	}
-	
 
+
+	
 	/*
-	 * History Recording
+	 * "is"-checks
 	 */
-    
+
 	public boolean isRecordSelected()
 	{
 		return pbnRecord.isSelected();
 	}
-    	
-	
-    public void addHistoryItem(TransitionModel transition)
-    {	
-    	if (HistoryVector == null)
-    	{
-    		HistoryVector = new Vector<TransitionModel>(1);
-    		ahxHistoryContent.clear();
-    	}
-    	if(!playbackRunning())
-    	{
-    	  HistoryVector.add(transition);
-    	}
-    }
+    
+	public boolean isPlayButtonEnabled()
+	{
+		return pbnPlay.isEnabled();
+	}
 
     
-    public void addHistoryListItem(TransitionModel transition)
-    {
-    	ahxHistoryContent.addElement(transition.getNameModel());
-    }
     
-    public void createSaveableHistory()
-    {
-    	SaveableSimulation = new SimulationModel(PetriNet.getNewElementId(AbstractPetriNetModelElement.SIMULATION_TYPE), "Name"+HistoryID, (Vector<TransitionModel>)HistoryVector.clone());
-    	newHistory = true;
-    	HistoryID++;
-    }
-	
-    /**
-     * Adds the History (SimulationModel) Objekt to the Simulations Vector
-     */
-    public void saveHistory()
-    {
-    	PetriNet.addSimulation(SaveableSimulation);
-    }
-    
-    /**
-     * Overwrites an existing history with the current one. 
-     * @param index
-     */
-    public void overwriteHistory(int index)
-    {
-    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
-    	SaveableSimulation.setFiredTransitions((Vector<TransitionModel>)HistoryVector.clone());
-    }
-    
-    /**
-     * Deletes the a saved simulation 
-     * @param index
-     */
-    public void deleteHistory(int index)
-    {
-    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().remove(index);
-    }
-    
-    public void loadHistory(int index)
-    {
-    	ahxHistoryContent.clear();
-    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
-    	//needs a clone, otherwise, the saved history might be erased when the user just wants to clean the history-box
-    	HistoryVector = (Vector<TransitionModel>)SaveableSimulation.getFiredTransitions().clone();
-    	for (int i = 0; i < HistoryVector.size(); i++)
-    	{
-    		ahxHistoryContent.addElement(HistoryVector.get(i).getNameValue());
-    	}
-    }
-    
-    public boolean isNewHistory()
-    {
-    	return newHistory;
-    }
-    
-    public void setToOldHistory()
-    {
-    	newHistory = false;
-    }
-    
-    public void startHistoryPlayback()
-    {
-    	HistoryIndex = 0;
-    	TransitionToOccur = HistoryVector.get(HistoryIndex);   	
-    }
+
     
 	/*
-	 * disable / enable Buttons - Sektion
-	 * 
+	 * disable / enable Buttons - Sektion 
 	 */
 	
 	public void disableForwardButtons()
@@ -598,11 +391,6 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 	public void enablePlayButton()
 	{
 		pbnPlay.setEnabled(true);
-	}
-	
-	public boolean isPlayButtonEnabled()
-	{
-		return pbnPlay.isEnabled();
 	}
 	
 	public void disablePlayButton()
@@ -630,27 +418,6 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 		ppbPlay.setEnabled(true);
 	}
 	
-	public void setAutoPlayback(boolean onoff)
-	{
-		autoplayback = onoff;
-		if(autoplayback)
-		{
-			enableStepwiseButton();
-			disableAutoPlaybackButton();
-			clearChoiceBox();
-		}
-		else
-		{
-			enableAutoPlaybackButton();
-			disableStepwiseButton();
-		}
-	}
-	
-	public boolean getAutoPlayBack()
-	{
-		return autoplayback;
-	}
-	
 	public void enableStepDown()
 	{
 		pbnDown.setEnabled(true);
@@ -670,229 +437,7 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 	{
 		pbnRecord.setEnabled(false);
 	}
-		
-
-	
-	/**
-	 * This method is to avoid problems when stepping in any direction without having pressed playback in advance
-	 * @return
-	 */
-	public boolean tokengameRunning()
-	{
-		if(!pbnPlay.isEnabled())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	/**
-	 * this method is to check whether a real playback is running, a walkthrough without recording or a record session.
-	 * If it is a real playback, the application will not give the user any choice-possibility but it will just follow
-	 * the history in the history-box
-	 * @return true / false 
-	 */
-	public boolean playbackRunning()
-	{
-		if((ahxHistoryContent.size() != 0) && (!isRecordSelected()))
-		{
-		  return true;
-		}
-		else
-		{
-			return false;	
-		}
-	}
-	
-	/*
-	 * Transition-Actions 
-	 */
-	
-	
-	/**
-	 * This method will be called by the EasyChoice-Event and will handover the
-	 * chosen transition to the occurTransition() method 
-	 */
-	public void proceedTransitionChoice(int index)
-	{
-		if((followingActivatedTransitions != null) && (index < followingActivatedTransitions.size()))
-		{
-			TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
-		    occurTransition(false);
-		}	
-	}
-	
-	
-	/**
-	 * This method let the active transition occur (currently only for sequences, as soon
-	 * as two transitions are active, the method cannot occur so far)
-	 */
-	public void occurTransition(boolean BackWard)
-	{
-	  if( BackWard )
-	  {
-		  previousItem();
-		if(BackwardTransitionToOccur != null)
-		{
-			TransitionToOccur = BackwardTransitionToOccur;
-			m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
-		}
-  	  }
-	  else
-	  {
-		  //AFAIK needed to make automatic backward stepping
-		  BackwardTransitionToOccur = TransitionToOccur;
-		  if(playbackRunning())
-		  {
-			  if((HistoryIndex < HistoryVector.size()) && (HistoryIndex >= 0))
-			  {
-			    TransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex++);
-			  //Secure the net, so that no playback further than the last Simulation point can be done
-			  }
-			  else
-			  {
-				  HistoryIndex = HistoryVector.size();
-			  }
-		  }
-		  //If end of net is not reached yet or there is still something to occur
-		  if(followingActivatedTransitions.size() > 0)
-		  {
-		    m_tokenGameController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
-		  }
-	  } 
-	}
-	
-	/**
-	 * This method let the multiple transition occur (now 3 times) (only for sequences,
-	 * as two transitions are active, the methode will stop)
-	 * TODO: 
-	 * 1) replace occurtimes 3 with a parameter. On default 3 but User can
-	 * define this parameter, but this will be
-	 */
-	public void occurTransitionMulti(boolean BackWard)
-	{
-		int i = 0;
-		if(BackWard)
-		{
-			while (i != 3)
-			{
-				if(BackwardTransitionToOccur != null)
-				{
-					occurTransition(BackWard);
-				}
-				i++;
-			}
-		}
-		else
-		{
-			while (i != 3)
-			{
-				if((followingActivatedTransitions.size() < 2) && (!playbackRunning()))
-				{
-					occurTransition(BackWard);
-				}
-				else if (playbackRunning())
-				{
-					occurTransition(BackWard);
-				}
-				i++;
-			}
-		}
-		
-	}
-	
-	// Tokengame AutoPlayback Sektion - Beginn
-	
-	/**
-	 * Automatic TokenGame
-	 * This Method occur automatic all transition if autoplayback is true. Choice transition will be
-	 * occured by random choice
-	 * 
-	 * ToDo: 
-	 * 	1) refreshNet after occurence - done
-	 *  2) random choice only if no probabilities are set
-	 */
-	public void run() {
-		
-		auto();
-	}
-	
-	public void autoOccurAllTransitions(boolean BackWard)
-	{
-		backward = BackWard;
-		new Thread(this).start();
-	}
-	
-	public void auto()
-	{
-		disableButtonforAutoPlayback();
-		while(!isEndOfNet())
-		{
-			try {
-		    	javax.swing.SwingUtilities.invokeLater(new TokenGameRunnableObject(this));
-		    	Thread.sleep(1500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			clearChoiceBox();
-		}
-		setEndOfNet(false);
-		enableButtonforAutoPlayback();
-	}
-	
-	public void moveForward()
-	{
-		if(followingActivatedTransitions.size() == 0)
-		{
-			setEndOfNet(true);
-		}
-		else
-		{
-			if(followingActivatedTransitions.size() >= 2)
-			{
-				int index = (int) Math.round(Math.random() * (followingActivatedTransitions.size()-1));
-				TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
-				occurTransition(false);
-			}
-			else
-			{
-				occurTransition(false);
-				
-			}
-		}
-	}
-	
-	public void moveBackward()
-	{
-		if(BackwardTransitionToOccur == null)
-		{
-			setEndOfNet(true);
-		}
-		else
-		{
-			occurTransition(true);
-		}
-	}
-	
-	public void setEndOfNet(boolean end)
-	{
-		endofnet = end;
-	}
-	
-	public boolean isEndOfNet()
-	{
-		return endofnet;
-	}
-	
-	public boolean isBackward()
-	{
-		return backward;
-	}
-	
+			
 	public void disableButtonforAutoPlayback()
 	{
 		ppbDelay.setEnabled(false);
@@ -906,6 +451,7 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 
 		acoAuto.setEnabled(false);
 	}
+	
 	public void enableButtonforAutoPlayback()
 	{
 		ppbDelay.setEnabled(true);
@@ -919,35 +465,5 @@ public class TokenGameBarVC extends JInternalFrame implements Runnable {
 
 		acoAuto.setEnabled(true);
 	}
-	// Tokengame AutoPlayback Sektion - END
-	
-	/**
-	 * Cleans up the ChoiceBox and the ChoiceArray.
-	 * Is called by the TokenGameController.transitionClicked method and therefore
-	 * makes it possible to step through the net with in-Editor-clicks or Remote-clicks
-	 */
-	public void cleanupTransition()
-	{
-		clearChoiceBox();
-		if(followingActivatedTransitions != null)
-		{
-			followingActivatedTransitions.clear();
-		}
-	}
-	
-	public PetriNetModelProcessor getPetriNet()
-	{
-		return PetriNet;
-	}
-	
-	/**
-	 * 
-	 * @return Reference to TokenGameController
-	 */
-	public TokenGameController getTokenGameController()
-	{
-		return m_tokenGameController;
-	}
-	
 	
 }

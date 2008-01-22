@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.ba-karlsruhe.de
  *
  */
-package org.woped.qualanalysis.simulation;
+package org.woped.qualanalysis.simulation.controller;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -50,6 +50,7 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.simulation.TokenGameBarVC;
 import org.woped.qualanalysis.test.*;
 
 
@@ -89,7 +90,7 @@ public class TokenGameController
     private boolean                visualTokenGame       = false;
     private IEditor				   thisEditor 			 = null;
     private ReferenceProvider      desktop               = null;
-    private TokenGameBarVC         RemoteControl         = null; 
+    private TokenGameBarController RemoteControl         = null; 
     private boolean                stepIntoSubProcess    = false;
     
     /**
@@ -137,38 +138,23 @@ public class TokenGameController
 //            
 //        }
         
-      //displays the TokenGame Remote-Control if it already exist, if not create
-        if(RemoteControl != null)
-        {
-        	//Add Default Mediator Pattern here instead of the DesktopReference-thing
-        	desktop.getDesktopReference().add(RemoteControl);
-        	RemoteControl.setVisible(true);
-            RemoteControl.moveToFront();
-        }
-        else
-        {
-          RemoteControl = new TokenGameBarVC(this, petrinet);
-          desktop = new ReferenceProvider();
-          //AS: getLocation, not finally implemented. Add RemoteControl at Point Location
-          Point p = desktop.getDesktopReference().getLocation();
-          p.setLocation(desktop.getDesktopReference().getLocation().getX(), (int)desktop.getDesktopReference().getHeight()-RemoteControl.getHeight());
-          desktop.getDesktopReference().add(RemoteControl).setLocation(p);
-          //desktop.getDesktopReference().
-          //RemoteControl.setVisible(true);
-          RemoteControl.moveToFront();
-        }
-        
+        //displays the TokenGame Remote-Control if it already exist, if not create
+    	if(RemoteControl != null)
+    	{
+    		RemoteControl.addControlElements();
+    	}
+    	else
+    	{
+    		RemoteControl = new TokenGameBarController(this, petrinet);
+    	}
+                
         // Storing Transition Reference (simple and operator)
         allTransitions = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
         allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
         allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
         // Find and show active Transitions/Arcs
         //checkNet();
-        //animator.start();
-        
-        
-               
-        
+        //animator.start();            
     }
 
     /**
@@ -191,12 +177,7 @@ public class TokenGameController
         //animator.stop();
         
         //Hide and remove Tokengame Remote-Control
-        if((RemoteControl != null) && (desktop != null))
-        {
-        	RemoteControl.setVisible(false);
-        	desktop.getDesktopReference().remove(RemoteControl);
-        	RemoteControl = null;
-        }
+        RemoteControl.removeControlElements();
     }
 
     

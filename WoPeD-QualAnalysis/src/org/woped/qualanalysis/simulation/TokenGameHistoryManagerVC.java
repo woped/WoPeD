@@ -38,7 +38,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 	private int          ListSizeY          = 200;
 	
 	//Declare Reference-Variables
-	private TokenGameBarVC           RemoteControl    = null;
+	private TokenGameBarController   RemoteControl    = null;
 	private SimulationModel          HistoryData      = null; 
 	private ListSelectionModel       SelectedItems    = null;
 	
@@ -47,7 +47,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 	private Vector<SimulationModel> HistoryFromFile = null;      
 	
 	//Standard-Constructor
-	public TokenGameHistoryManagerVC(IUserInterface mediator, TokenGameBarVC RC)
+	public TokenGameHistoryManagerVC(IUserInterface mediator, TokenGameBarController RC)
 	{
 		super((JFrame)mediator, Messages.getTitle("Tokengame.HistoryManager"), true);
 		RemoteControl = RC;
@@ -226,7 +226,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 	
 	
 	
-	public TokenGameBarVC getRemoteControl()
+	public TokenGameBarController getRemoteControl()
 	{
 		return RemoteControl;
 	}
