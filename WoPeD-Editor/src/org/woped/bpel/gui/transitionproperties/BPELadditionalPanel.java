@@ -250,14 +250,12 @@ public abstract class BPELadditionalPanel extends JPanel{
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
-//			dialogButtons.add(new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK")), c);
 			dialogButtons.add(getOKButton(), c);
 			
 			c.gridx = 1;
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
-//			dialogButtons.add(new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel")), c);
 			dialogButtons.add(getCancelButton(), c);
 		}
 		return dialogButtons;
