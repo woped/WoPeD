@@ -3,55 +3,19 @@ package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import org.jgraph.JGraph;
-import org.jgraph.graph.DefaultCellViewFactory;
-import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphConstants;
-import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
-import org.woped.core.controller.IEditor;
 
 public class ReachabilityLayoutHierarchic {
 
-	public static JGraph layoutGraph(IEditor editor){
-		GraphModel model = new DefaultGraphModel(); 
-		GraphLayoutCache view = new GraphLayoutCache(model,	new	DefaultCellViewFactory()); 
-		view.setSelectsAllInsertedCells(false);
-		JGraph graph = new JGraph(model, view); 
-		// Compute ReachabilityGraph
-		BuildReachability dataSource = new BuildReachability(editor);
-		HashMap<String, TransitionObject> transactions = dataSource.getTransactions();
-		// Cells
-		HashSet<DefaultGraphCell> cellsList = new HashSet<DefaultGraphCell>();
-		// Transactions
-		Collection<TransitionObject> transactionsColl = transactions.values();
-		Iterator<TransitionObject> iterTransactions = transactionsColl.iterator();
-		while(iterTransactions.hasNext()){
-			TransitionObject actualTransition = iterTransactions.next();
-			ReachabilityEdgeModel edge = getHierarchicEdge(cellsList,actualTransition);
-
-			ReachabilityPlaceModel src = getHierarchicPlace(cellsList, actualTransition.start);
-			cellsList.add(src);
-				
-			DefaultGraphCell tar = getHierarchicPlace(cellsList, actualTransition.ende);
-			cellsList.add(tar);
-			
-			edge.setSource(src.getChildAt(0));
-			edge.setTarget(tar.getChildAt(0));
-			cellsList.add(edge);	
-		}
-		graph.getGraphLayoutCache().insert(cellsList.toArray());
-		applyHierarchicLayout(graph);	
-		
+	public static JGraph layoutGraph(JGraph graph){
+		applyHierarchicLayout(graph);			
 		graph.getGraphLayoutCache().reload();
 		return graph;
 	}
@@ -64,7 +28,7 @@ public class ReachabilityLayoutHierarchic {
 				markings.add((ReachabilityPlaceModel) model.getRootAt(i));
 			}
 		}
-		ReachabilityPlaceModel initialPlace = lookupInitialMarking(markings);
+		ReachabilityPlaceModel initialPlace = ReachabilityGraphModel.lookupInitialMarking(markings);
 		if(initialPlace != null){
 			GraphConstants.setBackground(initialPlace.getAttributes(), Color.green);
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
@@ -158,51 +122,5 @@ public class ReachabilityLayoutHierarchic {
 		}
 		return null;
 	}
-	
-	private static ReachabilityPlaceModel lookupInitialMarking(LinkedList<ReachabilityPlaceModel> markings){
-		Iterator<ReachabilityPlaceModel> markingsIter = markings.iterator();
-		while(markingsIter.hasNext()){
-			ReachabilityPlaceModel actPlaceModel = markingsIter.next();
-			if(((Marking) actPlaceModel.getUserObject()).isInitial()){
-				return actPlaceModel;
-			}
-		}
-		return null;
-	}
-	
-	private static ReachabilityPlaceModel getHierarchicPlace(HashSet<DefaultGraphCell> cellsList, Marking marking){
-		Iterator<DefaultGraphCell> iter = cellsList.iterator();
-		while(iter.hasNext()){
-			DefaultGraphCell comp = iter.next();
-			if(comp.getUserObject() != null && comp.getUserObject().equals(marking)){
-				return (ReachabilityPlaceModel) comp;
-			}
-		}
-		ReachabilityPlaceModel place = new ReachabilityPlaceModel(marking);
-		ReachabilityPortModel port = new ReachabilityPortModel();
-		place.add(port);
-		port.setParent(place);
-		return place;
-	}
-	
-	private static ReachabilityEdgeModel getHierarchicEdge(HashSet<DefaultGraphCell> cellsList, TransitionObject to){
-		Iterator<DefaultGraphCell> iterCellsList = cellsList.iterator();
-		
-		if(cellsList != null && !cellsList.isEmpty()){
-			while(iterCellsList.hasNext()){
-				DefaultGraphCell cell = iterCellsList.next();
-				if(cell instanceof ReachabilityEdgeModel){
-					ReachabilityEdgeModel edge = (ReachabilityEdgeModel) cell;
-					// Source
-					ReachabilityPortModel srcRpom = (ReachabilityPortModel) edge.getSource();
-					ReachabilityPlaceModel srcRplm = (ReachabilityPlaceModel) srcRpom.getParent();
-					
-					// Target
-					ReachabilityPortModel tarRpom = (ReachabilityPortModel) edge.getTarget();
-					ReachabilityPlaceModel tarRplm = (ReachabilityPlaceModel) tarRpom.getParent();
-				}
-			}
-		}
-		return new ReachabilityEdgeModel(to);
-	}
+
 }

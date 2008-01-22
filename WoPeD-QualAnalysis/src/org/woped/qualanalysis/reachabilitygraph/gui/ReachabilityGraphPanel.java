@@ -72,7 +72,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	
 	private JGraph getDefaultGraph(int type){
 		ReachabilityGraphModel builder = new ReachabilityGraphModel(editor);
-		return builder.getGraph(type, this.getSize());
+		return ReachabilityGraphModel.layoutGraph(builder.getGraph(), type, this.getSize());
 	}
 	
 	public JGraph getGraph(){

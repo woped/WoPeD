@@ -8,7 +8,6 @@ import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
-import org.woped.core.gui.IToolBar;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
@@ -46,6 +45,7 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 				}
 				toAdd.setVisible(true);
 				toAdd.validate();
+				toAdd.moveToFront();
 				toAdd.refreshGraph(ReachabilityGraphModel.HIERARCHIC);
 				dui.getToolBar().getReachabilityGraphButton().setEnabled(false);
 				toAdd.updatePanelsVisibility(editor);
