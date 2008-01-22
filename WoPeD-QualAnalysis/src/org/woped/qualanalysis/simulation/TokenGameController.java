@@ -142,7 +142,8 @@ public class TokenGameController
         {
         	//Add Default Mediator Pattern here instead of the DesktopReference-thing
         	desktop.getDesktopReference().add(RemoteControl);
-        	RemoteControl.setVisible(true);        	
+        	RemoteControl.setVisible(true);
+            RemoteControl.moveToFront();
         }
         else
         {
@@ -154,6 +155,7 @@ public class TokenGameController
           desktop.getDesktopReference().add(RemoteControl).setLocation(p);
           //desktop.getDesktopReference().
           //RemoteControl.setVisible(true);
+          RemoteControl.moveToFront();
         }
         
         // Storing Transition Reference (simple and operator)
