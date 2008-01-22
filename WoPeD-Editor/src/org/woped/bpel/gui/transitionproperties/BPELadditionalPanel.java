@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -17,6 +18,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileFilter;
 import javax.xml.stream.XMLStreamException;
 
 import org.woped.bpel.wsdl.Wsdl;
@@ -255,13 +257,43 @@ public abstract class BPELadditionalPanel extends JPanel{
 			searchLocalWSDLButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					JFileChooser chooser = new JFileChooser();
-					chooser.showOpenDialog( null );
+//					chooser.showOpenDialog( null );
+					
+/*					FileFilter filter = new FileFilter();
+					 filter.addExtension("wsdl");
+					 filter.setDescription("WSDLs");
+					 chooser.setFileFilter(filter);
+					 int returnVal = chooser.showOpenDialog(null);
+					 if(returnVal == JFileChooser.APPROVE_OPTION) {
+					   System.out.println("You chose to open this file: " +
+					     chooser.getSelectedFile().getName());
+					 }*/
+
+					
+					
+					chooser.addChoosableFileFilter(new FileFilter() {
+					    public boolean accept(File f) {
+					      if (f.isDirectory()) return true;
+					      return f.getName().toLowerCase().endsWith(".wsdl");
+					    }
+					    public String getDescription () { return "WSDLs"; } 
+					});
+					chooser.setMultiSelectionEnabled(false);
+					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+						System.out.println ("Datei "+chooser.getSelectedFile()+
+                        " ausgewählt.");
+						
+					}
+					     
+					
+					
+					
+
 				}
 			});
 		}
 		return searchLocalWSDLButton;
 	}
-
 
 
 	private JComboBox getPartnerLinkTypeComboBox(){
