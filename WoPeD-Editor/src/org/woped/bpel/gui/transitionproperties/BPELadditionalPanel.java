@@ -51,6 +51,8 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JComboBox partnerLinkTypeComboBox = null;
 	JComboBox partnerRoleComboBox = null;
 	JComboBox myRoleComboBox = null;
+	JButton okButton = null;
+	JButton cancelButton = null;
 	
 	
 	static final String NEW = Messages.getString("Transition.Properties.BPEL.Buttons.New");
@@ -248,13 +250,15 @@ public abstract class BPELadditionalPanel extends JPanel{
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
-			dialogButtons.add(new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK")), c);
-
+//			dialogButtons.add(new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK")), c);
+			dialogButtons.add(getOKButton(), c);
+			
 			c.gridx = 1;
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
-			dialogButtons.add(new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel")), c);
+//			dialogButtons.add(new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel")), c);
+			dialogButtons.add(getCancelButton(), c);
 		}
 		return dialogButtons;
 	}
@@ -346,7 +350,30 @@ public abstract class BPELadditionalPanel extends JPanel{
 		return myRoleComboBox;
 	}
 
+	private JButton getOKButton(){
+		if (okButton == null) {
+			okButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
+			okButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					// to do: speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
+					dialogPartner.dispose();
+				}
+			});
+		}
+		return okButton;
+	}
 	
+	private JButton getCancelButton(){
+		if (cancelButton == null) {
+			cancelButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
+			cancelButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					dialogPartner.dispose();
+				}
+			});
+		}
+		return cancelButton;
+	}
 	
 	
 	
@@ -356,16 +383,33 @@ public abstract class BPELadditionalPanel extends JPanel{
 		return this.transition.getNameValue();
 	}
 	
-/*	public String getFromVariable(){
-		if (fromVariableComboBox.getSelectedItem() == null)
+	
+	// folgendes noch mit Alex abzuklären (Esther)
+	
+	public String getPartnerLinkName(){
+		if (partnerLinkNameTextField.getText() == null)
 			return null;
-		return fromVariableComboBox.getSelectedItem().toString();
+		return partnerLinkNameTextField.getText().toString();
 	}
 	
-	public String getToVariable(){
-		if (toVariableComboBox.getSelectedItem() == null)
+	public String getPartnerLinkType(){
+		if (partnerLinkTypeComboBox.getSelectedItem() == null)
 			return null;
-		return toVariableComboBox.getSelectedItem().toString();
-	}*/
+		return partnerLinkTypeComboBox.getSelectedItem().toString();
+	}
+	
+	public String getPartnerRole(){
+		if (partnerRoleComboBox.getSelectedItem() == null)
+			return null;
+		return partnerRoleComboBox.getSelectedItem().toString();
+	}
+	
+	public String getMyRole(){
+		if (myRoleComboBox.getSelectedItem() == null)
+			return null;
+		return myRoleComboBox.getSelectedItem().toString();
+	}
+	
+
 
 }
