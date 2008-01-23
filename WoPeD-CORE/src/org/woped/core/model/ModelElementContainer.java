@@ -215,6 +215,13 @@ public class ModelElementContainer implements Serializable
     	return namelist;
     }
     
+    public String[] getTypes()
+    {
+    	String[] list = {"String", "normalizedString", "token", "byte", "unsignedByte", "base64Binary", "hexBinary", "integer"};
+    	
+    	return list;
+    }
+    
     public void removeVariable(TVariable arg)
     {
     	TVariable[] list = this.variablesList.getVariableArray();
