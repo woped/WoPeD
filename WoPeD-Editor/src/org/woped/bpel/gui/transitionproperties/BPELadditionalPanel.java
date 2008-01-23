@@ -478,6 +478,7 @@ public class BPELadditionalPanel extends JPanel{
 			for(Role role : roles){
 				partnerRoleComboBox.addItem(role.getRoleName());
 			}
+			partnerRoleComboBox.addItem(Messages.getString("Transition.Properties.BPEL.NoRole"));
 		}
 	}
 
@@ -490,6 +491,7 @@ public class BPELadditionalPanel extends JPanel{
 			for(Role role : roles){
 				myRoleComboBox.addItem(role.getRoleName());
 			}
+			myRoleComboBox.addItem(Messages.getString("Transition.Properties.BPEL.NoRole"));
 		}
 	}
 
