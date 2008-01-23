@@ -124,6 +124,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	private JComboBox getPartnerLinkComboBox(){
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
+			partnerLinkComboBox.setPreferredSize(dimension);
 		}
 		return partnerLinkComboBox;
 	}
@@ -143,6 +144,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	private JComboBox getOperationComboBox(){
 		if (operationComboBox == null) {
 			operationComboBox = new JComboBox();
+			operationComboBox.setPreferredSize(dimension);
 		}
 		return operationComboBox;
 	}
@@ -150,6 +152,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	private JComboBox getInVariableComboBox(){
 		if (inVariableComboBox == null) {
 			inVariableComboBox = new JComboBox();
+			inVariableComboBox.setPreferredSize(dimension);
 		}
 		return inVariableComboBox;
 	}
@@ -171,6 +174,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	private JComboBox getOutVariableComboBox(){
 		if (outVariableComboBox == null) {
 			outVariableComboBox = new JComboBox();
+			outVariableComboBox.setPreferredSize(dimension);
 		}
 		return outVariableComboBox;
 	}
