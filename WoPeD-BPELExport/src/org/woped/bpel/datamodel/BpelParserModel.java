@@ -455,7 +455,7 @@ public class BpelParserModel
 	 *            AbstractElement startelement of sequence
 	 * @return AbstractElement
 	 */
-	public AbstractElement isSequense(AbstractElement e)
+	public AbstractElement isSequence(AbstractElement e)
 	{
 		if (e == null)
 			return null;
@@ -497,26 +497,32 @@ public class BpelParserModel
 		while (list.hasNext())
 		{
 			AbstractElement begin = list.next();
-			AbstractElement end = this.isSequense(begin);
+			AbstractElement end = this.isSequence(begin);
 			if (end != null)
 			{
-				System.out.println("<Sequense> \n" + "\tbegin = " + begin
-						+ "\n" + "\tend = " + end + "\n</Sequence>");
-				HashSet<AbstractElement> pre_list = begin.get_pre_list_copy();
-				HashSet<AbstractElement> post_list = end.get_post_list_copy();
-
-				begin.remove_all_pre_relationship();
-				end.remove_all_post_relationship();
-
-				AbstractElement e = new SequenceTransition(begin);
-				this.regist_element(e);
-				this.reg_to_deregist_submodel(begin);
-
-				e.add_pre_object_list_relationship(pre_list);
-				e.add_post_object_list_relationship(post_list);
+				this.newSequence(begin, end);
 			}
 		}
 		this.deregist_all_flaged_elements();
+	}
+	
+	public SequenceTransition newSequence(AbstractElement begin, AbstractElement end)
+	{
+		System.out.println("<Sequense> \n" + "\tbegin = " + begin
+				+ "\n" + "\tend = " + end + "\n</Sequence>");
+		HashSet<AbstractElement> pre_list = begin.get_pre_list_copy();
+		HashSet<AbstractElement> post_list = end.get_post_list_copy();
+
+		begin.remove_all_pre_relationship();
+		end.remove_all_post_relationship();
+
+		SequenceTransition e = new SequenceTransition(begin);
+		this.regist_element(e);
+		this.reg_to_deregist_submodel(begin);
+
+		e.add_pre_object_list_relationship(pre_list);
+		e.add_post_object_list_relationship(post_list);
+		return e;
 	}
 
 	/**
@@ -625,14 +631,16 @@ public class BpelParserModel
 				return null;
 			// test 3. element
 			tmp = tmp.get_first_post_element();
-			if (TimeTriggerTransition.class.isInstance(tmp)
-					&& ResourceTriggerTransition.class.isInstance(tmp)
-					&& MessageTriggerTransition.class.isInstance(tmp))
-				return null;
-			if ((tmp.count_post_objects() != 1)
+			// test auf seqence
+			AbstractElement endSeq = this.isSequence(tmp);
+			if(endSeq != null)
+			{
+				tmp = this.newSequence(tmp, endSeq);
+			}
+			else if ((tmp.count_post_objects() != 1)
 					|| (tmp.count_pre_objects() != 1))
 				return null;
-			// test endelement
+			// test endelement			
 			tmp = tmp.get_first_post_element();
 			if (firstrun)
 			{
@@ -708,7 +716,7 @@ public class BpelParserModel
 		AbstractElement end = null;
 		AbstractElement tmp = null;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
-		//tmp = list.next();
+		// tmp = list.next();
 		boolean firstrun = true;
 		while (list.hasNext())
 		{
