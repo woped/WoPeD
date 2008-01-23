@@ -42,12 +42,16 @@ import org.woped.translations.Messages;
  * Created on 16.01.2008
  */
 
+@SuppressWarnings("serial")
+
 public class BPELadditionalPanel extends JPanel{
 
 	TransitionPropertyEditor t_editor;
 	JDialog dialogVariable = null;
 	JDialog dialogPartner = null;
 	JPanel dialogButtons = null;
+
+	JDialog errorPopup = null;
 
 	JTextField partnerLinkNameTextField = null;
 	JTextField wsdlFileTextField = null;
@@ -82,24 +86,7 @@ public class BPELadditionalPanel extends JPanel{
 
 	protected void showNewPartnerLinkDialog(){
 		wsdl = new Wsdl();
-/*		try {
-			wsdlFileRepresentation = wsdl.readDataFromWSDL("http://www.esther-landes.de/wsdlFiles/example.wsdl");
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			partnerLinkTypeComboBox.removeAllItems();
-			partnerRoleComboBox.removeAllItems();
-			myRoleComboBox.removeAllItems();
-			// TODO Auto-generated catch block
-			// e.printStackTrace();
-		} catch (XMLStreamException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+//		tryToGetDataFromWsdl();
 
 		dialogPartner = new JDialog(t_editor, true);
 		dialogPartner.setVisible(false);
@@ -313,25 +300,7 @@ public class BPELadditionalPanel extends JPanel{
 				// User has entered the path to a wsdl file and has pressed "Enter"
 				public void keyReleased(KeyEvent e) {
 					if (e.getKeyCode() == KeyEvent.VK_ENTER){
-						try {
-							wsdlFileRepresentation = wsdl.readDataFromWSDL(wsdlFileTextField.getText());
-							fillAllComboBoxesWithData();
-						} catch (MalformedURLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (FileNotFoundException e1) {
-							partnerLinkTypeComboBox.removeAllItems();
-							partnerRoleComboBox.removeAllItems();
-							myRoleComboBox.removeAllItems();
-							// TODO Auto-generated catch block
-							//e1.printStackTrace();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (XMLStreamException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						tryToGetDataFromWsdl();
 					}
 				}
 
@@ -368,25 +337,8 @@ public class BPELadditionalPanel extends JPanel{
 					chooser.setAcceptAllFileFilterUsed(false);
 					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 						wsdlFileTextField.setText(""+chooser.getSelectedFile());
-						try {
-							wsdlFileRepresentation = wsdl.readDataFromWSDL(wsdlFileTextField.getText());
-							fillAllComboBoxesWithData();
-						} catch (MalformedURLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (FileNotFoundException e1) {
-							partnerLinkTypeComboBox.removeAllItems();
-							partnerRoleComboBox.removeAllItems();
-							myRoleComboBox.removeAllItems();
-							// TODO Auto-generated catch block
-							//e1.printStackTrace();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (XMLStreamException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						// TODO KEY LISTENER - Kommentar löschen
+						tryToGetDataFromWsdl();
 					}
 				}
 			});
@@ -578,6 +530,106 @@ public class BPELadditionalPanel extends JPanel{
 		return myRoleComboBox.getSelectedItem().toString();
 	}
 
+
+
+	public void tryToGetDataFromWsdl(){
+
+
+		if (wsdlFileTextField.getText().length() == 0){
+			partnerLinkTypeComboBox.removeAllItems();
+			partnerRoleComboBox.removeAllItems();
+			myRoleComboBox.removeAllItems();
+		}
+		else if (wsdlFileTextField.getText().length() < 10){
+			partnerLinkTypeComboBox.removeAllItems();
+			partnerRoleComboBox.removeAllItems();
+			myRoleComboBox.removeAllItems();
+
+			showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+			wsdlFileTextField.setText("");
+		}
+		else{
+			try {
+				wsdlFileRepresentation = wsdl.readDataFromWSDL(wsdlFileTextField.getText());
+				fillAllComboBoxesWithData();
+			} catch (MalformedURLException e) {
+				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+
+				partnerLinkTypeComboBox.removeAllItems();
+				partnerRoleComboBox.removeAllItems();
+				myRoleComboBox.removeAllItems();
+
+				wsdlFileTextField.setText("");
+
+			} catch (FileNotFoundException e) {
+				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+
+				partnerLinkTypeComboBox.removeAllItems();
+				partnerRoleComboBox.removeAllItems();
+				myRoleComboBox.removeAllItems();
+
+				wsdlFileTextField.setText("");
+
+			} catch (IOException e) {
+				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+
+				partnerLinkTypeComboBox.removeAllItems();
+				partnerRoleComboBox.removeAllItems();
+				myRoleComboBox.removeAllItems();
+
+				wsdlFileTextField.setText("");
+
+			} catch (XMLStreamException e) {
+				showErrorPopup(Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFile"));
+
+				partnerLinkTypeComboBox.removeAllItems();
+				partnerRoleComboBox.removeAllItems();
+				myRoleComboBox.removeAllItems();
+
+				wsdlFileTextField.setText("");
+			}
+		}
+
+	}
+
+	private void showErrorPopup(String message){
+		errorPopup = new JDialog(dialogPartner, true);
+		errorPopup.setVisible(false);
+		errorPopup.setTitle(Messages.getString("Transition.Properties.BPEL.InvalidFilePath"));
+		errorPopup.setSize(300,140);
+		errorPopup.setLocation(dialogPartner.getLocation().x+90, dialogPartner.getLocation().y+50 );
+		errorPopup.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+
+		c.fill = GridBagConstraints.CENTER;
+		c.weightx = 1;
+		c.weighty = 1;
+
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		c.insets = new Insets(10, 10, 0, 10);
+		errorPopup.add(new JLabel(message), c);
+
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.insets = new Insets(0, 5, 0, 0);
+		c.fill = GridBagConstraints.CENTER;
+
+		JButton okButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
+		okButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e){
+				// TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
+				errorPopup.dispose();
+			}
+
+		});
+
+		errorPopup.add(okButton, c);
+		errorPopup.setVisible(true);
+	}
 
 
 }
