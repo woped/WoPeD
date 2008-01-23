@@ -31,6 +31,7 @@ import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.QNames;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLink;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
@@ -126,9 +127,19 @@ public class ModelElementContainer implements Serializable
     	return a;
     }
     
-    public void addPartnerLink()
+    public void addPartnerLink(String name)
     {
-    	//zu erledigen
+    	/*public void addVariable(String name, String messageType)
+        {
+        	TVariable var = this.variablesList.addNewVariable();
+        	var.setName(name);
+        	QNames n = org.oasisOpen.docs.wsbpel.x20.process.executable.QNames.Factory.newInstance();
+        	//noch zu klären
+        	var.setMessageType(null);
+        }*/
+    	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
+    	pl.setName(name);
+    	//pl.setPartnerLinkType(QName);
     }
     
     public void removePartnerLink()
