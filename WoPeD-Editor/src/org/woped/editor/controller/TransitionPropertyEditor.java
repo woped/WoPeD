@@ -1623,8 +1623,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 			bpelPanel.remove(waitPanel);
 		}
 
-		Assign iAssign = new Assign();
-		iAssign.setInformationToPanel(assignPanel);
+//		Assign iAssign = new Assign();
+//		iAssign.setInformationToPanel(assignPanel);
 
 		bpelPanel.add(assignPanel, c2);
 		repaint();

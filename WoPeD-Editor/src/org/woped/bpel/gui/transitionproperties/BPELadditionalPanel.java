@@ -42,7 +42,7 @@ import org.woped.translations.Messages;
  * Created on 16.01.2008
  */
 
-public abstract class BPELadditionalPanel extends JPanel{
+public class BPELadditionalPanel extends JPanel{
 
 	TransitionPropertyEditor t_editor;
 	JDialog dialogVariable = null;
@@ -55,8 +55,10 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JComboBox partnerLinkTypeComboBox = null;
 	JComboBox partnerRoleComboBox = null;
 	JComboBox myRoleComboBox = null;
-	JButton okButton = null;
-	JButton cancelButton = null;
+	JButton okPartnerButton = null;
+	JButton cancelPartnerButton = null;
+	JButton okVariableButton = null;
+	JButton cancelVariableButton = null;
 
 
 	static final String NEW = Messages.getString("Transition.Properties.BPEL.Buttons.New");
@@ -185,7 +187,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
-		dialogPartner.add(addDialogButtons(), c);
+		dialogPartner.add(addPartnerDialogButtons(), c);
 
 		dialogPartner.setVisible(true);
 	}
@@ -236,7 +238,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(addDialogButtons(), c);
+		dialogVariable.add(addVariableDialogButtons(), c);
 
 		dialogVariable.setVisible(true);
 	}
@@ -244,7 +246,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 
 	//	************** display buttons in dialog boxes *****************
 
-	public JPanel addDialogButtons(){
+	public JPanel addPartnerDialogButtons(){
 		if (dialogButtons == null){
 			dialogButtons = new JPanel();
 
@@ -258,18 +260,41 @@ public abstract class BPELadditionalPanel extends JPanel{
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
-			dialogButtons.add(getOKButton(), c);
+			dialogButtons.add(getPartnerOKButton(), c);
 
 			c.gridx = 1;
 			c.gridy = 0;
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
-			dialogButtons.add(getCancelButton(), c);
+			dialogButtons.add(getPartnerCancelButton(), c);
 		}
 		return dialogButtons;
 	}
 
+	public JPanel addVariableDialogButtons(){
+		if (dialogButtons == null){
+			dialogButtons = new JPanel();
 
+			GridBagConstraints c = new GridBagConstraints();
+			c.fill = GridBagConstraints.NONE;
+			c.anchor = GridBagConstraints.WEST;
+			c.weightx = 1;
+			c.weighty = 1;
+
+			c.gridx = 0;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			c.insets = new Insets(0, 5, 0, 0);
+			dialogButtons.add(getVariableOKButton(), c);
+
+			c.gridx = 1;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			c.insets = new Insets(0, 5, 0, 0);
+			dialogButtons.add(getVariableCancelButton(), c);
+		}
+		return dialogButtons;
+	}
 
 
 	//	************** reading WSDL data *****************
@@ -421,32 +446,50 @@ public abstract class BPELadditionalPanel extends JPanel{
 	}
 
 
-	private JButton getOKButton(){
-		if (okButton == null) {
-			okButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
-			okButton.addActionListener(new ActionListener(){
+	private JButton getPartnerOKButton(){
+		if (okPartnerButton == null) {
+			okPartnerButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
+			okPartnerButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					// TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
+//					t_editor.
 					dialogPartner.dispose();
 				}
 			});
 		}
-		return okButton;
+		return okPartnerButton;
 	}
 
-	private JButton getCancelButton(){
-		if (cancelButton == null) {
-			cancelButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
-			cancelButton.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-					dialogPartner.dispose();
-				}
+	private JButton getPartnerCancelButton(){
+		cancelPartnerButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
+		cancelPartnerButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				dialogPartner.dispose();
+			}
+		});
+		return cancelPartnerButton;
+	}
+
+	private JButton getVariableOKButton(){
+		okVariableButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
+		okVariableButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				// TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
+				dialogVariable.dispose();
+			}
 			});
-		}
-		return cancelButton;
+		return okVariableButton;
 	}
 
-
+	private JButton getVariableCancelButton(){
+		cancelVariableButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
+		cancelVariableButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				dialogVariable.dispose();
+			}
+		});
+		return cancelVariableButton;
+	}
 
 
 	//	***************** methods to fill comboBoxes with data from the wsdl file **************************

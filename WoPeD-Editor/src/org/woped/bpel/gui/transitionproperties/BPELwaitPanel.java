@@ -448,6 +448,14 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 	
 	// ***** Deadline *****
 	
+	public String getDeadline(){
+		return "";
+	}
+	
+	public String getDuration(){
+		return "";
+	}
+	
 	public String getDeadLineDay(){
 		return ""+calendar.getDate().getDay();
 	}
@@ -518,15 +526,6 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 		return durationTextFieldSecond.getText();
 	}
 	
-	public String getDeadline()
-	{
-		return "";
-	}
-	
-	public String getDuration()
-	{
-		return "";
-	}
 	
 	//	***************** content setter methods  **************************
 

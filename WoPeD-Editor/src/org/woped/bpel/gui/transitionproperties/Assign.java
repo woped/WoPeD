@@ -23,13 +23,15 @@ public class Assign extends BaseActivity
 		assign.setName(""+bip.transition.getNameValue());
 		TCopy copy = assign.addNewCopy();
 		TFrom from = copy.addNewFrom();
+		//from.setVariable(bip.getFromVariable());
+
 		from.setVariable(bip.getFromVariable());
 		TTo to = copy.addNewTo();
 		to.setVariable(bip.getToVariable());
 		this.setActivity(assign);
 	}
 	
-	public void setInformation(BPELassignPanel bip)
+	public void setInformationToPanel(BPELassignPanel bip)
 	{
 		TAssign assign = (TAssign) this.getActivity();
 		TCopy copy = assign.getCopyArray(0);
