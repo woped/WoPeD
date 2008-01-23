@@ -1451,6 +1451,28 @@ public class TransitionPropertyEditor extends JDialog implements
 			c2.insets = new Insets(0, 0, 0, 0);
 			bpelPanel.add(getBPELActivityChoosePanel(), c2);
 
+			c2.gridx = 0;
+			c2.gridy = 1;
+			c2.insets = new Insets(0, 0, 0, 0);
+			c2.anchor = GridBagConstraints.NORTH;
+			c2.fill = GridBagConstraints.HORIZONTAL;
+			
+			if (Assign.class.isInstance(this.transition.getBpelData())) {
+//				activityChooseComboBox.setVisible(false);
+				activityChooseComboBox.setSelectedIndex(1);
+//				showAssignPanel();
+//				activityChooseComboBox.setVisible(true);
+			} else if (Invoke.class.isInstance(this.transition.getBpelData())) {
+				activityChooseComboBox.setSelectedIndex(2);
+			} else if (Receive.class.isInstance(this.transition.getBpelData())) {
+				activityChooseComboBox.setSelectedIndex(3);
+			} else if (Reply.class.isInstance(this.transition.getBpelData())) {
+				activityChooseComboBox.setSelectedIndex(4);
+			} else if (Receive.class.isInstance(this.transition.getBpelData())) {
+				activityChooseComboBox.setSelectedIndex(5);
+			} else {
+				activityChooseComboBox.setSelectedIndex(0);
+			}
 		}
 
 		return bpelPanel;
@@ -1485,6 +1507,9 @@ public class TransitionPropertyEditor extends JDialog implements
 			c.gridwidth = 2;
 			c.insets = new Insets(0, 10, 10, 10);
 			activityChoosePanel.add(getActivityComboBox(), c);
+			
+			
+			
 		}
 		return activityChoosePanel;
 	}
@@ -1515,20 +1540,6 @@ public class TransitionPropertyEditor extends JDialog implements
 					Messages.getString("Transition.Properties.BPEL.NoActivity"),
 					"assign", "invoke", "receive", "reply", "wait" };
 			activityChooseComboBox = new JComboBox(namen);
-
-			if (Assign.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(1);
-			} else if (Invoke.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(2);
-			} else if (Receive.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(3);
-			} else if (Reply.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(4);
-			} else if (Receive.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(5);
-			} else {
-				activityChooseComboBox.setSelectedIndex(0);
-			}
 
 			activityChooseComboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
@@ -1620,7 +1631,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			bpelPanel.remove(waitPanel);
 		}
 
-		if (this.transition.getBpelData() != null) {
+		if (this.transition.getBpelData() != null && Assign.class.isInstance(this.transition.getBpelData())) {
 			Assign iAssign = (Assign) this.transition.getBpelData();
 			iAssign.setInformationToPanel(assignPanel);
 		}
@@ -1651,8 +1662,9 @@ public class TransitionPropertyEditor extends JDialog implements
 		if (waitPanel != null) {
 			bpelPanel.remove(waitPanel);
 		}
-		
-		if (this.transition.getBpelData() != null) {
+
+		if (this.transition.getBpelData() != null
+				&& Invoke.class.isInstance(this.transition.getBpelData())) {
 			Invoke iInvoke = (Invoke) this.transition.getBpelData();
 			iInvoke.setInformationToPanel(invokePanel);
 		}
@@ -1682,8 +1694,8 @@ public class TransitionPropertyEditor extends JDialog implements
 		if (waitPanel != null) {
 			bpelPanel.remove(waitPanel);
 		}
-		
-		if (this.transition.getBpelData() != null) {
+
+		if (this.transition.getBpelData() != null && Receive.class.isInstance(this.transition.getBpelData())) {
 			Receive iReceive = (Receive) this.transition.getBpelData();
 			iReceive.setInformationToPanel(receivePanel);
 		}
@@ -1713,8 +1725,8 @@ public class TransitionPropertyEditor extends JDialog implements
 		if (waitPanel != null) {
 			bpelPanel.remove(waitPanel);
 		}
-		
-		if (this.transition.getBpelData() != null) {
+
+		if (this.transition.getBpelData() != null && Reply.class.isInstance(this.transition.getBpelData())) {
 			Reply iReply = (Reply) this.transition.getBpelData();
 			iReply.setInformationToPanel(replyPanel);
 		}
@@ -1745,8 +1757,8 @@ public class TransitionPropertyEditor extends JDialog implements
 		if (replyPanel != null) {
 			bpelPanel.remove(replyPanel);
 		}
-		
-		if (this.transition.getBpelData() != null) {
+
+		if (this.transition.getBpelData() != null && Wait.class.isInstance(this.transition.getBpelData())) {
 			Wait iWait = (Wait) this.transition.getBpelData();
 			iWait.setInformationToPanel(waitPanel);
 		}
