@@ -145,13 +145,13 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	
 	public String getFromVariable(){
 		if (fromVariableComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return fromVariableComboBox.getSelectedItem().toString();
 	}
 	
 	public String getToVariable(){
 		if (toVariableComboBox.getSelectedItem() == null)
-			return null;
+			return "";
 		return toVariableComboBox.getSelectedItem().toString();
 	}
 	
