@@ -53,6 +53,8 @@ public class BPELadditionalPanel extends JPanel {
 
 	JDialog errorPopup = null;
 
+	JComboBox variableTypesComboBox = null;
+	
 	JTextField partnerLinkNameTextField = null;
 	JTextField wsdlFileTextField = null;
 	JButton searchLocalWSDLButton = null;
@@ -222,7 +224,7 @@ public class BPELadditionalPanel extends JPanel {
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 5);
-		dialog.add(new JComboBox(), c);
+		dialog.add(getVariableTypesComboBox(), c);
 
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 1;
@@ -286,6 +288,17 @@ public class BPELadditionalPanel extends JPanel {
 		return dialogButtons;
 	}
 
+	
+	
+	
+	private JComboBox getVariableTypesComboBox() {
+		if (variableTypesComboBox == null) {
+			variableTypesComboBox = new JComboBox();
+		}
+		return variableTypesComboBox;
+	}
+	
+	
 	// ************** reading WSDL data *****************
 
 	private JTextField getPartnerLinkNameTextField() {
