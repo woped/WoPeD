@@ -8,9 +8,18 @@ import java.util.Stack;
 
 import org.apache.xmlbeans.XmlCursor;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TFlow;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TIf;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPick;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.woped.bpel.BPEL;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
@@ -636,8 +645,12 @@ public class BpelParserModel
 			
 			// test endelement			
 			tmp = tmp.get_first_post_element();
+			if(!Place.class.isInstance(tmp)) 
+				return null;
+			
 			if (firstrun)
 			{
+				System.out.println("Habe ein ende");
 				end = tmp;
 				firstrun = false;
 			} else if (!end.equals(tmp))
