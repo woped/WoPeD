@@ -217,8 +217,7 @@ public class ModelElementContainer implements Serializable
     
     public String[] getTypes()
     {
-    	String[] list = {"String", "normalizedString", "token", "byte", "unsignedByte", "base64Binary", "hexBinary", "integer"};
-    	
+    	String[] list = {"String", "normalizedString", "token", "byte", "unsignedByte", "base64Binary", "hexBinary", "integer", "positiveInteger", "negativeInteger", "nonNegativeInteger", "nonPositiveInteger", "int", "unsignedInt", "long", "unsignedLong", "short", "unsignedShort", "decimal", "float", "double", "boolean", "time", "dateTime", "duration", "date", "gMonth", "gYear", "gYearMonth", "gDay", "gMonthDay", "Name", "QName", "NCName", "anyURI", "language"};
     	return list;
     }
     
