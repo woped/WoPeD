@@ -52,14 +52,6 @@ public class Wait extends BaseActivity
 				e.printStackTrace();
 			}
 		}
-		/*if(bwp.getFor() != null)
-		{
-			wait.setFor(bwp.getFor());
-		}
-		if(bwp.getUntil() != null)
-		{
-			wait.setUntil(bwp.getUntil());
-		}*/
 	}
 	
 	public void setInformation(BPELwaitPanel bwp)

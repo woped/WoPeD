@@ -518,6 +518,16 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 		return durationTextFieldSecond.getText();
 	}
 	
+	public String getDeadline()
+	{
+		return "";
+	}
+	
+	public String getDuration()
+	{
+		return "";
+	}
+	
 	//	***************** content setter methods  **************************
 
 // nach abklären mit Alex an getter anpassen (Esther)	
