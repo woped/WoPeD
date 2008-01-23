@@ -31,6 +31,7 @@ import java.util.Map;
 
 import org.apache.xmlbeans.XmlOptions;
 import org.jgraph.graph.DefaultPort;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.QNames;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.woped.core.Constants;
@@ -129,6 +130,13 @@ public class ModelElementContainer implements Serializable
     {
     	TVariable var = this.variablesList.addNewVariable();
     	var.set(arg);
+    }
+    
+    public void addVariable(String name, String messageType)
+    {
+    	TVariable var = this.variablesList.addNewVariable();
+    	var.setName(name);
+    	//var.setMessageType(arg0);
     }
     
     public void removeVariable(TVariable arg)
