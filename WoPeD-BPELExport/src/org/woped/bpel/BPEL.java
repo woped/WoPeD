@@ -103,8 +103,8 @@ public class BPEL
 		System.out.println(m.count_elements());
 		BPEL.genBpelProsses();
 		BPEL.Process.set(m.generate_bpel());
+		setGlobals(BPEL.Process, pnp);
 		System.out.println(BPEL.bpelDoc.toString());
-
 		// File Output
 		new File(Path);
 		XmlOptions opt = new XmlOptions();
@@ -140,7 +140,7 @@ public class BPEL
 		System.out.println(m.count_elements());
 		BPEL.genBpelProsses();
 		BPEL.Process.set(m.generate_bpel());
-
+		setGlobals(BPEL.Process, pnp);
 		return BPEL.bpelDoc.toString();
 	}
 
@@ -161,46 +161,19 @@ public class BPEL
 		return BPEL.Process;
 	}
 
-	// this method isn't used anymore. Content was copied to method 'saveFile'
-	/**
-	 * Testing method
-	 */
-	private void test(PetriNetModelProcessor pnp)
-	{
-		BpelParserModel m = new BpelParserModel();
-		System.out.println(m.createModel(pnp.getElementContainer()));
-		System.out.println(m.count_elements());
-		System.out.println("********last element*************\n "
-				+ m.generate_bpel());
-		System.out.println(m.count_elements());
-		// TSequence s = BPEL.genBpelProsses().addNewSequence();
-		// s.set(m.generate_bpel());
-		BPEL.genBpelProsses();
-		BPEL.Process.set(m.generate_bpel());
-		System.out.println(BPEL.bpelDoc.toString());
+	public void setGlobals(TProcess iProcess, PetriNetModelProcessor pnp){
+		TVariables itempVars = (TVariables)pnp.getElementContainer().getTVariablesList();
+		
+		if (itempVars.sizeOfVariableArray()>0){
+			TVariables iVars = iProcess.addNewVariables();
+			iVars.set(itempVars);
+		}
 		/*
-		 * System.out.println("begin test"); Map<String, ArcModel> map =
-		 * pnp.getElementContainer().getArcMap();
-		 * System.out.println(map.size()); Collection<ArcModel> test =
-		 * map.values(); Iterator<ArcModel> list = test.iterator();
-		 * while(list.hasNext()) { ArcModel arc = list.next();
-		 * System.out.print("Source: " + arc.getSourceId()+ " ");
-		 * 
-		 * AbstractElementModel tmp =
-		 * pnp.getElementContainer().getElementById(arc.getSourceId());
-		 * //System.out.print("Class: " + tmp.getClass().getName() + " ");
-		 * if(PlaceModel.class.isInstance(tmp) )System.out.println("!Place!");
-		 * else
-		 * if(TransitionModel.class.isInstance(tmp))System.out.println("!Transition!");
-		 * System.out.print("Target: " + arc.getTargetId()); tmp =
-		 * pnp.getElementContainer().getElementById(arc.getTargetId());
-		 * //System.out.print("Class: " + tmp.getClass().getName() + " ");
-		 * if(PlaceModel.class.isInstance(tmp) )System.out.println("!Place!");
-		 * else
-		 * if(TransitionModel.class.isInstance(tmp))System.out.println("!Transition!");
-		 *  } System.out.println("end test");
-		 */
-
+		TPartnerLinks itempPLs =(TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList();
+		if (itempPLs.sizeOfPartnerLinkArray()>0){
+			TPartnerLinks iPLs = iProcess.addNewPartnerLinks();
+			iPLs.set(itempPLs);
+		}*/
+		
 	}
-
 }
