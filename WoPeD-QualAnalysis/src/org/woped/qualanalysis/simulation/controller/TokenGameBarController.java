@@ -291,7 +291,10 @@ public class TokenGameBarController implements Runnable {
 				helpTransition = (TransitionModel)followingActivatedTransitions.get(i);
      			acoChoiceItems.addElement(helpTransition.getNameValue());
 			}
-     		ExpertView.disableForwardButtons();
+			if(!autoPlayBack)
+			{
+				ExpertView.disableForwardButtons();
+			}
 		}
 	  }
 	}
