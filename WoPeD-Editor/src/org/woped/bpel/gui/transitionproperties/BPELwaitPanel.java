@@ -448,12 +448,14 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 	
 	// ***** Deadline *****
 	
-	public String getDeadline(){
-		return "";
+	public String getDeadline()
+	{
+		return "'" + getDeadLineYear() + "-" + getDeadLineMonth() + "-" + getDeadLineDay() + "T" + getDeadLineHour() + ":" + getDeadLineMinute() + ":" + getDeadLineSecond() + "+1:00'";
 	}
 	
-	public String getDuration(){
-		return "";
+	public String getDuration()
+	{
+		return "'P" + getDurationYear() + "Y" + getDurationMonth() + "M" + getDurationDay() + "DT" + getDurationHour() + "H" + getDurationMinute() + "M" + getDurationSecond() + "S'";
 	}
 	
 	public String getDeadLineDay(){
