@@ -431,7 +431,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
 									.getNumWellStructurednessViolations();
 							int freeChoice = sa.getNumFreeChoiceViolations();
 							int sound = wellStruct + freeChoice;
-							System.out.print("Sound:" + sound + "|");
 							if (sound == 0) {
 								succeed = BPEL.getBPELMainClass().saveFile(
 										editor.getFilePath(), editor);
