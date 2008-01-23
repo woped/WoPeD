@@ -123,6 +123,7 @@ public class ModelElementContainer implements Serializable
     	return this.partnerLinkList;
     }
     
+    /*Returns a list of TVariables. This method is used by the bpel-generator to produce BPEL-Code.*/
     public TVariables getTVariablesList()
     {
     	return this.variablesList;
@@ -133,6 +134,8 @@ public class ModelElementContainer implements Serializable
     	return TPartnerLinks.Factory.newInstance();
     }
     
+    /*Returns a list of PartnerLinkTypes. This method is used by the BPEL-generator to pruduce the global
+     * datamodel of partnerlinks*/
     public String[] getPartnerLinkList()
     {
     	TPartnerLink[] tpl = this.partnerLinkList.getPartnerLinkArray();
@@ -144,6 +147,7 @@ public class ModelElementContainer implements Serializable
     	return partnerLinklist;
     }
     
+    /*Insert a partnerlink to a consisting list of partnerlinks*/
     public void addPartnerLink(String name, String namespace, String partnerLinkType, String partnerRole)
     {
     	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
@@ -152,6 +156,8 @@ public class ModelElementContainer implements Serializable
     	pl.setPartnerRole(partnerRole);
     }
     
+    /*Insert a partnerlink to a consisting list of partnerlinks
+     * Attention: Parameters: name, namespace, partnerLinkType, partnerRole, myRole*/
     public void addPartnerLink(String name, String namespace, String partnerLinkType, String partnerRole, String myRole)
     {
     	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
@@ -161,6 +167,8 @@ public class ModelElementContainer implements Serializable
     	pl.setMyRole(myRole);
     }
     
+    /*Insert a partnerlink to a consisting list of partnerlinks
+     * Attention: Parameters: name, namespace, partnerLinkType, myRole (without partnerRole*/
     public void addPartnerLinkWithoutPartnerRole(String name, String namespace, String partnerLinkType, String myRole)
     {
     	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
@@ -184,12 +192,14 @@ public class ModelElementContainer implements Serializable
     	return this.variablesList;
     }*/
     
+    /*Inserts a variable to a consisting list of TVariables*/
     public void addVariable(TVariable arg)
     {
     	TVariable var = this.variablesList.addNewVariable();
     	var.set(arg);
     }
     
+    /*Inserts a variable to a consisting list of TVariables*/
     public void addVariable(String name, String type)
     {
     	TVariable var = this.variablesList.addNewVariable();
@@ -197,6 +207,8 @@ public class ModelElementContainer implements Serializable
     	var.setType(new QName("xsd", type));
     }
     
+    /*Inserts a variable from WSDL-File to a consisting list of TVariables
+     * method is used to create variables in WSDL-tab*/
     public void addWSDLVariable(String name, String namespace, String type)
     {
     	TVariable var = this.variablesList.addNewVariable();
@@ -204,6 +216,8 @@ public class ModelElementContainer implements Serializable
     	var.setMessageType(new QName(namespace, type));
     }    
     
+    /*Returns a array (type=String) of created variables
+     * method is used to create drop-down list in GUI*/
     public String[] getVariableList()
     {
     	TVariable[] tva = this.variablesList.getVariableArray();
@@ -215,6 +229,8 @@ public class ModelElementContainer implements Serializable
     	return namelist;
     }
     
+    /*Returns a array (type=String) of possible basictypes for BPEL-variables
+     * method is used to create drop-down list in GUI*/
     public String[] getTypes()
     {
     	String[] list = {"String", "normalizedString", "token", "byte", "unsignedByte", "base64Binary", "hexBinary", "integer", "positiveInteger", "negativeInteger", "nonNegativeInteger", "nonPositiveInteger", "int", "unsignedInt", "long", "unsignedLong", "short", "unsignedShort", "decimal", "float", "double", "boolean", "time", "dateTime", "duration", "date", "gMonth", "gYear", "gYearMonth", "gDay", "gMonthDay", "Name", "QName", "NCName", "anyURI", "language"};
