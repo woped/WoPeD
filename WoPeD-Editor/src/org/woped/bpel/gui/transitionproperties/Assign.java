@@ -23,9 +23,9 @@ public class Assign extends BaseActivity
 		assign.setName(""+bip.transition.getNameValue());
 		TCopy copy = assign.addNewCopy();
 		TFrom from = copy.addNewFrom();
-		//from.setVariable(bip.getFromVariable());
+		from.setVariable(bip.getFromVariable());
 		TTo to = copy.addNewTo();
-		//to.setVariable(bip.getToVariable());
+		to.setVariable(bip.getToVariable());
 		this.setActivity(assign);
 	}
 	
