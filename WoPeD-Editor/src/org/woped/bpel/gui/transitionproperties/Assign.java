@@ -35,11 +35,11 @@ public class Assign extends BaseActivity
 		TCopy copy = assign.getCopyArray(0);
 		TFrom from = copy.getFrom();
 		String sFromVariable = from.getVariable();
-		//bip.setFromVariable(sFromVariable);
+		bip.setFromVariable(sFromVariable);
 		
 		TTo to = copy.getTo();
 		String sToVariable = to.getVariable();
-		//bip.setToVariable(sToVariable);	
+		bip.setToVariable(sToVariable);	
 	}
 
 }
