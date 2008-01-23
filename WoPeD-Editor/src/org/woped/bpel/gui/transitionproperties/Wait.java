@@ -1,10 +1,14 @@
 package org.woped.bpel.gui.transitionproperties;
 
 import org.apache.xmlbeans.XmlException;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TDeadlineExpr;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TDurationExpr;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TFrom;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TTo;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 
 
@@ -22,7 +26,6 @@ public class Wait extends BaseActivity
 		TProcess p = BaseActivity.genBpelProsses();
 		TWait wait = p.addNewWait();
 		wait.setName(""+bwp.transition.getNameValue());
-		this.setActivity(wait);
 		
 		
 		String bool = bwp.getSelectedRadioButton();
@@ -52,12 +55,22 @@ public class Wait extends BaseActivity
 				e.printStackTrace();
 			}
 		}
+		this.setActivity(wait);
 	}
 	
 	public void setInformation(BPELwaitPanel bwp)
 	{
 		//Problem Unterscheidung zwischen For und Until
 		TWait wait = (TWait) this.getActivity();
+		
+		if(wait.getUntil() != null)
+		{
+			TDeadlineExpr tdee = wait.getUntil();
+		}
+		if(wait.getFor() != null)
+		{
+			TDurationExpr tdue = wait.getFor();
+		}
 		
 		/*if(wait.getFor() != null)
 		{
@@ -67,6 +80,18 @@ public class Wait extends BaseActivity
 		{
 			bwp.setUntil(wait.getUntil());
 		}*/
+		/*public void setInformation(BPELassignPanel bip)
+	{
+		TAssign assign = (TAssign) this.getActivity();
+		TCopy copy = assign.getCopyArray(0);
+		TFrom from = copy.getFrom();
+		String sFromVariable = from.getVariable();
+		bip.setFromVariable(sFromVariable);
+		
+		TTo to = copy.getTo();
+		String sToVariable = to.getVariable();
+		bip.setToVariable(sToVariable);	
+	}*/
 	}
 
 }
