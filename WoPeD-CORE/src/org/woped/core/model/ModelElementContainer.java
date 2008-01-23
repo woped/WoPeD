@@ -29,6 +29,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.namespace.QName;
+
 import org.apache.xmlbeans.XmlOptions;
 import org.jgraph.graph.DefaultPort;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.QNames;
@@ -121,10 +123,10 @@ public class ModelElementContainer implements Serializable
         return TVariables.Factory.newInstance();
     }
     
-    public TVariables getVariablesList()
+    /*public TVariables getVariablesList()
     {
     	return this.variablesList;
-    }
+    }*/
     
     public void addVariable(TVariable arg)
     {
@@ -136,7 +138,20 @@ public class ModelElementContainer implements Serializable
     {
     	TVariable var = this.variablesList.addNewVariable();
     	var.setName(name);
-    	//var.setMessageType(arg0);
+    	QNames n = org.oasisOpen.docs.wsbpel.x20.process.executable.QNames.Factory.newInstance();
+    	//noch zu klären
+    	var.setMessageType(null);
+    }
+    
+    public String[] getVariableList()
+    {
+    	TVariable[] tva = this.variablesList.getVariableArray();
+    	String[] namelist = new String[tva.length];
+    	for(int i=0;i<tva.length;i++)
+    	{
+    		namelist[i] = tva[i].getName();
+    	}
+    	return namelist;
     }
     
     public void removeVariable(TVariable arg)
