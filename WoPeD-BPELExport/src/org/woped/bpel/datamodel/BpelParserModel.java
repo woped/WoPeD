@@ -464,7 +464,10 @@ public class BpelParserModel
 		if (XORSplitTransition.class.isInstance(e)
 				|| XORJoinTransition.class.isInstance(e)
 				|| ANDSplitTransition.class.isInstance(e)
-				|| ANDJoinTransition.class.isInstance(e))
+				|| ANDJoinTransition.class.isInstance(e)
+				|| TimeTriggerTransition.class.isInstance(e)
+				|| MessageTriggerTransition.class.isInstance(e)
+				|| ResourceTriggerTransition.class.isInstance(e))
 			return null;
 		if (e.count_post_objects() != 1)
 			return null;
@@ -481,7 +484,10 @@ public class BpelParserModel
 		if (XORSplitTransition.class.isInstance(tmp)
 				|| XORJoinTransition.class.isInstance(tmp)
 				|| ANDSplitTransition.class.isInstance(tmp)
-				|| ANDJoinTransition.class.isInstance(tmp))
+				|| ANDJoinTransition.class.isInstance(tmp)
+				|| TimeTriggerTransition.class.isInstance(e)
+				|| MessageTriggerTransition.class.isInstance(e)
+				|| ResourceTriggerTransition.class.isInstance(e))
 			return null;
 		return tmp;
 	}
@@ -596,32 +602,24 @@ public class BpelParserModel
 			return null;
 		if (!Place.class.isInstance(e))
 			return null;
-		if (e.count_post_objects() < 2)
-			return null;
 		AbstractElement end = null;
 		AbstractElement tmp;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
 		boolean firstrun = true;
-		boolean timetrigger = false;
-		boolean hastrigger = false;
 		while (list.hasNext())
 		{
 			tmp = list.next();
 
 			// test 1, element
-			if (TimeTriggerTransition.class.isInstance(tmp)
-					|| ResourceTriggerTransition.class.isInstance(tmp)
-					|| MessageTriggerTransition.class.isInstance(tmp))
-				hastrigger = true;
-			if (TimeTriggerTransition.class.isInstance(tmp) && timetrigger)
-				return null;
-			else if (TimeTriggerTransition.class.isInstance(tmp))
-				timetrigger = true;
-
+			if (!TimeTriggerTransition.class.isInstance(tmp)
+					|| !ResourceTriggerTransition.class.isInstance(tmp)
+					|| !MessageTriggerTransition.class.isInstance(tmp))
+				return null;			
 			if (tmp.count_post_objects() != 1)
 				return null;
 			if (tmp.count_pre_objects() != 1)
 				return null;
+			
 			// test 2. element, it is a place
 			tmp = tmp.get_first_post_element();
 			if (!Place.class.isInstance(tmp))
@@ -629,17 +627,13 @@ public class BpelParserModel
 			if ((tmp.count_post_objects() != 1)
 					|| (tmp.count_pre_objects() != 1))
 				return null;
+			
 			// test 3. element
 			tmp = tmp.get_first_post_element();
-			// test auf seqence
-			AbstractElement endSeq = this.isSequence(tmp);
-			if(endSeq != null)
-			{
-				tmp = this.newSequence(tmp, endSeq);
-			}
-			else if ((tmp.count_post_objects() != 1)
+			if ((tmp.count_post_objects() != 1)
 					|| (tmp.count_pre_objects() != 1))
 				return null;
+			
 			// test endelement			
 			tmp = tmp.get_first_post_element();
 			if (firstrun)
@@ -651,8 +645,6 @@ public class BpelParserModel
 		}
 
 		if (e.count_post_objects() != end.count_pre_objects())
-			return null;
-		if (!hastrigger)
 			return null;
 		return end;
 	}
@@ -669,9 +661,9 @@ public class BpelParserModel
 		{
 			AbstractElement begin = list.next();
 			AbstractElement end = null;
-			if ((end = this.isSimplePick(begin)) == null)
-				end = this.isPick(begin);
-			
+			/*if ((end = this.isSimplePick(begin)) == null)
+				end = this.isPick(begin);*/
+			end = this.isPick(begin);
 			if (end != null)
 			{
 				System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n"
