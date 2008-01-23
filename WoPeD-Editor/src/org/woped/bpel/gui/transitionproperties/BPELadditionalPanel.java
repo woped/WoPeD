@@ -214,7 +214,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 5);
 		if (this.VariableName == null)
-			this.VariableName = new JTextField();
+			this.VariableName = new JTextField("");
 		dialog.add(this.VariableName, c);
 
 		c.gridx = 0;
@@ -457,9 +457,10 @@ public abstract class BPELadditionalPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO speichern mithilfe von Alex' Klassen, die auf content
 				// getter methoden zugreifen
+				
 				t_editor.getEditor().getModelProcessor().getElementContainer()
 						.addVariable(
-								VariableName.getName(),
+								VariableName.getText(),
 								getVariableTypesComboBox().getSelectedItem()
 										.toString());
 				dialog.dispose();
