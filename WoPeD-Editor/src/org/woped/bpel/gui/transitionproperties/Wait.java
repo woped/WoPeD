@@ -1,5 +1,6 @@
 package org.woped.bpel.gui.transitionproperties;
 
+import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlException;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
@@ -25,35 +26,16 @@ public class Wait extends BaseActivity
 		TProcess p = BaseActivity.genBpelProsses();
 		TWait wait = p.addNewWait();
 		wait.setName(""+bwp.transition.getNameValue());
-		
-		
 		String bool = bwp.getSelectedRadioButton();
 		if(bool.equalsIgnoreCase("Deadline"))
 		{
-			try 
-			{
-				//until
-				TDeadlineExpr tdee = TDeadlineExpr.Factory.parse(bwp.getDeadline());
-				
-				wait.setUntil(tdee);
-			} 
-			catch (XmlException e) 
-			{
-				e.printStackTrace();
-			}
+			XmlCursor curs = wait.addNewUntil().newCursor();
+			curs.setTextValue(bwp.getDeadline());
 		}
 		else
 		{
-			try 
-			{
-				//for
-				TDurationExpr tdue = TDurationExpr.Factory.parse(bwp.getDuration());
-				wait.setFor(tdue);
-			} 
-			catch (XmlException e) 
-			{
-				e.printStackTrace();
-			}
+			XmlCursor curs = wait.addNewFor().newCursor();
+			curs.setTextValue(bwp.getDuration());
 		}
 		this.setActivity(wait);
 	}
