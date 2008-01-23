@@ -286,15 +286,16 @@ public class BPELadditionalPanel extends JPanel {
 			dialogButtons.add(getVariableCancelButton(), c);
 		}
 		return dialogButtons;
-	}
-
-	
-	
+	}	
 	
 	private JComboBox getVariableTypesComboBox() {
 		if (variableTypesComboBox == null) {
-			variableTypesComboBox = new JComboBox();
-		}
+			variableTypesComboBox = new JComboBox();	
+			String[] variables = t_editor.getEditor().getModelProcessor().getElementContainer().getTypes();
+			for(int i=0; i<variables.length; i++){
+				variableTypesComboBox.addItem(variables[i]);
+			}
+		}		
 		return variableTypesComboBox;
 	}
 	
