@@ -816,7 +816,7 @@ public class PNMLImport
     			}
     			currentTransitions.add(currTransition);
     		}
-    		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions);
+    		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions, null);
     		currSimulation.setFingerprint(simulations[k].getNetFingerprint());
     		// check if current fingerprint of the net equals the imported one
     		// if not display a warning

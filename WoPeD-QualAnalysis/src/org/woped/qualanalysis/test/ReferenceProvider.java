@@ -3,6 +3,7 @@ package org.woped.qualanalysis.test;
 import org.woped.core.controller.*;
 import org.woped.core.gui.*;
 import javax.swing.*;
+import org.woped.qualanalysis.simulation.controller.*;
 
 /**
  * PLEASE NOTE: THIS CLASS IS NOT FINAL, CURRENTLY AND MAY BE REMOVED, AGAIN.
@@ -22,6 +23,7 @@ public class ReferenceProvider {
  	private static AbstractApplicationMediator MediatorReference = null;
  	private static IUserInterface              UIReference       = null;
 	private static JDesktopPane                DesktopReference  = null;
+	private static TokenGameBarController      RemoteControl     = null;
 	
 	/**
 	 * Creates new ReferencePRovider Object to get or set the Refernce-Instance-Variables
@@ -88,4 +90,15 @@ public class ReferenceProvider {
 		return DesktopReference;
 		
 	}
+	
+	public void setRemoteControlReference(TokenGameBarController Control)
+	{
+		RemoteControl = Control;
+	}
+	
+	public TokenGameBarController getRemoteControlReference()
+	{
+		return RemoteControl;
+	}
+
 }

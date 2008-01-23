@@ -20,6 +20,7 @@ public class TokenGameBarController implements Runnable {
 	private PetriNetModelProcessor   PetriNet                      = null;
 	//Linked Lists 
 	private LinkedList               followingActivatedTransitions = null;
+	private LinkedList               ProcessEditors                = null;
 	
 	//Occurring Transitions
 	private TransitionModel          TransitionToOccur             = null;
@@ -47,7 +48,6 @@ public class TokenGameBarController implements Runnable {
 	private int						 delaytime					   = 1;
 	private boolean					 expertview					   = true;
 	
-	
 	//Integers
 	private int                      HistoryIndex                  = 0; 
     
@@ -57,7 +57,7 @@ public class TokenGameBarController implements Runnable {
 		this.tgController = tgController;
 		
 		acoChoiceItems = new DefaultListModel();
-		ahxHistoryContent = new DefaultListModel();
+		ahxHistoryContent = new DefaultListModel();		
 		
 		addControlElements();
 	}
@@ -144,6 +144,8 @@ public class TokenGameBarController implements Runnable {
 		  //If end of net is not reached yet or there is still something to occur
 		  if(followingActivatedTransitions.size() > 0)
 		  {
+			System.out.println("TransitionToOccur = "+TransitionToOccur.getId()+" Name "+TransitionToOccur.getNameValue());
+			
 		    tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 		  }
 	  } 
@@ -354,7 +356,7 @@ public class TokenGameBarController implements Runnable {
      */
     public void createSaveableHistory()
     {
-    	SaveableSimulation = new SimulationModel(PetriNet.getNewElementId(AbstractPetriNetModelElement.SIMULATION_TYPE), "Default", (Vector<TransitionModel>)HistoryVector.clone());
+    	SaveableSimulation = new SimulationModel(PetriNet.getNewElementId(AbstractPetriNetModelElement.SIMULATION_TYPE), "Default", (Vector<TransitionModel>)HistoryVector.clone(), PetriNet.getLogicalFingerprint());
     	newHistory = true;
     }
 	
@@ -849,6 +851,36 @@ public class TokenGameBarController implements Runnable {
 		if(followingActivatedTransitions != null)
 		{
 			followingActivatedTransitions.clear();
+		}
+	}
+	
+	public void changeTokenGameReference(TokenGameController newReference, boolean up)
+	{
+		if(up)
+		{
+			if((ProcessEditors != null) && (ProcessEditors.size() > 0))
+			{
+			  tgController.closeSubProcess();
+			  tgController = (TokenGameController)ProcessEditors.removeLast();
+			  cleanupTransition();
+			  tgController.TokenGameCheckNet();
+			}
+		}
+		else
+		{
+			if(ProcessEditors != null)
+			{
+				ProcessEditors.add(tgController);
+				TransitionToOccur = null;
+				cleanupTransition();
+			    tgController = newReference;
+			}
+			else
+			{
+				ProcessEditors = new LinkedList();
+				ProcessEditors.add(tgController);
+			    tgController = newReference;
+			}
 		}
 	}
 }

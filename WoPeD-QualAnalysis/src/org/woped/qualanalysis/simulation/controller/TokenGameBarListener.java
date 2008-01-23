@@ -176,7 +176,11 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			   RemoteControl.occurTransitionMulti(false);
 			 }
 			 break;
-		 case 11:
+		 case CLICK_STEP_UP:
+			 if (RemoteControl.tokengameRunning())
+			 {
+				RemoteControl.changeTokenGameReference(null, true);
+			 }
 			 break;
 		 case CLICK_STEP_DOWN:
 			 if (RemoteControl.tokengameRunning())

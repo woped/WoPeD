@@ -20,18 +20,6 @@ public class SimulationModel
 	/*
 	 * Constructor to hand over an Existing Vector from HistoryBox
 	 */
-	@Deprecated
-	public SimulationModel(String id, String name, Vector<TransitionModel>HistoryVector)
-	{
-		this.name = name;
-		this.id = id;
-		firedTransitions = HistoryVector;
-		fingerprint = "";
-	}
-	
-	/*
-	 * Constructor to hand over an Existing Vector from HistoryBox
-	 */
 	public SimulationModel(String id, String name, Vector<TransitionModel>HistoryVector, String fingerprint)
 	{
 		this.name = name;

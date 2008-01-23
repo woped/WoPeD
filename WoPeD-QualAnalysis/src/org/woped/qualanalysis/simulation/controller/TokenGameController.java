@@ -78,7 +78,7 @@ import org.woped.qualanalysis.test.*;
  */
 public class TokenGameController
 {
-
+	
     private PetriNetModelProcessor petrinet              = null;
     private AbstractGraph          graph                 = null;
     private Map<String, AbstractElementModel>                    allTransitions        = null;
@@ -89,7 +89,7 @@ public class TokenGameController
     private MouseHandler           tokenGameMouseHandler = null;
     private boolean                visualTokenGame       = false;
     private IEditor				   thisEditor 			 = null;
-    private ReferenceProvider      desktop               = null;
+    private ReferenceProvider      ParentControl         = null;
     private TokenGameBarController RemoteControl         = null; 
     private boolean                stepIntoSubProcess    = false;
     
@@ -116,7 +116,7 @@ public class TokenGameController
      */
     public TokenGameController(PetriNetModelProcessor petrinet)
     {
-        this.petrinet = petrinet;
+    	this.petrinet = petrinet;
         this.graph = null;
         this.thisEditor = null;
         setVisualTokenGame(false);
@@ -131,30 +131,40 @@ public class TokenGameController
 	 * No "checkNet()" this will be done later.
      */
     public void start()
-    {    	
-//        if (isVisualTokenGame())
-//        {
-//            enableVisualTokenGame();
-//            
-//        }
-        
-        //displays the TokenGame Remote-Control if it already exist, if not create
-    	if(RemoteControl != null)
-    	{
-    		RemoteControl.addControlElements();
-    	}
+    {  
+    	// if you are stepping into a subprocess right now
+    	if(thisEditor.isSubprocessEditor())
+        {
+    		enableVisualTokenGame();
+    		ParentControl = new ReferenceProvider();
+    		RemoteControl = ParentControl.getRemoteControlReference();
+    		RemoteControl.changeTokenGameReference(this, false);
+    		
+         	 // Storing Transition Reference (simple and operator)
+            allTransitions = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
+            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
+            // Find and show active Transitions/Arcs
+            RemoteControl.cleanupTransition();
+            checkNet();
+        }
     	else
     	{
-    		RemoteControl = new TokenGameBarController(this, petrinet);
-    	}
-                
-        // Storing Transition Reference (simple and operator)
-        allTransitions = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-        allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
-        allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
-        // Find and show active Transitions/Arcs
-        //checkNet();
-        //animator.start();            
+            //displays the TokenGame Remote-Control if it already exist, if not create
+    	    if(RemoteControl != null)
+    	    {
+    		  RemoteControl.addControlElements();
+    	    }
+    	    else
+    	    {
+    		  RemoteControl = new TokenGameBarController(this, petrinet);
+    	    }
+    	        
+            // Storing Transition Reference (simple and operator)
+            allTransitions = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
+            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
+        }
     }
 
     /**
@@ -303,7 +313,9 @@ public class TokenGameController
             {
             	transition.setActivated(true);
             	//This will add all currently active postSet Transitions to the TokenGameBarVC-Autochoice-List
+            	
             	RemoteControl.addFollowingItem(transition);
+            	            	
             	if(transition.getType() == PetriNetModelElement.SUBP_TYPE)
             	{
             		RemoteControl.enableStepDown(); //Enables Step-Down Navigation Button
@@ -506,14 +518,21 @@ public class TokenGameController
                 sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
                 if (transition.getType() == PetriNetModelElement.SUBP_TYPE)
                 {
-                 if( e != null )
+                 if( (e != null) || (stepIntoSubProcess) )
                  {
-                	int relativeX = e.getX() - transition.getX();
-                	int relativeY = e.getY() - transition.getY();
+                	  int relativeX = 0;
+                	  int relativeY = 0;
+                	if(e != null)
+                	{
+                	  relativeX = e.getX() - transition.getX();
+                	  relativeY = e.getY() - transition.getY();
+                	}
                 	// the lower left half of the transition will trigger 'step into'
-                	if (relativeY>=relativeX)
+                	if ((relativeY>=relativeX) || (stepIntoSubProcess))
                 		// Step into sub-process and process it in a new modal editor
                 		// dialog in token-game mode
+                		ParentControl = new ReferenceProvider();
+                		ParentControl.setRemoteControlReference(RemoteControl);
                 		thisEditor.openTokenGameSubProcess((SubProcessModel)transition);
                  }
                  
@@ -563,8 +582,16 @@ public class TokenGameController
             	  //Track the way in the history-box 	
             	  RemoteControl.addHistoryListItem(transition);
             	}
-            	RemoteControl.cleanupTransition();
-                checkNet();
+                if(stepIntoSubProcess)
+                {
+                	setStepIntoSubProcess(false);
+                }
+                else
+                {
+                	RemoteControl.cleanupTransition();
+                	checkNet();	
+                }
+            	
             }
         }
     }
@@ -1211,14 +1238,6 @@ public class TokenGameController
     	  else
     	  {
     		transitionClicked(transition, null);
-    		/*
-    		 * If StepintoProcess is chosen, additionally to the transition's occurence, step into its subprocess
-    		 */
-    		if((stepIntoSubProcess) && (transition.getType() == PetriNetModelElement.SUBP_TYPE))
-    		{
-    		 thisEditor.openTokenGameSubProcess((SubProcessModel)transition);
-    	     setStepIntoSubProcess(false);
-    		}
     	  }
     	}
     }
@@ -1229,6 +1248,17 @@ public class TokenGameController
     public void TokenGameCheckNet()
     {
     	checkNet();
+    }
+    
+    /**
+     * if the current Editor ist a SubProcess, it will be closed.
+     */
+    public void closeSubProcess()
+    {
+    	if(thisEditor.isSubprocessEditor())
+    	{
+    		thisEditor.closeEditor();
+    	}
     }
     
     /**
