@@ -123,23 +123,38 @@ public class ModelElementContainer implements Serializable
     
     public String[] getPartnerLinkList()
     {
-    	String[] a = null;
-    	return a;
+    	TPartnerLink[] tpl = this.partnerLinkList.getPartnerLinkArray();
+    	String[] partnerLinklist = new String[tpl.length];
+    	for(int i=0;i<tpl.length;i++)
+    	{
+    		partnerLinklist[i] = tpl[i].getName();
+    	}
+    	return partnerLinklist;
     }
     
-    public void addPartnerLink(String name)
+    public void addPartnerLink(String name, String partnerLinkType, String partnerRole)
     {
-    	/*public void addVariable(String name, String messageType)
-        {
-        	TVariable var = this.variablesList.addNewVariable();
-        	var.setName(name);
-        	QNames n = org.oasisOpen.docs.wsbpel.x20.process.executable.QNames.Factory.newInstance();
-        	//noch zu klären
-        	var.setMessageType(null);
-        }*/
     	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
     	pl.setName(name);
     	//pl.setPartnerLinkType(QName);
+    	pl.setPartnerRole(partnerRole);
+    }
+    
+    public void addPartnerLink(String name, String partnerLinkType, String partnerRole, String myRole)
+    {
+    	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
+    	pl.setName(name);
+    	//pl.setPartnerLinkType(QName);
+    	pl.setPartnerRole(partnerRole);
+    	pl.setMyRole(myRole);
+    }
+    
+    public void addPartnerLinkWithoutPartnerRole(String name, String partnerLinkType, String myRole)
+    {
+    	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
+    	pl.setName(name);
+    	//pl.setPartnerLinkType(arg0);
+    	pl.setMyRole(myRole);
     }
     
     public void removePartnerLink()
