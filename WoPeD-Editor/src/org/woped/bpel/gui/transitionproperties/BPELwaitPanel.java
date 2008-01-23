@@ -23,7 +23,7 @@ import org.woped.translations.Messages;
 import com.toedter.calendar.JCalendar;
 
 /**
- * @author Kristian Kindler
+ * @author Kristian Kindler / Esther Landes
  *
  * This is a panel in the transition properties, which enables the user to maintain data for a "wait" BPEL activity.
  *
@@ -76,9 +76,6 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 		waitButtonGroup = new ButtonGroup();
 		waitButtonGroup.add(getWaitDurationRadioButton());
 		waitButtonGroup.add(getWaitDeadlineRadioButton());
-
-
-
 
 
 		c1.weightx = 1;
@@ -219,6 +216,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 	private JCalendar getDeadlineCalendar() {
 		if (calendar == null) {
 			calendar = new JCalendar();
+			// To do: hier noch WoPeD aktuelle Sprache abfragen
 			calendar.setLocale(Locale.ENGLISH);
 		}
 		return calendar;
@@ -434,5 +432,102 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 		}
 
 	}
+	
+	
+	//	***************** content getter methods  **************************
+	
+	public String getSelectedRadioButton(){
+		if (waitDurationRadioButton.isSelected()==true){
+			return "Duration";
+		}
+		return "Deadline";
+	}
+
+// noch mit Alex anklären (Esther)	
+	
+	
+	// ***** Deadline *****
+	
+	public String getDeadLineDay(){
+		return ""+calendar.getDate().getDay();
+	}
+	
+	public String getDeadLineMonth(){
+		if (deadLineTextFieldMinute.getText() == null)
+			return null;
+		return ""+calendar.getDate().getMonth();
+	}
+	
+	public String getDeadLineYear(){
+		return ""+calendar.getDate().getYear();
+	}
+	
+	public String getDeadLineHour(){
+		if (deadLineTextFieldHour.getText() == null)
+			return null;
+		return deadLineTextFieldHour.getText();
+	}
+	
+	public String getDeadLineMinute(){
+		if (deadLineTextFieldMinute.getText() == null)
+			return null;
+		return deadLineTextFieldMinute.getText();
+	}
+	
+	public String getDeadLineSecond(){
+		if (deadLineTextFieldSecond.getText() == null)
+			return null;
+		return deadLineTextFieldSecond.getText();
+	}
+	
+	// ***** Duration ******
+	
+	public String getDurationYear(){
+		if (durationTextFieldYear.getText() == null)
+			return null;
+		return durationTextFieldYear.getText();
+	}
+	
+	public String getDurationMonth(){
+		if (durationTextFieldMonth.getText() == null)
+			return null;
+		return durationTextFieldMonth.getText();
+	}
+	
+	public String getDurationDay(){
+		if (durationTextFieldDay.getText() == null)
+			return null;
+		return durationTextFieldDay.getText();
+	}
+	
+	public String getDurationHour(){
+		if (durationTextFieldHour.getText() == null)
+			return null;
+		return durationTextFieldHour.getText();
+	}
+	
+	public String getDurationMinute(){
+		if (durationTextFieldMinute.getText() == null)
+			return null;
+		return durationTextFieldMinute.getText();
+	}
+	
+	public String getDurationSecond(){
+		if (durationTextFieldSecond.getText() == null)
+			return null;
+		return durationTextFieldSecond.getText();
+	}
+	
+	//	***************** content setter methods  **************************
+
+// nach abklären mit Alex an getter anpassen (Esther)	
+	
+/*	public void setRadioButton(String durationDeadline){
+			
+	}
+	
+	public void setDurationDay(String variable){
+		toVariableComboBox.addItem(variable);	
+	}*/
 
 }
