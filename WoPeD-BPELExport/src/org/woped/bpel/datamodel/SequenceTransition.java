@@ -46,10 +46,8 @@ public class SequenceTransition extends TerminalElement
 		//if the 1.transition is a SequenceTransition
 		if (SequenceTransition.class.isInstance(begin)){
 			iSeq = (TSequence)begin.getBpelCode();
-			System.out.println("Sequence found vorne");
 		}	
 		else{
-			System.out.println("Something else found vorne.");
 			iSeq = BPEL.genBpelProsses().addNewSequence();
 			//transitions case (1.transition)		
 			if(TPick.class.isInstance(begin.getBpelCode())){
@@ -104,11 +102,9 @@ public class SequenceTransition extends TerminalElement
 			XmlCursor cursSub = helpSequence.newCursor();
 			cursSeq.toEndToken();
 			cursSub.copyXmlContents(cursSeq);
-			System.out.println("Sequence found hinten");
 		}
 		
 		else{
-			System.out.println("Something else found hinten.");
 			//transitions case (2.transition)		
 			if(TPick.class.isInstance(tmp.getBpelCode())){
 				TPick iPick = iSeq.addNewPick();
