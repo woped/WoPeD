@@ -35,20 +35,20 @@ import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes / Kristian Kindler
- *
- * This is the basic class for the different BPEL activity panels.
- * It contains methods and data that is used in the activity panels' dialogs.
- *
+ * 
+ * This is the basic class for the different BPEL activity panels. It contains
+ * methods and data that is used in the activity panels' dialogs.
+ * 
  * Created on 16.01.2008
  */
 
 @SuppressWarnings("serial")
-
-public class BPELadditionalPanel extends JPanel{
+public class BPELadditionalPanel extends JPanel {
 
 	TransitionPropertyEditor t_editor;
-	JDialog dialogVariable = null;
-	JDialog dialogPartner = null;
+	//JDialog dialogVariable = null;
+	//JDialog dialogPartner = null;
+	JDialog dialog = null;
 	JPanel dialogButtons = null;
 
 	JDialog errorPopup = null;
@@ -64,8 +64,8 @@ public class BPELadditionalPanel extends JPanel{
 	JButton okVariableButton = null;
 	JButton cancelVariableButton = null;
 
-
-	static final String NEW = Messages.getString("Transition.Properties.BPEL.Buttons.New");
+	static final String NEW = Messages
+			.getString("Transition.Properties.BPEL.Buttons.New");
 
 	ArrayList<PartnerLinkType> partnerLinkTypes = null;;
 	ArrayList<Role> roles = null;;
@@ -75,25 +75,25 @@ public class BPELadditionalPanel extends JPanel{
 	Wsdl wsdl = null;
 	WsdlFileRepresentation wsdlFileRepresentation = null;
 
-
-	public BPELadditionalPanel(TransitionPropertyEditor t_editor, TransitionModel transition){
+	public BPELadditionalPanel(TransitionPropertyEditor t_editor,
+			TransitionModel transition) {
 		this.t_editor = t_editor;
 		this.transition = transition;
 	}
 
+	// ************** display dialog box "New Partner Link" *****************
 
-	//	************** display dialog box "New Partner Link" *****************
-
-	protected void showNewPartnerLinkDialog(){
+	protected void showNewPartnerLinkDialog() {
 		wsdl = new Wsdl();
-//		tryToGetDataFromWsdl();
+		// tryToGetDataFromWsdl();
 
-		dialogPartner = new JDialog(t_editor, true);
-		dialogPartner.setVisible(false);
-		dialogPartner.setTitle(Messages.getString("Transition.Properties.BPEL.NewPartnerLink"));
-		dialogPartner.setSize(450,250);
-		dialogPartner.setLocation(150,150);
-		dialogPartner.setLayout(new GridBagLayout());
+		dialog = new JDialog(t_editor, true);
+		dialog.setVisible(false);
+		dialog.setTitle(Messages
+				.getString("Transition.Properties.BPEL.NewPartnerLink"));
+		dialog.setSize(450, 250);
+		dialog.setLocation(150, 150);
+		dialog.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -105,90 +105,90 @@ public class BPELadditionalPanel extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(new JLabel("Name:"), c);
+		dialog.add(new JLabel("Name:"), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(getPartnerLinkNameTextField(), c);
+		dialog.add(getPartnerLinkNameTextField(), c);
 
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(new JLabel("WSDL:"), c);
+		dialog.add(new JLabel("WSDL:"), c);
 
 		c.gridx = 1;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(getWSDLFileTextField(), c);
+		dialog.add(getWSDLFileTextField(), c);
 
 		c.gridx = 2;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
-		dialogPartner.add(getLocalWSDLButton(), c);
+		dialog.add(getLocalWSDLButton(), c);
 
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
-		dialogPartner.add(new JLabel("Partner Link Type:"), c);
+		dialog.add(new JLabel("Partner Link Type:"), c);
 
 		c.gridx = 1;
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(getPartnerLinkTypeComboBox(), c);
+		dialog.add(getPartnerLinkTypeComboBox(), c);
 
 		c.gridx = 0;
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(new JLabel("Partner Role:"), c);
+		dialog.add(new JLabel("Partner Role:"), c);
 
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(getPartnerRoleComboBox(), c);
+		dialog.add(getPartnerRoleComboBox(), c);
 
 		c.gridx = 0;
 		c.gridy = 4;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(new JLabel("My Role:"), c);
+		dialog.add(new JLabel("My Role:"), c);
 
 		c.gridx = 1;
 		c.gridy = 4;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogPartner.add(getMyRoleComboBox(), c);
+		dialog.add(getMyRoleComboBox(), c);
 
 		c.gridx = 1;
 		c.gridy = 5;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
-		dialogPartner.add(addPartnerDialogButtons(), c);
+		dialog.add(addPartnerDialogButtons(), c);
 
-		dialogPartner.setVisible(true);
+		dialog.setVisible(true);
 	}
 
+	// ************** display dialog box "New Variable" ************************
 
-//	************** display dialog box "New Variable" ************************
-
-	protected void showNewVariableDialog(){
-		dialogVariable = new JDialog(t_editor, true);
-		dialogVariable.setVisible(false);
-		dialogVariable.setTitle(Messages.getString("Transition.Properties.BPEL.NewVariable"));
-		dialogVariable.setSize(400,150);
-		dialogVariable.setLocation(150,150);
-		dialogVariable.setLayout(new GridBagLayout());
+	protected void showNewVariableDialog() {
+		dialog = new JDialog(t_editor, true);
+		dialog.setVisible(false);
+		dialog.setTitle(Messages
+				.getString("Transition.Properties.BPEL.NewVariable"));
+		dialog.setSize(400, 150);
+		dialog.setLocation(150, 150);
+		dialog.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -200,41 +200,44 @@ public class BPELadditionalPanel extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(new JLabel(Messages.getString("Transition.Properties.BPEL.NewVariable.Name") + ":"), c);
+		dialog.add(new JLabel(Messages
+				.getString("Transition.Properties.BPEL.NewVariable.Name")
+				+ ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 5);
-		dialogVariable.add(new JTextField(), c);
+		dialog.add(new JTextField(), c);
 
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(new JLabel(Messages.getString("Transition.Properties.BPEL.NewVariable.Type") + ":"), c);
+		dialog.add(new JLabel(Messages
+				.getString("Transition.Properties.BPEL.NewVariable.Type")
+				+ ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 5);
-		dialogVariable.add(new JComboBox(), c);
+		dialog.add(new JComboBox(), c);
 
 		c.fill = GridBagConstraints.NONE;
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialogVariable.add(addVariableDialogButtons(), c);
+		dialog.add(addVariableDialogButtons(), c);
 
-		dialogVariable.setVisible(true);
+		dialog.setVisible(true);
 	}
 
+	// ************** display buttons in dialog boxes *****************
 
-	//	************** display buttons in dialog boxes *****************
-
-	public JPanel addPartnerDialogButtons(){
-		if (dialogButtons == null){
+	public JPanel addPartnerDialogButtons() {
+		if (dialogButtons == null) {
 			dialogButtons = new JPanel();
 
 			GridBagConstraints c = new GridBagConstraints();
@@ -258,8 +261,8 @@ public class BPELadditionalPanel extends JPanel{
 		return dialogButtons;
 	}
 
-	public JPanel addVariableDialogButtons(){
-		if (dialogButtons == null){
+	public JPanel addVariableDialogButtons() {
+		if (dialogButtons == null) {
 			dialogButtons = new JPanel();
 
 			GridBagConstraints c = new GridBagConstraints();
@@ -283,60 +286,63 @@ public class BPELadditionalPanel extends JPanel{
 		return dialogButtons;
 	}
 
+	// ************** reading WSDL data *****************
 
-	//	************** reading WSDL data *****************
-
-	private JTextField getPartnerLinkNameTextField(){
-		if(partnerLinkNameTextField == null){
+	private JTextField getPartnerLinkNameTextField() {
+		if (partnerLinkNameTextField == null) {
 			partnerLinkNameTextField = new JTextField();
 		}
 		return partnerLinkNameTextField;
 	}
 
-	private JTextField getWSDLFileTextField(){
-		if(wsdlFileTextField == null){
+	private JTextField getWSDLFileTextField() {
+		if (wsdlFileTextField == null) {
 			wsdlFileTextField = new JTextField();
 			wsdlFileTextField.addKeyListener(new KeyListener() {
-				// User has entered the path to a wsdl file and has pressed "Enter"
+				// User has entered the path to a wsdl file and has pressed
+				// "Enter"
 				public void keyReleased(KeyEvent e) {
-					if (e.getKeyCode() == KeyEvent.VK_ENTER){
+					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 						tryToGetDataFromWsdl();
 					}
 				}
 
-				public void keyTyped(KeyEvent e)   { /* nothing happens */ }
-				public void keyPressed(KeyEvent e) { /* nothing happens */ }
+				public void keyTyped(KeyEvent e) { /* nothing happens */
+				}
+
+				public void keyPressed(KeyEvent e) { /* nothing happens */
+				}
 
 			});
 		}
 		return wsdlFileTextField;
 	}
 
-
-
-
-	private JButton getLocalWSDLButton(){
-		if (searchLocalWSDLButton == null){
+	private JButton getLocalWSDLButton() {
+		if (searchLocalWSDLButton == null) {
 			searchLocalWSDLButton = new JButton();
-			searchLocalWSDLButton.setIcon(Messages.getImageIcon("ToolBar.Open"));
-			searchLocalWSDLButton.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
+			searchLocalWSDLButton
+					.setIcon(Messages.getImageIcon("ToolBar.Open"));
+			searchLocalWSDLButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					JFileChooser chooser = new JFileChooser();
 					chooser.addChoosableFileFilter(new FileFilter() {
-					    public boolean accept(File f) {
-					      if (f.isDirectory()){
-					    	  return true;
-					      }
-					      return f.getName().toLowerCase().endsWith(".wsdl");
-					    }
-					    public String getDescription () {
-					    	return "Web Service Definition Language (*.wsdl)";
-					    }
+						public boolean accept(File f) {
+							if (f.isDirectory()) {
+								return true;
+							}
+							return f.getName().toLowerCase().endsWith(".wsdl");
+						}
+
+						public String getDescription() {
+							return "Web Service Definition Language (*.wsdl)";
+						}
 					});
 					chooser.setMultiSelectionEnabled(false);
 					chooser.setAcceptAllFileFilterUsed(false);
-					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-						wsdlFileTextField.setText(""+chooser.getSelectedFile());
+					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+						wsdlFileTextField.setText(""
+								+ chooser.getSelectedFile());
 						// TODO KEY LISTENER - Kommentar löschen
 						tryToGetDataFromWsdl();
 					}
@@ -346,22 +352,22 @@ public class BPELadditionalPanel extends JPanel{
 		return searchLocalWSDLButton;
 	}
 
-
-	private JComboBox getPartnerLinkTypeComboBox(){
+	private JComboBox getPartnerLinkTypeComboBox() {
 		if (partnerLinkTypeComboBox == null) {
 			partnerLinkTypeComboBox = new JComboBox();
 
 			partnerLinkTypeComboBox.addItemListener(new ItemListener() {
-		        public void itemStateChanged(ItemEvent e) {
-		        	if (partnerLinkTypeComboBox.getSelectedIndex() != -1){
-			            partnerRoleComboBoxAddItems();
-			            myRoleComboBoxAddItems();
-		        	}
-		        }
-		    });
+				public void itemStateChanged(ItemEvent e) {
+					if (partnerLinkTypeComboBox.getSelectedIndex() != -1) {
+						partnerRoleComboBoxAddItems();
+						myRoleComboBoxAddItems();
+					}
+				}
+			});
 
-			// if there isn't a wsdl file path in the input field there aren't any subelements
-			if (wsdlFileRepresentation != null){
+			// if there isn't a wsdl file path in the input field there aren't
+			// any subelements
+			if (wsdlFileRepresentation != null) {
 				partnerLinkTypeComboBoxAddItems();
 			}
 
@@ -369,13 +375,13 @@ public class BPELadditionalPanel extends JPanel{
 		return partnerLinkTypeComboBox;
 	}
 
-
-	private JComboBox getPartnerRoleComboBox(){
+	private JComboBox getPartnerRoleComboBox() {
 		if (partnerRoleComboBox == null) {
 			partnerRoleComboBox = new JComboBox();
 
-			// if there isn't a wsdl file path in the input field there aren't any subelements
-			if (wsdlFileRepresentation != null){
+			// if there isn't a wsdl file path in the input field there aren't
+			// any subelements
+			if (wsdlFileRepresentation != null) {
 				partnerRoleComboBoxAddItems();
 			}
 
@@ -383,13 +389,13 @@ public class BPELadditionalPanel extends JPanel{
 		return partnerRoleComboBox;
 	}
 
-
-	private JComboBox getMyRoleComboBox(){
+	private JComboBox getMyRoleComboBox() {
 		if (myRoleComboBox == null) {
 			myRoleComboBox = new JComboBox();
 
-			// if there isn't a wsdl file path in the input field there aren't any subelements
-			if (wsdlFileRepresentation != null){
+			// if there isn't a wsdl file path in the input field there aren't
+			// any subelements
+			if (wsdlFileRepresentation != null) {
 				myRoleComboBoxAddItems();
 			}
 
@@ -397,56 +403,65 @@ public class BPELadditionalPanel extends JPanel{
 		return myRoleComboBox;
 	}
 
-
-	private JButton getPartnerOKButton(){
+	private JButton getPartnerOKButton() {
 		if (okPartnerButton == null) {
-			okPartnerButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
-			okPartnerButton.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-					// TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
-//					t_editor.
-					dialogPartner.dispose();
+			okPartnerButton = new JButton(Messages
+					.getString("Transition.Properties.BPEL.Buttons.OK"));
+			okPartnerButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					// TODO speichern mithilfe von Alex' Klassen, die auf
+					// content getter methoden zugreifen
+					// t_editor.
+					dialog.dispose();
 				}
 			});
 		}
 		return okPartnerButton;
 	}
 
-	private JButton getPartnerCancelButton(){
-		cancelPartnerButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
-		cancelPartnerButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				dialogPartner.dispose();
-			}
-		});
+	private JButton getPartnerCancelButton() {
+		if (cancelPartnerButton == null) {
+			cancelPartnerButton = new JButton(Messages
+					.getString("Transition.Properties.BPEL.Buttons.Cancel"));
+			cancelPartnerButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dialog.dispose();
+				}
+			});
+		}
 		return cancelPartnerButton;
 	}
 
-	private JButton getVariableOKButton(){
-		okVariableButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
-		okVariableButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				// TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
-				dialogVariable.dispose();
+	private JButton getVariableOKButton() {
+		okVariableButton = new JButton(Messages
+				.getString("Transition.Properties.BPEL.Buttons.OK"));
+		okVariableButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO speichern mithilfe von Alex' Klassen, die auf content
+				// getter methoden zugreifen
+				dialog.dispose();
 			}
-			});
+		});
 		return okVariableButton;
 	}
 
-	private JButton getVariableCancelButton(){
-		cancelVariableButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
-		cancelVariableButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				dialogVariable.dispose();
-			}
-		});
+	private JButton getVariableCancelButton() {
+		if (cancelVariableButton == null) {
+			cancelVariableButton = new JButton(Messages
+					.getString("Transition.Properties.BPEL.Buttons.Cancel"));
+			cancelVariableButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dialog.dispose();
+				}
+			});
+		}
 		return cancelVariableButton;
 	}
 
+	// ***************** methods to fill comboBoxes with data from the wsdl file
+	// **************************
 
-	//	***************** methods to fill comboBoxes with data from the wsdl file **************************
-
-	private void fillAllComboBoxesWithData(){
+	private void fillAllComboBoxesWithData() {
 
 		// add new items
 		partnerLinkTypeComboBoxAddItems();
@@ -454,108 +469,102 @@ public class BPELadditionalPanel extends JPanel{
 		myRoleComboBoxAddItems();
 	}
 
-
-	private void partnerLinkTypeComboBoxAddItems(){
+	private void partnerLinkTypeComboBoxAddItems() {
 		partnerLinkTypeComboBox.removeAllItems();
 
 		partnerLinkTypes = wsdlFileRepresentation.getPartnerLinkTypes();
 
-		if ( partnerLinkTypes.size() != 0){
+		if (partnerLinkTypes.size() != 0) {
 
-			for(PartnerLinkType partnerLinkType : partnerLinkTypes){
+			for (PartnerLinkType partnerLinkType : partnerLinkTypes) {
 				partnerLinkTypeComboBox.addItem(partnerLinkType.getName());
 			}
 
-	    }
+		}
 	}
 
-
-	private void partnerRoleComboBoxAddItems(){
+	private void partnerRoleComboBoxAddItems() {
 		partnerRoleComboBox.removeAllItems();
-		// If there aren't any partner link types --> there can't be any subelements
-		if (partnerLinkTypes.size() != 0){
-			roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
-			for(Role role : roles){
+		// If there aren't any partner link types --> there can't be any
+		// subelements
+		if (partnerLinkTypes.size() != 0) {
+			roles = partnerLinkTypes.get(
+					partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
+			for (Role role : roles) {
 				partnerRoleComboBox.addItem(role.getRoleName());
 			}
 			partnerRoleComboBox.addItem(Messages.getString("Transition.Properties.BPEL.NoRole"));
 		}
 	}
 
-
-	private void myRoleComboBoxAddItems(){
+	private void myRoleComboBoxAddItems() {
 		myRoleComboBox.removeAllItems();
-		// If there aren't any partner link types --> there can't be any subelements
-		if (partnerLinkTypes.size() != 0){
-			roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
-			for(Role role : roles){
+		// If there aren't any partner link types --> there can't be any
+		// subelements
+		if (partnerLinkTypes.size() != 0) {
+			roles = partnerLinkTypes.get(
+					partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
+			for (Role role : roles) {
 				myRoleComboBox.addItem(role.getRoleName());
 			}
 			myRoleComboBox.addItem(Messages.getString("Transition.Properties.BPEL.NoRole"));
 		}
 	}
 
+	// ***************** content getter methods **************************
 
-
-
-
-	//	***************** content getter methods  **************************
-
-	public String getTransitionName(){
+	public String getTransitionName() {
 		return this.transition.getNameValue();
 	}
 
-
 	// folgendes noch mit Alex abzuklären (Esther)
 
-	public String getPartnerLinkName(){
+	public String getPartnerLinkName() {
 		if (partnerLinkNameTextField.getText() == null)
 			return null;
 		return partnerLinkNameTextField.getText().toString();
 	}
 
-	public String getPartnerLinkType(){
+	public String getPartnerLinkType() {
 		if (partnerLinkTypeComboBox.getSelectedItem() == null)
 			return null;
 		return partnerLinkTypeComboBox.getSelectedItem().toString();
 	}
 
-	public String getPartnerRole(){
+	public String getPartnerRole() {
 		if (partnerRoleComboBox.getSelectedItem() == null)
 			return null;
 		return partnerRoleComboBox.getSelectedItem().toString();
 	}
 
-	public String getMyRole(){
+	public String getMyRole() {
 		if (myRoleComboBox.getSelectedItem() == null)
 			return null;
 		return myRoleComboBox.getSelectedItem().toString();
 	}
 
+	public void tryToGetDataFromWsdl() {
 
-
-	public void tryToGetDataFromWsdl(){
-
-
-		if (wsdlFileTextField.getText().length() == 0){
+		if (wsdlFileTextField.getText().length() == 0) {
 			partnerLinkTypeComboBox.removeAllItems();
 			partnerRoleComboBox.removeAllItems();
 			myRoleComboBox.removeAllItems();
-		}
-		else if (wsdlFileTextField.getText().length() < 10){
+		} else if (wsdlFileTextField.getText().length() < 10) {
 			partnerLinkTypeComboBox.removeAllItems();
 			partnerRoleComboBox.removeAllItems();
 			myRoleComboBox.removeAllItems();
 
-			showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+			showErrorPopup(Messages
+					.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
 			wsdlFileTextField.setText("");
-		}
-		else{
+		} else {
 			try {
-				wsdlFileRepresentation = wsdl.readDataFromWSDL(wsdlFileTextField.getText());
+				wsdlFileRepresentation = wsdl
+						.readDataFromWSDL(wsdlFileTextField.getText());
 				fillAllComboBoxesWithData();
 			} catch (MalformedURLException e) {
-				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+				showErrorPopup(Messages
+						.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
 
 				partnerLinkTypeComboBox.removeAllItems();
 				partnerRoleComboBox.removeAllItems();
@@ -564,7 +573,8 @@ public class BPELadditionalPanel extends JPanel{
 				wsdlFileTextField.setText("");
 
 			} catch (FileNotFoundException e) {
-				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+				showErrorPopup(Messages
+						.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
 
 				partnerLinkTypeComboBox.removeAllItems();
 				partnerRoleComboBox.removeAllItems();
@@ -573,7 +583,8 @@ public class BPELadditionalPanel extends JPanel{
 				wsdlFileTextField.setText("");
 
 			} catch (IOException e) {
-				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+				showErrorPopup(Messages
+						.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
 
 				partnerLinkTypeComboBox.removeAllItems();
 				partnerRoleComboBox.removeAllItems();
@@ -582,7 +593,8 @@ public class BPELadditionalPanel extends JPanel{
 				wsdlFileTextField.setText("");
 
 			} catch (XMLStreamException e) {
-				showErrorPopup(Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFile"));
+				showErrorPopup(Messages
+						.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFile"));
 
 				partnerLinkTypeComboBox.removeAllItems();
 				partnerRoleComboBox.removeAllItems();
@@ -594,12 +606,14 @@ public class BPELadditionalPanel extends JPanel{
 
 	}
 
-	private void showErrorPopup(String message){
-		errorPopup = new JDialog(dialogPartner, true);
+	private void showErrorPopup(String message) {
+		errorPopup = new JDialog(dialog, true);
 		errorPopup.setVisible(false);
-		errorPopup.setTitle(Messages.getString("Transition.Properties.BPEL.InvalidFilePath"));
-		errorPopup.setSize(300,140);
-		errorPopup.setLocation(dialogPartner.getLocation().x+90, dialogPartner.getLocation().y+50 );
+		errorPopup.setTitle(Messages
+				.getString("Transition.Properties.BPEL.InvalidFilePath"));
+		errorPopup.setSize(300, 140);
+		errorPopup.setLocation(dialog.getLocation().x + 90,
+				dialog.getLocation().y + 50);
 		errorPopup.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -619,11 +633,13 @@ public class BPELadditionalPanel extends JPanel{
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.CENTER;
 
-		JButton okButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
-		okButton.addActionListener(new ActionListener(){
+		JButton okButton = new JButton(Messages
+				.getString("Transition.Properties.BPEL.Buttons.OK"));
+		okButton.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e){
-				// TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
+			public void actionPerformed(ActionEvent e) {
+				// TODO speichern mithilfe von Alex' Klassen, die auf content
+				// getter methoden zugreifen
 				errorPopup.dispose();
 			}
 
@@ -632,6 +648,5 @@ public class BPELadditionalPanel extends JPanel{
 		errorPopup.add(okButton, c);
 		errorPopup.setVisible(true);
 	}
-
 
 }
