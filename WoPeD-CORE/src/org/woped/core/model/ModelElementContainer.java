@@ -116,6 +116,16 @@ public class ModelElementContainer implements Serializable
         return idMap;
     }
     
+    public TPartnerLinks getTPartnerLinkList()
+    {
+    	return this.partnerLinkList;
+    }
+    
+    public TVariables getTVariablesList()
+    {
+    	return this.variablesList;
+    }
+    
     private TPartnerLinks genPartnerLinkList()
     {
     	return TPartnerLinks.Factory.newInstance();
