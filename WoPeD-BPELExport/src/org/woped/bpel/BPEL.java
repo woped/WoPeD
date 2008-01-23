@@ -27,114 +27,141 @@ import org.woped.bpel.datamodel.BpelParserModel;
 import org.woped.bpel.datamodel.Place;
 import org.woped.bpel.datamodel.SimpleTransition;
 
-
 //TODO class description
-public class BPEL {
+public class BPEL
+{
 
-	private static BPEL bpelMainClass;
+	private static BPEL				bpelMainClass;
 
-	private Vector<String> _extensions;
+	private Vector<String>			_extensions;
 
-	private static ProcessDocument bpelDoc;
-	private static TProcess Process;
+	private static ProcessDocument	bpelDoc;
+	private static TProcess			Process;
 
-	private FileFilter _filter;
+	private FileFilter				_filter;
 
-
-	//TODO method description
-	public BPEL() {
-		if(BPEL.bpelMainClass != null) return;
+	// TODO method description
+	public BPEL()
+	{
+		if (BPEL.bpelMainClass != null)
+			return;
 		this.initFilefilter();
 		bpelMainClass = this;
 	}
 
-	//TODO method description
-	private final void initFilefilter() {
+	// TODO method description
+	private final void initFilefilter()
+	{
 		this._extensions = new Vector<String>();
 		this._extensions.add("bpel");
 		this._filter = new FileFilterImpl(FileFilterImpl.BPELFilter,
 				"BPEL (*.bpel)", this._extensions);
 	}
 
-	//TODO method description
-	public static final BPEL getBPELMainClass() {
-		if (bpelMainClass == null) {
+	// TODO method description
+	public static final BPEL getBPELMainClass()
+	{
+		if (bpelMainClass == null)
+		{
 			new BPEL();
 		}
 		return bpelMainClass;
 	}
 
-	//TODO method description
-	public FileFilter getFilefilter() {
+	// TODO method description
+	public FileFilter getFilefilter()
+	{
 		return this._filter;
 	}
 
-	//TODO method description
+	// TODO method description
 	public boolean checkFileExtension(JFileChooser jfc)
 	{
 		return ((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.BPELFilter;
 	}
 
-	//TODO method description
+	// TODO method description
 	public String getSavePath(String basicPath, JFileChooser jfc)
 	{
-		return basicPath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), this._extensions);
+		return basicPath
+				+ Utils.getQualifiedFileName(jfc.getSelectedFile().getName(),
+						this._extensions);
 	}
 
-	//TODO method description
+	// TODO method description
 	public boolean saveFile(String Path, IEditor editor)
 	{
-		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor.getModelProcessor();
-		
-		//Generate BPEL Model
+		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor
+				.getModelProcessor();
+
+		// Generate BPEL Model
 		BpelParserModel m = new BpelParserModel();
 		System.out.println(m.createModel(pnp.getElementContainer()));
 		System.out.println(m.count_elements());
-		System.out.println("********last element*************\n "+m.generate_bpel());
+		System.out.println("********last element*************\n "
+				+ m.generate_bpel());
 		System.out.println(m.count_elements());
 		BPEL.genBpelProsses();
 		BPEL.Process.set(m.generate_bpel());
 		System.out.println(BPEL.bpelDoc.toString());
-		
-		//File Output
+
+		// File Output
 		new File(Path);
 		XmlOptions opt = new XmlOptions();
-        opt.setUseDefaultNamespace();
-        opt.setSavePrettyPrint();
-        opt.setSavePrettyPrintIndent(2);
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("xmlns:bpel", "bpel.woped.org");
-        map.put("xmlns:bpel","");
-        map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
-        opt = opt.setSaveImplicitNamespaces(map);
+		opt.setUseDefaultNamespace();
+		opt.setSavePrettyPrint();
+		opt.setSavePrettyPrintIndent(2);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("xmlns:bpel", "bpel.woped.org");
+		map.put("xmlns:bpel", "");
+		map.put("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+		opt = opt.setSaveImplicitNamespaces(map);
 		try
-        {
-        	bpelDoc.save(new File(Path),opt);
-        	return true;
-        } catch (IOException e)
-        {
-            return false;
-        }
+		{
+			bpelDoc.save(new File(Path), opt);
+			return true;
+		} catch (IOException e)
+		{
+			return false;
+		}
 	}
-	
+
+	public String genPreview(IEditor editor)
+	{
+		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor
+				.getModelProcessor();
+
+		// Generate BPEL Model
+		BpelParserModel m = new BpelParserModel();
+		System.out.println(m.createModel(pnp.getElementContainer()));
+		System.out.println(m.count_elements());
+		System.out.println("********last element*************\n "
+				+ m.generate_bpel());
+		System.out.println(m.count_elements());
+		BPEL.genBpelProsses();
+		BPEL.Process.set(m.generate_bpel());
+
+		return BPEL.bpelDoc.toString();
+	}
+
 	public static TProcess genBpelProsses()
 	{
-		//if(BPEL.Process != null)return BPEL.Process;
+		// if(BPEL.Process != null)return BPEL.Process;
 		XmlOptions opt = new XmlOptions();
-        opt.setUseDefaultNamespace();
-        opt.setSavePrettyPrint();
-        opt.setSavePrettyPrintIndent(2);
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("xmlns:bpel", "bpel.woped.org");
-        map.put("xmlns:bpel","");
-        map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
-        //opt = opt.setSaveImplicitNamespaces(map);
-        BPEL.bpelDoc = ProcessDocument.Factory.newInstance(opt);
+		opt.setUseDefaultNamespace();
+		opt.setSavePrettyPrint();
+		opt.setSavePrettyPrintIndent(2);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("xmlns:bpel", "bpel.woped.org");
+		map.put("xmlns:bpel", "");
+		map.put("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+		// opt = opt.setSaveImplicitNamespaces(map);
+		BPEL.bpelDoc = ProcessDocument.Factory.newInstance(opt);
 		BPEL.Process = bpelDoc.addNewProcess();
 		return BPEL.Process;
 	}
-	
-	//this method isn't used anymore. Content was copied to method 'saveFile'
+
+	// this method isn't used anymore. Content was copied to method 'saveFile'
 	/**
 	 * Testing method
 	 */
@@ -143,37 +170,37 @@ public class BPEL {
 		BpelParserModel m = new BpelParserModel();
 		System.out.println(m.createModel(pnp.getElementContainer()));
 		System.out.println(m.count_elements());
-		System.out.println("********last element*************\n "+m.generate_bpel());
+		System.out.println("********last element*************\n "
+				+ m.generate_bpel());
 		System.out.println(m.count_elements());
-		//TSequence s = BPEL.genBpelProsses().addNewSequence();
-		//s.set(m.generate_bpel());
+		// TSequence s = BPEL.genBpelProsses().addNewSequence();
+		// s.set(m.generate_bpel());
 		BPEL.genBpelProsses();
 		BPEL.Process.set(m.generate_bpel());
 		System.out.println(BPEL.bpelDoc.toString());
 		/*
-		System.out.println("begin test");
-		Map<String, ArcModel> map = pnp.getElementContainer().getArcMap();
-		System.out.println(map.size());
-		Collection<ArcModel> test = map.values();
-		Iterator<ArcModel> list = test.iterator();
-		while(list.hasNext())
-		{	
-			ArcModel arc = list.next();
-			System.out.print("Source: " + arc.getSourceId()+ " ");
-			
-			AbstractElementModel tmp = pnp.getElementContainer().getElementById(arc.getSourceId());
-			//System.out.print("Class: " + tmp.getClass().getName() + " ");
-			if(PlaceModel.class.isInstance(tmp) )System.out.println("!Place!");
-			else if(TransitionModel.class.isInstance(tmp))System.out.println("!Transition!");
-			System.out.print("Target: " + arc.getTargetId());
-			tmp = pnp.getElementContainer().getElementById(arc.getTargetId());
-			//System.out.print("Class: " + tmp.getClass().getName() + " ");
-			if(PlaceModel.class.isInstance(tmp) )System.out.println("!Place!");
-			else if(TransitionModel.class.isInstance(tmp))System.out.println("!Transition!");
-			
-		}
-		System.out.println("end test");*/
-		
+		 * System.out.println("begin test"); Map<String, ArcModel> map =
+		 * pnp.getElementContainer().getArcMap();
+		 * System.out.println(map.size()); Collection<ArcModel> test =
+		 * map.values(); Iterator<ArcModel> list = test.iterator();
+		 * while(list.hasNext()) { ArcModel arc = list.next();
+		 * System.out.print("Source: " + arc.getSourceId()+ " ");
+		 * 
+		 * AbstractElementModel tmp =
+		 * pnp.getElementContainer().getElementById(arc.getSourceId());
+		 * //System.out.print("Class: " + tmp.getClass().getName() + " ");
+		 * if(PlaceModel.class.isInstance(tmp) )System.out.println("!Place!");
+		 * else
+		 * if(TransitionModel.class.isInstance(tmp))System.out.println("!Transition!");
+		 * System.out.print("Target: " + arc.getTargetId()); tmp =
+		 * pnp.getElementContainer().getElementById(arc.getTargetId());
+		 * //System.out.print("Class: " + tmp.getClass().getName() + " ");
+		 * if(PlaceModel.class.isInstance(tmp) )System.out.println("!Place!");
+		 * else
+		 * if(TransitionModel.class.isInstance(tmp))System.out.println("!Transition!");
+		 *  } System.out.println("end test");
+		 */
+
 	}
 
 }
