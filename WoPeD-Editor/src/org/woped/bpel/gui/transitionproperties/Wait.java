@@ -70,27 +70,5 @@ public class Wait extends BaseActivity
 		{
 			TDurationExpr tdue = wait.getFor();
 		}
-		
-		/*if(wait.getFor() != null)
-		{
-			bwp.setFor(wait.getFor());
-		}
-		if(wait.getUntil() != null)
-		{
-			bwp.setUntil(wait.getUntil());
-		}*/
-		/*public void setInformation(BPELassignPanel bip)
-	{
-		TAssign assign = (TAssign) this.getActivity();
-		TCopy copy = assign.getCopyArray(0);
-		TFrom from = copy.getFrom();
-		String sFromVariable = from.getVariable();
-		bip.setFromVariable(sFromVariable);
-		
-		TTo to = copy.getTo();
-		String sToVariable = to.getVariable();
-		bip.setToVariable(sToVariable);	
-	}*/
 	}
-
 }
