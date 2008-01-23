@@ -1,11 +1,7 @@
 package org.woped.bpel.gui.transitionproperties;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TFrom;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TTo;
 
 
 public class Receive extends BaseActivity
@@ -15,9 +11,9 @@ public class Receive extends BaseActivity
 	{
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void saveInformation(BPELreceivePanel brp){
-		
+
 		TProcess p = BaseActivity.genBpelProsses();
 		TReceive receive = p.addNewReceive();
 		receive.setName(""+brp.transition.getNameValue());
@@ -26,12 +22,12 @@ public class Receive extends BaseActivity
 		receive.setVariable(brp.getVariable());
 		this.setActivity(receive);
 	}
-	
+
 	public void setInformationToPanel(BPELreceivePanel brp){
-		
+
 		TReceive receive = (TReceive)this.getActivity();
 		brp.setPartnerLink(receive.getPartnerLink());
 		brp.setOperation(receive.getOperation());
-		brp.setVariable(receive.getVariable());		
+		brp.setVariable(receive.getVariable());
 	}
 }

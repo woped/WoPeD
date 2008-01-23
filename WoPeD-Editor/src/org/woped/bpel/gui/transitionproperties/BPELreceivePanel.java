@@ -8,38 +8,39 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
  * @author Esther Landes
- * 
+ *
  * This is a panel in the transition properties, which enables the user to maintain data for a "receive" BPEL activity.
  *
  * Created on 14.01.2008
  */
 
+
+@SuppressWarnings("serial")
+
 public class BPELreceivePanel extends BPELadditionalPanel{
-	
+
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
 	JComboBox operationComboBox = null;
 	JComboBox variableComboBox = null;
 	JButton newVariableButton = null;
-	
-	
+
+
 	public BPELreceivePanel(TransitionPropertyEditor t_editor, TransitionModel transition){
-		
+
 		super(t_editor, transition);
-		
+
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);
 		GridBagConstraints c = new GridBagConstraints();
-		
+
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.WEST;
 		c.weightx = 1;
@@ -50,13 +51,13 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(new JLabel("Partner Link:"), c);
-		
+
 		c.gridx = 1;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(getPartnerLinkComboBox(), c);
-		
+
 		c.gridx = 2;
 		c.gridy = 0;
 		c.gridwidth = 1;
@@ -70,13 +71,13 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		c.insets = new Insets(5, 5, 0, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		add(new JLabel("Operation:"), c);
-		
+
 		c.gridx = 1;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(getOperationComboBox(), c);
-		
+
 		c.gridx = 0;
 		c.gridy = 2;
 		c.gridwidth = 1;
@@ -88,7 +89,7 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		add(getVariableComboBox(), c);
-		
+
 		c.gridx = 2;
 		c.gridy = 2;
 		c.gridwidth = 1;
@@ -96,19 +97,19 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		c.fill = GridBagConstraints.NONE;
 		add(getNewVariableButton(), c);
 	}
-	
-	
+
+
 	private JComboBox getPartnerLinkComboBox(){
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
 		}
 		return partnerLinkComboBox;
 	}
-	
+
 	private JButton getNewPartnerLinkButton(){
 		if (newPartnerLinkButton == null) {
-			newPartnerLinkButton = new JButton(NEW);		
-			
+			newPartnerLinkButton = new JButton(NEW);
+
 			newPartnerLinkButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					showNewPartnerLinkDialog();
@@ -117,51 +118,51 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		}
 		return newPartnerLinkButton;
 	}
-	
+
 	private JComboBox getOperationComboBox(){
 		if (operationComboBox == null) {
 			operationComboBox = new JComboBox();
 		}
 		return operationComboBox;
 	}
-	
+
 	private JComboBox getVariableComboBox(){
 		if (variableComboBox == null) {
 			variableComboBox = new JComboBox();
 		}
 		return variableComboBox;
 	}
-	
+
 	private JButton getNewVariableButton(){
 		if (newVariableButton == null) {
 			newVariableButton = new JButton(NEW);
-			
+
 			newVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					showNewVariableDialog();
 				}
 			});
-			
+
 		}
 		return newVariableButton;
 	}
-	
-	
-	
+
+
+
 	//	***************** content getter methods  **************************
-	
+
 	public String getPartnerLink(){
 		if (partnerLinkComboBox.getSelectedItem() == null)
 			return "";
 		return partnerLinkComboBox.getSelectedItem().toString();
 	}
-	
+
 	public String getOperation(){
 		if (operationComboBox.getSelectedItem() == null)
 			return "";
 		return operationComboBox.getSelectedItem().toString();
 	}
-	
+
 	public String getVariable(){
 		if (variableComboBox.getSelectedItem() == null)
 			return "";
@@ -170,7 +171,7 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 
 
 	//	***************** content setter methods  **************************
-	
+
 	public void setPartnerLink(String partnerLink) {
 		partnerLinkComboBox.addItem(partnerLink);
 	}
@@ -182,5 +183,5 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 	public void setVariable(String variable) {
 		variableComboBox.addItem(variable);
 	}
-	
+
 }
