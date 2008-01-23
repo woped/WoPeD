@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.Locale;
 
 import javax.swing.ButtonGroup;
@@ -450,26 +451,51 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 	
 	public String getDeadline()
 	{
-		return "'" + getDeadLineYear() + "-" + getDeadLineMonth() + "-" + getDeadLineDay() + "T" + getDeadLineHour() + ":" + getDeadLineMinute() + ":" + getDeadLineSecond() + "+1:00'";
+		return "" + getDeadLineYear() + "-" + getDeadLineMonth() + "-" + getDeadLineDay() + "T" + getDeadLineHour() + ":" + getDeadLineMinute() + ":" + getDeadLineSecond() + "+1:00";
 	}
 	
 	public String getDuration()
 	{
-		return "'P" + getDurationYear() + "Y" + getDurationMonth() + "M" + getDurationDay() + "DT" + getDurationHour() + "H" + getDurationMinute() + "M" + getDurationSecond() + "S'";
+		return "P" + getDurationYear() + "Y" + getDurationMonth() + "M" + getDurationDay() + "DT" + getDurationHour() + "H" + getDurationMinute() + "M" + getDurationSecond() + "S";
 	}
 	
-	public String getDeadLineDay(){
-		return ""+calendar.getDate().getDay();
+	public String getDeadLineDay()
+	{
+		Calendar c = Calendar.getInstance();
+		c.setTime(calendar.getDate());
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		if(day/10 > 0)
+		{
+			return "" + day;
+		}
+		else
+		{
+			return "0" + day;
+		}	
 	}
 	
-	public String getDeadLineMonth(){
+	public String getDeadLineMonth()
+	{
 		if (deadLineTextFieldMinute.getText() == null)
 			return null;
-		return ""+calendar.getDate().getMonth();
+		Calendar c = Calendar.getInstance();
+		c.setTime(calendar.getDate());
+		int month = c.get(Calendar.MONTH) + 1;
+		if(month/10 > 0)
+		{
+			return "" + month;
+		}
+		else
+		{
+			return "0" + month;
+		}
 	}
 	
-	public String getDeadLineYear(){
-		return ""+calendar.getDate().getYear();
+	public String getDeadLineYear()
+	{
+		Calendar c = Calendar.getInstance();
+		c.setTime(calendar.getDate());
+		return ""+c.get(Calendar.YEAR);
 	}
 	
 	public String getDeadLineHour(){
