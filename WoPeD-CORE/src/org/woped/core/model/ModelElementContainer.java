@@ -34,6 +34,7 @@ import javax.xml.namespace.QName;
 import org.apache.xmlbeans.XmlOptions;
 import org.jgraph.graph.DefaultPort;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.QNames;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.woped.core.Constants;
@@ -80,6 +81,7 @@ public class ModelElementContainer implements Serializable
 	private AbstractElementModel owningElement = null;
 	
 	private TVariables variablesList;
+	private TPartnerLinks partnerLinkListe;
 	
 	public void setOwningElement(AbstractElementModel element)
 	{
@@ -113,9 +115,7 @@ public class ModelElementContainer implements Serializable
      */
     public Map<String, Map<String, Object>> getIdMap()
     {
-
         return idMap;
-
     }
     
     private TVariables genVariableList()

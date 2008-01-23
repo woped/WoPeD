@@ -60,7 +60,6 @@ public class Wait extends BaseActivity
 	
 	public void setInformation(BPELwaitPanel bwp)
 	{
-		//Problem Unterscheidung zwischen For und Until
 		TWait wait = (TWait) this.getActivity();
 		
 		if(wait.getUntil() != null)
