@@ -27,6 +27,7 @@ public class IfTransition extends TerminalElement
 	{
 		AbstractElement tmp = null;
 		TIf iIf = BPEL.genBpelProsses().addNewIf();
+		iIf.setName(""+this.getData());
 		Iterator<AbstractElement> list = begin.get_all_post_objects().iterator();
 		for (int i=0;list.hasNext();i++)
 		{
