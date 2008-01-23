@@ -29,7 +29,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.xmlbeans.XmlOptions;
 import org.jgraph.graph.DefaultPort;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.woped.core.Constants;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.utilities.LoggerManager;
@@ -73,6 +76,8 @@ public class ModelElementContainer implements Serializable
 	//! if we're not owned by an AbstractElementModel instance at all
 	private AbstractElementModel owningElement = null;
 	
+	private TVariables variablesList;
+	
 	public void setOwningElement(AbstractElementModel element)
 	{
 		owningElement = element;
@@ -93,6 +98,7 @@ public class ModelElementContainer implements Serializable
     {
         idMap = new HashMap<String, Map<String, Object>>();
         arcs = new HashMap<String, ArcModel>();
+        this.variablesList = this.genVariableList();
     }
 
     /**
@@ -107,6 +113,32 @@ public class ModelElementContainer implements Serializable
 
         return idMap;
 
+    }
+    
+    private TVariables genVariableList()
+    {    	
+        return TVariables.Factory.newInstance();
+    }
+    
+    public TVariables getVariablesList()
+    {
+    	return this.variablesList;
+    }
+    
+    public void addVariable(TVariable arg)
+    {
+    	TVariable var = this.variablesList.addNewVariable();
+    	var.set(arg);
+    }
+    
+    public void removeVariable(TVariable arg)
+    {
+    	TVariable[] list = this.variablesList.getVariableArray();
+    	for(int i = 0; i < list.length; i++)
+    	{
+    		//noch machen
+    			
+    	}
     }
 
     /**
