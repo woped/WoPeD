@@ -37,7 +37,7 @@ public class SimpleTransition extends Transition<TransitionModel>
 			
 		}
 		else{
-			TProcess p = BaseActivity.genBpelProsses();
+			TProcess p = BaseActivity.genBpelProcess();
 			TEmpty iEmpty= p.addNewEmpty();
 			iEmpty.setName(this.getData().getNameValue());
 			return iEmpty;

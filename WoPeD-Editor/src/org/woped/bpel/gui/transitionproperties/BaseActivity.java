@@ -27,7 +27,7 @@ public abstract class BaseActivity
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static TProcess genBpelProsses()
+	public static TProcess genBpelProcess()
 	{
 		//if(BPEL.Process != null)return BPEL.Process;
 		ProcessDocument bpelDoc;

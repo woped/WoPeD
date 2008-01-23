@@ -204,7 +204,7 @@ public class ModelElementContainer implements Serializable
     {
     	TVariable var = this.variablesList.addNewVariable();
     	var.setName(name);    	
-    	var.setType(new QName("xsd", type));
+    	var.setType(new QName("http://www.w3.org/2001/XMLSchema", type));
     }
     
     /*Inserts a variable from WSDL-File to a consisting list of TVariables

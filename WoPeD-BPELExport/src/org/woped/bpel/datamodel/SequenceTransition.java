@@ -48,7 +48,7 @@ public class SequenceTransition extends TerminalElement
 			iSeq = (TSequence)begin.getBpelCode();
 		}	
 		else{
-			iSeq = BPEL.genBpelProsses().addNewSequence();
+			iSeq = BPEL.genBpelProcess().addNewSequence();
 			//transitions case (1.transition)		
 			if(TPick.class.isInstance(begin.getBpelCode())){
 				TPick iPick = iSeq.addNewPick();

@@ -101,21 +101,21 @@ public class BPEL
 		System.out.println("********last element*************\n "
 				+ m.generate_bpel());
 		System.out.println(m.count_elements());
-		BPEL.genBpelProsses();
+		BPEL.genBpelProcess();
 		BPEL.Process.set(m.generate_bpel());
 		setGlobals(BPEL.Process, pnp);
 		System.out.println(BPEL.bpelDoc.toString());
 		// File Output
 		new File(Path);
 		XmlOptions opt = new XmlOptions();
-		opt.setUseDefaultNamespace();
-		opt.setSavePrettyPrint();
-		opt.setSavePrettyPrintIndent(2);
+		
+		//opt.setSavePrettyPrintIndent(2);
+		//opt.setUseDefaultNamespace();
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("xmlns:bpel", "bpel.woped.org");
-		map.put("xmlns:bpel", "");
-		map.put("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
-		opt = opt.setSaveImplicitNamespaces(map);
+		map.put("http://docs.oasis-open.org/wsbpel/2.0/process/executable","bpel");
+		map.put("http://www.w3.org/2001/XMLSchema","xs");
+		opt = opt.setSaveSuggestedPrefixes(map);
+		opt.setSavePrettyPrint();
 		try
 		{
 			bpelDoc.save(new File(Path), opt);
@@ -138,13 +138,21 @@ public class BPEL
 		System.out.println("********last element*************\n "
 				+ m.generate_bpel());
 		System.out.println(m.count_elements());
-		BPEL.genBpelProsses();
+		BPEL.genBpelProcess();
 		BPEL.Process.set(m.generate_bpel());
 		setGlobals(BPEL.Process, pnp);
-		return BPEL.bpelDoc.toString();
+		XmlOptions opt = new XmlOptions();
+		//opt.setSavePrettyPrintIndent(2);
+		//opt.setUseDefaultNamespace();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("http://docs.oasis-open.org/wsbpel/2.0/process/executable","bpel");
+		map.put("http://www.w3.org/2001/XMLSchema","xs");
+		opt = opt.setSaveSuggestedPrefixes(map);
+		opt.setSavePrettyPrint();
+		return BPEL.bpelDoc.xmlText(opt);
 	}
 
-	public static TProcess genBpelProsses()
+	public static TProcess genBpelProcess()
 	{
 		// if(BPEL.Process != null)return BPEL.Process;
 		XmlOptions opt = new XmlOptions();

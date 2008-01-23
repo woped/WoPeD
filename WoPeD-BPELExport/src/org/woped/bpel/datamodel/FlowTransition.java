@@ -25,7 +25,7 @@ public class FlowTransition extends TerminalElement
 	public TActivity getBpelCode()
 	{
 		AbstractElement tmp = null;
-		TFlow iFlow = BPEL.genBpelProsses().addNewFlow();
+		TFlow iFlow = BPEL.genBpelProcess().addNewFlow();
 		Iterator<AbstractElement> list = begin.get_all_post_objects().iterator();
 		while (list.hasNext())
 		{

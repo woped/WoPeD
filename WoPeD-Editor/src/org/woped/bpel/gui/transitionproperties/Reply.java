@@ -16,7 +16,7 @@ public class Reply extends BaseActivity
 	
 	public void saveInformation(BPELreplyPanel brp)
 	{
-		TProcess p = BaseActivity.genBpelProsses();
+		TProcess p = BaseActivity.genBpelProcess();
 		TReply reply = p.addNewReply();
 		reply.setName(""+brp.transition.getNameValue());
 		

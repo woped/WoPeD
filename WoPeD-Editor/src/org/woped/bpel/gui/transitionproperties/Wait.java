@@ -23,7 +23,7 @@ public class Wait extends BaseActivity
 	
 	public void saveInformation(BPELwaitPanel bwp)
 	{
-		TProcess p = BaseActivity.genBpelProsses();
+		TProcess p = BaseActivity.genBpelProcess();
 		TWait wait = p.addNewWait();
 		wait.setName(""+bwp.transition.getNameValue());
 		String bool = bwp.getSelectedRadioButton();

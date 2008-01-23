@@ -17,7 +17,7 @@ public class Invoke extends BaseActivity
 	public void saveInformation(BPELinvokePanel bip)
 	{
 		//erzeuge XML-Baum
-		TProcess p = BaseActivity.genBpelProsses();
+		TProcess p = BaseActivity.genBpelProcess();
 		TInvoke invoke = p.addNewInvoke();
 		invoke.setName(""+bip.transition.getNameValue());
 		invoke.setPartnerLink(bip.getPartnerLink());

@@ -30,7 +30,7 @@ public class PickTransition extends TerminalElement
 
 	public TActivity getBpelCode()
 	{
-		TPick iPick = BPEL.genBpelProsses().addNewPick();
+		TPick iPick = BPEL.genBpelProcess().addNewPick();
 		XmlObject triggerTransition = null;
 		AbstractElement tmp;
 		Iterator<AbstractElement> list = begin.iterator();

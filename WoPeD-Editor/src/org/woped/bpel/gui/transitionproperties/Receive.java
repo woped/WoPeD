@@ -14,7 +14,7 @@ public class Receive extends BaseActivity
 
 	public void saveInformation(BPELreceivePanel brp){
 
-		TProcess p = BaseActivity.genBpelProsses();
+		TProcess p = BaseActivity.genBpelProcess();
 		TReceive receive = p.addNewReceive();
 		receive.setName(""+brp.transition.getNameValue());
 		receive.setPartnerLink(brp.getPartnerLink());

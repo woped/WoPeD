@@ -435,7 +435,7 @@ public class BpelParserModel
 		if(this._regist_transition.size() > 1)return null;
 		
 		TExtensibleElements test = this._regist_transition.iterator().next().getBpelCode();
-		TProcess p = BPEL.genBpelProsses();
+		TProcess p = BPEL.genBpelProcess();
 		if(TSequence.class.isInstance(test))
 			p.addNewSequence().set(test);
 		else if(TPick.class.isInstance(test))
@@ -460,7 +460,7 @@ public class BpelParserModel
 	}
 
 	/**
-	 * This method test of sequens and return the endelement of sequence.
+	 * This method test of sequence and return the endelement of sequence.
 	 * 
 	 * @param e
 	 *            AbstractElement startelement of sequence
@@ -525,7 +525,7 @@ public class BpelParserModel
 	
 	public SequenceTransition newSequence(AbstractElement begin, AbstractElement end)
 	{
-		System.out.println("<Sequense> \n" + "\tbegin = " + begin
+		System.out.println("<Sequence> \n" + "\tbegin = " + begin
 				+ "\n" + "\tend = " + end + "\n</Sequence>");
 		HashSet<AbstractElement> pre_list = begin.get_pre_list_copy();
 		HashSet<AbstractElement> post_list = end.get_post_list_copy();

@@ -18,7 +18,7 @@ public class Empty extends BaseActivity
 	
 	public void saveEmptyInformation()
 	{
-		TProcess p = BaseActivity.genBpelProsses();
+		TProcess p = BaseActivity.genBpelProcess();
 		TEmpty empty = p.addNewEmpty();
 		this.setActivity(empty);
 	}

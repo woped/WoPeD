@@ -26,7 +26,7 @@ public class IfTransition extends TerminalElement
 	public TActivity getBpelCode()
 	{
 		AbstractElement tmp = null;
-		TIf iIf = BPEL.genBpelProsses().addNewIf();
+		TIf iIf = BPEL.genBpelProcess().addNewIf();
 		iIf.setName(""+this.getData());
 		Iterator<AbstractElement> list = begin.get_all_post_objects().iterator();
 		for (int i=0;list.hasNext();i++)
