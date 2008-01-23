@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,8 +32,8 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
 
 /**
- * @author Esther Landes
- * 
+ * @author Esther Landes / Kristian Kindler
+ *
  * This is the basic class for the different BPEL activity panels.
  * It contains methods and data that is used in the activity panels' dialogs.
  *
@@ -53,11 +55,11 @@ public abstract class BPELadditionalPanel extends JPanel{
 	JComboBox myRoleComboBox = null;
 	JButton okButton = null;
 	JButton cancelButton = null;
-	
-	
+
+
 	static final String NEW = Messages.getString("Transition.Properties.BPEL.Buttons.New");
-	
-;	ArrayList<PartnerLinkType> partnerLinkTypes;
+
+	ArrayList<PartnerLinkType> partnerLinkTypes;
 	ArrayList<Role> roles;
 
 	TransitionModel transition = null;
@@ -115,7 +117,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		dialogPartner.add(getPartnerLinkNameTextField(), c);
-		
+
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 1;
@@ -251,7 +253,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 5, 0, 0);
 			dialogButtons.add(getOKButton(), c);
-			
+
 			c.gridx = 1;
 			c.gridy = 0;
 			c.gridwidth = 1;
@@ -262,8 +264,8 @@ public abstract class BPELadditionalPanel extends JPanel{
 	}
 
 
-	
-	
+
+
 	//	************** reading WSDL data *****************
 
 	private JTextField getPartnerLinkNameTextField(){
@@ -272,14 +274,14 @@ public abstract class BPELadditionalPanel extends JPanel{
 		}
 		return partnerLinkNameTextField;
 	}
-	
+
 	private JTextField getWSDLFileTextField(){
 		if(wsdlFileTextField == null){
 			wsdlFileTextField = new JTextField();
 		}
 		return wsdlFileTextField;
 	}
-	
+
 	private JButton getLocalWSDLButton(){
 		if (searchLocalWSDLButton == null){
 			searchLocalWSDLButton = new JButton();
@@ -296,7 +298,7 @@ public abstract class BPELadditionalPanel extends JPanel{
 					    }
 					    public String getDescription () {
 					    	return "Web Service Definition Language (*.wsdl)";
-					    } 
+					    }
 					});
 					chooser.setMultiSelectionEnabled(false);
 					chooser.setAcceptAllFileFilterUsed(false);
@@ -319,9 +321,26 @@ public abstract class BPELadditionalPanel extends JPanel{
 			for(PartnerLinkType partnerLinkType : partnerLinkTypes){
 				partnerLinkTypeComboBox.addItem(partnerLinkType.getName());
 			}
+
+		    partnerLinkTypeComboBox.addItemListener(new ItemListener() {
+		        public void itemStateChanged(ItemEvent e) {
+		            partnerRoleComboBox.removeAllItems();
+		            myRoleComboBox.removeAllItems();
+		            if ( partnerLinkTypes.size() != 0){
+		                roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
+		                for(Role role : roles){
+		                     partnerRoleComboBox.addItem(role.getRoleName());
+		                     myRoleComboBox.addItem(role.getRoleName());
+		                }
+		            }
+
+		        }
+		    });
 		}
 		return partnerLinkTypeComboBox;
 	}
+
+
 
 
 	private JComboBox getPartnerRoleComboBox(){
@@ -329,7 +348,6 @@ public abstract class BPELadditionalPanel extends JPanel{
 			partnerRoleComboBox = new JComboBox();
 
 			// If there aren't any partner link types --> there can't be any subelements
-			System.out.println(partnerLinkTypes.size());
 			if (partnerLinkTypes.size() != 0){
 				roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
 				for(Role role : roles){
@@ -344,6 +362,14 @@ public abstract class BPELadditionalPanel extends JPanel{
 	private JComboBox getMyRoleComboBox(){
 		if (myRoleComboBox == null) {
 			myRoleComboBox = new JComboBox();
+
+			// If there aren't any partner link types --> there can't be any subelements
+			if (partnerLinkTypes.size() != 0){
+				roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
+				for(Role role : roles){
+					myRoleComboBox.addItem(role.getRoleName());
+				}
+			}
 		}
 		return myRoleComboBox;
 	}
@@ -353,14 +379,14 @@ public abstract class BPELadditionalPanel extends JPanel{
 			okButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
 			okButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					// to do: speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
+					//todo: speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
 					dialogPartner.dispose();
 				}
 			});
 		}
 		return okButton;
 	}
-	
+
 	private JButton getCancelButton(){
 		if (cancelButton == null) {
 			cancelButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
@@ -372,42 +398,42 @@ public abstract class BPELadditionalPanel extends JPanel{
 		}
 		return cancelButton;
 	}
-	
-	
-	
+
+
+
 	//	***************** content getter methods  **************************
-	
+
 	public String getTransitionName(){
 		return this.transition.getNameValue();
 	}
-	
-	
+
+
 	// folgendes noch mit Alex abzuklären (Esther)
-	
+
 	public String getPartnerLinkName(){
 		if (partnerLinkNameTextField.getText() == null)
 			return null;
 		return partnerLinkNameTextField.getText().toString();
 	}
-	
+
 	public String getPartnerLinkType(){
 		if (partnerLinkTypeComboBox.getSelectedItem() == null)
 			return null;
 		return partnerLinkTypeComboBox.getSelectedItem().toString();
 	}
-	
+
 	public String getPartnerRole(){
 		if (partnerRoleComboBox.getSelectedItem() == null)
 			return null;
 		return partnerRoleComboBox.getSelectedItem().toString();
 	}
-	
+
 	public String getMyRole(){
 		if (myRoleComboBox.getSelectedItem() == null)
 			return null;
 		return myRoleComboBox.getSelectedItem().toString();
 	}
-	
+
 
 
 }
