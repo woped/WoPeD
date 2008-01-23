@@ -1,5 +1,6 @@
 package org.woped.bpel.gui.transitionproperties;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -68,6 +69,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 	JButton cancelPartnerButton = null;
 	JButton okVariableButton = null;
 	JButton cancelVariableButton = null;
+	
+	Dimension dimension = new Dimension(50,22);
 
 	static final String NEW = Messages
 			.getString("Transition.Properties.BPEL.Buttons.New");
