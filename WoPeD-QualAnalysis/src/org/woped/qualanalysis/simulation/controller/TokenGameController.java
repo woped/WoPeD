@@ -1282,4 +1282,10 @@ public class TokenGameController
     	stepIntoSubProcess = step;
     
     }
+    
+    public IEditor getThisEditor()
+    {
+    	return thisEditor;
+    }
+    
 }

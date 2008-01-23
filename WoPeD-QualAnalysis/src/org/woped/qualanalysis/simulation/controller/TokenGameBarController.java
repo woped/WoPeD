@@ -1,6 +1,7 @@
 package org.woped.qualanalysis.simulation.controller;
 import java.awt.Point;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
@@ -50,6 +51,7 @@ public class TokenGameBarController implements Runnable {
 	
 	//Integers
 	private int                      HistoryIndex                  = 0; 
+
     
 	public TokenGameBarController(TokenGameController tgController, PetriNetModelProcessor PetriNet)
 	{
@@ -116,15 +118,27 @@ public class TokenGameBarController implements Runnable {
 	 */
 	public void occurTransition(boolean BackWard)
 	{
+
+		/*
+		 * Backward is done with the 
+		 */
 	  if( BackWard )
 	  {
-		  previousItem();
+		 previousItem();
 		if(BackwardTransitionToOccur != null)
 		{
-			TransitionToOccur = BackwardTransitionToOccur;
-			tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
+		  while(BackwardTransitionToOccur.getId().contains("sub") && (BackwardTransitionToOccur.getId().length() > 6))
+		  {
+			  previousItem();
+			  while(BackwardTransitionToOccur.getId().contains("a"))
+			  {
+				previousItem();  
+			  }
+		  }
+		  TransitionToOccur = BackwardTransitionToOccur;
+		  tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 		}
-  	  }
+	  } 
 	  else
 	  {
 		  //AFAIK needed to make automatic backward stepping
@@ -134,6 +148,44 @@ public class TokenGameBarController implements Runnable {
 			  if((HistoryIndex < HistoryVector.size()) && (HistoryIndex >= 0))
 			  {
 			    TransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex++);
+			    
+			    /*
+			     * If History steps into a SubProcess, do so as well 
+			     */
+			    if((!TransitionToOccur.getId().contains("t")) && (!TransitionToOccur.getId().contains("a")))
+			    {
+			    	if(HistoryIndex < HistoryVector.size())
+			    	{
+			    	  helpTransition = (TransitionModel)HistoryVector.get(HistoryIndex);
+			    	  if(helpTransition.getId().contains(TransitionToOccur.getId()) && (helpTransition.getId().contains("a") || helpTransition.getId().contains("t")))
+			    	  {
+			    		 tgController.setStepIntoSubProcess(true);
+			    		 
+			    	  }
+			    	}
+			    }
+			    /*
+			     * If History is in a Subprocess and it is finished, step out automatically
+			     */
+			    if(HistoryIndex < HistoryVector.size())
+			    {
+			      helpTransition = (TransitionModel)HistoryVector.get(HistoryIndex);
+                  if(TransitionToOccur.getId().contains("t") || TransitionToOccur.getId().contains("a"))
+                  {
+                    if(TransitionToOccur.getId().length() >= (helpTransition.getId().length()+3))
+                    {
+                  	  changeTokenGameReference(null, true);
+                    }
+                  }
+                  else
+                  {
+                   if(TransitionToOccur.getId().length() >= (helpTransition.getId().length()+5))
+               	   {
+                     changeTokenGameReference(null, true);
+                   }
+                  }			    			
+			    }	   
+			    
 			  //Secure the net, so that no playback further than the last Simulation point can be done
 			  }
 			  else
@@ -144,14 +196,14 @@ public class TokenGameBarController implements Runnable {
 		  //If end of net is not reached yet or there is still something to occur
 		  if(followingActivatedTransitions.size() > 0)
 		  {
-			System.out.println("TransitionToOccur = "+TransitionToOccur.getId()+" Name "+TransitionToOccur.getNameValue());
-			
 		    tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 		  }
 	  } 
 	}
 
 	
+      	
+
 	
 	/**
 	 * This method let the multiple transition occur (now 3 times) (only for sequences,
@@ -831,11 +883,22 @@ public class TokenGameBarController implements Runnable {
 		ExpertView.disableButtonforAutoPlayback();
 	}
 	
+	/**
+	 * Calls the ExpertView enableBackWardButtons
+	 */
+	public void enableBackWardButtons()
+	{
+		ExpertView.enableBackWardButtons();
+	}
+	
+	/**
+	 * Calls the ExpertView disableBackWardButtons
+	 */
+	public void disableBackWardButtons()
+	{
+		ExpertView.disableBackWardButtons();
+	}
 
-	
-	
-	
-	
 	
 	
 	
@@ -862,27 +925,31 @@ public class TokenGameBarController implements Runnable {
 		if(up)
 		{
 			if((ProcessEditors != null) && (ProcessEditors.size() > 0))
-			{
+			{              
+			  //Remove all remaining tokens in the Editor
+			  tgController.TokenGameRetore();
 			  tgController.closeSubProcess();
 			  tgController = (TokenGameController)ProcessEditors.removeLast();
+			  if(!tgController.getThisEditor().isSubprocessEditor())
+			  {
+				  enableBackWardButtons();
+			  }
 			  cleanupTransition();
 			  tgController.TokenGameCheckNet();
+              
 			}
 		}
 		else
 		{
-			if(ProcessEditors != null)
-			{
-				ProcessEditors.add(tgController);
-				TransitionToOccur = null;
-				cleanupTransition();
-			    tgController = newReference;
-			}
-			else
+			if(ProcessEditors == null)
 			{
 				ProcessEditors = new LinkedList();
-				ProcessEditors.add(tgController);
-			    tgController = newReference;
+			}
+		    ProcessEditors.add(tgController);
+			tgController = newReference;
+			if(tgController.getThisEditor().isSubprocessEditor())
+			{
+				disableBackWardButtons();
 			}
 		}
 	}

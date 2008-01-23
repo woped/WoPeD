@@ -389,6 +389,18 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnFastFW.setEnabled(true);
 	}
 	
+	public void disableBackWardButtons()
+	{
+		pbnBW.setEnabled(false);
+		pbnFastBW.setEnabled(false);
+	}
+	
+	public void enableBackWardButtons()
+	{
+		pbnBW.setEnabled(true);
+		pbnFastBW.setEnabled(true);
+	}
+	
 	public void enablePlayButton()
 	{
 		pbnPlay.setEnabled(true);

@@ -330,6 +330,10 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	private void stopAction()
 	{
 		RemoteControl.setEndOfNet(true);
+		while(RemoteControl.getTokenGameController().getThisEditor().isSubprocessEditor())
+		{
+			RemoteControl.changeTokenGameReference(null, true);
+		}
 		RemoteControl.getTokenGameController().TokenGameRetore();
 		RemoteControl.clearChoiceBox();
 	}
