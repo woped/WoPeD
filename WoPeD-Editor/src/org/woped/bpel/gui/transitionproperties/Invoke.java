@@ -28,7 +28,7 @@ public class Invoke extends BaseActivity
 		this.setActivity(invoke);
 	}
 	
-	public void setInformation(BPELinvokePanel bip)
+	public void setInformationToPanel(BPELinvokePanel bip)
 	{
 		TInvoke invoke = (TInvoke) this.getActivity();
 		

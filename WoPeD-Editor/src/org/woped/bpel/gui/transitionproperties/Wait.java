@@ -20,7 +20,7 @@ public class Wait extends BaseActivity
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void saveInformation(BPELwaitPanel bwp)
+	public void saveInformationToPanel(BPELwaitPanel bwp)
 	{
 		//Problem Unterscheidung zwischen For und Until
 		TProcess p = BaseActivity.genBpelProsses();
