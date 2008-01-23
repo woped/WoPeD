@@ -29,7 +29,7 @@ public class Reply extends BaseActivity
 		this.setActivity(reply);
 	}
 	
-	public void setInformation(BPELreplyPanel brp)
+	public void setInformationToPanel(BPELreplyPanel brp)
 	{
 		TReply reply = (TReply) this.getActivity();
 		brp.setPartnerLink(reply.getPartnerLink());

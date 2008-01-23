@@ -27,7 +27,7 @@ public class Receive extends BaseActivity
 		this.setActivity(receive);
 	}
 	
-	public void setInformation(BPELreceivePanel brp){
+	public void setInformationToPanel(BPELreceivePanel brp){
 		
 		TReceive receive = (TReceive)this.getActivity();
 		brp.setPartnerLink(receive.getPartnerLink());
