@@ -417,7 +417,7 @@ public class BpelParserModel
 	public TProcess generate_bpel()
 	{
 		int counter = 0;
-		this.toString();
+		//this.toString();
 		while (true)
 		{
 			int pre = this.count_elements();
@@ -431,6 +431,8 @@ public class BpelParserModel
 			System.out.println("Durchlauf " + counter + "\nAnzahl Elemente "
 					+ this.count_elements());
 		}
+		
+		if(this._regist_transition.size() > 1)return null;
 		
 		TExtensibleElements test = this._regist_transition.iterator().next().getBpelCode();
 		TProcess p = BPEL.genBpelProsses();

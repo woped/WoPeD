@@ -179,10 +179,11 @@ public class EditorOperations extends JPanel {
             //SwingUtils.setFixedWidth(operationBpelTextField, 700);
             //operationBpelTextField.setText(Messages.getString("bitte entsprechend füllen @ Frank :-)"));
             
-            operationBpelTextField.setText(BPEL.getBPELMainClass().genPreview(editor));
+            
             operationBpelTextField.setEditable(false);
             
         }
+        operationBpelTextField.setText(BPEL.getBPELMainClass().genPreview(editor));
         operationBpelTextField.setVisible(true);    
         return operationBpelTextField;
         }
