@@ -557,9 +557,11 @@ public class BpelParserModel
 			return null;
 		if (e.count_post_objects() < 2)
 			return null;
+		
 		AbstractElement end = null;
 		AbstractElement tmp;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
+		
 		boolean firstrun = true;
 		boolean timetrigger = false;
 		boolean hastrigger = false;
@@ -609,30 +611,35 @@ public class BpelParserModel
 	 */
 	public AbstractElement isPick(AbstractElement e)
 	{
+		//String test = "";
 		if (e == null)
 			return null;
 		if (!Place.class.isInstance(e))
 			return null;
-		if (e.count_post_objects() == 0) return null;
+		if (e.count_post_objects() == 0) 
+			return null;
+		
 		AbstractElement end = null;
 		AbstractElement tmp = null;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
-		boolean firstrun = true;
 		
+		boolean firstrun = true;
+		//test = test + "<pick" + e.getData() + ">\n";
 		while (list.hasNext())
 		{
 			tmp = list.next();
-
+			//test = test + "<pick-Line>\n";
 			// first element must be a trigger
 			if (!TimeTriggerTransition.class.isInstance(tmp)
-					|| !ResourceTriggerTransition.class.isInstance(tmp)
-					|| !MessageTriggerTransition.class.isInstance(tmp))
+					&& !ResourceTriggerTransition.class.isInstance(tmp)
+					&& !MessageTriggerTransition.class.isInstance(tmp))
 				return null;
-			
 			if (tmp.count_post_objects() != 1)
 				return null;
 			if (tmp.count_pre_objects() != 1)
 				return null;
+			//test = test + "<Trigger " + tmp.getClass().getSimpleName() + ">\n";
+			
 			
 			// test 2. element, it is a place
 			tmp = tmp.get_first_post_element();
@@ -647,6 +654,7 @@ public class BpelParserModel
 			if ((tmp.count_post_objects() != 1)
 					|| (tmp.count_pre_objects() != 1))
 				return null;
+			//test = test + "<Transition " + tmp.getClass().getSimpleName() + ">\n";
 			
 			// test endelement			
 			tmp = tmp.get_first_post_element();
@@ -655,16 +663,16 @@ public class BpelParserModel
 				return null;
 			
 			if (firstrun)
-			{
-				System.out.println("Habe ein ende");
-				end = tmp;
+			{	end = tmp;
 				firstrun = false;
 			} else if (!end.equals(tmp))
 				return null;
+			//test = test + "</pick-line>\n";
 		}
 		
 		if (e.count_post_objects() != end.count_pre_objects())
 			return null;
+		//System.out.println(test+ "\n</Pick " + end.getData() + ">");
 		return end;
 	}
 
