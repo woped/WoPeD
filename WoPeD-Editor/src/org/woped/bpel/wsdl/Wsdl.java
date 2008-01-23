@@ -53,24 +53,32 @@ public class Wsdl {
 																					XMLStreamException			// Error during reading the WSDL file.
 	{
 		InputStream in;
+		WsdlFileRepresentation wsdl;
 
 		// Check if the file is stored in the internet (path starts with "ftp" or "http"; "https" is included too as it starts with "http").
 		// INFO:
 		// 	  It's NOT possible to use: pathToWsdlFile = pathToWsdlFile.toLowerCase(); and then
 		//								if ( (pathToWsdlFile.startsWith("http")) || (pathToWsdlFile.startsWith("ftp")) )
 		// 	  because in this case the whole string is converted to lower case --> It might be possible that the stream cannot be opened.
-		if( pathToWsdlFile.substring(0,4).toLowerCase().equals("http") ||
-				pathToWsdlFile.substring(0,3).toLowerCase().equals("ftp") ){
+		if( pathToWsdlFile.substring(0,6).toLowerCase().equals("https:") ||
+			pathToWsdlFile.substring(0,5).toLowerCase().equals("http:")  ||
+			pathToWsdlFile.substring(0,4).toLowerCase().equals("ftp:") ){
 			// Initialize a stream to an INTERNET FILE.
 			URL url = new URL( pathToWsdlFile );
-			in = url.openStream();
-		}
+
+			// Check if URL is correct
+			if (!pathToWsdlFile.toLowerCase().endsWith(".wsdl")){
+				throw new MalformedURLException("File doesn't end with .wsdl");
+			}
+				in = url.openStream();
+				wsdl = this.readDataFromWSDL(in);
+			}
 		else {
 			// Initialize a stream to a LOCAL FILE.
 			in = new FileInputStream(pathToWsdlFile);
+			// The stream to the WSDL file was initialized. Now read the data from the WSDL file.
+			wsdl = this.readDataFromWSDL(in);
 		}
-		// The stream to the WSDL file was initialized. Now read the data from the WSDL file.
-		WsdlFileRepresentation wsdl = this.readDataFromWSDL(in);
 		return wsdl;
 	}
 
