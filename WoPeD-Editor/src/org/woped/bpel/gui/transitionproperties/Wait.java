@@ -35,6 +35,7 @@ public class Wait extends BaseActivity
 			{
 				//until
 				TDeadlineExpr tdee = TDeadlineExpr.Factory.parse(bwp.getDeadline());
+				
 				wait.setUntil(tdee);
 			} 
 			catch (XmlException e) 
