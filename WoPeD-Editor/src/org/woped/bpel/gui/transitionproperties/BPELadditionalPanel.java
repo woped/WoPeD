@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -59,12 +61,13 @@ public abstract class BPELadditionalPanel extends JPanel{
 
 	static final String NEW = Messages.getString("Transition.Properties.BPEL.Buttons.New");
 
-	ArrayList<PartnerLinkType> partnerLinkTypes;
-	ArrayList<Role> roles;
+	ArrayList<PartnerLinkType> partnerLinkTypes = null;;
+	ArrayList<Role> roles = null;;
 
 	TransitionModel transition = null;
 
-	WsdlFileRepresentation wsdlFileRepresentation;
+	Wsdl wsdl = null;
+	WsdlFileRepresentation wsdlFileRepresentation = null;
 
 
 	public BPELadditionalPanel(TransitionPropertyEditor t_editor, TransitionModel transition){
@@ -76,8 +79,8 @@ public abstract class BPELadditionalPanel extends JPanel{
 	//	************** display dialog box "New Partner Link" *****************
 
 	protected void showNewPartnerLinkDialog(){
-		Wsdl wsdl = new Wsdl();
-		try {
+		wsdl = new Wsdl();
+/*		try {
 			wsdlFileRepresentation = wsdl.readDataFromWSDL("http://www.esther-landes.de/wsdlFiles/example.wsdl");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -86,12 +89,15 @@ public abstract class BPELadditionalPanel extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			partnerLinkTypeComboBox.removeAllItems();
+			partnerRoleComboBox.removeAllItems();
+			myRoleComboBox.removeAllItems();
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (XMLStreamException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 		dialogPartner = new JDialog(t_editor, true);
 		dialogPartner.setVisible(false);
@@ -278,9 +284,42 @@ public abstract class BPELadditionalPanel extends JPanel{
 	private JTextField getWSDLFileTextField(){
 		if(wsdlFileTextField == null){
 			wsdlFileTextField = new JTextField();
+			wsdlFileTextField.addKeyListener(new KeyListener() {
+				// User has entered the path to a wsdl file and has pressed "Enter"
+				public void keyReleased(KeyEvent e) {
+					if (e.getKeyCode() == KeyEvent.VK_ENTER){
+						try {
+							wsdlFileRepresentation = wsdl.readDataFromWSDL(wsdlFileTextField.getText());
+							fillAllComboBoxesWithData();
+						} catch (MalformedURLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (FileNotFoundException e1) {
+							partnerLinkTypeComboBox.removeAllItems();
+							partnerRoleComboBox.removeAllItems();
+							myRoleComboBox.removeAllItems();
+							// TODO Auto-generated catch block
+							//e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (XMLStreamException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				}
+
+				public void keyTyped(KeyEvent e)   { /* nothing happens */ }
+				public void keyPressed(KeyEvent e) { /* nothing happens */ }
+
+			});
 		}
 		return wsdlFileTextField;
 	}
+
+
+
 
 	private JButton getLocalWSDLButton(){
 		if (searchLocalWSDLButton == null){
@@ -304,6 +343,25 @@ public abstract class BPELadditionalPanel extends JPanel{
 					chooser.setAcceptAllFileFilterUsed(false);
 					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 						wsdlFileTextField.setText(""+chooser.getSelectedFile());
+						try {
+							wsdlFileRepresentation = wsdl.readDataFromWSDL(wsdlFileTextField.getText());
+							fillAllComboBoxesWithData();
+						} catch (MalformedURLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (FileNotFoundException e1) {
+							partnerLinkTypeComboBox.removeAllItems();
+							partnerRoleComboBox.removeAllItems();
+							myRoleComboBox.removeAllItems();
+							// TODO Auto-generated catch block
+							//e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (XMLStreamException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 				}
 			});
@@ -316,44 +374,34 @@ public abstract class BPELadditionalPanel extends JPanel{
 		if (partnerLinkTypeComboBox == null) {
 			partnerLinkTypeComboBox = new JComboBox();
 
-			partnerLinkTypes = wsdlFileRepresentation.getPartnerLinkTypes();
-
-			for(PartnerLinkType partnerLinkType : partnerLinkTypes){
-				partnerLinkTypeComboBox.addItem(partnerLinkType.getName());
-			}
-
-		    partnerLinkTypeComboBox.addItemListener(new ItemListener() {
+			partnerLinkTypeComboBox.addItemListener(new ItemListener() {
 		        public void itemStateChanged(ItemEvent e) {
-		            partnerRoleComboBox.removeAllItems();
-		            myRoleComboBox.removeAllItems();
-		            if ( partnerLinkTypes.size() != 0){
-		                roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
-		                for(Role role : roles){
-		                     partnerRoleComboBox.addItem(role.getRoleName());
-		                     myRoleComboBox.addItem(role.getRoleName());
-		                }
-		            }
-
+		        	if (partnerLinkTypeComboBox.getSelectedIndex() != -1){
+			            partnerRoleComboBoxAddItems();
+			            myRoleComboBoxAddItems();
+		        	}
 		        }
 		    });
+
+			// if there isn't a wsdl file path in the input field there aren't any subelements
+			if (wsdlFileRepresentation != null){
+				partnerLinkTypeComboBoxAddItems();
+			}
+
 		}
 		return partnerLinkTypeComboBox;
 	}
-
-
 
 
 	private JComboBox getPartnerRoleComboBox(){
 		if (partnerRoleComboBox == null) {
 			partnerRoleComboBox = new JComboBox();
 
-			// If there aren't any partner link types --> there can't be any subelements
-			if (partnerLinkTypes.size() != 0){
-				roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
-				for(Role role : roles){
-					partnerRoleComboBox.addItem(role.getRoleName());
-				}
+			// if there isn't a wsdl file path in the input field there aren't any subelements
+			if (wsdlFileRepresentation != null){
+				partnerRoleComboBoxAddItems();
 			}
+
 		}
 		return partnerRoleComboBox;
 	}
@@ -363,23 +411,22 @@ public abstract class BPELadditionalPanel extends JPanel{
 		if (myRoleComboBox == null) {
 			myRoleComboBox = new JComboBox();
 
-			// If there aren't any partner link types --> there can't be any subelements
-			if (partnerLinkTypes.size() != 0){
-				roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
-				for(Role role : roles){
-					myRoleComboBox.addItem(role.getRoleName());
-				}
+			// if there isn't a wsdl file path in the input field there aren't any subelements
+			if (wsdlFileRepresentation != null){
+				myRoleComboBoxAddItems();
 			}
+
 		}
 		return myRoleComboBox;
 	}
+
 
 	private JButton getOKButton(){
 		if (okButton == null) {
 			okButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
 			okButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					//todo: speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
+					// TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
 					dialogPartner.dispose();
 				}
 			});
@@ -398,6 +445,60 @@ public abstract class BPELadditionalPanel extends JPanel{
 		}
 		return cancelButton;
 	}
+
+
+
+
+	//	***************** methods to fill comboBoxes with data from the wsdl file **************************
+
+	private void fillAllComboBoxesWithData(){
+
+		// add new items
+		partnerLinkTypeComboBoxAddItems();
+		partnerRoleComboBoxAddItems();
+		myRoleComboBoxAddItems();
+	}
+
+
+	private void partnerLinkTypeComboBoxAddItems(){
+		partnerLinkTypeComboBox.removeAllItems();
+
+		partnerLinkTypes = wsdlFileRepresentation.getPartnerLinkTypes();
+
+		if ( partnerLinkTypes.size() != 0){
+
+			for(PartnerLinkType partnerLinkType : partnerLinkTypes){
+				partnerLinkTypeComboBox.addItem(partnerLinkType.getName());
+			}
+
+	    }
+	}
+
+
+	private void partnerRoleComboBoxAddItems(){
+		partnerRoleComboBox.removeAllItems();
+		// If there aren't any partner link types --> there can't be any subelements
+		if (partnerLinkTypes.size() != 0){
+			roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
+			for(Role role : roles){
+				partnerRoleComboBox.addItem(role.getRoleName());
+			}
+		}
+	}
+
+
+	private void myRoleComboBoxAddItems(){
+		myRoleComboBox.removeAllItems();
+		// If there aren't any partner link types --> there can't be any subelements
+		if (partnerLinkTypes.size() != 0){
+			roles = partnerLinkTypes.get(partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
+			for(Role role : roles){
+				myRoleComboBox.addItem(role.getRoleName());
+			}
+		}
+	}
+
+
 
 
 
