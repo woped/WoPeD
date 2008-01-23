@@ -125,8 +125,8 @@ public class BPELassignPanel extends BPELadditionalPanel{
 			
 			newFromVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					showNewVariableDialog();
-					fillVariableToComboBox(fromVariableComboBox);
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					fromVariableComboBox.addItem(dialog.getName());
 				}
 			});
 		}
