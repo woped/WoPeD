@@ -34,7 +34,10 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.xmlbeans.XmlCursor;
+import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
+import org.woped.bpel.gui.transitionproperties.BaseActivity;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.model.ArcModel;
@@ -69,6 +72,9 @@ import org.woped.pnml.NetType;
 import org.woped.pnml.NodeNameType;
 import org.woped.pnml.OperatorType;
 import org.woped.pnml.OrganizationUnitType;
+import org.woped.pnml.TPartnerLinks;
+import org.woped.pnml.TVariables;
+
 import org.woped.pnml.PlaceToolspecificType;
 import org.woped.pnml.PlaceType;
 import org.woped.pnml.PnmlDocument;
@@ -182,6 +188,11 @@ public class PNMLExport
 
             iNetToolSpec.setTool("WoPeD");
             iNetToolSpec.setVersion("1.0"); //TODO Version aus properties übernehmen!?
+            //Get PartnerLinks and Variables
+            TPartnerLinks iPLs = iNetToolSpec.addNewPartnerLinks();
+            if(petrinetModel.getElementContainer().getTPartnerLinkList()!=null)iPLs.set(petrinetModel.getElementContainer().getTPartnerLinkList());
+            TVariables iVs = iNetToolSpec.addNewVariables();
+            if(petrinetModel.getElementContainer().getVariableList()!=null)iVs.set(petrinetModel.getElementContainer().getTVariablesList());
             // graphics
             GraphicsSimpleType iGraphicsNet = iNetToolSpec.addNewBounds();
             EditorLayoutInfo layoutInfo = editor.getSavedLayoutInfo();
@@ -572,6 +583,30 @@ public class PNMLExport
     {
         iToolspecific.setTool("WoPeD");
         iToolspecific.setVersion("1.0");
+        if (org.woped.bpel.gui.transitionproperties.Assign.class.isInstance(currentModel.getBpelData())){
+        	org.woped.pnml.TAssign iAssign = iToolspecific.addNewAssign();
+        	iAssign.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        }
+        if (org.woped.bpel.gui.transitionproperties.Invoke.class.isInstance(currentModel.getBpelData())){
+        	org.woped.pnml.TInvoke iInvoke = iToolspecific.addNewInvoke();
+        	iInvoke.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        }
+        if (org.woped.bpel.gui.transitionproperties.Receive.class.isInstance(currentModel.getBpelData())){
+        	org.woped.pnml.TReceive iReceive = iToolspecific.addNewReceive();
+        	iReceive.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        }
+        if (org.woped.bpel.gui.transitionproperties.Reply.class.isInstance(currentModel.getBpelData())){
+        	org.woped.pnml.TReply iReply = iToolspecific.addNewReply();
+        	iReply.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        }
+        if (org.woped.bpel.gui.transitionproperties.Wait.class.isInstance(currentModel.getBpelData())){
+        	org.woped.pnml.TWait iWait = iToolspecific.addNewWait();
+        	iWait.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        }
+        /*if (org.woped.bpel.gui.transitionproperties.Empty.class.isInstance(currentModel.getBpelData())){
+        	org.woped.pnml.TEmpty iEmpty = iToolspecific.addNewEmpty();
+        	iEmpty.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        }*/
         if (currentModel.getToolSpecific().getOperatorId() != null)
         {
             initOperator(iToolspecific.addNewOperator(), currentModel.getToolSpecific().getOperatorId(), currentModel.getToolSpecific().getOperatorType());

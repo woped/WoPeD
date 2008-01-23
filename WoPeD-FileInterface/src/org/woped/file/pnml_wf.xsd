@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by tyr (odin) -->
-<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Dietmar Hantsch (KYBEIDOS GmbH) -->
-<!-- 
-	
- -->
-<xs:schema targetNamespace="pnml.woped.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="pnml.woped.org" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:annotation>
-		<xs:documentation>	
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio 1.0.7.0 (http://www.liquid-technologies.com) -->
+<xsd:schema xmlns="pnml.woped.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="pnml.woped.org">
+  <xs:import schemaLocation="http://www.w3.org/2001/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace" />
+  <xs:annotation>
+    <xs:documentation>	
 			This is the XML Schema for PNML 1.3.2c
 			according the Specification  http://www.informatik.hu-berlin.de/top/PNX/download/ISO-IEC-15909-2-Draft.0.5.0.pdf
 			and the Relax NG Files: 
@@ -15,249 +12,784 @@
 			(RNG for label graphics) http://www.informatik.hu-berlin.de/top/pnml/conv.rng
 			20.01.2005
 			Simon Landes (landes@woped.org)
-		</xs:documentation>
-	</xs:annotation>
-	<xs:element name="pnml" type="pnmlType"/>
-	<xs:complexType name="pnmlType">
-		<xs:sequence>
-			<xs:element name="net" type="netType" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<!-- PetriNet -->
-	<xs:complexType name="netNameType">
-		<xs:annotation>
-			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xs:documentation>
-		</xs:annotation>
-	</xs:complexType>
-	<xs:complexType name="netType">
-		<xs:sequence>
-			<xs:element name="name" minOccurs="0">
-				<xs:complexType>
-					<xs:complexContent>
-						<xs:extension base="netNameType">
-							<xs:sequence>
-								<xs:element name="text" type="xs:string"/>
-							</xs:sequence>
-						</xs:extension>
-					</xs:complexContent>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="place" type="placeType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="transition" type="transitionType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="arc" type="arcType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="toolspecific" type="netToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="graphics" minOccurs="0"/>
-			<xs:element name="page" minOccurs="0" maxOccurs="unbounded">
-				<xs:complexType>
-					<xs:complexContent>
-						<xs:extension base="pageType"/>
-					</xs:complexContent>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="referencePlace" type="referencePlaceType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:ID" use="required"/>
-		<xs:attribute name="type" type="xs:anyURI" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="netToolspecificType">
-		<xs:complexContent>
-			<xs:extension base="toolspecificType">
-				<xs:sequence>
-					<xs:element name="bounds" type="graphicsSimpleType" minOccurs="0"/>
-					<xs:element name="treeWidth" type="xs:int" minOccurs="0"/>
-					<xs:element name="resources" type="resourcesType" minOccurs="0"/>
-					<xs:element name="simulations" type="simulationsType" minOccurs="0"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="resourceMappingType">
-		<xs:attribute name="resourceID" type="xs:IDREF"/>
-		<xs:attribute name="resourceClass" type="xs:IDREF"/>
-	</xs:complexType>
-	<xs:complexType name="organizationUnitType">
-		<xs:attribute name="Name" type="xs:ID"/>
-	</xs:complexType>
-	<xs:complexType name="resourceType">
-		<xs:attribute name="Name" type="xs:ID"/>
-	</xs:complexType>
-	<xs:complexType name="resourcesType">
-		<xs:sequence>
-			<xs:element name="resource" type="resourceType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element name="role" type="roleType"/>
-				<xs:element name="organizationUnit" type="organizationUnitType"/>
-			</xs:choice>
-			<xs:element name="resourceMapping" type="resourceMappingType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute name="ID" type="xs:ID"/>
-	</xs:complexType>
-	<xs:complexType name="roleType">
-		<xs:attribute name="Name" type="xs:ID"/>
-	</xs:complexType>
-	<!-- General Node Types -->
-	<xs:complexType name="nodeType">
-		<xs:sequence>
-			<xs:element name="name" type="nodeNameType"/>
-			<xs:element name="graphics" type="graphicsNodeType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="nodeNameType">
-		<xs:annotation>
-			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pnml/conv.rng"</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="text" type="xs:string"/>
-			<xs:element name="graphics" type="annotationGraphisType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="graphicsNodeType">
-		<xs:sequence>
-			<xs:element name="position" type="positionType"/>
-			<xs:element name="dimension" type="dimensionType" minOccurs="0"/>
-			<xs:element ref="fill" minOccurs="0"/>
-			<xs:element ref="line" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<!-- Place Types-->
-	<xs:complexType name="placeType" mixed="0">
-		<xs:complexContent mixed="0">
-			<xs:extension base="nodeType">
-				<xs:sequence>
-					<xs:element name="initialMarking" minOccurs="0">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="text" type="xs:string"/>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="toolspecific" type="placeToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:sequence>
-				<xs:attribute name="id" type="xs:ID" use="required"/>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="placeToolspecificType">
-		<xs:complexContent>
-			<xs:extension base="toolspecificType">
-				<xs:sequence>
-					<xs:element name="operator" type="operatorType"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<!-- Transition Types-->
-	<xs:complexType name="transitionType">
-		<xs:complexContent>
-			<xs:extension base="nodeType">
-				<xs:sequence>
-					<xs:element name="toolspecific" type="transitionToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:sequence>
-				<xs:attribute name="id" type="xs:ID" use="required"/>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="transitionToolspecificType">
-		<xs:complexContent>
-			<xs:extension base="toolspecificType">
-				<xs:sequence>
-					<xs:element name="trigger" minOccurs="0">
-						<xs:complexType>
-							<xs:complexContent>
-								<xs:extension base="triggerType"/>
-							</xs:complexContent>
-						</xs:complexType>
-					</xs:element>
-					<xs:choice minOccurs="0">
-						<xs:element name="operator" type="operatorType"/>
-						<xs:element name="subprocess" type="xs:boolean"/>
-					</xs:choice>
-					<xs:element name="transitionResource" minOccurs="0">
-						<xs:complexType>
-							<xs:complexContent>
-								<xs:extension base="transitionResourceType"/>
-							</xs:complexContent>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="time" type="xs:int" minOccurs="0"/>					
-					<xs:element name="timeUnit" type="xs:int" minOccurs="0"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="triggerType">
-		<xs:sequence>
-			<xs:element name="graphics" type="graphicsSimpleType"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:string" use="required"/>
-		<xs:attribute name="type" type="xs:int" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="operatorType">
-		<xs:attribute name="id" type="xs:string" use="required"/>
-		<xs:attribute name="type" type="xs:int" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="transitionResourceType">
-		<xs:sequence>
-			<xs:element name="graphics" type="graphicsSimpleType"/>
-		</xs:sequence>
-		<xs:attribute name="organizationalUnitName" type="xs:IDREF"/>
-		<xs:attribute name="roleName" type="xs:IDREF"/>
-	</xs:complexType>
+		
+ 
 	
-	<!--BPEL Extensions, Import from BPEL.xsd-->
-	
-	<xs:complexType name="tbpel">
-		<xs:sequence>
-			<xs:element name="process" type="tProcess" />
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="tProcess">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="extensions" minOccurs="0" />
-					<xs:element ref="import" minOccurs="0" maxOccurs="unbounded" />
-					<xs:element ref="partnerLinks" minOccurs="0" />
-					<xs:element ref="messageExchanges" minOccurs="0" />
-					<xs:element ref="variables" minOccurs="0" />
-					<xs:element ref="correlationSets" minOccurs="0" />
-					<xs:element ref="faultHandlers" minOccurs="0" />
-					<xs:element ref="eventHandlers" minOccurs="0" />
-					<xs:group ref="activity" minOccurs="1" />
-				</xs:sequence>
-				<xs:attribute name="name" type="xsd:NCName" use="required" />
-				<xs:attribute name="targetNamespace" type="xsd:anyURI" use="required" />
-				<xs:attribute name="queryLanguage" type="xsd:anyURI" default="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" />
-				<xs:attribute name="expressionLanguage" type="xsd:anyURI" default="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" />
-				<xs:attribute name="suppressJoinFailure" type="tBoolean" default="no" />
-				<xs:attribute name="exitOnStandardFault" type="tBoolean" default="no" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tExtensibleElements">
-		<xs:annotation>
-			<xs:documentation>
+ </xs:documentation>
+  </xs:annotation>
+  <xs:element name="pnml" type="pnmlType" />
+  <xs:complexType name="pnmlType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="net" type="netType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="netNameType">
+    <xs:annotation>
+      <xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"
+ PetriNet </xs:documentation>
+    </xs:annotation>
+  </xs:complexType>
+  <xs:complexType name="netType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="netNameType">
+              <xs:sequence>
+                <xs:element name="text" type="xs:string" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="place" type="placeType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="transition" type="transitionType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arc" type="arcType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="toolspecific" type="netToolspecificType" />
+      <xs:element minOccurs="0" name="graphics" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="page">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="pageType" />
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="referencePlace" type="referencePlaceType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+    <xs:attribute name="type" type="xs:anyURI" use="required" />
+  </xs:complexType>
+  <xs:complexType name="netToolspecificType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="toolspecificType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bounds" type="graphicsSimpleType" />
+          <xs:element minOccurs="0" name="treeWidth" type="xs:int" />
+          <xs:element minOccurs="0" name="resources" type="resourcesType" />
+          <xs:element minOccurs="0" name="simulations" type="simulationsType" />
+          <xs:element minOccurs="0" ref="partnerLinks" />
+          <xs:element minOccurs="0" ref="variables" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="resourceMappingType">
+    <xs:attribute name="resourceID" type="xs:IDREF" />
+    <xs:attribute name="resourceClass" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="organizationUnitType">
+    <xs:attribute name="Name" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="resourceType">
+    <xs:attribute name="Name" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="resourcesType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="resource" type="resourceType" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="role" type="roleType" />
+        <xs:element name="organizationUnit" type="organizationUnitType" />
+      </xs:choice>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="resourceMapping" type="resourceMappingType" />
+    </xs:sequence>
+    <xs:attribute name="ID" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="roleType">
+    <xs:attribute name="Name" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="nodeType">
+    <xs:annotation>
+      <xs:documentation> General Node Types </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="nodeNameType" />
+      <xs:element name="graphics" type="graphicsNodeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nodeNameType">
+    <xs:annotation>
+      <xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pnml/conv.rng"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="text" type="xs:string" />
+      <xs:element minOccurs="0" name="graphics" type="annotationGraphisType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="graphicsNodeType">
+    <xs:sequence>
+      <xs:element name="position" type="positionType" />
+      <xs:element minOccurs="0" name="dimension" type="dimensionType" />
+      <xs:element minOccurs="0" ref="fill" />
+      <xs:element minOccurs="0" ref="line" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="placeType">
+    <xs:annotation>
+      <xs:documentation> Place Types</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="nodeType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="initialMarking">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="text" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="toolspecific" type="placeToolspecificType" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="placeToolspecificType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="toolspecificType">
+        <xs:sequence>
+          <xs:element name="operator" type="operatorType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="transitionType">
+    <xs:annotation>
+      <xs:documentation> Transition Types</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="nodeType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="toolspecific" type="transitionToolspecificType" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="transitionToolspecificType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="toolspecificType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="trigger">
+            <xs:complexType>
+              <xs:complexContent mixed="false">
+                <xs:extension base="triggerType" />
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:choice minOccurs="0">
+            <xs:element name="operator" type="operatorType" />
+            <xs:element name="subprocess" type="xs:boolean" />
+          </xs:choice>
+          <xs:element minOccurs="0" name="transitionResource">
+            <xs:complexType>
+              <xs:complexContent mixed="false">
+                <xs:extension base="transitionResourceType" />
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="time" type="xs:int" />
+          <xs:element minOccurs="0" name="timeUnit" type="xs:int" />
+          <xs:choice minOccurs="0">
+            <xs:element ref="assign" />
+            <xs:element ref="invoke" />
+            <xs:element ref="reply" />
+            <xs:element ref="wait" />
+            <xs:element ref="receive" />
+            <xs:element ref="empty" />
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="triggerType">
+    <xs:sequence>
+      <xs:element name="graphics" type="graphicsSimpleType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="type" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="operatorType">
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="type" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="transitionResourceType">
+    <xs:sequence>
+      <xs:element name="graphics" type="graphicsSimpleType" />
+    </xs:sequence>
+    <xs:attribute name="organizationalUnitName" type="xs:IDREF" />
+    <xs:attribute name="roleName" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="arcType">
+    <xs:annotation>
+      <xs:documentation> Arc Types</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="inscription" type="arcNameType" />
+      <xs:element minOccurs="0" name="graphics" type="graphicsArcType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="toolspecific" type="arcToolspecificType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+    <xs:attribute name="source" type="xs:IDREF" use="required" />
+    <xs:attribute name="target" type="xs:IDREF" use="required" />
+  </xs:complexType>
+  <xs:complexType name="arcToolspecificType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="toolspecificType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="route" type="xs:boolean" />
+          <xs:element minOccurs="0" name="probability" type="xs:double" />
+          <xs:element minOccurs="0" name="displayProbabilityOn" type="xs:boolean" />
+          <xs:element minOccurs="0" name="displayProbabilityPosition" type="positionType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="arcInscriptionType">
+    <xs:annotation>
+      <xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="text" type="xs:string" />
+      <xs:element name="graphics" type="annotationGraphisType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="graphicsArcType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="position" type="positionType" />
+      <xs:element minOccurs="0" ref="line" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="arcNameType">
+    <xs:annotation>
+      <xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pnml/conv.rng"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="text" type="xs:int" />
+      <xs:element minOccurs="0" name="graphics" type="annotationGraphisType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="graphicsSimpleType">
+    <xs:annotation>
+      <xs:documentation> General Types </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="position" type="positionType" />
+      <xs:element name="dimension" type="dimensionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="toolspecificType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Type for the Inheritance of the Toolspecific Types</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="tool" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="annotationGraphisType">
+    <xs:annotation>
+      <xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="offset" type="positionType" />
+      <xs:element minOccurs="0" ref="fill" />
+      <xs:element minOccurs="0" ref="line" />
+      <xs:element minOccurs="0" ref="font" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="fill">
+    <xs:annotation>
+      <xs:documentation> Helper  Types / Elements</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="color" />
+      <xs:attribute name="gradient-color" />
+      <xs:attribute name="gradient-rotation" type="xs:token" />
+      <xs:attribute name="images" type="xs:anyURI" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="line">
+    <xs:complexType>
+      <xs:attribute name="shape" type="xs:token" />
+      <xs:attribute name="color" />
+      <xs:attribute name="width" type="xs:decimal" />
+      <xs:attribute name="style" type="xs:token" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="font">
+    <xs:complexType>
+      <xs:attribute name="family" />
+      <xs:attribute name="style" />
+      <xs:attribute name="weight" />
+      <xs:attribute name="size" />
+      <xs:attribute name="decoration">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="underline" />
+            <xs:enumeration value="overline" />
+            <xs:enumeration value="line-through" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="align">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="left" />
+            <xs:enumeration value="center" />
+            <xs:enumeration value="right" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rotation" type="xs:decimal" />
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="dimensionType">
+    <xs:attribute name="x" type="xs:decimal" use="required" />
+    <xs:attribute name="y" type="xs:decimal" use="required" />
+  </xs:complexType>
+  <xs:complexType name="positionType">
+    <xs:attribute name="x" type="xs:decimal" use="required" />
+    <xs:attribute name="y" type="xs:decimal" use="required" />
+  </xs:complexType>
+  <xs:complexType name="pageType">
+    <xs:annotation>
+      <xs:documentation>structured &amp;amp; modular PNML Types</xs:documentation>
+    </xs:annotation>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="net" type="netType" />
+    </xs:choice>
+    <xs:attribute name="id" type="xs:ID" />
+  </xs:complexType>
+  <xs:complexType name="referencePlaceType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="graphics" type="graphicsNodeType" />
+      <xs:element name="toolspecific" type="toolspecificType" />
+    </xs:choice>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+    <xs:attribute name="ref" type="xs:IDREF" use="required" />
+  </xs:complexType>
+  <xs:complexType name="instanceType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="importPlace" type="importPlaceType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+    <xs:attribute name="ref" type="xs:anyURI" use="required" />
+  </xs:complexType>
+  <xs:complexType name="importPlaceType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="graphics" type="graphicsNodeType" />
+      <xs:element name="toolspecific" type="toolspecificType" />
+    </xs:choice>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+    <xs:attribute name="instance" type="xs:IDREF" />
+    <xs:attribute name="ref" type="xs:NCName" use="required" />
+    <xs:attribute name="parameter" type="xs:NCName" use="required" />
+  </xs:complexType>
+  <xs:complexType name="simulationsType">
+    <xs:annotation>
+      <xs:documentation> Simulation Types </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="simulation" type="simulationType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="simulationType">
+    <xs:sequence>
+      <xs:element name="simulationname" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="transitionsequence" type="transitionsequenceType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="netFingerprint" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+  </xs:complexType>
+  <xs:complexType name="transitionsequenceType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="firedtransition" type="firedtransitionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="firedtransitionType">
+    <xs:attribute name="transitionID" type="xs:IDREF" />
+  </xs:complexType>
+  <xs:complexType name="tExtensibleElements">
+    <xs:annotation>
+      <xs:documentation>
 				This type is extended by other component types to allow elements and attributes from
 				other namespaces to be added at the modeled places.
 			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element ref="documentation" minOccurs="0" maxOccurs="unbounded" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
-		</xs:sequence>
-		<xs:anyAttribute namespace="##other" processContents="lax" />
-	</xs:complexType>
-	<xs:element name="documentation" type="tDocumentation" />
-	<xs:complexType name="tDocumentation" mixed="true">
-		<xs:sequence>
-			<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" />
-		</xs:sequence>
-		<xs:attribute name="source" type="xsd:anyURI" />
-		<xs:attribute ref="xml:lang" />
-	</xs:complexType>
-	<xs:group name="activity">
-		<xs:annotation>
-			<xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="documentation" />
+      <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xs:sequence>
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+  <xs:element name="documentation" type="tDocumentation" />
+  <xs:complexType name="tDocumentation" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+    </xs:sequence>
+    <xs:attribute name="source" type="xs:anyURI" />
+    <xs:attribute ref="xml:lang" />
+  </xs:complexType>
+  <xs:element name="partnerLinks" type="tPartnerLinks" />
+  <xs:complexType name="tPartnerLinks">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" ref="partnerLink" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="partnerLink" type="tPartnerLink" />
+  <xs:complexType name="tPartnerLink">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:attribute name="name" type="xs:NCName" use="required" />
+        <xs:attribute name="partnerLinkType" type="xs:QName" use="required" />
+        <xs:attribute name="myRole" type="xs:NCName" />
+        <xs:attribute name="partnerRole" type="xs:NCName" />
+        <xs:attribute name="initializePartnerRole" type="tBoolean" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="variables" type="tVariables" />
+  <xs:complexType name="tVariables">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" ref="variable" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="variable" type="tVariable" />
+  <xs:complexType name="tVariable">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="from" />
+        </xs:sequence>
+        <xs:attribute name="name" type="BPELVariableName" use="required" />
+        <xs:attribute name="messageType" type="xs:QName" use="optional" />
+        <xs:attribute name="type" type="xs:QName" use="optional" />
+        <xs:attribute name="element" type="xs:QName" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="from" type="tFrom" />
+  <xs:complexType name="tFrom" mixed="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="documentation" />
+      <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      <xs:choice minOccurs="0">
+        <xs:element minOccurs="1" ref="literal" />
+        <xs:element minOccurs="1" ref="query" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="expressionLanguage" type="xs:anyURI" />
+    <xs:attribute name="variable" type="BPELVariableName" />
+    <xs:attribute name="part" type="xs:NCName" />
+    <xs:attribute name="property" type="xs:QName" />
+    <xs:attribute name="partnerLink" type="xs:NCName" />
+    <xs:attribute name="endpointReference" type="tRoles" />
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+  <xs:simpleType name="BPELVariableName">
+    <xs:restriction base="xs:NCName">
+      <xs:pattern value="[^\.]+" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tBoolean">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="yes" />
+      <xs:enumeration value="no" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tRoles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="myRole" />
+      <xs:enumeration value="partnerRole" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="literal" type="tLiteral" />
+  <xs:complexType name="tLiteral" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="1" namespace="##any" processContents="lax" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="query" type="tQuery" />
+  <xs:complexType name="tQuery" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+    </xs:sequence>
+    <xs:attribute name="queryLanguage" type="xs:anyURI" />
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+  <xs:element name="assign" type="tAssign" />
+  <xs:complexType name="tAssign">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tActivity">
+        <xs:sequence>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element minOccurs="1" ref="copy" />
+            <xs:element minOccurs="1" ref="extensionAssignOperation" />
+          </xs:choice>
+        </xs:sequence>
+        <xs:attribute default="no" name="validate" type="tBoolean" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tActivity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="targets" />
+          <xs:element minOccurs="0" ref="sources" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:NCName" />
+        <xs:attribute name="suppressJoinFailure" type="tBoolean" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="copy" type="tCopy" />
+  <xs:complexType name="tCopy">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="1" ref="from" />
+          <xs:element minOccurs="1" ref="to" />
+        </xs:sequence>
+        <xs:attribute default="no" name="keepSrcElementName" type="tBoolean" use="optional" />
+        <xs:attribute default="no" name="ignoreMissingFromData" type="tBoolean" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="extensionAssignOperation" type="tExtensionAssignOperation" />
+  <xs:complexType name="tExtensionAssignOperation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="targets" type="tTargets" />
+  <xs:complexType name="tTargets">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="joinCondition" />
+          <xs:element minOccurs="1" maxOccurs="unbounded" ref="target" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="joinCondition" type="tCondition" />
+  <xs:element name="target" type="tTarget" />
+  <xs:complexType name="tTarget">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:attribute name="linkName" type="xs:NCName" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="sources" type="tSources" />
+  <xs:complexType name="tSources">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" ref="source" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="source" type="tSource" />
+  <xs:complexType name="tSource">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="transitionCondition" />
+        </xs:sequence>
+        <xs:attribute name="linkName" type="xs:NCName" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="to" type="tTo" />
+  <xs:complexType name="tTo" mixed="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="documentation" />
+      <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      <xs:element minOccurs="0" ref="query" />
+    </xs:sequence>
+    <xs:attribute name="expressionLanguage" type="xs:anyURI" />
+    <xs:attribute name="variable" type="BPELVariableName" />
+    <xs:attribute name="part" type="xs:NCName" />
+    <xs:attribute name="property" type="xs:QName" />
+    <xs:attribute name="partnerLink" type="xs:NCName" />
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+  <xs:complexType name="tCondition">
+    <xs:complexContent mixed="true">
+      <xs:extension base="tExpression" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="transitionCondition" type="tCondition" />
+  <xs:complexType name="tExpression" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+    </xs:sequence>
+    <xs:attribute name="expressionLanguage" type="xs:anyURI" />
+    <xs:anyAttribute namespace="##other" processContents="lax" />
+  </xs:complexType>
+  <xs:element name="invoke" type="tInvoke" />
+  <xs:complexType name="tInvoke">
+    <xs:annotation>
+      <xs:documentation>
+				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
+				because there is another correlations element defined for the non-invoke activities.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tActivity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="correlations" type="tCorrelationsWithPattern" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="catch" />
+          <xs:element minOccurs="0" ref="catchAll" />
+          <xs:element minOccurs="0" ref="compensationHandler" />
+          <xs:element minOccurs="0" ref="toParts" />
+          <xs:element minOccurs="0" ref="fromParts" />
+        </xs:sequence>
+        <xs:attribute name="partnerLink" type="xs:NCName" use="required" />
+        <xs:attribute name="portType" type="xs:QName" use="optional" />
+        <xs:attribute name="operation" type="xs:NCName" use="required" />
+        <xs:attribute name="inputVariable" type="BPELVariableName" use="optional" />
+        <xs:attribute name="outputVariable" type="BPELVariableName" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tCorrelationsWithPattern">
+    <xs:annotation>
+      <xs:documentation>
+				XSD Authors: The child element correlation needs to be a Local Element Declaration, 
+				because there is another correlation element defined for the non-invoke activities.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="correlation" type="tCorrelationWithPattern" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tCorrelationWithPattern">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tCorrelation">
+        <xs:attribute name="pattern" type="tPattern" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tCatch">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tActivityContainer">
+        <xs:attribute name="faultName" type="xs:QName" />
+        <xs:attribute name="faultVariable" type="BPELVariableName" />
+        <xs:attribute name="faultMessageType" type="xs:QName" />
+        <xs:attribute name="faultElement" type="xs:QName" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="catch" type="tCatch">
+    <xs:annotation>
+      <xs:documentation>
+				This element can contain all activities including the activities
+				compensate, compensateScope and rethrow.
+			</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="catchAll" type="tActivityContainer">
+    <xs:annotation>
+      <xs:documentation>
+				This element can contain all activities including the activities
+				compensate, compensateScope and rethrow.
+			</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="compensationHandler" type="tActivityContainer">
+    <xs:annotation>
+      <xs:documentation>
+				This element can contain all activities including the activities
+				compensate and compensateScope.
+			</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="toParts" type="tToParts" />
+  <xs:complexType name="tToParts">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" ref="toPart" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="toPart" type="tToPart" />
+  <xs:complexType name="tToPart">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:attribute name="part" type="xs:NCName" use="required" />
+        <xs:attribute name="fromVariable" type="BPELVariableName" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="fromParts" type="tFromParts" />
+  <xs:complexType name="tFromParts">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" ref="fromPart" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="fromPart" type="tFromPart" />
+  <xs:complexType name="tFromPart">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:attribute name="part" type="xs:NCName" use="required" />
+        <xs:attribute name="toVariable" type="BPELVariableName" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="tPattern">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="request" />
+      <xs:enumeration value="response" />
+      <xs:enumeration value="request-response" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="tCorrelation">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:attribute name="set" type="xs:NCName" use="required" />
+        <xs:attribute default="no" name="initiate" type="tInitiate" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tActivityContainer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:group minOccurs="1" ref="activity" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="tInitiate">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="yes" />
+      <xs:enumeration value="join" />
+      <xs:enumeration value="no" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:group name="activity">
+    <xs:annotation>
+      <xs:documentation>
 				All standard WS-BPEL 2.0 activities in alphabetical order. Basic activities
 				and structured activities.
 				Addtional constraints:
@@ -266,1073 +798,104 @@
 				- compensate or compensateScope activity can be used ONLY
 				  within a fault handler, a compensation handler or a termination handler
 			</xs:documentation>
-		</xs:annotation>
-		<xs:choice>
-			<xs:element ref="assign" />
-			<xs:element ref="compensate" />
-			<xs:element ref="compensateScope" />
-			<xs:element ref="empty" />
-			<xs:element ref="exit" />
-			<xs:element ref="extensionActivity" />
-			<xs:element ref="flow" />
-			<xs:element ref="forEach" />
-			<xs:element ref="if" />
-			<xs:element ref="invoke" />
-			<xs:element ref="pick" />
-			<xs:element ref="receive" />
-			<xs:element ref="repeatUntil" />
-			<xs:element ref="reply" />
-			<xs:element ref="rethrow" />
-			<xs:element ref="scope" />
-			<xs:element ref="sequence" />
-			<xs:element ref="throw" />
-			<xs:element ref="validate" />
-			<xs:element ref="wait" />
-			<xs:element ref="while" />
-		</xs:choice>
-	</xs:group>
-	<xs:element name="extensions" type="tExtensions" />
-	<xs:complexType name="tExtensions">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="extension" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="extension" type="tExtension" />
-	<xs:complexType name="tExtension">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="namespace" type="xsd:anyURI" use="required" />
-				<xs:attribute name="mustUnderstand" type="tBoolean" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="import" type="tImport" />
-	<xs:complexType name="tImport">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="namespace" type="xsd:anyURI" use="optional" />
-				<xs:attribute name="location" type="xsd:anyURI" use="optional" />
-				<xs:attribute name="importType" type="xsd:anyURI" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="partnerLinks" type="tPartnerLinks" />
-	<xs:complexType name="tPartnerLinks">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="partnerLink" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="partnerLink" type="tPartnerLink" />
-	<xs:complexType name="tPartnerLink">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="name" type="xsd:NCName" use="required" />
-				<xs:attribute name="partnerLinkType" type="xsd:QName" use="required" />
-				<xs:attribute name="myRole" type="xsd:NCName" />
-				<xs:attribute name="partnerRole" type="xsd:NCName" />
-				<xs:attribute name="initializePartnerRole" type="tBoolean" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="messageExchanges" type="tMessageExchanges" />
-	<xs:complexType name="tMessageExchanges">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="messageExchange" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="messageExchange" type="tMessageExchange" />
-	<xs:complexType name="tMessageExchange">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="name" type="xsd:NCName" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="variables" type="tVariables" />
-	<xs:complexType name="tVariables">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="variable" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="variable" type="tVariable" />
-	<xs:complexType name="tVariable">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="from" minOccurs="0" />
-				</xs:sequence>
-				<xs:attribute name="name" type="BPELVariableName" use="required" />
-				<xs:attribute name="messageType" type="xsd:QName" use="optional" />
-				<xs:attribute name="type" type="xsd:QName" use="optional" />
-				<xs:attribute name="element" type="xsd:QName" use="optional" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:simpleType name="BPELVariableName">
-		<xs:restriction base="xsd:NCName">
-			<xs:pattern value="[^\.]+" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:element name="correlationSets" type="tCorrelationSets" />
-	<xs:complexType name="tCorrelationSets">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="correlationSet" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="correlationSet" type="tCorrelationSet" />
-	<xs:complexType name="tCorrelationSet">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="properties" type="QNames" use="required" />
-				<xs:attribute name="name" type="xsd:NCName" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:simpleType name="QNames">
-		<xs:restriction>
-			<xs:simpleType>
-				<xs:list itemType="xsd:QName" />
-			</xs:simpleType>
-			<xs:minLength value="1" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:element name="faultHandlers" type="tFaultHandlers" />
-	<xs:complexType name="tFaultHandlers">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="catch" minOccurs="0" maxOccurs="unbounded" />
-					<xs:element ref="catchAll" minOccurs="0" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="catch" type="tCatch">
-		<xs:annotation>
-			<xs:documentation>
-				This element can contain all activities including the activities
-				compensate, compensateScope and rethrow.
-			</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:complexType name="tCatch">
-		<xs:complexContent>
-			<xs:extension base="tActivityContainer">
-				<xs:attribute name="faultName" type="xsd:QName" />
-				<xs:attribute name="faultVariable" type="BPELVariableName" />
-				<xs:attribute name="faultMessageType" type="xsd:QName" />
-				<xs:attribute name="faultElement" type="xsd:QName" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="catchAll" type="tActivityContainer">
-		<xs:annotation>
-			<xs:documentation>
-				This element can contain all activities including the activities
-				compensate, compensateScope and rethrow.
-			</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:complexType name="tActivityContainer">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:group ref="activity" minOccurs="1" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="eventHandlers" type="tEventHandlers" />
-	<xs:complexType name="tEventHandlers">
-		<xs:annotation>
-			<xs:documentation>
-				XSD Authors: The child element onAlarm needs to be a Local Element Declaration, 
-				because there is another onAlarm element defined for the pick activity.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="onEvent" minOccurs="0" maxOccurs="unbounded" />
-					<xs:element name="onAlarm" type="tOnAlarmEvent" minOccurs="0" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="onEvent" type="tOnEvent" />
-	<xs:complexType name="tOnEvent">
-		<xs:complexContent>
-			<xs:extension base="tOnMsgCommon">
-				<xs:sequence>
-					<xs:element ref="scope" minOccurs="1" />
-				</xs:sequence>
-				<xs:attribute name="messageType" type="xsd:QName" use="optional" />
-				<xs:attribute name="element" type="xsd:QName" use="optional" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tOnMsgCommon">
-		<xs:annotation>
-			<xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="assign" />
+      <xs:element ref="empty" />
+      <xs:element ref="invoke" />
+      <xs:element ref="receive" />
+      <xs:element ref="reply" />
+      <xs:element ref="wait" />
+    </xs:choice>
+  </xs:group>
+  <xs:element name="empty" type="tEmpty" />
+  <xs:complexType name="tEmpty">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tActivity" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="receive" type="tReceive" />
+  <xs:complexType name="tReceive">
+    <xs:annotation>
+      <xs:documentation>
 				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
 				because there is another correlations element defined for the invoke activity.
 			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element name="correlations" type="tCorrelations" minOccurs="0" />
-					<xs:element ref="fromParts" minOccurs="0" />
-				</xs:sequence>
-				<xs:attribute name="partnerLink" type="xsd:NCName" use="required" />
-				<xs:attribute name="portType" type="xsd:QName" use="optional" />
-				<xs:attribute name="operation" type="xsd:NCName" use="required" />
-				<xs:attribute name="messageExchange" type="xsd:NCName" use="optional" />
-				<xs:attribute name="variable" type="BPELVariableName" use="optional" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tCorrelations">
-		<xs:annotation>
-			<xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tActivity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="correlations" type="tCorrelations" />
+          <xs:element minOccurs="0" ref="fromParts" />
+        </xs:sequence>
+        <xs:attribute name="partnerLink" type="xs:NCName" use="required" />
+        <xs:attribute name="portType" type="xs:QName" use="optional" />
+        <xs:attribute name="operation" type="xs:NCName" use="required" />
+        <xs:attribute name="variable" type="BPELVariableName" use="optional" />
+        <xs:attribute default="no" name="createInstance" type="tBoolean" />
+        <xs:attribute name="messageExchange" type="xs:NCName" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="reply" type="tReply" />
+  <xs:complexType name="tReply">
+    <xs:annotation>
+      <xs:documentation>
+				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
+				because there is another correlations element defined for the invoke activity.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tActivity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="correlations" type="tCorrelations" />
+          <xs:element minOccurs="0" ref="toParts" />
+        </xs:sequence>
+        <xs:attribute name="partnerLink" type="xs:NCName" use="required" />
+        <xs:attribute name="portType" type="xs:QName" use="optional" />
+        <xs:attribute name="operation" type="xs:NCName" use="required" />
+        <xs:attribute name="variable" type="BPELVariableName" use="optional" />
+        <xs:attribute name="faultName" type="xs:QName" />
+        <xs:attribute name="messageExchange" type="xs:NCName" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tWait">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tActivity">
+        <xs:choice>
+          <xs:element minOccurs="1" ref="for" />
+          <xs:element minOccurs="1" ref="until" />
+        </xs:choice>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="wait" type="tWait" />
+  <xs:complexType name="tCorrelations">
+    <xs:annotation>
+      <xs:documentation>
 				XSD Authors: The child element correlation needs to be a Local Element Declaration, 
 				because there is another correlation element defined for the invoke activity.
 			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element name="correlation" type="tCorrelation" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tCorrelation">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="set" type="xsd:NCName" use="required" />
-				<xs:attribute name="initiate" type="tInitiate" default="no" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:simpleType name="tInitiate">
-		<xs:restriction base="xsd:string">
-			<xs:enumeration value="yes" />
-			<xs:enumeration value="join" />
-			<xs:enumeration value="no" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="tOnAlarmEvent">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:choice>
-						<xs:sequence>
-							<xs:group ref="forOrUntilGroup" minOccurs="1" />
-							<xs:element ref="repeatEvery" minOccurs="0" />
-						</xs:sequence>
-						<xs:element ref="repeatEvery" minOccurs="1" />
-					</xs:choice>
-					<xs:element ref="scope" minOccurs="1" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:group name="forOrUntilGroup">
-		<xs:choice>
-			<xs:element ref="for" minOccurs="1" />
-			<xs:element ref="until" minOccurs="1" />
-		</xs:choice>
-	</xs:group>
-	<xs:element name="for" type="tDuration-expr" />
-	<xs:element name="until" type="tDeadline-expr" />
-	<xs:element name="repeatEvery" type="tDuration-expr" />
-	<xs:complexType name="tActivity">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="targets" minOccurs="0" />
-					<xs:element ref="sources" minOccurs="0" />
-				</xs:sequence>
-				<xs:attribute name="name" type="xsd:NCName" />
-				<xs:attribute name="suppressJoinFailure" type="tBoolean" use="optional" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="targets" type="tTargets" />
-	<xs:complexType name="tTargets">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="joinCondition" minOccurs="0" />
-					<xs:element ref="target" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="joinCondition" type="tCondition" />
-	<xs:element name="target" type="tTarget" />
-	<xs:complexType name="tTarget">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="linkName" type="xsd:NCName" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="sources" type="tSources" />
-	<xs:complexType name="tSources">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="source" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="source" type="tSource" />
-	<xs:complexType name="tSource">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="transitionCondition" minOccurs="0" />
-				</xs:sequence>
-				<xs:attribute name="linkName" type="xsd:NCName" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="transitionCondition" type="tCondition" />
-	<xs:element name="assign" type="tAssign" />
-	<xs:complexType name="tAssign">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:choice maxOccurs="unbounded">
-						<xs:element ref="copy" minOccurs="1" />
-						<xs:element ref="extensionAssignOperation" minOccurs="1" />
-					</xs:choice>
-				</xs:sequence>
-				<xs:attribute name="validate" type="tBoolean" use="optional" default="no" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="copy" type="tCopy" />
-	<xs:complexType name="tCopy">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="from" minOccurs="1" />
-					<xs:element ref="to" minOccurs="1" />
-				</xs:sequence>
-				<xs:attribute name="keepSrcElementName" type="tBoolean" use="optional" default="no" />
-				<xs:attribute name="ignoreMissingFromData" type="tBoolean" use="optional" default="no" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="from" type="tFrom" />
-	<xs:complexType name="tFrom" mixed="true">
-		<xs:sequence>
-			<xs:element ref="documentation" minOccurs="0" maxOccurs="unbounded" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
-			<xs:choice minOccurs="0">
-				<xs:element ref="literal" minOccurs="1" />
-				<xs:element ref="query" minOccurs="1" />
-			</xs:choice>
-		</xs:sequence>
-		<xs:attribute name="expressionLanguage" type="xsd:anyURI" />
-		<xs:attribute name="variable" type="BPELVariableName" />
-		<xs:attribute name="part" type="xsd:NCName" />
-		<xs:attribute name="property" type="xsd:QName" />
-		<xs:attribute name="partnerLink" type="xsd:NCName" />
-		<xs:attribute name="endpointReference" type="tRoles" />
-		<xs:anyAttribute namespace="##other" processContents="lax" />
-	</xs:complexType>
-	<xs:element name="literal" type="tLiteral" />
-	<xs:complexType name="tLiteral" mixed="true">
-		<xs:sequence>
-			<xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="1" />
-		</xs:sequence>
-	</xs:complexType>
-	<xs:element name="query" type="tQuery" />
-	<xs:complexType name="tQuery" mixed="true">
-		<xs:sequence>
-			<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded" />
-		</xs:sequence>
-		<xs:attribute name="queryLanguage" type="xsd:anyURI" />
-		<xs:anyAttribute namespace="##other" processContents="lax" />
-	</xs:complexType>
-	<xs:simpleType name="tRoles">
-		<xs:restriction base="xsd:string">
-			<xs:enumeration value="myRole" />
-			<xs:enumeration value="partnerRole" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:element name="to" type="tTo" />
-	<xs:complexType name="tTo" mixed="true">
-		<xs:sequence>
-			<xs:element ref="documentation" minOccurs="0" maxOccurs="unbounded" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
-			<xs:element ref="query" minOccurs="0" />
-		</xs:sequence>
-		<xs:attribute name="expressionLanguage" type="xsd:anyURI" />
-		<xs:attribute name="variable" type="BPELVariableName" />
-		<xs:attribute name="part" type="xsd:NCName" />
-		<xs:attribute name="property" type="xsd:QName" />
-		<xs:attribute name="partnerLink" type="xsd:NCName" />
-		<xs:anyAttribute namespace="##other" processContents="lax" />
-	</xs:complexType>
-	<xs:element name="extensionAssignOperation" type="tExtensionAssignOperation" />
-	<xs:complexType name="tExtensionAssignOperation">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="compensate" type="tCompensate" />
-	<xs:complexType name="tCompensate">
-		<xs:complexContent>
-			<xs:extension base="tActivity" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="compensateScope" type="tCompensateScope" />
-	<xs:complexType name="tCompensateScope">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:attribute name="target" type="xsd:NCName" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="empty" type="tEmpty" />
-	<xs:complexType name="tEmpty">
-		<xs:complexContent>
-			<xs:extension base="tActivity" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="exit" type="tExit" />
-	<xs:complexType name="tExit">
-		<xs:complexContent>
-			<xs:extension base="tActivity" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="extensionActivity" type="tExtensionActivity" />
-	<xs:complexType name="tExtensionActivity">
-		<xs:sequence>
-			<xs:any namespace="##other" processContents="lax" />
-		</xs:sequence>
-	</xs:complexType>
-	<xs:element name="flow" type="tFlow" />
-	<xs:complexType name="tFlow">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element ref="links" minOccurs="0" />
-					<xs:group ref="activity" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="links" type="tLinks" />
-	<xs:complexType name="tLinks">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="link" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="link" type="tLink" />
-	<xs:complexType name="tLink">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="name" type="xsd:NCName" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="forEach" type="tForEach" />
-	<xs:complexType name="tForEach">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element ref="startCounterValue" minOccurs="1" />
-					<xs:element ref="finalCounterValue" minOccurs="1" />
-					<xs:element ref="completionCondition" minOccurs="0" />
-					<xs:element ref="scope" minOccurs="1" />
-				</xs:sequence>
-				<xs:attribute name="counterName" type="BPELVariableName" use="required" />
-				<xs:attribute name="parallel" type="tBoolean" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="startCounterValue" type="tExpression" />
-	<xs:element name="finalCounterValue" type="tExpression" />
-	<xs:element name="completionCondition" type="tCompletionCondition" />
-	<xs:complexType name="tCompletionCondition">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="branches" minOccurs="0" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="branches" type="tBranches" />
-	<xs:complexType name="tBranches">
-		<xs:complexContent>
-			<xs:extension base="tExpression">
-				<xs:attribute name="successfulBranchesOnly" type="tBoolean" default="no" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="if" type="tIf" />
-	<xs:complexType name="tIf">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element ref="condition" minOccurs="1" />
-					<xs:group ref="activity" minOccurs="1" />
-					<xs:element ref="elseif" minOccurs="0" maxOccurs="unbounded" />
-					<xs:element ref="else" minOccurs="0" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="elseif" type="tElseif" />
-	<xs:complexType name="tElseif">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="condition" minOccurs="1" />
-					<xs:group ref="activity" minOccurs="1" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="else" type="tActivityContainer" />
-	<xs:element name="invoke" type="tInvoke" />
-	<xs:complexType name="tInvoke">
-		<xs:annotation>
-			<xs:documentation>
-				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
-				because there is another correlations element defined for the non-invoke activities.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element name="correlations" type="tCorrelationsWithPattern" minOccurs="0" />
-					<xs:element ref="catch" minOccurs="0" maxOccurs="unbounded" />
-					<xs:element ref="catchAll" minOccurs="0" />
-					<xs:element ref="compensationHandler" minOccurs="0" />
-					<xs:element ref="toParts" minOccurs="0" />
-					<xs:element ref="fromParts" minOccurs="0" />
-				</xs:sequence>
-				<xs:attribute name="partnerLink" type="xsd:NCName" use="required" />
-				<xs:attribute name="portType" type="xsd:QName" use="optional" />
-				<xs:attribute name="operation" type="xsd:NCName" use="required" />
-				<xs:attribute name="inputVariable" type="BPELVariableName" use="optional" />
-				<xs:attribute name="outputVariable" type="BPELVariableName" use="optional" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tCorrelationsWithPattern">
-		<xs:annotation>
-			<xs:documentation>
-				XSD Authors: The child element correlation needs to be a Local Element Declaration, 
-				because there is another correlation element defined for the non-invoke activities.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element name="correlation" type="tCorrelationWithPattern" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tCorrelationWithPattern">
-		<xs:complexContent>
-			<xs:extension base="tCorrelation">
-				<xs:attribute name="pattern" type="tPattern" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:simpleType name="tPattern">
-		<xs:restriction base="xsd:string">
-			<xs:enumeration value="request" />
-			<xs:enumeration value="response" />
-			<xs:enumeration value="request-response" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:element name="fromParts" type="tFromParts" />
-	<xs:complexType name="tFromParts">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="fromPart" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="fromPart" type="tFromPart" />
-	<xs:complexType name="tFromPart">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="part" type="xsd:NCName" use="required" />
-				<xs:attribute name="toVariable" type="BPELVariableName" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="toParts" type="tToParts" />
-	<xs:complexType name="tToParts">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:element ref="toPart" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="toPart" type="tToPart" />
-	<xs:complexType name="tToPart">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:attribute name="part" type="xsd:NCName" use="required" />
-				<xs:attribute name="fromVariable" type="BPELVariableName" use="required" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="pick" type="tPick" />
-	<xs:complexType name="tPick">
-		<xs:annotation>
-			<xs:documentation>
-				XSD Authors: The child element onAlarm needs to be a Local Element Declaration, 
-				because there is another onAlarm element defined for event handlers.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element ref="onMessage" minOccurs="1" maxOccurs="unbounded" />
-					<xs:element name="onAlarm" type="tOnAlarmPick" minOccurs="0" maxOccurs="unbounded" />
-				</xs:sequence>
-				<xs:attribute name="createInstance" type="tBoolean" default="no" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="onMessage" type="tOnMessage" />
-	<xs:complexType name="tOnMessage">
-		<xs:complexContent>
-			<xs:extension base="tOnMsgCommon">
-				<xs:sequence>
-					<xs:group ref="activity" minOccurs="1" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tOnAlarmPick">
-		<xs:complexContent>
-			<xs:extension base="tExtensibleElements">
-				<xs:sequence>
-					<xs:group ref="forOrUntilGroup" minOccurs="1" />
-					<xs:group ref="activity" minOccurs="1" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="receive" type="tReceive" />
-	<xs:complexType name="tReceive">
-		<xs:annotation>
-			<xs:documentation>
-				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
-				because there is another correlations element defined for the invoke activity.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element name="correlations" type="tCorrelations" minOccurs="0" />
-					<xs:element ref="fromParts" minOccurs="0" />
-				</xs:sequence>
-				<xs:attribute name="partnerLink" type="xsd:NCName" use="required" />
-				<xs:attribute name="portType" type="xsd:QName" use="optional" />
-				<xs:attribute name="operation" type="xsd:NCName" use="required" />
-				<xs:attribute name="variable" type="BPELVariableName" use="optional" />
-				<xs:attribute name="createInstance" type="tBoolean" default="no" />
-				<xs:attribute name="messageExchange" type="xsd:NCName" use="optional" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="repeatUntil" type="tRepeatUntil" />
-	<xs:complexType name="tRepeatUntil">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:group ref="activity" minOccurs="1" />
-					<xs:element ref="condition" minOccurs="1" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="reply" type="tReply" />
-	<xs:complexType name="tReply">
-		<xs:annotation>
-			<xs:documentation>
-				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
-				because there is another correlations element defined for the invoke activity.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element name="correlations" type="tCorrelations" minOccurs="0" />
-					<xs:element ref="toParts" minOccurs="0" />
-				</xs:sequence>
-				<xs:attribute name="partnerLink" type="xsd:NCName" use="required" />
-				<xs:attribute name="portType" type="xsd:QName" use="optional" />
-				<xs:attribute name="operation" type="xsd:NCName" use="required" />
-				<xs:attribute name="variable" type="BPELVariableName" use="optional" />
-				<xs:attribute name="faultName" type="xsd:QName" />
-				<xs:attribute name="messageExchange" type="xsd:NCName" use="optional" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="rethrow" type="tRethrow" />
-	<xs:complexType name="tRethrow">
-		<xs:complexContent>
-			<xs:extension base="tActivity" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="scope" type="tScope" />
-	<xs:complexType name="tScope">
-		<xs:annotation>
-			<xs:documentation>
-				There is no schema-level default for "exitOnStandardFault"
-				at "scope". Because, it will inherit default from enclosing scope
-				or process.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element ref="partnerLinks" minOccurs="0" />
-					<xs:element ref="messageExchanges" minOccurs="0" />
-					<xs:element ref="variables" minOccurs="0" />
-					<xs:element ref="correlationSets" minOccurs="0" />
-					<xs:element ref="faultHandlers" minOccurs="0" />
-					<xs:element ref="compensationHandler" minOccurs="0" />
-					<xs:element ref="terminationHandler" minOccurs="0" />
-					<xs:element ref="eventHandlers" minOccurs="0" />
-					<xs:group ref="activity" minOccurs="1" />
-				</xs:sequence>
-				<xs:attribute name="isolated" type="tBoolean" default="no" />
-				<xs:attribute name="exitOnStandardFault" type="tBoolean" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="compensationHandler" type="tActivityContainer">
-		<xs:annotation>
-			<xs:documentation>
-				This element can contain all activities including the activities
-				compensate and compensateScope.
-			</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="terminationHandler" type="tActivityContainer">
-		<xs:annotation>
-			<xs:documentation>
-				This element can contain all activities including the activities
-				compensate and compensateScope.
-			</xs:documentation>
-		</xs:annotation>
-	</xs:element>
-	<xs:element name="sequence" type="tSequence" />
-	<xs:complexType name="tSequence">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:group ref="activity" minOccurs="1" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="throw" type="tThrow" />
-	<xs:complexType name="tThrow">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:attribute name="faultName" type="xsd:QName" use="required" />
-				<xs:attribute name="faultVariable" type="BPELVariableName" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="validate" type="tValidate" />
-	<xs:complexType name="tValidate">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:attribute name="variables" use="required" type="BPELVariableNames" />
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:simpleType name="BPELVariableNames">
-		<xs:restriction>
-			<xs:simpleType>
-				<xs:list itemType="BPELVariableName" />
-			</xs:simpleType>
-			<xs:minLength value="1" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:element name="wait" type="tWait" />
-	<xs:complexType name="tWait">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:choice>
-					<xs:element ref="for" minOccurs="1" />
-					<xs:element ref="until" minOccurs="1" />
-				</xs:choice>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="while" type="tWhile" />
-	<xs:complexType name="tWhile">
-		<xs:complexContent>
-			<xs:extension base="tActivity">
-				<xs:sequence>
-					<xs:element ref="condition" minOccurs="1" />
-					<xs:group ref="activity" minOccurs="1" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tExpression" mixed="true">
-		<xs:sequence>
-			<xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
-		</xs:sequence>
-		<xs:attribute name="expressionLanguage" type="xsd:anyURI" />
-		<xs:anyAttribute namespace="##other" processContents="lax" />
-	</xs:complexType>
-	<xs:complexType name="tCondition">
-		<xs:complexContent mixed="true">
-			<xs:extension base="tExpression" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:element name="condition" type="tBoolean-expr" />
-	<xs:complexType name="tBoolean-expr">
-		<xs:complexContent mixed="true">
-			<xs:extension base="tExpression" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tDuration-expr">
-		<xs:complexContent mixed="true">
-			<xs:extension base="tExpression" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="tDeadline-expr">
-		<xs:complexContent mixed="true">
-			<xs:extension base="tExpression" />
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:simpleType name="tBoolean">
-		<xs:restriction base="xsd:string">
-			<xs:enumeration value="yes" />
-			<xs:enumeration value="no" />
-		</xs:restriction>
-	</xs:simpleType>
-	
-	
-	<!-- Arc Types-->
-	<xs:complexType name="arcType">
-		<xs:sequence>
-			<xs:element name="inscription" type="arcNameType" minOccurs="0"/>
-			<xs:element name="graphics" type="graphicsArcType" minOccurs="0"/>
-			<xs:element name="toolspecific" type="arcToolspecificType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:ID" use="required"/>
-		<xs:attribute name="source" type="xs:IDREF" use="required"/>
-		<xs:attribute name="target" type="xs:IDREF" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="arcToolspecificType">
-		<xs:complexContent>
-			<xs:extension base="toolspecificType">
-				<xs:sequence>
-					<xs:element name="route" type="xs:boolean" minOccurs="0"/>
-					<xs:element name="probability" type="xs:double" minOccurs="0"/>
-					<xs:element name="displayProbabilityOn" type="xs:boolean" minOccurs="0"/>
-					<xs:element name="displayProbabilityPosition" type="positionType" minOccurs="0"/>					
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="arcInscriptionType">
-		<xs:annotation>
-			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="text" type="xs:string"/>
-			<xs:element name="graphics" type="annotationGraphisType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="graphicsArcType">
-		<xs:sequence>
-			<xs:element name="position" type="positionType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element ref="line" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="arcNameType">
-		<xs:annotation>
-			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pnml/conv.rng"</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="text" type="xs:int"/>
-			<xs:element name="graphics" type="annotationGraphisType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<!-- General Types -->
-	<xs:complexType name="graphicsSimpleType">
-		<xs:sequence>
-			<xs:element name="position" type="positionType"/>
-			<xs:element name="dimension" type="dimensionType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="toolspecificType" abstract="true">
-		<xs:annotation>
-			<xs:documentation>Type for the Inheritance of the Toolspecific Types</xs:documentation>
-		</xs:annotation>
-		<xs:attribute name="tool" type="xs:string" use="required"/>
-		<xs:attribute name="version" type="xs:string" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="annotationGraphisType">
-		<xs:annotation>
-			<xs:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xs:documentation>
-		</xs:annotation>
-		<xs:sequence minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="offset" type="positionType"/>
-			<xs:element ref="fill" minOccurs="0"/>
-			<xs:element ref="line" minOccurs="0"/>
-			<xs:element ref="font" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<!-- Helper  Types / Elements-->
-	<xs:element name="fill">
-		<xs:complexType>
-			<xs:attribute name="color"/>
-			<xs:attribute name="gradient-color"/>
-			<xs:attribute name="gradient-rotation" type="xs:token"/>
-			<xs:attribute name="images" type="xs:anyURI"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="line">
-		<xs:complexType>
-			<xs:attribute name="shape" type="xs:token"/>
-			<xs:attribute name="color"/>
-			<xs:attribute name="width" type="xs:decimal"/>
-			<xs:attribute name="style" type="xs:token"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="font">
-		<xs:complexType>
-			<xs:attribute name="family"/>
-			<xs:attribute name="style"/>
-			<xs:attribute name="weight"/>
-			<xs:attribute name="size"/>
-			<xs:attribute name="decoration">
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:enumeration value="underline"/>
-						<xs:enumeration value="overline"/>
-						<xs:enumeration value="line-through"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:attribute>
-			<xs:attribute name="align">
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:enumeration value="left"/>
-						<xs:enumeration value="center"/>
-						<xs:enumeration value="right"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:attribute>
-			<xs:attribute name="rotation" type="xs:decimal"/>
-		</xs:complexType>
-	</xs:element>
-	<xs:complexType name="dimensionType">
-		<xs:attribute name="x" type="xs:decimal" use="required"/>
-		<xs:attribute name="y" type="xs:decimal" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="positionType">
-		<xs:attribute name="x" type="xs:decimal" use="required"/>
-		<xs:attribute name="y" type="xs:decimal" use="required"/>
-	</xs:complexType>
-	<!--structured & modular PNML Types-->
-	<xs:complexType name="pageType">
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="net" type="netType"/>
-		</xs:choice>
-		<xs:attribute name="id" type="xs:ID"/>
-	</xs:complexType>
-	<xs:complexType name="referencePlaceType">
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="graphics" type="graphicsNodeType"/>
-			<xs:element name="toolspecific" type="toolspecificType"/>
-		</xs:choice>
-		<xs:attribute name="id" type="xs:ID" use="required"/>
-		<xs:attribute name="ref" type="xs:IDREF" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="instanceType">
-		<xs:sequence minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="importPlace" type="importPlaceType"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:ID" use="required"/>
-		<xs:attribute name="ref" type="xs:anyURI" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="importPlaceType">
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="graphics" type="graphicsNodeType"/>
-			<xs:element name="toolspecific" type="toolspecificType"/>
-		</xs:choice>
-		<xs:attribute name="id" type="xs:ID" use="required"/>
-		<xs:attribute name="instance" type="xs:IDREF"/>
-		<xs:attribute name="ref" type="xs:NCName" use="required"/>
-		<xs:attribute name="parameter" type="xs:NCName" use="required"/>
-	</xs:complexType>
-	<!-- Simulation Types -->
-	<xs:complexType name="simulationsType">
-		<xs:sequence>
-			<xs:element name="simulation" type="simulationType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="simulationType">
-		<xs:sequence>
-			<xs:element name="simulationname" type="xs:string"/>
-			<xs:element name="transitionsequence" type="transitionsequenceType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="netFingerprint" type="xs:string" minOccurs="1" maxOccurs="1"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:ID" use="required"/>
-	</xs:complexType>
-	<xs:complexType name="transitionsequenceType">
-		<xs:sequence>
-			<xs:element name="firedtransition" type="firedtransitionType" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="firedtransitionType">
-		<xs:attribute name="transitionID" type="xs:IDREF"/>
-	</xs:complexType>
-</xs:schema>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tExtensibleElements">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="correlation" type="tCorrelation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="for" type="tDuration-expr" />
+  <xs:element name="until" type="tDeadline-expr" />
+  <xs:complexType name="tDuration-expr">
+    <xs:complexContent mixed="true">
+      <xs:extension base="tExpression" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tDeadline-expr">
+    <xs:complexContent mixed="true">
+      <xs:extension base="tExpression" />
+    </xs:complexContent>
+  </xs:complexType>
+</xsd:schema>
