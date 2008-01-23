@@ -103,7 +103,18 @@ public class BPELassignPanel extends BPELadditionalPanel{
 		if (fromVariableComboBox == null) {
 			fromVariableComboBox = new JComboBox();
 		}
+		this.fillVariableToComboBox(this.fromVariableComboBox);
 		return fromVariableComboBox;
+	}
+	
+	private void fillVariableToComboBox(JComboBox box)
+	{
+		String[] list = this.t_editor.getEditor().getModelProcessor().getElementContainer().getVariableList();
+		box.removeAllItems();
+		for(int i = 0; i < list.length; i++)
+		{
+			box.addItem(list[i]);
+		}
 	}
 	
 	private JButton getNewFromVariableButton(){
@@ -113,6 +124,7 @@ public class BPELassignPanel extends BPELadditionalPanel{
 			newFromVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					showNewVariableDialog();
+					fillVariableToComboBox(fromVariableComboBox);
 				}
 			});
 		}
@@ -123,6 +135,7 @@ public class BPELassignPanel extends BPELadditionalPanel{
 		if (toVariableComboBox == null) {
 			toVariableComboBox = new JComboBox();
 		}
+		this.fillVariableToComboBox(this.toVariableComboBox);
 		return toVariableComboBox;
 	}
 	
@@ -133,6 +146,7 @@ public class BPELassignPanel extends BPELadditionalPanel{
 			newToVariableButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					showNewVariableDialog();
+					fillVariableToComboBox(toVariableComboBox);
 				}
 			});
 		}
@@ -164,5 +178,4 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	public void setToVariable(String variable){
 		toVariableComboBox.addItem(variable);	
 	}
-	
 }

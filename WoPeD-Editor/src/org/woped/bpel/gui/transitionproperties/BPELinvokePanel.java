@@ -234,5 +234,4 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	public void setOutVariable(String outVariable) {
 		outVariableComboBox.addItem(outVariable);
 	}
-
 }

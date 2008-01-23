@@ -25,6 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.xml.stream.XMLStreamException;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.woped.bpel.wsdl.Wsdl;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.PartnerLinkType;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.Role;
@@ -43,20 +45,21 @@ import org.woped.translations.Messages;
  */
 
 @SuppressWarnings("serial")
-public class BPELadditionalPanel extends JPanel {
+public abstract class BPELadditionalPanel extends JPanel {
 
 	TransitionPropertyEditor t_editor;
-	//JDialog dialogVariable = null;
-	//JDialog dialogPartner = null;
+	// JDialog dialogVariable = null;
+	// JDialog dialogPartner = null;
 	JDialog dialog = null;
 	JPanel dialogButtons = null;
 
 	JDialog errorPopup = null;
 
 	JComboBox variableTypesComboBox = null;
-	
+
 	JTextField partnerLinkNameTextField = null;
 	JTextField wsdlFileTextField = null;
+	JTextField VariableName = null;
 	JButton searchLocalWSDLButton = null;
 	JComboBox partnerLinkTypeComboBox = null;
 	JComboBox partnerRoleComboBox = null;
@@ -210,7 +213,9 @@ public class BPELadditionalPanel extends JPanel {
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 5);
-		dialog.add(new JTextField(), c);
+		if (this.VariableName == null)
+			this.VariableName = new JTextField();
+		dialog.add(this.VariableName, c);
 
 		c.gridx = 0;
 		c.gridy = 1;
@@ -285,8 +290,8 @@ public class BPELadditionalPanel extends JPanel {
 			c.insets = new Insets(0, 5, 0, 0);
 			dialogButtons.add(getVariableCancelButton(), c);
 		}
-		return dialogButtons;
-	}	
+		return dialogButtons;	
+}	
 	
 	private JComboBox getVariableTypesComboBox() {
 		if (variableTypesComboBox == null) {
@@ -298,8 +303,7 @@ public class BPELadditionalPanel extends JPanel {
 		}		
 		return variableTypesComboBox;
 	}
-	
-	
+
 	// ************** reading WSDL data *****************
 
 	private JTextField getPartnerLinkNameTextField() {
@@ -453,6 +457,11 @@ public class BPELadditionalPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO speichern mithilfe von Alex' Klassen, die auf content
 				// getter methoden zugreifen
+				t_editor.getEditor().getModelProcessor().getElementContainer()
+						.addVariable(
+								VariableName.getName(),
+								getVariableTypesComboBox().getSelectedItem()
+										.toString());
 				dialog.dispose();
 			}
 		});
@@ -507,7 +516,8 @@ public class BPELadditionalPanel extends JPanel {
 			for (Role role : roles) {
 				partnerRoleComboBox.addItem(role.getRoleName());
 			}
-			partnerRoleComboBox.addItem(Messages.getString("Transition.Properties.BPEL.NoRole"));
+			partnerRoleComboBox.addItem(Messages
+					.getString("Transition.Properties.BPEL.NoRole"));
 		}
 	}
 
@@ -521,7 +531,8 @@ public class BPELadditionalPanel extends JPanel {
 			for (Role role : roles) {
 				myRoleComboBox.addItem(role.getRoleName());
 			}
-			myRoleComboBox.addItem(Messages.getString("Transition.Properties.BPEL.NoRole"));
+			myRoleComboBox.addItem(Messages
+					.getString("Transition.Properties.BPEL.NoRole"));
 		}
 	}
 
@@ -626,8 +637,8 @@ public class BPELadditionalPanel extends JPanel {
 		errorPopup.setTitle(Messages
 				.getString("Transition.Properties.BPEL.InvalidFilePath"));
 		errorPopup.setSize(300, 140);
-		errorPopup.setLocation(dialog.getLocation().x + 90,
-				dialog.getLocation().y + 50);
+		errorPopup.setLocation(dialog.getLocation().x + 90, dialog
+				.getLocation().y + 50);
 		errorPopup.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -662,5 +673,4 @@ public class BPELadditionalPanel extends JPanel {
 		errorPopup.add(okButton, c);
 		errorPopup.setVisible(true);
 	}
-
 }
