@@ -472,7 +472,6 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 			idTextField.setEditable(false);
 			idTextField.setPreferredSize(new Dimension(100, 20));
 		}
-
 		return idTextField;
 	}
 
@@ -1525,14 +1524,24 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 		if (activityChooseComboBox == null){
 			String[] namen = new String[] {Messages.getString("Transition.Properties.BPEL.NoActivity"), "assign", "invoke", "receive", "reply", "wait"};
 			activityChooseComboBox = new JComboBox(namen);
-//			activityType = (TActivity) transition.getBpelData().getClass().isInstance(new TAssign());
-			
-//			activityType = transition.getBpelData(); //liefert z.B. Assign
-//			activityChooseComboBox.setSelectedIndex(2);
-			
-//			if (TAssign.class.isInstance(transition.getBpelData())){ //funst nicht, Konstrukt muss anders lauten
-//				activityChooseComboBox.setSelectedIndex(1);
-//			}
+			if(Assign.class.isInstance(this.transition.getBpelData())){
+				activityChooseComboBox.setSelectedIndex(1);
+			}
+			else if(Invoke.class.isInstance(this.transition.getBpelData())){
+				activityChooseComboBox.setSelectedIndex(2);
+			}
+			else if(Receive.class.isInstance(this.transition.getBpelData())){
+				activityChooseComboBox.setSelectedIndex(3);
+			}
+			else if(Reply.class.isInstance(this.transition.getBpelData())){
+				activityChooseComboBox.setSelectedIndex(4);
+			}
+			else if(Receive.class.isInstance(this.transition.getBpelData())){
+				activityChooseComboBox.setSelectedIndex(5);
+			}
+			else{
+				activityChooseComboBox.setSelectedIndex(0);
+			}
 			
 			activityChooseComboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
@@ -1614,6 +1623,8 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 			bpelPanel.remove(waitPanel);
 		}
 
+		Assign iAssign = new Assign();
+		iAssign.setInformationToPanel(assignPanel);
 
 		bpelPanel.add(assignPanel, c2);
 		repaint();
@@ -1801,7 +1812,7 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
 								transition.setBaseActivity(iReply);
 								break;
 						case 5: Wait iWait = new Wait();
-								iWait.saveInformation(waitPanel);
+								iWait.saveInformationToPanel(waitPanel);
 								transition.setBaseActivity(iWait);
 					}
 
