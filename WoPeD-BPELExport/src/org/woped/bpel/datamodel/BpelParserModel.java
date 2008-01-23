@@ -611,19 +611,22 @@ public class BpelParserModel
 			return null;
 		if (!Place.class.isInstance(e))
 			return null;
+		if (e.count_post_objects() == 0) return null;
 		AbstractElement end = null;
-		AbstractElement tmp;
+		AbstractElement tmp = null;
 		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
 		boolean firstrun = true;
+		
 		while (list.hasNext())
 		{
 			tmp = list.next();
 
-			// test 1, element
+			// first element must be a trigger
 			if (!TimeTriggerTransition.class.isInstance(tmp)
 					|| !ResourceTriggerTransition.class.isInstance(tmp)
 					|| !MessageTriggerTransition.class.isInstance(tmp))
-				return null;			
+				return null;
+			
 			if (tmp.count_post_objects() != 1)
 				return null;
 			if (tmp.count_pre_objects() != 1)
@@ -645,6 +648,7 @@ public class BpelParserModel
 			
 			// test endelement			
 			tmp = tmp.get_first_post_element();
+			
 			if(!Place.class.isInstance(tmp)) 
 				return null;
 			
@@ -656,7 +660,7 @@ public class BpelParserModel
 			} else if (!end.equals(tmp))
 				return null;
 		}
-
+		
 		if (e.count_post_objects() != end.count_pre_objects())
 			return null;
 		return end;
