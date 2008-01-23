@@ -29,6 +29,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.namespace.QName;
+
 import org.jgraph.graph.DefaultPort;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.QNames;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLink;
@@ -142,28 +144,28 @@ public class ModelElementContainer implements Serializable
     	return partnerLinklist;
     }
     
-    public void addPartnerLink(String name, String partnerLinkType, String partnerRole)
+    public void addPartnerLink(String name, String namespace, String partnerLinkType, String partnerRole)
     {
     	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
     	pl.setName(name);
-    	//pl.setPartnerLinkType(QName);
+    	pl.setPartnerLinkType(new QName(namespace, partnerLinkType));
     	pl.setPartnerRole(partnerRole);
     }
     
-    public void addPartnerLink(String name, String partnerLinkType, String partnerRole, String myRole)
+    public void addPartnerLink(String name, String namespace, String partnerLinkType, String partnerRole, String myRole)
     {
     	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
-    	pl.setName(name);
-    	//pl.setPartnerLinkType(QName);
+    	pl.setName(name);    	
+    	pl.setPartnerLinkType(new QName(namespace, partnerLinkType));
     	pl.setPartnerRole(partnerRole);
     	pl.setMyRole(myRole);
     }
     
-    public void addPartnerLinkWithoutPartnerRole(String name, String partnerLinkType, String myRole)
+    public void addPartnerLinkWithoutPartnerRole(String name, String namespace, String partnerLinkType, String myRole)
     {
     	TPartnerLink pl = this.partnerLinkList.addNewPartnerLink();
     	pl.setName(name);
-    	//pl.setPartnerLinkType(arg0);
+    	pl.setPartnerLinkType(new QName(namespace, partnerLinkType));
     	pl.setMyRole(myRole);
     }
     
@@ -188,14 +190,19 @@ public class ModelElementContainer implements Serializable
     	var.set(arg);
     }
     
-    public void addVariable(String name, String messageType)
+    public void addVariable(String name, String type)
+    {
+    	TVariable var = this.variablesList.addNewVariable();
+    	var.setName(name);    	
+    	var.setType(new QName("xsd", type));
+    }
+    
+    public void addWSDLVariable(String name, String namespace, String type)
     {
     	TVariable var = this.variablesList.addNewVariable();
     	var.setName(name);
-    	QNames n = org.oasisOpen.docs.wsbpel.x20.process.executable.QNames.Factory.newInstance();
-    	//noch zu klären
-    	var.setMessageType(null);
-    }
+    	var.setMessageType(new QName(namespace, type));
+    }    
     
     public String[] getVariableList()
     {
