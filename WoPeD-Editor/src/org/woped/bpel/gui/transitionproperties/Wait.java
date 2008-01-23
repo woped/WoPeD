@@ -1,5 +1,8 @@
 package org.woped.bpel.gui.transitionproperties;
 
+import org.apache.xmlbeans.XmlException;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TDeadlineExpr;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TDurationExpr;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
@@ -21,6 +24,34 @@ public class Wait extends BaseActivity
 		wait.setName(""+bwp.transition.getNameValue());
 		this.setActivity(wait);
 		
+		
+		String bool = bwp.getSelectedRadioButton();
+		if(bool.equalsIgnoreCase("Deadline"))
+		{
+			try 
+			{
+				//until
+				TDeadlineExpr tdee = TDeadlineExpr.Factory.parse(bwp.getDeadline());
+				wait.setUntil(tdee);
+			} 
+			catch (XmlException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			try 
+			{
+				//for
+				TDurationExpr tdue = TDurationExpr.Factory.parse(bwp.getDuration());
+				wait.setFor(tdue);
+			} 
+			catch (XmlException e) 
+			{
+				e.printStackTrace();
+			}
+		}
 		/*if(bwp.getFor() != null)
 		{
 			wait.setFor(bwp.getFor());
