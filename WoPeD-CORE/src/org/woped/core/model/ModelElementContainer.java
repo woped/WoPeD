@@ -29,9 +29,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.namespace.QName;
-
-import org.apache.xmlbeans.XmlOptions;
 import org.jgraph.graph.DefaultPort;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.QNames;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
@@ -81,7 +78,7 @@ public class ModelElementContainer implements Serializable
 	private AbstractElementModel owningElement = null;
 	
 	private TVariables variablesList;
-	private TPartnerLinks partnerLinkListe;
+	private TPartnerLinks partnerLinkList;
 	
 	public void setOwningElement(AbstractElementModel element)
 	{
@@ -116,6 +113,27 @@ public class ModelElementContainer implements Serializable
     public Map<String, Map<String, Object>> getIdMap()
     {
         return idMap;
+    }
+    
+    private TPartnerLinks genPartnerLinkList()
+    {
+    	return TPartnerLinks.Factory.newInstance();
+    }
+    
+    public String[] getPartnerLinkList()
+    {
+    	String[] a = null;
+    	return a;
+    }
+    
+    public void addPartnerLink()
+    {
+    	//zu erledigen
+    }
+    
+    public void removePartnerLink()
+    {
+    	//zu erledigen
     }
     
     private TVariables genVariableList()
