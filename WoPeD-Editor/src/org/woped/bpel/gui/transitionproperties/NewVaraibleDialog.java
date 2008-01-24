@@ -16,6 +16,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import org.woped.core.model.bpel.BpelVariable;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
 
@@ -139,8 +141,7 @@ public class NewVaraibleDialog extends JDialog {
 	private JComboBox getVariableTypesComboBox() {
 		if (variableTypesComboBox == null) {
 			variableTypesComboBox = new JComboBox();
-			String[] variables = this.t_editor.getEditor().getModelProcessor()
-					.getElementContainer().getTypes();
+			String[] variables = BpelVariable.getTypes();
 			for (int i = 0; i < variables.length; i++) {
 				variableTypesComboBox.addItem(variables[i]);
 			}

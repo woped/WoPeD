@@ -111,7 +111,7 @@ public class BPELassignPanel extends BPELadditionalPanel{
 	
 	private void fillVariableToComboBox(JComboBox box)
 	{
-		String[] list = this.t_editor.getEditor().getModelProcessor().getElementContainer().getVariableList();
+		String[] list = this.t_editor.getEditor().getModelProcessor().getElementContainer().getVariableList().getVariableNameArray();
 		box.removeAllItems();
 		for(int i = 0; i < list.length; i++)
 		{
