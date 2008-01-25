@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
@@ -24,6 +23,10 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 
 public class BPELreplyPanel extends BPELadditionalPanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
 	JComboBox operationComboBox = null;
@@ -181,5 +184,12 @@ public class BPELreplyPanel extends BPELadditionalPanel{
 
 	public void setVariable(String variable) {
 		variableComboBox.addItem(variable);
+	}
+
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
 	}
 }

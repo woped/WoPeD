@@ -13,7 +13,7 @@ public class XORJoinTransition extends
 	}
 
 	@Override
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if (!XORJoinTransition.class.isInstance(e))
 			return false;

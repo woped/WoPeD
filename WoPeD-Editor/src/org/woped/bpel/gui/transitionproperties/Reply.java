@@ -1,40 +1,103 @@
 package org.woped.bpel.gui.transitionproperties;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 
-
-public class Reply extends BaseActivity
+/**
+ * 
+ * @author Frank Schüler
+ *
+ */
+public class Reply extends BaseActivity<TReply>
 {
 
-	public Reply()
+	/**
+	 * 
+	 * @param Name
+	 */
+	public Reply(String Name)
 	{
-		
+		super(Name);
 	}
 	
-	public void saveInformation(BPELreplyPanel brp)
+	/**
+	 * 
+	 * @param Name
+	 * @param PartnerLink
+	 * @param Operation
+	 * @param Variable
+	 */
+	public Reply(String Name,String PartnerLink, String Operation, String Variable)
 	{
-		TProcess p = BaseActivity.genBpelProcess();
-		TReply reply = p.addNewReply();
-		reply.setName(""+brp.transition.getNameValue());
-		
-		//PartnerLink
-		reply.setPartnerLink(brp.getPartnerLink());
-		//Operation
-		reply.setOperation(brp.getOperation());
-		//InputVariable
-		reply.setVariable(brp.getVariable());
-		this.setActivity(reply);
+		this(Name);
+		this.fillReply(PartnerLink, Operation, Variable);
 	}
 	
-	public void setInformationToPanel(BPELreplyPanel brp)
+	/**
+	 * 
+	 * @param PartnerLink
+	 * @param Operation
+	 * @param Variable
+	 */
+	public final void fillReply(String PartnerLink, String Operation, String Variable)
 	{
-		TReply reply = (TReply) this.getActivity();
-		brp.setPartnerLink(reply.getPartnerLink());
-		brp.setOperation(reply.getOperation());
-		brp.setVariable(reply.getVariable());
+		this.getActivity().setPartnerLink(PartnerLink);
+		this.getActivity().setOperation(Operation);
+		this.getActivity().setVariable(Variable);
+	}
+	
+	/**
+	 * @param Name
+	 */
+	protected final void genTActivity(String Name) {
+		this.setActivity(TReply.Factory.newInstance());
+		this.getActivity().setName(Name);		
+	}
+
+	/**
+	 * @param bip
+	 */
+	public void saveInformation(BPELadditionalPanel bip) {
+		if(!BPELreplyPanel.class.isInstance(bip))return;
+		BPELreplyPanel panel = (BPELreplyPanel)bip;
+		this.fillReply(panel.getPartnerLink(), panel.getOperation(), panel.getVariable());
+	}
+
+	/**
+	 * @param bip
+	 */
+	public void setInformationToPanel(BPELadditionalPanel bip) {
+		if(!BPELreplyPanel.class.isInstance(bip))return;
+		BPELreplyPanel panel = (BPELreplyPanel)bip;
+		panel.setPartnerLink(this.getPartnerLink());
+		panel.setOperation(this.getOperation());
+		panel.setVariable(this.getVariable());
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public final String getPartnerLink()
+	{
+		return this.getActivity().getPartnerLink();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public final String getOperation()
+	{
+		return this.getActivity().getOperation();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public final String getVariable()
+	{
+		return this.getActivity().getVariable();
 	}
 	
 }

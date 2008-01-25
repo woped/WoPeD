@@ -21,8 +21,8 @@ public abstract class AbstractElement<E>
 
 	private static long					IdCounter	= 0L;
 
-	private HashSet<AbstractElement>	_pre		= new HashSet<AbstractElement>();
-	private HashSet<AbstractElement>	_post		= new HashSet<AbstractElement>();
+	private HashSet<AbstractElement<?>>	_pre		= new HashSet<AbstractElement<?>>();
+	private HashSet<AbstractElement<?>>	_post		= new HashSet<AbstractElement<?>>();
 	private long						_id			= IdCounter++;
 	private E							_data;
 
@@ -73,7 +73,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return boolean
 	 */
-	public boolean add_pre_object(AbstractElement e)
+	public boolean add_pre_object(AbstractElement<?> e)
 	{
 		if (!this.accept_pre_object(e))
 			return false;
@@ -92,7 +92,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return boolean
 	 */
-	public boolean add_pre_object_relationship(AbstractElement e)
+	public boolean add_pre_object_relationship(AbstractElement<?> e)
 	{
 		if (!this.accept_pre_object(e))
 			return false;
@@ -110,9 +110,9 @@ public abstract class AbstractElement<E>
 	 *            HashSet<AbstractElement>
 	 * @return returned false, if one object not added
 	 */
-	public boolean add_pre_object_list(HashSet<AbstractElement> list)
+	public boolean add_pre_object_list(HashSet<AbstractElement<?>> list)
 	{
-		Iterator<AbstractElement> iter = list.iterator();
+		Iterator<AbstractElement<?>> iter = list.iterator();
 		boolean erg = true;
 		while (iter.hasNext())
 			if (!this.add_pre_object(iter.next()))
@@ -128,9 +128,9 @@ public abstract class AbstractElement<E>
 	 * @return returned false, if one object not added
 	 */
 	public boolean add_pre_object_list_relationship(
-			HashSet<AbstractElement> list)
+			HashSet<AbstractElement<?>> list)
 	{
-		Iterator<AbstractElement> iter = list.iterator();
+		Iterator<AbstractElement<?>> iter = list.iterator();
 		boolean erg = true;
 		while (iter.hasNext())
 			if (!this.add_pre_object_relationship(iter.next()))
@@ -146,10 +146,10 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return AbstractElement, returned null if no matching
 	 */
-	public AbstractElement find_pre_object_by_id(long id)
+	public AbstractElement<?> find_pre_object_by_id(long id)
 	{
-		Iterator<AbstractElement> list = this._pre.iterator();
-		AbstractElement erg = null;
+		Iterator<AbstractElement<?>> list = this._pre.iterator();
+		AbstractElement<?> erg = null;
 		while (list.hasNext())
 		{
 			if ((erg = list.next()).getID() == id)
@@ -166,15 +166,15 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return AbstractElement
 	 */
-	public AbstractElement find_pre_object_by_Source(AbstractElement e)
+	public AbstractElement<?> find_pre_object_by_Source(AbstractElement<?> e)
 	{
 		if (!this.accept_pre_object(e))
 			return null;
-		HashSet<AbstractElement> list = this.get_all_post_objects();
-		Iterator<AbstractElement> iter = list.iterator();
+		HashSet<AbstractElement<?>> list = this.get_all_post_objects();
+		Iterator<AbstractElement<?>> iter = list.iterator();
 		while (iter.hasNext())
 		{
-			AbstractElement erg = iter.next();
+			AbstractElement<?> erg = iter.next();
 			if (e.equals(erg))
 				return erg;
 		}
@@ -186,7 +186,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return AbstractElement
 	 */
-	public AbstractElement get_first_pre_element()
+	public AbstractElement<?> get_first_pre_element()
 	{
 		return this._pre.iterator().next();
 	}
@@ -198,7 +198,7 @@ public abstract class AbstractElement<E>
 	 * @param pre
 	 *            AbstractElement
 	 */
-	public void remove_pre_object_relationship(AbstractElement pre)
+	public void remove_pre_object_relationship(AbstractElement<?> pre)
 	{
 		pre.remove_post_object(this);
 		this.remove_pre_object(pre);
@@ -222,7 +222,7 @@ public abstract class AbstractElement<E>
 	 */
 	public void remove_all_pre_relationship()
 	{
-		Iterator<AbstractElement> list = this._pre.iterator();
+		Iterator<AbstractElement<?>> list = this._pre.iterator();
 		while (list.hasNext())
 		{
 			list.next().remove_post_object(this);
@@ -238,7 +238,7 @@ public abstract class AbstractElement<E>
 	 *            AbstractElement
 	 * @return boolean
 	 */
-	public boolean remove_pre_object(AbstractElement e)
+	public boolean remove_pre_object(AbstractElement<?> e)
 	{
 		return this._pre.remove(e);
 	}
@@ -256,7 +256,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return HashSet<AbstractElement>
 	 */
-	public HashSet<AbstractElement> get_all_pre_objects()
+	public HashSet<AbstractElement<?>> get_all_pre_objects()
 	{
 		return this._pre;
 	}
@@ -266,7 +266,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return Iterator<AbstractElement>
 	 */
-	public Iterator<AbstractElement> get_pre_list_iterator()
+	public Iterator<AbstractElement<?>> get_pre_list_iterator()
 	{
 		return this._pre.iterator();
 	}
@@ -276,10 +276,10 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return Vector<AbstractElement>
 	 */
-	public HashSet<AbstractElement> get_pre_list_copy()
+	public HashSet<AbstractElement<?>> get_pre_list_copy()
 	{
-		HashSet<AbstractElement> list = new HashSet<AbstractElement>();
-		Iterator<AbstractElement> iter = this._pre.iterator();
+		HashSet<AbstractElement<?>> list = new HashSet<AbstractElement<?>>();
+		Iterator<AbstractElement<?>> iter = this._pre.iterator();
 		while (iter.hasNext())
 			list.add(iter.next());
 		return list;
@@ -305,7 +305,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return boolean
 	 */
-	public boolean add_post_object(AbstractElement e)
+	public boolean add_post_object(AbstractElement<?> e)
 	{
 		if (!this.accept_post_object(e))
 			return false;
@@ -324,7 +324,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return boolean
 	 */
-	public boolean add_post_object_Relationship(AbstractElement e)
+	public boolean add_post_object_Relationship(AbstractElement<?> e)
 	{
 		if (!this.accept_post_object(e))
 			return false;
@@ -341,9 +341,9 @@ public abstract class AbstractElement<E>
 	 *            HashSet<AbstractElement>
 	 * @return returned false, if one object not added
 	 */
-	public boolean add_post_object_list(HashSet<AbstractElement> list)
+	public boolean add_post_object_list(HashSet<AbstractElement<?>> list)
 	{
-		Iterator<AbstractElement> iter = list.iterator();
+		Iterator<AbstractElement<?>> iter = list.iterator();
 		boolean erg = true;
 		while (iter.hasNext())
 			if (!this.add_post_object(iter.next()))
@@ -360,9 +360,9 @@ public abstract class AbstractElement<E>
 	 * @return returned false, if one object not added
 	 */
 	public boolean add_post_object_list_relationship(
-			HashSet<AbstractElement> list)
+			HashSet<AbstractElement<?>> list)
 	{
-		Iterator<AbstractElement> iter = list.iterator();
+		Iterator<AbstractElement<?>> iter = list.iterator();
 		boolean erg = true;
 		while (iter.hasNext())
 			if (!this.add_post_object_Relationship(iter.next()))
@@ -378,10 +378,10 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return AbstractElement, returned null if no matching
 	 */
-	public AbstractElement find_post_object_by_id(long id)
+	public AbstractElement<?> find_post_object_by_id(long id)
 	{
-		Iterator<AbstractElement> list = this._post.iterator();
-		AbstractElement erg = null;
+		Iterator<AbstractElement<?>> list = this._post.iterator();
+		AbstractElement<?> erg = null;
 		while (list.hasNext())
 		{
 			if ((erg = list.next()).getID() == id)
@@ -398,15 +398,15 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return AbstractElement
 	 */
-	public AbstractElement find_post_object_by_Source(AbstractElement e)
+	public AbstractElement<?> find_post_object_by_Source(AbstractElement<?> e)
 	{
 		if (!this.accept_pre_object(e))
 			return null;
-		HashSet<AbstractElement> list = this.get_all_post_objects();
-		Iterator<AbstractElement> iter = list.iterator();
+		HashSet<AbstractElement<?>> list = this.get_all_post_objects();
+		Iterator<AbstractElement<?>> iter = list.iterator();
 		while (iter.hasNext())
 		{
-			AbstractElement erg = iter.next();
+			AbstractElement<?> erg = iter.next();
 			if (e.equals(erg))
 				return erg;
 		}
@@ -418,7 +418,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return AbstractElement
 	 */
-	public AbstractElement get_first_post_element()
+	public AbstractElement<?> get_first_post_element()
 	{
 		return this._post.iterator().next();
 	}
@@ -431,7 +431,7 @@ public abstract class AbstractElement<E>
 	 *            AbstractElement
 	 * @return boolean
 	 */
-	public boolean remove_post_object(AbstractElement e)
+	public boolean remove_post_object(AbstractElement<?> e)
 	{
 		return this._post.remove(e);
 	}
@@ -464,7 +464,7 @@ public abstract class AbstractElement<E>
 	 * @param pre
 	 *            AbstractElement
 	 */
-	public void remove_post_object_relationship(AbstractElement pre)
+	public void remove_post_object_relationship(AbstractElement<?> pre)
 	{
 		pre.remove_post_object(this);
 		this.remove_pre_object(pre);
@@ -475,7 +475,7 @@ public abstract class AbstractElement<E>
 	 */
 	public void remove_all_post_relationship()
 	{
-		Iterator<AbstractElement> list = this._post.iterator();
+		Iterator<AbstractElement<?>> list = this._post.iterator();
 		while (list.hasNext())
 		{
 			list.next().remove_pre_object(this);
@@ -488,7 +488,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return HashSet<AbstractElement>
 	 */
-	public HashSet<AbstractElement> get_all_post_objects()
+	public HashSet<AbstractElement<?>> get_all_post_objects()
 	{
 		return this._post;
 	}
@@ -498,7 +498,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return Iterator<AbstractElement>
 	 */
-	public Iterator<AbstractElement> get_post_list_iterator()
+	public Iterator<AbstractElement<?>> get_post_list_iterator()
 	{
 		return this._post.iterator();
 	}
@@ -508,10 +508,10 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return Vector<AbstractElement>
 	 */
-	public HashSet<AbstractElement> get_post_list_copy()
+	public HashSet<AbstractElement<?>> get_post_list_copy()
 	{
-		HashSet<AbstractElement> list = new HashSet<AbstractElement>();
-		Iterator<AbstractElement> iter = this._post.iterator();
+		HashSet<AbstractElement<?>> list = new HashSet<AbstractElement<?>>();
+		Iterator<AbstractElement<?>> iter = this._post.iterator();
 		while (iter.hasNext())
 			list.add(iter.next());
 		return list;
@@ -537,7 +537,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return boolean
 	 */
-	abstract public boolean accept_pre_object(AbstractElement e);
+	abstract public boolean accept_pre_object(AbstractElement<?> e);
 
 	/**
 	 * The method controls the rules of accepted post objects.
@@ -547,7 +547,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return boolean
 	 */
-	abstract public boolean accept_post_object(AbstractElement e);
+	abstract public boolean accept_post_object(AbstractElement<?> e);
 
 	/**
 	 * This method is required for the HashSet objects
@@ -561,9 +561,9 @@ public abstract class AbstractElement<E>
 	{
 		if (!AbstractElement.class.isInstance(e))
 			return false;
-		if (((AbstractElement) e).getID() != this._id)
+		if (((AbstractElement<?>) e).getID() != this._id)
 			return false;
-		return this.equals((AbstractElement) e);
+		return this.equals((AbstractElement<?>) e);
 	}
 
 	/**
@@ -574,7 +574,7 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return boolean
 	 */
-	abstract public boolean equals(AbstractElement e);
+	abstract public boolean equals(AbstractElement<?> e);
 
 	/**
 	 * Returned the Bpel code of this element.
@@ -591,10 +591,10 @@ public abstract class AbstractElement<E>
 	 * 
 	 * @return AbstractElement
 	 */
-	public AbstractElement findElement(AbstractElement e)
+	public AbstractElement<?> findElement(AbstractElement<?> e)
 	{
 
-		return this.findElement(this, e, new LinkedList<AbstractElement>());
+		return this.findElement(this, e, new LinkedList<AbstractElement<?>>());
 	}
 
 	/**
@@ -607,12 +607,12 @@ public abstract class AbstractElement<E>
 	 * @param usedNotes
 	 * @return
 	 */
-	private AbstractElement findElement(AbstractElement begin,
-			AbstractElement e, LinkedList<AbstractElement> usedNotes)
+	private AbstractElement<?> findElement(AbstractElement<?> begin,
+			AbstractElement<?> e, LinkedList<AbstractElement<?>> usedNotes)
 	{
 		if (begin == null)
 			return null;
-		AbstractElement erg = null;
+		AbstractElement<?> erg = null;
 
 		erg = begin.find_post_object_by_Source(e);
 		if (erg != null)
@@ -622,11 +622,11 @@ public abstract class AbstractElement<E>
 			return erg;
 		usedNotes.add(begin);
 
-		Iterator<AbstractElement> preiter = begin.get_all_pre_objects().iterator();
-		Iterator<AbstractElement> postiter = begin.get_all_post_objects().iterator();
+		Iterator<AbstractElement<?>> preiter = begin.get_all_pre_objects().iterator();
+		Iterator<AbstractElement<?>> postiter = begin.get_all_post_objects().iterator();
 		while (preiter.hasNext() || postiter.hasNext())
 		{
-			AbstractElement tmp = preiter.next();
+			AbstractElement<?> tmp = preiter.next();
 			if (usedNotes.indexOf(tmp) == -1)
 			{
 				erg = this.findElement(tmp, e, usedNotes);

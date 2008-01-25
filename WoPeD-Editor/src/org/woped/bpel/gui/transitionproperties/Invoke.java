@@ -1,42 +1,123 @@
 package org.woped.bpel.gui.transitionproperties;
 
-//package org.woped.bpel.gui.transitionproperties;
-
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 
+public class Invoke extends BaseActivity<TInvoke> {
 
-public class Invoke extends BaseActivity
-{
-	
-	public Invoke()
-	{
-		// TODO Auto-generated constructor stub
-	}
-	
-	public void saveInformation(BPELinvokePanel bip)
-	{
-		//erzeuge XML-Baum
-		TProcess p = BaseActivity.genBpelProcess();
-		TInvoke invoke = p.addNewInvoke();
-		invoke.setName(""+bip.transition.getNameValue());
-		invoke.setPartnerLink(bip.getPartnerLink());
-		invoke.setOperation(bip.getOperation());
-		//invoke.setPortType(bip.getPortType());
-		invoke.setInputVariable(bip.getInVariable());
-		invoke.setOutputVariable(bip.getOutVariable());
-		this.setActivity(invoke);
-	}
-	
-	public void setInformationToPanel(BPELinvokePanel bip)
-	{
-		TInvoke invoke = (TInvoke) this.getActivity();
-		
-		bip.setPartnerLink(invoke.getPartnerLink());
-		bip.setOperation(invoke.getOperation());
-		//bip.setPortType(invoke.getPortType());
-		bip.setInVariable(invoke.getInputVariable());
-		bip.setOutVariable(invoke.getOutputVariable());
+	/**
+	 * 
+	 * @param Name
+	 */
+	public Invoke(String Name) {
+		super(Name);
 	}
 
+	/**
+	 * 
+	 * @param Name
+	 * @param PartnerLink
+	 * @param Operation
+	 * @param PortType
+	 * @param InVariable
+	 * @param OutVariable
+	 */
+	public Invoke(String Name, String PartnerLink, String Operation,
+			String PortType, String InVariable, String OutVariable) {
+		this(Name);
+		this.fillInvoke(PartnerLink, Operation, PortType, InVariable,
+				OutVariable);
+	}
+
+	/**
+	 * 
+	 * @param Name
+	 */
+	protected final void genTActivity(String Name) {
+		this.setActivity(TInvoke.Factory.newInstance());
+		this.getActivity().setName(Name);
+	}
+
+	/**
+	 * 
+	 * @param PartnerLink
+	 * @param Operation
+	 * @param PortType
+	 * @param InVariable
+	 * @param OutVariable
+	 */
+	public final void fillInvoke(String PartnerLink, String Operation,
+			String PortType, String InVariable, String OutVariable) {
+		this.getActivity().setPartnerLink("" + PartnerLink);
+		this.getActivity().setOperation("" + Operation);
+		// this.getActivity().setPortType("" + PortType);
+		this.getActivity().setInputVariable("" + InVariable);
+		this.getActivity().setOutputVariable("" + OutVariable);
+	}
+
+	/**
+	 * @param bip
+	 */
+	public void saveInformation(BPELadditionalPanel bip) {
+		if (!BPELinvokePanel.class.isInstance(bip))
+			return;
+		BPELinvokePanel panel = (BPELinvokePanel) bip;
+		this.fillInvoke(panel.getPartnerLink(), panel.getOperation(), panel
+				.getPortType(), panel.getInVariable(), panel.getOutVariable());
+
+	}
+
+	/**
+	 * @param bip
+	 */
+	public void setInformationToPanel(BPELadditionalPanel bip) {
+		if (!BPELinvokePanel.class.isInstance(bip))
+			return;
+		BPELinvokePanel panel = (BPELinvokePanel) bip;
+
+		panel.setPartnerLink("" + this.getActivity().getPartnerLink());
+		panel.setOperation("" + this.getActivity().getOperation());
+		// panel.setPortType("" + this.getActivity().getPortType());
+		panel.setInVariable("" + this.getActivity().getInputVariable());
+		panel.setOutVariable("" + this.getActivity().getOutputVariable());
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getPartnerLink() {
+		return this.getActivity().getPartnerLink();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public final String getOperation() {
+		return this.getActivity().getOperation();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public final String getPortType() {
+		return this.getActivity().getPortType().getLocalPart();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public final String getInputVariable() {
+		return this.getActivity().getInputVariable();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public final String getOutputVariable() {
+		return this.getActivity().getOutputVariable();
+	}
 }

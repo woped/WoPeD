@@ -11,21 +11,21 @@ public class Place extends NonterminalElement<PlaceModel>
 	}
 
 	@Override
-	public boolean accept_post_object(AbstractElement e)
+	public boolean accept_post_object(AbstractElement<?> e)
 	{
 		if(!Place.class.isInstance(e))return true;
 		return false;
 	}
 
 	@Override
-	public boolean accept_pre_object(AbstractElement e)
+	public boolean accept_pre_object(AbstractElement<?> e)
 	{
 		if(!Place.class.isInstance(e))return true;
 		return false;
 	}
 
 	@Override
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if(!Place.class.isInstance(e))return false;
 		if(((Place)e).getData().getId() != this.getData().getId())return false;		

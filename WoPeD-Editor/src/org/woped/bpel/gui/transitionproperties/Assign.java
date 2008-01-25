@@ -3,42 +3,104 @@ package org.woped.bpel.gui.transitionproperties;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TFrom;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TTo;
 
-
-public class Assign extends BaseActivity
+/**
+ * 
+ * @author Alexander Rosswog, Frank Schüler(redesign)
+ * 
+ * 
+ *
+ */
+public class Assign extends BaseActivity<TAssign>
 {
+	private TFrom _from = null;
+	private TTo _to = null;
 
-	public Assign()
-	{
-
+	/**
+	 * 
+	 * @param Name
+	 */
+	public Assign(String Name)
+	{	
+		super(Name);
 	}
-
-	public void saveInformation(BPELassignPanel bip)
+	
+	/**
+	 * 
+	 * @param Name
+	 * @param FromVariable
+	 * @param ToVariable
+	 */
+	public Assign(String Name ,String FromVariable, String ToVariable)
 	{
-		TProcess p = BaseActivity.genBpelProcess();
-		TAssign assign = p.addNewAssign();
-		assign.setName(""+bip.transition.getNameValue());
+		this(Name);
+		this.fillAssign(FromVariable, ToVariable);
+	}
+	
+	/**
+	 * 
+	 * @param Name
+	 */
+	protected final void genTActivity(String Name)
+	{
+		this.setActivity(TAssign.Factory.newInstance());
+		TAssign assign = this.getActivity();
+		assign.setName(Name);
 		TCopy copy = assign.addNewCopy();
-		TFrom from = copy.addNewFrom();
-		from.setVariable(""+bip.getFromVariable());
-		TTo to = copy.addNewTo();
-		to.setVariable(""+bip.getToVariable());
-		this.setActivity(assign);
+		this._from = copy.addNewFrom();
+		this._to = copy.addNewTo();
 	}
-
-	public void setInformationToPanel(BPELassignPanel bip)
+	
+	/**
+	 * 
+	 * @param FromVariable
+	 * @param ToVariable
+	 */
+	public final void fillAssign(String FromVariable, String ToVariable)
 	{
-		TAssign assign = (TAssign) this.getActivity();
-		TCopy copy = assign.getCopyArray(0);
-		TFrom from = copy.getFrom();
-		String sFromVariable = from.getVariable();
-		bip.setFromVariable(sFromVariable);
-
-		TTo to = copy.getTo();
-		String sToVariable = to.getVariable();
-		bip.setToVariable(sToVariable);
+		this._from.setVariable("" + FromVariable);
+		this._to.setVariable("" + ToVariable);
 	}
 
+	/**
+	 * 
+	 * @param bip
+	 */
+	public void saveInformation(BPELadditionalPanel bip)
+	{
+		if(!BPELassignPanel.class.isInstance(bip))return;
+		BPELassignPanel panel = (BPELassignPanel)bip;
+		this.fillAssign(panel.getFromVariable(), panel.getToVariable());
+	}
+
+	/**
+	 * 
+	 * @param bip
+	 */
+	public void setInformationToPanel(BPELadditionalPanel bip)
+	{
+		if(!BPELassignPanel.class.isInstance(bip))return;
+		BPELassignPanel panel = (BPELassignPanel)bip;
+		panel.setFromVariable(this.getFromVariable());
+		panel.setToVariable(this.getToVariable());
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getFromVariable()
+	{
+		return this._from.getVariable();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getToVariable()
+	{
+		return this._to.getVariable();
+	}
 }

@@ -12,6 +12,7 @@ public class ANDSplitTransition extends
 		super(data);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(AbstractElement e)
 	{

@@ -1,13 +1,10 @@
 package org.woped.bpel.datamodel;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.AssignDocument;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.bpel.*;
 import org.woped.bpel.gui.transitionproperties.BaseActivity;
+import org.woped.core.model.petrinet.TransitionModel;
 public class SimpleTransition extends Transition<TransitionModel>
 {
 	
@@ -17,7 +14,7 @@ public class SimpleTransition extends Transition<TransitionModel>
 	}
 
 	@Override
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if (!SimpleTransition.class.isInstance(e))
 			return false;
@@ -30,7 +27,7 @@ public class SimpleTransition extends Transition<TransitionModel>
 	public TActivity getBpelCode()
 
 	{		
-		BaseActivity ba = (BaseActivity)this.getData().getBpelData();
+		BaseActivity<?> ba = (BaseActivity<?>)this.getData().getBpelData();
 		//TActivity activity = null;
 		if((this.getData().getBpelData())!=null){
 			return ba.getActivity();

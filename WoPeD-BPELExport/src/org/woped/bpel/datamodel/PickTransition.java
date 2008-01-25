@@ -3,23 +3,33 @@ package org.woped.bpel.datamodel;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import org.apache.xmlbeans.XmlObject;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
-import org.woped.bpel.BPEL;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TFlow;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TIf;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TOnAlarmPick;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TOnMessage;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPick;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 
 public class PickTransition extends TerminalElement
 {
 
-	HashSet<AbstractElement>	begin;
+	HashSet<AbstractElement<?>>	begin;
 	TPick						pick	= null;
 
-	public PickTransition(HashSet<AbstractElement> begin)
+	public PickTransition(HashSet<AbstractElement<?>> begin)
 	{
 		super("test");
 		this.begin = begin;
 	}
 
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if (!PickTransition.class.isInstance(e))
 			return false;
@@ -30,10 +40,10 @@ public class PickTransition extends TerminalElement
 
 	public TActivity getBpelCode()
 	{
-		TPick iPick = BPEL.genBpelProcess().addNewPick();
-		XmlObject triggerTransition = null;
-		AbstractElement tmp;
-		Iterator<AbstractElement> list = begin.iterator();
+		TPick iPick = TPick.Factory.newInstance();
+		//XmlObject triggerTransition = null;
+		AbstractElement<?> tmp;
+		Iterator<AbstractElement<?>> list = begin.iterator();
 
 		while (list.hasNext())
 		{
@@ -48,7 +58,7 @@ public class PickTransition extends TerminalElement
 				tmp = tmp.get_first_post_element();
 				tmp = tmp.get_first_post_element();
 				this.addToOnAlarm(iOnAlarmPick, tmp);
-				triggerTransition = iOnAlarmPick;
+				//triggerTransition = iOnAlarmPick;
 			} else if (ResourceTriggerTransition.class.isInstance(tmp)
 					|| MessageTriggerTransition.class.isInstance(tmp))
 			{
@@ -58,14 +68,14 @@ public class PickTransition extends TerminalElement
 				tmp = tmp.get_first_post_element();
 				tmp = tmp.get_first_post_element();
 				this.addToOnMessage(iOnMessage, tmp);
-				triggerTransition = iOnMessage;
+				//triggerTransition = iOnMessage;
 			}
 		}
 		this.pick = iPick;
 		return pick;
 	}
 
-	private void addToOnAlarm(TOnAlarmPick iOnAlarmPick, AbstractElement tmp)
+	private void addToOnAlarm(TOnAlarmPick iOnAlarmPick, AbstractElement<?> tmp)
 	{
 		if (TPick.class.isInstance(tmp.getBpelCode()))
 		{
@@ -110,7 +120,7 @@ public class PickTransition extends TerminalElement
 		}
 	}
 
-	private void addToOnMessage(TOnMessage iOnMessage, AbstractElement tmp)
+	private void addToOnMessage(TOnMessage iOnMessage, AbstractElement<?> tmp)
 	{
 		if (TPick.class.isInstance(tmp.getBpelCode()))
 		{

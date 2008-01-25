@@ -218,6 +218,12 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 			return "";
 		return operationComboBox.getSelectedItem().toString();
 	}
+	
+	public String getPortType()
+	{
+		//TODO
+		return "";
+	}
 
 	public String getInVariable() {
 		if (inVariableComboBox.getSelectedItem() == null)
@@ -240,6 +246,11 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	public void setOperation(String operation) {
 		operationComboBox.addItem(operation);
 	}
+	
+	public void setPortType(String porttype)
+	{
+		//TODO
+	}
 
 	public void setInVariable(String inVariable) {
 		inVariableComboBox.addItem(inVariable);
@@ -247,5 +258,11 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 	public void setOutVariable(String outVariable) {
 		outVariableComboBox.addItem(outVariable);
+	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
 	}
 }

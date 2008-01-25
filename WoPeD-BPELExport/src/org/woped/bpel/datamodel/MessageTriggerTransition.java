@@ -13,7 +13,7 @@ public class MessageTriggerTransition extends Transition<TransitionModel>
 	}
 
 	@Override
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if (!MessageTriggerTransition.class.isInstance(e))
 			return false;

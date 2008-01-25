@@ -15,6 +15,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -26,8 +28,6 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.xml.stream.XMLStreamException;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.woped.bpel.wsdl.Wsdl;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.PartnerLinkType;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.Role;
@@ -70,8 +70,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 	JButton cancelPartnerButton = null;
 	JButton okVariableButton = null;
 	JButton cancelVariableButton = null;
-	
-	Dimension dimension = new Dimension(50,22);
+
+	Dimension dimension = new Dimension(50, 22);
 
 	static final String NEW = Messages
 			.getString("Transition.Properties.BPEL.Buttons.New");
@@ -294,17 +294,17 @@ public abstract class BPELadditionalPanel extends JPanel {
 			c.insets = new Insets(0, 5, 0, 0);
 			dialogButtons.add(getVariableCancelButton(), c);
 		}
-		return dialogButtons;	
-}	
-	
+		return dialogButtons;
+	}
+
 	private JComboBox getVariableTypesComboBox() {
 		if (variableTypesComboBox == null) {
-			variableTypesComboBox = new JComboBox();	
+			variableTypesComboBox = new JComboBox();
 			String[] variables = BpelVariable.getTypes();
-			for(int i=0; i<variables.length; i++){
+			for (int i = 0; i < variables.length; i++) {
 				variableTypesComboBox.addItem(variables[i]);
 			}
-		}		
+		}
 		return variableTypesComboBox;
 	}
 
@@ -461,7 +461,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO speichern mithilfe von Alex' Klassen, die auf content
 				// getter methoden zugreifen
-				
+
 				t_editor.getEditor().getModelProcessor().getElementContainer()
 						.addVariable(
 								VariableName.getText(),
@@ -678,12 +678,20 @@ public abstract class BPELadditionalPanel extends JPanel {
 		errorPopup.add(okButton, c);
 		errorPopup.setVisible(true);
 	}
-	
+
+	/**
+	 * 
+	 * @param box
+	 */
 	protected void fillVariableToComboBox(JComboBox box) {
-		String[] list = this.t_editor.getEditor().getModelProcessor()
-				.getElementContainer().getVariableList().getVariableNameArray();
-		for (int i = 0; i < list.length; i++) {
-			box.addItem(list[i]);
-		}
+		HashSet<BpelVariable> list = this.t_editor.getEditor()
+				.getModelProcessor().getElementContainer().getVariableList()
+				.getBpelVariableList();
+		box.removeAllItems();
+		Iterator<BpelVariable> iter = list.iterator();
+		while (iter.hasNext())
+			box.addItem(iter.next());
 	}
+
+	public abstract void refresh();
 }

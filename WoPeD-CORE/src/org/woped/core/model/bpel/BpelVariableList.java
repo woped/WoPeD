@@ -51,6 +51,15 @@ public class BpelVariableList {
 		}
 		return list;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public HashSet<BpelVariable> getBpelVariableList()
+	{
+		return this._list;
+	}
 
 	/**
 	 * 

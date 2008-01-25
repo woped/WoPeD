@@ -11,6 +11,8 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
@@ -22,7 +24,6 @@ import org.woped.editor.controller.TransitionPropertyEditor;
  * 
  * Created on 15.01.2008
  */
-
 
 @SuppressWarnings("serial")
 public class BPELassignPanel extends BPELadditionalPanel {
@@ -108,7 +109,6 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		return fromVariableComboBox;
 	}
 
-
 	private JButton getNewFromVariableButton() {
 		if (newFromVariableButton == null) {
 			newFromVariableButton = new JButton(NEW);
@@ -122,6 +122,12 @@ public class BPELassignPanel extends BPELadditionalPanel {
 						fromVariableComboBox
 								.setSelectedIndex(fromVariableComboBox
 										.getItemCount() - 1);
+						fillVariableToComboBox(fromVariableComboBox);
+						BpelVariable var = t_editor.getEditor()
+								.getModelProcessor().getElementContainer()
+								.findBpelVariableByName(
+										dialog.getNewVariableName());
+						fromVariableComboBox.setSelectedItem(var);
 					}
 				}
 			});
@@ -178,5 +184,18 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 	public void setToVariable(String variable) {
 		toVariableComboBox.addItem(variable);
+	}
+
+	@Override
+	public void refresh() {
+		this.fillVariableToComboBox(this.fromVariableComboBox);
+		this.fillVariableToComboBox(this.toVariableComboBox);
+
+		if (Assign.class.isInstance(this.transition.getBpelData())) {
+			Assign assign = (Assign) this.transition.getBpelData();
+			ModelElementContainer model = this.t_editor.getEditor()
+					.getModelProcessor().getElementContainer();
+			BpelVariable var = model.findBpelVariableByName(assign.getFromVariable());
+		}
 	}
 }

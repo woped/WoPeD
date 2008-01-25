@@ -12,7 +12,7 @@ abstract public class Transition<E extends TransitionModel> extends
 	}
 
 	@Override
-	public boolean accept_post_object(AbstractElement e)
+	public boolean accept_post_object(AbstractElement<?> e)
 	{
 		if (Place.class.isInstance(e))
 			return true;
@@ -22,7 +22,7 @@ abstract public class Transition<E extends TransitionModel> extends
 	}
 
 	@Override
-	public boolean accept_pre_object(AbstractElement e)
+	public boolean accept_pre_object(AbstractElement<?> e)
 	{
 		if (Place.class.isInstance(e))
 			return true;

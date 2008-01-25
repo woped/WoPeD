@@ -1,47 +1,78 @@
 package org.woped.bpel.gui.transitionproperties;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.xmlbeans.XmlOptions;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.ProcessDocument;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 
-public abstract class BaseActivity
+/**
+ * 
+ * @author Frank Schüler
+ *
+ * @param <E>
+ */
+public abstract class BaseActivity<E extends TActivity>
 {
-	private TActivity Data = null;
+	private E _data = null;
 
-	public TActivity getActivity()
+	/**
+	 * 
+	 */
+	public BaseActivity(String Name)
 	{
-		return this.Data;
+		this.genTActivity(Name);
 	}
 	
-	public void setActivity(TActivity ta)
+	/**
+	 * 
+	 * @return
+	 */
+	public final E getActivity()
 	{
-		this.Data = ta;
+		return this._data;
 	}
 	
-	public BaseActivity()
+	/**
+	 * 
+	 * @param ta
+	 */
+	public final void setActivity(E ta)
 	{
-		// TODO Auto-generated constructor stub
+		this._data = ta;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public final String getName(){
+		return this._data.getName();
+	}
+	
+	/**
+	 * 
+	 * @param Name
+	 */
+	protected abstract void genTActivity(String Name);
+	
+	/**
+	 * 
+	 * @param bip
+	 */
+	public abstract void saveInformation(BPELadditionalPanel bip);
+	
+	/**
+	 * 
+	 * @param bip
+	 */
+	public abstract void setInformationToPanel(BPELadditionalPanel bip);
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public static TProcess genBpelProcess()
 	{
-		//if(BPEL.Process != null)return BPEL.Process;
-		ProcessDocument bpelDoc;
-		XmlOptions opt = new XmlOptions();
-        opt.setUseDefaultNamespace();
-        opt.setSavePrettyPrint();
-        opt.setSavePrettyPrintIndent(2);
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("xmlns:bpel", "bpel.woped.org");
-        map.put("xmlns:bpel","");
-        map.put("xmlns:xsd","http://www.w3.org/2001/XMLSchema");
-        //opt = opt.setSaveImplicitNamespaces(map);
-        bpelDoc = ProcessDocument.Factory.newInstance(opt);
-		return bpelDoc.addNewProcess();
+		return TProcess.Factory.newInstance();
 	}
-
+	
+	
 }

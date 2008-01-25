@@ -12,7 +12,7 @@ public class ResourceTriggerTransition extends Transition<TransitionModel>
 	}
 
 	@Override
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{if (!ResourceTriggerTransition.class.isInstance(e))
 		return false;
 	if (this.getData().getId() != ((ResourceTriggerTransition) e).getData().getId())

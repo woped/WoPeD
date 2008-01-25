@@ -1,6 +1,5 @@
 package org.woped.bpel.datamodel;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
 import org.woped.core.model.petrinet.SubProcessModel;
 
@@ -15,7 +14,7 @@ public class Subprocess extends Transition<SubProcessModel>
 	/**
 	 * noch nicht final
 	 */
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if (!Subprocess.class.isInstance(e))
 			return false;

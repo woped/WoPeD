@@ -454,9 +454,19 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 		return "" + getDeadLineYear() + "-" + getDeadLineMonth() + "-" + getDeadLineDay() + "T" + getDeadLineHour() + ":" + getDeadLineMinute() + ":" + getDeadLineSecond() + "+1:00";
 	}
 	
+	public void setDeadline(String Deadline)
+	{
+		
+	}
+	
 	public String getDuration()
 	{
 		return "P" + getDurationYear() + "Y" + getDurationMonth() + "M" + getDurationDay() + "DT" + getDurationHour() + "H" + getDurationMinute() + "M" + getDurationSecond() + "S";
+	}
+	
+	public void setDuration(String Duration)
+	{
+		
 	}
 	
 	public String getDeadLineDay()
@@ -552,6 +562,15 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 		if (durationTextFieldSecond.getText() == null)
 			return null;
 		return durationTextFieldSecond.getText();
+	}
+
+
+
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

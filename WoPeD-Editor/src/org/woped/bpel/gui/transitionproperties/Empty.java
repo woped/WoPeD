@@ -1,26 +1,35 @@
 package org.woped.bpel.gui.transitionproperties;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TFrom;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TTo;
 
-
-public class Empty extends BaseActivity
+/**
+ * 
+ * @author Alexander Rosswog, Frank Schüler
+ *
+ */
+public class Empty extends BaseActivity<TEmpty>
 {
 
-	public Empty()
+	public Empty(String Name)
 	{
+		super(Name);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void saveEmptyInformation()
-	{
-		TProcess p = BaseActivity.genBpelProcess();
-		TEmpty empty = p.addNewEmpty();
-		this.setActivity(empty);
+
+	@Override
+	protected void genTActivity(String Name) {
+		this.setActivity(TEmpty.Factory.newInstance());
+		this.getActivity().setName(Name);		
+	}
+
+	@Override
+	public void saveInformation(BPELadditionalPanel bip) {
+		
+	}
+
+	@Override
+	public void setInformationToPanel(BPELadditionalPanel bip) {
+		
 	}
 
 }

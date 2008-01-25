@@ -59,6 +59,7 @@ import org.woped.bpel.gui.transitionproperties.BPELinvokePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreceivePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreplyPanel;
 import org.woped.bpel.gui.transitionproperties.BPELwaitPanel;
+import org.woped.bpel.gui.transitionproperties.Empty;
 import org.woped.bpel.gui.transitionproperties.Invoke;
 import org.woped.bpel.gui.transitionproperties.Receive;
 import org.woped.bpel.gui.transitionproperties.Reply;
@@ -1460,16 +1461,20 @@ public class TransitionPropertyEditor extends JDialog implements
 			if (Assign.class.isInstance(this.transition.getBpelData())) {
 //				activityChooseComboBox.setVisible(false);
 				activityChooseComboBox.setSelectedIndex(1);
-//				showAssignPanel();
+				this.assignPanel.refresh();
 //				activityChooseComboBox.setVisible(true);
 			} else if (Invoke.class.isInstance(this.transition.getBpelData())) {
 				activityChooseComboBox.setSelectedIndex(2);
+				this.invokePanel.refresh();
 			} else if (Receive.class.isInstance(this.transition.getBpelData())) {
 				activityChooseComboBox.setSelectedIndex(3);
+				this.receivePanel.refresh();
 			} else if (Reply.class.isInstance(this.transition.getBpelData())) {
 				activityChooseComboBox.setSelectedIndex(4);
-			} else if (Receive.class.isInstance(this.transition.getBpelData())) {
+				this.replyPanel.refresh();
+			} else if (Wait.class.isInstance(this.transition.getBpelData())) {
 				activityChooseComboBox.setSelectedIndex(5);
+				this.waitPanel.refresh();
 			} else {
 				activityChooseComboBox.setSelectedIndex(0);
 			}
@@ -1815,29 +1820,30 @@ public class TransitionPropertyEditor extends JDialog implements
 					int index = activityChooseComboBox.getSelectedIndex();
 					switch (index) {
 					case 0:
+						transition.setBaseActivity(new Empty(transition.getNameValue()));
 						break;
 					case 1:
-						Assign iAssign = new Assign();
+						Assign iAssign = new Assign(transition.getNameValue());
 						iAssign.saveInformation(assignPanel);
 						transition.setBaseActivity(iAssign);
 						break;
 					case 2:
-						Invoke iInvoke = new Invoke();
+						Invoke iInvoke = new Invoke(transition.getNameValue());
 						iInvoke.saveInformation(invokePanel);
 						transition.setBaseActivity(iInvoke);
 						break;
 					case 3:
-						Receive iReceive = new Receive();
+						Receive iReceive = new Receive(transition.getNameValue());
 						iReceive.saveInformation(receivePanel);
 						transition.setBaseActivity(iReceive);
 						break;
 					case 4:
-						Reply iReply = new Reply();
+						Reply iReply = new Reply(transition.getNameValue());
 						iReply.saveInformation(replyPanel);
 						transition.setBaseActivity(iReply);
 						break;
 					case 5:
-						Wait iWait = new Wait();
+						Wait iWait = new Wait(transition.getNameValue());
 						iWait.saveInformation(waitPanel);
 						transition.setBaseActivity(iWait);
 					}

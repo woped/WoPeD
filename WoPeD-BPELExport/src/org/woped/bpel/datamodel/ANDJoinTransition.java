@@ -27,6 +27,7 @@ public class ANDJoinTransition extends
 	/**
 	 * This method test is a other AbstractElement equals to this object.
 	 */
+	@SuppressWarnings("unchecked")
 	public boolean equals(AbstractElement e)
 	{
 		if(!ANDJoinTransition.class.isInstance(e))return false;

@@ -25,6 +25,7 @@ package org.woped.core.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.woped.core.Constants;
+import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.BpelVariableList;
 import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.bpel.PartnerlinkList;
@@ -624,6 +626,34 @@ public class ModelElementContainer implements Serializable {
 	 */
 	public void addWSDLVariable(String name, String namespace, String type) {
 		this.variablesList.addWSDLVariable(name, namespace, type);
+	}
+	
+	/**
+	 * 
+	 * @param Name
+	 * @return
+	 */
+	public BpelVariable findBpelVariableByName(String Name)
+	{
+		return this.variablesList.findBpelVaraibleByName(Name);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String[] getBpelVariableNameList()
+	{
+		return this.variablesList.getVariableNameArray();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public HashSet<BpelVariable> getBpelVariableList()
+	{
+		return this.variablesList.getBpelVariableList();
 	}
 
 }

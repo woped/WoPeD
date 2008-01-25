@@ -8,15 +8,15 @@ import org.woped.bpel.BPEL;
 
 public class IfTransition extends TerminalElement
 {
-	private AbstractElement begin;
+	private AbstractElement<?> begin;
 
-	public IfTransition(AbstractElement begin)
+	public IfTransition(AbstractElement<?> begin)
 	{
 		super("test");
 		this.begin = begin;
 	}
 
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if(!IfTransition.class.isInstance(e)) return false;
 		if(this.getID() != e.getID()) return false;
@@ -25,10 +25,10 @@ public class IfTransition extends TerminalElement
 
 	public TActivity getBpelCode()
 	{
-		AbstractElement tmp = null;
+		AbstractElement<?> tmp = null;
 		TIf iIf = BPEL.genBpelProcess().addNewIf();
 		iIf.setName(""+this.getData());
-		Iterator<AbstractElement> list = begin.get_all_post_objects().iterator();
+		Iterator<AbstractElement<?>> list = begin.get_all_post_objects().iterator();
 		for (int i=0;list.hasNext();i++)
 		{
 			tmp = list.next();

@@ -187,4 +187,11 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		variableComboBox.addItem(variable);
 	}
 
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

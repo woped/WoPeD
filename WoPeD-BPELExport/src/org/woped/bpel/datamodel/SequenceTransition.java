@@ -14,16 +14,16 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.woped.bpel.BPEL;
 public class SequenceTransition extends TerminalElement
 {
-	AbstractElement begin;
+	AbstractElement<?> begin;
 	TSequence seq = null;
 
-	public SequenceTransition(AbstractElement begin)
+	public SequenceTransition(AbstractElement<?> begin)
 	{
 		super("test");
 		this.begin = begin;
 	}
 
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if (!SequenceTransition.class.isInstance(e))
 			return false;
@@ -89,7 +89,7 @@ public class SequenceTransition extends TerminalElement
 		}			
 		
 		//place between transitions
-		AbstractElement tmp = begin.get_first_post_element();		
+		AbstractElement<?> tmp = begin.get_first_post_element();		
 		
 		
 		//2.transition

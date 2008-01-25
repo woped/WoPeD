@@ -14,7 +14,7 @@ public class TimeTriggerTransition extends Transition<TransitionModel>
 	}
 	
 	@Override
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if (!TimeTriggerTransition.class.isInstance(e))
 			return false;

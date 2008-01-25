@@ -7,15 +7,15 @@ import org.woped.bpel.BPEL;
 
 public class FlowTransition extends TerminalElement
 {
-	private AbstractElement begin;
+	private AbstractElement<?> begin;
 
-	public FlowTransition(AbstractElement begin)
+	public FlowTransition(AbstractElement<?> begin)
 	{
 		super("test");
 		this.begin = begin;
 	}
 
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if(!FlowTransition.class.isInstance(e)) return false;
 		if(this.getID() != e.getID()) return false;
@@ -24,9 +24,9 @@ public class FlowTransition extends TerminalElement
 	
 	public TActivity getBpelCode()
 	{
-		AbstractElement tmp = null;
+		AbstractElement<?> tmp = null;
 		TFlow iFlow = BPEL.genBpelProcess().addNewFlow();
-		Iterator<AbstractElement> list = begin.get_all_post_objects().iterator();
+		Iterator<AbstractElement<?>> list = begin.get_all_post_objects().iterator();
 		while (list.hasNext())
 		{
 			

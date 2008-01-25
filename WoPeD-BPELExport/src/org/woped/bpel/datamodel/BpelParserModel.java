@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
 
-import org.apache.xmlbeans.XmlCursor;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
@@ -44,10 +42,10 @@ public class BpelParserModel
 	private static long					MODELCOUNTER		= 0;
 
 	private long						_id					= MODELCOUNTER++;
-	private AbstractElement				_oneelement			= null;
-	private HashSet<AbstractElement>	_regist_places		= new HashSet<AbstractElement>();
-	private HashSet<AbstractElement>	_regist_transition	= new HashSet<AbstractElement>();
-	private Stack<AbstractElement>		_reg_to_deregist	= new Stack<AbstractElement>();
+	private AbstractElement<?>				_oneelement			= null;
+	private HashSet<AbstractElement<?>>	_regist_places		= new HashSet<AbstractElement<?>>();
+	private HashSet<AbstractElement<?>>	_regist_transition	= new HashSet<AbstractElement<?>>();
+	private Stack<AbstractElement<?>>		_reg_to_deregist	= new Stack<AbstractElement<?>>();
 
 	/**
 	 * Constructor to generate an empty object.
@@ -81,10 +79,10 @@ public class BpelParserModel
 	 * 
 	 * @return HashSet<AbstractElement>
 	 */
-	public HashSet<AbstractElement> get_copy_of_regist_places()
+	public HashSet<AbstractElement<?>> get_copy_of_regist_places()
 	{
-		HashSet<AbstractElement> copy = new HashSet<AbstractElement>();
-		Iterator<AbstractElement> list = this._regist_places.iterator();
+		HashSet<AbstractElement<?>> copy = new HashSet<AbstractElement<?>>();
+		Iterator<AbstractElement<?>> list = this._regist_places.iterator();
 		while (list.hasNext())
 			copy.add(list.next());
 		return copy;
@@ -95,10 +93,10 @@ public class BpelParserModel
 	 * 
 	 * @return HashSet<AbstractElement>
 	 */
-	public HashSet<AbstractElement> get_copy_of_regist_transition()
+	public HashSet<AbstractElement<?>> get_copy_of_regist_transition()
 	{
-		HashSet<AbstractElement> copy = new HashSet<AbstractElement>();
-		Iterator<AbstractElement> list = this._regist_transition.iterator();
+		HashSet<AbstractElement<?>> copy = new HashSet<AbstractElement<?>>();
+		Iterator<AbstractElement<?>> list = this._regist_transition.iterator();
 		while (list.hasNext())
 			copy.add(list.next());
 		return copy;
@@ -107,8 +105,8 @@ public class BpelParserModel
 	public String toString()
 	{
 		String erg = new String();
-		Iterator<AbstractElement> plist = this._regist_places.iterator();
-		Iterator<AbstractElement> tlist = this._regist_transition.iterator();
+		Iterator<AbstractElement<?>> plist = this._regist_places.iterator();
+		Iterator<AbstractElement<?>> tlist = this._regist_transition.iterator();
 		while (plist.hasNext())
 			erg = erg + "\n" + plist.next().getClass().getSimpleName();
 		while (tlist.hasNext())
@@ -152,7 +150,7 @@ public class BpelParserModel
 		if (this.get_registrated_element(e) != null)
 			return true;
 		// System.out.println("createModel " + e.getId());
-		AbstractElement element = BpelParserModel.createElement(e);
+		AbstractElement<?> element = BpelParserModel.createElement(e);
 		if (element == null)
 			return false;
 		if (this._oneelement == null)
@@ -170,7 +168,7 @@ public class BpelParserModel
 			{
 				if (!this.createModel((PetriNetModelElement) tmp, con))
 					return false;
-				AbstractElement abs = this
+				AbstractElement<?> abs = this
 						.get_registrated_element((PetriNetModelElement) tmp);
 
 				if (abs == null)
@@ -192,7 +190,7 @@ public class BpelParserModel
 			{
 				if (!this.createModel((PetriNetModelElement) tmp, con))
 					return false;
-				AbstractElement abs = this
+				AbstractElement<?> abs = this
 						.get_registrated_element((PetriNetModelElement) tmp);
 
 				if (abs == null)
@@ -212,7 +210,7 @@ public class BpelParserModel
 	 * @param e
 	 *            AbstractElement
 	 */
-	private void regist_element(AbstractElement e)
+	private void regist_element(AbstractElement<?> e)
 	{
 		// System.out.println("i am regist the element!" + e);
 		if (Place.class.isInstance(e))
@@ -227,7 +225,7 @@ public class BpelParserModel
 	 * @param e
 	 *            AbstractElement
 	 */
-	private void deregist_element(AbstractElement e)
+	private void deregist_element(AbstractElement<?> e)
 	{
 		if (Place.class.isInstance(e))
 			this._regist_places.remove(e);
@@ -242,13 +240,14 @@ public class BpelParserModel
 	 * @param e
 	 *            AbstractElement
 	 */
-	private void deregist_submodel(AbstractElement e)
+	@SuppressWarnings("unused")
+	private void deregist_submodel(AbstractElement<?> e)
 	{
 		if (this.get_registrated_element(e) == null)
 			return;
 		this.deregist_element(e);
-		Iterator<AbstractElement> pre = e.get_all_pre_objects().iterator();
-		Iterator<AbstractElement> post = e.get_all_post_objects().iterator();
+		Iterator<AbstractElement<?>> pre = e.get_all_pre_objects().iterator();
+		Iterator<AbstractElement<?>> post = e.get_all_post_objects().iterator();
 
 		while (pre.hasNext())
 			this.deregist_submodel(pre.next());
@@ -262,7 +261,7 @@ public class BpelParserModel
 	 * @param e
 	 *            AbstractElement
 	 */
-	private void regist_to_deregist(AbstractElement e)
+	private void regist_to_deregist(AbstractElement<?> e)
 	{
 		this._reg_to_deregist.add(e);
 		if (e.equals(this._oneelement))
@@ -288,14 +287,14 @@ public class BpelParserModel
 	 *            AbstractElement
 	 */
 	 
-	private void reg_to_deregist_submodel(AbstractElement e)
+	private void reg_to_deregist_submodel(AbstractElement<?> e)
 	{
 		if (this._reg_to_deregist.search(e) != -1)
 			return;
 		this.regist_to_deregist(e);
 		// System.out.println("Deregist " + e.getClass().toString());
-		Iterator<AbstractElement> pre = e.get_all_pre_objects().iterator();
-		Iterator<AbstractElement> post = e.get_all_post_objects().iterator();
+		Iterator<AbstractElement<?>> pre = e.get_all_pre_objects().iterator();
+		Iterator<AbstractElement<?>> post = e.get_all_post_objects().iterator();
 
 		while (pre.hasNext())
 			this.reg_to_deregist_submodel(pre.next());
@@ -311,7 +310,7 @@ public class BpelParserModel
 	 * 
 	 * @return AbstractElement
 	 */
-	public AbstractElement get_registrated_element(PetriNetModelElement e)
+	public AbstractElement<?> get_registrated_element(PetriNetModelElement e)
 	{
 		// System.out.println("search for element " + e.getClass().toString());
 		return this.get_registrated_element(BpelParserModel.createElement(e));
@@ -325,15 +324,15 @@ public class BpelParserModel
 	 * 
 	 * @return AbstractElement
 	 */
-	public AbstractElement get_registrated_element(AbstractElement e)
+	public AbstractElement<?> get_registrated_element(AbstractElement<?> e)
 	{
 		// System.out.println("search " + e.getClass().toString());
 		if (Place.class.isInstance(e))
 		{
-			Iterator<AbstractElement> iter = this._regist_places.iterator();
+			Iterator<AbstractElement<?>> iter = this._regist_places.iterator();
 			while (iter.hasNext())
 			{
-				AbstractElement erg = iter.next();
+				AbstractElement<?> erg = iter.next();
 				if (erg.equals(e))
 				{
 					// System.out.println("found regist object");
@@ -342,10 +341,10 @@ public class BpelParserModel
 			}
 		} else
 		{
-			Iterator<AbstractElement> iter = this._regist_transition.iterator();
+			Iterator<AbstractElement<?>> iter = this._regist_transition.iterator();
 			while (iter.hasNext())
 			{
-				AbstractElement erg = iter.next();
+				AbstractElement<?> erg = iter.next();
 				if (erg.equals(e))
 				{
 					// System.out.println("found regist object");
@@ -364,7 +363,7 @@ public class BpelParserModel
 	 * 
 	 * @return AbstractElement
 	 */
-	private static AbstractElement createElement(PetriNetModelElement e)
+	private static AbstractElement<?> createElement(PetriNetModelElement e)
 	{
 		// System.out.println(e.getClass().getSimpleName() + " " + e.getId());
 		if (PlaceModel.class.isInstance(e))
@@ -466,7 +465,7 @@ public class BpelParserModel
 	 *            AbstractElement startelement of sequence
 	 * @return AbstractElement
 	 */
-	public AbstractElement isSequence(AbstractElement e)
+	public AbstractElement<?> isSequence(AbstractElement<?> e)
 	{
 		if (e == null)
 			return null;
@@ -482,7 +481,7 @@ public class BpelParserModel
 			return null;
 		if (e.count_post_objects() != 1)
 			return null;
-		AbstractElement tmp = e.get_first_post_element();
+		AbstractElement<?> tmp = e.get_first_post_element();
 		if (!Place.class.isInstance(tmp))
 			return null;
 		if (tmp.count_post_objects() != 1)
@@ -509,12 +508,12 @@ public class BpelParserModel
 	 */
 	public void eliminate_all_sequences()
 	{
-		Iterator<AbstractElement> list = this.get_copy_of_regist_transition()
+		Iterator<AbstractElement<?>> list = this.get_copy_of_regist_transition()
 				.iterator();
 		while (list.hasNext())
 		{
-			AbstractElement begin = list.next();
-			AbstractElement end = this.isSequence(begin);
+			AbstractElement<?> begin = list.next();
+			AbstractElement<?> end = this.isSequence(begin);
 			if (end != null)
 			{
 				this.newSequence(begin, end);
@@ -523,12 +522,12 @@ public class BpelParserModel
 		this.deregist_all_flaged_elements();
 	}
 	
-	public SequenceTransition newSequence(AbstractElement begin, AbstractElement end)
+	public SequenceTransition newSequence(AbstractElement<?> begin, AbstractElement<?> end)
 	{
 		System.out.println("<Sequence> \n" + "\tbegin = " + begin
 				+ "\n" + "\tend = " + end + "\n</Sequence>");
-		HashSet<AbstractElement> pre_list = begin.get_pre_list_copy();
-		HashSet<AbstractElement> post_list = end.get_post_list_copy();
+		HashSet<AbstractElement<?>> pre_list = begin.get_pre_list_copy();
+		HashSet<AbstractElement<?>> post_list = end.get_post_list_copy();
 
 		begin.remove_all_pre_relationship();
 		end.remove_all_post_relationship();
@@ -549,7 +548,7 @@ public class BpelParserModel
 	 *            AbstractElement begin of pick
 	 * @return AbstractElement
 	 */
-	public AbstractElement isSimplePick(AbstractElement e)
+	public AbstractElement<?> isSimplePick(AbstractElement<?> e)
 	{
 		if (e == null)
 			return null;
@@ -558,9 +557,9 @@ public class BpelParserModel
 		if (e.count_post_objects() < 2)
 			return null;
 		
-		AbstractElement end = null;
-		AbstractElement tmp;
-		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
+		AbstractElement<?> end = null;
+		AbstractElement<?> tmp;
+		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
 		
 		boolean firstrun = true;
 		boolean timetrigger = false;
@@ -609,7 +608,7 @@ public class BpelParserModel
 	 *            AbstractElement begin of pick
 	 * @return AbstractElement
 	 */
-	public AbstractElement isPick(AbstractElement e)
+	public AbstractElement<?> isPick(AbstractElement<?> e)
 	{
 		//String test = "";
 		if (e == null)
@@ -619,9 +618,9 @@ public class BpelParserModel
 		if (e.count_post_objects() == 0) 
 			return null;
 		
-		AbstractElement end = null;
-		AbstractElement tmp = null;
-		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
+		AbstractElement<?> end = null;
+		AbstractElement<?> tmp = null;
+		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
 		
 		boolean firstrun = true;
 		//test = test + "<pick" + e.getData() + ">\n";
@@ -682,12 +681,12 @@ public class BpelParserModel
 	 */
 	public void eliminate_all_picks()
 	{
-		Iterator<AbstractElement> list = this.get_copy_of_regist_places()
+		Iterator<AbstractElement<?>> list = this.get_copy_of_regist_places()
 				.iterator();
 		while (list.hasNext())
 		{
-			AbstractElement begin = list.next();
-			AbstractElement end = null;
+			AbstractElement<?> begin = list.next();
+			AbstractElement<?> end = null;
 			/*if ((end = this.isSimplePick(begin)) == null)
 				end = this.isPick(begin);*/
 			end = this.isPick(begin);
@@ -696,10 +695,10 @@ public class BpelParserModel
 				System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n"
 						+ "\tend = " + end + "\n</Pick>");
 
-				AbstractElement e = new PickTransition(begin.get_post_list_copy());
+				AbstractElement<?> e = new PickTransition(begin.get_post_list_copy());
 				this.regist_element(e);
 
-				Iterator<AbstractElement> deregist = begin.get_post_list_copy()
+				Iterator<AbstractElement<?>> deregist = begin.get_post_list_copy()
 						.iterator();
 				begin.remove_all_post_relationship();
 				begin.add_post_object(e);
@@ -723,7 +722,7 @@ public class BpelParserModel
 	 *            AbstractElement begin of flow
 	 * @return AbstractElement
 	 */
-	public AbstractElement isFlow(AbstractElement e)
+	public AbstractElement<?> isFlow(AbstractElement<?> e)
 	{
 		// Work not right
 		if (e == null)
@@ -732,9 +731,9 @@ public class BpelParserModel
 			return null;
 		if (e.count_post_objects() < 2)
 			return null;
-		AbstractElement end = null;
-		AbstractElement tmp = null;
-		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
+		AbstractElement<?> end = null;
+		AbstractElement<?> tmp = null;
+		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
 		// tmp = list.next();
 		boolean firstrun = true;
 		while (list.hasNext())
@@ -773,28 +772,28 @@ public class BpelParserModel
 	 */
 	public void eliminate_all_flows()
 	{
-		Iterator<AbstractElement> list = this.get_copy_of_regist_transition()
+		Iterator<AbstractElement<?>> list = this.get_copy_of_regist_transition()
 				.iterator();
 		while (list.hasNext())
 		{
-			AbstractElement begin = list.next();
-			AbstractElement end = this.isFlow(begin);
+			AbstractElement<?> begin = list.next();
+			AbstractElement<?> end = this.isFlow(begin);
 			if (end != null)
 			{
 				System.out.println("<Flow> \n" + "\tbegin = " + begin + "\n"
 						+ "\tend = " + end + "\n</Flow>");
-				Iterator<AbstractElement> pre_list = begin.get_pre_list_copy()
+				Iterator<AbstractElement<?>> pre_list = begin.get_pre_list_copy()
 						.iterator();
-				Iterator<AbstractElement> post_list = end.get_post_list_copy()
+				Iterator<AbstractElement<?>> post_list = end.get_post_list_copy()
 						.iterator();
 
 				begin.remove_all_pre_relationship();
 				end.remove_all_post_relationship();
 
-				AbstractElement e = new FlowTransition(begin);
+				AbstractElement<?> e = new FlowTransition(begin);
 				this.regist_element(e);
 				this.reg_to_deregist_submodel(begin);
-				AbstractElement tmp;
+				AbstractElement<?> tmp;
 				while (pre_list.hasNext())
 				{
 					tmp = pre_list.next();
@@ -819,7 +818,7 @@ public class BpelParserModel
 	 *            AbstractElement begin of if
 	 * @return AbstractElement
 	 */
-	public AbstractElement isIf(AbstractElement e)
+	public AbstractElement<?> isIf(AbstractElement<?> e)
 	{
 		// Work not right
 		if (e == null)
@@ -828,9 +827,9 @@ public class BpelParserModel
 			return null;
 		if (e.count_post_objects() < 2)
 			return null;
-		AbstractElement end = null;
-		AbstractElement tmp = null;
-		Iterator<AbstractElement> list = e.get_all_post_objects().iterator();
+		AbstractElement<?> end = null;
+		AbstractElement<?> tmp = null;
+		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
 		
 		boolean firstrun = true;
 		while (list.hasNext())
@@ -865,28 +864,28 @@ public class BpelParserModel
 	 */
 	public void eliminate_all_ifs()
 	{
-		Iterator<AbstractElement> list = this.get_copy_of_regist_transition()
+		Iterator<AbstractElement<?>> list = this.get_copy_of_regist_transition()
 				.iterator();
 		while (list.hasNext())
 		{
-			AbstractElement begin = list.next();
-			AbstractElement end = this.isIf(begin);
+			AbstractElement<?> begin = list.next();
+			AbstractElement<?> end = this.isIf(begin);
 			if (end != null)
 			{
 				System.out.println("<If> \n" + "\tbegin = " + begin + "\n"
 						+ "\tend = " + end + "\n</If>");
-				Iterator<AbstractElement> pre_list = begin.get_pre_list_copy()
+				Iterator<AbstractElement<?>> pre_list = begin.get_pre_list_copy()
 						.iterator();
-				Iterator<AbstractElement> post_list = end.get_post_list_copy()
+				Iterator<AbstractElement<?>> post_list = end.get_post_list_copy()
 						.iterator();
 
 				begin.remove_all_pre_relationship();
 				end.remove_all_post_relationship();
 
-				AbstractElement e = new IfTransition(begin);
+				AbstractElement<?> e = new IfTransition(begin);
 				this.regist_element(e);
 				this.reg_to_deregist_submodel(begin);
-				AbstractElement tmp;
+				AbstractElement<?> tmp;
 				while (pre_list.hasNext())
 				{
 					tmp = pre_list.next();
