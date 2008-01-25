@@ -38,6 +38,7 @@ import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.file.controller.vep.FileEventProcessor;
 import org.woped.gui.DefaultUserInterface;
+import org.woped.gui.RunWoPeD;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
@@ -92,8 +93,13 @@ public class DefaultApplicationMediator extends ApplicationMediator
             {
                 for (int i = 0; i < args.length; i++)
                 {
-                    File f = new File(args[i]);
-                    fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN, f));
+                    if (!RunWoPeD.isApplet()) {
+                    	File f = new File(args[i]);
+                    	fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN, f));
+                    } else {
+                    	fireViewEvent(new ViewEvent(this,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPENWEBSERVICE,args[i]));
+                    }
+                    
                 }
             }
         }
