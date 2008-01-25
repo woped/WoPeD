@@ -77,6 +77,9 @@ public class RunWoPeD extends JApplet {
 		// Extract Arguments
 		try {
 			UserHolder.setUserID(ServerLoader.getInstance().getUserID(getParameter("sessionid")));
+			if (UserHolder.getUserID() == -1) {
+				JOptionPane.showMessageDialog(this,"Session not valid!");
+			}
 		} catch (RemoteException e) {
 			// fatal close applet
 			JOptionPane.showMessageDialog(this, "Error during initialisation!");
@@ -86,7 +89,12 @@ public class RunWoPeD extends JApplet {
 		// Arguments Field
 		final String arguments[] = new String[1];
 		arguments[0] = getParameter("modellid");
-		RunWoPeD.run(arguments);
+		if (UserHolder.getUserID() != -1) {
+			RunWoPeD.main(arguments);
+		} else {
+			RunWoPeD.main(null);
+		}		
+		
 	}
 
 	 private static void run(String[] args)
