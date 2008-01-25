@@ -135,7 +135,7 @@ public class PNMLExport
             opt.setSaveImplicitNamespaces(map);
 
             pnmlDoc.save(new File(fileName), opt);
-
+            
             return true;
         } catch (IOException e)
         {
@@ -146,6 +146,40 @@ public class PNMLExport
             LoggerManager.debug(Constants.FILE_LOGGER, "##### END PNML EXPORT ##### (" + (System.currentTimeMillis() - begin) + " ms)");
         }
     }
+    
+    /**
+     * Method saveToFile. Saves a PetriNet Object to *.pnml File.
+     * 
+     * @param fileName
+     */
+    public boolean saveToWebFile(EditorVC editor, ByteArrayOutputStream baos)
+    {
+        LoggerManager.debug(Constants.FILE_LOGGER, "##### START PNML EXPORT #####");
+        long begin = System.currentTimeMillis();
+        try
+        {
+            createJavaBeansInstances(editor);
+            XmlOptions opt = new XmlOptions();
+            opt.setUseDefaultNamespace();
+            opt.setSavePrettyPrint();
+            opt.setSavePrettyPrintIndent(2);
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("", "pnml.woped.org");
+            opt.setSaveImplicitNamespaces(map);
+
+            pnmlDoc.save(baos, opt);
+            
+            return true;
+        } catch (IOException e)
+        {
+            LoggerManager.error(Constants.FILE_LOGGER, "Could not write to the Stream. " + e.getMessage());
+            return false;
+        } finally
+        {
+            LoggerManager.debug(Constants.FILE_LOGGER, "##### END PNML EXPORT ##### (" + (System.currentTimeMillis() - begin) + " ms)");
+        }
+    }
+
 
     private void createJavaBeansInstances(EditorVC editor)
     {
@@ -278,7 +312,7 @@ public class PNMLExport
             	iSimulation.setId(currSimulation.getId());
             	iSimulation.setSimulationname(currSimulation.getName());
             	iTransitionsequence = iSimulation.addNewTransitionsequence();
-            	for(Iterator<TransitionModel> iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
+            	for(Iterator iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
             	{
             		iFiredTransition = iTransitionsequence.addNewFiredtransition();
             		iFiredTransition.setTransitionID(((TransitionModel)iterator.next()).getId());

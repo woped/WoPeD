@@ -193,6 +193,50 @@ public class PNMLImport
         }
 
     }
+    
+    /**
+     * runEx()
+     * <p>
+     * load the Content from a given XML String
+     * <p> 
+     * @param content - Content of PNML File
+     * @return
+     */
+    public boolean runEx(String content)
+    {
+        LoggerManager.debug(Constants.FILE_LOGGER, "##### START PNML Version (1.3.2) IMPORT #####");
+
+        long begin = System.currentTimeMillis();
+        try
+        {
+            pnmlDoc = PnmlDocument.Factory.parse(content, opt);
+            createEditorFromBeans();
+            if (!warnings.isEmpty())
+            {
+                LoggerManager.warn(Constants.FILE_LOGGER, "Imported a not valid PNML.");
+                StringBuffer warningStrings = new StringBuffer();
+                for (Iterator iter = warnings.iterator(); iter.hasNext();)
+                {
+                    warningStrings.append(iter.next());
+                }
+                JOptionPane.showMessageDialog(null, 
+                		Messages.getString("Import.PNML.Text"), 
+                		Messages.getString("Import.PNML.Title"),
+                        JOptionPane.WARNING_MESSAGE);
+            }
+            return true;
+        } catch (Exception e)
+        {
+            LoggerManager.warn(Constants.FILE_LOGGER, "   ... Could parse PNML file. Perhaps OLD PNML file-format. When saving, new pnml file-format will be created.");
+            // return
+            return false;
+        } finally
+        {
+            LoggerManager.debug(Constants.FILE_LOGGER, "##### END PNML IMPORT Version (1.3.2) ##### (" + (System.currentTimeMillis() - begin) + " ms)");
+        }
+
+    }
+
 
     private void createEditorFromBeans() throws Exception
     {
