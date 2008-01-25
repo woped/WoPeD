@@ -46,18 +46,26 @@ public class SlimGameBarVC extends JPanel{
 	private JPanel                   SlimChoicePanel               = null;
 	private DefaultListModel         ChoiceContent                 = null;
 	
-	public SlimGameBarVC(TokenGameBarController tgbController, DefaultListModel Choice)
+	//Dimension
+	private Dimension                d                             = null;
+	
+	public SlimGameBarVC(TokenGameBarController tgbController, DefaultListModel Choice, int ViewMode)
 	{
 	    super();
 	    ChoiceContent = Choice;
 	    this.tgbController = tgbController;
-	    Dimension d = new Dimension(580,110);
+	    if(ViewMode == tgbController.SLIM_VIEW)
+	    {
+	    	d = new Dimension(580,110);
+	    }
 	    this.setPreferredSize(d);
-	    addPlaybackNavigation();
+	    addPlaybackNavigation(ViewMode);
 	}   
 	 
-	private JPanel addPlaybackNavigation()
+	private JPanel addPlaybackNavigation(int ViewMode)
 	{
+	  if(ViewMode == tgbController.SLIM_VIEW)
+	  {
 		//Define Playback-Buttons
 		pbnFastBW = new SlimButton(Messages.getImageIcon("Tokengame.RemoteControl.FastBackward"));
 	    pbnBW = new SlimButton(Messages.getImageIcon("Tokengame.RemoteControl.Backward"));
@@ -66,6 +74,9 @@ public class SlimGameBarVC extends JPanel{
 		pbnPause = new SlimButton(Messages.getImageIcon("Tokengame.RemoteControl.Pause"));
 		pbnFW = new SlimButton(Messages.getImageIcon("Tokengame.RemoteControl.Forward"));
 		pbnFastFW = new SlimButton(Messages.getImageIcon("Tokengame.RemoteControl.FastForward"));
+		sbnExpertView = new SlimButton(Messages.getImageIcon("Tokengame.RemoteControl.Enlarge"));
+		ppbSteps = new SlimButton(Messages.getImageIcon("Tokengame.RemoteControl.Stepwise"));
+
 		
 		//Define Button-Size
 		pbnFastBW.setPreferredSize(new Dimension(xtXsize, xtYsize));
@@ -75,6 +86,8 @@ public class SlimGameBarVC extends JPanel{
 		pbnPause.setPreferredSize(new Dimension(xtXsize, xtYsize));
 		pbnFW.setPreferredSize(new Dimension(xtXsize, xtYsize));
 		pbnFastFW.setPreferredSize(new Dimension(xtXsize, xtYsize));
+		sbnExpertView.setPreferredSize(new Dimension(xtXsize, xtYsize));
+		ppbSteps.setPreferredSize(new Dimension(xtXsize, xtYsize));
 		
 		//Define Playback's ToolTips
 		pbnFastBW.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.FastBackward")); 
@@ -84,6 +97,8 @@ public class SlimGameBarVC extends JPanel{
 		pbnPause.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Pause")); 
 		pbnFW.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Forward")); 
 		pbnFastFW.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.FastForward")); 
+		sbnExpertView.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Enlarge")); 
+		ppbSteps.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Stepwise")); 
 		
 		//Define Button-Actions
 		pbnBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_BACKWARD, tgbController));
@@ -92,50 +107,68 @@ public class SlimGameBarVC extends JPanel{
 		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, tgbController));
 		pbnFastFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_FORWARD, tgbController));
 		pbnFastBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_BACKWARD, tgbController));
-				
+		sbnExpertView.addActionListener(new TokenGameBarListener(TokenGameBarListener.PM_SAVE_VIEW, tgbController));
+		
 		//Create Playback&Navigation-Panel and add Buttons
 		this.setLayout(new GridBagLayout());
 		gbc = new GridBagConstraints();
 		
+		
+
+		gbc.gridx = 8;
+		gbc.gridy = 1;
+		gbc.insets = new Insets (0,30,0,0);
+		this.add(sbnExpertView, gbc);
+		
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		gbc.insets = new Insets (0,3,0,3);
+		gbc.insets = new Insets (0,0,0,0);
+		this.add(ppbSteps, gbc);
+		
+		
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+		gbc.insets = new Insets (0,30,0,3);
 		this.add(pbnFastBW, gbc);
 
 
-		gbc.gridx = 6;
+		gbc.gridx = 7;
 		gbc.gridy = 1;
+		gbc.insets = new Insets (0,3,0,3);
 		this.add(pbnFastFW, gbc);
 
 		
-		gbc.gridx = 1;
+		gbc.gridx = 2;
 		gbc.gridy = 1;
 		gbc.insets = new Insets (5,3,0,3);
 		this.add(pbnBW, gbc);
 
-		gbc.gridx = 5;
+		gbc.gridx = 6;
 		gbc.gridy = 1;
 		this.add(pbnFW, gbc);
 		
-		gbc.gridx = 2;
+		gbc.gridx = 3;
 		gbc.gridy = 1;
 		gbc.insets = new Insets (10,3,0,3);
 		this.add(pbnStop, gbc);
 
-		gbc.gridx = 4;
+		gbc.gridx = 5;
 		gbc.gridy = 1;
 		this.add(pbnPause, gbc);
 		
-		gbc.gridx = 3;
+		gbc.gridx = 4;
 		gbc.gridy = 1;
 		gbc.insets = new Insets (15,3,0,3);
 		this.add(pbnPlay, gbc);
-		
+	  }
 		return this;
+	  
 	}
 	
 	public Point getButtonCoords(boolean BackWard)
 	{
+	  if(tgbController.getViewMode() != tgbController.EXPERT_VIEW)
+	  {
 		if(!BackWard)
 		{
 			return pbnFW.getLocationOnScreen();
@@ -144,6 +177,8 @@ public class SlimGameBarVC extends JPanel{
 		{
 			return pbnBW.getLocationOnScreen();
 		}
+	  }
+	  return null;
 	}
 	
 	public void showChoice()
@@ -176,11 +211,16 @@ public class SlimGameBarVC extends JPanel{
 
 	public void setChoiceListInvisible()
 	{
-		SlimChoiceBox.setVisible(false);
+		if(SlimChoiceBox != null)
+		{
+			SlimChoiceBox.setVisible(false);	
+		}
 	}
 	
 	public void updateList(DefaultListModel ChoiceContent, Point buttonlocation)
 	{
+	 if(buttonlocation != null)
+	 {
 		if(ChoiceContent.size() > 0)
 		{
 			ListSizeY = ChoiceContent.size() * 15; 
@@ -188,6 +228,7 @@ public class SlimGameBarVC extends JPanel{
 		SlimChoiceList.setSize(ListSizeX, ListSizeY);
 		SlimChoiceBox.setSize(ListSizeX+4,ListSizeY+8);
 		SlimChoiceBox.setLocation(buttonlocation.x,buttonlocation.y-(ListSizeY+18));
+	 }
 	}
 	
 	

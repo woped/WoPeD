@@ -6,30 +6,26 @@ import org.woped.qualanalysis.simulation.controller.*;
 
 /**
  * This class specifies the remote control UI of the Tokengame-simulator
- * Currently no Actions can be performed by the Buttons except the close-"x"
- * Standard-Constructor is available
+ * This SlimController looks nice on Microsoft OS usage, but on Apple, currently there is still a GUI prolem
+ * TODO: Fix GUI-Problems on Apple
  * 
  * @author Tilmann Glaser
  * 
  */
 public class SlimInternalFrame extends NewInternalFrame {
 	
-
-
-	
 	private TokenGameBarController   tgbController                 = null;
-	
-	private SlimGameBarVC         SlimPanel                     = null;       
+	private SlimGameBarVC            SlimPanel                     = null;       
 	
 	//Constructor(s)
-	public SlimInternalFrame(TokenGameBarController tgbController, DefaultListModel acoChoiceItems, DefaultListModel ahxHistoryContent)
+	public SlimInternalFrame(TokenGameBarController tgbController, DefaultListModel acoChoiceItems, DefaultListModel ahxHistoryContent, int ViewMode)
 	{
-		super();
+		super(ViewMode);
 	    this.setToolTipText(Messages.getTitle("Tokengame.RemoteControl"));
 		
-		
 		this.tgbController = tgbController;
-        SlimPanel = new SlimGameBarVC(this.tgbController, acoChoiceItems);
+        
+		SlimPanel = new SlimGameBarVC(this.tgbController, acoChoiceItems, ViewMode);
 		this.getContentPane().add(SlimPanel);	
 		
 	}	

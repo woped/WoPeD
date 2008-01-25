@@ -238,11 +238,25 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		 case CHOOSE_RECORD:
 			 if(RemoteControl.isRecordSelected())
 			 {
+			   RemoteControl.setPlayIcon(true);	 
 			   RemoteControl.clearHistoryData();
+			 }
+			 else
+			 {
+				RemoteControl.setPlayIcon(false); 
 			 }
 		     break;
 		 case PM_SAVE_VIEW:
-			 PlaybackDialog.savePMView();
+			 if(RemoteControl.getViewMode() == RemoteControl.EXPERT_VIEW)
+			 {
+			   PlaybackDialog.savePMView();
+			   break;
+			 }
+			 if(RemoteControl.getViewMode() == RemoteControl.SLIM_VIEW)
+			 {
+			   RemoteControl.setViewMode(RemoteControl.EXPERT_VIEW);
+			   break;
+			 }
 			 break;
 		 case PM_FASTFWBW:
 			 PlaybackDialog.savePropertyOccurtime();

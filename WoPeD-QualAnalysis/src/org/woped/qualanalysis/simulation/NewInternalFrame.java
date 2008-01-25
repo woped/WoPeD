@@ -29,7 +29,7 @@ public class NewInternalFrame extends JInternalFrame {
 	 * never change opacity, please.
 	 * The "mover" is realized with an non-opaque JPanel
 	 */
-	public NewInternalFrame()
+	public NewInternalFrame(int ViewMode)
 	{
 		super();
 		this.setSize(580, 130);

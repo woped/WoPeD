@@ -22,6 +22,12 @@ import com.sun.java.swing.plaf.windows.WindowsBorders.InternalFrameLineBorder;
 
 public class TokenGameBarController implements Runnable {
 	
+	//constants
+	//Playback Properties
+	public static final int			 EYE_VIEW					   = 2;
+	public static final int 		 SLIM_VIEW					   = 1;
+	public static final int	         EXPERT_VIEW				   = 0;
+	
 	private TokenGameBarVC           ExpertView                    = null;
     private ReferenceProvider        desktop                       = null;
 	private TokenGameController      tgController                  = null;
@@ -51,13 +57,11 @@ public class TokenGameBarController implements Runnable {
 	private boolean                  newHistory                    = false;
 	private boolean                  endofnet                      = false;
 	
-	//Playback Properties
-	private int						 occurtimes					   = 3;
-	private int						 delaytime					   = 1;
-	private int					     viewmode					   = 0;
-	
 	//Integers
 	private int                      HistoryIndex                  = 0; 
+	private int			             occurtimes					   = 3;
+	private int 		             delaytime					   = 1;
+	private int	                     viewmode					   = 0;
 
 	//SlimFrames
 	private SlimInternalFrame        SlimView                      = null;
@@ -94,7 +98,7 @@ public class TokenGameBarController implements Runnable {
         desktop.getDesktopReference().add(ExpertView).setLocation(p);
         ExpertView.moveToFront();
         
-        SlimView = new SlimInternalFrame(this, acoChoiceItems, ahxHistoryContent);
+        SlimView = new SlimInternalFrame(this, acoChoiceItems, ahxHistoryContent, SLIM_VIEW);
         desktop.getDesktopReference().add(SlimView).setLocation(p);
        /*
         * Not everybody should see the new view right now, therefore commented it out...
@@ -103,15 +107,15 @@ public class TokenGameBarController implements Runnable {
         
         switch(viewmode)
 		{
-	    	case 0:
+	    	case EXPERT_VIEW:
 	    		ExpertView.setVisible(true);
 	        	SlimView.setVisible(false);
 	    		break;
-	    	case 1:
+	    	case SLIM_VIEW:
 	    		ExpertView.setVisible(false);
 	        	SlimView.setVisible(true);
 	    		break;
-	    	case 3:
+	    	case EYE_VIEW:
 	    		break;
 	    	default:
 	    		break;
@@ -151,7 +155,6 @@ public class TokenGameBarController implements Runnable {
 	 */
 	public void occurTransition(boolean BackWard)
 	{
-
 		/*
 		 * Backward is done with the 
 		 */
@@ -170,6 +173,10 @@ public class TokenGameBarController implements Runnable {
 			  }
 		  }
 		  TransitionToOccur = BackwardTransitionToOccur;
+		  if(TransitionToOccur == null)
+		  {
+			  return;
+		  }
 		  tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 		}
 	  } 
@@ -229,6 +236,10 @@ public class TokenGameBarController implements Runnable {
 			  }
 		  }
 		  //If end of net is not reached yet or there is still something to occur
+		  if(TransitionToOccur == null)
+		  {
+			  return;
+		  }
 		  if(followingActivatedTransitions.size() > 0)
 		  {
 		    tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
@@ -250,6 +261,10 @@ public class TokenGameBarController implements Runnable {
 	public void occurTransitionMulti(boolean BackWard)
 	{
 		int i = 0;
+		if(followingActivatedTransitions == null)
+		{
+			return;
+		}
 		if(BackWard)
 		{
 			while (i != occurtimes)
@@ -364,6 +379,11 @@ public class TokenGameBarController implements Runnable {
 	 */
 	public void fillChoiceBox()
 	{
+	  //prevent from NullPointerException	
+	  if(followingActivatedTransitions == null)
+	  {
+		  return;
+	  }
 	  if(!playbackRunning())	
 	  {
 		clearChoiceBox(); //To ensure that the box is empty
@@ -662,6 +682,9 @@ public class TokenGameBarController implements Runnable {
 		}
 		if(viewmode == 1)
 		{
+			ExpertView.enableRecordButton();
+			ExpertView.setRecordSelected(false);
+			ahxHistoryContent.clear();
 			ExpertView.setVisible(false);
 			SlimView.setVisible(true);
 		}
@@ -1007,5 +1030,10 @@ public class TokenGameBarController implements Runnable {
 				disableBackWardButtons();
 			}
 		}
+	}
+	
+	public void setPlayIcon(boolean record)
+	{
+		ExpertView.setPlayIcon(record);
 	}
 }

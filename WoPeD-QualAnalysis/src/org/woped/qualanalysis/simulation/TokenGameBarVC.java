@@ -7,8 +7,7 @@ import java.awt.*;
 
 /**
  * This class specifies the remote control UI of the Tokengame-simulator
- * Currently no Actions can be performed by the Buttons except the close-"x"
- * Standard-Constructor is available
+ * It is a fully functional remote control
  * 
  * @author Tilmann Glaser
  * 
@@ -36,7 +35,6 @@ public class TokenGameBarVC extends JInternalFrame {
 	private JButton                  pbnFW                         = null;
 	private JButton                  pbnFastFW                     = null;
 	private JButton                  acoAuto                       = null;
-//	private JButton                  ahyJump                       = null;
 	private JButton                  ahySave                       = null;
 	private JButton                  ahyDelete                     = null;
 	private JToggleButton            pbnRecord                     = null;
@@ -363,7 +361,25 @@ public class TokenGameBarVC extends JInternalFrame {
 		return pbnPlay.isEnabled();
 	}
 
+    public void setRecordSelected(boolean isSelected)
+    {
+    	pbnRecord.setSelected(isSelected);
+    }
     
+    public void setPlayIcon(boolean record)
+    {
+    	if(record)
+    	{
+    		pbnPlay.setIcon(Messages.getImageIcon("Tokengame.RemoteControl.PlayRecord"));
+    		pbnPlay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.PlayRecord"));
+	
+    	}
+    	else
+    	{
+    		pbnPlay.setIcon(Messages.getImageIcon("Tokengame.RemoteControl.Play"));
+    		pbnPlay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Play"));
+    	}
+    }
     
 
     
