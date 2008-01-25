@@ -7,13 +7,15 @@ import org.woped.qualanalysis.test.*;
 import org.woped.qualanalysis.simulation.*;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 import org.woped.translations.Messages;
 
 import java.awt.*;
 
-public class TokenGameBarListener implements ActionListener, MouseListener {
+public class TokenGameBarListener implements ActionListener, MouseListener, ChangeListener {
 	
 	//Constants
 	//======================  
@@ -56,7 +58,9 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	public final static int           CHOOSE_RECORD          = 22;
 
 	//Playback Manager Buttons
-	public final static int			  PM_SAVE_PROPERTIES     = 23;
+	public final static int			  PM_SAVE_VIEW     		 = 23;
+	public final static int			  PM_FASTFWBW			 = 24;
+	public final static int			  PM_DELAYTIME			 = 25;
 		
 	//Action-Variables
 	private ReferenceProvider         MainWindowReference    = null;
@@ -237,8 +241,14 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 			   RemoteControl.clearHistoryData();
 			 }
 		     break;
-		 case PM_SAVE_PROPERTIES:
-			 savePlaybackManagerSettings();
+		 case PM_SAVE_VIEW:
+			 PlaybackDialog.savePMView();
+			 break;
+		 case PM_FASTFWBW:
+			 PlaybackDialog.savePropertyOccurtime();
+			 break;
+		 case PM_DELAYTIME:
+			 PlaybackDialog.savePropertyDelaytime();
 			 break;
 		 default:
 			 break;
@@ -261,11 +271,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 		{
 			PlaybackDialog.setVisible(true);
 		}
-	}
-	
-	private void savePlaybackManagerSettings()
-	{
-		PlaybackDialog.saveProperties();
 	}
 	
 	private void showHistoryManager()
@@ -368,5 +373,10 @@ public class TokenGameBarListener implements ActionListener, MouseListener {
 	
 	public void mouseExited(MouseEvent e)
 	{
+	}
+
+	public void stateChanged(ChangeEvent arg0) {
+		actionRouter();
+		
 	}
 }
