@@ -13,12 +13,13 @@ import javax.imageio.ImageIO;
 import org.jgraph.JGraph;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphPanel;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
 
 public class ImageExport {
 
-    public static RenderedImage getRenderedImage(ReachabilityGraphVC editor) {
-	JGraph graph = editor.getActualJGraph();
+    public static RenderedImage getRenderedImage(ReachabilityGraphPanel editor) {
+	JGraph graph = editor.getGraph();
         graph.clearSelection();
         Object[] cells = graph.getRoots();
         BufferedImage image = null;
