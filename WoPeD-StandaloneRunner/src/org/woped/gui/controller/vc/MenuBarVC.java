@@ -54,6 +54,7 @@ import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.Constants;
+import org.woped.gui.RunWoPeD;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.translations.Messages;
 
@@ -82,6 +83,8 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_closeMenuItem          = null;
     private JMenuItem          m_saveMenuItem           = null;
     private JMenuItem          m_saveAsMenuItem         = null;
+    private JMenuItem		   m_saveWebServiceMenuItem = null;
+    private JMenuItem		   m_openWebServiceMenuItem = null;	
     private JMenuItem          m_printMenuItem          = null;
     private JMenuItem          m_exportMenuItem         = null;
     private JMenu              m_recentMenu             = null;
@@ -256,15 +259,29 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_fileMenu.setMnemonic(Messages.getMnemonic("Menu.File"));
 
             m_fileMenu.add(getNewMenuItem());
+            // if Woped runs as Applet Models not loadable from the local Directory
+            if (!RunWoPeD.isApplet()) { 
             m_fileMenu.add(getOpenMenuItem());
             m_fileMenu.add(getCloseMenuItem());
             m_fileMenu.add(getSaveMenuItem());
             m_fileMenu.add(getSaveAsMenuItem());
+            } else {
+            	m_fileMenu.add(getCloseMenuItem());
+            	
+            }
             m_fileMenu.addSeparator();
+            // if Woped runs as Applet Models also loadable over Web
+            if (RunWoPeD.isApplet()) {
+            	m_fileMenu.add(getOpenWebServiceMenuItem());
+                m_fileMenu.add(getSaveWebServiceMenuItem());
+                m_fileMenu.addSeparator();
+            }            
             m_fileMenu.add(getPrintMenuItem());
             m_fileMenu.add(getExportMenuItem());
             m_fileMenu.addSeparator();
-            m_fileMenu.add(getRecentMenu());
+            if (!RunWoPeD.isApplet()) {
+            	m_fileMenu.add(getRecentMenu());
+            }            
             m_fileMenu.addSeparator();
             m_fileMenu.add(getQuitMenuItem());
 
@@ -287,8 +304,10 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_helpMenu.add(getIndexMenuItem());
             m_helpMenu.add(getContextMenuItem());
             m_helpMenu.addSeparator();
-            m_helpMenu.add(getSampleMenu());
-            m_helpMenu.addSeparator();
+            if (!RunWoPeD.isApplet()) {
+            	m_helpMenu.add(getSampleMenu());
+            	m_helpMenu.addSeparator();
+            }                        
             m_helpMenu.add(getAboutMenuItem());
             m_helpMenu.add(getBugReportMenuItem());
         }
@@ -393,6 +412,28 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SAVE));
         }
         return m_saveMenuItem;
+    }
+    
+    /**
+     * @return Returns the saveWebServiceMenuItem.
+     */
+    public JMenuItem getSaveWebServiceMenuItem() {
+    	if (m_saveWebServiceMenuItem == null) {
+    		m_saveWebServiceMenuItem = 
+    			new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SAVEWEBSERVICE));
+    	}
+    	return m_saveWebServiceMenuItem;
+    }
+    
+    /**
+     * @return Returns the openWebServiceMenuItem.
+     */
+    public JMenuItem getOpenWebServiceMenuItem() {
+    	if (m_openWebServiceMenuItem == null) {
+    		m_openWebServiceMenuItem = 
+    			new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_OPENWEBSERVICE));
+    	}
+    	return m_openWebServiceMenuItem;
     }
 
     /**

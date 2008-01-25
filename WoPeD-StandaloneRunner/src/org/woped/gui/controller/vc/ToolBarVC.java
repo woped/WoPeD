@@ -42,6 +42,7 @@ import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.gui.ToolBarButton;
+import org.woped.gui.RunWoPeD;
 import org.woped.gui.controller.DefaultApplicationMediator;
 
 /**
@@ -112,7 +113,9 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
         add(getNewButton());
         add(getOpenButton());
         add(getSaveButton());
-        add(getSaveAsButton());
+        if (!RunWoPeD.isApplet()) {
+        	add(getSaveAsButton());
+        }        
         addSeparator();
         addSeparator(new Dimension(12, 0));
         addSeparator();
@@ -175,7 +178,12 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     {
         if (m_openButton == null)
         {
-            m_openButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_OPEN));
+            if (!RunWoPeD.isApplet()) {
+            	m_openButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_OPEN));
+            } else {
+            	m_openButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_OPENWEBSERVICE));
+            }
+        	
         }
         return m_openButton;
     }
@@ -184,7 +192,11 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     {
         if (m_saveButton == null)
         {
-            m_saveButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SAVE));
+            if (!RunWoPeD.isApplet()) {
+            	m_saveButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SAVE));
+            } else {
+            	m_saveButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SAVEWEBSERVICE));
+            }
         }
         return m_saveButton;
     }
@@ -193,7 +205,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     {
         if (m_saveAsButton == null)
         {
-            m_saveAsButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SAVEAS));
+            m_saveAsButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_SAVEAS));                    	
         }
         return m_saveAsButton;
     }
