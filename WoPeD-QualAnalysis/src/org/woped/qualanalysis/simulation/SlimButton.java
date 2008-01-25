@@ -6,102 +6,79 @@ import org.woped.translations.Messages;
 import java.awt.geom.*;
 import java.io.File;
 
+/**
+ * The SlimButton-class has been implemented to create nice buttons for the TokenGameBar's
+ * SlimView
+ * 
+ * @author Tilmann Glaser
+ *
+ */
 public class SlimButton extends JButton{
-	Image test;
 	
-	public SlimButton()
-	{
+	//Button Images for the different Situations
+	private Image  standard     = null;
+	private Image  rollover     = null;
+	private Image  pressed      = null;
 		
-	//http://java.sun.com/developer/TechTips/1999/tt0826.html
+	//Shape
+	private Shape  shape        = null;
 	
-	
-    super();
+	public SlimButton(Icon icon)
+	{	
+      super(icon);
+      Dimension d = new Dimension(40, 40);
+      this.setPreferredSize(d);
     
-    //************************************************
-    //** Check how to import an Image. 
-    //** Afterwards,m it should be easy to generate an own GUI out of many Images
-    //************************************************
-    //Yeah, so gehts!!!
-    
-    File file = new File("C:\\myimage.jpg");
-    try
+      setContentAreaFilled(false);
+    }
+
+    // Paint the round background and label.
+    protected void paintComponent(Graphics g) 
     {
-    test = ImageIO.read(file);
-    }
-    catch(Exception e)
-    {
-    	;
-    }
-    
-    //test.getSource();
-	// System.out.println(test.getSource());
-	
-// These statements enlarge the button so that it 
-// becomes a circle rather than an oval.
-    Dimension size = getPreferredSize();
-    size.width = size.height = Math.max(size.width, 
-      size.height);
-    setPreferredSize(size);
+      /*
+       * Load the Button's GUI
+       */
+	  standard = Messages.getImageSource("Tokengame.SlimView.Button.Standard.Standard");
+	  rollover = Messages.getImageSource("Tokengame.SlimView.Button.Standard.Rollover");
+	  pressed  = Messages.getImageSource("Tokengame.SlimView.Button.Standard.Pressed");
+	  
+	 /*
+	  * Define the GUI for the different Actions of the Buttons 
+	  */
+	 if (getModel().isPressed()) 
+	 {	 
+		 g.drawImage (pressed, 0, 0, this);
+     }
+	 if(getModel().isRollover())
+	 {
+		 g.drawImage (rollover, 0, 0, this); 
+	 }
 
-// This call causes the JButton not to paint 
-   // the background.
-// This allows us to paint a round background.
-    setContentAreaFilled(false);
+	 if(!getModel().isRollover() && !getModel().isPressed())
+	 {
+         g.drawImage (standard, 0, 0, this);
+	 }
+     
+	 super.paintComponent(g);
   }
 
-// Paint the round background and label.
-  protected void paintComponent(Graphics g) {
-    if (getModel().isArmed()) {
-// You might want to make the highlight color 
-   // a property of the RoundButton class.
-      g.setColor(Color.WHITE);
-    } else {
-      g.setColor(getBackground());
-    }
-    g.drawImage (test, 10, 10, this);
-    //g.fillOval(0, 0, getSize().width-1, 
-     // getSize().height-1);
+   protected void paintBorder(Graphics g) 
+   {
+	  //No Border will be painted
+      return; 
+   }
 
-// This call will paint the label and the 
-   // focus rectangle.
-    super.paintComponent(g);
-  }
+   //Hit detection.
+   public boolean contains(int x, int y) 
+   {
+     if (shape == null || !shape.getBounds().equals(getBounds())) 
+     {
+       shape = new Ellipse2D.Float(0, 0, 40, 40);
+     }
+     return shape.contains(x, y);
+   }
+   
 
-// Paint the border of the button using a simple stroke.
-  protected void paintBorder(Graphics g) {
-    g.setColor(getForeground());
-    g.drawOval(0, 0, getSize().width-1, 
-    	      getSize().height-1);
-    //g.drawImage (test, 10, 10, this); 
-  }
-
-// Hit detection.
-  Shape shape;
-  public boolean contains(int x, int y) {
-// If the button has changed size, 
-   // make a new shape object.
-    if (shape == null || 
-      !shape.getBounds().equals(getBounds())) {
-      shape = new Ellipse2D.Float(0, 0, 
-        getWidth(), getHeight());
-    }
-    return shape.contains(x, y);
-  }
-
-// Test routine.
-  /*public static void main(String[] args) {
-// Create a button with the label "Jackpot".
-    JButton button = new SlimButton();
-    button.setBackground(Color.green);
-
-// Create a frame in which to show the button.
-    JFrame frame = new JFrame();
-    frame.getContentPane().setBackground(Color.yellow);
-    frame.getContentPane().add(button);
-    frame.getContentPane().setLayout(new FlowLayout());
-    frame.setSize(150, 150);
-    frame.setVisible(true);
-  }*/
 }
 
 

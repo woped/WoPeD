@@ -1,10 +1,15 @@
 package org.woped.qualanalysis.simulation.controller;
+import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.geom.Dimension2D;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JComponent;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
@@ -12,6 +17,8 @@ import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import  org.woped.qualanalysis.simulation.*;
 import org.woped.qualanalysis.test.ReferenceProvider;
+
+import com.sun.java.swing.plaf.windows.WindowsBorders.InternalFrameLineBorder;
 
 public class TokenGameBarController implements Runnable {
 	
@@ -52,7 +59,9 @@ public class TokenGameBarController implements Runnable {
 	//Integers
 	private int                      HistoryIndex                  = 0; 
 
-    
+	//SlimFrames
+	private SlimInternalFrame        SlimView                      = null;
+	
 	public TokenGameBarController(TokenGameController tgController, PetriNetModelProcessor PetriNet)
 	{
 		this.PetriNet     = PetriNet;
@@ -85,8 +94,15 @@ public class TokenGameBarController implements Runnable {
         desktop.getDesktopReference().add(ExpertView).setLocation(p);
         ExpertView.setVisible(true);
         ExpertView.moveToFront();
-        }
-
+        
+        SlimView = new SlimInternalFrame(this, acoChoiceItems, ahxHistoryContent);
+       // desktop.getDesktopReference().add(SlimView);
+       /*
+        * Not everybody should see the new view right now, therefore commented it out...
+        */
+        SlimView.moveToFront();
+	    
+      }
 	}
 	
 	/**
@@ -97,8 +113,11 @@ public class TokenGameBarController implements Runnable {
 	  if((ExpertView != null) && (desktop != null))
       {
 		ExpertView.setVisible(false);
+		SlimView.setVisible(false);
        	desktop.getDesktopReference().remove(ExpertView);
+       	desktop.getDesktopReference().remove(SlimView);
        	ExpertView = null;
+       	SlimView = null;
       }
 	}
 	

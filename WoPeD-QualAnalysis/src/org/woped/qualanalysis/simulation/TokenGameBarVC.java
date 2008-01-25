@@ -36,7 +36,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	private JButton                  pbnFW                         = null;
 	private JButton                  pbnFastFW                     = null;
 	private JButton                  acoAuto                       = null;
-	private JButton                  ahyJump                       = null;
+//	private JButton                  ahyJump                       = null;
 	private JButton                  ahySave                       = null;
 	private JButton                  ahyDelete                     = null;
 	private JToggleButton            pbnRecord                     = null;
@@ -62,7 +62,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	//Constructor(s)
 	public TokenGameBarVC(TokenGameBarController tgbController, DefaultListModel acoChoiceItems, DefaultListModel ahxHistoryContent)
 	{
-		super(Messages.getTitle("Tokengame.RemoteControl"), false, true);
+		super(Messages.getTitle("Tokengame.RemoteControl"), false, false);
 		this.setFrameIcon(Messages.getImageIcon("Tokengame.RemoteControl"));
 	    this.setToolTipText(Messages.getTitle("Tokengame.RemoteControl"));//setAlignmentY(300);
 		this.setSize(910,140);
@@ -80,6 +80,9 @@ public class TokenGameBarVC extends JInternalFrame {
 		this.add(addPlaybackNavigation());
 		this.add(addAutoChoice());
 		this.add(addHistory());
+		
+		
+		
 	}
 	
 	
@@ -156,7 +159,6 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnPause = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.Pause"));
 		pbnFW = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.Forward"));
 		pbnFastFW = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.FastForward"));
-		pbnRecord = new JToggleButton(Messages.getImageIcon("Tokengame.RemoteControl.Record"));
 		
 		//Define Button-Size
 		pbnFastBW.setPreferredSize(new Dimension(xtXsize, xtYsize));
@@ -166,7 +168,6 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnPause.setPreferredSize(new Dimension(xtXsize, xtYsize));
 		pbnFW.setPreferredSize(new Dimension(xtXsize, xtYsize));
 		pbnFastFW.setPreferredSize(new Dimension(xtXsize, xtYsize));
-		pbnRecord.setPreferredSize(new Dimension(xtXsize, xtYsize));
 		
 		//Define Playback's ToolTips
 		pbnFastBW.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.FastBackward")); 
@@ -176,7 +177,6 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnPause.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Pause")); 
 		pbnFW.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Forward")); 
 		pbnFastFW.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.FastForward")); 
-		pbnRecord.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Record"));
 		
 		//Define Button-Actions
 		pbnBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_BACKWARD, tgbController));
@@ -185,7 +185,6 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, tgbController));
 		pbnFastFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_FORWARD, tgbController));
 		pbnFastBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_BACKWARD, tgbController));
-		pbnRecord.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_RECORD, tgbController));
 				
 		//Create Playback&Navigation-Panel and add Buttons
 		NavigationPlayback = new JPanel();
@@ -230,11 +229,6 @@ public class TokenGameBarVC extends JInternalFrame {
 		gbc.gridy = 2;
 		gbc.insets = new Insets (5,5,0,0);
 		NavigationPlayback.add(pbnDown, gbc);
-
-		gbc.gridx = 6;
-		gbc.gridy = 0;
-		gbc.insets = new Insets (0,5,0,0);
-		NavigationPlayback.add(pbnRecord, gbc);
 		
 		return NavigationPlayback;
 	}
@@ -282,22 +276,22 @@ public class TokenGameBarVC extends JInternalFrame {
 	private JPanel addHistory()
 	{
 		//Define Buttons
-		ahyJump = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.JumpHere"));
+		pbnRecord = new JToggleButton(Messages.getImageIcon("Tokengame.RemoteControl.Record"));
 		ahySave = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.SaveHistory"));
 		ahyDelete = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.DeleteHistory"));
 		
 		//Define Button-Size
-		ahyJump.setPreferredSize(new Dimension(stXsize, stYsize));
+		pbnRecord.setPreferredSize(new Dimension(stXsize, stYsize));
 		ahySave.setPreferredSize(new Dimension(stXsize, stYsize));
 		ahyDelete.setPreferredSize(new Dimension(stXsize, stYsize));
 		
 		//Define Button's ToolTips
-		ahyJump.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.JumpHere"));
+		pbnRecord.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Record"));
 		ahySave.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.SaveHistory"));
 		ahyDelete.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.DeleteHistory"));
 		
 		//Define ActionListeners
-		ahyJump.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_JUMP_HERE, tgbController));
+		pbnRecord.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_RECORD, tgbController));
 		ahySave.addActionListener(new TokenGameBarListener(TokenGameBarListener.OPEN_HISTORY_MANAGER, tgbController));
 		ahyDelete.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_DELETE_CURRENT, tgbController));
 		
@@ -309,7 +303,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		hgbc.gridx = 0;
 		hgbc.gridy = 0;
 		hgbc.insets = new Insets(0,0,5,0);
-		History.add(ahyJump, hgbc);
+		History.add(pbnRecord, hgbc);
 		
 		hgbc.gridx = 0;
 		hgbc.gridy = 1;

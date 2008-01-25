@@ -26,6 +26,7 @@
  */
 package org.woped.translations;
 
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.text.MessageFormat;
@@ -34,6 +35,7 @@ import java.util.MissingResourceException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
@@ -111,6 +113,11 @@ public abstract class Messages
         return getString(propertiesPrefix + ".Icon");
     }
     
+    public static String getImageLocation(String propertiesPrefix)
+    {
+        return getString(propertiesPrefix + ".Image");
+    }
+    
     public static String getCursorIconLocation(String propertiesPrefix)
     {
         return getString(propertiesPrefix + ".CursorIcon");
@@ -127,6 +134,25 @@ public abstract class Messages
             {
                 result = new ImageIcon(iconURL);
             } catch (RuntimeException e)
+            {
+                e.printStackTrace();
+            }
+            return result;
+        }
+        return null;
+    }
+    
+    public static Image getImageSource(String propertiesPrefix)
+    {
+        String imageLocation = getImageLocation(propertiesPrefix);
+        URL iconURL = IUserInterface.class.getResource(imageLocation);
+        if (iconURL != null)
+        {
+            Image result = null;
+            try
+            {
+                result = ImageIO.read(iconURL); 
+            } catch (Exception e)
             {
                 e.printStackTrace();
             }
@@ -154,6 +180,7 @@ public abstract class Messages
         return null;
     }
 
+ 
     public static int getMnemonic(String propertiesPrefix)
     {
         // if (true) return KeyEvent.VK_N;
