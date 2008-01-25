@@ -124,6 +124,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ENABLE                    = 18;
     public static final int DISABLE                   = 19;
     public static final int OPENTO                    = 20;
+    public static final int OPENWEBSERVICE			  = 21;
+    public static final int SAVEWEBSERVICE			  = 22;
     public static final int LOGIN                     = 50;
     public static final int LOGON                     = 51;
     public static final int LOGOUT                    = 52;

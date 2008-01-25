@@ -17,9 +17,11 @@ public class ActionFactory
     public final static String         ACTIONID_CLOSE                  = "Action.CloseEditor";
     public final static String         ACTIONID_SELECT                 = "Action.FocusEditor";
     public final static String         ACTIONID_SAVE                   = "Action.SaveEditor";
+    public final static String		   ACTIONID_SAVEWEBSERVICE		   = "Action.SaveWebServiceEditor";	
     public final static String         ACTIONID_SAVEAS                 = "ToolBar.SaveAs";
     public final static String         ACTIONID_EXPORT                 = "Action.Export";
     public final static String         ACTIONID_OPEN                   = "ToolBar.Open";
+    public final static String		   ACTIONID_OPENWEBSERVICE		   = "Action.OpenWebServiceEditor";
     public final static String         ACTIONID_OPENSAMPLE             = "Action.OpenSample";
     public final static String         ACTIONID_SHOWCONFIG             = "Action.ShowConfig";
     public final static String         ACTIONID_SHOWABOUT              = "Action.ShowAbout";
@@ -134,6 +136,10 @@ public class ActionFactory
              
         
         STATIC_ACTION_MAP.put(ACTIONID_OPEN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN, null, ACTIONID_OPEN));
+        // WebService Event
+        STATIC_ACTION_MAP.put(ACTIONID_OPENWEBSERVICE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPENWEBSERVICE, null, ACTIONID_OPENWEBSERVICE));
+        STATIC_ACTION_MAP.put(ACTIONID_SAVEWEBSERVICE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.SAVEWEBSERVICE, null, ACTIONID_SAVEWEBSERVICE));
+        
         // 
         STATIC_ACTION_MAP.put(ACTIONID_EXPORT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.EXPORT, null, ACTIONID_EXPORT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_EXPORT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
