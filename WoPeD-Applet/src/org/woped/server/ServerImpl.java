@@ -30,6 +30,7 @@ import org.woped.server.holder.ModellHolder;
  */
 public class ServerImpl extends UnicastRemoteObject implements IServer {
 
+	private String path = "/modells/";
 	
 	private Connection connection = null;
 	
@@ -131,7 +132,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		// check if the PetriNet Model exists
 		if (existsModel(modelid)) {
 			// load the File with the Filename <modelid>.pnml
-			if (new File("C:\\WoPeD\\" + modelid+ ".pnml").exists()) {
+			if (new File(path + modelid+ ".pnml").exists()) {
 				try {
 					BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\WoPeD\\" + modelid + ".pnml")));
 					
@@ -181,7 +182,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		} else {
 			
 			// save content to File
-			File file = new File("C:\\WoPeD\\"+modelid+".pnml");
+			File file = new File(path+modelid+".pnml");
 			if (!file.exists()) {
 				try {
 					file.createNewFile();

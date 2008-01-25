@@ -28,7 +28,7 @@ public class WopedServer {
 		try {
 			//System.setSecurityManager(new RMISecurityManager());
 			LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-			Naming.bind("rmi://localhost:1099/WopedService", new ServerImpl());
+			Naming.bind("rmi://193.196.7.194:1099/WopedService", new ServerImpl());
 		} catch (AlreadyBoundException e) {
 			LoggerManager.fatal(Constants.APPLET_LOGGER,e.getMessage());
 		} catch (MalformedURLException e) {

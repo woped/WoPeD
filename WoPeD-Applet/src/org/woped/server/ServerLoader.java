@@ -16,7 +16,7 @@ import org.woped.core.utilities.LoggerManager;
  */
 public class ServerLoader {
 
-	static public String url = "rmi://localhost:1099/WopedService"; 
+	static public String url = "rmi://193.196.7.194:1099/WopedService"; 
 	
 	static public IServer instance = null;
 	
