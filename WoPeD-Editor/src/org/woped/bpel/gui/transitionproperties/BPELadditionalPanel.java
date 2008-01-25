@@ -441,21 +441,63 @@ public abstract class BPELadditionalPanel extends JPanel {
 		return myRoleComboBox;
 	}
 
-	private JButton getPartnerOKButton() {
-		if (okPartnerButton == null) {
-			okPartnerButton = new JButton(Messages
-					.getString("Transition.Properties.BPEL.Buttons.OK"));
-			okPartnerButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					// TODO speichern mithilfe von Alex' Klassen, die auf
-					// content getter methoden zugreifen
-					// t_editor.
-					dialog.dispose();
-				}
-			});
-		}
-		return okPartnerButton;
+	private JButton getPartnerOKButton(){
+        if (okPartnerButton == null) {
+                okPartnerButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
+                okPartnerButton.addActionListener(new ActionListener(){
+                        public void actionPerformed(ActionEvent e){
+                                // TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
+
+                                String name    = partnerLinkNameTextField.getText();
+                                String wsdlUrl = wsdlFileTextField.getText();
+                                System.out.println(name);
+                                System.out.println(wsdlUrl);
+
+                                // Check if combo boxes are filled with data
+                                if ( (partnerLinkTypeComboBox.getItemCount() != 0) && (partnerRoleComboBox.getItemCount() != 0) ){
+                                        String partnerLinkType = partnerLinkTypeComboBox.getSelectedItem().toString();
+                                        String partnerRole         = partnerRoleComboBox.getSelectedItem().toString();
+                                        String myRole              = myRoleComboBox.getSelectedItem().toString();
+
+                                        System.out.println(partnerLinkType);
+                                        System.out.println(partnerRole);
+                                        System.out.println(myRole);
+
+                                        // TODO führende Leerzeichen entfernen
+                                        if ( name.equals("") ||
+                                                 wsdlUrl.equals("") ||
+                                                 ( partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
+                                                   &&
+                                                   myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
+                                                 )
+                                           ) {
+                                                System.out.println("name oder wsdlURL empty. Oder beide Combo Boxes auf - null -");
+                                                // TODO Fehler ausgeben
+                                        }
+                                        else {
+                                                // TODO 2x namespace
+                                                if(partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))){
+                                               	     modelElementContainer.addPartnerLinkWithoutPartnerRole(
+                                                                        name, "namespace:" /*namespace*/, partnerLinkType, myRole, wsdlUrl);
+                                                }
+                                                else{
+                                                        modelElementContainer.addPartnerLink(
+                                                                        name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
+                                                }
+                                        }
+                                }
+                                else{
+                                        System.out.println("Die ComboBoxes sind leer");
+                                        //TODO Fehlermeldung für fehlende Einträge
+                                }
+
+                                dialog.dispose();
+                        }
+                });
+        }
+        return okPartnerButton;
 	}
+
 
 	private JButton getPartnerCancelButton() {
 		if (cancelPartnerButton == null) {
