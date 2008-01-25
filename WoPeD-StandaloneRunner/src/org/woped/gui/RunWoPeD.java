@@ -22,9 +22,11 @@
  */
 package org.woped.gui;
 
+import java.rmi.RemoteException;
 import java.util.Locale;
 
 import javax.swing.JApplet;
+import javax.swing.JOptionPane;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.WoPeDConfiguration;
@@ -32,6 +34,8 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
 import org.woped.qualanalysis.test.ReferenceProvider;
+import org.woped.server.ServerLoader;
+import org.woped.server.holder.UserHolder;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -43,13 +47,31 @@ import org.woped.qualanalysis.test.ReferenceProvider;
  * 29.04.2003
  */
 public class RunWoPeD extends JApplet {
+	
+	// flag for Applet
+	private static boolean isApplet = false;
+	
+	
 	/**
 	 * 
 	 * Main Entry Point. Starts the GUI.
 	 * 
 	 */
 	public void init() {
-		final String arguments[] = null;
+		// Run as Applet
+		isApplet = true;
+		// Extract Arguments
+		try {
+			UserHolder.setUserID(ServerLoader.getInstance().getUserID(getParameter("sessionid")));
+		} catch (RemoteException e) {
+			// fatal close applet
+			JOptionPane.showMessageDialog(this, "Error during initialisation!");
+			System.exit(0);
+		}
+
+		// Arguments Field
+		final String arguments[] = new String[1];
+		arguments[0] = getParameter("modellid");
 		RunWoPeD.main(arguments);
 	}
 
@@ -93,6 +115,12 @@ public class RunWoPeD extends JApplet {
 										org.apache.log4j.Logger
 												.getLogger(org.woped.translations.Constants.TRANSLATIONS_LOGGER)),
 								org.woped.translations.Constants.TRANSLATIONS_LOGGER);
+				LoggerManager
+				.register(
+						new WopedLogger(
+								org.apache.log4j.Logger
+										.getLogger(org.woped.applet.Constants.APPLET_LOGGER)),
+						org.woped.applet.Constants.APPLET_LOGGER);
 				LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
 			} catch (Exception e) {
 				System.err.println("ERROR ACTIVATING LOGGER");
@@ -116,4 +144,18 @@ public class RunWoPeD extends JApplet {
 			System.exit(1);
 		}
 	}
+	
+	
+	/**
+	 * isApplet()
+	 * <p>
+	 * checks if the Application run as Applet
+	 * @return
+	 */
+	static public boolean isApplet() {
+		return isApplet;
+	}
+	
+	
+	
 }
