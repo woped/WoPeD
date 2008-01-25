@@ -683,6 +683,7 @@ public class TokenGameBarController implements Runnable {
 		if(viewmode == 1)
 		{
 			ExpertView.enableRecordButton();
+			ExpertView.setPlayIcon(false);
 			ExpertView.setRecordSelected(false);
 			ahxHistoryContent.clear();
 			ExpertView.setVisible(false);

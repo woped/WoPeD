@@ -205,6 +205,7 @@ public class SlimGameBarVC extends JPanel{
 		else
 		{
 			SlimChoiceBox.setVisible(true);
+			SlimChoiceBox.setAlwaysOnTop(true);
 		}
 		updateList(ChoiceContent, getButtonCoords(false));
 	}
