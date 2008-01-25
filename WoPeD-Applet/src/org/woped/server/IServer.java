@@ -4,45 +4,62 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.woped.server.holder.ModellHolder;
+
+
 /**
- * Schnittstellenvertrag für das Laden und Speichern
- * von Petrimodels vom Server 
- * @author C. Krüger
+ * Interface for the WoPeD Service
+ *  
+ * @author C. Krueger
  * @since 12.01.2008
+ * @version 1.0
  */
 public interface IServer extends Remote {
+	
+	
+	/**
+	 * getList()
+	 * <p>
+	 * @param userID
+	 * @param shared
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<ModellHolder> getList(int userID, boolean shared) throws RemoteException;
+	
+	
+	/**
+	 * saveModel()
+	 * <p>
+	 * saves the given Model on the WebServer
+	 * @param UserID
+	 * @param ModelID
+	 * @param content - XML Content of the PetriNetModel
+	 * @param title - title for a new PetriNetModel
+	 * @return Returns the ModelID for the PetriNetModel which is stored in the DB
+	 * @throws RemoteException
+	 */
+	public int saveModel(int UserID, int ModelID, String content, String title) throws RemoteException;
+	
+	/**
+	 * loadModel()
+	 * <p>
+	 * load the PetriNetModel with the given ModelID from the WebServer
+	 * @param ModelID
+	 * @return Returns the content of the PetriNetModel File
+	 * @throws RemoteException
+	 */
+	public String loadModel(int ModelID) throws RemoteException;
+	
+	/**
+	 * getUserID()
+	 * <p>
+	 * retrieves the UserID in case of the given session token
+	 * after that the session token will be reseted
+	 * @param token - SessionID
+	 * @return Returns the UserId
+	 * @throws RemoteException
+	 */
+	public int getUserID(String token) throws RemoteException; 
 
-	/**
-	 * loadModel
-	 * <p>
-	 * load a petrinetmodel from the webserver with the given modelid
-	 * <p>
-	 * @param modelid - ID of the PetrinetModel 
-	 * @return XML Structur des PetriModels
-	 * @throws RemoteException
-	 */
-	public String loadModel(int modelid) throws RemoteException;
-	
-	/**
-	 * saveModel
-	 * <p>
-	 * save a Petrinetmodel for the given UserID at the WebServer
-	 * in the case of ModelID equals -1, the call returns the new ModelID 
-	 * <p>
-	 * @param userid - UserID for witch the Model will be saved
-	 * @param modellid - ModelID to save, or -1 to saveas
-	 * @return - new ModelID
-	 * @throws RemoteException
-	 */
-	public int saveModel(int userid, int modelid) throws RemoteException;
-	
-	/**
-	 * getList
-	 * <p>
-	 * returns a list of shared petrinetmodels
-	 * @return - List of PetrinetModels
-	 * @throws RemoteException
-	 */
-	public ArrayList getList() throws RemoteException;
-	
 }
