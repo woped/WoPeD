@@ -34,10 +34,11 @@ public class TokenGameBarVC extends JInternalFrame {
 	private JButton                  pbnPause                      = null;
 	private JButton                  pbnFW                         = null;
 	private JButton                  pbnFastFW                     = null;
-	private JButton                  acoAuto                       = null;
+//	private JButton                  ahyJump                       = null;
 	private JButton                  ahySave                       = null;
 	private JButton                  ahyDelete                     = null;
 	private JToggleButton            pbnRecord                     = null;
+	private JToggleButton            acoAuto                       = null;
 	
 	//Declaration of the Lists
 	private JList                    acoChoice                     = null; 
@@ -183,7 +184,8 @@ public class TokenGameBarVC extends JInternalFrame {
 		pbnFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FORWARD, tgbController));
 		pbnFastFW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_FORWARD, tgbController));
 		pbnFastBW.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_FAST_BACKWARD, tgbController));
-				
+		pbnPause.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_PAUSE, tgbController));	
+		
 		//Create Playback&Navigation-Panel and add Buttons
 		NavigationPlayback = new JPanel();
 		NavigationPlayback.setLayout(new GridBagLayout());
@@ -239,11 +241,14 @@ public class TokenGameBarVC extends JInternalFrame {
 	{
 		//Define Elements
 		//... the autochoice Button
-		acoAuto = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.AutoChoice"));
+		acoAuto = new JToggleButton(Messages.getImageIcon("Tokengame.RemoteControl.AutoChoice"));
 		acoAuto.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.AutoChoice"));
 		
 		//Define Button-Size
 		acoAuto.setPreferredSize(new Dimension(stXsize, stYsize));
+		
+		//add Listener
+		//acoAuto.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_AUTO_CHOICE, tgbController));
 				
 		//... the easychoice List
 		acoChoice = new JList(acoChoiceItems);
@@ -361,6 +366,11 @@ public class TokenGameBarVC extends JInternalFrame {
 		return pbnPlay.isEnabled();
 	}
 
+    public boolean isAutoChoiceSelected()
+    {
+    	return acoAuto.isSelected();
+    }
+    
     public void setRecordSelected(boolean isSelected)
     {
     	pbnRecord.setSelected(isSelected);
@@ -380,7 +390,6 @@ public class TokenGameBarVC extends JInternalFrame {
     		pbnPlay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Play"));
     	}
     }
-    
 
     
 	/*
@@ -463,6 +472,8 @@ public class TokenGameBarVC extends JInternalFrame {
 			
 	public void disableButtonforAutoPlayback()
 	{
+		ppbSteps.setEnabled(false);
+		
 		ppbDelay.setEnabled(false);
 		pbnUp.setEnabled(false);
 		pbnDown.setEnabled(false);
@@ -477,6 +488,8 @@ public class TokenGameBarVC extends JInternalFrame {
 	
 	public void enableButtonforAutoPlayback()
 	{
+		ppbSteps.setEnabled(true);
+		
 		ppbDelay.setEnabled(true);
 		pbnUp.setEnabled(true);
 		pbnDown.setEnabled(true);
