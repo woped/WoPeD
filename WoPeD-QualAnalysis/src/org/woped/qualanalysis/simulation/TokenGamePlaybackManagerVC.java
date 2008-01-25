@@ -22,12 +22,17 @@ public class TokenGamePlaybackManagerVC extends JDialog
 	private JPanel       jp_PlayBackManager     = null;
 	private JPanel		 jp_occuretime			= null;
 	private JPanel		 jp_delaytime			= null;
+	private JPanel		 jp_View			    = null;
 	
 	//Declaration of the Buttons
-	private JButton      jb_SaveProperties     = null;
+	private JButton      jb_SaveView	        = null;
 	
-	//Declaration of the Checkbox
-	private JCheckBox    jcb_SwitchViewMode     = null;
+	//Declaration of the RadioButtons
+	private JRadioButton jrb_SwitchExpertview   = null;
+	private JRadioButton jrb_SwitchSlimview     = null;
+	private JRadioButton jrb_SwitchiView        = null;
+	
+	private ButtonGroup  bg_View			    = null;
 	
 	//Declaration of the Sliders
 	private JSlider		 jsl_fastfwbwoption		= null;
@@ -50,7 +55,7 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		RemoteControl = RC;
 		this.add(addPropertyPanel());
 		this.setLocationRelativeTo(null);
-		this.setSize(300,300);
+		this.setSize(300,250);
 		this.setResizable(false);
 	}
 	
@@ -58,19 +63,38 @@ public class TokenGamePlaybackManagerVC extends JDialog
 	private JPanel addPropertyPanel()
 	{
 		//Build Buttons
-		jb_SaveProperties    = new JButton(Messages.getTitle("Tokengame.PlaybackManager.SaveProperties"));
+		jb_SaveView    = new JButton(Messages.getTitle("Tokengame.PlaybackManager.SaveProperties"));
 	    
 	    //Set Button-Size
-	    //jb_SaveProperties.setPreferredSize(new Dimension(ButtonSizeX, ButtonSizeY));
-	    jb_SaveProperties.setSize(50,20);
+	    jb_SaveView.setSize(50,20);
 	    
 	    //Set ButtonActions
-	    jb_SaveProperties.addActionListener(new TokenGameBarListener(TokenGameBarListener.PM_SAVE_PROPERTIES,RemoteControl,this));
+	    jb_SaveView.addActionListener(new TokenGameBarListener(TokenGameBarListener.PM_SAVE_VIEW,RemoteControl,this));
 	    
-	    //Build Checkbox
-		jcb_SwitchViewMode    = new JCheckBox(Messages.getTitle("Tokengame.PlaybackManager.ExpertMode"));
-		jcb_SwitchViewMode.setSelected(RemoteControl.getExpertViewMode());
-		
+	    //Build Radiobuttons
+	    bg_View = new ButtonGroup();
+	    jrb_SwitchExpertview = new JRadioButton(Messages.getTitle("Tokengame.PlaybackManager.ExpertView"));
+	    jrb_SwitchSlimview = new JRadioButton(Messages.getTitle("Tokengame.PlaybackManager.SlimView"));
+	    jrb_SwitchiView = new JRadioButton(Messages.getTitle("Tokengame.PlaybackManager.iView"));
+	    bg_View.add(jrb_SwitchExpertview);
+	    bg_View.add(jrb_SwitchSlimview);
+	    bg_View.add(jrb_SwitchiView);
+	    
+	    switch(RemoteControl.getViewMode())
+		{
+	    	case 0:
+	    		jrb_SwitchExpertview.setSelected(true);
+	    		break;
+	    	case 1:
+	    		jrb_SwitchSlimview.setSelected(true);
+	    		break;
+	    	case 3:
+	    		jrb_SwitchiView.setSelected(true);
+	    		break;
+	    	default:
+	    		break;
+		}
+	    
 	    //Build Sliders
 	    jsl_fastfwbwoption 	= new JSlider();
 		jsl_delaytime		= new JSlider();
@@ -84,6 +108,7 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		jsl_fastfwbwoption.setSnapToTicks(true);
 		jsl_fastfwbwoption.setMajorTickSpacing(1);
 		jsl_fastfwbwoption.setValue(RemoteControl.getOccurTimes());
+		jsl_fastfwbwoption.addChangeListener(new TokenGameBarListener(TokenGameBarListener.PM_FASTFWBW,RemoteControl,this));
 
 		jsl_delaytime.setMinimum(1);
 		jsl_delaytime.setMaximum(10);
@@ -93,10 +118,14 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		jsl_delaytime.setSnapToTicks(true);
 		jsl_delaytime.setMajorTickSpacing(1);
 		jsl_delaytime.setValue(RemoteControl.getDelaytime());
+		jsl_delaytime.addChangeListener(new TokenGameBarListener(TokenGameBarListener.PM_DELAYTIME,RemoteControl,this));
 
 		//Define Panel
 	    jp_PlayBackManager     = new JPanel();
 	    jp_PlayBackManager.setLayout(new GridBagLayout());
+	    
+	    jp_View				  = new JPanel();
+	    jp_View.setLayout(new GridLayout(1,3));
 	    
 	    jp_occuretime 		   = new JPanel();
 	    jp_occuretime.setLayout(new GridLayout());
@@ -112,29 +141,31 @@ public class TokenGamePlaybackManagerVC extends JDialog
         hmgbc.weighty = 0;
         hmgbc.gridx = 0;
         hmgbc.gridy = 0;
-        hmgbc.insets = new Insets(0, 0, 0, 0);
-	    jp_PlayBackManager.add(jb_SaveProperties,hmgbc);
-	    
-	    hmgbc.weightx = 0;
+        //hmgbc.insets = new Insets(0, 0, 0, 0);
+	    jp_PlayBackManager.add(jb_SaveView,hmgbc);
+		
+		jp_View.add(jrb_SwitchExpertview);
+		jp_View.add(jrb_SwitchSlimview);
+		jp_View.add(jrb_SwitchiView);
+		
+		hmgbc.weightx = 0;
         hmgbc.weighty = 1;
         hmgbc.gridx = 0;
         hmgbc.gridy = 1;
-        hmgbc.anchor = GridBagConstraints.WEST;
-        hmgbc.insets = new Insets(0, 0, 0, 0);
-		jp_PlayBackManager.add(jcb_SwitchViewMode,hmgbc);
+		jp_PlayBackManager.add(jp_View,hmgbc);
 		
-        hmgbc.weightx = 0;
-        hmgbc.weighty = 0;
+        hmgbc.weightx = 1;
+        hmgbc.weighty = 1;
         hmgbc.gridx = 0;
         hmgbc.gridy = 2;
         hmgbc.fill = GridBagConstraints.BOTH;
-        hmgbc.insets = new Insets(0, 0, 0, 0);
+        //hmgbc.insets = new Insets(0, 0, 0, 0);
 		jp_occuretime.setBorder(BorderFactory
                 .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getTitle("Tokengame.PlaybackManager.Occurtimes")), BorderFactory.createEmptyBorder()));
 		jp_occuretime.add(jsl_fastfwbwoption);
 		jp_PlayBackManager.add(jp_occuretime,hmgbc);
 		
-		hmgbc.weightx = 1;
+		hmgbc.weightx = 0;
         hmgbc.weighty = 0;
         hmgbc.gridx = 0;
         hmgbc.gridy = 3;
@@ -148,10 +179,30 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		return jp_PlayBackManager;
 	}
 	
-	public void saveProperties()
+	public void savePMView()
 	{
-		RemoteControl.setExpertViewMode(jcb_SwitchViewMode.isSelected());
+		if(jrb_SwitchExpertview.isSelected())
+		{
+			RemoteControl.setViewMode(0);
+		}
+		else if(jrb_SwitchSlimview.isSelected())
+		{
+			RemoteControl.setViewMode(1);
+		}
+		else if(jrb_SwitchiView.isSelected())
+		{
+			RemoteControl.setViewMode(2);
+		}
+		this.dispose();
+	}
+	
+	public void savePropertyOccurtime()
+	{
 		RemoteControl.setOccurTimes(jsl_fastfwbwoption.getValue());
+	}
+	
+	public void savePropertyDelaytime()
+	{
 		RemoteControl.setDelaytime(jsl_delaytime.getValue());
 	}
 	
