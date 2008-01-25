@@ -23,6 +23,7 @@
 package org.woped.file;
 
 import java.awt.geom.Point2D;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
