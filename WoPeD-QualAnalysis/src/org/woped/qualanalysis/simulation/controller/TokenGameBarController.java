@@ -54,7 +54,7 @@ public class TokenGameBarController implements Runnable {
 	//Playback Properties
 	private int						 occurtimes					   = 3;
 	private int						 delaytime					   = 1;
-	private boolean					 expertview					   = true;
+	private int					     viewmode					   = 0;
 	
 	//Integers
 	private int                      HistoryIndex                  = 0; 
@@ -92,16 +92,30 @@ public class TokenGameBarController implements Runnable {
         Point p    = desktop.getDesktopReference().getLocation();
         p.setLocation(desktop.getDesktopReference().getLocation().getX(), (int)desktop.getDesktopReference().getHeight()-ExpertView.getHeight());
         desktop.getDesktopReference().add(ExpertView).setLocation(p);
-        ExpertView.setVisible(true);
         ExpertView.moveToFront();
         
         SlimView = new SlimInternalFrame(this, acoChoiceItems, ahxHistoryContent);
-       // desktop.getDesktopReference().add(SlimView);
+        desktop.getDesktopReference().add(SlimView);
        /*
         * Not everybody should see the new view right now, therefore commented it out...
         */
         SlimView.moveToFront();
-	    
+        
+        switch(viewmode)
+		{
+	    	case 0:
+	    		ExpertView.setVisible(true);
+	        	SlimView.setVisible(false);
+	    		break;
+	    	case 1:
+	    		ExpertView.setVisible(false);
+	        	SlimView.setVisible(true);
+	    		break;
+	    	case 3:
+	    		break;
+	    	default:
+	    		break;
+		}
       }
 	}
 	
@@ -624,20 +638,30 @@ public class TokenGameBarController implements Runnable {
 	}
 	
 	/**
-	 * Determines if the Expertview is switched on
+	 * Determines witch View is switched on
 	 * @return
 	 */
-	public boolean getExpertViewMode()
+	public int getViewMode()
 	{
-		return expertview;
+		return viewmode;
 	}
 	
 	/**
-	 * Activate Expertview
+	 * Set Viewmode Variable
 	 */
-	public void setExpertViewMode(boolean expert)
+	public void setViewMode(int view)
 	{
-		expertview = expert;
+		viewmode = view;
+		if(viewmode == 0)
+		{
+			ExpertView.setVisible(true);
+			SlimView.setVisible(false);
+		}
+		if(viewmode == 1)
+		{
+			ExpertView.setVisible(false);
+			SlimView.setVisible(true);
+		}
 	}
 	
 	/**
