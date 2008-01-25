@@ -478,7 +478,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 				// TODO speichern mithilfe von Alex' Klassen, die auf content
 				// getter methoden zugreifen
 
-				t_editor.getEditor().getModelProcessor().getElementContainer()
+				modelElementContainer
 						.addVariable(
 								VariableName.getText(),
 								getVariableTypesComboBox().getSelectedItem()
@@ -700,8 +700,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 	 * @param box
 	 */
 	protected void fillVariableToComboBox(JComboBox box) {
-		HashSet<BpelVariable> list = this.t_editor.getEditor()
-				.getModelProcessor().getElementContainer().getVariableList()
+		HashSet<BpelVariable> list = modelElementContainer
+			.getVariableList()
 				.getBpelVariableList();
 		box.removeAllItems();
 		Iterator<BpelVariable> iter = list.iterator();
