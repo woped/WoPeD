@@ -51,6 +51,20 @@ public class RunWoPeD extends JApplet {
 	// flag for Applet
 	private static boolean isApplet = false;
 	
+	 /**
+     * 
+     * Main Entry Point. Starts the GUI.
+     *  
+     */
+    public static void main(String[] args)
+    {
+    	final String arguments[] = args;
+    	javax.swing.SwingUtilities.invokeLater(new Runnable() {
+    		public void run() {
+    			RunWoPeD.run(arguments);
+    		}
+    	});
+    }
 	
 	/**
 	 * 
@@ -72,11 +86,11 @@ public class RunWoPeD extends JApplet {
 		// Arguments Field
 		final String arguments[] = new String[1];
 		arguments[0] = getParameter("modellid");
-		RunWoPeD.main(arguments);
+		RunWoPeD.run(arguments);
 	}
 
-	public  static void main(String[] args) {
-		try {
+	 private static void run(String[] args)
+    { 	try {
 			// Loading Logger!
 			try {
 				DOMConfigurator.configure(RunWoPeD.class
