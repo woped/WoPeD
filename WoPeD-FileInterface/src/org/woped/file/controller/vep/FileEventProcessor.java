@@ -1,12 +1,15 @@
 package org.woped.file.controller.vep;
 
 import java.awt.Frame;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.rmi.RemoteException;
 import java.security.AccessControlException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
@@ -15,6 +18,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
+import org.woped.bpel.BPEL;
 import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
@@ -39,12 +44,16 @@ import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
-import org.woped.translations.Messages;
+import org.woped.file.gui.OpenWebEditorUI;
 import org.woped.qualanalysis.NetAnalysisDialog;
 import org.woped.qualanalysis.WoflanAnalysis;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.bpel.BPEL;
+import org.woped.server.ServerLoader;
+import org.woped.server.holder.ModellHolder;
+import org.woped.server.holder.UserHolder;
+import org.woped.translations.Messages;
+
 
 ;
 
@@ -73,6 +82,17 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			break;
 		case AbstractViewEvent.SAVEAS:
 			saveAs((EditorVC) getMediator().getUi().getEditorFocus());
+			break;
+		case AbstractViewEvent.SAVEWEBSERVICE:
+			saveWebFile((EditorVC)getMediator().getUi().getEditorFocus());			
+			break;
+		case AbstractViewEvent.OPENWEBSERVICE:
+			if (event.getData() != null) {
+				int modellid = Integer.valueOf(((String)event.getData()));
+				openWebServiceEditor(modellid);
+			} else {
+				openWebServiceEditor(-1);
+			}			
 			break;
 		case AbstractViewEvent.EXPORT:
 			export((EditorVC) getMediator().getUi().getEditorFocus());
@@ -165,6 +185,71 @@ public class FileEventProcessor extends AbstractEventProcessor {
 						(JFrame) getMediator().getUi(), editor);
 			break;
 		}
+	}
+
+	 
+		
+	/**
+	 * saveWebFile()
+	 * <p>
+	 * saves a PetriNetModle above the Web on the WopedWebServer
+	 * @param editor - PetriNetModel which has to save on the WebServer
+	 * @returns Returns if the save Process fails or succeed
+	 */
+	private boolean saveWebFile(EditorVC editor) {
+		boolean succeed = false;
+		
+		try {
+			if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
+				IViewController[] iVC = getMediator()
+						.findViewController(IStatusBar.TYPE);
+				IStatusBar iSB[] = new IStatusBar[iVC.length];
+				for (int i = 0; i < iSB.length; i++) {
+
+					iSB[i] = (IStatusBar) iVC[i];
+				}
+				PNMLExport pe = new PNMLExport(iSB);
+				// creates a Stream to hold the XML Data from the PNMLExport
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				pe.saveToWebFile(editor, baos);
+				
+				// save the Model on the Webserver
+				// if this is the first save, ask the user about a filename or a title
+				Object title = JOptionPane.showInputDialog((JFrame)getMediator().getUi(),Messages.getString("SaveWebServiceEditor.Input"),Messages.getTitle("SaveWebServiceEditor"),JOptionPane.QUESTION_MESSAGE,null,null,editor.getName());
+								
+				
+				editor.setModelid(ServerLoader.getInstance().saveModel(UserHolder.getUserID(), editor.getModelid(), baos.toString(),(String)title));
+				// close the Stream
+				baos.close();
+				
+				LoggerManager.info(Constants.FILE_LOGGER,
+						"Petrinet saved in webfile: "
+								+ editor.getModelid() + " " +editor.getName());
+
+				editor.setSaved(true);
+				succeed = true;
+			}
+			else {
+				LoggerManager.warn(Constants.FILE_LOGGER,
+						"Unable to save WebFile "
+								+ editor.getModelid() + " " + editor.getName());
+				succeed = false;
+			}
+		} catch (AccessControlException ace) {
+			ace.printStackTrace();
+			LoggerManager.warn(Constants.FILE_LOGGER,
+					"Could not save Editor. No rights to write the file to "
+							+ editor.getModelid() + ". " + ace.getMessage());
+			JOptionPane.showMessageDialog(getMediator().getUi().getComponent(),
+					Messages.getString("File.Error.Applet.Text"), Messages
+							.getString("File.Error.Applet.Title"),
+					JOptionPane.ERROR_MESSAGE);
+		} catch (IOException e) {
+			// ignore
+		} finally {
+			// TODO: Cursor Handling setCursor(Cursor.getDefaultCursor());
+		}
+		return succeed;		
 	}
 
 	/**
@@ -583,6 +668,94 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		}
 		return succeed;
 
+	}
+	
+	/**
+	 * openWebServiceEditor()
+	 * <p>
+	 * @return IEditor
+	 */
+	private IEditor openWebServiceEditor(int modellID) {
+		// get loadable List of PetriNetModels
+		try {
+			ArrayList<ModellHolder> values = null;
+			ModellHolder selected = null;
+			if (modellID != -1) {
+				values = ServerLoader.getInstance().getList(UserHolder.getUserID(), true);
+				for (int i = 0; i < values.size(); i++) {
+					if (values.get(i).getModellID() == modellID) {
+						selected = values.get(i);
+						break;
+					}
+				}
+			} else {
+				OpenWebEditorUI openWebEditorGUI = new OpenWebEditorUI((JFrame)getMediator().getUi());
+				selected = openWebEditorGUI.execute();
+				openWebEditorGUI.dispose();
+			}
+			if (selected != null) {
+				// load the choosen model
+				String content = ServerLoader.getInstance().loadModel(selected.getModellID());
+				return openWebFile(content,selected);
+			}
+		} catch (RemoteException e) {
+			// for first ignore
+		}
+		return null;
+		
+	}
+	
+	/**
+	 * openWebFile()
+	 * <p>
+	 * creates a IEditor from a given XML String
+	 * @param content
+	 * @param modell
+	 * @return
+	 */
+	private IEditor openWebFile(String content, ModellHolder modell) {
+		IEditor editor = null;
+		final PNMLImport pr;
+		
+		IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
+		IStatusBar[] iSB = new IStatusBar[iVC.length];
+		for (int i = 0; i < iSB.length; i++) {
+			iSB[i] = (IStatusBar) iVC[i];
+		}
+
+		pr = new PNMLImport((ApplicationMediator) getMediator(), iSB);
+		
+		if (pr != null) {
+			boolean loadSuccess = false;
+			
+			// TODO Generate Thread
+			loadSuccess = pr.runEx(content);
+			
+			if (loadSuccess) {
+				editor = pr.getEditor()[pr.getEditor().length - 1];
+				for (int i = 0; i < pr.getEditor().length; i++) {
+					if (editor instanceof EditorVC) {
+						((EditorVC) pr.getEditor()[i])
+								.setDefaultFileType(FileFilterImpl.PNMLFilter);
+						((EditorVC) pr.getEditor()[i]).setName(modell.getTitle());
+						((EditorVC) pr.getEditor()[i]).setModelid(modell.getModellID());
+					}
+					// add Editor
+					LoggerManager.info(Constants.FILE_LOGGER,
+							"Petrinet loaded from Webfile: "
+									+ modell.getModellID() + " " + modell.getTitle());
+				}
+			} else {
+				String arg[] = { modell.getModellID() + " " + modell.getTitle() };
+				JOptionPane.showMessageDialog(null, Messages.getString(
+						"File.Error.FileOpen.Text", arg), Messages
+						.getString("File.Error.FileOpen.Title"),
+						JOptionPane.ERROR_MESSAGE);
+			}
+			
+		} else {
+		}
+		return editor;
 	}
 
 	/**
