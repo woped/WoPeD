@@ -16,7 +16,7 @@ import org.woped.core.utilities.LoggerManager;
  */
 public class ServerLoader {
 
-	static public String url = "rmi://ip:1099/WopedService"; 
+	static public String url = "rmi://localhost:1099/WopedService"; 
 	
 	static public IServer instance = null;
 	
@@ -34,9 +34,7 @@ public class ServerLoader {
 				LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
 			} catch (NotBoundException e) {
 				LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
-			} finally {
-				instance = null;
-			}
+			} 
 		}
 		return instance;
 	}

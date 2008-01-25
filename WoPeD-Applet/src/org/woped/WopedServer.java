@@ -3,6 +3,7 @@ package org.woped;
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
+import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -13,7 +14,7 @@ import org.woped.server.ServerImpl;
 
 /**
  * Class to run the RMI Server
- * @author Administrator
+ * @author C. Krüger
  *
  */
 public class WopedServer {
@@ -26,8 +27,9 @@ public class WopedServer {
 	 */
 	public WopedServer() {
 		try {
+			//System.setSecurityManager(new RMISecurityManager());
 			LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-			Naming.bind("rmi://ip:1099/WopedService", new ServerImpl());
+			Naming.bind("rmi://localhost:1099/WopedService", new ServerImpl());
 		} catch (AlreadyBoundException e) {
 			LoggerManager.fatal(Constants.CORE_LOGGER,e.getMessage());
 		} catch (MalformedURLException e) {
