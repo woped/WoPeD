@@ -18,13 +18,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.core.model.bpel.BpelVariable;
+import org.woped.core.model.bpel.BpelVariableList;
 import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.editor.gui.PopUpDialog;
 import org.woped.translations.Messages;
 
 /**
  * @author Frank Schüler, Ester Landes
  * 
  */
+
+
+@SuppressWarnings("serial")
 public class NewVaraibleDialog extends JDialog {
 
 	static final int _OKBUTTON = 0;
@@ -35,8 +40,8 @@ public class NewVaraibleDialog extends JDialog {
 	private int activbutton = -1;
 
 	private JComboBox variableTypesComboBox = null;
-	
-	TransitionPropertyEditor t_editor;
+
+	TransitionPropertyEditor _editor;
 
 	/**
 	 * @param arg0
@@ -45,10 +50,11 @@ public class NewVaraibleDialog extends JDialog {
 	 *            boolean
 	 * @throws HeadlessException
 	 */
-	public NewVaraibleDialog(TransitionPropertyEditor arg0)
+	public NewVaraibleDialog(TransitionPropertyEditor Editor)
 			throws HeadlessException {
-		super(arg0, true);
-		// TODO Auto-generated constructor stub
+		super(Editor, true);
+		this._editor = Editor;
+		this.init();
 	}
 
 	public void init() {
@@ -149,27 +155,35 @@ public class NewVaraibleDialog extends JDialog {
 		return variableTypesComboBox;
 	}
 
-	public String newVariable() {
+	public String getNewVariableName() {
 		return "" + this.VariableName.getText();
 	}
-	
-	public String getType()
-	{
+
+	public String getType() {
 		return "" + this.variableTypesComboBox.getSelectedItem().toString();
 	}
 
 	public TransitionPropertyEditor getTransitionPropertyEditor() {
-		return this.t_editor;
+		return this._editor;
 	}
-	
-	public void setActivButton(int Buttontype)
-	{
+
+	public void setActivButton(int Buttontype) {
 		this.activbutton = Buttontype;
 	}
-	
-	public int getActivButton()
-	{
+
+	public int getActivButton() {
 		return this.activbutton;
+	}
+
+	public boolean isInputOk() {
+		BpelVariableList list = this._editor.getEditor().getModelProcessor()
+				.getElementContainer().getVariableList();
+		if(list.findBpelVaraibleByName(this.VariableName.getText()) != null)
+		{
+			new PopUpDialog(this,true,"Fehler", "Fehler: Die zu erstellende Bpel-Variable existiert bereits!").setVisible(true);
+			return false;
+		}
+		return true;
 	}
 
 	class ButtonEvent implements ActionListener {
@@ -182,14 +196,16 @@ public class NewVaraibleDialog extends JDialog {
 		}
 
 		public void actionPerformed(ActionEvent arg0) {
-			this._adaptee.setActivButton(this._buttontype);
 			if (this._buttontype == NewVaraibleDialog._OKBUTTON) {
+				if (!this._adaptee.isInputOk())
+					return;
 				this._adaptee.getTransitionPropertyEditor().getEditor()
 						.getModelProcessor().getElementContainer().addVariable(
 								VariableName.getText(),
 								getVariableTypesComboBox().getSelectedItem()
 										.toString());
-			} 
+			}
+			this._adaptee.setActivButton(this._buttontype);
 			this._adaptee.dispose();
 		}
 	}

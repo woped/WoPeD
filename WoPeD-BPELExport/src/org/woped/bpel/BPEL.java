@@ -2,30 +2,22 @@ package org.woped.bpel;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
+import org.apache.xmlbeans.XmlOptions;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.ProcessDocument;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
+import org.woped.bpel.datamodel.BpelParserModel;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.ArcModel;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
-
-import org.apache.xmlbeans.XmlCursor;
-import org.apache.xmlbeans.XmlOptions;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
-import org.woped.bpel.datamodel.BpelParserModel;
-import org.woped.bpel.datamodel.Place;
-import org.woped.bpel.datamodel.SimpleTransition;
 
 //TODO class description
 public class BPEL
@@ -171,6 +163,7 @@ public class BPEL
 
 	public void setGlobals(TProcess iProcess, PetriNetModelProcessor pnp){
 		TVariables itempVars = (TVariables)pnp.getElementContainer().getTVariablesList();
+		if(itempVars == null) return;
 		
 		if (itempVars.sizeOfVariableArray()>0){
 			TVariables iVars = iProcess.addNewVariables();

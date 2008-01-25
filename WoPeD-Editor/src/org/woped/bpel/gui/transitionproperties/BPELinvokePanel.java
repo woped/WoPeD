@@ -14,18 +14,17 @@ import javax.swing.JLabel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.*;
 
-
 /**
  * @author Esther Landes
- *
- * This is a panel in the transition properties, which enables the user to maintain data for an "invoke" BPEL activity.
- *
+ * 
+ * This is a panel in the transition properties, which enables the user to
+ * maintain data for an "invoke" BPEL activity.
+ * 
  * Created on 08.01.2008
  */
 
 @SuppressWarnings("serial")
-
-public class BPELinvokePanel extends BPELadditionalPanel{
+public class BPELinvokePanel extends BPELadditionalPanel {
 
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
@@ -35,8 +34,8 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 	JComboBox outVariableComboBox = null;
 	JButton newOutVariableButton = null;
 
-
-	public BPELinvokePanel(TransitionPropertyEditor t_editor, TransitionModel transition){
+	public BPELinvokePanel(TransitionPropertyEditor t_editor,
+			TransitionModel transition) {
 
 		super(t_editor, transition);
 
@@ -121,7 +120,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 		add(getNewOutVariableButton(), c);
 	}
 
-	private JComboBox getPartnerLinkComboBox(){
+	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
 			partnerLinkComboBox.setPreferredSize(dimension);
@@ -129,11 +128,11 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 		return partnerLinkComboBox;
 	}
 
-	private JButton getNewPartnerLinkButton(){
+	private JButton getNewPartnerLinkButton() {
 		if (newPartnerLinkButton == null) {
 			newPartnerLinkButton = new JButton(NEW);
-			newPartnerLinkButton.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
+			newPartnerLinkButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					showNewPartnerLinkDialog();
 				}
 			});
@@ -141,7 +140,7 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 		return newPartnerLinkButton;
 	}
 
-	private JComboBox getOperationComboBox(){
+	private JComboBox getOperationComboBox() {
 		if (operationComboBox == null) {
 			operationComboBox = new JComboBox();
 			operationComboBox.setPreferredSize(dimension);
@@ -149,21 +148,27 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 		return operationComboBox;
 	}
 
-	private JComboBox getInVariableComboBox(){
+	private JComboBox getInVariableComboBox() {
 		if (inVariableComboBox == null) {
 			inVariableComboBox = new JComboBox();
 			inVariableComboBox.setPreferredSize(dimension);
+			this.fillVariableToComboBox(inVariableComboBox);
 		}
 		return inVariableComboBox;
 	}
 
-	private JButton getNewInVariableButton(){
+	private JButton getNewInVariableButton() {
 		if (newInVariableButton == null) {
 			newInVariableButton = new JButton(NEW);
 
-			newInVariableButton.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-					showNewVariableDialog();
+			newInVariableButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+						inVariableComboBox.addItem(dialog.getNewVariableName());
+						inVariableComboBox.setSelectedIndex(inVariableComboBox
+								.getItemCount() - 1);
+					}
 				}
 			});
 
@@ -171,57 +176,62 @@ public class BPELinvokePanel extends BPELadditionalPanel{
 		return newInVariableButton;
 	}
 
-	private JComboBox getOutVariableComboBox(){
+	private JComboBox getOutVariableComboBox() {
 		if (outVariableComboBox == null) {
 			outVariableComboBox = new JComboBox();
 			outVariableComboBox.setPreferredSize(dimension);
+			this.fillVariableToComboBox(outVariableComboBox);
 		}
 		return outVariableComboBox;
 	}
 
-	private JButton getNewOutVariableButton(){
+	private JButton getNewOutVariableButton() {
 		if (newOutVariableButton == null) {
 			newOutVariableButton = new JButton(NEW);
 
-			newOutVariableButton.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-					showNewVariableDialog();
+			newOutVariableButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+						outVariableComboBox
+								.addItem(dialog.getNewVariableName());
+						outVariableComboBox
+								.setSelectedIndex(outVariableComboBox
+										.getItemCount() - 1);
+					}
 				}
 			});
 		}
 		return newOutVariableButton;
 	}
 
+	// ***************** content getter methods **************************
 
-
-	//	***************** content getter methods  **************************
-
-	public String getPartnerLink(){
+	public String getPartnerLink() {
 		if (partnerLinkComboBox.getSelectedItem() == null)
 			return "";
 		return partnerLinkComboBox.getSelectedItem().toString();
 	}
 
-	public String getOperation(){
+	public String getOperation() {
 		if (operationComboBox.getSelectedItem() == null)
 			return "";
 		return operationComboBox.getSelectedItem().toString();
 	}
 
-	public String getInVariable(){
+	public String getInVariable() {
 		if (inVariableComboBox.getSelectedItem() == null)
 			return "";
 		return inVariableComboBox.getSelectedItem().toString();
 	}
 
-	public String getOutVariable(){
+	public String getOutVariable() {
 		if (outVariableComboBox.getSelectedItem() == null)
 			return "";
 		return outVariableComboBox.getSelectedItem().toString();
 	}
 
-
-	//	***************** content setter methods  **************************
+	// ***************** content setter methods **************************
 
 	public void setPartnerLink(String partnerLink) {
 		partnerLinkComboBox.addItem(partnerLink);

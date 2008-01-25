@@ -678,4 +678,12 @@ public abstract class BPELadditionalPanel extends JPanel {
 		errorPopup.add(okButton, c);
 		errorPopup.setVisible(true);
 	}
+	
+	protected void fillVariableToComboBox(JComboBox box) {
+		String[] list = this.t_editor.getEditor().getModelProcessor()
+				.getElementContainer().getVariableList().getVariableNameArray();
+		for (int i = 0; i < list.length; i++) {
+			box.addItem(list[i]);
+		}
+	}
 }
