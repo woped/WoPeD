@@ -1,20 +1,16 @@
 package org.woped.qualanalysis.simulation;
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+
+import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-import org.woped.translations.Messages;
-import org.woped.core.model.ArcModel;
-import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.qualanalysis.simulation.controller.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.geom.Ellipse2D;
-import java.io.File;
-import java.util.Vector;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.Shape;
+
+
 
 /**
  * This class specifies the remote control UI of the Tokengame-simulator
@@ -41,7 +37,7 @@ public class NewInternalFrame extends JInternalFrame {
 		this.setOpaque(false);
 		mover = new JPanel();
 		mover.setOpaque(false);
-	    ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(mover);
+	    ((BasicInternalFrameUI) this.getUI()).setNorthPane(mover);
 	      	
 	}
 	

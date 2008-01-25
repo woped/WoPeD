@@ -95,7 +95,7 @@ public class TokenGameBarController implements Runnable {
         ExpertView.moveToFront();
         
         SlimView = new SlimInternalFrame(this, acoChoiceItems, ahxHistoryContent);
-        desktop.getDesktopReference().add(SlimView);
+        desktop.getDesktopReference().add(SlimView).setLocation(p);
        /*
         * Not everybody should see the new view right now, therefore commented it out...
         */
@@ -157,7 +157,8 @@ public class TokenGameBarController implements Runnable {
 		 */
 	  if( BackWard )
 	  {
-		 previousItem();
+		SlimView.getSlimPanel().setChoiceListInvisible();
+		previousItem();
 		if(BackwardTransitionToOccur != null)
 		{
 		  while(BackwardTransitionToOccur.getId().contains("sub") && (BackwardTransitionToOccur.getId().length() > 6))
@@ -174,6 +175,7 @@ public class TokenGameBarController implements Runnable {
 	  } 
 	  else
 	  {
+		 
 		  //AFAIK needed to make automatic backward stepping
 		  BackwardTransitionToOccur = TransitionToOccur;
 		  if(playbackRunning())
@@ -380,6 +382,7 @@ public class TokenGameBarController implements Runnable {
 			{
 				ExpertView.disableForwardButtons();
 			}
+			SlimView.getSlimPanel().showChoice();
 		}
 	  }
 	}
@@ -735,7 +738,16 @@ public class TokenGameBarController implements Runnable {
 	public int getSelectedChoiceID()
 	{
 		//Add "if(ExpertView_enabled =true)" and else case to return the really selected list
-		return ExpertView.getSelectedChoiceID();
+		if(ExpertView.getSelectedChoiceID() > -1)
+		{
+			return ExpertView.getSelectedChoiceID();
+		}
+		else
+		{
+			SlimView.getSlimPanel().setChoiceListInvisible();
+			return SlimView.getSlimPanel().getSelectedChoiceID();	
+		}
+		
 	}
 	
 	/**

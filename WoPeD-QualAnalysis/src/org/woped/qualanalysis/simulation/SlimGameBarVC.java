@@ -5,6 +5,7 @@ import java.awt.*;
 
 import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
 import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
+import org.woped.qualanalysis.test.ReferenceProvider;
 import org.woped.translations.Messages;
 import java.io.File;
 
@@ -37,9 +38,18 @@ public class SlimGameBarVC extends JPanel{
 	//TokenGameBarController
 	private TokenGameBarController   tgbController                 = null;
 	
-	public SlimGameBarVC(TokenGameBarController tgbController)
+	//SlimChoice-Box
+	private JDialog                  SlimChoiceBox                 = null;
+	private JList                    SlimChoiceList                = null;
+	private int                      ListSizeX                     = 170;
+	private int                      ListSizeY                     = 200;
+	private JPanel                   SlimChoicePanel               = null;
+	private DefaultListModel         ChoiceContent                 = null;
+	
+	public SlimGameBarVC(TokenGameBarController tgbController, DefaultListModel Choice)
 	{
 	    super();
+	    ChoiceContent = Choice;
 	    this.tgbController = tgbController;
 	    Dimension d = new Dimension(580,110);
 	    this.setPreferredSize(d);
@@ -124,6 +134,69 @@ public class SlimGameBarVC extends JPanel{
 		return this;
 	}
 	
+	public Point getButtonCoords(boolean BackWard)
+	{
+		if(!BackWard)
+		{
+			return pbnFW.getLocationOnScreen();
+		}
+		else
+		{
+			return pbnBW.getLocationOnScreen();
+		}
+	}
+	
+	public void showChoice()
+	{
+		if(SlimChoiceBox == null)
+		{
+			SlimChoiceBox = new JDialog();
+			SlimChoiceBox.setUndecorated(true);
+
+			
+			SlimChoiceList   = new JList(ChoiceContent);
+		    SlimChoiceList.setPreferredSize(new Dimension(ListSizeX, ListSizeY));		
+		  
+			SlimChoiceList.addMouseListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_TRANSITION, tgbController));
+		    
+			//Define Panel
+			SlimChoicePanel     = new JPanel();
+		    SlimChoicePanel.add(SlimChoiceList);
+		    
+			SlimChoiceBox.add(SlimChoicePanel);
+			SlimChoiceBox.setAlwaysOnTop(true);
+			SlimChoiceBox.setVisible(true);	
+		}
+		else
+		{
+			SlimChoiceBox.setVisible(true);
+		}
+		updateList(ChoiceContent, getButtonCoords(false));
+	}
+
+	public void setChoiceListInvisible()
+	{
+		SlimChoiceBox.setVisible(false);
+	}
+	
+	public void updateList(DefaultListModel ChoiceContent, Point buttonlocation)
+	{
+		if(ChoiceContent.size() > 0)
+		{
+			ListSizeY = ChoiceContent.size() * 15; 
+		}
+		SlimChoiceList.setSize(ListSizeX, ListSizeY);
+		SlimChoiceBox.setSize(ListSizeX+4,ListSizeY+8);
+		SlimChoiceBox.setLocation(buttonlocation.x,buttonlocation.y-(ListSizeY+18));
+	}
+	
+	
+	
+	public int getSelectedChoiceID()
+	{
+		return SlimChoiceList.getSelectedIndex();
+	
+	}
 	
 	protected void paintComponent(Graphics g) 
 	{
@@ -131,8 +204,8 @@ public class SlimGameBarVC extends JPanel{
 		g.drawImage (background, 0, 0, this);
 		this.ui.paint(g, this);
 	}
-
-	 
+ 
+	
 	// Paint the border of the button using a simple stroke.
 	protected void paintBorder(Graphics g)
 	{

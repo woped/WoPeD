@@ -15,10 +15,11 @@ import org.woped.qualanalysis.simulation.controller.*;
 public class SlimInternalFrame extends NewInternalFrame {
 	
 
-	private DefaultListModel         acoChoiceItems                = null;
-	private DefaultListModel         ahxHistoryContent             = null;
+
 	
 	private TokenGameBarController   tgbController                 = null;
+	
+	private SlimGameBarVC         SlimPanel                     = null;       
 	
 	//Constructor(s)
 	public SlimInternalFrame(TokenGameBarController tgbController, DefaultListModel acoChoiceItems, DefaultListModel ahxHistoryContent)
@@ -26,11 +27,15 @@ public class SlimInternalFrame extends NewInternalFrame {
 		super();
 	    this.setToolTipText(Messages.getTitle("Tokengame.RemoteControl"));
 		
-		this.acoChoiceItems = acoChoiceItems;
-		this.ahxHistoryContent = ahxHistoryContent;
+		
 		this.tgbController = tgbController;
-       
-		this.getContentPane().add(new SlimGameBarVC(this.tgbController));	
+        SlimPanel = new SlimGameBarVC(this.tgbController, acoChoiceItems);
+		this.getContentPane().add(SlimPanel);	
 		
 	}	
+	
+	public SlimGameBarVC getSlimPanel()
+	{
+		return SlimPanel;
+	}
 }
