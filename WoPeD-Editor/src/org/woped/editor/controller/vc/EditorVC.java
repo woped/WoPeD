@@ -143,7 +143,9 @@ public class EditorVC extends JPanel implements KeyListener,
 		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor,
 		InternalFrameListener
 {
-
+	// ModelID for DB 
+	private int modelid = -1;
+	
 	private String id = null;
 
 	public static final String ID_PREFIX = "EDITOR_VC_";
@@ -2346,4 +2348,12 @@ public class EditorVC extends JPanel implements KeyListener,
         getGraph().getGraphLayoutCache().insert(resultArray);
         return resultArray;
     }
+
+	public int getModelid() {
+		return modelid;
+	}
+
+	public void setModelid(int modelid) {
+		this.modelid = modelid;
+	}
 }
