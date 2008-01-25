@@ -39,10 +39,10 @@ import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes / Kristian Kindler
- * 
+ *
  * This is the basic class for the different BPEL activity panels. It contains
  * methods and data that is used in the activity panels' dialogs.
- * 
+ *
  * Created on 16.01.2008
  */
 
@@ -93,8 +93,21 @@ public abstract class BPELadditionalPanel extends JPanel {
 	// ************** display dialog box "New Partner Link" *****************
 
 	protected void showNewPartnerLinkDialog() {
+
+        // clear all input fields and combo boxes before we start (because of old data)
+        try {
+                partnerLinkNameTextField.setText("");
+                wsdlFileTextField.setText("");
+                partnerLinkTypeComboBox.removeAllItems();
+                partnerRoleComboBox.removeAllItems();
+                myRoleComboBox.removeAllItems();
+        } catch (NullPointerException e) {
+                /* If a NullPointerException is catched the fields and combo boxes have not been
+                   initialized yet so they are empty anyways.*/
+        }
+
+		// here we go ...
 		wsdl = new Wsdl();
-		// tryToGetDataFromWsdl();
 
 		dialog = new JDialog(t_editor, true);
 		dialog.setVisible(false);
@@ -680,7 +693,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param box
 	 */
 	protected void fillVariableToComboBox(JComboBox box) {
