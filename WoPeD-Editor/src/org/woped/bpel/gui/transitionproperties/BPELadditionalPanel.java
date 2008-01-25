@@ -450,18 +450,11 @@ public abstract class BPELadditionalPanel extends JPanel {
 
                                 String name    = partnerLinkNameTextField.getText();
                                 String wsdlUrl = wsdlFileTextField.getText();
-                                System.out.println(name);
-                                System.out.println(wsdlUrl);
-
-                                // Check if combo boxes are filled with data
+                                                                // Check if combo boxes are filled with data
                                 if ( (partnerLinkTypeComboBox.getItemCount() != 0) && (partnerRoleComboBox.getItemCount() != 0) ){
                                         String partnerLinkType = partnerLinkTypeComboBox.getSelectedItem().toString();
                                         String partnerRole         = partnerRoleComboBox.getSelectedItem().toString();
                                         String myRole              = myRoleComboBox.getSelectedItem().toString();
-
-                                        System.out.println(partnerLinkType);
-                                        System.out.println(partnerRole);
-                                        System.out.println(myRole);
 
                                         // TODO führende Leerzeichen entfernen
                                         if ( name.equals("") ||
@@ -471,7 +464,6 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                    myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
                                                  )
                                            ) {
-                                                System.out.println("name oder wsdlURL empty. Oder beide Combo Boxes auf - null -");
                                                 // TODO Fehler ausgeben
                                         }
                                         else {
@@ -487,7 +479,6 @@ public abstract class BPELadditionalPanel extends JPanel {
                                         }
                                 }
                                 else{
-                                        System.out.println("Die ComboBoxes sind leer");
                                         //TODO Fehlermeldung für fehlende Einträge
                                 }
 
