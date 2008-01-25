@@ -33,6 +33,7 @@ import org.woped.bpel.wsdl.wsdlFileRepresentation.PartnerLinkType;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.Role;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.WsdlFileRepresentation;
 import org.woped.core.model.bpel.BpelVariable;
+import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
@@ -50,6 +51,7 @@ import org.woped.translations.Messages;
 public abstract class BPELadditionalPanel extends JPanel {
 
 	TransitionPropertyEditor t_editor;
+	ModelElementContainer modelElementContainer = null;
 	// JDialog dialogVariable = null;
 	// JDialog dialogPartner = null;
 	JDialog dialog = null;
@@ -88,6 +90,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 			TransitionModel transition) {
 		this.t_editor = t_editor;
 		this.transition = transition;
+		this.modelElementContainer = t_editor.getEditor().getModelProcessor().getElementContainer();
 	}
 
 	// ************** display dialog box "New Partner Link" *****************
