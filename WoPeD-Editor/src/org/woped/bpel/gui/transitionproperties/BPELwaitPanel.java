@@ -570,7 +570,15 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
-		
+		this.repaint();
+	}
+
+
+
+
+	@Override
+	public void saveInfomation() {
+		this.transition.setBaseActivity(new Wait(this.transition.getNameValue()).saveInformation(this));
 	}
 	
 	

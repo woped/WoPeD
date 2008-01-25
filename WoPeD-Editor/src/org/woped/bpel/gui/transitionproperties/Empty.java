@@ -23,8 +23,8 @@ public class Empty extends BaseActivity<TEmpty>
 	}
 
 	@Override
-	public void saveInformation(BPELadditionalPanel bip) {
-		
+	public BaseActivity<?> saveInformation(BPELadditionalPanel bip) {
+		return this;
 	}
 
 	@Override

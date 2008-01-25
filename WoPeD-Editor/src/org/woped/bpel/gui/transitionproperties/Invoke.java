@@ -57,13 +57,13 @@ public class Invoke extends BaseActivity<TInvoke> {
 	/**
 	 * @param bip
 	 */
-	public void saveInformation(BPELadditionalPanel bip) {
+	public BaseActivity<?> saveInformation(BPELadditionalPanel bip) {
 		if (!BPELinvokePanel.class.isInstance(bip))
-			return;
+			return this;
 		BPELinvokePanel panel = (BPELinvokePanel) bip;
 		this.fillInvoke(panel.getPartnerLink(), panel.getOperation(), panel
 				.getPortType(), panel.getInVariable(), panel.getOutVariable());
-
+		return this;
 	}
 
 	/**

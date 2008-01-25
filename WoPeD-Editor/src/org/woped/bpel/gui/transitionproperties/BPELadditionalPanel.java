@@ -737,10 +737,13 @@ public abstract class BPELadditionalPanel extends JPanel {
 			.getVariableList()
 				.getBpelVariableList();
 		box.removeAllItems();
+		box.addItem("");
 		Iterator<BpelVariable> iter = list.iterator();
 		while (iter.hasNext())
 			box.addItem(iter.next());
 	}
 
 	public abstract void refresh();
+	
+	public abstract void saveInfomation();
 }

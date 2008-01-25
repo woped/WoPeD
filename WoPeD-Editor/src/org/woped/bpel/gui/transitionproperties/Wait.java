@@ -69,9 +69,9 @@ public class Wait extends BaseActivity<TWait> {
 	/**
 	 * @param bip
 	 */
-	public void saveInformation(BPELadditionalPanel bip) {
+	public BaseActivity<?> saveInformation(BPELadditionalPanel bip) {
 		if (!BPELwaitPanel.class.isInstance(bip))
-			return;
+			return this;
 		BPELwaitPanel panel = (BPELwaitPanel) bip;
 
 		if (panel.getSelectedRadioButton().equalsIgnoreCase(
@@ -81,6 +81,7 @@ public class Wait extends BaseActivity<TWait> {
 				Messages.getString("Transition.Properties.BPEL.Wait.Duration"))) {
 			this.fillWait(panel.getDeadline(), Wait._DEADLINE);
 		}
+		return this;
 	}
 
 	/**

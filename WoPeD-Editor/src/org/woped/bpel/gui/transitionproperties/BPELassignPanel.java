@@ -165,9 +165,12 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	// ***************** content getter methods **************************
 
 	public String getFromVariable() {
-		if (fromVariableComboBox.getSelectedItem() == null)
+		if (fromVariableComboBox.getSelectedItem() == null
+				|| !BpelVariable.class.isInstance(fromVariableComboBox
+						.getSelectedItem()))
 			return "";
-		return fromVariableComboBox.getSelectedItem().toString();
+		return ((BpelVariable) fromVariableComboBox.getSelectedItem())
+				.getName();
 	}
 
 	public String getToVariable() {
@@ -179,11 +182,15 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	// ***************** content setter methods **************************
 
 	public void setFromVariable(String variable) {
-		fromVariableComboBox.addItem(variable);
+		fromVariableComboBox.addItem(this.t_editor.getEditor()
+				.getModelProcessor().getElementContainer()
+				.findBpelVariableByName(variable));
 	}
 
 	public void setToVariable(String variable) {
-		toVariableComboBox.addItem(variable);
+		toVariableComboBox.addItem(this.t_editor.getEditor()
+				.getModelProcessor().getElementContainer()
+				.findBpelVariableByName(variable));
 	}
 
 	@Override
@@ -195,7 +202,19 @@ public class BPELassignPanel extends BPELadditionalPanel {
 			Assign assign = (Assign) this.transition.getBpelData();
 			ModelElementContainer model = this.t_editor.getEditor()
 					.getModelProcessor().getElementContainer();
-			BpelVariable var = model.findBpelVariableByName(assign.getFromVariable());
+			BpelVariable var = model.findBpelVariableByName(assign
+					.getFromVariable());
+			this.fromVariableComboBox.setSelectedItem(var);
+			var = model.findBpelVariableByName(assign.getToVariable());
+			this.toVariableComboBox.setSelectedItem(var);
 		}
+
+		this.repaint();
+	}
+
+	@Override
+	public void saveInfomation() {
+		this.transition.setBaseActivity(new Assign(this.transition
+				.getNameValue(), this.getFromVariable(), this.getToVariable()));
 	}
 }

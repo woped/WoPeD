@@ -2,8 +2,6 @@ package org.woped.bpel.gui.transitionproperties;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TFrom;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TTo;
 
 /**
  * 
@@ -14,9 +12,6 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TTo;
  */
 public class Assign extends BaseActivity<TAssign>
 {
-	private TFrom _from = null;
-	private TTo _to = null;
-
 	/**
 	 * 
 	 * @param Name
@@ -45,11 +40,7 @@ public class Assign extends BaseActivity<TAssign>
 	protected final void genTActivity(String Name)
 	{
 		this.setActivity(TAssign.Factory.newInstance());
-		TAssign assign = this.getActivity();
-		assign.setName(Name);
-		TCopy copy = assign.addNewCopy();
-		this._from = copy.addNewFrom();
-		this._to = copy.addNewTo();
+		this.getActivity().setName(Name);
 	}
 	
 	/**
@@ -59,19 +50,31 @@ public class Assign extends BaseActivity<TAssign>
 	 */
 	public final void fillAssign(String FromVariable, String ToVariable)
 	{
-		this._from.setVariable("" + FromVariable);
-		this._to.setVariable("" + ToVariable);
+		TCopy copy = this.getActivity().getCopyArray(0);
+		if(copy == null)
+		{
+			copy = this.getActivity().addNewCopy();
+			copy.addNewFrom().setVariable("" + FromVariable);
+			copy.addNewTo().setVariable("" + ToVariable);
+		}
+		else
+		{
+			copy.getFrom().setVariable("" + FromVariable);
+			copy.getTo().setVariable("" + ToVariable);
+		}
+				
 	}
 
 	/**
 	 * 
 	 * @param bip
 	 */
-	public void saveInformation(BPELadditionalPanel bip)
+	public BaseActivity<?> saveInformation(BPELadditionalPanel bip)
 	{
-		if(!BPELassignPanel.class.isInstance(bip))return;
+		if(!BPELassignPanel.class.isInstance(bip))return this;
 		BPELassignPanel panel = (BPELassignPanel)bip;
 		this.fillAssign(panel.getFromVariable(), panel.getToVariable());
+		return this;
 	}
 
 	/**
@@ -92,7 +95,7 @@ public class Assign extends BaseActivity<TAssign>
 	 */
 	public String getFromVariable()
 	{
-		return this._from.getVariable();
+		return this.getActivity().getCopyArray(0).getFrom().getVariable();
 	}
 	
 	/**
@@ -101,6 +104,6 @@ public class Assign extends BaseActivity<TAssign>
 	 */
 	public String getToVariable()
 	{
-		return this._to.getVariable();
+		return this.getActivity().getCopyArray(0).getTo().getVariable();
 	}
 }

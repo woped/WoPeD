@@ -57,7 +57,7 @@ public abstract class BaseActivity<E extends TActivity>
 	 * 
 	 * @param bip
 	 */
-	public abstract void saveInformation(BPELadditionalPanel bip);
+	public abstract BaseActivity<?> saveInformation(BPELadditionalPanel bip);
 	
 	/**
 	 * 
@@ -74,5 +74,12 @@ public abstract class BaseActivity<E extends TActivity>
 		return TProcess.Factory.newInstance();
 	}
 	
+	/**
+	 * @return String
+	 */
+	public String toString()
+	{
+		return this.getName();
+	}
 	
 }

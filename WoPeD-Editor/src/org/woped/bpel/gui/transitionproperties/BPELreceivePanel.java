@@ -15,16 +15,15 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
  * @author Esther Landes
- *
- * This is a panel in the transition properties, which enables the user to maintain data for a "receive" BPEL activity.
- *
+ * 
+ * This is a panel in the transition properties, which enables the user to
+ * maintain data for a "receive" BPEL activity.
+ * 
  * Created on 14.01.2008
  */
 
-
 @SuppressWarnings("serial")
-
-public class BPELreceivePanel extends BPELadditionalPanel{
+public class BPELreceivePanel extends BPELadditionalPanel {
 
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
@@ -32,8 +31,8 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 	JComboBox variableComboBox = null;
 	JButton newVariableButton = null;
 
-
-	public BPELreceivePanel(TransitionPropertyEditor t_editor, TransitionModel transition){
+	public BPELreceivePanel(TransitionPropertyEditor t_editor,
+			TransitionModel transition) {
 
 		super(t_editor, transition);
 
@@ -98,8 +97,7 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		add(getNewVariableButton(), c);
 	}
 
-
-	private JComboBox getPartnerLinkComboBox(){
+	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
 			partnerLinkComboBox.setPreferredSize(dimension);
@@ -107,12 +105,12 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		return partnerLinkComboBox;
 	}
 
-	private JButton getNewPartnerLinkButton(){
+	private JButton getNewPartnerLinkButton() {
 		if (newPartnerLinkButton == null) {
 			newPartnerLinkButton = new JButton(NEW);
 
-			newPartnerLinkButton.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
+			newPartnerLinkButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					showNewPartnerLinkDialog();
 				}
 			});
@@ -120,7 +118,7 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		return newPartnerLinkButton;
 	}
 
-	private JComboBox getOperationComboBox(){
+	private JComboBox getOperationComboBox() {
 		if (operationComboBox == null) {
 			operationComboBox = new JComboBox();
 			operationComboBox.setPreferredSize(dimension);
@@ -128,7 +126,7 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		return operationComboBox;
 	}
 
-	private JComboBox getVariableComboBox(){
+	private JComboBox getVariableComboBox() {
 		if (variableComboBox == null) {
 			variableComboBox = new JComboBox();
 			variableComboBox.setPreferredSize(dimension);
@@ -136,12 +134,12 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		return variableComboBox;
 	}
 
-	private JButton getNewVariableButton(){
+	private JButton getNewVariableButton() {
 		if (newVariableButton == null) {
 			newVariableButton = new JButton(NEW);
 
-			newVariableButton.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
+			newVariableButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					showNewVariableDialog();
 				}
 			});
@@ -150,30 +148,27 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		return newVariableButton;
 	}
 
+	// ***************** content getter methods **************************
 
-
-	//	***************** content getter methods  **************************
-
-	public String getPartnerLink(){
+	public String getPartnerLink() {
 		if (partnerLinkComboBox.getSelectedItem() == null)
 			return "";
 		return partnerLinkComboBox.getSelectedItem().toString();
 	}
 
-	public String getOperation(){
+	public String getOperation() {
 		if (operationComboBox.getSelectedItem() == null)
 			return "";
 		return operationComboBox.getSelectedItem().toString();
 	}
 
-	public String getVariable(){
+	public String getVariable() {
 		if (variableComboBox.getSelectedItem() == null)
 			return "";
 		return variableComboBox.getSelectedItem().toString();
 	}
 
-
-	//	***************** content setter methods  **************************
+	// ***************** content setter methods **************************
 
 	public void setPartnerLink(String partnerLink) {
 		partnerLinkComboBox.addItem(partnerLink);
@@ -187,11 +182,17 @@ public class BPELreceivePanel extends BPELadditionalPanel{
 		variableComboBox.addItem(variable);
 	}
 
-
 	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
-		
+		this.repaint();
+	}
+
+	@Override
+	public void saveInfomation() {
+		this.transition.setBaseActivity(new Receive(this.transition
+				.getNameValue(), this.getPartnerLink(), this.getOperation(),
+				this.getVariable()));
 	}
 
 }

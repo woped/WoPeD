@@ -218,10 +218,9 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 			return "";
 		return operationComboBox.getSelectedItem().toString();
 	}
-	
-	public String getPortType()
-	{
-		//TODO
+
+	public String getPortType() {
+		// TODO
 		return "";
 	}
 
@@ -246,10 +245,9 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	public void setOperation(String operation) {
 		operationComboBox.addItem(operation);
 	}
-	
-	public void setPortType(String porttype)
-	{
-		//TODO
+
+	public void setPortType(String porttype) {
+		// TODO
 	}
 
 	public void setInVariable(String inVariable) {
@@ -263,6 +261,15 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
-		
+		this.repaint();
+	}
+
+	@Override
+	public void saveInfomation() {
+		this.transition
+				.setBaseActivity(new Invoke(this.transition.getNameValue(),
+						this.getPartnerLink(), this.getOperation(), this
+								.getPortType(), this.getInVariable(), this
+								.getOutVariable()));
 	}
 }

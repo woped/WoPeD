@@ -62,12 +62,13 @@ public class Receive extends BaseActivity<TReceive> {
 	/**
 	 * @param bip
 	 */
-	public void saveInformation(BPELadditionalPanel bip) {
+	public BaseActivity<?> saveInformation(BPELadditionalPanel bip) {
 		if (!BPELreceivePanel.class.isInstance(bip))
-			return;
+			return this;;
 		BPELreceivePanel panel = (BPELreceivePanel) bip;
 		this.fillReceive(panel.getPartnerLink(), panel.getOperation(), panel
 				.getVariable());
+		return this;
 	}
 
 	/**
