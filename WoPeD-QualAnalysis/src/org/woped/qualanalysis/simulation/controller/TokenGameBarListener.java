@@ -159,7 +159,8 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 RemoteControl.cleanupTransition();
 			 playbackActions();
 			 break;
-		 case 8:
+		 case CLICK_PAUSE:
+			 RemoteControl.setEndOfAutoPlay(true);
 			 break;
 		 case CLICK_FORWARD:
 			 if (RemoteControl.tokengameRunning())
@@ -192,9 +193,12 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 				RemoteControl.getTokenGameController().setStepIntoSubProcess(true);
 				RemoteControl.occurTransition(false);
 			 }
-			  
 			 break;
-		 case 13:
+		 case CHOOSE_AUTO_CHOICE:
+			 if (RemoteControl.tokengameRunning())
+			 {
+				RemoteControl.proceedTransitionChoiceAuto();
+			 }
 			 break;
 		 case CHOOSE_JUMP_HERE:
 			 break;
@@ -272,19 +276,9 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	
 	private void showPlaybackManager()
 	{
-		//Calling the Dialog-Box of the HistoryManager
-		//Gets Reference out of Help-Class: ReferenceProvider
-		if(PlaybackDialog == null)
-		{	
-		    MainWindowReference = new ReferenceProvider();
-		    PlaybackDialog= new TokenGamePlaybackManagerVC(MainWindowReference.getUIReference(), RemoteControl);
-		    PlaybackDialog.setVisible(true);
-		    
-		}
-		else
-		{
-			PlaybackDialog.setVisible(true);
-		}
+		 MainWindowReference = new ReferenceProvider();
+		 PlaybackDialog= new TokenGamePlaybackManagerVC(MainWindowReference.getUIReference(), RemoteControl);
+		 PlaybackDialog.setVisible(true);
 	}
 	
 	private void showHistoryManager()
@@ -348,7 +342,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 
 	private void stopAction()
 	{
-		RemoteControl.setEndOfNet(true);
+		RemoteControl.setEndOfAutoPlay(true);
 		while(RemoteControl.getTokenGameController().getThisEditor().isSubprocessEditor())
 		{
 			RemoteControl.changeTokenGameReference(null, true);
