@@ -998,6 +998,12 @@ public class TokenGameBarController implements Runnable {
 		ExpertView.disableBackWardButtons();
 	}
 
+	/**
+	 * Enable the Forward Buttons if disabled because of more then one activated
+	 * Transition.
+	 * Disable Button if AutoChoice is switched off and their are more then
+	 * one activated Transition
+	 */
 	public void switchAutoChoice()
 	{
 		if(ExpertView.isAutoChoiceSelected())
