@@ -55,7 +55,7 @@ public class TokenGameBarController implements Runnable {
 	private boolean                  autoPlayBack                  = false;
 	private boolean                  backward                      = false;
 	private boolean                  newHistory                    = false;
-	private boolean                  endofnet                      = false;
+	private boolean                  endofautoplay                 = false;
 	
 	//Integers
 	private int                      HistoryIndex                  = 0; 
@@ -236,13 +236,21 @@ public class TokenGameBarController implements Runnable {
 			  }
 		  }
 		  //If end of net is not reached yet or there is still something to occur
+		  //If AutoChoice is Selected, occur without choice
 		  if(TransitionToOccur == null)
 		  {
 			  return;
 		  }
 		  if(followingActivatedTransitions.size() > 0)
 		  {
-		    tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
+			 if(ExpertView.isAutoChoiceSelected())
+			 {
+				 proceedTransitionChoiceAuto();
+			 }
+			 else
+			 {
+				 tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard); 
+			 }
 		  }
 	  } 
 	}
@@ -356,6 +364,17 @@ public class TokenGameBarController implements Runnable {
 		}	
 	}
 	
+	/**
+	 * This method generates a random index and choose one transition if their are 
+	 * more then one
+	 */
+	public synchronized void proceedTransitionChoiceAuto()
+	{
+		int index = (int) Math.round(Math.random() * (followingActivatedTransitions.size()-1));
+		TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
+		tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, false);
+		//occurTransition(false);
+	}
 	
 	
 	/*
@@ -398,7 +417,7 @@ public class TokenGameBarController implements Runnable {
 				helpTransition = (TransitionModel)followingActivatedTransitions.get(i);
      			acoChoiceItems.addElement(helpTransition.getNameValue());
 			}
-			if(!autoPlayBack)
+			if(!autoPlayBack & !ExpertView.isAutoChoiceSelected())
 			{
 				ExpertView.disableForwardButtons();
 			}
@@ -549,7 +568,7 @@ public class TokenGameBarController implements Runnable {
 	public void auto()
 	{
 		disableButtonforAutoPlayback();
-		while(!isEndOfNet())
+		while(!isEndOfAutoPlay())
 		{
 			try {
 		    	javax.swing.SwingUtilities.invokeLater(new TokenGameRunnableObject(this));
@@ -560,7 +579,7 @@ public class TokenGameBarController implements Runnable {
 			}
 			clearChoiceBox();
 		}
-		setEndOfNet(false);
+		setEndOfAutoPlay(false);
 		enableButtonforAutoPlayback();
 	}
 	
@@ -568,15 +587,13 @@ public class TokenGameBarController implements Runnable {
 	{
 		if(followingActivatedTransitions.size() == 0)
 		{
-			setEndOfNet(true);
+			setEndOfAutoPlay(true);
 		}
 		else
 		{
 			if(followingActivatedTransitions.size() >= 2)
 			{
-				int index = (int) Math.round(Math.random() * (followingActivatedTransitions.size()-1));
-				TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
-				occurTransition(false);
+				proceedTransitionChoiceAuto();
 			}
 			else
 			{
@@ -590,7 +607,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		if(BackwardTransitionToOccur == null)
 		{
-			setEndOfNet(true);
+			setEndOfAutoPlay(true);
 		}
 		else
 		{
@@ -652,12 +669,12 @@ public class TokenGameBarController implements Runnable {
 	}
 	
 	/**
-	 * sets the EndOfNet flag
+	 * sets the EndOfAutoPlay flag
 	 * @param end
 	 */
-	public void setEndOfNet(boolean end)
+	public void setEndOfAutoPlay(boolean end)
 	{
-		endofnet = end;
+		endofautoplay = end;
 	}
 	
 	/**
@@ -675,19 +692,22 @@ public class TokenGameBarController implements Runnable {
 	public void setViewMode(int view)
 	{
 		viewmode = view;
-		if(viewmode == 0)
+		switch(viewmode)
 		{
-			ExpertView.setVisible(true);
-			SlimView.setVisible(false);
-		}
-		if(viewmode == 1)
-		{
-			ExpertView.enableRecordButton();
-			ExpertView.setPlayIcon(false);
-			ExpertView.setRecordSelected(false);
-			ahxHistoryContent.clear();
-			ExpertView.setVisible(false);
-			SlimView.setVisible(true);
+			case 0:
+				ExpertView.setVisible(true);
+				SlimView.setVisible(false);
+				break;
+			case 1:
+				ExpertView.enableRecordButton();
+				ExpertView.setPlayIcon(false);
+				ExpertView.setRecordSelected(false);
+				ahxHistoryContent.clear();
+				ExpertView.setVisible(false);
+				SlimView.setVisible(true);
+				break;
+			default:
+				break;
 		}
 	}
 	
@@ -789,12 +809,12 @@ public class TokenGameBarController implements Runnable {
      */
     
 	/**
-	 * Returns the value for the endofnet variable
+	 * Returns the value for the endofautoplay variable
 	 * 
 	 */
-	public boolean isEndOfNet()
+	public boolean isEndOfAutoPlay()
 	{
-		return endofnet;
+		return endofautoplay;
 	}
 	
 	/**
