@@ -471,20 +471,33 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 // TODO Fehler ausgeben
                                         }
                                         else {
-                                                // TODO 2x namespace
-                                        		// no partner role entered
-                                                if(partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))){
-                                               	     modelElementContainer.addPartnerLinkWithoutPartnerRole(
+                                                // TODO 3x namespace
+                                        		// partner role NOT entered / my role ENTERED
+                                                if(partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole")) &&
+                                                   !myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
+                                                ){
+                                                	System.out.println("1");
+                                                	// TODO ?: Gibt es hier auch Operations und Types?
+                                               	    modelElementContainer.addPartnerLinkWithoutPartnerRole(
                                                                         name, "dummyNamespace:" /*namespace*/, partnerLinkType, myRole, wsdlUrl);
                                                 }
-                                        		// partner role is entered
-                                                else{
+
+                                                // partner role ENTERED / my role NOT entered
+                                                else if(!partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole")) &&
+                                                   myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
+                                                ){
                                                 	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
                                                 	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
-												// TODO nachfolgendes wieder entkommentieren
-												//	modelElementContainer.addPartnerLink(
-												//			name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
+                                                	modelElementContainer.addPartnerLinkWithoutMyRole(
+                                                		name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, wsdlUrl);
+                                                }
 
+                                                // partner role ENTERED / my role ENTERED
+                                                else{
+                                                	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
+                                                	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);												// TODO nachfolgendes wieder entkommentieren
+    												modelElementContainer.addPartnerLink(
+    													name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
                                                 }
                                         }
                                 }
