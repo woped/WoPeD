@@ -60,6 +60,20 @@ public class WsdlFileRepresentation {
 		return portType;
 	}
 
+
+	public String getPortTypeNameByRoleName(String roleName) {
+		String portTypeName = "";
+		for(PartnerLinkType partnerLinkType : partnerLinkTypes){
+			ArrayList<Role> roles = partnerLinkType.getRoles();
+			for(Role role : roles){
+				if (role.getRoleName().equals(roleName)){
+					portTypeName = role.getPortTypeName();
+				}
+			}
+		}
+		return portTypeName;
+	}
+
 /**
  * Returns an ArrayList with all "Messages".
  *
