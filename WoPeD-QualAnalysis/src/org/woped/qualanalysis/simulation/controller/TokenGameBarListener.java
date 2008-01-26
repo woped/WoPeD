@@ -197,7 +197,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		 case CHOOSE_AUTO_CHOICE:
 			 if (RemoteControl.tokengameRunning())
 			 {
-				RemoteControl.proceedTransitionChoiceAuto();
+				RemoteControl.switchAutoChoice();
 			 }
 			 break;
 		 case CHOOSE_JUMP_HERE:

@@ -248,7 +248,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		acoAuto.setPreferredSize(new Dimension(stXsize, stYsize));
 		
 		//add Listener
-		//acoAuto.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_AUTO_CHOICE, tgbController));
+		acoAuto.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_AUTO_CHOICE, tgbController));
 				
 		//... the easychoice List
 		acoChoice = new JList(acoChoiceItems);

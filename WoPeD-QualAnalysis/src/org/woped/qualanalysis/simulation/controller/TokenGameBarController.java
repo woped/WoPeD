@@ -998,7 +998,20 @@ public class TokenGameBarController implements Runnable {
 		ExpertView.disableBackWardButtons();
 	}
 
-	
+	public void switchAutoChoice()
+	{
+		if(ExpertView.isAutoChoiceSelected())
+		{
+			ExpertView.enableForwardButtons();
+		}
+		else
+		{
+			if(followingActivatedTransitions.size() > 1)
+			{
+				ExpertView.disableForwardButtons();
+			}
+		}
+	}
 	
 	
 	/*
