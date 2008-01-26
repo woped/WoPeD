@@ -567,20 +567,22 @@ public class TokenGameBarController implements Runnable {
 	 */
 	public void auto()
 	{
-		disableButtonforAutoPlayback();
-		while(!isEndOfAutoPlay())
+		if(followingActivatedTransitions != null)
 		{
-			try {
-		    	javax.swing.SwingUtilities.invokeLater(new TokenGameRunnableObject(this));
-		    	Thread.sleep(getDelaytime()*1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			disableButtonforAutoPlayback();
+			while(!isEndOfAutoPlay())
+			{
+				try {
+					javax.swing.SwingUtilities.invokeLater(new TokenGameRunnableObject(this));
+					Thread.sleep(getDelaytime()*1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			clearChoiceBox();
+			}
+			setEndOfAutoPlay(false);
+			enableButtonforAutoPlayback();
 		}
-		setEndOfAutoPlay(false);
-		enableButtonforAutoPlayback();
 	}
 	
 	public void moveForward()
