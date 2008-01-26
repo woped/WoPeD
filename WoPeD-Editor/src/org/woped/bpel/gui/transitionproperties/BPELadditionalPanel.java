@@ -52,8 +52,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 
 	TransitionPropertyEditor t_editor;
 	ModelElementContainer modelElementContainer = null;
-	// JDialog dialogVariable = null;
-	// JDialog dialogPartner = null;
+
 	JDialog dialog = null;
 	JPanel dialogButtons = null;
 
@@ -73,6 +72,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 	JButton okVariableButton = null;
 	JButton cancelVariableButton = null;
 
+	BPELinvokePanel bpelInvokePanel = null;
+
 	Dimension dimension = new Dimension(50, 22);
 
 	static final String NEW = Messages
@@ -91,6 +92,11 @@ public abstract class BPELadditionalPanel extends JPanel {
 		this.t_editor = t_editor;
 		this.transition = transition;
 		this.modelElementContainer = t_editor.getEditor().getModelProcessor().getElementContainer();
+		wsdl = new Wsdl();
+	}
+
+	public void setLinkToBPELinvokePanel(BPELinvokePanel bpelInvokePanel){
+		this.bpelInvokePanel = bpelInvokePanel;
 	}
 
 	// ************** display dialog box "New Partner Link" *****************
@@ -99,7 +105,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 
         // clear all input fields and combo boxes before we start (because of old data)
         try {
-                partnerLinkNameTextField.setText("");
+        		partnerLinkNameTextField.setText("");
                 wsdlFileTextField.setText("");
                 partnerLinkTypeComboBox.removeAllItems();
                 partnerRoleComboBox.removeAllItems();
@@ -110,8 +116,6 @@ public abstract class BPELadditionalPanel extends JPanel {
         }
 
 		// here we go ...
-		wsdl = new Wsdl();
-
 		dialog = new JDialog(t_editor, true);
 		dialog.setVisible(false);
 		dialog.setTitle(Messages
@@ -468,13 +472,19 @@ public abstract class BPELadditionalPanel extends JPanel {
                                         }
                                         else {
                                                 // TODO 2x namespace
+                                        		// no partner role entered
                                                 if(partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))){
                                                	     modelElementContainer.addPartnerLinkWithoutPartnerRole(
-                                                                        name, "namespace:" /*namespace*/, partnerLinkType, myRole, wsdlUrl);
+                                                                        name, "dummyNamespace:" /*namespace*/, partnerLinkType, myRole, wsdlUrl);
                                                 }
+                                        		// partner role is entered
                                                 else{
-                                                        modelElementContainer.addPartnerLink(
-                                                                        name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
+                                                	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
+                                                	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
+												// TODO nachfolgendes wieder entkommentieren
+												//	modelElementContainer.addPartnerLink(
+												//			name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
+
                                                 }
                                         }
                                 }
@@ -633,8 +643,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 			partnerRoleComboBox.removeAllItems();
 			myRoleComboBox.removeAllItems();
 
-			showErrorPopup(Messages
-					.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+			showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePath"),
+						   Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
 			wsdlFileTextField.setText("");
 		} else {
 			try {
@@ -642,8 +652,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 						.readDataFromWSDL(wsdlFileTextField.getText());
 				fillAllComboBoxesWithData();
 			} catch (MalformedURLException e) {
-				showErrorPopup(Messages
-						.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePath"),
+						   	   Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
 
 				partnerLinkTypeComboBox.removeAllItems();
 				partnerRoleComboBox.removeAllItems();
@@ -652,8 +662,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 				wsdlFileTextField.setText("");
 
 			} catch (FileNotFoundException e) {
-				showErrorPopup(Messages
-						.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePath"),
+						       Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
 
 				partnerLinkTypeComboBox.removeAllItems();
 				partnerRoleComboBox.removeAllItems();
@@ -662,8 +672,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 				wsdlFileTextField.setText("");
 
 			} catch (IOException e) {
-				showErrorPopup(Messages
-						.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
+				showErrorPopup(Messages.getString("Transition.Properties.BPEL.InvalidFilePath"),
+							   Messages.getString("Transition.Properties.BPEL.InvalidFilePathEntered"));
 
 				partnerLinkTypeComboBox.removeAllItems();
 				partnerRoleComboBox.removeAllItems();
@@ -672,8 +682,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 				wsdlFileTextField.setText("");
 
 			} catch (XMLStreamException e) {
-				showErrorPopup(Messages
-						.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFile"));
+				showErrorPopup(Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFile"),
+							   Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"));
 
 				partnerLinkTypeComboBox.removeAllItems();
 				partnerRoleComboBox.removeAllItems();
@@ -685,11 +695,10 @@ public abstract class BPELadditionalPanel extends JPanel {
 
 	}
 
-	private void showErrorPopup(String message) {
+	protected void showErrorPopup(String title, String message) {
 		errorPopup = new JDialog(dialog, true);
 		errorPopup.setVisible(false);
-		errorPopup.setTitle(Messages
-				.getString("Transition.Properties.BPEL.InvalidFilePath"));
+		errorPopup.setTitle(title);
 		errorPopup.setSize(300, 140);
 		errorPopup.setLocation(dialog.getLocation().x + 90, dialog
 				.getLocation().y + 50);
@@ -744,6 +753,6 @@ public abstract class BPELadditionalPanel extends JPanel {
 	}
 
 	public abstract void refresh();
-	
+
 	public abstract void saveInfomation();
 }
