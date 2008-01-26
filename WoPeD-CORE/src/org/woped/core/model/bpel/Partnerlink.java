@@ -74,6 +74,24 @@ public class Partnerlink {
 				partnerLinkType));
 		this.partnerLink.setMyRole(myRole);
 	}
+	
+	
+	/**
+	 * Insert a partnerlink to a consisting list of partnerlinks Attention:
+	 * Parameters: name, namespace, partnerLinkType, partnerRole
+	 * 
+	 * @param name
+	 * @param namespace
+	 * @param partnerLinkType
+	 * @param partnerRole
+	 */
+	public void addPartnerLinkWithoutMyRole(String name, String namespace,
+			String partnerLinkType, String partnerRole)
+	{
+		this.partnerLink.setName(name);
+		this.partnerLink.setPartnerLinkType(new QName(namespace, partnerLinkType));
+		this.partnerLink.setPartnerRole(partnerRole);
+	}
 
 	/**
 	 * 

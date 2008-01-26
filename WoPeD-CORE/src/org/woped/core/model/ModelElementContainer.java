@@ -600,13 +600,31 @@ public class ModelElementContainer implements Serializable {
 		this.partnerLinkList.addPartnerLinkWithoutPartnerRole(name, namespace,
 				partnerLinkType, myRole, WsdlUrl);
 	}
+	
+	/**
+	 * @edit by Alexander Roﬂwog
+	 * 
+	 * Insert a partnerlink to a consisting list of partnerlinks
+	 * Attention: Parameters: name, namespace, partnerLinkType, partnerRole
+	 * 
+	 * @param name
+	 * @param namespace
+	 * @param partnerLinkType
+	 * @param partnerRole
+	 * @param WsdlUrl
+	 */
+	public void addPartnerLinkWithoutMyRole(String name, String namespace,
+			String partnerLinktType, String partnerRole, String WsdlUrl) {
+		this.partnerLinkList.addPartnerLinkWithoutMyRole(name, namespace,
+				partnerLinktType, partnerRole, WsdlUrl);
+	}
 
 	/**
 	 * 
 	 * @param arg
 	 */
 	public void addVariable(TVariable arg) {
-		this.variablesList.addVariable(arg);
+	    this.variablesList.addVariable(arg);
 	}
 
 	/**

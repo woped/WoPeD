@@ -71,6 +71,13 @@ public class PartnerlinkList {
 		this._list.add(p);
 	}
 	
+	public void addPartnerLinkWithoutMyRole(String name, String namespace,
+			String partnerLinktType, String partnerRole, String WsdlUrl) {
+		Partnerlink p = new Partnerlink(WsdlUrl);
+		p.addPartnerLinkWithoutMyRole(name, namespace, partnerLinktType, partnerRole);
+		this._list.add(p);
+	}
+	
 	/**
 	 * 
 	 * @return
