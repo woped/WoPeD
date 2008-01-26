@@ -70,9 +70,7 @@ public class OpenWebEditorUI extends JDialog {
 		setResizable(false);
 		getContentPane().add(getButtonBar(),BorderLayout.SOUTH);
 		getContentPane().add(getListBar(),BorderLayout.NORTH);
-		
 		setTitle(Messages.getTitle("OpenWebServiceEditor"));
-		setIconImage(Messages.getImageIcon("OpenWebServiceEditor").getImage());
 		pack();
 		
 		if (getOwner() != null)
