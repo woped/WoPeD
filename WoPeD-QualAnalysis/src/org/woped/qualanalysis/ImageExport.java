@@ -62,38 +62,55 @@ public class ImageExport {
     }
     
     public static boolean saveJPG(RenderedImage image, File file) {
-	try {
-	    ImageIO.write((RenderedImage) image, "jpg", file);
-	    LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
-	    return true;
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    LoggerManager.error(Constants.QUALANALYSIS_LOGGER, "Could not export as JPG");
-	    return false;
-	}
+    	if(image != null)
+    	{
+    		try {
+    			ImageIO.write((RenderedImage) image, "jpg", file);
+    			LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
+    			return true;
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    			LoggerManager.error(Constants.QUALANALYSIS_LOGGER, "Could not export as JPG");
+    			return false;
+    		}
+    	}
+    	else
+    	{
+    		return false;
+    	}
     }
     
     public static boolean savePNG(RenderedImage image, File file) {
-	try {
-	    ImageIO.write((RenderedImage) image, "png", file);
-	    LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
-	    return true;
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    LoggerManager.error(Constants.QUALANALYSIS_LOGGER, "Could not export as PNG");
-	    return false;
+	if(image != null){
+		try {
+		    ImageIO.write((RenderedImage) image, "png", file);
+		    LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
+		    return true;
+		} catch (IOException e) {
+		    e.printStackTrace();
+		    LoggerManager.error(Constants.QUALANALYSIS_LOGGER, "Could not export as PNG");
+		    return false;
+		}
+	}
+	else{
+		return false;
 	}
     }
     
     public static boolean saveBMP(RenderedImage image, File file) {
-	try {
-	    ImageIO.write((RenderedImage) image, "bmp", file);
-	    LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
-	    return true;
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    LoggerManager.error(Constants.QUALANALYSIS_LOGGER, "Could not export as BMP");
-	    return false;
+	if(image != null){
+		try {
+		    ImageIO.write((RenderedImage) image, "bmp", file);
+		    LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
+		    return true;
+		} catch (IOException e) {
+		    e.printStackTrace();
+		    LoggerManager.error(Constants.QUALANALYSIS_LOGGER, "Could not export as BMP");
+		    return false;
+		}
+	}
+	else{
+		return false;
 	}
     }
 }
