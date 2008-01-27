@@ -1,0 +1,102 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Soundness</title>
+<link rel="stylesheet" type="text/css" href="../woped.css">
+</head>
+
+<h2><span lang=EN-US>Simulation</span></h2><p>
+
+<p><span lang=EN-US>Bei der Simulation handelt es sich um eine
+Methode der quantitativen Analyse, bei der das Geschäftsprozessmodel gewissermaßen
+ausgeführt wird, wobei begleitend Daten gesammelt werden.
+</span></p><p>
+
+<p><span lang=EN-US>Das Prozessmodell muss dafür die mittleren Bedienzeiten der Transitionen, die 
+Verzweigungswahrscheinlichkeiten bei XOR-Splits und eine Gruppen-Rollen-Zuordnung zu
+den Transitionen angeben.
+</span></p><p>
+
+<p><span lang=EN-US>Nach dem Öffnen des Simulationsdialogs erscheinen eine Menge von Informationen. Sie 
+werden in Folgenden in der Leserichtung von links nach rechts und von oben nach unten
+vorgestellt.
+</span></p><p>
+
+<p><span lang=EN-US>Als erstes muss die mittlere Ankunftsrate von neuen Fällen pro Periode &#955; und dann 
+die Periode &#960; selbst eingegeben werden. Im Kombinationslistenfeld sollte die
+richtige Zeiteinheit für die Periode ausgewählt werden. Anschließend wird die 
+Warteschlangendisziplin ausgewählt und dann die Anzahl der Simulationsläufe eingetragen. 
+Als nächstens wird die Abbruchbedingung spezifiziert. Es besteht die Auswahl zwischen Abbruch, 
+wenn mindestens &#955; Fälle fertiggestellt wurden; Abbruch, wenn die Zeit für die
+Periode abgelaufen ist oder Abbruch, sobald die erste der beiden Regeln zutrifft. Das 
+geschieht durch Auswahl beider Kontrollkästchen.
+</span></p><p>
+
+<p><span lang=EN-US>Die beiden letzten Einstellungen betreffen die Wahrscheinlichkeitsverteilungen des 
+Ankunftsprozesses und der Bedienzeiten der Server. Zur Auswahl steht eine konstante 
+Verteilung mit Parameter &#962; über dem Intervall [(1-&#962;) &#955;, (1+&#962;) &#955;] 
+um den Mittelwert &#955; bzw. der Bedienzeit &#956;, in welchem jeder Wert 
+gleich wahrscheinlich ist. &#962; muss eine Ganzzahl zwischen 0 und 100 sein. Es kann auch eine 
+Poissonverteilung mit Parameter &#955;&#960; gewählt werden. 
+Die dritte Alternative ist eine Normalverteilung mit Mittelwert &#955; und Standardabweichung
+&#963;, welches als Parameter anzugeben ist.
+</span></p><p>
+
+<p><span lang=EN-US>Wenn eine andere Standardzeiteinheit als 1 Minute gewünscht wird, kann sie im 
+Zeitmodell-Dialog eingestellt werden. Der Dialog ist über die Schaltfläche 
+[Zeitmodell] erreichbar.
+</span></p><p>
+
+<p><span lang=EN-US>Nachdem alle notwendigen Daten eingegeben wurden, kann die Simulation mit Klick auf 
+[Starten] begonnen werden. Es erscheint ein Wartedialog, bis die Berechnugn abgeschlossen 
+wurde. Dann erscheinen die Ergebnisse in den beiden Tabellen. Außerdem sind jetzt drei 
+weitere Schaltflächen aktiviert. In den Tabellen sind sämtliche statistische Daten des 
+Prozesses und der einzelnen Transitionen / Server aufgeführt und die berechneten 
+Auslastungsgrade der Ressourcen.
+</span></p><p>
+
+<p><span lang=EN-US>Die Spaltenüberschriften der ersten Tabelle haben folgende Bedeutung:
+</span></p><p>
+
+<ul>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>L      die 
+mittlere Anzahl von Fällen im Prozess bzw. am Server</span></p></li>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>Lq</span><span
+lang=EN-US>     die durchschnittliche Anzahl 
+wartender Fälle</span></p></li>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>Ls     die durchschnittliche Anzahl 
+bedienter Fälle</span></p></li>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>W     die 
+mittlere Durchlaufzeit (Bedien- und Wartezeiten)</span></p></li>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>Wq</span><span
+lang=EN-US>    die mittlere Wartezeit</span></p></li>
+</ul>
+<p>
+
+<p><span lang=EN-US>Wird eine der Schaltflächen in der Details-Spalte betätigt, öffnet sich ein neues Fenster 
+mit zusätzlichen Informationen.
+</span></p><p>
+
+<p><span lang=EN-US>Nach Ablauf der Simulation kann das Protokoll eingesehen werden, indem die 
+Schaltfläche [Protokoll] geklickt wird. Die Ergebnisse können über [Exportieren] in 
+CSV-Dateien gespeichert werden. Außerdem kann mittels [Diagramm] eine graphische 
+Darstellung der Belegung der einzelnen Server mit Ressourcen über den Zeitablauf eingesehen 
+werden.
+</span></p><p>
+
+<p><span lang=EN-US>Mit [Schließen] wird der Simulationsdialog geschlossen.
+</span></p>
+
+</div>
+
+</body>
+
+</html>
