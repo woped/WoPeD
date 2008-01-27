@@ -17,18 +17,25 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 
-//! Specifies a particular marking of a reachability / coverability graph
-//! along with the corresponding model
+/**
+ * Specifies a particular marking of a reachability / coverability object
+ * each marking contains every place and its token state aswell as the transitions that can be activated from the state
+ *
+ */
 public class Marking {
 
-	// ! Construct a marking from the specified ModelElementContainer
-	// ! @param source specifies the element container that should serve
-	// ! as a source. The container will be kept as a reference
-	// ! for preserving the structure only. The initial marking
-	// ! will be copied and stored locally.
+	/**
+	 * Construct a marking from the specified ModelElementContainer
+	 * 
+	 * @param source
+	 *            specifies the element container that should serve as a source.
+	 *            The container will be kept as a reference for preserving the
+	 *            structure only. The initial marking will be copied and stored
+	 *            locally.
+	 */
 	public Marking(IEditor source) {
 		StructuralAnalysis sa = new StructuralAnalysis(source);
-		this.source=source;
+		this.source = source;
 		currentMarking = new TreeMap<String, Integer>();
 		// Store the marking of each place
 		Iterator places = sa.getPlacesIterator();
@@ -55,22 +62,17 @@ public class Marking {
 		netStructure = source.getModelProcessor().getElementContainer();
 	}
 
-	// ! Return the active transitions of this marking.
-	// ! An active transition can be used to
-	// ! create a follow-up marking
-	// ! @return Returns an iterator iterating through all active
-	// ! transitions under the current marking
-	public Iterator<ReachabilityArc> getActiveTransitions() {
-		return null;
-	}
-
-	// ! Compares the current marking to otherMarking.
-	// ! This method is required to build the coverability graph.
-	// ! @param otherMarking specifies the marking to which
-	// ! the current marking should be compared
-	// ! @return true if the current marking is bigger than otherMarking.
-	// ! Returns false if otherMarking is smaller or equal
-	// ! and if the two markings are not comparable
+	/**
+	 * Compares the current marking to otherMarking. This method is required to
+	 * build the coverability graph.
+	 * 
+	 * @param otherMarking
+	 *            specifies the marking to which the current marking should be
+	 *            compared
+	 * @return true if the current marking is bigger than otherMarking. Returns
+	 *         false if otherMarking is smaller or equal and if the two markings
+	 *         are not comparable
+	 */
 	boolean isGreaterThan(Marking otherMarking) {
 		// Both markings must have the same size for this method to return true
 		if(otherMarking.currentMarking.size() != currentMarking.size())
@@ -83,7 +85,7 @@ public class Marking {
 			int currint = (Integer) currentThisMarking.next();
 			int otherint = (Integer) currentOtherMarking.next();
 			if(otherint > 60000) {
-				otherint = 2;
+				otherint = otherint-63000;
 			}
 			if(currint >= otherint && otherint != 0) {
 				isGreater = true;
@@ -104,7 +106,12 @@ public class Marking {
 
 	}
 
-	// Method for setting the Coverability Object
+	/**
+	 * Sets the current marking to a coverability object of the other marking
+	 * 
+	 * @param marking
+	 *            object which the calling object is greather than
+	 */
 	public void setCoverability(Marking otherMarking) {
 		Iterator currentThisMarking = currentMarking.keySet().iterator();
 		Iterator currentOtherMarking = otherMarking.currentMarking.values().iterator();
@@ -113,16 +120,19 @@ public class Marking {
 			wert = (String) currentThisMarking.next();
 			int thismark = (Integer) currentMarking.get(wert);
 			int othermark = (Integer) currentOtherMarking.next();
-
 			if(thismark < othermark && thismark < 60000) {
-				currentMarking.put(wert, 63000);
+				currentMarking.put(wert, 63000+thismark);
 				BuildReachability.reachBuilt = true;
 				this.setreachabilitynotbuilt();
 			}
 		}
+		iscoverObject=true;
 	}
 
-	// Prints the Current Objects Tokenstatus (for Console)
+	/**
+	 * Prints the Current Objects Tokenstatus on the Console for checking the
+	 * current marking
+	 */
 	public String print() {
 		String value = "( ";
 		Iterator it = currentMarking.keySet().iterator();
@@ -134,7 +144,12 @@ public class Marking {
 		return value;
 	}
 
-	// Return a String of the Marking, for graphic
+	/**
+	 * Return a String of the calling marking which is used for the places in
+	 * the graphic representation
+	 * 
+	 * @return returns a string represantation of the calling marking object
+	 */
 	public String toString() {
 		String value = "( ";
 		Iterator it = currentMarking.keySet().iterator();
@@ -153,7 +168,9 @@ public class Marking {
 		return value;
 	}
 
-	// Prints the Placekeyset
+	/**
+	 * Prints the order of the places in a marking object on the console
+	 */
 	public void printseq() {
 		Iterator it = currentMarking.keySet().iterator();
 		while (it.hasNext()) {
@@ -162,43 +179,78 @@ public class Marking {
 		System.out.println("");
 	}
 
+	/**
+	 * returns the place order of a marking object which is used on the graphic
+	 * represantation for the legend
+	 * 
+	 * @return LinkedList containing the ordered PlaceObjects
+	 */
 	public LinkedList<PlaceModel> getKeySet() {
 		LinkedList<PlaceModel> erg = new LinkedList<PlaceModel>();
 		Iterator keyit = currentMarking.keySet().iterator();
 		while (keyit.hasNext()) {
 			String curr = keyit.next().toString();
 			if(!curr.contains("CENTER_PLACE_")) {
-				erg.add((PlaceModel)source.getModelProcessor().getElementContainer().getElementById(curr));
+				erg.add((PlaceModel) source.getModelProcessor().getElementContainer().getElementById(curr));
 			}
 		}
 		return erg;
 	}
 
+	/**
+	 * method for receiving all transitions that can be activated from the
+	 * current marking used to built the reachability from a marking
+	 * 
+	 * @return unordered hash set containing all active transitions
+	 */
 	public HashSet<String> getTransitions() {
 		return netTransitions;
 	}
 
-	public boolean equals(Object o) {
-		Marking compare = (Marking) o;
-		return this.currentMarking.equals(compare.currentMarking);
-	}
-
+	/**
+	 * method for getting the current marking token state
+	 * 
+	 * @return ordered TreeMap where the key is the placeid and the value is the token count on the place
+	 */
 	public TreeMap<String, Integer> getMarking() {
 		return currentMarking;
 	}
 
+	/**
+	 * method to check if all transitions from the current marking have been
+	 * activated gives information if the reachability starting from the current
+	 * marking has been built
+	 * 
+	 * @return true if reachability built, false if not
+	 */
 	public boolean reachabilitybuilt() {
 		return reachabilityBuilt;
 	}
 
+	/**
+	 * method to set the reachability built status to true
+	 */
 	public void setreachabilitybuilt() {
-		reachabilityBuilt = true;
+		//Always rebuild reachability if it is a coverability object
+		if(!iscoverObject){
+			reachabilityBuilt = true;
+		}
+		
 	}
 
+	/**
+	 * method to set the reachability built status to false
+	 */
 	public void setreachabilitynotbuilt() {
 		reachabilityBuilt = false;
 	}
 
+	/**
+	 * method to create a unique key for each marking, required for the marking
+	 * list to identify markings
+	 * 
+	 * @return a unique key for a marking, same markings also have the same key
+	 */
 	public String getKey() {
 		Iterator it = currentMarking.keySet().iterator();
 		String hash = "";
@@ -206,32 +258,70 @@ public class Marking {
 			String temp = (String) it.next();
 			hash = hash + temp + "_" + currentMarking.get(temp).intValue();
 		}
+
 		return (hash);
 	}
 
-	// Help value for Coverability
+	/**
+	 * sets a marking status to the first of its kind used for coverability
+	 * graph so it is able to maintain the first marking which can be covered if
+	 * this is set a marking can notbe covered by another one
+	 */
 	public void setfirst() {
 		first = true;
 	}
 
+	/**
+	 * sets a marking status not to the first of its kind used for coverability
+	 * graph so it is able to maintain the first marking which can be covered if
+	 * this is set a marking is free to be covered
+	 */
 	public void setnotfirst() {
 		first = false;
 	}
 
+	/**
+	 * gives information about if a marking is the first one and so it can't be
+	 * covered
+	 * 
+	 * @return true if it is the initial marking
+	 */
 	public boolean isfirst() {
 		return first;
 	}
 
+	/**
+	 * checks a marking if it contains centerPlaces which are used for
+	 * xor-join-splits
+	 * 
+	 * @return true if a marking contains a center place
+	 */
 	public boolean centerPlace() {
 		return centerPlace;
 	}
 
+	/**
+	 * sets a marking to the initial (start) marking
+	 */
 	public void setInitial() {
 		isInitial = true;
 	}
 
+	/**
+	 * check if a marking is the initial (start) marking from which the
+	 * reachability building is
+	 * 
+	 * @return true if a marking is the initial (start) setting of the built graph, false if it is a otherMarking
+	 */
 	public boolean isInitial() {
 		return isInitial;
+	}
+	/**
+	 * Method that that returns if a object is a coverability object
+	 * @return boolean representing the status
+	 */
+	public boolean iscoverObject(){
+		return iscoverObject;
 	}
 
 	// ! Stores a reference to the net structure which is useful
@@ -248,5 +338,6 @@ public class Marking {
 	private Map<String, AbstractElementModel> allTransitions = null;
 	private boolean reachabilityBuilt = false;
 	private boolean isInitial = false;
-	private IEditor source=null;
+	private boolean iscoverObject=false;
+	private IEditor source = null;
 }
