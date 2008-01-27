@@ -50,29 +50,31 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public abstract class BPELadditionalPanel extends JPanel {
 
-	TransitionPropertyEditor t_editor;
+	TransitionPropertyEditor t_editor 	= null;
 	ModelElementContainer modelElementContainer = null;
 
-	JDialog dialog = null;
-	JPanel dialogButtons = null;
+	JDialog dialog 						= null;
+	JPanel dialogButtons 				= null;
 
-	JDialog errorPopup = null;
+	JDialog errorPopup 					= null;
 
-	JComboBox variableTypesComboBox = null;
+	JComboBox variableTypesComboBox 	= null;
 
 	JTextField partnerLinkNameTextField = null;
-	JTextField wsdlFileTextField = null;
-	JTextField VariableName = null;
-	JButton searchLocalWSDLButton = null;
-	JComboBox partnerLinkTypeComboBox = null;
-	JComboBox partnerRoleComboBox = null;
-	JComboBox myRoleComboBox = null;
-	JButton okPartnerButton = null;
-	JButton cancelPartnerButton = null;
-	JButton okVariableButton = null;
-	JButton cancelVariableButton = null;
+	JTextField wsdlFileTextField 		= null;
+	JTextField VariableName				= null;
+	JButton searchLocalWSDLButton 		= null;
+	JComboBox partnerLinkTypeComboBox 	= null;
+	JComboBox partnerRoleComboBox 		= null;
+	JComboBox myRoleComboBox 			= null;
+	JButton okPartnerButton 			= null;
+	JButton cancelPartnerButton 		= null;
+	JButton okVariableButton 			= null;
+	JButton cancelVariableButton 		= null;
 
-	BPELinvokePanel bpelInvokePanel = null;
+	BPELinvokePanel bpelInvokePanel   	= null;
+	BPELreceivePanel bpelReceivePanel 	= null;
+	BPELreplyPanel bpelReplyPanel     	= null;
 
 	Dimension dimension = new Dimension(50, 22);
 
@@ -97,6 +99,14 @@ public abstract class BPELadditionalPanel extends JPanel {
 
 	public void setLinkToBPELinvokePanel(BPELinvokePanel bpelInvokePanel){
 		this.bpelInvokePanel = bpelInvokePanel;
+	}
+
+	public void setLinkToBPELreceivePanel(BPELreceivePanel bpelReceivePanel){
+		this.bpelReceivePanel = bpelReceivePanel;
+	}
+
+	public void setLinkToBPELreplyPanel(BPELreplyPanel bpelReplyPanel){
+		this.bpelReplyPanel = bpelReplyPanel;
 	}
 
 	// ************** display dialog box "New Partner Link" *****************
@@ -480,6 +490,7 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 	// TODO ?: Gibt es hier auch Operations und Types?
                                                	    modelElementContainer.addPartnerLinkWithoutPartnerRole(
                                                                         name, "dummyNamespace:" /*namespace*/, partnerLinkType, myRole, wsdlUrl);
+                                               	    updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
 
                                                 // partner role ENTERED / my role NOT entered
@@ -490,14 +501,16 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
                                                 	modelElementContainer.addPartnerLinkWithoutMyRole(
                                                 		name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, wsdlUrl);
+                                                	updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
 
                                                 // partner role ENTERED / my role ENTERED
                                                 else{
                                                 	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
-                                                	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);												// TODO nachfolgendes wieder entkommentieren
-    												modelElementContainer.addPartnerLink(
-    													name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
+                                                	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
+    											//	modelElementContainer.addPartnerLink(
+    											//		name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
+    												updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
                                         }
                                 }
@@ -739,8 +752,6 @@ public abstract class BPELadditionalPanel extends JPanel {
 		okButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO speichern mithilfe von Alex' Klassen, die auf content
-				// getter methoden zugreifen
 				errorPopup.dispose();
 			}
 
@@ -763,6 +774,24 @@ public abstract class BPELadditionalPanel extends JPanel {
 		Iterator<BpelVariable> iter = list.iterator();
 		while (iter.hasNext())
 			box.addItem(iter.next());
+	}
+
+
+	/**
+	 *
+	 * @param partnerLinkType  	Name of partner link which is added to the partner link
+	 * 							combo boxes on invokePanel, receivePanel, replyPanel
+	 */
+	public void updatePartnerLinkComboBoxesOnDifferentScreens(){
+		if (bpelInvokePanel != null){
+			bpelInvokePanel.defineContentOfPartnerLinkComboBox();
+		}
+		if (bpelReceivePanel != null){
+			bpelReceivePanel.defineContentOfPartnerLinkComboBox();
+		}
+		if (bpelReplyPanel != null){
+			bpelReplyPanel.defineContentOfPartnerLinkComboBox();
+		}
 	}
 
 	public abstract void refresh();

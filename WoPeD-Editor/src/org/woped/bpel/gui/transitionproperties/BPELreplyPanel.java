@@ -15,17 +15,17 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
  * @author Esther Landes
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "reply" BPEL activity.
- * 
+ *
  * Created on 14.01.2008
  */
 
 public class BPELreplyPanel extends BPELadditionalPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	JComboBox partnerLinkComboBox = null;
@@ -103,14 +103,20 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
+
+			// fill partnerLinkComboBox with partner links
+			String[] partnerLinks = modelElementContainer.getPartnerLinkList();
+			for(String partnerLink : partnerLinks){
+				partnerLinkComboBox.addItem(partnerLink);
+			}
 		}
 		return partnerLinkComboBox;
 	}
 
 	private JButton getNewPartnerLinkButton() {
 		if (newPartnerLinkButton == null) {
+			setLinkToBPELreplyPanel(this);
 			newPartnerLinkButton = new JButton(NEW);
-
 			newPartnerLinkButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					showNewPartnerLinkDialog();
@@ -148,6 +154,16 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 		}
 		return newVariableButton;
+	}
+
+
+//	fill partnerLinkComboBox with partner links
+	public void defineContentOfPartnerLinkComboBox(){
+		partnerLinkComboBox.removeAllItems();
+		String[] partnerLinks = modelElementContainer.getPartnerLinkList();
+		for(String partnerLink : partnerLinks){
+			partnerLinkComboBox.addItem(partnerLink);
+		}
 	}
 
 	// ***************** content getter methods **************************

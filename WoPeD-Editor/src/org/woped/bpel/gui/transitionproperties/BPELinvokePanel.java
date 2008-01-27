@@ -129,6 +129,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
 			partnerLinkComboBox.setPreferredSize(dimension);
+			defineContentOfPartnerLinkComboBox();
 		}
 		return partnerLinkComboBox;
 	}
@@ -209,6 +210,16 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 			});
 		}
 		return newOutVariableButton;
+	}
+
+
+//	fill partnerLinkComboBox with partner links
+	public void defineContentOfPartnerLinkComboBox(){
+		partnerLinkComboBox.removeAllItems();
+		String[] partnerLinks = modelElementContainer.getPartnerLinkList();
+		for(String partnerLink : partnerLinks){
+			partnerLinkComboBox.addItem(partnerLink);
+		}
 	}
 
 

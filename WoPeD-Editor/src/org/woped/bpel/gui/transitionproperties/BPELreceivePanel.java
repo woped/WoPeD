@@ -15,10 +15,10 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
  * @author Esther Landes
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "receive" BPEL activity.
- * 
+ *
  * Created on 14.01.2008
  */
 
@@ -101,14 +101,20 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
 			partnerLinkComboBox.setPreferredSize(dimension);
+
+			// fill partnerLinkComboBox with partner links
+			String[] partnerLinks = modelElementContainer.getPartnerLinkList();
+			for(String partnerLink : partnerLinks){
+				partnerLinkComboBox.addItem(partnerLink);
+			}
 		}
 		return partnerLinkComboBox;
 	}
 
 	private JButton getNewPartnerLinkButton() {
 		if (newPartnerLinkButton == null) {
+			setLinkToBPELreceivePanel(this);
 			newPartnerLinkButton = new JButton(NEW);
-
 			newPartnerLinkButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					showNewPartnerLinkDialog();
@@ -147,6 +153,17 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		}
 		return newVariableButton;
 	}
+
+
+//	fill partnerLinkComboBox with partner links
+	public void defineContentOfPartnerLinkComboBox(){
+		partnerLinkComboBox.removeAllItems();
+		String[] partnerLinks = modelElementContainer.getPartnerLinkList();
+		for(String partnerLink : partnerLinks){
+			partnerLinkComboBox.addItem(partnerLink);
+		}
+	}
+
 
 	// ***************** content getter methods **************************
 
