@@ -460,17 +460,17 @@ public abstract class BPELadditionalPanel extends JPanel {
                 okPartnerButton = new JButton(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
                 okPartnerButton.addActionListener(new ActionListener(){
                         public void actionPerformed(ActionEvent e){
-                                // TODO speichern mithilfe von Alex' Klassen, die auf content getter methoden zugreifen
 
-                                String name    = partnerLinkNameTextField.getText();
+                        		// Important: Delete whitespaces at the beginning and at the end of strings.
+                        		String name    = partnerLinkNameTextField.getText().trim();
                                 String wsdlUrl = wsdlFileTextField.getText();
-                                                                // Check if combo boxes are filled with data
-                                if ( (partnerLinkTypeComboBox.getItemCount() != 0) && (partnerRoleComboBox.getItemCount() != 0) ){
-                                        String partnerLinkType = partnerLinkTypeComboBox.getSelectedItem().toString();
-                                        String partnerRole         = partnerRoleComboBox.getSelectedItem().toString();
-                                        String myRole              = myRoleComboBox.getSelectedItem().toString();
 
-                                        // TODO führende Leerzeichen entfernen
+                                // Check if combo boxes are filled with data
+                                if ( (partnerLinkTypeComboBox.getItemCount() != 0) && (partnerRoleComboBox.getItemCount() != 0) ){
+                                        String partnerLinkType     = partnerLinkTypeComboBox.getSelectedItem().toString().trim();
+                                        String partnerRole         = partnerRoleComboBox.getSelectedItem().toString().trim();
+                                        String myRole              = myRoleComboBox.getSelectedItem().toString().trim();
+
                                         if ( name.equals("") ||
                                                  wsdlUrl.equals("") ||
                                                  ( partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))

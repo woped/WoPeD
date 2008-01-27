@@ -18,10 +18,10 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
  * @author Esther Landes
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for an "assign" BPEL activity.
- * 
+ *
  * Created on 15.01.2008
  */
 
@@ -115,8 +115,8 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 			newFromVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						fromVariableComboBox.addItem(dialog
 								.getNewVariableName());
 						fromVariableComboBox
@@ -150,8 +150,8 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 			newToVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						toVariableComboBox.addItem(dialog.getNewVariableName());
 						toVariableComboBox.setSelectedIndex(toVariableComboBox
 								.getItemCount() - 1);

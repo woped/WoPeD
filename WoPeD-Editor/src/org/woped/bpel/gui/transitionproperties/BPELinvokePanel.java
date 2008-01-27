@@ -170,8 +170,8 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 			newInVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						inVariableComboBox.addItem(dialog.getNewVariableName());
 						inVariableComboBox.setSelectedIndex(inVariableComboBox
 								.getItemCount() - 1);
@@ -198,8 +198,8 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 			newOutVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						outVariableComboBox
 								.addItem(dialog.getNewVariableName());
 						outVariableComboBox
