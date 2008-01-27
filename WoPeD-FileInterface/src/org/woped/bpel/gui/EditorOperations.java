@@ -53,9 +53,11 @@ public class EditorOperations extends JPanel {
 
         c.weightx = 1;
         c.weighty = 1;
-        c.anchor = GridBagConstraints.WEST;
+        c.anchor = GridBagConstraints.NORTHWEST;
         c.gridx = 0;
         c.gridy = 0;
+        c.insets = new Insets(0, 0, 0, 0);
+        c.fill = GridBagConstraints.HORIZONTAL;
         add(getOperationBpelPreviewPanel(), c);
         this.setVisible(true);
         
@@ -68,8 +70,7 @@ public class EditorOperations extends JPanel {
         {
         	operationBpelPanel = new JPanel();
         	operationBpelPanel.setLayout(new GridBagLayout());
-            GridBagConstraints c = new GridBagConstraints();
-
+            GridBagConstraints c = new GridBagConstraints(); 
             c.weightx = 1;
             c.weighty = 1;
             c.gridx = 0;
@@ -91,18 +92,13 @@ public class EditorOperations extends JPanel {
                     .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Operations.BpelPrev.Title")), BorderFactory.createEmptyBorder()));
             operationBpelPreviewPanel.setLayout(new GridBagLayout());
         	GridBagConstraints c = new GridBagConstraints();
-
+        	
+        	c.anchor = GridBagConstraints.NORTHWEST;
             c.weightx = 1;
             c.weighty = 1;
             c.gridx = 0;
             c.gridy = 0;
-            c.fill = GridBagConstraints.BOTH;
-            c.insets = new Insets(0, 0, 0, 0);
-            operationBpelPreviewPanel.add(getOperationBpelPreviewLabel(), c);
-            
-            c.gridx = 1;
-            c.gridy = 0;
-            c.fill = GridBagConstraints.BOTH;
+            c.fill = GridBagConstraints.NONE;
             c.insets = new Insets(0, 0, 0, 0);
             operationBpelPreviewPanel.add(getOperationBpelPreviewButton(), c);
             
@@ -110,16 +106,6 @@ public class EditorOperations extends JPanel {
         this.operationBpelPreviewPanel.setVisible(true);
 
         return operationBpelPreviewPanel;
-    }
-    
-    private JLabel getOperationBpelPreviewLabel()
-    {
-        if (operationBpelPreviewLabel == null)
-        {
-        	operationBpelPreviewLabel = new JLabel(Messages.getString("PetriNet.Operations.BpelPrev.Text"));
-        }
-        
-        return operationBpelPreviewLabel;
     }
 	
     private JButton getOperationBpelPreviewButton()
