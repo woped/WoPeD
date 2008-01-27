@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.GraphConstants;
-//import org.jgraph.util.ParallelEdgeRouter;
+import org.woped.qualanalysis.reachabilitygraph.controller.ParallelRouter;
 
 public class ReachabilityEdgeModel extends DefaultEdge {
 
@@ -17,7 +17,6 @@ public class ReachabilityEdgeModel extends DefaultEdge {
         GraphConstants.setMoveable(attributes, false);
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
-        //GraphConstants.setRouting(attributes, ParallelEdgeRouter.getSharedInstance());
         GraphConstants.setDisconnectable(attributes, false);
         GraphConstants.setLabelPosition(attributes, new Point2D.Double(GraphConstants.PERMILLE*6/8, -20));
         GraphConstants.setLineEnd(attributes, GraphConstants.ARROW_CLASSIC);

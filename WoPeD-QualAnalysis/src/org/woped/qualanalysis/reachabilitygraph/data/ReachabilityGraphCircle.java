@@ -5,16 +5,22 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 
 import org.jgraph.JGraph;
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
 
 public class ReachabilityGraphCircle {
 
+	private static Map<ReachabilityPlaceModel, AttributeMap> edit;
+	
 	public static JGraph layoutGraph(JGraph graph, Dimension dim){
+		edit = new HashMap<ReachabilityPlaceModel, AttributeMap>();
 		GraphModel model = graph.getModel();
 		LinkedList<Point> coordinates = CircleCoordinates.getCircleCoordinates(dim.width,dim.height,ReachabilityGraphModel.verticeCount(graph));
 		// Build Graph
@@ -29,7 +35,7 @@ public class ReachabilityGraphCircle {
 			GraphConstants.setBackground(initialPlace.getAttributes(), Color.green);
 			setPlacesOnCircle(coordinates, places);
 		}
-		graph.getGraphLayoutCache().reload();
+		graph.getGraphLayoutCache().edit(edit);
 		return graph;
 	}
 	
@@ -38,6 +44,7 @@ public class ReachabilityGraphCircle {
 		Point2D position = coordinates.removeFirst();
 		Rectangle2D bounds = GraphConstants.getBounds(initial.getAttributes());
 		GraphConstants.setBounds(initial.getAttributes(), new Rectangle2D.Double(position.getX(),position.getY(),bounds.getWidth(),bounds.getHeight()));
+		edit.put(initial, initial.getAttributes());
 		places.remove(initial);
 		Iterator<ReachabilityPlaceModel> iterPlaces = places.iterator();
 		while(iterPlaces.hasNext()){
@@ -45,6 +52,7 @@ public class ReachabilityGraphCircle {
 			bounds = GraphConstants.getBounds(actual.getAttributes());
 			position = coordinates.removeFirst();
 			GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(position.getX(),position.getY(),bounds.getWidth(),bounds.getHeight()));
+			edit.put(actual, actual.getAttributes());
 		}
 	}
 }

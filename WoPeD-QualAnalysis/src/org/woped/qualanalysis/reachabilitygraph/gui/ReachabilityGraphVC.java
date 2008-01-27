@@ -122,6 +122,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 			this.remove(rememberRgp);	
 			this.repaint();
 			this.panels.remove(rememberRgp);
+			editor.setReachabilityEnabled(false);
 		}	
 		
 		// if it was the last active editor, set internal frame invisible
@@ -133,14 +134,13 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	public void refreshGraph(int type){
 		for (ReachabilityGraphPanel rgp : panels) {
 			if(rgp.isShowing()){
-				rgp.refreshGraph(type);
+				rgp.layoutGraph(type, true);
 			}
 		}
 		this.repaint();
 	}
 	
 	public void updatePanelsVisibility(IEditor editor){
-		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- updateVisibility " + this.getClass().getName() + " ItemsCount " + this.panels.size());
 		for (ReachabilityGraphPanel rgp : panels) {
 			if(rgp.getEditor().equals(editor)){
 				this.add(rgp);

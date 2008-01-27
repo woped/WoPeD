@@ -15,17 +15,19 @@ public class ReachabilityGraphViewFactory extends DefaultCellViewFactory
         return view;
     }
 */
-
+	@Override
     protected EdgeView createEdgeView(Object cell)
     {
         return new ReachabilityEdgeView(cell);
     }
-
+	
+	@Override
     protected PortView createPortView(Object cell)
     {
     	return new PortView(cell);
     }
 
+	@Override
     protected VertexView createVertexView(Object cell)
     {
         return new ReachabilityPlaceView(cell);

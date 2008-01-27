@@ -27,7 +27,7 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 	@Override
 	public void processViewEvent(AbstractViewEvent event) {		
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> processViewEvent " + this.getClass().getName());
-		if(getMediator().getUi().getEditorFocus() instanceof IEditor && !getMediator().getUi().getEditorFocus().isSubprocessEditor()){
+		if(getMediator().getUi().getEditorFocus() instanceof IEditor /*&& !getMediator().getUi().getEditorFocus().isSubprocessEditor()*/){
 			if(event.getOrder() == AbstractViewEvent.REACHGRAPH && getMediator().getUi().getEditorFocus() instanceof IEditor){
 				IEditor editor = (IEditor) getMediator().getUi().getEditorFocus();
 				IUserInterface dui = mediator.getUi();
@@ -48,7 +48,6 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 				toAdd.moveToFront();
 				toAdd.refreshGraph(ReachabilityGraphModel.HIERARCHIC);
 				dui.getToolBar().getReachabilityGraphButton().setEnabled(false);
-				toAdd.updatePanelsVisibility(editor);
 			}
 		}
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- processViewEvent " + this.getClass().getName());

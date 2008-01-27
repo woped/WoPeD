@@ -3,20 +3,26 @@ package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.jgraph.JGraph;
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
 
 public class ReachabilityLayoutHierarchic {
 
+	private static Map<ReachabilityPlaceModel,AttributeMap> edit;
+	
 	public static JGraph layoutGraph(JGraph graph){
-		applyHierarchicLayout(graph);			
-		graph.getGraphLayoutCache().reload();
+		edit = new HashMap<ReachabilityPlaceModel,AttributeMap>();
+		applyHierarchicLayout(graph);
+		graph.getGraphLayoutCache().edit(edit,null,null,null);
 		return graph;
 	}
 	
@@ -25,6 +31,7 @@ public class ReachabilityLayoutHierarchic {
 		LinkedList<ReachabilityPlaceModel> markings = new LinkedList<ReachabilityPlaceModel>();
 		for(int i = 0; i < model.getRootCount(); i++){
 			if(model.getRootAt(i) instanceof ReachabilityPlaceModel){
+				((ReachabilityPlaceModel) model.getRootAt(i)).setIsSetRecursiveBounds(false);
 				markings.add((ReachabilityPlaceModel) model.getRootAt(i));
 			}
 		}
@@ -34,7 +41,13 @@ public class ReachabilityLayoutHierarchic {
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
 			LinkedList<ReachabilityPlaceModel> toProof = new LinkedList<ReachabilityPlaceModel>();
 			ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), toProof);
+			Iterator<ReachabilityPlaceModel> iter = toProof.iterator();
+			while(iter.hasNext()){
+				ReachabilityPlaceModel next = iter.next();
+				edit.put(next, next.getAttributes());
+			}
 			ReachabilityLayoutHierarchic.hierarcherProofer(toProof);
+			
 		}
 	}
 	

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphCell;
@@ -15,6 +16,7 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.woped.core.controller.IEditor;
+import org.woped.qualanalysis.reachabilitygraph.controller.ParallelRouter;
 import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphViewFactory;
 
 public class ReachabilityGraphModel {
@@ -30,7 +32,8 @@ public class ReachabilityGraphModel {
 	
 	public JGraph getGraph(){
 		GraphModel model = new DefaultGraphModel(); 
-		GraphLayoutCache view = new GraphLayoutCache(model,	new ReachabilityGraphViewFactory()); 
+		GraphLayoutCache view = new GraphLayoutCache(model,	new ReachabilityGraphViewFactory());
+		view.setAutoSizeOnValueChange(true);
 		view.setSelectsAllInsertedCells(false);
 		JGraph graph = new JGraph(model, view); 
 		// Compute ReachabilityGraph
@@ -53,6 +56,7 @@ public class ReachabilityGraphModel {
 			
 			edge.setSource(src.getChildAt(0));
 			edge.setTarget(tar.getChildAt(0));
+	        GraphConstants.setRouting(edge.getAttributes(), ParallelRouter.getSharedInstance(view));
 			cellsList.add(edge);	
 		}
 		graph.getGraphLayoutCache().insert(cellsList.toArray());
@@ -86,7 +90,6 @@ public class ReachabilityGraphModel {
 	
 	private static ReachabilityEdgeModel getEdge(HashSet<DefaultGraphCell> cellsList, TransitionObject to){
 		Iterator<DefaultGraphCell> iterCellsList = cellsList.iterator();
-		
 		if(cellsList != null && !cellsList.isEmpty()){
 			while(iterCellsList.hasNext()){
 				DefaultGraphCell cell = iterCellsList.next();
@@ -101,7 +104,8 @@ public class ReachabilityGraphModel {
 				}
 			}
 		}
-		return new ReachabilityEdgeModel(to);
+		ReachabilityEdgeModel edge = new ReachabilityEdgeModel(to);
+		return edge;
 	}
 	
 	public static ReachabilityPlaceModel lookupInitialMarking(LinkedList<ReachabilityPlaceModel> markings){

@@ -43,7 +43,7 @@ public class ReachabilityGraphVCListener implements InternalFrameListener{
 	}
 
 	public void internalFrameDeactivated(InternalFrameEvent arg0) {
-
+		reachGraphVC.updatePanelsVisibility(aam.getUi().getEditorFocus());
 	}
 
 	public void internalFrameDeiconified(InternalFrameEvent arg0) {

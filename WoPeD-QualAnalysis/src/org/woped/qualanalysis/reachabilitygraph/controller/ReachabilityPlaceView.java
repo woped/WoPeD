@@ -33,9 +33,7 @@ public class ReachabilityPlaceView extends VertexView {
 	// Elliptic
 	private static class ReachabilityPlaceRenderer extends VertexRenderer implements CellViewRenderer
 	{
-		/**
-		 * 
-		 */
+		
 		private static final long serialVersionUID = 1075415120773973965L;
 
 		public ReachabilityPlaceRenderer()
