@@ -2236,7 +2236,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	
 	public void internalFrameActivated(InternalFrameEvent e)
 	{
-		if(!this.isReachabilityEnabled() && !this.isSubprocessEditor()){
+		if(!this.isReachabilityEnabled()){
 			m_centralMediator.getUi().getToolBar().getReachabilityGraphButton().setEnabled(true);	
 		}
 	};
