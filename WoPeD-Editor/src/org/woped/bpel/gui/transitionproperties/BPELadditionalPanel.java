@@ -402,7 +402,6 @@ public abstract class BPELadditionalPanel extends JPanel {
 					if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 						wsdlFileTextField.setText(""
 								+ chooser.getSelectedFile());
-						// TODO KEY LISTENER - Kommentar löschen
 						tryToGetDataFromWsdl();
 					}
 				}
@@ -471,7 +470,6 @@ public abstract class BPELadditionalPanel extends JPanel {
                         		// Important: Delete whitespaces at the beginning and at the end of strings.
                         		String name      = partnerLinkNameTextField.getText().trim();
                                 String wsdlUrl   = wsdlFileTextField.getText();
-                                String namespace = wsdlFileRepresentation.getNamespace();
 
                                 // Check if combo boxes are filled with data
                                 if ( (partnerLinkTypeComboBox.getItemCount() != 0) && (partnerRoleComboBox.getItemCount() != 0) ){
@@ -486,11 +484,13 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                    myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
                                                  )
                                            ) {
-                                                // TODO Fehler ausgeben
+                                			showErrorPopup(Messages.getString("Transition.Properties.BPEL.MissingEntries"),
+                                						   Messages.getString("Transition.Properties.BPEL.MissingEntries_2"));
                                         }
                                         else {
-                                                // TODO 3x namespace
-                                        		// partner role NOT entered / my role ENTERED
+                                            	String namespace = wsdlFileRepresentation.getNamespace();
+
+                                            	// partner role NOT entered / my role ENTERED
                                                 if(partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole")) &&
                                                    !myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
                                                 ){
@@ -520,13 +520,14 @@ public abstract class BPELadditionalPanel extends JPanel {
     													name, namespace, partnerLinkType, partnerRole, myRole, wsdlUrl);
     												updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
+                                                dialog.dispose();
                                         }
                                 }
                                 else{
-                                        //TODO Fehlermeldung für fehlende Einträge
+                        			showErrorPopup(Messages.getString("Transition.Properties.BPEL.NoPartnerLinks"),
+                 						   		   Messages.getString("Transition.Properties.BPEL.NoPartnerLinks_2"));
                                 }
 
-                                dialog.dispose();
                         }
                 });
         }
@@ -552,9 +553,6 @@ public abstract class BPELadditionalPanel extends JPanel {
 				.getString("Transition.Properties.BPEL.Buttons.OK"));
 		okVariableButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO speichern mithilfe von Alex' Klassen, die auf content
-				// getter methoden zugreifen
-
 				modelElementContainer
 						.addVariable(
 								VariableName.getText(),

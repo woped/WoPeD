@@ -248,6 +248,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	public void defineVariablesForInputOutputComboBoxes(String pathToWsdlFile){
 		ArrayList<Message> messages;
 		try {
+			System.out.println("inVariableComboBox: " + inVariableComboBox.getComponentCount());
 			for(int i=inVariableComboBox.getComponentCount()-1; i>0; i--){
 				inVariableComboBox.remove(i);
 				outVariableComboBox.remove(i);
