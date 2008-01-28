@@ -13,6 +13,7 @@ import org.apache.xmlbeans.XmlOptions;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.ProcessDocument;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 import org.woped.bpel.datamodel.BpelParserModel;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -163,11 +164,16 @@ public class BPEL
 
 	public void setGlobals(TProcess iProcess, PetriNetModelProcessor pnp){
 		TVariables itempVars = (TVariables)pnp.getElementContainer().getTVariablesList();
-		if(itempVars == null) return;
+		TPartnerLinks itempLinks = (TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList(); 
+		if((itempVars == null) || (itempLinks == null)) return;
 		
 		if (itempVars.sizeOfVariableArray()>0){
 			TVariables iVars = iProcess.addNewVariables();
 			iVars.set(itempVars);
+		}
+		if (itempLinks.sizeOfPartnerLinkArray()>0){
+			TPartnerLinks iLinks = iProcess.addNewPartnerLinks();
+			iLinks.set(itempLinks);
 		}
 		/*
 		TPartnerLinks itempPLs =(TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList();
