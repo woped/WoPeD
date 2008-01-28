@@ -12,9 +12,12 @@ import javax.swing.JTextArea;
 
 import org.woped.translations.Messages;
 
-@SuppressWarnings("serial")
 public class PopUpDialog extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5770353423770293418L;
 	private String _message;
 
 	public PopUpDialog(JDialog owner, boolean modal, String Title, String Message) {
@@ -26,11 +29,11 @@ public class PopUpDialog extends JDialog {
 
 	private void init() {
 		this.setVisible(false);
-		this.setSize(400, 200);
-		this.setLocation(150, 150);
+		this.setSize(400, 200);		
+		this.setLocation(this.getOwner().getLocation().x + 50, this.getOwner().getLocation().y + 50);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-
+		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.CENTER;
 		c.weightx = 1;
@@ -43,6 +46,9 @@ public class PopUpDialog extends JDialog {
 		JTextArea text = new JTextArea();
 		text.setLineWrap(true);
 		text.setWrapStyleWord(true);
+		text.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
+		text.setAlignmentY(JTextArea.CENTER_ALIGNMENT);
+		text.setBackground(this.getBackground());
 		text.setEditable(false);
 		text.setText(this._message);
 		this.add(text, c);
@@ -60,6 +66,5 @@ public class PopUpDialog extends JDialog {
 			
 		});
 		this.add(button, c);
-
 	}
 }
