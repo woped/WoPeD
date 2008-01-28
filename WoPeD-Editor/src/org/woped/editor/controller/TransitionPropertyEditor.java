@@ -51,8 +51,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.woped.bpel.gui.transitionproperties.Assign;
 import org.woped.bpel.gui.transitionproperties.BPELadditionalPanel;
 import org.woped.bpel.gui.transitionproperties.BPELassignPanel;
@@ -61,7 +59,6 @@ import org.woped.bpel.gui.transitionproperties.BPELinvokePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreceivePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreplyPanel;
 import org.woped.bpel.gui.transitionproperties.BPELwaitPanel;
-import org.woped.bpel.gui.transitionproperties.Empty;
 import org.woped.bpel.gui.transitionproperties.Invoke;
 import org.woped.bpel.gui.transitionproperties.Receive;
 import org.woped.bpel.gui.transitionproperties.Reply;
@@ -1303,10 +1300,10 @@ public class TransitionPropertyEditor extends JDialog implements
 		String role = resourceRoleComboBox.getSelectedItem().toString();
 		String group = resourceGroupComboBox.getSelectedItem().toString();
 
-		Vector res = ((PetriNetModelProcessor) (editor.getModelProcessor()))
+		Vector<?> res = ((PetriNetModelProcessor) (editor.getModelProcessor()))
 				.getResources();
 		int count = 0;
-		Vector rlist;
+		Vector<?> rlist;
 
 		for (int i = 0; i < res.size(); i++) {
 			String name = res.get(i).toString();
@@ -1346,7 +1343,7 @@ public class TransitionPropertyEditor extends JDialog implements
 				roleComboBoxModel = new DefaultComboBoxModel();
 				roleComboBoxModel.addElement(ROLE_NONE);
 
-				for (Iterator iter = ((PetriNetModelProcessor) getEditor()
+				for (Iterator<?> iter = ((PetriNetModelProcessor) getEditor()
 						.getModelProcessor()).getRoles().iterator(); iter
 						.hasNext();) {
 					roleComboBoxModel.addElement(iter.next());
@@ -1372,7 +1369,7 @@ public class TransitionPropertyEditor extends JDialog implements
 				groupComboBoxModel = new DefaultComboBoxModel();
 				groupComboBoxModel.addElement(GROUP_NONE);
 
-				for (Iterator iter = ((PetriNetModelProcessor) getEditor()
+				for (Iterator<?> iter = ((PetriNetModelProcessor) getEditor()
 						.getModelProcessor()).getOrganizationUnits().iterator(); iter
 						.hasNext();) {
 					groupComboBoxModel.addElement(iter.next());

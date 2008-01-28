@@ -6,7 +6,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -234,8 +233,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return Messages
-		.getString("Transition.Properties.BPEL.Assign");
+		return "assign";
 	}
 
 	@Override
