@@ -1550,31 +1550,24 @@ public class TransitionPropertyEditor extends JDialog implements
 			this.activityChooseComboBox.addItem(this.getReceivePanel());
 			this.activityChooseComboBox.addItem(this.getReplyPanel());
 			this.activityChooseComboBox.addItem(this.getWaitPanel());
-			
+
 			this.activityChooseComboBox.setSelectedItem(this.getEmptyPanel());
 
 			activityChooseComboBox.addItemListener(new ItemListener() {
-				int counter = 0;
 
 				public void itemStateChanged(ItemEvent e) {
-					System.out.println(counter++ + " Itemevent "
-							+ e.getItem().toString());
-					JComboBox cb = (JComboBox) e.getSource();
-					if(e.getStateChange() == ItemEvent.DESELECTED)
-					{
-						((BPELadditionalPanel)e.getItem()).setVisible(false);
-						getBPELPanel().remove((BPELadditionalPanel)e.getItem());
-					}
-					else
-					{
-						((BPELadditionalPanel)e.getItem()).setVisible(true);
-						((BPELadditionalPanel)e.getItem()).showPanel(getBPELPanel(), c2);
+					if (e.getStateChange() == ItemEvent.DESELECTED) {
+						((BPELadditionalPanel) e.getItem()).setVisible(false);
+						getBPELPanel()
+								.remove((BPELadditionalPanel) e.getItem());
+					} else {
+						((BPELadditionalPanel) e.getItem()).setVisible(true);
+						((BPELadditionalPanel) e.getItem()).showPanel(
+								getBPELPanel(), c2);
 					}
 					repaint();
 				}
 			});
-			// activityChoosePanel.add(activityChooseComboBox); //?? wieder
-			// kommentieren
 		}
 		return activityChooseComboBox;
 	}
@@ -1593,13 +1586,15 @@ public class TransitionPropertyEditor extends JDialog implements
 	private BPELemptyPanel getEmptyPanel() {
 		if (this.emptyPanel == null) {
 			this.emptyPanel = new BPELemptyPanel(this, this.transition);
-			
-			/*this.emptyPanel.setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createTitledBorder(Messages
-							.getString("Transition.Properties.BPEL.Empty")),
-					BorderFactory.createEmptyBorder(5, 5, 0, 5)));*/
+
+			/*
+			 * this.emptyPanel.setBorder(BorderFactory.createCompoundBorder(
+			 * BorderFactory.createTitledBorder(Messages
+			 * .getString("Transition.Properties.BPEL.Empty")),
+			 * BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+			 */
 		}
-		
+
 		return this.emptyPanel;
 	}
 
@@ -1706,14 +1701,8 @@ public class TransitionPropertyEditor extends JDialog implements
 										JOptionPane.ERROR_MESSAGE);
 					}
 
-					// save BPEL settings
-					if (activityChooseComboBox.getSelectedIndex() != 0) {
-						((BPELadditionalPanel) activityChooseComboBox
-								.getSelectedItem()).saveInfomation();
-					} else {
-						transition.setBaseActivity(new Empty(transition
-								.getNameValue()));
-					}
+					((BPELadditionalPanel) activityChooseComboBox
+							.getSelectedItem()).saveInfomation();
 
 				}
 			});
