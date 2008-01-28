@@ -300,7 +300,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	}
 	
 	public boolean allFieldsFilled(){
-		if (partnerLinkComboBox.getSelectedItem() == null || operationComboBox.getSelectedItem() == null || inVariableComboBox.getSelectedItem() == null || outVariableComboBox.getSelectedItem() == null){
+		if (partnerLinkComboBox.getSelectedItem() == null | operationComboBox.getSelectedItem() == null | inVariableComboBox.getSelectedItem() == null | outVariableComboBox.getSelectedItem() == null){
 			return false;
 		}
 		else

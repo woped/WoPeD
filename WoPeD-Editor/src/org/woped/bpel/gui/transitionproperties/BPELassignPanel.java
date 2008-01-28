@@ -16,7 +16,6 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
-import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes

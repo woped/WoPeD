@@ -156,13 +156,6 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 	}
 
 	
-	public boolean allFieldsFilled(){
-		if (partnerLinkComboBox.getSelectedItem() == null || operationComboBox.getSelectedItem() == null || variableComboBox.getSelectedItem() == null){
-			return false;
-		}
-		else
-			return true;
-	}
 	
 
 //	fill partnerLinkComboBox with partner links
@@ -193,6 +186,14 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		if (variableComboBox.getSelectedItem() == null)
 			return "";
 		return variableComboBox.getSelectedItem().toString();
+	}
+	
+	public boolean allFieldsFilled(){
+		if (partnerLinkComboBox.getSelectedItem() == null | operationComboBox.getSelectedItem() == null | variableComboBox.getSelectedItem() == null){
+			return false;
+		}
+		else
+			return true;
 	}
 
 	// ***************** content setter methods **************************
