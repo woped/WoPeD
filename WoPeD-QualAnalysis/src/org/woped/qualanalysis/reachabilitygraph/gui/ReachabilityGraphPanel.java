@@ -159,6 +159,13 @@ public class ReachabilityGraphPanel extends JPanel {
 		}
 	}
 	
+	public String checkRG()
+	{
+		//String fingerprint = ((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint();
+		//System.out.println(fingerprint);
+		return "";
+	}
+	
 	private String getGraphInfo(){
 		Object[] roots = this.rgp_jgraph.getRoots();
 		int vertices = 0;
@@ -211,12 +218,24 @@ public class ReachabilityGraphPanel extends JPanel {
 			FileFilterImpl PNGFilter = new FileFilterImpl(
 					FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
 			jfc.setFileFilter(PNGFilter);
+			
+			Vector<String> pngbwExtensions = new Vector<String>();
+			pngbwExtensions.add("png");
+			FileFilterImpl PNGBWFilter = new FileFilterImpl(
+					FileFilterImpl.PNGBWFilter, "PNG B/W (*.png)", pngbwExtensions);
+			jfc.setFileFilter(PNGBWFilter);
 
 			Vector<String> bmpExtensions = new Vector<String>();
 			bmpExtensions.add("bmp");
 			FileFilterImpl BMPFilter = new FileFilterImpl(
 					FileFilterImpl.BMPFilter, "BMP (*.bmp)", bmpExtensions);
 			jfc.setFileFilter(BMPFilter);
+			
+			Vector<String> bmpbwExtensions = new Vector<String>();
+			bmpbwExtensions.add("bmp");
+			FileFilterImpl BMPBWFilter = new FileFilterImpl(
+					FileFilterImpl.BMPBWFilter, "BMP B/W (*.bmp)", bmpbwExtensions);
+			jfc.setFileFilter(BMPBWFilter);
 
 			Vector<String> jpgExtensions = new Vector<String>();
 			jpgExtensions.add("jpg");
@@ -224,8 +243,15 @@ public class ReachabilityGraphPanel extends JPanel {
 			FileFilterImpl JPGFilter = new FileFilterImpl(
 					FileFilterImpl.JPGFilter, "JPG (*.jpg)", jpgExtensions);
 			jfc.setFileFilter(JPGFilter);
+			
+			Vector<String> jpgbwExtensions = new Vector<String>();
+			jpgbwExtensions.add("jpg");
+			jpgbwExtensions.add("jpeg");
+			FileFilterImpl JPGBWFilter = new FileFilterImpl(
+					FileFilterImpl.JPGBWFilter, "JPG B/W (*.jpg)", jpgbwExtensions);
+			jfc.setFileFilter(JPGBWFilter);
 
-			jfc.setFileFilter(JPGFilter);
+			jfc.setFileFilter(PNGFilter);
 			
 			jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
 			jfc.showSaveDialog(null);
@@ -245,15 +271,30 @@ public class ReachabilityGraphPanel extends JPanel {
 							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
 									.getName(), jpgExtensions);
 				} else if (((FileFilterImpl) jfc.getFileFilter())
+						.getFilterType() == FileFilterImpl.JPGBWFilter) {
+					savePath = savePath
+							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
+									.getName(), jpgbwExtensions);
+				}else if (((FileFilterImpl) jfc.getFileFilter())
 						.getFilterType() == FileFilterImpl.PNGFilter) {
 					savePath = savePath
 							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
 									.getName(), pngExtensions);
+				}else if (((FileFilterImpl) jfc.getFileFilter())
+						.getFilterType() == FileFilterImpl.PNGBWFilter) {
+					savePath = savePath
+							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
+									.getName(), pngbwExtensions);
 				} else if (((FileFilterImpl) jfc.getFileFilter())
 						.getFilterType() == FileFilterImpl.BMPFilter) {
 					savePath = savePath
 							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
 									.getName(), bmpExtensions);
+				}else if (((FileFilterImpl) jfc.getFileFilter())
+						.getFilterType() == FileFilterImpl.BMPBWFilter) {
+					savePath = savePath
+							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
+									.getName(), bmpbwExtensions);
 				} else {
 					LoggerManager.error(Constants.QUALANALYSIS_LOGGER,
 							"\"Export\" NOT SUPPORTED FILE TYPE.");
@@ -264,13 +305,23 @@ public class ReachabilityGraphPanel extends JPanel {
 			
 			if (filetype == FileFilterImpl.JPGFilter) {
 				ImageExport.saveJPG(ImageExport
-						.getRenderedImage(rgp), new File(filepath));
+						.getRenderedImage(rgp,false), new File(filepath));
+				//rgp.checkRG();
+			} else if (filetype == FileFilterImpl.JPGBWFilter) {
+				ImageExport.saveJPG(ImageExport
+						.getRenderedImage(rgp,true), new File(filepath));
 			} else if (filetype == FileFilterImpl.PNGFilter) {
 				ImageExport.savePNG(ImageExport
-						.getRenderedImage(rgp), new File(filepath));
-			} else if (filetype == FileFilterImpl.BMPFilter) {
+						.getRenderedImage(rgp,false), new File(filepath));
+			} else if (filetype == FileFilterImpl.PNGBWFilter) {
+				ImageExport.savePNG(ImageExport
+						.getRenderedImage(rgp,true), new File(filepath));
+			}else if (filetype == FileFilterImpl.BMPFilter) {
 				ImageExport.saveBMP(ImageExport
-						.getRenderedImage(rgp), new File(filepath));
+						.getRenderedImage(rgp,false), new File(filepath));
+			}else if (filetype == FileFilterImpl.BMPBWFilter) {
+				ImageExport.saveBMP(ImageExport
+						.getRenderedImage(rgp,true), new File(filepath));
 			}else {
 				LoggerManager.warn(Constants.QUALANALYSIS_LOGGER,
 						"Unable to save File. Filetype not known: "
