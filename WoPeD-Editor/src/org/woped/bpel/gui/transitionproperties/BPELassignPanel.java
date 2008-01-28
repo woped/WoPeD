@@ -6,15 +6,18 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes
@@ -39,6 +42,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 			TransitionModel transition) {
 
 		super(t_editor, transition);
+		
 
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -214,7 +218,20 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 	@Override
 	public void saveInfomation() {
+		System.out.println("Speichere infos ab");
 		this.transition.setBaseActivity(new Assign(this.transition
 				.getNameValue(), this.getFromVariable(), this.getToVariable()));
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return Messages
+		.getString("Transition.Properties.BPEL.Assign");
+	}
+
+	@Override
+	public void showPanel(JPanel panel, GridBagConstraints c) {
+		panel.add(this,c);		
 	}
 }

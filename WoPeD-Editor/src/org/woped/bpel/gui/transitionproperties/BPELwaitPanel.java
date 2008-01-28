@@ -580,6 +580,23 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 	public void saveInfomation() {
 		this.transition.setBaseActivity(new Wait(this.transition.getNameValue()).saveInformation(this));
 	}
+
+
+
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "wait";
+	}
+
+
+
+
+	@Override
+	public void showPanel(JPanel panel, GridBagConstraints c) {
+		panel.add(this,c);
+	}
 	
 	
 	//	***************** content setter methods  **************************

@@ -96,6 +96,13 @@ public abstract class BPELadditionalPanel extends JPanel {
 		this.modelElementContainer = t_editor.getEditor().getModelProcessor().getElementContainer();
 		wsdl = new Wsdl();
 	}
+	
+	public abstract String getName();
+	
+	public String toString()
+	{
+		return getName();
+	}
 
 	public void setLinkToBPELinvokePanel(BPELinvokePanel bpelInvokePanel){
 		this.bpelInvokePanel = bpelInvokePanel;
@@ -798,4 +805,12 @@ public abstract class BPELadditionalPanel extends JPanel {
 	public abstract void refresh();
 
 	public abstract void saveInfomation();
+	
+	public abstract void showPanel(JPanel panel, GridBagConstraints c);
+	
+	public boolean equals(BPELadditionalPanel panel)
+	{
+		return this.getName().compareToIgnoreCase(panel.getName()) == 0;
+	}
+
 }

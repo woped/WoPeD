@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
@@ -211,5 +212,16 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		this.transition.setBaseActivity(new Reply(this.transition
 				.getNameValue(), this.getPartnerLink(), this.getOperation(),
 				this.getVariable()));
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "reply";
+	}
+
+	@Override
+	public void showPanel(JPanel panel, GridBagConstraints c) {
+		panel.add(this,c);
 	}
 }

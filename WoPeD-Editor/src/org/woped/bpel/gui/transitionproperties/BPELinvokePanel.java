@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
 import javax.swing.JLabel;
 
@@ -332,5 +333,16 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 						this.getPartnerLink(), this.getOperation(), this
 								.getPortType(), this.getInVariable(), this
 								.getOutVariable()));
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "invoke";
+	}
+
+	@Override
+	public void showPanel(JPanel panel, GridBagConstraints c) {
+		panel.add(this,c);
 	}
 }

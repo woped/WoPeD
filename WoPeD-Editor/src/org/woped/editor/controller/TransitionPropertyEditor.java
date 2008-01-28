@@ -54,7 +54,9 @@ import javax.swing.JTextField;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.woped.bpel.gui.transitionproperties.Assign;
+import org.woped.bpel.gui.transitionproperties.BPELadditionalPanel;
 import org.woped.bpel.gui.transitionproperties.BPELassignPanel;
+import org.woped.bpel.gui.transitionproperties.BPELemptyPanel;
 import org.woped.bpel.gui.transitionproperties.BPELinvokePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreceivePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreplyPanel;
@@ -103,6 +105,8 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JComboBox activityChooseComboBox = null;
 
 	private JLabel activityChooseLabel = null;
+
+	private BPELemptyPanel emptyPanel = null;
 
 	private BPELassignPanel assignPanel = null;
 
@@ -1457,12 +1461,12 @@ public class TransitionPropertyEditor extends JDialog implements
 			c2.insets = new Insets(0, 0, 0, 0);
 			c2.anchor = GridBagConstraints.NORTH;
 			c2.fill = GridBagConstraints.HORIZONTAL;
-			
+
 			if (Assign.class.isInstance(this.transition.getBpelData())) {
-//				activityChooseComboBox.setVisible(false);
+				// activityChooseComboBox.setVisible(false);
 				activityChooseComboBox.setSelectedIndex(1);
 				this.assignPanel.refresh();
-//				activityChooseComboBox.setVisible(true);
+				// activityChooseComboBox.setVisible(true);
 			} else if (Invoke.class.isInstance(this.transition.getBpelData())) {
 				activityChooseComboBox.setSelectedIndex(2);
 				this.invokePanel.refresh();
@@ -1512,9 +1516,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			c.gridwidth = 2;
 			c.insets = new Insets(0, 10, 10, 10);
 			activityChoosePanel.add(getActivityComboBox(), c);
-			
-			
-			
+
 		}
 		return activityChoosePanel;
 	}
@@ -1541,41 +1543,34 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JComboBox getActivityComboBox() {
 		if (activityChooseComboBox == null) {
-			String[] namen = new String[] {
-					Messages.getString("Transition.Properties.BPEL.NoActivity"),
-					"assign", "invoke", "receive", "reply", "wait" };
-			activityChooseComboBox = new JComboBox(namen);
+			activityChooseComboBox = new JComboBox();
+			this.activityChooseComboBox.addItem(this.getEmptyPanel());
+			this.activityChooseComboBox.addItem(this.getAssignPanel());
+			this.activityChooseComboBox.addItem(this.getInvokePanel());
+			this.activityChooseComboBox.addItem(this.getReceivePanel());
+			this.activityChooseComboBox.addItem(this.getReplyPanel());
+			this.activityChooseComboBox.addItem(this.getWaitPanel());
+			
+			this.activityChooseComboBox.setSelectedItem(this.getEmptyPanel());
 
 			activityChooseComboBox.addItemListener(new ItemListener() {
-				public void itemStateChanged(ItemEvent e) {
-					JComboBox cb = (JComboBox) e.getSource();
-					int index = cb.getSelectedIndex();
+				int counter = 0;
 
-					c2.gridx = 0;
-					c2.gridy = 1;
-					c2.insets = new Insets(0, 0, 0, 0);
-					c2.anchor = GridBagConstraints.NORTH;
-					c2.fill = GridBagConstraints.HORIZONTAL;
-					switch (index) {
-					case 0:
-						showNothing();
-						break;
-					case 1:
-						showAssignPanel();
-						break;
-					case 2:
-						showInvokePanel();
-						break;
-					case 3:
-						showReceivePanel();
-						break;
-					case 4:
-						showReplyPanel();
-						break;
-					case 5:
-						showWaitPanel();
-						break;
+				public void itemStateChanged(ItemEvent e) {
+					System.out.println(counter++ + " Itemevent "
+							+ e.getItem().toString());
+					JComboBox cb = (JComboBox) e.getSource();
+					if(e.getStateChange() == ItemEvent.DESELECTED)
+					{
+						((BPELadditionalPanel)e.getItem()).setVisible(false);
+						getBPELPanel().remove((BPELadditionalPanel)e.getItem());
 					}
+					else
+					{
+						((BPELadditionalPanel)e.getItem()).setVisible(true);
+						((BPELadditionalPanel)e.getItem()).showPanel(getBPELPanel(), c2);
+					}
+					repaint();
 				}
 			});
 			// activityChoosePanel.add(activityChooseComboBox); //?? wieder
@@ -1595,26 +1590,20 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	// *****************************SelectedActivityPanel*****************
 
-	private void showNothing() {
-		if (assignPanel != null) {
-			bpelPanel.remove(assignPanel);
+	private BPELemptyPanel getEmptyPanel() {
+		if (this.emptyPanel == null) {
+			this.emptyPanel = new BPELemptyPanel(this, this.transition);
+			
+			/*this.emptyPanel.setBorder(BorderFactory.createCompoundBorder(
+					BorderFactory.createTitledBorder(Messages
+							.getString("Transition.Properties.BPEL.Empty")),
+					BorderFactory.createEmptyBorder(5, 5, 0, 5)));*/
 		}
-		if (invokePanel != null) {
-			bpelPanel.remove(invokePanel);
-		}
-		if (receivePanel != null) {
-			bpelPanel.remove(receivePanel);
-		}
-		if (replyPanel != null) {
-			bpelPanel.remove(replyPanel);
-		}
-		if (waitPanel != null) {
-			bpelPanel.remove(waitPanel);
-		}
-		repaint();
+		
+		return this.emptyPanel;
 	}
 
-	private void showAssignPanel() {
+	private BPELassignPanel getAssignPanel() {
 		if (assignPanel == null) {
 			assignPanel = new BPELassignPanel(this, this.transition);
 			assignPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -1623,30 +1612,10 @@ public class TransitionPropertyEditor extends JDialog implements
 					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 		}
 
-		if (invokePanel != null) {
-			bpelPanel.remove(invokePanel);
-		}
-		if (receivePanel != null) {
-			bpelPanel.remove(receivePanel);
-		}
-		if (replyPanel != null) {
-			bpelPanel.remove(replyPanel);
-		}
-		if (waitPanel != null) {
-			bpelPanel.remove(waitPanel);
-		}
-
-		if (this.transition.getBpelData() != null && Assign.class.isInstance(this.transition.getBpelData())) {
-			Assign iAssign = (Assign) this.transition.getBpelData();
-			iAssign.setInformationToPanel(assignPanel);
-		}
-
-		bpelPanel.add(assignPanel, c2);
-		repaint();
-		pack();
+		return this.assignPanel;
 	}
 
-	private void showInvokePanel() {
+	private BPELinvokePanel getInvokePanel() {
 		if (invokePanel == null) {
 			invokePanel = new BPELinvokePanel(this, this.transition);
 			invokePanel.setBorder(BorderFactory.createCompoundBorder(
@@ -1654,31 +1623,10 @@ public class TransitionPropertyEditor extends JDialog implements
 							.getString("Transition.Properties.BPEL.Invoke")),
 					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 		}
-
-		if (assignPanel != null) {
-			bpelPanel.remove(assignPanel);
-		}
-		if (receivePanel != null) {
-			bpelPanel.remove(receivePanel);
-		}
-		if (replyPanel != null) {
-			bpelPanel.remove(replyPanel);
-		}
-		if (waitPanel != null) {
-			bpelPanel.remove(waitPanel);
-		}
-
-		if (this.transition.getBpelData() != null
-				&& Invoke.class.isInstance(this.transition.getBpelData())) {
-			Invoke iInvoke = (Invoke) this.transition.getBpelData();
-			iInvoke.setInformationToPanel(invokePanel);
-		}
-
-		bpelPanel.add(invokePanel, c2);
-		repaint();
+		return this.invokePanel;
 	}
 
-	private void showReceivePanel() {
+	private BPELreceivePanel getReceivePanel() {
 		if (receivePanel == null) {
 			receivePanel = new BPELreceivePanel(this, this.transition);
 			receivePanel.setBorder(BorderFactory.createCompoundBorder(
@@ -1687,29 +1635,10 @@ public class TransitionPropertyEditor extends JDialog implements
 					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 		}
-		if (assignPanel != null) {
-			bpelPanel.remove(assignPanel);
-		}
-		if (invokePanel != null) {
-			bpelPanel.remove(invokePanel);
-		}
-		if (replyPanel != null) {
-			bpelPanel.remove(replyPanel);
-		}
-		if (waitPanel != null) {
-			bpelPanel.remove(waitPanel);
-		}
-
-		if (this.transition.getBpelData() != null && Receive.class.isInstance(this.transition.getBpelData())) {
-			Receive iReceive = (Receive) this.transition.getBpelData();
-			iReceive.setInformationToPanel(receivePanel);
-		}
-
-		bpelPanel.add(receivePanel, c2);
-		repaint();
+		return this.receivePanel;
 	}
 
-	private void showReplyPanel() {
+	private BPELreplyPanel getReplyPanel() {
 		if (replyPanel == null) {
 			replyPanel = new BPELreplyPanel(this, this.transition);
 			replyPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -1718,29 +1647,10 @@ public class TransitionPropertyEditor extends JDialog implements
 					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 		}
-		if (assignPanel != null) {
-			bpelPanel.remove(assignPanel);
-		}
-		if (receivePanel != null) {
-			bpelPanel.remove(receivePanel);
-		}
-		if (invokePanel != null) {
-			bpelPanel.remove(invokePanel);
-		}
-		if (waitPanel != null) {
-			bpelPanel.remove(waitPanel);
-		}
-
-		if (this.transition.getBpelData() != null && Reply.class.isInstance(this.transition.getBpelData())) {
-			Reply iReply = (Reply) this.transition.getBpelData();
-			iReply.setInformationToPanel(replyPanel);
-		}
-
-		bpelPanel.add(replyPanel, c2);
-		repaint();
+		return this.replyPanel;
 	}
 
-	private void showWaitPanel() {
+	private BPELwaitPanel getWaitPanel() {
 		if (waitPanel == null) {
 			waitPanel = new BPELwaitPanel(this, this.transition);
 			waitPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -1749,27 +1659,7 @@ public class TransitionPropertyEditor extends JDialog implements
 					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 		}
-		if (assignPanel != null) {
-			bpelPanel.remove(assignPanel);
-		}
-
-		if (invokePanel != null) {
-			bpelPanel.remove(invokePanel);
-		}
-		if (receivePanel != null) {
-			bpelPanel.remove(receivePanel);
-		}
-		if (replyPanel != null) {
-			bpelPanel.remove(replyPanel);
-		}
-
-		if (this.transition.getBpelData() != null && Wait.class.isInstance(this.transition.getBpelData())) {
-			Wait iWait = (Wait) this.transition.getBpelData();
-			iWait.setInformationToPanel(waitPanel);
-		}
-
-		bpelPanel.add(waitPanel, c2);
-		repaint();
+		return this.waitPanel;
 	}
 
 	// *****************************************************ButtonPanel****************************************************
@@ -1817,35 +1707,12 @@ public class TransitionPropertyEditor extends JDialog implements
 					}
 
 					// save BPEL settings
-					int index = activityChooseComboBox.getSelectedIndex();
-					switch (index) {
-					case 0:
-						transition.setBaseActivity(new Empty(transition.getNameValue()));
-						break;
-					case 1:
-						Assign iAssign = new Assign(transition.getNameValue());
-						iAssign.saveInformation(assignPanel);
-						transition.setBaseActivity(iAssign);
-						break;
-					case 2:
-						Invoke iInvoke = new Invoke(transition.getNameValue());
-						iInvoke.saveInformation(invokePanel);
-						transition.setBaseActivity(iInvoke);
-						break;
-					case 3:
-						Receive iReceive = new Receive(transition.getNameValue());
-						iReceive.saveInformation(receivePanel);
-						transition.setBaseActivity(iReceive);
-						break;
-					case 4:
-						Reply iReply = new Reply(transition.getNameValue());
-						iReply.saveInformation(replyPanel);
-						transition.setBaseActivity(iReply);
-						break;
-					case 5:
-						Wait iWait = new Wait(transition.getNameValue());
-						iWait.saveInformation(waitPanel);
-						transition.setBaseActivity(iWait);
+					if (activityChooseComboBox.getSelectedIndex() != 0) {
+						((BPELadditionalPanel) activityChooseComboBox
+								.getSelectedItem()).saveInfomation();
+					} else {
+						transition.setBaseActivity(new Empty(transition
+								.getNameValue()));
 					}
 
 				}
