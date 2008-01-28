@@ -36,8 +36,8 @@ public class ImageExport {
             graph.setGridVisible(false);
             graph.toScreen(rectangle);
 
-            // Create a Buffered Image
             Dimension dimension = rectangle.getBounds().getSize();
+            // Check Dimension, if max size reached, let user know about this and resize graph
             if(dimension.width < MAX_WIDTH && dimension.height < MAX_HEIGHT)
             {
             	image = new BufferedImage(dimension.width, dimension.height, BufferedImage.TYPE_INT_RGB);
@@ -54,6 +54,19 @@ public class ImageExport {
     					Messages.getString("QuanlAna.ReachabilityGraph.ExportFailed") + MAX_HEIGHT + "X" + MAX_WIDTH, Messages
     							.getString("QuanlAna.ReachabilityGraph.ExportFailed.Title"),
     					JOptionPane.ERROR_MESSAGE);
+                double g2dWidth = dimension.width;
+                double g2dHeight = dimension.height;
+                double pageWidth = MAX_WIDTH;
+                double pageHeight = MAX_HEIGHT;
+                double xScaleFactor = pageWidth / g2dWidth;
+                double yScaleFactor = pageHeight / g2dHeight;
+            	image = new BufferedImage(MAX_WIDTH, MAX_HEIGHT, BufferedImage.TYPE_INT_RGB);
+                Graphics2D graphics = image.createGraphics();
+                graphics.translate(-rectangle.getX(), -rectangle.getY());
+                graphics.scale(xScaleFactor, yScaleFactor);
+                graph.paint(graphics);
+
+                graph.setGridVisible(ConfigurationManager.getConfiguration().isShowGrid()); 
             }
                      
         }
