@@ -18,6 +18,7 @@ import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.reachabilitygraph.controller.ParallelRouter;
+import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityCellListener;
 import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphViewFactory;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 
@@ -33,11 +34,12 @@ public class ReachabilityGraphModel {
 	}
 	
 	public JGraph getGraph(){
-		GraphModel model = new DefaultGraphModel(); 
+		GraphModel model = new DefaultGraphModel();
 		GraphLayoutCache view = new GraphLayoutCache(model,	new ReachabilityGraphViewFactory());
 		view.setAutoSizeOnValueChange(true);
 		view.setSelectsAllInsertedCells(false);
-		ReachabilityJGraph graph = new ReachabilityJGraph(model, view); 
+		ReachabilityJGraph graph = new ReachabilityJGraph(model, view);
+		graph.addMouseListener(new ReachabilityCellListener(graph));
 		// Compute ReachabilityGraph
 		BuildReachability dataSource = new BuildReachability(editor);
 		HashMap<String, TransitionObject> transactions = dataSource.getTransactions();
@@ -58,7 +60,7 @@ public class ReachabilityGraphModel {
 			
 			edge.setSource(src.getChildAt(0));
 			edge.setTarget(tar.getChildAt(0));
-	        GraphConstants.setRouting(edge.getAttributes(), ParallelRouter.getSharedInstance(view));
+	        //GraphConstants.setRouting(edge.getAttributes(), ParallelRouter.getSharedInstance(view));
 			cellsList.add(edge);	
 		}
 		graph.getGraphLayoutCache().insert(cellsList.toArray());

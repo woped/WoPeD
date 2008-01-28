@@ -29,8 +29,6 @@ public class ReachabilityPlaceView extends VertexView {
 		return renderer;
 	}
 	
-
-	
 	private static class ReachabilityPlaceRenderer extends VertexRenderer implements CellViewRenderer
 	{
 		

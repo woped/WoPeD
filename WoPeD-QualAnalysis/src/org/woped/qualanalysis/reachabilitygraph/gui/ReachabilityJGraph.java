@@ -1,6 +1,7 @@
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.ToolTipManager;
 
@@ -30,4 +31,16 @@ public class ReachabilityJGraph extends JGraph {
 		  return null;
 		}
 
+	public Vector<Object> getAllCellsForLocation(double x, double y) {
+		Object cell = getFirstCellForLocation(x, y);
+		Object topMostCell = cell;
+		Vector<Object> allCells = new Vector<Object>();
+		allCells.add(cell);
+
+		for (cell = getNextCellForLocation(cell, x, y); cell != topMostCell; cell = getNextCellForLocation(cell, x, y)) {
+			allCells.add(cell);
+		}
+		return allCells;
+	}
+	
 }
