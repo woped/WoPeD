@@ -371,6 +371,11 @@ public class TokenGameBarVC extends JInternalFrame {
     	return acoAuto.isSelected();
     }
     
+    public void setAutoChoiceSelected(boolean selected)
+    {
+    	acoAuto.setSelected(selected);
+    }
+    
     public void setRecordSelected(boolean isSelected)
     {
     	pbnRecord.setSelected(isSelected);

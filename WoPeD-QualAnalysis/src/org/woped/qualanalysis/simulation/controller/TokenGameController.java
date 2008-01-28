@@ -23,7 +23,6 @@
 package org.woped.qualanalysis.simulation.controller;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashSet;
@@ -50,9 +49,6 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
-import org.woped.qualanalysis.simulation.TokenGameBarVC;
-import org.woped.qualanalysis.test.*;
-
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -318,7 +314,7 @@ public class TokenGameController
             	            	
             	if(transition.getType() == PetriNetModelElement.SUBP_TYPE)
             	{
-            		RemoteControl.enableStepDown(); //Enables Step-Down Navigation Button
+            		RemoteControl.enableStepDown(transition); //Enables Step-Down Navigation Button
             	}
             }
         } 
@@ -1228,6 +1224,10 @@ public class TokenGameController
     		{
     			arcClicked(getPetriNet().getElementContainer().getArcById(transition.getId()));
     		}
+    	}
+    	else if(checkA == 'S')
+    	{
+    		thisEditor.openTokenGameSubProcess((SubProcessModel)transition);
     	}
     	else
     	{

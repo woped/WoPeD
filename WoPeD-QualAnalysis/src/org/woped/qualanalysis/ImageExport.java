@@ -16,7 +16,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphPanel;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
-import org.woped.qualanalysis.test.ReferenceProvider;
+import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.translations.Messages;
 
 public class ImageExport {

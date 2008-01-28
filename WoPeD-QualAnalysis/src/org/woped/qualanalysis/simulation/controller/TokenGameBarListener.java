@@ -1,19 +1,14 @@
 package org.woped.qualanalysis.simulation.controller;
 import java.awt.event.*;
 
-
-import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.qualanalysis.test.*;
 import org.woped.qualanalysis.simulation.*;
 
-import javax.swing.*;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 
-import org.woped.translations.Messages;
 
-import java.awt.*;
 
 public class TokenGameBarListener implements ActionListener, MouseListener, ChangeListener {
 	
@@ -23,6 +18,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	public final static int           CHOOSE_STEPWISE        = 1;
 	public final static int           CHOOSE_PLAYBACK        = 2;
 	public final static int           OPEN_PLAYBACK_MANAGER  = 3;
+	public final static int           CHANGE_PLAYMODE        = 14; //This is used for the SlimView, only
 	
 	//Navigation Button
 	public final static int           CLICK_FAST_BACKWARD    = 4;
@@ -41,7 +37,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	public final static int           CHOOSE_AUTO_CHOICE     = 13;
 
 	//History Management
-	public final static int           CHOOSE_JUMP_HERE       = 14;
 	public final static int           OPEN_HISTORY_MANAGER   = 15;
 	public final static int           CHOOSE_DELETE_CURRENT  = 16;
 	
@@ -120,6 +115,13 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 /*
 			  * Will make a step back
 			  */
+			 if (RemoteControl.getViewMode() > 0)
+			 {
+				 if(RemoteControl.getTokenGameController().getThisEditor().isSubprocessEditor())
+				 {
+					 RemoteControl.changeTokenGameReference(null, true); 
+				 }
+			 }
 			 if (RemoteControl.tokengameRunning())
 			 {
 				 if(RemoteControl.getAutoPlayBack())
@@ -144,7 +146,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		         RemoteControl.createSaveableHistory();
 		       }
 		       RemoteControl.enablePlayButton();
-		       RemoteControl.enableStepDown();
+		       RemoteControl.enableStepDown(null);
 		       RemoteControl.enableRecordButton();
 			 }
 			 break;
@@ -200,7 +202,22 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 				RemoteControl.switchAutoChoice();
 			 }
 			 break;
-		 case CHOOSE_JUMP_HERE:
+		 case CHANGE_PLAYMODE:
+			 /*
+			  * Switch Playmode to stepwise
+			  */
+			 if(RemoteControl.getAutoPlayBack())
+			 {
+				RemoteControl.setAutoPlayback(false); 
+				break; 
+			 }
+			 /*
+			  * Switch playmode to autoplay
+			  */
+			 else
+			 {
+			    RemoteControl.setAutoPlayback(true);
+			 }
 			 break;
 		 case OPEN_HISTORY_MANAGER:
 			 showHistoryManager();
@@ -256,8 +273,12 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			   PlaybackDialog.savePMView();
 			   break;
 			 }
-			 if(RemoteControl.getViewMode() == RemoteControl.SLIM_VIEW)
+			 if((RemoteControl.getViewMode() == RemoteControl.SLIM_VIEW) || (RemoteControl.getViewMode() == RemoteControl.EYE_VIEW))
 			 {
+			   if(RemoteControl.tokengameRunning())
+			   {
+				   RemoteControl.getExpertView().disableRecordButton();
+			   }
 			   RemoteControl.setViewMode(RemoteControl.EXPERT_VIEW);
 			   break;
 			 }
@@ -349,6 +370,8 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		}
 		RemoteControl.getTokenGameController().TokenGameRetore();
 		RemoteControl.clearChoiceBox();
+		RemoteControl.setStepIn(false);
+		RemoteControl.getSlimView().getSlimPanel().setChoiceListInvisible();
 	}
 
 	

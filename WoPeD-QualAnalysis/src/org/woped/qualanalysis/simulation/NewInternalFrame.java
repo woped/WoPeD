@@ -24,6 +24,8 @@ public class NewInternalFrame extends JInternalFrame {
 	private JPanel mover = null;
 	private Shape  shape = null;
 	
+	private int    ViewMode = 0;
+	
 	//Constructor(s)
 	/**
 	 * never change opacity, please.
@@ -32,7 +34,15 @@ public class NewInternalFrame extends JInternalFrame {
 	public NewInternalFrame(int ViewMode)
 	{
 		super();
-		this.setSize(580, 130);
+		this.ViewMode = ViewMode;
+		if(ViewMode == 1)
+		{
+		    this.setSize(580, 130);
+		}
+		else
+		{
+			this.setSize(140, 150);
+		}
 		this.setVisible(true);
 		this.setOpaque(false);
 		mover = new JPanel();
@@ -53,7 +63,15 @@ public class NewInternalFrame extends JInternalFrame {
 	{
 	  if (shape == null || !shape.getBounds().equals(getBounds())) 
 	  {
-	    shape = new Rectangle.Float(0, 0, 580,130);
+		if(ViewMode == 1)
+		{
+	      shape = new Rectangle.Float(0, 0, 580,130);
+		}
+		else
+		{
+		  shape = new Rectangle.Float(0, 0, 230,230);
+		}
+		
 	  }
 	  return shape.contains(x, y);
 	}

@@ -44,9 +44,8 @@ import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
-import org.woped.qualanalysis.simulation.TokenGameBarVC;
+import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.translations.Messages;
-import org.woped.qualanalysis.test.*;
 
 @SuppressWarnings("serial")
 public class DefaultUserInterface extends JFrame implements IUserInterface, InternalFrameListener

@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.test;
+package org.woped.qualanalysis.simulation.controller;
 
 import org.woped.core.controller.*;
 import org.woped.core.gui.*;
