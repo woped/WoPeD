@@ -186,6 +186,14 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 			return "";
 		return variableComboBox.getSelectedItem().toString();
 	}
+	
+	public boolean allFieldsFilled(){
+		if (partnerLinkComboBox.getSelectedItem() == null || operationComboBox.getSelectedItem() == null || variableComboBox.getSelectedItem() == null){
+			return false;
+		}
+		else
+			return true;
+	}
 
 	// ***************** content setter methods **************************
 
