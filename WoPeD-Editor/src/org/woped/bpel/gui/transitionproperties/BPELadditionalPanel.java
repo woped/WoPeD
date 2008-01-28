@@ -508,8 +508,8 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 else{
                                                 	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
                                                 	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
-    											//	modelElementContainer.addPartnerLink(
-    											//		name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
+    												modelElementContainer.addPartnerLink(
+    													name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
     												updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
                                         }
