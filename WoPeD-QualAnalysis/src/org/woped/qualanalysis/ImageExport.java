@@ -62,7 +62,7 @@ public class ImageExport {
             {
             	ReferenceProvider mediator = new ReferenceProvider();
             	JOptionPane.showMessageDialog(mediator.getMediatorReference().getUi().getComponent(),
-    					Messages.getString("QuanlAna.ReachabilityGraph.ExportFailed") + MAX_HEIGHT + "X" + MAX_WIDTH, Messages
+    					Messages.getString("QuanlAna.ReachabilityGraph.ExportFailed"), Messages
     							.getString("QuanlAna.ReachabilityGraph.ExportFailed.Title"),
     					JOptionPane.ERROR_MESSAGE);
                 double g2dWidth = dimension.width;
