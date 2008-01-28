@@ -39,12 +39,12 @@ public class ParallelRouter extends LoopRouting {
 	/**
 	 * Distance between each parallel edge
 	 */
-	private static double edgeSeparation = 15.;
+	private static double edgeSeparation = 10.;
 
 	/**
 	 * Distance between intermediate and source/target points
 	 */
-	private static double edgeDeparture = 10.;
+	private static double edgeDeparture = 25.;
 
 	/**
 	 * Getter for singleton managing parallel edges

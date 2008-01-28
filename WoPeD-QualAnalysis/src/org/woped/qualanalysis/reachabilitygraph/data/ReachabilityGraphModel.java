@@ -1,6 +1,7 @@
 package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.awt.Dimension;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Collection;
 import java.util.HashMap;
@@ -90,6 +91,8 @@ public class ReachabilityGraphModel {
 	
 	private static ReachabilityEdgeModel getEdge(HashSet<DefaultGraphCell> cellsList, TransitionObject to){
 		Iterator<DefaultGraphCell> iterCellsList = cellsList.iterator();
+		ReachabilityEdgeModel returnEdge = new ReachabilityEdgeModel(to);
+		int differ = 1;
 		if(cellsList != null && !cellsList.isEmpty()){
 			while(iterCellsList.hasNext()){
 				DefaultGraphCell cell = iterCellsList.next();
@@ -101,11 +104,13 @@ public class ReachabilityGraphModel {
 					// Target
 					ReachabilityPortModel tarRpom = (ReachabilityPortModel) edge.getTarget();
 					ReachabilityPlaceModel tarRplm = (ReachabilityPlaceModel) tarRpom.getParent();
+					if(to.start == srcRplm.getUserObject() && to.ende == tarRplm.getUserObject()){
+						GraphConstants.setLabelPosition(edge.getAttributes(), new Point2D.Double(GraphConstants.PERMILLE*(6-(0.6*differ++))/8, -20));
+					}
 				}
 			}
 		}
-		ReachabilityEdgeModel edge = new ReachabilityEdgeModel(to);
-		return edge;
+		return returnEdge;
 	}
 	
 	public static ReachabilityPlaceModel lookupInitialMarking(LinkedList<ReachabilityPlaceModel> markings){
