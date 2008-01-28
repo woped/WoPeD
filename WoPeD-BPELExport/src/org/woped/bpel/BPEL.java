@@ -11,6 +11,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.apache.xmlbeans.XmlOptions;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.ProcessDocument;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLink;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
@@ -165,27 +166,18 @@ public class BPEL
 	public void setGlobals(TProcess iProcess, PetriNetModelProcessor pnp){
 		TVariables itempVars = (TVariables)pnp.getElementContainer().getTVariablesList();
 		TPartnerLinks itempLinks = (TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList(); 
-		if((itempVars == null) || (itempLinks == null)) return;
 		if ((itempVars.sizeOfVariableArray()>0)&(itempVars != null)){
 			TVariables iVars = iProcess.addNewVariables();
 			for (int i=0;itempVars.sizeOfVariableArray()>i;i++){
-				iVars.addNewVariable();
-				iVars.setVariableArray(i, itempVars.getVariableArray()[i]);
+				iVars.addNewVariable().set(itempVars.getVariableArray(i));
 			}
 		}
+		System.out.println("Size: "+itempLinks.sizeOfPartnerLinkArray());
 		if ((itempLinks.sizeOfPartnerLinkArray()>0)&(itempLinks != null)){
 			TPartnerLinks iLinks = iProcess.addNewPartnerLinks();
-			for (int i=0;iLinks.sizeOfPartnerLinkArray()>i;i++){
-				iLinks.addNewPartnerLink();
-				iLinks.setPartnerLinkArray(i, itempLinks.getPartnerLinkArray()[i]);
+			for (int j=0;itempLinks.sizeOfPartnerLinkArray()>j;j++){
+				iLinks.addNewPartnerLink().set((TPartnerLink)itempLinks.getPartnerLinkArray(j));
 			}
 		}
-		/*
-		TPartnerLinks itempPLs =(TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList();
-		if (itempPLs.sizeOfPartnerLinkArray()>0){
-			TPartnerLinks iPLs = iProcess.addNewPartnerLinks();
-			iPLs.set(itempPLs);
-		}*/
-		
 	}
 }
