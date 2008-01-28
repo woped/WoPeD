@@ -564,7 +564,15 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 		return durationTextFieldSecond.getText();
 	}
 
-
+	
+	public boolean allFieldsFilled(){
+		if ((deadLineTextFieldHour.getText() == null | deadLineTextFieldMinute.getText() == null | deadLineTextFieldSecond.getText() == null) || 
+				(durationTextFieldYear.getText() == null | durationTextFieldMonth.getText() == null | durationTextFieldDay.getText() == null | durationTextFieldHour.getText() == null | durationTextFieldMinute.getText() == null | durationTextFieldSecond.getText() == null)){
+			return false;
+		}
+		else
+			return true;
+	}
 
 
 	@Override
