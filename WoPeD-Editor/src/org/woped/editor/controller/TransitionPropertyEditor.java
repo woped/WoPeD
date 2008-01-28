@@ -73,6 +73,7 @@ import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
+import org.woped.bpel.gui.transitionproperties.*;
 
 /**
  * @author waschtl
@@ -1549,6 +1550,27 @@ public class TransitionPropertyEditor extends JDialog implements
 			this.activityChooseComboBox.addItem(this.getWaitPanel());
 
 			this.activityChooseComboBox.setSelectedItem(this.getEmptyPanel());
+
+			//cases to select the right panel at first run
+			if (Empty.class.isInstance(this.transition.getBpelData())
+					|| this.transition.getBpelData() == null)
+				this.activityChooseComboBox.setSelectedItem(this
+						.getEmptyPanel());
+			else if (Assign.class.isInstance(this.transition.getBpelData()))
+				this.activityChooseComboBox.setSelectedItem(this
+						.getAssignPanel());
+			else if (Invoke.class.isInstance(this.transition.getBpelData()))
+				this.activityChooseComboBox.setSelectedItem(this
+						.getInvokePanel());
+			else if (Receive.class.isInstance(this.transition.getBpelData()))
+				this.activityChooseComboBox.setSelectedItem(this
+						.getReceivePanel());
+			else if (Reply.class.isInstance(this.transition.getBpelData()))
+				this.activityChooseComboBox.setSelectedItem(this
+						.getReplyPanel());
+			else if (Wait.class.isInstance(this.transition.getBpelData()))
+				this.activityChooseComboBox
+						.setSelectedItem(this.getWaitPanel());
 
 			activityChooseComboBox.addItemListener(new ItemListener() {
 
