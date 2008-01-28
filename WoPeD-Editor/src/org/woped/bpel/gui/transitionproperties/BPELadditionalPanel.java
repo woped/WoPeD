@@ -462,8 +462,9 @@ public abstract class BPELadditionalPanel extends JPanel {
                         public void actionPerformed(ActionEvent e){
 
                         		// Important: Delete whitespaces at the beginning and at the end of strings.
-                        		String name    = partnerLinkNameTextField.getText().trim();
-                                String wsdlUrl = wsdlFileTextField.getText();
+                        		String name      = partnerLinkNameTextField.getText().trim();
+                                String wsdlUrl   = wsdlFileTextField.getText();
+                                String namespace = wsdlFileRepresentation.getNamespace();
 
                                 // Check if combo boxes are filled with data
                                 if ( (partnerLinkTypeComboBox.getItemCount() != 0) && (partnerRoleComboBox.getItemCount() != 0) ){
@@ -489,7 +490,7 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 	System.out.println("1");
                                                 	// TODO ?: Gibt es hier auch Operations und Types?
                                                	    modelElementContainer.addPartnerLinkWithoutPartnerRole(
-                                                                        name, "dummyNamespace:" /*namespace*/, partnerLinkType, myRole, wsdlUrl);
+                                                                        name, namespace, partnerLinkType, myRole, wsdlUrl);
                                                	    updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
 
@@ -500,7 +501,7 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
                                                 	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
                                                 	modelElementContainer.addPartnerLinkWithoutMyRole(
-                                                		name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, wsdlUrl);
+                                                		name, namespace, partnerLinkType, partnerRole, wsdlUrl);
                                                 	updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
 
@@ -509,7 +510,7 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
                                                 	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
     												modelElementContainer.addPartnerLink(
-    													name, "namespace:" /*namespace*/, partnerLinkType, partnerRole, myRole, wsdlUrl);
+    													name, namespace, partnerLinkType, partnerRole, myRole, wsdlUrl);
     												updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
                                         }

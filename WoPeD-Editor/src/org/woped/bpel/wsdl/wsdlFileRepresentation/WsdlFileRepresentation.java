@@ -14,6 +14,21 @@ public class WsdlFileRepresentation {
 	private ArrayList<PartnerLinkType> partnerLinkTypes = new ArrayList<PartnerLinkType>();
 	private ArrayList<PortType> 	   portTypes 		= new ArrayList<PortType>();
 	private ArrayList<Message> 		   messages 		= new ArrayList<Message>();
+	private String					   namespace		= null;
+
+
+
+/*
+ * Setter methods
+ ************************************************/
+/**
+ * Sets the namespace of the wsdl document.
+ *
+ * @param 	A String with the targetNamespace of the wsdl document.
+ ***********************************************************************************************/
+	public void setNamespace(String namespace){
+		this.namespace = namespace;
+	}
 
 /*
  * Getter methods
@@ -107,6 +122,17 @@ public class WsdlFileRepresentation {
 		return message;
 	}
 
+
+/**
+ * Returns an object of type String with the targetNamespace of the wsdl document.
+ *
+ * @return 	A String with the targetNamespace of the wsdl document.
+ ***********************************************************************************************/
+	public String getNamespace(){
+		return namespace;
+	}
+
+
 /*
  * Methods for manipulating the ArrayLists
  ************************************************/
@@ -138,3 +164,7 @@ public class WsdlFileRepresentation {
 	}
 
 }
+
+
+
+

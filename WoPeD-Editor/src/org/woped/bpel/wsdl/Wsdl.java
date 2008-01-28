@@ -217,6 +217,15 @@ public class Wsdl {
 // 					So now the next open tag is a "super element" tag.
 // 					("super element" tags = types, message, portType, binding, port, service or partnerLinkType)
 				else{
+					// Check if the current tag is the "definitions" tag.
+					if (element.getName().getLocalPart().equals("definitions")){
+						for (Iterator<?> attributes = element.getAttributes(); attributes.hasNext();) {
+							Attribute attribute = (Attribute) attributes.next();
+							if (attribute.getName().toString().equals("targetNamespace")){
+								wsdlFileRepresentation.setNamespace(attribute.getValue());
+							}
+						}
+					}
 					// Check if the current tag is the "partnerLinkType" tag.
 					if (element.getName().getLocalPart().equals("partnerLinkType")){
 						bool_partnerLinkType = true;
