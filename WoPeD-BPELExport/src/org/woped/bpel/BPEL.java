@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
+import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.ProcessDocument;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLink;
@@ -170,13 +171,28 @@ public class BPEL
 			TVariables iVars = iProcess.addNewVariables();
 			for (int i=0;itempVars.sizeOfVariableArray()>i;i++){
 				iVars.addNewVariable().set(itempVars.getVariableArray(i));
+				XmlCursor curs = iVars.getVariableArray(i).newCursor();
+				curs.toNextToken();
+				curs.toNextToken();
+				curs.toNextToken();
+				if(curs.isNamespace()){
+					curs.removeXml();
+				}
 			}
 		}
-		System.out.println("Size: "+itempLinks.sizeOfPartnerLinkArray());
 		if ((itempLinks.sizeOfPartnerLinkArray()>0)&(itempLinks != null)){
 			TPartnerLinks iLinks = iProcess.addNewPartnerLinks();
 			for (int j=0;itempLinks.sizeOfPartnerLinkArray()>j;j++){
 				iLinks.addNewPartnerLink().set((TPartnerLink)itempLinks.getPartnerLinkArray(j));
+				XmlCursor curs = iLinks.getPartnerLinkArray(j).newCursor();
+				curs.toNextToken();
+				curs.toNextToken();
+				curs.toNextToken();
+				curs.toNextToken();
+				curs.toNextToken();
+				if(curs.isNamespace()){
+					curs.removeXml();
+				}
 			}
 		}
 	}
