@@ -183,7 +183,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 	
 	public boolean allFieldsFilled(){
-		if (fromVariableComboBox.getSelectedItem() == null || toVariableComboBox.getSelectedItem() == null){
+		if (fromVariableComboBox.getSelectedItem() == null | toVariableComboBox.getSelectedItem() == null){
 			return false;
 		}
 		else
