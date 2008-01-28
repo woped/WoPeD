@@ -706,6 +706,7 @@ public class PNMLImport
                     {
                         if (currentTargetModel == null && currentSourceModel != null)
                         {
+                        	// if the current arcs target is an operator this block is executed
                             if (arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != 0)
                             {
                                 tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR));
@@ -717,11 +718,12 @@ public class PNMLImport
                             {
                         		String sourceId = arcs[i].getSource();
                         		String targetId = tempID;
-                        		arc =processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
+                        		arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                             }
                         }
                         if (currentSourceModel == null && currentTargetModel != null)
                         {
+                        	// if the current arcs source is an operator this block is executed
                             if (arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != 0)
                             {
                                 tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR));
@@ -734,11 +736,12 @@ public class PNMLImport
                             {
                         		String sourceId = tempID;
                         		String targetId = arcs[i].getTarget();
-                        		arc =processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
+                        		arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                             }
                         }
                         if (currentTargetModel != null && currentSourceModel != null)
                         {
+                        	// in the easiest case if the imported arc isn't connected to an operator this block is executed
                     		String sourceId = arcs[i].getSource();
                     		String targetId = arcs[i].getTarget();
                     		arc =processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
@@ -781,6 +784,7 @@ public class PNMLImport
                     }
                 } else
                 {
+                	// if toolspecific import is disabled then import the arc "as is" (and don't replace transitions with toolspecific operators)
             		String sourceId = arcs[i].getSource();
             		String targetId = arcs[i].getTarget();
             		arc =processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
@@ -810,9 +814,12 @@ public class PNMLImport
         }
     }
     
-    private void importSimulations(SimulationType[] simulations, PetriNetModelProcessor currentPetrinet)
+    /**
+     * @param simulations The simulationsarray which comes from the pnml-file
+     * @param currentPetrinet The new PetriNetModelProcessor of the petrinet we restore at the moment 
+     */
+    private void importSimulations(SimulationType[] simulations, PetriNetModelProcessor currentPetrinet) throws Exception
     {
-    	try{ //TODO: remove this / add throws-klausel? - only for development here...
     	SimulationModel currSimulation;
     	TransitionModel currTransition;
     	String currSimulationID;
@@ -820,6 +827,7 @@ public class PNMLImport
     	String currentFingerprint = currentPetrinet.getLogicalFingerprint();
     	for (int k = 0; k<simulations.length; k++)
     	{
+    		// collect the information about the current simulation in local variables
     		currSimulationID = simulations[k].getId();
     		FiredtransitionType[] firedTransitions = simulations[k].getTransitionsequence().getFiredtransitionArray();
     		Vector<TransitionModel> currentTransitions = new Vector<TransitionModel>();
@@ -840,7 +848,7 @@ public class PNMLImport
     	            arcTarget = currentPetrinet.getElementContainer().getArcById(currTransitionID).getTargetId();
     	            if(arcSource.charAt(0)=='t')
     	            {
-    	            	// TODO: SimpleTransition probieren - problem mit clone()...?
+    	            	// TODO: try SimpleTransition - problems with clone()...?
     	            	currTransition = (TransitionModel) currentPetrinet.getElementContainer().getElementById(arcSource).clone();
     	            	currTransitionName = arcSource + " -> (" + arcTarget +")";
     	            }
@@ -850,8 +858,7 @@ public class PNMLImport
     	            	currTransitionName = "(" + arcSource + ") -> " + arcTarget;
     	            }
     	            currTransition.setId(currTransitionID);
-    	            //currTransition.setNameValue(currTransitionName);
-    	            currTransition.setNameValue("GenerierterName");
+    	            currTransition.setNameValue(currTransitionName);
     	            LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation: HelperTransition for arc ("+currTransitionID+") created");
     			}
     			else
@@ -860,8 +867,7 @@ public class PNMLImport
     			}
     			currentTransitions.add(currTransition);
     		}
-    		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions, null);
-    		currSimulation.setFingerprint(simulations[k].getNetFingerprint());
+    		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions, simulations[k].getNetFingerprint());
     		// check if current fingerprint of the net equals the imported one
     		// if not display a warning
     		if(!currentFingerprint.equals(simulations[k].getNetFingerprint()))
@@ -872,25 +878,25 @@ public class PNMLImport
     		}
     		currentPetrinet.addSimulation(currSimulation);
     		LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ")imported");
+    		// TODO: check if this is really necessary because of possible duplicate-check when requesting a new simulation-id....
     		try
     		{
-    			int idNumber = Integer.parseInt(currSimulationID.substring(1));
+    			int currSimulationIdNumber = Integer.parseInt(currSimulationID.substring(1));
     			// select largest simulation-id number to correctly set the simulationcounter
-    			if(idNumber>greatestSimulationIDnumber)
+    			if(currSimulationIdNumber>greatestSimulationIDnumber)
     			{
-    				greatestSimulationIDnumber = idNumber;
+    				greatestSimulationIDnumber = currSimulationIdNumber;
     			}
     		}
     		catch(NumberFormatException nfe)
     		{
-    			// if a simulationID doesn't have a correct format (like 's1', 's13',...) increment
+    			// if a simulationID doesn't have a correct format (correct = 's1', 's13',...) increment
     			// the counter by one to avoid ID-conflicts. In the worst case this only leads to an unused id
     			greatestSimulationIDnumber ++;
     			LoggerManager.debug(Constants.FILE_LOGGER, "WARNING - INVALID SIMULATION-ID FOUND: found a malformed simulation-id (ID: " + currSimulationID + ")");
     		}
     	}
     	currentPetrinet.setSimulationCounter(greatestSimulationIDnumber);
-    	}catch(Exception e){e.printStackTrace();}
     }
 
     private boolean isOperator(ModelElementContainer elementContainer, String elementId) throws Exception

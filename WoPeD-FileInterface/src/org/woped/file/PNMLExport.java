@@ -727,7 +727,7 @@ public class PNMLExport
         // graphics
         initArcGraphics(iArc.addNewGraphics(), outerArc);
         // attr. id
-        iArc.setId(useArc.getId());
+        iArc.setId(outerArc.getId());
         // attr. source
         iArc.setSource(useArc.getSourceId());
         if (ConfigurationManager.getConfiguration().isExportToolspecific())
