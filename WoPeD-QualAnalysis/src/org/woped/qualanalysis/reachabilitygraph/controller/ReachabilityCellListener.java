@@ -31,12 +31,9 @@ public class ReachabilityCellListener implements MouseListener {
            if (cell != null && cell instanceof ReachabilityPlaceModel)
            {
         	   ReachabilityPlaceModel place = (ReachabilityPlaceModel)cell;
-               System.out.print(place.getUserObject().toString() + " has ");
                deHighlightEdges();
                highlightEdges(place);
            } else if (cell != null && cell instanceof ReachabilityEdgeModel){
-        	   ReachabilityEdgeModel edge = (ReachabilityEdgeModel)cell;
-               System.out.println(edge.getUserObject().toString());
                deHighlightEdges();
            } else {
         	   deHighlightEdges();
@@ -72,8 +69,6 @@ public class ReachabilityCellListener implements MouseListener {
 	private void highlightEdges(ReachabilityPlaceModel place){
 		ReachabilityPortModel port = (ReachabilityPortModel) place.getChildAt(0);
 		Set<ReachabilityEdgeModel> edges = (Set<ReachabilityEdgeModel>)port.getEdges();
-		int in = 0;
-		int out = 0;
 		Iterator<ReachabilityEdgeModel> iterEdges = edges.iterator();
 		Map editMap = new HashMap();
 		while(iterEdges.hasNext()){
@@ -81,18 +76,15 @@ public class ReachabilityCellListener implements MouseListener {
 			if(edge.getSource().equals(port)){
 				GraphConstants.setLineColor(edge.getAttributes(), Color.green);
 				editMap.put(edge, edge.getAttributes());
-				out++;
 			} else if(edge.getTarget().equals(port)){
 				GraphConstants.setLineColor(edge.getAttributes(), Color.red);
 				editMap.put(edge, edge.getAttributes());
-				in++;
 			}
 		}
 		this.lastHighlighted = place;
 		if(editMap.size() > 0){
 			graph.getGraphLayoutCache().edit(editMap, null, null, null);	
 		}
-		System.out.println(in + " incoming edges and " + out + " outgoing edges.");
 	}
 	
 }

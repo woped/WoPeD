@@ -60,7 +60,7 @@ public class ReachabilityGraphModel {
 			
 			edge.setSource(src.getChildAt(0));
 			edge.setTarget(tar.getChildAt(0));
-	        //GraphConstants.setRouting(edge.getAttributes(), ParallelRouter.getSharedInstance(view));
+	        GraphConstants.setRouting(edge.getAttributes(), ParallelRouter.getSharedInstance(view));
 			cellsList.add(edge);	
 		}
 		graph.getGraphLayoutCache().insert(cellsList.toArray());
