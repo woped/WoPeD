@@ -509,7 +509,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 						}
 						// BPEL-Export
 						else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
-								& this.isSound(editor)) {
+								&& this.isSound(editor)) {
 							StructuralAnalysis sa = new StructuralAnalysis(
 									editor);
 							int wellStruct = sa
