@@ -29,11 +29,13 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 @SuppressWarnings("serial")
 public class BPELassignPanel extends BPELadditionalPanel {
 
+	JLabel fromVariableLabel = null;
 	JComboBox fromVariableComboBox = null;
 	JButton newFromVariableButton = null;
+	JLabel toVariableLabel = null;
 	JComboBox toVariableComboBox = null;
 	JButton newToVariableButton = null;
-
+	
 	JDialog dialogPartner = null;
 
 	public BPELassignPanel(TransitionPropertyEditor t_editor,
@@ -60,7 +62,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JLabel("Variable:"), c);
+		add(getFromVariableLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 1;
@@ -86,7 +88,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JLabel("Variable:"), c);
+		add(getToVariableLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 3;
@@ -102,6 +104,15 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		add(getNewToVariableButton(), c);
 	}
 
+	
+	private JLabel getFromVariableLabel() {
+		if (fromVariableLabel == null) {
+			fromVariableLabel  = new JLabel("Variable:");
+			fromVariableLabel.setPreferredSize(dimension);
+		}
+		return fromVariableLabel;
+	}
+	
 	private JComboBox getFromVariableComboBox() {
 		if (fromVariableComboBox == null) {
 			fromVariableComboBox = new JComboBox();
@@ -137,6 +148,14 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		return newFromVariableButton;
 	}
 
+	private JLabel getToVariableLabel() {
+		if (toVariableLabel == null) {
+			toVariableLabel  = new JLabel("Variable:");
+			toVariableLabel.setPreferredSize(dimension);
+		}
+		return toVariableLabel;
+	}
+	
 	private JComboBox getToVariableComboBox() {
 		if (toVariableComboBox == null) {
 			toVariableComboBox = new JComboBox();
