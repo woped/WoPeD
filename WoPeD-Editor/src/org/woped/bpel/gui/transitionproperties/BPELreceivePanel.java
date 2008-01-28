@@ -155,6 +155,15 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		return newVariableButton;
 	}
 
+	
+	public boolean allFieldsFilled(){
+		if (partnerLinkComboBox.getSelectedItem() == null || operationComboBox.getSelectedItem() == null || variableComboBox.getSelectedItem() == null){
+			return false;
+		}
+		else
+			return true;
+	}
+	
 
 //	fill partnerLinkComboBox with partner links
 	public void defineContentOfPartnerLinkComboBox(){

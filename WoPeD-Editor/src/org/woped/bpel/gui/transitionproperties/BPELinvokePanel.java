@@ -297,6 +297,15 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 			return "";
 		return outVariableComboBox.getSelectedItem().toString();
 	}
+	
+	public boolean allFieldsFilled(){
+		if (partnerLinkComboBox.getSelectedItem() == null || operationComboBox.getSelectedItem() == null || inVariableComboBox.getSelectedItem() == null || outVariableComboBox.getSelectedItem() == null){
+			return false;
+		}
+		else
+			return true;
+	}
+	
 
 	// ***************** content setter methods **************************
 
