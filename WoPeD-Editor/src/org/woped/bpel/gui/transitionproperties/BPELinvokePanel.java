@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import org.woped.bpel.wsdl.exceptions.NoPortTypeFoundException;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.Message;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.Operation;
+import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.*;
 import org.woped.translations.Messages;
@@ -29,9 +30,13 @@ import org.woped.translations.Messages;
  * Created on 08.01.2008
  */
 
-@SuppressWarnings("serial")
 public class BPELinvokePanel extends BPELadditionalPanel {
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final String PANELNAME = "invoke";
 	JLabel partnerLinkLabel = null;
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
@@ -201,11 +206,18 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 			newInVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVariableDialog dialog = new NewVariableDialog(t_editor);
-					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
-						inVariableComboBox.addItem(dialog.getNewVariableName());
-						inVariableComboBox.setSelectedIndex(inVariableComboBox
-								.getItemCount() - 1);
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+						fillVariableToComboBox(inVariableComboBox);
+						BpelVariable var = t_editor.getEditor()
+								.getModelProcessor().getElementContainer()
+								.findBpelVariableByName(
+										dialog.getNewVariableName());
+						inVariableComboBox.setSelectedItem(var);
+						
+						Object o = outVariableComboBox.getSelectedItem();
+						fillVariableToComboBox(outVariableComboBox);
+						outVariableComboBox.setSelectedItem(o);
 					}
 				}
 			});
@@ -237,13 +249,18 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 			newOutVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVariableDialog dialog = new NewVariableDialog(t_editor);
-					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
-						outVariableComboBox
-								.addItem(dialog.getNewVariableName());
-						outVariableComboBox
-								.setSelectedIndex(outVariableComboBox
-										.getItemCount() - 1);
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+						fillVariableToComboBox(outVariableComboBox);
+						BpelVariable var = t_editor.getEditor()
+								.getModelProcessor().getElementContainer()
+								.findBpelVariableByName(
+										dialog.getNewVariableName());
+						outVariableComboBox.setSelectedItem(var);
+						
+						Object o = inVariableComboBox.getSelectedItem();
+						fillVariableToComboBox(inVariableComboBox);
+						inVariableComboBox.setSelectedItem(o);
 					}
 				}
 			});
@@ -370,7 +387,21 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 	@Override
 	public void refresh() {
-		// TODO Auto-generated method stub
+		Object o = this.inVariableComboBox.getSelectedItem();
+		this.fillVariableToComboBox(this.inVariableComboBox);
+		this.inVariableComboBox.setSelectedItem(o);
+		o = this.outVariableComboBox.getSelectedItem();
+		this.fillVariableToComboBox(this.outVariableComboBox);
+		this.outVariableComboBox.setSelectedItem(o);
+		
+		if(Invoke.class.isInstance(this.transition.getBpelData()))
+		{
+			Invoke in = (Invoke)this.transition.getBpelData();
+			this.setInVariable(in.getInputVariable());
+			this.setOutVariable(in.getOutputVariable());
+			this.setPartnerLink(in.getPartnerLink());
+			this.setOperation(in.getOperation());			
+		}
 		this.repaint();
 	}
 
@@ -385,12 +416,12 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return "invoke";
+		return this.PANELNAME;
 	}
 
 	@Override
 	public void showPanel(JPanel panel, GridBagConstraints c) {
+		this.refresh();
 		panel.add(this,c);
 	}
 }
