@@ -275,8 +275,12 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 	@Override
 	public void refresh() {
+		Object o = this.fromVariableComboBox.getSelectedItem();
 		this.fillVariableToComboBox(this.fromVariableComboBox);
+		this.fromVariableComboBox.setSelectedItem(o);
+		o = this.toVariableComboBox.getSelectedItem();
 		this.fillVariableToComboBox(this.toVariableComboBox);
+		this.toVariableComboBox.setSelectedItem(o);
 
 		if (Assign.class.isInstance(this.transition.getBpelData())) {
 			Assign assign = (Assign) this.transition.getBpelData();
@@ -288,7 +292,6 @@ public class BPELassignPanel extends BPELadditionalPanel {
 			var = model.findBpelVariableByName(assign.getToVariable());
 			this.toVariableComboBox.setSelectedItem(var);
 		}
-
 		this.repaint();
 	}
 
@@ -306,6 +309,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 	@Override
 	public void showPanel(JPanel panel, GridBagConstraints c) {
-		panel.add(this,c);		
+		this.refresh();
+		panel.add(this,c);
 	}
 }
