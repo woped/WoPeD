@@ -50,17 +50,18 @@ public class Assign extends BaseActivity<TAssign>
 	 */
 	public final void fillAssign(String FromVariable, String ToVariable)
 	{
-		TCopy copy = this.getActivity().getCopyArray(0);
-		if(copy == null)
+		TCopy[] copy = this.getActivity().getCopyArray();
+		if(copy.length != 0)
 		{
-			copy = this.getActivity().addNewCopy();
-			copy.addNewFrom().setVariable("" + FromVariable);
-			copy.addNewTo().setVariable("" + ToVariable);
+			copy[0] = this.getActivity().addNewCopy();
+			copy[0].getFrom().setVariable("" + FromVariable);
+			copy[0].getTo().setVariable("" + ToVariable);
 		}
 		else
 		{
-			copy.getFrom().setVariable("" + FromVariable);
-			copy.getTo().setVariable("" + ToVariable);
+			TCopy newcopy = this.getActivity().addNewCopy();
+			newcopy.addNewFrom().setVariable("" + FromVariable);
+			newcopy.addNewTo().setVariable("" + ToVariable);
 		}
 				
 	}
