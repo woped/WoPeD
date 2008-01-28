@@ -1571,6 +1571,8 @@ public class TransitionPropertyEditor extends JDialog implements
 			else if (Wait.class.isInstance(this.transition.getBpelData()))
 				this.activityChooseComboBox
 						.setSelectedItem(this.getWaitPanel());
+			
+			((BPELadditionalPanel)this.activityChooseComboBox.getSelectedItem()).showPanel(this.getBPELPanel(), c2);
 
 			activityChooseComboBox.addItemListener(new ItemListener() {
 
