@@ -1460,26 +1460,8 @@ public class TransitionPropertyEditor extends JDialog implements
 			c2.anchor = GridBagConstraints.NORTH;
 			c2.fill = GridBagConstraints.HORIZONTAL;
 
-			if (Assign.class.isInstance(this.transition.getBpelData())) {
-				// activityChooseComboBox.setVisible(false);
-				activityChooseComboBox.setSelectedIndex(1);
-				this.assignPanel.refresh();
-				// activityChooseComboBox.setVisible(true);
-			} else if (Invoke.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(2);
-				this.invokePanel.refresh();
-			} else if (Receive.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(3);
-				this.receivePanel.refresh();
-			} else if (Reply.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(4);
-				this.replyPanel.refresh();
-			} else if (Wait.class.isInstance(this.transition.getBpelData())) {
-				activityChooseComboBox.setSelectedIndex(5);
-				this.waitPanel.refresh();
-			} else {
-				activityChooseComboBox.setSelectedIndex(0);
-			}
+			((BPELadditionalPanel)this.activityChooseComboBox.getSelectedItem()).showPanel(this.getBPELPanel(), c2);
+			this.repaint();
 		}
 
 		return bpelPanel;
@@ -1572,8 +1554,7 @@ public class TransitionPropertyEditor extends JDialog implements
 				this.activityChooseComboBox
 						.setSelectedItem(this.getWaitPanel());
 			
-			((BPELadditionalPanel)this.activityChooseComboBox.getSelectedItem()).showPanel(this.getBPELPanel(), c2);
-
+			
 			activityChooseComboBox.addItemListener(new ItemListener() {
 
 				public void itemStateChanged(ItemEvent e) {
