@@ -31,6 +31,10 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 	JComboBox operationComboBox = null;
 	JComboBox variableComboBox = null;
 	JButton newVariableButton = null;
+	
+	JLabel partnerLinkLabel = null;
+	JLabel operationLabel = null;
+	JLabel variableLabel = null;
 
 	public BPELreceivePanel(TransitionPropertyEditor t_editor,
 			TransitionModel transition) {
@@ -50,7 +54,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JLabel("Partner Link:"), c);
+		add(getPartnerLinkLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
@@ -70,7 +74,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
-		add(new JLabel("Operation:"), c);
+		add(getOperationLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 1;
@@ -82,7 +86,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JLabel("Variable:"), c);
+		add(getVariableLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 2;
@@ -98,6 +102,14 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		add(getNewVariableButton(), c);
 	}
 
+	private JLabel getPartnerLinkLabel() {
+		if (partnerLinkLabel == null) {
+			partnerLinkLabel  = new JLabel("Partner Link:");
+			partnerLinkLabel.setPreferredSize(dimension);
+		}
+		return partnerLinkLabel;
+	}
+	
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
@@ -124,6 +136,14 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		}
 		return newPartnerLinkButton;
 	}
+	
+	private JLabel getOperationLabel() {
+		if (operationLabel == null) {
+			operationLabel  = new JLabel("Operation:");
+			operationLabel.setPreferredSize(dimension);
+		}
+		return operationLabel;
+	}
 
 	private JComboBox getOperationComboBox() {
 		if (operationComboBox == null) {
@@ -131,6 +151,14 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 			operationComboBox.setPreferredSize(dimension);
 		}
 		return operationComboBox;
+	}
+	
+	private JLabel getVariableLabel() {
+		if (variableLabel == null) {
+			variableLabel  = new JLabel("Variable:");
+			variableLabel.setPreferredSize(dimension);
+		}
+		return variableLabel;
 	}
 
 	private JComboBox getVariableComboBox() {
