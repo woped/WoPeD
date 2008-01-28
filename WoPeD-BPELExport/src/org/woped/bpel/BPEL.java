@@ -166,14 +166,19 @@ public class BPEL
 		TVariables itempVars = (TVariables)pnp.getElementContainer().getTVariablesList();
 		TPartnerLinks itempLinks = (TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList(); 
 		if((itempVars == null) || (itempLinks == null)) return;
-		
-		if (itempVars.sizeOfVariableArray()>0){
+		if ((itempVars.sizeOfVariableArray()>0)&(itempVars != null)){
 			TVariables iVars = iProcess.addNewVariables();
-			iVars.set(itempVars);
+			for (int i=0;itempVars.sizeOfVariableArray()>i;i++){
+				iVars.addNewVariable();
+				iVars.setVariableArray(i, itempVars.getVariableArray()[i]);
+			}
 		}
-		if (itempLinks.sizeOfPartnerLinkArray()>0){
+		if ((itempLinks.sizeOfPartnerLinkArray()>0)&(itempLinks != null)){
 			TPartnerLinks iLinks = iProcess.addNewPartnerLinks();
-			iLinks.set(itempLinks);
+			for (int i=0;iLinks.sizeOfPartnerLinkArray()>i;i++){
+				iLinks.addNewPartnerLink();
+				iLinks.setPartnerLinkArray(i, itempLinks.getPartnerLinkArray()[i]);
+			}
 		}
 		/*
 		TPartnerLinks itempPLs =(TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList();
