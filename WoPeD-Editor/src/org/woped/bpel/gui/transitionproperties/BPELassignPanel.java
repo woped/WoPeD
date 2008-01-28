@@ -26,9 +26,13 @@ import org.woped.editor.controller.TransitionPropertyEditor;
  * Created on 15.01.2008
  */
 
-@SuppressWarnings("serial")
 public class BPELassignPanel extends BPELadditionalPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final String _PANELNAME = "assign";
 	JLabel fromVariableLabel = null;
 	JComboBox fromVariableComboBox = null;
 	JButton newFromVariableButton = null;
@@ -38,6 +42,11 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	
 	JDialog dialogPartner = null;
 
+	/**
+	 * 
+	 * @param t_editor
+	 * @param transition
+	 */
 	public BPELassignPanel(TransitionPropertyEditor t_editor,
 			TransitionModel transition) {
 
@@ -103,8 +112,10 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		c.fill = GridBagConstraints.NONE;
 		add(getNewToVariableButton(), c);
 	}
-
-	
+	/**
+	 * 
+	 * @return
+	 */
 	private JLabel getFromVariableLabel() {
 		if (fromVariableLabel == null) {
 			fromVariableLabel  = new JLabel("Variable:");
@@ -113,6 +124,10 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		return fromVariableLabel;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	private JComboBox getFromVariableComboBox() {
 		if (fromVariableComboBox == null) {
 			fromVariableComboBox = new JComboBox();
@@ -122,25 +137,28 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		return fromVariableComboBox;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private JButton getNewFromVariableButton() {
 		if (newFromVariableButton == null) {
 			newFromVariableButton = new JButton(NEW);
 
 			newFromVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVariableDialog dialog = new NewVariableDialog(t_editor);
-					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
-						fromVariableComboBox.addItem(dialog
-								.getNewVariableName());
-						fromVariableComboBox
-								.setSelectedIndex(fromVariableComboBox
-										.getItemCount() - 1);
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
 						fillVariableToComboBox(fromVariableComboBox);
 						BpelVariable var = t_editor.getEditor()
 								.getModelProcessor().getElementContainer()
 								.findBpelVariableByName(
 										dialog.getNewVariableName());
 						fromVariableComboBox.setSelectedItem(var);
+						
+						Object o = toVariableComboBox.getSelectedItem();
+						fillVariableToComboBox(toVariableComboBox);
+						toVariableComboBox.setSelectedItem(o);
 					}
 				}
 			});
@@ -148,6 +166,10 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		return newFromVariableButton;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private JLabel getToVariableLabel() {
 		if (toVariableLabel == null) {
 			toVariableLabel  = new JLabel("Variable:");
@@ -165,17 +187,28 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		return toVariableComboBox;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private JButton getNewToVariableButton() {
 		if (newToVariableButton == null) {
 			newToVariableButton = new JButton(NEW);
 
 			newToVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVariableDialog dialog = new NewVariableDialog(t_editor);
-					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
-						toVariableComboBox.addItem(dialog.getNewVariableName());
-						toVariableComboBox.setSelectedIndex(toVariableComboBox
-								.getItemCount() - 1);
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+						fillVariableToComboBox(toVariableComboBox);
+						BpelVariable var = t_editor.getEditor()
+								.getModelProcessor().getElementContainer()
+								.findBpelVariableByName(
+										dialog.getNewVariableName());
+						toVariableComboBox.setSelectedItem(var);
+						
+						Object o = fromVariableComboBox.getSelectedItem();
+						fillVariableToComboBox(fromVariableComboBox);
+						fromVariableComboBox.setSelectedItem(o);
 					}
 				}
 			});
@@ -185,6 +218,9 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 	// ***************** content getter methods **************************
 
+	/**
+	 * 
+	 */
 	public String getFromVariable() {
 		if (fromVariableComboBox.getSelectedItem() == null
 				|| !BpelVariable.class.isInstance(fromVariableComboBox
@@ -194,12 +230,20 @@ public class BPELassignPanel extends BPELadditionalPanel {
 				.getName();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getToVariable() {
 		if (toVariableComboBox.getSelectedItem() == null)
 			return "";
 		return toVariableComboBox.getSelectedItem().toString();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean allFieldsFilled(){
 		if (fromVariableComboBox.getSelectedItem() == null | toVariableComboBox.getSelectedItem() == null){
 			return false;
@@ -210,12 +254,19 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 	// ***************** content setter methods **************************
 
+	/**
+	 * 
+	 */
 	public void setFromVariable(String variable) {
 		fromVariableComboBox.addItem(this.t_editor.getEditor()
 				.getModelProcessor().getElementContainer()
 				.findBpelVariableByName(variable));
 	}
 
+	/**
+	 * 
+	 * @param variable
+	 */
 	public void setToVariable(String variable) {
 		toVariableComboBox.addItem(this.t_editor.getEditor()
 				.getModelProcessor().getElementContainer()
@@ -250,8 +301,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return "assign";
+		return this._PANELNAME;
 	}
 
 	@Override
