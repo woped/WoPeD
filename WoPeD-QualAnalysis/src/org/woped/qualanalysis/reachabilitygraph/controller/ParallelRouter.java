@@ -21,6 +21,8 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.DefaultEdge.LoopRouting;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.Constants;
 
 /**
  * A routing algorithm that 
@@ -37,12 +39,12 @@ public class ParallelRouter extends LoopRouting {
 	/**
 	 * Distance between each parallel edge
 	 */
-	private static double edgeSeparation = 5.;
+	private static double edgeSeparation = 15.;
 
 	/**
 	 * Distance between intermediate and source/target points
 	 */
-	private static double edgeDeparture = 1.;
+	private static double edgeDeparture = 10.;
 
 	/**
 	 * Getter for singleton managing parallel edges
@@ -71,19 +73,17 @@ public class ParallelRouter extends LoopRouting {
 		// Check presence of source/target nodes
 		if (null == nodeFrom) {
 			nodeFrom = edge.getSourceParentView();
-		} else {
-			System.out.println(nodeFrom);
 		}
+		
 		if (null == nodeTo) {
 			nodeTo = edge.getTargetParentView();
-		} else {
-			System.out.println(nodeTo);
 		}
+		
 		if ((null == nodeFrom) || (null == nodeTo)) {
-			System.out.println("EdgeView has no source or target view : "
-					+ edge.toString());
+			//LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-- route() " + this.getClass().getName() + "EdgeView has no source or target view : " + edge.toString());
 			return null;
 		}
+		
 		if (nodeFrom == nodeTo) {
 //			System.out.println("nodeFrom and NodeTo are the same cell view");
 			return null;
@@ -157,9 +157,6 @@ public class ParallelRouter extends LoopRouting {
 				to = edge.getTarget().getParentView().getPerimeterPoint
 					(edge, AbstractCellView.getCenterPoint(edge.getTarget().getParentView()), from);
 			}
-
-			System.out.println("from Point = " + String.valueOf(from));
-			System.out.println("to Point = " + String.valueOf(to));
 
 			if (from != null && to != null) {
 				double dy = from.getY() - to.getY();

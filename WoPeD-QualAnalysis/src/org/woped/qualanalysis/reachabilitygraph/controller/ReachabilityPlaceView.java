@@ -30,7 +30,7 @@ public class ReachabilityPlaceView extends VertexView {
 	}
 	
 
-	// Elliptic
+	
 	private static class ReachabilityPlaceRenderer extends VertexRenderer implements CellViewRenderer
 	{
 		
@@ -41,7 +41,9 @@ public class ReachabilityPlaceView extends VertexView {
 			super();
 		}
 
-		public Dimension getPreferredSize() {
+		// Elliptic
+		
+		/*public Dimension getPreferredSize() {
 			Dimension d = super.getPreferredSize();
 			d.width += d.width / 8;
 			d.height += d.height / 2;
@@ -80,6 +82,6 @@ public class ReachabilityPlaceView extends VertexView {
 				g.setColor(highlightColor);
 				g.drawOval(b - 1, b - 1, d.width - b, d.height - b);
 			}
-		}
+		}*/
 	}
 }

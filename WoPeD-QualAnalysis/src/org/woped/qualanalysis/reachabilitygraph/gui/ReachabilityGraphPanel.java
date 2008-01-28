@@ -91,7 +91,7 @@ public class ReachabilityGraphPanel extends JPanel {
         this.add(BorderLayout.SOUTH, southPanel);
         southPanel.add(legendInfo);
         southPanel.add(bottomInfo = new JLabel(""));
-		rgp_jgraph = this.getDefaultGraph(ReachabilityGraphModel.HIERARCHIC);
+		rgp_jgraph = new JGraph();
 		rgp_topPanel = new JScrollPane();
 		this.add(BorderLayout.CENTER, rgp_topPanel);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
