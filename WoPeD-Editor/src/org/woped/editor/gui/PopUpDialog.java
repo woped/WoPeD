@@ -3,7 +3,6 @@ package org.woped.editor.gui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,7 +17,7 @@ public class PopUpDialog extends JDialog {
 
 	private String _message;
 
-	public PopUpDialog(Window owner, boolean modal, String Title, String Message) {
+	public PopUpDialog(JDialog owner, boolean modal, String Title, String Message) {
 		super(owner,Title);
 		this.setModal(modal);
 		this._message = Message;
