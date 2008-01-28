@@ -110,6 +110,7 @@ public class ReachabilityGraphPanel extends JPanel {
 			if(computeNew){
 				this.remove(rgp_topPanel);
 				this.add(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph(type)));
+				this.updateVisibility();
 			} else {
 				ReachabilityGraphModel.layoutGraph(this.rgp_jgraph, type, this.getSize());
 			}

@@ -19,6 +19,7 @@ import org.jgraph.graph.GraphModel;
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.reachabilitygraph.controller.ParallelRouter;
 import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphViewFactory;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 
 public class ReachabilityGraphModel {
 
@@ -36,7 +37,7 @@ public class ReachabilityGraphModel {
 		GraphLayoutCache view = new GraphLayoutCache(model,	new ReachabilityGraphViewFactory());
 		view.setAutoSizeOnValueChange(true);
 		view.setSelectsAllInsertedCells(false);
-		JGraph graph = new JGraph(model, view); 
+		ReachabilityJGraph graph = new ReachabilityJGraph(model, view); 
 		// Compute ReachabilityGraph
 		BuildReachability dataSource = new BuildReachability(editor);
 		HashMap<String, TransitionObject> transactions = dataSource.getTransactions();

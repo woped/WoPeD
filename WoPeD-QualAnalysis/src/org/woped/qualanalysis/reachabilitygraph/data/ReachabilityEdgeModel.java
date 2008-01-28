@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.GraphConstants;
-import org.woped.qualanalysis.reachabilitygraph.controller.ParallelRouter;
+import org.woped.translations.Messages;
 
 public class ReachabilityEdgeModel extends DefaultEdge {
 
@@ -14,7 +14,7 @@ public class ReachabilityEdgeModel extends DefaultEdge {
 	public ReachabilityEdgeModel(TransitionObject to){
 		super(to);
         AttributeMap attributes = getAttributes();
-        GraphConstants.setMoveable(attributes, false);
+        GraphConstants.setMoveable(attributes, true);
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
         GraphConstants.setDisconnectable(attributes, false);
@@ -22,5 +22,9 @@ public class ReachabilityEdgeModel extends DefaultEdge {
         GraphConstants.setLineEnd(attributes, GraphConstants.ARROW_CLASSIC);
         setAttributes(attributes);
 	}
-	
+
+    public String getToolTipText()
+    {
+        return "<html>" + Messages.getString("QuanlAna.ReachabilityGraph.Transition") + "<br>" + this.getUserObject().toString() + "<html>";
+    }
 }
