@@ -26,15 +26,15 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 @SuppressWarnings("serial")
 public class BPELreceivePanel extends BPELadditionalPanel {
 
+	JLabel partnerLinkLabel = null;
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
+	JLabel operationLabel = null;
 	JComboBox operationComboBox = null;
+	JLabel variableLabel = null;
 	JComboBox variableComboBox = null;
 	JButton newVariableButton = null;
 	
-	JLabel partnerLinkLabel = null;
-	JLabel operationLabel = null;
-	JLabel variableLabel = null;
 
 	public BPELreceivePanel(TransitionPropertyEditor t_editor,
 			TransitionModel transition) {

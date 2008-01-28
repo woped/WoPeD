@@ -31,19 +31,19 @@ import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
 public class BPELinvokePanel extends BPELadditionalPanel {
-
-	JComboBox partnerLinkComboBox = null;
-	JButton newPartnerLinkButton = null;
-	JComboBox operationComboBox = null;
-	JComboBox inVariableComboBox = null;
-	JButton newInVariableButton = null;
-	JComboBox outVariableComboBox = null;
-	JButton newOutVariableButton = null;
 	
 	JLabel partnerLinkLabel = null;
+	JComboBox partnerLinkComboBox = null;
+	JButton newPartnerLinkButton = null;
 	JLabel operationLabel = null;
+	JComboBox operationComboBox = null;
 	JLabel inVariableLabel = null;
+	JComboBox inVariableComboBox = null;
+	JButton newInVariableButton = null;
 	JLabel outVariableLabel = null;
+	JComboBox outVariableComboBox = null;
+	JButton newOutVariableButton = null;
+
 
 	public BPELinvokePanel(TransitionPropertyEditor t_editor,
 			TransitionModel transition) {
