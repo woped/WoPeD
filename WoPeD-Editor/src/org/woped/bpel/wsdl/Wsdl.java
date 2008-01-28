@@ -67,7 +67,7 @@ public class Wsdl {
 			URL url = new URL( pathToWsdlFile );
 
 			// Check if URL is correct
-			if (!pathToWsdlFile.toLowerCase().endsWith(".wsdl")){
+			if (!pathToWsdlFile.toLowerCase().endsWith("wsdl")){
 				throw new MalformedURLException("File doesn't end with .wsdl");
 			}
 				in = url.openStream();
@@ -138,7 +138,7 @@ public class Wsdl {
 				if (bool_partnerLinkType == true){
 					// Check if the current sub element tag is the "role" tag.
 					if (element.getName().getLocalPart().equals("role")){
-//						bool_partnerLinkType_Role = true;
+						// bool_partnerLinkType_Role = true;
 						role = new Role();
 						for (Iterator<?> attributes = element.getAttributes(); attributes.hasNext();) {
 							Attribute attribute = (Attribute) attributes.next();
