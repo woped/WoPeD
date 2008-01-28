@@ -39,6 +39,11 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	JButton newInVariableButton = null;
 	JComboBox outVariableComboBox = null;
 	JButton newOutVariableButton = null;
+	
+	JLabel partnerLinkLabel = null;
+	JLabel operationLabel = null;
+	JLabel inVariableLabel = null;
+	JLabel outVariableLabel = null;
 
 	public BPELinvokePanel(TransitionPropertyEditor t_editor,
 			TransitionModel transition) {
@@ -58,7 +63,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JLabel("Partner Link:"), c);
+		add(getPartnerLinkLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
@@ -78,7 +83,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
-		add(new JLabel("Operation:"), c);
+		add(getOperationLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 1;
@@ -90,7 +95,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
-		add(new JLabel("Input Variable:"), c);
+		add(getInVariableLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 2;
@@ -108,24 +113,33 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		c.gridx = 0;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		c.insets = new Insets(5, 5, 10, 0);
+		c.insets = new Insets(5, 5, 0, 0); //beim 3. 10
 		c.fill = GridBagConstraints.HORIZONTAL;
-		add(new JLabel("Output Variable:"), c);
+		add(getOutVariableLabel(), c);
 
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		c.insets = new Insets(5, 5, 10, 0);
+		c.insets = new Insets(5, 5, 0, 0); //beim 3. 10
 		add(getOutVariableComboBox(), c);
 
 		c.gridx = 2;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		c.insets = new Insets(5, 5, 10, 0);
+		c.insets = new Insets(5, 5, 0, 0); //beim 3. 10
 		c.fill = GridBagConstraints.NONE;
 		add(getNewOutVariableButton(), c);
 	}
 
+	
+	private JLabel getPartnerLinkLabel() {
+		if (partnerLinkLabel == null) {
+			partnerLinkLabel  = new JLabel("Partner Link:");
+			partnerLinkLabel.setPreferredSize(dimension);
+		}
+		return partnerLinkLabel;
+	}
+	
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
@@ -147,6 +161,14 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		}
 		return newPartnerLinkButton;
 	}
+	
+	private JLabel getOperationLabel() {
+		if (operationLabel == null) {
+			operationLabel  = new JLabel("Operation:");
+			operationLabel.setPreferredSize(dimension);
+		}
+		return operationLabel;
+	}
 
 	private JComboBox getOperationComboBox() {
 		if (operationComboBox == null) {
@@ -154,6 +176,14 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 			operationComboBox.setPreferredSize(dimension);
 		}
 		return operationComboBox;
+	}
+	
+	private JLabel getInVariableLabel() {
+		if (inVariableLabel == null) {
+			inVariableLabel  = new JLabel("Input Variable:");
+			inVariableLabel.setPreferredSize(dimension);
+		}
+		return inVariableLabel;
 	}
 
 	private JComboBox getInVariableComboBox() {
@@ -182,6 +212,14 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 		}
 		return newInVariableButton;
+	}
+	
+	private JLabel getOutVariableLabel() {
+		if (outVariableLabel == null) {
+			outVariableLabel  = new JLabel("Output Variable:");
+			outVariableLabel.setPreferredSize(dimension);
+		}
+		return outVariableLabel;
 	}
 
 	private JComboBox getOutVariableComboBox() {
