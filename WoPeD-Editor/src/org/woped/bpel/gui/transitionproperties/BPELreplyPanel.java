@@ -188,7 +188,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	}
 	
 	public boolean allFieldsFilled(){
-		if (partnerLinkComboBox.getSelectedItem() == null || operationComboBox.getSelectedItem() == null || variableComboBox.getSelectedItem() == null){
+		if (partnerLinkComboBox.getSelectedItem() == null | operationComboBox.getSelectedItem() == null | variableComboBox.getSelectedItem() == null){
 			return false;
 		}
 		else
