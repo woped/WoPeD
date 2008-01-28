@@ -26,6 +26,7 @@ import java.awt.Dimension;
 import java.awt.geom.Point2D;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Vector;
@@ -520,6 +521,13 @@ AbstractElementModel targetModel = getElementContainer()
 	}
 	
 	/**
+	 * The fingerprint is represented as a String with the following components concatenated:
+	 * - the number of places
+	 * - all place-IDs directly followed by their individual TokenCount
+	 * - the '#'-sign as an seperator
+	 * - the number of arcs
+	 * - for each arc a concatenation of '*', the arc's sourceID and the arc's targetID
+	 * Example: p11p20p30p4#6*p1t1*t1p2*p2t2*t2p3*p3t3*t3p4
 	 * 
 	 * @return Returns a String witch logically identifys the petrinet
 	 */
@@ -527,31 +535,94 @@ AbstractElementModel targetModel = getElementContainer()
 	{
 		String fingerprint = "";
 		// fingerprint of places & markings
-		Iterator iter = getElementContainer().getElementsByType(PetriNetModelElement.PLACE_TYPE).values().iterator();
+		Iterator<AbstractElementModel> aemIter = getElementContainer().getElementsByType(PetriNetModelElement.PLACE_TYPE).values().iterator();
 		int count = 0;
-		while(iter.hasNext())
+		while(aemIter.hasNext())
 		{
 			count++;
-			PlaceModel currPlace = (PlaceModel) iter.next();
+			PlaceModel currPlace = (PlaceModel) aemIter.next();
 			fingerprint += currPlace.getId() + currPlace.getTokenCount();
 		}
 		fingerprint = count + fingerprint;
 		fingerprint += "#";
 		// fingerprint of arcs
-		iter = this.getElementContainer().getArcMap().values().iterator();
+		Iterator<ArcModel> amIter = this.getElementContainer().getArcMap().values().iterator();
 		count = 0;
 		String arcFingerprint = "";
-		while(iter.hasNext())
+		while(amIter.hasNext())
 		{
 			count++;
-			ArcModel currArc = (ArcModel) iter.next();
-			arcFingerprint += currArc.getId() + currArc.getSourceId() + currArc.getTargetId();
+			ArcModel currArc = (ArcModel) amIter.next();
+			// don't use ArcId in fingerprint because some ArcId's change on save/load pnml
+			// but the arcs are distinctly described by arc-source and arc-target
+			/*arcFingerprint += currArc.getId() + currArc.getSourceId() + currArc.getTargetId();*/
+			arcFingerprint += "*" + currArc.getSourceId() + currArc.getTargetId();
 		}
 		fingerprint += count + arcFingerprint;
 		// fingerprint of subprocesses
 		//iter = this.getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE).values().iterator();
 		
 		return fingerprint;
+	}
+	
+	/**
+	 * Compares an fingerprint to the fingerprint of the current net on a logical basis
+	 * and not absolute like the equals-method of the String would do
+	 * 
+	 * @param fingerprintToCheck The fingerprintrepresentation which get's compared to the current fingerprint
+	 * @return <code>true</code> if equal, otherwise <code>false</code>
+	 */
+	public boolean isLogicalFingerprintEqual(String fingerprintToCheck)
+	{
+		boolean equal = true;
+		String currFingerprint, currLeadingPart;
+		currFingerprint = this.getLogicalFingerprint();
+		currLeadingPart = currFingerprint.substring(0, currFingerprint.indexOf('*'));
+		// if the strings have a different length or the leading part (places, tokens, number of Arcs)
+		// is different, then the fingerprint is always different
+		if(currFingerprint.length()==fingerprintToCheck.length()&&currLeadingPart.equals(fingerprintToCheck.substring(0,fingerprintToCheck.indexOf('*'))))
+		{
+			//creating a Hashmap with all arcsource-arctarget values from the current net
+			HashSet<String> currentArcs = new HashSet<String>();
+			Iterator<ArcModel> amIter = this.getElementContainer().getArcMap().values().iterator();
+			while(amIter.hasNext())
+			{
+				ArcModel currArc = (ArcModel) amIter.next();
+				currentArcs.add(currArc.getSourceId() + currArc.getTargetId());
+			}
+			
+			//check if the arcs in the fingerprintToCheck are present in the HashSet of the current net's arcs
+			String arcsToCheck = fingerprintToCheck.substring(fingerprintToCheck.indexOf('*'));
+			String currArc;
+			boolean deleted=true;
+			while(deleted && arcsToCheck!="")
+			{
+				// delete the leading '*'
+				arcsToCheck = arcsToCheck.substring(arcsToCheck.indexOf('*')+1); 
+				// Get the next arc
+				// - String till the next occurance of '*'
+				// - or till the end of the String if there is no more '*'
+				if(arcsToCheck.indexOf('*')!=-1)
+				{
+					currArc = arcsToCheck.substring(0, arcsToCheck.indexOf('*'));
+					arcsToCheck.substring(arcsToCheck.indexOf('*'));
+				}
+				else
+				{
+					currArc = arcsToCheck;
+					arcsToCheck = "";
+				}
+				deleted = currentArcs.remove(currArc);
+			}
+			
+			if(currentArcs.size()!=0|!deleted)
+			{
+				equal = false;
+			}
+		}
+		else
+			equal = false;
+		return equal;
 	}
 
 	public Vector<Object> getUnknownToolSpecs()

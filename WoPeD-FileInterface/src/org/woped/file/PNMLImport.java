@@ -870,11 +870,11 @@ public class PNMLImport
     		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions, simulations[k].getNetFingerprint());
     		// check if current fingerprint of the net equals the imported one
     		// if not display a warning
-    		if(!currentFingerprint.equals(simulations[k].getNetFingerprint()))
+    		if(!currentPetrinet.isLogicalFingerprintEqual(simulations[k].getNetFingerprint()))
     		{
     			// TODO: show warning to user
     			//warnings.add("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")");
-    			System.out.println("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")");
+    			System.out.println("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")\naus XML: "+simulations[k].getNetFingerprint()+"\naktuell: "+currentFingerprint);
     		}
     		currentPetrinet.addSimulation(currSimulation);
     		LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ")imported");
