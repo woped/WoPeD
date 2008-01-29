@@ -1,5 +1,6 @@
 package org.woped.bpel.gui.transitionproperties;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -79,6 +80,8 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		c.insets = new Insets(5, 5, 0, 0);
 		add(getFromVariableComboBox(), c);
 
+		c.weightx = 0;
+		c.weighty = 0;
 		c.gridx = 2;
 		c.gridy = 1;
 		c.gridwidth = 1;
@@ -194,6 +197,8 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	private JButton getNewToVariableButton() {
 		if (newToVariableButton == null) {
 			newToVariableButton = new JButton(NEW);
+			fromVariableComboBox.setPreferredSize(dimension);
+			fromVariableComboBox.addItem("-none-");
 
 			newToVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {

@@ -64,8 +64,8 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.WEST;
-		c.weightx = 1;
-		c.weighty = 1;
+		c.weightx = 1; 
+		c.weighty = 1; 
 
 		c.gridx = 0;
 		c.gridy = 0;
@@ -79,11 +79,14 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		c.insets = new Insets(5, 5, 0, 0);
 		add(getPartnerLinkComboBox(), c);
 
+		c.weightx = 0;
+		c.weighty = 0;
 		c.gridx = 2;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(5, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
+		c.anchor = GridBagConstraints.EAST;
 		add(getNewPartnerLinkButton(), c);
 
 		c.gridx = 0;
@@ -153,6 +156,8 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
 			partnerLinkComboBox.setPreferredSize(dimension);
+			
+			defineContentOfPartnerLinkComboBox();
 			partnerLinkComboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 /*					defineContentOfOperationComboBox(((Partnerlink) e.getItem()).
