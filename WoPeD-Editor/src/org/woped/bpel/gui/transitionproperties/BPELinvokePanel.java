@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import javax.swing.JLabel;
 
+import org.woped.bpel.wsdl.Wsdl;
 import org.woped.bpel.wsdl.exceptions.NoPortTypeFoundException;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.Operation;
 import org.woped.core.model.bpel.BpelVariable;
@@ -152,7 +153,6 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	}
 
 
-
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
@@ -161,9 +161,11 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 			defineContentOfPartnerLinkComboBox();
 			partnerLinkComboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
-/*					defineContentOfOperationComboBox(((Partnerlink) e.getItem()).
-						 getWsdlUrl(), ((Partnerlink) e.getItem()).
-						 	getTPartnerlink().getPartnerRole());*/
+					if (e.getItem() instanceof Partnerlink){
+						defineContentOfOperationComboBox(((Partnerlink) e.getItem()).
+							 getWsdlUrl(), ((Partnerlink) e.getItem()).
+							 	getTPartnerlink().getPartnerRole());
+					}
 				}
 			});
 		}
@@ -298,7 +300,17 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 	public void defineContentOfOperationComboBox(String pathToWsdlFile, String roleName) {
 		ArrayList<Operation> operations;
-
+		if (wsdlFileRepresentation == null){
+			try {
+				wsdlFileRepresentation = new Wsdl().readDataFromWSDL(pathToWsdlFile);
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				showErrorPopup(
+						Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"),
+						Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingVariables"));
+			}
+		}
 		String portTypeName = wsdlFileRepresentation.getPortTypeNameByRoleName(roleName);
 		try {
 			operationComboBox.removeAllItems();

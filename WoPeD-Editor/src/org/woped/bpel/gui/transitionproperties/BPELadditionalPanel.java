@@ -122,16 +122,11 @@ public abstract class BPELadditionalPanel extends JPanel {
 	protected void showNewPartnerLinkDialog() {
 
         // clear all input fields and combo boxes before we start (because of old data)
-        try {
-        		partnerLinkNameTextField.setText("");
-                wsdlFileTextField.setText("");
-                partnerLinkTypeComboBox.removeAllItems();
-                partnerRoleComboBox.removeAllItems();
-                myRoleComboBox.removeAllItems();
-        } catch (NullPointerException e) {
-                /* If a NullPointerException is catched the fields and combo boxes have not been
-                   initialized yet so they are empty anyways.*/
-        }
+        	getPartnerLinkNameTextField().setText("");
+        	getWSDLFileTextField().setText("");
+        	getPartnerLinkTypeComboBox().removeAllItems();
+        	getPartnerRoleComboBox().removeAllItems();
+        	getMyRoleComboBox().removeAllItems();
 
 		// here we go ...
 		dialog = new JDialog(t_editor, true);
@@ -429,10 +424,10 @@ public abstract class BPELadditionalPanel extends JPanel {
 			if (wsdlFileRepresentation != null) {
 				partnerLinkTypeComboBoxAddItems();
 			}
-
 		}
 		return partnerLinkTypeComboBox;
 	}
+
 
 	private JComboBox getPartnerRoleComboBox() {
 		if (partnerRoleComboBox == null) {
@@ -448,6 +443,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		return partnerRoleComboBox;
 	}
 
+
 	private JComboBox getMyRoleComboBox() {
 		if (myRoleComboBox == null) {
 			myRoleComboBox = new JComboBox();
@@ -461,6 +457,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		}
 		return myRoleComboBox;
 	}
+
 
 	private JButton getPartnerOKButton(){
         if (okPartnerButton == null) {
@@ -485,6 +482,11 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                    myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
                                                  )
                                            ) {
+                                			showErrorPopup(Messages.getString("Transition.Properties.BPEL.MissingEntries"),
+                                						   Messages.getString("Transition.Properties.BPEL.MissingEntries_2"));
+                                        }
+                                        // check if a partner link with this name has already been created
+                                        else if ( modelElementContainer.existPLName(name) ){
                                 			showErrorPopup(Messages.getString("Transition.Properties.BPEL.MissingEntries"),
                                 						   Messages.getString("Transition.Properties.BPEL.MissingEntries_2"));
                                         }
@@ -514,9 +516,9 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 }
 
                                                 // if the messages of the WSDL file were already saved as variables in the datamodel don't save them for a second time.
-//                                                if(!modelElementContainer.existWsdlUrl(wsdlUrl)){
+                                                if(!modelElementContainer.existWsdlUrl(wsdlUrl)){
                                                 	addVariablesToModelElementContainer(wsdlUrl);
- //                                               }
+                                                }
 
                                                 refresh();
                                                 dialog.dispose();
@@ -526,7 +528,6 @@ public abstract class BPELadditionalPanel extends JPanel {
                         			showErrorPopup(Messages.getString("Transition.Properties.BPEL.NoPartnerLinks"),
                  						   		   Messages.getString("Transition.Properties.BPEL.NoPartnerLinks_2"));
                                 }
-
                         }
                 });
         }
@@ -602,34 +603,39 @@ public abstract class BPELadditionalPanel extends JPanel {
 	}
 
 	private void partnerRoleComboBoxAddItems() {
-		partnerRoleComboBox.removeAllItems();
-		// If there aren't any partner link types --> there can't be any
-		// subelements
-		if (partnerLinkTypes.size() != 0) {
-			roles = partnerLinkTypes.get(
-					partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
-			for (Role role : roles) {
-				partnerRoleComboBox.addItem(role.getRoleName());
+        	partnerRoleComboBox = getPartnerRoleComboBox();
+        	partnerRoleComboBox.removeAllItems();
+
+			// If there aren't any partner link types --> there can't be any
+			// subelements
+			if (partnerLinkTypes.size() != 0) {
+				roles = partnerLinkTypes.get(
+						partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
+				for (Role role : roles) {
+					partnerRoleComboBox.addItem(role.getRoleName());
+				}
+				partnerRoleComboBox.addItem(Messages
+						.getString("Transition.Properties.BPEL.NoRole"));
 			}
-			partnerRoleComboBox.addItem(Messages
-					.getString("Transition.Properties.BPEL.NoRole"));
-		}
 	}
 
 	private void myRoleComboBoxAddItems() {
-		myRoleComboBox.removeAllItems();
-		// If there aren't any partner link types --> there can't be any
-		// subelements
-		if (partnerLinkTypes.size() != 0) {
-			roles = partnerLinkTypes.get(
-					partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
-			for (Role role : roles) {
-				myRoleComboBox.addItem(role.getRoleName());
+			myRoleComboBox = getMyRoleComboBox();
+        	myRoleComboBox.removeAllItems();
+
+			// If there aren't any partner link types --> there can't be any
+			// subelements
+			if (partnerLinkTypes.size() != 0) {
+				roles = partnerLinkTypes.get(
+						partnerLinkTypeComboBox.getSelectedIndex()).getRoles();
+				for (Role role : roles) {
+					myRoleComboBox.addItem(role.getRoleName());
+				}
+				myRoleComboBox.addItem(Messages
+						.getString("Transition.Properties.BPEL.NoRole"));
 			}
-			myRoleComboBox.addItem(Messages
-					.getString("Transition.Properties.BPEL.NoRole"));
-		}
 	}
+
 
 	public void addVariablesToModelElementContainer(String pathToWsdlFile){
 		try {
@@ -653,7 +659,6 @@ public abstract class BPELadditionalPanel extends JPanel {
 		return this.transition.getNameValue();
 	}
 
-	// folgendes noch mit Alex abzuklären (Esther)
 
 	public String getPartnerLinkName() {
 		if (partnerLinkNameTextField.getText() == null)
@@ -802,7 +807,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 	public abstract void refresh();
 
 	public abstract void saveInfomation();
-	
+
 	public abstract boolean allFieldsFilled();
 
 	public abstract void showPanel(JPanel panel, GridBagConstraints c);
