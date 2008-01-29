@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.controller.IEditor;
@@ -18,9 +19,10 @@ import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 
 /**
- * Specifies a particular marking of a reachability / coverability object
- * each marking contains every place and its token state aswell as the transitions that can be activated from the state
- *
+ * Specifies a particular marking of a reachability / coverability object each
+ * marking contains every place and its token state aswell as the transitions
+ * that can be activated from the state
+ * 
  */
 public class Marking {
 
@@ -36,7 +38,7 @@ public class Marking {
 	public Marking(IEditor source, String sourceT) {
 		StructuralAnalysis sa = new StructuralAnalysis(source);
 		this.source = source;
-		this.sourceT=sourceT;
+		this.sourceT.add(sourceT);
 		currentMarking = new TreeMap<String, Integer>(new Comp_mf());
 		// Store the marking of each place
 		Iterator places = sa.getPlacesIterator();
@@ -45,8 +47,8 @@ public class Marking {
 			if(currentPlace.getId().contains("CENTER_PLACE_") && currentPlace.getVirtualTokenCount() > 0) {
 				centerPlace = true;
 			}
-			if(currentPlace.getVirtualTokenCount()>60000){
-				iscoverObject=true;
+			if(currentPlace.getVirtualTokenCount() > 60000) {
+				iscoverObject = true;
 			}
 			currentMarking.put(currentPlace.getId(), currentPlace.getVirtualTokenCount());
 		}
@@ -81,8 +83,10 @@ public class Marking {
 		// Both markings must have the same size for this method to return true
 		if(otherMarking.currentMarking.size() != currentMarking.size())
 			return false;
-		//If Transitions leading to the state are not equal return false
-		if(!this.sourceT.equals(otherMarking.sourceT)){
+		// If Transitions leading to the state are not equal return false
+		TreeSet<String> sourceThelp = (TreeSet<String>) this.sourceT.clone();
+		TreeSet<String> othersourceThelp = (TreeSet<String>) otherMarking.sourceT.clone();
+		if(!this.iscoverObject && !otherMarking.iscoverObject && !(sourceThelp.containsAll(othersourceThelp))) {
 			return false;
 		}
 		boolean isGreater = true;
@@ -93,7 +97,7 @@ public class Marking {
 			int currint = (Integer) currentThisMarking.next();
 			int otherint = (Integer) currentOtherMarking.next();
 			if(otherint > 60000) {
-				otherint = otherint-63000;
+				otherint = otherint - 63000;
 			}
 			if(currint >= otherint && otherint != 0) {
 				isGreater = true;
@@ -129,12 +133,12 @@ public class Marking {
 			int thismark = (Integer) currentMarking.get(wert);
 			int othermark = (Integer) currentOtherMarking.next();
 			if(thismark < othermark && thismark < 60000) {
-				currentMarking.put(wert, 63000+thismark);
+				currentMarking.put(wert, 63000 + thismark);
 				BuildReachability.reachBuilt = true;
 				this.setreachabilitynotbuilt();
 			}
 		}
-		iscoverObject=true;
+		iscoverObject = true;
 	}
 
 	/**
@@ -218,7 +222,8 @@ public class Marking {
 	/**
 	 * method for getting the current marking token state
 	 * 
-	 * @return ordered TreeMap where the key is the placeid and the value is the token count on the place
+	 * @return ordered TreeMap where the key is the placeid and the value is the
+	 *         token count on the place
 	 */
 	public TreeMap<String, Integer> getMarking() {
 		return currentMarking;
@@ -239,11 +244,11 @@ public class Marking {
 	 * method to set the reachability built status to true
 	 */
 	public void setreachabilitybuilt() {
-		//Always rebuild reachability if it is a coverability object
-		if(!iscoverObject){
+		// Always rebuild reachability if it is a coverability object
+		if(!iscoverObject) {
 			reachabilityBuilt = true;
 		}
-		
+
 	}
 
 	/**
@@ -319,18 +324,26 @@ public class Marking {
 	 * check if a marking is the initial (start) marking from which the
 	 * reachability building is
 	 * 
-	 * @return true if a marking is the initial (start) setting of the built graph, false if it is a otherMarking
+	 * @return true if a marking is the initial (start) setting of the built
+	 *         graph, false if it is a otherMarking
 	 */
 	public boolean isInitial() {
 		return isInitial;
 	}
+
 	/**
 	 * Method that that returns if a object is a coverability object
+	 * 
 	 * @return boolean representing the status
 	 */
-	public boolean iscoverObject(){
+	public boolean iscoverObject() {
 		return iscoverObject;
 	}
+
+	public void addSourceT(String sourceT) {
+		this.sourceT.add(sourceT);
+	}
+
 	// ! Stores a reference to the net structure which is useful
 	// ! to determine which transitions are active etc.
 	private ModelElementContainer netStructure;
@@ -345,23 +358,22 @@ public class Marking {
 	private Map<String, AbstractElementModel> allTransitions = null;
 	private boolean reachabilityBuilt = false;
 	private boolean isInitial = false;
-	private boolean iscoverObject=false;
+	private boolean iscoverObject = false;
 	private IEditor source = null;
-	private String sourceT=null; 
+	private TreeSet<String> sourceT = new TreeSet<String>();
 }
-class Comp_mf implements Comparator{
-	public int compare(Object o1,Object o2){
-		String s1=(String) o1;
-		String s2=(String) o2;
-		if(s1.startsWith("p")&&s2.startsWith("p")){
-			int i1=Integer.parseInt(s1.substring(1));
-			int i2=Integer.parseInt(s2.substring(1));
-			return i1-i2;
+
+class Comp_mf implements Comparator {
+	public int compare(Object o1, Object o2) {
+		String s1 = (String) o1;
+		String s2 = (String) o2;
+		if(s1.startsWith("p") && s2.startsWith("p")) {
+			int i1 = Integer.parseInt(s1.substring(1));
+			int i2 = Integer.parseInt(s2.substring(1));
+			return i1 - i2;
 		}
-		else{
+		else {
 			return s1.compareTo(s2);
 		}
 	}
 }
-
-

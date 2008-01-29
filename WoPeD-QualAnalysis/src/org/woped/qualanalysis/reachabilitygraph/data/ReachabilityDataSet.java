@@ -93,13 +93,25 @@ public class ReachabilityDataSet {
 			Iterator transIt=netTransitions.keySet().iterator();
 			while(transIt.hasNext()){
 				String curr=(String) transIt.next();
-				if(!markings.containsMarking(netTransitions.get(curr).start)){
+				if(!markings.containsMarking(netTransitions.get(curr).start)||!markings.containsMarking(netTransitions.get(curr).ende)){
 					transIt.remove();
 					netTransitions.remove(curr);
 					transIt=netTransitions.keySet().iterator();
 				}
-				
 			}
+			//Remove Same Transitions, refresh keys
+			transIt=netTransitions.keySet().iterator();
+			while(transIt.hasNext()){
+				String key=(String)transIt.next();
+				if(!key.equals(netTransitions.get(key).getKey())){
+					TransitionObject tmp=netTransitions.get(key);
+					transIt.remove();
+					netTransitions.remove(key);
+					netTransitions.put(tmp.getKey(), tmp);
+					transIt=netTransitions.keySet().iterator();
+				}
+			}
+			
 			
 			
 		}

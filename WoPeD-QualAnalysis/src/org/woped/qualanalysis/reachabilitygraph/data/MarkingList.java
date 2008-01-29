@@ -33,9 +33,10 @@ public class MarkingList {
 	 * @return marking that has been added, important since another marking may
 	 *         be returned if the marking to be added is found in the list
 	 */
-	public Marking addMarking(Marking marking) {
+	public Marking addMarking(Marking marking,String sourceT) {
 		Marking help;
 		if(this.containsMarking(marking)) {
+			netMarkings.get(marking.getKey()).addSourceT(sourceT);
 			return netMarkings.get(marking.getKey());
 		}
 		else if((help = MarkingGreater(marking)) != null) {
@@ -44,6 +45,7 @@ public class MarkingList {
 			help.setreachabilitynotbuilt();
 			help.setCoverability(marking);
 			netMarkings.put(help.getKey(), help);
+			help.addSourceT(sourceT);
 			return help;
 		}
 
@@ -157,8 +159,8 @@ public class MarkingList {
 		LinkedList<String> markstoremove=new LinkedList<String>();
 		while(transIt.hasNext()){
 			String gel;
-			if((gel=(String)transIt.next()).startsWith(mark.getKey())){
-				
+			gel=(String)transIt.next();
+			if(gel.startsWith(mark.getKey())){
 				if(!help.get(gel).ende.iscoverObject()||innercall){
 				markstoremove.add(help.get(gel).ende.getKey());
 				transIt.remove();
@@ -169,8 +171,10 @@ public class MarkingList {
 		}
 		for(int i=0;i<markstoremove.size();i++){
 			//recurively remove transitions which are obsolete
-			removefromTransactions(netMarkings.get(markstoremove.get(i)),true);
-			netMarkings.remove(markstoremove.get(i));
+			if(netMarkings.get(markstoremove.get(i))!=null){
+				removefromTransactions(netMarkings.get(markstoremove.get(i)),true);
+				netMarkings.remove(markstoremove.get(i));
+			}		
 		}
 	}
 	/**

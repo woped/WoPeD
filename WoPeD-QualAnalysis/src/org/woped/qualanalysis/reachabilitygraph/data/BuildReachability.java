@@ -69,7 +69,7 @@ public class BuildReachability {
 		// Create MarkingList and add Current Status to List
 		markings = new MarkingList(transactions);
 		Marking start = new Marking(thisEditor,"none");
-		markings.addMarking(start);
+		markings.addMarking(start,"none");
 		start.setInitial();
 
 		
@@ -125,7 +125,7 @@ public class BuildReachability {
 									ende = markings.getMarking(ende.getKey());
 								}
 								else {
-									ende = markings.addMarking(ende);
+									ende = markings.addMarking(ende,trans.getId());
 								}
 								transactions.add(start, trans.getId(), ende, trans.getNameValue() + "_" + arc.getTargetId(), trans
 										.getType() == PetriNetModelElement.SUBP_TYPE);
@@ -139,7 +139,7 @@ public class BuildReachability {
 						checkNet();
 						Marking ende = new Marking(thisEditor,trans.getId());
 						Marking help;
-						ende = markings.addMarking(ende);
+						ende = markings.addMarking(ende,trans.getId());
 						transactions.add(start, trans.getId(), ende, trans.getNameValue(),
 								trans.getType() == PetriNetModelElement.SUBP_TYPE);
 					}
