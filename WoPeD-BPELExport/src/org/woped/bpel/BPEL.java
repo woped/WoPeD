@@ -83,7 +83,7 @@ public class BPEL
 						this._extensions);
 	}
 
-	// TODO method description
+	// TODO Fehler bei TProcess setzten; neu Instanzieren
 	public boolean saveFile(String Path, IEditor editor)
 	{
 		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor
@@ -134,8 +134,9 @@ public class BPEL
 				+ m.generate_bpel());
 		System.out.println(m.count_elements());
 		BPEL.genBpelProcess();
-		BPEL.Process.set(m.generate_bpel());
-		setGlobals(BPEL.Process, pnp);
+		TProcess p = BPEL.bpelDoc.addNewProcess();
+		p.set(m.generate_bpel());
+		setGlobals(p, pnp);
 		XmlOptions opt = new XmlOptions();
 		//opt.setSavePrettyPrintIndent(2);
 		//opt.setUseDefaultNamespace();
