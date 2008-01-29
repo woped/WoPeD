@@ -471,6 +471,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 							.getInVariable(), this.getOutVariable()));
 		}
 	}
+	//	TODO: empty initial entry must be added
 
 	@Override
 	public String getName() {

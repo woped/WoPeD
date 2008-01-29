@@ -349,6 +349,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 					this.getOperation(), this.getVariable()));
 		}
 	}
+	//	TODO: empty initial entry must be added
 
 	@Override
 	public String getName() {
