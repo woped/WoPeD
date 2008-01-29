@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.editor.gui.PopUpDialog;
 import org.woped.translations.Messages;
 
 import com.toedter.calendar.JCalendar;
@@ -569,8 +570,8 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 
 	
 	public boolean allFieldsFilled(){
-		if ((deadLineTextFieldHour.getText() == null | deadLineTextFieldMinute.getText() == null | deadLineTextFieldSecond.getText() == null) || 
-				(durationTextFieldYear.getText() == null | durationTextFieldMonth.getText() == null | durationTextFieldDay.getText() == null | durationTextFieldHour.getText() == null | durationTextFieldMinute.getText() == null | durationTextFieldSecond.getText() == null)){
+		if ((deadLineTextFieldHour.getText() == null || deadLineTextFieldMinute.getText() == null || deadLineTextFieldSecond.getText() == null) || 
+				(durationTextFieldYear.getText() == null || durationTextFieldMonth.getText() == null || durationTextFieldDay.getText() == null || durationTextFieldHour.getText() == null || durationTextFieldMinute.getText() == null || durationTextFieldSecond.getText() == null)){
 			return false;
 		}
 		else
@@ -588,7 +589,12 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 
 	@Override
 	public void saveInfomation() {
-		this.transition.setBaseActivity(new Wait(this.transition.getNameValue()).saveInformation(this));
+		if (allFieldsFilled() == false){
+			new PopUpDialog(t_editor,true,"Fehler","Es sind nicht alle Felder gefüllt!").setVisible(true);
+		}
+		else{
+			this.transition.setBaseActivity(new Wait(this.transition.getNameValue()).saveInformation(this));
+		}
 	}
 
 	@Override

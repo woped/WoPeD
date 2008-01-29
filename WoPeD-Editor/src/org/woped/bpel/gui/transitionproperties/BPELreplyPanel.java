@@ -275,9 +275,11 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		if (allFieldsFilled() == false){
 			new PopUpDialog(t_editor,true,"Fehler","Es sind nicht alle Felder gefüllt!").setVisible(true);
 		}
-		this.transition.setBaseActivity(new Reply(this.transition
-				.getNameValue(), this.getPartnerLink(), this.getOperation(),
-				this.getVariable()));
+		else{
+			this.transition.setBaseActivity(new Reply(this.transition
+					.getNameValue(), this.getPartnerLink(), this.getOperation(),
+					this.getVariable()));
+		}
 	}
 
 	@Override
