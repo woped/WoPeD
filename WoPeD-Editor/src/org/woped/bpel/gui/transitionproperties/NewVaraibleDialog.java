@@ -62,7 +62,7 @@ public class NewVaraibleDialog extends JDialog {
 		this.setTitle(Messages
 				.getString("Transition.Properties.BPEL.NewVariable"));
 		this.setSize(400, 150);
-		this.setLocation(150, 150);
+		this.setLocation(this.getOwner().getLocation().x + 50, this.getOwner().getLocation().y + 50);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -178,6 +178,11 @@ public class NewVaraibleDialog extends JDialog {
 	public boolean isInputOk() {
 		BpelVariableList list = this._editor.getEditor().getModelProcessor()
 				.getElementContainer().getVariableList();
+		if(this.VariableName.getText().length() == 0)
+		{
+			new PopUpDialog(this,true,"Fehler","Keinen Variablenamen eingeben!").setVisible(true);
+			return false;
+		}
 		if(list.findBpelVaraibleByName(this.VariableName.getText()) != null)
 		{
 			new PopUpDialog(this,true,"Fehler", "Fehler: Die zu erstellende Bpel-Variable existiert bereits!").setVisible(true);

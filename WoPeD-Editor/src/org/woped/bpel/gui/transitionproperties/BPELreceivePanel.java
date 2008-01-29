@@ -11,21 +11,26 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
  * @author Esther Landes
- *
+ * 
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "receive" BPEL activity.
- *
+ * 
  * Created on 14.01.2008
  */
 
-@SuppressWarnings("serial")
 public class BPELreceivePanel extends BPELadditionalPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final String PANELNAME = "receive";
 	JLabel partnerLinkLabel = null;
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
@@ -117,7 +122,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 
 			// fill partnerLinkComboBox with partner links
 			String[] partnerLinks = modelElementContainer.getPartnerLinkList();
-			for(String partnerLink : partnerLinks){
+			for (String partnerLink : partnerLinks) {
 				partnerLinkComboBox.addItem(partnerLink);
 			}
 		}
@@ -175,7 +180,15 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 
 			newVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					showNewVariableDialog();
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+						fillVariableToComboBox(variableComboBox);
+						BpelVariable var = t_editor.getEditor()
+								.getModelProcessor().getElementContainer()
+								.findBpelVariableByName(
+										dialog.getNewVariableName());
+						variableComboBox.setSelectedItem(var);
+					}
 				}
 			});
 
@@ -183,18 +196,14 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		return newVariableButton;
 	}
 
-	
-	
-
-//	fill partnerLinkComboBox with partner links
-	public void defineContentOfPartnerLinkComboBox(){
+	// fill partnerLinkComboBox with partner links
+	public void defineContentOfPartnerLinkComboBox() {
 		partnerLinkComboBox.removeAllItems();
 		String[] partnerLinks = modelElementContainer.getPartnerLinkList();
-		for(String partnerLink : partnerLinks){
+		for (String partnerLink : partnerLinks) {
 			partnerLinkComboBox.addItem(partnerLink);
 		}
 	}
-
 
 	// ***************** content getter methods **************************
 
@@ -215,12 +224,13 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 			return "";
 		return variableComboBox.getSelectedItem().toString();
 	}
-	
-	public boolean allFieldsFilled(){
-		if (partnerLinkComboBox.getSelectedItem() == null | operationComboBox.getSelectedItem() == null | variableComboBox.getSelectedItem() == null){
+
+	public boolean allFieldsFilled() {
+		if (partnerLinkComboBox.getSelectedItem() == null
+				| operationComboBox.getSelectedItem() == null
+				| variableComboBox.getSelectedItem() == null) {
 			return false;
-		}
-		else
+		} else
 			return true;
 	}
 
@@ -235,12 +245,21 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 	}
 
 	public void setVariable(String variable) {
-		variableComboBox.addItem(variable);
+		variableComboBox.setSelectedItem(this.t_editor.getEditor()
+				.getModelProcessor().getElementContainer()
+				.findBpelVariableByName(variable));
 	}
 
 	@Override
 	public void refresh() {
-		// TODO Auto-generated method stub
+		Object o = this.variableComboBox.getSelectedItem();
+		this.fillVariableToComboBox(variableComboBox);
+		this.variableComboBox.setSelectedItem(o);
+
+		if (Receive.class.isInstance(this.transition.getBpelData())) {
+			Receive re = (Receive) this.transition.getBpelData();
+			this.setVariable(re.getVariable());
+		}
 		this.repaint();
 	}
 
@@ -253,13 +272,13 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return "receive";
+		return this.PANELNAME;
 	}
 
 	@Override
 	public void showPanel(JPanel panel, GridBagConstraints c) {
-		panel.add(this,c);
+		this.refresh();
+		panel.add(this, c);
 	}
 
 }

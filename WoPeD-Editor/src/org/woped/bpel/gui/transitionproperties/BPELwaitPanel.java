@@ -31,10 +31,13 @@ import com.toedter.calendar.JCalendar;
  * Created on 16.12.2007
  */
 
-@SuppressWarnings("serial")
-
 public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final String PANELNAME = "wait";
 	private ButtonGroup waitButtonGroup = null;
 	private JPanel waitDurationEntry = null;
 	private JRadioButton waitDurationRadioButton = null;
@@ -577,46 +580,25 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 
 	@Override
 	public void refresh() {
-		// TODO Auto-generated method stub
+		if (Wait.class.isInstance(this.transition.getBpelData())) {
+			Wait re = (Wait) this.transition.getBpelData();
+		}
 		this.repaint();
 	}
-
-
-
 
 	@Override
 	public void saveInfomation() {
 		this.transition.setBaseActivity(new Wait(this.transition.getNameValue()).saveInformation(this));
 	}
 
-
-
-
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return "wait";
+		return this.PANELNAME;
 	}
-
-
-
-
+	
 	@Override
 	public void showPanel(JPanel panel, GridBagConstraints c) {
+		this.refresh();
 		panel.add(this,c);
 	}
-	
-	
-	//	***************** content setter methods  **************************
-
-// nach abklären mit Alex an getter anpassen (Esther)	
-	
-/*	public void setRadioButton(String durationDeadline){
-			
-	}
-	
-	public void setDurationDay(String variable){
-		toVariableComboBox.addItem(variable);	
-	}*/
-
 }

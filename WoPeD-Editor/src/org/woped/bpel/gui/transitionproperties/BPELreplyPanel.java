@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
@@ -29,6 +30,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
+	private final String PANELNAME = "reply";
 	JLabel partnerLinkLabel = null;
 	JComboBox partnerLinkComboBox = null;
 	JButton newPartnerLinkButton = null;
@@ -176,7 +178,15 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 			newVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					showNewVariableDialog();
+					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
+					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+						fillVariableToComboBox(variableComboBox);
+						BpelVariable var = t_editor.getEditor()
+								.getModelProcessor().getElementContainer()
+								.findBpelVariableByName(
+										dialog.getNewVariableName());
+						variableComboBox.setSelectedItem(var);
+					}
 				}
 			});
 
@@ -233,12 +243,21 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	}
 
 	public void setVariable(String variable) {
-		variableComboBox.addItem(variable);
+		variableComboBox.setSelectedItem(this.t_editor.getEditor()
+				.getModelProcessor().getElementContainer()
+				.findBpelVariableByName(variable));
 	}
 
 	@Override
 	public void refresh() {
-		// TODO Auto-generated method stub
+		Object o = this.variableComboBox.getSelectedItem();
+		this.fillVariableToComboBox(variableComboBox);
+		this.variableComboBox.setSelectedItem(o);
+
+		if (Reply.class.isInstance(this.transition.getBpelData())) {
+			Reply re = (Reply) this.transition.getBpelData();
+			this.setVariable(re.getVariable());
+		}
 		this.repaint();
 	}
 
@@ -251,12 +270,12 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return "reply";
+		return this.PANELNAME;
 	}
 
 	@Override
 	public void showPanel(JPanel panel, GridBagConstraints c) {
+		this.refresh();
 		panel.add(this,c);
 	}
 }
