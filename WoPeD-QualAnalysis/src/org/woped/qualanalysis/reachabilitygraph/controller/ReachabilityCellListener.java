@@ -20,6 +20,7 @@ public class ReachabilityCellListener implements MouseListener {
 	
 	private ReachabilityJGraph graph = null;
 	private ReachabilityPlaceModel lastHighlighted = null;
+	private ReachabilityEdgeModel lastHighlightedEdge = null;
 	
 	public ReachabilityCellListener(ReachabilityJGraph graph){
 		this.graph = graph;
@@ -34,7 +35,9 @@ public class ReachabilityCellListener implements MouseListener {
                deHighlightEdges();
                highlightEdges(place);
            } else if (cell != null && cell instanceof ReachabilityEdgeModel){
-               deHighlightEdges();
+               ReachabilityEdgeModel edge = (ReachabilityEdgeModel) cell;
+        	   deHighlightEdges();
+        	   highlightClickedEdge(edge);              
            } else {
         	   deHighlightEdges();
            }
@@ -47,11 +50,17 @@ public class ReachabilityCellListener implements MouseListener {
 	public void mouseReleased(MouseEvent e) {	}
     
 	private void deHighlightEdges(){
+		Map editMap = new HashMap();
+		if(lastHighlightedEdge != null){
+            GraphConstants.setLineColor(lastHighlightedEdge.getAttributes(), Color.black);
+            editMap.put(lastHighlightedEdge, lastHighlightedEdge.getAttributes());
+            this.lastHighlightedEdge = null;
+        }
+		
 		if(lastHighlighted != null){
 			ReachabilityPortModel port = (ReachabilityPortModel) this.lastHighlighted.getChildAt(0);
 			Set<ReachabilityEdgeModel> edges = (Set<ReachabilityEdgeModel>)port.getEdges();
 			Iterator<ReachabilityEdgeModel> iterEdges = edges.iterator();
-			Map editMap = new HashMap();
 			while(iterEdges.hasNext()){
 				ReachabilityEdgeModel edge = iterEdges.next();
 				if(edge.getSource().equals(port) || edge.getTarget().equals(port)){
@@ -60,10 +69,19 @@ public class ReachabilityCellListener implements MouseListener {
 				}
 			}
 			this.lastHighlighted = null;
-			if(editMap.size() > 0){
-				graph.getGraphLayoutCache().edit(editMap, null, null, null);	
-			}
 		}
+		
+		if(editMap.size() > 0){
+			graph.getGraphLayoutCache().edit(editMap, null, null, null);	
+		}
+	}
+	
+	private void highlightClickedEdge(ReachabilityEdgeModel edge){
+		 Map editMap = new HashMap();
+         GraphConstants.setLineColor(edge.getAttributes(), Color.magenta);
+         editMap.put(edge, edge.getAttributes());
+         graph.getGraphLayoutCache().edit(editMap);
+         this.lastHighlightedEdge = edge;
 	}
 	
 	private void highlightEdges(ReachabilityPlaceModel place){

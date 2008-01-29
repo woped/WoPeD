@@ -26,6 +26,11 @@ public class ReachabilityLayoutHierarchic {
 		return graph;
 	}
 	
+	/**
+	 * applies a hierarchich lay on a given graph.
+	 * 
+	 * @param graph
+	 */
 	private static void applyHierarchicLayout(JGraph graph){
 		GraphModel model = graph.getModel();
 		LinkedList<ReachabilityPlaceModel> markings = new LinkedList<ReachabilityPlaceModel>();
@@ -41,16 +46,22 @@ public class ReachabilityLayoutHierarchic {
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
 			LinkedList<ReachabilityPlaceModel> toProof = new LinkedList<ReachabilityPlaceModel>();
 			ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), toProof);
-			Iterator<ReachabilityPlaceModel> iter = toProof.iterator();
+			LinkedList<ReachabilityPlaceModel> toEdit = (LinkedList<ReachabilityPlaceModel>)toProof.clone();
+			ReachabilityLayoutHierarchic.hierarcherProofer(toProof);
+			Iterator<ReachabilityPlaceModel> iter = toEdit.iterator();
 			while(iter.hasNext()){
 				ReachabilityPlaceModel next = iter.next();
 				edit.put(next, next.getAttributes());
 			}
-			ReachabilityLayoutHierarchic.hierarcherProofer(toProof);
-			
 		}
 	}
 	
+	/**
+	 * after the call of hierarcher it's possible that some markings are covered by each other.
+	 * The hierarcher proofer looks for that vertices and corrects their layout.
+	 * 
+	 * @param places
+	 */
 	private static void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places){
 		if(places.size() > 0){
 			ReachabilityPlaceModel first = places.removeFirst();
@@ -74,7 +85,17 @@ public class ReachabilityLayoutHierarchic {
 		}
 	}
 	
+	
+	/**
+	 * is a recursive method for layout the graph in a hierarchic way.
+	 *
+	 * @param place
+	 * @param bounds
+	 * @param places
+	 * @return
+	 */
 	private static LinkedList<ReachabilityPlaceModel> hierarcher(ReachabilityPlaceModel place, Rectangle2D bounds, LinkedList<ReachabilityPlaceModel> places){
+		// set bounds of given place and set it as drawn 
 		if(!place.isSetRecursiveBounds()){
 			GraphConstants.setBounds(place.getAttributes(), bounds);
 			place.setIsSetRecursiveBounds(true);
@@ -82,12 +103,15 @@ public class ReachabilityLayoutHierarchic {
 		}
 		bounds = GraphConstants.getBounds(place.getAttributes());
 		LinkedList<ReachabilityEdgeModel> edges = new LinkedList<ReachabilityEdgeModel>();
+		// get all ports from that node
 		List ports = place.getChildren();
+		// iterate over the ports
 		for(int portIndex = 0; portIndex < ports.size(); portIndex++){
 			if(ports.get(portIndex) instanceof ReachabilityPortModel){
 				ReachabilityPortModel port = (ReachabilityPortModel) ports.get(portIndex);
 				Set<ReachabilityEdgeModel> edgeSet = port.getEdges();
 		     	Iterator<ReachabilityEdgeModel> edgeIterator = edgeSet.iterator();
+		     	// iterate over ports edges
 		     	while(edgeIterator.hasNext()){
 		     		ReachabilityEdgeModel next = edgeIterator.next();
 		     		if(ports.get(portIndex) == next.getSource()){
@@ -99,7 +123,8 @@ public class ReachabilityLayoutHierarchic {
 		Iterator<ReachabilityEdgeModel> edgesIter = edges.iterator();
 		int edgeCount = 0;
 		LinkedList<ReachabilityPlaceModel> childs = new LinkedList<ReachabilityPlaceModel>();
-     	while(edgesIter.hasNext()){
+     	// iterate over the edges that leave that port
+		while(edgesIter.hasNext()){
      		ReachabilityEdgeModel edge = (ReachabilityEdgeModel) edgesIter.next();
      		ReachabilityPortModel otherPort = getOtherPort(place, edge);
      		// (x,y,w,h) y = hoch/runter x = links/rechts		
