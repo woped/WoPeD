@@ -5,8 +5,6 @@ import java.util.Iterator;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
 import org.woped.bpel.BPEL;
 import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
-import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
 public class FlowTransition extends TerminalElement
 {
@@ -24,7 +22,7 @@ public class FlowTransition extends TerminalElement
 		if(this.getID() != e.getID()) return false;
 		return true;
 	}
-	
+
 	public TActivity getBpelCode()
 	{
 		AbstractElement<?> tmp = null;
@@ -35,13 +33,13 @@ public class FlowTransition extends TerminalElement
 		Iterator<AbstractElement<?>> list = begin.get_all_post_objects().iterator();
 		while (list.hasNext())
 		{
-			
+
 			tmp = list.next();
-			tmp=tmp.get_first_post_element();			
-			
+			tmp=tmp.get_first_post_element();
+
 			if(TPick.class.isInstance(tmp.getBpelCode())){
 				TPick iPick = iFlow.addNewPick();
-				iPick.set(tmp.getBpelCode());			
+				iPick.set(tmp.getBpelCode());
 			}
 			else if(TSequence.class.isInstance(tmp.getBpelCode())){
 				TSequence iSeq = iFlow.addNewSequence();
@@ -53,7 +51,7 @@ public class FlowTransition extends TerminalElement
 			}
 			else if(TAssign.class.isInstance(tmp.getBpelCode())){
 				TAssign iAss = iFlow.addNewAssign();
-				iAss.set(tmp.getBpelCode());			
+				iAss.set(tmp.getBpelCode());
 			}
 			else if(TFlow.class.isInstance(tmp.getBpelCode())){
 				TFlow iFlowSub = iFlow.addNewFlow();
@@ -79,7 +77,7 @@ public class FlowTransition extends TerminalElement
 				TInvoke iInvoke = iFlow.addNewInvoke();
 				iInvoke.set(tmp.getBpelCode());
 			}
-		}			
+		}
 		return iFlow;
 	}
 

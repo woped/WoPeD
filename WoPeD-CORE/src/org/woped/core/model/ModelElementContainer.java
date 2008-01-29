@@ -1,17 +1,17 @@
 /*
- * 
- * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
- * 
+ *
+ * Copyright (C) 2004-2005, see @author in JavaDoc for the author
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -30,18 +30,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.namespace.QName;
-
 import org.jgraph.graph.DefaultPort;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.QNames;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLink;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.woped.core.Constants;
 import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.BpelVariableList;
-import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.bpel.PartnerlinkList;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.utilities.LoggerManager;
@@ -111,7 +106,7 @@ public class ModelElementContainer implements Serializable {
 	 * Returns the idMapper. This is the Main Hashmap containing the whole
 	 * Petri-Net. Is mainly used by the Class itselfs. Should not be necessary
 	 * to use this Method outside of the Container!
-	 * 
+	 *
 	 * @return Map
 	 */
 	public Map<String, Map<String, Object>> getIdMap() {
@@ -121,7 +116,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Method addElement. Adds an <code>PetriNetModelElement</code> to the
 	 * Container.
-	 * 
+	 *
 	 * @param theElement
 	 * @throws ElementException
 	 */
@@ -151,7 +146,7 @@ public class ModelElementContainer implements Serializable {
 	 * Method addReference. Adds an Reference from the
 	 * <code>PetriNetModelElement</code> with id <code>sourceId</code> to
 	 * the Element with id <code>targetId</code>.
-	 * 
+	 *
 	 * @param sourceId
 	 * @param targetId
 	 */
@@ -181,7 +176,7 @@ public class ModelElementContainer implements Serializable {
 	 * this will check for top-level references, not low-level components of van
 	 * der Aalst operators. This means that only actual, visible arcs as present
 	 * in the graphical Petri-Net representation will be found
-	 * 
+	 *
 	 * @param sourceId
 	 * @param targetId
 	 * @return
@@ -193,7 +188,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Method removeElement. Removes a <code>PetriNetModelElement</code>
 	 * including all its References.
-	 * 
+	 *
 	 * @param id
 	 */
 	public void removeElement(Object id) {
@@ -234,7 +229,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Method removeRefElements. Removes only all Arcs from a
 	 * <code>PetriNetModelElement</code>, not the Element itselfs.
-	 * 
+	 *
 	 * @param id
 	 */
 	public void removeArcsFromElement(Object id) {
@@ -284,7 +279,7 @@ public class ModelElementContainer implements Serializable {
 	 * Method getReferenceElements. Returns the all
 	 * <code>AbstractElementModel</code>, of which an Element with a special
 	 * id is source.
-	 * 
+	 *
 	 * @param id
 	 * @return Map
 	 */
@@ -327,7 +322,7 @@ public class ModelElementContainer implements Serializable {
 	 * Method getSourceElements. Returns the all
 	 * <code>PetriNetModelElement</code>, of which an Element with a special
 	 * id is target.
-	 * 
+	 *
 	 * @param id
 	 * @return Map
 	 */
@@ -340,7 +335,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Method getRootElements. Returns a <code>List</code> containing all
 	 * <code>PetriNetModelElement</code> without any Reference information.
-	 * 
+	 *
 	 * @return List
 	 */
 	public List getRootElements() {
@@ -359,7 +354,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Method findSourceElements. Returns a Map with the Elements that contains
 	 * a reference to the Object with a special id.
-	 * 
+	 *
 	 * @param id
 	 * @return List
 	 */
@@ -397,7 +392,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Method getElementById. Returns the a ModelElement with a special id
 	 * itselfs
-	 * 
+	 *
 	 * @param id
 	 * @return ModelElement
 	 */
@@ -428,7 +423,7 @@ public class ModelElementContainer implements Serializable {
 	/* only for debugging use */
 	/*
 	 * private void printContent() {
-	 * 
+	 *
 	 * Iterator rootTier = getRootElements().iterator();
 	 * System.out.println("#######################################");
 	 * System.out.println("The Content: "); while (rootTier.hasNext()) { Object
@@ -458,7 +453,7 @@ public class ModelElementContainer implements Serializable {
 
 	/**
 	 * Returns the arcs.
-	 * 
+	 *
 	 * @return Map
 	 */
 	public Map<String, ArcModel> getArcMap() {
@@ -467,7 +462,7 @@ public class ModelElementContainer implements Serializable {
 
 	/**
 	 * Sets the arcs.
-	 * 
+	 *
 	 * @param arcs
 	 *            The arcs to set
 	 */
@@ -505,8 +500,8 @@ public class ModelElementContainer implements Serializable {
 	}
 
 	/* Bpel extension */
-	
-	
+
+
 	/**
 	 * @return
 	 */
@@ -514,9 +509,9 @@ public class ModelElementContainer implements Serializable {
 	{
 		return this.variablesList;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public PartnerlinkList getPartnerlinkList()
@@ -534,7 +529,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Returns a list of TVariables. This method is used by the bpel-generator
 	 * to produce BPEL-Code.
-	 * 
+	 *
 	 * @return
 	 */
 	public TVariables getTVariablesList() {
@@ -544,7 +539,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Returns a list of PartnerLinkTypes. This method is used by the
 	 * BPEL-generator to pruduce the global datamodel of partnerlinks
-	 * 
+	 *
 	 * @return
 	 */
 	public String[] getPartnerLinkList() {
@@ -553,7 +548,7 @@ public class ModelElementContainer implements Serializable {
 
 	/**
 	 * Insert a partnerlink to a consisting list of partnerlinks
-	 * 
+	 *
 	 * @param name
 	 * @param namespace
 	 * @param partnerLinkType
@@ -569,7 +564,7 @@ public class ModelElementContainer implements Serializable {
 	/**
 	 * Insert a partnerlink to a consisting list of partnerlinks Attention:
 	 * Parameters: name, namespace, partnerLinkType, partnerRole, myRole
-	 * 
+	 *
 	 * @param name
 	 * @param namespace
 	 * @param partnerLinkType
@@ -588,7 +583,7 @@ public class ModelElementContainer implements Serializable {
 	 * Insert a partnerlink to a consisting list of partnerlinks Attention:
 	 * Parameters: name, namespace, partnerLinkType, myRole (without
 	 * partnerRole)
-	 * 
+	 *
 	 * @param name
 	 * @param namespace
 	 * @param partnerLinkType
@@ -600,13 +595,13 @@ public class ModelElementContainer implements Serializable {
 		this.partnerLinkList.addPartnerLinkWithoutPartnerRole(name, namespace,
 				partnerLinkType, myRole, WsdlUrl);
 	}
-	
+
 	/**
 	 * @edit by Alexander Roﬂwog
-	 * 
+	 *
 	 * Insert a partnerlink to a consisting list of partnerlinks
 	 * Attention: Parameters: name, namespace, partnerLinkType, partnerRole
-	 * 
+	 *
 	 * @param name
 	 * @param namespace
 	 * @param partnerLinkType
@@ -618,18 +613,18 @@ public class ModelElementContainer implements Serializable {
 		this.partnerLinkList.addPartnerLinkWithoutMyRole(name, namespace,
 				partnerLinktType, partnerRole, WsdlUrl);
 	}
-	
+
 	public boolean existWsdlUrl(String WsdlUrl){
-		
+
 		String[] urls = this.partnerLinkList.getWsdlUrls();
 		if(urls==null)return false;
 		for (int i=0;i<urls.length-1;i++){
 			if (urls[i].equals(WsdlUrl))return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	public boolean existPLName(String newname){
 		String[] names = this.partnerLinkList.getPartnerlinkNameArray();
 		if(names==null)return false;
@@ -640,7 +635,7 @@ public class ModelElementContainer implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param arg
 	 */
 	public void addVariable(TVariable arg) {
@@ -648,7 +643,7 @@ public class ModelElementContainer implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 * @param type
 	 */
@@ -657,7 +652,7 @@ public class ModelElementContainer implements Serializable {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 * @param namespace
 	 * @param type
@@ -665,9 +660,9 @@ public class ModelElementContainer implements Serializable {
 	public void addWSDLVariable(String name, String namespace, String type) {
 		this.variablesList.addWSDLVariable(name, namespace, type);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param Name
 	 * @return
 	 */
@@ -675,18 +670,18 @@ public class ModelElementContainer implements Serializable {
 	{
 		return this.variablesList.findBpelVaraibleByName(Name);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public String[] getBpelVariableNameList()
 	{
 		return this.variablesList.getVariableNameArray();
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public HashSet<BpelVariable> getBpelVariableList()

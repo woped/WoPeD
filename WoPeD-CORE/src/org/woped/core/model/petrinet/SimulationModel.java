@@ -1,22 +1,21 @@
 package org.woped.core.model.petrinet;
 
 import java.util.Vector;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 
-public class SimulationModel  
+public class SimulationModel
 {
 	private String id = null;
 	private String name = null;
 	private String fingerprint = null;
 	private Vector<TransitionModel> firedTransitions = null;
-	
+
 	public SimulationModel(String id, String name)
 	{
 		this.name = name;
 		this.id = id;
 		firedTransitions = new Vector<TransitionModel>();
 	}
-	
+
 	/*
 	 * Constructor to hand over an Existing Vector from HistoryBox
 	 */
@@ -27,7 +26,7 @@ public class SimulationModel
 		this.fingerprint = fingerprint;
 		firedTransitions = HistoryVector;
 	}
-	
+
     /**
      * @return Returns the name.
      */
@@ -35,7 +34,7 @@ public class SimulationModel
     {
         return name;
     }
-    
+
     /**
      * @param name
      *            The name to set.
@@ -44,7 +43,7 @@ public class SimulationModel
     {
         this.name = name;
     }
-    
+
     /**
      * @return Returns the vector with the fired transitions
      */
@@ -52,7 +51,7 @@ public class SimulationModel
     {
     	return firedTransitions;
     }
-    
+
     /**
      * This method is needed to make it possible that Simulations may be overwritten with other content
      * @param HistoryVector
@@ -61,17 +60,17 @@ public class SimulationModel
     {
     	firedTransitions = HistoryVector;
     }
-    
+
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     public String toString()
     {
         return getName();
     }
-    
+
     /**
      * @return Returns the fingerprint of the petrinet the simulation was created with.
      */
@@ -79,7 +78,7 @@ public class SimulationModel
     {
     	return fingerprint;
     }
-    
+
     /**
      * @param fingerprint
      *            The fingerprint to set.
@@ -88,10 +87,10 @@ public class SimulationModel
     {
     	this.fingerprint = fingerprint;
     }
-	
+
 	public String getId()
 	{
 		return id;
 	}
-	
+
 }

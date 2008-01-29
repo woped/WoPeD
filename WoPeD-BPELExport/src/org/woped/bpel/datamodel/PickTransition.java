@@ -16,8 +16,6 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
 public class PickTransition extends TerminalElement
 {

@@ -1,6 +1,5 @@
 package org.woped.bpel.gui.transitionproperties;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -22,17 +21,17 @@ import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for an "assign" BPEL activity.
- * 
+ *
  * Created on 15.01.2008
  */
 
 public class BPELassignPanel extends BPELadditionalPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -53,7 +52,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	JDialog dialogPartner = null;
 
 	/**
-	 * 
+	 *
 	 * @param t_editor
 	 * @param transition
 	 */
@@ -125,7 +124,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private JLabel getFromVariableLabel() {
@@ -137,7 +136,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private JComboBox getFromVariableComboBox() {
@@ -150,7 +149,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private JButton getNewFromVariableButton() {
@@ -179,7 +178,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private JLabel getToVariableLabel() {
@@ -200,7 +199,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private JButton getNewToVariableButton() {
@@ -233,7 +232,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	// ***************** content getter methods **************************
 
 	/**
-	 * 
+	 *
 	 */
 	public String getFromVariable() {
 		if (fromVariableComboBox.getSelectedItem() == null
@@ -245,7 +244,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public String getToVariable() {
@@ -255,7 +254,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean allFieldsFilled() {
@@ -269,7 +268,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	// ***************** content setter methods **************************
 
 	/**
-	 * 
+	 *
 	 */
 	public void setFromVariable(String variable) {
 		fromVariableComboBox.addItem(this.t_editor.getEditor()
@@ -278,7 +277,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param variable
 	 */
 	public void setToVariable(String variable) {
