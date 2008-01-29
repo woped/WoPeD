@@ -516,8 +516,13 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 	modelElementContainer.addPartnerLink(
     													name, namespace, partnerLinkType, partnerRole, myRole, wsdlUrl);
                                                 }
-                                                addVariablesToModelElementContainer(wsdlUrl);
-                                           	    refresh();
+
+                                                // if the messages of the WSDL file were already saved as variables in the datamodel don't save them for a second time.
+                                                if(!modelElementContainer.existWsdlUrl(wsdlUrl)){
+                                                	addVariablesToModelElementContainer(wsdlUrl);
+                                                }
+
+                                                refresh();
                                                 dialog.dispose();
                                         }
                                 }
