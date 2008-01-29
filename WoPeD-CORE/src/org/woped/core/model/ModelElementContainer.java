@@ -624,11 +624,18 @@ public class ModelElementContainer implements Serializable {
 		String[] urls = this.partnerLinkList.getWsdlUrls();
 		if(urls==null)return false;
 		for (int i=0;i<urls.length-1;i++){
-			if (urls[i].equals(WsdlUrl)){
-				return true;
-			}
+			if (urls[i].equals(WsdlUrl))return true;
 		}
 		
+		return false;
+	}
+	
+	public boolean existPLName(String newname){
+		String[] names = this.partnerLinkList.getPartnerlinkNameArray();
+		if(names==null)return false;
+		for(int i=0;i<names.length-1;i++){
+			if(names[i].equals(newname))return true;
+		}
 		return false;
 	}
 
