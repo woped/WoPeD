@@ -155,11 +155,9 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 			partnerLinkComboBox.setPreferredSize(dimension);
 			partnerLinkComboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
-					// TODO: aus ModelElementContainer zu einem Partner Link die WSDL
-					// bekommen und die zugehörige Rolle, damit Operation bestimmt werden können.
-					 defineContentOfOperationComboBox(((Partnerlink) e.getItem()).
-							 getWsdlUrl(), ((Partnerlink) e.getItem()).
-							 	getTPartnerlink().getPartnerRole());
+/*					defineContentOfOperationComboBox(((Partnerlink) e.getItem()).
+						 getWsdlUrl(), ((Partnerlink) e.getItem()).
+						 	getTPartnerlink().getPartnerRole());*/
 				}
 			});
 		}
@@ -294,6 +292,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 	public void defineContentOfOperationComboBox(String pathToWsdlFile, String roleName) {
 		ArrayList<Operation> operations;
+
 		String portTypeName = wsdlFileRepresentation.getPortTypeNameByRoleName(roleName);
 		try {
 			operationComboBox.removeAllItems();

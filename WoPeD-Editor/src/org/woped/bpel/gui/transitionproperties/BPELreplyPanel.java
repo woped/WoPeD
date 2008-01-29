@@ -5,6 +5,9 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -13,10 +16,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.bpel.wsdl.exceptions.NoPortTypeFoundException;
+import org.woped.bpel.wsdl.wsdlFileRepresentation.Operation;
 import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes
@@ -120,12 +126,14 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
-
-			// fill partnerLinkComboBox with partner links
-			String[] partnerLinks = modelElementContainer.getPartnerLinkList();
-			for(String partnerLink : partnerLinks){
-				partnerLinkComboBox.addItem(partnerLink);
-			}
+			partnerLinkComboBox.setPreferredSize(dimension);
+			partnerLinkComboBox.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent e) {
+/*					 defineContentOfOperationComboBox(((Partnerlink) e.getItem()).
+							 getWsdlUrl(), ((Partnerlink) e.getItem()).
+							 	getTPartnerlink().getPartnerRole());*/
+				}
+			});
 		}
 		return partnerLinkComboBox;
 	}
@@ -205,6 +213,29 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		Iterator i = partnerlinkList.iterator();
 		while (i.hasNext()) {
 			partnerLinkComboBox.addItem(i.next());
+		}
+	}
+
+
+	public void defineContentOfOperationComboBox(String pathToWsdlFile, String roleName) {
+		ArrayList<Operation> operations;
+		String portTypeName = wsdlFileRepresentation.getPortTypeNameByRoleName(roleName);
+		try {
+			operationComboBox.removeAllItems();
+
+			wsdlFileRepresentation = wsdl.readDataFromWSDL(pathToWsdlFile);
+			operations = wsdlFileRepresentation.getPortType(portTypeName).getOperations();
+			for (Operation operation : operations) {
+				setOperation(operation.getOperationName());
+			}
+
+		} catch (NoPortTypeFoundException e1) {
+			// This exception won't be raised because there will definitely be a
+			// port type.
+		} catch (Exception e) {
+			showErrorPopup(
+					Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"),
+					Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingOperation"));
 		}
 	}
 
