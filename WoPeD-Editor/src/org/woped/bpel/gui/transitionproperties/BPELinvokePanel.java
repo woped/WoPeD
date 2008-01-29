@@ -29,17 +29,17 @@ import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes / Kristian Kindler
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for an "invoke" BPEL activity.
- * 
+ *
  * Created on 08.01.2008
  */
 
 public class BPELinvokePanel extends BPELadditionalPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -322,9 +322,6 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		ArrayList<Operation> operations;
 
 
-		String portTypeName = wsdlFileRepresentation
-				.getPortTypeNameByRoleName(roleName);
-
 		if (wsdlFileRepresentation == null){
 			try {
 				wsdlFileRepresentation = new Wsdl().readDataFromWSDL(pathToWsdlFile);
@@ -336,7 +333,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 						Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingVariables"));
 			}
 		}
-		portTypeName = wsdlFileRepresentation.getPortTypeNameByRoleName(roleName);
+		String portTypeName = wsdlFileRepresentation.getPortTypeNameByRoleName(roleName);
 		try {
 			operationComboBox.removeAllItems();
 
