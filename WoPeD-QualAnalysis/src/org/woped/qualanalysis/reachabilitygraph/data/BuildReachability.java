@@ -171,7 +171,7 @@ public class BuildReachability {
 
 	private void checkNet() {
 		long begin = System.currentTimeMillis();
-		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Reachability: CHECK NET");
+		//LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Reachability: CHECK NET");
 		Iterator transIter = allTransitions.keySet().iterator();
 
 		resetArcStatus();
@@ -189,7 +189,7 @@ public class BuildReachability {
 		 * PlaceModel currentSink = i.next();
 		 * currentSink.setActivated(currentSink.getVirtualTokenCount()>0); } }
 		 */
-		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
+		//LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
 	}
 
 	private void checkTransition(TransitionModel transition) {

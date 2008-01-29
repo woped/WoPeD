@@ -2,6 +2,7 @@ package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 ;
 
@@ -39,9 +40,10 @@ public class MarkingList {
 		}
 		else if((help = MarkingGreater(marking)) != null) {
 			//If object is covered remove all Transaction starting from it
-			removefromTransactions(help);
+			removefromTransactions(help,false);
 			help.setreachabilitynotbuilt();
 			help.setCoverability(marking);
+			netMarkings.put(help.getKey(), help);
 			return help;
 		}
 
@@ -149,19 +151,26 @@ public class MarkingList {
  * Method for removing outgoing transactions of a marking
  * @param marking from which transactions should be removed
  */
-	public void removefromTransactions(Marking mark){
+	public void removefromTransactions(Marking mark, boolean innercall){
 		HashMap<String, TransitionObject> help=transactions.getMap();
 		Iterator transIt=help.keySet().iterator();
+		LinkedList<String> markstoremove=new LinkedList<String>();
 		while(transIt.hasNext()){
 			String gel;
 			if((gel=(String)transIt.next()).startsWith(mark.getKey())){
 				
-				if(!help.get(gel).ende.iscoverObject()){
+				if(!help.get(gel).ende.iscoverObject()||innercall){
+				markstoremove.add(help.get(gel).ende.getKey());
 				transIt.remove();
 				help.remove(gel);
 				transIt=help.keySet().iterator();
 				}
 			}
+		}
+		for(int i=0;i<markstoremove.size();i++){
+			//recurively remove transitions which are obsolete
+			removefromTransactions(netMarkings.get(markstoremove.get(i)),true);
+			netMarkings.remove(markstoremove.get(i));
 		}
 	}
 	/**

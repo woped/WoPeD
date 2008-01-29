@@ -36,13 +36,16 @@ public class Marking {
 	public Marking(IEditor source) {
 		StructuralAnalysis sa = new StructuralAnalysis(source);
 		this.source = source;
-		currentMarking = new TreeMap<String, Integer>();
+		currentMarking = new TreeMap<String, Integer>(new Comp_mf());
 		// Store the marking of each place
 		Iterator places = sa.getPlacesIterator();
 		while (places.hasNext()) {
 			PlaceModel currentPlace = (PlaceModel) places.next();
 			if(currentPlace.getId().contains("CENTER_PLACE_") && currentPlace.getVirtualTokenCount() > 0) {
 				centerPlace = true;
+			}
+			if(currentPlace.getVirtualTokenCount()>60000){
+				iscoverObject=true;
 			}
 			currentMarking.put(currentPlace.getId(), currentPlace.getVirtualTokenCount());
 		}
@@ -323,7 +326,6 @@ public class Marking {
 	public boolean iscoverObject(){
 		return iscoverObject;
 	}
-
 	// ! Stores a reference to the net structure which is useful
 	// ! to determine which transitions are active etc.
 	private ModelElementContainer netStructure;
@@ -341,3 +343,19 @@ public class Marking {
 	private boolean iscoverObject=false;
 	private IEditor source = null;
 }
+class Comp_mf implements Comparator{
+	public int compare(Object o1,Object o2){
+		String s1=(String) o1;
+		String s2=(String) o2;
+		if(s1.startsWith("p")&&s2.startsWith("p")){
+			int i1=Integer.parseInt(s1.substring(1));
+			int i2=Integer.parseInt(s2.substring(1));
+			return i1-i2;
+		}
+		else{
+			return s1.compareTo(s2);
+		}
+	}
+}
+
+

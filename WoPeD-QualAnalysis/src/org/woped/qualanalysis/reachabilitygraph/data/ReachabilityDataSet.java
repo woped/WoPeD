@@ -89,6 +89,19 @@ public class ReachabilityDataSet {
 				netTransitions.remove(sourceid);
 
 			}
+			//remove transactions which are not in marking list
+			Iterator transIt=netTransitions.keySet().iterator();
+			while(transIt.hasNext()){
+				String curr=(String) transIt.next();
+				if(!markings.containsMarking(netTransitions.get(curr).start)){
+					transIt.remove();
+					netTransitions.remove(curr);
+					transIt=netTransitions.keySet().iterator();
+				}
+				
+			}
+			
+			
 		}
 		for(int i = 0; i < MarkingsToRemove.size(); i++) {
 			mlist.remove(MarkingsToRemove.get(i));
