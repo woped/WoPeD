@@ -504,15 +504,12 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 else if(!partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole")) &&
                                                    myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
                                                 ){
-                                                	/*bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
-                                                	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);*/
                                                 	modelElementContainer.addPartnerLinkWithoutMyRole(
                                                 		name, namespace, partnerLinkType, partnerRole, wsdlUrl);
                                                 }
 
                                                 // partner role ENTERED / my role ENTERED
                                                 else{
-                                                	// TODO  bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
                                                 	modelElementContainer.addPartnerLink(
     													name, namespace, partnerLinkType, partnerRole, myRole, wsdlUrl);
                                                 }
