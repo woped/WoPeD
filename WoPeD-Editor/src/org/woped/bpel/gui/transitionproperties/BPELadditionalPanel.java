@@ -776,7 +776,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 			.getVariableList()
 				.getBpelVariableList();
 		box.removeAllItems();
-		box.addItem("");
+		box.addItem(Messages.getString("Transition.Properties.BPEL.No"));
 		Iterator<BpelVariable> iter = list.iterator();
 		while (iter.hasNext())
 			box.addItem(iter.next());
