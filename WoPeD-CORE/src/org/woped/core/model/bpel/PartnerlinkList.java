@@ -116,6 +116,15 @@ public class PartnerlinkList {
 		return list;
 	}
 	
+	public String[] getWsdlUrls(){
+		String[] urls = new String[this._list.size()];
+		Iterator<Partnerlink> iter = this._list.iterator();
+		for(int i=0;iter.hasNext();i++){
+			urls[i]=iter.next().getWsdlUrl();
+		}
+		return urls;
+	}
+	
 	/**
 	 * 
 	 * @param Name

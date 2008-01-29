@@ -114,6 +114,7 @@ public class Partnerlink {
 	 * @return
 	 */
 	public TPartnerLink getTPartnerlink() {
+		System.out.println(this.partnerLink);
 		return this.partnerLink;
 	}
 

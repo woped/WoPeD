@@ -618,6 +618,19 @@ public class ModelElementContainer implements Serializable {
 		this.partnerLinkList.addPartnerLinkWithoutMyRole(name, namespace,
 				partnerLinktType, partnerRole, WsdlUrl);
 	}
+	
+	public boolean existWsdlUrl(String WsdlUrl){
+		
+		String[] urls = this.partnerLinkList.getWsdlUrls();
+		if(urls==null)return false;
+		for (int i=0;i<urls.length-1;i++){
+			if (urls[i].equals(WsdlUrl)){
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 	/**
 	 * 
