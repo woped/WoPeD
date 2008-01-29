@@ -147,8 +147,8 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 			newFromVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						fillVariableToComboBox(fromVariableComboBox);
 						BpelVariable var = t_editor.getEditor()
 								.getModelProcessor().getElementContainer()
@@ -197,8 +197,8 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 			newToVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						fillVariableToComboBox(toVariableComboBox);
 						BpelVariable var = t_editor.getEditor()
 								.getModelProcessor().getElementContainer()

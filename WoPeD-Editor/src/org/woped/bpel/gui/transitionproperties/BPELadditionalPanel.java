@@ -518,9 +518,9 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 }
 
                                                 // if the messages of the WSDL file were already saved as variables in the datamodel don't save them for a second time.
-                                                if(!modelElementContainer.existWsdlUrl(wsdlUrl)){
+//                                                if(!modelElementContainer.existWsdlUrl(wsdlUrl)){
                                                 	addVariablesToModelElementContainer(wsdlUrl);
-                                                }
+ //                                               }
 
                                                 refresh();
                                                 dialog.dispose();

@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.woped.core.model.bpel.BpelVariable;
+import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
@@ -105,7 +108,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		c.fill = GridBagConstraints.NONE;
 		add(getNewVariableButton(), c);
 	}
-	
+
 	private JLabel getPartnerLinkLabel() {
 		if (partnerLinkLabel == null) {
 			partnerLinkLabel  = new JLabel("Partner Link:");
@@ -139,7 +142,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		}
 		return newPartnerLinkButton;
 	}
-	
+
 	private JLabel getOperationLabel() {
 		if (operationLabel == null) {
 			operationLabel  = new JLabel("Operation:");
@@ -155,7 +158,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		}
 		return operationComboBox;
 	}
-	
+
 	private JLabel getVariableLabel() {
 		if (variableLabel == null) {
 			variableLabel  = new JLabel("Variable:");
@@ -178,8 +181,8 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 			newVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						fillVariableToComboBox(variableComboBox);
 						BpelVariable var = t_editor.getEditor()
 								.getModelProcessor().getElementContainer()
@@ -195,14 +198,16 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	}
 
 
-//	fill partnerLinkComboBox with partner links
-	public void defineContentOfPartnerLinkComboBox(){
+	// fill partnerLinkComboBox with partner links
+	public void defineContentOfPartnerLinkComboBox() {
 		partnerLinkComboBox.removeAllItems();
-		String[] partnerLinks = modelElementContainer.getPartnerLinkList();
-		for(String partnerLink : partnerLinks){
-			partnerLinkComboBox.addItem(partnerLink);
+		HashSet<Partnerlink> partnerlinkList = modelElementContainer.getPartnerlinkList().getPartnerlinkList();
+		Iterator i = partnerlinkList.iterator();
+		while (i.hasNext()) {
+			partnerLinkComboBox.addItem(i.next());
 		}
 	}
+
 
 	// ***************** content getter methods **************************
 
@@ -223,7 +228,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 			return "";
 		return variableComboBox.getSelectedItem().toString();
 	}
-	
+
 	public boolean allFieldsFilled(){
 		if (partnerLinkComboBox.getSelectedItem() == null | operationComboBox.getSelectedItem() == null | variableComboBox.getSelectedItem() == null){
 			return false;
@@ -250,6 +255,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 	@Override
 	public void refresh() {
+		defineContentOfPartnerLinkComboBox();
 		Object o = this.variableComboBox.getSelectedItem();
 		this.fillVariableToComboBox(variableComboBox);
 		this.variableComboBox.setSelectedItem(o);

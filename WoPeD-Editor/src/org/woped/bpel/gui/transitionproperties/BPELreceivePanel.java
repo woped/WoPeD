@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,22 +14,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.woped.core.model.bpel.BpelVariable;
+import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 
 /**
  * @author Esther Landes
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "receive" BPEL activity.
- * 
+ *
  * Created on 14.01.2008
  */
 
 public class BPELreceivePanel extends BPELadditionalPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private final String PANELNAME = "receive";
@@ -39,7 +42,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 	JLabel variableLabel = null;
 	JComboBox variableComboBox = null;
 	JButton newVariableButton = null;
-	
+
 
 	public BPELreceivePanel(TransitionPropertyEditor t_editor,
 			TransitionModel transition) {
@@ -114,17 +117,11 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		}
 		return partnerLinkLabel;
 	}
-	
+
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
 			partnerLinkComboBox.setPreferredSize(dimension);
-
-			// fill partnerLinkComboBox with partner links
-			String[] partnerLinks = modelElementContainer.getPartnerLinkList();
-			for (String partnerLink : partnerLinks) {
-				partnerLinkComboBox.addItem(partnerLink);
-			}
 		}
 		return partnerLinkComboBox;
 	}
@@ -141,7 +138,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		}
 		return newPartnerLinkButton;
 	}
-	
+
 	private JLabel getOperationLabel() {
 		if (operationLabel == null) {
 			operationLabel  = new JLabel("Operation:");
@@ -157,7 +154,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		}
 		return operationComboBox;
 	}
-	
+
 	private JLabel getVariableLabel() {
 		if (variableLabel == null) {
 			variableLabel  = new JLabel("Variable:");
@@ -180,8 +177,8 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 
 			newVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						fillVariableToComboBox(variableComboBox);
 						BpelVariable var = t_editor.getEditor()
 								.getModelProcessor().getElementContainer()
@@ -196,14 +193,17 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		return newVariableButton;
 	}
 
+
 	// fill partnerLinkComboBox with partner links
 	public void defineContentOfPartnerLinkComboBox() {
 		partnerLinkComboBox.removeAllItems();
-		String[] partnerLinks = modelElementContainer.getPartnerLinkList();
-		for (String partnerLink : partnerLinks) {
-			partnerLinkComboBox.addItem(partnerLink);
+		HashSet<Partnerlink> partnerlinkList = modelElementContainer.getPartnerlinkList().getPartnerlinkList();
+		Iterator i = partnerlinkList.iterator();
+		while (i.hasNext()) {
+			partnerLinkComboBox.addItem(i.next());
 		}
 	}
+
 
 	// ***************** content getter methods **************************
 
@@ -252,6 +252,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 
 	@Override
 	public void refresh() {
+		defineContentOfPartnerLinkComboBox();
 		Object o = this.variableComboBox.getSelectedItem();
 		this.fillVariableToComboBox(variableComboBox);
 		this.variableComboBox.setSelectedItem(o);

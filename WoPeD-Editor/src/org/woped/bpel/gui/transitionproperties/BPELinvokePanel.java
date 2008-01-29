@@ -5,7 +5,11 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,26 +18,26 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import org.woped.bpel.wsdl.exceptions.NoPortTypeFoundException;
-import org.woped.bpel.wsdl.wsdlFileRepresentation.Message;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.Operation;
 import org.woped.core.model.bpel.BpelVariable;
+import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.*;
 import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes / Kristian Kindler
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for an "invoke" BPEL activity.
- * 
+ *
  * Created on 08.01.2008
  */
 
 public class BPELinvokePanel extends BPELadditionalPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private final String PANELNAME = "invoke";
@@ -143,14 +147,24 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		return partnerLinkLabel;
 	}
 
+
+
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
 			partnerLinkComboBox.setPreferredSize(dimension);
-			defineContentOfPartnerLinkComboBox();
+			partnerLinkComboBox.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent e) {
+					// TODO: aus ModelElementContainer zu einem Partner Link die WSDL
+					// bekommen und die zugehörige Rolle, damit Operation bestimmt werden können.
+//					 defineContentOfOperationComboBox(pathToWsdlFile, roleName);
+//					 defineContentOfOperationComboBox("c:/example.wsdl", "portRole1");
+				}
+			});
 		}
 		return partnerLinkComboBox;
 	}
+
 
 	private JButton getNewPartnerLinkButton() {
 		if (newPartnerLinkButton == null) {
@@ -204,8 +218,8 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 			newInVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						fillVariableToComboBox(inVariableComboBox);
 						BpelVariable var = t_editor.getEditor()
 								.getModelProcessor().getElementContainer()
@@ -247,8 +261,8 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 			newOutVariableButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					NewVaraibleDialog dialog = new NewVaraibleDialog(t_editor);
-					if (dialog.getActivButton() == NewVaraibleDialog._OKBUTTON) {
+					NewVariableDialog dialog = new NewVariableDialog(t_editor);
+					if (dialog.getActivButton() == NewVariableDialog._OKBUTTON) {
 						fillVariableToComboBox(outVariableComboBox);
 						BpelVariable var = t_editor.getEditor()
 								.getModelProcessor().getElementContainer()
@@ -269,17 +283,18 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	// fill partnerLinkComboBox with partner links
 	public void defineContentOfPartnerLinkComboBox() {
 		partnerLinkComboBox.removeAllItems();
-		String[] partnerLinks = modelElementContainer.getPartnerLinkList();
-		for (String partnerLink : partnerLinks) {
-			partnerLinkComboBox.addItem(partnerLink);
+		HashSet<Partnerlink> partnerlinkList = modelElementContainer.getPartnerlinkList().getPartnerlinkList();
+		Iterator i = partnerlinkList.iterator();
+		while (i.hasNext()) {
+			partnerLinkComboBox.addItem(i.next());
 		}
 	}
+
 
 	public void defineContentOfOperationComboBox(String pathToWsdlFile,
 			String roleName) {
 		ArrayList<Operation> operations;
-		String portTypeName = wsdlFileRepresentation
-				.getPortTypeNameByRoleName(roleName);
+		String portTypeName = wsdlFileRepresentation.getPortTypeNameByRoleName(roleName);
 		try {
 			operationComboBox.removeAllItems();
 
@@ -295,40 +310,26 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 			// port type.
 		} catch (Exception e) {
 			showErrorPopup(
-					Messages
-							.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"),
-					Messages
-							.getString("Transition.Properties.BPEL.ErrorWhileReadingOperation"));
+					Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"),
+					Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingOperation"));
 		}
 	}
+
 
 	// TODO rework
-	public void defineVariablesForInputOutputComboBoxes(String pathToWsdlFile) {
-		ArrayList<Message> messages;
-		try {
-			System.out.println("inVariableComboBox: "
-					+ inVariableComboBox.getComponentCount());
-			for (int i = inVariableComboBox.getComponentCount() - 1; i > 0; i--) {
-				inVariableComboBox.remove(i);
-				outVariableComboBox.remove(i);
-			}
+	public void defineVariablesForInputOutputComboBoxes(){
+		inVariableComboBox.removeAllItems();
+		outVariableComboBox.removeAllItems();
+		String[] variables = modelElementContainer.getBpelVariableNameList();
 
-			wsdlFileRepresentation = wsdl.readDataFromWSDL(pathToWsdlFile);
-			messages = wsdlFileRepresentation.getMessages();
-			for (Message message : messages) {
-				setInVariable("var_" + message.getMessageName());
-				setOutVariable("var_" + message.getMessageName());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			showErrorPopup(
-					Messages
-							.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"),
-					Messages
-							.getString("Transition.Properties.BPEL.ErrorWhileReadingVariables"));
+		setInVariable(Messages.getString("Transition.Properties.BPEL.No"));
+		setOutVariable(Messages.getString("Transition.Properties.BPEL.No"));
+		for(String variable : variables){
+			setInVariable(variable);
+			setOutVariable(variable);
 		}
-
 	}
+
 
 	// ***************** content getter methods **************************
 
@@ -394,6 +395,8 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 	@Override
 	public void refresh() {
+		defineContentOfPartnerLinkComboBox();
+		defineVariablesForInputOutputComboBoxes();
 		Object o = this.inVariableComboBox.getSelectedItem();
 		this.fillVariableToComboBox(this.inVariableComboBox);
 		this.inVariableComboBox.setSelectedItem(o);
