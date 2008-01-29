@@ -34,6 +34,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
@@ -94,6 +96,7 @@ import org.woped.pnml.TransitionType;
 import org.woped.pnml.TransitionsequenceType;
 import org.woped.pnml.TriggerType;
 import org.woped.pnml.NetType.Page;
+import org.woped.translations.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -308,18 +311,36 @@ public class PNMLExport
             FiredtransitionType iFiredTransition;
             for (Iterator<SimulationModel> iter = petrinetModel.getSimulations().iterator();iter.hasNext();)
             {
-            	SimulationModel currSimulation = (SimulationModel) iter.next();
-            	iSimulation = iNetSimulations.addNewSimulation();
-            	iSimulation.setId(currSimulation.getId());
-            	iSimulation.setSimulationname(currSimulation.getName());
-            	iTransitionsequence = iSimulation.addNewTransitionsequence();
-            	for(Iterator iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
+            	SimulationModel currSimulation = iter.next();
+            	int answer = 0;
+            	if(!petrinetModel.isLogicalFingerprintEqual(currSimulation.getFingerprint()))
             	{
-            		iFiredTransition = iTransitionsequence.addNewFiredtransition();
-            		iFiredTransition.setTransitionID(((TransitionModel)iterator.next()).getId());
+            		Object[] options = {Messages.getString("Tokengame.ChangedNetDialog.ButtonKeep"),Messages.getString("Tokengame.ChangedNetDialog.ButtonDelete")};
+        			answer = JOptionPane.showOptionDialog(null, Messages.getString("Tokengame.ChangedNetDialog.Export.Message").replaceAll("##SIMULATIONNAME##", currSimulation.getName()), Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+        			// if the user didn't choose one of the buttons but closed the OptionDialog don't drop the simulation
+        			if(answer == -1)
+        			{
+        				answer = 0;
+        			}
             	}
-            	iSimulation.setNetFingerprint(currSimulation.getFingerprint());
-            	LoggerManager.debug(Constants.FILE_LOGGER, "   ... Simulation (ID:" + currSimulation.getId() + ") set");
+            	if(answer == 0)
+            	{
+                	iSimulation = iNetSimulations.addNewSimulation();
+                	iSimulation.setId(currSimulation.getId());
+                	iSimulation.setSimulationname(currSimulation.getName());
+                	iTransitionsequence = iSimulation.addNewTransitionsequence();
+                	for(Iterator<TransitionModel> iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
+                	{
+                		iFiredTransition = iTransitionsequence.addNewFiredtransition();
+                		iFiredTransition.setTransitionID((iterator.next()).getId());
+                	}
+                	iSimulation.setNetFingerprint(currSimulation.getFingerprint());
+                	LoggerManager.debug(Constants.FILE_LOGGER, "   ... Simulation (ID:" + currSimulation.getId() + ") set");
+            	}
+            	else
+            	{
+            		LoggerManager.debug(Constants.FILE_LOGGER, "   ... Simulation (ID:" + currSimulation.getId() + ") dropped by user");
+            	}
             }
             
             // toolspecific

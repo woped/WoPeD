@@ -71,10 +71,8 @@ import org.woped.pnml.ResourceMappingType;
 import org.woped.pnml.ResourceType;
 import org.woped.pnml.RoleType;
 import org.woped.pnml.SimulationType;
-import org.woped.pnml.SimulationsType;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.NetType.Page;
-import org.woped.qualanalysis.simulation.ChangedNetDialog;
 
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
@@ -875,9 +873,13 @@ public class PNMLImport
     		int answer = 0;
     		if(!currentPetrinet.isLogicalFingerprintEqual(simulations[k].getNetFingerprint()))
     		{
-    			//System.out.println("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")\naus XML: "+simulations[k].getNetFingerprint()+"\naktuell: "+currentFingerprint);
     			Object[] options = {Messages.getString("Tokengame.ChangedNetDialog.ButtonKeep"),Messages.getString("Tokengame.ChangedNetDialog.ButtonDelete")};
-    			answer = JOptionPane.showOptionDialog(null, Messages.getString("Tokengame.ChangedNetDialog.Load.Message").replaceAll("##SIMULATIONNAME##", simulations[k].getSimulationname()), Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+    			answer = JOptionPane.showOptionDialog(null, Messages.getString("Tokengame.ChangedNetDialog.Import.Message").replaceAll("##SIMULATIONNAME##", simulations[k].getSimulationname()), Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+    			// if the user didn't choose one of the buttons but closed the OptionDialog don't drop the simulation
+    			if(answer == -1)
+    			{
+    				answer = 0;
+    			}
     		}
     		if(answer == 0)
     		{
@@ -888,7 +890,7 @@ public class PNMLImport
     		{
     			// set the petrinet opened to "not saved...."
     			savedFlag = false;
-    			LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ") droped by user");
+    			LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ") dropped by user");
     		}
 
     		try
