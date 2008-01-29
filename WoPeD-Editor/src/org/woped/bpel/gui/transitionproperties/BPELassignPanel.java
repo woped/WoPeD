@@ -302,11 +302,13 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	@Override
-	public void saveInfomation() {
-		this.transition.setBaseActivity(new Assign(this.transition
-				.getNameValue(), this.getFromVariable(), this.getToVariable()));
+	public void saveInfomation() {		
 		if (allFieldsFilled() == false){
 			new PopUpDialog(t_editor,true,"Fehler","Es sind nicht alle Felder gefüllt!").setVisible(true);
+		}
+		else{
+			this.transition.setBaseActivity(new Assign(this.transition
+					.getNameValue(), this.getFromVariable(), this.getToVariable()));
 		}
 	}
 

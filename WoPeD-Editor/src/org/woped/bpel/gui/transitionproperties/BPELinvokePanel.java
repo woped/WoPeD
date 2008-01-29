@@ -23,6 +23,7 @@ import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.*;
+import org.woped.editor.gui.PopUpDialog;
 import org.woped.translations.Messages;
 
 /**
@@ -366,10 +367,10 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	}
 
 	public boolean allFieldsFilled() {
-		if (partnerLinkComboBox.getSelectedItem() == null
-				|| operationComboBox.getSelectedItem() == null
-				|| inVariableComboBox.getSelectedItem() == null
-				|| outVariableComboBox.getSelectedItem() == null)
+		if (partnerLinkComboBox.getSelectedIndex() == 0
+				|| operationComboBox.getSelectedIndex() == 0
+				|| inVariableComboBox.getSelectedIndex() == 0
+				|| outVariableComboBox.getSelectedIndex() == 0)
 			return false;
 		return true;
 	}
@@ -419,11 +420,17 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 	@Override
 	public void saveInfomation() {
-		this.transition
-				.setBaseActivity(new Invoke(this.transition.getNameValue(),
-						this.getPartnerLink(), this.getOperation(), this
-								.getPortType(), this.getInVariable(), this
-								.getOutVariable()));
+		
+		if (allFieldsFilled() == false){
+			new PopUpDialog(t_editor,true,"Fehler","Es sind nicht alle Felder gefüllt!").setVisible(true);
+		}
+		else{
+			this.transition
+			.setBaseActivity(new Invoke(this.transition.getNameValue(),
+					this.getPartnerLink(), this.getOperation(), this
+							.getPortType(), this.getInVariable(), this
+							.getOutVariable()));
+		}
 	}
 
 	@Override

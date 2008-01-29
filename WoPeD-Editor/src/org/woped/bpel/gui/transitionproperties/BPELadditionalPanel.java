@@ -802,6 +802,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 	public abstract void refresh();
 
 	public abstract void saveInfomation();
+	
+	public abstract boolean allFieldsFilled();
 
 	public abstract void showPanel(JPanel panel, GridBagConstraints c);
 
