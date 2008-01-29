@@ -29,6 +29,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.xml.stream.XMLStreamException;
 
 import org.woped.bpel.wsdl.Wsdl;
+import org.woped.bpel.wsdl.wsdlFileRepresentation.Message;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.PartnerLinkType;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.Role;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.WsdlFileRepresentation;
@@ -96,9 +97,9 @@ public abstract class BPELadditionalPanel extends JPanel {
 		this.modelElementContainer = t_editor.getEditor().getModelProcessor().getElementContainer();
 		wsdl = new Wsdl();
 	}
-	
+
 	public abstract String getName();
-	
+
 	public String toString()
 	{
 		return getName();
@@ -494,32 +495,29 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 if(partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole")) &&
                                                    !myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
                                                 ){
-                                                	System.out.println("1");
                                                 	// TODO ?: Gibt es hier auch Operations und Types?
                                                	    modelElementContainer.addPartnerLinkWithoutPartnerRole(
                                                                         name, namespace, partnerLinkType, myRole, wsdlUrl);
-                                               	    updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
 
                                                 // partner role ENTERED / my role NOT entered
                                                 else if(!partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole")) &&
                                                    myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
                                                 ){
-                                                	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
-                                                	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
+                                                	/*bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
+                                                	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);*/
                                                 	modelElementContainer.addPartnerLinkWithoutMyRole(
                                                 		name, namespace, partnerLinkType, partnerRole, wsdlUrl);
-                                                	updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
 
                                                 // partner role ENTERED / my role ENTERED
                                                 else{
-                                                	bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
-                                                	bpelInvokePanel.defineVariablesForInputOutputComboBoxes(wsdlUrl);
-    												modelElementContainer.addPartnerLink(
+                                                	// TODO  bpelInvokePanel.defineContentOfOperationComboBox(wsdlUrl, partnerRole);
+                                                	modelElementContainer.addPartnerLink(
     													name, namespace, partnerLinkType, partnerRole, myRole, wsdlUrl);
-    												updatePartnerLinkComboBoxesOnDifferentScreens();
                                                 }
+                                                addVariablesToModelElementContainer(wsdlUrl);
+                                           	    refresh();
                                                 dialog.dispose();
                                         }
                                 }
@@ -629,6 +627,22 @@ public abstract class BPELadditionalPanel extends JPanel {
 			}
 			myRoleComboBox.addItem(Messages
 					.getString("Transition.Properties.BPEL.NoRole"));
+		}
+	}
+
+	public void addVariablesToModelElementContainer(String pathToWsdlFile){
+		try {
+			wsdlFileRepresentation = wsdl.readDataFromWSDL(pathToWsdlFile);
+			ArrayList<Message> messages = wsdlFileRepresentation.getMessages();
+			for (Message message : messages) {
+				modelElementContainer.addVariable( ("var_" + message.getMessageName() ), message.getMessageName() );;
+			}
+		}
+		catch (Exception e) {
+		e.printStackTrace();
+		showErrorPopup(
+				Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"),
+				Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingVariables"));
 		}
 	}
 
@@ -783,29 +797,13 @@ public abstract class BPELadditionalPanel extends JPanel {
 	}
 
 
-	/**
-	 *
-	 * @param partnerLinkType  	Name of partner link which is added to the partner link
-	 * 							combo boxes on invokePanel, receivePanel, replyPanel
-	 */
-	public void updatePartnerLinkComboBoxesOnDifferentScreens(){
-		if (bpelInvokePanel != null){
-			bpelInvokePanel.defineContentOfPartnerLinkComboBox();
-		}
-		if (bpelReceivePanel != null){
-			bpelReceivePanel.defineContentOfPartnerLinkComboBox();
-		}
-		if (bpelReplyPanel != null){
-			bpelReplyPanel.defineContentOfPartnerLinkComboBox();
-		}
-	}
 
 	public abstract void refresh();
 
 	public abstract void saveInfomation();
-	
+
 	public abstract void showPanel(JPanel panel, GridBagConstraints c);
-	
+
 	public boolean equals(BPELadditionalPanel panel)
 	{
 		return this.getName().compareToIgnoreCase(panel.getName()) == 0;
