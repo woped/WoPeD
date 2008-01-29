@@ -33,9 +33,10 @@ public class Marking {
 	 *            structure only. The initial marking will be copied and stored
 	 *            locally.
 	 */
-	public Marking(IEditor source) {
+	public Marking(IEditor source, String sourceT) {
 		StructuralAnalysis sa = new StructuralAnalysis(source);
 		this.source = source;
+		this.sourceT=sourceT;
 		currentMarking = new TreeMap<String, Integer>(new Comp_mf());
 		// Store the marking of each place
 		Iterator places = sa.getPlacesIterator();
@@ -80,6 +81,10 @@ public class Marking {
 		// Both markings must have the same size for this method to return true
 		if(otherMarking.currentMarking.size() != currentMarking.size())
 			return false;
+		//If Transitions leading to the state are not equal return false
+		if(!this.sourceT.equals(otherMarking.sourceT)){
+			return false;
+		}
 		boolean isGreater = true;
 		Iterator currentThisMarking = currentMarking.values().iterator();
 		Iterator currentOtherMarking = otherMarking.currentMarking.values().iterator();
@@ -342,6 +347,7 @@ public class Marking {
 	private boolean isInitial = false;
 	private boolean iscoverObject=false;
 	private IEditor source = null;
+	private String sourceT=null; 
 }
 class Comp_mf implements Comparator{
 	public int compare(Object o1,Object o2){

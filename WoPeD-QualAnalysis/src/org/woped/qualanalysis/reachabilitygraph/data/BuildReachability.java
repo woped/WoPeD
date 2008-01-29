@@ -52,7 +52,7 @@ public class BuildReachability {
 		allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
 
 		// ! Save start state so it can be restored at the end
-		Marking begin_stat = new Marking(thisEditor);
+		Marking begin_stat = new Marking(thisEditor,"none");
 
 		// ! If this is a Subprocess, set begin Token on first place
 		if(this.thisEditor.isSubprocessEditor()) {
@@ -68,7 +68,7 @@ public class BuildReachability {
 		
 		// Create MarkingList and add Current Status to List
 		markings = new MarkingList(transactions);
-		Marking start = new Marking(thisEditor);
+		Marking start = new Marking(thisEditor,"none");
 		markings.addMarking(start);
 		start.setInitial();
 
@@ -120,7 +120,7 @@ public class BuildReachability {
 							if(arc.isActivated()) {
 								arcClicked(arc);
 								checkNet();
-								Marking ende = new Marking(thisEditor);
+								Marking ende = new Marking(thisEditor,trans.getId());
 								if(markings.containsMarking(ende)) {
 									ende = markings.getMarking(ende.getKey());
 								}
@@ -137,7 +137,7 @@ public class BuildReachability {
 					else {
 						transitionClicked(trans);
 						checkNet();
-						Marking ende = new Marking(thisEditor);
+						Marking ende = new Marking(thisEditor,trans.getId());
 						Marking help;
 						ende = markings.addMarking(ende);
 						transactions.add(start, trans.getId(), ende, trans.getNameValue(),
@@ -155,7 +155,7 @@ public class BuildReachability {
 			}
 		}
 		// ! Print current status to log
-		new Marking(thisEditor).printseq();
+		new Marking(thisEditor,"none").printseq();
 		markings.print();
 		transactions.print();
 
