@@ -20,7 +20,7 @@ public class PopUpDialog extends JDialog {
 	 */
 	private static final long serialVersionUID = -5770353423770293418L;
 	private String message;
-	private JLabel messageLabel;
+//	private JLabel messageLabel;
 
 	public PopUpDialog(JDialog owner, boolean modal, String Title, String Message) {
 		super(owner,Title);
