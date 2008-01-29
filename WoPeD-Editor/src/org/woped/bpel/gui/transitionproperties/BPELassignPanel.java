@@ -17,6 +17,7 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.editor.gui.PopUpDialog;
 
 /**
  * @author Esther Landes
@@ -250,7 +251,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	 * @return
 	 */
 	public boolean allFieldsFilled(){
-		if (fromVariableComboBox.getSelectedItem() == null | toVariableComboBox.getSelectedItem() == null){
+		if (fromVariableComboBox.getSelectedIndex() == 0 || toVariableComboBox.getSelectedIndex() == 0){
 			return false;
 		}
 		else
@@ -302,9 +303,11 @@ public class BPELassignPanel extends BPELadditionalPanel {
 
 	@Override
 	public void saveInfomation() {
-		System.out.println("Speichere infos ab");
 		this.transition.setBaseActivity(new Assign(this.transition
 				.getNameValue(), this.getFromVariable(), this.getToVariable()));
+		if (allFieldsFilled() == false){
+			new PopUpDialog(t_editor,true,"Fehler","Es sind nicht alle Felder gefüllt!").setVisible(true);
+		}
 	}
 
 	@Override

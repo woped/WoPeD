@@ -43,4 +43,9 @@ public class BPELemptyPanel extends BPELadditionalPanel {
 		panel.add(this,c);
 	}
 
+	@Override
+	public boolean allFieldsFilled() {
+		return true;
+	}
+
 }
