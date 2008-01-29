@@ -186,6 +186,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		if (variableComboBox == null) {
 			variableComboBox = new JComboBox();
 			variableComboBox.setPreferredSize(dimension);
+			this.fillVariableToComboBox(variableComboBox);
 		}
 		return variableComboBox;
 	}

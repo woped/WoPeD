@@ -803,7 +803,6 @@ public abstract class BPELadditionalPanel extends JPanel {
 	}
 
 
-
 	public abstract void refresh();
 
 	public abstract void saveInfomation();

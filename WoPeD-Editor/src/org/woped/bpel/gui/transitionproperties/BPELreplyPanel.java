@@ -28,17 +28,17 @@ import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "reply" BPEL activity.
- * 
+ *
  * Created on 14.01.2008
  */
 
 public class BPELreplyPanel extends BPELadditionalPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -202,6 +202,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		if (variableComboBox == null) {
 			variableComboBox = new JComboBox();
 			variableComboBox.setPreferredSize(dimension);
+			this.fillVariableToComboBox(variableComboBox);
 		}
 		return variableComboBox;
 	}
