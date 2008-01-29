@@ -495,8 +495,7 @@ public abstract class BPELadditionalPanel extends JPanel {
                                                 if(partnerRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole")) &&
                                                    !myRole.equals(Messages.getString("Transition.Properties.BPEL.NoRole"))
                                                 ){
-                                                	// TODO ?: Gibt es hier auch Operations und Types?
-                                               	    modelElementContainer.addPartnerLinkWithoutPartnerRole(
+                                                	modelElementContainer.addPartnerLinkWithoutPartnerRole(
                                                                         name, namespace, partnerLinkType, myRole, wsdlUrl);
                                                 }
 
