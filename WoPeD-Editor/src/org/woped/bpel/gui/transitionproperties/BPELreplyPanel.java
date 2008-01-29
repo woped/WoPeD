@@ -27,28 +27,37 @@ import org.woped.editor.gui.PopUpDialog;
 import org.woped.translations.Messages;
 
 /**
- * @author Esther Landes / Kristian Kindler
- *
+ * @author Esther Landes
+ * 
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "reply" BPEL activity.
- *
+ * 
  * Created on 14.01.2008
  */
 
 public class BPELreplyPanel extends BPELadditionalPanel {
 
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private final String PANELNAME = "reply";
+
 	JLabel partnerLinkLabel = null;
+
 	JComboBox partnerLinkComboBox = null;
+
 	JButton newPartnerLinkButton = null;
+
 	JLabel operationLabel = null;
+
 	JComboBox operationComboBox = null;
+
 	JLabel variableLabel = null;
+
 	JComboBox variableComboBox = null;
+
 	JButton newVariableButton = null;
 
 	public BPELreplyPanel(TransitionPropertyEditor t_editor,
@@ -121,7 +130,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 	private JLabel getPartnerLinkLabel() {
 		if (partnerLinkLabel == null) {
-			partnerLinkLabel  = new JLabel("Partner Link:");
+			partnerLinkLabel = new JLabel("Partner Link:");
 			partnerLinkLabel.setPreferredSize(dimension);
 		}
 		return partnerLinkLabel;
@@ -130,6 +139,13 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
+
+			// fill partnerLinkComboBox with partner links
+			String[] partnerLinks = modelElementContainer.getPartnerLinkList();
+			for (String partnerLink : partnerLinks) {
+				partnerLinkComboBox.addItem(partnerLink);
+			}
+
 			partnerLinkComboBox.setPreferredSize(dimension);
 			partnerLinkComboBox.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
@@ -140,6 +156,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 					}
 				}
 			});
+
 		}
 		return partnerLinkComboBox;
 	}
@@ -159,7 +176,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 	private JLabel getOperationLabel() {
 		if (operationLabel == null) {
-			operationLabel  = new JLabel("Operation:");
+			operationLabel = new JLabel("Operation:");
 			operationLabel.setPreferredSize(dimension);
 		}
 		return operationLabel;
@@ -175,7 +192,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 	private JLabel getVariableLabel() {
 		if (variableLabel == null) {
-			variableLabel  = new JLabel("Variable:");
+			variableLabel = new JLabel("Variable:");
 			variableLabel.setPreferredSize(dimension);
 		}
 		return variableLabel;
@@ -211,11 +228,11 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		return newVariableButton;
 	}
 
-
 	// fill partnerLinkComboBox with partner links
 	public void defineContentOfPartnerLinkComboBox() {
 		partnerLinkComboBox.removeAllItems();
-		HashSet<Partnerlink> partnerlinkList = modelElementContainer.getPartnerlinkList().getPartnerlinkList();
+		HashSet<Partnerlink> partnerlinkList = modelElementContainer
+				.getPartnerlinkList().getPartnerlinkList();
 		Iterator i = partnerlinkList.iterator();
 		while (i.hasNext()) {
 			partnerLinkComboBox.addItem(i.next());
@@ -257,6 +274,7 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		}
 	}
 
+
 	// ***************** content getter methods **************************
 
 	public String getPartnerLink() {
@@ -277,11 +295,12 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		return variableComboBox.getSelectedItem().toString();
 	}
 
-	public boolean allFieldsFilled(){
-		if (partnerLinkComboBox.getSelectedIndex() == 0 || operationComboBox.getSelectedIndex() == 0 || variableComboBox.getSelectedIndex() == 0){
+	public boolean allFieldsFilled() {
+		if (partnerLinkComboBox.getSelectedIndex() == 0
+				|| operationComboBox.getSelectedIndex() == 0
+				|| variableComboBox.getSelectedIndex() == 0) {
 			return false;
-		}
-		else
+		} else
 			return true;
 	}
 
@@ -317,13 +336,17 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 
 	@Override
 	public void saveInfomation() {
-		if (allFieldsFilled() == false){
-			new PopUpDialog(t_editor,true,"Fehler","Es sind nicht alle Felder gefüllt!").setVisible(true);
-		}
-		else{
+		if (allFieldsFilled() == false) {
+			new PopUpDialog(
+					t_editor,
+					true,
+					Messages.getString("Transition.Properties.BPEL.Error"),
+					Messages.getString("Transition.Properties.BPEL.ErrorDuringFieldCheck"))
+					.setVisible(true);
+		} else {
 			this.transition.setBaseActivity(new Reply(this.transition
-					.getNameValue(), this.getPartnerLink(), this.getOperation(),
-					this.getVariable()));
+					.getNameValue(), this.getPartnerLink(),
+					this.getOperation(), this.getVariable()));
 		}
 	}
 
@@ -335,6 +358,6 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	@Override
 	public void showPanel(JPanel panel, GridBagConstraints c) {
 		this.refresh();
-		panel.add(this,c);
+		panel.add(this, c);
 	}
 }
