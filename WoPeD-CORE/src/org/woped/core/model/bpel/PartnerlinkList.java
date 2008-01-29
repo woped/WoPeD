@@ -5,7 +5,7 @@ import java.util.Iterator;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 
 /**
- * 
+ *
  * @author Frank Schüler
  *
  */
@@ -18,8 +18,8 @@ public class PartnerlinkList {
 	}
 
 	/**
-	 * Insert a partnerlink to a consisting list of partnerlinks 
-	 *  
+	 * Insert a partnerlink to a consisting list of partnerlinks
+	 *
 	 * @param name
 	 * @param namespace
 	 * @param partnerLinkType
@@ -52,11 +52,11 @@ public class PartnerlinkList {
 		this._list.add(p);
 	}
 
-	
-	/**  
+
+	/**
 	 * Insert a partnerlink to a consisting list of partnerlinks Attention:
 	 * Parameters: name, namespace, partnerLinkType, myRole (without partnerRole)
-	 * 	
+	 *
 	 * @param name
 	 * @param namespace
 	 * @param partnerLinkType
@@ -70,16 +70,16 @@ public class PartnerlinkList {
 				myRole);
 		this._list.add(p);
 	}
-	
+
 	public void addPartnerLinkWithoutMyRole(String name, String namespace,
 			String partnerLinktType, String partnerRole, String WsdlUrl) {
 		Partnerlink p = new Partnerlink(WsdlUrl);
 		p.addPartnerLinkWithoutMyRole(name, namespace, partnerLinktType, partnerRole);
 		this._list.add(p);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public String[] getPartnerlinkNameArray()
@@ -96,7 +96,7 @@ public class PartnerlinkList {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private TPartnerLinks genPartnerLinks() {
@@ -104,7 +104,7 @@ public class PartnerlinkList {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public TPartnerLinks getBpelCode() {
@@ -115,6 +115,7 @@ public class PartnerlinkList {
 		}
 		return list;
 	}
+
 	
 	public String[] getWsdlUrls(){
 		String[] urls = new String[this._list.size()];
@@ -126,7 +127,7 @@ public class PartnerlinkList {
 	}
 	
 	/**
-	 * 
+	 *
 	 * @param Name
 	 */
 	public void removePartnerlinkByName(String Name)
@@ -134,4 +135,7 @@ public class PartnerlinkList {
 		//TODO fertigschreiben
 	}
 
+	public HashSet<Partnerlink> getPartnerlinkList() {
+		return this._list;
+	}
 }
