@@ -18,13 +18,14 @@ import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.gui.PopUpDialog;
+import org.woped.translations.Messages;
 
 /**
  * @author Esther Landes
- *
+ * 
  * This is a panel in the transition properties, which enables the user to
  * maintain data for an "assign" BPEL activity.
- *
+ * 
  * Created on 15.01.2008
  */
 
@@ -34,14 +35,21 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private final String _PANELNAME = "assign";
+
 	JLabel fromVariableLabel = null;
+
 	JComboBox fromVariableComboBox = null;
+
 	JButton newFromVariableButton = null;
+
 	JLabel toVariableLabel = null;
+
 	JComboBox toVariableComboBox = null;
+
 	JButton newToVariableButton = null;
-	
+
 	JDialog dialogPartner = null;
 
 	/**
@@ -53,7 +61,6 @@ public class BPELassignPanel extends BPELadditionalPanel {
 			TransitionModel transition) {
 
 		super(t_editor, transition);
-		
 
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -116,18 +123,19 @@ public class BPELassignPanel extends BPELadditionalPanel {
 		c.fill = GridBagConstraints.NONE;
 		add(getNewToVariableButton(), c);
 	}
+
 	/**
 	 * 
 	 * @return
 	 */
 	private JLabel getFromVariableLabel() {
 		if (fromVariableLabel == null) {
-			fromVariableLabel  = new JLabel("Variable:");
+			fromVariableLabel = new JLabel("Variable:");
 			fromVariableLabel.setPreferredSize(dimension);
 		}
 		return fromVariableLabel;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -159,7 +167,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 								.findBpelVariableByName(
 										dialog.getNewVariableName());
 						fromVariableComboBox.setSelectedItem(var);
-						
+
 						Object o = toVariableComboBox.getSelectedItem();
 						fillVariableToComboBox(toVariableComboBox);
 						toVariableComboBox.setSelectedItem(o);
@@ -176,12 +184,12 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	 */
 	private JLabel getToVariableLabel() {
 		if (toVariableLabel == null) {
-			toVariableLabel  = new JLabel("Variable:");
+			toVariableLabel = new JLabel("Variable:");
 			toVariableLabel.setPreferredSize(dimension);
 		}
 		return toVariableLabel;
 	}
-	
+
 	private JComboBox getToVariableComboBox() {
 		if (toVariableComboBox == null) {
 			toVariableComboBox = new JComboBox();
@@ -211,7 +219,7 @@ public class BPELassignPanel extends BPELadditionalPanel {
 								.findBpelVariableByName(
 										dialog.getNewVariableName());
 						toVariableComboBox.setSelectedItem(var);
-						
+
 						Object o = fromVariableComboBox.getSelectedItem();
 						fillVariableToComboBox(fromVariableComboBox);
 						fromVariableComboBox.setSelectedItem(o);
@@ -245,16 +253,16 @@ public class BPELassignPanel extends BPELadditionalPanel {
 			return "";
 		return toVariableComboBox.getSelectedItem().toString();
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 */
-	public boolean allFieldsFilled(){
-		if (fromVariableComboBox.getSelectedIndex() == 0 || toVariableComboBox.getSelectedIndex() == 0){
+	public boolean allFieldsFilled() {
+		if (fromVariableComboBox.getSelectedIndex() == 0
+				|| toVariableComboBox.getSelectedIndex() == 0) {
 			return false;
-		}
-		else
+		} else
 			return true;
 	}
 
@@ -302,13 +310,19 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	}
 
 	@Override
-	public void saveInfomation() {		
-		if (allFieldsFilled() == false){
-			new PopUpDialog(t_editor,true,"Fehler","Es sind nicht alle Felder gefüllt!").setVisible(true);
-		}
-		else{
+	public void saveInfomation() {
+		if (allFieldsFilled() == false) {
+			new PopUpDialog(
+					t_editor,
+					true,
+					Messages.getString("Transition.Properties.BPEL.Error"),
+					Messages
+							.getString("Transition.Properties.BPEL.ErrorDuringFieldCheck"))
+					.setVisible(true);
+		} else {
 			this.transition.setBaseActivity(new Assign(this.transition
-					.getNameValue(), this.getFromVariable(), this.getToVariable()));
+					.getNameValue(), this.getFromVariable(), this
+					.getToVariable()));
 		}
 	}
 
@@ -320,6 +334,6 @@ public class BPELassignPanel extends BPELadditionalPanel {
 	@Override
 	public void showPanel(JPanel panel, GridBagConstraints c) {
 		this.refresh();
-		panel.add(this,c);
+		panel.add(this, c);
 	}
 }
