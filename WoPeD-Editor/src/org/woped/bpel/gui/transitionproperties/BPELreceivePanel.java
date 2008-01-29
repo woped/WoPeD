@@ -229,9 +229,9 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 	}
 
 	public boolean allFieldsFilled() {
-		if (partnerLinkComboBox.getSelectedItem() == null
-				|| operationComboBox.getSelectedItem() == null
-				|| variableComboBox.getSelectedItem() == null) {
+		if (partnerLinkComboBox.getSelectedIndex() == 0
+				|| operationComboBox.getSelectedIndex() == 0
+				|| variableComboBox.getSelectedIndex() == 0) {
 			return false;
 		} else
 			return true;
