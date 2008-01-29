@@ -95,7 +95,6 @@ public class BPEL
 		BPEL.genBpelProcess();
 		BPEL.Process.set(m.generate_bpel());
 		setGlobals(BPEL.Process, pnp);
-		System.out.println(BPEL.bpelDoc.toString());
 		// File Output
 		new File(Path);
 		XmlOptions opt = new XmlOptions();

@@ -239,7 +239,6 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 				}
 			}
 
-			System.out.println(wsdlFileRepresentation.getPortTypeNameByRoleName(roleName));
 			String portTypeName = wsdlFileRepresentation.getPortTypeNameByRoleName(roleName);
 			try {
 				operationComboBox.removeAllItems();

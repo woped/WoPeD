@@ -427,8 +427,8 @@ public class BpelParserModel
 			if (pre == this.count_elements())
 				break;
 			counter++;
-			System.out.println("Durchlauf " + counter + "\nAnzahl Elemente "
-					+ this.count_elements());
+			/*System.out.println("Durchlauf " + counter + "\nAnzahl Elemente "
+					+ this.count_elements());*/
 		}
 		
 		if(this._regist_transition.size() > 1)return null;
@@ -524,8 +524,8 @@ public class BpelParserModel
 	
 	public SequenceTransition newSequence(AbstractElement<?> begin, AbstractElement<?> end)
 	{
-		System.out.println("<Sequence> \n" + "\tbegin = " + begin
-				+ "\n" + "\tend = " + end + "\n</Sequence>");
+		/*System.out.println("<Sequence> \n" + "\tbegin = " + begin
+				+ "\n" + "\tend = " + end + "\n</Sequence>");*/
 		HashSet<AbstractElement<?>> pre_list = begin.get_pre_list_copy();
 		HashSet<AbstractElement<?>> post_list = end.get_post_list_copy();
 
@@ -692,8 +692,8 @@ public class BpelParserModel
 			end = this.isPick(begin);
 			if (end != null)
 			{
-				System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n"
-						+ "\tend = " + end + "\n</Pick>");
+				/*System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n"
+						+ "\tend = " + end + "\n</Pick>");*/
 
 				AbstractElement<?> e = new PickTransition(begin.get_post_list_copy());
 				this.regist_element(e);
@@ -780,8 +780,8 @@ public class BpelParserModel
 			AbstractElement<?> end = this.isFlow(begin);
 			if (end != null)
 			{
-				System.out.println("<Flow> \n" + "\tbegin = " + begin + "\n"
-						+ "\tend = " + end + "\n</Flow>");
+				/*System.out.println("<Flow> \n" + "\tbegin = " + begin + "\n"
+						+ "\tend = " + end + "\n</Flow>");*/
 				Iterator<AbstractElement<?>> pre_list = begin.get_pre_list_copy()
 						.iterator();
 				Iterator<AbstractElement<?>> post_list = end.get_post_list_copy()
@@ -872,8 +872,8 @@ public class BpelParserModel
 			AbstractElement<?> end = this.isIf(begin);
 			if (end != null)
 			{
-				System.out.println("<If> \n" + "\tbegin = " + begin + "\n"
-						+ "\tend = " + end + "\n</If>");
+				/*System.out.println("<If> \n" + "\tbegin = " + begin + "\n"
+						+ "\tend = " + end + "\n</If>");*/
 				Iterator<AbstractElement<?>> pre_list = begin.get_pre_list_copy()
 						.iterator();
 				Iterator<AbstractElement<?>> post_list = end.get_post_list_copy()

@@ -81,7 +81,6 @@ public class BpelVariableList {
 	 */
 	public TVariables getBpelCode() {
 		TVariables list = this.genVariableList();
-		if(list == null) System.out.println("list ist null");
 		Iterator<BpelVariable> iter = this._list.iterator();
 		while (iter.hasNext()) {
 			list.addNewVariable().set(iter.next().getBpelCode());
