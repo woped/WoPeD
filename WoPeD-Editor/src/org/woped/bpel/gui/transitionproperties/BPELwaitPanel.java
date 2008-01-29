@@ -570,12 +570,20 @@ public class BPELwaitPanel extends BPELadditionalPanel implements ActionListener
 
 	
 	public boolean allFieldsFilled(){
-		if ((deadLineTextFieldHour.getText() == null || deadLineTextFieldMinute.getText() == null || deadLineTextFieldSecond.getText() == null) || 
-				(durationTextFieldYear.getText() == null || durationTextFieldMonth.getText() == null || durationTextFieldDay.getText() == null || durationTextFieldHour.getText() == null || durationTextFieldMinute.getText() == null || durationTextFieldSecond.getText() == null)){
-			return false;
+		if (waitDeadlineRadioButton.isSelected()){
+			if (deadLineTextFieldHour.getText().equals("") || deadLineTextFieldMinute.getText().equals("") || deadLineTextFieldSecond.getText().equals("")){
+				return false;
+			}
+			else
+				return true;
 		}
-		else
-			return true;
+		else{
+			if (durationTextFieldYear.getText().equals("") || durationTextFieldMonth.getText().equals("") || durationTextFieldDay.getText().equals("") || durationTextFieldHour.getText().equals("") || durationTextFieldMinute.getText().equals("") || durationTextFieldSecond.getText().equals("")){
+				return false;
+			}
+			else
+				return true;
+		}	
 	}
 
 
