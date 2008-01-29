@@ -74,6 +74,7 @@ import org.woped.pnml.SimulationType;
 import org.woped.pnml.SimulationsType;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.NetType.Page;
+import org.woped.qualanalysis.simulation.ChangedNetDialog;
 
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
@@ -266,6 +267,7 @@ public class PNMLImport
         for (int i = 0; i < pnml.getNetArray().length; i++)
         {
             simulations = null;
+            boolean savedFlag = true;
         	currentNet = pnml.getNetArray(i);
             editor[i] = mediator.createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
             if (((WoPeDUndoManager) editor[i].getGraph().getUndoManager()) != null)
@@ -377,7 +379,7 @@ public class PNMLImport
             // Import the simulations if any exist
             if(simulations!=null)
             {
-            	importSimulations(simulations, currentPetrinet);
+            	savedFlag = importSimulations(simulations, currentPetrinet);
             }
             
             // Now build the graph from the ModelElementContainer
@@ -390,7 +392,7 @@ public class PNMLImport
                 ((WoPeDUndoManager) editor[i].getGraph().getUndoManager()).setEnabled(true);
             }
             getEditor()[i].updateNet();
-            getEditor()[i].setSaved(true);
+            getEditor()[i].setSaved(savedFlag);
         }
     }
     
@@ -818,8 +820,9 @@ public class PNMLImport
      * @param simulations The simulationsarray which comes from the pnml-file
      * @param currentPetrinet The new PetriNetModelProcessor of the petrinet we restore at the moment 
      */
-    private void importSimulations(SimulationType[] simulations, PetriNetModelProcessor currentPetrinet) throws Exception
+    private boolean importSimulations(SimulationType[] simulations, PetriNetModelProcessor currentPetrinet) throws Exception
     {
+    	boolean savedFlag = true;
     	SimulationModel currSimulation;
     	TransitionModel currTransition;
     	String currSimulationID;
@@ -848,16 +851,15 @@ public class PNMLImport
     	            arcTarget = currentPetrinet.getElementContainer().getArcById(currTransitionID).getTargetId();
     	            if(arcSource.charAt(0)=='t')
     	            {
-    	            	// TODO: try SimpleTransition - problems with clone()...?
-    	            	currTransition = (TransitionModel) currentPetrinet.getElementContainer().getElementById(arcSource).clone();
     	            	currTransitionName = arcSource + " -> (" + arcTarget +")";
     	            }
     	            else
     	            {
-    	            	currTransition = (TransitionModel) currentPetrinet.getElementContainer().getElementById(arcTarget).clone();
     	            	currTransitionName = "(" + arcSource + ") -> " + arcTarget;
     	            }
-    	            currTransition.setId(currTransitionID);
+    	            CreationMap map = CreationMap.createMap();
+    	            map.setId(currTransitionID);
+    	            currTransition = new TransitionModel(map);
     	            currTransition.setNameValue(currTransitionName);
     	            LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation: HelperTransition for arc ("+currTransitionID+") created");
     			}
@@ -869,16 +871,26 @@ public class PNMLImport
     		}
     		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions, simulations[k].getNetFingerprint());
     		// check if current fingerprint of the net equals the imported one
-    		// if not display a warning
+    		// if not ask the user if he want's to keep the simulation
+    		int answer = 0;
     		if(!currentPetrinet.isLogicalFingerprintEqual(simulations[k].getNetFingerprint()))
     		{
-    			// TODO: show warning to user
-    			//warnings.add("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")");
-    			System.out.println("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")\naus XML: "+simulations[k].getNetFingerprint()+"\naktuell: "+currentFingerprint);
+    			//System.out.println("The petrinet has changed significantly. The following simulation may not work properly anymore: \""+ simulations[k].getSimulationname() +"\" ("+currSimulationID+")\naus XML: "+simulations[k].getNetFingerprint()+"\naktuell: "+currentFingerprint);
+    			Object[] options = {Messages.getString("Tokengame.ChangedNetDialog.ButtonKeep"),Messages.getString("Tokengame.ChangedNetDialog.ButtonDelete")};
+    			answer = JOptionPane.showOptionDialog(null, Messages.getString("Tokengame.ChangedNetDialog.Load.Message").replaceAll("##SIMULATIONNAME##", simulations[k].getSimulationname()), Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
     		}
-    		currentPetrinet.addSimulation(currSimulation);
-    		LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ")imported");
-    		// TODO: check if this is really necessary because of possible duplicate-check when requesting a new simulation-id....
+    		if(answer == 0)
+    		{
+        		currentPetrinet.addSimulation(currSimulation);
+        		LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ")imported");
+    		}
+    		else
+    		{
+    			// set the petrinet opened to "not saved...."
+    			savedFlag = false;
+    			LoggerManager.debug(Constants.FILE_LOGGER, " ... Simulation (ID:" + currSimulationID + ") droped by user");
+    		}
+
     		try
     		{
     			int currSimulationIdNumber = Integer.parseInt(currSimulationID.substring(1));
@@ -897,6 +909,7 @@ public class PNMLImport
     		}
     	}
     	currentPetrinet.setSimulationCounter(greatestSimulationIDnumber);
+    	return savedFlag;
     }
 
     private boolean isOperator(ModelElementContainer elementContainer, String elementId) throws Exception
