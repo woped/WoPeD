@@ -91,11 +91,7 @@ public class BPEL
 
 		// Generate BPEL Model
 		BpelParserModel m = new BpelParserModel();
-		System.out.println(m.createModel(pnp.getElementContainer()));
-		System.out.println(m.count_elements());
-		System.out.println("********last element*************\n "
-				+ m.generate_bpel());
-		System.out.println(m.count_elements());
+		m.createModel(pnp.getElementContainer());
 		BPEL.genBpelProcess();
 		BPEL.Process.set(m.generate_bpel());
 		setGlobals(BPEL.Process, pnp);
@@ -128,14 +124,12 @@ public class BPEL
 
 		// Generate BPEL Model
 		BpelParserModel m = new BpelParserModel();
-		System.out.println(m.createModel(pnp.getElementContainer()));
-		System.out.println(m.count_elements());
-		System.out.println("********last element*************\n "
-				+ m.generate_bpel());
-		System.out.println(m.count_elements());
+		m.createModel(pnp.getElementContainer());
 		BPEL.genBpelProcess();
 		TProcess p = BPEL.bpelDoc.addNewProcess();
-		p.set(m.generate_bpel());
+		TProcess tempProc = m.generate_bpel();
+		if(tempProc!=null)p.set(tempProc);
+		else return "Pertinetz ist nicht sound.";
 		setGlobals(p, pnp);
 		XmlOptions opt = new XmlOptions();
 		//opt.setSavePrettyPrintIndent(2);
@@ -155,11 +149,6 @@ public class BPEL
 		opt.setUseDefaultNamespace();
 		opt.setSavePrettyPrint();
 		opt.setSavePrettyPrintIndent(2);
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("xmlns:bpel", "bpel.woped.org");
-		map.put("xmlns:bpel", "");
-		map.put("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
-		// opt = opt.setSaveImplicitNamespaces(map);
 		BPEL.bpelDoc = ProcessDocument.Factory.newInstance(opt);
 		BPEL.Process = bpelDoc.addNewProcess();
 		return BPEL.Process;
