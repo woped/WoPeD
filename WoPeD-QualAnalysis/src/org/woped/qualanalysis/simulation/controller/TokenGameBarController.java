@@ -500,8 +500,11 @@ public class TokenGameBarController implements Runnable {
      */
     public void createSaveableHistory()
     {
-    	SaveableSimulation = new SimulationModel(PetriNet.getNewElementId(AbstractPetriNetModelElement.SIMULATION_TYPE), "Default", (Vector<TransitionModel>)HistoryVector.clone(), PetriNet.getLogicalFingerprint());
-    	newHistory = true;
+    	if(HistoryVector != null)
+    	{
+    	  SaveableSimulation = new SimulationModel(PetriNet.getNewElementId(AbstractPetriNetModelElement.SIMULATION_TYPE), "Default", (Vector<TransitionModel>)HistoryVector.clone(), PetriNet.getLogicalFingerprint());
+    	  newHistory = true;
+    	}
     }
 	
     /**
