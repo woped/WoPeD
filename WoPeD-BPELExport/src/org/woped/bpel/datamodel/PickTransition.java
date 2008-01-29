@@ -16,6 +16,8 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
 public class PickTransition extends TerminalElement
 {
@@ -53,7 +55,6 @@ public class PickTransition extends TerminalElement
 			if (TimeTriggerTransition.class.isInstance(tmp))
 			{
 				TOnAlarmPick iOnAlarmPick = iPick.addNewOnAlarm();
-
 				// transition case (1.transition)
 				tmp = tmp.get_first_post_element();
 				tmp = tmp.get_first_post_element();
@@ -63,7 +64,6 @@ public class PickTransition extends TerminalElement
 					|| MessageTriggerTransition.class.isInstance(tmp))
 			{
 				TOnMessage iOnMessage = iPick.addNewOnMessage();
-
 				// transition case (1.transition)
 				tmp = tmp.get_first_post_element();
 				tmp = tmp.get_first_post_element();

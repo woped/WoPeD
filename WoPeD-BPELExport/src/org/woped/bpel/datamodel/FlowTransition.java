@@ -4,6 +4,9 @@ import java.util.Iterator;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
 import org.woped.bpel.BPEL;
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
 public class FlowTransition extends TerminalElement
 {
@@ -26,6 +29,9 @@ public class FlowTransition extends TerminalElement
 	{
 		AbstractElement<?> tmp = null;
 		TFlow iFlow = BPEL.genBpelProcess().addNewFlow();
+		if(AbstractElementModel.class.isInstance(begin.getData())){
+			iFlow.setName(""+((AbstractElementModel)begin.getData()).getNameValue());
+		}
 		Iterator<AbstractElement<?>> list = begin.get_all_post_objects().iterator();
 		while (list.hasNext())
 		{

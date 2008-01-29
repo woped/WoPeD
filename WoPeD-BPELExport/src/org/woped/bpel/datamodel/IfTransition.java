@@ -5,6 +5,7 @@ import java.util.Iterator;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
 
 import org.woped.bpel.BPEL;
+import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
 public class IfTransition extends TerminalElement
 {
@@ -27,7 +28,9 @@ public class IfTransition extends TerminalElement
 	{
 		AbstractElement<?> tmp = null;
 		TIf iIf = BPEL.genBpelProcess().addNewIf();
-		iIf.setName(""+this.getData());
+		if(XORSplitOperatorTransitionModel.class.isInstance(begin.getData())){
+			iIf.setName(""+((XORSplitTransition)begin).getData().getNameValue());
+		}
 		Iterator<AbstractElement<?>> list = begin.get_all_post_objects().iterator();
 		for (int i=0;list.hasNext();i++)
 		{
