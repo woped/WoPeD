@@ -356,19 +356,6 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		}
 	}
 
-	// TODO rework
-	public void defineVariablesForInputOutputComboBoxes() {
-		inVariableComboBox.removeAllItems();
-		outVariableComboBox.removeAllItems();
-		String[] variables = modelElementContainer.getBpelVariableNameList();
-
-		setInVariable(Messages.getString("Transition.Properties.BPEL.No"));
-		setOutVariable(Messages.getString("Transition.Properties.BPEL.No"));
-		for (String variable : variables) {
-			setInVariable(variable);
-			setOutVariable(variable);
-		}
-	}
 
 	// ***************** content getter methods **************************
 
@@ -435,7 +422,6 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	@Override
 	public void refresh() {
 		defineContentOfPartnerLinkComboBox();
-		defineVariablesForInputOutputComboBoxes();
 		Object o = this.inVariableComboBox.getSelectedItem();
 		this.fillVariableToComboBox(this.inVariableComboBox);
 		this.inVariableComboBox.setSelectedItem(o);
