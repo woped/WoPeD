@@ -5,6 +5,9 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -13,14 +16,18 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.bpel.wsdl.Wsdl;
+import org.woped.bpel.wsdl.exceptions.NoPortTypeFoundException;
+import org.woped.bpel.wsdl.wsdlFileRepresentation.Operation;
 import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.gui.PopUpDialog;
+import org.woped.translations.Messages;
 
 /**
- * @author Esther Landes
+ * @author Esther Landes / Kristian Kindler
  *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "reply" BPEL activity.
@@ -123,12 +130,16 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 	private JComboBox getPartnerLinkComboBox() {
 		if (partnerLinkComboBox == null) {
 			partnerLinkComboBox = new JComboBox();
-
-			// fill partnerLinkComboBox with partner links
-			String[] partnerLinks = modelElementContainer.getPartnerLinkList();
-			for(String partnerLink : partnerLinks){
-				partnerLinkComboBox.addItem(partnerLink);
-			}
+			partnerLinkComboBox.setPreferredSize(dimension);
+			partnerLinkComboBox.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent e) {
+					if (e.getItem() instanceof Partnerlink){
+						defineContentOfOperationComboBox(((Partnerlink) e.getItem()).
+							 getWsdlUrl(), ((Partnerlink) e.getItem()).
+							 	getTPartnerlink().getPartnerRole());
+					}
+				}
+			});
 		}
 		return partnerLinkComboBox;
 	}
@@ -211,6 +222,40 @@ public class BPELreplyPanel extends BPELadditionalPanel {
 		}
 	}
 
+
+	public void defineContentOfOperationComboBox(String pathToWsdlFile, String roleName) {
+		ArrayList<Operation> operations;
+		if (wsdlFileRepresentation == null){
+			try {
+				wsdlFileRepresentation = new Wsdl().readDataFromWSDL(pathToWsdlFile);
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				showErrorPopup(
+						Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"),
+						Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingVariables"));
+			}
+		}
+
+		String portTypeName = wsdlFileRepresentation.getPortTypeNameByRoleName(roleName);
+		try {
+			operationComboBox.removeAllItems();
+
+			wsdlFileRepresentation = wsdl.readDataFromWSDL(pathToWsdlFile);
+			operations = wsdlFileRepresentation.getPortType(portTypeName).getOperations();
+			for (Operation operation : operations) {
+				setOperation(operation.getOperationName());
+			}
+
+		} catch (NoPortTypeFoundException e1) {
+			// This exception won't be raised because there will definitely be a
+			// port type.
+		} catch (Exception e) {
+			showErrorPopup(
+					Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingWsdlFileTitle"),
+					Messages.getString("Transition.Properties.BPEL.ErrorWhileReadingOperation"));
+		}
+	}
 
 	// ***************** content getter methods **************************
 
