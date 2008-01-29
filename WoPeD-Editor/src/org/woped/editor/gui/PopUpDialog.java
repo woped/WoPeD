@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import org.woped.translations.Messages;
@@ -18,23 +19,24 @@ public class PopUpDialog extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = -5770353423770293418L;
-	private String _message;
+	private String message;
+	private JLabel messageLabel;
 
 	public PopUpDialog(JDialog owner, boolean modal, String Title, String Message) {
 		super(owner,Title);
 		this.setModal(modal);
-		this._message = Message;
+		this.message = Message;
 		this.init();
 	}
 
 	private void init() {
 		this.setVisible(false);
-		this.setSize(400, 200);		
+		this.setSize(300, 130);		
 		this.setLocation(this.getOwner().getLocation().x + 50, this.getOwner().getLocation().y + 50);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		c.fill = GridBagConstraints.HORIZONTAL;
+//		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.CENTER;
 		c.weightx = 1;
 		c.weighty = 1;
@@ -43,7 +45,8 @@ public class PopUpDialog extends JDialog {
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		JTextArea text = new JTextArea();
+		
+/*		JTextArea text = new JTextArea();
 		text.setLineWrap(true);
 		text.setWrapStyleWord(true);
 		text.setAlignmentX(JTextArea.CENTER_ALIGNMENT);
@@ -51,7 +54,8 @@ public class PopUpDialog extends JDialog {
 		text.setBackground(this.getBackground());
 		text.setEditable(false);
 		text.setText(this._message);
-		this.add(text, c);
+		this.add(text, c);*/
+		this.add(new JLabel(message), c);
 
 		c.gridx = 0;
 		c.gridy = 1;
