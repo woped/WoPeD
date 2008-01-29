@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -32,7 +33,7 @@ public class EditorOperations extends JPanel {
 	private JPanel                 	operationBpelPreviewPanel            = null;
 	private JLabel                 	operationBpelPreviewLabel            = null;
 	private JButton                	operationBpelPreviewButton           = null;
-	
+	private JScrollPane				scrollPane							 = null;
 	private JDialog					bpelTextDialog 						 = null;
 	private JTextArea             	operationBpelTextField       	     = null;
 	
@@ -87,6 +88,8 @@ public class EditorOperations extends JPanel {
     {
         if (operationBpelPreviewPanel == null)
         {
+        	
+        	
         	operationBpelPreviewPanel = new JPanel();
         	operationBpelPreviewPanel.setBorder(BorderFactory
                     .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Operations.BpelPrev.Title")), BorderFactory.createEmptyBorder()));
@@ -122,8 +125,18 @@ public class EditorOperations extends JPanel {
                 	String buttonText = e.getActionCommand();
                     
                     if ( buttonText.equals(Messages.getString("PetriNet.Operations.BpelPrev.Button")) ) {
-                       
-                	bpelTextDialog = new JDialog();
+                    
+                
+                    	JScrollPane scrollPane = new JScrollPane();
+                    	scrollPane.getViewport().setView(getOperationBpelTextField());
+                    	scrollPane.setName(Messages.getString("PetriNet.Operations.BpelPrev.NewDialog"));
+                    	scrollPane.setLocation(150,150);
+                    	scrollPane.setVisible(true);
+                    	scrollPane.setHorizontalScrollBar(scrollPane.createHorizontalScrollBar());
+                    	scrollPane.setVerticalScrollBar(scrollPane.createVerticalScrollBar());
+                    	
+                	
+                    bpelTextDialog = new JDialog();
                 	bpelTextDialog.setVisible(false);
                 	bpelTextDialog.setTitle(Messages.getString("PetriNet.Operations.BpelPrev.NewDialog"));
                 	bpelTextDialog.setSize(700,700);
@@ -140,7 +153,8 @@ public class EditorOperations extends JPanel {
                     c.gridy = 0;
                     c.fill = GridBagConstraints.BOTH;
                     c.insets = new Insets(0, 0, 0, 0);
-                    bpelTextDialog.add(getOperationBpelTextField(), c);
+                    //bpelTextDialog.add(getOperationBpelTextField(), c);
+                    bpelTextDialog.add(scrollPane, c);
                     bpelTextDialog.setVisible(true);
                     
                 	}
