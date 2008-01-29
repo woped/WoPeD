@@ -53,6 +53,7 @@ public class ReachabilityCellListener implements MouseListener {
 		Map editMap = new HashMap();
 		if(lastHighlightedEdge != null){
             GraphConstants.setLineColor(lastHighlightedEdge.getAttributes(), Color.black);
+            GraphConstants.setLineWidth(lastHighlightedEdge.getAttributes(), 1);
             editMap.put(lastHighlightedEdge, lastHighlightedEdge.getAttributes());
             this.lastHighlightedEdge = null;
         }
@@ -79,6 +80,7 @@ public class ReachabilityCellListener implements MouseListener {
 	private void highlightClickedEdge(ReachabilityEdgeModel edge){
 		 Map editMap = new HashMap();
          GraphConstants.setLineColor(edge.getAttributes(), Color.magenta);
+         GraphConstants.setLineWidth(edge.getAttributes(), 2);
          editMap.put(edge, edge.getAttributes());
          graph.getGraphLayoutCache().edit(editMap);
          this.lastHighlightedEdge = edge;
