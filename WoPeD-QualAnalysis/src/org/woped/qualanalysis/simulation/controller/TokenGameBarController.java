@@ -147,7 +147,7 @@ public class TokenGameBarController implements Runnable {
 	 * This method let the active transition occur (currently only for sequences, as soon
 	 * as two transitions are active, the method cannot occur so far)
 	 */
-	public void occurTransition(boolean BackWard)
+	public synchronized void occurTransition(boolean BackWard)
 	{
 		/*
 		 * Backward is done with the 
@@ -369,9 +369,15 @@ public class TokenGameBarController implements Runnable {
 	 */
 	public synchronized void proceedTransitionChoiceAuto()
 	{
-		int index = (int) Math.round(Math.random() * (followingActivatedTransitions.size()-1));
-		TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
-		tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, false);
+		if(!playbackRunning())
+		{
+			int index = (int) Math.round(Math.random() * (followingActivatedTransitions.size()-1));
+			TransitionToOccur = (TransitionModel)followingActivatedTransitions.get(index);
+			tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, false);
+		}
+		else{
+			occurTransition(false);
+		}
 	}
 	
 	
