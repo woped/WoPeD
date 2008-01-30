@@ -127,9 +127,11 @@ public class BPEL
 		BPEL.genBpelProcess();
 		TProcess p = BPEL.bpelDoc.addNewProcess();
 		TProcess tempProc = m.generate_bpel();
-		if(tempProc!=null)p.set(tempProc);
+		if(tempProc!=null){
+			setGlobals(tempProc,pnp);
+			p.set(tempProc);
+		}
 		else return "Pertinetz ist nicht sound.";
-		setGlobals(p, pnp);
 		XmlOptions opt = new XmlOptions();
 		//opt.setSavePrettyPrintIndent(2);
 		//opt.setUseDefaultNamespace();
@@ -155,7 +157,7 @@ public class BPEL
 
 	public void setGlobals(TProcess iProcess, PetriNetModelProcessor pnp){
 		TVariables itempVars = (TVariables)pnp.getElementContainer().getTVariablesList();
-		TPartnerLinks itempLinks = (TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList(); 
+		TPartnerLinks itempLinks = (TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList();
 		if ((itempVars.sizeOfVariableArray()>0)&(itempVars != null)){
 			TVariables iVars = iProcess.addNewVariables();
 			for (int i=0;itempVars.sizeOfVariableArray()>i;i++){
@@ -166,7 +168,7 @@ public class BPEL
 				curs.toNextToken();
 				if(curs.isNamespace()){
 					curs.removeXml();
-				}
+				}				
 			}
 		}
 		if ((itempLinks.sizeOfPartnerLinkArray()>0)&(itempLinks != null)){
