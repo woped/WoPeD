@@ -442,20 +442,20 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 	@Override
 	public void saveInfomation() {
 
-		if (allFieldsFilled() == false) {
-			new PopUpDialog(
-					t_editor,
-					true,
-					Messages.getString("Transition.Properties.BPEL.Error"),
-					Messages
-							.getString("Transition.Properties.BPEL.ErrorDuringFieldCheck"))
-					.setVisible(true);
-		} else {
+//		if (allFieldsFilled() == false) {
+//			new PopUpDialog(
+//					t_editor,
+//					true,
+//					Messages.getString("Transition.Properties.BPEL.Error"),
+//					Messages
+//							.getString("Transition.Properties.BPEL.ErrorDuringFieldCheck"))
+//					.setVisible(true);
+//		} else {
 			this.transition.setBaseActivity(new Invoke(this.transition
 					.getNameValue(), this.getPartnerLink(),
 					this.getOperation(), this.getPortType(), this
 							.getInVariable(), this.getOutVariable()));
-		}
+//		}
 	}
 	//	TODO: empty initial entry must be added
 
