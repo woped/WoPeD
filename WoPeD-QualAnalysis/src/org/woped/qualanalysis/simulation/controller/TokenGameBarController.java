@@ -32,7 +32,7 @@ public class TokenGameBarController implements Runnable {
 	private TokenGameController      tgController                  = null;
 	private PetriNetModelProcessor   PetriNet                      = null;
 	//Linked Lists 
-	private LinkedList               followingActivatedTransitions = null;
+	private LinkedList<TransitionModel>               followingActivatedTransitions = null;
 	private LinkedList               ProcessEditors                = null;
 	
 	//Occurring Transitions
@@ -513,6 +513,7 @@ public class TokenGameBarController implements Runnable {
     public void saveHistory()
     {
     	PetriNet.addSimulation(SaveableSimulation);
+    	tgController.getThisEditor().setSaved(false);
     }
     
     /**
