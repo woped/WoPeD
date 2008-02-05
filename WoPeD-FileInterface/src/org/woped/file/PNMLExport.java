@@ -27,6 +27,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -66,7 +69,6 @@ import org.woped.pnml.ArcNameType;
 import org.woped.pnml.ArcToolspecificType;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.DimensionType;
-import org.woped.pnml.FiredtransitionType;
 import org.woped.pnml.GraphicsArcType;
 import org.woped.pnml.GraphicsNodeType;
 import org.woped.pnml.GraphicsSimpleType;
@@ -78,6 +80,7 @@ import org.woped.pnml.OrganizationUnitType;
 import org.woped.pnml.TPartnerLinks;
 import org.woped.pnml.TVariables;
 
+import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.PlaceToolspecificType;
 import org.woped.pnml.PlaceType;
 import org.woped.pnml.PnmlDocument;
@@ -308,15 +311,21 @@ public class PNMLExport
             SimulationsType iNetSimulations = iNetToolSpec.addNewSimulations();
             SimulationType iSimulation;
             TransitionsequenceType iTransitionsequence;
-            FiredtransitionType iFiredTransition;
+            OccuredtransitionType iOccuredTransition;
             for (Iterator<SimulationModel> iter = petrinetModel.getSimulations().iterator();iter.hasNext();)
             {
             	SimulationModel currSimulation = iter.next();
             	int answer = 0;
+            	Date simulationCreationDate = currSimulation.getSavedDate();
             	if(!petrinetModel.isLogicalFingerprintEqual(currSimulation.getFingerprint()))
             	{
             		Object[] options = {Messages.getString("Tokengame.ChangedNetDialog.ButtonKeep"),Messages.getString("Tokengame.ChangedNetDialog.ButtonDelete")};
-        			answer = JOptionPane.showOptionDialog(null, Messages.getString("Tokengame.ChangedNetDialog.Export.Message").replaceAll("##SIMULATIONNAME##", currSimulation.getName()), Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+            		// get the localized message text
+            		String message = Messages.getString("Tokengame.ChangedNetDialog.Export.Message");
+        			// fill the message text dynamically with the simulationname and simulationdate 
+            		message = message.replaceAll("##SIMULATIONNAME##", currSimulation.getName());
+            		message = message.replaceAll("##SIMULATIONDATE##", DateFormat.getDateInstance().format(currSimulation.getSavedDate()));
+        			answer = JOptionPane.showOptionDialog(null, message, Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
         			// if the user didn't choose one of the buttons but closed the OptionDialog don't drop the simulation
         			if(answer == -1)
         			{
@@ -328,11 +337,14 @@ public class PNMLExport
                 	iSimulation = iNetSimulations.addNewSimulation();
                 	iSimulation.setId(currSimulation.getId());
                 	iSimulation.setSimulationname(currSimulation.getName());
+                	Calendar cal = Calendar.getInstance();
+                	cal.setTime(simulationCreationDate);
+                	iSimulation.setSimulationdate(cal);
                 	iTransitionsequence = iSimulation.addNewTransitionsequence();
-                	for(Iterator<TransitionModel> iterator = currSimulation.getFiredTransitions().iterator();iterator.hasNext();)
+                	for(Iterator<TransitionModel> iterator = currSimulation.getOccuredTransitions().iterator();iterator.hasNext();)
                 	{
-                		iFiredTransition = iTransitionsequence.addNewFiredtransition();
-                		iFiredTransition.setTransitionID((iterator.next()).getId());
+                		iOccuredTransition = iTransitionsequence.addNewFiredtransition();
+                		iOccuredTransition.setTransitionID((iterator.next()).getId());
                 	}
                 	iSimulation.setNetFingerprint(currSimulation.getFingerprint());
                 	LoggerManager.debug(Constants.FILE_LOGGER, "   ... Simulation (ID:" + currSimulation.getId() + ") set");

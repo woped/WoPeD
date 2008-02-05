@@ -394,6 +394,7 @@
   <xs:complexType name="simulationType">
     <xs:sequence>
       <xs:element name="simulationname" type="xs:string" />
+      <xs:element name="simulationdate" type="xs:dateTime" />
       <xs:element minOccurs="1" maxOccurs="1" name="transitionsequence" type="transitionsequenceType" />
       <xs:element minOccurs="1" maxOccurs="1" name="netFingerprint" type="xs:string" />
     </xs:sequence>
@@ -401,10 +402,10 @@
   </xs:complexType>
   <xs:complexType name="transitionsequenceType">
     <xs:sequence>
-      <xs:element maxOccurs="unbounded" name="firedtransition" type="firedtransitionType" />
+      <xs:element maxOccurs="unbounded" name="firedtransition" type="occuredtransitionType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="firedtransitionType">
+  <xs:complexType name="occuredtransitionType">
     <xs:attribute name="transitionID" type="xs:IDREF" />
   </xs:complexType>
   <xs:complexType name="tExtensibleElements">

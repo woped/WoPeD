@@ -2,6 +2,7 @@ package org.woped.qualanalysis.simulation.controller;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Dimension2D;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Vector;
@@ -508,7 +509,7 @@ public class TokenGameBarController implements Runnable {
     {
     	if(HistoryVector != null)
     	{
-    	  SaveableSimulation = new SimulationModel(PetriNet.getNewElementId(AbstractPetriNetModelElement.SIMULATION_TYPE), "Default", (Vector<TransitionModel>)HistoryVector.clone(), PetriNet.getLogicalFingerprint());
+    	  SaveableSimulation = new SimulationModel(PetriNet.getNewElementId(AbstractPetriNetModelElement.SIMULATION_TYPE), "Default", (Vector<TransitionModel>)HistoryVector.clone(), PetriNet.getLogicalFingerprint(), new Date());
     	  newHistory = true;
     	}
     }
@@ -530,7 +531,7 @@ public class TokenGameBarController implements Runnable {
     	ahxHistoryContent.clear();
     	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
     	//needs a clone, otherwise, the saved history might be erased when the user just wants to clean the history-box
-    	HistoryVector = (Vector<TransitionModel>)SaveableSimulation.getFiredTransitions().clone();
+    	HistoryVector = (Vector<TransitionModel>)SaveableSimulation.getOccuredTransitions().clone();
     	for (int i = 0; i < HistoryVector.size(); i++)
     	{
     		ahxHistoryContent.addElement(HistoryVector.get(i).getNameValue());
@@ -545,7 +546,7 @@ public class TokenGameBarController implements Runnable {
     public void overwriteHistory(int index)
     {
     	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
-    	SaveableSimulation.setFiredTransitions((Vector<TransitionModel>)HistoryVector.clone());
+    	SaveableSimulation.setOccuredTransitions((Vector<TransitionModel>)HistoryVector.clone());
     }
     
     

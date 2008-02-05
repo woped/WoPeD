@@ -1,5 +1,6 @@
 package org.woped.core.model.petrinet;
 
+import java.util.Date;
 import java.util.Vector;
 
 public class SimulationModel
@@ -7,24 +8,26 @@ public class SimulationModel
 	private String id = null;
 	private String name = null;
 	private String fingerprint = null;
-	private Vector<TransitionModel> firedTransitions = null;
+	private Vector<TransitionModel> occuredTransitions = null;
+	private Date savedDate = null;
 
 	public SimulationModel(String id, String name)
 	{
 		this.name = name;
 		this.id = id;
-		firedTransitions = new Vector<TransitionModel>();
+		occuredTransitions = new Vector<TransitionModel>();
 	}
 
 	/*
 	 * Constructor to hand over an Existing Vector from HistoryBox
 	 */
-	public SimulationModel(String id, String name, Vector<TransitionModel>HistoryVector, String fingerprint)
+	public SimulationModel(String id, String name, Vector<TransitionModel>HistoryVector, String fingerprint, Date creationDate)
 	{
 		this.name = name;
 		this.id = id;
+		this.savedDate = creationDate;
 		this.fingerprint = fingerprint;
-		firedTransitions = HistoryVector;
+		occuredTransitions = HistoryVector;
 	}
 
     /**
@@ -47,18 +50,18 @@ public class SimulationModel
     /**
      * @return Returns the vector with the fired transitions
      */
-    public Vector<TransitionModel> getFiredTransitions()
+    public Vector<TransitionModel> getOccuredTransitions()
     {
-    	return firedTransitions;
+    	return occuredTransitions;
     }
 
     /**
      * This method is needed to make it possible that Simulations may be overwritten with other content
      * @param HistoryVector
      */
-    public void setFiredTransitions(Vector<TransitionModel> HistoryVector)
+    public void setOccuredTransitions(Vector<TransitionModel> HistoryVector)
     {
-    	firedTransitions = HistoryVector;
+    	occuredTransitions = HistoryVector;
     }
 
     /*
@@ -92,5 +95,22 @@ public class SimulationModel
 	{
 		return id;
 	}
+	
+    /**
+     * @return Returns the date of creation.
+     */
+    public Date getSavedDate()
+    {
+        return savedDate;
+    }
+
+    /**
+     * @param creationDate
+     *            The date of creation to set.
+     */
+    public void setSavedDate(Date savedDate)
+    {
+        this.savedDate = savedDate;
+    }
 
 }

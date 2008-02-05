@@ -28,6 +28,7 @@ import java.awt.geom.Point2D;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.DateFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -61,8 +62,8 @@ import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 import org.woped.pnml.ArcType;
-import org.woped.pnml.FiredtransitionType;
 import org.woped.pnml.NetType;
+import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.OrganizationUnitType;
 import org.woped.pnml.PlaceType;
 import org.woped.pnml.PnmlDocument;
@@ -825,20 +826,20 @@ public class PNMLImport
     	TransitionModel currTransition;
     	String currSimulationID;
     	int greatestSimulationIDnumber = 0;
-    	String currentFingerprint = currentPetrinet.getLogicalFingerprint();
     	for (int k = 0; k<simulations.length; k++)
     	{
     		// collect the information about the current simulation in local variables
     		currSimulationID = simulations[k].getId();
-    		FiredtransitionType[] firedTransitions = simulations[k].getTransitionsequence().getFiredtransitionArray();
+    		simulations[k].getSimulationdate();
+    		OccuredtransitionType[] occuredTransitions = simulations[k].getTransitionsequence().getFiredtransitionArray();
     		Vector<TransitionModel> currentTransitions = new Vector<TransitionModel>();
     		String currTransitionID = null;
     		String currTransitionName = null;
     		String arcSource, arcTarget;
-    		for(int l = 0; l<firedTransitions.length;l++)
+    		for(int l = 0; l<occuredTransitions.length;l++)
     		{
     			currTransition = null;
-    			currTransitionID = firedTransitions[l].getTransitionID();
+    			currTransitionID = occuredTransitions[l].getTransitionID();
     			if(currTransitionID.charAt(0)=='a')
     			{
     				// for XOR-transitions the simulation has to fire arcs instead of simpletransitions
@@ -867,14 +868,20 @@ public class PNMLImport
     			}
     			currentTransitions.add(currTransition);
     		}
-    		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions, simulations[k].getNetFingerprint());
+    		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions, simulations[k].getNetFingerprint(), simulations[k].getSimulationdate().getTime());
     		// check if current fingerprint of the net equals the imported one
     		// if not ask the user if he want's to keep the simulation
     		int answer = 0;
     		if(!currentPetrinet.isLogicalFingerprintEqual(simulations[k].getNetFingerprint()))
     		{
     			Object[] options = {Messages.getString("Tokengame.ChangedNetDialog.ButtonKeep"),Messages.getString("Tokengame.ChangedNetDialog.ButtonDelete")};
-    			answer = JOptionPane.showOptionDialog(null, Messages.getString("Tokengame.ChangedNetDialog.Import.Message").replaceAll("##SIMULATIONNAME##", simulations[k].getSimulationname()), Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+    			// get the localized message text
+    			String message = Messages.getString("Tokengame.ChangedNetDialog.Import.Message");
+    			// fill the message text dynamically with the simulationname and simulationdate 
+    			message = message.replaceAll("##SIMULATIONNAME##", simulations[k].getSimulationname());
+    			message = message.replaceAll("##SIMULATIONDATE##", DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, ConfigurationManager.getConfiguration().getLocale()).format(simulations[k].getSimulationdate().getTime()));
+    			
+    			answer = JOptionPane.showOptionDialog(null, message, Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
     			// if the user didn't choose one of the buttons but closed the OptionDialog don't drop the simulation
     			if(answer == -1)
     			{
