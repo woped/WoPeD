@@ -33,7 +33,7 @@ import org.woped.config.WoPeDConfiguration;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.qualanalysis.test.ReferenceProvider;
 import org.woped.server.ServerLoader;
 import org.woped.server.holder.UserHolder;
 
