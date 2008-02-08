@@ -1,4 +1,4 @@
-<project default="makedistribution" name="WOPED APPLET INSTALLER">
+<project default="makedistribution" name="SERVER">
 
 	<tstamp />
 	<property file="../CommonLibs/build.properties" />
@@ -46,6 +46,22 @@
 		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages_de.properties" />
 		<copy file="log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" />
 	</target>
+	
+	<target name="makeInstallApplet">
+			<copy todir="dist/installApplet/html">
+				<fileset dir="dist/html" />
+			</copy>
+			<copy todir="dist/installApplet/lib">
+				<fileset dir="dist/lib" />
+			</copy>
+			<copy todir="dist/installApplet">
+				<fileset file="dist/woped-server.jar" />
+			</copy>
+			<zip destfile="dist/woped-server.zip">
+				<zipfileset dir="dist/installApplet" />
+			</zip>
+	</target>
+
 
 	<target name="copyfiles">
 		<copy todir="dist/nets" file="build-tools/setup/Example.pnml" />
@@ -57,7 +73,9 @@
 		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
-
+		<copy todir="dist/lib" file="lib/mysql-connector-java-5.1.5-bin.jar" />
+		
+		
 		<copy todir="dist/html/en">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/en/*.htm" />
 		</copy>
@@ -96,18 +114,18 @@
 	</target>
 
 	<target name="buildjar">
-		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
+		<jar destfile="dist/woped-server.jar" manifest="dist/MANIFEST-SERVER.mf">
 			<fileset dir="../WoPeD-CORE/bin" />
 			<fileset dir="../WoPeD-BPELExport/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
 			<fileset dir="../WoPeD-StandaloneRunner/bin" />
-			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
+			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-Translations/bin" />
 			<fileset dir="../WoPeD-XMLConfiguration/bin" />
-			<fileset dir="bin"/>
-		</jar>
+			<fileset dir="bin" />
+		</jar>		
 	</target>
 
 	<target name="makesubprojects">
@@ -122,21 +140,7 @@
 		<ant antfile="../WoPeD-Translations/build.xml" dir="../WoPeD-Translations" />
 	</target>
 
-	<target name="makeInstallApplet">
-		<copy todir="dist/installApplet/html">
-			<fileset dir="dist/html" />
-		</copy>
-		<copy todir="dist/installApplet/lib">
-			<fileset dir="dist/lib" />
-		</copy>
-		<copy todir="dist/installApplet">
-			<fileset file="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" />
-		</copy>
-		<zip destfile="dist/WoPeD-Applet-${WOPEDVERSION}.zip">
-			<zipfileset dir="dist/installApplet" />
-		</zip>
-	</target>
-	
+		
 	<target name="compile">
 			<javac srcdir="src" destdir="bin" compiler="extJavac"/>			
 	</target>
