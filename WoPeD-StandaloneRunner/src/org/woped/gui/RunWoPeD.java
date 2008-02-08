@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.WoPeDConfiguration;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.help.HelpBrowser;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
@@ -50,6 +51,10 @@ public class RunWoPeD extends JApplet {
 	
 	// flag for Applet
 	private static boolean isApplet = false;
+	
+	// instance from RunWoPeD
+	private static RunWoPeD applet;
+	
 	
 	 /**
      * 
@@ -74,6 +79,8 @@ public class RunWoPeD extends JApplet {
 	public void init() {
 		// Run as Applet
 		isApplet = true;
+		// Instanze des Applets
+		applet = this;
 		// Extract Arguments
 		try {
 			UserHolder.setUserID(ServerLoader.getInstance().getUserID(getParameter("sessionid")));
@@ -82,17 +89,19 @@ public class RunWoPeD extends JApplet {
 			}
 		} catch (RemoteException e) {
 			// fatal close applet
-			JOptionPane.showMessageDialog(this, "Error during initialisation!");
+			JOptionPane.showMessageDialog(this, "Error during initialisation! \n" + e.getMessage());
 			System.exit(0);
+		}catch (NullPointerException e){
+			JOptionPane.showMessageDialog(this, e.getMessage());
 		}
 
 		// Arguments Field
 		final String arguments[] = new String[1];
 		arguments[0] = getParameter("modellid");
 		if (UserHolder.getUserID() != -1) {
-			RunWoPeD.main(arguments);
+			RunWoPeD.run(arguments);
 		} else {
-			RunWoPeD.main(null);
+			RunWoPeD.run(null);
 		}		
 		
 	}
@@ -149,17 +158,31 @@ public class RunWoPeD extends JApplet {
 			}
 
 			// Enable Mac specific behaviour.
-			// The menu bar goes to the top of the screen, instead of the top of
-			// the window.
-			System.setProperty("apple.laf.useScreenMenuBar", "true");
+			// not when started as Applet because of setting the system
+			// information
+			if (!isApplet) {
+				// The menu bar goes to the top of the screen, instead of the
+				// top of the window.
+				try {
+					System.setProperty("apple.laf.useScreenMenuBar", "true");
+				} catch (Exception e) {
+					LoggerManager.info(Constants.GUI_LOGGER, "apple.laf.useScreenMenuBar");
+				}
+				Locale.setDefault(Locale.ENGLISH);
+			}
 
 			// create & init GUI
-			Locale.setDefault(Locale.ENGLISH);
-			DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(
-					null, new WoPeDConfiguration(), args);
+			DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDConfiguration(isApplet), null);
+
 			ReferenceProvider helper = new ReferenceProvider();
 			helper.setMediatorReference(mainwindow);
 
+			// set codebase that helpfiles can be found
+			if (isApplet) {
+				HelpBrowser.getInstance().setStartedAsApplet(true);
+				HelpBrowser.getInstance().setCodeBase(applet.getCodeBase());
+				System.out.println(applet.getCodeBase());
+			}
 		} catch (RuntimeException e1) {
 			e1.printStackTrace();
 			// Error occured while init -> quit

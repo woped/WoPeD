@@ -53,10 +53,12 @@ public class WoPeDConfiguration implements IConfiguration
 
     private Vector<WoPeDRecentFile>                       runtimeRecentFiles = new Vector<WoPeDRecentFile>(RECENTFILES_SIZE);
 
-    public WoPeDConfiguration()
-    {
-        initConfig();
-    }
+    private boolean startedAsApplet;
+
+    public WoPeDConfiguration(boolean aStartedAsApplet) {
+		startedAsApplet = aStartedAsApplet;
+		initConfig();
+	}
 
     private static ConfigurationDocument getDocument()
     {
@@ -79,22 +81,26 @@ public class WoPeDConfiguration implements IConfiguration
      */
     public boolean readConfig()
     {
-        if (new File(CONFIG_FILE).exists())
-        {
-            return readConfig(new File(CONFIG_FILE));
-        } 
-        else
-        {
-            LoggerManager.warn(Constants.CONFIG_LOGGER, "User-Configuration not found. Try using Backup Configuration.");
-            boolean confOk = readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BACKUP_FILE));
-            if (!confOk)
-            {
-            	JOptionPane.showMessageDialog(null, Messages.getString("Init.ConfigFileNotFound"), 
-            			Messages.getString("Init.ConfigError"), JOptionPane.ERROR_MESSAGE);
-            	System.exit(0);
-            }
-            return confOk;
-        }
+    	if (!startedAsApplet) {
+			if (new File(CONFIG_FILE).exists()) {
+				return readConfig(new File(CONFIG_FILE));
+			} else {
+				LoggerManager.warn(Constants.CONFIG_LOGGER, "User-Configuration not found. Try using Backup Configuration.");
+				boolean confOk = readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BACKUP_FILE));
+				if (!confOk) {
+					JOptionPane.showMessageDialog(null, Messages.getString("Init.ConfigFileNotFound"), Messages.getString("Init.ConfigError"),
+							JOptionPane.ERROR_MESSAGE);
+					System.exit(0);
+				}
+				return confOk;
+
+			}
+		} else {
+			// if started as applet no check if file exists otherwise
+			// securityException
+			boolean confOk = readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BACKUP_FILE));
+			return confOk;
+		}
     }
 
     /**
@@ -188,23 +194,23 @@ public class WoPeDConfiguration implements IConfiguration
                         .getGeneral().getRecentFilesArray()[i].getName(), getDocument().getConfiguration().getGeneral().getRecentFilesArray()[i].getPath()));
             }
             // on the xmlbeans-model
-            if (config.getGeneral().getHomedir() == null || config.getGeneral().getHomedir().equals(""))
-            {
-                if (!new File(DEFAULT_HOME).mkdir())
-                {
-                    setHomedir(DEFAULT_HOME);
-                    LoggerManager.error(Constants.CONFIG_LOGGER, "Could not create standard homedir");
-                } else
-                {
-                    LoggerManager.info(Constants.CONFIG_LOGGER, "standard homedir created");
-                }
-            } else
-            {
-                setHomedir(config.getGeneral().getHomedir());
-                // LoggerManager.info(Constants.CONFIG_LOGGER,
-                // config.getGeneral().getHomedir());
-            }
-
+			// on the xmlbeans-model
+			if (!startedAsApplet
+					&& (config.getGeneral().getHomedir() == null || config
+							.getGeneral().getHomedir().equals(""))) {
+				if (!new File(DEFAULT_HOME).mkdir()) {
+					setHomedir(DEFAULT_HOME);
+					LoggerManager.error(Constants.CONFIG_LOGGER,
+							"Could not create standard homedir");
+				} else {
+					LoggerManager.info(Constants.CONFIG_LOGGER,
+							"standard homedir created");
+				}
+			} else {
+				setHomedir(config.getGeneral().getHomedir());
+				// LoggerManager.info(Constants.CONFIG_LOGGER,
+				// config.getGeneral().getHomedir());
+			}
             // ...Import
             setImportToolspecific(config.getTools().getImporting().getToolspecific());
             // ...Export

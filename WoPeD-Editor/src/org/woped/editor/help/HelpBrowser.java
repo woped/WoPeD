@@ -69,6 +69,9 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
     private String            currURL;
     private String            homeURL;
     private String            contentsURL;
+    private boolean startedAsApplet;
+    // for applet: help files in html
+    private URL codeBase;
     private BrowserHistory    history = new BrowserHistory();
 
     public static HelpBrowser getInstance()
@@ -320,4 +323,12 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
     {
         setVisible(false);
     }
+    
+    public void setStartedAsApplet(boolean aStartedAsApplet) {
+		startedAsApplet = aStartedAsApplet;
+	}
+
+	public void setCodeBase(URL aCodeBase) {
+		codeBase = aCodeBase;
+	}
 }

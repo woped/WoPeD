@@ -82,13 +82,16 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
                 (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        addWindowListener(new WindowAdapter()
-        {
-            public void windowClosing(WindowEvent e)
-            {
-                quit();
-            }
-        });
+    	addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				if (!RunWoPeD.isApplet()) {
+					quit();
+				} else {
+					// closing operation for the Frame opened by the applet
+					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				}
+			}
+		});
 
         if (ConfigurationManager.getConfiguration().getHomedir() == null) ConfigurationManager.getConfiguration().setHomedir("nets/");
 
