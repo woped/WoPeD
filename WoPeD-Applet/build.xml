@@ -102,7 +102,6 @@
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
 			<fileset dir="../WoPeD-StandaloneRunner/bin" />
-			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-Translations/bin" />
@@ -151,7 +150,7 @@
 		<delete dir="dist/installApplet/"/>
 		<delete dir="dist/WoPeD Starter.xcode" />
 		<delete>
-			<fileset dir="dist" excludes="WoPeD-Applet-${WOPEDVERSION}.zip" />
+			<fileset dir="dist" excludes="WoPeD-Applet-${WOPEDVERSION}.zip, woped-server.zip" />
 		</delete>
 	</target>
 
