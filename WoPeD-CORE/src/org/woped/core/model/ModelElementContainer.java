@@ -306,18 +306,17 @@ public class ModelElementContainer implements Serializable {
 		}
 	}
 
-	public Map getOutgoingArcs(Object id) {
+	public Map<String, Object> getOutgoingArcs(Object id) {
 
 		if ((Map) getIdMap().get(id) != null) {
-			Map<String, Object> arcOut = new HashMap<String, Object>(getIdMap()
-					.get(id));
+			Map<String, Object> arcOut = new HashMap(getIdMap().get(id));
 			arcOut.remove("_#_");
 			return arcOut;
 		} else
-			return new HashMap();
+			return new HashMap<String, Object>();
 	}
 
-	public Map getIncomingArcs(Object id) {
+	public Map<String, ArcModel> getIncomingArcs(Object id) {
 		return findSourceArcs(id);
 	}
 
@@ -375,7 +374,7 @@ public class ModelElementContainer implements Serializable {
 		return sourceMap;
 	}
 
-	protected Map findSourceArcs(Object id) {
+	protected Map<String, ArcModel> findSourceArcs(Object id) {
 
 		Iterator arcIter = arcs.keySet().iterator();
 		Map<String, ArcModel> sourceArcs = new HashMap<String, ArcModel>();

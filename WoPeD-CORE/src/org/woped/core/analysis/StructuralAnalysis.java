@@ -91,7 +91,7 @@ public class StructuralAnalysis {
 		calculateBasicNetInfo();
 		return m_sinkPlaces.size();
 	}
-	public Iterator getSinkPlacesIterator()
+	public Iterator<AbstractElementModel> getSinkPlacesIterator()
 	{
 		calculateBasicNetInfo();
 		return m_sinkPlaces.iterator();		

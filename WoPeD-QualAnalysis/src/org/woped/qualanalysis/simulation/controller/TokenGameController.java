@@ -39,9 +39,9 @@ import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
+import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
@@ -194,12 +194,12 @@ public class TokenGameController
     private void resetVirtualTokensInElementContainer(ModelElementContainer container)
     {
         // restore origin tokencount
-        Iterator placeIter = container.getElementsByType(PetriNetModelElement.PLACE_TYPE).keySet().iterator();
+        Iterator<String> placeIter = container.getElementsByType(PetriNetModelElement.PLACE_TYPE).keySet().iterator();
         while (placeIter.hasNext())
         {
             ((PlaceModel) container.getElementById(placeIter.next())).resetVirtualTokens();
         }    	
-        Iterator subpIter = container.getElementsByType(PetriNetModelElement.SUBP_TYPE).keySet().iterator();
+        Iterator<String> subpIter = container.getElementsByType(PetriNetModelElement.SUBP_TYPE).keySet().iterator();
         while (subpIter.hasNext())
         {
         	// Now we call ourselves recursively for all sub-processes
@@ -231,7 +231,7 @@ public class TokenGameController
         
         sinkPlaces = new HashSet<PlaceModel>();
         StructuralAnalysis analysis = new StructuralAnalysis(thisEditor);
-        Iterator i = analysis.getSinkPlacesIterator();
+        Iterator<AbstractElementModel> i = analysis.getSinkPlacesIterator();
         while (i.hasNext())
         	sinkPlaces.add((PlaceModel)i.next());               
         
@@ -263,7 +263,7 @@ public class TokenGameController
     {
         long begin = System.currentTimeMillis();
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "TokenGame: CHECK NET");
-        Iterator transIter = allTransitions.keySet().iterator();
+        Iterator<String> transIter = allTransitions.keySet().iterator();
         RemoteControl.disableStepDown(); // Disables the stepDown-Navigation button
         resetArcStatus();
         // Iterate over all Transitions
@@ -298,8 +298,8 @@ public class TokenGameController
     	
         transition.setActivated(false);
         transition.setFireing(false);
-        Map incomingArcs = getPetriNet().getElementContainer().getIncomingArcs(transition.getId());
-        Map outgoingArcs = getPetriNet().getElementContainer().getOutgoingArcs(transition.getId());
+        Map<String, ArcModel> incomingArcs = getPetriNet().getElementContainer().getIncomingArcs(transition.getId());
+        Map<String, Object> outgoingArcs = getPetriNet().getElementContainer().getOutgoingArcs(transition.getId());
         // temporary variables
         
         if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
@@ -337,9 +337,8 @@ public class TokenGameController
                 if (countIncomingActivePlaces(incomingArcs) == incomingArcs.size())
                 {
                 	String XorName, ID;
-                	Iterator outArcs = outgoingArcs.keySet().iterator();
-                	Iterator simpleTransIter = operator.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
-                	TransitionModel helpTransition, virtualTransition; //needed to build virtual Transitions.
+                	Iterator<String> outArcs = outgoingArcs.keySet().iterator();
+                	TransitionModel virtualTransition; //needed to build virtual Transitions.
                 	AbstractElementModel helpPlace;                 	
                 	
                 	/*
@@ -349,10 +348,11 @@ public class TokenGameController
                 	 */
                 	while (outArcs.hasNext())
                 	{
-                		helpTransition = (TransitionModel)simpleTransIter.next(); 
-                		virtualTransition = (TransitionModel)helpTransition.clone();
                 		ID = (String)outArcs.next(); //get the Arc's ID
-                		virtualTransition.setId(ID); //set HelpTransition's ID to Arc's ID
+            			// Use a new CreationMap with the arcs id to create the virtual transition
+                		CreationMap map = CreationMap.createMap();
+        	            map.setId(ID);
+                		virtualTransition = new TransitionModel(map);
                 		helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getTargetId());
                 		XorName = transition.getNameValue() + " -> ("+  helpPlace.getNameValue()+")";
                         virtualTransition.setNameValue(XorName);
@@ -370,9 +370,8 @@ public class TokenGameController
                 if (countIncomingActivePlaces(incomingArcs) > 0)
                 {
                 	String XorName, ID;
-                	Iterator inArcs = incomingArcs.keySet().iterator();
-                	Iterator simpleTransIter = operator.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
-                	TransitionModel helpTransition, virtualTransition; //needed to build virtual Transitions.
+                	Iterator<String> inArcs = incomingArcs.keySet().iterator();
+                	TransitionModel virtualTransition; //needed to build virtual Transitions.
                 	AbstractElementModel helpPlace;
                 	//ArcModel activeArc;
                 	
@@ -384,20 +383,20 @@ public class TokenGameController
                 	setIncomingArcsActive(transition.getId(), true);
                 	while (inArcs.hasNext())
                 	{
-                		helpTransition = (TransitionModel)simpleTransIter.next(); 
-                		
                 		ID = (String)inArcs.next(); //Get Arcs ID
                 		//List all activated Arcs in the occur List
                 		if(getPetriNet().getElementContainer().getArcById(ID).isActivated())
                 		{                		 
-                		 virtualTransition = (TransitionModel)helpTransition.clone();
-                		 virtualTransition.setId(ID); //set HelpTransition's ID to Arc's ID
-                		 helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getSourceId());
-                		 XorName =  "("+  helpPlace.getNameValue()+")-> " +transition.getNameValue();
-                         virtualTransition.setNameValue(XorName);
-                		 RemoteControl.addFollowingItem(virtualTransition);
-                		 virtualTransition = null;
-                		 XorName = "";
+                			// Use a new CreationMap with the arcs id to create the virtual transition
+                			CreationMap map = CreationMap.createMap();
+            	            map.setId(ID);
+            	            virtualTransition = new TransitionModel(map);
+            	            helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getSourceId());
+            	            XorName =  "("+  helpPlace.getNameValue()+")-> " +transition.getNameValue();
+            	            virtualTransition.setNameValue(XorName);
+            	            RemoteControl.addFollowingItem(virtualTransition);
+            	            virtualTransition = null;
+            	            XorName = "";
                 		}
                   	}
                     
@@ -411,9 +410,8 @@ public class TokenGameController
                 {
                     
                 	String XorName, ID;
-                	Iterator outArcs = outgoingArcs.keySet().iterator();
-                	Iterator simpleTransIter = operator.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
-                	TransitionModel helpTransition, virtualTransition; //needed to build virtual Transitions.
+                	Iterator<String> outArcs = outgoingArcs.keySet().iterator();
+                	TransitionModel virtualTransition; //needed to build virtual Transitions.
                 	AbstractElementModel helpPlace;                 	
                 	
                 	/*
@@ -423,10 +421,12 @@ public class TokenGameController
                 	 */
                 	while (outArcs.hasNext())
                 	{
-                		helpTransition = (TransitionModel)simpleTransIter.next(); 
-                		virtualTransition = (TransitionModel)helpTransition.clone();
-                		
                 		ID = (String)outArcs.next(); //get the Arc's ID
+                		// Use a new CreationMap with the arcs id to create the virtual transition
+            			CreationMap map = CreationMap.createMap();
+        	            map.setId(ID);
+        	            virtualTransition = new TransitionModel(map);
+                		
                 		virtualTransition.setId(ID); //set HelpTransition's ID to Arc's ID
                 		helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getTargetId());
                 		XorName = transition.getNameValue() + " -> ("+  helpPlace.getNameValue()+")";
@@ -451,9 +451,8 @@ public class TokenGameController
                     if (countIncomingActivePlaces(incomingArcs) > 0)
                     {
                     	String XorName, ID;
-                    	Iterator inArcs = incomingArcs.keySet().iterator();
-                    	Iterator simpleTransIter = operator.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
-                    	TransitionModel helpTransition, virtualTransition; //needed to build virtual Transitions.
+                    	Iterator<String> inArcs = incomingArcs.keySet().iterator();
+                    	TransitionModel virtualTransition; //needed to build virtual Transitions.
                     	AbstractElementModel helpPlace;
                     	//ArcModel activeArc;
                     	
@@ -465,20 +464,20 @@ public class TokenGameController
                     	setIncomingArcsActive(transition.getId(), true);
                     	while (inArcs.hasNext())
                     	{
-                    		helpTransition = (TransitionModel)simpleTransIter.next(); 
-                    		
                     		ID = (String)inArcs.next(); //Get Arcs ID
                     		//List all activated Arcs in the occur List
                     		if(getPetriNet().getElementContainer().getArcById(ID).isActivated())
-                    		{                		 
-                    		 virtualTransition = (TransitionModel)helpTransition.clone();
-                    		 virtualTransition.setId(ID); //set HelpTransition's ID to Arc's ID
-                    		 helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getSourceId());
-                    		 XorName =  "("+  helpPlace.getNameValue()+")-> " +transition.getNameValue();
-                             virtualTransition.setNameValue(XorName);
-                    		 RemoteControl.addFollowingItem(virtualTransition);
-                    		 virtualTransition = null;
-                    		 XorName = "";
+                    		{
+                    			// Use a new CreationMap with the arcs id to create the virtual transition
+                    			CreationMap map = CreationMap.createMap();
+                	            map.setId(ID);
+                	            virtualTransition = new TransitionModel(map);
+                	            helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getSourceId());
+                	            XorName =  "("+  helpPlace.getNameValue()+")-> " +transition.getNameValue();
+                	            virtualTransition.setNameValue(XorName);
+                	            RemoteControl.addFollowingItem(virtualTransition);
+                	            virtualTransition = null;
+                	            XorName = "";
                     		}
                       	}
                         
@@ -502,7 +501,7 @@ public class TokenGameController
     {
         if (transition.isActivated())
         {
-            // Rememeber whether we actually did something here
+            // Remember whether we actually did something here
             // and only deactivate the transition after a *successful* click
             boolean actionPerformed = false;
             if (transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE || transition.getType() == PetriNetModelElement.SUBP_TYPE)
@@ -693,7 +692,7 @@ public class TokenGameController
     private void backwardItem(TransitionModel transition, ArcModel arc)
     {
       //Either transition or arc has to be null
-      // Rememeber whether we actually did something here
+      // Remember whether we actually did something here
       // and only deactivate the transition after a *successful* click
       boolean actionPerformed = false;
       if(transition != null)
@@ -796,7 +795,7 @@ public class TokenGameController
      */
     private void setIncomingArcsActive(Object transitionId, boolean active)
     {
-        Iterator incomingArcsIter = getPetriNet().getElementContainer().getIncomingArcs(transitionId).keySet().iterator();
+        Iterator<String> incomingArcsIter = getPetriNet().getElementContainer().getIncomingArcs(transitionId).keySet().iterator();
         while (incomingArcsIter.hasNext())
         {
             ArcModel arc = getPetriNet().getElementContainer().getArcById(incomingArcsIter.next());
@@ -821,7 +820,7 @@ public class TokenGameController
      */
     private void setOutgoingArcsActive(Object transitionId, boolean active)
     {
-        Iterator outgoingIter = getPetriNet().getElementContainer().getOutgoingArcs(transitionId).keySet().iterator();
+        Iterator<String> outgoingIter = getPetriNet().getElementContainer().getOutgoingArcs(transitionId).keySet().iterator();
         while (outgoingIter.hasNext())
         {
             getPetriNet().getElementContainer().getArcById(outgoingIter.next()).setActivated(active);
@@ -988,7 +987,7 @@ public class TokenGameController
      */
     private void resetTransitionStatus()
     {
-        Iterator eleIter = allTransitions.keySet().iterator();
+        Iterator<String> eleIter = allTransitions.keySet().iterator();
         TransitionModel transition;
         // Iterate over all Transitions
         while (eleIter.hasNext())
@@ -1012,7 +1011,7 @@ public class TokenGameController
      */
     private void resetArcStatus()
     {
-        Iterator arcIter = getPetriNet().getElementContainer().getArcMap().keySet().iterator();
+        Iterator<String> arcIter = getPetriNet().getElementContainer().getArcMap().keySet().iterator();
         while (arcIter.hasNext())
         {
             getPetriNet().getElementContainer().getArcById(arcIter.next()).setActivated(false);
