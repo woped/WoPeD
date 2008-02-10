@@ -831,7 +831,7 @@ public class PNMLImport
     		// collect the information about the current simulation in local variables
     		currSimulationID = simulations[k].getId();
     		simulations[k].getSimulationdate();
-    		OccuredtransitionType[] occuredTransitions = simulations[k].getTransitionsequence().getFiredtransitionArray();
+    		OccuredtransitionType[] occuredTransitions = simulations[k].getTransitionsequence().getOccuredtransitionArray();
     		Vector<TransitionModel> currentTransitions = new Vector<TransitionModel>();
     		String currTransitionID = null;
     		String currTransitionName = null;

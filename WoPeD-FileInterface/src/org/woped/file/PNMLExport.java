@@ -343,7 +343,7 @@ public class PNMLExport
                 	iTransitionsequence = iSimulation.addNewTransitionsequence();
                 	for(Iterator<TransitionModel> iterator = currSimulation.getOccuredTransitions().iterator();iterator.hasNext();)
                 	{
-                		iOccuredTransition = iTransitionsequence.addNewFiredtransition();
+                		iOccuredTransition = iTransitionsequence.addNewOccuredtransition();
                 		iOccuredTransition.setTransitionID((iterator.next()).getId());
                 	}
                 	iSimulation.setNetFingerprint(currSimulation.getFingerprint());
