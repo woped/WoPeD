@@ -11,6 +11,12 @@ public class UddiVariableList
 {
 	private HashSet<UddiVariable> _list = new HashSet<UddiVariable>();
 	
+	public UddiVariableList()
+	{
+		_list.add(new UddiVariable("SAP", "http://udditest.sap.com/uddi/api/inquiry/"));
+		_list.add(new UddiVariable("Microsoft", "http://uddi.microsoft.com/inquire"));
+	}
+	
 	public void addVariable(String name, String url)
 	{
 		this._list.add(new UddiVariable(name,url));
