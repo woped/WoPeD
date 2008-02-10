@@ -1,29 +1,35 @@
 package org.woped.bpel.gui.transitionproperties;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.woped.editor.controller.TransitionPropertyEditor;
+import org.woped.translations.Messages;
 
 import java.awt.*;
+import java.awt.event.*;
 /**
  * 
  * @author Alexander Rosswog
  *
  */
-
+@SuppressWarnings("serial")
 public class UDDIDialog extends JDialog
 {
 	String uddiUrl = "http://udditest.sap.com/uddi/api/inquiry/";
 	String businessName = "s%";
 	
-	TransitionPropertyEditor t_editor;
+	JDialog errorPopup 			= null;
 	
-	JPanel PChooseUddi			= null;
 	JLabel	LuddiServer			= null;
 	JComboBox CBuddiServer		= null;
 	JButton BcreateUddi			= null;
 	
-	JPanel PChooseService		= null;
+	JLabel LBusiness			= null;
+	JTextField TFBusiness		= null;
+	JButton	BBusiness			= null;
+	
 	JLabel LfindBusiness		= null;
 	JLabel LfindService			= null;
 	JList LIfindBusiness		= null;
@@ -32,135 +38,186 @@ public class UDDIDialog extends JDialog
 	JScrollPane SPfindService	= null;
 	JLabel Larc					= null;
 	
-	JPanel PReady				= null;
 	JButton	Bok					= null;
 	JButton Bcancel				= null;
 	
 	public UDDIDialog(TransitionPropertyEditor t_editor)
-	{
+	{		
 		super(t_editor, true);
 		
 		setTitle("UDDI");
-		setSize(600,300);
+		setLayout(null);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setSize(407,450);
 		setLocation(300,200);
-		setLayout(new GridBagLayout());
-		setLayout(new GridBagLayout());
-		
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.REMAINDER;
-		c.anchor = GridBagConstraints.WEST;
-		c.weightx = 1;
-		c.weighty = 1;
-		
-		c.gridx = 0;
-		c.gridy = 0;
-		c.insets = new Insets(0,0,0,0);
-		PChooseUddi = new JPanel();
-		add(PChooseUddi, c);
-		PChooseUddi.setLayout(new GridBagLayout());
-		
-		c.gridx = 0;
-		c.gridy = 1;
-		c.insets = new Insets(0,0,0,0);		
-		PChooseService = new JPanel();
-		add(PChooseService,c);
-		PChooseService.setLayout(new GridBagLayout());
-		
-		/*c.gridx = 0;
-		c.gridy = 2;
-		c.insets = new Insets(0,0,0,0);		
-		PReady = new JPanel();
-		add(PReady,c);
-		PReady.setLayout(new GridBagLayout());*/
-		
-		//PChooseUddi-Panel
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.WEST;
-		c.weightx = 1;
-		c.weighty = 1;
-		
-		c.gridx = 0;
-		c.gridy = 0;
-		c.gridwidth = 1;
-		c.insets = new Insets(0,5,0,0);
+				
 		LuddiServer = new JLabel("UDDI-Server:");
-		PChooseUddi.add(LuddiServer, c);
+		LuddiServer.setBounds(15,15,75,20);
+		add(LuddiServer);
 		
-		c.gridx = 1;
-		c.gridy = 0;
-		c.gridwidth = 1;
-		c.insets = new Insets(0,5,0,0);
 		CBuddiServer = new JComboBox();
+		CBuddiServer.setBounds(100,15,105,20);
 		CBuddiServer.addItem("SAP");
 		CBuddiServer.addItem("Microsoft");
-		PChooseUddi.add(CBuddiServer, c);
+		add(CBuddiServer);
 		
-		c.gridx = 2;
-		c.gridy = 0;
-		c.gridwidth = 1;
-		c.insets = new Insets(0,5,0,0);
 		BcreateUddi = new JButton();
+		BcreateUddi.setBounds(215,15,80,20);
 		BcreateUddi.setText("Create");
-		PChooseUddi.add(BcreateUddi,c);
-				
+		add(BcreateUddi);
+		
+		//Business-Panel
+		LBusiness = new JLabel("Business:");
+		LBusiness.setBounds(15,80,85,20);
+		add(LBusiness);
+		
+		TFBusiness = new JTextField();
+		TFBusiness.setText("s%");
+		TFBusiness.setBounds(100,80,105,20);
+		add(TFBusiness);
+		
+		BBusiness = new JButton();
+		BBusiness.setBounds(215,80,80,20);
+		BBusiness.setText("Find");
+		add(BBusiness);
+		
 		
 		//PChooseService-Panel
-		c.gridx = 0;
-		c.gridy = 1;
-		c.gridwidth = 1;
-		c.insets = new Insets(0,5,0,0);
 		LfindBusiness = new JLabel("find Business:");
-		PChooseService.add(LfindBusiness,c);
+		LfindBusiness.setBounds(15,120,85,20);
+		add(LfindBusiness);
 		
-		c.gridx = 2;
-		c.gridy = 1;
-		c.gridwidth = 1;
-		c.insets = new Insets(0,5,0,0);
 		LfindService = new JLabel("find Service:");
-		PChooseService.add(LfindService,c);
+		LfindService.setBounds(215,120,85,20);
+		add(LfindService);
 		
-		c.gridx = 0;
-		c.gridy = 2;
-		c.gridheight = 4;
-		c.gridwidth = 1;
-		c.insets = new Insets(5,5,0,0);
 		LIfindBusiness = new JList(org.woped.bpel.uddi.UDDI.find_business(uddiUrl, businessName));
 		SPfindBusiness = new JScrollPane(LIfindBusiness);
-		PChooseService.add(SPfindBusiness,c);
+		SPfindBusiness.setBounds(15,145,170,190);
+		add(SPfindBusiness);
 		
-		c.gridx = 1;
-		c.gridy = 3;
-		c.gridwidth = 1;
-		c.anchor = GridBagConstraints.CENTER;
-		c.insets = new Insets(5,5,0,0);
 		Larc = new JLabel(">>");
-		PChooseService.add(Larc,c);
+		Larc.setBounds(194,232,20,20);
+		add(Larc);
 		
-		c.gridx = 2;
-		c.gridy = 2;
-		c.gridheight = 4;
-		c.gridwidth = 1;
-		c.insets = new Insets(5,5,0,0);
-		LIfindService = new JList(org.woped.bpel.uddi.UDDI.find_business(uddiUrl, businessName));
+		String[] list = {"-none-"};
+		LIfindService = new JList(list);
 		SPfindService = new JScrollPane(LIfindService);
-		PChooseService.add(SPfindService,c);
+		SPfindService.setBounds(215,145,170,190);
+		add(SPfindService);
 		
-		/*//PReady-Panel
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.WEST;
+		
+		//PReady-Panel
+		
+		Bok = new JButton();
+		Bok.setBounds(115,370,80,25);
+		Bok.setText("OK");
+		add(Bok);
+		
+		Bcancel = new JButton();
+		Bcancel.setBounds(205,370,80,25);
+		Bcancel.setText("Cancel");
+		add(Bcancel);
+		
+		//implements Listener
+		BBusiness.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				String busname = TFBusiness.getText();
+				if(busname.equals("") || busname == null)
+				{
+					showErrorPopup("ERROR", "Unallowed value inserted");
+				}
+				else
+				{
+					String[] buslist = org.woped.bpel.uddi.UDDI.find_business(uddiUrl, busname);
+					if(buslist.length > 0)
+					{
+						DefaultListModel model = new DefaultListModel();
+					    for (int i=0; i<buslist.length; i++) {
+					        model.add(i, buslist[i]);
+					    }
+						LIfindBusiness.setModel(model);
+						DefaultListModel model2 = new DefaultListModel();
+						model2.add(0, "-none-");
+						LIfindService.setModel(model2);
+					}
+				}
+			}		
+		});
+		
+		
+		LIfindBusiness.addListSelectionListener(new ListSelectionListener()
+		{
+			String chosen = "";
+			String business = "none";
+			
+			public void valueChanged(ListSelectionEvent e)
+			{
+				business = (String) LIfindBusiness.getSelectedValue();
+				if (!LIfindBusiness.isSelectionEmpty() && !chosen.equalsIgnoreCase(business))
+				{
+					chosen = business;
+					//System.out.println(business);
+					String[] blist = org.woped.bpel.uddi.UDDI.find_services(org.woped.bpel.uddi.UDDI.getBusinessInfoFromName(uddiUrl, business));
+					if(blist.length > 0)
+					{
+						DefaultListModel model = new DefaultListModel();
+					    for (int i=0; i<blist.length; i++) {
+					        model.add(i, blist[i]);
+					    }
+						LIfindService.setModel(model);
+					}
+					else
+					{
+						DefaultListModel model = new DefaultListModel();
+						model.add(0, "-none-");
+						LIfindService.setModel(model);
+					}
+				}
+			}	
+		});
+		setVisible(true);
+	}
+	
+	protected void showErrorPopup(String title, String message) {
+		errorPopup = new JDialog(this, true);
+		errorPopup.setVisible(false);
+		errorPopup.setTitle(title);
+		errorPopup.setSize(300, 140);
+		errorPopup.setLocation(this.getLocation().x + 90, this
+				.getLocation().y + 50);
+		errorPopup.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+
+		c.fill = GridBagConstraints.CENTER;
 		c.weightx = 1;
 		c.weighty = 1;
-		
+
 		c.gridx = 0;
-		c.insets = new Insets(0,0,0,0);
-		Bok = new JButton("OK");
-		PChooseUddi.add(Bok, c);
-		
+		c.gridy = 0;
+		c.gridwidth = 1;
+		c.insets = new Insets(10, 10, 0, 10);
+		errorPopup.add(new JLabel(message), c);
+
 		c.gridx = 0;
-		c.insets = new Insets(0,0,0,0);
-		Bcancel = new JButton("Cancel");
-		PChooseUddi.add(Bcancel, c);*/
-		
-		setVisible(true);
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.insets = new Insets(0, 5, 0, 0);
+		c.fill = GridBagConstraints.CENTER;
+
+		JButton okButton = new JButton(Messages
+				.getString("Transition.Properties.BPEL.Buttons.OK"));
+		okButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				errorPopup.dispose();
+			}
+
+		});
+
+		errorPopup.add(okButton, c);
+		errorPopup.setVisible(true);
 	}
 }
