@@ -18,9 +18,10 @@ import java.awt.event.*;
 public class UDDIDialog extends JDialog
 {
 	String uddiUrl = "http://udditest.sap.com/uddi/api/inquiry/";
-	String businessName = "s%";
+	String businessName = "a%";
 	
 	JDialog errorPopup 			= null;
+	JTextField wsdlTextField	= null;
 	
 	JLabel	LuddiServer			= null;
 	JComboBox CBuddiServer		= null;
@@ -41,9 +42,10 @@ public class UDDIDialog extends JDialog
 	JButton	Bok					= null;
 	JButton Bcancel				= null;
 	
-	public UDDIDialog(TransitionPropertyEditor t_editor)
+	public UDDIDialog(TransitionPropertyEditor t_editor, JTextField wsdlTextField)
 	{		
 		super(t_editor, true);
+		this.wsdlTextField = wsdlTextField;
 		
 		setTitle("UDDI");
 		setLayout(null);
@@ -72,7 +74,7 @@ public class UDDIDialog extends JDialog
 		add(LBusiness);
 		
 		TFBusiness = new JTextField();
-		TFBusiness.setText("s%");
+		TFBusiness.setText("a%");
 		TFBusiness.setBounds(100,80,105,20);
 		add(TFBusiness);
 		
@@ -120,6 +122,23 @@ public class UDDIDialog extends JDialog
 		add(Bcancel);
 		
 		//implements Listener
+		
+		Bok.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				//get WSDL-URL for service
+				//this.wsdlTextField.setText("http://www.esther-landes.de/wsdlFile/example.wsdl");
+			}
+		});
+		
+		Bcancel.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				//close window
+			}
+		});
 		BBusiness.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -132,8 +151,16 @@ public class UDDIDialog extends JDialog
 				else
 				{
 					String[] buslist = org.woped.bpel.uddi.UDDI.find_business(uddiUrl, busname);
-					if(buslist.length > 0)
+					if(buslist == null || buslist.length == 0)
 					{
+						showErrorPopup("ERROR", "No result");
+					}
+					else
+					{
+						if(buslist.length >= 40)
+						{
+							showErrorPopup("Warning", "Only 40 businesses will be shown");
+						}
 						DefaultListModel model = new DefaultListModel();
 					    for (int i=0; i<buslist.length; i++) {
 					        model.add(i, buslist[i]);
