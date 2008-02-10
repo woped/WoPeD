@@ -36,8 +36,10 @@ public class UDDIDialog extends JDialog
 	JButton	Bok					= null;
 	JButton Bcancel				= null;
 	
-	public UDDIDialog()
+	public UDDIDialog(TransitionPropertyEditor t_editor)
 	{
+		super(t_editor, true);
+		
 		setTitle("UDDI");
 		setSize(600,300);
 		setLocation(300,200);
