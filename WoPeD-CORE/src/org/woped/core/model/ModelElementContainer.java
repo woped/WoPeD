@@ -38,6 +38,8 @@ import org.woped.core.Constants;
 import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.BpelVariableList;
 import org.woped.core.model.bpel.PartnerlinkList;
+import org.woped.core.model.bpel.UddiVariable;
+import org.woped.core.model.bpel.UddiVariableList;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.utilities.LoggerManager;
 
@@ -81,6 +83,7 @@ public class ModelElementContainer implements Serializable {
 
 	private BpelVariableList variablesList = new BpelVariableList();
 	private PartnerlinkList partnerLinkList = new PartnerlinkList();
+	private UddiVariableList uddiVariableList = new UddiVariableList();
 
 	public void setOwningElement(AbstractElementModel element) {
 		owningElement = element;
@@ -687,6 +690,34 @@ public class ModelElementContainer implements Serializable {
 	public HashSet<BpelVariable> getBpelVariableList()
 	{
 		return this.variablesList.getBpelVariableList();
+	}
+	
+	/**
+	 *@Param: Name, URL
+	 *
+	 */
+	
+	public void addUddiVariable(String name, String url)
+	{
+		this.uddiVariableList.addVariable(name,url);
+	}
+	
+	/**
+	 *
+	 * @return
+	 */
+	public String[] getUddiVariableNameList()
+	{
+		return this.uddiVariableList.getVariableNameArray();
+	}
+	
+	/**
+	 * @param: Name
+	 * @return
+	 */
+	public UddiVariable findUddiVariableByName(String name)
+	{
+		return this.uddiVariableList.findUddiVariableByName(name);
 	}
 
 }
