@@ -40,8 +40,9 @@ public class UDDI
 	         int max = 20;
 	         Name name = new Name(businessName);
 	         FindQualifiers findQualifiers = new FindQualifiers();
-	         findQualifiers.add(FindQualifier.sortByNameDesc);
-
+	         //findQualifiers.add(FindQualifier.sortByNameDesc);
+	         findQualifiers.add(FindQualifier.sortByNameAsc);
+	         
 	         // the following is required for UDDI V3 and will be ignored if another UDDI version is used
 	         findQualifiers.add(FindQualifier.approximateMatch);
 
