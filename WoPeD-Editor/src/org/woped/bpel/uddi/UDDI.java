@@ -10,8 +10,8 @@ import inspireit.uddi.response.base.*;
 /**
  * @author Alexander Roﬂwog
  *
- * This is the basic utility-class to connect a choosable UDDI-server.
- * It contains methods to find businesses and their arcording offered services.
+ * This is the basic utility-class to connect a UDDI-server.
+ * It contains methods to find businesses and their according offered services.
  *
  * Created on 10.02.2008
  */
