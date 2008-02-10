@@ -427,7 +427,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 			{
 				public void actionPerformed(ActionEvent e) 
 				{
-					new UDDIDialog();
+					new UDDIDialog(t_editor);
 				}
 			});
 		}
