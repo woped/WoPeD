@@ -46,7 +46,6 @@ import org.woped.translations.Messages;
  * methods and data that is used in the activity panels' dialogs.
  *
  * Created on 16.01.2008
- * Edited by Alexander Roﬂwog on 10.02.2008: UDDI inserted
  */
 
 @SuppressWarnings("serial")
@@ -230,6 +229,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 
 		dialog.setVisible(true);
 	}
+	
+	
 
 	// ************** display dialog box "New Variable" ************************
 
@@ -426,7 +427,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 			{
 				public void actionPerformed(ActionEvent e) 
 				{
-					//open new UDDI-Window
+					new UDDIDialog();
 				}
 			});
 		}
