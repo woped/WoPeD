@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.woped.core.model.ModelElementContainer;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
 
@@ -20,29 +21,30 @@ public class UDDIDialog extends JDialog
 	String uddiUrl = "http://udditest.sap.com/uddi/api/inquiry/";
 	String businessName = "a%";
 	
-	JDialog errorPopup 			= null;
-	JTextField wsdlTextField	= null;
+	JDialog errorPopup 							= null;
+	ModelElementContainer modelElementContainer = null;
+	JTextField wsdlTextField					= null;
 	
-	JLabel	LuddiServer			= null;
-	JComboBox CBuddiServer		= null;
-	JButton BcreateUddi			= null;
+	JLabel	LuddiServer							= null;
+	JComboBox CBuddiServer						= null;
+	JButton BcreateUddi							= null;
 	
-	JLabel LBusiness			= null;
-	JTextField TFBusiness		= null;
-	JButton	BBusiness			= null;
+	JLabel LBusiness							= null;
+	JTextField TFBusiness						= null;
+	JButton	BBusiness							= null;
 	
-	JLabel LfindBusiness		= null;
-	JLabel LfindService			= null;
-	JList LIfindBusiness		= null;
-	JScrollPane SPfindBusiness	= null;
-	JList LIfindService			= null;
-	JScrollPane SPfindService	= null;
-	JLabel Larc					= null;
+	JLabel LfindBusiness						= null;
+	JLabel LfindService							= null;
+	JList LIfindBusiness						= null;
+	JScrollPane SPfindBusiness					= null;
+	JList LIfindService							= null;
+	JScrollPane SPfindService					= null;
+	JLabel Larc									= null;
 	
-	JButton	Bok					= null;
-	JButton Bcancel				= null;
+	JButton	Bok									= null;
+	JButton Bcancel								= null;
 	
-	public UDDIDialog(TransitionPropertyEditor t_editor, JTextField wsdlTextField)
+	public UDDIDialog(TransitionPropertyEditor t_editor, JTextField wsdlTextField, ModelElementContainer modelElementContainer)
 	{		
 		super(t_editor, true);
 		this.wsdlTextField = wsdlTextField;
@@ -59,8 +61,13 @@ public class UDDIDialog extends JDialog
 		
 		CBuddiServer = new JComboBox();
 		CBuddiServer.setBounds(100,15,105,20);
-		CBuddiServer.addItem("SAP");
-		CBuddiServer.addItem("Microsoft");
+		
+		String[] uddibuslist = modelElementContainer.getUddiVariableNameList();
+		CBuddiServer.removeAllItems();
+		for(int i=0; i<uddibuslist.length; i++)
+		{
+			CBuddiServer.addItem(uddibuslist[i]);
+		}
 		add(CBuddiServer);
 		
 		BcreateUddi = new JButton();
@@ -122,6 +129,14 @@ public class UDDIDialog extends JDialog
 		add(Bcancel);
 		
 		//implements Listener
+		
+		BcreateUddi.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				//new NewUddiVariableDialog();
+			}
+		});
 		
 		Bok.addActionListener(new ActionListener()
 		{
