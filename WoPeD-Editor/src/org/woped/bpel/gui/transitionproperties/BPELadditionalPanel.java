@@ -40,12 +40,13 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
 
 /**
- * @author Esther Landes / Kristian Kindler
+ * @author Esther Landes / Kristian Kindler / Alexander Roﬂwog
  *
  * This is the basic class for the different BPEL activity panels. It contains
  * methods and data that is used in the activity panels' dialogs.
  *
  * Created on 16.01.2008
+ * Edited by Alexander Roﬂwog on 10.02.2008: UDDI inserted
  */
 
 @SuppressWarnings("serial")
@@ -64,7 +65,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 	JTextField partnerLinkNameTextField = null;
 	JTextField wsdlFileTextField 		= null;
 	JTextField VariableName				= null;
-	JButton searchLocalWSDLButton 		= null;
+	
 	JComboBox partnerLinkTypeComboBox 	= null;
 	JComboBox partnerRoleComboBox 		= null;
 	JComboBox myRoleComboBox 			= null;
@@ -72,6 +73,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 	JButton cancelPartnerButton 		= null;
 	JButton okVariableButton 			= null;
 	JButton cancelVariableButton 		= null;
+	JButton searchLocalWSDLButton 		= null;
+	JButton searchByUDDIButton			= null;
 
 	BPELinvokePanel bpelInvokePanel   	= null;
 	BPELreceivePanel bpelReceivePanel 	= null;
@@ -173,6 +176,13 @@ public abstract class BPELadditionalPanel extends JPanel {
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
 		dialog.add(getLocalWSDLButton(), c);
+		
+		c.gridx = 3;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.insets = new Insets(0, 5, 0, 0);
+		c.fill = GridBagConstraints.NONE;
+		dialog.add(getUDDIButton(),c);
 
 		c.gridx = 0;
 		c.gridy = 2;
@@ -404,6 +414,23 @@ public abstract class BPELadditionalPanel extends JPanel {
 			});
 		}
 		return searchLocalWSDLButton;
+	}
+	
+	private JButton getUDDIButton()
+	{
+		if (searchByUDDIButton == null) 
+		{
+			searchByUDDIButton = new JButton();
+			searchByUDDIButton.setText("UDDI");
+			searchByUDDIButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent e) 
+				{
+					//open new UDDI-Window
+				}
+			});
+		}
+		return searchByUDDIButton;
 	}
 
 	private JComboBox getPartnerLinkTypeComboBox() {
