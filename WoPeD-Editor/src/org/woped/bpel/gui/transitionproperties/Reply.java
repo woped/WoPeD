@@ -4,7 +4,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 
 /**
  * 
- * @author Frank Schüler
+ * @author Frank Schüler, Alexander Roßwog
  * 
  */
 public class Reply extends BaseActivity<TReply> {
