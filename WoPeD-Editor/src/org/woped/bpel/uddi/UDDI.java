@@ -36,8 +36,8 @@ public class UDDI
 		UDDIQuerier querier = UDDIQuerier.getQuerier(profile);
 
 		try {
-	         // find max. 20 businesses starting with "BusinessName", sorted by name descending
-	         int max = 20;
+	         // find max. 40 businesses starting with "BusinessName", sorted by name descending
+	         int max = 40;
 	         Name name = new Name(businessName);
 	         FindQualifiers findQualifiers = new FindQualifiers();
 	         //findQualifiers.add(FindQualifier.sortByNameDesc);
