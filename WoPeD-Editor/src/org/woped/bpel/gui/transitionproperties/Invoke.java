@@ -2,10 +2,16 @@ package org.woped.bpel.gui.transitionproperties;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
 
+/*
+ * 
+ * @author Alexander Roﬂwog
+ * 
+ * */
+
 public class Invoke extends BaseActivity<TInvoke> {
 
 	/**
-	 * @author Alexander Roﬂwog
+	 * 
 	 * @param Name
 	 */
 	public Invoke(String Name) {
