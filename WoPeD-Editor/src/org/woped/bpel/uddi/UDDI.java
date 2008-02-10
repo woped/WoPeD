@@ -7,6 +7,15 @@ import inspireit.uddi.request.base.*;
 import inspireit.uddi.response.*;
 import inspireit.uddi.response.base.*;
 
+/**
+ * @author Alexander Roﬂwog
+ *
+ * This is the basic utility-class to connect a choosable UDDI-server.
+ * It contains methods to find businesses and their arcording offered services.
+ *
+ * Created on 10.02.2008
+ */
+
 public class UDDI 
 {
 	public static String[] find_business(String uddiUrl, String businessName)
