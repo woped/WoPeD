@@ -5,7 +5,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
 public class Invoke extends BaseActivity<TInvoke> {
 
 	/**
-	 * 
+	 * @author Alexander Roﬂwog
 	 * @param Name
 	 */
 	public Invoke(String Name) {

@@ -5,7 +5,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 
 /**
  * 
- * @author Frank Schüler
+ * @author Frank Schüler, Alexander Roßwog
  *
  * @param <E>
  */
