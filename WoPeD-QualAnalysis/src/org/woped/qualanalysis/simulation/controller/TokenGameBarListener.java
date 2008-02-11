@@ -359,6 +359,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 				RemoteControl.clearHistoryData();
 			}
 		}
+		RemoteControl.getTokenGameController().getThisEditor().setTokenGameEnabled(true);
 	}
 
 	private void stopAction()
@@ -372,6 +373,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		RemoteControl.clearChoiceBox();
 		RemoteControl.setStepIn(false);
 		RemoteControl.getSlimView().getSlimPanel().setChoiceListInvisible();
+		RemoteControl.getTokenGameController().getThisEditor().setTokenGameEnabled(false);
 	}
 
 	

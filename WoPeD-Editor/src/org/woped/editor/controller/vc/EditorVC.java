@@ -184,6 +184,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	private boolean m_drawingMode = false;
 	
 	private boolean m_reachGraphEnabled = false;
+	
+	private boolean m_TokenGameEnabled = false;
 
 	private boolean m_tokenGameMode = false;
 
@@ -1910,6 +1912,16 @@ public class EditorVC extends JPanel implements KeyListener,
 	public boolean isTokenGameMode()
 	{
 		return m_tokenGameMode;
+	}
+	
+	public void setTokenGameEnabled(boolean state)
+	{
+		m_TokenGameEnabled = state;
+	}
+	
+	public boolean isTokenGameEnabled()
+	{
+		return m_TokenGameEnabled;
 	}
 
 	/**

@@ -122,6 +122,17 @@ public interface IEditor extends IViewController
      * @return drawing mode
      */
     public void setReachabilityEnabled(boolean flag);
+    
+    /**
+     * Sets if the TokenGame for this editor is playing
+     */
+    public void setTokenGameEnabled(boolean state);
+    
+    /**
+     * Get TokenGameEnabled for this editor if TokenGame is stoped
+     * @return m_tokenGameEnabled
+     */
+    public boolean isTokenGameEnabled();
 
     /**
      * Returns the type of the element, which will be created in drawing mode.
