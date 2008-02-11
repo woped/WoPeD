@@ -24,22 +24,11 @@ public class ImageExport {
 	private final static int 	MAX_WIDTH			= 2100;
 	private final static int	MAX_HEIGHT			= 2100;
 
-    public static RenderedImage getRenderedImage(ReachabilityGraphPanel editor, boolean bw) {
+    public static RenderedImage getRenderedImage(ReachabilityGraphPanel editor) {
 	JGraph graph = editor.getGraph();
         graph.clearSelection();
         Object[] cells = graph.getRoots();
         BufferedImage image = null;
-        boolean blackandwhite = bw;
-        int color;
-        
-        if(bw)
-        {
-        	color = BufferedImage.TYPE_BYTE_GRAY;
-        }
-        else
-        {
-        	color = BufferedImage.TYPE_INT_RGB;
-        }
         
         if (cells.length > 0) {
             Rectangle2D rectangle = graph.getCellBounds(cells);
@@ -51,7 +40,7 @@ public class ImageExport {
             // Check Dimension, if max size reached, let user know about this and resize graph
             if(dimension.width < MAX_WIDTH && dimension.height < MAX_HEIGHT)
             {
-            	image = new BufferedImage(dimension.width, dimension.height, color);
+            	image = new BufferedImage(dimension.width, dimension.height, BufferedImage.TYPE_INT_RGB);
             	Graphics2D graphics = image.createGraphics();
                 graphics.translate(-rectangle.getX(), -rectangle.getY());
                 graph.paint(graphics);
@@ -71,7 +60,7 @@ public class ImageExport {
                 double pageHeight = MAX_HEIGHT;
                 double xScaleFactor = pageWidth / g2dWidth;
                 double yScaleFactor = pageHeight / g2dHeight;
-            	image = new BufferedImage(MAX_WIDTH, MAX_HEIGHT, color);
+            	image = new BufferedImage(MAX_WIDTH, MAX_HEIGHT, BufferedImage.TYPE_INT_RGB);
                 Graphics2D graphics = image.createGraphics();
                 graphics.translate(-rectangle.getX(), -rectangle.getY());
                 graphics.scale(xScaleFactor, yScaleFactor);
