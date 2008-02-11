@@ -134,9 +134,9 @@ public class ReachabilityLayoutHierarchic {
 			if(!childPlace.isSetRecursiveBounds()){
 				int puffer = 0;
 				if(edgeCount > 0){
-					puffer = 50;
+					puffer = horizontalSpace;
 				}
-				GraphConstants.setBounds(childPlace.getAttributes(), new Rectangle2D.Double(horizontalSpace + bounds.getX() + ((puffer + bounds.getWidth()) * edgeCount++), bounds.getY() + bounds.getHeight() + verticalSpace, bounds.getWidth(), bounds.getHeight()));
+				GraphConstants.setBounds(childPlace.getAttributes(), new Rectangle2D.Double(25 + bounds.getX() + ((puffer + bounds.getWidth()) * edgeCount++), bounds.getY() + bounds.getHeight() + verticalSpace, bounds.getWidth(), bounds.getHeight()));
 				childPlace.setIsSetRecursiveBounds(true);
 				places.add(childPlace);
 				childs.add(childPlace);

@@ -3,6 +3,7 @@ package org.woped.qualanalysis.reachabilitygraph.gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -54,10 +56,13 @@ public class ReachabilityGraphPanel extends JPanel {
 	
 	// Labels
 	private JLabel bottomInfo = null;
-	private JLabel legendInfo = null;
+	private JButton legendInfo = null;
 	private JButton refreshButton = null;
 	private JButton settingsButton = null;
 	private JComboBox layout = null;
+	
+	// Helper
+	private boolean legendByName = false;
 	
 	public ReachabilityGraphPanel(IEditor editor) {
 		super();
@@ -94,8 +99,10 @@ public class ReachabilityGraphPanel extends JPanel {
         northPanel.add(export);
         this.add(BorderLayout.NORTH, northPanel);
         // SOUTH Components
-        legendInfo = new JLabel();
+        legendInfo = new JButton();			
+        legendInfo.setBorder(BorderFactory.createEmptyBorder());
         legendInfo.setText(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
+        legendInfo.addActionListener(new LegendListener(this));
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 20, 0));
         this.add(BorderLayout.SOUTH, southPanel);
@@ -156,6 +163,14 @@ public class ReachabilityGraphPanel extends JPanel {
 		legendInfo.setText(this.getLegend());
 	}
 	
+	protected void setLegendByName(boolean legend){
+		this.legendByName = legend;
+	}
+	
+	protected boolean getLegendByName(){
+		return this.legendByName;
+	}
+	
 	private String getLegend(){
 		if(((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint().equals(this.logicalFingerprint)){
 			Object[] roots = this.rgp_jgraph.getRoots();
@@ -166,7 +181,11 @@ public class ReachabilityGraphPanel extends JPanel {
 					LinkedList<PlaceModel> placeModels = marking.getKeySet();
 					String legend = "";
 					for(int placeCounter = 0; placeCounter < placeModels.size(); placeCounter++){
-						legend += placeModels.get(placeCounter).getId() + ",";
+						if(legendByName){
+							legend += placeModels.get(placeCounter).getNameValue() + ",";
+						} else {
+							legend += placeModels.get(placeCounter).getId() + ",";	
+						}
 					}
 					legend = legend.substring(0, legend.length()-1);
 					return this.legend = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legend + ")";
@@ -306,6 +325,24 @@ public class ReachabilityGraphPanel extends JPanel {
 		}
 	}
 
+	class LegendListener implements ActionListener{
+		
+		ReachabilityGraphPanel rgp = null;
+		
+		public LegendListener(ReachabilityGraphPanel rgp){
+			this.rgp = rgp;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			if(rgp.getLegendByName()){
+				rgp.setLegendByName(false);	
+			} else {
+				rgp.setLegendByName(true);
+			}
+			rgp.updateVisibility();
+		}	
+	}
+	
 	class LayoutBoxItemListener implements ItemListener {
 
 		ReachabilityGraphPanel rgp = null;

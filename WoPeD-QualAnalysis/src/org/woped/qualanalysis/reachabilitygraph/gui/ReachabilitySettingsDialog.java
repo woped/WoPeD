@@ -76,7 +76,7 @@ public class ReachabilitySettingsDialog extends JDialog {
 	}
 	
 	private void initComponents(){
-		graphVisual = new JLabel(Messages.getString("QuanlAna.ReachabilityGraph.Settings.GraphSection"));
+		graphVisual = new JLabel("<html><b>" + Messages.getString("QuanlAna.ReachabilityGraph.Settings.GraphSection") + "</b></html>");
 		// Rect: (links->rechts,oben->unten,breite,hšhe)
 		graphVisual.setBounds(new Rectangle(20, 15, 220, 16));
 		
@@ -109,7 +109,7 @@ public class ReachabilitySettingsDialog extends JDialog {
 		placeWidthTf.setText(Integer.toString(getPlaceWidth()));
 		placeWidthTf.setBounds(new Rectangle(170,129,50,28));
 		
-		hierarchicLabel = new JLabel(Messages.getString("QuanlAna.ReachabilityGraph.Settings.HierarchicSection"));
+		hierarchicLabel = new JLabel("<html><b>" + Messages.getString("QuanlAna.ReachabilityGraph.Settings.HierarchicSection") + "</b></html>");
 		hierarchicLabel.setBounds(new Rectangle(20,169,220,16));
 		
 		hierarchicSpaceHorizontalLabel = new JLabel(Messages.getString("QuanlAna.ReachabilityGraph.Settings.Hierarchic.Horizontal"));
@@ -296,27 +296,40 @@ public class ReachabilitySettingsDialog extends JDialog {
 		}
 		
 		public void actionPerformed(ActionEvent e) {
+			int haveToDoLayout = 0;
 			
 			if(integerValueChecker(ReachabilitySettingsDialog.this.hierarchicSpaceHorizontalTf.getText())){
-				setHierarchicSpacingHorizontal(Integer.parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceHorizontalTf.getText()));	
+				if(getHierarchicSpacingHorizontal() != Integer.parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceHorizontalTf.getText())){
+					setHierarchicSpacingHorizontal(Integer.parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceHorizontalTf.getText()));
+					haveToDoLayout++;
+				}	
 			} else {
 				// do default
 			}
 			
 			if(integerValueChecker(ReachabilitySettingsDialog.this.hierarchicSpaceVerticalTf.getText())){
-				setHierarchicSpacingVertical(Integer.parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceVerticalTf.getText()));	
+				if(getHierarchicSpacingVertical() != Integer.parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceVerticalTf.getText())){
+					setHierarchicSpacingVertical(Integer.parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceVerticalTf.getText()));
+					haveToDoLayout++;
+				}	
 			} else {
 				// do default
 			}
 			
 			if(integerValueChecker(ReachabilitySettingsDialog.this.placeWidthTf.getText())){
-				setPlaceWidth(Integer.parseInt(ReachabilitySettingsDialog.this.placeWidthTf.getText()));	
+				if(getPlaceWidth() != Integer.parseInt(ReachabilitySettingsDialog.this.placeWidthTf.getText())){
+					setPlaceWidth(Integer.parseInt(ReachabilitySettingsDialog.this.placeWidthTf.getText()));
+					haveToDoLayout++;
+				}	
 			} else {
 				// do default
 			}
 			
 			if(integerValueChecker(ReachabilitySettingsDialog.this.placeHeightTf.getText())){
-				setPlaceHeight(Integer.parseInt(ReachabilitySettingsDialog.this.placeHeightTf.getText()));	
+				if(getPlaceHeight() != Integer.parseInt(ReachabilitySettingsDialog.this.placeHeightTf.getText())){
+					setPlaceHeight(Integer.parseInt(ReachabilitySettingsDialog.this.placeHeightTf.getText()));
+					haveToDoLayout++;
+				}	
 			} else {
 				// do default
 			}
@@ -330,7 +343,11 @@ public class ReachabilitySettingsDialog extends JDialog {
 				setColor(ReachabilitySettingsDialog.this.colorGraphRb.isSelected());
 				rgp.setGrayScale(!getColored());
 			}
-			rgp.layoutGraph(rgp.getSelectedType(), false);
+			
+			// This must be last call !
+			if(haveToDoLayout > 0){
+				rgp.layoutGraph(rgp.getSelectedType(), false);	
+			}
 			ReachabilitySettingsDialog.this.dispose();
 		}
 

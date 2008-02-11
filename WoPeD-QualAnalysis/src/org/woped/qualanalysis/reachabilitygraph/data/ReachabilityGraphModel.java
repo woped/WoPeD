@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 import org.jgraph.JGraph;
 import org.jgraph.graph.AttributeMap;
@@ -26,6 +25,7 @@ import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 
 public class ReachabilityGraphModel {
 
+	// Possible layouts
 	public static final int HIERARCHIC = 0;
 	public static final int CIRCLE = 1;
 	
@@ -153,14 +153,18 @@ public class ReachabilityGraphModel {
 		}
 		if(enabled){
 			ReachabilityPlaceModel initial = lookupInitialMarking(places);
-			edit.remove(initial);
-			GraphConstants.setBackground(initial.getAttributes(), Color.gray);
-			edit.put(initial, initial.getAttributes());
+			if(initial != null){
+				edit.remove(initial);
+				GraphConstants.setBackground(initial.getAttributes(), Color.gray);
+				edit.put(initial, initial.getAttributes());
+			}
 		} else {
 			ReachabilityPlaceModel initial = lookupInitialMarking(places);
-			edit.remove(initial);
-			GraphConstants.setBackground(initial.getAttributes(), Color.green);
-			edit.put(initial, initial.getAttributes());
+			if(initial != null){
+				edit.remove(initial);
+				GraphConstants.setBackground(initial.getAttributes(), Color.green);
+				edit.put(initial, initial.getAttributes());	
+			}
 		}
 		graph.getGraphLayoutCache().edit(edit,null,null,null);
 	}
