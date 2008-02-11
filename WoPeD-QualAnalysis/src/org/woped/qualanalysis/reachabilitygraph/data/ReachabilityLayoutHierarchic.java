@@ -1,5 +1,11 @@
-package org.woped.qualanalysis.reachabilitygraph.data;
+/**
+ * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger
+ * 
+ * This class was written by
+ * @author Benjamin Geiger
+ */
 
+package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
@@ -14,24 +20,34 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
+import org.woped.qualanalysis.ReachabilityArc;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 
 public class ReachabilityLayoutHierarchic {
 
 	private static Map<ReachabilityPlaceModel,AttributeMap> edit;
 	
-	public static JGraph layoutGraph(JGraph graph){
+	/**
+	 * takes a JGraph to layout it in a hierarchic way. 
+	 * (to be refactored to only take instances of ReachabilityJGraph)
+	 * @param graph
+	 * @return
+	 */
+	public static ReachabilityJGraph layoutGraph(ReachabilityJGraph graph){
 		edit = new HashMap<ReachabilityPlaceModel,AttributeMap>();
 		applyHierarchicLayout(graph);
 		graph.getGraphLayoutCache().edit(edit,null,null,null);
+		boolean colored = Boolean.parseBoolean(graph.getAttributeMap().get("reachabilityGraph.color"));
+		ReachabilityGraphModel.setGrayScale(graph, !colored);
 		return graph;
 	}
 	
 	/**
-	 * applies a hierarchich lay on a given graph.
+	 * applies a hierarchic layout on a given graph.
 	 * 
 	 * @param graph
 	 */
-	private static void applyHierarchicLayout(JGraph graph){
+	private static void applyHierarchicLayout(ReachabilityJGraph graph){
 		GraphModel model = graph.getModel();
 		LinkedList<ReachabilityPlaceModel> markings = new LinkedList<ReachabilityPlaceModel>();
 		for(int i = 0; i < model.getRootCount(); i++){
@@ -42,10 +58,26 @@ public class ReachabilityLayoutHierarchic {
 		}
 		ReachabilityPlaceModel initialPlace = ReachabilityGraphModel.lookupInitialMarking(markings);
 		if(initialPlace != null){
-			GraphConstants.setBackground(initialPlace.getAttributes(), Color.green);
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
 			LinkedList<ReachabilityPlaceModel> toProof = new LinkedList<ReachabilityPlaceModel>();
-			ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), toProof);
+			HashMap<String, String> graphAttributes = graph.getAttributeMap();
+			int verticalSpace = 150;
+			int horizontalSpace = 25;
+			if(graphAttributes.containsKey("reachabilityGraph.hierarchic.verticalSpace") && graphAttributes.containsKey("reachabilityGraph.hierarchic.horizontalSpace")){
+				verticalSpace = Integer.parseInt(graphAttributes.get("reachabilityGraph.hierarchic.verticalSpace"));
+				horizontalSpace = Integer.parseInt(graphAttributes.get("reachabilityGraph.hierarchic.horizontalSpace"));
+			}
+			int width = 0;
+			int height = 0;
+			if(graphAttributes.containsKey("reachabilityGraph.place.width") && graphAttributes.containsKey("reachabilityGraph.place.width")){
+				width = Integer.parseInt(graphAttributes.get("reachabilityGraph.place.width"));
+				height = Integer.parseInt(graphAttributes.get("reachabilityGraph.place.height"));
+			}
+			if(width != 0 && height != 0){
+				ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, width, height), horizontalSpace, verticalSpace, toProof);
+			} else {
+				ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), horizontalSpace, verticalSpace, toProof);	
+			}
 			LinkedList<ReachabilityPlaceModel> toEdit = (LinkedList<ReachabilityPlaceModel>)toProof.clone();
 			ReachabilityLayoutHierarchic.hierarcherProofer(toProof);
 			Iterator<ReachabilityPlaceModel> iter = toEdit.iterator();
@@ -57,44 +89,14 @@ public class ReachabilityLayoutHierarchic {
 	}
 	
 	/**
-	 * after the call of hierarcher it's possible that some markings are covered by each other.
-	 * The hierarcher proofer looks for that vertices and corrects their layout.
-	 * 
-	 * @param places
-	 */
-	private static void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places){
-		if(places.size() > 0){
-			ReachabilityPlaceModel first = places.removeFirst();
-			Iterator<ReachabilityPlaceModel> iter = places.iterator();
-			boolean changedOne = false;
-			while(iter.hasNext()){
-				ReachabilityPlaceModel actual = iter.next();
-				if(GraphConstants.getBounds(actual.getAttributes()).getX() == GraphConstants.getBounds(first.getAttributes()).getX() && 
-						GraphConstants.getBounds(actual.getAttributes()).getY() == GraphConstants.getBounds(first.getAttributes()).getY()){
-					Rectangle2D bounds = GraphConstants.getBounds(actual.getAttributes());
-					GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(bounds.getX() + 50 + bounds.getWidth(),bounds.getY(),bounds.getWidth(),bounds.getHeight()));
-					changedOne = true;
-				}
-			}
-			if(changedOne){
-				places.addFirst(first);
-				hierarcherProofer(places);
-			} else {
-				hierarcherProofer(places);
-			}
-		}
-	}
-	
-	
-	/**
-	 * is a recursive method for layout the graph in a hierarchic way.
+	 * is a recursive helper-method for layout the graph in a hierarchic way.
 	 *
 	 * @param place
 	 * @param bounds
 	 * @param places
 	 * @return
 	 */
-	private static LinkedList<ReachabilityPlaceModel> hierarcher(ReachabilityPlaceModel place, Rectangle2D bounds, LinkedList<ReachabilityPlaceModel> places){
+	private static LinkedList<ReachabilityPlaceModel> hierarcher(ReachabilityPlaceModel place, Rectangle2D bounds, int horizontalSpace, int verticalSpace ,LinkedList<ReachabilityPlaceModel> places){
 		// set bounds of given place and set it as drawn 
 		if(!place.isSetRecursiveBounds()){
 			GraphConstants.setBounds(place.getAttributes(), bounds);
@@ -134,7 +136,7 @@ public class ReachabilityLayoutHierarchic {
 				if(edgeCount > 0){
 					puffer = 50;
 				}
-				GraphConstants.setBounds(childPlace.getAttributes(), new Rectangle2D.Double(25 + bounds.getX() + ((puffer + bounds.getWidth()) * edgeCount++), bounds.getY() + bounds.getHeight() + 150, bounds.getWidth(), bounds.getHeight()));
+				GraphConstants.setBounds(childPlace.getAttributes(), new Rectangle2D.Double(horizontalSpace + bounds.getX() + ((puffer + bounds.getWidth()) * edgeCount++), bounds.getY() + bounds.getHeight() + verticalSpace, bounds.getWidth(), bounds.getHeight()));
 				childPlace.setIsSetRecursiveBounds(true);
 				places.add(childPlace);
 				childs.add(childPlace);
@@ -144,11 +146,48 @@ public class ReachabilityLayoutHierarchic {
      	while(iterChilds.hasNext()){
      		ReachabilityPlaceModel actualChild = iterChilds.next(); 
      		Rectangle2D childBound = GraphConstants.getBounds(actualChild.getAttributes());
-     		hierarcher(actualChild, childBound, places);
+     		hierarcher(actualChild, childBound, horizontalSpace, verticalSpace, places);
      	}
      	return places; 
 	}
 
+	/**
+	 * after the call of hierarcher it's possible that some markings are covered by each other.
+	 * The hierarcher proofer looks for that vertices and corrects their layout.
+	 * 
+	 * @param places
+	 */
+	private static void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places){
+		if(places.size() > 0){
+			ReachabilityPlaceModel first = places.removeFirst();
+			Iterator<ReachabilityPlaceModel> iter = places.iterator();
+			boolean changedOne = false;
+			while(iter.hasNext()){
+				ReachabilityPlaceModel actual = iter.next();
+				if(GraphConstants.getBounds(actual.getAttributes()).getX() == GraphConstants.getBounds(first.getAttributes()).getX() && 
+						GraphConstants.getBounds(actual.getAttributes()).getY() == GraphConstants.getBounds(first.getAttributes()).getY()){
+					Rectangle2D bounds = GraphConstants.getBounds(actual.getAttributes());
+					GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(bounds.getX() + 50 + bounds.getWidth(),bounds.getY(),bounds.getWidth(),bounds.getHeight()));
+					changedOne = true;
+				}
+			}
+			if(changedOne){
+				places.addFirst(first);
+				hierarcherProofer(places);
+			} else {
+				hierarcherProofer(places);
+			}
+		}
+	}
+	
+	/**
+	 * takes a edge and place, gets the port where the edge is connected and then
+	 * returns the other port of the edge
+	 * 
+	 * @param place
+	 * @param edge
+	 * @return
+	 */
 	private static ReachabilityPortModel getOtherPort(ReachabilityPlaceModel place, ReachabilityEdgeModel edge){
 		List ports = place.getChildren();
 		for(int portIndex = 0; portIndex < ports.size(); portIndex++){

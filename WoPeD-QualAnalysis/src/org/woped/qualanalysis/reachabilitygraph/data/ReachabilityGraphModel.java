@@ -1,5 +1,6 @@
 package org.woped.qualanalysis.reachabilitygraph.data;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.jgraph.JGraph;
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphConstants;
@@ -33,7 +35,7 @@ public class ReachabilityGraphModel {
 		this.editor = editor;
 	}
 	
-	public JGraph getGraph(){
+	public ReachabilityJGraph getGraph(){
 		GraphModel model = new DefaultGraphModel();
 		GraphLayoutCache view = new GraphLayoutCache(model,	new ReachabilityGraphViewFactory());
 		view.setAutoSizeOnValueChange(true);
@@ -67,7 +69,7 @@ public class ReachabilityGraphModel {
 		return graph;
 	}
 	
-	public static JGraph layoutGraph(JGraph graph, int type, Dimension dim){		
+	public static ReachabilityJGraph layoutGraph(ReachabilityJGraph graph, int type, Dimension dim){		
 		switch(type){
 			case HIERARCHIC:	return ReachabilityLayoutHierarchic.layoutGraph(graph);
 			case CIRCLE:		return ReachabilityGraphCircle.layoutGraph(graph, dim);
@@ -114,6 +116,53 @@ public class ReachabilityGraphModel {
 			}
 		}
 		return returnEdge;
+	}
+	
+	public static void setParallelRouting(ReachabilityJGraph graph, boolean enabled){
+		Object[] nodes =  graph.getRoots();
+		HashMap<ReachabilityEdgeModel, AttributeMap> edit = new HashMap<ReachabilityEdgeModel,AttributeMap>();
+		for(int i = 0; i < nodes.length; i++){
+			if(nodes[i] instanceof ReachabilityEdgeModel){
+				ReachabilityEdgeModel edge = (ReachabilityEdgeModel) nodes[i];
+				if(enabled){
+					GraphConstants.setRouting(edge.getAttributes(), ParallelRouter.getSharedInstance(graph.getGraphLayoutCache()));
+				} else {
+					GraphConstants.setRouting(edge.getAttributes(), GraphConstants.ROUTING_DEFAULT);	
+				}
+				edit.put(edge, edge.getAttributes());
+			}
+		}
+		graph.getGraphLayoutCache().edit(edit,null,null,null);
+	}
+	
+	public static void setGrayScale(ReachabilityJGraph graph, boolean enabled){
+		Object[] nodes =  graph.getRoots();
+		LinkedList<ReachabilityPlaceModel> places = new LinkedList<ReachabilityPlaceModel>();
+		HashMap<ReachabilityPlaceModel, AttributeMap> edit = new HashMap<ReachabilityPlaceModel,AttributeMap>();
+		for(int i = 0; i < nodes.length; i++){
+			if(nodes[i] instanceof ReachabilityPlaceModel){
+				ReachabilityPlaceModel place = (ReachabilityPlaceModel) nodes[i];
+				places.add(place);
+				if(enabled){
+					GraphConstants.setBackground(place.getAttributes(), Color.lightGray);
+				} else {
+					GraphConstants.setBackground(place.getAttributes(), Color.orange);	
+				}
+				edit.put(place, place.getAttributes());
+			}
+		}
+		if(enabled){
+			ReachabilityPlaceModel initial = lookupInitialMarking(places);
+			edit.remove(initial);
+			GraphConstants.setBackground(initial.getAttributes(), Color.gray);
+			edit.put(initial, initial.getAttributes());
+		} else {
+			ReachabilityPlaceModel initial = lookupInitialMarking(places);
+			edit.remove(initial);
+			GraphConstants.setBackground(initial.getAttributes(), Color.green);
+			edit.put(initial, initial.getAttributes());
+		}
+		graph.getGraphLayoutCache().edit(edit,null,null,null);
 	}
 	
 	public static ReachabilityPlaceModel lookupInitialMarking(LinkedList<ReachabilityPlaceModel> markings){

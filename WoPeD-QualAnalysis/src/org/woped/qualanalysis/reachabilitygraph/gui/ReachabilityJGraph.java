@@ -1,6 +1,7 @@
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.ToolTipManager;
@@ -14,9 +15,19 @@ import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
 public class ReachabilityJGraph extends JGraph {
 	
 	private static final long serialVersionUID = 5078494841225380858L;
+	
+	// AttributeMap of Graph
+	private HashMap<String, String> graphAttributes = null;
 
+	public ReachabilityJGraph(){
+		super();
+		initAttributeMap();
+		ToolTipManager.sharedInstance().registerComponent(this);
+	}
+	
 	public ReachabilityJGraph(GraphModel model, GraphLayoutCache view){
 		super(model, view);
+		initAttributeMap();
 		ToolTipManager.sharedInstance().registerComponent(this);
 	}
 	
@@ -43,4 +54,21 @@ public class ReachabilityJGraph extends JGraph {
 		return allCells;
 	}
 	
+	private void initAttributeMap(){
+		graphAttributes = new HashMap<String, String>();
+		graphAttributes.put("reachabilityGraph.place.width","80");
+		graphAttributes.put("reachabilityGraph.place.height","20");
+		graphAttributes.put("reachabilityGraph.color","true");
+		graphAttributes.put("reachabilityGraph.parallel","true");
+		graphAttributes.put("reachabilityGraph.hierarchic.verticalSpace","150");
+		graphAttributes.put("reachabilityGraph.hierarchic.horizontalSpace","25");
+	}
+	
+	public void setAttributeMap(HashMap<String, String> graphAttributes){
+		this.graphAttributes = graphAttributes;
+	}
+	
+	public HashMap<String, String> getAttributeMap(){
+		return graphAttributes;
+	}
 }

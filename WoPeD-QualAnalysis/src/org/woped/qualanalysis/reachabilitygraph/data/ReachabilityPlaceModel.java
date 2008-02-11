@@ -1,3 +1,10 @@
+/**
+ * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger
+ * 
+ * This class was written by
+ * @author Benjamin Geiger
+ */
+
 package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.awt.Color;

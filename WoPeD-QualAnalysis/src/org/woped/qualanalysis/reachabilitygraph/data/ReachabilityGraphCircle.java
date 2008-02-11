@@ -14,12 +14,13 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 
 public class ReachabilityGraphCircle {
 
 	private static Map<ReachabilityPlaceModel, AttributeMap> edit;
 	
-	public static JGraph layoutGraph(JGraph graph, Dimension dim){
+	public static ReachabilityJGraph layoutGraph(ReachabilityJGraph graph, Dimension dim){
 		edit = new HashMap<ReachabilityPlaceModel, AttributeMap>();
 		GraphModel model = graph.getModel();
 		LinkedList<Point> coordinates = CircleCoordinates.getCircleCoordinates(dim.width,dim.height,ReachabilityGraphModel.verticeCount(graph));
@@ -31,25 +32,37 @@ public class ReachabilityGraphCircle {
 			}
 		}
 		ReachabilityPlaceModel initialPlace = ReachabilityGraphModel.lookupInitialMarking(places);
+		HashMap<String, String> graphAttributes = graph.getAttributeMap();
 		if(initialPlace != null){
-			GraphConstants.setBackground(initialPlace.getAttributes(), Color.green);
+			int width = 0;
+			int height = 0;
+			if(graphAttributes.containsKey("reachabilityGraph.place.width") && graphAttributes.containsKey("reachabilityGraph.place.width")){
+				width = Integer.parseInt(graphAttributes.get("reachabilityGraph.place.width"));
+				height = Integer.parseInt(graphAttributes.get("reachabilityGraph.place.height"));
+			}
+			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
+			bounds = new Rectangle2D.Double(bounds.getX(),bounds.getY(),width,height);
+			GraphConstants.setBounds(initialPlace.getAttributes(), bounds);
 			setPlacesOnCircle(coordinates, places);
 		}
 		graph.getGraphLayoutCache().edit(edit);
+		boolean colored = Boolean.parseBoolean(graph.getAttributeMap().get("reachabilityGraph.color"));
+		ReachabilityGraphModel.setGrayScale(graph, !colored);
 		return graph;
 	}
 	
 	private static void setPlacesOnCircle(LinkedList<Point> coordinates, LinkedList<ReachabilityPlaceModel> places){
 		ReachabilityPlaceModel initial = ReachabilityGraphModel.lookupInitialMarking(places);
-		Point2D position = coordinates.removeFirst();
 		Rectangle2D bounds = GraphConstants.getBounds(initial.getAttributes());
-		GraphConstants.setBounds(initial.getAttributes(), new Rectangle2D.Double(position.getX(),position.getY(),bounds.getWidth(),bounds.getHeight()));
+		Point2D position = coordinates.removeFirst();
+		bounds = new Rectangle2D.Double(position.getX(),position.getY(), bounds.getWidth(), bounds.getHeight());
+		GraphConstants.setBounds(initial.getAttributes(), bounds);
 		edit.put(initial, initial.getAttributes());
 		places.remove(initial);
 		Iterator<ReachabilityPlaceModel> iterPlaces = places.iterator();
 		while(iterPlaces.hasNext()){
 			ReachabilityPlaceModel actual = iterPlaces.next();
-			bounds = GraphConstants.getBounds(actual.getAttributes());
+			bounds = GraphConstants.getBounds(initial.getAttributes());
 			position = coordinates.removeFirst();
 			GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(position.getX(),position.getY(),bounds.getWidth(),bounds.getHeight()));
 			edit.put(actual, actual.getAttributes());
