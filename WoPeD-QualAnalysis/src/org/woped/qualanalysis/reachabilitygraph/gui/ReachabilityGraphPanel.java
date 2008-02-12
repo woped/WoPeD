@@ -25,7 +25,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
@@ -36,6 +38,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.ImageExport;
+import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.qualanalysis.reachabilitygraph.data.Marking;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
@@ -53,17 +56,19 @@ public class ReachabilityGraphPanel extends JPanel {
 	// jGraph related
 	private ReachabilityJGraph rgp_jgraph = null; // the jGraph
 	private String logicalFingerprint = null; // PetrinetIdentifier
-	private String legend = null; 
+	private String legendById = null; 
+	private String legendByName = null;
 	
 	// Labels
 	private JLabel bottomInfo = null;
+	private JLabel outOfSyncInfo = null;
 	private JButton legendInfo = null;
 	private JButton refreshButton = null;
 	private JButton settingsButton = null;
 	private JComboBox layout = null;
 	
 	// Helper
-	private boolean legendByName = false;
+	private boolean legendToggle = false;
 	
 	public ReachabilityGraphPanel(IEditor editor) {
 		super();
@@ -109,6 +114,8 @@ public class ReachabilityGraphPanel extends JPanel {
         this.add(BorderLayout.SOUTH, southPanel);
         southPanel.add(legendInfo);
         southPanel.add(bottomInfo = new JLabel(""));
+        southPanel.add(outOfSyncInfo = new JLabel(Messages.getImageIcon("Analysis.Tree.Warning")));
+        outOfSyncInfo.setToolTipText(Messages.getString("QuanlAna.ReachabilityGraph.GraphOutOfSync"));
 		rgp_jgraph = new ReachabilityJGraph();
 		rgp_topPanel = new JScrollPane();
 		this.add(BorderLayout.CENTER, rgp_topPanel);
@@ -137,12 +144,17 @@ public class ReachabilityGraphPanel extends JPanel {
 	 * @param type
 	 * @param computeNew
 	 */
-	public void layoutGraph(int type, boolean computeNew){
+	public void layoutGraph(int type, boolean computeNew) throws SimulationRunningException {
 		if(rgp_topPanel != null){
 			if(computeNew){
-				this.remove(rgp_topPanel);
-				this.add(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph(type)));
-				this.updateVisibility();
+				if(editor.isTokenGameEnabled()){
+					this.refreshButton.setEnabled(true);
+					throw new SimulationRunningException();	
+				} else {
+					this.remove(rgp_topPanel);
+					this.add(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph(type)));
+					this.updateVisibility();	
+				}
 			} else {
 				ReachabilityGraphModel.layoutGraph(this.rgp_jgraph, type, this.getSize());
 			}
@@ -180,10 +192,13 @@ public class ReachabilityGraphPanel extends JPanel {
 	 */
 	public void updateVisibility(){
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> updateVisibility() " + this.getClass().getName());
-		if(((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint().equals(this.logicalFingerprint)){
+		// is RG in sync ? And Token game not running... 
+		if(((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint().equals(this.logicalFingerprint) && !editor.isTokenGameEnabled()){
 			refreshButton.setEnabled(false);
+			setGraphOutOfSync(false);
 		} else {
 			refreshButton.setEnabled(true);
+			setGraphOutOfSync(true);
 		}
 		bottomInfo.setText(this.getGraphInfo());
 		legendInfo.setText(this.getLegend());
@@ -194,7 +209,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	 * @param legend
 	 */
 	protected void setLegendByName(boolean legend){
-		this.legendByName = legend;
+		this.legendToggle = legend;
 	}
 	
 	/**
@@ -202,9 +217,16 @@ public class ReachabilityGraphPanel extends JPanel {
 	 * @return
 	 */
 	protected boolean getLegendByName(){
-		return this.legendByName;
+		return this.legendToggle;
 	}
 	
+	/**
+	 * sets the graph out of sync label.
+	 * @param outOfSync
+	 */
+	protected void setGraphOutOfSync(boolean outOfSync){
+		this.outOfSyncInfo.setVisible(outOfSync);
+	}
 	/**
 	 * returns the Legend as String. 
 	 * @return
@@ -221,26 +243,36 @@ public class ReachabilityGraphPanel extends JPanel {
 					// get the Marking - every Marking has all places with it. 
 					Marking marking = (Marking)place.getUserObject();
 					LinkedList<PlaceModel> placeModels = marking.getKeySet();
-					String legend = "";
+					String legendByName_temp = "";
+					String legendById_temp = "";
 					// build legend string.
 					for(int placeCounter = 0; placeCounter < placeModels.size(); placeCounter++){
-						// if names are wanted, then get the nameValue, else id's.
-						if(legendByName){
-							legend += placeModels.get(placeCounter).getNameValue() + ",";
-						} else {
-							legend += placeModels.get(placeCounter).getId() + ",";	
-						}
+						legendByName_temp += placeModels.get(placeCounter).getNameValue() + ",";
+						legendById_temp += placeModels.get(placeCounter).getId() + ",";	
 					}
 					// remove last comma
-					legend = legend.substring(0, legend.length()-1);
+					legendByName_temp = legendByName_temp.substring(0, legendByName_temp.length()-1);
+					legendById_temp = legendById_temp.substring(0,legendById_temp.length()-1); 
 					// return the legend
-					return this.legend = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legend + ")";
+					this.legendByName = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legendByName_temp + ")";
+					this.legendById = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legendById_temp + ")";
+					if(legendToggle){
+						return this.legendByName;
+					} else {
+						return this.legendById;
+					}
 				}
 			}
 			// no PlaceModel was found, so return empty legend.
-			return this.legend = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()"; 
+			this.legendByName = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()";
+			this.legendById = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()";
+			return this.legendById;
 		} else { // still up to date, so return the legend.
-			return this.legend;
+			if(legendToggle){
+				return this.legendByName;
+			} else {
+				return this.legendById;
+			}
 		}
 	}
 	
@@ -420,7 +452,14 @@ public class ReachabilityGraphPanel extends JPanel {
 		
 		public void itemStateChanged(ItemEvent e) {
 			JComboBox selectedChoice = (JComboBox) e.getSource();
-	        rgp.layoutGraph(selectedChoice.getSelectedIndex(), false);
+	        try {
+				rgp.layoutGraph(selectedChoice.getSelectedIndex(), false);
+			} catch (SimulationRunningException e1) {
+				JOptionPane.showMessageDialog(this.rgp, 
+						Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
+						Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Title"), // title
+					    JOptionPane.WARNING_MESSAGE); // type
+			}
 		}
 	}
 	
@@ -433,10 +472,19 @@ public class ReachabilityGraphPanel extends JPanel {
 		}
 		
 		public void actionPerformed(ActionEvent arg0) {
-			rgp.layoutGraph(rgp.getSelectedType(), true);
-			rgp.setLogicalFingerPrint(((PetriNetModelProcessor)rgp.getEditor().getModelProcessor()).getLogicalFingerprint());
-			rgp.setRefreshButtonEnabled(false);
-			rgp.updateVisibility();
+			try {
+				rgp.layoutGraph(rgp.getSelectedType(), true);
+				rgp.setLogicalFingerPrint(((PetriNetModelProcessor)rgp.getEditor().getModelProcessor()).getLogicalFingerprint());
+				rgp.setRefreshButtonEnabled(false);
+				rgp.setGraphOutOfSync(false);
+				rgp.updateVisibility();
+			} catch (SimulationRunningException e) {
+				rgp.setRefreshButtonEnabled(true);
+				JOptionPane.showMessageDialog(this.rgp, 
+						Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
+						Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Title"), // title
+					    JOptionPane.WARNING_MESSAGE); // type
+			}
 		}
 	}
 

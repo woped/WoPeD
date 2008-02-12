@@ -21,9 +21,11 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.translations.Messages;
 
 public class ReachabilitySettingsDialog extends JDialog {
@@ -347,7 +349,14 @@ public class ReachabilitySettingsDialog extends JDialog {
 			
 			// This must be last call !
 			if(haveToDoLayout > 0){
-				rgp.layoutGraph(rgp.getSelectedType(), false);	
+				try {
+					rgp.layoutGraph(rgp.getSelectedType(), false);
+				} catch (SimulationRunningException e1) {
+					JOptionPane.showMessageDialog(this.rgp, 
+							Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
+							Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Title"), // title
+						    JOptionPane.WARNING_MESSAGE); // type
+				}	
 			}
 			ReachabilitySettingsDialog.this.dispose();
 		}

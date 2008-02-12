@@ -15,16 +15,20 @@ import java.awt.GridLayout;
 import java.util.HashSet;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 
 import org.jgraph.JGraph;
 import org.woped.core.controller.IEditor;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.translations.Messages;
 
-public class ReachabilityGraphVC extends JInternalFrame implements IReachabilityGraph {
+public class ReachabilityGraphVC extends JInternalFrame implements IReachabilityGraph, InternalFrameListener {
 	
 	private HashSet<ReachabilityGraphPanel> panels = new HashSet<ReachabilityGraphPanel>();
 	
@@ -50,6 +54,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	private ReachabilityGraphVC() {
 		super();
 		init();
+		this.addInternalFrameListener(this);
 	}
 	
 	/**
@@ -154,14 +159,21 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	public void refreshGraph(int type){
 		for (ReachabilityGraphPanel rgp : panels) {
 			if(rgp.isShowing()){
-				rgp.layoutGraph(type, true);
+				try {
+					rgp.layoutGraph(type, true);
+				} catch (SimulationRunningException e) {
+					JOptionPane.showMessageDialog(this, 
+							Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
+							Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Title"), // title
+						    JOptionPane.WARNING_MESSAGE); // type
+				}
 			}
 		}
 		this.repaint();
 	}
 	
 	/**
-	 * removes all editors from being showed on the JInternalFrame except the gien one.
+	 * removes all editors from being showed on the JInternalFrame except the given one.
 	 * @param editor
 	 */
 	public void updatePanelsVisibility(IEditor editor){
@@ -176,4 +188,22 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 		}
 		this.repaint();
 	}
+	
+	private void updateShowingPanelVisibility(){
+		for (ReachabilityGraphPanel rgp : panels) {
+			if(rgp.isShowing()){
+				rgp.updateVisibility();
+			}
+		}
+	}
+
+	public void internalFrameActivated(InternalFrameEvent e) {
+		this.updateShowingPanelVisibility();
+	}
+	public void internalFrameClosed(InternalFrameEvent e) {}
+	public void internalFrameClosing(InternalFrameEvent e) {}
+	public void internalFrameDeactivated(InternalFrameEvent e) {}
+	public void internalFrameDeiconified(InternalFrameEvent e) {}
+	public void internalFrameIconified(InternalFrameEvent e) {}
+	public void internalFrameOpened(InternalFrameEvent e) {}
 }
