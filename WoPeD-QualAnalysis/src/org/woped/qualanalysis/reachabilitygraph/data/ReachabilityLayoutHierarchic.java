@@ -50,14 +50,17 @@ public class ReachabilityLayoutHierarchic {
 	private static void applyHierarchicLayout(ReachabilityJGraph graph){
 		GraphModel model = graph.getModel();
 		LinkedList<ReachabilityPlaceModel> markings = new LinkedList<ReachabilityPlaceModel>();
+		// get all marking and reset them to not recursively touched
 		for(int i = 0; i < model.getRootCount(); i++){
 			if(model.getRootAt(i) instanceof ReachabilityPlaceModel){
 				((ReachabilityPlaceModel) model.getRootAt(i)).setIsSetRecursiveBounds(false);
 				markings.add((ReachabilityPlaceModel) model.getRootAt(i));
 			}
 		}
+		// get initial marking. the begin oh each graph. 
 		ReachabilityPlaceModel initialPlace = ReachabilityGraphModel.lookupInitialMarking(markings);
 		if(initialPlace != null){
+			// initialize a lotta things
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
 			LinkedList<ReachabilityPlaceModel> toProof = new LinkedList<ReachabilityPlaceModel>();
 			HashMap<String, String> graphAttributes = graph.getAttributeMap();
@@ -73,13 +76,14 @@ public class ReachabilityLayoutHierarchic {
 				width = Integer.parseInt(graphAttributes.get("reachabilityGraph.place.width"));
 				height = Integer.parseInt(graphAttributes.get("reachabilityGraph.place.height"));
 			}
+			// it gets interesting. the initial marking is put to the recursive function
 			if(width != 0 && height != 0){
 				ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, width, height), horizontalSpace, verticalSpace, toProof);
 			} else {
 				ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), horizontalSpace, verticalSpace, toProof);	
 			}
 			LinkedList<ReachabilityPlaceModel> toEdit = (LinkedList<ReachabilityPlaceModel>)toProof.clone();
-			ReachabilityLayoutHierarchic.hierarcherProofer(toProof);
+			ReachabilityLayoutHierarchic.hierarcherProofer(toProof, horizontalSpace, verticalSpace);
 			Iterator<ReachabilityPlaceModel> iter = toEdit.iterator();
 			while(iter.hasNext()){
 				ReachabilityPlaceModel next = iter.next();
@@ -129,7 +133,7 @@ public class ReachabilityLayoutHierarchic {
 		while(edgesIter.hasNext()){
      		ReachabilityEdgeModel edge = (ReachabilityEdgeModel) edgesIter.next();
      		ReachabilityPortModel otherPort = getOtherPort(place, edge);
-     		// (x,y,w,h) y = hoch/runter x = links/rechts		
+     		// (x,y,w,h) x = links/rechts ; y = hoch/runter		
 			ReachabilityPlaceModel childPlace = (ReachabilityPlaceModel) otherPort.getParent();
 			if(!childPlace.isSetRecursiveBounds()){
 				int puffer = 0;
@@ -157,25 +161,29 @@ public class ReachabilityLayoutHierarchic {
 	 * 
 	 * @param places
 	 */
-	private static void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places){
+	private static void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places, int horizontalSpace, int verticalSpace){
 		if(places.size() > 0){
+			// take the first of all places
 			ReachabilityPlaceModel first = places.removeFirst();
 			Iterator<ReachabilityPlaceModel> iter = places.iterator();
 			boolean changedOne = false;
+			// look if one of the rest has equal coordinates
 			while(iter.hasNext()){
 				ReachabilityPlaceModel actual = iter.next();
 				if(GraphConstants.getBounds(actual.getAttributes()).getX() == GraphConstants.getBounds(first.getAttributes()).getX() && 
 						GraphConstants.getBounds(actual.getAttributes()).getY() == GraphConstants.getBounds(first.getAttributes()).getY()){
+					// found one !
 					Rectangle2D bounds = GraphConstants.getBounds(actual.getAttributes());
-					GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(bounds.getX() + 50 + bounds.getWidth(),bounds.getY(),bounds.getWidth(),bounds.getHeight()));
+					// change it: take actual position, add the width and add the vertical spacing
+					GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(bounds.getX() + horizontalSpace + bounds.getWidth(),bounds.getY(),bounds.getWidth(),bounds.getHeight()));
 					changedOne = true;
 				}
 			}
 			if(changedOne){
 				places.addFirst(first);
-				hierarcherProofer(places);
+				hierarcherProofer(places, horizontalSpace, verticalSpace);
 			} else {
-				hierarcherProofer(places);
+				hierarcherProofer(places, horizontalSpace, verticalSpace);
 			}
 		}
 	}
