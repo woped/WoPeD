@@ -1,18 +1,20 @@
+/**
+ * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger.
+ * The code was written for a project at BA Karlsruhe in 2007/2008 under authority
+ * of Prof. Dr. Thomas Freytag and Andreas Eckleder.
+ * 
+ * This class was written by
+ * @author Benjamin Geiger
+ */
+
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
-import java.awt.Checkbox;
-import java.awt.Dialog;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-import java.util.HashSet;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -22,13 +24,12 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import org.apache.log4j.Hierarchy;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.qualanalysis.Constants;
 import org.woped.translations.Messages;
 
 public class ReachabilitySettingsDialog extends JDialog {
 	
+	private static final long serialVersionUID = -1141097444949417968L;
+
 	ReachabilityGraphPanel rgp = null;
 	
 	// Buttons

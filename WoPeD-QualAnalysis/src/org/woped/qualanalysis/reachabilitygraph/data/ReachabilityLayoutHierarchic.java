@@ -1,5 +1,7 @@
 /**
- * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger
+ * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger.
+ * The code was written for a project at BA Karlsruhe in 2007/2008 under authority
+ * of Prof. Dr. Thomas Freytag and Andreas Eckleder.
  * 
  * This class was written by
  * @author Benjamin Geiger
@@ -7,7 +9,6 @@
 
 package org.woped.qualanalysis.reachabilitygraph.data;
 
-import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,11 +17,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.jgraph.JGraph;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
-import org.woped.qualanalysis.ReachabilityArc;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 
 public class ReachabilityLayoutHierarchic {
@@ -28,8 +27,7 @@ public class ReachabilityLayoutHierarchic {
 	private static Map<ReachabilityPlaceModel,AttributeMap> edit;
 	
 	/**
-	 * takes a JGraph to layout it in a hierarchic way. 
-	 * (to be refactored to only take instances of ReachabilityJGraph)
+	 * takes a ReachabilityJGraph to layout it in a hierarchic way.
 	 * @param graph
 	 * @return
 	 */
@@ -60,7 +58,7 @@ public class ReachabilityLayoutHierarchic {
 		// get initial marking. the begin oh each graph. 
 		ReachabilityPlaceModel initialPlace = ReachabilityGraphModel.lookupInitialMarking(markings);
 		if(initialPlace != null){
-			// initialize a lotta things
+			// initialize a lot of things
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
 			LinkedList<ReachabilityPlaceModel> toProof = new LinkedList<ReachabilityPlaceModel>();
 			HashMap<String, String> graphAttributes = graph.getAttributeMap();
@@ -133,7 +131,7 @@ public class ReachabilityLayoutHierarchic {
 		while(edgesIter.hasNext()){
      		ReachabilityEdgeModel edge = (ReachabilityEdgeModel) edgesIter.next();
      		ReachabilityPortModel otherPort = getOtherPort(place, edge);
-     		// (x,y,w,h) x = links/rechts ; y = hoch/runter		
+     		// (x,y,w,h) x = left/right ; y = up/down		
 			ReachabilityPlaceModel childPlace = (ReachabilityPlaceModel) otherPort.getParent();
 			if(!childPlace.isSetRecursiveBounds()){
 				int puffer = 0;
@@ -156,8 +154,8 @@ public class ReachabilityLayoutHierarchic {
 	}
 
 	/**
-	 * after the call of hierarcher it's possible that some markings are covered by each other.
-	 * The hierarcher proofer looks for that vertices and corrects their layout.
+	 * after the call of hierarcher() it's possible that some markings are covered by each other.
+	 * The hierarcherProofer looks for that vertices and corrects their layout.
 	 * 
 	 * @param places
 	 */
@@ -174,7 +172,7 @@ public class ReachabilityLayoutHierarchic {
 						GraphConstants.getBounds(actual.getAttributes()).getY() == GraphConstants.getBounds(first.getAttributes()).getY()){
 					// found one !
 					Rectangle2D bounds = GraphConstants.getBounds(actual.getAttributes());
-					// change it: take actual position, add the width and add the vertical spacing
+					// change it: take actual position, add the width and add the horizontal spacing
 					GraphConstants.setBounds(actual.getAttributes(), new Rectangle2D.Double(bounds.getX() + horizontalSpace + bounds.getWidth(),bounds.getY(),bounds.getWidth(),bounds.getHeight()));
 					changedOne = true;
 				}

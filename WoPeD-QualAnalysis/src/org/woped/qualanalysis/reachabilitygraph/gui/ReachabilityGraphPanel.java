@@ -1,10 +1,16 @@
+/**
+ * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger.
+ * The code was written for a project at BA Karlsruhe in 2007/2008 under authority
+ * of Prof. Dr. Thomas Freytag and Andreas Eckleder.
+ * 
+ * This class was written by
+ * @author Benjamin Geiger
+ */
+
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Insets;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -12,18 +18,15 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import org.jgraph.JGraph;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -38,8 +41,6 @@ import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
 import org.woped.translations.Messages;
-
-import quicktime.streaming.SettingsDialog;
 
 public class ReachabilityGraphPanel extends JPanel {
 	
@@ -113,15 +114,29 @@ public class ReachabilityGraphPanel extends JPanel {
 		this.add(BorderLayout.CENTER, rgp_topPanel);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
 	}
-		
+	
+	/**
+	 * returns the editor for this instance.
+	 * @return
+	 */
 	public IEditor getEditor(){
 		return editor;
 	}
 	
+	/**
+	 * returns the selected layout type.
+	 * @return
+	 */
 	protected int getSelectedType(){
 		return this.layout.getSelectedIndex();
 	}
 	
+	/**
+	 * layout a graph with given layout type. Layouting can be done without to recmpute the graph.
+	 * In some cases it's needed to recompute e.g. the petri net has changed. 
+	 * @param type
+	 * @param computeNew
+	 */
 	public void layoutGraph(int type, boolean computeNew){
 		if(rgp_topPanel != null){
 			if(computeNew){
@@ -134,7 +149,11 @@ public class ReachabilityGraphPanel extends JPanel {
 			this.validate();
 		}
 	}
-	
+	/**
+	 * is used to get a new computed {@link ReachabilityJGraph} instance. Layout in a given type.
+	 * @param type
+	 * @return
+	 */
 	private ReachabilityJGraph getDefaultGraph(int type){
 		HashMap<String, String> old_attributes = null;
 		if(rgp_jgraph != null){
@@ -148,10 +167,17 @@ public class ReachabilityGraphPanel extends JPanel {
 		return ReachabilityGraphModel.layoutGraph(new_graph, type, this.getSize());
 	}
 	
+	/**
+	 * returns {@link ReachabilityJGraph} instance of this panel.
+	 * @return
+	 */
 	public ReachabilityJGraph getGraph(){
 		return this.rgp_jgraph;
 	}
 	
+	/**
+	 * updated all graph relevant objects after the graph was changed.
+	 */
 	public void updateVisibility(){
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> updateVisibility() " + this.getClass().getName());
 		if(((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint().equals(this.logicalFingerprint)){
@@ -163,44 +189,70 @@ public class ReachabilityGraphPanel extends JPanel {
 		legendInfo.setText(this.getLegend());
 	}
 	
+	/**
+	 * sets legendByName. It's used for showing the legend with names or id's.
+	 * @param legend
+	 */
 	protected void setLegendByName(boolean legend){
 		this.legendByName = legend;
 	}
 	
+	/**
+	 * returns the legendByName toggle attribute.
+	 * @return
+	 */
 	protected boolean getLegendByName(){
 		return this.legendByName;
 	}
 	
+	/**
+	 * returns the Legend as String. 
+	 * @return
+	 */
 	private String getLegend(){
+		// check if legend is still up to date with the petri-net.
 		if(((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint().equals(this.logicalFingerprint)){
 			Object[] roots = this.rgp_jgraph.getRoots();
+			// iterate over all cells in graph
 			for(int i = 0; i < roots.length; i++){
+				// found a PlaceModel ?
 				if(roots[i] instanceof ReachabilityPlaceModel){				
 					ReachabilityPlaceModel place = (ReachabilityPlaceModel) roots[i];
+					// get the Marking - every Marking has all places with it. 
 					Marking marking = (Marking)place.getUserObject();
 					LinkedList<PlaceModel> placeModels = marking.getKeySet();
 					String legend = "";
+					// build legend string.
 					for(int placeCounter = 0; placeCounter < placeModels.size(); placeCounter++){
+						// if names are wanted, then get the nameValue, else id's.
 						if(legendByName){
 							legend += placeModels.get(placeCounter).getNameValue() + ",";
 						} else {
 							legend += placeModels.get(placeCounter).getId() + ",";	
 						}
 					}
+					// remove last comma
 					legend = legend.substring(0, legend.length()-1);
+					// return the legend
 					return this.legend = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legend + ")";
 				}
 			}
+			// no PlaceModel was found, so return empty legend.
 			return this.legend = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()"; 
-		} else {
+		} else { // still up to date, so return the legend.
 			return this.legend;
 		}
 	}
 	
+	/**
+	 * returns a string with information on the graph
+	 * @return
+	 */
 	private String getGraphInfo(){
 		Object[] roots = this.rgp_jgraph.getRoots();
 		int vertices = 0;
 		int edges = 0;
+		// count vertices and edges of the graph
 		for(int i = 0; i < roots.length; i++){
 			if(roots[i] instanceof ReachabilityEdgeModel){
 				edges++;
@@ -212,19 +264,34 @@ public class ReachabilityGraphPanel extends JPanel {
 		return Messages.getString("QuanlAna.ReachabilityGraph.Vertices") + " " + vertices + " " + 
 			Messages.getString("QuanlAna.ReachabilityGraph.Edges") + " " + edges;
 	}
-
+	/**
+	 * set the logicalFingerprint of actual petrinet. LogicalFingerprint is used to track changes of the petrinet.
+	 * @param logicalFingerprint
+	 */
 	protected void setLogicalFingerPrint(String logicalFingerprint) {
 		this.logicalFingerprint = logicalFingerprint;
 	}
-	
+	/**
+	 * sets the refresh button to be clickable - or not.
+	 * @param b
+	 */
 	protected void setRefreshButtonEnabled(boolean b){
 		this.refreshButton.setEnabled(b);
 	}
 	
+	/**
+	 * enables parallel rounting for the RG or not.
+	 * ParallelRouting is very slow on big RG's.
+	 * @param enabled
+	 */
 	protected void setParallelRouting(boolean enabled){
 		ReachabilityGraphModel.setParallelRouting(rgp_jgraph, enabled);
 	}
 	
+	/**
+	 * enables a gray-scale view of the graph.
+	 * @param enabled
+	 */
 	protected void setGrayScale(boolean enabled){
 		ReachabilityGraphModel.setGrayScale(rgp_jgraph, enabled);
 	}
