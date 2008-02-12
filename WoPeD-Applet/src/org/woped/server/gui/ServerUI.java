@@ -74,7 +74,6 @@ public class ServerUI extends JFrame {
 			start = new JButton("Start");
 			start.addActionListener(new ActionListener() {
 
-				@Override
 				public void actionPerformed(ActionEvent e) {
 					if (host.getText().equals("") || port.getText().equals("")
 							|| servicename.getText().equals("")) {

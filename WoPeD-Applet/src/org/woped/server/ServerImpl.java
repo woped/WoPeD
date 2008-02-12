@@ -69,7 +69,6 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 * @throws RemoteException
 	 * @see {@link IServer#getList(int)}
 	 */
-	@Override
 	public ArrayList<ModellHolder> getList(int userID, boolean shared) throws RemoteException {
 		
 		// resultType 
@@ -125,7 +124,6 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 * @throws RemoteException
 	 * @see {@link IServer#loadModel(int)} 
 	 */
-	@Override
 	public String loadModel(int modelid) throws RemoteException {
 		
 		StringBuffer buffer = new StringBuffer();
@@ -174,7 +172,6 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 * @throws RemoteException
 	 * @see {@link IServer#saveModel(int, int, String, String)} 
 	 */
-	@Override
 	public int saveModel(int userid, int modelid, String content, String title) throws RemoteException {
 		
 		// if user authorized to save the model
