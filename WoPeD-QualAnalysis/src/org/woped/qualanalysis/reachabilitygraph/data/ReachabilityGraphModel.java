@@ -74,6 +74,11 @@ public class ReachabilityGraphModel {
 	        GraphConstants.setRouting(edge.getAttributes(), ParallelRouter.getSharedInstance(view));
 			cellsList.add(edge);	
 		}
+		// special case: no markings !
+		if(cellsList.isEmpty() && dataSource.getTransactions().isEmpty() && dataSource.getMarkings().size() == 1){
+			Collection<Marking> markings = dataSource.getMarkings().values();
+			cellsList.add(getPlace(cellsList, (Marking)markings.toArray()[0]));
+		}
 		graph.getGraphLayoutCache().insert(cellsList.toArray());
 		return graph;
 	}
