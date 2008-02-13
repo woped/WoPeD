@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import org.woped.applet.Constants;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.server.configuration.PropertyLoader;
 import org.woped.server.holder.ModellHolder;
 
 /**
@@ -35,8 +36,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	
 	private Connection connection = null;
 	
-	private String connectionUrl = "jdbc:mysql://localhost/wopedweb?" + 
-                                   "user=wopedweb&password=geheim";
+	
 	
 	
 	
@@ -393,7 +393,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 */
 	private void createConnection() {
 		try {
-			connection = DriverManager.getConnection(connectionUrl);			
+			connection = DriverManager.getConnection(createConnectionUrl());			
 		} catch (SQLException e) {
 			LoggerManager.fatal(Constants.APPLET_LOGGER, "Es konnte keine Verbindung zur mySql DB hergestellt werden!");
 		}
@@ -404,13 +404,31 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 * <p>
 	 * shutdown the connection
 	 */
-	@Override
 	protected void finalize() throws Throwable {
 		if (connection != null) {
 			connection.close();
 		}
 		
 		super.finalize();
+	}
+
+	/**
+	 * 
+	 * @return ConnectionURL
+	 */
+	public String createConnectionUrl() {
+		// "jdbc:mysql://host/db?" 
+        // "user=xxxx&password=xxxx";
+		String url = "jdbc:mysql://";
+		url += PropertyLoader.getProperty("dbHost");
+		url += "/";
+		url += PropertyLoader.getProperty("dbDB");
+		url += "?user=";
+		url += PropertyLoader.getProperty("dbUser");
+		url += "&password=";
+		url += PropertyLoader.getProperty("dbPw");
+		
+		return url;
 	}
 	
 	

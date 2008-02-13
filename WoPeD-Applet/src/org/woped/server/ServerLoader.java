@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 
 import org.woped.core.Constants;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.server.configuration.PropertyLoader;
 
 
 /**
@@ -16,7 +17,7 @@ import org.woped.core.utilities.LoggerManager;
  */
 public class ServerLoader {
 
-	static public String url = "rmi://localhost:1099/WopedService"; 
+	 
 	
 	static public IServer instance = null;
 	
@@ -27,7 +28,7 @@ public class ServerLoader {
 	static public IServer getInstance() {
 		if (null == instance) {
 			try {
-				instance = (IServer)Naming.lookup(url);
+				instance = (IServer)Naming.lookup(PropertyLoader.getProperty("rmiURL"));
 			} catch (MalformedURLException e) {
 				LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
 			} catch (RemoteException e) {
@@ -38,5 +39,7 @@ public class ServerLoader {
 		}
 		return instance;
 	}
+	
+	
 	
 }
