@@ -27,7 +27,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
