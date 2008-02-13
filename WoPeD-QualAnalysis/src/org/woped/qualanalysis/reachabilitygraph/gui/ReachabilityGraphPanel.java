@@ -194,8 +194,13 @@ public class ReachabilityGraphPanel extends JPanel {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> updateVisibility() " + this.getClass().getName());
 		// is RG in sync ? And Token game not running... 
 		if(((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint().equals(this.logicalFingerprint) && !editor.isTokenGameEnabled()){
-			refreshButton.setEnabled(false);
-			setGraphOutOfSync(false);
+			if(this.rgp_jgraph.getRoots().length == 0){
+				refreshButton.setEnabled(true);
+				setGraphOutOfSync(true);				
+			} else {
+				refreshButton.setEnabled(false);
+				setGraphOutOfSync(false);	
+			}
 		} else {
 			refreshButton.setEnabled(true);
 			setGraphOutOfSync(true);
@@ -250,9 +255,11 @@ public class ReachabilityGraphPanel extends JPanel {
 						legendByName_temp += placeModels.get(placeCounter).getNameValue() + ",";
 						legendById_temp += placeModels.get(placeCounter).getId() + ",";	
 					}
-					// remove last comma
-					legendByName_temp = legendByName_temp.substring(0, legendByName_temp.length()-1);
-					legendById_temp = legendById_temp.substring(0,legendById_temp.length()-1); 
+					// remove last comma if there is one
+					if(legendById_temp.length() > 1 && legendByName_temp.length() > 1){
+						legendByName_temp = legendByName_temp.substring(0, legendByName_temp.length()-1);
+						legendById_temp = legendById_temp.substring(0,legendById_temp.length()-1);	
+					}
 					// return the legend
 					this.legendByName = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legendByName_temp + ")";
 					this.legendById = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legendById_temp + ")";

@@ -166,6 +166,8 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 							Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
 							Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Title"), // title
 						    JOptionPane.WARNING_MESSAGE); // type
+					rgp.setRefreshButtonEnabled(true);
+					rgp.setGraphOutOfSync(true);
 				}
 			}
 		}

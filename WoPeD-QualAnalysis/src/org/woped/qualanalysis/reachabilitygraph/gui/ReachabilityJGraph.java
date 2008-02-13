@@ -16,6 +16,7 @@ import java.util.Vector;
 import javax.swing.ToolTipManager;
 
 import org.jgraph.JGraph;
+import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
@@ -29,7 +30,7 @@ public class ReachabilityJGraph extends JGraph {
 	private HashMap<String, String> graphAttributes = null;
 
 	public ReachabilityJGraph(){
-		super();
+		super(new DefaultGraphModel());
 		initAttributeMap();
 		ToolTipManager.sharedInstance().registerComponent(this);
 	}
