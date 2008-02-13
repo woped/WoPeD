@@ -11,6 +11,7 @@ package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -28,6 +29,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.Border;
+
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -61,7 +64,8 @@ public class ReachabilityGraphPanel extends JPanel {
 	// Labels
 	private JLabel bottomInfo = null;
 	private JLabel outOfSyncInfo = null;
-	private JButton legendInfo = null;
+	private JLabel legendInfo = null;
+	private JButton legendToggleButton = null;
 	private JButton refreshButton = null;
 	private JButton settingsButton = null;
 	private JComboBox layout = null;
@@ -104,14 +108,17 @@ public class ReachabilityGraphPanel extends JPanel {
         northPanel.add(export);
         this.add(BorderLayout.NORTH, northPanel);
         // SOUTH Components
-        legendInfo = new JButton();			
-        legendInfo.setBorder(BorderFactory.createEmptyBorder());
-        legendInfo.setText(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
-        legendInfo.addActionListener(new LegendListener(this));
+        legendInfo = new JLabel(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
+        legendToggleButton = new JButton(Messages.getImageIcon("Action.Browser.Refresh"));
+        legendToggleButton.setToolTipText(Messages.getString("QuanlAna.ReachabilityGraph.Legend.Toggle"));
+        legendToggleButton.addActionListener(new LegendListener(this));
+        legendToggleButton.setBorder(BorderFactory.createEmptyBorder());
+        legendToggleButton.setFocusPainted(false);
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 20, 0));
         this.add(BorderLayout.SOUTH, southPanel);
         southPanel.add(legendInfo);
+        southPanel.add(legendToggleButton);
         southPanel.add(bottomInfo = new JLabel(""));
         southPanel.add(outOfSyncInfo = new JLabel(Messages.getImageIcon("Analysis.Tree.Warning")));
         outOfSyncInfo.setToolTipText(Messages.getString("QuanlAna.ReachabilityGraph.GraphOutOfSync"));
