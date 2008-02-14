@@ -14,7 +14,7 @@ public class UddiVariableList
 	public UddiVariableList()
 	{
 		_list.add(new UddiVariable("Microsoft", "http://uddi.microsoft.com/inquire"));
-		_list.add(new UddiVariable("SAP", "http://udditest.sap.com/uddi/api/inquiry/"));
+		_list.add(new UddiVariable("SAP", "http://uddi.sap.com/uddi/api/inquiry/"));
 	}
 	
 	public void addVariable(String name, String url)
