@@ -13,6 +13,9 @@ import java.awt.event.*;
 /**
  * 
  * @author Alexander Rosswog
+ * 
+ * This is dialog which enables the user to choose a webservice and import
+ * the accordung wsdl-url
  *
  */
 @SuppressWarnings("serial")
@@ -92,11 +95,11 @@ public class UDDIDialog extends JDialog
 		
 		
 		//PChooseService-Panel
-		LfindBusiness = new JLabel("find Business:");
+		LfindBusiness = new JLabel(Messages.getString("Transition.Properties.BPEL.UDDI.findBusiness"));
 		LfindBusiness.setBounds(15,120,85,20);
 		add(LfindBusiness);
 		
-		LfindService = new JLabel("find Service:");
+		LfindService = new JLabel(Messages.getString("Transition.Properties.BPEL.UDDI.findService"));
 		LfindService.setBounds(215,120,85,20);
 		add(LfindService);
 		
@@ -120,12 +123,12 @@ public class UDDIDialog extends JDialog
 		
 		Bok = new JButton();
 		Bok.setBounds(115,370,80,25);
-		Bok.setText("OK");
+		Bok.setText(Messages.getString("Transition.Properties.BPEL.Buttons.OK"));
 		add(Bok);
 		
 		Bcancel = new JButton();
 		Bcancel.setBounds(205,370,80,25);
-		Bcancel.setText("Cancel");
+		Bcancel.setText(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
 		add(Bcancel);
 		
 		//implements Listener
@@ -161,20 +164,20 @@ public class UDDIDialog extends JDialog
 				String busname = TFBusiness.getText();
 				if(busname.equals("") || busname == null)
 				{
-					showErrorPopup("ERROR", "Unallowed value inserted");
+					showErrorPopup("ERROR", Messages.getString("Transition.Properties.BPEL.UDDI.WrongValueError"));
 				}
 				else
 				{
 					String[] buslist = org.woped.bpel.uddi.UDDI.find_business(uddiUrl, busname);
 					if(buslist == null || buslist.length == 0)
 					{
-						showErrorPopup("ERROR", "No result");
+						showErrorPopup("ERROR", Messages.getString("Transition.Properties.BPEL.UDDI.NoResult"));
 					}
 					else
 					{
 						if(buslist.length >= 40)
 						{
-							showErrorPopup("Warning", "Only 40 businesses will be shown");
+							showErrorPopup(Messages.getString("Transition.Properties.BPEL.UDDI.ResultWarning"), Messages.getString("Transition.Properties.BPEL.UDDI.fortyResultWarning"));
 						}
 						DefaultListModel model = new DefaultListModel();
 					    for (int i=0; i<buslist.length; i++) {
