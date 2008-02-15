@@ -1,5 +1,6 @@
 package org.woped.server;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.woped.applet.Constants;
 import org.woped.core.utilities.LoggerManager;
@@ -32,7 +34,7 @@ import org.woped.server.holder.ModellHolder;
 public class ServerImpl extends UnicastRemoteObject implements IServer {
 
 	
-	private String path = "."+File.separator+"modells"+File.separator;
+	private String path = File.separator+"modells"+File.separator;
 	
 	private Connection connection = null;
 	
@@ -44,10 +46,18 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 * Implementations must have an explicit
 	 * constructor in order to declare the 
 	 * RemoteException
+	 * @param String workingDirectory 
 	 * @throws RemoteException
+	 * TODO check if the given workingDirectory exists
 	 */
-	public ServerImpl() throws RemoteException {
+	public ServerImpl(String workingDirectory) throws RemoteException {
 		super();
+		// set workingDirectory to .
+		if (workingDirectory == null || workingDirectory.equals("")) {
+			path = "." + path;
+		} else {
+			path = workingDirectory + path;
+		}		
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();			
@@ -81,7 +91,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		if (shared) {
 			sql += " OR `shared`=1";
 		}
-		System.out.println(sql);
+		
 		
 		try {
 			query = connection.createStatement();
@@ -176,7 +186,13 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		
 		// if user authorized to save the model
 		if (!existsModelForUser(modelid, userid)) {
-			modelid = getNewModelID(userid,title);
+			// for a new model, check the available free memory
+			if (freeMemoryForUser(userid) > 0) {
+				modelid = getNewModelID(userid,title);
+			} else {
+				throw new RemoteException("Not enough memory to save model");
+			}
+			
 		} else {
 			
 			// save content to File
@@ -188,7 +204,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 					// ignore
 				}
 			}
-			
+			// writes the xml string to file
 			BufferedWriter bw = null;
 			try {
 				bw = new BufferedWriter(new FileWriter(file));
@@ -212,6 +228,37 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	}
 	
 	/**
+	 * freeMemoryForUser()
+	 * <p>
+	 * checks if exists enough memory to save the new model
+	 * @param userid - Id of User
+	 * @return - free memory
+	 */
+	private int freeMemoryForUser(int userID) throws RemoteException {
+		int maxMemory = 2048;
+		if (PropertyLoader.getProperty("rmiMemory") != null) {
+			maxMemory = Integer.parseInt(PropertyLoader.getProperty("rmiMemory"));
+		}
+		// memory in use
+		int usageMemory = 0;
+				
+		// get all availably models for User
+		ArrayList<ModellHolder> models = getList(userID, false);
+		
+		File file;
+		// sums the size of all models
+		for (Iterator iterator = models.iterator(); iterator.hasNext();) {
+			ModellHolder name = (ModellHolder) iterator.next();
+			file = new File(path+name.getModellID()+".pnml");
+			if (file.exists()) {
+				usageMemory += file.getTotalSpace();
+			}			
+		}
+		// the difference of max and usage is the freeMemory		
+		return maxMemory-usageMemory;
+	}
+
+	/**
 	 * getNewModelID()
 	 * <p> 
 	 * @param userid
@@ -226,7 +273,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		
 		try {
 			stmt = connection.createStatement(Statement.CLOSE_ALL_RESULTS,Statement.RETURN_GENERATED_KEYS);
-			stmt.executeQuery("INSERT INTO `modellid` (userid,titel,lastedit) VALUES ("+userid+",'"+title+"',NOW())");
+			stmt.executeUpdate("INSERT INTO `modellid` (userid,titel,lastedit) VALUES ("+userid+",'"+title+"',NOW())",Statement.RETURN_GENERATED_KEYS);
 			result = stmt.getGeneratedKeys();
 			if (result.next()) {
 				resultValue = result.getInt(1);
@@ -361,7 +408,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 				resultValue = result.getInt("userid");
 			}
 			// erase session token
-			stmt.executeQuery("UPDATE `benutzer` SET `sessionid`=" + null + " WHERE `sessionid`='"+token+"'");
+			stmt.executeUpdate("UPDATE `benutzer` SET `sessionid`=" + null + " WHERE `sessionid`='"+token+"'");			
 		} catch (SQLException e) {
 			LoggerManager.error(Constants.APPLET_LOGGER, "SQLException: " + e.getMessage());
 			LoggerManager.error(Constants.APPLET_LOGGER, "SQLState: " + e.getSQLState());
