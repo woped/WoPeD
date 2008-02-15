@@ -91,7 +91,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				int modellid = Integer.valueOf(((String)event.getData()));
 				openWebServiceEditor(modellid);
 			} else {
-				openWebServiceEditor(-1);
+				openWebServiceEditor(0);
 			}			
 			break;
 		case AbstractViewEvent.EXPORT:
@@ -200,41 +200,34 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		boolean succeed = false;
 		
 		try {
-			if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
-				IViewController[] iVC = getMediator()
-						.findViewController(IStatusBar.TYPE);
-				IStatusBar iSB[] = new IStatusBar[iVC.length];
-				for (int i = 0; i < iSB.length; i++) {
+			IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
+			IStatusBar iSB[] = new IStatusBar[iVC.length];
+			for (int i = 0; i < iSB.length; i++) {
 
-					iSB[i] = (IStatusBar) iVC[i];
-				}
-				PNMLExport pe = new PNMLExport(iSB);
-				// creates a Stream to hold the XML Data from the PNMLExport
-				ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				pe.saveToWebFile(editor, baos);
-				
-				// save the Model on the Webserver
-				// if this is the first save, ask the user about a filename or a title
-				Object title = JOptionPane.showInputDialog((JFrame)getMediator().getUi(),Messages.getString("SaveWebServiceEditor.Input"),Messages.getTitle("SaveWebServiceEditor"),JOptionPane.QUESTION_MESSAGE,null,null,editor.getName());
-								
-				
-				editor.setModelid(ServerLoader.getInstance().saveModel(UserHolder.getUserID(), editor.getModelid(), baos.toString(),(String)title));
-				// close the Stream
-				baos.close();
-				
-				LoggerManager.info(Constants.FILE_LOGGER,
-						"Petrinet saved in webfile: "
-								+ editor.getModelid() + " " +editor.getName());
+				iSB[i] = (IStatusBar) iVC[i];
+			}
+			PNMLExport pe = new PNMLExport(iSB);
+			// creates a Stream to hold the XML Data from the PNMLExport
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			pe.saveToWebFile(editor, baos);
+			
+			// save the Model on the Webserver
+			// if this is the first save, ask the user about a filename or a title
+			Object title = JOptionPane.showInputDialog((JFrame)getMediator().getUi(),Messages.getString("SaveWebServiceEditor.Input"),Messages.getTitle("SaveWebServiceEditor"),JOptionPane.QUESTION_MESSAGE,null,null,editor.getName());
+							
+			
+			editor.setModelid(ServerLoader.getInstance().saveModel(UserHolder.getUserID(), editor.getModelid(), baos.toString(),(String)title));
+			// close the Stream
+			editor.setName((String)title);
+			
+			baos.close();
+			
+			LoggerManager.info(Constants.FILE_LOGGER,
+					"Petrinet saved in webfile: "
+							+ editor.getModelid() + " " +editor.getName());
 
-				editor.setSaved(true);
-				succeed = true;
-			}
-			else {
-				LoggerManager.warn(Constants.FILE_LOGGER,
-						"Unable to save WebFile "
-								+ editor.getModelid() + " " + editor.getName());
-				succeed = false;
-			}
+			editor.setSaved(true);
+			succeed = true;
 		} catch (AccessControlException ace) {
 			ace.printStackTrace();
 			LoggerManager.warn(Constants.FILE_LOGGER,
@@ -680,7 +673,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		try {
 			ArrayList<ModellHolder> values = null;
 			ModellHolder selected = null;
-			if (modellID != -1) {
+			if (modellID != 0) {
 				values = ServerLoader.getInstance().getList(UserHolder.getUserID(), true);
 				for (int i = 0; i < values.size(); i++) {
 					if (values.get(i).getModellID() == modellID) {
