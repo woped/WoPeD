@@ -97,7 +97,12 @@ public class DefaultApplicationMediator extends ApplicationMediator
                     	File f = new File(args[i]);
                     	fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN, f));
                     } else {
-                    	fireViewEvent(new ViewEvent(this,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPENWEBSERVICE,args[i]));
+                    	if (args[i].equals("0")) {
+                    		fireViewEvent(new ViewEvent(this,AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.NEW,null));
+                    	} else {
+                    		fireViewEvent(new ViewEvent(this,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPENWEBSERVICE,args[i]));
+                    	}
+                    	
                     }
                     
                 }
