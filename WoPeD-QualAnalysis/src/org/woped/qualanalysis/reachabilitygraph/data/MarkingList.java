@@ -2,6 +2,7 @@ package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 ;
@@ -162,7 +163,9 @@ public class MarkingList {
 			gel=(String)transIt.next();
 			if(gel.startsWith(mark.getKey())){
 				if(!help.get(gel).ende.iscoverObject()||innercall){
-				markstoremove.add(help.get(gel).ende.getKey());
+				if(!innercall){
+					markstoremove.add(help.get(gel).ende.getKey());
+				}
 				transIt.remove();
 				help.remove(gel);
 				transIt=help.keySet().iterator();
@@ -172,9 +175,11 @@ public class MarkingList {
 		for(int i=0;i<markstoremove.size();i++){
 			//recurively remove transitions which are obsolete
 			if(netMarkings.get(markstoremove.get(i))!=null){
+				if(!netMarkings.get(markstoremove.get(i)).isInitial()){
 				removefromTransactions(netMarkings.get(markstoremove.get(i)),true);
 				netMarkings.remove(markstoremove.get(i));
-			}		
+				}
+			}	
 		}
 	}
 	/**

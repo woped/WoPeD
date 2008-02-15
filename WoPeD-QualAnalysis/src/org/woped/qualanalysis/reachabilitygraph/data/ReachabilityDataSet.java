@@ -65,15 +65,18 @@ public class ReachabilityDataSet {
 			if(mlist.get(aktuellID).centerPlace()) {
 				// Remove the Marking with a Token in the Center Place
 				// Get the Reachabilityset where the Marking is the end marking
+				LinkedList <String> targ=new LinkedList<String>();
+				LinkedList <String> sourc=new LinkedList<String>();
 				Iterator rsit = netTransitions.keySet().iterator();
 				boolean treffer = false;
 				String sourceid = "";
 				while (rsit.hasNext() && !treffer) {
 					sourceid = (String) rsit.next();
 					if(netTransitions.get(sourceid).ende.getKey().equals(mlist.get(aktuellID).getKey())) {
-						treffer = true;
+						targ.add(sourceid);
 					}
 				}
+				System.out.println(targ);
 				// Get the Reachabilityset where the Current Marking is the
 				// Start Marking
 				// and set the StartMarking to the previously found
@@ -81,13 +84,31 @@ public class ReachabilityDataSet {
 				while (rsit.hasNext()) {
 					String targid = (String) rsit.next();
 					if(netTransitions.get(targid).start.getKey().equals(mlist.get(aktuellID).getKey())) {
-						netTransitions.get(targid).start = mlist.get(netTransitions.get(sourceid).start.getKey());
+						sourc.add(targid);
 					}
 				}
 				// Remember the Markings to be removed
 				MarkingsToRemove.add(aktuellID);
-				netTransitions.remove(sourceid);
-
+				//Create new Transitions
+				for(int i=0;i<sourc.size();i++){
+					for(int u=0;u<targ.size();u++){
+						TransitionObject tmp=new TransitionObject(netTransitions.get(targ.get(i)).start,
+								netTransitions.get(sourc.get(u)).transition,
+								netTransitions.get(sourc.get(u)).ende,
+								netTransitions.get(sourc.get(u)).transition_name,
+								false);
+						netTransitions.put(tmp.getKey(),tmp);
+					}
+				}
+				//remove old transitions
+				
+				for(int i=0;i<sourc.size();i++){
+					 netTransitions.remove(sourc.get(i));
+				}
+				for(int u=0;u<targ.size();u++){
+					netTransitions.remove(targ.get(u));
+				}
+				
 			}
 			//remove transactions which are not in marking list
 			Iterator transIt=netTransitions.keySet().iterator();
@@ -99,6 +120,32 @@ public class ReachabilityDataSet {
 					transIt=netTransitions.keySet().iterator();
 				}
 			}
+			//Remove Markings which are not initial but have no incoming arc
+			
+				Marking tmpmark=mlist.get(aktuellID);
+				if(!tmpmark.isInitial()){
+					boolean obs=true;
+					Iterator transit=netTransitions.keySet().iterator();
+					while(transit.hasNext()){
+						if(netTransitions.get(transit.next()).ende.getKey().equals(tmpmark.getKey()))
+						{
+							obs=false;
+						}
+					}
+					if(obs){
+						transit=netTransitions.keySet().iterator();
+						while(transit.hasNext())
+						{
+							String key;
+							if(netTransitions.get(key=(String)transit.next()).start.getKey().equals(tmpmark.getKey())){
+								transit.remove();
+								netTransitions.remove(key);
+								transit=netTransitions.keySet().iterator();
+							}
+						}
+					}
+				}
+			
 			//Remove Same Transitions, refresh keys
 			transIt=netTransitions.keySet().iterator();
 			while(transIt.hasNext()){
@@ -115,6 +162,7 @@ public class ReachabilityDataSet {
 			
 			
 		}
+
 		for(int i = 0; i < MarkingsToRemove.size(); i++) {
 			mlist.remove(MarkingsToRemove.get(i));
 		}

@@ -86,7 +86,7 @@ public class Marking {
 		// If Transitions leading to the state are not equal return false
 		TreeSet<String> sourceThelp = (TreeSet<String>) this.sourceT.clone();
 		TreeSet<String> othersourceThelp = (TreeSet<String>) otherMarking.sourceT.clone();
-		if(!this.iscoverObject && !otherMarking.iscoverObject && !(sourceThelp.containsAll(othersourceThelp))) {
+		if(!this.iscoverObject && !otherMarking.iscoverObject && !sourceThelp.containsAll(othersourceThelp)) {
 			return false;
 		}
 		boolean isGreater = true;
@@ -131,7 +131,10 @@ public class Marking {
 		while (currentThisMarking.hasNext()) {
 			wert = (String) currentThisMarking.next();
 			int thismark = (Integer) currentMarking.get(wert);
-			int othermark = (Integer) currentOtherMarking.next();
+			int othermark = ((Integer) currentOtherMarking.next());
+			if(othermark>60000){
+				othermark=othermark-60000;
+			}
 			if(thismark < othermark && thismark < 60000) {
 				currentMarking.put(wert, 63000 + thismark);
 				BuildReachability.reachBuilt = true;
