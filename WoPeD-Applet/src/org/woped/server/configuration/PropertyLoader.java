@@ -1,5 +1,6 @@
 package org.woped.server.configuration;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -33,7 +34,7 @@ public class PropertyLoader {
 		InputStream is = PropertyLoader.class.getClassLoader().
 				getResourceAsStream(propertyFile);
 		
-		Properties properties = new Properties();
+		properties = new Properties();
 		try {
 			properties.load(is);
 			initialized = true;
