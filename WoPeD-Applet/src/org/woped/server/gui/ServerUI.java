@@ -17,30 +17,31 @@ import java.rmi.registry.Registry;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileFilter;
 
 import org.woped.server.IServer;
 import org.woped.server.ServerImpl;
 
 public class ServerUI extends JFrame {
 
-	private IServer server;
+	private IServer server;	
 	
-	
-	private JButton close;
+	private JButton dirchooser;
 	private JButton start;
-	
-	
+			
 	private JTextField port;
 	private JTextField servicename;
 	private JTextField host;
 	
+	private JTextField workingDir; 
 	
-	
+		
 	public ServerUI() {
 		init();
 	}
@@ -50,6 +51,7 @@ public class ServerUI extends JFrame {
 	 * Init the UI
 	 */
 	private void init() {
+		setTitle("starts Woped Server");
 		setVisible(false);
 		setUndecorated(false);
 		setResizable(false);
@@ -63,9 +65,7 @@ public class ServerUI extends JFrame {
 		
 		pack();
 		
-		
-		
-		setSize(300, 200);
+		setSize(300, 250);
 
 		setVisible(true);
 						
@@ -75,9 +75,35 @@ public class ServerUI extends JFrame {
 	private Component getButtonPane() {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		buttonPanel.add(getWorkDirButton());
 		buttonPanel.add(getStartButton());
 		return buttonPanel;
 	}
+
+	private JButton getWorkDirButton() {
+		dirchooser = new JButton("Choose work Directory");
+		dirchooser.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				showChooseWorkDirDialog();
+			}
+			
+		});
+		
+		// TODO Auto-generated method stub
+		return dirchooser;
+	}
+	
+	private void showChooseWorkDirDialog() {
+		JFileChooser jfc = new JFileChooser(".");
+		jfc.setDialogTitle("Choose working Directory...");
+		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		if (jfc.showDialog(this, "OK") == JFileChooser.APPROVE_OPTION) {
+			workingDir.setText(jfc.getSelectedFile().getAbsolutePath());			
+		} 
+		
+	}
+
 
 	private JButton getStartButton() {
 		
@@ -97,8 +123,13 @@ public class ServerUI extends JFrame {
 				private void initServer() {
 					try {
 						LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-						Naming.bind("//"+host.getText()+":"+port.getText()+"/"+servicename.getText(), new ServerImpl());
+						Naming.bind("//"+host.getText()+":"+port.getText()+"/"+servicename.getText(), new ServerImpl(workingDir.getText()));
 						start.setEnabled(false);
+						host.setEditable(false);
+						port.setEditable(false);
+						servicename.setEditable(false);
+						dirchooser.setEnabled(false);
+						setTitle("Woped Server is running");
 					} catch (RemoteException e) {
 						JOptionPane.showMessageDialog(null, e.getMessage());
 					} catch (MalformedURLException e) {
@@ -131,7 +162,7 @@ public class ServerUI extends JFrame {
 
 	private Component getHostPane() {
 		JPanel pane = new JPanel();
-		pane.setLayout(new GridLayout(6,1));
+		pane.setLayout(new GridLayout(8,1));
 		
 		JLabel label = new JLabel("Host");
 		pane.add(label);
@@ -160,6 +191,15 @@ public class ServerUI extends JFrame {
 		
 		servicename = new JTextField("WopedService");
 		pane.add(servicename);
+		
+		label = new JLabel("Working Directory");
+		pane.add(label);
+		
+		workingDir = new JTextField(".");
+		workingDir.setEditable(false);
+		pane.add(workingDir);
+		
+		
 		
 		return pane;
 	}
