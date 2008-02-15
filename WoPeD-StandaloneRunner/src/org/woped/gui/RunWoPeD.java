@@ -87,7 +87,7 @@ public class RunWoPeD extends JApplet {
 			if (UserHolder.getUserID() == -1) {
 				JOptionPane.showMessageDialog(this,"Session not valid!");
 			}
-		} catch (RemoteException e) {
+		}catch (RemoteException e) {
 			// fatal close applet
 			JOptionPane.showMessageDialog(this, "Error during initialisation! \n" + e.getMessage());
 			System.exit(0);
@@ -172,8 +172,8 @@ public class RunWoPeD extends JApplet {
 			}
 
 			// create & init GUI
-			DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDConfiguration(isApplet), null);
-
+			DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDConfiguration(RunWoPeD.isApplet), args);
+			
 			ReferenceProvider helper = new ReferenceProvider();
 			helper.setMediatorReference(mainwindow);
 
