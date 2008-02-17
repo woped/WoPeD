@@ -51,6 +51,7 @@ import org.woped.core.utilities.FileFilterImpl;
 import org.woped.gui.AboutUI;
 import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
+import org.woped.gui.RunWoPeD;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
@@ -417,12 +418,23 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 						if (value == (JOptionPane.YES_OPTION))
 						{
 							// try to save
-							getMediator()
+							if (RunWoPeD.isApplet()) {
+								// if applet then save as Webservice
+								getMediator()
+								.processViewEvent(
+										new ViewEvent(
+												editor,
+												AbstractViewEvent.VIEWEVENTTYPE_FILE,
+												AbstractViewEvent.SAVEWEBSERVICE));
+							} else {
+								// else save normal as file
+								getMediator()
 									.processViewEvent(
 											new ViewEvent(
 													editor,
 													AbstractViewEvent.VIEWEVENTTYPE_FILE,
 													AbstractViewEvent.SAVE));
+							}
 							closeEditor = editorVC.isSaved();
 						} else if (value == JOptionPane.NO_OPTION)
 						{
