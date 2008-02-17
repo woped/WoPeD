@@ -193,37 +193,36 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 				throw new RemoteException("Not enough memory to save model");
 			}
 			
-		} else {
+		} 
 			
-			// save content to File
-			File file = new File(path+modelid+".pnml");
-			if (!file.exists()) {
-				try {
-					file.createNewFile();
-				} catch (IOException e) {
-					// ignore
-				}
-			}
-			// writes the xml string to file
-			BufferedWriter bw = null;
+		// save content to File
+		File file = new File(path+modelid+".pnml");
+		if (!file.exists()) {
 			try {
-				bw = new BufferedWriter(new FileWriter(file));
-				bw.write(content);
-				bw.flush();
-				bw.close();
+				file.createNewFile();
 			} catch (IOException e) {
-				LoggerManager.fatal(Constants.APPLET_LOGGER, "Fehler beim Schreiben in der Datei");
-			} finally {
-				if (bw != null) {
-					try {
-						bw.close();
-					} catch (IOException e) {
-						// ignore						
-					}
+				// ignore
+			}
+		}
+		// writes the xml string to file
+		BufferedWriter bw = null;
+		try {
+			bw = new BufferedWriter(new FileWriter(file));
+			bw.write(content);
+			bw.flush();
+			bw.close();
+		} catch (IOException e) {
+			LoggerManager.fatal(Constants.APPLET_LOGGER, "Fehler beim Schreiben in der Datei");
+		} finally {
+			if (bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					// ignore						
 				}
 			}
-			
-		} 		
+		}
+		 		
 		return modelid;
 	}
 	
@@ -234,13 +233,13 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 * @param userid - Id of User
 	 * @return - free memory
 	 */
-	private int freeMemoryForUser(int userID) throws RemoteException {
-		int maxMemory = 2048;
+	private long freeMemoryForUser(int userID) throws RemoteException {
+		long maxMemory = 2048;
 		if (PropertyLoader.getProperty("rmiMemory") != null) {
-			maxMemory = Integer.parseInt(PropertyLoader.getProperty("rmiMemory"));
+			maxMemory = Long.parseLong(PropertyLoader.getProperty("rmiMemory"));
 		}
 		// memory in use
-		int usageMemory = 0;
+		long usageMemory = 0;
 				
 		// get all availably models for User
 		ArrayList<ModellHolder> models = getList(userID, false);
@@ -251,7 +250,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 			ModellHolder name = (ModellHolder) iterator.next();
 			file = new File(path+name.getModellID()+".pnml");
 			if (file.exists()) {
-				usageMemory += file.getTotalSpace();
+				usageMemory += (file.length() / 1024);
 			}			
 		}
 		// the difference of max and usage is the freeMemory		
@@ -273,7 +272,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		
 		try {
 			stmt = connection.createStatement(Statement.CLOSE_ALL_RESULTS,Statement.RETURN_GENERATED_KEYS);
-			stmt.executeUpdate("INSERT INTO `modellid` (userid,titel,lastedit) VALUES ("+userid+",'"+title+"',NOW())",Statement.RETURN_GENERATED_KEYS);
+			stmt.executeUpdate("INSERT INTO `modelle` (userid,titel,lastedit) VALUES ("+userid+",'"+title+"',NOW())",Statement.RETURN_GENERATED_KEYS);
 			result = stmt.getGeneratedKeys();
 			if (result.next()) {
 				resultValue = result.getInt(1);
@@ -299,7 +298,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 			}
 		}
 		
-		return 0;
+		return resultValue;
 	}
 
 	/**
