@@ -95,7 +95,7 @@ public class ServerUI extends JFrame {
 	}
 	
 	private void showChooseWorkDirDialog() {
-		JFileChooser jfc = new JFileChooser(".");
+		JFileChooser jfc = new JFileChooser(workingDir.getText());
 		jfc.setDialogTitle("Choose working Directory...");
 		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		if (jfc.showDialog(this, "OK") == JFileChooser.APPROVE_OPTION) {
