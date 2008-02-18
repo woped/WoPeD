@@ -160,7 +160,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 		for (ReachabilityGraphPanel rgp : panels) {
 			if(rgp.isShowing()){
 				try {
-					rgp.layoutGraph(type, true);
+					rgp.layoutGraph(rgp.getSelectedType(), true);
 				} catch (SimulationRunningException e) {
 					JOptionPane.showMessageDialog(this, 
 							Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
