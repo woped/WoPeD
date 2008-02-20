@@ -23,7 +23,7 @@ public class ServerLoader {
 	static public IServer instance = null;
 	
 	/**
-	 * IP des Servers fehlt noch
+	 * returns the Instance to the remote Service
 	 * @return
 	 */
 	static public IServer getInstance() {
