@@ -20,7 +20,7 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="compile, makesubprojects, makedir, setversion, copyfiles, buildjar, build-server, makeInstallApplet, purge" />
+	<target name="makedistribution" depends="compile, makesubprojects, makedir, setversion, copyfiles, buildjar, build-WopedServerService, build-WopedServerUI, makeInstallApplet, purge" />
 	<!-- makesrcdist -->
 	<target name="clean">
 		<delete dir="dist" />
@@ -96,12 +96,18 @@
 
 	</target>
 
-	<target name="build-server">
+	<target name="build-WopedServerUI">
 		<jar destfile="dist/WoPeD-server.jar" manifest="dist/MANIFEST-SERVER.mf">
 			<fileset dir="bin" excludes="org/woped/server/ServerLoader.class"/>
 		</jar>
 	</target>
 	
+	<target name="build-WopedServerService">
+			<jar destfile="dist/WoPeD-server-service.jar" manifest="dist/MANIFEST-SERVICE.mf">
+				<fileset dir="bin" excludes="org/woped/server/ServerLoader.class"/>
+			</jar>
+	</target>
+		
 	
 	<target name="buildjar">
 		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
@@ -163,7 +169,7 @@
 		<delete dir="dist/installApplet/"/>
 		<delete dir="dist/WoPeD Starter.xcode" />
 		<delete>
-			<fileset dir="dist" excludes="WoPeD-Applet-${WOPEDVERSION}.zip, WoPeD-server.jar" />
+			<fileset dir="dist" excludes="WoPeD-Applet-${WOPEDVERSION}.zip, WoPeD-server.jar, WoPeD-server-service.jar" />
 		</delete>
 	</target>
 
