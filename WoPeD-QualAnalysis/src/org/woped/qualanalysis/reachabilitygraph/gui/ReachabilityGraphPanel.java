@@ -2,7 +2,7 @@
  * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger.
  * The code was written for a project at BA Karlsruhe in 2007/2008 under authority
  * of Prof. Dr. Thomas Freytag and Andreas Eckleder.
- * 
+ *
  * This class was written by
  * @author Benjamin Geiger
  */
@@ -48,19 +48,19 @@ import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
 import org.woped.translations.Messages;
 
 public class ReachabilityGraphPanel extends JPanel {
-	
+
 	private static final long serialVersionUID = 1L;
 	private IEditor editor = null;
 
 	// Panels
 	private JScrollPane rgp_topPanel = null; // top SplitPane
-	
+
 	// jGraph related
 	private ReachabilityJGraph rgp_jgraph = null; // the jGraph
 	private String logicalFingerprint = null; // PetrinetIdentifier
-	private String legendById = null; 
+	private String legendById = null;
 	private String legendByName = null;
-	
+
 	// Labels
 	private JLabel bottomInfo = null;
 	private JLabel outOfSyncInfo = null;
@@ -69,17 +69,17 @@ public class ReachabilityGraphPanel extends JPanel {
 	private JButton refreshButton = null;
 	private JButton settingsButton = null;
 	private JComboBox layout = null;
-	
+
 	// Helper
 	private boolean legendToggle = false;
-	
+
 	public ReachabilityGraphPanel(IEditor editor) {
 		super();
 		this.editor = editor;
 		this.logicalFingerprint = ((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint();
 		init();
 	}
-	
+
 	private void init() {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
 		this.setLayout(new BorderLayout());
@@ -94,7 +94,7 @@ public class ReachabilityGraphPanel extends JPanel {
         layout.addItemListener(new LayoutBoxItemListener(this));
         layout.addItem(Messages.getString("QuanlAna.ReachabilityGraph.Hierarchic"));
         layout.addItem(Messages.getString("QuanlAna.ReachabilityGraph.Circle"));
-        JButton export = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.ExportAsButton")); 
+        JButton export = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.ExportAsButton"));
         export.addActionListener(new ExportGraphButtonListener(this));
         JPanel northSubPanel = new JPanel();
         northSubPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -127,7 +127,7 @@ public class ReachabilityGraphPanel extends JPanel {
 		this.add(BorderLayout.CENTER, rgp_topPanel);
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
 	}
-	
+
 	/**
 	 * returns the editor for this instance.
 	 * @return
@@ -135,7 +135,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	public IEditor getEditor(){
 		return editor;
 	}
-	
+
 	/**
 	 * returns the selected layout type.
 	 * @return
@@ -143,10 +143,10 @@ public class ReachabilityGraphPanel extends JPanel {
 	protected int getSelectedType(){
 		return this.layout.getSelectedIndex();
 	}
-	
+
 	/**
 	 * layout a graph with given layout type. Layouting can be done without to recmpute the graph.
-	 * In some cases it's needed to recompute e.g. the petri net has changed. 
+	 * In some cases it's needed to recompute e.g. the petri net has changed.
 	 * @param type
 	 * @param computeNew
 	 */
@@ -155,11 +155,11 @@ public class ReachabilityGraphPanel extends JPanel {
 			if(computeNew){
 				if(editor.isTokenGameEnabled()){
 					this.refreshButton.setEnabled(true);
-					throw new SimulationRunningException();	
+					throw new SimulationRunningException();
 				} else {
 					this.remove(rgp_topPanel);
 					this.add(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph(type)));
-					this.updateVisibility();	
+					this.updateVisibility();
 				}
 			} else {
 				ReachabilityGraphModel.layoutGraph(this.rgp_jgraph, type, this.getSize());
@@ -184,7 +184,7 @@ public class ReachabilityGraphPanel extends JPanel {
 		}
 		return ReachabilityGraphModel.layoutGraph(new_graph, type, this.getSize());
 	}
-	
+
 	/**
 	 * returns {@link ReachabilityJGraph} instance of this panel.
 	 * @return
@@ -192,20 +192,20 @@ public class ReachabilityGraphPanel extends JPanel {
 	public ReachabilityJGraph getGraph(){
 		return this.rgp_jgraph;
 	}
-	
+
 	/**
 	 * updated all graph relevant objects after the graph was changed.
 	 */
 	public void updateVisibility(){
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> updateVisibility() " + this.getClass().getName());
-		// is RG in sync ? And Token game not running... 
+		// is RG in sync ? And Token game not running...
 		if(((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint().equals(this.logicalFingerprint) && !editor.isTokenGameEnabled()){
 			if(this.rgp_jgraph.getRoots().length == 0){
 				refreshButton.setEnabled(true);
-				setGraphOutOfSync(true);				
+				setGraphOutOfSync(true);
 			} else {
 				refreshButton.setEnabled(false);
-				setGraphOutOfSync(false);	
+				setGraphOutOfSync(false);
 			}
 		} else {
 			refreshButton.setEnabled(true);
@@ -214,7 +214,7 @@ public class ReachabilityGraphPanel extends JPanel {
 		bottomInfo.setText(this.getGraphInfo());
 		legendInfo.setText(this.getLegend());
 	}
-	
+
 	/**
 	 * sets legendByName. It's used for showing the legend with names or id's.
 	 * @param legend
@@ -222,7 +222,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	protected void setLegendByName(boolean legend){
 		this.legendToggle = legend;
 	}
-	
+
 	/**
 	 * returns the legendByName toggle attribute.
 	 * @return
@@ -230,7 +230,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	protected boolean getLegendByName(){
 		return this.legendToggle;
 	}
-	
+
 	/**
 	 * sets the graph out of sync label.
 	 * @param outOfSync
@@ -239,7 +239,7 @@ public class ReachabilityGraphPanel extends JPanel {
 		this.outOfSyncInfo.setVisible(outOfSync);
 	}
 	/**
-	 * returns the Legend as String. 
+	 * returns the Legend as String.
 	 * @return
 	 */
 	private String getLegend(){
@@ -249,9 +249,9 @@ public class ReachabilityGraphPanel extends JPanel {
 			// iterate over all cells in graph
 			for(int i = 0; i < roots.length; i++){
 				// found a PlaceModel ?
-				if(roots[i] instanceof ReachabilityPlaceModel){				
+				if(roots[i] instanceof ReachabilityPlaceModel){
 					ReachabilityPlaceModel place = (ReachabilityPlaceModel) roots[i];
-					// get the Marking - every Marking has all places with it. 
+					// get the Marking - every Marking has all places with it.
 					Marking marking = (Marking)place.getUserObject();
 					LinkedList<PlaceModel> placeModels = marking.getKeySet();
 					String legendByName_temp = "";
@@ -259,12 +259,12 @@ public class ReachabilityGraphPanel extends JPanel {
 					// build legend string.
 					for(int placeCounter = 0; placeCounter < placeModels.size(); placeCounter++){
 						legendByName_temp += placeModels.get(placeCounter).getNameValue() + ",";
-						legendById_temp += placeModels.get(placeCounter).getId() + ",";	
+						legendById_temp += placeModels.get(placeCounter).getId() + ",";
 					}
 					// remove last comma if there is one
 					if(legendById_temp.length() > 1 && legendByName_temp.length() > 1){
 						legendByName_temp = legendByName_temp.substring(0, legendByName_temp.length()-1);
-						legendById_temp = legendById_temp.substring(0,legendById_temp.length()-1);	
+						legendById_temp = legendById_temp.substring(0,legendById_temp.length()-1);
 					}
 					// return the legend
 					this.legendByName = Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": (" + legendByName_temp + ")";
@@ -288,7 +288,7 @@ public class ReachabilityGraphPanel extends JPanel {
 			}
 		}
 	}
-	
+
 	/**
 	 * returns a string with information on the graph
 	 * @return
@@ -302,11 +302,11 @@ public class ReachabilityGraphPanel extends JPanel {
 			if(roots[i] instanceof ReachabilityEdgeModel){
 				edges++;
 			}
-			if(roots[i] instanceof ReachabilityPlaceModel){				
+			if(roots[i] instanceof ReachabilityPlaceModel){
 				vertices++;
 			}
 		}
-		return Messages.getString("QuanlAna.ReachabilityGraph.Vertices") + " " + vertices + " " + 
+		return Messages.getString("QuanlAna.ReachabilityGraph.Vertices") + " " + vertices + " " +
 			Messages.getString("QuanlAna.ReachabilityGraph.Edges") + " " + edges;
 	}
 	/**
@@ -323,7 +323,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	protected void setRefreshButtonEnabled(boolean b){
 		this.refreshButton.setEnabled(b);
 	}
-	
+
 	/**
 	 * enables parallel rounting for the RG or not.
 	 * ParallelRouting is very slow on big RG's.
@@ -332,7 +332,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	protected void setParallelRouting(boolean enabled){
 		ReachabilityGraphModel.setParallelRouting(rgp_jgraph, enabled);
 	}
-	
+
 	/**
 	 * enables a gray-scale view of the graph.
 	 * @param enabled
@@ -341,20 +341,20 @@ public class ReachabilityGraphPanel extends JPanel {
 		ReachabilityGraphModel.setGrayScale(rgp_jgraph, enabled);
 	}
 }
-	
+
 	class ExportGraphButtonListener implements ActionListener {
 		ReachabilityGraphPanel rgp = null;
-		
+
 		public ExportGraphButtonListener(ReachabilityGraphPanel rgp){
 			this.rgp = rgp;
 		}
 
 		public void actionPerformed(ActionEvent arg0) {
 			rgp.getGraph();
-			
+
 			int filetype = 0;
 			String filepath = null;
-			
+
 			JFileChooser jfc;
 			if (ConfigurationManager.getConfiguration().getHomedir() != null) {
 				jfc = new JFileChooser(new File(ConfigurationManager
@@ -362,7 +362,7 @@ public class ReachabilityGraphPanel extends JPanel {
 			} else {
 				jfc = new JFileChooser();
 			}
-			
+
 			// FileFilters
 			Vector<String> pngExtensions = new Vector<String>();
 			pngExtensions.add("png");
@@ -384,10 +384,10 @@ public class ReachabilityGraphPanel extends JPanel {
 			jfc.setFileFilter(JPGFilter);
 
 			jfc.setFileFilter(PNGFilter);
-			
+
 			jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
 			jfc.showSaveDialog(null);
-			
+
 			if (jfc.getSelectedFile() != null && rgp != null) {
 
 				String savePath = jfc.getSelectedFile().getAbsolutePath()
@@ -419,7 +419,7 @@ public class ReachabilityGraphPanel extends JPanel {
 				filetype = ((FileFilterImpl) jfc.getFileFilter()).getFilterType();
 				filepath = savePath;
 			}
-			
+
 			if (filetype == FileFilterImpl.JPGFilter) {
 				ImageExport.saveJPG(ImageExport
 						.getRenderedImage(rgp), new File(filepath));
@@ -438,52 +438,49 @@ public class ReachabilityGraphPanel extends JPanel {
 	}
 
 	class LegendListener implements ActionListener{
-		
+
 		ReachabilityGraphPanel rgp = null;
-		
+
 		public LegendListener(ReachabilityGraphPanel rgp){
 			this.rgp = rgp;
 		}
 
 		public void actionPerformed(ActionEvent e) {
 			if(rgp.getLegendByName()){
-				rgp.setLegendByName(false);	
+				rgp.setLegendByName(false);
 			} else {
 				rgp.setLegendByName(true);
 			}
 			rgp.updateVisibility();
-		}	
+		}
 	}
-	
+
 	class LayoutBoxItemListener implements ItemListener {
 
 		ReachabilityGraphPanel rgp = null;
-		
+
 		public LayoutBoxItemListener(ReachabilityGraphPanel rgp){
 			this.rgp = rgp;
 		}
-		
+
 		public void itemStateChanged(ItemEvent e) {
 			JComboBox selectedChoice = (JComboBox) e.getSource();
 	        try {
 				rgp.layoutGraph(selectedChoice.getSelectedIndex(), false);
 			} catch (SimulationRunningException e1) {
-				JOptionPane.showMessageDialog(this.rgp, 
-						Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
-						Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Title"), // title
-					    JOptionPane.WARNING_MESSAGE); // type
+				ReachabilityWarning.showSimulationRunningWarning(this.rgp);
 			}
 		}
 	}
-	
+
 	class RefreshGraphButtonListener implements ActionListener {
 
 		ReachabilityGraphPanel rgp = null;
-		
+
 		public RefreshGraphButtonListener(ReachabilityGraphPanel rgp){
 			this.rgp = rgp;
 		}
-		
+
 		public void actionPerformed(ActionEvent arg0) {
 			try {
 				rgp.layoutGraph(rgp.getSelectedType(), true);
@@ -493,17 +490,14 @@ public class ReachabilityGraphPanel extends JPanel {
 				rgp.updateVisibility();
 			} catch (SimulationRunningException e) {
 				rgp.setRefreshButtonEnabled(true);
-				JOptionPane.showMessageDialog(this.rgp, 
-						Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
-						Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Title"), // title
-					    JOptionPane.WARNING_MESSAGE); // type
+				ReachabilityWarning.showSimulationRunningWarning(this.rgp);
 			}
 		}
 	}
 
 	class SettingsButtonListener implements ActionListener {
 		ReachabilityGraphPanel rgp = null;
-		
+
 		public SettingsButtonListener(ReachabilityGraphPanel rgp){
 			this.rgp = rgp;
 		}
