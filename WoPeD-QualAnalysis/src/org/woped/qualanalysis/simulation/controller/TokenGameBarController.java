@@ -21,46 +21,46 @@ import  org.woped.qualanalysis.simulation.*;
 import com.sun.java.swing.plaf.windows.WindowsBorders.InternalFrameLineBorder;
 
 public class TokenGameBarController implements Runnable {
-	
+
 	//constants
 	//Playback Properties
 	public static final int			 EYE_VIEW					   = 2;
 	public static final int 		 SLIM_VIEW					   = 1;
 	public static final int	         EXPERT_VIEW				   = 0;
-	
+
 	private TokenGameBarVC           ExpertView                    = null;
     private ReferenceProvider        desktop                       = null;
 	private TokenGameController      tgController                  = null;
 	private PetriNetModelProcessor   PetriNet                      = null;
-	//Linked Lists 
+	//Linked Lists
 	private LinkedList<TransitionModel>               followingActivatedTransitions = null;
 	private LinkedList               ProcessEditors                = null;
-	
+
 	//Occurring Transitions
 	private TransitionModel          TransitionToOccur             = null;
 	private TransitionModel          BackwardTransitionToOccur     = null;
 	private TransitionModel          helpTransition                = null;
 	private TransitionModel          StepInTransition              = null;
-	
+
 	//SimulationModels
 	private SimulationModel          SaveableSimulation            = null;
-	
+
 	//DefaultListModels
 	private DefaultListModel         acoChoiceItems                = null;
 	private DefaultListModel         ahxHistoryContent             = null;
-	
+
 	//Vectors
 	private Vector <TransitionModel> HistoryVector                 = null;
-	
+
 	//Booleans
 	private boolean                  autoPlayBack                  = false;
 	private boolean                  backward                      = false;
 	private boolean                  newHistory                    = false;
 	private boolean                  endofautoplay                 = false;
 	private boolean                  stepInSubProcess              = false;
-	
+
 	//Integers
-	private int                      HistoryIndex                  = 0; 
+	private int                      HistoryIndex                  = 0;
 	private int			             occurtimes					   = 3;
 	private int 		             delaytime					   = 1;
 	private int	                     viewmode					   = 0;
@@ -68,21 +68,21 @@ public class TokenGameBarController implements Runnable {
 	//SlimFrames
 	private SlimInternalFrame        SlimView                      = null;
 	private SlimInternalFrame        EyeView                       = null;
-	
-	
+
+
 	public TokenGameBarController(TokenGameController tgController, PetriNetModelProcessor PetriNet)
 	{
 		this.PetriNet     = PetriNet;
 		this.tgController = tgController;
-		
+
 		acoChoiceItems = new DefaultListModel();
-		ahxHistoryContent = new DefaultListModel();		
-		
+		ahxHistoryContent = new DefaultListModel();
+
 		addControlElements();
 	}
-	
+
 	/**
-	 * The ExpertView and SlimView Objects will either been created or shown, depending on the case 
+	 * The ExpertView and SlimView Objects will either been created or shown, depending on the case
 	 * if they already exist or not
 	 */
 	public void addControlElements()
@@ -101,22 +101,24 @@ public class TokenGameBarController implements Runnable {
         p.setLocation(desktop.getDesktopReference().getLocation().getX(), (int)desktop.getDesktopReference().getHeight()-ExpertView.getHeight());
         desktop.getDesktopReference().add(ExpertView).setLocation(p);
         ExpertView.moveToFront();
-        
+
         SlimView = new SlimInternalFrame(this, acoChoiceItems, ahxHistoryContent, SLIM_VIEW);
         desktop.getDesktopReference().add(SlimView).setLocation(p);
         SlimView.moveToFront();
-        
+
         EyeView = new SlimInternalFrame(this, acoChoiceItems, ahxHistoryContent, EYE_VIEW);
         desktop.getDesktopReference().add(EyeView).setLocation(p);
         EyeView.moveToFront();
-        
+
         setViewMode(viewmode);
-        
+
+        // Add InternalFrameListener to the EditorFrame to get informed about changes.
+        desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));
       }
 	}
-	
+
 	/**
-	 * The TokenGameBar will be removed from the desktop 
+	 * The TokenGameBar will be removed from the desktop
 	 */
 	public void removeControlElements()
 	{
@@ -127,13 +129,13 @@ public class TokenGameBarController implements Runnable {
 		EyeView.setVisible(false);
        	desktop.getDesktopReference().remove(ExpertView);
        	desktop.getDesktopReference().remove(SlimView);
-     	desktop.getDesktopReference().remove(EyeView); 	
+     	desktop.getDesktopReference().remove(EyeView);
        	ExpertView = null;
        	SlimView = null;
        	EyeView = null;
       }
 	}
-	
+
 	/*
 	 * Actions performed "in" the ExpertView / SlimView
 	 */
@@ -143,7 +145,7 @@ public class TokenGameBarController implements Runnable {
 	 * Occurence and Depending Actions
 	 * ********************************************************************************************
 	 */
-	
+
 	/**
 	 * This method let the active transition occur (currently only for sequences, as soon
 	 * as two transitions are active, the method cannot occur so far)
@@ -151,7 +153,7 @@ public class TokenGameBarController implements Runnable {
 	public synchronized void occurTransition(boolean BackWard)
 	{
 		/*
-		 * Backward is done with the 
+		 * Backward is done with the
 		 */
 	  if( BackWard )
 	  {
@@ -166,7 +168,7 @@ public class TokenGameBarController implements Runnable {
 			  previousItem();
 			  while(BackwardTransitionToOccur.getId().contains("a"))
 			  {
-				previousItem();  
+				previousItem();
 			  }
 		  }
 		  TransitionToOccur = BackwardTransitionToOccur;
@@ -176,10 +178,10 @@ public class TokenGameBarController implements Runnable {
 		  }
 		  tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 		}
-	  } 
+	  }
 	  else
 	  {
-		 
+
 		  //AFAIK needed to make automatic backward stepping
 		  BackwardTransitionToOccur = TransitionToOccur;
 		  if(playbackRunning())
@@ -187,9 +189,9 @@ public class TokenGameBarController implements Runnable {
 			  if((HistoryIndex < HistoryVector.size()) && (HistoryIndex >= 0))
 			  {
 			    TransitionToOccur = (TransitionModel)HistoryVector.get(HistoryIndex++);
-			    
+
 			    /*
-			     * If History steps into a SubProcess, do so as well 
+			     * If History steps into a SubProcess, do so as well
 			     */
 			    if((!TransitionToOccur.getId().contains("t")) && (!TransitionToOccur.getId().contains("a")))
 			    {
@@ -199,7 +201,7 @@ public class TokenGameBarController implements Runnable {
 			    	  if(helpTransition.getId().contains(TransitionToOccur.getId()) && (helpTransition.getId().contains("a") || helpTransition.getId().contains("t")))
 			    	  {
 			    		 tgController.setStepIntoSubProcess(true);
-			    		 
+
 			    	  }
 			    	}
 			    }
@@ -222,9 +224,9 @@ public class TokenGameBarController implements Runnable {
                	   {
                      changeTokenGameReference(null, true);
                    }
-                  }			    			
-			    }	   
-			    
+                  }
+			    }
+
 			  //Secure the net, so that no playback further than the last Simulation point can be done
 			  }
 			  else
@@ -246,20 +248,20 @@ public class TokenGameBarController implements Runnable {
 			 }
 			 else
 			 {
-				 tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard); 
+				 tgController.occurTransitionbyTokenGameBarVC(TransitionToOccur, BackWard);
 			 }
 		  }
-	  } 
+	  }
 	}
 
-	
-      	
 
-	
+
+
+
 	/**
 	 * This method let the multiple transition occur (now 3 times) (only for sequences,
 	 * as two transitions are active, the method will stop)
-	 * 
+	 *
 	 */
 	public void occurTransitionMulti(boolean BackWard)
 	{
@@ -293,21 +295,21 @@ public class TokenGameBarController implements Runnable {
 				}
 				i++;
 			}
-		}		
+		}
 	}
-	
+
 	/**
 	 * will fill the "BackwardTransitionToOccur" with Data
 	 */
 	public void previousItem()
-	{		  
+	{
 	  if(HistoryVector != null)
-	  {  
+	  {
 		if(!playbackRunning())
 		{
 			 if (HistoryVector.size() > 0)
 			 {
-			   BackwardTransitionToOccur = (TransitionModel)HistoryVector.remove(HistoryVector.size()-1);		
+			   BackwardTransitionToOccur = (TransitionModel)HistoryVector.remove(HistoryVector.size()-1);
 			   if (isRecordSelected())
 			   {
 			   	ahxHistoryContent.remove(ahxHistoryContent.size()-1);
@@ -333,7 +335,7 @@ public class TokenGameBarController implements Runnable {
 				return;
 			}
 		}
-	  }			
+	  }
 	}
 
 	/**
@@ -345,10 +347,10 @@ public class TokenGameBarController implements Runnable {
 		backward = BackWard;
 		new Thread(this).start();
 	}
-	
+
 	/**
 	 * This method will be called by the EasyChoice-Event and will handover the
-	 * chosen transition to the occurTransition() method 
+	 * chosen transition to the occurTransition() method
 	 */
 	public void proceedTransitionChoice(int index)
 	{
@@ -361,11 +363,11 @@ public class TokenGameBarController implements Runnable {
 			}
 			stepInSubProcess = false;
 		    occurTransition(false);
-		}	
+		}
 	}
-	
+
 	/**
-	 * This method generates a random index and choose one transition if their are 
+	 * This method generates a random index and choose one transition if their are
 	 * more then one
 	 */
 	public synchronized void proceedTransitionChoiceAuto()
@@ -380,12 +382,12 @@ public class TokenGameBarController implements Runnable {
 			occurTransition(false);
 		}
 	}
-	
-	
+
+
 	/*
 	 * ChoiceBox Handling section
 	 */
-	
+
 	/**
 	 * Adds a choice-item to followingActivatedTransitions
 	 */
@@ -397,19 +399,19 @@ public class TokenGameBarController implements Runnable {
 		}
 		followingActivatedTransitions.addLast(transition);
 	}
-	
-	
+
+
 	/**
 	 * Fills multi-choice box with content from followingActivatedTransitions
 	 */
 	public void fillChoiceBox()
 	{
-	  //prevent from NullPointerException	
+	  //prevent from NullPointerException
 	  if(followingActivatedTransitions == null)
 	  {
 		  return;
 	  }
-	  if(!playbackRunning())	
+	  if(!playbackRunning())
 	  {
 		clearChoiceBox(); //To ensure that the box is empty
 		if((getViewMode() > 0) && stepInSubProcess)
@@ -422,7 +424,7 @@ public class TokenGameBarController implements Runnable {
 		}
 		if(followingActivatedTransitions.size() > 1)
 		{
-			for(int i = 0; i < followingActivatedTransitions.size(); i++)				
+			for(int i = 0; i < followingActivatedTransitions.size(); i++)
 			{
 				helpTransition = (TransitionModel)followingActivatedTransitions.get(i);
      			acoChoiceItems.addElement(helpTransition.getNameValue());
@@ -458,28 +460,28 @@ public class TokenGameBarController implements Runnable {
 			ExpertView.enableForwardButtons();
 		}
 	}
-	
 
-	
+
+
 	/*
 	 * History Handling Section
 	 */
-	
+
 	/**
 	 * Starts the HistoryPlayback
 	 */
     public void startHistoryPlayback()
     {
     	HistoryIndex = 0;
-    	TransitionToOccur = HistoryVector.get(HistoryIndex);   	
+    	TransitionToOccur = HistoryVector.get(HistoryIndex);
     }
-	
-	
+
+
 	/**
 	 * Adds one more Item to the History List, to track the walked way
 	 */
     public void addHistoryItem(TransitionModel transition)
-    {	
+    {
     	if (HistoryVector == null)
     	{
     		HistoryVector = new Vector<TransitionModel>(1);
@@ -490,18 +492,18 @@ public class TokenGameBarController implements Runnable {
     	  HistoryVector.add(transition);
     	}
     }
-    
+
     /**
      * If History-tracking ("Recording") has been chosen by the user,
      * Every occurred transition is added to this List
-     *  
+     *
      * @param transition
      */
     public void addHistoryListItem(TransitionModel transition)
     {
     	ahxHistoryContent.addElement(transition.getNameModel());
     }
-    
+
     /**
      * Will create a Simulation-Object that can be added to the Simulations-Vector
      */
@@ -513,7 +515,7 @@ public class TokenGameBarController implements Runnable {
     	  newHistory = true;
     	}
     }
-	
+
     /**
      * Adds the History (SimulationModel) Objekt to the Simulations Vector
      */
@@ -522,7 +524,7 @@ public class TokenGameBarController implements Runnable {
     	PetriNet.addSimulation(SaveableSimulation);
     	tgController.getThisEditor().setSaved(false);
     }
-    
+
     /**
      * Loads the History into the HistoryContent
      */
@@ -537,10 +539,10 @@ public class TokenGameBarController implements Runnable {
     		ahxHistoryContent.addElement(HistoryVector.get(i).getNameValue());
     	}
     }
-    
-    
+
+
     /**
-     * Overwrites an existing history with the current one. 
+     * Overwrites an existing history with the current one.
      * @param index
      */
     public void overwriteHistory(int index)
@@ -548,17 +550,17 @@ public class TokenGameBarController implements Runnable {
     	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
     	SaveableSimulation.setOccuredTransitions((Vector<TransitionModel>)HistoryVector.clone());
     }
-    
-    
+
+
     /**
-     * Deletes the a saved simulation 
+     * Deletes the a saved simulation
      * @param index
      */
     public void deleteHistory(int index)
     {
     	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().remove(index);
     }
-    
+
 	/**
 	 * Will clear the History-Vector, the HistoryContent and will set the newHistory-variable to "true"
 	 */
@@ -568,25 +570,25 @@ public class TokenGameBarController implements Runnable {
 		HistoryVector = null; //Set reference to null, so that a new history-Vector will be created!
 		newHistory = true;
 	}
-	
-    
+
+
    /*
     * Threading Methods
-    */ 
+    */
 	/**
 	 * Automatic TokenGame
 	 * This Method occur automatic all transition if autoplayback is true. Choice transition will be
 	 * occured by random choice
-	 * 
-	 * ToDo: 
+	 *
+	 * ToDo:
 	 * 	1) refreshNet after occurence - done
 	 *  2) random choice only if no probabilities are set
 	 */
 	public void run() {
-		
+
 		auto();
 	}
-	
+
 	/**
 	 * Threading
 	 */
@@ -609,7 +611,7 @@ public class TokenGameBarController implements Runnable {
 			enableButtonforAutoPlayback();
 		}
 	}
-	
+
 	public void moveForward()
 	{
 		if(followingActivatedTransitions.size() == 0)
@@ -625,11 +627,11 @@ public class TokenGameBarController implements Runnable {
 			else
 			{
 				occurTransition(false);
-				
+
 			}
 		}
 	}
-	
+
 	public void moveBackward()
 	{
 		if(BackwardTransitionToOccur == null)
@@ -641,10 +643,10 @@ public class TokenGameBarController implements Runnable {
 			occurTransition(true);
 		}
 	}
-	
 
-    
-    
+
+
+
     /*
      * Setters and Getters
      */
@@ -652,12 +654,12 @@ public class TokenGameBarController implements Runnable {
 	{
 		return followingActivatedTransitions;
 	}
-	
+
 	public SimulationModel getHistoryData()
 	{
 		return SaveableSimulation;
 	}
-	
+
 	public DefaultListModel getHistoryContent()
 	{
 		return ahxHistoryContent;
@@ -667,12 +669,12 @@ public class TokenGameBarController implements Runnable {
 	{
 		return acoChoiceItems;
 	}
-	
+
     public void setToOldHistory()
     {
     	newHistory = false;
     }
-	
+
 	/**
 	 * Switches the AutoPlayback on or off
 	 * @param onoff
@@ -694,12 +696,12 @@ public class TokenGameBarController implements Runnable {
 			fillChoiceBox();
 		}
 	}
-	
+
 	public void setStepIn(boolean StepIn)
 	{
 		stepInSubProcess = StepIn;
 	}
-	
+
 	/**
 	 * sets the EndOfAutoPlay flag
 	 * @param end
@@ -708,7 +710,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		endofautoplay = end;
 	}
-	
+
 	/**
 	 * Determines witch View is switched on
 	 * @return
@@ -717,7 +719,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		return viewmode;
 	}
-	
+
 	/**
 	 * Set Viewmode Variable
 	 */
@@ -731,7 +733,7 @@ public class TokenGameBarController implements Runnable {
 				EyeView.getSlimPanel().setChoiceListInvisible();
 				EyeView.setVisible(false);
 				ExpertView.setVisible(true);
-				SlimView.setVisible(false);				
+				SlimView.setVisible(false);
 				break;
 			case SLIM_VIEW:
 				ExpertView.enableRecordButton();
@@ -761,7 +763,7 @@ public class TokenGameBarController implements Runnable {
 				break;
 		}
 	}
-	
+
 	/**
 	 * Determines how often fast fw / bw occure
 	 */
@@ -769,7 +771,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		return occurtimes;
 	}
-	
+
 	/**
 	 * Determines how often fast fw / bw occure
 	 */
@@ -777,7 +779,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		occurtimes = oc;
 	}
-	
+
 	/**
 	 * Determines the delay time for autoplayback
 	 */
@@ -785,7 +787,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		return delaytime;
 	}
-	
+
 	/**
 	 * Set DelayTime for Autoplayback
 	 */
@@ -793,48 +795,48 @@ public class TokenGameBarController implements Runnable {
 	{
 		delaytime = dt;
 	}
-	
+
 	/*
 	 * Special Getters: Reference Providers
 	 * IndexNumbers and so on
 	 */
-	
+
 	/**
-	 * 
+	 *
 	 * @return Reference to TokenGameController
 	 */
 	public TokenGameController getTokenGameController()
 	{
 		return tgController;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @return Reference to TokenGameBarVC
 	 */
 	public TokenGameBarVC getExpertView()
 	{
 		return ExpertView;
 	}
-	
+
     /**
-     * 
+     *
      * @return Reference to SlimInternalFrame (SlimView)
-     */	
+     */
   	public SlimInternalFrame getSlimView()
 	{
 		return SlimView;
 	}
 
 	/**
-	 * 
+	 *
 	 * @return Reference to the PetriNet
 	 */
 	public PetriNetModelProcessor getPetriNet()
 	{
 		return PetriNet;
 	}
-	
+
 	/**
 	 * returns the ID of the transition which has to occur next
 	 * @return
@@ -849,16 +851,16 @@ public class TokenGameBarController implements Runnable {
 		else if(SlimView.getSlimPanel().getSelectedChoiceID() > -1)
 		{
 			SlimView.getSlimPanel().setChoiceListInvisible();
-			return SlimView.getSlimPanel().getSelectedChoiceID();	
+			return SlimView.getSlimPanel().getSelectedChoiceID();
 		}
 		else if(EyeView.getSlimPanel().getSelectedChoiceID() > -1)
 		{
 			EyeView.getSlimPanel().setChoiceListInvisible();
-			return EyeView.getSlimPanel().getSelectedChoiceID();	
+			return EyeView.getSlimPanel().getSelectedChoiceID();
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * Determines if the AutoPlayback is switched on
 	 * @return
@@ -867,21 +869,21 @@ public class TokenGameBarController implements Runnable {
 	{
 		return autoPlayBack;
 	}
-	
-	
+
+
     /*
      * boolean checks ("is"-checks)
      */
-    
+
 	/**
 	 * Returns the value for the endofautoplay variable
-	 * 
+	 *
 	 */
 	public boolean isEndOfAutoPlay()
 	{
 		return endofautoplay;
 	}
-	
+
 	/**
 	 * Returns the value for the backward vasriable
 	 * @return
@@ -890,7 +892,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		return backward;
 	}
-	
+
 	/**
 	 * Checks if the RecordButton is selected
 	 */
@@ -898,17 +900,17 @@ public class TokenGameBarController implements Runnable {
 	{
     	return ExpertView.isRecordSelected();
 	}
-    
+
     public boolean isNewHistory()
     {
     	return newHistory;
     }
-    
+
 	/**
 	 * this method is to check whether a real playback is running, a walkthrough without recording or a record session.
 	 * If it is a real playback, the application will not give the user any choice-possibility but it will just follow
 	 * the history in the history-box
-	 * @return true / false 
+	 * @return true / false
 	 */
 	public boolean playbackRunning()
 	{
@@ -918,10 +920,10 @@ public class TokenGameBarController implements Runnable {
 		}
 		else
 		{
-			return false;	
+			return false;
 		}
 	}
-	
+
 	/**
 	 * checks if the TokenGame is currently running
 	 * @return true if it is running
@@ -937,12 +939,12 @@ public class TokenGameBarController implements Runnable {
 			return false;
 		}
 	}
-	
+
 	/*
-	 * Disable / Enable Buttons from ExpertView and SlimView 
-	 * 
+	 * Disable / Enable Buttons from ExpertView and SlimView
+	 *
 	 */
-	
+
 	/**
 	 * Enables the StepDown-Button in the ExpertView
 	 * will show the StepDown-Option on SlimView-PopUp
@@ -955,9 +957,9 @@ public class TokenGameBarController implements Runnable {
 		  stepInSubProcess = true;
 		  StepInTransition = transition;
 		}
-		
+
 	}
-	
+
 	/**
 	 * Disables the StepDown-Button in the ExpertView
 	 * and will hide the StepDown-Option on SlimView-PopUp
@@ -966,7 +968,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.disableStepDown();
 	}
-	
+
 	/**
 	 * Enables the StepWiseButton on ExpertView
 	 * Toggles the Step/Run Button on SlimView
@@ -980,7 +982,7 @@ public class TokenGameBarController implements Runnable {
 	/**
 	 * Disables the StepWiseButton on ExpertView
 	 * Un-toggles the Step/Run Button on SlimView
-	 */	
+	 */
 	public void disableStepwiseButton()
 	{
 		ExpertView.disableStepwiseButton();
@@ -995,7 +997,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.enableAutoPlaybackButton();
 	}
-	
+
 	/**
 	 * Disables the AutoPlayButton on ExpertView
 	 * Toggles the Step/Run Button on SlimView
@@ -1012,7 +1014,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.enablePlayButton();
 	}
-	
+
 	/**
 	 * disables the PlayButton on ExpertView and on SlimView
 	 */
@@ -1020,7 +1022,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.disablePlayButton();
 	}
-	
+
 	/**
 	 * Enables the RecordButton.
 	 * This Button is only available in ExpertView
@@ -1029,7 +1031,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.enableRecordButton();
 	}
-	
+
 	/**
 	 * Disables the RecordButton.
 	 * This Button is only available in ExpertView
@@ -1038,7 +1040,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.disableRecordButton();
 	}
-		
+
 	/**
 	 * Calls the ExpertView enableButtonforAutoPlayback
 	 */
@@ -1046,7 +1048,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.enableButtonforAutoPlayback();
 	}
-	
+
 	/**
 	 * Calls the ExpertView disableButtonforAutoPlayback
 	 */
@@ -1054,7 +1056,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.disableButtonforAutoPlayback();
 	}
-	
+
 	/**
 	 * Calls the ExpertView enableBackWardButtons
 	 */
@@ -1062,7 +1064,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ExpertView.enableBackWardButtons();
 	}
-	
+
 	/**
 	 * Calls the ExpertView disableBackWardButtons
 	 */
@@ -1091,12 +1093,12 @@ public class TokenGameBarController implements Runnable {
 			}
 		}
 	}
-	
-	
+
+
 	/*
 	 * MISC
 	 */
-	
+
 	/**
 	 * Cleans up the ChoiceBox and the ChoiceArray.
 	 * Is called by the TokenGameController.transitionClicked method and therefore
@@ -1110,13 +1112,13 @@ public class TokenGameBarController implements Runnable {
 			followingActivatedTransitions.clear();
 		}
 	}
-	
+
 	public void changeTokenGameReference(TokenGameController newReference, boolean up)
 	{
 		if(up)
 		{
 			if((ProcessEditors != null) && (ProcessEditors.size() > 0))
-			{              
+			{
 			  //Remove all remaining tokens in the Editor
 			  tgController.TokenGameRetore();
 			  tgController.closeSubProcess();
@@ -1127,7 +1129,7 @@ public class TokenGameBarController implements Runnable {
 			  }
 			  cleanupTransition();
 			  tgController.TokenGameCheckNet();
-              
+
 			}
 		}
 		else
@@ -1144,7 +1146,7 @@ public class TokenGameBarController implements Runnable {
 			}
 		}
 	}
-	
+
 	public void setPlayIcon(boolean record)
 	{
 		ExpertView.setPlayIcon(record);
