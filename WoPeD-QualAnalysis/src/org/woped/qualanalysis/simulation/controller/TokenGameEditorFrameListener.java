@@ -11,32 +11,25 @@ public class TokenGameEditorFrameListener implements InternalFrameListener {
 		this.tgbc = tgbc;
 	}
 
-	@Override
 	public void internalFrameActivated(InternalFrameEvent e) {
 	}
 
-	@Override
 	public void internalFrameClosed(InternalFrameEvent e) {
 		tgbc.removeControlElements();
 	}
 
-	@Override
 	public void internalFrameClosing(InternalFrameEvent e) {
 	}
 
-	@Override
 	public void internalFrameDeactivated(InternalFrameEvent e) {
 	}
 
-	@Override
 	public void internalFrameDeiconified(InternalFrameEvent e) {
 	}
 
-	@Override
 	public void internalFrameIconified(InternalFrameEvent e) {
 	}
 
-	@Override
 	public void internalFrameOpened(InternalFrameEvent e) {
 	}
 
