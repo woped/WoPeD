@@ -10,22 +10,47 @@
 
 <body>
 
-<h2></h2>
+<h2>Reachability Graph</h2>
+The reachability of a petri net's states can be represented with a <i>reachability graph</i>, a directed graph whose points represent
+states (i.e. <i>M</i>) and arcs represent transitions between two such states. The graph is constructed through breadth-first
+search as follows: the starting state (<span class="texhtml"><i>M</i><sub>0</sub></span>) is taken, and all
+possible transitions are explored from this state, then the transitions from these states, and so on. As the
+reachability graph may be infinitely large, breadth-first search is preferred because depth-first search would not
+find all possible states even if given infinite time.<br>
+<i>(This definition was taken from wikipedia.org)</i>
+<p>&nbsp;</p>
+<h3>Start Reachability Graph</h3>
+Start the reachability graph calculation by clicking the [W] - Button in the toolbar. The Button is only activated if a editor
+window is open and focused.
+<p></p>
+WoPeD will create only one additional window for the reachability graphs. All editors share this single reachability graph window.
+In order to that, the reachability graph window will automatically be filled with the reachability graph of the focused editor.
+<h3>Reachability Graph Window</h3>
+<p>[IMG]</p>
+<<ul>sada</ul><h4>1 Title</h4>
+In title is displayed the name of the actual shown editor.
+<h4>2 Graph Drawing Place</h4>
+The main area of the window consists of graph drawing area. There the graph is displayed. If the resulting graph ist bigger than
+the drawing place, it's surrouded by scroll bars. (Behaviour is analog to a normal petri net editor window.)
+<h4>3 Toolbar</h4>
+It's a wonderful toolbar !
+<h5>3.1 Refresh - Button</h5>
+It's a wonderful toolbar !
+<h5>3.2 Layout Chooser</h5>
+It's a wonderful toolbar !
+<h5>3.3 Settings - Button</h5>
+It's a wonderful toolbar !
+<h5>3.4 Export as - Button</h5>
+It's a wonderful toolbar !
+<h4>4 Statusbar</h4>
+It's a wonderful toolbar !
 
-<p></p>
-<p>&nbsp;</p>
-<p></p>
-<p>&nbsp;</p>
-<h3>To add an assign activity to the process:</h3>
+
 <table border="0" width="62%" id="table1">
 	<tr>
-		<td width="532" valign="top"><p>1.	In the From section create a variable of a specified type</p>
-		<p>2.	In the To section create also a variable of a specified type</p>
-		<p><img border="0" src="../images/bpel_create_var.jpg"></p>
+		<td>
 
-		<p>The To type must be compatible with the From type!!!</p>
 		</td>
-		<td><p><img border="0" src="../images/bpel_activity_assign.jpg"></p></td>
 	</tr>
 </table>
 </body>
