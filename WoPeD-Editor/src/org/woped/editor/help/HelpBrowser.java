@@ -155,7 +155,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
 		{
 			// locate HTML files in local folder
 			File f = new File(".");
-			String filePath = "file:/" + f.getAbsolutePath();
+			String filePath = "file:" + f.getAbsolutePath();
 			int dotAt = filePath.lastIndexOf(".");
 			currFileName = filePath.substring(0, dotAt) + "doc/"
 					+ Messages.getString("Help.Dir") + currFileName;
