@@ -111,10 +111,9 @@ public class TokenGameBarController implements Runnable {
         EyeView.moveToFront();
 
         setViewMode(viewmode);
-
-        // Add InternalFrameListener to the EditorFrame to get informed about changes.
-        desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));
       }
+      // Add InternalFrameListener to the EditorFrame to get informed about changes.
+      desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));
 	}
 
 	/**
