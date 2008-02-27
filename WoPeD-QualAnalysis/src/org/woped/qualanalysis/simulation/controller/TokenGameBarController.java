@@ -118,7 +118,6 @@ public class TokenGameBarController implements Runnable {
 	  // the InternalFrameListener maybe bound to the ReachablilityGraph-Frame or another JInternalFrame
 	  if(desktop.getMediatorReference().getUi().getEditorFocus() instanceof IEditor){
 		  desktop.getMediatorReference().getUi().selectEditor(desktop.getMediatorReference().getUi().getEditorFocus());
-		  System.out.println(desktop.getDesktopReference().getSelectedFrame().getClass().getName());
 		  desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));  
 	  }
 	}
