@@ -12,6 +12,7 @@ import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.SimulationModel;
@@ -113,7 +114,13 @@ public class TokenGameBarController implements Runnable {
         setViewMode(viewmode);
       }
       // Add InternalFrameListener to the EditorFrame to get informed about changes.
-      desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));
+	  // Need to manually put the last selected editor to foreground/fucos. Cause if not
+	  // the InternalFrameListener maybe bound to the ReachablilityGraph-Frame or another JInternalFrame
+	  if(desktop.getMediatorReference().getUi().getEditorFocus() instanceof IEditor){
+		  desktop.getMediatorReference().getUi().selectEditor(desktop.getMediatorReference().getUi().getEditorFocus());
+		  System.out.println(desktop.getDesktopReference().getSelectedFrame().getClass().getName());
+		  desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));  
+	  }
 	}
 
 	/**
