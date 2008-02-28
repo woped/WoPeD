@@ -1,0 +1,39 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Reachability Graph Extras</title>
+<link rel="stylesheet" type="text/css" href="../woped.css">
+</head>
+
+<body>
+
+<h2>Reachability Graph Extras</h2>
+<h3>Coverability</h3>
+Computing a reachability graph can be very difficult to handle. Some graph tend to get very big. And some graph are not really solvable
+in available time. There is special case of graph that are not ending while computing them. It has to do with unboundedness of a petri
+net. A unbounded petri net has places, that can get infinit number of tokens.<br>
+To handle this situation and to nevertheless get the graph drawn you can compute a coverability graph. This graph is just like a normal
+reachability graph but it can handle unbounded places. It represents unbounded places by a "w" in markings, where a place gets unbound.
+<p></p>
+<p><img border="0" src="../images/rg_window_coverability.png"></p>
+<p></p>
+<h3>Edge Color Highlighting</h3>
+Sometimes - in large reachability graph - it can be difficult to see the incoming and outgoing edges of a marking.
+For that reason it is possible to click on a marking to highlight the surrounding edges. See screenshot below at mark 1.<br><br>
+Outgoing edges are highlighted in green.<br>
+Incoming edges are highlighted in red.
+<p></p>
+<p><img border="0" src="../images/rg_window_color_transition.png"></p>
+<p></p>
+You can also click on a edge so single highlight it. That's useful if you want to see which edge label belongs to which edge.
+See screenshot below at mark 2.
+<p></p>
+<p><img border="0" src="../images/rg_window_color_transition2.png"></p>
+
+<a href="reachability_graph.htm">&lt;&lt; back to reachability graph</a>
+</body>
+
+</html>
