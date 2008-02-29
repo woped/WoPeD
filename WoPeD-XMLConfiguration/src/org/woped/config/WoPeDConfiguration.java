@@ -875,6 +875,15 @@ public class WoPeDConfiguration implements IConfiguration
         String variant = null;
 
         Locale userLocale = null;
+        
+        // language is english if startedAsApplet, using default Resource File required
+        // Locale.setDefault not possible because of AccessControlException
+        if (startedAsApplet){
+        	setLocaleCountry(null);
+        	setLocaleLanguage(null);
+        	setLocaleVariant(null);
+        	language = "";
+        }
 
         if (getLocaleLanguage() != null)
         {
@@ -910,6 +919,6 @@ public class WoPeDConfiguration implements IConfiguration
 
     public Locale getLocale()
     {
-        return this.locale;
+    	return this.locale;
     }
 }
