@@ -169,6 +169,9 @@ public class RunWoPeD extends JApplet {
 					LoggerManager.info(Constants.GUI_LOGGER, "apple.laf.useScreenMenuBar");
 				}
 				Locale.setDefault(Locale.ENGLISH);
+			}else{
+				// applet as default english
+				applet.setLocale(Locale.ENGLISH);
 			}
 
 			// create & init GUI
@@ -181,7 +184,6 @@ public class RunWoPeD extends JApplet {
 			if (isApplet) {
 				HelpBrowser.getInstance().setStartedAsApplet(true);
 				HelpBrowser.getInstance().setCodeBase(applet.getCodeBase());
-				System.out.println(applet.getCodeBase());
 			}
 		} catch (RuntimeException e1) {
 			e1.printStackTrace();
