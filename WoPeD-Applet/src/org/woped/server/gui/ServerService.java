@@ -9,6 +9,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.RMISocketFactory;
 
+import org.woped.applet.Constants;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.server.ServerImpl;
 import org.woped.server.tunnel.FixedPortRMISocketFactory;
 
@@ -24,8 +26,8 @@ public class ServerService {
 				
 		
 		if (args.length != 3) {
-			System.out.println("Not Enough Params");
-			System.out.println("Server host servicename workingDirectory");
+			LoggerManager.error(Constants.APPLET_LOGGER,"Not Enough Params");
+			LoggerManager.error(Constants.APPLET_LOGGER,"Server host servicename workingDirectory");
 			System.exit(-1);
 		} else {
 			host = args[0];
@@ -33,11 +35,11 @@ public class ServerService {
 			workingDir = args[2];
 		
 			try {
-				System.out.println("Server starts up");
+				LoggerManager.error(Constants.APPLET_LOGGER,"Server starts up");
 				RMISocketFactory.setSocketFactory(new FixedPortRMISocketFactory());
 				LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
 				Naming.bind("rmi://"+host+"/"+service, new ServerImpl(workingDir));
-				System.out.println("Server ready");
+				LoggerManager.error(Constants.APPLET_LOGGER,"Server ready");
 			} catch (RemoteException e) {
 				e.printStackTrace();
 				System.exit(-1);
