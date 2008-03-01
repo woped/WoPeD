@@ -1,16 +1,20 @@
 package org.woped.qualanalysis.simulation;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import org.woped.qualanalysis.simulation.controller.*;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.gui.*;
 import java.awt.*;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 import org.woped.core.model.petrinet.SimulationModel;
-import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.translations.Messages; 
 
+@SuppressWarnings("serial")
 public class TokenGameHistoryManagerVC extends JDialog
 {
 	//Declaration of the Panel(s)
@@ -20,9 +24,9 @@ public class TokenGameHistoryManagerVC extends JDialog
 	private JTextField   NameEntry          = null;
 	
 	//Declaration of the Listbox
-	private JList        SavedHistory       = null;
+	private JTable        SavedHistory       = null;
 	private JScrollPane  ScrollSavedHistory = null;
-	private DefaultListModel SavedHistoryContent = null;
+	private DefaultTableModel SavedHistoryContent = null;
 	
 	//Declaration of the Buttons
 	private JButton      SaveNewHistory     = null;
@@ -34,8 +38,13 @@ public class TokenGameHistoryManagerVC extends JDialog
 	private GridBagConstraints hmgbc        = null;
 	private int          ButtonSizeX        = 50;
 	private int          ButtonSizeY        = 25;
-	private int          ListSizeX          = 200;
+	private int          ListSizeX          = 280;
 	private int          ListSizeY          = 200;
+	private int			 ColumnSizeDate		= 100;
+	
+	//Declare Variables For Resolving Buttonstatus
+	private boolean		newHistory				= false;
+	private boolean		savedHistorySelected	= false;
 	
 	//Declare Reference-Variables
 	private TokenGameBarController   RemoteControl    = null;
@@ -52,8 +61,9 @@ public class TokenGameHistoryManagerVC extends JDialog
 		super((JFrame)mediator, Messages.getTitle("Tokengame.HistoryManager"), true);
 		RemoteControl = RC;
 		this.add(addHistoryManagerPanel());
+		this.initializeElementStatus();
 		this.setLocationRelativeTo(null);
-		this.setSize(300,300);
+		this.setSize(380,300);
 		this.setResizable(false);
 	}
 	
@@ -88,10 +98,22 @@ public class TokenGameHistoryManagerVC extends JDialog
 	    //Build Entry-Field
 	    NameEntry          = new JTextField();
 	    NameEntry.setPreferredSize(new Dimension(ListSizeX, ButtonSizeY));
+	    NameEntry.addCaretListener(new TokenGameBarListener(TokenGameBarListener.HM_NAME_CHANGED, RemoteControl, this));
 	    
 	    //Build Listbox
-	    SavedHistoryContent = new DefaultListModel();
-	    SavedHistory       = new JList(SavedHistoryContent);
+	    SavedHistoryContent = new DefaultTableModel()
+	    {
+	    	public boolean isCellEditable(int row, int column)
+	    	{
+	    		return false;
+	    	}
+	    };
+	    SavedHistoryContent.addColumn(Messages.getString("Tokengame.HistoryManager.TableHeader.Name"));
+	    SavedHistoryContent.addColumn(Messages.getString("Tokengame.HistoryManager.TableHeader.Date"));
+	    SavedHistory       = new JTable(SavedHistoryContent);
+	    SavedHistory.getColumnModel().getColumn(0).setPreferredWidth(ListSizeX-ColumnSizeDate);
+	    SavedHistory.getColumnModel().getColumn(1).setPreferredWidth(ColumnSizeDate);
+	    SavedHistory.getSelectionModel().addListSelectionListener(new TokenGameBarListener(TokenGameBarListener.HM_ELEMENT_SELECTED, RemoteControl, this));
 	    ScrollSavedHistory = new JScrollPane(SavedHistory);
 	    ScrollSavedHistory.setPreferredSize(new Dimension(ListSizeX, ListSizeY));
 	    ScrollSavedHistory.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -137,12 +159,53 @@ public class TokenGameHistoryManagerVC extends JDialog
 		return HistoryManager;
 	}
 	
+	/**
+	 * initializes the status of the elements (such as buttons) to enabled or disabled 
+	 */
+	public void initializeElementStatus()
+	{
+		newHistory = RemoteControl.isNewHistory();
+		SelectedItems = SavedHistory.getSelectionModel();	
+		savedHistorySelected = !SelectedItems.isSelectionEmpty();
+		
+		if (newHistory)
+		{
+			NameEntry.setEnabled(true);
+			if(NameEntry.getText().isEmpty())
+				SaveNewHistory.setEnabled(false);
+			else
+				SaveNewHistory.setEnabled(true);
+		}
+		else
+		{
+			SaveNewHistory.setEnabled(false);
+			NameEntry.setEnabled(false);
+		}
+		
+		if (savedHistorySelected)
+		{
+			DeleteSelected.setEnabled(true);
+		    OpenSelected.setEnabled(true);
+		    if(newHistory)
+		    	OverwriteSelected.setEnabled(true);
+		    else
+		    	OverwriteSelected.setEnabled(false);
+		}
+		else
+		{
+			DeleteSelected.setEnabled(false);
+		    OverwriteSelected.setEnabled(false);
+		    OpenSelected.setEnabled(false);
+		}
+	}
+	
 	public void saveNewHistory()
 	{
-		if (RemoteControl.isNewHistory())
+		if (newHistory)
 		{
 		 HistoryData = RemoteControl.getHistoryData();
-	     SavedHistoryContent.addElement(NameEntry.getText());
+		 Object[] HistoryDetails = {NameEntry.getText(),formatDate(RemoteControl.getHistoryData().getSavedDate())};
+	     SavedHistoryContent.addRow(HistoryDetails);
 	     HistoryData.setName(NameEntry.getText());
 	     RemoteControl.saveHistory();
 	     RemoteControl.setToOldHistory();
@@ -163,6 +226,12 @@ public class TokenGameHistoryManagerVC extends JDialog
 	{
 	  int LoadIndex = 0;
 	  
+	  //When a saved Simulation is loaded the mode must not be record-mode...
+	  if(RemoteControl.isRecordSelected())
+	  {
+		  RemoteControl.getExpertView().doRecordClick();
+	  }
+	  
 	  //Specify which File, that has to be opened
 	  SelectedItems = SavedHistory.getSelectionModel();	
 	  if(SelectedItems.isSelectionEmpty())
@@ -175,7 +244,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 	  }
 	  
 	  //Load From Array
-	  if(SavedHistoryContent.size() != 0)
+	  if(SavedHistoryContent.getRowCount()!= 0)
 	  {
 	 	 RemoteControl.loadHistory(LoadIndex);
 		 this.setVisible(false);
@@ -211,7 +280,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 		}
 		else
 		{
-		   if(SavedHistoryContent.contains(NameEntry.getText()))
+		   if(((Vector)SavedHistoryContent.getDataVector().get(0)).contains(NameEntry.getText()))
 		   {
 			   JOptionPane.showMessageDialog(this, Messages.getTitle("Tokengame.HistoryManager.ErrorNameDouble"), Messages.getTitle("Tokengame.HistoryManager.SaveError"),  JOptionPane.ERROR_MESSAGE);
   		       return false;
@@ -244,9 +313,10 @@ public class TokenGameHistoryManagerVC extends JDialog
 	/**
 	 * this method fills the history-List with the already existing Simulations 
 	 */
-	public void addLoadListItem(String item)
+	public void addLoadListItem(Object[] item)
 	{
-		SavedHistoryContent.addElement(item);	
+		item[1]=formatDate((Date)item[1]);
+		SavedHistoryContent.addRow(item);	
 	}
 	
 	/**
@@ -255,6 +325,10 @@ public class TokenGameHistoryManagerVC extends JDialog
 	 */
 	public void removeLoadListItem(int index)
 	{
-		SavedHistoryContent.remove(index);
+		SavedHistoryContent.removeRow(index);
+	}
+	
+	private String formatDate(Date d){
+		return DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, ConfigurationManager.getConfiguration().getLocale()).format(d);
 	}
 }

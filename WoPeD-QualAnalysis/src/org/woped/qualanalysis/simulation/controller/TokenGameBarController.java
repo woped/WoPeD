@@ -573,7 +573,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		ahxHistoryContent.clear();
 		HistoryVector = null; //Set reference to null, so that a new history-Vector will be created!
-		newHistory = true;
+		newHistory = false;
 	}
 
 

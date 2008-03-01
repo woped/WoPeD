@@ -380,6 +380,10 @@ public class TokenGameBarVC extends JInternalFrame {
     {
     	pbnRecord.setSelected(isSelected);
     }
+    public void doRecordClick()
+    {
+    	pbnRecord.doClick();
+    }
     
     public void setPlayIcon(boolean record)
     {

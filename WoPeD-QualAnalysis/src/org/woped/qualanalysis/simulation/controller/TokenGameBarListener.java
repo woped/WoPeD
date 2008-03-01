@@ -4,13 +4,17 @@ import java.awt.event.*;
 import org.woped.qualanalysis.simulation.*;
 
 
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 
 
 
-public class TokenGameBarListener implements ActionListener, MouseListener, ChangeListener {
+public class TokenGameBarListener implements ActionListener, MouseListener, ChangeListener, ListSelectionListener, CaretListener {
 	
 	//Constants
 	//======================  
@@ -46,16 +50,22 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	public final static int           HM_OVERWRITE_SELECTED  = 19;
 	public final static int           HM_OPEN_SELECTED       = 20;
 	
+	//History Manager Table
+	public final static int			  HM_ELEMENT_SELECTED	= 21;
+	
+	//History Manager NameField
+	public final static int			  HM_NAME_CHANGED		= 22;
+	
 	//AutoChoice List
-	public final static int           CHOOSE_TRANSITION      = 21;
+	public final static int           CHOOSE_TRANSITION      = 30;
 	
 	//Record Simulation
-	public final static int           CHOOSE_RECORD          = 22;
+	public final static int           CHOOSE_RECORD          = 31;
 
 	//Playback Manager Buttons
-	public final static int			  PM_SAVE_VIEW     		 = 23;
-	public final static int			  PM_FASTFWBW			 = 24;
-	public final static int			  PM_DELAYTIME			 = 25;
+	public final static int			  PM_SAVE_VIEW     		 = 32;
+	public final static int			  PM_FASTFWBW			 = 33;
+	public final static int			  PM_DELAYTIME			 = 34;
 		
 	//Action-Variables
 	private ReferenceProvider         MainWindowReference    = null;
@@ -68,24 +78,24 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	private TokenGamePlaybackManagerVC	  PlaybackDialog		  = null;
 
 
-	public TokenGameBarListener(int ButtonID, TokenGameBarController RC, TokenGameHistoryManagerVC ToGaHiMan)
+	public TokenGameBarListener(int ElementID, TokenGameBarController RC, TokenGameHistoryManagerVC ToGaHiMan)
 	{
-	  	ID = ButtonID;
+	  	ID = ElementID;
 	  	RemoteControl = RC;
 	  	HistoryDialog = ToGaHiMan;
 	}
 	
-	public TokenGameBarListener(int ButtonID, TokenGameBarController RC, TokenGamePlaybackManagerVC ToGaPM)
+	public TokenGameBarListener(int ElementID, TokenGameBarController RC, TokenGamePlaybackManagerVC ToGaPM)
 	{
-	  	ID = ButtonID;
+	  	ID = ElementID;
 	  	RemoteControl = RC;
 	  	PlaybackDialog = ToGaPM;
 	}
 	
 	//Needed for RemoteControlElements
-	public TokenGameBarListener(int ButtonID, TokenGameBarController RC)
+	public TokenGameBarListener(int ElementID, TokenGameBarController RC)
 	{
-	  	ID = ButtonID;
+	  	ID = ElementID;
 	  	RemoteControl = RC;
 	}
 	
@@ -225,6 +235,12 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		 case CHOOSE_DELETE_CURRENT:
 			 deleteCurrentHistory();
 			 break;
+		 case HM_ELEMENT_SELECTED:
+			 HistoryDialog.initializeElementStatus();
+			 break;
+		 case HM_NAME_CHANGED:
+			 HistoryDialog.initializeElementStatus();
+			 break;
 		 case HM_SAVE_HISTORY:
 			 saveRecordedHistory();
 			 break;
@@ -312,15 +328,18 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		    HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference(), RemoteControl);
 		    for(int i = 0; i < RemoteControl.getPetriNet().getSimulations().size(); i++)
 		    {
-		    	HistoryDialog.addLoadListItem(RemoteControl.getPetriNet().getSimulations().get(i).getName());
+		    	Object[] item = {RemoteControl.getPetriNet().getSimulations().get(i).getName(),RemoteControl.getPetriNet().getSimulations().get(i).getSavedDate()};
+		    	HistoryDialog.addLoadListItem(item);
 		    }
 		    	
+		    HistoryDialog.initializeElementStatus();
 		    HistoryDialog.setVisible(true);
 		    
 		}
 		else
 		{
 			HistoryDialog.resetStates();
+			HistoryDialog.initializeElementStatus();
 			HistoryDialog.setVisible(true);
 		}
 	}
@@ -411,5 +430,15 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	public void stateChanged(ChangeEvent arg0) {
 		actionRouter();
 		
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		actionRouter();
+	}
+
+	@Override
+	public void caretUpdate(CaretEvent e) {
+		actionRouter();
 	}
 }
