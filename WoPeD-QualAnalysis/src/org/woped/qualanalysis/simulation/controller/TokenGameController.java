@@ -146,6 +146,7 @@ public class TokenGameController
         }
     	else
     	{
+    		enableVisualTokenGame();
             //displays the TokenGame Remote-Control if it already exist, if not create
     	    if(RemoteControl != null)
     	    {

@@ -348,7 +348,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		//Active TokenGame, disable DrawMode, checkNet and activate transition
 		if(RemoteControl.getTokenGameController().isVisualTokenGame())
 		{
-			RemoteControl.getTokenGameController().enableVisualTokenGame();
+			//RemoteControl.getTokenGameController().enableVisualTokenGame();
 			RemoteControl.getTokenGameController().TokenGameCheckNet();
 			if (RemoteControl.playbackRunning())
 			{
