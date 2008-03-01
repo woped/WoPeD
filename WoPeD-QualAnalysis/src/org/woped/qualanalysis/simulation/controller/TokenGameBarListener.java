@@ -432,12 +432,10 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		
 	}
 
-	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		actionRouter();
 	}
 
-	@Override
 	public void caretUpdate(CaretEvent e) {
 		actionRouter();
 	}

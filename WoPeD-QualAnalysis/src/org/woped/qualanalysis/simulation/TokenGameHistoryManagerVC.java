@@ -171,7 +171,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 		if (newHistory)
 		{
 			NameEntry.setEnabled(true);
-			if(NameEntry.getText().isEmpty())
+			if(NameEntry.getText().length() == 0)
 				SaveNewHistory.setEnabled(false);
 			else
 				SaveNewHistory.setEnabled(true);
