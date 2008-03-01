@@ -136,6 +136,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 {
 				 if(RemoteControl.getAutoPlayBack())
 				 {
+					 RemoteControl.setEndOfAutoPlay(false);
 					 RemoteControl.autoOccurAllTransitions(true);
 				 }
 				 else
@@ -179,6 +180,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 {
 				 if(RemoteControl.getAutoPlayBack())
 				 {
+					 RemoteControl.setEndOfAutoPlay(false);
 					 RemoteControl.autoOccurAllTransitions(false);
 				 }
 				 else
