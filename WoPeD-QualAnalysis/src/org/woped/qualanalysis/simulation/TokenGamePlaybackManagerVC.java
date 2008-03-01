@@ -64,6 +64,7 @@ public class TokenGamePlaybackManagerVC extends JDialog
 	{
 		//Build Buttons
 		jb_SaveView    = new JButton(Messages.getTitle("Tokengame.PlaybackManager.SaveProperties"));
+		jb_SaveView.setToolTipText(Messages.getTitle("Tokengame.PlaybackManager.SaveTooltip"));
 	    
 	    //Set Button-Size
 	    jb_SaveView.setSize(50,20);
@@ -109,6 +110,7 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		jsl_fastfwbwoption.setMajorTickSpacing(1);
 		jsl_fastfwbwoption.setValue(RemoteControl.getOccurTimes());
 		jsl_fastfwbwoption.addChangeListener(new TokenGameBarListener(TokenGameBarListener.PM_FASTFWBW,RemoteControl,this));
+		jsl_fastfwbwoption.setToolTipText(Messages.getTitle("Tokengame.PlaybackManager.OccurtimesTooltip"));
 
 		jsl_delaytime.setMinimum(1);
 		jsl_delaytime.setMaximum(10);
@@ -119,7 +121,8 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		jsl_delaytime.setMajorTickSpacing(1);
 		jsl_delaytime.setValue(RemoteControl.getDelaytime());
 		jsl_delaytime.addChangeListener(new TokenGameBarListener(TokenGameBarListener.PM_DELAYTIME,RemoteControl,this));
-
+		jsl_delaytime.setToolTipText(Messages.getTitle("Tokengame.PlaybackManager.DelaytimeToolTip"));
+		
 		//Define Panel
 	    jp_PlayBackManager     = new JPanel();
 	    jp_PlayBackManager.setLayout(new GridBagLayout());

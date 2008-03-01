@@ -106,7 +106,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		//Define Button's ToolTips
 		ppbSteps.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Stepwise"));
 		ppbPlay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Playback"));
-		ppbDelay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Delay"));
+		ppbDelay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.PM"));
 		
 		//Define Button's Actions
 		ppbPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_PLAYBACK, tgbController));
