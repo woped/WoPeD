@@ -1251,7 +1251,7 @@ public class TokenGameController
     }
     
     /**
-     * if the current Editor ist a SubProcess, it will be closed.
+     * if the current Editor is a SubProcess, it will be closed.
      */
     public void closeSubProcess()
     {
@@ -1263,16 +1263,15 @@ public class TokenGameController
     
     /**
      * this method is similiar to stop(). it will reset all tokens and playactions
-     * but il will not activate editor. throw play button you could simulate again
+     * but it will not activate editor. through play button you could simulate again
      */ 
-    public void TokenGameRetore()
+    public void TokenGameRestore()
     {
         resetTransitionStatus();
         resetSinkPlacesStatus();
         resetArcStatus();
         resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
         getGraph().setPortsVisible(true);
-        getGraph().removeMouseListener(tokenGameMouseHandler);
         getGraph().refreshNet();
         getGraph().updateUI();
     }

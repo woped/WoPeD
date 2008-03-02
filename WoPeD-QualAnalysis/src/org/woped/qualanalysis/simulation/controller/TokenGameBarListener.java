@@ -390,7 +390,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		{
 			RemoteControl.changeTokenGameReference(null, true);
 		}
-		RemoteControl.getTokenGameController().TokenGameRetore();
+		RemoteControl.getTokenGameController().TokenGameRestore();
 		RemoteControl.clearChoiceBox();
 		RemoteControl.setStepIn(false);
 		RemoteControl.getSlimView().getSlimPanel().setChoiceListInvisible();

@@ -1125,7 +1125,7 @@ public class TokenGameBarController implements Runnable {
 			if((ProcessEditors != null) && (ProcessEditors.size() > 0))
 			{
 			  //Remove all remaining tokens in the Editor
-			  tgController.TokenGameRetore();
+			  tgController.TokenGameRestore();
 			  tgController.closeSubProcess();
 			  tgController = (TokenGameController)ProcessEditors.removeLast();
 			  if(!tgController.getThisEditor().isSubprocessEditor())
