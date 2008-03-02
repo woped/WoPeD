@@ -1274,6 +1274,7 @@ public class TokenGameController
         getGraph().setPortsVisible(true);
         getGraph().removeMouseListener(tokenGameMouseHandler);
         getGraph().refreshNet();
+        getGraph().updateUI();
     }
     
     //If tokengamebar-user chooses to step into a subprocess
