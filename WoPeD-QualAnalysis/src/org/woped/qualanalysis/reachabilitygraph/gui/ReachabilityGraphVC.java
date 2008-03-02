@@ -15,7 +15,6 @@ import java.awt.GridLayout;
 import java.util.HashSet;
 
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 

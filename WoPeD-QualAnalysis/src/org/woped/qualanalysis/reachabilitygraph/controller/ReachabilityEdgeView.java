@@ -6,10 +6,6 @@ import java.awt.Graphics;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
-import org.jgraph.graph.GraphConstants;
-import org.jgraph.graph.GraphLayoutCache;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 
 public class ReachabilityEdgeView extends EdgeView {

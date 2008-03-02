@@ -21,8 +21,6 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.DefaultEdge.LoopRouting;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.qualanalysis.Constants;
 
 /**
  * A routing algorithm that 

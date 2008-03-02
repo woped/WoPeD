@@ -1,16 +1,6 @@
 package org.woped.qualanalysis.reachabilitygraph.controller;
 
-import java.awt.BasicStroke;
-import java.awt.Dimension;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-
 import org.jgraph.graph.CellViewRenderer;
-import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
 

@@ -36,14 +36,15 @@ public class ReachabilityGraphVCListener implements InternalFrameListener{
 		IUserInterface ui = aam.getUi();
 		IToolBar toolbar = ui.getToolBar();
 		toolbar.getReachabilityGraphButton().setEnabled(false);
+		reachGraphVC.updatePanelsVisibility(aam.getUi().getEditorFocus());
 	}
 
 	public void internalFrameClosing(InternalFrameEvent arg0) {
-		
+		reachGraphVC.updatePanelsVisibility(aam.getUi().getEditorFocus());
 	}
 
 	public void internalFrameDeactivated(InternalFrameEvent arg0) {
-		reachGraphVC.updatePanelsVisibility(aam.getUi().getEditorFocus());
+
 	}
 
 	public void internalFrameDeiconified(InternalFrameEvent arg0) {
