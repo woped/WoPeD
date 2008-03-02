@@ -5,6 +5,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.bpel.UddiVariable;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
 
@@ -21,7 +22,7 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class UDDIDialog extends JDialog
 {
-	String uddiUrl = "http://udditest.sap.com/uddi/api/inquiry/";
+	String uddiUrl = "http://uddi.sap.com/uddi/api/inquiry/";
 	String businessName = "a%";
 	
 	JDialog errorPopup 							= null;
@@ -30,7 +31,7 @@ public class UDDIDialog extends JDialog
 	
 	JLabel	LuddiServer							= null;
 	JComboBox CBuddiServer						= null;
-	JButton BcreateUddi							= null;
+	//JButton BcreateUddi							= null;
 	
 	JLabel LBusiness							= null;
 	JTextField TFBusiness						= null;
@@ -73,10 +74,10 @@ public class UDDIDialog extends JDialog
 		}
 		add(CBuddiServer);
 		
-		BcreateUddi = new JButton();
-		BcreateUddi.setBounds(215,15,80,20);
-		BcreateUddi.setText("Create");
-		add(BcreateUddi);
+		//BcreateUddi = new JButton();
+		//BcreateUddi.setBounds(215,15,80,20);
+		//BcreateUddi.setText("Create");
+		//add(BcreateUddi);
 		
 		//Business-Panel
 		LBusiness = new JLabel("Business:");
@@ -133,13 +134,13 @@ public class UDDIDialog extends JDialog
 		
 		//implements Listener
 		
-		BcreateUddi.addActionListener(new ActionListener()
+		/*BcreateUddi.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
 				//new NewUddiVariableDialog();
 			}
-		});
+		});*/
 		
 		Bok.addActionListener(new ActionListener()
 		{
