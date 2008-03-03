@@ -117,8 +117,9 @@ public class TokenGameBarController implements Runnable {
 	  // Need to manually put the last selected editor to foreground/fucos. Cause if not
 	  // the InternalFrameListener maybe bound to the ReachablilityGraph-Frame or another JInternalFrame
 	  if(desktop.getMediatorReference().getUi().getEditorFocus() instanceof IEditor){
+		  ExpertView.setTitle(ExpertView.getTitle() + " - " + desktop.getMediatorReference().getUi().getEditorFocus().getName());
 		  desktop.getMediatorReference().getUi().selectEditor(desktop.getMediatorReference().getUi().getEditorFocus());
-		  desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));  
+		  desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));
 	  }
 	}
 
