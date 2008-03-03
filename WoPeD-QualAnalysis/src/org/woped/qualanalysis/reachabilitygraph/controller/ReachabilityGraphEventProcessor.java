@@ -18,14 +18,14 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 
 	private AbstractApplicationMediator mediator = null;
 	private ReachabilityGraphVCListener rg_listener = null;
-	
+
 	public ReachabilityGraphEventProcessor(int vepID, AbstractApplicationMediator mediator) {
 		super(vepID, mediator);
 		this.mediator = mediator;
 	}
 
 	@Override
-	public void processViewEvent(AbstractViewEvent event) {		
+	public void processViewEvent(AbstractViewEvent event) {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> processViewEvent " + this.getClass().getName());
 		if(getMediator().getUi().getEditorFocus() instanceof IEditor /*&& !getMediator().getUi().getEditorFocus().isSubprocessEditor()*/){
 			if(event.getOrder() == AbstractViewEvent.REACHGRAPH && getMediator().getUi().getEditorFocus() instanceof IEditor){
@@ -33,26 +33,31 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 				IUserInterface dui = mediator.getUi();
 				JDesktopPane desktop = (JDesktopPane) dui.getPropertyChangeSupportBean();
 				JInternalFrame edit = desktop.getSelectedFrame();
-				ReachabilityGraphVC toAdd = ReachabilityGraphVC.getInstance(editor);
+				ReachabilityGraphVC toAdd = ReachabilityGraphVC.getInstance();
 				if(!desktop.isAncestorOf(toAdd)){
 					rg_listener = new ReachabilityGraphVCListener(toAdd, mediator);
 					edit.addInternalFrameListener(rg_listener);
 					desktop.add(toAdd);
 				} else {
 					if(!hasAlreadyListener(edit, rg_listener)){
-						edit.addInternalFrameListener(rg_listener);	
+						edit.addInternalFrameListener(rg_listener);
 					}
 				}
 				toAdd.setVisible(true);
 				toAdd.validate();
 				toAdd.moveToFront();
-				toAdd.refreshGraph(ReachabilityGraphModel.HIERARCHIC);
+				if(editor.isReachabilityEnabled()){ // is editor already added to RGVC ??
+					toAdd.updatePanelsVisibility(editor);
+				} else {
+					toAdd.addEditor(editor);
+					toAdd.refreshGraph(ReachabilityGraphModel.HIERARCHIC);
+				}
 				dui.getToolBar().getReachabilityGraphButton().setEnabled(false);
 			}
 		}
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- processViewEvent " + this.getClass().getName());
 	}
-	
+
 	private boolean hasAlreadyListener(JInternalFrame frame, InternalFrameListener listener){
 		InternalFrameListener[] listeners = frame.getInternalFrameListeners();
 		for(InternalFrameListener oneofthem : listeners){
@@ -62,5 +67,5 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 		}
 		return false;
 	}
-	
+
 }

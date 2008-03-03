@@ -10,21 +10,21 @@ import org.woped.core.gui.IUserInterface;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
 
 public class ReachabilityGraphVCListener implements InternalFrameListener{
-	
+
 	private ReachabilityGraphVC reachGraphVC = null;
 	private AbstractApplicationMediator aam = null;
-	
+
 	public ReachabilityGraphVCListener(ReachabilityGraphVC rgvc, AbstractApplicationMediator aam) {
 		this.reachGraphVC = rgvc;
 		this.aam = aam;
 	}
-	
+
 	public void internalFrameActivated(InternalFrameEvent arg0) {
 		reachGraphVC.updatePanelsVisibility(aam.getUi().getEditorFocus());
 		IUserInterface ui = aam.getUi();
 		IToolBar toolbar = ui.getToolBar();
 		if(reachGraphVC.hasEditor(aam.getUi().getEditorFocus()) && reachGraphVC.isVisible()){
-			toolbar.getReachabilityGraphButton().setEnabled(false);
+			toolbar.getReachabilityGraphButton().setEnabled(true);
 		} else {
 			toolbar.getReachabilityGraphButton().setEnabled(true);
 		}
@@ -48,14 +48,14 @@ public class ReachabilityGraphVCListener implements InternalFrameListener{
 	}
 
 	public void internalFrameDeiconified(InternalFrameEvent arg0) {
-		
+
 	}
 
 	public void internalFrameIconified(InternalFrameEvent arg0) {
-		
+
 	}
 
 	public void internalFrameOpened(InternalFrameEvent arg0) {
-		
+
 	}
 }

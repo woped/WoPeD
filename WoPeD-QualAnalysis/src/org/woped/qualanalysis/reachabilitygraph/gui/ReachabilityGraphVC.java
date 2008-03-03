@@ -40,12 +40,9 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	 * @param editor
 	 * @return
 	 */
-	public static ReachabilityGraphVC getInstance(IEditor editor){
+	public static ReachabilityGraphVC getInstance(){
 		if(ReachabilityGraphVC.myInstance == null){
 			ReachabilityGraphVC.myInstance = new ReachabilityGraphVC();
-			myInstance.addEditor(editor);
-		} else {
-			myInstance.addEditor(editor);
 		}
 		return myInstance;
 	}
@@ -77,7 +74,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	 * add a new editor to the class. Editor references are held in {@link ReachabilityGraphPanel}'s.
 	 * @param editor
 	 */
-	private void addEditor(IEditor editor){
+	public void addEditor(IEditor editor){
 		boolean alreadyContainsPanel = false;
 
 		for(ReachabilityGraphPanel rgp : panels){
