@@ -1,5 +1,7 @@
 package org.woped.qualanalysis.reachabilitygraph.controller;
 
+import java.beans.PropertyVetoException;
+
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameListener;
@@ -45,7 +47,11 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 				}
 				toAdd.setVisible(true);
 				toAdd.validate();
-				toAdd.moveToFront();
+				try { // to activate the JInternalFrame
+					toAdd.setSelected(true);
+				} catch (PropertyVetoException e) { //  if some component does not like this
+					toAdd.moveToFront(); // then move it to front without activating
+				}
 				if(editor.isReachabilityEnabled()){ // is editor already added to RGVC ??
 					toAdd.updatePanelsVisibility(editor);
 				} else {
