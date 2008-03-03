@@ -179,10 +179,21 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 				rgp.updateVisibility();
 				this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title")+ " - " + editor.getName());
 			} else {
-				this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title"));
 				this.remove(rgp);
 			}
 		}
+
+		boolean isAnyPanelShowing = false;
+		for (ReachabilityGraphPanel rgp : panels) {
+			if(rgp.isShowing()){
+				isAnyPanelShowing = true;
+			}
+		}
+
+		if(!isAnyPanelShowing){
+			this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title"));
+		}
+
 		this.repaint();
 	}
 
