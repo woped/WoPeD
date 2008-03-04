@@ -17,6 +17,8 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.Constants;
 
 /**
  * Specifies a particular marking of a reachability / coverability object each
@@ -188,9 +190,11 @@ public class Marking {
 	 */
 	public void printseq() {
 		Iterator it = currentMarking.keySet().iterator();
+		String output = "";
 		while (it.hasNext()) {
-			System.out.print(it.next() + " ");
+			output += (it.next() + " ");
 		}
+		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- printseq() " + output + this.getClass().getName());
 		System.out.println("");
 	}
 

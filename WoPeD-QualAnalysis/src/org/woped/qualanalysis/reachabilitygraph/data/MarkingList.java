@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
+import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.Constants;
+
 ;
 
 /**
@@ -98,11 +101,12 @@ public class MarkingList {
 	 */
 	public void print() {
 		Iterator ma = netMarkings.values().iterator();
+		String output = "";
 		while (ma.hasNext()) {
 			Marking test = (Marking) ma.next();
-			System.out.print(test.print());
+			output += (test.print());
 		}
-		System.out.println("");
+		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- print() " + output + " " + this.getClass().getName());
 	}
 
 	/**

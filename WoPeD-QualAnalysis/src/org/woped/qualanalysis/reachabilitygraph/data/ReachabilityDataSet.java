@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.Constants;
 
 /**
  * Datastructure for storing all possible Transactions with their start and end
@@ -38,12 +40,13 @@ public class ReachabilityDataSet {
 	 */
 	public void print() {
 		Iterator it = netTransitions.values().iterator();
-		System.out.print("Transitionen: ");
+		String output = "";
+		output += "Transitionen: ";
 		while (it.hasNext()) {
 			TransitionObject current = (TransitionObject) it.next();
-			System.out.print("{" + current.print() + "}");
+			output += "{" + current.print() + "}";
 		}
-		System.out.println("");
+		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- print() " + output + " " + this.getClass().getName());
 	}
 	/**
 	 * Method to get the transaction set
