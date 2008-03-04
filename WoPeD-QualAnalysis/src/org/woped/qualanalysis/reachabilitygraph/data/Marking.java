@@ -195,7 +195,6 @@ public class Marking {
 			output += (it.next() + " ");
 		}
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- printseq() " + output + this.getClass().getName());
-		System.out.println("");
 	}
 
 	/**

@@ -79,7 +79,7 @@ public class ReachabilityDataSet {
 						targ.add(sourceid);
 					}
 				}
-				System.out.println(targ);
+				LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-- rebuild() "+ ": targ = " + targ + this.getClass().getName());
 				// Get the Reachabilityset where the Current Marking is the
 				// Start Marking
 				// and set the StartMarking to the previously found
