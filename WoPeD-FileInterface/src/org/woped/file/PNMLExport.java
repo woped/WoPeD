@@ -315,6 +315,14 @@ public class PNMLExport
             for (Iterator<SimulationModel> iter = petrinetModel.getSimulations().iterator();iter.hasNext();)
             {
             	SimulationModel currSimulation = iter.next();
+            	
+            	// check if current fingerprint of the net equals the imported one
+        		// if not ask the user if he want's to keep the simulation
+        		//
+        		// this check is performed as well on:
+        		// - fileixport
+        		// - loading a simulation
+        		// when you change it here please do at those locations as well
             	int answer = 0;
             	Date simulationCreationDate = currSimulation.getSavedDate();
             	if(!petrinetModel.isLogicalFingerprintEqual(currSimulation.getFingerprint()))

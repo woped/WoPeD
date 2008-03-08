@@ -1,6 +1,7 @@
 package org.woped.qualanalysis.simulation.controller;
 import java.awt.event.*;
 
+import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.qualanalysis.simulation.*;
 
 
@@ -40,21 +41,24 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	//Auto Choices
 	public final static int           CHOOSE_AUTO_CHOICE     = 13;
 
-	//History Management
+	//History management
 	public final static int           OPEN_HISTORY_MANAGER   = 15;
 	public final static int           CHOOSE_DELETE_CURRENT  = 16;
 	
-	//History Manager Buttons
+	//HistoryManager buttons
 	public final static int           HM_SAVE_HISTORY        = 17;
 	public final static int           HM_DELETE_SELECTED     = 18;
 	public final static int           HM_OVERWRITE_SELECTED  = 19;
 	public final static int           HM_OPEN_SELECTED       = 20;
-	
-	//History Manager Table
-	public final static int			  HM_ELEMENT_SELECTED	= 21;
-	
-	//History Manager NameField
-	public final static int			  HM_NAME_CHANGED		= 22;
+	public final static int			  HM_KEYEVENT			 = 21;
+	//HistoryManager UI-control
+	public final static int			  HM_ESCAPE				 = 22;
+	public final static int			  HM_ENTER				 = 23;
+	//HistoryManager table
+	public final static int			  HM_ELEMENT_SELECTED	= 25;
+	public final static int			  HM_TABLE_CLICKED		= 26;
+	//HistoryManager NameField
+	public final static int			  HM_NAME_CHANGED		= 27;
 	
 	//AutoChoice List
 	public final static int           CHOOSE_TRANSITION      = 30;
@@ -62,10 +66,12 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	//Record Simulation
 	public final static int           CHOOSE_RECORD          = 31;
 
-	//Playback Manager Buttons
+	//PlaybackManager buttons
 	public final static int			  PM_SAVE_VIEW     		 = 32;
 	public final static int			  PM_FASTFWBW			 = 33;
 	public final static int			  PM_DELAYTIME			 = 34;
+	//PlaybackManager UI-control
+	public final static int			  PM_ESCAPE				 = 35;
 		
 	//Action-Variables
 	private ReferenceProvider         MainWindowReference    = null;
@@ -237,6 +243,19 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		 case CHOOSE_DELETE_CURRENT:
 			 deleteCurrentHistory();
 			 break;
+		 case HM_ESCAPE:
+			 HistoryDialog.setVisible(false);
+			 break;
+		 case HM_ENTER:
+			 if(HistoryDialog.isSaveButtonEnabled())
+			 {
+				 HistoryDialog.saveHistory();
+			 }
+			 else if(HistoryDialog.getSelection()!= -1)
+			 {
+				 this.loadExistingHistory();
+			 }
+			 break;
 		 case HM_ELEMENT_SELECTED:
 			 HistoryDialog.initializeElementStatus();
 			 break;
@@ -249,20 +268,11 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		 case HM_DELETE_SELECTED:
 			 if(HistoryDialog.getSelection() > -1)
 			 {
-				 RemoteControl.deleteHistory(HistoryDialog.getSelection());
-				 HistoryDialog.removeLoadListItem(HistoryDialog.getSelection());
+				 RemoteControl.deleteHistory(HistoryDialog);
 			 }
 			 break;
 		 case HM_OVERWRITE_SELECTED:
-			 if(HistoryDialog.getSelection() == -1)
-			 {
-				 saveRecordedHistory();
-			 }
-			 else
-			 {
-				 RemoteControl.overwriteHistory(HistoryDialog.getSelection());
-				 HistoryDialog.setVisible(false);
-			 }
+			 HistoryDialog.saveHistory();
 			 break;
 		 case HM_OPEN_SELECTED:
 			 loadExistingHistory();
@@ -307,6 +317,9 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		 case PM_DELAYTIME:
 			 PlaybackDialog.savePropertyDelaytime();
 			 break;
+		 case PM_ESCAPE:
+			 PlaybackDialog.setVisible(false);
+			 break;
 		 default:
 			 break;
 		}
@@ -330,7 +343,8 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		    HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference(), RemoteControl);
 		    for(int i = 0; i < RemoteControl.getPetriNet().getSimulations().size(); i++)
 		    {
-		    	Object[] item = {RemoteControl.getPetriNet().getSimulations().get(i).getName(),RemoteControl.getPetriNet().getSimulations().get(i).getSavedDate()};
+		    	SimulationModel sm = RemoteControl.getPetriNet().getSimulations().get(i);
+		    	Object[] item = {sm.getName(),sm.getSavedDate()};
 		    	HistoryDialog.addLoadListItem(item);
 		    }
 		    	
@@ -353,10 +367,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	
 	private void saveRecordedHistory()
 	{
-		if(HistoryDialog.checkSaveName())
-		{
-			HistoryDialog.saveNewHistory();
-		}
+		HistoryDialog.saveHistory();
 	}
 	
 	private void loadExistingHistory()
@@ -409,8 +420,42 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 
 	public void mouseClicked(MouseEvent e)
 	{
-		//Calls the method for the centralized Action-Handling
-        actionRouter();	
+		switch(ID)
+		{
+		case HM_TABLE_CLICKED:
+			/*
+			 * HistoryDialog:
+			 * When the NameEntry-field is enabled (a simulation can be saved)
+			 * 	- a single click puts the name of the selected simulation in the NameEntry-field
+			 * 	- a double click replaces the selected simulation with the currently selected
+			 * When the NameEntry-field is disabled (no simulation can be saved, only simulations can be loaded)
+			 * 	- a double-click loads the selected simulation
+			 */
+			int clickcount = e.getClickCount();
+			if(clickcount==1){
+				if(HistoryDialog.isNameEntryEnabled())
+				{
+					HistoryDialog.copySelectedNameToNameentry();
+				}
+			}
+			else if(clickcount>=2)
+			{
+				if(!HistoryDialog.isNameEntryEnabled())
+				{
+					HistoryDialog.openSelected();
+				}
+				else
+				{
+					HistoryDialog.copySelectedNameToNameentry();
+					HistoryDialog.saveHistory();
+				}
+			}
+			break;
+		default:
+			//Calls the method for the centralized Action-Handling
+			actionRouter();
+			break;
+		}
 	}
 	
 	public void mouseEntered(MouseEvent e)

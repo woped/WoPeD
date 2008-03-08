@@ -871,6 +871,11 @@ public class PNMLImport
     		currSimulation = new SimulationModel(currSimulationID ,simulations[k].getSimulationname(),currentTransitions, simulations[k].getNetFingerprint(), simulations[k].getSimulationdate().getTime());
     		// check if current fingerprint of the net equals the imported one
     		// if not ask the user if he want's to keep the simulation
+    		//
+    		// this check is performed as well on:
+    		// - fileexport
+    		// - loading a simulation
+    		// when you change it here please do at those locations as well
     		int answer = 0;
     		if(!currentPetrinet.isLogicalFingerprintEqual(simulations[k].getNetFingerprint()))
     		{

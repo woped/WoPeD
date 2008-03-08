@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import org.woped.core.gui.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
 import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
@@ -54,6 +55,7 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		super((JFrame)mediator, Messages.getTitle("Tokengame.PlaybackManager"), true);
 		RemoteControl = RC;
 		this.add(addPropertyPanel());
+		this.getRootPane().registerKeyboardAction(new TokenGameBarListener(TokenGameBarListener.PM_ESCAPE, RemoteControl, this), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, true), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 		this.setLocationRelativeTo(null);
 		this.setSize(300,250);
 		this.setResizable(false);

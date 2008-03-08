@@ -2,6 +2,7 @@ package org.woped.qualanalysis.simulation.controller;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Dimension2D;
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Map;
@@ -9,15 +10,18 @@ import java.util.Vector;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import  org.woped.qualanalysis.simulation.*;
+import org.woped.translations.Messages;
 
 import com.sun.java.swing.plaf.windows.WindowsBorders.InternalFrameLineBorder;
 
@@ -114,8 +118,8 @@ public class TokenGameBarController implements Runnable {
         setViewMode(viewmode);
       }
       // Add InternalFrameListener to the EditorFrame to get informed about changes.
-	  // Need to manually put the last selected editor to foreground/fucos. Cause if not
-	  // the InternalFrameListener maybe bound to the ReachablilityGraph-Frame or another JInternalFrame
+	  // Need to manually put the last selected editor to foreground/focus. Cause if not
+	  // the InternalFrameListener may be bound to the ReachablilityGraph-Frame or another JInternalFrame
 	  if(desktop.getMediatorReference().getUi().getEditorFocus() instanceof IEditor){
 		  ExpertView.setTitle(ExpertView.getTitle() + " - " + desktop.getMediatorReference().getUi().getEditorFocus().getName());
 		  desktop.getMediatorReference().getUi().selectEditor(desktop.getMediatorReference().getUi().getEditorFocus());
@@ -533,17 +537,50 @@ public class TokenGameBarController implements Runnable {
 
     /**
      * Loads the History into the HistoryContent
+     * 
+     * @return [code]true[/code] if simulation was loaded, else [code]false[/code]
      */
-    public void loadHistory(int index)
+    public boolean loadHistory(int index)
     {
+    	boolean loaded = false;
     	ahxHistoryContent.clear();
     	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
-    	//needs a clone, otherwise, the saved history might be erased when the user just wants to clean the history-box
-    	HistoryVector = (Vector<TransitionModel>)SaveableSimulation.getOccuredTransitions().clone();
-    	for (int i = 0; i < HistoryVector.size(); i++)
+    	int answer = 0;
+    	// check if current fingerprint of the net equals the loaded one
+		// if not ask the user if he want's to keep the simulation
+		//
+		// this check is performed as well on:
+		// - fileixport
+		// - fileexport
+		// when you change it here please do at those locations as well
+    	if(!PetriNet.isLogicalFingerprintEqual(SaveableSimulation.getFingerprint()))
+		{
+			Object[] options = {Messages.getString("Tokengame.ChangedNetDialog.ButtonYes"),Messages.getString("Tokengame.ChangedNetDialog.ButtonNo")};
+			// get the localized message text
+			String message = Messages.getString("Tokengame.ChangedNetDialog.Load.Message");
+			// fill the message text dynamically with the simulationname and simulationdate 
+			message = message.replaceAll("##SIMULATIONNAME##", SaveableSimulation.getName());
+			message = message.replaceAll("##SIMULATIONDATE##", DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, ConfigurationManager.getConfiguration().getLocale()).format(SaveableSimulation.getSavedDate()));
+			
+			answer = JOptionPane.showOptionDialog(null, message, Messages.getString("Tokengame.ChangedNetDialog.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+			// if the user didn't choose one of the buttons but closed the OptionDialog don't drop the simulation
+			if(answer == -1)
+			{
+				answer = 0;
+			}
+		}
+    	// if fingerprint is ok or user wants to load it anyway
+    	if(answer==0)
     	{
-    		ahxHistoryContent.addElement(HistoryVector.get(i).getNameValue());
+	    	//needs a clone, otherwise, the saved history might be erased when the user just wants to clean the history-box
+	    	HistoryVector = (Vector<TransitionModel>)SaveableSimulation.getOccuredTransitions().clone();
+	    	for (int i = 0; i < HistoryVector.size(); i++)
+	    	{
+	    		ahxHistoryContent.addElement(HistoryVector.get(i).getNameValue());
+	    	}
+	    	loaded = true;
     	}
+    	return loaded;
     }
 
 
@@ -555,6 +592,8 @@ public class TokenGameBarController implements Runnable {
     {
     	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
     	SaveableSimulation.setOccuredTransitions((Vector<TransitionModel>)HistoryVector.clone());
+    	SaveableSimulation.setSavedDate(new Date());
+    	tgController.getThisEditor().setSaved(false);
     }
 
 
@@ -562,9 +601,17 @@ public class TokenGameBarController implements Runnable {
      * Deletes the a saved simulation
      * @param index
      */
-    public void deleteHistory(int index)
+    public void deleteHistory(TokenGameHistoryManagerVC historyManager)
     {
-    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().remove(index);
+    	int index = historyManager.getSelection();
+    	Object[] options = {Messages.getString("Dialog.Yes"),Messages.getString("Dialog.No")};
+    	int answer = JOptionPane.showOptionDialog(historyManager, Messages.getString("Tokengame.HistoryManager.WarningExistingName"),Messages.getTitle("Tokengame.HistoryManager.WarningExistingName"),  JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+    	if(answer == 0)
+    	{
+	    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().remove(index);
+	    	tgController.getThisEditor().setSaved(false);
+	    	historyManager.removeLoadListItem(historyManager.getSelection());
+    	}
     }
 
 	/**
