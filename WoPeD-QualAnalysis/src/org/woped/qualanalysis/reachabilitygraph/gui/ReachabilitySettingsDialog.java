@@ -14,16 +14,26 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.HashMap;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ActionMap;
 import javax.swing.ButtonGroup;
+import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
+import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.translations.Messages;
 
@@ -73,7 +83,7 @@ public class ReachabilitySettingsDialog extends JDialog {
 		Point location = new Point((int)rgp.getLocationOnScreen().getX() + rgp.getWidth() / 2 - width / 2,
 								(int)rgp.getLocationOnScreen().getY() + rgp.getHeight() / 2 - height / 2);
 		this.setLocation(location);
-		this.setResizable(true);
+		this.setResizable(false);
 		this.setModal(true);
 	}
 
@@ -133,6 +143,33 @@ public class ReachabilitySettingsDialog extends JDialog {
 		cancelButton.setBounds(new Rectangle(120,273,90,29));
 		cancelButton.addActionListener(new CancelButtonListener());
 
+		// Set "Escape" and "Enter" as action keys for Save/Cancel-Buttons
+		ActionMap am = getRootPane().getActionMap();
+        InputMap im = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        Object windowOkKey = new Object();
+        KeyStroke windowOkStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
+        Action windowOkAction = new AbstractAction() {
+			public void actionPerformed(ActionEvent e) {
+            	ReachabilitySettingsDialog.this.saveButton.doClick();
+            }
+        };
+
+        Object windowCancelKey = new Object();
+        KeyStroke windowCancelStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
+        Action windowCancelAction = new AbstractAction() {
+			public void actionPerformed(ActionEvent e) {
+            	ReachabilitySettingsDialog.this.cancelButton.doClick();
+            }
+        };
+
+        im.put(windowOkStroke, windowOkKey);
+        am.put(windowOkKey, windowOkAction);
+
+        im.put(windowCancelStroke, windowCancelKey);
+        am.put(windowCancelKey, windowCancelAction);
+
+        // Add all components to the panel
 		this.setLayout(null);
 		this.add(graphVisual);
 		this.add(grayGraphRb);
