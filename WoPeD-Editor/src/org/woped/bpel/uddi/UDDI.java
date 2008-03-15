@@ -164,7 +164,7 @@ public class UDDI
 		//Sets the UDDI version in use to UDDI 3.0.
 		profile.setProperty("inspireit.uddi.version","2.0");
 		
-		UDDIQuerier querier = UDDIQuerier.getQuerier(profile);
+		//UDDIQuerier querier = UDDIQuerier.getQuerier(profile);
 		
 		try
 		{
