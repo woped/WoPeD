@@ -33,6 +33,23 @@ public class UddiVariableList
 		return list;
 	}
 	
+	public String[][] getVariableNameURLArray()
+	{
+		UddiVariable tmp = null;
+		String[][] list = new String[this._list.size()][2];
+		Iterator<UddiVariable> iter = this._list.iterator();
+		int i = 0;
+		while (iter.hasNext())
+		{
+			tmp = iter.next();
+			//1.Name
+			list[i][0] = tmp.getName();
+			//2.URL
+			list[i][1] = tmp.getURL();
+		}
+		return list;
+	}
+	
 	public HashSet<UddiVariable> getUddiVariableList()
 	{
 		return this._list;
@@ -48,12 +65,12 @@ public class UddiVariableList
 		return list;
 	}
 	
-	public UddiVariable findUddiVariableByName(String name)
+	public UddiVariable findUddiVariableByName(String Name)
 	{
 		Iterator<UddiVariable> iter = this._list.iterator();
 		while (iter.hasNext()) {
 			UddiVariable tmp = iter.next();
-			if(tmp.equalByName(name)) return tmp;
+			if(tmp.equalByName(Name)) return tmp;
 		}		
 		return null;
 	}
