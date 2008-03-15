@@ -714,9 +714,9 @@ public class ModelElementContainer implements Serializable {
 	 * @param: Name
 	 * @return
 	 */
+
 	public UddiVariable findUddiVariableByName(String name)
 	{
 		return this.uddiVariableList.findUddiVariableByName(name);
 	}
-
 }
