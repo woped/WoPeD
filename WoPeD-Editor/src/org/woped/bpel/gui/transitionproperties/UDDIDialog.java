@@ -5,7 +5,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.bpel.UddiVariable;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.translations.Messages;
 
@@ -15,14 +14,16 @@ import java.awt.event.*;
  * 
  * @author Alexander Rosswog
  * 
- * This is dialog which enables the user to choose a webservice and import
- * the accordung wsdl-url
+ * This is the dialog which enables the user to choose a webservice and import
+ * the according wsdl-url to the partner-link-site
  *
  */
 @SuppressWarnings("serial")
 public class UDDIDialog extends JDialog
 {
+	//initial UDDI-URL 
 	String uddiUrl = "http://uddi.sap.com/uddi/api/inquiry/";
+	//initial search-index
 	String businessName = "a%";
 	
 	JDialog errorPopup 							= null;
@@ -31,7 +32,7 @@ public class UDDIDialog extends JDialog
 	
 	JLabel	LuddiServer							= null;
 	JComboBox CBuddiServer						= null;
-	//JButton BcreateUddi							= null;
+	JButton BcreateUddi							= null;
 	
 	JLabel LBusiness							= null;
 	JTextField TFBusiness						= null;
@@ -48,10 +49,15 @@ public class UDDIDialog extends JDialog
 	JButton	Bok									= null;
 	JButton Bcancel								= null;
 	
+	
+	/*
+	 * constructor for the dialog
+	 */
 	public UDDIDialog(TransitionPropertyEditor t_editor, JTextField wsdlTextField, ModelElementContainer modelElementContainer)
 	{		
 		super(t_editor, true);
 		this.wsdlTextField = wsdlTextField;
+		this.modelElementContainer = modelElementContainer;
 		
 		setTitle("UDDI");
 		setLayout(null);
@@ -72,12 +78,24 @@ public class UDDIDialog extends JDialog
 		{
 			CBuddiServer.addItem(uddibuslist[i]);
 		}
+		CBuddiServer.setSelectedItem("SAP");
 		add(CBuddiServer);
+		CBuddiServer.addItemListener(new ItemListener()
+		{
+			public void itemStateChanged(ItemEvent arg0) 
+			{
+				DefaultListModel model = new DefaultListModel();
+				model.add(0, "");
+				LIfindService.setModel(model);
+				LIfindBusiness.setModel(model);
+			}	
+		});
 		
-		//BcreateUddi = new JButton();
-		//BcreateUddi.setBounds(215,15,80,20);
-		//BcreateUddi.setText("Create");
-		//add(BcreateUddi);
+		BcreateUddi = new JButton();
+		BcreateUddi.setBounds(215,15,80,20);
+		BcreateUddi.setText("Create");
+		BcreateUddi.addActionListener(new CreateDialog(this, modelElementContainer));
+		add(BcreateUddi);
 		
 		//Business-Panel
 		LBusiness = new JLabel("Business:");
@@ -132,101 +150,19 @@ public class UDDIDialog extends JDialog
 		Bcancel.setText(Messages.getString("Transition.Properties.BPEL.Buttons.Cancel"));
 		add(Bcancel);
 		
-		//implements Listener
+		Bok.addActionListener(new SetUrl(this));
 		
-		/*BcreateUddi.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				//new NewUddiVariableDialog();
-			}
-		});*/
+		Bcancel.addActionListener(new WindowCloser(this));
+				
+		BBusiness.addActionListener(new FindBusiness(this));
+		LIfindBusiness.addListSelectionListener(new FindService(this));
 		
-		Bok.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				//get WSDL-URL for service
-				//this.wsdlTextField.setText("http://www.esther-landes.de/wsdlFile/example.wsdl");
-			}
-		});
-		
-		Bcancel.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				//close window
-			}
-		});
-		BBusiness.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				String busname = TFBusiness.getText();
-				if(busname.equals("") || busname == null)
-				{
-					showErrorPopup("ERROR", Messages.getString("Transition.Properties.BPEL.UDDI.WrongValueError"));
-				}
-				else
-				{
-					String[] buslist = org.woped.bpel.uddi.UDDI.find_business(uddiUrl, busname);
-					if(buslist == null || buslist.length == 0)
-					{
-						showErrorPopup("ERROR", Messages.getString("Transition.Properties.BPEL.UDDI.NoResult"));
-					}
-					else
-					{
-						if(buslist.length >= 40)
-						{
-							showErrorPopup(Messages.getString("Transition.Properties.BPEL.UDDI.ResultWarning"), Messages.getString("Transition.Properties.BPEL.UDDI.fortyResultWarning"));
-						}
-						DefaultListModel model = new DefaultListModel();
-					    for (int i=0; i<buslist.length; i++) {
-					        model.add(i, buslist[i]);
-					    }
-						LIfindBusiness.setModel(model);
-						DefaultListModel model2 = new DefaultListModel();
-						model2.add(0, "-none-");
-						LIfindService.setModel(model2);
-					}
-				}
-			}		
-		});
-		
-		
-		LIfindBusiness.addListSelectionListener(new ListSelectionListener()
-		{
-			String chosen = "";
-			String business = "none";
-			
-			public void valueChanged(ListSelectionEvent e)
-			{
-				business = (String) LIfindBusiness.getSelectedValue();
-				if (!LIfindBusiness.isSelectionEmpty() && !chosen.equalsIgnoreCase(business))
-				{
-					chosen = business;
-					//System.out.println(business);
-					String[] blist = org.woped.bpel.uddi.UDDI.find_services(org.woped.bpel.uddi.UDDI.getBusinessInfoFromName(uddiUrl, business));
-					if(blist.length > 0)
-					{
-						DefaultListModel model = new DefaultListModel();
-					    for (int i=0; i<blist.length; i++) {
-					        model.add(i, blist[i]);
-					    }
-						LIfindService.setModel(model);
-					}
-					else
-					{
-						DefaultListModel model = new DefaultListModel();
-						model.add(0, "-none-");
-						LIfindService.setModel(model);
-					}
-				}
-			}	
-		});
 		setVisible(true);
 	}
 	
+	/*
+	 * standard-method to show error-popups
+	 */
 	protected void showErrorPopup(String title, String message) {
 		errorPopup = new JDialog(this, true);
 		errorPopup.setVisible(false);
@@ -265,5 +201,161 @@ public class UDDIDialog extends JDialog
 
 		errorPopup.add(okButton, c);
 		errorPopup.setVisible(true);
+	}
+}
+/*
+ * Listener
+ */
+
+class WindowCloser implements ActionListener
+{
+	private JDialog d;
+	
+	public WindowCloser(JDialog d)
+	{
+		super();
+		this.d = d;
+	}
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		d.dispose();				
+	}	
+}
+
+class SetUrl implements ActionListener
+{
+	UDDIDialog adaptee;
+	
+	public SetUrl(UDDIDialog adaptee)
+	{
+		this.adaptee = adaptee;
+	}
+	public void actionPerformed(ActionEvent e) 
+	{
+		adaptee.showErrorPopup(Messages.getString("Transition.Properties.BPEL.Error"), Messages.getString("Transition.Properties.BPEL.UDDI.NoWSDL"));
+		//adaptee.dispose();
+	}
+}
+
+class CreateDialog implements ActionListener
+{
+	UDDIDialog adaptee								= null;
+	ModelElementContainer modelElementContainer		= null;
+	
+	
+	public CreateDialog(UDDIDialog adaptee, ModelElementContainer modelElementContainer)
+	{
+		this.adaptee = adaptee;
+		this.modelElementContainer = modelElementContainer;
+	}
+	
+	public void actionPerformed(ActionEvent arg0) 
+	{
+		NewUddiVariableDialog window = new NewUddiVariableDialog(adaptee);
+		if(NewUddiVariableDialog._OKBUTTON == window.getActivButton())
+		{
+			System.out.println(window.getVariableName());
+			System.out.println(window.getVariableURL());
+			modelElementContainer.addUddiVariable(window.getVariableName(), window.getVariableURL());
+			String[] uddibuslist = modelElementContainer.getUddiVariableNameList();
+			adaptee.CBuddiServer.removeAllItems();
+			for(int i=0; i<uddibuslist.length; i++)
+			{
+				adaptee.CBuddiServer.addItem(uddibuslist[i]);
+			}
+			adaptee.CBuddiServer.setSelectedItem(window.getVariableName());
+		}
+	}
+}
+
+class FindBusiness implements ActionListener
+{
+	private UDDIDialog adaptee;
+	
+	public FindBusiness(UDDIDialog adaptee)
+	{
+		this.adaptee = adaptee;
+	}
+	
+	public void actionPerformed(ActionEvent e) 
+	{
+		DefaultListModel model  = null;
+		DefaultListModel model2 = null;
+		
+		String busname = adaptee.TFBusiness.getText();
+		if(busname.equals("") || busname == null)
+		{
+			adaptee.showErrorPopup(Messages.getString("Transition.Properties.BPEL.Error"), Messages.getString("Transition.Properties.BPEL.UDDI.WrongValueError"));
+		}
+		else
+		{
+			//get UDDI-Server-URL
+			String UDDIServerName = (String) adaptee.CBuddiServer.getSelectedItem();
+			String UDDIServerURL = adaptee.modelElementContainer.findUddiVariableByName(UDDIServerName).getURL();
+			
+			String[] buslist = org.woped.bpel.uddi.UDDI.find_business(UDDIServerURL, busname);
+			if(buslist == null || buslist.length == 0)
+			{
+				adaptee.showErrorPopup(Messages.getString("Transition.Properties.BPEL.Error"), Messages.getString("Transition.Properties.BPEL.UDDI.NoResult"));
+			}
+			else
+			{
+				if(buslist.length >= 40)
+				{
+					adaptee.showErrorPopup(Messages.getString("Transition.Properties.BPEL.UDDI.ResultWarning"), Messages.getString("Transition.Properties.BPEL.UDDI.fortyResultWarning"));
+				}
+				model = new DefaultListModel();
+			    for (int i=0; i<buslist.length; i++) {
+			        model.add(i, buslist[i]);
+			    }
+			    adaptee.LIfindBusiness.setModel(model);
+				model2 = new DefaultListModel();
+				model2.add(0, "-none-");
+				adaptee.LIfindService.setModel(model2);
+			}
+		}
+	}	
+}
+
+class FindService implements ListSelectionListener
+{
+	private String chosen = "";
+	private String business = "none";
+	
+	private UDDIDialog adaptee = null;
+	
+	public FindService(UDDIDialog adaptee)
+	{
+		this.adaptee = adaptee;
+	}
+	
+	public void valueChanged(ListSelectionEvent e)
+	{
+		business = (String) adaptee.LIfindBusiness.getSelectedValue();
+		if (!adaptee.LIfindBusiness.isSelectionEmpty() && !chosen.equalsIgnoreCase(business))
+		{
+			chosen = business;
+			
+			//get UDDI-Server-URL
+			String UDDIServerName = (String) adaptee.CBuddiServer.getSelectedItem();
+			String UDDIServerURL = adaptee.modelElementContainer.findUddiVariableByName(UDDIServerName).getURL();
+			
+			String[] blist = org.woped.bpel.uddi.UDDI.find_services(org.woped.bpel.uddi.UDDI.getBusinessInfoFromName(UDDIServerURL, business));
+			if(blist.length > 0)
+			{
+				DefaultListModel model = new DefaultListModel();
+			    for (int i=0; i<blist.length; i++) {
+			        model.add(i, blist[i]);
+			    }
+			    adaptee.LIfindService.setModel(model);
+			}
+			else
+			{
+				DefaultListModel model = new DefaultListModel();
+				model.add(0, "-none-");
+				adaptee.LIfindService.setModel(model);
+			}
+		}
 	}
 }
