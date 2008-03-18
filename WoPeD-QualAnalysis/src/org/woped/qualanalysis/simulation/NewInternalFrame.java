@@ -3,8 +3,9 @@ import javax.imageio.ImageIO;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import javax.swing.LookAndFeel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-
+import javax.swing.UIManager;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -25,6 +26,7 @@ public class NewInternalFrame extends JInternalFrame {
 	private Shape  shape = null;
 	
 	private int    ViewMode = 0;
+
 	
 	//Constructor(s)
 	/**
@@ -43,11 +45,12 @@ public class NewInternalFrame extends JInternalFrame {
 		{
 			this.setSize(140, 150);
 		}
-		this.setVisible(true);
+	    this.setVisible(true);
 		this.setOpaque(false);
 		mover = new JPanel();
 		mover.setOpaque(false);
 	    ((BasicInternalFrameUI) this.getUI()).setNorthPane(mover);
+	
 	      	
 	}
 	

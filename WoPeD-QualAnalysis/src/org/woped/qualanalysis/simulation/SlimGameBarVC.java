@@ -301,7 +301,8 @@ public class SlimGameBarVC extends JPanel{
 	{
 		if(SlimChoiceBox != null)
 		{
-			SlimChoiceBox.setVisible(false);	
+			SlimChoiceBox.setVisible(false);
+			SlimChoiceList.removeAll();
 		}
 	}
 	

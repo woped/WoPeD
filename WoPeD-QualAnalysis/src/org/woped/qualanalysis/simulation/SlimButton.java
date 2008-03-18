@@ -1,6 +1,7 @@
 package org.woped.qualanalysis.simulation;
 
 import javax.swing.*;
+
 import java.awt.*;
 import org.woped.translations.Messages;
 import java.awt.geom.*;
@@ -35,7 +36,8 @@ public class SlimButton extends JButton{
 	private Dimension d = null;
 	
 	//Integers
-	private int ViewMode        = DEFAULT;        
+	private int ViewMode        = DEFAULT;   
+	
 	
 	public SlimButton(Icon icon)
 	{	
@@ -43,7 +45,8 @@ public class SlimButton extends JButton{
       /*
        * Load the Button's GUI
        */
-    	
+      
+
 	  standard = Messages.getImageSource("Tokengame.SlimView.Button.Standard.Standard");
 	  rollover = Messages.getImageSource("Tokengame.SlimView.Button.Standard.Rollover");
 	  pressed  = Messages.getImageSource("Tokengame.SlimView.Button.Standard.Pressed");
@@ -61,7 +64,7 @@ public class SlimButton extends JButton{
       
   
       this.setPreferredSize(d);
-  	  setContentAreaFilled(false);
+      setContentAreaFilled(false);
 
       
     }
@@ -70,7 +73,6 @@ public class SlimButton extends JButton{
     // Paint the round background and label.
     protected void paintComponent(Graphics g) 
     {
-    
         switch(ViewMode)
         {
          case DEFAULT:
@@ -90,7 +92,7 @@ public class SlimButton extends JButton{
       	  rollover = Messages.getImageSource("Tokengame.EyeView.Button.Play.Rollover");
       	  pressed  = Messages.getImageSource("Tokengame.EyeView.Button.Play.Pressed");
       		  
-      	  d = new Dimension(62, 62);
+      	//  d = new Dimension(62, 62);
       	  break;
       	  
          case EYE_BACK:
@@ -172,6 +174,7 @@ public class SlimButton extends JButton{
    //Hit detection.
    public boolean contains(int x, int y) 
    {
+	 
      if (shape == null || !shape.getBounds().equals(getBounds())) 
      {
          switch(ViewMode)
@@ -181,7 +184,7 @@ public class SlimButton extends JButton{
               break;
          
           case EYE_PLAY:
-       	      d = new Dimension(62, 62);
+       	      d = new Dimension(42, 62);
        	      break;
        	  
           case EYE_BACK:  

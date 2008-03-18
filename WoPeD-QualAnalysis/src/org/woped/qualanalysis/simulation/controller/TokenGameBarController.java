@@ -137,6 +137,9 @@ public class TokenGameBarController implements Runnable {
 		ExpertView.setVisible(false);
 		SlimView.setVisible(false);
 		EyeView.setVisible(false);
+		
+		SlimView.getSlimPanel().setChoiceListInvisible();
+		EyeView.getSlimPanel().setChoiceListInvisible();
        	desktop.getDesktopReference().remove(ExpertView);
        	desktop.getDesktopReference().remove(SlimView);
      	desktop.getDesktopReference().remove(EyeView);
@@ -880,6 +883,11 @@ public class TokenGameBarController implements Runnable {
 	{
 		return SlimView;
 	}
+  	
+  	public SlimInternalFrame getEyeView()
+  	{
+  		return EyeView;
+  	}
 
 	/**
 	 *

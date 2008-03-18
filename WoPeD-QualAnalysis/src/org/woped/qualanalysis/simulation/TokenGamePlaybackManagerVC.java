@@ -81,7 +81,8 @@ public class TokenGamePlaybackManagerVC extends JDialog
 	    jrb_SwitchiView = new JRadioButton(Messages.getTitle("Tokengame.PlaybackManager.iView"));
 	    bg_View.add(jrb_SwitchExpertview);
 	    bg_View.add(jrb_SwitchSlimview);
-	    bg_View.add(jrb_SwitchiView);
+		bg_View.add(jrb_SwitchiView);
+
 	    
 	    switch(RemoteControl.getViewMode())
 		{
@@ -151,7 +152,13 @@ public class TokenGamePlaybackManagerVC extends JDialog
 		
 		jp_View.add(jrb_SwitchExpertview);
 		jp_View.add(jrb_SwitchSlimview);
-		jp_View.add(jrb_SwitchiView);
+		if(UIManager.getLookAndFeel().getName() != "Mac")
+		{
+			
+			jp_View.add(jrb_SwitchiView);
+		}
+
+		
 		
 		hmgbc.weightx = 0;
         hmgbc.weighty = 1;
