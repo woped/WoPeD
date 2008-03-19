@@ -272,33 +272,49 @@ public class TokenGameHistoryManagerVC extends JDialog
 	public void openSelected()
 	{
 	  int LoadIndex = 0;
+	  boolean load = true;
 	  
-	  //When a saved Simulation is loaded the mode must not be record-mode...
-	  if(RemoteControl.isRecordSelected())
+	  // if a saved history is loaded and there exists an unsaved one which was currently recorded before opening the HistoryManager 
+	  // then the user will be asked if he really wants to discard the currently recorded history
+	  if(newHistory)
 	  {
-		  RemoteControl.getExpertView().doRecordClick();
+		  Object[] options = {Messages.getString("Dialog.Yes"),Messages.getString("Dialog.No")};
+		  int answer = JOptionPane.showOptionDialog(this, Messages.getString("Tokengame.HistoryManager.WaringDiscardRecordedHistory"),Messages.getTitle("Tokengame.HistoryManager.WaringDiscardRecordedHistory"),  JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+		  if(answer != 0)
+		  {
+			  load = false;
+		  }
 	  }
 	  
-	  //Specify which Simulation has to be opened
-	  SelectedItems = SavedHistory.getSelectionModel();	
-	  if(SelectedItems.isSelectionEmpty())
+	  if(load)
 	  {
-		 LoadIndex = 0; 
+		  //When a saved Simulation is loaded the mode must not be record-mode...
+		  if(RemoteControl.isRecordSelected())
+		  {
+			  RemoteControl.getExpertView().doRecordClick();
+		  }
+		  
+		  //Specify which Simulation has to be opened
+		  SelectedItems = SavedHistory.getSelectionModel();	
+		  if(SelectedItems.isSelectionEmpty())
+		  {
+			 LoadIndex = 0; 
+		  }
+		  else
+		  {
+			  LoadIndex = SelectedItems.getMinSelectionIndex();		  
+		  }
+		  
+		  //Load From Array
+		  if(SavedHistoryContent.getRowCount()!= 0)
+		  {
+		 	 boolean loaded = RemoteControl.loadHistory(LoadIndex);
+		 	 if (loaded)
+		 	 {
+		 		 this.setVisible(false);
+		 	 }
+		  }
 	  }
-	  else
-	  {
-		  LoadIndex = SelectedItems.getMinSelectionIndex();		  
-	  }
-	  
-	  //Load From Array
-	  if(SavedHistoryContent.getRowCount()!= 0)
-	  {
-	 	 boolean loaded = RemoteControl.loadHistory(LoadIndex);
-	 	 if (loaded)
-	 	 {
-	 		 this.setVisible(false);
-	 	 }
-	  }	  
 	}
 	
 	public int getSelection()

@@ -152,20 +152,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 }
 			 break;
 		 case CLICK_STOP:
-			 /*
-			  *  Reset TokenGame to Startposition and Enable PlayButton
-			  */
-			 if(RemoteControl.tokengameRunning())
-			 {
-		       stopAction();
-		       if(RemoteControl.isRecordSelected())
-		       {   
-		         RemoteControl.createSaveableHistory();
-		       }
-		       RemoteControl.enablePlayButton();
-		       RemoteControl.enableStepDown(null);
-		       RemoteControl.enableRecordButton();
-			 }
+			 stopTokenGame();
 			 break;
 		 case CLICK_PLAY:
 			 /*
@@ -238,6 +225,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 }
 			 break;
 		 case OPEN_HISTORY_MANAGER:
+			 stopTokenGame();
 			 showHistoryManager();
 			 break;
 		 case CHOOSE_DELETE_CURRENT:
@@ -324,6 +312,24 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 break;
 		}
 
+	}
+	
+	/*
+	 *  Reset TokenGame to Startposition and Enable PlayButton
+	 */
+	private void stopTokenGame()
+	{
+		if(RemoteControl.tokengameRunning())
+		{
+			stopAction();
+			if(RemoteControl.isRecordSelected())
+			{
+				RemoteControl.createSaveableHistory();
+			}
+			RemoteControl.enablePlayButton();
+			RemoteControl.enableStepDown(null);
+			RemoteControl.enableRecordButton();
+		}
 	}
 	
 	private void showPlaybackManager()
