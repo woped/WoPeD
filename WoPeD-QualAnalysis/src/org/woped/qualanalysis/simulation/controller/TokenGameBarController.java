@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.geom.Dimension2D;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Vector;
@@ -591,12 +592,27 @@ public class TokenGameBarController implements Runnable {
      * Overwrites an existing history with the current one.
      * @param index
      */
-    public void overwriteHistory(int index)
+    public void overwriteHistory(String simulationname)
     {
-    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().get(index);
-    	SaveableSimulation.setOccuredTransitions((Vector<TransitionModel>)HistoryVector.clone());
-    	SaveableSimulation.setSavedDate(new Date());
-    	tgController.getThisEditor().setSaved(false);
+    	Vector<SimulationModel> simulations = PetriNet.getSimulations();
+    	Iterator<SimulationModel> iter = simulations.iterator();
+    	while(iter.hasNext())
+    	{
+    		SimulationModel temp = iter.next();
+    		if(temp.getName().equals(simulationname))
+    		{
+    			SaveableSimulation = temp;
+    			break;
+    		}
+    	}
+    	if(SaveableSimulation!=null)
+    	{
+	    	SaveableSimulation.setOccuredTransitions((Vector<TransitionModel>)HistoryVector.clone());
+	    	SaveableSimulation.setSavedDate(new Date());
+	
+	    	// set the pnml-state to unsaved
+	    	tgController.getThisEditor().setSaved(false);
+    	}
     }
 
 
@@ -608,13 +624,26 @@ public class TokenGameBarController implements Runnable {
     {
     	int index = historyManager.getSelection();
     	Object[] options = {Messages.getString("Dialog.Yes"),Messages.getString("Dialog.No")};
-    	int answer = JOptionPane.showOptionDialog(historyManager, Messages.getString("Tokengame.HistoryManager.WarningExistingName"),Messages.getTitle("Tokengame.HistoryManager.WarningExistingName"),  JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+    	int answer = JOptionPane.showOptionDialog(historyManager, Messages.getString("Tokengame.HistoryManager.WarningDelete"),Messages.getTitle("Tokengame.HistoryManager.WarningDelete"),  JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
     	if(answer == 0)
     	{
 	    	SaveableSimulation = (SimulationModel)PetriNet.getSimulations().remove(index);
 	    	tgController.getThisEditor().setSaved(false);
 	    	historyManager.removeLoadListItem(historyManager.getSelection());
     	}
+    }
+    
+    /**
+     * fills the list of saved simulations in the HistoryManager
+     */
+    public void initializeHistoryManagerSimulationlist(TokenGameHistoryManagerVC HistoryDialog)
+    {
+    	for(int i = 0; i < getPetriNet().getSimulations().size(); i++)
+	    {
+	    	SimulationModel sm = getPetriNet().getSimulations().get(i);
+	    	Object[] item = {sm.getName(),sm.getSavedDate()};
+	    	HistoryDialog.addLoadListItem(item);
+	    }
     }
 
 	/**

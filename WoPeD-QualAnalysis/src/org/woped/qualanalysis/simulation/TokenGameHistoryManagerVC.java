@@ -236,11 +236,18 @@ public class TokenGameHistoryManagerVC extends JDialog
 		{
 			if(getSelection() == -1)
 			 {
-				 save = true;
+				// save normal if there is no existing simulation selected 
+				save = true;
 			 }
 			 else
 			 {
-				 RemoteControl.overwriteHistory(getSelection());
+				 RemoteControl.overwriteHistory(NameEntry.getText());
+				 
+				 // refresh the list of simulations
+				 SavedHistoryContent.getDataVector().removeAllElements();
+				 RemoteControl.initializeHistoryManagerSimulationlist(this);
+				 
+				 RemoteControl.setToOldHistory();
 				 this.setVisible(false);
 			 }
 		}
@@ -366,7 +373,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 				if(containsName)
 				{
 				   Object[] options = {Messages.getString("Dialog.Yes"),Messages.getString("Dialog.No")};
-				   int answer = JOptionPane.showOptionDialog(this, Messages.getString("Tokengame.HistoryManager.WarningExistingName"),Messages.getTitle("Tokengame.HistoryManager.WarningExistingName"),  JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+				   int answer = JOptionPane.showOptionDialog(this, Messages.getString("Tokengame.HistoryManager.WarningExistingName").replaceAll("##SIMULATIONNAME##", NameEntry.getText()),Messages.getTitle("Tokengame.HistoryManager.WarningExistingName"),  JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
 				   // overwrite
 				   if(answer == 0)
 				   {

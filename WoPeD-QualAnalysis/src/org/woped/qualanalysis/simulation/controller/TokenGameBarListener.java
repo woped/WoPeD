@@ -347,12 +347,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		{	
 		    MainWindowReference = new ReferenceProvider();
 		    HistoryDialog = new TokenGameHistoryManagerVC(MainWindowReference.getUIReference(), RemoteControl);
-		    for(int i = 0; i < RemoteControl.getPetriNet().getSimulations().size(); i++)
-		    {
-		    	SimulationModel sm = RemoteControl.getPetriNet().getSimulations().get(i);
-		    	Object[] item = {sm.getName(),sm.getSavedDate()};
-		    	HistoryDialog.addLoadListItem(item);
-		    }
+		    RemoteControl.initializeHistoryManagerSimulationlist(HistoryDialog);
 		    	
 		    HistoryDialog.initializeElementStatus();
 		    HistoryDialog.setVisible(true);
