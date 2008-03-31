@@ -92,7 +92,7 @@ public class RunWoPeD extends JApplet {
 			JOptionPane.showMessageDialog(this, "Error during initialisation! \n" + e.getMessage());
 			System.exit(0);
 		}catch (NullPointerException e){
-			JOptionPane.showMessageDialog(this, e.getMessage());
+			JOptionPane.showMessageDialog(this, "Server maybe offline!");
 		}
 
 		// Arguments Field
