@@ -34,7 +34,7 @@ import org.woped.server.holder.ModellHolder;
 public class ServerImpl extends UnicastRemoteObject implements IServer {
 
 	
-	private String path = File.separator+"modells"+File.separator;
+	private String path = File.separator+Constants.SERVER_MODELLS+File.separator;
 	
 	private Connection connection = null;
 	
@@ -60,7 +60,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		}		
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();			
+			Class.forName(Constants.DB_DRIVER).newInstance();			
 			createConnection();
 		} catch (Exception e) {
 			LoggerManager.fatal(Constants.APPLET_LOGGER, "Connection Error for Database!");
@@ -87,16 +87,17 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		Statement query = null; 
 		ResultSet result = null;
 			
-		String sql = "SELECT * FROM `modelle` WHERE `userid`="+userID;
-		if (shared) {
-			sql += " OR `shared`=1";
-		}
+		
 		
 		
 		try {
 			query = connection.createStatement();
+			if (shared) {
+				result = query.executeQuery(String.format(Constants.SQL_SHARED_MODEL_LIST, userID));
+			} else {
+				result = query.executeQuery(String.format(Constants.SQL_MODEL_LIST, userID));
+			}			
 			
-			result = query.executeQuery(sql);
 			if (result != null) {
 				while (result.next()) {
 					resultValue.add(new ModellHolder(result.getInt("modellid"),result.getString("titel")));
@@ -159,11 +160,11 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 				}
 			} else {
 				// throw a RemoteException
-				throw new RemoteException("Datei existiert nicht");
+				throw new RemoteException(Constants.ERROR_FILE_NOT_EXISTS);
 			}
 		} else {
 			// it doesnt exists a entry in the DB
-			throw new RemoteException("Model Existiert nicht in der DB");
+			throw new RemoteException(String.format(Constants.ERROR_NO_MATH_FOUND_FOR_MODELID,modelid));
 		}
 				
 		// returns the content of StringBuffer
@@ -190,7 +191,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 			if (freeMemoryForUser(userid) > 0) {
 				modelid = getNewModelID(userid,title);
 			} else {
-				throw new RemoteException("Not enough memory to save model");
+				throw new RemoteException(Constants.ERROR_NOT_ENOUGH_MEMORY);
 			}
 			
 		} 
@@ -235,8 +236,8 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 */
 	private long freeMemoryForUser(int userID) throws RemoteException {
 		long maxMemory = 2048;
-		if (PropertyLoader.getProperty("rmiMemory") != null) {
-			maxMemory = Long.parseLong(PropertyLoader.getProperty("rmiMemory"));
+		if (PropertyLoader.getProperty(Constants.RMI_MEMORY) != null) {
+			maxMemory = Long.parseLong(PropertyLoader.getProperty(Constants.RMI_MEMORY));
 		}
 		// memory in use
 		long usageMemory = 0;
@@ -272,7 +273,9 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		
 		try {
 			stmt = connection.createStatement(Statement.CLOSE_ALL_RESULTS,Statement.RETURN_GENERATED_KEYS);
-			stmt.executeUpdate("INSERT INTO `modelle` (userid,titel,lastedit) VALUES ("+userid+",'"+title+"',NOW())",Statement.RETURN_GENERATED_KEYS);
+			Object[] args = {userid,title};
+			stmt.executeUpdate(String.format(Constants.SQL_INSERT_MODEL, args),Statement.RETURN_GENERATED_KEYS);
+			
 			result = stmt.getGeneratedKeys();
 			if (result.next()) {
 				resultValue = result.getInt(1);
@@ -318,7 +321,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		
 		try {
 			query = connection.createStatement();
-			result = query.executeQuery("SELECT * FROM `modelle` WHERE `modellid`="+modelID);
+			result = query.executeQuery(String.format(Constants.SQL_EXISTS_MODEL, modelID));
 			if (result.next()) {
 				if (userID == result.getInt("userid")) {
 					returnValue = true;
@@ -367,7 +370,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		try {
 			// Query
 			Statement query = connection.createStatement();
-			result = query.executeQuery("SELECT * FROM `modelle` WHERE `modellid`="+modelid);
+			result = query.executeQuery(String.format(Constants.SQL_EXISTS_MODEL, modelid));
 			if (result.last()) {
 				returnValue = true;
 			}		
