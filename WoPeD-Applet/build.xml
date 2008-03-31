@@ -99,12 +99,14 @@
 	<target name="build-WopedServerUI">
 		<jar destfile="dist/WoPeD-server.jar" manifest="dist/MANIFEST-SERVER.mf">
 			<fileset dir="bin" excludes="org/woped/server/ServerLoader.class"/>
+			<fileset dir="build-tools" includes="server.policy"/>
 		</jar>
 	</target>
 	
 	<target name="build-WopedServerService">
 			<jar destfile="dist/WoPeD-server-service.jar" manifest="dist/MANIFEST-SERVICE.mf">
 				<fileset dir="bin" excludes="org/woped/server/ServerLoader.class"/>
+				<fileset dir="build-tools" includes="server.policy"/>
 			</jar>
 	</target>
 		
@@ -121,6 +123,7 @@
 			<fileset dir="../WoPeD-Translations/bin" />
 			<fileset dir="../WoPeD-XMLConfiguration/bin" />
 			<fileset dir="bin"/>
+			<fileset dir="build-tools" includes="client.policy"/>
 		</jar>
 	</target>
 
