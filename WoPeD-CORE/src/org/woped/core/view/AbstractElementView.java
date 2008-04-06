@@ -219,8 +219,8 @@ public abstract class AbstractElementView extends VertexView {
     	String tuString = getAbbrev(timeUnit);
     	
     	if (!time.equals("0") &&
-    			trans.getToolSpecific().getTrigger() != null &&
-     			trans.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE) {
+    		trans.getToolSpecific().getTrigger() != null &&
+			trans.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE) {
     		Font timeFont = DefaultStaticConfiguration.DEFAULT_LABEL_FONT;
     		g2.setColor(DefaultStaticConfiguration.DEFAULT_TIME_COLOR);
     		g2.setFont(timeFont);

@@ -60,6 +60,9 @@ public class CreationMap extends HashMap<String, Object>
     public static final String ARC_SOURCE_ID         = "ARC_SOURCE_ID";
     public static final String ARC_POINTS            = "ARC_POINTS";
     public static final String ARC_ROUTE             = "ARC_ROUTE";
+    public static final String ARC_PROBABILITY		 = "ARC_PROBABILITY";
+    public static final String ARC_DISPLAYPROB		 = "ARC_DISPLAYPROB";
+    public static final String ARC_LABELPOSITION	 = "ARC_LABELPOSITION";
     public static final String RESOURCE_POSITION     = "RESOURCE_POSITION";
     public static final String RESOURCE_ROLE         = "RESOURCE_ROLE";
     public static final String RESOURCE_ORGUNIT      = "RESOURCE_ORGUNIT";
@@ -182,7 +185,7 @@ public class CreationMap extends HashMap<String, Object>
             return null;
         }
     }
-
+    
     public void setNamePosition(int x, int y)
     {
         put(ELEMENT_NAME_POSITION, new Point(x, y));
@@ -396,7 +399,63 @@ public class CreationMap extends HashMap<String, Object>
     {
         put(ARC_POINTS, points);
     }
+    
+    public void setArcProbability(double value)
+    {
+    	put(ARC_PROBABILITY, new Double(value));
+    }    
+    
+    public double getArcProbability()
+    {
+        if (containsKey(ARC_PROBABILITY))
+        {
+            return ((Double) get(ARC_PROBABILITY)).doubleValue();
+        } else
+        {
+            return 1;
+        }    	
+    }
+    
+    public void setArcDisplayProbability(boolean show)
+    {
+    	put(ARC_DISPLAYPROB, new Boolean(show));
+    }    
+    
+    public boolean getDisplayArcProbability()
+    {
+        if (containsKey(ARC_DISPLAYPROB))
+        {
+            return ((Boolean) get(ARC_DISPLAYPROB)).booleanValue();
+        } else
+        {
+            return false;
+        }    	
+    }
+    
+    
+    public void setArcLabelPosition(int x, int y)
+    {
+        put(ARC_LABELPOSITION, new Point(x, y));
+    }
 
+
+    public void setArcLabelPosition(Point point)
+    {
+        put(ARC_LABELPOSITION, point);
+    }
+
+    public Point getArcLabelPosition()
+    {
+        if (containsKey(ARC_LABELPOSITION))
+        {
+            return (Point) get(ARC_LABELPOSITION);
+        } else
+        {
+            return null;
+        }
+    }
+    
+    
     public void setResourcePosition(Point point)
     {
         put(RESOURCE_POSITION, point);

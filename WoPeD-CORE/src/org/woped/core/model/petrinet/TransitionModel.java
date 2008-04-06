@@ -120,12 +120,30 @@ public class TransitionModel extends PetriNetModelElement
             map.setTriggerType(getToolSpecific().getTrigger().getTriggertype());
             map.setTriggerPosition(new Point(getToolSpecific().getTrigger().getPosition()));
         }
+        else
+        	// If no trigger exists, our creation map must reflect this
+        	// (there might have been a trigger before which was removed
+        	// during editing)
+        	map.setTriggerType(-1);
         if (hasResource())
         {
             map.setResourceOrgUnit(getToolSpecific().getTransResource().getTransOrgUnitName());
             map.setResourceRole(getToolSpecific().getTransResource().getTransRoleName());
             map.setResourcePosition(new Point(getToolSpecific().getTransResource().getPosition()));
         }
+        else
+        {
+        	// If no resource org unit exists, our creation map must reflect this
+        	// (there might have been a resource unit before which was removed
+        	// during editing)
+        	map.setResourceOrgUnit(null);
+        	map.setResourceRole(null);
+        	map.setResourcePosition(null);
+        }
+        // Extract transition service time and transition service
+        // time unit
+        map.setTransitionTime(getToolSpecific().getTime());
+        map.setTransitionTimeUnit(getToolSpecific().getTimeUnit());
 
         return map;
     }

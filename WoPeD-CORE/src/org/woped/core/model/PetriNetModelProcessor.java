@@ -135,16 +135,16 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements
 					newTransResource(map);
 					if (map.getResourcePosition() != null)
 						((TransitionModel) anElement).getToolSpecific()
-								.getTransResource().setPosition(
+							.getTransResource().setPosition(
 									map.getResourcePosition().x,
 									map.getResourcePosition().y);
 				}
-				if (map.getTransitionTime() != -1)
+				if (map.getTransitionTime()!=-1)
 					((TransitionModel)anElement).getToolSpecific()
-						.setTime(map.getTransitionTime());
-				if (map.getTransitionTimeUnit() != -1)
+							.setTime(map.getTransitionTime());
+				if (map.getTransitionTimeUnit()!=-1)
 					((TransitionModel)anElement).getToolSpecific()
-						.setTimeUnit(map.getTransitionTimeUnit());
+							.setTimeUnit(map.getTransitionTimeUnit());
 			}
 			
 			return anElement;

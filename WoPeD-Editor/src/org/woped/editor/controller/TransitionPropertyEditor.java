@@ -74,6 +74,8 @@ import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 import org.woped.bpel.gui.transitionproperties.*;
+import org.jgraph.graph.DefaultGraphCell;
+
 
 /**
  * @author waschtl

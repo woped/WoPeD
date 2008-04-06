@@ -452,6 +452,11 @@ public class ArcModel extends DefaultEdge implements Serializable {
 					(int) ((Point2D) points.get(i)).getY()));
 		}
 		map.setArcPoints(newPoints);
+		map.setArcProbability(getProbability());
+		map.setArcDisplayProbability(isDisplayOn());
+		map.setArcLabelPosition((int)this.getLabelPosition().getX(),
+				(int)this.getLabelPosition().getY());
+		
 		return map;
 	}
 
