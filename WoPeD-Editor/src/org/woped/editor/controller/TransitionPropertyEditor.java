@@ -1739,14 +1739,15 @@ public class TransitionPropertyEditor extends JDialog implements
 		map.setResourcePosition(transition.getResourcePosition());
 
 		// Remove old trigger plus resource classes if existing
-		if (transition.hasTrigger()) {
-			getEditor().deleteCell(transition.getToolSpecific().getTrigger(),
-					true);
-		}
-		if (transition.hasResource()) {
-			getEditor().deleteCell(
-					transition.getToolSpecific().getTransResource(), true);
-		}
+		// Remember them here as deleteCell will cross-update the tool-specific info
+         	DefaultGraphCell trigger = transition.hasTrigger()?transition.getToolSpecific().getTrigger():null;
+         	DefaultGraphCell resource = transition.hasResource()?transition.getToolSpecific().getTransResource():null;
+ 		if (trigger!=null) {
+ 			getEditor().deleteCell(trigger, true);
+ 		}
+  		if (resource!=null) {
+ 			getEditor().deleteCell(resource, true);
+ 		}
 
 		// Set new trigger and resource information
 		if (getTriggerResourceRadioButton().isSelected()) {

@@ -209,7 +209,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 							int type = ((TransitionModel) element).getToolSpecific().getOperatorType();
 
 							if (command.equals(Messages.getString("Transition.Properties.Branching.None")) &
-								 type != -1)
+								 type != OperatorTransitionModel.TRANS_SIMPLE_TYPE)
 							{
 								transformTransition(editor, cell, element, OperatorTransitionModel.TRANS_SIMPLE_TYPE, -1);
 							}
@@ -455,8 +455,8 @@ public class EditorEventProcessor extends AbstractEventProcessor
 		newMap.setType(p_nodeType);
 		newMap.setOperatorType(p_operatorType);
 		
-		ArrayList<String> incAcrs = new ArrayList<String>();
-		ArrayList<String> outAcrs = new ArrayList<String>();
+		ArrayList<CreationMap> incAcrs = new ArrayList<CreationMap>();
+		ArrayList<CreationMap> outAcrs = new ArrayList<CreationMap>();
 
 		Map<String, ArcModel> arcMap = p_editor.getModelProcessor().getElementContainer().getArcMap();
 
@@ -467,10 +467,10 @@ public class EditorEventProcessor extends AbstractEventProcessor
 			ArcModel curArc = (ArcModel) arcMap.get(arcIterator.next());
 
 			if (curArc.getSourceId().equals(oldMap.getId()))
-				outAcrs.add(curArc.getTargetId());
+				outAcrs.add(curArc.getCreationMap());
 
 			if (curArc.getTargetId().equals(oldMap.getId()))
-				incAcrs.add(curArc.getSourceId());
+				incAcrs.add(curArc.getCreationMap());
 
 		}
 
@@ -480,13 +480,18 @@ public class EditorEventProcessor extends AbstractEventProcessor
 
 		for (int i = 0; i < outAcrs.size(); i++)
 		{
-			p_editor.createArc(oldMap.getId(), outAcrs.get(i));
+			ArcModel am = p_editor.createArc(outAcrs.get(i),true);
+			// Some special behavior: As this method is all about changing
+			// the operator type, what could happen to us is that the operator type
+			// changed to a non-XOR-split type and previously a probability was 
+			// displayed for the arc. Catch this and disable the display 
+			if (!am.isXORsplit(p_editor.getModelProcessor()))
+					am.setDisplayOn(false);
+					
 		}
 
 		for (int i = 0; i < incAcrs.size(); i++)
-		{
-			p_editor.createArc(incAcrs.get(i), oldMap.getId());
-		}
+			p_editor.createArc(incAcrs.get(i), true);
 		
 		// Refresh the net to display any copied triggers and resources...
 		p_editor.getGraph().drawNet(p_editor.getModelProcessor());
