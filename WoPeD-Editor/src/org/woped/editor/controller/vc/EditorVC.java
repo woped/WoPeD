@@ -830,8 +830,10 @@ public class EditorVC extends JPanel implements KeyListener,
 				// Copy probability state of the creation map
 				arc.setProbability(map.getArcProbability());
 				arc.setDisplayOn(map.getDisplayArcProbability());
-				arc.setLabelPosition(new Point2D.Double(map.getArcLabelPosition().getX(),
-						map.getArcLabelPosition().getY()));
+				// If there is a label position, copy it
+				if (map.getArcLabelPosition()!=null)
+					arc.setLabelPosition(new Point2D.Double(map.getArcLabelPosition().getX(),
+							map.getArcLabelPosition().getY()));				
 			} else
 			{
 				LoggerManager.debug(Constants.EDITOR_LOGGER, "Connection already exits. Discarded.");
