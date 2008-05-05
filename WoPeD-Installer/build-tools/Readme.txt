@@ -98,6 +98,7 @@ lib directory
   ./lib/jgraph-@jgraphversion@.jar            (Graph drawing library)
   ./lib/log4j-@log4jversion@.jar             (Event logger library)
   ./lib/flanagan-@flanaganversion@.jar             (Random number generator library)
+  ./lib/jcalendar-@jcalendarversion@.jar             (Calendar utility library)
   ./lib/pnmlBeans.jar               (Petri net model description library)
   ./lib/pnmlBeans_old.jar           (Petri net model description library, old version)
   ./lib/xbean.jar                   (Bean generation library)
