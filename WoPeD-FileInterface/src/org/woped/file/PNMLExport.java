@@ -42,7 +42,6 @@ import javax.swing.JOptionPane;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.woped.bpel.gui.transitionproperties.BaseActivity;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IStatusBar;
