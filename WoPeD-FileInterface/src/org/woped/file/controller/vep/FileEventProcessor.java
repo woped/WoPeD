@@ -214,7 +214,10 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			// save the Model on the Webserver
 			// if this is the first save, ask the user about a filename or a title
 			Object title = null;
-			if (editor.getName() == null || editor.getName().trim().length() ==0)
+			
+			// if modelID == -1 then it is a new model 
+			// dialog for entering name of model
+			if (editor.getModelid() == -1)
 			{
 				title = JOptionPane.showInputDialog((JFrame)getMediator().getUi(),Messages.getString("SaveWebServiceEditor.Input"),Messages.getTitle("SaveWebServiceEditor"),JOptionPane.QUESTION_MESSAGE,null,null,editor.getName());
 			}else {
