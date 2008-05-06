@@ -213,8 +213,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			
 			// save the Model on the Webserver
 			// if this is the first save, ask the user about a filename or a title
-			Object title = JOptionPane.showInputDialog((JFrame)getMediator().getUi(),Messages.getString("SaveWebServiceEditor.Input"),Messages.getTitle("SaveWebServiceEditor"),JOptionPane.QUESTION_MESSAGE,null,null,editor.getName());
-							
+			Object title = null;
+			if (editor.getName() == null || editor.getName().trim().length() ==0)
+			{
+				title = JOptionPane.showInputDialog((JFrame)getMediator().getUi(),Messages.getString("SaveWebServiceEditor.Input"),Messages.getTitle("SaveWebServiceEditor"),JOptionPane.QUESTION_MESSAGE,null,null,editor.getName());
+			}else {
+				title = editor.getName();
+			}			
 			
 			editor.setModelid(ServerLoader.getInstance().saveModel(UserHolder.getUserID(), editor.getModelid(), baos.toString(),(String)title));
 			// close the Stream
@@ -225,6 +230,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			LoggerManager.info(Constants.FILE_LOGGER,
 					"Petrinet saved in webfile: "
 							+ editor.getModelid() + " " +editor.getName());
+			JOptionPane.showMessageDialog((JFrame)getMediator().getUi(), Messages.getString("SaveWebServiceEditor.Saved"));
 
 			editor.setSaved(true);
 			succeed = true;
