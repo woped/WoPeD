@@ -194,7 +194,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 				throw new RemoteException(Constants.ERROR_NOT_ENOUGH_MEMORY);
 			}
 			
-		} 
+		}
 			
 		// save content to File
 		File file = new File(path+modelid+".pnml");
@@ -405,12 +405,12 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		
 		try {
 			stmt = connection.createStatement();
-			result = stmt.executeQuery("SELECT * FROM `benutzer` WHERE `sessionid`='"+token+"'");
+			result = stmt.executeQuery("SELECT * FROM benutzer WHERE sessionid='"+token+"'");
 			if (result.next()) {
 				resultValue = result.getInt("userid");
 			}
 			// erase session token
-			stmt.executeUpdate("UPDATE `benutzer` SET `sessionid`=" + null + " WHERE `sessionid`='"+token+"'");			
+			stmt.executeUpdate("UPDATE benutzer SET sessionid=" + null + " WHERE sessionid='"+token+"'");			
 		} catch (SQLException e) {
 			LoggerManager.error(Constants.APPLET_LOGGER, "SQLException: " + e.getMessage());
 			LoggerManager.error(Constants.APPLET_LOGGER, "SQLState: " + e.getSQLState());
