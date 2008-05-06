@@ -544,8 +544,12 @@ public class EditorVC extends JPanel implements KeyListener,
 					TriggerModel triggerModel = ((PetriNetModelProcessor) getModelProcessor())
 							.newTrigger(map);
 					
-					triggerModel.setPosition(map.getTriggerPosition().x,
-							map.getTriggerPosition().y);
+					if (map.getTriggerPosition() != null) {
+						triggerModel.setPosition(map.getTriggerPosition());
+					} 
+					else {
+						triggerModel.setPosition(map.getPosition().x + 10, map.getPosition().y - 20);
+					}
 					ParentMap pm = new ParentMap();
 					pm.addEntry(triggerModel, group);
 					HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
