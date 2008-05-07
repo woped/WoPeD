@@ -79,11 +79,12 @@ public class RunWoPeD extends JApplet {
 	public void init() {
 		// Run as Applet
 		isApplet = true;
-		// Instanze des Applets
+		// Instance of the Appplet
 		applet = this;
 		// Extract Arguments
+		String sessionId = getParameter("sessionid");
 		try {
-			UserHolder.setUserID(ServerLoader.getInstance().getUserID(getParameter("sessionid")));
+			UserHolder.setUserID(ServerLoader.getInstance().getUserID(sessionId));
 			if (UserHolder.getUserID() == -1) {
 				JOptionPane.showMessageDialog(this,"Session not valid!");
 			}
