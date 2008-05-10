@@ -81,7 +81,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		this.add(addAutoChoice());
 		this.add(addHistory());
 		
-		
+		disablePlayButtons();
 		
 	}
 	
@@ -406,6 +406,21 @@ public class TokenGameBarVC extends JInternalFrame {
 	 * disable / enable Buttons - Sektion 
 	 */
 	
+    public void enablePlayButtons()
+    {
+    	pbnFW.setEnabled(true);
+		pbnFastFW.setEnabled(true);
+		pbnBW.setEnabled(true);
+		pbnFastBW.setEnabled(true);
+    }
+    
+    public void disablePlayButtons()
+    {
+    	pbnFW.setEnabled(false);
+		pbnFastFW.setEnabled(false);
+		pbnBW.setEnabled(false);
+		pbnFastBW.setEnabled(false);
+    }
 	public void disableForwardButtons()
 	{
 		pbnFW.setEnabled(false);

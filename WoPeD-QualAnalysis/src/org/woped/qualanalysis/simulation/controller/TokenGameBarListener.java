@@ -153,6 +153,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 break;
 		 case CLICK_STOP:
 			 stopTokenGame();
+			 RemoteControl.disablePlayButtons();
 			 break;
 		 case CLICK_PLAY:
 			 /*
@@ -164,6 +165,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 RemoteControl.disablePlayButton();
 			 RemoteControl.cleanupTransition();
 			 playbackActions();
+			 RemoteControl.enablePlayButtons();
 			 break;
 		 case CLICK_PAUSE:
 			 RemoteControl.setEndOfAutoPlay(true);

@@ -770,15 +770,22 @@ public class TokenGameBarController implements Runnable {
 		if(autoPlayBack)
 		{
 			enableStepwiseButton();
-			ExpertView.enableForwardButtons();
 			disableAutoPlaybackButton();
 			clearChoiceBox();
+			if(ExpertView.isPlayButtonEnabled())
+			{
+				ExpertView.disablePlayButtons();
+			}
 		}
 		else
 		{
 			enableAutoPlaybackButton();
 			disableStepwiseButton();
 			fillChoiceBox();
+			if(ExpertView.isPlayButtonEnabled())
+			{
+				ExpertView.disablePlayButtons();
+			}
 		}
 	}
 
@@ -1095,6 +1102,20 @@ public class TokenGameBarController implements Runnable {
 	public void disableAutoPlaybackButton()
 	{
 		ExpertView.disableAutoPlaybackButton();
+	}
+	/**
+	 * enables the Play Buttons on ExpertView
+	 */
+	public void enablePlayButtons()
+	{
+		ExpertView.enablePlayButtons();
+	}
+	/**
+	 * disable the Play Buttons on ExpertView
+	 */
+	public void disablePlayButtons()
+	{
+		ExpertView.disablePlayButtons();
 	}
 
 	/**
