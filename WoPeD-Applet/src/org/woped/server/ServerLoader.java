@@ -14,30 +14,27 @@ import org.woped.server.configuration.PropertyLoader;
 /**
  * Singleton Class to handle the Client RMI
  * @author C. Krüger
+ * @author Sascha
  *
  */
 public class ServerLoader {
 
-	 
-	
-	static public IServer instance = null;
-	
 	/**
 	 * returns the Instance to the remote Service
 	 * @return
 	 */
 	static public IServer getInstance() {
-		if (null == instance) {
-			try {
-				instance = (IServer)Naming.lookup(PropertyLoader.getProperty("rmiURL"));
-			} catch (MalformedURLException e) {
-				LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
-			} catch (RemoteException e) {
-				LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
-			} catch (NotBoundException e) {
-				LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
-			} 
-		}
+		IServer instance = null;
+		
+		try {
+			instance = (IServer)Naming.lookup(PropertyLoader.getProperty("rmiURL"));
+		} catch (MalformedURLException e) {
+			LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
+		} catch (RemoteException e) {
+			LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
+		} catch (NotBoundException e) {
+			LoggerManager.fatal(Constants.CORE_LOGGER, e.getMessage());
+		} 
 		return instance;
 	}
 	

@@ -29,13 +29,19 @@ import org.woped.server.holder.ModellHolder;
  * @author C. Krüger
  * @since 12.01.2008
  * 
+ * @author Dörner
+ * @since 01.05.2008
+ * 
  */
 public class ServerImpl extends UnicastRemoteObject implements IServer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String path = File.separator + Constants.SERVER_MODELLS
 			+ File.separator;
 
-	private Connection connection = null;
 
 	/**
 	 * Implementations must have an explicit constructor in order to declare the
@@ -48,22 +54,23 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 */
 	public ServerImpl(String workingDirectory) throws RemoteException {
 		super();
+		
+		try {
+			Class.forName(Constants.DB_DRIVER).newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		// set workingDirectory to .
 		if (workingDirectory == null || workingDirectory.equals("")) {
 			path = "." + path;
 		} else {
 			path = workingDirectory + path;
 		}
-
-		try {
-			Class.forName(Constants.DB_DRIVER).newInstance();
-			createConnection();
-		} catch (Exception e) {
-			LoggerManager.fatal(Constants.APPLET_LOGGER,
-					"Connection Error for Database!");
-			e.printStackTrace();
-		}
-
 	}
 
 	/**
@@ -88,8 +95,10 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		// workItem
 		Statement query = null;
 		ResultSet result = null;
+		Connection connection = null;
 
 		try {
+			connection = getConnection();
 			query = connection.createStatement();
 			if (shared) {
 				result = query.executeQuery(String.format(
@@ -113,20 +122,21 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 			LoggerManager.error(Constants.APPLET_LOGGER, "VendorCode: "
 					+ e.getErrorCode());
 		} finally {
-			if (query != null) {
-				try {
+			try {
+				if (query != null) {
 					query.close();
-				} catch (SQLException e) {
-					// ignore
 				}
-			}
-			if (result != null) {
-				try {
+				
+				if (result != null) {
 					result.close();
-				} catch (SQLException e) {
-					// ignore
 				}
-			}
+				
+				if (connection != null){
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
 		}
 		return resultValue;
 	}
@@ -289,12 +299,13 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 * @return
 	 */
 	private int getNewModelID(int userid, String title) {
-
 		Statement stmt = null;
 		ResultSet result = null;
+		Connection connection = null;
 		int resultValue = -1;
 
 		try {
+			connection = getConnection();
 			stmt = connection.createStatement(Statement.CLOSE_ALL_RESULTS,
 					Statement.RETURN_GENERATED_KEYS);
 			Object[] args = { userid, title };
@@ -313,19 +324,20 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 			LoggerManager.error(Constants.APPLET_LOGGER, "VendorCode: "
 					+ e.getErrorCode());
 		} finally {
-			if (result != null) {
-				try {
+			try {
+				if (result != null) {
 					result.close();
-				} catch (SQLException e) {
-					// ignore
 				}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					// ignore
+				
+				if (stmt != null) {
+					stmt.close();	
 				}
+				
+				if (connection != null){
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -349,8 +361,10 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 
 		ResultSet result = null;
 		Statement query = null;
+		Connection connection = null;
 
 		try {
+			connection = getConnection();
 			query = connection.createStatement();
 			result = query.executeQuery(String.format(
 					Constants.SQL_EXISTS_MODEL, modelID));
@@ -369,19 +383,20 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 			LoggerManager.error(Constants.APPLET_LOGGER, "VendorCode: "
 					+ e.getErrorCode());
 		} finally {
-			if (result != null) {
-				try {
+			try{
+				if (result != null) {
 					result.close();
-				} catch (SQLException e) {
-					// ignore
 				}
-			}
-			if (query != null) {
-				try {
+				
+				if (query != null) {
 					query.close();
-				} catch (SQLException e) {
-					// ignore
 				}
+				
+				if (connection != null){
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -401,12 +416,15 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 
 		boolean returnValue = false;
 
+		Statement stmt = null;
 		ResultSet result = null;
-
+		Connection connection = null;
+	
 		try {
 			// Query
-			Statement query = connection.createStatement();
-			result = query.executeQuery(String.format(
+			connection = getConnection();
+		    stmt = connection.createStatement();
+			result = stmt.executeQuery(String.format(
 					Constants.SQL_EXISTS_MODEL, modelid));
 			if (result.last()) {
 				returnValue = true;
@@ -419,12 +437,21 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 			LoggerManager.error(Constants.APPLET_LOGGER, "VendorCode: "
 					+ e.getErrorCode());
 		} finally {
-			if (result != null) {
-				try {
+			try{
+				if (result != null) {
 					result.close();
-				} catch (SQLException e) {
-					// ignore
 				}
+				
+				if (stmt != null) {
+					stmt.close();
+				}
+			
+				if (connection != null){
+					connection.close();
+				}
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -443,8 +470,10 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 		int resultValue = -1;
 		Statement stmt = null;
 		ResultSet result = null;
+		Connection connection = null;
 
 		try {
+			connection = getConnection();
 			stmt = connection.createStatement();
 			result = stmt
 					.executeQuery("SELECT * FROM benutzer WHERE sessionid='"
@@ -460,43 +489,46 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 			LoggerManager.error(Constants.APPLET_LOGGER, "VendorCode: "
 					+ e.getErrorCode());
 		} finally {
-			if (result != null) {
-				try {
+			try{
+				if (result != null) {
 					result.close();
-				} catch (SQLException e) {
-					// ignore
 				}
-			}
-			if (stmt != null) {
-				try {
+				
+				if (stmt != null) {
 					stmt.close();
-				} catch (SQLException e) {
-					// ignore
 				}
+				
+				if (connection != null){
+					connection.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
 			}
 		}
 
 		try {
+			connection = getConnection();
 			stmt = connection.createStatement();
 			// erase session token
 			stmt.executeUpdate("UPDATE benutzer SET sessionid=" + null
 					+ " WHERE sessionid='" + token + "'");
 		} catch (SQLException e) {
-			// ignore
+			e.printStackTrace();
 		}finally {
-			if (result != null) {
-				try {
+			try{
+				if (result != null) {
 					result.close();
-				} catch (SQLException e) {
-					// ignore
 				}
-			}
-			if (stmt != null) {
-				try {
+				
+				if (stmt != null) {
 					stmt.close();
-				} catch (SQLException e) {
-					// ignore
 				}
+				
+				if (connection != null){
+					connection.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
 			}
 		}
 		return resultValue;
@@ -507,27 +539,17 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 	 * <p>
 	 * create Connection to the Database
 	 */
-	private void createConnection() {
+	private Connection getConnection() {
+		Connection connection = null;
 		try {
-			connection = DriverManager.getConnection(createConnectionUrl());
+			connection  = DriverManager.getConnection(createConnectionUrl());
 		} catch (SQLException e) {
 			LoggerManager
 					.fatal(Constants.APPLET_LOGGER,
 							"Es konnte keine Verbindung zur mySql DB hergestellt werden!");
 		}
-	}
-
-	/**
-	 * finalize()
-	 * <p>
-	 * shutdown the connection
-	 */
-	protected void finalize() throws Throwable {
-		if (connection != null) {
-			connection.close();
-		}
-
-		super.finalize();
+		
+		return connection;
 	}
 
 	/**
