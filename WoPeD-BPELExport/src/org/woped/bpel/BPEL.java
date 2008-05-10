@@ -21,6 +21,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
+import org.woped.translations.Messages;
 
 //TODO class description
 public class BPEL
@@ -131,7 +132,7 @@ public class BPEL
 			setGlobals(tempProc,pnp);
 			p.set(tempProc);
 		}
-		else return "Pertinetz ist nicht sound.";
+		else return ""+Messages.getString("PetriNet.NotSound");
 		XmlOptions opt = new XmlOptions();
 		//opt.setSavePrettyPrintIndent(2);
 		//opt.setUseDefaultNamespace();
