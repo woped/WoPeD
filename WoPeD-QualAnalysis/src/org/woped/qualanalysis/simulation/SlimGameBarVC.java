@@ -264,6 +264,19 @@ public class SlimGameBarVC extends JPanel{
 	  return null;
 	}
 	
+	private void createChoiceList()
+	{
+		SlimChoiceBox = new JDialog();
+		SlimChoiceBox.setUndecorated(true);
+		SlimChoiceList   = new JList(ChoiceContent);
+	    SlimChoiceList.setPreferredSize(new Dimension(ListSizeX, ListSizeY));			  
+		SlimChoiceList.addMouseListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_TRANSITION, tgbController));	    
+		//Define Panel
+		SlimChoicePanel     = new JPanel();
+	    SlimChoicePanel.add(SlimChoiceList);
+		SlimChoiceBox.add(SlimChoicePanel);			
+	}
+	
 	public void showChoice()
 	{
 		if((ppbSteps != null) && (ppbSteps.isSelected()))
@@ -271,29 +284,13 @@ public class SlimGameBarVC extends JPanel{
 			return;
 		}
 		if(SlimChoiceBox == null)
-		{
-			SlimChoiceBox = new JDialog();
-			SlimChoiceBox.setUndecorated(true);
-
-			
-			SlimChoiceList   = new JList(ChoiceContent);
-		    SlimChoiceList.setPreferredSize(new Dimension(ListSizeX, ListSizeY));		
-		  
-			SlimChoiceList.addMouseListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_TRANSITION, tgbController));
-		    
-			//Define Panel
-			SlimChoicePanel     = new JPanel();
-		    SlimChoicePanel.add(SlimChoiceList);
-		    
-			SlimChoiceBox.add(SlimChoicePanel);
-			SlimChoiceBox.setAlwaysOnTop(true);
-			SlimChoiceBox.setVisible(true);	
+		{	
+			createChoiceList();			
 		}
-		else
-		{
-			SlimChoiceBox.setVisible(true);
-			SlimChoiceBox.setAlwaysOnTop(true);
-		}
+		SlimChoiceList.setVisible(true);
+		SlimChoicePanel.setVisible(true);
+		SlimChoiceBox.setVisible(true);	
+		SlimChoiceBox.setAlwaysOnTop(true);
 		updateList(ChoiceContent, getButtonCoords(false));
 	}
 

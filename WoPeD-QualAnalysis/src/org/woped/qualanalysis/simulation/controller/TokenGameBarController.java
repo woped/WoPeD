@@ -817,6 +817,7 @@ public class TokenGameBarController implements Runnable {
 	 */
 	public void setViewMode(int view)
 	{
+		clearChoiceBox();
 		viewmode = view;
 		switch(viewmode)
 		{
@@ -835,6 +836,9 @@ public class TokenGameBarController implements Runnable {
 				ExpertView.setAutoChoiceSelected(false);
 				ExpertView.setVisible(false);
 				SlimView.setVisible(true);
+				SlimView.getSlimPanel().showChoice();
+				SlimView.getSlimPanel().setChoiceListInvisible();				
+				
 				EyeView.setVisible(false);
 				break;
 			case EYE_VIEW:
@@ -850,6 +854,8 @@ public class TokenGameBarController implements Runnable {
 				ExpertView.setVisible(false);
 				SlimView.setVisible(false);
 	        	EyeView.setVisible(true);
+				EyeView.getSlimPanel().showChoice();
+				EyeView.getSlimPanel().setChoiceListInvisible();		        	
 				break;
 			default:
 				break;
