@@ -1574,6 +1574,8 @@ public class EditorVC extends JPanel implements KeyListener,
 			m_tokenGameMode = false;
 			m_TokenGameEnabled = false;
 			m_tokenGameController.stop();
+			m_centralMediator.getUi().refreshFocusOnFrames();
+			
 		} else
 		{
 			LoggerManager.debug(Constants.EDITOR_LOGGER, "START TokenGame");
