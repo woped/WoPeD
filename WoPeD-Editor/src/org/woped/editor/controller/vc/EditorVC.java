@@ -1572,11 +1572,13 @@ public class EditorVC extends JPanel implements KeyListener,
 		{
 			LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
 			m_tokenGameMode = false;
+			m_TokenGameEnabled = false;
 			m_tokenGameController.stop();
 		} else
 		{
 			LoggerManager.debug(Constants.EDITOR_LOGGER, "START TokenGame");
 			m_tokenGameMode = true;
+			m_TokenGameEnabled = true;
 			setDrawingMode(false);
 			m_tokenGameController.start();
 		}
