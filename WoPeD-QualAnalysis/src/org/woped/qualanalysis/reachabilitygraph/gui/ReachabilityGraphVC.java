@@ -20,6 +20,7 @@ import javax.swing.event.InternalFrameListener;
 
 import org.jgraph.JGraph;
 import org.woped.core.controller.IEditor;
+import org.woped.core.gui.IUserInterface;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
@@ -30,7 +31,8 @@ import org.woped.translations.Messages;
 public class ReachabilityGraphVC extends JInternalFrame implements IReachabilityGraph, InternalFrameListener {
 
 	private HashSet<ReachabilityGraphPanel> panels = new HashSet<ReachabilityGraphPanel>();
-
+	private IUserInterface dui = null;
+	
 	private static final long serialVersionUID = 1L;
 	private static ReachabilityGraphVC myInstance = null;
 
@@ -40,17 +42,18 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	 * @param editor
 	 * @return
 	 */
-	public static ReachabilityGraphVC getInstance(){
+	public static ReachabilityGraphVC getInstance(IUserInterface dui){
 		if(ReachabilityGraphVC.myInstance == null){
-			ReachabilityGraphVC.myInstance = new ReachabilityGraphVC();
+			ReachabilityGraphVC.myInstance = new ReachabilityGraphVC(dui);
 		}
 		return myInstance;
 	}
 
-	private ReachabilityGraphVC() {
+	private ReachabilityGraphVC(IUserInterface dui) {
 		super();
 		init();
 		this.addInternalFrameListener(this);
+		this.dui = dui;
 	}
 
 	/**
@@ -209,10 +212,10 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	public void internalFrameActivated(InternalFrameEvent e) {
 		this.updateShowingPanelVisibility();
 	}
-	public void internalFrameClosed(InternalFrameEvent e) {}
-	public void internalFrameClosing(InternalFrameEvent e) {}
-	public void internalFrameDeactivated(InternalFrameEvent e) {}
-	public void internalFrameDeiconified(InternalFrameEvent e) {}
-	public void internalFrameIconified(InternalFrameEvent e) {}
-	public void internalFrameOpened(InternalFrameEvent e) {}
+	public void internalFrameClosed(InternalFrameEvent e) { }
+	public void internalFrameClosing(InternalFrameEvent e) { dui.refreshFocusOnFrames(); }
+	public void internalFrameDeactivated(InternalFrameEvent e) { }
+	public void internalFrameDeiconified(InternalFrameEvent e) { }
+	public void internalFrameIconified(InternalFrameEvent e) { }
+	public void internalFrameOpened(InternalFrameEvent e) { }
 }

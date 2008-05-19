@@ -35,7 +35,7 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 				IUserInterface dui = mediator.getUi();
 				JDesktopPane desktop = (JDesktopPane) dui.getPropertyChangeSupportBean();
 				JInternalFrame edit = desktop.getSelectedFrame();
-				ReachabilityGraphVC toAdd = ReachabilityGraphVC.getInstance();
+				ReachabilityGraphVC toAdd = ReachabilityGraphVC.getInstance(dui);
 				if(!desktop.isAncestorOf(toAdd)){
 					rg_listener = new ReachabilityGraphVCListener(toAdd, mediator);
 					edit.addInternalFrameListener(rg_listener);

@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
@@ -360,6 +361,21 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             }
         }
     }
+    
+	public void refreshFocusOnFrames() {
+		JInternalFrame[] allFrames = desktop.getAllFrames();
+		boolean foundEditor = false;
+		for(int i = 0; i < allFrames.length && !foundEditor; i++){
+			if(allFrames[i] instanceof org.woped.gui.DefaultEditorFrame){
+				try {
+					allFrames[i].setSelected(true);
+					foundEditor = true;
+				} catch (PropertyVetoException e) {
+					// This exception isn't critical, so no need for handling this exception. Just a focus thing. ;)
+				}
+			}
+		}
+	}
 
     /* ########################## GETTER & SETTER ######################### */
 
@@ -507,4 +523,5 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         return desktop;
     }
+
 }

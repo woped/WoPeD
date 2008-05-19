@@ -26,6 +26,8 @@ public interface IUserInterface extends IEditorAware
     public void cascadeFrames();
 
     public void arrangeFrames();
+    
+    public void refreshFocusOnFrames();
 
     /* * some component methods * */
 
@@ -46,4 +48,5 @@ public interface IUserInterface extends IEditorAware
     //public TaskBarVC getTaskBar();
 
     public IToolBar getToolBar();
+    
 }
