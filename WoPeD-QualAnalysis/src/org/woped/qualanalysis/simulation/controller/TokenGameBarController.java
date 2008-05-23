@@ -469,10 +469,10 @@ public class TokenGameBarController implements Runnable {
 	public void clearChoiceBox()
 	{
 		acoChoiceItems.clear();
-		if(!autoPlayBack)
-		{
-			ExpertView.enableForwardButtons();
-		}
+		//if(!autoPlayBack)
+		//{
+			//ExpertView.enableForwardButtons();
+		//}
 	}
 
 
