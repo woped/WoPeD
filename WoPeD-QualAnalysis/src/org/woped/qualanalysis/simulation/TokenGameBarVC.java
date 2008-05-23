@@ -97,7 +97,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		//Define Buttons
 	    ppbSteps = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.Stepwise"));
 	    ppbPlay  = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.Playback"));
-		ppbDelay = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.Delay"));
+		ppbDelay = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.Properties"));
 		
 		//Define Button-Size
 		ppbSteps.setPreferredSize(new Dimension(stXsize, stYsize));
@@ -107,7 +107,7 @@ public class TokenGameBarVC extends JInternalFrame {
 		//Define Button's ToolTips
 		ppbSteps.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Stepwise"));
 		ppbPlay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Playback"));
-		ppbDelay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.PM"));
+		ppbDelay.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.Properties"));
 		
 		//Define Button's Actions
 		ppbPlay.addActionListener(new TokenGameBarListener(TokenGameBarListener.CHOOSE_PLAYBACK, tgbController));
@@ -136,16 +136,16 @@ public class TokenGameBarVC extends JInternalFrame {
 	private JPanel addPlaybackNavigation()
 	{
 		//Define Navigation-Buttons
-		pbnUp = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.NaviUp"));
-		pbnDown = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.NaviDown"));
+		pbnUp = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.SubprocessStepOut"));
+		pbnDown = new JButton(Messages.getImageIcon("Tokengame.RemoteControl.SubprocessStepIn"));
 		
 		//Define Button-Size
 		pbnUp.setPreferredSize(new Dimension(xtXsize, xtYsize));
 		pbnDown.setPreferredSize(new Dimension(xtXsize, xtYsize));
 		
 		//Define Navigation's ToolTips
-		pbnUp.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.NaviUp")); 
-		pbnDown.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.NaviDown")); 
+		pbnUp.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.SubprocessStepOut")); 
+		pbnDown.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.SubprocessStepIn")); 
 		
 		//Define Navigation-Actions
 		pbnUp.addActionListener(new TokenGameBarListener(TokenGameBarListener.CLICK_STEP_UP, tgbController));
