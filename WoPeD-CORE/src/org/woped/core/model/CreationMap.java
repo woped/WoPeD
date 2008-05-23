@@ -41,7 +41,6 @@ import org.woped.core.config.ConfigurationManager;
 @SuppressWarnings("serial")
 public class CreationMap extends HashMap<String, Object>
 {
-
     public static final String ELEMENT_ID            = "ELEMENT_ID";
     public static final String ELEMENT_TYPE          = "ELEMENT_TYPE";
     public static final String ELEMENT_SIZE          = "ELEMENT_SIZE";
@@ -73,6 +72,8 @@ public class CreationMap extends HashMap<String, Object>
     public static final String TRANSITION_TIMEUNIT	 = "TRANSITION_TIMEUNIT";
     public static final String UPPER_ELEMENT         = "UPPER_ELEMENT";
     public static final String SUBELEMENT_CONTAINER  = "SUBELEMENT_CONTAINER";
+    public static final String BPELDATA				 = "BPELDATA";
+    
     
     public static CreationMap createMap()
     {
@@ -619,5 +620,15 @@ public class CreationMap extends HashMap<String, Object>
 			return (ModelElementContainer) get(SUBELEMENT_CONTAINER);
 		}
 		return null;
+	}
+	
+	public void setBpeldata(Object Bpeldata)
+	{
+		this.put(CreationMap.BPELDATA,Bpeldata);
+	}
+	
+	public Object getBpeldata()
+	{
+		return this.get(CreationMap.BPELDATA);
 	}
 }

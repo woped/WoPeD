@@ -37,80 +37,76 @@ import org.woped.core.utilities.LoggerManager;
  * 
  * Basic modelelement class. 29.04.2003
  */
-public abstract class PetriNetModelElement extends AbstractPetriNetModelElement
-{
-    private Vector m_unknownToolspecific = null;
-    private Object BpelData = null;
+public abstract class PetriNetModelElement extends AbstractPetriNetModelElement {
+	private Vector m_unknownToolspecific = null;
+	private Object BpelData = null;
 
-    /**
-     * Each PetriNetElement is able to return its attributes in a CreationMap;
-     * 
-     * @return
-     */
-    public CreationMap getCreationMap()
-    {
-        return super.getCreationMap();
-    }
+	/**
+	 * Each PetriNetElement is able to return its attributes in a CreationMap;
+	 * 
+	 * @return
+	 */
+	public CreationMap getCreationMap() {
+		CreationMap map = super.getCreationMap();
+		map.setBpeldata(this.BpelData);
+		return map;
+	}
 
-    /**
-     * Constructor for PetriNetModelElement.
-     * 
-     * @param map
-     */
-    public PetriNetModelElement(CreationMap map)
-    {
-        super(map);
-        if (map.getId() != null)
-        {
-            // ToolSpec
-            if (map.getUnknownToolSpec() != null) setUnknownToolSpecs(map.getUnknownToolSpec());
-        } else
-        {
-            LoggerManager.error(Constants.CORE_LOGGER, "It's not allowed to create a Element without id. Please use ModelElementFactory instead.");
-        }
-    }
+	/**
+	 * Constructor for PetriNetModelElement.
+	 * 
+	 * @param map
+	 */
+	public PetriNetModelElement(CreationMap map) {
+		super(map);
+		if (map.getId() != null) {
+			// ToolSpec
+			if (map.getUnknownToolSpec() != null)
+				setUnknownToolSpecs(map.getUnknownToolSpec());
+			if (map.getBpeldata() != null)
+				this.BpelData = map.getBpeldata();
+		} else {
+			LoggerManager
+					.error(
+							Constants.CORE_LOGGER,
+							"It's not allowed to create a Element without id. Please use ModelElementFactory instead.");
+		}
+	}
 
-    public Vector getUnknownToolSpecs()
-    {
-        return m_unknownToolspecific;
-    }
+	public Vector getUnknownToolSpecs() {
+		return m_unknownToolspecific;
+	}
 
-    public void setUnknownToolSpecs(Vector unknownToolSpecs)
-    {
-        m_unknownToolspecific = unknownToolSpecs;
-    }
+	public void setUnknownToolSpecs(Vector unknownToolSpecs) {
+		m_unknownToolspecific = unknownToolSpecs;
+	}
 
-    public void setSize(Dimension dim)
-    {
-        AttributeMap map = getAttributes();
-        GraphConstants.setSize(map, dim);
-        getAttributes().applyMap(map);
-    }
+	public void setSize(Dimension dim) {
+		AttributeMap map = getAttributes();
+		GraphConstants.setSize(map, dim);
+		getAttributes().applyMap(map);
+	}
 
-    public void setSize(int width, int height)
-    {
-        setSize(new Dimension(width, height));
-    }
+	public void setSize(int width, int height) {
+		setSize(new Dimension(width, height));
+	}
 
-    public int getHeight()
-    {
-        return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getHeight());
-    }
+	public int getHeight() {
+		return (int) (GraphConstants.getSize(getAttributes()) == null ? -1
+				: GraphConstants.getSize(getAttributes()).getHeight());
+	}
 
-    public int getWidth()
-    {
-        return (int) (GraphConstants.getSize(getAttributes()) == null ? -1 : GraphConstants.getSize(getAttributes()).getWidth());
-    }
-    
-    public void setBaseActivity(Object arg)
-    {
-    	this.BpelData = arg;
-    }
-    
-    public Object getBpelData()
-    {
-    	return this.BpelData;
-    	//return this.BpelData;
-    }
+	public int getWidth() {
+		return (int) (GraphConstants.getSize(getAttributes()) == null ? -1
+				: GraphConstants.getSize(getAttributes()).getWidth());
+	}
+
+	public final void setBaseActivity(Object arg) {
+		this.BpelData = arg;
+	}
+
+	public final Object getBpelData() {
+		return this.BpelData;
+	}
 
 }
