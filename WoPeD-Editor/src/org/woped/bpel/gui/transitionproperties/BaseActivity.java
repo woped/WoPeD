@@ -11,7 +11,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
  */
 public abstract class BaseActivity<E extends TActivity>
 {
-	private E _data = null;
+	private E _data;
 
 	/**
 	 * 
@@ -80,6 +80,5 @@ public abstract class BaseActivity<E extends TActivity>
 	public String toString()
 	{
 		return this.getName();
-	}
-	
+	}	
 }

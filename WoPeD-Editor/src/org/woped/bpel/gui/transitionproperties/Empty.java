@@ -31,5 +31,4 @@ public class Empty extends BaseActivity<TEmpty>
 	public void setInformationToPanel(BPELadditionalPanel bip) {
 		
 	}
-
 }

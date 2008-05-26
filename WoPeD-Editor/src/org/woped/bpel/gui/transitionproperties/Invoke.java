@@ -4,7 +4,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
 
 /*
  * 
- * @author Alexander Roßwog
+ * @author Alexander Roßwog, Frank Schüler
  * 
  * */
 
