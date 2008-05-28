@@ -3,7 +3,6 @@ package org.woped.qualanalysis.simulation.controller;
 import org.woped.core.controller.*;
 import org.woped.core.gui.*;
 import javax.swing.*;
-import org.woped.qualanalysis.simulation.controller.*;
 
 /**
  * PLEASE NOTE: THIS CLASS IS NOT FINAL, CURRENTLY AND MAY BE REMOVED, AGAIN.
