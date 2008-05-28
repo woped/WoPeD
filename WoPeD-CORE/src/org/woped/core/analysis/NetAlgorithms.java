@@ -55,7 +55,7 @@ public class NetAlgorithms {
 		// We will need this when traversing the graph
 		// (the graph doesn't know about our collection of input
 		// net elements)
-		Iterator nodeIndexIterator = netElements.iterator();
+		Iterator<AbstractElementModel> nodeIndexIterator = netElements.iterator();
 		int nNodeIndex = 0;
 		while (nodeIndexIterator.hasNext())
 		{
@@ -69,7 +69,7 @@ public class NetAlgorithms {
 			for (int i=0;i<nNumNetElements;++i)
 			{							
 				int j=0;
-				Iterator innerIterator=netElements.iterator();
+				Iterator<AbstractElementModel> innerIterator=netElements.iterator();
 				while (innerIterator.hasNext())
 				{
 					routeInfo[i][j]= new RouteInfo();
@@ -88,7 +88,7 @@ public class NetAlgorithms {
 				{
 					// Create the follow-up list
 					LinkedList<RouteInfo> newList = new LinkedList<RouteInfo>();
-					for (Iterator listContent=currentList.iterator();listContent.hasNext();)
+					for (Iterator<RouteInfo> listContent=currentList.iterator();listContent.hasNext();)
 					{
 						RouteInfo currentRouteInfo = (RouteInfo)listContent.next();
 						// Look up all connections (to and from, only from if directed
@@ -104,7 +104,7 @@ public class NetAlgorithms {
 							connectedNodes.addAll(wrongDirection);
 							
 						}
-						Iterator nodeIterator = connectedNodes.iterator();
+						Iterator<AbstractElementModel> nodeIterator = connectedNodes.iterator();
 						while (nodeIterator.hasNext())
 						{
 							AbstractElementModel target = (AbstractElementModel) nodeIterator.next();
@@ -214,7 +214,7 @@ public class NetAlgorithms {
 		HashSet<AbstractElementModel> result = new HashSet<AbstractElementModel>();
 		// An object can have multiple owning containers
 		// Iterate through all of them to get all connections
-		Iterator ownerIterator=element.getOwningContainers();
+		Iterator<ModelElementContainer> ownerIterator=element.getOwningContainers();
 		while (ownerIterator.hasNext())
 		{
 			ModelElementContainer currentContainer = (ModelElementContainer)ownerIterator.next();
@@ -222,14 +222,14 @@ public class NetAlgorithms {
 			{
 				// Detect inbound connections
 				// Return only those that do not connect any operators
-				Map sourceElements = currentContainer.getSourceElements(element.getId());
+				Map<String, AbstractElementModel> sourceElements = currentContainer.getSourceElements(element.getId());
 				appendNonOperators(result,sourceElements.values().iterator());
 			}
 			if ((connectionType&connectionTypeOUTBOUND)>0)
 			{
 				// Detect outbound connections
 				// Return only those that do not connect any operators
-				Map targetElements = currentContainer.getTargetElements(element.getId());
+				Map<String, AbstractElementModel> targetElements = currentContainer.getTargetElements(element.getId());
 				appendNonOperators(result,targetElements.values().iterator());
 			}
 		}	
@@ -237,7 +237,7 @@ public class NetAlgorithms {
 	}
 	
 	//! Append all objects to target that are not of TRANS_OPERATOR_TYPE	
-	private static void appendNonOperators(HashSet<AbstractElementModel> target, Iterator source)
+	private static void appendNonOperators(HashSet<AbstractElementModel> target, Iterator<AbstractElementModel> source)
 	{
 		while (source.hasNext())
 		{

@@ -126,7 +126,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     	}
     	
     }
-    public Iterator getOwningContainers()
+    public Iterator<ModelElementContainer> getOwningContainers()
     {
     	return owningContainers.iterator();
     }
