@@ -692,9 +692,7 @@ public class PNMLImport {
 											.getInvoke();
 									Invoke bpel = new Invoke(invoke.getName(),
 											invoke.getPartnerLink(), invoke
-													.getOperation(), invoke
-													.getPortType()
-													.getLocalPart(), invoke
+													.getOperation(), "", invoke
 													.getInputVariable(), invoke
 													.getOutputVariable());
 									map.setBpeldata(bpel);
