@@ -24,7 +24,6 @@ import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.*;
-import org.woped.editor.gui.PopUpDialog;
 import org.woped.translations.Messages;
 
 /**
@@ -311,7 +310,7 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 		partnerLinkComboBox.removeAllItems();
 		HashSet<Partnerlink> partnerlinkList = modelElementContainer
 				.getPartnerlinkList().getPartnerlinkList();
-		Iterator i = partnerlinkList.iterator();
+		Iterator<Partnerlink> i = partnerlinkList.iterator();
 		while (i.hasNext()) {
 			partnerLinkComboBox.addItem(i.next());
 		}

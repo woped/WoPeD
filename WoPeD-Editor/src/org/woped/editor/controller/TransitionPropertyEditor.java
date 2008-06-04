@@ -1687,6 +1687,11 @@ public class TransitionPropertyEditor extends JDialog implements
 					String selectedGroup = getGroupComboxBoxModel()
 							.getSelectedItem().toString();
 
+
+
+					((BPELadditionalPanel) activityChooseComboBox
+							.getSelectedItem()).saveInfomation();
+					
 					if (selectedRole.equals(ROLE_NONE)
 							&& selectedGroup.equals(GROUP_NONE)
 							|| !selectedRole.equals(ROLE_NONE)
@@ -1703,12 +1708,7 @@ public class TransitionPropertyEditor extends JDialog implements
 										Messages
 												.getString("TransitionEditor.Properties.ResourceError.Title"),
 										JOptionPane.ERROR_MESSAGE);
-					}
-
-					((BPELadditionalPanel) activityChooseComboBox
-							.getSelectedItem()).saveInfomation();
-
-				}
+					}				}
 			});
 		}
 

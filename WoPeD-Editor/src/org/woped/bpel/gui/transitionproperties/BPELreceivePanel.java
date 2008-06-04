@@ -219,7 +219,7 @@ public class BPELreceivePanel extends BPELadditionalPanel {
 		partnerLinkComboBox.removeAllItems();
 		HashSet<Partnerlink> partnerlinkList = modelElementContainer
 				.getPartnerlinkList().getPartnerlinkList();
-		Iterator i = partnerlinkList.iterator();
+		Iterator<Partnerlink> i = partnerlinkList.iterator();
 		while (i.hasNext()) {
 			partnerLinkComboBox.addItem(i.next());
 		}
