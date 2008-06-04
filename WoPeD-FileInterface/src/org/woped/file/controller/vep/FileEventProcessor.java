@@ -820,6 +820,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			}
 
 			pr = new PNMLImport((ApplicationMediator) getMediator(), iSB);
+			
 		} else if (filter == FileFilterImpl.OLDPNMLFilter) {
 			pr = new OLDPNMLImport2((ApplicationMediator) getMediator());
 		} else

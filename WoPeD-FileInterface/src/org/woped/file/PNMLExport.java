@@ -42,7 +42,11 @@ import javax.swing.JOptionPane;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
-import org.woped.bpel.gui.transitionproperties.BaseActivity;
+import org.woped.bpel.gui.transitionproperties.Assign;
+import org.woped.bpel.gui.transitionproperties.Invoke;
+import org.woped.bpel.gui.transitionproperties.Receive;
+import org.woped.bpel.gui.transitionproperties.Reply;
+import org.woped.bpel.gui.transitionproperties.Wait;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.model.ArcModel;
@@ -74,12 +78,9 @@ import org.woped.pnml.GraphicsSimpleType;
 import org.woped.pnml.NetToolspecificType;
 import org.woped.pnml.NetType;
 import org.woped.pnml.NodeNameType;
+import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.OperatorType;
 import org.woped.pnml.OrganizationUnitType;
-import org.woped.pnml.TPartnerLinks;
-import org.woped.pnml.TVariables;
-
-import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.PlaceToolspecificType;
 import org.woped.pnml.PlaceType;
 import org.woped.pnml.PnmlDocument;
@@ -91,6 +92,8 @@ import org.woped.pnml.ResourcesType;
 import org.woped.pnml.RoleType;
 import org.woped.pnml.SimulationType;
 import org.woped.pnml.SimulationsType;
+import org.woped.pnml.TPartnerLinks;
+import org.woped.pnml.TVariables;
 import org.woped.pnml.ToolspecificType;
 import org.woped.pnml.TransitionResourceType;
 import org.woped.pnml.TransitionToolspecificType;
@@ -679,33 +682,33 @@ public class PNMLExport
     {
         iToolspecific.setTool("WoPeD");
         iToolspecific.setVersion("1.0");
-        if (org.woped.bpel.gui.transitionproperties.Assign.class.isInstance(currentModel.getBpelData())){
+        if (Assign.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TAssign iAssign = iToolspecific.addNewAssign();
         	iAssign.setName(currentModel.getId());
         	org.woped.pnml.TCopy iCopy = iAssign.addNewCopy();
-        	if (org.oasisOpen.docs.wsbpel.x20.process.executable.TFrom.class.isInstance((((org.woped.bpel.gui.transitionproperties.Assign)(BaseActivity)currentModel.getBpelData()).getActivity()).getCopyArray(0).getFrom()))
-        		iCopy.addNewFrom().setVariable((((org.woped.bpel.gui.transitionproperties.Assign)(BaseActivity)currentModel.getBpelData()).getActivity()).getCopyArray(0).getFrom().getVariable());
-        	if (org.oasisOpen.docs.wsbpel.x20.process.executable.TTo.class.isInstance((((org.woped.bpel.gui.transitionproperties.Assign)(BaseActivity)currentModel.getBpelData()).getActivity()).getCopyArray(0).getTo()))
-            	iCopy.addNewTo().setVariable((((org.woped.bpel.gui.transitionproperties.Assign)(BaseActivity)currentModel.getBpelData()).getActivity()).getCopyArray(0).getTo().getVariable());
+        	if (org.oasisOpen.docs.wsbpel.x20.process.executable.TFrom.class.isInstance((((Assign)currentModel.getBpelData()).getActivity()).getCopyArray(0).getFrom()))
+        		iCopy.addNewFrom().setVariable((((Assign)currentModel.getBpelData()).getActivity()).getCopyArray(0).getFrom().getVariable());
+        	if (org.oasisOpen.docs.wsbpel.x20.process.executable.TTo.class.isInstance((((Assign)currentModel.getBpelData()).getActivity()).getCopyArray(0).getTo()))
+            	iCopy.addNewTo().setVariable((((Assign)currentModel.getBpelData()).getActivity()).getCopyArray(0).getTo().getVariable());
         }
-        if (org.woped.bpel.gui.transitionproperties.Invoke.class.isInstance(currentModel.getBpelData())){
+        if (Invoke.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TInvoke iInvoke = iToolspecific.addNewInvoke();
-        	iInvoke.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        	iInvoke.set((XmlObject)((Invoke)currentModel.getBpelData()).getActivity());
         }
-        if (org.woped.bpel.gui.transitionproperties.Receive.class.isInstance(currentModel.getBpelData())){
+        if (Receive.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TReceive iReceive = iToolspecific.addNewReceive();
-        	iReceive.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        	iReceive.set((XmlObject)((Receive)currentModel.getBpelData()).getActivity());
         }
         if (org.woped.bpel.gui.transitionproperties.Reply.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TReply iReply = iToolspecific.addNewReply();
-        	iReply.set((XmlObject)((BaseActivity)currentModel.getBpelData()).getActivity());
+        	iReply.set((XmlObject)((Reply)currentModel.getBpelData()).getActivity());
         }
         if (org.woped.bpel.gui.transitionproperties.Wait.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TWait iWait = iToolspecific.addNewWait();
-        	if ((((org.woped.bpel.gui.transitionproperties.Wait)(BaseActivity)currentModel.getBpelData()).getActivity()).isSetFor())
-        		iWait.addNewFor().newCursor().setTextValue((((org.woped.bpel.gui.transitionproperties.Wait)(BaseActivity)currentModel.getBpelData()).getActivity()).getFor().newCursor().getTextValue());
+        	if ((((Wait)currentModel.getBpelData()).getActivity()).isSetFor())
+        		iWait.addNewFor().newCursor().setTextValue((((Wait)currentModel.getBpelData()).getActivity()).getFor().newCursor().getTextValue());
         	else
-        		iWait.addNewUntil().newCursor().setTextValue((((org.woped.bpel.gui.transitionproperties.Wait)(BaseActivity)currentModel.getBpelData()).getActivity()).getUntil().newCursor().getTextValue());
+        		iWait.addNewUntil().newCursor().setTextValue((((Wait)currentModel.getBpelData()).getActivity()).getUntil().newCursor().getTextValue());
         }
         /*if (org.woped.bpel.gui.transitionproperties.Empty.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TEmpty iEmpty = iToolspecific.addNewEmpty();
