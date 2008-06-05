@@ -79,6 +79,8 @@ public class EditorOperations extends JPanel {
             c.fill = GridBagConstraints.BOTH;
             c.insets = new Insets(0, 0, 0, 0);
             operationBpelPanel.add(getOperationBpelPreviewPanel(), c);
+            
+            
         }
 		this.operationBpelPanel.setVisible(true);
         return operationBpelPanel;
@@ -103,8 +105,29 @@ public class EditorOperations extends JPanel {
             c.gridy = 0;
             c.fill = GridBagConstraints.NONE;
             c.insets = new Insets(0, 0, 0, 0);
-            operationBpelPreviewPanel.add(getOperationBpelPreviewButton(), c);
             
+            JScrollPane scrollPane = new JScrollPane();
+        	scrollPane.getViewport().setView(getOperationBpelTextField());
+        	scrollPane.setName(Messages.getString("PetriNet.Operations.BpelPrev.NewDialog"));
+        	scrollPane.setLocation(150,150);
+        	scrollPane.setVisible(true);
+        	scrollPane.setHorizontalScrollBar(scrollPane.createHorizontalScrollBar());
+        	scrollPane.setVerticalScrollBar(scrollPane.createVerticalScrollBar());
+        	
+        	c = new GridBagConstraints();
+			
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.anchor = GridBagConstraints.WEST;
+			c.weightx = 1;
+			c.weighty = 1;
+			
+			c.gridx = 0;
+            c.gridy = 0;
+            c.fill = GridBagConstraints.BOTH;
+            c.insets = new Insets(0, 0, 0, 0);
+            //bpelTextDialog.add(getOperationBpelTextField(), c);
+            operationBpelPreviewPanel.add(scrollPane, c);
+            //operationBpelPreviewPanel.add(getOperationBpelPreviewButton(), c);
         }
         this.operationBpelPreviewPanel.setVisible(true);
 

@@ -441,15 +441,18 @@
   </xs:complexType>
   <xs:element name="partnerLink" type="tPartnerLink" />
   <xs:complexType name="tPartnerLink">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tExtensibleElements">
-        <xs:attribute name="name" type="xs:NCName" use="required" />
-        <xs:attribute name="partnerLinkType" type="xs:QName" use="required" />
-        <xs:attribute name="myRole" type="xs:NCName" />
-        <xs:attribute name="partnerRole" type="xs:NCName" />
-        <xs:attribute name="initializePartnerRole" type="tBoolean" />
-      </xs:extension>
-    </xs:complexContent>
+  	<xs:complexContent mixed="false">
+  		<xs:extension base="tExtensibleElements">
+  			<xs:attribute name="name" type="xs:NCName" use="required" />
+  			<xs:attribute name="partnerLinkType" type="xs:QName"
+  				use="required" />
+  			<xs:attribute name="myRole" type="xs:NCName" />
+  			<xs:attribute name="partnerRole" type="xs:NCName" />
+  			<xs:attribute name="initializePartnerRole"
+  				type="tBoolean" />
+  			<xsd:attribute name="WSDL" type="xs:string"></xsd:attribute>
+  		</xs:extension>
+  	</xs:complexContent>
   </xs:complexType>
   <xs:element name="variables" type="tVariables" />
   <xs:complexType name="tVariables">
