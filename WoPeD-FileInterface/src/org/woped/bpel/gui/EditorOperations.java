@@ -206,7 +206,6 @@ public class EditorOperations extends JPanel {
             operationBpelTextField.setEditable(false);
             
         }
-        operationBpelTextField.setText(BPEL.getBPELMainClass().genPreview(editor));
         operationBpelTextField.setVisible(true);    
         return operationBpelTextField;
         }
