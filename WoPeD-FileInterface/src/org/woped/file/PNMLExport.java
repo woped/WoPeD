@@ -52,6 +52,7 @@ import org.woped.core.controller.IStatusBar;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.bpel.Partnerlink;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.NameModel;
@@ -235,14 +236,15 @@ public class PNMLExport
             
             //get PartnerLinks
             TPartnerLinks iPLs = iNetToolSpec.addNewPartnerLinks();
-            int PLCounter=0;
-            while (petrinetModel.getElementContainer().getTPartnerLinkList().sizeOfPartnerLinkArray()>PLCounter){
+            Iterator<Partnerlink> plist = petrinetModel.getElementContainer().getPartnerlinkList().getPartnerlinkList().iterator(); 
+            while (plist.hasNext()){
+            	Partnerlink link = plist.next();
             	org.woped.pnml.TPartnerLink iPL = iPLs.addNewPartnerLink();
-            	iPL.setName(petrinetModel.getElementContainer().getTPartnerLinkList().getPartnerLinkArray(PLCounter).getName());
-            	iPL.setPartnerLinkType(petrinetModel.getElementContainer().getTPartnerLinkList().getPartnerLinkArray(PLCounter).getPartnerLinkType());
-            	iPL.setPartnerRole(petrinetModel.getElementContainer().getTPartnerLinkList().getPartnerLinkArray(PLCounter).getPartnerRole());
-            	iPL.setMyRole(petrinetModel.getElementContainer().getTPartnerLinkList().getPartnerLinkArray(PLCounter).getMyRole());
-            	PLCounter++;
+            	iPL.setName(link.getName());
+            	iPL.setPartnerLinkType(link.getPartnerlinkTypeByQName());
+            	iPL.setPartnerRole(link.getPartnerlinkRole());
+            	iPL.setMyRole(link.getMyRole());
+            	iPL.setWSDL(link.getWsdlUrl());
             }
             
             //get Variables

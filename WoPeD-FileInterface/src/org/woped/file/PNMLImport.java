@@ -81,8 +81,12 @@ import org.woped.pnml.SimulationType;
 import org.woped.pnml.TAssign;
 import org.woped.pnml.TEmpty;
 import org.woped.pnml.TInvoke;
+import org.woped.pnml.TPartnerLink;
+import org.woped.pnml.TPartnerLinks;
 import org.woped.pnml.TReceive;
 import org.woped.pnml.TReply;
+import org.woped.pnml.TVariable;
+import org.woped.pnml.TVariables;
 import org.woped.pnml.TWait;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.NetType.Page;
@@ -380,6 +384,60 @@ public class PNMLImport {
 							// see "importSimulations([...])" below
 							simulations = currentNet.getToolspecificArray(j)
 									.getSimulations().getSimulationArray();
+						}
+
+						if (currentNet.getToolspecificArray(j)
+								.isSetPartnerLinks()) {
+							TPartnerLinks plist = currentNet
+									.getToolspecificArray(j).getPartnerLinks();
+							for (int x = 0; x < plist.sizeOfPartnerLinkArray(); x++) {
+								TPartnerLink link = plist
+										.getPartnerLinkArray(x);
+								if (link.isSetMyRole()
+										&& link.isSetPartnerRole()) {
+									currentPetrinet.getElementContainer()
+											.addPartnerLink(
+													link.getName(),
+													link.getPartnerLinkType()
+															.getNamespaceURI(),
+													link.getPartnerLinkType()
+															.getLocalPart(),
+													link.getPartnerRole(),
+													link.getMyRole(),
+													link.getWSDL());
+								} else if (link.isSetMyRole()) {
+									currentPetrinet.getElementContainer()
+											.addPartnerLinkWithoutPartnerRole(
+													link.getName(),
+													link.getPartnerLinkType()
+															.getNamespaceURI(),
+													link.getPartnerLinkType()
+															.getLocalPart(),
+													link.getMyRole(),
+													link.getWSDL());
+								} else if (link.isSetPartnerRole()) {
+									currentPetrinet.getElementContainer()
+											.addPartnerLinkWithoutMyRole(
+													link.getName(),
+													link.getPartnerLinkType()
+															.getNamespaceURI(),
+													link.getPartnerLinkType()
+															.getLocalPart(),
+													link.getPartnerRole(),
+													link.getWSDL());
+								}
+							}
+						}
+
+						if (currentNet.getToolspecificArray(j).isSetVariables()) {
+							TVariables vlist = currentNet.getToolspecificArray(
+									j).getVariables();
+							for (int x = 0; x < vlist.sizeOfVariableArray(); x++) {
+								TVariable var = vlist.getVariableArray(x);
+								currentPetrinet.getElementContainer()
+										.addVariable(var.getName(),
+												var.getType().getLocalPart());
+							}
 						}
 					} else {
 						currentPetrinet.addUnknownToolSpecs(currentNet
