@@ -29,13 +29,12 @@ public class SimpleTransition extends Transition<TransitionModel>
 	{		
 		BaseActivity<?> ba = (BaseActivity<?>)this.getData().getBpelData();
 		//TActivity activity = null;
-		if((this.getData().getBpelData())!=null){
+		if(ba!=null){
 			return ba.getActivity();
 			
 		}
 		else{
-			TProcess p = BaseActivity.genBpelProcess();
-			TEmpty iEmpty= p.addNewEmpty();
+			TEmpty iEmpty= TEmpty.Factory.newInstance();
 			iEmpty.setName(this.getData().getNameValue());
 			return iEmpty;
 		}

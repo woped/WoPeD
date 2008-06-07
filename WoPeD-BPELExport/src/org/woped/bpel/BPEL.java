@@ -35,6 +35,7 @@ public class BPEL
 	private static TProcess			Process;
 
 	private FileFilter				_filter;
+	private String					_fileextension	= "bpel";
 
 	// TODO method description
 	public BPEL()
@@ -49,7 +50,7 @@ public class BPEL
 	private final void initFilefilter()
 	{
 		this._extensions = new Vector<String>();
-		this._extensions.add("bpel");
+		this._extensions.add(this._fileextension);
 		this._filter = new FileFilterImpl(FileFilterImpl.BPELFilter,
 				"BPEL (*.bpel)", this._extensions);
 	}
@@ -93,23 +94,29 @@ public class BPEL
 		// Generate BPEL Model
 		BpelParserModel m = new BpelParserModel();
 		m.createModel(pnp.getElementContainer());
-		BPEL.genBpelProcess();
-		BPEL.Process.set(m.generate_bpel());
-		setGlobals(BPEL.Process, pnp);
+		ProcessDocument doc = ProcessDocument.Factory.newInstance();
+		TProcess process = doc.addNewProcess();
+//		BPEL.genBpelProcess();
+//		BPEL.Process.set(m.generate_bpel());
+//		setGlobals(BPEL.Process, pnp);
+		process.set(m.generate_bpel());
+		setGlobals(process,pnp);
 		// File Output
 		new File(Path);
 		XmlOptions opt = new XmlOptions();
-		
+
 		//opt.setSavePrettyPrintIndent(2);
 		//opt.setUseDefaultNamespace();
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("http://docs.oasis-open.org/wsbpel/2.0/process/executable","bpel");
-		map.put("http://www.w3.org/2001/XMLSchema","xs");
+		map.put("http://docs.oasis-open.org/wsbpel/2.0/process/executable",
+				"bpel");
+		map.put("http://www.w3.org/2001/XMLSchema", "xs");
 		opt = opt.setSaveSuggestedPrefixes(map);
 		opt.setSavePrettyPrint();
 		try
 		{
-			bpelDoc.save(new File(Path), opt);
+			doc.save(new File(Path), opt);
+			//bpelDoc.save(new File(Path), opt);
 			return true;
 		} catch (IOException e)
 		{
@@ -128,17 +135,21 @@ public class BPEL
 		BPEL.genBpelProcess();
 		TProcess p = BPEL.bpelDoc.addNewProcess();
 		TProcess tempProc = m.generate_bpel();
-		if(tempProc!=null){
-			setGlobals(tempProc,pnp);
+		if (tempProc != null)
+		{
+			setGlobals(tempProc, pnp);
 			p.set(tempProc);
+		} else
+		{
+			return "" + Messages.getString("PetriNet.NotSound");
 		}
-		else return ""+Messages.getString("PetriNet.NotSound");
 		XmlOptions opt = new XmlOptions();
-		//opt.setSavePrettyPrintIndent(2);
-		//opt.setUseDefaultNamespace();
+		// opt.setSavePrettyPrintIndent(2);
+		// opt.setUseDefaultNamespace();
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("http://docs.oasis-open.org/wsbpel/2.0/process/executable","bpel");
-		map.put("http://www.w3.org/2001/XMLSchema","xs");
+		map.put("http://docs.oasis-open.org/wsbpel/2.0/process/executable",
+				"bpel");
+		map.put("http://www.w3.org/2001/XMLSchema", "xs");
 		opt = opt.setSaveSuggestedPrefixes(map);
 		opt.setSavePrettyPrint();
 		return BPEL.bpelDoc.xmlText(opt);
@@ -156,33 +167,43 @@ public class BPEL
 		return BPEL.Process;
 	}
 
-	public void setGlobals(TProcess iProcess, PetriNetModelProcessor pnp){
-		TVariables itempVars = (TVariables)pnp.getElementContainer().getTVariablesList();
-		TPartnerLinks itempLinks = (TPartnerLinks)pnp.getElementContainer().getTPartnerLinkList();
-		if ((itempVars.sizeOfVariableArray()>0)&(itempVars != null)){
+	public void setGlobals(TProcess iProcess, PetriNetModelProcessor pnp)
+	{
+		TVariables itempVars = (TVariables) pnp.getElementContainer()
+				.getTVariablesList();
+		TPartnerLinks itempLinks = (TPartnerLinks) pnp.getElementContainer()
+				.getTPartnerLinkList();
+		if ((itempVars.sizeOfVariableArray() > 0) & (itempVars != null))
+		{
 			TVariables iVars = iProcess.addNewVariables();
-			for (int i=0;itempVars.sizeOfVariableArray()>i;i++){
+			for (int i = 0; itempVars.sizeOfVariableArray() > i; i++)
+			{
 				iVars.addNewVariable().set(itempVars.getVariableArray(i));
 				XmlCursor curs = iVars.getVariableArray(i).newCursor();
 				curs.toNextToken();
 				curs.toNextToken();
 				curs.toNextToken();
-				if(curs.isNamespace()){
+				if (curs.isNamespace())
+				{
 					curs.removeXml();
-				}				
+				}
 			}
 		}
-		if ((itempLinks.sizeOfPartnerLinkArray()>0)&(itempLinks != null)){
+		if ((itempLinks.sizeOfPartnerLinkArray() > 0) & (itempLinks != null))
+		{
 			TPartnerLinks iLinks = iProcess.addNewPartnerLinks();
-			for (int j=0;itempLinks.sizeOfPartnerLinkArray()>j;j++){
-				iLinks.addNewPartnerLink().set((TPartnerLink)itempLinks.getPartnerLinkArray(j));
+			for (int j = 0; itempLinks.sizeOfPartnerLinkArray() > j; j++)
+			{
+				iLinks.addNewPartnerLink().set(
+						(TPartnerLink) itempLinks.getPartnerLinkArray(j));
 				XmlCursor curs = iLinks.getPartnerLinkArray(j).newCursor();
 				curs.toNextToken();
 				curs.toNextToken();
 				curs.toNextToken();
 				curs.toNextToken();
 				curs.toNextToken();
-				if(curs.isNamespace()){
+				if (curs.isNamespace())
+				{
 					curs.removeXml();
 				}
 			}

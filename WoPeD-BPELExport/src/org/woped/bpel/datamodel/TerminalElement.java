@@ -1,9 +1,11 @@
 package org.woped.bpel.datamodel;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 
-public abstract class TerminalElement extends AbstractElement<String>
+
+public abstract class TerminalElement<E extends TActivity> extends AbstractElement<E>
 {
-	public TerminalElement(String data)
+	public TerminalElement(E data)
 	{
 		super();
 		this.setData(data);

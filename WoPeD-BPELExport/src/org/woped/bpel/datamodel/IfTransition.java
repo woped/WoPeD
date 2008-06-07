@@ -2,18 +2,26 @@ package org.woped.bpel.datamodel;
 
 import java.util.Iterator;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.*;
-
-import org.woped.bpel.BPEL;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TElseif;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TFlow;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TIf;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TPick;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
-public class IfTransition extends TerminalElement
+public class IfTransition extends TerminalElement<TIf>
 {
 	private AbstractElement<?> begin;
 
 	public IfTransition(AbstractElement<?> begin)
 	{
-		super("test");
+		super(null);
 		this.begin = begin;
 	}
 
@@ -24,10 +32,11 @@ public class IfTransition extends TerminalElement
 		return true;
 	}
 
-	public TActivity getBpelCode()
+	public TIf getBpelCode()
 	{
+		if(this.getData()!= null) return this.getData();
 		AbstractElement<?> tmp = null;
-		TIf iIf = BPEL.genBpelProcess().addNewIf();
+		TIf iIf = TIf.Factory.newInstance();
 		if(XORSplitOperatorTransitionModel.class.isInstance(begin.getData())){
 			iIf.setName(""+((XORSplitTransition)begin).getData().getNameValue());
 		}
@@ -122,8 +131,9 @@ public class IfTransition extends TerminalElement
 					iInvoke.set(tmp.getBpelCode());
 				}
 			}
-		}			
-		return iIf;
+		}	
+		this.setData(iIf);
+		return this.getData();
 	}
 
 }

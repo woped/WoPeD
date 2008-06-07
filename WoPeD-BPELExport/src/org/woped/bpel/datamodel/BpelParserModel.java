@@ -18,7 +18,6 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
-import org.woped.bpel.BPEL;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
@@ -42,10 +41,10 @@ public class BpelParserModel
 	private static long					MODELCOUNTER		= 0;
 
 	private long						_id					= MODELCOUNTER++;
-	private AbstractElement<?>				_oneelement			= null;
+	private AbstractElement<?>			_oneelement			= null;
 	private HashSet<AbstractElement<?>>	_regist_places		= new HashSet<AbstractElement<?>>();
 	private HashSet<AbstractElement<?>>	_regist_transition	= new HashSet<AbstractElement<?>>();
-	private Stack<AbstractElement<?>>		_reg_to_deregist	= new Stack<AbstractElement<?>>();
+	private Stack<AbstractElement<?>>	_reg_to_deregist	= new Stack<AbstractElement<?>>();
 
 	/**
 	 * Constructor to generate an empty object.
@@ -63,7 +62,7 @@ public class BpelParserModel
 		this();
 		this.createModel(container);
 	}
-	
+
 	/**
 	 * Retuned the ID of the Bpel parser model.
 	 * 
@@ -158,7 +157,8 @@ public class BpelParserModel
 		this.regist_element(element);
 
 		// System.out.println("***\nPrelist from " + e.getId() + "\n***");
-		Map<String, AbstractElementModel> map = con.getSourceElements(e.getId());
+		Map<String, AbstractElementModel> map = con
+				.getSourceElements(e.getId());
 		Collection<AbstractElementModel> list = map.values();
 		Iterator<AbstractElementModel> iter = list.iterator();
 		while (iter.hasNext())
@@ -286,7 +286,7 @@ public class BpelParserModel
 	 * @param e
 	 *            AbstractElement
 	 */
-	 
+
 	private void reg_to_deregist_submodel(AbstractElement<?> e)
 	{
 		if (this._reg_to_deregist.search(e) != -1)
@@ -341,7 +341,8 @@ public class BpelParserModel
 			}
 		} else
 		{
-			Iterator<AbstractElement<?>> iter = this._regist_transition.iterator();
+			Iterator<AbstractElement<?>> iter = this._regist_transition
+					.iterator();
 			while (iter.hasNext())
 			{
 				AbstractElement<?> erg = iter.next();
@@ -416,7 +417,7 @@ public class BpelParserModel
 	public TProcess generate_bpel()
 	{
 		int counter = 0;
-		//this.toString();
+		// this.toString();
 		while (true)
 		{
 			int pre = this.count_elements();
@@ -427,34 +428,42 @@ public class BpelParserModel
 			if (pre == this.count_elements())
 				break;
 			counter++;
-			/*System.out.println("Durchlauf " + counter + "\nAnzahl Elemente "
-					+ this.count_elements());*/
+			/*
+			 * System.out.println("Durchlauf " + counter + "\nAnzahl Elemente " +
+			 * this.count_elements());
+			 */
 		}
-		
-		if(this._regist_transition.size() > 1)return null;
-		
-		TExtensibleElements test = this._regist_transition.iterator().next().getBpelCode();
-		TProcess p = BPEL.genBpelProcess();
-		if(TSequence.class.isInstance(test))
+
+		if (this._regist_transition.size() > 1)
+		{
+			System.out.println("immer noch mehr als eine trasition");
+			return null;
+		}
+		TExtensibleElements test = this._regist_transition.iterator().next()
+				.getBpelCode();
+		TProcess p = TProcess.Factory.newInstance();
+		if (TSequence.class.isInstance(test))
 			p.addNewSequence().set(test);
-		else if(TPick.class.isInstance(test))
+		else if (TPick.class.isInstance(test))
 			p.addNewPick().set(test);
-		else if(TIf.class.isInstance(test))
+		else if (TIf.class.isInstance(test))
 			p.addNewIf().set(test);
-		else if(TAssign.class.isInstance(test))
+		else if (TAssign.class.isInstance(test))
 			p.addNewAssign().set(test);
-		else if(TFlow.class.isInstance(test))
+		else if (TFlow.class.isInstance(test))
 			p.addNewFlow().set(test);
-		else if(TEmpty.class.isInstance(test))
+		else if (TEmpty.class.isInstance(test))
 			p.addNewEmpty().set(test);
-		else if(TWait.class.isInstance(test))
+		else if (TWait.class.isInstance(test))
 			p.addNewWait().set(test);
-		else if(TReceive.class.isInstance(test))
+		else if (TReceive.class.isInstance(test))
 			p.addNewReceive().set(test);
-		else if(TReply.class.isInstance(test))
+		else if (TReply.class.isInstance(test))
 			p.addNewReply().set(test);
-		else if(TInvoke.class.isInstance(test))
+		else if (TInvoke.class.isInstance(test))
 			p.addNewInvoke().set(test);
+
+		System.out.println(p.toString());
 		return p;
 	}
 
@@ -508,8 +517,8 @@ public class BpelParserModel
 	 */
 	public void eliminate_all_sequences()
 	{
-		Iterator<AbstractElement<?>> list = this.get_copy_of_regist_transition()
-				.iterator();
+		Iterator<AbstractElement<?>> list = this
+				.get_copy_of_regist_transition().iterator();
 		while (list.hasNext())
 		{
 			AbstractElement<?> begin = list.next();
@@ -521,11 +530,14 @@ public class BpelParserModel
 		}
 		this.deregist_all_flaged_elements();
 	}
-	
-	public SequenceTransition newSequence(AbstractElement<?> begin, AbstractElement<?> end)
+
+	public SequenceTransition newSequence(AbstractElement<?> begin,
+			AbstractElement<?> end)
 	{
-		/*System.out.println("<Sequence> \n" + "\tbegin = " + begin
-				+ "\n" + "\tend = " + end + "\n</Sequence>");*/
+		/*
+		 * System.out.println("<Sequence> \n" + "\tbegin = " + begin + "\n" +
+		 * "\tend = " + end + "\n</Sequence>");
+		 */
 		HashSet<AbstractElement<?>> pre_list = begin.get_pre_list_copy();
 		HashSet<AbstractElement<?>> post_list = end.get_post_list_copy();
 
@@ -556,11 +568,11 @@ public class BpelParserModel
 			return null;
 		if (e.count_post_objects() < 2)
 			return null;
-		
+
 		AbstractElement<?> end = null;
 		AbstractElement<?> tmp;
 		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
-		
+
 		boolean firstrun = true;
 		boolean timetrigger = false;
 		boolean hastrigger = false;
@@ -610,24 +622,24 @@ public class BpelParserModel
 	 */
 	public AbstractElement<?> isPick(AbstractElement<?> e)
 	{
-		//String test = "";
+		// String test = "";
 		if (e == null)
 			return null;
 		if (!Place.class.isInstance(e))
 			return null;
-		if (e.count_post_objects() == 0) 
+		if (e.count_post_objects() == 0)
 			return null;
-		
+
 		AbstractElement<?> end = null;
 		AbstractElement<?> tmp = null;
 		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
-		
+
 		boolean firstrun = true;
-		//test = test + "<pick" + e.getData() + ">\n";
+		// test = test + "<pick" + e.getData() + ">\n";
 		while (list.hasNext())
 		{
 			tmp = list.next();
-			//test = test + "<pick-Line>\n";
+			// test = test + "<pick-Line>\n";
 			// first element must be a trigger
 			if (!TimeTriggerTransition.class.isInstance(tmp)
 					&& !ResourceTriggerTransition.class.isInstance(tmp)
@@ -637,9 +649,9 @@ public class BpelParserModel
 				return null;
 			if (tmp.count_pre_objects() != 1)
 				return null;
-			//test = test + "<Trigger " + tmp.getClass().getSimpleName() + ">\n";
-			
-			
+			// test = test + "<Trigger " + tmp.getClass().getSimpleName() +
+			// ">\n";
+
 			// test 2. element, it is a place
 			tmp = tmp.get_first_post_element();
 			if (!Place.class.isInstance(tmp))
@@ -647,31 +659,33 @@ public class BpelParserModel
 			if ((tmp.count_post_objects() != 1)
 					|| (tmp.count_pre_objects() != 1))
 				return null;
-			
+
 			// test 3. element
 			tmp = tmp.get_first_post_element();
 			if ((tmp.count_post_objects() != 1)
 					|| (tmp.count_pre_objects() != 1))
 				return null;
-			//test = test + "<Transition " + tmp.getClass().getSimpleName() + ">\n";
-			
-			// test endelement			
+			// test = test + "<Transition " + tmp.getClass().getSimpleName() +
+			// ">\n";
+
+			// test endelement
 			tmp = tmp.get_first_post_element();
-			
-			if(!Place.class.isInstance(tmp)) 
+
+			if (!Place.class.isInstance(tmp))
 				return null;
-			
+
 			if (firstrun)
-			{	end = tmp;
+			{
+				end = tmp;
 				firstrun = false;
 			} else if (!end.equals(tmp))
 				return null;
-			//test = test + "</pick-line>\n";
+			// test = test + "</pick-line>\n";
 		}
-		
+
 		if (e.count_post_objects() != end.count_pre_objects())
 			return null;
-		//System.out.println(test+ "\n</Pick " + end.getData() + ">");
+		// System.out.println(test+ "\n</Pick " + end.getData() + ">");
 		return end;
 	}
 
@@ -687,19 +701,24 @@ public class BpelParserModel
 		{
 			AbstractElement<?> begin = list.next();
 			AbstractElement<?> end = null;
-			/*if ((end = this.isSimplePick(begin)) == null)
-				end = this.isPick(begin);*/
+			/*
+			 * if ((end = this.isSimplePick(begin)) == null) end =
+			 * this.isPick(begin);
+			 */
 			end = this.isPick(begin);
 			if (end != null)
 			{
-				/*System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n"
-						+ "\tend = " + end + "\n</Pick>");*/
+				/*
+				 * System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n" +
+				 * "\tend = " + end + "\n</Pick>");
+				 */
 
-				AbstractElement<?> e = new PickTransition(begin.get_post_list_copy());
+				AbstractElement<?> e = new PickTransition(begin
+						.get_post_list_copy());
 				this.regist_element(e);
 
-				Iterator<AbstractElement<?>> deregist = begin.get_post_list_copy()
-						.iterator();
+				Iterator<AbstractElement<?>> deregist = begin
+						.get_post_list_copy().iterator();
 				begin.remove_all_post_relationship();
 				begin.add_post_object(e);
 				e.add_pre_object(begin);
@@ -724,46 +743,61 @@ public class BpelParserModel
 	 */
 	public AbstractElement<?> isFlow(AbstractElement<?> e)
 	{
-		// Work not right
 		if (e == null)
 			return null;
 		if (!ANDSplitTransition.class.isInstance(e))
 			return null;
 		if (e.count_post_objects() < 2)
 			return null;
-		AbstractElement<?> end = null;
-		AbstractElement<?> tmp = null;
+		ANDJoinTransition end = null;
+		ANDJoinTransition tmp = null;
 		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
-		// tmp = list.next();
-		boolean firstrun = true;
 		while (list.hasNext())
 		{
-			tmp = list.next();
-			for (int i = 0; i < 3; i++)
-			{
-				if ((tmp.count_post_objects() != 1)
-						|| (tmp.count_pre_objects() != 1))
-					return null;
-				tmp = tmp.get_first_post_element();
-			}
+			tmp = this.testFlowLine(list.next());
 
 			// test end element
-			if (firstrun)
-			{
-				if (!ANDJoinTransition.class.isInstance(tmp))
-					return null;
+			if (tmp == null)
+				return null;
+			else if (end == null)
 				end = tmp;
-				firstrun = false;
-			} else
-			{
-				if (!end.equals(tmp))
-					return null;
-			}
+			else if (!end.equals(tmp))
+				return null;
 		}
-
 		if (e.count_post_objects() != end.count_pre_objects())
 			return null;
 		return end;
+	}
+
+	/**
+	 * 
+	 * @param begin
+	 * @return
+	 */
+	public ANDJoinTransition testFlowLine(AbstractElement<?> begin)
+	{
+		// test first element in flowline
+		if (begin.count_post_objects() != 1 || begin.count_pre_objects() != 1)
+			return null;
+
+		// test second element in flowline
+		begin = begin.get_first_post_element();
+		if (ANDJoinTransition.class.isInstance(begin))
+			return (ANDJoinTransition) begin;
+		if (begin.count_post_objects() != 1 || begin.count_pre_objects() != 1)
+			return null;
+
+		// test 3. element of flowline
+		begin = begin.get_first_post_element();
+		if (begin.count_post_objects() != 1 || begin.count_pre_objects() != 1)
+			return null;
+
+		// test endelement of AndJoinTransition
+		begin = begin.get_first_post_element();
+		if (!ANDJoinTransition.class.isInstance(begin))
+			return null;
+
+		return (ANDJoinTransition) begin;
 	}
 
 	/**
@@ -772,20 +806,18 @@ public class BpelParserModel
 	 */
 	public void eliminate_all_flows()
 	{
-		Iterator<AbstractElement<?>> list = this.get_copy_of_regist_transition()
-				.iterator();
+		Iterator<AbstractElement<?>> list = this
+				.get_copy_of_regist_transition().iterator();
 		while (list.hasNext())
 		{
 			AbstractElement<?> begin = list.next();
 			AbstractElement<?> end = this.isFlow(begin);
 			if (end != null)
 			{
-				/*System.out.println("<Flow> \n" + "\tbegin = " + begin + "\n"
-						+ "\tend = " + end + "\n</Flow>");*/
-				Iterator<AbstractElement<?>> pre_list = begin.get_pre_list_copy()
-						.iterator();
-				Iterator<AbstractElement<?>> post_list = end.get_post_list_copy()
-						.iterator();
+				Iterator<AbstractElement<?>> pre_list = begin
+						.get_pre_list_copy().iterator();
+				Iterator<AbstractElement<?>> post_list = end
+						.get_post_list_copy().iterator();
 
 				begin.remove_all_pre_relationship();
 				end.remove_all_post_relationship();
@@ -827,35 +859,52 @@ public class BpelParserModel
 			return null;
 		if (e.count_post_objects() < 2)
 			return null;
-		AbstractElement<?> end = null;
-		AbstractElement<?> tmp = null;
+		XORJoinTransition end = null;
+		XORJoinTransition tmp = null;
 		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
-		
-		boolean firstrun = true;
 		while (list.hasNext())
 		{
-			tmp = list.next();
-			for (int i = 0; i < 3; i++)
-			{
-				if (tmp.count_post_objects() != 1)
-					return null;
-				if (tmp.count_pre_objects() != 1)
-					return null;
-				tmp = tmp.get_first_post_element();
-			}
-			if (firstrun)
-			{
-				if (!XORJoinTransition.class.isInstance(tmp))
-					return null;
+			tmp = this.testIFLine(list.next());
+
+			if (tmp == null)
+				return null;
+			if (end == null)
 				end = tmp;
-				firstrun = false;
-			} else
-			{
-				if (!end.equals(tmp))
-					return null;
-			}
+			if (!end.equals(tmp))
+				return null;
 		}
-		return tmp;
+		return end;
+	}
+
+	/**
+	 * 
+	 * @param begin
+	 * @return
+	 */
+	public XORJoinTransition testIFLine(AbstractElement<?> begin)
+	{
+		// test first element in ifline
+		if (begin.count_post_objects() != 1 || begin.count_pre_objects() != 1)
+			return null;
+
+		// test second element in ifline
+		begin = begin.get_first_post_element();
+		if (XORJoinTransition.class.isInstance(begin))
+			return (XORJoinTransition) begin;
+		if (begin.count_post_objects() != 1 || begin.count_pre_objects() != 1)
+			return null;
+
+		// test 3. element of ifline
+		begin = begin.get_first_post_element();
+		if (begin.count_post_objects() != 1 || begin.count_pre_objects() != 1)
+			return null;
+
+		// test endelement of XORJoinTransition
+		begin = begin.get_first_post_element();
+		if (!XORJoinTransition.class.isInstance(begin))
+			return null;
+
+		return (XORJoinTransition) begin;
 	}
 
 	/**
@@ -864,20 +913,18 @@ public class BpelParserModel
 	 */
 	public void eliminate_all_ifs()
 	{
-		Iterator<AbstractElement<?>> list = this.get_copy_of_regist_transition()
-				.iterator();
+		Iterator<AbstractElement<?>> list = this
+				.get_copy_of_regist_transition().iterator();
 		while (list.hasNext())
 		{
 			AbstractElement<?> begin = list.next();
 			AbstractElement<?> end = this.isIf(begin);
 			if (end != null)
 			{
-				/*System.out.println("<If> \n" + "\tbegin = " + begin + "\n"
-						+ "\tend = " + end + "\n</If>");*/
-				Iterator<AbstractElement<?>> pre_list = begin.get_pre_list_copy()
-						.iterator();
-				Iterator<AbstractElement<?>> post_list = end.get_post_list_copy()
-						.iterator();
+				Iterator<AbstractElement<?>> pre_list = begin
+						.get_pre_list_copy().iterator();
+				Iterator<AbstractElement<?>> post_list = end
+						.get_post_list_copy().iterator();
 
 				begin.remove_all_pre_relationship();
 				end.remove_all_post_relationship();

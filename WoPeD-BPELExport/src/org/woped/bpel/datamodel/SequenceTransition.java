@@ -11,15 +11,13 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
-import org.woped.bpel.BPEL;
-public class SequenceTransition extends TerminalElement
+public class SequenceTransition extends TerminalElement<TSequence>
 {
 	AbstractElement<?> begin;
-	TSequence seq = null;
 
 	public SequenceTransition(AbstractElement<?> begin)
 	{
-		super("test");
+		super(null);
 		this.begin = begin;
 	}
 
@@ -38,7 +36,7 @@ public class SequenceTransition extends TerminalElement
 	 */
 	public TSequence getBpelCode()
 	{
-		if(this.seq != null) return this.seq;
+		if(this.getData() != null) return this.getData();
 		TSequence iSeq= null;
 		
 		
@@ -48,7 +46,7 @@ public class SequenceTransition extends TerminalElement
 			iSeq = (TSequence)begin.getBpelCode();
 		}	
 		else{
-			iSeq = BPEL.genBpelProcess().addNewSequence();
+			iSeq = TSequence.Factory.newInstance();
 			//transitions case (1.transition)		
 			if(TPick.class.isInstance(begin.getBpelCode())){
 				TPick iPick = iSeq.addNewPick();
@@ -144,8 +142,8 @@ public class SequenceTransition extends TerminalElement
 			}		
 		}		
 		
-		this.seq = iSeq;
-		return this.seq;
+		this.setData(iSeq);
+		return this.getData();
 	}
 
 }

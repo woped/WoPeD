@@ -3,7 +3,6 @@ package org.woped.bpel.datamodel;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TFlow;
@@ -17,15 +16,14 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 
-public class PickTransition extends TerminalElement
+public class PickTransition extends TerminalElement<TPick>
 {
 
 	HashSet<AbstractElement<?>>	begin;
-	TPick						pick	= null;
 
 	public PickTransition(HashSet<AbstractElement<?>> begin)
 	{
-		super("test");
+		super(null);
 		this.begin = begin;
 	}
 
@@ -38,10 +36,10 @@ public class PickTransition extends TerminalElement
 		return true;
 	}
 
-	public TActivity getBpelCode()
+	public TPick getBpelCode()
 	{
+		if(this.getData() != null) return this.getData();
 		TPick iPick = TPick.Factory.newInstance();
-		//XmlObject triggerTransition = null;
 		AbstractElement<?> tmp;
 		Iterator<AbstractElement<?>> list = begin.iterator();
 
@@ -69,8 +67,8 @@ public class PickTransition extends TerminalElement
 				//triggerTransition = iOnMessage;
 			}
 		}
-		this.pick = iPick;
-		return pick;
+		this.setData(iPick);
+		return this.getData();
 	}
 
 	private void addToOnAlarm(TOnAlarmPick iOnAlarmPick, AbstractElement<?> tmp)
