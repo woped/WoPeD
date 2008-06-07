@@ -1,6 +1,5 @@
 package org.woped.bpel.gui.transitionproperties;
 
-import org.apache.xmlbeans.XmlCursor;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.woped.translations.Messages;
 
@@ -48,11 +47,9 @@ public class Wait extends BaseActivity<TWait> {
 		this._waitconditiontype = WaitConditionType;
 
 		if (WaitConditionType == Wait._DEADLINE) {
-			XmlCursor curs = this.getActivity().addNewUntil().newCursor();
-			curs.setTextValue(Condition);
+			this.getActivity().addNewUntil().setValue(Condition);
 		} else if (WaitConditionType == Wait._DURATION) {
-			XmlCursor curs = this.getActivity().addNewFor().newCursor();
-			curs.setTextValue(Condition);
+			this.getActivity().addNewFor().setValue(Condition);
 		} else {
 			this._waitconditiontype = Wait._NOWAITCONDITIONTYPE;
 		}
@@ -143,9 +140,8 @@ public class Wait extends BaseActivity<TWait> {
 	 * @return
 	 */
 	public final String getDeadLineCondition() {
-		if (this.getActivity().getUntil() != null) {
-			XmlCursor curs = this.getActivity().getUntil().newCursor();
-			return curs.getTextValue();
+		if (this.getActivity().isSetUntil()) {
+			return this.getActivity().getUntil().getValue();
 		}
 		return "";
 	}
@@ -155,9 +151,8 @@ public class Wait extends BaseActivity<TWait> {
 	 * @return
 	 */
 	public final String getDurationCondition() {
-		if (this.getActivity().getFor() != null) {
-			XmlCursor curs = this.getActivity().getUntil().newCursor();
-			return curs.getTextValue();
+		if (this.getActivity().isSetFor()) {
+			return this.getActivity().getFor().getValue();
 		}
 		return "";
 	}
