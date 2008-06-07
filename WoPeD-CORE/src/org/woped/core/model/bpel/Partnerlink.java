@@ -91,7 +91,18 @@ public class Partnerlink {
 				partnerLinkType));
 		this.partnerLink.setPartnerRole(partnerRole);
 	}
+	
 
+	public String Namespace()
+	{
+		return this.partnerLink.getPartnerLinkType().getNamespaceURI();
+	}
+	
+	public String getPartnerlinkType()
+	{
+		return this.partnerLink.getPartnerLinkType().getLocalPart();
+	}
+		
 	public String getName() {
 		return this.partnerLink.getName();
 	}
