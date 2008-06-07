@@ -26,8 +26,6 @@ abstract public class Transition<E extends TransitionModel> extends
 	{
 		if (Place.class.isInstance(e))
 			return true;
-		
-		//System.out.println("Cant accept the pre object!");
 		return false;
 	}
 	

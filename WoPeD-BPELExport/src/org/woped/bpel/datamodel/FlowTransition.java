@@ -45,8 +45,6 @@ public class FlowTransition extends TerminalElement<TFlow>
 
 			tmp = list.next();
 			tmp=tmp.get_first_post_element();
-			System.out.println(tmp.getBpelCode());
-			System.out.println(tmp.getClass().getSimpleName());
 
 			if(TPick.class.isInstance(tmp.getBpelCode())){
 				TPick iPick = iFlow.addNewPick();

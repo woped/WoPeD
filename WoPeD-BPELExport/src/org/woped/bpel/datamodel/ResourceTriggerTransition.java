@@ -1,6 +1,6 @@
 package org.woped.bpel.datamodel;
 
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 import org.woped.core.model.petrinet.TransitionModel;
 
 
@@ -21,9 +21,11 @@ public class ResourceTriggerTransition extends Transition<TransitionModel>
 	}
 
 	@Override
-	public TActivity getBpelCode()
+	public TEmpty getBpelCode()
 	{
-		return null;
+		TEmpty empty  = TEmpty.Factory.newInstance();
+		empty.setName(this.getData().getNameValue());
+		return empty;
 	}
 
 }
