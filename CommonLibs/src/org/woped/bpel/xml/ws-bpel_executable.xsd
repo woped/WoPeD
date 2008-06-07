@@ -1024,7 +1024,8 @@
 	
 	<xsd:complexType name="tExpression" mixed="true">
 		<xsd:sequence>
-			<xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+
+			<xsd:element name="Value" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
 		</xsd:sequence>
 		<xsd:attribute name="expressionLanguage" type="xsd:anyURI"/>
 		<xsd:anyAttribute namespace="##other" processContents="lax"/>
