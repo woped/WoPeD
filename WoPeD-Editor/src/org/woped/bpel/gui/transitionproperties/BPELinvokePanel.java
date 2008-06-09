@@ -430,8 +430,8 @@ public class BPELinvokePanel extends BPELadditionalPanel {
 
 		if (Invoke.class.isInstance(this.transition.getBpelData())) {
 			Invoke in = (Invoke) this.transition.getBpelData();
-			this.setInVariable(in.getInputVariable());
-			this.setOutVariable(in.getOutputVariable());
+			this.inVariableComboBox.setSelectedItem(this.t_editor.getEditor().getModelProcessor().getElementContainer().findBpelVariableByName(in.getInputVariable()));
+			this.outVariableComboBox.setSelectedItem(this.t_editor.getEditor().getModelProcessor().getElementContainer().findBpelVariableByName(in.getOutputVariable()));
 			this.setPartnerLink(in.getPartnerLink());
 			this.setOperation(in.getOperation());
 		}
