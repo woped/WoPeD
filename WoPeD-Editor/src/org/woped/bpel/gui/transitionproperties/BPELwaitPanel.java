@@ -479,8 +479,15 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 				+ getDeadLineMinute() + ":" + getDeadLineSecond() + "+1:00";
 	}
 
-	public void setDeadline(String Deadline) {
-
+	public void setDeadline() {
+		Wait wait = (Wait) this.transition.getBpelData();
+		this.deadLineTextFieldHour.setText(""+wait.getHour());
+		this.deadLineTextFieldMinute.setText(""+wait.getMinute());
+		this.deadLineTextFieldSecond.setText(""+wait.getSecond());
+		calendar.getCalendar().set(wait.getYear(), wait.getMonth(), wait.getDay());
+		Calendar c =new JCalendar().getCalendar();
+		c.set(wait.getYear(), wait.getMonth()-1, wait.getDay());
+		calendar.setDate(c.getTime());
 	}
 
 	public String getDuration() {
@@ -489,7 +496,14 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 				+ getDurationMinute() + "M" + getDurationSecond() + "S";
 	}
 
-	public void setDuration(String Duration) {		
+	public void setDuration() {
+		Wait wait = (Wait) this.transition.getBpelData();
+		this.durationTextFieldYear.setText(""+wait.getYear());
+		this.durationTextFieldMonth.setText(""+wait.getMonth());
+		this.durationTextFieldDay.setText(""+wait.getDay());
+		this.durationTextFieldHour.setText(""+wait.getHour());
+		this.durationTextFieldMinute.setText(""+wait.getMinute());
+		this.durationTextFieldSecond.setText(""+wait.getSecond());
 		
 	}
 
@@ -611,6 +625,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 				c1.gridy = 2;
 				c1.insets = new Insets(0, 0, 10, 0);
 				add(getDeadlinePanel(), c1);
+				this.setDeadline();
 			}
 			else {
 				waitDurationRadioButton.setSelected(true);
@@ -619,6 +634,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 				c1.gridy = 2;
 				c1.insets = new Insets(0, 0, 10, 0);
 				add(getDurationPanel(), c1);
+				this.setDuration();
 			}			
 		}
 		this.repaint();
