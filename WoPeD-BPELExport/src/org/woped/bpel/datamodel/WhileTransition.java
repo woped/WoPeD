@@ -100,6 +100,11 @@ public class WhileTransition extends TerminalElement<TWhile>
 			TInvoke iInvoke = iWhile.addNewInvoke();
 			iInvoke.set(tmp.getBpelCode());
 		}
+		else if(TWhile.class.isInstance(tmp.getBpelCode()))
+		{
+			TWhile iwhile = iWhile.addNewWhile();
+			iwhile.set(tmp.getBpelCode());
+		}
 		this.setData(iWhile);
 		return this.getData();
 	}

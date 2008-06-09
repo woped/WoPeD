@@ -15,6 +15,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TWhile;
 
 public class PickTransition extends TerminalElement<TPick>
 {
@@ -114,6 +115,11 @@ public class PickTransition extends TerminalElement<TPick>
 			TInvoke iInvoke = iOnAlarmPick.addNewInvoke();
 			iInvoke.set(tmp.getBpelCode());
 		}
+		else if(TWhile.class.isInstance(tmp.getBpelCode()))
+		{
+			TWhile iwhile = iOnAlarmPick.addNewWhile();
+			iwhile.set(tmp.getBpelCode());
+		}
 	}
 
 	private void addToOnMessage(TOnMessage iOnMessage, AbstractElement<?> tmp)
@@ -158,6 +164,11 @@ public class PickTransition extends TerminalElement<TPick>
 		{
 			TInvoke iInvoke = iOnMessage.addNewInvoke();
 			iInvoke.set(tmp.getBpelCode());
+		}
+		else if(TWhile.class.isInstance(tmp.getBpelCode()))
+		{
+			TWhile iwhile = iOnMessage.addNewWhile();
+			iwhile.set(tmp.getBpelCode());
 		}
 	}
 }

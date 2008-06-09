@@ -11,6 +11,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TWhile;
 public class SequenceTransition extends TerminalElement<TSequence>
 {
 	AbstractElement<?> begin;
@@ -83,7 +84,12 @@ public class SequenceTransition extends TerminalElement<TSequence>
 			else if(TInvoke.class.isInstance(begin.getBpelCode())){
 				TInvoke iInvoke = iSeq.addNewInvoke();
 				iInvoke.set(begin.getBpelCode());
-			}				
+			}	
+			else if(TWhile.class.isInstance(begin.getBpelCode()))
+			{
+				TWhile iwhile = iSeq.addNewWhile();
+				iwhile.set(begin.getBpelCode());
+			}
 		}			
 		
 		//place between transitions
@@ -139,7 +145,12 @@ public class SequenceTransition extends TerminalElement<TSequence>
 			else if(TInvoke.class.isInstance(tmp.getBpelCode())){
 				TInvoke iInvoke = iSeq.addNewInvoke();
 				iInvoke.set(tmp.getBpelCode());
-			}		
+			}	
+			else if(TWhile.class.isInstance(tmp.getBpelCode()))
+			{
+				TWhile iwhile = iSeq.addNewWhile();
+				iwhile.set(tmp.getBpelCode());
+			}
 		}		
 		
 		this.setData(iSeq);

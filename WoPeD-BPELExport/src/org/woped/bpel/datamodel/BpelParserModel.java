@@ -142,13 +142,9 @@ public class BpelParserModel
 	private boolean createModel(PetriNetModelElement e,
 			ModelElementContainer con)
 	{
-		// System.out.println("\n******************\n"
-		// + "Working an PetrinetElement " + e.getId() + "\n"
-		// + "**************\n");
 
 		if (this.get_registrated_element(e) != null)
 			return true;
-		// System.out.println("createModel " + e.getId());
 		AbstractElement<?> element = BpelParserModel.createElement(e);
 		if (element == null)
 			return false;
@@ -156,7 +152,6 @@ public class BpelParserModel
 			this._oneelement = element;
 		this.regist_element(element);
 
-		// System.out.println("***\nPrelist from " + e.getId() + "\n***");
 		Map<String, AbstractElementModel> map = con
 				.getSourceElements(e.getId());
 		Collection<AbstractElementModel> list = map.values();
@@ -180,7 +175,6 @@ public class BpelParserModel
 			}
 		}
 
-		// System.out.println("***\nPostlist from " + e.getId() + "\n***");
 		list = con.getTargetElements(e.getId()).values();
 		iter = list.iterator();
 		while (iter.hasNext())
@@ -212,7 +206,6 @@ public class BpelParserModel
 	 */
 	private void regist_element(AbstractElement<?> e)
 	{
-		// System.out.println("i am regist the element!" + e);
 		if (Place.class.isInstance(e))
 			this._regist_places.add(e);
 		else
@@ -292,7 +285,6 @@ public class BpelParserModel
 		if (this._reg_to_deregist.search(e) != -1)
 			return;
 		this.regist_to_deregist(e);
-		// System.out.println("Deregist " + e.getClass().toString());
 		Iterator<AbstractElement<?>> pre = e.get_all_pre_objects().iterator();
 		Iterator<AbstractElement<?>> post = e.get_all_post_objects().iterator();
 
@@ -312,7 +304,6 @@ public class BpelParserModel
 	 */
 	public AbstractElement<?> get_registrated_element(PetriNetModelElement e)
 	{
-		// System.out.println("search for element " + e.getClass().toString());
 		return this.get_registrated_element(BpelParserModel.createElement(e));
 	}
 
@@ -326,7 +317,6 @@ public class BpelParserModel
 	 */
 	public AbstractElement<?> get_registrated_element(AbstractElement<?> e)
 	{
-		// System.out.println("search " + e.getClass().toString());
 		if (Place.class.isInstance(e))
 		{
 			Iterator<AbstractElement<?>> iter = this._regist_places.iterator();
@@ -335,7 +325,6 @@ public class BpelParserModel
 				AbstractElement<?> erg = iter.next();
 				if (erg.equals(e))
 				{
-					// System.out.println("found regist object");
 					return erg;
 				}
 			}
@@ -348,7 +337,6 @@ public class BpelParserModel
 				AbstractElement<?> erg = iter.next();
 				if (erg.equals(e))
 				{
-					// System.out.println("found regist object");
 					return erg;
 				}
 			}
@@ -366,7 +354,6 @@ public class BpelParserModel
 	 */
 	private static AbstractElement<?> createElement(PetriNetModelElement e)
 	{
-		// System.out.println(e.getClass().getSimpleName() + " " + e.getId());
 		if (PlaceModel.class.isInstance(e))
 			return new Place((PlaceModel) e);
 		if (ANDSplitOperatorTransitionModel.class.isInstance(e))
@@ -385,7 +372,6 @@ public class BpelParserModel
 			{
 				TriggerModel m = ((TransitionModel) e).getToolSpecific()
 						.getTrigger();
-				// System.out.println("code-Nr: " + m.getTriggertype());
 				if (m.getTriggertype() == TriggerModel.TRIGGER_TIME)
 					return new TimeTriggerTransition((TransitionModel) e);
 				if (m.getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
@@ -395,9 +381,6 @@ public class BpelParserModel
 			}
 			return new SimpleTransition((TransitionModel) e);
 		}
-		// System.out
-		// .println("cant find the right object to generate the correct
-		// AbstractElement!");
 		return null;
 	}
 
@@ -416,32 +399,21 @@ public class BpelParserModel
 	 */
 	public TProcess generate_bpel()
 	{
-		int counter = 0;
-		// this.toString();
 		while (true)
 		{
 			int pre = this.count_elements();
+			this.eliminate_all_while();
 			this.eliminate_all_picks();
 			this.eliminate_all_sequences();
 			this.eliminate_all_flows();
 			this.eliminate_all_ifs();
-			this.eliminate_all_while();
 			if (pre == this.count_elements())
 				break;
-			counter++;
-			/*
-			 * System.out.println("Durchlauf " + counter + "\nAnzahl Elemente " +
-			 * this.count_elements());
-			 */
 		}
 
 		if (this._regist_transition.size() > 1)
-		{
-			System.out.println("immer noch mehr als eine trasition");
-			System.out.println(this._regist_transition);
-			System.out.println(this._regist_places);
 			return null;
-		}
+
 		TExtensibleElements test = this._regist_transition.iterator().next()
 				.getBpelCode();
 		TProcess p = TProcess.Factory.newInstance();
@@ -465,8 +437,6 @@ public class BpelParserModel
 			p.addNewReply().set(test);
 		else if (TInvoke.class.isInstance(test))
 			p.addNewInvoke().set(test);
-
-		System.out.println(p.toString());
 		return p;
 	}
 
@@ -537,10 +507,6 @@ public class BpelParserModel
 	public SequenceTransition newSequence(AbstractElement<?> begin,
 			AbstractElement<?> end)
 	{
-		/*
-		 * System.out.println("<Sequence> \n" + "\tbegin = " + begin + "\n" +
-		 * "\tend = " + end + "\n</Sequence>");
-		 */
 		HashSet<AbstractElement<?>> pre_list = begin.get_pre_list_copy();
 		HashSet<AbstractElement<?>> post_list = end.get_post_list_copy();
 
@@ -688,7 +654,6 @@ public class BpelParserModel
 
 		if (e.count_post_objects() != end.count_pre_objects())
 			return null;
-		// System.out.println(test+ "\n</Pick " + end.getData() + ">");
 		return end;
 	}
 
@@ -711,11 +676,6 @@ public class BpelParserModel
 			end = this.isPick(begin);
 			if (end != null)
 			{
-				/*
-				 * System.out.println("<Pick> \n" + "\tbegin = " + begin + "\n" +
-				 * "\tend = " + end + "\n</Pick>");
-				 */
-
 				AbstractElement<?> e = new PickTransition(begin
 						.get_post_list_copy());
 				this.regist_element(e);
@@ -849,22 +809,23 @@ public class BpelParserModel
 	/**
 	 * This method test of if and search for the endelement.
 	 * 
-	 * @param e
+	 * @param begin
 	 *            AbstractElement begin of if
 	 * @return AbstractElement
 	 */
-	public AbstractElement<?> isIf(AbstractElement<?> e)
+	public AbstractElement<?> isIf(AbstractElement<?> begin)
 	{
 		// Work not right
-		if (e == null)
+		if (begin == null)
 			return null;
-		if (!XORSplitTransition.class.isInstance(e))
+		if (!XORSplitTransition.class.isInstance(begin))
 			return null;
-		if (e.count_post_objects() < 2)
+		if (begin.count_post_objects() < 2)
 			return null;
 		XORJoinTransition end = null;
 		XORJoinTransition tmp = null;
-		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
+		Iterator<AbstractElement<?>> list = begin.get_all_post_objects()
+				.iterator();
 		while (list.hasNext())
 		{
 			tmp = this.testIFLine(list.next());
@@ -876,6 +837,9 @@ public class BpelParserModel
 			if (!end.equals(tmp))
 				return null;
 		}
+
+		if (begin.count_post_objects() != end.count_pre_objects())
+			return null;
 		return end;
 	}
 
@@ -966,23 +930,25 @@ public class BpelParserModel
 			AbstractElement<?> linebegin = this.isWhile(begin);
 			if (linebegin != null)
 			{
-				System.out.println("löse while auf");
-				AbstractElement<?> tempplace = linebegin.get_first_post_element()
-				.get_first_post_element();
+				AbstractElement<?> tempplace = linebegin
+						.get_first_post_element().get_first_post_element();
+
+				AbstractElement<?> temptrans = linebegin
+						.get_first_post_element();
+				temptrans.remove_all_post_relationship();
 				tempplace.remove_pre_object(linebegin.get_first_post_element());
-				linebegin.get_first_post_element().remove_post_object(tempplace);
 				tempplace.remove_all_post_relationship();
-				begin.remove_all_pre_relationship();
-				
+
 				HashSet<AbstractElement<?>> post = begin.get_post_list_copy();
-				post.remove(linebegin);
 				begin.remove_all_post_relationship();
+				begin.remove_all_pre_relationship();
 				begin.add_post_object(linebegin);
-				
+
+				post.remove(linebegin);
 				WhileTransition trans = new WhileTransition(begin);
 				tempplace.add_post_object(trans);
-				trans.accept_pre_object(tempplace);
-				
+				trans.add_pre_object(tempplace);
+
 				this.regist_element(trans);
 				this.reg_to_deregist_submodel(begin);
 
@@ -1048,7 +1014,7 @@ public class BpelParserModel
 
 		// test 3. element of line
 		line = line.get_first_post_element();
-		if (line.count_post_objects() != 1 )
+		if (line.count_post_objects() != 1)
 			return null;
 
 		// test next element! it must be the whilehead

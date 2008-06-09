@@ -12,6 +12,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TWhile;
 import org.woped.core.model.AbstractElementModel;
 
 public class FlowTransition extends TerminalElement<TFlow>
@@ -85,6 +86,11 @@ public class FlowTransition extends TerminalElement<TFlow>
 			else if(TInvoke.class.isInstance(tmp.getBpelCode())){
 				TInvoke iInvoke = iFlow.addNewInvoke();
 				iInvoke.set(tmp.getBpelCode());
+			}
+			else if(TWhile.class.isInstance(tmp.getBpelCode()))
+			{
+				TWhile iwhile = iFlow.addNewWhile();
+				iwhile.set(tmp.getBpelCode());
 			}
 		}
 		this.setData(iFlow);
