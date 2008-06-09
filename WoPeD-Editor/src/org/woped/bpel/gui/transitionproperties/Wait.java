@@ -75,7 +75,7 @@ public class Wait extends BaseActivity<TWait> {
 				Messages.getString("Transition.Properties.BPEL.Wait.Duration"))) {
 			this.fillWait(panel.getDuration(), Wait._DURATION);
 		} else if (panel.getSelectedRadioButton().equalsIgnoreCase(
-				Messages.getString("Transition.Properties.BPEL.Wait.Duration"))) {
+				Messages.getString("Transition.Properties.BPEL.Wait.Deadline"))) {
 			this.fillWait(panel.getDeadline(), Wait._DEADLINE);
 		}
 		return this;

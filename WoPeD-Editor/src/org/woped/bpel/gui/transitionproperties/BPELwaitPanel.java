@@ -489,8 +489,8 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 				+ getDurationMinute() + "M" + getDurationSecond() + "S";
 	}
 
-	public void setDuration(String Duration) {
-
+	public void setDuration(String Duration) {		
+		
 	}
 
 	public String getDeadLineDay() {
@@ -604,6 +604,11 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	public void refresh() {
 		if (Wait.class.isInstance(this.transition.getBpelData())) {
 			Wait re = (Wait) this.transition.getBpelData();
+			if (re.getWaitConditionType()== Wait._DEADLINE){
+			}
+			if (re.getWaitConditionType()== Wait._DURATION){
+			}
+			
 		}
 		this.repaint();
 	}
