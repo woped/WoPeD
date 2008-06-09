@@ -20,13 +20,12 @@ abstract public class Transition<E extends TransitionModel> extends
 		//System.out.println("Cant accept the post object!");
 		return false;
 	}
-
+	
 	@Override
 	public boolean accept_pre_object(AbstractElement<?> e)
 	{
 		if (Place.class.isInstance(e))
 			return true;
 		return false;
-	}
-	
+	}	
 }

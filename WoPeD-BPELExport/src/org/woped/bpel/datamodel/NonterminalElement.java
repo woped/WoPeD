@@ -2,15 +2,15 @@ package org.woped.bpel.datamodel;
 
 import org.woped.core.model.petrinet.PetriNetModelElement;
 
-public abstract class NonterminalElement<E extends PetriNetModelElement> extends AbstractElement<PetriNetModelElement>
+public abstract class NonterminalElement<E extends PetriNetModelElement> extends AbstractElement<E>
 {	
-	public NonterminalElement(PetriNetModelElement data)
+	public NonterminalElement(E data)
 	{
 		super();
 		this.setData(data);
 	}
 	
-	public PetriNetModelElement getData()
+	public E getData()
 	{
 		return super.getData();
 	}

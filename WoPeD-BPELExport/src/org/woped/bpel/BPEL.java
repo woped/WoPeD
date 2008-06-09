@@ -102,7 +102,6 @@ public class BPEL
 		process.set(m.generate_bpel());
 		setGlobals(process,pnp);
 		// File Output
-		new File(Path);
 		XmlOptions opt = new XmlOptions();
 
 		//opt.setSavePrettyPrintIndent(2);
@@ -132,13 +131,14 @@ public class BPEL
 		// Generate BPEL Model
 		BpelParserModel m = new BpelParserModel();
 		m.createModel(pnp.getElementContainer());
-		BPEL.genBpelProcess();
-		TProcess p = BPEL.bpelDoc.addNewProcess();
+		ProcessDocument doc = ProcessDocument.Factory.newInstance();
+		TProcess process = doc.addNewProcess();
+		setGlobals(process,pnp);
 		TProcess tempProc = m.generate_bpel();
 		if (tempProc != null)
 		{
 			setGlobals(tempProc, pnp);
-			p.set(tempProc);
+			process.set(tempProc);
 		} else
 		{
 			return "" + Messages.getString("PetriNet.NotSound");
@@ -152,7 +152,7 @@ public class BPEL
 		map.put("http://www.w3.org/2001/XMLSchema", "xs");
 		opt = opt.setSaveSuggestedPrefixes(map);
 		opt.setSavePrettyPrint();
-		return BPEL.bpelDoc.xmlText(opt);
+		return doc.xmlText(opt);
 	}
 
 	public static TProcess genBpelProcess()

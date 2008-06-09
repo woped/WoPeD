@@ -425,6 +425,7 @@ public class BpelParserModel
 			this.eliminate_all_sequences();
 			this.eliminate_all_flows();
 			this.eliminate_all_ifs();
+			this.eliminate_all_while();
 			if (pre == this.count_elements())
 				break;
 			counter++;
@@ -437,6 +438,8 @@ public class BpelParserModel
 		if (this._regist_transition.size() > 1)
 		{
 			System.out.println("immer noch mehr als eine trasition");
+			System.out.println(this._regist_transition);
+			System.out.println(this._regist_places);
 			return null;
 		}
 		TExtensibleElements test = this._regist_transition.iterator().next()
@@ -948,5 +951,110 @@ public class BpelParserModel
 			}
 		}
 		this.deregist_all_flaged_elements();
+	}
+
+	/**
+	 * 
+	 */
+	public void eliminate_all_while()
+	{
+		Iterator<AbstractElement<?>> list = this
+				.get_copy_of_regist_transition().iterator();
+		while (list.hasNext())
+		{
+			AbstractElement<?> begin = list.next();
+			AbstractElement<?> linebegin = this.isWhile(begin);
+			if (linebegin != null)
+			{
+				System.out.println("löse while auf");
+				AbstractElement<?> tempplace = linebegin.get_first_post_element()
+				.get_first_post_element();
+				tempplace.remove_pre_object(linebegin.get_first_post_element());
+				linebegin.get_first_post_element().remove_post_object(tempplace);
+				tempplace.remove_all_post_relationship();
+				begin.remove_all_pre_relationship();
+				
+				HashSet<AbstractElement<?>> post = begin.get_post_list_copy();
+				post.remove(linebegin);
+				begin.remove_all_post_relationship();
+				begin.add_post_object(linebegin);
+				
+				WhileTransition trans = new WhileTransition(begin);
+				tempplace.add_post_object(trans);
+				trans.accept_pre_object(tempplace);
+				
+				this.regist_element(trans);
+				this.reg_to_deregist_submodel(begin);
+
+				AbstractElement<?> tmp;
+				Iterator<AbstractElement<?>> post_list = post.iterator();
+				while (post_list.hasNext())
+				{
+					tmp = post_list.next();
+					tmp.add_pre_object(trans);
+					trans.add_post_object(tmp);
+				}
+			}
+		}
+		this.deregist_all_flaged_elements();
+	}
+
+	/**
+	 * 
+	 * @param begin
+	 * @return
+	 */
+	public AbstractElement<?> isWhile(AbstractElement<?> begin)
+	{
+		if (!XORSplitTransition.class.isInstance(begin))
+			return null;
+		if (begin.count_pre_objects() != 1)
+			return null;
+		if (begin.count_post_objects() != 2)
+			return null;
+		XORSplitTransition whilehead = (XORSplitTransition) begin;
+		Iterator<AbstractElement<?>> iter = whilehead.get_post_list_iterator();
+
+		while (iter.hasNext())
+		{
+			AbstractElement<?> linebegin = iter.next();
+			AbstractElement<?> end = null;
+			end = this.testWhileLine(linebegin, whilehead);
+			if (end != null)
+				return linebegin;
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param line
+	 * @param whilehead
+	 * @return
+	 */
+	public AbstractElement<?> testWhileLine(AbstractElement<?> line,
+			XORSplitTransition whilehead)
+	{
+		// test first element in line
+		if (line.count_post_objects() != 1 || line.count_pre_objects() != 1)
+			return null;
+
+		// test second element in line
+		line = line.get_first_post_element();
+		if (XORJoinTransition.class.isInstance(line))
+			return null;
+		if (line.count_post_objects() != 1 || line.count_pre_objects() != 1)
+			return null;
+
+		// test 3. element of line
+		line = line.get_first_post_element();
+		if (line.count_post_objects() != 1 )
+			return null;
+
+		// test next element! it must be the whilehead
+		if (!whilehead.equals(line.get_first_post_element()))
+			return null;
+
+		return line;
 	}
 }

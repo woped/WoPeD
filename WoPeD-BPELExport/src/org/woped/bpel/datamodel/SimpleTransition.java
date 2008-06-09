@@ -22,7 +22,7 @@ public class SimpleTransition extends Transition<TransitionModel>
 			return false;
 		return true;
 	}
-
+	
 	@Override
 	public TActivity getBpelCode()
 

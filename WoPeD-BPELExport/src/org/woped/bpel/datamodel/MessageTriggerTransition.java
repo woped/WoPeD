@@ -1,6 +1,8 @@
 package org.woped.bpel.datamodel;
 
+import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
+import org.woped.bpel.gui.transitionproperties.BaseActivity;
 import org.woped.core.model.petrinet.TransitionModel;
 
 public class MessageTriggerTransition extends Transition<TransitionModel>
@@ -11,6 +13,24 @@ public class MessageTriggerTransition extends Transition<TransitionModel>
 		super(data);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public TActivity getBpelCode()
+
+	{
+		BaseActivity<?> ba = (BaseActivity<?>) this.getData().getBpelData();
+		// TActivity activity = null;
+		if (ba != null)
+		{
+			return ba.getActivity();
+
+		} else
+		{
+			TEmpty iEmpty = TEmpty.Factory.newInstance();
+			iEmpty.setName(this.getData().getNameValue());
+			return iEmpty;
+		}
+	}
 
 	@Override
 	public boolean equals(AbstractElement<?> e)
@@ -20,14 +40,6 @@ public class MessageTriggerTransition extends Transition<TransitionModel>
 		if (this.getData().getId() != ((MessageTriggerTransition) e).getData().getId())
 			return false;
 		return true;
-	}
-
-	@Override
-	public TEmpty getBpelCode()
-	{
-		TEmpty empty  = TEmpty.Factory.newInstance();
-		empty.setName(this.getData().getNameValue());
-		return empty;
 	}
 
 }
