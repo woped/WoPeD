@@ -605,10 +605,21 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 		if (Wait.class.isInstance(this.transition.getBpelData())) {
 			Wait re = (Wait) this.transition.getBpelData();
 			if (re.getWaitConditionType()== Wait._DEADLINE){
+				waitDeadlineRadioButton.setSelected(true);
+				remove(getDurationPanel());
+				c1.gridx = 0;
+				c1.gridy = 2;
+				c1.insets = new Insets(0, 0, 10, 0);
+				add(getDeadlinePanel(), c1);
 			}
-			if (re.getWaitConditionType()== Wait._DURATION){
-			}
-			
+			else {
+				waitDurationRadioButton.setSelected(true);
+				remove(getDeadlinePanel());
+				c1.gridx = 0;
+				c1.gridy = 2;
+				c1.insets = new Insets(0, 0, 10, 0);
+				add(getDurationPanel(), c1);
+			}			
 		}
 		this.repaint();
 	}
