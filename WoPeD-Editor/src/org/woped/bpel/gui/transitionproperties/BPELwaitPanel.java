@@ -631,8 +631,23 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 					Messages.getString("Transition.Properties.BPEL.Error"),
 					Messages.getString("Transition.Properties.BPEL.ErrorDuringFieldCheck")).setVisible(true);
 		} else {
-			this.transition.setBaseActivity(new Wait(this.transition
-					.getNameValue()).saveInformation(this));
+			
+			//Values in TextField already checked
+			try
+			{
+				if(waitDeadlineRadioButton.isSelected())
+				{
+					this.transition.setBaseActivity(new Wait(this.transition.getNameValue(), Wait._DEADLINE, Integer.parseInt(getDeadLineYear()), Integer.parseInt(getDeadLineMonth()), Integer.parseInt(getDeadLineDay()), Integer.parseInt(getDeadLineHour()), Integer.parseInt(getDeadLineMinute()), Integer.parseInt(getDeadLineSecond())).saveInformation(this));
+				}
+				if(waitDurationRadioButton.isSelected())
+				{
+					this.transition.setBaseActivity(new Wait(this.transition.getNameValue(), Wait._DURATION, Integer.parseInt(getDurationYear()), Integer.parseInt(getDurationMonth()), Integer.parseInt(getDurationDay()), Integer.parseInt(getDurationHour()), Integer.parseInt(getDurationMinute()), Integer.parseInt(getDurationSecond())).saveInformation(this));
+				}
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 		}
 	}
 
