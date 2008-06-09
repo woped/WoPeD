@@ -5,7 +5,7 @@ import org.woped.translations.Messages;
 
 /**
  * 
- * @author Frank Schüler
+ * @author Frank Schüler, Alexander Roßwog, Johannes Händel
  * 
  */
 public class Wait extends BaseActivity<TWait> {
@@ -13,6 +13,13 @@ public class Wait extends BaseActivity<TWait> {
 	public final static int _NOWAITCONDITIONTYPE = -1;
 	public final static int _DEADLINE = 0;
 	public final static int _DURATION = 1;
+	
+	public int Year;
+	public int Month;
+	public int Day;
+	public int Hour;
+	public int Minute;
+	public int Second;
 
 	private int _waitconditiontype = -1;
 
@@ -34,6 +41,32 @@ public class Wait extends BaseActivity<TWait> {
 		this(Name);
 		this.fillWait(Condition, WaitConditionType);
 	}
+	
+	public Wait(String Name, int WaitConditionType, int Year, int Month, int Day, int Hour, int Minute, int Second)
+	{
+		this(Name);
+		this._waitconditiontype = WaitConditionType;
+		this.Year = Year;
+		this.Month = Month;
+		this.Day = Day;
+		this.Hour = Hour;
+		this.Minute = Minute;
+		this.Second = Second;
+	}
+	
+	public String generateDurationCondition() 
+	{
+		return "P" + Year + "Y" + Month + "M"
+				+ Day + "DT" + Hour + "H"
+				+ Minute + "M" + Second + "S";
+	}
+	
+	public String generateDeadlineCondition()
+	{
+		return "" + Year + "-" + Month + "-"
+		+ Day + "T" + Hour + ":"
+		+ Minute + ":" + Second + "+1:00";
+	}
 
 	/**
 	 * 
@@ -47,9 +80,9 @@ public class Wait extends BaseActivity<TWait> {
 		this._waitconditiontype = WaitConditionType;
 
 		if (WaitConditionType == Wait._DEADLINE) {
-			this.getActivity().addNewUntil().setValue(Condition);
+			this.getActivity().addNewUntil().setValue(generateDeadlineCondition());
 		} else if (WaitConditionType == Wait._DURATION) {
-			this.getActivity().addNewFor().setValue(Condition);
+			this.getActivity().addNewFor().setValue(generateDurationCondition());
 		} else {
 			this._waitconditiontype = Wait._NOWAITCONDITIONTYPE;
 		}
@@ -155,5 +188,53 @@ public class Wait extends BaseActivity<TWait> {
 			return this.getActivity().getFor().getValue();
 		}
 		return "";
+	}
+
+	public int getYear() {
+		return Year;
+	}
+
+	public void setYear(int year) {
+		Year = year;
+	}
+
+	public int getMonth() {
+		return Month;
+	}
+
+	public void setMonth(int month) {
+		Month = month;
+	}
+
+	public int getDay() {
+		return Day;
+	}
+
+	public void setDay(int day) {
+		Day = day;
+	}
+
+	public int getHour() {
+		return Hour;
+	}
+
+	public void setHour(int hour) {
+		Hour = hour;
+	}
+
+	public int getMinute() {
+		return Minute;
+	}
+
+	public void setMinute(int minute) {
+		Minute = minute;
+	}
+
+	public int getSecond() {
+		return Second;
+	}
+
+	public void setSecond(int second) {
+		Second = second;
 	}
 }
