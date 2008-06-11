@@ -65,15 +65,7 @@ public abstract class BaseActivity<E extends TActivity>
 	 */
 	public abstract void setInformationToPanel(BPELadditionalPanel bip);
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public static TProcess genBpelProcess()
-	{
-		return TProcess.Factory.newInstance();
-	}
-	
+		
 	/**
 	 * @return String
 	 */

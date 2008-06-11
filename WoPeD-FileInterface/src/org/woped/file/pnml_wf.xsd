@@ -868,8 +868,15 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tActivity">
         <xs:choice>
-          <xs:element minOccurs="1" ref="for" />
-          <xs:element minOccurs="1" ref="until" />
+
+
+        	<xsd:element name="Year" type="xs:int"></xsd:element>
+        	<xsd:element name="Month" type="xs:int"></xsd:element>
+        	<xsd:element name="Day" type="xs:int"></xsd:element>
+        	<xsd:element name="Hour" type="xs:int"></xsd:element>
+        	<xsd:element name="Minute" type="xs:int"></xsd:element>
+        	<xsd:element name="Second" type="xs:int"></xsd:element>
+        	<xsd:element name="typ" type="xs:int"></xsd:element>
         </xs:choice>
       </xs:extension>
     </xs:complexContent>
@@ -889,17 +896,5 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="for" type="tDuration-expr" />
-  <xs:element name="until" type="tDeadline-expr" />
-  <xs:complexType name="tDuration-expr">
-    <xs:complexContent mixed="true">
-      <xs:extension base="tExpression" />
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="tDeadline-expr">
-    <xs:complexContent mixed="true">
-      <xs:extension base="tExpression" />
-    </xs:complexContent>
-  </xs:complexType>
+  </xs:complexType>
 </xsd:schema>

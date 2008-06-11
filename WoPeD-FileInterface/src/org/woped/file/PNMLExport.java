@@ -707,10 +707,15 @@ public class PNMLExport
         }
         if (org.woped.bpel.gui.transitionproperties.Wait.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TWait iWait = iToolspecific.addNewWait();
-        	if ((((Wait)currentModel.getBpelData()).getActivity()).isSetFor())
-        		iWait.addNewFor().newCursor().setTextValue((((Wait)currentModel.getBpelData()).getActivity()).getFor().newCursor().getTextValue());
-        	else
-        		iWait.addNewUntil().newCursor().setTextValue((((Wait)currentModel.getBpelData()).getActivity()).getUntil().newCursor().getTextValue());
+        	Wait w = (Wait) currentModel.getBpelData();
+        	iWait.setName(w.getName());
+        	iWait.setYear(w.getYear());
+        	iWait.setMonth(w.getMonth());
+        	iWait.setDay(w.getDay());
+        	iWait.setHour(w.getHour());
+        	iWait.setMinute(w.getMinute());
+        	iWait.setSecond(w.getSecond());
+        	iWait.setTyp(w.getWaitConditionType());
         }
         /*if (org.woped.bpel.gui.transitionproperties.Empty.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TEmpty iEmpty = iToolspecific.addNewEmpty();

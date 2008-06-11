@@ -781,17 +781,11 @@ public class PNMLImport {
 										.isSetWait()) {
 									TWait wait = transitions[i]
 											.getToolspecificArray(j).getWait();
-									Wait bpel = null;
-									if (wait.isSetUntil()) {
-										bpel = new Wait(wait.getName(), wait
-												.getUntil().xmlText(),
-												Wait._DEADLINE);
-									}
-									if (wait.isSetFor()) {
-										bpel = new Wait(wait.getName(), wait
-												.getFor().xmlText(),
-												Wait._DURATION);
-									}
+									Wait bpel = new Wait(wait.getName(), wait
+											.getTyp(), wait.getYear(), wait
+											.getMonth(), wait.getDay(), wait
+											.getHour(), wait.getMinute(), wait
+											.getSecond());
 									map.setBpeldata(bpel);
 								}
 							} else {
