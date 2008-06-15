@@ -3,116 +3,137 @@ package org.woped.bpel.gui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import org.woped.bpel.BPEL;
-import org.woped.core.utilities.SwingUtils;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.translations.Messages;
 
 /**
  * @author Lavinia Posler
  * 
- * This is the class for maintaining operations which are needed for BPEL Export.
- *
+ * This is the class for maintaining operations which are needed for BPEL
+ * Export.
+ * 
  * Created on 15.01.2008
  */
 
 public class EditorOperations extends JPanel {
-	private JPanel 					operationBpelPanel 					 = null;
-	private JPanel                 	operationBpelPreviewPanel            = null;
-	private JScrollPane				scrollPane							 = null;
-	private JDialog					bpelTextDialog 						 = null;
-	private JTextArea             	operationBpelTextField       	     = null;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2080496591289814680L;
+
+	private JTextArea _textarea = null;
 	
-	private EditorVC               editor;
-    
-	public EditorVC getEditor()
-    {
-        return editor;
-    }
-    
+	public EventListenerEditorOperations _listener = null;
 
-    public EditorOperations(EditorVC editor)
-    {
-        this.editor = editor;
-        setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+	private EditorVC editor;
 
-        c.weightx = 1;
-        c.weighty = 1;
-        c.anchor = GridBagConstraints.NORTHWEST;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.insets = new Insets(0, 0, 0, 0);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        add(getOperationBpelPreviewPanel(), c);
-        this.setVisible(true);
-        
-    }
+	public EditorVC getEditor() {
+		return editor;
+	}
 
-    
-  
-    private JPanel getOperationBpelPreviewPanel()
-    {
-        if (operationBpelPreviewPanel == null)
-        {
-        	
-        	
-        	operationBpelPreviewPanel = new JPanel();
-        	operationBpelPreviewPanel.setBorder(BorderFactory
-                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Operations.BpelPrev.Title")), BorderFactory.createEmptyBorder()));
-            operationBpelPreviewPanel.setLayout(new GridBagLayout());
-            operationBpelPreviewPanel.setSize(this.getSize());
-            JScrollPane scrollPane = new JScrollPane();
-        	scrollPane.getViewport().setView(getOperationBpelTextField());
-        	scrollPane.setName(Messages.getString("PetriNet.Operations.BpelPrev.NewDialog"));
-        	scrollPane.setVisible(true);
-        	scrollPane.setHorizontalScrollBar(scrollPane.createHorizontalScrollBar());
-        	scrollPane.setVerticalScrollBar(scrollPane.createVerticalScrollBar());
-        	
-        	GridBagConstraints c = new GridBagConstraints();
-			
-			c.fill = GridBagConstraints.CENTER;
-			c.anchor = GridBagConstraints.WEST;
-			c.weightx = 1;
-			c.weighty = 1;
-			
-			c.gridx = 0;
-            c.gridy = 0;
-            c.fill = GridBagConstraints.BOTH;
-            c.insets = new Insets(0, 0, 0, 0);
-            //bpelTextDialog.add(getOperationBpelTextField(), c);
-            operationBpelPreviewPanel.add(scrollPane, c);
-            //operationBpelPreviewPanel.add(getOperationBpelPreviewButton(), c);
-        }
-        this.operationBpelPreviewPanel.setVisible(true);
+	public EditorOperations(EditorVC editor) {
+		this.editor = editor;
+		this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.weightx = 1;
+		c.weighty = 1;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(5, 5, 5, 5);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		this.add(new JLabel("Bpel Preview"), c);
 
-        return operationBpelPreviewPanel;
-    }
-    
-    
-   
-    private JTextArea getOperationBpelTextField()
-    {
-        if (operationBpelTextField == null)
-        {
-        	operationBpelTextField = new JTextArea();
-        	this.operationBpelTextField.setEditable(false);          
-        }
-        operationBpelTextField.setVisible(true);    
-        return operationBpelTextField;
-        }
-        
+		c.weightx = 1;
+		c.weighty = 1;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.insets = new Insets(5, 5, 5, 5);
+		c.fill = GridBagConstraints.BOTH;
+
+		this._textarea = this.createTextArea();
+		JScrollPane scroll = new JScrollPane();
+		scroll.setHorizontalScrollBar(scroll.createHorizontalScrollBar());
+		scroll.setVerticalScrollBar(scroll.createVerticalScrollBar());
+		scroll.setViewportView(this._textarea);
+
+		this.add(scroll, c);
+		this.setFocusable(true);
+		this.addFocusListener(this.getEventListener());
+		this.addComponentListener(this.getEventListener());
+		this.setVisible(true);
+	}
+
+	private JTextArea createTextArea() {
+		JTextArea text = new JTextArea();
+		text.setEditable(false);
+		text.setVisible(true);
+		return text;
+
+	}
+
+	public EventListenerEditorOperations getEventListener() {
+		if(this._listener == null)
+			this._listener = new EventListenerEditorOperations(this);
+		return this._listener;
+	}
+	
+	public void setTextOnPreview()
+	{
+		String text = BPEL.getBPELMainClass().genPreview(this.editor);
+		System.out.println("prev : " + text );
+		this._textarea.setText(text);	
+	}
+
+}
+
+class EventListenerEditorOperations implements FocusListener,ChangeListener,java.awt.event.ComponentListener {
+
+	EditorOperations _adaptee;
+	public EventListenerEditorOperations(EditorOperations Adaptee) {
+		this._adaptee = Adaptee;
+	}
+
+	public void focusGained(FocusEvent e) {
+		this._adaptee.setTextOnPreview();
+	}
+
+	public void focusLost(FocusEvent e) {
+	}
+
+	public void stateChanged(ChangeEvent e) {
+		this._adaptee.setTextOnPreview();
+		
+	}
+
+	public void componentHidden(ComponentEvent e) {
+		
+	}
+
+	public void componentMoved(ComponentEvent e) {
+		
+	}
+
+	public void componentResized(ComponentEvent e) {
+		
+	}
+
+	public void componentShown(ComponentEvent e) {
+		this._adaptee.setTextOnPreview();
+		
+	}
 }

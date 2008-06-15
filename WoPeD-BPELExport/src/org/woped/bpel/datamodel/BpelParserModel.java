@@ -123,6 +123,8 @@ public class BpelParserModel
 	 */
 	public boolean createModel(ModelElementContainer container)
 	{
+		if (container.getRootElements().isEmpty())
+			return false;
 		PetriNetModelElement e = (PetriNetModelElement) container
 				.getRootElements().get(0);
 		return this.createModel(e, container);

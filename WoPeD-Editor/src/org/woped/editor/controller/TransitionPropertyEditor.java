@@ -81,9 +81,12 @@ import org.jgraph.graph.DefaultGraphCell;
  * @author waschtl
  */
 
+
 @SuppressWarnings("serial")
 public class TransitionPropertyEditor extends JDialog implements
 		ActionListener, IDialog {
+
+
 
 	Object activityType = null;
 

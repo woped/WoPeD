@@ -130,7 +130,10 @@ public class BPEL
 
 		// Generate BPEL Model
 		BpelParserModel m = new BpelParserModel();
-		m.createModel(pnp.getElementContainer());
+		if(!m.createModel(pnp.getElementContainer()))
+		{
+			return "" + Messages.getString("BPEL.genPreview.Error");
+		}
 		ProcessDocument doc = ProcessDocument.Factory.newInstance();
 		TProcess process = doc.addNewProcess();
 		setGlobals(process,pnp);
@@ -141,7 +144,7 @@ public class BPEL
 			process.set(tempProc);
 		} else
 		{
-			return "" + Messages.getString("PetriNet.NotSound");
+			return "" + Messages.getString("BPEL.genPreview.Error");
 		}
 		XmlOptions opt = new XmlOptions();
 		// opt.setSavePrettyPrintIndent(2);

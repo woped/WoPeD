@@ -13,4 +13,9 @@ import javax.swing.JPanel;
 
 public class EditorData extends JPanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5285517169937773758L;
+
 }
