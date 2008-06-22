@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -69,11 +70,11 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JPanel durationSubPanel;
 
-	private JTextField deadLineTextFieldHour;
+	private JFormattedTextField deadLineTextFieldHour;
+	
+	private JFormattedTextField deadLineTextFieldMinute;
 
-	private JTextField deadLineTextFieldMinute;
-
-	private JTextField deadLineTextFieldSecond;
+	private JFormattedTextField deadLineTextFieldSecond;
 
 	private JTextField durationTextFieldYear;
 
@@ -298,25 +299,26 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 		return deadlineTimeSubPanel;
 	}
 
-	private JTextField getDeadlineInputfieldHour() {
+	private JFormattedTextField getDeadlineInputfieldHour() {
 		if (deadLineTextFieldHour == null) {
-			deadLineTextFieldHour = new JTextField(10);
+//			deadLineTextFieldHour = new JTextField("00", 10);
+			deadLineTextFieldHour = new JFormattedTextField(new Integer(00));
 			deadLineTextFieldHour.setActionCommand(WAIT_DEADLINE);
 		}
 		return deadLineTextFieldHour;
 	}
 
-	private JTextField getDeadlineInputfieldMinute() {
+	private JFormattedTextField getDeadlineInputfieldMinute() {
 		if (deadLineTextFieldMinute == null) {
-			deadLineTextFieldMinute = new JTextField(10);
+			deadLineTextFieldMinute = new JFormattedTextField(new Integer(00));
 			deadLineTextFieldMinute.setActionCommand(WAIT_DEADLINE);
 		}
 		return deadLineTextFieldMinute;
 	}
 
-	private JTextField getDeadlineInputfieldSecond() {
+	private JFormattedTextField getDeadlineInputfieldSecond() {
 		if (deadLineTextFieldSecond == null) {
-			deadLineTextFieldSecond = new JTextField(10);
+			deadLineTextFieldSecond = new JFormattedTextField(new Integer(00));
 			deadLineTextFieldSecond.setActionCommand(WAIT_DEADLINE);
 		}
 		return deadLineTextFieldSecond;
@@ -324,7 +326,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JTextField getDurationInputfieldYear() {
 		if (durationTextFieldYear == null) {
-			durationTextFieldYear = new JTextField(10);
+			durationTextFieldYear = new JTextField("0", 10);
 			durationTextFieldYear.setActionCommand(WAIT_DEADLINE);
 		}
 		return durationTextFieldYear;
@@ -332,7 +334,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JTextField getDurationInputfieldMonth() {
 		if (durationTextFieldMonth == null) {
-			durationTextFieldMonth = new JTextField(10);
+			durationTextFieldMonth = new JTextField("0", 10);
 			durationTextFieldMonth.setActionCommand(WAIT_DEADLINE);
 		}
 		return durationTextFieldMonth;
@@ -340,7 +342,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JTextField getDurationInputfieldDay() {
 		if (durationTextFieldDay == null) {
-			durationTextFieldDay = new JTextField(10);
+			durationTextFieldDay = new JTextField("0",10);
 			durationTextFieldDay.setActionCommand(WAIT_DEADLINE);
 		}
 		return durationTextFieldDay;
@@ -348,7 +350,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JTextField getDurationInputfieldHour() {
 		if (durationTextFieldHour == null) {
-			durationTextFieldHour = new JTextField(10);
+			durationTextFieldHour = new JTextField("00", 10);
 			durationTextFieldHour.setActionCommand(WAIT_DEADLINE);
 		}
 		return durationTextFieldHour;
@@ -356,7 +358,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JTextField getDurationInputfieldMinute() {
 		if (durationTextFieldMinute == null) {
-			durationTextFieldMinute = new JTextField(10);
+			durationTextFieldMinute = new JTextField("00", 10);
 			durationTextFieldMinute.setActionCommand(WAIT_DEADLINE);
 		}
 		return durationTextFieldMinute;
@@ -364,7 +366,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JTextField getDurationInputfieldSecond() {
 		if (durationTextFieldSecond == null) {
-			durationTextFieldSecond = new JTextField(10);
+			durationTextFieldSecond = new JTextField("00", 10);
 			durationTextFieldSecond.setActionCommand(WAIT_DEADLINE);
 		}
 		return durationTextFieldSecond;
@@ -469,7 +471,6 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 		return "Deadline";
 	}
 
-	// noch mit Alex anklären (Esther)
 
 	// ***** Deadline *****
 
@@ -641,7 +642,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	}
 
 	@Override
-	public void saveInfomation() {
+	public void saveInfomation() {		
 		if (allFieldsFilled() == false) {
 			new PopUpDialog(t_editor, true,
 					Messages.getString("Transition.Properties.BPEL.Error"),
@@ -652,7 +653,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 			try
 			{
 				if(waitDeadlineRadioButton.isSelected())
-				{
+				{	
 					this.transition.setBaseActivity(new Wait(this.transition.getNameValue(), Wait._DEADLINE, Integer.parseInt(getDeadLineYear()), Integer.parseInt(getDeadLineMonth()), Integer.parseInt(getDeadLineDay()), Integer.parseInt(getDeadLineHour()), Integer.parseInt(getDeadLineMinute()), Integer.parseInt(getDeadLineSecond())).saveInformation(this));
 				}
 				if(waitDurationRadioButton.isSelected())
