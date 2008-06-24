@@ -27,10 +27,10 @@ import com.toedter.calendar.JCalendar;
 
 /**
  * @author Kristian Kindler / Esther Landes
- * 
+ *
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "wait" BPEL activity.
- * 
+ *
  * Created on 16.12.2007
  */
 
@@ -38,7 +38,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 		ActionListener {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -71,7 +71,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	private JPanel durationSubPanel;
 
 	private JFormattedTextField deadLineTextFieldHour;
-	
+
 	private JFormattedTextField deadLineTextFieldMinute;
 
 	private JFormattedTextField deadLineTextFieldSecond;
@@ -505,7 +505,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 		this.durationTextFieldHour.setText(""+wait.getHour());
 		this.durationTextFieldMinute.setText(""+wait.getMinute());
 		this.durationTextFieldSecond.setText(""+wait.getSecond());
-		
+
 	}
 
 	public String getDeadLineDay() {
@@ -541,18 +541,21 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	public String getDeadLineHour() {
 		if (deadLineTextFieldHour.getText() == null)
 			return null;
+		System.out.println(deadLineTextFieldHour.getText());
 		return deadLineTextFieldHour.getText();
 	}
 
 	public String getDeadLineMinute() {
 		if (deadLineTextFieldMinute.getText() == null)
 			return null;
+		System.out.println(deadLineTextFieldMinute.getText());
 		return deadLineTextFieldMinute.getText();
 	}
 
 	public String getDeadLineSecond() {
 		if (deadLineTextFieldSecond.getText() == null)
 			return null;
+		System.out.println(deadLineTextFieldSecond.getText());
 		return deadLineTextFieldSecond.getText();
 	}
 
@@ -636,24 +639,25 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 				c1.insets = new Insets(0, 0, 10, 0);
 				add(getDurationPanel(), c1);
 				this.setDuration();
-			}			
+			}
 		}
 		this.repaint();
 	}
 
 	@Override
-	public void saveInfomation() {		
+	public void saveInfomation() {
 		if (allFieldsFilled() == false) {
 			new PopUpDialog(t_editor, true,
 					Messages.getString("Transition.Properties.BPEL.Error"),
 					Messages.getString("Transition.Properties.BPEL.ErrorDuringFieldCheck")).setVisible(true);
 		} else {
-			
+
 			//Values in TextField already checked
 			try
 			{
 				if(waitDeadlineRadioButton.isSelected())
-				{	
+				{
+					
 					this.transition.setBaseActivity(new Wait(this.transition.getNameValue(), Wait._DEADLINE, Integer.parseInt(getDeadLineYear()), Integer.parseInt(getDeadLineMonth()), Integer.parseInt(getDeadLineDay()), Integer.parseInt(getDeadLineHour()), Integer.parseInt(getDeadLineMinute()), Integer.parseInt(getDeadLineSecond())).saveInformation(this));
 				}
 				if(waitDurationRadioButton.isSelected())

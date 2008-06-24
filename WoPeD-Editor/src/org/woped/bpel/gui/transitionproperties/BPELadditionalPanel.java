@@ -64,7 +64,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 	JTextField partnerLinkNameTextField = null;
 	JTextField wsdlFileTextField 		= null;
 	JTextField VariableName				= null;
-	
+
 	JComboBox partnerLinkTypeComboBox 	= null;
 	JComboBox partnerRoleComboBox 		= null;
 	JComboBox myRoleComboBox 			= null;
@@ -73,6 +73,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 	JButton okVariableButton 			= null;
 	JButton cancelVariableButton 		= null;
 	JButton searchLocalWSDLButton 		= null;
+	JButton readWSDLButton				= null;
 	JButton searchByUDDIButton			= null;
 
 	BPELinvokePanel bpelInvokePanel   	= null;
@@ -133,8 +134,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		// here we go ...
 		dialog = new JDialog(t_editor, true);
 		dialog.setVisible(false);
-		dialog.setTitle(Messages
-				.getString("Transition.Properties.BPEL.NewPartnerLink"));
+		dialog.setTitle(Messages.getString("Transition.Properties.BPEL.NewPartnerLink"));
 		dialog.setSize(450, 250);
 		dialog.setLocation(150, 150);
 		dialog.setLayout(new GridBagLayout());
@@ -149,7 +149,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		c.gridy = 0;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialog.add(new JLabel("Name:"), c);
+		dialog.add(new JLabel(Messages.getString("Transition.Properties.BPEL.NewVariable.Name") + ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 0;
@@ -161,7 +161,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialog.add(new JLabel("WSDL:"), c);
+		dialog.add(new JLabel(Messages.getString("Transition.Properties.BPEL.WSDL") + ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 1;
@@ -174,9 +174,16 @@ public abstract class BPELadditionalPanel extends JPanel {
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.NONE;
-		dialog.add(getLocalWSDLButton(), c);
-		
+		dialog.add(getReadWSDLButton(), c);
+
 		c.gridx = 3;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.insets = new Insets(0, 5, 0, 0);
+		c.fill = GridBagConstraints.NONE;
+		dialog.add(getLocalWSDLButton(), c);
+
+		c.gridx = 4;
 		c.gridy = 1;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
@@ -188,7 +195,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
 		c.fill = GridBagConstraints.HORIZONTAL;
-		dialog.add(new JLabel("Partner Link Type:"), c);
+		dialog.add(new JLabel(Messages.getString("Transition.Properties.BPEL.PartnerLinkType") + ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 2;
@@ -200,7 +207,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialog.add(new JLabel("Partner Role:"), c);
+		dialog.add(new JLabel(Messages.getString("Transition.Properties.BPEL.PartnerRole") + ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 3;
@@ -212,7 +219,7 @@ public abstract class BPELadditionalPanel extends JPanel {
 		c.gridy = 4;
 		c.gridwidth = 1;
 		c.insets = new Insets(0, 5, 0, 0);
-		dialog.add(new JLabel("My Role:"), c);
+		dialog.add(new JLabel(Messages.getString("Transition.Properties.BPEL.MyRole") + ":"), c);
 
 		c.gridx = 1;
 		c.gridy = 4;
@@ -229,8 +236,8 @@ public abstract class BPELadditionalPanel extends JPanel {
 
 		dialog.setVisible(true);
 	}
-	
-	
+
+
 
 	// ************** display dialog box "New Variable" ************************
 
@@ -416,16 +423,31 @@ public abstract class BPELadditionalPanel extends JPanel {
 		}
 		return searchLocalWSDLButton;
 	}
-	
+
+
+	private JButton getReadWSDLButton() {
+		if (readWSDLButton == null) {
+			readWSDLButton = new JButton();
+			readWSDLButton.setIcon(Messages.getImageIcon("Button.Ok"));
+			readWSDLButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					tryToGetDataFromWsdl();
+				}
+			});
+		}
+		return readWSDLButton;
+	}
+
+
 	private JButton getUDDIButton()
 	{
-		if (searchByUDDIButton == null) 
+		if (searchByUDDIButton == null)
 		{
 			searchByUDDIButton = new JButton();
 			searchByUDDIButton.setText("UDDI");
 			searchByUDDIButton.addActionListener(new ActionListener()
 			{
-				public void actionPerformed(ActionEvent e) 
+				public void actionPerformed(ActionEvent e)
 				{
 					new UDDIDialog(t_editor, wsdlFileTextField, modelElementContainer);
 				}
