@@ -21,8 +21,7 @@ import org.woped.editor.controller.vc.EditorVC;
 /**
  * @author Lavinia Posler
  * 
- * This is the class for maintaining operations which are needed for BPEL
- * Export.
+ * This is the class for BPEL Preview.
  * 
  * Created on 15.01.2008
  */
@@ -48,20 +47,12 @@ public class EditorOperations extends JPanel {
 		this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		c.weightx = 1;
-		c.weighty = 1;
-		c.anchor = GridBagConstraints.NORTHWEST;
-		c.gridx = 0;
-		c.gridy = 0;
-		c.insets = new Insets(5, 5, 5, 5);
-		c.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("Bpel Preview"), c);
 
 		c.weightx = 1;
 		c.weighty = 1;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		c.gridx = 0;
-		c.gridy = 1;
+		c.gridy = 0;
 		c.insets = new Insets(5, 5, 5, 5);
 		c.fill = GridBagConstraints.BOTH;
 
@@ -95,7 +86,6 @@ public class EditorOperations extends JPanel {
 	public void setTextOnPreview()
 	{
 		String text = BPEL.getBPELMainClass().genPreview(this.editor);
-		System.out.println("prev : " + text );
 		this._textarea.setText(text);	
 	}
 
