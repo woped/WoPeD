@@ -19,6 +19,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.utilities.IntegerFilter;
+import org.woped.core.utilities.JTextFieldEvalution;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.gui.PopUpDialog;
 import org.woped.translations.Messages;
@@ -26,11 +28,11 @@ import org.woped.translations.Messages;
 import com.toedter.calendar.JCalendar;
 
 /**
- * @author Kristian Kindler / Esther Landes
- *
+ * @author Kristian Kindler / Esther Landes / Frank Schüler
+ * 
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "wait" BPEL activity.
- *
+ * 
  * Created on 16.12.2007
  */
 
@@ -38,7 +40,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 		ActionListener {
 
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -72,9 +74,15 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JFormattedTextField deadLineTextFieldHour;
 
+	private JTextFieldEvalution deadLineHourFilter;
+
 	private JFormattedTextField deadLineTextFieldMinute;
 
+	private JTextFieldEvalution deadLineMinuteFilter;
+
 	private JFormattedTextField deadLineTextFieldSecond;
+
+	private JTextFieldEvalution deadLineSecondFilter;
 
 	private JTextField durationTextFieldYear;
 
@@ -301,8 +309,12 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JFormattedTextField getDeadlineInputfieldHour() {
 		if (deadLineTextFieldHour == null) {
-//			deadLineTextFieldHour = new JTextField("00", 10);
+			// deadLineTextFieldHour = new JTextField("00", 10);
 			deadLineTextFieldHour = new JFormattedTextField(new Integer(00));
+			this.deadLineHourFilter = new JTextFieldEvalution(
+					this.deadLineTextFieldHour, null,  new IntegerFilter(
+							0, 23), null);
+			deadLineTextFieldHour.addKeyListener(this.deadLineHourFilter);
 			deadLineTextFieldHour.setActionCommand(WAIT_DEADLINE);
 		}
 		return deadLineTextFieldHour;
@@ -311,6 +323,10 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	private JFormattedTextField getDeadlineInputfieldMinute() {
 		if (deadLineTextFieldMinute == null) {
 			deadLineTextFieldMinute = new JFormattedTextField(new Integer(00));
+			this.deadLineMinuteFilter = new JTextFieldEvalution(
+					this.deadLineTextFieldMinute, null,
+					new IntegerFilter(0, 59), null);
+			deadLineTextFieldMinute.addKeyListener(this.deadLineMinuteFilter);
 			deadLineTextFieldMinute.setActionCommand(WAIT_DEADLINE);
 		}
 		return deadLineTextFieldMinute;
@@ -319,6 +335,10 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	private JFormattedTextField getDeadlineInputfieldSecond() {
 		if (deadLineTextFieldSecond == null) {
 			deadLineTextFieldSecond = new JFormattedTextField(new Integer(00));
+			this.deadLineSecondFilter = new JTextFieldEvalution(
+					this.deadLineTextFieldSecond, null,
+					new IntegerFilter(0, 59), null);
+			deadLineTextFieldSecond.addKeyListener(this.deadLineSecondFilter);
 			deadLineTextFieldSecond.setActionCommand(WAIT_DEADLINE);
 		}
 		return deadLineTextFieldSecond;
@@ -342,7 +362,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	private JTextField getDurationInputfieldDay() {
 		if (durationTextFieldDay == null) {
-			durationTextFieldDay = new JTextField("0",10);
+			durationTextFieldDay = new JTextField("0", 10);
 			durationTextFieldDay.setActionCommand(WAIT_DEADLINE);
 		}
 		return durationTextFieldDay;
@@ -471,7 +491,6 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 		return "Deadline";
 	}
 
-
 	// ***** Deadline *****
 
 	public String getDeadline() {
@@ -482,12 +501,13 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	public void setDeadline() {
 		Wait wait = (Wait) this.transition.getBpelData();
-		this.deadLineTextFieldHour.setText(""+wait.getHour());
-		this.deadLineTextFieldMinute.setText(""+wait.getMinute());
-		this.deadLineTextFieldSecond.setText(""+wait.getSecond());
-		calendar.getCalendar().set(wait.getYear(), wait.getMonth(), wait.getDay());
-		Calendar c =new JCalendar().getCalendar();
-		c.set(wait.getYear(), wait.getMonth()-1, wait.getDay());
+		this.deadLineTextFieldHour.setText("" + wait.getHour());
+		this.deadLineTextFieldMinute.setText("" + wait.getMinute());
+		this.deadLineTextFieldSecond.setText("" + wait.getSecond());
+		calendar.getCalendar().set(wait.getYear(), wait.getMonth(),
+				wait.getDay());
+		Calendar c = new JCalendar().getCalendar();
+		c.set(wait.getYear(), wait.getMonth() - 1, wait.getDay());
 		calendar.setDate(c.getTime());
 	}
 
@@ -499,12 +519,12 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	public void setDuration() {
 		Wait wait = (Wait) this.transition.getBpelData();
-		this.durationTextFieldYear.setText(""+wait.getYear());
-		this.durationTextFieldMonth.setText(""+wait.getMonth());
-		this.durationTextFieldDay.setText(""+wait.getDay());
-		this.durationTextFieldHour.setText(""+wait.getHour());
-		this.durationTextFieldMinute.setText(""+wait.getMinute());
-		this.durationTextFieldSecond.setText(""+wait.getSecond());
+		this.durationTextFieldYear.setText("" + wait.getYear());
+		this.durationTextFieldMonth.setText("" + wait.getMonth());
+		this.durationTextFieldDay.setText("" + wait.getDay());
+		this.durationTextFieldHour.setText("" + wait.getHour());
+		this.durationTextFieldMinute.setText("" + wait.getMinute());
+		this.durationTextFieldSecond.setText("" + wait.getSecond());
 
 	}
 
@@ -599,12 +619,11 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 
 	public boolean allFieldsFilled() {
 		if (waitDeadlineRadioButton.isSelected()) {
-			if (deadLineTextFieldHour.getText().equals("")
-					|| deadLineTextFieldMinute.getText().equals("")
-					|| deadLineTextFieldSecond.getText().equals("")) {
-				return false;
-			} else
+			if (this.deadLineHourFilter.isInputAccepted()
+					&& this.deadLineMinuteFilter.isInputAccepted()
+					&& this.deadLineSecondFilter.isInputAccepted())
 				return true;
+			else return false;
 		} else {
 			if (durationTextFieldYear.getText().equals("")
 					|| durationTextFieldMonth.getText().equals("")
@@ -622,7 +641,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	public void refresh() {
 		if (Wait.class.isInstance(this.transition.getBpelData())) {
 			Wait re = (Wait) this.transition.getBpelData();
-			if (re.getWaitConditionType()== Wait._DEADLINE){
+			if (re.getWaitConditionType() == Wait._DEADLINE) {
 				waitDeadlineRadioButton.setSelected(true);
 				remove(getDurationPanel());
 				c1.gridx = 0;
@@ -630,8 +649,7 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 				c1.insets = new Insets(0, 0, 10, 0);
 				add(getDeadlinePanel(), c1);
 				this.setDeadline();
-			}
-			else {
+			} else {
 				waitDurationRadioButton.setSelected(true);
 				remove(getDeadlinePanel());
 				c1.gridx = 0;
@@ -647,26 +665,41 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	@Override
 	public void saveInfomation() {
 		if (allFieldsFilled() == false) {
-			new PopUpDialog(t_editor, true,
+			new PopUpDialog(
+					t_editor,
+					true,
 					Messages.getString("Transition.Properties.BPEL.Error"),
-					Messages.getString("Transition.Properties.BPEL.ErrorDuringFieldCheck")).setVisible(true);
+					Messages
+							.getString("Transition.Properties.BPEL.ErrorDuringFieldCheck"))
+					.setVisible(true);
 		} else {
 
-			//Values in TextField already checked
-			try
-			{
-				if(waitDeadlineRadioButton.isSelected())
-				{
-					
-					this.transition.setBaseActivity(new Wait(this.transition.getNameValue(), Wait._DEADLINE, Integer.parseInt(getDeadLineYear()), Integer.parseInt(getDeadLineMonth()), Integer.parseInt(getDeadLineDay()), Integer.parseInt(getDeadLineHour()), Integer.parseInt(getDeadLineMinute()), Integer.parseInt(getDeadLineSecond())).saveInformation(this));
+			// Values in TextField already checked
+			try {
+				if (waitDeadlineRadioButton.isSelected()) {
+
+					this.transition.setBaseActivity(new Wait(this.transition
+							.getNameValue(), Wait._DEADLINE, Integer
+							.parseInt(getDeadLineYear()), Integer
+							.parseInt(getDeadLineMonth()), Integer
+							.parseInt(getDeadLineDay()), Integer
+							.parseInt(getDeadLineHour()), Integer
+							.parseInt(getDeadLineMinute()), Integer
+							.parseInt(getDeadLineSecond()))
+							.saveInformation(this));
 				}
-				if(waitDurationRadioButton.isSelected())
-				{
-					this.transition.setBaseActivity(new Wait(this.transition.getNameValue(), Wait._DURATION, Integer.parseInt(getDurationYear()), Integer.parseInt(getDurationMonth()), Integer.parseInt(getDurationDay()), Integer.parseInt(getDurationHour()), Integer.parseInt(getDurationMinute()), Integer.parseInt(getDurationSecond())).saveInformation(this));
+				if (waitDurationRadioButton.isSelected()) {
+					this.transition.setBaseActivity(new Wait(this.transition
+							.getNameValue(), Wait._DURATION, Integer
+							.parseInt(getDurationYear()), Integer
+							.parseInt(getDurationMonth()), Integer
+							.parseInt(getDurationDay()), Integer
+							.parseInt(getDurationHour()), Integer
+							.parseInt(getDurationMinute()), Integer
+							.parseInt(getDurationSecond()))
+							.saveInformation(this));
 				}
-			}
-			catch(Exception e)
-			{
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
