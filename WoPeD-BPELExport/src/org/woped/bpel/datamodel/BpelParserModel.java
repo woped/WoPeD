@@ -146,7 +146,9 @@ public class BpelParserModel
 	{
 
 		if (this.get_registrated_element(e) != null)
+		{
 			return true;
+		}
 		AbstractElement<?> element = BpelParserModel.createElement(e);
 		if (element == null)
 			return false;
@@ -376,8 +378,8 @@ public class BpelParserModel
 						.getTrigger();
 				if (m.getTriggertype() == TriggerModel.TRIGGER_TIME)
 					return new TimeTriggerTransition((TransitionModel) e);
-				if (m.getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
-					return new ResourceTriggerTransition((TransitionModel) e);
+				// if (m.getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
+				// return new ResourceTriggerTransition((TransitionModel) e);
 				if (m.getTriggertype() == TriggerModel.TRIGGER_EXTERNAL)
 					return new MessageTriggerTransition((TransitionModel) e);
 			}
@@ -460,11 +462,14 @@ public class BpelParserModel
 				|| ANDSplitTransition.class.isInstance(e)
 				|| ANDJoinTransition.class.isInstance(e)
 				|| TimeTriggerTransition.class.isInstance(e)
-				|| MessageTriggerTransition.class.isInstance(e)
-				|| ResourceTriggerTransition.class.isInstance(e))
+		// || MessageTriggerTransition.class.isInstance(e)
+		// || ResourceTriggerTransition.class.isInstance(e)
+		)
 			return null;
-		if (e.count_post_objects() != 1)
+		if (e.count_post_objects() != 1 && e.count_pre_objects() != 1)
 			return null;
+		System.out.println("elme " + e);
+		System.out.println("post count " + e.count_post_objects());
 		AbstractElement<?> tmp = e.get_first_post_element();
 		if (!Place.class.isInstance(tmp))
 			return null;
@@ -480,8 +485,9 @@ public class BpelParserModel
 				|| ANDSplitTransition.class.isInstance(tmp)
 				|| ANDJoinTransition.class.isInstance(tmp)
 				|| TimeTriggerTransition.class.isInstance(e)
-				|| MessageTriggerTransition.class.isInstance(e)
-				|| ResourceTriggerTransition.class.isInstance(e))
+		// || MessageTriggerTransition.class.isInstance(e)
+		// || ResourceTriggerTransition.class.isInstance(e)
+		)
 			return null;
 		return tmp;
 	}
@@ -492,15 +498,19 @@ public class BpelParserModel
 	 */
 	public void eliminate_all_sequences()
 	{
-		Iterator<AbstractElement<?>> list = this
-				.get_copy_of_regist_transition().iterator();
+		Iterator<AbstractElement<?>> list = this.get_copy_of_regist_places()
+				.iterator();
 		while (list.hasNext())
 		{
 			AbstractElement<?> begin = list.next();
-			AbstractElement<?> end = this.isSequence(begin);
-			if (end != null)
+			if (begin.count_post_objects() == 1)
 			{
-				this.newSequence(begin, end);
+				begin = begin.get_first_post_element();
+				AbstractElement<?> end = this.isSequence(begin);
+				if (end != null)
+				{
+					this.newSequence(begin, end);
+				}
 			}
 		}
 		this.deregist_all_flaged_elements();
@@ -531,8 +541,9 @@ public class BpelParserModel
 	 *            AbstractElement begin of pick
 	 * @return AbstractElement
 	 */
-	public AbstractElement<?> isSimplePick(AbstractElement<?> e)
+	public AbstractElement<?> isPick(AbstractElement<?> e)
 	{
+		// String test = "";
 		if (e == null)
 			return null;
 		if (!Place.class.isInstance(e))
@@ -541,122 +552,78 @@ public class BpelParserModel
 			return null;
 
 		AbstractElement<?> end = null;
-		AbstractElement<?> tmp;
-		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
-
-		boolean firstrun = true;
-		boolean timetrigger = false;
-		boolean hastrigger = false;
-		while (list.hasNext())
-		{
-			// 1. element
-			tmp = list.next();
-			if (TimeTriggerTransition.class.isInstance(tmp)
-					|| ResourceTriggerTransition.class.isInstance(tmp)
-					|| MessageTriggerTransition.class.isInstance(tmp))
-				hastrigger = true;
-
-			if (TimeTriggerTransition.class.isInstance(tmp) && timetrigger)
-				return null;
-			else if (TimeTriggerTransition.class.isInstance(tmp))
-				timetrigger = true;
-
-			if (tmp.count_post_objects() != 1)
-				return null;
-			if (tmp.count_pre_objects() != 1)
-				return null;
-			// 2. element
-			tmp = tmp.get_first_post_element();
-			if (!Place.class.isInstance(tmp))
-				return null;
-			if (firstrun)
-			{
-				end = tmp;
-				firstrun = false;
-			} else if (!end.equals(tmp))
-				return null;
-		}
-
-		if (e.count_post_objects() != end.count_pre_objects())
-			return null;
-		if (!hastrigger)
-			return null;
-		return end;
-	}
-
-	/**
-	 * This method test of pick and search for the endelement.
-	 * 
-	 * @param e
-	 *            AbstractElement begin of pick
-	 * @return AbstractElement
-	 */
-	public AbstractElement<?> isPick(AbstractElement<?> e)
-	{
-		// String test = "";
-		if (e == null)
-			return null;
-		if (!Place.class.isInstance(e))
-			return null;
-		if (e.count_post_objects() == 0)
-			return null;
-
-		AbstractElement<?> end = null;
 		AbstractElement<?> tmp = null;
 		Iterator<AbstractElement<?>> list = e.get_all_post_objects().iterator();
 
-		boolean firstrun = true;
 		// test = test + "<pick" + e.getData() + ">\n";
+		boolean timetrigger = false;
 		while (list.hasNext())
 		{
 			tmp = list.next();
 			// test = test + "<pick-Line>\n";
 			// first element must be a trigger
-			if (!TimeTriggerTransition.class.isInstance(tmp)
-					&& !ResourceTriggerTransition.class.isInstance(tmp)
-					&& !MessageTriggerTransition.class.isInstance(tmp))
-				return null;
-			if (tmp.count_post_objects() != 1)
-				return null;
-			if (tmp.count_pre_objects() != 1)
-				return null;
-			// test = test + "<Trigger " + tmp.getClass().getSimpleName() +
-			// ">\n";
+			// if (!TimeTriggerTransition.class.isInstance(tmp)
+			// && !ResourceTriggerTransition.class.isInstance(tmp)
+			// && !MessageTriggerTransition.class.isInstance(tmp))
+			// return null;
 
-			// test 2. element, it is a place
-			tmp = tmp.get_first_post_element();
-			if (!Place.class.isInstance(tmp))
-				return null;
-			if ((tmp.count_post_objects() != 1)
-					|| (tmp.count_pre_objects() != 1))
-				return null;
-
-			// test 3. element
-			tmp = tmp.get_first_post_element();
-			if ((tmp.count_post_objects() != 1)
-					|| (tmp.count_pre_objects() != 1))
-				return null;
-			// test = test + "<Transition " + tmp.getClass().getSimpleName() +
-			// ">\n";
-
-			// test endelement
-			tmp = tmp.get_first_post_element();
-
-			if (!Place.class.isInstance(tmp))
-				return null;
-
-			if (firstrun)
+			if (TimeTriggerTransition.class.isInstance(tmp))
 			{
+				if (timetrigger)
+					return null;
+				else
+					timetrigger = true;
+			}
+
+			tmp = this.testPickLine(tmp);
+
+			if (end == null)
 				end = tmp;
-				firstrun = false;
-			} else if (!end.equals(tmp))
+			else if (tmp != null && !end.equals(tmp))
 				return null;
 			// test = test + "</pick-line>\n";
 		}
-
 		if (e.count_post_objects() != end.count_pre_objects())
 			return null;
 		return end;
+	}
+
+	/**
+	 * 
+	 * @param tmp
+	 * @return
+	 */
+	public AbstractElement<?> testPickLine(AbstractElement<?> tmp)
+	{
+		if (tmp.count_post_objects() != 1)
+			return null;
+		if (tmp.count_pre_objects() != 1)
+			return null;
+		// test = test + "<Trigger " + tmp.getClass().getSimpleName() +
+		// ">\n";
+
+		// test 2. element, it is a place
+		tmp = tmp.get_first_post_element();
+		if (!Place.class.isInstance(tmp))
+			return null;
+		if (tmp.count_pre_objects() > 1)
+			return tmp;// end of a pick line with only one transition
+		if ((tmp.count_post_objects() != 1) || (tmp.count_pre_objects() != 1))
+			return null;
+
+		// test 3. element
+		tmp = tmp.get_first_post_element();
+		if ((tmp.count_post_objects() != 1) || (tmp.count_pre_objects() != 1))
+			return null;
+		// test = test + "<Transition " + tmp.getClass().getSimpleName() +
+		// ">\n";
+
+		// test endelement
+		tmp = tmp.get_first_post_element();
+
+		if (!Place.class.isInstance(tmp))
+			return null;
+		return tmp;
 	}
 
 	/**

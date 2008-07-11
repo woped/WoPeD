@@ -39,9 +39,12 @@ public class PickTransition extends TerminalElement<TPick>
 
 	public TPick getBpelCode()
 	{
-		if(this.getData() != null) return this.getData();
+		if (this.getData() != null)
+			return this.getData();
 		TPick iPick = TPick.Factory.newInstance();
 		AbstractElement<?> tmp;
+		AbstractElement<?> tmp1;
+		AbstractElement<?> tmp2;
 		Iterator<AbstractElement<?>> list = begin.iterator();
 
 		while (list.hasNext())
@@ -53,19 +56,33 @@ public class PickTransition extends TerminalElement<TPick>
 			{
 				TOnAlarmPick iOnAlarmPick = iPick.addNewOnAlarm();
 				// transition case (1.transition)
-				tmp = tmp.get_first_post_element();
-				tmp = tmp.get_first_post_element();
-				this.addToOnAlarm(iOnAlarmPick, tmp);
-				//triggerTransition = iOnAlarmPick;
-			} else if (ResourceTriggerTransition.class.isInstance(tmp)
-					|| MessageTriggerTransition.class.isInstance(tmp))
+				if (tmp.count_post_objects() != 0)
+				{
+					tmp = tmp.get_first_post_element();
+					tmp = tmp.get_first_post_element();
+					this.addToOnAlarm(iOnAlarmPick, tmp);
+				} else
+				{
+					this.addToOnAlarm(iOnAlarmPick, tmp);
+				}
+				// triggerTransition = iOnAlarmPick;
+			}
+			// else if (ResourceTriggerTransition.class.isInstance(tmp)
+			// || MessageTriggerTransition.class.isInstance(tmp))
+			else
 			{
 				TOnMessage iOnMessage = iPick.addNewOnMessage();
 				// transition case (1.transition)
-				tmp = tmp.get_first_post_element();
-				tmp = tmp.get_first_post_element();
-				this.addToOnMessage(iOnMessage, tmp);
-				//triggerTransition = iOnMessage;
+				if (tmp.count_post_objects() != 0)
+				{
+					tmp = tmp.get_first_post_element();
+					tmp = tmp.get_first_post_element();
+					this.addToOnMessage(iOnMessage, tmp);
+				} else
+				{
+					this.addToOnMessage(iOnMessage, tmp);
+				}				
+				// triggerTransition = iOnMessage;
 			}
 		}
 		this.setData(iPick);
@@ -114,8 +131,7 @@ public class PickTransition extends TerminalElement<TPick>
 		{
 			TInvoke iInvoke = iOnAlarmPick.addNewInvoke();
 			iInvoke.set(tmp.getBpelCode());
-		}
-		else if(TWhile.class.isInstance(tmp.getBpelCode()))
+		} else if (TWhile.class.isInstance(tmp.getBpelCode()))
 		{
 			TWhile iwhile = iOnAlarmPick.addNewWhile();
 			iwhile.set(tmp.getBpelCode());
@@ -164,8 +180,7 @@ public class PickTransition extends TerminalElement<TPick>
 		{
 			TInvoke iInvoke = iOnMessage.addNewInvoke();
 			iInvoke.set(tmp.getBpelCode());
-		}
-		else if(TWhile.class.isInstance(tmp.getBpelCode()))
+		} else if (TWhile.class.isInstance(tmp.getBpelCode()))
 		{
 			TWhile iwhile = iOnMessage.addNewWhile();
 			iwhile.set(tmp.getBpelCode());
