@@ -43,8 +43,6 @@ public class PickTransition extends TerminalElement<TPick>
 			return this.getData();
 		TPick iPick = TPick.Factory.newInstance();
 		AbstractElement<?> tmp;
-		AbstractElement<?> tmp1;
-		AbstractElement<?> tmp2;
 		Iterator<AbstractElement<?>> list = begin.iterator();
 
 		while (list.hasNext())

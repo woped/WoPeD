@@ -157,7 +157,7 @@ public class BpelParserModel
 		this.regist_element(element);
 
 		Map<String, AbstractElementModel> map = con
-				.getSourceElements(e.getId());
+				.getSourceElements(e.getId());		
 		Collection<AbstractElementModel> list = map.values();
 		Iterator<AbstractElementModel> iter = list.iterator();
 		while (iter.hasNext())
@@ -468,14 +468,10 @@ public class BpelParserModel
 			return null;
 		if (e.count_post_objects() != 1 && e.count_pre_objects() != 1)
 			return null;
-		System.out.println("elme " + e);
-		System.out.println("post count " + e.count_post_objects());
 		AbstractElement<?> tmp = e.get_first_post_element();
 		if (!Place.class.isInstance(tmp))
 			return null;
-		if (tmp.count_post_objects() != 1)
-			return null;
-		if (tmp.count_pre_objects() != 1)
+		if (tmp.count_post_objects() != 1 || tmp.count_pre_objects() != 1)
 			return null;
 		tmp = tmp.get_first_post_element();
 		if (tmp.count_pre_objects() != 1)
@@ -510,10 +506,12 @@ public class BpelParserModel
 				if (end != null)
 				{
 					this.newSequence(begin, end);
+					this.deregist_all_flaged_elements();
+					break;
 				}
 			}
 		}
-		this.deregist_all_flaged_elements();
+		
 	}
 
 	public SequenceTransition newSequence(AbstractElement<?> begin,
