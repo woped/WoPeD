@@ -1,5 +1,7 @@
 package org.woped.core.utilities;
 
+import java.awt.event.KeyEvent;
+
 import javax.swing.JTextField;
 
 public interface IEvaluationFilter {
@@ -11,8 +13,8 @@ public interface IEvaluationFilter {
 	 * @param TextField
 	 */
 	public void setJTextFieldSource(JTextField TextField);
-	public boolean testInput();
-	public void doingByFault();
-	public void doingByAccept();
+	public boolean testInput(KeyEvent e);
+	public void doingByFault(KeyEvent e);
+	public void doingByAccept(KeyEvent e);
 
 }

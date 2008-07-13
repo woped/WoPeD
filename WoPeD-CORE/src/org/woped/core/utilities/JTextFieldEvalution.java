@@ -84,8 +84,8 @@ public class JTextFieldEvalution implements KeyListener {
 	public final void keyPressed(KeyEvent e) {
 		if (this._evaluateByKeyPressed == null)
 			return;
-		this._acceptedInput = this._evaluateByKeyPressed.testInput();
-		this.doing(this._evaluateByKeyPressed);
+		this._acceptedInput = this._evaluateByKeyPressed.testInput(e);
+		this.doing(this._evaluateByKeyPressed, e);
 	}
 
 	/*
@@ -96,8 +96,8 @@ public class JTextFieldEvalution implements KeyListener {
 	public final void keyReleased(KeyEvent e) {
 		if (this._evaluateByKeyReleased == null)
 			return;
-		this._acceptedInput = this._evaluateByKeyReleased.testInput();
-		this.doing(this._evaluateByKeyReleased);
+		this._acceptedInput = this._evaluateByKeyReleased.testInput(e);
+		this.doing(this._evaluateByKeyReleased,e);
 	}
 
 	/*
@@ -108,18 +108,18 @@ public class JTextFieldEvalution implements KeyListener {
 	public final void keyTyped(KeyEvent e) {
 		if (this._evaluateByKeyTyped == null)
 			return;
-		this._acceptedInput = this._evaluateByKeyTyped.testInput();
-		this.doing(this._evaluateByKeyTyped);
+		this._acceptedInput = this._evaluateByKeyTyped.testInput(e);
+		this.doing(this._evaluateByKeyTyped,e);
 	}
 	
 	/**
 	 * 
 	 * @param filter
 	 */
-	private final void doing(IEvaluationFilter filter)
+	private final void doing(IEvaluationFilter filter, KeyEvent e)
 	{
-		if(this._acceptedInput) filter.doingByAccept();
-		else filter.doingByFault();
+		if(this._acceptedInput) filter.doingByAccept(e);
+		else filter.doingByFault(e);
 	}
 	
 	/**

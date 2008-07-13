@@ -4,6 +4,7 @@
 package org.woped.core.utilities;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JTextField;
 
@@ -41,7 +42,7 @@ public class IntegerFilter implements IEvaluationFilter {
 	 * 
 	 * @see org.woped.core.utilities.IEvaluationFilter#doingByAccept()
 	 */
-	public void doingByAccept() {
+	public void doingByAccept(KeyEvent e) {
 		this._source.setBackground(this._bgcolor);
 	}
 
@@ -50,7 +51,7 @@ public class IntegerFilter implements IEvaluationFilter {
 	 * 
 	 * @see org.woped.core.utilities.IEvaluationFilter#doingByFault()
 	 */
-	public void doingByFault() {
+	public void doingByFault(KeyEvent e) {
 		this._source.setBackground(Color.RED);
 	}
 
@@ -59,13 +60,13 @@ public class IntegerFilter implements IEvaluationFilter {
 	 * 
 	 * @see org.woped.core.utilities.IEvaluationFilter#testInput()
 	 */
-	public boolean testInput() {
+	public boolean testInput(KeyEvent e) {
 		if(this._source.getText().length() == 0) return false;
 		try {
 			int val = Integer.parseInt(this._source.getText());
 			if (val >= this._min && val <= this._max)
 				return true;
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException ex) {
 			return false;
 		}
 		return false;
