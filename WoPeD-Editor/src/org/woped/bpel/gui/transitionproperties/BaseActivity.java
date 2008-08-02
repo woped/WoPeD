@@ -1,7 +1,6 @@
 package org.woped.bpel.gui.transitionproperties;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
-import org.oasisOpen.docs.wsbpel.x20.process.executable.TProcess;
 
 /**
  * 

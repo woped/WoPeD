@@ -157,7 +157,7 @@ public class BpelParserModel
 		this.regist_element(element);
 
 		Map<String, AbstractElementModel> map = con
-				.getSourceElements(e.getId());		
+				.getSourceElements(e.getId());
 		Collection<AbstractElementModel> list = map.values();
 		Iterator<AbstractElementModel> iter = list.iterator();
 		while (iter.hasNext())
@@ -511,7 +511,7 @@ public class BpelParserModel
 				}
 			}
 		}
-		
+
 	}
 
 	public SequenceTransition newSequence(AbstractElement<?> begin,
@@ -575,11 +575,12 @@ public class BpelParserModel
 
 			tmp = this.testPickLine(tmp);
 
-			if (end == null)
-				end = tmp;
-			else if (tmp != null && !end.equals(tmp))
+			if (tmp == null)
 				return null;
-			// test = test + "</pick-line>\n";
+			else if (end == null)
+				end = tmp;
+			else if (!end.equals(tmp))
+				return null;
 		}
 		if (e.count_post_objects() != end.count_pre_objects())
 			return null;

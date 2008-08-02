@@ -118,7 +118,7 @@ public class Wait extends BaseActivity<TWait> {
 	public void setInformationToPanel(BPELadditionalPanel bip) {
 		if (!BPELwaitPanel.class.isInstance(bip))
 			return;
-		BPELwaitPanel panel = (BPELwaitPanel) bip;
+		//BPELwaitPanel panel = (BPELwaitPanel) bip;
 		if (this._waitconditiontype == Wait._DEADLINE) {
 			
 		} else if (this._waitconditiontype == Wait._DURATION) {
