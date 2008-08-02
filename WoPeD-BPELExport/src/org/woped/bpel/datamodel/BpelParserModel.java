@@ -415,7 +415,7 @@ public class BpelParserModel
 				break;
 		}
 
-		if (this._regist_transition.size() > 1)
+		if (this._regist_transition.size() != 1)
 			return null;
 
 		TExtensibleElements test = this._regist_transition.iterator().next()
