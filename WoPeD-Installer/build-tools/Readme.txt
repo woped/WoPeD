@@ -2,7 +2,7 @@ WoPeD (Workflow Petrinet Designer) is an easy-to-use tool to
 draw, manage, simulate and analyse workflow process definitions 
 using an extended Petri net notation called "workflow nets".
    
-Copyright (C) 2003-2007		
+Copyright (C) 2003-2008		
  
 Contact
 -------
@@ -37,17 +37,17 @@ Quick Start
 -----------
 
 This is just a short introductive description. For more information
-refer to the online user manual available from WoPeD or on the WoPeD 
-website.
+refer to the online user manual available within WoPeD or on the WoPeD 
+website http://www.woped.org.
    
 Note: WoPeD is written in Java. It is necessary that you have installed 
 Java 5.0 or higher on your machine. Otherwise download it from 
 http://java.sun.com. 
 
 WoPeD is known to run on Microsoft Windows platforms (2000, XP, Vista), 
-on MacOS X and on many Linux systems. Any reports of successfully having 
-installed WoPeD on any other systems are very much appreciated, as 
-well as negative experiences.
+on MacOS X and on many Linux distributions. Any reports of successfully 
+having installed WoPeD on any other systems are very much appreciated, 
+as well as negative experiences.
    
    
 Download and Run
@@ -85,20 +85,21 @@ Root directory:
   ./Changelog.txt                   (Release info)
   ./License.txt                     (License file)
   ./Readme.txt                      (This file)
-  ./WoPeD-classes-@wopedversion@.jar         (WoPeD program classes)
   ./WofJava.dll			    	    (Calling interface to Woflan tool - Windows only) 				     
   ./WoPeD.exe                       (Launcher for Windows)
   ./WoPeD                           (Launcher for Linux - alternatively)
   ./WoPeD-starter.zip               (Launcher for MacOS - alternatively)
+  ./WoPeD-classes-@wopedversion@.jar         (WoPeD program classes)
   ./WoPeD.log                       (Error logging, initially not existing)
   ./WoPeDconfig.xml                 (WoPeD property settings, initially not existing)
 
 lib directory
+  ./lib/bpelBeans.jar               (BPEL model description library)
   ./lib/confBeans.jar               (Configuration management library)
-  ./lib/jgraph-@jgraphversion@.jar            (Graph drawing library)
-  ./lib/log4j-@log4jversion@.jar             (Event logger library)
   ./lib/flanagan-@flanaganversion@.jar             (Random number generator library)
   ./lib/jcalendar-@jcalendarversion@.jar             (Calendar utility library)
+  ./lib/jgraph-@jgraphversion@.jar            (Graph drawing library)
+  ./lib/log4j-@log4jversion@.jar             (Event logger library)
   ./lib/pnmlBeans.jar               (Petri net model description library)
   ./lib/pnmlBeans_old.jar           (Petri net model description library, old version)
   ./lib/xbean.jar                   (Bean generation library)
@@ -107,9 +108,11 @@ doc directory
   ./doc/html/de                    	(Complete HTML online manual in German - still rudimentary)
   ./doc/html/en                     (Complete HTML online manual in English)
   ./doc/html/images                 (Auxiliary files for online manual)
+  ./doc/pdf/de						(PDF formatted manuals in German)
+  ./doc/pdf/en						(PDF formatted manuals in English)
 
 nets directory
-  ./nets                            (Subdirectory for storing your nets)
+  ./nets                            (Suggested folder to store your nets)
 
 Uninstaller directory
   ./Uninstaller/uninstaller.jar     (uninstaller Java programm)
