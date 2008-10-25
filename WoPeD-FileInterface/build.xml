@@ -25,7 +25,7 @@
 		</copy>
 	</target>
 	
-	<target name="makejar" depends="compile" unless="PNMLBeansUpToDate">
+	<target name="makejar" depends="compile">
 		<jar destfile="lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="lib" file="lib/pnmlBeans.jar" />
