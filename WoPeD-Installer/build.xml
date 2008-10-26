@@ -25,7 +25,7 @@
 	<!--<taskdef resource="genjar.properties"/>	-->
 
 	<target name="makedistribution" 
-         depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, start, purge" />
+         depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, purge, start" />
 	<!-- makesrcdist -->
 	<target name="clean">
 		<delete dir="dist" />
@@ -46,6 +46,10 @@
 		<mkdir dir="dist/doc/pdf" />
 		<mkdir dir="dist/doc/pdf/de" />
 		<mkdir dir="dist/doc/pdf/en" />
+		<mkdir dir="dist/run" />
+		<mkdir dir="dist/run/org" />
+		<mkdir dir="dist/run/org/woped" />
+		<mkdir dir="dist/run/org/woped/gui" />
 	</target>
 
 	<target name="setversion">
@@ -77,6 +81,8 @@
 		<copy todir="dist/lib"  file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
 		<copy todir="dist/lib"  file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
 		<copy todir="dist"      file="../WoPeD-StandaloneRunner/WofJava.dll" />
+		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
+		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD$1.class" />
 		<copy todir="dist/lib"  file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 		<copy todir="dist/lib"  file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib"  file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
@@ -167,43 +173,18 @@
 	</target>
 	
 	<target name="makeinstaller">
-		<jar destfile="dist/WoPeD.jar" manifest="dist/MANIFEST3.mf">
-			<fileset file="RunWoPeD.class" />
-		</jar>
+		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
 		<exec dir="dist" executable="cmd">
 			<arg line="/c launch4j.exe buildexe.cfg" />
 		</exec>
 		<exec dir="dist" executable="cmd">
-			<arg line="/c java -jar lib\compiler.jar -HOME . install.xml -b . -o WoPeD-install.jar" />
+			<arg line="/c java -jar lib\compiler.jar -HOME . install.xml -b . -o WoPeD-install-${WOPEDVERSION}${SNAPSHOT}.jar" />
 		</exec>
-		<exec dir="dist" executable="cmd">
-			<arg line="/c launch4j.exe buildsetup.cfg" />
-		</exec>
-
-		<zip destfile="dist/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
-
-		<tar destfile="dist/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
-			<tarfileset dir="dist" mode="755">
-				<include name="WoPeD-install" />
-			</tarfileset>
-			<tarfileset dir="dist">
-				<include name="WoPeD-install.jar" />
-			</tarfileset>
-		</tar>
-
-		<tar destfile="dist/WoPeD-install-macos-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
-			<tarfileset dir="dist" mode="755">
-				<include name="WoPeD-install.app" />
-			</tarfileset>
-			<tarfileset dir="dist">
-				<include name="WoPeD-install.jar" />
-			</tarfileset>
-		</tar>
 	</target>
 
 	<target name="start">
 		<exec dir="dist" executable="cmd">
-			<arg line="/c WoPeD-install.exe" />
+			<arg line="/c java -jar WoPeD-install-${WOPEDVERSION}${SNAPSHOT}.jar" />
 		</exec>
 	</target>
 	
@@ -218,102 +199,19 @@
 		<delete dir="dist/doc/pdf/en" />
 		<delete dir="dist/doc/pdf" />
 		<delete dir="dist/doc" />
+		<delete dir="dist/run/org/woped/gui" />
+		<delete dir="dist/run/org/woped" />
+		<delete dir="dist/run/org" />
+		<delete dir="dist/run" />
+		<delete dir="dist/Contents/Resources/Java" />
+		<delete dir="dist/Contents/Resources" />
+		<delete dir="dist/Contents/MacOS" />
+		<delete dir="dist/Contents" />
 		<delete dir="dist/lib" />
 		<delete dir="dist/build" />
-		<delete dir="dist/WoPeD Starter.xcode" />
 		<delete>
-			<fileset dir="dist" excludes="WoPeD-install*.tgz 
-		    							  WoPeD-install*.zip 
-		    							  WoPeD-src*.zip
-		    			    			  WoPeD-src*.tgz 
-										  WoPeD-bin*.zip
-		    							  WoPeD-bin*.tgz" />
+			<fileset dir="dist" excludes="WoPeD-install-${WOPEDVERSION}${SNAPSHOT}.jar" />
 		</delete>
 		<delete dir="doc/api-doc" />
 	</target>
-
-	<target name="makesrcdist">
-		<zip destfile="dist/WoPeD-src-${WOPEDVERSION}.zip">
-			<zipfileset dir="WoPeD-${WOPEDVERSION}-src"   includes="**/*" />
-			<zipfileset dir="dist" includes="Readme.txt" />
-			<zipfileset dir="dist" includes="License.txt" />
-			<zipfileset dir="dist" includes="Changelog.txt" />
-		</zip>
-		<tar destfile="dist/WoPeD-src-${WOPEDVERSION}.tgz" compression="gzip">
-			<tarfileset dir="WoPeD-${WOPEDVERSION}-src"   includes="**/*" />
-			<tarfileset dir="dist" includes="Readme.txt" />
-			<tarfileset dir="dist" includes="License.txt" />
-			<tarfileset dir="dist" includes="Changelog.txt" />
-		</tar>
-	</target>
-
-<!--	<target name="makebindist">
-		<zip destfile="dist/WoPeD-bin-${WOPEDVERSION}.zip">
-			<zipfileset dir="." includes="lib/*.*" />
-			<zipfileset dir="dist" includes="WoPeD.jar" />
-			<zipfileset dir="dist/lib" includes="WoPeDclasses.jar" prefix="lib/" />
-			<zipfileset dir="dist" includes="Readme.txt" />
-			<zipfileset dir="dist" includes="License.txt" />
-			<zipfileset dir="dist" includes="Changelog.txt" />
-		</zip>
-		<tar destfile="dist/WoPeD-bin-${WOPEDVERSION}.tgz" compression="gzip">
-			<tarfileset dir="." includes="lib/*.*" />
-			<tarfileset dir="dist/lib" includes="WoPeDclasses.jar" prefix="lib/" />
-			<tarfileset dir="dist" includes="WoPeD.jar" />
-			<tarfileset dir="dist" includes="Readme.txt" />
-			<tarfileset dir="dist" includes="License.txt" />
-			<tarfileset dir="dist" includes="Changelog.txt" />
-		</tar>
-	</target>
-
-	<target name="genjar">
-		<unjar dest="dist/genjarsrc">
-			<fileset dir="dist/lib"/>
-		</unjar>
-		<genjar destdir="dist/genjar">
-			<classpath>
-				<pathelement path="dist/genjarsrc"/>
-				<pathelement path="bin"/>
-			</classpath>
-			<class name="org.woped.RunWoPeD"/>
-			<class name="org.apache.log4j.ConsoleAppender"/>
-			<class name="org.apache.log4j.PatternLayout"/>
-			<class name="org.apache.log4j.RollingFileAppender"/>
-			<class name="org.apache.xmlbeans.impl.schema.SchemaTypeLoaderImpl"/>
-			<class name="javax.xml.namespace.QName"/>
-			<class name="org.apache.xmlbeans.impl.store.Root"/>
-			<classfilter>
-				<exclude name="org.w3c.dom."/>
-				<exclude name="org.xml.sax."/>
-			</classfilter>
-		</genjar>
-		<copy todir="dist/genjar">
-			<fileset dir="dist/genjarsrc">
-				<exclude name="**//**.java"/>
-				<exclude name="**//**.class"/>
-			</fileset>
-		</copy>
-		<jar destfile="dist/gen.jar" compress="true">
-			<fileset dir="dist/genjar">
-				<exclude name="org/woped/*"/>
-				<exclude name="config/woped/org/*"/>
-			</fileset>
-		</jar>
-	</target>-->
-	
-<!-- Please do not run this unless you really know what you're doing -->	
-<!--	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="resources/xbean_orig.jar" />	
-	<target name="generateConfigXMLBeans">
-		<echo message="Compiling the config schema..." />
-		<xmlbean schema="src/org/woped/config/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="resources/xbean_orig.jar" />
-	</target>
-	<target name="generatePnmlXMLBeans">
-		<echo message="Compiling the PNML schema..." />
-		<xmlbean schema="src/org/woped/pnml/pnml_wf.xsd" destfile="lib/pnmlBeans.jar" debug="on" classpath="resources/xbean_orig.jar" />
-	</target>
-	<target name="generateOldPnmlXMLBeans">
-		<echo message="Compiling the old PNML schema..." />
-		<xmlbean schema="src/org/woped/pnml/pnml_wf_old.xsd" destfile="lib/pnmlBeans_old.jar" debug="on" classpath="resources/xbean_orig.jar" />
-	</target>-->
-
 </project>
