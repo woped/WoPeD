@@ -5,7 +5,7 @@
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 
-	<target name="compile">
+	<target name="compile" depends="generateBPELXMLBeans">
 		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
 				<pathelement path="../CommonLibs/lib/xbean.jar" />
