@@ -29,10 +29,11 @@
 	</target>
 	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	<!-- Please do not run this unless you really know what you're doing -->
-	<target name="generateConfigXMLBeans">
+	<target name="generateConfigXMLBeans" unless="ConfigBeansUpToDate">
 		<echo message="Compiling the config schema..." />
 		<xmlbean schema="src/org/woped/config/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	</target>
+	<uptodate property="ConfigBeansUpToDate" srcfile="src/org/woped/config/configuration.xsd" targetfile="lib/confBeans.jar"/>
 	
 	<target name="clean">
 		<delete dir="bin/org" />

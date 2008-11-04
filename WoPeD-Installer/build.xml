@@ -2,7 +2,7 @@
 
 	<tstamp />
 	<property file="../CommonLibs/build.properties" />
-	
+
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 	<filter token="flanaganversion" value="${FLANAGANVERSION}" />
@@ -24,8 +24,7 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" 
-         depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, purge, start" />
+	<target name="makedistribution" depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, purge, start" />
 	<!-- makesrcdist -->
 	<target name="clean">
 		<delete dir="dist" />
@@ -33,6 +32,7 @@
 
 	<target name="makedir" depends="clean">
 		<mkdir dir="dist" />
+		<mkdir dir="dist/mac" />
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
 		<mkdir dir="dist/doc" />
@@ -60,7 +60,7 @@
 		<copy file="log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" />
 	</target>
 
-  	<target name="buildjar">
+	<target name="buildjar">
 		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
 			<fileset dir="../WoPeD-CORE/bin" />
 			<fileset dir="../WoPeD-BPELExport/bin" />
@@ -72,30 +72,30 @@
 			<fileset dir="../WoPeD-Translations/bin" />
 			<fileset dir="../WoPeD-XMLConfiguration/bin" />
 		</jar>
-	</target>	
-			
+	</target>
+
 	<target name="copyfiles">
-	    <copy todir="dist/nets" file="build-tools/setup/Example.pnml" />
-		<copy todir="dist/lib"  file="../WoPeD-BPELExport/lib/bpelBeans.jar" />
-		<copy todir="dist/lib"  file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
-		<copy todir="dist/lib"  file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
-		<copy todir="dist/lib"  file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
-		<copy todir="dist"      file="../WoPeD-StandaloneRunner/WofJava.dll" />
+		<copy todir="dist/nets" file="build-tools/setup/Example.pnml" />
+		<copy todir="dist/lib" file="../WoPeD-BPELExport/lib/bpelBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
+		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
+		<copy todir="dist" file="../WoPeD-StandaloneRunner/WofJava.dll" />
 		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
 		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD$1.class" />
-		<copy todir="dist/lib"  file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-		<copy todir="dist/lib"  file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
-		<copy todir="dist/lib"  file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
-		<copy todir="dist/lib"  file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
-		<copy todir="dist/lib"  file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
-		<copy todir="dist/lib"  file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
-		<copy todir="dist/lib"  file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
-		<copy todir="dist/lib"  file="../CommonLibs/lib/xbean.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
 
 		<copy todir="dist/doc/pdf/en">
 			<fileset file="../WoPeD-StandaloneRunner/doc/pdf/en/*.pdf" />
 		</copy>
-		
+
 		<copy todir="dist/doc/pdf/de">
 			<fileset file="../WoPeD-StandaloneRunner/doc/pdf/de/*.pdf" />
 		</copy>
@@ -103,29 +103,29 @@
 		<copy todir="dist/doc/html/en">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/en/*.htm" />
 		</copy>
-		
+
 		<copy todir="dist/doc/html/de">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/de/*.htm" />
 		</copy>
 
 		<copy file="../WoPeD-StandaloneRunner/doc/html/woped.css" tofile="dist/doc/html/woped.css" />
-		
+
 		<copy todir="dist/doc/html/images">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.gif" />
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.jpg" />
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/*.png" />
 		</copy>
-		
+
 		<copy todir="dist/doc/html/images/elements">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/elements/*.gif" />
 		</copy>
-		
+
 		<copy todir="dist/doc/html/images/icons">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/*.gif" />
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/*.jpg" />
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/*.png" />
 		</copy>
-		
+
 		<copy todir="dist/doc/html/images/icons/tango">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/tango/*.gif" />
 		</copy>
@@ -133,7 +133,7 @@
 		<copy todir="dist">
 			<fileset dir="build-tools/launcher/Windows" />
 			<fileset dir="build-tools/launcher/Linux" />
-			<fileset dir="build-tools/launcher/MacOS" />
+			<fileset dir="build-tools/launcher/MacOS/" />
 			<fileset dir="build-tools/setup/Windows" />
 			<fileset dir="build-tools/setup/Linux" />
 			<fileset dir="build-tools/setup/MacOS" />
@@ -171,23 +171,63 @@
 		<ant antfile="../WoPeD-QualAnalysis/build.xml" dir="../WoPeD-QualAnalysis" />
 		<ant antfile="../WoPeD-Translations/build.xml" dir="../WoPeD-Translations" />
 	</target>
-	
+
 	<target name="makeinstaller">
 		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
 		<exec dir="dist" executable="cmd">
 			<arg line="/c launch4j.exe buildexe.cfg" />
 		</exec>
 		<exec dir="dist" executable="cmd">
-			<arg line="/c java -jar lib\compiler.jar -HOME . install.xml -b . -o WoPeD-install-${WOPEDVERSION}${SNAPSHOT}.jar" />
+			<arg line="/c java -jar lib\compiler.jar -HOME . install.xml -b . -o WoPeD-install.jar" />
 		</exec>
+		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
+
+		<exec dir="dist" executable="cmd">
+			<arg line="/c launch4j.exe buildsetup.cfg" />
+		</exec>
+
+		<zip destfile="dist/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
+
+		<tar destfile="dist/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
+			<tarfileset dir="dist" mode="755">
+				<include name="WoPeD-install" />
+			</tarfileset>
+			<tarfileset dir="dist">
+				<include name="WoPeD-install.jar" />
+			</tarfileset>
+		</tar>
+	</target>
+
+	<target name="makeMacOSinstaller">
+		<unzip src="build-tools/launcher/MacOS/WoPeD.app.zip" dest="dist/mac" />
+
+		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java">
+			<fileset file="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" />
+			<fileset file="dist/Readme.txt" />
+			<fileset file="dist/Changelog.txt" />
+			<fileset file="dist/License.txt" />
+			<fileset file="dist/WoPeDconfig.xml" />
+		</copy>
+
+		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java/lib">
+			<fileset dir="dist/lib" />
+		</copy>
+
+		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java/doc">
+			<fileset dir="dist/doc" />
+		</copy>
+
+		<zip destfile="dist/WoPeD-macos-${WOPEDVERSION}${SNAPSHOT}.zip">
+			<fileset dir="dist/mac" />
+		</zip>
 	</target>
 
 	<target name="start">
 		<exec dir="dist" executable="cmd">
-			<arg line="/c java -jar WoPeD-install-${WOPEDVERSION}${SNAPSHOT}.jar" />
+			<arg line="/c java -jar WoPeD-install.exe" />
 		</exec>
 	</target>
-	
+
 	<target name="purge">
 		<delete dir="dist/bin" />
 		<delete dir="dist/nets" />
@@ -203,14 +243,15 @@
 		<delete dir="dist/run/org/woped" />
 		<delete dir="dist/run/org" />
 		<delete dir="dist/run" />
-		<delete dir="dist/Contents/Resources/Java" />
-		<delete dir="dist/Contents/Resources" />
-		<delete dir="dist/Contents/MacOS" />
-		<delete dir="dist/Contents" />
 		<delete dir="dist/lib" />
 		<delete dir="dist/build" />
 		<delete>
-			<fileset dir="dist" excludes="WoPeD-install-${WOPEDVERSION}${SNAPSHOT}.jar" />
+			<fileset dir="dist/mac" />
+		</delete>
+		<delete>
+			<fileset dir="dist" excludes="WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.exe \
+										  WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz \
+										  WoPeD-install-macos-${WOPEDVERSION}${SNAPSHOT}.zip" />
 		</delete>
 		<delete dir="doc/api-doc" />
 	</target>
