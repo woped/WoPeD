@@ -24,13 +24,20 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, purge, start" />
+
+	<!--	<target name="makedistribution" depends="clean" />
+-->
 	<!-- makesrcdist -->
+
+	<target name="makedistribution" depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, clean, start" />
+
 	<target name="clean">
 		<delete dir="dist" />
+		<delete dir="installers" />
 	</target>
 
 	<target name="makedir" depends="clean">
+		<mkdir dir="installers" />
 		<mkdir dir="dist" />
 		<mkdir dir="dist/mac" />
 		<mkdir dir="dist/lib" />
@@ -186,9 +193,9 @@
 			<arg line="/c launch4j.exe buildsetup.cfg" />
 		</exec>
 
-		<zip destfile="dist/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
+		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
 
-		<tar destfile="dist/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
+		<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
 			<tarfileset dir="dist" mode="755">
 				<include name="WoPeD-install" />
 			</tarfileset>
@@ -196,6 +203,7 @@
 				<include name="WoPeD-install.jar" />
 			</tarfileset>
 		</tar>
+		<copy file="dist/WoPeD-install.exe" tofile="installers/WoPeD-install.exe" />	
 	</target>
 
 	<target name="makeMacOSinstaller">
@@ -217,42 +225,15 @@
 			<fileset dir="dist/doc" />
 		</copy>
 
-		<zip destfile="dist/WoPeD-macos-${WOPEDVERSION}${SNAPSHOT}.zip">
+		<zip destfile="installers/WoPeD-macos-${WOPEDVERSION}${SNAPSHOT}.zip">
 			<fileset dir="dist/mac" />
 		</zip>
 	</target>
 
 	<target name="start">
-		<exec dir="dist" executable="cmd">
+		<exec dir="installers" executable="cmd">
 			<arg line="/c java -jar WoPeD-install.exe" />
 		</exec>
 	</target>
 
-	<target name="purge">
-		<delete dir="dist/bin" />
-		<delete dir="dist/nets" />
-		<delete dir="dist/doc/html/images" />
-		<delete dir="dist/doc/html/de" />
-		<delete dir="dist/doc/html/en" />
-		<delete dir="dist/doc/html" />
-		<delete dir="dist/doc/pdf/de" />
-		<delete dir="dist/doc/pdf/en" />
-		<delete dir="dist/doc/pdf" />
-		<delete dir="dist/doc" />
-		<delete dir="dist/run/org/woped/gui" />
-		<delete dir="dist/run/org/woped" />
-		<delete dir="dist/run/org" />
-		<delete dir="dist/run" />
-		<delete dir="dist/lib" />
-		<delete dir="dist/build" />
-		<delete>
-			<fileset dir="dist/mac" />
-		</delete>
-		<delete>
-			<fileset dir="dist" excludes="WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.exe \
-										  WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz \
-										  WoPeD-install-macos-${WOPEDVERSION}${SNAPSHOT}.zip" />
-		</delete>
-		<delete dir="doc/api-doc" />
-	</target>
 </project>

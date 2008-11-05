@@ -54,25 +54,26 @@ Download and Run
 ----------------
  
 Download the latest version via the WoPeD website www.woped.org.
-For Microsoft Windows, download the file WoPeD-install-X.Y.Z.zip 
+For Microsoft Windows, download WoPeD-install-windows-X.Y.Z.zip 
 (where X.Y.Z stands for the current WoPeD version), unpack it with
-an archiving tool (e. g. Winzip) and run the contained executable
-file WoPeD-install.exe. 
-For Linux, download the file WoPeD-install-X.Y.Z.tgz (where X.Y.Z 
+an archiving tool and run the contained executable WoPeD-install.exe. 
+Additionally you may want to assign WoPeD.exe as the standard 
+application for the file type "pnml" to open a net with WoPeD 
+just by double-clicking on the associated PNML document. 
+For Linux, download WoPeD-install-linux-X.Y.Z.tgz (where X.Y.Z 
 stands for the current WoPeD version), unpack und decompress 
 it with the tar utility. Then run the contained executable 
-WoPeD-install from the command line.
-In both cases, a setup wizard appears and will guide 
-you through the installation process, letting you choose several 
-installation options like the target folder or the creation of 
-a shortcut on your desktop and in the start menu. 
+WoPeD-install from the command line or desktop. 
+In both cases, a setup wizard appears and will guide you through 
+the installation process, letting you choose several installation
+options like the target folder or the creation of a shortcut on 
+your desktop and in the start menu. Note that the creation of 
+desktop and start menu shortcuts may not work on all Linux-based 
+GUI systems.
+For MacOS, download WoPeD-macos-X.Y.Z.tgz (where X.Y.Z stands 
+for the current WoPeD version) and unpack it into the target folder
+of your choice. The rest should be done automatically by MacOS.
 WoPeD ist now ready to be started. 
-Note that the creation of desktop and start menu shortcuts may 
-not work on all Linux GUI systems.
-Additionally you may want to specify WoPeD.exe as the standard 
-application for the file type "pnml" to open a net with WoPeD 
-just by double-clicking on the associated icon. In doubt, please 
-consult your GUI system's manual how to do this.
 
 That's it!
    
@@ -88,7 +89,6 @@ Root directory:
   ./WofJava.dll			    	    (Calling interface to Woflan tool - Windows only) 				     
   ./WoPeD.exe                       (Launcher for Windows)
   ./WoPeD                           (Launcher for Linux - alternatively)
-  ./WoPeD-starter.zip               (Launcher for MacOS - alternatively)
   ./WoPeD-classes-@wopedversion@.jar         (WoPeD program classes)
   ./WoPeD.log                       (Error logging, initially not existing)
   ./WoPeDconfig.xml                 (WoPeD property settings, initially not existing)
@@ -115,7 +115,7 @@ nets directory
   ./nets                            (Suggested folder to store your nets)
 
 Uninstaller directory
-  ./Uninstaller/uninstaller.jar     (uninstaller Java programm)
+  ./Uninstaller/uninstaller.jar     (uninstaller Java programm, Windows and Linux only)
 	
 	
 Enjoy it, any feedback will be welcome!
