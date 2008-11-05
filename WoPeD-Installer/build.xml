@@ -182,7 +182,7 @@
 	<target name="makeinstaller">
 		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
 		<exec dir="dist" executable="cmd">
-			<arg line="/c launch4j.exe buildexe.cfg" />
+			<arg line="/c launch4jc.exe buildexe.xml" />
 		</exec>
 		<exec dir="dist" executable="cmd">
 			<arg line="/c java -jar lib\compiler.jar -HOME . install.xml -b . -o WoPeD-install.jar" />
@@ -190,7 +190,7 @@
 		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
 
 		<exec dir="dist" executable="cmd">
-			<arg line="/c launch4j.exe buildsetup.cfg" />
+			<arg line="/c launch4jc.exe buildsetup.xml" />
 		</exec>
 
 		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
