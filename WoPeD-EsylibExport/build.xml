@@ -5,7 +5,7 @@
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 
-	<target name="compile">
+	<target name="compile" depends="generateEsyLibXMLBeans">
 		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
 				<pathelement path="../CommonLibs/lib/xbean.jar" />
@@ -19,7 +19,7 @@
 		</javac>
 	</target>
 
-	<target name="makejar" depends="compile" unless="EsyLibBeansUpToDate">
+	<target name="makejar" depends="compile">
 		<jar destfile="lib/woped-esylibexport-${ESYLIBEXPORTVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="lib" file="lib/esylibBeans.jar" />
@@ -32,11 +32,11 @@
 	
 	<!-- Please do not run this unless you really know what you're doing -->
 	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
-	<target name="generateESYLIBXMLBeans" unless="ESYLIBBeansUpToDate">
+	<target name="generateEsyLibXMLBeans" unless="EsyLibXMLBeansUpToDate">
 		<echo message="Compiling the ESYLIB schema..." />
 		<xmlbean schema="src/org/woped/esylib/xml/ws-esylib_executable.xsd" destfile="lib/esylibBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	</target>
-	<uptodate property="PNMLBeansUpToDate" srcfile="src/org/woped/esylib/xml/ws-esylib_executable.xsd" targetfile="lib/esylibBeans.jar"/>
+	<uptodate property="EsyLibXMLBeansUpToDate" srcfile="src/org/woped/esylib/xml/ws-esylib_executable.xsd" targetfile="lib/esylibBeans.jar"/>
 	
 	<target name="clean">
 		<delete dir="bin/org" />
