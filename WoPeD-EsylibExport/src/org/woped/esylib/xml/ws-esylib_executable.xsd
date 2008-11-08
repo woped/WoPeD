@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- aktuelle Vollversion mit Ableitungen -->
+<xs:schema
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified" >
+    
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="metaData" type="metaDataType"/>
+                <xs:element name="processDescriptions" type="processDescriptionsType"/>
+            </xs:sequence>
+        </xs:complexType>
+       <!-- process -->
+        <xs:key name="keyProcessID">
+            <xs:annotation>
+                <xs:documentation>key of  process ID .</xs:documentation>
+            </xs:annotation>			
+            <xs:selector xpath="processDescriptions/processDescription"></xs:selector>
+            <xs:field xpath="@ID"></xs:field>
+        </xs:key>
+        
+        <!-- arc -->
+        <xs:unique name="uniqueArc">
+            <xs:selector xpath="processDescriptions/processDescription/processElements/arcs/arc"></xs:selector>
+            <xs:field xpath="startNodeRef/@ID"></xs:field>
+            <xs:field xpath="endNodeRef/@ID"></xs:field>
+        </xs:unique>
+        
+        <xs:key name="keyArcID">
+            <xs:annotation>
+                <xs:documentation>key of  arc ID .</xs:documentation>
+            </xs:annotation>			
+            <xs:selector xpath="processDescriptions/processDescription/processElements/arcs/arc"></xs:selector>
+            <xs:field xpath="@ID"></xs:field>
+        </xs:key>
+        
+        <!-- node -->
+        <xs:key name="keyNodeID">
+            <xs:annotation>
+                <xs:documentation>key of  node ID .</xs:documentation>
+            </xs:annotation>			
+            <xs:selector xpath="processDescriptions/processDescription/processElements/nodes/node"></xs:selector>
+            <xs:field xpath="@ID"></xs:field>
+        </xs:key>       
+    
+        <!-- The foreing keys startNodeIDRef, endNodeRef, processDescriptionRef and caseRef -->
+
+        <xs:keyref  name="startNodeIDRef" refer="keyNodeID">
+            <xs:annotation>
+                <xs:documentation>Foreign key to a node ID .</xs:documentation>
+            </xs:annotation>
+            <xs:selector xpath="processDescriptions/processDescription/processElements/arcs/arc"></xs:selector>
+            <xs:field xpath="startNodeRef/@ID"></xs:field>
+        </xs:keyref>
+        <xs:keyref  name="endNodeIDRef" refer="keyNodeID">
+            <xs:annotation>
+                <xs:documentation>Foreign key to a node ID .</xs:documentation>
+            </xs:annotation>
+            <xs:selector xpath="processDescriptions/processDescription/processElements/arcs/arc"/>
+            <xs:field xpath="endNodeRef/@ID"></xs:field>
+        </xs:keyref>
+        <xs:keyref name="processDescriptionIDRef" refer="keyProcessID">
+            <xs:annotation>
+                <xs:documentation>Foreign key to a process ID .</xs:documentation>
+            </xs:annotation>
+            <xs:selector xpath="processDescriptions/processDescription/processElements/nodes/node"></xs:selector>
+            <xs:field xpath="processDescriptionRef/@ID"></xs:field>
+        </xs:keyref>       
+        <xs:keyref name="caseRef" refer="keyArcID">
+            <xs:annotation>
+                <xs:documentation>Foreign key to a arc ID .</xs:documentation>
+            </xs:annotation>
+            <xs:selector xpath="processDescriptions/processDescription/processElements/nodes/node/caseList/case"></xs:selector>
+            <xs:field xpath="arcRef/@ID"></xs:field>
+        </xs:keyref>
+
+    </xs:element>
+    <!-- The attributes -->
+    <xs:attribute name="ID" type="xs:ID" />
+    <xs:attribute name="isMainProcess" type="xs:boolean"/>
+    <xs:attribute name="object" type="xs:string"/>
+    <xs:attribute name="isArray" type="xs:boolean"/>
+    <xs:attribute name="code" type="codeType"/>
+    
+    <!-- The attributGroups -->
+    <xs:attributeGroup name="iteration">
+        <xs:annotation>
+            <xs:documentation>Specify attributes about an iteration header.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="start" type="xs:string"/>
+        <xs:attribute name="end" type="xs:string"/>
+        <xs:attribute name="step" type="xs:long"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="methodRef">
+        <xs:annotation>
+            <xs:documentation>Specify attributes about a method.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="nameSpace" type="xs:string"/>
+        <xs:attribute name="class" type="xs:string"/>
+        <xs:attribute name="methodName" type="xs:string"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="processRef">
+        <xs:annotation>
+            <xs:documentation>Specify attributes about a process.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="methodRef"/>
+        <xs:attribute ref="isMainProcess"/>
+    </xs:attributeGroup>    
+    
+    <!-- The medaData Type -->
+    <xs:complexType name="metaDataType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a document.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="creator" type="xs:string"/>
+            <xs:element name="createdAt" type="xs:date"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <xs:element name="version" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--  The processDescriptionsType  -->
+    <xs:complexType name="processDescriptionsType">
+        <xs:annotation>
+            <xs:documentation>Defines the processDescriptions as a collection of processDescription elements.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="processDescription" type="processDescriptionType"  maxOccurs="unbounded"/>
+        </xs:sequence>    
+    </xs:complexType>
+ 
+    <!-- The process Type -->
+    <xs:complexType name="processDescriptionType">
+        <xs:annotation>
+            <xs:documentation>Defines the prosesType as a sequenz of processElements and dataElements.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="processElements" type="processElementsType"/>                
+            <xs:element name="dataElements" type="dataElementsType"/>
+        </xs:sequence>
+        <xs:attribute ref="ID"  use="required"/>
+        <xs:attributeGroup ref="processRef"/>
+    </xs:complexType>
+   
+   <!--  The processElementsType -->
+    <xs:complexType name="processElementsType">
+        <xs:annotation>
+            <xs:documentation>Defines the proseccElements as a collection of arcs and nodes.</xs:documentation>
+        </xs:annotation>
+            <xs:sequence>
+                <xs:element name="nodes" type="nodesType"/>
+                <xs:element name="arcs" type="arcsType"/>
+            </xs:sequence>
+    </xs:complexType>
+   
+    <!-- The variable types to specify local Variables, input params and output param  -->
+    <xs:complexType name="variableType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a variable.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="type" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute ref="isArray"/>
+    </xs:complexType>
+    
+    <xs:complexType name="localVariableType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a local variable.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="variableType">
+                <xs:sequence>
+                    <xs:element name="initialValue" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="inputParamsType">
+        <xs:annotation>
+            <xs:documentation>Defines the inputParams as a collection of inputParam elements.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="inputParam" type="variableType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="localVariablesType">
+        <xs:annotation>
+            <xs:documentation>Defines the localVariables as a collection of  localVariables elements.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="localVariable" type="localVariableType" maxOccurs="unbounded"
+                minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="dataElementsType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a dataElement.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="inputParams" type="inputParamsType"/>
+            <xs:element name="outputParam" type="variableType"/>
+            <xs:element name="localVariables" type="localVariablesType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- The abstract node Types nodeType, simpleNodeType and extendedNodeType -->
+    <xs:complexType name="nodeType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>Specify an abstract node.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="join" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute ref="ID"  use="required">
+            <xs:annotation>
+                <xs:documentation>Specify a required ID for this node.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="simpleNodeType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>Specify an abstract node extended at the element dataMapping.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nodeType">
+                <xs:sequence>
+                    <xs:element name="dataMapping" type="dataMappingType"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="extendedNodeType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>Specify an simple node extended at the element processDescriptonRef.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="simpleNodeType">
+                <xs:sequence>
+                    <xs:element name="processDescriptionRef" type="emptyElementWithID"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- The nodes Type -->
+    <xs:complexType name="nodesType">
+        <xs:annotation>
+            <xs:documentation>Defines the nodes as a collection of node elements.</xs:documentation>
+        </xs:annotation>					
+        <xs:sequence>
+            <xs:element name="node" type="nodeType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- The node types assignment, conditional, subProcess, methodRef and iteration-->
+    <xs:complexType name="assignmentType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a assignment.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nodeType">
+                <xs:sequence>
+                    <xs:element name="leftHandSide" type="xs:string"/>
+                    <xs:element name="rightHandSide" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="conditionalType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a conditional.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nodeType">
+                <xs:sequence>
+                    <xs:element name="caseList" type="caseListType"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="subProcessType" >
+        <xs:annotation>
+            <xs:documentation>Specify information about a subProcess.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="extendedNodeType">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="iterationType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a iteration.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="extendedNodeType">
+                <xs:sequence>
+                    <xs:element name="loopVariable" type="xs:string"/>
+                    <xs:element name="terminationCondition" type="xs:string"/>
+                </xs:sequence>
+                <xs:attributeGroup ref="iteration"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="methodRefType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a methodRef.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="simpleNodeType">
+                <xs:attributeGroup ref="methodRef"/>
+                <xs:attribute ref="object"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- The help types of a conditionalType -->
+    <xs:complexType name="caseType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a case.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="arcRef" type="emptyElementWithID"/>
+            <xs:element name="expression" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="caseListType">
+        <xs:annotation>
+            <xs:documentation>Defines the caseList as a collection of  case elements.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="case" type="caseType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- The help types of iterationType, methodRefType and subProcessType-->
+    <xs:complexType name="dataMappingType">
+        <xs:annotation>
+            <xs:documentation>Defines the element dataMapping.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="inputMappings" type="inputMappingType"/>
+            <xs:element name="outputMapping" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="inputMappingType">
+        <xs:annotation>
+            <xs:documentation>Defines the inputMapping as a collection of mapping elements.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="inputMapping" type="mappingType" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="mappingType">
+        <xs:annotation>
+            <xs:documentation>Specify the mapingType.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="leftHandSide" type="xs:string"/>
+            <xs:element name="rightHandSide" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- arcsType, arcType, nodeRefType  -->
+    <xs:complexType name="arcsType">
+        <xs:annotation>
+            <xs:documentation>Defines the arcs as a collection of arc elements.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="arc" type="arcType" minOccurs="0" maxOccurs="unbounded">
+                <xs:key name="arcID">
+                    <xs:annotation>
+                        <xs:documentation>The arc ID.</xs:documentation>
+                    </xs:annotation>
+                    <xs:selector xpath="arc"></xs:selector>
+                    <xs:field xpath="@ID"></xs:field>
+                </xs:key>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="arcType">
+        <xs:annotation>
+            <xs:documentation>Specify information about a arc.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="startNodeRef" type="emptyElementWithID"/>
+            <xs:element name="endNodeRef" type="emptyElementWithID"/>
+        </xs:sequence>
+        <xs:attribute ref="ID"  use="required">
+            <xs:annotation>
+                <xs:documentation>Specify a required ID for this arc.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="emptyElementWithID">
+        <xs:annotation>
+            <xs:documentation>Specify a required IDRef for this element.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ID" type="xs:IDREF"  use="required"/>
+    </xs:complexType>
+    
+    <xs:simpleType name="codeType">
+        <xs:annotation>
+            <xs:documentation>Encapsulates the range of relation</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="xor"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="emptyElementWithCode">
+        <xs:annotation>
+            <xs:documentation>Specify a required code for this element.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute ref="code" use="required"/>
+    </xs:complexType>
+    
+</xs:schema>
