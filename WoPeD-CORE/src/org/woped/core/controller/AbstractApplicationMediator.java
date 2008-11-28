@@ -56,7 +56,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
         setUi(ui);
         LoggerManager.info(Constants.CORE_LOGGER, "START INIT Application");
         boolean confOK = true;
-        if (conf != null)
+        if (conf == null)
         {
             // Init Configuration
             confOK = conf.initConfig();

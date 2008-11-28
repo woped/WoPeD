@@ -137,9 +137,9 @@ public class ConfEditorPanel extends AbstractConfPanel
     }
 
     /**
-     * @see AbstractConfPanel#readConfigruation()
+     * @see AbstractConfPanel#readConfiguration()
      */
-    public void readConfigruation()
+    public void readConfiguration()
     {
         getEditOnCreationCheckBox().setSelected(ConfigurationManager.getConfiguration().isEditingOnCreation());
         getSmartEditingCheckBox().setSelected(ConfigurationManager.getConfiguration().isSmartEditing());

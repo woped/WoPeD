@@ -561,21 +561,18 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	public String getDeadLineHour() {
 		if (deadLineTextFieldHour.getText() == null)
 			return null;
-		System.out.println(deadLineTextFieldHour.getText());
 		return deadLineTextFieldHour.getText();
 	}
 
 	public String getDeadLineMinute() {
 		if (deadLineTextFieldMinute.getText() == null)
 			return null;
-		System.out.println(deadLineTextFieldMinute.getText());
 		return deadLineTextFieldMinute.getText();
 	}
 
 	public String getDeadLineSecond() {
 		if (deadLineTextFieldSecond.getText() == null)
 			return null;
-		System.out.println(deadLineTextFieldSecond.getText());
 		return deadLineTextFieldSecond.getText();
 	}
 

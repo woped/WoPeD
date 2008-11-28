@@ -24,12 +24,7 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-
-	<!--	<target name="makedistribution" depends="clean" />
--->
-	<!-- makesrcdist -->
-
-	<target name="makedistribution" depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, clean, start" />
+	<target name="makedistribution" depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, purge, start" />
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -64,18 +59,18 @@
 		<copy file="../WoPeD-Translations/src/org/woped/translations/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
 		<copy file="dist/Messages.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages.properties" />
 		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages_de.properties" />
-		<copy file="log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" />
+		<copy file="build-tools/log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" />
 	</target>
 
 	<target name="buildjar">
 		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
-			<fileset dir="../WoPeD-CORE/bin" />
 			<fileset dir="../WoPeD-BPELExport/bin" />
+			<fileset dir="../WoPeD-CORE/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
-			<fileset dir="../WoPeD-StandaloneRunner/bin" />
-			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
+			<fileset dir="../WoPeD-QuantAnalysis/bin" />
+			<fileset dir="../WoPeD-StandaloneRunner/bin" />
 			<fileset dir="../WoPeD-Translations/bin" />
 			<fileset dir="../WoPeD-XMLConfiguration/bin" />
 		</jar>
@@ -203,7 +198,7 @@
 				<include name="WoPeD-install.jar" />
 			</tarfileset>
 		</tar>
-		<copy file="dist/WoPeD-install.exe" tofile="installers/WoPeD-install.exe" />	
+		<copy file="dist/WoPeD-install.exe" tofile="installers/WoPeD-install.exe" />
 	</target>
 
 	<target name="makeMacOSinstaller">
@@ -214,7 +209,6 @@
 			<fileset file="dist/Readme.txt" />
 			<fileset file="dist/Changelog.txt" />
 			<fileset file="dist/License.txt" />
-			<fileset file="dist/WoPeDconfig.xml" />
 		</copy>
 
 		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java/lib">
@@ -234,6 +228,10 @@
 		<exec dir="installers" executable="cmd">
 			<arg line="/c java -jar WoPeD-install.exe" />
 		</exec>
+	</target>
+
+	<target name="purge">
+		<delete dir="dist" />
 	</target>
 
 </project>

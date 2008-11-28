@@ -31,6 +31,7 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -71,7 +72,10 @@ public class TPNExport
                     }
                     fos.write(currentModel.getId());
 
-                    if (net2save.getElementContainer().getSourceElements(currentModel.getId()).size() == 0) fos.write(" init 1");
+                    int numtoken = ((PlaceModel)currentModel).getTokenCount(); 
+                    if (numtoken > 0)
+                    	fos.write(" init " + numtoken);
+                    
                     fos.write(";\n");
 
                 } else if ((currentModel.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)||
@@ -117,7 +121,7 @@ public class TPNExport
         Iterator tempIter;
 
         line = "trans #";
-        if (ConfigurationManager.getConfiguration().isTpnSaveElementAsName())
+        if (!ConfigurationManager.getConfiguration().isTpnSaveElementAsName())
         {
             line += name.replaceAll("[[\\W]&&[\\S|\\s]]", "") + "_";
         }

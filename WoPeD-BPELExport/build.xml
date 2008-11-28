@@ -19,25 +19,34 @@
 		</javac>
 	</target>
 
-	<target name="makejar" depends="compile" unless="BPELBeansUpToDate">
+	<target name="makejar" depends="compile, makebeans">
+		<delete>
+			<fileset file="lib/woped*.jar" />
+		</delete>
+		<jar destfile="lib/woped-bpelexport-${BPELEXPORTVERSION}${SNAPSHOT}.jar">
+			<fileset dir="bin" />
+		</jar>
+	</target>
+
+	<target name="makebeans" unless="BPELBeansUpToDate">
 		<jar destfile="lib/woped-bpelexport-${BPELEXPORTVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="lib" file="lib/bpelBeans.jar" />
 		</jar>
 	</target>
-	
+
 	<target name="cleanup" depends="makejar">
-		<delete file="./lib/bpelBeans.jar" />
+		<delete file="./lib/*.jar" />
 	</target>
-	
+
 	<!-- Please do not run this unless you really know what you're doing -->
 	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	<target name="generateBPELXMLBeans" unless="BPELBeansUpToDate">
 		<echo message="Compiling the BPEL schema..." />
 		<xmlbean schema="src/org/woped/bpel/xml/ws-bpel_executable.xsd" destfile="lib/bpelBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	</target>
-	<uptodate property="BPELBeansUpToDate" srcfile="src/org/woped/bpel/xml/ws-bpel_executable.xsd" targetfile="lib/bpelBeans.jar"/>
-	
+	<uptodate property="BPELBeansUpToDate" srcfile="src/org/woped/bpel/xml/ws-bpel_executable.xsd" targetfile="lib/bpelBeans.jar" />
+
 	<target name="clean">
 		<delete dir="bin/org" />
 	</target>

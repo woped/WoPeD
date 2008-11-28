@@ -40,8 +40,9 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static String          DEFAULT_VARIANT            = "";
     // File
     private String                homedir                    = "";
-    private String                logdir                     = "/log";
-    private String                workingDir                 = "";
+    private String                logdir                     = "";
+    private String                defaultHomedir             = "";
+    private String                currentWorkingdir          = "";
     // Editor
     private boolean               insertCopy                 = false;
     private boolean               importToolspec             = true;
@@ -83,11 +84,6 @@ public class DefaultStaticConfiguration implements IConfiguration
         return arrowwidth;
     }
 
-    public String getCurrentWorkingDir()
-    {
-        return workingDir;
-    }
-
     public Color getSelectionColor()
     {
         return selectionColor;
@@ -101,6 +97,16 @@ public class DefaultStaticConfiguration implements IConfiguration
     public String getHomedir()
     {
         return homedir;
+    }
+
+    public String getDefaultHomedir()
+    {
+        return defaultHomedir;
+    }
+
+    public String getCurrentWorkingdir()
+    {
+        return currentWorkingdir;
     }
 
     public String getLogdir()
@@ -156,6 +162,16 @@ public class DefaultStaticConfiguration implements IConfiguration
     public boolean isHomedirSet()
     {
         return getHomedir() != null && !getHomedir().equals("");
+    }
+
+    public boolean isCurrentWorkingdirSet()
+    {
+        return getCurrentWorkingdir() != null && !getCurrentWorkingdir().equals("");
+    }
+
+    public boolean isDefaultHomedirSet()
+    {
+        return getDefaultHomedir() != null && !getDefaultHomedir().equals("");
     }
 
     public boolean isImportToolspecific()
@@ -217,11 +233,6 @@ public class DefaultStaticConfiguration implements IConfiguration
         this.arrowwidth = width;
     }
 
-    public void setCurrentWorkingDir(String dir)
-    {
-        this.workingDir = dir;
-    }
-
     public void setEditingOnCreation(boolean editingOnCreation)
     {
         this.editoncreation = editingOnCreation;
@@ -241,6 +252,16 @@ public class DefaultStaticConfiguration implements IConfiguration
     public void setHomedir(String homedir)
     {
         this.homedir = homedir;
+    }
+
+    public void setDefaultHomedir(String homedir)
+    {
+    	this.defaultHomedir = homedir;
+    }
+
+    public void setCurrentWorkingdir(String homedir)
+    {
+    	this.defaultHomedir = homedir;
     }
 
     public void setLogdir(String logdir)
@@ -475,5 +496,4 @@ public class DefaultStaticConfiguration implements IConfiguration
     {
         return this.locale;
     }
-
 }

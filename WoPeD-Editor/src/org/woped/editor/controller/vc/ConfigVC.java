@@ -138,26 +138,10 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         this.getContentPane().add(getSplitPane(), BorderLayout.CENTER);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
         ((java.awt.Frame) getOwner()).setIconImage(Messages.getImageIcon("Application").getImage());
-        // Test & HowTo for Node-Panels
-        /*
-         * addConfNodePanel(null, new DummyNodePanel("TEST1"));
-         * addConfNodePanel("TEST1", new DummyNodePanel("TEST1.1"));
-         * addConfNodePanel("TEST1", new DummyNodePanel("TEST1.2"));
-         * addConfNodePanel("TEST1", new DummyNodePanel("TEST1.3"));
-         * addConfNodePanel("TEST1.1", new DummyNodePanel("TEST1.1.1"));
-         * addConfNodePanel("TEST1.1", new DummyNodePanel("TEST1.1.2"));
-         */
+ 
         // read Conf
         readConfiguration();
-        // Configure genereal JFC
-        // jfc = new JFileChooser();
-        // String extensions[] = null;
-        // FileFilterImpl XMLFilter = new
-        // FileFilterImpl(FileFilterImpl.XMLFilter, "XML
-        // (*.xml)", xmlExtensions);
-        // jfc.setFileFilter(XMLFilter);
         xmlExtensions.add("xml");
-        //pack();
     }
 
     public void addConfNodePanel(String parentNodePanelName, AbstractConfPanel nodePanel)
@@ -166,7 +150,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         {
             confPanels.put(nodePanel.getPanelName(), nodePanel);
             getConfPanelTree().addConfNodePanel(parentNodePanelName, nodePanel.getPanelName());
-            nodePanel.readConfigruation();
+            nodePanel.readConfiguration();
         } else
         {
             LoggerManager.warn(Constants.EDITOR_LOGGER, "A Node-Panel with the name \"" + nodePanel.getPanelName() + "\" has already been added. Please rename.");
@@ -192,6 +176,15 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         }
     }
 
+    private void resetConfiguration()
+    {
+        Iterator iter = confPanels.keySet().iterator();
+        while (iter.hasNext())
+        {
+            confPanels.get(iter.next()).readConfiguration(); 
+        }
+    }
+
     private boolean applyConfiguration()
     {
         boolean confOK = true;
@@ -213,7 +206,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         Iterator iter = confPanels.keySet().iterator();
         while (iter.hasNext())
         {
-            ((AbstractConfPanel) confPanels.get(iter.next())).readConfigruation();
+            ((AbstractConfPanel) confPanels.get(iter.next())).readConfiguration();
         }
     }
 
@@ -368,11 +361,18 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
     {
         if (cancelButton == null)
         {
-            cancelButton = new JButton(new DisposeWindowAction());
-            cancelButton.setIcon(null);
+            cancelButton = new JButton();
             cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
             cancelButton.setText(Messages.getTitle("Button.Cancel"));
             cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
+            cancelButton.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent arg0)
+                {
+                	resetConfiguration();
+                	ConfigVC.this.dispose();
+                }
+            });
         }
         return cancelButton;
     }
@@ -389,7 +389,6 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
             {
                 public void actionPerformed(ActionEvent arg0)
                 {
-                    // ((MenuBar)((AbstractUI)getOwner()).getJMenuBar()).getWoflanMenuItem().setEnabled(getTabTools().getWoflanCheckBox().isSelected());
                     if (applyConfiguration()) ConfigVC.this.dispose();
                 }
             });

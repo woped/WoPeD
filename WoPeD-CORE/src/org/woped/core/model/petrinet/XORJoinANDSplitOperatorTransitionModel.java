@@ -58,7 +58,6 @@ public class XORJoinANDSplitOperatorTransitionModel extends
     					.size() != 1)
     	{
     		getSimpleTransContainer().removeAllTargetElements(otherModel.getId());
-    		// System.out.println("INNER Source Elements deleted");
     	}
     }    
     

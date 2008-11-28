@@ -255,8 +255,6 @@ class CreateDialog implements ActionListener
 		NewUddiVariableDialog window = new NewUddiVariableDialog(adaptee);
 		if(NewUddiVariableDialog._OKBUTTON == window.getActivButton())
 		{
-			System.out.println(window.getVariableName());
-			System.out.println(window.getVariableURL());
 			modelElementContainer.addUddiVariable(window.getVariableName(), window.getVariableURL());
 			String[] uddibuslist = modelElementContainer.getUddiVariableNameList();
 			adaptee.CBuddiServer.removeAllItems();

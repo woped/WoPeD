@@ -22,6 +22,7 @@
  */
 package org.woped.gui;
 
+import java.io.File;
 import java.rmi.RemoteException;
 import java.util.Locale;
 
@@ -170,13 +171,13 @@ public class RunWoPeD extends JApplet {
 					LoggerManager.info(Constants.GUI_LOGGER, "apple.laf.useScreenMenuBar");
 				}
 				Locale.setDefault(Locale.ENGLISH);
-			}else{
+			} else{
 				// applet as default english
 				applet.setLocale(Locale.ENGLISH);
 			}
 
 			// create & init GUI
-			DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDConfiguration(RunWoPeD.isApplet), args);
+            DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDConfiguration(RunWoPeD.isApplet), args);
 			
 			ReferenceProvider helper = new ReferenceProvider();
 			helper.setMediatorReference(mainwindow);

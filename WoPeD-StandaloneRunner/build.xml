@@ -33,6 +33,9 @@
 	</target>
 	
 	<target name="makejar" depends="compile">
+		<delete>
+			<fileset file="lib/woped*.jar" />
+		</delete>
 		<jar destfile="lib/woped-gui-${GUIVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="doc" />

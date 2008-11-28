@@ -113,7 +113,7 @@ public class ConfFilePanel extends AbstractConfPanel
         c.weighty = 1;
         c.gridy = 4;
         contentPanel.add(new JPanel(), c);
-
+        
         setMainPanel(contentPanel);
     }
 
@@ -122,58 +122,55 @@ public class ConfFilePanel extends AbstractConfPanel
      */
     public boolean applyConfiguration()
     {
-        if (checkHomeDir())
-        {
-            if (!getHomeDirDefaultCheckBox().isSelected()) ConfigurationManager.getConfiguration().setHomedir(getHomeDirTextField().getText());
-            else ConfigurationManager.getConfiguration().setHomedir(null);
-            ConfigurationManager.getConfiguration().setExportToolspecific(getExportToolspecCheckBox().isSelected());
-            ConfigurationManager.getConfiguration().setImportToolspecific(getImportToolspecCheckBox().isSelected());
-            ConfigurationManager.getConfiguration().setTpnSaveElementAsName(getExportTpnElementAsNameCheckBox().isSelected());
-            return true;
-        } else
-        {
-            if (JOptionPane.showConfirmDialog(this, Messages.getString("Configuration.Files.Error.InvalidHomeDirectory"), Messages.getString("Configuration.Error.General.Title"),
-                    JOptionPane.ERROR_MESSAGE) == JOptionPane.YES_OPTION)
-            {
-                if (!new File(ConfigurationManager.getStandardConfiguration().getHomedir()).exists() && !new File(ConfigurationManager.getStandardConfiguration().getHomedir()).mkdir())
-                {
-                    JOptionPane.showMessageDialog(this, Messages.getString("Configuration.Files.Error.NoDefaultDirectory"), Messages.getString("Configuration.Error.General.Title"),
-                            JOptionPane.ERROR_MESSAGE);
-                    return false;
-                } else
-                {
-                    ConfigurationManager.getConfiguration().setHomedir(null);
-                    getHomeDirDefaultCheckBox().setSelected(true);
-                    return true;
-                }
-            } else
-            {
-                //JOptionPane.showMessageDialog(this, "DEFAULT DIR NOT
-                // CREATED", "Configuration Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-        }
-    }
+       	String fn = getHomeDirTextField().getText();    
+       	
+       	if (! new File(fn).isDirectory()) {
+       		int res = JOptionPane.showConfirmDialog(this, 
+          				 		Messages.getString("Configuration.Files.Error.InvalidHomeDirectory"), 
+          				 		Messages.getString("Configuration.Error.General.Title"),
+          				 		JOptionPane.ERROR_MESSAGE);
+       		if (res == JOptionPane.NO_OPTION)
+          	     return false;
+           	else {
+           		ConfigurationManager.getConfiguration().setHomedir("");
+           		getHomeDirTextField().setText(ConfigurationManager.getConfiguration().getDefaultHomedir());
+           		getHomeDirDefaultCheckBox().setSelected(true);
+           	}
+       	}
+       	else {
+       		ConfigurationManager.getConfiguration().setHomedir(fn);
+       	}
+       	
+       	ConfigurationManager.getConfiguration().setExportToolspecific(getExportToolspecCheckBox().isSelected());
+    	ConfigurationManager.getConfiguration().setImportToolspecific(getImportToolspecCheckBox().isSelected());
+    	ConfigurationManager.getConfiguration().setTpnSaveElementAsName(getExportTpnElementAsNameCheckBox().isSelected());
+    	return true;
+	} 
 
     /**
-     * @see AbstractConfPanel#readConfigruation()
+     * @see AbstractConfPanel#readConfiguration()
      */
-    public void readConfigruation()
+    public void readConfiguration()
     {
-        if (!ConfigurationManager.getConfiguration().isHomedirSet()) getHomeDirDefaultCheckBox().setSelected(true);
-        getHomeDirTextField().setText(ConfigurationManager.getConfiguration().getHomedir());
+        if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+        	getHomeDirDefaultCheckBox().setSelected(false);
+        	getHomeDirTextField().setText(ConfigurationManager.getConfiguration().getHomedir());
+            getHomeDirTextField().setEditable(true);
+            getHomeDirChoose().setEnabled(true);
+        }
+        else {
+        	getHomeDirDefaultCheckBox().setSelected(true);
+        	getHomeDirTextField().setText(ConfigurationManager.getConfiguration().getDefaultHomedir());
+            getHomeDirTextField().setEditable(false);
+            getHomeDirChoose().setEnabled(false);
+        }
+        
         getExportToolspecCheckBox().setSelected(ConfigurationManager.getConfiguration().isExportToolspecific());
         getImportToolspecCheckBox().setSelected(ConfigurationManager.getConfiguration().isImportToolspecific());
         getExportTpnElementAsNameCheckBox().setSelected(ConfigurationManager.getConfiguration().isTpnSaveElementAsName());
     }
 
-    private boolean checkHomeDir()
-    {
-        if (new File(getHomeDirTextField().getText()).isDirectory()) return true;
-        else return false;
-    }
-
-    // ####################### GUI COMPONENTS ###################### */
+        // ####################### GUI COMPONENTS ###################### */
 
     private JPanel getHomeDirPanel()
     {
@@ -220,9 +217,7 @@ public class ConfFilePanel extends AbstractConfPanel
                 {}
 
                 public void keyReleased(KeyEvent e)
-                {
-                    checkHomeDir();
-                }
+                {}
 
                 public void keyTyped(KeyEvent e)
                 {}
@@ -243,15 +238,14 @@ public class ConfFilePanel extends AbstractConfPanel
                 public void actionPerformed(ActionEvent e)
                 {
                     JFileChooser jfc;
-                    if (checkHomeDir())
-                    {
-                        jfc = new JFileChooser(new File(getHomeDirTextField().getText()));
-                    } else if (new File(ConfigurationManager.getConfiguration().getHomedir()).isDirectory())
+                    jfc = new JFileChooser(new File(getHomeDirTextField().getText()));
+                    if (new File(ConfigurationManager.getConfiguration().getHomedir()).isDirectory())
                     {
                         jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getHomedir()));
-                    } else
+                    } 
+                    else
                     {
-                        jfc = new JFileChooser(new File(ConfigurationManager.getStandardConfiguration().getHomedir()));
+                        jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getDefaultHomedir()));
 
                     }
                     jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -390,17 +384,12 @@ public class ConfFilePanel extends AbstractConfPanel
                 {
                     if (getHomeDirDefaultCheckBox().isSelected())
                     {
-                        if (new File(ConfigurationManager.getConfiguration().getHomedir()).isDirectory())
-                        {
-                            getHomeDirTextField().setText(ConfigurationManager.getConfiguration().getHomedir());
-                            getHomeDirTextField().setEditable(false);
-                            getHomeDirChoose().setEnabled(false);
-                            checkHomeDir();
-                        } else
-                        {
-                            getHomeDirTextField().setText(Messages.getString("Configuration.Files.Error.HomeDirectory") + ConfigurationManager.getConfiguration().getHomedir());
-                        }
-                    } else
+                    	String fn = ConfigurationManager.getConfiguration().getDefaultHomedir();
+                   		getHomeDirTextField().setText(fn);
+                        getHomeDirTextField().setEditable(false);
+                        getHomeDirChoose().setEnabled(false);
+                    } 
+                    else
                     {
                         getHomeDirTextField().setEditable(true);
                         getHomeDirChoose().setEnabled(true);

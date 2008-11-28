@@ -89,9 +89,9 @@ public class ConfToolsPanel extends AbstractConfPanel
     }
 
     /**
-     * @see AbstractConfPanel#readConfigruation()
+     * @see AbstractConfPanel#readConfiguration()
      */
-    public void readConfigruation()
+    public void readConfiguration()
     {
         getWoflanCheckBox().setSelected(ConfigurationManager.getConfiguration().isUseWoflan());
         getWoflanTextField().setText(ConfigurationManager.getConfiguration().getWoflanPath());

@@ -55,7 +55,7 @@ public class DummyNodePanel extends AbstractConfPanel
         return true;
     }
 
-    public void readConfigruation()
+    public void readConfiguration()
     {
 
     }

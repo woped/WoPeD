@@ -11,6 +11,9 @@
 	</target>
 	
 	<target name="makejar" depends="compile">
+		<delete>
+			<fileset file="lib/woped*.jar" />
+		</delete>
 		<jar destfile="lib/woped-core-${COREVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 		</jar>

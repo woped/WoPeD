@@ -1,5 +1,7 @@
 package org.processmining.framework.models.petrinet.algorithms;
 
+import java.io.File;
+
 public class Woflan {
     public native int Open(String theFileName);
     public native int Close(int theNet);
@@ -137,27 +139,36 @@ public class Woflan {
 
     static {
         try {
+            String path = Class.class.getResource("/org").toString();
+            if (path.indexOf("jar:file:") != -1) {
+                String fn = path.replaceAll("jar:file:/", "");
+                // find jar start
+                int n = fn.indexOf("!");
+                if (n == -1) n = fn.length();
+                // read Jar File Name
+                fn = fn.substring(0, n);
+                // Replace all whitespaces in filename
+                fn = fn.replaceAll("%20", " ");
+                int i;
+                String fn1 = "";
+                for (i = fn.length()-1; fn.charAt(i) != '/'; i--);
+                fn = fn.substring(0, i);
+                fn += File.separator;
+        		for (i = 0; i < fn.length(); i++) {
+        			if (fn.charAt(i) == '/') {
+        				fn1 += File.separator;
+        			} else
+        				fn1 += fn.charAt(i);
+        		}
+
+                path = fn1 + ";" + System.getProperty("java.library.path", ".");
+                System.out.println("Library path: " + path);
+                System.setProperty("java.library.path", path);
+            }
+            
             System.loadLibrary("WofJava");
         } catch (Exception ex) {
             System.err.println("Error while loading Woflan: " + ex.getMessage());
         }
     }
-
-  /* 
-    // Example method
-    // Commented out, not part of the actual class for Woflan usage
-    public static void main(String args[]) {
-        int aCtr, anotherCtr, aNet;
-        String aStr;
-        Woflan aWoflan = new Woflan();
-        for (aCtr = 0; aCtr < args.length; aCtr++) {
-            aNet = aWoflan.Open(args[aCtr]);
-            aStr = aWoflan.Info(aNet, aWoflan.InfoNofP, 0, 0);
-            //int aNofP = Integer.ParseInt(aStr);
-            System.out.print("Number of places: ");
-            System.out.println(aStr);
-            aNet = aWoflan.Close(aNet);
-        }
-    }
-   */
 } 

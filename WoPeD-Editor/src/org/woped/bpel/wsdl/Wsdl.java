@@ -263,9 +263,6 @@ public class Wsdl {
 				break;
 
 			case XMLStreamConstants.CHARACTERS:
-/*					Characters characters = event.asCharacters();
-					if (!characters.isWhiteSpace())
-						System.out.println(characters.getData());*/
 				break;
 
 // 				A tag has been closed. Depending on the name of the tag a certain boolean variable is set to value "false".

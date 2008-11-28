@@ -23,15 +23,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.filechooser.FileFilter;
 
 import org.woped.server.IServer;
 import org.woped.server.ServerImpl;
 
 public class ServerUI extends JFrame {
 
-	private IServer server;	
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private JButton dirchooser;
 	private JButton start;
 			

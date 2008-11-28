@@ -47,18 +47,17 @@ public abstract class AbstractConfPanel extends JPanel
     private JPanel namePanel = null;
 
     /**
-     * Applys the configuration. Writes the displayed values in the configration
-     * object.
+     * Resets the configuration to the state of entry (e. g. after Cancel-Button).
      * 
      * @return
      */
     public abstract boolean applyConfiguration();
 
     /**
-     * Reads the configuration. Reads the stored values from the configration
+     * Reads the configuration. Reads the stored values from the configuration
      * object into the displayed fields.
      */
-    public abstract void readConfigruation();
+    public abstract void readConfiguration();
 
     /**
      * Constructor for AbstractConfPanel.

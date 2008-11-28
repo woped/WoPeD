@@ -26,6 +26,9 @@
 	</target>
 	
 	<target name="makejar" depends="compile">
+		<delete>
+			<fileset file="lib/woped*.jar" />
+		</delete>
 		<jar destfile="lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="lib" file="lib/pnmlBeans.jar" />

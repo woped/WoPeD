@@ -6,6 +6,10 @@
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 	<filter token="flanaganversion" value="${FLANAGANVERSION}" />
+	<filter token="jcalendarversion" value="${JCALENDARVERSION}" />
+	<filter token="jsrversion" value="${JSRVERSION}" />
+	<filter token="ruddiversion" value="${RUDDIVERSION}" />
+	<filter token="staxversion" value="${STAXVERSION}" />
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="coreversion" value="${COREVERSION}${SNAPSHOT}" />
 	<filter token="editorversion" value="${EDITORVERSION}${SNAPSHOT}" />
@@ -20,13 +24,9 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="compile, makesubprojects, makedir, setversion, copyfiles, buildjar, build-WopedServerService, build-WopedServerUI, makeInstallApplet, purge" />
-	<!-- makesrcdist -->
-	<target name="clean">
-		<delete dir="dist" />
-	</target>
+	<target name="makedistribution" depends="makesubprojects, makedir, setversion, copyfiles, buildjar, build-WopedServerService, build-WopedServerUI, makeInstallApplet, purge" />
 
-	<target name="makedir" depends="clean">
+	<target name="makedir">
 		<mkdir dir="dist" />
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
@@ -44,20 +44,26 @@
 		<copy file="../WoPeD-Translations/src/org/woped/translations/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
 		<copy file="dist/Messages.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages.properties" />
 		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages_de.properties" />
-		<copy file="log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" />
+		<copy file="build-tools/log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" />
 	</target>
 
 	<target name="copyfiles">
 		<copy todir="dist/nets" file="build-tools/setup/Example.pnml" />
+		<copy todir="dist/lib" file="../WoPeD-BPELExport/lib/bpelBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
 		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
 		<copy todir="dist" file="../WoPeD-StandaloneRunner/WofJava.dll" />
+		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
+		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD$1.class" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/bpelBeans.jar" />
 
 		<copy todir="dist/html/en">
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/en/*.htm" />

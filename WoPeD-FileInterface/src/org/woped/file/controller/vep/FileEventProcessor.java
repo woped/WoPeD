@@ -107,16 +107,14 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					&& getMediator().getUi().getEditorFocus()
 							.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
 
-				boolean succeed = TPNExport.save(ConfigurationManager
-						.getConfiguration().getHomedir()
-						+ "tempWoflanAnalyse.tpn",
-						(PetriNetModelProcessor) getMediator().getUi()
+				String fn = ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn";
+				
+				boolean succeed = TPNExport.save(fn, 
+							(PetriNetModelProcessor) getMediator().getUi()
 								.getEditorFocus().getModelProcessor());
 
 				if (succeed) {
-					File f = new File(ConfigurationManager.getConfiguration()
-							.getHomedir()
-							+ "tempWoflanAnalyse.tpn");
+					File f = new File(fn);
 					if (f.exists()) {
 						if (!bRunWofLanDLL) {
 							Process process = null;
@@ -261,12 +259,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	 */
 
 	private boolean isSound(EditorVC editor) {
-		TPNExport.save(ConfigurationManager.getConfiguration().getHomedir()
-				+ "tempWoflanAnalyse.tpn",
+		String fn = ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn";
+		TPNExport.save(fn,
 				(PetriNetModelProcessor) getMediator().getUi().getEditorFocus()
 						.getModelProcessor());
-		File f = new File(ConfigurationManager.getConfiguration().getHomedir()
-				+ "tempWoflanAnalyse.tpn");
+		File f = new File(fn);
 
 		WoflanAnalysis wa = new WoflanAnalysis(editor, f);
 		StructuralAnalysis sa = new StructuralAnalysis(editor);
@@ -358,9 +355,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		if (editor != null) {
 			// Open save as Dialog
 			JFileChooser jfc;
-			if (ConfigurationManager.getConfiguration().getHomedir() != null) {
-				jfc = new JFileChooser(new File(ConfigurationManager
-						.getConfiguration().getHomedir()));
+			String hd = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
+			if (hd != null) {
+				jfc = new JFileChooser(new File(hd));
 			} else {
 				jfc = new JFileChooser();
 			}
@@ -506,7 +503,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 							getMediator().getUi().updateRecentMenu();
 							editor.setSaved(true);
 							ConfigurationManager.getConfiguration()
-									.setCurrentWorkingDir(editor.getFilePath());
+									.setCurrentWorkingdir(editor.getFilePath());
 							succeed = true;
 						}
 						// BPEL-Export
@@ -522,8 +519,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 								succeed = BPEL.getBPELMainClass().saveFile(
 										editor.getFilePath(), editor);
 								ConfigurationManager.getConfiguration()
-										.setCurrentWorkingDir(
-												editor.getFilePath());
+										.setCurrentWorkingdir(editor.getFilePath());
 							} else {
 								JOptionPane
 										.showMessageDialog(
@@ -539,7 +535,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 									(PetriNetModelProcessor) editor
 											.getModelProcessor());
 							ConfigurationManager.getConfiguration()
-									.setCurrentWorkingDir(editor.getFilePath());
+									.setCurrentWorkingdir(editor.getFilePath());
 
 						} else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
 							String arg[] = { editor.getName() };
@@ -597,12 +593,10 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		if (editor != null) {
 			// Open save as Dialog
 			JFileChooser jfc;
-			if (ConfigurationManager.getConfiguration().getCurrentWorkingDir() != null
-					&& !ConfigurationManager.getConfiguration()
-							.getCurrentWorkingDir().equals("")) {
+			if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
 				jfc = new JFileChooser(new File(ConfigurationManager
-						.getConfiguration().getCurrentWorkingDir()));
-			} else if (ConfigurationManager.getConfiguration().getHomedir() != null) {
+						.getConfiguration().getCurrentWorkingdir()));
+			} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
 				jfc = new JFileChooser(new File(ConfigurationManager
 						.getConfiguration().getHomedir()));
 			} else {
@@ -648,13 +642,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
 						editor.setFilePath(savePath.concat(fileName));
 						// getTaskBar().getsetToolTipText(getActiveEditor().getFileName());
 						// ... and saving
-						ConfigurationManager.getConfiguration()
-								.setCurrentWorkingDir(savePath);
+						ConfigurationManager.getConfiguration().setCurrentWorkingdir(savePath);
 						LoggerManager.debug(Constants.FILE_LOGGER,
 								"Current working dir is: "
 										+ ConfigurationManager
 												.getConfiguration()
-												.getCurrentWorkingDir());
+												.getCurrentWorkingdir());
 						editor.setDefaultFileType(((FileFilterImpl) jfc
 								.getFileFilter()).getFilterType());
 						editor.setFilePath(savePath.concat(fileName));
@@ -765,13 +758,14 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	 */
 	public IEditor openEditor() {
 		JFileChooser jfc;
-
-		if (ConfigurationManager.getConfiguration().getCurrentWorkingDir() != null) {
-			jfc = new JFileChooser(new File(ConfigurationManager
-					.getConfiguration().getCurrentWorkingDir()));
-		} else if (ConfigurationManager.getConfiguration().getHomedir() != null) {
-			jfc = new JFileChooser(new File(ConfigurationManager
-					.getConfiguration().getHomedir()));
+		String fn;
+		
+		if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
+			fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
+			jfc = new JFileChooser(new File(fn));
+		} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+			fn = ConfigurationManager.getConfiguration().getHomedir();
+			jfc = new JFileChooser(new File(fn));
 		} else {
 			jfc = new JFileChooser();
 		}
@@ -861,7 +855,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 								file.getName(), file.getAbsolutePath());
 					if (filter != FileFilterImpl.SAMPLEFilter)
 						ConfigurationManager.getConfiguration()
-								.setCurrentWorkingDir(file.getAbsolutePath());
+								.setCurrentWorkingdir(file.getAbsolutePath());
 					// add Editor
 					LoggerManager.info(Constants.FILE_LOGGER,
 							"Petrinet loaded from file: "

@@ -101,7 +101,6 @@ public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
     					.size() != 1)
     	{
     		getSimpleTransContainer().removeAllSourceElements(otherModel.getId());
-    		// System.out.println("INNER Source Elements deleted");
     	}
     }    
 }

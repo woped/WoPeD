@@ -14,6 +14,9 @@
 	</target>
 	
 	<target name="makejar" depends="compile">
+		<delete>
+			<fileset file="lib/woped*.jar" />
+		</delete>
 		<jar destfile="lib/woped-translations-${TRANSLATIONVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 		</jar>

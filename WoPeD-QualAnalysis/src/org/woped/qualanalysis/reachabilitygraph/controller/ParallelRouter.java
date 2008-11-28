@@ -83,7 +83,6 @@ public class ParallelRouter extends LoopRouting {
 		}
 		
 		if (nodeFrom == nodeTo) {
-//			System.out.println("nodeFrom and NodeTo are the same cell view");
 			return null;
 		}
 
@@ -106,28 +105,15 @@ public class ParallelRouter extends LoopRouting {
 
 		// For one edge, no intermediate point
 		if (edges.length >= 2) {
-//			System.out.println("EdgeView indicates " + edges.length
-//					+ " parallel edges");
-			// Looking for position of edge
+		// Looking for position of edge
 			int position = 0;
-//			System.out.println();
-//			System.out.println("edges.length = " + edges.length);
 			for (int i = 0; i < edges.length; i++) {
-//				System.out
-//				.println("edge value = "
-//						+ String.valueOf(((DefaultGraphCell) edges[i])
-//								.getUserObject()));
-//				System.out
-//				.println("compared edge value = "
-//						+ String.valueOf(((DefaultGraphCell) edge.getCell())
-//								.getUserObject()));
 				Object e = edges[i];
 				if (e == edge.getCell()) {
 					position = i + 1;
 				}
 			}
-//			System.out.println("position = " + position);
-			// Looking for position of source/target nodes (edge=>port=>vertex)
+		// Looking for position of source/target nodes (edge=>port=>vertex)
 			Point2D from;
 			Point2D perimeterPoint = edge.getTarget() != null ? edge
 					.getPoint(edge.getPointCount() - 1) : AbstractCellView
@@ -136,7 +122,6 @@ public class ParallelRouter extends LoopRouting {
 				perimeterPoint = AbstractCellView.getCenterPoint(nodeTo);
 			}
 			if (edge.getSource() == null || edge.getSource().getParentView() == null) {
-//				System.out.println(edge+"-source promoted");
 				from = nodeFrom.getPerimeterPoint(edge,
 						AbstractCellView.getCenterPoint(nodeFrom),
 						perimeterPoint);
@@ -149,7 +134,6 @@ public class ParallelRouter extends LoopRouting {
 			}
 			Point2D to;
 			if (edge.getTarget() == null || edge.getTarget().getParentView() == null) { // INV: nodeTo != null
-//				System.out.println(edge+"-target promoted");
 				to = nodeTo.getPerimeterPoint(edge, AbstractCellView.getCenterPoint(nodeTo), from);
 			} else {
 				to = edge.getTarget().getParentView().getPerimeterPoint
@@ -175,7 +159,6 @@ public class ParallelRouter extends LoopRouting {
 				// Calc of radius
 
 				double length = Math.sqrt(dx * dx + dy * dy);
-//				System.out.println("length = " + length);
 				double rx = dx / length;
 				double ry = dy / length;
 
@@ -400,7 +383,6 @@ public class ParallelRouter extends LoopRouting {
 
 		// Optimise for the standard case of no child cells
 		if (cells1.size() == 1 && cells2.size() == 1) {
-			// System.out.println("cells have no valid children");
 			return DefaultGraphModel
 					.getEdgesBetween(model, cell1, cell2, false);
 		}

@@ -135,9 +135,9 @@ public class ConfGuiPanel extends AbstractConfPanel
     }
 
     /**
-     * @see AbstractConfPanel#readConfigruation()
+     * @see AbstractConfPanel#readConfiguration()
      */
-    public void readConfigruation()
+    public void readConfiguration()
     {
         setSelectedLnfClassName(UIManager.getLookAndFeel().getClass().getName());
     }

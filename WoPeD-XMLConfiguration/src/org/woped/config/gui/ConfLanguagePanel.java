@@ -89,9 +89,9 @@ public class ConfLanguagePanel extends AbstractConfPanel
     }
 
     /**
-     * @see AbstractConfPanel#readConfigruation()
+     * @see AbstractConfPanel#readConfiguration()
      */
-    public void readConfigruation()
+    public void readConfiguration()
     {
         int selected = 0;
         for (int i = 0; i < language.length; i++)

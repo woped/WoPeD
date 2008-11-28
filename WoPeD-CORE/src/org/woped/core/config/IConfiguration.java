@@ -9,17 +9,21 @@ import java.util.Vector;
 public interface IConfiguration
 {
     //
-    //
     public boolean initConfig();
 
+    //
     public boolean readConfig(File file);
 
+    //
     public boolean saveConfig(File file);
 
+    //
     public boolean saveConfig();
 
+    //
     public void setLocale();
 
+    //
     public Locale getLocale();
 
     //    
@@ -83,28 +87,46 @@ public interface IConfiguration
     public void setWindowY(int windowY);
 
     //
-    public String getHomedir();
-
-    //
     public String getLogdir();
-
-    //
-    public boolean isHomedirSet();
 
     //
     public void setLogdir(String logdir);
     
     //
-    public void setHomedir(String homedir);
-
-    //    
-    public boolean isUseWoflan();
+    public boolean isDefaultHomedirSet();
 
     //
-    public String getWoflanPath();
+    public String getDefaultHomedir();
+
+    //
+    public void setDefaultHomedir(String dhdir);
+
+    //
+    public boolean isCurrentWorkingdirSet();
+
+    //
+    public String getCurrentWorkingdir();
+
+    //
+    public void setCurrentWorkingdir(String cwdir);
+
+    //
+    public boolean isHomedirSet();
+
+    //
+    public String getHomedir();
+
+    //
+    public void setHomedir(String cwdir);
+
+     //    
+    public boolean isUseWoflan();
 
     //    
     public void setUseWoflan(boolean useWoflan);
+
+    //
+    public String getWoflanPath();
 
     //    
     public void setWoflanPath(String woflanPath);
@@ -127,48 +149,63 @@ public interface IConfiguration
     //
     public String getLookAndFeel();
 
+    //
     public void setShowGrid(boolean showGrid);
 
+    //
     public boolean isShowGrid();
 
+    //
     public void setArrowWidth(int width);
 
+    //
     public int getArrowWidth();
 
+    //
     public void setArrowheadSize(int headSize);
 
+    //
     public int getArrowheadSize();
 
+    //
     public boolean isFillArrowHead();
 
+    //
     public void setFillArrowHead(boolean fill);
 
+    //
     public boolean isRoundRouting();
 
+    //
     public void setRoundRouting(boolean round);
 
-    public String getCurrentWorkingDir();
-
-    public void setCurrentWorkingDir(String dir);
-
+    //
     public Color getSelectionColor();
 
+    //
     public void setSelectionColor(Color color);
 
+    //
     public Color getPortColor();
 
+    //
     public void setPortColor(Color color);
 
+    //
     public void setLocaleLanguage(String language);
 
+    //
     public String getLocaleLanguage();
 
+    //
     public void setLocaleCountry(String country);
 
+    //
     public String getLocaleCountry();
 
+    //
     public void setLocaleVariant(String variant);
 
+    //
     public String getLocaleVariant();
-
 }

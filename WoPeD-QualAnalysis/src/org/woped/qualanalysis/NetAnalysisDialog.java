@@ -40,7 +40,6 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		m_structuralAnalysis = new StructuralAnalysis(m_currentEditor);
 		m_woflanAnalysis = new WoflanAnalysis(m_currentEditor, temporaryFile);
 		
-		
 		setSize(640,480);
 		// Center the window on the desktop
 		setLocationRelativeTo(null);
