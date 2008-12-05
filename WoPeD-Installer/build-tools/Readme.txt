@@ -54,15 +54,14 @@ Download and Run
 ----------------
  
 Download the latest version via the WoPeD website www.woped.org.
-For Microsoft Windows, download WoPeD-install-windows-X.Y.Z.zip 
-(where X.Y.Z stands for the current WoPeD version), unpack it with
-an archiving tool and run the contained executable WoPeD-install.exe. 
+For Microsoft Windows, download WoPeD-install-windows-@wopedversion@.zip, 
+unpack it with an archiving tool and run the contained executable 
+WoPeD-install.exe. 
 Additionally you may want to assign WoPeD.exe as the standard 
 application for the file type "pnml" to open a net with WoPeD 
 just by double-clicking on the associated PNML document. 
-For Linux, download WoPeD-install-linux-X.Y.Z.tgz (where X.Y.Z 
-stands for the current WoPeD version), unpack und decompress 
-it with the tar utility. Then run the contained executable 
+For Linux, download WoPeD-install-linux-@wopedversion@.tgz, unpack and 
+decompress it with the tar utility. Then run the contained executable 
 WoPeD-install from the command line or desktop. 
 In both cases, a setup wizard appears and will guide you through 
 the installation process, letting you choose several installation
@@ -70,9 +69,9 @@ options like the target folder or the creation of a shortcut on
 your desktop and in the start menu. Note that the creation of 
 desktop and start menu shortcuts may not work on all Linux-based 
 GUI systems.
-For MacOS, download WoPeD-macos-X.Y.Z.tgz (where X.Y.Z stands 
-for the current WoPeD version) and unpack it into the target folder
-of your choice. The rest should be done automatically by MacOS.
+For MacOS, download WoPeD-install-macos-@wopedversion@.app.zip and unpack 
+it into the target folder of your choice. The rest should be done 
+automatically by MacOS.
 WoPeD ist now ready to be started. 
 
 That's it!
@@ -96,12 +95,16 @@ Root directory:
 lib directory
   ./lib/bpelBeans.jar               (BPEL model description library)
   ./lib/confBeans.jar               (Configuration management library)
-  ./lib/flanagan-@flanaganversion@.jar             (Random number generator library)
-  ./lib/jcalendar-@jcalendarversion@.jar             (Calendar utility library)
-  ./lib/jgraph-@jgraphversion@.jar            (Graph drawing library)
-  ./lib/log4j-@log4jversion@.jar             (Event logger library)
   ./lib/pnmlBeans.jar               (Petri net model description library)
   ./lib/pnmlBeans_old.jar           (Petri net model description library, old version)
+  ./lib/flanagan-@flanaganversion@.jar             (Random number generator library)
+  ./lib/jcalendar-@jcalendarversion@.jar             (Calendar utility library)
+  ./lib/jsr_@jsrversion@.jar        		(JSR utility library)
+  ./lib/jgraph-@jgraphversion@.jar            (Graph drawing library)
+  ./lib/log4j-@log4jversion@.jar             (Event logger library)
+  ./lib/mysql-connector-@mysqlversion@.jar             (MySQL connector library)
+  ./lib/ruddi-@ruddiversion@.jar             (UDDI access library)
+  ./lib/stax-@staxversion@.jar             (Stax library)
   ./lib/xbean.jar                   (Bean generation library)
 
 doc directory

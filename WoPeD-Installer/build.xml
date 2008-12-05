@@ -199,6 +199,9 @@
 			</tarfileset>
 		</tar>
 		<copy file="dist/WoPeD-install.exe" tofile="installers/WoPeD-install.exe" />
+		<copy file="dist/Readme.txt" tofile="installers/Readme-${WOPEDVERSION}${SNAPSHOT}.txt" />
+		<copy file="dist/Changelog.txt" tofile="installers/Changelog-${WOPEDVERSION}${SNAPSHOT}.txt" />
+
 	</target>
 
 	<target name="makeMacOSinstaller">
@@ -212,7 +215,18 @@
 		</copy>
 
 		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java/lib">
-			<fileset dir="dist/lib" />
+			<fileset file="../WoPeD-BPELExport/lib/bpelBeans.jar" />
+			<fileset file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
+			<fileset file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
+			<fileset file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
+			<fileset file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/xbean.jar" />
 		</copy>
 
 		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java/doc">
