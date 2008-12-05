@@ -29,12 +29,6 @@ public interface IConfiguration
     //    
     public boolean isEditingOnCreation();
 
-    //
-    public int getModelProcessorType();
-
-    //
-    public void setModelProcessorType(int type);
-
     //    
     public void setEditingOnCreation(boolean editingOnCreation);
 
@@ -130,6 +124,12 @@ public interface IConfiguration
 
     //    
     public void setWoflanPath(String woflanPath);
+
+    //
+    public boolean getColorOn();
+
+    //
+    public void setColorOn(boolean b);
 
     //
     public boolean isSmartEditing();

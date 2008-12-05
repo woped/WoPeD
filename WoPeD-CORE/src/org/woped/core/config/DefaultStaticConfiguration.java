@@ -69,6 +69,8 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static boolean         ACTIVATE_NET_ROUTING       = false;
     public static boolean         ACTIVATE_ANNEALING_LAYOUT  = false;
 
+    private boolean               colorOn                 	 = false;
+    
     public void addRecentFile(String name, String path)
     {
     // 	// NOT SUPPORTED
@@ -112,6 +114,16 @@ public class DefaultStaticConfiguration implements IConfiguration
     public String getLogdir()
     {
         return logdir;
+    }
+
+    public boolean getColorOn()
+    {
+        return colorOn;
+    }
+
+    public void setColorOn(boolean b)
+    {
+        colorOn = b;
     }
 
     public String getLookAndFeel()

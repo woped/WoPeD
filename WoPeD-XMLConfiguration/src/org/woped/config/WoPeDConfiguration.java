@@ -40,18 +40,13 @@ public class WoPeDConfiguration implements IConfiguration {
 
 	private static int RECENTFILES_SIZE = 10;
 
-	private int modelProcessor = 0;
-	
-	private String homedir = "";
-	
 	private String defaultHomedir = "";
 
 	private String currentWorkingdir = "";
 
 	private static XmlOptions xmlOptions = new XmlOptions();
 
-	private Vector<WoPeDRecentFile> runtimeRecentFiles = new Vector<WoPeDRecentFile>(
-			RECENTFILES_SIZE);
+	private Vector<WoPeDRecentFile> runtimeRecentFiles = new Vector<WoPeDRecentFile>(RECENTFILES_SIZE);
 
 	private boolean startedAsApplet;
 
@@ -115,6 +110,32 @@ public class WoPeDConfiguration implements IConfiguration {
 		return getUserdir() + CONFIG_FILE;
 	}
 
+	public String getDefaultHomedir() {
+		return defaultHomedir;
+	}
+
+	public boolean isDefaultHomedirSet() {
+		return defaultHomedir != null && ! defaultHomedir.equals("");
+	}
+	
+	public void setDefaultHomedir(String dhd) {
+		LoggerManager.info(Constants.CONFIG_LOGGER, "Setting default home dir: " + dhd);
+		defaultHomedir = dhd;
+	}
+
+	public String getCurrentWorkingdir() {
+		return currentWorkingdir;
+	}
+
+	public boolean isCurrentWorkingdirSet() {
+		return currentWorkingdir != null && !currentWorkingdir.equals("");
+	}
+	
+	public void setCurrentWorkingdir(String cwd) {
+		LoggerManager.info(Constants.CONFIG_LOGGER, "Setting current working dir: " + cwd);			
+		currentWorkingdir = cwd;
+	}
+
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
@@ -125,6 +146,7 @@ public class WoPeDConfiguration implements IConfiguration {
 
 		if (!startedAsApplet) {
 			String fn = getUserConfigFile();
+			setDefaultHomedir(getUserdir() + "nets" + File.separator);
 			
 			if (new File(fn).exists()) {
 				LoggerManager.info(Constants.CONFIG_LOGGER,	"Loading configuration from " + fn + ".");
@@ -135,8 +157,6 @@ public class WoPeDConfiguration implements IConfiguration {
 								"No configuration file found, using built-in settings.");
 				confOk = readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BUILTIN_FILE));
 			}
-
-			setDefaultHomedir(getUserdir() + "nets" + File.separator);
 
 			File ud = new File(getUserdir());
 			if (! ud.exists())
@@ -159,6 +179,7 @@ public class WoPeDConfiguration implements IConfiguration {
 			System.exit(0);
 		}
 
+//		setColorOn(true);
 		return confOk;
 	}
 
@@ -193,7 +214,8 @@ public class WoPeDConfiguration implements IConfiguration {
 		if (file.exists()) {
 			try {
 				// Parse the instance into the type generated from the schema.
-				confDoc = ConfigurationDocument.Factory.parse(file);
+				ConfigurationDocument c = ConfigurationDocument.Factory.parse(file);
+				confDoc = c;
 				return readConfig(confDoc);
 			} catch (XmlException e) {
 				LoggerManager.error(Constants.CONFIG_LOGGER,
@@ -250,7 +272,10 @@ public class WoPeDConfiguration implements IConfiguration {
 			}
 
 			// Homedir
-			setHomedir(config.getGeneral().getHomedir());
+			if (isHomedirSet())
+				setHomedir(config.getGeneral().getHomedir());
+			else
+				setHomedir(getDefaultHomedir());
 
 			// Current working dir for file operations
 			setCurrentWorkingdir(getHomedir());
@@ -264,8 +289,7 @@ public class WoPeDConfiguration implements IConfiguration {
 					.getToolspecific());
 
 			// TPN Export
-			boolean b = config.getTools().getExporting().getTpnExportElementAsName();
-			setTpnSaveElementAsName(b);
+			setTpnSaveElementAsName(config.getTools().getExporting().getTpnExportElementAsName());
 
 			// Tools
 			setUseWoflan(config.getTools().getWoflan().getUseWoflan());
@@ -275,6 +299,9 @@ public class WoPeDConfiguration implements IConfiguration {
 			setEditingOnCreation(config.getEditor().getEditOnCreation());
 			setInsertCOPYwhenCopied(config.getEditor().getInsertCopy());
 			setSmartEditing(config.getEditor().getSmartEditing());
+			
+			// Coloring
+			setColorOn(config.getColoring().getColorOn());
 
 			LoggerManager.info(Constants.CONFIG_LOGGER,
 					"Configuration loaded successfully.");
@@ -327,7 +354,7 @@ public class WoPeDConfiguration implements IConfiguration {
 				xmlRecent.setPath(recent.getPath());
 			}
 
-			getDocument().getConfiguration().getGeneral().setHomedir(homedir);
+//			getDocument().getConfiguration().getGeneral().setHomedir(homedir);
 			getDocument().save(file, xmlOptions);
 			LoggerManager.info(Constants.CONFIG_LOGGER, "Configuration saved.");
 			return true;
@@ -462,6 +489,14 @@ public class WoPeDConfiguration implements IConfiguration {
 
 	}
 
+	/**
+	 * Sets the recentFiles.
+	 * 
+	 * @param recentFiles
+	 *            The recentFiles to set / public void setRecentFiles(Vector
+	 *            recentFiles) {
+	 *            getDocument().getConfiguration().getGeneral().setRecentFilesArray((RecentFile[])recentFiles.toArray()); }
+	 */
 	public void removeRecentFile(String name, String path) {
 		// delete the old entry if exists.
 		for (int idx = 0; idx < runtimeRecentFiles.size(); idx++) {
@@ -559,14 +594,12 @@ public class WoPeDConfiguration implements IConfiguration {
 	 * @return String
 	 */
 	public String getHomedir() {
-		if (isHomedirSet())
-			return homedir;
-		else
-			return defaultHomedir;
+		return getDocument().getConfiguration().getGeneral().getHomedir();
 	}
 
 	public boolean isHomedirSet() {
-		return homedir != null && ! homedir.equals("");
+		String hd = getDocument().getConfiguration().getGeneral().getHomedir();
+		return hd != null && ! hd.equals("");
 	}
 
 	/**
@@ -577,43 +610,8 @@ public class WoPeDConfiguration implements IConfiguration {
 	 */
 	public void setHomedir(String hd) {
 		LoggerManager.info(Constants.CONFIG_LOGGER, "Setting home dir: " + hd);
-		homedir = hd;
+		getDocument().getConfiguration().getGeneral().setHomedir(hd);
 	}
-
-	public String getDefaultHomedir() {
-		return defaultHomedir;
-	}
-
-	public boolean isDefaultHomedirSet() {
-		return defaultHomedir != null && ! defaultHomedir.equals("");
-	}
-	
-	public void setDefaultHomedir(String dhd) {
-		LoggerManager.info(Constants.CONFIG_LOGGER, "Setting default home dir: " + dhd);
-		defaultHomedir = dhd;
-	}
-
-	public String getCurrentWorkingdir() {
-		return currentWorkingdir;
-	}
-
-	public boolean isCurrentWorkingdirSet() {
-		return currentWorkingdir != null && !currentWorkingdir.equals("");
-	}
-	
-	public void setCurrentWorkingdir(String cwd) {
-		LoggerManager.info(Constants.CONFIG_LOGGER, "Setting current working dir: " + cwd);			
-		currentWorkingdir = cwd;
-	}
-
-	/**
-	 * Sets the recentFiles.
-	 * 
-	 * @param recentFiles
-	 *            The recentFiles to set / public void setRecentFiles(Vector
-	 *            recentFiles) {
-	 *            getDocument().getConfiguration().getGeneral().setRecentFilesArray((RecentFile[])recentFiles.toArray()); }
-	 */
 
 	/**
 	 * Returns the useWoflan.
@@ -826,15 +824,6 @@ public class WoPeDConfiguration implements IConfiguration {
 		getDocument().getConfiguration().getEditor().setRoundRouting(round);
 	}
 
-	public int getModelProcessorType() {
-		return modelProcessor;
-	}
-
-	public void setModelProcessorType(int type) {
-		modelProcessor = type;
-
-	}
-
 	public Color getSelectionColor() {
 		return ConfigurationManager.getStandardConfiguration()
 				.getSelectionColor();
@@ -967,5 +956,16 @@ public class WoPeDConfiguration implements IConfiguration {
 
 	public Locale getLocale() {
 		return this.locale;
+	}
+	
+	public boolean getColorOn() {
+		if (getDocument().getConfiguration().getColoring() != null)
+			return getDocument().getConfiguration().getColoring().getColorOn();
+		else
+			return false;
+	}
+
+	public void setColorOn(boolean b) {
+		getDocument().getConfiguration().getColoring().setColorOn(b);
 	}
 }

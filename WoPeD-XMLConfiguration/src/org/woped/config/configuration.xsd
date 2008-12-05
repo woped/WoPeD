@@ -5,20 +5,13 @@
 		<xs:complexType>
 			<xs:all>
 				<xs:element name="gui" type="GUI"/>
-				<xs:element name="model">
-					<xs:complexType>
-						<xs:complexContent>
-							<xs:extension base="Model"/>
-						</xs:complexContent>
-					</xs:complexType>
-				</xs:element>
 				<xs:element name="editor" type="Editor"/>
 				<xs:element name="general" type="General"/>
 				<xs:element name="tools" type="Tool"/>
+				<xs:element name="coloring" type="Coloring"/>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
-	<xs:complexType name="Model"/>
 	<xs:complexType name="Importing">
 		<xs:sequence>
 			<xs:element name="toolspecific" type="xs:boolean"/>
@@ -85,6 +78,11 @@
 		<xs:sequence>
 			<xs:element name="useWoflan" type="xs:boolean" default="false" minOccurs="0"/>
 			<xs:element name="woflanPath" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Coloring">
+		<xs:sequence>
+			<xs:element name="colorOn" type="xs:boolean" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

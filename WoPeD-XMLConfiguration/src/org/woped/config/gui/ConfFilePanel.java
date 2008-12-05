@@ -152,8 +152,10 @@ public class ConfFilePanel extends AbstractConfPanel
      */
     public void readConfiguration()
     {
-        if (ConfigurationManager.getConfiguration().isHomedirSet()) {
-        	getHomeDirDefaultCheckBox().setSelected(false);
+       	String hd = ConfigurationManager.getConfiguration().getHomedir();
+    	String dhd = ConfigurationManager.getConfiguration().getDefaultHomedir();  	
+        if (ConfigurationManager.getConfiguration().isHomedirSet() && !hd.equals(dhd)) {
+       		getHomeDirDefaultCheckBox().setSelected(false);
         	getHomeDirTextField().setText(ConfigurationManager.getConfiguration().getHomedir());
             getHomeDirTextField().setEditable(true);
             getHomeDirChoose().setEnabled(true);
