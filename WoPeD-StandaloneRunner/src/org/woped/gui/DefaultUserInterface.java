@@ -64,6 +64,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private TaskBarVC             taskBar                = null;
     private ToolBarVC             toolBar                = null;
     private SimulatorBarVC		  simulatorBar			 = null;
+    private DefaultEditorFrame    frame                  = null;
     
     private MenuBarVC 			  menuBar 				 = null;
 
@@ -155,7 +156,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         if (editor != null)
         {
-            DefaultEditorFrame frame;
+            
             if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
             {
                 frame = new DefaultEditorFrame((EditorVC) editor, new PetriNetResourceEditor((EditorVC) editor), new EditorOperations((EditorVC) editor), new EditorData(),new PetriNetResourceEditorNew((EditorVC) editor));
@@ -329,7 +330,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     			 simulatorBar = simulatorList.get(getEditorFocus());    			   			 
     		 }
     		// getContentPane().remove(toolBar);
-    	     getContentPane().add(simulatorBar, BorderLayout.NORTH);
+    		 getContentPane().add(simulatorBar, BorderLayout.NORTH);
     	     simulatorBar.showChoice();  
     	     simulatorBar.addAnalysisButtons();
     	     getContentPane().repaint();
@@ -482,7 +483,17 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         
     }
     
+    /**
+     * This method provides the possibility to have a "started" TokenGame and the "ProcessTab" is viewed
+     * when simulation is running
+     * 
+     */
     public void setFirstTransitionActive(){
+    	// activate the "ProcessTab" to view the TokenGame
+    	
+    		frame.getProcessTab().setSelectedIndex(0);
+
+        // set first transition active
     	this.getSimBar().doPlayClick();
     }
 

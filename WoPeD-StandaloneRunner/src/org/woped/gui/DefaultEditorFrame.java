@@ -63,6 +63,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
     private EditorStatusBarVC      m_statusBar              = null;
     private EditorOperations       m_operationsEditor		= null;
     private EditorData             m_dataEditor				= null;
+    private JTabbedPane            tabbedPane               = null;
 
     public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor, EditorOperations opEditor, EditorData dEditor)
     {          
@@ -84,7 +85,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             
             // TabbedPane
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
-            JTabbedPane tabbedPane = new JTabbedPane();
+            tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
@@ -148,7 +149,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             // TabbedPane
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
             JScrollPane propScrollPaneneu = new JScrollPane(getPetriNetResourceEditorneu());
-            JTabbedPane tabbedPane = new JTabbedPane();
+            tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title.new"), propScrollPaneneu);
@@ -248,7 +249,15 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         setVisible(!arg0);
     }
 	
-
+	/**
+     * 
+     * get the process tab
+     */
+    public JTabbedPane getProcessTab()
+    {
+        return tabbedPane;
+    }
+    
 	//! Enable or disable the processing of all mouse events
 	//! (also for all child components)
 	//! @param if true, mouse events are accepted (default)

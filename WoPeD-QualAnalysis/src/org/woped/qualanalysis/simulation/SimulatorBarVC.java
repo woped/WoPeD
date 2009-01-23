@@ -288,6 +288,7 @@ public class SimulatorBarVC extends JToolBar implements IViewController, MouseLi
 		add(refer.getUIReference().getToolBar().getQuantCapButton());
 		add(refer.getUIReference().getToolBar().getQuantSimButton());
 		add(refer.getUIReference().getToolBar().getReachabilityGraphButton());
+		add(refer.getUIReference().getToolBar().getColoringButton());
 		//Remove them from standard ToolBar
 		refer.getUIReference().getToolBar().removeAnalysisButtons();
 	}

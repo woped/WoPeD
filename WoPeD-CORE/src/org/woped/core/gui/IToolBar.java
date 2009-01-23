@@ -24,6 +24,8 @@ public interface IToolBar {
 	
 	public AbstractButton getReachabilityGraphButton();
 	
+	public AbstractButton getColoringButton();
+	
 	public void addViewListener(IViewListener listener);
 
 	public String getId();
