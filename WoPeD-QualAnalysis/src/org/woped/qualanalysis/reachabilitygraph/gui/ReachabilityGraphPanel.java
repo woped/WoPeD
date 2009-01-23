@@ -10,6 +10,7 @@
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,8 +33,8 @@ import org.woped.qualanalysis.reachabilitygraph.data.Marking;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
+import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.translations.Messages;
-import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityToolbarVC;
 
 public class ReachabilityGraphPanel extends JPanel {
 
@@ -118,6 +119,14 @@ public class ReachabilityGraphPanel extends JPanel {
 	 * @param computeNew
 	 */
 	public void layoutGraph(int type, boolean computeNew) throws SimulationRunningException {
+		// Define the cursors
+		Cursor crWait = Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR);
+		Cursor crDefault = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
+		// Set the cursor when the RG is calculated the first time 
+		ReferenceProvider ref = new ReferenceProvider();		
+		ref.getMediatorReference().getUi().getComponent().setCursor(crWait);
+		// set the cursor when the RG is refreshed
+		toolbar.setCursor(crWait);
 		if(rgp_topPanel != null){
 			if(computeNew){
 				if(editor.isTokenGameEnabled()){
@@ -133,6 +142,9 @@ public class ReachabilityGraphPanel extends JPanel {
 			}
 			this.validate();
 		}
+		// set the default cursors
+		ref.getMediatorReference().getUi().getComponent().setCursor(crDefault);
+		toolbar.setCursor(crDefault);
 	}
 	/**
 	 * is used to get a new computed {@link ReachabilityJGraph} instance. Layout in a given type.
