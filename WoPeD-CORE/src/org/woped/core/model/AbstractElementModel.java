@@ -389,7 +389,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     
     public void setColor(Color c) {
     	// alpha 0-255, the lower the brighter 
-    	int alpha = 75;
+    	int alpha = 180;
     	this.understandabilityColor = new Color(c.getRed(),
 				c.getGreen(), c.getBlue(), alpha);
 	}	
