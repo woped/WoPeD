@@ -484,7 +484,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     {
     	if (m_coloringButton == null)
     	{
-    		m_coloringButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_COLORING));
+    		m_coloringButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_COLORING),true);
     	}
     	return m_coloringButton;
     }

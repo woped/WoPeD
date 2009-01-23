@@ -217,7 +217,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_ZOOMOUT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ZOOM_OUT, null, ACTIONID_ZOOMOUT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ZOOMOUT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_COLORING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.COLORING, null, ACTIONID_COLORING));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COLORING), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COLORING), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.COLORING);
         STATIC_ACTION_MAP.put(ACTIONID_TOGGLE_TOKENGAME, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOGGLE_TOKENGAME, null, ACTIONID_TOGGLE_TOKENGAME));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOGGLE_TOKENGAME), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.TOKENGAME);
         /* EDIT */
