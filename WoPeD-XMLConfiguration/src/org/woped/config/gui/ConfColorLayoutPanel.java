@@ -204,15 +204,23 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 			c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 0;
-			colorlayoutPanel.add(colorBoxPanel, c);			
+			colorlayoutPanel.add(colorBoxPanel, c);
+			//Panel for algorithm modes
+			JPanel algoModePanel = new JPanel();
+			algoModePanel.setLayout(new GridLayout(2,2,2,2));
+			c.weightx = 1;
+			c.gridx = 0;
+			c.gridy = 0;
+			algoModePanel.add(getAlgorithmModeLabel(),c);
 			c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 1;
-			colorlayoutPanel.add(getAlgorithmModeLabel(),c);
+			algoModePanel.  add(getAlgorithmModeComboBox(),c);
+			
 			c.weightx = 1;
 			c.gridx = 1;
-			c.gridy = 1;
-			colorlayoutPanel.add(getAlgorithmModeComboBox(),c);
+			c.gridy = 0;
+			colorlayoutPanel.add(algoModePanel, c);
 			setColorActive(true); //MN: Wird das noch gebraucht?
 		}
 		return colorlayoutPanel;
