@@ -124,8 +124,12 @@ import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.view.ViewFactory;
 import org.woped.translations.Messages;
+import org.woped.understandability.TransitionColoring;
 import org.woped.qualanalysis.GraphTreeModelSelector;
+import org.woped.qualanalysis.simulation.SimulatorBarVC;
 import org.woped.qualanalysis.simulation.controller.TokenGameController;
+import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.qualanalysis.reachabilitygraph.gui.*;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -183,6 +187,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	private boolean m_reachGraphEnabled = false;
 	
 	private boolean m_TokenGameEnabled = false;
+	
+	private boolean m_UnderstandabilityColoringEnabled = false;
 
 	private boolean m_tokenGameMode = false;
 
@@ -227,6 +233,12 @@ public class EditorVC extends JPanel implements KeyListener,
 	// ! Store a reference to the application mediator.
 	// ! It is used to create a new subprocess editor if required
 	private AbstractApplicationMediator m_centralMediator = null;
+	
+	private TransitionColoring m_understandColoring = null;
+
+	public TransitionColoring getM_understandColoring() {
+		return m_understandColoring;
+	}
 
 	public void closeEditor()
 	{		
@@ -341,6 +353,9 @@ public class EditorVC extends JPanel implements KeyListener,
 		{
 			this.m_tokenGameController = new TokenGameController(this);
 		}
+		
+		//TransitionColoring
+		m_understandColoring = new TransitionColoring(); 
 	}
 
 	public EditorVC(String string, EditorClipboard clipboard,
@@ -362,7 +377,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		getModelProcessor().setElementContainer(container);
 		model.getCreationMap().setSubElementContainer(container);
 
-		// Es wurde vor den �ffnen gepr�ft, dass genau ein Ein- und ein
+		// Es wurde vor den oeffnen geprueft, dass genau ein Ein- und ein
 		// Ausgang
 		// vorhanden ist!
 
@@ -464,7 +479,9 @@ public class EditorVC extends JPanel implements KeyListener,
 		// because creation of source and target places should not
 		// influence the parent model
 		parentEditor.setSaved(origStatus);
-
+		
+		//TransitionColoring
+		m_understandColoring = new TransitionColoring();
 	}
 
 	// IS NOT WORKING YET
@@ -746,6 +763,7 @@ public class EditorVC extends JPanel implements KeyListener,
 
 			// getGraph().getGraphLayoutCache().valueForCellChanged(petriNetElement.getNameModel(),
 			// petriNetElement.getNameValue());
+			m_understandColoring.update();
 			return element;
 		} else
 		{
@@ -849,6 +867,8 @@ public class EditorVC extends JPanel implements KeyListener,
 							+ ") is not vaild, did nothing!");
 		}
 
+		m_understandColoring.update();
+		
 		if (arc != null)
 		{
 			// arc.setRoute(map.isArcRoute());
@@ -932,7 +952,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			}
 		}
 		deleteOnlyCells(uniqueResult.toArray(), withGraph);
-
+		m_understandColoring.update();
 	}
 
 	/**
@@ -1412,6 +1432,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		getGraph().setSelectionCells(selectElements.toArray());
         copySelection();		
 		getGraph().setCursor(Cursor.getDefaultCursor());
+		m_understandColoring.update();
 	}
 
 	/**
@@ -1428,6 +1449,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			copySelection();
 			deleteSelection();
 		}
+		m_understandColoring.update();
 	}
 
 	/**
@@ -1586,6 +1608,31 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
 	}
+
+	//02122008 MarioBeiser --> ChangePanel-Option
+	public void changePanel(boolean change)
+	{
+		    ReferenceProvider refer = new ReferenceProvider();
+		
+		    boolean change_flag = change;
+		    
+		    if(change_flag){		
+			refer.getUIReference().switchToolBar(change_flag);
+			refer.getUIReference().getContentPane().repaint();			
+		    }else{
+		    	refer.getUIReference().switchToolBar(change_flag);		
+				refer.getUIReference().getContentPane().repaint();
+		    }
+		
+	}
+	
+	//02122008 MarioBeiser --> ManualSwitchToolbar
+	public void manualChangePanel()
+	{	
+		ReferenceProvider refer = new ReferenceProvider();
+		refer.getUIReference().switchToolBar(false);
+		refer.getUIReference().getContentPane().repaint();
+	}	
 	
 	/**
 	 * Zooms the net. <br>
@@ -2268,6 +2315,18 @@ public class EditorVC extends JPanel implements KeyListener,
 		if(!this.isReachabilityEnabled()){
 			m_centralMediator.getUi().getToolBar().getReachabilityGraphButton().setEnabled(true);	
 		}
+		
+		ReferenceProvider refer = new ReferenceProvider();
+		if (!this.isSubprocessEditor()) {
+			if (m_TokenGameEnabled) {
+				refer.getUIReference().switchToolBar(true);
+			} else {
+				refer.getUIReference().switchToolBar(false);
+				refer.getUIReference().getToolBar().addAnalysisButtons();
+			}
+		} else {
+			return;
+		}
 	};
 
 	public void internalFrameClosed(InternalFrameEvent e)
@@ -2276,9 +2335,13 @@ public class EditorVC extends JPanel implements KeyListener,
 
 	public void internalFrameClosing(InternalFrameEvent e)
 	{
+		// Get the standard-toolbar if the editor is being closed.
+		if(!this.isSubprocessEditor()){
+		ReferenceProvider refer = new ReferenceProvider();
+		refer.getUIReference().switchToolBar(false);
+		refer.getUIReference().getContentPane().repaint();
 		// Remember our layout if this is a sub-process editor
-		if (this.isSubprocessEditor())
-		{
+		}else{
 			this.getModelProcessor().getElementContainer().setEditorLayoutInfo(
 					getSavedLayoutInfo());
 		}
@@ -2385,4 +2448,37 @@ public class EditorVC extends JPanel implements KeyListener,
 	public void setModelid(int modelid) {
 		this.modelid = modelid;
 	}
+	
+	public boolean isUnderstandabilityColoringEnabled(){
+		m_UnderstandabilityColoringEnabled = ConfigurationManager.getConfiguration().getColorOn();
+		return m_UnderstandabilityColoringEnabled;
+	}
+	
+	public void setUnderstandabilityColoringEnabled(boolean active) {
+		m_UnderstandabilityColoringEnabled = active;
+		ConfigurationManager.getConfiguration().setColorOn(active);
+	} 
+	public void toggleUnderstandColoring(){
+				
+		if (isUnderstandabilityColoringEnabled())
+		{
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "DEACTIVATE Understandability");
+			setUnderstandabilityColoringEnabled(false);
+		}
+		else {
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "ACTIVATE Understandability");
+			setUnderstandabilityColoringEnabled(true);
+		}
+		m_understandColoring.update();
+		
+	}
+	
+	public void setReadOnly(boolean readonly){
+		getGraph().setEnabled(readonly);			
+		getGraph().enableMarqueehandler(readonly);
+		getGraph().clearSelection();
+		setEnabled(readonly);
+		getGraph().setPortsVisible(readonly);
+	}
+	
 }

@@ -1,18 +1,51 @@
 package org.woped.qualanalysis.reachabilitygraph.controller;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
+import org.woped.qualanalysis.reachabilitygraph.data.Marking;
+import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
+
+import java.awt.Color;
 
 public class ReachabilityPlaceView extends VertexView {
 	
 	private static final long serialVersionUID = 3973287972414121220L;
 	
 	protected ReachabilityPlaceRenderer renderer;
+	private Color grayscaledHighlightedColor = new Color(188,235,253);
+	private Color grayscaledRootColor = new Color(168,168,168);
+	private Color grayscaledNormalColor = Color.lightGray;
+	
+	private Color coloredHighlightedColor = new Color(188,235,253);
+	private Color coloredRootColor = Color.green;
+	private Color coloredNormalColor = Color.orange;
 
 	public ReachabilityPlaceView(Object cell){
 		super(cell);
 		this.renderer = new ReachabilityPlaceRenderer();
+		setBackgroundColor(cell);	
+	}
+	
+	public void setBackgroundColor(Object cell){
+		ReachabilityPlaceModel place = (ReachabilityPlaceModel) cell;
+		if(place.getGrayscaled()){
+    		if(place.getHighlight())
+    			GraphConstants.setBackground(place.getAttributes(), grayscaledHighlightedColor);    		
+    		else if (((Marking) place.getUserObject()).isInitial()) 
+    			GraphConstants.setBackground(place.getAttributes(), grayscaledRootColor);
+    		else 
+    			GraphConstants.setBackground(place.getAttributes(), grayscaledNormalColor);
+    	}
+    	else{
+    		if(place.getHighlight())
+    			GraphConstants.setBackground(place.getAttributes(), coloredHighlightedColor);    		
+    		else if (((Marking) place.getUserObject()).isInitial()) 
+    			GraphConstants.setBackground(place.getAttributes(), coloredRootColor);
+    		else 
+    			GraphConstants.setBackground(place.getAttributes(), coloredNormalColor);    		
+    	}		
 	}
 	
 	public CellViewRenderer getRenderer(){

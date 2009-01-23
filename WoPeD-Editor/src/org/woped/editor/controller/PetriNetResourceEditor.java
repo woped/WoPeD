@@ -397,6 +397,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     		return;
     	
     	groupListModel.clear();
+//    	System.out.println(getPetrinet().getOrganizationUnits().size());
         for (int i = 0; i < getPetrinet().getOrganizationUnits().size(); i++)
         {
             groupListModel.addElement((ResourceClassModel) getPetrinet().getOrganizationUnits().get(i));
@@ -1148,6 +1149,7 @@ public class PetriNetResourceEditor extends JPanel implements ListSelectionListe
     		return;
     	
     	resourceListModel.clear();
+    	
         for (int i = 0; i < getPetrinet().getResources().size(); i++)
         {
             resourceListModel.addElement((ResourceModel) getPetrinet().getResources().get(i));

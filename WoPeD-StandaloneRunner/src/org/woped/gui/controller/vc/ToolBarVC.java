@@ -104,6 +104,8 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     private AbstractButton	   m_quantCapButton		= null;
     private AbstractButton	   m_quantSimButton		= null;
     private AbstractButton     m_reachabilityGraphButton = null;
+    private AbstractButton	   m_coloringButton = null;
+
     public ToolBarVC(String id)
     {
         this.id = id;
@@ -163,8 +165,31 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
         add(getQuantCapButton());
         add(getQuantSimButton());
         add(getReachabilityGraphButton());
+        add(getColoringButton());
     }
 
+    public void removeAnalysisButtons()
+    {
+    	this.remove(getWoflanButton());
+    	this.remove(getWoflanButton());
+    	this.remove(getAnalysisButton());
+    	this.remove(getQuantCapButton());
+    	this.remove(getQuantSimButton());
+    	this.remove(getReachabilityGraphButton());
+    	this.remove(getColoringButton());
+
+    }
+    
+    public void addAnalysisButtons()
+    {
+    	this.add(getWoflanButton());
+    	this.add(getAnalysisButton());
+    	this.add(getQuantCapButton());
+    	this.add(getQuantSimButton());
+    	this.add(getReachabilityGraphButton());
+        this.add(getColoringButton());
+    }
+    
     private AbstractButton getNewButton()
     {
         if (m_newButton == null)
@@ -401,7 +426,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
         return m_subProcessButton;
     }
 
-    private AbstractButton getTokenGameButton()
+    public AbstractButton getTokenGameButton()
     {
         if (m_tokenGameButton == null)
         {
@@ -455,6 +480,15 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     	return m_reachabilityGraphButton;
     }
 
+    public AbstractButton getColoringButton()
+    {
+    	if (m_coloringButton == null)
+    	{
+    		m_coloringButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_COLORING));
+    	}
+    	return m_coloringButton;
+    }
+ 
     public void addViewListener(IViewListener listener)
     {
         viewListener.addElement(listener);

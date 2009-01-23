@@ -23,6 +23,7 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -30,6 +31,9 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.ANDSplitOperatorTransitionModel;
 import org.woped.translations.Messages;
 
 /**
@@ -130,6 +134,7 @@ public class TransAndJoinView extends TransSimpleView
         {
             return TransAndJoinView.this.isFireing();
         }
+
     }
 
 }

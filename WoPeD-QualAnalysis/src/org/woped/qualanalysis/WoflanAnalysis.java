@@ -411,7 +411,12 @@ public class WoflanAnalysis {
 			int nRealIDIndex = name.lastIndexOf(OperatorTransitionModel.INNERID_SEPERATOR);
 			if (nRealIDIndex!=-1)			
 				objectID = name.substring(nRealIDIndex+1);
-		}		
+		}	
+		
+		// Cut any hash sign that might exist
+        if ((objectID!=null)&&(objectID.charAt(0)=='#'))
+            objectID = objectID.substring(1);
+
 		AbstractElementModel current =
 			((objectID!=null)?elements.getElementById(objectID):null);
 		return current;

@@ -62,7 +62,7 @@ public class ReachabilityLayoutHierarchic {
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());
 			LinkedList<ReachabilityPlaceModel> toProof = new LinkedList<ReachabilityPlaceModel>();
 			HashMap<String, String> graphAttributes = graph.getAttributeMap();
-			int verticalSpace = 150;
+			int verticalSpace = 80;
 			int horizontalSpace = 25;
 			if(graphAttributes.containsKey("reachabilityGraph.hierarchic.verticalSpace") && graphAttributes.containsKey("reachabilityGraph.hierarchic.horizontalSpace")){
 				verticalSpace = Integer.parseInt(graphAttributes.get("reachabilityGraph.hierarchic.verticalSpace"));

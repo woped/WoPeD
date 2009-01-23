@@ -10,6 +10,8 @@ import org.woped.translations.Messages;
 public class ReachabilityEdgeModel extends DefaultEdge {
 
 	private static final long serialVersionUID = -6452423946402905220L;
+	private boolean Outgoing = false;
+	private boolean Ingoing = false;
 
 	public ReachabilityEdgeModel(TransitionObject to){
 		super(to);
@@ -26,5 +28,21 @@ public class ReachabilityEdgeModel extends DefaultEdge {
     public String getToolTipText()
     {
         return "<html>" + Messages.getString("QuanlAna.ReachabilityGraph.Transition") + "<br>" + this.getUserObject().toString() + "<html>";
+    }
+    
+    public void setIngoing(boolean value){
+    	Ingoing = value;
+    }
+    
+    public void setOutgoing(boolean value){
+    	Outgoing = value;
+    }
+    
+    public boolean getIngoing(){
+    	return Ingoing;
+    }
+    
+    public boolean getOutgoing(){
+    	return Outgoing;
     }
 }

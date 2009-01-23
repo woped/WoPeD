@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlOptions;
@@ -46,9 +47,17 @@ public class WoPeDConfiguration implements IConfiguration {
 
 	private static XmlOptions xmlOptions = new XmlOptions();
 
-	private Vector<WoPeDRecentFile> runtimeRecentFiles = new Vector<WoPeDRecentFile>(RECENTFILES_SIZE);
+	private Vector<WoPeDRecentFile> runtimeRecentFiles = new Vector<WoPeDRecentFile>(
+			RECENTFILES_SIZE);
 
 	private boolean startedAsApplet;
+
+	private String laf = null;
+	String lafCurrentSys = UIManager.getSystemLookAndFeelClassName();
+	String lafXPlatform = UIManager.getCrossPlatformLookAndFeelClassName();
+	String lafDiscretePlatform = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
+	String lafMac = "com.apple.mrj.swing.MacLookAndFeel";
+	String lafWin = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 
 	public WoPeDConfiguration(boolean aStartedAsApplet) {
 		startedAsApplet = aStartedAsApplet;
@@ -115,11 +124,12 @@ public class WoPeDConfiguration implements IConfiguration {
 	}
 
 	public boolean isDefaultHomedirSet() {
-		return defaultHomedir != null && ! defaultHomedir.equals("");
+		return defaultHomedir != null && !defaultHomedir.equals("");
 	}
-	
+
 	public void setDefaultHomedir(String dhd) {
-		LoggerManager.info(Constants.CONFIG_LOGGER, "Setting default home dir: " + dhd);
+		LoggerManager.info(Constants.CONFIG_LOGGER,
+				"Setting default home dir: " + dhd);
 		defaultHomedir = dhd;
 	}
 
@@ -130,9 +140,10 @@ public class WoPeDConfiguration implements IConfiguration {
 	public boolean isCurrentWorkingdirSet() {
 		return currentWorkingdir != null && !currentWorkingdir.equals("");
 	}
-	
+
 	public void setCurrentWorkingdir(String cwd) {
-		LoggerManager.info(Constants.CONFIG_LOGGER, "Setting current working dir: " + cwd);			
+		LoggerManager.info(Constants.CONFIG_LOGGER,
+				"Setting current working dir: " + cwd);
 		currentWorkingdir = cwd;
 	}
 
@@ -147,31 +158,32 @@ public class WoPeDConfiguration implements IConfiguration {
 		if (!startedAsApplet) {
 			String fn = getUserConfigFile();
 			setDefaultHomedir(getUserdir() + "nets" + File.separator);
-			
+
 			if (new File(fn).exists()) {
-				LoggerManager.info(Constants.CONFIG_LOGGER,	"Loading configuration from " + fn + ".");
+				LoggerManager.info(Constants.CONFIG_LOGGER,
+						"Loading configuration from " + fn + ".");
 				confOk = readConfig(new File(fn));
-			} 
-			else {
-				LoggerManager.warn(Constants.CONFIG_LOGGER,
+			} else {
+				LoggerManager
+						.warn(Constants.CONFIG_LOGGER,
 								"No configuration file found, using built-in settings.");
-				confOk = readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BUILTIN_FILE));
+				confOk = readConfig(WoPeDConfiguration.class
+						.getResourceAsStream(CONFIG_BUILTIN_FILE));
 			}
 
 			File ud = new File(getUserdir());
-			if (! ud.exists())
+			if (!ud.exists())
 				ud.mkdir();
 
 			File hd = new File(getHomedir());
-			if (! hd.exists())
+			if (!hd.exists())
 				hd.mkdir();
-		} 
-		else {
+		} else {
 			// if started as applet always user built-in config file
 			confOk = readConfig(WoPeDConfiguration.class
 					.getResourceAsStream(CONFIG_BUILTIN_FILE));
 		}
-		
+
 		if (!confOk) {
 			JOptionPane.showMessageDialog(null, Messages
 					.getString("Init.ConfigFileNotFound"), Messages
@@ -179,7 +191,7 @@ public class WoPeDConfiguration implements IConfiguration {
 			System.exit(0);
 		}
 
-//		setColorOn(true);
+		// setColorOn(true);
 		return confOk;
 	}
 
@@ -214,7 +226,8 @@ public class WoPeDConfiguration implements IConfiguration {
 		if (file.exists()) {
 			try {
 				// Parse the instance into the type generated from the schema.
-				ConfigurationDocument c = ConfigurationDocument.Factory.parse(file);
+				ConfigurationDocument c = ConfigurationDocument.Factory
+						.parse(file);
 				confDoc = c;
 				return readConfig(confDoc);
 			} catch (XmlException e) {
@@ -246,7 +259,20 @@ public class WoPeDConfiguration implements IConfiguration {
 
 		if (confDoc != null && (config = confDoc.getConfiguration()) != null) {
 			// GUI
-			setLookAndFeel(config.getGui().getWindow().getLookAndFeel());
+
+			// MAC, WIN, Linux and XPlatform LookAndFeel
+
+			String lafConf = config.getGui().getWindow().getLookAndFeel();
+			if (!lafConf.equals(lafCurrentSys)) {
+
+				if (lafCurrentSys.contains("WindowsLookAndFeel")) {
+					setLookAndFeel(lafWin);
+				} else {
+					setLookAndFeel(lafXPlatform);
+				}
+			} else {
+				setLookAndFeel(lafConf);
+			}
 			setWindowX(config.getGui().getWindow().getX());
 			setWindowY(config.getGui().getWindow().getY());
 			setWindowSize(new Dimension(config.getGui().getWindow().getWidth(),
@@ -289,7 +315,8 @@ public class WoPeDConfiguration implements IConfiguration {
 					.getToolspecific());
 
 			// TPN Export
-			setTpnSaveElementAsName(config.getTools().getExporting().getTpnExportElementAsName());
+			setTpnSaveElementAsName(config.getTools().getExporting()
+					.getTpnExportElementAsName());
 
 			// Tools
 			setUseWoflan(config.getTools().getWoflan().getUseWoflan());
@@ -299,7 +326,7 @@ public class WoPeDConfiguration implements IConfiguration {
 			setEditingOnCreation(config.getEditor().getEditOnCreation());
 			setInsertCOPYwhenCopied(config.getEditor().getInsertCopy());
 			setSmartEditing(config.getEditor().getSmartEditing());
-			
+
 			// Coloring
 			setColorOn(config.getColoring().getColorOn());
 
@@ -321,9 +348,9 @@ public class WoPeDConfiguration implements IConfiguration {
 	public boolean saveConfig() {
 		boolean confOk;
 		String fn = getUserConfigFile();
-		
+
 		confOk = saveConfig(new File(fn));
-		
+
 		if (confOk) {
 			LoggerManager.info(Constants.CONFIG_LOGGER,
 					"Saving configuration to " + fn + ".");
@@ -354,7 +381,7 @@ public class WoPeDConfiguration implements IConfiguration {
 				xmlRecent.setPath(recent.getPath());
 			}
 
-//			getDocument().getConfiguration().getGeneral().setHomedir(homedir);
+			// getDocument().getConfiguration().getGeneral().setHomedir(homedir);
 			getDocument().save(file, xmlOptions);
 			LoggerManager.info(Constants.CONFIG_LOGGER, "Configuration saved.");
 			return true;
@@ -495,7 +522,8 @@ public class WoPeDConfiguration implements IConfiguration {
 	 * @param recentFiles
 	 *            The recentFiles to set / public void setRecentFiles(Vector
 	 *            recentFiles) {
-	 *            getDocument().getConfiguration().getGeneral().setRecentFilesArray((RecentFile[])recentFiles.toArray()); }
+	 *            getDocument().getConfiguration().getGeneral().setRecentFilesArray
+	 *            ((RecentFile[])recentFiles.toArray()); }
 	 */
 	public void removeRecentFile(String name, String path) {
 		// delete the old entry if exists.
@@ -599,7 +627,7 @@ public class WoPeDConfiguration implements IConfiguration {
 
 	public boolean isHomedirSet() {
 		String hd = getDocument().getConfiguration().getGeneral().getHomedir();
-		return hd != null && ! hd.equals("");
+		return hd != null && !hd.equals("");
 	}
 
 	/**
@@ -855,7 +883,7 @@ public class WoPeDConfiguration implements IConfiguration {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.woped.editor.config.IConfiguration#setLocaleLanguage(java.lang.String)
+	 * @see org.woped.editor.config.IConfiguration#setLocaleLanguage(java.lang.String )
 	 */
 	public void setLocaleLanguage(String language) {
 		getDocument().getConfiguration().getGui().getLocale().setLanguage(
@@ -958,14 +986,280 @@ public class WoPeDConfiguration implements IConfiguration {
 		return this.locale;
 	}
 	
+	// Start Understandability Coloring configuration
 	public boolean getColorOn() {
 		if (getDocument().getConfiguration().getColoring() != null)
 			return getDocument().getConfiguration().getColoring().getColorOn();
 		else
 			return false;
 	}
-
+	
 	public void setColorOn(boolean b) {
 		getDocument().getConfiguration().getColoring().setColorOn(b);
 	}
+
+	public void setColor1(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor1(rgb);
+	}
+
+	public int getColor1() {
+		return getDocument().getConfiguration().getColoring().getColor1();
+	}
+
+	public void setColor2(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor2(rgb);
+	}
+
+	public int getColor2() {
+		return getDocument().getConfiguration().getColoring().getColor2();
+	}
+
+	public void setColor3(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor3(rgb);
+	}
+
+	public int getColor3() {
+		return getDocument().getConfiguration().getColoring().getColor3();
+	}
+
+	public void setColor4(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor4(rgb);
+	}
+
+	public int getColor4() {
+		return getDocument().getConfiguration().getColoring().getColor4();
+	}
+
+	public void setColor5(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor5(rgb);
+	}
+
+	public int getColor5() {
+		return getDocument().getConfiguration().getColoring().getColor5();
+	}
+
+	public void setColor6(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor6(rgb);
+	}
+
+	public int getColor6() {
+		return getDocument().getConfiguration().getColoring().getColor6();
+	}
+
+	public void setColor7(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor7(rgb);
+	}
+
+	public int getColor7() {
+		return getDocument().getConfiguration().getColoring().getColor7();
+	}
+
+	public void setColor8(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor8(rgb);
+	}
+
+	public int getColor8() {
+		return getDocument().getConfiguration().getColoring().getColor8();
+	}
+
+	public void setColor9(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor9(rgb);
+	}
+
+	public int getColor9() {
+		return getDocument().getConfiguration().getColoring().getColor9();
+	}
+
+	public void setColor10(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor10(rgb);
+	}
+
+	public int getColor10() {
+		return getDocument().getConfiguration().getColoring().getColor10();
+	}
+
+	public void setColor11(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor11(rgb);
+	}
+
+	public int getColor11() {
+		return getDocument().getConfiguration().getColoring().getColor11();
+	}
+
+	public void setColor12(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor12(rgb);
+	}
+
+	public int getColor12() {
+		return getDocument().getConfiguration().getColoring().getColor12();
+	}
+
+	public void setColor13(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor13(rgb);
+	}
+
+	public int getColor13() {
+		return getDocument().getConfiguration().getColoring().getColor13();
+	}
+
+	public void setColor14(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor14(rgb);
+	}
+
+	public int getColor14() {
+		return getDocument().getConfiguration().getColoring().getColor14();
+	}
+
+	public void setColor15(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor15(rgb);
+	}
+
+	public int getColor15() {
+		return getDocument().getConfiguration().getColoring().getColor15();
+	}
+
+	public void setColor16(int rgb) {
+		getDocument().getConfiguration().getColoring().setColor16(rgb);
+	}
+
+	public int getColor16() {
+		return getDocument().getConfiguration().getColoring().getColor16();
+	}
+
+	public Color[] getUnderstandColors() {
+		Color[] ColorArray = new Color[16];
+		ColorArray[0] = new Color(getColor1());
+		ColorArray[1] = new Color(getColor2());
+		ColorArray[2] = new Color(getColor3());
+		ColorArray[3] = new Color(getColor4());
+		ColorArray[4] = new Color(getColor5());
+		ColorArray[5] = new Color(getColor6());
+		ColorArray[6] = new Color(getColor7());
+		ColorArray[7] = new Color(getColor8());
+		ColorArray[8] = new Color(getColor9());
+		ColorArray[9] = new Color(getColor10());
+		ColorArray[10] = new Color(getColor11());
+		ColorArray[11] = new Color(getColor12());
+		ColorArray[12] = new Color(getColor13());
+		ColorArray[13] = new Color(getColor14());
+		ColorArray[14] = new Color(getColor15());
+		ColorArray[15] = new Color(getColor16());
+
+		return ColorArray;
+	}
+
+	public int getDefaultColor1() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor1();
+	}
+
+	public int getDefaultColor2() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor2();
+	}
+
+	public int getDefaultColor3() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor3();
+	}
+
+	public int getDefaultColor4() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor4();
+	}
+
+	public int getDefaultColor5() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor5();
+	}
+
+	public int getDefaultColor6() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor6();
+	}
+
+	public int getDefaultColor7() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor7();
+	}
+
+	public int getDefaultColor8() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor8();
+	}
+
+	public int getDefaultColor9() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor9();
+	}
+
+	public int getDefaultColor10() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor10();
+	}
+
+	public int getDefaultColor11() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor11();
+	}
+
+	public int getDefaultColor12() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor12();
+	}
+
+	public int getDefaultColor13() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor13();
+	}
+
+	public int getDefaultColor14() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor14();
+	}
+
+	public int getDefaultColor15() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor15();
+	}
+
+	public int getDefaultColor16() {
+		return getDocument().getConfiguration().getColoring()
+				.getDefaultcolor16();
+	}
+
+	public Color[] getDefaultUnderstandColors() {
+		Color[] ColorArray = new Color[16];
+		ColorArray[0] = new Color(getDefaultColor1());
+		ColorArray[1] = new Color(getDefaultColor2());
+		ColorArray[2] = new Color(getDefaultColor3());
+		ColorArray[3] = new Color(getDefaultColor4());
+		ColorArray[4] = new Color(getDefaultColor5());
+		ColorArray[5] = new Color(getDefaultColor6());
+		ColorArray[6] = new Color(getDefaultColor7());
+		ColorArray[7] = new Color(getDefaultColor8());
+		ColorArray[8] = new Color(getDefaultColor9());
+		ColorArray[9] = new Color(getDefaultColor10());
+		ColorArray[10] = new Color(getDefaultColor11());
+		ColorArray[11] = new Color(getDefaultColor12());
+		ColorArray[12] = new Color(getDefaultColor13());
+		ColorArray[13] = new Color(getDefaultColor14());
+		ColorArray[14] = new Color(getDefaultColor15());
+		ColorArray[15] = new Color(getDefaultColor16());
+
+		return ColorArray;
+	}
+	
+	public int getAlgorithmMode() {
+		if (getDocument().getConfiguration().getColoring() != null)
+			return getDocument().getConfiguration().getColoring().getAlgorithmMode();
+		else
+			return 0;
+	}
+	
+	public void setAlgorithmMode(int n) {
+		getDocument().getConfiguration().getColoring().setAlgorithmMode(n);
+	}
+	// End Understandability Coloring configuration
+
 }

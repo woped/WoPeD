@@ -22,6 +22,8 @@ public class ReachabilityPlaceModel extends DefaultGraphCell
 
 	private static final long serialVersionUID = 8798017712097428249L;
 	private boolean isBoundSet = false;
+	private boolean highlight = false;
+	private boolean grayscaled = true;
 	
     public ReachabilityPlaceModel(Object o){
     	super(o);
@@ -31,7 +33,7 @@ public class ReachabilityPlaceModel extends DefaultGraphCell
         GraphConstants.setSizeable(attributes, false);
      	// (x,y,w,h)
 		GraphConstants.setBounds(attributes, new Rectangle2D.Double(0,0,80,20));
-		GraphConstants.setBackground(attributes, Color.orange);
+		GraphConstants.setBackground(attributes, Color.lightGray);
 		GraphConstants.setOpaque(attributes, true);
         setAttributes(attributes);
     }
@@ -59,5 +61,22 @@ public class ReachabilityPlaceModel extends DefaultGraphCell
     public String getToolTipText()
     {
     	return "<html>" + Messages.getString("QuanlAna.ReachabilityGraph.Marking") + "<br>" + this.getUserObject().toString() + "</html>";
+    }
+    
+    public void setHighlight(boolean highlight){
+    	this.highlight = highlight; 
+   }
+    
+    public boolean getHighlight(){
+    	return this.highlight;
+    }
+    
+    public void setGrayscaled(boolean grayscaled){
+    	this.grayscaled = grayscaled;
+    }
+    
+    public boolean getGrayscaled(){
+    	return this.grayscaled;
+    	    	
     }
 }

@@ -24,8 +24,11 @@ public class ReferenceProvider {
 	private static JDesktopPane                DesktopReference  = null;
 	private static TokenGameBarController      RemoteControl     = null;
 	
+	//private static boolean					   changePanel		 = false;
+    	
+	
 	/**
-	 * Creates new ReferencePRovider Object to get or set the Refernce-Instance-Variables
+	 * Creates new ReferencePRovider Object to get or set the Reference-Instance-Variables
 	 * Handle with care!
 	 */
 	public ReferenceProvider()
@@ -99,5 +102,4 @@ public class ReferenceProvider {
 	{
 		return RemoteControl;
 	}
-
 }

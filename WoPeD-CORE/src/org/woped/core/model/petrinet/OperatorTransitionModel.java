@@ -22,16 +22,20 @@
  */
 package org.woped.core.model.petrinet;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
-import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.PetriNetModelProcessor; 
+
+
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -121,7 +125,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         // TransitionModel initalSimpleTrans = createSimpleTransition();
         // getSimpleTransContainer().addElement(initalSimpleTrans);
         // this.initalSimpleTrans = initalSimpleTrans;
-
     }
     
     //! This method is called by the PetriNetModelProcessor to register
@@ -379,4 +382,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
 		} while (exists!=null);
 		return nextArcId;
     }
+    
+
 }

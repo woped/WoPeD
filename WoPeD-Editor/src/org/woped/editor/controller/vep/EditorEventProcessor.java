@@ -1,12 +1,16 @@
 package org.woped.editor.controller.vep;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import org.jgraph.graph.DefaultGraphCell;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
@@ -30,6 +34,10 @@ import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
+import org.woped.editor.controller.VisualController;
+import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.understandability.ITransitionColoring;
+import org.woped.understandability.TransitionColoring;
 
 public class EditorEventProcessor extends AbstractEventProcessor
 {
@@ -379,6 +387,9 @@ public class EditorEventProcessor extends AbstractEventProcessor
 			case AbstractViewEvent.ZOOM_ABSOLUTE:
 				editor.zoom(Integer.parseInt((String) event.getData()), true);
 				break;
+			case AbstractViewEvent.COLORING:
+				editor.toggleUnderstandColoring();				
+				break;
 			case AbstractViewEvent.TOGGLE_TOKENGAME:
 				editor.toggleTokenGame();
 				break;
@@ -386,6 +397,9 @@ public class EditorEventProcessor extends AbstractEventProcessor
 				// Toggle visibility of side tree view
 				editor.setSideTreeViewVisible(!editor.isSideTreeViewVisible());
 				break;
+			case AbstractViewEvent.CHANGEPANEL:
+			    editor.manualChangePanel();
+			    break;				
 			case AbstractViewEvent.PRESS:
 				editor.scaleNet(0.5);
 				break;
@@ -485,8 +499,14 @@ public class EditorEventProcessor extends AbstractEventProcessor
 			// the operator type, what could happen to us is that the operator type
 			// changed to a non-XOR-split type and previously a probability was 
 			// displayed for the arc. Catch this and disable the display 
-			if (!am.isXORsplit(p_editor.getModelProcessor()))
-					am.setDisplayOn(false);
+			if (!am.isXORsplit(p_editor.getModelProcessor())) {
+				am.setProbability(1);
+				am.setDisplayOn(false);
+			}
+			else {
+				if (am.getProbability() != 1)
+					am.setDisplayOn(true);
+			}
 					
 		}
 
@@ -495,5 +515,6 @@ public class EditorEventProcessor extends AbstractEventProcessor
 		
 		// Refresh the net to display any copied triggers and resources...
 		p_editor.getGraph().drawNet(p_editor.getModelProcessor());
+		p_editor.getM_understandColoring().update();
 	}
 }

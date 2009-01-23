@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeSupport;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -38,6 +41,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.PetriNetResourceEditor;
+import org.woped.editor.controller.PetriNetResourceEditorNew;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
@@ -45,7 +49,9 @@ import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
+import org.woped.qualanalysis.simulation.SimulatorBarVC;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
 import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
@@ -57,18 +63,25 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private StatusBarVC           statusBar              = null;
     private TaskBarVC             taskBar                = null;
     private ToolBarVC             toolBar                = null;
-    private MenuBarVC menuBar = null;
+    private SimulatorBarVC		  simulatorBar			 = null;
+    
+    private MenuBarVC 			  menuBar 				 = null;
 
     private int                   m_numEditors           = 0;
     private List<IEditor>         editorList             = new ArrayList<IEditor>();
+    private HashMap<IEditor, SimulatorBarVC> simulatorList = new HashMap<IEditor, SimulatorBarVC>();
 
     //! Stores a list of internal frames that should stay in foreground
     private List<DefaultEditorFrame>  m_modalityStack = new ArrayList<DefaultEditorFrame>();
     
-    public DefaultUserInterface(ToolBarVC toolBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar)
+    public DefaultUserInterface(ToolBarVC toolBar, SimulatorBarVC simulatorBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar)
     {
         super();
         this.toolBar = toolBar;
+        
+        // Adaption of constructor signature
+        this.simulatorBar = simulatorBar;
+        
         this.statusBar = statusBar;
         this.taskBar = taskBar;
         this.menuBar = menuBar;
@@ -97,9 +110,14 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         if (ConfigurationManager.getConfiguration().getHomedir() == null) ConfigurationManager.getConfiguration().setHomedir("nets/");
 
         setJMenuBar(menuBar);
+        
         getContentPane().add(toolBar, BorderLayout.NORTH);
+        
+        //getContentPane().add(toolBar, BorderLayout.NORTH);
+        
+        
         getContentPane().add(desktop, BorderLayout.CENTER);
-
+        
         // Prepare Status & Taskbar
         JPanel toolPanel = new JPanel();
         JPanel p1 = new JPanel();
@@ -128,8 +146,6 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         ReferenceProvider helper = new ReferenceProvider();
         helper.setDesktopReference(desktop);
         helper.setUIReference(this);
-       
-    
     
         setVisible(true);
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
@@ -142,7 +158,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             DefaultEditorFrame frame;
             if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
             {
-                frame = new DefaultEditorFrame((EditorVC) editor, new PetriNetResourceEditor((EditorVC) editor), new EditorOperations((EditorVC) editor), new EditorData());
+                frame = new DefaultEditorFrame((EditorVC) editor, new PetriNetResourceEditor((EditorVC) editor), new EditorOperations((EditorVC) editor), new EditorData(),new PetriNetResourceEditorNew((EditorVC) editor));
             } 
             else
             {
@@ -303,6 +319,61 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             {}
         }
     }
+    
+    public void switchToolBar(boolean change)
+    {
+    	//261108 MarioBeiser -> switchToolbar
+    	removeToolBar();
+    	 if (change){
+    		 if(getEditorFocus().isTokenGameEnabled()){
+    			 simulatorBar = simulatorList.get(getEditorFocus());    			   			 
+    		 }
+    		// getContentPane().remove(toolBar);
+    	     getContentPane().add(simulatorBar, BorderLayout.NORTH);
+    	     simulatorBar.showChoice();  
+    	     simulatorBar.addAnalysisButtons();
+    	     getContentPane().repaint();
+    	 }else{
+    		 // clean up the interface of RemoteControl-Things
+    		 if(simulatorBar!=null){  
+    			 getContentPane().remove(simulatorBar);
+    			 //simulatorBar.setViewChoiceListInvisible();
+        		 simulatorBar.setChoiceListInvisible();
+    		 }    		 		
+    		 // add normal toolBar
+    		 getContentPane().add(toolBar, BorderLayout.NORTH);
+    		 getToolBar().addAnalysisButtons();
+    		 getContentPane().repaint();
+    	 }
+    }
+    
+    public void removeToolBar()
+    {
+    	for(Iterator<SimulatorBarVC> iterator = simulatorList.values().iterator();iterator.hasNext();){
+			SimulatorBarVC sim = iterator.next();
+    		getContentPane().remove(sim);
+			sim.setChoiceListInvisible();			 
+		 }
+   
+    	if(this.toolBar != null)
+    	{
+    		getContentPane().remove(toolBar);
+    	}
+    }
+    
+    /**
+     * This method transports the created simulatorBar-Object to the 
+     * DefaultUserInterface
+     *  
+     */
+    public void setSimulatorBar(Object simulatorBar)
+    {
+    	this.simulatorBar = (SimulatorBarVC) simulatorBar;
+    	simulatorList.put(getEditorFocus(),this.simulatorBar);
+    	getContentPane().add(this.simulatorBar, BorderLayout.NORTH);
+    }
+    
+    
 
     /**
      * TODO: DOCUMENTATION (xraven)
@@ -393,7 +464,11 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         return toolBar;
     }
-
+    
+    public SimulatorBarVC getSimBar()
+    {
+        return simulatorBar;
+    }
     public List<IEditor> getAllEditors()
     {
         return editorList;
@@ -405,6 +480,10 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         menuBar.updateRecentMenu();
         
+    }
+    
+    public void setFirstTransitionActive(){
+    	this.getSimBar().doPlayClick();
     }
 
     /**
@@ -482,7 +561,18 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
     	FixModality();
 		getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
-    }
+
+		if (!getEditorFocus().isSubprocessEditor()) {
+			if (getEditorFocus().isTokenGameEnabled()) {
+				switchToolBar(true);
+			} else {
+				switchToolBar(false);
+				getToolBar().addAnalysisButtons();
+			}
+		} else {
+			return;
+		}
+	}
 
     public void internalFrameClosed(InternalFrameEvent e)
     {
@@ -523,5 +613,5 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         return desktop;
     }
-
+    
 }

@@ -13,6 +13,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameEvent;
@@ -21,12 +22,18 @@ import javax.swing.event.InternalFrameListener;
 import org.jgraph.JGraph;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IUserInterface;
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
+import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
+import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
 import org.woped.translations.Messages;
+
 
 public class ReachabilityGraphVC extends JInternalFrame implements IReachabilityGraph, InternalFrameListener {
 
@@ -122,6 +129,14 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 		}
 		return null;
 	}
+	
+	public void setUnselectButtonEnabled(IEditor editor, boolean value){
+		for (ReachabilityGraphPanel rgp : panels) {
+			if(rgp.getEditor() == editor){
+				rgp.setUnselectButtonEnabled(value);
+			}
+		}		
+	}
 
 	/**
 	 * removes the {@link ReachabilityGraphPanel} for a given editor.
@@ -176,9 +191,9 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	 */
 	public void updatePanelsVisibility(IEditor editor){
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> updatePanelsVisibility " + this.getClass().getName());
-		for (ReachabilityGraphPanel rgp : panels) {
+		for (ReachabilityGraphPanel rgp : panels) {			
 			if(rgp.getEditor().equals(editor)){
-				this.add(rgp);
+				this.add(rgp);		
 				rgp.updateVisibility();
 				this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title")+ " - " + editor.getName());
 			} else {
@@ -212,8 +227,30 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	public void internalFrameActivated(InternalFrameEvent e) {
 		this.updateShowingPanelVisibility();
 	}
-	public void internalFrameClosed(InternalFrameEvent e) { }
-	public void internalFrameClosing(InternalFrameEvent e) { dui.refreshFocusOnFrames(); }
+	public void internalFrameClosed(InternalFrameEvent e) { }	
+	
+	
+	public void internalFrameClosing(InternalFrameEvent e) {
+		dui.refreshFocusOnFrames();		
+		for (ReachabilityGraphPanel rgp : panels) {			
+			// Dehighlight RG
+			for(int i = 0; i < rgp.getDefaultGraph().getModel().getRootCount(); i++){
+				if(rgp.getDefaultGraph().getModel().getRootAt(i) instanceof ReachabilityPlaceModel){
+					((ReachabilityPlaceModel)rgp.getDefaultGraph().getModel().getRootAt(i)).setHighlight(false);
+				}else if (rgp.getDefaultGraph().getModel().getRootAt(i) instanceof ReachabilityEdgeModel){
+					((ReachabilityEdgeModel)rgp.getDefaultGraph().getModel().getRootAt(i)).setIngoing(false);
+					((ReachabilityEdgeModel)rgp.getDefaultGraph().getModel().getRootAt(i)).setOutgoing(false);
+				}
+			}
+			rgp.setUnselectButtonEnabled(false);
+			rgp.getDefaultGraph().getGraphLayoutCache().reload();
+			rgp.getDefaultGraph().clearSelection();
+			
+			// Dehighlight Petrinet and reset VirtualTokens	
+			((PetriNetModelProcessor)rgp.getEditor().getModelProcessor()).resetRGHighlightAndVTokens();
+			rgp.getEditor().setReadOnly(true);			
+		}		
+	}
 	public void internalFrameDeactivated(InternalFrameEvent e) { }
 	public void internalFrameDeiconified(InternalFrameEvent e) { }
 	public void internalFrameIconified(InternalFrameEvent e) { }

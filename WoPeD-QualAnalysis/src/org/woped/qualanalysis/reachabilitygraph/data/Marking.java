@@ -1,10 +1,8 @@
 package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -281,6 +279,9 @@ public class Marking {
 		return (hash);
 	}
 
+	public IEditor getSource(){
+		return this.source;		
+	}
 	/**
 	 * sets a marking status to the first of its kind used for coverability
 	 * graph so it is able to maintain the first marking which can be covered if

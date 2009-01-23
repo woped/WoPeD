@@ -10,17 +10,25 @@
 package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
 import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.ToolTipManager;
+import javax.swing.JScrollPane;
+import javax.swing.JScrollBar;
+
+
 
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphModel;
+import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.data.Marking;
+
 
 public class ReachabilityJGraph extends JGraph {
 	
@@ -78,9 +86,9 @@ public class ReachabilityJGraph extends JGraph {
 		graphAttributes = new HashMap<String, String>();
 		graphAttributes.put("reachabilityGraph.place.width","80");
 		graphAttributes.put("reachabilityGraph.place.height","20");
-		graphAttributes.put("reachabilityGraph.color","true");
+		graphAttributes.put("reachabilityGraph.color","false");
 		graphAttributes.put("reachabilityGraph.parallel","true");
-		graphAttributes.put("reachabilityGraph.hierarchic.verticalSpace","150");
+		graphAttributes.put("reachabilityGraph.hierarchic.verticalSpace","80");
 		graphAttributes.put("reachabilityGraph.hierarchic.horizontalSpace","25");
 	}
 	/**
@@ -96,5 +104,71 @@ public class ReachabilityJGraph extends JGraph {
 	 */
 	public HashMap<String, String> getAttributeMap(){
 		return graphAttributes;
+	}
+	
+	public void deHighlight(){
+		GraphModel model = getModel();
+		for(int j = 0; j < model.getRootCount(); j++){
+			if(model.getRootAt(j) instanceof ReachabilityPlaceModel){
+				((ReachabilityPlaceModel)model.getRootAt(j)).setHighlight(false);								
+			}
+			else if(model.getRootAt(j) instanceof ReachabilityEdgeModel){
+				((ReachabilityEdgeModel)model.getRootAt(j)).setIngoing(false);								
+				((ReachabilityEdgeModel)model.getRootAt(j)).setOutgoing(false);
+			}							
+		}	
+		getGraphLayoutCache().reload();
+		clearSelection();	
+	}
+	/**
+	 * Highlights the in mark given marking(place) in the Reachabilty Graph. If the 
+	 * place is not in the visible range the graph will scroll automatically
+	 * 
+	 * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
+	 * @since 02.01.2009 
+	 * @param mark
+	 */
+	public void HighlightMarking(Marking mark){
+		deHighlight();
+		GraphModel model = getModel();
+		for(int j = 0; j < model.getRootCount(); j++){
+			if(model.getRootAt(j) instanceof ReachabilityPlaceModel){
+				
+				ReachabilityPlaceModel rpm = (ReachabilityPlaceModel)model.getRootAt(j);
+				if (mark.toString().equals(((Marking)rpm.getUserObject()).toString())){
+					rpm.setHighlight(true);
+					Rectangle2D  re = GraphConstants.getBounds(rpm.getAttributes());
+					Rectangle2D  revisi = this.getVisibleRect();
+					JScrollBar scb = ((JScrollPane)	getParent().getParent()).getVerticalScrollBar();
+					if(scb.isVisible()){
+						// autoscroll down
+						while((re.getMaxY()*this.scale)>(scb.getValue()+scb.getBounds().height)){
+							scb.setValue(scb.getValue()+(scb.getBounds().height/2));							
+						}
+						// autoscroll up
+						while((re.getMinY()*this.scale)<scb.getValue()){
+							scb.setValue(scb.getValue()-(scb.getBounds().height/2));
+						}
+					}					
+					scb = ((JScrollPane)getParent().getParent()).getHorizontalScrollBar();
+					if(scb.isVisible()){
+						// autoscroll right
+						while((re.getMaxX()*this.scale)>(scb.getValue()+scb.getBounds().width)){
+							scb.setValue(scb.getValue()+(scb.getBounds().width/2));
+						}
+						// autoscroll left
+						while((re.getMinX()*this.scale)<scb.getValue()){
+							scb.setValue(scb.getValue()-(scb.getBounds().width/2));
+						}	
+					}					
+				}
+			}
+			else if(model.getRootAt(j) instanceof ReachabilityEdgeModel){
+			//	((ReachabilityEdgeModel)model.getRootAt(j)).setIngoing(false);								
+			//	((ReachabilityEdgeModel)model.getRootAt(j)).setOutgoing(false);
+			}							
+		}	
+		getGraphLayoutCache().reload();
+		clearSelection();		
 	}
 }

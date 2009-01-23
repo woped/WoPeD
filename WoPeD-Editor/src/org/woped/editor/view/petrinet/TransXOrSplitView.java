@@ -23,11 +23,15 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.model.petrinet.XORJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -97,7 +101,7 @@ public class TransXOrSplitView extends TransSimpleView
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            g.setColor(this.getInnerDrawingsColor());
+            g.setColor(getInnerDrawingsColor());
             // XOR Split Lines
             this.drawOperatorArrow(g, true, true);
             
@@ -119,6 +123,7 @@ public class TransXOrSplitView extends TransSimpleView
         {
             return TransXOrSplitView.this.isFireing();
         }
+        
     }
 
     /**

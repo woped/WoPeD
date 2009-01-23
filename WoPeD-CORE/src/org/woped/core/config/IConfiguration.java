@@ -208,4 +208,160 @@ public interface IConfiguration
 
     //
     public String getLocaleVariant();
+
+    //
+    public void setColor1(int rgb);
+    
+    //
+    public void setColor2(int rgb);
+    
+    //
+    public void setColor3(int rgb);
+    
+    //
+    public void setColor4(int rgb);
+    
+    //
+    public void setColor5(int rgb);
+    
+    //
+    public void setColor6(int rgb);
+    
+    //
+    public void setColor7(int rgb);
+    
+    //
+    public void setColor8(int rgb);
+    
+    //
+    public void setColor9(int rgb);
+    
+    //
+    public void setColor10(int rgb);
+    
+    //
+    public void setColor11(int rgb);
+    
+    //
+    public void setColor12(int rgb);
+    
+    //
+    public void setColor13(int rgb);
+    
+    //
+    public void setColor14(int rgb);
+    
+    //
+    public void setColor15(int rgb);
+    
+    //
+    public void setColor16(int rgb);
+ 
+    //
+    public int getColor1();
+    
+    //
+    public int getColor2();
+    
+    //
+    public int getColor3();
+    
+    //
+    public int getColor4();
+    
+    //
+    public int getColor5();
+    
+    //
+    public int getColor6();
+    
+    //
+    public int getColor7();
+    
+    //
+    public int getColor8();
+    
+    //
+    public int getColor9();
+    
+    //
+    public int getColor10();
+    
+    //
+    public int getColor11();
+    
+    //
+    public int getColor12();
+    
+    //
+    public int getColor13();
+    
+    //
+    public int getColor14();
+    
+    //
+    public int getColor15();
+    
+    //
+    public int getColor16();
+    
+    //
+    public Color[] getUnderstandColors();
+    
+    //
+    public int getDefaultColor1();
+    
+    //
+    public int getDefaultColor2();
+    
+    //
+    public int getDefaultColor3();
+    
+    //
+    public int getDefaultColor4();
+    
+    //
+    public int getDefaultColor5();
+    
+    //
+    public int getDefaultColor6();
+    
+    //
+    public int getDefaultColor7();
+    
+    //
+    public int getDefaultColor8();
+    
+    //
+    public int getDefaultColor9();
+    
+    //
+    public int getDefaultColor10();
+    
+    //
+    public int getDefaultColor11();
+    
+    //
+    public int getDefaultColor12();
+    
+    //
+    public int getDefaultColor13();
+    
+    //
+    public int getDefaultColor14();
+    
+    //
+    public int getDefaultColor15();
+    
+    //
+    public int getDefaultColor16();
+    
+    //
+    public Color[] getDefaultUnderstandColors();
+    
+    //
+	public int getAlgorithmMode();
+	
+	//
+	public void setAlgorithmMode(int n);
 }

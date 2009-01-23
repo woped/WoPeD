@@ -23,6 +23,7 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -30,7 +31,9 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.translations.Messages;
+import org.woped.core.model.petrinet.ANDSplitOperatorTransitionModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -97,7 +100,7 @@ public class TransAndSplitView extends TransSimpleView
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            g.setColor(this.getInnerDrawingsColor());
+            g.setColor(getInnerDrawingsColor());
             // AND Split Lines
             this.drawOperatorArrow(g, true, false);
             if (isActive() || isFireing())
@@ -124,7 +127,7 @@ public class TransAndSplitView extends TransSimpleView
         {
             return TransAndSplitView.this.isFireing();
         }
-        
+               
     }
 
     /**

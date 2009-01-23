@@ -34,6 +34,7 @@ import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphCellEditor;
 import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.petrinet.TransitionModel;
@@ -74,12 +75,16 @@ public abstract class AbstractElementView extends VertexView {
     public boolean isFireing() {
     	return ((AbstractElementModel) getCell()).isFireing();
     }
-
+  
+    public boolean isUnderstandabilityActive() {
+    	return ((AbstractElementModel) getCell()).isUnderstandabilityColoringActive();
+    }
+    
     protected abstract class AbstractElementRenderer extends VertexRenderer {
     	private boolean readOnly;
     	private Color readOnlyColor = new Color(225, 225, 225);
     	private Color highLightedColor = new Color(255, 0, 0, 128);
-
+    	private Color HighLightedRGColor = new Color(188,235,253);
     	public AbstractElementRenderer(Object cell) {
     		AbstractElementModel model = (AbstractElementModel) cell;
     		readOnly = model.isReadOnly();
@@ -89,6 +94,13 @@ public abstract class AbstractElementView extends VertexView {
     		Color result = null;
     		if (((AbstractElementModel) (AbstractElementView.this.getCell())).isHighlighted())
     			result = highLightedColor;
+    		else if (isUnderstandabilityActive()){
+    				result = ((AbstractElementModel) (AbstractElementView.this.getCell())).getColor();
+    				return result;
+    		}
+    		else if(((AbstractElementModel) (AbstractElementView.this.getCell())).isRGHighlighted()){
+    			result = HighLightedRGColor;
+    		}    		
     		else { 
     			if (readOnly) {
     				result = readOnlyColor;

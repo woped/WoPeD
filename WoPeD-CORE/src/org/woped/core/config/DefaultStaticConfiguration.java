@@ -69,7 +69,43 @@ public class DefaultStaticConfiguration implements IConfiguration
     public static boolean         ACTIVATE_NET_ROUTING       = false;
     public static boolean         ACTIVATE_ANNEALING_LAYOUT  = false;
 
+    // Understandability Coloring
     private boolean               colorOn                 	 = false;
+    private int					  coloringAlgorithmMode		 = 0;	
+    private int					  color1				     = -256;
+    private int					  color2				     = -16711936;
+    private int					  color3				     = -65536;
+    private int					  color4				     = -65281;
+    private int					  color5				     = -16776961;
+    private int					  color6				     = -6710887;
+    private int					  color7				     = -16724737;
+    private int					  color8				     = -39424;
+    private int					  color9				     = -13421569;
+    private int					  color10				     = -16764109;
+    private int					  color11				     = -13421824;
+    private int					  color12				     = -10092544;
+    private int					  color13				     = -6684775;
+    private int					  color14				     = -13434829;
+    private int					  color15				     = -13421773;
+    private int					  color16				     = -16751104;
+    private Color[]               UnderstandColorArray       = new Color[16];
+    private int					  defaultcolor1				 = -256;
+    private int					  defaultcolor2				 = -16711936;
+    private int					  defaultcolor3				 = -65536;
+    private int					  defaultcolor4				 = -65281;
+    private int					  defaultcolor5				 = -16776961;
+    private int					  defaultcolor6				 = -6710887;
+    private int					  defaultcolor7				 = -16724737;
+    private int					  defaultcolor8				 = -39424;
+    private int					  defaultcolor9				 = -13421569;
+    private int					  defaultcolor10			 = -16764109;
+    private int					  defaultcolor11			 = -13421824;
+    private int					  defaultcolor12			 = -10092544;
+    private int					  defaultcolor13			 = -6684775;
+    private int					  defaultcolor14			 = -13434829;
+    private int					  defaultcolor15			 = -13421773;
+    private int					  defaultcolor16			 = -16751104;
+    private Color[]               defaultUnderstandColorArray= new Color[16];
     
     public void addRecentFile(String name, String path)
     {
@@ -116,6 +152,7 @@ public class DefaultStaticConfiguration implements IConfiguration
         return logdir;
     }
 
+    //Start Understandability Coloring
     public boolean getColorOn()
     {
         return colorOn;
@@ -125,7 +162,266 @@ public class DefaultStaticConfiguration implements IConfiguration
     {
         colorOn = b;
     }
-
+    
+    public int getColor1()
+    {
+        return color1;
+    }
+    
+    public int getColor2()
+    {
+        return color2;
+    }
+    
+    public int getColor3()
+    {
+        return color3;
+    }
+    
+    public int getColor4()
+    {
+        return color4;
+    }
+    
+    public int getColor5()
+    {
+        return color5;
+    }
+    
+    public int getColor6()
+    {
+        return color6;
+    }
+    
+    public int getColor7()
+    {
+        return color7;
+    }
+    
+    public int getColor8()
+    {
+        return color8;
+    }
+    
+    public int getColor9()
+    {
+        return color9;
+    }
+    
+    public int getColor10()
+    {
+        return color10;
+    }
+    
+    public int getColor11()
+    {
+        return color11;
+    }
+    
+    public int getColor12()
+    {
+        return color12;
+    }
+    
+    public int getColor13()
+    {
+        return color13;
+    }
+    
+    public int getColor14()
+    {
+        return color14;
+    }
+    
+    public int getColor15()
+    {
+        return color15;
+    }
+    
+    public int getColor16()
+    {
+        return color16;
+    }
+    
+    public Color[] getUnderstandColors(){
+    	return UnderstandColorArray;
+    }
+    
+    public int getDefaultColor1()
+    {
+        return defaultcolor1;
+    }
+    
+    public int getDefaultColor2()
+    {
+        return defaultcolor2;
+    }
+    
+    public int getDefaultColor3()
+    {
+        return defaultcolor3;
+    }
+    
+    public int getDefaultColor4()
+    {
+        return defaultcolor4;
+    }
+    
+    public int getDefaultColor5()
+    {
+        return defaultcolor5;
+    }
+    
+    public int getDefaultColor6()
+    {
+        return defaultcolor6;
+    }
+    
+    public int getDefaultColor7()
+    {
+        return defaultcolor7;
+    }
+    
+    public int getDefaultColor8()
+    {
+        return defaultcolor8;
+    }
+    
+    public int getDefaultColor9()
+    {
+        return defaultcolor9;
+    }
+    
+    public int getDefaultColor10()
+    {
+        return defaultcolor10;
+    }
+    
+    public int getDefaultColor11()
+    {
+        return defaultcolor11;
+    }
+    
+    public int getDefaultColor12()
+    {
+        return defaultcolor12;
+    }
+    
+    public int getDefaultColor13()
+    {
+        return defaultcolor13;
+    }
+    
+    public int getDefaultColor14()
+    {
+        return defaultcolor14;
+    }
+    
+    public int getDefaultColor15()
+    {
+        return defaultcolor15;
+    }
+    
+    public int getDefaultColor16()
+    {
+        return defaultcolor16;
+    }
+    
+    public Color[] getDefaultUnderstandColors(){
+    	return defaultUnderstandColorArray;
+    }
+    
+    public void setColor1(int rgb)
+    {
+        color1 = rgb;
+    }
+    
+    public void setColor2(int rgb)
+    {
+        color2 = rgb;
+    }
+    
+    public void setColor3(int rgb)
+    {
+        color3 = rgb;
+    }
+    
+    public void setColor4(int rgb)
+    {
+        color4 = rgb;
+    }
+    
+    public void setColor5(int rgb)
+    {
+        color5 = rgb;
+    }
+    
+    public void setColor6(int rgb)
+    {
+        color6 = rgb;
+    }
+    
+    public void setColor7(int rgb)
+    {
+        color7 = rgb;
+    }
+    
+    public void setColor8(int rgb)
+    {
+        color8 = rgb;
+    }
+    
+    public void setColor9(int rgb)
+    {
+        color9 = rgb;
+    }
+    
+    public void setColor10(int rgb)
+    {
+        color10 = rgb;
+    }
+    
+    public void setColor11(int rgb)
+    {
+        color11 = rgb;
+    }
+    
+    public void setColor12(int rgb)
+    {
+        color12 = rgb;
+    }
+    
+    public void setColor13(int rgb)
+    {
+        color13 = rgb;
+    }
+    
+    public void setColor14(int rgb)
+    {
+        color14 = rgb;
+    }
+    
+    public void setColor15(int rgb)
+    {
+        color15 = rgb;
+    }
+    
+    public void setColor16(int rgb)
+    {
+        color16 = rgb;
+    }
+    
+	public int getAlgorithmMode() {
+		return coloringAlgorithmMode;
+	}
+	
+	public void setAlgorithmMode(int n) {
+		coloringAlgorithmMode = n;
+	}
+    
+    
+    //End Understandability Coloring
+    
     public String getLookAndFeel()
     {
         return lnf;

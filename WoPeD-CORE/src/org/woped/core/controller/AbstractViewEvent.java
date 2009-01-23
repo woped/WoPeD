@@ -82,7 +82,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     //! local analysis using some woped-internal routines
     //! and some calls to the Woflan DLL
     public static final int ANALYSIS_WOPED			  = 1062;
-
+    public static final int COLORING 		 		  = 1063;
     public static final int TOGGLE_TOKENGAME          = 1070;
 
     //
@@ -260,6 +260,9 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int QUANTCAP				  = 1081;
     public static final int QUANTSIM				  = 1082;
     public static final int REACHGRAPH				  = 1083;
+    
+    //variable to change toolbars and references
+    public static final int CHANGEPANEL				  = 1999;
 
     public AbstractViewEvent(Object source, int type, int order, Object data)
     {

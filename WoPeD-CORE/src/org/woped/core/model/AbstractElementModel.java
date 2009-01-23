@@ -27,7 +27,14 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	//! This is used for structural analysis, to show that an element is selected
 	//! in the analysis dialog
 	boolean highlighted = false;	
+	//! RGHighlighted elements are drawn differently by their view
+	//! This is used for the highlighting for the current marking of the Reachabilitygraph
+	boolean RGhighlighted = false;
 
+	//! For better understandability a new color from the config colorset will highlight this element.
+	private boolean understandabilityColoringActive = false;
+    private Color understandabilityColor = Color.white; // default color is white
+	
 	//! An element is fireing if the mouse button is pressed
     private boolean         fireing   = false;
     //! An element is activated if it can be clicked to trigger an action
@@ -322,6 +329,23 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 		this.highlighted = highlighted;
 	}
 	
+	/**
+     * Returns true when the element is in the current marking of the Reachabilitygraph
+     * 
+     * @return boolean
+     */
+	public boolean isRGHighlighted() {
+		return RGhighlighted;
+	}
+	/**
+     * Set the state for the element
+     * 
+     * @param highlighted
+     */
+	public void setRGHighlighted(boolean highlighted) {
+		this.RGhighlighted = highlighted;
+	}
+	
     /**
      * @return
      */
@@ -354,4 +378,23 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
     {
         this.activated = activated;
     }
+    
+    public void setUnderstandColoringActive(boolean active) {
+		this.understandabilityColoringActive= active;
+	}	
+	
+	public boolean isUnderstandabilityColoringActive(){
+		return this.understandabilityColoringActive;
+	}
+    
+    public void setColor(Color c) {
+    	// alpha 0-255, the lower the brighter 
+    	int alpha = 75;
+    	this.understandabilityColor = new Color(c.getRed(),
+				c.getGreen(), c.getBlue(), alpha);
+	}	
+	
+	public Color getColor(){
+		return this.understandabilityColor;
+	}
 }

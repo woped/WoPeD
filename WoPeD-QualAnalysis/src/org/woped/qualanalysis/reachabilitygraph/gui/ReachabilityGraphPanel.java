@@ -13,36 +13,27 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.core.utilities.Utils;
 import org.woped.qualanalysis.Constants;
-import org.woped.qualanalysis.ImageExport;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.qualanalysis.reachabilitygraph.data.Marking;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
 import org.woped.translations.Messages;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityToolbarVC;
 
 public class ReachabilityGraphPanel extends JPanel {
 
@@ -51,6 +42,8 @@ public class ReachabilityGraphPanel extends JPanel {
 
 	// Panels
 	private JScrollPane rgp_topPanel = null; // top SplitPane
+	
+	private ReachabilityToolbarVC toolbar = null;
 
 	// jGraph related
 	private ReachabilityJGraph rgp_jgraph = null; // the jGraph
@@ -63,9 +56,6 @@ public class ReachabilityGraphPanel extends JPanel {
 	private JLabel outOfSyncInfo = null;
 	private JLabel legendInfo = null;
 	private JButton legendToggleButton = null;
-	private JButton refreshButton = null;
-	private JButton settingsButton = null;
-	private JComboBox layout = null;
 
 	// Helper
 	private boolean legendToggle = false;
@@ -74,36 +64,16 @@ public class ReachabilityGraphPanel extends JPanel {
 		super();
 		this.editor = editor;
 		this.logicalFingerprint = ((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint();
+		this.editor.updateNet();
 		init();
 	}
 
 	private void init() {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
 		this.setLayout(new BorderLayout());
+		toolbar = new ReachabilityToolbarVC(this);
 		// NORTH Components
-		refreshButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.RefreshButton"));
-        refreshButton.addActionListener(new RefreshGraphButtonListener(this));
-        refreshButton.setEnabled(false);
-        settingsButton = new JButton("Settings");
-        settingsButton.addActionListener(new SettingsButtonListener(this));
-        JLabel layout_text = new JLabel(Messages.getString("QuanlAna.ReachabilityGraph.Layout"));
-        layout = new JComboBox();
-        layout.addItemListener(new LayoutBoxItemListener(this));
-        layout.addItem(Messages.getString("QuanlAna.ReachabilityGraph.Hierarchic"));
-        layout.addItem(Messages.getString("QuanlAna.ReachabilityGraph.Circle"));
-        JButton export = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.ExportAsButton"));
-        export.addActionListener(new ExportGraphButtonListener(this));
-        JPanel northSubPanel = new JPanel();
-        northSubPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        northSubPanel.add(layout_text);
-        northSubPanel.add(layout);
-        JPanel northPanel = new JPanel();
-        northPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 0));
-        northPanel.add(refreshButton);
-        northPanel.add(northSubPanel);
-        northPanel.add(settingsButton);
-        northPanel.add(export);
-        this.add(BorderLayout.NORTH, northPanel);
+	    this.add(BorderLayout.NORTH, toolbar);
         // SOUTH Components
         legendInfo = new JLabel(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
         legendToggleButton = new JButton(Messages.getImageIcon("Action.Browser.Refresh"));
@@ -138,7 +108,7 @@ public class ReachabilityGraphPanel extends JPanel {
 	 * @return
 	 */
 	protected int getSelectedType(){
-		return this.layout.getSelectedIndex();
+		return this.toolbar.getSelectedType();		
 	}
 
 	/**
@@ -151,7 +121,7 @@ public class ReachabilityGraphPanel extends JPanel {
 		if(rgp_topPanel != null){
 			if(computeNew){
 				if(editor.isTokenGameEnabled()){
-					this.refreshButton.setEnabled(true);
+					this.toolbar.setRrefreshButtonEnabled(true);
 					throw new SimulationRunningException();
 				} else {
 					this.remove(rgp_topPanel);
@@ -183,6 +153,13 @@ public class ReachabilityGraphPanel extends JPanel {
 	}
 
 	/**
+	 * Returns the graph with no tokens changed
+	 * @return 
+	 */
+	public ReachabilityJGraph getDefaultGraph(){
+		return rgp_jgraph;
+	}
+	/**
 	 * returns {@link ReachabilityJGraph} instance of this panel.
 	 * @return
 	 */
@@ -197,17 +174,17 @@ public class ReachabilityGraphPanel extends JPanel {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> updateVisibility() " + this.getClass().getName());
 		// is RG in sync ? And Token game not running...
 		if(((PetriNetModelProcessor)editor.getModelProcessor()).getLogicalFingerprint().equals(this.logicalFingerprint) && !editor.isTokenGameEnabled()){
-			if(this.rgp_jgraph.getRoots().length == 0){
-				refreshButton.setEnabled(true);
+		if(this.rgp_jgraph.getRoots().length == 0){
+				this.toolbar.setRrefreshButtonEnabled(true);
 				setGraphOutOfSync(true);
 			} else {
-				refreshButton.setEnabled(false);
+				this.toolbar.setRrefreshButtonEnabled(false);
 				setGraphOutOfSync(false);
 			}
 		} else {
-			refreshButton.setEnabled(true);
+			this.toolbar.setRrefreshButtonEnabled(true);
 			setGraphOutOfSync(true);
-		}
+		}		
 		bottomInfo.setText(this.getGraphInfo());
 		legendInfo.setText(this.getLegend());
 	}
@@ -317,10 +294,18 @@ public class ReachabilityGraphPanel extends JPanel {
 	 * sets the refresh button to be clickable - or not.
 	 * @param b
 	 */
-	protected void setRefreshButtonEnabled(boolean b){
-		this.refreshButton.setEnabled(b);
+	public void setRefreshButtonEnabled(boolean b){
+		this.toolbar.setRrefreshButtonEnabled(b);
 	}
-
+	
+	public boolean getRefreshButtonEnabled(){
+		return this.toolbar.getRrefreshButtonEnabled();
+	}
+	
+	public void setUnselectButtonEnabled(boolean b){
+		this.toolbar.setUnselectButtonEnabled(b);
+	}
+	
 	/**
 	 * enables parallel rounting for the RG or not.
 	 * ParallelRouting is very slow on big RG's.
@@ -336,103 +321,9 @@ public class ReachabilityGraphPanel extends JPanel {
 	 */
 	protected void setGrayScale(boolean enabled){
 		ReachabilityGraphModel.setGrayScale(rgp_jgraph, enabled);
-	}
+	}	
 }
 
-	class ExportGraphButtonListener implements ActionListener {
-		ReachabilityGraphPanel rgp = null;
-
-		public ExportGraphButtonListener(ReachabilityGraphPanel rgp){
-			this.rgp = rgp;
-		}
-
-		public void actionPerformed(ActionEvent arg0) {
-			rgp.getGraph();
-
-			int filetype = 0;
-			String filepath = null;
-
-			JFileChooser jfc;
-			if (ConfigurationManager.getConfiguration().getHomedir() != null) {
-				jfc = new JFileChooser(new File(ConfigurationManager
-						.getConfiguration().getHomedir()));
-			} else {
-				jfc = new JFileChooser();
-			}
-
-			// FileFilters
-			Vector<String> pngExtensions = new Vector<String>();
-			pngExtensions.add("png");
-			FileFilterImpl PNGFilter = new FileFilterImpl(
-					FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
-			jfc.setFileFilter(PNGFilter);
-
-			Vector<String> bmpExtensions = new Vector<String>();
-			bmpExtensions.add("bmp");
-			FileFilterImpl BMPFilter = new FileFilterImpl(
-					FileFilterImpl.BMPFilter, "BMP (*.bmp)", bmpExtensions);
-			jfc.setFileFilter(BMPFilter);
-
-			Vector<String> jpgExtensions = new Vector<String>();
-			jpgExtensions.add("jpg");
-			jpgExtensions.add("jpeg");
-			FileFilterImpl JPGFilter = new FileFilterImpl(
-					FileFilterImpl.JPGFilter, "JPG (*.jpg)", jpgExtensions);
-			jfc.setFileFilter(JPGFilter);
-
-			jfc.setFileFilter(PNGFilter);
-
-			jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
-			jfc.showSaveDialog(null);
-
-			if (jfc.getSelectedFile() != null && rgp != null) {
-
-				String savePath = jfc.getSelectedFile().getAbsolutePath()
-						.substring(
-								0,
-								jfc.getSelectedFile().getAbsolutePath()
-										.length()
-										- jfc.getSelectedFile().getName()
-												.length());
-				if (((FileFilterImpl) jfc.getFileFilter())
-						.getFilterType() == FileFilterImpl.JPGFilter) {
-					savePath = savePath
-							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-									.getName(), jpgExtensions);
-				} else if (((FileFilterImpl) jfc.getFileFilter())
-						.getFilterType() == FileFilterImpl.PNGFilter) {
-					savePath = savePath
-							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-									.getName(), pngExtensions);
-				}else if (((FileFilterImpl) jfc.getFileFilter())
-						.getFilterType() == FileFilterImpl.BMPFilter) {
-					savePath = savePath
-							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-									.getName(), bmpExtensions);
-				}else {
-					LoggerManager.error(Constants.QUALANALYSIS_LOGGER,
-							"\"Export\" NOT SUPPORTED FILE TYPE.");
-				}
-				filetype = ((FileFilterImpl) jfc.getFileFilter()).getFilterType();
-				filepath = savePath;
-			}
-
-			if (filetype == FileFilterImpl.JPGFilter) {
-				ImageExport.saveJPG(ImageExport
-						.getRenderedImage(rgp), new File(filepath));
-			} else if (filetype == FileFilterImpl.PNGFilter) {
-				ImageExport.savePNG(ImageExport
-						.getRenderedImage(rgp), new File(filepath));
-			} else if (filetype == FileFilterImpl.BMPFilter) {
-				ImageExport.saveBMP(ImageExport
-						.getRenderedImage(rgp), new File(filepath));
-			}else {
-				LoggerManager.warn(Constants.QUALANALYSIS_LOGGER,
-						"Unable to save File. Filetype not known: "
-								+ filetype);
-			}
-		}
-	}
 
 	class LegendListener implements ActionListener{
 
@@ -450,57 +341,4 @@ public class ReachabilityGraphPanel extends JPanel {
 			}
 			rgp.updateVisibility();
 		}
-	}
-
-	class LayoutBoxItemListener implements ItemListener {
-
-		ReachabilityGraphPanel rgp = null;
-
-		public LayoutBoxItemListener(ReachabilityGraphPanel rgp){
-			this.rgp = rgp;
-		}
-
-		public void itemStateChanged(ItemEvent e) {
-			JComboBox selectedChoice = (JComboBox) e.getSource();
-	        try {
-				rgp.layoutGraph(selectedChoice.getSelectedIndex(), false);
-			} catch (SimulationRunningException e1) {
-				ReachabilityWarning.showSimulationRunningWarning(this.rgp);
-			}
-		}
-	}
-
-	class RefreshGraphButtonListener implements ActionListener {
-
-		ReachabilityGraphPanel rgp = null;
-
-		public RefreshGraphButtonListener(ReachabilityGraphPanel rgp){
-			this.rgp = rgp;
-		}
-
-		public void actionPerformed(ActionEvent arg0) {
-			try {
-				rgp.layoutGraph(rgp.getSelectedType(), true);
-				rgp.setLogicalFingerPrint(((PetriNetModelProcessor)rgp.getEditor().getModelProcessor()).getLogicalFingerprint());
-				rgp.setRefreshButtonEnabled(false);
-				rgp.setGraphOutOfSync(false);
-				rgp.updateVisibility();
-			} catch (SimulationRunningException e) {
-				rgp.setRefreshButtonEnabled(true);
-				ReachabilityWarning.showSimulationRunningWarning(this.rgp);
-			}
-		}
-	}
-
-	class SettingsButtonListener implements ActionListener {
-		ReachabilityGraphPanel rgp = null;
-
-		public SettingsButtonListener(ReachabilityGraphPanel rgp){
-			this.rgp = rgp;
-		}
-
-		public void actionPerformed(ActionEvent e) {
-			ReachabilitySettingsDialog dialog = new ReachabilitySettingsDialog(rgp);
-			dialog.setVisible(true);
-		}
-	}
+	}	

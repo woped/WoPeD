@@ -22,9 +22,11 @@
  */
 package org.woped.core.model.petrinet;
 
+import java.awt.Color;
 import java.io.Serializable;
 
 import org.woped.core.Constants;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.CreationMap;
 import org.woped.core.utilities.LoggerManager;
 
@@ -62,6 +64,10 @@ public class Toolspecific implements Serializable
     //! Specifies the unit for the time value (enum). The exact values are 
     //! not defined yet
     private int						timeUnit = 1;
+    
+    private boolean				    UnderstandColoringActive = false;
+
+    private Color				    UnderstandColor          = Color.white;
     
     /**
      * Constructor for Toolspecific. ownerid must not be null.
@@ -245,5 +251,21 @@ public class Toolspecific implements Serializable
 
 	public void setTimeUnit(int timeUnit) {
 		this.timeUnit = timeUnit;
+	}
+	
+    public void setUnderstandColoringActive(boolean active) {
+		this.UnderstandColoringActive= active;
+	}	
+	
+	public boolean getUnderstandColoringActive(){
+		return this.UnderstandColoringActive;
+	}
+    
+    public void setUnderstandColor(Color UnderstandColor) {
+		this.UnderstandColor  = UnderstandColor;
+	}	
+	
+	public Color getUnderstandColor(){
+		return this.UnderstandColor;
 	}
 }

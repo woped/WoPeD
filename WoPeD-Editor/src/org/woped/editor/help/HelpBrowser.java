@@ -36,6 +36,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.EmptyStackException;
+import java.util.regex.Pattern;
 
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
@@ -65,10 +66,11 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
     public static HelpBrowser c_instance = null;
 
     private JEditorPane       htmlPane;
-    private JLabel            statusBarInfo;
+    private JLabel            statusBarInfo;	
     private String            currURL;
     private String            homeURL;
     private String            contentsURL;
+    private String			  defaultLangPat;
     private boolean startedAsApplet;
     // for applet: help files in html
     private URL codeBase;
@@ -304,7 +306,28 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
             String linkedURL = event.getURL().toExternalForm();
 
             if ((linkedURL.substring(0, 5)).equals("file:") | (linkedURL.substring(0, 4)).equals("jar:"))
-            {
+            { 
+            	if (linkedURL.substring(0, 5).equals("file:"))
+            	{   
+            		if (defaultLangPat != null)
+            		{
+            			linkedURL=linkedURL.replace("/en/", "/"+defaultLangPat+"/");
+            		}	
+            		File f= new File(linkedURL.substring(5));
+            		if (!f.exists())
+            		{
+            			Pattern p = Pattern.compile("/");
+            			String[] dirs = p.split(linkedURL);
+            			
+            			// Vorletzter teil ist die Sprache
+            			defaultLangPat = dirs[dirs.length - 2];
+            			dirs[dirs.length - 2] = "en";
+            			
+            			linkedURL = dirs[0];
+            			for (int i = 1; i < dirs.length; i++)
+            				linkedURL = linkedURL + "/" + dirs[i];
+            		}	
+            	}
                 // Local link, open in helpbrowser
                 showPage(linkedURL, false, false);
             } else

@@ -1,16 +1,22 @@
 package org.woped.qualanalysis.reachabilitygraph.controller;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
+import org.jgraph.graph.GraphConstants;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 
 public class ReachabilityEdgeView extends EdgeView {
 	
 	private static final long serialVersionUID = -1042289353330966443L;
+	
+	private Color OutgoiningColor = new Color(153,0,0);
+	private Color IngoingColor = new Color(180,203,35);
+	private Color NormalColor = Color.black;
 	
 	protected ReachabilityEdgeRenderer renderer;
 	
@@ -18,6 +24,17 @@ public class ReachabilityEdgeView extends EdgeView {
 		super(cell);
 		this.setAttributes(((ReachabilityEdgeModel)cell).getAttributes());
 		this.renderer = new ReachabilityEdgeRenderer();
+		setLineColor(cell);	
+	}
+	
+	public void setLineColor(Object cell){
+		ReachabilityEdgeModel edge = (ReachabilityEdgeModel) cell;
+		if (edge.getOutgoing())
+			GraphConstants.setLineColor(edge.getAttributes(), OutgoiningColor);
+		else if (edge.getIngoing())	
+			GraphConstants.setLineColor(edge.getAttributes(), IngoingColor);
+		else 
+			GraphConstants.setLineColor(edge.getAttributes(), NormalColor);						
 	}
 	
 	public CellViewRenderer getRenderer(){

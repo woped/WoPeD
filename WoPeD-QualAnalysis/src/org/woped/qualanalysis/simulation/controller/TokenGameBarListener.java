@@ -4,7 +4,6 @@ import java.awt.event.*;
 import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.qualanalysis.simulation.*;
 
-
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.event.ChangeEvent;
@@ -72,7 +71,21 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	public final static int			  PM_DELAYTIME			 = 34;
 	//PlaybackManager UI-control
 	public final static int			  PM_ESCAPE				 = 35;
-		
+	
+	//Get additional RemoteControls on stage
+	public final static int			  CHOOSE_VIEW			 = 36;
+	
+	//Use analysis functions from simulatorBar
+	public final static int			  STOP_TG                = 37;
+	public final static int			  CALL_WOFLAN            = 38;
+	public final static int			  ANALYSIS               = 39;
+	public final static int			  QUANTCAP               = 40;
+	public final static int			  QUANTSIM               = 41;
+	public final static int			  REACHABILITY_GRAPH     = 42;
+	
+	//AutoChoice List
+	public final static int           CHOOSE_REMOTECONTROLL  = 43;	
+	
 	//Action-Variables
 	private ReferenceProvider         MainWindowReference    = null;
 	private TokenGameHistoryManagerVC HistoryDialog          = null;
@@ -81,7 +94,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	//Variables
 	private int                       ID                     = 0;
 	private TokenGameBarController    RemoteControl          = null;
-	private TokenGamePlaybackManagerVC	  PlaybackDialog		  = null;
+	private TokenGamePlaybackManagerVC	PlaybackDialog		 = null;
 
 
 	public TokenGameBarListener(int ElementID, TokenGameBarController RC, TokenGameHistoryManagerVC ToGaHiMan)
@@ -104,9 +117,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 	  	ID = ElementID;
 	  	RemoteControl = RC;
 	}
-	
-	
-	
+		
 	
 	private void actionRouter()
 	{
@@ -161,7 +172,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			  */
 			 //Cleanup needed to avoid double ENtries in the ChoiceBox
 			 RemoteControl.disableStepDown();
-			 RemoteControl.disableRecordButton();
+			 //RemoteControl.disableRecordButton();
 			 RemoteControl.disablePlayButton();
 			 RemoteControl.cleanupTransition();
 			 playbackActions();
@@ -297,7 +308,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			   {
 				   RemoteControl.getExpertView().disableRecordButton();
 			   }
-			   RemoteControl.setViewMode(RemoteControl.EXPERT_VIEW);
+			   RemoteControl.setViewMode(0);
 			   break;
 			 }
 			 break;
@@ -309,6 +320,11 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 break;
 		 case PM_ESCAPE:
 			 PlaybackDialog.setVisible(false);
+			 break;
+		 case STOP_TG:
+			 RemoteControl.stopTG();
+			 break;
+		 case CHOOSE_VIEW:
 			 break;
 		 default:
 			 break;
@@ -330,7 +346,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			}
 			RemoteControl.enablePlayButton();
 			RemoteControl.enableStepDown(null);
-			RemoteControl.enableRecordButton();
+			//RemoteControl.enableRecordButton();
 		}
 	}
 	
@@ -394,7 +410,7 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 				RemoteControl.clearHistoryData();
 			}
 		}
-		RemoteControl.getTokenGameController().getThisEditor().setTokenGameEnabled(true);
+		//RemoteControl.getTokenGameController().getThisEditor().setTokenGameEnabled(true);
 	}
 
 	private void stopAction()
@@ -411,7 +427,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 		RemoteControl.getEyeView().getSlimPanel().setChoiceListInvisible();
 		RemoteControl.getTokenGameController().getThisEditor().setTokenGameEnabled(false);
 	}
-
 	
 	/*
 	 * Action Events

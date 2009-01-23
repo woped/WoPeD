@@ -148,8 +148,10 @@ public class VisualController implements PropertyChangeListener,
 	public static final int DRAWMODE_XORJOIN_ANDSPLIT = 36;
 
 	public static final int REACH_GRAPH_START = 38;
+	
+	public static final int COLORING = 39;
 
-	private static final int MAX_ID = 39;
+	private static final int MAX_ID = 40;
 
 	private ArrayList<Vector<Object>> m_enable = new ArrayList<Vector<Object>>();
 	private ArrayList<Vector<Object>> m_visible = new ArrayList<Vector<Object>>();
@@ -393,7 +395,7 @@ public class VisualController implements PropertyChangeListener,
 				checkSelection();
 				checkUndoRedo();
 				checkActiveEditor();
-
+			
 			} else if ("DrawMode".equals(arg0.getPropertyName()))
 			{
 				checkDrawMode();
@@ -520,7 +522,9 @@ public class VisualController implements PropertyChangeListener,
 					triggeredTransitionSelected);
 			setStatus(ARC_SELECTION, arcSelected);
 			setStatus(ELEMENT_SELECTION, !noSelection && !arcSelected && !nameSelection);
-		}
+		
+			setStatus(COLORING, ConfigurationManager.getConfiguration().getColorOn());
+			}
 	}
 
 	protected void checkDrawMode()
@@ -622,6 +626,13 @@ public class VisualController implements PropertyChangeListener,
 	protected void checkWoflan()
 	{
 		boolean woflan = ConfigurationManager.getConfiguration().isUseWoflan();
+		
+		String os_name = System.getProperty( "os.name");
+		if(os_name.startsWith("Mac") || os_name.startsWith("Linux")){
+			woflan = false;
+			
+		}
+		else woflan = true;
 		setStatus(WOFLAN, woflan && am.getUi().getAllEditors().size() > 0);
 	}
 
@@ -662,6 +673,10 @@ public class VisualController implements PropertyChangeListener,
 		return active;
 	}
 
+	protected void checkColoring(){
+		setStatus(COLORING, ConfigurationManager.getConfiguration().getColorOn());
+	}
+	
 	public void setActive(boolean active)
 	{
 		this.active = active;

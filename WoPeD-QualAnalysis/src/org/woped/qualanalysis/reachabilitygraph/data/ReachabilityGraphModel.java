@@ -50,7 +50,7 @@ public class ReachabilityGraphModel {
 		view.setAutoSizeOnValueChange(true);
 		view.setSelectsAllInsertedCells(false);
 		ReachabilityJGraph graph = new ReachabilityJGraph(model, view);
-		graph.addMouseListener(new ReachabilityCellListener(graph));
+		graph.addMouseListener(new ReachabilityCellListener(graph,editor));
 		// Compute ReachabilityGraph
 		BuildReachability dataSource = new BuildReachability(editor);
 		HashMap<String, TransitionObject> transactions = dataSource.getTransactions();
@@ -151,36 +151,16 @@ public class ReachabilityGraphModel {
 	
 	public static void setGrayScale(ReachabilityJGraph graph, boolean enabled){
 		Object[] nodes =  graph.getRoots();
-		LinkedList<ReachabilityPlaceModel> places = new LinkedList<ReachabilityPlaceModel>();
 		HashMap<ReachabilityPlaceModel, AttributeMap> edit = new HashMap<ReachabilityPlaceModel,AttributeMap>();
 		for(int i = 0; i < nodes.length; i++){
 			if(nodes[i] instanceof ReachabilityPlaceModel){
 				ReachabilityPlaceModel place = (ReachabilityPlaceModel) nodes[i];
-				places.add(place);
-				if(enabled){
-					GraphConstants.setBackground(place.getAttributes(), Color.lightGray);
-				} else {
-					GraphConstants.setBackground(place.getAttributes(), Color.orange);	
-				}
+				place.setGrayscaled(enabled);
 				edit.put(place, place.getAttributes());
 			}
-		}
-		if(enabled){
-			ReachabilityPlaceModel initial = lookupInitialMarking(places);
-			if(initial != null){
-				edit.remove(initial);
-				GraphConstants.setBackground(initial.getAttributes(), Color.gray);
-				edit.put(initial, initial.getAttributes());
-			}
-		} else {
-			ReachabilityPlaceModel initial = lookupInitialMarking(places);
-			if(initial != null){
-				edit.remove(initial);
-				GraphConstants.setBackground(initial.getAttributes(), Color.green);
-				edit.put(initial, initial.getAttributes());	
-			}
-		}
-		graph.getGraphLayoutCache().edit(edit,null,null,null);
+		}		
+		graph.getGraphLayoutCache().edit(edit,null,null,null);		
+		graph.getGraphLayoutCache().reload();
 	}
 	
 	public static ReachabilityPlaceModel lookupInitialMarking(LinkedList<ReachabilityPlaceModel> markings){

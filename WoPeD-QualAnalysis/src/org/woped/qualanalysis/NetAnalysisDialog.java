@@ -317,15 +317,11 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 		DefaultMutableTreeNode current = new NetInfo(Messages.getString("Analysis.Tree.Wellstructuredness"));
 		parent.add(current);
 
-		// FIXME: We currently have to use Woflan for P/T and T/P handle
-		// detection as our own algorithm is broken
-		// This will be fixed soon (@see StructuralAnalysis.java for details)
-		
-		// Display conflicts and parallelizations that
-		// are not well-handled
+		// Retrieve all PT- and TP-Handles from the structural
+		// analysis module and show them 		
     	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumPTHandles") + ": " +
-    			m_woflanAnalysis.getNumPTHandles(),
-    			m_woflanAnalysis.getPTHandlesIterator()) {
+    			m_structuralAnalysis.getNumPTHandles(),
+    			m_structuralAnalysis.getPTHandlesIterator()) {
     		public String GetGroupDisplayString(int nIndex, Collection group) {
     			return Messages.getString("Analysis.Tree.PTHandlePair") + " #" + (nIndex+1);
     		}
@@ -338,8 +334,8 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
     	});	
     	
     	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumTPHandles") + ": " +
-    			m_woflanAnalysis.getNumTPHandles(),
-    			m_woflanAnalysis.getTPHandlesIterator()) {
+    			m_structuralAnalysis.getNumTPHandles(),
+    			m_structuralAnalysis.getTPHandlesIterator()) {
     		public String GetGroupDisplayString(int nIndex, Collection group) {
     			return Messages.getString("Analysis.Tree.TPHandlePair") + " #" + (nIndex+1);
     		}
@@ -349,30 +345,7 @@ public class NetAnalysisDialog extends JDialog implements WindowListener{
 				else
 					return InfoStateOK;
     		}
-    	});
-    	
-		/*
-		// FIXME: We currently have to use Woflan for P/T and T/P handle
-		// detection as our own algorithm is broken
-		// This will be fixed soon (@see StructuralAnalysis.java for details)
-		// Jan. 14th 2007, AE
-		
-    	current.add(new NodeGroupListNetInfo(Messages.getString("Analysis.Tree.NumHandles") + ": " +
-    			m_structuralAnalysis.getNumWellStructurednessViolations(),
-    			m_structuralAnalysis.getWellStructurednessViolations()) {
-
-    		public String GetGroupDisplayString(int nIndex, Collection gorup) {
-    			return Messages.getString("Analysis.Tree.HandlePair") + " " + (nIndex+1);
-    		}
-    		// Free-choice violations are not good and should trigger an error
-    		public int GetInfoState() {
-    			if (getChildCount()>0)
-    				return InfoStateERROR;
-    			else
-    				return InfoStateOK;
-    		}
-    	});
-    	*/	
+    	});	
 	}
 	
 	private void BuildWorkflowInfo(DefaultMutableTreeNode parent)

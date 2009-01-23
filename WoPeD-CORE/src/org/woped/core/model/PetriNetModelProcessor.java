@@ -884,5 +884,19 @@ AbstractElementModel targetModel = getElementContainer()
 	public void setResourceMapping(HashMap<String, Vector<String>> resourceMapping) {
 		this.resourceMapping = resourceMapping;
 	}
+	/**
+	 * Resets all virtual tokens an highlightings which were set from the Reachability Graph
+	 * @since 02.01.2009
+	 * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
+	 */
+	public void resetRGHighlightAndVTokens(){
+		for(Iterator iter = getElementContainer().getRootElements().iterator();iter.hasNext();){			
+			AbstractElementModel current = (AbstractElementModel)iter.next();
+			current.setRGHighlighted(false);
+			if (current instanceof PlaceModel){
+				((PlaceModel)current).resetVirtualTokens();
+			}
+		}
+	}
 
 }

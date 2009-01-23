@@ -32,10 +32,12 @@ import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.border.LineBorder;
+import javax.swing.text.html.HTMLDocument.HTMLReader.HiddenAction;
 
 import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
+import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
@@ -50,6 +52,9 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 
+import org.woped.qualanalysis.reachabilitygraph.data.Marking;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
@@ -128,6 +133,10 @@ public class TokenGameController
      */
     public void start()
     {  
+		// remove Highlighting in RG    
+    	deHighlightRG();
+    	// remove highlighting from RG in Edtor    	
+    	petrinet.resetRGHighlightAndVTokens();
     	// if you are stepping into a subprocess right now
     	if(thisEditor.isSubprocessEditor())
         {
@@ -161,7 +170,11 @@ public class TokenGameController
             allTransitions = getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
             allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE));
             allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE));
+            
         }
+    	// call the CLICK_PLAY-Button Event from simulatorBar
+    	ReferenceProvider refer = new ReferenceProvider();
+    	refer.getUIReference().setFirstTransitionActive();
     }
 
     /**
@@ -169,6 +182,8 @@ public class TokenGameController
      */
     public void stop()
     {
+        // remove Highlighting in RG    
+    	deHighlightRG();
         // set all transistions/arcs inactive & not fireing
         resetTransitionStatus();
         // reset and sink places that may have been activated
@@ -187,6 +202,22 @@ public class TokenGameController
         RemoteControl.removeControlElements();
     }
 
+	private void deHighlightRG(){			
+		ReferenceProvider refer = new ReferenceProvider();
+		Object[] a = refer.getDesktopReference().getComponents();
+		for(int i = 0;i<refer.getDesktopReference().getComponentCount();i++){
+			if (a[i] instanceof ReachabilityGraphVC){
+				ReachabilityGraphVC rvc = (ReachabilityGraphVC)a[i];
+				
+				if(rvc.hasEditor(thisEditor)){
+					rvc.setUnselectButtonEnabled(thisEditor,false);						
+					((ReachabilityJGraph) rvc.getJGraph(thisEditor)).deHighlight();						
+				}
+				break;
+			}
+		}
+	}
+	
     
     //! Reset the virtual token count for the specified element container
     //! If the element container contains subprocess elements,
@@ -218,6 +249,7 @@ public class TokenGameController
         this.visualTokenGame = true;
                
         // disable editor access
+        thisEditor.setReadOnly(false);
         getGraph().enableMarqueehandler(false);
         getGraph().clearSelection();
         getGraph().setEnabled(false);
@@ -287,9 +319,25 @@ public class TokenGameController
         }              
         getGraph().updateUI();
         RemoteControl.fillChoiceBox(); //Fills the Choicebox with the active Transitions that have been encountered through checkTransition()
+        // Check if there is a transition to choose in SlimChoiceBox
+        RemoteControl.checkSlimChoiceBox();
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
-        
+        setMarkingInRG(new Marking(thisEditor,"TokenGame"));    
     }
+    
+    private void setMarkingInRG(Marking mark){
+    	if (ParentControl==null) ParentControl = new ReferenceProvider();
+		Object[] a = ParentControl.getDesktopReference().getComponents();
+		for(int i = 0;i<ParentControl.getDesktopReference().getComponentCount();i++){
+			if (a[i] instanceof ReachabilityGraphVC){
+				ReachabilityGraphVC rvc = (ReachabilityGraphVC)a[i];
+				if(rvc.hasEditor(thisEditor)){						
+					((ReachabilityJGraph) rvc.getJGraph(thisEditor)).HighlightMarking(mark);						
+				}
+				break;
+			}
+		}
+	}
 
     /*
      *  Will check transitions if they have to be activated or not
@@ -1267,6 +1315,7 @@ public class TokenGameController
      */ 
     public void TokenGameRestore()
     {
+    	deHighlightRG();
         resetTransitionStatus();
         resetSinkPlacesStatus();
         resetArcStatus();

@@ -1,7 +1,14 @@
 package org.woped.qualanalysis.simulation.controller;
 import java.awt.Dimension;
+import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.PointerInfo;
+import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Dimension2D;
+import java.awt.geom.Line2D;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -21,7 +28,7 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.model.petrinet.TransitionModel;
-import  org.woped.qualanalysis.simulation.*;
+import org.woped.qualanalysis.simulation.*;
 import org.woped.translations.Messages;
 
 import com.sun.java.swing.plaf.windows.WindowsBorders.InternalFrameLineBorder;
@@ -35,6 +42,7 @@ public class TokenGameBarController implements Runnable {
 	public static final int	         EXPERT_VIEW				   = 0;
 
 	private TokenGameBarVC           ExpertView                    = null;
+	private SimulatorBarVC           simulatorView				   = null;
     private ReferenceProvider        desktop                       = null;
 	private TokenGameController      tgController                  = null;
 	private PetriNetModelProcessor   PetriNet                      = null;
@@ -64,6 +72,7 @@ public class TokenGameBarController implements Runnable {
 	private boolean                  newHistory                    = false;
 	private boolean                  endofautoplay                 = false;
 	private boolean                  stepInSubProcess              = false;
+	private boolean					 expertViewOnStage             = false;
 
 	//Integers
 	private int                      HistoryIndex                  = 0;
@@ -74,7 +83,7 @@ public class TokenGameBarController implements Runnable {
 	//SlimFrames
 	private SlimInternalFrame        SlimView                      = null;
 	private SlimInternalFrame        EyeView                       = null;
-
+    private SimulatorBarVC           simulatorBar				   = null;
 
 	public TokenGameBarController(TokenGameController tgController, PetriNetModelProcessor PetriNet)
 	{
@@ -97,17 +106,27 @@ public class TokenGameBarController implements Runnable {
 	  {
         //Add Default Mediator Pattern here instead of the DesktopReference-thing
 		desktop.getDesktopReference().add(ExpertView);
-        ExpertView.setVisible(true);
+        ExpertView.setVisible(false);
+	
+        desktop.getUIReference().removeToolBar();
+        simulatorBar = new SimulatorBarVC(this, acoChoiceItems, ahxHistoryContent);
+        desktop.getUIReference().setSimulatorBar(simulatorBar);       
+      
 	  }
       else
       {
     	ExpertView = new TokenGameBarVC(this, acoChoiceItems, ahxHistoryContent);
         desktop    = new ReferenceProvider();
+        
         Point p    = desktop.getDesktopReference().getLocation();
         p.setLocation(desktop.getDesktopReference().getLocation().getX(), (int)desktop.getDesktopReference().getHeight()-ExpertView.getHeight());
-        desktop.getDesktopReference().add(ExpertView).setLocation(p);
-        ExpertView.moveToFront();
-
+        //desktop.getDesktopReference().add(ExpertView).setLocation(p);
+        //ExpertView.moveToFront();
+        
+        desktop.getUIReference().removeToolBar();
+        simulatorBar = new SimulatorBarVC(this, acoChoiceItems, ahxHistoryContent);
+        desktop.getUIReference().setSimulatorBar(simulatorBar);       
+        
         SlimView = new SlimInternalFrame(this, acoChoiceItems, ahxHistoryContent, SLIM_VIEW);
         desktop.getDesktopReference().add(SlimView).setLocation(p);
         SlimView.moveToFront();
@@ -126,6 +145,17 @@ public class TokenGameBarController implements Runnable {
 		  desktop.getMediatorReference().getUi().selectEditor(desktop.getMediatorReference().getUi().getEditorFocus());
 		  desktop.getDesktopReference().getSelectedFrame().addInternalFrameListener(new TokenGameEditorFrameListener(this));
 	  }
+	}
+	
+	// Get the ExpertView to the front
+	public void getExpertViewOnStage(){
+		Point p    = desktop.getDesktopReference().getLocation();
+	    p.setLocation(desktop.getDesktopReference().getLocation().getX(), (int)desktop.getDesktopReference().getHeight()-ExpertView.getHeight());
+	      
+		desktop.getDesktopReference().add(ExpertView).setLocation(p);
+        ExpertView.moveToFront();
+        simulatorBar.setChoiceListInvisible();
+        setExpertViewStatus(true);
 	}
 
 	/**
@@ -147,6 +177,8 @@ public class TokenGameBarController implements Runnable {
        	ExpertView = null;
        	SlimView = null;
        	EyeView = null;
+       	
+       	setExpertViewStatus(false);
       }
 	}
 
@@ -425,6 +457,9 @@ public class TokenGameBarController implements Runnable {
 	  {
 		  return;
 	  }
+	  if(followingActivatedTransitions.size() > 0){
+		  simulatorBar.enableForwardButtons();
+	  }
 	  if(!playbackRunning())
 	  {
 		clearChoiceBox(); //To ensure that the box is empty
@@ -446,23 +481,32 @@ public class TokenGameBarController implements Runnable {
 			if(!autoPlayBack & !ExpertView.isAutoChoiceSelected())
 			{
 				ExpertView.disableForwardButtons();
+				simulatorBar.disableForwardButtons();
 			}
 			if((getViewMode() > 0) && stepInSubProcess)
 			{
-				acoChoiceItems.set(acoChoiceItems.getSize()-1, "--><-- StepIn");
+				acoChoiceItems.set(acoChoiceItems.size()-1, "--><-- StepIn");
+			}
+			if(getViewMode() == 0)
+			{
+				if(!getExpertViewStatus()){
+						simulatorBar.showChoice();		
+				}	
 			}
 			if(getViewMode() == 1)
 			{
+				simulatorBar.setChoiceListInvisible();
 			    SlimView.getSlimPanel().showChoice();
 			}
 			if(getViewMode() == 2)
 			{
+				simulatorBar.setChoiceListInvisible();
 				EyeView.getSlimPanel().showChoice();
 			}
 		}
 	  }
-	}
-
+	}  
+	
 	/**
 	 * clears the multi-Choice box
 	 */
@@ -474,7 +518,16 @@ public class TokenGameBarController implements Runnable {
 			//ExpertView.enableForwardButtons();
 		//}
 	}
-
+	/**
+	 *
+	 * this method provides an activity check for the SlimChoiceBox
+	 */
+	public void checkSlimChoiceBox(){
+		 if(acoChoiceItems.size() == 0)
+			{
+				simulatorBar.setChoiceListInvisible(); 
+			}
+	}
 
 
 	/*
@@ -759,6 +812,14 @@ public class TokenGameBarController implements Runnable {
     {
     	newHistory = false;
     }
+    
+    public void setExpertViewStatus(boolean status){
+    	this.expertViewOnStage = status;
+    }
+    
+    public boolean getExpertViewStatus(){
+    	return expertViewOnStage;
+    }
 
 	/**
 	 * Switches the AutoPlayback on or off
@@ -776,6 +837,10 @@ public class TokenGameBarController implements Runnable {
 			{
 				ExpertView.disablePlayButtons();
 			}
+			if(simulatorBar.isPlayButtonEnabled())
+			{
+				simulatorBar.disablePlayButtons();
+			}
 		}
 		else
 		{
@@ -785,6 +850,10 @@ public class TokenGameBarController implements Runnable {
 			if(ExpertView.isPlayButtonEnabled())
 			{
 				ExpertView.disablePlayButtons();
+			}
+			if(simulatorBar.isPlayButtonEnabled())
+			{
+				simulatorBar.disablePlayButtons();
 			}
 		}
 	}
@@ -822,11 +891,12 @@ public class TokenGameBarController implements Runnable {
 		switch(viewmode)
 		{
 			case EXPERT_VIEW:
-				SlimView.getSlimPanel().setChoiceListInvisible();
-				EyeView.getSlimPanel().setChoiceListInvisible();
 				EyeView.setVisible(false);
 				ExpertView.setVisible(true);
 				SlimView.setVisible(false);
+				SlimView.getSlimPanel().setChoiceListInvisible();
+				EyeView.getSlimPanel().setChoiceListInvisible();
+				simulatorBar.setChoiceListInvisible();
 				break;
 			case SLIM_VIEW:
 				ExpertView.enableRecordButton();
@@ -837,7 +907,8 @@ public class TokenGameBarController implements Runnable {
 				ExpertView.setVisible(false);
 				SlimView.setVisible(true);
 				SlimView.getSlimPanel().showChoice();
-				SlimView.getSlimPanel().setChoiceListInvisible();				
+				SlimView.getSlimPanel().setChoiceListInvisible();	
+				simulatorBar.setChoiceListInvisible();
 				
 				EyeView.setVisible(false);
 				break;
@@ -855,7 +926,8 @@ public class TokenGameBarController implements Runnable {
 				SlimView.setVisible(false);
 	        	EyeView.setVisible(true);
 				EyeView.getSlimPanel().showChoice();
-				EyeView.getSlimPanel().setChoiceListInvisible();		        	
+				EyeView.getSlimPanel().setChoiceListInvisible();
+				simulatorBar.setChoiceListInvisible();
 				break;
 			default:
 				break;
@@ -917,6 +989,16 @@ public class TokenGameBarController implements Runnable {
 		return ExpertView;
 	}
 
+	/**
+	 *
+	 * @return Reference to TokenGameBarVC
+	 */
+	public SimulatorBarVC getSimulatorView()
+	{
+		return simulatorBar;
+	}
+	
+	
     /**
      *
      * @return Reference to SlimInternalFrame (SlimView)
@@ -930,6 +1012,7 @@ public class TokenGameBarController implements Runnable {
   	{
   		return EyeView;
   	}
+  	
 
 	/**
 	 *
@@ -949,7 +1032,13 @@ public class TokenGameBarController implements Runnable {
 		//Add "if(ExpertView_enabled =true)" and else case to return the really selected list
 		if(ExpertView.getSelectedChoiceID() > -1)
 		{
+			simulatorBar.setChoiceListInvisible();
 			return ExpertView.getSelectedChoiceID();
+		}
+		if(simulatorBar.getSelectedChoiceID() > -1)
+		{
+			simulatorBar.setChoiceListInvisible();
+			return simulatorBar.getSelectedChoiceID();
 		}
 		else if(SlimView.getSlimPanel().getSelectedChoiceID() > -1)
 		{
@@ -963,7 +1052,32 @@ public class TokenGameBarController implements Runnable {
 		}
 		return 0;
 	}
-
+	
+	/**
+	 * returns the ID of the of the chosen ViewMode according to the RemoteControls
+	 * @return
+	*/ 
+	public int getSelectedViewChoiceID(int view)
+	{
+		this.viewmode = view;
+		//Add "if(ExpertView_enabled =true)" and else case to return the really selected list
+		if(view == 0){
+		   setViewMode(EXPERT_VIEW);
+     	   getExpertViewOnStage();
+		}
+		else if(view == 1){
+			   setViewMode(SLIM_VIEW);
+		}
+		else if(view == 2){
+			   setViewMode(EYE_VIEW);
+		}
+		else if(view > -1)
+		{
+			return 0;
+		}
+		return 0;
+	}
+        
 	/**
 	 * Determines if the AutoPlayback is switched on
 	 * @return
@@ -1033,7 +1147,7 @@ public class TokenGameBarController implements Runnable {
 	 */
 	public boolean tokengameRunning()
 	{
-		if(!ExpertView.isPlayButtonEnabled())
+		if((!ExpertView.isPlayButtonEnabled()) && (!simulatorBar.isPlayButtonEnabled()))
 		{
 			return true;
 		}
@@ -1041,6 +1155,7 @@ public class TokenGameBarController implements Runnable {
 		{
 			return false;
 		}
+		
 	}
 
 	/*
@@ -1055,6 +1170,7 @@ public class TokenGameBarController implements Runnable {
 	public void enableStepDown(TransitionModel transition)
 	{
 		ExpertView.enableStepDown();
+		simulatorBar.enableStepDown();
 		if((transition != null) && (getViewMode() > 0))
 		{
 		  stepInSubProcess = true;
@@ -1070,6 +1186,7 @@ public class TokenGameBarController implements Runnable {
 	public void disableStepDown()
 	{
 		ExpertView.disableStepDown();
+		simulatorBar.disableStepDown();
 	}
 
 	/**
@@ -1079,6 +1196,7 @@ public class TokenGameBarController implements Runnable {
 	public void enableStepwiseButton()
 	{
 		ExpertView.enableStepwiseButton();
+		simulatorBar.enableStepwiseButton();
 		SlimView.getSlimPanel().setPlaymodeSelected(true);
 	}
 
@@ -1089,6 +1207,7 @@ public class TokenGameBarController implements Runnable {
 	public void disableStepwiseButton()
 	{
 		ExpertView.disableStepwiseButton();
+		simulatorBar.disableStepwiseButton();
 		SlimView.getSlimPanel().setPlaymodeSelected(false);
 	}
 
@@ -1099,6 +1218,7 @@ public class TokenGameBarController implements Runnable {
 	public void enableAutoPlaybackButton()
 	{
 		ExpertView.enableAutoPlaybackButton();
+		simulatorBar.enableAutoPlaybackButton();
 	}
 
 	/**
@@ -1108,6 +1228,7 @@ public class TokenGameBarController implements Runnable {
 	public void disableAutoPlaybackButton()
 	{
 		ExpertView.disableAutoPlaybackButton();
+		simulatorBar.disableAutoPlaybackButton();
 	}
 	/**
 	 * enables the Play Buttons on ExpertView
@@ -1115,6 +1236,7 @@ public class TokenGameBarController implements Runnable {
 	public void enablePlayButtons()
 	{
 		ExpertView.enablePlayButtons();
+		simulatorBar.enablePlayButtons();
 	}
 	/**
 	 * disable the Play Buttons on ExpertView
@@ -1122,6 +1244,7 @@ public class TokenGameBarController implements Runnable {
 	public void disablePlayButtons()
 	{
 		ExpertView.disablePlayButtons();
+		simulatorBar.disablePlayButtons();
 	}
 
 	/**
@@ -1130,6 +1253,7 @@ public class TokenGameBarController implements Runnable {
 	public void enablePlayButton()
 	{
 		ExpertView.enablePlayButton();
+		simulatorBar.enablePlayButton();
 	}
 
 	/**
@@ -1138,6 +1262,7 @@ public class TokenGameBarController implements Runnable {
 	public void disablePlayButton()
 	{
 		ExpertView.disablePlayButton();
+		simulatorBar.disablePlayButton();
 	}
 
 	/**
@@ -1147,6 +1272,7 @@ public class TokenGameBarController implements Runnable {
 	public void enableRecordButton()
 	{
 		ExpertView.enableRecordButton();
+		simulatorBar.enableRecordButton();
 	}
 
 	/**
@@ -1156,6 +1282,7 @@ public class TokenGameBarController implements Runnable {
 	public void disableRecordButton()
 	{
 		ExpertView.disableRecordButton();
+		simulatorBar.disableRecordButton();
 	}
 
 	/**
@@ -1164,6 +1291,7 @@ public class TokenGameBarController implements Runnable {
 	public void enableButtonforAutoPlayback()
 	{
 		ExpertView.enableButtonforAutoPlayback();
+		simulatorBar.enableButtonforAutoPlayback();
 	}
 
 	/**
@@ -1172,6 +1300,7 @@ public class TokenGameBarController implements Runnable {
 	public void disableButtonforAutoPlayback()
 	{
 		ExpertView.disableButtonforAutoPlayback();
+		simulatorBar.disableButtonforAutoPlayback();
 	}
 
 	/**
@@ -1180,6 +1309,7 @@ public class TokenGameBarController implements Runnable {
 	public void enableBackWardButtons()
 	{
 		ExpertView.enableBackWardButtons();
+		simulatorBar.enableBackWardButtons();
 	}
 
 	/**
@@ -1188,6 +1318,7 @@ public class TokenGameBarController implements Runnable {
 	public void disableBackWardButtons()
 	{
 		ExpertView.disableBackWardButtons();
+		simulatorBar.disableBackWardButtons();
 	}
 
 	/**
@@ -1201,12 +1332,14 @@ public class TokenGameBarController implements Runnable {
 		if(ExpertView.isAutoChoiceSelected())
 		{
 			ExpertView.enableForwardButtons();
+			simulatorBar.enableForwardButtons();
 		}
 		else
 		{
 			if(followingActivatedTransitions.size() > 1)
 			{
 				ExpertView.disableForwardButtons();
+				simulatorBar.disableForwardButtons();
 			}
 		}
 	}
@@ -1267,5 +1400,17 @@ public class TokenGameBarController implements Runnable {
 	public void setPlayIcon(boolean record)
 	{
 		ExpertView.setPlayIcon(record);
+	}
+	
+	// Stop the TokenGame if Editor is closed
+	public void stopTG()
+	{
+		tgController.stop();
+		simulatorBar.setChoiceListInvisible();
+		//simulatorBar.setViewChoiceListInvisible();
+		desktop.getUIReference().getEditorFocus().toggleTokenGame();
+		desktop.getUIReference().switchToolBar(false);
+		desktop.getUIReference().getToolBar().addAnalysisButtons();
+		desktop.getUIReference().getContentPane().repaint();
 	}
 }

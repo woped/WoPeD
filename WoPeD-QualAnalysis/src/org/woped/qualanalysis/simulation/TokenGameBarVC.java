@@ -61,7 +61,7 @@ public class TokenGameBarVC extends JInternalFrame {
 	//Constructor(s)
 	public TokenGameBarVC(TokenGameBarController tgbController, DefaultListModel acoChoiceItems, DefaultListModel ahxHistoryContent)
 	{
-		super(Messages.getTitle("Tokengame.RemoteControl"), false, false);
+		super(Messages.getTitle("Tokengame.RemoteControl"), false, true);
 		this.setFrameIcon(Messages.getImageIcon("Tokengame.RemoteControl"));
 	    this.setToolTipText(Messages.getTitle("Tokengame.RemoteControl"));//setAlignmentY(300);
 		this.setSize(910,140);

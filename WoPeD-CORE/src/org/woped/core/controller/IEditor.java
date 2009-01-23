@@ -129,6 +129,16 @@ public interface IEditor extends IViewController
     public void setTokenGameEnabled(boolean state);
     
     /**
+    /**
+     * Sets if Understandability Coloring is active
+     */
+    public void setUnderstandabilityColoringEnabled(boolean active);
+    
+    /* Sets if the TokenGame for this editor is playing
+     */
+    public void toggleTokenGame();
+    
+    /**
      * Get TokenGameEnabled for this editor if TokenGame is stoped
      * @return m_tokenGameEnabled
      */
@@ -205,4 +215,12 @@ public interface IEditor extends IViewController
 	public void setSubprocessOutput(AbstractElementModel p_subprocessOutput);
 	
 	public void closeEditor();
+	
+	/**
+	 * Disable all controls for the editor
+	 * @param readonly
+	 * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
+	 * @since 02.01.2009
+	 */
+	public void setReadOnly(boolean readonly);
 }

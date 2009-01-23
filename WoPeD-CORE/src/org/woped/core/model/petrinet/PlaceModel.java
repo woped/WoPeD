@@ -78,6 +78,16 @@ public class PlaceModel extends PetriNetModelElement
         m_token = token;
         m_virtualToken = m_token;
     }
+    /**
+     * Sets the virtual token.
+     * 
+     * @param token
+     *            The virtual token to set
+     */
+    public void setVirtualTokens(int token)
+    {
+        m_virtualToken = token;
+    }
 
     public int getTokenCount()
     {

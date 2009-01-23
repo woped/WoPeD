@@ -286,7 +286,7 @@ public class ReachabilitySettingsDialog extends JDialog {
 	}
 
 	private boolean getColored(){
-		boolean isColored = true;
+		boolean isColored = false;
 
 		if(graphAttributes.containsKey("reachabilityGraph.color")){
 			if(graphAttributes.get("reachabilityGraph.color").equals("true")){

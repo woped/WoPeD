@@ -1,5 +1,6 @@
 package org.woped.file.controller.vep;
 
+import java.awt.Cursor;
 import java.awt.Frame;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -53,9 +54,7 @@ import org.woped.server.ServerLoader;
 import org.woped.server.holder.ModellHolder;
 import org.woped.server.holder.UserHolder;
 import org.woped.translations.Messages;
-
-
-;
+import org.woped.understandability.TransitionColoring;
 
 public class FileEventProcessor extends AbstractEventProcessor {
 	public FileEventProcessor(int vepID, ApplicationMediator mediator) {
@@ -196,7 +195,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	 */
 	private boolean saveWebFile(EditorVC editor) {
 		boolean succeed = false;
-		
+
+		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try {
 			IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
 			IStatusBar iSB[] = new IStatusBar[iVC.length];
@@ -245,10 +245,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 							.getString("File.Error.Applet.Title"),
 					JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e) {
-			// ignore
-		} finally {
-			// TODO: Cursor Handling setCursor(Cursor.getDefaultCursor());
 		}
+		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
 		return succeed;		
 	}
 
@@ -350,8 +348,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	}
 
 	public void export(EditorVC editor) {
-		// TODO: Cursor Handling
-		// setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (editor != null) {
 			// Open save as Dialog
 			JFileChooser jfc;
@@ -442,7 +439,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 						"\"Export\" canceled or nothing to export.");
 			}
 		}
-		// TODO: Cursor Handling setCursor(Cursor.getDefaultCursor());
+		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
 	}
 
 	/**
@@ -453,9 +450,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	 */
 	public boolean save(final EditorVC editor) {
 		boolean succeed = false;
+
+		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try {
-			// TODO: Cursor Handling
-			// setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 			// Open save dialog
 			if (editor != null) {
 				if (editor != null) {
@@ -512,7 +509,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 							StructuralAnalysis sa = new StructuralAnalysis(
 									editor);
 							int wellStruct = sa
-									.getNumWellStructurednessViolations();
+									.getNumPTHandles() + sa.getNumTPHandles();
 							int freeChoice = sa.getNumFreeChoiceViolations();
 							int sound = wellStruct + freeChoice;
 							if (sound == 0) {
@@ -564,9 +561,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					Messages.getString("File.Error.Applet.Text"), Messages
 							.getString("File.Error.Appleat.Title"),
 					JOptionPane.ERROR_MESSAGE);
-		} finally {
-			// TODO: Cursor Handling setCursor(Cursor.getDefaultCursor());
-		}
+		} 		
+		
+		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
 		return succeed;
 	}
 
@@ -590,6 +587,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	 */
 	public boolean saveAs(EditorVC editor) {
 		boolean succeed = false;
+		
+		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));	
 		if (editor != null) {
 			// Open save as Dialog
 			JFileChooser jfc;
@@ -661,6 +660,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				}
 			}
 		}
+		
+		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
 		return succeed;
 
 	}
@@ -712,6 +713,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		IEditor editor = null;
 		final PNMLImport pr;
 		
+		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
 		IStatusBar[] iSB = new IStatusBar[iVC.length];
 		for (int i = 0; i < iSB.length; i++) {
@@ -748,8 +750,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
 						JOptionPane.ERROR_MESSAGE);
 			}
 			
-		} else {
-		}
+		} 		
+		
+		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
 		return editor;
 	}
 
@@ -803,6 +806,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	private IEditor openFile(File file, int filter) {
 		IEditor editor = null;
 		final PNMLImport pr;
+
+		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (filter == FileFilterImpl.PNMLFilter
 				|| filter == FileFilterImpl.SAMPLEFilter) {
 
@@ -872,9 +877,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			}
 
 			getMediator().getUi().updateRecentMenu();
-		} else {
-		}
+			
+			if (ConfigurationManager.getConfiguration().getColorOn() ==  true){
+				new TransitionColoring().update();
+			}
+		} 
+		
+		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
 		return editor;
 	}
-
 }

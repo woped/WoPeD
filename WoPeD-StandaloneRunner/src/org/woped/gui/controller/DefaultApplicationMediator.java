@@ -24,6 +24,7 @@ package org.woped.gui.controller;
 
 import java.io.File;
 
+import org.woped.config.gui.ConfColorLayoutPanel;
 import org.woped.config.gui.ConfEditorPanel;
 import org.woped.config.gui.ConfFilePanel;
 import org.woped.config.gui.ConfLanguagePanel;
@@ -42,9 +43,12 @@ import org.woped.gui.RunWoPeD;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
+import org.woped.qualanalysis.simulation.SimulatorBarVC;
+import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
 import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphEventProcessor;
 import org.woped.translations.Messages;
+import javax.swing.DefaultListModel;
 
 /**
  * 
@@ -54,13 +58,19 @@ import org.woped.translations.Messages;
  */
 public class DefaultApplicationMediator extends ApplicationMediator
 {
-    public static final int VIEWCONTROLLER_TOOLBAR   = 10;
-    public static final int VIEWCONTROLLER_MENU      = 11;
-    public static final int VIEWCONTROLLER_STATUSBAR = 12;
+    public static final int VIEWCONTROLLER_TOOLBAR      = 10;
+    public static final int VIEWCONTROLLER_MENU         = 11;
+    public static final int VIEWCONTROLLER_STATUSBAR    = 12; 
+    public static final int VIEWCONTROLLER_SIMULATORBAR = 13;
+ 
 
     private int             toolbarCounter           = 0;
     private int             menuCounter              = 0;
     private int             statusCounter            = 0;
+    
+	private DefaultListModel         acoChoiceItems                = null;
+	private DefaultListModel         ahxHistoryContent             = null;
+	private TokenGameBarController   tgbController                 = null;
 
     public DefaultApplicationMediator(IUserInterface ui, IConfiguration conf, String[] args)
     {
@@ -71,6 +81,11 @@ public class DefaultApplicationMediator extends ApplicationMediator
         {
             ToolBarVC toolbar = (ToolBarVC) this.createViewController(VIEWCONTROLLER_TOOLBAR);
             addViewController(toolbar);
+
+            //MB
+            SimulatorBarVC simulatorbar = (SimulatorBarVC) this.createViewController(VIEWCONTROLLER_SIMULATORBAR);
+            addViewController(simulatorbar);
+            
             MenuBarVC menubar = (MenuBarVC) this.createViewController(VIEWCONTROLLER_MENU);
             addViewController(menubar);
             TaskBarVC taskbar = (TaskBarVC) this.createViewController(VIEWCONTROLLER_TASKBAR);
@@ -85,9 +100,10 @@ public class DefaultApplicationMediator extends ApplicationMediator
             config.addConfNodePanel(null, new ConfFilePanel(Messages.getString("Configuration.Files.Title")));
             config.addConfNodePanel(null, new ConfToolsPanel(Messages.getString("Configuration.Tools.Title")));
             config.addConfNodePanel(null, new ConfLanguagePanel(Messages.getString("Configuration.Language.Title")));
+            config.addConfNodePanel(null, new ConfColorLayoutPanel(config, Messages.getString("Configuration.ColorLayout.Title")));
             config.setSelectedPanel(Messages.getString("Configuration.Editor.Title"));
 
-            ui = new DefaultUserInterface(toolbar, menubar, taskbar, statusbar);
+            ui = new DefaultUserInterface(toolbar, simulatorbar, menubar, taskbar, statusbar);
             setUi(ui);
             if (args != null)
             {
@@ -107,6 +123,17 @@ public class DefaultApplicationMediator extends ApplicationMediator
                     
                 }
             }
+            // BJ Load an petrinet default for test case
+            /*
+            String s = "D:/Daten_Entwicklung/WoPeD_CVS/WoPeD-FileInterface/src/org/woped/file/samples/";
+            //s+="Ballgame.pnml";
+            s+="LoanApplication.pnml";
+            menubar.fireViewEvent(new ViewEvent(menubar, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN_SAMPLE, new File(s)));
+            menubar.fireViewEvent(new ViewEvent(menubar, AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH, AbstractViewEvent.REACHGRAPH, null));
+            menubar.fireViewEvent(new ViewEvent(menubar, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.ARRANGE, null));
+            */
+            
+            
         }
     }
 
@@ -124,8 +151,14 @@ public class DefaultApplicationMediator extends ApplicationMediator
             menuCounter++;
         } else if (type == VIEWCONTROLLER_STATUSBAR)
         {
-            vc = new StatusBarVC(StatusBarVC.ID_PREFIX + statusCounter);
-        } else
+        	vc = new StatusBarVC(StatusBarVC.ID_PREFIX + statusCounter);
+        }
+        else if (type == VIEWCONTROLLER_SIMULATORBAR)
+        {
+        	//vc = new SimulatorBarVC(SimulatorBarVC.ID_PREFIX + toolbarCounter, tgbController, acoChoiceItems, ahxHistoryContent );
+        	toolbarCounter++;
+        }  
+        else
         {
             vc = super.createViewController(type);
         }
