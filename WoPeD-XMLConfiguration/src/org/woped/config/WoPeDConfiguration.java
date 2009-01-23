@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
@@ -111,7 +113,11 @@ public class WoPeDConfiguration implements IConfiguration {
 	private String getUserdir() {
 		String fn = System.getProperty("user.home");
 		fn = fn.replaceAll("file:", "");
-		fn = fn + File.separator + ".WoPeD" + File.separator;
+		
+		// extract version number of WoPeD in order to get the correct config file version
+		ResourceBundle rb = PropertyResourceBundle.getBundle("org.woped.translations.Messages");
+		String vs = "-" + rb.getString("Application.Version");
+		fn = fn + File.separator + ".WoPeD" + vs + File.separator;
 		return fn;
 	}
 
@@ -497,7 +503,7 @@ public class WoPeDConfiguration implements IConfiguration {
 			WoPeDRecentFile recent = new WoPeDRecentFile(name, path);
 			// delete the old entry if exists.
 			for (int idx = 0; idx < runtimeRecentFiles.size(); idx++) {
-				if (((org.woped.config.WoPeDRecentFile) runtimeRecentFiles
+				if (((WoPeDRecentFile) runtimeRecentFiles
 						.get(idx)).getPath().equals(path)) {
 					// delete the entry
 					runtimeRecentFiles.remove(idx);
@@ -528,7 +534,7 @@ public class WoPeDConfiguration implements IConfiguration {
 	public void removeRecentFile(String name, String path) {
 		// delete the old entry if exists.
 		for (int idx = 0; idx < runtimeRecentFiles.size(); idx++) {
-			if (((org.woped.config.WoPeDRecentFile) runtimeRecentFiles.get(idx))
+			if (((WoPeDRecentFile) runtimeRecentFiles.get(idx))
 					.getPath().equals(path)) {
 				// delete the entry
 				runtimeRecentFiles.remove(idx);
