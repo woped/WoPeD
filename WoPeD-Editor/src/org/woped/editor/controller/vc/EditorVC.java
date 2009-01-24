@@ -2470,7 +2470,8 @@ public class EditorVC extends JPanel implements KeyListener,
 			setUnderstandabilityColoringEnabled(true);
 		}
 		m_understandColoring.update();
-		
+		// Update the UI representation
+		getGraph().updateUI();		
 	}
 	
 	public void setReadOnly(boolean readonly){
