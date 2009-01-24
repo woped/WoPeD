@@ -948,10 +948,22 @@ public class StructuralAnalysis {
 			useVanDerAalstNet = true;
 		}
 		
-		
-		LowLevelNet myNet = useVanDerAalstNet?CreateAalstFlowNet():
-			CreateFlowNet(m_places, m_transitions);
-		detectHandles(myNet, useVanDerAalstNet);
+        // Add the temporary transition 't*'
+        // and consider it as another transition
+        // This is necessary to detect
+        // handles in the short-circuited net
+        AbstractElementModel tStar = addTStar();
+        HashSet<AbstractElementModel> transitionsWithTStar
+            = new HashSet<AbstractElementModel>(m_transitions);
+        transitionsWithTStar.add(tStar);
+               
+        LowLevelNet myNet = useVanDerAalstNet?CreateAalstFlowNet():
+            CreateFlowNet(m_places, transitionsWithTStar);
+        detectHandles(myNet, useVanDerAalstNet);
+       
+        // Remove temporary transition from the net
+        if (tStar != null)
+            removeTStar(tStar);       
 	}
 	
 }

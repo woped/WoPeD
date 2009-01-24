@@ -33,6 +33,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import org.woped.core.analysis.NetAlgorithms;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
@@ -50,6 +51,7 @@ import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
 import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphEventProcessor;
 import org.woped.translations.Messages;
+import org.woped.understandability.TransitionColoring;
 
 /**
  * This Class should be the Mediator for the Editor VC... It must be implemented
@@ -198,6 +200,11 @@ public class ApplicationMediator extends AbstractApplicationMediator
     		VisualController.getInstance().propertyChange(
     				new PropertyChangeEvent(this,
     						"InternalFrameCount", null, editor));
+    	
+    		// Update handle coloring if active
+			if (ConfigurationManager.getConfiguration().getColorOn() ==  true){
+				new TransitionColoring().update();
+			}    		
     	}
 
     	// Found a matching editor

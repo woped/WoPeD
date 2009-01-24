@@ -57,8 +57,12 @@ public class TransitionColoring implements ITransitionColoring {
 			// the modified net
 			structAnalysis = new StructuralAnalysis(MediatorReference.getMediatorReference().getUi().getEditorFocus());
 			resetColoringInformation();
-			startUnderstandColoring();
-			MediatorReference.getUIReference().getEditorFocus().getGraph().updateUI();
+			if (ConfigurationManager.getConfiguration().getColorOn())
+			{					
+				// Only apply coloring in case coloring is actually enabled.
+				// This saves a lot of calculation time when coloring is not active
+				startUnderstandColoring();			
+			}
 		}
 	}
 
