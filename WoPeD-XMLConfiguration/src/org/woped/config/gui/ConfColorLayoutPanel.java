@@ -66,7 +66,8 @@ import org.woped.understandability.TransitionColoring;
 public class ConfColorLayoutPanel extends AbstractConfPanel {
 	// private Component guiObject;
 	// Coloring settings
-	private JPanel colorlayoutPanel = null;
+	private JPanel colorPanel = null;
+	private JPanel colorAlgoPanel = null;
 	//private JLabel colorlayoutLabel = null;
 	private JPanel colorBoxPanel = null;
 	private colorLabelMouseListener cLabelMouseListener = null;
@@ -127,7 +128,12 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 		c.weightx = 1;
 		c.gridx = 0;
 		c.gridy = 0;
-		contentPanel.add(getColorLayoutPanel(), c);
+		contentPanel.add(getColorPanel(), c);
+		
+		c.weightx = 1;
+		c.gridx = 0;
+		c.gridy = 1;
+		contentPanel.add(getcolorAlgoPanel(),c);
 
 		c.fill = GridBagConstraints.VERTICAL;
 		c.weighty = 1;
@@ -151,19 +157,19 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 //		return colorlayoutCheckBox;
 //	}
 
-	private JPanel getColorLayoutPanel() {
-		if (colorlayoutPanel == null) {
-			colorlayoutPanel = new JPanel();
-			colorlayoutPanel.setLayout(new GridBagLayout());
+	private JPanel getColorPanel() {
+		if (colorPanel == null) {
+			colorPanel = new JPanel();
+			colorPanel.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
-			c.anchor = GridBagConstraints.NORTHWEST;
+			c.anchor = GridBagConstraints.WEST;
 
-			colorlayoutPanel
+			colorPanel
 					.setBorder(BorderFactory
 							.createCompoundBorder(
 									BorderFactory
 											.createTitledBorder(Messages
-													.getString("Configuration.ColorLayout.Panel.Title")),
+													.getString("Configuration.ColorLayout.ColorPanel.Title")),
 									BorderFactory
 											.createEmptyBorder(5, 5, 10, 5)));
 
@@ -204,28 +210,55 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 			c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 0;
-			colorlayoutPanel.add(colorBoxPanel, c);
-			//Panel for algorithm modes
-			JPanel algoModePanel = new JPanel();
-			algoModePanel.setLayout(new GridLayout(2,2,2,2));
+			colorPanel.add(colorBoxPanel, c);
+//			//Panel for algorithm modes
+//			JPanel algoModePanel = new JPanel();
+//			algoModePanel.setLayout(new GridLayout(2,2,2,2));
+//			c.weightx = 1;
+//			c.gridx = 0;
+//			c.gridy = 0;
+//			algoModePanel.add(getAlgorithmModeLabel(),c);
+//			c.weightx = 1;
+//			c.gridx = 0;
+//			c.gridy = 1;
+//			algoModePanel.  add(getAlgorithmModeComboBox(),c);
+//			
+//			c.weightx = 1;
+//			c.gridx = 1;
+//			c.gridy = 0;
+//			colorPanel.add(algoModePanel, c);
+			setColorActive(true); //MN: Wird das noch gebraucht?
+		}
+		return colorPanel;
+	 }
+	
+	private JPanel getcolorAlgoPanel() {
+		if (colorAlgoPanel == null) {
+			colorAlgoPanel = new JPanel();
+			colorAlgoPanel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+			c.anchor = GridBagConstraints.WEST;
+
+			colorAlgoPanel
+					.setBorder(BorderFactory
+							.createCompoundBorder(
+									BorderFactory
+											.createTitledBorder(Messages
+													.getString("Configuration.ColorLayout.ColorAlgoPanel.Title")),
+									BorderFactory
+											.createEmptyBorder(5, 5, 10, 5)));
 			c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 0;
-			algoModePanel.add(getAlgorithmModeLabel(),c);
-			c.weightx = 1;
-			c.gridx = 0;
-			c.gridy = 1;
-			algoModePanel.  add(getAlgorithmModeComboBox(),c);
-			
+			colorAlgoPanel.add(getAlgorithmModeLabel(),c);
 			c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 0;
-			colorlayoutPanel.add(algoModePanel, c);
-			setColorActive(true); //MN: Wird das noch gebraucht?
+			colorAlgoPanel.add(getAlgorithmModeComboBox(),c);			
 		}
-		return colorlayoutPanel;
+		return colorAlgoPanel;
 	 }
-	
+
 	 private JButton getResetButton()
 	    {
 	        if (colorResetButton == null)
@@ -259,7 +292,7 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 	 
 	 private JLabel getAlgorithmModeLabel(){
 		 if (algorithmModeLabel == null){
-		     algorithmModeLabel = new JLabel(Messages.getString("Configuration.ColorLayout.Panel.Label.AlgorithmMode"));
+		     algorithmModeLabel = new JLabel(Messages.getString("Configuration.ColorLayout.ColorAlgoPanel.Label.AlgorithmMode"));
 		 }
 		 return algorithmModeLabel;
 	 }
@@ -275,10 +308,9 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 	 private String[] getAlgorithmModes(){
 		 if (algorithmModes == null){
 			 algorithmModes = new String[3];
-			//MN: Wenn Komponente realisiert werden soll, dann Strings aus messages holen
-			 algorithmModes[0] = "Petri net";
-			 algorithmModes[1] = "Petrinet w/o xor correction";
-			 algorithmModes[2] = "Van der Aalst net";
+			 algorithmModes[0] = Messages.getString("Configuration.ColorLayout.ColorAlgoPanel.CombBox.AlgorithmMode.Op0");
+			 algorithmModes[1] = Messages.getString("Configuration.ColorLayout.ColorAlgoPanel.CombBox.AlgorithmMode.Op1");
+			 algorithmModes[2] = Messages.getString("Configuration.ColorLayout.ColorAlgoPanel.CombBox.AlgorithmMode.Op2");
 		 }
 		 return algorithmModes;
 	 }

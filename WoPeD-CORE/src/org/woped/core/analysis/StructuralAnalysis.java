@@ -943,8 +943,8 @@ public class StructuralAnalysis {
 		// "van der Aalst" net.
 		// Otherwise, the low-level petrinet will be used
 		boolean useVanDerAalstNet = false;
-		//MN: If algorithm mode is set to 2 (van der Aalst net) use van der Aalst net 
-		if (ConfigurationManager.getConfiguration().getAlgorithmMode() == 2){
+		//MN: If algorithm mode is set to 0 (van der Aalst net) use van der Aalst net 
+		if (ConfigurationManager.getConfiguration().getAlgorithmMode() == 0){
 			useVanDerAalstNet = true;
 		}
 		

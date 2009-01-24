@@ -102,8 +102,8 @@ public class TransitionColoring implements ITransitionColoring {
 				// 1 check: if current element is a Place and next is only one XOR-SPLIT then color only the XOR-SPLIT and not the Place
 				// check: if current element is a Place and predecessor is only one XOR-JOIN then color only the XOR-JOIN
 				
-				//MN: If algorithm mode is set to 0 (with handle correction) do the "hack"				
-				if (ConfigurationManager.getConfiguration().getAlgorithmMode() == 0){
+				//MN: If algorithm mode is set to 2 (with handle correction) do the "hack"				
+				if (ConfigurationManager.getConfiguration().getAlgorithmMode() == 2){
 					highlightElement = handleXorSplitPlaceRelation(highlightElement);
 				}
 				
