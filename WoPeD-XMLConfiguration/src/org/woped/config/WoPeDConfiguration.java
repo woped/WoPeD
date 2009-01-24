@@ -117,7 +117,7 @@ public class WoPeDConfiguration implements IConfiguration {
 		// extract version number of WoPeD in order to get the correct config file version
 		ResourceBundle rb = PropertyResourceBundle.getBundle("org.woped.translations.Messages");
 		String vs = "-" + rb.getString("Application.Version");
-		fn = fn + File.separator + ".WoPeD" + File.separator;
+		fn = fn + File.separator + ".WoPeD" + vs + File.separator;
 		return fn;
 	}
 
