@@ -86,10 +86,12 @@ public class TransitionColoring implements ITransitionColoring {
 				AbstractElementModel element = (AbstractElementModel) handleClusterIter.next();
 								
 				// refer from current FlowNode element to its parent PetriNet element
-				AbstractElementModel highlightElement 
-				=  (element.getRootOwningContainer().getOwningElement() != null)
-				? element.getRootOwningContainer().getOwningElement() 
-				: element;
+				// if the actual element cannot be found in the current focus window
+				AbstractElementModel highlightElement = element;
+				AbstractElementModel owningElement = null;
+				if  ((!MediatorReference.getUIReference().getEditorFocus().getModelProcessor().getElementContainer().containsElement(element.getId())&&
+						((owningElement=element.getRootOwningContainer().getOwningElement()) != null)))						
+					element = owningElement; 
 				
 				// HACK: 2 options for better understandability
 				// ! not the algorithm correct element from the petrinet will be highlighted, but the element before
