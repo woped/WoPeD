@@ -95,7 +95,7 @@ public class TransitionColoring implements ITransitionColoring {
 				AbstractElementModel owningElement = null;
 				if  ((!MediatorReference.getUIReference().getEditorFocus().getModelProcessor().getElementContainer().containsElement(element.getId())&&
 						((owningElement=element.getRootOwningContainer().getOwningElement()) != null)))						
-					element = owningElement; 
+					highlightElement = owningElement; 
 				
 				// HACK: 2 options for better understandability
 				// ! not the algorithm correct element from the petrinet will be highlighted, but the element before
