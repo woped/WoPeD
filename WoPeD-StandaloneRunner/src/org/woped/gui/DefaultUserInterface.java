@@ -490,9 +490,15 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
      */
     public void setFirstTransitionActive(){
     	// activate the "ProcessTab" to view the TokenGame
-    	
-    		frame.getProcessTab().setSelectedIndex(0);
-
+		JInternalFrame frames[] = desktop.getAllFrames();
+		for (int i = 0; i < frames.length; ++i) {
+			if (frames[i] instanceof DefaultEditorFrame) {
+				DefaultEditorFrame current = (DefaultEditorFrame) frames[i];
+				if(current == desktop.getSelectedFrame()){
+				current.getProcessTab().setSelectedIndex(0);
+				}
+			}
+		}  		
         // set first transition active
     	this.getSimBar().doPlayClick();
     }
