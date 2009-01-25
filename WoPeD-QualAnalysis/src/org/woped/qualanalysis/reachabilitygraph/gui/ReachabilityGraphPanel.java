@@ -131,6 +131,9 @@ public class ReachabilityGraphPanel extends JPanel {
 			if(computeNew){
 				if(editor.isTokenGameEnabled()){
 					this.toolbar.setRrefreshButtonEnabled(true);
+					// set the default cursors
+					ref.getMediatorReference().getUi().getComponent().setCursor(crDefault);
+					toolbar.setCursor(crDefault);
 					throw new SimulationRunningException();
 				} else {
 					this.remove(rgp_topPanel);
