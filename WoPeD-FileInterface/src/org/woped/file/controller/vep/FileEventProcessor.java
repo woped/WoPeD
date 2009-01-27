@@ -54,7 +54,7 @@ import org.woped.server.ServerLoader;
 import org.woped.server.holder.ModellHolder;
 import org.woped.server.holder.UserHolder;
 import org.woped.translations.Messages;
-import org.woped.understandability.TransitionColoring;
+//import org.woped.understandability.TransitionColoring;
 
 public class FileEventProcessor extends AbstractEventProcessor {
 	public FileEventProcessor(int vepID, ApplicationMediator mediator) {
@@ -504,51 +504,51 @@ public class FileEventProcessor extends AbstractEventProcessor {
 							succeed = true;
 						}
 						// BPEL-Export
-						else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
-								&& this.isSound(editor)) {
-							StructuralAnalysis sa = new StructuralAnalysis(
-									editor);
-							int wellStruct = sa
-									.getNumPTHandles() + sa.getNumTPHandles();
-							int freeChoice = sa.getNumFreeChoiceViolations();
-							int sound = wellStruct + freeChoice;
-							if (sound == 0) {
-								succeed = BPEL.getBPELMainClass().saveFile(
-										editor.getFilePath(), editor);
-								ConfigurationManager.getConfiguration()
-										.setCurrentWorkingdir(editor.getFilePath());
-							} else {
-								JOptionPane
-										.showMessageDialog(
-												null,
-												Messages
-														.getString("QuantAna.Message.SoundnessViolation"));
-							}
-
-						}
-						/* Tool for TPN Export */
-						else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
-							succeed = TPNExport.save(editor.getFilePath(),
-									(PetriNetModelProcessor) editor
-											.getModelProcessor());
-							ConfigurationManager.getConfiguration()
-									.setCurrentWorkingdir(editor.getFilePath());
-
-						} else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
-							String arg[] = { editor.getName() };
-							JOptionPane.showMessageDialog(null, Messages
-									.getString("File.Error.SampleSave.Text",
-											arg), Messages
-									.getString("File.Error.SampleSave.Title"),
-									JOptionPane.ERROR_MESSAGE);
-							succeed = false;
-						} else {
-							LoggerManager.warn(Constants.FILE_LOGGER,
-									"Unable to save File. Filetype not known: "
-											+ editor.getDefaultFileType());
-							succeed = false;
-						}
-
+//						else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
+//								&& this.isSound(editor)) {
+//							StructuralAnalysis sa = new StructuralAnalysis(
+//									editor);
+//							int wellStruct = sa
+//									.getNumPTHandles() + sa.getNumTPHandles();
+//							int freeChoice = sa.getNumFreeChoiceViolations();
+//							int sound = wellStruct + freeChoice;
+//							if (sound == 0) {
+//								succeed = BPEL.getBPELMainClass().saveFile(
+//										editor.getFilePath(), editor);
+//								ConfigurationManager.getConfiguration()
+//										.setCurrentWorkingdir(editor.getFilePath());
+//							} else {
+//								JOptionPane
+//										.showMessageDialog(
+//												null,
+//												Messages
+//														.getString("QuantAna.Message.SoundnessViolation"));
+//							}
+//
+//						}
+//						/* Tool for TPN Export */
+//						else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
+//							succeed = TPNExport.save(editor.getFilePath(),
+//									(PetriNetModelProcessor) editor
+//											.getModelProcessor());
+//							ConfigurationManager.getConfiguration()
+//									.setCurrentWorkingdir(editor.getFilePath());
+//
+//						} else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
+//							String arg[] = { editor.getName() };
+//							JOptionPane.showMessageDialog(null, Messages
+//									.getString("File.Error.SampleSave.Text",
+//											arg), Messages
+//									.getString("File.Error.SampleSave.Title"),
+//									JOptionPane.ERROR_MESSAGE);
+//							succeed = false;
+//						} else {
+//							LoggerManager.warn(Constants.FILE_LOGGER,
+//									"Unable to save File. Filetype not known: "
+//											+ editor.getDefaultFileType());
+//							succeed = false;
+//						}
+//
 					}
 				}
 			}
@@ -879,7 +879,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			getMediator().getUi().updateRecentMenu();
 			
 			if (ConfigurationManager.getConfiguration().getColorOn() ==  true){
-				new TransitionColoring().update();
+//				new TransitionColoring().update();
 			}
 		} 
 		
