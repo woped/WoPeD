@@ -77,10 +77,22 @@
     <xs:attribute name="resourceID" type="xs:IDREF" />
     <xs:attribute name="resourceClass" type="xs:IDREF" />
   </xs:complexType>
-  <xs:complexType name="organizationUnitType">
-    <xs:attribute name="Name" type="xs:ID" />
+  <xs:complexType name="superModelType">
+  	<xs:attribute name="Name" type="xs:IDREF"/>
   </xs:complexType>
-  <xs:complexType name="resourceType">
+  <xs:complexType name="organizationUnitType">
+   <xs:sequence>
+      	<xs:element name="SuperModel" minOccurs="0" maxOccurs="unbounded" type="superModelType"/>
+      </xs:sequence>
+    <xs:attribute name="Name" type="xs:ID" />
+  </xs:complexType>  
+  <xs:complexType name="roleType">
+   <xs:sequence>
+      	<xs:element name="SuperModel" minOccurs="0" maxOccurs="unbounded" type="superModelType"/>
+      </xs:sequence>
+    <xs:attribute name="Name" type="xs:ID" />
+  </xs:complexType>  	
+    <xs:complexType name="resourceType">
     <xs:attribute name="Name" type="xs:ID" />
   </xs:complexType>
   <xs:complexType name="resourcesType">
@@ -93,9 +105,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="resourceMapping" type="resourceMappingType" />
     </xs:sequence>
     <xs:attribute name="ID" type="xs:ID" />
-  </xs:complexType>
-  <xs:complexType name="roleType">
-    <xs:attribute name="Name" type="xs:ID" />
   </xs:complexType>
   <xs:complexType name="nodeType">
     <xs:annotation>

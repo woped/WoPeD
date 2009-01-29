@@ -93,6 +93,8 @@ import org.woped.pnml.ResourcesType;
 import org.woped.pnml.RoleType;
 import org.woped.pnml.SimulationType;
 import org.woped.pnml.SimulationsType;
+import org.woped.pnml.SuperModelType;
+
 import org.woped.pnml.TPartnerLinks;
 import org.woped.pnml.TVariables;
 import org.woped.pnml.ToolspecificType;
@@ -299,6 +301,14 @@ public class PNMLExport
                 roleModelTemp = (ResourceClassModel) iter.next();
                 iRoleType = iNetResources.addNewRole();
                 iRoleType.setName(roleModelTemp.getName());
+                if(roleModelTemp.getSuperModels()!= null){
+                	for (Iterator<ResourceClassModel> i = roleModelTemp.getSuperModels();i.hasNext();)
+                	{                
+                		ResourceClassModel superMe = i.next();
+                		SuperModelType newSuper =iRoleType.addNewSuperModel();
+                		newSuper.setName(superMe.getName());
+                	}
+                }
                 for (int i = 0; i < statusBars.length; i++)
                     statusBars[i].nextStep();
             }
@@ -310,6 +320,14 @@ public class PNMLExport
                 orgunitModelTemp = (ResourceClassModel) iter.next();
                 iOrganizationUnitType = iNetResources.addNewOrganizationUnit();
                 iOrganizationUnitType.setName(orgunitModelTemp.getName());
+                if(orgunitModelTemp.getSuperModels()!=null){
+                	for (Iterator<ResourceClassModel> i = orgunitModelTemp.getSuperModels();i.hasNext();)
+                	{
+                		ResourceClassModel superMe = i.next();
+                		SuperModelType newSuper= iOrganizationUnitType.addNewSuperModel();
+                		newSuper.setName(superMe.getName());
+                	}
+                }
                 for (int i = 0; i < statusBars.length; i++)
                     statusBars[i].nextStep();
             }

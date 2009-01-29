@@ -127,6 +127,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         this.repaint();
         this.setVisible(true);
     }
+
     public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor, EditorOperations opEditor, EditorData dEditor,PetriNetResourceEditorNew propEditorneu)
     {          
         super(editor.getName(), true, true, true, true);
@@ -149,10 +150,10 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             // TabbedPane
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
             JScrollPane propScrollPaneneu = new JScrollPane(getPetriNetResourceEditorneu());
-            tabbedPane = new JTabbedPane();
+            JTabbedPane tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
-            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title.new"), propScrollPaneneu);
+            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
 //            tabbedPane.addTab(Messages.getString("PetriNet.Data.Title"), m_dataEditor);
             tabbedPane.getModel().addChangeListener(new ChangeListener()
@@ -174,6 +175,20 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         	    public void focusGained(FocusEvent e)
         	    {
         		getPetriNetResourceEditor().reset();
+        		getPetriNetResourceEditorneu().reset();
+        	    }
+        	    
+        	    public void focusLost(FocusEvent e)
+        	    {
+        		;
+        	    }
+        	});
+        	propScrollPaneneu.addFocusListener(new FocusListener()
+        	{
+        	    public void focusGained(FocusEvent e)
+        	    {
+        		getPetriNetResourceEditor().reset();
+        		getPetriNetResourceEditorneu().reset();
         		getPetriNetResourceEditorneu().reset();
         	    }
         	    

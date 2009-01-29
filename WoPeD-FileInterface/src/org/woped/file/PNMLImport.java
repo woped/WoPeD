@@ -77,6 +77,7 @@ import org.woped.pnml.PnmlType;
 import org.woped.pnml.ResourceMappingType;
 import org.woped.pnml.ResourceType;
 import org.woped.pnml.RoleType;
+import org.woped.pnml.SuperModelType;
 import org.woped.pnml.SimulationType;
 import org.woped.pnml.TAssign;
 import org.woped.pnml.TEmpty;
@@ -344,7 +345,18 @@ public class PNMLImport {
 										.getName(),
 										ResourceClassModel.TYPE_ROLE);
 								currentPetrinet.addRole(roleModelTemp);
+								SuperModelType[] supermodels = roles[k].getSuperModelArray();
+								ResourceClassModel superModelTemp;
+								for( int l=0;l<supermodels.length;l++){
+									superModelTemp = new ResourceClassModel(supermodels[l]
+									     .getName(),ResourceClassModel.TYPE_ROLE);
+									roleModelTemp.addSuperModel(superModelTemp);
+									System.out.println(supermodels[l]
+									     .getName());
+								}
 							}
+							 
+							
 
 							OrganizationUnitType[] units = currentNet
 									.getToolspecificArray(j).getResources()
@@ -355,6 +367,14 @@ public class PNMLImport {
 										.getName(),
 										ResourceClassModel.TYPE_ORGUNIT);
 								currentPetrinet.addOrgUnit(orgUnitTemp);
+								
+								SuperModelType[] supermodels = units[l].getSuperModelArray();
+								ResourceClassModel superModelTemp;
+								for( int m=0;m<supermodels.length;m++){
+									superModelTemp = new ResourceClassModel(supermodels[m]
+									     .getName(),ResourceClassModel.TYPE_ORGUNIT);
+									orgUnitTemp.addSuperModel(superModelTemp);
+								}
 							}
 
 							ResourceType[] resources = currentNet
