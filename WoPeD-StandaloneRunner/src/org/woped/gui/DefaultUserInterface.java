@@ -41,7 +41,6 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.PetriNetResourceEditor;
-import org.woped.editor.controller.PetriNetResourceEditorNew;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
@@ -159,11 +158,11 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             
             if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
             {
-                frame = new DefaultEditorFrame((EditorVC) editor, new PetriNetResourceEditor((EditorVC) editor), new EditorOperations((EditorVC) editor), new EditorData(),new PetriNetResourceEditorNew((EditorVC) editor));
+                frame = new DefaultEditorFrame((EditorVC) editor, new EditorOperations((EditorVC) editor), new EditorData(),new PetriNetResourceEditor((EditorVC) editor));
             } 
             else
             {
-                frame = new DefaultEditorFrame((EditorVC) editor, null, null, null);
+ //               frame = new DefaultEditorFrame((EditorVC) editor, null, null, null);
  
             }
             

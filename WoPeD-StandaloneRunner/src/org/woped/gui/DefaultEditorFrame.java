@@ -44,7 +44,6 @@ import org.woped.bpel.gui.EditorOperations;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorFrame;
 import org.woped.editor.controller.PetriNetResourceEditor;
-import org.woped.editor.controller.PetriNetResourceEditorNew;
 import org.woped.editor.controller.vc.EditorStatusBarVC;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
@@ -58,8 +57,7 @@ import org.woped.translations.Messages;
 public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 {
     private EditorVC               m_editor                 = null;
-    private PetriNetResourceEditor m_petriNetResourceEditor = null;
-    private PetriNetResourceEditorNew m_petriNetResourceEditornew = null;
+    private PetriNetResourceEditor m_petriNetResourceEditornew = null;
     private EditorStatusBarVC      m_statusBar              = null;
     private EditorOperations       m_operationsEditor		= null;
     private EditorData             m_dataEditor				= null;
@@ -71,7 +69,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         this.setVisible(false);
         m_editor = editor;
         this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
-        m_petriNetResourceEditor = propEditor;
+ 
     	addInternalFrameListener(m_editor);
     	m_operationsEditor = opEditor;
 //    	m_dataEditor = dEditor;
@@ -128,14 +126,13 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         this.setVisible(true);
     }
 
-    public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor, EditorOperations opEditor, EditorData dEditor,PetriNetResourceEditorNew propEditorneu)
+    public DefaultEditorFrame(EditorVC editor,  EditorOperations opEditor, EditorData dEditor,PetriNetResourceEditor propEditor)
     {          
         super(editor.getName(), true, true, true, true);
         this.setVisible(false);
         m_editor = editor;
         this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
-        m_petriNetResourceEditor = propEditor;
-        m_petriNetResourceEditornew = propEditorneu;
+        m_petriNetResourceEditornew = propEditor;
     	addInternalFrameListener(m_editor);
     	m_operationsEditor = opEditor;
 //    	m_dataEditor = dEditor;
@@ -149,11 +146,9 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             
             // TabbedPane
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
-            JScrollPane propScrollPaneneu = new JScrollPane(getPetriNetResourceEditorneu());
             JTabbedPane tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
-            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title.new"), propScrollPaneneu);
-            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
+            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title.new"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
 //            tabbedPane.addTab(Messages.getString("PetriNet.Data.Title"), m_dataEditor);
             tabbedPane.getModel().addChangeListener(new ChangeListener()
@@ -161,7 +156,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             	public void stateChanged(ChangeEvent e)
             	{
             		getPetriNetResourceEditor().reset();
-            		getPetriNetResourceEditorneu().reset();
             		
             	}
             	
@@ -175,7 +169,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         	    public void focusGained(FocusEvent e)
         	    {
         		getPetriNetResourceEditor().reset();
-        		getPetriNetResourceEditorneu().reset();
         	    }
         	    
         	    public void focusLost(FocusEvent e)
@@ -183,13 +176,12 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         		;
         	    }
         	});
-        	propScrollPaneneu.addFocusListener(new FocusListener()
+        	propScrollPane.addFocusListener(new FocusListener()
         	{
         	    public void focusGained(FocusEvent e)
         	    {
+
         		getPetriNetResourceEditor().reset();
-        		getPetriNetResourceEditorneu().reset();
-        		getPetriNetResourceEditorneu().reset();
         	    }
         	    
         	    public void focusLost(FocusEvent e)
@@ -197,12 +189,11 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         		;
         	    }
         	});
-        	propScrollPaneneu.addFocusListener(new FocusListener()
+        	propScrollPane.addFocusListener(new FocusListener()
         	{
         	    public void focusGained(FocusEvent e)
         	    {
         		getPetriNetResourceEditor().reset();
-        		getPetriNetResourceEditorneu().reset();
         	    }
         	    
         	    public void focusLost(FocusEvent e)
@@ -247,11 +238,8 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
     /**
      * @return Returns the m_petriNetResourceEditor.
      */
+
     public PetriNetResourceEditor getPetriNetResourceEditor()
-    {
-        return m_petriNetResourceEditor;
-    }
-    public PetriNetResourceEditorNew getPetriNetResourceEditorneu()
     {
         return m_petriNetResourceEditornew;
     }
