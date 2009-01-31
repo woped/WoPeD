@@ -116,6 +116,8 @@ public class PetriNetResourceEditorNew extends JPanel
 	
 	//Roles-Panel
 	private JPanel                 rolesPanel            			= null;
+	private JPanel                 rolesPanel1            			= null;
+	private JPanel                 rolesPanel2            			= null;
 	private JPanel                 rolesButtonPanel     			= null;
 	private JScrollPane            rolesScrollPane      			= null;
 	private JButton				   rolesNewButton					= null;
@@ -147,6 +149,8 @@ public class PetriNetResourceEditorNew extends JPanel
 
 	//	Groups-Panel
 	private JPanel                 groupsPanel         				= null;
+	private JPanel                 groupsPanel1        				= null;
+	private JPanel                 groupsPanel2        				= null;
 	private JPanel                 groupsButtonPanel    			= null;
 	private JScrollPane            groupsScrollPane     			= null;
 	private JButton				   groupsNewButton					= null;
@@ -266,6 +270,17 @@ public class PetriNetResourceEditorNew extends JPanel
 
 	    		setClosedIcon(resourceClass);
 			    setOpenIcon(resourceClass);
+			    
+//	    		if(!objectsTree.isSelectionEmpty()){
+//
+//	    			String objectName = objectsTree.getLastSelectedPathComponent().toString();
+//
+//	    			if	(/*(currentTreeNode.isNodeDescendant(rolesTopNode) || currentTreeNode.isNodeDescendant(groupsTopNode)) && */ objectName == currentTreeNode.toString()){
+//
+//			    	setBackground(Color.pink);
+//	    			}
+//	    		}
+			    
 	    		return this;
 	    	}
 	    }
@@ -445,7 +460,7 @@ public class PetriNetResourceEditorNew extends JPanel
 			   objectsScrollPane.setBorder(BorderFactory.createEtchedBorder(Color.BLUE, Color.GRAY));
 
 
-			   SwingUtils.setFixedSize(objectsScrollPane, 300,515);
+			   SwingUtils.setFixedSize(objectsScrollPane, 300,530);
 
 		   }
 		   return objectsScrollPane;
@@ -518,7 +533,51 @@ public class PetriNetResourceEditorNew extends JPanel
 	   private JPanel getResourceRolesPanel(){
 		   if (rolesPanel  == null){
 			   rolesPanel  = new JPanel(new GridBagLayout());
-	            rolesPanel .setBorder(BorderFactory
+//	            rolesPanel .setBorder(BorderFactory
+//	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Roles")), BorderFactory.createEmptyBorder()));
+	            SwingUtils.setFixedSize(rolesPanel , 300,580);
+	          
+	            GridBagConstraints c = new GridBagConstraints();
+	            
+		        c.weightx = 1;
+		        c.weighty = 1;
+		        c.anchor = GridBagConstraints.NORTH;
+//		        c.gridx = 0;
+//		        c.gridy = 0;
+//		        rolesPanel .add(getResourceRolesButtonPanel(),c);
+//                     
+//		        c.fill = GridBagConstraints.SOUTH;
+//	            c.gridx = 0;
+//	            c.gridy = 1;
+//	            rolesPanel .add(getResourceRolesScrollPane(),c);	
+//	            
+//	            c.fill = GridBagConstraints.NORTH;
+//	            c.gridx = 0;
+//	            c.gridy = 2;
+//	            rolesPanel .add(getResourceSuperRolesButtonPanel(),c);
+//	            
+//	            c.fill = GridBagConstraints.VERTICAL;
+//	            c.gridx = 0;
+//	            c.gridy = 3;
+//	            rolesPanel .add(getResourceSuperRolesScrollPane(),c);
+	           
+	            c.gridx = 0;
+		        c.gridy = 0;
+		        rolesPanel .add(getResourceRolesPanel1(),c);
+                     
+		        c.fill = GridBagConstraints.VERTICAL;
+	            c.gridx = 0;
+	            c.gridy = 1;
+	            rolesPanel .add(getResourceRolesPanel2(),c);
+		   }
+		   return rolesPanel ;
+	   }
+
+//****************************ROLES_PANEL and SUPER_ROLES_PANEL with Border ********************************
+	   private JPanel getResourceRolesPanel1(){
+		   if (rolesPanel1  == null){
+			   rolesPanel1  = new JPanel(new GridBagLayout());
+	            rolesPanel1 .setBorder(BorderFactory
 	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Roles")), BorderFactory.createEmptyBorder()));
 	            SwingUtils.setFixedSize(rolesPanel , 300,580);
 	          
@@ -529,28 +588,39 @@ public class PetriNetResourceEditorNew extends JPanel
 		        c.anchor = GridBagConstraints.NORTH;
 		        c.gridx = 0;
 		        c.gridy = 0;
-		        rolesPanel .add(getResourceRolesButtonPanel(),c);
-                     
-		        c.fill = GridBagConstraints.SOUTH;
+		        rolesPanel1 .add(getResourceRolesButtonPanel(),c);
+		        
+		        c.fill = GridBagConstraints.VERTICAL;
 	            c.gridx = 0;
 	            c.gridy = 1;
-	            rolesPanel .add(getResourceRolesScrollPane(),c);	
-	            
-	            c.fill = GridBagConstraints.NORTH;
-	            c.gridx = 0;
-	            c.gridy = 2;
-	            rolesPanel .add(getResourceSuperRolesButtonPanel(),c);
-	            
-	            c.fill = GridBagConstraints.VERTICAL;
-	            c.gridx = 0;
-	            c.gridy = 3;
-	            rolesPanel .add(getResourceSuperRolesScrollPane(),c);
-	           
-	            
+	            rolesPanel1 .add(getResourceRolesScrollPane(),c);
 		   }
-		   return rolesPanel ;
+		   return rolesPanel1;
 	   }
-
+	   
+	   private JPanel getResourceRolesPanel2(){
+		   if (rolesPanel2  == null){
+			   rolesPanel2  = new JPanel(new GridBagLayout());
+	            rolesPanel2 .setBorder(BorderFactory
+	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.SuperRoles")), BorderFactory.createEmptyBorder()));
+	            SwingUtils.setFixedSize(rolesPanel2 , 300,180);
+	          
+	            GridBagConstraints c = new GridBagConstraints();
+	            
+		        c.weightx = 1;
+		        c.weighty = 1;
+		        c.anchor = GridBagConstraints.NORTH;
+		        c.gridx = 0;
+		        c.gridy = 0;
+		        rolesPanel2 .add(getResourceSuperRolesButtonPanel(),c);
+		        
+		        c.fill = GridBagConstraints.VERTICAL;
+	            c.gridx = 0;
+	            c.gridy = 1;
+	            rolesPanel2 .add(getResourceSuperRolesScrollPane(),c);
+		   }
+		   return rolesPanel2;
+	   }
 	   
 
 //****************************ROLES_BUTTON_PANEL*******************************	   
@@ -662,9 +732,6 @@ public class PetriNetResourceEditorNew extends JPanel
 			    rolesTree.addTreeSelectionListener(treeSelection);
 			    rolesTree.setCellRenderer(rendererResourceClass);
 
-			  
-			   
-			    
 		   }return (DropTree)rolesTree;
 	   }
 	   
@@ -838,8 +905,8 @@ public class PetriNetResourceEditorNew extends JPanel
 	   private JPanel getResourceGroupsPanel(){
 		   if (groupsPanel == null){
 			   groupsPanel = new JPanel(new GridBagLayout());
-	            groupsPanel.setBorder(BorderFactory
-	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Groups")), BorderFactory.createEmptyBorder()));
+//	            groupsPanel.setBorder(BorderFactory
+//	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Groups")), BorderFactory.createEmptyBorder()));
 	            SwingUtils.setFixedSize(groupsPanel, 300,580);
 	            GridBagConstraints c = new GridBagConstraints();
 	            
@@ -847,30 +914,87 @@ public class PetriNetResourceEditorNew extends JPanel
 		        c.weighty = 1;
 		        c.anchor = GridBagConstraints.NORTH;
 
-		        c.gridx = 0;
-		        c.gridy = 0;
-	            groupsPanel.add(getResourceGroupsButtonPanel(),c);
-	            
-		        c.fill = GridBagConstraints.SOUTH;
-		        c.gridx = 0;
-		        c.gridy = 1;
+//		        c.gridx = 0;
+//		        c.gridy = 0;
+//	            groupsPanel.add(getResourceGroupsButtonPanel(),c);
+//	            
+//		        c.fill = GridBagConstraints.SOUTH;
+//		        c.gridx = 0;
+//		        c.gridy = 1;
+//
+//		        groupsPanel.add(getResourceGroupsScrollPane(),c);
+//		        
+//		        c.fill = GridBagConstraints.NORTH;
+//	            c.gridx = 0;
+//	            c.gridy = 2;
+//	            groupsPanel.add(getResourceSuperGroupsButtonPanel(),c);
+//	            
+//	            c.fill = GridBagConstraints.VERTICAL;
+//	            c.gridx = 0;
+//	            c.gridy = 3;
+//	            groupsPanel.add(getsuperGroupsScrollPane(),c);
 
-		        groupsPanel.add(getResourceGroupsScrollPane(),c);
-		        
-		        c.fill = GridBagConstraints.NORTH;
+				c.gridx = 0;
+		        c.gridy = 0;
+		        groupsPanel .add(getResourceGroupsPanel1(),c);
+                     
+		        c.fill = GridBagConstraints.VERTICAL;
 	            c.gridx = 0;
-	            c.gridy = 2;
-	            groupsPanel.add(getResourceSuperGroupsButtonPanel(),c);
-	            
-	            c.fill = GridBagConstraints.VERTICAL;
-	            c.gridx = 0;
-	            c.gridy = 3;
-	            groupsPanel.add(getsuperGroupsScrollPane(),c);
+	            c.gridy = 1;
+	            groupsPanel .add(getResourceGroupsPanel2(),c);
 		   }
 		   return groupsPanel;
 	   }
 	   
-
+ //****************************GROUPS_PANEL and SUPER_GROUPS_PANEL with Border ********************************
+	   private JPanel getResourceGroupsPanel1(){
+		   if (groupsPanel1  == null){
+			   groupsPanel1  = new JPanel(new GridBagLayout());
+			   groupsPanel1 .setBorder(BorderFactory
+	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Groups")), BorderFactory.createEmptyBorder()));
+	            SwingUtils.setFixedSize(groupsPanel1 , 300,395);
+	          
+	            GridBagConstraints c = new GridBagConstraints();
+	            
+		        c.weightx = 1;
+		        c.weighty = 1;
+		        c.anchor = GridBagConstraints.NORTH;
+		        c.gridx = 0;
+		        c.gridy = 0;
+		        groupsPanel1 .add(getResourceGroupsButtonPanel(),c);
+		        
+		        c.fill = GridBagConstraints.VERTICAL;
+	            c.gridx = 0;
+	            c.gridy = 1;
+	            groupsPanel1 .add(getResourceGroupsScrollPane(),c);
+		   }
+		   return groupsPanel1;
+	   }
+	   
+	   private JPanel getResourceGroupsPanel2(){
+		   if (groupsPanel2  == null){
+			   groupsPanel2  = new JPanel(new GridBagLayout());
+			   groupsPanel2 .setBorder(BorderFactory
+	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.SuperGroups")), BorderFactory.createEmptyBorder()));
+	            SwingUtils.setFixedSize(groupsPanel2 , 300,180);
+	          
+	            GridBagConstraints c = new GridBagConstraints();
+	            
+		        c.weightx = 1;
+		        c.weighty = 1;
+		        c.anchor = GridBagConstraints.NORTH;
+		        c.gridx = 0;
+		        c.gridy = 0;
+		        groupsPanel2 .add(getResourceSuperGroupsButtonPanel(),c);
+		        
+		        c.fill = GridBagConstraints.VERTICAL;
+	            c.gridx = 0;
+	            c.gridy = 1;
+	            groupsPanel2 .add(getSuperGroupsScrollPane(),c);
+		   }
+		   return groupsPanel2;
+	   }
+	   
 	   
 //	   *********************GROUPS_CONTENT_PANEL**************************
 
@@ -1067,7 +1191,7 @@ public class PetriNetResourceEditorNew extends JPanel
 		   
 //     ***************************SUPER_GROUPS_CONTENT_PANEL************************
 
-	          private JScrollPane getsuperGroupsScrollPane(){
+	          private JScrollPane getSuperGroupsScrollPane(){
 	              if (superGroupsScrollPane == null){
 	                   superGroupsScrollPane = new JScrollPane(getResourceSuperGroupsTree());
 	                   superGroupsScrollPane.setBorder(BorderFactory.createEtchedBorder(new Color (141, 182, 205), new Color (132, 112, 255)));
