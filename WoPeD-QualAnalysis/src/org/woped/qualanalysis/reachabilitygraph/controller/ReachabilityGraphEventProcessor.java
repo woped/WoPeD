@@ -15,6 +15,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityWarning;
 
 public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 
@@ -34,6 +35,11 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 				IEditor editor = (IEditor) getMediator().getUi().getEditorFocus();
 				IUserInterface dui = mediator.getUi();
 				JDesktopPane desktop = (JDesktopPane) dui.getPropertyChangeSupportBean();
+				// when the TokenGame is enabled there is shown a warning message
+				if(editor.isTokenGameEnabled()){
+					ReachabilityWarning.showSimulationRunningWarning(desktop);
+					return;
+				}
 				JInternalFrame edit = desktop.getSelectedFrame();
 				ReachabilityGraphVC toAdd = ReachabilityGraphVC.getInstance(dui);
 				if(!desktop.isAncestorOf(toAdd)){
