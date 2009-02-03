@@ -24,7 +24,6 @@ package org.woped.editor.controller;
 
 
 import java.awt.*;
-import java.awt.TrayIcon.MessageType;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -64,6 +63,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTree;
+import javax.swing.event.TreeExpansionEvent;
+import javax.swing.event.TreeExpansionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -184,7 +185,7 @@ public class PetriNetResourceEditor extends JPanel
 	private DefaultMutableTreeNode superGroupsTopNode				= null;
 	private DefaultListModel       superGroupsListModel             = new DefaultListModel();
 	  
-	private String				   newResourceName					= null;
+
 
 	// Graphic-Panel
 	private JPanel					graphicPanel					= null;
@@ -208,8 +209,9 @@ public class PetriNetResourceEditor extends JPanel
 	private ActionListener  	   	editSuperResource				= new editSuperResource();
 	private ActionListener  	   	removeSuperResource				= new removeSuperResource();
 
-	private ActionListener		   	expandTreeListener				= new expandTreeListener();
-	private ActionListener		   	collapseTreeListener			= new collapseTreeListener();
+	private ActionListener		   	expandButtonListener			= new expandButtonListener();
+	private ActionListener		   	collapseButtonListener			= new collapseButtonListener();
+	private MyTreeExpansionListener treeListener					= new MyTreeExpansionListener();
 
 	private TreeSelectionListener  	treeSelection					= new MyTreeSelectionListener();
 	//ImageIcon used in the TreeCellRenderer-Classes  
@@ -390,7 +392,7 @@ public class PetriNetResourceEditor extends JPanel
 	        	objectsExpandButton = new JButton();
 	        	objectsExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 	        	objectsExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
-	        	objectsExpandButton.addActionListener(expandTreeListener);
+	        	objectsExpandButton.addActionListener(expandButtonListener);
 	        }
 
 	        return objectsExpandButton;
@@ -401,7 +403,8 @@ public class PetriNetResourceEditor extends JPanel
 	        	objectsCollapseButton = new JButton();
 	        	objectsCollapseButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Collapse"));
 	        	objectsCollapseButton.setToolTipText(Messages.getString("PetriNet.Resources.Collapse.Title"));
-	        	objectsCollapseButton.addActionListener(collapseTreeListener);
+	        	objectsCollapseButton.addActionListener(collapseButtonListener);
+	        	objectsCollapseButton.setEnabled(false);
 	        }
 
 	        return objectsCollapseButton;
@@ -436,7 +439,7 @@ public class PetriNetResourceEditor extends JPanel
 			    objectsTree.setEditable(false);
 			    objectsTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 			    objectsTree.addTreeSelectionListener(new MyTreeSelectionListener());
-//			    objectsTree.addTreeSelectionListener(new SelectionColoringListener());
+			    objectsTree.addTreeExpansionListener(treeListener);
 			    objectsTree.setShowsRootHandles(true);
 			    objectsTree.setFont(Nodes);	
 			    objectsTree.setShowsRootHandles(true);
@@ -621,7 +624,7 @@ public class PetriNetResourceEditor extends JPanel
 	        	rolesExpandButton = new JButton();
 	        	rolesExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 	        	rolesExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
-	        	rolesExpandButton.addActionListener(expandTreeListener);
+	        	rolesExpandButton.addActionListener(expandButtonListener);
 	        }
 
 	        return rolesExpandButton;
@@ -632,7 +635,8 @@ public class PetriNetResourceEditor extends JPanel
 	        	rolesCollapseButton = new JButton();
 	        	rolesCollapseButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Collapse"));
 	        	rolesCollapseButton.setToolTipText(Messages.getString("PetriNet.Resources.Collapse.Title"));
-	        	rolesCollapseButton.addActionListener(collapseTreeListener);
+	        	rolesCollapseButton.addActionListener(collapseButtonListener);
+	        	rolesCollapseButton.setEnabled(false);
 	        }
 
 	        return rolesCollapseButton;
@@ -667,6 +671,7 @@ public class PetriNetResourceEditor extends JPanel
 			    rolesTree.setFont(Nodes);  
 			    rolesTree.setFont(Nodes);
 			    rolesTree.addTreeSelectionListener(treeSelection);
+			    rolesTree.addTreeExpansionListener(treeListener);
 			    rolesTree.setCellRenderer(rendererResourceClass);
 
 		   }return (DropTree)rolesTree;
@@ -788,7 +793,7 @@ public class PetriNetResourceEditor extends JPanel
 		        	superRolesExpandButton = new JButton();
 		        	superRolesExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 		        	superRolesExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
-		        	superRolesExpandButton.addActionListener(expandTreeListener);
+		        	superRolesExpandButton.addActionListener(expandButtonListener);
 		        }
 
 		        return superRolesExpandButton;
@@ -799,7 +804,8 @@ public class PetriNetResourceEditor extends JPanel
 		        	superRolesCollapseButton = new JButton();
 		        	superRolesCollapseButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Collapse"));
 		        	superRolesCollapseButton.setToolTipText(Messages.getString("PetriNet.Resources.Collapse.Title"));
-		        	superRolesCollapseButton.addActionListener(collapseTreeListener);
+		        	superRolesCollapseButton.addActionListener(collapseButtonListener);
+		        	superRolesCollapseButton.setEnabled(false);
 		        }
 
 		        return superRolesCollapseButton;
@@ -832,6 +838,7 @@ public class PetriNetResourceEditor extends JPanel
 	                    superRolesTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 	                    superRolesTree.setShowsRootHandles(true);
 	                    superRolesTree.setFont(Nodes);
+	                    superRolesTree.addTreeExpansionListener(treeListener);
 	                    superRolesTree.addTreeSelectionListener(treeSelection);
 	                    superRolesTree.setCellRenderer(rendererResourceSuperClass);
 	               }return (JTree)superRolesTree;
@@ -934,6 +941,7 @@ public class PetriNetResourceEditor extends JPanel
 			    groupsTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 			    groupsTree.setShowsRootHandles(true);
 			    groupsTree.setFont(Nodes);	
+			    groupsTree.addTreeExpansionListener(treeListener);
 			    groupsTree.addTreeSelectionListener(treeSelection);
 		        groupsTree.setCellRenderer(rendererResourceClass);
 		        groupsTree.updateUI();
@@ -1003,7 +1011,7 @@ public class PetriNetResourceEditor extends JPanel
 	        	groupsExpandButton = new JButton();
 	        	groupsExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 	        	groupsExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
-	        	groupsExpandButton.addActionListener(expandTreeListener);
+	        	groupsExpandButton.addActionListener(expandButtonListener);
 
 	        }
 
@@ -1016,7 +1024,8 @@ public class PetriNetResourceEditor extends JPanel
 	        	groupsCollapseButton = new JButton();
 	        	groupsCollapseButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Collapse"));
 	        	groupsCollapseButton.setToolTipText(Messages.getString("PetriNet.Resources.Collapse.Title"));
-	        	groupsCollapseButton.addActionListener(collapseTreeListener);
+	        	groupsCollapseButton.addActionListener(collapseButtonListener);
+	        	groupsCollapseButton.setEnabled(false);
 
 	        }
 
@@ -1084,7 +1093,7 @@ public class PetriNetResourceEditor extends JPanel
 		        	superGroupsExpandButton = new JButton();
 		        	superGroupsExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 		        	superGroupsExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
-		        	superGroupsExpandButton.addActionListener(expandTreeListener);
+		        	superGroupsExpandButton.addActionListener(expandButtonListener);
 //		        	superGroupsExpandButton.setEnabled(false);
 		        }
 
@@ -1096,8 +1105,8 @@ public class PetriNetResourceEditor extends JPanel
 		        	superGroupsCollapseButton = new JButton();
 		        	superGroupsCollapseButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Collapse"));
 		        	superGroupsCollapseButton.setToolTipText(Messages.getString("PetriNet.Resources.Collapse.Title"));
-		        	superGroupsCollapseButton.addActionListener(collapseTreeListener);
-//		        	superGroupsCollapseButton.setEnabled(false);
+		        	superGroupsCollapseButton.addActionListener(collapseButtonListener);
+		        	superGroupsCollapseButton.setEnabled(false);
 		        }
 
 		        return superGroupsCollapseButton;
@@ -1127,6 +1136,7 @@ public class PetriNetResourceEditor extends JPanel
 	                    superGroupsTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 	                    superGroupsTree.setShowsRootHandles(true);
 	                    superGroupsTree.setFont(Nodes);
+	                    superGroupsTree.addTreeExpansionListener(treeListener);
 	                    superGroupsTree.addTreeSelectionListener(treeSelection);
 	                    superGroupsTree.setCellRenderer(rendererResourceSuperClass);
 	                 
@@ -1214,9 +1224,12 @@ public class PetriNetResourceEditor extends JPanel
 					   		b.anchor = GridBagConstraints.CENTER;
 					   		defineResourcePanel.add(selectPanel,b);
 					   		if(e.getSource()==superRolesNewButton){
-					   			selectedRolesList = new JList(rolesListModel);
-					   			selectedRolesList.setSelectionModel(new ToggleSelectionModel());
-					   			selectPanel.add(selectedRolesList);
+					   			if(selectedRolesList==null){
+					   				selectedRolesList = new JList(rolesListModel);
+					   				}   			
+					   				selectedRolesList.setSelectionModel(new ToggleSelectionModel());
+					   				selectPanel.add(selectedRolesList);
+
 					   		}
 					   		if(e.getSource()==superGroupsNewButton){
 					   			selectedGroupsList = new JList (groupsListModel);
@@ -1464,10 +1477,13 @@ public class PetriNetResourceEditor extends JPanel
 				dialogFrame.dispose();
 			}else{
 				if(selectedGroupsList==null){				
-				Object [] selectedRoles = selectedRolesList.getSelectedValues();
+				try{
+					Object [] selectedRoles = selectedRolesList.getSelectedValues();
+
 					if(selectedRoles.length<2){
 						JOptionPane.showMessageDialog(dialogFrame , Messages.getString("ResourceEditor.Error.NoRolesChoosen.Text"), Messages.getString("ResourceEditor.Error.NoRolesChoosen.Title"),
 		                        JOptionPane.ERROR_MESSAGE);	
+						
 					}else{
 						if(checkClassSyntax(dialogFrameTextField.getText())){
 							String superRole = dialogFrameTextField.getText();
@@ -1498,9 +1514,12 @@ public class PetriNetResourceEditor extends JPanel
 							
 							getEditor().setSaved(false);
 						}
-					}
+					}dialogFrame.dispose();
+				}catch(Exception exc){
+					exc.printStackTrace();
 				}
-				if(selectedRolesList==null){
+				}
+				if(selectedRolesList==null&&selectedGroupsList!=null){
 					Object [] selectedGroups = selectedGroupsList.getSelectedValues();
 					if(selectedGroups.length<2){
 						JOptionPane.showMessageDialog(dialogFrame , Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Text"), Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Title"),
@@ -1531,7 +1550,7 @@ public class PetriNetResourceEditor extends JPanel
 					
 							}
 							refreshFromModel();
-							
+							dialogFrame.dispose();
 							getEditor().setSaved(false);
 							
 							
@@ -1539,6 +1558,7 @@ public class PetriNetResourceEditor extends JPanel
 					}
 				}
 			}	
+			dialogFrame.dispose();
 			selectedGroupsList = null;
 			selectedRolesList = null;
 			
@@ -2201,26 +2221,48 @@ public class PetriNetResourceEditor extends JPanel
 		   }
 		}		   
 	   }
+	   
+	   private class MyTreeExpansionListener implements TreeExpansionListener{
 
+		public void treeCollapsed(TreeExpansionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void treeExpanded(TreeExpansionEvent e) {
+			if(e.getSource()==rolesTree){
+				if(rolesTree.getRowCount()>rolesTopNode.getChildCount()){
+					rolesCollapseButton.setEnabled(true);
+				}
+			}
+			if(e.getSource()==superRolesTree){
+				if(superRolesTree.getRowCount()>superRolesTopNode.getChildCount()){
+					superRolesCollapseButton.setEnabled(true);
+				}
+			}
+			if(e.getSource()==groupsTree){
+				if(groupsTree.getRowCount()>groupsTopNode.getChildCount()){
+					groupsCollapseButton.setEnabled(true);
+				}
+			}
+			if(e.getSource()==superGroupsTree){
+				if(superGroupsTree.getRowCount()>superGroupsTopNode.getChildCount()){
+					superGroupsCollapseButton.setEnabled(true);
+				}
+			}
+			if(e.getSource()==objectsTree){
+				if(objectsTree.getRowCount()>objectsTopNode.getChildCount()){
+					objectsCollapseButton.setEnabled(true);
+				}
+			}
+			
+		}
+		   
+	   }
+   
 	   
-	   //********************Selection_Coloring_Listener*****************************
-//	   class SelectionColoringListener implements TreeSelectionListener{
-//		   public void valueChanged(TreeSelectionEvent e) {	
-//			   DefaultMutableTreeNode node = (DefaultMutableTreeNode)objectsTree.getLastSelectedPathComponent();
-//			   
-//			   //nothing selected
-//			   if (node == null) return;
-//			   
-//			   if (e.getSource()==objectsTree){
-//				   Object nodeInfo = node.getUserObject();
-//
-//			   }
-//		   }
-//	   }
-	   
-	   
-	   //********************Expand_Acion_Listener **********************************
-	   private class expandTreeListener implements ActionListener{
+	   //********************Expand_Action_Listener **********************************
+	   private class expandButtonListener implements ActionListener{
 			
 		   public void actionPerformed(ActionEvent e) {
 			   
@@ -2255,24 +2297,29 @@ public class PetriNetResourceEditor extends JPanel
 		      }
 		    }
 	   //********************Collapse_Acion_Listener **********************************
-	   private class collapseTreeListener implements ActionListener{
+	   private class collapseButtonListener implements ActionListener{
 			
 		   public void actionPerformed(ActionEvent e) {
 			   
 			   if(e.getSource()== objectsCollapseButton){
 				   collapseAll(objectsTree);
+				   objectsCollapseButton.setEnabled(false);
 			   }
 			   if(e.getSource()== rolesCollapseButton){
 				   collapseAll(rolesTree);
+				   rolesCollapseButton.setEnabled(false);
 			   }
 			   if(e.getSource()== superRolesCollapseButton){
 				   collapseAll(superRolesTree);
+				   superRolesCollapseButton.setEnabled(false);
 			   }
 			   if(e.getSource()== groupsCollapseButton){
 				   collapseAll(groupsTree);
+				   groupsCollapseButton.setEnabled(false);
 			   }
 			   if(e.getSource()== superGroupsCollapseButton){
 				   collapseAll(superGroupsTree);
+				   superGroupsCollapseButton.setEnabled(false);
 			   }
 			   
 		   }
@@ -2666,6 +2713,7 @@ public class PetriNetResourceEditor extends JPanel
 	    		}
 	    }
 
+	
 	    //++++++ResourceClassRenderer++++++++++
 	    class MyRenderer1 extends DefaultTreeCellRenderer{
 	    	public Component getTreeCellRendererComponent(JTree tree,Object value,boolean sel, boolean expanded,boolean leaf,int row, boolean hasFocus)
@@ -2676,7 +2724,7 @@ public class PetriNetResourceEditor extends JPanel
 	    		if (currentTreeNode.isLeaf()&&currentTreeNode.getParent()==groupsTopNode) {
 	    			setLeafIcon(resourceClass);
 	    		} else 
-	    			if(currentTreeNode.isLeaf()){
+	    			if(currentTreeNode.isLeaf()&&currentTreeNode.getParent()!=groupsTopNode){
 	    				setLeafIcon(object);
 	    			}	
 
