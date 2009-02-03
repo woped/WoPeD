@@ -605,7 +605,7 @@ public class StructuralAnalysis {
  		// Detect all PT handles in the short-circuited net 
 		LowLevelNet myNet = CreateFlowNet(m_places, transitionsWithTStar);
 		Set<Set<AbstractElementModel>> handleRun = 
-			getHandlePairs(myNet, m_places, transitionsWithTStar, false);
+			getHandlePairs("PT", myNet, m_places, transitionsWithTStar, false);
 		m_PTHandles.addAll(handleRun);
 		
 		
@@ -638,7 +638,7 @@ public class StructuralAnalysis {
  		// Detect all PT handles in the short-circuited net 
 		LowLevelNet myNet = CreateFlowNet(m_places, transitionsWithTStar);
 		Set<Set<AbstractElementModel>> handleRun = 
-			getHandlePairs(myNet, transitionsWithTStar, m_places, false);
+			getHandlePairs("PT",myNet, transitionsWithTStar, m_places, false);
 		m_TPHandles.addAll(handleRun);
 				
 		// Remove temporary transition from the net
@@ -741,6 +741,7 @@ public class StructuralAnalysis {
 	//! @param useVanderAalstModel	True if handles should be detected based on operators rather than 
 	//!								a low-level net
 	private Set<Set<AbstractElementModel>> getHandlePairs(
+			String handleType,
 			LowLevelNet n,
 			Set<AbstractElementModel> firstNodeType,
 			Set<AbstractElementModel> secondNodeType,
@@ -803,7 +804,7 @@ public class StructuralAnalysis {
 		}
     	long time2 = System.nanoTime();
     	time2 = (time2-time1)/1000;
-    	LoggerManager.debug(Constants.STRUCT_LOGGER, "Handle Pairs calculated. (" + time2 + " ms)");
+    	LoggerManager.debug(Constants.STRUCT_LOGGER, handleType + " Handle Pairs calculated. (" + time2 + " ms)");
 		return result;
 	}
 	
@@ -819,28 +820,28 @@ public class StructuralAnalysis {
 			// for handles consisting of specific operator types
 			
 			// Detect all PXORJOIN handles
-			handleRun = getHandlePairs(n, m_places, m_xorjoins, true);
+			handleRun = getHandlePairs("PXORJOIN", n, m_places, m_xorjoins, true);
 			m_handles.addAll(handleRun);
 			// Detect all XORSPLITP handles
-			handleRun = getHandlePairs(n, m_xorsplits, m_places, true);
+			handleRun = getHandlePairs("XORSPLITP", n, m_xorsplits, m_places, true);
 			m_handles.addAll(handleRun);
 			// Detect all XORSPLITJOIN handles
-			handleRun = getHandlePairs(n, m_xorsplits, m_xorjoins, true);
+			handleRun = getHandlePairs("XORSPLITJOIN", n, m_xorsplits, m_xorjoins, true);
 			m_handles.addAll(handleRun);		
 			// Detect all ANDSPLITJOIN handles
-			handleRun = getHandlePairs(n, m_andsplits, m_andjoins, true);
+			handleRun = getHandlePairs("ANDSPLITJOIN", n, m_andsplits, m_andjoins, true);
 			m_handles.addAll(handleRun);
 			// Detect all ANDSPLITT handles
-			handleRun = getHandlePairs(n, m_andsplits, m_transitions, true);
+			handleRun = getHandlePairs("ANDSPLITT", n, m_andsplits, m_transitions, true);
 			m_handles.addAll(handleRun);
 			// Detect all TANDJOIN handles
-			handleRun = getHandlePairs(n, m_transitions, m_andjoins, true);
+			handleRun = getHandlePairs("TANDJOIN", n, m_transitions, m_andjoins, true);
 			m_handles.addAll(handleRun);
 			// Detect all TT handles
-			handleRun = getHandlePairs(n, m_transitions, m_transitions, true);
+			handleRun = getHandlePairs("TT", n, m_transitions, m_transitions, true);
 			m_handles.addAll(handleRun);
 			// Detect all PP handles
-			handleRun = getHandlePairs(n, m_places, m_places, true);
+			handleRun = getHandlePairs("PP", n, m_places, m_places, true);
 			m_handles.addAll(handleRun);
 
 			
@@ -848,11 +849,13 @@ public class StructuralAnalysis {
 		}
 		else
 		{
-			// Detect PP / TT handles within the low-level petri-net
+			// Detect handles within the low-level petri-net
 			
-			handleRun = getHandlePairs(n, m_places, m_places, false);
+			// Detect all PP handles
+			handleRun = getHandlePairs("PP", n, m_places, m_places, false);
 			m_handles.addAll(handleRun);
-			handleRun = getHandlePairs(n, m_transitions, m_transitions, false);
+			// Detect all TT handles
+			handleRun = getHandlePairs("TT", n, m_transitions, m_transitions, false);
 			m_handles.addAll(handleRun);			
 		}
 		
