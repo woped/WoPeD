@@ -2450,7 +2450,6 @@ public class EditorVC extends JPanel implements KeyListener,
 	}
 	
 	public boolean isUnderstandabilityColoringEnabled(){
-		m_UnderstandabilityColoringEnabled = ConfigurationManager.getConfiguration().getColorOn();
 		return m_UnderstandabilityColoringEnabled;
 	}
 	
@@ -2462,16 +2461,16 @@ public class EditorVC extends JPanel implements KeyListener,
 				
 		if (isUnderstandabilityColoringEnabled())
 		{
-			LoggerManager.debug(Constants.EDITOR_LOGGER, "DEACTIVATE Understandability");
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "DEACTIVATE Understandability ");
 			setUnderstandabilityColoringEnabled(false);
 		}
 		else {
-			LoggerManager.debug(Constants.EDITOR_LOGGER, "ACTIVATE Understandability");
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "ACTIVATE Understandability ");
 			setUnderstandabilityColoringEnabled(true);
 		}
 		m_understandColoring.update();
 		// Update the UI representation
-		getGraph().updateUI();		
+		getGraph().updateUI();	
 	}
 	
 	public void setReadOnly(boolean readonly){
