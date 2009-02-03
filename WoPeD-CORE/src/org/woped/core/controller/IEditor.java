@@ -128,11 +128,13 @@ public interface IEditor extends IViewController
      */
     public void setTokenGameEnabled(boolean state);
     
-    /**
+    
     /**
      * Sets if Understandability Coloring is active
      */
     public void setUnderstandabilityColoringEnabled(boolean active);
+    
+    public boolean isUnderstandabilityColoringEnabled();
     
     /* Sets if the TokenGame for this editor is playing
      */
