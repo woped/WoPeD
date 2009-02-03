@@ -351,7 +351,7 @@ public class VisualController implements PropertyChangeListener,
 	}
 
 	/**
-	 * Chnages the selected the selected, visible and enable status for all
+	 * Changes the selected the selected, visible and enable status for all
 	 * subscribed objects.
 	 * 
 	 * @param attribute
@@ -375,6 +375,7 @@ public class VisualController implements PropertyChangeListener,
 	 * <li>A different InternalFrame gets selected.</li>
 	 * <li>The Drawmode gets changes.</li>
 	 * <li>The TokenGame gets started or stopped.</li>
+	 * <li>The Understandability Coloring gets activated.</li>
 	 * </ol>
 	 * 
 	 * @see PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
@@ -388,6 +389,7 @@ public class VisualController implements PropertyChangeListener,
 				checkActiveEditor();
 				checkWoflan();
 				checkUndoRedo();
+				checkColoring();
 			} else if ("FrameSelection".equals(arg0.getPropertyName()))
 			{
 				checkDrawMode();
@@ -395,7 +397,7 @@ public class VisualController implements PropertyChangeListener,
 				checkSelection();
 				checkUndoRedo();
 				checkActiveEditor();
-			
+				checkColoring();			
 			} else if ("DrawMode".equals(arg0.getPropertyName()))
 			{
 				checkDrawMode();
@@ -408,6 +410,7 @@ public class VisualController implements PropertyChangeListener,
 			} else if ("Update".equals(arg0.getPropertyName()))
 			{
 				checkWoflan();
+				checkColoring();
 			} else if (JSplitPane.DIVIDER_LOCATION_PROPERTY.equals(arg0.getPropertyName()))
 			{
 				int dividerLocation = ((Integer)arg0.getNewValue()).intValue();
@@ -522,8 +525,6 @@ public class VisualController implements PropertyChangeListener,
 					triggeredTransitionSelected);
 			setStatus(ARC_SELECTION, arcSelected);
 			setStatus(ELEMENT_SELECTION, !noSelection && !arcSelected && !nameSelection);
-		
-			setStatus(COLORING, ConfigurationManager.getConfiguration().getColorOn());
 			}
 	}
 
@@ -674,7 +675,12 @@ public class VisualController implements PropertyChangeListener,
 	}
 
 	protected void checkColoring(){
-		setStatus(COLORING, ConfigurationManager.getConfiguration().getColorOn());
+		boolean coloringActive = false;
+		if (am.getUi().getEditorFocus() != null)
+		{
+			coloringActive = ((EditorVC) am.getUi().getEditorFocus()).isUnderstandabilityColoringEnabled();
+		}
+		setStatus(COLORING, coloringActive);
 	}
 	
 	public void setActive(boolean active)
