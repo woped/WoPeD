@@ -274,6 +274,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
             if (toolbar != null)
             {
                 toolbar.changeZoomChooserValueWithoutListeners(Integer.toString((int)(editor.getGraph().getScale()*100)));
+                toolbar.getColoringButton().setSelected(editor.isUnderstandabilityColoringEnabled());
             }
 		}
 		VisualController.getInstance().propertyChange(
