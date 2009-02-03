@@ -34,7 +34,6 @@ import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 public class TransitionColoring implements ITransitionColoring {
 	
 	private StructuralAnalysis structAnalysis = null;
-	private IEditor focusedEditor = null;
 	private ReferenceProvider MediatorReference  = new ReferenceProvider();
 	private int maxColors = ConfigurationManager.getConfiguration().getUnderstandColors().length;
 	private int currentColorNum = 0;
