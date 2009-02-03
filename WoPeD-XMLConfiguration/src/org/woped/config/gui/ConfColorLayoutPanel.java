@@ -104,9 +104,12 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 	 * @see AbstractConfPanel#readConfigruation()
 	 */
 	public void readConfiguration() {
-		if (ConfigurationManager.getConfiguration().getColorOn()) {
-			setColorActive(true);
-		}
+		
+		// Matthias Mruzek: initial programm start, coloring should be turned off
+		// but colorset in configuration should be active
+		ConfigurationManager.getConfiguration().setColorOn(false);
+		setColorActive(true);
+		
 		for (int i = 0; i < 16; i++) {
 			colorLabelCollection[i].setBackground(colors[i]);
 		}
