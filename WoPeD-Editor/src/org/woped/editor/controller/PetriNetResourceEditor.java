@@ -366,7 +366,7 @@ public class PetriNetResourceEditor extends JPanel
 	        	objectsEditButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Edit"));
 //	        	objectsEditButton.setText(Messages.getString("PetriNet.Resources.Edit.Title"));
 	        	objectsEditButton.setToolTipText(Messages.getString("Button.Edit.Title"));
-	        	objectsEditButton.setEnabled(true);
+	        	objectsEditButton.setEnabled(false);
 	        	objectsEditButton.addActionListener(editResource);
 	        }
 
@@ -380,7 +380,7 @@ public class PetriNetResourceEditor extends JPanel
 //	        	objectsDeleteButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	        	objectsDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	        	objectsDeleteButton.addActionListener(removeResource);
-	        	objectsDeleteButton.setEnabled(true);
+	        	objectsDeleteButton.setEnabled(false);
 	        	
 	        }
 
