@@ -198,7 +198,8 @@ public class PetriNetResourceEditor extends JPanel
   	private JTextField			   	dialogFrameTextField			= null;	
   	private JList				   	selectedRolesList				= null;
   	private JList				   	selectedGroupsList				= null;
-  	    
+  	 
+  	
 	private ActionListener		   	createResource					= new createResource();
 	private ActionListener		   	removeResource					= new removeResource();
 	private ActionListener		   	editResource					= new editResource();
@@ -214,6 +215,7 @@ public class PetriNetResourceEditor extends JPanel
 	private MyTreeExpansionListener treeListener					= new MyTreeExpansionListener();
 
 	private TreeSelectionListener  	treeSelection					= new MyTreeSelectionListener();
+	
 	//ImageIcon used in the TreeCellRenderer-Classes  
 	private ImageIcon 			   	resourceClass  					= Messages.getImageIcon("PetriNet.Resources.ResourceClass");
 	private ImageIcon 			   	resourceSuperClass				= Messages.getImageIcon("PetriNet.Resources.ResourceSuperClass");		 				
@@ -256,9 +258,7 @@ public class PetriNetResourceEditor extends JPanel
 	        this.setSize(new Dimension(1024, 800));
 	        this.setLayout(new GridBagLayout());
 	        this.add(getBorderPanel());
-	        
 
-	        
 	        DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
 	        renderer.setLeafIcon(Messages.getImageIcon("PetriNet.Resources.Unassign.Icon"));
 	        renderer.setOpenIcon(Messages.getImageIcon("PetriNet.Resources.Unassign.Icon"));
@@ -308,12 +308,12 @@ public class PetriNetResourceEditor extends JPanel
 		   if (objectsPanel == null){
 			   objectsPanel = new JPanel(new GridBagLayout());
 			   objectsPanel.setBorder(BorderFactory
-	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Resource")), BorderFactory.createEmptyBorder()));
+	                    .createCompoundBorder(BorderFactory.createTitledBorder(
+	                    		Messages.getString("PetriNet.Resources.Resource")), 
+	                    		BorderFactory.createEmptyBorder()));
 
 
 	            SwingUtils.setFixedSize(objectsPanel,300,580);
-
-
 
 	            GridBagConstraints c = new GridBagConstraints();
 	            c.weightx = 1;
@@ -429,9 +429,11 @@ public class PetriNetResourceEditor extends JPanel
 		   if (objectsTree == null){
 			    objectsTopNode = new DefaultMutableTreeNode("Objects");
 			    objectsTreeModel = new DefaultTreeModel(objectsTopNode);		    
-			    objectsUnassignedNode = new DefaultMutableTreeNode(Messages.getString("PetriNet.Resources.Resource.Unassigned"));
+			    objectsUnassignedNode = new DefaultMutableTreeNode(
+			    		Messages.getString("PetriNet.Resources.Resource.Unassigned"));
 			    objectsTopNode.add(objectsUnassignedNode);
-			    objectsAssignedNode = new DefaultMutableTreeNode(Messages.getString("PetriNet.Resources.Resource.Assigned"));
+			    objectsAssignedNode = new DefaultMutableTreeNode(
+			    		Messages.getString("PetriNet.Resources.Resource.Assigned"));
 			    objectsTopNode.add(objectsAssignedNode);			
 			    objectsTree = new DragTree(objectsTopNode,objectsAssignedNode);			    
 			    objectsTree.setRootVisible(false);
@@ -491,8 +493,7 @@ public class PetriNetResourceEditor extends JPanel
 	   private JPanel getRolesContentPanel(){
 		   if (rolesContentPanel  == null){
 			   rolesContentPanel  = new JPanel(new GridBagLayout());
-//	            rolesPanel .setBorder(BorderFactory
-//	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Roles")), BorderFactory.createEmptyBorder()));
+
 	            SwingUtils.setFixedSize(rolesContentPanel , 300,580);
 	          
 	            GridBagConstraints c = new GridBagConstraints();
@@ -518,7 +519,9 @@ public class PetriNetResourceEditor extends JPanel
 		   if (rolesPanel  == null){
 			   rolesPanel  = new JPanel(new GridBagLayout());
 	            rolesPanel .setBorder(BorderFactory
-	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.Roles")), BorderFactory.createEmptyBorder()));
+	                    .createCompoundBorder(BorderFactory.createTitledBorder(
+	                    		Messages.getString("PetriNet.Resources.Roles")), 
+	                    		BorderFactory.createEmptyBorder()));
 	            SwingUtils.setFixedSize(rolesPanel , 300,395);
 	            
 	            GridBagConstraints c = new GridBagConstraints();
@@ -542,7 +545,9 @@ public class PetriNetResourceEditor extends JPanel
 		   if (superRolesPanel == null){
 			   superRolesPanel = new JPanel(new GridBagLayout());
 			   superRolesPanel.setBorder(BorderFactory
-	                    .createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("PetriNet.Resources.SuperRoles")), BorderFactory.createEmptyBorder()));
+	                    .createCompoundBorder(BorderFactory.createTitledBorder(
+	                    		Messages.getString("PetriNet.Resources.SuperRoles")), 
+	                    		BorderFactory.createEmptyBorder()));
 	            SwingUtils.setFixedSize(superRolesPanel, 300,180);
 	          
 	            GridBagConstraints c = new GridBagConstraints();
@@ -582,7 +587,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (rolesNewButton == null){
 	        	rolesNewButton = new JButton();
 	        	rolesNewButton.setIcon(Messages.getImageIcon("PetriNet.Resources.New"));
-//	        	rolesNewButton.setText(Messages.getString("PetriNet.Resources.New.Title"));
 	        	rolesNewButton.setToolTipText(Messages.getString("PetriNet.Resources.New.Title"));
 	            rolesNewButton.addActionListener(createResource);
 	        }
@@ -596,7 +600,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (rolesEditButton == null){
 	        	rolesEditButton = new JButton();
 	        	rolesEditButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Edit"));
-//	        	superRolesEditButton.setText(Messages.getString("Button.Edit.Title"));
 	        	rolesEditButton.setToolTipText(Messages.getString("Button.Edit.Title"));
 	        	rolesEditButton.setEnabled(false);
 	        	rolesEditButton.addActionListener(editResource);
@@ -610,7 +613,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (rolesDeleteButton == null){
 	        	rolesDeleteButton = new JButton();
 	        	rolesDeleteButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
-//	        	rolesDeleteButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	        	rolesDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	        	rolesDeleteButton.addActionListener(removeResource);
 	        	rolesDeleteButton.setEnabled(false);
@@ -746,7 +748,6 @@ public class PetriNetResourceEditor extends JPanel
 		        if (superRolesNewButton == null){
 		        	superRolesNewButton = new JButton();
 		        	superRolesNewButton.setIcon(Messages.getImageIcon("PetriNet.Resources.New"));
-//		        	superRolesNewButton.setText(Messages.getString("PetriNet.Resources.New.Title"));
 		        	superRolesNewButton.setToolTipText(Messages.getString("PetriNet.Resources.New.Title"));
 		            superRolesNewButton.addActionListener(createSuperResourceFrame);
 		        }
@@ -758,7 +759,6 @@ public class PetriNetResourceEditor extends JPanel
 		        if (superRolesEditButton == null){
 		        	superRolesEditButton = new JButton();
 		        	superRolesEditButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Edit"));
-//		        	superRolesEditButton.setText(Messages.getString("Button.Edit.Title"));
 		        	superRolesEditButton.setToolTipText(Messages.getString("Button.Edit.Title"));
 		        	superRolesEditButton.setEnabled(false);
 		        	superRolesEditButton.addActionListener(editSuperResourceFrame);
@@ -771,15 +771,8 @@ public class PetriNetResourceEditor extends JPanel
 		        if (superRolesDeleteButton == null){
 		        	superRolesDeleteButton = new JButton();
 		        	superRolesDeleteButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
-
-//		        	superRolesDeleteButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
 		        	superRolesDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
 		        	superRolesDeleteButton.addActionListener(removeSuperResource);
-
-
-//		        	superRolesDeleteButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
-		        	superRolesDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
-		        	superRolesDeleteButton.addActionListener(removeResource);
 		        	superRolesDeleteButton.setEnabled(false);
 		        }
 
@@ -970,7 +963,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (groupsNewButton == null){
 	        	groupsNewButton = new JButton();
 	        	groupsNewButton.setIcon(Messages.getImageIcon("PetriNet.Resources.New"));
-//	        	groupsNewButton.setText(Messages.getString("PetriNet.Resources.New.Title"));
 	        	groupsNewButton.setToolTipText(Messages.getString("PetriNet.Resources.New.Title"));
 	        	groupsNewButton.addActionListener(createResource);
 	        }
@@ -982,7 +974,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (groupsEditButton == null){
 	        	groupsEditButton = new JButton();
 	        	groupsEditButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Edit"));
-//	        	groupsEditButton.setText(Messages.getString("Button.Edit.Title"));
 	        	groupsEditButton.setToolTipText(Messages.getString("Button.Edit.Title"));
 	        	groupsEditButton.setEnabled(false);
 	        	groupsEditButton.addActionListener(editResource);
@@ -995,7 +986,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (groupsDeleteButton == null){
 	        	groupsDeleteButton = new JButton();
 	        	groupsDeleteButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
-//	        	groupsDeleteButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	        	groupsDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	        	groupsDeleteButton.addActionListener(removeResource);
 	        	groupsDeleteButton.setEnabled(false);
@@ -1052,7 +1042,6 @@ public class PetriNetResourceEditor extends JPanel
 		        if (superGroupsNewButton == null){
 		        	superGroupsNewButton = new JButton();
 		        	superGroupsNewButton.setIcon(Messages.getImageIcon("PetriNet.Resources.New"));
-//		        	superGroupsNewButton.setText(Messages.getString("PetriNet.Resources.New.Title"));
 		        	superGroupsNewButton.setToolTipText(Messages.getString("PetriNet.Resources.New.Title"));
 		            superGroupsNewButton.addActionListener(createSuperResourceFrame);
 		        }
@@ -1064,7 +1053,6 @@ public class PetriNetResourceEditor extends JPanel
 		        if (superGroupsEditButton == null){
 		        	superGroupsEditButton = new JButton();
 		        	superGroupsEditButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Edit"));
-//		        	superGroupsEditButton.setText(Messages.getString("Button.Edit.Title"));
 		        	superGroupsEditButton.setToolTipText(Messages.getString("Button.Edit.Title"));
 		        	superGroupsEditButton.setEnabled(false);
 		        	superGroupsEditButton.addActionListener(editSuperResourceFrame);
@@ -1077,7 +1065,6 @@ public class PetriNetResourceEditor extends JPanel
 		        if (superGroupsDeleteButton == null){
 		        	superGroupsDeleteButton = new JButton();
 		        	superGroupsDeleteButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
-//		        	superGroupsDeleteButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
 		        	superGroupsDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
 		        	superGroupsDeleteButton.addActionListener(removeSuperResource);
 
@@ -1094,7 +1081,6 @@ public class PetriNetResourceEditor extends JPanel
 		        	superGroupsExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 		        	superGroupsExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
 		        	superGroupsExpandButton.addActionListener(expandButtonListener);
-//		        	superGroupsExpandButton.setEnabled(false);
 		        }
 
 		        return superGroupsExpandButton;
@@ -1133,7 +1119,8 @@ public class PetriNetResourceEditor extends JPanel
 	                    superGroupsTree.setRowHeight(20);
 	                    superGroupsTree.setEditable(false);
 	                    superGroupsTree.setRootVisible(false);
-	                    superGroupsTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+	                    superGroupsTree.getSelectionModel().setSelectionMode(
+	                    		TreeSelectionModel.SINGLE_TREE_SELECTION);
 	                    superGroupsTree.setShowsRootHandles(true);
 	                    superGroupsTree.setFont(Nodes);
 	                    superGroupsTree.addTreeExpansionListener(treeListener);
@@ -1204,7 +1191,8 @@ public class PetriNetResourceEditor extends JPanel
 					   		b.weightx = 1;
 					   		b.weighty = 2;
 					  
-					   		JLabel addRolesLabel = new JLabel(("                         ")+(Messages.getString("PetriNet.Resources.Resource.AddtoSuperResource"))+(":"));
+					   		JLabel addRolesLabel = new JLabel(("                         ")+
+					   				(Messages.getString("PetriNet.Resources.Resource.AddtoSuperResource"))+(":"));
 					   		b.gridx = 0;
 					   		b.gridy = 1;
 					   		b.anchor = GridBagConstraints.WEST;
@@ -1241,7 +1229,8 @@ public class PetriNetResourceEditor extends JPanel
 					   			selectedRolesList = new JList(rolesListModel);
 					   			selectedRolesList.setSelectionModel(new ToggleSelectionModel());
 					   			
-					   			SuperRolesTreeNode superRole = (SuperRolesTreeNode) superRolesTree.getLastSelectedPathComponent();
+					   			SuperRolesTreeNode superRole = 
+					   				(SuperRolesTreeNode) superRolesTree.getLastSelectedPathComponent();
 					   			dialogFrameTextField.setText(superRole.toString());
 					   			for (int i =0;i<superRole.getChildCount();i++){
 					   				String currentRoleInTree = superRole.getChildAt(i).toString();
@@ -1259,7 +1248,8 @@ public class PetriNetResourceEditor extends JPanel
 					   			selectedGroupsList = new JList (groupsListModel);
 					   			
 					   			selectedGroupsList.setSelectionModel(new ToggleSelectionModel());
-					   			SuperGroupsTreeNode superGroup = (SuperGroupsTreeNode) superGroupsTree.getLastSelectedPathComponent();
+					   			SuperGroupsTreeNode superGroup = 
+					   				(SuperGroupsTreeNode) superGroupsTree.getLastSelectedPathComponent();
 					   			dialogFrameTextField.setText(superGroup.toString());
 					   			for (int i =0;i<superGroup.getChildCount();i++){
 					   				String currentGroupInTree = superGroup.getChildAt(i).toString();
@@ -1286,7 +1276,8 @@ public class PetriNetResourceEditor extends JPanel
 						SwingUtils.setFixedSize(dialogFrameConfirmButton,90,23);
 					   	buttonPanel.add(dialogFrameConfirmButton);
 					   	
-					   	dialogFrameCancelButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.Settings.Button.Cancel"));
+					   	dialogFrameCancelButton = new JButton(Messages.getString
+					   			("QuanlAna.ReachabilityGraph.Settings.Button.Cancel"));
 					   	SwingUtils.setFixedSize(dialogFrameCancelButton,90,23);
 					   	dialogFrameCancelButton.addActionListener(createSuperResource);
 					   	buttonPanel.add(dialogFrameCancelButton);
@@ -1306,10 +1297,12 @@ public class PetriNetResourceEditor extends JPanel
 				   try{
 					   dialogFrame = new JFrame();
 					  if(e.getSource()== superRolesEditButton){
-						   dialogFrame.setTitle(Messages.getString("PetriNet.Resources.Resource.EditSuperRole"));
+						   dialogFrame.setTitle(Messages.getString
+								   ("PetriNet.Resources.Resource.EditSuperRole"));
 					  }
 					  if(e.getSource()== superGroupsEditButton){
-						   dialogFrame.setTitle(Messages.getString("PetriNet.Resources.Resource.EditSuperGroup"));
+						   dialogFrame.setTitle(Messages.getString
+								   ("PetriNet.Resources.Resource.EditSuperGroup"));
 					  }
 					   dialogFrame.setSize(500, 400);
 					   dialogFrame.setLocationRelativeTo(rolesContentPanel);
@@ -1332,7 +1325,8 @@ public class PetriNetResourceEditor extends JPanel
 					   		GridBagConstraints a = new GridBagConstraints();
 					   		a.weightx = 2;
 					   		a.weighty = 1;
-					   		JLabel nameLabel = new JLabel(Messages.getString("PetriNet.Resources.ResourceName")+":   ");
+					   		JLabel nameLabel = new JLabel(Messages.getString
+					   				("PetriNet.Resources.ResourceName")+":   ");
 					   		dialogFrameTextField = new JTextField();
 					   		SwingUtils.setFixedSize(dialogFrameTextField,300,25);
 					
@@ -1356,7 +1350,8 @@ public class PetriNetResourceEditor extends JPanel
 					   		b.weightx = 1;
 					   		b.weighty = 2;
 					  
-					   		JLabel addRolesLabel = new JLabel(("                         ")+(Messages.getString("PetriNet.Resources.Resource.AddtoSuperResource"))+(":"));
+					   		JLabel addRolesLabel = new JLabel(("                         ")+
+					   				(Messages.getString("PetriNet.Resources.Resource.AddtoSuperResource"))+(":"));
 					   		b.gridx = 0;
 					   		b.gridy = 1;
 					   		b.anchor = GridBagConstraints.WEST;
@@ -1425,7 +1420,8 @@ public class PetriNetResourceEditor extends JPanel
 						SwingUtils.setFixedSize(dialogFrameConfirmButton,90,23);
 					   	buttonPanel.add(dialogFrameConfirmButton);
 					   	
-					   	dialogFrameCancelButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.Settings.Button.Cancel"));
+					   	dialogFrameCancelButton = new JButton(Messages.getString
+					   			("QuanlAna.ReachabilityGraph.Settings.Button.Cancel"));
 					   	SwingUtils.setFixedSize(dialogFrameCancelButton,90,23);
 					   	dialogFrameCancelButton.addActionListener(editSuperResource);
 					   	buttonPanel.add(dialogFrameCancelButton);
@@ -1481,7 +1477,9 @@ public class PetriNetResourceEditor extends JPanel
 					Object [] selectedRoles = selectedRolesList.getSelectedValues();
 
 					if(selectedRoles.length<2){
-						JOptionPane.showMessageDialog(dialogFrame , Messages.getString("ResourceEditor.Error.NoRolesChoosen.Text"), Messages.getString("ResourceEditor.Error.NoRolesChoosen.Title"),
+						JOptionPane.showMessageDialog(dialogFrame , Messages.getString
+								("ResourceEditor.Error.NoRolesChoosen.Text"), 
+								Messages.getString("ResourceEditor.Error.NoRolesChoosen.Title"),
 		                        JOptionPane.ERROR_MESSAGE);	
 						
 					}else{
@@ -1522,8 +1520,9 @@ public class PetriNetResourceEditor extends JPanel
 				if(selectedRolesList==null&&selectedGroupsList!=null){
 					Object [] selectedGroups = selectedGroupsList.getSelectedValues();
 					if(selectedGroups.length<2){
-						JOptionPane.showMessageDialog(dialogFrame , Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Text"), Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Title"),
-		                        JOptionPane.ERROR_MESSAGE);				
+						JOptionPane.showMessageDialog(dialogFrame , Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Text"), 
+								Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Title"),
+		                        JOptionPane.INFORMATION_MESSAGE);				
 					}else{
 						if(checkClassSyntax(dialogFrameTextField.getText())){
 							String superGroup = dialogFrameTextField.getText();
@@ -1576,7 +1575,8 @@ public class PetriNetResourceEditor extends JPanel
 					if(selectedGroupsList==null){				
 					Object [] selectedRoles = selectedRolesList.getSelectedValues();
 						if(selectedRoles.length<2){
-							JOptionPane.showMessageDialog(dialogFrame , Messages.getString("ResourceEditor.Error.NoRolesChoosen.Text"), Messages.getString("ResourceEditor.Error.NoRolesChoosen.Title"),
+							JOptionPane.showMessageDialog(dialogFrame , Messages.getString("ResourceEditor.Error.NoRolesChoosen.Text"),
+									Messages.getString("ResourceEditor.Error.NoRolesChoosen.Title"),
 			                        JOptionPane.ERROR_MESSAGE);				
 						}else{
 							boolean checkedName;
@@ -1595,7 +1595,8 @@ public class PetriNetResourceEditor extends JPanel
 									 String role = superRole.getChildAt(i).toString();
 									 int j = getPetrinet().containsRole(role);
 									 ResourceClassModel roleModel = (ResourceClassModel) getPetrinet().getRoles().get(j);
-									 ResourceClassModel superRoleModel= new ResourceClassModel(superRoleOldName,ResourceClassModel.TYPE_ROLE);
+									 ResourceClassModel superRoleModel= new ResourceClassModel(superRoleOldName,
+											 ResourceClassModel.TYPE_ROLE);
 									 roleModel.removeSuperModel(superRoleModel);
 								  }
 								
@@ -1630,7 +1631,8 @@ public class PetriNetResourceEditor extends JPanel
 					if(selectedRolesList==null){
 						Object [] selectedGroups = selectedGroupsList.getSelectedValues();
 						if(selectedGroups.length<2){
-							JOptionPane.showMessageDialog(dialogFrame , Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Text"), Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Title"),
+							JOptionPane.showMessageDialog(dialogFrame , 
+									Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Text"), Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Title"),
 			                        JOptionPane.ERROR_MESSAGE);				
 						}else{
 							boolean checkedName;
@@ -1642,14 +1644,16 @@ public class PetriNetResourceEditor extends JPanel
 							}
 							if(checkedName){
 								String superGroupNewName = dialogFrameTextField.getText();
-								ResourceClassModel newSuperGroup = new ResourceClassModel(superGroupNewName, ResourceClassModel.TYPE_ORGUNIT);
+								ResourceClassModel newSuperGroup = new ResourceClassModel(superGroupNewName, 
+										ResourceClassModel.TYPE_ORGUNIT);
 								String superGroupOldName = superGroupsTree.getLastSelectedPathComponent().toString();
 								SuperGroupsTreeNode superGroup = (SuperGroupsTreeNode) superGroupsTree.getLastSelectedPathComponent();
 								 for(int i=0;i<superGroup.getChildCount();i++){
 									 String group = superGroup.getChildAt(i).toString();
 									 int j = getPetrinet().containsOrgunit(group);
 									 ResourceClassModel groupModel = (ResourceClassModel) getPetrinet().getOrganizationUnits().get(j);
-									 ResourceClassModel superGroupModel= new ResourceClassModel(superGroupOldName,ResourceClassModel.TYPE_ORGUNIT);
+									 ResourceClassModel superGroupModel= new ResourceClassModel(superGroupOldName,
+											 ResourceClassModel.TYPE_ORGUNIT);
 									 groupModel.removeSuperModel(superGroupModel);
 								  }
 								
@@ -1664,7 +1668,8 @@ public class PetriNetResourceEditor extends JPanel
 									int a = getPetrinet().containsOrgunit(groupName);
 									ResourceClassModel currentGroup = getPetrinet().getOrganizationUnits().get(a);
 									currentGroup.addSuperModel(newSuperGroup);
-									ArrayList <String> objects = getObjectsAssignedToResource(currentGroup, ResourceClassModel.TYPE_ORGUNIT);
+									ArrayList <String> objects = getObjectsAssignedToResource(currentGroup, 
+											ResourceClassModel.TYPE_ORGUNIT);
 									for(int b = 0; b< objects.size();b++ ){
 										String currentObject = objects.get(b);
 										System.out.println(currentObject);
@@ -1701,7 +1706,8 @@ public class PetriNetResourceEditor extends JPanel
 								 String role = superRole.getChildAt(i).toString();
 								 int j = getPetrinet().containsRole(role);
 								 ResourceClassModel roleModel = (ResourceClassModel) getPetrinet().getRoles().get(j);
-								 ResourceClassModel superRoleModel= new ResourceClassModel(superrole2remove,ResourceClassModel.TYPE_ROLE);
+								 ResourceClassModel superRoleModel= 
+									 new ResourceClassModel(superrole2remove,ResourceClassModel.TYPE_ROLE);
 								 roleModel.removeSuperModel(superRoleModel);
 							  }
 						  
@@ -1715,7 +1721,9 @@ public class PetriNetResourceEditor extends JPanel
 							 superRolesDeleteButton.setEnabled(false);
 							 superRolesEditButton.setEnabled(false);
 						  }else{
-						         JOptionPane.showMessageDialog(rolesContentPanel, Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
+						         JOptionPane.showMessageDialog(rolesContentPanel, 
+						        		 Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), 
+						        		 Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
 						                        JOptionPane.ERROR_MESSAGE);
 						       }
 					}catch (Exception exc){
@@ -1745,7 +1753,9 @@ public class PetriNetResourceEditor extends JPanel
 							 superGroupsDeleteButton.setEnabled(false);
 							 superGroupsEditButton.setEnabled(false);
 					  }else{
-					         JOptionPane.showMessageDialog(rolesContentPanel, Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
+					         JOptionPane.showMessageDialog(rolesContentPanel, 
+					        		 Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), 
+					        		 Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
 					                        JOptionPane.ERROR_MESSAGE);
 					       }
 					}catch (Exception exc){
@@ -1814,7 +1824,8 @@ public class PetriNetResourceEditor extends JPanel
 								   (Object)Messages.getString("PetriNet.Resources.ResourceName"),
 								   Messages.getString("PetriNet.Resources.CreateGroup"),JOptionPane.QUESTION_MESSAGE);
 						   if (checkClassSyntax(newResourceName )){
-							   ResourceClassModel newGroup = new ResourceClassModel(newResourceName, ResourceClassModel.TYPE_ORGUNIT);
+							   ResourceClassModel newGroup = new ResourceClassModel(newResourceName, 
+									   ResourceClassModel.TYPE_ORGUNIT);
 							   getPetrinet().addOrgUnit(newGroup);
 							   groupsListModel.addElement(newGroup);
 							   refreshRolesTreeFromListModel();
@@ -1867,7 +1878,9 @@ public class PetriNetResourceEditor extends JPanel
 			   try{
 //				   Remove an Object
 				   if(e.getSource()== objectsDeleteButton){
-					   if(!objectsTree.getLastSelectedPathComponent().equals(objectsUnassignedNode)&&!objectsTree.getLastSelectedPathComponent().equals(objectsTopNode)&&!objectsTree.getLastSelectedPathComponent().equals(objectsAssignedNode)){
+					   if(!objectsTree.getLastSelectedPathComponent().equals(objectsUnassignedNode)&&
+							   !objectsTree.getLastSelectedPathComponent().equals(objectsTopNode)&&
+							   !objectsTree.getLastSelectedPathComponent().equals(objectsAssignedNode)){
 						   MutableTreeNode nodeToDelete = (MutableTreeNode) objectsTree.getLastSelectedPathComponent();
 						  
 						   if(nodeToDelete.getParent().equals(objectsUnassignedNode)){
@@ -1938,7 +1951,9 @@ public class PetriNetResourceEditor extends JPanel
 							int j = getPetrinet().containsRole(role2remove);	
 							
 							if(getPetrinet().getRoles().get(j).getSuperModels()!= null){
-								  JOptionPane.showMessageDialog(rolesContentPanel, Messages.getString("ResourceEditor.Error.UsedResourceInSuperRole.Text"), Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
+								  JOptionPane.showMessageDialog(rolesContentPanel, 
+										  Messages.getString("ResourceEditor.Error.UsedResourceInSuperRole.Text"), 
+										  Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
 					                        JOptionPane.ERROR_MESSAGE);
 							}else{
 								if(nodeToDelete.getChildCount()==0){
@@ -1991,7 +2006,9 @@ public class PetriNetResourceEditor extends JPanel
 						getEditor().setSaved(false);
 					  }
 			       else{
-			         JOptionPane.showMessageDialog(rolesContentPanel, Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
+			         JOptionPane.showMessageDialog(rolesContentPanel, 
+			        		 Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), 
+			        		 Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
 			                        JOptionPane.ERROR_MESSAGE);
 			       }
 				  }
@@ -2008,14 +2025,17 @@ public class PetriNetResourceEditor extends JPanel
 
 
 
-						  if(groupsDeleteButton.getToolTipText().equalsIgnoreCase(Messages.getString("PetriNet.Resources.Delete.Title"))){
+						  if(groupsDeleteButton.getToolTipText().equalsIgnoreCase(
+								  Messages.getString("PetriNet.Resources.Delete.Title"))){
 
 				  //Delete a group
 							  GroupsTreeNode nodeToDelete = (GroupsTreeNode) groupsTree.getLastSelectedPathComponent();
 							  int j = getPetrinet().containsOrgunit(group2remove);
 //							  Iterator i = getPetrinet().getOrganizationUnits().get(j).getSuperModels();
 								if(getPetrinet().getOrganizationUnits().get(j).getSuperModels()!=null){
-									  JOptionPane.showMessageDialog(rolesContentPanel,Messages.getString("ResourceEditor.Error.UsedResourceInSuperGroup.Text"), Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
+									  JOptionPane.showMessageDialog(rolesContentPanel,
+											  Messages.getString("ResourceEditor.Error.UsedResourceInSuperGroup.Text"),
+											  Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
 						                        JOptionPane.ERROR_MESSAGE);
 								}else{
 									if(nodeToDelete.getChildCount()==0){
@@ -2068,7 +2088,9 @@ public class PetriNetResourceEditor extends JPanel
 ;
 					  }
 					  else{
-						  JOptionPane.showMessageDialog(rolesContentPanel, Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
+						  JOptionPane.showMessageDialog(rolesContentPanel, 
+								  Messages.getString("ResourceEditor.Error.UsedResourceClass.Text"), 
+								  Messages.getString("ResourceEditor.Error.UsedResourceClass.Title"),
 			                        JOptionPane.ERROR_MESSAGE);
 					  }
 					  getEditor().setSaved(false);
@@ -2225,7 +2247,31 @@ public class PetriNetResourceEditor extends JPanel
 	   private class MyTreeExpansionListener implements TreeExpansionListener{
 
 		public void treeCollapsed(TreeExpansionEvent e) {
-			// TODO Auto-generated method stub
+			if(e.getSource()==rolesTree){
+				if(rolesTree.getRowCount()==rolesTopNode.getChildCount()){
+					rolesCollapseButton.setEnabled(false);
+				}
+			}
+			if(e.getSource()==superRolesTree){
+				if(superRolesTree.getRowCount()==superRolesTopNode.getChildCount()){
+					superRolesCollapseButton.setEnabled(false);
+				}
+			}
+			if(e.getSource()==groupsTree){
+				if(groupsTree.getRowCount()==groupsTopNode.getChildCount()){
+					groupsCollapseButton.setEnabled(false);
+				}
+			}
+			if(e.getSource()==superGroupsTree){
+				if(superGroupsTree.getRowCount()==superGroupsTopNode.getChildCount()){
+					superGroupsCollapseButton.setEnabled(false);
+				}
+			}
+			if(e.getSource()==objectsTree){
+				if(objectsTree.getRowCount()==objectsTopNode.getChildCount()){
+					objectsCollapseButton.setEnabled(false);
+				}
+			}
 			
 		}
 
@@ -2334,24 +2380,6 @@ public class PetriNetResourceEditor extends JPanel
 		      }
 		    }
 
-
-
-
-	   
-	   //********************Selection_Coloring_Listener*****************************
-//	   class SelectionColoringListener implements TreeSelectionListener{
-//		   public void valueChanged(TreeSelectionEvent e) {	
-//			   DefaultMutableTreeNode node = (DefaultMutableTreeNode)objectsTree.getLastSelectedPathComponent();
-//			   
-//			   //nothing selected
-//			   if (node == null) return;
-//			   
-//			   if (e.getSource()==objectsTree){
-//				   Object nodeInfo = node.getUserObject();
-//
-//			   }
-//		   }
-//	   }
 	   
 	   
 
@@ -2387,7 +2415,9 @@ public class PetriNetResourceEditor extends JPanel
 	        boolean nameExists = false;
 	    
 	        if (str.equals("")){
-	            JOptionPane.showMessageDialog(this, Messages.getString("ResourceEditor.Error.EmptyResourceClass.Text"), Messages.getString("ResourceEditor.Error.EmptyResourceClass.Title"),
+	            JOptionPane.showMessageDialog(this, 
+	            		Messages.getString("ResourceEditor.Error.EmptyResourceClass.Text"), 
+	            		Messages.getString("ResourceEditor.Error.EmptyResourceClass.Title"),
 	                    JOptionPane.ERROR_MESSAGE);
 	            return false;
 	        }
@@ -2402,7 +2432,9 @@ public class PetriNetResourceEditor extends JPanel
 	        }
 
 	        if (nameExists){
-	            JOptionPane.showMessageDialog(this, Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Title"),
+	            JOptionPane.showMessageDialog(this, 
+	            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
+	            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Title"),
 	                    JOptionPane.ERROR_MESSAGE);
 	            return false;
 	        } 	       
@@ -2740,17 +2772,7 @@ public class PetriNetResourceEditor extends JPanel
 	    		}
 
 	    		setClosedIcon(resourceClass);
-			    setOpenIcon(resourceClass);
-			    
-//	    		if(!objectsTree.isSelectionEmpty()){
-//
-//	    			String objectName = objectsTree.getLastSelectedPathComponent().toString();
-//
-//	    			if	(/*(currentTreeNode.isNodeDescendant(rolesTopNode) || currentTreeNode.isNodeDescendant(groupsTopNode)) && */ objectName == currentTreeNode.toString()){
-//
-//			    	setBackground(Color.pink);
-//	    			}
-//	    		}
+			    setOpenIcon(resourceClass);			    
 			    
 	    		return this;
 	    	}
@@ -2790,10 +2812,8 @@ public class PetriNetResourceEditor extends JPanel
 @SuppressWarnings("serial")
 class DragTree extends JTree {
 
-//	  private Insets insets;
+
 	  private DefaultMutableTreeNode m_parent;
-	  
-//	  private int top = 0, bottom = 0, topRow = 0, bottomRow = 0;
 
 	  public DragTree(DefaultMutableTreeNode rootNode, DefaultMutableTreeNode parent) {
 		  super( rootNode );
