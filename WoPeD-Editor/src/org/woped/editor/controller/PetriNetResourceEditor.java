@@ -354,7 +354,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (objectsNewButton == null){
 	        	objectsNewButton = new JButton();
 	        	objectsNewButton.setIcon(Messages.getImageIcon("PetriNet.Resources.New"));
-//	        	objectsNewButton.setText(Messages.getString("PetriNet.Resources.New.Title"));
 	        	objectsNewButton.setToolTipText(Messages.getString("PetriNet.Resources.New.Title"));
 	        	objectsNewButton.addActionListener(createResource);
 	        }
@@ -366,7 +365,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (objectsEditButton == null){
 	        	objectsEditButton = new JButton();
 	        	objectsEditButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Edit"));
-//	        	objectsEditButton.setText(Messages.getString("PetriNet.Resources.Edit.Title"));
 	        	objectsEditButton.setToolTipText(Messages.getString("Button.Edit.Title"));
 	        	objectsEditButton.setEnabled(false);
 	        	objectsEditButton.addActionListener(editResource);
@@ -379,7 +377,6 @@ public class PetriNetResourceEditor extends JPanel
 	        if (objectsDeleteButton == null){
 	        	objectsDeleteButton = new JButton();
 	        	objectsDeleteButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
-//	        	objectsDeleteButton.setText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	        	objectsDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	        	objectsDeleteButton.addActionListener(removeResource);
 	        	objectsDeleteButton.setEnabled(false);
@@ -392,9 +389,11 @@ public class PetriNetResourceEditor extends JPanel
 	   private JButton getObjectsExpandButton(){
 	        if (objectsExpandButton == null){
 	        	objectsExpandButton = new JButton();
+	        	objectsExpandButton.setEnabled(false);
 	        	objectsExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 	        	objectsExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
 	        	objectsExpandButton.addActionListener(expandButtonListener);
+
 	        }
 
 	        return objectsExpandButton;
@@ -628,6 +627,7 @@ public class PetriNetResourceEditor extends JPanel
 	        	rolesExpandButton = new JButton();
 	        	rolesExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 	        	rolesExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
+	        	rolesExpandButton.setEnabled(false);
 	        	rolesExpandButton.addActionListener(expandButtonListener);
 	        }
 
@@ -788,6 +788,7 @@ public class PetriNetResourceEditor extends JPanel
 		        	superRolesExpandButton = new JButton();
 		        	superRolesExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 		        	superRolesExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
+		        	superRolesExpandButton.setEnabled(false);
 		        	superRolesExpandButton.addActionListener(expandButtonListener);
 		        }
 
@@ -1003,6 +1004,7 @@ public class PetriNetResourceEditor extends JPanel
 	        	groupsExpandButton = new JButton();
 	        	groupsExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 	        	groupsExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
+	        	groupsExpandButton.setEnabled(false);
 	        	groupsExpandButton.addActionListener(expandButtonListener);
 
 	        }
@@ -1082,6 +1084,7 @@ public class PetriNetResourceEditor extends JPanel
 		        	superGroupsExpandButton = new JButton();
 		        	superGroupsExpandButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Expand"));
 		        	superGroupsExpandButton.setToolTipText(Messages.getString("PetriNet.Resources.Expand.Title"));
+		        	superGroupsExpandButton.setEnabled(false);
 		        	superGroupsExpandButton.addActionListener(expandButtonListener);
 		        }
 
@@ -1602,7 +1605,7 @@ public class PetriNetResourceEditor extends JPanel
 								}
 
 						}		
-					refreshFromModel();
+					reset();
 					selectedRolesList =null;
 					selectedGroupsList =null;
 					getEditor().setSaved(false);
@@ -1636,7 +1639,7 @@ public class PetriNetResourceEditor extends JPanel
 								}
 					
 							}
-							refreshFromModel();
+							reset();
 							selectedRolesList =null;
 							selectedGroupsList =null;
 							getEditor().setSaved(false);
@@ -1795,7 +1798,7 @@ public class PetriNetResourceEditor extends JPanel
 										petrinet.addResourceMapping(newSuperRole.toString(), currentObject);
 									}
 								}
-								refreshFromModel();
+								reset();
 								superRolesTree.expandRow(path);
 								getEditor().setSaved(false);
 							
@@ -1841,7 +1844,7 @@ public class PetriNetResourceEditor extends JPanel
 										petrinet.addResourceMapping(newSuperGroup.toString(), currentObject);
 									}
 								}	
-								refreshFromModel();
+				                reset();
 								superGroupsTree.expandRow(path);
 								getEditor().setSaved(false);
 								
@@ -1874,7 +1877,7 @@ public class PetriNetResourceEditor extends JPanel
 						  	 int a = getPetrinet().containsRole(superrole2remove);
 							 getPetrinet().getRoles().remove(a);
 							 
-							 refreshFromModel();
+							 reset();
 							 
 							 getEditor().setSaved(false);
 				
@@ -1906,7 +1909,7 @@ public class PetriNetResourceEditor extends JPanel
 						  	 int a = getPetrinet().containsOrgunit(supergroup2remove);
 							 getPetrinet().getOrganizationUnits().remove(a);
 							 
-							 refreshFromModel();
+							 reset();
 							 
 							 getEditor().setSaved(false);
 							 
@@ -1971,9 +1974,7 @@ public class PetriNetResourceEditor extends JPanel
 							   ResourceClassModel newRole = new ResourceClassModel(newResourceName, ResourceClassModel.TYPE_ROLE);
 							   getPetrinet().addRole(newRole);
 							   rolesListModel.addElement(newRole);
-							   refreshRolesTreeFromListModel();
-							   refreshGroupsTreeFromListModel();
-							   refreshObjectsFromModel();
+							   reset();
 							   getEditor().setSaved(false);
 						   }
 					   }
@@ -1986,9 +1987,7 @@ public class PetriNetResourceEditor extends JPanel
 									   ResourceClassModel.TYPE_ORGUNIT);
 							   getPetrinet().addOrgUnit(newGroup);
 							   groupsListModel.addElement(newGroup);
-							   refreshRolesTreeFromListModel();
-							   refreshGroupsTreeFromListModel();
-							   refreshObjectsFromModel();
+							   reset();
 							   getEditor().setSaved(false);
 						   }
 					   }
@@ -2000,7 +1999,7 @@ public class PetriNetResourceEditor extends JPanel
 							   ResourceModel newObject = new ResourceModel(newResourceName);
 							   	getPetrinet().addResource(newObject);
 							   	objectsUnassignedListModel.addElement(newObject);
-							   	refreshObjectsTreeFromListModel();
+							   	reset();
 							   	getEditor().setSaved(false);}
 					   }
 				   
@@ -2048,7 +2047,8 @@ public class PetriNetResourceEditor extends JPanel
 				               getPetrinet().getResources().remove(j);
 							 	objectsEditButton.setEnabled(false);
 							 	objectsDeleteButton.setEnabled(false);
-				               getEditor().setSaved(false);
+							 	reset();
+							 	getEditor().setSaved(false);
 							  
 						   }
 						   else{
@@ -2081,9 +2081,9 @@ public class PetriNetResourceEditor extends JPanel
 							   int j = getPetrinet().containsResource(nodeToDelete.toString());
 							   objectsUnassignedListModel.removeElement(j);
 				               getPetrinet().getResources().remove(j);
-				               refreshFromModel();
-							 	objectsEditButton.setEnabled(false);
-							 	objectsDeleteButton.setEnabled(false);
+				               reset();
+				               objectsEditButton.setEnabled(false);
+				               objectsDeleteButton.setEnabled(false);
 				               getEditor().setSaved(false);
 						   }
 					if(objectsAssignedNode.getChildCount()==0&&objectsUnassignedNode.getChildCount()==0){
@@ -2115,7 +2115,7 @@ public class PetriNetResourceEditor extends JPanel
 							}else{
 								if(nodeToDelete.getChildCount()==0){
 					                getPetrinet().getRoles().remove(j);
-					                refreshFromModel();
+					                reset();
 					                rolesDeleteButton.setEnabled(false);
 								  	rolesEditButton.setEnabled(false);
 					                getEditor().setSaved(false);
@@ -2125,7 +2125,7 @@ public class PetriNetResourceEditor extends JPanel
 										String object2unassign = nodeToDelete.getChildAt(i).toString();	
 										getPetrinet().removeResourceMapping(nodeToDelete.toString(), object2unassign);
 									} 
-					                refreshFromModel();
+									reset();
 					                rolesDeleteButton.setEnabled(false);
 								  	rolesEditButton.setEnabled(false);
 									getEditor().setSaved(false);
@@ -2151,7 +2151,7 @@ public class PetriNetResourceEditor extends JPanel
 			    					 getPetrinet().removeResourceMapping(parent.toString(), object2unassign);
 			    				}
 							}	
-			                refreshFromModel();
+							reset();
 						  	
 						  	rolesDeleteButton.setEnabled(false);
 						  	
@@ -2200,7 +2200,7 @@ public class PetriNetResourceEditor extends JPanel
 								}else{
 									if(nodeToDelete.getChildCount()==0){
 						                getPetrinet().getOrganizationUnits().remove(j);
-						                refreshFromModel();
+						                reset();
 							        	groupsDeleteButton.setEnabled(false);
 							        	groupsEditButton.setEnabled(false);
 										
@@ -2211,7 +2211,7 @@ public class PetriNetResourceEditor extends JPanel
 											String object2unassign = nodeToDelete.getChildAt(i).toString();	
 											getPetrinet().removeResourceMapping(nodeToDelete.toString(), object2unassign);
 								  		}
-						                refreshFromModel();
+						                reset();
 							        	groupsDeleteButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
 							        	groupsDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
 							        	groupsDeleteButton.setEnabled(false);
@@ -2239,7 +2239,7 @@ public class PetriNetResourceEditor extends JPanel
 			    				}
 						  		
 							}
-			                refreshFromModel();
+							reset();
 			      
 							groupsTree.expandRow(path);
 							groupsDeleteButton.setEnabled(false);
@@ -2286,7 +2286,7 @@ public class PetriNetResourceEditor extends JPanel
 	                   roleModel.setName(newName);
 	                   rolesListModel.set( j, roleModel);
 	                   updateRolesInPetrinet(oldName, newName);
-	                   refreshFromModel();
+	                   reset();
 	        
 	                   getEditor().setSaved(false);
 				   }
@@ -2307,7 +2307,7 @@ public class PetriNetResourceEditor extends JPanel
 	                   groupsListModel.set( j, groupModel);
 	                   updateGroupsInPetrinet(oldName, newName);
 	                 
-	                   refreshFromModel();
+	                   reset();
 	                
 	                   getEditor().setSaved(false);
 				   }
@@ -2324,7 +2324,7 @@ public class PetriNetResourceEditor extends JPanel
 		                ResourceModel resourceModel = (ResourceModel) getPetrinet().getResources().get(getPetrinet().containsResource(message.toString()));
 		                resourceModel.setName(newName);
 		         
-		                refreshFromModel();
+		                reset();
 				 }
 			   }
 			   getEditor().setSaved(false);
@@ -2440,7 +2440,9 @@ public class PetriNetResourceEditor extends JPanel
 				if(rolesTree.getRowCount()==rolesTopNode.getChildCount()){
 					rolesCollapseButton.setEnabled(false);				
 				}
-				rolesExpandButton.setEnabled(true);
+				if(rolesTopNode.getChildCount()>1){
+					rolesExpandButton.setEnabled(true);
+				}
 			}
 			if(e.getSource()==superRolesTree){
 				if(superRolesTree.getRowCount()==superRolesTopNode.getChildCount()){
@@ -2773,15 +2775,40 @@ public class PetriNetResourceEditor extends JPanel
 		   private void refreshGUI() {
 			   	objectsEditButton.setEnabled(false);
 			   	objectsDeleteButton.setEnabled(false);
+			   	objectsCollapseButton.setEnabled(false);
 				rolesEditButton.setEnabled(false);
 				rolesDeleteButton.setEnabled(false);
+				rolesCollapseButton.setEnabled(false);
 				groupsEditButton.setEnabled(false);
 				groupsDeleteButton.setEnabled(false);
+				groupsCollapseButton.setEnabled(false);
 				superRolesEditButton.setEnabled(false);
 				superRolesDeleteButton.setEnabled(false);
+				superRolesCollapseButton.setEnabled(false);
 				superGroupsEditButton.setEnabled(false);
 				superGroupsDeleteButton.setEnabled(false);
+				superGroupsCollapseButton.setEnabled(false);
 				
+				if(rolesTopNode.getChildCount()>0){
+					rolesExpandButton.setEnabled(true);
+				}else
+					rolesExpandButton.setEnabled(false);
+				if(groupsTopNode.getChildCount()>0){
+					groupsExpandButton.setEnabled(true);
+				}else
+					groupsExpandButton.setEnabled(false);
+				if(superRolesListModel.size()>1){
+					superRolesExpandButton.setEnabled(true);
+				}else
+					superRolesExpandButton.setEnabled(false);
+				if(superGroupsListModel.size()>1){
+					superGroupsExpandButton.setEnabled(true);
+				}else
+					superGroupsExpandButton.setEnabled(false);
+				if(objectsAssignedNode.getChildCount()>0||objectsUnassignedNode.getChildCount()>0){
+					objectsExpandButton.setEnabled(true);
+				}else
+					objectsExpandButton.setEnabled(false);
 			}
 	    
 	    
@@ -2906,7 +2933,7 @@ public class PetriNetResourceEditor extends JPanel
     			rolesTreeModel.insertNodeInto(new RolesTreeNode(rolesListModel.get(i).toString()), rolesTopNode, i);
     		
     		}
-	    	rolesExpandButton.setEnabled(true);
+	    	
     		rolesTree.updateUI();
 	    }
 	    
@@ -2928,7 +2955,7 @@ public class PetriNetResourceEditor extends JPanel
 	    			}
 	    		}
     		}
-	    	superRolesExpandButton.setEnabled(true);
+	    	
     		superRolesTree.updateUI();
 	    }
 	    
@@ -2950,7 +2977,7 @@ public class PetriNetResourceEditor extends JPanel
 	    			}
 	    		}
     		}
-	    	superGroupsExpandButton.setEnabled(true);
+	    	
     		superGroupsTree.updateUI();
 	    }
 	    
@@ -2961,7 +2988,7 @@ public class PetriNetResourceEditor extends JPanel
     			
 
     		}
-	    	groupsExpandButton.setEnabled(true);
+	    	
     		groupsTree.updateUI();
 	    }
 	    
@@ -2975,8 +3002,7 @@ public class PetriNetResourceEditor extends JPanel
     		}
 	    	for (int i = 0; i < objectsUnassignedListModel.getSize();i++){
     			objectsTreeModel.insertNodeInto(new ObjectsTreeNode(objectsUnassignedListModel.get(i).toString()), objectsUnassignedNode, i);
-    		}
-	    	objectsExpandButton.setEnabled(true);
+    		}	    	
     		objectsTree.updateUI();
 	    }
 	    
