@@ -206,8 +206,8 @@ public class PetriNetResourceEditor extends JPanel
 
 	private ActionListener  	   	createSuperResourceFrame		= new createSuperResourceFrame();
 	private ActionListener  	   	editSuperResourceFrame			= new editSuperResourceFrame();
-	private ActionListener  	   	createSuperResource				= new checkSuperResource();
-	private ActionListener  	   	editSuperResource				= new editSuperResource();
+	private ActionListener  	   	createSuperResource				= new createSuperResourceListener();
+	private ActionListener  	   	editSuperResource				= new editSuperResourceListener();
 	private ActionListener  	   	removeSuperResource				= new removeSuperResource();
 
 	private ActionListener		   	expandButtonListener			= new expandButtonListener();
@@ -249,11 +249,13 @@ public class PetriNetResourceEditor extends JPanel
 	 public void reset()
 	 {
 		 	refreshFromModel(); 
+		 	refreshGUI();
 	  }
 	  
 
 	    
-	   private void initialize(){
+
+	private void initialize(){
 	        this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 	        this.setSize(new Dimension(1024, 800));
 	        this.setLayout(new GridBagLayout());
@@ -298,7 +300,7 @@ public class PetriNetResourceEditor extends JPanel
 		   }
 		   return borderPanel;
 	   }
-	   
+	   	   
    
 	   
 	   
@@ -1466,8 +1468,9 @@ public class PetriNetResourceEditor extends JPanel
 	       
 	       
 	   
-	   private class checkSuperResource implements ActionListener{
-		   public void actionPerformed(ActionEvent e){
+	   private class createSuperResourceListener implements ActionListener{
+		   @SuppressWarnings("unchecked")
+		public void actionPerformed(ActionEvent e){
 			   if(e.getSource()==dialogFrameCancelButton){
 					dialogFrame.dispose();
 				}else{
@@ -1643,8 +1646,9 @@ public class PetriNetResourceEditor extends JPanel
 		   
 		}
 	   
-	   private class editSuperResource implements ActionListener{
-		   public void actionPerformed(ActionEvent e){
+	   private class editSuperResourceListener implements ActionListener{
+		   @SuppressWarnings("unchecked")
+		public void actionPerformed(ActionEvent e){
 			   if(e.getSource()==dialogFrameCancelButton){
 					dialogFrame.dispose();
 				}else{
@@ -1960,8 +1964,7 @@ public class PetriNetResourceEditor extends JPanel
 				  
 
 					   if(e.getSource()== rolesNewButton ){
-						   JOptionPane nameDialog = new JOptionPane ();
-						   String newResourceName = JOptionPane.showInputDialog(nameDialog, 
+						   String newResourceName = JOptionPane.showInputDialog(rolesContentPanel, 
 								   (Object)Messages.getString("PetriNet.Resources.ResourceName"),
 								   Messages.getString("PetriNet.Resources.CreateRole"),JOptionPane.QUESTION_MESSAGE);
 						   if (checkClassSyntax(newResourceName )){
@@ -1975,8 +1978,7 @@ public class PetriNetResourceEditor extends JPanel
 						   }
 					   }
 					   if(e.getSource()== groupsNewButton ){
-						   JOptionPane nameDialog = new JOptionPane ();
-						   String newResourceName = JOptionPane.showInputDialog(nameDialog, 
+						   String newResourceName = JOptionPane.showInputDialog(rolesContentPanel, 
 								   (Object)Messages.getString("PetriNet.Resources.ResourceName"),
 								   Messages.getString("PetriNet.Resources.CreateGroup"),JOptionPane.QUESTION_MESSAGE);
 						   if (checkClassSyntax(newResourceName )){
@@ -1991,8 +1993,7 @@ public class PetriNetResourceEditor extends JPanel
 						   }
 					   }
 					   if(e.getSource()== objectsNewButton ){
-						   JOptionPane nameDialog = new JOptionPane ();
-						   String newResourceName = JOptionPane.showInputDialog(nameDialog,
+						   String newResourceName = JOptionPane.showInputDialog(rolesContentPanel,
 								   (Object)Messages.getString("PetriNet.Resources.ResourceName"),
 								   Messages.getString("PetriNet.Resources.CreateObject"),JOptionPane.QUESTION_MESSAGE);
 						   if (checkClassSyntax(newResourceName )){
@@ -2640,7 +2641,7 @@ public class PetriNetResourceEditor extends JPanel
 	        boolean nameExists = false;
 	    
 	        if (str.equals("")){
-	            JOptionPane.showMessageDialog(rolesPanel, 
+	            JOptionPane.showMessageDialog(rolesContentPanel, 
 	            		Messages.getString("ResourceEditor.Error.EmptyResourceClass.Text"), 
 	            		Messages.getString("ResourceEditor.Error.EmptyResourceClass.Title"),
 	                    JOptionPane.ERROR_MESSAGE);
@@ -2657,7 +2658,7 @@ public class PetriNetResourceEditor extends JPanel
 	        }
 
 	        if (nameExists){
-	            JOptionPane.showMessageDialog(rolesPanel, 
+	            JOptionPane.showMessageDialog(rolesContentPanel, 
 	            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
 	            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Title"),
 	                    JOptionPane.ERROR_MESSAGE);
@@ -2769,6 +2770,19 @@ public class PetriNetResourceEditor extends JPanel
 	    	refreshGroupsFromModel();
 	    	refreshObjectsFromModel();
 	    }
+		   private void refreshGUI() {
+			   	objectsEditButton.setEnabled(false);
+			   	objectsDeleteButton.setEnabled(false);
+				rolesEditButton.setEnabled(false);
+				rolesDeleteButton.setEnabled(false);
+				groupsEditButton.setEnabled(false);
+				groupsDeleteButton.setEnabled(false);
+				superRolesEditButton.setEnabled(false);
+				superRolesDeleteButton.setEnabled(false);
+				superGroupsEditButton.setEnabled(false);
+				superGroupsDeleteButton.setEnabled(false);
+				
+			}
 	    
 	    
 	    private void refreshRolesFromModel(){ 
