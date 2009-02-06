@@ -257,7 +257,7 @@ public class PetriNetResourceEditor extends JPanel
 
 	private void initialize(){
 	        this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-	        this.setSize(new Dimension(1024, 800));
+	        this.setSize(new Dimension(800, 600));
 	        this.setLayout(new GridBagLayout());
 	        this.add(getBorderPanel());
 
@@ -1174,7 +1174,7 @@ public class PetriNetResourceEditor extends JPanel
 					   		a.weighty = 1;
 					   		JLabel nameLabel = new JLabel(Messages.getString("PetriNet.Resources.ResourceName")+":   ");
 					   		dialogFrameTextField = new JTextField();
-					   		SwingUtils.setFixedSize(dialogFrameTextField,300,25);
+					   		SwingUtils.setFixedSize(dialogFrameTextField,260,25);
 					
 					   		a.gridx = 0;
 					   		a.gridy = 0;
@@ -1196,7 +1196,7 @@ public class PetriNetResourceEditor extends JPanel
 					   		b.weightx = 1;
 					   		b.weighty = 2;
 					  
-					   		JLabel addRolesLabel = new JLabel(("                         ")+
+					   		JLabel addRolesLabel = new JLabel(("                                ")+
 					   				(Messages.getString("PetriNet.Resources.Resource.AddtoSuperResource"))+(":"));
 					   		b.gridx = 0;
 					   		b.gridy = 1;
@@ -1206,11 +1206,7 @@ public class PetriNetResourceEditor extends JPanel
 					  
 					   		JPanel selectPanel = new JPanel (new GridLayout());
 					   		SwingUtils.setFixedSize(selectPanel,300,240);
-					   		JScrollPane selectScrollPane = new JScrollPane();
-					   		selectScrollPane.setBackground(Color.WHITE);
-					   		
-					   		SwingUtils.setFixedSize(selectScrollPane,300,260);
-//					   		selectPanel.add(selectScrollPane);
+
 					   		
 					   		b.gridx = 0;
 					   		b.gridy = 2;
@@ -1221,53 +1217,22 @@ public class PetriNetResourceEditor extends JPanel
 					   				selectedRolesList = new JList(rolesListModel);
 					   				}   			
 					   				selectedRolesList.setSelectionModel(new ToggleSelectionModel());
-					   				selectPanel.add(selectedRolesList);
+							   		JScrollPane selectScrollPane = new JScrollPane(selectedRolesList);
+							   		selectScrollPane.setBackground(Color.WHITE);					   		
+							   		SwingUtils.setFixedSize(selectScrollPane,300,260);
+							   		selectPanel.add(selectScrollPane);
 
 					   		}
 					   		if(e.getSource()==superGroupsNewButton){
 					   			selectedGroupsList = new JList (groupsListModel);
 					   			selectedGroupsList.setSelectionModel(new ToggleSelectionModel());
-					   			selectPanel.add(selectedGroupsList);
+						   		JScrollPane selectScrollPane = new JScrollPane(selectedGroupsList);
+						   		selectScrollPane.setBackground(Color.WHITE);					   		
+						   		SwingUtils.setFixedSize(selectScrollPane,300,260);
+						   		selectPanel.add(selectScrollPane);
 					   			
 					   		}
-					   		if(e.getSource()==superRolesEditButton){
-					   			selectedRolesList = new JList(rolesListModel);
-					   			selectedRolesList.setSelectionModel(new ToggleSelectionModel());
-					   			
-					   			SuperRolesTreeNode superRole = 
-					   				(SuperRolesTreeNode) superRolesTree.getLastSelectedPathComponent();
-					   			dialogFrameTextField.setText(superRole.toString());
-					   			for (int i =0;i<superRole.getChildCount();i++){
-					   				String currentRoleInTree = superRole.getChildAt(i).toString();
-					   				for(int j=0;j < rolesListModel.getSize();j++){
-					   					String currentRoleInList = rolesListModel.get(j).toString();
-					   					if(currentRoleInTree.equals(currentRoleInList)){
-					   						selectedRolesList.setSelectedIndex(j);	
-					   					}
-					   				}
-					   			}
-					   			selectPanel.add(selectedRolesList);
-					   		}
-					   		
-					   		if(e.getSource()==superGroupsEditButton){
-					   			selectedGroupsList = new JList (groupsListModel);
-					   			
-					   			selectedGroupsList.setSelectionModel(new ToggleSelectionModel());
-					   			SuperGroupsTreeNode superGroup = 
-					   				(SuperGroupsTreeNode) superGroupsTree.getLastSelectedPathComponent();
-					   			dialogFrameTextField.setText(superGroup.toString());
-					   			for (int i =0;i<superGroup.getChildCount();i++){
-					   				String currentGroupInTree = superGroup.getChildAt(i).toString();
-					   				for(int j=0;j < groupsListModel.getSize();j++){
-					   					String currentGroupInList = groupsListModel.get(j).toString();
-					   					if(currentGroupInTree.equals(currentGroupInList)){
-					   						selectedGroupsList.setSelectedIndex(j);	
-					   					}
-					   				}
-					   			}
-					   			selectPanel.add(selectedGroupsList);
-					   		}
-					   
+
 					   	contentPane.add(defineResourcePanel,BorderLayout.CENTER);
 					 
 					   
@@ -1333,7 +1298,7 @@ public class PetriNetResourceEditor extends JPanel
 					   		JLabel nameLabel = new JLabel(Messages.getString
 					   				("PetriNet.Resources.ResourceName")+":   ");
 					   		dialogFrameTextField = new JTextField();
-					   		SwingUtils.setFixedSize(dialogFrameTextField,300,25);
+					   		SwingUtils.setFixedSize(dialogFrameTextField,260,25);
 					
 					   		a.gridx = 0;
 					   		a.gridy = 0;
@@ -1355,7 +1320,7 @@ public class PetriNetResourceEditor extends JPanel
 					   		b.weightx = 1;
 					   		b.weighty = 2;
 					  
-					   		JLabel addRolesLabel = new JLabel(("                         ")+
+					   		JLabel addRolesLabel = new JLabel(("                                ")+
 					   				(Messages.getString("PetriNet.Resources.Resource.AddtoSuperResource"))+(":"));
 					   		b.gridx = 0;
 					   		b.gridy = 1;
@@ -1365,11 +1330,6 @@ public class PetriNetResourceEditor extends JPanel
 					  
 					   		JPanel selectPanel = new JPanel (new GridLayout());
 					   		SwingUtils.setFixedSize(selectPanel,300,240);
-					   		JScrollPane selectScrollPane = new JScrollPane();
-					   		selectScrollPane.setBackground(Color.WHITE);
-					   		
-					   		SwingUtils.setFixedSize(selectScrollPane,300,260);
-//					   		selectPanel.add(selectScrollPane);
 					   		
 					   		b.gridx = 0;
 					   		b.gridy = 2;
@@ -1391,7 +1351,11 @@ public class PetriNetResourceEditor extends JPanel
 					   					}
 					   				}
 					   			}
-					   			selectPanel.add(selectedRolesList);
+						   		JScrollPane selectScrollPane = new JScrollPane(selectedRolesList);
+						   		selectScrollPane.setBackground(Color.WHITE);
+						   		
+						   		SwingUtils.setFixedSize(selectScrollPane,300,260);
+						   		selectPanel.add(selectScrollPane);
 					   		}
 					   		
 					   		if(e.getSource()==superGroupsEditButton){
@@ -1409,7 +1373,11 @@ public class PetriNetResourceEditor extends JPanel
 					   					}
 					   				}
 					   			}
-					   			selectPanel.add(selectedGroupsList);
+						   		JScrollPane selectScrollPane = new JScrollPane(selectedGroupsList);
+						   		selectScrollPane.setBackground(Color.WHITE);
+						   		
+						   		SwingUtils.setFixedSize(selectScrollPane,300,260);
+						   		selectPanel.add(selectScrollPane);
 					   		}
 					   
 					   	contentPane.add(defineResourcePanel,BorderLayout.CENTER);
@@ -1529,8 +1497,8 @@ public class PetriNetResourceEditor extends JPanel
 						boolean checkedAndOk = true;
 						if(selectedGroups.length<2){
 							JOptionPane.showMessageDialog(dialogFrame , Messages.getString
-								("ResourceEditor.Error.NoRolesChoosen.Text"), 
-								Messages.getString("ResourceEditor.Error.NoRolesChoosen.Title"),
+								("ResourceEditor.Error.NoGroupsChoosen.Text"), 
+								Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Title"),
 		                        JOptionPane.ERROR_MESSAGE);	
 								checkedAndOk=false;
 						}
@@ -1711,8 +1679,8 @@ public class PetriNetResourceEditor extends JPanel
 						boolean checkedAndOk = true;
 						if(selectedGroups.length<2){
 							JOptionPane.showMessageDialog(dialogFrame , Messages.getString
-								("ResourceEditor.Error.NoRolesChoosen.Text"), 
-								Messages.getString("ResourceEditor.Error.NoRolesChoosen.Title"),
+								("ResourceEditor.Error.NoGroupsChoosen.Text"), 
+								Messages.getString("ResourceEditor.Error.NoGroupsChoosen.Title"),
 		                        JOptionPane.ERROR_MESSAGE);	
 								checkedAndOk=false;
 						}
@@ -2422,6 +2390,7 @@ public class PetriNetResourceEditor extends JPanel
 					else if(node.isLeaf()&& !node.getParent().toString().equals(objectsTopNode.toString())){
 						   objectsEditButton.setEnabled(true);
 						   objectsDeleteButton.setEnabled(true);
+
 					 }else{
 						 	objectsEditButton.setEnabled(false);
 						 	objectsDeleteButton.setEnabled(false);
@@ -2797,11 +2766,11 @@ public class PetriNetResourceEditor extends JPanel
 					groupsExpandButton.setEnabled(true);
 				}else
 					groupsExpandButton.setEnabled(false);
-				if(superRolesListModel.size()>1){
+				if(superRolesListModel.size()>0){
 					superRolesExpandButton.setEnabled(true);
 				}else
 					superRolesExpandButton.setEnabled(false);
-				if(superGroupsListModel.size()>1){
+				if(superGroupsListModel.size()>0){
 					superGroupsExpandButton.setEnabled(true);
 				}else
 					superGroupsExpandButton.setEnabled(false);
