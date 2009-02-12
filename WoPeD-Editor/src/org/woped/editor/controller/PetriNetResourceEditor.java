@@ -1111,7 +1111,10 @@ public class PetriNetResourceEditor extends JPanel
 								   ResourceClassModel newRole = new ResourceClassModel(newResourceName, ResourceClassModel.TYPE_ROLE);
 								   getPetrinet().addRole(newRole);
 								   rolesListModel.addElement(newRole);
-								   reset();
+							    	refreshRolesFromModel();
+							    	refreshGroupsFromModel();
+							    	refreshObjectsFromModel();
+							    	refreshGUI();
 								   getEditor().setSaved(false);
 							   }
 						   }
@@ -1125,7 +1128,10 @@ public class PetriNetResourceEditor extends JPanel
 										   ResourceClassModel.TYPE_ORGUNIT);
 								   getPetrinet().addOrgUnit(newGroup);
 								   groupsListModel.addElement(newGroup);
-								   reset();
+							    	refreshRolesFromModel();
+							    	refreshGroupsFromModel();
+							    	refreshObjectsFromModel();
+							    	refreshGUI();
 								   getEditor().setSaved(false);
 							   }
 						   }
@@ -1138,7 +1144,10 @@ public class PetriNetResourceEditor extends JPanel
 								   ResourceModel newObject = new ResourceModel(newResourceName);
 								   	getPetrinet().addResource(newObject);
 								   	objectsUnassignedListModel.addElement(newObject);
-								   	reset();
+							    	refreshRolesFromModel();
+							    	refreshGroupsFromModel();
+							    	refreshObjectsFromModel();
+							    	refreshGUI();
 								   	getEditor().setSaved(false);}
 						   }
 					   
@@ -1169,7 +1178,10 @@ public class PetriNetResourceEditor extends JPanel
 	   				               getPetrinet().getResources().remove(j);
 	   							 	objectsEditButton.setEnabled(false);
 	   							 	objectsDeleteButton.setEnabled(false);
-	   							 	reset();
+							    	refreshRolesFromModel();
+							    	refreshGroupsFromModel();
+							    	refreshObjectsFromModel();
+							    	refreshGUI();
 	   							 	getEditor().setSaved(false);
 	   							  
 	   						   }
@@ -1203,7 +1215,10 @@ public class PetriNetResourceEditor extends JPanel
 	   							   int j = getPetrinet().containsResource(nodeToDelete.toString());
 	   							   objectsUnassignedListModel.removeElement(j);
 	   				               getPetrinet().getResources().remove(j);
-	   				               reset();
+							    	refreshRolesFromModel();
+							    	refreshGroupsFromModel();
+							    	refreshObjectsFromModel();
+							    	refreshGUI();
 	   				               objectsEditButton.setEnabled(false);
 	   				               objectsDeleteButton.setEnabled(false);
 	   				               getEditor().setSaved(false);
@@ -1238,7 +1253,10 @@ public class PetriNetResourceEditor extends JPanel
 	   								// delete a role no objects are assigned to
 	   								if(nodeToDelete.getChildCount()==0){
 	   					                getPetrinet().getRoles().remove(j);
-	   					                reset();
+								    	refreshRolesFromModel();
+								    	refreshGroupsFromModel();
+								    	refreshObjectsFromModel();
+								    	refreshGUI();
 	   					                rolesDeleteButton.setEnabled(false);
 	   								  	rolesEditButton.setEnabled(false);
 	   					                getEditor().setSaved(false);
@@ -1249,7 +1267,10 @@ public class PetriNetResourceEditor extends JPanel
 	   										String object2unassign = nodeToDelete.getChildAt(i).toString();	
 	   										getPetrinet().removeResourceMapping(nodeToDelete.toString(), object2unassign);
 	   									} 
-	   									reset();
+								    	refreshRolesFromModel();
+								    	refreshGroupsFromModel();
+								    	refreshObjectsFromModel();
+								    	refreshGUI();
 	   					                rolesDeleteButton.setEnabled(false);
 	   								  	rolesEditButton.setEnabled(false);
 	   									getEditor().setSaved(false);
@@ -1274,8 +1295,20 @@ public class PetriNetResourceEditor extends JPanel
 	   			    				if(ass.toString().equals(parent.toString())){
 	   			    					 getPetrinet().removeResourceMapping(parent.toString(), object2unassign);
 	   			    				}
+	   			    				for(int i=0;i<superRolesTopNode.getChildCount();i++){
+	   			    					DefaultMutableTreeNode superRole=(DefaultMutableTreeNode) superRolesTopNode.getChildAt(i);
+	   			    					for(int j=0;j<superRole.getChildCount();j++){
+	   			    						String role = superRole.getChildAt(j).toString();
+	   			    						if(role.equals(parent.toString())){
+	   			    							getPetrinet().removeResourceMapping(superRole.toString(), object2unassign);
+	   			    						}
+	   			    					}
+	   			    				}
 	   							}	
-	   							reset();
+						    	refreshRolesFromModel();
+						    	refreshGroupsFromModel();
+						    	refreshObjectsFromModel();
+						    	refreshGUI();
 	   						  	
 	   						  	rolesDeleteButton.setEnabled(false);
 	   						  	
@@ -1325,7 +1358,10 @@ public class PetriNetResourceEditor extends JPanel
 	   									// delete a group no objects are assigned to
 	   									if(nodeToDelete.getChildCount()==0){
 	   						                getPetrinet().getOrganizationUnits().remove(j);
-	   						                reset();
+	   								    	refreshRolesFromModel();
+	   								    	refreshGroupsFromModel();
+	   								    	refreshObjectsFromModel();
+	   								    	refreshGUI();
 	   							        	groupsDeleteButton.setEnabled(false);
 	   							        	groupsEditButton.setEnabled(false);
 	   										
@@ -1337,7 +1373,10 @@ public class PetriNetResourceEditor extends JPanel
 	   											String object2unassign = nodeToDelete.getChildAt(i).toString();	
 	   											getPetrinet().removeResourceMapping(nodeToDelete.toString(), object2unassign);
 	   								  		}
-	   						                reset();
+	   								    	refreshRolesFromModel();
+	   								    	refreshGroupsFromModel();
+	   								    	refreshObjectsFromModel();
+	   								    	refreshGUI();
 	   							        	groupsDeleteButton.setIcon(Messages.getImageIcon("PetriNet.Resources.Delete"));
 	   							        	groupsDeleteButton.setToolTipText(Messages.getString("PetriNet.Resources.Delete.Title"));
 	   							        	groupsDeleteButton.setEnabled(false);
@@ -1363,9 +1402,21 @@ public class PetriNetResourceEditor extends JPanel
 	   			    				if(ass.toString().equals(parent.toString())){
 	   			    					 getPetrinet().removeResourceMapping(parent.toString(), object2unassign);
 	   			    				}
+	   			    				for(int i=0;i<superGroupsTopNode.getChildCount();i++){
+	   			    					DefaultMutableTreeNode superGroup =(DefaultMutableTreeNode) superGroupsTopNode.getChildAt(i);
+	   			    					for(int j=0;j<superGroup.getChildCount();j++){
+	   			    						String group = superGroup.getChildAt(j).toString();
+	   			    						if(group.equals(parent.toString())){
+	   			    							getPetrinet().removeResourceMapping(superGroup.toString(), object2unassign);
+	   			    						}
+	   			    					}
+	   			    				}
 	   						  		
 	   							}
-	   							reset();
+						    	refreshGroupsFromModel();
+						    	refreshRolesFromModel();
+						    	refreshObjectsFromModel();
+						    	refreshGUI();
 	   			      
 	   							groupsTree.expandRow(path);
 	   							groupsDeleteButton.setEnabled(false);
@@ -1412,7 +1463,10 @@ public class PetriNetResourceEditor extends JPanel
 	   	                   roleModel.setName(newName);
 	   	                   rolesListModel.set( j, roleModel);
 	   	                   updateRolesInPetrinet(oldName, newName);
-	   	                   reset();
+					    	refreshRolesFromModel();
+					    	refreshGroupsFromModel();
+					    	refreshObjectsFromModel();
+					    	refreshGUI();
 	   	        
 	   	                   getEditor().setSaved(false);
 	   				   }
@@ -1433,7 +1487,10 @@ public class PetriNetResourceEditor extends JPanel
 	   	                   groupsListModel.set( j, groupModel);
 	   	                   updateGroupsInPetrinet(oldName, newName);
 	   	                 
-	   	                   reset();
+					    	refreshRolesFromModel();
+					    	refreshGroupsFromModel();
+					    	refreshObjectsFromModel();
+					    	refreshGUI();
 	   	                
 	   	                   getEditor().setSaved(false);
 	   				   }
@@ -1451,7 +1508,10 @@ public class PetriNetResourceEditor extends JPanel
 	   		                ResourceModel resourceModel = (ResourceModel) getPetrinet().getResources().get(getPetrinet().containsResource(message.toString()));
 	   		                resourceModel.setName(newName);
 	   		         
-	   		                reset();
+					    	refreshRolesFromModel();
+					    	refreshGroupsFromModel();
+					    	refreshObjectsFromModel();
+					    	refreshGUI();
 	   				 }
 	   			   }
 	   			   getEditor().setSaved(false);
@@ -1728,7 +1788,10 @@ public class PetriNetResourceEditor extends JPanel
 								}
 
 						}		
-					reset();
+					    	refreshRolesFromModel();
+					    	refreshGroupsFromModel();
+					    	refreshObjectsFromModel();
+					    	refreshGUI();
 					selectedRolesList =null;
 					selectedGroupsList =null;
 					getEditor().setSaved(false);
@@ -1762,7 +1825,10 @@ public class PetriNetResourceEditor extends JPanel
 								}
 					
 							}
-							reset();
+					    	refreshRolesFromModel();
+					    	refreshGroupsFromModel();
+					    	refreshObjectsFromModel();
+					    	refreshGUI();
 							selectedRolesList =null;
 							selectedGroupsList =null;
 							getEditor().setSaved(false);
@@ -2067,11 +2133,14 @@ public class PetriNetResourceEditor extends JPanel
 									ArrayList <String> objects = getObjectsAssignedToResource(currentRole, ResourceClassModel.TYPE_ROLE);
 									for(int b = 0; b< objects.size();b++ ){
 										String currentObject = objects.get(b);
-										System.out.println(currentObject);
+									
 										petrinet.addResourceMapping(newSuperRole.toString(), currentObject);
 									}
 								}
-								reset();
+						    	refreshRolesFromModel();
+						    	refreshGroupsFromModel();
+						    	refreshObjectsFromModel();
+						    	refreshGUI();
 								superRolesTree.expandRow(path);
 								getEditor().setSaved(false);
 							
@@ -2113,11 +2182,14 @@ public class PetriNetResourceEditor extends JPanel
 											ResourceClassModel.TYPE_ORGUNIT);
 									for(int b = 0; b< objects.size();b++ ){
 										String currentObject = objects.get(b);
-										System.out.println(currentObject);
+										
 										petrinet.addResourceMapping(newSuperGroup.toString(), currentObject);
 									}
 								}	
-				                reset();
+						    	refreshRolesFromModel();
+						    	refreshGroupsFromModel();
+						    	refreshObjectsFromModel();
+						    	refreshGUI();
 								superGroupsTree.expandRow(path);
 								getEditor().setSaved(false);
 								
@@ -2151,7 +2223,10 @@ public class PetriNetResourceEditor extends JPanel
 						  	 int a = getPetrinet().containsRole(superrole2remove);
 							 getPetrinet().getRoles().remove(a);
 							 
-							 reset();
+						    	refreshRolesFromModel();
+						    	refreshGroupsFromModel();
+						    	refreshObjectsFromModel();
+						    	refreshGUI();
 							 
 							 getEditor().setSaved(false);
 				
@@ -2184,7 +2259,10 @@ public class PetriNetResourceEditor extends JPanel
 						  	 int a = getPetrinet().containsOrgunit(supergroup2remove);
 							 getPetrinet().getOrganizationUnits().remove(a);
 							 
-							 reset();
+						    	refreshRolesFromModel();
+						    	refreshGroupsFromModel();
+						    	refreshObjectsFromModel();
+						    	refreshGUI();
 							 
 							 getEditor().setSaved(false);
 							 
@@ -2561,10 +2639,10 @@ public class PetriNetResourceEditor extends JPanel
 		private ArrayList<String> getObjectsAssignedToResource(ResourceClassModel resource, int type){
 	    	ArrayList<String> objects = new ArrayList<String>();
 	    	if(type == ResourceClassModel.TYPE_ROLE||type==ResourceClassModel.TYPE_ORGUNIT){
-	    		System.out.println(objectsAssignedListModel.size());
+	    	
 	    		for(int i=0;i<objectsAssignedListModel.size();i++){
 	    			String currentObject = objectsAssignedListModel.get(i).toString();
-	    			System.out.println(currentObject);
+	    			
 	    			Vector assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(currentObject);
 					Object ass;
 	    			for (Iterator iter = assignedClasses.iterator(); iter.hasNext();){
@@ -2782,12 +2860,14 @@ public class PetriNetResourceEditor extends JPanel
 		    				}
 		    			}
 		    		}
-		    		refreshRolesTreeFromListModel();
-		    		refreshSuperRolesTreeFromListModel();
+//		    		refreshRolesTreeFromListModel();
+//		    		refreshSuperRolesTreeFromListModel();
 	    
 	    	}catch(Exception e){
 	    		e.printStackTrace();
 	    	}
+    		refreshRolesTreeFromListModel();
+    		refreshSuperRolesTreeFromListModel();
 	    }
 	    
 	    //Refresh groups and compound groups from petrinet model		    
@@ -2814,11 +2894,13 @@ public class PetriNetResourceEditor extends JPanel
 	    				}
 	    			}
 	    		}	    		
-	    		refreshGroupsTreeFromListModel(); 
-	    		refreshSuperGroupsTreeFromListModel();
+//	    		refreshGroupsTreeFromListModel(); 
+//	    		refreshSuperGroupsTreeFromListModel();
 	    	}catch(Exception e){
 	    		e.printStackTrace();
 	    	}
+	    	refreshGroupsTreeFromListModel(); 
+    		refreshSuperGroupsTreeFromListModel();
 	    }
 
 	    //Refresh objects from petrinet model		    
@@ -2837,6 +2919,7 @@ public class PetriNetResourceEditor extends JPanel
 	    			if (!assignedClasses.isEmpty() ){
 	    				objectsUnassignedListModel.removeElement(currentObject);
 	    				objectsAssignedListModel.addElement(currentObject);
+	    				
 	    				
 	    			}
 
@@ -2866,10 +2949,11 @@ public class PetriNetResourceEditor extends JPanel
 	              }
 	    		}
 
-	    		refreshObjectsTreeFromListModel();
+	    		
 	    	}catch (Exception e){
 	    		e.printStackTrace();
 	    	}
+	    	refreshObjectsTreeFromListModel();
 	    }
 	    
 	    //Refresh the display of roles in the related jtree		    
@@ -2966,17 +3050,17 @@ public class PetriNetResourceEditor extends JPanel
 	    // Renderer to control the used Icons in the objects-, roles- and groups tree
 	    //++++++ResourceClassRenderer++++++++++
 	    class treeRenderer extends DefaultTreeCellRenderer{
-	    	public Component getTreeCellRendererComponent(JTree tree,Object value,boolean sel, boolean expanded,boolean leaf,int row, boolean hasFocus)
+	    	public  Component getTreeCellRendererComponent(JTree tree,Object value,boolean sel, boolean expanded,boolean leaf,int row, boolean hasFocus)
 	    	{
 	    		super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 	    		DefaultMutableTreeNode currentTreeNode = (DefaultMutableTreeNode) value;
 
-	    		if (currentTreeNode.isLeaf()&&currentTreeNode.getParent()==groupsTopNode) {
-	    			setLeafIcon(resourceClass);
-	    		} else 
-	    			if(currentTreeNode.isLeaf()&&currentTreeNode.getParent()!=groupsTopNode){
-	    				setLeafIcon(object);
-	    			}	
+//	    		if (currentTreeNode.isLeaf()&&currentTreeNode.getParent()==groupsTopNode) {
+//	    			setLeafIcon(resourceClass);
+//	    		} else 
+//	    			if(currentTreeNode.isLeaf()&&currentTreeNode.getParent()!=groupsTopNode){
+//	    				setLeafIcon(object);
+//	    			}	
 
 	    		if	(currentTreeNode==objectsUnassignedNode){
 	    			setIcon(unassignedIcon);
@@ -2996,7 +3080,7 @@ public class PetriNetResourceEditor extends JPanel
 	    	}
 	    }
 
-	    // Renderer to control the used Icons compound roles and compound groups tree	    
+	    // Renderer to control the used Icons in compound roles and compound groups tree	    
 	    //++++++ResourceSuperClassRenderer++++++++
 	    class superTreeRenderer extends DefaultTreeCellRenderer{
 	    	public Component getTreeCellRendererComponent(JTree tree,Object value,boolean sel, boolean expanded,boolean leaf,int row, boolean hasFocus)
