@@ -21,6 +21,9 @@ import org.woped.core.utilities.LoggerManager;
 
 public abstract class AbstractElementModel extends DefaultGraphCell implements Serializable
 {
+	//! Default color to be used for understandability (Color for not highlighted elements)
+	protected static final Color defaultUnderstandabilityColor = Color.white;
+	
 	//! Specifies whether the element represented by this model
 	//! is highlighted
 	//! Highlighted elements are drawn differently by their respective view
@@ -33,7 +36,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 
 	//! For better understandability a new color from the config colorset will highlight this element.
 	private boolean understandabilityColoringActive = false;
-    private Color understandabilityColor = Color.white; // default color is white
+    private Color understandabilityColor = defaultUnderstandabilityColor;
 	
 	//! An element is fireing if the mouse button is pressed
     private boolean         fireing   = false;
@@ -397,4 +400,11 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	public Color getColor(){
 		return this.understandabilityColor;
 	}
+	
+	//! Reset any previously set understandability colors to their default value
+	public void ResetUnderstandabilityColor() {
+
+		setColor(defaultUnderstandabilityColor);		
+	}
+	
 }

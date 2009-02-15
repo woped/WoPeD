@@ -90,12 +90,25 @@ public abstract class AbstractElementView extends VertexView {
     		readOnly = model.isReadOnly();
     	}
 
+    	//! Get the fill color to be used 
+    	//! @return Color to be used
     	protected Color getFillColor() {
+    		return getFillColor(((AbstractElementModel) 
+    				(AbstractElementView.this.getCell())).getColor());    		
+    	}
+    	
+    	
+    	//! Get the fill color to be used depending on the understandability color passed
+    	//! as a parameter
+    	//! @param understandabilityColor Specifies the color to be used if understandability
+    	//!								  is switched on and is not superseded by some other color
+    	//! @return Color to be used
+    	protected Color getFillColor(Color understandabilityColor) {
     		Color result = null;
     		if (((AbstractElementModel) (AbstractElementView.this.getCell())).isHighlighted())
     			result = highLightedColor;
     		else if (isUnderstandabilityActive()){
-    				result = ((AbstractElementModel) (AbstractElementView.this.getCell())).getColor();
+    				result = understandabilityColor;
     				return result;
     		}
     		else if(((AbstractElementModel) (AbstractElementView.this.getCell())).isRGHighlighted()){

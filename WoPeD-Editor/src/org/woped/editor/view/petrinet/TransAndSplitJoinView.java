@@ -41,7 +41,7 @@ import org.woped.translations.Messages;
  */
 
 @SuppressWarnings("serial")
-public class TransAndSplitJoinView extends TransSimpleView
+public class TransAndSplitJoinView extends CombiOperatorView
 {
     private TransAndSplitJoinRenderer renderer = null;
 
@@ -72,7 +72,7 @@ public class TransAndSplitJoinView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransAndSplitJoinRenderer extends AbstractElementRenderer
+    private class TransAndSplitJoinRenderer extends CombiOperatorRenderer
     {
     	TransAndSplitJoinRenderer(Object cell)
     	{
@@ -86,15 +86,11 @@ public class TransAndSplitJoinView extends TransSimpleView
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
-            if (super.isOpaque())
-            {
-                g.setColor(getFillColor());
-                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
-            }
+
+            drawOperatorBackground(g,b);
+            
             if (bordercolor != null)
             {
-                g.setColor(getFillColor());
-                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
                 g.setColor(getInnerDrawingsColor());
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);

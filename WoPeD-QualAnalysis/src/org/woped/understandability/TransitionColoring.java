@@ -1,21 +1,14 @@
 package org.woped.understandability;
 
 import java.awt.Color;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
-
-import javax.swing.text.Highlighter;
 
 import org.woped.core.analysis.NetAlgorithms;
 import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.ArcModel;
-import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
@@ -78,22 +71,22 @@ public class TransitionColoring implements ITransitionColoring {
 		
 		
 		// Iterator for Set of Handles in Cluster
-		Iterator<Set<AbstractElementModel>> handleClusterSetIter = structAnalysis.getM_handleClusters().iterator();
+		Iterator<Set<StructuralAnalysis.ClusterElement>> handleClusterSetIter = structAnalysis.getM_handleClusters().iterator();
 		while (handleClusterSetIter.hasNext()){
 			
 			// Iterator for Handles
-			Iterator<AbstractElementModel> handleClusterIter = handleClusterSetIter.next().iterator();
+			Iterator<StructuralAnalysis.ClusterElement> handleClusterIter = handleClusterSetIter.next().iterator();
 			while (handleClusterIter.hasNext()){
 				
 				// get current FlowNode element
-				AbstractElementModel element = (AbstractElementModel) handleClusterIter.next();
+				StructuralAnalysis.ClusterElement element = handleClusterIter.next();
 								
 				// refer from current FlowNode element to its parent PetriNet element
 				// if the actual element cannot be found in the current focus window
-				AbstractElementModel highlightElement = element;
+				AbstractElementModel highlightElement = element.m_element;
 				AbstractElementModel owningElement = null;
-				if  ((!MediatorReference.getUIReference().getEditorFocus().getModelProcessor().getElementContainer().containsElement(element.getId())&&
-						((owningElement=element.getRootOwningContainer().getOwningElement()) != null)))						
+				if  ((!MediatorReference.getUIReference().getEditorFocus().getModelProcessor().getElementContainer().containsElement(element.m_element.getId())&&
+						((owningElement=element.m_element.getRootOwningContainer().getOwningElement()) != null)))						
 					highlightElement = owningElement; 
 				
 				// HACK: 2 options for better understandability
@@ -109,8 +102,34 @@ public class TransitionColoring implements ITransitionColoring {
 				// activate coloring of this element
 				highlightElement.setUnderstandColoringActive(ConfigurationManager.getConfiguration().getColorOn());
 						
-	        	// element is filled with color in AbstractElementView.java
-	        	highlightElement.setColor(UnderstandColors[currentColorNum]);
+				Color newColor = UnderstandColors[currentColorNum];
+	        	// Element is filled with color in AbstractElementView.java.
+				// If element is a combi operator type and the element was found as a source,
+				// set the secondary understandability color instead of the standard one
+				if ((element.m_elementType == 1)&&
+						(highlightElement instanceof CombiOperatorTransitionModel))
+				{
+					CombiOperatorTransitionModel combiOperator =
+						(CombiOperatorTransitionModel)highlightElement;
+					combiOperator.setSecondaryUnderstandabilityColor(newColor);
+				}
+				else
+				{				
+					highlightElement.setColor(newColor);
+					// Special treatment for non-workflow net detection: 
+					// All combi operators will need to have their secondary color
+					// set even though they have not been detected to work as a sink.
+					// The reason is that in non-workflow net detection mode
+					// there is no information about whether the operator was a source or a sink
+					// so it should consistently be displayed with the same color
+					if ((ConfigurationManager.getConfiguration().getAlgorithmMode() != 0)&&
+						(highlightElement instanceof CombiOperatorTransitionModel))
+					{
+						CombiOperatorTransitionModel combiOperator =
+							(CombiOperatorTransitionModel)highlightElement;
+						combiOperator.setSecondaryUnderstandabilityColor(newColor);						
+					}
+				}
 			
 			}
 			// increment color from config colorset
@@ -213,7 +232,7 @@ public class TransitionColoring implements ITransitionColoring {
 		while (elementIter.hasNext()){
 			currentElement = elementIter.next();
 			currentElement.setUnderstandColoringActive(false);
-			currentElement.setColor(Color.WHITE);
+			currentElement.ResetUnderstandabilityColor();
 		}
 			
 		//reset all transitions
@@ -221,7 +240,7 @@ public class TransitionColoring implements ITransitionColoring {
 		while (elementIter.hasNext()){
 			currentElement = elementIter.next();
 			currentElement.setUnderstandColoringActive(false);
-			currentElement.setColor(Color.WHITE);
+			currentElement.ResetUnderstandabilityColor();
 		}
 		
 		//reset all operators
@@ -229,7 +248,7 @@ public class TransitionColoring implements ITransitionColoring {
 		while (elementIter.hasNext()){
 			currentElement = elementIter.next();
 			currentElement.setUnderstandColoringActive(false);
-			currentElement.setColor(Color.WHITE);
+			currentElement.ResetUnderstandabilityColor();
 		}
 	}
 }

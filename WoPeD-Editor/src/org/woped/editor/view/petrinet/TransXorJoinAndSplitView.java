@@ -38,7 +38,7 @@ import org.jgraph.graph.CellViewRenderer;
  */
 
 @SuppressWarnings("serial")
-public class TransXorJoinAndSplitView extends TransSimpleView
+public class TransXorJoinAndSplitView extends CombiOperatorView
 {
 
     private TransXorJoinAndSplitRenderer renderer = null;
@@ -70,7 +70,7 @@ public class TransXorJoinAndSplitView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransXorJoinAndSplitRenderer extends AbstractElementRenderer
+    private class TransXorJoinAndSplitRenderer extends CombiOperatorRenderer
     {
     	TransXorJoinAndSplitRenderer(Object cell)
     	{
@@ -85,13 +85,7 @@ public class TransXorJoinAndSplitView extends TransSimpleView
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();
             
-            if (super.isOpaque())
-            {
-                g.setColor(getFillColor());
-                g.fillRect(b - 1, b - 1, d.width - b, d.height - b);
-            }
-            g.setColor(getFillColor());
-            g.fillRect(b - 1, b - 1, d.width - b, d.height - b);        	
+            drawOperatorBackground(g,b);
                         
             g2.setStroke(new BasicStroke(b));
             g.setColor(getInnerDrawingsColor());

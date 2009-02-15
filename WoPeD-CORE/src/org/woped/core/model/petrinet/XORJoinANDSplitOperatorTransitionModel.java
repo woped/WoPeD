@@ -9,7 +9,7 @@ import org.woped.core.model.PetriNetModelProcessor;
 
 @SuppressWarnings("serial")
 public class XORJoinANDSplitOperatorTransitionModel extends
-		OperatorTransitionModel {
+		CombiOperatorTransitionModel {
 
 	public XORJoinANDSplitOperatorTransitionModel(CreationMap map) {
 		super(map, XORJOIN_ANDSPLIT_TYPE);

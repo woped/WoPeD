@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.security.auth.login.Configuration;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
 
@@ -188,7 +188,7 @@ public class StructuralAnalysis {
 	//! Detect existing handle clusters
 	//! and return them
 	//! @return handle clusters found for the current net
-	public HashSet<Set<AbstractElementModel>> getM_handleClusters() {				
+	public HashSet<Set<ClusterElement>> getM_handleClusters() {				
 		calculateHandleClusters();
 		return m_handleClusters;
 	}
@@ -275,12 +275,65 @@ public class StructuralAnalysis {
 	HashSet<Set<AbstractElementModel>> m_PTHandles = new HashSet<Set<AbstractElementModel>>();
 	
 	private LowLevelNet lolnet = null;
+
+	//! Special cluster element serving as a token for distinguishing between
+	//! ordinary net nodes and combi-operators that are used either
+	//! as a source or as a target in a given cluster
+	public class ClusterElement
+	{
+		//! Construct a cluster element object
+		//! @param element 		Specifies the element referenced
+		//! @param isSource		Specifies whether the element was detected as a source
+		//!						ElementType will be set based on this
+		public ClusterElement(AbstractElementModel element, 
+				boolean isSource)
+		{
+			this.m_element = element;
+			if (element instanceof CombiOperatorTransitionModel)
+				this.m_elementType = isSource?1:2;
+			else
+				this.m_elementType = 0;
+		}
+		
+		//! Override equals operator to test for shallow-equality rather than
+		//! for same object
+		//! @param o Object this object should be compared to 
+		//! @return true if objects are shallow-equal, false otherwise
+		public boolean equals(Object o)
+		{
+			boolean result = false;
+			if (this.getClass()==o.getClass())
+			{
+				ClusterElement other = (ClusterElement)o;
+				result = (m_element==other.m_element)&&
+				(m_elementType==other.m_elementType);				
+			}
+			return result;
+		}
+		
+		//! Override hash code method to meet the requirement of producing the
+		//! same hash code for shallow-equal objects
+		//! @return integer hash code built from the hash code of the child element
+		//!			and the element type integer
+		public int hashCode()
+		{
+			return m_element.hashCode()|m_elementType;			
+		}
+		
+		//! Store a reference to an abstract element model
+		public AbstractElementModel m_element;
+		//! Store the type of cluster element:
+		//! 	0: Standard Operator or node
+		//!		1: Combi-Operator Source
+		//!		2: Combi-Operator Target
+		public int m_elementType = 0;		
+	}	
 	
-	HashSet<Set<AbstractElementModel>> m_handles = new HashSet<Set<AbstractElementModel>>();
+	HashSet<Set<ClusterElement>> m_handles = new HashSet<Set<ClusterElement>>();
 	
 	//! Becomes true once handle clusters have been detected
 	boolean m_bHandleClustersAvailable = false;
-	HashSet<Set<AbstractElementModel>> m_handleClusters = new HashSet<Set<AbstractElementModel>>();
+	HashSet<Set<ClusterElement>> m_handleClusters = new HashSet<Set<ClusterElement>>();
 	
 	// ! Trigger the calculation of basic net information
 	private void calculateBasicNetInfo() {
@@ -604,11 +657,18 @@ public class StructuralAnalysis {
 		
  		// Detect all PT handles in the short-circuited net 
 		LowLevelNet myNet = CreateFlowNet(m_places, transitionsWithTStar);
-		Set<Set<AbstractElementModel>> handleRun = 
+		Set<Set<ClusterElement>> handleRun = 
 			getHandlePairs("PT", myNet, m_places, transitionsWithTStar, false);
-		m_PTHandles.addAll(handleRun);
 		
-		
+		for (Iterator<Set<ClusterElement>> i=handleRun.iterator();i.hasNext();)
+		{
+			Set<ClusterElement> currentSource = i.next();
+			Set<AbstractElementModel> current = new HashSet<AbstractElementModel>();
+			for (Iterator<ClusterElement> j=currentSource.iterator();j.hasNext();)
+				current.add(j.next().m_element);
+			m_PTHandles.add(current);
+		}
+				
 		// Remove temporary transition from the net
 		if (tStar != null)
 			removeTStar(tStar);
@@ -637,10 +697,18 @@ public class StructuralAnalysis {
 		
  		// Detect all PT handles in the short-circuited net 
 		LowLevelNet myNet = CreateFlowNet(m_places, transitionsWithTStar);
-		Set<Set<AbstractElementModel>> handleRun = 
+		Set<Set<ClusterElement>> handleRun = 
 			getHandlePairs("PT",myNet, transitionsWithTStar, m_places, false);
-		m_TPHandles.addAll(handleRun);
-				
+		
+		for (Iterator<Set<ClusterElement>> i=handleRun.iterator();i.hasNext();)
+		{
+			Set<ClusterElement> currentSource = i.next();
+			Set<AbstractElementModel> current = new HashSet<AbstractElementModel>();
+			for (Iterator<ClusterElement> j=currentSource.iterator();j.hasNext();)
+				current.add(j.next().m_element);
+			m_TPHandles.add(current);
+		}		
+		
 		// Remove temporary transition from the net
 		if (tStar != null)
 			removeTStar(tStar);
@@ -740,7 +808,7 @@ public class StructuralAnalysis {
 	//! @param secondNodeType 		Specifies a set of second nodes
 	//! @param useVanderAalstModel	True if handles should be detected based on operators rather than 
 	//!								a low-level net
-	private Set<Set<AbstractElementModel>> getHandlePairs(
+	private Set<Set<ClusterElement>> getHandlePairs(
 			String handleType,
 			LowLevelNet n,
 			Set<AbstractElementModel> firstNodeType,
@@ -749,8 +817,8 @@ public class StructuralAnalysis {
 
 		NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration();
 		
-		Set<Set<AbstractElementModel>> result = 
-			new HashSet<Set<AbstractElementModel>>();
+		Set<Set<ClusterElement>> result = 
+			new HashSet<Set<ClusterElement>>();
 		
 		Iterator<AbstractElementModel> i = firstNodeType.iterator();
 		long time1 = System.nanoTime();
@@ -792,9 +860,10 @@ public class StructuralAnalysis {
 							//flow = 2; //dummy Zeile zum Testen
 							if (flow > 1) {
 								// Handle gefunden
-								Set<AbstractElementModel> handlePair = new HashSet<AbstractElementModel>();
-								handlePair.add(firstNode);
-								handlePair.add(secondNode);
+								Set<ClusterElement> handlePair = new HashSet<ClusterElement>();
+								
+								handlePair.add(new ClusterElement(firstNode, true));
+								handlePair.add(new ClusterElement(secondNode, false));
 								result.add(handlePair);
 							}
 						}
@@ -812,7 +881,7 @@ public class StructuralAnalysis {
 	private void detectHandles(LowLevelNet n, boolean useVanDerAalstNet) {
 		
 		m_handles.clear();		
-		Set<Set<AbstractElementModel>> handleRun = null;
+		Set<Set<ClusterElement>> handleRun = null;
 
 		if (useVanDerAalstNet)
 		{
@@ -884,18 +953,18 @@ public class StructuralAnalysis {
 	
 	//! This method creates handle clusters on the basis of handle pairs
 	private void createHandleClusters(){
-		AbstractElementModel      currentNode = null;
+		ClusterElement      currentNode = null;
 		boolean 			      dirty       = true;
-		Set<AbstractElementModel> clusterA    = null;
-		Set<AbstractElementModel> clusterB    = null;
+		Set<ClusterElement> clusterA    = null;
+		Set<ClusterElement> clusterB    = null;
 		
 		//Test, Handle-Ausgabe:
 		//handleTest(m_handles, "Liste aller Handle-Paare:");
 		
 		//1st step: Create a new cluster for every handle (1:1 ratio)
-		Iterator<Set<AbstractElementModel>> handleIter = m_handles.iterator();
+		Iterator<Set<ClusterElement>> handleIter = m_handles.iterator();
 		while (handleIter.hasNext()){
-			m_handleClusters.add(new HashSet<AbstractElementModel>(handleIter.next()));
+			m_handleClusters.add(new HashSet<ClusterElement>(handleIter.next()));
 		}
 		
 		//Test, Handle-> Cluster 1:1:
@@ -905,14 +974,14 @@ public class StructuralAnalysis {
 		//   		  If dirty -> start all over.
 		while (dirty){
 			dirty = false;
-		    Iterator<Set<AbstractElementModel>> clusterIterA = m_handleClusters.iterator();
+		    Iterator<Set<ClusterElement>> clusterIterA = m_handleClusters.iterator();
 			while (clusterIterA.hasNext() && !dirty){
 				clusterA = clusterIterA.next();
-				Iterator<AbstractElementModel> clusterAIter = clusterA.iterator();
+				Iterator<ClusterElement> clusterAIter = clusterA.iterator();
 				while(clusterAIter.hasNext() && !dirty){
 					currentNode = clusterAIter.next();
 					
-				    Iterator<Set<AbstractElementModel>> clusterIterB = m_handleClusters.iterator();
+				    Iterator<Set<ClusterElement>> clusterIterB = m_handleClusters.iterator();
 					while (clusterIterB.hasNext() && !dirty){
 						clusterB = clusterIterB.next();
 						if (clusterA != clusterB){ 

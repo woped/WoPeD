@@ -4,7 +4,7 @@ import org.woped.core.model.CreationMap;
 
 @SuppressWarnings("serial")
 public class ANDSplitJoinOperatorTransitionModel extends
-		OperatorTransitionModel {
+		CombiOperatorTransitionModel {
 
 	public ANDSplitJoinOperatorTransitionModel(CreationMap map) {
 		super(map, AND_SPLITJOIN_TYPE);
