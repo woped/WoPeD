@@ -1266,6 +1266,7 @@ public class PetriNetResourceEditor extends JPanel
 	   									for(int i=0;i<nodeToDelete.getChildCount();i++){
 	   										String object2unassign = nodeToDelete.getChildAt(i).toString();	
 	   										getPetrinet().removeResourceMapping(nodeToDelete.toString(), object2unassign);
+	   									
 	   									} 
 								    	refreshRolesFromModel();
 								    	refreshGroupsFromModel();
@@ -2218,10 +2219,12 @@ public class PetriNetResourceEditor extends JPanel
 								 ResourceClassModel superRoleModel= 
 									 new ResourceClassModel(superrole2remove,ResourceClassModel.TYPE_ROLE);
 								 roleModel.removeSuperModel(superRoleModel);
+								 
 							  }
 						  
 						  	 int a = getPetrinet().containsRole(superrole2remove);
 							 getPetrinet().getRoles().remove(a);
+							 getPetrinet().getResourceMapping().remove(superrole2remove);
 							 
 						    	refreshRolesFromModel();
 						    	refreshGroupsFromModel();
@@ -2258,7 +2261,7 @@ public class PetriNetResourceEditor extends JPanel
 						  
 						  	 int a = getPetrinet().containsOrgunit(supergroup2remove);
 							 getPetrinet().getOrganizationUnits().remove(a);
-							 
+							 getPetrinet().getResourceMapping().remove(supergroup2remove);
 						    	refreshRolesFromModel();
 						    	refreshGroupsFromModel();
 						    	refreshObjectsFromModel();
