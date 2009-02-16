@@ -3431,6 +3431,30 @@ class DragTree extends JTree {
 		    	
 		      			petrinet.addResourceMapping(parent.toString(), node.toString());		
 		      			model.insertNodeInto(node, parent, parent.getChildCount());
+		      			Vector<ResourceClassModel> groups = petrinet.getOrganizationUnits();
+		      			Vector<ResourceClassModel> roles = petrinet.getRoles();
+		      			
+		      			ResourceClassModel group;
+		      			for (Iterator <ResourceClassModel>iter = groups.iterator(); iter.hasNext();){
+		      				group = iter.next();
+		      				if(group.getSuperModels()!= null && group.toString().equals(parent.toString())){		      					
+		      					for(Iterator<ResourceClassModel>superGroups = group.getSuperModels();superGroups.hasNext();){
+		      						String currentSuperGroup= superGroups.next().toString();		      				
+		      						petrinet.addResourceMapping(currentSuperGroup.toString(), node.toString());		      					
+		      					}
+		      				}
+		      			}
+		      			ResourceClassModel role;
+		      			for (Iterator <ResourceClassModel>iter = roles.iterator(); iter.hasNext();){
+		      				role = iter.next();
+		      				if(role.getSuperModels()!= null && role.toString().equals(parent.toString())){		      					
+		      					for(Iterator<ResourceClassModel>superRoles = role.getSuperModels();superRoles.hasNext();){
+		      						String currentSuperRole= superRoles.next().toString();		      				
+		      						petrinet.addResourceMapping(currentSuperRole.toString(), node.toString());		      					
+		      					}
+		      				}
+		      			}
+		      			
 		      			
 		      			DefaultMutableTreeNode superParent = (DefaultMutableTreeNode) parent.getParent();
 		      			
@@ -3449,7 +3473,29 @@ class DragTree extends JTree {
 		      			petrinet.addResourceMapping(superParent.toString(), node.toString());		
 		      			model.insertNodeInto(node, superParent, superParent.getChildCount());
 		      			
+		      			Vector<ResourceClassModel> groups = petrinet.getOrganizationUnits();
+		      			Vector<ResourceClassModel> roles = petrinet.getRoles();
 		      			
+		      			ResourceClassModel group;
+		      			for (Iterator <ResourceClassModel>iter = groups.iterator(); iter.hasNext();){
+		      				group = iter.next();
+		      				if(group.getSuperModels()!= null && group.toString().equals(superParent.toString())){		      					
+		      					for(Iterator<ResourceClassModel>superGroups = group.getSuperModels();superGroups.hasNext();){
+		      						String currentSuperGroup= superGroups.next().toString();		      				
+		      						petrinet.addResourceMapping(currentSuperGroup.toString(), node.toString());		      					
+		      					}
+		      				}
+		      			}
+		      			ResourceClassModel role;
+		      			for (Iterator <ResourceClassModel>iter = roles.iterator(); iter.hasNext();){
+		      				role = iter.next();
+		      				if(role.getSuperModels()!= null && role.toString().equals(superParent.toString())){		      					
+		      					for(Iterator<ResourceClassModel>superRoles = role.getSuperModels();superRoles.hasNext();){
+		      						String currentSuperRole= superRoles.next().toString();		      				
+		      						petrinet.addResourceMapping(currentSuperRole.toString(), node.toString());		      					
+		      					}
+		      				}
+		      			}
 		      		}
 		      		else{
 		      			JOptionPane.showMessageDialog(null , Messages.getString("ResourceEditor.Error.AlreadyAssigned.Text"), Messages.getString("ResourceEditor.Error.AlreadyAssigned.Title"),
