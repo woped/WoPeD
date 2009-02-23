@@ -1,5 +1,5 @@
 package org.woped.understandability;
 
-public interface ITransitionColoring {
+public interface INetColorScheme {
 	public void update();
 }

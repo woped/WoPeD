@@ -36,8 +36,8 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 import org.woped.editor.controller.VisualController;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
-import org.woped.understandability.ITransitionColoring;
-import org.woped.understandability.TransitionColoring;
+import org.woped.understandability.INetColorScheme;
+import org.woped.understandability.NetColorScheme;
 
 public class EditorEventProcessor extends AbstractEventProcessor
 {

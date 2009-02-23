@@ -124,7 +124,7 @@ import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.view.ViewFactory;
 import org.woped.translations.Messages;
-import org.woped.understandability.TransitionColoring;
+import org.woped.understandability.NetColorScheme;
 import org.woped.qualanalysis.GraphTreeModelSelector;
 import org.woped.qualanalysis.simulation.SimulatorBarVC;
 import org.woped.qualanalysis.simulation.controller.TokenGameController;
@@ -234,9 +234,9 @@ public class EditorVC extends JPanel implements KeyListener,
 	// ! It is used to create a new subprocess editor if required
 	private AbstractApplicationMediator m_centralMediator = null;
 	
-	private TransitionColoring m_understandColoring = null;
+	private NetColorScheme m_understandColoring = null;
 
-	public TransitionColoring getM_understandColoring() {
+	public NetColorScheme getM_understandColoring() {
 		return m_understandColoring;
 	}
 
@@ -354,8 +354,8 @@ public class EditorVC extends JPanel implements KeyListener,
 			this.m_tokenGameController = new TokenGameController(this);
 		}
 		
-		//TransitionColoring
-		m_understandColoring = new TransitionColoring(); 
+		//NetColorScheme
+		m_understandColoring = new NetColorScheme(); 
 	}
 
 	public EditorVC(String string, EditorClipboard clipboard,
@@ -480,8 +480,8 @@ public class EditorVC extends JPanel implements KeyListener,
 		// influence the parent model
 		parentEditor.setSaved(origStatus);
 		
-		//TransitionColoring
-		m_understandColoring = new TransitionColoring();
+		//NetColorScheme
+		m_understandColoring = new NetColorScheme();
 	}
 
 	// IS NOT WORKING YET

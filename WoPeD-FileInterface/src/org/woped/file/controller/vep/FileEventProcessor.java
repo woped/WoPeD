@@ -54,7 +54,7 @@ import org.woped.server.ServerLoader;
 import org.woped.server.holder.ModellHolder;
 import org.woped.server.holder.UserHolder;
 import org.woped.translations.Messages;
-//import org.woped.understandability.TransitionColoring;
+//import org.woped.understandability.NetColorScheme;
 
 public class FileEventProcessor extends AbstractEventProcessor {
 	public FileEventProcessor(int vepID, ApplicationMediator mediator) {
@@ -879,7 +879,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			getMediator().getUi().updateRecentMenu();
 			
 			if (ConfigurationManager.getConfiguration().getColorOn() ==  true){
-//				new TransitionColoring().update();
+//				new NetColorScheme().update();
 			}
 		} 
 		

@@ -17,14 +17,13 @@ import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 /**
  * @authors Matthias Mruzek and Markus Noeltner <br>
  * 
- * this class walks through the net and collects
- * all and/xor split/join transitions 
- * then a method sets the color
+ * Depending on status of toolbar toggle button this class
+ * does the coloring of handle pairs for each editor separately.
  * <br>
  * Created on 08.12.2008
  */
 
-public class TransitionColoring implements ITransitionColoring {
+public class NetColorScheme implements INetColorScheme {
 	
 	private StructuralAnalysis structAnalysis = null;
 	private ReferenceProvider MediatorReference  = new ReferenceProvider();
@@ -33,7 +32,7 @@ public class TransitionColoring implements ITransitionColoring {
 	private Color[] UnderstandColors = new Color[maxColors];
 	
 	
-	public TransitionColoring () {
+	public NetColorScheme () {
 	}
 	
 	private int countEditors(){
@@ -43,44 +42,34 @@ public class TransitionColoring implements ITransitionColoring {
 	
 	public void update() {
 		
-		// check if an editor exists
 		if (countEditors() >0){
-			// Create a new structural analysis object for
-			// the modified net
 			structAnalysis = new StructuralAnalysis(MediatorReference.getMediatorReference().getUi().getEditorFocus());
 			resetColoringInformation();
+			
+			// Only apply coloring in case coloring is actually enabled.
+			// This saves a lot of calculation time when coloring is not active
 			if (ConfigurationManager.getConfiguration().getColorOn())
 			{					
-				// Only apply coloring in case coloring is actually enabled.
-				// This saves a lot of calculation time when coloring is not active
 				startUnderstandColoring();			
 			}
 		}
 	}
 
+	
 	public void startUnderstandColoring(){
 		
-		// get the colors from config colorset
 		UnderstandColors = ConfigurationManager.getConfiguration().getUnderstandColors();
-		
 		// reset currentColorNum to first color in config colorset, otherwise loop over colors
 		currentColorNum = 0;
 		
-		// getArcconfiguration
-		NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration();
-		
-		
-		// Iterator for Set of Handles in Cluster
 		Iterator<Set<StructuralAnalysis.ClusterElement>> handleClusterSetIter = structAnalysis.getM_handleClusters().iterator();
 		while (handleClusterSetIter.hasNext()){
 			
 			// Iterator for Handles
 			Iterator<StructuralAnalysis.ClusterElement> handleClusterIter = handleClusterSetIter.next().iterator();
 			while (handleClusterIter.hasNext()){
-				
 				// get current FlowNode element
 				StructuralAnalysis.ClusterElement element = handleClusterIter.next();
-								
 				// refer from current FlowNode element to its parent PetriNet element
 				// if the actual element cannot be found in the current focus window
 				AbstractElementModel highlightElement = element.m_element;
@@ -89,16 +78,10 @@ public class TransitionColoring implements ITransitionColoring {
 						((owningElement=element.m_element.getRootOwningContainer().getOwningElement()) != null)))						
 					highlightElement = owningElement; 
 				
-				// HACK: 2 options for better understandability
-				// ! not the algorithm correct element from the petrinet will be highlighted, but the element before
-				// 1 check: if current element is a Place and next is only one XOR-SPLIT then color only the XOR-SPLIT and not the Place
-				// check: if current element is a Place and predecessor is only one XOR-JOIN then color only the XOR-JOIN
-				
 				//MN: If algorithm mode is set to 2 (with handle correction) do the "hack"				
 				if (ConfigurationManager.getConfiguration().getAlgorithmMode() == 2){
 					highlightElement = handleXorSplitPlaceRelation(highlightElement);
 				}
-				
 				// activate coloring of this element
 				highlightElement.setUnderstandColoringActive(ConfigurationManager.getConfiguration().getColorOn());
 						
@@ -130,11 +113,8 @@ public class TransitionColoring implements ITransitionColoring {
 						combiOperator.setSecondaryUnderstandabilityColor(newColor);						
 					}
 				}
-			
 			}
-			// increment color from config colorset
 			currentColorNum++;
-			
 			// infinite loop over all colors
 			if (currentColorNum == maxColors) {
 				currentColorNum = 0;

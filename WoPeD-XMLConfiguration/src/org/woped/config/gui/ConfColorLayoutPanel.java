@@ -51,7 +51,7 @@ import javax.swing.colorchooser.AbstractColorChooserPanel;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
 import org.woped.translations.Messages;
-import org.woped.understandability.TransitionColoring;
+import org.woped.understandability.NetColorScheme;
 
 /**
  * @author <a href="mailto:test@test.de">Matthias/Markus/Bernhard </a> <br>
@@ -95,7 +95,7 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 		setUnderstandColors();
 		ConfigurationManager.getConfiguration().setAlgorithmMode(
 				getAlgorithmModeComboBox().getSelectedIndex());
-		new TransitionColoring().update();
+		new NetColorScheme().update();
 
 		return true;
 	}

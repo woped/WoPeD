@@ -51,7 +51,7 @@ import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
 import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphEventProcessor;
 import org.woped.translations.Messages;
-import org.woped.understandability.TransitionColoring;
+import org.woped.understandability.NetColorScheme;
 
 /**
  * This Class should be the Mediator for the Editor VC... It must be implemented
@@ -203,7 +203,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
     	
     		// Update handle coloring if active
 			if (ConfigurationManager.getConfiguration().getColorOn() ==  true){
-				new TransitionColoring().update();
+				new NetColorScheme().update();
 			}    		
     	}
 
