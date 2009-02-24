@@ -1,25 +1,3 @@
-/*
- * 
- * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
- * 
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- * 
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * For contact information please visit http://woped.ba-karlsruhe.de
- *
- */
 package org.woped.config.gui;
 
 import java.awt.Color;
@@ -33,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
 import java.io.Serializable;
 
 import javax.swing.BorderFactory;
@@ -41,11 +18,9 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 
 import org.woped.core.config.ConfigurationManager;
@@ -54,21 +29,18 @@ import org.woped.translations.Messages;
 import org.woped.understandability.NetColorScheme;
 
 /**
- * @author <a href="mailto:test@test.de">Matthias/Markus/Bernhard </a> <br>
- * <br>
- *         The <code>ConfColorLayoutPanel</code> is the
- *         <code>AbstractConfPanel</code> for the configuration of the coloring
- *         and the layout. Note: Created for test purposes only!<br>
- *         Created on: 26.11.2008 Last Change on: 10.12.2008
+ * @authors Bernhard von Hasseln, Matthias Mruzek and Markus Noeltner<br>
+ *         The ConfUnderstandabilityPanel is the configuration panel
+ *         for WoPeD's understandability features.
+ *         So far the configuration for the handle cluster coloring
+ *         has been implemented.
  */
 
+
 @SuppressWarnings("serial")
-public class ConfColorLayoutPanel extends AbstractConfPanel {
-	// private Component guiObject;
-	// Coloring settings
+public class ConfUnderstandabilityPanel extends AbstractConfPanel {
 	private JPanel colorPanel = null;
 	private JPanel colorAlgoPanel = null;
-	//private JLabel colorlayoutLabel = null;
 	private JPanel colorBoxPanel = null;
 	private colorLabelMouseListener cLabelMouseListener = null;
 	private Color defaultcolors[] = new Color[16];
@@ -79,10 +51,8 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 	private JComboBox algorithmModeComboBox = null;
 	private String[] algorithmModes = null;
 
-	/**
-	 * Constructor for ConfToolsPanel.
-	 */
-	public ConfColorLayoutPanel(JDialog frame, String name) {
+    //! Constructor for the ConfUnderstandabilityPanel
+	public ConfUnderstandabilityPanel(JDialog frame, String name) {
 		super(name);
 		initialize();
 	}
@@ -91,7 +61,6 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 	 * @see AbstractConfPanel#applyConfiguration()
 	 */
 	public boolean applyConfiguration() {
-		// getColorLayoutCheckBox().setSelected(ConfigurationManager.getConfiguration().getColorOn());
 		setUnderstandColors();
 		ConfigurationManager.getConfiguration().setAlgorithmMode(
 				getAlgorithmModeComboBox().getSelectedIndex());
@@ -104,12 +73,7 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 	 * @see AbstractConfPanel#readConfigruation()
 	 */
 	public void readConfiguration() {
-		
-		// Matthias Mruzek: initial programm start, coloring should be turned off
-		// but colorset in configuration should be active
 		ConfigurationManager.getConfiguration().setColorOn(false);
-		setColorActive(true);
-		
 		for (int i = 0; i < 16; i++) {
 			colorLabelCollection[i].setBackground(colors[i]);
 		}
@@ -117,6 +81,7 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 				ConfigurationManager.getConfiguration().getAlgorithmMode());
 	}
 
+	//! Initialize all components
 	private void initialize() {
 		JPanel contentPanel = new JPanel();
 		contentPanel.setLayout(new GridBagLayout());
@@ -146,20 +111,6 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 	}
 
 	// ################## GUI COMPONENTS #################### */
-
-//	private JCheckBox getColorLayoutCheckBox() {
-//		if (colorlayoutCheckBox == null) {
-//			colorlayoutCheckBox = new JCheckBox();
-//			colorlayoutCheckBox.setMinimumSize(new Dimension(150, 20));
-//			colorlayoutCheckBox
-//					.setToolTipText("<html>"
-//							+ Messages
-//									.getString("Configuration.ColorLayout.Panel.CheckBox.ColoringActive.ToolTip")
-//							+ "</html>");
-//		}
-//		return colorlayoutCheckBox;
-//	}
-
 	private JPanel getColorPanel() {
 		if (colorPanel == null) {
 			colorPanel = new JPanel();
@@ -175,21 +126,6 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 													.getString("Configuration.ColorLayout.ColorPanel.Title")),
 									BorderFactory
 											.createEmptyBorder(5, 5, 10, 5)));
-
-			// JPanel colorCheckBox = new JPanel();
-			// colorCheckBox.setSize(40, 34);
-			// colorCheckBox.setLayout(new GridLayout(1, 2));
-			// colorCheckBox.add(getColorLayoutCheckBox());
-			// colorCheckBox.add(getColorLayoutLabel());
-			// colorlayoutCheckBox.addActionListener(cbuttonEventHandler);
-
-			// c.anchor = GridBagConstraints.WEST;
-			// c.fill = 100;
-			// c.weightx = 1;
-			// c.gridx = 0;
-			// c.gridy = 0;
-			// colorlayoutPanel.add(colorCheckBox, c);
-
 			if (colorBoxPanel == null) {
 				colorBoxPanel = new JPanel();
 				JPanel colorBoxes = new JPanel();
@@ -204,9 +140,6 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 					colorLabelCollection[i] = getColorLabel(i);
 					colorBoxes.add(colorLabelCollection[i]);
 				}
-//				c.weightx = 1;
-//				c.gridx = 0;
-//				c.gridy = 0;
 				colorBoxPanel.add(colorBoxes);
 				colorBoxPanel.add(getResetButton());
 			}
@@ -214,23 +147,6 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 			c.gridx = 0;
 			c.gridy = 0;
 			colorPanel.add(colorBoxPanel, c);
-//			//Panel for algorithm modes
-//			JPanel algoModePanel = new JPanel();
-//			algoModePanel.setLayout(new GridLayout(2,2,2,2));
-//			c.weightx = 1;
-//			c.gridx = 0;
-//			c.gridy = 0;
-//			algoModePanel.add(getAlgorithmModeLabel(),c);
-//			c.weightx = 1;
-//			c.gridx = 0;
-//			c.gridy = 1;
-//			algoModePanel.  add(getAlgorithmModeComboBox(),c);
-//			
-//			c.weightx = 1;
-//			c.gridx = 1;
-//			c.gridy = 0;
-//			colorPanel.add(algoModePanel, c);
-			setColorActive(true); //MN: Wird das noch gebraucht?
 		}
 		return colorPanel;
 	 }
@@ -282,16 +198,6 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 	        }
 	        return colorResetButton;
 	    }
-
-//	private JLabel getColorLayoutLabel() {
-//		if (colorlayoutLabel == null) {
-//			colorlayoutLabel = new JLabel(
-//					Messages
-//							.getString("Configuration.ColorLayout.Panel.Label.ColoringActive"));
-//			colorlayoutLabel.setHorizontalAlignment(JLabel.RIGHT);
-//		}
-//		return colorlayoutLabel;
-//	}
 	 
 	 private JLabel getAlgorithmModeLabel(){
 		 if (algorithmModeLabel == null){
@@ -330,14 +236,7 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 
 	}
 
-	private void setColorActive(boolean value) {
-		for (int i = 0; i < 16; i++) {
-			colorLabelCollection[i].setEnabled(value);
-			getResetButton().setEnabled(value);
-		}
-	}
-
-	// Saves the colors from the color set to the configuration XML file
+	//! Saves the colors from the color set to the configuration XML file
 	private void setUnderstandColors() {
 		// save to XML file
 		ConfigurationManager.getConfiguration().setColor1(
@@ -373,23 +272,24 @@ public class ConfColorLayoutPanel extends AbstractConfPanel {
 		ConfigurationManager.getConfiguration().setColor16(
 				colorLabelCollection[15].getBackground().getRGB());
 
-		// update color array
+		// update the color array with the saved values
 		for (int i = 0; i < 16; i++) {
 			colors[i] = colorLabelCollection[i].getBackground();
 		}
 	}
 
+	//! MouseListener for the 16 color labels
 	class colorLabelMouseListener implements MouseListener {
 
 		public void actionPerformed(ActionEvent e) {
 
 			((JButton) e.getSource()).setBackground(
-					NewColorChooser.showDialog1(ConfColorLayoutPanel.this,"Select a color", Color.black));
+					NewColorChooser.showDialog1(ConfUnderstandabilityPanel.this,"Select a color", Color.black));
 		}
 
 		public void mouseClicked(MouseEvent e) {
 			((JLabel) e.getSource()).setBackground(NewColorChooser.showDialog1(
-					ConfColorLayoutPanel.this, "Select a color", Color.black));
+					ConfUnderstandabilityPanel.this, "Select a color", Color.black));
 		}
 
 		public void mouseEntered(MouseEvent arg0) {

@@ -24,7 +24,7 @@ package org.woped.gui.controller;
 
 import java.io.File;
 
-import org.woped.config.gui.ConfColorLayoutPanel;
+import org.woped.config.gui.ConfUnderstandabilityPanel;
 import org.woped.config.gui.ConfEditorPanel;
 import org.woped.config.gui.ConfFilePanel;
 import org.woped.config.gui.ConfLanguagePanel;
@@ -100,7 +100,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
             config.addConfNodePanel(null, new ConfFilePanel(Messages.getString("Configuration.Files.Title")));
             config.addConfNodePanel(null, new ConfToolsPanel(Messages.getString("Configuration.Tools.Title")));
             config.addConfNodePanel(null, new ConfLanguagePanel(Messages.getString("Configuration.Language.Title")));
-            config.addConfNodePanel(null, new ConfColorLayoutPanel(config, Messages.getString("Configuration.ColorLayout.Title")));
+            config.addConfNodePanel(null, new ConfUnderstandabilityPanel(config, Messages.getString("Configuration.ColorLayout.Title")));
             config.setSelectedPanel(Messages.getString("Configuration.Editor.Title"));
 
             ui = new DefaultUserInterface(toolbar, simulatorbar, menubar, taskbar, statusbar);
