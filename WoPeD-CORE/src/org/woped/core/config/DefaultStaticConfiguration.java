@@ -152,7 +152,7 @@ public class DefaultStaticConfiguration implements IConfiguration
         return logdir;
     }
 
-    //Start Understandability Coloring
+    // Start Understandability Coloring
     public boolean getColorOn()
     {
         return colorOn;
@@ -418,9 +418,7 @@ public class DefaultStaticConfiguration implements IConfiguration
 	public void setAlgorithmMode(int n) {
 		coloringAlgorithmMode = n;
 	}
-    
-    
-    //End Understandability Coloring
+    // End Understandability Coloring
     
     public String getLookAndFeel()
     {
