@@ -274,7 +274,8 @@ public class StructuralAnalysis {
 	// ! consisting of node sets	
 	HashSet<Set<AbstractElementModel>> m_PTHandles = new HashSet<Set<AbstractElementModel>>();
 	
-	private LowLevelNet lolnet = null;
+	// ! Reference to the low level net
+	private LowLevelNet m_lolNet = null;
 
 	//! Special cluster element serving as a token for distinguishing between
 	//! ordinary net nodes and combi-operators that are used either
@@ -715,6 +716,7 @@ public class StructuralAnalysis {
 		
 	}
 
+	//! Adds a node to the low level net and duplicates it
 	private void ExpandAndAddNode(LowLevelNet lolnet, AbstractElementModel i) {
 		FlowNode k1 = new FlowNode(i, true);
 		lolnet.addNode(k1);
@@ -723,6 +725,10 @@ public class StructuralAnalysis {
 		lolnet.addArc(k1, k2);
 	}
 
+	//! Every node in the petri net has 2 corresponding
+	//! flow nodes in the low level net. This method adds all 
+	//! outgoing arcs to the second flow node and links
+	//! it with its successors, respectively.
 	private void AddOutgoingArcs(LowLevelNet lolnet, AbstractElementModel i) {
 		Set<AbstractElementModel> successors = NetAlgorithms
 				.getDirectlyConnectedNodes(i,
@@ -745,21 +751,21 @@ public class StructuralAnalysis {
 			Set<AbstractElementModel> places,
 			Set<AbstractElementModel> transitions
 			) {
-		lolnet = new LowLevelNet();
+		m_lolNet = new LowLevelNet();
 		for (Iterator<AbstractElementModel> i = places.iterator(); i.hasNext();) {
-			ExpandAndAddNode(lolnet, (AbstractElementModel) i.next());
+			ExpandAndAddNode(m_lolNet, (AbstractElementModel) i.next());
 		}
 		for (Iterator<AbstractElementModel> i = transitions.iterator(); i.hasNext();) {
-			ExpandAndAddNode(lolnet, (AbstractElementModel) i.next());
+			ExpandAndAddNode(m_lolNet, (AbstractElementModel) i.next());
 		}
 
 		for (Iterator<AbstractElementModel> i = places.iterator(); i.hasNext();) {
-			AddOutgoingArcs(lolnet, (AbstractElementModel) i.next());
+			AddOutgoingArcs(m_lolNet, (AbstractElementModel) i.next());
 		}
 		for (Iterator<AbstractElementModel> i = transitions.iterator(); i.hasNext();) {
-			AddOutgoingArcs(lolnet, (AbstractElementModel) i.next());
+			AddOutgoingArcs(m_lolNet, (AbstractElementModel) i.next());
 		}
-		return lolnet;
+		return m_lolNet;
 	}
 	
 	
@@ -783,18 +789,18 @@ public class StructuralAnalysis {
 	//! @param transitions 	Specifies the set of transitions to be used	
 	//! @return LowLevelNet structure
 	private LowLevelNet CreateAalstFlowNet() {
-		lolnet = new LowLevelNet();
+		m_lolNet = new LowLevelNet();
 		
 		List<AbstractElementModel> rootElements = m_currentEditor.getModelProcessor().getElementContainer().getRootElements();
 		for (Iterator<AbstractElementModel> i = rootElements.iterator(); i.hasNext();) {
-			ExpandAndAddNode(lolnet, i.next());
+			ExpandAndAddNode(m_lolNet, i.next());
 		}
 		for (Iterator<AbstractElementModel> i = rootElements.iterator(); i.hasNext();) {
-			AddAalstNetOutgoingArcs(lolnet, i.next());
+			AddAalstNetOutgoingArcs(m_lolNet, i.next());
 		}
 		
 		
-		return lolnet;
+		return m_lolNet;
 	}	
 	
 	//! Detect handle pairs were the first partner is from
@@ -928,38 +934,41 @@ public class StructuralAnalysis {
 			m_handles.addAll(handleRun);			
 		}
 		
-		//3. Bilde HandleCluster
+		// Create handle clusters
 		createHandleClusters();
 	}
 	
+	//! Test method for createHandleClusters().
+	//! Can be deleted if reuse is unlikely.
 	/*
-	//Testmethode zum Testen von createHandleCluster()
-	private void handleTest(Set<Set<AbstractElementModel>> testset, String testart){
-		int durchlaufzaehler = 0;
+	private void handleTest(Set<Set<AbstractElementModel>> testSet, String testType){
+		int clusterNo = 0;
 		
-		System.out.println(testart + "\n");
-		Iterator<Set<AbstractElementModel>> testsetIter = testset.iterator();
+		System.out.println(testType + "\n");
+		Iterator<Set<AbstractElementModel>> testsetIter = testSet.iterator();
 		while (testsetIter.hasNext()){
-			System.out.println("Paar Nr. " + durchlaufzaehler + ":");
+			System.out.println("Cluster No. " + clusterNo + ":");
 			Iterator<AbstractElementModel>  innerTestsetIter = testsetIter.next().iterator();
 			while (innerTestsetIter.hasNext()){
 				System.out.println(innerTestsetIter.next().getId());
 			}
 			System.out.println("\n");
-			durchlaufzaehler++;
+			clusterNo++;
 		}
 		System.out.println("------------------------------");
-	} */
+	}
+	*/
 	
 	//! This method creates handle clusters on the basis of handle pairs
+	//! Example: Pair1[A,B], Pair2[B,C] -> new Pair[A,B,C]
 	private void createHandleClusters(){
 		ClusterElement      currentNode = null;
-		boolean 			      dirty       = true;
+		boolean 			dirty       = true;
 		Set<ClusterElement> clusterA    = null;
 		Set<ClusterElement> clusterB    = null;
 		
-		//Test, Handle-Ausgabe:
-		//handleTest(m_handles, "Liste aller Handle-Paare:");
+		//Test 1, list handle pairs:
+		//handleTest(m_handles, "All handle pairs:");
 		
 		//1st step: Create a new cluster for every handle (1:1 ratio)
 		Iterator<Set<ClusterElement>> handleIter = m_handles.iterator();
@@ -967,11 +976,8 @@ public class StructuralAnalysis {
 			m_handleClusters.add(new HashSet<ClusterElement>(handleIter.next()));
 		}
 		
-		//Test, Handle-> Cluster 1:1:
-		//handleTest(m_handleClusters, "Liste aller Handle->Cluster 1:1:");
-		
-		//2nd action: Merge all clusters if there are intersections.
-		//   		  If dirty -> start all over.
+		//2nd step: Merge all clusters if there are intersections.
+		//          If dirty -> start all over.
 		while (dirty){
 			dirty = false;
 		    Iterator<Set<ClusterElement>> clusterIterA = m_handleClusters.iterator();
@@ -995,8 +1001,8 @@ public class StructuralAnalysis {
 				}
 			}
 		}
-		//Test, Cluster:
-		//handleTest(m_handleClusters, "Liste aller Cluster:");
+		//Test, list all created clusters:
+		//handleTest(m_handleClusters, "All created clusters:");
 	}
 	
 	
