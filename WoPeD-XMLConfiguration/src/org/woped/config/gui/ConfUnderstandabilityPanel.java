@@ -42,7 +42,7 @@ public class ConfUnderstandabilityPanel extends AbstractConfPanel {
 	private JPanel colorPanel = null;
 	private JPanel colorAlgoPanel = null;
 	private JPanel colorBoxPanel = null;
-	private colorLabelMouseListener cLabelMouseListener = null;
+	private ColorLabelMouseListener cLabelMouseListener = null;
 	private Color defaultcolors[] = new Color[16];
 	private Color colors[] = new Color[16];
 	private JButton colorResetButton = null;
@@ -86,7 +86,7 @@ public class ConfUnderstandabilityPanel extends AbstractConfPanel {
 		JPanel contentPanel = new JPanel();
 		contentPanel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		cLabelMouseListener = new colorLabelMouseListener();
+		cLabelMouseListener = new ColorLabelMouseListener();
 		defaultcolors = ConfigurationManager.getConfiguration().getDefaultUnderstandColors();
 		colors = ConfigurationManager.getConfiguration().getUnderstandColors();
 
@@ -279,7 +279,7 @@ public class ConfUnderstandabilityPanel extends AbstractConfPanel {
 	}
 
 	//! MouseListener for the 16 color labels
-	class colorLabelMouseListener implements MouseListener {
+	class ColorLabelMouseListener implements MouseListener {
 
 		public void actionPerformed(ActionEvent e) {
 
