@@ -26,7 +26,7 @@ import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 public class NetColorScheme implements INetColorScheme {
 	
 	private StructuralAnalysis structAnalysis = null;
-	private ReferenceProvider MediatorReference  = new ReferenceProvider();
+	private ReferenceProvider mediatorReference  = new ReferenceProvider();
 	private int maxColors = ConfigurationManager.getConfiguration().getUnderstandColors().length;
 	private int currentColorNum = 0;
 	private Color[] UnderstandColors = new Color[maxColors];
@@ -36,14 +36,14 @@ public class NetColorScheme implements INetColorScheme {
 	}
 	
 	private int countEditors(){
-		int result = MediatorReference.getMediatorReference().getUi().getAllEditors().size();
+		int result = mediatorReference.getMediatorReference().getUi().getAllEditors().size();
 		return result;
 	}
 	
 	public void update() {
 		
 		if (countEditors() >0){
-			structAnalysis = new StructuralAnalysis(MediatorReference.getMediatorReference().getUi().getEditorFocus());
+			structAnalysis = new StructuralAnalysis(mediatorReference.getMediatorReference().getUi().getEditorFocus());
 			resetColoringInformation();
 			
 			// Only apply coloring in case coloring is actually enabled.
@@ -74,11 +74,13 @@ public class NetColorScheme implements INetColorScheme {
 				// if the actual element cannot be found in the current focus window
 				AbstractElementModel highlightElement = element.m_element;
 				AbstractElementModel owningElement = null;
-				if  ((!MediatorReference.getUIReference().getEditorFocus().getModelProcessor().getElementContainer().containsElement(element.m_element.getId())&&
+				if  ((!mediatorReference.getUIReference().getEditorFocus().getModelProcessor().getElementContainer().containsElement(element.m_element.getId())&&
 						((owningElement=element.m_element.getRootOwningContainer().getOwningElement()) != null)))						
 					highlightElement = owningElement; 
 				
-				//MN: If algorithm mode is set to 2 (with handle correction) do the "hack"				
+				//If algorithm mode is set to 2 (plain petri net with handle correction) highlight 
+				//the XorSplit/-Join van der Aalst operator instead of the place in front and behind, respectively.
+				//This correction is done by handleXorSplitPlaceRelation.
 				if (ConfigurationManager.getConfiguration().getAlgorithmMode() == 2){
 					highlightElement = handleXorSplitPlaceRelation(highlightElement);
 				}
@@ -122,88 +124,91 @@ public class NetColorScheme implements INetColorScheme {
 		}
 	}
 	
+	//! If the getMaxFlow() algorithm in LowLevelNet algorithm runs with a plain petri net
+	//! as input data, places in front or behind Xor-Splits/Joins are marked as split instead
+	//! of the corresponding van der Aalst Operator.
+    //! This correction method sets the van der Aalst operator as element to highlight.
 	private AbstractElementModel handleXorSplitPlaceRelation(AbstractElementModel highlightElement){
 		if (highlightElement.getType() == PetriNetModelElement.PLACE_TYPE){
-			// 1 Nachbereich
+			// Get postset of the place
 			Set<AbstractElementModel> postset = NetAlgorithms.getDirectlyConnectedNodes(highlightElement, NetAlgorithms.connectionTypeOUTBOUND);
-			// Vorbereich
+			// Get preset of the place
 			Set<AbstractElementModel> preset = NetAlgorithms.getDirectlyConnectedNodes(highlightElement, NetAlgorithms.connectionTypeINBOUND);
 			
 			OperatorTransitionModel tempOpTransModel;
 			
+			// The correction is only done if 2 elements are in the postset and the preset,
+			// respectively. This corresponds to exact 1 Xor-Split operator in the postset
+			// or 1 Xor-Join operator in the preset.
 			if (postset.size() == 2) {
 										
-			Iterator<AbstractElementModel> postsetIter = postset.iterator();
+			    Iterator<AbstractElementModel> postsetIter = postset.iterator();
 				
 				AbstractElementModel postsetCheck1, postsetCheck2;
 					
-					postsetCheck1 = postsetIter.next();
-					postsetCheck2 = postsetIter.next();
-										
-					// wenn beide Transitionen vom Typ 2 sind, dann hole aus dem owning Container das VdA Element.
-					postsetCheck1 =  (postsetCheck1.getRootOwningContainer().getOwningElement() != null)
-					? postsetCheck1.getRootOwningContainer().getOwningElement() 
-					: postsetCheck1;
+				postsetCheck1 = postsetIter.next();
+				postsetCheck2 = postsetIter.next();
+				
+				// If both elements in the postset are of the type PetriNetModelElement.TRANS_OPERATOR_TYPE
+				// get the van der Aalst operator from the owning container and set it as highlightElement.
+				postsetCheck1 =  (postsetCheck1.getRootOwningContainer().getOwningElement() != null)
+				? postsetCheck1.getRootOwningContainer().getOwningElement() 
+				: postsetCheck1;
 					
-					postsetCheck2 =  (postsetCheck2.getRootOwningContainer().getOwningElement() != null)
-					? postsetCheck2.getRootOwningContainer().getOwningElement() 
-					: postsetCheck2;
+				postsetCheck2 =  (postsetCheck2.getRootOwningContainer().getOwningElement() != null)
+				? postsetCheck2.getRootOwningContainer().getOwningElement() 
+				: postsetCheck2;
 					
-					if (postsetCheck1.equals(postsetCheck2) && postsetCheck1.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+				if (postsetCheck1.equals(postsetCheck2) && postsetCheck1.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
 						
-						tempOpTransModel = (OperatorTransitionModel) postsetCheck1;
+					tempOpTransModel = (OperatorTransitionModel) postsetCheck1;
 						
-						if (tempOpTransModel.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE) {
-							// System.out.println("Nachbereich geschaft");
-							
-							// activate coloring of this element
-							highlightElement = tempOpTransModel;
-						}
+					if (tempOpTransModel.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE) {						
+						// activate coloring of this element
+						highlightElement = tempOpTransModel;
 					}
+				}
 			}
 			
-			
+			// The correction is only done if 2 elements are in the postset and the preset,
+			// respectively. This corresponds to exact 1 Xor-Split operator in the postset
+			// or 1 Xor-Join operator in the preset.
 			else{
-			
-				
 				if (preset.size() == 2) {
 											
-				Iterator<AbstractElementModel> presetIter = preset.iterator();
+				    Iterator<AbstractElementModel> presetIter = preset.iterator();
 					
-					AbstractElementModel presetCheck1, presetCheck2;
+				    AbstractElementModel presetCheck1, presetCheck2;
 						
-						presetCheck1 = presetIter.next();
-						presetCheck2 = presetIter.next();
+				    presetCheck1 = presetIter.next();
+				    presetCheck2 = presetIter.next();
 											
-						// wenn beide Transitionen vom Typ 2 sind, dann hole aus dem owning Container das VdA Element.
-						presetCheck1 =  (presetCheck1.getRootOwningContainer().getOwningElement() != null)
-						? presetCheck1.getRootOwningContainer().getOwningElement() 
-						: presetCheck1;
+				    // If both elements in the preset are of the type PetriNetModelElement.TRANS_OPERATOR_TYPE
+				    // get the van der Aalst operator from the owning container and set it as highlightElement.
+				    presetCheck1 =  (presetCheck1.getRootOwningContainer().getOwningElement() != null)
+				    ? presetCheck1.getRootOwningContainer().getOwningElement() 
+				    : presetCheck1;
 						
-						presetCheck2 =  (presetCheck2.getRootOwningContainer().getOwningElement() != null)
-						? presetCheck2.getRootOwningContainer().getOwningElement() 
-						: presetCheck2;
-						
-						if (presetCheck1.equals(presetCheck2) && presetCheck1.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
-							
-							tempOpTransModel = (OperatorTransitionModel) presetCheck1;
-							
-							if (tempOpTransModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE) {
-								// System.out.println("Vorbereich fertig");
-								
-								// activate coloring of this element
-								highlightElement = tempOpTransModel;
-							}
-						}
-		
+				    presetCheck2 =  (presetCheck2.getRootOwningContainer().getOwningElement() != null)
+				    ? presetCheck2.getRootOwningContainer().getOwningElement() 
+				    : presetCheck2;
 					
-				}
+				    if (presetCheck1.equals(presetCheck2) && presetCheck1.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+							
+					    tempOpTransModel = (OperatorTransitionModel) presetCheck1;
+							
+					    if (tempOpTransModel.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE) {
+						    // activate coloring of this element
+						    highlightElement = tempOpTransModel;
+					    }
+				    }	
+			    }
 			}
 		}
 		return highlightElement;
 	}
 	
-	//! Reset all understandability coloring Information in the current petrinet  
+	//! Reset all understandability coloring Information in the current petri net  
 	private void resetColoringInformation() {
 		Iterator<AbstractElementModel> elementIter = structAnalysis.getPlacesIterator();
 		AbstractElementModel currentElement = null;
