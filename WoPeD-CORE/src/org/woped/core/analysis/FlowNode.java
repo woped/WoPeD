@@ -5,27 +5,58 @@ import java.util.LinkedList;
 
 import org.woped.core.model.AbstractElementModel;
 
+/**
+ * @authors Bernhard von Hasseln, Matthias Mruzek and Markus Noeltner <br>
+ * 
+ * This class represents an element in a LowLevelNet. It is derived from a petri
+ * net node. There are always 2 flow nodes for 1 petri net node (first and second). 
+ * FlowArcs are used to connect FlowNodes among themselves.
+ * <br>
+ */
+
 public class FlowNode
 {
-    private AbstractElementModel petriNetNode;
+    //! The original petri net node where this FlowNode is derived from.
+	private AbstractElementModel petriNetNode;
 
-	//! Remember whether this is the first or the second node of our split petrinet node
+	//! Distinguishes whether this is the first or the second node of original 
+	//! the split up petri net node
     private boolean first;
 
-	//! Remember all predecessors of this node
+	//! All predecessors of this node
     private LinkedList<FlowArc> m_incomingArcs;
-    //! Remember all successors of this node
+    
+    //! All successors of this node
     private LinkedList<FlowArc> m_outgoingArcs;
     
-    public LinkedList<FlowArc> getM_outgoingArcs() {
+    //! z value used in getMaxFlow(), LowLevelNet
+	private int z = 0;
+	
+	//! Visited flag used in getMaxFlow(), LowLevelNet
+	private boolean visited = false;
+	
+	//! Remembers the predecessor in a getMaxFlow() run (class LowLevelNet)
+	private FlowNode predecessor = null;
+	
+	//! Remembers in which direction the node was visited 
+	//! in a getMaxFlow() run (class LowLevelNet).
+	//! forwards = true, backwards = false
+	private boolean isForeward = false; 
+    
+	//! Constructor
+    public FlowNode(AbstractElementModel i, boolean first)
+    {
+       this.m_incomingArcs = new LinkedList<FlowArc>();
+       this.m_outgoingArcs = new LinkedList<FlowArc>();
+       this.petriNetNode = i;
+       this.first = first;
+       this.z = Integer.MAX_VALUE;
+    }
+	
+	public LinkedList<FlowArc> getM_outgoingArcs() {
 		return m_outgoingArcs;
 	}
 
-	private int z = 0;
-	
-	private boolean visited = false;
-	
-    
     public boolean isVisited() {
 		return visited;
 	}
@@ -39,16 +70,12 @@ public class FlowNode
 		this.z = z;
 	}
 
-	private FlowNode predecessor = null;
-    
     public FlowNode getPredecessor() {
 		return predecessor;
 	}
 	public void setPredecessor(FlowNode predecessor) {
 		this.predecessor = predecessor;
-	}
-
-	private boolean isForeward = false; 					//forward = true, backward = false
+	}			
     
     public boolean isForeward() {
 		return isForeward;
@@ -62,15 +89,6 @@ public class FlowNode
     public boolean isFirst() {
 		return first;
 	}
-    
-    public FlowNode(AbstractElementModel i, boolean first)
-    {
-       this.m_incomingArcs = new LinkedList<FlowArc>();
-       this.m_outgoingArcs = new LinkedList<FlowArc>();
-       this.petriNetNode = i;
-       this.first = first;
-       this.z = Integer.MAX_VALUE;
-    }
     
     public void addIncomingArc(FlowArc n)
     {
@@ -90,6 +108,7 @@ public class FlowNode
 		return m_incomingArcs.iterator();
 	}
     
+    //! Returns the arc to the forwarded node
     public FlowArc getArcTo(FlowNode target) {
     	Iterator<FlowArc> i = getOutgoingArcs();
     	FlowArc tmpArc = null;
@@ -104,6 +123,8 @@ public class FlowNode
     	return null;
 	}
     
+    //! Returns the arc which leads from the forwarded node to
+    //! the current node.
     public FlowArc getArcFrom(FlowNode source) {
     	Iterator<FlowArc> i = getIncomingArcs();
     	FlowArc tmpArc = null;
