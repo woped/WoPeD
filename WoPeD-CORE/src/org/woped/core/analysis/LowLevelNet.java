@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.core.analysis.*;
 
 public class LowLevelNet {
 	private LinkedList<FlowNode> m_netNodes;
@@ -31,8 +30,7 @@ public class LowLevelNet {
 
 	public FlowNode getNodeForElement(AbstractElementModel petrinetElement,
 			boolean first) {
-		// liefere für lowlevel Petrinet-Element das passende FlowNet Element
-		// (1. oder 2.)
+		// get matching FlowNode element
 
 		FlowNode returnValue = null;
 		Iterator<FlowNode> i = m_netNodes.iterator();
@@ -75,70 +73,59 @@ public class LowLevelNet {
 				i.next().setVisited(false);
 			
 			source.setVisited(true);
-			LinkedList<FlowNode> R = new LinkedList();
+			LinkedList<FlowNode> R = new LinkedList<FlowNode>();
 			R.add(source);
 			source.setZ(Integer.MAX_VALUE);
 			source.setPredecessor(null);
 			SINKFOUND = false;
 			Iterator<FlowArc> Y = null;
 			FlowNode X = null;
-			FlowArc tmparc = null;
+			FlowArc temp_arc = null;
 			
 			while ((!SINKFOUND) && (!done)) {
-				// So lange R nicht leer und
-				// Senke nicht gefunden
-
-				// X = R[0];
-				// R.ERASE(X); // Oberstes Element vom Stapel holen
-				// if (!R.isEmpty()) {
 				X = R.getFirst();
 				R.removeFirst();
 				
             	// LoggerManager.debug(Constants.STRUCT_LOGGER, "Removing node X='" + X.getPetriNetNode().getId() + "'");
             	// dumpList(R, "R= ");
-            					
-
-				// for (Y = X.OUTGOINGARCS().FIRST(); Y.ISVALID(); ++Y)
-				
+            	
+				//work on all outgoing arcs based on current source
 				Y = X.getOutgoingArcs();
 				while (Y.hasNext()) {
-					tmparc = Y.next();
+					temp_arc = Y.next();
 	            	// LoggerManager.debug(Constants.STRUCT_LOGGER, 
-	            	//		"Checking Arc( '" + tmparc.getSource().getPetriNetNode().getId() + 
-	            	//		"'->'" + tmparc.getTarget().getPetriNetNode().getId() +"', Current Flow=" + tmparc.getFlow() + ")" );
+	            	//		"Checking Arc( '" + temp_arc.getSource().getPetriNetNode().getId() + 
+	            	//		"'->'" + temp_arc.getTarget().getPetriNetNode().getId() +"', Current Flow=" + temp_arc.getFlow() + ")" );
 
-					// Überprüfe alle abgehenden Kanten
-					if ((tmparc.getFlow() < tmparc.getCapacity()) && !tmparc.getTarget().isVisited()) {
+					if ((temp_arc.getFlow() < temp_arc.getCapacity()) && !temp_arc.getTarget().isVisited()) {
 
-						tmparc.getTarget().setPredecessor(X);
-						tmparc.getTarget().setForeward(true);
-						tmparc.getTarget().setZ(
-								Math.min(tmparc.getCapacity()
-										- tmparc.getFlow(), X.getZ()));
+						temp_arc.getTarget().setPredecessor(X);
+						temp_arc.getTarget().setForeward(true);
+						temp_arc.getTarget().setZ(
+								Math.min(temp_arc.getCapacity()
+										- temp_arc.getFlow(), X.getZ()));
 
-						tmparc.getTarget().setVisited(true);
-						R.addLast(tmparc.getTarget());
+						temp_arc.getTarget().setVisited(true);
+						R.addLast(temp_arc.getTarget());
 						
-		            	// LoggerManager.debug(Constants.STRUCT_LOGGER, "Adding node Y.END()='" + tmparc.getTarget().getPetriNetNode().getId() + "'");
-						
+		            	// LoggerManager.debug(Constants.STRUCT_LOGGER, "Adding node Y.END()='" + temp_arc.getTarget().getPetriNetNode().getId() + "'");
 					}
 				}
-				// for (Y = X.INCOMINGARCS().FIRST(); Y.ISVALID(); ++Y) {
+
+				//work on all incoming arcs based on current source
 				Y = X.getIncomingArcs();
 				while (Y.hasNext()) {
-					tmparc = Y.next();
+					temp_arc = Y.next();
 
-					// Überprüfe alle eingehenden Kanten
-					if ((tmparc.getFlow() > 0) && !tmparc.getSource().isVisited()) {
-						// if ((Y.FLOW > 0) && (!S.CONTAINS(Y))) {
-						tmparc.getSource().setPredecessor(X);
-						tmparc.getSource().setForeward(false);
-						tmparc.getSource().setZ(
-								Math.min(tmparc.getFlow(), X.getZ()));
-						tmparc.getSource().setVisited(true);
-						R.addLast(tmparc.getSource());
+					if ((temp_arc.getFlow() > 0) && !temp_arc.getSource().isVisited()) {
+						temp_arc.getSource().setPredecessor(X);
+						temp_arc.getSource().setForeward(false);
+						temp_arc.getSource().setZ(
+								Math.min(temp_arc.getFlow(), X.getZ()));
+						temp_arc.getSource().setVisited(true);
+						R.addLast(temp_arc.getSource());
 						
-		            	// LoggerManager.debug(Constants.STRUCT_LOGGER, "Adding node Y.START()='" + tmparc.getSource().getPetriNetNode().getId() + "'");						
+		            	// LoggerManager.debug(Constants.STRUCT_LOGGER, "Adding node Y.START()='" + temp_arc.getSource().getPetriNetNode().getId() + "'");						
 					}
 
 				}
@@ -150,31 +137,29 @@ public class LowLevelNet {
 			if (SINKFOUND) {
             	// LoggerManager.debug(Constants.STRUCT_LOGGER, "Applying flow changes");						
 				
-				// for (Y = SINK; Y != null; Y = Y.PREDECESSOR())
-				FlowNode test = sink;
-				while (test.getPredecessor() != null ) {
+				FlowNode temp_sink = sink;
+				while (temp_sink.getPredecessor() != null ) {
 
-					// Fluss optimieren, ausgehend von Senke
-					if (test.isForeward() && (test.getPredecessor() != null)){
-					    test.getPredecessor().getArcTo(test).addFlow(sink.getZ());
+					if (temp_sink.isForeward() && (temp_sink.getPredecessor() != null)){
+					    temp_sink.getPredecessor().getArcTo(temp_sink).addFlow(sink.getZ());
 		            	// LoggerManager.debug(Constants.STRUCT_LOGGER, "{(" +
-		            	//		test.getPredecessor().getArcTo(test).getSource().getPetriNetNode().getNameValue() 
+		            	//		temp_sink.getPredecessor().getArcTo(temp_sink).getSource().getPetriNetNode().getNameValue() 
 		            	//		+ "," +
-		            	//		test.getPredecessor().getArcTo(test).getTarget().getPetriNetNode().getNameValue()
-		            	//		+ "): " + test.getPredecessor().getArcTo(test).getFlow());		            							    
+		            	//		temp_sink.getPredecessor().getArcTo(temp_sink).getTarget().getPetriNetNode().getNameValue()
+		            	//		+ "): " + temp_sink.getPredecessor().getArcTo(temp_sink).getFlow());		            							    
 					}
 
-					if (!test.isForeward() && (test.getPredecessor() != null)){
-					    test.getArcTo(test.getPredecessor()).subFlow(sink.getZ());
+					if (!temp_sink.isForeward() && (temp_sink.getPredecessor() != null)){
+					    temp_sink.getArcTo(temp_sink.getPredecessor()).subFlow(sink.getZ());
 					    
 		            	// LoggerManager.debug(Constants.STRUCT_LOGGER, "{(" +
-		            	//		test.getArcTo(test.getPredecessor()).getSource().getPetriNetNode().getNameValue() 
+		            	//		temp_sink.getArcTo(temp_sink.getPredecessor()).getSource().getPetriNetNode().getNameValue() 
 		            	//		+ "," +
-		            	//		test.getArcTo(test.getPredecessor()).getTarget().getPetriNetNode().getNameValue()
-		            	//		+ "): " + test.getArcTo(test.getPredecessor()).getFlow());
+		            	//		temp_sink.getArcTo(temp_sink.getPredecessor()).getTarget().getPetriNetNode().getNameValue()
+		            	//		+ "): " + temp_sink.getArcTo(temp_sink.getPredecessor()).getFlow());
 					    
 					}
-					test = test.getPredecessor();					
+					temp_sink = temp_sink.getPredecessor();					
 				}
             	// LoggerManager.debug(Constants.STRUCT_LOGGER, "Found a SINK, starting over");						
 				
@@ -182,18 +167,18 @@ public class LowLevelNet {
 			
 		}
 		int countIncoming = 0, countOutgoing = 0;
-		
+
+		//		count incomming arcs
 		for (Iterator<FlowArc> i=source.getIncomingArcs();i.hasNext();)
 			countIncoming+=i.next().getFlow();
+
+		//		count outgoing arcs
 		for (Iterator<FlowArc> i=source.getOutgoingArcs();i.hasNext();)
 			countOutgoing+=i.next().getFlow();
-		
 
-		// Eingehende - ausgehende = Ergebnis und return-Wert
-
+		//		calculate maxmimum flow
 		int maxFlow = countOutgoing-countIncoming;
     	LoggerManager.debug(Constants.STRUCT_LOGGER, "Resulting flow = " + maxFlow);						
-		
 	 		
 		return maxFlow;
 	}
@@ -202,19 +187,18 @@ public class LowLevelNet {
 		Iterator<FlowNode> m_netNodesIter = getM_netNodesIter();
 		FlowNode currentNode = null;
 
-		// Fluss für alle Kanten auf 0 setzen
 		while (m_netNodesIter.hasNext()) {
-			// z zurücksetzen
+			// reset z
 			currentNode = m_netNodesIter.next();
 			currentNode.setZ(Integer.MAX_VALUE);
 
-			// predecessor zurücksetzen
+			// reset predecessor
 			currentNode.setPredecessor(null);
 
-			// isForward zurücksetzen
+			// reset isForward
 			currentNode.setForeward(false);
 
-			// Kanten zurücksetzen
+			// reset Arcs
 			Iterator<FlowArc> arcIter = currentNode.getOutgoingArcs();
 			while (arcIter.hasNext()) {
 				arcIter.next().setFlow(0);
