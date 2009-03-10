@@ -9,71 +9,61 @@
 </head>
 
 <body>
-<h2><span lang=EN-US>Kapazitätsplanung</span></h2><p>
+<h2><span lang=EN-US>Capacity Planning</span></h2>
 
-<p><span lang=EN-US>Das ist eine Methode der quantitativen Analyse, 
-mit der die notwendige Anzahl von Ressourcen berechnet werden kann, für die 
-der Geschäftsprozess effizient durchlaufen wird.</span></p><p>
+<p><span lang=EN-US>This is a method of quantitative
+analysis used to determine the necessary number of resources in order to run
+the business process optimally.</span></p>
 
-<p><span lang=EN-US>Um diese Methode anzuwenden, muss das Prozessmodell erweitert werden durch Angabe
-der mittleren Bedienzeiten für jede Transition, wenn sie größer als Null ist, und den 
-Verzweigungswahrscheinlichkeiten nach XOR-Splits. Dabei ist darauf zu achten, dass die
-Summe aller Wahrscheinlichkeiten einer Transition genau 100% ergeben. Die Eingabe der
-Verzweigungswahrscheinlichkeiten erfolgt im Eigenschaftendialog der betreffenden Kante, 
-z.B. durch Auswahl im Kontextmenü.
-</span></p><p>
+<p><span lang=EN-US>In order to use this feature your
+process model must be extended by specifying at least the average service time
+of each transition, if it is greater than zero, and the split probabilities at
+each XOR split transition. Give special attention to the requirement, that the
+sum of all probabilities per XOR split is exactly 100%. The probability values
+can be changed by opening the properties dialog of the appropriate arc in the
+context menu.</span></p>
 
-<p><span lang=EN-US>Wenn ein Ressourcenmodell verwendet wird, sollte jeder Transition, die ressourcen-getriggert
-ist, eine Gruppe und eine Rolle zugewiesen werden. Sie können im Eigenschaftendialog
-der jeweiligen Transition ausgewählt werden, nachdem der Ressourcentrigger gesetzt
-wurde.
-</span></p><p>
+<p><span lang=EN-US>If you use a resource model, you
+should also specify the group and role each transition requires. You can choose
+them in the transition properties dialog after selecting the Resource trigger.</span></p>
 
-<p><span lang=EN-US>Nach dem Öffnen des Dialogs für die 
-Kapazitätsplanung sind zunächst die Parameter einzugeben. Als erstes wird die 
-Betrachtungsperiode, also der Zeitraum, für den die Rechnung durchgeführt wird, angegeben.
-Es folgt die mittlere Ankunftsrate neuer Fälle im Prozess in der angegebenen Periode. 
-Außerdem muss ein Schwellenwert als Abbruchbedingung vorgegeben werden. Intern wird
-mit einer einheitlichen Zeiteinheit gerechnet. Sie wird unmittelbar über der ersten Tabelle
-angezeigt. Um sie zu ändern, muss der Dialog für das Zeitmodell durch Klick auf die
-entsprechende Schaltfläche geöffnet werden.
-</span></p><p>
+<p><span lang=EN-US>After opening the Capacity Planning
+dialog, you have to give a period of time, the average number of new cases
+which arrive at the process within the just specified period and a threshold value.
+Please note that internally the program uses a standard time unit which is
+displayed just above the first table. You can change the standard time unit by
+double-clicking the button [Time model].</span></p>
 
-<p><span lang=EN-US>Wenn [Berechnen] angeklickt wird, beginnt die Berechnung und die Ergebnisse werden in
-den beiden Tabellen unterhalb der Parameter angezeigt. Übrigens: Unmittelbar nach dem 
-Öffnen des Dialogs wird die Berechnung automatisch mit der Standardzeiteinheit von
-1 Minute durchgeführt und die Ergebnisse sind direkt zu sehen.
-</span></p><p>
+<p><span lang=EN-US>When you click on the button [Calculate]
+the calculation starts and the results are displayed in both tables below. By
+the way, right after opening the dialog the calculation is already done with
+the standard time unit.</span></p>
 
-<p><span lang=EN-US>In der ersten Tabelle werden in der zweiten Spalte die mittleren Bedienzeiten der Transitionen angezeigt, 
-für die sie größer als Null sind, so wie im Modell spezifiziert. In der dritten 
-Spalte ist die Häufigkeit zu sehen, wie oft diese Transition im Mittel pro Fall
-ausgeführt wird. Sie ist immer dann größer als Eins, wenn die jeweilige Transition
-zu einer Schleife gehört. Spalte fünf enthält die Summe aller Ausführungshäufigkeiten
-für die Anzahl von Fällen, die als Ankunftsrate angegeben wurden. In den Spalten vier
-und sechs sind der jeweilige Zeitbedarf zu sehen, den die Transition braucht, um den Fall 
-bzw. die Fälle zu bearbeiten. Die letzte Zeile von Spalte vier zeigt den gesamten
-Zeitbedarf zum Bearbeiten eines Falles. Analoges gilt für Spalte sechs für alle Fälle. 
-Die letzte Spalte in der oberen Tabelle gibt nochmals die Zuordnung von Gruppen und Rollen 
-zu den Transitionen an.
-</span></p><p>
+<p><span lang=EN-US>The first table shows the average
+service time of each transition, if it is greater than zero, in the second
+column as specified in the model. In column three you can see how often each
+case is processed by a particular transition on average which is more than one
+in the case that this transition is part of a cycle. Column five gives you the
+sum of repetitions of all cases as you specified before. In columns four and six
+you can see the amount of time needed by a transition to process one or all
+cases. The last row of column four shows you the whole time needed (on average)
+to operate one case. The same holds for the last line of column six regarding
+all cases. The last column of the first table reminds you of the specified
+group and role for that transition.</span></p>
 
-<p><span lang=EN-US>Rechts oberhalb der oberen Tabelle wird eine Zahl angezeigt. Sie gibt die Anzahl der 
-angezeigten Dezimalstellen der Ergebnisse in beiden Tabellen an. Durch Betätigen der 
-Schaltflächen rechts bzw. links davon kann die Zahl erhöht oder verringert werden.
-</span></p><p>
+<p><span lang=EN-US>There is a number displayed on the
+right above the table. This gives the number of decimal places shown in the
+table. You can change it by clicking on the left hand or right hand arrow.</span></p>
 
-<p><span lang=EN-US>Die zweite Tabelle zeigt die benötigte Anzahl von Ressourcen in jeder Ressourcenklasse. 
-Spalte zwei gibt hierbei den Gesamtzeitbedarf umgerechnet auf die Ressourcenklasse wieder. 
-Dabei handelt es sich um die Summe des Zeitbedarfe aller Transitionen, die eine Ressource 
-der jeweiligen Klasse beanspruchen. Die dritte Spalte zeigt die Ergebnisse. Sie gelten 
-für den angegebenen Auslastungsgrad der Ressourcen, der wiederum rechts oberhalb der 
-Tabelle angezeigt wird. Der Standardwert ist 80%. er kann geändert werden durch Klick 
-auf die Pfeile rechts oder links.
-</span></p><p>
+<p><span lang=EN-US>The second table shows the calculated
+minimum number of required resources per resource classes. Column two states
+the whole number of time units all resources in this resource class need to process
+all the new cases per period. It is just the sum of the demands of all
+transitions that require this resource class. Column three gives the results.
+Note that these are valid for the given average utilization ratio. The standard
+value is 80%. Again you can change it by clicking the arrows.</span></p>
 
-<p><span lang=EN-US>Mit [Schließen] wird der Dialog geschlossen.
-</span></p>
+<p><span lang=EN-US>With [Close] you close the dialog.</span></p>
 
 </div>
 

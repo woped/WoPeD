@@ -1,52 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-		<title>Tokengame</title>
-		<link rel="stylesheet" type="text/css" href="../woped.css">
-	</head>
+<head>
+
+		
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+		
+		
+  <title>Tokengame</title>
+  <link rel="stylesheet" type="text/css" href="../woped.css">
+</head>
 
 	<body>
-		<h2>Token Game</h2>
+
 		
-		<p>The token game is the graphical representation of the basic
+<h2>Token Game</h2>
+
+		
+		
+<p>The token game is the graphical representation of the basic
 		<a href="petrinet.htm">Petri net</a> execution rule, describing the following 
 		dependency between <a href="transition.htm">transitions</a>, <a href="place.htm">
 		places</a> and <a href="token.htm">tokens</a>:</p>
-		<ul>
+
+		
+<ul>
+
 		  <li>A transition is enabled, if all of its input places have at least one 
 		  token</li>
+
 		  <li>An enabled transition can occur - it then removes one token from each 
 		  input place and adds one token on each output place</li>
-		</ul>
+
 		
-		<p><img border="0" src="../images/occurrencerule.jpg" width="648" height="259"></p>
+</ul>
+
 		
-		<p>Note that operator transitions, in particular <a href="xorsplit.htm">XOR-split 
+		
+<p><img src="../images/occurrencerule.jpg" border="0" height="259" width="648"></p>
+
+		
+		
+<p>Note that operator transitions, in particular <a href="xorsplit.htm">XOR-split 
 		transitions</a> and <a href="xorjoin.htm">XOR-join transitions</a> used in
 		<a href="workflownet.htm">workflow nets</a> have a different behaviour with 
 		respect to this occurrence rule.</p>
+
 		
-		<h3>Starting and stopping the Token Game</h3>
 		
-		<p>In order to start the token game, press the
-		<img border="0" src="../images/icons/tokenGame_start.gif" width="16" height="16">&nbsp; button on the
-		<a href="toolbar.htm">toolbar</a>. The token game is started for the net in the 
-		active <a href="editor.htm">editor</a> window. The net graph becomes read-only (represented 
-		by a beige window background) and all transitions which are enabled under the 
-		current <a href="marking.htm">marking</a> are highlighted with a small red 
-		inscription. To stop the token game, just press the
-		<img border="0" src="../images/icons/tokenGame_start.gif" width="16" height="16">&nbsp; button again, the editor 
+<h3>Starting and stopping the Token Game</h3>
+
+		
+		
+<p>In order to start the token game, press the
+		<img src="../images/icons/tokenGame_start.gif" border="0" height="16" width="16">&nbsp; button on the
+		<a href="toolbar.htm">toolbar</a>. The <a href="./tokengame_toolbar.htm">tokengame toolbar</a> is launched for the net. You can not change the net if tokengame is enabled. The enabled transitions under the 
+		current <a href="marking.htm">marking</a> are highlighted with a small green arrowhead. To stop the token game, just press the <img src="../images/icons/tokenGame_stop.gif" border="0" height="16" width="16">&nbsp; button, the editor 
 		window background returns to its normal color and the net becomes editable again.</p>
-		
-		<p>If there is initially at least one transition enabled, the user has to choose 
+<p>If there is initially at least one transition enabled, the user has to choose 
 		the next transition to occur by clicking on the associated control element within the net 
-		graph. The following two situations can be distinguished:</p>
-		<ul>
+		graph or in the drop-down menu of the <a href="./tokengame_toolbar.htm">tokengame toolbar</a>. The following two situations can be distinguished:</p>
+
+		
+<ul>
+
 		  <li>Choosing a <a href="tokengamenormal.htm">normal or AND transition</a> to 
 		  occur</li>
-		  <li>Choosing an <a href="tokengamexor.htm">XOR transition</a> to occur</li>
-		</ul>
-		<p>&nbsp;</p>
 
-	</body>
+		  <li>Choosing an <a href="tokengamexor.htm">XOR transition</a> to occur</li>
+
+		
+</ul>
+
+		
+<p>&nbsp;Much more functions for the tokengame are described on the <a href="./tokengame_toolbar.htm">tokengame toolbar</a> page</p>
+
+
+	
+</body>
 </html>
