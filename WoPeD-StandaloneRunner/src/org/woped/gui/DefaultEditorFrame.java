@@ -148,7 +148,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
             tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
-            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title.new"), propScrollPane);
+            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
 //            tabbedPane.addTab(Messages.getString("PetriNet.Data.Title"), m_dataEditor);
             tabbedPane.getModel().addChangeListener(new ChangeListener()
