@@ -34,7 +34,7 @@ import org.woped.gui.controller.DefaultApplicationMediator;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * For contact information please visit http://woped.ba-karlsruhe.de
+ * For contact information please visit http://woped.dhbw-karlsruhe.de
  *
  */
 /**

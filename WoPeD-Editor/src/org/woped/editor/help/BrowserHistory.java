@@ -17,7 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * For contact information please visit http://woped.ba-karlsruhe.de
+ * For contact information please visit http://woped.dhbw-karlsruhe.de
  *
  */
 /*
@@ -33,7 +33,7 @@ import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
- * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>
+ * @author <a href="mailto:freytag@dhbw-karlsruhe.de">Thomas Freytag </a> <br>
  *         History implementation (using two Stacks) for the MiniBrowser. The
  *         History class remembers two stacks of recently visited pages (forward
  *         and backward direction) in addition to the currently displayed page.

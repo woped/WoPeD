@@ -17,7 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  *
- * For contact information please visit http://woped.ba-karlsruhe.de
+ * For contact information please visit http://woped.dhbw-karlsruhe.de
  *
  */
 /*
@@ -55,7 +55,7 @@ import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.translations.Messages;
 
 /**
- * @author <a href="mailto:freytag@ba-karlsruhe.de">Thomas Freytag </a> <br>
+ * @author <a href="mailto:freytag@dhbw-karlsruhe.de">Thomas Freytag </a> <br>
  * 
  * TODO: DOCUMENTATION (tfreytag)
  */
