@@ -101,59 +101,8 @@ public class PopupMenuUML extends JPopupMenu
         {
             addMenu = new JMenu("Add");
             VisualController.getInstance().addElement(addMenu, VisualController.NO_SELECTION, VisualController.ALWAYS, VisualController.IGNORE);
-            addMenu.add(getAddActivityItem());
-            addMenu.add(getAddStartItem());
-            addMenu.add(getAddStopItem());
-            addMenu.add(getAddAndMenuItem());
-            addMenu.add(getAddXorMenuItem());
-
         }
         return addMenu;
-    }
-
-    private JMenuItem getAddActivityItem()
-    {
-        if (addActivityMenuItem == null)
-        {
-            addActivityMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_ACTIVITY));
-        }
-        return addActivityMenuItem;
-    }
-
-    private JMenuItem getAddStartItem()
-    {
-        if (addStartMenuItem == null)
-        {
-            addStartMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_START));
-        }
-        return addStartMenuItem;
-    }
-
-    private JMenuItem getAddStopItem()
-    {
-        if (addStopMenuItem == null)
-        {
-            addStopMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_STOP));
-        }
-        return addStopMenuItem;
-    }
-
-    private JMenuItem getAddAndMenuItem()
-    {
-        if (addAndMenuItem == null)
-        {
-            addAndMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_AND));
-        }
-        return addAndMenuItem;
-    }
-
-    private JMenuItem getAddXorMenuItem()
-    {
-        if (addXorMenuItem == null)
-        {
-            addXorMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_XOR));
-        }
-        return addXorMenuItem;
     }
 
     private JMenuItem getRemoveMenuItem()
