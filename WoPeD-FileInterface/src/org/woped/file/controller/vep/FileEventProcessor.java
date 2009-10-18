@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.security.AccessControlException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,7 +19,6 @@ import java.util.Vector;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 import org.woped.bpel.BPEL;
 import org.woped.core.analysis.StructuralAnalysis;
@@ -50,6 +50,8 @@ import org.woped.qualanalysis.NetAnalysisDialog;
 import org.woped.qualanalysis.WoflanAnalysis;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
+import org.woped.quantana.resourcealloc.ResourceAllocation;
+import org.woped.quantana.sim.SimGraph;
 import org.woped.server.ServerLoader;
 import org.woped.server.holder.ModellHolder;
 import org.woped.server.holder.UserHolder;
@@ -177,9 +179,14 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			break;
 
 		case AbstractViewEvent.QUANTSIM:
-			if (isSound(editor) & isBranchingOk(editor))
-				new QuantitativeSimulationDialog(
-						(JFrame) getMediator().getUi(), editor);
+			if (isSound(editor) & isBranchingOk(editor)){
+				if(((EditorVC)editor).getSimDlg()==null){
+					((EditorVC)editor).setSimDlg(new QuantitativeSimulationDialog(
+							(JFrame) getMediator().getUi(), editor));
+				}else{
+					((EditorVC)editor).getSimDlg().showdlg();
+				}				
+			}
 			break;
 		}
 	}
@@ -504,51 +511,50 @@ public class FileEventProcessor extends AbstractEventProcessor {
 							succeed = true;
 						}
 						// BPEL-Export
-//						else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
-//								&& this.isSound(editor)) {
-//							StructuralAnalysis sa = new StructuralAnalysis(
-//									editor);
-//							int wellStruct = sa
-//									.getNumPTHandles() + sa.getNumTPHandles();
-//							int freeChoice = sa.getNumFreeChoiceViolations();
-//							int sound = wellStruct + freeChoice;
-//							if (sound == 0) {
-//								succeed = BPEL.getBPELMainClass().saveFile(
-//										editor.getFilePath(), editor);
-//								ConfigurationManager.getConfiguration()
-//										.setCurrentWorkingdir(editor.getFilePath());
-//							} else {
-//								JOptionPane
-//										.showMessageDialog(
-//												null,
-//												Messages
-//														.getString("QuantAna.Message.SoundnessViolation"));
-//							}
-//
-//						}
-//						/* Tool for TPN Export */
-//						else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
-//							succeed = TPNExport.save(editor.getFilePath(),
-//									(PetriNetModelProcessor) editor
-//											.getModelProcessor());
-//							ConfigurationManager.getConfiguration()
-//									.setCurrentWorkingdir(editor.getFilePath());
-//
-//						} else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
-//							String arg[] = { editor.getName() };
-//							JOptionPane.showMessageDialog(null, Messages
-//									.getString("File.Error.SampleSave.Text",
-//											arg), Messages
-//									.getString("File.Error.SampleSave.Title"),
-//									JOptionPane.ERROR_MESSAGE);
-//							succeed = false;
-//						} else {
-//							LoggerManager.warn(Constants.FILE_LOGGER,
-//									"Unable to save File. Filetype not known: "
-//											+ editor.getDefaultFileType());
-//							succeed = false;
-//						}
-//
+						else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
+								&& this.isSound(editor)) {
+							StructuralAnalysis sa = new StructuralAnalysis(
+								editor);
+							int wellStruct = sa
+								.getNumPTHandles() + sa.getNumTPHandles();
+							int freeChoice = sa.getNumFreeChoiceViolations();
+							int sound = wellStruct + freeChoice;
+							if (sound == 0) {
+								succeed = BPEL.getBPELMainClass().saveFile(
+										editor.getFilePath(), editor);
+								ConfigurationManager.getConfiguration()
+										.setCurrentWorkingdir(editor.getFilePath());
+							} else {
+								JOptionPane
+										.showMessageDialog(
+												null,
+												Messages
+														.getString("QuantAna.Message.SoundnessViolation"));
+							}
+
+						}
+						/* Tool for TPN Export */
+						else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
+							succeed = TPNExport.save(editor.getFilePath(),
+									(PetriNetModelProcessor) editor
+											.getModelProcessor());
+							ConfigurationManager.getConfiguration()
+									.setCurrentWorkingdir(editor.getFilePath());
+
+						} else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
+							String arg[] = { editor.getName() };
+							JOptionPane.showMessageDialog(null, Messages
+									.getString("File.Error.SampleSave.Text",
+											arg), Messages
+									.getString("File.Error.SampleSave.Title"),
+									JOptionPane.ERROR_MESSAGE);
+							succeed = false;
+						} else {
+							LoggerManager.warn(Constants.FILE_LOGGER,
+									"Unable to save File. Filetype not known: "
+											+ editor.getDefaultFileType());
+							succeed = false;
+						}
 					}
 				}
 			}

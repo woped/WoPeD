@@ -1,4 +1,4 @@
-package org.woped.quantana.simulation;
+package org.woped.quantana.sim;
 
 public class SimParameters {
 	private int runs;
@@ -6,6 +6,7 @@ public class SimParameters {
 	private int distServ;
 	private int queue;
 	private int stop;
+	private boolean wlog;
 	
 	private double cParam	= 0.0;
 	private double sParam	= 0.0;
@@ -20,7 +21,7 @@ public class SimParameters {
 	}
 	
 	public SimParameters(double l, double pd, int r, int dc, int ds, int q,
-			int s, double cp, double sp, int res) {
+			int s, double cp, double sp, int res, boolean writelog) {
 		lambda = l;
 		period = pd;
 		runs = r;
@@ -31,6 +32,7 @@ public class SimParameters {
 		cParam = cp;
 		sParam = sp;
 		resUse = res;
+		wlog = writelog;
 	}
 	
 	public SimParameters(double l, double pd){
@@ -116,5 +118,13 @@ public class SimParameters {
 
 	public void setResUse(int resUse) {
 		this.resUse = resUse;
+	}
+	
+	public void setWriteLog(boolean writelog){
+		wlog = writelog;
+	}
+	
+	public boolean getWriteLog(){
+		return wlog;
 	}
 }

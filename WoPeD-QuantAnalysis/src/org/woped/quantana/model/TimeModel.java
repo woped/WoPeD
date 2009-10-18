@@ -258,6 +258,10 @@ public class TimeModel {
 			return m / stdUnitMultiple;
 		}
 	}
+	
+	public double cv(int u, double m, double orgFactor){
+		return (cv(u,m)*orgFactor);
+	}
 
 	public void setCvDayToHour(double cvDayToHour) {
 		this.cvDayToHour = cvDayToHour;

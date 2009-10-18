@@ -8,6 +8,8 @@
 	<filter token="flanaganversion" value="${FLANAGANVERSION}" />
 	<filter token="jcalendarversion" value="${JCALENDARVERSION}" />
 	<filter token="jsrversion" value="${JSRVERSION}" />
+	<filter token="jfreechartversion" value="${JFREECHARTVERSION}" />
+	<filter token="jcommonversion" value="${JCOMMONVERSION}" />
 	<filter token="ruddiversion" value="${RUDDIVERSION}" />
 	<filter token="staxversion" value="${STAXVERSION}" />
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
@@ -20,6 +22,7 @@
 	<filter token="configurationversion" value="${CONFIGURATIONVERSION}${SNAPSHOT}" />
 	<filter token="translationversion" value="${TRANSLATIONVERSION}${SNAPSHOT}" />
 	<filter token="bpelexportversion" value="${BPELEXPORTVERSION}${SNAPSHOT}" />
+	<filter token="mysqlversion" value="${MYSQLVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
 	<!--<taskdef resource="genjar.properties"/>	-->
@@ -63,6 +66,7 @@
 		<copy todir="dist/lib" file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/mysql-connector-java-${MYSQLVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
 
 		<copy todir="dist/html/en">

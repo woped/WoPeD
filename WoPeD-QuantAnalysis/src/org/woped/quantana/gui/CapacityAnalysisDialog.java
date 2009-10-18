@@ -1,5 +1,6 @@
 package org.woped.quantana.gui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -711,9 +712,9 @@ public class CapacityAnalysisDialog extends JDialog {
 					jt.setDefaultRenderer(new MyTableHeaderRenderer());
 					return jt;
 				}
-			};
+			};			
 			tasksTable.setDefaultRenderer(Object.class,
-					new MyTableCellRenderer());
+					new MyTableCellRenderer());			
 			tasksTable.setEnabled(false);
 		}
 		
@@ -902,10 +903,9 @@ public class CapacityAnalysisDialog extends JDialog {
 			if (column == 0 || column == 6)
 				setHorizontalAlignment(LEFT);
 			else
-				setHorizontalAlignment(RIGHT);
+				setHorizontalAlignment(RIGHT);			
 			setFont(DefaultStaticConfiguration.DEFAULT_TABLE_FONT);
-			setBackground(DefaultStaticConfiguration.DEFAULT_CELL_BACKGROUND_COLOR);
-			
+			setBackground(DefaultStaticConfiguration.DEFAULT_CELL_BACKGROUND_COLOR);			
 			return this;
 		}
 	}
@@ -924,7 +924,7 @@ public class CapacityAnalysisDialog extends JDialog {
 			else
 				setHorizontalAlignment(RIGHT);
 			setFont(DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
-			setBackground(DefaultStaticConfiguration.DEFAULT_HEADER_BACKGROUND_COLOR);
+			setBackground(DefaultStaticConfiguration.DEFAULT_HEADER_BACKGROUND_COLOR);			
 			return this;
 		}
 	}
@@ -1205,3 +1205,5 @@ public class CapacityAnalysisDialog extends JDialog {
 		}
 	}
 } // @jve:decl-index=0:visual-constraint="4,4"
+
+

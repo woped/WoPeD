@@ -126,10 +126,10 @@ import org.woped.editor.view.ViewFactory;
 import org.woped.translations.Messages;
 import org.woped.understandability.NetColorScheme;
 import org.woped.qualanalysis.GraphTreeModelSelector;
-import org.woped.qualanalysis.simulation.SimulatorBarVC;
-import org.woped.qualanalysis.simulation.controller.TokenGameController;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
-import org.woped.qualanalysis.reachabilitygraph.gui.*;
+import org.woped.qualanalysis.simulation.controller.TokenGameController;
+import org.woped.quantana.gui.QuantitativeSimulationDialog;
+
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -1706,6 +1706,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	 */
 	private boolean valueChangedActive = false;
 
+	private QuantitativeSimulationDialog simDlg;
+
 	public void valueChanged(GraphSelectionEvent arg0)
 	{
 		if (valueChangedActive)
@@ -2479,6 +2481,13 @@ public class EditorVC extends JPanel implements KeyListener,
 		getGraph().clearSelection();
 		setEnabled(readonly);
 		getGraph().setPortsVisible(readonly);
+	}	
+	
+	public QuantitativeSimulationDialog getSimDlg(){
+		return simDlg;
 	}
 	
+	public void setSimDlg(QuantitativeSimulationDialog newVal){
+		simDlg = newVal;
+	}
 }

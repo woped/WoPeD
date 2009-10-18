@@ -5,6 +5,8 @@
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 	<filter token="flanaganversion" value="${FLANAGANVERSION}" />
+	<filter token="jfreechartversion" value="${JFREECHARTVERSION}" />
+	<filter token="jcommonversion" value="${JCOMMONVERSION}" />
 
 	<target name="compile">
 		<javac srcdir="src" destdir="bin" compiler="extJavac">
@@ -12,6 +14,8 @@
 				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-Translations/lib/woped-translations-${TRANSLATIONVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-QualAnalysis/lib/woped-qualana-${QUALANAVERSION}${SNAPSHOT}.jar" />
+				<pathelement path="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
+				<pathelement path="../CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
 				<pathelement path="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
 				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 				<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />

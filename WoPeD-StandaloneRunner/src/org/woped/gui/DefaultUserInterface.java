@@ -494,7 +494,9 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 			if (frames[i] instanceof DefaultEditorFrame) {
 				DefaultEditorFrame current = (DefaultEditorFrame) frames[i];
 				if(current == desktop.getSelectedFrame()){
-				current.getProcessTab().setSelectedIndex(0);
+					if (current.getProcessTab()!=null){
+						current.getProcessTab().setSelectedIndex(0);
+					}				
 				}
 			}
 		}  		

@@ -135,8 +135,7 @@ public class TokenGameController
     {  
 		// remove Highlighting in RG    
     	deHighlightRG();
-    	// remove highlighting from RG in Edtor    	
-    	petrinet.resetRGHighlightAndVTokens();
+    	
     	// if you are stepping into a subprocess right now
     	if(thisEditor.isSubprocessEditor())
         {
@@ -155,6 +154,8 @@ public class TokenGameController
         }
     	else
     	{
+    		// remove highlighting from RG in Editor
+        	petrinet.resetRGHighlightAndVTokens();
     		enableVisualTokenGame();
             //displays the TokenGame Remote-Control if it already exist, if not create
     	    if(RemoteControl != null)

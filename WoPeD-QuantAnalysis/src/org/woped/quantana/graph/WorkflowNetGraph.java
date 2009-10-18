@@ -141,11 +141,11 @@ public class WorkflowNetGraph {
 						int type = ((OperatorTransitionModel)currentPlace).getOperatorType();
 						if ((type == OperatorTransitionModel.AND_JOIN_TYPE) || (type == OperatorTransitionModel.AND_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)){
 							postNode.setAndJoin(true);
-							postNode.setType(Node.TYPE_AND_JOIN);
+							postNode.setType(Node.TYPE_AND_JOIN);							
 						}
 						if ((type == OperatorTransitionModel.AND_SPLIT_TYPE) || (type == OperatorTransitionModel.AND_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)){
 							postNode.setAndSplit(true);
-							postNode.setType(Node.TYPE_AND_SPLIT);
+							postNode.setType(Node.TYPE_AND_SPLIT);							
 						}
 						if ((type == OperatorTransitionModel.XOR_JOIN_TYPE) || (type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)){
 							postNode.setType(Node.TYPE_XOR_JOIN);

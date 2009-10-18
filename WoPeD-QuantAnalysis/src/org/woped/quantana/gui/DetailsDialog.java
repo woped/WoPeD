@@ -3,22 +3,33 @@ package org.woped.quantana.gui;
 import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Rectangle;
+
 import java.util.HashMap;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import org.woped.translations.Messages;
-import org.woped.quantana.model.ReportServerStats;
-import org.woped.quantana.model.ReportStats;
-import org.woped.quantana.model.ServerStats;
-import org.woped.quantana.simulation.ANDJoinServer;
-import org.woped.quantana.simulation.Server;
-import org.woped.quantana.simulation.Simulator;
+import org.woped.quantana.sim.SimReportServerStats;
+import org.woped.quantana.sim.SimReportStats;
+import org.woped.quantana.sim.SimRunner;
+import org.woped.quantana.sim.SimServer;
+import org.woped.quantana.sim.SimServerStats;
 
 public class DetailsDialog extends JDialog {
 	
@@ -26,7 +37,7 @@ public class DetailsDialog extends JDialog {
 	
 	private static final int WIDTH	= 400;
 	
-	private static final int HEIGHT	= 300;
+	private static final int HEIGHT	= 600;
 	
 	private Dialog owner;
 	
@@ -34,15 +45,15 @@ public class DetailsDialog extends JDialog {
 	
 	private String servName;
 	
-	private Simulator sim;
+	private SimRunner sim;
 	
-	private ReportStats repStats;
+	private SimReportStats repStats;
 	
-	private Server server;
+	private SimServer server;
 	
-	private HashMap<Server, ServerStats> servStatsList;
+	private HashMap<SimServer, SimServerStats> servStatsList;
 	
-	private ReportServerStats servStats;
+	private SimReportServerStats servStats;
 	
 	private boolean isProcess = false;
 	
@@ -76,56 +87,96 @@ public class DetailsDialog extends JDialog {
 	public DetailsDialog(Dialog owner, String sname){
 		super(owner, Messages.getString("QuantAna.Simulation.Details") + " " + sname, true);
 		this.owner = owner;
-		servName = sname;
-		
+		servName = sname;		
 		sim = ((QuantitativeSimulationDialog)owner).getSimulator();
-		repStats = sim.getReportStats();
-		servStatsList = repStats.getServStats();
-		
-		getServer();
-		
+		repStats = sim.getRepStats();		
+		servStatsList = repStats.getServStats();		
+		getServer();		
 		initialize();
 	}
 	
+	static JFreeChart createDistributionChart(XYDataset dataset, String title, String xtitle, String ytitle) {
+        JFreeChart chart = ChartFactory.createXYLineChart(
+        	title,xtitle,ytitle,        		        		
+            dataset,
+            PlotOrientation.VERTICAL,
+            true,
+            true,
+            false
+        ); 
+        return chart;
+    }
+	
+	XYDataset createDataset(int[] values) {
+        XYSeries series = new XYSeries("");  
+        int j=0, left = 0, right=values.length-1;
+        // left trim
+        while ((j+1)<values.length){
+        	if(values[j+1]>0)break;
+        	left=j++;        	
+        }
+        
+        j = values.length-1;
+        // right trim
+        while((j-1)>0){
+        	if(values[j-1]>0)break;
+        	right=j--;
+        }
+        for(int i=left; i<right;i++)
+        	series.add(i-100,values[i]);        
+        return new XYSeriesCollection(series);
+    }	
+	
+	JFreeChart createPieChart(PieDataset dataset) {
+
+        JFreeChart chart = ChartFactory.createPieChart(
+        	Messages.getString("QuantAna.Simulation.Details.Wdistribution"),
+            dataset,             // data
+            true,                // include legend
+            true,
+            false
+        );
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        plot.setCircular(false);
+        plot.setLabelGap(0.02);
+        return chart;
+
+    }
+	
+	JLabel makeLabel(int width, int height){
+		JLabel l = new JLabel();
+		l.setPreferredSize(new Dimension(width,height));
+		return l;
+	}
+	
+	
 	private void initialize(){
+		final int bigwidth = 200;
+		final int smallwidth = 80;
+		final int lheight = 20;
+		
+		
 		contentPane = this.getContentPane();
 		
-		lblDesc_1 = new JLabel();
-		lblDesc_1.setPreferredSize(new Dimension(200, 20));
-		lblDetail_1 = new JLabel();
-		lblDetail_1.setPreferredSize(new Dimension(80, 20));
-		lblDesc_2 = new JLabel();
-		lblDesc_2.setPreferredSize(new Dimension(200, 20));
-		lblDetail_2 = new JLabel();
-		lblDetail_2.setPreferredSize(new Dimension(80, 20));
-		lblDesc_3 = new JLabel();
-		lblDesc_3.setPreferredSize(new Dimension(200, 20));
-		lblDetail_3 = new JLabel();
-		lblDetail_3.setPreferredSize(new Dimension(80, 20));
-		lblDesc_4 = new JLabel();
-		lblDesc_4.setPreferredSize(new Dimension(200, 20));
-		lblDetail_4 = new JLabel();
-		lblDetail_4.setPreferredSize(new Dimension(80, 20));
-		lblDesc_5 = new JLabel();
-		lblDesc_5.setPreferredSize(new Dimension(200, 20));
-		lblDetail_5 = new JLabel();
-		lblDetail_5.setPreferredSize(new Dimension(80, 20));
-		lblDesc_6 = new JLabel();
-		lblDesc_6.setPreferredSize(new Dimension(200, 20));
-		lblDetail_6 = new JLabel();
-		lblDetail_6.setPreferredSize(new Dimension(80, 20));
-		lblDesc_7 = new JLabel();
-		lblDesc_7.setPreferredSize(new Dimension(200, 20));
-		lblDetail_7 = new JLabel();
-		lblDetail_7.setPreferredSize(new Dimension(80, 20));
-		lblDesc_8 = new JLabel();
-		lblDesc_8.setPreferredSize(new Dimension(200, 20));
-		lblDetail_8 = new JLabel();
-		lblDetail_8.setPreferredSize(new Dimension(80, 20));
-		lblDesc_9 = new JLabel();
-		lblDesc_9.setPreferredSize(new Dimension(200, 20));
-		lblDetail_9 = new JLabel();
-		lblDetail_9.setPreferredSize(new Dimension(80, 20));
+		lblDesc_1 = makeLabel(bigwidth, lheight); 
+		lblDesc_2 = makeLabel(bigwidth, lheight);
+		lblDesc_3 = makeLabel(bigwidth, lheight);
+		lblDesc_4 = makeLabel(bigwidth, lheight);
+		lblDesc_5 = makeLabel(bigwidth, lheight);
+		lblDesc_6 = makeLabel(bigwidth, lheight);
+		lblDesc_7 = makeLabel(bigwidth, lheight);
+		lblDesc_8 = makeLabel(bigwidth, lheight);		
+		lblDesc_9 = makeLabel(bigwidth, lheight);
+		lblDetail_1 = makeLabel(smallwidth,lheight);
+		lblDetail_2 = makeLabel(smallwidth, lheight);
+		lblDetail_3 = makeLabel(smallwidth, lheight);
+		lblDetail_4 = makeLabel(smallwidth, lheight);
+		lblDetail_5 = makeLabel(smallwidth, lheight);
+		lblDetail_6 = makeLabel(smallwidth, lheight);
+		lblDetail_7 = makeLabel(smallwidth, lheight);
+		lblDetail_8 = makeLabel(smallwidth, lheight);
+		lblDetail_9 = makeLabel(smallwidth, lheight);
 		
 		contentPane.setLayout(new GridBagLayout());
 		GridBagConstraints constraints = new GridBagConstraints();
@@ -246,10 +297,11 @@ public class DetailsDialog extends JDialog {
 		constraints.weighty = 1;
 		constraints.gridx = 0;
 		constraints.gridy = 9;
+		constraints.gridwidth = 2;
 		contentPane.add(new JLabel(), constraints);
 		
 		if (server == null && isProcess){
-			// Prozess-Statistik
+			// process-statistics
 			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.Clock"));
 			lblDetail_1.setText(String.format("%,.2f", repStats.getDuration()));
 			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.FinishedCases"));
@@ -262,12 +314,28 @@ public class DetailsDialog extends JDialog {
 			lblDetail_5.setText(String.format("%,.2f", repStats.getProcServTime()));
 			lblDesc_6.setText(Messages.getString("QuantAna.Simulation.Details.ProcWaitTime"));
 			lblDetail_6.setText(String.format("%,.2f", repStats.getProcWaitTime()));
+			
+			constraints.weightx = 1;
+			constraints.weighty = 1;
+			constraints.gridx = 0;
+			constraints.gridy = 9;	
+			constraints.gridwidth = 2;
+			constraints.gridheight = 2;
+			ChartPanel p = new ChartPanel(createDistributionChart(
+								createDataset(	sim.getDistributionValues()),
+												Messages.getString("QuantAna.Distribution.Headline"),
+												Messages.getString("QuantAna.Distribution.XAxis"),
+												Messages.getString("QuantAna.Distribution.YAxis")));
+			p.setRangeZoomable(false);
+			contentPane.add(p,constraints);
+			
+			
+			
 		} else if (server != null){
-			// Server-Statistik
-			double zd = servStats.getZeroDelays();//server.getZeroDelays();
-			if (server instanceof ANDJoinServer) zd /= ((ANDJoinServer)server).getBranches();
+			// server-statistics
+			double zd = servStats.getAvgZeroDelays();
 			lblDesc_1.setText(Messages.getString("QuantAna.Simulation.Details.ZeroDelays"));
-			lblDetail_1.setText(String.format("%,.2f", zd));
+			lblDetail_1.setText(String.format("%,.2f", zd));			
 			lblDesc_2.setText(Messages.getString("QuantAna.Simulation.Details.NumCalls"));
 			lblDetail_2.setText(String.format("%,.2f", servStats.getAvgCalls()));
 			lblDesc_3.setText(Messages.getString("QuantAna.Simulation.Details.NumAccess"));
@@ -284,6 +352,32 @@ public class DetailsDialog extends JDialog {
 			lblDetail_8.setText(String.format("%,.2f", servStats.getAvgNumServedWhenStopped()));
 			lblDesc_9.setText(Messages.getString("QuantAna.Simulation.Details.QLenWhenStopped"));
 			lblDetail_9.setText(String.format("%,.2f", servStats.getAvgQLengthWhenStopped()));
+			
+			
+			DefaultPieDataset dataset = new DefaultPieDataset();			
+	        dataset.setValue("Ws", new Double(servStats.getAvgServTime()));
+	        if(servStats.getAvgWaitTime()>0)
+	        	dataset.setValue("Wq", new Double(servStats.getAvgWaitTime()));	        
+	        constraints.weightx = 1;
+			constraints.weighty = 1;
+			constraints.gridx = 0;
+			constraints.gridy = 9;
+			constraints.gridwidth = 2;
+	        contentPane.add(new ChartPanel(createPieChart(dataset)),constraints);			
+	        if(servStats.getDistributionLogger()!=null){
+				constraints.weightx = 1;
+				constraints.weighty = 1;
+				constraints.gridx = 0;
+				constraints.gridy = 10;	
+				constraints.gridwidth = 2;
+				ChartPanel p = new ChartPanel(createDistributionChart(
+						createDataset(	servStats.getDistributionLogger().getValues()),
+						Messages.getString("QuantAna.Simulation.Details.DistHeadline"),
+			        	Messages.getString("QuantAna.Simulation.Details.Deviation.XAxis"),
+			        	Messages.getString("QuantAna.Simulation.Details.Deviation.YAxis")));
+				contentPane.add(p,constraints);				
+			}
+			
 		}
 		
 		Rectangle bounds = owner.getBounds();
@@ -304,7 +398,7 @@ public class DetailsDialog extends JDialog {
 			server = sim.getServerList().get(key);
 		}
 		
-		servStats = (ReportServerStats)servStatsList.get(server);
+		servStats = (SimReportServerStats)servStatsList.get(server);
 	}
 	
 	private String produceID(String key) {

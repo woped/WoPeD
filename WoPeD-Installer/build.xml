@@ -8,6 +8,8 @@
 	<filter token="flanaganversion" value="${FLANAGANVERSION}" />
 	<filter token="jcalendarversion" value="${JCALENDARVERSION}" />
 	<filter token="jsrversion" value="${JSRVERSION}" />
+	<filter token="jfreechartversion" value="${JFREECHARTVERSION}" />
+	<filter token="jcommonversion" value="${JCOMMONVERSION}" />
 	<filter token="ruddiversion" value="${RUDDIVERSION}" />
 	<filter token="staxversion" value="${STAXVERSION}" />
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
@@ -89,9 +91,12 @@
 		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/ssj.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
 
 		<copy todir="dist/doc/pdf/en">
@@ -222,10 +227,13 @@
 			<fileset file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/ssj.jar" />
 			<fileset file="../CommonLibs/lib/xbean.jar" />
 		</copy>
 

@@ -1,7 +1,7 @@
-package org.woped.quantana.model;
+package org.woped.quantana.sim;
 
-public class ReportStats extends RunStats {
-	private double avgFinishedCases;
+public class SimReportStats extends SimRunStats {
+	double avgFinishedCases;
 
 	public double getAvgFinishedCases() {
 		return avgFinishedCases;

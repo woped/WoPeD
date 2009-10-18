@@ -1,20 +1,20 @@
-package org.woped.quantana.model;
+package org.woped.quantana.sim;
 
 import java.util.HashMap;
 
+import org.woped.quantana.model.ResourceStats;
 import org.woped.quantana.resourcealloc.Resource;
-import org.woped.quantana.simulation.Server;
 
-public class RunStats {
-	private double duration;
-	private double procServTime;
-	private double procWaitTime;
-	private double procCompTime;
-	private double throughPut;
-	private int finishedCases;
+public class SimRunStats {
+	double duration;
+	double procServTime;
+	double procWaitTime;
+	double procCompTime;
+	double throughPut;
+	int finishedCases;
 	
-	private HashMap<Server, ServerStats> servStats = new HashMap<Server, ServerStats>();
-	private HashMap<Resource, ResourceStats> resStats = new HashMap<Resource, ResourceStats>();
+	HashMap<SimServer, SimServerStats> servStats = new HashMap<SimServer, SimServerStats>();
+	HashMap<Resource, ResourceStats> resStats = new HashMap<Resource, ResourceStats>();
 	
 	public double getDuration() {
 		return duration;
@@ -72,11 +72,13 @@ public class RunStats {
 		this.resStats = resStats;
 	}
 
-	public HashMap<Server, ServerStats> getServStats() {
+	public HashMap<SimServer, SimServerStats> getServStats() {
 		return servStats;
 	}
 
-	public void setServStats(HashMap<Server, ServerStats> servStats) {
+	public void setServStats(HashMap<SimServer, SimServerStats> servStats) {
 		this.servStats = servStats;
 	}
 }
+
+

@@ -253,12 +253,12 @@ public class TimeModelDialog extends JDialog {
 	}
 
 	private void createTimeModel(){
-		Node[] nodes;
+		Node[] nodes = new Node[0];
 
 		if (dlg instanceof CapacityAnalysisDialog)
 			nodes = ((CapacityAnalysisDialog)dlg).getGraph().getNodeArray();
-		else
-			nodes = ((QuantitativeSimulationDialog)dlg).getGraph().getNodeArray();
+		//else
+			// nodes = ((QuantitativeSimulationDialog)dlg).getGraph().getNodeArray();
 
 		tm.setCvDayToHour(Double.parseDouble(txtDayToHour.getText()));
 		tm.setCvHourToMin(Double.parseDouble(txtHourToMin.getText()));
