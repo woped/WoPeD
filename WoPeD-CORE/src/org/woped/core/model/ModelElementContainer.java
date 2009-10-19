@@ -206,7 +206,7 @@ public class ModelElementContainer implements Serializable {
 	public void removeOnlyElement(Object id) {
 		AbstractElementModel element = getElementById(id);
 		// The element is no longer owned by anybody
-		element.removeOwningContainer(this);
+		if (element!=null) element.removeOwningContainer(this);
 		getIdMap().remove(id);
 		LoggerManager.debug(Constants.CORE_LOGGER, "Element (ID:" + id
 				+ ") deleted.");
