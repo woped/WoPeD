@@ -300,7 +300,8 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
      * @see BasicMarqueeHandler#mouseMoved(java.awt.event.MouseEvent)
      */
     public void mouseMoved(MouseEvent e)
-    {
+    {   
+    	if(!getEditor().isDrawingMode()) getEditor().getGraph().setPortsVisible(false);
         if (e != null && getEditor().isDrawingMode())
         {
             getEditor().getGraph().setCursor(Cursors.getElementCreationCursor(getEditor().getCreateElementType()));
@@ -311,15 +312,18 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler
             Object cell = getEditor().getGraph().getFirstCellForLocation(e.getX(), e.getY());
             if (e != null)
             {
-                if (getEditor().getGraph().getPortForLocation(e.getPoint().getX(), e.getPoint().getY()) != null && getEditor().getGraph().isPortsVisible())
+                if (getEditor().getGraph().getPortForLocation(e.getPoint().getX(), e.getPoint().getY()) != null &&getEditor().getGraph().isEnabled() /*&& getEditor().getGraph().isPortsVisible()*/)
                 {
                     // Set Cusor on Graph (Automatically Reset)
+                	
+                	getEditor().getGraph().setPortsVisible(true);
                     getEditor().getGraph().setCursor(new Cursor(Cursor.HAND_CURSOR));
                     // Consume Event
                     e.consume();
-                } else if (cell instanceof GroupModel || cell instanceof AbstractElementModel || cell instanceof NameModel)
+                } else if ((cell instanceof GroupModel || cell instanceof AbstractElementModel || cell instanceof NameModel)&&getEditor().getGraph().isEnabled() )
                 {
                     // Set Cusor on Graph (Automatically Reset)
+                	getEditor().getGraph().setPortsVisible(true);
                     getEditor().getGraph().setCursor(new Cursor(Cursor.MOVE_CURSOR));
                     // Consume Event
                     e.consume();

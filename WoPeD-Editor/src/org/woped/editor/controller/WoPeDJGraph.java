@@ -106,7 +106,9 @@ public class WoPeDJGraph extends AbstractGraph
         // Tell the Graph to Select new Cells upon Insertion
         // TODO: setSelectNewCells(true);
         // Make Ports Visible by Default
-        this.setPortsVisible(true);
+        //this.setPortsVisible(true);
+        // Benjamin Joerger Port are only visible on mouseover now
+        this.setPortsVisible(false);
         // Use the Grid (but don't make it Visible)
         this.setGridEnabled(true);
         // Set the Grid Size to 10 Pixel

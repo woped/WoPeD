@@ -280,7 +280,7 @@ public class TokenGameController
         // enable editor access
         getGraph().setEnabled(true);
         getGraph().enableMarqueehandler(true);
-        getGraph().setPortsVisible(true);
+        //getGraph().setPortsVisible(true);
         getGraph().setGridVisible(ConfigurationManager.getConfiguration().isShowGrid());
         getGraph().setBackground(Color.WHITE);
         getGraph().setBorder(null);
@@ -1321,7 +1321,7 @@ public class TokenGameController
         resetSinkPlacesStatus();
         resetArcStatus();
         resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
-        getGraph().setPortsVisible(true);
+        //getGraph().setPortsVisible(true);        
         getGraph().refreshNet();
         getGraph().updateUI();
     }
