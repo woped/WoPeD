@@ -1,12 +1,7 @@
 package org.woped.qualanalysis.simulation;
-import javax.imageio.ImageIO;
-
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
-import javax.swing.LookAndFeel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.UIManager;
-
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -22,6 +17,10 @@ import java.awt.Shape;
  * 
  */
 public class NewInternalFrame extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel mover = null;
 	private Shape  shape = null;
 	

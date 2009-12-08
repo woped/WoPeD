@@ -1440,7 +1440,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		
 		sp.setWriteLog(ptk.isSelected());
 
-		if (groupRoleNum > 2 && resObjNum > 1) {
+		if (groupRoleNum > 1 && resObjNum > 1) {
 			sp.setResUse(SimRunner.RES_USED);
 		} else {
 			sp.setResUse(SimRunner.RES_NOT_USED);

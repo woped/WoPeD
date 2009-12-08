@@ -54,12 +54,11 @@ public class WoPeDConfiguration implements IConfiguration {
 
 	private boolean startedAsApplet;
 
-	private String laf = null;
-	String lafCurrentSys = UIManager.getSystemLookAndFeelClassName();
-	String lafXPlatform = UIManager.getCrossPlatformLookAndFeelClassName();
-	String lafDiscretePlatform = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
-	String lafMac = "com.apple.mrj.swing.MacLookAndFeel";
-	String lafWin = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+	private String lafCurrentSys = UIManager.getSystemLookAndFeelClassName();
+	private String lafXPlatform = UIManager.getCrossPlatformLookAndFeelClassName();
+	private String lafDiscretePlatform = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
+	private String lafMac = "com.apple.mrj.swing.MacLookAndFeel";
+	private String lafWin = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 
 	public WoPeDConfiguration(boolean aStartedAsApplet) {
 		startedAsApplet = aStartedAsApplet;
@@ -197,7 +196,6 @@ public class WoPeDConfiguration implements IConfiguration {
 			System.exit(0);
 		}
 
-		// setColorOn(true);
 		return confOk;
 	}
 
@@ -273,8 +271,11 @@ public class WoPeDConfiguration implements IConfiguration {
 
 				if (lafCurrentSys.contains("WindowsLookAndFeel")) {
 					setLookAndFeel(lafWin);
-				} else {
-					setLookAndFeel(lafXPlatform);
+				} if (lafCurrentSys.contains("MacLookAndFeel")) {
+					setLookAndFeel(lafMac); 
+					}
+					else {
+					setLookAndFeel(lafDiscretePlatform);
 				}
 			} else {
 				setLookAndFeel(lafConf);
