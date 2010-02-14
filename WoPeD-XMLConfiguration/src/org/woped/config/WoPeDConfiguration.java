@@ -327,6 +327,7 @@ public class WoPeDConfiguration implements IConfiguration {
 
 			// Tools
 			setUseWoflan(config.getTools().getWoflan().getUseWoflan());
+			setUseWoflanDLL(config.getTools().getWoflan().getUseWoflanDLL());
 			setWoflanPath(config.getTools().getWoflan().getWoflanPath());
 
 			// Editor
@@ -380,7 +381,7 @@ public class WoPeDConfiguration implements IConfiguration {
 			getDocument().getConfiguration().getGeneral().setRecentFilesArray(
 					new RecentFile[0]);
 			RecentFile xmlRecent;
-			for (Iterator iter = runtimeRecentFiles.iterator(); iter.hasNext();) {
+			for (Iterator<WoPeDRecentFile> iter = runtimeRecentFiles.iterator(); iter.hasNext();) {
 				WoPeDRecentFile recent = (WoPeDRecentFile) iter.next();
 				xmlRecent = getDocument().getConfiguration().getGeneral()
 						.addNewRecentFiles();
@@ -489,7 +490,7 @@ public class WoPeDConfiguration implements IConfiguration {
 	 * 
 	 * @return Vector
 	 */
-	public Vector getRecentFiles() {
+	public Vector<WoPeDRecentFile> getRecentFiles() {
 		return runtimeRecentFiles;
 	}
 
@@ -667,6 +668,16 @@ public class WoPeDConfiguration implements IConfiguration {
 		return getDocument().getConfiguration().getTools().getWoflan()
 				.getWoflanPath();
 	}
+	
+	/**
+	 * Returns the useWoflan.dll
+	 * 
+	 * @return boolean
+	 */
+	public boolean isUseWoflanDLL() {
+		return getDocument().getConfiguration().getTools().getWoflan()
+				.getUseWoflanDLL();
+	}
 
 	/**
 	 * Sets the useWoflan.
@@ -688,6 +699,17 @@ public class WoPeDConfiguration implements IConfiguration {
 	public void setWoflanPath(String woflanPath) {
 		getDocument().getConfiguration().getTools().getWoflan().setWoflanPath(
 				woflanPath);
+	}
+	
+	/**
+	 * Sets the useWoflan.dll
+	 * 
+	 * @param useWoflanDLL
+	 *            The useWoflanDLL to set
+	 */
+	public void setUseWoflanDLL(boolean useWoflanDLL) {
+		getDocument().getConfiguration().getTools().getWoflan().setUseWoflanDLL(
+				useWoflanDLL);
 	}
 
 	/**

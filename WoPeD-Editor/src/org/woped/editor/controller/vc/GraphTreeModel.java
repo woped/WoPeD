@@ -33,8 +33,8 @@ import org.jgraph.event.GraphModelListener;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.qualanalysis.NetInfo;
-import org.woped.qualanalysis.NodeNetInfo;
+import org.woped.qualanalysis.sidebar.expert.components.NetInfo;
+import org.woped.qualanalysis.sidebar.expert.components.NodeNetInfo;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

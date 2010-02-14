@@ -13,7 +13,7 @@ public class ReachabilityEdgeModel extends DefaultEdge {
 	private boolean Outgoing = false;
 	private boolean Ingoing = false;
 
-	public ReachabilityEdgeModel(TransitionObject to){
+	public ReachabilityEdgeModel(Object to){
 		super(to);
         AttributeMap attributes = getAttributes();
         GraphConstants.setMoveable(attributes, true);

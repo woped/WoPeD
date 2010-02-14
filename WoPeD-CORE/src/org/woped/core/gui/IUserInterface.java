@@ -4,12 +4,10 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
 import java.util.List;
+
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.qualanalysis.IReachabilityGraph;
-import org.woped.core.gui.IToolBar;
 
 public interface IUserInterface extends IEditorAware
 {

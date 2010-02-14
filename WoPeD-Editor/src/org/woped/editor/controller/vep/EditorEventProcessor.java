@@ -1,16 +1,12 @@
 package org.woped.editor.controller.vep;
 
-import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import org.jgraph.graph.DefaultGraphCell;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
@@ -34,10 +30,6 @@ import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
-import org.woped.editor.controller.VisualController;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
-import org.woped.understandability.INetColorScheme;
-import org.woped.understandability.NetColorScheme;
 
 public class EditorEventProcessor extends AbstractEventProcessor
 {
@@ -360,6 +352,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 						((PlaceModel) cell).addToken();
 					}
 					editor.updateNet();
+					editor.autoRefreshAnalysisBar();
 					editor.setSaved(false);
 				}
 				break;
@@ -375,6 +368,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 						((PlaceModel) cell).removeToken();
 					}
 					editor.updateNet();
+					editor.autoRefreshAnalysisBar();
 					editor.setSaved(false);
 				}
 				break;
@@ -405,6 +399,34 @@ public class EditorEventProcessor extends AbstractEventProcessor
 				break;
 			case AbstractViewEvent.STRETCH:
 				editor.scaleNet(2);
+				break;
+			case AbstractViewEvent.ROTATEVIEW:
+				editor.rotateLayout();
+				break;	
+			case AbstractViewEvent.ROTATETRANSLEFT:
+				cell = editor.getGraph().getSelectionCell();
+				if (cell instanceof TriggerModel)
+				{
+					cell = ((TriggerModel) cell).getParent();
+				}
+				if (cell instanceof GroupModel)
+				{
+					cell = ((GroupModel) cell).getMainElement();
+				}
+				//TODO auf die Methoden von Orientation zugreifen, nicht von EditorVC
+				editor.rotateTransLeft(cell);
+				break;
+			case AbstractViewEvent.ROTATETRANSRIGHT:
+				cell = editor.getGraph().getSelectionCell();
+				if (cell instanceof TriggerModel)
+				{
+					cell = ((TriggerModel) cell).getParent();
+				}
+				if (cell instanceof GroupModel)
+				{
+					cell = ((GroupModel) cell).getMainElement();
+				}
+				editor.rotateTransRight(cell);
 				break;
 			default:
 				break;

@@ -48,8 +48,10 @@ public class CreationMap extends HashMap<String, Object>
     public static final String ELEMENT_NAME          = "ELEMENT_NAME";
     public static final String ELEMENT_NAME_SIZE     = "ELEMENT_NAME_SIZE";
     public static final String ELEMENT_NAME_POSITION = "ELEMENT_NAME_POSITION";
+    public static final String VERTICAL_VIEW         = "VERTICAL_VIEW";
     public static final String EDIT_ON_CREATION      = "EDIT_ON_CREATION";
     public static final String OPERATOR_TYPE         = "OPERATOR_TYPE";
+    public static final String OPERATOR_POSITION 	 = "OPERATOR_POSITION";
     public static final String TRIGGER_TYPE          = "TRIGGER_TYPE";
     public static final String TRIGGER_POSITION      = "TRIGGER_POSITION";
     public static final String TOKENS                = "TOKENS";
@@ -223,6 +225,38 @@ public class CreationMap extends HashMap<String, Object>
             return -1;
         }
     }
+    
+    public void setVerticalView(boolean verticalView)
+    {
+        put(VERTICAL_VIEW, new Boolean(verticalView));
+    }
+
+    public boolean getVerticalView()
+    {
+        if (containsKey(VERTICAL_VIEW))
+        {
+            return ((Boolean) get(VERTICAL_VIEW)).booleanValue();
+        } else
+        {
+            return false;
+        }
+    }
+    
+    public void setOperatorPosition(int operatorPosition){
+    	put(OPERATOR_POSITION, new Integer(operatorPosition));
+    }
+    
+    public int getOperatorPosition(){
+        if (containsKey(OPERATOR_POSITION))
+        {
+        	return ((Integer) get(OPERATOR_POSITION)).intValue();
+        } else
+        {
+        	return -1;
+        }
+    }
+    
+    
 
     public void setEditOnCreation(boolean edit)
     {
@@ -589,7 +623,7 @@ public class CreationMap extends HashMap<String, Object>
 	        return -1;
 	     }
 	}
-
+	
 	public void setUpperElement(AbstractElementModel upperElement)
 	{
 		put(UPPER_ELEMENT, upperElement);
@@ -631,4 +665,6 @@ public class CreationMap extends HashMap<String, Object>
 	{
 		return this.get(CreationMap.BPELDATA);
 	}
+	
+	
 }

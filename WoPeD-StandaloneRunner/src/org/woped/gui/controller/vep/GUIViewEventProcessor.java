@@ -103,10 +103,17 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				if (cell instanceof SubProcessModel)
 				{
 					SubProcessModel model = (SubProcessModel) cell;
-
-					getMediator().createSubprocessEditor(
+					
+					IEditor subEditor = getMediator().createSubprocessEditor(
 							AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
 							true, editor, model);
+					
+					//rotate of Subprocess like Mainprocess
+					if  (editor.isRotateSelected() != model.getDirection()){
+						subEditor.rotateLayout();
+						model.setDirection(editor.isRotateSelected());
+					}
+
 				}
 			} else
 			{

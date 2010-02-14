@@ -34,11 +34,14 @@ import java.awt.Rectangle;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeSupport;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -48,6 +51,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -122,13 +126,16 @@ import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
+import org.woped.editor.layout.EditorSize;
+import org.woped.editor.layout.Orientation;
 import org.woped.editor.view.ViewFactory;
-import org.woped.translations.Messages;
-import org.woped.understandability.NetColorScheme;
-import org.woped.qualanalysis.GraphTreeModelSelector;
+import org.woped.qualanalysis.sidebar.SideBar;
+import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.qualanalysis.simulation.controller.TokenGameController;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
+import org.woped.translations.Messages;
+import org.woped.understandability.NetColorScheme;
 
 
 /**
@@ -175,6 +182,9 @@ public class EditorVC extends JPanel implements KeyListener,
 	public static final double MIN_SCALE = 0.2;
 
 	public static final double MAX_SCALE = 5;
+	
+	//rotate
+	private Orientation m_orientation = null;
 
 	// not needed private boolean m_keyPressed = false;
 	private int m_createElementType = -1;
@@ -189,6 +199,10 @@ public class EditorVC extends JPanel implements KeyListener,
 	private boolean m_TokenGameEnabled = false;
 	
 	private boolean m_UnderstandabilityColoringEnabled = false;
+	
+	private boolean m_RotateSelected = false;
+	
+	private EditorLayoutInfo m_EditorLayoutInfo = null;
 
 	private boolean m_tokenGameMode = false;
 
@@ -214,6 +228,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	private JSplitPane m_leftSideTreeView = null;
 
 	private JSplitPane m_mainSplitPane = null;
+	
+	private JSplitPane mainsplitPaneWithAnalysisBar = null;
 
 	private JTree m_treeObject = null;
 
@@ -224,6 +240,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	private static final int m_splitSize = 10;
 
 	private IEditor m_parentEditor = null;
+	
+	private EditorSize editorSize = null;
 
 	// for subprocess
 	private AbstractElementModel m_subprocessInput = null;
@@ -261,7 +279,11 @@ public class EditorVC extends JPanel implements KeyListener,
 			int modelProcessorType, boolean undoSupport,
 			AbstractApplicationMediator mediator)
 	{
+		this.editorSize = new EditorSize(this);
+		this.m_orientation = new Orientation();
 		this.m_centralMediator = mediator;
+		this.m_EditorLayoutInfo = new EditorLayoutInfo();
+		this.m_EditorLayoutInfo.setVerticalLayout(isRotateSelected());
 		// initialize
 		this.setLayout(new BorderLayout());
 		this.m_clipboard = clipboard;
@@ -356,6 +378,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		
 		//NetColorScheme
 		m_understandColoring = new NetColorScheme(); 
+		updateUI();
 	}
 
 	public EditorVC(String string, EditorClipboard clipboard,
@@ -363,7 +386,6 @@ public class EditorVC extends JPanel implements KeyListener,
 			SubProcessModel model, AbstractApplicationMediator mediator)
 	{
 		this(string, clipboard, modelProcessorType, undoSupport, mediator);
-
 		boolean origStatus = parentEditor.isSaved();
 
 		setParentEditor(parentEditor);
@@ -565,7 +587,15 @@ public class EditorVC extends JPanel implements KeyListener,
 						triggerModel.setPosition(map.getTriggerPosition());
 					} 
 					else {
-						triggerModel.setPosition(map.getPosition().x + 10, map.getPosition().y - 20);
+						if(isRotateSelected())
+						{
+							triggerModel.setPosition(map.getPosition().x - 25, map.getPosition().y + 10);
+						}
+						else
+						{
+							triggerModel.setPosition(map.getPosition().x + 10, map.getPosition().y - 20);
+						}
+						
 					}
 					ParentMap pm = new ParentMap();
 					pm.addEntry(triggerModel, group);
@@ -687,11 +717,22 @@ public class EditorVC extends JPanel implements KeyListener,
 				// Name
 				if (map.getNamePosition() == null)
 				{
-					((PetriNetModelElement) element)
-							.getNameModel()
-							.setPosition(
-									(int) (element.getX() - 1),
-									(int) (element.getY() + element.getHeight()));
+					if(isRotateSelected())
+					{
+						((PetriNetModelElement) element)
+						.getNameModel()
+						.setPosition(
+								(int) (element.getX() + element.getWidth()),
+								(int) (element.getY()) + 1);
+					}
+					else
+					{
+						((PetriNetModelElement) element)
+						.getNameModel()
+						.setPosition(
+								(int) (element.getX() - 1),
+								(int) (element.getY() + element.getHeight()));
+					}
 				} else
 				{
 					((PetriNetModelElement) element).getNameModel()
@@ -730,6 +771,7 @@ public class EditorVC extends JPanel implements KeyListener,
 					getGraph().startEditingAtCell(
 							((PetriNetModelElement) element).getNameModel());
 				}
+				autoRefreshAnalysisBar();
                 return group;//@@@TODO
 			} else if (element instanceof AbstractUMLElementModel)
 			{
@@ -873,6 +915,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		{
 			// arc.setRoute(map.isArcRoute());
 		}
+		autoRefreshAnalysisBar();
 		return arc;
 
 	}
@@ -953,6 +996,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 		deleteOnlyCells(uniqueResult.toArray(), withGraph);
 		m_understandColoring.update();
+		autoRefreshAnalysisBar();
 	}
 
 	/**
@@ -1265,8 +1309,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		getGraph().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		long begin = System.currentTimeMillis();
-		Map pasteElements = m_clipboard.getCopiedElementsList();
-		Map pasteArcs = m_clipboard.getCopiedArcsList();
+		Map<String, CreationMap> pasteElements = m_clipboard.getCopiedElementsList();
+		Map<String, CreationMap> pasteArcs = m_clipboard.getCopiedArcsList();
 
 		/* find delta for Position */
 		int deltaX, deltaY;
@@ -1278,7 +1322,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		{
 			CreationMap leftmostElement;
 			// find delta
-			Iterator eleIter = pasteElements.keySet().iterator();
+			Iterator<String> eleIter = pasteElements.keySet().iterator();
 			leftmostElement = (CreationMap) pasteElements.get(eleIter.next());
 			CreationMap currentMap;
 			while (eleIter.hasNext())
@@ -1306,7 +1350,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		AbstractElementModel tempElement;
 		String oldElementId;
 		Vector<Object> selectElements = new Vector<Object>();
-		Iterator eleIter = pasteElements.keySet().iterator();
+		Iterator<String> eleIter = pasteElements.keySet().iterator();
 		while (eleIter.hasNext())
 		{
 			currentMap = (CreationMap) pasteElements.get(eleIter.next());
@@ -1377,7 +1421,7 @@ public class EditorVC extends JPanel implements KeyListener,
 			}
 			
 			/* change arc source/target */
-			Iterator arcIter = pasteArcs.keySet().iterator();
+			Iterator<String> arcIter = pasteArcs.keySet().iterator();
 			while (arcIter.hasNext())
 			{
 				currentArcMap = (CreationMap) pasteArcs.get(arcIter.next());
@@ -1401,7 +1445,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		}
 
 		/* insert arcs */
-		Iterator arcIter = pasteArcs.keySet().iterator();
+		Iterator<String> arcIter = pasteArcs.keySet().iterator();
 		ArcModel tempArc;
 		Point2D point;
 		CreationMap cmap = CreationMap.createMap();
@@ -1436,7 +1480,8 @@ public class EditorVC extends JPanel implements KeyListener,
 	}
 
 	/**
-	 * TODO: DOCUMENTATION
+	 * method to "move" selected elements to another position
+	 * implemented as create copy of all elements and delete originals afterwards
 	 */
 	public void cutSelection()
 	{
@@ -1558,7 +1603,7 @@ public class EditorVC extends JPanel implements KeyListener,
 	public void scaleNet(double factor)
 	{
 
-		Iterator iter = getModelProcessor().getElementContainer()
+		Iterator<AbstractElementModel> iter = getModelProcessor().getElementContainer()
 				.getRootElements().iterator();
 		PetriNetModelElement aModel;
 		while (iter.hasNext())
@@ -1773,6 +1818,16 @@ public class EditorVC extends JPanel implements KeyListener,
 		{
 			setSaved(false);
 		}
+		//to enable renaming of simpleTransitions in Operators we have to call
+		//the method setNameValue() after changing the name with jgraph-method
+		//startEditingAtCell()
+		if(getGraph().getLastEdited() != null){
+			NameModel nM = getGraph().getLastEdited();
+			AbstractElementModel aem = getModelProcessor().getElementContainer().getElementById(nM.getOwnerId());
+			if(aem != null)
+				aem.setNameValue(nM.getNameValue());
+			getGraph().setLastEditedNull();
+		}
 	}
 
 	/**
@@ -1915,10 +1970,10 @@ public class EditorVC extends JPanel implements KeyListener,
 	{
 		if (viewevent == null)
 			return;
-		java.util.Vector vector;
+		Vector<IViewListener> vector;
 		synchronized (viewListener)
 		{
-			vector = (java.util.Vector) viewListener.clone();
+			vector = (Vector<IViewListener>) viewListener.clone();
 		}
 		if (vector == null)
 			return;
@@ -1930,7 +1985,64 @@ public class EditorVC extends JPanel implements KeyListener,
 			viewlistener.viewEventPerformed(viewevent);
 		}
 	}
-
+	
+	/**
+	 * Calls the algorithms for rotating the view and the elements
+	 */
+	public void rotateLayout()
+	{
+		m_orientation.rotateView(getModelProcessor().getElementContainer());
+		
+		
+		//TODO
+		
+		if (isRotateSelected()){
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "DEACTIVATE RotateSelected ");
+			setRotateSelected(false);
+			m_EditorLayoutInfo.setVerticalLayout(false);
+		}
+		else {
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "ACTIVATE RotateSelected ");
+			setRotateSelected(true);
+			m_EditorLayoutInfo.setVerticalLayout(true);
+		}
+		// Update the UI representation
+		getGraph().updateUI();	
+		getGraph().drawNet(getModelProcessor());
+		updateNet();
+		
+		editorSize.resize();
+		
+		setSaved(false);
+	}
+	
+	/**
+	 * rotates the Transition
+	 */
+	public void rotateTransLeft(Object cell)
+	{
+		if(cell instanceof TransitionModel){
+			m_orientation.rotateTransLeft((TransitionModel) cell);
+			
+			getGraph().drawNet(getModelProcessor());
+			updateNet();
+			setSaved(false);
+			getGraph().setSelectionCell(cell);
+		}
+	}
+	
+	public void rotateTransRight(Object cell)
+	{
+		if(cell instanceof TransitionModel){
+			m_orientation.rotateTransRight((TransitionModel) cell);
+			
+			getGraph().drawNet(getModelProcessor());
+			updateNet();
+			setSaved(false);
+			getGraph().setSelectionCell(cell);
+		}
+	}
+	
 	/* ########## GETTER & SETTER ########## */
 
 	public Point2D getLastMousePosition()
@@ -2391,7 +2503,7 @@ public class EditorVC extends JPanel implements KeyListener,
 		if (analysis.getNumSourcePlaces() == 1)
 		{
 			// Hand an initial token to the sub-process for the token game
-			Iterator i = analysis.getSourcePlacesIterator();
+			Iterator<AbstractElementModel> i = analysis.getSourcePlacesIterator();
 			((PlaceModel) i.next()).receiveToken();
 		}
 		// Enable token game mode
@@ -2489,5 +2601,135 @@ public class EditorVC extends JPanel implements KeyListener,
 	
 	public void setSimDlg(QuantitativeSimulationDialog newVal){
 		simDlg = newVal;
+	}
+	
+	private boolean analysisBarVisible = false;
+
+	private SideBar analysisSideBar = null;
+	
+	private JCheckBox autoRefresh = null;
+	
+//	private JCheckBox tStarCheckBox = null;
+
+	/**
+	 * replaces the "normal" EditorSplitPane with another SplitPane with the
+	 * AnalysisSidebar on the right side
+	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 */
+	public void showAnalysisBar(File temporaryFile, IEditor editor,
+			AbstractApplicationMediator mediator) {
+		if (!analysisBarVisible) {
+			this.remove(m_mainSplitPane);
+			this.getContainer();
+			boolean autoRefreshStatus = true;
+			analysisSideBar = new SideBar(temporaryFile, editor, mediator, autoRefreshStatus);
+			
+			JPanel bottomPanel = new JPanel(new BorderLayout());
+			autoRefresh = new JCheckBox(Messages.getString("AnalysisSideBar.Autorefresh"));
+			autoRefresh.setSelected(autoRefreshStatus);
+			autoRefresh.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent arg0) {
+					boolean selected = ((JCheckBox)arg0.getSource()).isSelected();
+					analysisSideBar.setAutoRefreshStatus(selected);
+					analysisSideBar.repaint();
+				}
+			});
+			bottomPanel.add(autoRefresh, BorderLayout.CENTER);
+			// if t star checkbox is selected show t star in editor (only if net is a workflow net)
+//			tStarCheckBox = new JCheckBox(Messages.getString("AnalysisSideBar.TStar"));
+//			if(!analysisSideBar.getWorkflowStatus())
+//				tStarCheckBox.setEnabled(false);
+//			tStarCheckBox.addActionListener(new ActionListener() {
+//				
+//				public void actionPerformed(ActionEvent arg0) {
+//					boolean selected = ((JCheckBox)arg0.getSource()).isSelected();
+//					if(selected && analysisSideBar.getWorkflowStatus()){
+//						// show tStar
+//					}else{
+//						// hide tStar
+//					}
+//				}
+//			});
+//			bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
+			
+			JPanel sideBar = new JPanel(new BorderLayout());
+			sideBar.add(analysisSideBar, BorderLayout.CENTER);
+			sideBar.add(bottomPanel, BorderLayout.SOUTH);
+
+			mainsplitPaneWithAnalysisBar = new JSplitPane(
+					JSplitPane.HORIZONTAL_SPLIT, m_mainSplitPane,
+					sideBar);
+			
+			this.add(mainsplitPaneWithAnalysisBar);
+			analysisBarVisible = true;
+			this.revalidate();
+			editorSize.resize();
+			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (this
+					.getWidth() - editorSize.SIDEBAR_WIDTH));
+			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
+		}
+	}
+	
+	/**
+	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 */
+	public void autoRefreshAnalysisBar() {
+		if(analysisBarVisible && autoRefresh.isSelected()){
+			analysisSideBar.refresh();
+			editorSize.resize();
+		}
+	}
+
+	/**
+	 * Method removes analysis sidebar
+	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 */
+	public void hideAnalysisBar() {
+		if (analysisBarVisible) {
+			this.remove(mainsplitPaneWithAnalysisBar);
+			mainsplitPaneWithAnalysisBar = null;
+			this.add(m_mainSplitPane);
+			analysisBarVisible = false;
+			this.revalidate();
+			editorSize.resize();
+		}
+	}
+	
+	/**
+	 * Method returns if analysis sidebar is visible or not
+	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 */
+	public boolean getAnalysisBarVisible(){
+		return analysisBarVisible;
+	}
+	
+	public boolean isRotateSelected(){
+		return m_orientation.isRotateSelected();
+	}
+	
+	public void setRotateSelected(boolean rotateSelected) {
+		m_orientation.setRotateSelected(rotateSelected);
+	}
+
+	/**
+	 * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+	 * @see org.woped.core.controller.IEditor#isUseWoflanDLL()
+	 */
+	public Boolean isUseWoflanDLL(){
+		String os_name = System.getProperty("os.name");
+		if(os_name.startsWith("Mac") || os_name.startsWith("Linux")){
+			return false;
+		} else {
+			return ConfigurationManager.getConfiguration().isUseWoflanDLL();
+		}
+	}
+	
+	/**
+	 * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+	 * @see java.awt.Component.getParent()
+	 */
+	public Container getParent(){
+		return super.getParent();
 	}
 }

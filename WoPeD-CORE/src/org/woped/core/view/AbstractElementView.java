@@ -34,11 +34,12 @@ import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphCellEditor;
 import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.model.petrinet.Toolspecific.OperatorDirection;
+import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 
 /**
  * @author Simon Landes
@@ -47,6 +48,7 @@ import org.woped.core.model.petrinet.TriggerModel;
  * Window>Preferences>Java>Templates. To enable and disable the creation of type
  * comments go to Window>Preferences>Java>Code Generation.
  */
+@SuppressWarnings("serial")
 public abstract class AbstractElementView extends VertexView {
 
     /**
@@ -213,6 +215,101 @@ public abstract class AbstractElementView extends VertexView {
     		g.drawLine(basex, b, tipx, tipy);
     		g.drawLine(basex, d.height - b, tipx, tipy);
     	}
+    	
+    	//XX
+    	protected void drawOperatorArrow2( Graphics g, OperatorPosition arrowPosition, OperatorDirection arrowDirection) {
+
+        	// the infamous arrow -- orientation remix
+        	
+        	//position = arrowPosition; // save location
+        	
+        	int height = getSize().height;
+        	int width = getSize().width;
+        	int bw = borderWidth;
+
+        	g.setColor(getInnerDrawingsColor());
+        	// g.setColor(java.awt.Color.BLUE);
+        	
+        	Polygon p = new Polygon();
+
+        	//System.out.println("***** AbstractElementView.drawArrow()");
+
+        	switch( arrowPosition ) {
+	        	case NORTH:
+		        	if ( arrowDirection == OperatorDirection.IN ) {
+		        		p.addPoint( bw, bw );
+		        		p.addPoint( width/2, height/3 );
+		        		p.addPoint( width-bw, bw );
+		        		p.addPoint( width-bw, height/3 );
+		        		p.addPoint( bw, height/3 );
+		        	} else { 
+		        		p.addPoint( bw, bw );
+		        		p.addPoint( width-bw, bw );
+		        		p.addPoint( width-bw, height/3 );
+		        		p.addPoint( width/2, bw );
+		        		p.addPoint( bw, height/3 );
+		        		g.drawLine( bw, height/3, width-bw, height/3 );
+		        	}
+		        	break;
+	        	case EAST:
+		        	if ( arrowDirection == OperatorDirection.IN ) {
+			        	p.addPoint( width*2/3, bw );
+			        	p.addPoint( width-bw, bw );
+			        	p.addPoint( width*2/3, height/2 );
+			        	p.addPoint( width-bw, height-bw );
+			        	p.addPoint( width*2/3, height-bw );
+		        	} else {
+			        	p.addPoint( width*2/3, bw );
+			        	p.addPoint( width-bw, bw );
+			        	p.addPoint( width-bw, height-bw );
+			        	p.addPoint( width*2/3, height-bw );
+			        	p.addPoint( width-bw, height/2 );
+			        	g.drawLine( width*2/3, bw, width*2/3, height-bw );
+		        	}
+		        	break;
+	        	case SOUTH:
+	        		if ( arrowDirection == OperatorDirection.IN ) {
+	        			p.addPoint( bw, height*2/3 );
+	        			p.addPoint( width-bw, height*2/3 );
+	        			p.addPoint( width-bw, height-bw );
+	        			p.addPoint( width/2, height*2/3 );
+	        			p.addPoint( bw, height-bw );
+	        		} else {
+	        			p.addPoint( bw, height*2/3 );
+	        			p.addPoint( width/2, height-bw );
+	        			p.addPoint( width-bw, height*2/3 );
+	        			p.addPoint( width-bw, height-bw );
+	        			p.addPoint( bw, height-bw );
+	        			g.drawLine( bw, height*2/3, width-bw, height*2/3 );
+	        		}
+	        		break;
+	        	case WEST:
+	        		if ( arrowDirection == OperatorDirection.IN ) {
+	        			p.addPoint( bw, bw );
+	        			p.addPoint( width/3, bw );
+	        			p.addPoint( width/3, height-bw );
+	        			p.addPoint( bw, height-bw );
+	        			p.addPoint( width/3, height/2 );
+	        		} else {
+	        			p.addPoint( bw, bw );
+	        			p.addPoint( width/3, bw );
+	        			p.addPoint( bw, height/2 );
+	        			p.addPoint( width/3, height-bw );
+	        			p.addPoint( bw, height-bw );
+	        			g.drawLine( width/3, bw, width/3, height-bw );
+	        		}
+
+         	}
+        	
+        	g.drawPolygon(p);
+    		Color drawingColor = getInnerDrawingsColor();
+    		g.setColor(new Color(drawingColor.getRed(),
+    				drawingColor.getGreen(), drawingColor.getBlue(), 25));
+        	g.fillPolygon(p);
+        	
+
+        }
+    	
     }
     
     private String getAbbrev(int u){

@@ -1,6 +1,7 @@
 package org.woped.core.controller;
 
 import java.awt.geom.Point2D;
+import java.io.File;
 
 import javax.swing.JComponent;
 
@@ -225,4 +226,30 @@ public interface IEditor extends IViewController
 	 * @since 02.01.2009
 	 */
 	public void setReadOnly(boolean readonly);
+	
+	public void showAnalysisBar(File temporaryFile, IEditor editor, AbstractApplicationMediator mediator);
+	
+	public void hideAnalysisBar();
+	
+	public boolean getAnalysisBarVisible();
+	
+	public void rotateLayout();
+	
+	public void rotateTransLeft(Object cell);
+	
+	public void rotateTransRight(Object cell);
+	
+	public boolean isRotateSelected();
+
+	public void setRotateSelected(boolean active);
+	
+	/**
+	 * Checks if woflan.dll should be used for qualanalysis <br />
+	 * For non-windows-systems it always should return false
+	 * 
+	 * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+	 * 
+	 * @return true if woflan.dll should be used for qualanalysis
+	 */
+	public Boolean isUseWoflanDLL();
 }

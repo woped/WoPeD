@@ -26,7 +26,6 @@ import java.awt.Color;
 import java.io.Serializable;
 
 import org.woped.core.Constants;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.CreationMap;
 import org.woped.core.utilities.LoggerManager;
 
@@ -68,6 +67,14 @@ public class Toolspecific implements Serializable
     private boolean				    UnderstandColoringActive = false;
 
     private Color				    UnderstandColor          = Color.white;
+    
+    public static enum OperatorPosition {NORTH, EAST, SOUTH, WEST}
+    public static enum OperatorDirection { IN, OUT }
+    
+
+    private OperatorPosition position = OperatorPosition.EAST; 
+    private OperatorDirection direction = OperatorDirection.IN;
+     
     
     /**
      * Constructor for Toolspecific. ownerid must not be null.
@@ -268,4 +275,31 @@ public class Toolspecific implements Serializable
 	public Color getUnderstandColor(){
 		return this.UnderstandColor;
 	}
+	
+	public OperatorPosition getOperatorPosition(){
+		return this.position;
+	}
+	
+	public void setOperatorPosition (OperatorPosition position){
+		this.position = position;
+	}
+   public OperatorDirection getOperatorDirection() {
+    	return this.direction;
+    }
+    
+    public void setOperatorDirection(OperatorDirection direction) {
+    	this.direction = direction;
+    }
+    
+    public OperatorPosition getOperatorOppositePosition() {
+     	return OperatorPosition.values()[(position.ordinal()+2)%OperatorPosition.values().length];
+    }
+    
+    public OperatorDirection getOperatorOppositeDirection() {
+     	return OperatorDirection.values()[(direction.ordinal()+1)%OperatorDirection.values().length];
+    }
+    
+
+
+
 }

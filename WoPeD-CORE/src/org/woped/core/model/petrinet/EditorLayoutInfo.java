@@ -13,9 +13,11 @@ public class EditorLayoutInfo {
 	public EditorLayoutInfo() {
 		super();
 	}
+	
 	private Dimension m_savedSize = null;
 	private Point 	  m_savedLocation = null;
 	private int   	  m_treeViewWidth = 0;
+	public static boolean   m_verticalLayout = false;
 	
 	/**
 	 * Returns the saved Size of the Editor.
@@ -66,5 +68,13 @@ public class EditorLayoutInfo {
 	public void setTreeViewWidth(int viewWidth) {
 		m_treeViewWidth = viewWidth;
 	}
+	
+    public boolean getVerticalLayout() {
+    	return m_verticalLayout;
+    }
+    
+    public void setVerticalLayout (boolean verticalView) {
+    	m_verticalLayout = verticalView;
+    }
 	
 }

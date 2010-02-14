@@ -22,18 +22,18 @@
  */
 package org.woped.core.model.petrinet;
 
-import java.awt.Color;
 import java.awt.Point;
 import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
-import org.woped.core.model.PetriNetModelProcessor; 
+import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.Toolspecific.OperatorDirection;
+import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 
 
 
@@ -65,7 +65,9 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
 
     public static final String    INNERID_SEPERATOR     = "_";
     
-    public static final String 	  OPERATOR_SEPERATOR    = INNERID_SEPERATOR + "op" + INNERID_SEPERATOR; 
+    public static final String 	  OPERATOR_SEPERATOR_TRANSITION = INNERID_SEPERATOR + "op" + INNERID_SEPERATOR; 
+    
+    public static final String    OPERATOR_SEPERATOR_PLACE = "CENTER" + INNERID_SEPERATOR + "PLACE" + INNERID_SEPERATOR;
 
     public static final int       AND_SPLIT_TYPE        = 101;
 
@@ -102,6 +104,9 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
             { 0, 0, 1, 0, 1 }, { 0, 1, 0, 0, 1 }, { 0, 1, 0, 1, 1 }, { 0, 1, 1, 1, 1 }, { 0, 1, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 0, 0, 1, 1 }, { 1, 0, 1, 1, 1 }, { 1, 0, 1, 0, 1 },
             { 1, 1, 0, 0, 1 }, { 1, 1, 0, 1, 1 }, { 1, 1, 1, 1, 1 }, { 1, 1, 1, 0, 1 } } };
 
+    private boolean verticalView = false;
+    private EditorLayoutInfo m_EditorLayoutInfo = null;
+    
     /**
      * Constructor for OperatorTransitionModel.
      * 
@@ -125,6 +130,103 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         // TransitionModel initalSimpleTrans = createSimpleTransition();
         // getSimpleTransContainer().addElement(initalSimpleTrans);
         // this.initalSimpleTrans = initalSimpleTrans;
+        // System.out.println("OperatorTransistionModel -------- " + map.getOperatorType());
+        
+        OperatorPosition east_south = OperatorPosition.EAST;
+        OperatorPosition west_north = OperatorPosition.WEST;
+        
+        //checks if the current modelling direction is vertical or horizontal
+        //and sets the corresponding direction
+        //verticalView = EditorLayoutInfo.m_verticalLayout;
+        
+        m_EditorLayoutInfo = new EditorLayoutInfo();
+        //TODO
+        if(m_EditorLayoutInfo.getVerticalLayout())
+        {
+        	east_south = OperatorPosition.SOUTH;
+        	west_north = OperatorPosition.NORTH;
+        }
+        else
+        {
+        	east_south = OperatorPosition.EAST;
+        	west_north = OperatorPosition.WEST;
+        }
+        
+        //XX
+        switch(map.getOperatorType()) {
+        	case AND_SPLIT_TYPE:
+        		getToolSpecific().setOperatorDirection(OperatorDirection.IN);
+        		if ( map.getOperatorPosition() == -1 ) {
+        			getToolSpecific().setOperatorPosition(east_south);
+        		} else {
+        			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
+        		}
+        		System.out.println("***** AND_SPLIT_TYPE " + map.getOperatorPosition());
+        		break;
+        	case AND_JOIN_TYPE:
+        		getToolSpecific().setOperatorDirection(OperatorDirection.IN);
+        		if ( map.getOperatorPosition() == -1 ) {
+          			getToolSpecific().setOperatorPosition(west_north);
+        		} else {
+        			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
+        		}
+        		System.out.println("***** AND_JOIN_TYPE " + map.getOperatorPosition());
+        		break;
+        	case OR_SPLIT_TYPE:
+        	case XOR_SPLIT_TYPE:
+        		getToolSpecific().setOperatorDirection(OperatorDirection.OUT);
+        		if ( map.getOperatorPosition() == -1 ) {
+        			getToolSpecific().setOperatorPosition(east_south);
+        		} else {
+        			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
+        		}
+        		System.out.println("***** XOR_SPLIT_TYPE " + map.getOperatorPosition());
+        		break;
+        	case XOR_JOIN_TYPE:
+        		getToolSpecific().setOperatorDirection(OperatorDirection.OUT);
+        		if ( map.getOperatorPosition() == -1 ) {
+        			getToolSpecific().setOperatorPosition(west_north);
+        		} else {
+        			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
+        		}
+        		System.out.println("***** XOR_JOIN_TYPE " + map.getOperatorPosition());
+        		break;
+        	case XOR_SPLITJOIN_TYPE:
+        		getToolSpecific().setOperatorDirection(OperatorDirection.OUT);
+        		if ( map.getOperatorPosition() == -1 ) {
+        			getToolSpecific().setOperatorPosition(west_north);
+        		} else {
+        			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
+        		}
+        		System.out.println("***** XOR_SPLITJOIN_TYPE " + map.getOperatorPosition());
+        		break;
+        	case AND_SPLITJOIN_TYPE:
+        		getToolSpecific().setOperatorDirection(OperatorDirection.IN);
+        		if ( map.getOperatorPosition() == -1 ) {
+        		getToolSpecific().setOperatorPosition(west_north);
+        		} else {	
+        			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
+        		}
+        		System.out.println("***** AND_SPLITJOIN_TYPE " + map.getOperatorPosition());
+        		break;
+        	case ANDJOIN_XORSPLIT_TYPE:
+        		getToolSpecific().setOperatorDirection(OperatorDirection.IN);
+        		if ( map.getOperatorPosition() == -1 ) {
+        			getToolSpecific().setOperatorPosition(west_north);
+        		} else {
+        			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
+        		}
+        		break;
+        	case XORJOIN_ANDSPLIT_TYPE:
+        		getToolSpecific().setOperatorDirection(OperatorDirection.OUT);
+        		if ( map.getOperatorPosition() == -1 ) {
+        			getToolSpecific().setOperatorPosition(west_north);
+        		} else {
+        			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
+        		}
+        		break;
+        }
+
     }
     
     //! This method is called by the PetriNetModelProcessor to register
@@ -210,6 +312,10 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         TransitionModel aTranstitonModel;
         CreationMap map = CreationMap.createMap();
         map.setId(getNewElementId());
+        if(getNameValue()!=null)
+        	map.setName(getNameValue());
+        else
+        	map.setName(getId().toString());
         map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
         if (getPosition() != null)
         	map.setPosition(getPosition());
@@ -223,7 +329,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     public String getNewElementId()
     {
         simpleTransCounter++;
-        return getId() + OPERATOR_SEPERATOR + simpleTransCounter;
+        return getId() + OPERATOR_SEPERATOR_TRANSITION + simpleTransCounter;
     }
 
     /**
@@ -286,7 +392,8 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     {
         PlaceModel centerPlace;
         CreationMap map = CreationMap.createMap();
-        map.setId("CENTER_PLACE_" + getId());
+        map.setId(OPERATOR_SEPERATOR_PLACE + getId());
+        map.setName(getNameValue());
         map.setType(PetriNetModelElement.PLACE_TYPE);
         map.setPosition(getPosition());
         centerPlace = (PlaceModel) ModelElementFactory.createModelElement(map);
@@ -342,7 +449,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     {
     	TransitionModel result = null;
     	
-    	Map existingTransitions = getSimpleTransContainer().getElementsByType(
+    	Map<String, AbstractElementModel> existingTransitions = getSimpleTransContainer().getElementsByType(
 				PetriNetModelElement.TRANS_SIMPLE_TYPE);
     	if (existingTransitions.size() == 1)
     	{
@@ -351,8 +458,8 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     		// If so, discard it
     		result = (TransitionModel)getSimpleTransContainer().getElementById(
     				existingTransitions.keySet().iterator().next());
-    		Map sourceElements = getSimpleTransContainer().getSourceElements(result.getId()); 
-    		Map targetElements = getSimpleTransContainer().getTargetElements(result.getId());     		
+    		Map<String, AbstractElementModel> sourceElements = getSimpleTransContainer().getSourceElements(result.getId()); 
+    		Map<String, AbstractElementModel> targetElements = getSimpleTransContainer().getTargetElements(result.getId());     		
     		if (((sourceElements!=null)&&(sourceElements.size()>0))||
     			((targetElements!=null)&&(targetElements.size()>0)))
     			result = null;
@@ -383,5 +490,19 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
 		return nextArcId;
     }
     
-
+    @Override
+    public void setNameValue(String name){
+    	getNameModel().setUserObject(name);
+    	if(simpleTransCounter>0){
+    		for(AbstractElementModel aem: simpleTransContainer.getRootElements()){
+    			if(aem.getRootOwningContainer().getOwningElement() == this)
+    				aem.setNameValue(name);
+    		}
+    	}
+    }
+    
+    public void setVerticalView(boolean verticalView)
+    {
+    	this.verticalView = verticalView;
+    }
 }

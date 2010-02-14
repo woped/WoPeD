@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.security.AccessControlException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -46,17 +45,14 @@ import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.TPNExport;
 import org.woped.file.gui.OpenWebEditorUI;
-import org.woped.qualanalysis.NetAnalysisDialog;
-import org.woped.qualanalysis.WoflanAnalysis;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualanalysisServiceImplement;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.quantana.resourcealloc.ResourceAllocation;
-import org.woped.quantana.sim.SimGraph;
 import org.woped.server.ServerLoader;
 import org.woped.server.holder.ModellHolder;
 import org.woped.server.holder.UserHolder;
 import org.woped.translations.Messages;
-//import org.woped.understandability.NetColorScheme;
 
 public class FileEventProcessor extends AbstractEventProcessor {
 	public FileEventProcessor(int vepID, ApplicationMediator mediator) {
@@ -140,11 +136,16 @@ public class FileEventProcessor extends AbstractEventProcessor {
 							// Arguments are the Woflan TPN file and the model
 							// processor
 							// for the petri-net model that is in focus
-							NetAnalysisDialog myDialog = new NetAnalysisDialog(
-									(JFrame) getMediator().getUi(), f,
+//							NetAnalysisDialog myDialog = new NetAnalysisDialog(
+//									(JFrame) getMediator().getUi(), f,
+//									getMediator().getUi().getEditorFocus(),
+//									this.getMediator());
+//							myDialog.setVisible(true);
+							
+							// calls the new analysis sidebar
+							editor.showAnalysisBar(f,
 									getMediator().getUi().getEditorFocus(),
 									this.getMediator());
-							myDialog.setVisible(true);
 
 							LoggerManager.info(Constants.FILE_LOGGER,
 									"Local WoPeD analysis started.");
@@ -270,17 +271,16 @@ public class FileEventProcessor extends AbstractEventProcessor {
 						.getModelProcessor());
 		File f = new File(fn);
 
-		WoflanAnalysis wa = new WoflanAnalysis(editor, f);
-		StructuralAnalysis sa = new StructuralAnalysis(editor);
+		IQualanalysisService qualanService = new QualanalysisServiceImplement(editor);
 
-		int unbound = wa.getNumUnboundedPlaces();
-		int nonlive = wa.getNumNonLiveTransitions();
+		int unbound = qualanService.getNumUnboundedPlaces();
+		int nonlive = qualanService.getNumNonLiveTransitions();
 
 		int sound = unbound + nonlive;
-		int soPl = sa.getNumSourcePlaces();
-		int soTr = sa.getNumSourceTransitions();
-		int siPl = sa.getNumSinkPlaces();
-		int siTr = sa.getNumSinkTransitions();
+		int soPl = qualanService.getNumSourcePlaces();
+		int soTr = qualanService.getNumSourceTransitions();
+		int siPl = qualanService.getNumSinkPlaces();
+		int siTr = qualanService.getNumSinkTransitions();
 		boolean wfpn = (soPl >= 1 && soPl + soTr == 1)
 				&& (siPl >= 1 && siPl + siTr == 1);
 		if ((sound == 0) & wfpn) {

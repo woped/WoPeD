@@ -28,6 +28,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.model.petrinet.Toolspecific;
+import org.woped.core.model.petrinet.TransitionModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -91,9 +93,13 @@ public class TransXorJoinAndSplitView extends CombiOperatorView
             g.setColor(getInnerDrawingsColor());
             	
             // XOR JOIN Lines
-            drawOperatorArrow(g,false,false);
+            //drawOperatorArrow(g,false,false);
+            Toolspecific t = ((TransitionModel) getCell()).getToolSpecific();
+            drawOperatorArrow2(g, t.getOperatorPosition(), t.getOperatorDirection() );
             // AND Split Lines
-            drawOperatorArrow(g,true,false);
+            // drawOperatorArrow(g,true,false);
+            drawOperatorArrow2(g, t.getOperatorOppositePosition(), t.getOperatorOppositeDirection() );
+
 
             if (bordercolor != null)
             {

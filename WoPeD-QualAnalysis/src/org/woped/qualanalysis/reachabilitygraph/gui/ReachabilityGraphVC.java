@@ -13,7 +13,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.HashSet;
-import java.util.Iterator;
 
 import javax.swing.JInternalFrame;
 import javax.swing.event.InternalFrameEvent;
@@ -22,15 +21,12 @@ import javax.swing.event.InternalFrameListener;
 import org.jgraph.JGraph;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IUserInterface;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
 import org.woped.translations.Messages;
 

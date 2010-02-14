@@ -124,6 +124,12 @@ public interface IConfiguration
 
     //    
     public void setWoflanPath(String woflanPath);
+    
+    //
+    public boolean isUseWoflanDLL();
+    
+    //  
+    public void setUseWoflanDLL(boolean useWoflanDLL);
 
     //
     public boolean getColorOn();
@@ -364,4 +370,5 @@ public interface IConfiguration
 	
 	//
 	public void setAlgorithmMode(int n);
+
 }

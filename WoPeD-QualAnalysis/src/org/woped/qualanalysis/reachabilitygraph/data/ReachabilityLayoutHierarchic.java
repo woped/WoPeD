@@ -36,7 +36,7 @@ public class ReachabilityLayoutHierarchic {
 		applyHierarchicLayout(graph);
 		graph.getGraphLayoutCache().edit(edit,null,null,null);
 		boolean colored = Boolean.parseBoolean(graph.getAttributeMap().get("reachabilityGraph.color"));
-		ReachabilityGraphModel.setGrayScale(graph, !colored);
+		AbstractReachabilityGraphModel.setGrayScale(graph, !colored);
 		return graph;
 	}
 	
@@ -56,7 +56,7 @@ public class ReachabilityLayoutHierarchic {
 			}
 		}
 		// get initial marking. the begin oh each graph. 
-		ReachabilityPlaceModel initialPlace = ReachabilityGraphModel.lookupInitialMarking(markings);
+		ReachabilityPlaceModel initialPlace = AbstractReachabilityGraphModel.lookupInitialMarking(markings);
 		if(initialPlace != null){
 			// initialize a lot of things
 			Rectangle2D bounds = GraphConstants.getBounds(initialPlace.getAttributes());

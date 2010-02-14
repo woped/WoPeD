@@ -63,12 +63,16 @@
     <xs:complexContent mixed="false">
       <xs:extension base="toolspecificType">
         <xs:sequence>
-          <xs:element minOccurs="0" name="bounds" type="graphicsSimpleType" />
-          <xs:element minOccurs="0" name="treeWidth" type="xs:int" />
-          <xs:element minOccurs="0" name="resources" type="resourcesType" />
-          <xs:element minOccurs="0" name="simulations" type="simulationsType" />
-          <xs:element minOccurs="0" ref="partnerLinks" />
-          <xs:element minOccurs="0" ref="variables" />
+        	<xs:element minOccurs="0" name="bounds"
+        		type="graphicsSimpleType" />
+        	<xs:element minOccurs="0" name="treeWidth" type="xs:int" />
+        	<xs:element minOccurs="0" name="verticalLayout" type="xs:boolean" />
+        	<xs:element minOccurs="0" name="resources"
+        		type="resourcesType" />
+        	<xs:element minOccurs="0" name="simulations"
+        		type="simulationsType" />
+                    <xs:element minOccurs="0" ref="partnerLinks" />
+                    <xs:element minOccurs="0" ref="variables" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -198,6 +202,7 @@
           </xs:element>
           <xs:element minOccurs="0" name="time" type="xs:int" />
           <xs:element minOccurs="0" name="timeUnit" type="xs:int" />
+          <xs:element minOccurs="0" name="orientation" type="xs:int" />
           <xs:choice minOccurs="0">
             <xs:element ref="assign" />
             <xs:element ref="invoke" />

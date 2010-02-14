@@ -149,8 +149,8 @@ public class ApplicationMediator extends AbstractApplicationMediator
     {
     	IEditor editor = null;
 
-    	List editors = getUi().getAllEditors();
-    	Iterator editorIter = editors.iterator();
+    	List<IEditor> editors = getUi().getAllEditors();
+    	Iterator<IEditor> editorIter = editors.iterator();
 
     	while (editorIter.hasNext())
     	{
@@ -190,8 +190,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
 
     		newEditorCounter++;
     		// notify the editor aware vc
-    		editorIter = getEditorAwareVCs()
-    		.iterator();
+    		editorIter = getEditorAwareVCs().iterator();
     		while (editorIter.hasNext())
     		{
     			((IEditorAware) editorIter.next())
@@ -200,11 +199,11 @@ public class ApplicationMediator extends AbstractApplicationMediator
     		VisualController.getInstance().propertyChange(
     				new PropertyChangeEvent(this,
     						"InternalFrameCount", null, editor));
-    	
+    		
     		// Update handle coloring if active
 			if (ConfigurationManager.getConfiguration().getColorOn() ==  true){
 				new NetColorScheme().update();
-			}    		
+			}
     	}
 
     	// Found a matching editor

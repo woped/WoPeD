@@ -3,12 +3,10 @@ package org.woped.editor.view.petrinet;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 
-
+@SuppressWarnings("serial")
 public class CombiOperatorView extends TransSimpleView {
 	
     public CombiOperatorView(Object cell) {

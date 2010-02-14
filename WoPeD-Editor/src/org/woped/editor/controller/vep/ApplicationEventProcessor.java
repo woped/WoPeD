@@ -96,11 +96,11 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
             break;
 
         case AbstractViewEvent.UPDATE:
-            for (Iterator iter = getMediator().getUi().getAllEditors().iterator(); iter.hasNext();)
+            for (Iterator<IEditor> iter = getMediator().getUi().getAllEditors().iterator(); iter.hasNext();)
             {
                 currentEditor = ((EditorVC) iter.next());
                 currentEditor.getGraph().setGridVisible(ConfigurationManager.getConfiguration().isShowGrid());
-                for (Iterator iterator = currentEditor.getModelProcessor().getElementContainer().getArcMap().keySet().iterator(); iterator.hasNext();)
+                for (Iterator<String> iterator = currentEditor.getModelProcessor().getElementContainer().getArcMap().keySet().iterator(); iterator.hasNext();)
                 {
                     currentEditor.getModelProcessor().getElementContainer().getArcById(iterator.next()).initAttributes();
                 }
@@ -176,7 +176,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
     private void setDrawMode(int type, boolean active)
     {
         EditorVC currentEditor;
-        for (Iterator iter = getMediator().getUi().getAllEditors().iterator(); iter.hasNext();)
+        for (Iterator<IEditor> iter = getMediator().getUi().getAllEditors().iterator(); iter.hasNext();)
         {
             currentEditor = (EditorVC) iter.next();
             currentEditor.setDrawingMode(active);

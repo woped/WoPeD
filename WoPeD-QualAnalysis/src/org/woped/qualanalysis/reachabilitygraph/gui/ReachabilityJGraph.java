@@ -14,11 +14,9 @@ import java.awt.geom.Rectangle2D;
 import java.util.HashMap;
 import java.util.Vector;
 
-import javax.swing.ToolTipManager;
-import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
-
-
+import javax.swing.JScrollPane;
+import javax.swing.ToolTipManager;
 
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphModel;
@@ -27,7 +25,7 @@ import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
-import org.woped.qualanalysis.reachabilitygraph.data.Marking;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 
 
 public class ReachabilityJGraph extends JGraph {
@@ -128,14 +126,14 @@ public class ReachabilityJGraph extends JGraph {
 	 * @since 02.01.2009 
 	 * @param mark
 	 */
-	public void HighlightMarking(Marking mark){
+	public void HighlightMarking(IMarking mark){
 		deHighlight();
 		GraphModel model = getModel();
 		for(int j = 0; j < model.getRootCount(); j++){
 			if(model.getRootAt(j) instanceof ReachabilityPlaceModel){
 				
 				ReachabilityPlaceModel rpm = (ReachabilityPlaceModel)model.getRootAt(j);
-				if (mark.toString().equals(((Marking)rpm.getUserObject()).toString())){
+				if (mark.toString().equals(((IMarking)rpm.getUserObject()).toString())){
 					rpm.setHighlight(true);
 					Rectangle2D  re = GraphConstants.getBounds(rpm.getAttributes());
 					Rectangle2D  revisi = this.getVisibleRect();

@@ -516,6 +516,12 @@ public class DefaultStaticConfiguration implements IConfiguration
         // TODO Auto-generated method stub
         return false;
     }
+    
+    public boolean isUseWoflanDLL()
+    {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
     public void removeAllRecentFiles()
     {
@@ -613,6 +619,12 @@ public class DefaultStaticConfiguration implements IConfiguration
     }
 
     public void setUseWoflan(boolean useWoflan)
+    {
+    // TODO Auto-generated method stub
+
+    }
+    
+    public void setUseWoflanDLL(boolean useWoflanDLL)
     {
     // TODO Auto-generated method stub
 

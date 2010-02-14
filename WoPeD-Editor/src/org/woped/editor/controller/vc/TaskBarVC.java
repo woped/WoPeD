@@ -49,9 +49,9 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
         if (actions.get(editor) != null)
         {
             selectedEditor = editor;
-            for (Iterator iter = actions.values().iterator(); iter.hasNext();)
+            for (Iterator<JToggleButton> iter = actions.values().iterator(); iter.hasNext();)
             {
-                ((JToggleButton) iter.next()).setSelected(false);
+                iter.next().setSelected(false);
             }
             ((JToggleButton) actions.get(editor)).setSelected(true);
         }
@@ -102,10 +102,10 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware
     public final void fireViewEvent(AbstractViewEvent viewevent)
     {
         if (viewevent == null) return;
-        java.util.Vector vector;
+        Vector<IViewListener> vector;
         synchronized (viewListener)
         {
-            vector = (java.util.Vector) viewListener.clone();
+            vector = (Vector<IViewListener>) viewListener.clone();
         }
         if (vector == null) return;
         int i = vector.size();

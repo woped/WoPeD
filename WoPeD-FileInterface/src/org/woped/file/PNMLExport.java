@@ -49,6 +49,7 @@ import org.woped.bpel.gui.transitionproperties.Reply;
 import org.woped.bpel.gui.transitionproperties.Wait;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IStatusBar;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -94,7 +95,6 @@ import org.woped.pnml.RoleType;
 import org.woped.pnml.SimulationType;
 import org.woped.pnml.SimulationsType;
 import org.woped.pnml.SuperModelType;
-
 import org.woped.pnml.TPartnerLinks;
 import org.woped.pnml.TVariables;
 import org.woped.pnml.ToolspecificType;
@@ -278,6 +278,8 @@ public class PNMLExport
             }
             // Store the width of the tree view
             iNetToolSpec.setTreeWidth(layoutInfo.getTreeViewWidth());
+            //verticalLayout
+            iNetToolSpec.setVerticalLayout(editor.isRotateSelected());
             // resources
             ResourcesType iNetResources = iNetToolSpec.addNewResources();
             // Rescources
@@ -431,7 +433,7 @@ public class PNMLExport
     //! @param modelElementContainer specifies the ModelElementContainer to be stored to the specified XMLBean
     private void saveModelElementContainer(NetType iNet, ModelElementContainer elementContainer)
     {
-        Iterator root2Iter = elementContainer.getRootElements().iterator();
+        Iterator<AbstractElementModel> root2Iter = elementContainer.getRootElements().iterator();
         while (root2Iter.hasNext())
         {
             PetriNetModelElement currentModel = (PetriNetModelElement) root2Iter.next();
@@ -502,7 +504,7 @@ public class PNMLExport
 
                 LoggerManager.debug(Constants.FILE_LOGGER, "   ... Setting InnerTtransitions for Operator (ID:" + currentModel.getId() + ")");
                 OperatorTransitionModel operatorModel = (OperatorTransitionModel) currentModel;
-                Iterator simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
+                Iterator<AbstractElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
                 while (simpleTransIter.hasNext())
                 {
                     PetriNetModelElement simpleTransModel = (PetriNetModelElement) simpleTransIter.next();
@@ -533,7 +535,7 @@ public class PNMLExport
         // the "inner arcs" of all such transitions
         // To sort out duplicates, we create a set
         Set<PetriNetModelElement> connectedTransitions = new HashSet<PetriNetModelElement>();  
-        Iterator arcIter = elementContainer.getArcMap().keySet().iterator();
+        Iterator<String> arcIter = elementContainer.getArcMap().keySet().iterator();
         while (arcIter.hasNext())
         {
             ArcModel currentArc = elementContainer.getArcById(arcIter.next());
@@ -567,11 +569,11 @@ public class PNMLExport
     	// with (ID, Object-Reference) entries.
         // For all transitions connected to at least one arc we will
         // dump the internal arcs now instead of the (previously ignored) visible arcs
-        Iterator currentTransition = connectedTransitions.iterator();
+        Iterator<PetriNetModelElement> currentTransition = connectedTransitions.iterator();
         while (currentTransition.hasNext())
         {
         	OperatorTransitionModel currentConnectedModel = (OperatorTransitionModel)currentTransition.next();
-        	Iterator innerArcIter = currentConnectedModel.getSimpleTransContainer().getArcMap().keySet().iterator();
+        	Iterator<String> innerArcIter = currentConnectedModel.getSimpleTransContainer().getArcMap().keySet().iterator();
         	while (innerArcIter.hasNext())
         	{
            		// Dump all inner arcs of connected transitions
@@ -763,6 +765,9 @@ public class PNMLExport
         // Store the timing of this transition
         iToolspecific.setTime(currentModel.getToolSpecific().getTime());
         iToolspecific.setTimeUnit(currentModel.getToolSpecific().getTimeUnit());
+        
+        // Store the OperatorOrientation
+        iToolspecific.setOrientation(currentModel.getToolSpecific().getOperatorPosition().ordinal());
         return iToolspecific;
     }
 

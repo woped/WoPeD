@@ -54,6 +54,7 @@ public class SubProcessModel extends TransitionModel implements
 	private int						subElementCounter		= 0;
 	private ModelElementContainer	subElementContainer;
 	private static final String		SUBELEMENT_SEPERATOR	= "_";
+	private boolean					direction				= false;
 
 	public SubProcessModel(CreationMap map)
 	{
@@ -215,6 +216,13 @@ public class SubProcessModel extends TransitionModel implements
 		}
 		result = (nNumOutgoing == 0);
 		return result;
+	}
+	public void setDirection (boolean dir) {
+		direction = dir;
+	}
+	
+	public boolean getDirection () {
+		return direction;
 	}
 
 }

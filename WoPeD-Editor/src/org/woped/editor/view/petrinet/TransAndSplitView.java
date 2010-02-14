@@ -23,7 +23,6 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -31,9 +30,9 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.woped.core.config.ConfigurationManager;
+import org.woped.core.model.petrinet.Toolspecific;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.translations.Messages;
-import org.woped.core.model.petrinet.ANDSplitOperatorTransitionModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -102,7 +101,10 @@ public class TransAndSplitView extends TransSimpleView
             }
             g.setColor(getInnerDrawingsColor());
             // AND Split Lines
-            this.drawOperatorArrow(g, true, false);
+            //this.drawOperatorArrow(g, true, false);
+            Toolspecific t = ((TransitionModel) getCell()).getToolSpecific();
+            drawOperatorArrow2(g, t.getOperatorPosition(), t.getOperatorDirection() );
+            
             if (isActive() || isFireing())
             {
             	ImageIcon img = Messages.getImageIcon("TokenGame.Active");

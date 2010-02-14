@@ -23,15 +23,13 @@
 package org.woped.editor.view.petrinet;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.woped.core.config.ConfigurationManager;
-import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
-import org.woped.core.model.petrinet.XORJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.Toolspecific;
+import org.woped.core.model.petrinet.TransitionModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -103,7 +101,10 @@ public class TransXOrJoinView extends TransSimpleView
             }
             g.setColor(this.getInnerDrawingsColor());
             // XOR JOIN Lines
-            this.drawOperatorArrow(g, false, false);
+            // this.drawOperatorArrow(g, false, false);
+            Toolspecific t = ((TransitionModel) getCell()).getToolSpecific();
+            drawOperatorArrow2(g, t.getOperatorPosition(), t.getOperatorDirection() );
+            
             
             drawTime(g2, d);
         }

@@ -30,6 +30,8 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.model.petrinet.Toolspecific;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.translations.Messages;
 
 /**
@@ -97,10 +99,14 @@ public class TransAndSplitJoinView extends CombiOperatorView
             }
  
             g.setColor(this.getInnerDrawingsColor());
-            // AND SPLIT JOIN Lines
-            // Consists of the symbol for split and the symbol for join
-            this.drawOperatorArrow(g, false, true);
-            this.drawOperatorArrow(g, true, false);
+            // XOR JOIN Lines
+            //this.drawOperatorArrow(g, false, false);
+            Toolspecific t = ((TransitionModel) getCell()).getToolSpecific();
+            drawOperatorArrow2(g, t.getOperatorPosition(), t.getOperatorDirection() );
+            // XOR Split Lines
+            //this.drawOperatorArrow(g, true, true);
+            drawOperatorArrow2(g, t.getOperatorOppositePosition(), t.getOperatorDirection() );
+            
                   
             if (isActive() || isFireing())
             {

@@ -42,6 +42,7 @@ import org.jgraph.event.GraphSelectionListener;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
+import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
@@ -150,8 +151,10 @@ public class VisualController implements PropertyChangeListener,
 	public static final int REACH_GRAPH_START = 38;
 	
 	public static final int COLORING = 39;
+	
+	public static final int ROTATE = 40;
 
-	private static final int MAX_ID = 40;
+	private static final int MAX_ID = 41;
 
 	private ArrayList<Vector<Object>> m_enable = new ArrayList<Vector<Object>>();
 	private ArrayList<Vector<Object>> m_visible = new ArrayList<Vector<Object>>();
@@ -390,6 +393,7 @@ public class VisualController implements PropertyChangeListener,
 				checkWoflan();
 				checkUndoRedo();
 				checkColoring();
+				checkRotation();
 			} else if ("FrameSelection".equals(arg0.getPropertyName()))
 			{
 				checkDrawMode();
@@ -397,7 +401,8 @@ public class VisualController implements PropertyChangeListener,
 				checkSelection();
 				checkUndoRedo();
 				checkActiveEditor();
-				checkColoring();			
+				checkColoring();	
+				checkRotation();
 			} else if ("DrawMode".equals(arg0.getPropertyName()))
 			{
 				checkDrawMode();
@@ -411,13 +416,20 @@ public class VisualController implements PropertyChangeListener,
 			{
 				checkWoflan();
 				checkColoring();
+				checkRotation();
 			} else if (JSplitPane.DIVIDER_LOCATION_PROPERTY.equals(arg0.getPropertyName()))
 			{
 				int dividerLocation = ((Integer)arg0.getNewValue()).intValue();
 				boolean treeVisible = dividerLocation>1;
-				setStatus(TREEVIEW_VISIBLE, treeVisible);				
+				setStatus(TREEVIEW_VISIBLE, treeVisible);		
+				
+			//for importing a vertical net to change the rotate-button	
+			} else if ("Import".equals(arg0.getPropertyName()))
+			{
+				setRotationTrue();
 			}
-		}
+			
+		}	
 
 	}
 
@@ -681,6 +693,21 @@ public class VisualController implements PropertyChangeListener,
 			coloringActive = ((EditorVC) am.getUi().getEditorFocus()).isUnderstandabilityColoringEnabled();
 		}
 		setStatus(COLORING, coloringActive);
+	}
+	
+	protected void checkRotation(){
+		boolean rotateActive = false;
+		if (am.getUi().getEditorFocus() != null)
+		{
+			rotateActive = ((EditorVC) am.getUi().getEditorFocus()).isRotateSelected();
+			EditorLayoutInfo.m_verticalLayout = rotateActive;
+		}
+		setStatus(ROTATE, rotateActive);
+	}
+	
+	//for importing a vertical net to change the rotate-button	
+	protected void setRotationTrue(){
+		setStatus(ROTATE, true);
 	}
 	
 	public void setActive(boolean active)

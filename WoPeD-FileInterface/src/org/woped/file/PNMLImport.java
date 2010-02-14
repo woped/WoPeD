@@ -25,6 +25,7 @@ package org.woped.file;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Point2D;
+import java.beans.PropertyChangeEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -64,6 +65,7 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
+import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
@@ -91,6 +93,8 @@ import org.woped.pnml.TVariables;
 import org.woped.pnml.TWait;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.NetType.Page;
+
+import sun.awt.VerticalBagLayout;
 
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
@@ -175,7 +179,7 @@ public class PNMLImport {
 				LoggerManager.warn(Constants.FILE_LOGGER,
 						"Imported a not valid PNML.");
 				StringBuffer warningStrings = new StringBuffer();
-				for (Iterator iter = warnings.iterator(); iter.hasNext();) {
+				for (Iterator<String> iter = warnings.iterator(); iter.hasNext();) {
 					warningStrings.append(iter.next());
 				}
 				JOptionPane.showMessageDialog(null, Messages
@@ -229,7 +233,7 @@ public class PNMLImport {
 				LoggerManager.warn(Constants.FILE_LOGGER,
 						"Imported a not valid PNML.");
 				StringBuffer warningStrings = new StringBuffer();
-				for (Iterator iter = warnings.iterator(); iter.hasNext();) {
+				for (Iterator<String> iter = warnings.iterator(); iter.hasNext();) {
 					warningStrings.append(iter.next());
 				}
 				JOptionPane.showMessageDialog(null, Messages
@@ -318,6 +322,23 @@ public class PNMLImport {
 								EditorLayoutInfo layout = new EditorLayoutInfo();
 								layout.setSavedSize(dim);
 								layout.setSavedLocation(location);
+								// try to import the type of Layout (false if vertical)
+								
+								((EditorVC) editor[i]).setRotateSelected(currentNet
+										.getToolspecificArray(j)
+										.getVerticalLayout());
+								
+									//for importing a vertical net to change the rotate-button	
+									if (currentNet
+												.getToolspecificArray(j)
+												.getVerticalLayout()== true){
+											//EditorVC.setRotateSelected(true);
+										VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "Import", null, null));
+											
+										
+										// Update the UI representation
+											//EditorVC.getGraph().updateUI();	
+										}
 								// Only if also the remaining information is
 								// available,
 								// try to import the width of the tree view
@@ -692,6 +713,14 @@ public class PNMLImport {
 											.getToolspecificArray(j)
 											.getTimeUnit());
 								}
+								
+								//set operatorOrientation
+								if (transitions[i].getToolspecificArray(j)
+										.isSetOrientation()) {
+									map.setOperatorPosition(transitions[i]
+											.getToolspecificArray(j)
+											.getOrientation());
+								} 
 								if (transitions[i].getToolspecificArray(j)
 										.isSetOperator()) {
 									map.setOperatorType(transitions[i]
@@ -988,7 +1017,7 @@ public class PNMLImport {
 												arcs[i]
 														.getTarget()
 														.indexOf(
-																OperatorTransitionModel.OPERATOR_SEPERATOR));
+																OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
 							} else {
 								tempID = arcs[i]
 										.getTarget()
@@ -1020,7 +1049,7 @@ public class PNMLImport {
 												arcs[i]
 														.getSource()
 														.indexOf(
-																OperatorTransitionModel.OPERATOR_SEPERATOR));
+																OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
 							} else {
 								tempID = arcs[i]
 										.getSource()

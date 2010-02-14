@@ -55,14 +55,14 @@ public class EditorClipboard
         fireClipboardChange();
     }
 
-    public Map getCopiedArcsList()
+    public Map<String, CreationMap> getCopiedArcsList()
     {
-        return (Map)copiedArcsList.clone();
+        return (Map<String, CreationMap>)copiedArcsList.clone();
     }
 
-    public Map getCopiedElementsList()
+    public Map<String, CreationMap> getCopiedElementsList()
     {
-        return (Map)copiedElementsList.clone();
+        return (Map<String, CreationMap>)copiedElementsList.clone();
     }
 
      public void addClipboardListener(IClipboaredListener listener)

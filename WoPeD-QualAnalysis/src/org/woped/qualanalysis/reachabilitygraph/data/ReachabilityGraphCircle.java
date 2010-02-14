@@ -21,7 +21,7 @@ public class ReachabilityGraphCircle {
 	public static ReachabilityJGraph layoutGraph(ReachabilityJGraph graph, Dimension dim){
 		edit = new HashMap<ReachabilityPlaceModel, AttributeMap>();
 		GraphModel model = graph.getModel();
-		LinkedList<Point> coordinates = CircleCoordinates.getCircleCoordinates(dim.width,dim.height,ReachabilityGraphModel.verticeCount(graph));
+		LinkedList<Point> coordinates = CircleCoordinates.getCircleCoordinates(dim.width,dim.height,AbstractReachabilityGraphModel.verticeCount(graph));
 		// Build Graph
 		LinkedList<ReachabilityPlaceModel> places = new LinkedList<ReachabilityPlaceModel>();
 		for(int i = 0; i < model.getRootCount(); i++){
@@ -29,7 +29,7 @@ public class ReachabilityGraphCircle {
 				places.add((ReachabilityPlaceModel) model.getRootAt(i));
 			}
 		}
-		ReachabilityPlaceModel initialPlace = ReachabilityGraphModel.lookupInitialMarking(places);
+		ReachabilityPlaceModel initialPlace = AbstractReachabilityGraphModel.lookupInitialMarking(places);
 		HashMap<String, String> graphAttributes = graph.getAttributeMap();
 		if(initialPlace != null){
 			int width = 0;
@@ -45,12 +45,12 @@ public class ReachabilityGraphCircle {
 		}
 		graph.getGraphLayoutCache().edit(edit);
 		boolean colored = Boolean.parseBoolean(graph.getAttributeMap().get("reachabilityGraph.color"));
-		ReachabilityGraphModel.setGrayScale(graph, !colored);
+		AbstractReachabilityGraphModel.setGrayScale(graph, !colored);
 		return graph;
 	}
 	
 	private static void setPlacesOnCircle(LinkedList<Point> coordinates, LinkedList<ReachabilityPlaceModel> places){
-		ReachabilityPlaceModel initial = ReachabilityGraphModel.lookupInitialMarking(places);
+		ReachabilityPlaceModel initial = AbstractReachabilityGraphModel.lookupInitialMarking(places);
 		Rectangle2D bounds = GraphConstants.getBounds(initial.getAttributes());
 		Point2D position = coordinates.removeFirst();
 		bounds = new Rectangle2D.Double(position.getX(),position.getY(), bounds.getWidth(), bounds.getHeight());

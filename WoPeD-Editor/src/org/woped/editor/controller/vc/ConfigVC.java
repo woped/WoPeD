@@ -56,7 +56,6 @@ import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
-import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.gui.config.AbstractConfPanel;
@@ -178,7 +177,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
 
     private void resetConfiguration()
     {
-        Iterator iter = confPanels.keySet().iterator();
+        Iterator<String> iter = confPanels.keySet().iterator();
         while (iter.hasNext())
         {
             confPanels.get(iter.next()).readConfiguration(); 
@@ -188,7 +187,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
     private boolean applyConfiguration()
     {
         boolean confOK = true;
-        Iterator iter = confPanels.keySet().iterator();
+        Iterator<String> iter = confPanels.keySet().iterator();
         while (iter.hasNext())
         {
             if (!((AbstractConfPanel) confPanels.get(iter.next())).applyConfiguration()) confOK = false;
@@ -203,7 +202,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
 
     public void readConfiguration()
     {
-        Iterator iter = confPanels.keySet().iterator();
+        Iterator<String> iter = confPanels.keySet().iterator();
         while (iter.hasNext())
         {
             ((AbstractConfPanel) confPanels.get(iter.next())).readConfiguration();
@@ -423,10 +422,10 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
     public final void fireViewEvent(AbstractViewEvent viewevent)
     {
         if (viewevent == null) return;
-        java.util.Vector vector;
+        Vector<IViewListener> vector;
         synchronized (viewListener)
         {
-            vector = (java.util.Vector) viewListener.clone();
+            vector = (Vector<IViewListener>) viewListener.clone();
         }
         if (vector == null) return;
         int i = vector.size();

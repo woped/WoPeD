@@ -55,10 +55,11 @@ import org.woped.translations.Messages;
 public class ConfToolsPanel extends AbstractConfPanel
 {
     // WOflan
-    private JPanel     woflanPanel     = null;
-    private JCheckBox  woflanCheckBox  = null;
-    private JTextField woflanTextField = null;
-    private JButton    woflanBrowse    = null;
+    private JPanel     woflanPanel       = null;
+    private JCheckBox  woflanCheckBox    = null;
+    private JCheckBox  woflanDLLCheckBox = null;
+    private JTextField woflanTextField   = null;
+    private JButton    woflanBrowse      = null;
 //    private JButton    woflanHelp	   = null;
 
     /**
@@ -75,6 +76,7 @@ public class ConfToolsPanel extends AbstractConfPanel
      */
     public boolean applyConfiguration()
     {
+    	ConfigurationManager.getConfiguration().setUseWoflanDLL(getWoflanDLLCheckBox().isSelected());
         if (isValidDir())
         {
             ConfigurationManager.getConfiguration().setUseWoflan(getWoflanCheckBox().isSelected());
@@ -93,6 +95,7 @@ public class ConfToolsPanel extends AbstractConfPanel
      */
     public void readConfiguration()
     {
+    	getWoflanDLLCheckBox().setSelected(ConfigurationManager.getConfiguration().isUseWoflanDLL());
         getWoflanCheckBox().setSelected(ConfigurationManager.getConfiguration().isUseWoflan());
         getWoflanTextField().setText(ConfigurationManager.getConfiguration().getWoflanPath());
         checkUseWoflan();
@@ -149,6 +152,18 @@ public class ConfToolsPanel extends AbstractConfPanel
             getWoflanBrowse().setEnabled(false);
         }
     }
+    
+    private JCheckBox getWoflanDLLCheckBox()
+    {
+        if (woflanDLLCheckBox == null)
+        {
+        	woflanDLLCheckBox = new JCheckBox();
+        	woflanDLLCheckBox.setText(Messages.getString("Configuration.Tools.Panel.Woflan.UseWoflanDLL.Text"));
+        	woflanDLLCheckBox.setToolTipText("<HTML>" + Messages.getString("Configuration.Tools.Panel.Woflan.UseWoflanDLL.Text.ToolTip") + "</HTML>");
+        }
+        return woflanDLLCheckBox;
+    }
+
 
     private JPanel getWoflanPanel()
     {
@@ -185,6 +200,11 @@ public class ConfToolsPanel extends AbstractConfPanel
             c.gridwidth = 1;
             c.insets = new Insets(0, 0, 0, 0);
             woflanPanel.add(getWoflanBrowse(), c);
+            
+            c.weightx = 1;
+            c.gridx = 0;
+            c.gridy = 2;
+            woflanPanel.add(getWoflanDLLCheckBox(), c);
         }
         return woflanPanel;
     }

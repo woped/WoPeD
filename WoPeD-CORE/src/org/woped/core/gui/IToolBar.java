@@ -26,6 +26,8 @@ public interface IToolBar {
 	
 	public AbstractButton getColoringButton();
 	
+	//public AbstractButton getRotateViewButton();
+	
 	public void addViewListener(IViewListener listener);
 
 	public String getId();

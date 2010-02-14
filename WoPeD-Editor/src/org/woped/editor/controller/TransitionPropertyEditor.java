@@ -51,6 +51,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
+import org.jgraph.graph.DefaultGraphCell;
 import org.woped.bpel.gui.transitionproperties.Assign;
 import org.woped.bpel.gui.transitionproperties.BPELadditionalPanel;
 import org.woped.bpel.gui.transitionproperties.BPELassignPanel;
@@ -59,6 +60,7 @@ import org.woped.bpel.gui.transitionproperties.BPELinvokePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreceivePanel;
 import org.woped.bpel.gui.transitionproperties.BPELreplyPanel;
 import org.woped.bpel.gui.transitionproperties.BPELwaitPanel;
+import org.woped.bpel.gui.transitionproperties.Empty;
 import org.woped.bpel.gui.transitionproperties.Invoke;
 import org.woped.bpel.gui.transitionproperties.Receive;
 import org.woped.bpel.gui.transitionproperties.Reply;
@@ -70,11 +72,10 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
-import org.woped.bpel.gui.transitionproperties.*;
-import org.jgraph.graph.DefaultGraphCell;
 
 
 /**
@@ -194,6 +195,7 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JLabel branchingAndJoinXorSplitIcon = null;
 
 	private JLabel branchingXorJoinAndSplitIcon = null;
+	
 
 	// Service time
 	private JPanel serviceTimePanel = null;
@@ -271,6 +273,37 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private static final String TRIGGER_TIME = Messages
 			.getString("Transition.Properties.Trigger.Time");
+	
+	// Orientation
+	private JPanel orientationPanel = null;
+	
+	private JRadioButton orientationNorthRadioButton = null;
+
+	private JRadioButton orientationEastRadioButton = null;
+	
+	private JRadioButton orientationSouthRadioButton = null;
+
+	private JRadioButton orientationWestRadioButton = null;
+	
+	private ButtonGroup orientationButtonGroup = null;
+	
+	private JLabel orientationIcon = null;
+	
+	private static final String ORIENTATION_NORTH = Messages
+	.getString("Transition.Properties.Orientation.North");
+
+	private static final String ORIENTATION_EAST = Messages
+	.getString("Transition.Properties.Orientation.East");
+
+	private static final String ORIENTATION_SOUTH = Messages
+	.getString("Transition.Properties.Orientation.South");
+
+	private static final String ORIENTATION_WEST = Messages
+	.getString("Transition.Properties.Orientation.West");
+	
+	private OperatorPosition pos = null;
+	
+	private boolean orientationChanged = false;
 
 	// Resource
 	private JPanel resourcePanel = null;
@@ -322,7 +355,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		this.editor = editor;
 		this.setVisible(false);
 		initialize();
-		this.setSize(550, 580);
+		this.setSize(550,620);
 		this.setLocation(Utils
 				.getCenterPoint(owner.getBounds(), this.getSize()));
 		this.setVisible(true);
@@ -378,10 +411,15 @@ public class TransitionPropertyEditor extends JDialog implements
 			c1.gridx = 0;
 			c1.gridy = 3;
 			c1.insets = new Insets(0, 0, 0, 0);
+			contentPanel.add(getOrientationPanel(), c1);
+			
+			c1.gridx = 0;
+			c1.gridy = 4;
+			c1.insets = new Insets(0, 0, 0, 0);
 			contentPanel.add(getServicetimePanel(), c1);
 
 			c1.gridx = 0;
-			c1.gridy = 4;
+			c1.gridy = 5;
 			c1.insets = new Insets(0, 0, 0, 0);
 			contentPanel.add(getResourcePanel(), c1);
 		}
@@ -702,7 +740,183 @@ public class TransitionPropertyEditor extends JDialog implements
 		}
 		return triggerTimeRadioButton;
 	}
+	// ******************************OrientationPanel*****************************************
+	private JPanel getOrientationPanel() {
+		if (orientationPanel == null) {
+			orientationPanel = new JPanel();
+			orientationPanel.setBorder(BorderFactory.createCompoundBorder(
+					BorderFactory.createTitledBorder(Messages
+							.getString("Transition.Properties.Orientation")),
+					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
+			orientationButtonGroup = new ButtonGroup();
+			orientationButtonGroup.add(getOrientationNorthRadioButton());
+			orientationButtonGroup.add(getOrientationEastRadioButton());
+			orientationButtonGroup.add(getOrientationSouthRadioButton());
+			orientationButtonGroup.add(getOrientationWestRadioButton());
+
+			orientationPanel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+//			c.weightx = 1;
+//			c.weighty = 1;
+//			c.fill = GridBagConstraints.HORIZONTAL;
+//			c.anchor = GridBagConstraints.WEST;
+
+			c.gridx = 1;
+			c.gridy = 0;
+//			c.insets = new Insets(0, 50, 0, 0);
+			orientationPanel.add(getOrientationNorthRadioButton(), c);
+
+			c.gridx = 2;
+			c.gridy = 1;
+//			c.insets = new Insets(0, 100, 0, 0);
+			orientationPanel.add(getOrientationEastRadioButton(), c);
+
+			c.gridx = 1;
+			c.gridy = 2;
+//			c.insets = new Insets(0, 60, 0, 20);
+			orientationPanel.add(getOrientationSouthRadioButton(), c);
+
+			c.gridx = 0;
+			c.gridy = 1;
+//			c.insets = new Insets(0, 0, 0, 20);
+			orientationPanel.add(getOrientationWestRadioButton(), c);
+			
+			c.gridx = 1;
+			c.gridy = 1;
+//			c.insets = new Insets(0, 0, 0, 20);
+			orientationPanel.add(getOrientationIcon(), c);
+			
+			getOrientationNorthRadioButton().addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pos = OperatorPosition.NORTH;
+					orientationChanged = true;
+				}
+			});
+			
+			getOrientationSouthRadioButton().addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pos = OperatorPosition.SOUTH;
+					orientationChanged = true;
+				}
+			});
+			getOrientationWestRadioButton().addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pos = OperatorPosition.WEST;
+					orientationChanged = true;
+				}
+
+			});
+			getOrientationEastRadioButton().addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pos = OperatorPosition.EAST;
+					orientationChanged = true;
+				}
+
+			});
+			
+			setOrientationConfiguration();
+		}
+
+		return orientationPanel;
+	}
+
+	public void flipNameResourceTrigger(TransitionModel selectedTransition, OperatorPosition oldposition)
+	{
+		int currentPosition = selectedTransition.getToolSpecific().getOperatorPosition().ordinal();
+		
+		//Nord and South
+		if(currentPosition == 0 || currentPosition == 2)
+		{
+			selectedTransition.getNameModel().setPosition(selectedTransition.getX()+ selectedTransition.getWidth(),selectedTransition.getY());
+			if(selectedTransition.hasTrigger())
+			{
+				selectedTransition.getToolSpecific().setTrigger(selectedTransition.getToolSpecific().getTrigger()).setPosition(selectedTransition.getX()-25, selectedTransition.getY()+10);
+			}
+			if(selectedTransition.hasResource())
+			{
+				selectedTransition.getToolSpecific().setTransResource(selectedTransition.getToolSpecific().getTransResource()).setPosition(selectedTransition.getX()-65, selectedTransition.getY()-17);
+			}
+		}
+		//East and West
+		else if(currentPosition == 1 || currentPosition == 3)
+		{
+			selectedTransition.getNameModel().setPosition(selectedTransition.getX(),selectedTransition.getY()+selectedTransition.getHeight());
+			if(selectedTransition.hasTrigger())
+			{
+				selectedTransition.getToolSpecific().setTrigger(selectedTransition.getToolSpecific().getTrigger()).setPosition(selectedTransition.getX()+10, selectedTransition.getY()-20);
+			}
+			if(selectedTransition.hasResource())
+			{
+				selectedTransition.getToolSpecific().setTransResource(selectedTransition.getToolSpecific().getTransResource()).setPosition(selectedTransition.getX()+10, selectedTransition.getY()-47);
+			}
+		}
+		editor.getGraph().drawNet(editor.getModelProcessor());
+	}
+	
+	private void setOrientationConfiguration() {
+		if (transition.getToolSpecific().getOperatorPosition() == OperatorPosition.NORTH) {
+			getOrientationNorthRadioButton().setSelected(true);
+			actionPerformed(new ActionEvent(getOrientationNorthRadioButton(), -1,
+					ORIENTATION_NORTH));
+		} else if (transition.getToolSpecific().getOperatorPosition() == OperatorPosition.EAST) {
+			getOrientationEastRadioButton().setSelected(true);
+			actionPerformed(new ActionEvent(getOrientationEastRadioButton(), -1,
+					ORIENTATION_EAST));
+		} else if (transition.getToolSpecific().getOperatorPosition() == OperatorPosition.SOUTH) {
+			getOrientationSouthRadioButton().setSelected(true);
+			actionPerformed(new ActionEvent(getOrientationSouthRadioButton(), -1,
+					ORIENTATION_SOUTH));
+		} else if (transition.getToolSpecific().getOperatorPosition() == OperatorPosition.WEST) {
+			getOrientationWestRadioButton().setSelected(true);
+			actionPerformed(new ActionEvent(getOrientationWestRadioButton(), -1,
+					ORIENTATION_WEST));
+		}
+	}
+
+	private JLabel getOrientationIcon() {
+	if (orientationIcon == null) {
+		orientationIcon = new JLabel(Messages
+				.getImageIcon("Popup.Add.Orientation"));
+	}
+	return orientationIcon;
+}
+
+	private JRadioButton getOrientationNorthRadioButton() {
+		if (orientationNorthRadioButton == null) {
+			orientationNorthRadioButton = new JRadioButton(ORIENTATION_NORTH);
+			orientationNorthRadioButton.setActionCommand(ORIENTATION_NORTH);
+			orientationNorthRadioButton.addActionListener(this);
+		}
+		return orientationNorthRadioButton;
+	}
+
+	private JRadioButton getOrientationEastRadioButton() {
+		if (orientationEastRadioButton == null) {
+			orientationEastRadioButton = new JRadioButton(ORIENTATION_EAST);
+			orientationEastRadioButton.setActionCommand(ORIENTATION_EAST);
+			orientationEastRadioButton.addActionListener(this);
+		}
+		return orientationEastRadioButton;
+	}
+
+	private JRadioButton getOrientationSouthRadioButton() {
+		if (orientationSouthRadioButton == null) {
+			orientationSouthRadioButton = new JRadioButton(ORIENTATION_SOUTH);
+			orientationSouthRadioButton.setActionCommand(ORIENTATION_SOUTH);
+			orientationSouthRadioButton.addActionListener(this);
+		}
+		return orientationSouthRadioButton;
+	}
+
+	private JRadioButton getOrientationWestRadioButton() {
+		if (orientationWestRadioButton == null) {
+			orientationWestRadioButton = new JRadioButton(ORIENTATION_WEST);
+			orientationWestRadioButton.setActionCommand(ORIENTATION_WEST);
+			orientationWestRadioButton.addActionListener(this);
+		}
+		return orientationWestRadioButton;
+	}
 	// ******************************BranchingPanel****************************************
 	private JPanel getBranchingPanel() {
 		if (branchingPanel == null) {
@@ -820,8 +1034,8 @@ public class TransitionPropertyEditor extends JDialog implements
 					.getString("Transition.Properties.Branching.None"));
 			branchingNoneRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.None"));
+			branchingNoneRadioButton.addActionListener(this);
 		}
-
 		return branchingNoneRadioButton;
 	}
 
@@ -831,6 +1045,7 @@ public class TransitionPropertyEditor extends JDialog implements
 					.getString("Transition.Properties.Branching.AndJoin"));
 			branchingAndJoinRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.AndJoin"));
+			branchingAndJoinRadioButton.addActionListener(this);
 		}
 		return branchingAndJoinRadioButton;
 	}
@@ -841,6 +1056,7 @@ public class TransitionPropertyEditor extends JDialog implements
 					.getString("Transition.Properties.Branching.AndSplit"));
 			branchingAndSplitRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.AndSplit"));
+			branchingAndSplitRadioButton.addActionListener(this);
 		}
 		return branchingAndSplitRadioButton;
 	}
@@ -851,6 +1067,7 @@ public class TransitionPropertyEditor extends JDialog implements
 					.getString("Transition.Properties.Branching.AndSplitJoin"));
 			branchingAndSplitJoinRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.AndSplitJoin"));
+			branchingAndSplitJoinRadioButton.addActionListener(this);
 		}
 		return branchingAndSplitJoinRadioButton;
 	}
@@ -861,6 +1078,7 @@ public class TransitionPropertyEditor extends JDialog implements
 					.getString("Transition.Properties.Branching.XorSplit"));
 			branchingXorSplittRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.XorSplit"));
+			branchingXorSplittRadioButton.addActionListener(this);
 		}
 		return branchingXorSplittRadioButton;
 	}
@@ -871,6 +1089,7 @@ public class TransitionPropertyEditor extends JDialog implements
 					.getString("Transition.Properties.Branching.XorJoin"));
 			branchingXorJoinRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.XorJoin"));
+			branchingXorJoinRadioButton.addActionListener(this);
 		}
 		return branchingXorJoinRadioButton;
 	}
@@ -881,6 +1100,7 @@ public class TransitionPropertyEditor extends JDialog implements
 					.getString("Transition.Properties.Branching.XorSplitJoin"));
 			branchingXorSplitJoinRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.XorSplitJoin"));
+			branchingXorSplitJoinRadioButton.addActionListener(this);
 		}
 		return branchingXorSplitJoinRadioButton;
 	}
@@ -893,6 +1113,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			branchingAndJoinXorSplitRadioButton
 					.setActionCommand(Messages
 							.getString("Transition.Properties.Branching.AndJoinXorSplit"));
+			branchingAndJoinXorSplitRadioButton.addActionListener(this);
 		}
 		return branchingAndJoinXorSplitRadioButton;
 	}
@@ -905,6 +1126,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			branchingXorJoinAndSplitRadioButton
 					.setActionCommand(Messages
 							.getString("Transition.Properties.Branching.XorJoinAndSplit"));
+			branchingXorJoinAndSplitRadioButton.addActionListener(this);
 		}
 		return branchingXorJoinAndSplitRadioButton;
 	}
@@ -1741,6 +1963,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		map.setTriggerPosition(transition.getTriggerPosition());
 		map.setResourcePosition(transition.getResourcePosition());
 
+
 		// Remove old trigger plus resource classes if existing
 		// Remember them here as deleteCell will cross-update the tool-specific info
          	DefaultGraphCell trigger = transition.hasTrigger()?transition.getToolSpecific().getTrigger():null;
@@ -1789,6 +2012,14 @@ public class TransitionPropertyEditor extends JDialog implements
 			transition.getToolSpecific().setTimeUnit(
 					serviceTimeComboBox.getSelectedIndex());
 
+		//TODO
+		if(orientationChanged)
+		{
+			OperatorPosition oldposition = transition.getToolSpecific().getOperatorPosition();
+			transition.getToolSpecific().setOperatorPosition(pos);
+			flipNameResourceTrigger(transition, oldposition);
+		}
+		
 		// Set change flag
 		getEditor().setSaved(false);
 		getEditor().updateNet();
@@ -1824,6 +2055,36 @@ public class TransitionPropertyEditor extends JDialog implements
 			getserviceTimeLabel().setEnabled(true);
 			getserviceTimeTextfield().setEnabled(true);
 			getserviceTimeComboBox().setEnabled(true);
+		}
+		if (transition.getToolSpecific().isSubprocess()|| transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE) {
+			getOrientationEastRadioButton().setEnabled(false);
+			getOrientationWestRadioButton().setEnabled(false);
+			getOrientationNorthRadioButton().setEnabled(false);
+			getOrientationSouthRadioButton().setEnabled(false);
+		}
+		//TODO: activate/deactivate Orientation Radio Buttons immediately "on the fly" when another Transition Type is selected
+		if(e.getActionCommand().equals(Messages
+				.getString("Transition.Properties.Branching.None")))
+		{
+			getOrientationEastRadioButton().setEnabled(false);
+			getOrientationWestRadioButton().setEnabled(false);
+			getOrientationNorthRadioButton().setEnabled(false);
+			getOrientationSouthRadioButton().setEnabled(false);
+		}
+		if(e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.AndJoin"))||
+				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.AndSplit"))||
+				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.AndSplitJoin"))||
+				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.XorSplit"))||
+				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.XorJoin"))||
+				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.XorSplitJoin"))||
+				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit"))||
+				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.XorJoinAndSplit"))
+		)
+		{
+			getOrientationEastRadioButton().setEnabled(true);
+			getOrientationWestRadioButton().setEnabled(true);
+			getOrientationNorthRadioButton().setEnabled(true);
+			getOrientationSouthRadioButton().setEnabled(true);
 		}
 	}
 

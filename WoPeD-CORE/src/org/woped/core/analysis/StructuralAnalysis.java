@@ -35,7 +35,7 @@ public class StructuralAnalysis {
 	}
 
 	// ! Returns an iterator over all places of the net
-	public Iterator getPlacesIterator() {
+	public Iterator<AbstractElementModel> getPlacesIterator() {
 		calculateBasicNetInfo();
 		return m_places.iterator();
 	}
@@ -45,9 +45,19 @@ public class StructuralAnalysis {
 		return m_transitions.size();
 	}
 
-	public Iterator getTransitionsIterator() {
+	public Iterator<AbstractElementModel> getTransitionsIterator() {
 		calculateBasicNetInfo();
 		return m_transitions.iterator();
+	}
+	
+	public int getNumSubprocesses(){
+		calculateBasicNetInfo();
+		return m_subprocesses.size();
+	}
+	
+	public Iterator<AbstractElementModel> getSubprocessesIterator() {
+		calculateBasicNetInfo();
+		return m_subprocesses.iterator();
 	}
 
 	public int getNumOperators() {
@@ -55,7 +65,7 @@ public class StructuralAnalysis {
 		return m_operators.size();
 	}
 
-	public Iterator getOperatorsIterator() {
+	public Iterator<AbstractElementModel> getOperatorsIterator() {
 		calculateBasicNetInfo();
 		return m_operators.iterator();
 	}
@@ -69,7 +79,7 @@ public class StructuralAnalysis {
 		return m_sourcePlaces.size();
 	}
 
-	public Iterator getSourcePlacesIterator() {
+	public Iterator<AbstractElementModel> getSourcePlacesIterator() {
 		calculateBasicNetInfo();
 		return m_sourcePlaces.iterator();
 	}
@@ -79,7 +89,7 @@ public class StructuralAnalysis {
 		return m_sourceTransitions.size();
 	}
 
-	public Iterator getSourceTransitionsIterator() {
+	public Iterator<AbstractElementModel> getSourceTransitionsIterator() {
 		calculateBasicNetInfo();
 		return m_sourceTransitions.iterator();
 	}
@@ -99,7 +109,7 @@ public class StructuralAnalysis {
 		return m_sinkTransitions.size();
 	}
 
-	public Iterator getSinkTransitionsIterator() {
+	public Iterator<AbstractElementModel> getSinkTransitionsIterator() {
 		calculateBasicNetInfo();
 		return m_sinkTransitions.iterator();
 	}
@@ -109,7 +119,7 @@ public class StructuralAnalysis {
 		return m_misusedOperators.size();
 	}
 
-	public Iterator getMisusedOperatorsIterator() {
+	public Iterator<AbstractElementModel> getMisusedOperatorsIterator() {
 		calculateBasicNetInfo();
 		return m_misusedOperators.iterator();
 	}
@@ -121,7 +131,7 @@ public class StructuralAnalysis {
 
 	// ! Return all nodes of the current net that
 	// ! are not connected
-	public Iterator getNotConnectedNodes() {
+	public Iterator<AbstractElementModel> getNotConnectedNodes() {
 		calculateConnections();
 		return m_notConnectedNodes.iterator();
 	}
@@ -133,7 +143,7 @@ public class StructuralAnalysis {
 
 	// ! Return all nodes of the current net that
 	// ! are not strongly connected
-	public Iterator getNotStronglyConnectedNodes() {
+	public Iterator<AbstractElementModel> getNotStronglyConnectedNodes() {
 		calculateConnections();
 		return m_notStronglyConnectedNodes.iterator();
 	}
@@ -148,7 +158,7 @@ public class StructuralAnalysis {
 	// ! by a Set of nodes defining the violation
 	// ! @return Iterator through a list of sets
 	// ! of nodes violating the free-choice property
-	public Iterator getFreeChoiceViolations() {
+	public Iterator<Set<AbstractElementModel>> getFreeChoiceViolations() {
 		calculateFreeChoice();
 		return m_freeChoiceViolations.iterator();
 	}
@@ -207,6 +217,10 @@ public class StructuralAnalysis {
 	// ! Stores a set of all the transitions of
 	// ! the processed net
 	HashSet<AbstractElementModel> m_transitions = new HashSet<AbstractElementModel>();
+	// ! Stores a set of all the subprocesses of
+	// ! the processed net
+	HashSet<AbstractElementModel> m_subprocesses = new HashSet<AbstractElementModel>();	
+	
 
 	// ! Stores a set of all operators.
 	// ! Operators are AND-split, AND-join
@@ -350,13 +364,13 @@ public class StructuralAnalysis {
 		// Iterate through all elements and
 		// take notes
 		m_nNumArcs = 0;
-		Iterator i = elements.getRootElements().iterator();
+		Iterator<AbstractElementModel> i = elements.getRootElements().iterator();
 		updateStatistics(i);
 		// Just ask the arc map for its size...
 		m_nNumArcs += elements.getArcMap().size();
 	}
 
-	private void updateStatistics(Iterator i) {
+	private void updateStatistics(Iterator<AbstractElementModel> i) {
 		NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration();
 		while (i.hasNext()) {
 			try {
@@ -413,7 +427,7 @@ public class StructuralAnalysis {
 					ModelElementContainer simpleTransContainer = operator
 							.getSimpleTransContainer();
 					// Recursively call ourselves to add inner nodes
-					Iterator innerIterator = simpleTransContainer
+					Iterator<AbstractElementModel> innerIterator = simpleTransContainer
 							.getRootElements().iterator();
 					updateStatistics(innerIterator);
 					// To have the total number of arcs we must subtract
@@ -423,10 +437,11 @@ public class StructuralAnalysis {
 							- (arcConfig.m_numIncoming + arcConfig.m_numOutgoing);
 				}
 					break;
-				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
+				case AbstractPetriNetModelElement.SUBP_TYPE:
 					// Default behaviour for sub processes is to treat them as a
 					// single transition
-				case AbstractPetriNetModelElement.SUBP_TYPE:
+					m_subprocesses.add(currentNode);
+				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
 					m_transitions.add(currentNode);
 					if (arcConfig.m_numIncoming == 0)
 						m_sourceTransitions.add(currentNode);
@@ -519,10 +534,12 @@ public class StructuralAnalysis {
 			removeTStar(ttemp);
 	}
 
-	AbstractElementModel addTStar() {
+	public AbstractElementModel addTStar() {
+		if(!m_bBasicNetInfoAvailable)
+			calculateBasicNetInfo();
 		AbstractElementModel ttemp = null;
 		// Create transition 't*'
-		Iterator i = m_transitions.iterator();
+		Iterator<AbstractElementModel> i = m_transitions.iterator();
 		AbstractElementModel transitionTemplate = ((i.hasNext()) ? (AbstractElementModel) i
 				.next()
 				: null);
@@ -556,14 +573,18 @@ public class StructuralAnalysis {
 					ttemp.getPort().addEdge(newEdge);
 					target.getPort().addEdge(newEdge);
 				}
+				m_bBasicNetInfoAvailable = false;
 			}
 		}
 		return ttemp;
 	}
 
-	void removeTStar(AbstractElementModel tstar) {
+	public void removeTStar(AbstractElementModel tstar) {
 		// Remove the element from the graph
-		m_currentEditor.getModelProcessor().removeElement(tstar.getId());
+		if(tstar!=null){
+			m_currentEditor.getModelProcessor().removeElement(tstar.getId());
+			m_bBasicNetInfoAvailable = false;
+		}
 	}
 
 	void calculateFreeChoice() {
@@ -590,7 +611,7 @@ public class StructuralAnalysis {
 		// m_freeChoiceViolations.addAll(transitionResults);
 	}
 
-	Set<Set<AbstractElementModel>> getNonFreeChoiceGroups(Iterator i,
+	Set<Set<AbstractElementModel>> getNonFreeChoiceGroups(Iterator<AbstractElementModel> i,
 			boolean swapArcDirection) {
 		Set<Set<AbstractElementModel>> result = new HashSet<Set<AbstractElementModel>>();
 		// Look for forward-branched places (conflicts)
@@ -609,7 +630,7 @@ public class StructuralAnalysis {
 							currentPlace,
 							swapArcDirection ? NetAlgorithms.connectionTypeINBOUND
 									: NetAlgorithms.connectionTypeOUTBOUND);
-			for (Iterator s = successors.iterator(); s.hasNext();) {
+			for (Iterator<AbstractElementModel> s = successors.iterator(); s.hasNext();) {
 				AbstractElementModel successor = (AbstractElementModel) s
 						.next();
 				Set<AbstractElementModel> predecessors = NetAlgorithms
@@ -734,7 +755,7 @@ public class StructuralAnalysis {
 				.getDirectlyConnectedNodes(i,
 						NetAlgorithms.connectionTypeOUTBOUND);
 		FlowNode source = lolnet.getNodeForElement(i, false);
-		for (Iterator s = successors.iterator(); s.hasNext();) {
+		for (Iterator<AbstractElementModel> s = successors.iterator(); s.hasNext();) {
 			AbstractElementModel t = (AbstractElementModel) s.next();
 			FlowNode target = lolnet.getNodeForElement(t, true);
 

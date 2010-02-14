@@ -27,6 +27,7 @@ import java.awt.Point;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.model.CreationMap;
+import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 
 /**
  * @author Simon Landes
@@ -42,6 +43,7 @@ public class TransitionModel extends PetriNetModelElement
     private Toolspecific    toolSpecific;
     public static final int WIDTH     = 40;
     public static final int HEIGHT    = 40;
+    private EditorLayoutInfo m_EditorLayoutInfo = null;
     
 
     public TransitionModel(CreationMap map)
@@ -91,7 +93,14 @@ public class TransitionModel extends PetriNetModelElement
     	if (hasTrigger())
     		return getToolSpecific().getTrigger().getPosition();
     	else
-    		return new Point(getX() + 10, getY() - 25);
+    		if(toolSpecific.getOperatorPosition() == OperatorPosition.NORTH || toolSpecific.getOperatorPosition() == OperatorPosition.SOUTH)
+    		{
+    			return new Point(getX() - 25, getY() + 10);
+    		}
+    		else
+    		{
+    			return new Point(getX() + 10, getY() - 20);
+    		}
     }
 
     public Point getResourcePosition()
@@ -99,7 +108,14 @@ public class TransitionModel extends PetriNetModelElement
     	if (hasResource())
     		return getToolSpecific().getTransResource().getPosition();
     	else
-    		return new Point(getX() + 10, getY() - TransitionResourceModel.DEFAULT_HEIGHT - 25);
+    		if(toolSpecific.getOperatorPosition() == OperatorPosition.NORTH || toolSpecific.getOperatorPosition() == OperatorPosition.SOUTH)
+    		{
+    			return new Point(getX() - 65, getY() - TransitionResourceModel.DEFAULT_HEIGHT + 5);
+    		}
+    		else
+    		{
+    			return new Point(getX() + 10, getY() - TransitionResourceModel.DEFAULT_HEIGHT - 25);
+    		}
     }
 
     public int getDefaultWidth()
@@ -144,7 +160,7 @@ public class TransitionModel extends PetriNetModelElement
         // time unit
         map.setTransitionTime(getToolSpecific().getTime());
         map.setTransitionTimeUnit(getToolSpecific().getTimeUnit());
-
+       
         return map;
     }
 
@@ -157,5 +173,4 @@ public class TransitionModel extends PetriNetModelElement
     {
         return PetriNetModelElement.TRANS_SIMPLE_TYPE;
     }
-
 }

@@ -2,6 +2,7 @@ package org.woped.core.controller;
 
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public abstract class AbstractViewEvent extends ActionEvent
 {
 
@@ -83,6 +84,9 @@ public abstract class AbstractViewEvent extends ActionEvent
     //! and some calls to the Woflan DLL
     public static final int ANALYSIS_WOPED			  = 1062;
     public static final int COLORING 		 		  = 1063;
+    public static final int ROTATEVIEW				  = 1064;
+    public static final int ROTATETRANSLEFT			  = 1065;
+    public static final int ROTATETRANSRIGHT		  = 1066;
     public static final int TOGGLE_TOKENGAME          = 1070;
 
     //

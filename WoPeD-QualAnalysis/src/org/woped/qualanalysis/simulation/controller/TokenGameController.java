@@ -32,12 +32,10 @@ import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.border.LineBorder;
-import javax.swing.text.html.HTMLDocument.HTMLReader.HiddenAction;
 
 import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
-import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
@@ -51,10 +49,10 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
-
-import org.woped.qualanalysis.reachabilitygraph.data.Marking;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
+import org.woped.qualanalysis.soundness.builder.BuilderFactory;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -324,10 +322,12 @@ public class TokenGameController {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER,
 				"           ... DONE (" + (System.currentTimeMillis() - begin)
 						+ " ms)");
-		setMarkingInRG(new Marking(thisEditor, "TokenGame"));
+		//setMarkingInRG(new Marking(thisEditor,"TokenGame"));    
+        setMarkingInRG((BuilderFactory.createMarkingNet(BuilderFactory
+				.createLowLevelPetriNetWithoutTStarBuilder(thisEditor).getLowLevelPetriNet())).getInitialMarking());
 	}
 
-	private void setMarkingInRG(Marking mark) {
+	private void setMarkingInRG(IMarking mark) {
 		if (ParentControl == null)
 			ParentControl = new ReferenceProvider();
 		Object[] a = ParentControl.getDesktopReference().getComponents();
@@ -500,57 +500,56 @@ public class TokenGameController {
 					//setOutgoingArcsActive(transition.getId(), true);
 					// Set this transition active
 					//operator.setFireing(true);
-				} else {
-					// There must at least be one token at the input side for
-					// the transition to be
-					// activated
-					if (countIncomingActivePlaces(incomingArcs) > 0) {
-						String XorName, ID;
-						Iterator<String> inArcs = incomingArcs.keySet()
-								.iterator();
-						TransitionModel virtualTransition; //needed to build virtual Transitions.
-						AbstractElementModel helpPlace;
-						//ArcModel activeArc;
+				}
+				// There must at least be one token at the input side for
+				// the transition to be
+				// activated
+				if (countIncomingActivePlaces(incomingArcs) > 0) {
+					String XorName, ID;
+					Iterator<String> inArcs = incomingArcs.keySet()
+							.iterator();
+					TransitionModel virtualTransition; //needed to build virtual Transitions.
+					AbstractElementModel helpPlace;
+					//ArcModel activeArc;
 
-						/*
-						 * In this while-loop, Virtual Transitions will be build which represent the Arcs in the OccurenceList.
-						 * If a virtual Transition is chosen by the user, it will be identified by its ID as Arc and the depending Arc
-						 * will be taken instead to be occured
-						 */
-						setIncomingArcsActive(transition.getId(), true);
-						while (inArcs.hasNext()) {
-							ID = (String) inArcs.next(); //Get Arcs ID
-							//List all activated Arcs in the occur List
-							if (getPetriNet().getElementContainer().getArcById(
-									ID).isActivated()) {
-								// Use a new CreationMap with the arcs id to create the virtual transition
-								CreationMap map = CreationMap.createMap();
-								map.setId(ID);
-								virtualTransition = new TransitionModel(map);
-								helpPlace = getPetriNet().getElementContainer()
-										.getElementById(
-												getPetriNet()
-														.getElementContainer()
-														.getArcById(ID)
-														.getSourceId());
-								XorName = "(" + helpPlace.getNameValue()
-										+ ")-> " + transition.getNameValue();
-								virtualTransition.setNameValue(XorName);
-								RemoteControl
-										.addFollowingItem(virtualTransition);
-								virtualTransition = null;
-								XorName = "";
-							}
+					/*
+					 * In this while-loop, Virtual Transitions will be build which represent the Arcs in the OccurenceList.
+					 * If a virtual Transition is chosen by the user, it will be identified by its ID as Arc and the depending Arc
+					 * will be taken instead to be occured
+					 */
+					setIncomingArcsActive(transition.getId(), true);
+					while (inArcs.hasNext()) {
+						ID = (String) inArcs.next(); //Get Arcs ID
+						//List all activated Arcs in the occur List
+						if (getPetriNet().getElementContainer().getArcById(
+								ID).isActivated()) {
+							// Use a new CreationMap with the arcs id to create the virtual transition
+							CreationMap map = CreationMap.createMap();
+							map.setId(ID);
+							virtualTransition = new TransitionModel(map);
+							helpPlace = getPetriNet().getElementContainer()
+									.getElementById(
+											getPetriNet()
+													.getElementContainer()
+													.getArcById(ID)
+													.getSourceId());
+							XorName = "(" + helpPlace.getNameValue()
+									+ ")-> " + transition.getNameValue();
+							virtualTransition.setNameValue(XorName);
+							RemoteControl
+									.addFollowingItem(virtualTransition);
+							virtualTransition = null;
+							XorName = "";
 						}
-
-						operator.setFireing(true);
-						// Activate all incoming arcs. This will allow the user
-						// to click them
-						// and choose where the token will come from
-						//setIncomingArcsActive(transition.getId(), true);
-						// Set this transition active.
-						//operator.setFireing(true);
 					}
+
+					operator.setFireing(true);
+					// Activate all incoming arcs. This will allow the user
+					// to click them
+					// and choose where the token will come from
+					//setIncomingArcsActive(transition.getId(), true);
+					// Set this transition active.
+					//operator.setFireing(true);
 				}
 			}
 		}

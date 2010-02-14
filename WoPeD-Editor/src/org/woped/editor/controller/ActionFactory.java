@@ -32,7 +32,10 @@ public class ActionFactory
     public final static String         ACTIONID_WOFLAN                 = "ToolBar.Woflan";
     public final static String		   ACTIONID_WOPED				   = "ToolBar.Woped";
     public final static String         ACTIONID_TOGGLE_TOKENGAME       = "ToolBar.TokenGame";
-    public final static String         ACTIONID_PRINT                  = "Action.PrintEditor";
+    public final static String         ACTIONID_PRINT 				   = "Action.PrintEditor";
+    public final static String		   ACTIONID_ROTATEVIEW			   = "ToolBar.RotateView";
+    public final static String		   ACTIONID_ROTATE_TRANS_LEFT	   = "ToolBar.RotateTransLeft";
+    public final static String		   ACTIONID_ROTATE_TRANS_RIGHT	   = "ToolBar.RotateTransRight";
     // utils
     public final static String         ACTIONID_UPDATENETS             = "Action.UpdateNets";
     //public final static String ACTIONID_SCREENSHOT =
@@ -209,6 +212,14 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ZOOMOUT), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_COLORING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.COLORING, null, ACTIONID_COLORING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COLORING), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.COLORING);
+        //Rotation
+        STATIC_ACTION_MAP.put(ACTIONID_ROTATEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATEVIEW, null, ACTIONID_ROTATEVIEW));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATEVIEW), VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE, VisualController.ROTATE);
+        STATIC_ACTION_MAP.put(ACTIONID_ROTATE_TRANS_LEFT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATETRANSLEFT, null, ACTIONID_ROTATE_TRANS_LEFT));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATE_TRANS_LEFT), VisualController.TRANSITION_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
+        STATIC_ACTION_MAP.put(ACTIONID_ROTATE_TRANS_RIGHT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATETRANSRIGHT, null, ACTIONID_ROTATE_TRANS_RIGHT));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATE_TRANS_RIGHT), VisualController.TRANSITION_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
+        //Tokengame
         STATIC_ACTION_MAP.put(ACTIONID_TOGGLE_TOKENGAME, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOGGLE_TOKENGAME, null, ACTIONID_TOGGLE_TOKENGAME));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOGGLE_TOKENGAME), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.TOKENGAME);
         /* EDIT */
@@ -234,8 +245,7 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DEACTIVATE_ROUTING), VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ACTIVATE_ALL_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ALL_ACTIVE, null, ACTIONID_ACTIVATE_ALL_ROUTING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ACTIVATE_ALL_ROUTING), VisualController.IGNORE/*zurück*/, VisualController.IGNORE, VisualController.IGNORE);
-        STATIC_ACTION_MAP
-                .put(ACTIONID_DEACTIVATE_ALL_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ALL_DEACTIVE, null, ACTIONID_DEACTIVATE_ALL_ROUTING));
+        STATIC_ACTION_MAP.put(ACTIONID_DEACTIVATE_ALL_ROUTING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROUTING_ALL_DEACTIVE, null, ACTIONID_DEACTIVATE_ALL_ROUTING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DEACTIVATE_ALL_ROUTING), VisualController.ALWAYS, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ADD_POINT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_POINT, null, ACTIONID_ADD_POINT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_POINT), VisualController.ARC_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
@@ -299,11 +309,10 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SHOWSIDEBAR), 
         		VisualController.WITH_EDITOR, VisualController.IGNORE, 
         		VisualController.TREEVIEW_VISIBLE);
-
         return STATIC_ACTION_MAP;
     }
 
-    public static HashMap getStaticActionMap()
+    public static HashMap<String, WoPeDAction> getStaticActionMap()
     {
         if (STATIC_ACTION_MAP == null) STATIC_ACTION_MAP = new HashMap<String, WoPeDAction>();
         return STATIC_ACTION_MAP;

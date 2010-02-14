@@ -1,13 +1,13 @@
 package org.woped.qualanalysis.reachabilitygraph.controller;
 
+import java.awt.Color;
+
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
-import org.woped.qualanalysis.reachabilitygraph.data.Marking;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
-
-import java.awt.Color;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 
 public class ReachabilityPlaceView extends VertexView {
 	
@@ -33,7 +33,7 @@ public class ReachabilityPlaceView extends VertexView {
 		if(place.getGrayscaled()){
     		if(place.getHighlight())
     			GraphConstants.setBackground(place.getAttributes(), grayscaledHighlightedColor);    		
-    		else if (((Marking) place.getUserObject()).isInitial()) 
+    		else if (((IMarking) place.getUserObject()).isInitial()) 
     			GraphConstants.setBackground(place.getAttributes(), grayscaledRootColor);
     		else 
     			GraphConstants.setBackground(place.getAttributes(), grayscaledNormalColor);
@@ -41,7 +41,7 @@ public class ReachabilityPlaceView extends VertexView {
     	else{
     		if(place.getHighlight())
     			GraphConstants.setBackground(place.getAttributes(), coloredHighlightedColor);    		
-    		else if (((Marking) place.getUserObject()).isInitial()) 
+    		else if (((IMarking) place.getUserObject()).isInitial()) 
     			GraphConstants.setBackground(place.getAttributes(), coloredRootColor);
     		else 
     			GraphConstants.setBackground(place.getAttributes(), coloredNormalColor);    		

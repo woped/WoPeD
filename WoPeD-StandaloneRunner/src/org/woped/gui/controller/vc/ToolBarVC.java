@@ -81,6 +81,10 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     private AbstractButton     m_ungroupButton      = null;
     private AbstractButton     m_zoomInButton       = null;
     private AbstractButton     m_zoomOutButton      = null;
+    
+    private AbstractButton	   m_rotateViewButton 	= null;
+    private AbstractButton	   m_rotateTransLeftButton = null;
+    private AbstractButton	   m_rotateTransRightButton = null;
 
     private AbstractButton     m_placeButton        = null;
     private AbstractButton     m_transitionButton   = null;
@@ -132,12 +136,17 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
         add(getGroupButton());
         add(getUngroupButton());
         addSeparator(new Dimension(12, 0));
+        //Zoom
         add(getZoomInButton());
         add(getZoomOutButton());
-        addSeparator();
         addSeparator(new Dimension(12, 0));
         add(getZoomChooser());
-        // ZoomChooser
+        addSeparator(new Dimension(12, 0));
+        //Rotation
+        add(getRotateTransLeftButton());
+        add(getRotateTransRightButton());
+        add(getRotateViewButton());
+        // Transitions and Places
         addSeparator();
         add(getPlaceButton());
         add(getTransitionButton());
@@ -177,7 +186,6 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     	this.remove(getQuantSimButton());
     	this.remove(getReachabilityGraphButton());
     	this.remove(getColoringButton());
-
     }
     
     public void addAnalysisButtons()
@@ -188,6 +196,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     	this.add(getQuantSimButton());
     	this.add(getReachabilityGraphButton());
         this.add(getColoringButton());
+        
     }
     
     private AbstractButton getNewButton()
@@ -488,6 +497,33 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     	}
     	return m_coloringButton;
     }
+    
+    public AbstractButton getRotateViewButton()
+    {
+    	if (m_rotateViewButton == null)
+    	{
+    		m_rotateViewButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ROTATEVIEW),true);
+    	}
+    	return m_rotateViewButton;
+    }
+    
+    public AbstractButton getRotateTransLeftButton()
+    {
+    	if (m_rotateTransLeftButton == null)
+    	{
+    		m_rotateTransLeftButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ROTATE_TRANS_LEFT),false);
+    	}
+    	return m_rotateTransLeftButton;
+    }
+    
+    public AbstractButton getRotateTransRightButton()
+    {
+    	if (m_rotateTransRightButton == null)
+    	{
+    		m_rotateTransRightButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ROTATE_TRANS_RIGHT),false);
+    	}
+    	return m_rotateTransRightButton;
+    }
  
     public void addViewListener(IViewListener listener)
     {
@@ -516,10 +552,10 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     public final void fireViewEvent(AbstractViewEvent viewevent)
     {
         if (viewevent == null) return;
-        java.util.Vector vector;
+        Vector<IViewListener> vector;
         synchronized (viewListener)
         {
-            vector = (java.util.Vector) viewListener.clone();
+            vector = (Vector<IViewListener>) viewListener.clone();
         }
         if (vector == null) return;
         int i = vector.size();
@@ -545,7 +581,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
             zoomChooser.setSelectedIndex(3);
             zoomChooser.setBorder(BorderFactory.createEtchedBorder());
             zoomChooser.setEditable(true);
-            SwingUtils.setFixedWidth(zoomChooser, 70);
+            SwingUtils.setFixedWidth(zoomChooser, 50);
             zoomChooser.addItemListener(new ItemListener()
             {
 

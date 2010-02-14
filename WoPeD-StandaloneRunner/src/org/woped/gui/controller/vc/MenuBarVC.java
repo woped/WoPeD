@@ -33,6 +33,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Vector;
+import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
@@ -103,6 +104,9 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_ungroupMenuItem        = null;
     private JMenuItem          m_zoomInMenuItem         = null;
     private JMenuItem          m_zoomOutMenuItem        = null;
+    private JMenuItem		   m_rotateViewMenuItem		= null;
+    private JMenuItem		   m_rotateTransLeftMenuItem	= null;
+    private JMenuItem		   m_rotateTransRightMenuItem	= null;
 
     private JMenuItem          m_startTokenGameMenuItem = null;
     private JMenu              m_analyseMenu            = null;
@@ -350,6 +354,10 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_viewMenu.addSeparator();
             m_viewMenu.add(getZoomInMenuItem());
             m_viewMenu.add(getZoomOutMenuItem());
+            m_viewMenu.addSeparator();
+            m_viewMenu.add(getRotateTransLeftMenuItem());
+            m_viewMenu.add(getRotateTransRightMenuItem());
+            m_viewMenu.add(getRotateViewMenuItem());
         }
         return m_viewMenu;
     }
@@ -710,7 +718,43 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
         }
         return m_zoomOutMenuItem;
     }
-
+    
+    /**
+     * @return Returns the rotateTransLeftMenuItem.
+     */
+    public JMenuItem getRotateTransLeftMenuItem()
+    {
+        if (m_rotateTransLeftMenuItem == null)
+        {
+        	m_rotateTransLeftMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ROTATE_TRANS_LEFT));
+        }
+        return m_rotateTransLeftMenuItem;
+    }
+    
+    /**
+     * @return Returns the rotateTransRightMenuItem.
+     */
+    public JMenuItem getRotateTransRightMenuItem()
+    {
+        if (m_rotateTransRightMenuItem == null)
+        {
+        	m_rotateTransRightMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ROTATE_TRANS_RIGHT));
+        }
+        return m_rotateTransRightMenuItem;
+    }
+    
+    /**
+     * @return Returns the rotateViewMenuItem.
+     */
+    public JMenuItem getRotateViewMenuItem()
+    {
+        if (m_rotateViewMenuItem == null)
+        {
+            m_rotateViewMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ROTATEVIEW));
+        }
+        return m_rotateViewMenuItem;
+    }
+    
     /**
      * @return Returns the woflanMenuItem.
      */
@@ -791,7 +835,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
                     // Replace all whitespaces in filename
                     fn = fn.replaceAll("%20", " ");
                     JarFile jf = new JarFile(fn);
-                    Enumeration e = jf.entries();
+                    Enumeration<JarEntry> e = jf.entries();
                     ZipEntry ze;
                     // process entries
                     while (e.hasMoreElements())
@@ -1017,10 +1061,10 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     public final void fireViewEvent(AbstractViewEvent viewevent)
     {
         if (viewevent == null) return;
-        java.util.Vector vector;
+        Vector<IViewListener> vector;
         synchronized (viewListener)
         {
-            vector = (java.util.Vector) viewListener.clone();
+            vector = (Vector<IViewListener>) viewListener.clone();
         }
         if (vector == null) return;
         int i = vector.size();
@@ -1055,7 +1099,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     public void selectEditor(IEditor editor)
     {
         JMenuItem menuItem = (JMenuItem) m_editorMenuItems.get(editor);
-        Iterator itr = m_editorMenuItems.values().iterator();
+        Iterator<JMenuItem> itr = m_editorMenuItems.values().iterator();
         while (itr.hasNext())
         {
             JMenuItem curElement = ((JMenuItem) itr.next());

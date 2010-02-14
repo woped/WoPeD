@@ -60,7 +60,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
     private PetriNetResourceEditor m_petriNetResourceEditornew = null;
     private EditorStatusBarVC      m_statusBar              = null;
     private EditorOperations       m_operationsEditor		= null;
-    private EditorData             m_dataEditor				= null;
     private JTabbedPane            tabbedPane               = null;
 
     public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor, EditorOperations opEditor, EditorData dEditor)
@@ -72,7 +71,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
  
     	addInternalFrameListener(m_editor);
     	m_operationsEditor = opEditor;
-//    	m_dataEditor = dEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
         if (editor.isSubprocessEditor()) {
@@ -86,8 +84,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             tabbedPane = new JTabbedPane();
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
-            tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
-//            tabbedPane.addTab(Messages.getString("PetriNet.Data.Title"), m_dataEditor);
+            tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);            
             tabbedPane.getModel().addChangeListener(new ChangeListener()
             		{
             	public void stateChanged(ChangeEvent e)
@@ -122,6 +119,9 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         setTitle(m_editor.getName());
                        
         this.pack();
+        if (!editor.isSubprocessEditor()) {
+        	this.setSize(800,600);
+        }
         this.repaint();
         this.setVisible(true);
     }
@@ -135,7 +135,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         m_petriNetResourceEditornew = propEditor;
     	addInternalFrameListener(m_editor);
     	m_operationsEditor = opEditor;
-//    	m_dataEditor = dEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
         if (editor.isSubprocessEditor()) {
@@ -150,7 +149,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
-//            tabbedPane.addTab(Messages.getString("PetriNet.Data.Title"), m_dataEditor);
             tabbedPane.getModel().addChangeListener(new ChangeListener()
             		{
             	public void stateChanged(ChangeEvent e)
@@ -209,7 +207,10 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
                 
         setTitle(m_editor.getName());
                        
-        this.pack();
+        this.pack();        
+        if (!editor.isSubprocessEditor()) {
+        	this.setSize(800,600);
+        }
         this.repaint();
         this.setVisible(true);
     }

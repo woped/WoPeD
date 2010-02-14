@@ -214,7 +214,7 @@ public class ModelElementContainer implements Serializable {
 
 	public void removeTargetArcsFromElement(Object id) {
 		// remove all Target Arcs
-		Iterator arcsToRemove2 = getOutgoingArcs(id).keySet().iterator();
+		Iterator<String> arcsToRemove2 = getOutgoingArcs(id).keySet().iterator();
 		// arcsToRemove2.next();
 		while (arcsToRemove2.hasNext()) {
 			removeArc(arcsToRemove2.next());
@@ -223,7 +223,7 @@ public class ModelElementContainer implements Serializable {
 
 	public void removeSourceArcsFromElement(Object id) {
 		// remove all Source Arcs
-		Iterator arcsToRemove = getIncomingArcs(id).keySet().iterator();
+		Iterator<String> arcsToRemove = getIncomingArcs(id).keySet().iterator();
 		while (arcsToRemove.hasNext()) {
 			removeArc(arcsToRemove.next());
 		}
@@ -259,20 +259,20 @@ public class ModelElementContainer implements Serializable {
 			// remove in arc Map
 			arcs.remove(arc.getId());
 			// remove Target Entry, (in Source Element's reference Map)
-			((Map) getIdMap().get(arc.getSourceId())).remove(arc.getId());
+			((Map<String, Object>) getIdMap().get(arc.getSourceId())).remove(arc.getId());
 		}
 
 	}
 
 	public void removeAllSourceElements(Object targetId) {
-		Iterator transIter = getSourceElements(targetId).keySet().iterator();
+		Iterator<String> transIter = getSourceElements(targetId).keySet().iterator();
 		while (transIter.hasNext()) {
 			removeElement(transIter.next());
 		}
 	}
 
 	public void removeAllTargetElements(Object sourceId) {
-		Iterator transIter = getTargetElements(sourceId).keySet().iterator();
+		Iterator<String> transIter = getTargetElements(sourceId).keySet().iterator();
 		while (transIter.hasNext()) {
 			removeElement(transIter.next());
 		}
@@ -288,12 +288,12 @@ public class ModelElementContainer implements Serializable {
 	 */
 	public Map<String, AbstractElementModel> getTargetElements(Object id) {
 
-		if ((Map) getIdMap().get(id) != null) {
+		if ((Map<String, Object>) getIdMap().get(id) != null) {
 
-			Iterator refIter = ((Map) getIdMap().get(id)).keySet().iterator();
+			Iterator<String> refIter = ((Map<String, Object>) getIdMap().get(id)).keySet().iterator();
 			Map<String, AbstractElementModel> targetMap = new HashMap<String, AbstractElementModel>();
 			while (refIter.hasNext()) {
-				Object arc = ((Map) getIdMap().get(id)).get(refIter.next());
+				Object arc = ((Map<String, Object>) getIdMap().get(id)).get(refIter.next());
 				if (arc instanceof ArcModel) {
 					AbstractElementModel aCell = (AbstractElementModel) ((DefaultPort) ((ArcModel) arc)
 							.getTarget()).getParent();
@@ -308,8 +308,8 @@ public class ModelElementContainer implements Serializable {
 
 	public Map<String, Object> getOutgoingArcs(Object id) {
 
-		if ((Map) getIdMap().get(id) != null) {
-			Map<String, Object> arcOut = new HashMap(getIdMap().get(id));
+		if ((Map<String, Object>) getIdMap().get(id) != null) {
+			Map<String, Object> arcOut = new HashMap<String, Object>(getIdMap().get(id));
 			arcOut.remove("_#_");
 			return arcOut;
 		} else
@@ -340,10 +340,10 @@ public class ModelElementContainer implements Serializable {
 	 *
 	 * @return List
 	 */
-	public List getRootElements() {
+	public List<AbstractElementModel> getRootElements() {
 
 		List<AbstractElementModel> rootElements = new ArrayList<AbstractElementModel>();
-		Iterator allIter = getIdMap().keySet().iterator();
+		Iterator<String> allIter = getIdMap().keySet().iterator();
 		while (allIter.hasNext()) {
 			AbstractElementModel element = getElementById(allIter.next());
 			rootElements.add(element);
@@ -364,7 +364,7 @@ public class ModelElementContainer implements Serializable {
 			Object targetId) {
 
 		Map<String, AbstractElementModel> sourceMap = new HashMap<String, AbstractElementModel>();
-		Iterator sourceArcIter = findSourceArcs(targetId).keySet().iterator();
+		Iterator<String> sourceArcIter = findSourceArcs(targetId).keySet().iterator();
 		ArcModel tempArc;
 		while (sourceArcIter.hasNext()) {
 			tempArc = (ArcModel) arcs.get(sourceArcIter.next());
@@ -376,7 +376,7 @@ public class ModelElementContainer implements Serializable {
 
 	protected Map<String, ArcModel> findSourceArcs(Object id) {
 
-		Iterator arcIter = arcs.keySet().iterator();
+		Iterator<String> arcIter = arcs.keySet().iterator();
 		Map<String, ArcModel> sourceArcs = new HashMap<String, ArcModel>();
 		ArcModel tempArc;
 		while (arcIter.hasNext()) {
@@ -401,7 +401,7 @@ public class ModelElementContainer implements Serializable {
 	public AbstractElementModel getElementById(Object id) {
 
 		if (getIdMap().get(id) != null) {
-			return (AbstractElementModel) ((Map) getIdMap().get(id))
+			return (AbstractElementModel) ((Map<String, Object>) getIdMap().get(id))
 					.get(ModelElementContainer.SELF_ID);
 		} else {
 			LoggerManager.debug(Constants.CORE_LOGGER, "Requested Element (ID:"
@@ -439,7 +439,7 @@ public class ModelElementContainer implements Serializable {
 	 */
 	public boolean containsArc(ArcModel arc) {
 
-		Iterator arcIter = getSourceElements(arc.getTargetId()).keySet()
+		Iterator<String> arcIter = getSourceElements(arc.getTargetId()).keySet()
 				.iterator();
 		while (arcIter.hasNext()) {
 			if (arcIter.next().equals(arc.getSourceId())) {
@@ -474,7 +474,7 @@ public class ModelElementContainer implements Serializable {
 
 	public Map<String, AbstractElementModel> getElementsByType(int type) {
 		Map<String, AbstractElementModel> elements = new HashMap<String, AbstractElementModel>();
-		Iterator elementsIter = getIdMap().keySet().iterator();
+		Iterator<String> elementsIter = getIdMap().keySet().iterator();
 		AbstractElementModel element;
 		// try {
 		while (elementsIter.hasNext()) {
@@ -490,7 +490,7 @@ public class ModelElementContainer implements Serializable {
 	}
 
 	public ArcModel findArc(String sourceId, String targetId) {
-		Iterator iter = arcs.keySet().iterator();
+		Iterator<String> iter = arcs.keySet().iterator();
 		while (iter.hasNext()) {
 			ArcModel arc = (ArcModel) arcs.get(iter.next());
 			if (arc.getSourceId().equals(sourceId)

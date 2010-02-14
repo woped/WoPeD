@@ -60,6 +60,7 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
     private BasicMarqueeHandler editorMarquee      = null;
     private int                 modelPorcessorType = -1;
     private GraphUndoManager    undoManager        = null;
+    private Object lastEdited = null;
 
     public AbstractGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, GraphUndoManager undoManager, AbstractViewFactory viewFactory, int modelPorcessorType)
     {
@@ -344,5 +345,34 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
 			allCells.add(cell);
 		}
 		return allCells;
+	}
+	
+	/**
+	 * @see org.jgraph.jgraph.startEditingAtCell
+	 */
+	@Override
+	public void startEditingAtCell (Object cell){
+		super.startEditingAtCell(cell);
+		lastEdited = cell;
+	}
+	
+	/**
+	 * 
+	 * @return the last edited cell of the graph
+	 */
+	public NameModel getLastEdited(){
+		if(lastEdited != null){
+			if(lastEdited.getClass() == NameModel.class){
+				return (NameModel) lastEdited;
+			}
+		} 
+		return null;
+	}
+	
+	/**
+	 * set the last edited cell of the graph to null
+	 */
+	public void setLastEditedNull(){
+		lastEdited = null;
 	}
 }

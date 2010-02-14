@@ -14,8 +14,10 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.service.ISComponent;
+import org.woped.qualanalysis.service.ISoundnessCheck;
 
-public class WoflanAnalysis {
+public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
 
 	private IEditor m_currentEditor = null;
 	
@@ -394,7 +396,7 @@ public class WoflanAnalysis {
 		ModelElementContainer elements
 		= m_currentEditor.getModelProcessor().getElementContainer();
 		String objectID = null;
-		int nOperator = name.lastIndexOf(OperatorTransitionModel.OPERATOR_SEPERATOR);
+		int nOperator = name.lastIndexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION);
 		if (nOperator!=-1)
 		{
 			// Cut any operator numbers at the end (operator

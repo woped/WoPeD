@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.translations.Messages;
 
@@ -28,7 +29,7 @@ public class EditorStatusBarVC extends JPanel implements Observer
 	private EditorVC m_editor = null;
 
 	private JLabel m_zoomLabel = null;
-
+	
 	public EditorStatusBarVC(IEditor editor)
 	{
 		m_editor = (EditorVC) editor;
@@ -86,6 +87,16 @@ public class EditorStatusBarVC extends JPanel implements Observer
 				OperatorTransitionModel.TRANS_OPERATOR_TYPE).size();
 		int transSimpleC = m_elementContainer.getElementsByType(
 				OperatorTransitionModel.TRANS_SIMPLE_TYPE).size();
+		String orientation = "";
+			
+			if(m_editor.isRotateSelected())
+			{
+				orientation = Messages.getString("Statusbar.Vertical");
+			}
+			else
+			{
+				orientation = Messages.getString("Statusbar.Horizontal");
+			}
 
 		StringBuilder builder = new StringBuilder();
 		builder.append(" ");
@@ -100,6 +111,10 @@ public class EditorStatusBarVC extends JPanel implements Observer
 		builder.append(Messages.getString("Statusbar.Subprocesses"));
 		builder.append(": ");
 		builder.append(subPC);
+		builder.append("   ");
+		builder.append(Messages.getString("Statusbar.Orientation"));
+		builder.append(": ");
+		builder.append(orientation);
 		builder.append("   ");
 
 		getCounterLabel().setText(builder.toString());
