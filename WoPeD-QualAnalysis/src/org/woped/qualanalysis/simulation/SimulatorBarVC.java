@@ -151,7 +151,7 @@ public class SimulatorBarVC extends JToolBar implements IViewController, MouseLi
         addSeparator();
         addView();
         addSeparator();
-        addSeparator(new Dimension(317, 0));
+        addSeparator(new Dimension(360, 0));
         addSeparator();
         addAnalysisButtons();
         
