@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.translations.Messages;
 

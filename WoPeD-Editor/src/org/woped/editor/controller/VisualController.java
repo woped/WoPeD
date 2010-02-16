@@ -699,7 +699,7 @@ public class VisualController implements PropertyChangeListener,
 		boolean rotateActive = false;
 		if (am.getUi().getEditorFocus() != null)
 		{
-			rotateActive = ((EditorVC) am.getUi().getEditorFocus()).isRotateSelected();
+			rotateActive = am.getUi().getEditorFocus().isRotateSelected();
 			EditorLayoutInfo.m_verticalLayout = rotateActive;
 		}
 		setStatus(ROTATE, rotateActive);

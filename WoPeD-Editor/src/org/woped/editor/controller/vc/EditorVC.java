@@ -200,8 +200,6 @@ public class EditorVC extends JPanel implements KeyListener,
 	
 	private boolean m_UnderstandabilityColoringEnabled = false;
 	
-	private boolean m_RotateSelected = false;
-	
 	private EditorLayoutInfo m_EditorLayoutInfo = null;
 
 	private boolean m_tokenGameMode = false;
