@@ -180,7 +180,6 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     public void removeAnalysisButtons()
     {
     	this.remove(getWoflanButton());
-    	this.remove(getWoflanButton());
     	this.remove(getAnalysisButton());
     	this.remove(getQuantCapButton());
     	this.remove(getQuantSimButton());
