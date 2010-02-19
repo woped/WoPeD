@@ -110,7 +110,7 @@ public class StartPage extends BeginnerPanel {
 		// header
 		JLabel netStatistic = new JLabel(Messages
 				.getString("AnalysisSideBar.Beginner.Netstatistics"));
-		netStatistic.setFont(SUBHEADER_FONT);
+		netStatistic.setFont(HEADER_FONT);
 		netStatistic.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
 		sgbl.addComponent(infoPanel, netStatistic, 0, 0, 1, 1, 1, 0);
 

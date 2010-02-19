@@ -32,14 +32,14 @@ import org.woped.translations.Messages;
 public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 	// Constants for Fonts and Icons
-	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.PLAIN,
-			18);
+	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD,
+			14);
 
 	protected static final Font SUBHEADER_FONT = new Font(Font.DIALOG,
-			Font.BOLD, 16);
+			Font.PLAIN, 14);
 
 	protected static final Font ITEMS_FONT = new Font(Font.DIALOG, Font.PLAIN,
-			14);
+			12);
 
 	protected static final Font HELP_TEXT_FONT = new Font(Font.DIALOG,
 			Font.PLAIN, 12);
@@ -117,7 +117,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBorder(null);
 		this.contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(BorderFactory.createEmptyBorder(25, 20, 0, 20));
+		contentPane.setBorder(BorderFactory.createEmptyBorder(25, 5, 0, 20));
 		this.contentPane.setLayout(new GridBagLayout());
 		this.add(createNavigation(), BorderLayout.NORTH);
 		this.add(scrollPane, BorderLayout.CENTER);
@@ -130,9 +130,12 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	 */
 	private JPanel createNavigation() {
 		JPanel navi = new JPanel();
+		JPanel homeback = new JPanel();
 		navi.setBackground(Color.WHITE);
 		navi.setLayout(new BorderLayout());
-		JLabel headLabel = new JLabel(header, JLabel.CENTER);
+		homeback.setBackground(Color.WHITE);
+		homeback.setLayout(new BorderLayout());
+		JLabel headLabel = new JLabel(header, JLabel.LEFT);
 		headLabel.setFont(HEADER_FONT);
 		back = new JLabel(Messages
 				.getImageIcon("AnalysisSideBar.Beginner.Button.Empty"));
@@ -152,9 +155,12 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 			}
 		} else {
 			headLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-		}
-		navi.add(startPage, BorderLayout.EAST);
-		navi.add(back, BorderLayout.WEST);
+		}	
+		navi.add(homeback, BorderLayout.EAST);
+		homeback.add(back, BorderLayout.WEST);
+		homeback.add(startPage, BorderLayout.CENTER);
+		//navi.add(startPage, BorderLayout.WEST);
+		//navi.add(back, BorderLayout.EAST);
 		navi.add(headLabel, BorderLayout.CENTER);
 		navi.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		return navi;

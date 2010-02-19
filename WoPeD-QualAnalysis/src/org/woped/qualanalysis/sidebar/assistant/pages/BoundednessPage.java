@@ -31,7 +31,8 @@ public class BoundednessPage extends BeginnerPanel {
 	public void addComponents() {
 		createEntry("Analysis.Tree.NumUnboundedPlaces", qualanalysisService
 				.getUnboundedPlacesIterator(), numUnboundedPlaces,
-				"AnalysisSideBar.Beginner.Help.UnboundedPlaces");
+				"AnalysisSideBar.Beginner.Help.UnboundedPlaces",
+				"AnalysisSideBar.Beginner.Example.Unboundness");
 		createEmptyEntry();
 	}
 
