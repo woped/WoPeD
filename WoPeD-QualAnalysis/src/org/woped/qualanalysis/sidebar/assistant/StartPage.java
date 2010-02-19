@@ -26,6 +26,8 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public class StartPage extends BeginnerPanel {
 
+	private static final String COLON = ":";
+
 	public StartPage(SideBar sideBar) {
 		super(null, sideBar, Messages
 				.getString("AnalysisSideBar.Beginner.Startpage"));
@@ -117,7 +119,7 @@ public class StartPage extends BeginnerPanel {
 		// places
 		clickLabel = new ClickLabel(Messages
 				.getString("Analysis.Tree.NumPlaces")
-				+ ":", qualanalysisService.getPlacesIterator(), editor);
+				+ COLON, qualanalysisService.getPlacesIterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 1, 1, 1, 1, 0);
 
@@ -129,7 +131,7 @@ public class StartPage extends BeginnerPanel {
 		// transitions
 		clickLabel = new ClickLabel(Messages
 				.getString("Analysis.Tree.NumTransitions")
-				+ ":", qualanalysisService.getTransitionsIterator(), editor);
+				+ COLON, qualanalysisService.getTransitionsIterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 2, 1, 1, 1, 0);
 
@@ -140,7 +142,7 @@ public class StartPage extends BeginnerPanel {
 
 		// operators
 		clickLabel = new ClickLabel(SUB_POINT
-				+ Messages.getString("Analysis.Tree.NumOperators") + ":",
+				+ Messages.getString("Analysis.Tree.NumOperators") + COLON,
 				qualanalysisService.getOperatorsIterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 3, 1, 1, 1, 0);
@@ -152,7 +154,7 @@ public class StartPage extends BeginnerPanel {
 
 		// subprocesses
 		clickLabel = new ClickLabel(SUB_POINT
-				+ Messages.getString("Analysis.Tree.NumSubprocesses") + ":",
+				+ Messages.getString("Analysis.Tree.NumSubprocesses") + COLON,
 				qualanalysisService.getSubprocessesIterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 4, 1, 1, 1, 0);
@@ -165,7 +167,7 @@ public class StartPage extends BeginnerPanel {
 		// arcs
 		JLabel arcLabel = new JLabel(Messages
 				.getString("Analysis.Tree.NumArcs")
-				+ ":");
+				+ COLON);
 		arcLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, arcLabel, 0, 5, 1, 1, 1, 0);
 
