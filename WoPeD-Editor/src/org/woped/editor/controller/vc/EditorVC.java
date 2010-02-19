@@ -2662,7 +2662,6 @@ public class EditorVC extends JPanel implements KeyListener,
 			this.add(mainsplitPaneWithAnalysisBar);
 			analysisBarVisible = true;
 			this.revalidate();
-			editorSize.resize();
 			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (this
 					.getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
@@ -2675,7 +2674,6 @@ public class EditorVC extends JPanel implements KeyListener,
 	public void autoRefreshAnalysisBar() {
 		if(analysisBarVisible && autoRefresh.isSelected()){
 			analysisSideBar.refresh();
-			editorSize.resize();
 		}
 	}
 
@@ -2690,7 +2688,6 @@ public class EditorVC extends JPanel implements KeyListener,
 			this.add(m_mainSplitPane);
 			analysisBarVisible = false;
 			this.revalidate();
-			editorSize.resize();
 		}
 	}
 	
