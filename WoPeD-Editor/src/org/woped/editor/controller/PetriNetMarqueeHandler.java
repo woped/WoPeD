@@ -322,7 +322,6 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
     @Override
     public void paintPort(Graphics g) { // If Current Port is Valid
         if (port != null) {
-            System.out.println("paintPort");
             // If Not Floating Port...
             boolean o = (GraphConstants.getOffset(port.getAttributes()) != null);
             // ...Then use Parent's Bounds
