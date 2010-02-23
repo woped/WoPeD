@@ -247,6 +247,13 @@ public interface IQualanalysisService {
 	 * @return true if the petrinet is an workflownet otherwise false
 	 */
 	public boolean isWorkflowNet();
+	
+	/**
+	 * method to check if there are no tokens in the petrinet
+	 * 
+	 * @return true if there are no tokens in the petrinet
+	 */
+	public boolean isNoToken();
 
 	/**
 	 * method to get rid of all stuff that is not needed any more <br />

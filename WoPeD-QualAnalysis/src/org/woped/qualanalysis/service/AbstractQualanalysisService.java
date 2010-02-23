@@ -8,6 +8,7 @@ import java.util.Set;
 import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.PlaceModel;
 
 public abstract class AbstractQualanalysisService implements IQualanalysisService {
 
@@ -277,6 +278,16 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 		if (numNotStronglyConnectedNodes != 0)
 			isWorkflowNet = false;
 		return isWorkflowNet;
+	}
+	
+	public boolean isNoToken(){
+		boolean isNoToken = true;
+		Iterator<AbstractElementModel> places = getPlacesIterator();
+		while(places.hasNext() && isNoToken){
+			if(((PlaceModel)places.next()).getTokenCount() != 0)
+				isNoToken = false;	
+		}
+		return isNoToken;
 	}
 
 	/**
