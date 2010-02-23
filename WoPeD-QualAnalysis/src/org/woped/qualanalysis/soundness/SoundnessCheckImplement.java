@@ -38,16 +38,12 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 	 */
 	@Override
 	public int getNumNonLiveTransitions() {
-		String tStartId = "t*";
 		Set<String> unliveTransitions = new HashSet<String>();
 		for (TransitionNode transition : AlgorithmFactory.createNonLiveTranstionTest(markingNetWithTStar)
 				.getNonLiveTransitions()) {
 			unliveTransitions.add(transition.getOriginId());
 		}
-		// remove tStar-element if existing
-		if (unliveTransitions.contains(tStartId))
-			unliveTransitions.remove(tStartId);
-		return unliveTransitions.size();
+		return removeTStarString(unliveTransitions).size();
 	}
 
 	/*
@@ -64,10 +60,7 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 			unliveTransitions.add(editor.getModelProcessor().getElementContainer().getElementById(
 					transition.getOriginId()));
 		}
-		// remove tStar-element if existing
-		if (unliveTransitions.contains(null))
-			unliveTransitions.remove(null);
-		return unliveTransitions.iterator();
+		return removeTStarAEM(unliveTransitions).iterator();
 	}
 
 	/*
@@ -82,7 +75,7 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 				.getDeadTransitions()) {
 			deadTransitions.add(transition.getOriginId());
 		}
-		return deadTransitions.size();
+		return removeTStarString(deadTransitions).size();
 	}
 
 	/*
@@ -98,7 +91,7 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 			deadTransitions.add(editor.getModelProcessor().getElementContainer().getElementById(
 					transition.getOriginId()));
 		}
-		return deadTransitions.iterator();
+		return removeTStarAEM(deadTransitions).iterator();
 	}
 
 	/*
@@ -112,7 +105,7 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 		for (PlaceNode place : AlgorithmFactory.createUnboundedPlacesTest(markingNetWithoutTStar).getUnboundedPlaces()) {
 			unboundedPlaces.add(place.getOriginId());
 		}
-		return unboundedPlaces.size();
+		return removeTStarString(unboundedPlaces).size();
 	}
 
 	/*
@@ -126,6 +119,29 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 		for (PlaceNode place : AlgorithmFactory.createUnboundedPlacesTest(markingNetWithoutTStar).getUnboundedPlaces()) {
 			unboundedPlaces.add(editor.getModelProcessor().getElementContainer().getElementById(place.getOriginId()));
 		}
-		return unboundedPlaces.iterator();
+		return removeTStarAEM(unboundedPlaces).iterator();
+	}
+	
+	/**
+	 * 
+	 * @param elements the set of strings to remove t* from (if existing)
+	 * @return the "clean" set
+	 */
+	private Set<String> removeTStarString(Set<String> elements){
+		String tStartId = "t*";
+		if (elements.contains(tStartId))
+			elements.remove(tStartId);
+		return elements;
+	}
+	
+	/**
+	 * 
+	 * @param elements the set of abstractElementModels to remove t+ from (if existing)
+	 * @return the "clean" set
+	 */
+	private Set<AbstractElementModel> removeTStarAEM(Set<AbstractElementModel> elements){
+		if (elements.contains(null))
+			elements.remove(null);
+		return elements;
 	}
 }
