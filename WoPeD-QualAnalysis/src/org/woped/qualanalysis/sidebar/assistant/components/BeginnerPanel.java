@@ -70,7 +70,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 	private static int rightGap = 15;
 
-	protected static final Border BOTTOM_BORDEr = BorderFactory
+	protected static final Border BOTTOM_BORDER = BorderFactory
 			.createEmptyBorder(0, 0, bottomGap, 0);
 
 	protected static final Border BOTTOM_RIGHT_BORDER = BorderFactory
@@ -310,12 +310,12 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 		if (imageIcon != null && !("".equals(imageIcon))) {
 			JLabel helpImage = new JLabel(Messages.getImageIcon(imageIcon));
-			helpImage.setBorder(BOTTOM_BORDEr);
+			helpImage.setBorder(BOTTOM_BORDER);
 			addComponent(helpImage, 0, counter, 2, 1, 1, 0);
 
 			counter++;
 		} else {
-			helpText.setBorder(BOTTOM_BORDEr);
+			helpText.setBorder(BOTTOM_BORDER);
 		}
 	}
 
@@ -335,7 +335,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 		// border for gap between correctness and details icon
 		JLabel subheaderLabel = new JLabel(Messages.getString(subHeader));
 		subheaderLabel.setFont(SUBHEADER_FONT);
-		subheaderLabel.setBorder(BOTTOM_BORDEr);
+		subheaderLabel.setBorder(BOTTOM_BORDER);
 		addComponent(subheaderLabel, 0, counter, 1, 1, 1, 0);
 		JLabel correct = null;
 		if (status)
@@ -343,7 +343,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 		else {
 			JLabel details = new JLabel(Messages.getImageIcon(DETAILS_ICON));
 			details.addMouseListener(dml);
-			details.setBorder(BOTTOM_BORDEr);
+			details.setBorder(BOTTOM_BORDER);
 			correct = new JLabel(Messages.getImageIcon(INCORRECT_ICON));
 			addComponent(details, 2, counter, 1, 1, 0, 0);
 		}

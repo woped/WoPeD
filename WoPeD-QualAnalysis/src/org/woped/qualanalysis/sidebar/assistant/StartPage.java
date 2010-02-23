@@ -46,7 +46,7 @@ public class StartPage extends BeginnerPanel {
 		JLabel workflowLabel = new JLabel(Messages
 				.getString("AnalysisSideBar.Beginner.WorkflowAnalysis"));
 		workflowLabel.setFont(SUBHEADER_FONT);
-		workflowLabel.setBorder(BOTTOM_BORDEr);
+		workflowLabel.setBorder(BOTTOM_BORDER);
 		sgbl.addComponent(analysisPanel, workflowLabel, 0, 0, 1, 1, 1, 0);
 		// adding workflow infos
 		if (workflowPage.getStatus()) {
@@ -58,7 +58,7 @@ public class StartPage extends BeginnerPanel {
 					.getImageIcon(DETAILS_ICON));
 			workflowDetails.addMouseListener(new DetailsMouseListener(sideBar,
 					workflowPage));
-			workflowDetails.setBorder(BOTTOM_BORDEr);
+			workflowDetails.setBorder(BOTTOM_BORDER);
 			sgbl.addComponent(analysisPanel, workflowDetails, 2, 0, 1, 1, 0, 0);
 		}
 		correctness.setBorder(BOTTOM_RIGHT_BORDER);
@@ -73,7 +73,7 @@ public class StartPage extends BeginnerPanel {
 			JLabel soundnessLabel = new JLabel(Messages
 					.getString("AnalysisSideBar.Beginner.SoundnessAnalysis"));
 			soundnessLabel.setFont(SUBHEADER_FONT);
-			soundnessLabel.setBorder(BOTTOM_BORDEr);
+			soundnessLabel.setBorder(BOTTOM_BORDER);
 			sgbl.addComponent(analysisPanel, soundnessLabel, 0, 1, 1, 1, 1, 1);
 			if (!soundnessPage.getWarningStatus()) {
 				correctness = new JLabel(Messages.getImageIcon(WARNING_ICON));
@@ -85,7 +85,7 @@ public class StartPage extends BeginnerPanel {
 						.getImageIcon(DETAILS_ICON));
 				soundnessDetails.addMouseListener(new DetailsMouseListener(
 						sideBar, soundnessPage));
-				soundnessDetails.setBorder(BOTTOM_BORDEr);
+				soundnessDetails.setBorder(BOTTOM_BORDER);
 				sgbl.addComponent(analysisPanel, soundnessDetails, 2, 1, 1, 1,
 						0, 1);
 			} else {
