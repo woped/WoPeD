@@ -204,12 +204,12 @@ public class Orientation {
 		// flip name
 		if (currentPosition % 2 != 0) {
 			transition.getNameModel().setPosition(
-					transition.getNameModel().getX() + transition.WIDTH,
-					transition.getNameModel().getY() - transition.HEIGHT);
+					transition.getNameModel().getX() + transition.getWidth(),
+					transition.getNameModel().getY() - transition.getHeight());
 		} else {
 			transition.getNameModel().setPosition(
-					transition.getNameModel().getX() - transition.WIDTH,
-					transition.getNameModel().getY() + transition.HEIGHT);
+					transition.getNameModel().getX() - transition.getWidth(),
+					transition.getNameModel().getY() + transition.getHeight());
 		}
 
 		// flip trigger
