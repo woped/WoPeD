@@ -177,7 +177,7 @@ public class Orientation {
 	 */
 	public void rotateTransLeft(TransitionModel transition) {
 		flipTransitionAccessories(transition);
-		rotateTransitionIcon(transition, TURN_RIGHT);
+		rotateTransitionIcon(transition, TURN_LEFT);
 	}
 	
 	/**
@@ -189,9 +189,15 @@ public class Orientation {
 		int newPosition;
 		int currentPosition = transition.getToolSpecific().getOperatorPosition().ordinal();
 		if(direction == TURN_LEFT)
+		{
+			System.out.println("links");
 			newPosition = (currentPosition + (OperatorPosition.values().length-1)) % OperatorPosition.values().length;
+		}
 		else
+		{
+			System.out.println("rechts");
 			newPosition = (currentPosition + 1) % OperatorPosition.values().length;
+		}
 		transition.getToolSpecific().setOperatorPosition(OperatorPosition.values()[newPosition]);
 	}
 	
