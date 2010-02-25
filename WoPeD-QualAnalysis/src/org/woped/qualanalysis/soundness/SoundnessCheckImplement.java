@@ -96,7 +96,7 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
     @Override
     public int getNumUnboundedPlaces() {
         Set<String> unboundedPlaces = new HashSet<String>();
-        for (PlaceNode place : AlgorithmFactory.createUnboundedPlacesTest(markingNetWithoutTStar).getUnboundedPlaces()) {
+        for (PlaceNode place : AlgorithmFactory.createUnboundedPlacesTest(markingNetWithTStar).getUnboundedPlaces()) {
             unboundedPlaces.add(place.getOriginId());
         }
         return removeTStarString(unboundedPlaces).size();
