@@ -88,7 +88,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 	private SideBar sideBar = null;
 
-	private IEditor editor = null;
+	public IEditor editor = null;
 
 	protected boolean status = true;
 
