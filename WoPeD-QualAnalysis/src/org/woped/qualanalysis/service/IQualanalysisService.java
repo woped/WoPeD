@@ -7,6 +7,13 @@ import java.util.Set;
 import org.woped.core.model.AbstractElementModel;
 
 public interface IQualanalysisService {
+	
+	// token-states
+	public static final int TOKEN_NONE = 0;
+	public static final int TOKEN_SOURCE = 1;
+	public static final int TOKEN_OTHER = 2;
+	public static final int TOKEN_WF = 3;
+	
 	/**
 	 * 
 	 * @return the number of places
@@ -244,16 +251,16 @@ public interface IQualanalysisService {
 	/**
 	 * method to check if the given petrinet is a workflownet or not
 	 * 
-	 * @return true if the petrinet is an workflownet otherwise false
+	 * @return true if the petrinet is a workflownet otherwise false
 	 */
 	public boolean isWorkflowNet();
 	
 	/**
-	 * method to check if there are no tokens in the petrinet
+	 * method to check the tokens of the petrinet
 	 * 
-	 * @return true if there are no tokens in the petrinet
+	 * @return 0 = no tokens, 1 = token in source-place, 2 = one or more tokens in other places, 3 = no workflow-net
 	 */
-	public boolean isNoToken();
+	public int getTokenInfo();
 
 	/**
 	 * method to get rid of all stuff that is not needed any more <br />

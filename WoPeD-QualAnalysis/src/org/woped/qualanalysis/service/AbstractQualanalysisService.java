@@ -17,45 +17,45 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 	protected ISComponent sComponent;
 	protected ISoundnessCheck soundnessCheck;
 
-	protected int numPlaces;
-	protected Set<AbstractElementModel> places;
-	protected int numTransitions;
-	protected Set<AbstractElementModel> transitions;
-	protected int numOperators;
-	protected Set<AbstractElementModel> operators;
-	protected int numSubprocesses;
-	protected Set<AbstractElementModel> subprocesses;
-	protected int numArcs;
-	protected int numFreeChoiceViolations;
-	protected Set<Set<AbstractElementModel>> freeChoiceViolations;
-	protected int numMisusedOperators;
-	protected Set<AbstractElementModel> misusedOperators;
-	protected int numNotConnectedNodes;
-	protected Set<AbstractElementModel> notConnectedNodes;
-	protected int numNotStronglyConnectedNodes;
-	protected Set<AbstractElementModel> notStronglyConnectedNodes;
-	protected int numSourcePlaces;
-	protected Set<AbstractElementModel> sourcePlaces;
-	protected int numSinkPlaces;
-	protected Set<AbstractElementModel> sinkPlaces;
-	protected int numSourceTransitions;
-	protected Set<AbstractElementModel> sourceTransitions;
-	protected int numSinkTransitions;
-	protected Set<AbstractElementModel> sinkTransitions;
-	protected int numPTHandles;
-	protected Set<Set<AbstractElementModel>> pTHandles;
-	protected int numTPHandles;
-	protected Set<Set<AbstractElementModel>> tPHandles;
-	protected int numSComponents;
-	protected Set<List<AbstractElementModel>> sComponents;
-	protected int numNotSCovered;
-	protected Set<AbstractElementModel> notSCovered;
-	protected int numUnboundedPlaces;
-	protected Set<AbstractElementModel> unboundedPlaces;
-	protected int numDeadTransitions;
-	protected Set<AbstractElementModel> deadTransitions;
-	protected int numNonLiveTransitions;
-	protected Set<AbstractElementModel> nonLiveTransitions;
+	private int numPlaces;
+	private Set<AbstractElementModel> places;
+	private int numTransitions;
+	private Set<AbstractElementModel> transitions;
+	private int numOperators;
+	private Set<AbstractElementModel> operators;
+	private int numSubprocesses;
+	private Set<AbstractElementModel> subprocesses;
+	private int numArcs;
+	private int numFreeChoiceViolations;
+	private Set<Set<AbstractElementModel>> freeChoiceViolations;
+	private int numMisusedOperators;
+	private Set<AbstractElementModel> misusedOperators;
+	private int numNotConnectedNodes;
+	private Set<AbstractElementModel> notConnectedNodes;
+	private int numNotStronglyConnectedNodes;
+	private Set<AbstractElementModel> notStronglyConnectedNodes;
+	private int numSourcePlaces;
+	private Set<AbstractElementModel> sourcePlaces;
+	private int numSinkPlaces;
+	private Set<AbstractElementModel> sinkPlaces;
+	private int numSourceTransitions;
+	private Set<AbstractElementModel> sourceTransitions;
+	private int numSinkTransitions;
+	private Set<AbstractElementModel> sinkTransitions;
+	private int numPTHandles;
+	private Set<Set<AbstractElementModel>> pTHandles;
+	private int numTPHandles;
+	private Set<Set<AbstractElementModel>> tPHandles;
+	private int numSComponents;
+	private Set<List<AbstractElementModel>> sComponents;
+	private int numNotSCovered;
+	private Set<AbstractElementModel> notSCovered;
+	private int numUnboundedPlaces;
+	private Set<AbstractElementModel> unboundedPlaces;
+	private int numDeadTransitions;
+	private Set<AbstractElementModel> deadTransitions;
+	private int numNonLiveTransitions;
+	private Set<AbstractElementModel> nonLiveTransitions;
 
 	public AbstractQualanalysisService(IEditor editor) {
 		this.editor = editor;
@@ -264,7 +264,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 	}
 
 	public boolean isWorkflowNet() {
-		Boolean isWorkflowNet = true;
+		boolean isWorkflowNet = true;
 		if (numSourcePlaces != 1)
 			isWorkflowNet = false;
 		if (numSinkPlaces != 1)
@@ -280,14 +280,20 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 		return isWorkflowNet;
 	}
 	
-	public boolean isNoToken(){
-		boolean isNoToken = true;
-		Iterator<AbstractElementModel> places = getPlacesIterator();
-		while(places.hasNext() && isNoToken){
-			if(((PlaceModel)places.next()).getTokenCount() != 0)
-				isNoToken = false;	
+	public int getTokenInfo(){
+		// check if workflow-net
+		if(!isWorkflowNet())
+			return TOKEN_WF;
+		// check if any other place than the sourcePlace has a token
+		for(AbstractElementModel place: places){
+			if(((PlaceModel)place).getTokenCount() != 0 && place != getSourcePlacesIterator().next())
+				return TOKEN_OTHER;	
 		}
-		return isNoToken;
+		// check if sourcePlace has token
+		if(((PlaceModel)getSourcePlacesIterator().next()).getTokenCount() == 1)
+			return TOKEN_SOURCE;
+		else
+			return TOKEN_NONE;
 	}
 
 	/**
