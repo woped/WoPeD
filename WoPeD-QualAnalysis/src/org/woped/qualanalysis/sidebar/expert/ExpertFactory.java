@@ -365,6 +365,32 @@ public class ExpertFactory extends DefaultMutableTreeNode{
 
 	/**
 	 * 
+	 * @return node containing information about tokens of the petri net
+	 */
+	protected static DefaultMutableTreeNode getTokenInfo() {
+		return new NetInfo(Messages.getString("Analysis.Tree.Tokens"));
+	}
+
+	/**
+	 * 
+	 * @return node containing information about inner tokens
+	 * (places not being source should not contain a token)
+	 */
+	protected static DefaultMutableTreeNode getInnerTokenInfo(IQualanalysisService qualanService) {
+		return new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumInnerTokens") + ": "
+				+ qualanService.getNumInnerTokens(), qualanService.getInnerTokensIterator()) {
+			// inner tokens are not good and should trigger an error
+			public int getInfoState() {
+				if (getChildCount() > 0)
+					return InfoStateERROR;
+				else
+					return InfoStateOK;
+			}
+		};
+	}
+	
+	/**
+	 * 
 	 * @return node containing information about boundedness of the petri net
 	 */
 	protected static DefaultMutableTreeNode getBoundednessInfo() {

@@ -38,16 +38,6 @@ public class SComponentTest extends AbstractLowLevelPetriNetTest implements ISCo
     }
 
     @Override
-    public int getNumNotSCovered() {
-        return uncoveredPlaces.size();
-    }
-
-    @Override
-    public int getNumSComponents() {
-        return sComponents.size();
-    }
-
-    @Override
     public Set<Set<AbstractNode>> getSComponents() {
     	return sComponents;
     }

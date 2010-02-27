@@ -53,26 +53,6 @@ public class SComponentImplement implements ISComponent {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.woped.qualanalysis.service.ISComponent#getNumNotSCovered()
-	 */
-	@Override
-	public int getNumNotSCovered() {
-		return sComponentTest.getNumNotSCovered();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.woped.qualanalysis.service.ISComponent#getNumSComponents()
-	 */
-	@Override
-	public int getNumSComponents() {
-		return sComponentTest.getNumSComponents();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see org.woped.qualanalysis.service.ISComponent#getSComponentsIterator()
 	 */
 	@Override
@@ -84,9 +64,8 @@ public class SComponentImplement implements ISComponent {
 			for (AbstractNode node : set) {
 				sComponent.add(getAEM(node));
 			}
-			// remove tStar-element if existing
-			if (sComponent.contains(null))
-				sComponent.remove(null);
+			// remove t* if existing
+			sComponent.remove(null);
 			sComponentsSet.add(sComponent);
 		}
 		return sComponentsSet.iterator();

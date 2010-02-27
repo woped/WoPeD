@@ -12,23 +12,12 @@ import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
  *
  */
 public interface ISComponentTest {
-    /**
-     * 
-     * @return the number of sComponents.
-     */
-    public int getNumSComponents();
 
     /**
      * 
      * @return a set of all sComponents.
      */
     public Set<Set<AbstractNode>> getSComponents();
-
-    /**
-     * 
-     * @return the number of not-SCovered places.
-     */
-    public int getNumNotSCovered();
 
     /**
      * 

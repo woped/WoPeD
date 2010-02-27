@@ -18,16 +18,20 @@ public class SoundnessPage extends BeginnerPanel {
 
 	private boolean warningStatus = true;
 
-	private DetailsMouseListener boundDetailsListener, liveDetailsListener,
+	private DetailsMouseListener tokenDetailsListener, boundDetailsListener, liveDetailsListener,
 			wellstructuredDetailsListener, freechoiceDetailsListener;
 
-	private BeginnerPanel boundednessPage, livenessPage,
+	private BeginnerPanel tokenPage, boundednessPage, livenessPage,
 			wellstructurednessPage, freechoicePage;
 
 	public SoundnessPage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages
 				.getString("AnalysisSideBar.Beginner.SoundnessAnalysis"));
 
+		tokenPage = new TokenPage(this, sideBar);
+		tokenDetailsListener = new DetailsMouseListener(sideBar,
+				tokenPage);
+		
 		boundednessPage = new BoundednessPage(this, sideBar);
 		boundDetailsListener = new DetailsMouseListener(sideBar,
 				boundednessPage);
@@ -43,12 +47,10 @@ public class SoundnessPage extends BeginnerPanel {
 		freechoiceDetailsListener = new DetailsMouseListener(sideBar,
 				freechoicePage);
 
-		if (!boundednessPage.getStatus() || !livenessPage.getStatus()
-				|| !wellstructurednessPage.getStatus()
-				|| !freechoicePage.getStatus()) {
+		if (!qualanalysisService.isSound() || !wellstructurednessPage.getStatus() || !freechoicePage.getStatus()) {
 			// set status values
 			warningStatus = false;
-			if (!boundednessPage.getStatus() || !livenessPage.getStatus())
+			if (!qualanalysisService.isSound())
 				errorStatus = false;
 		}
 
@@ -64,6 +66,11 @@ public class SoundnessPage extends BeginnerPanel {
 
 	@Override
 	public void addComponents() {
+		// inner-tokens
+
+		createAnalysisEntry("AnalysisSideBar.Beginner.TokenAnalysis",
+				tokenDetailsListener, tokenPage.getStatus());
+		
 		// boundedness
 
 		createAnalysisEntry("AnalysisSideBar.Beginner.BoundednessAnalysis",

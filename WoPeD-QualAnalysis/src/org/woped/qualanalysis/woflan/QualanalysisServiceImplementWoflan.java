@@ -3,10 +3,20 @@ package org.woped.qualanalysis.woflan;
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.service.AbstractQualanalysisService;
 
+/**
+ * class for qualanalysis servies basing on woflan.dll
+ *
+ * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ *
+ */
 public class QualanalysisServiceImplementWoflan extends AbstractQualanalysisService {
 
     private WoflanAnalysis wA;
 
+    /**
+	 * 
+	 * @param editor the editor the service is referring to 
+	 */
     public QualanalysisServiceImplementWoflan(IEditor editor) {
 
         super(editor);

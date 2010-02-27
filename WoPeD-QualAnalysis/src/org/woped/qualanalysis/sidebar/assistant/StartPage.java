@@ -6,7 +6,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.assistant.components.BeginnerPanel;
 import org.woped.qualanalysis.sidebar.assistant.components.ClickLabel;
@@ -107,31 +106,23 @@ public class StartPage extends BeginnerPanel {
 		}
 
 		/*
-		 * token-mistake
+		 * no token in source-place
 		 */
 
 		// check only for workflow-net
 		if(qualanalysisService.isWorkflowNet()){
-			// display only if there is a token-mistake
-			int tokenInfo = qualanalysisService.getTokenInfo();
-			if (tokenInfo == IQualanalysisService.TOKEN_NONE || tokenInfo == IQualanalysisService.TOKEN_OTHER) {
-				// add tokenMistake-label
-				JLabel tokenMistakeLabel = new JLabel(Messages.getString("Analysis.Tree.Tokens"));
-				tokenMistakeLabel.setFont(SUBHEADER_FONT);
-				tokenMistakeLabel.setBorder(BOTTOM_BORDER);
-				sgbl.addComponent(analysisPanel, tokenMistakeLabel, 0, 2, 1, 1, 1, 0);
-				// add noToken-icon with toolTip
-				JLabel tokenMistakeIcon = new JLabel(Messages.getImageIcon(WARNING_ICON));
-				tokenMistakeIcon.setBorder(BOTTOM_RIGHT_BORDER);
-				String toolTipText = "";
-				if(tokenInfo == IQualanalysisService.TOKEN_NONE){
-					toolTipText = Messages.getString("Analysis.Tree.Tokens.None");
-				} else {
-					toolTipText = Messages.getString("Analysis.Tree.Tokens.Other");
-				}
-				
-				tokenMistakeIcon.setToolTipText(toolTipText);
-				sgbl.addComponent(analysisPanel, tokenMistakeIcon, 1, 2, 1, 1, 0, 0);
+			// display only if there is no token in the source-place
+			if (!qualanalysisService.isSourceToken()) {
+				// add noSourceToken-label
+				JLabel notSourceTokenLabel = new JLabel(Messages.getString("Analysis.Tree.NoSourceToken"));
+				notSourceTokenLabel.setFont(SUBHEADER_FONT);
+				notSourceTokenLabel.setBorder(BOTTOM_BORDER);
+				sgbl.addComponent(analysisPanel, notSourceTokenLabel, 0, 2, 1, 1, 1, 0);
+				// add noSourceToken-icon with toolTip
+				JLabel notSourceTokenIcon = new JLabel(Messages.getImageIcon(WARNING_ICON));
+				notSourceTokenIcon.setBorder(BOTTOM_RIGHT_BORDER);
+				notSourceTokenIcon.setToolTipText(Messages.getString("Analysis.Tree.NoSourceToken.Info"));
+				sgbl.addComponent(analysisPanel, notSourceTokenIcon, 1, 2, 1, 1, 0, 0);
 			}
 		}
 

@@ -5,24 +5,20 @@ import java.util.List;
 
 import org.woped.core.model.AbstractElementModel;
 
+/**
+ * interface for SComponent-parts of qualanalysis servies.
+ * all classes which implement the SComponents-methods of a service must implement this interface
+ *
+ * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ *
+ */
 public interface ISComponent {
-	/**
-	 * 
-	 * @return the number of sComponents
-	 */
-	public int getNumSComponents();
 
 	/**
 	 * 
 	 * @return an iterator for all sComponents
 	 */
 	public Iterator<List<AbstractElementModel>> getSComponentsIterator();
-
-	/**
-	 * 
-	 * @return the number of not-SCovered
-	 */
-	public int getNumNotSCovered();
 
 	/**
 	 * 

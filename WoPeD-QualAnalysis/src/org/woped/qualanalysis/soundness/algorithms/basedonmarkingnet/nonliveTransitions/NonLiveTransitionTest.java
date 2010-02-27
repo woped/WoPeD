@@ -29,19 +29,19 @@ public class NonLiveTransitionTest extends AbstractMarkingNetTest implements INo
      */
     @Override
     public Set<TransitionNode> getNonLiveTransitions() {
-        Set<TransitionNode> nonLiveTranstions = new HashSet<TransitionNode>();
+        Set<TransitionNode> nonLiveTransitions = new HashSet<TransitionNode>();
         Set<Marking> markingsTemp;
         for (int i = 0; i < mNet.getTransitions().length; i++) {
             for (Marking marking : mNet.getMarkings()) {
                 markingsTemp = new HashSet<Marking>();
                 markingsTemp.add(marking);
                 if (!marking.isTransitionReachable(mNet.getTransitions()[i], markingsTemp)) {
-                    nonLiveTranstions.add(mNet.getTransitions()[i]);
+                    nonLiveTransitions.add(mNet.getTransitions()[i]);
                     break;
                 }
             }
         }
-        return nonLiveTranstions;
+        return nonLiveTransitions;
 
     }
 }
