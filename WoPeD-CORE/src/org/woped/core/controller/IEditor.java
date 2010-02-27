@@ -1,7 +1,6 @@
 package org.woped.core.controller;
 
 import java.awt.geom.Point2D;
-import java.io.File;
 
 import javax.swing.JComponent;
 
@@ -16,11 +15,10 @@ import org.woped.core.model.petrinet.SubProcessModel;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  * 
- * An Editor has to implement the IEditor interface.
+ *         An Editor has to implement the IEditor interface.
  */
 
-public interface IEditor extends IViewController
-{
+public interface IEditor extends IViewController {
     public static int TYPE = 1;
 
     /**
@@ -30,9 +28,8 @@ public interface IEditor extends IViewController
      */
     public AbstractGraph getGraph();
 
-	public void openTokenGameSubProcess(SubProcessModel subProcess);
-    
-    
+    public void openTokenGameSubProcess(SubProcessModel subProcess);
+
     /**
      * Creates the Element in the Graph and stores it in the used ModelProcessor
      * 
@@ -40,6 +37,7 @@ public interface IEditor extends IViewController
      * @return
      */
     public GraphCell create(CreationMap map);
+
     /**
      * Creates the Elements in the Graph and stores them in the used ModelProcessor
      * 
@@ -70,9 +68,8 @@ public interface IEditor extends IViewController
     public void setLastMousePosition(Point2D position);
 
     /**
-     * Returns the last mouse position the AbstractMarqueeHandler has noticed.
-     * It is necessary register the AbstractmarqueeHandler at the used Graph
-     * when instanciated.
+     * Returns the last mouse position the AbstractMarqueeHandler has noticed. It is necessary register the AbstractmarqueeHandler at the used Graph when
+     * instanciated.
      * 
      * @return position
      */
@@ -80,7 +77,7 @@ public interface IEditor extends IViewController
 
     /**
      * Adds an routing point to the arc.
-     *  
+     * 
      */
     public void addPointToSelectedArc();
 
@@ -91,8 +88,7 @@ public interface IEditor extends IViewController
     public void removeSelectedPoint();
 
     /**
-     * Returns the drawing mode. If the net is in drawing mode, clicking the
-     * left mouse button will draw the Element with the set creation type.
+     * Returns the drawing mode. If the net is in drawing mode, clicking the left mouse button will draw the Element with the set creation type.
      * 
      * @see getCreateElementType
      * @return drawing mode
@@ -106,16 +102,15 @@ public interface IEditor extends IViewController
      * @return drawing mode
      */
     public boolean isReachabilityEnabled();
-    
+
     /**
-     * Sets the drawing mode. If the net is in drawing mode, clicking the left
-     * mouse button will draw the Element with the set creation type.
+     * Sets the drawing mode. If the net is in drawing mode, clicking the left mouse button will draw the Element with the set creation type.
      * 
      * @see getCreateElementType
      * @param flag
      */
     public void setDrawingMode(boolean flag);
-    
+
     /**
      * Sets if the reachability graph for this editor is enabled
      * 
@@ -123,26 +118,27 @@ public interface IEditor extends IViewController
      * @return drawing mode
      */
     public void setReachabilityEnabled(boolean flag);
-    
+
     /**
      * Sets if the TokenGame for this editor is playing
      */
     public void setTokenGameEnabled(boolean state);
-    
-    
+
     /**
      * Sets if Understandability Coloring is active
      */
     public void setUnderstandabilityColoringEnabled(boolean active);
-    
+
     public boolean isUnderstandabilityColoringEnabled();
-    
-    /* Sets if the TokenGame for this editor is playing
+
+    /*
+     * Sets if the TokenGame for this editor is playing
      */
     public void toggleTokenGame();
-    
+
     /**
      * Get TokenGameEnabled for this editor if TokenGame is stoped
+     * 
      * @return m_tokenGameEnabled
      */
     public boolean isTokenGameEnabled();
@@ -160,22 +156,19 @@ public interface IEditor extends IViewController
      * 
      * @see PetriNetModelElement for element types
      * @param createElementType
-     *  
+     * 
      */
     public void setCreateElementType(int createElementType);
 
     /**
-     * Returns the Containter in witch the Editor is running. The Editor doesn't
-     * need a Container if it is itself the Component.
+     * Returns the Containter in witch the Editor is running. The Editor doesn't need a Container if it is itself the Component.
      * 
      * @return
      */
     public JComponent getContainer();
 
     /**
-     * Sets (ONLY THE REFERENCE to) the Container in witch the Editor is
-     * running. The Editor doesn't need a Container if it is itself the
-     * Component.
+     * Sets (ONLY THE REFERENCE to) the Container in witch the Editor is running. The Editor doesn't need a Container if it is itself the Component.
      * 
      * @param container
      */
@@ -191,65 +184,64 @@ public interface IEditor extends IViewController
 
     public String getName();
 
-	public boolean isSubprocessEditor();
- 
-	/**
-	 * Returns the saved flag for the editor.
-	 * 
-	 * @return boolean
-	 */
-	public boolean isSaved();
+    public boolean isSubprocessEditor();
 
-	/**
-	 * Sets the saved flag for the editor. true when net was saved, or just
-	 * loaded.
-	 * 
-	 * @param savedFlag
-	 *            The savedFlag to set
-	 */
-	public void setSaved(boolean savedFlag);
-	
-	public AbstractElementModel getSubprocessInput();
+    /**
+     * Returns the saved flag for the editor.
+     * 
+     * @return boolean
+     */
+    public boolean isSaved();
 
-	public void setSubprocessInput(AbstractElementModel p_subprocessInput);
+    /**
+     * Sets the saved flag for the editor. true when net was saved, or just loaded.
+     * 
+     * @param savedFlag The savedFlag to set
+     */
+    public void setSaved(boolean savedFlag);
 
-	public AbstractElementModel getSubprocessOutput();
+    public AbstractElementModel getSubprocessInput();
 
-	public void setSubprocessOutput(AbstractElementModel p_subprocessOutput);
-	
-	public void closeEditor();
-	
-	/**
-	 * Disable all controls for the editor
-	 * @param readonly
-	 * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
-	 * @since 02.01.2009
-	 */
-	public void setReadOnly(boolean readonly);
-	
-	public void showAnalysisBar(File temporaryFile, IEditor editor, AbstractApplicationMediator mediator);
-	
-	public void hideAnalysisBar();
-	
-	public boolean getAnalysisBarVisible();
-	
-	public void rotateLayout();
-	
-	public void rotateTransLeft(Object cell);
-	
-	public void rotateTransRight(Object cell);
-	
-	public boolean isRotateSelected();
+    public void setSubprocessInput(AbstractElementModel p_subprocessInput);
 
-	public void setRotateSelected(boolean active);
-	
-	/**
-	 * Checks if woflan.dll should be used for qualanalysis <br />
-	 * For non-windows-systems it always should return false
-	 * 
-	 * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
-	 * 
-	 * @return true if woflan.dll should be used for qualanalysis
-	 */
-	public Boolean isUseWoflanDLL();
+    public AbstractElementModel getSubprocessOutput();
+
+    public void setSubprocessOutput(AbstractElementModel p_subprocessOutput);
+
+    public void closeEditor();
+
+    /**
+     * Disable all controls for the editor
+     * 
+     * @param readonly
+     * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
+     * @since 02.01.2009
+     */
+    public void setReadOnly(boolean readonly);
+
+    public void showAnalysisBar(IEditor editor, AbstractApplicationMediator mediator);
+
+    public void hideAnalysisBar();
+
+    public boolean getAnalysisBarVisible();
+
+    public void rotateLayout();
+
+    public void rotateTransLeft(Object cell);
+
+    public void rotateTransRight(Object cell);
+
+    public boolean isRotateSelected();
+
+    public void setRotateSelected(boolean active);
+
+    /**
+     * Checks if woflan.dll should be used for qualanalysis <br />
+     * For non-windows-systems it always should return false
+     * 
+     * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+     * 
+     * @return true if woflan.dll should be used for qualanalysis
+     */
+    public Boolean isUseWoflanDLL();
 }

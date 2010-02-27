@@ -43,10 +43,11 @@ import org.woped.file.ImageExport;
 import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
-import org.woped.file.TPNExport;
 import org.woped.file.gui.OpenWebEditorUI;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualanalysisServiceImplement;
+import org.woped.qualanalysis.woflan.TPNExport;
+import org.woped.qualanalysis.woflan.WoflanFileFactory;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.server.ServerLoader;
@@ -55,841 +56,722 @@ import org.woped.server.holder.UserHolder;
 import org.woped.translations.Messages;
 
 public class FileEventProcessor extends AbstractEventProcessor {
-	public FileEventProcessor(int vepID, ApplicationMediator mediator) {
-		super(vepID, mediator);
-	}
+    public FileEventProcessor(int vepID, ApplicationMediator mediator) {
+        super(vepID, mediator);
+    }
 
-	public void processViewEvent(AbstractViewEvent event) {
-		EditorVC editor = (EditorVC) getMediator().getUi().getEditorFocus();
-		boolean bRunWofLanDLL = false;
+    @Override
+    public void processViewEvent(AbstractViewEvent event) {
+        EditorVC editor = (EditorVC) getMediator().getUi().getEditorFocus();
 
-		switch (event.getOrder()) {
-		case AbstractViewEvent.OPEN:
-			if (event.getData() != null && event.getData() instanceof File) {
-				openFile((File) event.getData(), FileFilterImpl.PNMLFilter);
-			} else {
-				openEditor();
-			}
-			break;
-		case AbstractViewEvent.OPEN_SAMPLE:
-			openFile((File) event.getData(), FileFilterImpl.SAMPLEFilter);
-			break;
-		case AbstractViewEvent.SAVE:
-			save((EditorVC) getMediator().getUi().getEditorFocus());
-			break;
-		case AbstractViewEvent.SAVEAS:
-			saveAs((EditorVC) getMediator().getUi().getEditorFocus());
-			break;
-		case AbstractViewEvent.SAVEWEBSERVICE:
-			saveWebFile((EditorVC)getMediator().getUi().getEditorFocus());			
-			break;
-		case AbstractViewEvent.OPENWEBSERVICE:
-			if (event.getData() != null) {
-				int modellid = Integer.valueOf(((String)event.getData()));
-				openWebServiceEditor(modellid);
-			} else {
-				openWebServiceEditor(0);
-			}			
-			break;
-		case AbstractViewEvent.EXPORT:
-			export((EditorVC) getMediator().getUi().getEditorFocus());
-			break;
-		case AbstractViewEvent.ANALYSIS_WOPED:
-			// This veriable determines whether we will run internal
-			// or external analysis below
-			bRunWofLanDLL = true;
-		case AbstractViewEvent.ANALYSIS_WOFLAN:
+        boolean bRunWofLanDLL = false;
 
-			if (getMediator().getUi().getEditorFocus() != null
-					&& getMediator().getUi().getEditorFocus()
-							.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
+        switch (event.getOrder()) {
+        case AbstractViewEvent.OPEN:
+            if (event.getData() != null && event.getData() instanceof File) {
+                openFile((File) event.getData(), FileFilterImpl.PNMLFilter);
+            } else {
+                openEditor();
+            }
+            break;
+        case AbstractViewEvent.OPEN_SAMPLE:
+            openFile((File) event.getData(), FileFilterImpl.SAMPLEFilter);
+            break;
+        case AbstractViewEvent.SAVE:
+            save((EditorVC) getMediator().getUi().getEditorFocus());
+            break;
+        case AbstractViewEvent.SAVEAS:
+            saveAs((EditorVC) getMediator().getUi().getEditorFocus());
+            break;
+        case AbstractViewEvent.SAVEWEBSERVICE:
+            saveWebFile((EditorVC) getMediator().getUi().getEditorFocus());
+            break;
+        case AbstractViewEvent.OPENWEBSERVICE:
+            if (event.getData() != null) {
+                int modellid = Integer.valueOf(((String) event.getData()));
+                openWebServiceEditor(modellid);
+            } else {
+                openWebServiceEditor(0);
+            }
+            break;
+        case AbstractViewEvent.EXPORT:
+            export((EditorVC) getMediator().getUi().getEditorFocus());
+            break;
+        case AbstractViewEvent.ANALYSIS_WOPED:
+            // This veriable determines whether we will run internal
+            // or external analysis below
+            bRunWofLanDLL = true;
+        case AbstractViewEvent.ANALYSIS_WOFLAN:
 
-				String fn = ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn";
-				
-				boolean succeed = TPNExport.save(fn, 
-							(PetriNetModelProcessor) getMediator().getUi()
-								.getEditorFocus().getModelProcessor());
+            if (editor != null
+                    && editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
 
-				if (succeed) {
-					File f = new File(fn);
-					if (f.exists()) {
-						if (!bRunWofLanDLL) {
-							Process process = null;
-							try {
-								process = Runtime.getRuntime().exec(
-										ConfigurationManager.getConfiguration()
-												.getWoflanPath()
-												+ " "
-												+ "\""
-												+ f.getAbsolutePath() + "\"");
-								LoggerManager.info(Constants.FILE_LOGGER,
-										"WOFLAN Started.");
-							} catch (IOException e) {
-								LoggerManager.warn(Constants.FILE_LOGGER,
-										"COULD NOT START WOFLAN PROCESS.");
-							}
-							// Success in this context means that
-							// we could run the woflan process
-							succeed = process != null;
-						} else {
-							// Instantiate net analysis dialog and display it
-							// Arguments are the Woflan TPN file and the model
-							// processor
-							// for the petri-net model that is in focus
-//							NetAnalysisDialog myDialog = new NetAnalysisDialog(
-//									(JFrame) getMediator().getUi(), f,
-//									getMediator().getUi().getEditorFocus(),
-//									this.getMediator());
-//							myDialog.setVisible(true);
-							
-							// calls the new analysis sidebar
-							editor.showAnalysisBar(f,
-									getMediator().getUi().getEditorFocus(),
-									this.getMediator());
+                File woflanExportFile = new WoflanFileFactory().createFile(editor);
 
-							LoggerManager.info(Constants.FILE_LOGGER,
-									"Local WoPeD analysis started.");
-						}
+                if (woflanExportFile != null) {
 
-					} else
-						// The temporary file doesn't exist
-						// This most definitely means failure!
-						succeed = false;
-					if (!succeed) {
-						String arg[] = { ConfigurationManager
-								.getConfiguration().getHomedir() };
-						JOptionPane.showMessageDialog(null, Messages.getString(
-								"File.Error.Woflan.Text", arg), Messages
-								.getString("File.Error.Woflan.Title"),
-								JOptionPane.WARNING_MESSAGE);
-					}
-				}
-			} else {
-				JOptionPane.showMessageDialog(null, Messages
-						.getString("File.Error.NoNet.Text"), Messages
-						.getString("File.Error.NoNet.Title"),
-						JOptionPane.WARNING_MESSAGE);
-			}
+                    if (!bRunWofLanDLL) {
+                        Process process = null;
+                        String processCmd = ConfigurationManager.getConfiguration().getWoflanPath() + " " + "\""
+                                + woflanExportFile.getAbsolutePath() + "\"";
 
-			break;
+                        try {
+                            process = Runtime.getRuntime().exec(processCmd);
 
-		case AbstractViewEvent.QUANTCAP:
-			if (isSound(editor) & isBranchingOk(editor))
-				new CapacityAnalysisDialog((JFrame) getMediator().getUi(),
-						editor);
-			break;
+                            LoggerManager.info(Constants.FILE_LOGGER, "WOFLAN Started.");
 
-		case AbstractViewEvent.QUANTSIM:
-			if (isSound(editor) & isBranchingOk(editor)){
-				if(((EditorVC)editor).getSimDlg()==null){
-					((EditorVC)editor).setSimDlg(new QuantitativeSimulationDialog(
-							(JFrame) getMediator().getUi(), editor));
-				}else{
-					((EditorVC)editor).getSimDlg().showdlg();
-				}				
-			}
-			break;
-		}
-	}
+                        } catch (IOException e) {
+                            LoggerManager.warn(Constants.FILE_LOGGER, "COULD NOT START WOFLAN PROCESS.");
+                        }
 
-	 
-		
-	/**
-	 * saveWebFile()
-	 * <p>
-	 * saves a PetriNetModle above the Web on the WopedWebServer
-	 * @param editor - PetriNetModel which has to save on the WebServer
-	 * @returns Returns if the save Process fails or succeed
-	 */
-	private boolean saveWebFile(EditorVC editor) {
-		boolean succeed = false;
+                        if (process == null) {
+                            // something goes wrong
+                            LoggerManager.info(Constants.FILE_LOGGER, "Wolflan process can't created. procces command:"
+                                    + processCmd);
+                            String[] arg = { woflanExportFile.getAbsolutePath() };
+                            JOptionPane.showMessageDialog(null, Messages.getString("File.Error.Woflan.Text", arg),
+                                    Messages.getString("File.Error.Woflan.Title"), JOptionPane.WARNING_MESSAGE);
+                        }
+                    } else {
+                        // calls the new analysis sidebar
+                        editor.showAnalysisBar(getMediator().getUi().getEditorFocus(), this.getMediator());
+                        LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
+                    }
 
-		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		try {
-			IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
-			IStatusBar iSB[] = new IStatusBar[iVC.length];
-			for (int i = 0; i < iSB.length; i++) {
+                }
 
-				iSB[i] = (IStatusBar) iVC[i];
-			}
-			PNMLExport pe = new PNMLExport(iSB);
-			// creates a Stream to hold the XML Data from the PNMLExport
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			pe.saveToWebFile(editor, baos);
-			
-			// save the Model on the Webserver
-			// if this is the first save, ask the user about a filename or a title
-			Object title = null;
-			
-			// if modelID == -1 then it is a new model 
-			// dialog for entering name of model
-			if (editor.getModelid() == -1)
-			{
-				title = JOptionPane.showInputDialog((JFrame)getMediator().getUi(),Messages.getString("SaveWebServiceEditor.Input"),Messages.getTitle("SaveWebServiceEditor"),JOptionPane.QUESTION_MESSAGE,null,null,editor.getName());
-			}else {
-				title = editor.getName();
-			}			
-			
-			editor.setModelid(ServerLoader.getInstance().saveModel(UserHolder.getUserID(), editor.getModelid(), baos.toString(),(String)title));
-			// close the Stream
-			editor.setName((String)title);
-			
-			baos.close();
-			
-			LoggerManager.info(Constants.FILE_LOGGER,
-					"Petrinet saved in webfile: "
-							+ editor.getModelid() + " " +editor.getName());
-			JOptionPane.showMessageDialog((JFrame)getMediator().getUi(), Messages.getString("SaveWebServiceEditor.Saved"));
+            }
+            break;
 
-			editor.setSaved(true);
-			succeed = true;
-		} catch (AccessControlException ace) {
-			ace.printStackTrace();
-			LoggerManager.warn(Constants.FILE_LOGGER,
-					"Could not save Editor. No rights to write the file to "
-							+ editor.getModelid() + ". " + ace.getMessage());
-			JOptionPane.showMessageDialog(getMediator().getUi().getComponent(),
-					Messages.getString("File.Error.Applet.Text"), Messages
-							.getString("File.Error.Applet.Title"),
-					JOptionPane.ERROR_MESSAGE);
-		} catch (IOException e) {
-		}
-		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
-		return succeed;		
-	}
+        case AbstractViewEvent.QUANTCAP:
+            if (isSound(editor) & isBranchingOk(editor)) {
+                new CapacityAnalysisDialog((JFrame) getMediator().getUi(), editor);
+            }
+            break;
 
-	/**
-	 * TODO: DOCUMENTATION (silenco)
-	 * 
-	 * @param editor
-	 */
+        case AbstractViewEvent.QUANTSIM:
+            if (isSound(editor) & isBranchingOk(editor)) {
+                if ((editor).getSimDlg() == null) {
+                    (editor).setSimDlg(new QuantitativeSimulationDialog((JFrame) getMediator().getUi(), editor));
+                } else {
+                    (editor).getSimDlg().showdlg();
+                }
+            }
+            break;
+        }
+    }
 
-	private boolean isSound(EditorVC editor) {
-		String fn = ConfigurationManager.getConfiguration().getHomedir() + "tempWoflanAnalyse.tpn";
-		TPNExport.save(fn,
-				(PetriNetModelProcessor) getMediator().getUi().getEditorFocus()
-						.getModelProcessor());
-		File f = new File(fn);
+    /**
+     * saveWebFile()
+     * <p>
+     * saves a PetriNetModle above the Web on the WopedWebServer
+     * 
+     * @param editor - PetriNetModel which has to save on the WebServer
+     * @returns Returns if the save Process fails or succeed
+     */
+    private boolean saveWebFile(EditorVC editor) {
+        boolean succeed = false;
 
-		IQualanalysisService qualanService = new QualanalysisServiceImplement(editor);
+        getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
+            IStatusBar iSB[] = new IStatusBar[iVC.length];
+            for (int i = 0; i < iSB.length; i++) {
 
-		int unbound = qualanService.getNumUnboundedPlaces();
-		int nonlive = qualanService.getNumNonLiveTransitions();
+                iSB[i] = (IStatusBar) iVC[i];
+            }
+            PNMLExport pe = new PNMLExport(iSB);
+            // creates a Stream to hold the XML Data from the PNMLExport
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            pe.saveToWebFile(editor, baos);
 
-		int sound = unbound + nonlive;
-		int soPl = qualanService.getNumSourcePlaces();
-		int soTr = qualanService.getNumSourceTransitions();
-		int siPl = qualanService.getNumSinkPlaces();
-		int siTr = qualanService.getNumSinkTransitions();
-		boolean wfpn = (soPl >= 1 && soPl + soTr == 1)
-				&& (siPl >= 1 && siPl + siTr == 1);
-		if ((sound == 0) & wfpn) {
-			return true;
-		} else {
-			JOptionPane.showMessageDialog(null, Messages
-					.getString("QuantAna.Message.SoundnessViolation"));
-			return false;
-		}
-	}
+            // save the Model on the Webserver
+            // if this is the first save, ask the user about a filename or a title
+            Object title = null;
 
-	private boolean isBranchingOk(EditorVC editor) {
-		ModelElementContainer mec = editor.getModelProcessor()
-				.getElementContainer();
-		boolean branchingOk = true;
-		String[] param = { "", "", "" };
-		Iterator transes = (mec
-				.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE))
-				.values().iterator();
-		StructuralAnalysis sa = new StructuralAnalysis(editor);
-		Iterator places = sa.getPlacesIterator();
-		AbstractPetriNetModelElement end = (AbstractPetriNetModelElement) sa
-				.getSinkPlacesIterator().next();
+            // if modelID == -1 then it is a new model
+            // dialog for entering name of model
+            if (editor.getModelid() == -1) {
+                title = JOptionPane.showInputDialog((JFrame) getMediator().getUi(), Messages
+                        .getString("SaveWebServiceEditor.Input"), Messages.getTitle("SaveWebServiceEditor"),
+                        JOptionPane.QUESTION_MESSAGE, null, null, editor.getName());
+            } else {
+                title = editor.getName();
+            }
 
-		while (transes.hasNext()) {
-			AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement) transes
-					.next();
-			Map outArcs = mec.getOutgoingArcs(trans.getId());
-			int sum = 0;
-			for (Object v : outArcs.values()) {
-				double p = ((ArcModel) v).getProbability();
-				sum += (Double.valueOf(p * 100)).intValue();
-			}
+            editor.setModelid(ServerLoader.getInstance().saveModel(UserHolder.getUserID(), editor.getModelid(),
+                    baos.toString(), (String) title));
+            // close the Stream
+            editor.setName((String) title);
 
-			int type = ((OperatorTransitionModel) trans).getOperatorType();
-			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE
-					|| type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
-					& sum != 100) {
-				branchingOk = false;
-				param[0] = Messages.getString("QuantAna.Transition");
-				param[1] = trans.getNameValue();
-				param[2] = sum + "";
-			}
-		}
+            baos.close();
 
-		while (places.hasNext()) {
-			AbstractPetriNetModelElement place = (AbstractPetriNetModelElement) places
-					.next();
-			if (!place.equals(end)) {
-				Map outArcs = mec.getOutgoingArcs(place.getId());
-				int sum = 0;
-				for (Object v : outArcs.values()) {
-					double p = ((ArcModel) v).getProbability();
-					sum += (Double.valueOf(p * 100)).intValue();
-				}
+            LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in webfile: " + editor.getModelid() + " "
+                    + editor.getName());
+            JOptionPane.showMessageDialog((JFrame) getMediator().getUi(), Messages
+                    .getString("SaveWebServiceEditor.Saved"));
 
-				if (outArcs.size() > 1 && sum != 100) {
-					branchingOk = false;
-					param[0] = Messages.getString("QuantAna.Place");
-					param[1] = place.getNameValue();
-					param[2] = sum + "";
-				}
-			}
-		}
-		if (branchingOk) {
-			return true;
-		} else {
-			JOptionPane.showMessageDialog(null, Messages.getString(
-					"QuantAna.Message.BranchingProbabilityViolation", param));
-			return false;
-		}
-	}
+            editor.setSaved(true);
+            succeed = true;
+        } catch (AccessControlException ace) {
+            ace.printStackTrace();
+            LoggerManager.warn(Constants.FILE_LOGGER, "Could not save Editor. No rights to write the file to "
+                    + editor.getModelid() + ". " + ace.getMessage());
+            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages
+                    .getString("File.Error.Applet.Text"), Messages.getString("File.Error.Applet.Title"),
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (IOException e) {
+        }
+        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+        return succeed;
+    }
 
-	public void export(EditorVC editor) {
-		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		if (editor != null) {
-			// Open save as Dialog
-			JFileChooser jfc;
-			String hd = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
-			if (hd != null) {
-				jfc = new JFileChooser(new File(hd));
-			} else {
-				jfc = new JFileChooser();
-			}
+    /**
+     * TODO: DOCUMENTATION (silenco)
+     * 
+     * @param editor
+     */
 
-			// FileFilters
-			Vector<String> pngExtensions = new Vector<String>();
-			pngExtensions.add("png");
-			FileFilterImpl PNGFilter = new FileFilterImpl(
-					FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
-			jfc.setFileFilter(PNGFilter);
+    private boolean isSound(EditorVC editor) {
 
-			Vector<String> bmpExtensions = new Vector<String>();
-			bmpExtensions.add("bmp");
-			FileFilterImpl BMPFilter = new FileFilterImpl(
-					FileFilterImpl.BMPFilter, "BMP (*.bmp)", bmpExtensions);
-			jfc.setFileFilter(BMPFilter);
+        IQualanalysisService qualanService = new QualanalysisServiceImplement(editor);
 
-			Vector<String> jpgExtensions = new Vector<String>();
-			jpgExtensions.add("jpg");
-			jpgExtensions.add("jpeg");
-			FileFilterImpl JPGFilter = new FileFilterImpl(
-					FileFilterImpl.JPGFilter, "JPG (*.jpg)", jpgExtensions);
-			jfc.setFileFilter(JPGFilter);
+        if (qualanService.isSound()) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.SoundnessViolation"));
+            return false;
+        }
+    }
 
-			Vector<String> tpnExtensions = new Vector<String>();
-			tpnExtensions.add("tpn");
-			FileFilterImpl TPNFilter = new FileFilterImpl(
-					FileFilterImpl.TPNFilter, "TPN (*.tpn)", tpnExtensions);
-			jfc.setFileFilter(TPNFilter);
+    private boolean isBranchingOk(EditorVC editor) {
+        ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
+        boolean branchingOk = true;
+        String[] param = { "", "", "" };
+        Iterator transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values()
+                .iterator();
+        StructuralAnalysis sa = new StructuralAnalysis(editor);
+        Iterator places = sa.getPlacesIterator();
+        AbstractPetriNetModelElement end = (AbstractPetriNetModelElement) sa.getSinkPlacesIterator().next();
 
-			jfc.setFileFilter(PNGFilter);
+        while (transes.hasNext()) {
+            AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement) transes.next();
+            Map outArcs = mec.getOutgoingArcs(trans.getId());
+            int sum = 0;
+            for (Object v : outArcs.values()) {
+                double p = ((ArcModel) v).getProbability();
+                sum += (Double.valueOf(p * 100)).intValue();
+            }
 
-			// insert of the BPEL Export filefilter
-			jfc.setFileFilter(BPEL.getBPELMainClass().getFilefilter());
+            int type = ((OperatorTransitionModel) trans).getOperatorType();
+            if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE || type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
+                    & sum != 100) {
+                branchingOk = false;
+                param[0] = Messages.getString("QuantAna.Transition");
+                param[1] = trans.getNameValue();
+                param[2] = sum + "";
+            }
+        }
 
-			jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
-			jfc.showSaveDialog(null);
-			if (jfc.getSelectedFile() != null && editor != null) {
+        while (places.hasNext()) {
+            AbstractPetriNetModelElement place = (AbstractPetriNetModelElement) places.next();
+            if (!place.equals(end)) {
+                Map outArcs = mec.getOutgoingArcs(place.getId());
+                int sum = 0;
+                for (Object v : outArcs.values()) {
+                    double p = ((ArcModel) v).getProbability();
+                    sum += (Double.valueOf(p * 100)).intValue();
+                }
 
-				String savePath = jfc.getSelectedFile().getAbsolutePath()
-						.substring(
-								0,
-								jfc.getSelectedFile().getAbsolutePath()
-										.length()
-										- jfc.getSelectedFile().getName()
-												.length());
-				if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.TPNFilter) {
-					savePath = savePath
-							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-									.getName(), tpnExtensions);
-				} else if (((FileFilterImpl) jfc.getFileFilter())
-						.getFilterType() == FileFilterImpl.JPGFilter) {
-					savePath = savePath
-							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-									.getName(), jpgExtensions);
-				} else if (((FileFilterImpl) jfc.getFileFilter())
-						.getFilterType() == FileFilterImpl.PNGFilter) {
-					savePath = savePath
-							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-									.getName(), pngExtensions);
-				} else if (((FileFilterImpl) jfc.getFileFilter())
-						.getFilterType() == FileFilterImpl.BMPFilter) {
-					savePath = savePath
-							+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-									.getName(), bmpExtensions);
-				} else if (BPEL.getBPELMainClass().checkFileExtension(jfc)) {
-					savePath = BPEL.getBPELMainClass().getSavePath(savePath,
-							jfc);
-				} else {
-					LoggerManager.error(Constants.FILE_LOGGER,
-							"\"Export\" NOT SUPPORTED FILE TYPE.");
-				}
-				// ... and saving
+                if (outArcs.size() > 1 && sum != 100) {
+                    branchingOk = false;
+                    param[0] = Messages.getString("QuantAna.Place");
+                    param[1] = place.getNameValue();
+                    param[2] = sum + "";
+                }
+            }
+        }
+        if (branchingOk) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.BranchingProbabilityViolation",
+                    param));
+            return false;
+        }
+    }
 
-				editor
-						.setDefaultFileType(((FileFilterImpl) jfc
-								.getFileFilter()).getFilterType());
-				editor.setFilePath(savePath);
-				save(editor);
-			} else {
-				LoggerManager.info(Constants.FILE_LOGGER,
-						"\"Export\" canceled or nothing to export.");
-			}
-		}
-		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
-	}
+    public void export(EditorVC editor) {
+        getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if (editor != null) {
+            // Open save as Dialog
+            JFileChooser jfc;
+            String hd = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
+            if (hd != null) {
+                jfc = new JFileChooser(new File(hd));
+            } else {
+                jfc = new JFileChooser();
+            }
 
-	/**
-	 * TODO: DOCUMENTATION (silenco)
-	 * 
-	 * @param editor
-	 * @return
-	 */
-	public boolean save(final EditorVC editor) {
-		boolean succeed = false;
+            // FileFilters
+            Vector<String> pngExtensions = new Vector<String>();
+            pngExtensions.add("png");
+            FileFilterImpl PNGFilter = new FileFilterImpl(FileFilterImpl.PNGFilter, "PNG (*.png)", pngExtensions);
+            jfc.setFileFilter(PNGFilter);
 
-		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		try {
-			// Open save dialog
-			if (editor != null) {
-				if (editor != null) {
-					if (editor.getFilePath() == null) {
-						LoggerManager
-								.debug(Constants.FILE_LOGGER,
-										"File was not saved before. Call \"Save as\" instead.");
-						saveAs(editor);
-					} else {
+            Vector<String> bmpExtensions = new Vector<String>();
+            bmpExtensions.add("bmp");
+            FileFilterImpl BMPFilter = new FileFilterImpl(FileFilterImpl.BMPFilter, "BMP (*.bmp)", bmpExtensions);
+            jfc.setFileFilter(BMPFilter);
 
-						if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter) {
-							succeed = ImageExport.saveJPG(ImageExport
-									.getRenderedImage(editor), new File(editor
-									.getFilePath()));
-							// TODO: !!! Working dir
-						} else if (editor.getDefaultFileType() == FileFilterImpl.PNGFilter) {
-							succeed = ImageExport.savePNG(ImageExport
-									.getRenderedImage(editor), new File(editor
-									.getFilePath()));
-						} else if (editor.getDefaultFileType() == FileFilterImpl.BMPFilter) {
-							succeed = ImageExport.saveBMP(ImageExport
-									.getRenderedImage(editor), new File(editor
-									.getFilePath()));
-						}
-						/* Tool for PNML Export */
-						else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
-							IViewController[] iVC = getMediator()
-									.findViewController(IStatusBar.TYPE);
-							IStatusBar iSB[] = new IStatusBar[iVC.length];
-							for (int i = 0; i < iSB.length; i++) {
+            Vector<String> jpgExtensions = new Vector<String>();
+            jpgExtensions.add("jpg");
+            jpgExtensions.add("jpeg");
+            FileFilterImpl JPGFilter = new FileFilterImpl(FileFilterImpl.JPGFilter, "JPG (*.jpg)", jpgExtensions);
+            jfc.setFileFilter(JPGFilter);
 
-								iSB[i] = (IStatusBar) iVC[i];
-							}
-							PNMLExport pe = new PNMLExport(iSB);
-							pe.saveToFile(editor, editor.getFilePath());
-							LoggerManager.info(Constants.FILE_LOGGER,
-									"Petrinet saved in file: "
-											+ editor.getFilePath());
+            Vector<String> tpnExtensions = new Vector<String>();
+            tpnExtensions.add("tpn");
+            FileFilterImpl TPNFilter = new FileFilterImpl(FileFilterImpl.TPNFilter, "TPN (*.tpn)", tpnExtensions);
+            jfc.setFileFilter(TPNFilter);
 
-							ConfigurationManager.getConfiguration()
-									.addRecentFile(
-											new File(editor.getFilePath())
-													.getName(),
-											editor.getFilePath());
-							getMediator().getUi().updateRecentMenu();
-							editor.setSaved(true);
-							ConfigurationManager.getConfiguration()
-									.setCurrentWorkingdir(editor.getFilePath());
-							succeed = true;
-						}
-						// BPEL-Export
-						else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
-								&& this.isSound(editor)) {
-							StructuralAnalysis sa = new StructuralAnalysis(
-								editor);
-							int wellStruct = sa
-								.getNumPTHandles() + sa.getNumTPHandles();
-							int freeChoice = sa.getNumFreeChoiceViolations();
-							int sound = wellStruct + freeChoice;
-							if (sound == 0) {
-								succeed = BPEL.getBPELMainClass().saveFile(
-										editor.getFilePath(), editor);
-								ConfigurationManager.getConfiguration()
-										.setCurrentWorkingdir(editor.getFilePath());
-							} else {
-								JOptionPane
-										.showMessageDialog(
-												null,
-												Messages
-														.getString("QuantAna.Message.SoundnessViolation"));
-							}
+            jfc.setFileFilter(PNGFilter);
 
-						}
-						/* Tool for TPN Export */
-						else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
-							succeed = TPNExport.save(editor.getFilePath(),
-									(PetriNetModelProcessor) editor
-											.getModelProcessor());
-							ConfigurationManager.getConfiguration()
-									.setCurrentWorkingdir(editor.getFilePath());
+            // insert of the BPEL Export filefilter
+            jfc.setFileFilter(BPEL.getBPELMainClass().getFilefilter());
 
-						} else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
-							String arg[] = { editor.getName() };
-							JOptionPane.showMessageDialog(null, Messages
-									.getString("File.Error.SampleSave.Text",
-											arg), Messages
-									.getString("File.Error.SampleSave.Title"),
-									JOptionPane.ERROR_MESSAGE);
-							succeed = false;
-						} else {
-							LoggerManager.warn(Constants.FILE_LOGGER,
-									"Unable to save File. Filetype not known: "
-											+ editor.getDefaultFileType());
-							succeed = false;
-						}
-					}
-				}
-			}
-		} catch (AccessControlException ace) {
-			ace.printStackTrace();
-			LoggerManager.warn(Constants.FILE_LOGGER,
-					"Could not save Editor. No rights to write the file to "
-							+ editor.getFilePath() + ". " + ace.getMessage());
-			JOptionPane.showMessageDialog(getMediator().getUi().getComponent(),
-					Messages.getString("File.Error.Applet.Text"), Messages
-							.getString("File.Error.Appleat.Title"),
-					JOptionPane.ERROR_MESSAGE);
-		} 		
-		
-		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
-		return succeed;
-	}
+            jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
+            jfc.showSaveDialog(null);
+            if (jfc.getSelectedFile() != null && editor != null) {
 
-	public static boolean isFileOverride(Frame owner, String fileName) {
-		String textMessages[] = { Messages.getString("Dialog.Yes"),
-				Messages.getString("Dialog.No") };
-		String[] args = { fileName };
+                String savePath = jfc.getSelectedFile().getAbsolutePath().substring(0,
+                        jfc.getSelectedFile().getAbsolutePath().length() - jfc.getSelectedFile().getName().length());
+                if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.TPNFilter) {
+                    savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), tpnExtensions);
+                } else
+                    if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.JPGFilter) {
+                        savePath = savePath
+                                + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), jpgExtensions);
+                    } else
+                        if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.PNGFilter) {
+                            savePath = savePath
+                                    + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), pngExtensions);
+                        } else
+                            if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.BMPFilter) {
+                                savePath = savePath
+                                        + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), bmpExtensions);
+                            } else
+                                if (BPEL.getBPELMainClass().checkFileExtension(jfc)) {
+                                    savePath = BPEL.getBPELMainClass().getSavePath(savePath, jfc);
+                                } else {
+                                    LoggerManager.error(Constants.FILE_LOGGER, "\"Export\" NOT SUPPORTED FILE TYPE.");
+                                }
+                // ... and saving
 
-		return JOptionPane.showOptionDialog(owner, Messages.getStringReplaced(
-				"Action.Confirm.File.Overwrite.Text", args), Messages
-				.getString("Action.Confirm.File.Overwrite.Title"),
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-				textMessages, textMessages[1]) == JOptionPane.YES_OPTION;
-	}
+                editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
+                editor.setFilePath(savePath);
+                save(editor);
+            } else {
+                LoggerManager.info(Constants.FILE_LOGGER, "\"Export\" canceled or nothing to export.");
+            }
+        }
+        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+    }
 
-	/**
-	 * TODO: Documentation
-	 * 
-	 * @param editor
-	 * @return
-	 */
-	public boolean saveAs(EditorVC editor) {
-		boolean succeed = false;
-		
-		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));	
-		if (editor != null) {
-			// Open save as Dialog
-			JFileChooser jfc;
-			if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
-				jfc = new JFileChooser(new File(ConfigurationManager
-						.getConfiguration().getCurrentWorkingdir()));
-			} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
-				jfc = new JFileChooser(new File(ConfigurationManager
-						.getConfiguration().getHomedir()));
-			} else {
-				jfc = new JFileChooser();
-			}
+    /**
+     * TODO: DOCUMENTATION (silenco)
+     * 
+     * @param editor
+     * @return
+     */
+    public boolean save(final EditorVC editor) {
+        boolean succeed = false;
 
-			// FileFilters
-			Vector<String> extensions = new Vector<String>();
-			if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
-				extensions.add("pnml");
-				extensions.add("xml");
-				FileFilterImpl PNMLFilter = new FileFilterImpl(
-						FileFilterImpl.PNMLFilter,
-						"Petri Net Markup Language (1.3.2) (*.pnml)",
-						extensions);
-				jfc.setFileFilter(PNMLFilter);
-			}
-			jfc.setDialogTitle(Messages.getString("Action.EditorSaveAs.Title"));
+        getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            // Open save dialog
+            if (editor != null) {
+                if (editor != null) {
+                    if (editor.getFilePath() == null) {
+                        LoggerManager.debug(Constants.FILE_LOGGER,
+                                "File was not saved before. Call \"Save as\" instead.");
+                        saveAs(editor);
+                    } else {
 
-			int returnVal = jfc.showSaveDialog(null);
+                        if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter) {
+                            succeed = ImageExport.saveJPG(ImageExport.getRenderedImage(editor), new File(editor
+                                    .getFilePath()));
+                            // TODO: !!! Working dir
+                        } else
+                            if (editor.getDefaultFileType() == FileFilterImpl.PNGFilter) {
+                                succeed = ImageExport.savePNG(ImageExport.getRenderedImage(editor), new File(editor
+                                        .getFilePath()));
+                            } else
+                                if (editor.getDefaultFileType() == FileFilterImpl.BMPFilter) {
+                                    succeed = ImageExport.saveBMP(ImageExport.getRenderedImage(editor), new File(editor
+                                            .getFilePath()));
+                                }
+                                /* Tool for PNML Export */
+                                else
+                                    if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
+                                        IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
+                                        IStatusBar iSB[] = new IStatusBar[iVC.length];
+                                        for (int i = 0; i < iSB.length; i++) {
 
-			if (jfc.getSelectedFile() != null
-					&& returnVal == JFileChooser.APPROVE_OPTION) {
-				String savePath = jfc.getSelectedFile().getAbsolutePath()
-						.substring(
-								0,
-								jfc.getSelectedFile().getAbsolutePath()
-										.length()
-										- jfc.getSelectedFile().getName()
-												.length());
-				String fileName = Utils.getQualifiedFileName(jfc
-						.getSelectedFile().getName(), extensions);
-				if (!new File(savePath.concat(fileName)).exists()
-						|| (isFileOverride(null, jfc.getSelectedFile()
-								.getPath()))) {
-					if (editor != null && new File(savePath).exists()) {
-						// setting the Default File Type
-						editor.setDefaultFileType(((FileFilterImpl) jfc
-								.getFileFilter()).getFilterType());
-						// setting the new filename to editor, and Title to
-						// Frame
-						editor.setName(fileName);
-						editor.setFilePath(savePath.concat(fileName));
-						// getTaskBar().getsetToolTipText(getActiveEditor().getFileName());
-						// ... and saving
-						ConfigurationManager.getConfiguration().setCurrentWorkingdir(savePath);
-						LoggerManager.debug(Constants.FILE_LOGGER,
-								"Current working dir is: "
-										+ ConfigurationManager
-												.getConfiguration()
-												.getCurrentWorkingdir());
-						editor.setDefaultFileType(((FileFilterImpl) jfc
-								.getFileFilter()).getFilterType());
-						editor.setFilePath(savePath.concat(fileName));
-						succeed = save(editor);
-					} else {
-						LoggerManager
-								.debug(Constants.FILE_LOGGER,
-										"\"Save as\" canceled or nothing to save at all.");
-						succeed = false;
-					}
-				}
-			}
-		}
-		
-		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
-		return succeed;
+                                            iSB[i] = (IStatusBar) iVC[i];
+                                        }
+                                        PNMLExport pe = new PNMLExport(iSB);
+                                        pe.saveToFile(editor, editor.getFilePath());
+                                        LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in file: "
+                                                + editor.getFilePath());
 
-	}
-	
-	/**
-	 * openWebServiceEditor()
-	 * <p>
-	 * @return IEditor
-	 */
-	private IEditor openWebServiceEditor(int modellID) {
-		// get loadable List of PetriNetModels
-		try {
-			ArrayList<ModellHolder> values = null;
-			ModellHolder selected = null;
-			if (modellID != 0) {
-				values = ServerLoader.getInstance().getList(UserHolder.getUserID(), true);
-				for (int i = 0; i < values.size(); i++) {
-					if (values.get(i).getModellID() == modellID) {
-						selected = values.get(i);
-						break;
-					}
-				}
-			} else {
-				OpenWebEditorUI openWebEditorGUI = new OpenWebEditorUI((JFrame)getMediator().getUi());
-				selected = openWebEditorGUI.execute();
-				openWebEditorGUI.dispose();
-			}
-			if (selected != null) {
-				// load the choosen model
-				String content = ServerLoader.getInstance().loadModel(selected.getModellID());
-				return openWebFile(content,selected);
-			}
-		} catch (RemoteException e) {
-			// for first ignore
-		}
-		return null;
-		
-	}
-	
-	/**
-	 * openWebFile()
-	 * <p>
-	 * creates a IEditor from a given XML String
-	 * @param content
-	 * @param modell
-	 * @return
-	 */
-	private IEditor openWebFile(String content, ModellHolder modell) {
-		IEditor editor = null;
-		final PNMLImport pr;
-		
-		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
-		IStatusBar[] iSB = new IStatusBar[iVC.length];
-		for (int i = 0; i < iSB.length; i++) {
-			iSB[i] = (IStatusBar) iVC[i];
-		}
+                                        ConfigurationManager.getConfiguration().addRecentFile(
+                                                new File(editor.getFilePath()).getName(), editor.getFilePath());
+                                        getMediator().getUi().updateRecentMenu();
+                                        editor.setSaved(true);
+                                        ConfigurationManager.getConfiguration().setCurrentWorkingdir(
+                                                editor.getFilePath());
+                                        succeed = true;
+                                    }
+                                    // BPEL-Export
+                                    else
+                                        if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
+                                                && this.isSound(editor)) {
+                                            StructuralAnalysis sa = new StructuralAnalysis(editor);
+                                            int wellStruct = sa.getNumPTHandles() + sa.getNumTPHandles();
+                                            int freeChoice = sa.getNumFreeChoiceViolations();
+                                            int sound = wellStruct + freeChoice;
+                                            if (sound == 0) {
+                                                succeed = BPEL.getBPELMainClass()
+                                                        .saveFile(editor.getFilePath(), editor);
+                                                ConfigurationManager.getConfiguration().setCurrentWorkingdir(
+                                                        editor.getFilePath());
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, Messages
+                                                        .getString("QuantAna.Message.SoundnessViolation"));
+                                            }
 
-		pr = new PNMLImport((ApplicationMediator) getMediator(), iSB);
-		
-		if (pr != null) {
-			boolean loadSuccess = false;
-			
-			// TODO Generate Thread
-			loadSuccess = pr.runEx(content);
-			
-			if (loadSuccess) {
-				editor = pr.getEditor()[pr.getEditor().length - 1];
-				for (int i = 0; i < pr.getEditor().length; i++) {
-					if (editor instanceof EditorVC) {
-						((EditorVC) pr.getEditor()[i])
-								.setDefaultFileType(FileFilterImpl.PNMLFilter);
-						((EditorVC) pr.getEditor()[i]).setName(modell.getTitle());
-						((EditorVC) pr.getEditor()[i]).setModelid(modell.getModellID());
-					}
-					// add Editor
-					LoggerManager.info(Constants.FILE_LOGGER,
-							"Petrinet loaded from Webfile: "
-									+ modell.getModellID() + " " + modell.getTitle());
-				}
-			} else {
-				String arg[] = { modell.getModellID() + " " + modell.getTitle() };
-				JOptionPane.showMessageDialog(null, Messages.getString(
-						"File.Error.FileOpen.Text", arg), Messages
-						.getString("File.Error.FileOpen.Title"),
-						JOptionPane.ERROR_MESSAGE);
-			}
-			
-		} 		
-		
-		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
-		return editor;
-	}
+                                        }
+                                        /* Tool for TPN Export */
+                                        else
+                                            if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
+                                                succeed = TPNExport.save(editor.getFilePath(),
+                                                        (PetriNetModelProcessor) editor.getModelProcessor());
+                                                ConfigurationManager.getConfiguration().setCurrentWorkingdir(
+                                                        editor.getFilePath());
 
-	/**
-	 * TODO: DOCUMENTATION (silenco)
-	 */
-	public IEditor openEditor() {
-		JFileChooser jfc;
-		String fn;
-		
-		if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
-			fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
-			jfc = new JFileChooser(new File(fn));
-		} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
-			fn = ConfigurationManager.getConfiguration().getHomedir();
-			jfc = new JFileChooser(new File(fn));
-		} else {
-			jfc = new JFileChooser();
-		}
-		// FileFilters
-		Vector<String> extensions = new Vector<String>();
+                                            } else
+                                                if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
+                                                    String arg[] = { editor.getName() };
+                                                    JOptionPane.showMessageDialog(null, Messages.getString(
+                                                            "File.Error.SampleSave.Text", arg), Messages
+                                                            .getString("File.Error.SampleSave.Title"),
+                                                            JOptionPane.ERROR_MESSAGE);
+                                                    succeed = false;
+                                                } else {
+                                                    LoggerManager.warn(Constants.FILE_LOGGER,
+                                                            "Unable to save File. Filetype not known: "
+                                                                    + editor.getDefaultFileType());
+                                                    succeed = false;
+                                                }
+                    }
+                }
+            }
+        } catch (AccessControlException ace) {
+            ace.printStackTrace();
+            LoggerManager.warn(Constants.FILE_LOGGER, "Could not save Editor. No rights to write the file to "
+                    + editor.getFilePath() + ". " + ace.getMessage());
+            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages
+                    .getString("File.Error.Applet.Text"), Messages.getString("File.Error.Appleat.Title"),
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
-		extensions.add("pnml");
-		extensions.add("xml");
-		// extensions.add("xmi");
-		jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.OLDPNMLFilter,
-				"Petri Net Markup Language older version (*.pnml,*.xml)",
-				extensions));
-		jfc
-				.setFileFilter(new FileFilterImpl(FileFilterImpl.PNMLFilter,
-						"Petri Net Markup Language (1.3.2) (*.pnml,*.xml)",
-						extensions));
-		// jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.XMIFilter, "UML
-		// (*.xmi)", extensions));
+        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+        return succeed;
+    }
 
-		jfc.showOpenDialog(null);
+    public static boolean isFileOverride(Frame owner, String fileName) {
+        String textMessages[] = { Messages.getString("Dialog.Yes"), Messages.getString("Dialog.No") };
+        String[] args = { fileName };
 
-		if (jfc.getSelectedFile() != null) {
-			return openFile(jfc.getSelectedFile(), ((FileFilterImpl) jfc
-					.getFileFilter()).getFilterType());
-		}
-		return null;
-	}
+        return JOptionPane.showOptionDialog(owner, Messages.getStringReplaced("Action.Confirm.File.Overwrite.Text",
+                args), Messages.getString("Action.Confirm.File.Overwrite.Title"), JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, textMessages, textMessages[1]) == JOptionPane.YES_OPTION;
+    }
 
-	/**
-	 * For open files outside the jar file
-	 * 
-	 * @param file
-	 * @param filter
-	 */
-	private IEditor openFile(File file, int filter) {
-		IEditor editor = null;
-		final PNMLImport pr;
+    /**
+     * TODO: Documentation
+     * 
+     * @param editor
+     * @return
+     */
+    public boolean saveAs(EditorVC editor) {
+        boolean succeed = false;
 
-		getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-		if (filter == FileFilterImpl.PNMLFilter
-				|| filter == FileFilterImpl.SAMPLEFilter) {
+        getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if (editor != null) {
+            // Open save as Dialog
+            JFileChooser jfc;
+            if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
+                jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getCurrentWorkingdir()));
+            } else
+                if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+                    jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getHomedir()));
+                } else {
+                    jfc = new JFileChooser();
+                }
 
-			IViewController[] iVC = getMediator().findViewController(
-					IStatusBar.TYPE);
-			IStatusBar[] iSB = new IStatusBar[iVC.length];
-			for (int i = 0; i < iSB.length; i++) {
-				iSB[i] = (IStatusBar) iVC[i];
-			}
+            // FileFilters
+            Vector<String> extensions = new Vector<String>();
+            if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
+                extensions.add("pnml");
+                extensions.add("xml");
+                FileFilterImpl PNMLFilter = new FileFilterImpl(FileFilterImpl.PNMLFilter,
+                        "Petri Net Markup Language (1.3.2) (*.pnml)", extensions);
+                jfc.setFileFilter(PNMLFilter);
+            }
+            jfc.setDialogTitle(Messages.getString("Action.EditorSaveAs.Title"));
 
-			pr = new PNMLImport((ApplicationMediator) getMediator(), iSB);
-			
-		} else if (filter == FileFilterImpl.OLDPNMLFilter) {
-			pr = new OLDPNMLImport2((ApplicationMediator) getMediator());
-		} else
-			pr = null;
-		if (pr != null) {
-			boolean loadSuccess = false;
-			InputStream is;
+            int returnVal = jfc.showSaveDialog(null);
 
-			// TODO Generate Thread
-			try {
-				is = new FileInputStream(file.getAbsolutePath());
-				loadSuccess = pr.run(is);
-			} catch (FileNotFoundException e) {
-				String jarPath = file.getPath().replace('\\', '/');
+            if (jfc.getSelectedFile() != null && returnVal == JFileChooser.APPROVE_OPTION) {
+                String savePath = jfc.getSelectedFile().getAbsolutePath().substring(0,
+                        jfc.getSelectedFile().getAbsolutePath().length() - jfc.getSelectedFile().getName().length());
+                String fileName = Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), extensions);
+                if (!new File(savePath.concat(fileName)).exists()
+                        || (isFileOverride(null, jfc.getSelectedFile().getPath()))) {
+                    if (editor != null && new File(savePath).exists()) {
+                        // setting the Default File Type
+                        editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
+                        // setting the new filename to editor, and Title to
+                        // Frame
+                        editor.setName(fileName);
+                        editor.setFilePath(savePath.concat(fileName));
+                        // getTaskBar().getsetToolTipText(getActiveEditor().getFileName());
+                        // ... and saving
+                        ConfigurationManager.getConfiguration().setCurrentWorkingdir(savePath);
+                        LoggerManager.debug(Constants.FILE_LOGGER, "Current working dir is: "
+                                + ConfigurationManager.getConfiguration().getCurrentWorkingdir());
+                        editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
+                        editor.setFilePath(savePath.concat(fileName));
+                        succeed = save(editor);
+                    } else {
+                        LoggerManager.debug(Constants.FILE_LOGGER, "\"Save as\" canceled or nothing to save at all.");
+                        succeed = false;
+                    }
+                }
+            }
+        }
 
-				is = this.getClass().getResourceAsStream(jarPath);
-				loadSuccess = pr.run(is);
+        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+        return succeed;
 
-				/*
-				 * if (!loadSuccess) LoggerManager.error(Constants.FILE_LOGGER,
-				 * "Could not open InputStream. " + file.getAbsolutePath());
-				 */
-				// }
-			}
-			if (loadSuccess) {
-				editor = pr.getEditor()[pr.getEditor().length - 1];
-				for (int i = 0; i < pr.getEditor().length; i++) {
-					if (editor instanceof EditorVC) {
-						((EditorVC) pr.getEditor()[i])
-								.setDefaultFileType(filter);
-						((EditorVC) pr.getEditor()[i]).setName(file.getName());
-						((EditorVC) pr.getEditor()[i]).setFilePath(file
-								.getAbsolutePath());
-					}
-					// add recent
-					if (filter == FileFilterImpl.PNMLFilter)
-						ConfigurationManager.getConfiguration().addRecentFile(
-								file.getName(), file.getAbsolutePath());
-					if (filter != FileFilterImpl.SAMPLEFilter)
-						ConfigurationManager.getConfiguration()
-								.setCurrentWorkingdir(file.getAbsolutePath());
-					// add Editor
-					LoggerManager.info(Constants.FILE_LOGGER,
-							"Petrinet loaded from file: "
-									+ file.getAbsolutePath());
-				}
-			} else {
-				ConfigurationManager.getConfiguration().removeRecentFile(
-						file.getName(), file.getAbsolutePath());
-				String arg[] = { file.getAbsolutePath() };
-				JOptionPane.showMessageDialog(null, Messages.getString(
-						"File.Error.FileOpen.Text", arg), Messages
-						.getString("File.Error.FileOpen.Title"),
-						JOptionPane.ERROR_MESSAGE);
-			}
+    }
 
-			getMediator().getUi().updateRecentMenu();
-			
-			if (ConfigurationManager.getConfiguration().getColorOn() ==  true){
-//				new NetColorScheme().update();
-			}
-		} 
-		
-		getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
-		return editor;
-	}
+    /**
+     * openWebServiceEditor()
+     * <p>
+     * 
+     * @return IEditor
+     */
+    private IEditor openWebServiceEditor(int modellID) {
+        // get loadable List of PetriNetModels
+        try {
+            ArrayList<ModellHolder> values = null;
+            ModellHolder selected = null;
+            if (modellID != 0) {
+                values = ServerLoader.getInstance().getList(UserHolder.getUserID(), true);
+                for (int i = 0; i < values.size(); i++) {
+                    if (values.get(i).getModellID() == modellID) {
+                        selected = values.get(i);
+                        break;
+                    }
+                }
+            } else {
+                OpenWebEditorUI openWebEditorGUI = new OpenWebEditorUI((JFrame) getMediator().getUi());
+                selected = openWebEditorGUI.execute();
+                openWebEditorGUI.dispose();
+            }
+            if (selected != null) {
+                // load the choosen model
+                String content = ServerLoader.getInstance().loadModel(selected.getModellID());
+                return openWebFile(content, selected);
+            }
+        } catch (RemoteException e) {
+            // for first ignore
+        }
+        return null;
+
+    }
+
+    /**
+     * openWebFile()
+     * <p>
+     * creates a IEditor from a given XML String
+     * 
+     * @param content
+     * @param modell
+     * @return
+     */
+    private IEditor openWebFile(String content, ModellHolder modell) {
+        IEditor editor = null;
+        final PNMLImport pr;
+
+        getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
+        IStatusBar[] iSB = new IStatusBar[iVC.length];
+        for (int i = 0; i < iSB.length; i++) {
+            iSB[i] = (IStatusBar) iVC[i];
+        }
+
+        pr = new PNMLImport((ApplicationMediator) getMediator(), iSB);
+
+        if (pr != null) {
+            boolean loadSuccess = false;
+
+            // TODO Generate Thread
+            loadSuccess = pr.runEx(content);
+
+            if (loadSuccess) {
+                editor = pr.getEditor()[pr.getEditor().length - 1];
+                for (int i = 0; i < pr.getEditor().length; i++) {
+                    if (editor instanceof EditorVC) {
+                        ((EditorVC) pr.getEditor()[i]).setDefaultFileType(FileFilterImpl.PNMLFilter);
+                        ((EditorVC) pr.getEditor()[i]).setName(modell.getTitle());
+                        ((EditorVC) pr.getEditor()[i]).setModelid(modell.getModellID());
+                    }
+                    // add Editor
+                    LoggerManager.info(Constants.FILE_LOGGER, "Petrinet loaded from Webfile: " + modell.getModellID()
+                            + " " + modell.getTitle());
+                }
+            } else {
+                String arg[] = { modell.getModellID() + " " + modell.getTitle() };
+                JOptionPane.showMessageDialog(null, Messages.getString("File.Error.FileOpen.Text", arg), Messages
+                        .getString("File.Error.FileOpen.Title"), JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+
+        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+        return editor;
+    }
+
+    /**
+     * TODO: DOCUMENTATION (silenco)
+     */
+    public IEditor openEditor() {
+        JFileChooser jfc;
+        String fn;
+
+        if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
+            fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
+            jfc = new JFileChooser(new File(fn));
+        } else
+            if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+                fn = ConfigurationManager.getConfiguration().getHomedir();
+                jfc = new JFileChooser(new File(fn));
+            } else {
+                jfc = new JFileChooser();
+            }
+        // FileFilters
+        Vector<String> extensions = new Vector<String>();
+
+        extensions.add("pnml");
+        extensions.add("xml");
+        // extensions.add("xmi");
+        jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.OLDPNMLFilter,
+                "Petri Net Markup Language older version (*.pnml,*.xml)", extensions));
+        jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.PNMLFilter,
+                "Petri Net Markup Language (1.3.2) (*.pnml,*.xml)", extensions));
+        // jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.XMIFilter, "UML
+        // (*.xmi)", extensions));
+
+        jfc.showOpenDialog(null);
+
+        if (jfc.getSelectedFile() != null) {
+            return openFile(jfc.getSelectedFile(), ((FileFilterImpl) jfc.getFileFilter()).getFilterType());
+        }
+        return null;
+    }
+
+    /**
+     * For open files outside the jar file
+     * 
+     * @param file
+     * @param filter
+     */
+    private IEditor openFile(File file, int filter) {
+        IEditor editor = null;
+        final PNMLImport pr;
+
+        getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if (filter == FileFilterImpl.PNMLFilter || filter == FileFilterImpl.SAMPLEFilter) {
+
+            IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
+            IStatusBar[] iSB = new IStatusBar[iVC.length];
+            for (int i = 0; i < iSB.length; i++) {
+                iSB[i] = (IStatusBar) iVC[i];
+            }
+
+            pr = new PNMLImport((ApplicationMediator) getMediator(), iSB);
+
+        } else
+            if (filter == FileFilterImpl.OLDPNMLFilter) {
+                pr = new OLDPNMLImport2((ApplicationMediator) getMediator());
+            } else {
+                pr = null;
+            }
+        if (pr != null) {
+            boolean loadSuccess = false;
+            InputStream is;
+
+            // TODO Generate Thread
+            try {
+                is = new FileInputStream(file.getAbsolutePath());
+                loadSuccess = pr.run(is);
+            } catch (FileNotFoundException e) {
+                String jarPath = file.getPath().replace('\\', '/');
+
+                is = this.getClass().getResourceAsStream(jarPath);
+                loadSuccess = pr.run(is);
+
+                /*
+                 * if (!loadSuccess) LoggerManager.error(Constants.FILE_LOGGER, "Could not open InputStream. " + file.getAbsolutePath());
+                 */
+                // }
+            }
+            if (loadSuccess) {
+                editor = pr.getEditor()[pr.getEditor().length - 1];
+                for (int i = 0; i < pr.getEditor().length; i++) {
+                    if (editor instanceof EditorVC) {
+                        ((EditorVC) pr.getEditor()[i]).setDefaultFileType(filter);
+                        ((EditorVC) pr.getEditor()[i]).setName(file.getName());
+                        ((EditorVC) pr.getEditor()[i]).setFilePath(file.getAbsolutePath());
+                    }
+                    // add recent
+                    if (filter == FileFilterImpl.PNMLFilter) {
+                        ConfigurationManager.getConfiguration().addRecentFile(file.getName(), file.getAbsolutePath());
+                    }
+                    if (filter != FileFilterImpl.SAMPLEFilter) {
+                        ConfigurationManager.getConfiguration().setCurrentWorkingdir(file.getAbsolutePath());
+                    }
+                    // add Editor
+                    LoggerManager.info(Constants.FILE_LOGGER, "Petrinet loaded from file: " + file.getAbsolutePath());
+                }
+            } else {
+                ConfigurationManager.getConfiguration().removeRecentFile(file.getName(), file.getAbsolutePath());
+                String arg[] = { file.getAbsolutePath() };
+                JOptionPane.showMessageDialog(null, Messages.getString("File.Error.FileOpen.Text", arg), Messages
+                        .getString("File.Error.FileOpen.Title"), JOptionPane.ERROR_MESSAGE);
+            }
+
+            getMediator().getUi().updateRecentMenu();
+
+            if (ConfigurationManager.getConfiguration().getColorOn() == true) {
+                // new NetColorScheme().update();
+            }
+        }
+
+        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+        return editor;
+    }
 }
