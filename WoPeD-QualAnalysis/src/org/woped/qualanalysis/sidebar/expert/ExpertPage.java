@@ -87,6 +87,7 @@ public class ExpertPage extends JPanel{
 		DefaultMutableTreeNode semanticalInfo = ExpertFactory.getSemanticalInfo();
 		DefaultMutableTreeNode soundnessInfo = ExpertFactory.getSoundnessInfo();
 		DefaultMutableTreeNode tokenInfo = ExpertFactory.getTokenInfo();
+		DefaultMutableTreeNode emptySourcePlacesInfo = ExpertFactory.getEmptySourcePlacesInfo(qualanService);
 		DefaultMutableTreeNode innerTokenInfo = ExpertFactory.getInnerTokenInfo(qualanService);
 		DefaultMutableTreeNode boundednessInfo = ExpertFactory.getBoundednessInfo();
 		DefaultMutableTreeNode unboundedPlacesInfo = ExpertFactory.getUnboundedPlacesInfo(qualanService);
@@ -120,6 +121,7 @@ public class ExpertPage extends JPanel{
 		analysisInfo.add(semanticalInfo);
 			semanticalInfo.add(soundnessInfo);
 				soundnessInfo.add(tokenInfo);
+					tokenInfo.add(emptySourcePlacesInfo);
 					tokenInfo.add(innerTokenInfo);
 				soundnessInfo.add(boundednessInfo);
 					boundednessInfo.add(unboundedPlacesInfo);

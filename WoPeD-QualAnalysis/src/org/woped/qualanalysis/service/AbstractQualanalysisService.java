@@ -41,6 +41,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 	private Set<Set<AbstractElementModel>> tPHandles;
 	private Set<List<AbstractElementModel>> sComponents;
 	private Set<AbstractElementModel> notSCovered;
+	private Set<AbstractElementModel> emptySourcePlaces;
 	private Set<AbstractElementModel> innerTokens;
 	private Set<AbstractElementModel> unboundedPlaces;
 	private Set<AbstractElementModel> deadTransitions;
@@ -72,6 +73,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 		sComponents = getSet(sComponent.getSComponentsIterator());
 		notSCovered = getSet(sComponent.getNotSCoveredIterator());
 		// Soundness
+		emptySourcePlaces = calcEmptySourcePlaces();
 		innerTokens = calcInnerTokens();
 		unboundedPlaces = getSet(soundnessCheck.getUnboundedPlacesIterator());
 		deadTransitions = getSet(soundnessCheck.getDeadTransitionsIterator());
@@ -210,6 +212,14 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 		return notSCovered.iterator();
 	}
 
+	public int getNumEmptySourcePlaces() {
+		return emptySourcePlaces.size();
+	}
+
+	public Iterator<AbstractElementModel> getEmptySourcePlacesIterator() {
+		return emptySourcePlaces.iterator();
+	}
+	
 	public int getNumInnerTokens() {
 		return innerTokens.size();
 	}
@@ -272,17 +282,24 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 		return true;
 	}
 	
-	public boolean isSourceToken(){
-		if(((PlaceModel)getSourcePlacesIterator().next()).getTokenCount() > 0)
-			return true;
-		else
-			return false;	
+	/**
+	 * method to find all source places without a token
+	 * 
+	 * @return a set of AbstractElementModels (= source places) which have no tokens
+	 */
+	public Set<AbstractElementModel> calcEmptySourcePlaces(){
+		Set<AbstractElementModel> emptySourcePlaces = new HashSet<AbstractElementModel>(this.sourcePlaces);
+		for(AbstractElementModel place: this.sourcePlaces){
+			if(((PlaceModel)place).getTokenCount() == 1)
+				emptySourcePlaces.remove(place);
+		}
+		return emptySourcePlaces;
 	}
 	
 	/**
-	 * mehtod to find all inner places (= places not being source) which have one or more tokens
+	 * method to find all inner places (= places not being source) which have one or more tokens
 	 * 
-	 * @return a set of AbstractElementModels (=places) which have wrong tokens
+	 * @return a set of AbstractElementModels (= places) which have wrong tokens
 	 */
 	public Set<AbstractElementModel> calcInnerTokens(){
 		Set<AbstractElementModel> placesNotSource = new HashSet<AbstractElementModel>(this.places);

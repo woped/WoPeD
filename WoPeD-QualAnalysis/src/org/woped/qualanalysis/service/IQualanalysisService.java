@@ -214,6 +214,18 @@ public interface IQualanalysisService {
 
 	/**
 	 * 
+	 * @return the number of source places without a token
+	 */
+	public int getNumEmptySourcePlaces();
+
+	/**
+	 * 
+	 * @return an iterator for all source places without a token
+	 */
+	public Iterator<AbstractElementModel> getEmptySourcePlacesIterator();
+	
+	/**
+	 * 
 	 * @return the number of inner places (= places not being source) with a token
 	 */
 	public int getNumInnerTokens();
@@ -273,14 +285,6 @@ public interface IQualanalysisService {
 	 * @return true if the petrinet is sound otherwise false
 	 */
 	public boolean isSound();
-	
-	/**
-	 * method to check if the source contains a token
-	 * only works proper for a workflownet
-	 * 
-	 * @return true if the source-place contains a token otherwise false
-	 */
-	public boolean isSourceToken();
 
 	/**
 	 * method to get rid of all stuff that is not needed any more <br />

@@ -111,18 +111,18 @@ public class StartPage extends BeginnerPanel {
 
 		// check only for workflow-net
 		if(qualanalysisService.isWorkflowNet()){
-			// display only if there is no token in the source-place
-			if (!qualanalysisService.isSourceToken()) {
-				// add noSourceToken-label
-				JLabel notSourceTokenLabel = new JLabel(Messages.getString("Analysis.Tree.NoSourceToken"));
-				notSourceTokenLabel.setFont(SUBHEADER_FONT);
-				notSourceTokenLabel.setBorder(BOTTOM_BORDER);
-				sgbl.addComponent(analysisPanel, notSourceTokenLabel, 0, 2, 1, 1, 1, 0);
-				// add noSourceToken-icon with toolTip
-				JLabel notSourceTokenIcon = new JLabel(Messages.getImageIcon(WARNING_ICON));
-				notSourceTokenIcon.setBorder(BOTTOM_RIGHT_BORDER);
-				notSourceTokenIcon.setToolTipText(Messages.getString("Analysis.Tree.NoSourceToken.Info"));
-				sgbl.addComponent(analysisPanel, notSourceTokenIcon, 1, 2, 1, 1, 0, 0);
+			// display only if there is no token in the source place
+			if (qualanalysisService.getNumEmptySourcePlaces() > 0) {
+				// add emptySourcePlace-label
+				JLabel emptySourcePlaceLabel = new JLabel(Messages.getString("Analysis.Tree.EmptySourcePlaces"));
+				emptySourcePlaceLabel.setFont(SUBHEADER_FONT);
+				emptySourcePlaceLabel.setBorder(BOTTOM_BORDER);
+				sgbl.addComponent(analysisPanel, emptySourcePlaceLabel, 0, 2, 1, 1, 1, 0);
+				// add emptySourcePlace-icon with toolTip
+				JLabel emptySourcePlaceIcon = new JLabel(Messages.getImageIcon(WARNING_ICON));
+				emptySourcePlaceIcon.setBorder(BOTTOM_RIGHT_BORDER);
+				emptySourcePlaceIcon.setToolTipText(Messages.getString("Analysis.Tree.EmptySourcePlaces.Info"));
+				sgbl.addComponent(analysisPanel, emptySourcePlaceIcon, 1, 2, 1, 1, 0, 0);
 			}
 		}
 
