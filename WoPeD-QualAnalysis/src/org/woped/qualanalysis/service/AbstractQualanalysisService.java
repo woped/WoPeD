@@ -271,6 +271,8 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 	public boolean isSound(){
 		if(!isWorkflowNet())
 			return false;
+		if(getNumEmptySourcePlaces() != 0)
+			return false;
 		if(getNumInnerTokens() != 0)
 			return false;
 		if(getNumUnboundedPlaces() != 0)
@@ -290,7 +292,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 	public Set<AbstractElementModel> calcEmptySourcePlaces(){
 		Set<AbstractElementModel> emptySourcePlaces = new HashSet<AbstractElementModel>(this.sourcePlaces);
 		for(AbstractElementModel place: this.sourcePlaces){
-			if(((PlaceModel)place).getTokenCount() == 1)
+			if(((PlaceModel)place).getTokenCount() > 0)
 				emptySourcePlaces.remove(place);
 		}
 		return emptySourcePlaces;
