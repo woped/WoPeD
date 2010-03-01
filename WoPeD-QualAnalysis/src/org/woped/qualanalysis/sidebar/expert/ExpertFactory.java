@@ -373,13 +373,13 @@ public class ExpertFactory extends DefaultMutableTreeNode{
 	
 	/**
 	 * 
-	 * @return node containing information about source places without tokens
-	 * (source places should contain a token)
+	 * @return node containing information about source places which contain less or more than one token
+	 * (source places should contain one token)
 	 */
 	protected static DefaultMutableTreeNode getEmptySourcePlacesInfo(IQualanalysisService qualanService) {
-		return new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumEmptySourcePlaces") + ": "
-				+ qualanService.getNumInnerTokens(), qualanService.getEmptySourcePlacesIterator()) {
-			// source places without tokens are not good and should trigger an error
+		return new NodeGroupNetInfo(Messages.getString("Analysis.Tree.NumWrongSourcePlaceTokens") + ": "
+				+ qualanService.getNumWrongSourcePlaceTokens(), qualanService.getWrongSourcePlaceTokensIterator()) {
+			// source places which contain less or more than one token are not good and should trigger an error
 			public int getInfoState() {
 				if (getChildCount() > 0)
 					return InfoStateERROR;

@@ -73,7 +73,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 		sComponents = getSet(sComponent.getSComponentsIterator());
 		notSCovered = getSet(sComponent.getNotSCoveredIterator());
 		// Soundness
-		emptySourcePlaces = calcEmptySourcePlaces();
+		emptySourcePlaces = calcWrongSourcePlaceTokens();
 		innerTokens = calcInnerTokens();
 		unboundedPlaces = getSet(soundnessCheck.getUnboundedPlacesIterator());
 		deadTransitions = getSet(soundnessCheck.getDeadTransitionsIterator());
@@ -212,11 +212,11 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 		return notSCovered.iterator();
 	}
 
-	public int getNumEmptySourcePlaces() {
+	public int getNumWrongSourcePlaceTokens() {
 		return emptySourcePlaces.size();
 	}
 
-	public Iterator<AbstractElementModel> getEmptySourcePlacesIterator() {
+	public Iterator<AbstractElementModel> getWrongSourcePlaceTokensIterator() {
 		return emptySourcePlaces.iterator();
 	}
 	
@@ -271,7 +271,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 	public boolean isSound(){
 		if(!isWorkflowNet())
 			return false;
-		if(getNumEmptySourcePlaces() != 0)
+		if(getNumWrongSourcePlaceTokens() != 0)
 			return false;
 		if(getNumInnerTokens() != 0)
 			return false;
@@ -285,14 +285,14 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
 	}
 	
 	/**
-	 * method to find all source places without a token
+	 * method to find all source places which contain less or more than one token
 	 * 
-	 * @return a set of AbstractElementModels (= source places) which have no tokens
+	 * @return a set of AbstractElementModels (= source places) which contain less or more than one token
 	 */
-	public Set<AbstractElementModel> calcEmptySourcePlaces(){
+	public Set<AbstractElementModel> calcWrongSourcePlaceTokens(){
 		Set<AbstractElementModel> emptySourcePlaces = new HashSet<AbstractElementModel>(this.sourcePlaces);
 		for(AbstractElementModel place: this.sourcePlaces){
-			if(((PlaceModel)place).getTokenCount() > 0)
+			if(((PlaceModel)place).getTokenCount() == 1)
 				emptySourcePlaces.remove(place);
 		}
 		return emptySourcePlaces;

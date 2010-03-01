@@ -214,15 +214,15 @@ public interface IQualanalysisService {
 
 	/**
 	 * 
-	 * @return the number of source places without a token
+	 * @return the number of source places which contain less or more than one token
 	 */
-	public int getNumEmptySourcePlaces();
+	public int getNumWrongSourcePlaceTokens();
 
 	/**
 	 * 
-	 * @return an iterator for all source places without a token
+	 * @return an iterator for all source places which contain less or more than one token
 	 */
-	public Iterator<AbstractElementModel> getEmptySourcePlacesIterator();
+	public Iterator<AbstractElementModel> getWrongSourcePlaceTokensIterator();
 	
 	/**
 	 * 
