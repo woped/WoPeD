@@ -20,7 +20,7 @@ public class WellstructurednessPage extends BeginnerPanel {
 				previous,
 				sideBar,
 				Messages
-						.getString("AnalysisSideBar.Beginner.WellstructurednessAnalysis"));
+						.getString(PREFIX + "WellStructurednessAnalysis"));
 		numPTHandles = qualanalysisService.getNumPTHandles();
 
 		numTPHandles = qualanalysisService.getNumTPHandles();
@@ -33,17 +33,17 @@ public class WellstructurednessPage extends BeginnerPanel {
 	@Override
 	public void addComponents() {
 		if (numPTHandles != 0) {
-			createEntry("Analysis.Tree.NumPTHandles", qualanalysisService
+			createEntry(PREFIX + "NumPTHandles", qualanalysisService
 					.getPTHandlesIterator(), numPTHandles,
-					"AnalysisSideBar.Beginner.Help.PTHandles",
-					"AnalysisSideBar.Beginner.Example.PTHandles");
+					PREFIX_HELP + "PTHandles",
+					PREFIX_EXAMPLE + "PTHandles");
 		}
 
 		if (numTPHandles != 0) {
-			createEntry("Analysis.Tree.NumTPHandles", qualanalysisService
+			createEntry(PREFIX + "NumTPHandles", qualanalysisService
 					.getTPHandlesIterator(), numTPHandles,
-					"AnalysisSideBar.Beginner.Help.TPHandles",
-					"AnalysisSideBar.Beginner.Example.TPHandles");
+					PREFIX_HELP + "TPHandles",
+					PREFIX_EXAMPLE + "TPHandles");
 		}
 		createEmptyEntry();
 	}

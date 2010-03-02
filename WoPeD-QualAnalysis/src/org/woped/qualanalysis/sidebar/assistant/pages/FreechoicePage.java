@@ -17,7 +17,7 @@ public class FreechoicePage extends BeginnerPanel {
 
 	public FreechoicePage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages
-				.getString("AnalysisSideBar.Beginner.FreeChoiceAnalysis"));
+				.getString(PREFIX + "FreeChoiceViolations"));
 
 		numFreeChoiceViolations = qualanalysisService
 				.getNumFreeChoiceViolations();
@@ -29,10 +29,10 @@ public class FreechoicePage extends BeginnerPanel {
 
 	@Override
 	public void addComponents() {
-		createEntry("Analysis.Tree.NumFreechoiceViolations",
+		createEntry(PREFIX + "NumFreeChoiceViolations",
 				qualanalysisService.getFreeChoiceViolationsIterator(),
 				numFreeChoiceViolations,
-				"AnalysisSideBar.Beginner.Help.FreeChoiceViolations");
+				PREFIX_HELP + "FreeChoiceViolations");
 		createEmptyEntry();
 	}
 }

@@ -82,15 +82,15 @@ public interface IQualanalysisService {
 
 	/**
 	 * 
-	 * @return the number of misused operators
+	 * @return the number of wrongly used operators
 	 */
-	public int getNumMisusedOperators();
+	public int getNumWronglyUsedOperators();
 
 	/**
 	 * 
-	 * @return an iterator of all misused operators
+	 * @return an iterator of all wrongly used operators
 	 */
-	public Iterator<AbstractElementModel> getMisusedOperatorsIterator();
+	public Iterator<AbstractElementModel> getWronglyUsedOperatorsIterator();
 
 	/**
 	 * 
@@ -211,30 +211,18 @@ public interface IQualanalysisService {
 	 * @return an iterator of all not-SCovered
 	 */
 	public Iterator<AbstractElementModel> getNotSCoveredIterator();
-
-	/**
-	 * 
-	 * @return the number of source places which contain less or more than one token
-	 */
-	public int getNumWrongSourcePlaceTokens();
-
-	/**
-	 * 
-	 * @return an iterator for all source places which contain less or more than one token
-	 */
-	public Iterator<AbstractElementModel> getWrongSourcePlaceTokensIterator();
 	
 	/**
 	 * 
-	 * @return the number of inner places (= places not being source) with a token
+	 * @return the number places with wrong token count in initial marking
 	 */
-	public int getNumInnerTokens();
+	public int getNumWronglyMarkedPlaces();
 
 	/**
 	 * 
-	 * @return an iterator for all inner places (= places not being source) with a token
+	 * @return an iterator for places with wrong token count in initial marking
 	 */
-	public Iterator<AbstractElementModel> getInnerTokensIterator();
+	public Iterator<AbstractElementModel> getWronglyMarkedPlacesIterator();
 	
 	/**
 	 * 

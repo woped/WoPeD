@@ -24,10 +24,8 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public class StartPage extends BeginnerPanel {
 
-	private static final String COLON = ":";
-
 	public StartPage(SideBar sideBar) {
-		super(null, sideBar, Messages.getString("AnalysisSideBar.Beginner.Startpage"));
+		super(null, sideBar, Messages.getString(PREFIX_BEGINNER + "Startpage"));
 
 		SimpleGridBagLayout sgbl = new SimpleGridBagLayout();
 
@@ -41,7 +39,7 @@ public class StartPage extends BeginnerPanel {
 		 */
 
 		// add workflow-label
-		JLabel workflowLabel = new JLabel(Messages.getString("AnalysisSideBar.Beginner.WorkflowAnalysis"));
+		JLabel workflowLabel = new JLabel(Messages.getString(PREFIX + "WorkflowAnalysis"));
 		workflowLabel.setFont(SUBHEADER_FONT);
 		workflowLabel.setBorder(BOTTOM_BORDER);
 		sgbl.addComponent(analysisPanel, workflowLabel, 0, 0, 1, 1, 1, 0);
@@ -74,7 +72,7 @@ public class StartPage extends BeginnerPanel {
 		if (qualanalysisService.isWorkflowNet()) {
 
 			// add soundness-label
-			JLabel soundnessLabel = new JLabel(Messages.getString("AnalysisSideBar.Beginner.SoundnessAnalysis"));
+			JLabel soundnessLabel = new JLabel(Messages.getString(PREFIX + "SoundnessAnalysis"));
 			soundnessLabel.setFont(SUBHEADER_FONT);
 			soundnessLabel.setBorder(BOTTOM_BORDER);
 			sgbl.addComponent(analysisPanel, soundnessLabel, 0, 1, 1, 1, 1, 1);
@@ -106,23 +104,23 @@ public class StartPage extends BeginnerPanel {
 		}
 
 		/*
-		 * no token in source-place
+		 * token-mistake in initial marking
 		 */
 
 		// check only for workflow-net
 		if(qualanalysisService.isWorkflowNet()){
-			// display only if there are less or more than one toke in the source place
-			if (qualanalysisService.getNumWrongSourcePlaceTokens() > 0) {
-				// add wrongSourcePlaceTokens-label
-				JLabel wrongSourcePlaceTokensLabel = new JLabel(Messages.getString("Analysis.Tree.WrongSourcePlaceTokens"));
-				wrongSourcePlaceTokensLabel.setFont(SUBHEADER_FONT);
-				wrongSourcePlaceTokensLabel.setBorder(BOTTOM_BORDER);
-				sgbl.addComponent(analysisPanel, wrongSourcePlaceTokensLabel, 0, 2, 1, 1, 1, 0);
-				// add emptySourcePlace-icon with toolTip
-				JLabel wrongSourcePlaceTokensIcon = new JLabel(Messages.getImageIcon(WARNING_ICON));
-				wrongSourcePlaceTokensIcon.setBorder(BOTTOM_RIGHT_BORDER);
-				wrongSourcePlaceTokensIcon.setToolTipText(Messages.getString("Analysis.Tree.WrongSourcePlaceTokens.Info"));
-				sgbl.addComponent(analysisPanel, wrongSourcePlaceTokensIcon, 1, 2, 1, 1, 0, 0);
+			// display only if there is a token mistake in initial marking
+			if (qualanalysisService.getNumWronglyMarkedPlaces() > 0) {
+				// add tokenMistake-label
+				JLabel tokenMistakeLabel = new JLabel(Messages.getString(PREFIX_BEGINNER + "InitialMarkingMistake"));
+				tokenMistakeLabel.setFont(SUBHEADER_FONT);
+				tokenMistakeLabel.setBorder(BOTTOM_BORDER);
+				sgbl.addComponent(analysisPanel, tokenMistakeLabel, 0, 2, 1, 1, 1, 0);
+				// add tokenMistake-icon with toolTip
+				JLabel tokenMistakeIcon = new JLabel(Messages.getImageIcon(WARNING_ICON));
+				tokenMistakeIcon.setBorder(BOTTOM_RIGHT_BORDER);
+				tokenMistakeIcon.setToolTipText(Messages.getString(PREFIX_BEGINNER + "InitialMarkingMistake.Info"));
+				sgbl.addComponent(analysisPanel, tokenMistakeIcon, 1, 2, 1, 1, 0, 0);
 			}
 		}
 
@@ -144,13 +142,13 @@ public class StartPage extends BeginnerPanel {
 		infoPanel.setLayout(sgbl);
 
 		// header
-		JLabel netStatistic = new JLabel(Messages.getString("AnalysisSideBar.Beginner.Netstatistics"));
+		JLabel netStatistic = new JLabel(Messages.getString(PREFIX + "NetStatistics"));
 		netStatistic.setFont(HEADER_FONT);
 		netStatistic.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
 		sgbl.addComponent(infoPanel, netStatistic, 0, 0, 1, 1, 1, 0);
 
 		// places
-		clickLabel = new ClickLabel(Messages.getString("Analysis.Tree.NumPlaces") + COLON, qualanalysisService
+		clickLabel = new ClickLabel(Messages.getString(PREFIX + "NumPlaces") + COLON, qualanalysisService
 				.getPlacesIterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 1, 1, 1, 1, 0);
@@ -160,7 +158,7 @@ public class StartPage extends BeginnerPanel {
 		sgbl.addComponent(infoPanel, count, 1, 1, 1, 1, 0, 0);
 
 		// transitions
-		clickLabel = new ClickLabel(Messages.getString("Analysis.Tree.NumTransitions") + COLON, qualanalysisService
+		clickLabel = new ClickLabel(Messages.getString(PREFIX + "NumTransitions") + COLON, qualanalysisService
 				.getTransitionsIterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 2, 1, 1, 1, 0);
@@ -170,7 +168,7 @@ public class StartPage extends BeginnerPanel {
 		sgbl.addComponent(infoPanel, count, 1, 2, 1, 1, 0, 0);
 
 		// operators
-		clickLabel = new ClickLabel(SUB_POINT + Messages.getString("Analysis.Tree.NumOperators") + COLON,
+		clickLabel = new ClickLabel(SUB_POINT + Messages.getString(PREFIX + "NumOperators") + COLON,
 				qualanalysisService.getOperatorsIterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 3, 1, 1, 1, 0);
@@ -180,7 +178,7 @@ public class StartPage extends BeginnerPanel {
 		sgbl.addComponent(infoPanel, count, 1, 3, 1, 1, 0, 0);
 
 		// subprocesses
-		clickLabel = new ClickLabel(SUB_POINT + Messages.getString("Analysis.Tree.NumSubprocesses") + COLON,
+		clickLabel = new ClickLabel(SUB_POINT + Messages.getString(PREFIX + "NumSubprocesses") + COLON,
 				qualanalysisService.getSubprocessesIterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 4, 1, 1, 1, 0);
@@ -190,7 +188,7 @@ public class StartPage extends BeginnerPanel {
 		sgbl.addComponent(infoPanel, count, 1, 4, 1, 1, 0, 0);
 
 		// arcs
-		JLabel arcLabel = new JLabel(Messages.getString("Analysis.Tree.NumArcs") + COLON);
+		JLabel arcLabel = new JLabel(Messages.getString(PREFIX + "NumArcs") + COLON);
 		arcLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, arcLabel, 0, 5, 1, 1, 1, 0);
 

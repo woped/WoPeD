@@ -30,12 +30,12 @@ public abstract class CloseableTabbedPane extends JTabbedPane implements
 	public void paint(Graphics g) {
 		super.paint(g);
 		closeRect = new Rectangle(this.getWidth() - 20, 3, 16, 16);
-		g.drawImage(Messages.getImageSource("AnalysisSideBar.Beginner.Cancel"),
+		g.drawImage(Messages.getImageSource("AnalysisSideBar.Cancel"),
 				this.getWidth() - 20, 3, this);
 		if (!getAutoRefreshStatus()) {
 			refreshRect = new Rectangle(this.getWidth() - 40, 3, 16, 16);
 			g.drawImage(Messages
-					.getImageSource("AnalysisSideBar.Beginner.Refresh"), this
+					.getImageSource("AnalysisSideBar.Refresh"), this
 					.getWidth() - 40, 3, this);
 		}
 	}

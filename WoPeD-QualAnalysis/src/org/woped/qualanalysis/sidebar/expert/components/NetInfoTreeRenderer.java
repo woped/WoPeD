@@ -15,9 +15,9 @@ public class NetInfoTreeRenderer extends DefaultTreeCellRenderer {
 	Icon iconERROR = null;
 
 	public NetInfoTreeRenderer() {
-		iconOK = Messages.getImageIcon("Analysis.Tree.Okay");
-		iconInfo = Messages.getImageIcon("Analysis.Tree.Info");
-		iconERROR = Messages.getImageIcon("Analysis.Tree.Warning");
+		iconOK = Messages.getImageIcon("AnalysisSideBar.Expert.Okay");
+		iconInfo = Messages.getImageIcon("AnalysisSideBar.Expert.Info");
+		iconERROR = Messages.getImageIcon("AnalysisSideBar.Expert.Warning");
 	}
 
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded,

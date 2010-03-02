@@ -29,7 +29,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
     private Set<AbstractElementModel> subprocesses;
     private int numArcs;
     private Set<Set<AbstractElementModel>> freeChoiceViolations;
-    private Set<AbstractElementModel> misusedOperators;
+    private Set<AbstractElementModel> wronglyUsedOperators;
     private Set<AbstractElementModel> notConnectedNodes;
     private Set<AbstractElementModel> notStronglyConnectedNodes;
     private Set<AbstractElementModel> sourcePlaces;
@@ -40,8 +40,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
     private Set<Set<AbstractElementModel>> tPHandles;
     private Set<List<AbstractElementModel>> sComponents;
     private Set<AbstractElementModel> notSCovered;
-    private Set<AbstractElementModel> emptySourcePlaces;
-    private Set<AbstractElementModel> innerTokens;
+    private Set<AbstractElementModel> wronglyMarkedPlaces;
     private Set<AbstractElementModel> unboundedPlaces;
     private Set<AbstractElementModel> deadTransitions;
     private Set<AbstractElementModel> nonLiveTransitions;
@@ -58,7 +57,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         subprocesses = getSet(sA.getSubprocessesIterator());
         numArcs = sA.getNumArcs();
         freeChoiceViolations = getSet(sA.getFreeChoiceViolations());
-        misusedOperators = getSet(sA.getMisusedOperatorsIterator());
+        wronglyUsedOperators = getSet(sA.getMisusedOperatorsIterator());
         notConnectedNodes = getSet(sA.getNotConnectedNodes());
         notStronglyConnectedNodes = getSet(sA.getNotStronglyConnectedNodes());
         sourcePlaces = getSet(sA.getSourcePlacesIterator());
@@ -71,8 +70,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         sComponents = getSet(sComponent.getSComponentsIterator());
         notSCovered = getSet(sComponent.getNotSCoveredIterator());
         // Soundness
-        emptySourcePlaces = calcWrongSourcePlaceTokens();
-        innerTokens = calcInnerTokens();
+        wronglyMarkedPlaces = calcWronglyMarkedPlaces();
         unboundedPlaces = getSet(soundnessCheck.getUnboundedPlacesIterator());
         deadTransitions = getSet(soundnessCheck.getDeadTransitionsIterator());
         nonLiveTransitions = getSet(soundnessCheck.getNonLiveTransitionsIterator());
@@ -122,12 +120,12 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         return freeChoiceViolations.iterator();
     }
 
-    public int getNumMisusedOperators() {
-        return misusedOperators.size();
+    public int getNumWronglyUsedOperators() {
+        return wronglyUsedOperators.size();
     }
 
-    public Iterator<AbstractElementModel> getMisusedOperatorsIterator() {
-        return misusedOperators.iterator();
+    public Iterator<AbstractElementModel> getWronglyUsedOperatorsIterator() {
+        return wronglyUsedOperators.iterator();
     }
 
     public int getNumNotConnectedNodes() {
@@ -210,20 +208,12 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         return notSCovered.iterator();
     }
 
-    public int getNumWrongSourcePlaceTokens() {
-        return emptySourcePlaces.size();
+    public int getNumWronglyMarkedPlaces() {
+        return wronglyMarkedPlaces.size();
     }
 
-    public Iterator<AbstractElementModel> getWrongSourcePlaceTokensIterator() {
-        return emptySourcePlaces.iterator();
-    }
-
-    public int getNumInnerTokens() {
-        return innerTokens.size();
-    }
-
-    public Iterator<AbstractElementModel> getInnerTokensIterator() {
-        return innerTokens.iterator();
+    public Iterator<AbstractElementModel> getWronglyMarkedPlacesIterator() {
+        return wronglyMarkedPlaces.iterator();
     }
 
     public int getNumUnboundedPlaces() {
@@ -284,10 +274,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         if (!isWorkflowNet()) {
             return false;
         }
-        if (getNumWrongSourcePlaceTokens() != 0) {
-            return false;
-        }
-        if (getNumInnerTokens() != 0) {
+        if (getNumWronglyMarkedPlaces() != 0) {
             return false;
         }
         if (getNumUnboundedPlaces() != 0) {
@@ -301,36 +288,29 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         }
         return true;
     }
-
+    
     /**
-     * method to find all source places which contain less or more than one token
+     * method to find places with wrong token count in initial marking
      * 
-     * @return a set of AbstractElementModels (= source places) which contain less or more than one token
+     * @return a set of AbstractElementModels (= places) which have wrong token count
      */
-    public Set<AbstractElementModel> calcWrongSourcePlaceTokens() {
-        Set<AbstractElementModel> emptySourcePlaces = new HashSet<AbstractElementModel>(this.sourcePlaces);
-        for (AbstractElementModel place : this.sourcePlaces) {
-            if (((PlaceModel) place).getTokenCount() == 1) {
-                emptySourcePlaces.remove(place);
-            }
-        }
-        return emptySourcePlaces;
-    }
-
-    /**
-     * method to find all inner places (= places not being source) which have one or more tokens
-     * 
-     * @return a set of AbstractElementModels (= places) which have wrong tokens
-     */
-    public Set<AbstractElementModel> calcInnerTokens() {
-        Set<AbstractElementModel> placesNotSource = new HashSet<AbstractElementModel>(this.places);
+    private Set<AbstractElementModel> calcWronglyMarkedPlaces(){
+    	Set<AbstractElementModel> wronglyMarkedPlaces = new HashSet<AbstractElementModel>();
+    	Set<AbstractElementModel> placesNotSource = new HashSet<AbstractElementModel>(this.places);
         placesNotSource.removeAll(this.sourcePlaces);
-        for (AbstractElementModel place : this.places) {
-            if (((PlaceModel) place).getTokenCount() == 0) {
-                placesNotSource.remove(place);
+        // check if source place has one token
+    	for (AbstractElementModel place : this.sourcePlaces) {
+            if (((PlaceModel) place).getTokenCount() != 1) {
+            	wronglyMarkedPlaces.add(place);
             }
         }
-        return placesNotSource;
+    	// check if any other place has a token
+    	for (AbstractElementModel place : placesNotSource) {
+            if (((PlaceModel) place).getTokenCount() != 0) {
+            	wronglyMarkedPlaces.add(place);
+            }
+        }
+    	return wronglyMarkedPlaces;
     }
 
     /**

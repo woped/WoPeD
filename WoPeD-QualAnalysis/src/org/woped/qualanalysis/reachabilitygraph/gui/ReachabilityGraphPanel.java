@@ -89,7 +89,7 @@ public class ReachabilityGraphPanel extends JPanel {
         southPanel.add(legendInfo);
         southPanel.add(legendToggleButton);
         southPanel.add(bottomInfo = new JLabel(""));
-        southPanel.add(outOfSyncInfo = new JLabel(Messages.getImageIcon("Analysis.Tree.Warning")));
+        southPanel.add(outOfSyncInfo = new JLabel(Messages.getImageIcon("QuanlAna.ReachabilityGraph.GraphOutOfSync")));
         outOfSyncInfo.setToolTipText(Messages.getString("QuanlAna.ReachabilityGraph.GraphOutOfSync"));
         rgp_jgraph = new ReachabilityJGraph();
         rgp_topPanel = new JScrollPane();

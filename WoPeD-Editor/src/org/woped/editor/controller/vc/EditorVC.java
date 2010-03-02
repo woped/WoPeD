@@ -2238,7 +2238,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             boolean autoRefreshStatus = true;
             analysisSideBar = new SideBar(editor, mediator, autoRefreshStatus);
             JPanel bottomPanel = new JPanel(new BorderLayout());
-            autoRefresh = new JCheckBox(Messages.getString("AnalysisSideBar.Autorefresh"));
+            autoRefresh = new JCheckBox(Messages.getString("AnalysisSideBar.Footer.Autorefresh"));
             autoRefresh.setSelected(autoRefreshStatus);
             autoRefresh.addActionListener(new ActionListener() {
 
@@ -2250,7 +2250,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             });
             bottomPanel.add(autoRefresh, BorderLayout.CENTER);
             // if t star checkbox is selected show t star in editor (only if net is a workflow net)
-            // tStarCheckBox = new JCheckBox(Messages.getString("AnalysisSideBar.TStar"));
+            // tStarCheckBox = new JCheckBox(Messages.getString("AnalysisSideBar.Footer.TStar"));
             // if(!analysisSideBar.getWorkflowStatus())
             // tStarCheckBox.setEnabled(false);
             // tStarCheckBox.addActionListener(new ActionListener() {
@@ -2275,6 +2275,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             this.add(mainsplitPaneWithAnalysisBar);
             analysisBarVisible = true;
             this.revalidate();
+            //editorSize.resize(); //TODO fix resize() then use it here
             mainsplitPaneWithAnalysisBar.setDividerLocation((this.getWidth() - editorSize.SIDEBAR_WIDTH));
             mainsplitPaneWithAnalysisBar.setResizeWeight(1);
         }
@@ -2286,6 +2287,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public void autoRefreshAnalysisBar() {
         if (analysisBarVisible && autoRefresh.isSelected()) {
             analysisSideBar.refresh();
+            //editorSize.resize(); //TODO fix resize() then use it here
         }
     }
 
@@ -2301,6 +2303,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             this.add(m_mainSplitPane);
             analysisBarVisible = false;
             this.revalidate();
+            //editorSize.resize(); //TODO fix resize() then use it here
         }
     }
 

@@ -26,7 +26,7 @@ public class SoundnessPage extends BeginnerPanel {
 
 	public SoundnessPage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages
-				.getString("AnalysisSideBar.Beginner.SoundnessAnalysis"));
+				.getString(PREFIX + "SoundnessAnalysis"));
 
 		tokenPage = new TokenPage(this, sideBar);
 		tokenDetailsListener = new DetailsMouseListener(sideBar,
@@ -68,29 +68,28 @@ public class SoundnessPage extends BeginnerPanel {
 	public void addComponents() {
 		// inner-tokens
 
-		createAnalysisEntry("AnalysisSideBar.Beginner.TokenAnalysis",
+		createAnalysisEntry(PREFIX + "InitialMarkingAnalysis",
 				tokenDetailsListener, tokenPage.getStatus());
 		
 		// boundedness
 
-		createAnalysisEntry("AnalysisSideBar.Beginner.BoundednessAnalysis",
+		createAnalysisEntry(PREFIX + "BoundednessAnalysis",
 				boundDetailsListener, boundednessPage.getStatus());
 
 		// liveness
 
-		createAnalysisEntry("AnalysisSideBar.Beginner.LivenessAnalysis",
+		createAnalysisEntry(PREFIX + "LivenessAnalysis",
 				liveDetailsListener, livenessPage.getStatus());
 
 		// wellstructuredness
 
-		createAnalysisEntry(
-				"AnalysisSideBar.Beginner.WellstructurednessAnalysis",
+		createAnalysisEntry(PREFIX + "WellStructurednessAnalysis",
 				wellstructuredDetailsListener, wellstructurednessPage
 						.getStatus());
 
 		// freechoice
 
-		createAnalysisEntry("AnalysisSideBar.Beginner.FreeChoiceAnalysis",
+		createAnalysisEntry(PREFIX_BEGINNER + "FreeChoiceAnalysis",
 				freechoiceDetailsListener, freechoicePage.getStatus());
 
 		createEmptyEntry();

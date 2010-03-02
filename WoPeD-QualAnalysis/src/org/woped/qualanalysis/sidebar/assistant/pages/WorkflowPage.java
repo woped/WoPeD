@@ -13,28 +13,26 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public class WorkflowPage extends BeginnerPanel {
 
-	private int numSourcePlaces, numSinkPlaces, numSourceTrans, numSinkTrans,
-			numIsolatedNodes, numNotStronglyConnectedNodes;
+	private int numSourcePlaces, numSinkPlaces, numSourceTransitions, numSinkTransitions,
+			numNotConnectedNodes, numNotStronglyConnectedNodes;
 
 	public WorkflowPage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages
-				.getString("AnalysisSideBar.Beginner.WorkflowAnalysis"));
+				.getString(PREFIX + "WorkflowAnalysis"));
 		numSourcePlaces = qualanalysisService.getNumSourcePlaces();
 
 		numSinkPlaces = qualanalysisService.getNumSinkPlaces();
 
-		numSourceTrans = qualanalysisService.getNumSourceTransitions();
+		numSourceTransitions = qualanalysisService.getNumSourceTransitions();
 
-		numSinkTrans = qualanalysisService.getNumSinkTransitions();
+		numSinkTransitions = qualanalysisService.getNumSinkTransitions();
 
-		numIsolatedNodes = qualanalysisService.getNumNotConnectedNodes();
+		numNotConnectedNodes = qualanalysisService.getNumNotConnectedNodes();
 
 		numNotStronglyConnectedNodes = qualanalysisService
 				.getNumNotStronglyConnectedNodes();
 
-		if (numSourcePlaces != 1 || numSinkPlaces != 1 || numSourceTrans != 0
-				|| numSinkTrans != 0 || numIsolatedNodes != 0
-				|| numNotStronglyConnectedNodes != 0) {
+		if (!qualanalysisService.isWorkflowNet()) {
 			status = false;
 		}
 	}
@@ -43,50 +41,50 @@ public class WorkflowPage extends BeginnerPanel {
 	public void addComponents() {
 		// Number of Source Places
 		if (numSourcePlaces != 1) {
-			createEntry("Analysis.Tree.NumSourcePlaces", qualanalysisService
+			createEntry(PREFIX + "NumSourcePlaces", qualanalysisService
 					.getSourcePlacesIterator(), numSourcePlaces,
-					"AnalysisSideBar.Beginner.Help.Sources",
-					"AnalysisSideBar.Beginner.Example.Source");
+					PREFIX_HELP + "SourcePlaces",
+					PREFIX_EXAMPLE + "SourcePlaces");
 		}
 
 		// Number of Sink Places
 		if (numSinkPlaces != 1) {
-			createEntry("Analysis.Tree.NumSinkPlaces", qualanalysisService
+			createEntry(PREFIX + "NumSinkPlaces", qualanalysisService
 					.getSinkPlacesIterator(), numSinkPlaces,
-					"AnalysisSideBar.Beginner.Help.Sinks",
-					"AnalysisSideBar.Beginner.Example.Sink");
+					PREFIX_HELP + "SinkPlaces",
+					PREFIX_EXAMPLE + "SinkPlaces");
 		}
 
 		// Number of Source Transitions
-		if (numSourceTrans != 0) {
-			createEntry("Analysis.Tree.NumSourceTrans", qualanalysisService
-					.getSourceTransitionsIterator(), numSourceTrans,
-					"AnalysisSideBar.Beginner.Help.SourceTrans",
-					"AnalysisSideBar.Beginner.Example.SourceTrans");
+		if (numSourceTransitions != 0) {
+			createEntry(PREFIX + "NumSourceTransitions", qualanalysisService
+					.getSourceTransitionsIterator(), numSourceTransitions,
+					PREFIX_HELP + "SourceTransitions",
+					PREFIX_EXAMPLE + "SourceTransitions");
 		}
 
 		// Number of Sink Transitions
-		if (numSinkTrans != 0) {
-			createEntry("Analysis.Tree.NumSinkTrans", qualanalysisService
-					.getSinkTransitionsIterator(), numSinkTrans,
-					"AnalysisSideBar.Beginner.Help.SinkTrans",
-					"AnalysisSideBar.Beginner.Example.SinkTrans");
+		if (numSinkTransitions != 0) {
+			createEntry(PREFIX + "NumSinkTransitions", qualanalysisService
+					.getSinkTransitionsIterator(), numSinkTransitions,
+					PREFIX_HELP + "SinkTransitions",
+					PREFIX_EXAMPLE + "SinkTransitions");
 		}
 
 		// Number of Isolated nodes
-		if (numIsolatedNodes != 0) {
-			createEntry("Analysis.Tree.NumUnconnectedNodes",
+		if (numNotConnectedNodes != 0) {
+			createEntry(PREFIX + "NumUnconnectedNodes",
 					qualanalysisService.getNotConnectedNodesIterator(),
-					numIsolatedNodes,
-					"AnalysisSideBar.Beginner.Help.NotConnectedNodes");
+					numNotConnectedNodes,
+					PREFIX_HELP + "UnconnectedNodes");
 		}
 
 		// Number of not strongly connected nodes
 		if (numNotStronglyConnectedNodes != 0) {
-			createEntry("Analysis.Tree.NumNotStronglyConnectedNodes",
+			createEntry(PREFIX + "NumNotStronglyConnectedNodes",
 					qualanalysisService.getNotStronglyConnectedNodesIterator(),
 					numNotStronglyConnectedNodes,
-					"AnalysisSideBar.Beginner.Help.NotStronglyConnectedNodes");
+					PREFIX_HELP + "NotStronglyConnectedNodes");
 		}
 
 		createEmptyEntry();

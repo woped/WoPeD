@@ -59,8 +59,8 @@ public class SideBar extends CloseableTabbedPane {
         qualanService = getQualanalysisService();
         addComponents();
         // add the container to the sidebar
-        this.addTab(Messages.getString("AnalysisSidebar.Tab.Beginner"), beginnerContainer);
-        this.addTab(Messages.getString("AnalysisSidebar.Tab.Expert"), expertContainer);
+        this.addTab(Messages.getString("AnalysisSidebar.Header.Beginner"), beginnerContainer);
+        this.addTab(Messages.getString("AnalysisSidebar.Header.Expert"), expertContainer);
         // add MouseLstener for close icon and refresh icon
         this.addMouseListener(this);
     }

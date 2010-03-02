@@ -720,7 +720,7 @@ public class StructuralAnalysis {
  		// Detect all PT handles in the short-circuited net 
 		LowLevelNet myNet = CreateFlowNet(m_places, transitionsWithTStar);
 		Set<Set<ClusterElement>> handleRun = 
-			getHandlePairs("PT",myNet, transitionsWithTStar, m_places, false);
+			getHandlePairs("TP",myNet, transitionsWithTStar, m_places, false);
 		
 		for (Iterator<Set<ClusterElement>> i=handleRun.iterator();i.hasNext();)
 		{

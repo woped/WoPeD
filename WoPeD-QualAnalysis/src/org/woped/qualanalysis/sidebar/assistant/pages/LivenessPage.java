@@ -22,7 +22,7 @@ public class LivenessPage extends BeginnerPanel {
 	 */
 	public LivenessPage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages
-				.getString("AnalysisSideBar.Beginner.LivenessAnalysis"));
+				.getString(PREFIX + "LivenessAnalysis"));
 
 		numDeadTransitions = qualanalysisService
 				.getNumDeadTransitions();
@@ -38,20 +38,18 @@ public class LivenessPage extends BeginnerPanel {
 	@Override
 	public void addComponents() {
 		if (numDeadTransitions != 0) {
-			createEntry("Analysis.Tree.NumDeadTrans",
-					qualanalysisService
-					.getDeadTransitionsIterator(),
+			createEntry(PREFIX + "NumDeadTransitions",
+					qualanalysisService.getDeadTransitionsIterator(),
 					numDeadTransitions,
-					"AnalysisSideBar.Beginner.Help.DeadTransitions",
-			"AnalysisSideBar.Beginner.Example.DeadTrans");
+					PREFIX_HELP + "DeadTransitions",
+					PREFIX_EXAMPLE + "DeadTransitions");
 		}
 		
 		if (numNonLiveTransitions != 0) {
-			createEntry("Analysis.Tree.NumNonLiveTrans",
-					qualanalysisService
-					.getNonLiveTransitionsIterator(),
+			createEntry(PREFIX + "NumNonLiveTransitions",
+					qualanalysisService.getNonLiveTransitionsIterator(),
 					numNonLiveTransitions,
-			"AnalysisSideBar.Beginner.Help.NonLiveTransitions");
+					PREFIX_HELP + "NonLiveTransitions");
 		}
 		createEmptyEntry();
 	}

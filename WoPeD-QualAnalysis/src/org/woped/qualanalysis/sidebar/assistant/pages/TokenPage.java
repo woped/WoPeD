@@ -13,36 +13,24 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public class TokenPage extends BeginnerPanel {
 
-	int numInnerTokens, numWrongSourcePlaceTokens;
+	int numWronglyMarkedPlaces;
 
 	public TokenPage(BeginnerPanel previous, SideBar sideBar) {
-		super(previous, sideBar, Messages.getString("AnalysisSideBar.Beginner.TokenAnalysis"));
+		super(previous, sideBar, Messages.getString(PREFIX + "InitialMarkingAnalysis"));
 
-		numWrongSourcePlaceTokens = qualanalysisService.getNumWrongSourcePlaceTokens();
-		numInnerTokens = qualanalysisService.getNumInnerTokens();
+		numWronglyMarkedPlaces = qualanalysisService.getNumWronglyMarkedPlaces();
 
-		if (numInnerTokens != 0 || numWrongSourcePlaceTokens != 0) {
+		if (numWronglyMarkedPlaces != 0) {
 			status = false;
 		}
 	}
 
 	@Override
 	public void addComponents() {
-		if(numWrongSourcePlaceTokens != 0){
-			createEntry("Analysis.Tree.NumWrongSourcePlaceTokens",
-					qualanalysisService.getWrongSourcePlaceTokensIterator(),
-					numWrongSourcePlaceTokens,
-					"AnalysisSideBar.Beginner.Help.WrongSourcePlaceTokens",
-					"AnalysisSideBar.Beginner.Example.WrongSourcePlaceTokens");
-		}
-		
-		if(numInnerTokens != 0){
-			createEntry("Analysis.Tree.NumInnerTokens",
-					qualanalysisService.getInnerTokensIterator(),
-					numInnerTokens,
-					"AnalysisSideBar.Beginner.Help.InnerTokens",
-					"AnalysisSideBar.Beginner.Example.InnerTokens");
-		}
+		createEntry(PREFIX + "NumWronglyMarkedPlaces",
+				qualanalysisService.getWronglyMarkedPlacesIterator(),
+				numWronglyMarkedPlaces,
+				PREFIX_HELP + "WronglyMarkedPlaces");
 		createEmptyEntry();
 	}
 

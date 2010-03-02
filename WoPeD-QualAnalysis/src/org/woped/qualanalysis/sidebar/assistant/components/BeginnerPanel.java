@@ -31,6 +31,15 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
+	// Prefix for message-String
+	protected static final String PREFIX = "AnalysisSideBar.";
+	protected static final String PREFIX_BEGINNER = PREFIX + "Beginner.";
+	protected static final String PREFIX_HELP = PREFIX_BEGINNER + "Help.";
+	protected static final String PREFIX_EXAMPLE = PREFIX_BEGINNER + "Example.";
+	protected static final String PREFIX_BUTTON = PREFIX_BEGINNER + "Button.";
+	
+	protected static final String COLON = ":";
+	
 	// Constants for Fonts and Icons
 	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD,
 			14);
@@ -45,19 +54,19 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 			Font.PLAIN, 12);
 
 	// String for Details - Icon
-	protected static final String DETAILS_ICON = "AnalysisSideBar.Beginner.Details";
+	protected static final String DETAILS_ICON = PREFIX_BUTTON + "Details";
 
 	// String for Icon if status is correct (green)
-	protected static final String CORRECT_ICON = "AnalysisSideBar.Beginner.Correct";
+	protected static final String CORRECT_ICON = PREFIX_BUTTON + "Correct";
 
 	// String for Icon if status is incorrect (red)
-	protected static final String INCORRECT_ICON = "AnalysisSideBar.Beginner.Incorrect";
+	protected static final String INCORRECT_ICON = PREFIX_BUTTON + "Incorrect";
 
 	// String for Warning Icon (orange)
-	protected static final String WARNING_ICON = "AnalysisSideBar.Beginner.Warning";
+	protected static final String WARNING_ICON = PREFIX_BUTTON + "Warning";
 
 	// String for Icon with questionmark (blue-white)
-	protected static final String HELP_ICON = "AnalysisSideBar.Beginner.Help";
+	protected static final String HELP_ICON = PREFIX_BUTTON + "Help";
 
 	protected static final String SUB_POINT = " - ";
 
@@ -138,18 +147,18 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 		JLabel headLabel = new JLabel(header, JLabel.LEFT);
 		headLabel.setFont(HEADER_FONT);
 		back = new JLabel(Messages
-				.getImageIcon("AnalysisSideBar.Beginner.Button.Empty"));
+				.getImageIcon(PREFIX_BUTTON + "Empty"));
 		startPage = new JLabel(Messages
-				.getImageIcon("AnalysisSideBar.Beginner.Button.Empty"));
+				.getImageIcon(PREFIX_BUTTON + "Empty"));
 		if (this.hasPrevious()) {
 			back = new JLabel(Messages
-					.getImageIcon("AnalysisSideBar.Beginner.Button.Back"));
+					.getImageIcon(PREFIX_BUTTON + "Back"));
 			back.setBackground(Color.WHITE);
 			back.addMouseListener(this);
 			if (previous.hasPrevious()) {
 				startPage
 						.setIcon(Messages
-								.getImageIcon("AnalysisSideBar.Beginner.Button.Startpage"));
+								.getImageIcon(PREFIX_BUTTON + "Startpage"));
 				startPage.setBackground(Color.WHITE);
 				startPage.addMouseListener(this);
 			}
@@ -242,6 +251,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 		ArrayList<AbstractElementModel> elements = new ArrayList<AbstractElementModel>();
 		if (nodeIterator != null && nodeIterator.hasNext()) {
+			int secCounter = 0;
 			do {
 				Object aem = nodeIterator.next();
 				if (aem instanceof AbstractElementModel)
@@ -252,14 +262,13 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 								.getRootOwningContainer().getOwningElement());
 					}
 				else if (aem instanceof HashSet<?>) {
-					int secCounter = 0;
 					Collection<AbstractElementModel> nodeSet = (Collection) aem;
 					secCounter++;
 					String groupOrPair = Messages
-							.getString("AnalysisSideBar.Beginner.Pair");
+							.getString(PREFIX_BEGINNER + "Pair");
 					if (nodeSet.size() > 2) {
 						groupOrPair = Messages
-								.getString("AnalysisSideBar.Beginner.Group");
+								.getString(PREFIX_BEGINNER + "Group");
 					}
 					ClickLabel cLabel = new ClickLabel(SUB_POINT + groupOrPair
 							+ " # " + secCounter, nodeSet.iterator(), editor);
@@ -272,10 +281,10 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 		JLabel clickLabel;
 		if (labelSet.isEmpty())
-			clickLabel = new ClickLabel(Messages.getString(headerString) + ":",
+			clickLabel = new ClickLabel(Messages.getString(headerString) + COLON,
 					elements, editor);
 		else
-			clickLabel = new JLabel(Messages.getString(headerString) + ":");
+			clickLabel = new JLabel(Messages.getString(headerString) + COLON);
 		clickLabel.setFont(ITEMS_FONT);
 		clickLabel.setForeground(Color.RED);
 		JLabel numberLabel = new JLabel(String.valueOf(number));
