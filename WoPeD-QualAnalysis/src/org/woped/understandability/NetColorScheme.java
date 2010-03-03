@@ -4,14 +4,16 @@ import java.awt.Color;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.woped.core.analysis.NetAlgorithms;
-import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.qualanalysis.structure.NetAlgorithms;
+import org.woped.qualanalysis.structure.components.ClusterElement;
 
 
 /**
@@ -25,7 +27,7 @@ import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 
 public class NetColorScheme implements INetColorScheme {
 	
-	private StructuralAnalysis structAnalysis = null;
+	private IQualanalysisService qualanService = null;
 	private ReferenceProvider mediatorReference  = new ReferenceProvider();
 	private int maxColors = ConfigurationManager.getConfiguration().getUnderstandColors().length;
 	private int currentColorNum = 0;
@@ -43,7 +45,7 @@ public class NetColorScheme implements INetColorScheme {
 	public void update() {
 		
 		if (countEditors() >0){
-			structAnalysis = new StructuralAnalysis(mediatorReference.getMediatorReference().getUi().getEditorFocus());
+			qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(mediatorReference.getMediatorReference().getUi().getEditorFocus());
 			resetColoringInformation();
 			
 			// Only apply coloring in case coloring is actually enabled.
@@ -62,14 +64,14 @@ public class NetColorScheme implements INetColorScheme {
 		// reset currentColorNum to first color in config colorset, otherwise loop over colors
 		currentColorNum = 0;
 		
-		Iterator<Set<StructuralAnalysis.ClusterElement>> handleClusterSetIter = structAnalysis.getM_handleClusters().iterator();
+		Iterator<Set<ClusterElement>> handleClusterSetIter = qualanService.getM_handleClusters().iterator();
 		while (handleClusterSetIter.hasNext()){
 			
 			// Iterator for Handles
-			Iterator<StructuralAnalysis.ClusterElement> handleClusterIter = handleClusterSetIter.next().iterator();
+			Iterator<ClusterElement> handleClusterIter = handleClusterSetIter.next().iterator();
 			while (handleClusterIter.hasNext()){
 				// get current FlowNode element
-				StructuralAnalysis.ClusterElement element = handleClusterIter.next();
+				ClusterElement element = handleClusterIter.next();
 				// refer from current FlowNode element to its parent PetriNet element
 				// if the actual element cannot be found in the current focus window
 				AbstractElementModel highlightElement = element.m_element;
@@ -210,7 +212,7 @@ public class NetColorScheme implements INetColorScheme {
 	
 	//! Reset all understandability coloring Information in the current petri net  
 	private void resetColoringInformation() {
-		Iterator<AbstractElementModel> elementIter = structAnalysis.getPlacesIterator();
+		Iterator<AbstractElementModel> elementIter = qualanService.getPlacesIterator();
 		AbstractElementModel currentElement = null;
 		
 		//reset all places
@@ -221,7 +223,7 @@ public class NetColorScheme implements INetColorScheme {
 		}
 			
 		//reset all transitions
-		elementIter = structAnalysis.getTransitionsIterator();
+		elementIter = qualanService.getTransitionsIterator();
 		while (elementIter.hasNext()){
 			currentElement = elementIter.next();
 			currentElement.setUnderstandColoringActive(false);
@@ -229,7 +231,7 @@ public class NetColorScheme implements INetColorScheme {
 		}
 		
 		//reset all operators
-		elementIter = structAnalysis.getOperatorsIterator();
+		elementIter = qualanService.getOperatorsIterator();
 		while (elementIter.hasNext()){
 			currentElement = elementIter.next();
 			currentElement.setUnderstandColoringActive(false);

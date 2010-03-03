@@ -2,12 +2,12 @@ package org.woped.qualanalysis.sidebar.expert.components;
 
 import java.util.Iterator;
 
-import org.woped.core.analysis.NetAlgorithms;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.InnerElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.qualanalysis.structure.NetAlgorithms;
 
 //! This class implements a tree node representing
 //! one single node of a petri-net that is currently begin

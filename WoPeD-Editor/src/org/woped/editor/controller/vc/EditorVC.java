@@ -77,8 +77,6 @@ import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.graph.Port;
 import org.jgraph.graph.PortView;
-import org.woped.core.analysis.NetAlgorithms;
-import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -128,10 +126,13 @@ import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.layout.EditorSize;
 import org.woped.editor.layout.Orientation;
 import org.woped.editor.view.ViewFactory;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.qualanalysis.simulation.controller.TokenGameController;
+import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.translations.Messages;
 import org.woped.understandability.NetColorScheme;
@@ -2120,10 +2121,10 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         EditorVC newEditorWindow = (EditorVC) m_centralMediator.createSubprocessEditor(getModelProcessor()
                 .getProcessorType(), true, this, subProcess);
         newEditorWindow.getModelProcessor().getElementContainer();
-        StructuralAnalysis analysis = new StructuralAnalysis(newEditorWindow);
-        if (analysis.getNumSourcePlaces() == 1) {
+        IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(newEditorWindow);
+        if (qualanService.getNumSourcePlaces() == 1) {
             // Hand an initial token to the sub-process for the token game
-            Iterator<AbstractElementModel> i = analysis.getSourcePlacesIterator();
+            Iterator<AbstractElementModel> i = qualanService.getSourcePlacesIterator();
             ((PlaceModel) i.next()).receiveToken();
         }
         // Enable token game mode

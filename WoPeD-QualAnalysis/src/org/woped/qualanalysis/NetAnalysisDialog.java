@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.service.IQualanalysisService;
-import org.woped.qualanalysis.service.QualanalysisServiceImplement;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.sidebar.expert.ExpertPage;
 import org.woped.translations.Messages;
 
@@ -38,7 +38,7 @@ public class NetAnalysisDialog extends JDialog implements WindowListener {
 		// We need it to deal with selections
 		m_currentEditor = editor;
 
-		m_qualanService = new QualanalysisServiceImplement(m_currentEditor);
+		m_qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(m_currentEditor);
 
 		setSize(640, 480);
 		// Center the window on the desktop

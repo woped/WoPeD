@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.woped.core.analysis.StructuralAnalysis;
+import org.woped.core.controller.IEditor;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 
 public class WorkflowNetGraph {
 	static String zyklen = "";
@@ -19,8 +22,9 @@ public class WorkflowNetGraph {
 	LinkedList<Node> path = new LinkedList<Node>();
 	ModelElementContainer mec = null;
 	
-	public WorkflowNetGraph(StructuralAnalysis sa, ModelElementContainer mec){
-		this.mec = mec;
+	public WorkflowNetGraph(IEditor editor){
+		IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
+		this.mec = editor.getModelProcessor().getElementContainer();
 		zyklen = "";
 		
 		int numNodes = mec.getRootElements().size();
@@ -28,11 +32,11 @@ public class WorkflowNetGraph {
 		nodeArray = new Node[numNodes];
 		int nextIdx = 0;
 		
-		AbstractPetriNetModelElement source = (AbstractPetriNetModelElement)sa.getSourcePlacesIterator().next();
+		AbstractPetriNetModelElement source = (AbstractPetriNetModelElement)qualanService.getSourcePlacesIterator().next();
 		sourcePlace = new Node(source.getId(), source.getNameValue());
 		sourcePlace.setType(Node.TYPE_PLACE);
 		
-		AbstractPetriNetModelElement sink = (AbstractPetriNetModelElement)sa.getSinkPlacesIterator().next();
+		AbstractPetriNetModelElement sink = (AbstractPetriNetModelElement)qualanService.getSinkPlacesIterator().next();
 		sinkPlace = new Node(sink.getId(), sink.getNameValue());
 		sinkPlace.setType(Node.TYPE_PLACE);
 		
@@ -113,8 +117,8 @@ public class WorkflowNetGraph {
 	}
 	
 	private void buildGraph(Node n){
-		Iterator postNodes = mec.getTargetElements(n.getId()).values().iterator();
-		Iterator preNodes = mec.getSourceElements(n.getId()).values().iterator();
+		Iterator<AbstractElementModel> postNodes = mec.getTargetElements(n.getId()).values().iterator();
+		Iterator<AbstractElementModel> preNodes = mec.getSourceElements(n.getId()).values().iterator();
 
 		if (mec.getTargetElements(n.getId()).size() > 1)
 			n.setFork(true);

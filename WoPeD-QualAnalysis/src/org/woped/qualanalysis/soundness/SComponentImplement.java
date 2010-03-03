@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
-import org.woped.qualanalysis.service.ISComponent;
+import org.woped.qualanalysis.service.interfaces.ISComponent;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.scomponent.ISComponentTest;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
@@ -62,7 +62,8 @@ public class SComponentImplement implements ISComponent {
 		for (Set<AbstractNode> set : sComponentTest.getSComponents()) {
 			sComponent = new ArrayList<AbstractElementModel>();
 			for (AbstractNode node : set) {
-				sComponent.add(getAEM(node));
+				if(!sComponent.contains(getAEM(node)))
+					sComponent.add(getAEM(node));
 			}
 			// remove t* if existing
 			sComponent.remove(null);

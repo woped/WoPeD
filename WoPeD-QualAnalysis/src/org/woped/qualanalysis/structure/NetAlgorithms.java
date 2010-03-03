@@ -1,4 +1,4 @@
-package org.woped.core.analysis;
+package org.woped.qualanalysis.structure;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,26 +11,14 @@ import java.util.Set;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.qualanalysis.structure.components.ArcConfiguration;
+import org.woped.qualanalysis.structure.components.RouteInfo;
 
 //! This class provides a number of algorithms
 //! for dealing with graphs and especially petri-nets
 public class NetAlgorithms {
     NetAlgorithms(ModelElementContainer rootContainer) {
 
-    }
-
-    public static class RouteInfo {
-        // ! Store a reference to the predecessor
-        // ! on the route back to the source
-        // ! null if no connection to the source exists
-        public RouteInfo m_predecessor = null;
-        // ! stores the number of arcs between the
-        // ! source and this element
-        // ! or -1 if no connection exists
-        public int m_nDistanceToSource = -1;
-        // ! Stores a reference to the actual petri-net
-        // ! element this entry has been created for
-        public AbstractElementModel m_thisElement = null;
     }
 
     // ! This method calculates all shortest connections between net elements
@@ -161,11 +149,6 @@ public class NetAlgorithms {
                 }
             }
         }
-    }
-
-    public static class ArcConfiguration {
-        public int m_numIncoming = 0;
-        public int m_numOutgoing = 0;
     }
 
     // ! Get the configuration of the arcs connected to the

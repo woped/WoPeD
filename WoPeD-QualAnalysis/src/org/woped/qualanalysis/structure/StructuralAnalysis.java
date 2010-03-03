@@ -1,4 +1,4 @@
-package org.woped.core.analysis;
+package org.woped.qualanalysis.structure;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,11 +14,18 @@ import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
-import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.service.interfaces.INetStatistics;
+import org.woped.qualanalysis.service.interfaces.IWorkflowCheck;
+import org.woped.qualanalysis.structure.components.ArcConfiguration;
+import org.woped.qualanalysis.structure.components.ClusterElement;
+import org.woped.qualanalysis.structure.components.FlowNode;
+import org.woped.qualanalysis.structure.components.LowLevelNet;
+import org.woped.qualanalysis.structure.components.RouteInfo;
 
-public class StructuralAnalysis {
+public class StructuralAnalysis  implements IWorkflowCheck, INetStatistics {
 
     // ! Construct static analysis object from
     // ! a petri-net editor
@@ -290,54 +297,7 @@ public class StructuralAnalysis {
     // ! Reference to the low level net
     private LowLevelNet m_lolNet = null;
 
-    // ! Special cluster element serving as a token for distinguishing between
-    // ! ordinary net nodes and combi-operators that are used either
-    // ! as a source or as a target in a given cluster
-    public class ClusterElement {
-        // ! Construct a cluster element object
-        // ! @param element Specifies the element referenced
-        // ! @param isSource Specifies whether the element was detected as a source
-        // ! ElementType will be set based on this
-        public ClusterElement(AbstractElementModel element, boolean isSource) {
-            this.m_element = element;
-            if (element instanceof CombiOperatorTransitionModel) {
-                this.m_elementType = isSource ? 1 : 2;
-            } else {
-                this.m_elementType = 0;
-            }
-        }
-
-        // ! Override equals operator to test for shallow-equality rather than
-        // ! for same object
-        // ! @param o Object this object should be compared to
-        // ! @return true if objects are shallow-equal, false otherwise
-        @Override
-        public boolean equals(Object o) {
-            boolean result = false;
-            if (this.getClass() == o.getClass()) {
-                ClusterElement other = (ClusterElement) o;
-                result = (m_element == other.m_element) && (m_elementType == other.m_elementType);
-            }
-            return result;
-        }
-
-        // ! Override hash code method to meet the requirement of producing the
-        // ! same hash code for shallow-equal objects
-        // ! @return integer hash code built from the hash code of the child element
-        // ! and the element type integer
-        @Override
-        public int hashCode() {
-            return m_element.hashCode() | m_elementType;
-        }
-
-        // ! Store a reference to an abstract element model
-        public AbstractElementModel m_element;
-        // ! Store the type of cluster element:
-        // ! 0: Standard Operator or node
-        // ! 1: Combi-Operator Source
-        // ! 2: Combi-Operator Target
-        public int m_elementType = 0;
-    }
+    
 
     HashSet<Set<ClusterElement>> m_handles = new HashSet<Set<ClusterElement>>();
 
@@ -366,7 +326,7 @@ public class StructuralAnalysis {
     }
 
     private void updateStatistics(Iterator<AbstractElementModel> i) {
-        NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration();
+        ArcConfiguration arcConfig = new ArcConfiguration();
         while (i.hasNext()) {
             try {
                 AbstractElementModel currentNode = i.next();
@@ -452,7 +412,7 @@ public class StructuralAnalysis {
     // ! and add it to the misused operators list if it doesn't
     // ! @param operator the operator to be verified
     // ! @param arcConfig specifies the previously determined arc configuration
-    void verifyOperatorArcConfiguration(OperatorTransitionModel operator, NetAlgorithms.ArcConfiguration arcConfig) {
+    void verifyOperatorArcConfiguration(OperatorTransitionModel operator, ArcConfiguration arcConfig) {
         boolean isCorrectConfiguration = true;
         switch (operator.getOperatorType()) {
         // All pure split operators must have exactly one input
@@ -509,7 +469,7 @@ public class StructuralAnalysis {
         // First check for connectedness:
         // Return connection map presuming that all arcs may be
         // used in both directions
-        NetAlgorithms.RouteInfo[][] connectionGraph = NetAlgorithms.getAllConnections(netElements, true);
+        RouteInfo[][] connectionGraph = NetAlgorithms.getAllConnections(netElements, true);
         if (connectionGraph != null) {
             NetAlgorithms.getUnconnectedNodes(ttemp, connectionGraph, m_notConnectedNodes);
         }
@@ -517,7 +477,7 @@ public class StructuralAnalysis {
         // Now get the graph for strong connectedness
         // This will also give us all shortest distances
         // according to Moore's algorithm (no arc weights)
-        NetAlgorithms.RouteInfo[][] strongConnectionGraph = NetAlgorithms.getAllConnections(netElements, false);
+        RouteInfo[][] strongConnectionGraph = NetAlgorithms.getAllConnections(netElements, false);
         if (strongConnectionGraph != null) {
             NetAlgorithms.getUnconnectedNodes(ttemp, strongConnectionGraph, m_notStronglyConnectedNodes);
         }
@@ -809,7 +769,7 @@ public class StructuralAnalysis {
             Set<AbstractElementModel> firstNodeType, Set<AbstractElementModel> secondNodeType,
             boolean useVanDerAalstModel) {
 
-        NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration();
+        ArcConfiguration arcConfig = new ArcConfiguration();
 
         Set<Set<ClusterElement>> result = new HashSet<Set<ClusterElement>>();
 

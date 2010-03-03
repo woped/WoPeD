@@ -32,7 +32,6 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
-import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
@@ -42,12 +41,12 @@ import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.SubProcessModel;
+import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.help.HelpBrowser;
-import org.woped.core.utilities.FileFilterImpl;
 import org.woped.gui.AboutUI;
 import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
@@ -55,6 +54,8 @@ import org.woped.gui.RunWoPeD;
 import org.woped.gui.controller.DefaultApplicationMediator;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.translations.Messages;
 
 /**
@@ -227,7 +228,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		Vector<IEditor> editorList = new Vector<IEditor>(getMediator().getUi()
 				.getAllEditors());
 		boolean canceled = false;
-		for (Iterator iter = editorList.iterator(); iter.hasNext();)
+		for (Iterator<IEditor> iter = editorList.iterator(); iter.hasNext();)
 		{
 			IEditor editor = (IEditor) iter.next();
 			processViewEvent(new ViewEvent(editor,
@@ -309,8 +310,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			if (editorVC.isSubprocessEditor() && !editorVC.isTokenGameMode())
 			{
 
-				StructuralAnalysis analysis = new StructuralAnalysis(editor);
-
+				IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
+                
 				String inputID = editor.getSubprocessInput().getId();
 				String outputID = editor.getSubprocessOutput().getId();
 
@@ -320,28 +321,28 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				// so we need to check whether the iterator is valid!!
 				String ainputID = null;
 				String aoutputID = null;
-				Iterator i = analysis.getSinkPlacesIterator();
+				Iterator<AbstractElementModel> i = qualanService.getSinkPlacesIterator();
 				if (i.hasNext())
 					ainputID = ((AbstractElementModel) i.next()).getId();
-				i = analysis.getSourcePlacesIterator();
+				i = qualanService.getSourcePlacesIterator();
 				if (i.hasNext())
 					aoutputID = ((AbstractElementModel) i.next()).getId();
 				
-				if (analysis.getNumNotStronglyConnectedNodes() > 0
-						|| analysis.getNumSinkPlaces() > 1
-						|| analysis.getNumSourcePlaces() > 1
+				if (qualanService.getNumNotStronglyConnectedNodes() > 0
+						|| qualanService.getNumSinkPlaces() > 1
+						|| qualanService.getNumSourcePlaces() > 1
 						|| inputID.equals(ainputID)
 						|| outputID.equals(aoutputID))
 				{
 					String errorMessage = Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Start");
 
-					if (analysis.getNumNotStronglyConnectedNodes() > 0)
+					if (qualanService.getNumNotStronglyConnectedNodes() > 0)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.StronglyConnected");
 					}
-					if (analysis.getNumSourcePlaces() > 1)
+					if (qualanService.getNumSourcePlaces() > 1)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Source");
@@ -354,7 +355,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 						}
 					}
 
-					if (analysis.getNumSinkPlaces() > 1)
+					if (qualanService.getNumSinkPlaces() > 1)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Sink");

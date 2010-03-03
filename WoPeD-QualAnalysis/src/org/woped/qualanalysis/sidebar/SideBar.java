@@ -9,11 +9,10 @@ import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
-import org.woped.qualanalysis.service.QualanalysisServiceImplement;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.sidebar.assistant.StartPage;
 import org.woped.qualanalysis.sidebar.components.CloseableTabbedPane;
 import org.woped.qualanalysis.sidebar.expert.ExpertPage;
-import org.woped.qualanalysis.woflan.QualanalysisServiceImplementWoflan;
 import org.woped.translations.Messages;
 
 /**
@@ -139,11 +138,7 @@ public class SideBar extends CloseableTabbedPane {
         if (qualanService != null) {
             return qualanService;
         } else {
-            if (editor.isUseWoflanDLL()) {
-                return new QualanalysisServiceImplementWoflan(editor);
-            } else {
-                return new QualanalysisServiceImplement(editor);
-            }
+            return QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
         }
     }
 

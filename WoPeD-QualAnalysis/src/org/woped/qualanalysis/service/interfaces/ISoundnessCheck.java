@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.service;
+package org.woped.qualanalysis.service.interfaces;
 
 import java.util.Iterator;
 

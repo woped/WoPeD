@@ -48,10 +48,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
 
-import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.TransitionModel;
@@ -110,10 +108,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private double period = 60.0;
 
 	private double lambda = 50.0;
-
-	private StructuralAnalysis sa;
-
-	private ModelElementContainer mec;
 
 	private SimGraph simgraph;
 
@@ -243,10 +237,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		super(owner, Messages.getTitle("QuantAna.Simulation"), true);
 		this.editor = editor;
 		this.owner = owner;		
-		sa = new StructuralAnalysis(editor);
-		mec = editor.getModelProcessor().getElementContainer();
 		tm = new TimeModel(1, 1.0);
-		simgraph = new SimGraph(editor.getModelProcessor().getElementContainer(),sa);
+		simgraph = new SimGraph(editor);
 		servNames = simgraph.getTransitions();
 		numServers = servNames.length;
 		initResourceAlloc();
@@ -263,9 +255,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	}
 	
 	public void showdlg(){
-		sa = new StructuralAnalysis(editor);
-		mec = editor.getModelProcessor().getElementContainer();
-		simgraph = new SimGraph(editor.getModelProcessor().getElementContainer(),sa);
+		simgraph = new SimGraph(editor);
 		servNames = simgraph.getTransitions();
 		numServers = servNames.length;
 		initResourceAlloc();
@@ -1450,7 +1440,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		unfoldNet(simgraph, sp.getPeriod()/sp.getLambda(), epsilon);		
 		sim = new SimRunner(simgraph, new ResourceUtilization(resAlloc), sp);		
 		// the waitdialog starts and observs the simulation
-		WaitDialog wd = new WaitDialog(this, Messages.getString("QuantAna.Simulation.Wait"),sp.getPeriod()/sp.getLambda(),sim);     
+		new WaitDialog(this, Messages.getString("QuantAna.Simulation.Wait"),sp.getPeriod()/sp.getLambda(),sim);     
 	}
 	
 	private void unfoldNet(SimGraph g, double l, double e) {
@@ -1524,8 +1514,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 		ArrayList<String> roles = new ArrayList<String>();
 		ArrayList<String> groups = new ArrayList<String>();
-		Vector rVec = (Vector) pmp.getRoles();
-		Vector gVec = (Vector) pmp.getOrganizationUnits();
+		Vector<ResourceClassModel> rVec = pmp.getRoles();
+		Vector<ResourceClassModel> gVec = pmp.getOrganizationUnits();
 
 		groupRoleNum = rVec.size() + gVec.size();
 
@@ -1535,7 +1525,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		for (int i = 0; i < gVec.size(); i++)
 			groups.add(((ResourceClassModel) gVec.get(i)).getName());
 
-		Iterator iter = getTransModels().iterator();
+		Iterator<TransitionModel> iter = getTransModels().iterator();
 
 		resAlloc = new ResourceAllocation(roles, groups, iter, pmp);
 
@@ -1549,7 +1539,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			if(n.isTransition()) ids.add(n.getid());
 		}		
 		for (int i = 0; i < ids.size(); i++) {
-			lst.add((TransitionModel) mec.getElementById(ids.get(i)));
+			lst.add((TransitionModel) editor.getModelProcessor().getElementContainer().getElementById(ids.get(i)));
 		}
 		return lst;
 	}

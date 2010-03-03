@@ -1,10 +1,11 @@
-package org.woped.core.analysis;
+package org.woped.qualanalysis.structure.components;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.qualanalysis.Constants;
 
 public class LowLevelNet {
     private LinkedList<FlowNode> m_netNodes;

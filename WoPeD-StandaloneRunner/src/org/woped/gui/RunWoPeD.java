@@ -22,7 +22,6 @@
  */
 package org.woped.gui;
 
-import java.io.File;
 import java.rmi.RemoteException;
 import java.util.Locale;
 
@@ -48,6 +47,7 @@ import org.woped.server.holder.UserHolder;
  * 
  * 29.04.2003
  */
+@SuppressWarnings("serial")
 public class RunWoPeD extends JApplet {
 	
 	// flag for Applet
@@ -131,8 +131,8 @@ public class RunWoPeD extends JApplet {
 						.getLogger(org.woped.core.Constants.CORE_LOGGER)),
 						org.woped.core.Constants.CORE_LOGGER);
 				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
-						.getLogger(org.woped.core.analysis.Constants.STRUCT_LOGGER)),
-						org.woped.core.analysis.Constants.STRUCT_LOGGER);
+						.getLogger(org.woped.qualanalysis.Constants.STRUCT_LOGGER)),
+						org.woped.qualanalysis.Constants.STRUCT_LOGGER);
 				
 				LoggerManager
 						.register(

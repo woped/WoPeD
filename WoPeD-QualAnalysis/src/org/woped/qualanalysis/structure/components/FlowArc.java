@@ -1,4 +1,4 @@
-package org.woped.core.analysis;
+package org.woped.qualanalysis.structure.components;
 
 /**
  * @authors Bernhard von Hasseln, Matthias Mruzek and Markus Noeltner <br>

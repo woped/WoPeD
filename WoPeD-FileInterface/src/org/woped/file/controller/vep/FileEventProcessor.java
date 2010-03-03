@@ -20,13 +20,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.woped.bpel.BPEL;
-import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
@@ -45,7 +45,7 @@ import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.gui.OpenWebEditorUI;
 import org.woped.qualanalysis.service.IQualanalysisService;
-import org.woped.qualanalysis.service.QualanalysisServiceImplement;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.woflan.TPNExport;
 import org.woped.qualanalysis.woflan.WoflanFileFactory;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
@@ -234,7 +234,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
     private boolean isSound(EditorVC editor) {
 
-        IQualanalysisService qualanService = new QualanalysisServiceImplement(editor);
+        IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
 
         if (qualanService.isSound()) {
             return true;
@@ -248,15 +248,15 @@ public class FileEventProcessor extends AbstractEventProcessor {
         ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
         boolean branchingOk = true;
         String[] param = { "", "", "" };
-        Iterator transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values()
+        Iterator<AbstractElementModel> transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values()
                 .iterator();
-        StructuralAnalysis sa = new StructuralAnalysis(editor);
-        Iterator places = sa.getPlacesIterator();
-        AbstractPetriNetModelElement end = (AbstractPetriNetModelElement) sa.getSinkPlacesIterator().next();
+        IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
+        Iterator<AbstractElementModel> places = qualanService.getPlacesIterator();
+        AbstractPetriNetModelElement end = (AbstractPetriNetModelElement) qualanService.getSinkPlacesIterator().next();
 
         while (transes.hasNext()) {
             AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement) transes.next();
-            Map outArcs = mec.getOutgoingArcs(trans.getId());
+            Map<String, Object> outArcs = mec.getOutgoingArcs(trans.getId());
             int sum = 0;
             for (Object v : outArcs.values()) {
                 double p = ((ArcModel) v).getProbability();
@@ -276,7 +276,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
         while (places.hasNext()) {
             AbstractPetriNetModelElement place = (AbstractPetriNetModelElement) places.next();
             if (!place.equals(end)) {
-                Map outArcs = mec.getOutgoingArcs(place.getId());
+                Map<String, Object> outArcs = mec.getOutgoingArcs(place.getId());
                 int sum = 0;
                 for (Object v : outArcs.values()) {
                     double p = ((ArcModel) v).getProbability();
@@ -436,9 +436,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
                                     else
                                         if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
                                                 && this.isSound(editor)) {
-                                            StructuralAnalysis sa = new StructuralAnalysis(editor);
-                                            int wellStruct = sa.getNumPTHandles() + sa.getNumTPHandles();
-                                            int freeChoice = sa.getNumFreeChoiceViolations();
+                                        	IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
+                                            int wellStruct = qualanService.getNumPTHandles() + qualanService.getNumTPHandles();
+                                            int freeChoice = qualanService.getNumFreeChoiceViolations();
                                             int sound = wellStruct + freeChoice;
                                             if (sound == 0) {
                                                 succeed = BPEL.getBPELMainClass()

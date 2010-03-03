@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.woped.core.analysis.StructuralAnalysis;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
@@ -13,12 +13,13 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 
 @SuppressWarnings("unchecked")
 public class SimGraph {
 	Map<String, SimNode> Nodes = new HashMap();
 	ModelElementContainer mec = null;
-	StructuralAnalysis sa = null;
 	SimNode sink = null;
 	SimNode source = null;	
 	Map<String, AbstractElementModel> allTrans = null;
@@ -29,13 +30,13 @@ public class SimGraph {
 	 * @param sa
 	 * @param res
 	 */
-	public SimGraph(ModelElementContainer mec, StructuralAnalysis sa) {
-		this.mec = mec;
-		this.sa = sa;		
+	public SimGraph(IEditor editor) {
+		this.mec = editor.getModelProcessor().getElementContainer();
+		IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);		
 		buildGraph();		
-		PetriNetModelElement el = (PetriNetModelElement) sa.getSinkPlacesIterator().next();
+		PetriNetModelElement el = (PetriNetModelElement) qualanService.getSinkPlacesIterator().next();
 		sink = Nodes.get(el.getId());
-		el = (PetriNetModelElement) sa.getSourcePlacesIterator().next();
+		el = (PetriNetModelElement) qualanService.getSourcePlacesIterator().next();
 		source = Nodes.get(el.getId());				
 	}
 

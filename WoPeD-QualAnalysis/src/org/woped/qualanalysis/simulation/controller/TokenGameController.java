@@ -33,7 +33,6 @@ import java.util.Vector;
 
 import javax.swing.border.LineBorder;
 
-import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.IEditor;
@@ -51,6 +50,8 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.marking.IMarking;
 
@@ -261,8 +262,8 @@ public class TokenGameController {
 		getGraph().addMouseListener(tokenGameMouseHandler);
 
 		sinkPlaces = new HashSet<PlaceModel>();
-		StructuralAnalysis analysis = new StructuralAnalysis(thisEditor);
-		Iterator<AbstractElementModel> i = analysis.getSinkPlacesIterator();
+		IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(thisEditor);
+        Iterator<AbstractElementModel> i = qualanService.getSinkPlacesIterator();
 		while (i.hasNext())
 			sinkPlaces.add((PlaceModel) i.next());
 

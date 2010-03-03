@@ -15,8 +15,8 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
-import org.woped.qualanalysis.service.ISComponent;
-import org.woped.qualanalysis.service.ISoundnessCheck;
+import org.woped.qualanalysis.service.interfaces.ISComponent;
+import org.woped.qualanalysis.service.interfaces.ISoundnessCheck;
 
 public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
 

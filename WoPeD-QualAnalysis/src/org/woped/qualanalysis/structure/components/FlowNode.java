@@ -1,4 +1,4 @@
-package org.woped.core.analysis;
+package org.woped.qualanalysis.structure.components;
 
 import java.util.Iterator;
 import java.util.LinkedList;

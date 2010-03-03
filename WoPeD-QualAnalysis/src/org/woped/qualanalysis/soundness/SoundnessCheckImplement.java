@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
-import org.woped.qualanalysis.service.ISoundnessCheck;
+import org.woped.qualanalysis.service.interfaces.ISoundnessCheck;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
@@ -14,6 +14,12 @@ import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
+/**
+ * 
+ * 
+ * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ * 
+ */
 public class SoundnessCheckImplement implements ISoundnessCheck {
 
     private IEditor editor;

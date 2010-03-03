@@ -1,10 +1,12 @@
 package org.woped.qualanalysis.service;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import org.woped.core.model.AbstractElementModel;
+import org.woped.qualanalysis.structure.components.ClusterElement;
 
 /**
  * interface for qualanalysis services. all services have to implemnt this interface
@@ -187,6 +189,12 @@ public interface IQualanalysisService {
 	 * @return an iterator of all TPHandles
 	 */
 	public Iterator<Set<AbstractElementModel>> getTPHandlesIterator();
+	
+	/**
+	 * TODO what is this method for?
+	 * @return ??
+	 */
+	public HashSet<Set<ClusterElement>> getM_handleClusters();
 
 	/**
 	 * 

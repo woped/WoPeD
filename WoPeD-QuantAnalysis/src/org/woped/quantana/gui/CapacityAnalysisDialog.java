@@ -1,6 +1,5 @@
 package org.woped.quantana.gui;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -33,7 +32,6 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
-import org.woped.core.analysis.StructuralAnalysis;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
@@ -41,7 +39,6 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.translations.Messages;
 import org.woped.quantana.Constants;
 import org.woped.quantana.graph.Arc;
 import org.woped.quantana.graph.Key;
@@ -55,6 +52,7 @@ import org.woped.quantana.resourcealloc.AllocationTable;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceClassTaskAllocation;
 import org.woped.quantana.resourcealloc.ResourceClassTaskAllocationTable;
+import org.woped.translations.Messages;
 
 public class CapacityAnalysisDialog extends JDialog {
 
@@ -87,10 +85,6 @@ public class CapacityAnalysisDialog extends JDialog {
 	private double lambda = 50.0;
 
 	private double epsilon = 0.001;
-
-	private StructuralAnalysis sa;
-
-	private ModelElementContainer mec;
 
 	private WorkflowNetGraph graph;
 
@@ -198,9 +192,7 @@ public class CapacityAnalysisDialog extends JDialog {
 	public CapacityAnalysisDialog(JFrame owner, IEditor editor) {
 		super(owner, Messages.getTitle("QuantAna.CapacityPlanning"), true);
 		this.editor = editor;
-		sa = new StructuralAnalysis(editor);
-		mec = editor.getModelProcessor().getElementContainer();
-		graph = new WorkflowNetGraph(sa, mec);
+		graph = new WorkflowNetGraph(editor);
 		numTransGT0 = graph.getNumTransitionsGT0();
 		//calculateNumOfRuns();
 		initResourceAlloc();
@@ -861,8 +853,8 @@ public class CapacityAnalysisDialog extends JDialog {
 
 		ArrayList<String> roles = new ArrayList<String>();
 		ArrayList<String> groups = new ArrayList<String>();
-		Vector rVec = (Vector) pmp.getRoles();
-		Vector gVec = (Vector) pmp.getOrganizationUnits();
+		Vector<ResourceClassModel> rVec = pmp.getRoles();
+		Vector<ResourceClassModel> gVec = pmp.getOrganizationUnits();
 
 		for (int i = 0; i < rVec.size(); i++)
 			roles.add(((ResourceClassModel) rVec.get(i)).getName());
@@ -870,7 +862,7 @@ public class CapacityAnalysisDialog extends JDialog {
 		for (int i = 0; i < gVec.size(); i++)
 			groups.add(((ResourceClassModel) gVec.get(i)).getName());
 
-		Iterator iter = getTransModels().iterator();
+		Iterator<TransitionModel> iter = getTransModels().iterator();
 
 		resAlloc = new ResourceAllocation(roles, groups, iter, pmp);
 	}
@@ -878,6 +870,7 @@ public class CapacityAnalysisDialog extends JDialog {
 	private LinkedList<TransitionModel> getTransModels() {
 		LinkedList<TransitionModel> lst = new LinkedList<TransitionModel>();
 		ArrayList<String> ids = new ArrayList<String>();
+		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
 		Node[] nodes = graph.getNodeArray();
 
 		for (int i = 0; i < nodes.length; i++)

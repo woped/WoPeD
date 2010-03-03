@@ -2,6 +2,8 @@ package org.woped.qualanalysis.soundness.algorithms;
 
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.scomponent.ISComponentTest;
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.scomponent.SComponentTest;
+import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.workflow.IWorkflowTest;
+import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.workflow.WorkflowTest;
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.deadtransition.DeadTransitionTest;
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.deadtransition.IDeadTransitionTest;
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.nonliveTransitions.INonLiveTranstionTest;
@@ -62,5 +64,14 @@ public class AlgorithmFactory {
      */
     public static ISComponentTest createSComponentTest(LowLevelPetriNet lolNet) {
         return new SComponentTest(lolNet);
+    }
+    
+    /**
+     * 
+     * @param lolNet without tStar.
+     * @return
+     */
+    public static IWorkflowTest createWorkflowTest(LowLevelPetriNet lolNet) {
+        return new WorkflowTest(lolNet);
     }
 }

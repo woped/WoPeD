@@ -32,7 +32,6 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
-import org.woped.core.analysis.NetAlgorithms;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -50,6 +49,8 @@ import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
 import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphEventProcessor;
+import org.woped.qualanalysis.structure.NetAlgorithms;
+import org.woped.qualanalysis.structure.components.ArcConfiguration;
 import org.woped.translations.Messages;
 import org.woped.understandability.NetColorScheme;
 
@@ -170,7 +171,7 @@ public class ApplicationMediator extends AbstractApplicationMediator
     		
     		// Subprozess darf momentan nur jeweils einen Ein- und
     		// Ausgang haben
-    		NetAlgorithms.ArcConfiguration arcConfig = new NetAlgorithms.ArcConfiguration(); 
+    		ArcConfiguration arcConfig = new ArcConfiguration(); 
     		NetAlgorithms.GetArcConfiguration(subProcess, arcConfig);
 
     		if ((arcConfig.m_numIncoming!=1)||(arcConfig.m_numOutgoing!=1))
