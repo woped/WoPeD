@@ -29,18 +29,16 @@ public class LowLevelNetTest {
      * @param net
      */
     public static void printLowLevelNetInformation(LowLevelPetriNet net) {
-        TransitionNode[] transitions = net.getTransitions();
-        PlaceNode[] places = net.getPlaces();
 
         // System.out.println("places:");
-        for (int i = 0; i < places.length; i++) {
-            printNodeInformation(places[i]);
+        for (PlaceNode place : net.getPlaces()) {
+            printNodeInformation(place);
             System.out.println();
         }
 
         // System.out.println("transitions:");
-        for (int i = 0; i < transitions.length; i++) {
-            printNodeInformation(transitions[i]);
+        for (TransitionNode transition : net.getTransitions()) {
+            printNodeInformation(transition);
             System.out.println();
         }
 
@@ -52,16 +50,14 @@ public class LowLevelNetTest {
      * @param node node.
      */
     public static void printNodeInformation(AbstractNode node) {
-        AbstractNode[] postNodes = node.getPostNodes();
-        AbstractNode[] preNodes = node.getPreNodes();
         System.out.println(node);
         System.out.println(" predecessors:");
-        for (int i = 0; i < preNodes.length; i++) {
-            System.out.println("  " + preNodes[i]);
+        for (AbstractNode preNode : node.getPreNodes()) {
+            System.out.println("  " + preNode);
         }
         System.out.println(" successors:");
-        for (int i = 0; i < postNodes.length; i++) {
-            System.out.println("  " + postNodes[i]);
+        for (AbstractNode postNode : node.getPostNodes()) {
+            System.out.println("  " + postNode);
         }
     }
 

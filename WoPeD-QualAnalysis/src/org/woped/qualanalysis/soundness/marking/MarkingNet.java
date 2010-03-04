@@ -15,10 +15,12 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  * 
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
+
 public class MarkingNet {
 
     /** source lowLevel petri net. */
-    private final LowLevelPetriNet lolNet;
+	@SuppressWarnings("unused")
+	private final LowLevelPetriNet lolNet;
     /** all places of the source lowLevel petri net. ->static order! */
     private final PlaceNode[] places;
     /** all transitions of the source lowLevel petri net. */
@@ -37,8 +39,8 @@ public class MarkingNet {
     public MarkingNet(LowLevelPetriNet lolNet) {
 
         this.lolNet = lolNet;
-        this.places = this.lolNet.getPlaces();
-        this.transitions = this.lolNet.getTransitions();
+        this.places = lolNet.getPlaces().toArray(new PlaceNode[lolNet.getPlaces().size()]);
+        this.transitions = lolNet.getTransitions().toArray(new TransitionNode[lolNet.getTransitions().size()]);
         Integer[] tokens = new Integer[this.places.length];
         Boolean[] placeUnlimited = new Boolean[this.places.length];
         for (int i = 0; i < tokens.length; i++) {
@@ -58,18 +60,16 @@ public class MarkingNet {
     public TransitionNode[] getActivatedTransitions(Marking marking) {
         // declaration
         Set<TransitionNode> activatedTransitions = new HashSet<TransitionNode>();
-        AbstractNode[] preNodes;
         Integer[] tokens = marking.getTokens(); // tokens of the given marking
         Boolean[] placeUnlimited = marking.getPlaceUnlimited();
         Boolean activated; // flag if transition is activated or not
 
         for (int i = 0; i < transitions.length; i++) {
-            preNodes = transitions[i].getPreNodes(); // get prePlaces of current
             // transition
             activated = true; // initialize flag for current transition
-            for (int j = 0; j < preNodes.length && activated; j++) {
+            for (AbstractNode preNode : transitions[i].getPreNodes()) {
                 for (int k = 0; k < places.length && activated; k++) {
-                    if (preNodes[j] == places[k]) {
+                    if (preNode == places[k]) {
                         if (tokens[k] <= 0 && !placeUnlimited[k]) { // current PrePlace without token?
                             activated = false;
                         }
@@ -155,8 +155,6 @@ public class MarkingNet {
      */
     public Marking calculateSucceedingMarking(Marking parentMarking, TransitionNode transition) {
         Integer[] tokens = new Integer[parentMarking.getTokens().length];
-        AbstractNode[] preNodes = transition.getPreNodes();
-        AbstractNode[] postNodes = transition.getPostNodes();
 
         // copy tokens from given marking (call by value)
         for (int i = 0; i < tokens.length; i++) {
@@ -166,13 +164,13 @@ public class MarkingNet {
         // decrease all tokenCounts for prePlaces of given transition
         // and increase all tokenCounts for postPlaces of given transition
         for (int i = 0; i < places.length; i++) {
-            for (int j = 0; j < preNodes.length; j++) {
-                if (preNodes[j] == places[i]) {
+            for (AbstractNode preNode : transition.getPreNodes()) {
+                if (preNode == places[i]) {
                     tokens[i]--;
                 }
             }
-            for (int j = 0; j < postNodes.length; j++) {
-                if (postNodes[j] == places[i]) {
+            for (AbstractNode postNode : transition.getPostNodes()) {
+                if (postNode == places[i]) {
                     tokens[i]++;
                 }
             }

@@ -53,9 +53,8 @@ public class SComponentTest extends AbstractLowLevelPetriNetTest implements ISCo
         HashSet<PlaceNode> unvisitedPlaces;
 
         // at first, all places are unvisited and uncovered.
-        for (PlaceNode node : lolNet.getPlaces()) {
-            uncoveredPlaces.add(node);
-        }
+
+        uncoveredPlaces.addAll(lolNet.getPlaces());
         unvisitedPlaces = (HashSet<PlaceNode>) uncoveredPlaces.clone();
 
         while (!unvisitedPlaces.isEmpty()) {
@@ -108,12 +107,12 @@ public class SComponentTest extends AbstractLowLevelPetriNetTest implements ISCo
             // 3.Schritt
             else
                 if (TransitionNode.class == node.getClass()) {
-                    AbstractNode[] postNodes = node.getPostNodes();
-                    if (postNodes.length == 1) {
-                        component.add(postNodes[0]);
+                    Set<AbstractNode> postNodes = node.getPostNodes();
+                    if (postNodes.size() == 1) {
+                        component.add(postNodes.iterator().next());
                     }
                     // 4.Schritt
-                    if (postNodes.length > 1) {
+                    if (postNodes.size() > 1) {
                         for (AbstractNode abstractNode : postNodes) {
                             // 4.1 SChritt
                             HashSet<AbstractNode> componentCopy = (HashSet<AbstractNode>) component.clone();

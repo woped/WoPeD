@@ -16,84 +16,103 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  */
 public class WorkflowTest extends AbstractLowLevelPetriNetTest implements IWorkflowTest {
 
-    /**
-     * 
-     * @param lolNetWithTStar LowLevelPetriNet (without t*) the algorithm is based on
-     */
-    public WorkflowTest(LowLevelPetriNet lolNetWithoutTStar) {
-        super(lolNetWithoutTStar);
-    }
+	/**
+	 * 
+	 * @param lolNetWithTStar
+	 *            LowLevelPetriNet (without t*) the algorithm is based on
+	 */
+	public WorkflowTest(LowLevelPetriNet lolNetWithoutTStar) {
+		super(lolNetWithoutTStar);
+	}
 
-    @Override
-    public Set<PlaceNode> getSourcePlaces() {
-        PlaceNode[] places = lolNet.getPlaces();
-        Set<PlaceNode> sourcePlaces = new HashSet<PlaceNode>();
-        for (int i = 0; i < places.length; i++) {
-            if (places[i].getPreNodes().length == 0) {
-                sourcePlaces.add(places[i]);
-            }
-        }
-        return sourcePlaces;
-    }
+	@Override
+	public Set<PlaceNode> getSourcePlaces() {
+		Set<PlaceNode> sourcePlaces = new HashSet<PlaceNode>();
+		for (PlaceNode place : lolNet.getPlaces()) {
+			if (place.getPreNodes().size() == 0) {
+				sourcePlaces.add(place);
+			}
+		}
+		return sourcePlaces;
+	}
 
-    @Override
-    public Set<PlaceNode> getSinkPlaces() {
-        PlaceNode[] places = lolNet.getPlaces();
-        Set<PlaceNode> sinkPlaces = new HashSet<PlaceNode>();
-        for (int i = 0; i < places.length; i++) {
-            if (places[i].getPostNodes().length == 0) {
-                sinkPlaces.add(places[i]);
-            }
-        }
-        return sinkPlaces;
-    }
+	@Override
+	public Set<PlaceNode> getSinkPlaces() {
+		Set<PlaceNode> sinkPlaces = new HashSet<PlaceNode>();
+		for (PlaceNode place : lolNet.getPlaces()) {
+			if (place.getPostNodes().size() == 0) {
+				sinkPlaces.add(place);
+			}
+		}
+		return sinkPlaces;
+	}
 
-    @Override
-    public Set<TransitionNode> getSourceTransitions() {
-        TransitionNode[] transitions = lolNet.getTransitions();
-        Set<TransitionNode> sourceTransitions = new HashSet<TransitionNode>();
-        for (int i = 0; i < transitions.length; i++) {
-            if (transitions[i].getPreNodes().length == 0) {
-                sourceTransitions.add(transitions[i]);
-            }
-        }
-        return sourceTransitions;
-    }
+	@Override
+	public Set<TransitionNode> getSourceTransitions() {
+		Set<TransitionNode> sourceTransitions = new HashSet<TransitionNode>();
+		for (TransitionNode transition : lolNet.getTransitions()) {
+			if (transition.getPreNodes().size() == 0) {
+				sourceTransitions.add(transition);
+			}
+		}
+		return sourceTransitions;
+	}
 
-    @Override
-    public Set<TransitionNode> getSinkTransitions() {
-        TransitionNode[] transitions = lolNet.getTransitions();
-        Set<TransitionNode> sinkTransitions = new HashSet<TransitionNode>();
-        for (int i = 0; i < transitions.length; i++) {
-            if (transitions[i].getPostNodes().length == 0) {
-                sinkTransitions.add(transitions[i]);
-            }
-        }
-        return sinkTransitions;
-    }
+	@Override
+	public Set<TransitionNode> getSinkTransitions() {
+		Set<TransitionNode> sinkTransitions = new HashSet<TransitionNode>();
+		for (TransitionNode transition : lolNet.getTransitions()) {
+			if (transition.getPostNodes().size() == 0) {
+				sinkTransitions.add(transition);
+			}
+		}
+		return sinkTransitions;
+	}
 
-    @Override
-    public Set<AbstractNode> getNotConnectedNodes() {
-        Set<AbstractNode> notConnectedNodes = new HashSet<AbstractNode>();
-        // does not work
-        // TransitionNode[] transitions = lolNet.getTransitions();
-        // PlaceNode[] places = lolNet.getPlaces();
-        //		
-        // for(int i=0; i<transitions.length; i++){
-        // if(transitions[i].getPostNodes().length == 0 && transitions[i].getPreNodes().length == 0)
-        // notConnectedNodes.add(transitions[i]);
-        // }
-        // for(int i=0; i<places.length; i++){
-        // if(places[i].getPostNodes().length == 0 && places[i].getPreNodes().length == 0)
-        // notConnectedNodes.add(places[i]);
-        // }
-        return notConnectedNodes;
-    }
+	@Override
+	public Set<AbstractNode> getNotConnectedNodes() {
+		// first add all nodes to the set
+		Set<AbstractNode> notConnectedNodes = new HashSet<AbstractNode>(lolNet.getTransitions());
+		notConnectedNodes.addAll(lolNet.getPlaces());
+		// only start, if there are any nodes in the set
+		if (notConnectedNodes.size() != 0) {
+			// select one node (random)
+			AbstractNode node = notConnectedNodes.iterator().next();
+			// start checking connections (all elements which are connected to the start element will be removed from the set)
+			checkNodeConnection(node, notConnectedNodes);
+		}
+		// if the set is not empty, not all nodes are connected to every other (direction of arcs is ignored)
+		// --> all nodes are not connected
+		if (notConnectedNodes.size() != 0) {
+			notConnectedNodes.addAll(lolNet.getTransitions());
+			notConnectedNodes.addAll(lolNet.getPlaces());
+		}
+		return notConnectedNodes;
+	}
 
-    @Override
-    public Set<AbstractNode> getNotStronglyConnected() {
-        // TODO Auto-generated method stub
-        return new HashSet<AbstractNode>();
-    }
+	@Override
+	public Set<AbstractNode> getNotStronglyConnected() {
+		// TODO Auto-generated method stub
+		return new HashSet<AbstractNode>();
+	}
+
+	/**
+	 * 
+	 * @param node the current node to check connections of (will be removed from set in current recursive loop)
+	 * @param notConnectedNodes all nodes we have not visited yet
+	 */
+	private void checkNodeConnection(AbstractNode node, Set<AbstractNode> notConnectedNodes) {
+		// remove current node (we are visiting it now)
+		if (notConnectedNodes.remove(node)) {
+			// check connections of all succeeding nodes
+			for (AbstractNode postNode : node.getPostNodes()) {
+				checkNodeConnection(postNode, notConnectedNodes);
+			}
+			// check connections of all preceding nodes
+			for (AbstractNode preNode : node.getPreNodes()) {
+				checkNodeConnection(preNode, notConnectedNodes);
+			}
+		}
+	}
 
 }

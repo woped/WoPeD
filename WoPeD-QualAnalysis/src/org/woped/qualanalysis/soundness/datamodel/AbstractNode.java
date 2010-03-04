@@ -114,15 +114,15 @@ public abstract class AbstractNode {
     /**
      * @return the postNodes as an array
      */
-    public AbstractNode[] getPostNodes() {
-        return postNodes.toArray(new AbstractNode[this.postNodes.size()]);
+    public Set<AbstractNode> getPostNodes() {
+        return postNodes;
     }
 
     /**
      * @return the preNodes as an array
      */
-    public AbstractNode[] getPreNodes() {
-        return preNodes.toArray(new AbstractNode[preNodes.size()]);
+    public Set<AbstractNode> getPreNodes() {
+        return preNodes;
     }
 
     /**

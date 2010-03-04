@@ -87,12 +87,11 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
         if (isSubprocess) {
             Iterator<AbstractElementModel> sourcePlacesIterator = sa.getSourcePlacesIterator();
             String sourcePlaceId;
-            PlaceNode[] lNetPlaces = lNet.getPlaces();
             while (sourcePlacesIterator.hasNext()) {
                 sourcePlaceId = sourcePlacesIterator.next().getId();
-                for (int i = 0; i < lNetPlaces.length; i++) {
-                    if (lNetPlaces[i].getOriginId() == sourcePlaceId && lNetPlaces[i].getTokenCount() == 0) {
-                        lNetPlaces[i].setTokenCount(1);
+                for (PlaceNode lNetPlace : lNet.getPlaces()) {
+                    if (lNetPlace.getOriginId() == sourcePlaceId && lNetPlace.getTokenCount() == 0) {
+                        lNetPlace.setTokenCount(1);
                         break;
                     }
                 }

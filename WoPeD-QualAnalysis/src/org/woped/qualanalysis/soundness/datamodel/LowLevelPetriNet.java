@@ -1,10 +1,9 @@
 package org.woped.qualanalysis.soundness.datamodel;
 
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 
 /**
  * this class represents a low level petri net
@@ -81,16 +80,14 @@ public class LowLevelPetriNet {
     }
 
     /**
-     * @return the placeNodes as an array
+     * @return the placeNodes
      */
-    public PlaceNode[] getPlaces() {
-        PlaceNode[] nodes = new PlaceNode[this.places.size()];
-        Iterator<Entry<String, PlaceNode>> iter = places.entrySet().iterator();
-
-        for (int i = 0; i < nodes.length; i++) {
-            nodes[i] = iter.next().getValue();
+    public Set<PlaceNode> getPlaces() {
+        Set<PlaceNode> places= new HashSet<PlaceNode>();
+        for (String key : this.places.keySet()) {
+            places.add(this.places.get(key));
         }
-        return nodes;
+        return places;
     }
 
     /**
@@ -114,16 +111,13 @@ public class LowLevelPetriNet {
     }
 
     /**
-     * @return the transitionNodes as an array
+     * @return the transitionNodes
      */
-    public TransitionNode[] getTransitions() {
-        TransitionNode[] nodes = new TransitionNode[this.transitions.size()];
-        Iterator<Entry<String, TransitionNode>> iter = transitions.entrySet().iterator();
-
-        for (int i = 0; i < nodes.length; i++) {
-            nodes[i] = iter.next().getValue();
+    public Set<TransitionNode> getTransitions() {
+    	Set<TransitionNode> transitions= new HashSet<TransitionNode>();
+        for (String key : this.transitions.keySet()) {
+            transitions.add(this.transitions.get(key));
         }
-        return nodes;
-
+        return transitions;
     }
 }
