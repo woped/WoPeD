@@ -154,7 +154,9 @@ public class VisualController implements PropertyChangeListener,
 	
 	public static final int ROTATE = 40;
 
-	private static final int MAX_ID = 41;
+	private static final int MAX_ID = 43;
+	
+	public static final int ANY_SELECTION_EXCEPT_SIMPLE = 42;
 
 	private ArrayList<Vector<Object>> m_enable = new ArrayList<Vector<Object>>();
 	private ArrayList<Vector<Object>> m_visible = new ArrayList<Vector<Object>>();
@@ -467,6 +469,8 @@ public class VisualController implements PropertyChangeListener,
 			boolean subprocessSelected = false;
 			boolean arcSelected = false;
 			boolean nameSelection = false;
+			boolean any_selection_except_simple = false;
+			
 
 			while (selectedCell instanceof GroupModel)
 			{
@@ -492,16 +496,28 @@ public class VisualController implements PropertyChangeListener,
 				subprocessSelected = true;
 				transitionSelected = false; // changed, TF
 			}
-
-			else if (selectedCell instanceof TransitionModel
-					|| selectedCell instanceof OperatorTransitionModel)
+			else if (selectedCell instanceof OperatorTransitionModel)
 			{
 				transitionSelected = true;
+				
+				any_selection_except_simple = true;
+				System.out.println("operator");
+				
 				if (((TransitionModel) selectedCell).hasTrigger())
 				{
 					triggeredTransitionSelected = true;
 				}
 			} 
+			else if (selectedCell instanceof TransitionModel)
+			{
+				transitionSelected = true;
+				System.out.println("transition");
+
+				if (((TransitionModel) selectedCell).hasTrigger())
+				{
+					triggeredTransitionSelected = true;
+				}
+			} 	
 			else if (selectedCell instanceof PlaceModel)
 			{
 				placeSelected = true;
@@ -519,6 +535,8 @@ public class VisualController implements PropertyChangeListener,
 			{
 				nameSelection = true;
 			}
+				
+
 		
 
 			setStatus(NO_SELECTION, noSelection);
@@ -537,7 +555,9 @@ public class VisualController implements PropertyChangeListener,
 					triggeredTransitionSelected);
 			setStatus(ARC_SELECTION, arcSelected);
 			setStatus(ELEMENT_SELECTION, !noSelection && !arcSelected && !nameSelection);
-			}
+			setStatus(ANY_SELECTION_EXCEPT_SIMPLE, any_selection_except_simple);
+			};
+			
 	}
 
 	protected void checkDrawMode()

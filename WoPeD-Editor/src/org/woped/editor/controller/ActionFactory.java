@@ -216,9 +216,9 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_ROTATEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATEVIEW, null, ACTIONID_ROTATEVIEW));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATEVIEW), VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE, VisualController.ROTATE);
         STATIC_ACTION_MAP.put(ACTIONID_ROTATE_TRANS_LEFT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATETRANSLEFT, null, ACTIONID_ROTATE_TRANS_LEFT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATE_TRANS_LEFT), VisualController.TRANSITION_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATE_TRANS_LEFT), VisualController.ANY_SELECTION_EXCEPT_SIMPLE, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ROTATE_TRANS_RIGHT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATETRANSRIGHT, null, ACTIONID_ROTATE_TRANS_RIGHT));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATE_TRANS_RIGHT), VisualController.TRANSITION_SELECTION, VisualController.IGNORE, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATE_TRANS_RIGHT), VisualController.ANY_SELECTION_EXCEPT_SIMPLE, VisualController.IGNORE, VisualController.IGNORE);
         //Tokengame
         STATIC_ACTION_MAP.put(ACTIONID_TOGGLE_TOKENGAME, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOGGLE_TOKENGAME, null, ACTIONID_TOGGLE_TOKENGAME));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOGGLE_TOKENGAME), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.TOKENGAME);
