@@ -23,17 +23,16 @@ import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
  */
 public class SComponentImplement implements ISComponent {
 
-	private IEditor editor;
-	private ISComponentTest sComponentTest;
+	private IEditor editor = null;
+	private ISComponentTest sComponentTest = null;
 
 	/**
 	 * 
-	 * @param editor source object
+	 * @param editor
+	 *            source object
 	 */
 	public SComponentImplement(IEditor editor) {
 		this.editor = editor;
-		sComponentTest = AlgorithmFactory.createSComponentTest(BuilderFactory.createLowLevelPetriNetWithTStarBuilder(
-				editor).getLowLevelPetriNet());
 	}
 
 	/*
@@ -44,7 +43,7 @@ public class SComponentImplement implements ISComponent {
 	@Override
 	public Iterator<AbstractElementModel> getNotSCoveredIterator() {
 		Set<AbstractElementModel> notSCovered = new HashSet<AbstractElementModel>();
-		for (PlaceNode place : sComponentTest.getNotSCovered()) {
+		for (PlaceNode place : getSComponentTest().getNotSCovered()) {
 			notSCovered.add(getAEM(place));
 		}
 		return notSCovered.iterator();
@@ -59,10 +58,10 @@ public class SComponentImplement implements ISComponent {
 	public Iterator<List<AbstractElementModel>> getSComponentsIterator() {
 		Set<List<AbstractElementModel>> sComponentsSet = new HashSet<List<AbstractElementModel>>();
 		List<AbstractElementModel> sComponent;
-		for (Set<AbstractNode> set : sComponentTest.getSComponents()) {
+		for (Set<AbstractNode> set : getSComponentTest().getSComponents()) {
 			sComponent = new ArrayList<AbstractElementModel>();
 			for (AbstractNode node : set) {
-				if(!sComponent.contains(getAEM(node)))
+				if (!sComponent.contains(getAEM(node)))
 					sComponent.add(getAEM(node));
 			}
 			// remove t* if existing
@@ -75,12 +74,23 @@ public class SComponentImplement implements ISComponent {
 	/**
 	 * 
 	 * @param node
-	 *            the AbstractNode to get the referring AbstractElementModel
-	 *            from
+	 *            the AbstractNode to get the referring AbstractElementModel from
 	 * @return the referred AbstractElementModel
 	 */
 	private AbstractElementModel getAEM(AbstractNode node) {
 		return editor.getModelProcessor().getElementContainer().getElementById(node.getOriginId());
+	}
+
+	/**
+	 * 
+	 * @return the SComponentTest (if not existing it will be instantiated)
+	 */
+	private ISComponentTest getSComponentTest() {
+		if (sComponentTest == null) {
+			sComponentTest = AlgorithmFactory.createSComponentTest(BuilderFactory
+					.createLowLevelPetriNetWithTStarBuilder(editor).getLowLevelPetriNet());
+		}
+		return sComponentTest;
 	}
 
 }

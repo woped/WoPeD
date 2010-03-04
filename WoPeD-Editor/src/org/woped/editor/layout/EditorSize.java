@@ -22,7 +22,7 @@ public class EditorSize {
 	private Dimension modelSize = null;
 	private Dimension newEditorSize = null;
 
-	public final int SIDEBAR_WIDTH = 300;
+	public final int SIDEBAR_WIDTH = 320;
 
 	/**
 	 * 

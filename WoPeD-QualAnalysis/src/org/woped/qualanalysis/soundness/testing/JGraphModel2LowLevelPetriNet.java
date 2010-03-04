@@ -25,7 +25,7 @@ public class JGraphModel2LowLevelPetriNet {
         System.out.println();
 
         time = System.currentTimeMillis();
-        mNet = (new SoundnessCheckImplement(editor)).getMarkingNet();
+        mNet = (new SoundnessCheckImplement(editor)).getMarkingNetWithoutTStar();
         System.out.println("marking net created");
         System.out.println("time : " + (System.currentTimeMillis() - time) + "ms");
         System.out.println();
