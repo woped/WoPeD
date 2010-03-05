@@ -11,8 +11,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -261,7 +261,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 						elements.add(((AbstractElementModel) aem)
 								.getRootOwningContainer().getOwningElement());
 					}
-				else if (aem instanceof HashSet<?>) {
+				else if (aem instanceof Set<?>) {
 					Collection<AbstractElementModel> nodeSet = (Collection) aem;
 					secCounter++;
 					String groupOrPair = Messages
