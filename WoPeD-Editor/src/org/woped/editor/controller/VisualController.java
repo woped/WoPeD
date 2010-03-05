@@ -501,7 +501,6 @@ public class VisualController implements PropertyChangeListener,
 				transitionSelected = true;
 				
 				any_selection_except_simple = true;
-				System.out.println("operator");
 				
 				if (((TransitionModel) selectedCell).hasTrigger())
 				{
@@ -511,7 +510,6 @@ public class VisualController implements PropertyChangeListener,
 			else if (selectedCell instanceof TransitionModel)
 			{
 				transitionSelected = true;
-				System.out.println("transition");
 
 				if (((TransitionModel) selectedCell).hasTrigger())
 				{

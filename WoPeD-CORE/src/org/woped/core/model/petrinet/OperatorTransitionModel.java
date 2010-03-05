@@ -130,7 +130,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         // TransitionModel initalSimpleTrans = createSimpleTransition();
         // getSimpleTransContainer().addElement(initalSimpleTrans);
         // this.initalSimpleTrans = initalSimpleTrans;
-        // System.out.println("OperatorTransistionModel -------- " + map.getOperatorType());
         
         OperatorPosition east_south = OperatorPosition.EAST;
         OperatorPosition west_north = OperatorPosition.WEST;

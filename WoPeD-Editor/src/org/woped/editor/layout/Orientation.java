@@ -190,12 +190,10 @@ public class Orientation {
 		int currentPosition = transition.getToolSpecific().getOperatorPosition().ordinal();
 		if(direction == TURN_LEFT)
 		{
-			System.out.println("links");
 			newPosition = (currentPosition + (OperatorPosition.values().length-1)) % OperatorPosition.values().length;
 		}
 		else
 		{
-			System.out.println("rechts");
 			newPosition = (currentPosition + 1) % OperatorPosition.values().length;
 		}
 		transition.getToolSpecific().setOperatorPosition(OperatorPosition.values()[newPosition]);

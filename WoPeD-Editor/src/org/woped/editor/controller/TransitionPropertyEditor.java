@@ -2062,7 +2062,6 @@ public class TransitionPropertyEditor extends JDialog implements
 			getOrientationNorthRadioButton().setEnabled(false);
 			getOrientationSouthRadioButton().setEnabled(false);
 		}
-		//TODO: activate/deactivate Orientation Radio Buttons immediately "on the fly" when another Transition Type is selected
 		if(e.getActionCommand().equals(Messages
 				.getString("Transition.Properties.Branching.None")))
 		{
