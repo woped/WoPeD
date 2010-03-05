@@ -247,4 +247,14 @@ public class Marking implements IMarking, INode<Marking> {
         }
         return set;
     }
+
+    /**
+     * @see INode#getPreNodes()
+     */
+    @Override
+    public Set<Marking> getPreNodes() {
+        Set<Marking> set = new HashSet<Marking>();
+        set.add(predecessor);
+        return set;
+    }
 }

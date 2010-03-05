@@ -56,6 +56,14 @@ public class JGraphModel2LowLevelPetriNet {
         System.out.println(AlgorithmFactory.createNonLiveTranstionTest(mNetWithTStar).getNonLiveTransitions());
         System.out.println("time: " + (System.currentTimeMillis() - time) + "ms");
         System.out.println();
+
+        System.out.print("connected components: ");
+        time = System.currentTimeMillis();
+        System.out.println(AlgorithmFactory.createCcTest(
+                BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(editor).getLowLevelPetriNet())
+                .getConnectedComponents());
+        System.out.println("time: " + (System.currentTimeMillis() - time) + "ms");
+        System.out.println();
     }
 
     private void testTarjan() {

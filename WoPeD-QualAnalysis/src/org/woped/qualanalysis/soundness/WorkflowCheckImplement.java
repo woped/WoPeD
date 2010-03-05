@@ -75,11 +75,19 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 
     @Override
     public Iterator<AbstractElementModel> getNotConnectedNodes() {
-        Set<AbstractElementModel> notConnectedNodes = new HashSet<AbstractElementModel>();
-        for (AbstractNode node : workflowTest.getNotConnectedNodes()) {
-            notConnectedNodes.add(getAEM(node));
+        Set<Set<AbstractNode>> ccs = AlgorithmFactory.createCcTest(lolNetWithoutTStar).getConnectedComponents();
+
+        if (ccs.size() > 1) {
+            return editor.getModelProcessor().getElementContainer().getRootElements().iterator();
         }
-        return notConnectedNodes.iterator();
+
+        return new HashSet<AbstractElementModel>().iterator();
+
+        // Set<AbstractElementModel> notConnectedNodes = new HashSet<AbstractElementModel>();
+        // for (AbstractNode node : workflowTest.getNotConnectedNodes()) {
+        // notConnectedNodes.add(getAEM(node));
+        // }
+        // return notConnectedNodes.iterator();
     }
 
     @Override
@@ -111,6 +119,26 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
         }
 
         return sccs.iterator();
+    }
+
+    @Override
+    public Iterator<Set<AbstractElementModel>> getConnectedComponents() {
+        Set<Set<AbstractElementModel>> ccs = new HashSet<Set<AbstractElementModel>>();
+        Set<AbstractElementModel> cc;
+        for (Set<AbstractNode> set : AlgorithmFactory.createCcTest(lolNetWithoutTStar).getConnectedComponents()) {
+            if (set.size() > 0) {
+                cc = new HashSet<AbstractElementModel>();
+
+                for (AbstractNode node : set) {
+                    cc.add(getAEM(node));
+                }
+                // remove t*
+                cc.remove(null);
+                ccs.add(cc);
+            }
+        }
+
+        return ccs.iterator();
     }
 
     /**

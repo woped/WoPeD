@@ -979,4 +979,10 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return new HashSet<Set<AbstractElementModel>>().iterator();
     }
 
+    @Override
+    public Iterator<Set<AbstractElementModel>> getConnectedComponents() {
+        // not implemented
+        return new HashSet<Set<AbstractElementModel>>().iterator();
+    }
+
 }

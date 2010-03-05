@@ -13,7 +13,6 @@ import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.MarkingNet;
-import org.woped.qualanalysis.soundness.testing.JGraphModel2LowLevelPetriNet;
 
 /**
  * 
@@ -72,7 +71,6 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
                 nonLiveTransitions.add(getAEM(transition));
             }
         }
-        new JGraphModel2LowLevelPetriNet(editor);
         // remove t* if existing
         nonLiveTransitions.remove(null);
         return nonLiveTransitions.iterator();

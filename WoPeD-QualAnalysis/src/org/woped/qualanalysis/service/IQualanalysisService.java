@@ -108,6 +108,18 @@ public interface IQualanalysisService {
 
     /**
      * 
+     * @return a number of all connected components.
+     */
+    public int getNumConnectedComponents();
+
+    /**
+     * 
+     * @return an iterator of all connected components
+     */
+    public Iterator<Set<AbstractElementModel>> getConnectedComponentsIterator();
+
+    /**
+     * 
      * @return the number of not-strongly-connected nodes
      */
     public int getNumNotStronglyConnectedNodes();

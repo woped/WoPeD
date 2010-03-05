@@ -205,6 +205,29 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 
     /**
      * 
+     * @param qualanService
+     * @return information about
+     */
+    protected static DefaultMutableTreeNode getConnectedComponentsInfo(IQualanalysisService qualanService) {
+        return new NodeGroupListNetInfo(Messages.getString(prefix + "connectedComponents") + ": "
+                + qualanService.getNumConnectedComponents(), qualanService.getConnectedComponentsIterator()) {
+            @Override
+            public String getGroupDisplayString(int nIndex, Collection group) {
+                return Messages.getString(prefix + "connectedComponent") + ":" + group.size();
+            }
+
+            @Override
+            public int getInfoState() {
+                if (getChildCount() > 1) {
+                    return InfoStateERROR;
+                }
+                return InfoStateOK;
+            }
+        };
+    }
+
+    /**
+     * 
      * @return node containing information about the wellStructuredness of the net
      */
     protected static DefaultMutableTreeNode getWellStructurednessInfo() {

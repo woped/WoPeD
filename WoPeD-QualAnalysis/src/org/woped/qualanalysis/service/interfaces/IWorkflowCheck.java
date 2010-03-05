@@ -54,4 +54,10 @@ public interface IWorkflowCheck {
      * @return an iterator for strongly connected components.
      */
     public Iterator<Set<AbstractElementModel>> getStronglyConnectedComponents();
+
+    /**
+     * 
+     * @return an iterator for strongly connected components.
+     */
+    public Iterator<Set<AbstractElementModel>> getConnectedComponents();
 }

@@ -42,6 +42,7 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
     private Set<AbstractElementModel> notConnectedNodes = null;
     private Set<AbstractElementModel> notStronglyConnectedNodes = null;
     private Set<Set<AbstractElementModel>> stronglyConnectedComponents = null;
+    private Set<Set<AbstractElementModel>> connectedComponents = null;
     private Set<AbstractElementModel> sourcePlaces = null;
     private Set<AbstractElementModel> sinkPlaces = null;
     private Set<AbstractElementModel> sourceTransitions = null;
@@ -229,6 +230,22 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
             notStronglyConnectedNodes = getSet(workflowCheck.getNotStronglyConnectedNodes());
         }
         return notStronglyConnectedNodes.size();
+    }
+
+    @Override
+    public Iterator<Set<AbstractElementModel>> getConnectedComponentsIterator() {
+        if (connectedComponents == null) {
+            connectedComponents = getSet(workflowCheck.getConnectedComponents());
+        }
+        return connectedComponents.iterator();
+    }
+
+    @Override
+    public int getNumConnectedComponents() {
+        if (connectedComponents == null) {
+            connectedComponents = getSet(workflowCheck.getConnectedComponents());
+        }
+        return connectedComponents.size();
     }
 
     public Iterator<AbstractElementModel> getNotStronglyConnectedNodesIterator() {

@@ -112,8 +112,9 @@ public class ExpertPage extends JPanel {
         workflowInfo.add(sinkPlacesInfo);
         workflowInfo.add(sourceTransitionsInfo);
         workflowInfo.add(sinkTransitionsInfo);
-        workflowInfo.add(unconnectedNodesInfo);
-        workflowInfo.add(notStronglyConnectedInfo);
+        // workflowInfo.add(unconnectedNodesInfo);
+        // workflowInfo.add(notStronglyConnectedInfo);
+        workflowInfo.add(ExpertFactory.getConnectedComponentsInfo(qualanService));
         workflowInfo.add(sccsInfo);
         soundnessInfo.add(initialMarkingInfo);
         initialMarkingInfo.add(wronglyMarkedPlacesInfo);

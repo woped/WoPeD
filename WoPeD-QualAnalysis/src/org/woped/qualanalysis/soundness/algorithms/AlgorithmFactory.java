@@ -12,6 +12,8 @@ import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.unboundplac
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.unboundplaces.UnboundPlacesTest;
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
+import org.woped.qualanalysis.soundness.algorithms.generic.cc.ConnectedComponentTestGen;
+import org.woped.qualanalysis.soundness.algorithms.generic.cc.IConnectedComponentTestGen;
 import org.woped.qualanalysis.soundness.algorithms.generic.scc.IStronglyConnectedComponentTestGen;
 import org.woped.qualanalysis.soundness.algorithms.generic.scc.StronglyConnectedComponentTestGenTarjan;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
@@ -71,6 +73,17 @@ public class AlgorithmFactory {
 
     public static <K extends INode<K>> IStronglyConnectedComponentTestGen<K> createSccTest(INodeNet<K> net) {
         return new StronglyConnectedComponentTestGenTarjan<K>(net);
+
+    }
+
+    /**
+     * 
+     * @param <K> node type.
+     * @param net node net.
+     * @return test algorithm.
+     */
+    public static <K extends INode<K>> IConnectedComponentTestGen<K> createCcTest(INodeNet<K> net) {
+        return new ConnectedComponentTestGen<K>(net);
 
     }
 }
