@@ -114,7 +114,9 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
                 }
                 // remove t*
                 scc.remove(null);
-                sccs.add(scc);
+                if(scc.size() > 0){
+                	sccs.add(scc);
+                }
             }
         }
 
@@ -134,7 +136,9 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
                 }
                 // remove t*
                 cc.remove(null);
-                ccs.add(cc);
+                if(cc.size() > 0) {
+                	ccs.add(cc);
+                }
             }
         }
 
