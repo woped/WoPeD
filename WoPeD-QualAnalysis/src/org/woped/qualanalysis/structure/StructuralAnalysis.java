@@ -25,7 +25,7 @@ import org.woped.qualanalysis.structure.components.FlowNode;
 import org.woped.qualanalysis.structure.components.LowLevelNet;
 import org.woped.qualanalysis.structure.components.RouteInfo;
 
-public class StructuralAnalysis  implements IWorkflowCheck, INetStatistics {
+public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
 
     // ! Construct static analysis object from
     // ! a petri-net editor
@@ -296,8 +296,6 @@ public class StructuralAnalysis  implements IWorkflowCheck, INetStatistics {
 
     // ! Reference to the low level net
     private LowLevelNet m_lolNet = null;
-
-    
 
     HashSet<Set<ClusterElement>> m_handles = new HashSet<Set<ClusterElement>>();
 
@@ -970,6 +968,15 @@ public class StructuralAnalysis  implements IWorkflowCheck, INetStatistics {
         if (tStar != null) {
             removeTStar(tStar);
         }
+    }
+
+    /**
+     * @see IWorkflowCheck#getStronglyConnectedNodes()
+     */
+    @Override
+    public Iterator<Set<AbstractElementModel>> getStronglyConnectedComponents() {
+        // not implemented
+        return new HashSet<Set<AbstractElementModel>>().iterator();
     }
 
 }

@@ -5,15 +5,16 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
 /**
- * @see IMarking 
+ * @see IMarking
  * 
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
-public class Marking implements IMarking {
+public class Marking implements IMarking, INode<Marking> {
     // declaration
     private final PlaceNode[] places;
     private final Integer[] tokens;
@@ -164,6 +165,7 @@ public class Marking implements IMarking {
     /**
      * 
      * checks if the given transition is reachable from the current marking
+     * 
      * @param tn the transition to reach
      * @param markings a set of markings already checked
      * @return true if the Transition is reachable
@@ -232,5 +234,17 @@ public class Marking implements IMarking {
             line += " ";
         }
         return line.substring(0, line.length() - 1) + ")";
+    }
+
+    /**
+     * @see INode#getPostNodes()
+     */
+    @Override
+    public Set<Marking> getPostNodes() {
+        Set<Marking> set = new HashSet<Marking>();
+        for (Arc arc : getSuccessors()) {
+            set.add(arc.getTarget());
+        }
+        return set;
     }
 }

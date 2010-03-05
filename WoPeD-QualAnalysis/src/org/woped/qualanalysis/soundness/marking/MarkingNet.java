@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
@@ -16,11 +17,11 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
 
-public class MarkingNet {
+public class MarkingNet implements INodeNet<Marking> {
 
     /** source lowLevel petri net. */
-	@SuppressWarnings("unused")
-	private final LowLevelPetriNet lolNet;
+    @SuppressWarnings("unused")
+    private final LowLevelPetriNet lolNet;
     /** all places of the source lowLevel petri net. ->static order! */
     private final PlaceNode[] places;
     /** all transitions of the source lowLevel petri net. */
@@ -176,6 +177,11 @@ public class MarkingNet {
             }
         }
         return new Marking(tokens, places, parentMarking.getPlaceUnlimited());
+    }
+
+    @Override
+    public Set<Marking> getAllContainedNodes() {
+        return new HashSet<Marking>(markings);
     }
 
 }

@@ -5,13 +5,15 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
+
 /**
  * this class represents a low level petri net
  * 
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  * 
- */ 
-public class LowLevelPetriNet {
+ */
+public class LowLevelPetriNet implements INodeNet<AbstractNode> {
     // declaration
 
     private Map<String, PlaceNode> places = new TreeMap<String, PlaceNode>(new PlaceSort());
@@ -83,7 +85,7 @@ public class LowLevelPetriNet {
      * @return the placeNodes
      */
     public Set<PlaceNode> getPlaces() {
-        Set<PlaceNode> places= new HashSet<PlaceNode>();
+        Set<PlaceNode> places = new HashSet<PlaceNode>();
         for (String key : this.places.keySet()) {
             places.add(this.places.get(key));
         }
@@ -114,10 +116,18 @@ public class LowLevelPetriNet {
      * @return the transitionNodes
      */
     public Set<TransitionNode> getTransitions() {
-    	Set<TransitionNode> transitions= new HashSet<TransitionNode>();
+        Set<TransitionNode> transitions = new HashSet<TransitionNode>();
         for (String key : this.transitions.keySet()) {
             transitions.add(this.transitions.get(key));
         }
         return transitions;
+    }
+
+    @Override
+    public Set<AbstractNode> getAllContainedNodes() {
+        Set<AbstractNode> set = new HashSet<AbstractNode>();
+        set.addAll(places.values());
+        set.addAll(transitions.values());
+        return set;
     }
 }

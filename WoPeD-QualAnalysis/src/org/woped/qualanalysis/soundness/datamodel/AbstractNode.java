@@ -3,13 +3,15 @@ package org.woped.qualanalysis.soundness.datamodel;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.woped.qualanalysis.soundness.algorithms.generic.INode;
+
 /**
  * this abstract class represents a node in a low level petri net all nodes e.g transitions, places should be extend
  * 
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  * 
- */ 
-public abstract class AbstractNode {
+ */
+public abstract class AbstractNode implements INode<AbstractNode> {
     // declaration
     private final Set<AbstractNode> preNodes = new HashSet<AbstractNode>();
     private final Set<AbstractNode> postNodes = new HashSet<AbstractNode>();
