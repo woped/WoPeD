@@ -24,6 +24,8 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	//! Default color to be used for understandability (Color for not highlighted elements)
 	protected static final Color defaultUnderstandabilityColor = Color.white;
 	
+	private boolean allowOutgoingConnections = true;
+	
 	//! Specifies whether the element represented by this model
 	//! is highlighted
 	//! Highlighted elements are drawn differently by their respective view
@@ -148,8 +150,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
         nameModel = new NameModel(creationMap);
         AttributeMap map = getAttributes();
         GraphConstants.setOpaque(map, false);
-        if (creationMap.containsKey(CreationMap.READ_ONLY)
-				&& (Boolean) creationMap.get(CreationMap.READ_ONLY)) {
+        if (creationMap.getReadOnly()) {
 			GraphConstants.setBorderColor(map, new Color(125, 125, 125));
 		} else {
 			GraphConstants.setBorderColor(map, Color.BLACK);
@@ -323,8 +324,13 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	//! @return returns true if outgoing arcs may be connected, false otherwise
 	public boolean getAllowOutgoingConnections()
 	{
-		return true;
+		return allowOutgoingConnections;
 	}
+	
+	public void setAllowOutgoingConnections(boolean allowOutgoingConnections){
+		this.allowOutgoingConnections = allowOutgoingConnections;
+	}
+	
 	public boolean isHighlighted() {
 		return highlighted;
 	}
