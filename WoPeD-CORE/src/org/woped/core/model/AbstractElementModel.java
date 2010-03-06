@@ -19,12 +19,11 @@ import org.woped.core.Constants;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.utilities.LoggerManager;
 
+@SuppressWarnings("serial")
 public abstract class AbstractElementModel extends DefaultGraphCell implements Serializable
 {
 	//! Default color to be used for understandability (Color for not highlighted elements)
 	protected static final Color defaultUnderstandabilityColor = Color.white;
-	
-	private boolean allowOutgoingConnections = true;
 	
 	//! Specifies whether the element represented by this model
 	//! is highlighted
@@ -324,11 +323,7 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
 	//! @return returns true if outgoing arcs may be connected, false otherwise
 	public boolean getAllowOutgoingConnections()
 	{
-		return allowOutgoingConnections;
-	}
-	
-	public void setAllowOutgoingConnections(boolean allowOutgoingConnections){
-		this.allowOutgoingConnections = allowOutgoingConnections;
+		return true;
 	}
 	
 	public boolean isHighlighted() {
