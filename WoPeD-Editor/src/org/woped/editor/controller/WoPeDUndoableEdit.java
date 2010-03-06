@@ -289,7 +289,7 @@ public class WoPeDUndoableEdit implements UndoableEdit
             out.append("Removed:");
             for (int i = 0; i < removed.length; i++)
             {
-                if (removed != null)
+                if (removed[i] != null)
                 {
                     out.append(removed[i].getClass());
                     out.append(":");
