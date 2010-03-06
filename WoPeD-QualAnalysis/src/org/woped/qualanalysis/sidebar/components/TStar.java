@@ -34,7 +34,7 @@ import org.woped.core.utilities.Utils;
 
 public class TStar {
 
-	private static final Color T_STAR_COLOR = new Color(225, 225, 225);
+	private static final Color T_STAR_COLOR = new Color(200, 200, 200);
 
 	private IEditor editor = null;
 
