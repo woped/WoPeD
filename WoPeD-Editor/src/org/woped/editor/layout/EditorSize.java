@@ -113,7 +113,7 @@ public class EditorSize {
 		// set newEditorSize to modelSize
 		newEditorSize = new Dimension(modelSize);
 		// add sideBar-width if sideBar is displayed
-		if (editor.getAnalysisBarVisible()) {
+		if (editor.isAnalysisBarVisible()) {
 			newEditorSize.width += SIDEBAR_WIDTH;
 			newEditorSize.height = maxEditorSize.height;
 		}

@@ -1700,7 +1700,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         getGraph().drawNet(getModelProcessor());
         updateNet();
 
-        editorSize.resize();
+		// editorSize.resize(); //TODO fix resize() then use it here
 
         setSaved(false);
     }
@@ -2225,105 +2225,112 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 
     private JCheckBox autoRefresh = null;
 
-    // private JCheckBox tStarCheckBox = null;
+	private JCheckBox tStarCheckBox = null;
 
-    /**
-     * replaces the "normal" EditorSplitPane with another SplitPane with the AnalysisSidebar on the right side
-     * 
-     * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
-     */
-    public void showAnalysisBar(IEditor editor, AbstractApplicationMediator mediator) {
-        if (!analysisBarVisible) {
-            this.remove(m_mainSplitPane);
-            this.getContainer();
-            boolean autoRefreshStatus = true;
-            analysisSideBar = new SideBar(editor, mediator, autoRefreshStatus);
-            JPanel bottomPanel = new JPanel(new BorderLayout());
-            autoRefresh = new JCheckBox(Messages.getString("AnalysisSideBar.Footer.Autorefresh"));
-            autoRefresh.setSelected(autoRefreshStatus);
-            autoRefresh.addActionListener(new ActionListener() {
+	/**
+	 * replaces the "normal" EditorSplitPane with another SplitPane with the
+	 * AnalysisSidebar on the right side
+	 * 
+	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 */
+	public void showAnalysisBar(IEditor editor,
+			AbstractApplicationMediator mediator) {
+		if (!analysisBarVisible) {
+			this.remove(m_mainSplitPane);
+			this.getContainer();
+			boolean autoRefreshStatus = true;
+			tStarCheckBox = new JCheckBox(Messages
+					.getString("AnalysisSideBar.Footer.TStar"));
+			analysisSideBar = new SideBar(editor, mediator, autoRefreshStatus,
+					tStarCheckBox);
 
-                public void actionPerformed(ActionEvent arg0) {
-                    boolean selected = ((JCheckBox) arg0.getSource()).isSelected();
-                    analysisSideBar.setAutoRefreshStatus(selected);
-                    analysisSideBar.repaint();
-                }
-            });
-            bottomPanel.add(autoRefresh, BorderLayout.CENTER);
-            // if t star checkbox is selected show t star in editor (only if net is a workflow net)
-            // tStarCheckBox = new JCheckBox(Messages.getString("AnalysisSideBar.Footer.TStar"));
-            // if(!analysisSideBar.getWorkflowStatus())
-            // tStarCheckBox.setEnabled(false);
-            // tStarCheckBox.addActionListener(new ActionListener() {
-            //				
-            // public void actionPerformed(ActionEvent arg0) {
-            // boolean selected = ((JCheckBox)arg0.getSource()).isSelected();
-            // if(selected && analysisSideBar.getWorkflowStatus()){
-            // // show tStar
-            // }else{
-            // // hide tStar
-            // }
-            // }
-            // });
-            // bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
+			JPanel bottomPanel = new JPanel(new BorderLayout());
+			autoRefresh = new JCheckBox(Messages
+					.getString("AnalysisSideBar.Footer.Autorefresh"));
+			autoRefresh.setSelected(autoRefreshStatus);
+			autoRefresh.addActionListener(new ActionListener() {
 
-            JPanel sideBar = new JPanel(new BorderLayout());
-            sideBar.add(analysisSideBar, BorderLayout.CENTER);
-            sideBar.add(bottomPanel, BorderLayout.SOUTH);
+				public void actionPerformed(ActionEvent arg0) {
+					boolean selected = ((JCheckBox) arg0.getSource())
+							.isSelected();
+					analysisSideBar.setAutoRefreshStatus(selected);
+					analysisSideBar.repaint();
+				}
+			});
+			bottomPanel.add(autoRefresh, BorderLayout.CENTER);
+			// if t star checkbox is selected show t star in editor (only if net
+			// is a workflow net)
+			tStarCheckBox.addActionListener(new ActionListener() {
 
-            mainsplitPaneWithAnalysisBar = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_mainSplitPane, sideBar);
+				public void actionPerformed(ActionEvent arg0) {
+					analysisSideBar.showTStarIfPossible();
+				}
+			});
+			bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
 
-            this.add(mainsplitPaneWithAnalysisBar);
-            analysisBarVisible = true;
-            this.revalidate();
-            //editorSize.resize(); //TODO fix resize() then use it here
-            mainsplitPaneWithAnalysisBar.setDividerLocation((this.getWidth() - editorSize.SIDEBAR_WIDTH));
-            mainsplitPaneWithAnalysisBar.setResizeWeight(1);
-        }
-    }
+			JPanel sideBar = new JPanel(new BorderLayout());
+			sideBar.add(analysisSideBar, BorderLayout.CENTER);
+			sideBar.add(bottomPanel, BorderLayout.SOUTH);
 
-    /**
-     * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
-     */
-    public void autoRefreshAnalysisBar() {
-        if (analysisBarVisible && autoRefresh.isSelected()) {
-            analysisSideBar.refresh();
-            //editorSize.resize(); //TODO fix resize() then use it here
-        }
-    }
+			mainsplitPaneWithAnalysisBar = new JSplitPane(
+					JSplitPane.HORIZONTAL_SPLIT, m_mainSplitPane, sideBar);
 
-    /**
-     * Method removes analysis sidebar
-     * 
-     * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
-     */
-    public void hideAnalysisBar() {
-        if (analysisBarVisible) {
-            this.remove(mainsplitPaneWithAnalysisBar);
-            mainsplitPaneWithAnalysisBar = null;
-            this.add(m_mainSplitPane);
-            analysisBarVisible = false;
-            this.revalidate();
-            //editorSize.resize(); //TODO fix resize() then use it here
-        }
-    }
+			this.add(mainsplitPaneWithAnalysisBar);
+			analysisBarVisible = true;
+			this.revalidate();
+			// editorSize.resize(); //TODO fix resize() then use it here
+			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (this
+					.getWidth() - editorSize.SIDEBAR_WIDTH));
+			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
+		}
+	}
 
-    /**
-     * Method returns if analysis sidebar is visible or not
-     * 
-     * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
-     */
-    public boolean getAnalysisBarVisible() {
-        return analysisBarVisible;
-    }
+	/**
+	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 */
+	public void autoRefreshAnalysisBar() {
+		if (analysisBarVisible && autoRefresh.isSelected()) {
+			analysisSideBar.refresh();
+			// editorSize.resize(); //TODO fix resize() then use it here
+		}
+	}
 
-    public boolean isRotateSelected() {
-        return m_orientation.isRotateSelected();
-    }
+	/**
+	 * Method removes analysis sidebar
+	 * 
+	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 */
+	public void hideAnalysisBar() {
+		if (analysisBarVisible) {
+			tStarCheckBox.setSelected(false);
+			analysisSideBar.showTStarIfPossible();
+			this.remove(mainsplitPaneWithAnalysisBar);
+			mainsplitPaneWithAnalysisBar = null;
+			this.add(m_mainSplitPane);
+			analysisBarVisible = false;
+			this.revalidate();
+			// editorSize.resize(); //TODO fix resize() then use it here
+		}
+	}
 
-    public void setRotateSelected(boolean rotateSelected) {
-        m_orientation.setRotateSelected(rotateSelected);
-    }
+	/**
+	 * Method returns if analysis sidebar is visible or not
+	 * 
+	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 */
+	public boolean isAnalysisBarVisible() {
+		return analysisBarVisible;
+	}
+
+	public boolean isRotateSelected() {
+		return m_orientation.isRotateSelected();
+	}
+
+	public void setRotateSelected(boolean rotateSelected) {
+		m_orientation.setRotateSelected(rotateSelected);
+		if (analysisBarVisible)
+			analysisSideBar.showTStarIfPossible();
+	}
 
     /**
      * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss

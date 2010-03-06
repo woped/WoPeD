@@ -15,7 +15,7 @@ import org.woped.core.model.petrinet.SubProcessModel;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  * 
- *         An Editor has to implement the IEditor interface.
+ * An Editor has to implement the IEditor interface.
  */
 
 public interface IEditor extends IViewController {
@@ -184,64 +184,65 @@ public interface IEditor extends IViewController {
 
     public String getName();
 
-    public boolean isSubprocessEditor();
+	public boolean isSubprocessEditor();
+ 
+	/**
+	 * Returns the saved flag for the editor.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSaved();
 
-    /**
-     * Returns the saved flag for the editor.
-     * 
-     * @return boolean
-     */
-    public boolean isSaved();
+	/**
+	 * Sets the saved flag for the editor. true when net was saved, or just
+	 * loaded.
+	 * 
+	 * @param savedFlag
+	 *            The savedFlag to set
+	 */
+	public void setSaved(boolean savedFlag);
+	
+	public AbstractElementModel getSubprocessInput();
 
-    /**
-     * Sets the saved flag for the editor. true when net was saved, or just loaded.
-     * 
-     * @param savedFlag The savedFlag to set
-     */
-    public void setSaved(boolean savedFlag);
+	public void setSubprocessInput(AbstractElementModel p_subprocessInput);
 
-    public AbstractElementModel getSubprocessInput();
+	public AbstractElementModel getSubprocessOutput();
 
-    public void setSubprocessInput(AbstractElementModel p_subprocessInput);
+	public void setSubprocessOutput(AbstractElementModel p_subprocessOutput);
+	
+	public void closeEditor();
+	
+	/**
+	 * Disable all controls for the editor
+	 * @param readonly
+	 * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
+	 * @since 02.01.2009
+	 */
+	public void setReadOnly(boolean readonly);
+	
+	public void showAnalysisBar(IEditor editor, AbstractApplicationMediator mediator);
+	
+	public void hideAnalysisBar();
+	
+	public boolean isAnalysisBarVisible();
+	
+	public void rotateLayout();
+	
+	public void rotateTransLeft(Object cell);
+	
+	public void rotateTransRight(Object cell);
+	
+	public boolean isRotateSelected();
 
-    public AbstractElementModel getSubprocessOutput();
-
-    public void setSubprocessOutput(AbstractElementModel p_subprocessOutput);
-
-    public void closeEditor();
-
-    /**
-     * Disable all controls for the editor
-     * 
-     * @param readonly
-     * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
-     * @since 02.01.2009
-     */
-    public void setReadOnly(boolean readonly);
-
-    public void showAnalysisBar(IEditor editor, AbstractApplicationMediator mediator);
-
-    public void hideAnalysisBar();
-
-    public boolean getAnalysisBarVisible();
-
-    public void rotateLayout();
-
-    public void rotateTransLeft(Object cell);
-
-    public void rotateTransRight(Object cell);
-
-    public boolean isRotateSelected();
-
-    public void setRotateSelected(boolean active);
-
-    /**
-     * Checks if woflan.dll should be used for qualanalysis <br />
-     * For non-windows-systems it always should return false
-     * 
-     * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
-     * 
-     * @return true if woflan.dll should be used for qualanalysis
-     */
-    public Boolean isUseWoflanDLL();
+	public void setRotateSelected(boolean active);
+	
+	/**
+	 * Checks if woflan.dll should be used for qualanalysis <br />
+	 * For non-windows-systems it always should return false
+	 * 
+	 * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+	 * 
+	 * @return true if woflan.dll should be used for qualanalysis
+	 */
+	public Boolean isUseWoflanDLL();
 }
