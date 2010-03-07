@@ -2,8 +2,8 @@ package org.woped.qualanalysis.soundness.algorithms;
 
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.scomponent.ISComponentTest;
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.scomponent.SComponentTest;
-import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.workflow.IWorkflowTest;
-import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.workflow.WorkflowTest;
+import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.sourcesink.ISourceSinkTest;
+import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.sourcesink.SourceSinkTest;
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.deadtransition.DeadTransitionTest;
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.deadtransition.IDeadTransitionTest;
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.nonliveTransitions.INonLiveTranstionTest;
@@ -67,10 +67,16 @@ public class AlgorithmFactory {
      * @param lolNet without tStar.
      * @return
      */
-    public static IWorkflowTest createWorkflowTest(LowLevelPetriNet lolNet) {
-        return new WorkflowTest(lolNet);
+    public static ISourceSinkTest createSourceSinkTest(LowLevelPetriNet lolNet) {
+        return new SourceSinkTest(lolNet);
     }
 
+    /**
+     * 
+     * @param <K> node type.
+     * @param net node net.
+     * @return test algorithm.
+     */
     public static <K extends INode<K>> IStronglyConnectedComponentTestGen<K> createSccTest(INodeNet<K> net) {
         return new StronglyConnectedComponentTestGenTarjan<K>(net);
 

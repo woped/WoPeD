@@ -22,7 +22,6 @@ public class QualanalysisServiceImplement extends AbstractQualanalysisService {
 		super(editor);
 		sComponent = new SComponentImplement(editor);
 		soundnessCheck = new SoundnessCheckImplement(editor);
-		//workflowCheck = new WorkflowCheckImplement(editor);
 	}
 
 	public void cleanup() {
