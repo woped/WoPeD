@@ -1,67 +1,91 @@
 <html>
 
-<head>
-<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
-<meta name="ProgId" content="FrontPage.Editor.Document">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Soundness</title>
-<link rel="stylesheet" type="text/css" href="../woped.css">
-</head>
-
-<body>
-
-<h2>Wizard</h2>
-<p>The Wizard has two tabs: Assistant and Expert. 
-Both are explained in the following description</p>
-
-<h3>Assistant</h3>
-The Assistant tab is made for beginners. The startpage includes general informations about
-the Petri net, like places and transitions, which can be highlighted. 
-Besides it is possible to navigate from the startpage to the workflow analysis 
-and soundness analysis by clicking the magnifying glass. The magnifying glass just appears, if errors either in the workflow or in the soundness analysis occured. </br>
-</br>
-<center><img border="0" src="../images/Startpage.png"></center>
-<blockquote>-Workflow - Analysis:</br>
-The workflow analysis shows errors of basic elements, which are requirements for a 
-valid Petri net. There is a short description beneath each point, 
-helping to correct the net.</br></br>
--Soundness - Analysis:</br>
-The soundness analysis checks the boundedness, liveness, well-structuredness and free choice.
-</br></br>
-<center><img border="0" src="../images/soundness.png"></center>
-</br>
-By clicking the magnifying glass, you can navigate to a new page, 
-which shows and describes the errors. </blockquote>
-</br>
-<center><img border="0" src="../images/liveness.png"></center>
-
-<h3>Expert</h3>
-The Expert tab is made for people with advanced Petri net knowledge. You can see a detailed tree
-with informations about the net, soundness and general facts. There are no descriptions or another type of help.
-</br></br>
-<center><img border="0" src="../images/expert.png"></center>
-
-<h3>Icon description</h3>
-<ul>
-  <li><img border="0" src="../images/view-refresh.png" width="16" height="16">
-    &nbsp; Refresh - refresh the sidebar, only appears if auto refresh is deactivated</li>
-  <li><img border="0" src="../images/icons/close.gif" width="16" height="16">
-  	&nbsp; Close - close the sidebar</li>
-  <li><img border="0" src="../images/okay.png" width="16" height="16">
-  	&nbsp; Correct - There were no errors detected in the analysis</li>
-  <li><img border="0" src="../images/process-stop.png" width="16" height="16">
-    &nbsp; Error - Errors were detected in the analysis</li>
-  <li><img border="0" src="../images/emblem-important.png" width="16" height="16">
-  	&nbsp; Attention - The Petri net is sound, but an important characteristic like wellstructuredness or free choice is incorrect</li>
-  <li><img border="0" src="../images/system-search.png" width="16" height="16">
-  	&nbsp; Magnifying glass - get more details</li>
-  <li><img border="0" src="../images/go-previous.png" width="16" height="16">
-  	&nbsp; Back - return to the previous page</li>
-  <li><img border="0" src="../images/go-home.png" width="16" height="16">
-  	&nbsp; Home - return to the startpage</li>
-  <li><img border="0" src="../images/help-browser.png" width="16" height="16">
-  	&nbsp; Question mark - shows a description of the error</li>
-</ul>
-
-</body>
+	<head>
+		<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<title>Analysis-Sidebar</title>
+		<link rel="stylesheet" type="text/css" href="../woped.css">
+	</head>
+	
+	<body>
+		<h2>Wizard</h2>
+		<p>
+			The Wizard has two tabs and two checkboxes under the tabs. 
+			The tabs and the checkboxes are explained in the following description
+		</p>
+		
+		<h3>Assistant</h3>
+		<p>
+			The Assistant tab is made for beginners. The startpage includes general informations about
+			the Petri net, like places and transitions, which can be highlighted. 
+			Besides it is possible to navigate from the startpage to the workflow analysis 
+			and soundness analysis by clicking the magnifying glass. The magnifying glass just appears, 
+			if errors either in the workflow or in the soundness analysis occured.
+		</p>
+		<p>
+			<u>Workflow - Analysis:</u><br />
+			The workflow analysis shows errors of basic elements, which are requirements for a 
+			valid Petri net. There is a short description beneath each point,
+			helping to correct the net.
+		</p>
+		<p>
+			<u>Soundness - Analysis:</u><br />
+			The soundness analysis checks the boundedness, liveness, well-structuredness and free choice.
+		</p>
+		<p>
+			By clicking the magnifying glass, you can navigate to a new page, 
+			which shows and describes the errors. It's also possible to click 
+			on the shown errors to show the incorrect elements in the editor.
+		</p>
+		<br />
+		<center>
+			<img border="0" src="../images/analysis_sidebar/startpage_medium.png">
+			<img border="0" src="../images/analysis_sidebar/soundness_medium.png">
+		</center>
+		<center>	
+			<img border="0" src="../images/analysis_sidebar/wellstructuredness_medium.png">
+		</center>
+		<br />
+		<h3>Expert</h3>
+		<p>
+			The Expert tab is made for people with advanced Petri net knowledge. You can see a detailed tree
+			with informations about the net, soundness and general facts. There are no descriptions or another type of help.
+		</p>
+		<br />
+		<center>
+			<img border="0" src="../images/analysis_sidebar/expert_medium.png">
+		</center>
+		<br />
+		<p>
+			After explaining the two tabs, there are two Checkboxes under the tabs to explain.<br />
+			The first Checkbox enables or disables the auto refresh of the sidebar. When it's enabled the sidebar refreshs immediately when the net changes.
+			Otherwise the User must refreh the sidebar with the refresh Icon in the upper right corner of the sidebar.<br />
+			The second Checkbox is just selectable if the net in the editor is a correct workflow. When selected the t* transition is shown in the net - the net is short circuited.
+		</p>
+		<br />
+		<center><img border="0" src="../images/analysis_sidebar/t_star_medium.png"></center>
+		<h3>Icon description</h3>
+		<ul>
+		  <li><img border="0" src="../images/view-refresh.png" width="16" height="16">
+		    &nbsp; Refresh - refresh the sidebar, only appears if auto refresh is deactivated</li>
+		  <li><img border="0" src="../images/icons/close.gif" width="16" height="16">
+		  	&nbsp; Close - close the sidebar</li>
+		  <li><img border="0" src="../images/okay.png" width="16" height="16">
+		  	&nbsp; Correct - There were no errors detected in the analysis</li>
+		  <li><img border="0" src="../images/process-stop.png" width="16" height="16">
+		    &nbsp; Error - Errors were detected in the analysis</li>
+		  <li><img border="0" src="../images/emblem-important.png" width="16" height="16">
+		  	&nbsp; Attention - The Petri net is sound, but an important characteristic like wellstructuredness or free choice is incorrect</li>
+		  <li><img border="0" src="../images/system-search.png" width="16" height="16">
+		  	&nbsp; Magnifying glass - get more details</li>
+		  <li><img border="0" src="../images/go-previous.png" width="16" height="16">
+		  	&nbsp; Back - return to the previous page</li>
+		  <li><img border="0" src="../images/go-home.png" width="16" height="16">
+		  	&nbsp; Home - return to the startpage</li>
+		  <li><img border="0" src="../images/help-browser.png" width="16" height="16">
+		  	&nbsp; Question mark - shows a description of the error</li>
+		</ul>
+	
+	</body>
 </html>
