@@ -3,7 +3,6 @@ package org.woped.qualanalysis.service;
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.soundness.SComponentImplement;
 import org.woped.qualanalysis.soundness.SoundnessCheckImplement;
-import org.woped.qualanalysis.soundness.WorkflowCheckImplement;
 
 /**
  * class for qualanalysis servies implemented completely in java.
