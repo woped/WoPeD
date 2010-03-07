@@ -1,6 +1,5 @@
 package org.woped.qualanalysis.service.interfaces;
 
-import java.util.Iterator;
 import java.util.Set;
 
 import org.woped.core.model.AbstractElementModel;
@@ -15,49 +14,55 @@ public interface IWorkflowCheck {
 
     /**
      * 
-     * @return an iterator for all source places
+     * @return a set with all source places
      */
-    public Iterator<AbstractElementModel> getSourcePlacesIterator();
+    public Set<AbstractElementModel> getSourcePlaces();
 
     /**
      * 
-     * @return an iterator for all sink places
+     * @return a set with all sink places
      */
-    public Iterator<AbstractElementModel> getSinkPlacesIterator();
+    public Set<AbstractElementModel> getSinkPlaces();
 
     /**
      * 
-     * @return an iterator for all transitions with empty preset
+     * @return a set with all transitions with empty preset
      */
-    public Iterator<AbstractElementModel> getSourceTransitionsIterator();
+    public Set<AbstractElementModel> getSourceTransitions();
 
     /**
      * 
-     * @return an iterator for all transitions with empty postset
+     * @return a set with all transitions with empty postset
      */
-    public Iterator<AbstractElementModel> getSinkTransitionsIterator();
+    public Set<AbstractElementModel> getSinkTransitions();
 
     /**
      * 
-     * @return an iterator for all nodes with empty preset and empty postset
+     * @return a set with all nodes with empty preset and empty postset
      */
-    public Iterator<AbstractElementModel> getNotConnectedNodes();
+    public Set<AbstractElementModel> getNotConnectedNodes();
 
     /**
      * 
-     * @return an iterator for all nodes not being strongly connected
+     * @return a set with all nodes not being strongly connected
      */
-    public Iterator<AbstractElementModel> getNotStronglyConnectedNodes();
+    public Set<AbstractElementModel> getNotStronglyConnectedNodes();
 
     /**
      * 
-     * @return an iterator for strongly connected components.
+     * @return a set with strongly connected components.
      */
-    public Iterator<Set<AbstractElementModel>> getStronglyConnectedComponents();
+    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents();
 
     /**
      * 
-     * @return an iterator for strongly connected components.
+     * @return a set with strongly connected components.
      */
-    public Iterator<Set<AbstractElementModel>> getConnectedComponents();
+    public Set<Set<AbstractElementModel>> getConnectedComponents();
+
+    /**
+     * 
+     * @return true if workflow-property is given
+     */
+    public boolean isWorkflowNet();
 }

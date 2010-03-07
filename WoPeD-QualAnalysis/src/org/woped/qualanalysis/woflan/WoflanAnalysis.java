@@ -102,9 +102,9 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return uncoveredPlaces.size();
     }
 
-    public Iterator<AbstractElementModel> getNotSCoveredIterator() {
+    public Set<AbstractElementModel> getNotSCovered() {
         calculateSComponents();
-        return uncoveredPlaces.iterator();
+        return uncoveredPlaces;
     }
 
     public int getNumSComponents() {
@@ -112,9 +112,9 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofSCom, 0, 0);
     }
 
-    public Iterator<List<AbstractElementModel>> getSComponentsIterator() {
+    public Set<List<AbstractElementModel>> getSComponents() {
         calculateSComponents();
-        return getListOfListsIterator(getNumSComponents(), m_myWofLan.InfoSComNofN, m_myWofLan.InfoSComNName);
+        return getSetOfLists(getNumSComponents(), m_myWofLan.InfoSComNofN, m_myWofLan.InfoSComNName);
     }
 
     public int getNumNotNonNegPInvariantCovered() {
@@ -162,9 +162,9 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofDeadT, 0, 0);
     }
 
-    public Iterator<AbstractElementModel> getDeadTransitionsIterator() {
+    public Set<AbstractElementModel> getDeadTransitions() {
         calculateLivenessInfo();
-        return getListIterator(getNumDeadTransitions(), m_myWofLan.InfoDeadTName);
+        return getSet(getNumDeadTransitions(), m_myWofLan.InfoDeadTName);
     }
 
     public int getNumNonLiveTransitions() {
@@ -172,9 +172,9 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofNLiveT, 0, 0);
     }
 
-    public Iterator<AbstractElementModel> getNonLiveTransitionsIterator() {
+    public Set<AbstractElementModel> getNonLiveTransitions() {
         calculateLivenessInfo();
-        return getListIterator(getNumNonLiveTransitions(), m_myWofLan.InfoNLiveTName);
+        return getSet(getNumNonLiveTransitions(), m_myWofLan.InfoNLiveTName);
     }
 
     public int getNumNonLiveSequences() {
@@ -203,9 +203,9 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
     }
 
     // ! Returns an iterator over all unbounded places of the net
-    public Iterator<AbstractElementModel> getUnboundedPlacesIterator() {
+    public Set<AbstractElementModel> getUnboundedPlaces() {
         calculateBoundednessInfo();
-        return getListIterator(getNumUnboundedPlaces(), m_myWofLan.InfoUnbPName);
+        return getSet(getNumUnboundedPlaces(), m_myWofLan.InfoUnbPName);
     }
 
     public Iterator<AbstractElementModel> getListIterator(int nNumElements, int nElementNameCommand) {
@@ -235,6 +235,35 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
             sequences.add(currentSequence);
         }
         return sequences.iterator();
+    }
+    
+    public Set<AbstractElementModel> getSet(int nNumElements, int nElementNameCommand) {
+        Set<AbstractElementModel> result = new HashSet<AbstractElementModel>();
+        for (int i = 0; i < nNumElements; ++i) {
+            AbstractElementModel current = getElementInfo(nElementNameCommand, i, 0);
+            if (current != null) {
+                result.add(current);
+            }
+        }
+        return result;
+    }
+
+    public Set<List<AbstractElementModel>> getSetOfLists(int nNumLists, int nNumElementsCommand,
+            int nElementNameCommand) {
+        Set<List<AbstractElementModel>> sequences = new HashSet<List<AbstractElementModel>>();
+        for (int i = 0; i < nNumLists; ++i) {
+            ArrayList<AbstractElementModel> currentSequence = new ArrayList<AbstractElementModel>();
+
+            int nNumElementsInSequence = getIntInfo(nNumElementsCommand, i, 0);
+            for (int j = 0; j < nNumElementsInSequence; ++j) {
+                AbstractElementModel element = getElementInfo(nElementNameCommand, i, j);
+                if (element != null) {
+                    currentSequence.add(element);
+                }
+            }
+            sequences.add(currentSequence);
+        }
+        return sequences;
     }
 
     private int getIntInfo(int nInfo, int nIndex, int nSubIndex) {

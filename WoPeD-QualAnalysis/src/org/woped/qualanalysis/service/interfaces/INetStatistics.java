@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.service.interfaces;
 
-import java.util.Iterator;
+import java.util.Set;
 
 import org.woped.core.model.AbstractElementModel;
 
@@ -15,27 +15,27 @@ public interface INetStatistics {
 	
 	/**
 	 * 
-	 * @return an iterator for all places
+	 * @return a set with all places
 	 */
-	public Iterator<AbstractElementModel> getPlacesIterator();
+	public Set<AbstractElementModel> getPlaces();
 	
 	/**
 	 * 
-	 * @return an iterator for all transitions
+	 * @return a set with all transitions
 	 */
-	public Iterator<AbstractElementModel> getTransitionsIterator();
+	public Set<AbstractElementModel> getTransitions();
 
 	/**
 	 * 
-	 * @return an iterator for all operator-transitions
+	 * @return a set with all operator-transitions
 	 */
-	public Iterator<AbstractElementModel> getOperatorsIterator();
+	public Set<AbstractElementModel> getOperators();
 
 	/**
 	 * 
-	 * @return an iterator for all subprocesses
+	 * @return a set with all subprocesses
 	 */
-	public Iterator<AbstractElementModel> getSubprocessesIterator();
+	public Set<AbstractElementModel> getSubprocesses();
 
 	/**
 	 * 

@@ -42,10 +42,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_places.size();
     }
 
-    // ! Returns an iterator over all places of the net
-    public Iterator<AbstractElementModel> getPlacesIterator() {
+    public Set<AbstractElementModel> getPlaces() {
         calculateBasicNetInfo();
-        return m_places.iterator();
+        return m_places;
     }
 
     public int getNumTransitions() {
@@ -53,9 +52,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_transitions.size();
     }
 
-    public Iterator<AbstractElementModel> getTransitionsIterator() {
+    public Set<AbstractElementModel> getTransitions() {
         calculateBasicNetInfo();
-        return m_transitions.iterator();
+        return m_transitions;
     }
 
     public int getNumSubprocesses() {
@@ -63,9 +62,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_subprocesses.size();
     }
 
-    public Iterator<AbstractElementModel> getSubprocessesIterator() {
+    public Set<AbstractElementModel> getSubprocesses() {
         calculateBasicNetInfo();
-        return m_subprocesses.iterator();
+        return m_subprocesses;
     }
 
     public int getNumOperators() {
@@ -73,9 +72,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_operators.size();
     }
 
-    public Iterator<AbstractElementModel> getOperatorsIterator() {
+    public Set<AbstractElementModel> getOperators() {
         calculateBasicNetInfo();
-        return m_operators.iterator();
+        return m_operators;
     }
 
     public int getNumArcs() {
@@ -87,9 +86,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_sourcePlaces.size();
     }
 
-    public Iterator<AbstractElementModel> getSourcePlacesIterator() {
+    public Set<AbstractElementModel> getSourcePlaces() {
         calculateBasicNetInfo();
-        return m_sourcePlaces.iterator();
+        return m_sourcePlaces;
     }
 
     public int getNumSourceTransitions() {
@@ -97,9 +96,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_sourceTransitions.size();
     }
 
-    public Iterator<AbstractElementModel> getSourceTransitionsIterator() {
+    public Set<AbstractElementModel> getSourceTransitions() {
         calculateBasicNetInfo();
-        return m_sourceTransitions.iterator();
+        return m_sourceTransitions;
     }
 
     public int getNumSinkPlaces() {
@@ -107,9 +106,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_sinkPlaces.size();
     }
 
-    public Iterator<AbstractElementModel> getSinkPlacesIterator() {
+    public Set<AbstractElementModel> getSinkPlaces() {
         calculateBasicNetInfo();
-        return m_sinkPlaces.iterator();
+        return m_sinkPlaces;
     }
 
     public int getNumSinkTransitions() {
@@ -117,9 +116,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_sinkTransitions.size();
     }
 
-    public Iterator<AbstractElementModel> getSinkTransitionsIterator() {
+    public Set<AbstractElementModel> getSinkTransitions() {
         calculateBasicNetInfo();
-        return m_sinkTransitions.iterator();
+        return m_sinkTransitions;
     }
 
     public int getNumMisusedOperators() {
@@ -127,9 +126,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_misusedOperators.size();
     }
 
-    public Iterator<AbstractElementModel> getMisusedOperatorsIterator() {
+    public Set<AbstractElementModel> getMisusedOperators() {
         calculateBasicNetInfo();
-        return m_misusedOperators.iterator();
+        return m_misusedOperators;
     }
 
     public int getNumNotConnectedNodes() {
@@ -139,9 +138,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
 
     // ! Return all nodes of the current net that
     // ! are not connected
-    public Iterator<AbstractElementModel> getNotConnectedNodes() {
+    public Set<AbstractElementModel> getNotConnectedNodes() {
         calculateConnections();
-        return m_notConnectedNodes.iterator();
+        return m_notConnectedNodes;
     }
 
     public int getNumNotStronglyConnectedNodes() {
@@ -151,9 +150,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
 
     // ! Return all nodes of the current net that
     // ! are not strongly connected
-    public Iterator<AbstractElementModel> getNotStronglyConnectedNodes() {
+    public Set<AbstractElementModel> getNotStronglyConnectedNodes() {
         calculateConnections();
-        return m_notStronglyConnectedNodes.iterator();
+        return m_notStronglyConnectedNodes;
     }
 
     public int getNumFreeChoiceViolations() {
@@ -164,11 +163,10 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
     // ! Return a list of free-choice violations
     // ! Each free-choice violation is represented
     // ! by a Set of nodes defining the violation
-    // ! @return Iterator through a list of sets
-    // ! of nodes violating the free-choice property
-    public Iterator<Set<AbstractElementModel>> getFreeChoiceViolations() {
+    // ! @return set of sets of nodes violating the free-choice property
+    public Set<Set<AbstractElementModel>> getFreeChoiceViolations() {
         calculateFreeChoice();
-        return m_freeChoiceViolations.iterator();
+        return m_freeChoiceViolations;
     }
 
     // ! Detect PT handles in the current net
@@ -181,10 +179,10 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
 
     // ! Detect PT handles in the current net
     // ! and return an iterator over the result
-    // ! @return Iterator over PT handles found in the net
-    public Iterator<Set<AbstractElementModel>> getPTHandlesIterator() {
+    // ! @return set of PT handles found in the net
+    public Set<Set<AbstractElementModel>> getPTHandles() {
         calculatePTHandles();
-        return m_PTHandles.iterator();
+        return m_PTHandles;
     }
 
     // ! Detect TP handles in the current net
@@ -197,10 +195,10 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
 
     // ! Detect TP handles in the current net
     // ! and return an iterator over the result
-    // ! @return Iterator over TP handles found in the net
-    public Iterator<Set<AbstractElementModel>> getTPHandlesIterator() {
+    // ! @return set of TP handles found in the net
+    public Set<Set<AbstractElementModel>> getTPHandles() {
         calculateTPHandles();
-        return m_TPHandles.iterator();
+        return m_TPHandles;
     }
 
     // ! Detect existing handle clusters
@@ -974,15 +972,39 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
      * @see IWorkflowCheck#getStronglyConnectedNodes()
      */
     @Override
-    public Iterator<Set<AbstractElementModel>> getStronglyConnectedComponents() {
+    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents() {
         // not implemented
-        return new HashSet<Set<AbstractElementModel>>().iterator();
+        return new HashSet<Set<AbstractElementModel>>();
     }
 
     @Override
-    public Iterator<Set<AbstractElementModel>> getConnectedComponents() {
+    public Set<Set<AbstractElementModel>> getConnectedComponents() {
         // not implemented
-        return new HashSet<Set<AbstractElementModel>>().iterator();
+        return new HashSet<Set<AbstractElementModel>>();
     }
+
+	@Override
+	public boolean isWorkflowNet() {
+		if (getNumSourcePlaces() != 1) {
+            return false;
+        }
+        if (getNumSinkPlaces() != 1) {
+            return false;
+        }
+        if (getNumSourceTransitions() != 0) {
+            return false;
+        }
+        if (getNumSinkTransitions() != 0) {
+            return false;
+        }
+        if (getNumNotConnectedNodes() != 0) {
+            return false;
+        }
+        if (getNumNotStronglyConnectedNodes() != 0) {
+            return false;
+        }
+        return true;
+	}
+    
 
 }

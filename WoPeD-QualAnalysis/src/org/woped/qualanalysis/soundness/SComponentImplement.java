@@ -2,7 +2,6 @@ package org.woped.qualanalysis.soundness;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -25,6 +24,9 @@ public class SComponentImplement implements ISComponent {
 
 	private IEditor editor = null;
 	private ISComponentTest sComponentTest = null;
+	
+	private Set<AbstractElementModel> notSCovered = null;
+	private Set<List<AbstractElementModel>> sComponentsSet = null;
 
 	/**
 	 * 
@@ -38,37 +40,41 @@ public class SComponentImplement implements ISComponent {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.woped.qualanalysis.service.ISComponent#getNotSCoveredIterator()
+	 * @see org.woped.qualanalysis.service.ISComponent#getNotSCovered()
 	 */
 	@Override
-	public Iterator<AbstractElementModel> getNotSCoveredIterator() {
-		Set<AbstractElementModel> notSCovered = new HashSet<AbstractElementModel>();
-		for (PlaceNode place : getSComponentTest().getNotSCovered()) {
-			notSCovered.add(getAEM(place));
+	public Set<AbstractElementModel> getNotSCovered() {
+		if(notSCovered == null){
+			notSCovered = new HashSet<AbstractElementModel>();
+			for (PlaceNode place : getSComponentTest().getNotSCovered()) {
+				notSCovered.add(getAEM(place));
+			}
 		}
-		return notSCovered.iterator();
+		return notSCovered;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.woped.qualanalysis.service.ISComponent#getSComponentsIterator()
+	 * @see org.woped.qualanalysis.service.ISComponent#getSComponents()
 	 */
 	@Override
-	public Iterator<List<AbstractElementModel>> getSComponentsIterator() {
-		Set<List<AbstractElementModel>> sComponentsSet = new HashSet<List<AbstractElementModel>>();
-		List<AbstractElementModel> sComponent;
-		for (Set<AbstractNode> set : getSComponentTest().getSComponents()) {
-			sComponent = new ArrayList<AbstractElementModel>();
-			for (AbstractNode node : set) {
-				if (!sComponent.contains(getAEM(node)))
-					sComponent.add(getAEM(node));
+	public Set<List<AbstractElementModel>> getSComponents() {
+		if(sComponentsSet == null){
+			sComponentsSet = new HashSet<List<AbstractElementModel>>();
+			List<AbstractElementModel> sComponent;
+			for (Set<AbstractNode> set : getSComponentTest().getSComponents()) {
+				sComponent = new ArrayList<AbstractElementModel>();
+				for (AbstractNode node : set) {
+					if (!sComponent.contains(getAEM(node)))
+						sComponent.add(getAEM(node));
+				}
+				// remove t* if existing
+				sComponent.remove(null);
+				sComponentsSet.add(sComponent);
 			}
-			// remove t* if existing
-			sComponent.remove(null);
-			sComponentsSet.add(sComponent);
 		}
-		return sComponentsSet.iterator();
+		return sComponentsSet;
 	}
 
 	/**

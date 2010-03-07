@@ -1,7 +1,7 @@
 package org.woped.qualanalysis.service.interfaces;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.woped.core.model.AbstractElementModel;
 
@@ -16,13 +16,13 @@ public interface ISComponent {
 
 	/**
 	 * 
-	 * @return an iterator for all sComponents
+	 * @return a set with all sComponents
 	 */
-	public Iterator<List<AbstractElementModel>> getSComponentsIterator();
+	public Set<List<AbstractElementModel>> getSComponents();
 
 	/**
 	 * 
-	 * @return an iterator of all not-SCovered
+	 * @return a set with all not-SCovered
 	 */
-	public Iterator<AbstractElementModel> getNotSCoveredIterator();
+	public Set<AbstractElementModel> getNotSCovered();
 }

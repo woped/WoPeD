@@ -42,8 +42,8 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
      * @return new created lowlevelPetriNet
      */
     protected void createLowLevelPetriNet() {
-        Iterator<AbstractElementModel> iterTransition = sa.getTransitionsIterator();
-        Iterator<AbstractElementModel> iterPlace = sa.getPlacesIterator();
+        Iterator<AbstractElementModel> iterTransition = sa.getTransitions().iterator();
+        Iterator<AbstractElementModel> iterPlace = sa.getPlaces().iterator();
 
         LowLevelPetriNet lNet = new LowLevelPetriNet();
         Set<AbstractElementModel> successors;
@@ -85,7 +85,7 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
         }
         // if editor is subprocess-editor, add a token to source-places
         if (isSubprocess) {
-            Iterator<AbstractElementModel> sourcePlacesIterator = sa.getSourcePlacesIterator();
+            Iterator<AbstractElementModel> sourcePlacesIterator = sa.getSourcePlaces().iterator();
             String sourcePlaceId;
             while (sourcePlacesIterator.hasNext()) {
                 sourcePlaceId = sourcePlacesIterator.next().getId();

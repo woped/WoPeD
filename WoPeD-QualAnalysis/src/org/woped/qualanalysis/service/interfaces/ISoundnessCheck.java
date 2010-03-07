@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.service.interfaces;
 
-import java.util.Iterator;
+import java.util.Set;
 
 import org.woped.core.model.AbstractElementModel;
 
@@ -15,20 +15,20 @@ public interface ISoundnessCheck {
 	
 	/**
 	 * 
-	 * @return an iterator for all dead transitions
+	 * @return a set with all dead transitions
 	 */
-	public Iterator<AbstractElementModel> getDeadTransitionsIterator();
+	public Set<AbstractElementModel> getDeadTransitions();
 	
 	/**
 	 * 
-	 * @return an iterator for all nonLive transitions
+	 * @return a set with all nonLive transitions
 	 */
-	public Iterator<AbstractElementModel> getNonLiveTransitionsIterator();	
+	public Set<AbstractElementModel> getNonLiveTransitions();	
 	
 	/**
 	 * 
-	 * @return an iterator for all unbounded places
+	 * @return a set with for all unbounded places
 	 */
-	public Iterator<AbstractElementModel> getUnboundedPlacesIterator();	
+	public Set<AbstractElementModel> getUnboundedPlaces();	
 		
 }
