@@ -245,4 +245,8 @@ public interface IEditor extends IViewController {
 	 * @return true if woflan.dll should be used for qualanalysis
 	 */
 	public Boolean isUseWoflanDLL();
+	
+	public boolean isShowingTStar();
+	
+	public void setTStarEnabled(boolean tStarEnabled);
 }

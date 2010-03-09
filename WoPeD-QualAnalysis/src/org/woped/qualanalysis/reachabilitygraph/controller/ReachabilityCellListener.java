@@ -62,7 +62,7 @@ public class ReachabilityCellListener implements MouseListener {
         } else {
             rgp = (ReachabilityGraphPanel) graph.getParent().getParent().getParent();
             if (rgp.getRefreshButtonEnabled()) {
-                ReachabilityWarning.showRefreshWarning(null);
+                ReachabilityWarning.showReachabilityWarning(null, "QuanlAna.ReachabilityGraph.RefreshWarning");
                 return;
             }
             ;

@@ -37,7 +37,7 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 				JDesktopPane desktop = (JDesktopPane) dui.getPropertyChangeSupportBean();
 				// when the TokenGame is enabled there is shown a warning message
 				if(editor.isTokenGameEnabled()){
-					ReachabilityWarning.showSimulationRunningWarning(desktop);
+					ReachabilityWarning.showReachabilityWarning(desktop, "QuanlAna.ReachabilityGraph.SimulationWarning");
 					return;
 				}
 				JInternalFrame edit = desktop.getSelectedFrame();

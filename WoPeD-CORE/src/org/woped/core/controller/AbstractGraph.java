@@ -22,6 +22,7 @@
  */
 package org.woped.core.controller;
 
+import java.awt.Container;
 import java.awt.event.MouseEvent;
 import java.awt.print.Printable;
 import java.util.ArrayList;
@@ -374,5 +375,21 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
 	 */
 	public void setLastEditedNull(){
 		lastEdited = null;
+	}
+	
+	@Override
+	public void setEnabled(boolean enabled) {
+		Container parent = this.getParent();
+		if (parent != null) {
+			while (!(parent instanceof IEditor)) {
+				parent = parent.getParent();
+			}
+			if (((IEditor) parent).isShowingTStar())
+				super.setEnabled(false);
+			else
+				super.setEnabled(enabled);
+		}else{
+			super.setEnabled(enabled);
+		}
 	}
 }

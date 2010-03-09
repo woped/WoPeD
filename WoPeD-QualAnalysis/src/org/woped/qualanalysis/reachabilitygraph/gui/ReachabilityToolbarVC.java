@@ -30,22 +30,17 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
-import java.util.Iterator;
 import java.util.Vector;
 
-import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.SwingUtils;
@@ -258,7 +253,7 @@ public class ReachabilityToolbarVC extends JToolBar {
 			try {
 				rgp.layoutGraph(selectedIndex, false);
 			} catch (SimulationRunningException e1) {
-				ReachabilityWarning.showSimulationRunningWarning(this.rgp);
+				ReachabilityWarning.showReachabilityWarning(this.rgp, "QuanlAna.ReachabilityGraph.SimulationWarning");
 			}
 		}
 		
@@ -369,7 +364,7 @@ public class ReachabilityToolbarVC extends JToolBar {
 				jcbZoomChooser.setSelectedItem(str);
 			} catch (SimulationRunningException e) {
 				rgp.setRefreshButtonEnabled(true);
-				ReachabilityWarning.showSimulationRunningWarning(this.rgp);
+				ReachabilityWarning.showReachabilityWarning(this.rgp, "QuanlAna.ReachabilityGraph.SimulationWarning");
 			}
 		}
 		
@@ -383,7 +378,7 @@ public class ReachabilityToolbarVC extends JToolBar {
 				rgp.getEditor().setReadOnly(true);				
 				setUnselectButtonEnabled(false);
 			} catch (SimulationRunningException ex) {
-				ReachabilityWarning.showUnselectWarning(this.rgp);
+				ReachabilityWarning.showReachabilityWarning(this.rgp, "QuanlAna.ReachabilityGraph.UnselectWarning");
 			}		
 		}
 	}

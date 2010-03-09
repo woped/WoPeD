@@ -55,6 +55,7 @@ public class TStar {
 				tStar.removeAllChildren();
 				deleteCells(tStarComponents);
 				tStar = null;
+				editor.setTStarEnabled(false);
 				editor.getGraph().setEnabled(true);
 			}
 		} else {
@@ -65,6 +66,7 @@ public class TStar {
 					tStar = null;
 				}
 			}
+			editor.setTStarEnabled(true);
 			int smallestX = 0;
 			int biggestX = 0;
 			int smallestY = 0;

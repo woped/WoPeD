@@ -388,7 +388,7 @@ public class ReachabilitySettingsDialog extends JDialog {
 				try {
 					rgp.layoutGraph(rgp.getSelectedType(), false);
 				} catch (SimulationRunningException e1) {
-					ReachabilityWarning.showSimulationRunningWarning(this.rgp);
+					ReachabilityWarning.showReachabilityWarning(this.rgp, "QuanlAna.ReachabilityGraph.SimulationWarning");
 				}
 			}
 			ReachabilitySettingsDialog.this.dispose();

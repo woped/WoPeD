@@ -11,7 +11,8 @@ import org.woped.editor.controller.vc.EditorVC;
 /**
  * 
  * 
- * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller,
+ *         Sebastian Fuss
  * 
  */
 public class EditorSize {
@@ -34,7 +35,8 @@ public class EditorSize {
 	}
 
 	/**
-	 * resizes the editor basing on the size of the model and the maximum editor size
+	 * resizes the editor basing on the size of the model and the maximum editor
+	 * size
 	 */
 	public void resize() {
 		calculateMaxEditorSize();
@@ -52,39 +54,55 @@ public class EditorSize {
 	private void setSize(Dimension dim) {
 		Container parentContainer = null;
 		if (editor.isSubprocessEditor())
-			parentContainer = ((EditorVC) editor).getParent().getParent().getParent().getParent();
+			parentContainer = ((EditorVC) editor).getParent().getParent()
+					.getParent().getParent();
 		else
-			parentContainer = ((EditorVC) editor).getParent().getParent().getParent().getParent().getParent();
-		parentContainer.setSize(dim);
-		parentContainer.setLocation(0, 0);
+			parentContainer = ((EditorVC) editor).getParent().getParent()
+					.getParent().getParent().getParent();
+		Dimension currentSize = parentContainer.getSize();
+		if (currentSize.height > dim.height)
+			dim.height = currentSize.height;
+		if (currentSize.width > dim.width)
+			dim.width = currentSize.width;
+		if (currentSize.height != newEditorSize.height
+				|| currentSize.width != newEditorSize.width) {
+			parentContainer.setSize(dim);
+			parentContainer.setLocation(0, 0);
+		}
 	}
 
 	/**
-	 * calculates the maximum editor size the editor should always fit in the main window
+	 * calculates the maximum editor size the editor should always fit in the
+	 * main window
 	 */
 	private void calculateMaxEditorSize() {
 		if (editor.isSubprocessEditor())
-			maxEditorSize = ((EditorVC) editor).getParent().getParent().getParent().getParent().getParent().getSize();
+			maxEditorSize = ((EditorVC) editor).getParent().getParent()
+					.getParent().getParent().getParent().getSize();
 		else
-			maxEditorSize = ((EditorVC) editor).getParent().getParent().getParent().getParent().getParent().getParent()
-					.getSize();
+			maxEditorSize = ((EditorVC) editor).getParent().getParent()
+					.getParent().getParent().getParent().getParent().getSize();
 	}
 
 	/**
-	 * calculates the size of the model basing on model-position and -width/-height
+	 * calculates the size of the model basing on model-position and
+	 * -width/-height
 	 */
 	private void calculateModelSize() {
-		ModelElementContainer elements = editor.getModelProcessor().getElementContainer();
+		ModelElementContainer elements = editor.getModelProcessor()
+				.getElementContainer();
 		AbstractElementModel element = null;
 
 		modelSize = new Dimension(100, 100);
 
 		for (String elementId : elements.getIdMap().keySet()) {
 			element = elements.getElementById(elementId);
-			int elementNameWidth = element.getNameModel().getNameValue().length() * 7;
+			int elementNameWidth = element.getNameModel().getNameValue()
+					.length() * 7;
 			// TODO: The best would be taking the size of the blue box itself
 			if (element.getX() + element.getWidth() + elementNameWidth > modelSize.width) {
-				modelSize.width = element.getX() + element.getWidth() + elementNameWidth;
+				modelSize.width = element.getX() + element.getWidth()
+						+ elementNameWidth;
 			}
 			if (element.getY() + element.getHeight() > modelSize.height) {
 				modelSize.height = element.getY() + element.getHeight();
@@ -97,8 +115,10 @@ public class EditorSize {
 
 	/**
 	 * calculates the new editor size.<br />
-	 * the editor should not exceed the maxEditorSize and should not fall under the minEditorSize <br />
-	 * if analysisSideBar is visible, the sideBar-width will be added to the editor-width
+	 * the editor should not exceed the maxEditorSize and should not fall under
+	 * the minEditorSize <br />
+	 * if analysisSideBar is visible, the sideBar-width will be added to the
+	 * editor-width
 	 */
 	private void calculateNewEditorSize() {
 		// set minimum editor size

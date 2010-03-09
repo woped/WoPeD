@@ -193,6 +193,8 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     private boolean m_reachGraphEnabled = false;
 
     private boolean m_TokenGameEnabled = false;
+    
+    private boolean tStarEnabled = false;
 
     private boolean m_UnderstandabilityColoringEnabled = false;
 
@@ -1700,7 +1702,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         getGraph().drawNet(getModelProcessor());
         updateNet();
 
-		// editorSize.resize(); //TODO fix resize() then use it here
+		 editorSize.resize(); //TODO fix resize() then use it here
 
         setSaved(false);
     }
@@ -2278,7 +2280,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 			this.add(mainsplitPaneWithAnalysisBar);
 			analysisBarVisible = true;
 			this.revalidate();
-			// editorSize.resize(); //TODO fix resize() then use it here
+			 editorSize.resize(); //TODO fix resize() then use it here
 			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (this
 					.getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
@@ -2309,7 +2311,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 			this.add(m_mainSplitPane);
 			analysisBarVisible = false;
 			this.revalidate();
-			// editorSize.resize(); //TODO fix resize() then use it here
+			 editorSize.resize(); //TODO fix resize() then use it here
 		}
 	}
 
@@ -2352,5 +2354,13 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     @Override
     public Container getParent() {
         return super.getParent();
+    }
+    
+    public boolean isShowingTStar(){
+    	return tStarEnabled;
+    }
+    
+    public void setTStarEnabled(boolean tStarEnabled){
+    	this.tStarEnabled = tStarEnabled;
     }
 }

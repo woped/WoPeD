@@ -21,24 +21,12 @@ import org.woped.translations.Messages;
  */
 
 public class ReachabilityWarning {
-	public static void showSimulationRunningWarning(Component parentComponent){
+
+	public static void showReachabilityWarning(Component parentComponent, String message){
 		JOptionPane.showMessageDialog(parentComponent,
-				Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Message"),  // message
-				Messages.getString("QuanlAna.ReachabilityGraph.SimulationWarning.Title"), // title
+				Messages.getString(message + ".Message"),  // message
+				Messages.getString(message + ".Title"), // title
 			    JOptionPane.WARNING_MESSAGE); // type
 	}
-	public static void showRefreshWarning(Component parentComponent){
-		JOptionPane.showMessageDialog(parentComponent,
-				Messages.getString("QuanlAna.ReachabilityGraph.RefreshWarning.Message"),  // message
-				Messages.getString("QuanlAna.ReachabilityGraph.RefreshWarning.Title"), // title
-				
-			    JOptionPane.WARNING_MESSAGE); // type
-	}
-	public static void showUnselectWarning(Component parentComponent){
-		JOptionPane.showMessageDialog(parentComponent,
-				Messages.getString("QuanlAna.ReachabilityGraph.UnselectWarning.Message"),  // message
-				Messages.getString("QuanlAna.ReachabilityGraph.UnselectWarning.Title"), // title
-				
-			    JOptionPane.WARNING_MESSAGE); // type
-	}
+	
 }
