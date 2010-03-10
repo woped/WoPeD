@@ -15,6 +15,10 @@ import java.awt.*;
 public class TokenGameBarVC extends JInternalFrame {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Declaration of all JPanels
 	private JPanel                   PropertiesPanel               = null;
 	private JPanel                   NavigationPlayback            = null;

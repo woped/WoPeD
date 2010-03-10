@@ -21,7 +21,12 @@ import org.jgraph.graph.VertexView;
  */
 public abstract class AbstractViewFactory extends DefaultCellViewFactory
 {
-    abstract public CellView createView(GraphModel model, Object cell);
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	abstract public CellView createView(GraphModel model, Object cell);
 
     abstract protected EdgeView createEdgeView(Object cell);
 

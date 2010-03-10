@@ -14,6 +14,10 @@ import org.woped.qualanalysis.simulation.controller.*;
  */
 public class SlimInternalFrame extends NewInternalFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private TokenGameBarController   tgbController                 = null;
 	private SlimGameBarVC            SlimPanel                     = null;       
 	

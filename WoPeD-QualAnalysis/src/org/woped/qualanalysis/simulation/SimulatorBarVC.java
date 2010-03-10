@@ -34,14 +34,12 @@ import java.util.Vector;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
@@ -52,8 +50,6 @@ import org.woped.qualanalysis.reachabilitygraph.gui.DropDownButton;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
 import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
-import org.woped.qualanalysis.simulation.controller.TokenGameController;
-
 import org.woped.translations.Messages;
 
 
@@ -83,13 +79,6 @@ public class SimulatorBarVC extends JToolBar implements IViewController, MouseLi
 	private int                      stYsize                       = 20;
 	private boolean                  tokenGameButtonOnStage        = false;
 	
-  //Declaration of the Lists
-	private JList                    acoChoice                     = null; 
-	private JScrollPane              acoScroll                     = null;
-	private JList                    ahxChoice                     = null;
-	private JScrollPane              ahxScroll                     = null;
-
-    
   //Declaration of all Buttons
 	private JButton                  ppbSteps                      = null;
 	private JButton                  ppbPlay                       = null;
@@ -103,8 +92,6 @@ public class SimulatorBarVC extends JToolBar implements IViewController, MouseLi
 	private JButton                  pbnPause                      = null;
 	private JButton                  pbnFW                         = null;
 	private JButton                  pbnFastFW                     = null;
-	private JButton                  ahySave                       = null;
-	private JButton                  ahyDelete                     = null;
 	private JToggleButton            pbnRecord                     = null;
 	private JToggleButton            acoAuto                       = null;
 	private AbstractButton     		 tokenGameButton    		   = null;
@@ -122,21 +109,15 @@ public class SimulatorBarVC extends JToolBar implements IViewController, MouseLi
 	private int                      ListSizeX                     = 170;
 	private int                      ListSizeY                     = 200;
 	private JPanel                   SlimChoicePanel               = null;
-	private DefaultListModel         ChoiceContent                 = null;
 	private boolean                  isMouseOver                   = false;
 	
 	private DefaultListModel         acoChoiceItems                = null;
-	private DefaultListModel         ahxHistoryContent             = null;
 	private TokenGameBarController   tgbController                 = null;    
-	private TokenGameController      tgController				   = null;
-    
-        public SimulatorBarVC(TokenGameBarController tgbController, DefaultListModel acoChoiceItems, DefaultListModel ahxHistoryContent)
+	public SimulatorBarVC(TokenGameBarController tgbController, DefaultListModel acoChoiceItems, DefaultListModel ahxHistoryContent)
     {
         this.addMouseListener(this);
         this.setFloatable(false);
-        this.id = id;
         this.acoChoiceItems = acoChoiceItems;
-        this.ahxHistoryContent = ahxHistoryContent;
         setBorder(BorderFactory.createEtchedBorder());
         setRollover(true);
         this.tgbController = tgbController;
@@ -332,10 +313,10 @@ public class SimulatorBarVC extends JToolBar implements IViewController, MouseLi
     public final void fireViewEvent(AbstractViewEvent viewevent)
     {
         if (viewevent == null) return;
-        java.util.Vector vector;
+        Vector vector;
         synchronized (viewListener)
         {
-            vector = (java.util.Vector) viewListener.clone();
+            vector = (Vector) viewListener.clone();
         }
         if (vector == null) return;
         int i = vector.size();

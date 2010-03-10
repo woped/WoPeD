@@ -136,7 +136,7 @@ public class ReachabilityJGraph extends JGraph {
 				if (mark.toString().equals(((IMarking)rpm.getUserObject()).toString())){
 					rpm.setHighlight(true);
 					Rectangle2D  re = GraphConstants.getBounds(rpm.getAttributes());
-					Rectangle2D  revisi = this.getVisibleRect();
+					this.getVisibleRect();
 					JScrollBar scb = ((JScrollPane)	getParent().getParent()).getVerticalScrollBar();
 					if(scb.isVisible()){
 						// autoscroll down

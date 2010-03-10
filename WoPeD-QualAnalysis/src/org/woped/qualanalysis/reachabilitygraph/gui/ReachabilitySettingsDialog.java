@@ -15,7 +15,6 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.HashMap;
 
 import javax.swing.AbstractAction;
@@ -32,8 +31,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
-import org.woped.core.utilities.LoggerManager;
-import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.translations.Messages;
 
@@ -150,6 +147,11 @@ public class ReachabilitySettingsDialog extends JDialog {
         Object windowOkKey = new Object();
         KeyStroke windowOkStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
         Action windowOkAction = new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
             	ReachabilitySettingsDialog.this.saveButton.doClick();
             }
@@ -158,6 +160,11 @@ public class ReachabilitySettingsDialog extends JDialog {
         Object windowCancelKey = new Object();
         KeyStroke windowCancelStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         Action windowCancelAction = new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public void actionPerformed(ActionEvent e) {
             	ReachabilitySettingsDialog.this.cancelButton.doClick();
             }

@@ -1,26 +1,14 @@
 package org.woped.qualanalysis.simulation.controller;
-import java.awt.Dimension;
-import java.awt.MouseInfo;
+
 import java.awt.Point;
-import java.awt.PointerInfo;
-import java.awt.Rectangle;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.awt.geom.Dimension2D;
-import java.awt.geom.Line2D;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
@@ -31,8 +19,6 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.simulation.*;
 import org.woped.translations.Messages;
 
-import com.sun.java.swing.plaf.windows.WindowsBorders.InternalFrameLineBorder;
-
 public class TokenGameBarController implements Runnable {
 
 	//constants
@@ -42,13 +28,12 @@ public class TokenGameBarController implements Runnable {
 	public static final int	         EXPERT_VIEW				   = 0;
 
 	private TokenGameBarVC           ExpertView                    = null;
-	private SimulatorBarVC           simulatorView				   = null;
-    private ReferenceProvider        desktop                       = null;
+	private ReferenceProvider        desktop                       = null;
 	private TokenGameController      tgController                  = null;
 	private PetriNetModelProcessor   PetriNet                      = null;
 	//Linked Lists
 	private LinkedList<TransitionModel>               followingActivatedTransitions = null;
-	private LinkedList               ProcessEditors                = null;
+	private LinkedList<TokenGameController>               ProcessEditors                = null;
 
 	//Occurring Transitions
 	private TransitionModel          TransitionToOccur             = null;

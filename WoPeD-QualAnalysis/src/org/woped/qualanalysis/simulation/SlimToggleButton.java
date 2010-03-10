@@ -1,10 +1,8 @@
 package org.woped.qualanalysis.simulation;
-import javax.imageio.*;
 import javax.swing.*;
 import java.awt.*;
 import org.woped.translations.Messages;
 import java.awt.geom.*;
-import java.io.File;
 
 /**
  * The SlimButton-class has been implemented to create nice buttons for the TokenGameBar's
@@ -15,6 +13,10 @@ import java.io.File;
  */
 public class SlimToggleButton extends JToggleButton{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Button Images for the different Situations
 	private Image  standard     = null;
 	private Image  rollover     = null;

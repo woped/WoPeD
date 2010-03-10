@@ -58,6 +58,11 @@ import org.woped.core.utilities.LoggerManager;
  */
 public abstract class AbstractGraph extends org.jgraph.JGraph implements Printable
 {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
     private BasicMarqueeHandler editorMarquee      = null;
     private int                 modelPorcessorType = -1;
     private GraphUndoManager    undoManager        = null;

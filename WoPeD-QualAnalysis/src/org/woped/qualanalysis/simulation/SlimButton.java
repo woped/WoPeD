@@ -15,6 +15,10 @@ import java.awt.geom.*;
  */
 public class SlimButton extends JButton{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Constants
 	public final static int DEFAULT     = 0;
 	public final static int EYE_PLAY    = 1;
@@ -80,7 +84,7 @@ public class SlimButton extends JButton{
         	  rollover = Messages.getImageSource("Tokengame.SlimView.Button.Standard.Rollover");
         	  pressed  = Messages.getImageSource("Tokengame.SlimView.Button.Standard.Pressed");
         	  
-              Dimension d = new Dimension(40, 40);
+              new Dimension(40, 40);
               break;
         
          case EYE_PLAY:
@@ -104,7 +108,7 @@ public class SlimButton extends JButton{
         	  rollover = Messages.getImageSource("Tokengame.EyeView.Button.Back.Rollover");
         	  pressed  = Messages.getImageSource("Tokengame.EyeView.Button.Back.Pressed");
         		  
-        	  d = new Dimension(32, 68);
+        	  new Dimension(32, 68);
         	  break;
       	  
          case EYE_FORWARD:
@@ -116,7 +120,7 @@ public class SlimButton extends JButton{
         	  rollover = Messages.getImageSource("Tokengame.EyeView.Button.Forward.Rollover");
         	  pressed  = Messages.getImageSource("Tokengame.EyeView.Button.Forward.Pressed");
         		  
-        	  d = new Dimension(27, 68);
+        	  new Dimension(27, 68);
         	  break;
         	  
          case EYE_STOP:
@@ -128,7 +132,7 @@ public class SlimButton extends JButton{
          	  rollover = Messages.getImageSource("Tokengame.EyeView.Button.Stop.Rollover");
          	  pressed  = Messages.getImageSource("Tokengame.EyeView.Button.Stop.Pressed");
           		  
-         	  d = new Dimension(68, 29);
+         	  new Dimension(68, 29);
          	  break;
          	  
          case EYE_EXPERT:
@@ -140,7 +144,7 @@ public class SlimButton extends JButton{
             rollover = Messages.getImageSource("Tokengame.EyeView.Button.Expert.Rollover");
             pressed  = Messages.getImageSource("Tokengame.EyeView.Button.Expert.Pressed");
             		  
-            d = new Dimension(68, 28);
+            new Dimension(68, 28);
             break;
 
         }	

@@ -59,9 +59,6 @@ public class TokenGameHistoryManagerVC extends JDialog
 	private ListSelectionModel       SelectedItems    = null;
 	
 
-	//History-From-File
-	private Vector<SimulationModel> HistoryFromFile = null;      
-	
 	//Standard-Constructor
 	public TokenGameHistoryManagerVC(IUserInterface mediator, TokenGameBarController RC)
 	{
@@ -350,7 +347,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 		if(NameEntry.getText() == "")
 		{
 		   JOptionPane.showMessageDialog(this, Messages.getTitle("Tokengame.HistoryManager.ErrorNameEmpty"), Messages.getTitle("Tokengame.HistoryManager.SaveError"),  JOptionPane.ERROR_MESSAGE);
-		   return this.NAME_UNSAVE_CANCEL;
+		   return TokenGameHistoryManagerVC.NAME_UNSAVE_CANCEL;
 		}
 		// name is set
 		else

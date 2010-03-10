@@ -871,7 +871,6 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public void deleteOnlyCells(Object[] toDelete, boolean withGraph) {
 
         toDelete = Utils.sortArcsFirst(toDelete);
-        Object[] tempToDelete = new Object[1];
         Vector<Object> allPorts = new Vector<Object>();
         Vector<Object> allCells = new Vector<Object>();
         for (int i = 0; i < toDelete.length; i++) {
@@ -919,7 +918,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                                     }
 
                                     // if there are connected arcs delete their model
-                                    if (element.getChildCount() > 0 && false) {
+ /*                                   if (element.getChildCount() > 0 && false) {
                                         Set edges = ((DefaultPort) element.getChildAt(0)).getEdges();
                                         Iterator edgesIter = edges.iterator();
                                         while (edgesIter.hasNext()) {
@@ -929,7 +928,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                                                 getGraph().getModel().remove(tempToDelete);
                                             }
                                         }
-                                    }
+                                    }*/
                                     allPorts.add(element.getPort());
                                     allPorts.add(toDelete[i]);
                                     getModelProcessor().getElementContainer().removeOnlyElement(element.getId());
@@ -1702,7 +1701,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         getGraph().drawNet(getModelProcessor());
         updateNet();
 
-		 editorSize.resize(); //TODO fix resize() then use it here
+		editorSize.resize();
 
         setSaved(false);
     }
@@ -2280,7 +2279,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 			this.add(mainsplitPaneWithAnalysisBar);
 			analysisBarVisible = true;
 			this.revalidate();
-			 editorSize.resize(); //TODO fix resize() then use it here
+			editorSize.resize(); 
 			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (this
 					.getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithAnalysisBar.setResizeWeight(1);

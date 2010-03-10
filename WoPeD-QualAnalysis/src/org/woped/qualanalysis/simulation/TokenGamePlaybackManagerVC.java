@@ -19,6 +19,10 @@ import org.woped.translations.Messages;
 
 public class TokenGamePlaybackManagerVC extends JDialog
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Declaration of the Panel(s)
 	private JPanel       jp_PlayBackManager     = null;
 	private JPanel		 jp_occuretime			= null;
@@ -41,10 +45,6 @@ public class TokenGamePlaybackManagerVC extends JDialog
 	
 	//Declare Layout Items
 	private GridBagConstraints hmgbc        = null;
-	private int          ButtonSizeX        = 50;
-	private int          ButtonSizeY        = 25;
-	private int          ListSizeX          = 200;
-	private int          ListSizeY          = 200;
 	
 	//Declare Reference-Variables
 	private TokenGameBarController           RemoteControl    = null;     

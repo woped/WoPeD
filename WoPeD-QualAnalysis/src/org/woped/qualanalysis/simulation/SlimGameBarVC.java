@@ -1,13 +1,10 @@
 package org.woped.qualanalysis.simulation;
 import javax.swing.*;
-import javax.imageio.*;
 import java.awt.*;
 
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
 import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
 import org.woped.translations.Messages;
-import java.io.File;
 
 /**
  * Currently, this Views (SlimView and EyeView do only look well under Windows while you get the best
@@ -19,6 +16,11 @@ import java.io.File;
 
 public class SlimGameBarVC extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//Image
 	private Image  background     = null;
 	
@@ -63,7 +65,7 @@ public class SlimGameBarVC extends JPanel{
 	    this.ViewMode = ViewMode;
 	    ChoiceContent = Choice;
 	    this.tgbController = tgbController;
-	    if(ViewMode == tgbController.SLIM_VIEW)
+	    if(ViewMode == TokenGameBarController.SLIM_VIEW)
 	    {
 	    	d = new Dimension(580,110);
 	    }
@@ -77,7 +79,7 @@ public class SlimGameBarVC extends JPanel{
 	 
 	private JPanel addPlaybackNavigation(int ViewMode)
 	{
-	  if(ViewMode == tgbController.SLIM_VIEW)
+	  if(ViewMode == TokenGameBarController.SLIM_VIEW)
 	  {
 		//Define Playback-Buttons
 		pbnFastBW = new SlimButton(Messages.getImageIcon("Tokengame.RemoteControl.FastBackward"));
@@ -250,7 +252,7 @@ public class SlimGameBarVC extends JPanel{
 	
 	public Point getButtonCoords(boolean BackWard)
 	{
-	  if(tgbController.getViewMode() != tgbController.EXPERT_VIEW)
+	  if(tgbController.getViewMode() != TokenGameBarController.EXPERT_VIEW)
 	  {
 		if(!BackWard)
 		{
@@ -346,7 +348,7 @@ public class SlimGameBarVC extends JPanel{
 	
 	protected void paintComponent(Graphics g) 
 	{
-	  if(ViewMode == tgbController.SLIM_VIEW)
+	  if(ViewMode == TokenGameBarController.SLIM_VIEW)
 	  {
 	    background = Messages.getImageSource("Tokengame.SlimView.Panel");
 		g.drawImage (background, 0, 0, this);

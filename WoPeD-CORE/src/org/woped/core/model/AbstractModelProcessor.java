@@ -5,7 +5,11 @@ import java.io.Serializable;
 
 public abstract class AbstractModelProcessor implements Serializable
 {
-    private int                   processorType         = -1;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int                   processorType         = -1;
     private String                id                    = null;
     private String                name                  = null;
     private ModelProcessorContext modelProcessorContext = null;

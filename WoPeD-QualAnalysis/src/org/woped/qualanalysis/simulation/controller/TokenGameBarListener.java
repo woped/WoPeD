@@ -1,7 +1,6 @@
 package org.woped.qualanalysis.simulation.controller;
 import java.awt.event.*;
 
-import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.qualanalysis.simulation.*;
 
 import javax.swing.event.CaretEvent;
@@ -297,12 +296,12 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
 			 }
 		     break;
 		 case PM_SAVE_VIEW:
-			 if(RemoteControl.getViewMode() == RemoteControl.EXPERT_VIEW)
+			 if(RemoteControl.getViewMode() == TokenGameBarController.EXPERT_VIEW)
 			 {
 			   PlaybackDialog.savePMView();
 			   break;
 			 }
-			 if((RemoteControl.getViewMode() == RemoteControl.SLIM_VIEW) || (RemoteControl.getViewMode() == RemoteControl.EYE_VIEW))
+			 if((RemoteControl.getViewMode() == TokenGameBarController.SLIM_VIEW) || (RemoteControl.getViewMode() == TokenGameBarController.EYE_VIEW))
 			 {
 			   if(RemoteControl.tokengameRunning())
 			   {

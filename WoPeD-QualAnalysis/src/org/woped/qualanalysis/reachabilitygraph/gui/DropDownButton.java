@@ -44,7 +44,11 @@ import javax.swing.border.Border;
 
 public class DropDownButton extends Box {
 
-    private JButton mainButton;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JButton mainButton;
     private JButton dropDownButton;
     private boolean dropDownEnabled = false;
     private boolean mainRunsDefaultMenuOption = true;
@@ -224,7 +228,12 @@ public class DropDownButton extends Box {
     }
 
     private class DropDownMenu extends JMenu {
-        public void dispatchMouseEvent(MouseEvent e) {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public void dispatchMouseEvent(MouseEvent e) {
             processMouseEvent(e);
         }
     }
