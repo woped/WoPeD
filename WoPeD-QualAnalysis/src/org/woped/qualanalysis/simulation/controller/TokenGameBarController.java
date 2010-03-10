@@ -426,7 +426,7 @@ public class TokenGameBarController implements Runnable {
 	{
 		if(followingActivatedTransitions == null)
 		{
-			followingActivatedTransitions = new LinkedList();
+			followingActivatedTransitions = new LinkedList<TransitionModel>();
 		}
 		followingActivatedTransitions.addLast(transition);
 	}
@@ -559,7 +559,8 @@ public class TokenGameBarController implements Runnable {
     /**
      * Will create a Simulation-Object that can be added to the Simulations-Vector
      */
-    public void createSaveableHistory()
+    @SuppressWarnings("unchecked")
+	public void createSaveableHistory()
     {
     	if(HistoryVector != null)
     	{
@@ -582,7 +583,8 @@ public class TokenGameBarController implements Runnable {
      * 
      * @return [code]true[/code] if simulation was loaded, else [code]false[/code]
      */
-    public boolean loadHistory(int index)
+    @SuppressWarnings("unchecked")
+	public boolean loadHistory(int index)
     {
     	boolean loaded = false;
     	ahxHistoryContent.clear();
@@ -630,7 +632,8 @@ public class TokenGameBarController implements Runnable {
      * Overwrites an existing history with the current one.
      * @param index
      */
-    public void overwriteHistory(String simulationname)
+    @SuppressWarnings("unchecked")
+	public void overwriteHistory(String simulationname)
     {
     	Vector<SimulationModel> simulations = PetriNet.getSimulations();
     	Iterator<SimulationModel> iter = simulations.iterator();
@@ -773,7 +776,7 @@ public class TokenGameBarController implements Runnable {
     /*
      * Setters and Getters
      */
-	public LinkedList getFollowingActivatedTransitions()
+	public LinkedList<TransitionModel> getFollowingActivatedTransitions()
 	{
 		return followingActivatedTransitions;
 	}
@@ -1371,7 +1374,7 @@ public class TokenGameBarController implements Runnable {
 		{
 			if(ProcessEditors == null)
 			{
-				ProcessEditors = new LinkedList();
+				ProcessEditors = new LinkedList<TokenGameController>();
 			}
 		    ProcessEditors.add(tgController);
 			tgController = newReference;

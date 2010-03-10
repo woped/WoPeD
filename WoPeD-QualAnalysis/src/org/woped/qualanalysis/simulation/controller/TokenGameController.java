@@ -805,8 +805,8 @@ public class TokenGameController {
 	 * Counts the token-filled Places which are the source of the Map filled
 	 * Arcs. ATTENTION: use only for Arcs with Places as source!
 	 */
-	private int countIncomingActivePlaces(Map arcsFromPlaces) {
-		Iterator incomingArcsIter = arcsFromPlaces.keySet().iterator();
+	private int countIncomingActivePlaces(Map<String, ArcModel> arcsFromPlaces) {
+		Iterator<String> incomingArcsIter = arcsFromPlaces.keySet().iterator();
 		int activePlaces = 0;
 		while (incomingArcsIter.hasNext()) {
 			ArcModel arc = getPetriNet().getElementContainer().getArcById(
@@ -870,8 +870,8 @@ public class TokenGameController {
 	 * Send (subtract) Tokens from the places that are the source of the
 	 * Map-filled arcs. ATTENTION: source ot the arcs must be always a place
 	 */
-	private void sendTokens(Map arcsToFire) {
-		Iterator arcIter = arcsToFire.keySet().iterator();
+	private void sendTokens(Map<String, ArcModel> arcsToFire) {
+		Iterator<String> arcIter = arcsToFire.keySet().iterator();
 		while (arcIter.hasNext()) {
 			sendTokens(getPetriNet().getElementContainer().getArcById(
 					arcIter.next()));
@@ -902,8 +902,8 @@ public class TokenGameController {
 	 * Receive (add) Tokens to the places that are the target or the Map-filled
 	 * arcs. ATTENTION: targets must be places.
 	 */
-	private void receiveTokens(Map arcsToFire) {
-		Iterator arcIter = arcsToFire.keySet().iterator();
+	private void receiveTokens(Map<String, Object> arcsToFire) {
+		Iterator<String> arcIter = arcsToFire.keySet().iterator();
 		while (arcIter.hasNext()) {
 			receiveTokens(getPetriNet().getElementContainer().getArcById(
 					arcIter.next()));
@@ -936,8 +936,8 @@ public class TokenGameController {
 	 * ATTENTION: target of the arcs must be always a place
 	 */
 
-	private void sendBackwardTokens(Map arcsToFire) {
-		Iterator arcIter = arcsToFire.keySet().iterator();
+	private void sendBackwardTokens(Map<String, Object> arcsToFire) {
+		Iterator<String> arcIter = arcsToFire.keySet().iterator();
 		while (arcIter.hasNext()) {
 			sendBackwardTokens(getPetriNet().getElementContainer().getArcById(
 					arcIter.next()));
@@ -968,8 +968,8 @@ public class TokenGameController {
 	/*
 	 * Receive Tokens when doing backward steps 
 	 */
-	private void receiveBackwardTokens(Map arcsToFire) {
-		Iterator arcIter = arcsToFire.keySet().iterator();
+	private void receiveBackwardTokens(Map<String, ArcModel> arcsToFire) {
+		Iterator<String> arcIter = arcsToFire.keySet().iterator();
 		while (arcIter.hasNext()) {
 			receiveBackwardTokens(getPetriNet().getElementContainer()
 					.getArcById(arcIter.next()));
@@ -1168,6 +1168,7 @@ public class TokenGameController {
 			e.consume();
 		}
 
+		@SuppressWarnings("unused")
 		public void mouseMoved(MouseEvent arg0) {
 		}
 

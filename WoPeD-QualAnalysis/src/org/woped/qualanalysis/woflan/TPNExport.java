@@ -27,6 +27,7 @@ import java.io.FileWriter;
 import java.util.Iterator;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
@@ -52,7 +53,7 @@ public class TPNExport {
             LoggerManager.debug(TPN_Logger, "********** START TPN EXPORT **********");
 
             FileWriter fos = new FileWriter(new File(fileName));
-            Iterator rootIter = net2save.getElementContainer().getRootElements().iterator();
+            Iterator<AbstractElementModel> rootIter = net2save.getElementContainer().getRootElements().iterator();
             PetriNetModelElement currentModel;
 
             while (rootIter.hasNext()) {
@@ -86,7 +87,7 @@ public class TPNExport {
                         if (currentModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
 
                             OperatorTransitionModel aalstModel = (OperatorTransitionModel) currentModel;
-                            Iterator simpleTransIter = aalstModel.getSimpleTransContainer().getRootElements()
+                            Iterator<AbstractElementModel> simpleTransIter = aalstModel.getSimpleTransContainer().getRootElements()
                                     .iterator();
                             while (simpleTransIter.hasNext()) {
 
@@ -116,7 +117,7 @@ public class TPNExport {
     private static String getLine4Transition(String name, PetriNetModelElement currentModel,
             ModelElementContainer container) {
         String line = null;
-        Iterator tempIter;
+        Iterator<String> tempIter;
 
         line = "trans #";
         if (!ConfigurationManager.getConfiguration().isTpnSaveElementAsName()) {
