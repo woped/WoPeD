@@ -279,7 +279,7 @@ public class ServerImpl extends UnicastRemoteObject implements IServer {
 
 		File file;
 		// sums the size of all models
-		for (Iterator iterator = models.iterator(); iterator.hasNext();) {
+		for (Iterator<ModellHolder> iterator = models.iterator(); iterator.hasNext();) {
 			ModellHolder name = (ModellHolder) iterator.next();
 			file = new File(path + name.getModellID() + ".pnml");
 			if (file.exists()) {
