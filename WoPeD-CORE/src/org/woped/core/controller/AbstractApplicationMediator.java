@@ -185,7 +185,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
         return (IViewController) viewControllerMap.get(id);
     }
 
-    public Map getViewControllers()
+    public Map<String, IViewController> getViewControllers()
     {
         return viewControllerMap;
     }

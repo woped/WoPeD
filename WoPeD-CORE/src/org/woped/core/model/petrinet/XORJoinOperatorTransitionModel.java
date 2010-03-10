@@ -56,7 +56,7 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 			
 			// create a new arc from EACH SimpleTrans to EACH Target
 			// of the Operator
-			Iterator targetIter = outerContainer.getTargetElements(getId())
+			Iterator<String> targetIter = outerContainer.getTargetElements(getId())
 			.keySet().iterator();
 			while (targetIter.hasNext())
 			{
@@ -74,8 +74,8 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
     		PetriNetModelProcessor processor,
     		AbstractElementModel targetModel) 
 	{
-		// f�r jede simpletrans ne connection auf das target
-		Iterator simpleRootIter = getSimpleTransContainer().getRootElements()
+		// create a connection to target for each simple transition
+		Iterator<AbstractElementModel> simpleRootIter = getSimpleTransContainer().getRootElements()
 		.iterator();
 		while (simpleRootIter.hasNext())
 		{

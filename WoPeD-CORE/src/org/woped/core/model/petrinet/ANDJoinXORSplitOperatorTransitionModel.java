@@ -70,7 +70,7 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
     	// First check, if the IN transition already exists.
     	// If so, we simply return it
     	PlaceModel centerPlace = getCenterPlace();
-    	Map centerSourceElements = 
+    	Map<String, AbstractElementModel> centerSourceElements = 
     		getSimpleTransContainer().getSourceElements(centerPlace.getId());
     	if ((centerSourceElements!=null)&&(!centerSourceElements.isEmpty()))
     		result = (TransitionModel)getSimpleTransContainer().

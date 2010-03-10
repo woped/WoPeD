@@ -34,7 +34,7 @@ public class ModelProcessorContext implements Serializable
         return contextMap.containsKey(key);
     }
 
-    public Iterator getKeyIterator()
+    public Iterator<Object> getKeyIterator()
     {
         return contextMap.keySet().iterator();
     }

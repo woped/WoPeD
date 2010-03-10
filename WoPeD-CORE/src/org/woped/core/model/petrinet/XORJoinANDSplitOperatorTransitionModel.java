@@ -69,7 +69,7 @@ public class XORJoinANDSplitOperatorTransitionModel extends
     	// First check, if the OUT transition already exists.
     	// If so, we simply return it
     	PlaceModel centerPlace = getCenterPlace();
-    	Map centerTargetElements = 
+    	Map<String, AbstractElementModel> centerTargetElements = 
     		getSimpleTransContainer().getTargetElements(centerPlace.getId());
     	if ((centerTargetElements!=null)&&(!centerTargetElements.isEmpty()))
     		result = (TransitionModel)getSimpleTransContainer().

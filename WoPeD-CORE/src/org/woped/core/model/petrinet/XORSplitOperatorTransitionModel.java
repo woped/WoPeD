@@ -22,11 +22,11 @@ public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
     	// create & add new arc From EACH Source to EACH SimpleTrans
     	// of Operator
     	ModelElementContainer outerContainer = processor.getElementContainer();
-    	Iterator sourceIter = outerContainer.getSourceElements(getId()).keySet()
+    	Iterator<String> sourceIter = outerContainer.getSourceElements(getId()).keySet()
     	.iterator();
     	while (sourceIter.hasNext())
     	{
-    		Iterator simpleRootIter = getSimpleTransContainer().getRootElements()
+    		Iterator<AbstractElementModel> simpleRootIter = getSimpleTransContainer().getRootElements()
     		.iterator();
     		AbstractElementModel tempSource = outerContainer
     		.getElementById(sourceIter.next());
@@ -77,7 +77,7 @@ public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
     		
     		// create reference from each source to each inner
     		// transition
-    		Iterator sourceIter = upperContainer.getSourceElements(getId()).keySet().iterator();
+    		Iterator<String> sourceIter = upperContainer.getSourceElements(getId()).keySet().iterator();
     		while (sourceIter.hasNext())
     		{
     			addReference(getNextFreeArcID(processor),

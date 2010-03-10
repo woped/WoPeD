@@ -31,12 +31,12 @@ public class ModelTranslator
         OperatorTransitionModel tempOperator;
         HashMap<String, String> idMapper = new HashMap<String, String>();
         List<String> startStopList = new ArrayList<String>();
-        Map tempSourceElements;
-        Map tempTargetElements;
+        Map<String, AbstractElementModel> tempSourceElements;
+        Map<String, AbstractElementModel> tempTargetElements;
         AbstractElementModel tempSource;
         AbstractElementModel tempTarget;
         // ##### 1. Find XOR Split-Joins and Find START and STOP ##### //
-        for (Iterator placeIter = petrinet.getElementContainer().getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE).values().iterator(); placeIter.hasNext();)
+        for (Iterator<AbstractElementModel> placeIter = petrinet.getElementContainer().getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE).values().iterator(); placeIter.hasNext();)
         {
             PlaceModel place = (PlaceModel) placeIter.next();
             tempSourceElements = petrinet.getElementContainer().getSourceElements(place.getId());
@@ -76,15 +76,15 @@ public class ModelTranslator
             else
             {
                 // Check if split-join
-                for (Iterator sourceIter = tempSourceElements.values().iterator(); sourceIter.hasNext();)
+                for (Iterator<AbstractElementModel> sourceIter = tempSourceElements.values().iterator(); sourceIter.hasNext();)
                 {
-                    tempSource = (AbstractElementModel) sourceIter.next();
+                    tempSource = sourceIter.next();
                     if ((tempSource.getType() == OperatorTransitionModel.XOR_JOIN_TYPE)||
                     	(tempSource.getType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE))
                     {
-                        for (Iterator targetIter = tempTargetElements.values().iterator(); targetIter.hasNext();)
+                        for (Iterator<AbstractElementModel> targetIter = tempTargetElements.values().iterator(); targetIter.hasNext();)
                         {
-                            tempTarget = (AbstractElementModel) sourceIter.next();
+                            tempTarget = sourceIter.next();
                             if ((tempTarget.getType() == OperatorTransitionModel.XOR_SPLIT_TYPE)||
                             	(tempTarget.getType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE))
                             {
@@ -100,7 +100,7 @@ public class ModelTranslator
 
         }
         // ##### 2. Take over Transitions and And Operators ##### //
-        for (Iterator iter = petrinet.getElementContainer().getRootElements().iterator(); iter.hasNext();)
+        for (Iterator<AbstractElementModel> iter = petrinet.getElementContainer().getRootElements().iterator(); iter.hasNext();)
         {
             tempElement = (AbstractPetriNetModelElement) iter.next();
             if (tempElement.getType() == AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE)
@@ -147,9 +147,9 @@ public class ModelTranslator
         }
         // ##### 3. Connect the elements with the info from the places ##### //
         ArcModel tempArc;
-        for (Iterator arcIter = petrinet.getElementContainer().getArcMap().values().iterator(); arcIter.hasNext();)
+        for (Iterator<ArcModel> arcIter = petrinet.getElementContainer().getArcMap().values().iterator(); arcIter.hasNext();)
         {
-            tempArc = (ArcModel) arcIter.next();
+            tempArc = arcIter.next();
             // if (startStopList.contains(tempArc.getTargetId()) ||
             // startStopList.contains(tempArc.getSourceId()))
             // {
@@ -165,7 +165,7 @@ public class ModelTranslator
                     uml.createArc(tempSource.getId(), tempTarget.getId());
                 } else
                 {
-                    for (Iterator sourceIter = petrinet.getElementContainer().getSourceElements(tempSource.getId()).values().iterator(); sourceIter.hasNext();)
+                    for (Iterator<AbstractElementModel> sourceIter = petrinet.getElementContainer().getSourceElements(tempSource.getId()).values().iterator(); sourceIter.hasNext();)
                     {
                         tempSource = (AbstractPetriNetModelElement) sourceIter.next();
                         if (uml.getElementContainer().containsElement(tempSource.getId()))
@@ -203,7 +203,7 @@ public class ModelTranslator
         AbstractElementModel tempPetriElement;
         AbstractElementModel tempPlaceElement;
         // ##### 1. Take over elements ##### //
-        for (Iterator iter = uml.getElementContainer().getRootElements().iterator(); iter.hasNext();)
+        for (Iterator<AbstractElementModel> iter = uml.getElementContainer().getRootElements().iterator(); iter.hasNext();)
         {
             tempElement = (AbstractUMLElementModel) iter.next();
             tempMap = tempElement.getCreationMap();
@@ -213,8 +213,8 @@ public class ModelTranslator
                 petrinet.createElement(tempMap).setElementContext(tempElement.getElementContext());
             } else if (tempElement.getType() == AbstractUMLElementModel.OPERATOR_TYPE)
             {
-                Map outgoingArcs = uml.getElementContainer().getOutgoingArcs(tempElement.getId());
-                Map incomingArcs = uml.getElementContainer().getIncomingArcs(tempElement.getId());
+                Map<String, Object> outgoingArcs = uml.getElementContainer().getOutgoingArcs(tempElement.getId());
+                Map<String, ArcModel> incomingArcs = uml.getElementContainer().getIncomingArcs(tempElement.getId());
                 // IF XOR Element... count incoming and outgoing
                 if (((OperatorModel) tempElement).getOperatorType() == OperatorModel.XOR_TYPE)
                 {
@@ -292,9 +292,9 @@ public class ModelTranslator
         //
         Object selectedSourceId = null;
         Object selectedTargetId = null;
-        for (Iterator iter = uml.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
+        for (Iterator<ArcModel> iter = uml.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
         {
-            ArcModel arc = (ArcModel) iter.next();
+            ArcModel arc = iter.next();
             // memo all outgoing and incoming arcs
             tempSource = uml.getElementContainer().getElementById(arc.getSourceId());
             tempTarget = uml.getElementContainer().getElementById(arc.getTargetId());

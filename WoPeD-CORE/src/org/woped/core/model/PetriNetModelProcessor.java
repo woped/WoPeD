@@ -729,7 +729,7 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
      * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
      */
     public void resetRGHighlightAndVTokens() {
-        for (Iterator iter = getElementContainer().getRootElements().iterator(); iter.hasNext();) {
+        for (Iterator<AbstractElementModel> iter = getElementContainer().getRootElements().iterator(); iter.hasNext();) {
             AbstractElementModel current = (AbstractElementModel) iter.next();
             current.setRGHighlighted(false);
             if (current instanceof PlaceModel) {
