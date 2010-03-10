@@ -253,7 +253,6 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
                 // We have to remove this local copy
                 currentOperator.getSimpleTransContainer().removeElement(targetElement.getId());
 
-                // System.out.println("INNER ARC TO TARGET deleted");
             } else
                 if (targetElement.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
                     OperatorTransitionModel currentOperator = (OperatorTransitionModel) targetElement;
@@ -394,54 +393,6 @@ public class PetriNetModelProcessor extends AbstractModelProcessor implements Se
         return assignedVector;
 
     }
-
-    // returns a vector with notAssigned resourceClasses, the vector contains
-    // the ResourceClassModels!!
-    // public Vector getResourceClassesResourceIsNotAssignedTo(String
-    // resourceId)
-    // {
-    // Vector notAssignedVector = new Vector();
-    // Vector assignedVector;
-    // System.out.println("getResourceClassesResourceIsNotAssignedTo");
-    // assignedVector = getResourceClassesResourceIsAssignedTo(resourceId);
-    // Vector tempRoleVector = new Vector();
-    // tempRoleVector =(Vector) getRoles().clone();
-    // Vector tempOrgUnitVector = new Vector();
-    // tempOrgUnitVector = (Vector) getOrganizationUnits().clone();
-    // if (assignedVector.size()>0)
-    // {
-    // for (int i =0;i<assignedVector.size();i++)
-    // {
-    // for (int j=0;j<tempRoleVector.size();j++)
-    // {
-    // if((assignedVector.get(i)).equals(((ResourceClassModel)tempRoleVector.get(j)).getName()))
-    // {
-    // System.out.println("unassigned role" +tempRoleVector.get(j).toString());
-    // tempRoleVector.remove(j);
-    //                        		
-    // }
-    // }
-    // for (int k=0;k<tempOrgUnitVector.size();k++)
-    // {
-    // if
-    // ((assignedVector.get(i)).equals(((ResourceClassModel)tempOrgUnitVector.get(k)).getName()));
-    // {
-    // System.out.println("unassigned orgUnit" +
-    // tempOrgUnitVector.get(k).toString());
-    // tempOrgUnitVector.remove(k);
-    // }
-    // }
-    // }
-    // }
-    // notAssignedVector.addAll(tempOrgUnitVector);
-    // notAssignedVector.addAll(tempRoleVector);
-    //        
-    //        
-    //
-    //        
-    //
-    // return notAssignedVector;
-    // }
 
     /**
      * @return

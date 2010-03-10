@@ -159,8 +159,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         		} else {
         			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
         		}
-        		System.out.println("***** AND_SPLIT_TYPE " + map.getOperatorPosition());
-        		break;
+       		break;
         	case AND_JOIN_TYPE:
         		getToolSpecific().setOperatorDirection(OperatorDirection.IN);
         		if ( map.getOperatorPosition() == -1 ) {
@@ -168,7 +167,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         		} else {
         			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
         		}
-        		System.out.println("***** AND_JOIN_TYPE " + map.getOperatorPosition());
         		break;
         	case OR_SPLIT_TYPE:
         	case XOR_SPLIT_TYPE:
@@ -178,7 +176,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         		} else {
         			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
         		}
-        		System.out.println("***** XOR_SPLIT_TYPE " + map.getOperatorPosition());
         		break;
         	case XOR_JOIN_TYPE:
         		getToolSpecific().setOperatorDirection(OperatorDirection.OUT);
@@ -187,7 +184,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         		} else {
         			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
         		}
-        		System.out.println("***** XOR_JOIN_TYPE " + map.getOperatorPosition());
         		break;
         	case XOR_SPLITJOIN_TYPE:
         		getToolSpecific().setOperatorDirection(OperatorDirection.OUT);
@@ -196,7 +192,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         		} else {
         			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
         		}
-        		System.out.println("***** XOR_SPLITJOIN_TYPE " + map.getOperatorPosition());
         		break;
         	case AND_SPLITJOIN_TYPE:
         		getToolSpecific().setOperatorDirection(OperatorDirection.IN);
@@ -205,7 +200,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         		} else {	
         			getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
         		}
-        		System.out.println("***** AND_SPLITJOIN_TYPE " + map.getOperatorPosition());
         		break;
         	case ANDJOIN_XORSPLIT_TYPE:
         		getToolSpecific().setOperatorDirection(OperatorDirection.IN);

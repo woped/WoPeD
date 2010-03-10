@@ -14,7 +14,6 @@ public class SimDepartureEvent extends SimulatorEvent{
 	}
 	
 	public void invoke(){
-		//System.out.println("DEP: "+form(time)+"\tServ: "+s.getid());
 		ArrayList<SimServer> slist = s.getNextServers();		
 		if (slist == null){
 			SimDeathEvent e = new SimDeathEvent(sim, time, c);

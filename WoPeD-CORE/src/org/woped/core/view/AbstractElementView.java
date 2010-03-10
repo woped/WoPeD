@@ -232,9 +232,7 @@ public abstract class AbstractElementView extends VertexView {
         	
         	Polygon p = new Polygon();
 
-        	//System.out.println("***** AbstractElementView.drawArrow()");
-
-        	switch( arrowPosition ) {
+         	switch( arrowPosition ) {
 	        	case NORTH:
 		        	if ( arrowDirection == OperatorDirection.IN ) {
 		        		p.addPoint( bw, bw );

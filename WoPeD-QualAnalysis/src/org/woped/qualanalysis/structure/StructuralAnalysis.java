@@ -876,15 +876,6 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         createHandleClusters();
     }
 
-    // ! Test method for createHandleClusters().
-    // ! Can be deleted if reuse is unlikely.
-    /*
-     * private void handleTest(Set<Set<AbstractElementModel>> testSet, String testType){ int clusterNo = 0; System.out.println(testType + "\n");
-     * Iterator<Set<AbstractElementModel>> testsetIter = testSet.iterator(); while (testsetIter.hasNext()){ System.out.println("Cluster No. " + clusterNo +
-     * ":"); Iterator<AbstractElementModel> innerTestsetIter = testsetIter.next().iterator(); while (innerTestsetIter.hasNext()){
-     * System.out.println(innerTestsetIter.next().getId()); } System.out.println("\n"); clusterNo++; } System.out.println("------------------------------"); }
-     */
-
     // ! This method creates handle clusters on the basis of handle pairs
     // ! Example: Pair1[A,B], Pair2[B,C] -> new Pair[A,B,C]
     private void createHandleClusters() {

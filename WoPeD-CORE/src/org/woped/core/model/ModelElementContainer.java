@@ -422,21 +422,7 @@ public class ModelElementContainer implements Serializable {
 		}
 	}
 
-	/* only for debugging use */
-	/*
-	 * private void printContent() {
-	 *
-	 * Iterator rootTier = getRootElements().iterator();
-	 * System.out.println("#######################################");
-	 * System.out.println("The Content: "); while (rootTier.hasNext()) { Object
-	 * id = ((AbstractElementModel) rootTier.next()).getId();
-	 * System.out.println("Element: (" + ") " + id); if (getTargetElements(id) !=
-	 * null) { Iterator targetIter = getTargetElements(id).keySet().iterator();
-	 * while (targetIter.hasNext()) { System.out.println(" -> " +
-	 * targetIter.next()); } } else System.out.println("uhm, fehler bei
-	 * selbsteintrag _#_"); }
-	 * System.out.println("#######################################"); }
-	 */
+
 	public boolean containsArc(ArcModel arc) {
 
 		Iterator<String> arcIter = getSourceElements(arc.getTargetId()).keySet()

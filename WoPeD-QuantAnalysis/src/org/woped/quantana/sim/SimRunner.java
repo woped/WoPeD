@@ -420,21 +420,7 @@ public class SimRunner implements Runnable{
 		// find corresponding join to the splits
 		for (SimServer s : serverList.values()) {
 			if(s instanceof SimSplitServer) ((SimSplitServer)s).findJoin();			
-		}
-		
-			
-		
-		
-		
-		/*
-		 * for (SimServer s : serverList.values()){ System.out.print("sv:
-		 * "+s.getid()+"\tout: "+s.getOutServer().size());
-		 * if((s.getOutServer().size()>1)&&(s.getOutServer().get(0).getprobability()!=1)){
-		 * for(int k=0;k<s.getOutServer().size();k++){ System.out.print("\tDC
-		 * "+s.getOutServer().get(k).server.getid()); } } System.out.println(); }
-		 */
-		
-		
+		}		
 	}
 
 	public void finishCase(SimCase c){

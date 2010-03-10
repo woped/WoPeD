@@ -23,9 +23,6 @@ public class SimStartEvent extends SimulatorEvent{
 	public void invoke(){
 		double serv = s.getNextServTime();
 		c.setnextSvcTime(serv);
-		//System.out.println("BE"+form(time)+" EN"+form(time+c.getNextSvcTime())+" dur"+form(c.getNextSvcTime())+" WT"+form(time-c.getCurrArrivalTime()));
-		
-		//System.out.println("STA: "+form(time)+"\tServ: "+s.getid()+"\tSimTime: "+form(time)+"\tsvc: "+form(serv));
 		SimRunner sim = getSim();
 		double time = getTime();
 		s.updateRunStats(time, 1);

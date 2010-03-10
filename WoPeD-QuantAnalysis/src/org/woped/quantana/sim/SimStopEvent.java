@@ -19,7 +19,6 @@ public class SimStopEvent extends SimulatorEvent{
 	
 	@SuppressWarnings("unchecked")
 	public void invoke(){
-		//System.out.println("STO: "+form(time)+"\tServ: "+s.getid()+"\tSimTime: "+form(time));
 		SimRunner sim = getSim();		
 		double time = getTime();
 		s.updateRunStats(time, -1);		
@@ -38,8 +37,6 @@ public class SimStopEvent extends SimulatorEvent{
 			}
 			al.size();			
 		}	
-		//System.out.println("Wq "+s.getid()+": "+form(time)+" W "+form(c.getWaitTime()));
-		
 		SimWorkItem wi = new SimWorkItem(c, s);
 		SimDepartureEvent dp = new SimDepartureEvent(sim, time, wi);
 		sim.addEvent(dp);		

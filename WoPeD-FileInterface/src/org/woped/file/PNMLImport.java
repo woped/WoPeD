@@ -370,8 +370,6 @@ public class PNMLImport {
 									superModelTemp = new ResourceClassModel(supermodels[l]
 									     .getName(),ResourceClassModel.TYPE_ROLE);
 									roleModelTemp.addSuperModel(superModelTemp);
-									System.out.println(supermodels[l]
-									     .getName());
 								}
 							}
 							 
