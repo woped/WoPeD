@@ -24,7 +24,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import org.woped.server.IServer;
 import org.woped.server.ServerImpl;
 
 public class ServerUI extends JFrame {
