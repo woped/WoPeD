@@ -344,8 +344,8 @@ public class ConfUnderstandabilityPanel extends AbstractConfPanel {
 			JDialog dialog = createDialog(component, title, true, pane, ok,
 					null);
 
-			dialog.show(); // blocks until user brings dialog down...
-
+			dialog.setVisible(true);
+			
 			return ok.getColor();
 		}
 
