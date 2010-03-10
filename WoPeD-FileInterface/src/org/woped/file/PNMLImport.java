@@ -94,8 +94,6 @@ import org.woped.pnml.TWait;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.NetType.Page;
 
-import sun.awt.VerticalBagLayout;
-
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
 /**

@@ -1,13 +1,6 @@
 package org.woped.bpel.wsdl.wsdl;
-import java.util.ArrayList;
 
 import org.woped.bpel.wsdl.Wsdl;
-import org.woped.bpel.wsdl.wsdlFileRepresentation.Message;
-import org.woped.bpel.wsdl.wsdlFileRepresentation.Operation;
-import org.woped.bpel.wsdl.wsdlFileRepresentation.Part;
-import org.woped.bpel.wsdl.wsdlFileRepresentation.PartnerLinkType;
-import org.woped.bpel.wsdl.wsdlFileRepresentation.PortType;
-import org.woped.bpel.wsdl.wsdlFileRepresentation.Role;
 import org.woped.bpel.wsdl.wsdlFileRepresentation.WsdlFileRepresentation;
 
 /*
@@ -29,7 +22,7 @@ public class WsdlMain {
 //			wsdlFileRepresentation = wsdl.readDataFromWSDL("http://www.webservicex.net/globalweather.asmx?WSDL");
 
 
-			ArrayList<PartnerLinkType> partnerLinkTypes = wsdlFileRepresentation.getPartnerLinkTypes();
+			wsdlFileRepresentation.getPartnerLinkTypes();
 			} catch (Exception e) {
 			e.printStackTrace();
 		}

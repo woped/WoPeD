@@ -8,7 +8,12 @@ import org.woped.core.model.CreationMap;
 public abstract class CombiOperatorTransitionModel 
 	extends OperatorTransitionModel 
 {
-    public CombiOperatorTransitionModel(CreationMap map, int operatorType)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public CombiOperatorTransitionModel(CreationMap map, int operatorType)
     {
     	super(map,operatorType);
     }

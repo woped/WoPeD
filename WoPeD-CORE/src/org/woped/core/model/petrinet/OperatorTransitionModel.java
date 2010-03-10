@@ -104,7 +104,6 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
             { 0, 0, 1, 0, 1 }, { 0, 1, 0, 0, 1 }, { 0, 1, 0, 1, 1 }, { 0, 1, 1, 1, 1 }, { 0, 1, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 0, 0, 1, 1 }, { 1, 0, 1, 1, 1 }, { 1, 0, 1, 0, 1 },
             { 1, 1, 0, 0, 1 }, { 1, 1, 0, 1, 1 }, { 1, 1, 1, 1, 1 }, { 1, 1, 1, 0, 1 } } };
 
-    private boolean verticalView = false;
     private EditorLayoutInfo m_EditorLayoutInfo = null;
     
     /**
@@ -502,6 +501,5 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     
     public void setVerticalView(boolean verticalView)
     {
-    	this.verticalView = verticalView;
     }
 }

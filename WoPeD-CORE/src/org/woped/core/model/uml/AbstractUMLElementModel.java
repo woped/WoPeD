@@ -15,7 +15,11 @@ import org.woped.core.model.CreationMap;
 
 public abstract class AbstractUMLElementModel extends AbstractElementModel implements Serializable
 {
-    // UML Types
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	// UML Types
     public static final int ACTIVITY_TYPE = 20;
     public static final int STATE_TYPE    = 21;
     public static final int OPERATOR_TYPE = 22;

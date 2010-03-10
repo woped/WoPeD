@@ -43,9 +43,7 @@ public class TransitionModel extends PetriNetModelElement
     private Toolspecific    toolSpecific;
     public static final int WIDTH     = 40;
     public static final int HEIGHT    = 40;
-    private EditorLayoutInfo m_EditorLayoutInfo = null;
     
-
     public TransitionModel(CreationMap map)
     {
         super(map);

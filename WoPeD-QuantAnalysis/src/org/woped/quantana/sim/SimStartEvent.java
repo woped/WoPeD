@@ -37,7 +37,7 @@ public class SimStartEvent extends SimulatorEvent{
 			r.setLastStartTime(time);
             ActivityPanel ap;
             if (c instanceof SimCaseCopy){
-                  int oID = ((SimCaseCopy)c).getOriginal().getid();
+                  ((SimCaseCopy)c).getOriginal().getid();
                   Color rc = r.getColor();
                   Color co = new Color(rc.getRed(), rc.getGreen(), rc.getBlue(), ActivityPanel.AP_ALPHA);
                   ap = new ActivityPanel(time, (time + serv), s.getName() + " (" + s.getid() + ")", r.getName(), c, co);

@@ -43,7 +43,11 @@ import org.woped.editor.controller.vc.ConfigVC;
  */
 public abstract class AbstractConfPanel extends JPanel
 {
-    private String name      = null;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String name      = null;
     private JPanel namePanel = null;
 
     /**

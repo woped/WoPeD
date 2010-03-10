@@ -38,6 +38,10 @@ import org.woped.core.utilities.LoggerManager;
  * Basic modelelement class. 29.04.2003
  */
 public abstract class PetriNetModelElement extends AbstractPetriNetModelElement {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Vector m_unknownToolspecific = null;
 	private Object BpelData = null;
 

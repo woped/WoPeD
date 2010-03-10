@@ -8,7 +8,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -19,7 +18,6 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
 import org.woped.quantana.Constants;
@@ -163,8 +161,7 @@ public class WaitDialog extends JDialog{
                 	setVisible(false);             	
                 	((QuantitativeSimulationDialog)owner).updContents();
                 	((QuantitativeSimulationDialog)owner).activateDetails();
-                    Integer ergebnis = get(); // Endergebnis aus doInBackground() holen.
-                    //result.append("Ergebnis von "+name+"= "+ergebnis+"\n");
+                    get();
                     
                 } 
                 catch (InterruptedException e) {

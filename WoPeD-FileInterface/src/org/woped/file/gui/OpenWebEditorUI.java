@@ -1,9 +1,7 @@
 package org.woped.file.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Event;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -22,23 +20,19 @@ import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import org.woped.applet.Constants;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.action.DisposeWindowAction;
-import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.server.ServerLoader;
 import org.woped.server.holder.ModellHolder;
 import org.woped.server.holder.UserHolder;
 import org.woped.translations.Messages;
 
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
-
 public class OpenWebEditorUI extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel  buttonPanel = null;
 	private JButton b_OK = null;
 	private JButton b_Cancel = null;
@@ -103,6 +97,11 @@ public class OpenWebEditorUI extends JDialog {
 			comboBox = new JComboBox(values);
 			comboBox.addActionListener(new AbstractAction() {
 
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent e) {
 					performSelectChange();					
 				}
@@ -152,7 +151,6 @@ public class OpenWebEditorUI extends JDialog {
 	}
 	
 	
-	@SuppressWarnings("serial")
 	private JPanel getButtonBar() {
 		
 		if (buttonPanel == null)

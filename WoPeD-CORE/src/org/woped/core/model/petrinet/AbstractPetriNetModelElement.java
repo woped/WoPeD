@@ -39,7 +39,11 @@ import org.woped.core.model.CreationMap;
  */
 public abstract class AbstractPetriNetModelElement extends AbstractElementModel
 {
-    // Petrinet Types
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	// Petrinet Types
     public static final int PLACE_TYPE          = 1;
     public static final int TRANS_SIMPLE_TYPE   = 2;
     public static final int TRANS_OPERATOR_TYPE = 3;

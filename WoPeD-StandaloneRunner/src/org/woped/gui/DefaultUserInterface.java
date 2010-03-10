@@ -7,13 +7,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 import java.util.HashMap;
@@ -50,7 +48,6 @@ import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.qualanalysis.simulation.SimulatorBarVC;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
-import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
 import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
@@ -138,8 +135,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         toolPanel.setPreferredSize(new Dimension(100, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
        
-        // addKeyListener(this);
-        SplashWindow splash = new SplashWindow(this);
+        new SplashWindow(this);
 
         //Helper for adding Tokengame
         //see Java-Doc for explanation

@@ -101,8 +101,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private JPanel buttonPanel = null;
 
-	private int groupRoleNum = 0;
-
 	private int resObjNum = 0;
 
 	private double period = 60.0;
@@ -1517,7 +1515,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		Vector<ResourceClassModel> rVec = pmp.getRoles();
 		Vector<ResourceClassModel> gVec = pmp.getOrganizationUnits();
 
-		groupRoleNum = rVec.size() + gVec.size();
+//		groupRoleNum = rVec.size() + gVec.size();
 
 		for (int i = 0; i < rVec.size(); i++)
 			roles.add(((ResourceClassModel) rVec.get(i)).getName());

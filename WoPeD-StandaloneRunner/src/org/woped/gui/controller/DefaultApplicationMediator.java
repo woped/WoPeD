@@ -44,11 +44,8 @@ import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
 import org.woped.qualanalysis.simulation.SimulatorBarVC;
-import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
-import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphEventProcessor;
 import org.woped.translations.Messages;
-import javax.swing.DefaultListModel;
 
 /**
  * 
@@ -68,11 +65,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
     private int             menuCounter              = 0;
     private int             statusCounter            = 0;
     
-	private DefaultListModel         acoChoiceItems                = null;
-	private DefaultListModel         ahxHistoryContent             = null;
-	private TokenGameBarController   tgbController                 = null;
-
-    public DefaultApplicationMediator(IUserInterface ui, IConfiguration conf, String[] args)
+	public DefaultApplicationMediator(IUserInterface ui, IConfiguration conf, String[] args)
     {
         super(ui, conf);
         getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(ViewEvent.VIEWEVENTTYPE_GUI, this));

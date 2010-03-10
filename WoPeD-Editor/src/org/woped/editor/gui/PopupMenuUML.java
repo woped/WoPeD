@@ -14,11 +14,6 @@ public class PopupMenuUML extends JPopupMenu
     private static PopupMenuUML instance;
     //
     private JMenu               addMenu             = null;
-    private JMenuItem           addActivityMenuItem = null;
-    private JMenuItem           addStartMenuItem    = null;
-    private JMenuItem           addStopMenuItem     = null;
-    private JMenuItem           addAndMenuItem      = null;
-    private JMenuItem           addXorMenuItem      = null;
     //
     private JMenu               arcMenu             = null;
     private JMenuItem           addPointMenuItem    = null;
