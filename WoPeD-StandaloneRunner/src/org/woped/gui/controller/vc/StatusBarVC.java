@@ -44,10 +44,14 @@ import org.woped.gui.controller.DefaultApplicationMediator;
  *         05.03.2005
  */
 
-@SuppressWarnings("serial")
 public class StatusBarVC extends JPanel implements IViewController, IStatusBar
 {
-    private JLabel             m_statusLabel       = null;
+	
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7295785625400801910L;
+	private JLabel             m_statusLabel       = null;
     private JProgressBar       m_progressBar       = null;
     private String             id                  = "";
     private int                progressBarCount    = -1;
@@ -120,13 +124,14 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
      * Fires a ViewEvent to each listener as long as the event is not consumed.
      * The event is also set with a reference to the current listener.
      */
-    public final void fireViewEvent(AbstractViewEvent viewevent)
+    @SuppressWarnings("unchecked")
+	public final void fireViewEvent(AbstractViewEvent viewevent)
     {
         if (viewevent == null) return;
-        java.util.Vector vector;
+        Vector<IViewListener> vector;
         synchronized (viewListener)
         {
-            vector = (java.util.Vector) viewListener.clone();
+            vector = (Vector<IViewListener>) viewListener.clone();
         }
         if (vector == null) return;
         int i = vector.size();

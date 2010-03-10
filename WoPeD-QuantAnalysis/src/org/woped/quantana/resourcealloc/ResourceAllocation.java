@@ -21,7 +21,7 @@ public class ResourceAllocation {
 	private ResourceClassTaskAllocationTable resClsTskAlloc;
 	private ColorFactory colorFactory = new ColorFactory();
 	
-	public ResourceAllocation(ArrayList<String> roles, ArrayList<String> groups, Iterator tasks, PetriNetModelProcessor pmp){
+	public ResourceAllocation(ArrayList<String> roles, ArrayList<String> groups, Iterator<TransitionModel> tasks, PetriNetModelProcessor pmp){
 		this.roles = (ArrayList<String>)roles;
 		this.groups = (ArrayList<String>)groups;
 		this.proc = pmp;
@@ -43,7 +43,7 @@ public class ResourceAllocation {
 			
 			taskAlloc2.getTable().put(tsk, new AllocationTableItem(tsk, rNames, gNames));
 			
-			Vector res = proc.getResources();
+			Vector<ResourceModel> res = proc.getResources();
 			
 			HashMap<String, String> resClsType = new HashMap<String, String>();
 			for (int i = 0; i < roles.size(); i++){
@@ -60,7 +60,7 @@ public class ResourceAllocation {
 				
 				resObj.setColor(colorFactory.nextColor());
 				
-				Vector classes = proc.getResourceClassesResourceIsAssignedTo(name);
+				Vector<String> classes = proc.getResourceClassesResourceIsAssignedTo(name);
 				for (int j = 0; j < classes.size(); j++){
 					String cls = (String)classes.get(j);
 					if (resClsType.get(cls).equals("role"))
@@ -72,7 +72,7 @@ public class ResourceAllocation {
 			
 			resClsTskAlloc = new ResourceClassTaskAllocationTable();
 			Set<String> classes = resClsType.keySet();
-			Iterator iter = classes.iterator();
+			Iterator<String> iter = classes.iterator();
 			while (iter.hasNext()){
 				ResourceClassTaskAllocation rcta = new ResourceClassTaskAllocation((String)iter.next());
 				for (AllocationTableItem t : taskAlloc2.getTable().values()){

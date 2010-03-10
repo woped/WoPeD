@@ -548,7 +548,8 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
      * Fires a ViewEvent to each listener as long as the event is not consumed.
      * The event is also set with a reference to the current listener.
      */
-    public final void fireViewEvent(AbstractViewEvent viewevent)
+    @SuppressWarnings("unchecked")
+	public final void fireViewEvent(AbstractViewEvent viewevent)
     {
         if (viewevent == null) return;
         Vector<IViewListener> vector;
