@@ -1,4 +1,5 @@
-﻿/*
+﻿
+/*
  * 
  * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
  * 
@@ -1660,7 +1661,8 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     /**
      * Fires a ViewEvent to each listener as long as the event is not consumed. The event is also set with a reference to the current listener.
      */
-    public final void fireViewEvent(AbstractViewEvent viewevent) {
+    @SuppressWarnings("unchecked")
+	public final void fireViewEvent(AbstractViewEvent viewevent) {
         if (viewevent == null) {
             return;
         }

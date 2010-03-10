@@ -77,11 +77,10 @@ public class GraphTreeModel extends DefaultTreeModel implements GraphModelListen
     		ModelElementContainer elements)
     {
     	root.removeAllChildren();
-		Iterator i=elements.getRootElements().iterator();
+		Iterator<AbstractElementModel> i=elements.getRootElements().iterator();
 		while (i.hasNext())
 		{
-			AbstractElementModel currentNode =				
-				(AbstractElementModel)i.next();
+			AbstractElementModel currentNode = i.next();
 			root.add(new NodeNetInfo(currentNode, true));
 		}
     }

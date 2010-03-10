@@ -308,7 +308,7 @@ public class VisualController implements PropertyChangeListener,
 	 * @param status
 	 *            the new enable status.
 	 */
-	protected static void setEnabled(Vector objects, boolean status)
+	protected static void setEnabled(Vector<Object> objects, boolean status)
 	{
 		if (objects != null)
 		{
@@ -326,7 +326,7 @@ public class VisualController implements PropertyChangeListener,
 	 * @param status
 	 *            the new visible status.
 	 */
-	private static void setVisible(Vector objects, boolean status)
+	private static void setVisible(Vector<Object> objects, boolean status)
 	{
 		if (objects != null)
 		{
@@ -344,7 +344,7 @@ public class VisualController implements PropertyChangeListener,
 	 * @param status
 	 *            the new selected status.
 	 */
-	private static void setSelected(Vector objects, boolean status)
+	private static void setSelected(Vector<Object> objects, boolean status)
 	{
 		if (objects != null)
 		{

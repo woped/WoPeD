@@ -378,7 +378,7 @@ public class WoPeDJGraph extends AbstractGraph
         {
             if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
             {
-                for (Iterator iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
+                for (Iterator<AbstractElementModel> iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
                 {
                     PetriNetModelElement element = (PetriNetModelElement) iter.next();
                     GroupModel group = groupName(element, (element.getNameModel()));
@@ -411,21 +411,21 @@ public class WoPeDJGraph extends AbstractGraph
                     }
                     getGraphLayoutCache().insertGroup(group, new Object[] { element, ((PetriNetModelElement) element).getNameModel() });
                 }
-                for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
+                for (Iterator<ArcModel> iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
                 {
-                    ArcModel arc = (ArcModel) iter.next();                    
+                    ArcModel arc = iter.next();                    
                     connect(arc, true);
                 }
             } else if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_UML)
             {
-                for (Iterator iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
+                for (Iterator<AbstractElementModel> iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
                 {
                     AbstractUMLElementModel element = (AbstractUMLElementModel) iter.next();
                     getGraphLayoutCache().insert(element);
                 }
-                for (Iterator iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
+                for (Iterator<ArcModel> iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
                 {
-                    ArcModel arc = (ArcModel) iter.next();
+                    ArcModel arc = iter.next();
                     connect(arc, true);
                 }
             }

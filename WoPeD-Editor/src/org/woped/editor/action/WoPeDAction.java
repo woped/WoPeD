@@ -70,7 +70,7 @@ public class WoPeDAction extends AbstractAction
                     // ACHTUNG: Bitte machen Sie dies zuhause nicht nach! ;-)
                     // Bessere Lösungen sind gerne gesehen.
                     Object curObject = getPropertyChangeListeners()[i];
-                    Class curClass = curObject.getClass();
+                    Class<? extends Object> curClass = curObject.getClass();
                     Method targetMethod = curClass.getMethod("getTarget", new Class[0]);
                     targetMethod.setAccessible(true);
                     Object targetObject = targetMethod.invoke(curObject, new Object[0]);
