@@ -45,6 +45,7 @@ public class ReachabilityLayoutHierarchic {
 	 * 
 	 * @param graph
 	 */
+	@SuppressWarnings("unchecked")
 	private static void applyHierarchicLayout(ReachabilityJGraph graph){
 		GraphModel model = graph.getModel();
 		LinkedList<ReachabilityPlaceModel> markings = new LinkedList<ReachabilityPlaceModel>();

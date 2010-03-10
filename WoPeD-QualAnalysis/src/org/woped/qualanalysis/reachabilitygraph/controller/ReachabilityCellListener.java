@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
 
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
@@ -169,7 +170,7 @@ public class ReachabilityCellListener implements MouseListener {
     }
 
     private void deHighlightEdges() {
-        Map editMap = new HashMap();
+        Map<ReachabilityEdgeModel, AttributeMap> editMap = new HashMap<ReachabilityEdgeModel, AttributeMap>();
         if (lastHighlightedEdge != null) {
             lastHighlightedEdge.setIngoing(false);
             lastHighlightedEdge.setOutgoing(false);
@@ -197,7 +198,7 @@ public class ReachabilityCellListener implements MouseListener {
     }
 
     private void highlightClickedEdge(ReachabilityEdgeModel edge) {
-        Map editMap = new HashMap();
+        Map<ReachabilityEdgeModel, AttributeMap> editMap = new HashMap<ReachabilityEdgeModel, AttributeMap>();
         GraphConstants.setLineColor(edge.getAttributes(), Color.magenta);
         GraphConstants.setLineWidth(edge.getAttributes(), 2);
         editMap.put(edge, edge.getAttributes());
@@ -209,7 +210,7 @@ public class ReachabilityCellListener implements MouseListener {
         ReachabilityPortModel port = (ReachabilityPortModel) place.getChildAt(0);
         Set<ReachabilityEdgeModel> edges = port.getEdges();
         Iterator<ReachabilityEdgeModel> iterEdges = edges.iterator();
-        Map editMap = new HashMap();
+        Map<ReachabilityEdgeModel, AttributeMap> editMap = new HashMap<ReachabilityEdgeModel, AttributeMap>();
         while (iterEdges.hasNext()) {
             ReachabilityEdgeModel edge = iterEdges.next();
             edge.setOutgoing(false);
