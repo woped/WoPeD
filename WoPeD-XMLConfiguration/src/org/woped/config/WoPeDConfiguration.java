@@ -56,7 +56,7 @@ public class WoPeDConfiguration implements IConfiguration {
 
 	private String lafCurrentSys = UIManager.getSystemLookAndFeelClassName();
 //	private String lafXPlatform = UIManager.getCrossPlatformLookAndFeelClassName();
-	private String lafDiscretePlatform = "com.sun.java.swing.plaf.motif.MotifLookAndFeel";
+	private String lafDiscretePlatform = "com.sun.java.swing.plaf.metal.MetalLookAndFeel";
 	private String lafMac = "com.apple.mrj.swing.MacLookAndFeel";
 	private String lafWin = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 

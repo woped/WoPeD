@@ -79,7 +79,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
                 } else
                 {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    ConfigurationManager.getConfiguration().setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+  //                  ConfigurationManager.getConfiguration().setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 }
             }
             LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set.");

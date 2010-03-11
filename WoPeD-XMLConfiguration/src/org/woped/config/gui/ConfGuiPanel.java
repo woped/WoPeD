@@ -124,7 +124,7 @@ public class ConfGuiPanel extends AbstractConfPanel
                 if (guiObject instanceof Window) ((Window) guiObject).pack();
                 // TODO: Do this via ConfigrationChangedListener
                 guiObject.setSize(saveDim);
-                ConfigurationManager.getConfiguration().setLookAndFeel(getSelectedLnfClassName());
+      //          ConfigurationManager.getConfiguration().setLookAndFeel(getSelectedLnfClassName());
             }
             return true;
         } catch (Exception e)
