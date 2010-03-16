@@ -17,7 +17,7 @@ public class FreechoicePage extends BeginnerPanel {
 
 	public FreechoicePage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages
-				.getString(PREFIX + "FreeChoiceViolations"));
+				.getString(PREFIX + "NumFreeChoiceViolations"));
 
 		numFreeChoiceViolations = qualanalysisService
 				.getNumFreeChoiceViolations();
