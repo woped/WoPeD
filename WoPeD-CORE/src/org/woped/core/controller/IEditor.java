@@ -1,5 +1,6 @@
 package org.woped.core.controller;
 
+import java.awt.Container;
 import java.awt.geom.Point2D;
 
 import javax.swing.JComponent;
@@ -249,4 +250,8 @@ public interface IEditor extends IViewController {
 	public boolean isShowingTStar();
 	
 	public void setTStarEnabled(boolean tStarEnabled);
+	
+	public Container getParent();
+	
+	public JComponent getAnalysisSideBar();
 }

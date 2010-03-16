@@ -304,7 +304,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 	{
 		super.setBounds(p_arg0, p_arg1, p_arg2, p_arg3);
 		// editor resized -> set dirty
-		m_editor.setSaved(false);
+//		m_editor.setSaved(false);
 	}
 
 

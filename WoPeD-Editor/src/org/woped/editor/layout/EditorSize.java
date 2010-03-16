@@ -13,13 +13,13 @@ import org.woped.editor.controller.vc.EditorVC;
  * 
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller,
  *         Sebastian Fuss
+ * @edit Lennart Oess
  * 
  */
 public class EditorSize {
 
 	private IEditor editor = null;
 	private Dimension maxEditorSize = null;
-	private Dimension minEditorSize = null;
 	private Dimension modelSize = null;
 	private Dimension newEditorSize = null;
 
@@ -38,11 +38,11 @@ public class EditorSize {
 	 * resizes the editor basing on the size of the model and the maximum editor
 	 * size
 	 */
-	public void resize() {
+	public void resize(boolean downSize) {
 		calculateMaxEditorSize();
 		calculateModelSize();
 		calculateNewEditorSize();
-		setSize(newEditorSize);
+		setSize(newEditorSize, downSize);
 	}
 
 	/**
@@ -51,19 +51,21 @@ public class EditorSize {
 	 * @param dim
 	 *            the dimension to set as new size
 	 */
-	private void setSize(Dimension dim) {
+	private void setSize(Dimension dim, boolean downSize) {
 		Container parentContainer = null;
 		if (editor.isSubprocessEditor())
-			parentContainer = ((EditorVC) editor).getParent().getParent()
-					.getParent().getParent();
+			parentContainer = editor.getParent().getParent().getParent()
+					.getParent();
 		else
-			parentContainer = ((EditorVC) editor).getParent().getParent()
-					.getParent().getParent().getParent();
+			parentContainer = editor.getParent().getParent().getParent()
+					.getParent().getParent();
 		Dimension currentSize = parentContainer.getSize();
-		if (currentSize.height > dim.height)
-			dim.height = currentSize.height;
-		if (currentSize.width > dim.width)
-			dim.width = currentSize.width;
+		if (!downSize) {
+			if (currentSize.height > dim.height)
+				dim.height = currentSize.height;
+			if (currentSize.width > dim.width)
+				dim.width = currentSize.width;
+		}
 		if (currentSize.height != newEditorSize.height
 				|| currentSize.width != newEditorSize.width) {
 			parentContainer.setSize(dim);
@@ -77,10 +79,10 @@ public class EditorSize {
 	 */
 	private void calculateMaxEditorSize() {
 		if (editor.isSubprocessEditor())
-			maxEditorSize = ((EditorVC) editor).getParent().getParent()
+			maxEditorSize = editor.getParent().getParent()
 					.getParent().getParent().getParent().getSize();
 		else
-			maxEditorSize = ((EditorVC) editor).getParent().getParent()
+			maxEditorSize = editor.getParent().getParent()
 					.getParent().getParent().getParent().getParent().getSize();
 	}
 
@@ -121,27 +123,14 @@ public class EditorSize {
 	 * editor-width
 	 */
 	private void calculateNewEditorSize() {
-		// set minimum editor size
-		// width should not fall below a value of 600 because of displaying the
-		// statusbar
-		if (editor.isRotateSelected()) // vertical
-			minEditorSize = new Dimension(600, 800);
-		else
-			// horizontal
-			minEditorSize = new Dimension(800, 600);
-
 		// set newEditorSize to modelSize
 		newEditorSize = new Dimension(modelSize);
 		// add sideBar-width if sideBar is displayed
 		if (editor.isAnalysisBarVisible()) {
 			newEditorSize.width += SIDEBAR_WIDTH;
-			newEditorSize.height = maxEditorSize.height;
+			newEditorSize.height = ((EditorVC) editor).getAnalysisSideBar()
+					.getHeight();
 		}
-		// check if newEditorSize is smaller than minEditorSize and fix it
-		if (newEditorSize.width < minEditorSize.width)
-			newEditorSize.width = minEditorSize.width;
-		if (newEditorSize.height < minEditorSize.height)
-			newEditorSize.height = minEditorSize.height;
 		// check if newEditorSize is bigger than maxEditorSize and fix it
 		if (newEditorSize.width > maxEditorSize.width)
 			newEditorSize.width = maxEditorSize.width;
