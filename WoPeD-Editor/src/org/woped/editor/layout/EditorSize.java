@@ -22,6 +22,7 @@ public class EditorSize {
 	private Dimension maxEditorSize = null;
 	private Dimension modelSize = null;
 	private Dimension newEditorSize = null;
+	private Dimension editorSizeBeforeSidebar = null;
 
 	public final int SIDEBAR_WIDTH = 320;
 
@@ -60,14 +61,20 @@ public class EditorSize {
 			parentContainer = editor.getParent().getParent().getParent()
 					.getParent().getParent();
 		Dimension currentSize = parentContainer.getSize();
+		if (editor.isAnalysisBarVisible())
+			editorSizeBeforeSidebar = currentSize;
+		else if (editorSizeBeforeSidebar != null) {
+			parentContainer.setSize(editorSizeBeforeSidebar);
+			parentContainer.setLocation(0, 0);
+			return;
+		}
 		if (!downSize) {
 			if (currentSize.height > dim.height)
 				dim.height = currentSize.height;
 			if (currentSize.width > dim.width)
 				dim.width = currentSize.width;
 		}
-		if (currentSize.height != newEditorSize.height
-				|| currentSize.width != newEditorSize.width) {
+		if (currentSize.height != dim.height || currentSize.width != dim.width) {
 			parentContainer.setSize(dim);
 			parentContainer.setLocation(0, 0);
 		}
@@ -79,11 +86,11 @@ public class EditorSize {
 	 */
 	private void calculateMaxEditorSize() {
 		if (editor.isSubprocessEditor())
-			maxEditorSize = editor.getParent().getParent()
-					.getParent().getParent().getParent().getSize();
+			maxEditorSize = editor.getParent().getParent().getParent()
+					.getParent().getParent().getSize();
 		else
-			maxEditorSize = editor.getParent().getParent()
-					.getParent().getParent().getParent().getParent().getSize();
+			maxEditorSize = editor.getParent().getParent().getParent()
+					.getParent().getParent().getParent().getSize();
 	}
 
 	/**
