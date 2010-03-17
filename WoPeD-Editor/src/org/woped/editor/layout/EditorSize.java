@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.editor.controller.vc.EditorVC;
 
 /**
  * 
@@ -25,6 +24,7 @@ public class EditorSize {
 	private Dimension editorSizeBeforeSidebar = null;
 
 	public final int SIDEBAR_WIDTH = 320;
+	public final int SIDEBAR_MINHEIGHT = 400;
 
 	/**
 	 * 
@@ -51,15 +51,11 @@ public class EditorSize {
 	 * 
 	 * @param dim
 	 *            the dimension to set as new size
+	 * @param downSize
+	 * 				true if editor can be smaller than before resize
 	 */
 	private void setSize(Dimension dim, boolean downSize) {
-		Container parentContainer = null;
-		if (editor.isSubprocessEditor())
-			parentContainer = editor.getParent().getParent().getParent()
-					.getParent();
-		else
-			parentContainer = editor.getParent().getParent().getParent()
-					.getParent().getParent();
+		Container parentContainer = getEditorParentContainer();
 		Dimension currentSize = parentContainer.getSize();
 		if (editor.isAnalysisBarVisible())
 			editorSizeBeforeSidebar = currentSize;
@@ -85,12 +81,7 @@ public class EditorSize {
 	 * main window
 	 */
 	private void calculateMaxEditorSize() {
-		if (editor.isSubprocessEditor())
-			maxEditorSize = editor.getParent().getParent().getParent()
-					.getParent().getParent().getSize();
-		else
-			maxEditorSize = editor.getParent().getParent().getParent()
-					.getParent().getParent().getParent().getSize();
+		maxEditorSize = getEditorParentContainer().getParent().getSize();
 	}
 
 	/**
@@ -98,8 +89,7 @@ public class EditorSize {
 	 * -width/-height
 	 */
 	private void calculateModelSize() {
-		ModelElementContainer elements = editor.getModelProcessor()
-				.getElementContainer();
+		ModelElementContainer elements = editor.getModelProcessor().getElementContainer();
 		AbstractElementModel element = null;
 
 		modelSize = new Dimension(100, 100);
@@ -135,14 +125,27 @@ public class EditorSize {
 		// add sideBar-width if sideBar is displayed
 		if (editor.isAnalysisBarVisible()) {
 			newEditorSize.width += SIDEBAR_WIDTH;
-			newEditorSize.height = ((EditorVC) editor).getAnalysisSideBar()
-					.getHeight();
+			if(SIDEBAR_MINHEIGHT > newEditorSize.height){
+				//newEditorSize.height = editor.getAnalysisSideBar().getHeight(); //TODO does not work
+				newEditorSize.height = SIDEBAR_MINHEIGHT;
+			}
 		}
 		// check if newEditorSize is bigger than maxEditorSize and fix it
 		if (newEditorSize.width > maxEditorSize.width)
 			newEditorSize.width = maxEditorSize.width;
 		if (newEditorSize.height > maxEditorSize.height)
 			newEditorSize.height = maxEditorSize.height;
+	}
+	
+	/**
+	 * 
+	 * @return the container which represents the whole editor-window
+	 */
+	private Container getEditorParentContainer(){
+		if (editor.isSubprocessEditor())
+			return editor.getParent().getParent().getParent().getParent();
+		else
+			return editor.getParent().getParent().getParent().getParent().getParent();
 	}
 
 }

@@ -11,6 +11,7 @@ import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.qualanalysis.service.interfaces.INetStatistics;
 import org.woped.qualanalysis.service.interfaces.ISComponent;
 import org.woped.qualanalysis.service.interfaces.ISoundnessCheck;
+import org.woped.qualanalysis.service.interfaces.IWellStructuredness;
 import org.woped.qualanalysis.service.interfaces.IWorkflowCheck;
 import org.woped.qualanalysis.soundness.WorkflowCheckImplement;
 import org.woped.qualanalysis.structure.StructuralAnalysis;
@@ -28,8 +29,9 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
     private StructuralAnalysis sA = null;
     protected ISComponent sComponent = null;
     protected ISoundnessCheck soundnessCheck = null;
-    protected IWorkflowCheck workflowCheck = null;
+    private IWorkflowCheck workflowCheck = null;
     private INetStatistics netStatistics = null;
+    private IWellStructuredness wellStructuredness = null;
 
     private Set<AbstractElementModel> places = null;
     private Set<AbstractElementModel> transitions = null;
@@ -62,62 +64,35 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         sA = new StructuralAnalysis(editor);
         workflowCheck = new WorkflowCheckImplement(editor);
         netStatistics = sA;
+        wellStructuredness = sA;
     }
 
-    public int getNumPlaces() {
+    public Set<AbstractElementModel> getPlaces() {
         if (places == null) {
             places = netStatistics.getPlaces();
         }
-        return places.size();
+        return places;
     }
 
-    public Iterator<AbstractElementModel> getPlacesIterator() {
-        if (places == null) {
-            places = netStatistics.getPlaces();
-        }
-        return places.iterator();
-    }
-
-    public int getNumTransitions() {
+    public Set<AbstractElementModel> getTransitions() {
         if (transitions == null) {
             transitions = netStatistics.getTransitions();
         }
-        return transitions.size();
+        return transitions;
     }
 
-    public Iterator<AbstractElementModel> getTransitionsIterator() {
-        if (transitions == null) {
-            transitions = netStatistics.getTransitions();
-        }
-        return transitions.iterator();
-    }
-
-    public int getNumOperators() {
+    public Set<AbstractElementModel> getOperators() {
         if (operators == null) {
             operators = netStatistics.getOperators();
         }
-        return operators.size();
+        return operators;
     }
 
-    public Iterator<AbstractElementModel> getOperatorsIterator() {
-        if (operators == null) {
-            operators = netStatistics.getOperators();
-        }
-        return operators.iterator();
-    }
-
-    public int getNumSubprocesses() {
+    public Set<AbstractElementModel> getSubprocesses() {
         if (subprocesses == null) {
             subprocesses = netStatistics.getSubprocesses();
         }
-        return subprocesses.size();
-    }
-
-    public Iterator<AbstractElementModel> getSubprocessesIterator() {
-        if (subprocesses == null) {
-            subprocesses = netStatistics.getSubprocesses();
-        }
-        return subprocesses.iterator();
+        return subprocesses;
     }
 
     public int getNumArcs() {
@@ -127,267 +102,137 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         return numArcs;
     }
 
-    public int getNumFreeChoiceViolations() {
+    public Set<Set<AbstractElementModel>> getFreeChoiceViolations() {
         if (freeChoiceViolations == null) {
             freeChoiceViolations = sA.getFreeChoiceViolations();
         }
-        return freeChoiceViolations.size();
+        return freeChoiceViolations;
     }
 
-    public Iterator<Set<AbstractElementModel>> getFreeChoiceViolationsIterator() {
-        if (freeChoiceViolations == null) {
-            freeChoiceViolations = sA.getFreeChoiceViolations();
-        }
-        return freeChoiceViolations.iterator();
-    }
-
-    public int getNumWronglyUsedOperators() {
+    public Set<AbstractElementModel> getWronglyUsedOperators() {
         if (wronglyUsedOperators == null) {
             wronglyUsedOperators = sA.getMisusedOperators();
         }
-        return wronglyUsedOperators.size();
+        return wronglyUsedOperators;
     }
 
-    public Iterator<AbstractElementModel> getWronglyUsedOperatorsIterator() {
-        if (wronglyUsedOperators == null) {
-            wronglyUsedOperators = sA.getMisusedOperators();
-        }
-        return wronglyUsedOperators.iterator();
-    }
-
-    public int getNumSourcePlaces() {
+    public Set<AbstractElementModel> getSourcePlaces() {
         if (sourcePlaces == null) {
             sourcePlaces = workflowCheck.getSourcePlaces();
         }
-        return sourcePlaces.size();
+        return sourcePlaces;
     }
 
-    public Iterator<AbstractElementModel> getSourcePlacesIterator() {
-        if (sourcePlaces == null) {
-            sourcePlaces = workflowCheck.getSourcePlaces();
-        }
-        return sourcePlaces.iterator();
-    }
-
-    public int getNumSinkPlaces() {
+    public Set<AbstractElementModel> getSinkPlaces() {
         if (sinkPlaces == null) {
             sinkPlaces = workflowCheck.getSinkPlaces();
         }
-        return sinkPlaces.size();
+        return sinkPlaces;
     }
 
-    public Iterator<AbstractElementModel> getSinkPlacesIterator() {
-        if (sinkPlaces == null) {
-            sinkPlaces = workflowCheck.getSinkPlaces();
-        }
-        return sinkPlaces.iterator();
-    }
-
-    public int getNumSourceTransitions() {
+    public Set<AbstractElementModel> getSourceTransitions() {
         if (sourceTransitions == null) {
             sourceTransitions = workflowCheck.getSourceTransitions();
         }
-        return sourceTransitions.size();
+        return sourceTransitions;
     }
 
-    public Iterator<AbstractElementModel> getSourceTransitionsIterator() {
-        if (sourceTransitions == null) {
-            sourceTransitions = workflowCheck.getSourceTransitions();
-        }
-        return sourceTransitions.iterator();
-    }
-
-    public int getNumSinkTransitions() {
+    public Set<AbstractElementModel> getSinkTransitions() {
         if (sinkTransitions == null) {
             sinkTransitions = workflowCheck.getSinkTransitions();
         }
-        return sinkTransitions.size();
+        return sinkTransitions;
     }
 
-    public Iterator<AbstractElementModel> getSinkTransitionsIterator() {
-        if (sinkTransitions == null) {
-            sinkTransitions = workflowCheck.getSinkTransitions();
-        }
-        return sinkTransitions.iterator();
-    }
-
-    public int getNumNotConnectedNodes() {
+    public Set<AbstractElementModel> getNotConnectedNodes() {
         if (notConnectedNodes == null) {
             notConnectedNodes = workflowCheck.getNotConnectedNodes();
         }
-        return notConnectedNodes.size();
+        return notConnectedNodes;
     }
 
-    public Iterator<AbstractElementModel> getNotConnectedNodesIterator() {
-        if (notConnectedNodes == null) {
-            notConnectedNodes = workflowCheck.getNotConnectedNodes();
-        }
-        return notConnectedNodes.iterator();
-    }
-
-    public int getNumNotStronglyConnectedNodes() {
-        if (notStronglyConnectedNodes == null) {
-            notStronglyConnectedNodes = workflowCheck.getNotStronglyConnectedNodes();
-        }
-        return notStronglyConnectedNodes.size();
-    }
-
-    @Override
-    public Iterator<Set<AbstractElementModel>> getConnectedComponentsIterator() {
+    public Set<Set<AbstractElementModel>> getConnectedComponents() {
         if (connectedComponents == null) {
             connectedComponents = workflowCheck.getConnectedComponents();
         }
-        return connectedComponents.iterator();
+        return connectedComponents;
     }
 
-    @Override
-    public int getNumConnectedComponents() {
-        if (connectedComponents == null) {
-            connectedComponents = workflowCheck.getConnectedComponents();
-        }
-        return connectedComponents.size();
-    }
-
-    public Iterator<AbstractElementModel> getNotStronglyConnectedNodesIterator() {
+    public Set<AbstractElementModel> getNotStronglyConnectedNodes() {
         if (notStronglyConnectedNodes == null) {
             notStronglyConnectedNodes = workflowCheck.getNotStronglyConnectedNodes();
         }
-        return notStronglyConnectedNodes.iterator();
+        return notStronglyConnectedNodes;
     }
 
-    @Override
-    public int getStronglyConnectedComponentNum() {
+    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents() {
         if (stronglyConnectedComponents == null) {
             stronglyConnectedComponents = workflowCheck.getStronglyConnectedComponents();
         }
-        return stronglyConnectedComponents.size();
+        return stronglyConnectedComponents;
     }
 
-    @Override
-    public Iterator<Set<AbstractElementModel>> getStronglyConnectedComponentIterator() {
-        if (stronglyConnectedComponents == null) {
-            stronglyConnectedComponents = workflowCheck.getStronglyConnectedComponents();
-        }
-        return stronglyConnectedComponents.iterator();
-    }
-
-    public int getNumPTHandles() {
+    public Set<Set<AbstractElementModel>> getPTHandles() {
         if (pTHandles == null) {
-            pTHandles = sA.getPTHandles();
+            pTHandles = wellStructuredness.getPTHandles();
         }
-        return pTHandles.size();
+        return pTHandles;
     }
 
-    public Iterator<Set<AbstractElementModel>> getPTHandlesIterator() {
-        if (pTHandles == null) {
-            pTHandles = sA.getPTHandles();
-        }
-        return pTHandles.iterator();
-    }
-
-    public int getNumTPHandles() {
+    public Set<Set<AbstractElementModel>> getTPHandles() {
         if (tPHandles == null) {
-            tPHandles = sA.getTPHandles();
+            tPHandles = wellStructuredness.getTPHandles();
         }
-        return tPHandles.size();
-    }
-
-    public Iterator<Set<AbstractElementModel>> getTPHandlesIterator() {
-        if (tPHandles == null) {
-            tPHandles = sA.getTPHandles();
-        }
-        return tPHandles.iterator();
+        return tPHandles;
     }
 
     public HashSet<Set<ClusterElement>> getM_handleClusters() {
         if (m_handleClusters == null) {
-            m_handleClusters = sA.getM_handleClusters();
+            m_handleClusters = wellStructuredness.getM_handleClusters();
         }
         return m_handleClusters;
     }
 
-    public int getNumSComponents() {
+    public Set<List<AbstractElementModel>> getSComponents() {
         if (sComponents == null) {
             sComponents = sComponent.getSComponents();
         }
-        return sComponents.size();
+        return sComponents;
     }
 
-    public Iterator<List<AbstractElementModel>> getSComponentsIterator() {
-        if (sComponents == null) {
-            sComponents = sComponent.getSComponents();
-        }
-        return sComponents.iterator();
-    }
-
-    public int getNumNotSCovered() {
+    public Set<AbstractElementModel> getNotSCovered() {
         if (notSCovered == null) {
             notSCovered = sComponent.getNotSCovered();
         }
-        return notSCovered.size();
+        return notSCovered;
     }
 
-    public Iterator<AbstractElementModel> getNotSCoveredIterator() {
-        if (notSCovered == null) {
-            notSCovered = sComponent.getNotSCovered();
-        }
-        return notSCovered.iterator();
-    }
-
-    public int getNumWronglyMarkedPlaces() {
+    public Set<AbstractElementModel> getWronglyMarkedPlaces() {
         if (wronglyMarkedPlaces == null) {
             wronglyMarkedPlaces = calcWronglyMarkedPlaces();
         }
-        return wronglyMarkedPlaces.size();
+        return wronglyMarkedPlaces;
     }
 
-    public Iterator<AbstractElementModel> getWronglyMarkedPlacesIterator() {
-        if (wronglyMarkedPlaces == null) {
-            wronglyMarkedPlaces = calcWronglyMarkedPlaces();
-        }
-        return wronglyMarkedPlaces.iterator();
-    }
-
-    public int getNumUnboundedPlaces() {
+    public Set<AbstractElementModel> getUnboundedPlaces() {
         if (unboundedPlaces == null) {
             unboundedPlaces = soundnessCheck.getUnboundedPlaces();
         }
-        return unboundedPlaces.size();
+        return unboundedPlaces;
     }
 
-    public Iterator<AbstractElementModel> getUnboundedPlacesIterator() {
-        if (unboundedPlaces == null) {
-            unboundedPlaces = soundnessCheck.getUnboundedPlaces();
-        }
-        return unboundedPlaces.iterator();
-    }
-
-    public int getNumDeadTransitions() {
+    public Set<AbstractElementModel> getDeadTransitions() {
         if (deadTransitions == null) {
             deadTransitions = soundnessCheck.getDeadTransitions();
         }
-        return deadTransitions.size();
+        return deadTransitions;
     }
 
-    public Iterator<AbstractElementModel> getDeadTransitionsIterator() {
-        if (deadTransitions == null) {
-            deadTransitions = soundnessCheck.getDeadTransitions();
-        }
-        return deadTransitions.iterator();
-    }
-
-    public int getNumNonLiveTransitions() {
+    public Set<AbstractElementModel> getNonLiveTransitions() {
         if (nonLiveTransitions == null) {
             nonLiveTransitions = soundnessCheck.getNonLiveTransitions();
         }
-        return nonLiveTransitions.size();
-    }
-
-    public Iterator<AbstractElementModel> getNonLiveTransitionsIterator() {
-        if (nonLiveTransitions == null) {
-            nonLiveTransitions = soundnessCheck.getNonLiveTransitions();
-        }
-        return nonLiveTransitions.iterator();
+        return nonLiveTransitions;
     }
 
     /**
@@ -406,16 +251,16 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         if (!isWorkflowNet()) {
             return false;
         }
-        if (getNumWronglyMarkedPlaces() != 0) {
+        if (getWronglyMarkedPlaces().size() != 0) {
             return false;
         }
-        if (getNumUnboundedPlaces() != 0) {
+        if (getUnboundedPlaces().size() != 0) {
             return false;
         }
-        if (getNumDeadTransitions() != 0) {
+        if (getDeadTransitions().size() != 0) {
             return false;
         }
-        if (getNumNonLiveTransitions() != 0) {
+        if (getNonLiveTransitions().size() != 0) {
             return false;
         }
         return true;

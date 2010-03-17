@@ -19,18 +19,17 @@ public class WorkflowPage extends BeginnerPanel {
 	public WorkflowPage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages
 				.getString(PREFIX + "WorkflowAnalysis"));
-		numSourcePlaces = qualanalysisService.getNumSourcePlaces();
+		numSourcePlaces = qualanalysisService.getSourcePlaces().size();
 
-		numSinkPlaces = qualanalysisService.getNumSinkPlaces();
+		numSinkPlaces = qualanalysisService.getSinkPlaces().size();
 
-		numSourceTransitions = qualanalysisService.getNumSourceTransitions();
+		numSourceTransitions = qualanalysisService.getSourceTransitions().size();
 
-		numSinkTransitions = qualanalysisService.getNumSinkTransitions();
+		numSinkTransitions = qualanalysisService.getSinkTransitions().size();
 
-		numNotConnectedNodes = qualanalysisService.getNumNotConnectedNodes();
+		numNotConnectedNodes = qualanalysisService.getNotConnectedNodes().size();
 
-		numNotStronglyConnectedNodes = qualanalysisService
-				.getNumNotStronglyConnectedNodes();
+		numNotStronglyConnectedNodes = qualanalysisService.getNotStronglyConnectedNodes().size();
 
 		if (!qualanalysisService.isWorkflowNet()) {
 			status = false;
@@ -42,7 +41,7 @@ public class WorkflowPage extends BeginnerPanel {
 		// Number of Source Places
 		if (numSourcePlaces != 1) {
 			createEntry(PREFIX + "NumSourcePlaces", qualanalysisService
-					.getSourcePlacesIterator(), numSourcePlaces,
+					.getSourcePlaces().iterator(), numSourcePlaces,
 					PREFIX_HELP + "SourcePlaces",
 					PREFIX_EXAMPLE + "SourcePlaces");
 		}
@@ -50,7 +49,7 @@ public class WorkflowPage extends BeginnerPanel {
 		// Number of Sink Places
 		if (numSinkPlaces != 1) {
 			createEntry(PREFIX + "NumSinkPlaces", qualanalysisService
-					.getSinkPlacesIterator(), numSinkPlaces,
+					.getSinkPlaces().iterator(), numSinkPlaces,
 					PREFIX_HELP + "SinkPlaces",
 					PREFIX_EXAMPLE + "SinkPlaces");
 		}
@@ -58,7 +57,7 @@ public class WorkflowPage extends BeginnerPanel {
 		// Number of Source Transitions
 		if (numSourceTransitions != 0) {
 			createEntry(PREFIX + "NumSourceTransitions", qualanalysisService
-					.getSourceTransitionsIterator(), numSourceTransitions,
+					.getSourceTransitions().iterator(), numSourceTransitions,
 					PREFIX_HELP + "SourceTransitions",
 					PREFIX_EXAMPLE + "SourceTransitions");
 		}
@@ -66,7 +65,7 @@ public class WorkflowPage extends BeginnerPanel {
 		// Number of Sink Transitions
 		if (numSinkTransitions != 0) {
 			createEntry(PREFIX + "NumSinkTransitions", qualanalysisService
-					.getSinkTransitionsIterator(), numSinkTransitions,
+					.getSinkTransitions().iterator(), numSinkTransitions,
 					PREFIX_HELP + "SinkTransitions",
 					PREFIX_EXAMPLE + "SinkTransitions");
 		}
@@ -74,7 +73,7 @@ public class WorkflowPage extends BeginnerPanel {
 		// Number of Isolated nodes
 		if (numNotConnectedNodes != 0) {
 			createEntry(PREFIX + "NumUnconnectedNodes",
-					qualanalysisService.getNotConnectedNodesIterator(),
+					qualanalysisService.getNotConnectedNodes().iterator(),
 					numNotConnectedNodes,
 					PREFIX_HELP + "UnconnectedNodes");
 		}
@@ -82,7 +81,7 @@ public class WorkflowPage extends BeginnerPanel {
 		// Number of not strongly connected nodes
 		if (numNotStronglyConnectedNodes != 0) {
 			createEntry(PREFIX + "NumNotStronglyConnectedNodes",
-					qualanalysisService.getNotStronglyConnectedNodesIterator(),
+					qualanalysisService.getNotStronglyConnectedNodes().iterator(),
 					numNotStronglyConnectedNodes,
 					PREFIX_HELP + "NotStronglyConnectedNodes");
 		}

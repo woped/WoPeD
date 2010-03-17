@@ -212,7 +212,7 @@ public class NetColorScheme implements INetColorScheme {
 	
 	//! Reset all understandability coloring Information in the current petri net  
 	private void resetColoringInformation() {
-		Iterator<AbstractElementModel> elementIter = qualanService.getPlacesIterator();
+		Iterator<AbstractElementModel> elementIter = qualanService.getPlaces().iterator();
 		AbstractElementModel currentElement = null;
 		
 		//reset all places
@@ -223,7 +223,7 @@ public class NetColorScheme implements INetColorScheme {
 		}
 			
 		//reset all transitions
-		elementIter = qualanService.getTransitionsIterator();
+		elementIter = qualanService.getTransitions().iterator();
 		while (elementIter.hasNext()){
 			currentElement = elementIter.next();
 			currentElement.setUnderstandColoringActive(false);
@@ -231,7 +231,7 @@ public class NetColorScheme implements INetColorScheme {
 		}
 		
 		//reset all operators
-		elementIter = qualanService.getOperatorsIterator();
+		elementIter = qualanService.getOperators().iterator();
 		while (elementIter.hasNext()){
 			currentElement = elementIter.next();
 			currentElement.setUnderstandColoringActive(false);

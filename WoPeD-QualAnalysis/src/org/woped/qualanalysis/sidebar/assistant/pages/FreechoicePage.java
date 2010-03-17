@@ -19,8 +19,7 @@ public class FreechoicePage extends BeginnerPanel {
 		super(previous, sideBar, Messages
 				.getString(PREFIX + "NumFreeChoiceViolations"));
 
-		numFreeChoiceViolations = qualanalysisService
-				.getNumFreeChoiceViolations();
+		numFreeChoiceViolations = qualanalysisService.getFreeChoiceViolations().size();
 
 		if (numFreeChoiceViolations != 0) {
 			status = false;
@@ -30,7 +29,7 @@ public class FreechoicePage extends BeginnerPanel {
 	@Override
 	public void addComponents() {
 		createEntry(PREFIX + "NumFreeChoiceViolations",
-				qualanalysisService.getFreeChoiceViolationsIterator(),
+				qualanalysisService.getFreeChoiceViolations().iterator(),
 				numFreeChoiceViolations,
 				PREFIX_HELP + "FreeChoiceViolations");
 		createEmptyEntry();

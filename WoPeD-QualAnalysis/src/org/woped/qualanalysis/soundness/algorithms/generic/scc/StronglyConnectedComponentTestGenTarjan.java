@@ -38,7 +38,8 @@ public class StronglyConnectedComponentTestGenTarjan<K extends INode<K>> impleme
     /**
      * init method.
      */
-    private void init() {
+    @SuppressWarnings("unchecked")
+	private void init() {
 
         maxdfs = 0;
         nodes = new HashSet<K>();

@@ -192,9 +192,9 @@ public class SideBar extends CloseableTabbedPane {
 	public void showTStarIfPossible() {
 		if (tStarCheckBox.isSelected() && workflowStatus) {
 			AbstractElementModel source = getQualanalysisService()
-					.getSourcePlacesIterator().next();
+					.getSourcePlaces().iterator().next();
 			AbstractElementModel sink = getQualanalysisService()
-					.getSinkPlacesIterator().next();
+					.getSinkPlaces().iterator().next();
 			if (tStar == null)
 				tStar = new TStar(editor);
 			tStar.updateTStar(source, sink);

@@ -32,11 +32,11 @@ public class WorkflowNetGraph {
 		nodeArray = new Node[numNodes];
 		int nextIdx = 0;
 		
-		AbstractPetriNetModelElement source = (AbstractPetriNetModelElement)qualanService.getSourcePlacesIterator().next();
+		AbstractPetriNetModelElement source = (AbstractPetriNetModelElement)qualanService.getSourcePlaces().iterator().next();
 		sourcePlace = new Node(source.getId(), source.getNameValue());
 		sourcePlace.setType(Node.TYPE_PLACE);
 		
-		AbstractPetriNetModelElement sink = (AbstractPetriNetModelElement)qualanService.getSinkPlacesIterator().next();
+		AbstractPetriNetModelElement sink = (AbstractPetriNetModelElement)qualanService.getSinkPlaces().iterator().next();
 		sinkPlace = new Node(sink.getId(), sink.getNameValue());
 		sinkPlace.setType(Node.TYPE_PLACE);
 		

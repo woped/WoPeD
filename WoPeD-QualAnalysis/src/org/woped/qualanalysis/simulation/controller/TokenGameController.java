@@ -263,7 +263,7 @@ public class TokenGameController {
 
 		sinkPlaces = new HashSet<PlaceModel>();
 		IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(thisEditor);
-        Iterator<AbstractElementModel> i = qualanService.getSinkPlacesIterator();
+        Iterator<AbstractElementModel> i = qualanService.getSinkPlaces().iterator();
 		while (i.hasNext())
 			sinkPlaces.add((PlaceModel) i.next());
 

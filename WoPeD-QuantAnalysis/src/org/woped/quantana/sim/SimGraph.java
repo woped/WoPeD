@@ -34,9 +34,9 @@ public class SimGraph {
 		this.mec = editor.getModelProcessor().getElementContainer();
 		IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);		
 		buildGraph();		
-		PetriNetModelElement el = (PetriNetModelElement) qualanService.getSinkPlacesIterator().next();
+		PetriNetModelElement el = (PetriNetModelElement) qualanService.getSinkPlaces().iterator().next();
 		sink = Nodes.get(el.getId());
-		el = (PetriNetModelElement) qualanService.getSourcePlacesIterator().next();
+		el = (PetriNetModelElement) qualanService.getSourcePlaces().iterator().next();
 		source = Nodes.get(el.getId());				
 	}
 

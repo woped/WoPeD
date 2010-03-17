@@ -321,28 +321,28 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				// so we need to check whether the iterator is valid!!
 				String ainputID = null;
 				String aoutputID = null;
-				Iterator<AbstractElementModel> i = qualanService.getSinkPlacesIterator();
+				Iterator<AbstractElementModel> i = qualanService.getSinkPlaces().iterator();
 				if (i.hasNext())
 					ainputID = ((AbstractElementModel) i.next()).getId();
-				i = qualanService.getSourcePlacesIterator();
+				i = qualanService.getSourcePlaces().iterator();
 				if (i.hasNext())
 					aoutputID = ((AbstractElementModel) i.next()).getId();
 				
-				if (qualanService.getNumNotStronglyConnectedNodes() > 0
-						|| qualanService.getNumSinkPlaces() > 1
-						|| qualanService.getNumSourcePlaces() > 1
+				if (qualanService.getNotStronglyConnectedNodes().size() > 0
+						|| qualanService.getSinkPlaces().size() > 1
+						|| qualanService.getSourcePlaces().size() > 1
 						|| inputID.equals(ainputID)
 						|| outputID.equals(aoutputID))
 				{
 					String errorMessage = Messages
 							.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Start");
 
-					if (qualanService.getNumNotStronglyConnectedNodes() > 0)
+					if (qualanService.getNotStronglyConnectedNodes().size() > 0)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.StronglyConnected");
 					}
-					if (qualanService.getNumSourcePlaces() > 1)
+					if (qualanService.getSourcePlaces().size() > 1)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Source");
@@ -355,7 +355,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 						}
 					}
 
-					if (qualanService.getNumSinkPlaces() > 1)
+					if (qualanService.getSinkPlaces().size() > 1)
 					{
 						errorMessage += Messages
 								.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Message.Sink");

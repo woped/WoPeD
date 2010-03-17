@@ -18,7 +18,7 @@ public class TokenPage extends BeginnerPanel {
 	public TokenPage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages.getString(PREFIX + "InitialMarkingAnalysis"));
 
-		numWronglyMarkedPlaces = qualanalysisService.getNumWronglyMarkedPlaces();
+		numWronglyMarkedPlaces = qualanalysisService.getWronglyMarkedPlaces().size();
 
 		if (numWronglyMarkedPlaces != 0) {
 			status = false;
@@ -28,7 +28,7 @@ public class TokenPage extends BeginnerPanel {
 	@Override
 	public void addComponents() {
 		createEntry(PREFIX + "NumWronglyMarkedPlaces",
-				qualanalysisService.getWronglyMarkedPlacesIterator(),
+				qualanalysisService.getWronglyMarkedPlaces().iterator(),
 				numWronglyMarkedPlaces,
 				PREFIX_HELP + "WronglyMarkedPlaces");
 		createEmptyEntry();

@@ -251,8 +251,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
         Iterator<AbstractElementModel> transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values()
                 .iterator();
         IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
-        Iterator<AbstractElementModel> places = qualanService.getPlacesIterator();
-        AbstractPetriNetModelElement end = (AbstractPetriNetModelElement) qualanService.getSinkPlacesIterator().next();
+        Iterator<AbstractElementModel> places = qualanService.getPlaces().iterator();
+        AbstractPetriNetModelElement end = (AbstractPetriNetModelElement) qualanService.getSinkPlaces().iterator().next();
 
         while (transes.hasNext()) {
             AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement) transes.next();
@@ -437,8 +437,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
                                         if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
                                                 && this.isSound(editor)) {
                                         	IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
-                                            int wellStruct = qualanService.getNumPTHandles() + qualanService.getNumTPHandles();
-                                            int freeChoice = qualanService.getNumFreeChoiceViolations();
+                                            int wellStruct = qualanService.getPTHandles().size() + qualanService.getTPHandles().size();
+                                            int freeChoice = qualanService.getFreeChoiceViolations().size();
                                             int sound = wellStruct + freeChoice;
                                             if (sound == 0) {
                                                 succeed = BPEL.getBPELMainClass()

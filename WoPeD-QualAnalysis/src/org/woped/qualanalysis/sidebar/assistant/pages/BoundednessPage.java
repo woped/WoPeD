@@ -20,7 +20,7 @@ public class BoundednessPage extends BeginnerPanel {
 		super(previous, sideBar, Messages
 				.getString(PREFIX + "BoundednessAnalysis"));
 
-		numUnboundedPlaces = qualanalysisService.getNumUnboundedPlaces();
+		numUnboundedPlaces = qualanalysisService.getUnboundedPlaces().size();
 
 		if (numUnboundedPlaces != 0) {
 			status = false;
@@ -30,7 +30,7 @@ public class BoundednessPage extends BeginnerPanel {
 	@Override
 	public void addComponents() {
 		createEntry(PREFIX + "NumUnboundedPlaces", qualanalysisService
-				.getUnboundedPlacesIterator(), numUnboundedPlaces,
+				.getUnboundedPlaces().iterator(), numUnboundedPlaces,
 				PREFIX_HELP + "UnboundedPlaces",
 				PREFIX_EXAMPLE + "UnboundedPlaces");
 		createEmptyEntry();

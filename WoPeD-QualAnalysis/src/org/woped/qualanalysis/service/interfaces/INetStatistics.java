@@ -30,6 +30,30 @@ public interface INetStatistics {
 	 * @return a set with all operator-transitions
 	 */
 	public Set<AbstractElementModel> getOperators();
+	
+	/**
+	 * 
+	 * @return a set with all AND-join operators and operators that function as an AND-join (e.g. and-split-join)
+	 */
+	public Set<AbstractElementModel> getAndJoins();
+	
+	/**
+	 * 
+	 * @return a set with all AND-split operators and operators that function as an AND-split (e.g. and-split-join)
+	 */
+	public Set<AbstractElementModel> getAndSplits();
+	
+	/**
+	 * 
+	 * @return a set with all XOR-join operators and operators that function as an XOR-join (e.g. xor-split-join)
+	 */
+	public Set<AbstractElementModel> getXorJoins();
+	
+	/**
+	 * 
+	 * @return a set with all XOR-split operators and operators that function as an XOR-split (e.g. xor-split-join)
+	 */
+	public Set<AbstractElementModel> getXorSplits();
 
 	/**
 	 * 

@@ -18,6 +18,7 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.service.interfaces.INetStatistics;
+import org.woped.qualanalysis.service.interfaces.IWellStructuredness;
 import org.woped.qualanalysis.service.interfaces.IWorkflowCheck;
 import org.woped.qualanalysis.structure.components.ArcConfiguration;
 import org.woped.qualanalysis.structure.components.ClusterElement;
@@ -25,7 +26,7 @@ import org.woped.qualanalysis.structure.components.FlowNode;
 import org.woped.qualanalysis.structure.components.LowLevelNet;
 import org.woped.qualanalysis.structure.components.RouteInfo;
 
-public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
+public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWellStructuredness {
 
     // ! Construct static analysis object from
     // ! a petri-net editor
@@ -37,19 +38,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         m_currentEditor = currentEditor;
     }
 
-    public int getNumPlaces() {
-        calculateBasicNetInfo();
-        return m_places.size();
-    }
-
     public Set<AbstractElementModel> getPlaces() {
         calculateBasicNetInfo();
         return m_places;
-    }
-
-    public int getNumTransitions() {
-        calculateBasicNetInfo();
-        return m_transitions.size();
     }
 
     public Set<AbstractElementModel> getTransitions() {
@@ -57,33 +48,38 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_transitions;
     }
 
-    public int getNumSubprocesses() {
-        calculateBasicNetInfo();
-        return m_subprocesses.size();
-    }
-
     public Set<AbstractElementModel> getSubprocesses() {
         calculateBasicNetInfo();
         return m_subprocesses;
-    }
-
-    public int getNumOperators() {
-        calculateBasicNetInfo();
-        return m_operators.size();
     }
 
     public Set<AbstractElementModel> getOperators() {
         calculateBasicNetInfo();
         return m_operators;
     }
-
+    
+    public Set<AbstractElementModel> getAndJoins() {
+    	calculateBasicNetInfo();
+    	return m_andjoins;
+    }
+	
+    public Set<AbstractElementModel> getAndSplits() {
+    	calculateBasicNetInfo();
+    	return m_andsplits;
+    }
+	
+	public Set<AbstractElementModel> getXorJoins() {
+		calculateBasicNetInfo();
+    	return m_xorjoins;
+    }
+	
+	public Set<AbstractElementModel> getXorSplits() {
+		calculateBasicNetInfo();
+    	return m_xorsplits;
+    }
+	
     public int getNumArcs() {
         return m_nNumArcs;
-    }
-
-    public int getNumSourcePlaces() {
-        calculateBasicNetInfo();
-        return m_sourcePlaces.size();
     }
 
     public Set<AbstractElementModel> getSourcePlaces() {
@@ -91,19 +87,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_sourcePlaces;
     }
 
-    public int getNumSourceTransitions() {
-        calculateBasicNetInfo();
-        return m_sourceTransitions.size();
-    }
-
     public Set<AbstractElementModel> getSourceTransitions() {
         calculateBasicNetInfo();
         return m_sourceTransitions;
-    }
-
-    public int getNumSinkPlaces() {
-        calculateBasicNetInfo();
-        return m_sinkPlaces.size();
     }
 
     public Set<AbstractElementModel> getSinkPlaces() {
@@ -111,29 +97,14 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_sinkPlaces;
     }
 
-    public int getNumSinkTransitions() {
-        calculateBasicNetInfo();
-        return m_sinkTransitions.size();
-    }
-
     public Set<AbstractElementModel> getSinkTransitions() {
         calculateBasicNetInfo();
         return m_sinkTransitions;
     }
 
-    public int getNumMisusedOperators() {
-        calculateBasicNetInfo();
-        return m_misusedOperators.size();
-    }
-
     public Set<AbstractElementModel> getMisusedOperators() {
         calculateBasicNetInfo();
         return m_misusedOperators;
-    }
-
-    public int getNumNotConnectedNodes() {
-        calculateConnections();
-        return m_notConnectedNodes.size();
     }
 
     // ! Return all nodes of the current net that
@@ -143,21 +114,11 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
         return m_notConnectedNodes;
     }
 
-    public int getNumNotStronglyConnectedNodes() {
-        calculateConnections();
-        return m_notStronglyConnectedNodes.size();
-    }
-
     // ! Return all nodes of the current net that
     // ! are not strongly connected
     public Set<AbstractElementModel> getNotStronglyConnectedNodes() {
         calculateConnections();
         return m_notStronglyConnectedNodes;
-    }
-
-    public int getNumFreeChoiceViolations() {
-        calculateFreeChoice();
-        return m_freeChoiceViolations.size();
     }
 
     // ! Return a list of free-choice violations
@@ -170,15 +131,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
     }
 
     // ! Detect PT handles in the current net
-    // ! and return their number
-    // ! @return Number of PT handles found in the net
-    public int getNumPTHandles() {
-        calculatePTHandles();
-        return m_PTHandles.size();
-    }
-
-    // ! Detect PT handles in the current net
-    // ! and return an iterator over the result
+    // ! and return a set of the result
     // ! @return set of PT handles found in the net
     public Set<Set<AbstractElementModel>> getPTHandles() {
         calculatePTHandles();
@@ -186,15 +139,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
     }
 
     // ! Detect TP handles in the current net
-    // ! and return their number
-    // ! @return Number of TP handles found in the net
-    public int getNumTPHandles() {
-        calculateTPHandles();
-        return m_TPHandles.size();
-    }
-
-    // ! Detect TP handles in the current net
-    // ! and return an iterator over the result
+    // ! and return a set of the result
     // ! @return set of TP handles found in the net
     public Set<Set<AbstractElementModel>> getTPHandles() {
         calculateTPHandles();
@@ -976,22 +921,22 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics {
 
 	@Override
 	public boolean isWorkflowNet() {
-		if (getNumSourcePlaces() != 1) {
+		if (getSourcePlaces().size() != 1) {
             return false;
         }
-        if (getNumSinkPlaces() != 1) {
+        if (getSinkPlaces().size() != 1) {
             return false;
         }
-        if (getNumSourceTransitions() != 0) {
+        if (getSourceTransitions().size() != 0) {
             return false;
         }
-        if (getNumSinkTransitions() != 0) {
+        if (getSinkTransitions().size() != 0) {
             return false;
         }
-        if (getNumNotConnectedNodes() != 0) {
+        if (getNotConnectedNodes().size() != 0) {
             return false;
         }
-        if (getNumNotStronglyConnectedNodes() != 0) {
+        if (getNotStronglyConnectedNodes().size() != 0) {
             return false;
         }
         return true;

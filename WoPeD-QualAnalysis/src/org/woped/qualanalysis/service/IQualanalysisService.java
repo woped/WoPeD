@@ -1,7 +1,6 @@
 package org.woped.qualanalysis.service;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -18,51 +17,27 @@ public interface IQualanalysisService {
 
     /**
      * 
-     * @return the number of places
+     * @return a set of all places
      */
-    public int getNumPlaces();
+    public Set<AbstractElementModel> getPlaces();
 
     /**
      * 
-     * @return an iterator of all places
+     * @return a set of all transitions
      */
-    public Iterator<AbstractElementModel> getPlacesIterator();
+    public Set<AbstractElementModel> getTransitions();
 
     /**
      * 
-     * @return the number of transitions
+     * @return a set of all operators
      */
-    public int getNumTransitions();
+    public Set<AbstractElementModel> getOperators();
 
     /**
      * 
-     * @return an iterator of all transitions
+     * @return a set of all subprocesses
      */
-    public Iterator<AbstractElementModel> getTransitionsIterator();
-
-    /**
-     * 
-     * @return the number of operators
-     */
-    public int getNumOperators();
-
-    /**
-     * 
-     * @return an iterator of all operators
-     */
-    public Iterator<AbstractElementModel> getOperatorsIterator();
-
-    /**
-     * 
-     * @return the number of subprocesses
-     */
-    public int getNumSubprocesses();
-
-    /**
-     * 
-     * @return an iterator of all subprocesses
-     */
-    public Iterator<AbstractElementModel> getSubprocessesIterator();
+    public Set<AbstractElementModel> getSubprocesses();
 
     /**
      * 
@@ -72,147 +47,75 @@ public interface IQualanalysisService {
 
     /**
      * 
-     * @return the number of freeChoiceViolations
+     * @return a set of all freeChoiceViolations (each violation is a set of elements)
      */
-    public int getNumFreeChoiceViolations();
+    public Set<Set<AbstractElementModel>> getFreeChoiceViolations();
 
     /**
      * 
-     * @return an iterator of all freeChoiceViolations
+     * @return a set of all wrongly used operators
      */
-    public Iterator<Set<AbstractElementModel>> getFreeChoiceViolationsIterator();
+    public Set<AbstractElementModel> getWronglyUsedOperators();
 
     /**
      * 
-     * @return the number of wrongly used operators
+     * @return a set of all not-connected nodes
      */
-    public int getNumWronglyUsedOperators();
+    public Set<AbstractElementModel> getNotConnectedNodes();
 
     /**
      * 
-     * @return an iterator of all wrongly used operators
+     * @return a set of all connected components (each component is a set of elements)
      */
-    public Iterator<AbstractElementModel> getWronglyUsedOperatorsIterator();
+    public Set<Set<AbstractElementModel>> getConnectedComponents();
 
     /**
      * 
-     * @return the number of not-connected nodes
+     * @return a set of all not-strongly-connected nodes
      */
-    public int getNumNotConnectedNodes();
+    public Set<AbstractElementModel> getNotStronglyConnectedNodes();
 
     /**
      * 
-     * @return an iterator of all not-connected nodes
+     * @return a set of strongly connected components (each component is a set of elements)
      */
-    public Iterator<AbstractElementModel> getNotConnectedNodesIterator();
+    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents();
 
     /**
      * 
-     * @return a number of all connected components.
+     * @return a set of all sourcePlaces
      */
-    public int getNumConnectedComponents();
+    public Set<AbstractElementModel> getSourcePlaces();
 
     /**
      * 
-     * @return an iterator of all connected components
+     * @return a set of all sinkPlaces
      */
-    public Iterator<Set<AbstractElementModel>> getConnectedComponentsIterator();
+    public Set<AbstractElementModel> getSinkPlaces();
 
     /**
      * 
-     * @return the number of not-strongly-connected nodes
+     * @return a set of all sourceTransitions
      */
-    public int getNumNotStronglyConnectedNodes();
+    public Set<AbstractElementModel> getSourceTransitions();
 
     /**
      * 
-     * @return an iterator of all not-strongly-connected nodes
+     * @return a set of all sinkTransitions
      */
-    public Iterator<AbstractElementModel> getNotStronglyConnectedNodesIterator();
+    public Set<AbstractElementModel> getSinkTransitions();
 
     /**
      * 
-     * @return an iterator of strongly connected components
+     * @return a set of all PTHandles (each handle is a set of elements)
      */
-    public Iterator<Set<AbstractElementModel>> getStronglyConnectedComponentIterator();
+    public Set<Set<AbstractElementModel>> getPTHandles();
 
     /**
      * 
-     * @return count of strongly connected components.
+     * @return a set of all TPHandles (each handle is a set of elements)
      */
-    public int getStronglyConnectedComponentNum();
-
-    /**
-     * 
-     * @return the number of sourcePlaces
-     */
-    public int getNumSourcePlaces();
-
-    /**
-     * 
-     * @return an iterator of all sourcePlaces
-     */
-    public Iterator<AbstractElementModel> getSourcePlacesIterator();
-
-    /**
-     * 
-     * @return the number of sinkPlaces
-     */
-    public int getNumSinkPlaces();
-
-    /**
-     * 
-     * @return an iterator of all sinkPlaces
-     */
-    public Iterator<AbstractElementModel> getSinkPlacesIterator();
-
-    /**
-     * 
-     * @return the number of sourceTransitions
-     */
-    public int getNumSourceTransitions();
-
-    /**
-     * 
-     * @return an iterator of all sourceTransitions
-     */
-    public Iterator<AbstractElementModel> getSourceTransitionsIterator();
-
-    /**
-     * 
-     * @return the number of sinkTransitions
-     */
-    public int getNumSinkTransitions();
-
-    /**
-     * 
-     * @return an iterator of all sinkTransitions
-     */
-    public Iterator<AbstractElementModel> getSinkTransitionsIterator();
-
-    /**
-     * 
-     * @return the number of PTHandles
-     */
-    public int getNumPTHandles();
-
-    /**
-     * 
-     * @return an iterator of all PTHandles
-     */
-    public Iterator<Set<AbstractElementModel>> getPTHandlesIterator();
-
-    /**
-     * 
-     * @return the number of TPHandles
-     */
-    public int getNumTPHandles();
-
-    /**
-     * 
-     * @return an iterator of all TPHandles
-     */
-    public Iterator<Set<AbstractElementModel>> getTPHandlesIterator();
+    public Set<Set<AbstractElementModel>> getTPHandles();
 
     /**
      * TODO what is this method for?
@@ -223,75 +126,39 @@ public interface IQualanalysisService {
 
     /**
      * 
-     * @return the number of SComponents
+     * @return a set of all SComponents (each SComponent is a list of elements)
      */
-    public int getNumSComponents();
+    public Set<List<AbstractElementModel>> getSComponents();
 
     /**
      * 
-     * @return an iterator of all SComponents
+     * @return a set of all not-SCovered
      */
-    public Iterator<List<AbstractElementModel>> getSComponentsIterator();
+    public Set<AbstractElementModel> getNotSCovered();
 
     /**
      * 
-     * @return the number of not-SCovered
+     * @return an set of places with wrong token count in initial marking
      */
-    public int getNumNotSCovered();
+    public Set<AbstractElementModel> getWronglyMarkedPlaces();
 
     /**
      * 
-     * @return an iterator of all not-SCovered
+     * @return a set of all unbounded places
      */
-    public Iterator<AbstractElementModel> getNotSCoveredIterator();
+    public Set<AbstractElementModel> getUnboundedPlaces();
 
     /**
      * 
-     * @return the number places with wrong token count in initial marking
+     * @return a set of all dead transitions
      */
-    public int getNumWronglyMarkedPlaces();
+    public Set<AbstractElementModel> getDeadTransitions();
 
     /**
      * 
-     * @return an iterator for places with wrong token count in initial marking
+     * @return a set of all non-live transitions
      */
-    public Iterator<AbstractElementModel> getWronglyMarkedPlacesIterator();
-
-    /**
-     * 
-     * @return the number of unbounded places
-     */
-    public int getNumUnboundedPlaces();
-
-    /**
-     * 
-     * @return an iterator of all unbounded places
-     */
-    public Iterator<AbstractElementModel> getUnboundedPlacesIterator();
-
-    /**
-     * 
-     * @return the number of dead transitions
-     */
-    public int getNumDeadTransitions();
-
-    /**
-     * 
-     * @return an iterator of all dead transitions
-     */
-    public Iterator<AbstractElementModel> getDeadTransitionsIterator();
-
-    /**
-     * 
-     * @return the number of non-live transitions
-     */
-    public int getNumNonLiveTransitions();
-
-    /**
-     * 
-     * @return an iterator of all non-live transitions
-     */
-    public Iterator<AbstractElementModel> getNonLiveTransitionsIterator();
+    public Set<AbstractElementModel> getNonLiveTransitions();
 
     /**
      * method to check if the given petrinet is a workflownet or not

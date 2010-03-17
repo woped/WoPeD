@@ -110,7 +110,7 @@ public class StartPage extends BeginnerPanel {
 		// check only for workflow-net
 		if(qualanalysisService.isWorkflowNet()){
 			// display only if there is a token mistake in initial marking
-			if (qualanalysisService.getNumWronglyMarkedPlaces() > 0) {
+			if (qualanalysisService.getWronglyMarkedPlaces().size() > 0) {
 				// add tokenMistake-label
 				JLabel tokenMistakeLabel = new JLabel(Messages.getString(PREFIX_BEGINNER + "InitialMarkingMistake"));
 				tokenMistakeLabel.setFont(SUBHEADER_FONT);
@@ -149,41 +149,41 @@ public class StartPage extends BeginnerPanel {
 
 		// places
 		clickLabel = new ClickLabel(Messages.getString(PREFIX + "NumPlaces") + COLON, qualanalysisService
-				.getPlacesIterator(), editor);
+				.getPlaces().iterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 1, 1, 1, 1, 0);
 
-		count = new JLabel(String.valueOf(qualanalysisService.getNumPlaces()), JLabel.RIGHT);
+		count = new JLabel(String.valueOf(qualanalysisService.getPlaces().size()), JLabel.RIGHT);
 		count.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, count, 1, 1, 1, 1, 0, 0);
 
 		// transitions
 		clickLabel = new ClickLabel(Messages.getString(PREFIX + "NumTransitions") + COLON, qualanalysisService
-				.getTransitionsIterator(), editor);
+				.getTransitions().iterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 2, 1, 1, 1, 0);
 
-		count = new JLabel(String.valueOf(qualanalysisService.getNumTransitions()), JLabel.RIGHT);
+		count = new JLabel(String.valueOf(qualanalysisService.getTransitions().size()), JLabel.RIGHT);
 		count.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, count, 1, 2, 1, 1, 0, 0);
 
 		// operators
 		clickLabel = new ClickLabel(SUB_POINT + Messages.getString(PREFIX + "NumOperators") + COLON,
-				qualanalysisService.getOperatorsIterator(), editor);
+				qualanalysisService.getOperators().iterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 3, 1, 1, 1, 0);
 
-		count = new JLabel(String.valueOf(qualanalysisService.getNumOperators()), JLabel.RIGHT);
+		count = new JLabel(String.valueOf(qualanalysisService.getOperators().size()), JLabel.RIGHT);
 		count.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, count, 1, 3, 1, 1, 0, 0);
 
 		// subprocesses
 		clickLabel = new ClickLabel(SUB_POINT + Messages.getString(PREFIX + "NumSubprocesses") + COLON,
-				qualanalysisService.getSubprocessesIterator(), editor);
+				qualanalysisService.getSubprocesses().iterator(), editor);
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 4, 1, 1, 1, 0);
 
-		count = new JLabel(String.valueOf(qualanalysisService.getNumSubprocesses()), JLabel.RIGHT);
+		count = new JLabel(String.valueOf(qualanalysisService.getSubprocesses().size()), JLabel.RIGHT);
 		count.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, count, 1, 4, 1, 1, 0, 0);
 

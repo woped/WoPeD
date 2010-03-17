@@ -21,9 +21,9 @@ public class WellstructurednessPage extends BeginnerPanel {
 				sideBar,
 				Messages
 						.getString(PREFIX + "WellStructurednessAnalysis"));
-		numPTHandles = qualanalysisService.getNumPTHandles();
+		numPTHandles = qualanalysisService.getPTHandles().size();
 
-		numTPHandles = qualanalysisService.getNumTPHandles();
+		numTPHandles = qualanalysisService.getTPHandles().size();
 
 		if (numPTHandles != 0 || numTPHandles != 0) {
 			status = false;
@@ -34,14 +34,14 @@ public class WellstructurednessPage extends BeginnerPanel {
 	public void addComponents() {
 		if (numPTHandles != 0) {
 			createEntry(PREFIX + "NumPTHandles", qualanalysisService
-					.getPTHandlesIterator(), numPTHandles,
+					.getPTHandles().iterator(), numPTHandles,
 					PREFIX_HELP + "PTHandles",
 					PREFIX_EXAMPLE + "PTHandles");
 		}
 
 		if (numTPHandles != 0) {
 			createEntry(PREFIX + "NumTPHandles", qualanalysisService
-					.getTPHandlesIterator(), numTPHandles,
+					.getTPHandles().iterator(), numTPHandles,
 					PREFIX_HELP + "TPHandles",
 					PREFIX_EXAMPLE + "TPHandles");
 		}

@@ -1,27 +1,4 @@
-﻿
-/*
- * 
- * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
- * 
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- * 
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * For contact information please visit http://woped.dhbw-karlsruhe.de
- *
- */
-package org.woped.editor.controller.vc;
+﻿package org.woped.editor.controller.vc;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -137,6 +114,29 @@ import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.translations.Messages;
 import org.woped.understandability.NetColorScheme;
+
+/*
+ * 
+ * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ *
+ * For contact information please visit http://woped.dhbw-karlsruhe.de
+ *
+ */
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -1703,7 +1703,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         getGraph().drawNet(getModelProcessor());
         updateNet();
 
-		 editorSize.resize(false);
+		editorSize.resize(true);
 
         setSaved(false);
     }
@@ -2125,10 +2125,9 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                 .getProcessorType(), true, this, subProcess);
         newEditorWindow.getModelProcessor().getElementContainer();
         IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(newEditorWindow);
-        if (qualanService.getNumSourcePlaces() == 1) {
+        if (qualanService.getSourcePlaces().size() == 1) {
             // Hand an initial token to the sub-process for the token game
-            Iterator<AbstractElementModel> i = qualanService.getSourcePlacesIterator();
-            ((PlaceModel) i.next()).receiveToken();
+            ((PlaceModel) qualanService.getSourcePlaces().iterator().next()).receiveToken();
         }
         // Enable token game mode
         newEditorWindow.toggleTokenGame();
