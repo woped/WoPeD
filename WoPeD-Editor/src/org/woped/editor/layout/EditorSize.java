@@ -22,6 +22,7 @@ public class EditorSize {
 	private Dimension modelSize = null;
 	private Dimension newEditorSize = null;
 	private Dimension editorSizeBeforeSidebar = null;
+	private Dimension editorSizeWithSideBar = null;
 
 	public final int SIDEBAR_WIDTH = 320;
 	public final int SIDEBAR_MINHEIGHT = 400;
@@ -59,9 +60,15 @@ public class EditorSize {
 		Dimension currentSize = parentContainer.getSize();
 		if (editor.isAnalysisBarVisible())
 			editorSizeBeforeSidebar = currentSize;
-		else if (editorSizeBeforeSidebar != null) {
+		else if (!editor.isAnalysisBarVisible()
+				&& editorSizeBeforeSidebar != null
+				&& editorSizeWithSideBar.height == currentSize.height
+				&& editorSizeWithSideBar.width == currentSize.width) {
+			editor.setAutomaticResize(true);
 			parentContainer.setSize(editorSizeBeforeSidebar);
+			editor.setAutomaticResize(true);
 			parentContainer.setLocation(0, 0);
+			editorSizeBeforeSidebar = null;
 			return;
 		}
 		if (!downSize) {
@@ -71,9 +78,18 @@ public class EditorSize {
 				dim.width = currentSize.width;
 		}
 		if (currentSize.height != dim.height || currentSize.width != dim.width) {
+			// editor.setAutomaticResize(true); must be done twice because
+			// "setSize" and "setLocation" changes the saved flag in
+			// DefaultEditorFrame line 311
+			editor.setAutomaticResize(true);
 			parentContainer.setSize(dim);
+			editor.setAutomaticResize(true);
 			parentContainer.setLocation(0, 0);
 		}
+		if (editorSizeBeforeSidebar != null) {
+			editorSizeWithSideBar = dim;
+		} else if (editorSizeWithSideBar != null)
+			editorSizeWithSideBar = null;
 	}
 
 	/**

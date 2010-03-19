@@ -254,4 +254,8 @@ public interface IEditor extends IViewController {
 	public Container getParent();
 	
 	public JComponent getAnalysisSideBar();
+	
+	public void setAutomaticResize(boolean automaticresize);
+	
+	public boolean isAutomaticResize();
 }

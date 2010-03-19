@@ -2229,6 +2229,8 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 
 	private JCheckBox tStarCheckBox = null;
 	
+	private boolean automaticResize = false;
+	
 	/**
 	 * replaces the "normal" EditorSplitPane with another SplitPane with the
 	 * AnalysisSidebar on the right side
@@ -2311,7 +2313,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 			this.add(m_mainSplitPane);
 			analysisBarVisible = false;
 			this.revalidate();
-			editorSize.resize(true);
+			editorSize.resize(false);
 		}
 	}
 
@@ -2366,5 +2368,13 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     
     public SideBar getAnalysisSideBar(){
     	return analysisSideBar;
+    }
+    
+    public void setAutomaticResize(boolean automaticresize){
+    	this.automaticResize = automaticresize;
+    }
+    
+    public boolean isAutomaticResize(){
+    	return automaticResize;
     }
 }
