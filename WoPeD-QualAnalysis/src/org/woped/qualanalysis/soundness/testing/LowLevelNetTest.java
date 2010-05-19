@@ -82,11 +82,11 @@ public class LowLevelNetTest {
     public LowLevelPetriNet createNewLowLevelPetriNet() {
         LowLevelPetriNet lowlevelNet = new LowLevelPetriNet();
 
-        PlaceNode p1 = lowlevelNet.getPlaceNode(new PlaceNode(2, "p1", null, null));
-        PlaceNode p2 = lowlevelNet.getPlaceNode(new PlaceNode(0, "p2", null, null));
-        PlaceNode p3 = lowlevelNet.getPlaceNode(new PlaceNode(0, "p3", null, null));
-        PlaceNode p4 = lowlevelNet.getPlaceNode(new PlaceNode(0, "p4", null, null));
-        PlaceNode p5 = lowlevelNet.getPlaceNode(new PlaceNode(0, "p5", null, null));
+        PlaceNode p1 = lowlevelNet.getPlaceNode(new PlaceNode(2, 2, "p1", null, null));
+        PlaceNode p2 = lowlevelNet.getPlaceNode(new PlaceNode(0, 0, "p2", null, null));
+        PlaceNode p3 = lowlevelNet.getPlaceNode(new PlaceNode(0, 0, "p3", null, null));
+        PlaceNode p4 = lowlevelNet.getPlaceNode(new PlaceNode(0, 0, "p4", null, null));
+        PlaceNode p5 = lowlevelNet.getPlaceNode(new PlaceNode(0, 0, "p5", null, null));
 
         TransitionNode t1 = lowlevelNet.getTransitionNode(new TransitionNode("t1", null, null));
         TransitionNode t2 = lowlevelNet.getTransitionNode(new TransitionNode("t2", null, null));

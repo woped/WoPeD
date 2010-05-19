@@ -9,6 +9,7 @@ package org.woped.qualanalysis.soundness.datamodel;
 public class PlaceNode extends AbstractNode {
     // declaration
     private Integer tokenCount;
+    private Integer virtualTokenCount;
 
     /**
      * default constructor.
@@ -16,9 +17,10 @@ public class PlaceNode extends AbstractNode {
      * @param tokenCount count of tokens
      * @see AbstractNode#AbstractNode(String)
      */
-    public PlaceNode(Integer tokenCount, String id, String name, String originId) {
+    public PlaceNode(Integer tokenCount, Integer virtualTokenCount, String id, String name, String originId) {
         super(id, name, originId);
         this.tokenCount = tokenCount;
+        this.virtualTokenCount = virtualTokenCount;
     }
 
     /**
@@ -59,4 +61,10 @@ public class PlaceNode extends AbstractNode {
         this.tokenCount = tokenCount;
     }
 
+    /**
+     * @return the virtualTokenCount
+     */
+    public Integer getVirtualTokenCount() {
+        return virtualTokenCount;
+    }
 }

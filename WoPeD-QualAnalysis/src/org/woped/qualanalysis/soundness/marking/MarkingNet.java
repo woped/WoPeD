@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
+import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
@@ -20,7 +21,6 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 public class MarkingNet implements INodeNet<Marking> {
 
     /** source lowLevel petri net. */
-    @SuppressWarnings("unused")
     private final LowLevelPetriNet lolNet;
     /** all places of the source lowLevel petri net. ->static order! */
     private final PlaceNode[] places;
@@ -42,13 +42,7 @@ public class MarkingNet implements INodeNet<Marking> {
         this.lolNet = lolNet;
         this.places = lolNet.getPlaces().toArray(new PlaceNode[lolNet.getPlaces().size()]);
         this.transitions = lolNet.getTransitions().toArray(new TransitionNode[lolNet.getTransitions().size()]);
-        Integer[] tokens = new Integer[this.places.length];
-        Boolean[] placeUnlimited = new Boolean[this.places.length];
-        for (int i = 0; i < tokens.length; i++) {
-            tokens[i] = places[i].getTokenCount();
-            placeUnlimited[i] = false;
-        }
-        initialMarking = new Marking(tokens, places, placeUnlimited);
+        initialMarking = (Marking) BuilderFactory.createCurrentMarking(this.lolNet, false);
         initialMarking.setInitial(true);
         markings.add(initialMarking);
         markingList.add(initialMarking);

@@ -55,7 +55,7 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
         while (iterPlace.hasNext()) {
             pm = (PlaceModel) iterPlace.next();
             lNet
-                    .getPlaceNode(new PlaceNode(pm.getTokenCount(), pm.getId(), pm.getNameValue(), makeOriginId(pm
+                    .getPlaceNode(new PlaceNode(pm.getTokenCount(), pm.getVirtualTokenCount(), pm.getId(), pm.getNameValue(), makeOriginId(pm
                             .getId())));
         }
 
@@ -72,13 +72,13 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
             // add predecessor of current transition node
             for (AbstractElementModel predecessor : predecessors) {
                 lNet.getPlaceNode(
-                        new PlaceNode(((PlaceModel) predecessor).getTokenCount(), predecessor.getId(), predecessor
+                        new PlaceNode(((PlaceModel) predecessor).getTokenCount(), ((PlaceModel) predecessor).getVirtualTokenCount(), predecessor.getId(), predecessor
                                 .getNameValue(), makeOriginId(predecessor.getId()))).addPostNode(tNode);
             }
 
             // add successor of current transition node
             for (AbstractElementModel successor : successors) {
-                tNode.addPostNode(lNet.getPlaceNode(new PlaceNode(((PlaceModel) successor).getTokenCount(), successor
+                tNode.addPostNode(lNet.getPlaceNode(new PlaceNode(((PlaceModel) successor).getTokenCount(), ((PlaceModel) successor).getVirtualTokenCount(), successor
                         .getId(), successor.getNameValue(), makeOriginId(successor.getId()))));
             }
 

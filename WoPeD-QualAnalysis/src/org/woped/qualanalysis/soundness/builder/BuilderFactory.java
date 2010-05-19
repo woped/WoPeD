@@ -1,11 +1,13 @@
 package org.woped.qualanalysis.soundness.builder;
 
 import org.woped.core.controller.IEditor;
+import org.woped.qualanalysis.soundness.builder.currentmarking.CurrentMarking;
 import org.woped.qualanalysis.soundness.builder.lowlevelpetrinet.AbstractLowLevelPetriNetBuilder;
 import org.woped.qualanalysis.soundness.builder.lowlevelpetrinet.LowLevelPetriNetWithTStarBuilder;
 import org.woped.qualanalysis.soundness.builder.lowlevelpetrinet.LowLevelPetriNetWithoutTStarBuilder;
 import org.woped.qualanalysis.soundness.builder.markingnet.MarkingNetBuilderBook;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 /**
@@ -41,6 +43,16 @@ public class BuilderFactory {
      */
     public static MarkingNet createMarkingNet(LowLevelPetriNet lolNet) {
         return new MarkingNetBuilderBook(lolNet).getMarkingNet();
+    }
+    
+    /**
+     * 
+     * @param lolNet LowLevelPetriNet to calculate current marking from
+     * @param useVirtualTokens true if the virtual tokenCount must be used for calculation (necessary for tokengame-support)
+     * @return
+     */
+    public static IMarking createCurrentMarking(LowLevelPetriNet lolNet, Boolean useVirtualTokens) {
+    	return new CurrentMarking(lolNet, useVirtualTokens).getMarking();
     }
 
 }

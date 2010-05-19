@@ -322,10 +322,10 @@ public class TokenGameController {
 		RemoteControl.checkSlimChoiceBox();
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER,
 				"           ... DONE (" + (System.currentTimeMillis() - begin)
-						+ " ms)");
-		//setMarkingInRG(new Marking(thisEditor,"TokenGame"));    
-        setMarkingInRG((BuilderFactory.createMarkingNet(BuilderFactory
-				.createLowLevelPetriNetWithoutTStarBuilder(thisEditor).getLowLevelPetriNet())).getInitialMarking());
+						+ " ms)");  
+        setMarkingInRG((BuilderFactory.createCurrentMarking(BuilderFactory
+				.createLowLevelPetriNetWithoutTStarBuilder(thisEditor).getLowLevelPetriNet(), true)));
+        //FIXME highlighting does not work properly for markings with unbounded places
 	}
 
 	private void setMarkingInRG(IMarking mark) {
