@@ -23,10 +23,10 @@ import org.woped.qualanalysis.structure.StructuralAnalysis;
  */
 public class WorkflowCheckImplement implements IWorkflowCheck {
 
-	private IEditor editor;
-	private ISourceSinkTest sourceSinkTest;
-	private LowLevelPetriNet lolNetWithTStar;
-	private LowLevelPetriNet lolNetWithoutTStar;
+	private IEditor editor = null;
+	private ISourceSinkTest sourceSinkTest = null;
+	private LowLevelPetriNet lolNetWithTStar = null;
+	private LowLevelPetriNet lolNetWithoutTStar = null;
 
 	private Set<AbstractElementModel> sourcePlaces = null;
 	private Set<AbstractElementModel> sinkPlaces = null;
@@ -38,17 +38,46 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 
 	public WorkflowCheckImplement(IEditor editor) {
 		this.editor = editor;
-		lolNetWithoutTStar = BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(editor).getLowLevelPetriNet();
-		lolNetWithTStar = BuilderFactory.createLowLevelPetriNetWithTStarBuilder(editor).getLowLevelPetriNet();
-		sourceSinkTest = AlgorithmFactory.createSourceSinkTest(lolNetWithoutTStar);
-
+	}
+	
+	/**
+	 * 
+	 * @return the LowLevelPetriNet without t* (if not existing it will be instantiated)
+	 */
+	public LowLevelPetriNet getLolNetWithoutTStar(){
+		if(lolNetWithoutTStar == null){
+			lolNetWithoutTStar = BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(editor).getLowLevelPetriNet();
+		}
+		return lolNetWithoutTStar;
+	}
+	
+	/**
+	 * 
+	 * @return the LowLevelPetriNet without t* (if not existing it will be instantiated)
+	 */
+	public LowLevelPetriNet getLolNetWithTStar(){
+		if(lolNetWithTStar == null){
+			lolNetWithTStar = BuilderFactory.createLowLevelPetriNetWithTStarBuilder(editor).getLowLevelPetriNet();
+		}
+		return lolNetWithTStar;
+	}
+	
+	/**
+	 * 
+	 * @return the SourceSinkTest (if not existing it will be instantiated)
+	 */
+	public ISourceSinkTest getSourceSinkTest(){
+		if(sourceSinkTest == null){
+			sourceSinkTest = AlgorithmFactory.createSourceSinkTest(getLolNetWithoutTStar());
+		}
+		return sourceSinkTest;
 	}
 
 	@Override
 	public Set<AbstractElementModel> getSourcePlaces() {
 		if (sourcePlaces == null) {
 			sourcePlaces = new HashSet<AbstractElementModel>();
-			for (PlaceNode place : sourceSinkTest.getSourcePlaces()) {
+			for (PlaceNode place : getSourceSinkTest().getSourcePlaces()) {
 				sourcePlaces.add(getAEM(place));
 			}
 		}
@@ -59,7 +88,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 	public Set<AbstractElementModel> getSinkPlaces() {
 		if (sinkPlaces == null) {
 			sinkPlaces = new HashSet<AbstractElementModel>();
-			for (PlaceNode place : sourceSinkTest.getSinkPlaces()) {
+			for (PlaceNode place : getSourceSinkTest().getSinkPlaces()) {
 				sinkPlaces.add(getAEM(place));
 			}
 		}
@@ -70,7 +99,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 	public Set<AbstractElementModel> getSourceTransitions() {
 		if (sourceTransitions == null) {
 			sourceTransitions = new HashSet<AbstractElementModel>();
-			for (TransitionNode transition : sourceSinkTest.getSourceTransitions()) {
+			for (TransitionNode transition : getSourceSinkTest().getSourceTransitions()) {
 				sourceTransitions.add(getAEM(transition));
 			}
 		}
@@ -82,7 +111,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 		if (sinkTransitions == null) {
 			sinkTransitions = new HashSet<AbstractElementModel>();
 
-			for (TransitionNode transition : sourceSinkTest.getSinkTransitions()) {
+			for (TransitionNode transition : getSourceSinkTest().getSinkTransitions()) {
 				sinkTransitions.add(getAEM(transition));
 			}
 		}
@@ -92,7 +121,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 	@Override
 	public Set<AbstractElementModel> getNotConnectedNodes() {
 		if (uccs == null) {
-			uccs = AlgorithmFactory.createCcTest(lolNetWithoutTStar).getConnectedComponents();
+			uccs = AlgorithmFactory.createCcTest(getLolNetWithoutTStar()).getConnectedComponents();
 		}
 
 		if (uccs.size() > 1) {
@@ -114,7 +143,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 			sccs = new HashSet<Set<AbstractElementModel>>();
 
 			Set<AbstractElementModel> scc;
-			for (Set<AbstractNode> set : AlgorithmFactory.createSccTest(lolNetWithTStar)
+			for (Set<AbstractNode> set : AlgorithmFactory.createSccTest(getLolNetWithTStar())
 					.getStronglyConnectedComponents()) {
 				if (set.size() > 0) {
 					scc = new HashSet<AbstractElementModel>();
@@ -139,7 +168,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 		if (ccs == null) {
 			ccs = new HashSet<Set<AbstractElementModel>>();
 			Set<AbstractElementModel> cc;
-			for (Set<AbstractNode> set : AlgorithmFactory.createCcTest(lolNetWithoutTStar).getConnectedComponents()) {
+			for (Set<AbstractNode> set : AlgorithmFactory.createCcTest(getLolNetWithoutTStar()).getConnectedComponents()) {
 				if (set.size() > 0) {
 					cc = new HashSet<AbstractElementModel>();
 
