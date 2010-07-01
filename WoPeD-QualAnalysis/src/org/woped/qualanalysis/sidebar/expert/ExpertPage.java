@@ -78,8 +78,8 @@ public class ExpertPage extends JPanel {
         DefaultMutableTreeNode sinkPlacesInfo = ExpertFactory.getSinkPlacesInfo(qualanService);
         DefaultMutableTreeNode sourceTransitionsInfo = ExpertFactory.getSourceTransitionsInfo(qualanService);
         DefaultMutableTreeNode sinkTransitionsInfo = ExpertFactory.getSinkTransitionsInfo(qualanService);
-        DefaultMutableTreeNode unconnectedNodesInfo = ExpertFactory.getUnconnectedNodesInfo(qualanService);
-        DefaultMutableTreeNode notStronglyConnectedInfo = ExpertFactory.getNotStronglyConnectedInfo(qualanService);
+        // DefaultMutableTreeNode unconnectedNodesInfo = ExpertFactory.getUnconnectedNodesInfo(qualanService);
+        // DefaultMutableTreeNode notStronglyConnectedInfo = ExpertFactory.getNotStronglyConnectedInfo(qualanService);
         DefaultMutableTreeNode sccsInfo = ExpertFactory.getStronglyConnectedComponentsInfo(qualanService);
         DefaultMutableTreeNode initialMarkingInfo = ExpertFactory.getInitialMarkingInfo();
         DefaultMutableTreeNode wronglyMarkedPlacesInfo = ExpertFactory.getWronglyMarkedPlacesInfo(qualanService);

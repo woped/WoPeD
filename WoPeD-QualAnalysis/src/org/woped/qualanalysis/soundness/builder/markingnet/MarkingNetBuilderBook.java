@@ -17,7 +17,7 @@ import org.woped.qualanalysis.soundness.marking.Marking;
  */
 public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
 
-	/**
+    /**
      * 
      * @param lolNet source low level petri net.
      */
@@ -65,7 +65,8 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
                 if (compareMarking != null) {
 
                     for (int position = 0; position < newMarking.getTokens().length; position++) {
-                        if ((newMarking.getTokens()[position] != compareMarking.getTokens()[position])) {
+                        if ((newMarking.getTokens()[position].intValue() != compareMarking.getTokens()[position]
+                                .intValue())) {
                             newMarking.setPlaceUnlimited(position);
                         }
                     }

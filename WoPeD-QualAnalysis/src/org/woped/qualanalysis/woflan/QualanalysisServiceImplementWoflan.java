@@ -11,28 +11,27 @@ import org.woped.qualanalysis.service.AbstractQualanalysisService;
  */
 public class QualanalysisServiceImplementWoflan extends AbstractQualanalysisService {
 
-	private WoflanAnalysis wA;
+    private WoflanAnalysis wA;
 
-	/**
-	 * 
-	 * @param editor
-	 *            the editor the service is referring to
-	 */
-	public QualanalysisServiceImplementWoflan(IEditor editor) {
-		super(editor);
+    /**
+     * 
+     * @param editor the editor the service is referring to
+     */
+    public QualanalysisServiceImplementWoflan(IEditor editor) {
+        super(editor);
 
-		wA = new WoflanAnalysis(editor);
-		sComponent = wA;
-		soundnessCheck = wA;
-	}
+        wA = new WoflanAnalysis(editor);
+        sComponent = wA;
+        soundnessCheck = wA;
+    }
 
-	/**
-	 * Call the woflan object's cleanup method to get rid of temporary files etc.
-	 */
-	public void cleanup() {
-		if (wA != null) {
-			wA.Cleanup();
-			wA = null;
-		}
-	}
+    /**
+     * Call the woflan object's cleanup method to get rid of temporary files etc.
+     */
+    public void cleanup() {
+        if (wA != null) {
+            wA.cleanup();
+            wA = null;
+        }
+    }
 }

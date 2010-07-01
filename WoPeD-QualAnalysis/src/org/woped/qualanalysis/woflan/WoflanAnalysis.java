@@ -236,7 +236,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         }
         return sequences.iterator();
     }
-    
+
     public Set<AbstractElementModel> getSet(int nNumElements, int nElementNameCommand) {
         Set<AbstractElementModel> result = new HashSet<AbstractElementModel>();
         for (int i = 0; i < nNumElements; ++i) {
@@ -248,8 +248,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return result;
     }
 
-    public Set<List<AbstractElementModel>> getSetOfLists(int nNumLists, int nNumElementsCommand,
-            int nElementNameCommand) {
+    public Set<List<AbstractElementModel>> getSetOfLists(int nNumLists, int nNumElementsCommand, int nElementNameCommand) {
         Set<List<AbstractElementModel>> sequences = new HashSet<List<AbstractElementModel>>();
         for (int i = 0; i < nNumLists; ++i) {
             ArrayList<AbstractElementModel> currentSequence = new ArrayList<AbstractElementModel>();
@@ -365,7 +364,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
     // ! Clean up when done...
     // ! Call this method to manually dispose Woflan information
     // ! Do not use this object afterwards
-    public void Cleanup() {
+    public void cleanup() {
         if (m_netHandle != -1) {
             m_myWofLan.Close(m_netHandle);
             m_netHandle = -1;
@@ -383,7 +382,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
     @Override
     protected void finalize() {
         // Call cleanup if we happen to receive a finalize() call from the garbage collector
-        Cleanup();
+        cleanup();
     }
 
     // ! Translate a string identifier as returned by the WOFLAN

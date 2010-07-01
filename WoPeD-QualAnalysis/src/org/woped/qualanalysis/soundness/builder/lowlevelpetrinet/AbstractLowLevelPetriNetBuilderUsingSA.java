@@ -54,9 +54,8 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
         // loop over all places
         while (iterPlace.hasNext()) {
             pm = (PlaceModel) iterPlace.next();
-            lNet
-                    .getPlaceNode(new PlaceNode(pm.getTokenCount(), pm.getVirtualTokenCount(), pm.getId(), pm.getNameValue(), makeOriginId(pm
-                            .getId())));
+            lNet.getPlaceNode(new PlaceNode(pm.getTokenCount(), pm.getVirtualTokenCount(), pm.getId(), pm
+                    .getNameValue(), makeOriginId(pm.getId())));
         }
 
         // loops over all transitions and set predecessors and successors
@@ -72,14 +71,16 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
             // add predecessor of current transition node
             for (AbstractElementModel predecessor : predecessors) {
                 lNet.getPlaceNode(
-                        new PlaceNode(((PlaceModel) predecessor).getTokenCount(), ((PlaceModel) predecessor).getVirtualTokenCount(), predecessor.getId(), predecessor
-                                .getNameValue(), makeOriginId(predecessor.getId()))).addPostNode(tNode);
+                        new PlaceNode(((PlaceModel) predecessor).getTokenCount(), ((PlaceModel) predecessor)
+                                .getVirtualTokenCount(), predecessor.getId(), predecessor.getNameValue(),
+                                makeOriginId(predecessor.getId()))).addPostNode(tNode);
             }
 
             // add successor of current transition node
             for (AbstractElementModel successor : successors) {
-                tNode.addPostNode(lNet.getPlaceNode(new PlaceNode(((PlaceModel) successor).getTokenCount(), ((PlaceModel) successor).getVirtualTokenCount(), successor
-                        .getId(), successor.getNameValue(), makeOriginId(successor.getId()))));
+                tNode.addPostNode(lNet.getPlaceNode(new PlaceNode(((PlaceModel) successor).getTokenCount(),
+                        ((PlaceModel) successor).getVirtualTokenCount(), successor.getId(), successor.getNameValue(),
+                        makeOriginId(successor.getId()))));
             }
 
         }
@@ -90,7 +91,7 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
             while (sourcePlacesIterator.hasNext()) {
                 sourcePlaceId = sourcePlacesIterator.next().getId();
                 for (PlaceNode lNetPlace : lNet.getPlaces()) {
-                    if (lNetPlace.getOriginId() == sourcePlaceId && lNetPlace.getTokenCount() == 0) {
+                    if (lNetPlace.getOriginId().equals(sourcePlaceId) && lNetPlace.getTokenCount() == 0) {
                         lNetPlace.setTokenCount(1);
                         break;
                     }

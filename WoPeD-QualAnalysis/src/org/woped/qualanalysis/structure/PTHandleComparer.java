@@ -1,5 +1,6 @@
 package org.woped.qualanalysis.structure;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import org.woped.core.model.AbstractElementModel;
@@ -11,7 +12,10 @@ import org.woped.core.model.petrinet.PlaceModel;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  * 
  */
-public class PTHandleComparer implements Comparator<AbstractElementModel> {
+public class PTHandleComparer implements Comparator<AbstractElementModel>, Serializable {
+
+    /** default serial version id. */
+    private static final long serialVersionUID = 1L;
 
     @Override
     public int compare(AbstractElementModel o1, AbstractElementModel o2) {

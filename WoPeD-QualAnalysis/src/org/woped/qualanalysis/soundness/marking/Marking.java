@@ -69,7 +69,7 @@ public class Marking implements IMarking, INode<Marking> {
             if (placeUnlimited[i] && other.placeUnlimited[i]) {
                 // it's okay
             } else
-                if (tokens[i] != other.tokens[i]) {
+                if (tokens[i].intValue() != other.tokens[i].intValue()) {
                     return false;
                 }
 

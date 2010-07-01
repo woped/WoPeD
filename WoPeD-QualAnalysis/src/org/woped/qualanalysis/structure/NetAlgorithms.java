@@ -157,7 +157,7 @@ public class NetAlgorithms {
     // ! @param config specifies the object that will receive the
     // ! number of incoming and outgoing arcs for the
     // ! specified element
-    public static void GetArcConfiguration(AbstractElementModel element, ArcConfiguration config) {
+    public static void getArcConfiguration(AbstractElementModel element, ArcConfiguration config) {
         config.m_numIncoming = getDirectlyConnectedNodes(element, connectionTypeINBOUND).size();
         config.m_numOutgoing = getDirectlyConnectedNodes(element, connectionTypeOUTBOUND).size();
     }

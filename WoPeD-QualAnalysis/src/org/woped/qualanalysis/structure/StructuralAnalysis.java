@@ -57,27 +57,27 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         calculateBasicNetInfo();
         return m_operators;
     }
-    
+
     public Set<AbstractElementModel> getAndJoins() {
-    	calculateBasicNetInfo();
-    	return m_andjoins;
+        calculateBasicNetInfo();
+        return m_andjoins;
     }
-	
+
     public Set<AbstractElementModel> getAndSplits() {
-    	calculateBasicNetInfo();
-    	return m_andsplits;
+        calculateBasicNetInfo();
+        return m_andsplits;
     }
-	
-	public Set<AbstractElementModel> getXorJoins() {
-		calculateBasicNetInfo();
-    	return m_xorjoins;
+
+    public Set<AbstractElementModel> getXorJoins() {
+        calculateBasicNetInfo();
+        return m_xorjoins;
     }
-	
-	public Set<AbstractElementModel> getXorSplits() {
-		calculateBasicNetInfo();
-    	return m_xorsplits;
+
+    public Set<AbstractElementModel> getXorSplits() {
+        calculateBasicNetInfo();
+        return m_xorsplits;
     }
-	
+
     public int getNumArcs() {
         return m_nNumArcs;
     }
@@ -271,7 +271,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         while (i.hasNext()) {
             try {
                 AbstractElementModel currentNode = i.next();
-                NetAlgorithms.GetArcConfiguration(currentNode, arcConfig);
+                NetAlgorithms.getArcConfiguration(currentNode, arcConfig);
                 switch (currentNode.getType()) {
                 case AbstractPetriNetModelElement.PLACE_TYPE:
                     m_places.add(currentNode);
@@ -726,7 +726,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
                         firstNode.getId());
                 arcConfig.m_numOutgoing = (elementMapRef != null) ? elementMapRef.size() : 0;
             } else {
-                NetAlgorithms.GetArcConfiguration(firstNode, arcConfig);
+                NetAlgorithms.getArcConfiguration(firstNode, arcConfig);
             }
             if (arcConfig.m_numOutgoing > 1) {
                 Iterator<AbstractElementModel> j = secondNodeType.iterator();
@@ -740,7 +740,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
                                 secondNode.getId());
                         arcConfig.m_numOutgoing = (elementMapRef != null) ? elementMapRef.size() : 0;
                     } else {
-                        NetAlgorithms.GetArcConfiguration(secondNode, arcConfig);
+                        NetAlgorithms.getArcConfiguration(secondNode, arcConfig);
                     }
 
                     if (arcConfig.m_numIncoming > 1) {
@@ -919,9 +919,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         return new HashSet<Set<AbstractElementModel>>();
     }
 
-	@Override
-	public boolean isWorkflowNet() {
-		if (getSourcePlaces().size() != 1) {
+    @Override
+    public boolean isWorkflowNet() {
+        if (getSourcePlaces().size() != 1) {
             return false;
         }
         if (getSinkPlaces().size() != 1) {
@@ -940,7 +940,6 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
             return false;
         }
         return true;
-	}
-    
+    }
 
 }
