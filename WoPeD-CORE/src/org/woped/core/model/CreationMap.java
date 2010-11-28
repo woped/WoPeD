@@ -75,6 +75,7 @@ public class CreationMap extends HashMap<String, Object>
     private static final String UPPER_ELEMENT         = "UPPER_ELEMENT";
     private static final String SUBELEMENT_CONTAINER  = "SUBELEMENT_CONTAINER";
     private static final String BPELDATA				 = "BPELDATA";
+    private static final String HIGHLIGHT 				= "HIGHLIGHT";
     
     
     public static CreationMap createMap()
@@ -88,6 +89,19 @@ public class CreationMap extends HashMap<String, Object>
         else return false;
     }
 
+    public void setHighlight(boolean highlight){
+    	put(HIGHLIGHT , new Boolean(highlight));
+    }
+    
+    public boolean isHighlight(){
+    	if(containsKey(HIGHLIGHT))
+    	{
+    		return((Boolean)get(HIGHLIGHT)).booleanValue();
+    	}
+    	else
+    		return false;
+    }
+    
     public void setId(String id)
     {
         put(ELEMENT_ID, id);

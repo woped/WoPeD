@@ -52,6 +52,7 @@ public class TransitionModel extends PetriNetModelElement
         GraphConstants.setMoveable(attributes, true);
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
+        toolSpecific.setHighlight(map.isHighlight());
         setAttributes(attributes);
     }
 
@@ -158,6 +159,7 @@ public class TransitionModel extends PetriNetModelElement
         // time unit
         map.setTransitionTime(getToolSpecific().getTime());
         map.setTransitionTimeUnit(getToolSpecific().getTimeUnit());
+        map.setHighlight(getToolSpecific().isHighlight());
        
         return map;
     }

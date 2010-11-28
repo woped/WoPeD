@@ -23,6 +23,7 @@
 package org.woped.editor.controller;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -42,6 +43,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -70,9 +72,9 @@ import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
-import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
@@ -136,6 +138,8 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JLabel idLabel = null;
 
 	private JTextField idTextField = null;
+	
+	private JCheckBox highlightCheckbox = null;
 
 	// Branching
 	private JPanel branchingPanel = null;
@@ -226,6 +230,9 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private static final String COMBOBOX_SECONDS_TEXT = Messages
 			.getString("Transition.Properties.Seconds");
+	
+	private static final String HIGHTLIGHTLABEL = Messages
+	.getString("Transition.Properties.Highlight");
 
 	private static final Object[] serviceTimeValues = { COMBOBOX_SECONDS_TEXT,
 			COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT,
@@ -469,10 +476,18 @@ public class TransitionPropertyEditor extends JDialog implements
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 10, 0, 10);
 			namePanel.add(getIdTextField(), c);
+			
+			c.gridx = 0;
+			c.gridy = 1;
+			c.gridwidth = 1;
+			c.insets = new Insets(0,10,0,10);
+			namePanel.add(getHighlightCheckbox(), c);
 		}
 
 		return namePanel;
 	}
+
+	
 
 	private JLabel getNameLabel() {
 		if (nameLabel == null) {
@@ -519,6 +534,16 @@ public class TransitionPropertyEditor extends JDialog implements
 		return idLabel;
 	}
 
+	
+	private JCheckBox getHighlightCheckbox() {
+		if(highlightCheckbox == null){
+			highlightCheckbox = new JCheckBox (HIGHTLIGHTLABEL);
+			highlightCheckbox.setSelected(transition.getToolSpecific().isHighlight());
+		}
+		return highlightCheckbox;
+	}
+	
+	
 	private JTextField getIdTextField() {
 		if (idTextField == null) {
 			idTextField = new JTextField();
@@ -2001,6 +2026,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 		// Name change handling
 		transition.setNameValue(getNameTextField().getText());
+		
+		transition.getToolSpecific().setHighlight(highlightCheckbox.isSelected());
 
 		// Service time
 		if (!oldTime.equals(serviceTimeTextField.getText()))
