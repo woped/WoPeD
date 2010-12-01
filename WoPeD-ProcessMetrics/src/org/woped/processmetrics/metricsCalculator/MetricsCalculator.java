@@ -73,6 +73,8 @@ public class MetricsCalculator {
          	return this.calculateT();
          }else if(token.equalsIgnoreCase("A")){
          	return this.calculateA();
+         }else if(token.equalsIgnoreCase("D")){
+          	return this.calculate("A / (N * (N-1))");
          }else{
         	 //TODO: Recursiv call of the formula
         	 return 0;
