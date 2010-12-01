@@ -21,11 +21,11 @@ public class MetricsCalculator {
 	}
 	
 	public double calculateN(){
-		return mec.getIdMap().size();
+		return calculateT()+calculateP();
 	}
 	
 	public double calculateT(){
-		return mec.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE).size()+mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE).size();
+		return mec.getElementsByType(PetriNetModelElement.SUBP_TYPE).size()+mec.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE).size()+mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE).size();
 	}
 	
 	public double calculateP(){ 
@@ -40,7 +40,23 @@ public class MetricsCalculator {
 		HashMap<String, Integer> inboundLines = new HashMap<String, Integer>();
 		HashMap<String, Integer> outboundLines = new HashMap<String, Integer>();
 		Map<String, Map<String,Object>> origMap = mec.getIdMap();
+		double seqn = 0;
 		
-		return 0;
+		for(String key:origMap.keySet()){
+			// Number of children
+			outboundLines.put(key, origMap.get(key).size()-1);
+			// Adds itself as a parent reference for its children
+			for(String subkey:origMap.get(key).keySet()){
+				if(inboundLines.containsKey(subkey))
+					inboundLines.put(subkey, inboundLines.get(subkey)+1);
+				else
+					inboundLines.put(subkey, 1);
+			}
+		}
+		for(String key:origMap.keySet()){
+			if(outboundLines.get(key)<2 && inboundLines.get(key)<2)
+				seqn++;
+		}
+		return seqn;
 	}
 }
