@@ -14,6 +14,7 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
+import org.woped.processmetrics.metricsCalculator.MetricsCalculator;
 
 public class metricsGrammarParser extends Parser {
     public static final String[] tokenNames = new String[] {
@@ -40,16 +41,19 @@ public class metricsGrammarParser extends Parser {
     public static final int IDENT=4;
     public static final int DIGIT=10;
     public static final int COMMENT=12;
+    
+    private MetricsCalculator metricsCalculator;
 
     // delegates
     // delegators
 
 
-        public metricsGrammarParser(TokenStream input) {
-            this(input, new RecognizerSharedState());
+        public metricsGrammarParser(TokenStream input, MetricsCalculator metricsCalculator) {
+            this(input, new RecognizerSharedState(),metricsCalculator);
         }
-        public metricsGrammarParser(TokenStream input, RecognizerSharedState state) {
+        public metricsGrammarParser(TokenStream input, RecognizerSharedState state,MetricsCalculator metricsCalculator) {
             super(input, state);
+            this.metricsCalculator = metricsCalculator;
              
         }
         
@@ -98,6 +102,7 @@ public class metricsGrammarParser extends Parser {
         double result = 0.0;
 
         Token DOUBLE3=null;
+        Token IdentToken = null;
         double expression2 = 0.0;
 
         double sqrt4 = 0.0;
@@ -152,9 +157,11 @@ public class metricsGrammarParser extends Parser {
                 case 1 :
                     // metricsGrammar.g:20:4: IDENT
                     {
-                    match(input,IDENT,FOLLOW_IDENT_in_term64); 
-                    result = 0;
-
+                    
+                    IdentToken = (Token)match(input,IDENT,FOLLOW_IDENT_in_term64);
+                    
+                    result = metricsCalculator.calculateVariable(IdentToken.getText());
+                    
                     }
                     break;
                 case 2 :

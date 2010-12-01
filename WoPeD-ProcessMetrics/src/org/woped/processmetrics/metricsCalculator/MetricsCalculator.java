@@ -59,4 +59,25 @@ public class MetricsCalculator {
 		}
 		return seqn;
 	}
+	
+	public double calculate(String formula){
+		return MetricsInterpreter.interpretString(formula, this);
+	}
+	
+	public double calculateVariable(String token){
+	     if (token.equalsIgnoreCase("N")){
+         	return this.calculateN();
+         }else if(token.equalsIgnoreCase("P")){
+         	return this.calculateP();
+         }else if(token.equalsIgnoreCase("T")){
+         	return this.calculateT();
+         }else if(token.equalsIgnoreCase("A")){
+         	return this.calculateA();
+         }else{
+        	 //TODO: Recursiv call of the formula
+        	 return 0;
+         }
+		
+	     
+	}
 }
