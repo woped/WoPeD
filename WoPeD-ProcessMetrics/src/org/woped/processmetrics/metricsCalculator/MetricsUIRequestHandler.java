@@ -17,6 +17,7 @@ public class MetricsUIRequestHandler {
 		System.out.println("RoutingNodes(RN): "+mc.calculate("RN"));
 		System.out.println("RoutingPlaces(RP): "+mc.calculate("RP"));
 		System.out.println("RoutingTransitions(RT): "+mc.calculate("RT"));
+		System.out.println("CycleNodes(CycN): "+mc.calculate("CycN"));
 		System.out.println("=== Start of calculated values");
 		System.out.println("Density(D): "+mc.calculate("D"));
 		System.out.println("CoefficientOfConnectivity(CNC): "+mc.calculate("CNC"));
@@ -26,6 +27,7 @@ public class MetricsUIRequestHandler {
 		System.out.println("Sequentiality(Seq): "+mc.calculate("Seq"));
 		System.out.println("RoutingRatio(RR): "+mc.calculate("RR"));
 		System.out.println("Heterogenity(CH): "+mc.calculate("CH"));
+		System.out.println("Cyclicity(Cyc): "+mc.calculate("Cyc"));
 	}
 	
 	

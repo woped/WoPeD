@@ -18,6 +18,7 @@ import org.woped.core.model.petrinet.PetriNetModelElement;
 public class MetricsCalculator {
 
 	private ModelElementContainer mec;
+	private LinearPathDescriptor lpd;
 	
 	public MetricsCalculator(ModelElementContainer mec){
 		this.mec=mec;
@@ -49,6 +50,11 @@ public class MetricsCalculator {
 	
 	public double calculateSeqP(){
 		return calculateSequence(2);
+	}
+	
+	public double calculateCycN(){
+		if(lpd == null) lpd = new LinearPathDescriptor(mec.getIdMap(), mec.getArcMap());
+		return lpd.getCyclicNodes();
 	}
 	
 	/**
@@ -90,6 +96,7 @@ public class MetricsCalculator {
 		return seqn;
 	}
 	
+	
 	private Map<String,AbstractElementModel> getTransitions(){
 		Map<String, AbstractElementModel> transitions = new HashMap<String, AbstractElementModel>();
 		Map<String, AbstractElementModel> partialTransitions;
@@ -130,6 +137,8 @@ public class MetricsCalculator {
             	return this.calculate("P - SeqP");
          }else if(token.equalsIgnoreCase("RT")){
             	return this.calculate("T - SeqT");
+         }else if(token.equalsIgnoreCase("CycN")){
+         	return this.calculateCycN();
           	
           	
          }else if(token.equalsIgnoreCase("D")){
@@ -148,6 +157,8 @@ public class MetricsCalculator {
            	return this.calculate("RN / N");
          }else if(token.equalsIgnoreCase("CH")){
             	return this.calculate("RT / T * log2( RT / T ) + RP / P * log2( RP / P)");
+         }else if(token.equalsIgnoreCase("Cyc")){
+         	return this.calculate("CycN / N ");   	
          }else{
         	 //TODO: Recursive call of the formula
         	 return 0;
