@@ -1,4 +1,4 @@
-package org.woped.processmetrics.metricsCalculator;
+package org.woped.metrics.metricsCalculation;
 
 import java.util.ArrayList;
 import java.util.HashMap;

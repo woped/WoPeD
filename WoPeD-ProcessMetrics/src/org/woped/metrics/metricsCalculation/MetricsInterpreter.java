@@ -1,12 +1,12 @@
-package org.woped.processmetrics.metricsCalculator;
+package org.woped.metrics.metricsCalculation;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
-import org.woped.processmetrics.formulaGrammar.metricsGrammarLexer;
-import org.woped.processmetrics.formulaGrammar.metricsGrammarParser;
+import org.woped.metrics.formalGrammar.metricsGrammarLexer;
+import org.woped.metrics.formalGrammar.metricsGrammarParser;
 
 public class MetricsInterpreter {
 	
@@ -19,7 +19,7 @@ public class MetricsInterpreter {
 		try {
 			return parser.evaluator();
 		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
+			// Bad Stuff happened!
 			e.printStackTrace();
 		}
 		return 0;

@@ -4,7 +4,7 @@
  * @author <a href="mailto:tobias.lorentz@landau.dlrg-jugend.de">Tobias Lorentz</a>
  */
 
-  package org.woped.processmetrics.formulaGrammar;
+  package org.woped.metrics.formalGrammar;
 
 
 import org.antlr.runtime.BaseRecognizer;

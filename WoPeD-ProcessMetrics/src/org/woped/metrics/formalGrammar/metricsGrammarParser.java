@@ -4,7 +4,7 @@
  * @author <a href="mailto:tobias.lorentz@landau.dlrg-jugend.de">Tobias Lorentz</a>
  */
 
-  package org.woped.processmetrics.formulaGrammar;
+  package org.woped.metrics.formalGrammar;
 
 
 import org.antlr.runtime.BitSet;
@@ -14,7 +14,7 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
-import org.woped.processmetrics.metricsCalculator.MetricsCalculator;
+import org.woped.metrics.metricsCalculation.MetricsCalculator;
 
 public class metricsGrammarParser extends Parser {
     public static final String[] tokenNames = new String[] {

@@ -1,4 +1,4 @@
-package org.woped.processmetrics.metricsCalculator;
+package org.woped.metrics.metricsCalculation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class MetricsCalculator {
 	}
 	
 	public double calculateN(){
-		return calculateT()+calculateP();
+		return calculateT() + calculateP();
 	}
 	
 	public double calculateT(){
@@ -71,7 +71,7 @@ public class MetricsCalculator {
 		
 		for(String key:origMap.keySet()){
 			// Number of children
-			outboundLines.put(key, origMap.get(key).size()-1);
+			outboundLines.put(key, origMap.get(key).size() - 1);
 			// Adds itself as a parent reference for its children
 			for(String subkey:origMap.get(key).keySet()){
 				ArcModel arc = mec.getArcMap().get(subkey);
@@ -79,7 +79,7 @@ public class MetricsCalculator {
 				String childKey = arc.getTargetId();
 				
 				if(inboundLines.containsKey(childKey))
-					inboundLines.put(childKey, inboundLines.get(childKey)+1);
+					inboundLines.put(childKey, inboundLines.get(childKey) + 1);
 				else
 					inboundLines.put(childKey, 1);
 			}
@@ -90,7 +90,7 @@ public class MetricsCalculator {
 		else if (type == 2) map = mec.getElementsByType(PetriNetModelElement.PLACE_TYPE).keySet();
 		else map = origMap.keySet();
 		for(String key:map)
-			if(outboundLines.get(key)<2 && (!inboundLines.containsKey(key) || inboundLines.get(key)<2) )
+			if(outboundLines.get(key) < 2 && (!inboundLines.containsKey(key) || inboundLines.get(key) < 2) )
 				seqn++;
 
 		return seqn;
