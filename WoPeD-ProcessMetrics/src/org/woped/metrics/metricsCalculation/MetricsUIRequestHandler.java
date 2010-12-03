@@ -11,6 +11,7 @@ public class MetricsUIRequestHandler {
 		System.out.println("Places(P): "+mc.calculate("P"));
 		System.out.println("Transitions(T): "+mc.calculate("T"));
 		System.out.println("Arcs(A): "+mc.calculate("A"));
+		System.out.println("Diameter(Dia): "+mc.calculate("Dia"));
 		System.out.println("SequenceNodes(SeqN): "+mc.calculate("SeqN"));
 		System.out.println("SequencePlaces(SeqP): "+mc.calculate("SeqP"));
 		System.out.println("SequenceTransitions(SeqT): "+mc.calculate("SeqT"));
@@ -18,6 +19,7 @@ public class MetricsUIRequestHandler {
 		System.out.println("RoutingPlaces(RP): "+mc.calculate("RP"));
 		System.out.println("RoutingTransitions(RT): "+mc.calculate("RT"));
 		System.out.println("CycleNodes(CycN): "+mc.calculate("CycN"));
+		System.out.println("TokenSplit(TS): "+mc.calculate("TS"));
 		System.out.println("=== Start of calculated values");
 		System.out.println("Density(D): "+mc.calculate("D"));
 		System.out.println("CoefficientOfConnectivity(CNC): "+mc.calculate("CNC"));

@@ -41,5 +41,36 @@ public class LinearPathDescriptor {
 		return false;	
 	}
 	
+	public double longestPath(){
+		HashSet<String> nodes = new HashSet<String>();
+		for(String key:pathMap.keySet())
+			nodes.add(key);
+		
+		for(String key:pathMap.keySet())
+			for(String childKey:pathMap.get(key))
+				nodes.remove(childKey);
+		
+		if(nodes.size()!=1)
+			return -1;
+		
+		String startNode = null;;
+		for(String key:nodes)
+			startNode=key;
+		return longestPath(1, startNode, new HashSet<String>());
+	}
+	
+	private double longestPath(double length, String myKey, HashSet<String> previousKeys){
+		if(pathMap.get(myKey).size()==0) return length;
+		if(previousKeys.contains(myKey)) return -1;
+		HashSet<String> newPrevKeys = new HashSet<String>();
+		for(String key:previousKeys)
+			newPrevKeys.add(key);
+		newPrevKeys.add(myKey);
+		double maxlength = -2;
+		for(String child:pathMap.get(myKey))
+			maxlength = Math.max(maxlength,longestPath(length+1,child,newPrevKeys));
+		return maxlength;
+	}
+	
 	
 }

@@ -24,37 +24,53 @@ public class MetricsCalculator {
 		this.mec=mec;
 	}
 	
-	public double calculateN(){
+	private double calculateN(){
 		return calculateT() + calculateP();
 	}
 	
-	public double calculateT(){
+	private double calculateT(){
 		return getTransitions().size();
 	}
 	
-	public double calculateP(){ 
+	private double calculateP(){ 
 		return mec.getElementsByType(PetriNetModelElement.PLACE_TYPE).size();
 	}
 	
-	public double calculateA(){
+	private double calculateA(){
 		return mec.getArcMap().size();
 	}
 	
-	public double calculateSeqN(){
+	private double calculateSeqN(){
 		return calculateSequence(0);
 	}
 	
-	public double calculateSeqT(){
+	private double calculateSeqT(){
 		return calculateSequence(1);
 	}
 	
-	public double calculateSeqP(){
+	private double calculateSeqP(){
 		return calculateSequence(2);
 	}
 	
-	public double calculateCycN(){
+	private double calculateCycN(){
 		if(lpd == null) lpd = new LinearPathDescriptor(mec.getIdMap(), mec.getArcMap());
 		return lpd.getCyclicNodes();
+	}
+	
+	private double calculateDia(){
+		if(lpd == null) lpd = new LinearPathDescriptor(mec.getIdMap(), mec.getArcMap());
+		return lpd.longestPath();
+	}
+	
+	private double calculateTS(){
+		Map<String, AbstractElementModel> operators = mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
+		Map<String, Map<String,Object>> origMap = mec.getIdMap();
+		double ts = 0;
+		
+		for(String key:operators.keySet())
+			if(origMap.get(key).size() > 2) ts += origMap.get(key).size()-2;
+		
+		return ts;
 	}
 	
 	/**
@@ -125,6 +141,8 @@ public class MetricsCalculator {
          	return this.calculateT();
          }else if(token.equalsIgnoreCase("A")){
          	return this.calculateA();
+         }else if(token.equalsIgnoreCase("Dia")){
+          	return this.calculateDia();
          }else if(token.equalsIgnoreCase("SeqN")){
           	return this.calculateSeqN();
          }else if(token.equalsIgnoreCase("SeqP")){
@@ -139,6 +157,8 @@ public class MetricsCalculator {
             	return this.calculate("T - SeqT");
          }else if(token.equalsIgnoreCase("CycN")){
          	return this.calculateCycN();
+         }else if(token.equalsIgnoreCase("TS")){
+          	return this.calculateTS();
           	
           	
          }else if(token.equalsIgnoreCase("D")){
@@ -158,7 +178,7 @@ public class MetricsCalculator {
          }else if(token.equalsIgnoreCase("CH")){
             	return this.calculate("RT / T * log2( RT / T ) + RP / P * log2( RP / P)");
          }else if(token.equalsIgnoreCase("Cyc")){
-         	return this.calculate("CycN / N ");   	
+         	return this.calculate("CycN / N");   	
          }else{
         	 //TODO: Recursive call of the formula
         	 return 0;
