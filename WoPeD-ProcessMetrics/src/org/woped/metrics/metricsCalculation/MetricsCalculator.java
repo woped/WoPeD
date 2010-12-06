@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.IMetricsConfiguration;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
@@ -19,6 +21,7 @@ public class MetricsCalculator {
 
 	private ModelElementContainer mec;
 	private LinearPathDescriptor lpd;
+	private IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
 	
 	public MetricsCalculator(ModelElementContainer mec){
 		this.mec=mec;
@@ -133,57 +136,21 @@ public class MetricsCalculator {
 	}
 	
 	public double calculateVariable(String token){
-	     if (token.equalsIgnoreCase("N")){
-         	return this.calculateN();
-         }else if(token.equalsIgnoreCase("P")){
-         	return this.calculateP();
-         }else if(token.equalsIgnoreCase("T")){
-         	return this.calculateT();
-         }else if(token.equalsIgnoreCase("A")){
-         	return this.calculateA();
-         }else if(token.equalsIgnoreCase("Dia")){
-          	return this.calculateDia();
-         }else if(token.equalsIgnoreCase("SeqN")){
-          	return this.calculateSeqN();
-         }else if(token.equalsIgnoreCase("SeqP")){
-           	return this.calculateSeqP();
-         }else if(token.equalsIgnoreCase("SeqT")){
-          	return this.calculateSeqT();
-         }else if(token.equalsIgnoreCase("RN")){
-           	return this.calculate("N - SeqN");
-         }else if(token.equalsIgnoreCase("RP")){
-            	return this.calculate("P - SeqP");
-         }else if(token.equalsIgnoreCase("RT")){
-            	return this.calculate("T - SeqT");
-         }else if(token.equalsIgnoreCase("CycN")){
-         	return this.calculateCycN();
-         }else if(token.equalsIgnoreCase("TS")){
-          	return this.calculateTS();
-          	
-          	
-         }else if(token.equalsIgnoreCase("D")){
-          	return this.calculate("A / (N * (N - 1))");
-         }else if(token.equalsIgnoreCase("CNC")){
-           	return this.calculate("(A + 1) / N");
-         }else if(token.equalsIgnoreCase("DeN")){
-            	return this.calculate("A / N");
-         }else if(token.equalsIgnoreCase("DeP")){
-         	return this.calculate("A / P");
-         }else if(token.equalsIgnoreCase("DeT")){
-         	return this.calculate("A / T");
-         }else if(token.equalsIgnoreCase("Seq")){
-          	return this.calculate("SeqN / N");
-         }else if(token.equalsIgnoreCase("RR")){
-           	return this.calculate("RN / N");
-         }else if(token.equalsIgnoreCase("CH")){
-            	return this.calculate("RT / T * log2( RT / T ) + RP / P * log2( RP / P)");
-         }else if(token.equalsIgnoreCase("Cyc")){
-         	return this.calculate("CycN / N");   	
-         }else{
-        	 //TODO: Recursive call of the formula
-        	 return 0;
-         }
-		
+		try{
+		if (metricsConfig.hasAlgorithmFormula(token))
+			return calculate(metricsConfig.getAlgorithmFormula(token));
+		else if (metricsConfig.hasAlgorithmMethod(token))
+	         return Double.parseDouble(getClass().getDeclaredMethod(metricsConfig.getAlgorithmMethod(token), new Class[0]).invoke(this,new Object[0]).toString());
+		else if(metricsConfig.hasVariableFormula(token))
+			return calculate(metricsConfig.getVariableFormula(token));
+		else if(metricsConfig.hasVariableMethod(token))
+			return Double.parseDouble(getClass().getDeclaredMethod(metricsConfig.getVariableMethod(token), new Class[0]).invoke(this,new Object[0]).toString());
+		}catch(Exception e){
+			// One of the many kinds of invocation exception occurred
+			e.printStackTrace();
+		}
+	    
+		return -1;
 	     
 	}
 
