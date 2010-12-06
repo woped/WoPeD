@@ -5,6 +5,9 @@ import org.woped.core.model.ModelElementContainer;
 public class MetricsUIRequestHandler {
 
 	public void showInitialData(ModelElementContainer mec){
+		
+//		ArrayList<String> list = ConfigurationManager.getMetricsConfiguration().getVariableIDs();
+		
 		MetricsCalculator mc = new MetricsCalculator(mec);
 		System.out.println("=== Start of variables");
 		System.out.println("Nodes(N): "+mc.calculate("N"));
@@ -31,6 +34,4 @@ public class MetricsUIRequestHandler {
 		System.out.println("Heterogenity(CH): "+mc.calculate("CH"));
 		System.out.println("Cyclicity(Cyc): "+mc.calculate("Cyc"));
 	}
-	
-	
 }
