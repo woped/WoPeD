@@ -26,6 +26,10 @@ public interface IToolBar {
 	
 	public AbstractButton getColoringButton();
 	
+	// Process Metric Button
+	
+	public AbstractButton getMetricButton();
+	
 	//public AbstractButton getRotateViewButton();
 	
 	public void addViewListener(IViewListener listener);

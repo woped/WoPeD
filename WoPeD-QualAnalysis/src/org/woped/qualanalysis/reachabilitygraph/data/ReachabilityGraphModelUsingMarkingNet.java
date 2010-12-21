@@ -134,5 +134,9 @@ public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityG
 	public String getLegendByName() {
 		return markingNet.placesToStringName();
 	}
+	
+	public MarkingNet getMarkingNet(){
+		return markingNet;
+	}
 
 }

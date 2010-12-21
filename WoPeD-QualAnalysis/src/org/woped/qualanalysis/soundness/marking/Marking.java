@@ -22,6 +22,10 @@ public class Marking implements IMarking, INode<Marking> {
     private final Set<Arc> successors = new HashSet<Arc>();
     private Marking predecessor;
     private boolean isInitial = false;
+    private int markingID;
+    
+    private static int markingCounter = 0;
+    
 
     /**
      * 
@@ -37,6 +41,12 @@ public class Marking implements IMarking, INode<Marking> {
             this.tokens[i] = tokens[i];
             this.placeUnlimited[i] = placeUnlimited[i];
         }
+        markingID = markingCounter;
+        markingCounter++;
+    }
+    
+    public String getID(){
+    	return ""+markingID;
     }
 
     @Override

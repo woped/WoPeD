@@ -142,6 +142,22 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
             }
             break;
+         
+        case AbstractViewEvent.ANALYSIS_METRIC:
+        	// calls the new metrics sidebar
+        	if (!editor.isMetricsBarVisible())
+        	{
+        		editor.showMetricsBar(getMediator().getUi().getEditorFocus());
+        	}
+        	else
+        	{
+        		editor.hideMetricsBar();
+        	}
+            
+            LoggerManager.info(Constants.FILE_LOGGER, Messages.getString("Metrics.General.MetricsStarted") + ".");
+
+            //new MetricsUIRequestHandler().showInitialData(editor.getModelProcessor().getElementContainer());
+            break;
 
         case AbstractViewEvent.QUANTCAP:
             if (isSound(editor) & isBranchingOk(editor)) {

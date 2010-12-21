@@ -341,16 +341,16 @@ public class CreationMap extends HashMap<String, Object>
         }
     }
 
-    public Vector getUnknownToolSpec()
+    public Vector<?> getUnknownToolSpec()
     {
         if (get(UNKNOWN_TOOLSPEC) == null)
         {
-            setUnknownToolSpec(new Vector());
+            setUnknownToolSpec(new Vector<Object>());
         }
-        return (Vector) get(UNKNOWN_TOOLSPEC);
+        return (Vector<?>) get(UNKNOWN_TOOLSPEC);
     }
 
-    public void setUnknownToolSpec(Vector toolSpec)
+    public void setUnknownToolSpec(Vector<Object> toolSpec)
     {
         put(UNKNOWN_TOOLSPEC, toolSpec);
     }
@@ -427,24 +427,24 @@ public class CreationMap extends HashMap<String, Object>
         }
     }
 
-	public List getArcPoints()
+	@SuppressWarnings("unchecked")
+	public List<Object> getArcPoints()
     {
         if (containsKey(ARC_POINTS))
         {
-            return ((List) get(ARC_POINTS));
+            return ((List<Object>) get(ARC_POINTS));
         } else
         {
-            return new Vector();
+            return new Vector<Object>();
         }
     }
 
-	@SuppressWarnings("unchecked")
     public void addArcPoint(Point point)
     {
         getArcPoints().add(point);
     }
 
-    public void setArcPoints(List points)
+    public void setArcPoints(List<?> points)
     {
         put(ARC_POINTS, points);
     }

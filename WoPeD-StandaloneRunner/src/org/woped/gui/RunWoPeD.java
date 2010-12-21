@@ -29,7 +29,8 @@ import javax.swing.JApplet;
 import javax.swing.JOptionPane;
 
 import org.apache.log4j.xml.DOMConfigurator;
-import org.woped.config.WoPeDConfiguration;
+import org.woped.config.general.WoPeDGeneralConfiguration;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.gui.controller.DefaultApplicationMediator;
@@ -42,7 +43,7 @@ import org.woped.server.holder.UserHolder;
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
  * 
- * This ist the starter Class for WoPeD. <br>
+ * This is the starter Class for WoPeD. <br>
  * You need to start WoPeD with this Class, if you want to enable the log.
  * 
  * 29.04.2003
@@ -104,8 +105,7 @@ public class RunWoPeD extends JApplet {
 			RunWoPeD.run(arguments);
 		} else {
 			RunWoPeD.run(null);
-		}		
-		
+		}			
 	}
 
 	 private static void run(String[] args)
@@ -163,8 +163,8 @@ public class RunWoPeD extends JApplet {
 				System.err.println("ERROR ACTIVATING LOGGER");
 			}
 
-			// Enable Mac specific behaviour.
-			// not when started as Applet because of setting the system
+			// Enable Mac specific behaviour, but only when
+			// not started as an applet because of setting the system
 			// information
 			if (!isApplet) {
 				// The menu bar goes to the top of the screen, instead of the
@@ -176,17 +176,18 @@ public class RunWoPeD extends JApplet {
 				}
 				Locale.setDefault(Locale.ENGLISH);
 			} else{
-				// applet as default english
+				// Set applet default to English
 				applet.setLocale(Locale.ENGLISH);
 			}
 
 			// create & init GUI
-            DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDConfiguration(RunWoPeD.isApplet), args);
+			new ConfigurationManager(RunWoPeD.isApplet);
+            DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration(RunWoPeD.isApplet), args);
 			
 			ReferenceProvider helper = new ReferenceProvider();
 			helper.setMediatorReference(mainwindow);
 
-			// set codebase that helpfiles can be found
+			// set codebase so that helpfiles can be found
 			if (isApplet) {
 				HelpBrowser.getInstance().setStartedAsApplet(true);
 				HelpBrowser.getInstance().setCodeBase(applet.getCodeBase());
@@ -198,17 +199,13 @@ public class RunWoPeD extends JApplet {
 		}
 	}
 	
-	
 	/**
 	 * isApplet()
 	 * <p>
-	 * checks if the Application run as Applet
+	 * checks if the Application runs as an Applet
 	 * @return
 	 */
 	static public boolean isApplet() {
 		return isApplet;
 	}
-	
-	
-	
 }

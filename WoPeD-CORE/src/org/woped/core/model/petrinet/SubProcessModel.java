@@ -80,7 +80,6 @@ public class SubProcessModel extends TransitionModel implements
 
 	}
 
-	@SuppressWarnings("unchecked")
 	private ModelElementContainer copySubElementContainer(
 			ModelElementContainer container)
 	{
@@ -99,8 +98,8 @@ public class SubProcessModel extends TransitionModel implements
 
 		// copy elements
 		{
-			Map idMap = container.getIdMap();
-			Iterator keyIterator = idMap.keySet().iterator();
+			Map<?, ?> idMap = container.getIdMap();
+			Iterator<?> keyIterator = idMap.keySet().iterator();
 
 			while (keyIterator.hasNext())
 			{
@@ -135,7 +134,7 @@ public class SubProcessModel extends TransitionModel implements
 		}
 
 		// copy arcs
-		Iterator arcIter = container.getArcMap().keySet().iterator();
+		Iterator<?> arcIter = container.getArcMap().keySet().iterator();
 		while (arcIter.hasNext())
 		{
 			ArcModel arcModel = (ArcModel) container.getArcMap().get(
@@ -204,7 +203,7 @@ public class SubProcessModel extends TransitionModel implements
 	{
 		boolean result = true;
 		int nNumOutgoing = 0;
-		for (Iterator i = getPort().edges(); i.hasNext();)
+		for (Iterator<?> i = getPort().edges(); i.hasNext();)
 		{
 			Object o = i.next();
 			if (o instanceof Edge)

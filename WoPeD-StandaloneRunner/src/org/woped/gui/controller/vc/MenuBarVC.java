@@ -43,7 +43,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.woped.config.WoPeDRecentFile;
+import org.woped.config.general.WoPeDRecentFile;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
@@ -112,6 +112,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenu              m_analyseMenu            = null;
     private JMenuItem          m_woflanMenuItem         = null;
     private JMenuItem		   m_wopedMenuItem			= null;
+    private JMenuItem	       m_metricMenuItem 		= null;
 
     private JMenuItem		   m_capPlanningMenuItem	   = null;
     private JMenuItem		   m_quantSimMenuItem		   = null;
@@ -153,7 +154,9 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
 
     }
 
-    // /**
+ 
+
+	// /**
 	// * @return Returns the containingWindow.
 	// */
 	// public UserInterface getContainingWindow()
@@ -208,6 +211,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_analyseMenu.add(getStartTokenGameMenuItem());
             m_analyseMenu.add(getWoflanMenuItem());
             m_analyseMenu.add(getWopedMenuItem());
+            m_analyseMenu.add(getMetricMenuItem());
             m_analyseMenu.add(getCapPlanningMenuItem());
             m_analyseMenu.add(getQuantSimMenuItem());
             m_analyseMenu.add(getReachabilityGraphMenuItem());
@@ -484,7 +488,7 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     public void updateRecentMenu()
     {
 	Icon documentIcon = Messages.getImageIcon("Document");
-        Vector v = ConfigurationManager.getConfiguration().getRecentFiles();
+        Vector<?> v = ConfigurationManager.getConfiguration().getRecentFiles();
         getRecentMenu().removeAll();
         if (v.size() != 0)
         {
@@ -778,6 +782,15 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     	}
     	return m_wopedMenuItem;
     }
+    
+    public JMenuItem getMetricMenuItem()
+    {
+    	if (m_metricMenuItem == null)
+    	{
+    		m_metricMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_METRIC));    		
+    	}
+    	return m_metricMenuItem;
+	}
     
     public JMenuItem getQuantSimMenuItem()
     {

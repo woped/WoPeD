@@ -4,7 +4,7 @@
 	
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 
-	<target name="compile" depends="generateConfigXMLBeans">
+	<target name="compile" depends="generateXMLBeans">
 		<javac srcdir="src" destdir="bin" compiler="extJavac">
 			<classpath>
 				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
@@ -13,9 +13,11 @@
 				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 				<pathelement path="../CommonLibs/lib/xbean.jar" />
 				<pathelement path="lib/confBeans.jar" />
+				<pathelement path="lib/metricsBeans.jar" />
 			</classpath>
 		</javac>
-		<copy todir="bin/org/woped/config" file="src/org/woped/config/WoPeDconfig.xml"/>
+		<copy todir="bin/org/woped/config" file="src/org/woped/config/general/WoPeDconfig.xml"/>
+		<copy todir="bin/org/woped/config/metrics" file="src/org/woped/config/metrics/WoPeDmetrics.xml"/>
 	</target>
 	
 	<target name="makejar" depends="compile">
@@ -29,15 +31,20 @@
 
 	<target name="cleanup" depends="makejar">
 		<delete file="lib/confBeans.jar" />
+		<delete file="lib/metricsBeans.jar" />
 	</target>
 
 	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	<!-- Please do not run this unless you really know what you're doing -->
-	<target name="generateConfigXMLBeans" unless="ConfigBeansUpToDate">
+	<target name="generateXMLBeans" unless="ConfigBeansUpToDate, MetricsBeansUpToDate">
 		<echo message="Compiling the config schema..." />
-		<xmlbean schema="src/org/woped/config/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
+		<xmlbean schema="src/org/woped/config/general/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
+		<echo message="Compiling the metrics schema..." />
+		<xmlbean schema="src/org/woped/config/metrics/metrics.xsd" destfile="lib/metricsBeans.jar" debug="on" classpath="../CommonLibs/lib/xbean_orig.jar" />
 	</target>
-	<uptodate property="ConfigBeansUpToDate" srcfile="src/org/woped/config/configuration.xsd" targetfile="lib/confBeans.jar"/>
+	
+	<uptodate property="ConfigBeansUpToDate" srcfile="src/org/woped/config/general/configuration.xsd" targetfile="lib/confBeans.jar"/>
+	<uptodate property="MetricsBeansUpToDate" srcfile="src/org/woped/config/metrics/metrics.xsd" targetfile="lib/metricsBeans.jar"/>
 	
 	<target name="clean">
 		<delete dir="bin/org" />

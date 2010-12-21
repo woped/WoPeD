@@ -68,7 +68,7 @@ public class Utils
      * @param extensions
      * @return
      */
-    public static String getQualifiedFileName(String fileName, Vector extensions)
+    public static String getQualifiedFileName(String fileName, Vector<?> extensions)
     {
 
         boolean extensionFound = false;

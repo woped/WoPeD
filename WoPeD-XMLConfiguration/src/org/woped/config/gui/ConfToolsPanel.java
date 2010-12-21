@@ -45,8 +45,8 @@ import org.woped.translations.Messages;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
- *         The <code>ConfToolsPanel</code> ist the
- *         <code>AbstractConfPanel</code> for configruation of the tools .
+ *         The <code>ConfToolsPanel</code> is the
+ *         <code>AbstractConfPanel</code> for configuration of the tools .
  *         <br>
  *         Created on: 26.11.2004
  */

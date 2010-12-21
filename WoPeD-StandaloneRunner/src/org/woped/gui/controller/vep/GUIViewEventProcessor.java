@@ -243,12 +243,19 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		}
 		if (!canceled)
 		{
+			// If window is maximized don't store the current size, since that
+			// would lead to strange results when later demaximizing the window
+			// such as too large windows and negative positions
+			ConfigurationManager.getConfiguration().setMaximizeWindow(
+					getMediator().getUi().isMaximized());
+			if (!getMediator().getUi().isMaximized()) {
 			ConfigurationManager.getConfiguration().setWindowX(
 					getMediator().getUi().getX());
 			ConfigurationManager.getConfiguration().setWindowY(
 					getMediator().getUi().getY());
 			ConfigurationManager.getConfiguration().setWindowSize(
 					getMediator().getUi().getSize());
+			}
 			ConfigurationManager.getConfiguration().saveConfig();
 			try
 			{
@@ -288,7 +295,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		VisualController.getInstance().propertyChange(
 				new PropertyChangeEvent(this, "FrameSelection", null, editor));
 		// notify the editor aware vc
-		Iterator editorIter = getMediator().getEditorAwareVCs().iterator();
+		Iterator<?> editorIter = getMediator().getEditorAwareVCs().iterator();
 		while (editorIter.hasNext())
 		{
 			((IEditorAware) editorIter.next()).selectEditor(editor);
@@ -468,7 +475,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		{
 			getMediator().removeViewController(editor);
 			// notify the editor aware vc
-			Iterator editorIter = getMediator().getEditorAwareVCs().iterator();
+			Iterator<?> editorIter = getMediator().getEditorAwareVCs().iterator();
 			while (editorIter.hasNext())
 			{
 				((IEditorAware) editorIter.next()).removeEditor(editor);

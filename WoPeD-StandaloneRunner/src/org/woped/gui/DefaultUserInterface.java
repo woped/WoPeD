@@ -92,6 +92,10 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(),
                 (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+       
+        // Maximize JFrame?
+        if(ConfigurationManager.getConfiguration().isMaximizeWindow())
+        	setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 
     	addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -627,5 +631,9 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         return desktop;
     }
+
+	public boolean isMaximized() {
+		return this.getExtendedState() == MAXIMIZED_BOTH;
+	}
     
 }

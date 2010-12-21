@@ -40,8 +40,8 @@ import org.woped.translations.Messages;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
- *         The <code>ConfLanguagePanel</code> ist the
- *         <code>AbstractConfPanel</code> for the configruation of the
+ *         The <code>ConfLanguagePanel</code> is the
+ *         <code>AbstractConfPanel</code> for the configuration of the
  *         language. <br>
  *         Created on: 26.11.2004 Last Change on: 14.11.2005
  */

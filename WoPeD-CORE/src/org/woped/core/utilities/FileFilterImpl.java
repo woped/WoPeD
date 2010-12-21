@@ -75,7 +75,7 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
     /**
      *  
      */
-    public FileFilterImpl(int type, String description, Vector extensions)
+    public FileFilterImpl(int type, String description, Vector<?> extensions)
     {
 
         this.type = type;

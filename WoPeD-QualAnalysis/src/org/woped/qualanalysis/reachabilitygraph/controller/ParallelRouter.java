@@ -63,8 +63,8 @@ public class ParallelRouter extends LoopRouting {
 	 *            Edge for which routing is demanding
 	 */
 	@Override
-	public List routeEdge(EdgeView edge) {
-		List newPoints = new ArrayList();
+	public List<Object> routeEdge(EdgeView edge) {
+		List<Object> newPoints = new ArrayList<Object>();
 
 		CellView nodeFrom = edge.getSource();
 		CellView nodeTo = edge.getTarget();
@@ -86,7 +86,7 @@ public class ParallelRouter extends LoopRouting {
 			return null;
 		}
 
-		List points = edge.getPoints();
+		List<?> points = edge.getPoints();
 		Object startPort = points.get(0);
 		Object endPort = points.get(points.size() - 1);
 		newPoints.add(startPort);
@@ -217,7 +217,7 @@ public class ParallelRouter extends LoopRouting {
 				if (labelPos != null) {
 					double x = labelPos.getX();
 					if (x == GraphConstants.PERMILLE / 2) {
-						Map allAttributes = edge.getAllAttributes();
+						Map<?, ?> allAttributes = edge.getAllAttributes();
 						if (allAttributes != null) {
 							// Reverse the direction of r for up to down
 							// connections
@@ -347,11 +347,11 @@ public class ParallelRouter extends LoopRouting {
 			// }
 		}
 
-		List cell1Children = DefaultGraphModel.getDescendants(model,
+		List<?> cell1Children = DefaultGraphModel.getDescendants(model,
 				new Object[] { cell1 });
-		List cells1 = new ArrayList();
+		List<Object> cells1 = new ArrayList<Object>();
 		cells1.add(cell1);
-		Iterator iter = cell1Children.iterator();
+		Iterator<?> iter = cell1Children.iterator();
 		while (iter.hasNext()) {
 			Object childCell = iter.next();
 			if (DefaultGraphModel.isVertex(model, childCell)
@@ -364,9 +364,9 @@ public class ParallelRouter extends LoopRouting {
 			}
 		}
 
-		List cell2Children = DefaultGraphModel.getDescendants(model,
+		List<?> cell2Children = DefaultGraphModel.getDescendants(model,
 				new Object[] { cell2 });
-		List cells2 = new ArrayList();
+		List<Object> cells2 = new ArrayList<Object>();
 		cells2.add(cell2);
 		iter = cell2Children.iterator();
 		while (iter.hasNext()) {
@@ -388,10 +388,10 @@ public class ParallelRouter extends LoopRouting {
 		}
 		// The object array to be returned
 		Object[] edgesBetween = null;
-		Iterator iter1 = cells1.iterator();
+		Iterator<Object> iter1 = cells1.iterator();
 		while (iter1.hasNext()) {
 			Object tempCell1 = iter1.next();
-			Iterator iter2 = cells2.iterator();
+			Iterator<Object> iter2 = cells2.iterator();
 			while (iter2.hasNext()) {
 				Object tempCell2 = iter2.next();
 				Object[] edges = DefaultGraphModel.getEdgesBetween(model,

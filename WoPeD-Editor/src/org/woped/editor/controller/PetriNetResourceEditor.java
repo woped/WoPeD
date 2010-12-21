@@ -1159,7 +1159,6 @@ public class PetriNetResourceEditor extends JPanel
 	   // ActionListener to remove a role, group or object AND to unassign an objects from a role or group
 	   private class removeResource implements ActionListener{
 	        		
-	   		   @SuppressWarnings("unchecked")
 	   		public void actionPerformed(ActionEvent e) {
 	   			 
 	   			   try{
@@ -1289,9 +1288,9 @@ public class PetriNetResourceEditor extends JPanel
 	   							
 	   							int path = rolesTopNode.getIndex(parent);
 
-	   							Vector assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(object2unassign.toString());
+	   							Vector<?> assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(object2unassign.toString());
 	   							Object ass;
-	   							for (Iterator iter = assignedClasses.iterator(); iter.hasNext();){
+	   							for (Iterator<?> iter = assignedClasses.iterator(); iter.hasNext();){
 	   			    				ass = iter.next();
 	   			    				if(ass.toString().equals(parent.toString())){
 	   			    					 getPetrinet().removeResourceMapping(parent.toString(), object2unassign);
@@ -1396,9 +1395,9 @@ public class PetriNetResourceEditor extends JPanel
 	   							
 	   							int path = groupsTopNode.getIndex(parent);
 	   							
-	   							Vector assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(object2unassign.toString());
+	   							Vector<?> assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(object2unassign.toString());
 	   							Object ass;
-	   							for (Iterator iter = assignedClasses.iterator(); iter.hasNext();){
+	   							for (Iterator<?> iter = assignedClasses.iterator(); iter.hasNext();){
 	   			    				ass = iter.next();
 	   			    				if(ass.toString().equals(parent.toString())){
 	   			    					 getPetrinet().removeResourceMapping(parent.toString(), object2unassign);
@@ -1649,7 +1648,6 @@ public class PetriNetResourceEditor extends JPanel
 	   	   
 	   // ActionListener registered to the OK and CANCEL button to check correctness of input
 	   private class createSuperResourceListener implements ActionListener{
-		   @SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e){
 			   // CANCEL button pressed
 			   if(e.getSource()==dialogFrameCancelButton){
@@ -1677,7 +1675,7 @@ public class PetriNetResourceEditor extends JPanel
 				        }
 						// resource name already exists 
 				        if(selectedRoles.length>=2&&!dialogFrameTextField.getText().equals("")){
-				        	for (Iterator iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();){
+				        	for (Iterator<?> iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();){
 				        		if (iter.next().toString().equals(dialogFrameTextField.getText())){
 				    	            JOptionPane.showMessageDialog(dialogFrame, 
 				    	            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
@@ -1690,7 +1688,7 @@ public class PetriNetResourceEditor extends JPanel
 				        	}
 				        }
 				        if(selectedRoles.length>=2&&!dialogFrameTextField.getText().equals("")){
-				        	for (Iterator iter = getPetrinet().getRoles().iterator();iter.hasNext();){
+				        	for (Iterator<?> iter = getPetrinet().getRoles().iterator();iter.hasNext();){
 				        		if (iter.next().toString().equals(dialogFrameTextField.getText())){ 
 					            JOptionPane.showMessageDialog(dialogFrame, 
 					            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
@@ -1725,7 +1723,7 @@ public class PetriNetResourceEditor extends JPanel
 				            		checkedAndOk=false;
 				        }
 				        if(selectedGroups.length>=2&&!dialogFrameTextField.getText().equals("")){
-				        	for (Iterator iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();){
+				        	for (Iterator<?> iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();){
 				        		if (iter.next().toString().equals(dialogFrameTextField.getText())){
 				    	            JOptionPane.showMessageDialog(dialogFrame, 
 				    	            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
@@ -1738,7 +1736,7 @@ public class PetriNetResourceEditor extends JPanel
 				        	}
 				        }
 				        if(selectedGroups.length>=2&&!dialogFrameTextField.getText().equals("")){
-				        	for (Iterator iter = getPetrinet().getRoles().iterator();iter.hasNext();){
+				        	for (Iterator<?> iter = getPetrinet().getRoles().iterator();iter.hasNext();){
 				        		if (iter.next().toString().equals(dialogFrameTextField.getText())){ 
 					            JOptionPane.showMessageDialog(dialogFrame, 
 					            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
@@ -1989,7 +1987,6 @@ public class PetriNetResourceEditor extends JPanel
 
 	   // ActionListener to check correctness of user input   
 	   private class editSuperResourceListener implements ActionListener{
-		   @SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e){
 			   if(e.getSource()==dialogFrameCancelButton){
 					dialogFrame.dispose();
@@ -2014,7 +2011,7 @@ public class PetriNetResourceEditor extends JPanel
 				        }
 				        if(selectedRoles.length>=2
 				        		&&!dialogFrameTextField.getText().equalsIgnoreCase(superRolesTree.getLastSelectedPathComponent().toString())){
-				        	for (Iterator iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();){
+				        	for (Iterator<?> iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();){
 				        		if (iter.next().toString().equals(dialogFrameTextField.getText())){
 				    	            JOptionPane.showMessageDialog(dialogFrame, 
 				    	            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
@@ -2028,7 +2025,7 @@ public class PetriNetResourceEditor extends JPanel
 				        }
 				        if(selectedRoles.length>=2
 				        		&&!dialogFrameTextField.getText().equalsIgnoreCase(superRolesTree.getLastSelectedPathComponent().toString())){
-				        	for (Iterator iter = getPetrinet().getRoles().iterator();iter.hasNext();){
+				        	for (Iterator<?> iter = getPetrinet().getRoles().iterator();iter.hasNext();){
 				        		if (iter.next().toString().equals(dialogFrameTextField.getText())){ 
 					            JOptionPane.showMessageDialog(dialogFrame, 
 					            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
@@ -2065,7 +2062,7 @@ public class PetriNetResourceEditor extends JPanel
 				        }
 				        if(selectedGroups.length>=2
 				        		&&!dialogFrameTextField.getText().equalsIgnoreCase(superGroupsTree.getLastSelectedPathComponent().toString())){
-				        	for (Iterator iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();){
+				        	for (Iterator<?> iter = getPetrinet().getOrganizationUnits().iterator(); iter.hasNext();){
 				        		if (iter.next().toString().equals(dialogFrameTextField.getText())){
 				    	            JOptionPane.showMessageDialog(dialogFrame, 
 				    	            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
@@ -2079,7 +2076,7 @@ public class PetriNetResourceEditor extends JPanel
 				        }
 				        if(selectedGroups.length>=2
 				        		&&!dialogFrameTextField.getText().equalsIgnoreCase(superGroupsTree.getLastSelectedPathComponent().toString())){
-				        	for (Iterator iter = getPetrinet().getRoles().iterator();iter.hasNext();){
+				        	for (Iterator<?> iter = getPetrinet().getRoles().iterator();iter.hasNext();){
 				        		if (iter.next().toString().equals(dialogFrameTextField.getText())){ 
 					            JOptionPane.showMessageDialog(dialogFrame, 
 					            		Messages.getString("ResourceEditor.Error.DuplicateResourceClass.Text"), 
@@ -2638,7 +2635,6 @@ public class PetriNetResourceEditor extends JPanel
 
 
 	// Method that returns a list of objects that are assigned to a resource
-	    @SuppressWarnings("unchecked")
 		private ArrayList<String> getObjectsAssignedToResource(ResourceClassModel resource, int type){
 	    	ArrayList<String> objects = new ArrayList<String>();
 	    	if(type == ResourceClassModel.TYPE_ROLE||type==ResourceClassModel.TYPE_ORGUNIT){
@@ -2646,9 +2642,9 @@ public class PetriNetResourceEditor extends JPanel
 	    		for(int i=0;i<objectsAssignedListModel.size();i++){
 	    			String currentObject = objectsAssignedListModel.get(i).toString();
 	    			
-	    			Vector assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(currentObject);
+	    			Vector<?> assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(currentObject);
 					Object ass;
-	    			for (Iterator iter = assignedClasses.iterator(); iter.hasNext();){
+	    			for (Iterator<?> iter = assignedClasses.iterator(); iter.hasNext();){
 	    				ass = iter.next();
 	    				if(ass.toString().equals(resource.toString())){
 	    					objects.add(currentObject);
@@ -2663,7 +2659,6 @@ public class PetriNetResourceEditor extends JPanel
 	    }
 	    
 	    //Check if input String str is correct	   
-	   @SuppressWarnings("unchecked")
 		private boolean checkClassSyntax(String str){
 	        boolean nameExists = false;
 	    
@@ -2675,11 +2670,11 @@ public class PetriNetResourceEditor extends JPanel
 	            return false;
 	        }
 
-	        for (Iterator iter = getPetrinet().getOrganizationUnits().iterator(); !nameExists & iter.hasNext();){
+	        for (Iterator<?> iter = getPetrinet().getOrganizationUnits().iterator(); !nameExists & iter.hasNext();){
 	            if (iter.next().toString().equals(str)) 
 	                nameExists = true;
 	        }
-	        for (Iterator iter = getPetrinet().getRoles().iterator(); !nameExists & iter.hasNext();){
+	        for (Iterator<?> iter = getPetrinet().getRoles().iterator(); !nameExists & iter.hasNext();){
 	            if (iter.next().toString().equals(str)) 
 	                nameExists = true;
 	        }
@@ -2696,7 +2691,6 @@ public class PetriNetResourceEditor extends JPanel
 	    }
 	    
 	    // Check if group is used by any transition
-	    @SuppressWarnings("unchecked")
 		private boolean groupIsUsed(String groupName)
 	    {
 	        boolean isUsed = false;
@@ -2705,7 +2699,7 @@ public class PetriNetResourceEditor extends JPanel
 	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
 	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
 
-	        for (Iterator transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
+	        for (Iterator<AbstractElementModel> transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
 	        {
 	            TransitionModel transition = (TransitionModel)(transIter.next());
 	            if (transition.getToolSpecific() != null &&
@@ -2721,7 +2715,6 @@ public class PetriNetResourceEditor extends JPanel
 	    }
 
 	    // Check if role is used by any transition
-	    @SuppressWarnings("unchecked")
 		private boolean roleIsUsed(String roleName)
 	    {
 	        boolean isUsed = false;
@@ -2729,7 +2722,7 @@ public class PetriNetResourceEditor extends JPanel
 	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
 	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
 	        
-	        for (Iterator transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
+	        for (Iterator<AbstractElementModel> transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
 	        {
 	            TransitionModel transition = (TransitionModel)(transIter.next());
 	            if (transition.getToolSpecific() != null &&
@@ -2745,14 +2738,13 @@ public class PetriNetResourceEditor extends JPanel
 	    }
 
 	    // Update a changed role in petrinet
-	    @SuppressWarnings("unchecked")
 		private void updateRolesInPetrinet(String oldName, String newName)
 	    {
 	        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
 	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
 	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
 
-	        for (Iterator transIter = alltrans.values().iterator(); transIter.hasNext();)
+	        for (Iterator<AbstractElementModel> transIter = alltrans.values().iterator(); transIter.hasNext();)
 	        {
 	            TransitionModel transition = (TransitionModel)(transIter.next());
 	            if (transition.getToolSpecific() != null &&
@@ -2768,14 +2760,13 @@ public class PetriNetResourceEditor extends JPanel
 	    }
 
 	    // Update a changed group in petrinet	    
-	    @SuppressWarnings("unchecked")
 		private void updateGroupsInPetrinet(String oldName, String newName)
 	    {
 	        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
 	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
 	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
 
-	        for (Iterator transIter = alltrans.values().iterator(); transIter.hasNext();)
+	        for (Iterator<AbstractElementModel> transIter = alltrans.values().iterator(); transIter.hasNext();)
 	        {
 	            TransitionModel transition = (TransitionModel)(transIter.next());
 	            if (transition.getToolSpecific() != null &&
@@ -2907,7 +2898,6 @@ public class PetriNetResourceEditor extends JPanel
 	    }
 
 	    //Refresh objects from petrinet model		    
-	    @SuppressWarnings("unchecked")
 		private void refreshObjectsFromModel(){
 	    	try{
 	    		objectsAssignedListModel.removeAllElements();
@@ -2918,7 +2908,7 @@ public class PetriNetResourceEditor extends JPanel
 	    		int a = objectsUnassignedListModel.getSize()-1;
 	    		for (int i = 0; i< (a+1) ;i++){
 	    			ResourceModel currentObject = (ResourceModel) objectsUnassignedListModel.getElementAt(a-i);
-	    			Vector assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(currentObject.toString());
+	    			Vector<?> assignedClasses = getPetrinet().getResourceClassesResourceIsAssignedTo(currentObject.toString());
 	    			if (!assignedClasses.isEmpty() ){
 	    				objectsUnassignedListModel.removeElement(currentObject);
 	    				objectsAssignedListModel.addElement(currentObject);
@@ -2928,7 +2918,7 @@ public class PetriNetResourceEditor extends JPanel
 
 	    				
 	    			Object ass;
-	    			for (Iterator iter = assignedClasses.iterator(); iter.hasNext();){
+	    			for (Iterator<?> iter = assignedClasses.iterator(); iter.hasNext();){
 	    				ass = iter.next();
 	    				String currentResource = ass.toString();
 	    				for(int j =0; j <  rolesTreeModel.getChildCount(rolesTopNode);j++){

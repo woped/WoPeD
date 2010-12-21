@@ -87,6 +87,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ROTATEVIEW				  = 1064;
     public static final int ROTATETRANSLEFT			  = 1065;
     public static final int ROTATETRANSRIGHT		  = 1066;
+    public static final int ANALYSIS_METRIC           = 1067;
     public static final int TOGGLE_TOKENGAME          = 1070;
 
     //
@@ -267,6 +268,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     
     //variable to change toolbars and references
     public static final int CHANGEPANEL				  = 1999;
+
+	
 
     public AbstractViewEvent(Object source, int type, int order, Object data)
     {

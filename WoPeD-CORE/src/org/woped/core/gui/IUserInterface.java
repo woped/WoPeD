@@ -38,6 +38,8 @@ public interface IUserInterface extends IEditorAware
     public int getY();
 
     public Dimension getSize();
+    
+    public boolean isMaximized();
 
     public void setVisible(boolean visible);
     

@@ -341,6 +341,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 	 * If no History has been recorded, it will not save as well
 	 * @return true / false
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public int checkSaveName()
 	{				
 		// no name set
@@ -357,7 +358,7 @@ public class TokenGameHistoryManagerVC extends JDialog
 			{
 				// the selected name already exists => ask wether to overwrite or not
 				boolean containsName = false;
-				Vector<Vector> rows = (Vector)SavedHistoryContent.getDataVector();
+				Vector<Vector> rows = (Vector<Vector>)SavedHistoryContent.getDataVector();
 				Iterator<Vector> iter = rows.iterator();
 				while(iter.hasNext())
 				{

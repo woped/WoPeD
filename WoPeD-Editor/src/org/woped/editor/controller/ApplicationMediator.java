@@ -33,7 +33,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.IConfiguration;
+import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
@@ -71,12 +71,21 @@ public class ApplicationMediator extends AbstractApplicationMediator {
     private EditorClipboard clipboard = new EditorClipboard();
     private VisualController visualController = null;
     private int newEditorCounter = 0;
+    private static JFrame displayUI = null;
 
     public ApplicationMediator() {
         this(null, null);
     }
+    
+    protected static void setDisplayUI(JFrame js){
+    	displayUI = js;
+    }
+    
+    public static JFrame getDisplayUI(){
+    	return displayUI;
+    }
 
-    public ApplicationMediator(IUserInterface ui, IConfiguration conf) {
+    public ApplicationMediator(IUserInterface ui, IGeneralConfiguration conf) {
         super(ui, conf);
         visualController = new VisualController(this);
         ActionFactory.createStaticActions(this);
@@ -126,7 +135,7 @@ public class ApplicationMediator extends AbstractApplicationMediator {
 
         editor.setName(Messages.getString("Document.Title.Untitled") + " - " + newEditorCounter++);
         // notify the editor aware vc
-        Iterator editorIter = getEditorAwareVCs().iterator();
+        Iterator<?> editorIter = getEditorAwareVCs().iterator();
         while (editorIter.hasNext()) {
             ((IEditorAware) editorIter.next()).addEditor(editor);
         }

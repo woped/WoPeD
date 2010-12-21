@@ -42,7 +42,7 @@ public abstract class PetriNetModelElement extends AbstractPetriNetModelElement 
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Vector m_unknownToolspecific = null;
+	private Vector<?> m_unknownToolspecific = null;
 	private Object BpelData = null;
 
 	/**
@@ -77,11 +77,11 @@ public abstract class PetriNetModelElement extends AbstractPetriNetModelElement 
 		}
 	}
 
-	public Vector getUnknownToolSpecs() {
+	public Vector<?> getUnknownToolSpecs() {
 		return m_unknownToolspecific;
 	}
 
-	public void setUnknownToolSpecs(Vector unknownToolSpecs) {
+	public void setUnknownToolSpecs(Vector<?> unknownToolSpecs) {
 		m_unknownToolspecific = unknownToolSpecs;
 	}
 

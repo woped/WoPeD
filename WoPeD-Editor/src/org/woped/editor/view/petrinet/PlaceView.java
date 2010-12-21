@@ -223,10 +223,10 @@ public class PlaceView extends AbstractElementView
 		 * 
 		 * @return boolean
 		 */
-		public boolean hasTokens()
+		/*public boolean hasTokens()
 		{
 			return PlaceView.this.hasTokens();
-		}
+		}*/
 				
 	}
 }

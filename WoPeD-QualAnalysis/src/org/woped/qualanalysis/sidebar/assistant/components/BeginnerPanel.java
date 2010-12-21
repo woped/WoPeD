@@ -223,8 +223,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	 * @param helpString
 	 *            - string to help the user with the error
 	 */
-	@SuppressWarnings("unchecked")
-	protected void createEntry(String headerString, Iterator nodeIterator,
+	protected void createEntry(String headerString, Iterator<?> nodeIterator,
 			int number, String helpString) {
 		createEntry(headerString, nodeIterator, number, helpString, null);
 	}
@@ -244,7 +243,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	 *            - String of image icon to show under the helptext
 	 */
 	@SuppressWarnings("unchecked")
-	protected void createEntry(String headerString, Iterator nodeIterator,
+	protected void createEntry(String headerString, Iterator<?> nodeIterator,
 			int number, String helpString, String imageIcon) {
 
 		ArrayList<ClickLabel> labelSet = new ArrayList<ClickLabel>();
@@ -262,7 +261,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 								.getRootOwningContainer().getOwningElement());
 					}
 				else if (aem instanceof Set<?>) {
-					Collection<AbstractElementModel> nodeSet = (Collection) aem;
+					Collection<AbstractElementModel> nodeSet = (Collection<AbstractElementModel>) aem;
 					secCounter++;
 					String groupOrPair = Messages
 							.getString(PREFIX_BEGINNER + "Pair");

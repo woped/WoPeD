@@ -109,11 +109,12 @@ public class ReachabilityLayoutHierarchic {
 		bounds = GraphConstants.getBounds(place.getAttributes());
 		LinkedList<ReachabilityEdgeModel> edges = new LinkedList<ReachabilityEdgeModel>();
 		// get all ports from that node
-		List ports = place.getChildren();
+		List<?> ports = place.getChildren();
 		// iterate over the ports
 		for(int portIndex = 0; portIndex < ports.size(); portIndex++){
 			if(ports.get(portIndex) instanceof ReachabilityPortModel){
 				ReachabilityPortModel port = (ReachabilityPortModel) ports.get(portIndex);
+				@SuppressWarnings("unchecked")
 				Set<ReachabilityEdgeModel> edgeSet = port.getEdges();
 		     	Iterator<ReachabilityEdgeModel> edgeIterator = edgeSet.iterator();
 		     	// iterate over ports edges
@@ -196,7 +197,7 @@ public class ReachabilityLayoutHierarchic {
 	 * @return
 	 */
 	private static ReachabilityPortModel getOtherPort(ReachabilityPlaceModel place, ReachabilityEdgeModel edge){
-		List ports = place.getChildren();
+		List<?> ports = place.getChildren();
 		for(int portIndex = 0; portIndex < ports.size(); portIndex++){
 			if(edge.getSource() == place.getChildAt(portIndex)){
 				return (ReachabilityPortModel) edge.getTarget();

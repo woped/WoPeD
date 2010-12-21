@@ -302,7 +302,7 @@ public class ModelTranslator
             // correct Ids!
             if (idMapper.containsKey(tempSource.getId()))
             {
-                selectedSourceId = ((List) idMapper.get(tempSource.getId())).get(1); // It's
+                selectedSourceId = ((List<String>) idMapper.get(tempSource.getId())).get(1); // It's
                 // the
                 // Split!
             } else
@@ -311,7 +311,7 @@ public class ModelTranslator
             }
             if (idMapper.containsKey(tempTarget.getId()))
             {
-                selectedTargetId = ((List) idMapper.get(tempTarget.getId())).get(0); // It's
+                selectedTargetId = ((List<String>) idMapper.get(tempTarget.getId())).get(0); // It's
                 // the
                 // Join!
             } else

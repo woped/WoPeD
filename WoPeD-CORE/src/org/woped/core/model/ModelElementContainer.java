@@ -410,6 +410,12 @@ public class ModelElementContainer implements Serializable {
 		}
 
 	}
+	
+	public void removeAllHighlighting(){
+		Map<String, Map<String, Object>> map = getIdMap();
+		for(String id:map.keySet())
+			((AbstractElementModel) map.get(id).get(ModelElementContainer.SELF_ID)).setHighlighted(false);
+	}
 
 	public ArcModel getArcById(Object id) {
 

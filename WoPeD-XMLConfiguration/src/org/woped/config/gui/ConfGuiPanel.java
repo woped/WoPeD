@@ -43,8 +43,8 @@ import org.woped.editor.gui.config.AbstractConfPanel;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
- *         The <code>ConfGuiPanel</code> ist the
- *         <code>AbstractConfPanel</code> for the gui configruation. <br>
+ *         The <code>ConfGuiPanel</code> is the
+ *         <code>AbstractConfPanel</code> for the gui configuration. <br>
  *         Created on: 26.11.2004 Last Change on: 26.11.2004
  */
 

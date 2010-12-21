@@ -4,7 +4,7 @@ import java.util.Enumeration;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-@SuppressWarnings({"serial","unchecked"})
+@SuppressWarnings({"serial"})
 public class NetInfo extends DefaultMutableTreeNode {
 
 	public NetInfo(String myNetInfo) {
@@ -36,7 +36,7 @@ public class NetInfo extends DefaultMutableTreeNode {
 		// Iterate through all children
 		// and determine our own state through the state of our children
 
-		for (Enumeration e = children(); e.hasMoreElements();) {
+		for (Enumeration<?> e = children(); e.hasMoreElements();) {
 			Object current = e.nextElement();
 			NetInfo myInfo = null;
 

@@ -189,7 +189,7 @@ public class WoPeDJGraph extends AbstractGraph
         		if (sourceCell.getType()==PetriNetModelElement.SUBP_TYPE)
         		{
         			int nNumOutgoing = 0;
-        			for (Iterator i = sourceCell.getPort().edges(); i.hasNext();)
+        			for (Iterator<?> i = sourceCell.getPort().edges(); i.hasNext();)
         			{
         				Object o = i.next();
         				if (o instanceof Edge)
@@ -205,7 +205,7 @@ public class WoPeDJGraph extends AbstractGraph
         		if (targetCell.getType()==PetriNetModelElement.SUBP_TYPE)
         		{
         			int nNumIncoming = 0;
-        			for (Iterator i = targetCell.getPort().edges(); i.hasNext();)
+        			for (Iterator<?> i = targetCell.getPort().edges(); i.hasNext();)
         			{
         				Object o = i.next();
         				if (o instanceof Edge)

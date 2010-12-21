@@ -285,7 +285,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 			points = new Vector<Object>();
 		}
 		points.add(index, c);
-		HashMap map = new HashMap();
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		GraphConstants.setPoints(map, points);
 		getAttributes().applyMap(map);
 		LoggerManager.debug(Constants.CORE_LOGGER, "Point added "
@@ -333,9 +333,10 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		addPoint(c, index);
 	}
 
+	@SuppressWarnings("unchecked")
 	public Point2D[] getPoints() {
 		AttributeMap map = getAttributes();
-		List points = GraphConstants.getPoints(map);
+		List<Object> points = GraphConstants.getPoints(map);
 		Point2D[] result = new Point2D[] {};
 		if (points != null) {
 			result = new Point2D[points.size()];
@@ -367,10 +368,11 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	/**
 	 * @param l
 	 */
+	@SuppressWarnings("unchecked")
 	public void removePoint(Point2D l) {
 		int pos = getPointPosition(l, 10);
 		AttributeMap map = getAttributes();
-		List points = GraphConstants.getPoints(map);
+		List<Object> points = GraphConstants.getPoints(map);
 		points.remove(pos);
 		GraphConstants.setPoints(map, points);
 		getAttributes().applyMap(map);
@@ -382,8 +384,9 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		return (getPointPosition(p, tolerance)) != -1;
 	}
 
+	@SuppressWarnings("unchecked")
 	private int getPointPosition(Point2D p, int tolerance) {
-		List points = GraphConstants.getPoints(getAttributes());
+		List<Object> points = GraphConstants.getPoints(getAttributes());
 		int pos = -1;
 		double dist = Double.MAX_VALUE;
 		for (int i = 1; i < points.size() - 1; i++) {
@@ -439,13 +442,14 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		getUnknownToolSpecs().add(unknownToolSpecs);
 	}
 
+	@SuppressWarnings("unchecked")
 	public CreationMap getCreationMap() {
 		CreationMap map = CreationMap.createMap();
 		map.setArcId(getId());
 		map.setArcRoute(isRoute());
 		map.setArcSourceId(getSourceId());
 		map.setArcTargetId(getTargetId());
-		List points = GraphConstants.getPoints(getAttributes());
+		List<Object> points = GraphConstants.getPoints(getAttributes());
 		Vector<Object> newPoints = new Vector<Object>();
 		for (int i = 1; i < points.size() - 1; i++) {
 			newPoints.add(new IntPair((int) ((Point2D) points.get(i)).getX(),
@@ -576,6 +580,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setProbability(double probability) {
 		getAttributes().put("Probability", new Double(probability));
 		updateLabel();
@@ -592,6 +597,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setDisplayOn(boolean displayOn) {
 		getAttributes().put("DisplayProbability", new Boolean(displayOn));
 		updateLabel();
@@ -609,7 +615,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 			labels = new Object[] { Integer.toString(Double.valueOf(
 					getProbability() * 100).intValue()) + "%" };
 		}
-		HashMap map = new HashMap();
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		GraphConstants.setExtraLabels(map, labels);
 		getAttributes().applyMap(map);
 	}

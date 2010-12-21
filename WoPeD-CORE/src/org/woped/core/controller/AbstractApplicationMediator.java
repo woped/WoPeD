@@ -33,7 +33,7 @@ import javax.swing.UIManager;
 
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.IConfiguration;
+import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.model.petrinet.SubProcessModel;
@@ -50,7 +50,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
     private IUserInterface ui                = null;
     private LinkedList<Object> editorLists = new LinkedList<Object>();
 
-    public AbstractApplicationMediator(IUserInterface ui, IConfiguration conf)
+    public AbstractApplicationMediator(IUserInterface ui, IGeneralConfiguration conf)
     {
         viewControllerMap = new HashMap<String, IViewController>();
         setUi(ui);
@@ -73,18 +73,15 @@ public abstract class AbstractApplicationMediator implements IViewListener
             } else
             {
                 ConfigurationManager.setConfiguration(conf);
-                if (ConfigurationManager.getConfiguration().getLookAndFeel() != null)
-                {
-                    UIManager.setLookAndFeel(ConfigurationManager.getConfiguration().getLookAndFeel());
-                } else
-                {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-  //                  ConfigurationManager.getConfiguration().setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                try{
+                	UIManager.setLookAndFeel(ConfigurationManager.getConfiguration().getLookAndFeel());
+                }catch(Exception e){
+                	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 }
             }
             LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set.");
         } catch (Exception e)
-        {
+        { 
             LoggerManager.error(Constants.CORE_LOGGER, "Could not set System Look-And-Feel" + ConfigurationManager.getConfiguration().getLookAndFeel());
         }
     }
@@ -102,7 +99,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
 
     public static IViewController createViewController(String className, String id)
     {
-        Class[] argsClass = null;
+        Class<?>[] argsClass = null;
         Object[] args = null;
 
         argsClass = new Class[] { String.class };
@@ -112,18 +109,12 @@ public abstract class AbstractApplicationMediator implements IViewListener
 
             // Creating the ViewController via Reflection
             ClassLoader classLoader = AbstractApplicationMediator.class.getClassLoader();
-            Class theClass = classLoader.loadClass(className);
+            Class<?> theClass = classLoader.loadClass(className);
 
             IViewController vc = null;
-            Constructor constructor = null;
-            if (argsClass != null)
-            {
-                constructor = theClass.getConstructor(argsClass);
-                vc = (IViewController) constructor.newInstance(args);
-            } else
-            {
-                vc = (IViewController) theClass.newInstance();
-            }
+            Constructor<?> constructor = null;
+            constructor = theClass.getConstructor(argsClass);
+            vc = (IViewController) constructor.newInstance(args);
 
             return vc;
         } catch (Exception e1)
@@ -235,9 +226,9 @@ public abstract class AbstractApplicationMediator implements IViewListener
         return iwC;
     }
 
-    public List getEditorAwareVCs()
+    @SuppressWarnings("unchecked")
+	public List<IEditor> getEditorAwareVCs()
     {
-
-        return (List) editorLists.clone();
+        return (List<IEditor>) editorLists.clone();
     }
 }

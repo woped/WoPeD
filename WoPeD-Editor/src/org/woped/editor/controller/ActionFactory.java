@@ -36,6 +36,7 @@ public class ActionFactory
     public final static String		   ACTIONID_ROTATEVIEW			   = "ToolBar.RotateView";
     public final static String		   ACTIONID_ROTATE_TRANS_LEFT	   = "ToolBar.RotateTransLeft";
     public final static String		   ACTIONID_ROTATE_TRANS_RIGHT	   = "ToolBar.RotateTransRight";
+    public final static String		   ACTIONID_METRIC                 = "ToolBar.Metric";
     // utils
     public final static String         ACTIONID_UPDATENETS             = "Action.UpdateNets";
     //public final static String ACTIONID_SCREENSHOT =
@@ -104,6 +105,8 @@ public class ActionFactory
     public final static String         ACTIONID_QUANTSIM               = "ToolBar.QuantSim";
     public final static String         ACTIONID_REACHGRAPH_START       = "ToolBar.ReachabilityGraph";
     
+           
+    
     
     private static HashMap<String, WoPeDAction>             STATIC_ACTION_MAP               = null;
 
@@ -164,6 +167,10 @@ public class ActionFactory
         // Add local analysis using WoPeD internal dialog
         STATIC_ACTION_MAP.put(ACTIONID_WOPED, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_WOPED, null, ACTIONID_WOPED));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_WOPED), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
+        
+        // Metric Button
+        STATIC_ACTION_MAP.put(ACTIONID_METRIC, new WoPeDAction(am,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_METRIC, null, ACTIONID_METRIC));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_METRIC), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
         /* Drawmode Actions */
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_PLACE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_PLACE, null, ACTIONID_DRAWMODE_PLACE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_PLACE), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_PLACE);

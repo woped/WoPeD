@@ -22,17 +22,23 @@
  */
 package org.woped.config.gui;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.gui.config.AbstractConfPanel;
@@ -41,8 +47,8 @@ import org.woped.translations.Messages;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
- *         The <code>ConfEditorPanel</code> ist the
- *         <code>AbstractConfPanel</code> for the configruation of the editor.
+ *         The <code>ConfEditorPanel</code> is the
+ *         <code>AbstractConfPanel</code> for the configuration of the editor.
  *         <br>
  *         Created on: 26.11.2004 Last Change on: 16.12.2004
  */
@@ -50,7 +56,10 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public class ConfEditorPanel extends AbstractConfPanel
 {
-
+	// General Panel
+    private JPanel                generalPanel        = null;
+	private JComboBox 			  lnfChooser 		  = null;
+	
     //  On Creation JPanel
     private JPanel                onCreationPanel        = null;
     private JCheckBox             editOnCreationCheckBox = null;
@@ -79,6 +88,8 @@ public class ConfEditorPanel extends AbstractConfPanel
     private static final Object[] gridSizes              = { new String("default"), new Integer(1), new Integer(2), new Integer(3), new Integer(4), new Integer(5), new Integer(6), new Integer(7),
             new Integer(8)                              };
 
+    private Map<String, String> lnfClasses = new HashMap<String, String>();
+    
     /**
      * Constructor for ConfEditorPanel.
      * 
@@ -101,19 +112,23 @@ public class ConfEditorPanel extends AbstractConfPanel
         c.weightx = 1;
         c.gridx = 0;
         c.gridy = 0;
+        contentPanel.add(getGeneralPanel(), c);
+        
+        c.gridx = 0;
+        c.gridy = 1;
         contentPanel.add(getOnCreationPanel(), c);
 
         c.gridx = 0;
-        c.gridy = 1;
+        c.gridy = 2;
         contentPanel.add(getEditingPanel(), c);
 
         c.gridx = 0;
-        c.gridy = 2;
+        c.gridy = 3;
         contentPanel.add(getArcPanel(), c);
         // dummy
         c.fill = GridBagConstraints.VERTICAL;
         c.weighty = 1;
-        c.gridy = 3;
+        c.gridy = 4;
         contentPanel.add(new JPanel(), c);
 
         setMainPanel(contentPanel);
@@ -132,9 +147,28 @@ public class ConfEditorPanel extends AbstractConfPanel
         ConfigurationManager.getConfiguration().setArrowWidth(getArrowWidthJComboBox().getSelectedIndex());
         ConfigurationManager.getConfiguration().setFillArrowHead(getArrowFillHeadCheckBox().isSelected());
         ConfigurationManager.getConfiguration().setRoundRouting(getRoundRounting().isSelected());
-
+        
+        boolean changed = (!lnfClasses.get(getLnfChooser().getSelectedItem()).equals(ConfigurationManager.getConfiguration().getLookAndFeel()));
+        
+        if (changed) {
+        	//setLookAndFeel(lnfClasses.get(getLnfChooser().getSelectedItem()));
+        	
+        	JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Editor.Dialog.Restart.Message"), Messages.getString("Configuration.Editor.Dialog.Restart.Title"),
+                    JOptionPane.INFORMATION_MESSAGE);
+            ConfigurationManager.getConfiguration().setLookAndFeel(lnfClasses.get(getLnfChooser().getSelectedItem()));
+        }
         return true;
     }
+    
+//    private void setLookAndFeel(String classname){
+//        try {
+//			UIManager.setLookAndFeel(classname);
+//			SwingUtilities.updateComponentTreeUI(ApplicationMediator.getDisplayUI());
+//			SwingUtilities.updateComponentTreeUI(getParent().getParent().getParent());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//    }
 
     /**
      * @see AbstractConfPanel#readConfiguration()
@@ -154,6 +188,19 @@ public class ConfEditorPanel extends AbstractConfPanel
         getArrowFillHeadCheckBox().setSelected(ConfigurationManager.getConfiguration().isFillArrowHead());
         getRoundRounting().setSelected(ConfigurationManager.getConfiguration().isRoundRouting());
         getSquaredRouting().setSelected(!ConfigurationManager.getConfiguration().isRoundRouting());
+        try{
+        	setSelectedLNF(ConfigurationManager.getConfiguration().getLookAndFeel());
+        }catch(Exception e){e.printStackTrace();}
+        
+    }
+    
+    private void setSelectedLNF(String lnf){
+    	for(String key:lnfClasses.keySet())
+    		if(lnfClasses.get(key).equals(lnf)){
+    			getLnfChooser().setSelectedItem(key);
+    			return;
+    		}
+    	
     }
 
     // ######################## GUI COMPONENTS ####################### */
@@ -220,6 +267,40 @@ public class ConfEditorPanel extends AbstractConfPanel
 
         }
         return onCreationPanel;
+    }
+    
+    private JPanel getGeneralPanel()
+    {
+        if (generalPanel == null)
+        {
+            generalPanel = new JPanel();
+            generalPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Editor.Panel.LNF.Title")), BorderFactory
+                    .createEmptyBorder(5, 5, 10, 5)));
+            generalPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.anchor = GridBagConstraints.NORTH;
+            c.fill = GridBagConstraints.HORIZONTAL;
+
+            c.weightx = 1;
+            c.gridx = 0;
+            c.gridy = 0;
+            generalPanel.add(getLnfChooser(), c);
+        }
+        return generalPanel;
+    }
+    
+    private JComboBox getLnfChooser()
+    {
+         if(lnfChooser == null){
+        	lnfChooser = new JComboBox();
+        	for(LookAndFeelInfo lafi:UIManager.getInstalledLookAndFeels()){
+        		lnfChooser.addItem(lafi.getName());
+        		lnfClasses.put(lafi.getName(), lafi.getClassName());
+        	}
+            lnfChooser.setPreferredSize(new Dimension(100, 20));
+            lnfChooser.setToolTipText("<HTML>Choose favourite toolkit.<br>NOTE: Some changes may need application restart.</HTML>");
+         }
+         return lnfChooser;
     }
 
     private JPanel getEditingPanel()

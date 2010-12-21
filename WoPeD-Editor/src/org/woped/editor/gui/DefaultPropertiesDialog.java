@@ -49,7 +49,7 @@ public class DefaultPropertiesDialog extends JDialog implements IEditorPropertie
 {
 
     private Object[]            m_selection;
-    private Hashtable           m_parameters;
+    private Hashtable<?, ?>           m_parameters;
     private static final String TOKENS = "Tokens";
 
     /**

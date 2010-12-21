@@ -1,4 +1,4 @@
-package org.woped.config;
+package org.woped.config.general;
 
 public class WoPeDRecentFile
 {
@@ -30,5 +30,4 @@ public class WoPeDRecentFile
     {
         this.path = path;
     }
-
 }

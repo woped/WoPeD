@@ -6,9 +6,9 @@ import java.util.Iterator;
 
 import org.woped.core.model.AbstractElementModel;
 
-@SuppressWarnings({"serial","unchecked"})
+@SuppressWarnings({"serial"})
 public class NodeGroupNetInfo extends NetInfo {
-	public NodeGroupNetInfo(String displayString, Iterator elementIterator) {
+	public NodeGroupNetInfo(String displayString, Iterator<?> elementIterator) {
 		// First of all, initialize the element itself
 		// but not yet with the real name
 		super(displayString);
@@ -28,7 +28,7 @@ public class NodeGroupNetInfo extends NetInfo {
 		// Retrieve all subitems and get their referenced elements
 		ArrayList<Object> collectedItems = new ArrayList<Object>();
 		// Iterate through all children
-		for (Enumeration e = children(); e.hasMoreElements();) {
+		for (Enumeration<?> e = children(); e.hasMoreElements();) {
 			Object current = e.nextElement();
 			NetInfo myInfo = null;
 			try {

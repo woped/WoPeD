@@ -24,12 +24,15 @@ package org.woped.gui.controller;
 
 import java.io.File;
 
-import org.woped.config.gui.ConfUnderstandabilityPanel;
+import javax.swing.JFrame;
+
 import org.woped.config.gui.ConfEditorPanel;
 import org.woped.config.gui.ConfFilePanel;
 import org.woped.config.gui.ConfLanguagePanel;
+import org.woped.config.gui.ConfMetricsPanel;
 import org.woped.config.gui.ConfToolsPanel;
-import org.woped.core.config.IConfiguration;
+import org.woped.config.gui.ConfUnderstandabilityPanel;
+import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IUserInterface;
@@ -43,8 +46,8 @@ import org.woped.gui.RunWoPeD;
 import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.controller.vc.ToolBarVC;
-import org.woped.qualanalysis.simulation.SimulatorBarVC;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
+import org.woped.qualanalysis.simulation.SimulatorBarVC;
 import org.woped.translations.Messages;
 
 /**
@@ -60,12 +63,11 @@ public class DefaultApplicationMediator extends ApplicationMediator
     public static final int VIEWCONTROLLER_STATUSBAR    = 12; 
     public static final int VIEWCONTROLLER_SIMULATORBAR = 13;
  
-
     private int             toolbarCounter           = 0;
     private int             menuCounter              = 0;
     private int             statusCounter            = 0;
     
-	public DefaultApplicationMediator(IUserInterface ui, IConfiguration conf, String[] args)
+	public DefaultApplicationMediator(IUserInterface ui, IGeneralConfiguration conf, String[] args)
     {
         super(ui, conf);
         getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(ViewEvent.VIEWEVENTTYPE_GUI, this));
@@ -94,10 +96,12 @@ public class DefaultApplicationMediator extends ApplicationMediator
             config.addConfNodePanel(null, new ConfToolsPanel(Messages.getString("Configuration.Tools.Title")));
             config.addConfNodePanel(null, new ConfLanguagePanel(Messages.getString("Configuration.Language.Title")));
             config.addConfNodePanel(null, new ConfUnderstandabilityPanel(config, Messages.getString("Configuration.ColorLayout.Title")));
+            config.addConfNodePanel(null, new ConfMetricsPanel(Messages.getString("Configuration.Metrics.Title")));
             config.setSelectedPanel(Messages.getString("Configuration.Editor.Title"));
 
             ui = new DefaultUserInterface(toolbar, simulatorbar, menubar, taskbar, statusbar);
             setUi(ui);
+            setDisplayUI((JFrame)ui);
             if (args != null)
             {
                 for (int i = 0; i < args.length; i++)
@@ -110,29 +114,15 @@ public class DefaultApplicationMediator extends ApplicationMediator
                     		fireViewEvent(new ViewEvent(this,AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.NEW,null));
                     	} else {
                     		fireViewEvent(new ViewEvent(this,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPENWEBSERVICE,args[i]));
-                    	}
-                    	
-                    }
-                    
+                    	}	
+                    }    
                 }
-            }
-            // BJ Load an petrinet default for test case
-            /*
-            String s = "D:/Daten_Entwicklung/WoPeD_CVS/WoPeD-FileInterface/src/org/woped/file/samples/";
-            //s+="Ballgame.pnml";
-            s+="LoanApplication.pnml";
-            menubar.fireViewEvent(new ViewEvent(menubar, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN_SAMPLE, new File(s)));
-            menubar.fireViewEvent(new ViewEvent(menubar, AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH, AbstractViewEvent.REACHGRAPH, null));
-            menubar.fireViewEvent(new ViewEvent(menubar, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.ARRANGE, null));
-            */
-            
-            
+            }      
         }
     }
 
     public IViewController createViewController(int type)
     {
-
         IViewController vc = null;
         if (type == VIEWCONTROLLER_TOOLBAR)
         {

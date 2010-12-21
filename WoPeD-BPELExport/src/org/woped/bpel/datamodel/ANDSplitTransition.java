@@ -12,9 +12,8 @@ public class ANDSplitTransition extends
 		super(data);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public boolean equals(AbstractElement e)
+	public boolean equals(AbstractElement<?> e)
 	{
 		if(!ANDSplitTransition.class.isInstance(e))return false;
 		if(this.getData().getId() != ((ANDSplitTransition)e).getData().getId()) return false;

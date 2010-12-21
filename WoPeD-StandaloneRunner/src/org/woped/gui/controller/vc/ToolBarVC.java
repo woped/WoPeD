@@ -109,6 +109,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     private AbstractButton	   m_quantSimButton		= null;
     private AbstractButton     m_reachabilityGraphButton = null;
     private AbstractButton	   m_coloringButton = null;
+    private AbstractButton	   m_metricButton       = null;
 
     public ToolBarVC(String id)
     {
@@ -171,6 +172,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
         add(getTokenGameButton());
         add(getWoflanButton());
         add(getAnalysisButton());
+        add(getMetricButton());
         add(getQuantCapButton());
         add(getQuantSimButton());
         add(getReachabilityGraphButton());
@@ -181,6 +183,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     {
     	this.remove(getWoflanButton());
     	this.remove(getAnalysisButton());
+    	this.remove(getMetricButton());
     	this.remove(getQuantCapButton());
     	this.remove(getQuantSimButton());
     	this.remove(getReachabilityGraphButton());
@@ -191,6 +194,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     {
     	this.add(getWoflanButton());
     	this.add(getAnalysisButton());
+    	this.add(getMetricButton());
     	this.add(getQuantCapButton());
     	this.add(getQuantSimButton());
     	this.add(getReachabilityGraphButton());
@@ -523,6 +527,16 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     	}
     	return m_rotateTransRightButton;
     }
+    
+	@Override
+	public AbstractButton getMetricButton() {
+		
+		if(m_metricButton == null)
+		{
+			m_metricButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_METRIC),false);
+		}
+		return m_metricButton;
+	}
  
     public void addViewListener(IViewListener listener)
     {
@@ -606,4 +620,6 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
             zoomChooser.addItemListener(listeners[i]);
         }
     }
+
+
 }

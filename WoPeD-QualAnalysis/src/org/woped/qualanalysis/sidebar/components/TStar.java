@@ -147,7 +147,6 @@ public class TStar {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private void deleteCells(Object[] toDelete) {
         Vector<Object> result = new Vector<Object>();
         for (int i = 0; i < toDelete.length; i++) {
@@ -172,7 +171,7 @@ public class TStar {
             uniqueResult.add(result.get(i));
             if (result.get(i) instanceof AbstractElementModel
                     && ((AbstractElementModel) result.get(i)).getPort() != null) {
-                Iterator edges = ((AbstractElementModel) result.get(i)).getPort().edges();
+                Iterator<?> edges = ((AbstractElementModel) result.get(i)).getPort().edges();
                 while (edges.hasNext()) {
                     uniqueResult.add(edges.next());
                 }
@@ -242,12 +241,11 @@ public class TStar {
         editor.updateNet();
     }
 
-    @SuppressWarnings("unchecked")
     public ArcModel createArc(CreationMap map, boolean insertIntoCache) {
         ArcModel arc = null;
         String sourceId = map.getArcSourceId();
         String targetId = map.getArcTargetId();
-        List points = map.getArcPoints();
+        List<?> points = map.getArcPoints();
         Point2D[] pointArray = new Point2D[points.size()];
         for (int i = 0; i < points.size(); i++) {
             if (points.get(i) instanceof Point2D) {

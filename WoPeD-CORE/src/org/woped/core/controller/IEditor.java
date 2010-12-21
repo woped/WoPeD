@@ -223,6 +223,8 @@ public interface IEditor extends IViewController {
 	
 	public void showAnalysisBar(IEditor editor, AbstractApplicationMediator mediator);
 	
+	public void showMetricsBar(IEditor editor);
+	
 	public void hideAnalysisBar();
 	
 	public boolean isAnalysisBarVisible();

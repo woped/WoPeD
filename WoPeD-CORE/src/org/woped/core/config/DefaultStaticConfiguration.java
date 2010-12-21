@@ -11,38 +11,41 @@ import javax.swing.ImageIcon;
 
 import org.woped.core.model.AbstractModelProcessor;
 
-public class DefaultStaticConfiguration implements IConfiguration
+public class DefaultStaticConfiguration implements IGeneralConfiguration
 {
     // Default values
-    public static int             DEFAULT_ARROW_WIDTH        = 1;
-    public static int             DEFAULT_ARROW_HEADSIZE     = 7;
-    public static boolean         DEFAULT_ARROW_FILLHEAD     = false;
-    public static final ImageIcon DEFAULTEDITORFRAMEICON     = null;
-    public static Color           DEFAULT_SELECTION_COLOR    = Color.BLUE;
-    public static Color           DEFAULT_INVERSE_COLOR    	 = Color.WHITE;
-    public static Color           DEFAULT_PORT_COLOR         = Color.RED;
-    public static Color           DEFAULT_UI_BACKGROUND_COLOR = Color.GRAY;
-    public static Color           DEFAULT_CELL_BACKGROUND_COLOR = new Color(225,225,225);
-    public static Color           DEFAULT_HEADER_BACKGROUND_COLOR = Color.LIGHT_GRAY;
-    public static Color           DEFAULT_TIME_COLOR 		 = new Color(0, 128, 0);
-    public static Color		  	  DEFAULT_SUBPROCESS_FRAME_COLOR = new Color(255, 151, 5);
-    public static Font            DEFAULT_LABEL_FONT         = new Font("Verdana", Font.PLAIN, 10);
-    public static Font            DEFAULT_SMALLLABEL_FONT    = new Font("Verdana", Font.PLAIN, 9);
-    public static Font            DEFAULT_TOKENGAME_FONT     = new Font("Verdana", Font.PLAIN, 9);
-    public static Font            DEFAULT_RESOURCE_ROLE_FONT = new Font("Verdana", Font.PLAIN, 9);
-    public static Font            DEFAULT_RESOURCE_ORG_FONT  = new Font("Verdana", Font.ITALIC, 9);
-    public static Font            DEFAULT_TOKEN_FONT         = new Font("Verdana", Font.ITALIC, 19);
-    public static Font            DEFAULT_TABLE_FONT         = new Font("Verdana", Font.PLAIN, 11);
-    public static Font            DEFAULT_TABLE_BOLDFONT     = new Font("Verdana", Font.BOLD, 11);
-    public static Font			  DEFAULT_TOOLTIP_FONT		 = new Font("Verdana", Font.PLAIN, 10);
-    public static String          DEFAULT_LANGUAGE           = "en";
-    public static String          DEFAULT_COUNTRY            = "";
-    public static String          DEFAULT_VARIANT            = "";
+    public static int             DEFAULT_ARROW_WIDTH        		= 1;
+    public static int             DEFAULT_ARROW_HEADSIZE     		= 7;
+    public static boolean         DEFAULT_ARROW_FILLHEAD     		= false;
+    public static final ImageIcon DEFAULTEDITORFRAMEICON     		= null;
+    public static Color           DEFAULT_SELECTION_COLOR    		= Color.BLUE;
+    public static Color           DEFAULT_INVERSE_COLOR    	 		= Color.WHITE;
+    public static Color           DEFAULT_PORT_COLOR         		= Color.RED;
+    public static Color           DEFAULT_UI_BACKGROUND_COLOR 		= Color.GRAY;
+    public static Color           DEFAULT_CELL_BACKGROUND_COLOR 	= new Color(225,225,225);
+    public static Color           DEFAULT_HEADER_BACKGROUND_COLOR 	= Color.LIGHT_GRAY;
+    public static Color           DEFAULT_TIME_COLOR 		 		= new Color(0, 128, 0);
+    public static Color		  	  DEFAULT_SUBPROCESS_FRAME_COLOR 	= new Color(255, 151, 5);
+    public static Font            DEFAULT_LABEL_FONT         		= new Font("Verdana", Font.PLAIN, 10);
+    public static Font            DEFAULT_SMALLLABEL_FONT    		= new Font("Verdana", Font.PLAIN, 9);
+    public static Font            DEFAULT_TOKENGAME_FONT     		= new Font("Verdana", Font.PLAIN, 9);
+    public static Font            DEFAULT_RESOURCE_ROLE_FONT 		= new Font("Verdana", Font.PLAIN, 9);
+    public static Font            DEFAULT_RESOURCE_ORG_FONT  		= new Font("Verdana", Font.ITALIC, 9);
+    public static Font            DEFAULT_TOKEN_FONT         		= new Font("Verdana", Font.ITALIC, 19);
+    public static Font            DEFAULT_TABLE_FONT         		= new Font("Verdana", Font.PLAIN, 11);
+    public static Font            DEFAULT_TABLE_BOLDFONT     		= new Font("Verdana", Font.BOLD, 11);
+    public static Font			  DEFAULT_TOOLTIP_FONT		 		= new Font("Verdana", Font.PLAIN, 10);
+    public static String          DEFAULT_LANGUAGE           		= "en";
+    public static String          DEFAULT_COUNTRY            		= "";
+    public static String          DEFAULT_VARIANT            		= "";
+    
     // File
     private String                homedir                    = "";
     private String                logdir                     = "";
     private String                defaultHomedir             = "";
     private String                currentWorkingdir          = "";
+    private String				  userdir					 = "";
+    
     // Editor
     private boolean               insertCopy                 = false;
     private boolean               importToolspec             = true;
@@ -65,51 +68,76 @@ public class DefaultStaticConfiguration implements IConfiguration
     private String                country                    = DEFAULT_COUNTRY;
     private String                variant                    = DEFAULT_VARIANT;
 
-    // Booleans for alpha-functions (TEST) later integration in conf&gui
+    // Booleans for alpha-functions (TEST) later integration in configuration & GUI
     public static boolean         ACTIVATE_NET_ROUTING       = false;
     public static boolean         ACTIVATE_ANNEALING_LAYOUT  = false;
 
     // Understandability Coloring
-    private boolean               colorOn                 	 = false;
-    private int					  coloringAlgorithmMode		 = 0;	
-    private int					  color1				     = -256;
-    private int					  color2				     = -16711936;
-    private int					  color3				     = -65536;
-    private int					  color4				     = -65281;
-    private int					  color5				     = -16776961;
-    private int					  color6				     = -10066330;
-    private int					  color7				     = -16724737;
-    private int					  color8				     = -39424;
-    private int					  color9				     = -13421569;
-    private int					  color10				     = -3355444;
-    private int					  color11				     = -10066432;
-    private int					  color12				     = -6750208;
-    private int					  color13				     = -10092442;
-    private int					  color14				     = -13312;
-    private int					  color15				     = -10053121;
-    private int					  color16				     = -16751104;
-    private Color[]               UnderstandColorArray       = new Color[16];
-    private int					  defaultcolor1				 = -256;
-    private int					  defaultcolor2				 = -16711936;
-    private int					  defaultcolor3				 = -65536;
-    private int					  defaultcolor4				 = -65281;
-    private int					  defaultcolor5				 = -16776961;
-    private int					  defaultcolor6				 = -10066330;
-    private int					  defaultcolor7				 = -16724737;
-    private int					  defaultcolor8				 = -39424;
-    private int					  defaultcolor9				 = -13421569;
-    private int					  defaultcolor10			 = -3355444;
-    private int					  defaultcolor11			 = -10066432;
-    private int					  defaultcolor12			 = -6750208;
-    private int					  defaultcolor13			 = -10092442;
-    private int					  defaultcolor14			 = -13312;
-    private int					  defaultcolor15			 = -10053121;
-    private int					  defaultcolor16			 = -16751104;
-    private Color[]               defaultUnderstandColorArray= new Color[16];
+    private boolean               colorOn                 	 	= false;
+    private int					  coloringAlgorithmMode		 	= 0;	
+    private int					  color1				     	= -256;
+    private int					  color2				     	= -16711936;
+    private int					  color3				     	= -65536;
+    private int					  color4				     	= -65281;
+    private int					  color5				     	= -16776961;
+    private int					  color6				     	= -10066330;
+    private int					  color7				     	= -16724737;
+    private int					  color8				     	= -39424;
+    private int					  color9				     	= -13421569;
+    private int					  color10				     	= -3355444;
+    private int					  color11				     	= -10066432;
+    private int					  color12				     	= -6750208;
+    private int					  color13				     	= -10092442;
+    private int					  color14				     	= -13312;
+    private int					  color15				     	= -10053121;
+    private int					  color16				     	= -16751104;
+    private Color[]               UnderstandColorArray       	= new Color[16];
+    private int					  defaultcolor1				 	= -256;
+    private int					  defaultcolor2				 	= -16711936;
+    private int					  defaultcolor3				 	= -65536;
+    private int					  defaultcolor4				 	= -65281;
+    private int					  defaultcolor5				 	= -16776961;
+    private int					  defaultcolor6				 	= -10066330;
+    private int					  defaultcolor7				 	= -16724737;
+    private int					  defaultcolor8				 	= -39424;
+    private int					  defaultcolor9				 	= -13421569;
+    private int					  defaultcolor10				= -3355444;
+    private int					  defaultcolor11				= -10066432;
+    private int					  defaultcolor12			 	= -6750208;
+    private int					  defaultcolor13			 	= -10092442;
+    private int					  defaultcolor14			 	= -13312;
+    private int					  defaultcolor15			 	= -10053121;
+    private int					  defaultcolor16			 	= -16751104;
+    private Color[]               defaultUnderstandColorArray	= new Color[16];
     
+    public DefaultStaticConfiguration()
+    {
+        initConfig();
+    }
+
+    public boolean initConfig()
+    {
+        return true;
+    }
+
+    public boolean readConfig(File file)
+    {
+        return false;
+    }
+
+    public boolean saveConfig()
+    {
+        return true;
+    }
+
+    public boolean saveConfig(File file)
+    {
+        return false;
+    }
+
     public void addRecentFile(String name, String path)
     {
-    // 	// NOT SUPPORTED
+     	// NOT SUPPORTED
     }
 
     public int getArrowheadSize()
@@ -243,7 +271,8 @@ public class DefaultStaticConfiguration implements IConfiguration
         return color16;
     }
     
-    public Color[] getUnderstandColors(){
+    public Color[] getUnderstandColors()
+    {
     	return UnderstandColorArray;
     }
     
@@ -327,7 +356,8 @@ public class DefaultStaticConfiguration implements IConfiguration
         return defaultcolor16;
     }
     
-    public Color[] getDefaultUnderstandColors(){
+    public Color[] getDefaultUnderstandColors()
+    {
     	return defaultUnderstandColorArray;
     }
     
@@ -411,11 +441,13 @@ public class DefaultStaticConfiguration implements IConfiguration
         color16 = rgb;
     }
     
-	public int getAlgorithmMode() {
+	public int getAlgorithmMode() 
+	{
 		return coloringAlgorithmMode;
 	}
 	
-	public void setAlgorithmMode(int n) {
+	public void setAlgorithmMode(int n) 
+	{
 		coloringAlgorithmMode = n;
 	}
     // End Understandability Coloring
@@ -425,14 +457,19 @@ public class DefaultStaticConfiguration implements IConfiguration
         return lnf;
     }
 
-    public Vector getRecentFiles()
+    public Vector<?> getRecentFiles()
     {
-        return new Vector();
+        return new Vector<Object>();
     }
 
     public Dimension getWindowSize()
     {
         return new Dimension(800, 600);
+    }
+    
+    public boolean isMaximizeWindow()
+    {
+    	return true;
     }
 
     public int getWindowX()
@@ -507,32 +544,25 @@ public class DefaultStaticConfiguration implements IConfiguration
 
     public boolean isTpnSaveElementAsName()
     {
-        // TODO Auto-generated method stub
         return false;
     }
 
     public boolean isUseWoflan()
     {
-        // TODO Auto-generated method stub
         return false;
     }
     
     public boolean isUseWoflanDLL()
     {
-        // TODO Auto-generated method stub
         return false;
     }
 
     public void removeAllRecentFiles()
     {
-    // TODO Auto-generated method stub
-
     }
 
     public void removeRecentFile(String name, String path)
     {
-    // TODO Auto-generated method stub
-
     }
 
     public void setArrowheadSize(int headSize)
@@ -553,7 +583,6 @@ public class DefaultStaticConfiguration implements IConfiguration
     public void setExportToolspecific(boolean exportToolspecific)
     {
         this.exportToolspec = exportToolspecific;
-
     }
 
     public void setFillArrowHead(boolean fill)
@@ -570,6 +599,11 @@ public class DefaultStaticConfiguration implements IConfiguration
     {
     	this.defaultHomedir = homedir;
     }
+    
+	public String getUserdir() 
+	{
+		return this.userdir;
+	}
 
     public void setCurrentWorkingdir(String homedir)
     {
@@ -594,7 +628,6 @@ public class DefaultStaticConfiguration implements IConfiguration
     public void setLookAndFeel(String className)
     {
         lnf = className;
-
     }
 
     public void setRoundRouting(boolean round)
@@ -614,69 +647,34 @@ public class DefaultStaticConfiguration implements IConfiguration
 
     public void setTpnSaveElementAsName(boolean b)
     {
-    // TODO Auto-generated method stub
-
     }
 
     public void setUseWoflan(boolean useWoflan)
     {
-    // TODO Auto-generated method stub
-
     }
     
     public void setUseWoflanDLL(boolean useWoflanDLL)
     {
-    // TODO Auto-generated method stub
-
     }
 
     public void setWindowSize(Dimension windowSize)
     {
-    // TODO Auto-generated method stub
-
+    }
+    
+    public void setMaximizeWindow(boolean maximize) 
+    {	
     }
 
     public void setWindowX(int windowX)
     {
-    // TODO Auto-generated method stub
-
     }
 
     public void setWindowY(int windowY)
     {
-    // TODO Auto-generated method stub
-
     }
 
     public void setWoflanPath(String woflanPath)
     {
-    // TODO Auto-generated method stub
-
-    }
-
-    public DefaultStaticConfiguration()
-    {
-        initConfig();
-    }
-
-    public boolean initConfig()
-    {
-        return true;
-    }
-
-    public boolean readConfig(File file)
-    {
-        return false;
-    }
-
-    public boolean saveConfig()
-    {
-        return true;
-    }
-
-    public boolean saveConfig(File file)
-    {
-        return false;
     }
 
     public int getModelProcessorType()
@@ -689,81 +687,72 @@ public class DefaultStaticConfiguration implements IConfiguration
         modelProcessor = type;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see org.woped.config.IConfiguration#getPortColor()
+     * @see org.woped.config.IGeneralConfiguration#getPortColor()
      */
     public Color getPortColor()
     {
         return portColor;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see org.woped.config.IConfiguration#setPortColor(java.awt.Color)
+     * @see org.woped.config.IGeneralConfiguration#setPortColor(java.awt.Color)
      */
     public void setPortColor(Color color)
     {
         portColor = color;
-
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see org.woped.config.IConfiguration#getLocaleLanguage()
+     * @see org.woped.config.IGeneralConfiguration#getLocaleLanguage()
      */
     public String getLocaleLanguage()
     {
         return language;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see org.woped.config.IConfiguration#setLocaleLanguage(java.lang.String)
+     * @see org.woped.config.IGeneralConfiguration#setLocaleLanguage(java.lang.String)
      */
     public void setLocaleLanguage(String language)
     {
         this.language = language;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see org.woped.config.IConfiguration#getLocaleCountry()
+     * @see org.woped.config.IGeneralConfiguration#getLocaleCountry()
      */
     public String getLocaleCountry()
     {
         return country;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see org.woped.config.IConfiguration#setLocaleCountry(java.lang.String)
+     * @see org.woped.config.IGeneralConfiguration#setLocaleCountry(java.lang.String)
      */
     public void setLocaleCountry(String country)
     {
         this.country = country;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see org.woped.config.IConfiguration#getLocaleVariant()
+     * @see org.woped.config.IGeneralConfiguration#getLocaleVariant()
      */
     public String getLocaleVariant()
     {
         return variant;
     }
 
-    /*
-     * (non-Javadoc)
+    /**
      * 
-     * @see org.woped.config.IConfiguration#setLocaleVariant(java.lang.String)
+     * @see org.woped.config.IGeneralConfiguration#setLocaleVariant(java.lang.String)
      */
     public void setLocaleVariant(String variant)
     {
@@ -794,14 +783,16 @@ public class DefaultStaticConfiguration implements IConfiguration
         if (language != null && country != null && variant != null)
         {
             userLocale = new Locale(language, country, variant);
-        } else if (language != null && country != null)
+        } 
+        else if (language != null && country != null)
         {
             userLocale = new Locale(language, country);
-        } else
+        } 
+        else if (language != null)
         {
             userLocale = new Locale(language);
-        }
-        if (userLocale == null)
+        } 
+        else 
         {
             userLocale = Locale.ENGLISH;
             setLocaleLanguage(this.locale.getLanguage());
@@ -814,4 +805,25 @@ public class DefaultStaticConfiguration implements IConfiguration
     {
         return this.locale;
     }
+
+	public boolean isUseMetrics() {
+		return true;
+	}
+
+	public void setUseMetrics(boolean loadMetrics) {		
+	}
+
+	public int getAlgorithmDecimalPlaces() {
+		return 2;
+	}
+
+	public int getVariableDecimalPlaces() {
+		return 0;
+	}
+
+	public void setAlgorithmDecimalPlaces(int n) {		
+	}
+
+	public void setVariableDecimalPlaces(int n) {	
+	}
 }

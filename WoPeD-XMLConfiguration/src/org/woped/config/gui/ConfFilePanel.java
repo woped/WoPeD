@@ -49,8 +49,8 @@ import org.woped.translations.Messages;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
- *         The <code>ConfFilePanel</code> ist the
- *         <code>AbstractConfPanel</code> for the configruation of the file
+ *         The <code>ConfFilePanel</code> is the
+ *         <code>AbstractConfPanel</code> for the configuration of the file
  *         handling. <br>
  *         Created on: 26.11.2004 Last Change on: 26.11.2004
  */

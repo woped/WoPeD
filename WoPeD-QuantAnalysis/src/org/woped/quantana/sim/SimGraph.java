@@ -16,9 +16,8 @@ import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 
-@SuppressWarnings("unchecked")
 public class SimGraph {
-	Map<String, SimNode> Nodes = new HashMap();
+	Map<String, SimNode> Nodes = new HashMap<String, SimNode>();
 	ModelElementContainer mec = null;
 	SimNode sink = null;
 	SimNode source = null;	
@@ -136,7 +135,7 @@ public boolean isTransitionGT0(String id){
 		// first run through all elements creates the map with all SimNodes
 		PetriNetModelElement el = null;
 		SimNode node = null;
-		for (Iterator i = mec
+		for (Iterator<?> i = mec
 				.getElementsByType(PetriNetModelElement.PLACE_TYPE).values()
 				.iterator(); i.hasNext();) {
 			el = (PetriNetModelElement) i.next();
@@ -145,7 +144,7 @@ public boolean isTransitionGT0(String id){
 		allTrans = mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
 		allTrans.putAll(mec.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE));
 		allTrans.putAll(mec.getElementsByType(PetriNetModelElement.SUBP_TYPE));		
-		for (Iterator i = allTrans.values().iterator(); i.hasNext();) {
+		for (Iterator<AbstractElementModel> i = allTrans.values().iterator(); i.hasNext();) {
 			el = (PetriNetModelElement) i.next();
 			node = createSimNode(el);
 			Nodes.put(el.getId(), node);			
@@ -155,7 +154,7 @@ public boolean isTransitionGT0(String id){
 		// second run through all elements creates the arc with probability and
 		// pre and post SimNodes
 		for (SimNode n : Nodes.values()) {
-			for (Iterator target = mec.getTargetElements(n.getid()).values()
+			for (Iterator<?> target = mec.getTargetElements(n.getid()).values()
 					.iterator(); target.hasNext();) {
 				AbstractPetriNetModelElement postNode = (AbstractPetriNetModelElement) target
 						.next();
@@ -166,7 +165,7 @@ public boolean isTransitionGT0(String id){
 				SimArc arc = new SimArc(n, Nodes.get(postNode.getId()), p);
 				n.getarcOut().add(arc);
 			}
-			for (Iterator source = mec.getSourceElements(n.getid()).values()
+			for (Iterator<?> source = mec.getSourceElements(n.getid()).values()
 					.iterator(); source.hasNext();) {
 				AbstractPetriNetModelElement preNode = (AbstractPetriNetModelElement) source
 						.next();

@@ -1,11 +1,16 @@
 package org.woped.qualanalysis.sidebar.assistant;
 
 import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.assistant.components.BeginnerPanel;
 import org.woped.qualanalysis.sidebar.assistant.components.ClickLabel;
@@ -133,10 +138,12 @@ public class StartPage extends BeginnerPanel {
 		/*
 		 * net info
 		 */
+		
+		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
 
 		JPanel infoPanel = new JPanel();
 		ClickLabel clickLabel = null;
-		JLabel count = null;
+		JLabel count = null; 
 		infoPanel.setBackground(Color.WHITE);
 		infoPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 0));
 		infoPanel.setLayout(sgbl);
@@ -163,7 +170,7 @@ public class StartPage extends BeginnerPanel {
 		clickLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, clickLabel, 0, 2, 1, 1, 1, 0);
 
-		count = new JLabel(String.valueOf(qualanalysisService.getTransitions().size()), JLabel.RIGHT);
+		count = new JLabel((int)calculateT(mec)+"", JLabel.RIGHT);
 		count.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, count, 1, 2, 1, 1, 0, 0);
 
@@ -192,11 +199,34 @@ public class StartPage extends BeginnerPanel {
 		arcLabel.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, arcLabel, 0, 5, 1, 1, 1, 0);
 
-		count = new JLabel(String.valueOf(qualanalysisService.getNumArcs()), JLabel.RIGHT);
+		count = new JLabel((int)calculateA(mec)+"", JLabel.RIGHT);
 		count.setFont(ITEMS_FONT);
 		sgbl.addComponent(infoPanel, count, 1, 5, 1, 1, 0, 0);
 
 		addComponent(infoPanel, 0, 2, 1, 1, 1, 0);
+	}
+	
+	private double calculateA(ModelElementContainer mec){
+		return mec.getArcMap().size();
+	}
+	
+	private double calculateT(ModelElementContainer mec){
+		return getTransitions(mec).size();
+	}
+	
+	private Map<String,AbstractElementModel> getTransitions(ModelElementContainer mec){
+		Map<String, AbstractElementModel> transitions = new HashMap<String, AbstractElementModel>();
+		Map<String, AbstractElementModel> partialTransitions;
+		partialTransitions = mec.getElementsByType(PetriNetModelElement.SUBP_TYPE);
+		for(String key:partialTransitions.keySet())
+			transitions.put(key,partialTransitions.get(key));
+		partialTransitions = mec.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+		for(String key:partialTransitions.keySet())
+			transitions.put(key,partialTransitions.get(key));
+		partialTransitions = mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
+		for(String key:partialTransitions.keySet())
+			transitions.put(key,partialTransitions.get(key));
+		return transitions;
 	}
 
 	@Override

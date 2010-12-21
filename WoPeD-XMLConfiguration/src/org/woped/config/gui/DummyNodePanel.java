@@ -31,7 +31,7 @@ import org.woped.editor.gui.config.AbstractConfPanel;
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
  * 
- * The dummy NodePanel is an example for an <ocde>AbstractConfPanel</code>.
+ * The dummy NodePanel is an example for an <code>AbstractConfPanel</code>.
  * 
  * Created on: 02.12.2004 Last Change on: 02.12.2004
  */
@@ -40,7 +40,7 @@ import org.woped.editor.gui.config.AbstractConfPanel;
 public class DummyNodePanel extends AbstractConfPanel
 {
     /**
-     * Contstructor for the <code>DummyNodePanel</code>
+     * Constructor for the <code>DummyNodePanel</code>
      */
     public DummyNodePanel(String name)
     {

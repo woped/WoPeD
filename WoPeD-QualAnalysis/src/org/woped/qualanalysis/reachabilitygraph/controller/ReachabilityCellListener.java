@@ -1,6 +1,5 @@
 package org.woped.qualanalysis.reachabilitygraph.controller;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
@@ -11,7 +10,6 @@ import java.util.SortedMap;
 
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -180,7 +178,8 @@ public class ReachabilityCellListener implements MouseListener {
 
         if (lastHighlighted != null) {
             ReachabilityPortModel port = (ReachabilityPortModel) this.lastHighlighted.getChildAt(0);
-            Set<ReachabilityEdgeModel> edges = port.getEdges();
+            @SuppressWarnings("unchecked")
+			Set<ReachabilityEdgeModel> edges = port.getEdges();
             Iterator<ReachabilityEdgeModel> iterEdges = edges.iterator();
             while (iterEdges.hasNext()) {
                 ReachabilityEdgeModel edge = iterEdges.next();
@@ -197,18 +196,19 @@ public class ReachabilityCellListener implements MouseListener {
         }
     }
 
-    private void highlightClickedEdge(ReachabilityEdgeModel edge) {
+    /*private void highlightClickedEdge(ReachabilityEdgeModel edge) {
         Map<ReachabilityEdgeModel, AttributeMap> editMap = new HashMap<ReachabilityEdgeModel, AttributeMap>();
         GraphConstants.setLineColor(edge.getAttributes(), Color.magenta);
         GraphConstants.setLineWidth(edge.getAttributes(), 2);
         editMap.put(edge, edge.getAttributes());
         graph.getGraphLayoutCache().edit(editMap);
         this.lastHighlightedEdge = edge;
-    }
+    }*/
 
     private void highlightEdges(ReachabilityPlaceModel place) {
         ReachabilityPortModel port = (ReachabilityPortModel) place.getChildAt(0);
-        Set<ReachabilityEdgeModel> edges = port.getEdges();
+        @SuppressWarnings("unchecked")
+		Set<ReachabilityEdgeModel> edges = port.getEdges();
         Iterator<ReachabilityEdgeModel> iterEdges = edges.iterator();
         Map<ReachabilityEdgeModel, AttributeMap> editMap = new HashMap<ReachabilityEdgeModel, AttributeMap>();
         while (iterEdges.hasNext()) {

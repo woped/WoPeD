@@ -159,12 +159,7 @@ public class WoPeDAction extends AbstractAction
             } catch (Exception e)
             {
                 if (obj != null)
-                {
                     LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change the status for " + obj.getClass());
-                } else
-                {
-                    LoggerManager.error(Constants.EDITOR_LOGGER, "Could not change the status. Object was null!");
-                }
             }
 
         }

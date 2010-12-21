@@ -227,7 +227,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     private JSplitPane m_mainSplitPane = null;
 
     private JSplitPane mainsplitPaneWithAnalysisBar = null;
-
+    
     private JTree m_treeObject = null;
 
     private GraphTreeModel m_treeModel = null;
@@ -753,7 +753,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         ArcModel arc = null;
         String sourceId = map.getArcSourceId();
         String targetId = map.getArcTargetId();
-        List points = map.getArcPoints();
+        List<?> points = map.getArcPoints();
         Point2D[] pointArray = new Point2D[points.size()];
         for (int i = 0; i < points.size(); i++) {
             if (points.get(i) instanceof Point2D) {
@@ -853,7 +853,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             uniqueResult.add(result.get(i));
             if (result.get(i) instanceof AbstractElementModel
                     && ((AbstractElementModel) result.get(i)).getPort() != null) {
-                Iterator edges = ((AbstractElementModel) result.get(i)).getPort().edges();
+                Iterator<?> edges = ((AbstractElementModel) result.get(i)).getPort().edges();
                 while (edges.hasNext()) {
                     uniqueResult.add(edges.next());
                 }
@@ -1293,7 +1293,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
                 AttributeMap tempMap = (AttributeMap) noGroupElement.getAttributes().clone();
                 AttributeMap newMap = new AttributeMap();
                 Rectangle2D bounds = GraphConstants.getBounds(tempMap);
-                List points = GraphConstants.getPoints(tempMap);
+                List<?> points = GraphConstants.getPoints(tempMap);
                 if (bounds != null) {
                     bounds = new Rectangle((int) bounds.getX() + dx, (int) bounds.getY() + dy, (int) bounds.getWidth(),
                             (int) bounds.getHeight());
@@ -1838,7 +1838,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         }
 
         // notify the editor aware vc
-        Iterator editorIter = m_centralMediator.getEditorAwareVCs().iterator();
+        Iterator<?> editorIter = m_centralMediator.getEditorAwareVCs().iterator();
         while (editorIter.hasNext()) {
             ((IEditorAware) editorIter.next()).renameEditor(this);
         }
@@ -1946,6 +1946,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         this.smartEditActive = smartEditActive;
     }
 
+    @SuppressWarnings("all")
     public JComponent getContainer() {
         return container;
     }
@@ -2224,7 +2225,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     private boolean analysisBarVisible = false;
 
     private SideBar analysisSideBar = null;
-
+   
     private JCheckBox autoRefresh = null;
 
 	private JCheckBox tStarCheckBox = null;
@@ -2288,7 +2289,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
 		}
 	}
-
+		
 	/**
 	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
 	 */
@@ -2324,6 +2325,69 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 	 */
 	public boolean isAnalysisBarVisible() {
 		return analysisBarVisible;
+	}
+	   
+    private JSplitPane mainsplitPaneWithMetricsBar = null;
+    private boolean bMetricsBarVisible = false;
+    
+    private JPanel metricsSideBar = null;
+	
+	/**
+	 * Shows the metrics sidebar and resize the editor window.
+	 * Replaces the normal EditorSplitPane with another SplitPane with the
+	 * MetricsSidebar on the right side.
+	 * 
+	 * @author Mathias Gruschinske, Stefan Hackenberg
+	 */
+	public void showMetricsBar(IEditor editor)
+	{
+		if (!analysisBarVisible) {
+											
+			this.remove(m_mainSplitPane);
+			
+			// create the metrics sidebar
+			metricsSideBar = new org.woped.metrics.sidebar.SideBar(editor);
+		
+			// create a Panel, which contains the sidebar
+			JPanel sideBar = new JPanel(new BorderLayout());
+			sideBar.add(metricsSideBar, BorderLayout.CENTER);
+		
+			// create a new SplitPane with a horizontal split 
+			mainsplitPaneWithMetricsBar = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_mainSplitPane, sideBar);
+			this.add(mainsplitPaneWithMetricsBar);									
+		
+			analysisBarVisible = true;
+			bMetricsBarVisible = true;
+			this.revalidate();	
+			
+			// new calculation of the size from editor window (only width)
+			editorSize.resize(false);
+			
+			mainsplitPaneWithMetricsBar.setDividerLocation((int) (this.getWidth() - editorSize.SIDEBAR_WIDTH));
+			mainsplitPaneWithMetricsBar.setResizeWeight(1);
+						
+			
+		}
+	}
+	
+	/**
+	 * 
+	 * @author Mathias Gruschinske, Stefan Hackenberg
+	 */
+	public void hideMetricsBar() {
+		if (analysisBarVisible) {
+			this.remove(mainsplitPaneWithMetricsBar);
+			mainsplitPaneWithMetricsBar = null;
+			this.add(m_mainSplitPane);
+			analysisBarVisible = false;
+			bMetricsBarVisible = false;
+			this.revalidate();
+			editorSize.resize(false);
+		}
+	}
+	
+	public boolean isMetricsBarVisible() {
+		return bMetricsBarVisible;
 	}
 
 	public boolean isRotateSelected() {
