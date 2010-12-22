@@ -1,17 +1,13 @@
 package org.woped.metrics.builder;
 import java.awt.BorderLayout;
-
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-
-import javax.swing.WindowConstants;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -32,6 +28,10 @@ import javax.swing.ListModel;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class MetricsBuilderPanel extends javax.swing.JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3595903611243145797L;
 	private JTabbedPane jTabbedPane;
 	private JPanel tabMb1;
 	private JPanel jPanelId;
@@ -77,7 +77,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 	private JLabel jLabel2;
 	private JLabel jLabel1;
 	private JLabel jLabelTab;
-	private JLabel jLabelFüller;
+	private JLabel jLabelFiller;
 	private JButton jButtonDiv;
 	private JLabel jLabelLeer2;
 	private JLabel jLabelLeer1;
@@ -183,9 +183,9 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 							jPanelWest.add(jPanelEast, BorderLayout.EAST);
 							jPanelEast.setPreferredSize(new java.awt.Dimension(30, 296));
 							{
-								jLabelFüller = new JLabel();
-								jPanelEast.add(jLabelFüller);
-								jLabelFüller.setPreferredSize(new java.awt.Dimension(-4, -60));
+								jLabelFiller = new JLabel();
+								jPanelEast.add(jLabelFiller);
+								jLabelFiller.setPreferredSize(new java.awt.Dimension(-4, -60));
 							}
 							{
 								jLabelTab = new JLabel();
