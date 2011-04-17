@@ -15,6 +15,7 @@ import org.antlr.runtime.Lexer;
 import org.antlr.runtime.MismatchedSetException;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
+import org.woped.metrics.exceptions.AntlrException;
 
 public class metricsGrammarLexer extends Lexer {
     public static final int T__29=29;
@@ -1718,6 +1719,15 @@ public class metricsGrammarLexer extends Lexer {
         public String getDescription() {
             return "1:1: Tokens : ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | MULTILINE_COMMENT | STRING_LITERAL | CHAR_LITERAL | DOUBLE | IDENT | WS | COMMENT );";
         }
+    }
+    
+    @Override
+    public void displayRecognitionError(String[] tokenNames,
+      RecognitionException e) {
+     String hdr = ErrorMessageProcessing.getErrorHeader(e);
+           String msg = ErrorMessageProcessing.getErrorMessage(e, tokenNames, this);
+           String shortMessage = hdr + " " + msg;
+           ErrorList.getInstance().addException(new AntlrException(e,shortMessage, tokenNames));
     }
  
 

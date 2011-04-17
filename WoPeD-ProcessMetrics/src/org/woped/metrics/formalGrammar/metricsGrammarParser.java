@@ -5,6 +5,7 @@
  */
 
 package org.woped.metrics.formalGrammar;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.antlr.runtime.BitSet;
@@ -14,8 +15,13 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
+import org.woped.metrics.exceptions.AlgorithmIDTranslateException;
+import org.woped.metrics.exceptions.AntlrException;
 import org.woped.metrics.exceptions.CalculateFormulaException;
+import org.woped.metrics.exceptions.FormulaVariableNotFoundException;
+import org.woped.metrics.exceptions.NestedCalculateFormulaException;
 import org.woped.metrics.metricsCalculation.MetricsCalculator;
+import org.woped.metrics.metricsCalculation.MetricsUIRequestHandler;
 
 public class metricsGrammarParser extends Parser {
     public static final String[] tokenNames = new String[] {
@@ -67,23 +73,25 @@ public class metricsGrammarParser extends Parser {
     private MetricsCalculator 	metricsCalculator;
 	private HashSet<String>		stack;
 	private boolean				doNotDisplay;
+	private boolean				syntaxCheck;
 
     // delegates
     // delegators
 
 
 	public metricsGrammarParser(TokenStream input,
-			MetricsCalculator metricsCalculator, HashSet<String> stack, boolean doNotDisplay) {
-		this(input, new RecognizerSharedState(), metricsCalculator, stack, doNotDisplay);
+			MetricsCalculator metricsCalculator, HashSet<String> stack, boolean doNotDisplay, boolean syntaxCheck) {
+		this(input, new RecognizerSharedState(), metricsCalculator, stack, doNotDisplay, syntaxCheck);
 	}
 
 	public metricsGrammarParser(TokenStream input, RecognizerSharedState state,
-			MetricsCalculator metricsCalculator, HashSet<String> stack, boolean doNotDisplay) {
+			MetricsCalculator metricsCalculator, HashSet<String> stack, boolean doNotDisplay, boolean syntaxCheck) {
 		super(input, state);
 		this.metricsCalculator 	= metricsCalculator;
 		this.stack				= stack;
 		this.doNotDisplay		= doNotDisplay;
-	}
+		this.syntaxCheck		= syntaxCheck;
+		}
         
 
     public String[] getTokenNames() { return metricsGrammarParser.tokenNames; }
@@ -120,6 +128,19 @@ public class metricsGrammarParser extends Parser {
         }
         finally {
         }
+        
+        //Check if the Error-List is not empty and Syntax-Check is activated
+        //(This is the fact if you have error which could be recovered)
+        if((!ErrorList.getInstance().isEmpty()) && syntaxCheck){
+            @SuppressWarnings("unchecked")
+            ArrayList<CalculateFormulaException> errorList = 
+             (ArrayList<CalculateFormulaException>)ErrorList.getInstance().getErrorList().clone();
+     
+            ErrorList.getInstance().clear();
+            throw new NestedCalculateFormulaException(errorList); 
+           }
+        
+        
         return result;
     }
     // $ANTLR end "evaluator"
@@ -206,9 +227,29 @@ public class metricsGrammarParser extends Parser {
                     	 * @author Tobias Lorentz
                     	 */
                     	IdentToken = (Token) match(input, IDENT, FOLLOW_IDENT_in_term62);
-                    
-                    	result = metricsCalculator.calculateVariable(IdentToken
-    						.getText(), stack, this.doNotDisplay);
+                        
+                        
+                        //If the Syntax is checked, there is no recursion needed
+                        //Due to the fact that there is no data available, the Variable can't be calculated
+                        if (syntaxCheck){
+                         if(MetricsCalculator.isVariableValid(IdentToken.getText())== false){
+                        	 //Check if there is a formula describtion with that name
+                        	 //algorithmNameToID return the token-name if the id was not found
+                          if(MetricsUIRequestHandler.algorithmNameToID(IdentToken.getText()).equals(IdentToken.getText())){
+                        	  ErrorList.getInstance().
+                              addException(new FormulaVariableNotFoundException(IdentToken.getText(), IdentToken.getCharPositionInLine()));                        
+                          }else{
+                        	  ErrorList.getInstance().
+                              addException(new AlgorithmIDTranslateException(IdentToken.getText(), MetricsUIRequestHandler.algorithmNameToID(IdentToken.getText())));  
+                          }
+                        	
+                         }
+                         result = 1;
+                        }else{
+                         result = metricsCalculator.calculateVariable(IdentToken
+                     .getText(), stack, this.doNotDisplay);
+                        }
+                    	
 
                     }
                     break;
@@ -377,9 +418,18 @@ public class metricsGrammarParser extends Parser {
              * @author Tobias Lorentz
              */
             IdentToken = (Token)  match(input,IDENT,FOLLOW_IDENT_in_doNotDisplay146);
-
-           	result = metricsCalculator.calculateVariable(IdentToken.getText(), stack,true);         
-
+            
+            //If the Syntax is checked, there is no recursion needed
+	         //Due to the fact that there is no data available, the Variable can't be calculated
+	            if (syntaxCheck){
+	          if(MetricsCalculator.isVariableValid(IdentToken.getText())== false){
+	           ErrorList.getInstance().
+	           addException(new FormulaVariableNotFoundException(IdentToken.getText(), IdentToken.getCharPositionInLine()));
+	          }
+	          result = 1;
+	         }else{
+	          result = metricsCalculator.calculateVariable(IdentToken.getText(), stack,true);
+	         }
             }
 
         }
@@ -2064,5 +2114,20 @@ public class metricsGrammarParser extends Parser {
     public static final BitSet FOLLOW_mult_in_expression960 = new BitSet(new long[]{0x0000030000000002L});
     public static final BitSet FOLLOW_41_in_expression968 = new BitSet(new long[]{0x000003FFFDFFA030L});
     public static final BitSet FOLLOW_mult_in_expression972 = new BitSet(new long[]{0x0000030000000002L});
+
+    /* (non-Javadoc)
+    * @see org.antlr.runtime.BaseRecognizer#displayRecognitionError(java.lang.String[], org.antlr.runtime.RecognitionException)
+    */
+   @Override
+   public void displayRecognitionError(String[] tokenNames,
+     RecognitionException e) {
+     //This Method is called if you have error which could be recoverd.
+     //This Method stores all the error messages at the error-List
+     //At the Method evaluate, there will be decided if a nestedParserAutoRecoveryException should be thrown
+      String hdr = ErrorMessageProcessing.getErrorHeader(e);
+           String msg = ErrorMessageProcessing.getErrorMessage(e, tokenNames, this);
+           String shortMessage = hdr + " " + msg;
+           ErrorList.getInstance().addException(new AntlrException(e,shortMessage, tokenNames));
+   }
 
 }

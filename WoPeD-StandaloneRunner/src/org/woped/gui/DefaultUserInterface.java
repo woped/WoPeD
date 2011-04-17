@@ -67,7 +67,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     private int                   m_numEditors           = 0;
     private List<IEditor>         editorList             = new ArrayList<IEditor>();
     private HashMap<IEditor, SimulatorBarVC> simulatorList = new HashMap<IEditor, SimulatorBarVC>();
-
+    
     //! Stores a list of internal frames that should stay in foreground
     private List<DefaultEditorFrame>  m_modalityStack = new ArrayList<DefaultEditorFrame>();
     
@@ -218,6 +218,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         {
             ((DefaultEditorFrame) editor.getContainer()).dispose();
             editorList.remove(editor);
+            m_modalityStack.remove(((DefaultEditorFrame) editor.getContainer()));
             m_numEditors--;
             // try to Select a different Frame
             if (desktop.getAllFrames().length > 0)
@@ -343,7 +344,8 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     		 // add normal toolBar
     		 getContentPane().add(toolBar, BorderLayout.NORTH);
     		 getToolBar().addAnalysisButtons();
-    		 getContentPane().repaint();
+    		 toolBar.setVisible(false);
+        	 toolBar.setVisible(true);
     	 }
     }
     

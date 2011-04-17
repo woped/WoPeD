@@ -50,6 +50,8 @@ public abstract class AbstractApplicationMediator implements IViewListener
     private IUserInterface ui                = null;
     private LinkedList<Object> editorLists = new LinkedList<Object>();
 
+    public abstract IEditor createEditor(int modelProcessorType, boolean undoSupport, boolean loadUI);
+    
     public AbstractApplicationMediator(IUserInterface ui, IGeneralConfiguration conf)
     {
         viewControllerMap = new HashMap<String, IViewController>();

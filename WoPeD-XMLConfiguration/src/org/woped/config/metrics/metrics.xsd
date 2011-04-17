@@ -18,13 +18,15 @@
 	
 	<xs:complexType name="Variable">
 		<xs:sequence>
-			<xs:element name="ID" 				type="xs:string" 	minOccurs="1" maxOccurs="1"/>
-			<xs:element name="name"				type="xs:string"	minOccurs="0" maxOccurs="1"/>
-			<xs:element name="formula" 			type="xs:string" 	minOccurs="0" maxOccurs="1"/>
-			<xs:element name="method" 			type="xs:string" 	minOccurs="0" maxOccurs="1"/>
-			<xs:element name="description" 		type="xs:string" 	minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" 					type="xs:string" 			minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name"					type="xs:string"			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="formula" 				type="xs:string" 			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="highlightingFormula"	type="xs:string"			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="method" 				type="xs:string" 			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="description" 			type="xs:string" 			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="thresholds" 			type="MetricThresholds" 	minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
-		<xs:attribute name="nonTranslatable"	type="xs:boolean"	use="optional"/>
+		<xs:attribute name="nonTranslatable"		type="xs:boolean"			use="optional"/>
 	</xs:complexType>
 	
 	<xs:complexType name="Algorithms">
@@ -35,23 +37,24 @@
 	
 	<xs:complexType name="Algorithm">
 		<xs:sequence>
-			<xs:element name="ID" 				type="xs:string" 			minOccurs="1" maxOccurs="1"/>
-			<xs:element name="name"				type="xs:string"			minOccurs="0" maxOccurs="1"/>
-			<xs:element name="formula" 			type="xs:string" 			minOccurs="0" maxOccurs="1"/>
-			<xs:element name="method" 			type="xs:string" 			minOccurs="0" maxOccurs="1"/>
-			<xs:element name="description" 		type="xs:string" 			minOccurs="0" maxOccurs="1"/>
-			<xs:element name="thresholds" 		type="AlgorithmThresholds" 	minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" 					type="xs:string" 			minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name"					type="xs:string"			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="formula" 				type="xs:string" 			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="highlightingFormula"	type="xs:string"			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="method" 				type="xs:string" 			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="description" 			type="xs:string" 			minOccurs="0" maxOccurs="1"/>
+			<xs:element name="thresholds" 			type="MetricThresholds" 	minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
-		<xs:attribute name="nonTranslatable"	type="xs:boolean"			use="optional"/>
+		<xs:attribute name="nonTranslatable"		type="xs:boolean"			use="optional"/>
 	</xs:complexType>
 	
-	<xs:complexType name="AlgorithmThresholds">
+	<xs:complexType name="MetricThresholds">
 		<xs:sequence>
-			<xs:element name="threshold" 	type="AlgorithmThreshold" 	minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="threshold" 	type="MetricThreshold" 	minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	
-	<xs:complexType name="AlgorithmThreshold">
+	<xs:complexType name="MetricThreshold">
 		<xs:sequence>
 			<xs:element name="range" 	type="ThresholdRange" 	minOccurs="1" maxOccurs="1"/>
 			<xs:element name="state" 	type="ThresholdState" 	minOccurs="1" maxOccurs="1"/>
@@ -87,7 +90,7 @@
     			<xs:complexType>
     				<xs:simpleContent> 
     					<xs:extension base="xs:string">
-    						<xs:attribute name="order" 	type="xs:int" use="optional"/>
+    						<xs:attribute name="order" 	type="xs:int"/>
     					</xs:extension> 
     				</xs:simpleContent> 
     			</xs:complexType>
@@ -95,6 +98,6 @@
     		<xs:element name="description" 		type="xs:string" 	minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attribute name="nonTranslatable"	type="xs:boolean"	use="optional"/>
-		<xs:attribute name="groupOrder"			type="xs:int"		use="optional"/>
+		<xs:attribute name="groupOrder"			type="xs:int"/>
 	</xs:complexType>
 </xs:schema>

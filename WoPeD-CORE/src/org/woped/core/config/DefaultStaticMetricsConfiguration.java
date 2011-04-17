@@ -8,6 +8,11 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+/**
+ * Class that provides fallback configuration settings for the metrics configuration part
+ * @author Philip Allgaier
+ *
+ */
 public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration {
 	// General configuration implementations
 	public DefaultStaticMetricsConfiguration() {
@@ -31,6 +36,13 @@ public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration 
     }
 
     // Metric specific implementations
+	public String getCustomMetricsDir() {
+		return null;
+	}
+	
+	public boolean save(List<String> metricIDs, File exportFile) {
+		return false;
+	}
     
     // Variables
 	public Set<String> getVariableIDs() {
@@ -39,6 +51,9 @@ public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration 
 	
 	public String getVariableName(String variableID) {
 		return null;
+	}
+	
+	public void setVariableName(String variableID, String newVariableName){
 	}
 
 	public boolean hasVariableForumla(String variableID) {
@@ -51,6 +66,9 @@ public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration 
 
 	public String getVariableFormula(String variableID) {
 		return null;
+	}
+	
+	public void setVariableFormula(String variableID, String variableFormula){
 	}
 
 	public String getVariableMethod(String variableID) {
@@ -65,6 +83,9 @@ public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration 
 		return null;
 	}
 	
+	public void setVariableDescription(String variableID, String variableDescription) {
+	}
+	
 	public String getVariableImplementation(String variableID) {
 		return null;
 	} 
@@ -76,6 +97,9 @@ public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration 
 	
 	public String getAlgorithmName(String algorithmID) {
 		return null;
+	}
+	
+	public void setAlgorithmName(String algorithmID, String algorithmName) {
 	}
 
 	public boolean hasAlgorithmFormula(String algorithmID) {
@@ -89,37 +113,42 @@ public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration 
 	public String getAlgorithmFormula(String algorithmID) {
 		return null;
 	}
+	
+	public void setAlgorithmFormula(String algorithmID, String algorithmFormula) {
+	}
 
 	public String getAlgorithmMethod(String algorithmID) {
 		return null;
 	}
 
+	public void setAlgorithmMethod(String algorithmID, String algorithmMethod) {	
+	}
+	
 	public String getAlgorithmDescription(String algorithmID) {
 		return null;
+	}
+	
+	public void setAlgorithmDescription(String algorithmID,	String algorithmDescription) {
 	}
 
 	public String getAlgorithmsImplementation(String algorithmID) {
 		return null;
 	}
 	
-	public int getAlgorithmThresholdCount(String algorithmID) {
-		return 0;
-	}  
-	
-	public double getAlgorithmThresholdLowValue(String algorithmID, int thresholdID) {
-		return Double.NaN;
-	}
-
-	public double getAlgorithmThresholdHighValue(String algorithmID, int thresholdID) {
-		return Double.NaN;
+	public boolean addNewAlgorithm(String newAlgorithmID, int fileID) {
+		return false;
 	}
 	
-	public AlgorithmThresholdState getAlgorithmThresholdState(String algorithmID, int thresholdID) {
-		return null;
+	public boolean deleteAlgorithm(String algorithmID) {
+		return false;
 	}
 
 	// AlgorithmGroups
 	public List<String> getAlgorithmGroupIDs() {
+		// If we actually come by this point here, we are not loading any metrics XML file
+		// and have to use this static default implementation. To tell this the user we add 
+		// a "metrics not enabled" dummy entry to the dropdown where normally all groups 
+		// would be.
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("METRICS_NOT_ENABLED");
 		return list;
@@ -132,6 +161,9 @@ public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration 
 		
 		return null;
 	}
+	
+	public void setAlgorithmGroupName(String algorithmGroupID, String algorithmGroupName) {
+	}
 
 	public List<String> getAlgorithmIDsFromGroup(String algorithmGroupID) {
 		return new ArrayList<String>();
@@ -139,5 +171,75 @@ public class DefaultStaticMetricsConfiguration implements IMetricsConfiguration 
 
 	public String getAlgorithmGroupDescription(String algorithmGroupID) {
 		return null;
+	}
+	
+	public void setAlgorithmGroupDescription(String algorithmGroupID, String algorithmGroupDescription) {		
+	}
+	
+	public List<String> getGroupIDsFromGroup(String algorithmGroupID) {
+		return new ArrayList<String>();
+	}
+	
+	// General
+	public boolean isMetricIDInUse(String metricID) {
+		return false;
+	}
+	
+	public boolean isCustomMetric(String metricsID) {
+		return false;
+	}
+	
+	public int getMetricThresholdCount(String metricID) {
+		return 0;
+	}  
+	
+	public double getMetricThresholdLowValue(String metricID, int thresholdID) {
+		return Double.NaN;
+	}
+	
+	public void setMetricThresholdLowValue(String metricID, int thresholdID, double lowValue) {
+	}
+
+	public double getMetricThresholdHighValue(String metricID, int thresholdID) {
+		return Double.NaN;
+	}
+	
+	public void setMetricThresholdHighValue(String metricID, int thresholdID, double highValue) {
+	}
+	
+	public MetricThresholdState getMetricThresholdState(String metricID, int thresholdID) {
+		return null;
+	}
+	
+	public void setMetricThreholdState(String metricID, int thresholdID, java.lang.Enum<?> metricState) {
+	}
+
+	public boolean isVariable(String metricID) {
+		return false;
+	}
+
+	public boolean isAlgorithm(String metricID) {
+		return false;
+	}
+
+	public String getHighlightingFormula(String metricID) {
+		return "";
+	}
+
+	public String getMetricOrigin(String metricID) {
+		return "";
+	}
+
+	public void startEditSession() {
+	}
+
+	public void endEditSession(boolean keepChanges) {
+	}
+
+	public int findFileIDToFileName(String fileName) {
+		return -1;
+	}
+
+	public void addNewMetricFile(String filePath) {
 	}
 }

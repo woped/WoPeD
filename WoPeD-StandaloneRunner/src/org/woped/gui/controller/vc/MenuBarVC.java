@@ -113,6 +113,9 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem          m_woflanMenuItem         = null;
     private JMenuItem		   m_wopedMenuItem			= null;
     private JMenuItem	       m_metricMenuItem 		= null;
+    private JMenuItem	       m_massMetricAnalyseMenuItem 	= null;
+    private JMenuItem		   m_metricsBuilderItem			= null;
+    
 
     private JMenuItem		   m_capPlanningMenuItem	   = null;
     private JMenuItem		   m_quantSimMenuItem		   = null;
@@ -211,10 +214,13 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_analyseMenu.add(getStartTokenGameMenuItem());
             m_analyseMenu.add(getWoflanMenuItem());
             m_analyseMenu.add(getWopedMenuItem());
-            m_analyseMenu.add(getMetricMenuItem());
             m_analyseMenu.add(getCapPlanningMenuItem());
             m_analyseMenu.add(getQuantSimMenuItem());
             m_analyseMenu.add(getReachabilityGraphMenuItem());
+            m_analyseMenu.addSeparator();
+            m_analyseMenu.add(getMetricMenuItem());
+            m_analyseMenu.add(getMassMetricAnalyseMenuItem());
+            m_analyseMenu.add(getmetricsBuilderItem());
         }
         return m_analyseMenu;
     }
@@ -791,6 +797,24 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     	}
     	return m_metricMenuItem;
 	}
+    
+    public JMenuItem getMassMetricAnalyseMenuItem()
+    {
+    	if (m_massMetricAnalyseMenuItem == null)
+    	{
+    		m_massMetricAnalyseMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_MASSMETRICANALYSE));    		
+    	}
+    	return m_massMetricAnalyseMenuItem;
+    }
+    public JMenuItem getmetricsBuilderItem()
+    {
+    	if (m_metricsBuilderItem == null)
+    	{
+    		m_metricsBuilderItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_METRICSBUILDER));    		
+    	}
+    	return m_metricsBuilderItem;
+    }
+    
     
     public JMenuItem getQuantSimMenuItem()
     {

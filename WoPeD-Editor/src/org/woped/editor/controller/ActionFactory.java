@@ -37,6 +37,8 @@ public class ActionFactory
     public final static String		   ACTIONID_ROTATE_TRANS_LEFT	   = "ToolBar.RotateTransLeft";
     public final static String		   ACTIONID_ROTATE_TRANS_RIGHT	   = "ToolBar.RotateTransRight";
     public final static String		   ACTIONID_METRIC                 = "ToolBar.Metric";
+    public final static String		   ACTIONID_MASSMETRICANALYSE      = "Menu.Metric.MassAnalyse";
+    public final static String		   ACTIONID_METRICSBUILDER		   = "Menu.Metric.MetricsBuilder";
     // utils
     public final static String         ACTIONID_UPDATENETS             = "Action.UpdateNets";
     //public final static String ACTIONID_SCREENSHOT =
@@ -171,6 +173,13 @@ public class ActionFactory
         // Metric Button
         STATIC_ACTION_MAP.put(ACTIONID_METRIC, new WoPeDAction(am,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_METRIC, null, ACTIONID_METRIC));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_METRIC), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_MASSMETRICANALYSE, new WoPeDAction(am,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_MASSMETRICANALYSE, null, ACTIONID_MASSMETRICANALYSE));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_MASSMETRICANALYSE), VisualController.ALWAYS, VisualController.IGNORE, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_METRICSBUILDER, new WoPeDAction(am,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_METRICSBUILDER, null, ACTIONID_METRICSBUILDER));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_METRICSBUILDER), VisualController.ALWAYS, VisualController.IGNORE, VisualController.IGNORE);
+                
         /* Drawmode Actions */
         STATIC_ACTION_MAP.put(ACTIONID_DRAWMODE_PLACE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.DRAWMODE_PLACE, null, ACTIONID_DRAWMODE_PLACE));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_DRAWMODE_PLACE), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.DRAWMODE_PLACE);

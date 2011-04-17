@@ -47,4 +47,11 @@ public class ConfigurationManager
     {
     	ConfigurationManager.metricsConfiguration = metricsConfiguration;
     }
+    
+    public static boolean hasNonStaticMetricsConfiguration() {
+    	if (metricsConfiguration != null)
+    		return true;
+    	else
+    		return false;
+    }
 }

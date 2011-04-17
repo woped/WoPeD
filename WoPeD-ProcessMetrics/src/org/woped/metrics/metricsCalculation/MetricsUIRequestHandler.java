@@ -20,50 +20,127 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.metrics.exceptions.CalculateFormulaException;
 import org.woped.metrics.exceptions.NaNException;
+import org.woped.metrics.helpers.LabeledFileFilter;
+import org.woped.metrics.metricsCalculation.UITypes.UIMetricsGroup;
 import org.woped.metrics.metricsCalculation.UITypes.UIThreshold;
 import org.woped.translations.Messages;
 
-public class MetricsUIRequestHandler {
-
-	private HashMap<String, IMetricsConfiguration.AlgorithmThresholdState> valueStates = null;
+/**
+ * Please note:
+ * To ensure a strict MVC model, all requests from the UI and all information to the UI uses display strings rather than the real metrics or group IDs.
+ * Therefore conversion is used within this class' method wherever needed.
+ * However, real IDs may always be used - the conversion will automatically ignore those
+ */
+public class MetricsUIRequestHandler {	
+	private HashMap<String, IMetricsConfiguration.MetricThresholdState> valueStates = null;
 	private HashMap<String, String> errorMessages = new HashMap<String, String>();
 	private IEditor editor;
+	private MetricsCalculator mc;
 	
 	public MetricsUIRequestHandler(IEditor editor){
 		this.editor = editor;
 	}
 		
-	public List<StringPair> calculateMetrics(String algorithmGroupName){
-		if(algorithmGroupName==null) return new ArrayList<StringPair>();
+	/**
+	 * Takes the request to calculate all metrics within a group and returns the results
+	 * 
+	 * @param topGroupName	Name of the top group, containing further groups
+	 * @return	Content of the top group and all its subgroups (Calculation results)
+	 */
+	public List<UIMetricsGroup> calculateMetrics(String topGroupName){
+		if(topGroupName == null) return new ArrayList<UIMetricsGroup>();
 		IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
-		List<StringPair> resultList = new ArrayList<StringPair>();
-		MetricsCalculator mc = new MetricsCalculator(editor);
-		valueStates = new HashMap<String, IMetricsConfiguration.AlgorithmThresholdState>();
+		mc = new MetricsCalculator(editor);
+		valueStates = new HashMap<String, IMetricsConfiguration.MetricThresholdState>();
 		
-		for(String id : metricsConfig.getAlgorithmIDsFromGroup(algorithmGroupNameToID(algorithmGroupName)))
-			try {
-				double value = mc.calculate(id);
-				int thresholds = metricsConfig.getAlgorithmThresholdCount(id);
-				if(!metricsConfig.getVariableIDs().contains(id))valueStates.put(id, IMetricsConfiguration.AlgorithmThresholdState.GRAY);
-				for(int i=0;i<thresholds;i++)
-					if(metricsConfig.getAlgorithmThresholdLowValue(id, i) <= value
-							&& metricsConfig.getAlgorithmThresholdHighValue(id, i) >= value)
-						    if(!metricsConfig.getVariableIDs().contains(id))
-						    	valueStates.put(id, metricsConfig.getAlgorithmThresholdState(id, i));
-				resultList.add(new StringPair(metricsConfig.getAlgorithmName(id) != null ? 
-							metricsConfig.getAlgorithmName(id) : metricsConfig.getVariableName(id)
-							, round(value, metricsConfig.getVariableIDs().contains(id)? 
-							ConfigurationManager.getConfiguration().getVariableDecimalPlaces() : 
-							ConfigurationManager.getConfiguration().getAlgorithmDecimalPlaces())));
-			} catch (CalculateFormulaException e) {
-				if(!metricsConfig.getVariableIDs().contains(id))valueStates.put(id, IMetricsConfiguration.AlgorithmThresholdState.GRAY);
-				resultList.add(new StringPair(metricsConfig.getAlgorithmName(id) != null ? 
-						metricsConfig.getAlgorithmName(id) : metricsConfig.getVariableName(id), CalculateFormulaException.getShortError()));
-				errorMessages.put(id, e.getLocalizedMessage());
-			} catch(Exception e){}
-		return resultList;
+		List<String> groupnames = metricsConfig.getGroupIDsFromGroup(algorithmGroupNameToID(topGroupName));
+		List<UIMetricsGroup> answerList = new ArrayList<UIMetricsGroup>();
+		for(String algorithmGroupName:groupnames){
+			List<StringPair> resultList = new ArrayList<StringPair>();
+			
+			for(String id : metricsConfig.getAlgorithmIDsFromGroup(algorithmGroupName))
+				{
+					StringPair result = calculateSingle(metricsConfig, id);
+					if(result == null) continue;
+					resultList.add(result);
+				}
+			if(resultList.size()>0)
+				answerList.add(new UIMetricsGroup(metricsConfig.getAlgorithmGroupName(algorithmGroupName),resultList));
+		}
+		return answerList;
 	}
 	
+	/**
+	 * Calculates a single variable rather than a whole group
+	 * 
+	 * @param metricsConfig	Metrics config to be used
+	 * @param iid			ID of the variable (Real or UI)
+	 * @return				Name and result of the calculation
+	 */
+	public StringPair calculateSingle(IMetricsConfiguration metricsConfig, String iid){
+		if(iid == null) return null;
+		if(mc == null) mc = new MetricsCalculator(editor);
+		if(valueStates == null) valueStates = new HashMap<String, IMetricsConfiguration.MetricThresholdState>();
+		String id = algorithmNameToID(iid);
+		try {
+			double value = mc.calculate(id);
+			int thresholds = metricsConfig.getMetricThresholdCount(id);
+			valueStates.put(id, IMetricsConfiguration.MetricThresholdState.GRAY);
+			for(int i=0;i<thresholds;i++)
+				if(metricsConfig.getMetricThresholdLowValue(id, i) <= value
+						&& metricsConfig.getMetricThresholdHighValue(id, i) >= value)
+					    	valueStates.put(id, metricsConfig.getMetricThresholdState(id, i));
+			return new StringPair(metricsConfig.getAlgorithmName(id) != null ? 
+						metricsConfig.getAlgorithmName(id) : metricsConfig.getVariableName(id)
+						, round(value, metricsConfig.getVariableIDs().contains(id)? 
+						ConfigurationManager.getConfiguration().getVariableDecimalPlaces() : 
+						ConfigurationManager.getConfiguration().getAlgorithmDecimalPlaces()));
+		} catch (CalculateFormulaException e) {
+			valueStates.put(id, IMetricsConfiguration.MetricThresholdState.GRAY);
+			errorMessages.put(id, e.getLocalizedMessage());
+			return new StringPair(metricsConfig.getAlgorithmName(id) != null ? 
+					metricsConfig.getAlgorithmName(id) : metricsConfig.getVariableName(id), CalculateFormulaException.getShortError());
+
+		} catch(Exception e){ e.printStackTrace(); return null; }
+	}
+	
+	/**
+	 * Returns the algorithms contained in a group
+	 * 
+	 * @param algorithmGroupID	ID of the group
+	 * @return					List of all algorithms contained in it
+	 */
+	public static List<String> getAlgoNames(String algorithmGroupID){
+		List<String> algoNames = new ArrayList<String>();
+		IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
+		for(String id:metricsConfig.getAlgorithmIDsFromGroup(algorithmGroupID))
+			algoNames.add(metricsConfig.getAlgorithmName(id) != null ? metricsConfig.getAlgorithmName(id) : metricsConfig.getVariableName(id));
+		return algoNames;
+	}
+	
+	/**
+	 * Returns all algorithms names, even if the group contains subgroups (and only then!)
+	 * 
+	 * @param algorithmGroupID	Name of the top layer gorup
+	 * @return					List of IDs of all algorithms on the lowest level
+	 */
+	public static List<String> getLayeredAlgoNames(String algorithmGroupID){
+		List<String> algoNames = new ArrayList<String>();
+		IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
+		for(String groupId:metricsConfig.getGroupIDsFromGroup(algorithmGroupID))
+			for(String id:metricsConfig.getAlgorithmIDsFromGroup(groupId))
+				algoNames.add(metricsConfig.getAlgorithmName(id) != null ? metricsConfig.getAlgorithmName(id) : metricsConfig.getVariableName(id));
+		return algoNames;
+	}
+	
+	/**
+	 * Rounds a number to x places
+	 * 
+	 * @param number	Number to be rounded
+	 * @param places	Places after the separator
+	 * @return			Rounded number as a string
+	 * @throws NaNException	Gets thrown if the input string is no number at all
+	 */
 	private static String round(double number, int places) throws NaNException{
 		if(Double.isNaN(number)) throw new NaNException();
 		else if(Double.isInfinite(number)) throw new NaNException(); //return ""+number;
@@ -75,6 +152,12 @@ public class MetricsUIRequestHandler {
 		return s;
 	}
 
+	/**
+	 * Gets the algorithm group ID based on an algorithm group name
+	 * 
+	 * @param name	Name of the algorithm group
+	 * @return		ID of the algorithm group
+	 */
 	private static String algorithmGroupNameToID(String name){
 		List<String> groups = ConfigurationManager.getMetricsConfiguration().getAlgorithmGroupIDs();
 		for(String s:groups)
@@ -83,7 +166,13 @@ public class MetricsUIRequestHandler {
 		return name;
 	}
 	
-	private static String algorithmNameToID(String name){
+	/**
+	 * Gets the algorithm ID based on an algorithm name
+	 * 
+	 * @param name	Name of the algorithm
+	 * @return		ID of the algorithm
+	 */
+	public static String algorithmNameToID(String name){
 		Set<String> groups = ConfigurationManager.getMetricsConfiguration().getAlgorithmIDs();
 		for(String s:groups)
 			if(ConfigurationManager.getMetricsConfiguration().getAlgorithmName(s).equals(name))
@@ -118,15 +207,20 @@ public class MetricsUIRequestHandler {
 	}
 	
 	public void setHighlight(String metricsID){
-		System.out.println(">> Gotcha!");
 		removeHighlights();
+		if(metricsID == null) 
+			return;
 		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
 		String id = algorithmNameToID(metricsID);
-		MetricHighlighting high = MetricsHighlighter.getHighlighting(id);
+		MetricHighlighting high = mc.getHighlighter().getHighlighting(id);
 		Set<String> nodeIDs = high.getNodeIDs();
 		
 		for(String nodeID:nodeIDs)
 			mec.getElementById(nodeID).setHighlighted(true);
+		
+		Set<String> arcIDs = high.getArcIDs();
+		for(String arcID:arcIDs)
+			mec.getArcById(arcID).setHighlighted(true);
 	}
 	
 	public void removeHighlights(){
@@ -135,49 +229,42 @@ public class MetricsUIRequestHandler {
 	}
 	
 	public boolean hasHighlight(String metricsID){
-		return MetricsHighlighter.getHighlighting(algorithmNameToID(metricsID))!= null;
+		return mc.getHighlighter().getHighlighting(algorithmNameToID(metricsID))!= null;
 	}
 	
-	public IMetricsConfiguration.AlgorithmThresholdState getTreshholdState(String metricsID){
-		return valueStates.containsKey(algorithmNameToID(metricsID)) ? valueStates.get(algorithmNameToID(metricsID)) : IMetricsConfiguration.AlgorithmThresholdState.NONE;
+	public IMetricsConfiguration.MetricThresholdState getTreshholdState(String metricsID){
+		return valueStates.containsKey(algorithmNameToID(metricsID)) ? valueStates.get(algorithmNameToID(metricsID)) : IMetricsConfiguration.MetricThresholdState.NONE;
 	}
 	
-	public List<UIThreshold> getUIThresholds(String metricsID){
+	public static List<UIThreshold> getUIThresholds(String metricsID){
 		IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
 		String id = algorithmNameToID(metricsID);
-		int thresholds = metricsConfig.getAlgorithmThresholdCount(id);
+		int thresholds = metricsConfig.getMetricThresholdCount(id);
 		List<UIThreshold> thresholdList = new ArrayList<UIThreshold>();
 		for(int i=0;i<thresholds;i++)
-			thresholdList.add(new UIThreshold(metricsConfig.getAlgorithmThresholdLowValue(id, i),
-					metricsConfig.getAlgorithmThresholdHighValue(id, i), metricsConfig.getAlgorithmThresholdState(id, i)));
+			thresholdList.add(new UIThreshold(metricsConfig.getMetricThresholdLowValue(id, i),
+					metricsConfig.getMetricThresholdHighValue(id, i), metricsConfig.getMetricThresholdState(id, i)));
 		return thresholdList;
 	}
 	
-	public boolean exportMetricsResults(List<StringPair> metricsResults) {
-		// If no user export directory is yet existing, create it
-		File exportDir = new File(ConfigurationManager.getConfiguration()
+	/**
+	 * Exports the results of a metrics calculation to a .csv or .txt file
+	 * 
+	 * @param groups	Groups to be exported
+	 * @return			Whether the export was successful
+	 */
+	public boolean exportMetricsResults(List<UIMetricsGroup> groups) {
+		// If no user export directory is existing yet, create it
+		File defaultExportDir = new File(ConfigurationManager.getConfiguration()
 				.getUserdir() + "exports");
-		if (!exportDir.exists())
-			exportDir.mkdirs();
+		if (!defaultExportDir.exists())
+			defaultExportDir.mkdirs();
 
-		JFileChooser fileChooser = new JFileChooser(exportDir);
+		JFileChooser fileChooser = new JFileChooser(defaultExportDir);
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		FileFilter filter = new FileFilter() {
+		FileFilter filter = new LabeledFileFilter() {
 			public boolean accept(File file) {
-				if (file.getAbsolutePath().endsWith(".cvs"))
-					return true;
-				return false;
-			}
-
-			public String getDescription() {
-				return "Comma Separated Values (*.csv)";
-			}
-		};
-		fileChooser.addChoosableFileFilter(filter);
-		
-		filter = new FileFilter() {
-			public boolean accept(File file) {
-				if (file.getAbsolutePath().endsWith(".txt"))
+				if (file.isDirectory() || file.getAbsolutePath().endsWith(".txt"))
 					return true;
 				return false;
 			}
@@ -185,17 +272,40 @@ public class MetricsUIRequestHandler {
 			public String getDescription() {
 				return "Text (*.txt)";
 			}
+			
+			public String getExtension() {
+				return ".txt";
+			}
+			
 		};
 		fileChooser.addChoosableFileFilter(filter);
+		
+		filter = new LabeledFileFilter() {
+			public boolean accept(File file) {
+				if (file.isDirectory() || file.getAbsolutePath().endsWith(".csv"))
+					return true;
+				return false;
+			}
+
+			public String getDescription() {
+				return "Comma Separated Values (*.csv)";
+			}
+
+			public String getExtension() {
+				return ".csv";
+			}
+		};
+		fileChooser.addChoosableFileFilter(filter);	
 			
 		File exportFile = null;
 		boolean valid_selection = false;
-		while (!valid_selection) {
+		boolean cancel = false;
+		while (!valid_selection && !cancel) {
 			int returnVal = fileChooser.showSaveDialog(null);
 			if (returnVal == JFileChooser.APPROVE_OPTION) {		
-				exportFile = new File(exportDir.getAbsolutePath() + File.separator + 
-						fileChooser.getSelectedFile().getName());
-
+				exportFile = new File(fileChooser.getSelectedFile().getAbsolutePath());
+				if(!exportFile.getName().endsWith(((LabeledFileFilter)fileChooser.getFileFilter()).getExtension()))
+						exportFile = new File(exportFile.getAbsolutePath()+((LabeledFileFilter)fileChooser.getFileFilter()).getExtension());
 				// File already exists -> ask for overwrite
 				if (exportFile.exists()) {
 					int option = JOptionPane.showConfirmDialog(null,
@@ -210,20 +320,21 @@ public class MetricsUIRequestHandler {
 					valid_selection = true;
 			}
 			else if (returnVal == JFileChooser.CANCEL_OPTION)
-				return true;
+				cancel = true;
 		}
 
 		try {
 			BufferedWriter bw = new BufferedWriter(new PrintWriter(exportFile));
-
-			for (StringPair sp : metricsResults) {
-				bw.write(sp.getKey() + ", ");
-				bw.write(sp.getValue());
-				if (fileChooser.getSelectedFile().getName().endsWith("csv"))
-					bw.write(";");
-				bw.write("\r\n");
+			for(UIMetricsGroup group : groups){
+				bw.write(group.getName() + "\r\n");
+				for (StringPair sp : group.getValues()) {
+					bw.write(sp.getKey() + ", ");
+					bw.write(sp.getValue());
+					if (fileChooser.getSelectedFile().getName().endsWith("csv"))
+						bw.write(";");
+					bw.write("\r\n");
+				}
 			}
-
 			bw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -231,5 +342,17 @@ public class MetricsUIRequestHandler {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	
+	/**
+	 * Returns whether or not a variable or algorithm can be edited (if its a core one, it can't)
+	 * 
+	 * @param metricsID		Name or ID of the variable or algorithm
+	 * @return				Whether or not the variable / algorithm can be edited
+	 */
+	public static boolean canBeEdited(String metricsID){
+		String id = algorithmNameToID(metricsID);
+		IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
+		return metricsConfig.isCustomMetric(id);
 	}
 }

@@ -17,8 +17,6 @@ import org.woped.core.utilities.LoggerManager;
  * All configuration data for WoPeD. Reads/saves the configuration permanently
  * from/to file. During runtime the configuration data is stored in the
  * generated XMLBeans objects.
- * 
- * @since 10.10.2003 Updated: 01.12.2010
  */
 public abstract class WoPeDConfiguration implements IConfiguration {
 

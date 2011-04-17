@@ -33,6 +33,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JToolBar;
 
+
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
@@ -535,7 +536,9 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
 		{
 			m_metricButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_METRIC),false);
 		}
+
 		return m_metricButton;
+
 	}
  
     public void addViewListener(IViewListener listener)
@@ -595,7 +598,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
             zoomChooser.setSelectedIndex(3);
             zoomChooser.setBorder(BorderFactory.createEtchedBorder());
             zoomChooser.setEditable(true);
-            SwingUtils.setFixedWidth(zoomChooser, 50);
+            SwingUtils.setFixedWidth(zoomChooser, 70);
             zoomChooser.addItemListener(new ItemListener()
             {
 

@@ -88,6 +88,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ROTATETRANSLEFT			  = 1065;
     public static final int ROTATETRANSRIGHT		  = 1066;
     public static final int ANALYSIS_METRIC           = 1067;
+    public static final int ANALYSIS_MASSMETRICANALYSE= 1068;
+    public static final int ANALYSIS_METRICSBUILDER   = 1069;
     public static final int TOGGLE_TOKENGAME          = 1070;
 
     //

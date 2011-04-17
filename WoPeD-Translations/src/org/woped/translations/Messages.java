@@ -53,6 +53,18 @@ public abstract class Messages
     private static final Locale         LOCALE          = ConfigurationManager.getConfiguration().getLocale();
     private static final ResourceBundle RESOURCE_BUNDLE = PropertyResourceBundle.getBundle(BUNDLE_NAME, LOCALE);
 
+    public static boolean exists(String key)
+    {
+    	try
+        {
+            RESOURCE_BUNDLE.getString(key);
+            return true;
+        } catch (MissingResourceException e) 
+        {
+        	return false;
+        }
+    }
+    
     public static String getString(String key)
     {
         try

@@ -22,6 +22,13 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.utilities.LoggerManager;
 
+/**
+ * Class that provides access to the general WoPeD configuration settings. 
+ * Access to it at runtime is to be gained through ConfigurationManager.
+ * @see ConfigurationManager
+ * @author Philip Allgaier
+ *
+ */
 public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 		IGeneralConfiguration {
 
@@ -1200,5 +1207,29 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	public void setVariableDecimalPlaces(int n) {
 		getConfDocument().getConfiguration().getMetrics().setVariableDecimalPlaces(n);	
+	}
+
+	public boolean isUseAlgorithmHighlighting() {
+		return getConfDocument().getConfiguration().getMetrics().getUseAlgorithmHighlighting();
+	}
+
+	public void setUseAlgorithmHighlighting(boolean useHighlighting) {
+		getConfDocument().getConfiguration().getMetrics().setUseAlgorithmHighlighting(useHighlighting);		
+	}
+
+	public boolean isShowNamesInBuilder() {
+		return getConfDocument().getConfiguration().getMetrics().getShowNamesInBuilder();
+	}
+
+	public void setShowNamesInBuilder(boolean showNames) {
+		getConfDocument().getConfiguration().getMetrics().setShowNamesInBuilder(showNames);
+	}
+
+	public boolean isShowAdvancedErrorMessages() {
+		return getConfDocument().getConfiguration().getMetrics().getShowAdvancedErrorMessages();
+	}
+
+	public void setShowAdvancedErrorMessages(boolean showAdvanced) {
+		getConfDocument().getConfiguration().getMetrics().setShowAdvancedErrorMessages(showAdvanced);
 	}
 }

@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 
 import org.woped.core.model.AbstractModelProcessor;
 
+/**
+ * Class that provides fallback configuration settings for the general WoPeD configuration part
+ * @author Philip Allgaier
+ *
+ */
 public class DefaultStaticConfiguration implements IGeneralConfiguration
 {
     // Default values
@@ -825,5 +830,26 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
 	}
 
 	public void setVariableDecimalPlaces(int n) {	
+	}
+
+	public boolean isUseAlgorithmHighlighting() {
+		return false;
+	}
+
+	public void setUseAlgorithmHighlighting(boolean useHighlighting) {
+	}
+
+	public boolean isShowNamesInBuilder() {
+		return false;
+	}
+
+	public void setShowNamesInBuilder(boolean showNames) {	
+	}
+
+	public boolean isShowAdvancedErrorMessages() {
+		return false;
+	}
+
+	public void setShowAdvancedErrorMessages(boolean showAdvanced) {
 	}
 }

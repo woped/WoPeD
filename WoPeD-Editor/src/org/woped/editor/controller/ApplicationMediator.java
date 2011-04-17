@@ -121,27 +121,32 @@ public class ApplicationMediator extends AbstractApplicationMediator {
             super.addViewController(viewController);
         }
     }
+    
+    public IEditor createEditor(int modelProcessorType, boolean undoSupport){
+    	return createEditor(modelProcessorType, undoSupport, true);
+    }
 
     // ! Create a new editor window and register it with all visual controllers
     // ! @param modelProcessorType specifies the model processor type for the new editor
     // ! @param undoSupport if set to true undo support is to be enabled
     // ! @return reference to new editor object
     @Override
-    public IEditor createEditor(int modelProcessorType, boolean undoSupport) {
+    public IEditor createEditor(int modelProcessorType, boolean undoSupport, boolean loadUI) {
         EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport,
-                this);
+                this, loadUI);
         addViewController(editor);
-        editor.getGraph().addMouseListener(visualController);
+        if(loadUI){
+        	editor.getGraph().addMouseListener(visualController);
 
-        editor.setName(Messages.getString("Document.Title.Untitled") + " - " + newEditorCounter++);
-        // notify the editor aware vc
-        Iterator<?> editorIter = getEditorAwareVCs().iterator();
-        while (editorIter.hasNext()) {
-            ((IEditorAware) editorIter.next()).addEditor(editor);
+	        editor.setName(Messages.getString("Document.Title.Untitled") + " - " + newEditorCounter++);
+	        // notify the editor aware vc
+	        Iterator<?> editorIter = getEditorAwareVCs().iterator();
+	        while (editorIter.hasNext()) {
+	            ((IEditorAware) editorIter.next()).addEditor(editor);
+	        }
+	        VisualController.getInstance()
+	                .propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
         }
-        VisualController.getInstance()
-                .propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
-
         editor.setSaved(true);
         return editor;
     }

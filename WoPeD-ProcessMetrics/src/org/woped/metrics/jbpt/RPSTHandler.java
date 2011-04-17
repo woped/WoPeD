@@ -18,6 +18,11 @@ public class RPSTHandler {
 
 	private RPST<DirectedEdge,Vertex> rpst;
 	
+	/**
+	 * An RPST handler is used for conversion and calculation of RPST models based on the library of Artem Polyvyanyy
+	 * 
+	 * @param mec
+	 */
 	public RPSTHandler(ModelElementContainer mec){
 		
 		Map<String, Map<String, Object>> idMap = mec.getIdMap();
@@ -71,6 +76,13 @@ public class RPSTHandler {
 		return getDepth(rpst.getRoot(), 1);
 	}
 	
+	/**
+	 * Recursive method for depth calculation of RPST nets
+	 * 
+	 * @param tn		Current Node (Containing outgoing Edges / Vertices)
+	 * @param depth		Current depth of the recursive method
+	 * @return			Largest depth of the net
+	 */
 	private double getDepth(RPSTNode<DirectedEdge, Vertex> tn, int depth){
 		double result = depth;
 		Collection<RPSTNode<DirectedEdge, Vertex>> children = rpst.getChildren(tn);
@@ -94,6 +106,4 @@ public class RPSTHandler {
 			elements += getNodesInRigid(c, instack);
 		return elements;
 	}
-	
-	
 }

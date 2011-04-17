@@ -415,6 +415,8 @@ public class ModelElementContainer implements Serializable {
 		Map<String, Map<String, Object>> map = getIdMap();
 		for(String id:map.keySet())
 			((AbstractElementModel) map.get(id).get(ModelElementContainer.SELF_ID)).setHighlighted(false);
+		for(String arc:arcs.keySet())
+			((ArcModel)arcs.get(arc)).setHighlighted(false);
 	}
 
 	public ArcModel getArcById(Object id) {

@@ -36,5 +36,25 @@ public class MetricHighlighting {
 				addNodeID(nodeid);
 	}
 	
+	public void removeNodeIDs(Set<String> nodeids){
+		if(nodeids != null)
+			for(String nodeid:nodeids)
+				removeNodeID(nodeid);
+	}
+	
+	public void removeArcIDs(Set<String> nodeids){
+		if(nodeids != null)
+			for(String nodeid:nodeids)
+				removeNodeID(nodeid);
+	}
+	
+	public void removeNodeID(String nodeid){
+		nodeids.remove(nodeid);
+	}
+	
+	public void removeArcID(String arcid){
+		arcids.remove(arcid);
+	}
+	
 	
 }

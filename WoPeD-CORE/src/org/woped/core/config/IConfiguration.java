@@ -2,6 +2,11 @@ package org.woped.core.config;
 
 import java.io.File;
 
+/**
+ * Interface defining the public capabilities of all configuration sub-interfaces
+ * @author Philip Allgaier
+ *
+ */
 public interface IConfiguration
 {
     //

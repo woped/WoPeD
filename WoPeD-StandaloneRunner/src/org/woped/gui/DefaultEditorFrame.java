@@ -316,4 +316,5 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 	private JPanel glass = new JPanel();
 	private Component old = null;
 	private MouseInputAdapter mouseGrabber = new MouseInputAdapter() {};
+
 }

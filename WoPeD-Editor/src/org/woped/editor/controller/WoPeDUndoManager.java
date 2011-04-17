@@ -56,6 +56,10 @@ public class WoPeDUndoManager extends GraphUndoManager
     {
         m_editor = petriNet;
     }
+    
+    public void clear(){
+    	m_editor = null;
+    }
 
     /*
      * (non-Javadoc)

@@ -118,9 +118,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
             break;
         case AbstractViewEvent.PRINT:
             print(currentEditor);
-            break;
-            
-       
+            break;       
 
         /*
          * SCREENSHOT m_controlledWindow.makeScreenshot(); }

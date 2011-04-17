@@ -222,12 +222,16 @@ public interface IEditor extends IViewController {
 	public void setReadOnly(boolean readonly);
 	
 	public void showAnalysisBar(IEditor editor, AbstractApplicationMediator mediator);
-	
-	public void showMetricsBar(IEditor editor);
-	
+		
 	public void hideAnalysisBar();
 	
 	public boolean isAnalysisBarVisible();
+	
+	public void showMetricsBar(IEditor editor);
+		
+	public void hideMetricsBar();
+	
+	public boolean isMetricsBarVisible();
 	
 	public void rotateLayout();
 	

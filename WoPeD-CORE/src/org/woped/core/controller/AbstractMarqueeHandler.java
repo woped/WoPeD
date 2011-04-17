@@ -38,6 +38,15 @@ public abstract class AbstractMarqueeHandler extends BasicMarqueeHandler {
     public AbstractMarqueeHandler(IEditor editor) {
         this.editor = editor;
     }
+    
+    public void clear(){
+    	editor = null;
+    	port = null;
+    	firstPort = null;
+    	start = null;
+    	current = null;
+    	tempStart = null;
+    }
 
     public IEditor getEditor() {
         return editor;

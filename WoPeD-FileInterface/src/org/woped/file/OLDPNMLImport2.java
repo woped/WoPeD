@@ -78,7 +78,7 @@ public class OLDPNMLImport2 extends PNMLImport
      */
     public OLDPNMLImport2(ApplicationMediator am)
     {
-        super(am, null);
+        super(am);
         opt.setUseDefaultNamespace();
         Map<String, String> map = new HashMap<String, String>();
         map.put("", "oldpnml.woped.org");

@@ -6,9 +6,9 @@ public class UIThreshold {
 
 	private double from;
 	private double to;
-	private IMetricsConfiguration.AlgorithmThresholdState threshold;
+	private IMetricsConfiguration.MetricThresholdState threshold;
 	
-	public UIThreshold(double from, double to, IMetricsConfiguration.AlgorithmThresholdState threshold){
+	public UIThreshold(double from, double to, IMetricsConfiguration.MetricThresholdState threshold){
 		this.from = from;
 		this . to = to;
 		this.threshold = threshold;
@@ -22,9 +22,7 @@ public class UIThreshold {
 		return to;
 	}
 
-	public IMetricsConfiguration.AlgorithmThresholdState getThreshold() {
+	public IMetricsConfiguration.MetricThresholdState getThreshold() {
 		return threshold;
 	}
-	
-	
 }

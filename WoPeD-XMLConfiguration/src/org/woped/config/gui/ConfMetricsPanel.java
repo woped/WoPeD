@@ -19,11 +19,15 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public class ConfMetricsPanel extends AbstractConfPanel
 {
-	private JPanel         	metricsPanel    				= null;
-    private JCheckBox 		useMetricsCheckBox				= null;
-    private JPanel			metricsDisplayPanel 			= null;
-    private JSpinner		variableDecimalPlacesSpinner 	= null;
-    private JSpinner		algorithmDecimalPlacesSpinner	= null;
+	private JPanel         	metricsPanel    					= null;
+    private JCheckBox 		useMetricsCheckBox					= null;
+    private JPanel			metricsDisplayPanel 				= null;
+    private JSpinner		variableDecimalPlacesSpinner 		= null;
+    private JSpinner		algorithmDecimalPlacesSpinner		= null;		
+    private JCheckBox		useAlgorithmHighlightingCheckBox	= null;
+    private JPanel			metricsBuilderPanel					= null;
+    private JCheckBox		showNamesInBuilderCheckBox			= null;
+    private JCheckBox		showAdvancedErrorMessagesCheckBox  = null;
 
     /**
      * Constructor for ConfMetricsPanel
@@ -41,8 +45,9 @@ public class ConfMetricsPanel extends AbstractConfPanel
     {
         ConfigurationManager.getConfiguration().setUseMetrics(useMetricsCheckBox.isSelected());
         
-        // Load metrics configuration
-        if (useMetricsCheckBox.isSelected()) {
+        // Load metrics configuration if check box is selected and 
+        // we do not have a non-static metrics configuration loaded yet
+        if (useMetricsCheckBox.isSelected() && !ConfigurationManager.hasNonStaticMetricsConfiguration()) {
         	WoPeDMetricsConfiguration metricsConfig = new WoPeDMetricsConfiguration(ConfigurationManager.isApplet());
         	metricsConfig.initConfig();
 			ConfigurationManager.setMetricsConfiguration(metricsConfig);
@@ -50,7 +55,10 @@ public class ConfMetricsPanel extends AbstractConfPanel
         
         ConfigurationManager.getConfiguration().setAlgorithmDecimalPlaces(Integer.parseInt(algorithmDecimalPlacesSpinner.getModel().getValue().toString()));
         ConfigurationManager.getConfiguration().setVariableDecimalPlaces(Integer.parseInt(variableDecimalPlacesSpinner.getModel().getValue().toString()));
-       
+        ConfigurationManager.getConfiguration().setUseAlgorithmHighlighting(useAlgorithmHighlightingCheckBox.isSelected());
+        ConfigurationManager.getConfiguration().setShowNamesInBuilder(showNamesInBuilderCheckBox.isSelected());
+        ConfigurationManager.getConfiguration().setShowAdvancedErrorMessages(showAdvancedErrorMessagesCheckBox.isSelected());
+                
     	return true;
     }
 
@@ -64,8 +72,12 @@ public class ConfMetricsPanel extends AbstractConfPanel
     	else
     		useMetricsCheckBox.setSelected(false);
     	
-    	//variableDecimalPlacesSpinner.set(ConfigurationManager.getConfiguration().getVariableDecimalPlaces());
+    	variableDecimalPlacesSpinner.setValue(ConfigurationManager.getConfiguration().getVariableDecimalPlaces());
     	algorithmDecimalPlacesSpinner.setValue(ConfigurationManager.getConfiguration().getAlgorithmDecimalPlaces());
+    	
+    	useAlgorithmHighlightingCheckBox.setSelected(ConfigurationManager.getConfiguration().isUseAlgorithmHighlighting());
+    	showNamesInBuilderCheckBox.setSelected(ConfigurationManager.getConfiguration().isShowNamesInBuilder());
+    	showAdvancedErrorMessagesCheckBox.setSelected(ConfigurationManager.getConfiguration().isShowAdvancedErrorMessages());
     }
 
     private void initialize()
@@ -84,10 +96,14 @@ public class ConfMetricsPanel extends AbstractConfPanel
         c.gridx = 0;
         c.gridy = 1;
         contentPanel.add(getMetricsDisplayPanel(), c);
+        c.weightx = 1;
+        c.gridx = 0;
+        c.gridy = 2;
+        contentPanel.add(getMetricsBuilderPanel(), c);
         // dummy
         c.fill = GridBagConstraints.VERTICAL;
         c.weighty = 1;
-        c.gridy = 2;
+        c.gridy = 3;
         contentPanel.add(new JPanel(), c);
         setMainPanel(contentPanel);
     }
@@ -97,9 +113,9 @@ public class ConfMetricsPanel extends AbstractConfPanel
     private JCheckBox getUseMetricsCheckBox() {
         if (useMetricsCheckBox == null)
         {
-        	useMetricsCheckBox = new JCheckBox("<html>" + Messages.getString("Configuration.Metrics.UseMetrics.Label") + "</html>");
+        	useMetricsCheckBox = new JCheckBox(Messages.getString("Configuration.Metrics.UseMetrics.Label"));
         	useMetricsCheckBox.setMinimumSize(new Dimension(100, 20));
-        	useMetricsCheckBox.setToolTipText("<html>" + Messages.getString("Configuration.Metrics.UseMetrics.Tooltip") + "</html>");
+        	useMetricsCheckBox.setToolTipText(Messages.getString("Configuration.Metrics.UseMetrics.Tooltip"));
         }
         return useMetricsCheckBox;
     }
@@ -146,12 +162,17 @@ public class ConfMetricsPanel extends AbstractConfPanel
             
             c.weightx = 1;
             c.gridx = 1;
-            c.gridy = 3;
+            c.gridy = 1;
             metricsDisplayPanel.add(new JLabel(Messages.getString("Configuration.Metrics.AlgorithmDecimalPlaces.Label")), c);
             c.weightx = 1;
             c.gridx = 10;
-            c.gridy = 3;
+            c.gridy = 1;
             metricsDisplayPanel.add(getAlgorithmDecimalPlacesSlider(), c);
+            
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 2;
+            metricsDisplayPanel.add(getUseAlgorithmHighlightingCheckBox(), c);
     	}
     	return metricsDisplayPanel;
     }
@@ -172,5 +193,51 @@ public class ConfMetricsPanel extends AbstractConfPanel
 			((JSpinner.DefaultEditor)algorithmDecimalPlacesSpinner.getEditor()).getTextField().setEnabled(true);
 		}
 		return algorithmDecimalPlacesSpinner;
+	}
+	
+	private JCheckBox getUseAlgorithmHighlightingCheckBox() {
+		if(useAlgorithmHighlightingCheckBox == null) 
+			useAlgorithmHighlightingCheckBox = new JCheckBox(Messages.getString("Configuration.Metrics.UseAlgorithmHighlighting"));
+			
+		return useAlgorithmHighlightingCheckBox;
+	}
+	
+	private JPanel getMetricsBuilderPanel() {
+		if (metricsBuilderPanel == null)
+        {
+			metricsBuilderPanel = new JPanel();
+        	metricsBuilderPanel.setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.anchor = GridBagConstraints.WEST;
+
+            metricsBuilderPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Metrics.Panel.MetricsBuilder.Title")), BorderFactory
+                    .createEmptyBorder(5, 5, 10, 5)));
+
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 0;
+            metricsBuilderPanel.add(getShowNamesInBuilderCheckBox(), c);
+            
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 1;
+            metricsBuilderPanel.add(getShowAdvancedErrorMessagesCheckBox(), c);
+
+        }
+        return metricsBuilderPanel;
+	}
+	
+	private JCheckBox getShowNamesInBuilderCheckBox() {
+		if(showNamesInBuilderCheckBox == null) 
+			showNamesInBuilderCheckBox = new JCheckBox(Messages.getString("Configuration.Metrics.ShowNamesInBuilder"));
+			
+		return showNamesInBuilderCheckBox;
+	}
+	
+	private JCheckBox getShowAdvancedErrorMessagesCheckBox() {
+		if(showAdvancedErrorMessagesCheckBox == null) 
+			showAdvancedErrorMessagesCheckBox = new JCheckBox(Messages.getString("Configuration.Metrics.ShowAdvancedErrorMessages"));
+			
+		return showAdvancedErrorMessagesCheckBox;
 	}
 }

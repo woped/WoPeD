@@ -46,7 +46,6 @@ import org.woped.bpel.gui.transitionproperties.Reply;
 import org.woped.bpel.gui.transitionproperties.Wait;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
-import org.woped.core.controller.IStatusBar;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.model.ArcModel;
@@ -68,9 +67,9 @@ import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.translations.Messages;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.NetType;
+import org.woped.pnml.NetType.Page;
 import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.OrganizationUnitType;
 import org.woped.pnml.PlaceType;
@@ -79,8 +78,8 @@ import org.woped.pnml.PnmlType;
 import org.woped.pnml.ResourceMappingType;
 import org.woped.pnml.ResourceType;
 import org.woped.pnml.RoleType;
-import org.woped.pnml.SuperModelType;
 import org.woped.pnml.SimulationType;
+import org.woped.pnml.SuperModelType;
 import org.woped.pnml.TAssign;
 import org.woped.pnml.TEmpty;
 import org.woped.pnml.TInvoke;
@@ -92,7 +91,7 @@ import org.woped.pnml.TVariable;
 import org.woped.pnml.TVariables;
 import org.woped.pnml.TWait;
 import org.woped.pnml.TransitionType;
-import org.woped.pnml.NetType.Page;
+import org.woped.translations.Messages;
 
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
@@ -118,7 +117,7 @@ public class PNMLImport {
 	private PnmlDocument pnmlDoc = null;
 	private XmlOptions opt = new XmlOptions();
 	private Vector<String> warnings = new Vector<String>();
-	private IStatusBar[] statusBars = null;
+	//private IStatusBar[] statusBars = null;
 	private ApplicationMediator mediator = null;
 
 	/**
@@ -126,12 +125,12 @@ public class PNMLImport {
 	 * 
 	 * @param statusBar
 	 */
-	public PNMLImport(ApplicationMediator am, IStatusBar[] statusBars) {
+	public PNMLImport(ApplicationMediator am) {
 		opt.setUseDefaultNamespace();
 		mediator = am;
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("", "pnml.woped.org");
-		this.statusBars = statusBars;
+		
 		opt.setLoadSubstituteNamespaces(map);
 		if (true) {
 			opt.setCompileNoUpaRule();
@@ -140,17 +139,21 @@ public class PNMLImport {
 		}
 	}
 
+	public boolean run(String absolutePath) {
+		return run(absolutePath, true);
+	}
+	
 	/**
 	 * Load an XML document using the generated PNMLFactory class
 	 * 
 	 * @param filename
 	 *            An existing XML file name
 	 */
-	public boolean run(String absolutePath) {
+	public boolean run(String absolutePath, boolean showUI) {
 		InputStream is;
 		try {
 			is = new FileInputStream(absolutePath);
-			return run(is);
+			return run(is, showUI);
 		} catch (FileNotFoundException e) {
 			LoggerManager.warn(Constants.FILE_LOGGER, "File does not exists. "
 					+ absolutePath);
@@ -159,20 +162,24 @@ public class PNMLImport {
 
 	}
 
+	public boolean run(InputStream is) {
+		return run(is, true);
+	}
+	
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
 	 * @param is
 	 * @return
 	 */
-	public boolean run(InputStream is) {
+	public boolean run(InputStream is, boolean showUI) {
 		LoggerManager.debug(Constants.FILE_LOGGER,
 				"##### START PNML Version (1.3.2) IMPORT #####");
 
 		long begin = System.currentTimeMillis();
 		try {
 			pnmlDoc = PnmlDocument.Factory.parse(is, opt);
-			createEditorFromBeans();
+			createEditorFromBeans(showUI);
 			if (!warnings.isEmpty()) {
 				LoggerManager.warn(Constants.FILE_LOGGER,
 						"Imported a not valid PNML.");
@@ -186,7 +193,7 @@ public class PNMLImport {
 						JOptionPane.WARNING_MESSAGE);
 			}
 			return true;
-		} catch (Exception e) {
+		} catch (Exception e) { e.printStackTrace();
 			// e.printStackTrace();
 			LoggerManager
 					.warn(
@@ -209,6 +216,10 @@ public class PNMLImport {
 
 	}
 
+	public boolean runEx(String content) {
+		return runEx(content, true);
+	}
+	
 	/**
 	 * runEx()
 	 * <p>
@@ -219,14 +230,14 @@ public class PNMLImport {
 	 *            Content of PNML File
 	 * @return
 	 */
-	public boolean runEx(String content) {
+	public boolean runEx(String content, boolean showUI) {
 		LoggerManager.debug(Constants.FILE_LOGGER,
 				"##### START PNML Version (1.3.2) IMPORT #####");
 
 		long begin = System.currentTimeMillis();
 		try {
 			pnmlDoc = PnmlDocument.Factory.parse(content, opt);
-			createEditorFromBeans();
+			createEditorFromBeans(showUI);
 			if (!warnings.isEmpty()) {
 				LoggerManager.warn(Constants.FILE_LOGGER,
 						"Imported a not valid PNML.");
@@ -255,9 +266,10 @@ public class PNMLImport {
 
 	}
 
-	private void createEditorFromBeans() throws Exception {
-		importNets(pnmlDoc.getPnml());
+	private void createEditorFromBeans(boolean showUI) throws Exception {
+		importNets(pnmlDoc.getPnml(), showUI);
 	}
+
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
@@ -268,8 +280,7 @@ public class PNMLImport {
 		return editor;
 	}
 
-	private void importNets(PnmlType pnml) throws Exception {
-
+	private void importNets(PnmlType pnml, boolean showUI) throws Exception {
 		editor = new IEditor[pnml.getNetArray().length];
 		NetType currentNet;
 		Dimension dim;
@@ -282,10 +293,13 @@ public class PNMLImport {
 			boolean savedFlag = true;
 			currentNet = pnml.getNetArray(i);
 			editor[i] = mediator.createEditor(
-					AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
-			if (((WoPeDUndoManager) editor[i].getGraph().getUndoManager()) != null) {
+					AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true, showUI);
+			if(showUI){
+				if (((WoPeDUndoManager) editor[i].getGraph().getUndoManager()) != null) {
+
 				((WoPeDUndoManager) editor[i].getGraph().getUndoManager())
 						.setEnabled(false);
+			}
 			}
 			currentPetrinet = ((PetriNetModelProcessor) editor[i]
 					.getModelProcessor());
@@ -297,7 +311,7 @@ public class PNMLImport {
 			if (currentNet.isSetName()) {
 				currentPetrinet.setName(currentNet.getName().getText());
 			}
-			if (ConfigurationManager.getConfiguration().isImportToolspecific()) {
+			if(showUI) if (ConfigurationManager.getConfiguration().isImportToolspecific()) {
 				// toolspecific
 				for (int j = 0; j < currentNet.getToolspecificArray().length; j++) {
 					if (currentNet.getToolspecificArray(j).getTool().equals(
@@ -483,20 +497,6 @@ public class PNMLImport {
 				}
 
 			}
-			// if (bar != null)
-			// {
-			// int elements = currentNet.getPlaceArray().length +
-			// currentNet.getTransitionArray().length +
-			// currentNet.getArcArray().length;
-			// setTaskLength(elements);
-			// bar.setMaximum(elements);
-			// }
-			for (int f = 0; f < statusBars.length; f++) {
-				statusBars[f].startProgress("Loading from File", currentNet
-						.getPlaceArray().length
-						+ currentNet.getArcArray().length
-						+ currentNet.getTransitionArray().length);
-			}
 
 			// Import the net into the current ModelElementContainer
 			importNet(currentNet, editor[i].getModelProcessor()
@@ -508,16 +508,18 @@ public class PNMLImport {
 			}
 
 			// Now build the graph from the ModelElementContainer
-			getEditor()[i].getGraph().drawNet(editor[i].getModelProcessor());
-			getEditor()[i].updateNet();
-
-			getEditor()[i].getGraph().clearSelection();
-			if (editor[i].getGraph().getUndoManager() != null) {
-				((WoPeDUndoManager) editor[i].getGraph().getUndoManager())
-						.setEnabled(true);
+			if(showUI){
+				getEditor()[i].getGraph().drawNet(editor[i].getModelProcessor());
+				getEditor()[i].updateNet();
+	
+				getEditor()[i].getGraph().clearSelection();
+				if (editor[i].getGraph().getUndoManager() != null) {
+					((WoPeDUndoManager) editor[i].getGraph().getUndoManager())
+							.setEnabled(true);
+				}
+				getEditor()[i].updateNet();
+				getEditor()[i].setSaved(savedFlag);
 			}
-			getEditor()[i].updateNet();
-			getEditor()[i].setSaved(savedFlag);
 		}
 	}
 
@@ -545,9 +547,6 @@ public class PNMLImport {
 		int y;
 		boolean doNOTcreate = false;
 		for (int i = 0; i < places.length; i++) {
-			for (int f = 0; f < statusBars.length; f++) {
-				statusBars[f].nextStep();
-			}
 			map = CreationMap.createMap();
 			map.setEditOnCreation(false);
 			map.setType(PetriNetModelElement.PLACE_TYPE);
@@ -664,9 +663,6 @@ public class PNMLImport {
 		int y;
 
 		for (int i = 0; i < transitions.length; i++) {
-			for (int f = 0; f < statusBars.length; f++) {
-				statusBars[f].nextStep();
-			}
 			map = CreationMap.createMap();
 			map.setEditOnCreation(false);
 			map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
@@ -988,9 +984,6 @@ public class PNMLImport {
 			ArcModel arc = null;
 
 			try {
-				for (int f = 0; f < statusBars.length; f++) {
-					statusBars[f].nextStep();
-				}
 				currentSourceModel = (PetriNetModelElement) currentContainer
 						.getElementById(arcs[i].getSource());
 				currentTargetModel = (PetriNetModelElement) currentContainer

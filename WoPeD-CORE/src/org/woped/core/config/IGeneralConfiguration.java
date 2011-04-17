@@ -5,6 +5,11 @@ import java.awt.Dimension;
 import java.util.Locale;
 import java.util.Vector;
 
+/**
+ * Interface defining the public capabilities of the general WoPeD configuration
+ * @author Philip Allgaier
+ *
+ */
 public interface IGeneralConfiguration extends IConfiguration {
 	//
     public void setLocale();
@@ -112,7 +117,7 @@ public interface IGeneralConfiguration extends IConfiguration {
     public boolean isUseMetrics();
     
     //
-    public void setUseMetrics(boolean loadMetrics);
+    public void setUseMetrics(boolean useMetrics);
 
     //    
     public boolean isUseWoflan();
@@ -383,4 +388,22 @@ public interface IGeneralConfiguration extends IConfiguration {
 	
 	//
 	public void setVariableDecimalPlaces(int n);
+	
+	//
+	public boolean isUseAlgorithmHighlighting();
+	
+	//
+	public void setUseAlgorithmHighlighting(boolean useHighlighting);
+	
+	//
+	public boolean isShowNamesInBuilder();
+	
+	//
+	public void setShowNamesInBuilder(boolean showNames);
+	
+	//
+	public boolean isShowAdvancedErrorMessages();
+	
+	//
+	public void setShowAdvancedErrorMessages(boolean showAdvanced);
 }

@@ -155,6 +155,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     private int modelid = -1;
 
     private String id = null;
+    private  BasicMarqueeHandler marqueehandler;
 
     public static final String ID_PREFIX = "EDITOR_VC_";
 
@@ -249,13 +250,32 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     private AbstractApplicationMediator m_centralMediator = null;
 
     private NetColorScheme m_understandColoring = null;
+    
+    private boolean dead = false;
+    
+    // Metrics team variables
+
+    private boolean analysisBarVisible = false;
+	private boolean automaticResize = false;
+    
+    private SideBar analysisSideBar = null;
+    private JCheckBox autoRefresh = null;
+	private JCheckBox tStarCheckBox = null;
+    
+    public boolean isDead(){
+    	return dead;
+    }
 
     public NetColorScheme getM_understandColoring() {
         return m_understandColoring;
     }
 
     public void closeEditor() {
+    	if(getGraph() == null) return;
         this.fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE, null));
+        clearYourself();
+        System.gc();
+        try{Thread.sleep(1000);}catch(Exception e){}
     }
 
     private TokenGameController m_tokenGameController;
@@ -264,13 +284,19 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         return m_treeModel;
     }
 
+    public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, boolean undoSupport,
+            AbstractApplicationMediator mediator) {
+    	this(id, clipboard, modelProcessorType, undoSupport,
+                 mediator, true);
+    }
+    
     /**
      * TODO: DOCUMENTATION (silenco)
      * 
      * @param clipboard
      */
     public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, boolean undoSupport,
-            AbstractApplicationMediator mediator) {
+            AbstractApplicationMediator mediator, boolean loadUI) {
         this.editorSize = new EditorSize(this);
         this.m_orientation = new Orientation();
         this.m_centralMediator = mediator;
@@ -279,17 +305,17 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         // initialize
         this.setLayout(new BorderLayout());
         this.m_clipboard = clipboard;
-        BasicMarqueeHandler marqueehandler;
+       
         if (modelProcessorType == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
             marqueehandler = new PetriNetMarqueeHandler(this);
             this.modelProcessor = new PetriNetModelProcessor();
-            this.m_graph = new WoPeDJGraph(new DefaultGraphModel(), marqueehandler, undoSupport ? new WoPeDUndoManager(
+            if(loadUI)this.m_graph = new WoPeDJGraph(new DefaultGraphModel(), marqueehandler, undoSupport ? new WoPeDUndoManager(
                     this) : null, viewFactory, modelProcessorType);
         } else
             if (modelProcessorType == AbstractModelProcessor.MODEL_PROCESSOR_UML) {
                 marqueehandler = new UMLMarqueeHandler(this);
                 this.modelProcessor = new UMLModelProcessor();
-                this.m_graph = new WoPeDJGraph(new DefaultGraphModel(), marqueehandler,
+                if(loadUI)this.m_graph = new WoPeDJGraph(new DefaultGraphModel(), marqueehandler,
                         undoSupport ? new WoPeDUndoManager(this) : null, viewFactory, modelProcessorType);
             }
         this.m_propertyChangeSupport = new PropertyChangeSupport(this);
@@ -297,10 +323,11 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         this.viewListener = new Vector<IViewListener>();
         this.id = id;
         // Listener for the graph
-        getGraph().getSelectionModel().addGraphSelectionListener(VisualController.getInstance());
-        getGraph().getSelectionModel().addGraphSelectionListener(this);
-        getGraph().getModel().addGraphModelListener(this);
-        getGraph().addKeyListener(this);
+        if(loadUI){
+        	getGraph().getSelectionModel().addGraphSelectionListener(VisualController.getInstance());
+	        getGraph().getSelectionModel().addGraphSelectionListener(this);
+	        getGraph().getModel().addGraphModelListener(this);
+	        getGraph().addKeyListener(this);
 
         // Future Feature with treeview
         m_treeModel = new GraphTreeModel(this);
@@ -354,6 +381,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         // NetColorScheme
         m_understandColoring = new NetColorScheme();
         updateUI();
+        }
     }
 
     public EditorVC(String string, EditorClipboard clipboard, int modelProcessorType, boolean undoSupport,
@@ -2221,16 +2249,6 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     public void setSimDlg(QuantitativeSimulationDialog newVal) {
         simDlg = newVal;
     }
-
-    private boolean analysisBarVisible = false;
-
-    private SideBar analysisSideBar = null;
-   
-    private JCheckBox autoRefresh = null;
-
-	private JCheckBox tStarCheckBox = null;
-	
-	private boolean automaticResize = false;
 	
 	/**
 	 * replaces the "normal" EditorSplitPane with another SplitPane with the
@@ -2240,6 +2258,11 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 	 */
 	public void showAnalysisBar(IEditor editor,
 			AbstractApplicationMediator mediator) {
+		if(analysisBarVisible)
+			if(bMetricsBarVisible)
+				hideMetricsBar();
+			else
+				hideAnalysisBar();
 		if (!analysisBarVisible) {
 			this.remove(m_mainSplitPane);
 			this.getContainer();
@@ -2294,7 +2317,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
 	 */
 	public void autoRefreshAnalysisBar() {
-		if (analysisBarVisible && autoRefresh.isSelected()) {
+		if (analysisBarVisible && autoRefresh != null && autoRefresh.isSelected()) {
 			analysisSideBar.refresh();
 			editorSize.resize(false);
 		}
@@ -2330,7 +2353,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     private JSplitPane mainsplitPaneWithMetricsBar = null;
     private boolean bMetricsBarVisible = false;
     
-    private JPanel metricsSideBar = null;
+    private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
 	
 	/**
 	 * Shows the metrics sidebar and resize the editor window.
@@ -2341,6 +2364,11 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 	 */
 	public void showMetricsBar(IEditor editor)
 	{
+		if(analysisBarVisible)
+			if(bMetricsBarVisible)
+				hideMetricsBar();
+			else
+				hideAnalysisBar();
 		if (!analysisBarVisible) {
 											
 			this.remove(m_mainSplitPane);
@@ -2366,6 +2394,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 			mainsplitPaneWithMetricsBar.setDividerLocation((int) (this.getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithMetricsBar.setResizeWeight(1);
 						
+			metricsSideBar.setKeyLabelWidth();
 			
 		}
 	}
@@ -2378,6 +2407,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 		if (analysisBarVisible) {
 			this.remove(mainsplitPaneWithMetricsBar);
 			mainsplitPaneWithMetricsBar = null;
+			metricsSideBar.clean();
 			this.add(m_mainSplitPane);
 			analysisBarVisible = false;
 			bMetricsBarVisible = false;
@@ -2396,7 +2426,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 
 	public void setRotateSelected(boolean rotateSelected) {
 		m_orientation.setRotateSelected(rotateSelected);
-		if (analysisBarVisible)
+		if (analysisBarVisible && !bMetricsBarVisible)
 			analysisSideBar.showTStarIfPossible();
 	}
 
@@ -2440,5 +2470,38 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     
     public boolean isAutomaticResize(){
     	return automaticResize;
+    }
+    
+    private void clearYourself(){
+    	((WoPeDUndoManager) getGraph().getUndoManager()).clear();
+    	container.removeAll();
+    	this.removeAll();
+    	this.getParent().remove(this);
+    	
+    	((AbstractMarqueeHandler)marqueehandler).clear();
+    	dead = true;
+    	
+    	container = null;
+    	m_graph = null;
+    	m_scrollPane = null;
+    	modelProcessor = null;
+    	m_orientation = null;
+    	m_EditorLayoutInfo = null;
+    	m_propertyChangeSupport = null;
+    	m_clipboard = null;
+    	elementProperties = null;
+    	viewListener = null;
+    	m_statusbar = null;
+    	m_leftSideTreeView = null;
+    	m_mainSplitPane = null;
+    	mainsplitPaneWithAnalysisBar = null;
+    	m_treeObject = null;
+    	m_treeModel = null;
+    	m_parentEditor = null;
+    	editorSize = null;
+    	m_subprocessInput = null;
+    	m_subprocessOutput = null;
+    	m_centralMediator = null;
+    	m_understandColoring = null;
     }
 }

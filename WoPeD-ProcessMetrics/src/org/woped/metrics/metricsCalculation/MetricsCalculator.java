@@ -1,12 +1,15 @@
 package org.woped.metrics.metricsCalculation;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.antlr.runtime.RecognitionException;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IMetricsConfiguration;
 import org.woped.core.controller.IEditor;
@@ -18,6 +21,8 @@ import org.woped.metrics.exceptions.CalculateFormulaException;
 import org.woped.metrics.exceptions.FormulaVariableNotFoundException;
 import org.woped.metrics.exceptions.InfiniteRecursiveFormulaCallException;
 import org.woped.metrics.exceptions.NaNException;
+import org.woped.metrics.formulaEnhancement.EnhancementException;
+import org.woped.metrics.formulaEnhancement.FormulaEnhancementList;
 import org.woped.metrics.jbpt.RPSTHandler;
 import org.woped.qualanalysis.reachabilitygraph.data.AbstractReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModelUsingMarkingNet;
@@ -42,8 +47,10 @@ public class MetricsCalculator {
 	private RPSTHandler rpst;
 	private IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
 	private IEditor editor;
-	private String currentDynamicCall = "";
+	private Set<String> currentDynamicCall = null;
 	private boolean doNotdisplay;
+	private MetricsHighlighter highlight = new MetricsHighlighter();
+	private boolean algorithmHighlighting = ConfigurationManager.getConfiguration().isUseAlgorithmHighlighting();
 	/**
 	 * @author Tobias Lorentz
 	 * Key 		= Variable-Name
@@ -51,13 +58,34 @@ public class MetricsCalculator {
 	 */
 	private HashMap<String, Double> variableValueBuffer;
 	
+	/**
+	 * Creates a metrics calculator, to hold information such as prior results, highlighting information etc.
+	 * 
+	 * @param editor	Editor on which's model the analysis will be based
+	 */
 	public MetricsCalculator(IEditor editor){
 		mec= editor.getModelProcessor().getElementContainer();
 		new RPSTHandler(mec);
 		this.editor = editor;
 		this.variableValueBuffer = new HashMap<String, Double>();
+		highlight = new MetricsHighlighter();
 	}
 	
+	public MetricsHighlighter getHighlighter(){
+		return highlight;
+	}
+	
+	/*
+	 * ATTENTION:
+	 * The following block contains dynamically called calculation methods.
+	 * They all seem unused because their method names are invoked based on XML input - at runtime they will get invoked!
+	 * 
+	 * If highlight.addHighlight is called, the method contains highlighting information, otherwise it does not.
+	 * Logic descriptions are given in the called methods and classes where required (See Javadocs of each)
+	 * 
+	 * ----- BEGIN OF GENERICALLY CALLED METHODS -----
+	 * 
+	 */
 	@SuppressWarnings("unused")
 	private double calculateN(){
 		return calculateT() + calculateP();
@@ -69,7 +97,7 @@ public class MetricsCalculator {
 		Set<String> nodeids = new HashSet<String>();
 		for(String key:transitions.keySet())
 			nodeids.add(transitions.get(key).getId());
-		MetricsHighlighter.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
+		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
 		
 		return transitions.size();
 	}
@@ -80,7 +108,7 @@ public class MetricsCalculator {
 		Set<String> nodeids = new HashSet<String>();
 		for(String key:places.keySet())
 			nodeids.add(places.get(key).getId());
-		MetricsHighlighter.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
+		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
 		
 		return places.size();
 	}
@@ -92,7 +120,7 @@ public class MetricsCalculator {
 		Set<String> arcids = new HashSet<String>();
 		for(String key:arcs.keySet())
 			arcids.add(arcs.get(key).getId());
-		MetricsHighlighter.addHighlight(currentDynamicCall, null, arcids, doNotdisplay);
+		highlight.addHighlight(currentDynamicCall, null, arcids, doNotdisplay);
 		
 		return arcs.size();
 	}
@@ -161,7 +189,7 @@ public class MetricsCalculator {
 		
 		// Highlighting
 		Set<String> nodeids = lpd.getHighlightedNodes();
-		MetricsHighlighter.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
+		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
 		return cyclic;
 	}
 	
@@ -172,7 +200,7 @@ public class MetricsCalculator {
 		// Highlighting
 		Set<String> nodeids = lpd.getHighlightedNodes();
 		Set<String> arcids = lpd.calculateHighlightedArcs();
-		MetricsHighlighter.addHighlight(currentDynamicCall, nodeids, arcids, doNotdisplay);
+		highlight.addHighlight(currentDynamicCall, nodeids, arcids, doNotdisplay);
 		return lpmax;
 	}
 	
@@ -182,7 +210,7 @@ public class MetricsCalculator {
 		Map<String, Map<String,Object>> origMap = mec.getIdMap();
 		double ts = 0;
 		
-		Set<String> nodeids = lpd.getHighlightedNodes();
+		Set<String> nodeids = new HashSet<String>();
 		
 		for(String key:operators.keySet())
 			if(origMap.get(key).size() > 2) {
@@ -190,7 +218,7 @@ public class MetricsCalculator {
 				nodeids.add(key);
 			}
 		
-		MetricsHighlighter.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
+		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
 		
 		return ts;
 	}
@@ -201,7 +229,7 @@ public class MetricsCalculator {
 		double cutVert = lpd.cutVertices();
 		
 		//Highlighting
-		MetricsHighlighter.addHighlight(currentDynamicCall, lpd.getHighlightedNodes(), null, doNotdisplay);
+		highlight.addHighlight(currentDynamicCall, lpd.getHighlightedNodes(), null, doNotdisplay);
 		return cutVert;
 	}
 	
@@ -274,7 +302,7 @@ public class MetricsCalculator {
 				nodeids.add(key);
 			}
 				
-		MetricsHighlighter.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
+		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
 		return seqn;
 	}
 	
@@ -290,7 +318,14 @@ public class MetricsCalculator {
 		return AlgorithmFactory.createSccTest(net).getStronglyConnectedComponents().size();
 	}
 
+	/**
+	 * ----- END OF GENERICALLY CALLED METHODS -----
+	 */
 	
+	
+	/**
+	 * Returns a map of all nodes that can be considered transitions
+	 */
 	private Map<String,AbstractElementModel> getTransitions(){
 		Map<String, AbstractElementModel> transitions = new HashMap<String, AbstractElementModel>();
 		Map<String, AbstractElementModel> partialTransitions;
@@ -307,11 +342,86 @@ public class MetricsCalculator {
 		return transitions;
 	}
 	
-	public double calculate(String formula) throws CalculateFormulaException{
-			return calculate(formula, new HashSet<String>(), false);
+	/**
+	 * Calculates a formula (recursion where necessary)
+	 * 
+	 * @param formula	Formula to be calculated
+	 * @return			Result of the calculation
+	 * @throws CalculateFormulaException	Exception thrown (e.g. invalid formula)
+	 */
+	public double calculate(String formula)throws CalculateFormulaException{
+		return calculate(formula, false);
+	}	
+	
+	/**
+	 * 
+	 * Calculates a formula (recursion where necessary)
+	 * 
+	 * @param formula		Formula to be calculated
+	 * @param syntaxCheck	Whether or not the syntax should be checked
+	 * @return				Result of the calculation
+	 * @throws CalculateFormulaException	Exception thrown (e.g. invalid formula)
+	 */
+	public double calculate(String formula, boolean syntaxCheck) throws CalculateFormulaException{
+		return calculate(formula, new HashSet<String>(), false, syntaxCheck);
 	}
+	
+	/**
+	 * 
+	 * Calculates a formula (recursion where necessary)
+	 * 
+	 * @param formula		Formula to be calculated
+	 * @param stack			Stack of previously called parent elements in the formula (e.g. if this is C in A = B * C, the stack will contain A)
+	 * @param doNotDisplay	Whether or not the highlighting should be displayed
+	 * @return				Result of the calculation
+	 * @throws CalculateFormulaException	Exception thrown (e.g. invalid formula)
+	 */
 	public double calculate(String formula, HashSet<String> stack, boolean doNotDisplay) throws CalculateFormulaException{
-		return MetricsInterpreter.interpretString(formula, this, stack,doNotDisplay);
+		return MetricsInterpreter.interpretString(formula, this, stack,doNotDisplay, false);
+	}
+	
+	/**
+	 * 
+	 * Calculates a formula (recursion where necessary)
+	 * 
+	 * @param formula		Formula to be calculated
+	 * @param stack			Stack of previously called parent elements in the formula (e.g. if this is C in A = B * C, the stack will contain A)
+	 * @param doNotDisplay	Whether or not the highlighting should be displayed
+	 * @param syntaxCheck	Whether or not the syntax should be checked
+	 * @return				Result of the calculation
+	 * @throws CalculateFormulaException	Exception thrown (e.g. invalid formula)
+	 */
+	public double calculate(String formula, HashSet<String> stack, boolean doNotDisplay, boolean syntaxCheck) throws CalculateFormulaException{
+		String specialHighlighting = metricsConfig.getHighlightingFormula(formula);
+		if(specialHighlighting.length()>0){
+			List<String> addHighlights = new ArrayList<String>();
+			List<String> removeHighlights = new ArrayList<String>();
+			for(String s:specialHighlighting.split(","))
+				if(s.trim().startsWith("!"))
+					removeHighlights.add(s.trim().substring(1));
+				else
+					addHighlights.add(s.trim());
+			HashSet<String> fakeStack = new HashSet<String>();
+			fakeStack.add(formula);
+			currentDynamicCall = fakeStack;
+			for(String highlight:addHighlights)
+				MetricsInterpreter.interpretString(highlight, this, fakeStack,false, false);
+			highlight.setInverted(true);
+			for(String highlight:removeHighlights)
+				MetricsInterpreter.interpretString(highlight, this, fakeStack,false, false);
+			highlight.setInverted(false);
+		}		
+		currentDynamicCall = new HashSet<String>();
+		return MetricsInterpreter.interpretString(formula, this, stack,doNotDisplay, syntaxCheck);
+	}
+	/**
+	 * This Method should be used only to validate a formula; 
+	 * The formula is valid, if you do not get an exception
+	 * @param formula a Metrics-Formula
+	 * @throws CalculateFormulaException
+	 */
+	public static void checkFormula(String formula)throws CalculateFormulaException{
+		MetricsInterpreter.interpretString(formula, null, null, false, true);
 	}
 	
 	/**
@@ -322,11 +432,12 @@ public class MetricsCalculator {
 	 * @throws CalculateFormulaException
 	 * @author Tobias Lorentz
 	 * @author Holger Kraus
+	 * @throws RecognitionException 
 	 */
-	public double calculateVariable(String token, HashSet<String> stack, boolean doNotDisplay) throws CalculateFormulaException {
+	public double calculateVariable(String token, HashSet<String> stack, boolean doNotDisplay) throws CalculateFormulaException, RecognitionException {
 		
 		double result;
-		
+		if(algorithmHighlighting)currentDynamicCall.add(token);
 		if(this.isVariableAlreadyCalculated(token, stack)){
 			//This Formula is already called--> unless recursion --> Error
 			throw new InfiniteRecursiveFormulaCallException(token);
@@ -344,28 +455,51 @@ public class MetricsCalculator {
 		newStack.add(token);
 		
 		if (variableValueBuffer.containsKey(token)){
+			highlight.mergeHighlights(currentDynamicCall, token, doNotdisplay);
+			currentDynamicCall.remove(token);
 			return variableValueBuffer.get(token);
 		}		
 		else if (metricsConfig.hasAlgorithmFormula(token)){
-			result =  calculate(metricsConfig.getAlgorithmFormula(token), newStack, doNotDisplay);
+			try{
+				result =  calculate(metricsConfig.getAlgorithmFormula(token), newStack, doNotDisplay);
+			}catch(EnhancementException ee){
+				//The formula was enhanced. The value for this enhanced Formula
+				// is stored inside the exception object.
+				/** @author Tobias Lorentz */
+				result = ee.getValue();
+				//Add this formula to the EnhancementList
+				FormulaEnhancementList.getInstance().AddFormula(token, ee.getEnhancedFormula());
+			}
 			variableValueBuffer.put(token, result);
+			currentDynamicCall.remove(token);
 			return result;
 		}			
 		else if (metricsConfig.hasAlgorithmMethod(token)){
-			currentDynamicCall = token;
+			currentDynamicCall.add(token);
 			result = Double.parseDouble(getClass().getDeclaredMethod(metricsConfig.getAlgorithmMethod(token), new Class[0]).invoke(this,new Object[0]).toString()); 
 			variableValueBuffer.put(token, result);
+			currentDynamicCall.remove(token);
 			return result;
 		}
 		else if(metricsConfig.hasVariableFormula(token)){
-			result = calculate(metricsConfig.getVariableFormula(token), newStack, doNotDisplay);
+			try{
+				result = calculate(metricsConfig.getVariableFormula(token), newStack, doNotDisplay);
+			}catch(EnhancementException ee){
+				//The formula was enhanced. The value for this enhanced Formula
+				// is stored inside the exception object.
+				/** @author Tobias Lorentz */
+				result = ee.getValue();
+				//Add this formula to the EnhancementList
+				FormulaEnhancementList.getInstance().AddFormula(token, ee.getEnhancedFormula());
+			}
 			variableValueBuffer.put(token, result);
 			return result;
 		}
 		else if(metricsConfig.hasVariableMethod(token)){
-			currentDynamicCall = token;
+			currentDynamicCall.add(token);
 			result = Double.parseDouble(getClass().getDeclaredMethod(metricsConfig.getVariableMethod(token), new Class[0]).invoke(this,new Object[0]).toString());
 			variableValueBuffer.put(token, result);
+			currentDynamicCall.remove(token);
 			return result;
 		}
 		}catch(InvocationTargetException ite){
@@ -375,12 +509,21 @@ public class MetricsCalculator {
 			throw cfe;
 		}catch(Exception e){
 			System.err.println("Invalid method name: "+token+" ("+metricsConfig.getVariableMethod(token)+")");
+			throw new CalculateFormulaException();
 		}
 	    
 		//Variable is not found --> Throw exception
 		throw new FormulaVariableNotFoundException(token);
 	     
 	}
+	
+	/**
+	 * Checks whether a variable has already been calculated
+	 * 
+	 * @param token	ID of the variable
+	 * @param stack	Stack of previous calls
+	 * @return		Boolean containing whether or not the variable had already been calculated
+	 */
 	private boolean isVariableAlreadyCalculated(String token, HashSet<String> stack){
 		//Check if the Variable exists at the Stack
 		for(Iterator<String> iter = stack.iterator();iter.hasNext();){
@@ -399,6 +542,32 @@ public class MetricsCalculator {
 	 */
 	public void clearVariableValueBuffer(){
 		this.variableValueBuffer.clear();
+	}
+	
+	/**
+	 * @param variableName
+	 * @return True if the Variable exists
+	 */
+	public static boolean isVariableValid(String variableName){
+		IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
+		
+		if (metricsConfig.hasAlgorithmFormula(variableName)){
+			return true;
+		}
+		
+		if (metricsConfig.hasAlgorithmMethod(variableName)){
+			return true;
+		}
+		
+		if(metricsConfig.hasVariableFormula(variableName)){
+			return true;
+		}
+		
+		if(metricsConfig.hasVariableMethod(variableName)){
+			return true;
+		}
+		
+		return false;
 	}
 
 }

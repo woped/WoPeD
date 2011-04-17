@@ -1,19 +1,15 @@
 package org.woped.layout.algorithms;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Iterator;
 import java.awt.Point;
-
-import org.jgraph.graph.GraphCell;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.woped.core.Constants;
 import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.model.uml.AbstractUMLElementModel;
-import org.woped.core.model.uml.ActivityModel;
 import org.woped.core.utilities.LoggerManager;
 
 
@@ -39,7 +35,7 @@ public class Orientation {
 
 	public static void rotate(ModelElementContainer mec) {
 		 Map<String, AbstractElementModel> elements = new HashMap<String, AbstractElementModel>();
-		 Iterator elementsIter = mec.getIdMap().keySet().iterator();
+		 Iterator<String> elementsIter = mec.getIdMap().keySet().iterator();
 		 AbstractElementModel element;
 		 
 		 elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE));
@@ -75,7 +71,7 @@ public class Orientation {
 	
 	public static void rotate2(ModelElementContainer mec) {
 		 Map<String, AbstractElementModel> elements = new HashMap<String, AbstractElementModel>();
-		 Iterator elementsIter = mec.getIdMap().keySet().iterator();
+		 Iterator<String> elementsIter = mec.getIdMap().keySet().iterator();
 		 AbstractElementModel element;
 		 
 		 elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE));

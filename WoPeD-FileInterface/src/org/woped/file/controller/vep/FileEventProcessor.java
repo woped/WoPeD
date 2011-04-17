@@ -18,6 +18,7 @@ import java.util.Vector;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 
 import org.woped.bpel.BPEL;
 import org.woped.core.config.ConfigurationManager;
@@ -44,6 +45,8 @@ import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.gui.OpenWebEditorUI;
+import org.woped.metrics.builder.MetricsBuilder;
+import org.woped.metrics.helpers.LabeledFileFilter;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.woflan.TPNExport;
@@ -148,6 +151,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
         	if (!editor.isMetricsBarVisible())
         	{
         		editor.showMetricsBar(getMediator().getUi().getEditorFocus());
+        		
         	}
         	else
         	{
@@ -158,6 +162,48 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
             //new MetricsUIRequestHandler().showInitialData(editor.getModelProcessor().getElementContainer());
             break;
+            
+        case AbstractViewEvent.ANALYSIS_MASSMETRICANALYSE:        	
+        	//new MetricsBuilder(editor); 
+        	JFileChooser cFolder = new JFileChooser();
+    		cFolder.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        	cFolder.setDialogTitle(Messages.getString("Metrics.Mass.OpenDialog")); 
+    		int cont = cFolder.showOpenDialog(null);
+    		if(cont != JFileChooser.APPROVE_OPTION) return;
+    		File folder = cFolder.getSelectedFile();
+    		cFolder.setFileSelectionMode(JFileChooser.FILES_ONLY);
+    		FileFilter filter = new LabeledFileFilter() {
+    			public boolean accept(File file) {
+    				if (file.getAbsolutePath().endsWith(".csv"))
+    					return true;
+    				return false;
+    			}
+
+    			public String getDescription() {
+    				return "Comma Separated Values (*.csv)";
+    			}
+
+    			public String getExtension() {
+    				return ".csv";
+    			}
+    		};
+    		cFolder.addChoosableFileFilter(filter);
+    		cFolder.setDialogTitle(Messages.getString("Metrics.Mass.SaveDialog")); 
+    		cont = cFolder.showSaveDialog(null);
+    		if(cont != JFileChooser.APPROVE_OPTION) return;
+    		File saveTo  = new File(cFolder.getSelectedFile().getAbsolutePath());
+			if(!saveTo.getName().endsWith(((LabeledFileFilter)cFolder.getFileFilter()).getExtension()))
+					saveTo = new File(saveTo.getAbsolutePath()+((LabeledFileFilter)cFolder.getFileFilter()).getExtension());
+			
+    		saveTo.delete();
+    		MassMetricsCalculator mass = new MassMetricsCalculator();
+    		mass.prepareMetrics(folder.listFiles());
+    		new MassMetricsStatus(mass).start();
+    		mass.calculateMetrics(saveTo, (ApplicationMediator)getMediator());
+        	break;
+        case AbstractViewEvent.ANALYSIS_METRICSBUILDER:       	
+        	new MetricsBuilder(editor, "");
+        	break;
 
         case AbstractViewEvent.QUANTCAP:
             if (isSound(editor) & isBranchingOk(editor)) {
@@ -633,13 +679,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
         final PNMLImport pr;
 
         getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
-        IStatusBar[] iSB = new IStatusBar[iVC.length];
-        for (int i = 0; i < iSB.length; i++) {
-            iSB[i] = (IStatusBar) iVC[i];
-        }
 
-        pr = new PNMLImport((ApplicationMediator) getMediator(), iSB);
+        pr = new PNMLImport((ApplicationMediator) getMediator());
 
         if (pr != null) {
             boolean loadSuccess = false;
@@ -728,7 +769,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 iSB[i] = (IStatusBar) iVC[i];
             }
 
-            pr = new PNMLImport((ApplicationMediator) getMediator(), iSB);
+            pr = new PNMLImport((ApplicationMediator) getMediator());
 
         } else
             if (filter == FileFilterImpl.OLDPNMLFilter) {
