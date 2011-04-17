@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JFrame;
-
 import org.jgraph.graph.DefaultGraphCell;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractEventProcessor;
@@ -427,6 +426,12 @@ public class EditorEventProcessor extends AbstractEventProcessor
 					cell = ((GroupModel) cell).getMainElement();
 				}
 				editor.rotateTransRight(cell);
+				break;
+			case AbstractViewEvent.GRAPHBEAUTIFIER:
+				editor.startBeautify(0,0,0);
+				break;
+			case AbstractViewEvent.GRAPHBEAUTIFIER_ADV:
+				editor.advancedBeautifyDialog();
 				break;
 			default:
 				break;

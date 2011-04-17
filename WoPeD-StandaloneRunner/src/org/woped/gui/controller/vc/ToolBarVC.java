@@ -86,8 +86,10 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     private AbstractButton	   m_rotateViewButton 	= null;
     private AbstractButton	   m_rotateTransLeftButton = null;
     private AbstractButton	   m_rotateTransRightButton = null;
+    
+    private AbstractButton	   m_GraphBeautifierButton= null;
 
-    private AbstractButton     m_placeButton        = null;
+	private AbstractButton     m_placeButton        = null;
     private AbstractButton     m_transitionButton   = null;
 
     private AbstractButton     m_andSplitButton     = null;
@@ -148,6 +150,8 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
         add(getRotateTransLeftButton());
         add(getRotateTransRightButton());
         add(getRotateViewButton());
+        // GraphBeautifier
+        add(getGraphBeautifierButton());
         // Transitions and Places
         addSeparator();
         add(getPlaceButton());
@@ -501,7 +505,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
     	}
     	return m_coloringButton;
     }
-    
+
     public AbstractButton getRotateViewButton()
     {
     	if (m_rotateViewButton == null)
@@ -541,7 +545,16 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
 
 	}
  
-    public void addViewListener(IViewListener listener)
+    public AbstractButton getGraphBeautifierButton()
+    {
+    	if (m_GraphBeautifierButton == null)
+    	{
+    		m_GraphBeautifierButton = ToolBarButton.createButton(ActionFactory.getStaticAction(ActionFactory.ACTIONID_GRAPHBEAUTIFIER),false);
+    	}
+		return m_GraphBeautifierButton;
+	}
+
+	public void addViewListener(IViewListener listener)
     {
         viewListener.addElement(listener);
     }
@@ -598,7 +611,7 @@ public class ToolBarVC extends JToolBar implements IViewController, IToolBar
             zoomChooser.setSelectedIndex(3);
             zoomChooser.setBorder(BorderFactory.createEtchedBorder());
             zoomChooser.setEditable(true);
-            SwingUtils.setFixedWidth(zoomChooser, 70);
+            SwingUtils.setFixedWidth(zoomChooser, 55);
             zoomChooser.addItemListener(new ItemListener()
             {
 

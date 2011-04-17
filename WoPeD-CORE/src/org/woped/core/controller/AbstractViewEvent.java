@@ -268,11 +268,13 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int QUANTSIM				  = 1082;
     public static final int REACHGRAPH				  = 1083;
     
+    public static final int GRAPHBEAUTIFIER			  = 1084;
+    public static final int GRAPHBEAUTIFIER_ADV		  = 1085;
+    
     //variable to change toolbars and references
     public static final int CHANGEPANEL				  = 1999;
-
-	
-
+    public static final int IMPROVE_LAYOUT			  = 1084;
+    
     public AbstractViewEvent(Object source, int type, int order, Object data)
     {
         super(source, -1, null);

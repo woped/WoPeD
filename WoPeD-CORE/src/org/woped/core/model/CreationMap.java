@@ -679,6 +679,17 @@ public class CreationMap extends HashMap<String, Object>
 	{
 		return this.get(CreationMap.BPELDATA);
 	}
-	
+		
+	public boolean isHighLight()
+	{
+		if(containsKey(HIGHLIGHT))
+		{
+			return ((Boolean)get(HIGHLIGHT)).booleanValue();
+		}
+		else
+		{
+			return false;	
+		}
+	}
 	
 }

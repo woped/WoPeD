@@ -55,10 +55,12 @@ public class SubProcessModel extends TransitionModel implements
 	private ModelElementContainer	subElementContainer;
 	private static final String		SUBELEMENT_SEPERATOR	= "_";
 	private boolean					direction				= false;
+	private CreationMap map = null;
 
 	public SubProcessModel(CreationMap map)
 	{
 		super(map);
+		this.map = map;
 		setSize(WIDTH, HEIGHT);
 		getToolSpecific().setSubprocess(true);
 
@@ -149,6 +151,10 @@ public class SubProcessModel extends TransitionModel implements
 		}
 
 		return newContainer;
+	}
+	
+	public CreationMap getMap() {
+		return map;
 	}
 
 	public String getToolTipText()

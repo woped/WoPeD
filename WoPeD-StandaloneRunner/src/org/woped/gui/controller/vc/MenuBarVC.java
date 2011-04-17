@@ -107,6 +107,9 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
     private JMenuItem		   m_rotateViewMenuItem		= null;
     private JMenuItem		   m_rotateTransLeftMenuItem	= null;
     private JMenuItem		   m_rotateTransRightMenuItem	= null;
+    private JMenu			   m_GraphBeautifierMenu	= null;
+    private JMenuItem		   m_GraphBeautifierItemAdv	= null;
+    private JMenuItem		   m_GraphBeautifierItem	= null;
 
     private JMenuItem          m_startTokenGameMenuItem = null;
     private JMenu              m_analyseMenu            = null;
@@ -368,6 +371,10 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_viewMenu.add(getRotateTransLeftMenuItem());
             m_viewMenu.add(getRotateTransRightMenuItem());
             m_viewMenu.add(getRotateViewMenuItem());
+            m_viewMenu.addSeparator();
+            //if (!RunWoPeD.isApplet()) {
+            	m_viewMenu.add(getGraphBeautifierMenu());            	
+            //} 
         }
         return m_viewMenu;
     }
@@ -763,6 +770,44 @@ public class MenuBarVC extends JMenuBar implements IViewController, IEditorAware
             m_rotateViewMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ROTATEVIEW));
         }
         return m_rotateViewMenuItem;
+    }
+    
+    public JMenu getGraphBeautifierMenu()
+    {
+        if (m_GraphBeautifierMenu == null)
+        {
+            m_GraphBeautifierMenu = new JMenu(Messages.getTitle("ToolBar.GraphBeautifier"));
+            m_GraphBeautifierMenu.setIcon(Messages.getImageIcon("ToolBar.GraphBeautifier"));
+            
+            m_GraphBeautifierMenu.add(getGraphBeautifierItem());
+            m_GraphBeautifierMenu.add(getGraphBeautifierItemAdv());
+            
+        }
+        return m_GraphBeautifierMenu;
+    }
+    
+    /**
+     * @return Returns the GraphBeautifierItem
+     */
+    public JMenuItem getGraphBeautifierItem()
+    {
+    	if (m_GraphBeautifierItem == null)
+    	{
+    		m_GraphBeautifierItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT));
+    	}
+    	return m_GraphBeautifierItem;
+    }
+    
+    /**
+     * @return Returns the GraphBeautifierItem
+     */
+    public JMenuItem getGraphBeautifierItemAdv()
+    {
+    	if (m_GraphBeautifierItemAdv == null)
+    	{
+    		m_GraphBeautifierItemAdv = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_GRAPHBEAUTIFIER_ADV));
+    	}
+    	return m_GraphBeautifierItemAdv;
     }
     
     /**

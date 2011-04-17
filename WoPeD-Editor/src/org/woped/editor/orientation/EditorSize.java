@@ -1,4 +1,4 @@
-package org.woped.editor.layout;
+package org.woped.editor.orientation;
 
 import java.awt.Container;
 import java.awt.Dimension;

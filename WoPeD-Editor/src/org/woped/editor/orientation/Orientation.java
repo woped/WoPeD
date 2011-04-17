@@ -1,4 +1,4 @@
-package org.woped.editor.layout;
+package org.woped.editor.orientation;
 
 import java.awt.geom.Point2D;
 import java.util.HashMap;
@@ -44,7 +44,7 @@ public class Orientation {
 		Iterator<String> elementsIter = mec.getIdMap().keySet().iterator();
 		AbstractElementModel element;
 		int newX = 0, newY = 0, negX = 0, negY = 0;
-
+		
 		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE));
 		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
 		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));

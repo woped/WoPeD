@@ -36,6 +36,9 @@ public class ActionFactory
     public final static String		   ACTIONID_ROTATEVIEW			   = "ToolBar.RotateView";
     public final static String		   ACTIONID_ROTATE_TRANS_LEFT	   = "ToolBar.RotateTransLeft";
     public final static String		   ACTIONID_ROTATE_TRANS_RIGHT	   = "ToolBar.RotateTransRight";
+    public final static String		   ACTIONID_GRAPHBEAUTIFIER		   = "ToolBar.GraphBeautifier";
+    public final static String		   ACTIONID_GRAPHBEAUTIFIER_DEFAULT= "Menu.View.GraphBeautifier.Default";
+    public final static String		   ACTIONID_GRAPHBEAUTIFIER_ADV	   = "Menu.View.GraphBeautifier.Advanced";
     public final static String		   ACTIONID_METRIC                 = "ToolBar.Metric";
     public final static String		   ACTIONID_MASSMETRICANALYSE      = "Menu.Metric.MassAnalyse";
     public final static String		   ACTIONID_METRICSBUILDER		   = "Menu.Metric.MetricsBuilder";
@@ -235,6 +238,15 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATE_TRANS_LEFT), VisualController.ANY_SELECTION_EXCEPT_SIMPLE, VisualController.IGNORE, VisualController.IGNORE);
         STATIC_ACTION_MAP.put(ACTIONID_ROTATE_TRANS_RIGHT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATETRANSRIGHT, null, ACTIONID_ROTATE_TRANS_RIGHT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATE_TRANS_RIGHT), VisualController.ANY_SELECTION_EXCEPT_SIMPLE, VisualController.IGNORE, VisualController.IGNORE);
+        
+        //GraphBeautifier
+        STATIC_ACTION_MAP.put(ACTIONID_GRAPHBEAUTIFIER, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.GRAPHBEAUTIFIER, null, ACTIONID_GRAPHBEAUTIFIER));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_GRAPHBEAUTIFIER), VisualController.WITH_EDITOR, VisualController.ALWAYS, VisualController.NEVER);
+        STATIC_ACTION_MAP.put(ACTIONID_GRAPHBEAUTIFIER_DEFAULT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.GRAPHBEAUTIFIER, null, ACTIONID_GRAPHBEAUTIFIER_DEFAULT));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_GRAPHBEAUTIFIER_DEFAULT), VisualController.WITH_EDITOR, VisualController.ALWAYS, VisualController.NEVER);
+        STATIC_ACTION_MAP.put(ACTIONID_GRAPHBEAUTIFIER_ADV, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.GRAPHBEAUTIFIER_ADV, null, ACTIONID_GRAPHBEAUTIFIER_ADV));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_GRAPHBEAUTIFIER_ADV), VisualController.WITH_EDITOR, VisualController.ALWAYS, VisualController.NEVER);
+        
         //Tokengame
         STATIC_ACTION_MAP.put(ACTIONID_TOGGLE_TOKENGAME, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOGGLE_TOKENGAME, null, ACTIONID_TOGGLE_TOKENGAME));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOGGLE_TOKENGAME), VisualController.WITH_EDITOR, VisualController.IGNORE, VisualController.TOKENGAME);

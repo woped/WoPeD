@@ -30,8 +30,10 @@ import java.util.Vector;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -99,10 +101,12 @@ import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDJGraph;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.editor.graphbeautifier.AdvancedDialog;
+import org.woped.editor.graphbeautifier.SGYGraph;
 import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.gui.OverviewPanel;
-import org.woped.editor.layout.EditorSize;
-import org.woped.editor.layout.Orientation;
+import org.woped.editor.orientation.EditorSize;
+import org.woped.editor.orientation.Orientation;
 import org.woped.editor.view.ViewFactory;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
@@ -111,6 +115,7 @@ import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.qualanalysis.simulation.controller.TokenGameController;
 import org.woped.qualanalysis.structure.NetAlgorithms;
+import org.woped.qualanalysis.structure.StructuralAnalysis;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.translations.Messages;
 import org.woped.understandability.NetColorScheme;
@@ -156,8 +161,14 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 
     private String id = null;
     private  BasicMarqueeHandler marqueehandler;
+    
+    private int modelProcessorType;
+    
+    private SubProcessModel model = null;
 
-    public static final String ID_PREFIX = "EDITOR_VC_";
+	private boolean undoSupport;
+
+	public static final String ID_PREFIX = "EDITOR_VC_";
 
     private JComponent container = null;
 
@@ -302,6 +313,8 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
         this.m_centralMediator = mediator;
         this.m_EditorLayoutInfo = new EditorLayoutInfo();
         this.m_EditorLayoutInfo.setVerticalLayout(isRotateSelected());
+        this.modelProcessorType = modelProcessorType;
+        this.undoSupport = undoSupport;
         // initialize
         this.setLayout(new BorderLayout());
         this.m_clipboard = clipboard;
@@ -388,6 +401,7 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             IEditor parentEditor, SubProcessModel model, AbstractApplicationMediator mediator) {
         this(string, clipboard, modelProcessorType, undoSupport, mediator);
         boolean origStatus = parentEditor.isSaved();
+        this.model = model;
 
         setParentEditor(parentEditor);
         m_graph.setBorder(new LineBorder(DefaultStaticConfiguration.DEFAULT_SUBPROCESS_FRAME_COLOR, 3, false));
@@ -531,7 +545,9 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
     // this.add(m_scrollPane);
     // }
 
-    /**
+    
+
+	/**
      * Updates the Net. For some changes in the Model it's nessecary to call.
      */
     public void updateNet() {
@@ -1713,6 +1729,11 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
      * Calls the algorithms for rotating the view and the elements
      */
     public void rotateLayout() {
+    	// Is necessary to switch off the undoManager
+		if (((WoPeDUndoManager) getGraph().getUndoManager()) != null) {
+			((WoPeDUndoManager) getGraph().getUndoManager())
+					.setEnabled(false);
+		}
         m_orientation.rotateView(getModelProcessor().getElementContainer());
 
         // TODO
@@ -1733,6 +1754,11 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
 
 		editorSize.resize(true);
 
+		// Is necessary to switch on the undoManager
+		if (getGraph().getUndoManager() != null) {
+			((WoPeDUndoManager) getGraph().getUndoManager())
+					.setEnabled(true);
+		}
         setSaved(false);
     }
 
@@ -1760,8 +1786,61 @@ public class EditorVC extends JPanel implements KeyListener, GraphModelListener,
             getGraph().setSelectionCell(cell);
         }
     }
+    /**
+     * starts the advanced dialog for beautifying the graph
+     */
+    public void advancedBeautifyDialog(){
+    	JFrame frame = new JFrame();
+    	@SuppressWarnings("unused")
+		AdvancedDialog dialog = new AdvancedDialog(frame, this);  
+    }
+ 
+    /**
+     * Calls the algorithm for layered drawing of the graph
+     */
+    public void startBeautify(int ixIntervall, int iyIntervall, int counter){
+    	// checking WF-Net-Conformity
+    	StructuralAnalysis sAnalysis = new StructuralAnalysis(this);
+		
+		if (!sAnalysis.isWorkflowNet()) {
+			JOptionPane.showMessageDialog(this, Messages.getString("File.Error.GraphBeautifier.NoNet.Text"));
+		}
+		else {
+			SGYGraph graph = new SGYGraph(this);
+			graph.beautify(counter);
+			graph.draw(ixIntervall, iyIntervall);
+			
+			//Check the orientation. If the orientation is 'vertical' rotate the graph.
+		}
+			if (isRotateSelected()){		        
+		        this.rotateLayout();
+	            setRotateSelected(true);
+	            m_EditorLayoutInfo.setVerticalLayout(true);
+			}
+		}
+    
 
     /* ########## GETTER & SETTER ########## */
+    
+    public SubProcessModel getModel() {
+		return model;
+	}
+    
+    public AbstractApplicationMediator getM_centralMediator() {
+		return m_centralMediator;
+	}
+    
+	public boolean isUndoSupport() {
+		return undoSupport;
+	}
+    
+    public EditorClipboard getM_clipboard() {
+		return m_clipboard;
+	}
+    
+    public int getModelProcessorType() {
+		return modelProcessorType;
+	}
 
     public Point2D getLastMousePosition() {
         return m_lastMousePosition;

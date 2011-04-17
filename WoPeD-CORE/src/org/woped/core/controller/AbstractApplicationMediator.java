@@ -48,7 +48,9 @@ public abstract class AbstractApplicationMediator implements IViewListener
     private HashMap<String, IViewController>        viewControllerMap = null;
     private VEPController  vepController     = null;
     private IUserInterface ui                = null;
-    private LinkedList<Object> editorLists = new LinkedList<Object>();
+    private IGeneralConfiguration conf 		 = null;
+
+	private LinkedList<Object> editorLists = new LinkedList<Object>();
 
     public abstract IEditor createEditor(int modelProcessorType, boolean undoSupport, boolean loadUI);
     
@@ -56,6 +58,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
     {
         viewControllerMap = new HashMap<String, IViewController>();
         setUi(ui);
+        setConf(conf);
         LoggerManager.info(Constants.CORE_LOGGER, "START INIT Application");
         boolean confOK = true;
         if (conf != null)
@@ -196,6 +199,14 @@ public abstract class AbstractApplicationMediator implements IViewListener
             editorLists.add(ui);
         }
     }
+    
+    public IGeneralConfiguration getConf() {
+		return conf;
+	}
+
+	public void setConf(IGeneralConfiguration conf) {
+		this.conf = conf;
+	}
 
     public IViewController[] findViewController(int type)
     {

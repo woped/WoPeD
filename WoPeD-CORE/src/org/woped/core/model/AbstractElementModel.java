@@ -17,6 +17,9 @@ import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.Constants;
 import org.woped.core.model.petrinet.NameModel;
+import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.TransitionResourceModel;
+import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
 
 @SuppressWarnings("serial")
@@ -258,6 +261,33 @@ public abstract class AbstractElementModel extends DefaultGraphCell implements S
         AttributeMap map = getAttributes();
         GraphConstants.setBounds(map, new Rectangle(x, y, getWidth(), getHeight()));
         getAttributes().applyMap(map);
+    }
+    
+    /**
+     * Set all Objects from a model and the model to the new position 
+     * @param x 
+     * 			the value to set the model and the surrounded Objects for the x coordinate
+     * @param y
+     * 			the value to set the model and the surrounded Objects for the y coordinate
+     */
+    public void setPositionGroup(int x, int y) {
+    	setPosition(x, y);
+    	nameModel = getNameModel();
+    	if(this.getId().startsWith("t"))
+    		nameModel.setPosition(x - 10, y + 35);
+    	else
+    		nameModel.setPosition(x, y + 35);
+		if (this instanceof TransitionModel) {
+			TransitionModel transitionModel = (TransitionModel) this;
+			if (transitionModel.hasTrigger()) {
+				TriggerModel triggerModel = transitionModel.getToolSpecific().getTrigger();
+				triggerModel.setPosition(x + 10, y - 22);
+			}
+			if (transitionModel.hasResource()) {
+				TransitionResourceModel transitionResourceModel = transitionModel.getToolSpecific().getTransResource();
+				transitionResourceModel.setPosition(x - 5, y - 45);
+			}
+		}
     }
 
     public abstract String getToolTipText();
