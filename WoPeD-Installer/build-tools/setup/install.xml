@@ -39,23 +39,25 @@
 		<appname>WoPeD</appname>
 		<appversion>@wopedversion@</appversion>
 		<authors>
-			<author name="Alexander Assall, Mario Beiser, Jenny Braun," email=""></author>
-			<author name="Anke Christian, Christian Czech, Sascha Dörner," email=""></author>
-			<author name="Andreas Eckleder, Christina Eckleder, Manuel Fladt," email=""></author>
-			<author name="Christian Flender, Thomas Freytag, Rüdiger Fuhrmann," email=""></author>
-			<author name="Sebastian Fuß, Steffen Gegenheimer, Benjamin Geiger," email=""></author>
-			<author name="Tilmann Glaser, Johannes Händel, Bernhard von Hasseln," email=""></author>
-			<author name="Heiko Herzog, Tobias Heinemann, Benjamin Jörger," email=""></author>
+			<author name="Philipp Allgaier, Alexander Assall, Daniel Becea," email=""></author>
+			<author name="Mario Beiser, Jenny Braun, Anke Christian, Christian Czech," email=""></author>
+			<author name="Sascha Dörner, Wolfgang Dörner, Andreas Eckleder," email=""></author>
+			<author name="Christina Eckleder, Manuel Fladt, Christian Flender," email=""></author>
+			<author name="Thomas Freytag, Rüdiger Fuhrmann, Sebastian Fuß," email=""></author>
+			<author name="Steffen Gegenheimer, Benjamin Geiger, Tilmann Glaser," email=""></author>
+			<author name="Janina Glutsch, Johannes Grenzemann, Matthias Gruschinske," email=""></author>
+			<author name="Stefan Hackenberg, Johannes Händel, Bernhard von Hasseln," email=""></author>
+			<author name="Heiko Herzog, Tobias Heinemann, Benjamin Jörger, Cosima Jünger," email=""></author>
 			<author name="Mona Ketterer, Kristian Kindler, Patrick Kirchgäßner," email=""></author>
-			<author name="Konstantin Krüger, Esther Landes, Simon Landes," email=""></author>
-			<author name="Ralf Lehmann, Jörn Liebau, Linda Linsenbolz," email=""></author>
-			<author name="Markus Lipps, Samuel Mellert, Enrico Möller," email=""></author>
-			<author name="Matthias Mruzek, Alexis Nagy, Markus Nöltner," email=""></author>
+			<author name="Holger Kraus, Konstantin Krüger, Esther Landes, Simon Landes," email=""></author>
+			<author name="Ralf Lehmann, Jörn Liebau, Linda Linsenbolz, Markus Lipps," email=""></author>
+			<author name="Tobias Lorentz, Samuel Mellert, Lisa Mais, Ulrich Minet," email=""></author>
+			<author name="Enrico Möller, Matthias Mruzek, Alexis Nagy, Markus Nöltner," email=""></author>
 			<author name="Stefanie Obergfell, Lennart Oeß, Sebastian Orts," email=""></author>
-			<author name="Katharina Pfeifer, Thomas Pohl, Valentino Pola," email=""></author>
-			<author name="Lavinia Posler, Tobias Rehnig, Karsten Ripsam," email=""></author>
-			<author name="Michael Schäfer, Rolf Schäuble, Frank Schüler," email=""></author>
-			<author name="Anthony Soprano, Patrick Spies, Jens Tessen, Arthur Vetter" email=""></author>
+			<author name="Jonathan Peuker, Katharina Pfeifer, Thomas Pohl, Valentino Pola," email=""></author>
+			<author name="Lavinia Posler, Tobias Rehnig, Karsten Ripsam, Frederick Rouviere, " email=""></author>
+			<author name="Michael Schäfer, Rolf Schäuble, Frank Schüler, David Schoch," email=""></author>
+			<author name="Anthony Soprano, Patrick Spies, Jens Tessen, Arthur Vetter." email=""></author>
 			<author name="Responsible: Thomas Freytag" email="freytag@woped.org"></author>
 		</authors>
 		<url>http://www.woped.org</url>
@@ -114,15 +116,7 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/jgraph-@jgraphversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/log4j-@log4jversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/jcalendar-@jcalendarversion@.jar" targetdir="$INSTALL_PATH/lib">
+			<file src="lib/antlrworks-@antlrworksversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -130,7 +124,11 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/jfreechart-@jfreechartversion@.jar" targetdir="$INSTALL_PATH/lib">
+			<file src="lib/jbpt.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
+			<file src="lib/jcalendar-@jcalendarversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -138,7 +136,23 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
+			<file src="lib/jfreechart-@jfreechartversion@.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
+			<file src="lib/jgraph-@jgraphversion@.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
 			<file src="lib/jsr173_@jsrversion@.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
+			<file src="lib/log4j-@log4jversion@.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
+			<file src="lib/mysql-connector-java-@mysqlversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -146,7 +160,15 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
+			<file src="lib/ssj.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
 			<file src="lib/stax-@staxversion@.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
+			<file src="lib/TableLayout-@tablelayoutversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -162,15 +184,15 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/ssj.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
 			<file src="lib/xbean.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
 			<file src="lib/confBeans.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
+			<file src="lib/metricsBeans.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>

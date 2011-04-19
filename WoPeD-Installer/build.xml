@@ -3,15 +3,20 @@
 	<tstamp />
 	<property file="../CommonLibs/build.properties" />
 
-	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
-	<filter token="log4jversion" value="${LOG4JVERSION}" />
+	<filter token="antlrworksversion" value="${ANTLRWORKSVERSION}" />
 	<filter token="flanaganversion" value="${FLANAGANVERSION}" />
+	<filter token="jbptversion" value="${JBPTVERSION}" />
 	<filter token="jcalendarversion" value="${JCALENDARVERSION}" />
-	<filter token="jsrversion" value="${JSRVERSION}" />
-	<filter token="jfreechartversion" value="${JFREECHARTVERSION}" />
 	<filter token="jcommonversion" value="${JCOMMONVERSION}" />
+	<filter token="jfreechartversion" value="${JFREECHARTVERSION}" />
+	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
+	<filter token="jsrversion" value="${JSRVERSION}" />
+	<filter token="log4jversion" value="${LOG4JVERSION}" />
+	<filter token="mysqlversion" value="${MYSQLVERSION}" />
 	<filter token="ruddiversion" value="${RUDDIVERSION}" />
+	<filter token="ssjversion" value="${SSJVERSION}" />
 	<filter token="staxversion" value="${STAXVERSION}" />
+	<filter token="tablelayoutversion" value="${TABLELAYOUTVERSION}" />
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="coreversion" value="${COREVERSION}${SNAPSHOT}" />
 	<filter token="editorversion" value="${EDITORVERSION}${SNAPSHOT}" />
@@ -22,11 +27,12 @@
 	<filter token="configurationversion" value="${CONFIGURATIONVERSION}${SNAPSHOT}" />
 	<filter token="translationversion" value="${TRANSLATIONVERSION}${SNAPSHOT}" />
 	<filter token="bpelexportversion" value="${BPELEXPORTVERSION}${SNAPSHOT}" />
+	<filter token="metricsversion" value="${METRICSVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="makesubprojects, makedir, setversion, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, purge, start" />
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, purge, start" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -57,11 +63,11 @@
 	</target>
 
 	<target name="setversion">
+		<copy file="build-tools/log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" overwrite="true"/> 
 		<copy file="../WoPeD-Translations/src/org/woped/translations/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
 		<copy file="../WoPeD-Translations/src/org/woped/translations/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
 		<copy file="dist/Messages.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages.properties" />
 		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages_de.properties" />
-		<copy file="build-tools/log4j.xml" tofile="../WoPeD-StandaloneRunner/bin/org/woped/gui/utilities/log4j.xml" />
 	</target>
 
 	<target name="buildjar">
@@ -75,6 +81,7 @@
 			<fileset dir="../WoPeD-StandaloneRunner/bin" />
 			<fileset dir="../WoPeD-Translations/bin" />
 			<fileset dir="../WoPeD-XMLConfiguration/bin" />
+			<fileset dir="../WoPeD-ProcessMetrics/bin" />
 		</jar>
 	</target>
 
@@ -84,19 +91,24 @@
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
 		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/metricsBeans.jar" />
 		<copy todir="dist" file="../WoPeD-StandaloneRunner/WofJava.dll" />
 		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
 		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD$1.class" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jbpt.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/mysql-connector-java-${MYSQLVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/ssj.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
+		<copy todir="dist/lib" file="../CommonLibs/lib/TableLayout-${TABLELAYOUTVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
 
 		<copy todir="dist/doc/pdf/en">
@@ -165,6 +177,7 @@
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QuantAnalysis/src" destdir="dist/doc/QuantAnalysis/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QualAnalysis/src" destdir="dist/doc/WoPeD-QualAnalysis/api-doc" />
 		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-BPELExport/src" destdir="dist/doc/WoPeD-BPELExport/api-doc" />
+		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-ProcessMetrics/src" destdir="dist/doc/WoPeD-ProcessMetrics/api-doc" />
 	</target>
 
 	<target name="makesubprojects">
@@ -177,6 +190,7 @@
 		<ant antfile="../WoPeD-QuantAnalysis/build.xml" dir="../WoPeD-QuantAnalysis" />
 		<ant antfile="../WoPeD-QualAnalysis/build.xml" dir="../WoPeD-QualAnalysis" />
 		<ant antfile="../WoPeD-Translations/build.xml" dir="../WoPeD-Translations" />
+		<ant antfile="../WoPeD-ProcessMetrics/build.xml" dir="../WoPeD-ProcessMetrics" />
 	</target>
 
 	<target name="makeinstaller">
@@ -224,16 +238,21 @@
 			<fileset file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
 			<fileset file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
 			<fileset file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
-			<fileset file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+			<fileset file="../WoPeD-XMLConfiguration/lib/metricsBeans.jar" />
+			<fileset file="../CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/jbpt.jar" />
 			<fileset file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/mysql-connector-${MYSQLVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/ssj.jar" />
+			<fileset file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
+			<fileset file="../CommonLibs/lib/TableLayout-${TABLELAYOUTVERSION}.jar" />
 			<fileset file="../CommonLibs/lib/xbean.jar" />
 		</copy>
 
