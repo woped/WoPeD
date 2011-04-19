@@ -129,11 +129,7 @@ public class RunWoPeD extends JApplet {
 						org.woped.config.Constants.CONFIG_LOGGER);
 				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
 						.getLogger(org.woped.core.Constants.CORE_LOGGER)),
-						org.woped.core.Constants.CORE_LOGGER);
-				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
-						.getLogger(org.woped.qualanalysis.Constants.STRUCT_LOGGER)),
-						org.woped.qualanalysis.Constants.STRUCT_LOGGER);
-				
+						org.woped.core.Constants.CORE_LOGGER);				
 				LoggerManager
 						.register(
 								new WopedLogger(
