@@ -768,7 +768,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         }
         long time2 = System.nanoTime();
         time2 = (time2 - time1) / 1000;
-        LoggerManager.debug(Constants.STRUCT_LOGGER, handleType + " Handle Pairs calculated. (" + time2 + " ms)");
+        LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, handleType + " Handle Pairs calculated. (" + time2 + " ms)");
         return result;
     }
 

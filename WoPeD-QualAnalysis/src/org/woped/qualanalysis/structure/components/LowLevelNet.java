@@ -54,7 +54,7 @@ public class LowLevelNet {
             out.append(next.getPetriNetNode().getNameValue() + ",");
         }
 
-        LoggerManager.debug(Constants.STRUCT_LOGGER, out.toString());
+        LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, out.toString());
 
     }
 
@@ -64,7 +64,7 @@ public class LowLevelNet {
 
         resetTempData();
 
-        LoggerManager.debug(Constants.STRUCT_LOGGER, "Calculating flow from '" + source.getPetriNetNode().getId()
+        LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Calculating flow from '" + source.getPetriNetNode().getId()
                 + "' to '" + sink.getPetriNetNode().getId() + "'");
 
         while (!done) {
@@ -87,14 +87,14 @@ public class LowLevelNet {
                 X = R.getFirst();
                 R.removeFirst();
 
-                // LoggerManager.debug(Constants.STRUCT_LOGGER, "Removing node X='" + X.getPetriNetNode().getId() + "'");
+                // LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Removing node X='" + X.getPetriNetNode().getId() + "'");
                 // dumpList(R, "R= ");
 
                 // work on all outgoing arcs based on current source
                 Y = X.getOutgoingArcs();
                 while (Y.hasNext()) {
                     temp_arc = Y.next();
-                    // LoggerManager.debug(Constants.STRUCT_LOGGER,
+                    // LoggerManager.debug(Constants.QUALANALYSIS_LOGGER,
                     // "Checking Arc( '" + temp_arc.getSource().getPetriNetNode().getId() +
                     // "'->'" + temp_arc.getTarget().getPetriNetNode().getId() +"', Current Flow=" + temp_arc.getFlow() + ")" );
 
@@ -107,7 +107,7 @@ public class LowLevelNet {
                         temp_arc.getTarget().setVisited(true);
                         R.addLast(temp_arc.getTarget());
 
-                        // LoggerManager.debug(Constants.STRUCT_LOGGER, "Adding node Y.END()='" + temp_arc.getTarget().getPetriNetNode().getId() + "'");
+                        // LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Adding node Y.END()='" + temp_arc.getTarget().getPetriNetNode().getId() + "'");
                     }
                 }
 
@@ -123,7 +123,7 @@ public class LowLevelNet {
                         temp_arc.getSource().setVisited(true);
                         R.addLast(temp_arc.getSource());
 
-                        // LoggerManager.debug(Constants.STRUCT_LOGGER, "Adding node Y.START()='" + temp_arc.getSource().getPetriNetNode().getId() + "'");
+                        // LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Adding node Y.START()='" + temp_arc.getSource().getPetriNetNode().getId() + "'");
                     }
 
                 }
@@ -133,14 +133,14 @@ public class LowLevelNet {
             // resetTempData();
 
             if (SINKFOUND) {
-                // LoggerManager.debug(Constants.STRUCT_LOGGER, "Applying flow changes");
+                // LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Applying flow changes");
 
                 FlowNode temp_sink = sink;
                 while (temp_sink.getPredecessor() != null) {
 
                     if (temp_sink.isForeward() && (temp_sink.getPredecessor() != null)) {
                         temp_sink.getPredecessor().getArcTo(temp_sink).addFlow(sink.getZ());
-                        // LoggerManager.debug(Constants.STRUCT_LOGGER, "{(" +
+                        // LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "{(" +
                         // temp_sink.getPredecessor().getArcTo(temp_sink).getSource().getPetriNetNode().getNameValue()
                         // + "," +
                         // temp_sink.getPredecessor().getArcTo(temp_sink).getTarget().getPetriNetNode().getNameValue()
@@ -150,7 +150,7 @@ public class LowLevelNet {
                     if (!temp_sink.isForeward() && (temp_sink.getPredecessor() != null)) {
                         temp_sink.getArcTo(temp_sink.getPredecessor()).subFlow(sink.getZ());
 
-                        // LoggerManager.debug(Constants.STRUCT_LOGGER, "{(" +
+                        // LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "{(" +
                         // temp_sink.getArcTo(temp_sink.getPredecessor()).getSource().getPetriNetNode().getNameValue()
                         // + "," +
                         // temp_sink.getArcTo(temp_sink.getPredecessor()).getTarget().getPetriNetNode().getNameValue()
@@ -159,7 +159,7 @@ public class LowLevelNet {
                     }
                     temp_sink = temp_sink.getPredecessor();
                 }
-                // LoggerManager.debug(Constants.STRUCT_LOGGER, "Found a SINK, starting over");
+                // LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Found a SINK, starting over");
 
             }
 
@@ -178,7 +178,7 @@ public class LowLevelNet {
 
         // calculate maxmimum flow
         int maxFlow = countOutgoing - countIncoming;
-        LoggerManager.debug(Constants.STRUCT_LOGGER, "Resulting flow = " + maxFlow);
+        LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "Resulting flow = " + maxFlow);
 
         return maxFlow;
     }
