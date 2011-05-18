@@ -70,6 +70,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.NetType;
 import org.woped.pnml.NetType.Page;
+import org.woped.pnml.NodeType;
 import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.OrganizationUnitType;
 import org.woped.pnml.PlaceType;
@@ -130,6 +131,8 @@ public class PNMLImport {
 		mediator = am;
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("", "pnml.woped.org");
+		// Interpret pnml documents according to foreign standardized pnml schema as our own
+		map.put("http://www.pnml.org/version-2009/grammar/pnml", "pnml.woped.org");
 		
 		opt.setLoadSubstituteNamespaces(map);
 		if (true) {
@@ -533,65 +536,66 @@ public class PNMLImport {
 	// ! transitions and arcs from the net stored in the XMLBean
 	private void importNet(NetType currentNet,
 			ModelElementContainer currentContainer) throws Exception {
-		importPlaces(currentNet.getPlaceArray(), currentContainer);
-		importTransitions(currentNet, currentContainer);
-		// important... import arcs in the end
-		importArcs(currentNet.getArcArray(), currentContainer);
+		if ((currentNet.getPlaceArray().length==0)&&
+			(currentNet.getTransitionArray().length==0)&&
+			(currentNet.getPageArray().length==1))
+			importNet(currentNet.getPageArray()[0], currentContainer);
+		else
+		{
+			importPlaces(currentNet.getPlaceArray(), currentContainer);
+			importTransitions(currentNet, currentContainer);
+			// important... import arcs in the end
+			importArcs(currentNet.getArcArray(), currentContainer);
+		}
+	}
+	
+	private void importNameAndLayout(NodeType node, CreationMap target)
+	{
+		target.setId(node.getId());
+		if (node.getGraphics()!=null)
+		{
+			target.setPosition(node.getGraphics().getPosition().getX()
+					.intValue(), node.getGraphics().getPosition()
+					.getY().intValue());
+			if (node.getGraphics().isSetDimension())
+				target.setSize(new IntPair(new Dimension(node
+				                                             .getGraphics().getDimension().getX().intValue(),
+				                                             node.getGraphics().getDimension().getY()
+				                                             .intValue())));
+		}
+		if (node.getName()!=null)				
+			target.setName(node.getName().getText());
+		else
+			// Elements that don't have a name will have their id used instead
+			target.setName(node.getId());
+		
+		if (node.getName()!=null
+				&& node.getName().isSetGraphics()
+				&& node.getName().getGraphics()
+						.getOffsetArray() != null
+				&& node.getName().getGraphics()
+						.getOffsetArray().length > 0) {
+			int x = node.getName().getGraphics().getOffsetArray(0)
+					.getX().intValue();
+			int y = node.getName().getGraphics().getOffsetArray(0)
+					.getY().intValue();
+			target.setNamePosition(x, y);		
+		}		
 	}
 
 	private void importPlaces(PlaceType[] places,
 			ModelElementContainer currentContainer) throws Exception {
 		int tokens;
 		CreationMap map;
-		int x;
-		int y;
 		boolean doNOTcreate = false;
 		for (int i = 0; i < places.length; i++) {
 			map = CreationMap.createMap();
 			map.setEditOnCreation(false);
 			map.setType(PetriNetModelElement.PLACE_TYPE);
 			try {
-				map.setId(places[i].getId());
-				map.setPosition(places[i].getGraphics().getPosition().getX()
-						.intValue(), places[i].getGraphics().getPosition()
-						.getY().intValue());
-				if (places[i].getGraphics().isSetDimension())
-					map.setSize(new IntPair(new Dimension(places[i]
-							.getGraphics().getDimension().getX().intValue(),
-							places[i].getGraphics().getDimension().getY()
-									.intValue())));
-				map.setName(places[i].getName().getText());
+				importNameAndLayout(places[i], map);
+					
 				try {
-					/*
-					 * TODO Offset if
-					 */
-					if (places[i].getName().isSetGraphics()
-							&& places[i].getName().getGraphics()
-									.getOffsetArray() != null
-							&& places[i].getName().getGraphics()
-									.getOffsetArray().length > 0) {
-						x = places[i].getName().getGraphics().getOffsetArray(0)
-								.getX().intValue();
-						y = places[i].getName().getGraphics().getOffsetArray(0)
-								.getY().intValue();
-						map.setNamePosition(x, y);
-					}
-					// if
-					// (places[i].getName().getGraphics().getOffsetArray().length
-					// >
-					// 1)
-					// {
-					// tempWidth =
-					// places[i].getName().getGraphics().getOffsetArray(1).getX().intValue()
-					// -
-					// places[i].getName().getGraphics().getOffsetArray(0).getX().intValue();
-					// tempHeight =
-					// places[i].getName().getGraphics().getOffsetArray(1).getX().intValue()
-					// -
-					// places[i].getName().getGraphics().getOffsetArray(0).getX().intValue();
-					// map.setNameSize(new Dimension(tempWidth, tempHeight));
-					// }
-
 					if (places[i].isSetInitialMarking()
 							&& (tokens = Integer.parseInt(places[i]
 									.getInitialMarking().getText())) > 0) {
@@ -667,27 +671,8 @@ public class PNMLImport {
 			map.setEditOnCreation(false);
 			map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
 			try {
-				map.setId(transitions[i].getId());
-				map.setPosition(transitions[i].getGraphics().getPosition()
-						.getX().intValue(), transitions[i].getGraphics()
-						.getPosition().getY().intValue());
-				if (transitions[i].getGraphics().isSetDimension())
-					map.setSize(new IntPair(transitions[i].getGraphics()
-							.getDimension().getX().intValue(), transitions[i]
-							.getGraphics().getDimension().getY().intValue()));
-				map.setName(transitions[i].getName().getText());
+				importNameAndLayout(transitions[i], map);
 				try {
-					if (transitions[i].getName().isSetGraphics()
-							&& transitions[i].getName().getGraphics()
-									.getOffsetArray() != null
-							&& transitions[i].getName().getGraphics()
-									.getOffsetArray().length > 0) {
-						x = transitions[i].getName().getGraphics()
-								.getOffsetArray(0).getX().intValue();
-						y = transitions[i].getName().getGraphics()
-								.getOffsetArray(0).getY().intValue();
-						map.setNamePosition(x, y);
-					}
 					if (ConfigurationManager.getConfiguration()
 							.isImportToolspecific()) {
 						for (int j = 0; j < transitions[i]

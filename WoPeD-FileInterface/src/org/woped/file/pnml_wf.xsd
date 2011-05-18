@@ -115,9 +115,10 @@
       <xs:documentation> General Node Types </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="name" type="nodeNameType" />
-      <xs:element name="graphics" type="graphicsNodeType" />
+      <xs:element minOccurs="0" name="name" type="nodeNameType" />
+      <xs:element minOccurs="0" name="graphics" type="graphicsNodeType" />
     </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />    
   </xs:complexType>
   <xs:complexType name="nodeNameType">
     <xs:annotation>
@@ -152,7 +153,6 @@
           </xs:element>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="toolspecific" type="placeToolspecificType" />
         </xs:sequence>
-        <xs:attribute name="id" type="xs:ID" use="required" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -174,7 +174,6 @@
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="toolspecific" type="transitionToolspecificType" />
         </xs:sequence>
-        <xs:attribute name="id" type="xs:ID" use="required" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -367,10 +366,13 @@
     <xs:annotation>
       <xs:documentation>structured &amp;amp; modular PNML Types</xs:documentation>
     </xs:annotation>
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element name="net" type="netType" />
-    </xs:choice>
-    <xs:attribute name="id" type="xs:ID" />
+	<xs:complexContent>
+    	<xs:extension base="netType">
+		    <xs:choice minOccurs="0" maxOccurs="unbounded">
+    		  <xs:element name="net" type="netType" />
+    		</xs:choice>
+    	</xs:extension>
+  	</xs:complexContent>    
   </xs:complexType>
   <xs:complexType name="referencePlaceType">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
