@@ -2,7 +2,7 @@ WoPeD (Workflow Petrinet Designer) is an easy-to-use tool to
 draw, manage, simulate and analyse workflow process definitions 
 using an extended Petri net notation called "workflow nets".
    
-Copyright (C) 2003-2010		
+Copyright (C) 2003-2011		
  
 Contact
 -------
@@ -91,26 +91,29 @@ Root directory:
   ./WoPeD.exe                       (Launcher for Windows)
   ./WoPeD                           (Launcher for Linux - alternatively)
   ./WoPeD-classes-@wopedversion@.jar         (WoPeD program classes)
-  ./WoPeD.log                       (Error logging, initially not existing)
-  ./WoPeDconfig.xml                 (WoPeD property settings, initially not existing)
 
 lib directory
-  ./lib/bpelBeans.jar               (BPEL model description library)
-  ./lib/confBeans.jar               (Configuration management library)
-  ./lib/pnmlBeans.jar               (Petri net model description library)
-  ./lib/pnmlBeans_old.jar           (Petri net model description library, old version)
-  ./lib/flanagan-@flanaganversion@.jar          (Random number generator library)
-  ./lib/jcalendar-@jcalendarversion@.jar         (Calendar utility library)
-  ./lib/jsr_@jsrversion@.jar             (JSR utility library)
-  ./lib/jfreechart-@jfreechartversion@.jar       (JFREECHART utility library)
-  ./lib/jcommon-@jcommonversion@.jar          (JCOMMON utility library)
-  ./lib/jgraph-@jgraphversion@.jar            (JGraph drawing library)
-  ./lib/log4j-@log4jversion@.jar             (Event logger library)
-  ./lib/ruddi-@ruddiversion@.jar           (UDDI access library)
-  ./lib/stax-@staxversion@.jar              (Stax library)
-  ./lib/ssj.jar                     (Simulation server library)
-  ./lib/xbean.jar                   (Bean generation library)
-
+  ./lib/antlrworks-@antlrworksversion@.jar 
+  ./lib/bpelBeans.jar                
+  ./lib/confBeans.jar                
+  ./lib/flanagan-@flanaganversion@.jar           
+  ./lib/jbpt.jar
+  ./lib/jcalendar-@jcalendarversion@.jar          
+  ./lib/jcommon-@jcommonversion@.jar           
+  ./lib/jfreechart-@jfreechartversion@.jar        
+  ./lib/jgraph-@jgraphversion@.jar             
+  ./lib/jsr173_@jsrversion@.jar             
+  ./lib/log4j-@log4jversion@.jar    
+  ./lib/metricsBeans.jar 
+  ./lib/mysql-connector-java-@mysqlversion@.jar
+  ./lib/pnmlBeans.jar                
+  ./lib/pnmlBeans_old.jar           
+  ./lib/ruddi-@ruddiversion@.jar
+  ./lib/ssj.jar  
+  ./lib/stax-@staxversion@.jar              
+  ./lib/TableLayout-bin-@tablelayoutversion@.jar 
+  ./lib/xbean.jar                   
+  
 doc directory
   ./doc/html/de                     (Complete HTML online manual in German - still rudimentary)
   ./doc/html/en                     (Complete HTML online manual in English)

@@ -663,8 +663,6 @@ public class PNMLImport {
 
 		TransitionType transitions[] = currentNet.getTransitionArray();
 		CreationMap map;
-		int x;
-		int y;
 
 		for (int i = 0; i < transitions.length; i++) {
 			map = CreationMap.createMap();

@@ -115,9 +115,8 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 	protected static DefaultMutableTreeNode getFreeChoiceViolationsInfo(IQualanalysisService qualanService) {
 		return new NodeGroupListNetInfo(Messages.getString(prefix + "NumFreeChoiceViolations") + ": "
 				+ qualanService.getFreeChoiceViolations().size(), qualanService.getFreeChoiceViolations().iterator()) {
-			@SuppressWarnings("rawtypes")
 			@Override
-			public String getGroupDisplayString(int nIndex, Collection group) {
+			public String getGroupDisplayString(int nIndex, Collection<?> group) {
 				return Messages.getString(prefix + "FreeChoiceViolationGroup") + " " + (nIndex + 1);
 			}
 
@@ -149,9 +148,8 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 	protected static DefaultMutableTreeNode getSComponentsInfo(IQualanalysisService qualanService) {
 		return new NodeGroupListNetInfo(Messages.getString(prefix + "NumSComponents") + ": "
 				+ qualanService.getSComponents().size(), qualanService.getSComponents().iterator()) {
-			@SuppressWarnings("rawtypes")
 			@Override
-			public String getGroupDisplayString(int nIndex, Collection group) {
+			public String getGroupDisplayString(int nIndex, Collection<?> group) {
 				return Messages.getString(prefix + "SComponent") + ":" + group.size();
 			}
 
@@ -191,9 +189,8 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 		return new NodeGroupListNetInfo(Messages.getString(prefix + "stronglyConnectedComponents") + ": "
 				+ qualanService.getStronglyConnectedComponents().size(), qualanService.getStronglyConnectedComponents()
 				.iterator()) {
-			@SuppressWarnings("rawtypes")
 			@Override
-			public String getGroupDisplayString(int nIndex, Collection group) {
+			public String getGroupDisplayString(int nIndex, Collection<?> group) {
 				return Messages.getString(prefix + "stronglyConnectedComponent") + ":" + group.size();
 			}
 
@@ -215,9 +212,8 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 	protected static DefaultMutableTreeNode getConnectedComponentsInfo(IQualanalysisService qualanService) {
 		return new NodeGroupListNetInfo(Messages.getString(prefix + "connectedComponents") + ": "
 				+ qualanService.getConnectedComponents().size(), qualanService.getConnectedComponents().iterator()) {
-			@SuppressWarnings("rawtypes")
 			@Override
-			public String getGroupDisplayString(int nIndex, Collection group) {
+			public String getGroupDisplayString(int nIndex, Collection<?> group) {
 				return Messages.getString(prefix + "connectedComponent") + ":" + group.size();
 			}
 
@@ -246,9 +242,8 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 	protected static DefaultMutableTreeNode getPTHandlesInfo(IQualanalysisService qualanService) {
 		return new NodeGroupListNetInfo(Messages.getString(prefix + "NumPTHandles") + ": "
 				+ qualanService.getPTHandles().size(), qualanService.getPTHandles().iterator()) {
-			@SuppressWarnings("rawtypes")
 			@Override
-			public String getGroupDisplayString(int nIndex, Collection group) {
+			public String getGroupDisplayString(int nIndex, Collection<?> group) {
 				return Messages.getString(prefix + "PTHandlePair") + " #" + (nIndex + 1);
 			}
 
@@ -270,9 +265,8 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 	protected static DefaultMutableTreeNode getTPHandlesInfo(IQualanalysisService qualanService) {
 		return new NodeGroupListNetInfo(Messages.getString(prefix + "NumTPHandles") + ": "
 				+ qualanService.getTPHandles().size(), qualanService.getTPHandles().iterator()) {
-			@SuppressWarnings("rawtypes")
 			@Override
-			public String getGroupDisplayString(int nIndex, Collection group) {
+			public String getGroupDisplayString(int nIndex, Collection<?> group) {
 				return Messages.getString(prefix + "TPHandlePair") + " #" + (nIndex + 1);
 			}
 

@@ -341,7 +341,6 @@ public class TokenGameHistoryManagerVC extends JDialog
 	 * If no History has been recorded, it will not save as well
 	 * @return true / false
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public int checkSaveName()
 	{				
 		// no name set
