@@ -32,17 +32,15 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, purge, start" /> 
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeMacOSinstaller" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
-		<delete dir="installers" />
 	</target>
 
 	<target name="makedir" depends="clean">
 		<mkdir dir="installers" />
 		<mkdir dir="dist" />
-		<mkdir dir="dist/mac" />
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
 		<mkdir dir="dist/doc" />
@@ -111,6 +109,7 @@
 		<copy todir="dist/lib" file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/TableLayout-${TABLELAYOUTVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/xbean.jar" />
+		<copy todir="dist"     file="../WoPeD-Installer/build-tools/MANIFEST2.mf" />
 
 		<copy todir="dist/doc/pdf/en">
 			<fileset file="../WoPeD-StandaloneRunner/doc/pdf/en/*.pdf" />
@@ -151,34 +150,8 @@
 		</copy>
 
 		<copy todir="dist">
-			<fileset dir="build-tools/launcher/Windows" />
-			<fileset dir="build-tools/launcher/Linux" />
-			<fileset dir="build-tools/launcher/MacOS/" />
-			<fileset dir="build-tools/setup/Windows" />
-			<fileset dir="build-tools/setup/Linux" />
-			<fileset dir="build-tools/setup/MacOS" />
 			<fileset file="woped-logo.jpg" />
 		</copy>
-
-		<copy todir="dist" filtering="true" overwrite="true">
-			<fileset file="build-tools/*.*" />
-			<fileset file="build-tools/setup/install.xml" />
-		</copy>
-
-		<unzip src="build-tools/setup/izpack.zip" dest="dist" />
-	</target>
-
-	<target name="makejavadoc">
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-CORE/src" destdir="dist/doc/WoPeD-CORE/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Editor/src" destdir="dist/doc/WoPeD-Editor/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-StandaloneRunner/src" destdir="dist/doc/WoPeD-StandaloneRunner/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-FileInterface/src" destdir="dist/doc/WoPeD-FileInterface/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-XMLConfiguration/src" destdir="dist/doc/WoPeD-XMLConfiguration/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Translations/src" destdir="dist/doc/WoPeD-Translations/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QuantAnalysis/src" destdir="dist/doc/QuantAnalysis/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QualAnalysis/src" destdir="dist/doc/WoPeD-QualAnalysis/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-BPELExport/src" destdir="dist/doc/WoPeD-BPELExport/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-ProcessMetrics/src" destdir="dist/doc/WoPeD-ProcessMetrics/api-doc" />
 	</target>
 
 	<target name="makesubprojects">
@@ -194,83 +167,7 @@
 		<ant antfile="../WoPeD-ProcessMetrics/build.xml" dir="../WoPeD-ProcessMetrics" />
 	</target>
 
-	<target name="makeinstaller">
-		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
-		<exec dir="dist" executable="cmd">
-			<arg line="/c launch4jc.exe buildexe.xml" />
-		</exec>
-		<exec dir="dist" executable="cmd">
-			<arg line="/c java -jar lib\compiler.jar -HOME . install.xml -b . -o WoPeD-install.jar" />
-		</exec>
-		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
-
-		<exec dir="dist" executable="cmd">
-			<arg line="/c launch4jc.exe buildsetup.xml" />
-		</exec>
-
-		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
-
-		<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
-			<tarfileset dir="dist" mode="755">
-				<include name="WoPeD-install" />
-			</tarfileset>
-			<tarfileset dir="dist">
-				<include name="WoPeD-install.jar" />
-			</tarfileset>
-		</tar>
-		<copy file="dist/WoPeD-install.exe" tofile="installers/WoPeD-install.exe" />
-		<copy file="dist/Readme.txt" tofile="installers/Readme-${WOPEDVERSION}${SNAPSHOT}.txt" />
-		<copy file="dist/Changelog.txt" tofile="installers/Changelog-${WOPEDVERSION}${SNAPSHOT}.txt" />
-
-	</target>
-
 	<target name="makeMacOSinstaller">
-		<unzip src="build-tools/launcher/MacOS/WoPeD.app.zip" dest="dist/mac" />
-
-		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java">
-			<fileset file="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" />
-			<fileset file="dist/Readme.txt" />
-			<fileset file="dist/Changelog.txt" />
-			<fileset file="dist/License.txt" />
-		</copy>
-
-		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java/lib">
-			<fileset file="../WoPeD-BPELExport/lib/bpelBeans.jar" />
-			<fileset file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
-			<fileset file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
-			<fileset file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
-			<fileset file="../WoPeD-XMLConfiguration/lib/metricsBeans.jar" />
-			<fileset file="../CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/jbpt.jar" />
-			<fileset file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/jgraphx.jar" />
-			<fileset file="../CommonLibs/lib/jsr173_${JSRVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/mysql-connector-${MYSQLVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/ssj.jar" />
-			<fileset file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/TableLayout-${TABLELAYOUTVERSION}.jar" />
-			<fileset file="../CommonLibs/lib/xbean.jar" />
-		</copy>
-
-		<copy todir="dist/mac/WoPeD.app/Contents/Resources/Java/doc">
-			<fileset dir="dist/doc" />
-		</copy>
-
-		<zip destfile="installers/WoPeD-macos-${WOPEDVERSION}${SNAPSHOT}.zip">
-			<fileset dir="dist/mac" />
-		</zip>
-	</target>
-
-	<target name="start">
-		<exec dir="installers" executable="cmd">
-			<arg line="/c java -jar WoPeD-install.exe" />
-		</exec>
 	</target>
 
 	<target name="purge">
