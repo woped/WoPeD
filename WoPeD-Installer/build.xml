@@ -32,7 +32,7 @@
 
 	<!--<taskdef resource="genjar.properties"/>	-->
 
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeinstaller, makeMacOSinstaller, purge, start" /> 
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeinstaller, makeMacOSinstaller" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
