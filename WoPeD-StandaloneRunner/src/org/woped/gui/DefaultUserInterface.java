@@ -329,11 +329,18 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     		 if(getEditorFocus().isTokenGameEnabled()){
     			 simulatorBar = simulatorList.get(getEditorFocus());    			   			 
     		 }
-    		// getContentPane().remove(toolBar);
-    		 getContentPane().add(simulatorBar, BorderLayout.NORTH);
-    	     simulatorBar.showChoice();  
-    	     simulatorBar.addAnalysisButtons();
-    	     getContentPane().repaint();
+    		 // Check whether we do have an associated simulator bar.
+    		 // For token gamen top-level frames this might not be a given.
+    		 // As a side-effect to our modality handling, they might get temporarily enabled,
+    		 // but immediately disabled again. This is the only case where we find such a situation.
+    		 if (simulatorBar!=null)
+    		 {
+    			 // getContentPane().remove(toolBar);
+    			 getContentPane().add(simulatorBar, BorderLayout.NORTH);
+    			 simulatorBar.showChoice();  
+    			 simulatorBar.addAnalysisButtons();
+    			 getContentPane().repaint();
+    		 }
     	 }else{
     		 // clean up the interface of RemoteControl-Things
     		 if(simulatorBar!=null){  
@@ -550,8 +557,15 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
      * ########################## interface methods ##########################
      */
 
-    private void FixModality()
+    /**
+     * Fix modality in case a frame gets activated due to an external event. This will make sure that if there is at least one modal frame,
+     * this frame will remain in focus with the other ones staying disabled
+     * @return true if modality had to be fixed because there is a modal frame and it was not the one currently due to
+     *              an external event, false otherwise
+     */
+    private boolean FixModality()
     {
+    	IEditor activatedEditor = getEditorFocus();
     	DefaultEditorFrame modalFrame =
     		(m_modalityStack.size()>0)?m_modalityStack.get(0):null;
     	JInternalFrame frames[] = desktop.getAllFrames();
@@ -574,24 +588,30 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     		catch (PropertyVetoException e)
     		{}
     	}
-    		
+    	return ((modalFrame!=null)&&(activatedEditor!=modalFrame.getEditor()));
     }
     
     public void internalFrameActivated(InternalFrameEvent e)
     {
-    	FixModality();
-		getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
+    	// First check whether we have any active modal dialogs.
+    	// If so, there is no point and even some danger in reacting on the activated message 
+    	// because we will change back to the original frame in an instant
+    	boolean modalityFixed = FixModality();
+    	if (!modalityFixed)
+    	{
+    		getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
 
-		if (!getEditorFocus().isSubprocessEditor()) {
-			if (getEditorFocus().isTokenGameEnabled()) {
-				switchToolBar(true);
-			} else {
-				switchToolBar(false);
-				getToolBar().addAnalysisButtons();
-			}
-		} else {
-			return;
-		}
+    		if (!getEditorFocus().isSubprocessEditor()) {
+    			if (getEditorFocus().isTokenGameEnabled()) {
+    				switchToolBar(true);
+    			} else {
+    				switchToolBar(false);
+    				getToolBar().addAnalysisButtons();
+    			}
+    		} else {
+    			return;
+    		}
+    	}
 	}
 
     public void internalFrameClosed(InternalFrameEvent e)

@@ -1160,6 +1160,14 @@ public class TokenGameBarController implements Runnable {
         }
     }
 
+    /** 
+     * Changes the current token game controller reference (to one managing another graph instance)
+     * When returning from a sub-process, newReference will be ignored and a value from an internal
+     * stack used instead (ProcessEditors)
+     *  
+     * @param newReference  Specifies the new reference to be used and added to the stack
+     * @param up			Specifies whether we want to go up or down
+     */
     public void changeTokenGameReference(TokenGameController newReference, boolean up) {
         if (up) {
             if ((ProcessEditors != null) && (ProcessEditors.size() > 0)) {

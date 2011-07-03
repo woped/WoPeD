@@ -125,10 +125,10 @@ public class TokenGameController {
     public void start() {
         // remove Highlighting in RG
         deHighlightRG();
+        enableVisualTokenGame();
 
         // if you are stepping into a subprocess right now
         if (thisEditor.isSubprocessEditor()) {
-            enableVisualTokenGame();
             ParentControl = new ReferenceProvider();
             RemoteControl = ParentControl.getRemoteControlReference();
             RemoteControl.changeTokenGameReference(this, false);
@@ -146,7 +146,6 @@ public class TokenGameController {
         } else {
             // remove highlighting from RG in Editor
             petrinet.resetRGHighlightAndVTokens();
-            enableVisualTokenGame();
             // displays the TokenGame Remote-Control if it already exist, if not create
             if (RemoteControl != null) {
                 RemoteControl.addControlElements();
@@ -1055,7 +1054,11 @@ public class TokenGameController {
                 } else
                     if (place != null && place.isActivated()) {
                         // If an active place has been clicked there is only one reasonable explanation for this:
-                        // It is a sink place of a sub-process and we need to close the sub-process editing window
+                        // It is a sink place of a sub-process 
+                        RemoteControl = ParentControl.getRemoteControlReference();
+                        // De-register the sub-process 
+                        RemoteControl.changeTokenGameReference(null, true);
+                        // and close the editor
                         thisEditor.closeEditor();
 
                     }

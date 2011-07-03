@@ -385,10 +385,10 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
 	@Override
 	public void setEnabled(boolean enabled) {
 		Container parent = this.getParent();
+		// Look for a parent that is an IEditor. Quite possibly, there isn't
+		while ((parent!=null)&&(!(parent instanceof IEditor)))		
+			parent = parent.getParent();
 		if (parent != null) {
-			while (!(parent instanceof IEditor)) {
-				parent = parent.getParent();
-			}
 			if (((IEditor) parent).isShowingTStar())
 				super.setEnabled(false);
 			else
