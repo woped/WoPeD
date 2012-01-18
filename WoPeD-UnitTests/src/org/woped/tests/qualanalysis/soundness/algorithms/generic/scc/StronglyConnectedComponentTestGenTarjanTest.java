@@ -1,31 +1,35 @@
 package org.woped.tests.qualanalysis.soundness.algorithms.generic.scc;
 
-import static org.junit.Assert.fail;
+import java.util.Set;
+
+import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.woped.qualanalysis.soundness.algorithms.generic.scc.StronglyConnectedComponentTestGenTarjan;
-import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
-import org.woped.tests.qualanalysis.soundness.algorithms.testing.LowLevelPetriNetMock;
+import org.woped.qualanalysis.soundness.marking.Marking;
+import org.woped.tests.qualanalysis.soundness.algorithms.testing.MNetMock;
 
 public class StronglyConnectedComponentTestGenTarjanTest {
-	private LowLevelPetriNetMock lowLevelPetriNetMock;
-	private StronglyConnectedComponentTestGenTarjan stronglyConnectedComponentTestGenTarjan;
+	private MNetMock mNetMock;
+	private StronglyConnectedComponentTestGenTarjan<Marking> stronglyConnectedComponentTestGenTarjan;
 
 	@Before
 	public void setUp() throws Exception {
-		lowLevelPetriNetMock = new LowLevelPetriNetMock();
-		stronglyConnectedComponentTestGenTarjan = new StronglyConnectedComponentTestGenTarjan<AbstractNode>(lowLevelPetriNetMock);
+		mNetMock = new MNetMock();
+		stronglyConnectedComponentTestGenTarjan = new StronglyConnectedComponentTestGenTarjan<Marking>(mNetMock);
 	}
 
 	@Test
 	public void testGetStronglyConnectedComponents() {
-		fail("Not yet implemented");
-	}
+		Set<Set<Marking>> actual = stronglyConnectedComponentTestGenTarjan.getStronglyConnectedComponents();
+		
+		Assert.assertFalse(actual.isEmpty());
+		}
 
 	@Test
 	public void testIsStronglyConnected() {
-		fail("Not yet implemented");
+		Assert.assertTrue(stronglyConnectedComponentTestGenTarjan.isStronglyConnected());
 	}
 
 }

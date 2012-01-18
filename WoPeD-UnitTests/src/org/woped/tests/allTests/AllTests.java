@@ -11,7 +11,7 @@ import org.woped.tests.translationTests.TestMessages;
 
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses( {TestMessages.class, TestEditorEventProcessor.class, SoundnessTests.class })
+@Suite.SuiteClasses( { SoundnessTests.class })
 
 public class AllTests {
 

@@ -133,7 +133,6 @@ public class MNetMock implements IMarkingNet {
 
 	@Override
 	public Set<Marking> getAllContainedNodes() {
-		// TODO Auto-generated method stub
-		return null;
+		return new HashSet<Marking>(markings);
 	}
 }
