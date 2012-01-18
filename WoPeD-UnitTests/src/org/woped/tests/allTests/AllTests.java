@@ -6,11 +6,12 @@ import junit.framework.TestSuite;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.woped.tests.editor.TestEditorEventProcessor;
+import org.woped.tests.soundness.SoundnessTests;
 import org.woped.tests.translationTests.TestMessages;
 
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses( {TestMessages.class, TestEditorEventProcessor.class  })
+@Suite.SuiteClasses( {TestMessages.class, TestEditorEventProcessor.class, SoundnessTests.class })
 
 public class AllTests {
 
