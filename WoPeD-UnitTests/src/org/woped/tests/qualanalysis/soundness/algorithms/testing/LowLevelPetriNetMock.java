@@ -8,7 +8,6 @@ import java.util.Set;
  * 
  */
 
-import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.sourcesink.ISourceSinkTest;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
@@ -29,9 +28,9 @@ public class LowLevelPetriNetMock implements ILowLevelPetriNet {
 		places[2] =  new PlaceNode(0, 0, "p2", "p2", "p2");
 		
 //		Create transitions
-		transitions[0] = new TransitionNode("t3", "t3", "t3");
-		transitions[1] = new TransitionNode("t2", "t2", "t2");
-		transitions[2] = new TransitionNode("t1", "t1", "t1");
+		transitions[0] = new TransitionNode("t3", "t3", "t3", 0);
+		transitions[1] = new TransitionNode("t2", "t2", "t2", 0);
+		transitions[2] = new TransitionNode("t1", "t1", "t1", 0);
 		
 //		Create post- and preNode entries
 		places[2].addPostNode(transitions[1]);

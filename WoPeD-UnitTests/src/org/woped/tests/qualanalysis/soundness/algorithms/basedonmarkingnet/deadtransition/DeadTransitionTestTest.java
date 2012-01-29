@@ -28,10 +28,10 @@ public class DeadTransitionTestTest {
 		Set<TransitionNode> expected = new HashSet<TransitionNode>();
 		
 //		Create expected values
-		transitions[0] = new TransitionNode("t3", "t3", "t3");
-		transitions[1] = new TransitionNode("t2", "t2", "t2");
-		transitions[2] = new TransitionNode("t1", "t1", "t1");
-		transitions[3] = new TransitionNode("t*", "t*", "t*");
+		transitions[0] = new TransitionNode("t3", "t3", "t3", 0);
+		transitions[1] = new TransitionNode("t2", "t2", "t2", 0);
+		transitions[2] = new TransitionNode("t1", "t1", "t1", 0);
+		transitions[3] = new TransitionNode("t*", "t*", "t*", 0);
 		for(int i = 0; i < transitions.length; i++)
 			expected.add(transitions[i]);
 		

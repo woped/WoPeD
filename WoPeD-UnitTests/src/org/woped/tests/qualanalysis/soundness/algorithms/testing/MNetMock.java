@@ -22,10 +22,10 @@ public class MNetMock implements IMarkingNet {
 		places[2] =  new PlaceNode(0, 0, "p2", "p2", "p2");
 		
 //		Create transitions
-		transitions[0] = new TransitionNode("t3", "t3", "t3");
-		transitions[1] = new TransitionNode("t2", "t2", "t2");
-		transitions[2] = new TransitionNode("t1", "t1", "t1");
-		transitions[3] = new TransitionNode("t*", "t*", "t*");
+		transitions[0] = new TransitionNode("t3", "t3", "t3", 0);
+		transitions[1] = new TransitionNode("t2", "t2", "t2", 0);
+		transitions[2] = new TransitionNode("t1", "t1", "t1", 0);
+		transitions[3] = new TransitionNode("t*", "t*", "t*", 0);
 		
 //		Create post- and preNode entries
 		places[2].addPostNode(transitions[1]);
