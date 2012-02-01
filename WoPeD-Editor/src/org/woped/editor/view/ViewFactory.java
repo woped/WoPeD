@@ -44,9 +44,6 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
-import org.woped.core.model.uml.ActivityModel;
-import org.woped.core.model.uml.OperatorModel;
-import org.woped.core.model.uml.StateModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.view.petrinet.NameView;
@@ -66,9 +63,6 @@ import org.woped.editor.view.petrinet.TransitionResourceView;
 import org.woped.editor.view.petrinet.TriggerExtView;
 import org.woped.editor.view.petrinet.TriggerResView;
 import org.woped.editor.view.petrinet.TriggerTimeView;
-import org.woped.editor.view.uml.ActivityView;
-import org.woped.editor.view.uml.OperatorView;
-import org.woped.editor.view.uml.StateView;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -228,16 +222,7 @@ public class ViewFactory extends AbstractViewFactory
         	    
         	};
         	
-        } else if (cell instanceof ActivityModel)
-        {
-            return new ActivityView(cell);
-        } else if (cell instanceof StateModel)
-        {
-            return new StateView(cell);
-        } else if (cell instanceof OperatorModel)
-        {
-            return new OperatorView(cell);
-        } else
+        }  else
         {
             LoggerManager.error(Constants.EDITOR_LOGGER, "Not known ViewType " + cell.getClass().getName().toString());
             // return null;
