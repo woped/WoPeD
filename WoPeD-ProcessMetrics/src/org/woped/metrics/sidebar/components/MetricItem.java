@@ -113,8 +113,7 @@ public class MetricItem extends JPanel {
 			keyLabel.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					uiHandler.setHighlight(null);
-					editor.getGraph().refreshNet();
-					editor.getGraph().repaint();
+					editor.repaint();
 				}
 			});
 		}

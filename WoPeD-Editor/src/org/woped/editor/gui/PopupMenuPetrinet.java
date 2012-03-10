@@ -26,13 +26,16 @@
 package org.woped.editor.gui;
 
 import java.awt.EventQueue;
+import java.beans.PropertyChangeEvent;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.GroupModel;
+import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 
@@ -48,51 +51,53 @@ import org.woped.editor.controller.VisualController;
 @SuppressWarnings("serial")
 public class PopupMenuPetrinet extends JPopupMenu
 {
-    private static PopupMenuPetrinet c_instance                = null;
+    private static PopupMenuPetrinet 	c_instance                = null;
 
-    private JMenuItem                m_openSubprocessMenuItem  = null;
-    private JMenuItem                m_propertiesMenuItem      = null;
+    private	static AbstractApplicationMediator c_mediator				  = null;
 
-    private JMenuItem                m_addPointMenuItem        = null;
-    private JMenuItem                m_removePointMenuItem     = null;
+    private JMenuItem                	m_openSubprocessMenuItem  = null;
+    private JMenuItem                	m_propertiesMenuItem      = null;
 
-    private JMenuItem                m_externalTriggerMenuItem = null;
-    private JMenuItem                m_resourceTriggerMenuItem = null;
-    private JMenuItem                m_timeTriggerMenuItem     = null;
-    private JMenuItem                m_removeTriggerMenuItem   = null;
+    private JMenuItem                	m_addPointMenuItem        = null;
+    private JMenuItem                	m_removePointMenuItem     = null;
 
-    private JMenuItem                m_addTokenMenuItem        = null;
-    private JMenuItem                m_removeTokenMenuItem     = null;
+    private JMenuItem                	m_externalTriggerMenuItem = null;
+    private JMenuItem                	m_resourceTriggerMenuItem = null;
+    private JMenuItem                	m_timeTriggerMenuItem     = null;
+    private JMenuItem                	m_removeTriggerMenuItem   = null;
 
-    private JMenuItem                m_removeMenuItem          = null;
-    private JMenuItem                m_renameMenuItem          = null;
-    private JMenuItem                m_copyMenuItem            = null;
-    private JMenuItem                m_cutMenuItem             = null;
-    private JMenuItem                m_pasteMenuItem           = null;
+    private JMenuItem                	m_addTokenMenuItem        = null;
+    private JMenuItem                	m_removeTokenMenuItem     = null;
 
-    private JMenuItem                m_addPlaceMenuItem        = null;
-    private JMenuItem                m_addTransitionMenuItem   = null;
-    private JMenuItem                m_addAndSplitMenuItem     = null;
-    private JMenuItem                m_addAndJoinMenuItem      = null;
-    private JMenuItem		     	 m_addAndSplitJoinMenuItem = null;
-    private JMenuItem                m_addXorSplitMenuItem     = null;
-    private JMenuItem                m_addXorJoinMenuItem      = null;
-    private JMenuItem                m_addXorSplitJoinMenuItem = null;
-    private JMenuItem                m_addAndJoinXorSplitMenuItem = null;
-    private JMenuItem                m_addXorJoinAndSplitMenuItem = null;
-    private JMenuItem                m_subProcessMenuItem      = null;
+    private JMenuItem                	m_removeMenuItem          = null;
+    private JMenuItem                	m_renameMenuItem          = null;
+    private JMenuItem                	m_copyMenuItem            = null;
+    private JMenuItem                	m_cutMenuItem             = null;
+    private JMenuItem                	m_pasteMenuItem           = null;
+    private JMenuItem                	m_pasteAtMenuItem         = null;
 
-    /*
-    private JMenu                    m_arcMenu                 = null;
-    private JMenu                    m_netMenu                 = null;
-    private JMenuItem                m_routeAllItem            = null;
-    private JMenuItem                m_routeNoneItem           = null;
-    private JMenuItem                m_routeMenuItem           = null;
-    private JMenuItem                m_unrouteMenuItem         = null;
-    */
+    private JMenuItem                	m_addPlaceMenuItem        = null;
+    private JMenuItem                	m_addTransitionMenuItem   = null;
+    private JMenuItem                	m_addAndSplitMenuItem     = null;
+    private JMenuItem                	m_addAndJoinMenuItem      = null;
+    private JMenuItem		     	 	m_addAndSplitJoinMenuItem = null;
+    private JMenuItem                	m_addXorSplitMenuItem     = null;
+    private JMenuItem                	m_addXorJoinMenuItem      = null;
+    private JMenuItem               	m_addXorSplitJoinMenuItem = null;
+    private JMenuItem                	m_addAndJoinXorSplitMenuItem = null;
+    private JMenuItem                	m_addXorJoinAndSplitMenuItem = null;
+    private JMenuItem                	m_addSubprocessMenuItem     = null;
+    private JMenuItem					m_rotateRightMenuItem		= null;
+    private JMenuItem					m_rotateLeftMenuItem	    = null;
+    private JMenuItem					m_groupMenuItem	    		= null;
+    private JMenuItem					m_ungroupMenuItem	    	= null;
 
+    private WoPeDAction 			 	action = null;
+    private String						action_id;
+ 
     private PopupMenuPetrinet()
     {
+        add(getOpenSubprocessMenuItem());
         add(getAddPlaceMenuItem());
         add(getAddTransitionMenuItem());
         add(getAddAndSplitMenuItem());
@@ -103,33 +108,30 @@ public class PopupMenuPetrinet extends JPopupMenu
         add(getAddXorSplitJoinMenuItem());
         add(getAddAndJoinXorSplitMenuItem());
         add(getAddXorJoinAndSplitMenuItem());
-        add(getSubProcessMenuItem());
-
-//        addSeparator();
+        add(getAddSubprocessMenuItem());
         add(getPropertiesMenuItem());
         add(getRenameMenuItem());
-//        addSeparator();
         add(getRemoveMenuItem());
         add(getCutMenuItem());
         add(getCopyMenuItem());
         add(getPasteMenuItem());  
-//        addSeparator();
+        add(getPasteAtMenuItem());  
         add(getAddTokenMenuItem());
         add(getRemoveTokenMenuItem());
+        add(getRotateLeftMenuItem());
+        add(getRotateRightMenuItem());
         add(getExternalTriggerMenuItem());
         add(getResourceTriggerMenuItem());
         add(getTimeTriggerMenuItem());
         add(getRemoveTriggerMenuItem());
-//        add(getRouteMenuItem());
-//        add(getUnrouteMenuItem());
         add(getAddPointMenuItem());
         add(getRemovePointMenuItem());
-        add(getOpenSubprocessMenuItem());
+        add(getGroupMenuItem());
+        add(getUngroupMenuItem());
         pack();
     }
 
     /**
-     * TODO: DOCUMENTATION (xraven)
      * 
      * @return
      */
@@ -138,38 +140,50 @@ public class PopupMenuPetrinet extends JPopupMenu
        	if (c_instance == null)
         {
             c_instance = new PopupMenuPetrinet();
+            VisualController.getInstance().propertyChange(new PropertyChangeEvent(c_mediator, "InternalFrameCount", null, null));
         }
         c_instance.pack();
         return c_instance;
     }
-
+    
+    public static void setMediator(AbstractApplicationMediator mediator) {
+    	c_mediator = mediator;
+    }
+   
     public void show(final Object obj, final AbstractGraph graph, final int x, final int y)
     {
-    	// Wait with displaying the popup until the
+     	// Wait with displaying the popup until the
     	// selection event has been processed.
     	// This way, the size of the popup menu will be correct
     	// according to the selected item
     	Runnable runner = new Runnable() {
             public void run() {
     			Object selectedCell = graph.getSelectionCell();            	            	
-                if (selectedCell == null 
-                    	|| selectedCell instanceof GroupModel 
+                if (selectedCell == null || selectedCell instanceof GroupModel 
                     	|| selectedCell instanceof ArcModel) 
                     {
                     	pack();
                         PopupMenuPetrinet.super.show(graph, x, y);
-                    }
+                    } 
+                    	
               };
     	};
     	EventQueue.invokeLater(runner);
+    }
+    
+    public void show(final AbstractGraph graph, final int x, final int y)
+    {
+        PopupMenuPetrinet.super.show(graph, x, y);
     }
     
     private JMenuItem getRenameMenuItem()
     {
         if (m_renameMenuItem == null)
         {
-            m_renameMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_RENAME));
-            VisualController.getInstance().addElement(m_renameMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ELEMENT_SELECTION, VisualController.IGNORE);
+          	action_id = ActionFactory.ACTIONID_RENAME;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_renameMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_renameMenuItem);            
         }
         return m_renameMenuItem;
     }
@@ -178,8 +192,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_removeMenuItem == null)
         {
-            m_removeMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_REMOVE));
-            VisualController.getInstance().addElement(m_removeMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_REMOVE;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_removeMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_removeMenuItem);            
         }
         return m_removeMenuItem;
     }
@@ -188,8 +204,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_copyMenuItem == null)
         {
-            m_copyMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_COPY));
-            VisualController.getInstance().addElement(m_copyMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_COPY;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_copyMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_copyMenuItem);            
         }
         return m_copyMenuItem;
     }
@@ -198,8 +216,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_cutMenuItem == null)
         {
-            m_cutMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_CUT));
-            VisualController.getInstance().addElement(m_cutMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ANY_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_CUT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_cutMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_cutMenuItem);            
         }
         return m_cutMenuItem;
     }
@@ -208,8 +228,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_externalTriggerMenuItem == null)
         {
-            m_externalTriggerMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_EXT_TRIGGER));
-            VisualController.getInstance().addElement(m_externalTriggerMenuItem, VisualController.TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_MESSAGE_TRIGGER;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_externalTriggerMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_externalTriggerMenuItem);            
         }
         return m_externalTriggerMenuItem;
     }
@@ -218,8 +240,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_resourceTriggerMenuItem == null)
         {
-            m_resourceTriggerMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_RES_TRIGGER));
-            VisualController.getInstance().addElement(m_resourceTriggerMenuItem, VisualController.TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_RESOURCE_TRIGGER;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_resourceTriggerMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_resourceTriggerMenuItem);            
         }
         return m_resourceTriggerMenuItem;
     }
@@ -228,9 +252,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_timeTriggerMenuItem == null)
         {
-
-            m_timeTriggerMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_TIME_TRIGGER));
-            VisualController.getInstance().addElement(m_timeTriggerMenuItem, VisualController.TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_TIME_TRIGGER;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_timeTriggerMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_timeTriggerMenuItem);            
         }
         return m_timeTriggerMenuItem;
     }
@@ -239,8 +264,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_removeTriggerMenuItem == null)
         {
-            m_removeTriggerMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_REMOVE_TIRGGER));
-            VisualController.getInstance().addElement(m_removeTriggerMenuItem, VisualController.TRIGGERED_TRANSITION_SELECTION, VisualController.TRANSITION_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_REMOVE_TRIGGER;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_removeTriggerMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_removeTriggerMenuItem);            
         }
         return m_removeTriggerMenuItem;
     }
@@ -249,8 +276,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addPlaceMenuItem == null)
         {
-            m_addPlaceMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_PLACE));
-            VisualController.getInstance().addElement(m_addPlaceMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+        	action_id = ActionFactory.ACTIONID_ADD_PLACE;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addPlaceMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addPlaceMenuItem);            
         }
         return m_addPlaceMenuItem;
     }
@@ -259,8 +288,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addTokenMenuItem == null)
         {
-            m_addTokenMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_TOKEN));
-            VisualController.getInstance().addElement(m_addTokenMenuItem, VisualController.PLACE_SELECTION, VisualController.PLACE_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_TOKEN;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addTokenMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addTokenMenuItem);            
         }
         return m_addTokenMenuItem;
     }
@@ -269,8 +300,11 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_removeTokenMenuItem == null)
         {
-            m_removeTokenMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_REMOVE_TOKEN));
-            VisualController.getInstance().addElement(m_removeTokenMenuItem, VisualController.TOKEN_PLACE_SELECTION, VisualController.PLACE_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_REMOVE_TOKEN;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_removeTokenMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_removeTokenMenuItem);            
+//            VisualController.getInstance().addElement(action, VisualController.TOKEN_PLACE_SELECTION, VisualController.PLACE_SELECTION, VisualController.IGNORE);
         }
         return m_removeTokenMenuItem;
     }
@@ -279,8 +313,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_openSubprocessMenuItem == null)
         {
-            m_openSubprocessMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_OPEN_SUBPROCESS));
-            VisualController.getInstance().addElement(m_openSubprocessMenuItem, VisualController.SUBPROCESS_SELECTION, VisualController.SUBPROCESS_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_OPEN_SUBPROCESS;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_openSubprocessMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_openSubprocessMenuItem);            
         }
         return m_openSubprocessMenuItem;
     }
@@ -289,8 +325,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addAndJoinMenuItem == null)
         {
-            m_addAndJoinMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_ANDJOIN));
-            VisualController.getInstance().addElement(m_addAndJoinMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_ANDJOIN;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addAndJoinMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addAndJoinMenuItem);            
         }
         return m_addAndJoinMenuItem;
     }
@@ -299,8 +337,11 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addAndSplitMenuItem == null)
         {
-            m_addAndSplitMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_ANDSPLIT));
-            VisualController.getInstance().addElement(m_addAndSplitMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_ANDSPLIT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addAndSplitMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addAndSplitMenuItem);            
+//            VisualController.getInstance().addElement(action, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
         }
         return m_addAndSplitMenuItem;
     }
@@ -309,8 +350,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
     	if (m_addAndSplitJoinMenuItem == null)
     	{
-    		m_addAndSplitJoinMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_ANDSPLITJOIN));
-    		VisualController.getInstance().addElement(m_addAndSplitJoinMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);    		
+           	action_id = ActionFactory.ACTIONID_ADD_ANDSPLITJOIN;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addAndSplitJoinMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addAndSplitJoinMenuItem);            
     	}
     	return m_addAndSplitJoinMenuItem;    	
     }
@@ -319,8 +362,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addTransitionMenuItem == null)
         {
-            m_addTransitionMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_TRANSITION));
-            VisualController.getInstance().addElement(m_addTransitionMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_TRANSITION;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addTransitionMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addTransitionMenuItem);            
         }
         return m_addTransitionMenuItem;
     }
@@ -329,8 +374,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addXorJoinMenuItem == null)
         {
-            m_addXorJoinMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_XORJOIN));
-            VisualController.getInstance().addElement(m_addXorJoinMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_XORJOIN;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addXorJoinMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addXorJoinMenuItem);            
         }
         return m_addXorJoinMenuItem;
     }
@@ -339,8 +386,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addXorSplitMenuItem == null)
         {
-            m_addXorSplitMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_XORSPLIT));
-            VisualController.getInstance().addElement(m_addXorSplitMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_XORSPLIT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addXorSplitMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addXorSplitMenuItem);            
         }
         return m_addXorSplitMenuItem;
     }
@@ -349,8 +398,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addXorSplitJoinMenuItem == null)
         {
-            m_addXorSplitJoinMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_XORSPLITJOIN));
-            VisualController.getInstance().addElement(m_addXorSplitJoinMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_XORSPLITJOIN;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addXorSplitJoinMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addXorSplitJoinMenuItem);            
         }
         return m_addXorSplitJoinMenuItem;
     }
@@ -359,9 +410,11 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addAndJoinXorSplitMenuItem == null)
         {
-        	m_addAndJoinXorSplitMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_ANDJOINXORSPLIT));
-            VisualController.getInstance().addElement(m_addAndJoinXorSplitMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
-        }
+           	action_id = ActionFactory.ACTIONID_ADD_ANDJOINXORSPLIT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addAndJoinXorSplitMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addAndJoinXorSplitMenuItem);            
+         }
         return m_addAndJoinXorSplitMenuItem;
     }
 
@@ -369,38 +422,58 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_addXorJoinAndSplitMenuItem == null)
         {
-        	m_addXorJoinAndSplitMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_XORJOINANDSPLIT));
-            VisualController.getInstance().addElement(m_addXorJoinAndSplitMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_XORJOINANDSPLIT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addXorJoinAndSplitMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addXorJoinAndSplitMenuItem);            
         }
         return m_addXorJoinAndSplitMenuItem;
     }
     
-    private JMenuItem getSubProcessMenuItem()
+    private JMenuItem getAddSubprocessMenuItem()
     {
-        if (m_subProcessMenuItem == null)
+        if (m_addSubprocessMenuItem == null)
         {
-            m_subProcessMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_SUBPROCESS));
-            VisualController.getInstance().addElement(m_subProcessMenuItem, VisualController.NO_SELECTION, VisualController.NO_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_SUBPROCESS;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addSubprocessMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addSubprocessMenuItem);            
         }
-        return m_subProcessMenuItem;
+        return m_addSubprocessMenuItem;
     }
 
     private JMenuItem getPasteMenuItem()
     {
         if (m_pasteMenuItem == null)
         {
-            m_pasteMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_PASTE));
-            VisualController.getInstance().addElement(m_pasteMenuItem, VisualController.CAN_PASTE, VisualController.IGNORE, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_PASTE;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_pasteMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_pasteMenuItem);            
         }
         return m_pasteMenuItem;
+    }
+
+    private JMenuItem getPasteAtMenuItem()
+    {
+        if (m_pasteAtMenuItem == null)
+        {
+           	action_id = ActionFactory.ACTIONID_PASTE_AT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_pasteAtMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_pasteAtMenuItem);            
+        }
+        return m_pasteAtMenuItem;
     }
 
     private JMenuItem getAddPointMenuItem()
     {
         if (m_addPointMenuItem == null)
         {
-            m_addPointMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ADD_POINT));
-            VisualController.getInstance().addElement(m_addPointMenuItem, VisualController.ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_ADD_POINT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_addPointMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_addPointMenuItem);            
         }
         return m_addPointMenuItem;
     }
@@ -409,8 +482,10 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_removePointMenuItem == null)
         {
-            m_removePointMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_REMOVE_POINT));
-            VisualController.getInstance().addElement(m_removePointMenuItem, VisualController.ARC_POINT, VisualController.ARC_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_REMOVE_POINT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_removePointMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_removePointMenuItem);            
         }
         return m_removePointMenuItem;
     }
@@ -419,62 +494,59 @@ public class PopupMenuPetrinet extends JPopupMenu
     {
         if (m_propertiesMenuItem == null)
         {
-            m_propertiesMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_OPEN_PROPERTIES));
-            //VisualController.getInstance().addElement(m_propertiesMenuItem, VisualController.ELEMENT_SELECTION, VisualController.ELEMENT_SELECTION, VisualController.IGNORE);
-            VisualController.getInstance().addElement(m_propertiesMenuItem, VisualController.NOXOR_ARC_SELECTION, VisualController.NOXOR_ARC_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_OPEN_PROPERTIES;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_propertiesMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_propertiesMenuItem);            
         }
         return m_propertiesMenuItem;
     }
-/*
-    private JMenu getNetMenu()
+    
+    private JMenuItem getRotateRightMenuItem()
     {
-        if (m_netMenu == null)
+        if (m_rotateRightMenuItem == null)
         {
-            m_netMenu = new JMenu("Routing");
-            VisualController.getInstance().addElement(m_arcMenu, VisualController.ALWAYS, VisualController.ALWAYS, VisualController.IGNORE);
-            m_netMenu.add(getRouteAllMenuItem());
-            m_netMenu.add(getRouteNoneMenuItem());
-            // TODO: lai m_netMenu.add(getAnnealingLayoutMenuItem());
+           	action_id = ActionFactory.ACTIONID_ROTATE_TRANS_RIGHT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_rotateRightMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_rotateRightMenuItem);            
         }
-        return m_netMenu;
+        return m_rotateRightMenuItem;
     }
 
-    private JMenuItem getRouteAllMenuItem()
+    private JMenuItem getRotateLeftMenuItem()
     {
-        if (m_routeAllItem == null)
+        if (m_rotateRightMenuItem == null)
         {
-            m_routeAllItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ACTIVATE_ALL_ROUTING));
+           	action_id = ActionFactory.ACTIONID_ROTATE_TRANS_LEFT;
+        	action = ActionFactory.getStaticAction(action_id);
+            m_rotateLeftMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_rotateLeftMenuItem);            
         }
-        return m_routeAllItem;
-    }
-
-    private JMenuItem getRouteNoneMenuItem()
-    {
-        if (m_routeNoneItem == null)
-        {
-            m_routeNoneItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_DEACTIVATE_ALL_ROUTING));
-        }
-        return m_routeNoneItem;
+        return m_rotateLeftMenuItem;
     }
     
-    private JMenuItem getRouteMenuItem()
+    private JMenuItem getGroupMenuItem()
     {
-        if (m_routeMenuItem == null)
+        if (m_groupMenuItem == null)
         {
-            m_routeMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_ACTIVATE_ROUTING));
-            VisualController.getInstance().addElement(m_routeMenuItem, VisualController.UNROUTED_ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_GROUP;
+        	action = ActionFactory.getStaticAction(action_id);
+        	m_groupMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_groupMenuItem);            
         }
-        return m_routeMenuItem;
+        return m_groupMenuItem;
     }
 
-    private JMenuItem getUnrouteMenuItem()
+    private JMenuItem getUngroupMenuItem()
     {
-        if (m_unrouteMenuItem == null)
+        if (m_ungroupMenuItem == null)
         {
-            m_unrouteMenuItem = new JMenuItem(ActionFactory.getStaticAction(ActionFactory.ACTIONID_DEACTIVATE_ROUTING));
-            VisualController.getInstance().addElement(m_unrouteMenuItem, VisualController.ROUTED_ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
+           	action_id = ActionFactory.ACTIONID_UNGROUP;
+        	action = ActionFactory.getStaticAction(action_id);
+        	m_ungroupMenuItem = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_ungroupMenuItem);            
         }
-        return m_unrouteMenuItem;
+        return m_ungroupMenuItem;
     }
-    */
 }

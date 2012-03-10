@@ -74,6 +74,7 @@ public class Marking implements IMarking, INode<Marking> {
         if (!Arrays.equals(placeUnlimited, other.placeUnlimited)) {
             return false;
         }
+        
         for (int i = 0; i < tokens.length; i++) {
 
             if (placeUnlimited[i] && other.placeUnlimited[i]) {
@@ -92,7 +93,7 @@ public class Marking implements IMarking, INode<Marking> {
      * @return the success of adding the arc
      */
     public boolean addSuccessor(Arc successor) {
-        return successors.add(successor);
+    	return successors.add(successor);
     }
 
     /**

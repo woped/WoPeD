@@ -32,11 +32,10 @@ import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoableEdit;
 
 import org.jgraph.graph.DefaultGraphModel;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
@@ -85,14 +84,43 @@ public class WoPeDUndoableEdit implements UndoableEdit
     /*
      * (non-Javadoc)
      * 
+     * @see javax.swing.undo.UndoableEdit#undo()
+     */
+    public void undo() throws CannotUndoException
+    {
+    	// @TODO: The order in which we update the model is determined by the fact that we are using the view
+    	// to update the model here, e.g. we use the view's undo manager to restore information about deleted arcs.
+    	// This is why we have to perform insert operations into the model after its view has been updated.
+    	
+    	// Perform insert undo for model
+        deleteElements(m_inserted);
+        // Perform undo for view
+        m_innerEdit.undo();
+        // Perform delete undo for model
+        insertElements(m_removed);
+        
+//        LoggerManager.debug(Constants.EDITOR_LOGGER, "UNDO\n" + toString());
+    }    
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.swing.undo.UndoableEdit#redo()
      */
     public void redo() throws CannotRedoException
     {
-        deleteElements(m_innerEdit.getInserted());
-        m_innerEdit.redo();
-        insertElements(m_innerEdit.getInserted());
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "REDO\n" + toString());
+    	// @TODO: The order in which we update the model is determined by the fact that we are using the view
+    	// to update the model here, e.g. we use the view's undo manager to restore information about deleted arcs.
+    	// This is why we have to perform insert operations into the model after its view has been updated
+    	
+    	// Perform delete redo for model
+        deleteElements(m_removed);
+        // Perform undo for view
+        m_innerEdit.redo();    	
+        // Perform insert redo for model
+        insertElements(m_inserted);
+
+ //       LoggerManager.debug(Constants.EDITOR_LOGGER, "REDO\n" + toString());
     }
 
     /**
@@ -121,52 +149,43 @@ public class WoPeDUndoableEdit implements UndoableEdit
             for (int i = 0; i < elements.length; i++)
             {
                 LoggerManager.debug(Constants.EDITOR_LOGGER, "Trying to create " + elements[i].getClass());
-                if (elements[i] instanceof PetriNetModelElement)
+                if (elements[i] instanceof AbstractPetriNetElementModel)
                 {
-                    // m_editor.createPetriNetElement(((PetriNetModelElement)
-                    // elements[i]).getCreationMap(), false);
-                    m_editor.getModelProcessor().getElementContainer().addElement((PetriNetModelElement) elements[i]);
+                    m_editor.getModelProcessor().getElementContainer().addElement((AbstractPetriNetElementModel) elements[i]);
                 } else if (elements[i] instanceof ArcModel)
                 {
-//                     m_editor.createArc(((ArcModel)
-//                     elements[i]).getCreationMap(), false);
-//                    ArcModel newArc = m_editor.getModelProcessor().createArc(((ArcModel)elements[i]).getSourceId(), ((ArcModel)elements[i]).getTargetId());
-//                    newArc.setAttributes(((ArcModel)elements[i]).getAttributes());
                 	m_editor.getGraph().connect(((ArcModel) elements[i]), false);
                     m_editor.getModelProcessor().getElementContainer().addReference((ArcModel) elements[i]);
                     ((PetriNetModelProcessor)m_editor.getModelProcessor()).insertArc(((ArcModel) elements[i]), true);
-                    //PetriNetModelProcessor createArc
                 } else if (elements[i] instanceof GroupModel)
                 {
-                    AbstractElementModel mainModel = ((GroupModel)elements[i]).getMainElement();
+                    AbstractPetriNetElementModel mainModel = ((GroupModel)elements[i]).getMainElement();
                     if (!Arrays.asList(elements).contains(mainModel))
                         m_editor.getModelProcessor().getElementContainer().addElement(mainModel);
                 } else if (elements[i] instanceof TriggerModel)
                 {
                     TriggerModel trigger = (TriggerModel) elements[i];
                     ((TransitionModel) ((GroupModel) trigger.getParent()).getMainElement()).getToolSpecific().setTrigger((TriggerModel) elements[i]);
-                    // m_editor.getPetriNet().getElementContainer().getElementById(trigger.getOwnerId());
-                    // m_editor.createTrigger((TransitionModel)m_editor.getPetriNet().getElementContainer().getElementById(trigger.getOwnerId()),
-                    // trigger.getTriggertype(), false);
                 } else
                 {
                     LoggerManager.debug(Constants.EDITOR_LOGGER, "Could not insert type:" + elements[i].getClass());
                 }
             }
         }
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see javax.swing.undo.UndoableEdit#undo()
-     */
-    public void undo() throws CannotUndoException
-    {
-        deleteElements(m_innerEdit.getInserted());
-        m_innerEdit.undo();
-        insertElements(m_innerEdit.getInserted());
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "UNDO\n" + toString());
+        // Update the associated tree model for the side-bar view. 
+        // @TODO: This is sort of hackish, but in fact the whole solution is:
+        //
+        // The tree model is a model trying to follow another model (the one used for the jgraph based
+        // views). The tree model is fed with content of the other model, but changes are triggered
+        // by its view. Now in the case of undo / redo, we adjust the model after updating the view,
+        // because we use some information from the view to restore the model.
+        // This means that when the tree model update is triggered, we really don't have our jgraph model
+        // in a state where it can be used as a reference (it will still reflect the state
+        // before redo / undo).
+        //
+        // Hence, we manually trigger another update of the tree model here, once the undo / redo
+        // has been applied to the jgraph model
+        m_editor.getEditorPanel().GetTreeModel().refresh();
     }
 
     /*

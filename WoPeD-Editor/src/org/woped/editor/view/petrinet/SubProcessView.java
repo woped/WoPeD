@@ -30,8 +30,7 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.view.AbstractElementView;
+import org.woped.core.controller.IEditor;
 import org.woped.translations.Messages;
 
 /**
@@ -43,7 +42,7 @@ import org.woped.translations.Messages;
  */
 
 @SuppressWarnings("serial")
-public class SubProcessView extends AbstractElementView
+public class SubProcessView extends PetriNetElementView
 {
 
     private SubProcessRenderer renderer = null;
@@ -55,9 +54,9 @@ public class SubProcessView extends AbstractElementView
      * @param graph
      * @param mapper
      */
-    public SubProcessView(Object cell)
+    public SubProcessView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new SubProcessRenderer(cell);
     }
 
@@ -69,16 +68,6 @@ public class SubProcessView extends AbstractElementView
 
     }
 
-    public boolean isActivated()
-    {
-        return ((TransitionModel) getCell()).isActivated();
-    }
-
-    public boolean isFireing()
-    {
-        return ((TransitionModel) getCell()).isFireing();
-    }
-
     /**
      * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
      * 
@@ -86,7 +75,7 @@ public class SubProcessView extends AbstractElementView
      * 
      * 28.03.2003
      */
-    private class SubProcessRenderer extends AbstractElementRenderer
+    private class SubProcessRenderer extends PetriNetElementRenderer
     {
     	public SubProcessRenderer(Object cell)
     	{
@@ -117,7 +106,7 @@ public class SubProcessView extends AbstractElementView
                      
             }
             g2.setColor(this.getInnerDrawingsColor());
-            if (isActive() || isFireing())
+            if (isActive())
             {
             	ImageIcon img1 = Messages.getImageIcon("TokenGame.Subprocess.StepInto");
             	ImageIcon img2 = Messages.getImageIcon("TokenGame.Subprocess.StepOver");
@@ -129,21 +118,6 @@ public class SubProcessView extends AbstractElementView
             drawTime(g2, d);
         }
 
-        /**
-         * @return
-         */
-        public boolean isActive()
-        {
-            return SubProcessView.this.isActivated();
-        }
-
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return SubProcessView.this.isFireing();
-        }
     }
 
     /**

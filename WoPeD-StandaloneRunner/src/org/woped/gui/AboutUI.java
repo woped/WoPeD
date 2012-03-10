@@ -33,6 +33,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -183,15 +184,15 @@ public class AboutUI extends JDialog
         {
  			String changeLog = "";
         	String path = System.getProperty("user.dir");
-         	
-        	int pos = path.indexOf("\\WoPeD-StandaloneRunner");
+         	       	
+        	int pos = path.indexOf("WoPeD-StandaloneRunner");
         	if (pos > -1)
         	{
         		path = path.substring(0, pos);
-        		path += "\\WoPeD-Installer\\build-tools";
+        		path += "WoPeD-Installer" + File.separator + "build-tools";
         	}
         	
-        	path += "\\Changelog.txt";
+        	path += File.separator + "Changelog.txt";
         	
         	try {
         		int c;

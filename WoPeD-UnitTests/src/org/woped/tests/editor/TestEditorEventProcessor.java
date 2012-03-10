@@ -12,6 +12,7 @@ public class TestEditorEventProcessor {
 		PowerMockito.when(mockedDAO.countOverdrawnDaysThisMonth()).thenReturn((long) 10);
 	 */
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void testPaste(){
 		// create mocked elements

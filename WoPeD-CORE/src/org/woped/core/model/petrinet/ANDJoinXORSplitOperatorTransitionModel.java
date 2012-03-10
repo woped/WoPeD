@@ -3,7 +3,6 @@ package org.woped.core.model.petrinet;
 import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
 
@@ -18,7 +17,7 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
 	@Override
 	public void registerIncomingConnection(
     		PetriNetModelProcessor processor,
-			AbstractElementModel sourceModel) 
+			AbstractPetriNetElementModel sourceModel) 
 	{
 		TransitionModel inTransition =
 			getCreateINTransition(processor);			
@@ -31,7 +30,7 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
 	@Override
 	public void registerOutgoingConnection(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel targetModel) 
+    		AbstractPetriNetElementModel targetModel) 
 	{
 		// Create a new out transition for the XOR split part of this operator
 		TransitionModel outTransition =
@@ -48,14 +47,14 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
 
     public void registerOutgoingConnectionRemoval(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel otherModel)
+    		AbstractPetriNetElementModel otherModel)
     {    
     	// SOURCE IS XOR-SPLIT OPERATOR => delete inner Transition that
     	// is source to place IF more than 1 inner transition
     	
     	if (getSimpleTransContainer()
     			.getElementsByType(
-    					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    					AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
     					.size() != 1)
     	{
     		getSimpleTransContainer().removeAllSourceElements(otherModel.getId());
@@ -70,7 +69,7 @@ public class ANDJoinXORSplitOperatorTransitionModel extends
     	// First check, if the IN transition already exists.
     	// If so, we simply return it
     	PlaceModel centerPlace = getCenterPlace();
-    	Map<String, AbstractElementModel> centerSourceElements = 
+    	Map<String, AbstractPetriNetElementModel> centerSourceElements = 
     		getSimpleTransContainer().getSourceElements(centerPlace.getId());
     	if ((centerSourceElements!=null)&&(!centerSourceElements.isEmpty()))
     		result = (TransitionModel)getSimpleTransContainer().

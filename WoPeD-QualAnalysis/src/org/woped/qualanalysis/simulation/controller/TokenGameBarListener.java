@@ -154,16 +154,8 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
             RemoteControl.disablePlayButtons();
             break;
         case CLICK_PLAY:
-            /*
-             * Start "TokenGame" and disable Editor. Disable Play Button to prevent multiple TokenGame instances
-             */
-            // Cleanup needed to avoid double ENtries in the ChoiceBox
-            RemoteControl.disableStepDown();
-            // RemoteControl.disableRecordButton();
-            RemoteControl.disablePlayButton();
-            RemoteControl.cleanupTransition();
-            playbackActions();
-            RemoteControl.enablePlayButtons();
+        	// Start the playback fun
+        	RemoteControl.startPlayback();
             break;
         case CLICK_PAUSE:
             RemoteControl.setEndOfAutoPlay(true);
@@ -351,20 +343,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
         HistoryDialog.openSelected();
     }
 
-    private void playbackActions() {
-        // Active TokenGame, disable DrawMode, checkNet and activate transition
-        if (RemoteControl.getTokenGameController().isVisualTokenGame()) {
-            // RemoteControl.getTokenGameController().enableVisualTokenGame();
-            RemoteControl.getTokenGameController().tokenGameCheckNet();
-            if (RemoteControl.playbackRunning()) {
-                RemoteControl.startHistoryPlayback();
-            } else {
-                RemoteControl.clearHistoryData();
-            }
-        }
-        // RemoteControl.getTokenGameController().getThisEditor().setTokenGameEnabled(true);
-    }
-
     private void stopAction() {
         RemoteControl.setEndOfAutoPlay(true);
         while (RemoteControl.getTokenGameController().getThisEditor().isSubprocessEditor()) {
@@ -375,7 +353,6 @@ public class TokenGameBarListener implements ActionListener, MouseListener, Chan
         RemoteControl.setStepIn(false);
         RemoteControl.getSlimView().getSlimPanel().setChoiceListInvisible();
         RemoteControl.getEyeView().getSlimPanel().setChoiceListInvisible();
-        RemoteControl.getTokenGameController().getThisEditor().setTokenGameEnabled(false);
     }
 
     /*

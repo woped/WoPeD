@@ -64,7 +64,7 @@ public class TriggerExtView extends AbstractElementView
 
     }
 
-    /**
+	/**
      * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
      * 
      * this inner class contains the Renderer information of an transition

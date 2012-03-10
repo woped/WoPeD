@@ -4,7 +4,8 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
@@ -42,12 +43,12 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
      * @return new created lowlevelPetriNet
      */
     protected void createLowLevelPetriNet() {
-        Iterator<AbstractElementModel> iterTransition = sa.getTransitions().iterator();
-        Iterator<AbstractElementModel> iterPlace = sa.getPlaces().iterator();
+        Iterator<AbstractPetriNetElementModel> iterTransition = sa.getTransitions().iterator();
+        Iterator<AbstractPetriNetElementModel> iterPlace = sa.getPlaces().iterator();
 
         LowLevelPetriNet lNet = new LowLevelPetriNet();
-        Set<AbstractElementModel> successors;
-        Set<AbstractElementModel> predecessors;
+        Set<AbstractPetriNetElementModel> successors;
+        Set<AbstractPetriNetElementModel> predecessors;
         TransitionModel tm;
         PlaceModel pm;
 
@@ -60,16 +61,36 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
 
         // loops over all transitions and set predecessors and successors
         while (iterTransition.hasNext()) {
-            tm = (TransitionModel) iterTransition.next();
+        	AbstractPetriNetElementModel trans = iterTransition.next();
+        	AbstractPetriNetElementModel opTrans = null; 
+        	tm = (TransitionModel) trans;
             successors = NetAlgorithms.getDirectlyConnectedNodes(tm, NetAlgorithms.connectionTypeOUTBOUND);
             predecessors = NetAlgorithms.getDirectlyConnectedNodes(tm, NetAlgorithms.connectionTypeINBOUND);
-
+            ModelElementContainer mec;
+            AbstractPetriNetElementModel elem = null;
+            Iterator<ModelElementContainer> ownerIterator = trans.getOwningContainersIterator();
+            while (ownerIterator.hasNext()) {
+            	mec = ownerIterator.next();
+            	elem = mec.getOwningElement();
+            	if (elem != null && elem.getType() == TransitionModel.TRANS_OPERATOR_TYPE) {
+            		opTrans = (TransitionModel)elem;
+            		break;
+            	}
+            }
+         
             // add current transition node
-            TransitionNode tNode = lNet.getTransitionNode(new TransitionNode(tm.getId(), tm.getNameValue(),
-                    makeOriginId(tm.getId())));
+            TransitionNode tNode;
+            if (opTrans != null && opTrans.getType() == TransitionModel.TRANS_OPERATOR_TYPE) {
+            	tNode = lNet.getTransitionNode(new TransitionNode(tm.getId(), tm.getNameValue(),
+                    makeOriginId(tm.getId()), ((OperatorTransitionModel)opTrans).getOperatorType()));
+            }
+            else {
+            	tNode = lNet.getTransitionNode(new TransitionNode(tm.getId(), tm.getNameValue(),
+                    makeOriginId(tm.getId()), OperatorTransitionModel.TRANS_SIMPLE_TYPE));
+            }
 
             // add predecessor of current transition node
-            for (AbstractElementModel predecessor : predecessors) {
+            for (AbstractPetriNetElementModel predecessor : predecessors) {
                 lNet.getPlaceNode(
                         new PlaceNode(((PlaceModel) predecessor).getTokenCount(), ((PlaceModel) predecessor)
                                 .getVirtualTokenCount(), predecessor.getId(), predecessor.getNameValue(),
@@ -77,7 +98,7 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
             }
 
             // add successor of current transition node
-            for (AbstractElementModel successor : successors) {
+            for (AbstractPetriNetElementModel successor : successors) {
                 tNode.addPostNode(lNet.getPlaceNode(new PlaceNode(((PlaceModel) successor).getTokenCount(),
                         ((PlaceModel) successor).getVirtualTokenCount(), successor.getId(), successor.getNameValue(),
                         makeOriginId(successor.getId()))));
@@ -86,7 +107,7 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
         }
         // if editor is subprocess-editor, add a token to source-places
         if (isSubprocess) {
-            Iterator<AbstractElementModel> sourcePlacesIterator = sa.getSourcePlaces().iterator();
+            Iterator<AbstractPetriNetElementModel> sourcePlacesIterator = sa.getSourcePlaces().iterator();
             String sourcePlaceId;
             while (sourcePlacesIterator.hasNext()) {
                 sourcePlaceId = sourcePlacesIterator.next().getId();

@@ -1,7 +1,6 @@
 package org.woped.qualanalysis.service;
 
 import org.woped.core.controller.IEditor;
-import org.woped.qualanalysis.woflan.QualanalysisServiceImplementWoflan;
 
 /**
  * factory class of QualanalysisService
@@ -17,9 +16,6 @@ public class QualAnalysisServiceFactory {
      * @return QualanalysisServiceObject
      */
     public static IQualanalysisService createNewQualAnalysisService(IEditor editor) {
-        if (editor.isUseWoflanDLL()) {
-            return new QualanalysisServiceImplementWoflan(editor);
-        }
         return new QualanalysisServiceImplement(editor);
     }
 }

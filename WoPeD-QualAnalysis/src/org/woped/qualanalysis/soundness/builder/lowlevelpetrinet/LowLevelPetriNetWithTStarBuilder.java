@@ -1,7 +1,7 @@
 package org.woped.qualanalysis.soundness.builder.lowlevelpetrinet;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
  * creates an lowLevel petri net with tStar.
@@ -19,7 +19,7 @@ public class LowLevelPetriNetWithTStarBuilder extends AbstractLowLevelPetriNetBu
      */
     public LowLevelPetriNetWithTStarBuilder(IEditor editor) {
         super(editor);
-        AbstractElementModel tStar;
+        AbstractPetriNetElementModel tStar;
         tStar = sa.addTStar();
         createLowLevelPetriNet();
         sa.removeTStar(tStar);

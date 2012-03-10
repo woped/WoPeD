@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.AbstractLowLevelPetriNetTest;
-import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
+import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
@@ -19,7 +19,7 @@ public class SourceSinkTest extends AbstractLowLevelPetriNetTest implements ISou
      * 
      * @param lolNetWithTStar LowLevelPetriNet (without t*) the algorithm is based on
      */
-    public SourceSinkTest(LowLevelPetriNet lolNetWithoutTStar) {
+    public SourceSinkTest(ILowLevelPetriNet lolNetWithoutTStar) {
         super(lolNetWithoutTStar);
     }
 

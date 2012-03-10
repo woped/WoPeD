@@ -41,6 +41,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ChangeEvent;
@@ -55,6 +56,7 @@ import org.jgraph.graph.CellView;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
 import org.woped.core.controller.AbstractGraph;
+import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.WoPeDJGraph;
 import org.woped.editor.controller.vc.EditorVC;
 
@@ -84,20 +86,19 @@ public class OverviewPanel extends JPanel
      * OverviewPanel provides a 'birds-eye' view of the active document. Must
      * use the {@link #createOverviewPanel}method to create a new instance.
      */
-    public OverviewPanel(EditorVC editor)
+    public OverviewPanel(IEditor editorInterface, JScrollPane scrollPane)
     {
-        originalGraph = editor.getGraph();
-        this.editor = editor;
-        //pad.getCurrentGraph();
-        v = new PannerViewfinder(this, editor.getScrollPane().getViewport());
-        GraphLayoutCache view = new ViewRedirector(editor.getGraph().getGraphLayoutCache());
+    	EditorVC editor2 = (EditorVC)editorInterface;
+        originalGraph = editorInterface.getGraph();
+        this.editor = editor2;
+        v = new PannerViewfinder(this, scrollPane.getViewport());
+        GraphLayoutCache view = new ViewRedirector(editorInterface.getGraph().getGraphLayoutCache());
 
-        graph = new WoPeDJGraph((DefaultGraphModel) editor.getGraph().getModel(), 
-        	editor.getGraph().getMarqueeHandler(), 
-        	EditorVC.viewFactory, 
-        	editor.getModelProcessor().getProcessorType());
+        graph = new WoPeDJGraph((DefaultGraphModel) editorInterface.getGraph().getModel(), 
+        	editorInterface.getGraph().getMarqueeHandler(), 
+        	editor2.viewFactory);
         
-        graph.setModel(editor.getGraph().getModel());
+        graph.setModel(editorInterface.getGraph().getModel());
         graph.setGraphLayoutCache(view);
         graph.setAntiAliased(true);
         graph.setGridVisible(false);
@@ -106,25 +107,13 @@ public class OverviewPanel extends JPanel
         graph.addMouseListener(v);
         graph.addMouseMotionListener(v);
 
-        editor.getGraph().addPropertyChangeListener(JGraph.SCALE_PROPERTY, this);
+        editorInterface.getGraph().addPropertyChangeListener(JGraph.SCALE_PROPERTY, this);
 
         addComponentListener(this);
-        editor.getGraph().getGraphLayoutCache().addGraphLayoutCacheListener(this);
+        editorInterface.getGraph().getGraphLayoutCache().addGraphLayoutCacheListener(this);
         setLayout(new BorderLayout());
+        setBorder(new MatteBorder(1, 1, 1, 1, Color.GRAY));
         add(graph, BorderLayout.CENTER);
-    }
-
-    /**
-     * GPOverviewPanel factory that returns instance with small inset as a
-     * buffer.
-     */
-    public static JPanel createOverviewPanel(EditorVC editor)
-    {
-        JPanel panelWithInternalOffset = new JPanel();
-        panelWithInternalOffset.setLayout(new BorderLayout());
-        panelWithInternalOffset.setBorder(new MatteBorder(PANEL_BUFFER, PANEL_BUFFER, PANEL_BUFFER, PANEL_BUFFER, Color.WHITE));
-        panelWithInternalOffset.add(new OverviewPanel(editor), BorderLayout.CENTER);
-        return panelWithInternalOffset;
     }
 
     public void paintChildren(Graphics g)

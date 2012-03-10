@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 @SuppressWarnings({"serial"})
 public class NodeGroupNetInfo extends NetInfo {
@@ -15,7 +15,7 @@ public class NodeGroupNetInfo extends NetInfo {
 
 		while (elementIterator.hasNext()) {
 			try {
-				AbstractElementModel current = (AbstractElementModel) elementIterator.next();
+				AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) elementIterator.next();
 				add(new NodeNetInfo(current, false));
 			} catch (ClassCastException e) {
 				// Ignore all nodes that are not at least AbstractElementModel

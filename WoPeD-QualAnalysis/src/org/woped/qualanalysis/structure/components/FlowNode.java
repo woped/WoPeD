@@ -3,7 +3,7 @@ package org.woped.qualanalysis.structure.components;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
  * @authors Bernhard von Hasseln, Matthias Mruzek and Markus Noeltner <br>
@@ -17,7 +17,7 @@ import org.woped.core.model.AbstractElementModel;
 public class FlowNode
 {
     //! The original petri net node where this FlowNode is derived from.
-	private AbstractElementModel petriNetNode;
+	private AbstractPetriNetElementModel petriNetNode;
 
 	//! Distinguishes whether this is the first or the second node of original 
 	//! the split up petri net node
@@ -44,7 +44,7 @@ public class FlowNode
 	private boolean isForeward = false; 
     
 	//! Constructor
-    public FlowNode(AbstractElementModel i, boolean first)
+    public FlowNode(AbstractPetriNetElementModel i, boolean first)
     {
        this.m_incomingArcs = new LinkedList<FlowArc>();
        this.m_outgoingArcs = new LinkedList<FlowArc>();
@@ -83,7 +83,7 @@ public class FlowNode
 	public void setForeward(boolean isForeward) {
 		this.isForeward = isForeward;
 	}
-	public AbstractElementModel getPetriNetNode() {
+	public AbstractPetriNetElementModel getPetriNetNode() {
 		return petriNetNode;
 	}
     public boolean isFirst() {

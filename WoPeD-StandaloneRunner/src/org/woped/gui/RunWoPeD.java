@@ -22,22 +22,20 @@
  */
 package org.woped.gui;
 
-import java.rmi.RemoteException;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Locale;
 
-import javax.swing.JApplet;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.help.HelpBrowser;
-import org.woped.gui.controller.DefaultApplicationMediator;
+import org.woped.gui.controller.vc.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
-import org.woped.server.ServerLoader;
-import org.woped.server.holder.UserHolder;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -49,159 +47,102 @@ import org.woped.server.holder.UserHolder;
  * 29.04.2003
  */
 @SuppressWarnings("serial")
-public class RunWoPeD extends JApplet {
+public class RunWoPeD extends JFrame {
 	
-	// flag for Applet
-	private static boolean isApplet = false;
-	
-	// instance from RunWoPeD
-	private static RunWoPeD applet;
-	
-	
+	private 	   String[] files;
+	private static RunWoPeD instance = null;
 	 /**
      * 
-     * Main Entry Point. Starts the GUI.
+     * Main Entry Point. Starts WoPeD and the GUI.
      *  
      */
+	
+	/**
+	 * Main method for WoPeD
+	**/
     public static void main(String[] args)
-    {
-    	final String arguments[] = args;
-    	javax.swing.SwingUtilities.invokeLater(new Runnable() {
+    {    
+    	instance = new RunWoPeD(args);
+    	
+        SwingUtilities.invokeLater(new Runnable() {
     		public void run() {
-    			RunWoPeD.run(arguments);
+    			instance.run();
     		}
     	});
     }
 	
 	/**
-	 * 
-	 * Main Entry Point. Starts the GUI.
-	 * 
-	 */
-	public void init() {
-		// Run as Applet
-		isApplet = true;
-		// Instance of the Appplet
-		applet = this;
-		// Extract Arguments
-		String sessionId = getParameter("sessionid");
+	 * Constructor managing files passed over the command line (or over openFileEvent on MacOS)
+	**/
+    private RunWoPeD(String[] args) {
+    	/* Check if we are running on a Mac */
+        if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")) {            
+            /* Set PNML open document handling in MacOS */
+            OSXAdapter.setOpenFileHandler(new ActionListener() {
+            	public void actionPerformed(ActionEvent e) {
+            		files = new String[1];
+            		files[0] = e.getActionCommand();
+            	}
+            });
+        }
+        else {
+        	/* On other platforms simple command line argument passing is sufficient */
+            files = args;
+        }
+
+        /* Adjust some font sizes for non-Windows platforms */
+        if (!System.getProperty("os.name").toLowerCase().startsWith("win")) {            
+        	UIManager.put("Button.font", new Font(Font.SANS_SERIF, 0, 11));
+        	UIManager.put("Label.font", new Font(Font.SANS_SERIF, 0, 12));
+        }
+    }
+    
+	/**
+	 * Init loggers for different WoPeD projects
+	**/
+    void initLogging() throws Exception {
+    	DOMConfigurator.configure(RunWoPeD.class.getResource("/org/woped/gui/utilities/log4j.xml"));
+	
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				Constants.GUI_LOGGER)), Constants.GUI_LOGGER);
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.editor.Constants.EDITOR_LOGGER)),
+				org.woped.editor.Constants.EDITOR_LOGGER);
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.file.Constants.FILE_LOGGER)),
+				org.woped.file.Constants.FILE_LOGGER);
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.config.Constants.CONFIG_LOGGER)),
+				org.woped.config.Constants.CONFIG_LOGGER);
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.core.Constants.CORE_LOGGER)),
+				org.woped.core.Constants.CORE_LOGGER);				
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.quantana.Constants.QUANTANA_LOGGER)),
+				org.woped.quantana.Constants.QUANTANA_LOGGER);
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER)),
+				org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER);
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.translations.Constants.TRANSLATIONS_LOGGER)),
+				org.woped.translations.Constants.TRANSLATIONS_LOGGER);
+		
+    	LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
+    	Locale.setDefault(Locale.ENGLISH);
+    }
+    
+	/**
+	 * Run WoPeD by starting Default Application Mediator
+	**/
+	private void run() { 	
+		
 		try {
-			UserHolder.setUserID(ServerLoader.getInstance().getUserID(sessionId));
-			if (UserHolder.getUserID() == -1) {
-				JOptionPane.showMessageDialog(this,"Session not valid!");
-			}
-		}catch (RemoteException e) {
-			// fatal close applet
-			JOptionPane.showMessageDialog(this, "Error during initialisation! \n" + e.getMessage());
-			System.exit(0);
-		}catch (NullPointerException e){
-			JOptionPane.showMessageDialog(this, "Server maybe offline!");
-		}
-
-		// Arguments Field
-		final String arguments[] = new String[1];
-		arguments[0] = getParameter("modellid");
-		if (UserHolder.getUserID() != -1) {
-			RunWoPeD.run(arguments);
-		} else {
-			RunWoPeD.run(null);
-		}			
-	}
-
-	 private static void run(String[] args)
-    { 	try {
-			// Loading Logger!
-			try {
-				DOMConfigurator.configure(RunWoPeD.class
-						.getResource("/org/woped/gui/utilities/log4j.xml"));
-				LoggerManager
-						.register(new WopedLogger(org.apache.log4j.Logger
-								.getLogger(Constants.GUI_LOGGER)),
-								Constants.GUI_LOGGER);
-				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
-						.getLogger(org.woped.editor.Constants.EDITOR_LOGGER)),
-						org.woped.editor.Constants.EDITOR_LOGGER);
-				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
-						.getLogger(org.woped.file.Constants.FILE_LOGGER)),
-						org.woped.file.Constants.FILE_LOGGER);
-				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
-						.getLogger(org.woped.config.Constants.CONFIG_LOGGER)),
-						org.woped.config.Constants.CONFIG_LOGGER);
-				LoggerManager.register(new WopedLogger(org.apache.log4j.Logger
-						.getLogger(org.woped.core.Constants.CORE_LOGGER)),
-						org.woped.core.Constants.CORE_LOGGER);				
-				LoggerManager
-						.register(
-								new WopedLogger(
-										org.apache.log4j.Logger
-												.getLogger(org.woped.quantana.Constants.QUANTANA_LOGGER)),
-								org.woped.quantana.Constants.QUANTANA_LOGGER);
-				LoggerManager
-						.register(
-								new WopedLogger(
-										org.apache.log4j.Logger
-												.getLogger(org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER)),
-								org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER);
-				LoggerManager
-						.register(
-								new WopedLogger(
-										org.apache.log4j.Logger
-												.getLogger(org.woped.translations.Constants.TRANSLATIONS_LOGGER)),
-								org.woped.translations.Constants.TRANSLATIONS_LOGGER);
-				LoggerManager
-				.register(
-						new WopedLogger(
-								org.apache.log4j.Logger
-										.getLogger(org.woped.applet.Constants.APPLET_LOGGER)),
-						org.woped.applet.Constants.APPLET_LOGGER);
-				LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
-			} catch (Exception e) {
-				System.err.println("ERROR ACTIVATING LOGGER");
-			}
-
-			// Enable Mac specific behaviour, but only when
-			// not started as an applet because of setting the system
-			// information
-			if (!isApplet) {
-				// The menu bar goes to the top of the screen, instead of the
-				// top of the window.
-				try {
-					System.setProperty("apple.laf.useScreenMenuBar", "true");
-				} catch (Exception e) {
-					LoggerManager.info(Constants.GUI_LOGGER, "apple.laf.useScreenMenuBar");
-				}
-				Locale.setDefault(Locale.ENGLISH);
-			} else{
-				// Set applet default to English
-				applet.setLocale(Locale.ENGLISH);
-			}
-
-			// create & init GUI
-			new ConfigurationManager(RunWoPeD.isApplet);
-            DefaultApplicationMediator mainwindow = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration(RunWoPeD.isApplet), args);
-			
-			ReferenceProvider helper = new ReferenceProvider();
-			helper.setMediatorReference(mainwindow);
-
-			// set codebase so that helpfiles can be found
-			if (isApplet) {
-				HelpBrowser.getInstance().setStartedAsApplet(true);
-				HelpBrowser.getInstance().setCodeBase(applet.getCodeBase());
-			}
-		} catch (RuntimeException e1) {
-			e1.printStackTrace();
-			// Error occured while init -> quit
+			initLogging();
+			new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration(), files);
+		} 
+    	catch (Exception e) {
+			e.printStackTrace();
 			System.exit(1);
 		}
-	}
-	
-	/**
-	 * isApplet()
-	 * <p>
-	 * checks if the Application runs as an Applet
-	 * @return
-	 */
-	static public boolean isApplet() {
-		return isApplet;
 	}
 }

@@ -30,6 +30,7 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.translations.Messages;
@@ -54,9 +55,9 @@ public class TransAndSplitJoinView extends CombiOperatorView
      * @param graph
      * @param mapper
      */
-    public TransAndSplitJoinView(Object cell)
+    public TransAndSplitJoinView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new TransAndSplitJoinRenderer(cell);
     }
 
@@ -108,7 +109,7 @@ public class TransAndSplitJoinView extends CombiOperatorView
             drawOperatorArrow2(g, t.getOperatorOppositePosition(), t.getOperatorDirection() );
             
                   
-            if (isActive() || isFireing())
+            if (isActive())
             {
             	ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
@@ -123,14 +124,6 @@ public class TransAndSplitJoinView extends CombiOperatorView
         public boolean isActive()
         {
             return TransAndSplitJoinView.this.isActivated();
-        }
-
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return TransAndSplitJoinView.this.isFireing();
         }
     }
 

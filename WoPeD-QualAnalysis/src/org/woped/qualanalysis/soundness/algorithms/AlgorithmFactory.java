@@ -17,40 +17,42 @@ import org.woped.qualanalysis.soundness.algorithms.generic.cc.IConnectedComponen
 import org.woped.qualanalysis.soundness.algorithms.generic.scc.IStronglyConnectedComponentTestGen;
 import org.woped.qualanalysis.soundness.algorithms.generic.scc.StronglyConnectedComponentTestGenTarjan;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 
 /**
  * algorithm factory class.
  * 
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ * @update Jascha Kanngiesser
+ * @todo jascha kanngiesser
  */
 public class AlgorithmFactory {
 
     /**
      * 
-     * @param mNet without tStar.
+     * @param iMarkingNet without tStar.
      * @return
      */
-    public static IDeadTransitionTest createDeadTransitionTest(MarkingNet mNet) {
-        return new DeadTransitionTest(mNet);
+    public static IDeadTransitionTest createDeadTransitionTest(IMarkingNet markingNet) {
+        return new DeadTransitionTest(markingNet);
     }
 
     /**
      * 
-     * @param mNet without tStar.
+     * @param iMarkingNet without tStar.
      * @return
      */
-    public static INonLiveTranstionTest createNonLiveTranstionTest(MarkingNet mNet) {
-        return new NonLiveTransitionTest(mNet);
+    public static INonLiveTranstionTest createNonLiveTranstionTest(IMarkingNet markingNet) {
+        return new NonLiveTransitionTest(markingNet);
     }
 
     /**
      * 
-     * @param mNet without tStar.
+     * @param iMarkingNet without tStar.
      * @return
      */
-    public static IUnboundedPlacesTest createUnboundedPlacesTest(MarkingNet mNet) {
-        return new UnboundPlacesTest(mNet);
+    public static IUnboundedPlacesTest createUnboundedPlacesTest(IMarkingNet markingNet) {
+        return new UnboundPlacesTest(markingNet);
     }
 
     /**

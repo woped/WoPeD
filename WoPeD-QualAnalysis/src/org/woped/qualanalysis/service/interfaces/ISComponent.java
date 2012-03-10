@@ -3,7 +3,7 @@ package org.woped.qualanalysis.service.interfaces;
 import java.util.List;
 import java.util.Set;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
  * interface for SComponent-parts of qualanalysis servies.
@@ -18,11 +18,11 @@ public interface ISComponent {
 	 * 
 	 * @return a set with all sComponents
 	 */
-	public Set<List<AbstractElementModel>> getSComponents();
+	public Set<List<AbstractPetriNetElementModel>> getSComponents();
 
 	/**
 	 * 
 	 * @return a set with all not-SCovered
 	 */
-	public Set<AbstractElementModel> getNotSCovered();
+	public Set<AbstractPetriNetElementModel> getNotSCovered();
 }

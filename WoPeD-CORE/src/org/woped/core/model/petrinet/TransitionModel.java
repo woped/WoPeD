@@ -23,11 +23,16 @@
 package org.woped.core.model.petrinet;
 
 import java.awt.Point;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
+import org.woped.core.Constants;
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
+import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author Simon Landes
@@ -37,12 +42,15 @@ import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
  */
 
 @SuppressWarnings("serial")
-public class TransitionModel extends PetriNetModelElement
+public class TransitionModel extends AbstractPetriNetElementModel
 {
 
     private Toolspecific    toolSpecific;
     public static final int WIDTH     = 40;
     public static final int HEIGHT    = 40;
+    // it is important only in Subprocess
+    private boolean incommingTarget ;
+    private boolean outgoingSource;
     
     public TransitionModel(CreationMap map)
     {
@@ -52,7 +60,6 @@ public class TransitionModel extends PetriNetModelElement
         GraphConstants.setMoveable(attributes, true);
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
-        toolSpecific.setHighlight(map.isHighlight());
         setAttributes(attributes);
     }
 
@@ -80,6 +87,11 @@ public class TransitionModel extends PetriNetModelElement
     public boolean hasTrigger()
     {
         return (getToolSpecific().getTrigger() != null);
+    }
+
+    public int getTriggerType()
+    {
+        return (getToolSpecific().getTrigger().getTriggertype());
     }
 
     public boolean hasResource()
@@ -159,7 +171,6 @@ public class TransitionModel extends PetriNetModelElement
         // time unit
         map.setTransitionTime(getToolSpecific().getTime());
         map.setTransitionTimeUnit(getToolSpecific().getTimeUnit());
-        map.setHighlight(getToolSpecific().isHighlight());
        
         return map;
     }
@@ -171,6 +182,61 @@ public class TransitionModel extends PetriNetModelElement
 
     public int getType()
     {
-        return PetriNetModelElement.TRANS_SIMPLE_TYPE;
+        return AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE;
     }
+
+	public void setIncommingTarget(boolean incommingTarget) {
+		this.incommingTarget = incommingTarget;
+	}
+
+	public boolean isIncommingTarget() {
+		return incommingTarget;
+	}
+
+	public void setOutgoingSource(boolean outgoingSource) {
+		this.outgoingSource = outgoingSource;
+	}
+
+	public boolean isOutgoingSource() {
+		return outgoingSource;
+	}
+	
+    /**
+     * Counts the token-filled Places which are the source of the Map filled Arcs.
+     * @return Number of places that contain at least one token 
+     */
+    public int getNumIncomingActivePlaces() {
+        Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
+    	
+        Iterator<String> incomingArcsIter = arcsFromPlaces.keySet().iterator();
+        int activePlaces = 0;
+        while (incomingArcsIter.hasNext()) {
+            ArcModel arc = getRootOwningContainer().getArcById(incomingArcsIter.next());
+            try {
+                PlaceModel place = (PlaceModel) getRootOwningContainer().getElementById(arc.getSourceId());
+                if (place != null && place.getVirtualTokenCount() > 0) {
+                    // TODO: when ARC WEIGTH implemented check tokens >= weigth
+                    activePlaces++;
+                }
+            } catch (ClassCastException cce) {
+                LoggerManager.warn(Constants.CORE_LOGGER, "TokenGame: Source not a Place. Ignore arc: "
+                        + arc.getId());
+            }
+        }
+        return activePlaces;
+    }	
+    
+    /**
+     * Calculate and return the number of incoming arcs for this transition
+     * @return Number of incoming arcs
+     */
+    public int getNumInputPlaces() {
+    	Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
+    	return arcsFromPlaces.size();
+    }
+		
+    public boolean isActivated()    
+    {
+    	return (getNumInputPlaces()==getNumIncomingActivePlaces());
+    }    	
 }

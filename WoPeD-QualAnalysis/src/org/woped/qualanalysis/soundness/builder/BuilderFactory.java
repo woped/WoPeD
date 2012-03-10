@@ -8,7 +8,7 @@ import org.woped.qualanalysis.soundness.builder.lowlevelpetrinet.LowLevelPetriNe
 import org.woped.qualanalysis.soundness.builder.markingnet.MarkingNetBuilderBook;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.marking.IMarking;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 
 /**
  * factory class. creates builders.
@@ -41,7 +41,7 @@ public class BuilderFactory {
      * @param lolNet LowLevelPetriNet to calculate MarkingNet from
      * @return
      */
-    public static MarkingNet createMarkingNet(LowLevelPetriNet lolNet) {
+    public static IMarkingNet createMarkingNet(LowLevelPetriNet lolNet) {
         return new MarkingNetBuilderBook(lolNet).getMarkingNet();
     }
     

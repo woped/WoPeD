@@ -1,10 +1,10 @@
 package org.woped.editor.gui;
 
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 public interface IEditorProperties
 {
-    public void show(AbstractPetriNetModelElement element);
+    public void show(AbstractPetriNetElementModel element);
 
     public void save();
 }

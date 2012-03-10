@@ -27,33 +27,40 @@ package org.woped.editor.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Point2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JMenuItem;
 import javax.swing.JSplitPane;
 import javax.swing.undo.UndoManager;
 
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
+import org.pushingpixels.flamingo.api.common.JCommandButton;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
+import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.SubprocessEditorVC;
 
 /**
  * @author Thomas Pohl
@@ -62,110 +69,131 @@ import org.woped.editor.controller.vc.EditorVC;
  * selection status. Changes are initiated from external events via
  * PropertyChangeEvents and GraphSelectionEvents.
  */
-public class VisualController implements PropertyChangeListener,
-		GraphSelectionListener, IClipboaredListener, MouseListener
+public class VisualController implements PropertyChangeListener, IClipboaredListener, GraphSelectionListener, MouseListener
 {
-	private ApplicationMediator am = null;
+	private AbstractApplicationMediator am = null;
 
 	private boolean active = true;
 
-	public static final int IGNORE = -1;
+	public static final int IGNORE 							= -1;
 
-	public static final int ALWAYS = 0;
+	public static final int ALWAYS 							= 0;
 
-	public static final int NEVER = 1;
+	public static final int NEVER 							= 1;
 
-	public static final int WITH_EDITOR = 2;
+	public static final int WITH_EDITOR 					= 2;
 
-	public static final int NO_SELECTION = 3;
+	// Selections
+	public static final int NO_SELECTION 					= 3;
 
-	public static final int ANY_SELECTION = 4;
+	public static final int ANY_SELECTION 					= 4;
 
-	public static final int ARC_SELECTION = 5;
+	public static final int NODE_SELECTION 					= 5;
 
-	public static final int ROUTED_ARC_SELECTION = 6;
+	public static final int TRANSITION_SELECTION 			= 6;
 
-	public static final int NOXOR_ARC_SELECTION = 37;
+	public static final int TRIGGERED_TRANSITION_SELECTION 	= 7;
 
-	public static final int UNROUTED_ARC_SELECTION = 7;
+	public static final int TIME_TRIGGER_SELECTION 			= 8;
 
-	public static final int TRANSITION_SELECTION = 8;
+	public static final int RESOURCE_TRIGGER_SELECTION 		= 9;
 
-	public static final int TRIGGERED_TRANSITION_SELECTION = 9;
+	public static final int MESSAGE_TRIGGER_SELECTION 		= 10;
 
-	public static final int PLACE_SELECTION = 10;
-
-	public static final int TOKEN_PLACE_SELECTION = 11;
-
-	public static final int SUBPROCESS_SELECTION = 12;
-
-	// public static final int NO_SELECTION_AND_COPY = 13;
-	public static final int DRAWMODE_PLACE = 14;
-
-	public static final int DRAWMODE_TRANSITION = 15;
-
-	public static final int DRAWMODE_AND_SPLIT = 16;
-
-	public static final int DRAWMODE_AND_JOIN = 17;
-
-	public static final int DRAWMODE_XOR_SPLIT = 18;
-
-	public static final int DRAWMODE_XOR_JOIN = 19;
-
-	public static final int DRAWMODE_OR_SPLIT = 20;
-
-	public static final int DRAWMODE_SUBPROCESS = 21;
-
-	public static final int DRAWMODE = 22;
-
-	public static final int TOKENGAME = 23;
-
-	public static final int WOFLAN = 24;
-
-	public static final int CAN_UNDO = 25;
-
-	public static final int CAN_REDO = 26;
-
-	public static final int DRAWMODE_XOR_SPLITJOIN = 27;
-
-	public static final int ELEMENT_SELECTION = 28;
-
-	public static final int CAN_PASTE = 29;
-
-	public static final int DRAWMODE_AND_SPLITJOIN = 30;
-
-	public static final int ARC_POINT = 31;
-
-	public static final int SUBPROCESS_EDITOR = 32;
-
-	//! Condition that is activated if the tree view of the
-	//! editor that currently has the focus is activated
-	public static final int TREEVIEW_VISIBLE = 33;
+	public static final int ANY_TRIGGER_SELECTION 			= 11;
 	
-	public static final int DRAWMODE_ANDJOIN_XORSPLIT = 34;
-	
-	public static final int TRANSITION_PLACE_SELECTION = 35;
+	public static final int OPERATOR_SELECTION 				= 12;
 
-	public static final int DRAWMODE_XORJOIN_ANDSPLIT = 36;
-
-	public static final int REACH_GRAPH_START = 38;
+	public static final int PLACE_SELECTION 				= 13;
 	
-	public static final int COLORING = 39;
-	
-	public static final int ROTATE = 40;
+	public static final int TOKEN_PLACE_SELECTION 			= 14;
 
-	private static final int MAX_ID = 43;
-	
-	public static final int ANY_SELECTION_EXCEPT_SIMPLE = 42;
+	public static final int SUBPROCESS_SELECTION 			= 15;
 
-	private ArrayList<Vector<Object>> m_enable = new ArrayList<Vector<Object>>();
-	private ArrayList<Vector<Object>> m_visible = new ArrayList<Vector<Object>>();
-	private ArrayList<Vector<Object>> m_selected = new ArrayList<Vector<Object>>();
+	public static final int ARC_SELECTION 					= 16;
+	
+	public static final int ROUTED_ARC_SELECTION 			= 17;
+	
+	public static final int UNROUTED_ARC_SELECTION 			= 18;
+
+	public static final int NODE_OR_XORARC_SELECTION 		= 19;
+
+	public static final int ARCPOINT_SELECTION				= 20;
+
+	public static final int MULTIPLE_SELECTION				= 21;
+
+	public static final int GROUP_SELECTION					= 22;
+	
+	// Drawmode
+	public static final int DRAWMODE_PLACE 					= 23;
+	
+	public static final int DRAWMODE_TRANSITION 			= 24;
+
+	public static final int DRAWMODE_AND_SPLIT 				= 25;
+
+	public static final int DRAWMODE_AND_JOIN 				= 26;
+
+	public static final int DRAWMODE_XOR_SPLIT 				= 27;
+
+	public static final int DRAWMODE_XOR_JOIN 				= 28;
+	
+	public static final int DRAWMODE_OR_SPLIT 				= 29;
+
+	public static final int DRAWMODE_SUBPROCESS 			= 30;
+
+	public static final int DRAWMODE_XOR_SPLITJOIN 			= 31;
+
+	public static final int DRAWMODE_ANDJOIN_XORSPLIT 		= 32;
+
+	public static final int DRAWMODE_AND_SPLITJOIN 			= 33;
+
+	public static final int DRAWMODE_XORJOIN_ANDSPLIT 		= 34;
+
+	public static final int DRAWMODE 						= 35;
+	
+	public static final int TOKENGAME 						= 36;
+
+	public static final int WITH_MAIN_EDITOR	 			= 37;
+
+	public static final int CAN_UNDO 						= 38;
+	
+	public static final int CAN_REDO 						= 39;
+
+	public static final int CAN_PASTE 						= 40;
+
+	public static final int CAN_CUTCOPY 					= 41;
+
+	public static final int SUBPROCESS_EDITOR 				= 42;
+	
+	public static final int REACH_GRAPH_START 				= 43;
+
+	public static final int COLORING 						= 44;
+	
+	public static final int ROTATE 							= 45;
+
+	public static final int TREEVIEW_VISIBLE 				= 46;
+
+	public static final int OVERVIEW_VISIBLE 				= 47;
+
+	public static final int APROMORE_IMPORT 				= 48;
+	
+	public static final int APROMORE_EXPORT 				= 49;
+	
+	private static final int MAX_ID 						= 50;	
+	
+	private ArrayList<Vector<WoPeDAction>> m_enable = new ArrayList<Vector<WoPeDAction>>();
+
+	private ArrayList<Vector<WoPeDAction>> m_visible = new ArrayList<Vector<WoPeDAction>>();
+
+	private ArrayList<Vector<WoPeDAction>> m_selected = new ArrayList<Vector<WoPeDAction>>();
+	
+	private boolean arcpointSelected   = false;
 	
 	private boolean[] m_status = new boolean[MAX_ID + 1];
 
 	private static VisualController instance = null;
 
+	
 	public static VisualController getInstance()
 	{
 		return instance;
@@ -178,10 +206,9 @@ public class VisualController implements PropertyChangeListener,
 		this.am = am;
 		for (int i = 0; i <= MAX_ID; i++)
 		{
-		    	//m_enable2.get(i) = new Vector<Object>();
-			m_enable.add(new Vector<Object>());
-			m_visible.add(new Vector<Object>());
-			m_selected.add(new Vector<Object>());
+			m_enable.add(new Vector<WoPeDAction>());
+			m_visible.add(new Vector<WoPeDAction>());
+			m_selected.add(new Vector<WoPeDAction>());
 			m_status[i] = false;
 		}
 		m_status[ALWAYS] = true;
@@ -200,104 +227,137 @@ public class VisualController implements PropertyChangeListener,
 	 * @param selected
 	 *            element is supposed to be selected.
 	 */
-	public void addElement(Object obj, int enable, int visible, int selected)
+	public void addElement(WoPeDAction action, int enable, int visible, int selected)
 	{
 		if (enable > IGNORE && enable <= MAX_ID)
 		{
-			if (setEnabled(obj, m_status[enable]))
+			if (setEnabled(action, m_status[enable]))
 			{
-				m_enable.get(enable).add(obj);
+				m_enable.get(enable).add(action);
 			}
 		}
 		if (visible > IGNORE && visible <= MAX_ID)
 		{
-			if (setVisible(obj, m_status[visible]))
+			if (setVisible(action, m_status[visible]))
 			{
-				m_visible.get(visible).add(obj);
+				m_visible.get(visible).add(action);
 			}
 		}
 		if (selected > IGNORE && selected <= MAX_ID)
 		{
-			if (setSelected(obj, m_status[selected]))
+			if (setSelected(action, m_status[selected]))
 			{
-				m_selected.get(selected).add(obj);
+				m_selected.get(selected).add(action);
 			}
 		}
 	}
 
 	/**
-	 * Changes the enable-status of one Object
+	 * Changes the enabling status of all targets belonging to action
 	 * 
-	 * @param status
-	 *            target enable-status
-	 * @return tells wether the status has been changed successfully.
+	 * @param action	associated WoPeD action
+	 * @param status	target enabling status
+	 * @return tells whether the status has been changed successfully.
 	 */
-	protected static boolean setEnabled(Object obj, boolean status)
+	protected static boolean setEnabled(WoPeDAction action, boolean status)
 	{
-		if (obj != null)
+		if (action != null)
 		{
 			try
 			{
-				// Reflection!!
-				Method enableMethod = obj.getClass().getMethod("setEnabled",
-						new Class[] { Boolean.TYPE });
-				enableMethod.invoke(obj, new Object[] { new Boolean(status) });
-				// LoggerManager.debug(Constants.EDITOR_LOGGER,
-				// ((WoPeDAction)obj).getValue(WoPeDAction.NAME) + " " +
-				// status);
+				ArrayList<JComponent> targets = action.getTarget();
+				Iterator<JComponent> it = targets.iterator();
+				while (it.hasNext()) 
+				{
+					JComponent target = it.next();	
+					if (! (target instanceof JMenuItem)) 
+					{
+						target.setEnabled(status);
+					}
+				}
+				
 				return true;
-			} catch (Exception e)
+			} 
+			catch (Exception e)
 			{
-				LoggerManager.warn(Constants.EDITOR_LOGGER,
-						"Could not change enabling status (code: "
-								+ obj.getClass() + ")");
+				LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change enabling status (code: " + action.getValue("NAME") + "): " + status);
 			}
-
 		}
+
 		return false;
 	}
 
-	protected static boolean setSelected(Object obj, boolean status)
+	/**
+	 * Changes the selection status of all targets belonging to action
+	 * 
+	 * @param action	associated WoPeD action
+	 * @param status target selection status
+	 * @return tells whether the status has been changed successfully.
+	 */
+	protected static boolean setSelected(WoPeDAction action, boolean status)
 	{
-		if (obj != null)
+		if (action != null)
 		{
 			try
 			{
-				// Reflection!!
-				Method enableMethod = obj.getClass().getMethod("setSelected",
-						new Class[] { Boolean.TYPE });
-				enableMethod.invoke(obj, new Object[] { new Boolean(status) });
-				return true;
-			} catch (Exception e)
-			{
-				LoggerManager.warn(Constants.EDITOR_LOGGER,
-						"Could not change selection status (code: "
-								+ obj.getClass() + ")");
-			}
+				ArrayList<JComponent> targets = action.getTarget();
+				Iterator<JComponent> it = targets.iterator();
+				while (it.hasNext()) 
+				{
+					JComponent target = it.next();
+					if (target instanceof JCommandButton) 
+					{
+						((JCommandButton)target).setFlat(!status);
+					} 
+					else if (target instanceof JCheckBox) 
+					{
+						((JCheckBox)target).setSelected(status);
+					}
+				}
 
+				return true;
+			} 
+			catch (Exception e)
+			{
+				LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change selection status (code: " + action.getValue("NAME") + "): " + status);
+			}
 		}
+
 		return false;
 	}
 
-	protected static boolean setVisible(Object obj, boolean status)
+	/**
+	 * Changes the visibility status of all targets belonging to action
+	 * 
+	 * @param action	associated WoPeD action
+	 * @param status target visibility status
+	 * @return tells whether the status has been changed successfully.
+	 */
+	protected static boolean setVisible(WoPeDAction action, boolean status)
 	{
-		if (obj != null)
+		if (action != null)
 		{
 			try
 			{
-				// Reflection!!
-				Method enableMethod = obj.getClass().getMethod("setVisible",
-						new Class[] { Boolean.TYPE });
-				enableMethod.invoke(obj, new Object[] { new Boolean(status) });
-				return true;
-			} catch (Exception e)
-			{
-				LoggerManager.warn(Constants.EDITOR_LOGGER,
-						"Could not change visibility status (code: "
-								+ obj.getClass() + ")");
-			}
+				ArrayList<JComponent> targets = action.getTarget();
+				Iterator<JComponent> it = targets.iterator();
+				while (it.hasNext()) 
+				{
+					JComponent target = it.next();
+					if (target instanceof JMenuItem) 
+					{
+						target.setVisible(status);
+					}
+				}
 
+				return true;
+			} 
+			catch (Exception e)
+			{
+				LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change visibility status (code: " + action.getValue("NAME") + "): " + status);
+			}
 		}
+		
 		return false;
 	}
 
@@ -308,7 +368,7 @@ public class VisualController implements PropertyChangeListener,
 	 * @param status
 	 *            the new enable status.
 	 */
-	protected static void setEnabled(Vector<Object> objects, boolean status)
+	protected static void setEnabled(Vector<WoPeDAction> objects, boolean status)
 	{
 		if (objects != null)
 		{
@@ -326,7 +386,7 @@ public class VisualController implements PropertyChangeListener,
 	 * @param status
 	 *            the new visible status.
 	 */
-	private static void setVisible(Vector<Object> objects, boolean status)
+	private static void setVisible(Vector<WoPeDAction> objects, boolean status)
 	{
 		if (objects != null)
 		{
@@ -344,7 +404,7 @@ public class VisualController implements PropertyChangeListener,
 	 * @param status
 	 *            the new selected status.
 	 */
-	private static void setSelected(Vector<Object> objects, boolean status)
+	private static void setSelected(Vector<WoPeDAction> objects, boolean status)
 	{
 		if (objects != null)
 		{
@@ -364,13 +424,11 @@ public class VisualController implements PropertyChangeListener,
 	 */
 	private void setStatus(int attribute, boolean status)
 	{
-		if (m_status[attribute] != status)
-		{
-			m_status[attribute] = status;
-			setSelected(m_selected.get(attribute), status);
-			setVisible(m_visible.get(attribute), status);
-			setEnabled(m_enable.get(attribute), status);
-		}
+		m_status[attribute] = status;
+		
+		setSelected(m_selected.get(attribute), status);
+		setVisible(m_visible.get(attribute), status);
+		setEnabled(m_enable.get(attribute), status);
 	}
 
 	/**
@@ -392,19 +450,25 @@ public class VisualController implements PropertyChangeListener,
 			if ("InternalFrameCount".equals(arg0.getPropertyName()))
 			{
 				checkActiveEditor();
-				checkWoflan();
+				checkSelection();
 				checkUndoRedo();
 				checkColoring();
 				checkRotation();
-			} else if ("FrameSelection".equals(arg0.getPropertyName()))
-			{
+				checkAproMoRe();
+				checkSidebar();
 				checkDrawMode();
 				checkMode();
+//				checkSubprocess();
+			} else if ("FrameSelection".equals(arg0.getPropertyName()))
+			{
+				checkActiveEditor();
 				checkSelection();
 				checkUndoRedo();
-				checkActiveEditor();
 				checkColoring();	
+				checkSidebar();
 				checkRotation();
+				checkDrawMode();
+				checkMode();
 			} else if ("DrawMode".equals(arg0.getPropertyName()))
 			{
 				checkDrawMode();
@@ -416,23 +480,19 @@ public class VisualController implements PropertyChangeListener,
 				checkUndoRedo();
 			} else if ("Update".equals(arg0.getPropertyName()))
 			{
-				checkWoflan();
 				checkColoring();
 				checkRotation();
-			} else if (JSplitPane.DIVIDER_LOCATION_PROPERTY.equals(arg0.getPropertyName()))
+				checkAproMoRe();
+			} else if ("Sidebar".equals(arg0.getPropertyName()))
 			{
-				int dividerLocation = ((Integer)arg0.getNewValue()).intValue();
-				boolean treeVisible = dividerLocation>1;
-				setStatus(TREEVIEW_VISIBLE, treeVisible);		
-				
-			//for importing a vertical net to change the rotate-button	
+				checkSidebar();
 			} else if ("Import".equals(arg0.getPropertyName()))
 			{
-				setRotationTrue();
-			}
-			
+				setStatus(ROTATE, true);
+			}			
+			} else if (JSplitPane.DIVIDER_LOCATION_PROPERTY.equals(arg0.getPropertyName())){
+				checkSidebarDivider();
 		}	
-
 	}
 
 	/**
@@ -443,64 +503,104 @@ public class VisualController implements PropertyChangeListener,
 		checkSelection();
 	}
 
+	protected void checkSidebarDivider() {
+		IEditor editor = am.getUi().getEditorFocus();
+		
+		if (editor != null) {
+			editor.checkMainSplitPaneDivider();
+		}
+	}
+	
+	protected void checkSidebar()
+	{
+		boolean status = false;
+		EditorVC editor = ((EditorVC)(am.getUi().getEditorFocus()));
+		
+		status = (editor == null) ? false : editor.getEditorPanel().isOverviewPanelVisible();
+		setStatus(OVERVIEW_VISIBLE, status);
+		
+		status = (editor == null) ? false : editor.getEditorPanel().isTreeviewPanelVisible();
+		setStatus(TREEVIEW_VISIBLE, status);
+	}
+
+
 	/**
 	 * Check what elements are selected and changes the status accordingly.
 	 */
 	protected void checkSelection()
 	{
+		IEditor 		editor = am.getUi().getEditorFocus();
+		AbstractGraph 	graph = null;
+		Object 			selectedCell = null, mainCell = null;
+		
 		if (isActive())
-		{
-			AbstractGraph graph = null;
-			Object selectedCell = null;
-			if (am.getUi().getEditorFocus() != null)
+		{	
+			graph = null;
+			selectedCell = null;
+			if (editor != null)
 			{
-
-				graph = am.getUi().getEditorFocus().getGraph();
+				graph = editor.getGraph();
 				selectedCell = graph.getSelectionCell();
+				mainCell = selectedCell;
 			}
-			boolean noSelection = (selectedCell == null);
+			
+			boolean noSelection = (selectedCell == null && !arcpointSelected);
 			boolean routedArcSelected = false;
-			boolean NoXorArcSelected = true;
+			boolean xorArcSelected = false;
 			boolean unroutedArcSelected = false;
 			boolean transitionSelected = false;
 			boolean triggeredTransitionSelected = false;
+			boolean noTimeTriggerSelected = false;
+			boolean noMessageTriggerSelected = false;
+			boolean noResourceTriggerSelected = false;
 			boolean placeSelected = false;
 			boolean tokenPlaceSelected = false;
 			boolean subprocessSelected = false;
 			boolean arcSelected = false;
-			boolean nameSelection = false;
-			boolean any_selection_except_simple = false;
+			boolean nameSelected = false;
+			boolean operatorSelected = false;	
+			boolean groupSelected = false;
+			boolean multipleSelected = false;
 			
-
 			while (selectedCell instanceof GroupModel)
 			{
 				selectedCell = ((GroupModel) selectedCell).getMainElement();
 			}
-			if (selectedCell instanceof ArcModel)
+			
+			if (graph != null && graph.isGroup(mainCell) && ((GroupModel)mainCell).isUngroupable()) 
+			{
+				groupSelected = true;
+			} 
+			else if (graph != null && graph.getSelectionCount() > 1) 
+			{
+				multipleSelected = true;
+			}
+			else if (selectedCell instanceof ArcModel)
 			{
 				arcSelected = true;
 				ArcModel a = (ArcModel)selectedCell;
-				if (!a.isXORsplit(am.getUi().getEditorFocus().getModelProcessor())) 
+				if (a.isXORsplit(editor.getModelProcessor())) 
 				{
-					NoXorArcSelected = false;
+					xorArcSelected = true;
 				}
 				if (((ArcModel) selectedCell).isRoute())
 				{
 					routedArcSelected = true;
-				} else
+				} 
+				else
 				{
 					unroutedArcSelected = true;
-				}
-			} else if (selectedCell instanceof SubProcessModel)
+				} 					
+			} 
+			else if (selectedCell instanceof SubProcessModel)
 			{
 				subprocessSelected = true;
-				transitionSelected = false; // changed, TF
+				transitionSelected = true;
 			}
 			else if (selectedCell instanceof OperatorTransitionModel)
 			{
 				transitionSelected = true;
-				
-				any_selection_except_simple = true;
+				operatorSelected = true;
 				
 				if (((TransitionModel) selectedCell).hasTrigger())
 				{
@@ -509,12 +609,21 @@ public class VisualController implements PropertyChangeListener,
 			} 
 			else if (selectedCell instanceof TransitionModel)
 			{
+				int triggerType = TriggerModel.TRIGGER_NONE;
 				transitionSelected = true;
-
-				if (((TransitionModel) selectedCell).hasTrigger())
-				{
+				
+				if (((TransitionModel)selectedCell).hasTrigger()) {
+					triggerType = ((TransitionModel)selectedCell).getTriggerType();
 					triggeredTransitionSelected = true;
 				}
+					
+				if (triggerType != TriggerModel.TRIGGER_MESSAGE) 
+					noMessageTriggerSelected = true;
+				if (triggerType != TriggerModel.TRIGGER_TIME) 
+					noTimeTriggerSelected = true;
+				if (triggerType != TriggerModel.TRIGGER_RESOURCE) 
+					noResourceTriggerSelected = true;				
+
 			} 	
 			else if (selectedCell instanceof PlaceModel)
 			{
@@ -528,34 +637,44 @@ public class VisualController implements PropertyChangeListener,
 			{
 				transitionSelected = true;
 				triggeredTransitionSelected = true;
+				
+				int triggerType = ((TriggerModel)selectedCell).getTriggertype();
+				
+				if (triggerType != TriggerModel.TRIGGER_MESSAGE) 
+					noMessageTriggerSelected = true;
+				if (triggerType != TriggerModel.TRIGGER_TIME) 
+					noTimeTriggerSelected = true;
+				if (triggerType != TriggerModel.TRIGGER_RESOURCE) 
+					noResourceTriggerSelected = true;
 			}
 			else if (selectedCell instanceof NameModel)
 			{
-				nameSelection = true;
-			}
-				
-
-		
-
+				nameSelected = true;
+			} 
+							
 			setStatus(NO_SELECTION, noSelection);
-			setStatus(ANY_SELECTION, !noSelection && !nameSelection); // <----
-			setStatus(WOFLAN, ConfigurationManager.getConfiguration()
-					.isUseWoflan());
+			setStatus(ANY_SELECTION, !noSelection && !nameSelected && !arcpointSelected); 
 			setStatus(SUBPROCESS_SELECTION, subprocessSelected);
 			setStatus(PLACE_SELECTION, placeSelected);
 			setStatus(TOKEN_PLACE_SELECTION, tokenPlaceSelected);
 			setStatus(ROUTED_ARC_SELECTION, routedArcSelected);
-			setStatus(NOXOR_ARC_SELECTION, NoXorArcSelected);
+			setStatus(NODE_OR_XORARC_SELECTION, (transitionSelected | placeSelected | xorArcSelected) && !arcpointSelected);
 			setStatus(UNROUTED_ARC_SELECTION, unroutedArcSelected);
 			setStatus(TRANSITION_SELECTION, transitionSelected);
-			setStatus(TRANSITION_PLACE_SELECTION, transitionSelected | placeSelected | subprocessSelected);
-			setStatus(TRIGGERED_TRANSITION_SELECTION,
-					triggeredTransitionSelected);
-			setStatus(ARC_SELECTION, arcSelected);
-			setStatus(ELEMENT_SELECTION, !noSelection && !arcSelected && !nameSelection);
-			setStatus(ANY_SELECTION_EXCEPT_SIMPLE, any_selection_except_simple);
-			};
-			
+			setStatus(NODE_SELECTION, transitionSelected | placeSelected);
+			setStatus(TRIGGERED_TRANSITION_SELECTION, triggeredTransitionSelected);
+			setStatus(TIME_TRIGGER_SELECTION, noTimeTriggerSelected);
+			setStatus(RESOURCE_TRIGGER_SELECTION, noResourceTriggerSelected);
+			setStatus(MESSAGE_TRIGGER_SELECTION, noMessageTriggerSelected);
+			setStatus(TRIGGERED_TRANSITION_SELECTION, triggeredTransitionSelected);
+			setStatus(ARC_SELECTION, arcSelected && !arcpointSelected);
+			setStatus(ARCPOINT_SELECTION, arcpointSelected);
+			setStatus(OPERATOR_SELECTION, operatorSelected);
+			setStatus(GROUP_SELECTION, groupSelected);
+			setStatus(MULTIPLE_SELECTION, multipleSelected);
+			setStatus(CAN_CUTCOPY, transitionSelected | placeSelected | multipleSelected | groupSelected);
+			setStatus(CAN_PASTE, editor == null ? false : !editor.isClipboardEmpty());
+		};		
 	}
 
 	protected void checkDrawMode()
@@ -573,14 +692,14 @@ public class VisualController implements PropertyChangeListener,
 		boolean orSplit = false;
 		boolean subprocess = false;
 
-		if (am.getUi().getEditorFocus() != null)
-		{
+		if (am.getUi().getEditorFocus() != null) {
+
 			switch (am.getUi().getEditorFocus().getCreateElementType())
 			{
-			case (PetriNetModelElement.PLACE_TYPE):
+			case (AbstractPetriNetElementModel.PLACE_TYPE):
 				place = true;
 				break;
-			case (PetriNetModelElement.TRANS_SIMPLE_TYPE):
+			case (AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE):
 				transition = true;
 				break;
 			case (OperatorTransitionModel.AND_SPLIT_TYPE):
@@ -615,7 +734,7 @@ public class VisualController implements PropertyChangeListener,
 				break;
 			}
 		}
-
+	
 		setStatus(DRAWMODE_PLACE, place);
 		setStatus(DRAWMODE_TRANSITION, transition);
 		setStatus(DRAWMODE_AND_SPLIT, andSplit);
@@ -627,11 +746,16 @@ public class VisualController implements PropertyChangeListener,
 		setStatus(DRAWMODE_ANDJOIN_XORSPLIT, andJoinXorSplit);
 		setStatus(DRAWMODE_XORJOIN_ANDSPLIT, xorJoinAndSplit);
 		setStatus(DRAWMODE_OR_SPLIT, orSplit);
-		setStatus(DRAWMODE_SUBPROCESS, subprocess);
+		setStatus(DRAWMODE_SUBPROCESS, subprocess);			
 	}
 
+	protected void checkAproMoRe() {
+		setStatus(APROMORE_IMPORT, ConfigurationManager.getConfiguration().getApromoreUse());
+		setStatus(APROMORE_EXPORT, ConfigurationManager.getConfiguration().getApromoreUse() & am.getUi().getEditorFocus() != null);
+	}
+	
 	/**
-	 * Checks wether a Editor is active.
+	 * Checks whether an Editor is active.
 	 * 
 	 */
 	protected void checkActiveEditor()
@@ -641,8 +765,8 @@ public class VisualController implements PropertyChangeListener,
 		
 		if (am.getUi().getEditorFocus() != null)
 		{
-			setStatus(SUBPROCESS_EDITOR, !am.getUi().getEditorFocus()
-					.isSubprocessEditor());
+			setStatus(SUBPROCESS_EDITOR, !(am.getUi().getEditorFocus()
+					 instanceof SubprocessEditorVC));
 		}
 		else
 		{
@@ -650,31 +774,26 @@ public class VisualController implements PropertyChangeListener,
 		}
 	}
 
-	/**
-	 * 
-	 * 
-	 */
-	protected void checkWoflan()
+	protected void checkSubprocess() 
 	{
-		boolean woflan = ConfigurationManager.getConfiguration().isUseWoflan();
+		IEditor editor = am.getUi().getEditorFocus();
 		
-		String os_name = System.getProperty( "os.name");
-		if(os_name.startsWith("Mac") || os_name.startsWith("Linux")){
-			woflan = false;
-			
+		if (editor != null) {
+			if (editor instanceof SubprocessEditorVC)
+				setStatus(WITH_MAIN_EDITOR, ((SubprocessEditorVC)editor).getParentEditor().isTokenGameEnabled());
+			else
+				setStatus(WITH_MAIN_EDITOR, true);
 		}
-		else woflan = true;
-		setStatus(WOFLAN, woflan && am.getUi().getAllEditors().size() > 0);
 	}
-
+	
 	protected void checkMode()
 	{
 		boolean tokengame = false;
 		boolean drawMode = false;
-		if (am.getUi().getEditorFocus() != null)
-		{
-			tokengame = ((EditorVC) am.getUi().getEditorFocus())
-					.isTokenGameMode();
+		IEditor editor = am.getUi().getEditorFocus();
+		
+		if (editor != null) {
+			tokengame = editor.isTokenGameEnabled();
 			drawMode = !tokengame;
 		}
 		setStatus(TOKENGAME, tokengame);
@@ -689,26 +808,28 @@ public class VisualController implements PropertyChangeListener,
 		{
 			UndoManager undoManager = ((WoPeDJGraph) am.getUi()
 					.getEditorFocus().getGraph()).getUndoManager();
-			if (undoManager != null)
-			{
+			if (undoManager != null) {
+
+				if (am.getUi().getEditorFocus() instanceof SubprocessEditorVC)
+					undo = ((WoPeDUndoManager) undoManager).canUndo(am.getUi()
+							.getEditorFocus().getModelProcessor()
+							.getElementContainer());	
+			
+				else
 				undo = undoManager.canUndo();
 				redo = undoManager.canRedo();
 			}
 		}
+		
 		setStatus(CAN_UNDO, undo);
 		setStatus(CAN_REDO, redo);
-	}
-
-	public boolean isActive()
-	{
-		return active;
 	}
 
 	protected void checkColoring(){
 		boolean coloringActive = false;
 		if (am.getUi().getEditorFocus() != null)
 		{
-			coloringActive = ((EditorVC) am.getUi().getEditorFocus()).isUnderstandabilityColoringEnabled();
+			coloringActive = (am.getUi().getEditorFocus()).isUnderstandabilityColoringEnabled();
 		}
 		setStatus(COLORING, coloringActive);
 	}
@@ -722,20 +843,20 @@ public class VisualController implements PropertyChangeListener,
 		}
 		setStatus(ROTATE, rotateActive);
 	}
-	
-	//for importing a vertical net to change the rotate-button	
-	protected void setRotationTrue(){
-		setStatus(ROTATE, true);
-	}
-	
-	public void setActive(boolean active)
-	{
-		this.active = active;
-	}
-
+		
 	public void notify(boolean isEmpty)
 	{
 		setStatus(CAN_PASTE, am.getUi().getAllEditors().size() > 0 && !isEmpty);
+	}
+
+	public boolean isActive()
+	{
+		return active;
+	}
+
+	public void setActive(boolean active)
+	{
+		this.active = active;
 	}
 
 	public void mouseClicked(MouseEvent arg0)
@@ -752,42 +873,15 @@ public class VisualController implements PropertyChangeListener,
 
 	public void mousePressed(MouseEvent arg0)
 	{
-		if (isActive())
-		{
-			boolean pointClicked = false;
-			AbstractGraph graph = null;
-			Object selectedCell = null;
-			if (am.getUi().getEditorFocus() != null)
-			{
-
-				graph = am.getUi().getEditorFocus().getGraph();
-				selectedCell = graph.getSelectionCell();
-			}
-			if (selectedCell instanceof ArcModel)
-			{
-				Point2D clickPoint = graph.fromScreen(arg0.getPoint());
-				Point2D[] points = ((ArcModel) selectedCell).getPoints();
-				double minDist = Double.MAX_VALUE;
-				int pos = -1;
-				for (int i = 1; i < points.length - 1; i++)
-				{
-					if (clickPoint.distance(points[i]) < minDist)
-					{
-						pos = i;
-						minDist = clickPoint.distance(points[i]);
-					}
-				}
-				if (pos != -1 && minDist < 10)
-				{
-					pointClicked = true;
-				}
-			}
-			setStatus(ARC_POINT, pointClicked);
-		}
-
 	}
 
 	public void mouseReleased(MouseEvent arg0)
 	{
+	}
+
+	public void setArcpointSelection(boolean status) {
+		arcpointSelected = status;
+		checkSelection();
+		
 	}
 }

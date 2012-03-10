@@ -4,16 +4,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 
 @SuppressWarnings("serial")
 public class CombiOperatorView extends TransSimpleView {
 	
-    public CombiOperatorView(Object cell) {
-    	super(cell);
+    public CombiOperatorView(Object cell, IEditor editor) {
+    	super(cell, editor);
     }
 	
-    protected abstract class  CombiOperatorRenderer extends AbstractElementRenderer {
+    protected abstract class  CombiOperatorRenderer extends PetriNetElementRenderer {
 
     	public CombiOperatorRenderer(Object cell) {
     		super(cell);

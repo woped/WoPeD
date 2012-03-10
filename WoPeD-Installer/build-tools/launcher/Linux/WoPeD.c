@@ -84,6 +84,10 @@ int main(int argc, char* args[])
     strcat(cmd, " ");
     strcat(cmd, currPath);
     strcat(cmd, jarName); 
+	for (i = 1; i < argc; i++) {
+		strcat(cmd, " ");
+		strcat(cmd, args[i]);
+	}
 
     system(cmd);
 

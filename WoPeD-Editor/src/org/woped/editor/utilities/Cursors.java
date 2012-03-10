@@ -9,8 +9,8 @@ import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.translations.Messages;
 
 /**
@@ -47,7 +47,7 @@ public class Cursors
     {
         switch (petrinetType)
         {
-        case PetriNetModelElement.PLACE_TYPE:
+        case AbstractPetriNetElementModel.PLACE_TYPE:
             return placeCursor;
         case OperatorTransitionModel.AND_SPLIT_TYPE:
             return andSplitCursor;
@@ -65,7 +65,7 @@ public class Cursors
         	return andJoinXorSplitCursor;
         case OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE:
         	return xorJoinAndSplitCursor;        	
-        case PetriNetModelElement.TRANS_SIMPLE_TYPE:
+        case AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE:
             return transitionCursor;
         case OperatorTransitionModel.SUBP_TYPE:
             return subProcessCursor;

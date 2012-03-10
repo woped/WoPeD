@@ -8,9 +8,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vc.EditorVC;
@@ -177,7 +177,7 @@ public class SGYGraph {
 
 		editor.getGraph().drawNet(editor.getModelProcessor());
 		editor.updateNet();
-		editor.updateUI();
+		editor.getEditorPanel().updateUI();
 
 		// Is necessary to switch on the undoManager
 		if (editor.getGraph().getUndoManager() != null) {
@@ -202,7 +202,7 @@ public class SGYGraph {
 	@SuppressWarnings("unchecked")
 	private void gettingElements(HashMap<String, SGYElement> vertices) {
 		HashMap<String, SGYElement> potentialSources;
-		AbstractElementModel ele;
+		AbstractPetriNetElementModel ele;
 		ArcModel arc;
 		String sSource, sTarget;
 		ModelElementContainer mec = editor.getModelProcessor()

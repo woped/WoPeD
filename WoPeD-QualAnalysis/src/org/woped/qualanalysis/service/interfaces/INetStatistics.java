@@ -2,7 +2,7 @@ package org.woped.qualanalysis.service.interfaces;
 
 import java.util.Set;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
  * interface for NetStatistics-parts of qualanalysis servies.
@@ -17,49 +17,49 @@ public interface INetStatistics {
 	 * 
 	 * @return a set with all places
 	 */
-	public Set<AbstractElementModel> getPlaces();
+	public Set<AbstractPetriNetElementModel> getPlaces();
 	
 	/**
 	 * 
 	 * @return a set with all transitions
 	 */
-	public Set<AbstractElementModel> getTransitions();
+	public Set<AbstractPetriNetElementModel> getTransitions();
 
 	/**
 	 * 
 	 * @return a set with all operator-transitions
 	 */
-	public Set<AbstractElementModel> getOperators();
+	public Set<AbstractPetriNetElementModel> getOperators();
 	
 	/**
 	 * 
 	 * @return a set with all AND-join operators and operators that function as an AND-join (e.g. and-split-join)
 	 */
-	public Set<AbstractElementModel> getAndJoins();
+	public Set<AbstractPetriNetElementModel> getAndJoins();
 	
 	/**
 	 * 
 	 * @return a set with all AND-split operators and operators that function as an AND-split (e.g. and-split-join)
 	 */
-	public Set<AbstractElementModel> getAndSplits();
+	public Set<AbstractPetriNetElementModel> getAndSplits();
 	
 	/**
 	 * 
 	 * @return a set with all XOR-join operators and operators that function as an XOR-join (e.g. xor-split-join)
 	 */
-	public Set<AbstractElementModel> getXorJoins();
+	public Set<AbstractPetriNetElementModel> getXorJoins();
 	
 	/**
 	 * 
 	 * @return a set with all XOR-split operators and operators that function as an XOR-split (e.g. xor-split-join)
 	 */
-	public Set<AbstractElementModel> getXorSplits();
+	public Set<AbstractPetriNetElementModel> getXorSplits();
 
 	/**
 	 * 
 	 * @return a set with all subprocesses
 	 */
-	public Set<AbstractElementModel> getSubprocesses();
+	public Set<AbstractPetriNetElementModel> getSubprocesses();
 
 	/**
 	 * 

@@ -4,8 +4,10 @@ import java.awt.Container;
 import java.awt.Dimension;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.SubprocessEditorVC;
 
 /**
  * 
@@ -58,15 +60,15 @@ public class EditorSize {
 	private void setSize(Dimension dim, boolean downSize) {
 		Container parentContainer = getEditorParentContainer();
 		Dimension currentSize = parentContainer.getSize();
-		if (editor.isAnalysisBarVisible())
+		if (((EditorVC)editor).getEditorPanel().isAnalysisBarVisible())
 			editorSizeBeforeSidebar = currentSize;
-		else if (!editor.isAnalysisBarVisible()
+		else if (!((EditorVC)editor).getEditorPanel().isAnalysisBarVisible()
 				&& editorSizeBeforeSidebar != null
 				&& editorSizeWithSideBar.height == currentSize.height
 				&& editorSizeWithSideBar.width == currentSize.width) {
-			editor.setAutomaticResize(true);
+			((EditorVC)editor).getEditorPanel().setAutomaticResize(true);
 			parentContainer.setSize(editorSizeBeforeSidebar);
-			editor.setAutomaticResize(true);
+			((EditorVC)editor).getEditorPanel().setAutomaticResize(true);
 			parentContainer.setLocation(0, 0);
 			editorSizeBeforeSidebar = null;
 			return;
@@ -81,9 +83,9 @@ public class EditorSize {
 			// editor.setAutomaticResize(true); must be done twice because
 			// "setSize" and "setLocation" changes the saved flag in
 			// DefaultEditorFrame line 311
-			editor.setAutomaticResize(true);
+			((EditorVC)editor).getEditorPanel().setAutomaticResize(true);
 			parentContainer.setSize(dim);
-			editor.setAutomaticResize(true);
+			((EditorVC)editor).getEditorPanel().setAutomaticResize(true);
 			parentContainer.setLocation(0, 0);
 		}
 		if (editorSizeBeforeSidebar != null) {
@@ -106,7 +108,7 @@ public class EditorSize {
 	 */
 	private void calculateModelSize() {
 		ModelElementContainer elements = editor.getModelProcessor().getElementContainer();
-		AbstractElementModel element = null;
+		AbstractPetriNetElementModel element = null;
 
 		modelSize = new Dimension(100, 100);
 
@@ -139,7 +141,7 @@ public class EditorSize {
 		// set newEditorSize to modelSize
 		newEditorSize = new Dimension(modelSize);
 		// add sideBar-width if sideBar is displayed
-		if (editor.isAnalysisBarVisible()) {
+		if (((EditorVC)editor).getEditorPanel().isAnalysisBarVisible()) {
 			newEditorSize.width += SIDEBAR_WIDTH;
 			if(SIDEBAR_MINHEIGHT > newEditorSize.height){
 				//newEditorSize.height = editor.getAnalysisSideBar().getHeight(); //TODO does not work
@@ -158,10 +160,10 @@ public class EditorSize {
 	 * @return the container which represents the whole editor-window
 	 */
 	private Container getEditorParentContainer(){
-		if (editor.isSubprocessEditor())
-			return editor.getParent().getParent().getParent().getParent();
+		if (editor instanceof SubprocessEditorVC)
+			return ((EditorVC)editor).getEditorPanel().getParent().getParent().getParent().getParent();
 		else
-			return editor.getParent().getParent().getParent().getParent().getParent();
+			return ((EditorVC)editor).getEditorPanel().getParent().getParent().getParent().getParent().getParent();
 	}
 
 }

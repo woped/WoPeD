@@ -12,11 +12,11 @@ import org.woped.qualanalysis.reachabilitygraph.controller.ParallelRouter;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.marking.Arc;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityGraphModel {
-	private MarkingNet markingNet;
+	private IMarkingNet markingNet;
 	private HashSet<DefaultGraphCell> cellsList;
 
 	public ReachabilityGraphModelUsingMarkingNet(IEditor editor) {
@@ -135,7 +135,7 @@ public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityG
 		return markingNet.placesToStringName();
 	}
 	
-	public MarkingNet getMarkingNet(){
+	public IMarkingNet getMarkingNet(){
 		return markingNet;
 	}
 

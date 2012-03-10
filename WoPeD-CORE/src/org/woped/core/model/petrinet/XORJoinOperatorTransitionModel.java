@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.Constants;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -20,7 +19,7 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 	@Override
 	public void registerIncomingConnection(
     		PetriNetModelProcessor processor,
-			AbstractElementModel sourceModel) 
+			AbstractPetriNetElementModel sourceModel) 
 	{
 		ModelElementContainer outerContainer = processor.getElementContainer();
 		/*
@@ -31,12 +30,12 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 				getId()).size() == 1
 				&& getSimpleTransContainer()
 				.getElementsByType(
-						PetriNetModelElement.TRANS_SIMPLE_TYPE)
+						AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
 						.size() == 1)
 		{
 			// get simple trans
 			TransitionModel simpleTrans = (TransitionModel) getSimpleTransContainer().getElementsByType(
-					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+					AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
 					.values().iterator().next();
 			// dann f�ge nur die Reference hinzu
 			addReference(getNextFreeArcID(processor),
@@ -72,16 +71,16 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 	@Override
 	public void registerOutgoingConnection(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel targetModel) 
+    		AbstractPetriNetElementModel targetModel) 
 	{
 		// create a connection to target for each simple transition
-		Iterator<AbstractElementModel> simpleRootIter = getSimpleTransContainer().getRootElements()
+		Iterator<AbstractPetriNetElementModel> simpleRootIter = getSimpleTransContainer().getRootElements()
 		.iterator();
 		while (simpleRootIter.hasNext())
 		{
-			PetriNetModelElement pec = (PetriNetModelElement) simpleRootIter
+			AbstractPetriNetElementModel pec = (AbstractPetriNetElementModel) simpleRootIter
 			.next();
-			if (pec.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
+			if (pec.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
 				addReference(getNextFreeArcID(processor), pec
 						.getPort(), targetModel.getPort());
 		}
@@ -89,13 +88,13 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 	
     public void registerIncomingConnectionRemoval(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel otherModel)
+    		AbstractPetriNetElementModel otherModel)
     {
 		// TARGET IS XOR-JOIN OPERATOR => delete inner Transition that
 		// is Target to place ID more than 1 inner transition
     	if (getSimpleTransContainer()
     			.getElementsByType(
-    					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    					AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
     					.size() != 1)
     	{
     		getSimpleTransContainer()

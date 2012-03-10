@@ -64,7 +64,7 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 					toAdd.addEditor(editor);
 					toAdd.refreshGraph(AbstractReachabilityGraphModel.HIERARCHIC);
 				}
-				dui.getToolBar().getReachabilityGraphButton().setEnabled(false);
+//				dui.getToolBar().getReachabilityGraphButton().setEnabled(false);
 			}
 		}
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- processViewEvent " + this.getClass().getName());

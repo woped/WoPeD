@@ -3,7 +3,7 @@ package org.woped.qualanalysis.service.interfaces;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.structure.components.ClusterElement;
 
 /**
@@ -19,13 +19,13 @@ public interface IWellStructuredness {
      * 
      * @return a set with all pt-handles
      */
-	public Set<Set<AbstractElementModel>> getPTHandles();
+	public Set<Set<AbstractPetriNetElementModel>> getPTHandles();
 	
 	/**
      * 
      * @return a set with all tp-handles
      */
-	public Set<Set<AbstractElementModel>> getTPHandles();
+	public Set<Set<AbstractPetriNetElementModel>> getTPHandles();
 	
 	/**
      * 

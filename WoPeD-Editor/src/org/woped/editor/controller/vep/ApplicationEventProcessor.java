@@ -10,8 +10,8 @@ import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
@@ -44,37 +44,92 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
         {
 
         case AbstractViewEvent.DRAWMODE_PLACE:
-            setDrawMode(PetriNetModelElement.PLACE_TYPE, true);
+        	if (currentEditor.getCreateElementType() != AbstractPetriNetElementModel.PLACE_TYPE) {
+        		currentEditor.setDrawMode(AbstractPetriNetElementModel.PLACE_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
         case AbstractViewEvent.DRAWMODE_TRANSITION:
-            setDrawMode(PetriNetModelElement.TRANS_SIMPLE_TYPE, true);
+        	if (currentEditor.getCreateElementType() != AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE) {
+        		currentEditor.setDrawMode(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
         case AbstractViewEvent.DRAWMODE_ANDJOIN:
-            setDrawMode(OperatorTransitionModel.AND_JOIN_TYPE, true);
+        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.AND_JOIN_TYPE) {
+        		currentEditor.setDrawMode(OperatorTransitionModel.AND_JOIN_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
         case AbstractViewEvent.DRAWMODE_ANDSPLIT:
-            setDrawMode(OperatorTransitionModel.AND_SPLIT_TYPE, true);
+        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.AND_SPLIT_TYPE) {
+        		currentEditor.setDrawMode(OperatorTransitionModel.AND_SPLIT_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
         case AbstractViewEvent.DRAWMODE_ANDSPLITJOIN:
-            setDrawMode(OperatorTransitionModel.AND_SPLITJOIN_TYPE, true);
+        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.AND_SPLITJOIN_TYPE) {
+        		currentEditor.setDrawMode(OperatorTransitionModel.AND_SPLITJOIN_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
         case AbstractViewEvent.DRAWMODE_XORJOIN:
-            setDrawMode(OperatorTransitionModel.XOR_JOIN_TYPE, true);
+        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.XOR_JOIN_TYPE) {
+        		currentEditor.setDrawMode(OperatorTransitionModel.XOR_JOIN_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
         case AbstractViewEvent.DRAWMODE_XORSPLIT:
-            setDrawMode(OperatorTransitionModel.XOR_SPLIT_TYPE, true);
+        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.XOR_SPLIT_TYPE) {
+        		currentEditor.setDrawMode(OperatorTransitionModel.XOR_SPLIT_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
         case AbstractViewEvent.DRAWMODE_XORSPLITJOIN:
-            setDrawMode(OperatorTransitionModel.XOR_SPLITJOIN_TYPE, true);
+        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+        		currentEditor.setDrawMode(OperatorTransitionModel.XOR_SPLITJOIN_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
         case AbstractViewEvent.DRAWMODE_ANDJOIN_XORSPLIT:
-        	setDrawMode(OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE, true);
+        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
+        		currentEditor.setDrawMode(OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
         	break;
         case AbstractViewEvent.DRAWMODE_XORJOIN_ANDSPLIT:
-        	setDrawMode(OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE, true);
+        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE) {
+        		currentEditor.setDrawMode(OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
         	break;
         case AbstractViewEvent.DRAWMODE_SUB:
-            setDrawMode(PetriNetModelElement.SUBP_TYPE, true);
+        	if (currentEditor.getCreateElementType() != AbstractPetriNetElementModel.SUBP_TYPE) {
+        		currentEditor.setDrawMode(AbstractPetriNetElementModel.SUBP_TYPE, true);
+        	}
+        	else {
+        		currentEditor.setDrawMode(-1, false);
+    		}
             break;
 
         case AbstractViewEvent.CONFIG:
@@ -171,7 +226,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
         }
     }
 
-    private void setDrawMode(int type, boolean active)
+/*    private void setDrawMode(int type, boolean active)
     {
         EditorVC currentEditor;
         for (Iterator<IEditor> iter = getMediator().getUi().getAllEditors().iterator(); iter.hasNext();)
@@ -180,7 +235,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
             currentEditor.setDrawingMode(active);
             currentEditor.setCreateElementType(type);
         }
-    }
+    }*/
 
     /**
      * @return Returns the mediator.

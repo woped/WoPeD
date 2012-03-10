@@ -28,6 +28,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
 
@@ -52,9 +53,9 @@ public class TransXOrSplitView extends TransSimpleView
      * @param graph
      * @param mapper
      */
-    public TransXOrSplitView(Object cell)
+    public TransXOrSplitView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new TransXOrSplitRenderer(cell);
     }
 
@@ -72,7 +73,7 @@ public class TransXOrSplitView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransXOrSplitRenderer extends AbstractElementRenderer
+    private class TransXOrSplitRenderer extends PetriNetElementRenderer
     {
     	TransXOrSplitRenderer(Object cell)
     	{
@@ -117,14 +118,6 @@ public class TransXOrSplitView extends TransSimpleView
             return TransXOrSplitView.this.isActivated();
         }
 
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return TransXOrSplitView.this.isFireing();
-        }
-        
     }
 
     /**
@@ -138,5 +131,12 @@ public class TransXOrSplitView extends TransSimpleView
      */
     public void refresh()
     {}
+    
+    public boolean isActivated() {
+    	// Although an XOR split may be active according to the model,
+    	// we do not draw it as such, because it is really the arcs the user needs to
+    	// click on to make his selection
+    	return false;
+    }
 
 }

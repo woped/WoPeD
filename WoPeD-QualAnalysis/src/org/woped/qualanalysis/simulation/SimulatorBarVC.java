@@ -47,7 +47,6 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.qualanalysis.reachabilitygraph.gui.DropDownButton;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
 import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
 import org.woped.translations.Messages;
@@ -251,7 +250,6 @@ public class SimulatorBarVC extends JToolBar implements IViewController, MouseLi
 	 */
 	public void addAnalysisButtons()
 	{
-		ReferenceProvider refer = new ReferenceProvider();
 		tokenGameButton = new JToggleButton(Messages.getImageIcon("Tokengame.RemoteControl.stopTG"));
 		tokenGameButton.setPreferredSize(new Dimension(stXsize, stYsize));
 		tokenGameButton.setToolTipText(Messages.getTitle("Tokengame.RemoteControl.stopTG"));
@@ -264,15 +262,15 @@ public class SimulatorBarVC extends JToolBar implements IViewController, MouseLi
 		// control-variable for tokenGameButton
 		tokenGameButtonOnStage = true;
 		
-		add(refer.getUIReference().getToolBar().getWoflanButton());
-		add(refer.getUIReference().getToolBar().getAnalysisButton());
-		add(refer.getUIReference().getToolBar().getMetricButton());
-		add(refer.getUIReference().getToolBar().getQuantCapButton());
-		add(refer.getUIReference().getToolBar().getQuantSimButton());
-		add(refer.getUIReference().getToolBar().getReachabilityGraphButton());
-		add(refer.getUIReference().getToolBar().getColoringButton());
+//		add(refer.getUIReference().getToolBar().getWoflanButton());
+//		add(refer.getUIReference().getToolBar().getAnalysisButton());
+//		add(refer.getUIReference().getToolBar().getMetricButton());
+//		add(refer.getUIReference().getToolBar().getQuantCapButton());
+//		add(refer.getUIReference().getToolBar().getQuantSimButton());
+//		add(refer.getUIReference().getToolBar().getReachabilityGraphButton());
+//		add(refer.getUIReference().getToolBar().getColoringButton());
 		//Remove them from standard ToolBar
-		refer.getUIReference().getToolBar().removeAnalysisButtons();
+//		refer.getUIReference().getToolBar().removeAnalysisButtons();
 	}
 
     public JToggleButton getAutoChoiceButton()

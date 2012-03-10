@@ -23,7 +23,14 @@
 package org.woped.editor.controller;
 
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -86,19 +93,14 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.SwingUtils;
 import org.woped.editor.Constants;
-import org.woped.editor.controller.Role;
-import org.woped.editor.controller.Group;
-import org.woped.editor.controller.LogicalModel;
-
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 
@@ -3649,11 +3651,11 @@ public class PetriNetResourceEditor extends JPanel
 	    {
 	        boolean isUsed = false;
 	               
-	        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
-	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
-	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
+	        HashMap<String, AbstractPetriNetElementModel> alltrans = new HashMap<String, AbstractPetriNetElementModel>();
+	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
 
-	        for (Iterator<AbstractElementModel> transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
+	        for (Iterator<AbstractPetriNetElementModel> transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
 	        {
 	            TransitionModel transition = (TransitionModel)(transIter.next());
 	            if (transition.getToolSpecific() != null &&
@@ -3672,11 +3674,11 @@ public class PetriNetResourceEditor extends JPanel
 		private boolean RoleIsUsed(String RoleName)
 	    {
 	        boolean isUsed = false;
-	        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
-	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
-	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
+	        HashMap<String, AbstractPetriNetElementModel> alltrans = new HashMap<String, AbstractPetriNetElementModel>();
+	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
 	        
-	        for (Iterator<AbstractElementModel> transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
+	        for (Iterator<AbstractPetriNetElementModel> transIter = alltrans.values().iterator(); transIter.hasNext() & !isUsed;)
 	        {
 	            TransitionModel transition = (TransitionModel)(transIter.next());
 	            if (transition.getToolSpecific() != null &&
@@ -3694,11 +3696,11 @@ public class PetriNetResourceEditor extends JPanel
 	    // Update a changed Role in petrinet
 		private void updateRolesInPetrinet(String oldName, String newName)
 	    {
-	        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
-	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
-	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
+	        HashMap<String, AbstractPetriNetElementModel> alltrans = new HashMap<String, AbstractPetriNetElementModel>();
+	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
 
-	        for (Iterator<AbstractElementModel> transIter = alltrans.values().iterator(); transIter.hasNext();)
+	        for (Iterator<AbstractPetriNetElementModel> transIter = alltrans.values().iterator(); transIter.hasNext();)
 	        {
 	            TransitionModel transition = (TransitionModel)(transIter.next());
 	            if (transition.getToolSpecific() != null &&
@@ -3716,11 +3718,11 @@ public class PetriNetResourceEditor extends JPanel
 	    // Update a changed Group in petrinet	    
 		private void updateGroupsInPetrinet(String oldName, String newName)
 	    {
-	        HashMap<String, AbstractElementModel> alltrans = new HashMap<String, AbstractElementModel>();
-	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
-	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
+	        HashMap<String, AbstractPetriNetElementModel> alltrans = new HashMap<String, AbstractPetriNetElementModel>();
+	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+	        alltrans.putAll(getPetrinet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
 
-	        for (Iterator<AbstractElementModel> transIter = alltrans.values().iterator(); transIter.hasNext();)
+	        for (Iterator<AbstractPetriNetElementModel> transIter = alltrans.values().iterator(); transIter.hasNext();)
 	        {
 	            TransitionModel transition = (TransitionModel)(transIter.next());
 	            if (transition.getToolSpecific() != null &&

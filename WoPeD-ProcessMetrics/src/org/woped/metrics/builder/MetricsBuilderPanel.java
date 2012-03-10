@@ -503,7 +503,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 									{
 										jMetricsFilePathTextField = new JTextField();
 										jPanel8.add(jMetricsFilePathTextField, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
-										jMetricsFilePathTextField.setText("C:\\");
+//										jMetricsFilePathTextField.setText("C:\\");
 										jMetricsFilePathTextField.setPreferredSize(new java.awt.Dimension(391, 25));
 										jMetricsFilePathTextField.setSize(338, 25);
 										jMetricsFilePathTextField.setEnabled(false);
@@ -1568,7 +1568,6 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 			model.removeRow(0);
 		
 		for(UIThreshold thresh:threshold){
-			System.out.println(thresh.getThreshold()+" # "+thresh.getFrom()+" # "+thresh.getTo());
 			MetricThresholdState state = thresh.getThreshold();
 			String color = "red";
 			if(state == MetricThresholdState.YELLOW)

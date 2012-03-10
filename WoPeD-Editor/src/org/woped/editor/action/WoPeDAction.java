@@ -23,14 +23,13 @@
 package org.woped.editor.action;
 
 import java.awt.event.ActionEvent;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.Constants;
 import org.woped.editor.controller.EditorViewEvent;
 import org.woped.translations.Messages;
 
@@ -45,55 +44,23 @@ import org.woped.translations.Messages;
 public class WoPeDAction extends AbstractAction
 {
 
-    private boolean                     m_selected = false;
-    private AbstractApplicationMediator am         = null;
-    private int                         type       = -1;
-    private int                         order      = -1;
-    private Object                      data       = null;
-
+    private boolean                    		m_selected = false;
+    private AbstractApplicationMediator 	am         = null;
+    private int                         	type       = -1;
+    private int                         	order      = -1;
+    private Object                      	data       = null;
+    private ArrayList<JComponent>			target	   = new ArrayList<JComponent>();
+         
     public boolean isSelected()
     {
         return m_selected;
     }
-
-    public void setSelected(boolean selected)
-    {
-        if (m_selected != selected)
-        {
-            m_selected = selected;
-            firePropertyChange("selected", new Boolean(!selected), new Boolean(selected));
-            for (int i = 0; i < getPropertyChangeListeners().length; i++)
-            {
-                try
-                {
-                    // TODO find better solution
-                    // ACHTUNG: Bitte machen Sie dies zuhause nicht nach! ;-)
-                    // Bessere Lösungen sind gerne gesehen.
-                    Object curObject = getPropertyChangeListeners()[i];
-                    Class<? extends Object> curClass = curObject.getClass();
-                    Method targetMethod = curClass.getMethod("getTarget", new Class[0]);
-                    targetMethod.setAccessible(true);
-                    Object targetObject = targetMethod.invoke(curObject, new Object[0]);
-                    setSelected(targetObject, selected);
-                } catch (Exception e)
-                {
-                    LoggerManager.error(Constants.EDITOR_LOGGER, "Could not select Object");
-                }
-            }
-        }
-    }
-
-    /**
-     *  
-     */
+    
     public WoPeDAction(AbstractApplicationMediator am, int type, int order)
     {
         this(am, type, order, null, null);
     }
 
-    /**
-     *  
-     */
     public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data)
     {
         this(am, type, order, data, null);
@@ -146,29 +113,19 @@ public class WoPeDAction extends AbstractAction
         super(arg0, icon);
     }
 
-    protected static boolean setSelected(Object obj, boolean status)
-    {
-        if (obj != null)
-        {
-            try
-            {
-                // Reflection!!
-                Method enableMethod = obj.getClass().getMethod("setSelected", new Class[] { Boolean.TYPE });
-                enableMethod.invoke(obj, new Object[] { new Boolean(status) });
-                return true;
-            } catch (Exception e)
-            {
-                if (obj != null)
-                    LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change the status for " + obj.getClass());
-            }
-
-        }
-        return false;
-    }
-
     public void actionPerformed(final ActionEvent e)
     {
         if (am != null)
         	am.viewEventPerformed(new EditorViewEvent(e.getSource(), type, order, data));
+        
     }
+
+	public void addTarget(JComponent target) {
+		this.target.add(target);
+		
+	}
+	
+	public ArrayList<JComponent>getTarget() {
+		return target;
+	}
 }

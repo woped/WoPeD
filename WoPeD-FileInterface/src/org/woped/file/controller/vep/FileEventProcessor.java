@@ -2,24 +2,26 @@ package org.woped.file.controller.vep;
 
 import java.awt.Cursor;
 import java.awt.Frame;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.rmi.RemoteException;
 import java.security.AccessControlException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
+import org.apromore.access.ApromoreAccessObject;
+import org.apromore.manager.model_portal.EditSessionType;
+import org.apromore.manager.model_portal.ImportProcessOutputMsgType;
 import org.woped.bpel.BPEL;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
@@ -27,12 +29,10 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
@@ -44,18 +44,15 @@ import org.woped.file.ImageExport;
 import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
-import org.woped.file.gui.OpenWebEditorUI;
+import org.woped.file.gui.ExportFrame;
+import org.woped.file.gui.ImportFrame;
 import org.woped.metrics.builder.MetricsBuilder;
 import org.woped.metrics.helpers.LabeledFileFilter;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.woflan.TPNExport;
-import org.woped.qualanalysis.woflan.WoflanFileFactory;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.server.ServerLoader;
-import org.woped.server.holder.ModellHolder;
-import org.woped.server.holder.UserHolder;
 import org.woped.translations.Messages;
 
 public class FileEventProcessor extends AbstractEventProcessor {
@@ -66,8 +63,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
     @Override
     public void processViewEvent(AbstractViewEvent event) {
         EditorVC editor = (EditorVC) getMediator().getUi().getEditorFocus();
-
-        boolean bRunWofLanDLL = false;
 
         switch (event.getOrder()) {
         case AbstractViewEvent.OPEN:
@@ -86,7 +81,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
         case AbstractViewEvent.SAVEAS:
             saveAs((EditorVC) getMediator().getUi().getEditorFocus());
             break;
-        case AbstractViewEvent.SAVEWEBSERVICE:
+		case AbstractViewEvent.IMPORTAPRO:
+			importApromore();
+			break;
+		case AbstractViewEvent.EXPORTAPRO:
+			exportApromore((EditorVC) getMediator().getUi().getEditorFocus());
+			break;
+/*        case AbstractViewEvent.SAVEWEBSERVICE:
             saveWebFile((EditorVC) getMediator().getUi().getEditorFocus());
             break;
         case AbstractViewEvent.OPENWEBSERVICE:
@@ -96,20 +97,14 @@ public class FileEventProcessor extends AbstractEventProcessor {
             } else {
                 openWebServiceEditor(0);
             }
-            break;
+            break;*/
         case AbstractViewEvent.EXPORT:
             export((EditorVC) getMediator().getUi().getEditorFocus());
             break;
         case AbstractViewEvent.ANALYSIS_WOPED:
-            // This veriable determines whether we will run internal
-            // or external analysis below
-            bRunWofLanDLL = true;
-        case AbstractViewEvent.ANALYSIS_WOFLAN:
+            if (editor != null) {
 
-            if (editor != null
-                    && editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
-
-                File woflanExportFile = new WoflanFileFactory().createFile(editor);
+/*                File woflanExportFile = new WoflanFileFactory().createFile(editor);
 
                 if (woflanExportFile != null) {
 
@@ -135,27 +130,27 @@ public class FileEventProcessor extends AbstractEventProcessor {
                             JOptionPane.showMessageDialog(null, Messages.getString("File.Error.Woflan.Text", arg),
                                     Messages.getString("File.Error.Woflan.Title"), JOptionPane.WARNING_MESSAGE);
                         }
-                    } else {
+                    } else {*/
                         // calls the new analysis sidebar
-                        editor.showAnalysisBar(getMediator().getUi().getEditorFocus(), this.getMediator());
+                        editor.getEditorPanel().showAnalysisBar();
                         LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
-                    }
+                 //   }
 
-                }
+//                }
 
             }
             break;
          
         case AbstractViewEvent.ANALYSIS_METRIC:
         	// calls the new metrics sidebar
-        	if (!editor.isMetricsBarVisible())
+        	if (!editor.getEditorPanel().isMetricsBarVisible())
         	{
-        		editor.showMetricsBar(getMediator().getUi().getEditorFocus());
+        		editor.getEditorPanel().showMetricsBar();
         		
         	}
         	else
         	{
-        		editor.hideMetricsBar();
+        		editor.getEditorPanel().hideMetricsBar();
         	}
             
             LoggerManager.info(Constants.FILE_LOGGER, Messages.getString("Metrics.General.MetricsStarted") + ".");
@@ -231,7 +226,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
      * @param editor - PetriNetModel which has to save on the WebServer
      * @returns Returns if the save Process fails or succeed
      */
-    private boolean saveWebFile(EditorVC editor) {
+/*    private boolean saveWebFile(EditorVC editor) {
         boolean succeed = false;
 
         getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -286,7 +281,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
         }
         getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
         return succeed;
-    }
+    }*/
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -310,14 +305,14 @@ public class FileEventProcessor extends AbstractEventProcessor {
         ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
         boolean branchingOk = true;
         String[] param = { "", "", "" };
-        Iterator<AbstractElementModel> transes = (mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE)).values()
+        Iterator<AbstractPetriNetElementModel> transes = (mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)).values()
                 .iterator();
         IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
-        Iterator<AbstractElementModel> places = qualanService.getPlaces().iterator();
-        AbstractPetriNetModelElement end = (AbstractPetriNetModelElement) qualanService.getSinkPlaces().iterator().next();
+        Iterator<AbstractPetriNetElementModel> places = qualanService.getPlaces().iterator();
+        AbstractPetriNetElementModel end = (AbstractPetriNetElementModel) qualanService.getSinkPlaces().iterator().next();
 
         while (transes.hasNext()) {
-            AbstractPetriNetModelElement trans = (AbstractPetriNetModelElement) transes.next();
+            AbstractPetriNetElementModel trans = (AbstractPetriNetElementModel) transes.next();
             Map<String, Object> outArcs = mec.getOutgoingArcs(trans.getId());
             int sum = 0;
             for (Object v : outArcs.values()) {
@@ -336,7 +331,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
         }
 
         while (places.hasNext()) {
-            AbstractPetriNetModelElement place = (AbstractPetriNetModelElement) places.next();
+            AbstractPetriNetElementModel place = (AbstractPetriNetElementModel) places.next();
             if (!place.equals(end)) {
                 Map<String, Object> outArcs = mec.getOutgoingArcs(place.getId());
                 int sum = 0;
@@ -584,13 +579,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
             // FileFilters
             Vector<String> extensions = new Vector<String>();
-            if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
-                extensions.add("pnml");
-                extensions.add("xml");
-                FileFilterImpl PNMLFilter = new FileFilterImpl(FileFilterImpl.PNMLFilter,
-                        "Petri Net Markup Language (1.3.2) (*.pnml)", extensions);
-                jfc.setFileFilter(PNMLFilter);
-            }
+            extensions.add("pnml");
+            extensions.add("xml");
+            FileFilterImpl PNMLFilter = new FileFilterImpl(FileFilterImpl.PNMLFilter,
+            		"Petri Net Markup Language (1.3.2) (*.pnml)", extensions);
+            jfc.setFileFilter(PNMLFilter);
+            
             jfc.setDialogTitle(Messages.getString("Action.EditorSaveAs.Title"));
 
             int returnVal = jfc.showSaveDialog(null);
@@ -635,7 +629,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
      * 
      * @return IEditor
      */
-    private IEditor openWebServiceEditor(int modellID) {
+ /*   private IEditor openWebServiceEditor(int modellID) {
         // get loadable List of PetriNetModels
         try {
             ArrayList<ModellHolder> values = null;
@@ -663,7 +657,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
         }
         return null;
 
-    }
+    }*/
 
     /**
      * openWebFile()
@@ -674,7 +668,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
      * @param modell
      * @return
      */
-    private IEditor openWebFile(String content, ModellHolder modell) {
+    /*private IEditor openWebFile(String content, ModellHolder modell) {
         IEditor editor = null;
         final PNMLImport pr;
 
@@ -711,7 +705,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
         getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
         return editor;
     }
-
+*/
     /**
      * TODO: DOCUMENTATION (silenco)
      */
@@ -739,9 +733,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 "Petri Net Markup Language older version (*.pnml,*.xml)", extensions));
         jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.PNMLFilter,
                 "Petri Net Markup Language (1.3.2) (*.pnml,*.xml)", extensions));
-        // jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.XMIFilter, "UML
-        // (*.xmi)", extensions));
-
         jfc.showOpenDialog(null);
 
         if (jfc.getSelectedFile() != null) {
@@ -831,4 +822,132 @@ public class FileEventProcessor extends AbstractEventProcessor {
         getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
         return editor;
     }
+    
+	private IEditor importApromore() {
+		IEditor editor = null;
+		final PNMLImport pr;
+
+		pr = new PNMLImport((ApplicationMediator) getMediator());
+		boolean loadSuccess = false;
+
+		InputStream is;
+
+		ImportFrame aImp = new ImportFrame();
+		if (aImp.getElement() == null) 
+		{	
+	        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+			return null;
+		}
+			ApromoreAccessObject aao = new ApromoreAccessObject();//"proxy.dhbw-karlsruhe.de", 8080);
+		
+		try {
+			is = aao.getPNML(aImp.getElement()).getInputStream();
+			// TESTCODE
+            File a = new File("C:\\aprotest.pnml");
+            InputStream c = new FileInputStream(a);
+            is = c;
+            // END OF TESTCODE
+            loadSuccess = pr.run(is);
+            		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		if (loadSuccess) {
+			editor = pr.getEditor()[pr.getEditor().length - 1];
+			for (int i = 0; i < pr.getEditor().length; i++) {
+
+				// add Editor
+				LoggerManager.info(Constants.FILE_LOGGER,
+						"Petrinet loaded from Apromore");
+				
+				
+				((EditorVC) pr.getEditor()[i]).setApromoreSettings(aImp.getEditSession());
+			}
+		} else {
+			String arg[] = { "Apromore" };
+			JOptionPane.showMessageDialog(null,
+					Messages.getString("File.Error.FileOpen.Text", arg),
+					Messages.getString("File.Error.FileOpen.Title"),
+					JOptionPane.ERROR_MESSAGE);
+		}
+		
+		getMediator().getUi().updateRecentMenu();
+
+		if (ConfigurationManager.getConfiguration().getColorOn() == true) {
+			// new NetColorScheme().update();
+		}
+
+		getMediator().getUi().getComponent()
+		.setCursor(Cursor.getDefaultCursor());
+
+		return editor;
+	}
+
+	public boolean exportApromore(EditorVC editor) {
+
+		boolean succeed = false;
+		getMediator().getUi().getComponent()
+		.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+		ExportFrame a;
+		if (editor.getApromoreSettings() != null)
+		{
+			a = new ExportFrame(editor.getApromoreSettings());
+		}
+		else
+		{
+			a = new ExportFrame();
+		}
+		EditSessionType editSess = a.showDialog();
+		
+					if (editor != null) {
+                        IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
+                        IStatusBar iSB[] = new IStatusBar[iVC.length];
+                        for (int i = 0; i < iSB.length; i++) {
+
+                            iSB[i] = (IStatusBar) iVC[i];
+                        }
+                        PNMLExport pe = new PNMLExport(iSB);
+                        pe.saveToFile(editor, "tmp.pnml");
+                        LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in file: "
+                                + "tmp.pnml");
+
+                        ApromoreAccessObject aao = new ApromoreAccessObject();
+                        if (!aao.IsOnline())
+                        {
+                            getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+                        	return false;
+                        }
+                        DataHandler dh = new DataHandler(new FileDataSource("tmp.pnml"));
+                        ImportProcessOutputMsgType check = aao.export(dh, editSess); 
+                        if (check.getResult().getCode() == 0)
+                         { 
+                        	 succeed = true;
+                        editor.setSaved(true);
+                         } 
+                        // TESTCODE
+                        else succeed = true;
+                        try {
+							Thread.sleep(4000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                        // TESTCODE END	 
+
+					} 
+		getMediator().getUi().getComponent()
+				.setCursor(Cursor.getDefaultCursor());
+		if (succeed == true)
+            JOptionPane.showMessageDialog(null, Messages.getString("Apromore.Export.UI.Status.AproUpload"), Messages
+                    .getString("Apromore.Export.UI.Status.AproUploadTitle"), JOptionPane.INFORMATION_MESSAGE);
+
+		return succeed;
+
+	}
 }

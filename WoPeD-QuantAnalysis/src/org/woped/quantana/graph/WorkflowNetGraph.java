@@ -5,9 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
@@ -32,11 +31,11 @@ public class WorkflowNetGraph {
 		nodeArray = new Node[numNodes];
 		int nextIdx = 0;
 		
-		AbstractPetriNetModelElement source = (AbstractPetriNetModelElement)qualanService.getSourcePlaces().iterator().next();
+		AbstractPetriNetElementModel source = (AbstractPetriNetElementModel)qualanService.getSourcePlaces().iterator().next();
 		sourcePlace = new Node(source.getId(), source.getNameValue());
 		sourcePlace.setType(Node.TYPE_PLACE);
 		
-		AbstractPetriNetModelElement sink = (AbstractPetriNetModelElement)qualanService.getSinkPlaces().iterator().next();
+		AbstractPetriNetElementModel sink = (AbstractPetriNetElementModel)qualanService.getSinkPlaces().iterator().next();
 		sinkPlace = new Node(sink.getId(), sink.getNameValue());
 		sinkPlace.setType(Node.TYPE_PLACE);
 		
@@ -117,14 +116,14 @@ public class WorkflowNetGraph {
 	}
 	
 	private void buildGraph(Node n){
-		Iterator<AbstractElementModel> postNodes = mec.getTargetElements(n.getId()).values().iterator();
-		Iterator<AbstractElementModel> preNodes = mec.getSourceElements(n.getId()).values().iterator();
+		Iterator<AbstractPetriNetElementModel> postNodes = mec.getTargetElements(n.getId()).values().iterator();
+		Iterator<AbstractPetriNetElementModel> preNodes = mec.getSourceElements(n.getId()).values().iterator();
 
 		if (mec.getTargetElements(n.getId()).size() > 1)
 			n.setFork(true);
 		
 		while (postNodes.hasNext()){
-			AbstractPetriNetModelElement currentPlace = (AbstractPetriNetModelElement) postNodes.next();
+			AbstractPetriNetElementModel currentPlace = (AbstractPetriNetElementModel) postNodes.next();
 
 			int nodeIdx = getNodeIdx(currentPlace.getId());
 			Node postNode = null;
@@ -135,10 +134,10 @@ public class WorkflowNetGraph {
 				} else {
 					postNode = new Node(id, currentPlace.getNameValue());
 					switch (currentPlace.getType()){
-					case AbstractPetriNetModelElement.PLACE_TYPE:
+					case AbstractPetriNetElementModel.PLACE_TYPE:
 						postNode.setType(Node.TYPE_PLACE);
 						break;
-					case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
+					case AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE:
 						postNode.setType(Node.TYPE_TRANS_SIMPLE);
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
@@ -158,12 +157,12 @@ public class WorkflowNetGraph {
 							postNode.setType(Node.TYPE_XOR_SPLIT);
 						}
 						break;
-					case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
+					case AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE:
 						postNode.setType(Node.TYPE_TRANS_SIMPLE);
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
 						break;
-					case AbstractPetriNetModelElement.SUBP_TYPE:
+					case AbstractPetriNetElementModel.SUBP_TYPE:
 						postNode.setType(Node.TYPE_SUBP);
 						postNode.setTime(((TransitionModel)currentPlace).getToolSpecific().getTime());
 						postNode.setTimeUnit(getTimeUnitConst(((TransitionModel)currentPlace).getToolSpecific().getTimeUnit()));
@@ -192,24 +191,24 @@ public class WorkflowNetGraph {
 		}
 		
 		while (preNodes.hasNext()){
-			AbstractPetriNetModelElement currentNode = (AbstractPetriNetModelElement) preNodes.next();
+			AbstractPetriNetElementModel currentNode = (AbstractPetriNetElementModel) preNodes.next();
 
 			int nodeIdx = getNodeIdx(currentNode.getId());
 			if (nodeIdx >= nodeArray.length){
 				Node preNode = new Node(currentNode.getId(), currentNode.getNameValue());
 				switch (currentNode.getType()){
-				case AbstractPetriNetModelElement.PLACE_TYPE:
+				case AbstractPetriNetElementModel.PLACE_TYPE:
 					preNode.setType(Node.TYPE_PLACE);
 					break;
-				case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
+				case AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE:
 					preNode.setType(Node.TYPE_TRANS_SIMPLE);
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;
-				case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
+				case AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE:
 					preNode.setType(Node.TYPE_TRANS_SIMPLE);
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;
-				case AbstractPetriNetModelElement.SUBP_TYPE:
+				case AbstractPetriNetElementModel.SUBP_TYPE:
 					preNode.setType(Node.TYPE_SUBP);
 					preNode.setTime(((TransitionModel)currentNode).getToolSpecific().getTime());
 					break;

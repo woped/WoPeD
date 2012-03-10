@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.interfaces.ISoundnessCheck;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 
 /**
  * 
@@ -22,12 +22,12 @@ import org.woped.qualanalysis.soundness.marking.MarkingNet;
 public class SoundnessCheckImplement implements ISoundnessCheck {
 
 	private IEditor editor = null;
-	private MarkingNet markingNetWithoutTStar = null;
-	private MarkingNet markingNetWithTStar = null;
+	private IMarkingNet markingNetWithoutTStar = null;
+	private IMarkingNet markingNetWithTStar = null;
 
-	private Set<AbstractElementModel> nonLiveTransitions = null;
-	private Set<AbstractElementModel> deadTransitions = null;
-	private Set<AbstractElementModel> unboundedPlaces = null;
+	private Set<AbstractPetriNetElementModel> nonLiveTransitions = null;
+	private Set<AbstractPetriNetElementModel> deadTransitions = null;
+	private Set<AbstractPetriNetElementModel> unboundedPlaces = null;
 
 	public SoundnessCheckImplement(IEditor editor) {
 		this.editor = editor;
@@ -38,7 +38,7 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 	 * 
 	 * @return the MarkingNet basing on the LowLevelPetriNet without t* (if not existing it will be instantiated)
 	 */
-	private MarkingNet getMarkingNetWithoutTStar() {
+	private IMarkingNet getMarkingNetWithoutTStar() {
 		if (markingNetWithoutTStar == null) {
 			markingNetWithoutTStar = BuilderFactory.createMarkingNet(BuilderFactory
 					.createLowLevelPetriNetWithoutTStarBuilder(editor).getLowLevelPetriNet());
@@ -50,7 +50,7 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 	 * 
 	 * @return the MarkingNet basing on the LowLevelPetriNet with t* (if not existing it will be instantiated)
 	 */
-	private MarkingNet getMarkingNetWithTStar() {
+	private IMarkingNet getMarkingNetWithTStar() {
 		if (markingNetWithTStar == null) {
 			markingNetWithTStar = BuilderFactory.createMarkingNet(BuilderFactory
 					.createLowLevelPetriNetWithTStarBuilder(editor).getLowLevelPetriNet());
@@ -65,9 +65,9 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 	 * transitions found in the net and the marking net is strongly connected, the petri net is live.
 	 */
 	@Override
-	public Set<AbstractElementModel> getNonLiveTransitions() {
+	public Set<AbstractPetriNetElementModel> getNonLiveTransitions() {
 		if (nonLiveTransitions == null) {
-			nonLiveTransitions = new HashSet<AbstractElementModel>();
+			nonLiveTransitions = new HashSet<AbstractPetriNetElementModel>();
 
 			if (getDeadTransitions().size() != 0
 					|| !AlgorithmFactory.createSccTest(getMarkingNetWithTStar()).isStronglyConnected()) {
@@ -88,9 +88,9 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 	 * @see org.woped.qualanalysis.ISoundnessCheck#getDeadTransitionsIterator()
 	 */
 	@Override
-	public Set<AbstractElementModel> getDeadTransitions() {
+	public Set<AbstractPetriNetElementModel> getDeadTransitions() {
 		if (deadTransitions == null) {
-			deadTransitions = new HashSet<AbstractElementModel>();
+			deadTransitions = new HashSet<AbstractPetriNetElementModel>();
 			for (TransitionNode transition : AlgorithmFactory.createDeadTransitionTest(getMarkingNetWithoutTStar())
 					.getDeadTransitions()) {
 				deadTransitions.add(getAEM(transition));
@@ -107,9 +107,9 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 	 * @see org.woped.qualanalysis.ISoundnessCheck#getUnboundedPlaces()
 	 */
 	@Override
-	public Set<AbstractElementModel> getUnboundedPlaces() {
+	public Set<AbstractPetriNetElementModel> getUnboundedPlaces() {
 		if (unboundedPlaces == null) {
-			unboundedPlaces = new HashSet<AbstractElementModel>();
+			unboundedPlaces = new HashSet<AbstractPetriNetElementModel>();
 			for (PlaceNode place : AlgorithmFactory.createUnboundedPlacesTest(getMarkingNetWithTStar())
 					.getUnboundedPlaces()) {
 				unboundedPlaces.add(getAEM(place));
@@ -124,7 +124,7 @@ public class SoundnessCheckImplement implements ISoundnessCheck {
 	 *            the AbstractNode to get the referring AbstractElementModel from
 	 * @return the referred AbstractElementModel
 	 */
-	private AbstractElementModel getAEM(AbstractNode node) {
+	private AbstractPetriNetElementModel getAEM(AbstractNode node) {
 		return editor.getModelProcessor().getElementContainer().getElementById(node.getOriginId());
 	}
 

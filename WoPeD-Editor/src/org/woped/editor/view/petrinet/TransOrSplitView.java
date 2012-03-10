@@ -28,6 +28,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.controller.IEditor;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -50,9 +51,9 @@ public class TransOrSplitView extends TransSimpleView
      * @param graph
      * @param mapper
      */
-    public TransOrSplitView(Object cell)
+    public TransOrSplitView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new TransOrSplitRenderer(cell);
     }
 
@@ -70,7 +71,7 @@ public class TransOrSplitView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransOrSplitRenderer extends AbstractElementRenderer
+    private class TransOrSplitRenderer extends PetriNetElementRenderer
     {
     	TransOrSplitRenderer(Object cell)
     	{
@@ -103,14 +104,6 @@ public class TransOrSplitView extends TransSimpleView
             this.drawOperatorArrow(g, true, true);
             
             drawTime(g2, d);
-        }
-
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return TransOrSplitView.this.isFireing();
         }
     }
 

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.simulation.SimulatorBarVC;
@@ -169,9 +169,28 @@ public class TokenGameBarController implements Runnable {
     }
 
     /*
-     * Actions performed "in" the ExpertView / SlimView
+     * Start playback. Executed when token game is enabled
      */
-
+        
+    public void startPlayback() {
+        // Cleanup needed to avoid double ENtries in the ChoiceBox
+        disableStepDown();
+        disablePlayButton();
+        cleanupTransition();
+    	
+        // Active TokenGame, disable DrawMode, checkNet and activate transition
+        if (getTokenGameController().isVisualTokenGame()) {
+            getTokenGameController().tokenGameCheckNet();
+            if (playbackRunning()) {
+                startHistoryPlayback();
+            } else {
+                clearHistoryData();
+            }
+        }
+        
+        enablePlayButtons();        
+    }
+    
     /*
      * ********************************************************************************************
      * Occurence and Depending Actions ********************************************************************************************
@@ -480,7 +499,7 @@ public class TokenGameBarController implements Runnable {
     public void createSaveableHistory() {
         if (HistoryVector != null) {
             SaveableSimulation = new SimulationModel(PetriNet
-                    .getNewElementId(AbstractPetriNetModelElement.SIMULATION_TYPE), "Default",
+                    .getNewElementId(AbstractPetriNetElementModel.SIMULATION_TYPE), "Default",
                     (Vector<TransitionModel>) HistoryVector.clone(), PetriNet.getLogicalFingerprint(), new Date());
             newHistory = true;
         }
@@ -1205,7 +1224,7 @@ public class TokenGameBarController implements Runnable {
         // simulatorBar.setViewChoiceListInvisible();
         desktop.getUIReference().getEditorFocus().toggleTokenGame();
         desktop.getUIReference().switchToolBar(false);
-        desktop.getUIReference().getToolBar().addAnalysisButtons();
+//        desktop.getUIReference().getToolBar().addAnalysisButtons();
         desktop.getUIReference().getContentPane().repaint();
     }
 }

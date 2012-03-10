@@ -7,7 +7,7 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.deadtransition.DeadTransitionTest;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
@@ -29,10 +29,10 @@ public class DeadTransitionTestTest {
 		Set<TransitionNode> expected = new HashSet<TransitionNode>();
 		
 //		Create expected values
-		transitions[0] = new TransitionNode("t3", "t3", "t3", TransitionModel.TRANS_SIMPLE_TYPE);
-		transitions[1] = new TransitionNode("t2", "t2", "t2", TransitionModel.TRANS_SIMPLE_TYPE);
-		transitions[2] = new TransitionNode("t1", "t1", "t1", TransitionModel.TRANS_SIMPLE_TYPE);
-		transitions[3] = new TransitionNode("t*", "t*", "t*", TransitionModel.TRANS_SIMPLE_TYPE);
+		transitions[0] = new TransitionNode("t3", "t3", "t3", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
+		transitions[1] = new TransitionNode("t2", "t2", "t2", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
+		transitions[2] = new TransitionNode("t1", "t1", "t1", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
+		transitions[3] = new TransitionNode("t*", "t*", "t*", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
 		for(int i = 0; i < transitions.length; i++)
 			expected.add(transitions[i]);
 		

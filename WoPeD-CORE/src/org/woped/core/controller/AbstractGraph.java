@@ -31,6 +31,7 @@ import java.util.Vector;
 
 import javax.swing.ToolTipManager;
 
+import org.jgraph.JGraph;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.BasicMarqueeHandler;
 import org.jgraph.graph.CellView;
@@ -43,8 +44,8 @@ import org.jgraph.graph.GraphUndoManager;
 import org.jgraph.graph.Port;
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.utilities.LoggerManager;
@@ -56,7 +57,7 @@ import org.woped.core.utilities.LoggerManager;
  *
  * TODO DOCUMENTATION (lai)
  */
-public abstract class AbstractGraph extends org.jgraph.JGraph implements Printable
+public abstract class AbstractGraph extends JGraph implements Printable
 {
     /**
 	 * 
@@ -64,11 +65,10 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
 	private static final long serialVersionUID = 1L;
 	
     private BasicMarqueeHandler editorMarquee      = null;
-    private int                 modelPorcessorType = -1;
     private GraphUndoManager    undoManager        = null;
     private Object lastEdited = null;
 
-    public AbstractGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, GraphUndoManager undoManager, AbstractViewFactory viewFactory, int modelPorcessorType)
+    public AbstractGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, GraphUndoManager undoManager, AbstractViewFactory viewFactory)
     {
         if (undoManager != null)
         {
@@ -77,7 +77,6 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
         }
         this.setModel(model);
         this.setGraphLayoutCache(new LayoutCache(model, viewFactory));
-        this.modelPorcessorType = modelPorcessorType;
         this.setGridVisible(ConfigurationManager.getConfiguration().isShowGrid());
         ToolTipManager.sharedInstance().registerComponent(this);
         this.setMarqueeHandler(editorMarquee);
@@ -89,9 +88,9 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
 
     abstract public void redo();
 
-    abstract public boolean isValidConnection(AbstractElementModel sourceCell, AbstractElementModel targetCell);
+    abstract public boolean isValidConnection(AbstractPetriNetElementModel sourceCell, AbstractPetriNetElementModel targetCell);
 
-    abstract public void drawNet(AbstractModelProcessor processor);
+    abstract public void drawNet(PetriNetModelProcessor processor);
 
     /**
      * Groups an <code>NameModel</code> ans all additional cells to their
@@ -107,7 +106,7 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
      *            flag for ungrouping
      * @return
      */
-    public GroupModel groupName(AbstractElementModel mainElement, NameModel name, Object[] additional, boolean ungroupable)
+    public GroupModel groupName(AbstractPetriNetElementModel mainElement, NameModel name, Object[] additional, boolean ungroupable)
     {
         return group(mainElement, name, additional, ungroupable);
     }
@@ -118,8 +117,9 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
         if (group != null)
         {
             getGraphLayoutCache().insertGroup(group, getSelectionCells());
-        }
-    }
+            setSelectionCell(group);
+       }        
+     }
 
     /*
      * (non-Javadoc)
@@ -133,9 +133,9 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
         {
             cell = ((GroupModel) cell).getMainElement();
         }
-        if (cell instanceof AbstractElementModel)
+        if (cell instanceof AbstractPetriNetElementModel)
         {
-            return ((AbstractElementModel) cell).getToolTipText();
+            return ((AbstractPetriNetElementModel) cell).getToolTipText();
         } else
         {
             return null;
@@ -150,7 +150,7 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
      * @param name
      * @return
      */
-    public GroupModel groupName(AbstractElementModel mainElement, NameModel name)
+    public GroupModel groupName(AbstractPetriNetElementModel mainElement, NameModel name)
     {
         return groupName(mainElement, name, null, true);
     }
@@ -184,14 +184,6 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
     public BasicMarqueeHandler getEditorMarqueeHandler()
     {
         return editorMarquee;
-    }
-
-    /**
-     * @return Returns the modelPorcessorType.
-     */
-    public int getModelPorcessorType()
-    {
-        return modelPorcessorType;
     }
 
     /**
@@ -259,8 +251,8 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
      */
     public boolean isValidConnection(Port source, Port target)
     {
-        AbstractElementModel sourceCell = (AbstractElementModel) ((DefaultPort) source).getParent();
-        AbstractElementModel targetCell = (AbstractElementModel) ((DefaultPort) target).getParent();
+        AbstractPetriNetElementModel sourceCell = (AbstractPetriNetElementModel) ((DefaultPort) source).getParent();
+        AbstractPetriNetElementModel targetCell = (AbstractPetriNetElementModel) ((DefaultPort) target).getParent();
         return isValidConnection(sourceCell, targetCell);
     }
 
@@ -269,7 +261,7 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
      * 
      * @param cells
      */
-    public GroupModel group(AbstractElementModel mainElement, NameModel name, Object[] additional, boolean ungroupable)
+    public GroupModel group(AbstractPetriNetElementModel mainElement, NameModel name, Object[] additional, boolean ungroupable)
     {
         if (mainElement != null && name != null)
         {
@@ -397,4 +389,10 @@ public abstract class AbstractGraph extends org.jgraph.JGraph implements Printab
 			super.setEnabled(enabled);
 		}
 	}
+	
+	public abstract void setMinPreferredWidth(int width);
+	
+	public abstract void setMinPreferredHeight(int height);
+
+
 }

@@ -9,8 +9,6 @@ import java.util.Vector;
 
 import javax.swing.ImageIcon;
 
-import org.woped.core.model.AbstractModelProcessor;
-
 /**
  * Class that provides fallback configuration settings for the general WoPeD configuration part
  * @author Philip Allgaier
@@ -43,6 +41,13 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     public static String          DEFAULT_LANGUAGE           		= "en";
     public static String          DEFAULT_COUNTRY            		= "";
     public static String          DEFAULT_VARIANT            		= "";
+    public static String          DEFAULT_APROMORE_SERVER      		= "http://brahms0.imag.fr";
+    public static String          DEFAULT_APROMORE_USERNAME    		= "public";
+    public static String          DEFAULT_APROMORE_PROXYNAME    	= "";
+    public static int	 	      DEFAULT_APROMORE_PROXYPORT    	= 0;
+    private static int 			  DEFAULT_APROMORE_SERVERPORT 		= 8080;
+	private static boolean 	      DEFAULT_APROMORE_USEPROXY 		= false;
+	private static boolean 	      DEFAULT_APROMORE_USE				= true;
     
     // File
     private String                homedir                    = "";
@@ -62,7 +67,6 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     private int                   headsize                   = DEFAULT_ARROW_HEADSIZE;
     private int                   arrowwidth                 = DEFAULT_ARROW_WIDTH;
     private boolean               fillArrow                  = false;
-    private int                   modelProcessor             = AbstractModelProcessor.MODEL_PROCESSOR_PETRINET;
     private Color                 selectionColor             = DEFAULT_SELECTION_COLOR;
     private Color                 portColor                  = DEFAULT_PORT_COLOR;
     // GUI
@@ -72,6 +76,14 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     private String                language                   = DEFAULT_LANGUAGE;
     private String                country                    = DEFAULT_COUNTRY;
     private String                variant                    = DEFAULT_VARIANT;
+    //SERVER
+    private String                apromore_server            = DEFAULT_APROMORE_SERVER;
+    private String                apromore_username          = DEFAULT_APROMORE_USERNAME;
+    private String                apromore_proxyname         = DEFAULT_APROMORE_PROXYNAME;
+    private int                	  apromore_proxyport         = DEFAULT_APROMORE_PROXYPORT;
+    private int                	  apromore_serverport        = DEFAULT_APROMORE_SERVERPORT;
+    private boolean               apromore_useproxy          = DEFAULT_APROMORE_USEPROXY;
+    private boolean               apromore_use		         = DEFAULT_APROMORE_USE;
 
     // Booleans for alpha-functions (TEST) later integration in configuration & GUI
     public static boolean         ACTIVATE_NET_ROUTING       = false;
@@ -682,16 +694,6 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     {
     }
 
-    public int getModelProcessorType()
-    {
-        return modelProcessor;
-    }
-
-    public void setModelProcessorType(int type)
-    {
-        modelProcessor = type;
-    }
-
     /**
      * 
      * @see org.woped.config.IGeneralConfiguration#getPortColor()
@@ -851,5 +853,86 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
 	}
 
 	public void setShowAdvancedErrorMessages(boolean showAdvanced) {
+	}
+	
+	@Override
+	public String getApromoreServer() {
+		
+		return apromore_server;
+	}
+
+	@Override
+	public void setApromoreServer(String server) {
+		this.apromore_server = server;
+		
+	}
+
+	@Override
+	public void setApromoreUsername(String user) {
+		this.apromore_username = user;
+		
+	}
+
+	@Override
+	public String getApromoreUsername() {
+		
+		return apromore_username;
+	}
+
+	@Override
+	public String getApromoreProxyName() {
+		
+		return apromore_proxyname;
+	}
+
+	@Override
+	public void setApromoreProxyName(String name) {
+		apromore_proxyname = name;
+		
+	}
+
+	@Override
+	public int getApromoreProxyPort() {
+		
+		return apromore_proxyport;
+	}
+
+	@Override
+	public void setApromoreProxyPort(int port) {
+		apromore_proxyport = port;
+		
+	}
+
+	@Override
+	public int getApromoreServerPort() {
+		
+		return apromore_serverport;
+	}
+
+	@Override
+	public boolean getApromoreUseProxy() {
+		
+		return apromore_useproxy;
+	}
+
+	@Override
+	public void setApromoreServerPort(int port) {
+		apromore_serverport = port;
+	}
+
+	@Override
+	public void setApromoreUseProxy(boolean set) {
+		apromore_useproxy = set;
+		
+	}
+
+	@Override
+	public void setApromoreUse(boolean selected) {
+		apromore_use = selected;		
+	}
+
+	@Override
+	public boolean getApromoreUse() {
+		return apromore_use;
 	}
 }

@@ -31,8 +31,8 @@ import javax.swing.tree.DefaultTreeModel;
 import org.jgraph.event.GraphModelEvent;
 import org.jgraph.event.GraphModelListener;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.sidebar.expert.components.NetInfo;
 import org.woped.qualanalysis.sidebar.expert.components.NodeNetInfo;
 
@@ -77,10 +77,10 @@ public class GraphTreeModel extends DefaultTreeModel implements GraphModelListen
     		ModelElementContainer elements)
     {
     	root.removeAllChildren();
-		Iterator<AbstractElementModel> i=elements.getRootElements().iterator();
+		Iterator<AbstractPetriNetElementModel> i=elements.getRootElements().iterator();
 		while (i.hasNext())
 		{
-			AbstractElementModel currentNode = i.next();
+			AbstractPetriNetElementModel currentNode = i.next();
 			root.add(new NodeNetInfo(currentNode, true));
 		}
     }

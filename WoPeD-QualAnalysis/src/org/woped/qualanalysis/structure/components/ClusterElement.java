@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.structure.components;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 
 //! Special cluster element serving as a token for distinguishing between
@@ -11,7 +11,7 @@ public class ClusterElement {
     // ! @param element Specifies the element referenced
     // ! @param isSource Specifies whether the element was detected as a source
     // ! ElementType will be set based on this
-    public ClusterElement(AbstractElementModel element, boolean isSource) {
+    public ClusterElement(AbstractPetriNetElementModel element, boolean isSource) {
         this.m_element = element;
         if (element instanceof CombiOperatorTransitionModel) {
             this.m_elementType = isSource ? 1 : 2;
@@ -48,7 +48,7 @@ public class ClusterElement {
     }
 
     // ! Store a reference to an abstract element model
-    public AbstractElementModel m_element;
+    public AbstractPetriNetElementModel m_element;
     // ! Store the type of cluster element:
     // ! 0: Standard Operator or node
     // ! 1: Combi-Operator Source

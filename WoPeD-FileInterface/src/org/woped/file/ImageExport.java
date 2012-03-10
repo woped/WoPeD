@@ -37,7 +37,7 @@ public class ImageExport {
             graph.paint(graphics);
 
             graph.setGridVisible(ConfigurationManager.getConfiguration().isShowGrid() 
-        	    && !editor.isTokenGameMode());            
+        	    && !editor.isTokenGameEnabled());            
         }
         
         return image;

@@ -3,7 +3,7 @@ package org.woped.qualanalysis.structure.components;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 
@@ -29,7 +29,7 @@ public class LowLevelNet {
         n2.addIncomingArc(a);
     }
 
-    public FlowNode getNodeForElement(AbstractElementModel petrinetElement, boolean first) {
+    public FlowNode getNodeForElement(AbstractPetriNetElementModel petrinetElement, boolean first) {
         // get matching FlowNode element
 
         FlowNode returnValue = null;

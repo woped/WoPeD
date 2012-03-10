@@ -39,27 +39,25 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreePath;
+import javax.swing.JTabbedPane;
+import javax.swing.event.*;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.core.utilities.FileFilterImpl;
-import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
-import org.woped.editor.Constants;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.gui.config.AbstractConfPanel;
-import org.woped.editor.gui.config.ConfPanelTree;
+import org.woped.editor.gui.config.ConfApromorePanel;
+import org.woped.editor.gui.config.ConfEditorPanel;
+import org.woped.editor.gui.config.ConfFilePanel;
+import org.woped.editor.gui.config.ConfLanguagePanel;
+import org.woped.editor.gui.config.ConfMetricsPanel;
+import org.woped.editor.gui.config.ConfUnderstandabilityPanel;
 import org.woped.translations.Messages;
 
 /**
@@ -75,7 +73,7 @@ import org.woped.translations.Messages;
  */
 
 @SuppressWarnings("serial")
-public class ConfigVC extends JDialog implements TreeSelectionListener, IViewController
+public class ConfigVC extends JDialog implements IViewController 			
 {
     // ViewControll
     private Vector<IViewListener> viewListener   = new Vector<IViewListener>(1, 3);
@@ -84,17 +82,20 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
 
     private HashMap<String, AbstractConfPanel>               confPanels     = new HashMap<String, AbstractConfPanel>();
 
-    public static final Dimension CONF_DIM       = new Dimension(650, 400);
+    public static final Dimension CONF_DIM       = new Dimension(510, 500);
     public static final Dimension SCROLL_DIM     = new Dimension(450, 370);
-    public static final Dimension TREE_DIM       = new Dimension(140, 370);
     public static final Color     BACK_COLOR     = new Color(255, 255, 255);
 
     private static JFileChooser   jfc            = null;
     private static Vector<String> xmlExtensions  = new Vector<String>();
     // GUI Components
-    private ConfPanelTree         confPanelTree;
-    private JSplitPane            splitPane      = null;
-    private JScrollPane           treeScrollPane = null;
+    private JTabbedPane 		  tabbedPane     = null;			
+    private AbstractConfPanel	  editorPanel	 = null;			
+    private AbstractConfPanel	  impexpPanel	 = null;			
+    private AbstractConfPanel	  langPanel      = null;			
+    private AbstractConfPanel	  colorPanel 	 = null;			
+    private AbstractConfPanel	  metricsPanel   = null;			
+    private AbstractConfPanel	  aproPanel   	 = null;			
     // ButtonPanel
     private JPanel                buttonPanel    = null;
     private JButton               okButton       = null;
@@ -134,45 +135,13 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         this.setSize(CONF_DIM);
         this.setResizable(true);
         this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(getSplitPane(), BorderLayout.CENTER);
+        this.getContentPane().add(getTabbedPane(), BorderLayout.CENTER);		
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
         ((java.awt.Frame) getOwner()).setIconImage(Messages.getImageIcon("Application").getImage());
  
         // read Conf
         readConfiguration();
         xmlExtensions.add("xml");
-    }
-
-    public void addConfNodePanel(String parentNodePanelName, AbstractConfPanel nodePanel)
-    {
-        if (!confPanels.containsKey(nodePanel.getPanelName()))
-        {
-            confPanels.put(nodePanel.getPanelName(), nodePanel);
-            getConfPanelTree().addConfNodePanel(parentNodePanelName, nodePanel.getPanelName());
-            nodePanel.readConfiguration();
-        } else
-        {
-            LoggerManager.warn(Constants.EDITOR_LOGGER, "A Node-Panel with the name \"" + nodePanel.getPanelName() + "\" has already been added. Please rename.");
-        }
-    }
-
-    public void setSelectedPanel(String panelName)
-    {
-        getConfPanelTree().setSelectedNode(panelName);
-        refreshMainPanel(panelName);
-        // Expand Root
-        getConfPanelTree().expandPath(new TreePath((DefaultMutableTreeNode) getConfPanelTree().getModel().getRoot()));
-    }
-
-    private void refreshMainPanel(Object panelName)
-    {
-        if (confPanels.containsKey(panelName))
-        {
-            getSplitPane().setRightComponent((AbstractConfPanel) confPanels.get(panelName));
-        } else
-        {
-            getSplitPane().setRightComponent(new JLabel("ERROR: Does Not exists."));
-        }
     }
 
     private void resetConfiguration()
@@ -184,7 +153,7 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         }
     }
 
-    private boolean applyConfiguration()
+    private boolean applyConfiguration()								
     {
         boolean confOK = true;
         Iterator<String> iter = confPanels.keySet().iterator();
@@ -262,58 +231,56 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
      * 
      * @see javax.swing.event.TreeSelectionListener#valueChanged(javax.swing.event.TreeSelectionEvent)
      */
-    public void valueChanged(TreeSelectionEvent e)
-    {
-        DefaultMutableTreeNode node = (DefaultMutableTreeNode) getConfPanelTree().getLastSelectedPathComponent();
-        if (node == null) return;
-        if (!node.isRoot()) refreshMainPanel(node.getUserObject());
-    }
 
     // ######################## GUI COMPONENTS ############################ */
 
     /**
      * @return Returns the splitPane.
      */
-    private JSplitPane getSplitPane()
+    private JTabbedPane getTabbedPane()			
     {
-        if (splitPane == null)
-        {
-            splitPane = new javax.swing.JSplitPane();
-            splitPane.setDividerSize(0);
-            splitPane.setDividerLocation(140);
-            splitPane.setLeftComponent(getTreeScrollPane());
-        }
-        splitPane.setDividerLocation(140);
-
-        return splitPane;
+    	if (tabbedPane == null)
+    	{
+    		tabbedPane = new JTabbedPane();
+    		editorPanel = new ConfEditorPanel(Messages.getString("Configuration.Editor.Title"));
+    		tabbedPane.addTab(Messages.getString("Configuration.Language.Title"), editorPanel);
+    		confPanels.put(editorPanel.getPanelName(), editorPanel);
+    		
+    		impexpPanel = new ConfFilePanel(Messages.getString("Configuration.Files.Title"));
+    		tabbedPane.addTab(Messages.getString("Configuration.Files.Title"), impexpPanel);
+    		confPanels.put(impexpPanel.getPanelName(), impexpPanel);
+    		
+    		langPanel = new ConfLanguagePanel(Messages.getString("Configuration.Language.Title"));
+    		tabbedPane.addTab(Messages.getString("Configuration.Language.Title"), langPanel);
+    		confPanels.put(langPanel.getPanelName(), langPanel);
+    		
+    		colorPanel = new ConfUnderstandabilityPanel(Messages.getString("Configuration.ColorLayout.Title"));
+    		tabbedPane.addTab(Messages.getString("Configuration.ColorLayout.ColorPanel.Title"), colorPanel);
+    		confPanels.put(colorPanel.getPanelName(), colorPanel);
+    		
+    		metricsPanel = new ConfMetricsPanel(Messages.getString("Configuration.Metrics.Title"));
+    		tabbedPane.addTab(Messages.getString("Configuration.Metrics.Title"), metricsPanel);
+    		confPanels.put(metricsPanel.getPanelName(), metricsPanel);
+    		
+    		aproPanel = new ConfApromorePanel(Messages.getString("Configuration.Apromore.Title"));
+    		tabbedPane.addTab(Messages.getString("Configuration.Apromore.Title"), aproPanel);
+    		confPanels.put(aproPanel.getPanelName(), aproPanel);
+    		
+    		readConfiguration();
+    		
+    		tabbedPane.addChangeListener(new ChangeListener(){ 	
+    	   		public void stateChanged(ChangeEvent changeEvent) {
+    	        	tabbedPane = (JTabbedPane) changeEvent.getSource();
+    	    		if(tabbedPane.getSelectedComponent() == null){
+    	    		return;
+    	    		}
+    	    		applyConfiguration();
+    	        }
+    	    });
+    	}
+    	return tabbedPane;
     }
 
-    /**
-     * @return Returns the treeScrollPane.
-     */
-    private JScrollPane getTreeScrollPane()
-    {
-        if (treeScrollPane == null)
-        {
-            treeScrollPane = new JScrollPane(getConfPanelTree());
-            treeScrollPane.setPreferredSize(TREE_DIM);
-        }
-        return treeScrollPane;
-    }
-
-    /**
-     * @return Returns the confPanelTree.
-     */
-    private ConfPanelTree getConfPanelTree()
-    {
-        if (confPanelTree == null)
-        {
-            confPanelTree = new ConfPanelTree();
-            confPanelTree.setBackground(BACK_COLOR);
-            confPanelTree.addTreeSelectionListener(this);
-        }
-        return confPanelTree;
-    }
 
     // ########################### BUTTONPANEL ##########################*/
     private JPanel getButtonPanel()
@@ -381,9 +348,9 @@ public class ConfigVC extends JDialog implements TreeSelectionListener, IViewCon
         if (okButton == null)
         {
             okButton = new JButton();
+            okButton.setMnemonic(Messages.getMnemonic("Button.Ok"));
             okButton.setText(Messages.getTitle("Button.Ok"));
             okButton.setIcon(Messages.getImageIcon("Button.Ok"));
-            okButton.setMnemonic(Messages.getMnemonic("Button.Ok"));
             okButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)

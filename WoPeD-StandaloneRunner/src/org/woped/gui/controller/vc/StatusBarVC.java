@@ -13,7 +13,6 @@ import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.editor.utilities.SynchonizeTask;
-import org.woped.gui.controller.DefaultApplicationMediator;
 
 /*
  * 

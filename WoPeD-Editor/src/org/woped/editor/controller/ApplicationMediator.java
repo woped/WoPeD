@@ -45,6 +45,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
@@ -122,21 +123,20 @@ public class ApplicationMediator extends AbstractApplicationMediator {
         }
     }
     
-    public IEditor createEditor(int modelProcessorType, boolean undoSupport){
-    	return createEditor(modelProcessorType, undoSupport, true);
+    public IEditor createEditor(boolean undoSupport){
+    	return createEditor(undoSupport, true);
     }
 
     // ! Create a new editor window and register it with all visual controllers
-    // ! @param modelProcessorType specifies the model processor type for the new editor
     // ! @param undoSupport if set to true undo support is to be enabled
     // ! @return reference to new editor object
     @Override
-    public IEditor createEditor(int modelProcessorType, boolean undoSupport, boolean loadUI) {
-        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport,
+    public IEditor createEditor(boolean undoSupport, boolean loadUI) {
+        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, undoSupport,
                 this, loadUI);
         addViewController(editor);
         if(loadUI){
-        	editor.getGraph().addMouseListener(visualController);
+//        	editor.getGraph().addMouseListener(visualController);
 
 	        editor.setName(Messages.getString("Document.Title.Untitled") + " - " + newEditorCounter++);
 	        // notify the editor aware vc
@@ -159,7 +159,7 @@ public class ApplicationMediator extends AbstractApplicationMediator {
     // ! @param subProcess specifies the sub process element to be edited
     // ! @return reference to new editor object
     @Override
-    public IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor,
+    public IEditor createSubprocessEditor(boolean undoSupport, IEditor parentEditor,
             SubProcessModel subProcess) {
         IEditor editor = null;
 
@@ -190,11 +190,10 @@ public class ApplicationMediator extends AbstractApplicationMediator {
 
                 return null;
             }
-
-            editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, modelProcessorType, undoSupport,
+            
+            editor = new SubprocessEditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, undoSupport,
                     parentEditor, subProcess, this);
             addViewController(editor);
-            editor.getGraph().addMouseListener(visualController);
 
             newEditorCounter++;
             // notify the editor aware vc
@@ -213,7 +212,7 @@ public class ApplicationMediator extends AbstractApplicationMediator {
 
         // Found a matching editor
         // Before we return it, give it the focus
-        JComponent frame = editor.getContainer();
+        JComponent frame = ((EditorVC)editor).getEditorPanel().getContainer();
         if (frame instanceof JInternalFrame) {
             JInternalFrame internalFrame = (JInternalFrame) frame;
             try {

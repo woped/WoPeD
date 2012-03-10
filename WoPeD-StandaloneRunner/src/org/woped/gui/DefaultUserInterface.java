@@ -14,8 +14,6 @@ import java.beans.PropertyVetoException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import java.util.HashMap;
-import java.util.Iterator;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -31,9 +29,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
-import org.woped.core.gui.IToolBar;
 import org.woped.core.gui.IUserInterface;
-import org.woped.core.model.AbstractModelProcessor;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.action.WoPeDAction;
@@ -41,47 +37,34 @@ import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.PetriNetResourceEditor;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ViewEvent;
-import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
-import org.woped.gui.controller.vc.ToolBarVC;
-import org.woped.qualanalysis.simulation.SimulatorBarVC;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
-public class DefaultUserInterface extends JFrame implements IUserInterface, InternalFrameListener
+public class DefaultUserInterface extends MainFrame implements IUserInterface, InternalFrameListener
 {
     private JDesktopPane          desktop                = null;
     public static final int       DEFAULT_FRAME_DISTANCE = 20;
     // Used VC
     private StatusBarVC           statusBar              = null;
-    private TaskBarVC             taskBar                = null;
-    private ToolBarVC             toolBar                = null;
-    private SimulatorBarVC		  simulatorBar			 = null;
     private DefaultEditorFrame    frame                  = null;
     
-    private MenuBarVC 			  menuBar 				 = null;
-
     private int                   m_numEditors           = 0;
     private List<IEditor>         editorList             = new ArrayList<IEditor>();
-    private HashMap<IEditor, SimulatorBarVC> simulatorList = new HashMap<IEditor, SimulatorBarVC>();
     
     //! Stores a list of internal frames that should stay in foreground
     private List<DefaultEditorFrame>  m_modalityStack = new ArrayList<DefaultEditorFrame>();
     
-    public DefaultUserInterface(ToolBarVC toolBar, SimulatorBarVC simulatorBar, MenuBarVC menuBar, TaskBarVC taskBar, StatusBarVC statusBar)
+    public DefaultUserInterface(TaskBarVC taskBar, StatusBarVC statusBar)
     {
         super();
-        this.toolBar = toolBar;
-        
+  
         // Adaption of constructor signature
-        this.simulatorBar = simulatorBar;
-        
         this.statusBar = statusBar;
-        this.taskBar = taskBar;
-        this.menuBar = menuBar;
     
         desktop = new JDesktopPane();
         desktop.setBackground(DefaultStaticConfiguration.DEFAULT_UI_BACKGROUND_COLOR);
@@ -99,25 +82,13 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     	addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				if (!RunWoPeD.isApplet()) {
 					quit();
-				} else {
-					// closing operation for the Frame opened by the applet
-					setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				}
 			}
 		});
 
         if (ConfigurationManager.getConfiguration().getHomedir() == null) ConfigurationManager.getConfiguration().setHomedir("nets/");
 
-        setJMenuBar(menuBar);
-        
-        getContentPane().add(toolBar, BorderLayout.NORTH);
-        
-        //getContentPane().add(toolBar, BorderLayout.NORTH);
-        
-        
-        getContentPane().add(desktop, BorderLayout.CENTER);
+         getContentPane().add(desktop, BorderLayout.CENTER);
         
         // Prepare Status & Taskbar
         JPanel toolPanel = new JPanel();
@@ -155,16 +126,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     {
         if (editor != null)
         {
-            
-            if (editor.getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
-            {
-                frame = new DefaultEditorFrame((EditorVC) editor, new EditorOperations((EditorVC) editor), new EditorData(),new PetriNetResourceEditor((EditorVC) editor));
-            } 
-            else
-            {
- //               frame = new DefaultEditorFrame((EditorVC) editor, null, null, null);
- 
-            }
+        	frame = new DefaultEditorFrame((EditorVC) editor, new EditorOperations((EditorVC) editor), new EditorData(),new PetriNetResourceEditor((EditorVC) editor));
             
             Point position = getNextEditorPosition();
             frame.setAlignmentX((float) position.getX());
@@ -173,21 +135,22 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             frame.setLocation(position);
             desktop.add(frame, BorderLayout.CENTER);
             
-            if (editor.isSubprocessEditor())
+            if (editor instanceof SubprocessEditorVC)
             {
             	// Make subprocess editor window stay in foreground
             	m_modalityStack.add(0,frame);
             }
             
             editorList.add(frame.getEditor());
-            frame.getEditor().setContainer(frame);
+            ((EditorVC)frame.getEditor()).getEditorPanel().setContainer(frame);
             // frame.setBounds((int) position.getX(), (int) position.getY(),
             // (int) frame.getBounds().getWidth(), (int)
             // frame.getBounds().getHeight());
             m_numEditors++;
             frame.setVisible(true);
            
-           
+            // Notify MainFrame
+            super.addEditor(frame.getEditor());
             
             try
             {
@@ -214,40 +177,45 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     public void removeEditor(IEditor editor)
     {
-        // if (!checkSave(editor))
-        {
-            ((DefaultEditorFrame) editor.getContainer()).dispose();
-            editorList.remove(editor);
-            m_modalityStack.remove(((DefaultEditorFrame) editor.getContainer()));
-            m_numEditors--;
-            // try to Select a different Frame
-            if (desktop.getAllFrames().length > 0)
-            {
-                if (desktop.getAllFrames()[0] != null)
-                {
-                    try
-                    {
-                        desktop.getAllFrames()[0].setSelected(true);
-                    } catch (PropertyVetoException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
+    	((DefaultEditorFrame) ((EditorVC)editor).getEditorPanel().getContainer()).dispose();
+    	editorList.remove(editor);
+    	m_modalityStack.remove(((DefaultEditorFrame) ((EditorVC)editor).getEditorPanel().getContainer()));
+    	m_numEditors--;
+    	// try to Select a different Frame
+    	if (desktop.getAllFrames().length > 0)
+    	{
+    		if (desktop.getAllFrames()[0] != null)
+    		{
+    			try
+    			{
+    				desktop.getAllFrames()[0].setSelected(true);
+    			} catch (PropertyVetoException e)
+    			{
+    				e.printStackTrace();
+    			}catch (NullPointerException npe)
+    			{
+    				LoggerManager.debug(Constants.GUI_LOGGER, "Closed - NullPointerException");
+    			}
+    		}
+    	}
 
+    	// Notify MainFrame
+    	super.removeEditor(editor);
     }
 
     public void selectEditor(IEditor editor)
     {
         try
         {
-            JInternalFrame iframe = (JInternalFrame) editor.getContainer();
+            JInternalFrame iframe = (JInternalFrame) ((EditorVC)editor).getEditorPanel().getContainer();
             if (iframe.isIcon())
             {
                 iframe.setIcon(false);
             }
             iframe.setSelected(true);
+
+            // Notify MainFrame
+            super.selectEditor(editor);
         } catch (PropertyVetoException e)
         {
             LoggerManager.debug(Constants.GUI_LOGGER, "Could not select Frame");
@@ -266,8 +234,9 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     	JInternalFrame[] frames = desktop.getAllFrames();
     	IEditor result = null;
     	for (int i=0;(result==null)&&(i<frames.length);++i)
-    		if (frames[i] instanceof DefaultEditorFrame)
+    		if (frames[i] instanceof DefaultEditorFrame){
     			result = ((DefaultEditorFrame)frames[i]).getEditor();
+    		}
     	return result;
     }
     
@@ -319,67 +288,6 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
             } catch (PropertyVetoException e)
             {}
         }
-    }
-    
-    public void switchToolBar(boolean change)
-    {
-    	//261108 MarioBeiser -> switchToolbar
-    	removeToolBar();
-    	 if (change){
-    		 if(getEditorFocus().isTokenGameEnabled()){
-    			 simulatorBar = simulatorList.get(getEditorFocus());    			   			 
-    		 }
-    		 // Check whether we do have an associated simulator bar.
-    		 // For token gamen top-level frames this might not be a given.
-    		 // As a side-effect to our modality handling, they might get temporarily enabled,
-    		 // but immediately disabled again. This is the only case where we find such a situation.
-    		 if (simulatorBar!=null)
-    		 {
-    			 // getContentPane().remove(toolBar);
-    			 getContentPane().add(simulatorBar, BorderLayout.NORTH);
-    			 simulatorBar.showChoice();  
-    			 simulatorBar.addAnalysisButtons();
-    			 getContentPane().repaint();
-    		 }
-    	 }else{
-    		 // clean up the interface of RemoteControl-Things
-    		 if(simulatorBar!=null){  
-    			 getContentPane().remove(simulatorBar);
-    			 //simulatorBar.setViewChoiceListInvisible();
-        		 simulatorBar.setChoiceListInvisible();
-    		 }    		 		
-    		 // add normal toolBar
-    		 getContentPane().add(toolBar, BorderLayout.NORTH);
-    		 getToolBar().addAnalysisButtons();
-    		 toolBar.setVisible(false);
-        	 toolBar.setVisible(true);
-    	 }
-    }
-    
-    public void removeToolBar()
-    {
-    	for(Iterator<SimulatorBarVC> iterator = simulatorList.values().iterator();iterator.hasNext();){
-			SimulatorBarVC sim = iterator.next();
-    		getContentPane().remove(sim);
-			sim.setChoiceListInvisible();			 
-		 }
-   
-    	if(this.toolBar != null)
-    	{
-    		getContentPane().remove(toolBar);
-    	}
-    }
-    
-    /**
-     * This method transports the created simulatorBar-Object to the 
-     * DefaultUserInterface
-     *  
-     */
-    public void setSimulatorBar(Object simulatorBar)
-    {
-    	this.simulatorBar = (SimulatorBarVC) simulatorBar;
-    	simulatorList.put(getEditorFocus(),this.simulatorBar);
-    	getContentPane().add(this.simulatorBar, BorderLayout.NORTH);
     }
     
     
@@ -464,33 +372,12 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
         return statusBar;
     }
 
-    public TaskBarVC getTaskBar()
-    {
-        return taskBar;
-    }
-
-    public IToolBar getToolBar()
-    {
-        return toolBar;
-    }
-    
-    public SimulatorBarVC getSimBar()
-    {
-        return simulatorBar;
-    }
-    public List<IEditor> getAllEditors()
+      public List<IEditor> getAllEditors()
     {
         return editorList;
     }
-    
-    
+      
 
-    public void updateRecentMenu()
-    {
-        menuBar.updateRecentMenu();
-        
-    }
-    
     /**
      * This method provides the possibility to have a "started" TokenGame and the "ProcessTab" is viewed
      * when simulation is running
@@ -509,8 +396,6 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 				}
 			}
 		}  		
-        // set first transition active
-    	this.getSimBar().doPlayClick();
     }
 
     /**
@@ -550,7 +435,7 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
 
     public void hideEditor(IEditor editor)
     {
-        editor.getContainer().setVisible(false);
+        ((EditorVC)editor).getEditorPanel().getContainer().setVisible(false);
     }
 
     /*
@@ -601,16 +486,16 @@ public class DefaultUserInterface extends JFrame implements IUserInterface, Inte
     	{
     		getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
 
-    		if (!getEditorFocus().isSubprocessEditor()) {
+ /*   		if (!getEditorFocus().isSubprocessEditor()) {
     			if (getEditorFocus().isTokenGameEnabled()) {
     				switchToolBar(true);
     			} else {
     				switchToolBar(false);
-    				getToolBar().addAnalysisButtons();
+//    				getToolBar().addAnalysisButtons();
     			}
     		} else {
     			return;
-    		}
+    		} */
     	}
 	}
 

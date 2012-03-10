@@ -35,8 +35,8 @@ import javax.swing.ImageIcon;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
 import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.view.AbstractElementView;
 import org.woped.translations.Messages;
 
 /**
@@ -48,12 +48,13 @@ import org.woped.translations.Messages;
  */
 
 @SuppressWarnings("serial")
-public class PlaceView extends AbstractElementView
+public class PlaceView extends PetriNetElementView
 {
 
 	private static final int TOKEN_RADIUS = 5;
 
 	private PlaceRenderer renderer = null;
+
 
 	/**
 	 * Constructor for PlaceView.
@@ -62,9 +63,9 @@ public class PlaceView extends AbstractElementView
 	 * @param graph
 	 * @param mapper
 	 */
-	public PlaceView(Object cell)
+	public PlaceView(Object cell, IEditor editor)
 	{
-		super(cell);
+		super(cell, editor);
 		renderer = new PlaceRenderer(cell);
 	}
 
@@ -136,7 +137,7 @@ public class PlaceView extends AbstractElementView
 	 * this inner class contains the render information of a place
 	 * 
 	 */
-	private class PlaceRenderer extends AbstractElementRenderer
+	private class PlaceRenderer extends PetriNetElementRenderer
 	{
 		public PlaceRenderer(Object cell)
 		{

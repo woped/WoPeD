@@ -29,6 +29,7 @@ import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -42,7 +43,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 
@@ -75,15 +75,15 @@ public class PlacePropertyEditor extends JDialog
     private JButton     buttonOk         = null;
     private JButton     buttonCancel     = null;
 
-    public PlacePropertyEditor(Frame owner, PlaceModel place, EditorVC editor)
+    public PlacePropertyEditor(Frame owner, Point position, PlaceModel place, EditorVC editor)
     {
         super(owner, true);
         this.place = place;
         this.editor = editor;
         this.setVisible(false);
         initialize();
-        this.setSize(400, 190);
-        this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
+        this.setSize(400, 210);
+		this.setLocation(new Point(position.x + 50, position.y));
         this.setVisible(true);
     }
 
@@ -180,9 +180,9 @@ public class PlacePropertyEditor extends JDialog
         if (nameTextField == null)
         {
             nameTextField = new JTextField(place.getNameValue());
-            nameTextField.setPreferredSize(new Dimension(150, 20));
-            nameTextField.setMinimumSize(new Dimension(150, 20));
-            nameTextField.setMaximumSize(new Dimension(150, 20));
+            nameTextField.setPreferredSize(new Dimension(150, 25));
+            nameTextField.setMinimumSize(new Dimension(150, 25));
+            nameTextField.setMaximumSize(new Dimension(150, 25));
             nameTextField.addKeyListener(new KeyListener()
             {
                 public void keyPressed(KeyEvent e)
@@ -226,7 +226,7 @@ public class PlacePropertyEditor extends JDialog
             idTextField = new JTextField();
             idTextField.setText("" + place.getId());
             idTextField.setEditable(false);
-            idTextField.setPreferredSize(new Dimension(100, 20));
+            idTextField.setPreferredSize(new Dimension(100, 25));
         }
 
         return idTextField;
@@ -279,9 +279,9 @@ public class PlacePropertyEditor extends JDialog
         if (markingTextField == null)
         {
             markingTextField = new JTextField("" + place.getTokenCount());
-            markingTextField.setPreferredSize(new Dimension(70, 20));
-            markingTextField.setMinimumSize(new Dimension(70, 20));
-            markingTextField.setMaximumSize(new Dimension(70, 20));
+            markingTextField.setPreferredSize(new Dimension(70, 25));
+            markingTextField.setMinimumSize(new Dimension(70, 25));
+            markingTextField.setMaximumSize(new Dimension(70, 25));
             markingTextField.addKeyListener(new KeyListener()
             {
                 public void keyPressed(KeyEvent e)

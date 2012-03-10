@@ -5,8 +5,8 @@ import java.util.Set;
 
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.AbstractMarkingNetTest;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 /**
  * indicates all unbounded places.
@@ -19,10 +19,10 @@ public class UnboundPlacesTest extends AbstractMarkingNetTest implements IUnboun
 
 	/**
 	 * 
-	 * @param mNet MarkingNet the algorithm is based on
+	 * @param iMarkingNet MarkingNet the algorithm is based on
 	 */
-    public UnboundPlacesTest(MarkingNet mNet) {
-        super(mNet);
+    public UnboundPlacesTest(IMarkingNet markingNet) {
+        super(markingNet);
     }
 
     /**

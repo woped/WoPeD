@@ -3,7 +3,7 @@ package org.woped.qualanalysis.structure;
 import java.io.Serializable;
 import java.util.Comparator;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
 
 /**
@@ -12,13 +12,13 @@ import org.woped.core.model.petrinet.PlaceModel;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  * 
  */
-public class PTHandleComparer implements Comparator<AbstractElementModel>, Serializable {
+public class PTHandleComparer implements Comparator<AbstractPetriNetElementModel>, Serializable {
 
     /** default serial version id. */
     private static final long serialVersionUID = 1L;
 
     @Override
-    public int compare(AbstractElementModel o1, AbstractElementModel o2) {
+    public int compare(AbstractPetriNetElementModel o1, AbstractPetriNetElementModel o2) {
 
         if (o1.getClass() == o2.getClass()) {
             if (o1.getNameValue() != null) {

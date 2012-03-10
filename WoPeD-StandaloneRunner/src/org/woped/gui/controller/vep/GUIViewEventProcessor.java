@@ -37,23 +37,20 @@ import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorAware;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.gui.AboutUI;
 import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
-import org.woped.gui.RunWoPeD;
-import org.woped.gui.controller.DefaultApplicationMediator;
-import org.woped.gui.controller.vc.MenuBarVC;
-import org.woped.gui.controller.vc.ToolBarVC;
+import org.woped.gui.controller.vc.DefaultApplicationMediator;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.translations.Messages;
@@ -82,11 +79,9 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		switch (event.getOrder())
 		{
 		case AbstractViewEvent.NEW:
-			editor = getMediator().createEditor(
-					AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
+			editor = getMediator().createEditor(true);
 			break;
 		case AbstractViewEvent.OPEN_SUBPROCESS:
-
 			if (event.getSource() instanceof EditorVC)
 			{
 				editor = (EditorVC) event.getSource();
@@ -94,27 +89,22 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			{
 				editor = (EditorVC) getMediator().getUi().getEditorFocus();
 			}
-
 			Object cell = editor.getGraph().getSelectionCell();
 			if (cell instanceof GroupModel)
 			{
 
 				cell = ((GroupModel) cell).getMainElement();
-
 				if (cell instanceof SubProcessModel)
 				{
 					SubProcessModel model = (SubProcessModel) cell;
-					
+				
 					IEditor subEditor = getMediator().createSubprocessEditor(
-							AbstractModelProcessor.MODEL_PROCESSOR_PETRINET,
 							true, editor, model);
-					
 					//rotate of Subprocess like Mainprocess
 					if  (editor.isRotateSelected() != model.getDirection()){
 						subEditor.rotateLayout();
 						model.setDirection(editor.isRotateSelected());
 					}
-
 				}
 			} else
 			{
@@ -193,20 +183,6 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			break;
 
 		case AbstractViewEvent.UPDATE:
-			ToolBarVC toolbar = (ToolBarVC) getMediator().getViewController(
-					ToolBarVC.ID_PREFIX);
-			if (toolbar != null)
-			{
-				toolbar.getWoflanButton().setEnabled(
-						ConfigurationManager.getConfiguration().isUseWoflan());
-			}
-			MenuBarVC menu = (MenuBarVC) getMediator().getViewController(
-					ToolBarVC.ID_PREFIX);
-			if (menu != null)
-			{
-				menu.getWoflanMenuItem().setEnabled(
-						ConfigurationManager.getConfiguration().isUseWoflan());
-			}
 			// TODO: fire update event for editor
 			break;
 
@@ -214,11 +190,6 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			quit();
 			break;
         case AbstractViewEvent.ZOOMED:
-            toolbar = (ToolBarVC) getMediator().getViewController(ToolBarVC.ID_PREFIX+0);
-            if (toolbar != null)
-            {
-                toolbar.changeZoomChooserValueWithoutListeners(Integer.toString((int)((Double)event.getData()).doubleValue()));
-            }
             break;
 		}
 	}
@@ -274,23 +245,17 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 
 	private void selectEditor(IEditor editor)
 	{
-		editor.getContainer().setVisible(true);
-		if (editor.getContainer() instanceof JInternalFrame)
+		((EditorVC)editor).getEditorPanel().getContainer().setVisible(true);
+		if (((EditorVC)editor).getEditorPanel().getContainer() instanceof JInternalFrame)
 		{
 			try
 			{
-				((JInternalFrame) editor.getContainer()).setIcon(false);
+				((JInternalFrame) ((EditorVC)editor).getEditorPanel().getContainer()).setIcon(false);
 			} catch (PropertyVetoException e)
 			{
 				LoggerManager.warn(Constants.GUI_LOGGER,
 						"Could not deiconify the editor");
 			}
-            ToolBarVC toolbar = (ToolBarVC) getMediator().getViewController(ToolBarVC.ID_PREFIX+0);
-            if (toolbar != null)
-            {
-                toolbar.changeZoomChooserValueWithoutListeners(Integer.toString((int)(editor.getGraph().getScale()*100)));
-                toolbar.getColoringButton().setSelected(editor.isUnderstandabilityColoringEnabled());
-            }
 		}
 		VisualController.getInstance().propertyChange(
 				new PropertyChangeEvent(this, "FrameSelection", null, editor));
@@ -314,13 +279,13 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		if (editor instanceof EditorVC)
 		{
 			EditorVC editorVC = (EditorVC) editor;
-			if (editorVC.isSubprocessEditor() && !editorVC.isTokenGameMode())
+			if ((editor instanceof SubprocessEditorVC) && !editorVC.isTokenGameEnabled())
 			{
 
 				IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
                 
-				String inputID = editor.getSubprocessInput().getId();
-				String outputID = editor.getSubprocessOutput().getId();
+				String inputID = ((SubprocessEditorVC)editor).getSubprocessInput().getId();
+				String outputID = ((SubprocessEditorVC)editor).getId();
 
 				// Try to get the first source place of the model as well as the 
 				// first sink place
@@ -328,12 +293,12 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				// so we need to check whether the iterator is valid!!
 				String ainputID = null;
 				String aoutputID = null;
-				Iterator<AbstractElementModel> i = qualanService.getSinkPlaces().iterator();
+				Iterator<AbstractPetriNetElementModel> i = qualanService.getSinkPlaces().iterator();
 				if (i.hasNext())
-					ainputID = ((AbstractElementModel) i.next()).getId();
+					ainputID = ((AbstractPetriNetElementModel) i.next()).getId();
 				i = qualanService.getSourcePlaces().iterator();
 				if (i.hasNext())
-					aoutputID = ((AbstractElementModel) i.next()).getId();
+					aoutputID = ((AbstractPetriNetElementModel) i.next()).getId();
 				
 				if (qualanService.getNotStronglyConnectedNodes().size() > 0
 						|| qualanService.getSinkPlaces().size() > 1
@@ -382,7 +347,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 												Messages.getString("Dialog.No")
 						};
 
-					int value = JOptionPane.showOptionDialog(editorVC,
+					int value = JOptionPane.showOptionDialog(editorVC.getEditorPanel(),
 									errorMessage,
 									Messages.getString("Action.CloseSubProcessEditor.StructuralAnalysisResult.Title"),
 									JOptionPane.YES_NO_OPTION,
@@ -401,7 +366,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 					closeEditor = true;
 				}
 			} 
-			else if(editorVC.isSubprocessEditor() && editorVC.isTokenGameMode())
+			else if(editorVC.isSubprocessEditor() && editorVC.isTokenGameEnabled())
 			{
 				closeEditor = true;
 			}
@@ -419,7 +384,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 													Messages.getString("Dialog.Cancel")
 						};
 
-						int value = JOptionPane.showOptionDialog(editorVC,
+						int value = JOptionPane.showOptionDialog(editorVC.getEditorPanel(),
 								Messages
 								.getStringReplaced(
 										"Action.Confirm.File.Save.Text",
@@ -434,23 +399,12 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 						if (value == (JOptionPane.YES_OPTION))
 						{
 							// try to save
-							if (RunWoPeD.isApplet()) {
-								// if applet then save as Webservice
-								getMediator()
-								.processViewEvent(
-										new ViewEvent(
-												editor,
-												AbstractViewEvent.VIEWEVENTTYPE_FILE,
-												AbstractViewEvent.SAVEWEBSERVICE));
-							} else {
-								// else save normal as file
-								getMediator()
+							getMediator()
 									.processViewEvent(
 											new ViewEvent(
 													editor,
 													AbstractViewEvent.VIEWEVENTTYPE_FILE,
 													AbstractViewEvent.SAVE));
-							}
 							closeEditor = editorVC.isSaved();
 						} else if (value == JOptionPane.NO_OPTION)
 						{

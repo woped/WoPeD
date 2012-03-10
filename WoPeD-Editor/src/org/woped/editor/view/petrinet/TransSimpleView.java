@@ -30,7 +30,7 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
-import org.woped.core.view.AbstractElementView;
+import org.woped.core.controller.IEditor;
 import org.woped.translations.Messages;
 
 /**
@@ -42,7 +42,7 @@ import org.woped.translations.Messages;
  */
 
 @SuppressWarnings("serial")
-public class TransSimpleView extends AbstractElementView
+public class TransSimpleView extends PetriNetElementView
 {
     private TransSimpleRenderer renderer = null;
 
@@ -53,9 +53,9 @@ public class TransSimpleView extends AbstractElementView
      * @param graph
      * @param mapper
      */
-    public TransSimpleView(Object cell)
+    public TransSimpleView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new TransSimpleRenderer(cell);
 
     }
@@ -73,7 +73,7 @@ public class TransSimpleView extends AbstractElementView
      * 
      * 28.03.2003
      */
-    private class TransSimpleRenderer extends AbstractElementRenderer
+    private class TransSimpleRenderer extends PetriNetElementRenderer
     {
     	TransSimpleRenderer(Object cell)
     	{
@@ -99,7 +99,7 @@ public class TransSimpleView extends AbstractElementView
                 g2.setStroke(new BasicStroke(b));
                 g.drawRect(b, b, d.width - b - 1, d.height - b - 1);
             }
-            if (isActive() || isFireing())
+            if (isActive())
             {
                 ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());

@@ -30,6 +30,7 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.translations.Messages;
@@ -54,9 +55,9 @@ public class TransAndSplitView extends TransSimpleView
      * @param graph
      * @param mapper
      */
-    public TransAndSplitView(Object cell)
+    public TransAndSplitView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new TransAndSplitRenderer(cell);
     }
 
@@ -72,7 +73,7 @@ public class TransAndSplitView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransAndSplitRenderer extends AbstractElementRenderer
+    private class TransAndSplitRenderer extends PetriNetElementRenderer
     {
     	TransAndSplitRenderer(Object cell)
     	{
@@ -105,7 +106,7 @@ public class TransAndSplitView extends TransSimpleView
             Toolspecific t = ((TransitionModel) getCell()).getToolSpecific();
             drawOperatorArrow2(g, t.getOperatorPosition(), t.getOperatorDirection() );
             
-            if (isActive() || isFireing())
+            if (isActive())
             {
             	ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
@@ -120,14 +121,6 @@ public class TransAndSplitView extends TransSimpleView
         public boolean isActive()
         {
             return TransAndSplitView.this.isActivated();
-        }
-
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return TransAndSplitView.this.isFireing();
         }
                
     }

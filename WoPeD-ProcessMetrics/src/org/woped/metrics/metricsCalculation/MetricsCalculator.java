@@ -13,10 +13,9 @@ import org.antlr.runtime.RecognitionException;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IMetricsConfiguration;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.metrics.exceptions.CalculateFormulaException;
 import org.woped.metrics.exceptions.FormulaVariableNotFoundException;
 import org.woped.metrics.exceptions.InfiniteRecursiveFormulaCallException;
@@ -30,8 +29,8 @@ import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 /**
  * 
@@ -92,7 +91,7 @@ public class MetricsCalculator {
 	}
 	
 	public double calculateT(){
-		Map<String, AbstractElementModel> transitions = getTransitions();
+		Map<String, AbstractPetriNetElementModel> transitions = getTransitions();
 		// Highlighting
 		Set<String> nodeids = new HashSet<String>();
 		for(String key:transitions.keySet())
@@ -103,7 +102,7 @@ public class MetricsCalculator {
 	}
 	
 	private double calculateP(){ 
-		Map<String, AbstractElementModel> places =  mec.getElementsByType(PetriNetModelElement.PLACE_TYPE);
+		Map<String, AbstractPetriNetElementModel> places =  mec.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE);
 		// Highlighting
 		Set<String> nodeids = new HashSet<String>();
 		for(String key:places.keySet())
@@ -206,7 +205,7 @@ public class MetricsCalculator {
 	
 	@SuppressWarnings("unused")
 	private double calculateTS(){
-		Map<String, AbstractElementModel> operators = mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
+		Map<String, AbstractPetriNetElementModel> operators = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
 		Map<String, Map<String,Object>> origMap = mec.getIdMap();
 		double ts = 0;
 		
@@ -249,7 +248,7 @@ public class MetricsCalculator {
 	private double calculateTM(){
 		double max = 0;
 		ReachabilityGraphModelUsingMarkingNet reach = new ReachabilityGraphModelUsingMarkingNet(editor);
-		MarkingNet net = reach.getMarkingNet();
+		IMarkingNet net = reach.getMarkingNet();
 		Set<Marking> markings = net.getMarkings();
 		for(Marking mark:markings){
 			Map<String, Integer> markingMap = mark.getMarking(); 
@@ -291,7 +290,7 @@ public class MetricsCalculator {
 		
 		Set<String> map;
 		if(type == 1) map = getTransitions().keySet();
-		else if (type == 2) map = mec.getElementsByType(PetriNetModelElement.PLACE_TYPE).keySet();
+		else if (type == 2) map = mec.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE).keySet();
 		else map = origMap.keySet();
 		
 		Set<String> nodeids = new HashSet<String>(); // Highlighting
@@ -309,12 +308,12 @@ public class MetricsCalculator {
 	@SuppressWarnings("unused")
 	private double calculateCM(){
 		ReachabilityGraphModelUsingMarkingNet reach = new ReachabilityGraphModelUsingMarkingNet(editor);
-		MarkingNet net = reach.getMarkingNet();
+		IMarkingNet net = reach.getMarkingNet();
 		ReachabilityJGraph graph = reach.getGraph();
 		return AbstractReachabilityGraphModel.edgeCount(graph)-AbstractReachabilityGraphModel.verticeCount(graph)+calculateStrongReaches(net);
 	}
 	
-	private double calculateStrongReaches(MarkingNet net){
+	private double calculateStrongReaches(IMarkingNet net){
 		return AlgorithmFactory.createSccTest(net).getStronglyConnectedComponents().size();
 	}
 
@@ -326,16 +325,16 @@ public class MetricsCalculator {
 	/**
 	 * Returns a map of all nodes that can be considered transitions
 	 */
-	private Map<String,AbstractElementModel> getTransitions(){
-		Map<String, AbstractElementModel> transitions = new HashMap<String, AbstractElementModel>();
-		Map<String, AbstractElementModel> partialTransitions;
-		partialTransitions = mec.getElementsByType(PetriNetModelElement.SUBP_TYPE);
+	private Map<String,AbstractPetriNetElementModel> getTransitions(){
+		Map<String, AbstractPetriNetElementModel> transitions = new HashMap<String, AbstractPetriNetElementModel>();
+		Map<String, AbstractPetriNetElementModel> partialTransitions;
+		partialTransitions = mec.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE);
 		for(String key:partialTransitions.keySet())
 			transitions.put(key,partialTransitions.get(key));
-		partialTransitions = mec.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+		partialTransitions = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
 		for(String key:partialTransitions.keySet())
 			transitions.put(key,partialTransitions.get(key));
-		partialTransitions = mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
+		partialTransitions = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
 		for(String key:partialTransitions.keySet())
 			transitions.put(key,partialTransitions.get(key));
 		

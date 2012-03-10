@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
@@ -18,7 +17,7 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
 
-public class MarkingNet implements INodeNet<Marking> {
+public class MarkingNet implements IMarkingNet {
 
     /** source lowLevel petri net. */
     private final LowLevelPetriNet lolNet;

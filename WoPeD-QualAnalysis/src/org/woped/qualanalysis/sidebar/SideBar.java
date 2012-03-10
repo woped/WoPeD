@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.sidebar.assistant.StartPage;
@@ -135,10 +135,10 @@ public class SideBar extends CloseableTabbedPane {
 		qualanService.cleanup();
 		qualanService = null;
 		// clear the selection
-		Iterator<AbstractElementModel> i = editor.getModelProcessor()
+		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor()
 				.getElementContainer().getRootElements().iterator();
 		while (i.hasNext()) {
-			AbstractElementModel current = (AbstractElementModel) i.next();
+			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
 			current.setHighlighted(false);
 		}
 	}
@@ -191,9 +191,9 @@ public class SideBar extends CloseableTabbedPane {
 
 	public void showTStarIfPossible() {
 		if (tStarCheckBox.isSelected() && workflowStatus) {
-			AbstractElementModel source = getQualanalysisService()
+			AbstractPetriNetElementModel source = getQualanalysisService()
 					.getSourcePlaces().iterator().next();
-			AbstractElementModel sink = getQualanalysisService()
+			AbstractPetriNetElementModel sink = getQualanalysisService()
 					.getSinkPlaces().iterator().next();
 			if (tStar == null)
 				tStar = new TStar(editor);

@@ -16,6 +16,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int VIEWEVENTTYPE_FILE        = 2;
     public static final int VIEWEVENTTYPE_GUI         = 3;
     public static final int VIEWEVENTTYPE_REACHGRAPH  = 4;
+    public static final int VIEWEVENTTYPE_IMPORTAPRO = 701;
+    public static final int VIEWEVENTTYPE_EXPORTAPRO = 702;
 
     // WoPeD Orders
     public static final int SELECT_EDITOR             = 1000;
@@ -35,11 +37,11 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ZOOMED                    = 1013;
     public static final int BUGREPORT                 = 1014;
 
-    public static final int DRAWMODE_PLACE            = 1020;
-    public static final int DRAWMODE_TRANSITION       = 1021;
-    public static final int DRAWMODE_ANDSPLIT         = 1022;
-    public static final int DRAWMODE_ANDJOIN          = 1023;
-    public static final int DRAWMODE_ANDSPLITJOIN     = 1073;
+    public static final int DRAWMODE_PLACE            = 1019;
+    public static final int DRAWMODE_TRANSITION       = 1020;
+    public static final int DRAWMODE_ANDSPLIT         = 1021;
+    public static final int DRAWMODE_ANDJOIN          = 1022;
+    public static final int DRAWMODE_ANDSPLITJOIN     = 1023;
     public static final int DRAWMODE_XORSPLIT         = 1024;
     public static final int DRAWMODE_XORJOIN          = 1025;
     public static final int DRAWMODE_SUB              = 1026;
@@ -78,10 +80,6 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ADD_XORJOINANDSPLIT		  = 1057;
     
     public static final int OPEN_PROPERTIES           = 1060;
-    public static final int ANALYSIS_WOFLAN           = 1061;
-    //! Besides analysis using Woflan, we now support
-    //! local analysis using some woped-internal routines
-    //! and some calls to the Woflan DLL
     public static final int ANALYSIS_WOPED			  = 1062;
     public static final int COLORING 		 		  = 1063;
     public static final int ROTATEVIEW				  = 1064;
@@ -90,24 +88,19 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ANALYSIS_METRIC           = 1067;
     public static final int ANALYSIS_MASSMETRICANALYSE= 1068;
     public static final int ANALYSIS_METRICSBUILDER   = 1069;
-    public static final int TOGGLE_TOKENGAME          = 1070;
+    public static final int OPEN_TOKENGAME            = 1070;
+    public static final int CLOSE_TOKENGAME           = 1071;
 
     //
-    public static final int CASCADE                   = 1071;
-    public static final int ARRANGE                   = 1072;
+    public static final int CASCADE                   = 1072;
+    public static final int ARRANGE                   = 1073;
     public static final int SHOWSIDEBAR				  = 1074;
+    public static final int SHOWOVERVIEW              = 1077;
+    public static final int SHOWTREEVIEW			  = 1078;
     
     public static final int DRAWMODE_ANDJOIN_XORSPLIT = 1075;
     public static final int DRAWMODE_XORJOIN_ANDSPLIT = 1076;
     
-    // UML Elements
-    public static final int ADD_ACTIVITY              = 1100;
-    public static final int ADD_START                 = 1101;
-    public static final int ADD_STOP                  = 1102;
-    public static final int ADD_AND                   = 1103;
-    public static final int ADD_XOR                   = 1104;
-
-
     // General Orders
     public static final int VIEWEVENT_FIRST           = 0;
     public static final int OK                        = 0;
@@ -119,6 +112,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int FILE                      = 6;
     public static final int SAVE                      = 7;
     public static final int SAVEAS                    = 8;
+    public static final int IMPORTAPRO                = 703;
+    public static final int EXPORTAPRO                = 704;
     public static final int ERROR                     = 9;
     public static final int WARNING                   = 10;
     public static final int RETURN                    = 11;
@@ -187,6 +182,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int COPY                      = 307;
     public static final int CUT                       = 308;
     public static final int PASTE                     = 309;
+    public static final int PASTE_AT                  = 328;
+
     public static final int UNDO                      = 310;
     public static final int REMOVE                    = 311;
     public static final int PLUS                      = 312;

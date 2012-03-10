@@ -29,20 +29,22 @@ import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -53,42 +55,40 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import org.jgraph.graph.DefaultGraphCell;
-import org.woped.bpel.gui.transitionproperties.Assign;
-import org.woped.bpel.gui.transitionproperties.BPELadditionalPanel;
-import org.woped.bpel.gui.transitionproperties.BPELassignPanel;
-import org.woped.bpel.gui.transitionproperties.BPELemptyPanel;
-import org.woped.bpel.gui.transitionproperties.BPELinvokePanel;
-import org.woped.bpel.gui.transitionproperties.BPELreceivePanel;
-import org.woped.bpel.gui.transitionproperties.BPELreplyPanel;
-import org.woped.bpel.gui.transitionproperties.BPELwaitPanel;
-import org.woped.bpel.gui.transitionproperties.Empty;
-import org.woped.bpel.gui.transitionproperties.Invoke;
-import org.woped.bpel.gui.transitionproperties.Receive;
-import org.woped.bpel.gui.transitionproperties.Reply;
-import org.woped.bpel.gui.transitionproperties.Wait;
 import org.woped.core.controller.IDialog;
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
-import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
-import org.woped.core.utilities.Utils;
+import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.Constants;
+import org.woped.editor.controller.bpel.Assign;
+import org.woped.editor.controller.bpel.BPELadditionalPanel;
+import org.woped.editor.controller.bpel.BPELassignPanel;
+import org.woped.editor.controller.bpel.BPELemptyPanel;
+import org.woped.editor.controller.bpel.BPELinvokePanel;
+import org.woped.editor.controller.bpel.BPELreceivePanel;
+import org.woped.editor.controller.bpel.BPELreplyPanel;
+import org.woped.editor.controller.bpel.BPELwaitPanel;
+import org.woped.editor.controller.bpel.Empty;
+import org.woped.editor.controller.bpel.Invoke;
+import org.woped.editor.controller.bpel.Receive;
+import org.woped.editor.controller.bpel.Reply;
+import org.woped.editor.controller.bpel.Wait;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
-
 
 /**
  * @author waschtl
  */
 
-
 @SuppressWarnings("serial")
 public class TransitionPropertyEditor extends JDialog implements
 		ActionListener, IDialog {
-
-
 
 	Object activityType = null;
 
@@ -137,8 +137,6 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JLabel idLabel = null;
 
 	private JTextField idTextField = null;
-	
-	private JCheckBox highlightCheckbox = null;
 
 	// Branching
 	private JPanel branchingPanel = null;
@@ -198,7 +196,6 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JLabel branchingAndJoinXorSplitIcon = null;
 
 	private JLabel branchingXorJoinAndSplitIcon = null;
-	
 
 	// Service time
 	private JPanel serviceTimePanel = null;
@@ -229,9 +226,6 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private static final String COMBOBOX_SECONDS_TEXT = Messages
 			.getString("Transition.Properties.Seconds");
-	
-	private static final String HIGHTLIGHTLABEL = Messages
-	.getString("Transition.Properties.Highlight");
 
 	private static final Object[] serviceTimeValues = { COMBOBOX_SECONDS_TEXT,
 			COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT,
@@ -279,36 +273,36 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private static final String TRIGGER_TIME = Messages
 			.getString("Transition.Properties.Trigger.Time");
-	
+
 	// Orientation
 	private JPanel orientationPanel = null;
-	
+
 	private JRadioButton orientationNorthRadioButton = null;
 
 	private JRadioButton orientationEastRadioButton = null;
-	
+
 	private JRadioButton orientationSouthRadioButton = null;
 
 	private JRadioButton orientationWestRadioButton = null;
-	
+
 	private ButtonGroup orientationButtonGroup = null;
-	
+
 	private JLabel orientationIcon = null;
-	
+
 	private static final String ORIENTATION_NORTH = Messages
-	.getString("Transition.Properties.Orientation.North");
+			.getString("Transition.Properties.Orientation.North");
 
 	private static final String ORIENTATION_EAST = Messages
-	.getString("Transition.Properties.Orientation.East");
+			.getString("Transition.Properties.Orientation.East");
 
 	private static final String ORIENTATION_SOUTH = Messages
-	.getString("Transition.Properties.Orientation.South");
+			.getString("Transition.Properties.Orientation.South");
 
 	private static final String ORIENTATION_WEST = Messages
-	.getString("Transition.Properties.Orientation.West");
-	
+			.getString("Transition.Properties.Orientation.West");
+
 	private OperatorPosition pos = null;
-	
+
 	private boolean orientationChanged = false;
 
 	// Resource
@@ -340,30 +334,17 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JPanel buttonPanel = null;
 
 	private JButton buttonOk = null;
-
+	
 	private JButton buttonCancel = null;
 
-	public static int etOK = 0;
-
-	public static int etCancel = 1;
-
-	private int exitType = etCancel;
-
-	// ! Returns the type of exit button that was pressed
-	public int getExitType() {
-		return exitType;
-	}
-
-	public TransitionPropertyEditor(Frame owner, TransitionModel transition,
-			EditorVC editor) {
+	public TransitionPropertyEditor(Frame owner, Point position, TransitionModel transition, EditorVC editor) {
 		super(owner, true);
 		this.transition = transition;
 		this.editor = editor;
 		this.setVisible(false);
 		initialize();
-		this.setSize(550,620);
-		this.setLocation(Utils
-				.getCenterPoint(owner.getBounds(), this.getSize()));
+		this.setSize(580, 680);
+		this.setLocation(new Point(position.x + 50, position.y));
 		this.setVisible(true);
 	}
 
@@ -418,7 +399,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			c1.gridy = 3;
 			c1.insets = new Insets(0, 0, 0, 0);
 			contentPanel.add(getOrientationPanel(), c1);
-			
+
 			c1.gridx = 0;
 			c1.gridy = 4;
 			c1.insets = new Insets(0, 0, 0, 0);
@@ -440,12 +421,11 @@ public class TransitionPropertyEditor extends JDialog implements
 			namePanel.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
 			namePanel
-					.setBorder(BorderFactory
-							.createCompoundBorder(
-									BorderFactory
-											.createTitledBorder(Messages
-													.getString("Transition.Properties.Identification")),
-									BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+					.setBorder(BorderFactory.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.Identification")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 			c.weightx = 1;
 			c.weighty = 1;
@@ -475,24 +455,20 @@ public class TransitionPropertyEditor extends JDialog implements
 			c.gridwidth = 1;
 			c.insets = new Insets(0, 10, 0, 10);
 			namePanel.add(getIdTextField(), c);
-			
+
 			c.gridx = 0;
 			c.gridy = 1;
 			c.gridwidth = 1;
-			c.insets = new Insets(0,10,0,10);
-			namePanel.add(getHighlightCheckbox(), c);
+			c.insets = new Insets(0, 10, 0, 10);
 		}
 
 		return namePanel;
 	}
 
-	
-
 	private JLabel getNameLabel() {
 		if (nameLabel == null) {
-			nameLabel = new JLabel(Messages
-					.getString("Transition.Properties.Name")
-					+ ":");
+			nameLabel = new JLabel(
+					Messages.getString("Transition.Properties.Name") + ":");
 		}
 
 		return nameLabel;
@@ -501,9 +477,9 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JTextField getNameTextField() {
 		if (nameTextField == null) {
 			nameTextField = new JTextField(transition.getNameValue());
-			nameTextField.setPreferredSize(new Dimension(150, 20));
-			nameTextField.setMinimumSize(new Dimension(150, 20));
-			nameTextField.setMaximumSize(new Dimension(150, 20));
+			nameTextField.setPreferredSize(new Dimension(150, 25));
+			nameTextField.setMinimumSize(new Dimension(150, 25));
+			nameTextField.setMaximumSize(new Dimension(150, 25));
 			nameTextField.addKeyListener(new KeyListener() {
 				public void keyPressed(KeyEvent e) {
 					keyReleased(e);
@@ -533,22 +509,12 @@ public class TransitionPropertyEditor extends JDialog implements
 		return idLabel;
 	}
 
-	
-	private JCheckBox getHighlightCheckbox() {
-		if(highlightCheckbox == null){
-			highlightCheckbox = new JCheckBox (HIGHTLIGHTLABEL);
-			highlightCheckbox.setSelected(transition.getToolSpecific().isHighlight());
-		}
-		return highlightCheckbox;
-	}
-	
-	
 	private JTextField getIdTextField() {
 		if (idTextField == null) {
 			idTextField = new JTextField();
 			idTextField.setText("" + transition.getId());
 			idTextField.setEditable(false);
-			idTextField.setPreferredSize(new Dimension(100, 20));
+			idTextField.setPreferredSize(new Dimension(100, 25));
 		}
 		return idTextField;
 	}
@@ -612,7 +578,7 @@ public class TransitionPropertyEditor extends JDialog implements
 				actionPerformed(new ActionEvent(
 						getTriggerResourceRadioButton(), -1, TRIGGER_RESOURCE));
 			} else if (transition.getToolSpecific().getTrigger()
-					.getTriggertype() == TriggerModel.TRIGGER_EXTERNAL) {
+					.getTriggertype() == TriggerModel.TRIGGER_MESSAGE) {
 				getTriggerMessageRadioButton().setSelected(true);
 				actionPerformed(new ActionEvent(getTriggerMessageRadioButton(),
 						-1, TRIGGER_MESSAGE));
@@ -704,8 +670,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getTriggerResourceIcon() {
 		if (triggerResourceIcon == null) {
-			triggerResourceIcon = new JLabel(Messages
-					.getImageIcon("Popup.Trigger.AddResource"));
+			triggerResourceIcon = new JLabel(
+					Messages.getImageIcon("Popup.Trigger.AddResource"));
 		}
 
 		return triggerResourceIcon;
@@ -713,8 +679,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getTriggerMessageIcon() {
 		if (triggerMessageIcon == null) {
-			triggerMessageIcon = new JLabel(Messages
-					.getImageIcon("Popup.Trigger.AddExternal"));
+			triggerMessageIcon = new JLabel(
+					Messages.getImageIcon("Popup.Trigger.AddExternal"));
 		}
 
 		return triggerMessageIcon;
@@ -722,8 +688,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getTriggerTimeIcon() {
 		if (triggerTimeIcon == null) {
-			triggerTimeIcon = new JLabel(Messages
-					.getImageIcon("Popup.Trigger.AddTime"));
+			triggerTimeIcon = new JLabel(
+					Messages.getImageIcon("Popup.Trigger.AddTime"));
 		}
 
 		return triggerTimeIcon;
@@ -764,6 +730,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		}
 		return triggerTimeRadioButton;
 	}
+
 	// ******************************OrientationPanel*****************************************
 	private JPanel getOrientationPanel() {
 		if (orientationPanel == null) {
@@ -781,130 +748,157 @@ public class TransitionPropertyEditor extends JDialog implements
 
 			orientationPanel.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
-//			c.weightx = 1;
-//			c.weighty = 1;
-//			c.fill = GridBagConstraints.HORIZONTAL;
-//			c.anchor = GridBagConstraints.WEST;
+			// c.weightx = 1;
+			// c.weighty = 1;
+			// c.fill = GridBagConstraints.HORIZONTAL;
+			// c.anchor = GridBagConstraints.WEST;
 
 			c.gridx = 1;
 			c.gridy = 0;
-//			c.insets = new Insets(0, 50, 0, 0);
+			// c.insets = new Insets(0, 50, 0, 0);
 			orientationPanel.add(getOrientationNorthRadioButton(), c);
 
 			c.gridx = 2;
 			c.gridy = 1;
-//			c.insets = new Insets(0, 100, 0, 0);
+			// c.insets = new Insets(0, 100, 0, 0);
 			orientationPanel.add(getOrientationEastRadioButton(), c);
 
 			c.gridx = 1;
 			c.gridy = 2;
-//			c.insets = new Insets(0, 60, 0, 20);
+			// c.insets = new Insets(0, 60, 0, 20);
 			orientationPanel.add(getOrientationSouthRadioButton(), c);
 
 			c.gridx = 0;
 			c.gridy = 1;
-//			c.insets = new Insets(0, 0, 0, 20);
+			// c.insets = new Insets(0, 0, 0, 20);
 			orientationPanel.add(getOrientationWestRadioButton(), c);
-			
+
 			c.gridx = 1;
 			c.gridy = 1;
-//			c.insets = new Insets(0, 0, 0, 20);
+			// c.insets = new Insets(0, 0, 0, 20);
 			orientationPanel.add(getOrientationIcon(), c);
-			
-			getOrientationNorthRadioButton().addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					pos = OperatorPosition.NORTH;
-					orientationChanged = true;
-				}
-			});
-			
-			getOrientationSouthRadioButton().addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					pos = OperatorPosition.SOUTH;
-					orientationChanged = true;
-				}
-			});
-			getOrientationWestRadioButton().addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					pos = OperatorPosition.WEST;
-					orientationChanged = true;
-				}
 
-			});
-			getOrientationEastRadioButton().addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					pos = OperatorPosition.EAST;
-					orientationChanged = true;
-				}
+			getOrientationNorthRadioButton().addActionListener(
+					new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							pos = OperatorPosition.NORTH;
+							orientationChanged = true;
+						}
+					});
 
-			});
-			
+			getOrientationSouthRadioButton().addActionListener(
+					new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							pos = OperatorPosition.SOUTH;
+							orientationChanged = true;
+						}
+					});
+			getOrientationWestRadioButton().addActionListener(
+					new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							pos = OperatorPosition.WEST;
+							orientationChanged = true;
+						}
+
+					});
+			getOrientationEastRadioButton().addActionListener(
+					new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							pos = OperatorPosition.EAST;
+							orientationChanged = true;
+						}
+
+					});
+
 			setOrientationConfiguration();
 		}
 
 		return orientationPanel;
 	}
 
-	public void flipNameResourceTrigger(TransitionModel selectedTransition, OperatorPosition oldposition)
-	{
-		int currentPosition = selectedTransition.getToolSpecific().getOperatorPosition().ordinal();
-		
-		//Nord and South
-		if(currentPosition == 0 || currentPosition == 2)
-		{
-			selectedTransition.getNameModel().setPosition(selectedTransition.getX()+ selectedTransition.getWidth(),selectedTransition.getY());
-			if(selectedTransition.hasTrigger())
-			{
-				selectedTransition.getToolSpecific().setTrigger(selectedTransition.getToolSpecific().getTrigger()).setPosition(selectedTransition.getX()-25, selectedTransition.getY()+10);
+	public void flipNameResourceTrigger(TransitionModel selectedTransition,
+			OperatorPosition oldposition) {
+		int currentPosition = selectedTransition.getToolSpecific()
+				.getOperatorPosition().ordinal();
+
+		// Nord and South
+		if (currentPosition == 0 || currentPosition == 2) {
+			selectedTransition.getNameModel().setPosition(
+					selectedTransition.getX() + selectedTransition.getWidth(),
+					selectedTransition.getY());
+			if (selectedTransition.hasTrigger()) {
+				selectedTransition
+						.getToolSpecific()
+						.setTrigger(
+								selectedTransition.getToolSpecific()
+										.getTrigger())
+						.setPosition(selectedTransition.getX() - 25,
+								selectedTransition.getY() + 10);
 			}
-			if(selectedTransition.hasResource())
-			{
-				selectedTransition.getToolSpecific().setTransResource(selectedTransition.getToolSpecific().getTransResource()).setPosition(selectedTransition.getX()-65, selectedTransition.getY()-17);
+			if (selectedTransition.hasResource()) {
+				selectedTransition
+						.getToolSpecific()
+						.setTransResource(
+								selectedTransition.getToolSpecific()
+										.getTransResource())
+						.setPosition(selectedTransition.getX() - 65,
+								selectedTransition.getY() - 17);
 			}
 		}
-		//East and West
-		else if(currentPosition == 1 || currentPosition == 3)
-		{
-			selectedTransition.getNameModel().setPosition(selectedTransition.getX(),selectedTransition.getY()+selectedTransition.getHeight());
-			if(selectedTransition.hasTrigger())
-			{
-				selectedTransition.getToolSpecific().setTrigger(selectedTransition.getToolSpecific().getTrigger()).setPosition(selectedTransition.getX()+10, selectedTransition.getY()-20);
+		// East and West
+		else if (currentPosition == 1 || currentPosition == 3) {
+			selectedTransition.getNameModel().setPosition(
+					selectedTransition.getX(),
+					selectedTransition.getY() + selectedTransition.getHeight());
+			if (selectedTransition.hasTrigger()) {
+				selectedTransition
+						.getToolSpecific()
+						.setTrigger(
+								selectedTransition.getToolSpecific()
+										.getTrigger())
+						.setPosition(selectedTransition.getX() + 10,
+								selectedTransition.getY() - 20);
 			}
-			if(selectedTransition.hasResource())
-			{
-				selectedTransition.getToolSpecific().setTransResource(selectedTransition.getToolSpecific().getTransResource()).setPosition(selectedTransition.getX()+10, selectedTransition.getY()-47);
+			if (selectedTransition.hasResource()) {
+				selectedTransition
+						.getToolSpecific()
+						.setTransResource(
+								selectedTransition.getToolSpecific()
+										.getTransResource())
+						.setPosition(selectedTransition.getX() + 10,
+								selectedTransition.getY() - 47);
 			}
 		}
 		editor.getGraph().drawNet(editor.getModelProcessor());
 	}
-	
+
 	private void setOrientationConfiguration() {
 		if (transition.getToolSpecific().getOperatorPosition() == OperatorPosition.NORTH) {
 			getOrientationNorthRadioButton().setSelected(true);
-			actionPerformed(new ActionEvent(getOrientationNorthRadioButton(), -1,
-					ORIENTATION_NORTH));
+			actionPerformed(new ActionEvent(getOrientationNorthRadioButton(),
+					-1, ORIENTATION_NORTH));
 		} else if (transition.getToolSpecific().getOperatorPosition() == OperatorPosition.EAST) {
 			getOrientationEastRadioButton().setSelected(true);
-			actionPerformed(new ActionEvent(getOrientationEastRadioButton(), -1,
-					ORIENTATION_EAST));
+			actionPerformed(new ActionEvent(getOrientationEastRadioButton(),
+					-1, ORIENTATION_EAST));
 		} else if (transition.getToolSpecific().getOperatorPosition() == OperatorPosition.SOUTH) {
 			getOrientationSouthRadioButton().setSelected(true);
-			actionPerformed(new ActionEvent(getOrientationSouthRadioButton(), -1,
-					ORIENTATION_SOUTH));
+			actionPerformed(new ActionEvent(getOrientationSouthRadioButton(),
+					-1, ORIENTATION_SOUTH));
 		} else if (transition.getToolSpecific().getOperatorPosition() == OperatorPosition.WEST) {
 			getOrientationWestRadioButton().setSelected(true);
-			actionPerformed(new ActionEvent(getOrientationWestRadioButton(), -1,
-					ORIENTATION_WEST));
+			actionPerformed(new ActionEvent(getOrientationWestRadioButton(),
+					-1, ORIENTATION_WEST));
 		}
 	}
 
 	private JLabel getOrientationIcon() {
-	if (orientationIcon == null) {
-		orientationIcon = new JLabel(Messages
-				.getImageIcon("Popup.Add.Orientation"));
+		if (orientationIcon == null) {
+			orientationIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.Orientation"));
+		}
+		return orientationIcon;
 	}
-	return orientationIcon;
-}
 
 	private JRadioButton getOrientationNorthRadioButton() {
 		if (orientationNorthRadioButton == null) {
@@ -941,6 +935,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		}
 		return orientationWestRadioButton;
 	}
+
 	// ******************************BranchingPanel****************************************
 	private JPanel getBranchingPanel() {
 		if (branchingPanel == null) {
@@ -1017,10 +1012,10 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private void checkBranching() {
 		switch (transition.getType()) {
-		case PetriNetModelElement.TRANS_SIMPLE_TYPE:
+		case AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE:
 			getBranchingNoneRadioButton().setSelected(true);
 			break;
-		case PetriNetModelElement.TRANS_OPERATOR_TYPE:
+		case AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE:
 			switch (transition.getToolSpecific().getOperatorType()) {
 			case OperatorTransitionModel.AND_SPLIT_TYPE:
 				getBranchingAndSplitRadioButton().setSelected(true);
@@ -1054,8 +1049,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JRadioButton getBranchingNoneRadioButton() {
 		if (branchingNoneRadioButton == null) {
-			branchingNoneRadioButton = new JRadioButton(Messages
-					.getString("Transition.Properties.Branching.None"));
+			branchingNoneRadioButton = new JRadioButton(
+					Messages.getString("Transition.Properties.Branching.None"));
 			branchingNoneRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.None"));
 			branchingNoneRadioButton.addActionListener(this);
@@ -1065,8 +1060,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JRadioButton getBranchingAndJoinRadioButton() {
 		if (branchingAndJoinRadioButton == null) {
-			branchingAndJoinRadioButton = new JRadioButton(Messages
-					.getString("Transition.Properties.Branching.AndJoin"));
+			branchingAndJoinRadioButton = new JRadioButton(
+					Messages.getString("Transition.Properties.Branching.AndJoin"));
 			branchingAndJoinRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.AndJoin"));
 			branchingAndJoinRadioButton.addActionListener(this);
@@ -1076,8 +1071,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JRadioButton getBranchingAndSplitRadioButton() {
 		if (branchingAndSplitRadioButton == null) {
-			branchingAndSplitRadioButton = new JRadioButton(Messages
-					.getString("Transition.Properties.Branching.AndSplit"));
+			branchingAndSplitRadioButton = new JRadioButton(
+					Messages.getString("Transition.Properties.Branching.AndSplit"));
 			branchingAndSplitRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.AndSplit"));
 			branchingAndSplitRadioButton.addActionListener(this);
@@ -1087,8 +1082,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JRadioButton getBranchingAndSplitJoinRadioButton() {
 		if (branchingAndSplitJoinRadioButton == null) {
-			branchingAndSplitJoinRadioButton = new JRadioButton(Messages
-					.getString("Transition.Properties.Branching.AndSplitJoin"));
+			branchingAndSplitJoinRadioButton = new JRadioButton(
+					Messages.getString("Transition.Properties.Branching.AndSplitJoin"));
 			branchingAndSplitJoinRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.AndSplitJoin"));
 			branchingAndSplitJoinRadioButton.addActionListener(this);
@@ -1098,8 +1093,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JRadioButton getBranchingXorSplitRadioButton() {
 		if (branchingXorSplittRadioButton == null) {
-			branchingXorSplittRadioButton = new JRadioButton(Messages
-					.getString("Transition.Properties.Branching.XorSplit"));
+			branchingXorSplittRadioButton = new JRadioButton(
+					Messages.getString("Transition.Properties.Branching.XorSplit"));
 			branchingXorSplittRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.XorSplit"));
 			branchingXorSplittRadioButton.addActionListener(this);
@@ -1109,8 +1104,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JRadioButton getBranchingXorJoinRadioButton() {
 		if (branchingXorJoinRadioButton == null) {
-			branchingXorJoinRadioButton = new JRadioButton(Messages
-					.getString("Transition.Properties.Branching.XorJoin"));
+			branchingXorJoinRadioButton = new JRadioButton(
+					Messages.getString("Transition.Properties.Branching.XorJoin"));
 			branchingXorJoinRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.XorJoin"));
 			branchingXorJoinRadioButton.addActionListener(this);
@@ -1120,8 +1115,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JRadioButton getBranchingXorSplitJoinRadioButton() {
 		if (branchingXorSplitJoinRadioButton == null) {
-			branchingXorSplitJoinRadioButton = new JRadioButton(Messages
-					.getString("Transition.Properties.Branching.XorSplitJoin"));
+			branchingXorSplitJoinRadioButton = new JRadioButton(
+					Messages.getString("Transition.Properties.Branching.XorSplitJoin"));
 			branchingXorSplitJoinRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.XorSplitJoin"));
 			branchingXorSplitJoinRadioButton.addActionListener(this);
@@ -1132,8 +1127,7 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JRadioButton getBranchingAndJoinXorSplitRadioButton() {
 		if (branchingAndJoinXorSplitRadioButton == null) {
 			branchingAndJoinXorSplitRadioButton = new JRadioButton(
-					Messages
-							.getString("Transition.Properties.Branching.AndJoinXorSplit"));
+					Messages.getString("Transition.Properties.Branching.AndJoinXorSplit"));
 			branchingAndJoinXorSplitRadioButton
 					.setActionCommand(Messages
 							.getString("Transition.Properties.Branching.AndJoinXorSplit"));
@@ -1145,8 +1139,7 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JRadioButton getBranchingXorJoinAndSplitRadioButton() {
 		if (branchingXorJoinAndSplitRadioButton == null) {
 			branchingXorJoinAndSplitRadioButton = new JRadioButton(
-					Messages
-							.getString("Transition.Properties.Branching.XorJoinAndSplit"));
+					Messages.getString("Transition.Properties.Branching.XorJoinAndSplit"));
 			branchingXorJoinAndSplitRadioButton
 					.setActionCommand(Messages
 							.getString("Transition.Properties.Branching.XorJoinAndSplit"));
@@ -1330,8 +1323,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getBranchingNoneIcon() {
 		if (branchingNoneIcon == null) {
-			branchingNoneIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.Transition"));
+			branchingNoneIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.Transition"));
 		}
 
 		return branchingNoneIcon;
@@ -1339,8 +1332,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getBranchingAndSplitIcon() {
 		if (branchingAndSplitIcon == null) {
-			branchingAndSplitIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.AndSplit"));
+			branchingAndSplitIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.AndSplit"));
 		}
 
 		return branchingAndSplitIcon;
@@ -1348,8 +1341,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getBranchingAndJoinIcon() {
 		if (branchingAndJoinIcon == null) {
-			branchingAndJoinIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.AndJoin"));
+			branchingAndJoinIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.AndJoin"));
 		}
 
 		return branchingAndJoinIcon;
@@ -1357,15 +1350,15 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getBranchingAndSplitJoinIcon() {
 		if (branchingAndSplitJoinIcon == null)
-			branchingAndSplitJoinIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.AndSplitJoin"));
+			branchingAndSplitJoinIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.AndSplitJoin"));
 		return branchingAndSplitJoinIcon;
 	}
 
 	private JLabel getBranchingXorSplitIcon() {
 		if (branchingXorSplitIcon == null) {
-			branchingXorSplitIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.XorSplit"));
+			branchingXorSplitIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.XorSplit"));
 		}
 
 		return branchingXorSplitIcon;
@@ -1373,8 +1366,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getBranchingXorJoinIcon() {
 		if (branchingXorJoinIcon == null) {
-			branchingXorJoinIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.XorJoin"));
+			branchingXorJoinIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.XorJoin"));
 		}
 
 		return branchingXorJoinIcon;
@@ -1382,22 +1375,22 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getBranchingXorSplitJoinIcon() {
 		if (branchingXorSplitJoinIcon == null)
-			branchingXorSplitJoinIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.XorSplitJoin"));
+			branchingXorSplitJoinIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.XorSplitJoin"));
 		return branchingXorSplitJoinIcon;
 	}
 
 	private JLabel getBranchingAndJoinXorSplitIcon() {
 		if (branchingAndJoinXorSplitIcon == null)
-			branchingAndJoinXorSplitIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.AndJoinXorSplit"));
+			branchingAndJoinXorSplitIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.AndJoinXorSplit"));
 		return branchingAndJoinXorSplitIcon;
 	}
 
 	private JLabel getBranchingXorJoinAndSplitIcon() {
 		if (branchingXorJoinAndSplitIcon == null)
-			branchingXorJoinAndSplitIcon = new JLabel(Messages
-					.getImageIcon("Popup.Add.XorJoinAndSplit"));
+			branchingXorJoinAndSplitIcon = new JLabel(
+					Messages.getImageIcon("Popup.Add.XorJoinAndSplit"));
 		return branchingXorJoinAndSplitIcon;
 	}
 
@@ -1435,9 +1428,8 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getserviceTimeLabel() {
 		if (serviceTimeLabel == null) {
-			serviceTimeLabel = new JLabel(Messages
-					.getString("Transition.Properties.Average")
-					+ ":");
+			serviceTimeLabel = new JLabel(
+					Messages.getString("Transition.Properties.Average") + ":");
 		}
 
 		return serviceTimeLabel;
@@ -1448,7 +1440,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			serviceTimeTextField = new JTextField();
 			serviceTimeTextField.setText(Integer.toString(transition
 					.getToolSpecific().getTime()));
-			serviceTimeTextField.setMinimumSize(new Dimension(80, 20));
+			serviceTimeTextField.setMinimumSize(new Dimension(80, 5));
 			serviceTimeTextField.setEnabled(true);
 		}
 
@@ -1458,7 +1450,7 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JComboBox getserviceTimeComboBox() {
 		if (serviceTimeComboBox == null) {
 			serviceTimeComboBox = new JComboBox(serviceTimeValues);
-			serviceTimeComboBox.setMinimumSize(new Dimension(80, 20));
+			serviceTimeComboBox.setMinimumSize(new Dimension(80, 25));
 			serviceTimeComboBox.setSelectedIndex(transition.getToolSpecific()
 					.getTimeUnit());
 			serviceTimeComboBox.setEnabled(true);
@@ -1473,12 +1465,11 @@ public class TransitionPropertyEditor extends JDialog implements
 			resourcePanel = new JPanel();
 			resourcePanel.setLayout(new GridBagLayout());
 			resourcePanel
-					.setBorder(BorderFactory
-							.createCompoundBorder(
-									BorderFactory
-											.createTitledBorder(Messages
-													.getString("Transition.Properties.ResourceAssignment")),
-									BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+					.setBorder(BorderFactory.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.ResourceAssignment")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
@@ -1525,9 +1516,9 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getNumResourcesLabel() {
 		if (numResourcesLabel == null) {
-			numResourcesLabel = new JLabel(Messages
-					.getString("Transition.Properties.AssignedResources")
-					+ ": ");
+			numResourcesLabel = new JLabel(
+					Messages.getString("Transition.Properties.AssignedResources")
+							+ ": ");
 		}
 
 		return numResourcesLabel;
@@ -1538,9 +1529,9 @@ public class TransitionPropertyEditor extends JDialog implements
 			numResourcesTextField = new JTextField();
 			numResourcesTextField.setEditable(false);
 			numResourcesTextField.setAlignmentY(JTextField.RIGHT_ALIGNMENT);
-			numResourcesTextField.setMinimumSize(new Dimension(50, 20));
-			numResourcesTextField.setMaximumSize(new Dimension(50, 20));
-			numResourcesTextField.setPreferredSize(new Dimension(50, 20));
+			numResourcesTextField.setMinimumSize(new Dimension(50, 25));
+			numResourcesTextField.setMaximumSize(new Dimension(50, 25));
+			numResourcesTextField.setPreferredSize(new Dimension(50, 25));
 			updateNumResources();
 
 		}
@@ -1649,9 +1640,9 @@ public class TransitionPropertyEditor extends JDialog implements
 				}
 
 			});
-			resourceRoleComboBox.setMinimumSize(new Dimension(130, 20));
-			resourceRoleComboBox.setMaximumSize(new Dimension(130, 20));
-			resourceRoleComboBox.setPreferredSize(new Dimension(130, 20));
+			resourceRoleComboBox.setMinimumSize(new Dimension(130, 5));
+			resourceRoleComboBox.setMaximumSize(new Dimension(130, 25));
+			resourceRoleComboBox.setPreferredSize(new Dimension(130, 25));
 		}
 
 		return resourceRoleComboBox;
@@ -1666,9 +1657,9 @@ public class TransitionPropertyEditor extends JDialog implements
 				}
 
 			});
-			resourceGroupComboBox.setMinimumSize(new Dimension(130, 20));
-			resourceGroupComboBox.setMaximumSize(new Dimension(130, 20));
-			resourceGroupComboBox.setPreferredSize(new Dimension(130, 20));
+			resourceGroupComboBox.setMinimumSize(new Dimension(130, 25));
+			resourceGroupComboBox.setMaximumSize(new Dimension(130, 25));
+			resourceGroupComboBox.setPreferredSize(new Dimension(130, 25));
 		}
 
 		return resourceGroupComboBox;
@@ -1711,7 +1702,8 @@ public class TransitionPropertyEditor extends JDialog implements
 			c2.anchor = GridBagConstraints.NORTH;
 			c2.fill = GridBagConstraints.HORIZONTAL;
 
-			((BPELadditionalPanel)this.activityChooseComboBox.getSelectedItem()).showPanel(this.getBPELPanel(), c2);
+			((BPELadditionalPanel) this.activityChooseComboBox
+					.getSelectedItem()).showPanel(this.getBPELPanel(), c2);
 			this.repaint();
 		}
 
@@ -1725,12 +1717,11 @@ public class TransitionPropertyEditor extends JDialog implements
 			activityChoosePanel.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
 			activityChoosePanel
-					.setBorder(BorderFactory
-							.createCompoundBorder(
-									BorderFactory
-											.createTitledBorder(Messages
-													.getString("Transition.Properties.BPEL.ActivityChoice")),
-									BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+					.setBorder(BorderFactory.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Transition.Properties.BPEL.ActivityChoice")),
+							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 			c.weightx = 1;
 			c.weighty = 1;
 			c.anchor = GridBagConstraints.WEST;
@@ -1784,7 +1775,7 @@ public class TransitionPropertyEditor extends JDialog implements
 
 			this.activityChooseComboBox.setSelectedItem(this.getEmptyPanel());
 
-			//cases to select the right panel at first run
+			// cases to select the right panel at first run
 			if (Empty.class.isInstance(this.transition.getBpelData())
 					|| this.transition.getBpelData() == null)
 				this.activityChooseComboBox.setSelectedItem(this
@@ -1804,8 +1795,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			else if (Wait.class.isInstance(this.transition.getBpelData()))
 				this.activityChooseComboBox
 						.setSelectedItem(this.getWaitPanel());
-			
-			
+
 			activityChooseComboBox.addItemListener(new ItemListener() {
 
 				public void itemStateChanged(ItemEvent e) {
@@ -1827,15 +1817,14 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getActivityLabel() {
 		if (activityChooseLabel == null) {
-			activityChooseLabel = new JLabel(Messages
-					.getString("Transition.Properties.BPEL.Activity")
-					+ ":");
+			activityChooseLabel = new JLabel(
+					Messages.getString("Transition.Properties.BPEL.Activity")
+							+ ":");
 		}
 		return activityChooseLabel;
 	}
 
 	// *****************************SelectedActivityPanel*****************
-
 	private BPELemptyPanel getEmptyPanel() {
 		if (this.emptyPanel == null) {
 			this.emptyPanel = new BPELemptyPanel(this, this.transition);
@@ -1926,38 +1915,28 @@ public class TransitionPropertyEditor extends JDialog implements
 			buttonOk = new JButton();
 			buttonOk.setIcon(Messages.getImageIcon("Button.Ok"));
 			buttonOk.setText(Messages.getTitle("Button.Ok"));
-
 			buttonOk.setMnemonic(Messages.getMnemonic("Button.Ok"));
 			buttonOk.setPreferredSize(new Dimension(120, 25));
+			
 			buttonOk.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					String selectedRole = getRoleComboxBoxModel()
-							.getSelectedItem().toString();
-					String selectedGroup = getGroupComboxBoxModel()
-							.getSelectedItem().toString();
+					String selectedRole = getRoleComboxBoxModel().getSelectedItem().toString();
+					String selectedGroup = getGroupComboxBoxModel().getSelectedItem().toString();
 
+					((BPELadditionalPanel) activityChooseComboBox.getSelectedItem()).saveInfomation();
 
-
-					((BPELadditionalPanel) activityChooseComboBox
-							.getSelectedItem()).saveInfomation();
-					
-					if (selectedRole.equals(ROLE_NONE)
-							&& selectedGroup.equals(GROUP_NONE)
-							|| !selectedRole.equals(ROLE_NONE)
-							&& !selectedGroup.equals(GROUP_NONE)) {
+					if (selectedRole.equals(ROLE_NONE) && selectedGroup.equals(GROUP_NONE) || !selectedRole.equals(ROLE_NONE) && !selectedGroup.equals(GROUP_NONE)) {
 						apply();
-						exitType = etOK;
 						TransitionPropertyEditor.this.dispose();
-					} else {
-						JOptionPane
-								.showMessageDialog(
-										getContentPanel(),
-										Messages
-												.getString("TransitionEditor.Properties.ResourceError.Text"),
-										Messages
-												.getString("TransitionEditor.Properties.ResourceError.Title"),
-										JOptionPane.ERROR_MESSAGE);
-					}				}
+					} 
+					else {
+						JOptionPane.showMessageDialog(
+								getContentPanel(),
+								Messages.getString("TransitionEditor.Properties.ResourceError.Text"),
+								Messages.getString("TransitionEditor.Properties.ResourceError.Title"),
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
 			});
 		}
 
@@ -1973,7 +1952,6 @@ public class TransitionPropertyEditor extends JDialog implements
 			buttonCancel.setPreferredSize(new Dimension(120, 25));
 			buttonCancel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					exitType = etCancel;
 					TransitionPropertyEditor.this.dispose();
 				}
 			});
@@ -1987,17 +1965,19 @@ public class TransitionPropertyEditor extends JDialog implements
 		map.setTriggerPosition(transition.getTriggerPosition());
 		map.setResourcePosition(transition.getResourcePosition());
 
-
 		// Remove old trigger plus resource classes if existing
-		// Remember them here as deleteCell will cross-update the tool-specific info
-         	DefaultGraphCell trigger = transition.hasTrigger()?transition.getToolSpecific().getTrigger():null;
-         	DefaultGraphCell resource = transition.hasResource()?transition.getToolSpecific().getTransResource():null;
- 		if (trigger!=null) {
- 			getEditor().deleteCell(trigger, true);
- 		}
-  		if (resource!=null) {
- 			getEditor().deleteCell(resource, true);
- 		}
+		// Remember them here as deleteCell will cross-update the tool-specific
+		// info
+		DefaultGraphCell trigger = transition.hasTrigger() ? transition
+				.getToolSpecific().getTrigger() : null;
+		DefaultGraphCell resource = transition.hasResource() ? transition
+				.getToolSpecific().getTransResource() : null;
+		if (trigger != null) {
+			getEditor().deleteCell(trigger, true);
+		}
+		if (resource != null) {
+			getEditor().deleteCell(resource, true);
+		}
 
 		// Set new trigger and resource information
 		if (getTriggerResourceRadioButton().isSelected()) {
@@ -2019,14 +1999,52 @@ public class TransitionPropertyEditor extends JDialog implements
 			map.setTriggerType(TriggerModel.TRIGGER_TIME);
 			getEditor().createTrigger(map);
 		} else if (getTriggerMessageRadioButton().isSelected()) {
-			map.setTriggerType(TriggerModel.TRIGGER_EXTERNAL);
+			map.setTriggerType(TriggerModel.TRIGGER_MESSAGE);
 			getEditor().createTrigger(map);
 		}
 
 		// Name change handling
 		transition.setNameValue(getNameTextField().getText());
 		
-		transition.getToolSpecific().setHighlight(highlightCheckbox.isSelected());
+		String command = getBranchingButtonGroup().getSelection().getActionCommand();
+		int type = transition.getToolSpecific().getOperatorType();
+
+		if (command.equals(Messages.getString("Transition.Properties.Branching.None")) && type != OperatorTransitionModel.TRANS_SIMPLE_TYPE)
+		{
+			transformTransition(OperatorTransitionModel.TRANS_SIMPLE_TYPE, -1);
+		}
+		else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoin")) && type != OperatorTransitionModel.AND_JOIN_TYPE)
+		{
+			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_JOIN_TYPE);
+		}
+		else if (command.equals(Messages.getString("Transition.Properties.Branching.AndSplit")) && type != OperatorTransitionModel.AND_SPLIT_TYPE)
+		{
+			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_SPLIT_TYPE);
+		}
+		else if (command.equals(Messages.getString("Transition.Properties.Branching.AndSplitJoin")) && type != OperatorTransitionModel.AND_SPLITJOIN_TYPE)
+		{
+			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.AND_SPLITJOIN_TYPE);
+		}
+		else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplit")) && type != OperatorTransitionModel.XOR_SPLIT_TYPE)
+		{
+			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE,  OperatorTransitionModel.XOR_SPLIT_TYPE);
+		}
+		else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoin")) && type != OperatorTransitionModel.XOR_JOIN_TYPE)
+		{
+			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XOR_JOIN_TYPE);
+		}
+		else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplitJoin")) && type != OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+		{
+			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+		}
+		else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit")) && type != OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
+		{
+			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
+		}
+		else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoinAndSplit")) && type != OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
+		{
+			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
+		}
 
 		// Service time
 		if (!oldTime.equals(serviceTimeTextField.getText()))
@@ -2038,14 +2056,14 @@ public class TransitionPropertyEditor extends JDialog implements
 			transition.getToolSpecific().setTimeUnit(
 					serviceTimeComboBox.getSelectedIndex());
 
-		//TODO
-		if(orientationChanged)
-		{
-			OperatorPosition oldposition = transition.getToolSpecific().getOperatorPosition();
+		// TODO
+		if (orientationChanged) {
+			OperatorPosition oldposition = transition.getToolSpecific()
+					.getOperatorPosition();
 			transition.getToolSpecific().setOperatorPosition(pos);
 			flipNameResourceTrigger(transition, oldposition);
 		}
-		
+
 		// Set change flag
 		getEditor().setSaved(false);
 		getEditor().updateNet();
@@ -2054,7 +2072,8 @@ public class TransitionPropertyEditor extends JDialog implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 * @see
+	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals(TRIGGER_MESSAGE)
@@ -2082,30 +2101,43 @@ public class TransitionPropertyEditor extends JDialog implements
 			getserviceTimeTextfield().setEnabled(true);
 			getserviceTimeComboBox().setEnabled(true);
 		}
-		if (transition.getToolSpecific().isSubprocess()|| transition.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE) {
+		if (transition.getToolSpecific().isSubprocess()
+				|| transition.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE) {
 			getOrientationEastRadioButton().setEnabled(false);
 			getOrientationWestRadioButton().setEnabled(false);
 			getOrientationNorthRadioButton().setEnabled(false);
 			getOrientationSouthRadioButton().setEnabled(false);
 		}
-		if(e.getActionCommand().equals(Messages
-				.getString("Transition.Properties.Branching.None")))
-		{
+		if (e.getActionCommand().equals(
+				Messages.getString("Transition.Properties.Branching.None"))) {
 			getOrientationEastRadioButton().setEnabled(false);
 			getOrientationWestRadioButton().setEnabled(false);
 			getOrientationNorthRadioButton().setEnabled(false);
 			getOrientationSouthRadioButton().setEnabled(false);
 		}
-		if(e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.AndJoin"))||
-				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.AndSplit"))||
-				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.AndSplitJoin"))||
-				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.XorSplit"))||
-				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.XorJoin"))||
-				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.XorSplitJoin"))||
-				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit"))||
-				e.getActionCommand().equals(Messages.getString("Transition.Properties.Branching.XorJoinAndSplit"))
-		)
-		{
+		if (e.getActionCommand().equals(
+				Messages.getString("Transition.Properties.Branching.AndJoin"))
+				|| e.getActionCommand()
+						.equals(Messages
+								.getString("Transition.Properties.Branching.AndSplit"))
+				|| e.getActionCommand()
+						.equals(Messages
+								.getString("Transition.Properties.Branching.AndSplitJoin"))
+				|| e.getActionCommand()
+						.equals(Messages
+								.getString("Transition.Properties.Branching.XorSplit"))
+				|| e.getActionCommand()
+						.equals(Messages
+								.getString("Transition.Properties.Branching.XorJoin"))
+				|| e.getActionCommand()
+						.equals(Messages
+								.getString("Transition.Properties.Branching.XorSplitJoin"))
+				|| e.getActionCommand()
+						.equals(Messages
+								.getString("Transition.Properties.Branching.AndJoinXorSplit"))
+				|| e.getActionCommand()
+						.equals(Messages
+								.getString("Transition.Properties.Branching.XorJoinAndSplit"))) {
 			getOrientationEastRadioButton().setEnabled(true);
 			getOrientationWestRadioButton().setEnabled(true);
 			getOrientationNorthRadioButton().setEnabled(true);
@@ -2126,5 +2158,67 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	public void repaintTabPane() {
 		tabPane.repaint();
+	}
+	
+	private void transformTransition(int nodeType, int operatorType)
+	{
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "transformTransition()");
+
+		CreationMap oldMap = transition.getCreationMap();
+		CreationMap newMap = CreationMap.createMap();
+
+		newMap = (CreationMap)oldMap.clone();
+		// Most of the settings are just taken from the old model, but some 
+		// settings need to be different, of course (operator type,...)
+		newMap.setType(nodeType);
+		newMap.setOperatorType(operatorType);
+		
+		ArrayList<CreationMap> incAcrs = new ArrayList<CreationMap>();
+		ArrayList<CreationMap> outAcrs = new ArrayList<CreationMap>();
+
+		Map<String, ArcModel> arcMap = editor.getModelProcessor().getElementContainer().getArcMap();
+
+		Iterator<String> arcIterator = arcMap.keySet().iterator();
+
+		while (arcIterator.hasNext())
+		{
+			ArcModel curArc = (ArcModel) arcMap.get(arcIterator.next());
+
+			if (curArc.getSourceId().equals(oldMap.getId()))
+				outAcrs.add(curArc.getCreationMap());
+
+			if (curArc.getTargetId().equals(oldMap.getId()))
+				incAcrs.add(curArc.getCreationMap());
+
+		}
+
+		// Remove the old transition
+		editor.deleteCell((DefaultGraphCell)editor.getGraph().getSelectionCell());
+		editor.create(newMap);
+
+		for (int i = 0; i < outAcrs.size(); i++)
+		{
+			ArcModel am = editor.createArc(outAcrs.get(i),true);
+			// Some special behavior: As this method is all about changing
+			// the operator type, what could happen to us is that the operator type
+			// changed to a non-XOR-split type and previously a probability was 
+			// displayed for the arc. Catch this and disable the display 
+			if (!am.isXORsplit(editor.getModelProcessor())) {
+				am.setProbability(1);
+				am.setDisplayOn(false);
+			}
+			else {
+				if (am.getProbability() != 1)
+					am.setDisplayOn(true);
+			}
+					
+		}
+
+		for (int i = 0; i < incAcrs.size(); i++)
+			editor.createArc(incAcrs.get(i), true);
+		
+		// Refresh the net to display any copied triggers and resources...
+		editor.getGraph().drawNet(editor.getModelProcessor());
+		editor.getEditorPanel().getM_understandColoring().update();
 	}
 }

@@ -2,7 +2,7 @@ package org.woped.qualanalysis.service.interfaces;
 
 import java.util.Set;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
  * interface for Workflow-parts of qualanalysis servies. all classes which implement the Workflow-methods of a service must implement this interface
@@ -16,49 +16,49 @@ public interface IWorkflowCheck {
      * 
      * @return a set with all source places
      */
-    public Set<AbstractElementModel> getSourcePlaces();
+    public Set<AbstractPetriNetElementModel> getSourcePlaces();
 
     /**
      * 
      * @return a set with all sink places
      */
-    public Set<AbstractElementModel> getSinkPlaces();
+    public Set<AbstractPetriNetElementModel> getSinkPlaces();
 
     /**
      * 
      * @return a set with all transitions with empty preset
      */
-    public Set<AbstractElementModel> getSourceTransitions();
+    public Set<AbstractPetriNetElementModel> getSourceTransitions();
 
     /**
      * 
      * @return a set with all transitions with empty postset
      */
-    public Set<AbstractElementModel> getSinkTransitions();
+    public Set<AbstractPetriNetElementModel> getSinkTransitions();
 
     /**
      * 
      * @return a set with all nodes with empty preset and empty postset
      */
-    public Set<AbstractElementModel> getNotConnectedNodes();
+    public Set<AbstractPetriNetElementModel> getNotConnectedNodes();
 
     /**
      * 
      * @return a set with all nodes not being strongly connected
      */
-    public Set<AbstractElementModel> getNotStronglyConnectedNodes();
+    public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes();
 
     /**
      * 
      * @return a set with strongly connected components.
      */
-    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents();
+    public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents();
 
     /**
      * 
      * @return a set with strongly connected components.
      */
-    public Set<Set<AbstractElementModel>> getConnectedComponents();
+    public Set<Set<AbstractPetriNetElementModel>> getConnectedComponents();
 
     /**
      * 

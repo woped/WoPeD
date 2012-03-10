@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.interfaces.ISComponent;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.scomponent.ISComponentTest;
@@ -25,8 +25,8 @@ public class SComponentImplement implements ISComponent {
 	private IEditor editor = null;
 	private ISComponentTest sComponentTest = null;
 	
-	private Set<AbstractElementModel> notSCovered = null;
-	private Set<List<AbstractElementModel>> sComponentsSet = null;
+	private Set<AbstractPetriNetElementModel> notSCovered = null;
+	private Set<List<AbstractPetriNetElementModel>> sComponentsSet = null;
 
 	/**
 	 * 
@@ -43,9 +43,9 @@ public class SComponentImplement implements ISComponent {
 	 * @see org.woped.qualanalysis.service.ISComponent#getNotSCovered()
 	 */
 	@Override
-	public Set<AbstractElementModel> getNotSCovered() {
+	public Set<AbstractPetriNetElementModel> getNotSCovered() {
 		if(notSCovered == null){
-			notSCovered = new HashSet<AbstractElementModel>();
+			notSCovered = new HashSet<AbstractPetriNetElementModel>();
 			for (PlaceNode place : getSComponentTest().getNotSCovered()) {
 				notSCovered.add(getAEM(place));
 			}
@@ -59,12 +59,12 @@ public class SComponentImplement implements ISComponent {
 	 * @see org.woped.qualanalysis.service.ISComponent#getSComponents()
 	 */
 	@Override
-	public Set<List<AbstractElementModel>> getSComponents() {
+	public Set<List<AbstractPetriNetElementModel>> getSComponents() {
 		if(sComponentsSet == null){
-			sComponentsSet = new HashSet<List<AbstractElementModel>>();
-			List<AbstractElementModel> sComponent;
+			sComponentsSet = new HashSet<List<AbstractPetriNetElementModel>>();
+			List<AbstractPetriNetElementModel> sComponent;
 			for (Set<AbstractNode> set : getSComponentTest().getSComponents()) {
-				sComponent = new ArrayList<AbstractElementModel>();
+				sComponent = new ArrayList<AbstractPetriNetElementModel>();
 				for (AbstractNode node : set) {
 					if (!sComponent.contains(getAEM(node)))
 						sComponent.add(getAEM(node));
@@ -83,7 +83,7 @@ public class SComponentImplement implements ISComponent {
 	 *            the AbstractNode to get the referring AbstractElementModel from
 	 * @return the referred AbstractElementModel
 	 */
-	private AbstractElementModel getAEM(AbstractNode node) {
+	private AbstractPetriNetElementModel getAEM(AbstractNode node) {
 		return editor.getModelProcessor().getElementContainer().getElementById(node.getOriginId());
 	}
 

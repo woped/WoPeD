@@ -52,54 +52,50 @@ public abstract class AbstractApplicationMediator implements IViewListener
 
 	private LinkedList<Object> editorLists = new LinkedList<Object>();
 
-    public abstract IEditor createEditor(int modelProcessorType, boolean undoSupport, boolean loadUI);
+    public abstract IEditor createEditor(boolean undoSupport, boolean loadUI);
     
     public AbstractApplicationMediator(IUserInterface ui, IGeneralConfiguration conf)
     {
         viewControllerMap = new HashMap<String, IViewController>();
+        boolean confOK = true;
+
+        LoggerManager.info(Constants.CORE_LOGGER, "START INIT Application");
         setUi(ui);
         setConf(conf);
-        LoggerManager.info(Constants.CORE_LOGGER, "START INIT Application");
-        boolean confOK = true;
+ 
         if (conf != null)
         {
             // Init Configuration
             confOK = conf.initConfig();
-        }
-        // use system look and feel
-        try
-        {
             if (!confOK)
             {
                 // This should NEVER happen!
                 LoggerManager.fatal(Constants.CORE_LOGGER, "Could really not load any configuration.");
                 LoggerManager.info(Constants.CORE_LOGGER, "EXIT WoPeD - LOGGING DEACTIVATED");
                 System.exit(0);
-            } else
-            {
-                ConfigurationManager.setConfiguration(conf);
-                try{
-                	UIManager.setLookAndFeel(ConfigurationManager.getConfiguration().getLookAndFeel());
-                }catch(Exception e){
-                	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                }
-            }
-            LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set.");
-        } catch (Exception e)
+            } 
+        }
+        // use system look and feel
+        try
+        {
+        	ConfigurationManager.setConfiguration(conf);                      	                    
+            UIManager.setLookAndFeel(ConfigurationManager.getConfiguration().getLookAndFeel());             
+            LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set to " + UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (Exception e)
         { 
-            LoggerManager.error(Constants.CORE_LOGGER, "Could not set System Look-And-Feel" + ConfigurationManager.getConfiguration().getLookAndFeel());
+            LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set to System default");
         }
     }
 
-    public abstract IEditor createEditor(int modelProcessorType, boolean undoSupport);
+    public abstract IEditor createEditor(boolean undoSupport);
     
     //! Create a sub-process editor window for the specified sub-process
-    //! @param modelProcessorType specifies the model processor type for the underlying model
     //! @param undoSupport specifies whether or not undo should be supported
     //! @param parentEditor specifies a pointer to the parent editor
     //! @param subProcess specifies the sub-process element whose content should be edited
     //! @return new editor object
-    public abstract IEditor createSubprocessEditor(int modelProcessorType, boolean undoSupport, IEditor parentEditor,
+    public abstract IEditor createSubprocessEditor(boolean undoSupport, IEditor parentEditor,
     		SubProcessModel subProcess);
 
     public static IViewController createViewController(String className, String id)

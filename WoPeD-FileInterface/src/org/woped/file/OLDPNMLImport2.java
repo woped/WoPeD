@@ -32,12 +32,11 @@ import java.util.Map;
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
-import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
@@ -147,7 +146,7 @@ public class OLDPNMLImport2 extends PNMLImport
         Net aNet = pnml.getNet();
         editor = new IEditor[1];
 
-        editor[0] = getMediator().createEditor(AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true);
+        editor[0] = getMediator().createEditor(true);
         // attr. id
         ((PetriNetModelProcessor) editor[0].getModelProcessor()).setId(aNet.getId());
         // attr. type
@@ -171,7 +170,7 @@ public class OLDPNMLImport2 extends PNMLImport
             map = CreationMap.createMap();
             map.setEditOnCreation(false);
             map.setId(places[i].getId());
-            map.setType(PetriNetModelElement.PLACE_TYPE);
+            map.setType(AbstractPetriNetElementModel.PLACE_TYPE);
             map.setPosition(places[i].getGraphics().getPositionArray(0).getX(), places[i].getGraphics().getPositionArray(0).getY());
             map.setName(places[i].getName().getValue());
             /*
@@ -205,7 +204,7 @@ public class OLDPNMLImport2 extends PNMLImport
         {
             map = CreationMap.createMap();
             map.setEditOnCreation(false);
-            map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+            map.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
             map.setId(transitions[i].getId());
             map.setPosition(transitions[i].getGraphics().getPositionArray(0).getX(), transitions[i].getGraphics().getPositionArray(0).getY());
             map.setName(transitions[i].getName().getValue());
@@ -261,14 +260,14 @@ public class OLDPNMLImport2 extends PNMLImport
 
     private void importArcs(Arc[] arcs, int editorIndex) throws Exception
     {
-        PetriNetModelElement currentSourceModel = null;
-        PetriNetModelElement currentTargetModel = null;
+        AbstractPetriNetElementModel currentSourceModel = null;
+        AbstractPetriNetElementModel currentTargetModel = null;
         ArcModel arc = null;
         CreationMap map;
         for (int i = 0; i < arcs.length; i++)
         {
-            currentSourceModel = (PetriNetModelElement) getEditor()[editorIndex].getModelProcessor().getElementContainer().getElementById(arcs[i].getSource());
-            currentTargetModel = (PetriNetModelElement) getEditor()[editorIndex].getModelProcessor().getElementContainer().getElementById(arcs[i].getTarget());
+            currentSourceModel = (AbstractPetriNetElementModel) getEditor()[editorIndex].getModelProcessor().getElementContainer().getElementById(arcs[i].getSource());
+            currentTargetModel = (AbstractPetriNetElementModel) getEditor()[editorIndex].getModelProcessor().getElementContainer().getElementById(arcs[i].getTarget());
             String tempID;
 
             if (ConfigurationManager.getConfiguration().isImportToolspecific())
@@ -333,10 +332,10 @@ public class OLDPNMLImport2 extends PNMLImport
         }
     }
 
-    private boolean isOperator(AbstractModelProcessor net, String elementId) throws Exception
+    private boolean isOperator(PetriNetModelProcessor net, String elementId) throws Exception
     {
         if (elementId != null && net.getElementContainer().getElementById(elementId) != null
-                && net.getElementContainer().getElementById(elementId).getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+                && net.getElementContainer().getElementById(elementId).getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
         {
             return true;
         } else

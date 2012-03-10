@@ -47,7 +47,6 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:complexType name="Editor">
 		<xs:sequence>
 			<xs:element name="editOnCreation" type="xs:boolean" default="true" minOccurs="0"/>
@@ -60,29 +59,32 @@
 			<xs:element name="roundRouting" type="xs:boolean" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:complexType name="RecentFile">
 		<xs:sequence>
 			<xs:element name="name" type="xs:string"/>
 			<xs:element name="path" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:complexType name="General">
 		<xs:sequence>
 			<xs:element name="homedir" type="xs:string"/>
 			<xs:element name="recentFiles" type="RecentFile" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:complexType name="Tool">
 		<xs:sequence>
 			<xs:element name="exporting" type="Exporting"/>
 			<xs:element name="importing" type="Importing"/>
 			<xs:element name="woflan" type="Woflan"/>
+			<xs:element name="aproUse" type="xs:boolean" minOccurs="0" />
+			<xs:element name="aproServerName" type="xs:string" minOccurs="0" />
+			<xs:element name="aproUserName" type="xs:string" minOccurs="0" />
+			<xs:element name="aproProxyName" type="xs:string" minOccurs="0" />
+			<xs:element name="aproProxyPort" type="xs:int" minOccurs="0" />
+			<xs:element name="aproServerPort" type="xs:int" minOccurs="0" />
+			<xs:element name="aproUseProxy" type="xs:boolean" minOccurs="0" />			
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:complexType name="Woflan">
 		<xs:sequence>
 			<xs:element name="useWoflan" type="xs:boolean" default="false" minOccurs="0"/>
@@ -90,7 +92,6 @@
 			<xs:element name="useWoflanDLL" type="xs:boolean" default="false" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:complexType name="Coloring">
 		<xs:sequence>
 			<xs:element name="colorOn" type="xs:boolean" minOccurs="0"/>
@@ -129,7 +130,6 @@
 			<xs:element name="defaultcolor16" type="xs:int" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:complexType name="Metrics">
 		<xs:sequence>
 			<xs:element name="useMetrics" 					type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>

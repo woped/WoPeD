@@ -8,9 +8,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.assistant.components.BeginnerPanel;
 import org.woped.qualanalysis.sidebar.assistant.components.ClickLabel;
@@ -214,16 +213,16 @@ public class StartPage extends BeginnerPanel {
 		return getTransitions(mec).size();
 	}
 	
-	private Map<String,AbstractElementModel> getTransitions(ModelElementContainer mec){
-		Map<String, AbstractElementModel> transitions = new HashMap<String, AbstractElementModel>();
-		Map<String, AbstractElementModel> partialTransitions;
-		partialTransitions = mec.getElementsByType(PetriNetModelElement.SUBP_TYPE);
+	private Map<String,AbstractPetriNetElementModel> getTransitions(ModelElementContainer mec){
+		Map<String, AbstractPetriNetElementModel> transitions = new HashMap<String, AbstractPetriNetElementModel>();
+		Map<String, AbstractPetriNetElementModel> partialTransitions;
+		partialTransitions = mec.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE);
 		for(String key:partialTransitions.keySet())
 			transitions.put(key,partialTransitions.get(key));
-		partialTransitions = mec.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+		partialTransitions = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
 		for(String key:partialTransitions.keySet())
 			transitions.put(key,partialTransitions.get(key));
-		partialTransitions = mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
+		partialTransitions = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
 		for(String key:partialTransitions.keySet())
 			transitions.put(key,partialTransitions.get(key));
 		return transitions;

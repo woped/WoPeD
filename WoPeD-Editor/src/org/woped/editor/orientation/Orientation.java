@@ -5,10 +5,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
@@ -40,18 +39,18 @@ public class Orientation {
 	 * @param mec the ModelElementContainer to rotate all elements of
 	 */
 	public void rotateView(ModelElementContainer mec) {
-		Map<String, AbstractElementModel> elements = new HashMap<String, AbstractElementModel>();
+		Map<String, AbstractPetriNetElementModel> elements = new HashMap<String, AbstractPetriNetElementModel>();
 		Iterator<String> elementsIter = mec.getIdMap().keySet().iterator();
-		AbstractElementModel element;
+		AbstractPetriNetElementModel element;
 		int newX = 0, newY = 0, negX = 0, negY = 0;
 		
-		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.PLACE_TYPE));
-		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE));
-		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE));
-		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.SUBP_TYPE));
-		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.TRIGGER_TYPE));
-		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.GROUP_TYPE));
-		elements.putAll(mec.getElementsByType(AbstractPetriNetModelElement.RESOURCE_TYPE));
+		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE));
+		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
+		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
+		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRIGGER_TYPE));
+		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.GROUP_TYPE));
+		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.RESOURCE_TYPE));
 
 		while (elementsIter.hasNext()) {
 			element = elements.get(elementsIter.next());
@@ -124,7 +123,7 @@ public class Orientation {
 	 * @param mec the ModelElementContainer with all elements which have to been moved
 	 */
 	private void moveAllElements(int moveX, int moveY, ModelElementContainer mec) {
-		AbstractElementModel element;
+		AbstractPetriNetElementModel element;
 		ArcModel arc;
 		for (String elementId : mec.getIdMap().keySet()) {
 			element = mec.getElementById(elementId);

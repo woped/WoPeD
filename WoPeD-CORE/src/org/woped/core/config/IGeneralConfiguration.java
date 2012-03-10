@@ -132,12 +132,6 @@ public interface IGeneralConfiguration extends IConfiguration {
     public void setWoflanPath(String woflanPath);
     
     //
-    public boolean isUseWoflanDLL();
-    
-    //  
-    public void setUseWoflanDLL(boolean useWoflanDLL);
-
-    //
     public boolean getColorOn();
 
     //
@@ -406,4 +400,33 @@ public interface IGeneralConfiguration extends IConfiguration {
 	
 	//
 	public void setShowAdvancedErrorMessages(boolean showAdvanced);
+	
+	public String getApromoreServer();
+	
+	public void setApromoreServer(String server);
+	
+	public String getApromoreUsername();
+	
+	public void setApromoreUsername(String user);
+	
+	public String getApromoreProxyName();
+	
+	public void setApromoreProxyName(String user);
+	
+	public int getApromoreProxyPort();
+	
+	public void setApromoreProxyPort(int port);
+
+	public int getApromoreServerPort();
+
+	public boolean getApromoreUseProxy();
+	
+	public void setApromoreServerPort(int port);
+
+	public void setApromoreUseProxy(boolean set);
+
+	public void setApromoreUse(boolean selected);
+
+	public boolean getApromoreUse();
+
 }

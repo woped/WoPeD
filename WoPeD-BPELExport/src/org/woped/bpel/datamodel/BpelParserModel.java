@@ -18,11 +18,10 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
 import org.woped.core.model.petrinet.ANDSplitOperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
@@ -125,7 +124,7 @@ public class BpelParserModel
 	{
 		if (container.getRootElements().isEmpty())
 			return false;
-		PetriNetModelElement e = (PetriNetModelElement) container
+		AbstractPetriNetElementModel e = (AbstractPetriNetElementModel) container
 				.getRootElements().get(0);
 		return this.createModel(e, container);
 	}
@@ -141,7 +140,7 @@ public class BpelParserModel
 	 * 
 	 * @return boolean returned false by error
 	 */
-	private boolean createModel(PetriNetModelElement e,
+	private boolean createModel(AbstractPetriNetElementModel e,
 			ModelElementContainer con)
 	{
 
@@ -156,19 +155,19 @@ public class BpelParserModel
 			this._oneelement = element;
 		this.regist_element(element);
 
-		Map<String, AbstractElementModel> map = con
+		Map<String, AbstractPetriNetElementModel> map = con
 				.getSourceElements(e.getId());
-		Collection<AbstractElementModel> list = map.values();
-		Iterator<AbstractElementModel> iter = list.iterator();
+		Collection<AbstractPetriNetElementModel> list = map.values();
+		Iterator<AbstractPetriNetElementModel> iter = list.iterator();
 		while (iter.hasNext())
 		{
-			AbstractElementModel tmp = iter.next();
-			if (PetriNetModelElement.class.isInstance(tmp))
+			AbstractPetriNetElementModel tmp = iter.next();
+			if (AbstractPetriNetElementModel.class.isInstance(tmp))
 			{
-				if (!this.createModel((PetriNetModelElement) tmp, con))
+				if (!this.createModel((AbstractPetriNetElementModel) tmp, con))
 					return false;
 				AbstractElement<?> abs = this
-						.get_registrated_element((PetriNetModelElement) tmp);
+						.get_registrated_element((AbstractPetriNetElementModel) tmp);
 
 				if (abs == null)
 					return false;
@@ -183,13 +182,13 @@ public class BpelParserModel
 		iter = list.iterator();
 		while (iter.hasNext())
 		{
-			AbstractElementModel tmp = iter.next();
-			if (PetriNetModelElement.class.isInstance(tmp))
+			AbstractPetriNetElementModel tmp = iter.next();
+			if (AbstractPetriNetElementModel.class.isInstance(tmp))
 			{
-				if (!this.createModel((PetriNetModelElement) tmp, con))
+				if (!this.createModel((AbstractPetriNetElementModel) tmp, con))
 					return false;
 				AbstractElement<?> abs = this
-						.get_registrated_element((PetriNetModelElement) tmp);
+						.get_registrated_element((AbstractPetriNetElementModel) tmp);
 
 				if (abs == null)
 					return false;
@@ -306,7 +305,7 @@ public class BpelParserModel
 	 * 
 	 * @return AbstractElement
 	 */
-	public AbstractElement<?> get_registrated_element(PetriNetModelElement e)
+	public AbstractElement<?> get_registrated_element(AbstractPetriNetElementModel e)
 	{
 		return this.get_registrated_element(BpelParserModel.createElement(e));
 	}
@@ -356,7 +355,7 @@ public class BpelParserModel
 	 * 
 	 * @return AbstractElement
 	 */
-	private static AbstractElement<?> createElement(PetriNetModelElement e)
+	private static AbstractElement<?> createElement(AbstractPetriNetElementModel e)
 	{
 		if (PlaceModel.class.isInstance(e))
 			return new Place((PlaceModel) e);
@@ -380,7 +379,7 @@ public class BpelParserModel
 					return new TimeTriggerTransition((TransitionModel) e);
 				// if (m.getTriggertype() == TriggerModel.TRIGGER_RESOURCE)
 				// return new ResourceTriggerTransition((TransitionModel) e);
-				if (m.getTriggertype() == TriggerModel.TRIGGER_EXTERNAL)
+				if (m.getTriggertype() == TriggerModel.TRIGGER_MESSAGE)
 					return new MessageTriggerTransition((TransitionModel) e);
 			}
 			return new SimpleTransition((TransitionModel) e);

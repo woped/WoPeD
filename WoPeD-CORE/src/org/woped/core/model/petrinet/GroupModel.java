@@ -26,7 +26,6 @@ import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.ParentMap;
-import org.woped.core.model.AbstractElementModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -41,12 +40,12 @@ public class GroupModel extends DefaultGraphCell
 {
 
     private boolean              ungroupable = true;
-    private AbstractElementModel m_mainElement;
+    private AbstractPetriNetElementModel m_mainElement;
 
     /**
      * Constructor for GroupCell.
      */
-    public GroupModel(AbstractElementModel mainElement, NameModel name, Object[] additional, boolean ungroupable)
+    public GroupModel(AbstractPetriNetElementModel mainElement, NameModel name, Object[] additional, boolean ungroupable)
     {
         super();
         this.ungroupable = ungroupable;
@@ -80,7 +79,7 @@ public class GroupModel extends DefaultGraphCell
         this.ungroupable = ungroupable;
     }
 
-    public AbstractElementModel getMainElement()
+    public AbstractPetriNetElementModel getMainElement()
     {
         return m_mainElement;
     }

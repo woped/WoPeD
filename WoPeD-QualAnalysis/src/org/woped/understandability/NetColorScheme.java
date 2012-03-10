@@ -5,10 +5,9 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
@@ -74,8 +73,8 @@ public class NetColorScheme implements INetColorScheme {
 				ClusterElement element = handleClusterIter.next();
 				// refer from current FlowNode element to its parent PetriNet element
 				// if the actual element cannot be found in the current focus window
-				AbstractElementModel highlightElement = element.m_element;
-				AbstractElementModel owningElement = null;
+				AbstractPetriNetElementModel highlightElement = element.m_element;
+				AbstractPetriNetElementModel owningElement = null;
 				if  ((!mediatorReference.getUIReference().getEditorFocus().getModelProcessor().getElementContainer().containsElement(element.m_element.getId())&&
 						((owningElement=element.m_element.getRootOwningContainer().getOwningElement()) != null)))						
 					highlightElement = owningElement; 
@@ -130,12 +129,12 @@ public class NetColorScheme implements INetColorScheme {
 	//! as input data, places in front or behind Xor-Splits/Joins are marked as split instead
 	//! of the corresponding van der Aalst Operator.
     //! This correction method sets the van der Aalst operator as element to highlight.
-	private AbstractElementModel handleXorSplitPlaceRelation(AbstractElementModel highlightElement){
-		if (highlightElement.getType() == PetriNetModelElement.PLACE_TYPE){
+	private AbstractPetriNetElementModel handleXorSplitPlaceRelation(AbstractPetriNetElementModel highlightElement){
+		if (highlightElement.getType() == AbstractPetriNetElementModel.PLACE_TYPE){
 			// Get postset of the place
-			Set<AbstractElementModel> postset = NetAlgorithms.getDirectlyConnectedNodes(highlightElement, NetAlgorithms.connectionTypeOUTBOUND);
+			Set<AbstractPetriNetElementModel> postset = NetAlgorithms.getDirectlyConnectedNodes(highlightElement, NetAlgorithms.connectionTypeOUTBOUND);
 			// Get preset of the place
-			Set<AbstractElementModel> preset = NetAlgorithms.getDirectlyConnectedNodes(highlightElement, NetAlgorithms.connectionTypeINBOUND);
+			Set<AbstractPetriNetElementModel> preset = NetAlgorithms.getDirectlyConnectedNodes(highlightElement, NetAlgorithms.connectionTypeINBOUND);
 			
 			OperatorTransitionModel tempOpTransModel;
 			
@@ -144,9 +143,9 @@ public class NetColorScheme implements INetColorScheme {
 			// or 1 Xor-Join operator in the preset.
 			if (postset.size() == 2) {
 										
-			    Iterator<AbstractElementModel> postsetIter = postset.iterator();
+			    Iterator<AbstractPetriNetElementModel> postsetIter = postset.iterator();
 				
-				AbstractElementModel postsetCheck1, postsetCheck2;
+				AbstractPetriNetElementModel postsetCheck1, postsetCheck2;
 					
 				postsetCheck1 = postsetIter.next();
 				postsetCheck2 = postsetIter.next();
@@ -161,7 +160,7 @@ public class NetColorScheme implements INetColorScheme {
 				? postsetCheck2.getRootOwningContainer().getOwningElement() 
 				: postsetCheck2;
 					
-				if (postsetCheck1.equals(postsetCheck2) && postsetCheck1.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+				if (postsetCheck1.equals(postsetCheck2) && postsetCheck1.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
 						
 					tempOpTransModel = (OperatorTransitionModel) postsetCheck1;
 						
@@ -178,9 +177,9 @@ public class NetColorScheme implements INetColorScheme {
 			else{
 				if (preset.size() == 2) {
 											
-				    Iterator<AbstractElementModel> presetIter = preset.iterator();
+				    Iterator<AbstractPetriNetElementModel> presetIter = preset.iterator();
 					
-				    AbstractElementModel presetCheck1, presetCheck2;
+				    AbstractPetriNetElementModel presetCheck1, presetCheck2;
 						
 				    presetCheck1 = presetIter.next();
 				    presetCheck2 = presetIter.next();
@@ -195,7 +194,7 @@ public class NetColorScheme implements INetColorScheme {
 				    ? presetCheck2.getRootOwningContainer().getOwningElement() 
 				    : presetCheck2;
 					
-				    if (presetCheck1.equals(presetCheck2) && presetCheck1.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+				    if (presetCheck1.equals(presetCheck2) && presetCheck1.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
 							
 					    tempOpTransModel = (OperatorTransitionModel) presetCheck1;
 							
@@ -212,8 +211,8 @@ public class NetColorScheme implements INetColorScheme {
 	
 	//! Reset all understandability coloring Information in the current petri net  
 	private void resetColoringInformation() {
-		Iterator<AbstractElementModel> elementIter = qualanService.getPlaces().iterator();
-		AbstractElementModel currentElement = null;
+		Iterator<AbstractPetriNetElementModel> elementIter = qualanService.getPlaces().iterator();
+		AbstractPetriNetElementModel currentElement = null;
 		
 		//reset all places
 		while (elementIter.hasNext()){

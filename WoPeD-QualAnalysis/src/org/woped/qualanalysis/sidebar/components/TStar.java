@@ -16,17 +16,15 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementFactory;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
@@ -48,7 +46,7 @@ public class TStar {
         this.editor = editor;
     }
 
-    public void updateTStar(AbstractElementModel source, AbstractElementModel sink) {
+    public void updateTStar(AbstractPetriNetElementModel source, AbstractPetriNetElementModel sink) {
         if (source == null && sink == null) {
             if (tStar != null) {
                 tStar.removeAllChildren();
@@ -71,8 +69,8 @@ public class TStar {
             Object[] cells = editor.getGraph().getGraphLayoutCache().getCells(
                     editor.getGraph().getGraphLayoutCache().getAllViews());
             for (Object cell : cells) {
-                if (cell instanceof AbstractElementModel) {
-                    Point p = ((AbstractElementModel) cell).getPosition();
+                if (cell instanceof AbstractPetriNetElementModel) {
+                    Point p = ((AbstractPetriNetElementModel) cell).getPosition();
                     biggestX = Math.max(p.x, biggestX);
                     biggestY = Math.max(p.y, biggestY);
                     if (smallestX != 0) {
@@ -90,7 +88,7 @@ public class TStar {
             CreationMap map = new CreationMap();
             map.setId(T_STAR);
             map.setName(T_STAR);
-            map.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
+            map.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
             tStar = new TransitionModel(map);
             GraphConstants.setBorderColor(tStar.getAttributes(), T_STAR_COLOR);
             GraphConstants.setForeground(tStar.getNameModel().getAttributes(), T_STAR_COLOR);
@@ -156,7 +154,7 @@ public class TStar {
                 while (cell instanceof GroupModel) {
                     cell = ((GroupModel) cell).getMainElement();
                 }
-                if (cell instanceof AbstractElementModel && !((AbstractElementModel) cell).isReadOnly()) {
+                if (cell instanceof AbstractPetriNetElementModel && !((AbstractPetriNetElementModel) cell).isReadOnly()) {
                     result.add(tempGroup);
                     for (int j = 0; j < tempGroup.getChildCount(); j++) {
                         result.add(tempGroup.getChildAt(j));
@@ -169,9 +167,9 @@ public class TStar {
         HashSet<Object> uniqueResult = new HashSet<Object>();
         for (int i = 0; i < result.size(); i++) {
             uniqueResult.add(result.get(i));
-            if (result.get(i) instanceof AbstractElementModel
-                    && ((AbstractElementModel) result.get(i)).getPort() != null) {
-                Iterator<?> edges = ((AbstractElementModel) result.get(i)).getPort().edges();
+            if (result.get(i) instanceof AbstractPetriNetElementModel
+                    && ((AbstractPetriNetElementModel) result.get(i)).getPort() != null) {
+                Iterator<?> edges = ((AbstractPetriNetElementModel) result.get(i)).getPort().edges();
                 while (edges.hasNext()) {
                     uniqueResult.add(edges.next());
                 }
@@ -215,8 +213,8 @@ public class TStar {
                             if (toDelete[i] instanceof GroupModel) {
                                 allPorts.add(toDelete[i]);
                             } else
-                                if (toDelete[i] instanceof AbstractElementModel) {
-                                    AbstractElementModel element = (AbstractElementModel) toDelete[i];
+                                if (toDelete[i] instanceof AbstractPetriNetElementModel) {
+                                    AbstractPetriNetElementModel element = (AbstractPetriNetElementModel) toDelete[i];
                                     // if there are trigger, delete their jgraph model
                                     if (toDelete[i] instanceof TransitionModel) {
                                         if (((TransitionModel) toDelete[i]).getToolSpecific().getTrigger() != null) {
@@ -256,9 +254,9 @@ public class TStar {
                             .getX2());
                 }
         }
-        AbstractElementModel source = editor.getModelProcessor().getElementContainer().getElementById(sourceId);
+        AbstractPetriNetElementModel source = editor.getModelProcessor().getElementContainer().getElementById(sourceId);
         source = source != null ? source : tStar;
-        AbstractElementModel target = editor.getModelProcessor().getElementContainer().getElementById(targetId);
+        AbstractPetriNetElementModel target = editor.getModelProcessor().getElementContainer().getElementById(targetId);
         target = target != null ? target : tStar;
         if (editor.getGraph().isValidConnection(source, target)) {
             if (!editor.getModelProcessor().getElementContainer().hasReference(sourceId, targetId)) {
@@ -277,13 +275,13 @@ public class TStar {
                 GraphConstants.setLineColor(arc.getAttributes(), T_STAR_COLOR);
 
                 OperatorTransitionModel operatorModel;
-                if (source.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+                if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
                     operatorModel = (OperatorTransitionModel) source;
                     operatorModel.addElement(target);
                     operatorModel.registerOutgoingConnection((PetriNetModelProcessor) editor.getModelProcessor(),
                             target);
                 } else
-                    if (target.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+                    if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
                         operatorModel = (OperatorTransitionModel) target;
                         operatorModel.addElement(source);
                         operatorModel.registerIncomingConnection((PetriNetModelProcessor) editor.getModelProcessor(),

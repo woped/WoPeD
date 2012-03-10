@@ -6,7 +6,7 @@ import javax.swing.Icon;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.sidebar.expert.components.NodeNetInfo;
 import org.woped.translations.Messages;
@@ -74,13 +74,13 @@ public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
 	    	
 	    	switch (node.getTypeId()) 
 	    	{
-	    	case AbstractPetriNetModelElement.PLACE_TYPE:
+	    	case AbstractPetriNetElementModel.PLACE_TYPE:
 	    		result = place;
 	    		break;
-	    	case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
+	    	case AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE:
 	    		result = transition;
 	    		break;
-	    	case AbstractPetriNetModelElement.SUBP_TYPE:
+	    	case AbstractPetriNetElementModel.SUBP_TYPE:
 	    		result = subprocess;
 	    		break;
 	    	case OperatorTransitionModel.AND_JOIN_TYPE:

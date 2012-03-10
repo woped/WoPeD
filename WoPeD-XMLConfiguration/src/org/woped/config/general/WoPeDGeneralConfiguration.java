@@ -29,8 +29,7 @@ import org.woped.core.utilities.LoggerManager;
  * @author Philip Allgaier
  *
  */
-public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
-		IGeneralConfiguration {
+public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGeneralConfiguration {
 
 	private static org.woped.config.ConfigurationDocument confDoc = null;
 	private static String CONFIG_FILE = "WoPeDconfig.xml";
@@ -39,12 +38,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	private Locale locale = null;
 
 	private static int RECENTFILES_SIZE = 10;
-	private Vector<WoPeDRecentFile> runtimeRecentFiles = new Vector<WoPeDRecentFile>(
-			RECENTFILES_SIZE);
-
-	public WoPeDGeneralConfiguration(boolean startedAsApplet) {
-		super(startedAsApplet);
-	}
+	private Vector<WoPeDRecentFile> runtimeRecentFiles = new Vector<WoPeDRecentFile>(RECENTFILES_SIZE);
 
 	public String getConfigFilePath() {
 		return getUserdir() + CONFIG_FILE;
@@ -74,7 +68,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 			// Check if metrics configuration should be loaded
 			// and react accordingly
 			if (getConfDocument().getConfiguration().getMetrics().getUseMetrics()) {
-				WoPeDMetricsConfiguration metricsConfig = new WoPeDMetricsConfiguration(startedAsApplet);
+				WoPeDMetricsConfiguration metricsConfig = new WoPeDMetricsConfiguration();
 				metricsConfig.initConfig();
 				ConfigurationManager.setMetricsConfiguration(metricsConfig);
 			}
@@ -252,7 +246,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 			// Tools
 			setUseWoflan(config.getTools().getWoflan().getUseWoflan());
-			setUseWoflanDLL(config.getTools().getWoflan().getUseWoflanDLL());
 			setWoflanPath(config.getTools().getWoflan().getWoflanPath());
 
 			// Editor
@@ -601,16 +594,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	}
 
 	/**
-	 * Returns the useWoflan.dll
-	 * 
-	 * @return boolean
-	 */
-	public boolean isUseWoflanDLL() {
-		return getConfDocument().getConfiguration().getTools().getWoflan()
-				.getUseWoflanDLL();
-	}
-
-	/**
 	 * Sets the useWoflan.
 	 * 
 	 * @param useWoflan
@@ -630,17 +613,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	public void setWoflanPath(String woflanPath) {
 		getConfDocument().getConfiguration().getTools().getWoflan()
 				.setWoflanPath(woflanPath);
-	}
-
-	/**
-	 * Sets the useWoflan.dll
-	 * 
-	 * @param useWoflanDLL
-	 *            The useWoflanDLL to set
-	 */
-	public void setUseWoflanDLL(boolean useWoflanDLL) {
-		getConfDocument().getConfiguration().getTools().getWoflan()
-				.setUseWoflanDLL(useWoflanDLL);
 	}
 
 	/**
@@ -1231,5 +1203,132 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	public void setShowAdvancedErrorMessages(boolean showAdvanced) {
 		getConfDocument().getConfiguration().getMetrics().setShowAdvancedErrorMessages(showAdvanced);
+	}
+
+	@Override
+	public void setApromoreServer(String server) {
+		getConfDocument().getConfiguration().getTools()
+				.setAproServerName(server);
+		
+	}
+
+	@Override
+	public void setApromoreUsername(String user) {
+		getConfDocument().getConfiguration().getTools()
+				.setAproUserName(user);
+	}
+
+	@Override
+	public void setApromoreProxyName(String proxyName) {
+		getConfDocument().getConfiguration().getTools()
+				.setAproProxyName(proxyName);
+	}
+
+
+	@Override
+	public void setApromoreProxyPort(int port) {
+		getConfDocument().getConfiguration().getTools()
+				.setAproProxyPort(port);
+	}
+
+	public String getApromoreServer() {
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproServerName())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproServerName();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromoreServer();
+	}
+	
+	@Override
+	public String getApromoreUsername() {
+		
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproUserName())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproUserName();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromoreUsername();
+	}
+
+	@Override
+	public String getApromoreProxyName() {
+		
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproProxyName())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproProxyName();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromoreProxyName();
+	}
+
+	@Override
+	public int getApromoreProxyPort() {
+		
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproProxyPort())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproProxyPort();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromoreProxyPort();
+	}
+
+	@Override
+	public int getApromoreServerPort() {
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproServerPort())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproServerPort();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromoreServerPort();
+	}
+
+	@Override
+	public boolean getApromoreUseProxy() {
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproUseProxy())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproUseProxy();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromoreUseProxy(); 
+	}
+
+	@Override
+	public void setApromoreServerPort(int port) {
+		getConfDocument().getConfiguration().getTools()
+		.setAproServerPort(port);
+		
+	}
+
+	@Override
+	public void setApromoreUseProxy(boolean set) {
+		getConfDocument().getConfiguration().getTools()
+		.setAproUseProxy(set);
+
+		
+	}
+
+	@Override
+	public void setApromoreUse(boolean selected) {
+		getConfDocument().getConfiguration().getTools()
+		.setAproUse(selected);
+
+	}
+
+	@Override
+	public boolean getApromoreUse() {
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproUse())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproUse();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromoreUse(); 
 	}
 }

@@ -54,9 +54,11 @@ public class TriggerModel extends DefaultGraphCell
 
     public static final int TRIGGER_RESOURCE = 200;
 
-    public static final int TRIGGER_EXTERNAL = 201;
+    public static final int TRIGGER_MESSAGE  = 201;
 
     public static final int TRIGGER_TIME     = 202;
+    
+    public static final int TRIGGER_NONE	 = 203;
 
     public static final int DEFAULT_WIDTH    = 24;
 
@@ -149,7 +151,7 @@ public class TriggerModel extends DefaultGraphCell
 
     public int getType()
     {
-        return PetriNetModelElement.TRIGGER_TYPE;
+        return AbstractPetriNetElementModel.TRIGGER_TYPE;
     }
 
     /* ### general methods ### */

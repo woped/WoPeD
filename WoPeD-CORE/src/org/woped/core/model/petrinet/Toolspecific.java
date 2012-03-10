@@ -74,17 +74,7 @@ public class Toolspecific implements Serializable
 
     private OperatorPosition position = OperatorPosition.EAST; 
     private OperatorDirection direction = OperatorDirection.IN;
-     
-    //! True if highlighting should be performed
-    private boolean 	highlight = false;
-    
-    public boolean isHighlight() {
-		return highlight;
-	}
 
-	public void setHighlight(boolean highlight) {
-		this.highlight = highlight;
-	}
 
 	/**
      * Constructor for Toolspecific. ownerid must not be null.

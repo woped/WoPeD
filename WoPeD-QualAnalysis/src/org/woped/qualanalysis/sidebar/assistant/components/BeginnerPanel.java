@@ -7,6 +7,9 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -19,11 +22,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.Border;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.translations.Messages;
@@ -37,9 +41,9 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	protected static final String PREFIX_HELP = PREFIX_BEGINNER + "Help.";
 	protected static final String PREFIX_EXAMPLE = PREFIX_BEGINNER + "Example.";
 	protected static final String PREFIX_BUTTON = PREFIX_BEGINNER + "Button.";
-	
+
 	protected static final String COLON = ":";
-	
+
 	// Constants for Fonts and Icons
 	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD,
 			14);
@@ -70,6 +74,15 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 	protected static final String SUB_POINT = " - ";
 
+	// String for new home icon (navigation)
+	protected static final String NAV_HOME = "QuanlAna.Navigation.Home";
+
+	// String for first details button (navigation)
+	protected static final String NAV_DETAILS1 = "QuanlAna.Navigation.Details1";
+
+	// String for second details button (navigation)
+	protected static final String NAV_DETAILS2 = "QuanlAna.Navigation.Details2";
+
 	private static final Cursor DEFAULT_CURSOR = new Cursor(
 			Cursor.DEFAULT_CURSOR);
 
@@ -93,8 +106,6 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 	protected JPanel contentPane = null;
 
-	private String header = "";
-
 	private SideBar sideBar = null;
 
 	public IEditor editor = null;
@@ -102,6 +113,13 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	protected boolean status = true;
 
 	protected IQualanalysisService qualanalysisService = null;
+
+	// adaption
+	// (Saskia Kurz, Dec 2011)
+	public JPanel jp;
+	public JToggleButton j1, j2, j3;
+	BeginnerPanel helpPanel;
+	BeginnerPanel helpPanel2;
 
 	/**
 	 * 
@@ -118,7 +136,6 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 		qualanalysisService = sideBar.getQualanalysisService();
 		this.setLayout(new BorderLayout());
 		this.previous = previous;
-		this.header = header;
 		this.contentPane = new JPanel();
 		// create a scrollpane for vertical scrolling
 		JScrollPane scrollPane = new JScrollPane(contentPane);
@@ -128,52 +145,131 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 		this.contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(BorderFactory.createEmptyBorder(25, 5, 0, 20));
 		this.contentPane.setLayout(new GridBagLayout());
-		this.add(createNavigation(), BorderLayout.NORTH);
+
+		// start of adaption
+		// (Saskia Kurz, Dec 2011/Feb 2012)
+		
+		JLabel headLabel = new JLabel(header, JLabel.LEFT);
+		headLabel.setFont(HEADER_FONT);
+		this.add(headLabel, BorderLayout.NORTH);
+		
+		// JPanel which is meant to contain the three toggle buttons
+		jp = new JPanel();
+		jp.setLayout(new GridLayout(1, 3));
+		
+		// toggle buttons for navigation
+		j1 = new JToggleButton(Messages.getImageIcon(NAV_HOME));
+		j1.setBackground(Color.WHITE);
+		j2 = new JToggleButton(Messages.getImageIcon(NAV_DETAILS1));
+		j2.setBackground(Color.WHITE);
+		j3 = new JToggleButton(Messages.getImageIcon(NAV_DETAILS2));
+		j3.setBackground(Color.WHITE);
+		
+		
+		// initial selection status of the toggle buttons
+		j1.setSelected(true);
+		j2.setEnabled(false);
+		j3.setEnabled(false);
+
+		// add toggle buttons to JPanel
+		jp.add(j1);
+		jp.add(j2);
+		jp.add(j3);
+		
+		// creation registration of listener for toggle buttons
+		ToggleListener tl = new ToggleListener(this);
+		j1.addItemListener(tl);
+		j2.addItemListener(tl);
+		j3.addItemListener(tl);
+		
+		// add JPanel with toggle buttons to sidebar
+		this.add(jp, BorderLayout.SOUTH);
+
+		// end of adaption
+
 		this.add(scrollPane, BorderLayout.CENTER);
+	}
+
+	// start of adaption
+	// Saskia Kurz, Jan 2012
+	
+	// Listener class for toggle buttons
+	class ToggleListener implements ItemListener {
+		
+		BeginnerPanel bp;
+		
+		// constructor
+		public ToggleListener(BeginnerPanel bp){
+			
+			this.bp = bp;
+			
+		}
+
+		public void itemStateChanged(ItemEvent ie) {
+		
+			boolean changed = false;
+
+			helpPanel = previous;
+			
+			//click on first button (Home)
+			if (((JToggleButton) ie.getSource()) == j1) {
+				if (ie.getStateChange() == ItemEvent.SELECTED) {
+					
+					j2.setSelected(false);
+					j3.setSelected(false);
+					
+					// navigate to Start Page
+					while (helpPanel != null && helpPanel.hasPrevious()) {
+						helpPanel = helpPanel.getPrevious();
+					}
+					j2.setEnabled(false);
+					j3.setEnabled(false);
+					
+					changed = true;
+				}
+				
+			//click on second button (Details1)
+			} else if (((JToggleButton) ie.getSource()) == j2) {
+				if (ie.getStateChange() == ItemEvent.SELECTED) {
+					
+					if(!bp.getClass().toString().endsWith("SoundnessPage") &&
+							!bp.getClass().toString().endsWith("StartPage")){
+						j1.setSelected(false);
+						j3.setSelected(false);
+						j3.setEnabled(false);
+						changed = true;
+					}
+				}
+				
+			/* clicks on third button (Details2) do not have to be handled!
+			 * the button is only needed for visualization purposes!
+			 */
+				
+			}
+
+			/* not every click on the buttons should trigger a repaint of the sidebar
+			 * only if the change flag is set, repaint will take place
+			 * otherwise the following piece of code could cause exceptions
+			 */
+			if (changed == true) {
+				JPanel beginnerContainer = sideBar.getBeginnerContainer();
+				beginnerContainer.removeAll();
+				beginnerContainer.add(helpPanel);
+				sideBar.repaint();
+				cleanHiglights();
+				setCursor(DEFAULT_CURSOR);
+			}
+
+		}
 
 	}
+
+	// end of adaption
 
 	/**
 	 * 
 	 * @return navigation for assistant analysis sidebar
 	 */
-	private JPanel createNavigation() {
-		JPanel navi = new JPanel();
-		JPanel homeback = new JPanel();
-		navi.setBackground(Color.WHITE);
-		navi.setLayout(new BorderLayout());
-		homeback.setBackground(Color.WHITE);
-		homeback.setLayout(new BorderLayout());
-		JLabel headLabel = new JLabel(header, JLabel.LEFT);
-		headLabel.setFont(HEADER_FONT);
-		back = new JLabel(Messages
-				.getImageIcon(PREFIX_BUTTON + "Empty"));
-		startPage = new JLabel(Messages
-				.getImageIcon(PREFIX_BUTTON + "Empty"));
-		if (this.hasPrevious()) {
-			back = new JLabel(Messages
-					.getImageIcon(PREFIX_BUTTON + "Back"));
-			back.setBackground(Color.WHITE);
-			back.addMouseListener(this);
-			if (previous.hasPrevious()) {
-				startPage
-						.setIcon(Messages
-								.getImageIcon(PREFIX_BUTTON + "Startpage"));
-				startPage.setBackground(Color.WHITE);
-				startPage.addMouseListener(this);
-			}
-		} else {
-			headLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-		}	
-		navi.add(homeback, BorderLayout.EAST);
-		homeback.add(back, BorderLayout.WEST);
-		homeback.add(startPage, BorderLayout.CENTER);
-		//navi.add(startPage, BorderLayout.WEST);
-		//navi.add(back, BorderLayout.EAST);
-		navi.add(headLabel, BorderLayout.CENTER);
-		navi.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		return navi;
-	}
 
 	/**
 	 * add components to the contentpane of the beginnerpanel
@@ -248,26 +344,26 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 		ArrayList<ClickLabel> labelSet = new ArrayList<ClickLabel>();
 
-		ArrayList<AbstractElementModel> elements = new ArrayList<AbstractElementModel>();
+		ArrayList<AbstractPetriNetElementModel> elements = new ArrayList<AbstractPetriNetElementModel>();
 		if (nodeIterator != null && nodeIterator.hasNext()) {
 			int secCounter = 0;
 			do {
 				Object aem = nodeIterator.next();
-				if (aem instanceof AbstractElementModel)
-					if (((AbstractElementModel) aem).getHierarchyLevel() == 0) {
-						elements.add(((AbstractElementModel) aem));
+				if (aem instanceof AbstractPetriNetElementModel)
+					if (((AbstractPetriNetElementModel) aem).getHierarchyLevel() == 0) {
+						elements.add(((AbstractPetriNetElementModel) aem));
 					} else {
-						elements.add(((AbstractElementModel) aem)
+						elements.add(((AbstractPetriNetElementModel) aem)
 								.getRootOwningContainer().getOwningElement());
 					}
 				else if (aem instanceof Set<?>) {
-					Collection<AbstractElementModel> nodeSet = (Collection<AbstractElementModel>) aem;
+					Collection<AbstractPetriNetElementModel> nodeSet = (Collection<AbstractPetriNetElementModel>) aem;
 					secCounter++;
-					String groupOrPair = Messages
-							.getString(PREFIX_BEGINNER + "Pair");
+					String groupOrPair = Messages.getString(PREFIX_BEGINNER
+							+ "Pair");
 					if (nodeSet.size() > 2) {
-						groupOrPair = Messages
-								.getString(PREFIX_BEGINNER + "Group");
+						groupOrPair = Messages.getString(PREFIX_BEGINNER
+								+ "Group");
 					}
 					ClickLabel cLabel = new ClickLabel(SUB_POINT + groupOrPair
 							+ " # " + secCounter, nodeSet.iterator(), editor);
@@ -280,8 +376,8 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
 		JLabel clickLabel;
 		if (labelSet.isEmpty())
-			clickLabel = new ClickLabel(Messages.getString(headerString) + COLON,
-					elements, editor);
+			clickLabel = new ClickLabel(Messages.getString(headerString)
+					+ COLON, elements, editor);
 		else
 			clickLabel = new JLabel(Messages.getString(headerString) + COLON);
 		clickLabel.setFont(ITEMS_FONT);
@@ -373,10 +469,10 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	 */
 	public void cleanHiglights() {
 		IEditor editor = sideBar.getEditor();
-		Iterator<AbstractElementModel> i = editor.getModelProcessor()
+		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor()
 				.getElementContainer().getRootElements().iterator();
 		while (i.hasNext()) {
-			AbstractElementModel current = (AbstractElementModel) i.next();
+			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
 			current.setHighlighted(false);
 		}
 		editor.getGraph().repaint();
@@ -403,7 +499,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 			helpPanel = previous;
 		} else if (e.getSource().equals(startPage)) {
 			helpPanel = previous;
-			while (helpPanel.hasPrevious()) {
+			while (helpPanel != null && helpPanel.hasPrevious()) {
 				helpPanel = helpPanel.getPrevious();
 			}
 		}
@@ -414,6 +510,8 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 		cleanHiglights();
 		setCursor(DEFAULT_CURSOR);
 	}
+
+	
 
 	@Override
 	public void mouseEntered(MouseEvent e) {

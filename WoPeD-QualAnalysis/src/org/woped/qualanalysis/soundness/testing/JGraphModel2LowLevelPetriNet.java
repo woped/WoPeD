@@ -4,8 +4,8 @@ import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
 import org.woped.qualanalysis.soundness.algorithms.generic.scc.IStronglyConnectedComponentTestGen;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 public class JGraphModel2LowLevelPetriNet {
 
@@ -21,8 +21,8 @@ public class JGraphModel2LowLevelPetriNet {
 
     private void test() {
         long time;
-        MarkingNet mNetWithoutTStar;
-        MarkingNet mNetWithTStar;
+        IMarkingNet mNetWithoutTStar;
+        IMarkingNet mNetWithTStar;
         System.out.println();
 
         time = System.currentTimeMillis();
@@ -68,7 +68,7 @@ public class JGraphModel2LowLevelPetriNet {
 
     private void testTarjan() {
         long time;
-        MarkingNet mNet;
+        IMarkingNet mNet;
         mNet = BuilderFactory.createMarkingNet(BuilderFactory.createLowLevelPetriNetWithTStarBuilder(editor)
                 .getLowLevelPetriNet());
         IStronglyConnectedComponentTestGen<Marking> t = AlgorithmFactory.createSccTest(mNet);

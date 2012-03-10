@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.structure.components;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 public class RouteInfo {
 	// ! Store a reference to the predecessor
@@ -13,5 +13,5 @@ public class RouteInfo {
     public int m_nDistanceToSource = -1;
     // ! Stores a reference to the actual petri-net
     // ! element this entry has been created for
-    public AbstractElementModel m_thisElement = null;
+    public AbstractPetriNetElementModel m_thisElement = null;
 }

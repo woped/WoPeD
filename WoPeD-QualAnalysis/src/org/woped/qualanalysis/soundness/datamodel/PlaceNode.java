@@ -18,7 +18,7 @@ public class PlaceNode extends AbstractNode {
      * @see AbstractNode#AbstractNode(String)
      */
     public PlaceNode(Integer tokenCount, Integer virtualTokenCount, String id, String name, String originId) {
-        super(id, name, originId);
+        super(id, name, originId, 0);
         this.tokenCount = tokenCount;
         this.virtualTokenCount = virtualTokenCount;
     }

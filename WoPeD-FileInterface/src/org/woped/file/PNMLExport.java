@@ -42,23 +42,16 @@ import javax.swing.JOptionPane;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
-import org.woped.bpel.gui.transitionproperties.Assign;
-import org.woped.bpel.gui.transitionproperties.Invoke;
-import org.woped.bpel.gui.transitionproperties.Receive;
-import org.woped.bpel.gui.transitionproperties.Reply;
-import org.woped.bpel.gui.transitionproperties.Wait;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IStatusBar;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.bpel.Partnerlink;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
@@ -68,6 +61,11 @@ import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.controller.bpel.Assign;
+import org.woped.editor.controller.bpel.Invoke;
+import org.woped.editor.controller.bpel.Receive;
+import org.woped.editor.controller.bpel.Reply;
+import org.woped.editor.controller.bpel.Wait;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.pnml.AnnotationGraphisType;
 import org.woped.pnml.ArcNameType;
@@ -148,7 +146,6 @@ public class PNMLExport
             opt.setSaveImplicitNamespaces(map);
 
             pnmlDoc.save(new File(fileName), opt);
-            
             return true;
         } catch (IOException e)
         {
@@ -263,7 +260,7 @@ public class PNMLExport
             
             // graphics
             GraphicsSimpleType iGraphicsNet = iNetToolSpec.addNewBounds();
-            EditorLayoutInfo layoutInfo = editor.getSavedLayoutInfo();
+            EditorLayoutInfo layoutInfo = editor.getEditorPanel().getSavedLayoutInfo();
             if (layoutInfo.getSavedSize() != null)
             {
                 DimensionType dim = iGraphicsNet.addNewDimension();
@@ -276,8 +273,15 @@ public class PNMLExport
                 location.setX(new BigDecimal(layoutInfo.getSavedLocation().getX()));
                 location.setY(new BigDecimal(layoutInfo.getSavedLocation().getY()));
             }
-            // Store the width of the tree view
-            iNetToolSpec.setTreeWidth(layoutInfo.getTreeViewWidth());
+            // Store the width of the tree view and the height of the overview
+            if(layoutInfo.getTreeViewWidthRight()!=0){
+            	iNetToolSpec.setTreeWidthRight(layoutInfo.getTreeViewWidthRight());
+            }else{
+            	iNetToolSpec.setTreeWidthRight(layoutInfo.getTreeViewWidth());
+            }
+            iNetToolSpec.setOverviewPanelVisible(layoutInfo.getOverviewPanelVisible());
+            iNetToolSpec.setTreeHeightOverview(layoutInfo.getTreeHeightOverview());
+            iNetToolSpec.setTreePanelVisible(layoutInfo.getTreePanelVisible());
             //verticalLayout
             iNetToolSpec.setVerticalLayout(editor.isRotateSelected());
             // resources
@@ -433,20 +437,20 @@ public class PNMLExport
     //! @param modelElementContainer specifies the ModelElementContainer to be stored to the specified XMLBean
     private void saveModelElementContainer(NetType iNet, ModelElementContainer elementContainer)
     {
-        Iterator<AbstractElementModel> root2Iter = elementContainer.getRootElements().iterator();
+        Iterator<AbstractPetriNetElementModel> root2Iter = elementContainer.getRootElements().iterator();
         while (root2Iter.hasNext())
         {
-            PetriNetModelElement currentModel = (PetriNetModelElement) root2Iter.next();
+            AbstractPetriNetElementModel currentModel = (AbstractPetriNetElementModel) root2Iter.next();
             /* ##### PLACES ##### */
-            if (currentModel.getType() == PetriNetModelElement.PLACE_TYPE)
+            if (currentModel.getType() == AbstractPetriNetElementModel.PLACE_TYPE)
             {
                 initPlace(iNet.addNewPlace(), (PlaceModel) currentModel);
-            } else if (currentModel.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
+            } else if (currentModel.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
             /* ##### TRANSITION ##### */
             {
                 initTransition(iNet.addNewTransition(), (TransitionModel) currentModel, null);
 
-            } else if (currentModel.getType() == PetriNetModelElement.SUBP_TYPE)
+            } else if (currentModel.getType() == AbstractPetriNetElementModel.SUBP_TYPE)
             {
                 // A sub-process is a reference transition with an associated page 
             	// First, generate the transition itself
@@ -488,12 +492,15 @@ public class PNMLExport
                 		location.setY(new BigDecimal(subProcessLayout.getSavedLocation().getY()));
                 	}
                 	// Store the width of the tree view
-                	subPToolSpec.setTreeWidth(subProcessLayout.getTreeViewWidth());
+                	subPToolSpec.setTreeWidthRight(subProcessLayout.getTreeViewWidthRight());
+                	subPToolSpec.setOverviewPanelVisible(subProcessLayout.getOverviewPanelVisible());
+                	subPToolSpec.setTreeHeightOverview(subProcessLayout.getTreeHeightOverview());
+                	subPToolSpec.setTreePanelVisible(subProcessLayout.getTreePanelVisible());
                 }
                 
                 // Call ourselves recursively to store the sub-process net
                 saveModelElementContainer(newNet, subProcessContainer);                
-            } else if (currentModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            } else if (currentModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
             {
             	// Special handling code for operators:
             	// Instead of the operator itself, the inner transitions and places 
@@ -504,13 +511,13 @@ public class PNMLExport
 
                 LoggerManager.debug(Constants.FILE_LOGGER, "   ... Setting InnerTtransitions for Operator (ID:" + currentModel.getId() + ")");
                 OperatorTransitionModel operatorModel = (OperatorTransitionModel) currentModel;
-                Iterator<AbstractElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE).values().iterator();
+                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
                 while (simpleTransIter.hasNext())
                 {
-                    PetriNetModelElement simpleTransModel = (PetriNetModelElement) simpleTransIter.next();
+                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
                     if (simpleTransModel != null // Sometimes the iterator
                             // returns null...
-                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
+                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
                     {
                         initTransition(iNet.addNewTransition(), (TransitionModel) operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()), operatorModel);
                     }
@@ -534,20 +541,20 @@ public class PNMLExport
         // Instead of serializing the arc itself, we serialize
         // the "inner arcs" of all such transitions
         // To sort out duplicates, we create a set
-        Set<PetriNetModelElement> connectedTransitions = new HashSet<PetriNetModelElement>();  
+        Set<AbstractPetriNetElementModel> connectedTransitions = new HashSet<AbstractPetriNetElementModel>();  
         Iterator<String> arcIter = elementContainer.getArcMap().keySet().iterator();
         while (arcIter.hasNext())
         {
             ArcModel currentArc = elementContainer.getArcById(arcIter.next());
-            PetriNetModelElement currentTargetModel = (PetriNetModelElement) elementContainer.getElementById(currentArc.getTargetId());
-            PetriNetModelElement currentSourceModel = (PetriNetModelElement) elementContainer.getElementById(currentArc.getSourceId());
+            AbstractPetriNetElementModel currentTargetModel = (AbstractPetriNetElementModel) elementContainer.getElementById(currentArc.getTargetId());
+            AbstractPetriNetElementModel currentSourceModel = (AbstractPetriNetElementModel) elementContainer.getElementById(currentArc.getSourceId());
             // Remember either source or target if it is a transition
             // Please note that one special condition of petri nets is that
             // a transition is never directly connected to another transition
             // so either source or target may be a transition, never both
-            if (currentTargetModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            if (currentTargetModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
             	connectedTransitions.add(currentTargetModel);
-            else if (currentSourceModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+            else if (currentSourceModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
             	connectedTransitions.add(currentSourceModel);
             else
             {
@@ -569,7 +576,7 @@ public class PNMLExport
     	// with (ID, Object-Reference) entries.
         // For all transitions connected to at least one arc we will
         // dump the internal arcs now instead of the (previously ignored) visible arcs
-        Iterator<PetriNetModelElement> currentTransition = connectedTransitions.iterator();
+        Iterator<AbstractPetriNetElementModel> currentTransition = connectedTransitions.iterator();
         while (currentTransition.hasNext())
         {
         	OperatorTransitionModel currentConnectedModel = (OperatorTransitionModel)currentTransition.next();
@@ -679,7 +686,7 @@ public class PNMLExport
         return nodeName;
     }
 
-    private GraphicsNodeType initElementGraphics(GraphicsNodeType iGraphics, AbstractPetriNetModelElement element)
+    private GraphicsNodeType initElementGraphics(GraphicsNodeType iGraphics, AbstractPetriNetElementModel element)
     {
         DimensionType dim = iGraphics.addNewDimension();
         dim.setX(BigDecimal.valueOf(element.getWidth()));
@@ -721,11 +728,11 @@ public class PNMLExport
         	org.woped.pnml.TReceive iReceive = iToolspecific.addNewReceive();
         	iReceive.set((XmlObject)((Receive)currentModel.getBpelData()).getActivity());
         }
-        if (org.woped.bpel.gui.transitionproperties.Reply.class.isInstance(currentModel.getBpelData())){
+        if (org.woped.editor.controller.bpel.Reply.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TReply iReply = iToolspecific.addNewReply();
         	iReply.set((XmlObject)((Reply)currentModel.getBpelData()).getActivity());
         }
-        if (org.woped.bpel.gui.transitionproperties.Wait.class.isInstance(currentModel.getBpelData())){
+        if (org.woped.editor.controller.bpel.Wait.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TWait iWait = iToolspecific.addNewWait();
         	Wait w = (Wait) currentModel.getBpelData();
         	iWait.setName(w.getName());

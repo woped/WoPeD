@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.structure.components.ClusterElement;
 
 /**
@@ -19,25 +19,25 @@ public interface IQualanalysisService {
      * 
      * @return a set of all places
      */
-    public Set<AbstractElementModel> getPlaces();
+    public Set<AbstractPetriNetElementModel> getPlaces();
 
     /**
      * 
      * @return a set of all transitions
      */
-    public Set<AbstractElementModel> getTransitions();
+    public Set<AbstractPetriNetElementModel> getTransitions();
 
     /**
      * 
      * @return a set of all operators
      */
-    public Set<AbstractElementModel> getOperators();
+    public Set<AbstractPetriNetElementModel> getOperators();
 
     /**
      * 
      * @return a set of all subprocesses
      */
-    public Set<AbstractElementModel> getSubprocesses();
+    public Set<AbstractPetriNetElementModel> getSubprocesses();
 
     /**
      * 
@@ -49,73 +49,73 @@ public interface IQualanalysisService {
      * 
      * @return a set of all freeChoiceViolations (each violation is a set of elements)
      */
-    public Set<Set<AbstractElementModel>> getFreeChoiceViolations();
+    public Set<Set<AbstractPetriNetElementModel>> getFreeChoiceViolations();
 
     /**
      * 
      * @return a set of all wrongly used operators
      */
-    public Set<AbstractElementModel> getWronglyUsedOperators();
+    public Set<AbstractPetriNetElementModel> getWronglyUsedOperators();
 
     /**
      * 
      * @return a set of all not-connected nodes
      */
-    public Set<AbstractElementModel> getNotConnectedNodes();
+    public Set<AbstractPetriNetElementModel> getNotConnectedNodes();
 
     /**
      * 
      * @return a set of all connected components (each component is a set of elements)
      */
-    public Set<Set<AbstractElementModel>> getConnectedComponents();
+    public Set<Set<AbstractPetriNetElementModel>> getConnectedComponents();
 
     /**
      * 
      * @return a set of all not-strongly-connected nodes
      */
-    public Set<AbstractElementModel> getNotStronglyConnectedNodes();
+    public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes();
 
     /**
      * 
      * @return a set of strongly connected components (each component is a set of elements)
      */
-    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents();
+    public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents();
 
     /**
      * 
      * @return a set of all sourcePlaces
      */
-    public Set<AbstractElementModel> getSourcePlaces();
+    public Set<AbstractPetriNetElementModel> getSourcePlaces();
 
     /**
      * 
      * @return a set of all sinkPlaces
      */
-    public Set<AbstractElementModel> getSinkPlaces();
+    public Set<AbstractPetriNetElementModel> getSinkPlaces();
 
     /**
      * 
      * @return a set of all sourceTransitions
      */
-    public Set<AbstractElementModel> getSourceTransitions();
+    public Set<AbstractPetriNetElementModel> getSourceTransitions();
 
     /**
      * 
      * @return a set of all sinkTransitions
      */
-    public Set<AbstractElementModel> getSinkTransitions();
+    public Set<AbstractPetriNetElementModel> getSinkTransitions();
 
     /**
      * 
      * @return a set of all PTHandles (each handle is a set of elements)
      */
-    public Set<Set<AbstractElementModel>> getPTHandles();
+    public Set<Set<AbstractPetriNetElementModel>> getPTHandles();
 
     /**
      * 
      * @return a set of all TPHandles (each handle is a set of elements)
      */
-    public Set<Set<AbstractElementModel>> getTPHandles();
+    public Set<Set<AbstractPetriNetElementModel>> getTPHandles();
 
     /**
      * TODO what is this method for?
@@ -128,37 +128,37 @@ public interface IQualanalysisService {
      * 
      * @return a set of all SComponents (each SComponent is a list of elements)
      */
-    public Set<List<AbstractElementModel>> getSComponents();
+    public Set<List<AbstractPetriNetElementModel>> getSComponents();
 
     /**
      * 
      * @return a set of all not-SCovered
      */
-    public Set<AbstractElementModel> getNotSCovered();
+    public Set<AbstractPetriNetElementModel> getNotSCovered();
 
     /**
      * 
      * @return an set of places with wrong token count in initial marking
      */
-    public Set<AbstractElementModel> getWronglyMarkedPlaces();
+    public Set<AbstractPetriNetElementModel> getWronglyMarkedPlaces();
 
     /**
      * 
      * @return a set of all unbounded places
      */
-    public Set<AbstractElementModel> getUnboundedPlaces();
+    public Set<AbstractPetriNetElementModel> getUnboundedPlaces();
 
     /**
      * 
      * @return a set of all dead transitions
      */
-    public Set<AbstractElementModel> getDeadTransitions();
+    public Set<AbstractPetriNetElementModel> getDeadTransitions();
 
     /**
      * 
      * @return a set of all non-live transitions
      */
-    public Set<AbstractElementModel> getNonLiveTransitions();
+    public Set<AbstractPetriNetElementModel> getNonLiveTransitions();
 
     /**
      * method to check if the given petrinet is a workflownet or not

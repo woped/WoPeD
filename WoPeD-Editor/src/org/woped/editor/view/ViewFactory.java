@@ -36,6 +36,7 @@ import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewFactory;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
@@ -74,6 +75,13 @@ import org.woped.editor.view.petrinet.TriggerTimeView;
 @SuppressWarnings("serial")
 public class ViewFactory extends AbstractViewFactory
 {
+	private IEditor editor;
+	
+	public ViewFactory(IEditor editor)
+	{
+		super();
+		this.editor = editor;
+	}
 
     public CellView createView(GraphModel model, Object cell)
     {
@@ -84,14 +92,14 @@ public class ViewFactory extends AbstractViewFactory
         else view = createVertexView(cell);
         // cm.putMapping(cell, view);
         // view.refresh(true); // Create Dependent Views
-        view.update();
+        view.update(editor.getGraph().getGraphLayoutCache());
         return view;
     }
 
     protected EdgeView createEdgeView(Object cell)
     {
         ArcView view = new ArcView(cell);
-        view.update();
+        view.update(editor.getGraph().getGraphLayoutCache());
         return view;
     }
 
@@ -108,10 +116,10 @@ public class ViewFactory extends AbstractViewFactory
             return new NameView(cell);
         } else if (cell instanceof PlaceModel)
         {
-            return new PlaceView(cell);
+            return new PlaceView(cell, editor);
         } else if (cell instanceof SubProcessModel)
         {
-            return new SubProcessView(cell);
+            return new SubProcessView(cell, editor);
         } else if (cell instanceof OperatorTransitionModel)
         {
 
@@ -119,41 +127,41 @@ public class ViewFactory extends AbstractViewFactory
             if (aTCell.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE)
             {
 
-                return new TransAndSplitView(cell);
+                return new TransAndSplitView(cell, editor);
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE)
             {
 
-                return new TransAndJoinView(cell);
+                return new TransAndJoinView(cell, editor);
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE)
             {
-            	return new TransAndSplitJoinView(cell);
+            	return new TransAndSplitJoinView(cell, editor);
             
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
             {
 
-                return new TransXOrSplitView(cell);
+                return new TransXOrSplitView(cell, editor);
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
             {
 
-                return new TransXOrJoinView(cell);
+                return new TransXOrJoinView(cell, editor);
 
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.OR_SPLIT_TYPE)
             {
 
-                return new TransOrSplitView(cell);
+                return new TransOrSplitView(cell, editor);
 
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
             {
 
-                return new TransXOrSplitJoinView(cell);
+                return new TransXOrSplitJoinView(cell, editor);
 
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
             {
-                return new TransAndJoinXOrSplitView(cell);
+                return new TransAndJoinXOrSplitView(cell, editor);
 
             } else if (aTCell.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)
             {
-                return new TransXorJoinAndSplitView(cell);
+                return new TransXorJoinAndSplitView(cell, editor);
 
             } else
             {
@@ -163,7 +171,7 @@ public class ViewFactory extends AbstractViewFactory
             }
         } else if (cell instanceof TransitionModel)
         {
-            return new TransSimpleView(cell);
+            return new TransSimpleView(cell, editor);
         } else if (cell instanceof TransitionResourceModel)
         {
             return new TransitionResourceView(cell);
@@ -171,7 +179,7 @@ public class ViewFactory extends AbstractViewFactory
         {
             TriggerModel aTCell = (TriggerModel) cell;
             /* Hier die Überprüfung ob Besondere View ? */
-            if (aTCell.getTriggertype() == TriggerModel.TRIGGER_EXTERNAL)
+            if (aTCell.getTriggertype() == TriggerModel.TRIGGER_MESSAGE)
             {
 
                 return new TriggerExtView(cell);
@@ -221,8 +229,8 @@ public class ViewFactory extends AbstractViewFactory
         	    }
         	    
         	};
-        	
-        }  else
+        
+        } else
         {
             LoggerManager.error(Constants.EDITOR_LOGGER, "Not known ViewType " + cell.getClass().getName().toString());
             // return null;

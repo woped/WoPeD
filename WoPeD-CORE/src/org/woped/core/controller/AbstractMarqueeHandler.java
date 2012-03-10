@@ -16,7 +16,7 @@ import javax.swing.SwingUtilities;
 import org.jgraph.graph.BasicMarqueeHandler;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.PortView;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
 
 /**
@@ -26,9 +26,9 @@ import org.woped.core.model.petrinet.GroupModel;
  */
 public abstract class AbstractMarqueeHandler extends BasicMarqueeHandler {
 
-    private IEditor editor = null;
+    private	  IEditor  editor = null;
     protected PortView port, firstPort;
-    protected Point2D start, current, tempStart;
+    protected Point2D  start, current, tempStart;
 
     /**
      * Constructor, the editor must not be <code>null</code>.
@@ -52,6 +52,10 @@ public abstract class AbstractMarqueeHandler extends BasicMarqueeHandler {
         return editor;
     }
 
+    public AbstractGraph getGraph() {
+    	return editor.getGraph();
+    }
+    
     public void cancelSmartArcDrawing() {
         port = null;
         firstPort = null;
@@ -107,7 +111,7 @@ public abstract class AbstractMarqueeHandler extends BasicMarqueeHandler {
 
         // return port view of cell element.
         if (cell != null && cell instanceof GroupModel) {
-            AbstractElementModel aem = ((GroupModel) cell).getMainElement();
+            AbstractPetriNetElementModel aem = ((GroupModel) cell).getMainElement();
             Object result = getEditor().getGraph().getGraphLayoutCache().getMapping(aem.getPort(), false);
 
             if (result instanceof PortView && firstPort != result) {

@@ -19,6 +19,11 @@ import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlObject;
 import org.woped.config.Constants;
 import org.woped.config.WoPeDConfiguration;
+import org.woped.config.metrics.Algorithm;
+import org.woped.config.metrics.AlgorithmGroup;
+import org.woped.config.metrics.ConfigurationDocument;
+import org.woped.config.metrics.ThresholdState;
+import org.woped.config.metrics.Variable;
 import org.woped.config.metrics.AlgorithmGroup.AlgorithmID;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IMetricsConfiguration;
@@ -69,10 +74,6 @@ public class WoPeDMetricsConfiguration extends WoPeDConfiguration implements
 	private final String ALL_CUSTOM_GROUP_NAME	= "ALL_CUSTOM";
 	
 	private boolean doubleIDUsage = false;
-
-	public WoPeDMetricsConfiguration(boolean startedAsApplet) {
-		super(startedAsApplet);
-	}
 
 	public String getConfigFilePath() {
 		return getUserdir() + CONFIG_FILE;

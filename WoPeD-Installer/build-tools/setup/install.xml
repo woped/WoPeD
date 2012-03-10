@@ -39,25 +39,27 @@
 		<appname>WoPeD</appname>
 		<appversion>@wopedversion@</appversion>
 		<authors>
-			<author name="Philipp Allgaier, Alexander Assall, Daniel Becea," email=""></author>
-			<author name="Mario Beiser, Jenny Braun, Anke Christian, Christian Czech," email=""></author>
-			<author name="Sascha Dörner, Wolfgang Dörner, Andreas Eckleder," email=""></author>
+			<author name="Afraa Abbas, Philipp Allgaier, Alexander Assall, Daniel Becea," email=""></author>
+			<author name="Gregor Becker, Mario Beiser, Jenny Braun, Anke Christian," email=""></author>
+			<author name="Christian Czech, Sascha Dörner, Wolfgang Dörner, Andreas Eckleder," email=""></author>
 			<author name="Christina Eckleder, Manuel Fladt, Christian Flender," email=""></author>
 			<author name="Thomas Freytag, Rüdiger Fuhrmann, Sebastian Fuß," email=""></author>
 			<author name="Steffen Gegenheimer, Benjamin Geiger, Tilmann Glaser," email=""></author>
 			<author name="Janina Glutsch, Johannes Grenzemann, Matthias Gruschinske," email=""></author>
 			<author name="Stefan Hackenberg, Johannes Händel, Bernhard von Hasseln," email=""></author>
-			<author name="Heiko Herzog, Tobias Heinemann, Benjamin Jörger, Cosima Jünger," email=""></author>
-			<author name="Mona Ketterer, Kristian Kindler, Patrick Kirchgäßner," email=""></author>
-			<author name="Holger Kraus, Konstantin Krüger, Esther Landes, Simon Landes," email=""></author>
-			<author name="Ralf Lehmann, Jörn Liebau, Linda Linsenbolz, Markus Lipps," email=""></author>
-			<author name="Tobias Lorentz, Samuel Mellert, Lisa Mais, Ulrich Minet," email=""></author>
-			<author name="Enrico Möller, Matthias Mruzek, Alexis Nagy, Markus Nöltner," email=""></author>
-			<author name="Stefanie Obergfell, Lennart Oeß, Sebastian Orts," email=""></author>
-			<author name="Jonathan Peuker, Katharina Pfeifer, Thomas Pohl, Valentino Pola," email=""></author>
-			<author name="Lavinia Posler, Tobias Rehnig, Karsten Ripsam, Frederick Rouviere, " email=""></author>
-			<author name="Michael Schäfer, Rolf Schäuble, Frank Schüler, David Schoch," email=""></author>
-			<author name="Anthony Soprano, Patrick Spies, Jens Tessen, Arthur Vetter." email=""></author>
+			<author name="Christian Hauschild,Heiko Herzog, Tobias Heinemann, Benjamin Jörger," email=""></author>
+			<author name="Cosima Jünger, Jascha Kanngießer, Mona Ketterer, Kristian Kindler," email=""></author>
+			<author name=" Patrick Kirchgäßner, Holger Kraus, Konstantin Krüger, Saskia Kurz," email=""></author>
+			<author name="Nils Lamb, Esther Landes, Simon Landes, Ralf Lehmann, Jörn Liebau, " email=""></author>
+			<author name="Linda Linsenbolz, Markus Lipps, Tobias Lorentz, Samuel Mellert," email=""></author>
+			<author name="Lisa Mais, Ulrich Minet,Enrico Möller, Torsten Moser, Matthias Mruzek," email=""></author>
+			<author name="Alexis Nagy, Markus Nöltner, Stefanie Obergfell, Lennart Oeß," email=""></author>
+			<author name="Sebastian Orts, Jonathan Peuker, Katharina Pfeifer, Thomas Pohl," email=""></author>
+			<author name="Valentino Pola, Lavinia Posler, Svenja Rayker, Tobias Rehnig," email=""></author>
+			<author name="Karsten Ripsam, Frederick Rouviere, Jan Saalbach, Martin Sänger," email=""></author>
+			<author name="Michael Schäfer, Robin Schäfer, Rolf Schäuble, Christina Schempp," email=""></author>
+			<author name="Frank Schüler, David Schoch, Anthony Soprano, Patrick Spies, Jens Tessen," email=""></author>
+			<author name="Robert Tochman-Scewc, Arthur Vetter, Niko Waldow, Jens Wiegert." email=""></author>
 			<author name="Responsible: Thomas Freytag" email="freytag@woped.org"></author>
 		</authors>
 		<url>http://www.woped.org</url>
@@ -120,11 +122,15 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
+			<file src="lib/flamingo-@flamingoversion@.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
 			<file src="lib/flanagan-@flanaganversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/jbpt.jar" targetdir="$INSTALL_PATH/lib">
+			<file src="lib/jbpt-@jbptversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -144,11 +150,11 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/jgraphx.jar" targetdir="$INSTALL_PATH/lib">
+			<file src="lib/jgraphx-@jgraphxversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/jsr173_@jsrversion@.jar" targetdir="$INSTALL_PATH/lib">
+			<file src="lib/jsr-@jsrversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -156,7 +162,7 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/mysql-connector-java-@mysqlversion@.jar" targetdir="$INSTALL_PATH/lib">
+			<file src="lib/mysqlconnector-@mysqlconnectorversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -164,7 +170,7 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/ssj.jar" targetdir="$INSTALL_PATH/lib">
+			<file src="lib/ssj-@ssjversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -172,7 +178,15 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/TableLayout-@tablelayoutversion@.jar" targetdir="$INSTALL_PATH/lib">
+			<file src="lib/tablelayout-@tablelayoutversion@.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
+			<file src="lib/trident-@tridentversion@.jar" targetdir="$INSTALL_PATH/lib">
+				<os family="unix" />
+				<os family="windows" />
+			</file>
+			<file src="lib/xmlbeans-@xmlbeansversion@.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
 			</file>
@@ -188,10 +202,6 @@
 				<os family="unix" />
 				<os family="windows" />
 			</file>
-			<file src="lib/xbean.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
 			<file src="lib/confBeans.jar" targetdir="$INSTALL_PATH/lib">
 				<os family="unix" />
 				<os family="windows" />
@@ -202,9 +212,6 @@
 			</file>
 			<file src="nets/Example.pnml" targetdir="$INSTALL_PATH/nets">
 				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="WofJava.dll" targetdir="$INSTALL_PATH">
 				<os family="windows" />
 			</file>
 		</pack>

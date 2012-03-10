@@ -1,10 +1,10 @@
-<project default="makejar" name="GUI">
+<project default="makejar" name="STANDALONERUNNER">
 
 	<tstamp />
 
 	<property file="../CommonLibs/build.properties" />
 
-	<filter token="wopedversion" value="${GUIVERSION}" />
+	<filter token="wopedversion" value="${STANDALONERUNNERVERSION}" />
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
@@ -18,10 +18,10 @@
 				<pathelement path="../WoPeD-QualAnalysis/lib/woped-qualanalysis-${QUALANAVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-QuantAnalysis/lib/woped-quantanalysis-${QUANTANAVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-Translations/lib/woped-translations-${TRANSLATIONVERSION}${SNAPSHOT}.jar" />
-				<pathelement path="../WoPeD-XMLConfiguration/lib/woped-configuration-${CONFIGURATIONVERSION}${SNAPSHOT}.jar" />
+				<pathelement path="../WoPeD-XMLConfiguration/lib/woped-xmlconfiguration-${XMLCONFIGURATIONVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
 				<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-				<pathelement path="../CommonLibs/lib/xbean.jar.jar" />
+				<pathelement path="../CommonLibs/lib/xmlbeans${XMLBEANSVERSION}.jar.jar" />
 				<pathelement path="lib/pnmlBeans.jar" />
 				<pathelement path="lib/pnmlBeans_old.jar" />
 				<pathelement path="lib/confBeans.jar" />
@@ -36,7 +36,7 @@
 		<delete>
 			<fileset file="lib/woped*.jar" />
 		</delete>
-		<jar destfile="lib/woped-gui-${GUIVERSION}${SNAPSHOT}.jar">
+		<jar destfile="lib/woped-standalonerunner-${STANDALONERUNNERVERSION}${SNAPSHOT}.jar">
 			<fileset dir="bin" />
 			<fileset dir="doc" />
 		</jar>

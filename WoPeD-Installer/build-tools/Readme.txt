@@ -2,7 +2,7 @@ WoPeD (Workflow Petrinet Designer) is an easy-to-use tool to
 draw, manage, simulate and analyse workflow process definitions 
 using an extended Petri net notation called "workflow nets".
    
-Copyright (C) 2003-2011		
+Copyright (C) 2003-2012		
  
 Contact
 -------
@@ -41,13 +41,14 @@ refer to the online user manual available within WoPeD or on the WoPeD
 website http://www.woped.org.
    
 Note: WoPeD is written in Java. It is necessary that you have installed 
-Java 6.0 or higher on your machine. Otherwise download it from 
-http://java.sun.com. 
+Java 6.0 on your machine. Otherwise download it from http://java.sun.com. 
 
-WoPeD is known to run on Microsoft Windows platforms (2000, XP, Vista), 
-on MacOS X and on many Linux distributions. Any reports of successfully 
-having installed WoPeD on any other systems are very much appreciated, 
-as well as negative experiences.
+Please note: WoPeD is NOT (yet) compatible with new Java 7!!!
+
+WoPeD is known to run on Microsoft Windows platforms, on MacOS X and on 
+many Linux distributions. Any reports of successfully having installed 
+WoPeD on any other systems are very much appreciated, as well as negative 
+experiences.
    
    
 Download and Run
@@ -56,25 +57,22 @@ Download and Run
 Download the latest version via the WoPeD website www.woped.org.
 For Microsoft Windows, download WoPeD-install-windows-@wopedversion@.zip, 
 unpack it with an archiving tool and run the contained executable 
-WoPeD-install.exe. 
-
-Additionally you may want to assign WoPeD.exe as the standard 
+WoPeD-install.exe. You may want to assign WoPeD.exe as the standard 
 application for the file type "pnml" to open a net with WoPeD 
 just by double-clicking on the associated PNML document. 
 
 For Linux, download WoPeD-install-linux-@wopedversion@.tgz, unpack and 
-decompress it with the tar utility. Then run the contained executable 
-WoPeD-install from the command line or desktop. 
-In both cases, a setup wizard appears and will guide you through 
-the installation process, letting you choose several installation
-options like the target folder or the creation of a shortcut on 
-your desktop and in the start menu. Note that the creation of 
-desktop and start menu shortcuts may not work on all Linux-based 
-GUI systems.
+decompress it with the tar utility. Then launch the contained executable 
+WoPeD-install. 
 
-For MacOS, download WoPeD-macos-@wopedversion@.app.dmg and unpack 
-it into the target folder of your choice. The rest should be done 
-automatically by MacOS. 
+For MacOS, download WoPeD-install-macos-@wopedversion@.zip and decompress 
+it into the target folder of your choice. Then launch the contained package
+installer WoPeD-install.pkg. 
+
+In all three cases, a setup wizard appears and will guide you through 
+the installation process, letting you choose several installation
+options. Note that the creation of desktop and start menu shortcuts 
+may not work on all target GUI systems.
 
 That's it!
    
@@ -87,7 +85,6 @@ Root directory:
   ./Changelog.txt                   (Release info)
   ./License.txt                     (License file)
   ./Readme.txt                      (This file)
-  ./WofJava.dll                     (Calling interface to Woflan tool - Windows only) 				     
   ./WoPeD.exe                       (Launcher for Windows)
   ./WoPeD                           (Launcher for Linux - alternatively)
   ./WoPeD-classes-@wopedversion@.jar         (WoPeD program classes)
@@ -95,24 +92,26 @@ Root directory:
 lib directory
   ./lib/antlrworks-@antlrworksversion@.jar 
   ./lib/bpelBeans.jar                
-  ./lib/confBeans.jar                
+  ./lib/flamingo-@flamingoversion@.jar 
   ./lib/flanagan-@flanaganversion@.jar           
-  ./lib/jbpt.jar
+  ./lib/jbpt-@jbptversion@.jar
   ./lib/jcalendar-@jcalendarversion@.jar          
   ./lib/jcommon-@jcommonversion@.jar           
   ./lib/jfreechart-@jfreechartversion@.jar        
   ./lib/jgraph-@jgraphversion@.jar             
-  ./lib/jsr173_@jsrversion@.jar             
+  ./lib/jgraphx-@jgraphxversion@.jar             
+  ./lib/jsr-@jsrversion@.jar             
   ./lib/log4j-@log4jversion@.jar    
-  ./lib/metricsBeans.jar 
-  ./lib/mysql-connector-java-@mysqlversion@.jar
+  ./lib/metricsBeans.jar             
+  ./lib/mysqlconnector-@mysqlconnectorversion@.jar
   ./lib/pnmlBeans.jar                
   ./lib/pnmlBeans_old.jar           
   ./lib/ruddi-@ruddiversion@.jar
-  ./lib/ssj.jar  
+  ./lib/ssj-@ssjversion@.jar  
   ./lib/stax-@staxversion@.jar              
-  ./lib/TableLayout-bin-@tablelayoutversion@.jar 
-  ./lib/xbean.jar                   
+  ./lib/tablelayout-@tablelayoutversion@.jar 
+  ./lib/trident-@tridentversion@.jar 
+  ./lib/xmlbeans-@xmlbeansversion@.jar                   
   
 doc directory
   ./doc/html/de                     (Complete HTML online manual in German - still rudimentary)

@@ -25,14 +25,18 @@ package org.woped.editor.controller;
 
 import java.beans.PropertyChangeEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.event.UndoableEditEvent;
+import javax.swing.undo.CannotRedoException;
+import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoableEdit;
 
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphUndoManager;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.Constants;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.translations.Messages;
 
 /**
  * @author Thomas Pohl TODO: DOCUMENTATION (xraven)
@@ -79,7 +83,34 @@ public class WoPeDUndoManager extends GraphUndoManager
      */
     public void undo(Object arg0)
     {
-        super.undo(arg0);
+    	Boolean doIt = true;
+    	if (arg0 == null || !isInProgress())
+    		super.undo();
+    	else {
+    		WoPeDUndoableEdit edit = (WoPeDUndoableEdit) super.editToBeUndone();
+    		if (edit == null)
+    			throw new CannotUndoException();
+    		doIt = true;
+    		if (edit.m_inserted != null){
+    			for (int i = 0; i < edit.m_inserted.length; i++){
+    				
+    				if (edit.m_inserted[i] instanceof SubProcessModel){
+    				Object[] options = {
+    						Messages.getString("Popup.Confirm.SubProcess.Ok"),
+    						Messages.getString("Popup.Confirm.SubProcess.No") };
+    				int j = JOptionPane.showOptionDialog(null,
+    						Messages.getString("Popup.Confirm.SubProcess.Info"),
+    						Messages.getString("Popup.Confirm.SubProcess.Warn"),
+    						JOptionPane.DEFAULT_OPTION,
+    						JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+    				if ( j != 0) doIt = false;
+    				}
+    			}
+    		}
+    		if (doIt) super.undoTo(edit);
+    	}
+    	
+//        super.undo(arg0);
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "UndoRedo", null, null));
     }
 
@@ -89,8 +120,34 @@ public class WoPeDUndoManager extends GraphUndoManager
      * @see org.jgraph.graph.GraphUndoManager#redo(java.lang.Object)
      */
     public void redo(Object arg0)
-    {
-        super.redo();
+    {Boolean doIt = true;
+	if (arg0 == null || !isInProgress())
+		super.redo();
+	else {
+		WoPeDUndoableEdit edit = (WoPeDUndoableEdit) super.editToBeRedone();
+		if (edit == null)
+			throw new CannotRedoException();
+		doIt = true;
+		if (edit.m_removed != null){
+			for (int i = 0; i < edit.m_removed.length; i++){
+				
+				if (edit.m_removed[i] instanceof SubProcessModel){
+				Object[] options = {
+						Messages.getString("Popup.Confirm.SubProcess.Ok"),
+						Messages.getString("Popup.Confirm.SubProcess.No") };
+				int j = JOptionPane.showOptionDialog(null,
+						Messages.getString("Popup.Confirm.SubProcess.Info"),
+						Messages.getString("Popup.Confirm.SubProcess.Warn"),
+						JOptionPane.DEFAULT_OPTION,
+						JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+				if ( j != 0) doIt = false;
+				}
+			}
+		}
+		if (doIt) super.redoTo(edit);
+	}
+	
+    //    super.redo();
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "UndoRedo", null, null));
     }
 
@@ -115,7 +172,7 @@ public class WoPeDUndoManager extends GraphUndoManager
         if (m_enabled)
         {
             WoPeDUndoableEdit edit = new WoPeDUndoableEdit((DefaultGraphModel.GraphModelEdit) arg0, m_editor);
-            LoggerManager.debug(Constants.EDITOR_LOGGER, edit.toString());
+//            LoggerManager.debug(Constants.EDITOR_LOGGER, edit.toString());
             return super.addEdit(edit);
         }
         return false;
@@ -140,4 +197,17 @@ public class WoPeDUndoManager extends GraphUndoManager
     {
         m_enabled = disabled;
     }
+    
+    
+    // Added by Gregor Becker. Makes sure that Subprocess Start and End Token are not deleted!
+    public boolean canUndo(ModelElementContainer container){
+    	if (super.canUndo())
+    	{WoPeDUndoableEdit edit = (WoPeDUndoableEdit) super.editToBeUndone();
+    	
+    	if (edit.m_inserted != null)    
+    		return (container.getIdMap().size() > 2);
+    	else return true;
+    }return false;
+    }
+    
 }

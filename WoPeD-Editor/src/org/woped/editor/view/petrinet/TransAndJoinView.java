@@ -30,6 +30,7 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.translations.Messages;
@@ -54,9 +55,9 @@ public class TransAndJoinView extends TransSimpleView
      * @param graph
      * @param mapper
      */
-    public TransAndJoinView(Object cell)
+    public TransAndJoinView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new TransAndJoinRenderer(cell);
     }
 
@@ -75,7 +76,7 @@ public class TransAndJoinView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransAndJoinRenderer extends AbstractElementRenderer
+    private class TransAndJoinRenderer extends PetriNetElementRenderer
     {
     	public TransAndJoinRenderer(Object cell)
     	{
@@ -109,7 +110,7 @@ public class TransAndJoinView extends TransSimpleView
             Toolspecific t = ((TransitionModel) getCell()).getToolSpecific();
             drawOperatorArrow2(g, t.getOperatorPosition(), t.getOperatorDirection() );
             
-            if (isActive() || isFireing())
+            if (isActive())
             {
             	ImageIcon img = Messages.getImageIcon("TokenGame.Active");
                 g2.drawImage(img.getImage(), 5, 20, 16, 16, img.getImageObserver());
@@ -117,22 +118,6 @@ public class TransAndJoinView extends TransSimpleView
             }
             
             drawTime(g2, d);
-        }
-
-        /**
-         * @return
-         */
-        public boolean isActive()
-        {
-            return TransAndJoinView.this.isActivated();
-        }
-
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return TransAndJoinView.this.isFireing();
         }
 
     }

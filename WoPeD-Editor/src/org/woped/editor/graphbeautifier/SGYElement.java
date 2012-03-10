@@ -2,8 +2,8 @@ package org.woped.editor.graphbeautifier;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
  * The Class <code>SGYElement</code> represents an Element/Transition in the
@@ -42,7 +42,7 @@ public class SGYElement {
 	/** index of the element in arraylist used in order to count crossings */
 	protected int index = -1;
 	/** The reference to the handled <code>AbstractElementModel</code> */
-	protected AbstractElementModel editorElement;
+	protected AbstractPetriNetElementModel editorElement;
 	/** containing the outgoing arcs */
 	protected ArrayList<ArcModel> arcsOut = new ArrayList<ArcModel>();
 	/** Coordinate for arranging in editor */
@@ -57,7 +57,7 @@ public class SGYElement {
 	 * @param aem
 	 *            the reference to the handled <code>AbstractElementModel</code>
 	 */
-	public SGYElement(AbstractElementModel aem) {
+	public SGYElement(AbstractPetriNetElementModel aem) {
 		this.editorElement = aem;
 	}
 
@@ -74,7 +74,7 @@ public class SGYElement {
 	 * @param target
 	 * 			  the reference to the target <code>SGYElement</code>
 	 */
-	public SGYElement(AbstractElementModel aem, boolean isDummyVertex, SGYElement source, SGYElement target) {
+	public SGYElement(AbstractPetriNetElementModel aem, boolean isDummyVertex, SGYElement source, SGYElement target) {
 		this.editorElement = aem;
 		this.isDummyVertex = isDummyVertex;
 		this.dummySource = source;

@@ -5,11 +5,9 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
@@ -21,7 +19,7 @@ public class SimGraph {
 	ModelElementContainer mec = null;
 	SimNode sink = null;
 	SimNode source = null;	
-	Map<String, AbstractElementModel> allTrans = null;
+	Map<String, AbstractPetriNetElementModel> allTrans = null;
 
 	/**
 	 * 
@@ -33,9 +31,9 @@ public class SimGraph {
 		this.mec = editor.getModelProcessor().getElementContainer();
 		IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);		
 		buildGraph();		
-		PetriNetModelElement el = (PetriNetModelElement) qualanService.getSinkPlaces().iterator().next();
+		AbstractPetriNetElementModel el = (AbstractPetriNetElementModel) qualanService.getSinkPlaces().iterator().next();
 		sink = Nodes.get(el.getId());
-		el = (PetriNetModelElement) qualanService.getSourcePlaces().iterator().next();
+		el = (AbstractPetriNetElementModel) qualanService.getSourcePlaces().iterator().next();
 		source = Nodes.get(el.getId());				
 	}
 
@@ -79,13 +77,13 @@ public boolean isTransitionGT0(String id){
   }
 
 	
-	SimNode createSimNode(PetriNetModelElement el) {
+	SimNode createSimNode(AbstractPetriNetElementModel el) {
 		SimNode n = new SimNode(el.getId(), el.getNameValue());
 		switch (el.getType()) {
-		case AbstractPetriNetModelElement.PLACE_TYPE:
+		case AbstractPetriNetElementModel.PLACE_TYPE:
 			n.settype(SimNode.NT_PLACE);
 			break;
-		case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE:
+		case AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE:
 			n.settype(SimNode.NT_TRANSITION);
 			n.settime(((TransitionModel) el).getToolSpecific().getTime());
 			n.settimeunit(((TransitionModel) el).getToolSpecific()
@@ -104,7 +102,7 @@ public boolean isTransitionGT0(String id){
 				n.settype(SimNode.NT_AND_SPLIT);
 			}
 			break;
-		case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
+		case AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE:
 			n.settype(SimNode.NT_TRANSITION);
 			n.settime(((TransitionModel) el).getToolSpecific().getTime());
 			n.settimeunit(((TransitionModel) el).getToolSpecific()
@@ -119,7 +117,7 @@ public boolean isTransitionGT0(String id){
 				n.settype(SimNode.NT_AND_SPLIT);
 			}
 			break;
-		case AbstractPetriNetModelElement.SUBP_TYPE:
+		case AbstractPetriNetElementModel.SUBP_TYPE:
 			n.settype(SimNode.NT_TRANSITION);
 			n.settime(((TransitionModel) el).getToolSpecific().getTime());
 			n.settimeunit((byte) ((TransitionModel) el).getToolSpecific()
@@ -133,19 +131,19 @@ public boolean isTransitionGT0(String id){
 
 	void buildGraph() {
 		// first run through all elements creates the map with all SimNodes
-		PetriNetModelElement el = null;
+		AbstractPetriNetElementModel el = null;
 		SimNode node = null;
 		for (Iterator<?> i = mec
-				.getElementsByType(PetriNetModelElement.PLACE_TYPE).values()
+				.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE).values()
 				.iterator(); i.hasNext();) {
-			el = (PetriNetModelElement) i.next();
+			el = (AbstractPetriNetElementModel) i.next();
 			Nodes.put(el.getId(), createSimNode(el));
 		}
-		allTrans = mec.getElementsByType(PetriNetModelElement.TRANS_OPERATOR_TYPE);
-		allTrans.putAll(mec.getElementsByType(PetriNetModelElement.TRANS_SIMPLE_TYPE));
-		allTrans.putAll(mec.getElementsByType(PetriNetModelElement.SUBP_TYPE));		
-		for (Iterator<AbstractElementModel> i = allTrans.values().iterator(); i.hasNext();) {
-			el = (PetriNetModelElement) i.next();
+		allTrans = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
+		allTrans.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+		allTrans.putAll(mec.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));		
+		for (Iterator<AbstractPetriNetElementModel> i = allTrans.values().iterator(); i.hasNext();) {
+			el = (AbstractPetriNetElementModel) i.next();
 			node = createSimNode(el);
 			Nodes.put(el.getId(), node);			
 			addResource(el, node);			
@@ -153,10 +151,14 @@ public boolean isTransitionGT0(String id){
 		
 		// second run through all elements creates the arc with probability and
 		// pre and post SimNodes
+		createArcPrePostNode();		
+	}
+
+	public void createArcPrePostNode() {
 		for (SimNode n : Nodes.values()) {
 			for (Iterator<?> target = mec.getTargetElements(n.getid()).values()
 					.iterator(); target.hasNext();) {
-				AbstractPetriNetModelElement postNode = (AbstractPetriNetModelElement) target
+				AbstractPetriNetElementModel postNode = (AbstractPetriNetElementModel) target
 						.next();
 				double p = (mec.findArc(n.getid(), postNode.getId()))
 						.getProbability();
@@ -167,15 +169,15 @@ public boolean isTransitionGT0(String id){
 			}
 			for (Iterator<?> source = mec.getSourceElements(n.getid()).values()
 					.iterator(); source.hasNext();) {
-				AbstractPetriNetModelElement preNode = (AbstractPetriNetModelElement) source
+				AbstractPetriNetElementModel preNode = (AbstractPetriNetElementModel) source
 						.next();
 				SimArc arc = new SimArc(n, Nodes.get(preNode.getId()));
 				n.getarcIn().add(arc);
 			}
-		}		
+		}
 	}
 
-	void addResource(PetriNetModelElement el, SimNode n) {
+	void addResource(AbstractPetriNetElementModel el, SimNode n) {
 		TransitionModel tm = (TransitionModel) el;
 		TransitionResourceModel resMod = tm.getToolSpecific().getTransResource();
 		if (resMod != null) {

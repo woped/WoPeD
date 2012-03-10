@@ -9,10 +9,9 @@ import java.util.Set;
 
 import org.processmining.framework.models.petrinet.algorithms.Woflan;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.service.interfaces.ISComponent;
@@ -44,19 +43,19 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
     // ! Each violation is represented by a pair of nodes
     // ! defining the violation
     // ! @return Iterator through a list of P/T handle pairs
-    public Iterator<List<AbstractElementModel>> getPTHandlesIterator() {
+    public Iterator<List<AbstractPetriNetElementModel>> getPTHandlesIterator() {
         calculateWellStructuredness();
-        Iterator<List<AbstractElementModel>> handles = getListOfListsIterator(getNumPTHandles(),
+        Iterator<List<AbstractPetriNetElementModel>> handles = getListOfListsIterator(getNumPTHandles(),
                 m_myWofLan.InfoPTHNofN1, m_myWofLan.InfoPTHN1Name);
         // We are not interested in the path,
         // we really want to have the beginning and the end of it
-        ArrayList<List<AbstractElementModel>> result = new ArrayList<List<AbstractElementModel>>();
+        ArrayList<List<AbstractPetriNetElementModel>> result = new ArrayList<List<AbstractPetriNetElementModel>>();
         while (handles.hasNext()) {
-            List<AbstractElementModel> current = handles.next();
+            List<AbstractPetriNetElementModel> current = handles.next();
             int listLength = current.size();
             if (listLength >= 2) {
-                AbstractElementModel first = current.get(0);
-                AbstractElementModel last = current.get(listLength - 1);
+                AbstractPetriNetElementModel first = current.get(0);
+                AbstractPetriNetElementModel last = current.get(listLength - 1);
                 current.clear();
                 current.add(first);
                 current.add(last);
@@ -75,19 +74,19 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
     // ! Each violation is represented by a pair of nodes
     // ! defining the violation
     // ! @return Iterator through a list of T/P handle pairs
-    public Iterator<List<AbstractElementModel>> getTPHandlesIterator() {
+    public Iterator<List<AbstractPetriNetElementModel>> getTPHandlesIterator() {
         calculateWellStructuredness();
-        Iterator<List<AbstractElementModel>> handles = getListOfListsIterator(getNumTPHandles(),
+        Iterator<List<AbstractPetriNetElementModel>> handles = getListOfListsIterator(getNumTPHandles(),
                 m_myWofLan.InfoTPHNofN1, m_myWofLan.InfoTPHN1Name);
         // We are not interested in the path,
         // we really want to have the beginning and the end of it
-        ArrayList<List<AbstractElementModel>> result = new ArrayList<List<AbstractElementModel>>();
+        ArrayList<List<AbstractPetriNetElementModel>> result = new ArrayList<List<AbstractPetriNetElementModel>>();
         while (handles.hasNext()) {
-            List<AbstractElementModel> current = handles.next();
+            List<AbstractPetriNetElementModel> current = handles.next();
             int listLength = current.size();
             if (listLength >= 2) {
-                AbstractElementModel first = current.get(0);
-                AbstractElementModel last = current.get(listLength - 1);
+                AbstractPetriNetElementModel first = current.get(0);
+                AbstractPetriNetElementModel last = current.get(listLength - 1);
                 current.clear();
                 current.add(first);
                 current.add(last);
@@ -102,7 +101,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return uncoveredPlaces.size();
     }
 
-    public Set<AbstractElementModel> getNotSCovered() {
+    public Set<AbstractPetriNetElementModel> getNotSCovered() {
         calculateSComponents();
         return uncoveredPlaces;
     }
@@ -112,7 +111,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofSCom, 0, 0);
     }
 
-    public Set<List<AbstractElementModel>> getSComponents() {
+    public Set<List<AbstractPetriNetElementModel>> getSComponents() {
         calculateSComponents();
         return getSetOfLists(getNumSComponents(), m_myWofLan.InfoSComNofN, m_myWofLan.InfoSComNName);
     }
@@ -122,7 +121,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofPotSPIn, 0, 0);
     }
 
-    public Iterator<AbstractElementModel> getNotNonNegPInvariantCoveredIterator() {
+    public Iterator<AbstractPetriNetElementModel> getNotNonNegPInvariantCoveredIterator() {
         calculateInvariants();
         return getListIterator(getNumNotNonNegPInvariantCovered(), m_myWofLan.InfoNotSPInPName);
     }
@@ -132,7 +131,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofSPIn, 0, 0);
     }
 
-    public Iterator<List<AbstractElementModel>> getNonNegPInvariantsIterator() {
+    public Iterator<List<AbstractPetriNetElementModel>> getNonNegPInvariantsIterator() {
         calculateInvariants();
         return getListOfListsIterator(getNumPInvariants(), m_myWofLan.InfoSPInNofP, m_myWofLan.InfoSPInPName);
     }
@@ -142,7 +141,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofPotPInv, 0, 0);
     }
 
-    public Iterator<AbstractElementModel> getNotPInvariantCoveredIterator() {
+    public Iterator<AbstractPetriNetElementModel> getNotPInvariantCoveredIterator() {
         calculateInvariants();
         return getListIterator(getNumNotPInvariantCovered(), m_myWofLan.InfoNotPInvPName);
     }
@@ -152,7 +151,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofPInv, 0, 0);
     }
 
-    public Iterator<List<AbstractElementModel>> getPInvariantsIterator() {
+    public Iterator<List<AbstractPetriNetElementModel>> getPInvariantsIterator() {
         calculateInvariants();
         return getListOfListsIterator(getNumPInvariants(), m_myWofLan.InfoPInvNofP, m_myWofLan.InfoPInvPName);
     }
@@ -162,7 +161,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofDeadT, 0, 0);
     }
 
-    public Set<AbstractElementModel> getDeadTransitions() {
+    public Set<AbstractPetriNetElementModel> getDeadTransitions() {
         calculateLivenessInfo();
         return getSet(getNumDeadTransitions(), m_myWofLan.InfoDeadTName);
     }
@@ -172,7 +171,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofNLiveT, 0, 0);
     }
 
-    public Set<AbstractElementModel> getNonLiveTransitions() {
+    public Set<AbstractPetriNetElementModel> getNonLiveTransitions() {
         calculateLivenessInfo();
         return getSet(getNumNonLiveTransitions(), m_myWofLan.InfoNLiveTName);
     }
@@ -182,7 +181,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofNLiveS, 0, 0);
     }
 
-    public Iterator<List<AbstractElementModel>> getNonLiveSequencesIterator() {
+    public Iterator<List<AbstractPetriNetElementModel>> getNonLiveSequencesIterator() {
         calculateLivenessInfo();
         return getListOfListsIterator(getNumNonLiveSequences(), m_myWofLan.InfoNLiveSNofT, m_myWofLan.InfoNLiveSTName);
     }
@@ -192,7 +191,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return getIntInfo(m_myWofLan.InfoNofUnbS, 0, 0);
     }
 
-    public Iterator<List<AbstractElementModel>> getUnboundedSequencesIterator() {
+    public Iterator<List<AbstractPetriNetElementModel>> getUnboundedSequencesIterator() {
         calculateBoundednessInfo();
         return getListOfListsIterator(getNumUnboundedSequences(), m_myWofLan.InfoUnbSNofT, m_myWofLan.InfoUnbSTName);
     }
@@ -203,15 +202,15 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
     }
 
     // ! Returns an iterator over all unbounded places of the net
-    public Set<AbstractElementModel> getUnboundedPlaces() {
+    public Set<AbstractPetriNetElementModel> getUnboundedPlaces() {
         calculateBoundednessInfo();
         return getSet(getNumUnboundedPlaces(), m_myWofLan.InfoUnbPName);
     }
 
-    public Iterator<AbstractElementModel> getListIterator(int nNumElements, int nElementNameCommand) {
-        ArrayList<AbstractElementModel> result = new ArrayList<AbstractElementModel>();
+    public Iterator<AbstractPetriNetElementModel> getListIterator(int nNumElements, int nElementNameCommand) {
+        ArrayList<AbstractPetriNetElementModel> result = new ArrayList<AbstractPetriNetElementModel>();
         for (int i = 0; i < nNumElements; ++i) {
-            AbstractElementModel current = getElementInfo(nElementNameCommand, i, 0);
+            AbstractPetriNetElementModel current = getElementInfo(nElementNameCommand, i, 0);
             if (current != null) {
                 result.add(current);
             }
@@ -219,15 +218,15 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return result.iterator();
     }
 
-    public Iterator<List<AbstractElementModel>> getListOfListsIterator(int nNumLists, int nNumElementsCommand,
+    public Iterator<List<AbstractPetriNetElementModel>> getListOfListsIterator(int nNumLists, int nNumElementsCommand,
             int nElementNameCommand) {
-        ArrayList<List<AbstractElementModel>> sequences = new ArrayList<List<AbstractElementModel>>();
+        ArrayList<List<AbstractPetriNetElementModel>> sequences = new ArrayList<List<AbstractPetriNetElementModel>>();
         for (int i = 0; i < nNumLists; ++i) {
-            ArrayList<AbstractElementModel> currentSequence = new ArrayList<AbstractElementModel>();
+            ArrayList<AbstractPetriNetElementModel> currentSequence = new ArrayList<AbstractPetriNetElementModel>();
 
             int nNumElementsInSequence = getIntInfo(nNumElementsCommand, i, 0);
             for (int j = 0; j < nNumElementsInSequence; ++j) {
-                AbstractElementModel element = getElementInfo(nElementNameCommand, i, j);
+                AbstractPetriNetElementModel element = getElementInfo(nElementNameCommand, i, j);
                 if (element != null) {
                     currentSequence.add(element);
                 }
@@ -237,10 +236,10 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return sequences.iterator();
     }
 
-    public Set<AbstractElementModel> getSet(int nNumElements, int nElementNameCommand) {
-        Set<AbstractElementModel> result = new HashSet<AbstractElementModel>();
+    public Set<AbstractPetriNetElementModel> getSet(int nNumElements, int nElementNameCommand) {
+        Set<AbstractPetriNetElementModel> result = new HashSet<AbstractPetriNetElementModel>();
         for (int i = 0; i < nNumElements; ++i) {
-            AbstractElementModel current = getElementInfo(nElementNameCommand, i, 0);
+            AbstractPetriNetElementModel current = getElementInfo(nElementNameCommand, i, 0);
             if (current != null) {
                 result.add(current);
             }
@@ -248,14 +247,14 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return result;
     }
 
-    public Set<List<AbstractElementModel>> getSetOfLists(int nNumLists, int nNumElementsCommand, int nElementNameCommand) {
-        Set<List<AbstractElementModel>> sequences = new HashSet<List<AbstractElementModel>>();
+    public Set<List<AbstractPetriNetElementModel>> getSetOfLists(int nNumLists, int nNumElementsCommand, int nElementNameCommand) {
+        Set<List<AbstractPetriNetElementModel>> sequences = new HashSet<List<AbstractPetriNetElementModel>>();
         for (int i = 0; i < nNumLists; ++i) {
-            ArrayList<AbstractElementModel> currentSequence = new ArrayList<AbstractElementModel>();
+            ArrayList<AbstractPetriNetElementModel> currentSequence = new ArrayList<AbstractPetriNetElementModel>();
 
             int nNumElementsInSequence = getIntInfo(nNumElementsCommand, i, 0);
             for (int j = 0; j < nNumElementsInSequence; ++j) {
-                AbstractElementModel element = getElementInfo(nElementNameCommand, i, j);
+                AbstractPetriNetElementModel element = getElementInfo(nElementNameCommand, i, j);
                 if (element != null) {
                     currentSequence.add(element);
                 }
@@ -275,9 +274,9 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
         return result;
     }
 
-    private AbstractElementModel getElementInfo(int nInfo, int nIndex, int nSubIndex) {
+    private AbstractPetriNetElementModel getElementInfo(int nInfo, int nIndex, int nSubIndex) {
         String current = m_myWofLan.Info(m_netHandle, nInfo, nIndex, nSubIndex);
-        AbstractElementModel element = translateToNetObject(current);
+        AbstractPetriNetElementModel element = translateToNetObject(current);
         return element;
     }
 
@@ -313,7 +312,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
     }
 
     private boolean m_sComponentsCalculated = false;
-    private Set<AbstractElementModel> uncoveredPlaces = new HashSet<AbstractElementModel>();
+    private Set<AbstractPetriNetElementModel> uncoveredPlaces = new HashSet<AbstractPetriNetElementModel>();
 
     private void calculateSComponents() {
         if (m_sComponentsCalculated) {
@@ -325,12 +324,12 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
 
         // Retrieve Woflan results immediately and store after some post-processing
         uncoveredPlaces.clear();
-        Iterator<AbstractElementModel> i = getListIterator(getIntInfo(m_myWofLan.InfoNofNotSCom, 0, 0),
+        Iterator<AbstractPetriNetElementModel> i = getListIterator(getIntInfo(m_myWofLan.InfoNofNotSCom, 0, 0),
                 m_myWofLan.InfoNotSComNName);
         while (i.hasNext()) {
-            AbstractElementModel current = i.next();
+            AbstractPetriNetElementModel current = i.next();
             // Add only places to the uncovered list
-            if (current.getType() == PetriNetModelElement.PLACE_TYPE) {
+            if (current.getType() == AbstractPetriNetElementModel.PLACE_TYPE) {
                 uncoveredPlaces.add(current);
             }
         }
@@ -388,7 +387,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
     // ! Translate a string identifier as returned by the WOFLAN
     // ! analyser DLL into an object within the net that is currently
     // ! opened in the editor
-    private AbstractElementModel translateToNetObject(String name) {
+    private AbstractPetriNetElementModel translateToNetObject(String name) {
         ModelElementContainer elements = m_currentEditor.getModelProcessor().getElementContainer();
         String objectID = null;
         int nOperator = name.lastIndexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION);
@@ -414,7 +413,7 @@ public class WoflanAnalysis implements ISoundnessCheck, ISComponent {
             objectID = objectID.substring(1);
         }
 
-        AbstractElementModel current = ((objectID != null) ? elements.getElementById(objectID) : null);
+        AbstractPetriNetElementModel current = ((objectID != null) ? elements.getElementById(objectID) : null);
         return current;
     }
 

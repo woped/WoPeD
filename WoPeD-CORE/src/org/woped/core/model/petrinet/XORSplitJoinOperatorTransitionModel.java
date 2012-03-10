@@ -1,7 +1,6 @@
 package org.woped.core.model.petrinet;
 
 import org.jgraph.graph.DefaultPort;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
 
@@ -16,7 +15,7 @@ public class XORSplitJoinOperatorTransitionModel extends
 	@Override
 	public void registerIncomingConnection(
     		PetriNetModelProcessor processor,
-			AbstractElementModel sourceModel) 
+			AbstractPetriNetElementModel sourceModel) 
 	{
 		// For EACH incoming connection we need a new simpletrans
 		// as source for centerplace
@@ -28,7 +27,7 @@ public class XORSplitJoinOperatorTransitionModel extends
 		} else
 		{
 			simpleTrans = (TransitionModel) getSimpleTransContainer().getElementsByType(
-					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+					AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
 					.values().iterator().next();
 		}
 		PlaceModel centerPlace = getCenterPlace();
@@ -45,7 +44,7 @@ public class XORSplitJoinOperatorTransitionModel extends
 	@Override
 	public void registerOutgoingConnection(
     		PetriNetModelProcessor processor,
-			AbstractElementModel targetModel) 
+			AbstractPetriNetElementModel targetModel) 
 	{
 		// For EACH outgoing connection we need a new simpletrans as
 		// target for centerplace
@@ -57,7 +56,7 @@ public class XORSplitJoinOperatorTransitionModel extends
 		} else
 		{
 			simpleTrans = (TransitionModel) getSimpleTransContainer().getElementsByType(
-					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+					AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
 					.values().iterator().next();
 		}
 		PlaceModel centerPlace = getCenterPlace();
@@ -73,27 +72,27 @@ public class XORSplitJoinOperatorTransitionModel extends
 
     public void registerOutgoingConnectionRemoval(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel otherModel)
+    		AbstractPetriNetElementModel otherModel)
     {    	
 		/* IF SOURCE IS XOR SPLITJOIN */
     	// remove the source simpleTrans for this arc!
     	// However, keep the last inner transition as it is always required!
     	if (getSimpleTransContainer()
     			.getElementsByType(
-    					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    					AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
     					.size() != 1)
     		getSimpleTransContainer().removeAllSourceElements(otherModel.getId());
     }	
     
     public void registerIncomingConnectionRemoval(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel otherModel)
+    		AbstractPetriNetElementModel otherModel)
     {
 		// remove the target simpleTrans for this arc!
     	// However, keep the last inner transition as it is always required!
     	if (getSimpleTransContainer()
     			.getElementsByType(
-    					PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    					AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
     					.size() != 1)
 		getSimpleTransContainer()
 				.removeAllTargetElements(otherModel.getId());

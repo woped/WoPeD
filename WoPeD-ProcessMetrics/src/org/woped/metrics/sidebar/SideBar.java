@@ -44,8 +44,7 @@ public class SideBar extends JPanel {
 	protected static final String PREFIX_BUTTON = PREFIX_QUALANALYSIS
 			+ "Beginner.Button.";
 
-	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD,
-			14);
+	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD, 11);
 
 	/**
 	 * @param editor
@@ -75,6 +74,7 @@ public class SideBar extends JPanel {
 
 		// panel which contains the content of the sidebar
 		JPanel mainPanel = new JPanel(new GridBagLayout());
+		mainPanel.setBackground(Color.WHITE);
 
 		// headline
 		JLabel metricsLabel = new JLabel(Messages.getString(PREFIX

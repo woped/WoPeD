@@ -30,6 +30,7 @@ import java.util.Vector;
 import javax.swing.ImageIcon;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -638,17 +639,17 @@ public class CreationMap extends HashMap<String, Object>
 	     }
 	}
 	
-	public void setUpperElement(AbstractElementModel upperElement)
+	public void setUpperElement(AbstractPetriNetElementModel upperElement)
 	{
 		put(UPPER_ELEMENT, upperElement);
 		
 	}
 	
-	public AbstractElementModel getRealElement()
+	public AbstractPetriNetElementModel getRealElement()
 	{
 		 if (containsKey(UPPER_ELEMENT))
 	     {
-	        return (AbstractElementModel) get(UPPER_ELEMENT);
+	        return (AbstractPetriNetElementModel) get(UPPER_ELEMENT);
 	     } 
 		 else
 	     {

@@ -11,9 +11,8 @@ import java.util.SortedMap;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
@@ -153,8 +152,8 @@ public class ReachabilityCellListener implements MouseListener {
 
         IMarking marking = (IMarking) place.getUserObject();
         SortedMap<String, Integer> map = marking.getMarking();
-        for (Iterator<AbstractElementModel> placeIter = getPetriNet().getElementContainer().getElementsByType(
-                AbstractPetriNetModelElement.PLACE_TYPE).values().iterator(); placeIter.hasNext();) {
+        for (Iterator<AbstractPetriNetElementModel> placeIter = getPetriNet().getElementContainer().getElementsByType(
+                AbstractPetriNetElementModel.PLACE_TYPE).values().iterator(); placeIter.hasNext();) {
             try {
                 PlaceModel curplace = (PlaceModel) placeIter.next();
                 curplace.setVirtualTokens(map.get(curplace.getId()));

@@ -2,7 +2,7 @@ package org.woped.qualanalysis.service.interfaces;
 
 import java.util.Set;
 
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
  * interface for Soundness-parts of qualanalysis servies.
@@ -17,18 +17,18 @@ public interface ISoundnessCheck {
 	 * 
 	 * @return a set with all dead transitions
 	 */
-	public Set<AbstractElementModel> getDeadTransitions();
+	public Set<AbstractPetriNetElementModel> getDeadTransitions();
 	
 	/**
 	 * 
 	 * @return a set with all nonLive transitions
 	 */
-	public Set<AbstractElementModel> getNonLiveTransitions();	
+	public Set<AbstractPetriNetElementModel> getNonLiveTransitions();	
 	
 	/**
 	 * 
 	 * @return a set with for all unbounded places
 	 */
-	public Set<AbstractElementModel> getUnboundedPlaces();	
+	public Set<AbstractPetriNetElementModel> getUnboundedPlaces();	
 		
 }

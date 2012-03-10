@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.qualanalysis.service.interfaces.INetStatistics;
 import org.woped.qualanalysis.service.interfaces.ISComponent;
@@ -33,31 +33,31 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
     private INetStatistics netStatistics = null;
     private IWellStructuredness wellStructuredness = null;
 
-    private Set<AbstractElementModel> places = null;
-    private Set<AbstractElementModel> transitions = null;
-    private Set<AbstractElementModel> operators = null;
-    private Set<AbstractElementModel> subprocesses = null;
+    private Set<AbstractPetriNetElementModel> places = null;
+    private Set<AbstractPetriNetElementModel> transitions = null;
+    private Set<AbstractPetriNetElementModel> operators = null;
+    private Set<AbstractPetriNetElementModel> subprocesses = null;
     private int numArcs = 0;
-    private Set<Set<AbstractElementModel>> freeChoiceViolations = null;
-    private Set<AbstractElementModel> wronglyUsedOperators = null;
+    private Set<Set<AbstractPetriNetElementModel>> freeChoiceViolations = null;
+    private Set<AbstractPetriNetElementModel> wronglyUsedOperators = null;
 
-    private Set<AbstractElementModel> notConnectedNodes = null;
-    private Set<AbstractElementModel> notStronglyConnectedNodes = null;
-    private Set<Set<AbstractElementModel>> stronglyConnectedComponents = null;
-    private Set<Set<AbstractElementModel>> connectedComponents = null;
-    private Set<AbstractElementModel> sourcePlaces = null;
-    private Set<AbstractElementModel> sinkPlaces = null;
-    private Set<AbstractElementModel> sourceTransitions = null;
-    private Set<AbstractElementModel> sinkTransitions = null;
-    private Set<Set<AbstractElementModel>> pTHandles = null;
-    private Set<Set<AbstractElementModel>> tPHandles = null;
+    private Set<AbstractPetriNetElementModel> notConnectedNodes = null;
+    private Set<AbstractPetriNetElementModel> notStronglyConnectedNodes = null;
+    private Set<Set<AbstractPetriNetElementModel>> stronglyConnectedComponents = null;
+    private Set<Set<AbstractPetriNetElementModel>> connectedComponents = null;
+    private Set<AbstractPetriNetElementModel> sourcePlaces = null;
+    private Set<AbstractPetriNetElementModel> sinkPlaces = null;
+    private Set<AbstractPetriNetElementModel> sourceTransitions = null;
+    private Set<AbstractPetriNetElementModel> sinkTransitions = null;
+    private Set<Set<AbstractPetriNetElementModel>> pTHandles = null;
+    private Set<Set<AbstractPetriNetElementModel>> tPHandles = null;
     private HashSet<Set<ClusterElement>> m_handleClusters = null;
-    private Set<List<AbstractElementModel>> sComponents = null;
-    private Set<AbstractElementModel> notSCovered = null;
-    private Set<AbstractElementModel> wronglyMarkedPlaces = null;
-    private Set<AbstractElementModel> unboundedPlaces = null;
-    private Set<AbstractElementModel> deadTransitions = null;
-    private Set<AbstractElementModel> nonLiveTransitions = null;
+    private Set<List<AbstractPetriNetElementModel>> sComponents = null;
+    private Set<AbstractPetriNetElementModel> notSCovered = null;
+    private Set<AbstractPetriNetElementModel> wronglyMarkedPlaces = null;
+    private Set<AbstractPetriNetElementModel> unboundedPlaces = null;
+    private Set<AbstractPetriNetElementModel> deadTransitions = null;
+    private Set<AbstractPetriNetElementModel> nonLiveTransitions = null;
 
     public AbstractQualanalysisService(IEditor editor) {
         this.editor = editor;
@@ -67,28 +67,28 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         wellStructuredness = sA;
     }
 
-    public Set<AbstractElementModel> getPlaces() {
+    public Set<AbstractPetriNetElementModel> getPlaces() {
         if (places == null) {
             places = netStatistics.getPlaces();
         }
         return places;
     }
 
-    public Set<AbstractElementModel> getTransitions() {
+    public Set<AbstractPetriNetElementModel> getTransitions() {
         if (transitions == null) {
             transitions = netStatistics.getTransitions();
         }
         return transitions;
     }
 
-    public Set<AbstractElementModel> getOperators() {
+    public Set<AbstractPetriNetElementModel> getOperators() {
         if (operators == null) {
             operators = netStatistics.getOperators();
         }
         return operators;
     }
 
-    public Set<AbstractElementModel> getSubprocesses() {
+    public Set<AbstractPetriNetElementModel> getSubprocesses() {
         if (subprocesses == null) {
             subprocesses = netStatistics.getSubprocesses();
         }
@@ -102,84 +102,84 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         return numArcs;
     }
 
-    public Set<Set<AbstractElementModel>> getFreeChoiceViolations() {
+    public Set<Set<AbstractPetriNetElementModel>> getFreeChoiceViolations() {
         if (freeChoiceViolations == null) {
             freeChoiceViolations = sA.getFreeChoiceViolations();
         }
         return freeChoiceViolations;
     }
 
-    public Set<AbstractElementModel> getWronglyUsedOperators() {
+    public Set<AbstractPetriNetElementModel> getWronglyUsedOperators() {
         if (wronglyUsedOperators == null) {
             wronglyUsedOperators = sA.getMisusedOperators();
         }
         return wronglyUsedOperators;
     }
 
-    public Set<AbstractElementModel> getSourcePlaces() {
+    public Set<AbstractPetriNetElementModel> getSourcePlaces() {
         if (sourcePlaces == null) {
             sourcePlaces = workflowCheck.getSourcePlaces();
         }
         return sourcePlaces;
     }
 
-    public Set<AbstractElementModel> getSinkPlaces() {
+    public Set<AbstractPetriNetElementModel> getSinkPlaces() {
         if (sinkPlaces == null) {
             sinkPlaces = workflowCheck.getSinkPlaces();
         }
         return sinkPlaces;
     }
 
-    public Set<AbstractElementModel> getSourceTransitions() {
+    public Set<AbstractPetriNetElementModel> getSourceTransitions() {
         if (sourceTransitions == null) {
             sourceTransitions = workflowCheck.getSourceTransitions();
         }
         return sourceTransitions;
     }
 
-    public Set<AbstractElementModel> getSinkTransitions() {
+    public Set<AbstractPetriNetElementModel> getSinkTransitions() {
         if (sinkTransitions == null) {
             sinkTransitions = workflowCheck.getSinkTransitions();
         }
         return sinkTransitions;
     }
 
-    public Set<AbstractElementModel> getNotConnectedNodes() {
+    public Set<AbstractPetriNetElementModel> getNotConnectedNodes() {
         if (notConnectedNodes == null) {
             notConnectedNodes = workflowCheck.getNotConnectedNodes();
         }
         return notConnectedNodes;
     }
 
-    public Set<Set<AbstractElementModel>> getConnectedComponents() {
+    public Set<Set<AbstractPetriNetElementModel>> getConnectedComponents() {
         if (connectedComponents == null) {
             connectedComponents = workflowCheck.getConnectedComponents();
         }
         return connectedComponents;
     }
 
-    public Set<AbstractElementModel> getNotStronglyConnectedNodes() {
+    public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes() {
         if (notStronglyConnectedNodes == null) {
             notStronglyConnectedNodes = workflowCheck.getNotStronglyConnectedNodes();
         }
         return notStronglyConnectedNodes;
     }
 
-    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents() {
+    public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents() {
         if (stronglyConnectedComponents == null) {
             stronglyConnectedComponents = workflowCheck.getStronglyConnectedComponents();
         }
         return stronglyConnectedComponents;
     }
 
-    public Set<Set<AbstractElementModel>> getPTHandles() {
+    public Set<Set<AbstractPetriNetElementModel>> getPTHandles() {
         if (pTHandles == null) {
             pTHandles = wellStructuredness.getPTHandles();
         }
         return pTHandles;
     }
 
-    public Set<Set<AbstractElementModel>> getTPHandles() {
+    public Set<Set<AbstractPetriNetElementModel>> getTPHandles() {
         if (tPHandles == null) {
             tPHandles = wellStructuredness.getTPHandles();
         }
@@ -193,42 +193,42 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
         return m_handleClusters;
     }
 
-    public Set<List<AbstractElementModel>> getSComponents() {
+    public Set<List<AbstractPetriNetElementModel>> getSComponents() {
         if (sComponents == null) {
             sComponents = sComponent.getSComponents();
         }
         return sComponents;
     }
 
-    public Set<AbstractElementModel> getNotSCovered() {
+    public Set<AbstractPetriNetElementModel> getNotSCovered() {
         if (notSCovered == null) {
             notSCovered = sComponent.getNotSCovered();
         }
         return notSCovered;
     }
 
-    public Set<AbstractElementModel> getWronglyMarkedPlaces() {
+    public Set<AbstractPetriNetElementModel> getWronglyMarkedPlaces() {
         if (wronglyMarkedPlaces == null) {
             wronglyMarkedPlaces = calcWronglyMarkedPlaces();
         }
         return wronglyMarkedPlaces;
     }
 
-    public Set<AbstractElementModel> getUnboundedPlaces() {
+    public Set<AbstractPetriNetElementModel> getUnboundedPlaces() {
         if (unboundedPlaces == null) {
             unboundedPlaces = soundnessCheck.getUnboundedPlaces();
         }
         return unboundedPlaces;
     }
 
-    public Set<AbstractElementModel> getDeadTransitions() {
+    public Set<AbstractPetriNetElementModel> getDeadTransitions() {
         if (deadTransitions == null) {
             deadTransitions = soundnessCheck.getDeadTransitions();
         }
         return deadTransitions;
     }
 
-    public Set<AbstractElementModel> getNonLiveTransitions() {
+    public Set<AbstractPetriNetElementModel> getNonLiveTransitions() {
         if (nonLiveTransitions == null) {
             nonLiveTransitions = soundnessCheck.getNonLiveTransitions();
         }
@@ -271,24 +271,24 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
      * 
      * @return a set of AbstractElementModels (= places) which have wrong token count
      */
-    private Set<AbstractElementModel> calcWronglyMarkedPlaces() {
+    private Set<AbstractPetriNetElementModel> calcWronglyMarkedPlaces() {
         if (sourcePlaces == null) {
             sourcePlaces = workflowCheck.getSourcePlaces();
         }
         if (places == null) {
             places = netStatistics.getPlaces();
         }
-        Set<AbstractElementModel> wronglyMarkedPlaces = new HashSet<AbstractElementModel>();
-        Set<AbstractElementModel> placesNotSource = new HashSet<AbstractElementModel>(this.places);
+        Set<AbstractPetriNetElementModel> wronglyMarkedPlaces = new HashSet<AbstractPetriNetElementModel>();
+        Set<AbstractPetriNetElementModel> placesNotSource = new HashSet<AbstractPetriNetElementModel>(this.places);
         placesNotSource.removeAll(this.sourcePlaces);
         // check if source place has one token
-        for (AbstractElementModel place : this.sourcePlaces) {
+        for (AbstractPetriNetElementModel place : this.sourcePlaces) {
             if (((PlaceModel) place).getTokenCount() != 1) {
                 wronglyMarkedPlaces.add(place);
             }
         }
         // check if any other place has a token
-        for (AbstractElementModel place : placesNotSource) {
+        for (AbstractPetriNetElementModel place : placesNotSource) {
             if (((PlaceModel) place).getTokenCount() != 0) {
                 wronglyMarkedPlaces.add(place);
             }

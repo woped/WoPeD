@@ -46,6 +46,7 @@ import org.woped.core.gui.IEditorFrame;
 import org.woped.editor.controller.PetriNetResourceEditor;
 import org.woped.editor.controller.vc.EditorStatusBarVC;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.translations.Messages;
 
 /**
@@ -73,16 +74,16 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
     	m_operationsEditor = opEditor;
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
-        if (editor.isSubprocessEditor()) {
+        if (editor instanceof SubprocessEditorVC) {
             this.setFrameIcon(Messages.getImageIcon("Popup.Add.Subprocess"));
-            this.getContentPane().add(m_editor, BorderLayout.CENTER);
+            this.getContentPane().add(m_editor.getEditorPanel(), BorderLayout.CENTER);
         } else {
             this.setFrameIcon(Messages.getImageIcon("Document"));
             
             // TabbedPane
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
             tabbedPane = new JTabbedPane();
-            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
+            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor.getEditorPanel());
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);            
             tabbedPane.getModel().addChangeListener(new ChangeListener()
@@ -112,7 +113,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         	});
             } else
             {
-        	this.getContentPane().add(m_editor, BorderLayout.CENTER);
+        	this.getContentPane().add(m_editor.getEditorPanel(), BorderLayout.CENTER);
             }
         }
                 
@@ -139,14 +140,14 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 
         if (editor.isSubprocessEditor()) {
             this.setFrameIcon(Messages.getImageIcon("Popup.Add.Subprocess"));
-            this.getContentPane().add(m_editor, BorderLayout.CENTER);
+            this.getContentPane().add(m_editor.getEditorPanel(), BorderLayout.CENTER);
         } else {
             this.setFrameIcon(Messages.getImageIcon("Document"));
             
             // TabbedPane
             JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
             tabbedPane = new JTabbedPane();
-            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor);
+            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor.getEditorPanel());
             tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
             tabbedPane.getModel().addChangeListener(new ChangeListener()
@@ -201,7 +202,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         	});
             } else
             {
-        	this.getContentPane().add(m_editor, BorderLayout.CENTER);
+        	this.getContentPane().add(m_editor.getEditorPanel(), BorderLayout.CENTER);
             }
         }
                 
@@ -303,8 +304,8 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 	public void setBounds(int p_arg0, int p_arg1, int p_arg2, int p_arg3)
 	{
 		super.setBounds(p_arg0, p_arg1, p_arg2, p_arg3);
-		if(m_editor.isAutomaticResize()){
-			m_editor.setAutomaticResize(false);
+		if(m_editor.getEditorPanel().isAutomaticResize()){
+			m_editor.getEditorPanel().setAutomaticResize(false);
 			return;
 		}
 		// editor resized -> set dirty

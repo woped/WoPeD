@@ -48,14 +48,11 @@ import org.jgraph.graph.ParentMap;
 import org.jgraph.plaf.GraphUI;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractGraph;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.ArcModel;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.model.uml.AbstractUMLElementModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.gui.EditorToolTip;
@@ -78,9 +75,9 @@ public class WoPeDJGraph extends AbstractGraph
 	private int minPreferredHeight = 0; /// Minimal preferred height. Used to override the preferred height of the JGraph.
 	
 	
-    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, ViewFactory viewFactory, int modelPorcessorType)
+    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, ViewFactory viewFactory)
     {
-        this(model, editorMarquee, null, null, viewFactory, modelPorcessorType);
+        this(model, editorMarquee, null, null, viewFactory);
     }
 
     /**
@@ -88,9 +85,9 @@ public class WoPeDJGraph extends AbstractGraph
      * 
      * @param model
      */
-    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, ViewFactory viewFactory, int modelPorcessorType)
+    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, ViewFactory viewFactory)
     {
-        this(model, editorMarquee, undoManager, null, viewFactory, modelPorcessorType);
+        this(model, editorMarquee, undoManager, null, viewFactory);
     }
 
     /**
@@ -98,9 +95,9 @@ public class WoPeDJGraph extends AbstractGraph
      * 
      * @param model
      */
-    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, GraphUI ui, ViewFactory viewFactory, int modelPorcessorType)
+    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, GraphUI ui, ViewFactory viewFactory)
     {
-        super(model, editorMarquee, undoManager, viewFactory, modelPorcessorType);
+        super(model, editorMarquee, undoManager, viewFactory);
         if (ui != null) setUI(ui);
 
         // Tell the Graph to Select new Cells upon Insertion
@@ -141,21 +138,21 @@ public class WoPeDJGraph extends AbstractGraph
     	Map<Integer, Set<Integer> >  tmp = new HashMap<Integer, Set<Integer> >();
     	
     	Set<Integer> currentSet = new HashSet<Integer>();
-    	currentSet.add(new Integer(PetriNetModelElement.PLACE_TYPE));
+    	currentSet.add(new Integer(AbstractPetriNetElementModel.PLACE_TYPE));
     	// All these node types may only connect to places
-    	tmp.put(new Integer(PetriNetModelElement.TRANS_SIMPLE_TYPE),
+    	tmp.put(new Integer(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE),
     			currentSet);
-    	tmp.put(new Integer(PetriNetModelElement.TRANS_OPERATOR_TYPE),
+    	tmp.put(new Integer(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE),
     			currentSet);
-    	tmp.put(new Integer(PetriNetModelElement.SUBP_TYPE),
+    	tmp.put(new Integer(AbstractPetriNetElementModel.SUBP_TYPE),
     			currentSet);
     	
     	currentSet = new HashSet<Integer>();
-    	currentSet.add(new Integer(PetriNetModelElement.TRANS_SIMPLE_TYPE));
-    	currentSet.add(new Integer(PetriNetModelElement.TRANS_OPERATOR_TYPE));
-    	currentSet.add(new Integer(PetriNetModelElement.SUBP_TYPE));
+    	currentSet.add(new Integer(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+    	currentSet.add(new Integer(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
+    	currentSet.add(new Integer(AbstractPetriNetElementModel.SUBP_TYPE));
     	// Places may connect to all the node types above
-    	tmp.put(new Integer(PetriNetModelElement.PLACE_TYPE),
+    	tmp.put(new Integer(AbstractPetriNetElementModel.PLACE_TYPE),
     			currentSet);
     	connectionTypes = Collections.unmodifiableMap(tmp);
     }
@@ -165,67 +162,61 @@ public class WoPeDJGraph extends AbstractGraph
      * @param targetCell
      * @return
      */
-    public boolean isValidConnection(AbstractElementModel sourceCell, AbstractElementModel targetCell)
+    public boolean isValidConnection(AbstractPetriNetElementModel sourceCell, AbstractPetriNetElementModel targetCell)
     {
-        if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
-        {
-        	boolean result = false;
-        	Set<Integer> destinations = connectionTypes.get(new Integer(sourceCell.getType()));
-        	if (destinations!=null)
-        	{
-        		result = (destinations.contains(new Integer(targetCell.getType())));
-        	}
-        	if (result == true)
-        	{
-        		// Apart from general connectability
-        		// some elements require special attention:
-        		// The sub-process element does not allow more than one input and output connection
-        		// to be made. For sub-processes, this method will return true if that criteria is met
-        		// or the connection to be made is one that already exists
-        		// We check for actual JGraph connections here because we're being called multiple
-        		// times during the creation of an arc and arc creation within the ModelElementContainer
-        		// is the first thing to happen so we would return "not connectable" for the second call
-        		// as NetAlgorithms already sees the connection even if it doesn't exist in the jgraph model yet
-        		if (sourceCell.getType()==PetriNetModelElement.SUBP_TYPE)
-        		{
-        			int nNumOutgoing = 0;
-        			for (Iterator<?> i = sourceCell.getPort().edges(); i.hasNext();)
-        			{
-        				Object o = i.next();
-        				if (o instanceof Edge)
-        				{        				
-        					Edge e = (Edge)o;
-        					if ((e.getSource()==sourceCell.getPort())&&
-        							(e.getTarget()!=targetCell.getPort()))
-        						++nNumOutgoing;
-        				}
-        			}
-        			result = (nNumOutgoing == 0);
-        		}
-        		if (targetCell.getType()==PetriNetModelElement.SUBP_TYPE)
-        		{
-        			int nNumIncoming = 0;
-        			for (Iterator<?> i = targetCell.getPort().edges(); i.hasNext();)
-        			{
-        				Object o = i.next();
-        				if (o instanceof Edge)
-        				{        				
-        					Edge e = (Edge)o;
-        					if ((e.getTarget()==targetCell.getPort())&&
-        							(e.getSource()!=sourceCell.getPort()))
-        						++nNumIncoming;
-        				}
-        			}
-        			result = (nNumIncoming == 0);
-        		}
+    	boolean result = false;
+    	Set<Integer> destinations = connectionTypes.get(new Integer(sourceCell.getType()));
+    	if (destinations!=null)
+    	{
+    		result = (destinations.contains(new Integer(targetCell.getType())));
+    	}
+    	if (result == true)
+    	{
+    		// Apart from general connectability
+    		// some elements require special attention:
+    		// The sub-process element does not allow more than one input and output connection
+    		// to be made. For sub-processes, this method will return true if that criteria is met
+    		// or the connection to be made is one that already exists
+    		// We check for actual JGraph connections here because we're being called multiple
+    		// times during the creation of an arc and arc creation within the ModelElementContainer
+    		// is the first thing to happen so we would return "not connectable" for the second call
+    		// as NetAlgorithms already sees the connection even if it doesn't exist in the jgraph model yet
+    		if (sourceCell.getType()==AbstractPetriNetElementModel.SUBP_TYPE)
+    		{
+    			int nNumOutgoing = 0;
+    			for (Iterator<?> i = sourceCell.getPort().edges(); i.hasNext();)
+    			{
+    				Object o = i.next();
+    				if (o instanceof Edge)
+    				{        				
+    					Edge e = (Edge)o;
+    					if ((e.getSource()==sourceCell.getPort())&&
+    							(e.getTarget()!=targetCell.getPort()))
+    						++nNumOutgoing;
+    				}
+    			}
+    			result = (nNumOutgoing == 0);
+    		}
+    		if (targetCell.getType()==AbstractPetriNetElementModel.SUBP_TYPE)
+    		{
+    			int nNumIncoming = 0;
+    			for (Iterator<?> i = targetCell.getPort().edges(); i.hasNext();)
+    			{
+    				Object o = i.next();
+    				if (o instanceof Edge)
+    				{        				
+    					Edge e = (Edge)o;
+    					if ((e.getTarget()==targetCell.getPort())&&
+    							(e.getSource()!=sourceCell.getPort()))
+    						++nNumIncoming;
+    				}
+    			}
+    			result = (nNumIncoming == 0);
+    		}
 
-        	}
-        	
-        	return result;
-        } else
-        {
-            return true;
-        }
+    	}
+
+    	return result;
     }
 
     /*
@@ -360,79 +351,56 @@ public class WoPeDJGraph extends AbstractGraph
         if (arg0 instanceof GroupModel)
         {
             super.startEditingAtCell(((GroupModel) arg0).getMainElement().getNameModel());
-        } else if (arg0 instanceof PetriNetModelElement)
+        } else if (arg0 instanceof AbstractPetriNetElementModel)
         {
-            super.startEditingAtCell(((PetriNetModelElement) arg0).getNameModel());
+            super.startEditingAtCell(((AbstractPetriNetElementModel) arg0).getNameModel());
         } else
         {
             super.startEditingAtCell(arg0);
         }
     }
 
-    public void drawNet(AbstractModelProcessor processor)
+    public void drawNet(PetriNetModelProcessor processor)
     {
-        if (processor.getProcessorType() != getModelPorcessorType())
-        {
-            LoggerManager.error(Constants.EDITOR_LOGGER, "Wrong ModelProcessor Type!");
-        } else
-        {
-            if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
-            {
-                for (Iterator<AbstractElementModel> iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
-                {
-                    PetriNetModelElement element = (PetriNetModelElement) iter.next();
-                    GroupModel group = groupName(element, (element.getNameModel()));
-                    // The combination of element and element name plus all additional 
-                    // cells (resources) is in general not ungroupable
-    				group.setUngroupable(false);
-                    if (element.getType() == AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE || 
-                    		element.getType() == AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE ||
-                    		element.getType() == AbstractPetriNetModelElement.SUBP_TYPE)
-                    {
-                    	// Restore display of trigger element if present
-                        if (((TransitionModel) element).hasTrigger())
-                        {
-                            ParentMap pm = new ParentMap();
-                            pm.addEntry(((TransitionModel) element).getToolSpecific().getTrigger(), group);
-                            HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
-                            hm.put(group, group.getAttributes());
-                            getModel().insert(new Object[] { ((TransitionModel) element).getToolSpecific().getTrigger() }, hm, null, pm, null);
-                        }
-                        
-                        // Restore display of associated resource if present
-            			if (((TransitionModel) element).hasResource())
-            			{
-                            ParentMap pm = new ParentMap();
-                            pm.addEntry(((TransitionModel) element).getToolSpecific().getTransResource(), group);
-                            HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
-                            hm.put(group, group.getAttributes());
-                            getModel().insert(new Object[] { ((TransitionModel) element).getToolSpecific().getTransResource() }, hm, null, pm, null);
-            			}
-                    }
-                    getGraphLayoutCache().insertGroup(group, new Object[] { element, ((PetriNetModelElement) element).getNameModel() });
-                }
-                for (Iterator<ArcModel> iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
-                {
-                    ArcModel arc = iter.next();                    
-                    connect(arc, true);
-                }
-            } else if (getModelPorcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_UML)
-            {
-                for (Iterator<AbstractElementModel> iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
-                {
-                    AbstractUMLElementModel element = (AbstractUMLElementModel) iter.next();
-                    getGraphLayoutCache().insert(element);
-                }
-                for (Iterator<ArcModel> iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
-                {
-                    ArcModel arc = iter.next();
-                    connect(arc, true);
-                }
-            }
+    	for (Iterator<AbstractPetriNetElementModel> iter = processor.getElementContainer().getRootElements().iterator(); iter.hasNext();)
+    	{
+    		AbstractPetriNetElementModel element = (AbstractPetriNetElementModel) iter.next();
+    		GroupModel group = groupName(element, (element.getNameModel()));
+    		// The combination of element and element name plus all additional 
+    		// cells (resources) is in general not ungroupable
+    		group.setUngroupable(false);
+    		if (element.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE || 
+    				element.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE ||
+    				element.getType() == AbstractPetriNetElementModel.SUBP_TYPE)
+    		{
+    			// Restore display of trigger element if present
+    			if (((TransitionModel) element).hasTrigger())
+    			{
+    				ParentMap pm = new ParentMap();
+    				pm.addEntry(((TransitionModel) element).getToolSpecific().getTrigger(), group);
+    				HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
+    				hm.put(group, group.getAttributes());
+    				getModel().insert(new Object[] { ((TransitionModel) element).getToolSpecific().getTrigger() }, hm, null, pm, null);
+    			}
 
-        }
-
-    }
+    			// Restore display of associated resource if present
+    			if (((TransitionModel) element).hasResource())
+    			{
+    				ParentMap pm = new ParentMap();
+    				pm.addEntry(((TransitionModel) element).getToolSpecific().getTransResource(), group);
+    				HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
+    				hm.put(group, group.getAttributes());
+    				getModel().insert(new Object[] { ((TransitionModel) element).getToolSpecific().getTransResource() }, hm, null, pm, null);
+    			}
+    		}
+    		getGraphLayoutCache().insertGroup(group, new Object[] { element, ((AbstractPetriNetElementModel) element).getNameModel() });
+    	}
+    	for (Iterator<ArcModel> iter = processor.getElementContainer().getArcMap().values().iterator(); iter.hasNext();)
+    	{
+    		ArcModel arc = iter.next();                    
+    		connect(arc, true);
+    	}
+    } 
     
 	/*
 	 * The following methods are overridden as a bug fix for a rounding problem

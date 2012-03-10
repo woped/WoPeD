@@ -32,9 +32,8 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 
@@ -69,7 +68,7 @@ public class DefaultPropertiesDialog extends JDialog implements IEditorPropertie
         setUndecorated(true);
     }
 
-    public void show(AbstractPetriNetModelElement element)
+    public void show(AbstractPetriNetElementModel element)
     {
     // TODO: !
     }
@@ -89,9 +88,9 @@ public class DefaultPropertiesDialog extends JDialog implements IEditorPropertie
                 {
                     m_selection[0] = ((GroupModel) m_selection[0]).getMainElement();
                 }
-                if (m_selection[0] instanceof PetriNetModelElement)
+                if (m_selection[0] instanceof AbstractPetriNetElementModel)
                 {
-                    PetriNetModelElement element = (PetriNetModelElement) m_selection[0];
+                    AbstractPetriNetElementModel element = (AbstractPetriNetElementModel) m_selection[0];
 
                     if (element instanceof PlaceModel)
                     {

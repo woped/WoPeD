@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.interfaces.IWorkflowCheck;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.sourcesink.ISourceSinkTest;
@@ -26,12 +26,12 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     private LowLevelPetriNet lolNetWithTStar = null;
     private LowLevelPetriNet lolNetWithoutTStar = null;
 
-    private Set<AbstractElementModel> sourcePlaces = null;
-    private Set<AbstractElementModel> sinkPlaces = null;
-    private Set<AbstractElementModel> sourceTransitions = null;
-    private Set<AbstractElementModel> sinkTransitions = null;
-    private Set<Set<AbstractElementModel>> stronglyConnectedComponents = null;
-    private Set<Set<AbstractElementModel>> connectedComponents = null;
+    private Set<AbstractPetriNetElementModel> sourcePlaces = null;
+    private Set<AbstractPetriNetElementModel> sinkPlaces = null;
+    private Set<AbstractPetriNetElementModel> sourceTransitions = null;
+    private Set<AbstractPetriNetElementModel> sinkTransitions = null;
+    private Set<Set<AbstractPetriNetElementModel>> stronglyConnectedComponents = null;
+    private Set<Set<AbstractPetriNetElementModel>> connectedComponents = null;
 
     public WorkflowCheckImplement(IEditor editor) {
         this.editor = editor;
@@ -71,7 +71,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     }
 
     @Override
-    public Set<AbstractElementModel> getSourcePlaces() {
+    public Set<AbstractPetriNetElementModel> getSourcePlaces() {
         if (sourcePlaces == null) {
 
             sourcePlaces = translateAbstractNodeSet2AEMSet(getSourceSinkTest().getSourcePlaces());
@@ -80,7 +80,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     }
 
     @Override
-    public Set<AbstractElementModel> getSinkPlaces() {
+    public Set<AbstractPetriNetElementModel> getSinkPlaces() {
         if (sinkPlaces == null) {
 
             sinkPlaces = translateAbstractNodeSet2AEMSet(getSourceSinkTest().getSinkPlaces());
@@ -90,7 +90,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     }
 
     @Override
-    public Set<AbstractElementModel> getSourceTransitions() {
+    public Set<AbstractPetriNetElementModel> getSourceTransitions() {
         if (sourceTransitions == null) {
 
             sourceTransitions = translateAbstractNodeSet2AEMSet(getSourceSinkTest().getSourceTransitions());
@@ -99,7 +99,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     }
 
     @Override
-    public Set<AbstractElementModel> getSinkTransitions() {
+    public Set<AbstractPetriNetElementModel> getSinkTransitions() {
         if (sinkTransitions == null) {
 
             sinkTransitions = translateAbstractNodeSet2AEMSet(getSourceSinkTest().getSinkTransitions());
@@ -108,24 +108,24 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     }
 
     @Override
-    public Set<AbstractElementModel> getNotConnectedNodes() {
+    public Set<AbstractPetriNetElementModel> getNotConnectedNodes() {
 
         if (getConnectedComponents().size() > 1) {
 
-            return new HashSet<AbstractElementModel>(editor.getModelProcessor().getElementContainer().getRootElements());
+            return new HashSet<AbstractPetriNetElementModel>(editor.getModelProcessor().getElementContainer().getRootElements());
         }
 
-        return new HashSet<AbstractElementModel>();
+        return new HashSet<AbstractPetriNetElementModel>();
     }
 
     @Override
-    public Set<AbstractElementModel> getNotStronglyConnectedNodes() {
+    public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes() {
         // delegate
         return new StructuralAnalysis(editor).getNotStronglyConnectedNodes();
     }
 
     @Override
-    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents() {
+    public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents() {
         if (stronglyConnectedComponents == null) {
 
             stronglyConnectedComponents = translateAbstractNodeSetSet2AEMSetSet(AlgorithmFactory.createSccTest(
@@ -136,7 +136,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     }
 
     @Override
-    public Set<Set<AbstractElementModel>> getConnectedComponents() {
+    public Set<Set<AbstractPetriNetElementModel>> getConnectedComponents() {
         if (connectedComponents == null) {
 
             connectedComponents = translateAbstractNodeSetSet2AEMSetSet(AlgorithmFactory.createCcTest(
@@ -174,7 +174,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
      * @param node the AbstractNode to get the referring AbstractElementModel from
      * @return the referred AbstractElementModel
      */
-    private AbstractElementModel getAEM(AbstractNode node) {
+    private AbstractPetriNetElementModel getAEM(AbstractNode node) {
         return editor.getModelProcessor().getElementContainer().getElementById(node.getOriginId());
     }
 
@@ -185,8 +185,8 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
      * @param abstractNodeSet set of AbstractNode objects
      * @return set of AbstractElementModel objects
      */
-    private Set<AbstractElementModel> translateAbstractNodeSet2AEMSet(Set<? extends AbstractNode> abstractNodeSet) {
-        Set<AbstractElementModel> aemSet = new HashSet<AbstractElementModel>();
+    private Set<AbstractPetriNetElementModel> translateAbstractNodeSet2AEMSet(Set<? extends AbstractNode> abstractNodeSet) {
+        Set<AbstractPetriNetElementModel> aemSet = new HashSet<AbstractPetriNetElementModel>();
 
         for (AbstractNode node : abstractNodeSet) {
             aemSet.add(getAEM(node));
@@ -205,11 +205,11 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
      * @param abstractNodeSetSet set of an set of AbstractNode objects
      * @return set of an set of AbstractElementModel-Objects
      */
-    private Set<Set<AbstractElementModel>> translateAbstractNodeSetSet2AEMSetSet(
+    private Set<Set<AbstractPetriNetElementModel>> translateAbstractNodeSetSet2AEMSetSet(
             Set<Set<AbstractNode>> abstractNodeSetSet) {
 
-        Set<Set<AbstractElementModel>> aemSetSet = new HashSet<Set<AbstractElementModel>>();
-        Set<AbstractElementModel> aemSet;
+        Set<Set<AbstractPetriNetElementModel>> aemSetSet = new HashSet<Set<AbstractPetriNetElementModel>>();
+        Set<AbstractPetriNetElementModel> aemSet;
 
         for (Set<AbstractNode> set : abstractNodeSetSet) {
             if (set.size() > 0) {

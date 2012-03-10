@@ -8,9 +8,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.structure.components.ArcConfiguration;
 import org.woped.qualanalysis.structure.components.RouteInfo;
 
@@ -33,17 +32,17 @@ public class NetAlgorithms {
     // ! to that element. For each element in a row,
     // ! the shortest route to the element described by the row
     // ! can be reconstructed by following the m_predecessor back-references
-    public static RouteInfo[][] getAllConnections(Collection<AbstractElementModel> netElements,
+    public static RouteInfo[][] getAllConnections(Collection<AbstractPetriNetElementModel> netElements,
             boolean ignoreArcDirection) {
         int nNumNetElements = netElements.size();
         RouteInfo routeInfo[][] = new RouteInfo[nNumNetElements][nNumNetElements];
-        HashMap<AbstractElementModel, Integer> nodeToIndex = new HashMap<AbstractElementModel, Integer>();
+        HashMap<AbstractPetriNetElementModel, Integer> nodeToIndex = new HashMap<AbstractPetriNetElementModel, Integer>();
 
         // Build a map from node to index
         // We will need this when traversing the graph
         // (the graph doesn't know about our collection of input
         // net elements)
-        Iterator<AbstractElementModel> nodeIndexIterator = netElements.iterator();
+        Iterator<AbstractPetriNetElementModel> nodeIndexIterator = netElements.iterator();
         int nNodeIndex = 0;
         while (nodeIndexIterator.hasNext()) {
             nodeToIndex.put(nodeIndexIterator.next(), new Integer(nNodeIndex));
@@ -54,7 +53,7 @@ public class NetAlgorithms {
             // Iterate through outer index
             for (int i = 0; i < nNumNetElements; ++i) {
                 int j = 0;
-                Iterator<AbstractElementModel> innerIterator = netElements.iterator();
+                Iterator<AbstractPetriNetElementModel> innerIterator = netElements.iterator();
                 while (innerIterator.hasNext()) {
                     routeInfo[i][j] = new RouteInfo();
                     routeInfo[i][j].m_thisElement = innerIterator.next();
@@ -74,19 +73,19 @@ public class NetAlgorithms {
                         RouteInfo currentRouteInfo = listContent.next();
                         // Look up all connections (to and from, only from if directed
                         // and iterate them)
-                        Set<AbstractElementModel> connectedNodes = getDirectlyConnectedNodes(
+                        Set<AbstractPetriNetElementModel> connectedNodes = getDirectlyConnectedNodes(
                                 currentRouteInfo.m_thisElement, connectionTypeOUTBOUND);
                         if (ignoreArcDirection == true) {
                             // Depending on our configuration we care about the
                             // direction of the edge or not
-                            Set<AbstractElementModel> wrongDirection = getDirectlyConnectedNodes(
+                            Set<AbstractPetriNetElementModel> wrongDirection = getDirectlyConnectedNodes(
                                     currentRouteInfo.m_thisElement, connectionTypeINBOUND);
                             connectedNodes.addAll(wrongDirection);
 
                         }
-                        Iterator<AbstractElementModel> nodeIterator = connectedNodes.iterator();
+                        Iterator<AbstractPetriNetElementModel> nodeIterator = connectedNodes.iterator();
                         while (nodeIterator.hasNext()) {
-                            AbstractElementModel target = nodeIterator.next();
+                            AbstractPetriNetElementModel target = nodeIterator.next();
                             // Use our node to index lookup table to
                             // find the RouteInfo object corresponding to the
                             // target
@@ -124,8 +123,8 @@ public class NetAlgorithms {
     // ! @param centralNode specifies the node all nodes need to be connected to
     // ! @param connectionGraph specifies the RouteInfo array
     // ! @param unconnectedNodes set that receives the unconnected nodes
-    public static void getUnconnectedNodes(AbstractElementModel centralNode, RouteInfo[][] connectionGraph,
-            Set<AbstractElementModel> unconnectedNodes) {
+    public static void getUnconnectedNodes(AbstractPetriNetElementModel centralNode, RouteInfo[][] connectionGraph,
+            Set<AbstractPetriNetElementModel> unconnectedNodes) {
         int nNumElements = connectionGraph.length;
         int nCentralNodeIndex = -1;
         for (int i = 0; i < nNumElements; ++i) {
@@ -157,7 +156,7 @@ public class NetAlgorithms {
     // ! @param config specifies the object that will receive the
     // ! number of incoming and outgoing arcs for the
     // ! specified element
-    public static void getArcConfiguration(AbstractElementModel element, ArcConfiguration config) {
+    public static void getArcConfiguration(AbstractPetriNetElementModel element, ArcConfiguration config) {
         config.m_numIncoming = getDirectlyConnectedNodes(element, connectionTypeINBOUND).size();
         config.m_numOutgoing = getDirectlyConnectedNodes(element, connectionTypeOUTBOUND).size();
     }
@@ -176,26 +175,26 @@ public class NetAlgorithms {
     // ! @param element specifies the element which is to be examined
     // ! @param specifies the type of connection to be taken into account
     // ! @return Returns a set of predecessors, successors or both
-    public static Set<AbstractElementModel> getDirectlyConnectedNodes(AbstractElementModel element, int connectionType) {
-        HashSet<AbstractElementModel> result = new HashSet<AbstractElementModel>();
+    public static Set<AbstractPetriNetElementModel> getDirectlyConnectedNodes(AbstractPetriNetElementModel element, int connectionType) {
+        HashSet<AbstractPetriNetElementModel> result = new HashSet<AbstractPetriNetElementModel>();
 
         if (element != null) {
             // An object can have multiple owning containers
             // Iterate through all of them to get all connections
-            Iterator<ModelElementContainer> ownerIterator = element.getOwningContainers();
+            Iterator<ModelElementContainer> ownerIterator = element.getOwningContainersIterator();
             while (ownerIterator.hasNext()) {
                 ModelElementContainer currentContainer = ownerIterator.next();
                 if ((connectionType & connectionTypeINBOUND) > 0) {
                     // Detect inbound connections
                     // Return only those that do not connect any operators
-                    Map<String, AbstractElementModel> sourceElements = currentContainer.getSourceElements(element
+                    Map<String, AbstractPetriNetElementModel> sourceElements = currentContainer.getSourceElements(element
                             .getId());
                     appendNonOperators(result, sourceElements.values().iterator());
                 }
                 if ((connectionType & connectionTypeOUTBOUND) > 0) {
                     // Detect outbound connections
                     // Return only those that do not connect any operators
-                    Map<String, AbstractElementModel> targetElements = currentContainer.getTargetElements(element
+                    Map<String, AbstractPetriNetElementModel> targetElements = currentContainer.getTargetElements(element
                             .getId());
                     appendNonOperators(result, targetElements.values().iterator());
                 }
@@ -205,11 +204,11 @@ public class NetAlgorithms {
     }
 
     // ! Append all objects to target that are not of TRANS_OPERATOR_TYPE
-    private static void appendNonOperators(HashSet<AbstractElementModel> target, Iterator<AbstractElementModel> source) {
+    private static void appendNonOperators(HashSet<AbstractPetriNetElementModel> target, Iterator<AbstractPetriNetElementModel> source) {
         while (source.hasNext()) {
             try {
-                AbstractElementModel element = source.next();
-                if (element.getType() != AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE) {
+                AbstractPetriNetElementModel element = source.next();
+                if (element.getType() != AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
                     target.add(element);
                 }
             } catch (ClassCastException e) {

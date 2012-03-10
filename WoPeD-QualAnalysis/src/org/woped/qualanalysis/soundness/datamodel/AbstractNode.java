@@ -1,8 +1,10 @@
 package org.woped.qualanalysis.soundness.datamodel;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
+import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 
 /**
@@ -18,16 +20,18 @@ public abstract class AbstractNode implements INode<AbstractNode> {
     private final String id;
     private final String originId;
     private final String name;
+    private final int    optype;
 
     /**
      * default constructor.
      * 
      * @param id identifier
      */
-    protected AbstractNode(String id, String name, String originId) {
+    protected AbstractNode(String id, String name, String originId, int optype) {
         this.id = id;
         this.name = name;
         this.originId = originId;
+        this.optype = optype;
     }
 
     /**
@@ -100,6 +104,13 @@ public abstract class AbstractNode implements INode<AbstractNode> {
     }
 
     /**
+     * @return the type
+     */
+    public int getOpType() {
+        return optype;
+    }
+
+    /**
      * @return the name
      */
     public String getName() {
@@ -132,7 +143,40 @@ public abstract class AbstractNode implements INode<AbstractNode> {
      */
     @Override
     public String toString() {
-        return name + "(" + this.id + ")";
+    	String nodeName = "";
+    	
+        if (this.optype == OperatorTransitionModel.XOR_JOIN_TYPE || 
+            	this.optype == OperatorTransitionModel.XOR_SPLITJOIN_TYPE ||
+            	this.optype == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE) {
+        	Iterator<AbstractNode> it = getPreNodes().iterator();
+    		nodeName += "(";
+    		while (it.hasNext()) {
+    			AbstractNode node = it.next();
+    			if (node.getName().equals(name)) {
+    				nodeName += OperatorTransitionModel.OPERATOR_SEPERATOR_PLACE;
+    			}
+    			nodeName += node.getName();
+    		} 		
+    		nodeName += ")";
+        }
+        
+        nodeName += name;
+    	
+        if (this.optype == OperatorTransitionModel.XOR_SPLIT_TYPE || 
+        	this.optype == OperatorTransitionModel.XOR_SPLITJOIN_TYPE ||
+        	this.optype == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
+        	Iterator<AbstractNode> it = getPostNodes().iterator();
+    		nodeName += "(";
+    		while (it.hasNext()) {
+       			AbstractNode node = it.next();
+    			if (node.getName().equals(name)) {
+    				nodeName += OperatorTransitionModel.OPERATOR_SEPERATOR_PLACE;
+    			}
+    			nodeName += node.getName();
+    		} 		
+    		nodeName += ")";
+        }
+    	return nodeName;
     }
 
 }

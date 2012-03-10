@@ -14,8 +14,8 @@ public class TransitionNode extends AbstractNode {
 	 * @param name the transition-name
 	 * @param originId the transition-originId (needed to reference back to the editor)
 	 */
-    public TransitionNode(String id, String name, String originId) {
-        super(id, name, originId);
+    public TransitionNode(String id, String name, String originId, int optype) {
+        super(id, name, originId, optype);
     }
 
     /**

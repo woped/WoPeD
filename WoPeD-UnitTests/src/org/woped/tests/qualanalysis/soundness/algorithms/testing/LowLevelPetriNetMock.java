@@ -8,7 +8,7 @@ import java.util.Set;
  * 
  */
 
-import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
@@ -29,9 +29,9 @@ public class LowLevelPetriNetMock implements ILowLevelPetriNet {
 		places[2] =  new PlaceNode(0, 0, "p2", "p2", "p2");
 		
 //		Create transitions
-		transitions[0] = new TransitionNode("t3", "t3", "t3", TransitionModel.TRANS_SIMPLE_TYPE);
-		transitions[1] = new TransitionNode("t2", "t2", "t2", TransitionModel.TRANS_SIMPLE_TYPE);
-		transitions[2] = new TransitionNode("t1", "t1", "t1", TransitionModel.TRANS_SIMPLE_TYPE);
+		transitions[0] = new TransitionNode("t3", "t3", "t3", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
+		transitions[1] = new TransitionNode("t2", "t2", "t2", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
+		transitions[2] = new TransitionNode("t1", "t1", "t1", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
 		
 //		Create post- and preNode entries
 		places[2].addPostNode(transitions[1]);

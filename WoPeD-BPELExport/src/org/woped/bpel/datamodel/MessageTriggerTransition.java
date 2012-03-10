@@ -2,8 +2,8 @@ package org.woped.bpel.datamodel;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
-import org.woped.bpel.gui.transitionproperties.BaseActivity;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.editor.controller.bpel.BaseActivity;
 
 public class MessageTriggerTransition extends Transition<TransitionModel>
 {

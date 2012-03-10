@@ -10,10 +10,9 @@ import java.util.TreeSet;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
@@ -38,42 +37,42 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         m_currentEditor = currentEditor;
     }
 
-    public Set<AbstractElementModel> getPlaces() {
+    public Set<AbstractPetriNetElementModel> getPlaces() {
         calculateBasicNetInfo();
         return m_places;
     }
 
-    public Set<AbstractElementModel> getTransitions() {
+    public Set<AbstractPetriNetElementModel> getTransitions() {
         calculateBasicNetInfo();
         return m_transitions;
     }
 
-    public Set<AbstractElementModel> getSubprocesses() {
+    public Set<AbstractPetriNetElementModel> getSubprocesses() {
         calculateBasicNetInfo();
         return m_subprocesses;
     }
 
-    public Set<AbstractElementModel> getOperators() {
+    public Set<AbstractPetriNetElementModel> getOperators() {
         calculateBasicNetInfo();
         return m_operators;
     }
 
-    public Set<AbstractElementModel> getAndJoins() {
+    public Set<AbstractPetriNetElementModel> getAndJoins() {
         calculateBasicNetInfo();
         return m_andjoins;
     }
 
-    public Set<AbstractElementModel> getAndSplits() {
+    public Set<AbstractPetriNetElementModel> getAndSplits() {
         calculateBasicNetInfo();
         return m_andsplits;
     }
 
-    public Set<AbstractElementModel> getXorJoins() {
+    public Set<AbstractPetriNetElementModel> getXorJoins() {
         calculateBasicNetInfo();
         return m_xorjoins;
     }
 
-    public Set<AbstractElementModel> getXorSplits() {
+    public Set<AbstractPetriNetElementModel> getXorSplits() {
         calculateBasicNetInfo();
         return m_xorsplits;
     }
@@ -82,41 +81,41 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         return m_nNumArcs;
     }
 
-    public Set<AbstractElementModel> getSourcePlaces() {
+    public Set<AbstractPetriNetElementModel> getSourcePlaces() {
         calculateBasicNetInfo();
         return m_sourcePlaces;
     }
 
-    public Set<AbstractElementModel> getSourceTransitions() {
+    public Set<AbstractPetriNetElementModel> getSourceTransitions() {
         calculateBasicNetInfo();
         return m_sourceTransitions;
     }
 
-    public Set<AbstractElementModel> getSinkPlaces() {
+    public Set<AbstractPetriNetElementModel> getSinkPlaces() {
         calculateBasicNetInfo();
         return m_sinkPlaces;
     }
 
-    public Set<AbstractElementModel> getSinkTransitions() {
+    public Set<AbstractPetriNetElementModel> getSinkTransitions() {
         calculateBasicNetInfo();
         return m_sinkTransitions;
     }
 
-    public Set<AbstractElementModel> getMisusedOperators() {
+    public Set<AbstractPetriNetElementModel> getMisusedOperators() {
         calculateBasicNetInfo();
         return m_misusedOperators;
     }
 
     // ! Return all nodes of the current net that
     // ! are not connected
-    public Set<AbstractElementModel> getNotConnectedNodes() {
+    public Set<AbstractPetriNetElementModel> getNotConnectedNodes() {
         calculateConnections();
         return m_notConnectedNodes;
     }
 
     // ! Return all nodes of the current net that
     // ! are not strongly connected
-    public Set<AbstractElementModel> getNotStronglyConnectedNodes() {
+    public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes() {
         calculateConnections();
         return m_notStronglyConnectedNodes;
     }
@@ -125,7 +124,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     // ! Each free-choice violation is represented
     // ! by a Set of nodes defining the violation
     // ! @return set of sets of nodes violating the free-choice property
-    public Set<Set<AbstractElementModel>> getFreeChoiceViolations() {
+    public Set<Set<AbstractPetriNetElementModel>> getFreeChoiceViolations() {
         calculateFreeChoice();
         return m_freeChoiceViolations;
     }
@@ -133,7 +132,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     // ! Detect PT handles in the current net
     // ! and return a set of the result
     // ! @return set of PT handles found in the net
-    public Set<Set<AbstractElementModel>> getPTHandles() {
+    public Set<Set<AbstractPetriNetElementModel>> getPTHandles() {
         calculatePTHandles();
         return m_PTHandles;
     }
@@ -141,7 +140,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     // ! Detect TP handles in the current net
     // ! and return a set of the result
     // ! @return set of TP handles found in the net
-    public Set<Set<AbstractElementModel>> getTPHandles() {
+    public Set<Set<AbstractPetriNetElementModel>> getTPHandles() {
         calculateTPHandles();
         return m_TPHandles;
     }
@@ -164,78 +163,78 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
 
     // ! Stores a set of all the places of
     // ! the processed net
-    HashSet<AbstractElementModel> m_places = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_places = new HashSet<AbstractPetriNetElementModel>();
     // ! Stores a set of all the transitions of
     // ! the processed net
-    HashSet<AbstractElementModel> m_transitions = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_transitions = new HashSet<AbstractPetriNetElementModel>();
     // ! Stores a set of all the subprocesses of
     // ! the processed net
-    HashSet<AbstractElementModel> m_subprocesses = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_subprocesses = new HashSet<AbstractPetriNetElementModel>();
 
     // ! Stores a set of all operators.
     // ! Operators are AND-split, AND-join
     // ! XOR-Split, XOR-Join, AND-Split-Join
     // ! XOR-Split-Join
-    HashSet<AbstractElementModel> m_operators = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_operators = new HashSet<AbstractPetriNetElementModel>();
 
     // ! Remember XOR-split operators and operators that
     // ! function as an XOR-split (e.g. xor-split-join)
-    HashSet<AbstractElementModel> m_xorsplits = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_xorsplits = new HashSet<AbstractPetriNetElementModel>();
     // ! Remember XOR-join operators and operators that
     // ! function as an XOR-join (e.g. xor-split-join)
-    HashSet<AbstractElementModel> m_xorjoins = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_xorjoins = new HashSet<AbstractPetriNetElementModel>();
 
     // ! Remember AND-split operators and operators that
     // ! function as an AND-split (e.g. and-split-join)
-    HashSet<AbstractElementModel> m_andsplits = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_andsplits = new HashSet<AbstractPetriNetElementModel>();
     // ! Remember AND-join operators and operators that
     // ! function as an AND-join (e.g. and-split-join)
-    HashSet<AbstractElementModel> m_andjoins = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_andjoins = new HashSet<AbstractPetriNetElementModel>();
 
     // ! Stores the number of arcs contained in this net
     int m_nNumArcs = 0;
 
     // ! Stores a set of source places
-    HashSet<AbstractElementModel> m_sourcePlaces = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_sourcePlaces = new HashSet<AbstractPetriNetElementModel>();
     // ! Stores a set of sink places
-    HashSet<AbstractElementModel> m_sinkPlaces = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_sinkPlaces = new HashSet<AbstractPetriNetElementModel>();
 
     // ! Stores a set of source transitions
-    HashSet<AbstractElementModel> m_sourceTransitions = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_sourceTransitions = new HashSet<AbstractPetriNetElementModel>();
     // ! Stores a set of sink transitions
-    HashSet<AbstractElementModel> m_sinkTransitions = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_sinkTransitions = new HashSet<AbstractPetriNetElementModel>();
 
     // ! Misused operators are operators that
     // ! do not have a specific minimum or maximum of
     // ! input/output arcs
     // ! as is required by their operator type
-    HashSet<AbstractElementModel> m_misusedOperators = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_misusedOperators = new HashSet<AbstractPetriNetElementModel>();
 
     boolean m_bConnectionInfoAvailable = false;
 
     // ! Stores a list of all nodes (transitions
     // ! and places that are not connected)
-    HashSet<AbstractElementModel> m_notConnectedNodes = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_notConnectedNodes = new HashSet<AbstractPetriNetElementModel>();
     // ! Stores a list of all nodes (transitions
     // ! and places that are not strongly connected)
-    HashSet<AbstractElementModel> m_notStronglyConnectedNodes = new HashSet<AbstractElementModel>();
+    HashSet<AbstractPetriNetElementModel> m_notStronglyConnectedNodes = new HashSet<AbstractPetriNetElementModel>();
 
     boolean m_bFreeChoiceInfoAvailable = false;
     // ! Stores a list of free-choice violations
     // ! consisting of node sets
-    HashSet<Set<AbstractElementModel>> m_freeChoiceViolations = new HashSet<Set<AbstractElementModel>>();
+    HashSet<Set<AbstractPetriNetElementModel>> m_freeChoiceViolations = new HashSet<Set<AbstractPetriNetElementModel>>();
 
     // ! Becomes true once TP handles have been detected
     boolean m_bTPHandlesAvailable = false;
     // ! Stores a list of TP handles
     // ! consisting of node sets
-    HashSet<Set<AbstractElementModel>> m_TPHandles = new HashSet<Set<AbstractElementModel>>();
+    HashSet<Set<AbstractPetriNetElementModel>> m_TPHandles = new HashSet<Set<AbstractPetriNetElementModel>>();
 
     // ! Becomes true once PT handles have been detected
     boolean m_bPTHandlesAvailable = false;
     // ! Stores a list of TP handles
     // ! consisting of node sets
-    HashSet<Set<AbstractElementModel>> m_PTHandles = new HashSet<Set<AbstractElementModel>>();
+    HashSet<Set<AbstractPetriNetElementModel>> m_PTHandles = new HashSet<Set<AbstractPetriNetElementModel>>();
 
     // ! Reference to the low level net
     private LowLevelNet m_lolNet = null;
@@ -260,20 +259,20 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         // Iterate through all elements and
         // take notes
         m_nNumArcs = 0;
-        Iterator<AbstractElementModel> i = elements.getRootElements().iterator();
+        Iterator<AbstractPetriNetElementModel> i = elements.getRootElements().iterator();
         updateStatistics(i);
         // Just ask the arc map for its size...
         m_nNumArcs += elements.getArcMap().size();
     }
 
-    private void updateStatistics(Iterator<AbstractElementModel> i) {
+    private void updateStatistics(Iterator<AbstractPetriNetElementModel> i) {
         ArcConfiguration arcConfig = new ArcConfiguration();
         while (i.hasNext()) {
             try {
-                AbstractElementModel currentNode = i.next();
+                AbstractPetriNetElementModel currentNode = i.next();
                 NetAlgorithms.getArcConfiguration(currentNode, arcConfig);
                 switch (currentNode.getType()) {
-                case AbstractPetriNetModelElement.PLACE_TYPE:
+                case AbstractPetriNetElementModel.PLACE_TYPE:
                     m_places.add(currentNode);
                     if (arcConfig.m_numIncoming == 0) {
                         m_sourcePlaces.add(currentNode);
@@ -282,7 +281,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
                         m_sinkPlaces.add(currentNode);
                     }
                     break;
-                case AbstractPetriNetModelElement.TRANS_OPERATOR_TYPE: {
+                case AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE: {
                     OperatorTransitionModel operator = (OperatorTransitionModel) currentNode;
                     // Remember the operator
                     // A list of operators is provided for
@@ -318,7 +317,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
                     verifyOperatorArcConfiguration(operator, arcConfig);
                     ModelElementContainer simpleTransContainer = operator.getSimpleTransContainer();
                     // Recursively call ourselves to add inner nodes
-                    Iterator<AbstractElementModel> innerIterator = simpleTransContainer.getRootElements().iterator();
+                    Iterator<AbstractPetriNetElementModel> innerIterator = simpleTransContainer.getRootElements().iterator();
                     updateStatistics(innerIterator);
                     // To have the total number of arcs we must subtract
                     // the number of incoming and outgoing arcs from the
@@ -327,11 +326,11 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
                             - (arcConfig.m_numIncoming + arcConfig.m_numOutgoing);
                 }
                     break;
-                case AbstractPetriNetModelElement.SUBP_TYPE:
+                case AbstractPetriNetElementModel.SUBP_TYPE:
                     // Default behaviour for sub processes is to treat them as a
                     // single transition
                     m_subprocesses.add(currentNode);
-                case AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE:
+                case AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE:
                     m_transitions.add(currentNode);
                     if (arcConfig.m_numIncoming == 0) {
                         m_sourceTransitions.add(currentNode);
@@ -390,7 +389,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
 
         // First, calculate basic net information
         calculateBasicNetInfo();
-        LinkedList<AbstractElementModel> netElements = new LinkedList<AbstractElementModel>();
+        LinkedList<AbstractPetriNetElementModel> netElements = new LinkedList<AbstractPetriNetElementModel>();
         // A WoPeD graph contains more than just places
         // and transitions. We are only interested in those
         // however
@@ -402,7 +401,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         }
 
         // Add temporary transition t*, connecting sink to source
-        AbstractElementModel ttemp = addTStar();
+        AbstractPetriNetElementModel ttemp = addTStar();
         if (ttemp != null) {
             netElements.add(ttemp);
         }
@@ -428,17 +427,17 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         }
     }
 
-    public AbstractElementModel addTStar() {
+    public AbstractPetriNetElementModel addTStar() {
         if (!m_bBasicNetInfoAvailable) {
             calculateBasicNetInfo();
         }
-        AbstractElementModel ttemp = null;
+        AbstractPetriNetElementModel ttemp = null;
         // Create transition 't*'
-        Iterator<AbstractElementModel> i = m_transitions.iterator();
-        AbstractElementModel transitionTemplate = ((i.hasNext()) ? (AbstractElementModel) i.next() : null);
+        Iterator<AbstractPetriNetElementModel> i = m_transitions.iterator();
+        AbstractPetriNetElementModel transitionTemplate = ((i.hasNext()) ? (AbstractPetriNetElementModel) i.next() : null);
         if (transitionTemplate != null) {
             CreationMap tempMap = transitionTemplate.getCreationMap();
-            tempMap.setType(AbstractPetriNetModelElement.TRANS_SIMPLE_TYPE);
+            tempMap.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
             String tempID = "t*";
             tempMap.setName(tempID);
             tempMap.setId(tempID);
@@ -450,9 +449,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
             // For this to be possible, we will need
             // a unique source and a unique sink
             if ((m_sourcePlaces.size() == 1) && (m_sinkPlaces.size() == 1)) {
-                AbstractElementModel source = m_sourcePlaces.iterator().next();
+                AbstractPetriNetElementModel source = m_sourcePlaces.iterator().next();
                 String sourceID = source.getId();
-                AbstractElementModel target = m_sinkPlaces.iterator().next();
+                AbstractPetriNetElementModel target = m_sinkPlaces.iterator().next();
                 String targetID = target.getId();
                 Object newEdge = m_currentEditor.getModelProcessor().createArc(tempID, sourceID);
                 ttemp.getPort().addEdge(newEdge);
@@ -468,7 +467,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         return ttemp;
     }
 
-    public void removeTStar(AbstractElementModel tstar) {
+    public void removeTStar(AbstractPetriNetElementModel tstar) {
         // Remove the element from the graph
         if (tstar != null) {
             m_currentEditor.getModelProcessor().removeElement(tstar.getId());
@@ -487,7 +486,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
 
         // The first thing we look for are forward-branched places (conflicts)
         // and their follow-up transitions
-        Set<Set<AbstractElementModel>> placeResults = getNonFreeChoiceGroups(m_places.iterator(), false);
+        Set<Set<AbstractPetriNetElementModel>> placeResults = getNonFreeChoiceGroups(m_places.iterator(), false);
         // Now look for backward-branched transitions (synchronization)
         // and their preceeding places
         // Commented out: Probably not really needed as this condition is
@@ -500,24 +499,24 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         // m_freeChoiceViolations.addAll(transitionResults);
     }
 
-    Set<Set<AbstractElementModel>> getNonFreeChoiceGroups(Iterator<AbstractElementModel> i, boolean swapArcDirection) {
-        Set<Set<AbstractElementModel>> result = new HashSet<Set<AbstractElementModel>>();
+    Set<Set<AbstractPetriNetElementModel>> getNonFreeChoiceGroups(Iterator<AbstractPetriNetElementModel> i, boolean swapArcDirection) {
+        Set<Set<AbstractPetriNetElementModel>> result = new HashSet<Set<AbstractPetriNetElementModel>>();
         // Look for forward-branched places (conflicts)
         // and their follow-up transitions
         while (i.hasNext()) {
             // Determine the arc configuration of the current place
-            AbstractElementModel currentPlace = i.next();
+            AbstractPetriNetElementModel currentPlace = i.next();
 
             // Have a closer look at the follow-up transitions
             // Collect all affected nodes a priori just in case
-            HashSet<AbstractElementModel> violationGroup = new HashSet<AbstractElementModel>();
+            HashSet<AbstractPetriNetElementModel> violationGroup = new HashSet<AbstractPetriNetElementModel>();
             boolean violation = false;
-            Set<AbstractElementModel> compareSet = null;
-            Set<AbstractElementModel> successors = NetAlgorithms.getDirectlyConnectedNodes(currentPlace,
+            Set<AbstractPetriNetElementModel> compareSet = null;
+            Set<AbstractPetriNetElementModel> successors = NetAlgorithms.getDirectlyConnectedNodes(currentPlace,
                     swapArcDirection ? NetAlgorithms.connectionTypeINBOUND : NetAlgorithms.connectionTypeOUTBOUND);
-            for (Iterator<AbstractElementModel> s = successors.iterator(); s.hasNext();) {
-                AbstractElementModel successor = s.next();
-                Set<AbstractElementModel> predecessors = NetAlgorithms.getDirectlyConnectedNodes(successor,
+            for (Iterator<AbstractPetriNetElementModel> s = successors.iterator(); s.hasNext();) {
+                AbstractPetriNetElementModel successor = s.next();
+                Set<AbstractPetriNetElementModel> predecessors = NetAlgorithms.getDirectlyConnectedNodes(successor,
                         swapArcDirection ? NetAlgorithms.connectionTypeOUTBOUND : NetAlgorithms.connectionTypeINBOUND);
                 if (compareSet == null) {
                     compareSet = predecessors;
@@ -552,8 +551,8 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         // and consider it as another transition
         // This is necessary to detect
         // handles in the short-circuited net
-        AbstractElementModel tStar = addTStar();
-        HashSet<AbstractElementModel> transitionsWithTStar = new HashSet<AbstractElementModel>(m_transitions);
+        AbstractPetriNetElementModel tStar = addTStar();
+        HashSet<AbstractPetriNetElementModel> transitionsWithTStar = new HashSet<AbstractPetriNetElementModel>(m_transitions);
         transitionsWithTStar.add(tStar);
 
         // Detect all PT handles in the short-circuited net
@@ -562,7 +561,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
 
         for (Iterator<Set<ClusterElement>> i = handleRun.iterator(); i.hasNext();) {
             Set<ClusterElement> currentSource = i.next();
-            Set<AbstractElementModel> current = new TreeSet<AbstractElementModel>(new PTHandleComparer());
+            Set<AbstractPetriNetElementModel> current = new TreeSet<AbstractPetriNetElementModel>(new PTHandleComparer());
             for (Iterator<ClusterElement> j = currentSource.iterator(); j.hasNext();) {
                 current.add(j.next().m_element);
             }
@@ -590,8 +589,8 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         // and consider it as another transition
         // This is necessary to detect
         // handles in the short-circuited net
-        AbstractElementModel tStar = addTStar();
-        HashSet<AbstractElementModel> transitionsWithTStar = new HashSet<AbstractElementModel>(m_transitions);
+        AbstractPetriNetElementModel tStar = addTStar();
+        HashSet<AbstractPetriNetElementModel> transitionsWithTStar = new HashSet<AbstractPetriNetElementModel>(m_transitions);
         transitionsWithTStar.add(tStar);
 
         // Detect all PT handles in the short-circuited net
@@ -600,7 +599,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
 
         for (Iterator<Set<ClusterElement>> i = handleRun.iterator(); i.hasNext();) {
             Set<ClusterElement> currentSource = i.next();
-            Set<AbstractElementModel> current = new TreeSet<AbstractElementModel>(new TPHandleComparer());
+            Set<AbstractPetriNetElementModel> current = new TreeSet<AbstractPetriNetElementModel>(new TPHandleComparer());
             for (Iterator<ClusterElement> j = currentSource.iterator(); j.hasNext();) {
                 current.add(j.next().m_element);
             }
@@ -615,7 +614,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     }
 
     // ! Adds a node to the low level net and duplicates it
-    private void ExpandAndAddNode(LowLevelNet lolnet, AbstractElementModel i) {
+    private void ExpandAndAddNode(LowLevelNet lolnet, AbstractPetriNetElementModel i) {
         FlowNode k1 = new FlowNode(i, true);
         lolnet.addNode(k1);
         FlowNode k2 = new FlowNode(i, false);
@@ -627,12 +626,12 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     // ! flow nodes in the low level net. This method adds all
     // ! outgoing arcs to the second flow node and links
     // ! it with its successors, respectively.
-    private void AddOutgoingArcs(LowLevelNet lolnet, AbstractElementModel i) {
-        Set<AbstractElementModel> successors = NetAlgorithms.getDirectlyConnectedNodes(i,
+    private void AddOutgoingArcs(LowLevelNet lolnet, AbstractPetriNetElementModel i) {
+        Set<AbstractPetriNetElementModel> successors = NetAlgorithms.getDirectlyConnectedNodes(i,
                 NetAlgorithms.connectionTypeOUTBOUND);
         FlowNode source = lolnet.getNodeForElement(i, false);
-        for (Iterator<AbstractElementModel> s = successors.iterator(); s.hasNext();) {
-            AbstractElementModel t = s.next();
+        for (Iterator<AbstractPetriNetElementModel> s = successors.iterator(); s.hasNext();) {
+            AbstractPetriNetElementModel t = s.next();
             FlowNode target = lolnet.getNodeForElement(t, true);
 
             lolnet.addArc(source, target);
@@ -644,30 +643,30 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     // ! @param places Specifies the set of places to be used
     // ! @param transitions Specifies the set of transitions to be used
     // ! @return LowLevelNet structure
-    private LowLevelNet CreateFlowNet(Set<AbstractElementModel> places, Set<AbstractElementModel> transitions) {
+    private LowLevelNet CreateFlowNet(Set<AbstractPetriNetElementModel> places, Set<AbstractPetriNetElementModel> transitions) {
         m_lolNet = new LowLevelNet();
-        for (Iterator<AbstractElementModel> i = places.iterator(); i.hasNext();) {
+        for (Iterator<AbstractPetriNetElementModel> i = places.iterator(); i.hasNext();) {
             ExpandAndAddNode(m_lolNet, i.next());
         }
-        for (Iterator<AbstractElementModel> i = transitions.iterator(); i.hasNext();) {
+        for (Iterator<AbstractPetriNetElementModel> i = transitions.iterator(); i.hasNext();) {
             ExpandAndAddNode(m_lolNet, i.next());
         }
 
-        for (Iterator<AbstractElementModel> i = places.iterator(); i.hasNext();) {
+        for (Iterator<AbstractPetriNetElementModel> i = places.iterator(); i.hasNext();) {
             AddOutgoingArcs(m_lolNet, i.next());
         }
-        for (Iterator<AbstractElementModel> i = transitions.iterator(); i.hasNext();) {
+        for (Iterator<AbstractPetriNetElementModel> i = transitions.iterator(); i.hasNext();) {
             AddOutgoingArcs(m_lolNet, i.next());
         }
         return m_lolNet;
     }
 
-    private void AddAalstNetOutgoingArcs(LowLevelNet lolnet, AbstractElementModel i) {
-        Map<String, AbstractElementModel> successors = this.m_currentEditor.getModelProcessor().getElementContainer()
+    private void AddAalstNetOutgoingArcs(LowLevelNet lolnet, AbstractPetriNetElementModel i) {
+        Map<String, AbstractPetriNetElementModel> successors = this.m_currentEditor.getModelProcessor().getElementContainer()
                 .getTargetElements(i.getId());
         FlowNode source = lolnet.getNodeForElement(i, false);
-        for (Iterator<Map.Entry<String, AbstractElementModel>> s = successors.entrySet().iterator(); s.hasNext();) {
-            AbstractElementModel t = s.next().getValue();
+        for (Iterator<Map.Entry<String, AbstractPetriNetElementModel>> s = successors.entrySet().iterator(); s.hasNext();) {
+            AbstractPetriNetElementModel t = s.next().getValue();
             FlowNode target = lolnet.getNodeForElement(t, true);
 
             lolnet.addArc(source, target);
@@ -683,12 +682,12 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     private LowLevelNet CreateAalstFlowNet() {
         m_lolNet = new LowLevelNet();
 
-        List<AbstractElementModel> rootElements = m_currentEditor.getModelProcessor().getElementContainer()
+        List<AbstractPetriNetElementModel> rootElements = m_currentEditor.getModelProcessor().getElementContainer()
                 .getRootElements();
-        for (Iterator<AbstractElementModel> i = rootElements.iterator(); i.hasNext();) {
+        for (Iterator<AbstractPetriNetElementModel> i = rootElements.iterator(); i.hasNext();) {
             ExpandAndAddNode(m_lolNet, i.next());
         }
-        for (Iterator<AbstractElementModel> i = rootElements.iterator(); i.hasNext();) {
+        for (Iterator<AbstractPetriNetElementModel> i = rootElements.iterator(); i.hasNext();) {
             AddAalstNetOutgoingArcs(m_lolNet, i.next());
         }
 
@@ -707,19 +706,19 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     // ! @param useVanderAalstModel True if handles should be detected based on operators rather than
     // ! a low-level net
     private Set<Set<ClusterElement>> getHandlePairs(String handleType, LowLevelNet n,
-            Set<AbstractElementModel> firstNodeType, Set<AbstractElementModel> secondNodeType,
+            Set<AbstractPetriNetElementModel> firstNodeType, Set<AbstractPetriNetElementModel> secondNodeType,
             boolean useVanDerAalstModel) {
 
         ArcConfiguration arcConfig = new ArcConfiguration();
 
         Set<Set<ClusterElement>> result = new HashSet<Set<ClusterElement>>();
 
-        Iterator<AbstractElementModel> i = firstNodeType.iterator();
+        Iterator<AbstractPetriNetElementModel> i = firstNodeType.iterator();
         long time1 = System.nanoTime();
         while (i.hasNext()) {
-            AbstractElementModel firstNode = i.next();
+            AbstractPetriNetElementModel firstNode = i.next();
             if (useVanDerAalstModel) {
-                Map<String, AbstractElementModel> elementMapRef = m_currentEditor.getModelProcessor()
+                Map<String, AbstractPetriNetElementModel> elementMapRef = m_currentEditor.getModelProcessor()
                         .getElementContainer().getSourceElements(firstNode.getId());
                 arcConfig.m_numIncoming = (elementMapRef != null) ? elementMapRef.size() : 0;
                 elementMapRef = m_currentEditor.getModelProcessor().getElementContainer().getTargetElements(
@@ -729,11 +728,11 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
                 NetAlgorithms.getArcConfiguration(firstNode, arcConfig);
             }
             if (arcConfig.m_numOutgoing > 1) {
-                Iterator<AbstractElementModel> j = secondNodeType.iterator();
+                Iterator<AbstractPetriNetElementModel> j = secondNodeType.iterator();
                 while (j.hasNext()) {
-                    AbstractElementModel secondNode = j.next();
+                    AbstractPetriNetElementModel secondNode = j.next();
                     if (useVanDerAalstModel) {
-                        Map<String, AbstractElementModel> elementMapRef = m_currentEditor.getModelProcessor()
+                        Map<String, AbstractPetriNetElementModel> elementMapRef = m_currentEditor.getModelProcessor()
                                 .getElementContainer().getSourceElements(secondNode.getId());
                         arcConfig.m_numIncoming = (elementMapRef != null) ? elementMapRef.size() : 0;
                         elementMapRef = m_currentEditor.getModelProcessor().getElementContainer().getTargetElements(
@@ -891,8 +890,8 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         // and consider it as another transition
         // This is necessary to detect
         // handles in the short-circuited net
-        AbstractElementModel tStar = addTStar();
-        HashSet<AbstractElementModel> transitionsWithTStar = new HashSet<AbstractElementModel>(m_transitions);
+        AbstractPetriNetElementModel tStar = addTStar();
+        HashSet<AbstractPetriNetElementModel> transitionsWithTStar = new HashSet<AbstractPetriNetElementModel>(m_transitions);
         transitionsWithTStar.add(tStar);
 
         LowLevelNet myNet = useVanDerAalstNet ? CreateAalstFlowNet() : CreateFlowNet(m_places, transitionsWithTStar);
@@ -908,15 +907,15 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
      * @see IWorkflowCheck#getStronglyConnectedNodes()
      */
     @Override
-    public Set<Set<AbstractElementModel>> getStronglyConnectedComponents() {
+    public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents() {
         // not implemented
-        return new HashSet<Set<AbstractElementModel>>();
+        return new HashSet<Set<AbstractPetriNetElementModel>>();
     }
 
     @Override
-    public Set<Set<AbstractElementModel>> getConnectedComponents() {
+    public Set<Set<AbstractPetriNetElementModel>> getConnectedComponents() {
         // not implemented
-        return new HashSet<Set<AbstractElementModel>>();
+        return new HashSet<Set<AbstractPetriNetElementModel>>();
     }
 
     @Override

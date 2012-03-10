@@ -34,7 +34,7 @@ import org.woped.core.model.CreationMap;
  */
 
 @SuppressWarnings("serial")
-public class PlaceModel extends PetriNetModelElement
+public class PlaceModel extends AbstractPetriNetElementModel
 {
 
     private int             m_token        = 0;
@@ -55,6 +55,7 @@ public class PlaceModel extends PetriNetModelElement
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
         setAttributes(attributes);
+ //       System.err.println(this.getToolTipText());
     }
 
     /**
@@ -158,7 +159,16 @@ public class PlaceModel extends PetriNetModelElement
 
     public int getType()
     {
-        return PetriNetModelElement.PLACE_TYPE;
+        return AbstractPetriNetElementModel.PLACE_TYPE;
     }
     
+    public boolean isActivated()    
+    {
+    	// The model activates a place when it is a sink sub process element and 
+    	// its token count is > 0. The only purpose of this is to be able to return from a sub process
+    	// by clicking its sink place
+    	return (isSubprocessElement()&&
+    			isSink()&&
+    			(getVirtualTokenCount()>0));
+    }    
 }

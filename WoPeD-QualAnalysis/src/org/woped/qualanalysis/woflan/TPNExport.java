@@ -27,11 +27,10 @@ import java.io.FileWriter;
 import java.util.Iterator;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.utilities.LoggerManager;
 
@@ -53,14 +52,14 @@ public class TPNExport {
             LoggerManager.debug(TPN_Logger, "********** START TPN EXPORT **********");
 
             FileWriter fos = new FileWriter(new File(fileName));
-            Iterator<AbstractElementModel> rootIter = net2save.getElementContainer().getRootElements().iterator();
-            PetriNetModelElement currentModel;
+            Iterator<AbstractPetriNetElementModel> rootIter = net2save.getElementContainer().getRootElements().iterator();
+            AbstractPetriNetElementModel currentModel;
 
             while (rootIter.hasNext()) {
 
-                currentModel = (PetriNetModelElement) rootIter.next();
+                currentModel = (AbstractPetriNetElementModel) rootIter.next();
 
-                if (currentModel.getType() == PetriNetModelElement.PLACE_TYPE) {
+                if (currentModel.getType() == AbstractPetriNetElementModel.PLACE_TYPE) {
                     fos.write("place #");
                     if (ConfigurationManager.getConfiguration().isTpnSaveElementAsName()) {
                         String nameValue = currentModel.getNameValue();
@@ -78,22 +77,22 @@ public class TPNExport {
                     fos.write(";\n");
 
                 } else
-                    if ((currentModel.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE)
-                            || (currentModel.getType() == PetriNetModelElement.SUBP_TYPE)) {
+                    if ((currentModel.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+                            || (currentModel.getType() == AbstractPetriNetElementModel.SUBP_TYPE)) {
                         fos.write(getLine4Transition(currentModel.getNameValue(), currentModel, net2save
                                 .getElementContainer()));
 
                     } else
-                        if (currentModel.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+                        if (currentModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
 
                             OperatorTransitionModel aalstModel = (OperatorTransitionModel) currentModel;
-                            Iterator<AbstractElementModel> simpleTransIter = aalstModel.getSimpleTransContainer().getRootElements()
+                            Iterator<AbstractPetriNetElementModel> simpleTransIter = aalstModel.getSimpleTransContainer().getRootElements()
                                     .iterator();
                             while (simpleTransIter.hasNext()) {
 
-                                PetriNetModelElement simpleTransModel = (PetriNetModelElement) simpleTransIter.next();
+                                AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
                                 if (aalstModel.getSimpleTransContainer().getElementById(simpleTransModel.getId())
-                                        .getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE) {
+                                        .getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE) {
                                     fos.write(getLine4Transition(currentModel.getNameValue(), simpleTransModel,
                                             aalstModel.getSimpleTransContainer()));
                                 }
@@ -114,7 +113,7 @@ public class TPNExport {
         }
     }
 
-    private static String getLine4Transition(String name, PetriNetModelElement currentModel,
+    private static String getLine4Transition(String name, AbstractPetriNetElementModel currentModel,
             ModelElementContainer container) {
         String line = null;
         Iterator<String> tempIter;
@@ -126,11 +125,11 @@ public class TPNExport {
         line += currentModel.getId();
 
         // Input
-        PetriNetModelElement tempPlace;
+        AbstractPetriNetElementModel tempPlace;
         line += " in";
         tempIter = container.getSourceElements(currentModel.getId()).keySet().iterator();
         while (tempIter.hasNext()) {
-            tempPlace = (PetriNetModelElement) container.getElementById(tempIter.next());
+            tempPlace = (AbstractPetriNetElementModel) container.getElementById(tempIter.next());
             line += " #";
             // Should given name be appended to the transition ID ?
             // If so, check whether such a name exists and add
@@ -146,7 +145,7 @@ public class TPNExport {
         line += " out";
         tempIter = container.getTargetElements(currentModel.getId()).keySet().iterator();
         while (tempIter.hasNext()) {
-            tempPlace = (PetriNetModelElement) container.getElementById(tempIter.next());
+            tempPlace = (AbstractPetriNetElementModel) container.getElementById(tempIter.next());
             line += " #";
             // Should given name be appended to the transition ID ?
             // If so, check whether such a name exists and add

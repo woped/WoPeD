@@ -28,8 +28,8 @@ import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
 import org.woped.core.model.petrinet.ANDJoinXORSplitOperatorTransitionModel;
 import org.woped.core.model.petrinet.ANDSplitJoinOperatorTransitionModel;
 import org.woped.core.model.petrinet.ANDSplitOperatorTransitionModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
@@ -37,10 +37,6 @@ import org.woped.core.model.petrinet.XORJoinANDSplitOperatorTransitionModel;
 import org.woped.core.model.petrinet.XORJoinOperatorTransitionModel;
 import org.woped.core.model.petrinet.XORSplitJoinOperatorTransitionModel;
 import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
-import org.woped.core.model.uml.AbstractUMLElementModel;
-import org.woped.core.model.uml.ActivityModel;
-import org.woped.core.model.uml.OperatorModel;
-import org.woped.core.model.uml.StateModel;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -60,16 +56,16 @@ public class ModelElementFactory
      * @param map
      * @return
      */
-    public static AbstractElementModel createModelElement(CreationMap map)
+    public static AbstractPetriNetElementModel createModelElement(CreationMap map)
     {
 
-        AbstractElementModel modElement = null;
+        AbstractPetriNetElementModel modElement = null;
         if (map.getId() != null)
         {
             try
             {
                 // Check basetype of Element
-                if (map.getType() == PetriNetModelElement.PLACE_TYPE)
+                if (map.getType() == AbstractPetriNetElementModel.PLACE_TYPE)
                 {
                     // Creating a new ModelElement with
                     modElement = new PlaceModel(map);
@@ -78,15 +74,15 @@ public class ModelElementFactory
                     if (map.getTokens() > 0)
                     	((PlaceModel) modElement).setTokens(map.getTokens());
                     
-                } else if (map.getType() == PetriNetModelElement.SUBP_TYPE)
+                } else if (map.getType() == AbstractPetriNetElementModel.SUBP_TYPE)
                 {
                     /* CREATING A SUBPROCESS */
                     modElement = new SubProcessModel(map);
-                } else if (map.getType() == PetriNetModelElement.TRANS_SIMPLE_TYPE && map.getOperatorType() == -1)
+                } else if (map.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE && map.getOperatorType() == -1)
                 {
                     /* CREATING A SIMPLE TRANSITION */
                     modElement = new TransitionModel(map);
-                } else if (map.getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE)
+                } else if (map.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
                 {
                     /* CREATING A AALST TRANSITION */
                 	switch (map.getOperatorType())
@@ -123,16 +119,6 @@ public class ModelElementFactory
                    ((OperatorTransitionModel) modElement).addNewSimpleTrans();
                     // ((OperatorTransitionModel)
                     // modElement).setInitalSimpleTrans(simpleTrans);
-                } else if (map.getType() == AbstractUMLElementModel.ACTIVITY_TYPE)
-                {
-                    modElement = new ActivityModel(map);
-                } else if (map.getType() == AbstractUMLElementModel.OPERATOR_TYPE)
-                {
-                    modElement = new OperatorModel(map);
-                } else if (map.getType() == AbstractUMLElementModel.STATE_TYPE)
-                {
-                    modElement = new StateModel(map);
-
                 }
                 if (modElement != null)
                 {

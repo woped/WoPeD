@@ -2,11 +2,11 @@ package org.woped.qualanalysis.sidebar.expert.components;
 
 import java.util.Iterator;
 
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.AbstractPetriNetModelElement;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.InnerElementContainer;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 
 //! This class implements a tree node representing
@@ -29,7 +29,7 @@ public class NodeNetInfo extends NetInfo {
 	// ! Instantiate this class with an element model node and a flag
 	// ! specifying whether children of that node (sub-processes,
 	// ! inner transitions) should be added to the tree item
-	public NodeNetInfo(AbstractElementModel node, boolean addChildren) {
+	public NodeNetInfo(AbstractPetriNetElementModel node, boolean addChildren) {
 		// Initialize the display of this item
 		super("");
 		m_nodeObject = node;
@@ -48,16 +48,21 @@ public class NodeNetInfo extends NetInfo {
 
 		// Generic approach to detect whether this element has any children:
 		// Elements with children implement InnerElementContainer
-		if (addChildren && (node instanceof InnerElementContainer)) {
+		if (addChildren && (node instanceof InnerElementContainer) && 
+				(typeId == OperatorTransitionModel.XOR_SPLIT_TYPE
+				|| typeId == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE
+				|| typeId == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE
+				|| typeId == OperatorTransitionModel.XOR_SPLITJOIN_TYPE 
+				|| typeId == OperatorTransitionModel.SUBP_TYPE)) {
 			// Add sub-elements as tree items
 			InnerElementContainer operator = (InnerElementContainer) node;
 			ModelElementContainer simpleTransContainer = operator.getSimpleTransContainer();
 			// Recursively call ourselves to add inner nodes
-			Iterator<AbstractElementModel> innerIterator = simpleTransContainer.getRootElements().iterator();
+			Iterator<AbstractPetriNetElementModel> innerIterator = simpleTransContainer.getRootElements().iterator();
 			while (innerIterator.hasNext()) {
 				try {
-					AbstractElementModel current = (AbstractElementModel) innerIterator.next();
-					AbstractElementModel owningElement = current.getRootOwningContainer().getOwningElement();
+					AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) innerIterator.next();
+					AbstractPetriNetElementModel owningElement = current.getRootOwningContainer().getOwningElement();
 					if ((owningElement != null)
 							&& (operator.equals(current.getRootOwningContainer().getOwningElement())))
 						add(new NodeNetInfo(current, true));
@@ -80,13 +85,13 @@ public class NodeNetInfo extends NetInfo {
 	// ! @param superOnly if true, only connections going to a super-net are
 	// going
 	// ! to be listed
-	private static String getConnectedNodesString(AbstractElementModel node, int connectionType, boolean superOnly) {
+	private static String getConnectedNodesString(AbstractPetriNetElementModel node, int connectionType, boolean superOnly) {
 		StringBuffer result = new StringBuffer();
-		Iterator<AbstractElementModel> relevantNodes = NetAlgorithms.getDirectlyConnectedNodes(node, connectionType).iterator();
+		Iterator<AbstractPetriNetElementModel> relevantNodes = NetAlgorithms.getDirectlyConnectedNodes(node, connectionType).iterator();
 		int nodeHierarchyLevel = node.getHierarchyLevel();
 		boolean isFirst = true;
 		while (relevantNodes.hasNext()) {
-			AbstractElementModel currentNode = (AbstractElementModel) relevantNodes.next();
+			AbstractPetriNetElementModel currentNode = (AbstractPetriNetElementModel) relevantNodes.next();
 			// If superOnly is specified
 			// only nodes that are contained in the next lower level container
 			// are relevant for us
@@ -104,21 +109,41 @@ public class NodeNetInfo extends NetInfo {
 		return result.toString();
 	}
 
-	private static String getNodeString(AbstractElementModel node, AbstractElementModel nodeOwner) {
-		String predecessors = getConnectedNodesString(node, NetAlgorithms.connectionTypeINBOUND, true);
-		String successors = getConnectedNodesString(node, NetAlgorithms.connectionTypeOUTBOUND, true);
-		// String nodeOwnerString =
-		// Messages.getString("TreeView.Element.Owner");
+	private static String getNodeString(AbstractPetriNetElementModel node,
+			AbstractPetriNetElementModel nodeOwner) {
+		String predecessors = getConnectedNodesString(node,
+				NetAlgorithms.connectionTypeINBOUND, true);
+		String successors = getConnectedNodesString(node,
+				NetAlgorithms.connectionTypeOUTBOUND, true);
+		String result = "";
+		int typeId;
 
 		String nameValue = node.getNameValue();
-		String result = ((nodeOwner != null) ? predecessors : "") + ((nameValue != null) ? nameValue : node.getId())
-				+ ((nodeOwner != null) ? successors : "");
-
-		if (nodeOwner != null) {
-			// result += ", " + nodeOwnerString + ": (" +
-			// getNodeString(nodeOwner, null) + ")";
-			result += " (in " + getNodeString(nodeOwner, null) + ")";
+		if (nodeOwner != null && nodeOwner.getType() == TransitionModel.TRANS_OPERATOR_TYPE) {
+			typeId = ((OperatorTransitionModel) nodeOwner).getOperatorType();
+			if (typeId == OperatorTransitionModel.XOR_JOIN_TYPE
+					|| typeId == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE
+					|| typeId == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+				result = predecessors;
+			}
 		}
+
+		result += ((nameValue != null) ? nameValue : node.getId());
+
+		if (nodeOwner != null && nodeOwner.getType() == TransitionModel.TRANS_OPERATOR_TYPE) {
+			typeId = ((OperatorTransitionModel) nodeOwner).getOperatorType();
+			if (typeId == OperatorTransitionModel.XOR_SPLIT_TYPE
+					|| typeId == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE
+					|| typeId == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+				result += successors;
+			}
+		}
+
+		/*
+		 * if (nodeOwner != null) { // result += ", " + nodeOwnerString + ": ("
+		 * + // getNodeString(nodeOwner, null) + ")"; // result += " (in " +
+		 * getNodeString(nodeOwner, null) + ")"; }
+		 */
 		return result;
 	}
 
@@ -127,15 +152,15 @@ public class NodeNetInfo extends NetInfo {
 		// If the owner is a sub-process
 		// the object can be displayed and thus will be returned as the item to
 		// be selected
-		result[0] = (((m_nodeOwner != null) && (m_nodeOwner.getType() != AbstractPetriNetModelElement.SUBP_TYPE)) ? m_nodeOwner
+		result[0] = (((m_nodeOwner != null) && (m_nodeOwner.getType() != AbstractPetriNetElementModel.SUBP_TYPE)) ? m_nodeOwner
 				: m_nodeObject);
 		return result;
 	};
 
 	// ! Store the node object this tree item represents
-	private AbstractElementModel m_nodeObject;
+	private AbstractPetriNetElementModel m_nodeObject;
 	// ! Sometimes it is better to reference the node owner
 	// ! instead of the node itself (inner transitions and places
 	// ! of a complex operator)
-	private AbstractElementModel m_nodeOwner = null;
+	private AbstractPetriNetElementModel m_nodeOwner = null;
 }

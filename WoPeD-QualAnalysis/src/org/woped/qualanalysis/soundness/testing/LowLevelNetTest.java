@@ -7,6 +7,7 @@ import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
 import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
@@ -61,7 +62,7 @@ public class LowLevelNetTest {
         }
     }
 
-    public static void putOut(MarkingNet markingNet) {
+    public static void putOut(IMarkingNet markingNet) {
         System.out.println(markingNet.placesToString());
         for (Marking marking : markingNet.getMarkings()) {
             System.out.println(marking);
@@ -70,7 +71,7 @@ public class LowLevelNetTest {
 
     public LowLevelNetTest() {
         LowLevelPetriNet lolNet;
-        MarkingNet markingNet;
+        IMarkingNet markingNet;
 
         lolNet = createNewLowLevelPetriNet();
 
@@ -88,9 +89,9 @@ public class LowLevelNetTest {
         PlaceNode p4 = lowlevelNet.getPlaceNode(new PlaceNode(0, 0, "p4", null, null));
         PlaceNode p5 = lowlevelNet.getPlaceNode(new PlaceNode(0, 0, "p5", null, null));
 
-        TransitionNode t1 = lowlevelNet.getTransitionNode(new TransitionNode("t1", null, null));
-        TransitionNode t2 = lowlevelNet.getTransitionNode(new TransitionNode("t2", null, null));
-        TransitionNode t3 = lowlevelNet.getTransitionNode(new TransitionNode("t3", null, null));
+        TransitionNode t1 = lowlevelNet.getTransitionNode(new TransitionNode("t1", null, null,0));
+        TransitionNode t2 = lowlevelNet.getTransitionNode(new TransitionNode("t2", null, null,0));
+        TransitionNode t3 = lowlevelNet.getTransitionNode(new TransitionNode("t3", null, null,0));
 
         p1.addPostNode(t1);
         t1.addPostNode(p2);

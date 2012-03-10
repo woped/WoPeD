@@ -28,6 +28,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
 
@@ -52,9 +53,9 @@ public class TransAndJoinXOrSplitView extends CombiOperatorView
      * @param graph
      * @param mapper
      */
-    public TransAndJoinXOrSplitView(Object cell)
+    public TransAndJoinXOrSplitView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new TransAndJoinXOrSplitRenderer(cell);
     }
 
@@ -115,14 +116,6 @@ public class TransAndJoinXOrSplitView extends CombiOperatorView
         public boolean isActive()
         {
             return TransAndJoinXOrSplitView.this.isActivated();
-        }
-
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return TransAndJoinXOrSplitView.this.isFireing();
         }
     }
 

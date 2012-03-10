@@ -62,7 +62,6 @@ public class ParallelRouter extends LoopRouting {
 	 * @param edge
 	 *            Edge for which routing is demanding
 	 */
-	@Override
 	public List<Object> routeEdge(EdgeView edge) {
 		List<Object> newPoints = new ArrayList<Object>();
 

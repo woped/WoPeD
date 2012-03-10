@@ -1,3 +1,4 @@
+//<<<<<<< SubProcessModel.java
 /*
  * 
  * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
@@ -28,8 +29,6 @@ import java.util.Map;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
 import org.woped.core.Constants;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
@@ -39,165 +38,180 @@ import org.woped.core.utilities.LoggerManager;
 /**
  * @author lai
  * 
- * To change this generated comment edit the template variable "typecomment":
- * Window>Preferences>Java>Templates. To enable and disable the creation of type
- * comments go to Window>Preferences>Java>Code Generation.
+ *         To change this generated comment edit the template variable
+ *         "typecomment": Window>Preferences>Java>Templates. To enable and
+ *         disable the creation of type comments go to
+ *         Window>Preferences>Java>Code Generation.
  */
 
 @SuppressWarnings("serial")
 public class SubProcessModel extends TransitionModel implements
-		InnerElementContainer
-{
+		InnerElementContainer {
 
-	public static final int			WIDTH					= 40;
-	public static final int			HEIGHT					= 40;
-	private int						subElementCounter		= 0;
-	private ModelElementContainer	subElementContainer;
-	private static final String		SUBELEMENT_SEPERATOR	= "_";
-	private boolean					direction				= false;
+	public static final int WIDTH = 40;
+	public static final int HEIGHT = 40;
+	private int subElementCounter = 0;
+	private ModelElementContainer subElementContainer;
+	private static final String SUBELEMENT_SEPERATOR = "_";
+	private boolean direction = false;
 	private CreationMap map = null;
 
-	public SubProcessModel(CreationMap map)
-	{
+	public SubProcessModel(CreationMap map) {
 		super(map);
 		this.map = map;
 		setSize(WIDTH, HEIGHT);
 		getToolSpecific().setSubprocess(true);
 
 		// there is already a container -> make a copy
-		if (map.getSubElementContainer() != null)
-		{
+		if (map.getSubElementContainer() != null) {
 			ModelElementContainer newContainer = copySubElementContainer(map
 					.getSubElementContainer());
+
 			newContainer.setOwningElement(this);
 			subElementContainer = newContainer;
-		}
-		else
-		{
+		} else {
 			// The sub element container
 			// is owned by the subprocess
 			subElementContainer = new ModelElementContainer();
 			subElementContainer.setOwningElement(this);
+			// System.err.println(this.getToolTipText());
 		}
 
 	}
 
 	private ModelElementContainer copySubElementContainer(
-			ModelElementContainer container)
-	{
+			ModelElementContainer container) {
+
 		LoggerManager.info(Constants.CORE_LOGGER, "copySubElementContainer");
 		ModelElementContainer newContainer = new ModelElementContainer();
 
 		newContainer.setOwningElement(container.getOwningElement());
-		
+
 		PetriNetModelProcessor processor = new PetriNetModelProcessor();
 		processor.setElementContainer(newContainer);
-		
-		
-		
 
-//		 HashMap<String, String> idMapper = new HashMap<String, String>();
+		// HashMap<String, String> idMapper = new HashMap<String, String>();
 
 		// copy elements
-		{
-			Map<?, ?> idMap = container.getIdMap();
-			Iterator<?> keyIterator = idMap.keySet().iterator();
 
-			while (keyIterator.hasNext())
-			{
-				AbstractElementModel currentElement = (AbstractElementModel) container
-						.getElementById(keyIterator.next());
+		Map<?, ?> idMap = container.getIdMap();
+		Iterator<?> keyIterator = idMap.keySet().iterator();
+		CreationMap currentArcMapSub;
+		AbstractPetriNetElementModel newElementSub = null;
+		while (keyIterator.hasNext()) {
 
-				if (!currentElement.isReadOnly())
-				{
+			AbstractPetriNetElementModel currentElementSub = (AbstractPetriNetElementModel) container
+					.getElementById(keyIterator.next());
 
-					CreationMap newMap = (CreationMap) currentElement
-							.getCreationMap().clone();
+			if (!currentElementSub.isReadOnly()) {
+				CreationMap newMapSub = (CreationMap) currentElementSub
+						.getCreationMap().clone();
+				// newMap.setId("copyof_" + newMap.getId());
+				String[] splitName = newMapSub.getId().split(
+						SUBELEMENT_SEPERATOR);
+				if (splitName.length > 1)
+					newMapSub.setId(super.getId() + SUBELEMENT_SEPERATOR
+							+ splitName[splitName.length - 1]);
+				newMapSub.setName(newMapSub.getId());
+				newElementSub = ModelElementFactory
+						.createModelElement(newMapSub);
+				
+				if (currentElementSub instanceof TransitionModel) {
+					TransitionModel newTransitionSub = (TransitionModel) newElementSub;
+					newTransitionSub
+							.setToolSpecific(((TransitionModel) currentElementSub)
+									.getToolSpecific());
 
-//					newMap.setId("copyof_" + newMap.getId());
+					newContainer.addElement(newTransitionSub);
 
-					AbstractElementModel newElement = ModelElementFactory
-							.createModelElement(newMap);
+				} else
 
-					newContainer.addElement(newElement);
-
-					
-					
-//					 // get a proper ID
-//					 newMap.setId(null);
-//					
-//					 AbstractElementModel newElement = processor
-//					 .createElement(newMap);
-//					
-//					 idMapper.put(currentElement.getId(), newElement.getId());
-
-				}
+					newContainer.addElement(newElementSub);
 			}
 		}
+		/* insert arc source/target */
+		Iterator<?> arcIterSub = container.getArcMap().keySet().iterator();
+		CreationMap cMapSub = CreationMap.createMap();
+		String originalElementId;
+		String[] splitedSourceId, splitedTargetId;
+		while (arcIterSub.hasNext()) {
+			currentArcMapSub = container.getArcMap().get((arcIterSub.next()))
+					.getCreationMap();
+			originalElementId = currentArcMapSub.getName();
+			splitedSourceId = currentArcMapSub.getArcSourceId().split(
+					SUBELEMENT_SEPERATOR);
+			splitedTargetId = currentArcMapSub.getArcTargetId().split(
+					SUBELEMENT_SEPERATOR);
 
-		// copy arcs
-		Iterator<?> arcIter = container.getArcMap().keySet().iterator();
-		while (arcIter.hasNext())
-		{
-			ArcModel arcModel = (ArcModel) container.getArcMap().get(
-					arcIter.next());
-
-			processor.createArc(arcModel.getSourceId(), arcModel.getTargetId());
-
-//			 ok
-//			 processor.createArc(idMapper.get(arcModel.getSourceId()),
-//			 idMapper
-//			 .get(arcModel.getSourceId()));
+			String newSourceName ;
+			String newTargetName ;
+			
+			if ((splitedSourceId.length > 1) && (splitedTargetId.length > 1)) {
+				newTargetName =super.getId() + SUBELEMENT_SEPERATOR
+				+ splitedTargetId[splitedTargetId.length - 1];
+				newSourceName = super.getId() + SUBELEMENT_SEPERATOR
+				+ splitedSourceId[splitedSourceId.length - 1];
+				cMapSub.setArcSourceId(newSourceName);
+				cMapSub.setArcTargetId(newTargetName);
+				processor.createArc(newSourceName,
+						newTargetName);
+			}
+			else if ((splitedSourceId.length <= 1) && (splitedTargetId.length > 1)) {
+				newTargetName =super.getId() + SUBELEMENT_SEPERATOR
+				+ splitedTargetId[splitedTargetId.length - 1];
+				cMapSub.setArcTargetId(newTargetName);
+				((TransitionModel) newContainer.getElementById(newTargetName)).setIncommingTarget(true);
+				processor.createArc(originalElementId,
+						cMapSub.getArcTargetId());
+			}
+			else if ((splitedSourceId.length > 1) && (splitedTargetId.length <= 1)) {
+				newSourceName = super.getId() + SUBELEMENT_SEPERATOR
+				+ splitedSourceId[splitedSourceId.length - 1];
+				cMapSub.setArcSourceId(newSourceName);
+				((TransitionModel) newContainer.getElementById(newSourceName)).setOutgoingSource(true);
+//				arcSub = processor.createArc(cMapSub.getArcSourceId(),originalElementId
+//						);
+			}
 		}
-
+		/* insert arcs */
 		return newContainer;
 	}
-	
+
 	public CreationMap getMap() {
 		return map;
 	}
 
-	public String getToolTipText()
-	{
+	public String getToolTipText() {
 		return "Subprocess\nID: " + getId() + "\nName: " + getNameValue();
 	}
 
-	public int getType()
-	{
-		return PetriNetModelElement.SUBP_TYPE;
+	public int getType() {
+		return AbstractPetriNetElementModel.SUBP_TYPE;
 	}
 
-	public ModelElementContainer getSimpleTransContainer()
-	{
+	public ModelElementContainer getSimpleTransContainer() {
 		return subElementContainer;
 	}
-	
-	public ModelElementContainer getElementContainer()
-	{
-		return this.subElementContainer;
-	} 
 
-	public AbstractElementModel addElement(AbstractElementModel element)
-	{
+	public ModelElementContainer getElementContainer() {
+		return this.subElementContainer;
+	}
+
+	public AbstractPetriNetElementModel addElement(AbstractPetriNetElementModel element) {
 		return subElementContainer.addElement(element);
 	}
 
 	public void addReference(String arcId, DefaultPort sourceId,
-			DefaultPort targetId)
-	{
+			DefaultPort targetId) {
 		subElementContainer.addReference(ModelElementFactory.createArcModel(
-				arcId,
-				sourceId,
-				targetId));
+				arcId, sourceId, targetId));
 	}
 
-	public AbstractElementModel getElement(Object elementId)
-	{
+	public AbstractPetriNetElementModel getElement(Object elementId) {
 		return subElementContainer.getElementById(elementId);
 	}
 
-	public String getNewElementId()
-	{
+	public String getNewElementId() {
 		subElementCounter++;
 		return getId() + SUBELEMENT_SEPERATOR + subElementCounter;
 	}
@@ -205,15 +219,12 @@ public class SubProcessModel extends TransitionModel implements
 	// ! Overwritten to allow new outgoing connections only
 	// ! if there is not already an outgoing connection
 	// ! (Sub-processes must have exactly one input and one output)
-	public boolean getAllowOutgoingConnections()
-	{
+	public boolean getAllowOutgoingConnections() {
 		boolean result = true;
 		int nNumOutgoing = 0;
-		for (Iterator<?> i = getPort().edges(); i.hasNext();)
-		{
+		for (Iterator<?> i = getPort().edges(); i.hasNext();) {
 			Object o = i.next();
-			if (o instanceof Edge)
-			{
+			if (o instanceof Edge) {
 				Edge e = (Edge) o;
 				if (e.getSource() == getPort())
 					++nNumOutgoing;
@@ -222,12 +233,14 @@ public class SubProcessModel extends TransitionModel implements
 		result = (nNumOutgoing == 0);
 		return result;
 	}
-	public void setDirection (boolean dir) {
+
+	public void setDirection(boolean dir) {
 		direction = dir;
 	}
-	
-	public boolean getDirection () {
+
+	public boolean getDirection() {
 		return direction;
 	}
 
+//>>>>>>> 1.20.2.3
 }

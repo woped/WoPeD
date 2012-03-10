@@ -291,57 +291,9 @@ public class SimRunner implements Runnable{
 			sumPCT += rs.getProcCompTime();
 			sumThp += rs.getThroughPut();
 			
-			for (SimServerStats ss : rs.getServStats().values()){
-				SimServer s = serverList.get(ss.getId());
-				if (repStats.getServStats().containsKey(s)){
-					SimReportServerStats rss = (SimReportServerStats)repStats.getServStats().get(s);
-					rss.incAvgZeroDelays(ss.getZeroDelays());
-					rss.incAvgCalls(ss.getCalls());
-					rss.incAvgAccesses(ss.getAccesses());
-					rss.incAvgDepartures(ss.getDepartures());
-					rss.incAvgMaxQLength(ss.getMaxQLength());
-					rss.incAvgMaxResNumber(ss.getMaxResNumber());
-					rss.incAvgNumServedWhenStopped(ss.getNumServedWhenStopped());
-					rss.incAvgQLengthWhenStopped(ss.getQLengthWhenStopped());
-					rss.incAvgAvgQLength(ss.getAvgQLength());
-					rss.incAvgAvgResNumber(ss.getAvgResNumber());
-					rss.incAvgAvgWaitTime(ss.getAvgWaitTime());
-					rss.incAvgMaxWaitTime(ss.getMaxWaitTime());
-					rss.incAvgServTime(ss.getAvgServTime());
-				} else {
-					SimReportServerStats rss = new SimReportServerStats(ss.getName(), ss.getId());
-					rss.setAvgZeroDelays(ss.getZeroDelays());
-					rss.setAvgCalls(ss.getCalls());
-					rss.setAvgAccesses(ss.getAccesses());
-					rss.setAvgDepartures(ss.getDepartures());
-					rss.setAvgMaxQLength(ss.getMaxQLength());
-					rss.setAvgMaxResNumber(ss.getMaxResNumber());
-					rss.setAvgNumServedWhenStopped(ss.getNumServedWhenStopped());
-					rss.setAvgQLengthWhenStopped(ss.getQLengthWhenStopped());
-					rss.setAvgQLength(ss.getAvgQLength());
-					rss.setAvgResNumber(ss.getAvgResNumber());
-					rss.setAvgWaitTime(ss.getAvgWaitTime());
-					rss.setMaxWaitTime(ss.getMaxWaitTime());
-					rss.setAvgServTime(ss.getAvgServTime());
-					rss.setDistributionLogger(ss.getDistributionLogger());
-					repStats.getServStats().put(s, rss);
-				}
-			}
+			generateReportServerStats(rs);
 			
-			for (ResourceStats rr : rs.getResStats().values()){
-				Resource r = resAlloc.getResources().get(rr.getName());
-				if (repStats.getResStats().containsKey(r)){
-					ResourceStats rrs = repStats.getResStats().get(r);
-					rrs.incIdleTime(rr.getIdleTime());
-					rrs.incUtilizationRatio(rr.getUtilizationRatio());
-				} else {
-					ResourceStats rrs = new ResourceStats(rr.getName());
-					rrs.setIdleTime(rr.getIdleTime());
-					rrs.setUtilizationRatio(rr.getUtilizationRatio());
-					
-					repStats.getResStats().put(r, rrs);
-				}
-			}
+			generateReportResourceStats(rs);
 		}
 		
 		repStats.setAvgFinishedCases(sum / params.getRuns());
@@ -351,6 +303,12 @@ public class SimRunner implements Runnable{
 		repStats.setProcCompTime(sumPCT / params.getRuns());
 		repStats.setThroughPut(sumThp / params.getRuns());
 		
+		generateReportRepStats();
+		
+		runStats.add(repStats);
+	}
+
+	public void generateReportRepStats() {
 		for (SimServerStats ss : repStats.getServStats().values()){
 			SimReportServerStats rss = (SimReportServerStats)ss;
 			rss.setAvgZeroDelays(rss.getAvgZeroDelays() / params.getRuns());
@@ -372,8 +330,62 @@ public class SimRunner implements Runnable{
 			rrs.setIdleTime(rrs.getIdleTime() / params.getRuns());
 			rrs.setUtilizationRatio(rrs.getUtilizationRatio() / params.getRuns());
 		}
-		
-		runStats.add(repStats);
+	}
+
+	public void generateReportResourceStats(SimRunStats rs) {
+		for (ResourceStats rr : rs.getResStats().values()){
+			Resource r = resAlloc.getResources().get(rr.getName());
+			if (repStats.getResStats().containsKey(r)){
+				ResourceStats rrs = repStats.getResStats().get(r);
+				rrs.incIdleTime(rr.getIdleTime());
+				rrs.incUtilizationRatio(rr.getUtilizationRatio());
+			} else {
+				ResourceStats rrs = new ResourceStats(rr.getName());
+				rrs.setIdleTime(rr.getIdleTime());
+				rrs.setUtilizationRatio(rr.getUtilizationRatio());
+				
+				repStats.getResStats().put(r, rrs);
+			}
+		}
+	}
+
+	public void generateReportServerStats(SimRunStats rs) {
+		for (SimServerStats ss : rs.getServStats().values()){
+			SimServer s = serverList.get(ss.getId());
+			if (repStats.getServStats().containsKey(s)){
+				SimReportServerStats rss = (SimReportServerStats)repStats.getServStats().get(s);
+				rss.incAvgZeroDelays(ss.getZeroDelays());
+				rss.incAvgCalls(ss.getCalls());
+				rss.incAvgAccesses(ss.getAccesses());
+				rss.incAvgDepartures(ss.getDepartures());
+				rss.incAvgMaxQLength(ss.getMaxQLength());
+				rss.incAvgMaxResNumber(ss.getMaxResNumber());
+				rss.incAvgNumServedWhenStopped(ss.getNumServedWhenStopped());
+				rss.incAvgQLengthWhenStopped(ss.getQLengthWhenStopped());
+				rss.incAvgAvgQLength(ss.getAvgQLength());
+				rss.incAvgAvgResNumber(ss.getAvgResNumber());
+				rss.incAvgAvgWaitTime(ss.getAvgWaitTime());
+				rss.incAvgMaxWaitTime(ss.getMaxWaitTime());
+				rss.incAvgServTime(ss.getAvgServTime());
+			} else {
+				SimReportServerStats rss = new SimReportServerStats(ss.getName(), ss.getId());
+				rss.setAvgZeroDelays(ss.getZeroDelays());
+				rss.setAvgCalls(ss.getCalls());
+				rss.setAvgAccesses(ss.getAccesses());
+				rss.setAvgDepartures(ss.getDepartures());
+				rss.setAvgMaxQLength(ss.getMaxQLength());
+				rss.setAvgMaxResNumber(ss.getMaxResNumber());
+				rss.setAvgNumServedWhenStopped(ss.getNumServedWhenStopped());
+				rss.setAvgQLengthWhenStopped(ss.getQLengthWhenStopped());
+				rss.setAvgQLength(ss.getAvgQLength());
+				rss.setAvgResNumber(ss.getAvgResNumber());
+				rss.setAvgWaitTime(ss.getAvgWaitTime());
+				rss.setMaxWaitTime(ss.getMaxWaitTime());
+				rss.setAvgServTime(ss.getAvgServTime());
+				rss.setDistributionLogger(ss.getDistributionLogger());
+				repStats.getServStats().put(s, rss);
+			}
+		}
 	}
 
 	public int getRunNumber() {
@@ -382,6 +394,34 @@ public class SimRunner implements Runnable{
 
 	private void createServerList() {
 		// create for each transition a server which stores the statistic values
+		createTransitionServer();
+		// create the connections between the servers		
+		createServerConnections();
+		// find corresponding join to the splits
+		for (SimServer s : serverList.values()) {
+			if(s instanceof SimSplitServer) ((SimSplitServer)s).findJoin();			
+		}		
+	}
+
+	public void createServerConnections() {
+		for (SimServer s : serverList.values()) {
+			SimNode n = graph.getNodes().get(s.getid());
+			for (SimArc a : n.getarcOut()) {
+				String id2 = a.getTarget().getid();				
+				SimNode m = graph.getNodes().get(id2);
+				if((m.getid().equals(graph.getSink().getid()))&&(n.getarcOut().size()>1)){					
+					s.getOutServer().add(new SimOutServer(null, a.getProbability()));					
+				}
+				for (SimArc b : m.getarcOut()) {				
+					SimOutServer os = new SimOutServer(serverList.get(b.getTarget().getid()), a.getProbability()* b.getProbability());
+					s.getOutServer().add(os);
+				}
+				
+			}
+		}
+	}
+
+	public void createTransitionServer() {
 		for (SimNode n : graph.getNodes().values()) {
 			if (n.isTransition()) {
 				SimServer s;
@@ -401,26 +441,6 @@ public class SimRunner implements Runnable{
 				serverList.put(n.getid(), s);
 			}
 		}
-		// create the connections between the servers		
-		for (SimServer s : serverList.values()) {
-			SimNode n = graph.getNodes().get(s.getid());
-			for (SimArc a : n.getarcOut()) {
-				String id2 = a.getTarget().getid();				
-				SimNode m = graph.getNodes().get(id2);
-				if((m.getid().equals(graph.getSink().getid()))&&(n.getarcOut().size()>1)){					
-					s.getOutServer().add(new SimOutServer(null, a.getProbability()));					
-				}
-				for (SimArc b : m.getarcOut()) {				
-					SimOutServer os = new SimOutServer(serverList.get(b.getTarget().getid()), a.getProbability()* b.getProbability());
-					s.getOutServer().add(os);
-				}
-				
-			}
-		}
-		// find corresponding join to the splits
-		for (SimServer s : serverList.values()) {
-			if(s instanceof SimSplitServer) ((SimSplitServer)s).findJoin();			
-		}		
 	}
 
 	public void finishCase(SimCase c){

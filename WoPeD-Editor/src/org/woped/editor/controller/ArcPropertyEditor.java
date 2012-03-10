@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -21,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.core.model.ArcModel;
-import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 
@@ -52,7 +52,7 @@ public class ArcPropertyEditor extends JDialog {
     private int oldValue;
     private boolean oldDisplayOn;
 
-    public ArcPropertyEditor(Frame owner, ArcModel arc, EditorVC editor)
+    public ArcPropertyEditor(Frame owner, Point position, ArcModel arc, EditorVC editor)
     {
         super(owner, true);
         this.arc = arc;
@@ -60,7 +60,7 @@ public class ArcPropertyEditor extends JDialog {
         this.setVisible(false);
         initialize();
         this.setSize(350, 190);
-        this.setLocation(Utils.getCenterPoint(owner.getBounds(), this.getSize()));
+		this.setLocation(new Point(position.x + 50, position.y));
         this.setVisible(true);
     }
 

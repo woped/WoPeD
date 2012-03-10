@@ -17,6 +17,10 @@ public class EditorLayoutInfo {
 	private Dimension m_savedSize = null;
 	private Point 	  m_savedLocation = null;
 	private int   	  m_treeViewWidth = 0;
+	private int       m_treeViewWidthRight = 0;
+	private boolean   m_overviewPanelVisible = false;
+	private int 	  m_treeHeightOverview = 0;
+	private boolean   m_treePanelVisible = false;
 	public static boolean   m_verticalLayout = false;
 	
 	/**
@@ -67,6 +71,38 @@ public class EditorLayoutInfo {
 
 	public void setTreeViewWidth(int viewWidth) {
 		m_treeViewWidth = viewWidth;
+	}
+	
+	public int getTreeViewWidthRight() {
+		return m_treeViewWidthRight;
+	}
+
+	public void setTreeViewWidthRight(int viewWidthRight) {
+		m_treeViewWidthRight = viewWidthRight;
+	}
+	
+	public int getTreeHeightOverview(){
+		return m_treeHeightOverview;
+	}
+	
+	public void setTreeHeightOverview(int heightOverview){
+		m_treeHeightOverview = heightOverview;
+	}
+	
+	public boolean getOverviewPanelVisible(){
+		return m_overviewPanelVisible;
+	}
+	
+	public void setOverviewPanelVisible(boolean visible){
+		m_overviewPanelVisible = visible;
+	}
+	
+	public boolean getTreePanelVisible(){
+		return m_treePanelVisible;
+	}
+	
+	public void setTreePanelVisible(boolean visible){
+		m_treePanelVisible = visible;
 	}
 	
     public boolean getVerticalLayout() {

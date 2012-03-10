@@ -41,7 +41,7 @@ public class TransitionResourceView extends AbstractElementView
         return renderer;
     }
 
-    class TransitionResourceRenderer extends VertexRenderer
+	class TransitionResourceRenderer extends VertexRenderer
     {
         public void paint(Graphics g)
         {

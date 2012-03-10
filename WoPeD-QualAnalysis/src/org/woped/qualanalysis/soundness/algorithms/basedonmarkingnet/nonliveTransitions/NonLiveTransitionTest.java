@@ -5,8 +5,8 @@ import java.util.Set;
 
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.AbstractMarkingNetTest;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 /**
  * indicates all non live transtions with exp. costs.
@@ -18,10 +18,10 @@ public class NonLiveTransitionTest extends AbstractMarkingNetTest implements INo
 
 	/**
 	 * 
-	 * @param mNet MarkingNet the algorithm is based on
+	 * @param iMarkingNet MarkingNet the algorithm is based on
 	 */
-    public NonLiveTransitionTest(MarkingNet mNet) {
-        super(mNet);
+    public NonLiveTransitionTest(IMarkingNet markingNet) {
+        super(markingNet);
     }
 
     /**
@@ -30,7 +30,8 @@ public class NonLiveTransitionTest extends AbstractMarkingNetTest implements INo
     @Override
     public Set<TransitionNode> getNonLiveTransitions() {
         Set<TransitionNode> nonLiveTransitions = new HashSet<TransitionNode>();
-        Set<Marking> markingsTemp;
+        Set<Marking> markingsTemp;      
+        
         for (int i = 0; i < mNet.getTransitions().length; i++) {
             for (Marking marking : mNet.getMarkings()) {
                 markingsTemp = new HashSet<Marking>();

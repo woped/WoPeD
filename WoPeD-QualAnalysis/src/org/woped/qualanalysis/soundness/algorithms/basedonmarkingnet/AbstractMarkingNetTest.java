@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet;
 
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 
 /**
  * abstract class for tests basing on MarkingNets
@@ -8,13 +8,13 @@ import org.woped.qualanalysis.soundness.marking.MarkingNet;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
 public abstract class AbstractMarkingNetTest {
-    protected MarkingNet mNet;
+    protected IMarkingNet mNet;
 
 	/**
 	 * 
-	 * @param mNet MarkingNet the algorithm is based on
+	 * @param iMarkingNet MarkingNet the algorithm is based on
 	 */
-    public AbstractMarkingNetTest(MarkingNet mNet) {
-        this.mNet = mNet;
+    public AbstractMarkingNetTest(IMarkingNet markingNet) {
+        this.mNet = markingNet;
     }
 }

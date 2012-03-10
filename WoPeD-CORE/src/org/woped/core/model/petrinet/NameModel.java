@@ -135,7 +135,7 @@ public class NameModel extends DefaultGraphCell
 
     public int getType()
     {
-        return PetriNetModelElement.NAME_TYPE;
+        return AbstractPetriNetElementModel.NAME_TYPE;
     }
 
     //  

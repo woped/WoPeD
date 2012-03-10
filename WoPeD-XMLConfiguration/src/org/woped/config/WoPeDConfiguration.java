@@ -30,8 +30,7 @@ public abstract class WoPeDConfiguration implements IConfiguration {
 	protected boolean startedAsApplet;
 	protected boolean isLoaded;
 
-	public WoPeDConfiguration(boolean startedAsApplet) {
-		this.startedAsApplet = startedAsApplet;
+	public WoPeDConfiguration() {
 		this.isLoaded = false;
 	}
 	

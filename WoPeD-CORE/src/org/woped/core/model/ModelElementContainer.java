@@ -40,6 +40,7 @@ import org.woped.core.model.bpel.BpelVariableList;
 import org.woped.core.model.bpel.PartnerlinkList;
 import org.woped.core.model.bpel.UddiVariable;
 import org.woped.core.model.bpel.UddiVariableList;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.utilities.LoggerManager;
 
@@ -79,17 +80,17 @@ public class ModelElementContainer implements Serializable {
 	// ! Again, it is important for navigation to know these things
 	// ! The owningElement member may be null (which is in fact the default)
 	// ! if we're not owned by an AbstractElementModel instance at all
-	private AbstractElementModel owningElement = null;
+	private AbstractPetriNetElementModel owningElement = null;
 
 	private BpelVariableList variablesList = new BpelVariableList();
 	private PartnerlinkList partnerLinkList = new PartnerlinkList();
 	private UddiVariableList uddiVariableList = new UddiVariableList();
 
-	public void setOwningElement(AbstractElementModel element) {
+	public void setOwningElement(AbstractPetriNetElementModel element) {
 		owningElement = element;
 	}
 
-	public AbstractElementModel getOwningElement() {
+	public AbstractPetriNetElementModel getOwningElement() {
 		return owningElement;
 	}
 
@@ -113,6 +114,7 @@ public class ModelElementContainer implements Serializable {
 	 * @return Map
 	 */
 	public Map<String, Map<String, Object>> getIdMap() {
+		
 		return idMap;
 	}
 
@@ -123,7 +125,7 @@ public class ModelElementContainer implements Serializable {
 	 * @param theElement
 	 * @throws ElementException
 	 */
-	public AbstractElementModel addElement(AbstractElementModel theElement) {
+	public AbstractPetriNetElementModel addElement(AbstractPetriNetElementModel theElement) {
 		if (getIdMap().get(theElement.getId()) == null) {
 			// if referenceMap does not exits, create it
 			Map<String, Object> referenceMap = new HashMap<String, Object>();
@@ -204,7 +206,7 @@ public class ModelElementContainer implements Serializable {
 	}
 
 	public void removeOnlyElement(Object id) {
-		AbstractElementModel element = getElementById(id);
+		AbstractPetriNetElementModel element = getElementById(id);
 		// The element is no longer owned by anybody
 		if (element!=null) element.removeOwningContainer(this);
 		getIdMap().remove(id);
@@ -286,16 +288,16 @@ public class ModelElementContainer implements Serializable {
 	 * @param id
 	 * @return Map
 	 */
-	public Map<String, AbstractElementModel> getTargetElements(Object id) {
+	public Map<String, AbstractPetriNetElementModel> getTargetElements(Object id) {
 
 		if ((Map<String, Object>) getIdMap().get(id) != null) {
 
 			Iterator<String> refIter = ((Map<String, Object>) getIdMap().get(id)).keySet().iterator();
-			Map<String, AbstractElementModel> targetMap = new HashMap<String, AbstractElementModel>();
+			Map<String, AbstractPetriNetElementModel> targetMap = new HashMap<String, AbstractPetriNetElementModel>();
 			while (refIter.hasNext()) {
 				Object arc = ((Map<String, Object>) getIdMap().get(id)).get(refIter.next());
 				if (arc instanceof ArcModel) {
-					AbstractElementModel aCell = (AbstractElementModel) ((DefaultPort) ((ArcModel) arc)
+					AbstractPetriNetElementModel aCell = (AbstractPetriNetElementModel) ((DefaultPort) ((ArcModel) arc)
 							.getTarget()).getParent();
 					targetMap.put(aCell.getId(), aCell);
 				}
@@ -328,7 +330,7 @@ public class ModelElementContainer implements Serializable {
 	 * @param id
 	 * @return Map
 	 */
-	public Map<String, AbstractElementModel> getSourceElements(Object targetId) {
+	public Map<String, AbstractPetriNetElementModel> getSourceElements(Object targetId) {
 
 		return findSourceElements(targetId);
 
@@ -340,12 +342,12 @@ public class ModelElementContainer implements Serializable {
 	 *
 	 * @return List
 	 */
-	public List<AbstractElementModel> getRootElements() {
+	public List<AbstractPetriNetElementModel> getRootElements() {
 
-		List<AbstractElementModel> rootElements = new ArrayList<AbstractElementModel>();
+		List<AbstractPetriNetElementModel> rootElements = new ArrayList<AbstractPetriNetElementModel>();
 		Iterator<String> allIter = getIdMap().keySet().iterator();
 		while (allIter.hasNext()) {
-			AbstractElementModel element = getElementById(allIter.next());
+			AbstractPetriNetElementModel element = getElementById(allIter.next());
 			rootElements.add(element);
 		}
 
@@ -360,10 +362,10 @@ public class ModelElementContainer implements Serializable {
 	 * @param id
 	 * @return List
 	 */
-	protected Map<String, AbstractElementModel> findSourceElements(
+	protected Map<String, AbstractPetriNetElementModel> findSourceElements(
 			Object targetId) {
 
-		Map<String, AbstractElementModel> sourceMap = new HashMap<String, AbstractElementModel>();
+		Map<String, AbstractPetriNetElementModel> sourceMap = new HashMap<String, AbstractPetriNetElementModel>();
 		Iterator<String> sourceArcIter = findSourceArcs(targetId).keySet().iterator();
 		ArcModel tempArc;
 		while (sourceArcIter.hasNext()) {
@@ -398,11 +400,13 @@ public class ModelElementContainer implements Serializable {
 	 * @param id
 	 * @return ModelElement
 	 */
-	public AbstractElementModel getElementById(Object id) {
+	public AbstractPetriNetElementModel getElementById(Object id) {
 
 		if (getIdMap().get(id) != null) {
-			return (AbstractElementModel) ((Map<String, Object>) getIdMap().get(id))
+			return (AbstractPetriNetElementModel) ((Map<String, Object>) getIdMap().get(id))
 					.get(ModelElementContainer.SELF_ID);
+			
+			
 		} else {
 			LoggerManager.debug(Constants.CORE_LOGGER, "Requested Element (ID:"
 					+ id + ") does not exists");
@@ -414,7 +418,7 @@ public class ModelElementContainer implements Serializable {
 	public void removeAllHighlighting(){
 		Map<String, Map<String, Object>> map = getIdMap();
 		for(String id:map.keySet())
-			((AbstractElementModel) map.get(id).get(ModelElementContainer.SELF_ID)).setHighlighted(false);
+			((AbstractPetriNetElementModel) map.get(id).get(ModelElementContainer.SELF_ID)).setHighlighted(false);
 		for(String arc:arcs.keySet())
 			((ArcModel)arcs.get(arc)).setHighlighted(false);
 	}
@@ -466,10 +470,10 @@ public class ModelElementContainer implements Serializable {
 		this.arcs = arcs;
 	}
 
-	public Map<String, AbstractElementModel> getElementsByType(int type) {
-		Map<String, AbstractElementModel> elements = new HashMap<String, AbstractElementModel>();
+	public Map<String, AbstractPetriNetElementModel> getElementsByType(int type) {
+		Map<String, AbstractPetriNetElementModel> elements = new HashMap<String, AbstractPetriNetElementModel>();
 		Iterator<String> elementsIter = getIdMap().keySet().iterator();
-		AbstractElementModel element;
+		AbstractPetriNetElementModel element;
 		// try {
 		while (elementsIter.hasNext()) {
 			element = getElementById(elementsIter.next());

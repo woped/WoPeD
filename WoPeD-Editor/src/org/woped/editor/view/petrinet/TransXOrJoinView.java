@@ -28,6 +28,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
 
@@ -52,9 +53,9 @@ public class TransXOrJoinView extends TransSimpleView
      * @param graph
      * @param mapper
      */
-    public TransXOrJoinView(Object cell)
+    public TransXOrJoinView(Object cell, IEditor editor)
     {
-        super(cell);
+        super(cell, editor);
         renderer = new TransXOrJoinRenderer(cell);
     }
 
@@ -72,7 +73,7 @@ public class TransXOrJoinView extends TransSimpleView
      * 
      * 28.03.2003
      */
-    private class TransXOrJoinRenderer extends AbstractElementRenderer
+    private class TransXOrJoinRenderer extends PetriNetElementRenderer
     {
     	TransXOrJoinRenderer(Object cell)
     	{
@@ -117,14 +118,6 @@ public class TransXOrJoinView extends TransSimpleView
             return TransXOrJoinView.this.isActivated();
         }
 
-        /**
-         * @return
-         */
-        public boolean isFireing()
-        {
-            return TransXOrJoinView.this.isFireing();
-        }
-   
     }
 
 }

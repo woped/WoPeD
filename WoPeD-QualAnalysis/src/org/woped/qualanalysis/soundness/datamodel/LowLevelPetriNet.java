@@ -5,23 +5,17 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
-
 /**
  * this class represents a low level petri net
  * 
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  * 
  */
-public class LowLevelPetriNet implements INodeNet<AbstractNode> {
+public class LowLevelPetriNet implements ILowLevelPetriNet {
     // declaration
 
     private Map<String, PlaceNode> places = new TreeMap<String, PlaceNode>(new PlaceSort());
     private Map<String, TransitionNode> transitions = new TreeMap<String, TransitionNode>();
-
-    public LowLevelPetriNet() {
-
-    }
 
     /**
      * 
@@ -35,12 +29,10 @@ public class LowLevelPetriNet implements INodeNet<AbstractNode> {
             // true if node does not exist in map
             result = !transitions.containsKey(node.getId());
             getTransitionNode((TransitionNode) node);
-        } else {
-            if (node instanceof PlaceNode) {
-                // true if node does not exist in map
-                result = !places.containsKey(node.getId());
-                getPlaceNode((PlaceNode) node);
-            }
+        } else if (node instanceof PlaceNode) {
+            // true if node does not exist in map
+            result = !places.containsKey(node.getId());
+            getPlaceNode((PlaceNode) node);
         }
         return result;
 
@@ -50,7 +42,7 @@ public class LowLevelPetriNet implements INodeNet<AbstractNode> {
      * adds all nodes of the provided set of nodes.
      * 
      * @param nodes to be added.
-     * @return true
+     * @return true if all nodes were added
      */
     public boolean addNodes(Set<AbstractNode> nodes) {
         boolean result = true;
@@ -58,7 +50,7 @@ public class LowLevelPetriNet implements INodeNet<AbstractNode> {
         for (AbstractNode node : nodes) {
             result = result & addNode(node);
         }
-        return true;
+        return result;
     }
 
     /**

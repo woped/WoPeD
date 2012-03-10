@@ -38,25 +38,17 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 import org.apache.xmlbeans.XmlOptions;
-import org.woped.bpel.gui.transitionproperties.Assign;
-import org.woped.bpel.gui.transitionproperties.Empty;
-import org.woped.bpel.gui.transitionproperties.Invoke;
-import org.woped.bpel.gui.transitionproperties.Receive;
-import org.woped.bpel.gui.transitionproperties.Reply;
-import org.woped.bpel.gui.transitionproperties.Wait;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
-import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.SimulationModel;
@@ -66,10 +58,17 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDUndoManager;
+import org.woped.editor.controller.bpel.Assign;
+import org.woped.editor.controller.bpel.Empty;
+import org.woped.editor.controller.bpel.Invoke;
+import org.woped.editor.controller.bpel.Receive;
+import org.woped.editor.controller.bpel.Reply;
+import org.woped.editor.controller.bpel.Wait;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.pnml.ArcType;
+import org.woped.pnml.DimensionType;
+import org.woped.pnml.GraphicsSimpleType;
 import org.woped.pnml.NetType;
-import org.woped.pnml.NetType.Page;
 import org.woped.pnml.NodeType;
 import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.OrganizationUnitType;
@@ -92,6 +91,7 @@ import org.woped.pnml.TVariable;
 import org.woped.pnml.TVariables;
 import org.woped.pnml.TWait;
 import org.woped.pnml.TransitionType;
+import org.woped.pnml.NetType.Page;
 import org.woped.translations.Messages;
 
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
@@ -295,8 +295,7 @@ public class PNMLImport {
 			simulations = null;
 			boolean savedFlag = true;
 			currentNet = pnml.getNetArray(i);
-			editor[i] = mediator.createEditor(
-					AbstractModelProcessor.MODEL_PROCESSOR_PETRINET, true, showUI);
+			editor[i] = mediator.createEditor(true, showUI);
 			if(showUI){
 				if (((WoPeDUndoManager) editor[i].getGraph().getUndoManager()) != null) {
 
@@ -356,16 +355,49 @@ public class PNMLImport {
 										}
 								// Only if also the remaining information is
 								// available,
-								// try to import the width of the tree view
-								if (currentNet.getToolspecificArray(j)
-										.isSetTreeWidth())
-									layout.setTreeViewWidth(currentNet
-											.getToolspecificArray(j)
-											.getTreeWidth());
-								((EditorVC) editor[i])
-										.setSavedLayoutInfo(layout);
+								// try to import the width of the tree view and the height of the overview panel
+									if (currentNet.getToolspecificArray(j).isSetTreeWidth()){
+										GraphicsSimpleType bounds = currentNet.getToolspecificArray(j).getBounds();
+										DimensionType dimension = bounds.getDimension();
+										int x =(int) (dimension.getX()).doubleValue();
+										x = x - currentNet.getToolspecificArray(j).getTreeWidth();
+										layout.setTreeViewWidthRight(x);
+									} else if (currentNet.getToolspecificArray(j).isSetTreeWidthRight()){
+										layout.setTreeViewWidthRight(currentNet.getToolspecificArray(j).getTreeWidthRight());
+									}
+									else {
+										layout.setTreeViewWidthRight(currentNet
+												.getToolspecificArray(j).getBounds()
+												.getDimension().getX().intValue() - 100);										
+									}
+									
+									if(currentNet.getToolspecificArray(j).isSetOverviewPanelVisible()){
+										layout.setOverviewPanelVisible(currentNet.getToolspecificArray(j).getOverviewPanelVisible());
+									}else{
+										layout.setOverviewPanelVisible(true);
+									}
+									
+									if (currentNet.getToolspecificArray(j).isSetTreeHeightOverview()){
+										if(currentNet.getToolspecificArray(j).getTreeHeightOverview() < 1){
+											layout.setTreeHeightOverview(100);
+										}else{
+										layout.setTreeHeightOverview(currentNet.getToolspecificArray(j).getTreeHeightOverview());
+										}
+									}else{
+										layout.setTreeHeightOverview(100);
+									}
+									
+									if(currentNet.getToolspecificArray(j).isSetTreePanelVisible()){
+
+										layout.setTreePanelVisible(currentNet.getToolspecificArray(j).getTreePanelVisible());
+											
+									}else{
+										layout.setTreePanelVisible(true);
+									}
+									
+									((EditorVC) editor[i]).getEditorPanel().setSavedLayoutInfo(layout);
+								}
 							}
-						}
 						if (currentNet.getToolspecificArray(j).isSetResources()) {
 							// ResourceMapType resourceMap =
 							// currentNet.getToolspecificArray(j).getResources().getResourceMap();
@@ -591,7 +623,7 @@ public class PNMLImport {
 		for (int i = 0; i < places.length; i++) {
 			map = CreationMap.createMap();
 			map.setEditOnCreation(false);
-			map.setType(PetriNetModelElement.PLACE_TYPE);
+			map.setType(AbstractPetriNetElementModel.PLACE_TYPE);
 			try {
 				importNameAndLayout(places[i], map);
 					
@@ -637,7 +669,7 @@ public class PNMLImport {
 					// Create the element using the element factory and the
 					// already configured creation map and add it to the model
 					// element container
-					AbstractElementModel element = ModelElementFactory
+					AbstractPetriNetElementModel element = ModelElementFactory
 							.createModelElement(map);
 					currentContainer.addElement(element);
 				}
@@ -667,7 +699,7 @@ public class PNMLImport {
 		for (int i = 0; i < transitions.length; i++) {
 			map = CreationMap.createMap();
 			map.setEditOnCreation(false);
-			map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+			map.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
 			try {
 				importNameAndLayout(transitions[i], map);
 				try {
@@ -708,7 +740,7 @@ public class PNMLImport {
 											.getOperator().getId());
 								} else if (transitions[i].getToolspecificArray(
 										j).isSetSubprocess()) {
-									map.setType(PetriNetModelElement.SUBP_TYPE);
+									map.setType(AbstractPetriNetElementModel.SUBP_TYPE);
 								}
 								if (transitions[i].getToolspecificArray(j)
 										.isSetTrigger()) {
@@ -837,13 +869,13 @@ public class PNMLImport {
 					// and all but the first such instance are discarded here
 					// because an element
 					// with the same id already exists at this point
-					AbstractElementModel element = processor.createElement(map);
+					AbstractPetriNetElementModel element = processor.createElement(map);
 					currentContainer.addElement(element);
 					LoggerManager.debug(Constants.FILE_LOGGER,
 							" ... Transition (ID:" + map.getId() + ")imported");
 					// increaseCurrent();
 
-					if (element.getType() == PetriNetModelElement.SUBP_TYPE) {
+					if (element.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
 						// The element we just created is a sub-process element
 						// Get the corresponding page from the PNML document
 						// and restore the sub-process elements by recursively
@@ -922,18 +954,33 @@ public class PNMLImport {
 													// available,
 													// try to import the width
 													// of the tree view
-													if (subProcessNet
-															.getToolspecificArray(
-																	j)
-															.isSetTreeWidth())
-														layout
-																.setTreeViewWidth(subProcessNet
-																		.getToolspecificArray(
-																				j)
-																		.getTreeWidth());
-
-													container
-															.setEditorLayoutInfo(layout);
+													if (subProcessNet.getToolspecificArray(j).isSetTreeWidth()){
+														layout.setTreeViewWidthRight(subProcessNet.getToolspecificArray(j).getBounds()
+																		.getDimension().getX().intValue() - subProcessNet.getToolspecificArray(j).getTreeWidth());
+													}
+													
+													if (subProcessNet.getToolspecificArray(j).isSetTreeWidthRight()){
+														layout.setTreeViewWidthRight(subProcessNet.getToolspecificArray(j).getTreeWidthRight());
+													}
+														
+													if(subProcessNet.getToolspecificArray(j).isSetOverviewPanelVisible()){
+														layout.setOverviewPanelVisible(subProcessNet.getToolspecificArray(j).getOverviewPanelVisible());
+													}else{
+														layout.setOverviewPanelVisible(true);
+													}
+													
+													if(subProcessNet.getToolspecificArray(j).isSetTreeHeightOverview()){
+														layout.setTreeHeightOverview(subProcessNet.getToolspecificArray(j).getTreeHeightOverview());
+												
+													}
+													
+													if(subProcessNet.getToolspecificArray(j).isSetTreePanelVisible()){
+														layout.setTreePanelVisible(subProcessNet.getToolspecificArray(j).getTreePanelVisible());
+													}else{
+														layout.setTreePanelVisible(true);
+													}
+													
+													container.setEditorLayoutInfo(layout);
 												}
 											}
 									}
@@ -962,14 +1009,14 @@ public class PNMLImport {
 		processor.setElementContainer(currentContainer);
 
 		for (int i = 0; i < arcs.length; i++) {
-			PetriNetModelElement currentSourceModel = null;
-			PetriNetModelElement currentTargetModel = null;
+			AbstractPetriNetElementModel currentSourceModel = null;
+			AbstractPetriNetElementModel currentTargetModel = null;
 			ArcModel arc = null;
 
 			try {
-				currentSourceModel = (PetriNetModelElement) currentContainer
+				currentSourceModel = (AbstractPetriNetElementModel) currentContainer
 						.getElementById(arcs[i].getSource());
-				currentTargetModel = (PetriNetModelElement) currentContainer
+				currentTargetModel = (AbstractPetriNetElementModel) currentContainer
 						.getElementById(arcs[i].getTarget());
 				String tempID;
 
@@ -1288,7 +1335,7 @@ public class PNMLImport {
 			String elementId) throws Exception {
 		if (elementId != null
 				&& elementContainer.getElementById(elementId) != null
-				&& elementContainer.getElementById(elementId).getType() == PetriNetModelElement.TRANS_OPERATOR_TYPE) {
+				&& elementContainer.getElementById(elementId).getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
 			return true;
 		} else {
 			return false;

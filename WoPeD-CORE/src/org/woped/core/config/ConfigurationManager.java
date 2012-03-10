@@ -3,20 +3,11 @@ package org.woped.core.config;
 
 public class ConfigurationManager
 {
-	private static boolean								runAsApplet					= false;
     private static IGeneralConfiguration             	configuration       		= null;
     private static IMetricsConfiguration				metricsConfiguration 		= null;
     private static DefaultStaticConfiguration 			staticConfiguration 		= new DefaultStaticConfiguration();
     private static DefaultStaticMetricsConfiguration	staticMetricsConfiguration 	= new DefaultStaticMetricsConfiguration();
     
-    public ConfigurationManager(boolean runAsApplet) {
-    	ConfigurationManager.runAsApplet = runAsApplet;  	
-    }
-    
-    public static boolean isApplet() {
-    	return runAsApplet;
-    }
-        
     public static IGeneralConfiguration getConfiguration()
     {
         if (configuration == null)

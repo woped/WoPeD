@@ -5,15 +5,11 @@ import java.awt.Color;
 import org.woped.core.model.CreationMap;
 
 
+@SuppressWarnings("serial")
 public abstract class CombiOperatorTransitionModel 
 	extends OperatorTransitionModel 
 {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public CombiOperatorTransitionModel(CreationMap map, int operatorType)
+    public CombiOperatorTransitionModel(CreationMap map, int operatorType)
     {
     	super(map,operatorType);
     }

@@ -26,7 +26,6 @@ import java.awt.Point;
 import java.util.Map;
 
 import org.jgraph.graph.DefaultPort;
-import org.woped.core.model.AbstractElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
@@ -67,7 +66,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     
     public static final String 	  OPERATOR_SEPERATOR_TRANSITION = INNERID_SEPERATOR + "op" + INNERID_SEPERATOR; 
     
-    public static final String    OPERATOR_SEPERATOR_PLACE = "CENTER" + INNERID_SEPERATOR + "PLACE" + INNERID_SEPERATOR;
+    public static final String    OPERATOR_SEPERATOR_PLACE = "P" + INNERID_SEPERATOR + "CENTER" + INNERID_SEPERATOR;
 
     public static final int       AND_SPLIT_TYPE        = 101;
 
@@ -229,11 +228,11 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     //! @param sourceModel specifies the source model of the arc that has been created
     public void registerIncomingConnection(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel sourceModel)
+    		AbstractPetriNetElementModel sourceModel)
     {
     	// get simple trans
     	Object simpleTransId = getSimpleTransContainer().getElementsByType(
-    			PetriNetModelElement.TRANS_SIMPLE_TYPE)
+    			AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
     			.keySet().iterator().next();
     	TransitionModel simpleTrans;
     	if ((simpleTrans = (TransitionModel) getElement(simpleTransId)) == null)
@@ -258,12 +257,12 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     //! @param targetModel specifies the target model of the arc that has been created
     public void registerOutgoingConnection(
     		PetriNetModelProcessor processor,    		
-    		AbstractElementModel targetModel)
+    		AbstractPetriNetElementModel targetModel)
     {
 		// get simple trans
 		Object simpleId = getSimpleTransContainer()
 				.getElementsByType(
-						PetriNetModelElement.TRANS_SIMPLE_TYPE)
+						AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
 				.keySet().iterator().next();
 		TransitionModel simpleTrans;
 		if ((simpleTrans = (TransitionModel) getElement(simpleId)) == null)
@@ -284,7 +283,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     //! @param otherModel specifies the model of the object the connection to which has been removed    
     public void registerOutgoingConnectionRemoval(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel otherModel)
+    		AbstractPetriNetElementModel otherModel)
     {}
     
     //! This method is called when an incoming arc is deleted from the model
@@ -295,7 +294,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     //! @param otherModel specifies the model of the object the connection to which has been removed    
     public void registerIncomingConnectionRemoval(
     		PetriNetModelProcessor processor,
-    		AbstractElementModel otherModel)
+    		AbstractPetriNetElementModel otherModel)
     {}
 
     private TransitionModel createSimpleTransition()
@@ -308,7 +307,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         	map.setName(getNameValue());
         else
         	map.setName(getId().toString());
-        map.setType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
+        map.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
         if (getPosition() != null)
         	map.setPosition(getPosition());
         else
@@ -347,7 +346,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
 
     public int getType()
     {
-        return PetriNetModelElement.TRANS_OPERATOR_TYPE;
+        return AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE;
     }
 
     /**
@@ -386,7 +385,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         CreationMap map = CreationMap.createMap();
         map.setId(OPERATOR_SEPERATOR_PLACE + getId());
         map.setName(getNameValue());
-        map.setType(PetriNetModelElement.PLACE_TYPE);
+        map.setType(AbstractPetriNetElementModel.PLACE_TYPE);
         map.setPosition(getPosition());
         centerPlace = (PlaceModel) ModelElementFactory.createModelElement(map);
         getSimpleTransContainer().addElement(centerPlace);
@@ -419,7 +418,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         return centerPlace;
     }
 
-    public AbstractElementModel addElement(AbstractElementModel element)
+    public AbstractPetriNetElementModel addElement(AbstractPetriNetElementModel element)
     {
         return getSimpleTransContainer().addElement(element);
     }
@@ -429,9 +428,9 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
         getSimpleTransContainer().addReference(ModelElementFactory.createArcModel(arcId, sourceId, targetId));
     }
 
-    public AbstractElementModel getElement(Object elementId)    
+    public AbstractPetriNetElementModel getElement(Object elementId)    
     {
-        return (AbstractElementModel) getSimpleTransContainer().getElementById(elementId);
+        return (AbstractPetriNetElementModel) getSimpleTransContainer().getElementById(elementId);
     }
     
     //! Check whether our only inner transition so far is unused
@@ -441,8 +440,8 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     {
     	TransitionModel result = null;
     	
-    	Map<String, AbstractElementModel> existingTransitions = getSimpleTransContainer().getElementsByType(
-				PetriNetModelElement.TRANS_SIMPLE_TYPE);
+    	Map<String, AbstractPetriNetElementModel> existingTransitions = getSimpleTransContainer().getElementsByType(
+				AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
     	if (existingTransitions.size() == 1)
     	{
     		// One single transition exists
@@ -450,8 +449,8 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     		// If so, discard it
     		result = (TransitionModel)getSimpleTransContainer().getElementById(
     				existingTransitions.keySet().iterator().next());
-    		Map<String, AbstractElementModel> sourceElements = getSimpleTransContainer().getSourceElements(result.getId()); 
-    		Map<String, AbstractElementModel> targetElements = getSimpleTransContainer().getTargetElements(result.getId());     		
+    		Map<String, AbstractPetriNetElementModel> sourceElements = getSimpleTransContainer().getSourceElements(result.getId()); 
+    		Map<String, AbstractPetriNetElementModel> targetElements = getSimpleTransContainer().getTargetElements(result.getId());     		
     		if (((sourceElements!=null)&&(sourceElements.size()>0))||
     			((targetElements!=null)&&(targetElements.size()>0)))
     			result = null;
@@ -486,7 +485,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     public void setNameValue(String name){
     	getNameModel().setUserObject(name);
     	if(simpleTransCounter>0){
-    		for(AbstractElementModel aem: simpleTransContainer.getRootElements()){
+    		for(AbstractPetriNetElementModel aem: simpleTransContainer.getRootElements()){
     			if(aem.getRootOwningContainer().getOwningElement() == this)
     				aem.setNameValue(name);
     		}

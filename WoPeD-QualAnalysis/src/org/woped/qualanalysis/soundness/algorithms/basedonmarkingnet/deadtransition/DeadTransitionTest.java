@@ -6,8 +6,8 @@ import java.util.Set;
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.AbstractMarkingNetTest;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.Arc;
+import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
-import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 /**
  * @see IDeadTransitionTest
@@ -18,10 +18,10 @@ public class DeadTransitionTest extends AbstractMarkingNetTest implements IDeadT
 
 	/**
 	 * 
-	 * @param mNet MarkingNet the algorithm is based on
+	 * @param iMarkingNet MarkingNet the algorithm is based on
 	 */
-    public DeadTransitionTest(MarkingNet mNet) {
-        super(mNet);
+    public DeadTransitionTest(IMarkingNet markingNet) {
+        super(markingNet);
     }
 
     /**
@@ -30,23 +30,32 @@ public class DeadTransitionTest extends AbstractMarkingNetTest implements IDeadT
     @Override
     public Set<TransitionNode> getDeadTransitions() {
         Set<TransitionNode> switchableTransitions = new HashSet<TransitionNode>();
-        Set<TransitionNode> deadTransitions = new HashSet<TransitionNode>();
+        Set<TransitionNode> deadTransitions       = new HashSet<TransitionNode>();
 
-        // look for all switchable transitions
-        for (Marking marking : mNet.getMarkings()) {
-            for (Arc arc : marking.getSuccessors()) {
-                switchableTransitions.add(arc.getTrigger());
-            }
-        }
+        switchableTransitions = getSwitchableTransitions();
 
         // loop over all transitions. transition is not switchable -> dead transition
-        for (int i = 0; i < mNet.getTransitions().length; i++) {
-            if (!switchableTransitions.contains(mNet.getTransitions()[i])) {
-                deadTransitions.add(mNet.getTransitions()[i]);
-            }
+        if (mNet.getTransitions() != null) {
+        	for (int i = 0; i < mNet.getTransitions().length; i++) {
+            	if (!switchableTransitions.contains(mNet.getTransitions()[i])) {
+                	deadTransitions.add(mNet.getTransitions()[i]);
+            	}
+        	}
         }
         return deadTransitions;
 
     }
+
+	public Set<TransitionNode> getSwitchableTransitions() {
+        Set<TransitionNode> switchableTransitions = new HashSet<TransitionNode>();
+        
+		// look for all switchable transitions
+        for (Marking marking : mNet.getMarkings()) {
+            for (Arc arc : marking.getSuccessors()) {
+            	switchableTransitions.add(arc.getTrigger());
+            }
+        }
+        return switchableTransitions;
+	}
 
 }

@@ -19,7 +19,8 @@ public class DetailsMouseListener implements MouseListener {
 
 	private static final Cursor HAND_CURSOR = new Cursor(Cursor.HAND_CURSOR);
 
-	private static final Cursor DEFAULT_CURSOR = new Cursor(Cursor.DEFAULT_CURSOR);
+	private static final Cursor DEFAULT_CURSOR = new Cursor(
+			Cursor.DEFAULT_CURSOR);
 
 	private SideBar sideBar;
 
@@ -40,18 +41,63 @@ public class DetailsMouseListener implements MouseListener {
 		this.beginnerPanel = beginnerPanel;
 	}
 
-	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (!componentsAlreadyAdded) {
 			beginnerPanel.addComponents();
 			componentsAlreadyAdded = true;
 		}
+
+		// start of adaption
+		// (Saskia Kurz, Dec 2011)
+
+		/* user has navigated to Soundness Page
+		 * -> second button has to be selected
+		 * -> third button must be disabled
+		 * if the petrinet doesn't fulfill the workflow net criteria,
+		 * there's only one page for details
+		 * -> same state of the buttons!
+		 */
+		if (beginnerPanel.getClass().toString().endsWith("SoundnessPage") ||
+				beginnerPanel.getClass().toString().endsWith("WorkflowPage")) {
+			
+			// 2nd button selected
+			beginnerPanel.j1.setSelected(false);
+			beginnerPanel.j2.setSelected(true);
+			beginnerPanel.j3.setSelected(false);
+			
+			// button 1 + 2 enabled
+			beginnerPanel.j1.setEnabled(true);
+			beginnerPanel.j2.setEnabled(true);
+			beginnerPanel.j3.setEnabled(false);
+			
+			/* if the user has navigated from the Soundness Page
+			 * to any of the pages with further details,
+			 * all the buttons have to be enabled for backward navigation
+			 * 
+			 */
+			
+		} else {
+			// 3rd button selected
+			beginnerPanel.j1.setSelected(false);
+			beginnerPanel.j2.setSelected(false);
+			beginnerPanel.j3.setSelected(true);
+			
+			// all the buttons enabled
+			beginnerPanel.j1.setEnabled(true);
+			beginnerPanel.j2.setEnabled(true);
+			beginnerPanel.j3.setEnabled(true);
+		}
+
+		// end of adaption
+
 		JPanel beginnerContainer = sideBar.getBeginnerContainer();
 		beginnerContainer.removeAll();
 		beginnerContainer.add(beginnerPanel);
 		beginnerContainer.updateUI();
 		beginnerPanel.cleanHiglights();
+
 		((JLabel) e.getSource()).setCursor(DEFAULT_CURSOR);
+
 	}
 
 	@Override

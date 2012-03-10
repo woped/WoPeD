@@ -1,23 +1,16 @@
 ﻿package org.woped.editor.controller.vc;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,24 +18,16 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Vector;
 
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTree;
-import javax.swing.border.LineBorder;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 import javax.swing.tree.TreeNode;
 
+import org.apromore.manager.model_portal.EditSessionType;
 import org.jgraph.event.GraphModelEvent;
 import org.jgraph.event.GraphModelListener;
 import org.jgraph.event.GraphSelectionEvent;
@@ -58,37 +43,27 @@ import org.jgraph.graph.ParentMap;
 import org.jgraph.graph.Port;
 import org.jgraph.graph.PortView;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractMarqueeHandler;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewListener;
-import org.woped.core.gui.IEditorAware;
-import org.woped.core.model.AbstractElementModel;
-import org.woped.core.model.AbstractModelProcessor;
+import org.woped.core.gui.ITokenGameController;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.UMLModelProcessor;
-import org.woped.core.model.petrinet.EditorLayoutInfo;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PetriNetModelElement;
 import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.model.petrinet.ResourceClassModel;
-import org.woped.core.model.petrinet.ResourceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
-import org.woped.core.model.uml.AbstractUMLElementModel;
-import org.woped.core.model.uml.ActivityModel;
-import org.woped.core.model.uml.StateModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
@@ -96,7 +71,6 @@ import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorClipboard;
 import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.controller.PetriNetMarqueeHandler;
-import org.woped.editor.controller.UMLMarqueeHandler;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDJGraph;
 import org.woped.editor.controller.WoPeDUndoManager;
@@ -104,21 +78,16 @@ import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.graphbeautifier.AdvancedDialog;
 import org.woped.editor.graphbeautifier.SGYGraph;
 import org.woped.editor.gui.IEditorProperties;
-import org.woped.editor.gui.OverviewPanel;
-import org.woped.editor.orientation.EditorSize;
-import org.woped.editor.orientation.Orientation;
 import org.woped.editor.view.ViewFactory;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
-import org.woped.qualanalysis.sidebar.SideBar;
-import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
 import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
 import org.woped.qualanalysis.simulation.controller.TokenGameController;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.StructuralAnalysis;
+import org.woped.qualanalysis.structure.components.ArcConfiguration;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.translations.Messages;
-import org.woped.understandability.NetColorScheme;
 
 /*
  * 
@@ -147,2440 +116,2072 @@ import org.woped.understandability.NetColorScheme;
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  * <br>
  * 
- *         The Editor is the basic Class for Modelling Perti-Nets. Each Editor contains one Petri-Net (Model), and one WoPeDGraph (JGraph).
+ *         The Editor is the basic Class for Modelling Perti-Nets. Each Editor
+ *         contains one Petri-Net (Model), and one WoPeDGraph (JGraph).
  * 
  * 
  *         Created on 29.04.2003
  */
 
-@SuppressWarnings("serial")
-public class EditorVC extends JPanel implements KeyListener, GraphModelListener, ClipboardOwner,
-        GraphSelectionListener, IEditor, InternalFrameListener {
-    // ModelID for DB
-    private int modelid = -1;
+public class EditorVC implements KeyListener,
+		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor,
+		InternalFrameListener {
+	// ModelID for DB
+	private int modelid = -1;
+	
+	private EditorPanel editorPanel;
 
-    private String id = null;
-    private  BasicMarqueeHandler marqueehandler;
-    
-    private int modelProcessorType;
-    
-    private SubProcessModel model = null;
+	private String id = null;
+	private BasicMarqueeHandler marqueehandler;
+
+	private boolean doConfirmation = true;
 
 	private boolean undoSupport;
 
 	public static final String ID_PREFIX = "EDITOR_VC_";
 
-    private JComponent container = null;
+	public ViewFactory viewFactory = new ViewFactory(this);
 
-    public static final ViewFactory viewFactory = new ViewFactory();
+	// GRAPHICAL Components
+	protected WoPeDJGraph m_graph = null;
 
-    // GRAPHICAL Components
-    private WoPeDJGraph m_graph = null;
+	// Petri net model
+	private PetriNetModelProcessor modelProcessor = null;
 
-    private JScrollPane m_scrollPane = null;
+	private String m_filePath = null;
 
-    // Petrinet
-    // private PetriNetModelProcessor m_itsPetriNet = null;
-    private AbstractModelProcessor modelProcessor = null;
+	private int m_defaultFileType = -1;
 
-    private String m_filePath = null;
+	// zoom
+	public static final double MIN_SCALE = 0.2;
 
-    private int m_defaultFileType = -1;
+	public static final double MAX_SCALE = 5;
 
-    // zoom
-    public static final double MIN_SCALE = 0.2;
+	private boolean copyFlag = true;
+	// not needed private boolean m_keyPressed = false;
+	private int m_createElementType = -1;
 
-    public static final double MAX_SCALE = 5;
+	private boolean m_saved = true;
 
-    // rotate
-    private Orientation m_orientation = null;
+	// not needed private double m_zoomScale = 1;
+	private boolean m_drawingMode = false;
 
-    // not needed private boolean m_keyPressed = false;
-    private int m_createElementType = -1;
+	private boolean m_reachGraphEnabled = false;
 
-    private boolean m_saved = true;
+	private boolean tokenGameEnabled = false;
 
-    // not needed private double m_zoomScale = 1;
-    private boolean m_drawingMode = false;
+	private EditSessionType m_apro_settings = null;
 
-    private boolean m_reachGraphEnabled = false;
+	private Point2D m_lastMousePosition = null;
 
-    private boolean m_TokenGameEnabled = false;
-    
-    private boolean tStarEnabled = false;
+	private PropertyChangeSupport m_propertyChangeSupport = null;
 
-    private boolean m_UnderstandabilityColoringEnabled = false;
+	private EditorClipboard m_clipboard = null;
 
-    private EditorLayoutInfo m_EditorLayoutInfo = null;
+	private boolean smartEditActive = true;
 
-    private boolean m_tokenGameMode = false;
+	private IEditorProperties elementProperties = null;
 
-    private Point2D m_lastMousePosition = null;
+	// ViewControll
+	private Vector<IViewListener> viewListener = new Vector<IViewListener>(1, 3);
 
-    private PropertyChangeSupport m_propertyChangeSupport = null;
+	// ! Store a reference to the application mediator.
+	// ! It is used to create a new subprocess editor if required
+	public AbstractApplicationMediator m_centralMediator = null;
+	
 
-    private EditorClipboard m_clipboard = null;
+	// Metrics team variables
 
-    private boolean smartEditActive = true;
+	ModelElementContainer tempContainer = null;
 
-    private IEditorProperties elementProperties = null;
+	public void closeEditor() {
+		if (getGraph() == null)
+			return;
+		this.fireViewEvent(new ViewEvent(this,
+				AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE,
+				null));
+		clearYourself();
+		System.gc();
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+		}
+	}
 
-    // ViewControll
-    private Vector<IViewListener> viewListener = new Vector<IViewListener>(1, 3);
+	private TokenGameController m_tokenGameController;
 
-    private EditorStatusBarVC m_statusbar;
-
-    // ! Stores a reference to the tree view and overview window
-    // ! for the net
-    // ! It is kept as a member to be able to show / hide this part of the
-    // ! editor window as required
-    private JSplitPane m_leftSideTreeView = null;
-
-    private JSplitPane m_mainSplitPane = null;
-
-    private JSplitPane mainsplitPaneWithAnalysisBar = null;
-    
-    private JTree m_treeObject = null;
-
-    private GraphTreeModel m_treeModel = null;
-
-    private static final int m_splitPosition = 200;
-
-    private static final int m_splitSize = 10;
-
-    private IEditor m_parentEditor = null;
-
-    private EditorSize editorSize = null;
-
-    // for subprocess
-    private AbstractElementModel m_subprocessInput = null;
-    private AbstractElementModel m_subprocessOutput = null;
-
-    // ! Store a reference to the application mediator.
-    // ! It is used to create a new subprocess editor if required
-    private AbstractApplicationMediator m_centralMediator = null;
-
-    private NetColorScheme m_understandColoring = null;
-    
-    private boolean dead = false;
-    
-    // Metrics team variables
-
-    private boolean analysisBarVisible = false;
-	private boolean automaticResize = false;
-    
-    private SideBar analysisSideBar = null;
-    private JCheckBox autoRefresh = null;
-	private JCheckBox tStarCheckBox = null;
-    
-    public boolean isDead(){
-    	return dead;
-    }
-
-    public NetColorScheme getM_understandColoring() {
-        return m_understandColoring;
-    }
-
-    public void closeEditor() {
-    	if(getGraph() == null) return;
-        this.fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE, null));
-        clearYourself();
-        System.gc();
-        try{Thread.sleep(1000);}catch(Exception e){}
-    }
-
-    private TokenGameController m_tokenGameController;
-
-    public GraphTreeModel GetTreeModel() {
-        return m_treeModel;
-    }
-
-    public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, boolean undoSupport,
-            AbstractApplicationMediator mediator) {
-    	this(id, clipboard, modelProcessorType, undoSupport,
-                 mediator, true);
-    }
-    
-    /**
-     * TODO: DOCUMENTATION (silenco)
-     * 
-     * @param clipboard
-     */
-    public EditorVC(String id, EditorClipboard clipboard, int modelProcessorType, boolean undoSupport,
-            AbstractApplicationMediator mediator, boolean loadUI) {
-        this.editorSize = new EditorSize(this);
-        this.m_orientation = new Orientation();
-        this.m_centralMediator = mediator;
-        this.m_EditorLayoutInfo = new EditorLayoutInfo();
-        this.m_EditorLayoutInfo.setVerticalLayout(isRotateSelected());
-        this.modelProcessorType = modelProcessorType;
-        this.undoSupport = undoSupport;
-        // initialize
-        this.setLayout(new BorderLayout());
-        this.m_clipboard = clipboard;
-       
-        if (modelProcessorType == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
-            marqueehandler = new PetriNetMarqueeHandler(this);
-            this.modelProcessor = new PetriNetModelProcessor();
-            if(loadUI)this.m_graph = new WoPeDJGraph(new DefaultGraphModel(), marqueehandler, undoSupport ? new WoPeDUndoManager(
-                    this) : null, viewFactory, modelProcessorType);
-        } else
-            if (modelProcessorType == AbstractModelProcessor.MODEL_PROCESSOR_UML) {
-                marqueehandler = new UMLMarqueeHandler(this);
-                this.modelProcessor = new UMLModelProcessor();
-                if(loadUI)this.m_graph = new WoPeDJGraph(new DefaultGraphModel(), marqueehandler,
-                        undoSupport ? new WoPeDUndoManager(this) : null, viewFactory, modelProcessorType);
-            }
-        this.m_propertyChangeSupport = new PropertyChangeSupport(this);
-        this.m_propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
-        this.viewListener = new Vector<IViewListener>();
-        this.id = id;
-        // Listener for the graph
-        if(loadUI){
-        	getGraph().getSelectionModel().addGraphSelectionListener(VisualController.getInstance());
-	        getGraph().getSelectionModel().addGraphSelectionListener(this);
-	        getGraph().getModel().addGraphModelListener(this);
-	        getGraph().addKeyListener(this);
-
-        // Future Feature with treeview
-        m_treeModel = new GraphTreeModel(this);
-        m_scrollPane = new JScrollPane(getGraph());
-        // Element Tree
-        m_treeObject = new JTree(m_treeModel);
-        m_treeObject.setCellRenderer(new NetInfoTreeRenderer());
-        getGraph().getModel().addGraphModelListener(m_treeModel);
-        m_treeObject.setRootVisible(false);
-        m_treeObject.setShowsRootHandles(true);
-        // Handle selection of tree items
-        // by selecting corresponding item in graph
-        GraphTreeModelSelector selectionHandler = new GraphTreeModelSelector(this, m_treeObject, m_centralMediator,
-                false);
-        m_treeObject.addTreeSelectionListener(selectionHandler);
-        getGraph().getSelectionModel().addGraphSelectionListener(selectionHandler);
-        JScrollPane sTree = new JScrollPane(m_treeObject);
-        JPanel treePanel = new JPanel(new GridBagLayout());
-        treePanel.add(new JLabel(Messages.getString("TreeView.Elements.Title")), new GridBagConstraints(0, 0, 1, 1,
-                0.0, 0.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-        treePanel.add(sTree, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST,
-                GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
-        // Overview Panel
-        OverviewPanel overview = new OverviewPanel(this);
-        JPanel overviewPanel = new JPanel(new GridBagLayout());
-        overviewPanel.add(new JLabel(Messages.getString("TreeView.Overview.Title")), new GridBagConstraints(0, 0, 1, 1,
-                0.0, 0.0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-        overviewPanel.add(overview, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST,
-                GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
-        // Splits
-        m_leftSideTreeView = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overviewPanel, treePanel);
-        m_leftSideTreeView.setDividerLocation(100);
-        m_mainSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_leftSideTreeView, m_scrollPane);
-        // Initially, show side tree to correctly initialize default divider
-        // position
-        m_mainSplitPane.setOneTouchExpandable(true);
-        m_mainSplitPane.setDividerSize(m_splitSize);
-
-        add(m_mainSplitPane);
-        m_mainSplitPane.addPropertyChangeListener(VisualController.getInstance());
-        Dimension d = m_leftSideTreeView.getMinimumSize();
-        d.width = 0;
-        m_leftSideTreeView.setMinimumSize(d);
-        setSideTreeViewVisible(false);
-        m_mainSplitPane.setLastDividerLocation(m_splitPosition);
-
-        if (modelProcessorType == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
-            this.m_tokenGameController = new TokenGameController(this);
-        }
-
-        // NetColorScheme
-        m_understandColoring = new NetColorScheme();
-        updateUI();
-        }
-    }
-
-    public EditorVC(String string, EditorClipboard clipboard, int modelProcessorType, boolean undoSupport,
-            IEditor parentEditor, SubProcessModel model, AbstractApplicationMediator mediator) {
-        this(string, clipboard, modelProcessorType, undoSupport, mediator);
-        boolean origStatus = parentEditor.isSaved();
-        this.model = model;
-
-        setParentEditor(parentEditor);
-        m_graph.setBorder(new LineBorder(DefaultStaticConfiguration.DEFAULT_SUBPROCESS_FRAME_COLOR, 3, false));
-
-        setName("Subprocess " + model.getNameValue());
-
-        // Switch editor to use the model element container of the subprocess
-        ModelElementContainer container = model.getSimpleTransContainer();
-        getModelProcessor().setElementContainer(container);
-        model.getCreationMap().setSubElementContainer(container);
-
-        // Es wurde vor den oeffnen geprueft, dass genau ein Ein- und ein
-        // Ausgang
-        // vorhanden ist!
-
-        // Get list of input nodes
-        Set<AbstractElementModel> sources = NetAlgorithms.getDirectlyConnectedNodes(model,
-                NetAlgorithms.connectionTypeINBOUND);
-        Iterator<AbstractElementModel> sourceKeyIterator = sources.iterator();
-        AbstractElementModel sourceModel = sourceKeyIterator.next();
-        setSubprocessInput(sourceModel);
-        // Check whether the source element already exists
-        if (container.getElementById(sourceModel.getId()) == null) {
-            CreationMap sourceCreationMap = sourceModel.getCreationMap();
-            sourceCreationMap.setPosition(10, 160);
-            sourceCreationMap.setReadOnly(true);
-            sourceCreationMap.setNamePosition(30, 200);
-            sourceCreationMap.setEditOnCreation(false);
-            sourceCreationMap.setUpperElement(sourceModel);
-            createElement(sourceCreationMap, true, true);
-        } else {
-            container.getElementById(sourceModel.getId()).setNameValue(getSubprocessInput().getNameValue());
-            container.getElementById(sourceModel.getId()).setReadOnly(true);
-        }
-
-        // Ausgang
-        // Get list of output nodes
-        Set<AbstractElementModel> targets = NetAlgorithms.getDirectlyConnectedNodes(model,
-                NetAlgorithms.connectionTypeOUTBOUND);
-        Iterator<AbstractElementModel> targetKeyIterator = targets.iterator();
-        AbstractElementModel targetModel = targetKeyIterator.next();
-        setSubprocessOutput(targetModel);
-        // Check whether the target element already exists
-        if (container.getElementById(targetModel.getId()) == null) {
-            CreationMap targetCreationMap = targetModel.getCreationMap();
-            targetCreationMap.setPosition(520, 160);
-            targetCreationMap.setReadOnly(true);
-            targetCreationMap.setNamePosition(540, 200);
-            targetCreationMap.setEditOnCreation(false);
-            targetCreationMap.setUpperElement(targetModel);
-            createElement(targetCreationMap, true, true);
-
-        } else {
-            container.getElementById(targetModel.getId()).setNameValue(getSubprocessOutput().getNameValue());
-            container.getElementById(targetModel.getId()).setReadOnly(true);
-        }
-
-        // We must create a JGraph model
-        // representation of the new model element container
-        // Disable undo while doing so just as we do for loading a PNML file
-        if (getGraph().getUndoManager() != null) {
-            ((WoPeDUndoManager) getGraph().getUndoManager()).setEnabled(false);
-        }
-        getGraph().drawNet(getModelProcessor());
-        if (getGraph().getUndoManager() != null) {
-            ((WoPeDUndoManager) getGraph().getUndoManager()).setEnabled(true);
-        }
-        updateNet();
-        // Clear selection, we do not want newly created elements to be selected
-        getGraph().clearSelection();
-
-        // Keep the tree model of the parent editor up to date
-        if ((parentEditor != null) && (m_treeModel != null) && (parentEditor instanceof EditorVC)) {
-            m_treeModel.addTreeModelListener(((EditorVC) parentEditor).GetTreeModel());
-        }
-
-        // Set some default size for the subprocess window
-        setPreferredSize(new Dimension(600, 400));
-        // Try to retrieve saved layout information from the Model Element
-        // container
-        // and set it for this editor window
-        EditorLayoutInfo layoutInfo = container.getEditorLayoutInfo();
-        if (layoutInfo != null) {
-            setSavedLayoutInfo(layoutInfo);
-        }
-        // Copy resources from parentEditor to subprocessEditor
-        Vector<ResourceModel> res = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getResources();
-        ((PetriNetModelProcessor) (getModelProcessor())).setResources(res);
-
-        HashMap<String, Vector<String>> mapping = ((PetriNetModelProcessor) (parentEditor.getModelProcessor()))
-                .getResourceMapping();
-        ((PetriNetModelProcessor) (getModelProcessor())).setResourceMapping(mapping);
-
-        Vector<ResourceClassModel> units = ((PetriNetModelProcessor) (parentEditor.getModelProcessor()))
-                .getOrganizationUnits();
-        ((PetriNetModelProcessor) (getModelProcessor())).setOrganizationUnits(units);
-
-        Vector<ResourceClassModel> roles = ((PetriNetModelProcessor) (parentEditor.getModelProcessor())).getRoles();
-        ((PetriNetModelProcessor) (getModelProcessor())).setRoles(roles);
-
-        // Restore original "edited" status of parent editor
-        // because creation of source and target places should not
-        // influence the parent model
-        parentEditor.setSaved(origStatus);
-
-        // NetColorScheme
-        m_understandColoring = new NetColorScheme();
-    }
-
-    // IS NOT WORKING YET
-    // /**
-    // * ATTENTION: Be careful with this !!
-    // *
-    // * @param graphModel
-    // * @param marqueehandler
-    // * @param undoManager
-    // * @param viewFactory
-    // * @param modelProcessorType
-    // */
-    // public void changeGraph(DefaultGraphModel graphModel, BasicMarqueeHandler
-    // marqueehandler, WoPeDUndoManager undoManager, ViewFactory viewFactory,
-    // int modelProcessorType)
-    // {
-    // this.remove(getGraph());
-    // this.m_graph = new WoPeDJGraph(graphModel, marqueehandler, undoManager,
-    // viewFactory, modelProcessorType);
-    // if (modelProcessorType ==
-    // AbstractModelProcessor.MODEL_PROCESSOR_PETRINET)
-    // {
-    // this.modelProcessor = new PetriNetModelProcessor();
-    // } else if (modelProcessorType ==
-    // AbstractModelProcessor.MODEL_PROCESSOR_UML)
-    // {
-    // this.modelProcessor = new UMLModelProcessor();
-    // }
-    // getGraph().getSelectionModel().addGraphSelectionListener(VisualController.getInstance());
-    // getGraph().getSelectionModel().addGraphSelectionListener(this);
-    // getGraph().getModel().addGraphModelListener(this);
-    // getGraph().addKeyListener(this);
-    // this.m_scrollPane = new JScrollPane(getGraph());
-    // this.add(m_scrollPane);
-    // }
-
-    
+	public EditorVC(String id, EditorClipboard clipboard,
+			boolean undoSupport,
+			AbstractApplicationMediator mediator) {
+		this(id, clipboard, undoSupport, mediator, true);
+	}
 
 	/**
-     * Updates the Net. For some changes in the Model it's nessecary to call.
-     */
-    public void updateNet() {
-        long begin = System.currentTimeMillis();
-        // Perhaps more needed.
-        getGraph().refreshNet();
-        getGraph().repaint();
-
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "Net updated. (" + (System.currentTimeMillis() - begin) + " ms)");
-    }
-
-    /* ########## ELEMENT CREATION METHODS ########### */
-
-    /**
-     * Creates a Trigger. Needs the ID of the owner transition and the type of the Trigger.
-     * 
-     * @param transitionId
-     * @param triggertype
-     */
-    public TriggerModel createTrigger(CreationMap map) {
-        if (getModelProcessor().getProcessorType() == AbstractModelProcessor.MODEL_PROCESSOR_PETRINET) {
-            AbstractElementModel transition = getModelProcessor().getElementContainer().getElementById(map.getId());
-            if (transition != null && transition instanceof TransitionModel) {
-                if (((TransitionModel) transition).hasTrigger()) {
-                    deleteCell(((TransitionModel) transition).getToolSpecific().getTrigger(), true);
-                }
-
-                if (transition.getParent() instanceof GroupModel) {
-                    GroupModel group = (GroupModel) transition.getParent();
-                    TriggerModel triggerModel = ((PetriNetModelProcessor) getModelProcessor()).newTrigger(map);
-
-                    if (map.getTriggerPosition() != null) {
-                        triggerModel.setPosition(map.getTriggerPosition());
-                    } else {
-                        if (isRotateSelected()) {
-                            triggerModel.setPosition(map.getPosition().x - 25, map.getPosition().y + 10);
-                        } else {
-                            triggerModel.setPosition(map.getPosition().x + 10, map.getPosition().y - 20);
-                        }
-
-                    }
-                    ParentMap pm = new ParentMap();
-                    pm.addEntry(triggerModel, group);
-                    HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
-                    hm.put(group, group.getAttributes());
-
-                    getGraph().getModel().insert(new Object[] { triggerModel }, hm, null, pm, null);
-
-                    return triggerModel;
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * /TODO: documentation
-     * 
-     * @param transition
-     * @param transResourceId
-     * @return
-     */
-    public TransitionResourceModel createTransitionResource(CreationMap map) {
-        AbstractElementModel transition = getModelProcessor().getElementContainer().getElementById(map.getId());
-        if (transition != null && transition instanceof TransitionModel) {
-            if (((TransitionModel) transition).hasResource()) {
-                deleteCell(((TransitionModel) transition).getToolSpecific().getTransResource(), true);
-            }
-
-            if (transition.getParent() instanceof GroupModel) {
-                GroupModel group = (GroupModel) transition.getParent();
-                TransitionResourceModel transResourceModell = ((PetriNetModelProcessor) getModelProcessor())
-                        .newTransResource(map);
-
-                transResourceModell.setPosition(map.getResourcePosition().x, map.getResourcePosition().y);
-                ParentMap pm = new ParentMap();
-                pm.addEntry(transResourceModell, group);
-                HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
-                hm.put(group, group.getAttributes());
-
-                getGraph().getModel().insert(new Object[] { transResourceModell }, hm, null, pm, null);
-
-                return transResourceModell;
-            }
-        }
-        return null;
-    }
-
-    public GraphCell createElement(int type, int additionalType, Point2D p, boolean doNotEdit) {
-        return createElement(type, additionalType, (int) p.getX(), (int) p.getY(), doNotEdit);
-    }
-
-    public GraphCell createElement(int type, int additionalType, int x, int y, boolean doNotEdit) {
-        CreationMap map = CreationMap.createMap();
-        map.setType(type);
-        if (doNotEdit) {
-            map.setEditOnCreation(false);
-        }
-        if (type == OperatorTransitionModel.TRANS_OPERATOR_TYPE || type == AbstractUMLElementModel.OPERATOR_TYPE) {
-            map.setOperatorType(additionalType);
-        }
-        if (type == StateModel.STATE_TYPE) {
-            map.setStateType(additionalType);
-        }
-        if (x != -1 && y != -1) {
-            map.setPosition(x, y);
-        }
-        return createElement(map, true, doNotEdit);
-    }
-
-    /**
-     * TODO: DOCUMENTATION (silenco)
-     * 
-     * @param map
-     * @return
-     */
-    private GraphCell createElement(CreationMap map, boolean insertIntoCache, boolean editNameTag) {
-        if (map.isValid()) {
-            // Create Element, this will assign a new id if none has been defined
-            // This id will be unique even across sub-process borders by prepending the
-            // id of the sub-process
-            AbstractElementModel element = getModelProcessor().createElement(map);
-
-            // ensure that There is an Position
-            if (map.getPosition() != null) {
-                Point point = new Point(map.getPosition().x, map.getPosition().y);
-                // map.setPosition(new IntPair());
-                element.setPosition(getGraph().snap(point));
-            } else
-                if (getLastMousePosition() != null) {
-                    Point point = new Point((int) ((getLastMousePosition().getX() / getGraph().getScale() - element
-                            .getWidth() / 2)), (int) ((getLastMousePosition().getY() / getGraph().getScale() - element
-                            .getHeight() / 2)));
-                    // map.setPosition(new IntPair((Point) getGraph().snap(point)));
-                    element.setPosition(getGraph().snap(point));
-                } else {
-                    map.setPosition(30, 30);
-                }
-
-            if (element instanceof PetriNetModelElement) {
-
-                // Name
-                if (map.getNamePosition() == null) {
-                    if (isRotateSelected()) {
-                        ((PetriNetModelElement) element).getNameModel().setPosition(
-                                (element.getX() + element.getWidth()), (element.getY()) + 1);
-                    } else {
-                        ((PetriNetModelElement) element).getNameModel().setPosition((element.getX() - 1),
-                                (element.getY() + element.getHeight()));
-                    }
-                } else {
-                    ((PetriNetModelElement) element).getNameModel().setPosition(map.getNamePosition().x,
-                            map.getNamePosition().y);
-                }
-                if (map.getName() == null) {
-                    ((PetriNetModelElement) element).setNameValue(element.getId().toString());
-                } else {
-                    ((PetriNetModelElement) element).setNameValue(map.getName());
-                }
-                if (map.getReadOnly() != null) {
-                    ((PetriNetModelElement) element).setReadOnly(map.getReadOnly());
-                }
-                // Grouping
-                GroupModel group = getGraph().groupName(element, ((PetriNetModelElement) element).getNameModel());
-                group.setUngroupable(false);
-                group.add(element);
-                group.add(element.getNameModel());
-                if (insertIntoCache) {
-                    getGraph().getGraphLayoutCache().insert(group);
-                }
-
-                // edit
-                if (editNameTag && ConfigurationManager.getConfiguration().isEditingOnCreation()
-                        && map.isEditOnCreation() && isSmartEditActive()) {
-                    getGraph().startEditingAtCell(((PetriNetModelElement) element).getNameModel());
-                }
-                autoRefreshAnalysisBar();
-                return group;// @@@TODO
-            } else
-                if (element instanceof AbstractUMLElementModel) {
-                    if (element.getType() == AbstractUMLElementModel.ACTIVITY_TYPE && map.getImageIcon() != null) {
-                        ((ActivityModel) element).setIcon(map.getImageIcon());
-                        if (map.getSize() != null) {
-                            ((ActivityModel) element).setSize(map.getSize().getX1(), map.getSize().getX2());
-                        } else {
-                            ((ActivityModel) element).setSize(map.getImageIcon().getIconWidth() + 4, map.getImageIcon()
-                                    .getIconHeight() + 4);
-                        }
-                    }
-                    if (insertIntoCache) {
-                        getGraph().getGraphLayoutCache().insert(element);
-                    }
-                    // edit
-                    if (editNameTag && ConfigurationManager.getConfiguration().isEditingOnCreation()
-                            && map.isEditOnCreation() && isSmartEditActive()) {
-                        getGraph().startEditingAtCell(element);
-                    }
-
-                }
-
-            // getGraph().getGraphLayoutCache().valueForCellChanged(petriNetElement.getNameModel(),
-            // petriNetElement.getNameValue());
-            m_understandColoring.update();
-            return element;
-        } else {
-            LoggerManager.error(Constants.EDITOR_LOGGER, "Could not create Element. CreationMap is NOT VALID");
-            return null;
-        }
-    }
-
-    /**
-     * Creates an Arc. Checks if the requested Arc represents a valid Petri-Net connection.
-     * 
-     * @param source
-     * @param target
-     * @return ArcModel
-     */
-    public ArcModel createArc(Port source, Port target) {
-        String sourceId = ((AbstractElementModel) ((DefaultPort) source).getParent()).getId();
-        String targetId = ((AbstractElementModel) ((DefaultPort) target).getParent()).getId();
-        return createArc(sourceId, targetId);
-    }
-
-    /**
-     * Creates an Arc. Checks if the requested Arc represents a valid Petri-Net connection.
-     * 
-     * @param sourceId
-     * @param targetId
-     * @return
-     */
-    public ArcModel createArc(String sourceId, String targetId) {
-
-        CreationMap map = CreationMap.createMap();
-        map.setArcSourceId(sourceId);
-        map.setArcTargetId(targetId);
-        return createArc(map, true);
-
-    }
-
-    /**
-     * TODO: DOCUMENTATION (silenco, xraven)
-     * 
-     * @param map
-     * @return
-     */
-    public ArcModel createArc(CreationMap map, boolean insertIntoCache) {
-        ArcModel arc = null;
-        String sourceId = map.getArcSourceId();
-        String targetId = map.getArcTargetId();
-        List<?> points = map.getArcPoints();
-        Point2D[] pointArray = new Point2D[points.size()];
-        for (int i = 0; i < points.size(); i++) {
-            if (points.get(i) instanceof Point2D) {
-                pointArray[i] = (Point2D) points.get(i);
-            } else
-                if (points.get(i) instanceof IntPair) {
-                    pointArray[i] = new Point2D.Double(((IntPair) points.get(i)).getX1(), ((IntPair) points.get(i))
-                            .getX2());
-                }
-        }
-
-        // CHECK if connection is valid
-        if (getGraph().isValidConnection(getModelProcessor().getElementContainer().getElementById(sourceId),
-                getModelProcessor().getElementContainer().getElementById(targetId))) {
-            if (!getModelProcessor().getElementContainer().hasReference(sourceId, targetId)) {
-                arc = getModelProcessor().createArc(map.getArcId(), sourceId, targetId, pointArray, true);
-                getGraph().connect(arc, insertIntoCache);
-                // Manually copy arc points
-                for (int i = 0; i < pointArray.length; ++i) {
-                    addPointToArc(arc, pointArray[i]);
-                }
-                // Copy probability state of the creation map
-                arc.setProbability(map.getArcProbability());
-                arc.setDisplayOn(map.getDisplayArcProbability());
-                // If there is a label position, copy it
-                if (map.getArcLabelPosition() != null) {
-                    arc.setLabelPosition(new Point2D.Double(map.getArcLabelPosition().getX(), map.getArcLabelPosition()
-                            .getY()));
-                }
-            } else {
-                LoggerManager.debug(Constants.EDITOR_LOGGER, "Connection already exits. Discarded.");
-            }
-        } else {
-            LoggerManager.warn(Constants.EDITOR_LOGGER, "Requested connection (" + sourceId + " -> " + targetId
-                    + ") is not vaild, did nothing!");
-        }
-
-        m_understandColoring.update();
-
-        if (arc != null) {
-            // arc.setRoute(map.isArcRoute());
-        }
-        autoRefreshAnalysisBar();
-        return arc;
-
-    }
-
-    public void deleteCells(Object[] toDelete) {
-        deleteCells(toDelete, true);
-    }
-
-    /**
-     * TODO: DOCUMENTATION (xraven)
-     * 
-     * @param toDelete
-     * @param withGraph
-     */
-    public void deleteCells(Object[] toDelete, boolean withGraph) {
-        // A single NameModel can't be deleted
-        if (toDelete.length == 1) {
-            if (toDelete[0] instanceof GroupModel) {
-
-            } else {
-                if (toDelete[0] instanceof NameModel) {
-                    return;
-                }
-            }
-        }
-
-        Vector<Object> result = new Vector<Object>();
-        for (int i = 0; i < toDelete.length; i++) {
-
-            if (toDelete[i] instanceof GroupModel && !((GroupModel) toDelete[i]).isUngroupable()) {
-                GroupModel tempGroup = (GroupModel) toDelete[i];
-
-                Object cell = tempGroup;
-                while (cell instanceof GroupModel) {
-                    cell = ((GroupModel) cell).getMainElement();
-                }
-
-                if (cell instanceof AbstractElementModel && !((AbstractElementModel) cell).isReadOnly()) {
-                    result.add(tempGroup);
-                    for (int j = 0; j < tempGroup.getChildCount(); j++) {
-                        result.add(tempGroup.getChildAt(j));
-                    }
-
-                }
-            } else {
-
-                result.add(toDelete[i]);
-            }
-
-        }
-
-        HashSet<Object> uniqueResult = new HashSet<Object>();
-        for (int i = 0; i < result.size(); i++) {
-            uniqueResult.add(result.get(i));
-            if (result.get(i) instanceof AbstractElementModel
-                    && ((AbstractElementModel) result.get(i)).getPort() != null) {
-                Iterator<?> edges = ((AbstractElementModel) result.get(i)).getPort().edges();
-                while (edges.hasNext()) {
-                    uniqueResult.add(edges.next());
-                }
-            }
-        }
-        deleteOnlyCells(uniqueResult.toArray(), withGraph);
-        m_understandColoring.update();
-        autoRefreshAnalysisBar();
-    }
-
-    /**
-     * TODO: DOCUMENTATION (xraven)
-     * 
-     * @param toDelete
-     */
-    public void deleteOnlyCells(Object[] toDelete, boolean withGraph) {
-
-        toDelete = Utils.sortArcsFirst(toDelete);
-        Vector<Object> allPorts = new Vector<Object>();
-        Vector<Object> allCells = new Vector<Object>();
-        for (int i = 0; i < toDelete.length; i++) {
-
-            if (toDelete[i] instanceof ArcModel) {
-                allPorts.add(toDelete[i]);
-                getModelProcessor().removeArc(((ArcModel) toDelete[i]).getId());
-            } else
-                if (toDelete[i] instanceof TriggerModel) {
-                    TransitionModel owner = (TransitionModel) getModelProcessor().getElementContainer().getElementById(
-                            ((TriggerModel) toDelete[i]).getOwnerId());
-                    if (owner != null) {
-                        if (owner.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE
-                                && owner.getToolSpecific().getTransResource() != null) {
-                            owner.getToolSpecific().removeTransResource();
-                        }
-                        owner.getToolSpecific().removeTrigger();
-                    }
-                    allPorts.add(toDelete[i]);
-                } else
-                    if (toDelete[i] instanceof TransitionResourceModel) {
-                        TransitionModel owner = (TransitionModel) getModelProcessor().getElementContainer()
-                                .getElementById(((TransitionResourceModel) toDelete[i]).getOwnerId());
-                        if (owner != null) {
-                            owner.getToolSpecific().removeTransResource();
-                        }
-                        allPorts.add(toDelete[i]);
-                    } else
-                        if (toDelete[i] instanceof NameModel) {
-                            allPorts.add(toDelete[i]);
-                        } else
-                            if (toDelete[i] instanceof GroupModel) {
-                                allPorts.add(toDelete[i]);
-                            } else
-                                if (toDelete[i] instanceof AbstractElementModel) {
-
-                                    AbstractElementModel element = (AbstractElementModel) toDelete[i];
-                                    // if there are trigger, delete their jgraph model
-                                    if (toDelete[i] instanceof TransitionModel) {
-                                        if (((TransitionModel) toDelete[i]).getToolSpecific().getTrigger() != null) {
-                                            deleteCell(((TransitionModel) getModelProcessor().getElementContainer()
-                                                    .getElementById(element.getId())).getToolSpecific().getTrigger(),
-                                                    withGraph);
-                                        }
-                                    }
-
-                                    // if there are connected arcs delete their model
- /*                                   if (element.getChildCount() > 0 && false) {
-                                        Set edges = ((DefaultPort) element.getChildAt(0)).getEdges();
-                                        Iterator edgesIter = edges.iterator();
-                                        while (edgesIter.hasNext()) {
-                                            tempToDelete[0] = edgesIter.next();
-                                            getModelProcessor().removeArc(((ArcModel) tempToDelete[0]).getId());
-                                            if (withGraph) {
-                                                getGraph().getModel().remove(tempToDelete);
-                                            }
-                                        }
-                                    }*/
-                                    allPorts.add(element.getPort());
-                                    allPorts.add(toDelete[i]);
-                                    getModelProcessor().getElementContainer().removeOnlyElement(element.getId());
-
-                                }
-        }
-        if (withGraph) {
-            Vector<Object> allDeletedObjects = new Vector<Object>();
-            allDeletedObjects.addAll(allPorts);
-            allDeletedObjects.addAll(allCells);
-            getGraph().getModel().remove(allDeletedObjects.toArray());
-        }
-        updateNet();
-    }
-
-    public void deleteCell(DefaultGraphCell cell) {
-        deleteCell(cell, true);
-    }
-
-    /**
-     * TODO: DOCUMENTATION (xraven)
-     * 
-     * @param cell
-     */
-    public void deleteCell(DefaultGraphCell cell, boolean withGraph) {
-        if (cell != null) {
-            deleteCells(new Object[] { cell }, withGraph);
-        }
-    }
-
-    /**
-     * Deletes all selected Elements. All connected Arc of selected Elements will be deleted too.
-     */
-    public void deleteSelection() {
-        deleteCells(getGraph().getSelectionCells(), true);
-    }
-
-    /* ########## ELEMENT MODIFICATION METHODS ########### */
-    /**
-     * Edits the given element. <br>
-     * NOTE: Currently only the name of the Element is editable.
-     * 
-     * @param cell
-     */
-    public void edit(Object cell) {
-        if ((cell instanceof NameModel) || (cell instanceof ArcModel) || cell instanceof ActivityModel) {
-            getGraph().startEditingAtCell(cell);
-        } else
-            if (cell instanceof PetriNetModelElement) {
-                getGraph().startEditingAtCell(((PetriNetModelElement) cell).getNameModel());
-            } else {
-                LoggerManager.warn(Constants.EDITOR_LOGGER, "No editing possible.");
-            }
-    }
-
-    /**
-     * Adds a Point to the currently selected Arc at the current MousePosition.
-     */
-    public void addPointToArc(ArcModel arc, Point2D point) {
-        arc.addPoint(point);
-        Map<ArcModel, AttributeMap> map = new HashMap<ArcModel, AttributeMap>();
-        map.put(arc, arc.getAttributes());
-        getGraph().getModel().edit(map, null, null, null);
-    }
-
-    public void addPointToSelectedArc() {
-        DefaultGraphCell cell = (DefaultGraphCell) getGraph().getNextCellForLocation(null,
-                getLastMousePosition().getX(), getLastMousePosition().getY());
-        if (cell instanceof ArcModel) {
-            addPointToArc((ArcModel) cell, getGraph().fromScreen(getLastMousePosition()));
-        }
-    }
-
-    /**
-     * Remove the Point closest to the Mouse Position of the currently selected Arc.
-     */
-    public void removeSelectedPoint() {
-        Point2D l = m_lastMousePosition;
-        ArcModel arc = (ArcModel) getGraph().getFirstCellForLocation(l.getX(), l.getY());
-        arc.removePoint(l);
-        getGraph().getModel().insert(new Object[] { arc }, null, null, null, null);
-    }
-
-    /**
-     * TODO: DOCUMENTATION (xraven)
-     * 
-     */
-    public void undo() {
-        getGraph().undo();
-    }
-
-    /**
-     * TODO: DOCUMENTATION (xraven)
-     * 
-     */
-    public void redo() {
-        getGraph().redo();
-    }
-
-    /**
-     * TODO: DOCUMENTATION (silenco)
-     */
-    public void copySelection() {
-        getGraph().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        long begin = System.currentTimeMillis();
-        // get the Selection
-        Object[] cells = getGraph().getSelectionCells();
-        m_clipboard.clearClipboard();
-        AbstractElementModel tempElement;
-        ArcModel tempArc;
-        for (int idx = 0; idx < cells.length; idx++) {
-            if (cells[idx] instanceof GroupModel) {
-                cells[idx] = ((GroupModel) cells[idx]).getMainElement();
-            } else
-                if (cells[idx] instanceof NameModel) {
-                    cells[idx] = getModelProcessor().getElementContainer().getElementById(
-                            ((NameModel) cells[idx]).getOwnerId());
-                } else
-                    if (cells[idx] instanceof TriggerModel) {
-                        cells[idx] = getModelProcessor().getElementContainer().getElementById(
-                                ((TriggerModel) cells[idx]).getOwnerId());
-                    }
-            if (cells[idx] instanceof AbstractElementModel) {
-                tempElement = (AbstractElementModel) cells[idx];
-                // copy the element
-                m_clipboard.putElement(tempElement);
-                /*
-                 * Iterator arcIter = getModelProcessor().getElementContainer() .getOutgoingArcs(tempElement.getId()).keySet() .iterator(); copy all the
-                 * elements arcs TODO: Release 0.9.0 "implicite arc copy" while (arcIter.hasNext()) { tempArc =
-                 * getPetriNet().getElementContainer().getArcById(arcIter.next()); if (!m_clipboard.getCopiedArcsList().containsKey(tempArc.getId()))
-                 * m_clipboard.getCopiedArcsList().put(tempArc.getId(), tempArc.getCreationMap().clone()); } arcIter =
-                 * getPetriNet().getElementContainer().getIncomingArcs(tempElement.getId()).keySet().iterator(); while (arcIter.hasNext()) { tempArc =
-                 * getPetriNet().getElementContainer().getArcById(arcIter.next()); if (!m_clipboard.getCopiedArcsList().containsKey(tempArc.getId()))
-                 * m_clipboard.getCopiedArcsList().put(tempArc.getId(), tempArc.getCreationMap().clone()); }
-                 */
-            }
-        }
-        // TODO: delete this in "implicite Arc copy" perhaps in configuration?
-        for (int idx = 0; idx < cells.length; idx++) {
-            if (cells[idx] instanceof ArcModel) {
-                tempArc = (ArcModel) cells[idx];
-                if (m_clipboard.containsElement(tempArc.getSourceId())
-                        && m_clipboard.containsElement(tempArc.getTargetId())) {
-                    m_clipboard.putArc(tempArc);
-                }
-            }
-        }
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements copied. (" + (System.currentTimeMillis() - begin)
-                + " ms)");
-        getGraph().setCursor(Cursor.getDefaultCursor());
-    }
-
-    /**
-     * TODO: DOCUMENTATION (silenco)
-     * 
-     */
-    public void paste() {
-        pasteAtPosition(-1, -1);
-    }
-
-    /**
-     * TODO: DOCUMENTATION (silenco)
-     * 
-     */
-    public void pasteAtLastMousePosition() {
-        if (getLastMousePosition() != null) {
-            pasteAtPosition((int) (getLastMousePosition().getX() / getGraph().getScale()),
-                    (int) (getLastMousePosition().getY() / getGraph().getScale()));
-        } else {
-            LoggerManager.warn(Constants.EDITOR_LOGGER,
-                    "No last mouse position found. Elements pasted free will instead.");
-            pasteAtPosition(-1, -1);
-        }
-    }
-
-    /**
-     * TODO: DOCUMENTATION (silenco)
-     */
-    public void pasteAtPosition(int x, int y) {
-        getGraph().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        long begin = System.currentTimeMillis();
-        Map<String, CreationMap> pasteElements = m_clipboard.getCopiedElementsList();
-        Map<String, CreationMap> pasteArcs = m_clipboard.getCopiedArcsList();
-
-        /* find delta for Position */
-        int deltaX, deltaY;
-        if (x == -1 && y == -1) {
-            deltaX = 10;
-            deltaY = 10;
-        } else {
-            CreationMap leftmostElement;
-            // find delta
-            Iterator<String> eleIter = pasteElements.keySet().iterator();
-            leftmostElement = pasteElements.get(eleIter.next());
-            CreationMap currentMap;
-            while (eleIter.hasNext()) {
-                currentMap = pasteElements.get(eleIter.next());
-                if (leftmostElement.getPosition().x > currentMap.getPosition().x) {
-                    leftmostElement = (CreationMap) currentMap.clone();
-                } else
-                    if (leftmostElement.getPosition().x == currentMap.getPosition().x
-                            && leftmostElement.getPosition().y < currentMap.getPosition().y) {
-                        leftmostElement = (CreationMap) currentMap.clone();
-                    }
-            }
-            Point position = leftmostElement.getPosition();
-            deltaX = x - position.x;
-            deltaY = y - position.y;
-        }
-
-        /* insert elements */
-        CreationMap currentMap, currentArcMap;
-        HashMap<String, Object> correctedSourceId = new HashMap<String, Object>();
-        HashMap<String, Object> correctedTargetId = new HashMap<String, Object>();
-        Point currentPosition;
-        AbstractElementModel tempElement;
-        String oldElementId;
-        Vector<Object> selectElements = new Vector<Object>();
-        Iterator<String> eleIter = pasteElements.keySet().iterator();
-        while (eleIter.hasNext()) {
-            currentMap = pasteElements.get(eleIter.next());
-
-            // position for element
-            currentPosition = currentMap.getPosition();
-            currentMap.setPosition(currentPosition.y + deltaX, currentPosition.x + deltaY);
-            // position for name
-            currentPosition = currentMap.getNamePosition();
-            currentMap.setNamePosition(currentPosition.x + deltaX, currentPosition.y + deltaY);
-            // position for trigger
-            if ((currentPosition = currentMap.getTriggerPosition()) != null) {
-                currentMap.setTriggerPosition(currentPosition.x + deltaX, currentPosition.y + deltaY);
-            }
-            oldElementId = currentMap.getId();
-            currentMap.setId(null);
-            if (ConfigurationManager.getConfiguration().isInsertCOPYwhenCopied()) {
-                currentMap.setName(currentMap.getName() + "_copy");
-            }
-            currentMap.setEditOnCreation(false);
-
-            GroupModel tempElement2 = (GroupModel) (create(currentMap));
-            tempElement = tempElement2.getMainElement();
-
-            if (tempElement instanceof TransitionModel) {
-                // new element
-                TransitionModel tempTrans = (TransitionModel) tempElement;
-                // source element
-                TransitionModel sourceTrans = (TransitionModel) getModelProcessor().getElementContainer()
-                        .getElementById(oldElementId);
-
-                // copy time
-                tempTrans.getToolSpecific().setTime(sourceTrans.getToolSpecific().getTime());
-                tempTrans.getToolSpecific().setTimeUnit(sourceTrans.getToolSpecific().getTimeUnit());
-
-                // copy trigger model
-                CreationMap map = tempTrans.getCreationMap();
-                map.setTriggerType(sourceTrans.getCreationMap().getTriggerType());
-                if (sourceTrans.hasTrigger()) {
-                    Point p = tempTrans.getToolSpecific().getTrigger().getPosition();
-                    deleteCell(tempTrans.getToolSpecific().getTrigger(), true);
-                    map.setTriggerPosition(p.x, p.y);
-                    createTrigger(map);
-
-                }
-
-                // copy resource model
-                if (sourceTrans.hasResource()) {
-                    map.setResourceOrgUnit(sourceTrans.getCreationMap().getResourceOrgUnit());
-                    map.setResourceRole(sourceTrans.getCreationMap().getResourceRole());
-
-                    createTransitionResource(map);
-                }
-
-            }
-
-            /* change arc source/target */
-            Iterator<String> arcIter = pasteArcs.keySet().iterator();
-            while (arcIter.hasNext()) {
-                currentArcMap = pasteArcs.get(arcIter.next());
-                if (currentArcMap.getArcSourceId().equals(oldElementId)
-                        && !correctedSourceId.containsKey(currentArcMap.getArcId())) {
-                    currentArcMap.setArcSourceId(tempElement.getId());
-                    correctedSourceId.put(currentArcMap.getArcId(), null);
-                }
-                if (currentArcMap.getArcTargetId().equals(oldElementId)
-                        && !correctedTargetId.containsKey(currentArcMap.getArcId())) {
-                    currentArcMap.setArcTargetId(tempElement.getId());
-                    correctedTargetId.put(currentArcMap.getArcId(), null);
-                }
-            }
-            /* */
-            selectElements.add(tempElement.getParent());
-        }
-
-        /* insert arcs */
-        Iterator<String> arcIter = pasteArcs.keySet().iterator();
-        ArcModel tempArc;
-        Point2D point;
-        CreationMap cmap = CreationMap.createMap();
-        while (arcIter.hasNext()) {
-            currentArcMap = pasteArcs.get(arcIter.next());
-            if (getModelProcessor().getElementContainer().getElementById(currentArcMap.getArcSourceId()) != null
-                    && getModelProcessor().getElementContainer().getElementById(currentArcMap.getArcTargetId()) != null) {
-                cmap.setArcSourceId(currentArcMap.getArcSourceId());
-                cmap.setArcTargetId(currentArcMap.getArcTargetId());
-                tempArc = createArc(cmap, true);
-                for (short k = 0; k < currentArcMap.getArcPoints().size(); k++) {
-                    IntPair ip = (IntPair) currentArcMap.getArcPoints().get(k);
-                    point = new Point2D.Double(ip.getX1() + deltaX, ip.getX2() + deltaY);
-                    tempArc.addPoint(point);
-                }
-                selectElements.add(tempArc);
-            }
-        }
-        // select the new element
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements pasted. (" + (System.currentTimeMillis() - begin)
-                + " ms)");
-        updateNet();
-        getGraph().setSelectionCells(selectElements.toArray());
-        copySelection();
-        getGraph().setCursor(Cursor.getDefaultCursor());
-        m_understandColoring.update();
-    }
-
-    /**
-     * method to "move" selected elements to another position implemented as create copy of all elements and delete originals afterwards
-     */
-    public void cutSelection() {
-        if (getGraph().getSelectionCells().length == 1 && getGraph().getSelectionCell() instanceof ArcModel) {
-            LoggerManager.debug(Constants.EDITOR_LOGGER, "cannot cut arc");
-        } else {
-            copySelection();
-            deleteSelection();
-        }
-        m_understandColoring.update();
-    }
-
-    /**
-     * Moves all Elementes in the Object-Array <code>toMove</code> <code>dx</code> in x-direction and <code>dy</code> in y-direction.
-     * 
-     * @param toMove
-     * @param dx
-     * @param dy
-     */
-    public void move(Object toMove[], int dx, int dy) {
-        move(toMove, dx, dy, null, false);
-    }
-
-    private void move(Object toMove[], int dx, int dy, HashMap<GraphCell, AttributeMap> changes, boolean isrecursiv) {
-        if (changes == null) {
-            changes = new HashMap<GraphCell, AttributeMap>();
-        }
-        for (short i = 0; i < toMove.length; i++) {
-            if (toMove[i] instanceof DefaultGraphCell) {
-                DefaultGraphCell tempCell = (DefaultGraphCell) toMove[i];
-                if (tempCell.getChildCount() > 0) {
-                    move(tempCell.getChildren().toArray(), dx, dy, changes, true);
-                }
-            }
-            if (toMove[i] instanceof GraphCell) {
-                GraphCell noGroupElement = (GraphCell) toMove[i];
-                AttributeMap tempMap = (AttributeMap) noGroupElement.getAttributes().clone();
-                AttributeMap newMap = new AttributeMap();
-                Rectangle2D bounds = GraphConstants.getBounds(tempMap);
-                List<?> points = GraphConstants.getPoints(tempMap);
-                if (bounds != null) {
-                    bounds = new Rectangle((int) bounds.getX() + dx, (int) bounds.getY() + dy, (int) bounds.getWidth(),
-                            (int) bounds.getHeight());
-                    AttributeMap changeMap = changes.get(noGroupElement);
-                    if (changeMap == null) {
-                        changeMap = new AttributeMap();
-                        changes.put(noGroupElement, changeMap);
-                    }
-                    changeMap.applyValue(GraphConstants.BOUNDS, bounds);
-                    // tempMap.applyValue(GraphConstants.BOUNDS, bounds);
-                    // noGroupElement.changeAttributes(tempMap);
-                }
-                if (points != null) {
-                    Vector<Point2D> newPoints = new Vector<Point2D>();
-                    Point2D tempPoint;
-                    for (short k = 0; k < points.size(); k++) {
-                        if (points.get(k) instanceof PortView) {
-                            tempPoint = ((PortView) points.get(k)).getLocation();
-                        } else {
-                            tempPoint = (Point2D) points.get(k);
-                        }
-                        if (k == 0 || k == points.size() - 1) {
-                            newPoints.add(new Point2D.Double(tempPoint.getX(), tempPoint.getY()));
-                        } else {
-                            newPoints.add(new Point2D.Double(tempPoint.getX() + dx, tempPoint.getY() + dy));
-                        }
-                    }
-                    if (newPoints.size() > 2) {
-                        GraphConstants.setPoints(newMap, newPoints);
-                    }
-                }
-                if (newMap.size() > 0) {
-                    changes.put(noGroupElement, newMap);
-                }
-
-            }
-        }
-        if (!isrecursiv) {
-            getGraph().getGraphLayoutCache().edit(changes, null, null, null);
-            getGraph().setSelectionCells(toMove);
-            updateNet();
-        }
-    }
-
-    /**
-     * Method scaleNet changes the coordinates of all elements by multiplicating with <code>factor</code>.<br>
-     * The values will be converted to int. This method is usefull for nets created with other tools using different cooridates.
-     * 
-     * @param factor
-     */
-    public void scaleNet(double factor) {
-
-        Iterator<AbstractElementModel> iter = getModelProcessor().getElementContainer().getRootElements().iterator();
-        PetriNetModelElement aModel;
-        while (iter.hasNext()) {
-            aModel = (PetriNetModelElement) iter.next();
-            aModel.setPosition((int) (aModel.getX() * factor), (int) (aModel.getY() * factor));
-            aModel.getNameModel().setPosition((int) (aModel.getNameModel().getX() * factor),
-                    (int) (aModel.getNameModel().getY() * factor));
-            if (aModel instanceof OperatorTransitionModel && ((OperatorTransitionModel) aModel).hasTrigger()) {
-                TriggerModel trigger = ((OperatorTransitionModel) aModel).getToolSpecific().getTrigger();
-                trigger.setPosition((int) (trigger.getX() * factor), (int) (trigger.getY() * factor));
-            }
-        }
-    }
-
-    /* ########## View and utils methods ########### */
-    /**
-     * Toggles the TokenGame Mode. <br>
-     * In TokenGame-Mode the net is not editable, but you call pefrorm a simple token movements.
-     * 
-     * @see TokenGameController
-     */
-    public void toggleTokenGame() {
-        if (isTokenGameMode()) {
-            LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
-            m_tokenGameMode = false;
-            m_TokenGameEnabled = false;
-            m_tokenGameController.stop();
-            m_centralMediator.getUi().refreshFocusOnFrames();
-
-        } else {
-            LoggerManager.debug(Constants.EDITOR_LOGGER, "START TokenGame");
-            m_tokenGameMode = true;
-            m_TokenGameEnabled = true;
-            setDrawingMode(false);
-            m_tokenGameController.start();
-        }
-        m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
-    }
-
-    // 02122008 MarioBeiser --> ChangePanel-Option
-    public void changePanel(boolean change) {
-        ReferenceProvider refer = new ReferenceProvider();
-
-        boolean change_flag = change;
-
-        if (change_flag) {
-            refer.getUIReference().switchToolBar(change_flag);
-            refer.getUIReference().getContentPane().repaint();
-        } else {
-            refer.getUIReference().switchToolBar(change_flag);
-            refer.getUIReference().getContentPane().repaint();
-        }
-
-    }
-
-    // 02122008 MarioBeiser --> ManualSwitchToolbar
-    public void manualChangePanel() {
-        ReferenceProvider refer = new ReferenceProvider();
-        refer.getUIReference().switchToolBar(false);
-        refer.getUIReference().getContentPane().repaint();
-    }
-
-    /**
-     * Zooms the net. <br>
-     * The factor should be between <code>MIN_SCALE</code> and <code>MAX_SCALE</code>. Multiplicate the factor with 100 to get the percent value. Set
-     * <code>absolute</code>=<code>true</code> in order to zoom the to the factor, not by the the factor.
-     * 
-     * @param factor
-     * @param absolute
-     */
-    public void zoom(double factor, boolean absolute) {
-        /**
-         * scale = Math.max(Math.min(scale, 16), .01);
-         * 
-         * 
-         * if (graphpad.getCurrentGraph() .getScale() < 8) { // "Zero Length String passed to TextLayout constructor" graphpad.getCurrentDocument() .
-         * setScale(getGraph().getScale() * 2); if (getGraph().getSelectionCell() != null)
-         * getGraph().scrollCellToVisible(graphpad.getCurrentGraph().getSelectionCell()); }
-         * 
-         * 
-         */
-        getGraph().stopEditing();
-        Rectangle2D oldVisRect = getGraph().fromScreen(m_scrollPane.getViewport().getViewRect());
-        double scale;
-        // Check if absolute
-        if (absolute) {
-            scale = factor / 100;
-        } else {
-            scale = getGraph().getScale() + factor;
-        }
-        // ste to max resp. min if out of range
-        if (scale < MIN_SCALE) {
-            scale = MIN_SCALE;
-        }
-        if (scale > MAX_SCALE) {
-            scale = MAX_SCALE;
-        }
-        // set scale and move to center of old visible rect
-
-        getGraph().setScale(scale);
-        oldVisRect = getGraph().toScreen(oldVisRect);
-        Rectangle2D visibleRect = m_scrollPane.getViewport().getViewRect();
-        Rectangle newVisRect = new Rectangle2D.Double(visibleRect.getX() + oldVisRect.getCenterX()
-                - visibleRect.getCenterX(), visibleRect.getY() + oldVisRect.getCenterY() - visibleRect.getCenterY(),
-                visibleRect.getWidth(), visibleRect.getHeight()).getBounds();
-        getGraph().scrollRectToVisible(newVisRect);
-        if (m_statusbar != null) {
-            m_statusbar.updateStatus();
-        }
-
-        fireViewEvent(new EditorViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ZOOMED,
-                new Double(scale * 100)));
-    }
-
-    /* ########## LISTENER METHODS ########## */
-
-    /**
-     * Invoked after any changes in the net.
-     * 
-     * @see GraphSelectionListener#valueChanged(org.jgraph.event.GraphSelectionEvent)
-     */
-    private boolean valueChangedActive = false;
-
-    private QuantitativeSimulationDialog simDlg;
-
-    public void valueChanged(GraphSelectionEvent arg0) {
-        if (valueChangedActive) {
-            // Do not call ourselves endlessly
-            // We have to make a call to setSelectionCells()
-            // which once again would trigger this method call
-            // This is by design.
-            return;
-        }
-
-        // Before doing anything else,
-        // select all PetriNetModelElement objects
-        // in the tree view
-        Object cells[] = arg0.getCells();
-
-        // If the selected Cell(s) are any PetriNetModel their respective
-        // parents get selected.
-        // Elements can only be dragged together with their name.
-        ArrayList<Object> addedCells = new ArrayList<Object>();
-        for (int i = 0; i < cells.length; ++i) {
-            if (arg0.isAddedCell(cells[i])) {
-                Object toBeAdded = cells[i];
-                if ((toBeAdded instanceof PetriNetModelElement)/*
-                                                                * || (toBeAdded instanceof NameModel)|| (toBeAdded instanceof TriggerModel)|| (toBeAdded
-                                                                * instanceof TransitionResourceModel)
-                                                                */) {
-                    TreeNode parent = ((DefaultGraphCell) toBeAdded).getParent();
-                    if (parent != null) {
-                        toBeAdded = parent;
-                    }
-                }
-                addedCells.add(toBeAdded);
-            }
-            ;
-        }
-        ;
-        valueChangedActive = true;
-        getGraph().addSelectionCells(addedCells.toArray());
-        valueChangedActive = false;
-    }
-
-    /**
-     * TODO: DOCUMENTATION (xraven)
-     */
-    public void lostOwnership(Clipboard arg0, Transferable arg1) {
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "Lost Ownership");
-    }
-
-    /**
-     * Invoked after a cell has changed in some way. The vertex/vertices may have changed bounds or altered adjacency, or other attributes have changed that may
-     * affect presentation.
-     */
-    public void graphChanged(GraphModelEvent e) {
-        if (isSubprocessEditor()) {
-            getParentEditor().setSaved(false);
-        } else {
-            setSaved(false);
-        }
-        // to enable renaming of simpleTransitions in Operators we have to call
-        // the method setNameValue() after changing the name with jgraph-method
-        // startEditingAtCell()
-        if (getGraph().getLastEdited() != null) {
-            NameModel nM = getGraph().getLastEdited();
-            AbstractElementModel aem = getModelProcessor().getElementContainer().getElementById(nM.getOwnerId());
-            if (aem != null) {
-                aem.setNameValue(nM.getNameValue());
-            }
-            getGraph().setLastEditedNull();
-        }
-    }
-
-    /**
-     * @see KeyListener#keyReleased(java.awt.event.KeyEvent)
-     */
-    public void keyReleased(KeyEvent e) {
-        // setKeyPressed(false);
-        getGraph().setCursor(Cursor.getDefaultCursor());
-        setDrawingMode(false);
-        setCreateElementType(-1);
-        smartEditActive = true;
-    }
-
-    /**
-     * @see KeyListener#keyTyped(java.awt.event.KeyEvent)
-     */
-    public void keyTyped(KeyEvent e) {}
-
-    /**
-     * Shortcuts for the Editor are defined here.
-     * 
-     * @see KeyListener#keyPressed(java.awt.event.KeyEvent)
-     */
-    public void keyPressed(KeyEvent e) {
-        smartEditActive = false;
-        // Listen for Delete Key Press
-        if (e.getKeyCode() == KeyEvent.VK_DELETE)
-        // Execute Remove Action on Delete Key Press
-        {
-            deleteSelection();
-        } else
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                setDrawingMode(false);
-                smartEditActive = false;
-                ((AbstractMarqueeHandler) getGraph().getMarqueeHandler()).cancelSmartArcDrawing();
-            } else
-                if (getGraph().getSelectionCells() != null) {
-                    // setKeyPressed(true);
-                    m_createElementType = 0;
-                    /* TODO: Arrow Key Move */
-                    if (e.getKeyCode() == KeyEvent.VK_UP) {
-                        move(getGraph().getSelectionCells(), 0, (int) -getGraph().getGridSize());
-                    } else
-                        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                            move(getGraph().getSelectionCells(), 0, (int) +getGraph().getGridSize());
-                        } else
-                            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                                move(getGraph().getSelectionCells(), (int) -getGraph().getGridSize(), 0);
-                            } else
-                                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                                    move(getGraph().getSelectionCells(), (int) getGraph().getGridSize(), 0);
-                                } else
-
-                                    if (e.getKeyCode() == KeyEvent.VK_MINUS) {
-                                        zoom(-0.5, false);
-                                    } else
-                                        if (e.getKeyCode() == KeyEvent.VK_PLUS) {
-                                            zoom(+0.5, false);
-                                        } else
-                                            if (e.getKeyCode() == KeyEvent.VK_1) {
-                                                setCreateElementType(PetriNetModelElement.PLACE_TYPE);
-                                                setDrawingMode(true);
-                                            } else
-                                                if (e.getKeyCode() == KeyEvent.VK_2) {
-                                                    setCreateElementType(PetriNetModelElement.TRANS_SIMPLE_TYPE);
-                                                    setDrawingMode(true);
-                                                } else
-                                                    if (e.getKeyCode() == KeyEvent.VK_3) {
-                                                        setCreateElementType(OperatorTransitionModel.AND_SPLIT_TYPE);
-                                                        setDrawingMode(true);
-                                                    } else
-                                                        if (e.getKeyCode() == KeyEvent.VK_4) {
-                                                            setCreateElementType(OperatorTransitionModel.XOR_SPLIT_TYPE);
-                                                            setDrawingMode(true);
-                                                        } else
-                                                            if (e.getKeyCode() == KeyEvent.VK_5) {
-                                                                setCreateElementType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
-                                                                setDrawingMode(true);
-                                                            } else
-                                                                if (e.getKeyCode() == KeyEvent.VK_6) {
-                                                                    setCreateElementType(OperatorTransitionModel.AND_JOIN_TYPE);
-                                                                    setDrawingMode(true);
-                                                                } else
-                                                                    if (e.getKeyCode() == KeyEvent.VK_7) {
-                                                                        setCreateElementType(OperatorTransitionModel.XOR_JOIN_TYPE);
-                                                                        setDrawingMode(true);
-                                                                    } else
-                                                                        if (e.getKeyCode() == KeyEvent.VK_8) {
-                                                                            setCreateElementType(OperatorTransitionModel.SUBP_TYPE);
-                                                                            setDrawingMode(true);
-                                                                        }
-                    // else if (e.getKeyCode() == KeyEvent.VK_7)
-                    // {
-                    // m_createElementType = OperatorTransitionModel.OR_SPLIT_TYPE;
-                    // getGraph().setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-                    // setDrawingMode(true);
-                    // }
-                }
-        // if (isDrawingMode())
-        // getGraph().setCursor(Utils.getElementCreationCursor(getCreateElementType()));
-        // else getGraph().setCursor(Cursor.getDefaultCursor());
-    }
-
-    public void addViewListener(IViewListener listener) {
-        viewListener.addElement(listener);
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void removeViewListener(IViewListener listenner) {
-        viewListener.removeElement(listenner);
-    }
-
-    public int getViewControllerType() {
-        return ApplicationMediator.VIEWCONTROLLER_EDITOR;
-    }
-
-    /**
-     * Fires a ViewEvent to each listener as long as the event is not consumed. The event is also set with a reference to the current listener.
-     */
-    @SuppressWarnings("unchecked")
-    public final void fireViewEvent(AbstractViewEvent viewevent) {
-        if (viewevent == null) {
-            return;
-        }
-        Vector<IViewListener> vector;
-        synchronized (viewListener) {
-            vector = (Vector<IViewListener>) viewListener.clone();
-        }
-        if (vector == null) {
-            return;
-        }
-        int i = vector.size();
-        for (int j = 0; !viewevent.isConsumed() && j < i; j++) {
-            IViewListener viewlistener = vector.elementAt(j);
-            viewevent.setViewListener(viewlistener);
-            viewlistener.viewEventPerformed(viewevent);
-        }
-    }
-
-    /**
-     * Calls the algorithms for rotating the view and the elements
-     */
-    public void rotateLayout() {
-    	// Is necessary to switch off the undoManager
-		if (((WoPeDUndoManager) getGraph().getUndoManager()) != null) {
-			((WoPeDUndoManager) getGraph().getUndoManager())
-					.setEnabled(false);
-		}
-        m_orientation.rotateView(getModelProcessor().getElementContainer());
-
-        // TODO
-
-        if (isRotateSelected()) {
-            LoggerManager.debug(Constants.EDITOR_LOGGER, "DEACTIVATE RotateSelected ");
-            setRotateSelected(false);
-            m_EditorLayoutInfo.setVerticalLayout(false);
-        } else {
-            LoggerManager.debug(Constants.EDITOR_LOGGER, "ACTIVATE RotateSelected ");
-            setRotateSelected(true);
-            m_EditorLayoutInfo.setVerticalLayout(true);
-        }
-        // Update the UI representation
-        getGraph().updateUI();
-        getGraph().drawNet(getModelProcessor());
-        updateNet();
-
-		editorSize.resize(true);
-
-		// Is necessary to switch on the undoManager
-		if (getGraph().getUndoManager() != null) {
-			((WoPeDUndoManager) getGraph().getUndoManager())
-					.setEnabled(true);
-		}
-        setSaved(false);
-    }
-
-    /**
-     * rotates the Transition
-     */
-    public void rotateTransLeft(Object cell) {
-        if (cell instanceof TransitionModel) {
-            m_orientation.rotateTransLeft((TransitionModel) cell);
-
-            getGraph().drawNet(getModelProcessor());
-            updateNet();
-            setSaved(false);
-            getGraph().setSelectionCell(cell);
-        }
-    }
-
-    public void rotateTransRight(Object cell) {
-        if (cell instanceof TransitionModel) {
-            m_orientation.rotateTransRight((TransitionModel) cell);
-
-            getGraph().drawNet(getModelProcessor());
-            updateNet();
-            setSaved(false);
-            getGraph().setSelectionCell(cell);
-        }
-    }
-    /**
-     * starts the advanced dialog for beautifying the graph
-     */
-    public void advancedBeautifyDialog(){
-    	JFrame frame = new JFrame();
-    	@SuppressWarnings("unused")
-		AdvancedDialog dialog = new AdvancedDialog(frame, this);  
-    }
- 
-    /**
-     * Calls the algorithm for layered drawing of the graph
-     */
-    public void startBeautify(int ixIntervall, int iyIntervall, int counter){
-    	// checking WF-Net-Conformity
-    	StructuralAnalysis sAnalysis = new StructuralAnalysis(this);
+	 * TODO: DOCUMENTATION (silenco)
+	 * 
+	 * @param clipboard
+	 */
+	public EditorVC(String id, EditorClipboard clipboard,
+			boolean undoSupport,
+			AbstractApplicationMediator mediator, boolean loadUI) {
+		this.m_propertyChangeSupport = new PropertyChangeSupport(this);
+		this.m_propertyChangeSupport.addPropertyChangeListener(VisualController
+				.getInstance());
+		this.m_centralMediator = mediator;
 		
-		if (!sAnalysis.isWorkflowNet()) {
-			JOptionPane.showMessageDialog(this, Messages.getString("File.Error.GraphBeautifier.NoNet.Text"));
+		this.undoSupport = undoSupport;
+		// initialize
+		this.m_clipboard = clipboard;
+
+		marqueehandler = new PetriNetMarqueeHandler(this, mediator);
+		this.modelProcessor = new PetriNetModelProcessor();
+		if (loadUI)
+			this.m_graph = new WoPeDJGraph(new DefaultGraphModel(),
+					marqueehandler,
+					undoSupport ? new WoPeDUndoManager(this) : null,
+							viewFactory);
+
+		editorPanel = new EditorPanel(this, mediator, m_propertyChangeSupport, loadUI);
+		
+		this.viewListener = new Vector<IViewListener>();
+		this.id = id;
+		// Listener for the graph
+		if (loadUI) {
+			getGraph().getSelectionModel().addGraphSelectionListener(
+					VisualController.getInstance());
+			getGraph().getSelectionModel().addGraphSelectionListener(this);
+			getGraph().getModel().addGraphModelListener(this);
+			getGraph().addKeyListener(this);
+		
+			this.m_tokenGameController = new TokenGameController(this);
 		}
-		else {
+	}
+
+	/**
+	 * Updates the Net. For some changes in the Model it's nessecary to call.
+	 */
+	public void updateNet() {
+		long begin = System.currentTimeMillis();
+		// Perhaps more needed.
+		getGraph().refreshNet();
+		getGraph().repaint();
+
+		LoggerManager.debug(Constants.EDITOR_LOGGER,
+				"Net updated. (" + (System.currentTimeMillis() - begin)
+						+ " ms)");
+	}
+
+	/* ########## ELEMENT CREATION METHODS ########### */
+
+	/**
+	 * Creates a Trigger. Needs the ID of the owner transition and the type of
+	 * the Trigger.
+	 * 
+	 * @param transitionId
+	 * @param triggertype
+	 */
+	public TriggerModel createTrigger(CreationMap map) {
+		AbstractPetriNetElementModel transition = getModelProcessor()
+		.getElementContainer().getElementById(map.getId());
+		if (transition != null && transition instanceof TransitionModel) {
+			if (((TransitionModel) transition).hasTrigger()) {
+				deleteCell(((TransitionModel) transition).getToolSpecific()
+						.getTrigger(), true);
+			}
+
+			if (transition.getParent() instanceof GroupModel) {
+				GroupModel group = (GroupModel) transition.getParent();
+				TriggerModel triggerModel = ((PetriNetModelProcessor) getModelProcessor())
+				.newTrigger(map);
+
+				if (map.getTriggerPosition() != null) {
+					triggerModel.setPosition(map.getTriggerPosition());
+				} else {
+					if (isRotateSelected()) {
+						triggerModel.setPosition(map.getPosition().x - 25,
+								map.getPosition().y + 10);
+					} else {
+						triggerModel.setPosition(map.getPosition().x + 10,
+								map.getPosition().y - 20);
+					}
+
+				}
+				ParentMap pm = new ParentMap();
+				pm.addEntry(triggerModel, group);
+				HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
+				hm.put(group, group.getAttributes());
+
+				getGraph().getModel().insert(new Object[] { triggerModel },
+						hm, null, pm, null);
+
+				return triggerModel;
+			}
+		}
+		return null;
+	}
+
+	public TriggerModel createTriggerForPaste(CreationMap map,
+			TransitionModel transition) {
+
+		if (transition != null && transition instanceof TransitionModel) {
+			if (((TransitionModel) transition).hasTrigger()) {
+				deleteCell(((TransitionModel) transition).getToolSpecific()
+						.getTrigger(), true);
+			}
+
+			if (transition.getParent() instanceof GroupModel) {
+				GroupModel group = (GroupModel) transition.getParent();
+				TriggerModel triggerModel = ((PetriNetModelProcessor) getModelProcessor())
+						.newTrigger(map);
+
+				if (map.getTriggerPosition() != null) {
+					triggerModel.setPosition(map.getTriggerPosition());
+				} else {
+					if (isRotateSelected()) {
+						triggerModel.setPosition(map.getPosition().x - 25,
+								map.getPosition().y + 10);
+					} else {
+						triggerModel.setPosition(map.getPosition().x + 10,
+								map.getPosition().y - 20);
+					}
+
+				}
+				ParentMap pm = new ParentMap();
+				pm.addEntry(triggerModel, group);
+				HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
+				hm.put(group, group.getAttributes());
+
+				getGraph().getModel().insert(new Object[] { triggerModel }, hm,
+						null, pm, null);
+
+				return triggerModel;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * /TODO: documentation
+	 * 
+	 * @param transition
+	 * @param transResourceId
+	 * @return
+	 */
+	public TransitionResourceModel createTransitionResource(CreationMap map) {
+		AbstractPetriNetElementModel transition = getModelProcessor()
+				.getElementContainer().getElementById(map.getId());
+		if (transition != null && transition instanceof TransitionModel) {
+			if (((TransitionModel) transition).hasResource()) {
+				deleteCell(((TransitionModel) transition).getToolSpecific()
+						.getTransResource(), true);
+			}
+
+			if (transition.getParent() instanceof GroupModel) {
+				GroupModel group = (GroupModel) transition.getParent();
+				TransitionResourceModel transResourceModell = ((PetriNetModelProcessor) getModelProcessor())
+						.newTransResource(map);
+
+				transResourceModell.setPosition(map.getResourcePosition().x,
+						map.getResourcePosition().y);
+				ParentMap pm = new ParentMap();
+				pm.addEntry(transResourceModell, group);
+				HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
+				hm.put(group, group.getAttributes());
+
+				getGraph().getModel().insert(
+						new Object[] { transResourceModell }, hm, null, pm,
+						null);
+
+				return transResourceModell;
+			}
+		}
+		return null;
+	}
+
+	public GraphCell createElement(int type, int additionalType, Point2D p,
+			boolean doNotEdit) {
+		return createElement(type, additionalType, (int) p.getX(),
+				(int) p.getY(), doNotEdit);
+	}
+
+	public GraphCell createElement(int type, int additionalType, int x, int y,
+			boolean doNotEdit) {
+		CreationMap map = CreationMap.createMap();
+		map.setType(type);
+		if (doNotEdit) {
+			map.setEditOnCreation(false);
+		}
+		if (type == OperatorTransitionModel.TRANS_OPERATOR_TYPE) {
+			map.setOperatorType(additionalType);
+		}
+		if (x != -1 && y != -1) {
+			map.setPosition(x, y);
+		}
+		return createElement(map, true, doNotEdit);
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (silenco)
+	 * 
+	 * @param map
+	 * @return
+	 */
+	protected GraphCell createElement(CreationMap map, boolean insertIntoCache,
+			boolean editNameTag) {
+		if (map.isValid()) {
+			// Create Element, this will assign a new id if none has been
+			// defined
+			// This id will be unique even across sub-process borders by
+			// prepending the
+			// id of the sub-process
+			AbstractPetriNetElementModel element = getModelProcessor().createElement(
+					map);
+
+			// ensure that There is an Position
+			if (map.getPosition() != null) {
+				Point point = new Point(map.getPosition().x,
+						map.getPosition().y);
+				// map.setPosition(new IntPair());
+				element.setPosition(getGraph().snap(point));
+			} else if (getLastMousePosition() != null) {
+				Point point = new Point(
+						(int) ((getLastMousePosition().getX()
+								/ getGraph().getScale() - element.getWidth() / 2)),
+						(int) ((getLastMousePosition().getY()
+								/ getGraph().getScale() - element.getHeight() / 2)));
+				// map.setPosition(new IntPair((Point) getGraph().snap(point)));
+				element.setPosition(getGraph().snap(point));
+			} else {
+				map.setPosition(30, 30);
+			}
+			if (element instanceof AbstractPetriNetElementModel) {
+				// Name position
+				if (map.getNamePosition() == null) {
+					if (isRotateSelected()) {
+						((AbstractPetriNetElementModel) element).getNameModel()
+								.setPosition(
+										(element.getX() + element.getWidth()),
+										(element.getY()) + 1);
+					} else {
+						((AbstractPetriNetElementModel) element).getNameModel()
+								.setPosition((element.getX() - 1),
+										(element.getY() + element.getHeight()));
+					}
+				} else {
+					((AbstractPetriNetElementModel) element).getNameModel()
+							.setPosition(map.getNamePosition().x,
+									map.getNamePosition().y);
+				}
+				if (map.getName() == null) {
+					((AbstractPetriNetElementModel) element).setNameValue(element
+							.getId().toString());
+				} else {
+					((AbstractPetriNetElementModel) element)
+							.setNameValue(map.getName());
+				}
+				if (map.getReadOnly() != null) {
+					((AbstractPetriNetElementModel) element).setReadOnly(map
+							.getReadOnly());
+				}
+				// Grouping
+				GroupModel group = getGraph().groupName(element,
+						((AbstractPetriNetElementModel) element).getNameModel());
+				group.setUngroupable(false);
+				// System.err.println("In createElement Method - the created elemetn"
+				// + element.toString());
+				group.add(element);
+				group.add(element.getNameModel());
+				if (insertIntoCache) {
+					getGraph().getGraphLayoutCache().insert(group);
+				}
+
+				// edit
+				if (editNameTag
+						&& ConfigurationManager.getConfiguration()
+								.isEditingOnCreation()
+						&& map.isEditOnCreation() && isSmartEditActive()) {
+					getGraph().startEditingAtCell(
+							((AbstractPetriNetElementModel) element).getNameModel());
+				}
+				getEditorPanel().autoRefreshAnalysisBar();
+				return group;
+			}
+
+			getEditorPanel().m_understandColoring.update();
+			return element;
+		} else {
+			LoggerManager.error(Constants.EDITOR_LOGGER,
+					"Could not create Element. CreationMap is NOT VALID");
+			return null;
+		}
+	}
+
+	/**
+	 * Creates an Arc. Checks if the requested Arc represents a valid Petri-Net
+	 * connection.
+	 * 
+	 * @param source
+	 * @param target
+	 * @return ArcModel
+	 */
+	public ArcModel createArc(Port source, Port target) {
+		String sourceId = ((AbstractPetriNetElementModel) ((DefaultPort) source)
+				.getParent()).getId();
+		String targetId = ((AbstractPetriNetElementModel) ((DefaultPort) target)
+				.getParent()).getId();
+		return createArc(sourceId, targetId);
+	}
+
+	/**
+	 * Creates an Arc. Checks if the requested Arc represents a valid Petri-Net
+	 * connection.
+	 * 
+	 * @param sourceId
+	 * @param targetId
+	 * @return
+	 */
+	public ArcModel createArc(String sourceId, String targetId) {
+
+		CreationMap map = CreationMap.createMap();
+		map.setArcSourceId(sourceId);
+		map.setArcTargetId(targetId);
+		return createArc(map, true);
+
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (silenco, xraven)
+	 * 
+	 * @param map
+	 * @return
+	 */
+	public ArcModel createArc(CreationMap map, boolean insertIntoCache) {
+		ArcModel arc = null;
+		String sourceId = map.getArcSourceId();
+		String targetId = map.getArcTargetId();
+		List<?> points = map.getArcPoints();
+		Point2D[] pointArray = new Point2D[points.size()];
+		for (int i = 0; i < points.size(); i++) {
+			if (points.get(i) instanceof Point2D) {
+				pointArray[i] = (Point2D) points.get(i);
+			} else if (points.get(i) instanceof IntPair) {
+				pointArray[i] = new Point2D.Double(
+						((IntPair) points.get(i)).getX1(),
+						((IntPair) points.get(i)).getX2());
+			}
+		}
+
+		// CHECK if connection is valid
+		if (getGraph().isValidConnection(
+				getModelProcessor().getElementContainer().getElementById(
+						sourceId),
+				getModelProcessor().getElementContainer().getElementById(
+						targetId))) {
+			if (!getModelProcessor().getElementContainer().hasReference(
+					sourceId, targetId)) {
+				arc = getModelProcessor().createArc(map.getArcId(), sourceId,
+						targetId, pointArray, true);
+				getGraph().connect(arc, insertIntoCache);
+				// Manually copy arc points
+				for (int i = 0; i < pointArray.length; ++i) {
+					addPointToArc(arc, pointArray[i]);
+				}
+				// Copy probability state of the creation map
+				arc.setProbability(map.getArcProbability());
+				arc.setDisplayOn(map.getDisplayArcProbability());
+				// If there is a label position, copy it
+				if (map.getArcLabelPosition() != null) {
+					arc.setLabelPosition(new Point2D.Double(map
+							.getArcLabelPosition().getX(), map
+							.getArcLabelPosition().getY()));
+				}
+			} else {
+				LoggerManager.debug(Constants.EDITOR_LOGGER,
+						"Connection already exits. Discarded.");
+			}
+		} else {
+			LoggerManager.warn(Constants.EDITOR_LOGGER,
+					"Requested connection (" + sourceId + " -> " + targetId
+							+ ") is not vaild, did nothing!");
+		}
+
+		getEditorPanel().m_understandColoring.update();
+
+		if (arc != null) {
+			// arc.setRoute(map.isArcRoute());
+		}
+		getEditorPanel().autoRefreshAnalysisBar();
+		return arc;
+
+	}
+
+	public void deleteCells(Object[] toDelete) {
+		deleteCells(toDelete, true);
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (xraven)
+	 * 
+	 * @param toDelete
+	 * @param withGraph
+	 */
+	public void deleteCells(Object[] toDelete, boolean withGraph) {
+		// A single NameModel can't be deleted
+		if (toDelete.length == 1) {
+			if (toDelete[0] instanceof GroupModel) {
+
+			} else {
+				if (toDelete[0] instanceof NameModel) {
+					return;
+				}
+			}
+		}
+
+		Vector<Object> result = new Vector<Object>();
+		for (int i = 0; i < toDelete.length; i++) {
+
+			if (toDelete[i] instanceof GroupModel
+					&& !((GroupModel) toDelete[i]).isUngroupable()) {
+				GroupModel tempGroup = (GroupModel) toDelete[i];
+
+				Object cell = tempGroup;
+				while (cell instanceof GroupModel) {
+					cell = ((GroupModel) cell).getMainElement();
+				}
+
+				if (cell instanceof AbstractPetriNetElementModel
+						&& !((AbstractPetriNetElementModel) cell).isReadOnly()) {
+					result.add(tempGroup);
+					for (int j = 0; j < tempGroup.getChildCount(); j++) {
+						result.add(tempGroup.getChildAt(j));
+					}
+
+				}
+			} else {
+
+				result.add(toDelete[i]);
+			}
+
+		}
+
+		HashSet<Object> uniqueResult = new HashSet<Object>();
+		for (int i = 0; i < result.size(); i++) {
+			uniqueResult.add(result.get(i));
+			if (result.get(i) instanceof AbstractPetriNetElementModel
+					&& ((AbstractPetriNetElementModel) result.get(i)).getPort() != null) {
+				Iterator<?> edges = ((AbstractPetriNetElementModel) result.get(i))
+						.getPort().edges();
+				while (edges.hasNext()) {
+					uniqueResult.add(edges.next());
+				}
+			}
+		}
+		deleteOnlyCells(uniqueResult.toArray(), withGraph);
+		getEditorPanel().m_understandColoring.update();
+		getEditorPanel().autoRefreshAnalysisBar();
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (xraven)
+	 * 
+	 * @param toDelete
+	 */
+	public void deleteOnlyCells(Object[] toDelete, boolean withGraph) {
+
+		toDelete = Utils.sortArcsFirst(toDelete);
+		Vector<Object> allPorts = new Vector<Object>();
+		Vector<Object> allCells = new Vector<Object>();
+		copyFlag = false;
+		
+		if (doConfirmation){
+		// Check if SubProcessModell Shall be deleted. Ask for Confirmation!
+		for (int i = 0; i < toDelete.length; i++) {
+			if (toDelete[i] instanceof SubProcessModel) {
+				Object[] options = {
+						Messages.getString("Popup.Confirm.SubProcess.Ok"),
+						Messages.getString("Popup.Confirm.SubProcess.No") };
+				int j = 0; 
+				j = JOptionPane.showOptionDialog(null,
+						Messages.getString("Popup.Confirm.SubProcess.Info"),
+						Messages.getString("Popup.Confirm.SubProcess.Warn"),
+						JOptionPane.DEFAULT_OPTION,
+						JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+				if (j == 0)
+					break;
+				else
+					return;
+			}
+
+		}
+		}
+
+		for (int i = 0; i < toDelete.length; i++) {
+
+			if (toDelete[i] instanceof ArcModel) {
+				allPorts.add(toDelete[i]);
+				getModelProcessor().removeArc(((ArcModel) toDelete[i]).getId());
+			} else if (toDelete[i] instanceof TriggerModel) {
+				TransitionModel owner = (TransitionModel) getModelProcessor()
+						.getElementContainer().getElementById(
+								((TriggerModel) toDelete[i]).getOwnerId());
+				if (owner != null) {
+					if (owner.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE
+							&& owner.getToolSpecific().getTransResource() != null) {
+						owner.getToolSpecific().removeTransResource();
+					}
+					owner.getToolSpecific().removeTrigger();
+				}
+				allPorts.add(toDelete[i]);
+			} else if (toDelete[i] instanceof TransitionResourceModel) {
+				TransitionModel owner = (TransitionModel) getModelProcessor()
+						.getElementContainer().getElementById(
+								((TransitionResourceModel) toDelete[i])
+										.getOwnerId());
+				if (owner != null) {
+					owner.getToolSpecific().removeTransResource();
+				}
+				allPorts.add(toDelete[i]);
+			} else if (toDelete[i] instanceof NameModel) {
+				allPorts.add(toDelete[i]);
+			} else if (toDelete[i] instanceof GroupModel) {
+				allPorts.add(toDelete[i]);
+			} else if (toDelete[i] instanceof AbstractPetriNetElementModel) {
+
+				AbstractPetriNetElementModel element = (AbstractPetriNetElementModel) toDelete[i];
+				// if there are trigger, delete their jgraph model
+				if (toDelete[i] instanceof TransitionModel) {
+					if (((TransitionModel) toDelete[i]).getToolSpecific()
+							.getTrigger() != null) {
+						deleteCell(
+								((TransitionModel) getModelProcessor()
+										.getElementContainer().getElementById(
+												element.getId()))
+										.getToolSpecific().getTrigger(),
+								withGraph);
+					}
+				}
+
+				// if there are connected arcs delete their model
+				allPorts.add(element.getPort());
+				allPorts.add(toDelete[i]);
+				getModelProcessor().getElementContainer().removeOnlyElement(
+						element.getId());
+
+			}
+		}
+		if (withGraph) {
+			Vector<Object> allDeletedObjects = new Vector<Object>();
+			allDeletedObjects.addAll(allPorts);
+			allDeletedObjects.addAll(allCells);
+			getGraph().getModel().remove(allDeletedObjects.toArray());
+		}
+		updateNet();
+	}
+
+	public void deleteCell(DefaultGraphCell cell) {
+		deleteCell(cell, true);
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (xraven)
+	 * 
+	 * @param cell
+	 */
+	public void deleteCell(DefaultGraphCell cell, boolean withGraph) {
+		if (cell != null) {
+			deleteCells(new Object[] { cell }, withGraph);
+		}
+	}
+
+	/**
+	 * Deletes all selected Elements. All connected Arc of selected Elements
+	 * will be deleted too.
+	 */
+	public void deleteSelection() {
+		deleteCells(getGraph().getSelectionCells(), true);
+	}
+
+	/* ########## ELEMENT MODIFICATION METHODS ########### */
+	/**
+	 * Edits the given element. <br>
+	 * NOTE: Currently only the name of the Element is editable.
+	 * 
+	 * @param cell
+	 */
+	public void edit(Object cell) {
+		if ((cell instanceof NameModel) || (cell instanceof ArcModel)) {
+			getGraph().startEditingAtCell(cell);
+		} else if (cell instanceof AbstractPetriNetElementModel) {
+			getGraph().startEditingAtCell(
+					((AbstractPetriNetElementModel) cell).getNameModel());
+		} else {
+			LoggerManager.warn(Constants.EDITOR_LOGGER, "No editing possible.");
+		}
+	}
+
+	/**
+	 * Adds a Point to the currently selected Arc at the current MousePosition.
+	 */
+	public void addPointToArc(ArcModel arc, Point2D point) {
+		arc.addPoint(point);
+		Map<ArcModel, AttributeMap> map = new HashMap<ArcModel, AttributeMap>();
+		map.put(arc, arc.getAttributes());
+		getGraph().getModel().edit(map, null, null, null);
+	}
+
+	public void addPointToSelectedArc() {
+		DefaultGraphCell cell = (DefaultGraphCell) getGraph()
+				.getNextCellForLocation(null, getLastMousePosition().getX(),
+						getLastMousePosition().getY());
+		if (cell instanceof ArcModel) {
+			addPointToArc((ArcModel) cell,
+					getGraph().fromScreen(getLastMousePosition()));
+		}
+	}
+
+	/**
+	 * Remove the Point closest to the Mouse Position of the currently selected
+	 * Arc.
+	 */
+	public void removeSelectedPoint() {
+		Point2D l = m_lastMousePosition;
+		ArcModel arc = (ArcModel) getGraph().getFirstCellForLocation(l.getX(),
+				l.getY());
+		arc.removePoint(l);
+		getGraph().getModel().insert(new Object[] { arc }, null, null, null,
+				null);
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (xraven)
+	 * 
+	 */
+	public void undo() {
+		doConfirmation = false; // Confirmation is done in Undo Handling
+		copyFlag = false;
+		getGraph().undo();
+		doConfirmation = true; // Enable Confirmation again
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (xraven)
+	 * 
+	 */
+	public void redo() {
+		doConfirmation = false; // Confirmation is done in Redo Handling
+		copyFlag = false;
+		getGraph().redo();
+		doConfirmation = true; // Enable Confirmation again
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (silenco)
+	 */
+	public void copySelection() {
+		getGraph().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		long begin = System.currentTimeMillis();
+
+		// get the Selection
+		// tempContainer = getModelProcessor().getElementContainer();
+		Object[] cells = getGraph().getSelectionCells();
+		m_clipboard.clearClipboard();
+		m_clipboard.setM_sourceEditor(this);
+		AbstractPetriNetElementModel tempElement;
+		ArcModel tempArc;
+		for (int idx = 0; idx < cells.length; idx++) {
+			if (cells[idx] instanceof GroupModel) {
+				cells[idx] = ((GroupModel) cells[idx]).getMainElement();
+			} else if (cells[idx] instanceof NameModel) {
+				cells[idx] = getModelProcessor().getElementContainer()
+						.getElementById(((NameModel) cells[idx]).getOwnerId());
+			} else if (cells[idx] instanceof TriggerModel) {
+				cells[idx] = getModelProcessor().getElementContainer()
+						.getElementById(
+								((TriggerModel) cells[idx]).getOwnerId());
+			}
+			if (cells[idx] instanceof AbstractPetriNetElementModel) {
+				tempElement = (AbstractPetriNetElementModel) cells[idx];
+				// copy the element
+				m_clipboard.putElement(tempElement);
+			}
+		}
+		// TODO: delete this in "implicite Arc copy" perhaps in configuration?
+		for (int idx = 0; idx < cells.length; idx++) {
+			if (cells[idx] instanceof ArcModel) {
+				tempArc = (ArcModel) cells[idx];
+				if (m_clipboard.containsElement(tempArc.getSourceId())
+						|| m_clipboard.containsElement(tempArc.getTargetId())) {
+					m_clipboard.putArc(tempArc);
+				}
+			}
+		}
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements copied. ("
+				+ (System.currentTimeMillis() - begin) + " ms)");
+		getGraph().setCursor(Cursor.getDefaultCursor());
+	}
+
+	/**
+	 * calls the paste method with the last remembered mouse position
+	 */
+	public void pasteAtMousePosition() {
+		
+		copyFlag = true;
+		if (getLastMousePosition() != null)
+			paste(getLastMousePosition());
+		else
+			paste();
+	}
+
+	/**
+	 * paste selected elements into active frame. if active frame = source
+	 * frame, paste elements with an offset or to the mouse position (if point
+	 * is given) if active frame != source frame, paste elements in middle of
+	 * new frame or at mouse position (if point is given)
+	 */
+	public void paste(Point2D... points) {
+		// set cursor to wait
+		getGraph().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		// get current time, why??
+		long begin = System.currentTimeMillis();
+		// get elements from clipboard
+		Map<String, CreationMap> pasteElements = m_clipboard
+				.getCopiedElementsList();
+		
+		copyFlag = true;
+
+		Map<String, CreationMap> pasteArcs = m_clipboard.getCopiedArcsList();
+
+		/* delta for Position */
+		int deltaX = 20, deltaY = 20;
+
+		/* insert elements */
+		CreationMap sourceMap, tempMap = null, currentArcMap;
+		HashMap<String, Object> correctedSourceId = new HashMap<String, Object>();
+		HashMap<String, Object> correctedTargetId = new HashMap<String, Object>();
+		Point currentPosition;
+		Point middleOfSelection = null;
+
+		AbstractPetriNetElementModel tempElement;
+		String oldElementId;
+		Vector<Object> toSelectElements = new Vector<Object>();
+		Iterator<String> eleIter = pasteElements.keySet().iterator();
+
+		boolean originalName = true;
+		String originalNameStr = null;
+
+		while (eleIter.hasNext()) {
+			sourceMap = pasteElements.get(eleIter.next());
+			tempMap = (CreationMap) sourceMap.clone();
+			// position for element
+			currentPosition = sourceMap.getPosition();
+
+			// set new delta values if a mouse position is given
+			if (points.length > 0 && middleOfSelection == null) {
+				middleOfSelection = getMiddleOfSelection(pasteElements);
+
+				deltaX = (int) points[0].getX() - middleOfSelection.x
+						- tempMap.getSize().getX1() / 2;
+				deltaY = (int) points[0].getY() - middleOfSelection.y
+						- tempMap.getSize().getX2() / 2;
+			}
+
+			// set new position
+			tempMap.setPosition(currentPosition.x + deltaX, currentPosition.y
+					+ deltaY);
+			// position for name
+			currentPosition = (Point) sourceMap.getNamePosition().clone();
+			tempMap.setNamePosition(currentPosition.x + deltaX,
+					currentPosition.y + deltaY);
+
+			// position for trigger
+			if ((currentPosition = sourceMap.getTriggerPosition()) != null) {
+				tempMap.setTriggerPosition(currentPosition.x + deltaX,
+						currentPosition.y + deltaY);
+			}
+
+			// copy in another frame than the source frame
+			if (this != m_clipboard.getM_sourceEditor()) {
+				// determine middle of selected elements
+				if (middleOfSelection == null) {
+					middleOfSelection = getMiddleOfSelection(pasteElements);
+				}
+
+				// position for element
+				if (points.length > 0) {
+					currentPosition = new Point(
+							(int) (((int) points[0].getX() / 2)
+									- tempMap.getSize().getX1() / 2
+									+ tempMap.getPosition().getX() - middleOfSelection.x),
+							(int) (((int) points[0].getY() / 2)
+									- tempMap.getSize().getX2() / 2
+									+ tempMap.getPosition().getY() - middleOfSelection.y));
+				} else {
+					currentPosition = new Point(
+							(int) ((getEditorPanel().getWidth() / 2) - tempMap.getSize().getX1()
+									/ 2 + tempMap.getPosition().getX() - middleOfSelection.x),
+							(int) ((getEditorPanel().getHeight() / 2)
+									- tempMap.getSize().getX2() / 2
+									+ tempMap.getPosition().getY() - middleOfSelection.y));
+
+				}
+				tempMap.setPosition(currentPosition.x, currentPosition.y);
+
+				// position for name
+				if (isRotateSelected()) {
+					tempMap.setNamePosition(currentPosition.x
+							+ tempMap.getSize().getX1(), currentPosition.y - 1);
+				} else {
+					tempMap.setNamePosition(currentPosition.x - 1,
+							currentPosition.y + tempMap.getSize().getX2());
+				}
+
+				if (isRotateSelected()) {
+					tempMap.setTriggerPosition(currentPosition.x - 20,
+							currentPosition.y + 7);
+				} else {
+					tempMap.setTriggerPosition(currentPosition.x + 7,
+							currentPosition.y - 20);
+
+				}
+
+			}
+
+			// keep the sourceMapID
+			oldElementId = sourceMap.getId();
+			originalNameStr = sourceMap.getName();
+			originalName = isOriginalName(originalNameStr, oldElementId);
+			tempMap.setEditOnCreation(false);
+			tempMap.setReadOnly(false);
+			// set ID to null, to get new ID
+			tempMap.setId(null);
+			// get tempGroupModel with new ID
+			GroupModel tempGroupModel = (GroupModel) (create(tempMap));
+			// get form the group an AbstractElementModel (extends GraphCell)
+
+			tempElement = tempGroupModel.getMainElement();
+			// check if tempElement TransitionModel (PetriNetModelElement)
+
+			if (tempElement instanceof TransitionModel) {
+				// GroupModel currentTrans = (GroupModel) (create(currentMap));
+				// new element exactly transitionModel
+				TransitionModel tempTrans = (TransitionModel) tempElement;
+				// copy time
+				if ((sourceMap.getTransitionTime() != -1)
+						&& (sourceMap.getTransitionTimeUnit() != -1)) {
+					tempTrans.getToolSpecific().setTime(
+							sourceMap.getTransitionTime());
+					tempTrans.getToolSpecific().setTimeUnit(
+							sourceMap.getTransitionTimeUnit());
+				}
+				// copy trigger model
+				CreationMap map = tempTrans.getCreationMap();
+				if (sourceMap.getTriggerType() != -1) {
+					if (map != null) {
+
+						map.setTriggerType(sourceMap.getTriggerType());
+						createTriggerForPaste(map, tempTrans);
+						Point p = tempTrans.getPosition();
+						// Why deleteCell?
+						// deleteCell(tempTrans.getToolSpecific().getTrigger(),
+						// true);
+						map.setTriggerPosition(p.x, p.y);
+						// copy resource model
+						if ((sourceMap.getResourceOrgUnit() != null)
+								&& sourceMap.getResourceRole() != null) {
+							map.setResourceOrgUnit(sourceMap
+									.getResourceOrgUnit());
+							map.setResourceRole(sourceMap.getResourceRole());
+						}
+					}
+
+				} else
+					map.setType(1);
+
+			}
+			/* change arc source/target */
+			Iterator<String> arcIter = pasteArcs.keySet().iterator();
+			while (arcIter.hasNext()) {
+				currentArcMap = pasteArcs.get(arcIter.next());
+				if ((this.getEditorPanel().getContainer().getActionMap()
+						.get(currentArcMap.getArcSourceId()) != null)
+						|| ((currentArcMap.getArcSourceId()
+								.equals(oldElementId)) && (!correctedSourceId
+								.containsKey(currentArcMap.getArcId())))) {
+					currentArcMap.setArcSourceId(tempElement.getId());
+					correctedSourceId.put(currentArcMap.getArcId(), null);
+				}
+				if ((currentArcMap.getArcTargetId().equals(oldElementId))
+						&& (!correctedTargetId.containsKey(currentArcMap
+								.getArcId()))) {
+					currentArcMap.setArcTargetId(tempElement.getId());
+					correctedTargetId.put(currentArcMap.getArcId(), null);
+				}
+			}
+			/* */
+			if (originalName)
+				tempElement.setNameValue(tempElement.getId());
+			else
+				tempElement.setNameValue(originalNameStr);
+			toSelectElements.add(tempElement.getParent());
+		}
+
+		/* insert arcs */
+		Iterator<String> arcIter = pasteArcs.keySet().iterator();
+		ArcModel tempArc;
+		Point2D point;
+		CreationMap cmap = CreationMap.createMap();
+		while (arcIter.hasNext()) {
+			currentArcMap = pasteArcs.get(arcIter.next());
+			if ((currentArcMap.getArcSourceId() != null)
+					&& (currentArcMap.getArcTargetId()) != null) {
+
+				cmap.setArcSourceId(currentArcMap.getArcSourceId());
+				cmap.setArcTargetId(currentArcMap.getArcTargetId());
+				tempArc = createArc(cmap, true);
+				for (short k = 0; k < currentArcMap.getArcPoints().size(); k++) {
+
+					IntPair ip = (IntPair) currentArcMap.getArcPoints().get(k);
+					point = new Point2D.Double(ip.getX1() + deltaX, ip.getX2()
+							+ deltaY);
+
+					tempArc.addPoint(point);
+				}
+
+				toSelectElements.add(tempArc);
+			}
+		}
+		// select the new element
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements pasted. ("
+				+ (System.currentTimeMillis() - begin) + " ms)");
+		checkSubprocessEditors(toSelectElements);
+		updateNet();
+
+		getGraph().setSelectionCells(toSelectElements.toArray());
+		copySelection();
+		getGraph().setCursor(Cursor.getDefaultCursor());
+		getEditorPanel().m_understandColoring.update();
+	}
+
+	private Point getMiddleOfSelection(Map<String, CreationMap> maps) {
+		int minX = 999999, minY = 999999, maxX = -1, maxY = -1;
+
+		Iterator<String> eleIterTemp = maps.keySet().iterator();
+		CreationMap iterMap;
+		while (eleIterTemp.hasNext()) {
+			iterMap = maps.get(eleIterTemp.next());
+
+			minX = Math.min(minX, iterMap.getPosition().x);
+			minY = Math.min(minY, iterMap.getPosition().y);
+			maxX = Math.max(maxX, iterMap.getPosition().x);
+			maxY = Math.max(maxY, iterMap.getPosition().y);
+		}
+		return new Point((maxX + minX) / 2, (maxY + minY) / 2);
+	}
+
+	/**
+	 * method to "move" selected elements to another position implemented as
+	 * create copy of all elements and delete originals afterwards
+	 */
+	public void cutSelection() {
+		copyFlag = true;
+		if (getGraph().getSelectionCells().length == 1
+				&& getGraph().getSelectionCell() instanceof ArcModel) {
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "cannot cut arc");
+		} else {
+			copySelection();
+			deleteSelection();
+		}
+		getEditorPanel().m_understandColoring.update();
+	}
+
+	/**
+	 * Moves all Elementes in the Object-Array <code>toMove</code>
+	 * <code>dx</code> in x-direction and <code>dy</code> in y-direction.
+	 * 
+	 * @param toMove
+	 * @param dx
+	 * @param dy
+	 */
+	public void move(Object toMove[], int dx, int dy) {
+		move(toMove, dx, dy, null, false);
+	}
+
+	private void move(Object toMove[], int dx, int dy,
+			HashMap<GraphCell, AttributeMap> changes, boolean isrecursiv) {
+		if (changes == null) {
+			changes = new HashMap<GraphCell, AttributeMap>();
+		}
+		for (short i = 0; i < toMove.length; i++) {
+			if (toMove[i] instanceof DefaultGraphCell) {
+				DefaultGraphCell tempCell = (DefaultGraphCell) toMove[i];
+				if (tempCell.getChildCount() > 0) {
+					move(tempCell.getChildren().toArray(), dx, dy, changes,
+							true);
+				}
+			}
+			if (toMove[i] instanceof GraphCell) {
+				GraphCell noGroupElement = (GraphCell) toMove[i];
+				AttributeMap tempMap = (AttributeMap) noGroupElement
+						.getAttributes().clone();
+				AttributeMap newMap = new AttributeMap();
+				Rectangle2D bounds = GraphConstants.getBounds(tempMap);
+				List<?> points = GraphConstants.getPoints(tempMap);
+				if (bounds != null) {
+					bounds = new Rectangle((int) bounds.getX() + dx,
+							(int) bounds.getY() + dy, (int) bounds.getWidth(),
+							(int) bounds.getHeight());
+					AttributeMap changeMap = changes.get(noGroupElement);
+					if (changeMap == null) {
+						changeMap = new AttributeMap();
+						changes.put(noGroupElement, changeMap);
+					}
+					changeMap.applyValue(GraphConstants.BOUNDS, bounds);
+					// tempMap.applyValue(GraphConstants.BOUNDS, bounds);
+					// noGroupElement.changeAttributes(tempMap);
+				}
+				if (points != null) {
+					Vector<Point2D> newPoints = new Vector<Point2D>();
+					Point2D tempPoint;
+					for (short k = 0; k < points.size(); k++) {
+						if (points.get(k) instanceof PortView) {
+							tempPoint = ((PortView) points.get(k))
+									.getLocation();
+						} else {
+							tempPoint = (Point2D) points.get(k);
+						}
+						if (k == 0 || k == points.size() - 1) {
+							newPoints.add(new Point2D.Double(tempPoint.getX(),
+									tempPoint.getY()));
+						} else {
+							newPoints.add(new Point2D.Double(tempPoint.getX()
+									+ dx, tempPoint.getY() + dy));
+						}
+					}
+					if (newPoints.size() > 2) {
+						GraphConstants.setPoints(newMap, newPoints);
+					}
+				}
+				if (newMap.size() > 0) {
+					changes.put(noGroupElement, newMap);
+				}
+
+			}
+		}
+		if (!isrecursiv) {
+			getGraph().getGraphLayoutCache().edit(changes, null, null, null);
+			getGraph().setSelectionCells(toMove);
+			updateNet();
+		}
+	}
+
+	/**
+	 * Method scaleNet changes the coordinates of all elements by multiplicating
+	 * with <code>factor</code>.<br>
+	 * The values will be converted to int. This method is usefull for nets
+	 * created with other tools using different cooridates.
+	 * 
+	 * @param factor
+	 */
+	public void scaleNet(double factor) {
+
+		Iterator<AbstractPetriNetElementModel> iter = getModelProcessor()
+				.getElementContainer().getRootElements().iterator();
+		AbstractPetriNetElementModel aModel;
+		while (iter.hasNext()) {
+			aModel = (AbstractPetriNetElementModel) iter.next();
+			aModel.setPosition((int) (aModel.getX() * factor),
+					(int) (aModel.getY() * factor));
+			aModel.getNameModel().setPosition(
+					(int) (aModel.getNameModel().getX() * factor),
+					(int) (aModel.getNameModel().getY() * factor));
+			if (aModel instanceof OperatorTransitionModel
+					&& ((OperatorTransitionModel) aModel).hasTrigger()) {
+				TriggerModel trigger = ((OperatorTransitionModel) aModel)
+						.getToolSpecific().getTrigger();
+				trigger.setPosition((int) (trigger.getX() * factor),
+						(int) (trigger.getY() * factor));
+			}
+		}
+	}
+
+	/* ########## View and utils methods ########### */
+	/**
+	 * Toggles the TokenGame Mode. <br>
+	 * In TokenGame-Mode the net is not editable, but you call pefrorm a simple
+	 * token movements.
+	 * 
+	 * @see TokenGameController
+	 */
+	public void toggleTokenGame() {
+		if (isTokenGameEnabled()) {
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
+			tokenGameEnabled = false;
+			m_tokenGameController.stop();
+			m_centralMediator.getUi().refreshFocusOnFrames();
+
+		} else {
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "START TokenGame");
+			tokenGameEnabled = true;
+			setDrawingMode(false);
+			m_tokenGameController.start();
+		}
+		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
+	}
+
+	// 02122008 MarioBeiser --> ChangePanel-Option
+	public void changePanel(boolean change) {
+		ReferenceProvider refer = new ReferenceProvider();
+
+		boolean change_flag = change;
+
+		if (change_flag) {
+			refer.getUIReference().switchToolBar(change_flag);
+			refer.getUIReference().getContentPane().repaint();
+		} else {
+			refer.getUIReference().switchToolBar(change_flag);
+			refer.getUIReference().getContentPane().repaint();
+		}
+
+	}
+
+	// 02122008 MarioBeiser --> ManualSwitchToolbar
+	public void manualChangePanel() {
+		ReferenceProvider refer = new ReferenceProvider();
+		refer.getUIReference().switchToolBar(false);
+		refer.getUIReference().getContentPane().repaint();
+	}
+
+	/**
+	 * Zooms the net. <br>
+	 * The factor should be between <code>MIN_SCALE</code> and
+	 * <code>MAX_SCALE</code>. Multiplicate the factor with 100 to get the
+	 * percent value. Set <code>absolute</code>=<code>true</code> in order to
+	 * zoom the to the factor, not by the the factor.
+	 * 
+	 * @param factor
+	 * @param absolute
+	 */
+	public void zoom(double factor, boolean absolute) {
+		/**
+		 * scale = Math.max(Math.min(scale, 16), .01);
+		 * 
+		 * 
+		 * if (graphpad.getCurrentGraph() .getScale() < 8) { //
+		 * "Zero Length String passed to TextLayout constructor"
+		 * graphpad.getCurrentDocument() . setScale(getGraph().getScale() * 2);
+		 * if (getGraph().getSelectionCell() != null)
+		 * getGraph().scrollCellToVisible
+		 * (graphpad.getCurrentGraph().getSelectionCell()); }
+		 * 
+		 * 
+		 */
+		getGraph().stopEditing();
+		Rectangle2D oldVisRect = getGraph().fromScreen(
+				getEditorPanel().m_scrollPane.getViewport().getViewRect());
+		double scale;
+		// Check if absolute
+		if (absolute) {
+			scale = factor / 100;
+		} else {
+			scale = getGraph().getScale() + factor;
+		}
+		// ste to max resp. min if out of range
+		if (scale < MIN_SCALE) {
+			scale = MIN_SCALE;
+		}
+		if (scale > MAX_SCALE) {
+			scale = MAX_SCALE;
+		}
+		// set scale and move to center of old visible rect
+
+		getGraph().setScale(scale);
+		oldVisRect = getGraph().toScreen(oldVisRect);
+		Rectangle2D visibleRect = getEditorPanel().m_scrollPane.getViewport().getViewRect();
+		Rectangle newVisRect = new Rectangle2D.Double(visibleRect.getX()
+				+ oldVisRect.getCenterX() - visibleRect.getCenterX(),
+				visibleRect.getY() + oldVisRect.getCenterY()
+						- visibleRect.getCenterY(), visibleRect.getWidth(),
+				visibleRect.getHeight()).getBounds();
+		getGraph().scrollRectToVisible(newVisRect);
+		if (getEditorPanel().m_statusbar != null) {
+			getEditorPanel().m_statusbar.updateStatus();
+		}
+
+		fireViewEvent(new EditorViewEvent(this,
+				AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ZOOMED,
+				new Double(scale * 100)));
+	}
+
+	/* ########## LISTENER METHODS ########## */
+
+	/**
+	 * Invoked after any changes in the net.
+	 * 
+	 * @see GraphSelectionListener#valueChanged(org.jgraph.event.GraphSelectionEvent)
+	 */
+	private boolean valueChangedActive = false;
+
+	private QuantitativeSimulationDialog simDlg;
+
+	public void valueChanged(GraphSelectionEvent arg0) {
+		if (valueChangedActive) {
+			// Do not call ourselves endlessly
+			// We have to make a call to setSelectionCells()
+			// which once again would trigger this method call
+			// This is by design.
+			return;
+		}
+
+		// Before doing anything else,
+		// select all PetriNetModelElement objects
+		// in the tree view
+		Object cells[] = arg0.getCells();
+
+		// If the selected Cell(s) are any PetriNetModel their respective
+		// parents get selected.
+		// Elements can only be dragged together with their name.
+		ArrayList<Object> addedCells = new ArrayList<Object>();
+		for (int i = 0; i < cells.length; ++i) {
+			if (arg0.isAddedCell(cells[i])) {
+				Object toBeAdded = cells[i];
+				if (toBeAdded instanceof AbstractPetriNetElementModel) {
+					TreeNode parent = ((DefaultGraphCell) toBeAdded)
+							.getParent();
+					if (parent != null) {
+						toBeAdded = parent;
+					}
+				}
+				addedCells.add(toBeAdded);
+			}
+			;
+		}
+		;
+		valueChangedActive = true;
+		getGraph().addSelectionCells(addedCells.toArray());
+		valueChangedActive = false;
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (xraven)
+	 */
+	public void lostOwnership(Clipboard arg0, Transferable arg1) {
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "Lost Ownership");
+	}
+
+	/**
+	 * Invoked after a cell has changed in some way. The vertex/vertices may
+	 * have changed bounds or altered adjacency, or other attributes have
+	 * changed that may affect presentation.
+	 */
+	public void graphChanged(GraphModelEvent e) {
+		setSaved(false);
+		// to enable renaming of simpleTransitions in Operators we have to call
+		// the method setNameValue() after changing the name with jgraph-method
+		// startEditingAtCell()
+		if (getGraph().getLastEdited() != null) {
+			NameModel nM = getGraph().getLastEdited();
+			AbstractPetriNetElementModel aem = getModelProcessor()
+					.getElementContainer().getElementById(nM.getOwnerId());
+			if (aem != null) {
+				aem.setNameValue(nM.getNameValue());
+			}
+			getGraph().setLastEditedNull();
+		}
+	}
+
+	/**
+	 * @see KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
+	public void keyReleased(KeyEvent e) {
+		// setKeyPressed(false);
+		getGraph().setCursor(Cursor.getDefaultCursor());
+		setDrawingMode(false);
+		setCreateElementType(-1);
+		smartEditActive = true;
+	}
+
+	/**
+	 * @see KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
+	public void keyTyped(KeyEvent e) {
+	}
+
+	/**
+	 * Shortcuts for the Editor are defined here.
+	 * 
+	 * @see KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
+	public void keyPressed(KeyEvent e) {
+		smartEditActive = false;
+		// Listen for Delete Key Press
+		if (e.getKeyCode() == KeyEvent.VK_DELETE)
+		// Execute Remove Action on Delete Key Press
+		{
+			deleteSelection();
+		} else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			setDrawingMode(false);
+			smartEditActive = false;
+			((AbstractMarqueeHandler) getGraph().getMarqueeHandler())
+					.cancelSmartArcDrawing();
+		} else if (getGraph().getSelectionCells() != null) {
+			// setKeyPressed(true);
+			m_createElementType = 0;
+			/* TODO: Arrow Key Move */
+			if (e.getKeyCode() == KeyEvent.VK_UP) {
+				move(getGraph().getSelectionCells(), 0, (int) -getGraph()
+						.getGridSize());
+			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+				move(getGraph().getSelectionCells(), 0, (int) +getGraph()
+						.getGridSize());
+			} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				move(getGraph().getSelectionCells(), (int) -getGraph()
+						.getGridSize(), 0);
+			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				move(getGraph().getSelectionCells(), (int) getGraph()
+						.getGridSize(), 0);
+			} else
+
+			if (e.getKeyCode() == KeyEvent.VK_MINUS) {
+				zoom(-0.5, false);
+			} else if (e.getKeyCode() == KeyEvent.VK_PLUS) {
+				zoom(+0.5, false);
+			} else if (e.getKeyCode() == KeyEvent.VK_1) {
+				setCreateElementType(AbstractPetriNetElementModel.PLACE_TYPE);
+				setDrawingMode(true);
+			} else if (e.getKeyCode() == KeyEvent.VK_2) {
+				setCreateElementType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+				setDrawingMode(true);
+			} else if (e.getKeyCode() == KeyEvent.VK_3) {
+				setCreateElementType(OperatorTransitionModel.AND_SPLIT_TYPE);
+				setDrawingMode(true);
+			} else if (e.getKeyCode() == KeyEvent.VK_4) {
+				setCreateElementType(OperatorTransitionModel.XOR_SPLIT_TYPE);
+				setDrawingMode(true);
+			} else if (e.getKeyCode() == KeyEvent.VK_5) {
+				setCreateElementType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+				setDrawingMode(true);
+			} else if (e.getKeyCode() == KeyEvent.VK_6) {
+				setCreateElementType(OperatorTransitionModel.AND_JOIN_TYPE);
+				setDrawingMode(true);
+			} else if (e.getKeyCode() == KeyEvent.VK_7) {
+				setCreateElementType(OperatorTransitionModel.XOR_JOIN_TYPE);
+				setDrawingMode(true);
+			} else if (e.getKeyCode() == KeyEvent.VK_8) {
+				setCreateElementType(OperatorTransitionModel.SUBP_TYPE);
+				setDrawingMode(true);
+			}
+		}
+	}
+
+	public void addViewListener(IViewListener listener) {
+		viewListener.addElement(listener);
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void removeViewListener(IViewListener listenner) {
+		viewListener.removeElement(listenner);
+	}
+
+	public int getViewControllerType() {
+		return ApplicationMediator.VIEWCONTROLLER_EDITOR;
+	}
+
+	/**
+	 * Fires a ViewEvent to each listener as long as the event is not consumed.
+	 * The event is also set with a reference to the current listener.
+	 */
+	@SuppressWarnings("unchecked")
+	public final void fireViewEvent(AbstractViewEvent viewevent) {
+		if (viewevent == null) {
+			return;
+		}
+		Vector<IViewListener> vector;
+		synchronized (viewListener) {
+			vector = (Vector<IViewListener>) viewListener.clone();
+		}
+		if (vector == null) {
+			return;
+		}
+		int i = vector.size();
+		for (int j = 0; !viewevent.isConsumed() && j < i; j++) {
+			IViewListener viewlistener = vector.elementAt(j);
+			viewevent.setViewListener(viewlistener);
+			viewlistener.viewEventPerformed(viewevent);
+		}
+	}
+
+	/**
+	 * Calls the algorithms for rotating the view and the elements
+	 * @deprecated Use {@link org.woped.editor.controller.vc.EditorPanel#rotateLayout(org.woped.editor.controller.vc.EditorVC)} instead
+	 */
+	public void rotateLayout() {
+		editorPanel.rotateLayout(this);
+	}
+
+	/**
+	 * rotates the Transition
+	 */
+	public void rotateTransLeft(Object cell) {
+		if (cell instanceof TransitionModel) {
+			getEditorPanel().m_orientation.rotateTransLeft((TransitionModel) cell);
+
+			getGraph().drawNet(getModelProcessor());
+			updateNet();
+			setSaved(false);
+			getGraph().setSelectionCell(cell);
+		}
+	}
+
+	public void rotateTransRight(Object cell) {
+		if (cell instanceof TransitionModel) {
+			getEditorPanel().m_orientation.rotateTransRight((TransitionModel) cell);
+
+			getGraph().drawNet(getModelProcessor());
+			updateNet();
+			setSaved(false);
+			getGraph().setSelectionCell(cell);
+		}
+	}
+
+	/**
+	 * starts the advanced dialog for beautifying the graph
+	 */
+	public void advancedBeautifyDialog() {
+		JFrame frame = new JFrame();
+		@SuppressWarnings("unused")
+		AdvancedDialog dialog = new AdvancedDialog(frame, this);
+	}
+
+	/**
+	 * Calls the algorithm for layered drawing of the graph
+	 */
+	public void startBeautify(int ixIntervall, int iyIntervall, int counter) {
+		// checking WF-Net-Conformity
+		StructuralAnalysis sAnalysis = new StructuralAnalysis(this);
+
+		if (!sAnalysis.isWorkflowNet()) {
+			JOptionPane
+					.showMessageDialog(this.getEditorPanel(), Messages
+							.getString("File.Error.GraphBeautifier.NoNet.Text"));
+		} else {
 			SGYGraph graph = new SGYGraph(this);
 			graph.beautify(counter);
 			graph.draw(ixIntervall, iyIntervall);
-			
-			//Check the orientation. If the orientation is 'vertical' rotate the graph.
 		}
-			if (isRotateSelected()){		        
-		        this.rotateLayout();
-	            setRotateSelected(true);
-	            m_EditorLayoutInfo.setVerticalLayout(true);
-			}
+		// Check the orientation. If the orientation is 'vertical' rotate
+		// the graph.		
+		if (isRotateSelected()) {
+			getEditorPanel().rotateLayout(this);
+			getEditorPanel().setRotateSelected(true);
+			getEditorPanel().m_EditorLayoutInfo.setVerticalLayout(true);
 		}
-    
-
-    /* ########## GETTER & SETTER ########## */
-    
-    public SubProcessModel getModel() {
-		return model;
 	}
-    
-    public AbstractApplicationMediator getM_centralMediator() {
+
+	public AbstractApplicationMediator getM_centralMediator() {
 		return m_centralMediator;
 	}
-    
+
 	public boolean isUndoSupport() {
 		return undoSupport;
 	}
-    
-    public EditorClipboard getM_clipboard() {
+
+	public EditorClipboard getM_clipboard() {
 		return m_clipboard;
 	}
-    
-    public int getModelProcessorType() {
-		return modelProcessorType;
+
+	public Point2D getLastMousePosition() {
+		return m_lastMousePosition;
 	}
 
-    public Point2D getLastMousePosition() {
-        return m_lastMousePosition;
-    }
-
-    public void setLastMousePosition(Point2D point) {
-        this.m_lastMousePosition = point;
-    }
-
-    /**
-     * Returns the type of the element, which will be created in drawing mode.
-     * 
-     * @see PetriNetModelElement for element types
-     * @return int
-     */
-    public int getCreateElementType() {
-        return this.m_createElementType;
-    }
-
-    /**
-     * Sets the type of the element, which will be created in drawing mode.
-     * 
-     * @see PetriNetModelElement for element types
-     * @param createElementType
-     * 
-     */
-    public void setCreateElementType(int createElementType) {
-        int oldValue = m_createElementType;
-        this.m_createElementType = createElementType;
-        m_propertyChangeSupport.firePropertyChange("DrawMode", oldValue, createElementType);
-    }
-
-    /**
-     * Returns if the editor is in tokengame mode.
-     * 
-     * @see TokenGameController
-     * @return true if tokengame mode
-     */
-    public boolean isTokenGameMode() {
-        return m_tokenGameMode;
-    }
-
-    public void setTokenGameEnabled(boolean state) {
-        m_TokenGameEnabled = state;
-    }
-
-    public boolean isTokenGameEnabled() {
-        return m_TokenGameEnabled;
-    }
-
-    /**
-     * Returns the WoPeDJGraph (Graph Controller) USE WITH CARE!
-     * 
-     * @return WoPeDJGraph
-     */
-    public AbstractGraph getGraph() {
-        return m_graph;
-    }
-
-    public WoPeDJGraph getWoPeDJGraph() {
-        return m_graph;
-    }
-
-    /**
-     * Returns the default filetype for saving the net.
-     * 
-     * @return int
-     */
-    public int getDefaultFileType() {
-        return m_defaultFileType;
-    }
-
-    /**
-     * Sets the default filetype for saving the net.
-     * 
-     * @param defaultFileType The defaultFileType to set
-     */
-    public void setDefaultFileType(int defaultFileType) {
-        this.m_defaultFileType = defaultFileType;
-    }
-
-    /**
-     * Returns the filename if the net was saved before or was opened from a file.
-     * 
-     * @return String
-     */
-    @Override
-    public String getName() {
-        return super.getName() == null ? Messages.getString("Document.Title.Untitled") : super.getName();
-    }
-
-    // ! Set the document name
-    // ! Overridden to also update the title bar of the editor window
-    // ! @param name specifies the name of the edited document
-    @Override
-    public void setName(String name) {
-        super.setName(name);
-        // Update document title of editor window
-        JInternalFrame frame = (JInternalFrame) getContainer();
-        if (frame != null) {
-            frame.setTitle(name);
-        }
-
-        // notify the editor aware vc
-        Iterator<?> editorIter = m_centralMediator.getEditorAwareVCs().iterator();
-        while (editorIter.hasNext()) {
-            ((IEditorAware) editorIter.next()).renameEditor(this);
-        }
-
-    }
-
-    /**
-     * Returns the filepath if the net was saved before or was opened from a file.
-     * 
-     * @return String
-     */
-    public String getFilePath() {
-        return m_filePath;
-    }
-
-    /**
-     * Sets the filepath. Should be called when the net was saved in a file.
-     * 
-     * @param filePath The filePath to set
-     */
-    public void setFilePath(String filePath) {
-        this.m_filePath = filePath;
-    }
-
-    // Not nedded /**
-    // * The keypressed method is used for internal use in the Editor. Some
-    // * Shortcut are realizied. see the keyTyped Method for more.
-    // *
-    // * @param keyPressed
-    // * The keyPressed to set
-    // */
-    // private void setKeyPressed(boolean keyPressed)
-    // {
-    // this.m_keyPressed = keyPressed;
-    // }
-
-    /**
-     * Returns the saved flag for the editor.
-     * 
-     * @return boolean
-     */
-    public boolean isSaved() {
-        return m_saved;
-    }
-
-    /**
-     * Sets the saved flag for the editor. true when net was saved, or just loaded.
-     * 
-     * @param savedFlag The savedFlag to set
-     */
-    public void setSaved(boolean savedFlag) {
-        this.m_saved = savedFlag;
-        if (m_statusbar != null) {
-            m_statusbar.updateStatus();
-        }
-    }
-
-    /**
-     * Returns the drawing mode. If the net is in drawing mode, clicking the left mouse button will draw the Element with the set creation type.
-     * 
-     * @see getCreateElementType
-     * @return drawing mode
-     */
-    public boolean isDrawingMode() {
-        return m_drawingMode;
-    }
-
-    public boolean isReachabilityEnabled() {
-        return m_reachGraphEnabled;
-    }
-
-    /**
-     * Sets the drawing mode. If the net is in drawing mode, clicking the left mouse button will draw the Element with the set creation type.
-     * 
-     * @see getCreateElementType
-     * @param flag
-     */
-    public void setDrawingMode(boolean flag) {
-        m_drawingMode = flag;
-    }
-
-    public void setReachabilityEnabled(boolean flag) {
-        m_reachGraphEnabled = flag;
-    }
-
-    // /**
-    // * Returns the PetriNet (Model Controllet) USE WITH CARE!
-    // *
-    // * @return
-    // */
-    // public PetriNetModelProcessor getPetriNet()
-    // {
-    // if (m_itsPetriNet == null)
-    // {
-    // m_itsPetriNet = new PetriNetModelProcessor();
-    // }
-    // return this.m_itsPetriNet;
-    // }
-
-    public boolean isSmartEditActive() {
-        return smartEditActive;
-    }
-
-    public void setSmartEditActive(boolean smartEditActive) {
-        this.smartEditActive = smartEditActive;
-    }
-
-    @SuppressWarnings("all")
-    public JComponent getContainer() {
-        return container;
-    }
-
-    public void setContainer(JComponent container) {
-        this.container = container;
-    }
-
-    public IEditorProperties getElementProperties() {
-        return elementProperties;
-    }
-
-    public void setElementProperties(IEditorProperties elementProperties) {
-        this.elementProperties = elementProperties;
-    }
-
-    public AbstractModelProcessor getModelProcessor() {
-        return modelProcessor;
-    }
-
-    /**
-     * @param modelProcessor The modelProcessor to set.
-     */
-    public void setModelProcessor(AbstractModelProcessor modelProcessor) {
-        this.modelProcessor = modelProcessor;
-        getGraph().drawNet(modelProcessor);
-    }
-
-    @Override
-    public String toString() {
-        return getName();
-    }
-
-    public void registerStatusBar(EditorStatusBarVC statusBar) {
-        m_statusbar = statusBar;
-    }
-
-    public JScrollPane getScrollPane() {
-        return m_scrollPane;
-    }
-
-    // ! Use this method to show or hide the tree view
-    // ! on the left side of the editor window
-    // ! @param specifies whether the tree view should be shown or not as a
-    // boolean variable
-    public void setSideTreeViewVisible(boolean showTreeView) {
-        m_mainSplitPane.setDividerLocation(showTreeView ? m_mainSplitPane.getLastDividerLocation() : 0);
-    }
-
-    // ! Returns whether or not the tree view is currently visible
-    // ! @return true if the tree view is currently visible, false otherwise
-    public boolean isSideTreeViewVisible() {
-        return (m_mainSplitPane.getDividerLocation() > 1);
-    }
-
-    public boolean isSubprocessEditor() {
-        if (getParentEditor() != null) {
-            return true;
-        }
-        return false;
-    }
-
-    // ! Get layout information about this editor that
-    // ! should be made persistent
-    // ! @return EditorLayoutInfo object that contains all relevant information
-    public EditorLayoutInfo getSavedLayoutInfo() {
-        EditorLayoutInfo result = new EditorLayoutInfo();
-        result.setTreeViewWidth(m_mainSplitPane.getDividerLocation());
-        result.setSavedSize(getSize());
-        result.setSavedLocation(getLocation());
-
-        return result;
-    }
-
-    // ! Set layout information for this editor
-    // ! from a persistant information object
-    // ! Called after loading a document or opening a sub-process editor
-    // ! @param layoutInfo specifies the information about this editor that
-    // should be restored
-    public void setSavedLayoutInfo(EditorLayoutInfo layoutInfo) {
-        if (layoutInfo != null) {
-            if (m_mainSplitPane != null) {
-                int divLoc = layoutInfo.getTreeViewWidth();
-                m_mainSplitPane.setDividerLocation(divLoc);
-                if (divLoc <= 1) {
-                    m_mainSplitPane.setLastDividerLocation(EditorVC.m_splitPosition);
-                }
-            }
-            // Size
-            Dimension d = layoutInfo.getSavedSize();
-            setPreferredSize(d);
-            // Setting our own size won't help us much since
-            // we're the child of a scrolling pane
-            // Instead, look into our parents
-            // to find the one that is a JInternalFrame
-            Container currentParent = getParent();
-            while ((currentParent != null) && (!(currentParent instanceof JInternalFrame))) {
-                currentParent = currentParent.getParent();
-            }
-            if (currentParent != null) {
-                Dimension editorDim = new Dimension();
-                getSize(editorDim);
-                Dimension frameDim = new Dimension();
-                currentParent.getSize(frameDim);
-
-                // There is some overhead that must be taken into account here...
-                d.width += frameDim.width - editorDim.width;
-                d.height += frameDim.height - editorDim.height;
-
-                currentParent.setSize(d);
-
-            }
-
-            // Currently, we ignore the position
-            // It's unwanted sometimes, especially if things like desktop
-            // resolution change
-        }
-    }
-
-    public void internalFrameActivated(InternalFrameEvent e) {
-        if (!this.isReachabilityEnabled()) {
-            m_centralMediator.getUi().getToolBar().getReachabilityGraphButton().setEnabled(true);
-        }
-
-        ReferenceProvider refer = new ReferenceProvider();
-        if (!this.isSubprocessEditor()) {
-            if (m_TokenGameEnabled) {
-                refer.getUIReference().switchToolBar(true);
-            } else {
-                refer.getUIReference().switchToolBar(false);
-                refer.getUIReference().getToolBar().addAnalysisButtons();
-            }
-        } else {
-            return;
-        }
-    };
-
-    public void internalFrameClosed(InternalFrameEvent e) {};
-
-    public void internalFrameClosing(InternalFrameEvent e) {
-        // Get the standard-toolbar if the editor is being closed.
-        if (!this.isSubprocessEditor()) {
-            ReferenceProvider refer = new ReferenceProvider();
-            refer.getUIReference().switchToolBar(false);
-            refer.getUIReference().getContentPane().repaint();
-            // Remember our layout if this is a sub-process editor
-        } else {
-            this.getModelProcessor().getElementContainer().setEditorLayoutInfo(getSavedLayoutInfo());
-        }
-
-    }
-
-    public void internalFrameDeactivated(InternalFrameEvent e) {
-        m_centralMediator.getUi().getToolBar().getReachabilityGraphButton().setEnabled(false);
-    };
-
-    public void internalFrameDeiconified(InternalFrameEvent e) {};
-
-    public void internalFrameIconified(InternalFrameEvent e) {};
-
-    public void internalFrameOpened(InternalFrameEvent e) {}
-
-    public IEditor getParentEditor() {
-        return m_parentEditor;
-    }
-
-    public void setParentEditor(IEditor editor) {
-        m_parentEditor = editor;
-    };
-
-    // ! Open a sub-process for the specified sub process model
-    // ! and enable the token game for it
-    // ! The source of the sub-process will receive a virtual token for the game
-    // ! @param subProcess specifies the sub-process to be opened
-    public void openTokenGameSubProcess(SubProcessModel subProcess) {
-        EditorVC newEditorWindow = (EditorVC) m_centralMediator.createSubprocessEditor(getModelProcessor()
-                .getProcessorType(), true, this, subProcess);
-        newEditorWindow.getModelProcessor().getElementContainer();
-        IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(newEditorWindow);
-        if (qualanService.getSourcePlaces().size() == 1) {
-            // Hand an initial token to the sub-process for the token game
-            ((PlaceModel) qualanService.getSourcePlaces().iterator().next()).receiveToken();
-        }
-        // Enable token game mode
-        newEditorWindow.toggleTokenGame();
-    }
-
-    public AbstractElementModel getSubprocessInput() {
-        return m_subprocessInput;
-    }
-
-    public void setSubprocessInput(AbstractElementModel p_subprocessInput) {
-        m_subprocessInput = p_subprocessInput;
-    }
-
-    public AbstractElementModel getSubprocessOutput() {
-        return m_subprocessOutput;
-    }
-
-    public void setSubprocessOutput(AbstractElementModel p_subprocessOutput) {
-        m_subprocessOutput = p_subprocessOutput;
-    }
-
-    public GraphCell create(CreationMap map) {
-        return create(map, true, true);
-    }
-
-    public GraphCell create(CreationMap map, boolean insertIntoCache, boolean doNotEdit) {
-        if (map.getArcSourceId() != null) {// Maybe there should be a ArcCreationMap
-            return createArc(map, insertIntoCache);
-        } else {
-            return createElement(map, insertIntoCache, doNotEdit);
-        }
-    }
-
-    public GraphCell[] createAll(CreationMap[] maps) {
-        Vector<GraphCell> result = new Vector<GraphCell>();
-        for (int i = 0; i < maps.length; i++) {
-            if (maps[i] != null) {
-                GraphCell element = create(maps[i], false, true);
-                result.add(element);
-            }
-        }
-        GraphCell[] resultArray = result.toArray(new GraphCell[] {});
-        getGraph().getGraphLayoutCache().insert(resultArray);
-        return resultArray;
-    }
-
-    public int getModelid() {
-        return modelid;
-    }
-
-    public void setModelid(int modelid) {
-        this.modelid = modelid;
-    }
-
-    public boolean isUnderstandabilityColoringEnabled() {
-        return m_UnderstandabilityColoringEnabled;
-    }
-
-    public void setUnderstandabilityColoringEnabled(boolean active) {
-        m_UnderstandabilityColoringEnabled = active;
-        ConfigurationManager.getConfiguration().setColorOn(active);
-    }
-
-    public void toggleUnderstandColoring() {
-
-        if (isUnderstandabilityColoringEnabled()) {
-            LoggerManager.debug(Constants.EDITOR_LOGGER, "DEACTIVATE Understandability ");
-            setUnderstandabilityColoringEnabled(false);
-        } else {
-            LoggerManager.debug(Constants.EDITOR_LOGGER, "ACTIVATE Understandability ");
-            setUnderstandabilityColoringEnabled(true);
-        }
-        m_understandColoring.update();
-        // Update the UI representation
-        getGraph().updateUI();
-    }
-
-    public void setReadOnly(boolean readonly) {
-        getGraph().setEnabled(readonly);
-        getGraph().enableMarqueehandler(readonly);
-        getGraph().clearSelection();
-        setEnabled(readonly);
-        getGraph().setPortsVisible(readonly);
-    }
-
-    public QuantitativeSimulationDialog getSimDlg() {
-        return simDlg;
-    }
-
-    public void setSimDlg(QuantitativeSimulationDialog newVal) {
-        simDlg = newVal;
+	public void setLastMousePosition(Point2D point) {
+		this.m_lastMousePosition = point;
+	}
+
+	/**
+	 * Returns the type of the element, which will be created in drawing mode.
+	 * 
+	 * @see AbstractPetriNetElementModel for element types
+	 * @return int
+	 */
+	public int getCreateElementType() {
+		return this.m_createElementType;
+	}
+
+	/**
+	 * Sets the type of the element, which will be created in drawing mode.
+	 * 
+	 * @see AbstractPetriNetElementModel for element types
+	 * @param createElementType
+	 * 
+	 */
+	public void setCreateElementType(int createElementType) {
+		int oldValue = m_createElementType;
+		this.m_createElementType = createElementType;
+		
+		VisualController.getInstance().propertyChange(new PropertyChangeEvent(m_centralMediator, "DrawMode", oldValue, createElementType));
+	}
+
+	/**
+	 * Returns if the editor is in tokengame mode.
+	 * 
+	 * @see TokenGameController
+	 * @return true if tokengame mode
+	 */
+	public boolean isTokenGameEnabled() {
+		return tokenGameEnabled;
+	}
+
+	/**
+	 * Returns the WoPeDJGraph (Graph Controller) USE WITH CARE!
+	 * 
+	 * @return WoPeDJGraph
+	 */
+	public AbstractGraph getGraph() {
+		return m_graph;
+	}
+
+	public WoPeDJGraph getWoPeDJGraph() {
+		return m_graph;
+	}
+
+	/**
+	 * Returns the default filetype for saving the net.
+	 * 
+	 * @return int
+	 */
+	public int getDefaultFileType() {
+		return m_defaultFileType;
+	}
+
+	/**
+	 * Sets the default filetype for saving the net.
+	 * 
+	 * @param defaultFileType
+	 *            The defaultFileType to set
+	 */
+	public void setDefaultFileType(int defaultFileType) {
+		this.m_defaultFileType = defaultFileType;
+	}
+
+	public EditSessionType getApromoreSettings() {
+		return m_apro_settings;
+	}
+
+	public void setApromoreSettings(EditSessionType aproname) {
+		this.m_apro_settings = aproname;
+	}
+
+	/**
+	 * Returns the filepath if the net was saved before or was opened from a
+	 * file.
+	 * 
+	 * @return String
+	 */
+	public String getFilePath() {
+		return m_filePath;
+	}
+
+	/**
+	 * Sets the filepath. Should be called when the net was saved in a file.
+	 * 
+	 * @param filePath
+	 *            The filePath to set
+	 */
+	public void setFilePath(String filePath) {
+		this.m_filePath = filePath;
+	}
+
+	/**
+	 * Returns the saved flag for the editor.
+	 * 
+	 * @return boolean
+	 */
+	public boolean isSaved() {
+		return m_saved;
+	}
+
+	/**
+	 * Sets the saved flag for the editor. true when net was saved, or just
+	 * loaded.
+	 * 
+	 * @param savedFlag
+	 *            The savedFlag to set
+	 */
+	public void setSaved(boolean savedFlag) {
+		this.m_saved = savedFlag;
+		if (getEditorPanel().m_statusbar != null) {
+			getEditorPanel().m_statusbar.updateStatus();
+		}
+	}
+
+	/**
+	 * Returns the drawing mode. If the net is in drawing mode, clicking the
+	 * left mouse button will draw the Element with the set creation type.
+	 * 
+	 * @see getCreateElementType
+	 * @return drawing mode
+	 */
+	public boolean isDrawingMode() {
+		return m_drawingMode;
+	}
+
+	public boolean isReachabilityEnabled() {
+		return m_reachGraphEnabled;
+	}
+
+	public void setDrawMode(int type, boolean active)
+    {
+        setDrawingMode(active);
+        setCreateElementType(type);
     }
 	
 	/**
-	 * replaces the "normal" EditorSplitPane with another SplitPane with the
-	 * AnalysisSidebar on the right side
+	 * Sets the drawing mode. If the net is in drawing mode, clicking the left
+	 * mouse button will draw the Element with the set creation type.
 	 * 
-	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 * @see getCreateElementType
+	 * @param flag
 	 */
-	public void showAnalysisBar(IEditor editor,
-			AbstractApplicationMediator mediator) {
-		if(analysisBarVisible)
-			if(bMetricsBarVisible)
-				hideMetricsBar();
-			else
-				hideAnalysisBar();
-		if (!analysisBarVisible) {
-			this.remove(m_mainSplitPane);
-			this.getContainer();
-			boolean autoRefreshStatus = true;
-			tStarCheckBox = new JCheckBox(Messages
-					.getString("AnalysisSideBar.Footer.TStar"));
-			analysisSideBar = new SideBar(editor, mediator, autoRefreshStatus,
-					tStarCheckBox);
-
-			JPanel bottomPanel = new JPanel(new BorderLayout());
-			autoRefresh = new JCheckBox(Messages
-					.getString("AnalysisSideBar.Footer.Autorefresh"));
-			autoRefresh.setSelected(autoRefreshStatus);
-			autoRefresh.addActionListener(new ActionListener() {
-
-				public void actionPerformed(ActionEvent arg0) {
-					boolean selected = ((JCheckBox) arg0.getSource())
-							.isSelected();
-					analysisSideBar.setAutoRefreshStatus(selected);
-					analysisSideBar.repaint();
-				}
-			});
-			bottomPanel.add(autoRefresh, BorderLayout.CENTER);
-			// if t star checkbox is selected show t star in editor (only if net
-			// is a workflow net)
-			tStarCheckBox.addActionListener(new ActionListener() {
-
-				public void actionPerformed(ActionEvent arg0) {
-					analysisSideBar.showTStarIfPossible();
-				}
-			});
-			bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
-
-			JPanel sideBar = new JPanel(new BorderLayout());
-			sideBar.add(analysisSideBar, BorderLayout.CENTER);
-			sideBar.add(bottomPanel, BorderLayout.SOUTH);
-
-			mainsplitPaneWithAnalysisBar = new JSplitPane(
-					JSplitPane.HORIZONTAL_SPLIT, m_mainSplitPane, sideBar);
-
-			this.add(mainsplitPaneWithAnalysisBar);
-			analysisBarVisible = true;
-			this.revalidate();
-			editorSize.resize(false);
-			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (this
-					.getWidth() - editorSize.SIDEBAR_WIDTH));
-			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
-		}
+	public void setDrawingMode(boolean flag) {
+		m_drawingMode = flag;
+		if (flag == false)
+			setCreateElementType(-1);
 	}
-		
-	/**
-	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
-	 */
-	public void autoRefreshAnalysisBar() {
-		if (analysisBarVisible && autoRefresh != null && autoRefresh.isSelected()) {
-			analysisSideBar.refresh();
-			editorSize.resize(false);
-		}
+
+	public boolean getDrawingMode() {
+		return m_drawingMode;
+	}
+
+	public void setReachabilityEnabled(boolean flag) {
+		m_reachGraphEnabled = flag;
+	}
+
+	public boolean isSmartEditActive() {
+		return smartEditActive;
+	}
+
+	public void setSmartEditActive(boolean smartEditActive) {
+		this.smartEditActive = smartEditActive;
+	}
+
+	public IEditorProperties getElementProperties() {
+		return elementProperties;
+	}
+
+	public void setElementProperties(IEditorProperties elementProperties) {
+		this.elementProperties = elementProperties;
+	}
+
+	public PetriNetModelProcessor getModelProcessor() {
+		return modelProcessor;
 	}
 
 	/**
-	 * Method removes analysis sidebar
-	 * 
-	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 * @param modelProcessor
+	 *            The modelProcessor to set.
 	 */
-	public void hideAnalysisBar() {
-		if (analysisBarVisible) {
-			tStarCheckBox.setSelected(false);
-			analysisSideBar.showTStarIfPossible();
-			this.remove(mainsplitPaneWithAnalysisBar);
-			mainsplitPaneWithAnalysisBar = null;
-			this.add(m_mainSplitPane);
-			analysisBarVisible = false;
-			this.revalidate();
-			editorSize.resize(false);
+	public void setModelProcessor(PetriNetModelProcessor modelProcessor) {
+		this.modelProcessor = modelProcessor;
+		getGraph().drawNet(modelProcessor);
+	}
+
+	@Override
+	public String toString() {
+		return getName();
+	}
+
+	public void registerStatusBar(EditorStatusBarVC statusBar) {
+		getEditorPanel().m_statusbar = statusBar;
+	}
+
+	public JScrollPane getScrollPane() {
+		return getEditorPanel().m_scrollPane;
+	}
+
+	public boolean isClipboardEmpty() {
+		return getM_clipboard().isEmpty();
+	}
+
+	public boolean isSubprocessEditor() {
+		return false;
+	}
+
+	public void internalFrameActivated(InternalFrameEvent e) {
+		ReferenceProvider refer = new ReferenceProvider();
+		refer.getUIReference().switchToolBar(tokenGameEnabled);
+	}
+
+	public void internalFrameClosed(InternalFrameEvent e) {
+	};
+
+	public void internalFrameClosing(InternalFrameEvent e) {
+		// Get the standard-toolbar if the editor is being closed.
+		ReferenceProvider refer = new ReferenceProvider();
+		refer.getUIReference().switchToolBar(false);
+		refer.getUIReference().getContentPane().repaint();
+	}
+
+	public void internalFrameDeactivated(InternalFrameEvent e) {};
+
+	public void internalFrameDeiconified(InternalFrameEvent e) {};
+
+	public void internalFrameIconified(InternalFrameEvent e) {};
+
+	public void internalFrameOpened(InternalFrameEvent e) {}
+
+
+	// ! Open a sub-process for the specified sub process model
+	// ! and enable the token game for it
+	// ! The source of the sub-process will receive a virtual token for the game
+	// ! @param subProcess specifies the sub-process to be opened
+	public void openTokenGameSubProcess(SubProcessModel subProcess) {
+		EditorVC newEditorWindow = (EditorVC) m_centralMediator
+				.createSubprocessEditor(true, this, subProcess);
+		newEditorWindow.getModelProcessor().getElementContainer();
+		IQualanalysisService qualanService = QualAnalysisServiceFactory
+				.createNewQualAnalysisService(newEditorWindow);
+		if (qualanService.getSourcePlaces().size() == 1) {
+			// Hand an initial token to the sub-process for the token game
+			((PlaceModel) qualanService.getSourcePlaces().iterator().next())
+					.receiveToken();
+		}
+		// Enable token game mode
+		newEditorWindow.toggleTokenGame();
+	}
+	public GraphCell create(CreationMap map) {
+		return create(map, true, true);
+	}
+
+	public GraphCell create(CreationMap map, boolean insertIntoCache,
+			boolean doNotEdit) {
+
+		if (map.getArcSourceId() != null) {// Maybe there should be a
+			// ArcCreationMap
+			return createArc(map, insertIntoCache);
+		} else {
+
+			return createElement(map, insertIntoCache, doNotEdit);
 		}
 	}
 
-	/**
-	 * Method returns if analysis sidebar is visible or not
-	 * 
-	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
-	 */
-	public boolean isAnalysisBarVisible() {
-		return analysisBarVisible;
-	}
-	   
-    private JSplitPane mainsplitPaneWithMetricsBar = null;
-    private boolean bMetricsBarVisible = false;
-    
-    private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
-	
-	/**
-	 * Shows the metrics sidebar and resize the editor window.
-	 * Replaces the normal EditorSplitPane with another SplitPane with the
-	 * MetricsSidebar on the right side.
-	 * 
-	 * @author Mathias Gruschinske, Stefan Hackenberg
-	 */
-	public void showMetricsBar(IEditor editor)
-	{
-		if(analysisBarVisible)
-			if(bMetricsBarVisible)
-				hideMetricsBar();
-			else
-				hideAnalysisBar();
-		if (!analysisBarVisible) {
-											
-			this.remove(m_mainSplitPane);
-			
-			// create the metrics sidebar
-			metricsSideBar = new org.woped.metrics.sidebar.SideBar(editor);
-		
-			// create a Panel, which contains the sidebar
-			JPanel sideBar = new JPanel(new BorderLayout());
-			sideBar.add(metricsSideBar, BorderLayout.CENTER);
-		
-			// create a new SplitPane with a horizontal split 
-			mainsplitPaneWithMetricsBar = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_mainSplitPane, sideBar);
-			this.add(mainsplitPaneWithMetricsBar);									
-		
-			analysisBarVisible = true;
-			bMetricsBarVisible = true;
-			this.revalidate();	
-			
-			// new calculation of the size from editor window (only width)
-			editorSize.resize(false);
-			
-			mainsplitPaneWithMetricsBar.setDividerLocation((int) (this.getWidth() - editorSize.SIDEBAR_WIDTH));
-			mainsplitPaneWithMetricsBar.setResizeWeight(1);
-						
-			metricsSideBar.setKeyLabelWidth();
-			
+	public GraphCell[] createAll(CreationMap[] maps) {
+		Vector<GraphCell> result = new Vector<GraphCell>();
+		for (int i = 0; i < maps.length; i++) {
+			if (maps[i] != null) {
+				GraphCell element = create(maps[i], false, true);
+				result.add(element);
+			}
 		}
-	}
-	
-	/**
-	 * 
-	 * @author Mathias Gruschinske, Stefan Hackenberg
-	 */
-	public void hideMetricsBar() {
-		if (analysisBarVisible) {
-			this.remove(mainsplitPaneWithMetricsBar);
-			mainsplitPaneWithMetricsBar = null;
-			metricsSideBar.clean();
-			this.add(m_mainSplitPane);
-			analysisBarVisible = false;
-			bMetricsBarVisible = false;
-			this.revalidate();
-			editorSize.resize(false);
-		}
-	}
-	
-	public boolean isMetricsBarVisible() {
-		return bMetricsBarVisible;
+		GraphCell[] resultArray = result.toArray(new GraphCell[] {});
+		getGraph().getGraphLayoutCache().insert(resultArray);
+		return resultArray;
 	}
 
+	public int getModelid() {
+		return modelid;
+	}
+
+	public void setModelid(int modelid) {
+		this.modelid = modelid;
+	}
+
+	/**
+	 * Get status of understandability coloring
+	 * @return true if coloring is enabled
+	 */
+	public boolean isUnderstandabilityColoringEnabled() {
+		return editorPanel.isUnderstandabilityColoringEnabled();
+	}
+
+	/**
+	 * Set status of understandability coloring
+	 * @param active true to enable, false to disable
+	 */
+	public void setUnderstandabilityColoringEnabled(boolean active) {
+		editorPanel.setUnderstandabilityColoringEnabled(active);
+	}
+
+	public void toggleUnderstandColoring() {
+
+		if (isUnderstandabilityColoringEnabled()) {
+			LoggerManager.debug(Constants.EDITOR_LOGGER,
+					"DEACTIVATE Understandability ");
+			getEditorPanel().setUnderstandabilityColoringEnabled(false);
+		} else {
+			LoggerManager.debug(Constants.EDITOR_LOGGER,
+					"ACTIVATE Understandability ");
+			getEditorPanel().setUnderstandabilityColoringEnabled(true);
+		}
+		getEditorPanel().m_understandColoring.update();
+		// Update the UI representation
+		getGraph().updateUI();
+		m_propertyChangeSupport.firePropertyChange("Update", null, null);
+	}
+
+	public void setReadOnly(boolean readonly) {
+		getGraph().setEnabled(readonly);
+		getGraph().enableMarqueehandler(readonly);
+		getGraph().clearSelection();
+		getEditorPanel().setEnabled(readonly);
+		getGraph().setPortsVisible(readonly);
+	}
+
+	public QuantitativeSimulationDialog getSimDlg() {
+		return simDlg;
+	}
+
+	public void setSimDlg(QuantitativeSimulationDialog newVal) {
+		simDlg = newVal;
+	}
+
+	/**
+	 * Check whether rotation is selected
+	 * @return true if rotation is selected
+	 */
 	public boolean isRotateSelected() {
-		return m_orientation.isRotateSelected();
+		return editorPanel.isRotateSelected();
 	}
 
+	/**
+	 * Set rotation selection status
+	 * @param rotateSelected true if rotate should be selected
+	 */
 	public void setRotateSelected(boolean rotateSelected) {
-		m_orientation.setRotateSelected(rotateSelected);
-		if (analysisBarVisible && !bMetricsBarVisible)
-			analysisSideBar.showTStarIfPossible();
+		editorPanel.setRotateSelected(rotateSelected);
 	}
 
-    /**
-     * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
-     * @see org.woped.core.controller.IEditor#isUseWoflanDLL()
-     */
-    public Boolean isUseWoflanDLL() {
-        String os_name = System.getProperty("os.name");
-        if (os_name.startsWith("Mac") || os_name.startsWith("Linux")) {
-            return false;
-        } else {
-            return ConfigurationManager.getConfiguration().isUseWoflanDLL();
-        }
-    }
 
-    /**
-     * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
-     * @see java.awt.Component.getParent()
-     */
-    @Override
-    public Container getParent() {
-        return super.getParent();
-    }
-    
-    public boolean isShowingTStar(){
-    	return tStarEnabled;
-    }
-    
-    public void setTStarEnabled(boolean tStarEnabled){
-    	this.tStarEnabled = tStarEnabled;
-    }
-    
-    public SideBar getAnalysisSideBar(){
-    	return analysisSideBar;
-    }
-    
-    public void setAutomaticResize(boolean automaticresize){
-    	this.automaticResize = automaticresize;
-    }
-    
-    public boolean isAutomaticResize(){
-    	return automaticResize;
-    }
-    
-    private void clearYourself(){
-    	((WoPeDUndoManager) getGraph().getUndoManager()).clear();
-    	container.removeAll();
-    	this.removeAll();
-    	this.getParent().remove(this);
-    	
-    	((AbstractMarqueeHandler)marqueehandler).clear();
-    	dead = true;
-    	
-    	container = null;
-    	m_graph = null;
-    	m_scrollPane = null;
-    	modelProcessor = null;
-    	m_orientation = null;
-    	m_EditorLayoutInfo = null;
-    	m_propertyChangeSupport = null;
-    	m_clipboard = null;
-    	elementProperties = null;
-    	viewListener = null;
-    	m_statusbar = null;
-    	m_leftSideTreeView = null;
-    	m_mainSplitPane = null;
-    	mainsplitPaneWithAnalysisBar = null;
-    	m_treeObject = null;
-    	m_treeModel = null;
-    	m_parentEditor = null;
-    	editorSize = null;
-    	m_subprocessInput = null;
-    	m_subprocessOutput = null;
-    	m_centralMediator = null;
-    	m_understandColoring = null;
-    }
+	/**
+	 * Returns whether the T* transition is currently being shown for workflow nets
+	 * @return true if T* transition is shown
+	 */
+	public boolean isShowingTStar() {
+		return editorPanel.isShowingTStar();
+	}
+
+	/**
+	 * Specify whether T* transition should be shown for workflow nets
+	 * @param tStarEnabled true if T* transition should be shown
+	 */
+	public void setTStarEnabled(boolean tStarEnabled) {
+		this.editorPanel.setTStarEnabled(tStarEnabled);
+	}
+	
+	/**
+	 * sets on of the Arrows of the mainSplitPane-divider visible or invisible
+	 * based on window sizes and divider position
+	 */
+	public void checkMainSplitPaneDivider() {
+		editorPanel.checkMainSplitPaneDivider();
+	}
+
+	protected void clearYourself() {
+		((WoPeDUndoManager) getGraph().getUndoManager()).clear();
+		getEditorPanel().getContainer().removeAll();
+		getEditorPanel().removeAll();
+		getEditorPanel().getParent().remove(this.getEditorPanel());
+
+		((AbstractMarqueeHandler) marqueehandler).clear();
+
+		getEditorPanel().setComponentOrientation(null);
+		m_graph = null;
+		getEditorPanel().m_scrollPane = null;
+		modelProcessor = null;
+		getEditorPanel().m_orientation = null;
+		getEditorPanel().m_EditorLayoutInfo = null;
+		m_propertyChangeSupport = null;
+		m_clipboard = null;
+		elementProperties = null;
+		viewListener = null;
+		getEditorPanel().m_statusbar = null;
+		getEditorPanel().m_rightSideTreeView = null;
+		getEditorPanel().m_mainSplitPane = null;
+		getEditorPanel().mainsplitPaneWithAnalysisBar = null;
+		getEditorPanel().m_treeObject = null;
+		getEditorPanel().m_treeModel = null;
+		getEditorPanel().editorSize = null;
+		m_centralMediator = null;
+		getEditorPanel().m_understandColoring = null;
+	}
+
+	public void checkSubprocessEditors(Vector<Object> selectedElement) {
+		Iterator<Object> iterator = selectedElement.iterator();
+		GroupModel element;
+		ArcConfiguration arcConfig = new ArcConfiguration();
+		IEditor subEditor;
+		while (iterator.hasNext()) {
+			try {
+				element = (GroupModel) iterator.next();
+				if (element.getMainElement().getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+					SubProcessModel subprocess = (SubProcessModel) element
+							.getMainElement();
+					NetAlgorithms.getArcConfiguration(subprocess, arcConfig);
+					IEditor editor = (EditorVC) getM_centralMediator().getUi()
+							.getEditorFocus();
+					if ((arcConfig.m_numIncoming != 0)
+							|| (arcConfig.m_numOutgoing != 0)) {
+						subEditor = getM_centralMediator()
+								.createSubprocessEditor(
+										true,
+										editor,
+										(SubProcessModel) element
+												.getMainElement());
+						this.fireViewEvent(new ViewEvent(subEditor,
+								AbstractViewEvent.VIEWEVENTTYPE_GUI,
+								AbstractViewEvent.CLOSE, null));
+					}
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+			}
+		}
+	}
+
+	public boolean isOriginalName(String name, String id) {
+		boolean result = false;
+		if (name.matches(id))
+			result = true;
+		return result;
+	}
+	
+	public boolean isCopyFlag() {
+		return copyFlag;
+	}
+
+	public void setCopyFlag(boolean copyFlag) {
+		this.copyFlag = copyFlag;
+	}
+	
+	public EditorPanel getEditorPanel() {
+		return editorPanel;
+	}
+	
+	public void setName(String name) {
+		getEditorPanel().setName(name);
+	}
+
+	public String getName() {
+		return getEditorPanel().getName();
+	}
+	
+	public void hideAnalysisBar() {
+		getEditorPanel().hideAnalysisBar();
+	}
+	
+	public void hideMetricsBar() {
+		getEditorPanel().hideMetricsBar();
+	}
+	
+	public ITokenGameController getTokenGameController() {
+		return m_tokenGameController;
+	}
+	
+	public void repaint() {
+		getGraph().refreshNet();
+		getGraph().repaint();
+	}
+	
 }

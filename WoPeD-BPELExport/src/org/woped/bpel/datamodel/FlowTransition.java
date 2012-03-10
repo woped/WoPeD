@@ -13,7 +13,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWhile;
-import org.woped.core.model.AbstractElementModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 public class FlowTransition extends TerminalElement<TFlow>
 {
@@ -37,8 +37,8 @@ public class FlowTransition extends TerminalElement<TFlow>
 		if(this.getData() != null) return this.getData();
 		AbstractElement<?> tmp = null;
 		TFlow iFlow = TFlow.Factory.newInstance();
-		if(AbstractElementModel.class.isInstance(begin.getData())){
-			iFlow.setName(""+((AbstractElementModel)begin.getData()).getNameValue());
+		if(AbstractPetriNetElementModel.class.isInstance(begin.getData())){
+			iFlow.setName(""+((AbstractPetriNetElementModel)begin.getData()).getNameValue());
 		}
 		Iterator<AbstractElement<?>> list = begin.get_all_post_objects().iterator();
 		while (list.hasNext())
