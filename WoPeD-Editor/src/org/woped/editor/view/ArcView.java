@@ -229,7 +229,7 @@ public class ArcView extends EdgeView
                     int buttonX  = (int)(labelPos.x+labelPos.width/2)-(iconWidth/2);
                     int buttonY  = (int)(labelPos.y+labelPos.height/2)-(iconHeight/2);
                     g2.drawImage(activeIcon.getImage(), buttonX, buttonY , 
-                    		iconWidth, iconHeight, activeIcon.getImageObserver());
+                    		iconWidth, iconHeight, activeIcon != null ? activeIcon.getImageObserver() : null);
 
                 }
             }

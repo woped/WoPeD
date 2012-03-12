@@ -74,7 +74,7 @@ import org.woped.editor.controller.PetriNetResourceEditor.SuperRolesTreeNode;
 			                	   Iterator<?> it = allAssignedComponents.iterator();
 			                	   while (it.hasNext()) {
 			                		   Component currentComponent = (Component) it.next();
-			                		   if (currentComponent.name == currentComponentName) {
+			                		   if (currentComponent.name.equals( currentComponentName)) {
 			                			   currentRole.addChild(currentComponent);
 			                			   currentComponent.addAncestorRole(currentRole);
 			                		   }
@@ -101,7 +101,7 @@ import org.woped.editor.controller.PetriNetResourceEditor.SuperRolesTreeNode;
 			                	   Iterator<?> it = allAssignedComponents.iterator();
 			                	   while (it.hasNext()) {
 			                		   Component currentComponent = (Component) it.next();
-			                		   if (currentComponent.name == currentComponentName) {
+			                		   if (currentComponent.name.equals(currentComponentName)) {
 			                			   currentGroup.addChild(currentComponent);
 			                			   currentComponent.addAncestorGroup(currentGroup);
 			                		   }
@@ -129,7 +129,7 @@ import org.woped.editor.controller.PetriNetResourceEditor.SuperRolesTreeNode;
 			                	   Iterator<?> it = allRoles.iterator();
 			                	   while (it.hasNext()) {
 			                		   Role currentRole = (Role) it.next();
-			                		   if (currentRoleName == currentRole.name) {
+			                		   if (currentRoleName.equals(currentRole.name)) {
 			                			   currentRole.addAncestor(currentSuperRole);
 			                			   currentSuperRole.addRole(currentRole);
 			                		   }
@@ -153,7 +153,7 @@ import org.woped.editor.controller.PetriNetResourceEditor.SuperRolesTreeNode;
 			                	   Iterator<?> it = allGroups.iterator();
 			                	   while (it.hasNext()) {
 			                		   Group currentGroup = (Group) it.next();
-			                		   if (currentGroupName == currentGroup.name) {
+			                		   if (currentGroupName.equals(currentGroup.name)) {
 			                			   currentGroup.addAncestor(currentSuperGroup);
 			                			   currentSuperGroup.addGroup(currentGroup);
 			                		   }

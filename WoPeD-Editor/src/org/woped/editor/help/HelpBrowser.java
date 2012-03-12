@@ -184,7 +184,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
 
     private void setStatusBarInfo(String url)
     {
-        if (url.substring(0, 6).equals("file:/") | url.substring(0, 4).equals("jar:")) url = new File(url).getName();
+        if (url.substring(0, 6).equals("file:/") || url.substring(0, 4).equals("jar:")) url = new File(url).getName();
         statusBarInfo.setText(url);
     }
 
@@ -303,7 +303,7 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
         {
             String linkedURL = event.getURL().toExternalForm();
 
-            if ((linkedURL.substring(0, 5)).equals("file:") | (linkedURL.substring(0, 4)).equals("jar:"))
+            if ((linkedURL.substring(0, 5)).equals("file:") || (linkedURL.substring(0, 4)).equals("jar:"))
             { 
             	if (linkedURL.substring(0, 5).equals("file:"))
             	{   
