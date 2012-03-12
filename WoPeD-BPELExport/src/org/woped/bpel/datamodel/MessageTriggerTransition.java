@@ -37,7 +37,7 @@ public class MessageTriggerTransition extends Transition<TransitionModel>
 	{
 		if (!MessageTriggerTransition.class.isInstance(e))
 			return false;
-		if (this.getData().getId() != ((MessageTriggerTransition) e).getData().getId())
+		if (this.getData().getId().equals(((MessageTriggerTransition) e).getData().getId()))
 			return false;
 		return true;
 	}

@@ -18,7 +18,7 @@ public class SimpleTransition extends Transition<TransitionModel>
 	{
 		if (!SimpleTransition.class.isInstance(e))
 			return false;
-		if (this.getData().getId() != ((SimpleTransition) e).getData().getId())
+		if (this.getData().getId().equals(((SimpleTransition) e).getData().getId()))
 			return false;
 		return true;
 	}

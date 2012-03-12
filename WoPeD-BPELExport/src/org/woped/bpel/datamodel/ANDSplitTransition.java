@@ -15,8 +15,8 @@ public class ANDSplitTransition extends
 	@Override
 	public boolean equals(AbstractElement<?> e)
 	{
-		if(!ANDSplitTransition.class.isInstance(e))return false;
-		if(this.getData().getId() != ((ANDSplitTransition)e).getData().getId()) return false;
+		if (!ANDSplitTransition.class.isInstance(e))return false;
+		if (!this.getData().getId().equals(((ANDSplitTransition)e).getData().getId())) return false;
 		return true;
 	}
 

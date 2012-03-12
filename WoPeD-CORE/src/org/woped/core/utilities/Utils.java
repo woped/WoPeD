@@ -86,7 +86,7 @@ public class Utils
                 }
             }
         }
-        if (!extensionFound & extensions.get(0).toString() != null) fileName += "." + extensions.get(0).toString();
+        if (!extensionFound && extensions.get(0).toString() != null) fileName += "." + extensions.get(0).toString();
         return fileName;
     }
 

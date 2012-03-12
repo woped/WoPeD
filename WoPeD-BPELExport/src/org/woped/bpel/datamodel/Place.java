@@ -28,7 +28,7 @@ public class Place extends NonterminalElement<PlaceModel>
 	public boolean equals(AbstractElement<?> e)
 	{
 		if(!Place.class.isInstance(e))return false;
-		if(((Place)e).getData().getId() != this.getData().getId())return false;		
+		if(!((Place)e).getData().getId().equals(this.getData().getId())) return false;		
 		return true;
 	}
 

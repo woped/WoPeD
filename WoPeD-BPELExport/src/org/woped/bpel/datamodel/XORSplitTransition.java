@@ -15,7 +15,7 @@ public class XORSplitTransition extends Transition<XORSplitOperatorTransitionMod
 	public boolean equals(AbstractElement<?> e)
 	{
 		if(!XORSplitTransition.class.isInstance(e))return false;
-		if(this.getData().getId() != ((XORSplitTransition)e).getData().getId()) return false;
+		if(!this.getData().getId().equals(((XORSplitTransition)e).getData().getId())) return false;
 		return true;
 	}
 

@@ -18,7 +18,7 @@ public class Subprocess extends Transition<SubProcessModel>
 	{
 		if (!Subprocess.class.isInstance(e))
 			return false;
-		if (((Subprocess) e).getData().getId() != this.getData().getId())
+		if (!((Subprocess) e).getData().getId().equals(this.getData().getId()))
 			return false;
 		return true;
 	}

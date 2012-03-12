@@ -29,8 +29,8 @@ public class ANDJoinTransition extends
 	 */
 	public boolean equals(AbstractElement<?> e)
 	{
-		if(!ANDJoinTransition.class.isInstance(e))return false;
-		if(this.getData().getId() != ((ANDJoinTransition)e).getData().getId()) return false;
+		if (!ANDJoinTransition.class.isInstance(e))return false;
+		if (!this.getData().getId().equals(((ANDJoinTransition)e).getData().getId())) return false;
 		return true;
 	}
 

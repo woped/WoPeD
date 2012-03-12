@@ -17,7 +17,7 @@ public class XORJoinTransition extends
 	{
 		if (!XORJoinTransition.class.isInstance(e))
 			return false;
-		if (this.getData().getId() != ((XORJoinTransition) e).getData().getId())
+		if (!this.getData().getId().equals(((XORJoinTransition) e).getData().getId()))
 			return false;
 		return true;
 	}

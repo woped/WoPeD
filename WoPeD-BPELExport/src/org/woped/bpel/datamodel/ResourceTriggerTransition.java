@@ -17,7 +17,7 @@ public class ResourceTriggerTransition extends Transition<TransitionModel>
 	public boolean equals(AbstractElement<?> e)
 	{if (!ResourceTriggerTransition.class.isInstance(e))
 		return false;
-	if (this.getData().getId() != ((ResourceTriggerTransition) e).getData().getId())
+	if (this.getData().getId().equals(((ResourceTriggerTransition) e).getData().getId()))
 		return false;
 	return true;
 	}

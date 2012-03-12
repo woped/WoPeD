@@ -20,7 +20,7 @@ public class TimeTriggerTransition extends Transition<TransitionModel>
 	{
 		if (!TimeTriggerTransition.class.isInstance(e))
 			return false;
-		if (this.getData().getId() != ((TimeTriggerTransition) e).getData().getId())
+		if (this.getData().getId().equals(((TimeTriggerTransition) e).getData().getId()))
 			return false;
 		return true;
 	}
