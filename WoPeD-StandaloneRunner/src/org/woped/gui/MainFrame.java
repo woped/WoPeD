@@ -145,7 +145,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JCommandButton 					manualButton 				= null;
 	private	JCommandButton 					contentsButton 				= null;
 	private	JCommandButton 					sampleNetsButton 			= null;
-//	private	JCommandButton 					reportBugButton 			= null;
+	private	JCommandButton 					reportBugButton 			= null;
 	private	JCommandButton 					aboutButton 				= null;
 
 	private	JCommandButton 					skipBackwardButton 			= null;
@@ -592,19 +592,27 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	}
 
 	private JRibbonBand getOptionsHelpBand() {
-		
-		if (optionsAndHelpBand == null) {	
-		optionsAndHelpBand = new JRibbonBand(Messages.getString("OptionsAndHelp.textBandTitle"), null);
-		optionsAndHelpBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(optionsAndHelpBand));
-		optionsAndHelpBand.startGroup();
 
-		optionsAndHelpBand.addCommandButton(getConfigurationButton(), RibbonElementPriority.TOP);
-		optionsAndHelpBand.addCommandButton(getManualButton(), RibbonElementPriority.TOP);
-		optionsAndHelpBand.addCommandButton(getContentsButton(),RibbonElementPriority.TOP);
-		optionsAndHelpBand.addCommandButton(getSampleNetsButton(),RibbonElementPriority.TOP);
-//		optionsAndHelpBand.addCommandButton(getReportBugButton(), RibbonElementPriority.TOP);
-		optionsAndHelpBand.addCommandButton(getAboutButton(), RibbonElementPriority.TOP);
-		}	
+		if (optionsAndHelpBand == null) {
+			optionsAndHelpBand = new JRibbonBand(
+					Messages.getString("OptionsAndHelp.textBandTitle"), null);
+			optionsAndHelpBand.setResizePolicies(CoreRibbonResizePolicies
+					.getCorePoliciesNone(optionsAndHelpBand));
+			optionsAndHelpBand.startGroup();
+
+			optionsAndHelpBand.addCommandButton(getConfigurationButton(),
+					RibbonElementPriority.TOP);
+			optionsAndHelpBand.addCommandButton(getManualButton(),
+					RibbonElementPriority.TOP);
+			optionsAndHelpBand.addCommandButton(getContentsButton(),
+					RibbonElementPriority.TOP);
+			optionsAndHelpBand.addCommandButton(getSampleNetsButton(),
+					RibbonElementPriority.TOP);
+			optionsAndHelpBand.addCommandButton(getReportBugButton(),
+					RibbonElementPriority.TOP);
+			optionsAndHelpBand.addCommandButton(getAboutButton(),
+					RibbonElementPriority.TOP);
+		}
 		return optionsAndHelpBand;
 	}
 	
@@ -1194,7 +1202,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return sampleNetsButton;
 	}
 
-/*	private JCommandButton getReportBugButton() {
+	private JCommandButton getReportBugButton() {
 		
 		if (reportBugButton == null) {
 			reportBugButton = new JCommandButton(Messages.getString("OptionsAndHelp.ReportBug.text"), new help_reportbug());
@@ -1203,7 +1211,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		}
 		
 		return reportBugButton;
-	}*/
+	}
 
 	private JCommandButton getAboutButton() {
 		
