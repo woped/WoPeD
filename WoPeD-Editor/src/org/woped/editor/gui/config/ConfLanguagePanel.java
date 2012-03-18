@@ -80,9 +80,9 @@ public class ConfLanguagePanel extends AbstractConfPanel
 
         if (changed)
         {
+            ConfigurationManager.getConfiguration().setLocale();
             JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Language.Dialog.Restart.Message"), Messages.getString("Configuration.Language.Dialog.Restart.Title"),
                     JOptionPane.INFORMATION_MESSAGE);
-            ConfigurationManager.getConfiguration().setLocale();
         }
         return true;
     }

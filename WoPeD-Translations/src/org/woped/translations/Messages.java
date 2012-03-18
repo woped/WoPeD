@@ -50,14 +50,12 @@ public abstract class Messages
 {
 
     private static final String         BUNDLE_NAME     = "org.woped.translations.Messages";               //$NON-NLS-1$
-    private static final Locale         LOCALE          = ConfigurationManager.getConfiguration().getLocale();
-    private static final ResourceBundle RESOURCE_BUNDLE = PropertyResourceBundle.getBundle(BUNDLE_NAME, LOCALE);
 
     public static boolean exists(String key)
     {
     	try
         {
-            RESOURCE_BUNDLE.getString(key);
+    		PropertyResourceBundle.getBundle(BUNDLE_NAME, ConfigurationManager.getConfiguration().getLocale()).getString(key);
             return true;
         } catch (MissingResourceException e) 
         {
@@ -69,7 +67,7 @@ public abstract class Messages
     {
         try
         {
-            return RESOURCE_BUNDLE.getString(key);
+            return PropertyResourceBundle.getBundle(BUNDLE_NAME, ConfigurationManager.getConfiguration().getLocale()).getString(key);
         } catch (MissingResourceException e)
         {
             LoggerManager.debug(Constants.TRANSLATIONS_LOGGER, "Resource not found: " + key);

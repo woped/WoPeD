@@ -144,10 +144,10 @@ public class ConfEditorPanel extends AbstractConfPanel
         
         if (changed) {
         	
+            ConfigurationManager.getConfiguration().setLookAndFeel(lnfClasses.get(getLnfChooser().getSelectedItem()));
         	JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Editor.Dialog.Restart.Message"), Messages.getString("Configuration.Editor.Dialog.Restart.Title"),
                     JOptionPane.INFORMATION_MESSAGE);
-            ConfigurationManager.getConfiguration().setLookAndFeel(lnfClasses.get(getLnfChooser().getSelectedItem()));
-        }
+         }
         return true;
     }
     

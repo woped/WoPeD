@@ -243,7 +243,7 @@ public class ConfigVC extends JDialog implements IViewController
     	{
     		tabbedPane = new JTabbedPane();
     		editorPanel = new ConfEditorPanel(Messages.getString("Configuration.Editor.Title"));
-    		tabbedPane.addTab(Messages.getString("Configuration.Language.Title"), editorPanel);
+    		tabbedPane.addTab(Messages.getString("Configuration.Editor.Title"), editorPanel);
     		confPanels.put(editorPanel.getPanelName(), editorPanel);
     		
     		impexpPanel = new ConfFilePanel(Messages.getString("Configuration.Files.Title"));
