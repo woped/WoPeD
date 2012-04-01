@@ -75,8 +75,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JRibbonBand 					analyzeBand					= null;
 	private	JRibbonBand 					metricsBand					= null;
 	private JRibbonBand 					optionsAndHelpBand			= null;
-	private	JRibbonBand 					tokengamePlayBand			= null;
-	private	JRibbonBand 					tokengameEditBand			= null;
+	private	JRibbonBand 					tokengameCloseBand			= null;
+	private	JRibbonBand 					tokengameStepBand			= null;
+	private	JRibbonBand 					tokengameAutoBand			= null;
 	
 	private RibbonTask						fileTask					= null;
 	private RibbonTask						editTask					= null;
@@ -148,20 +149,18 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JCommandButton 					reportBugButton 			= null;
 	private	JCommandButton 					aboutButton 				= null;
 
-	private	JCommandButton 					skipBackwardButton 			= null;
-	private	JCommandButton 					seekBackwardButton 			= null;
-	private	JCommandButton 					jumpIntoSubProcessButton 	= null;
-	private	JCommandButton 					pauseButton 				= null;
-	private	JCommandButton 					playButton 					= null;
+	private	JCommandButton 					tokengameCloseButton 		= null;
+
+	private	JCommandButton 					stepWiseButton 				= null;
+	private	JCommandButton 					backwardButton 				= null;
+	private	JCommandButton 					forwardButton 				= null;
 	private	JCommandButton 					stopButton 					= null;
 	private	JCommandButton 					jumpOutOfSubprocessButton 	= null;
-	private	JCommandButton 					seekForwardButton 			= null;
-	private	JCommandButton 					skipForwardButton 			= null;
+	private	JCommandButton 					jumpIntoSubProcessButton 	= null;
 
-	private	JCommandButton 					stepByStepButton 			= null;
 	private	JCommandButton 					autoPlayButton 				= null;
-//	private	JCommandButton 					randomButton 				= null;
-	private	JCommandButton 					tokengameCloseButton 		= null;
+	private JCommandButton					startButton					= null;
+	private	JCommandButton 					pauseButton 				= null;
 
 	private ActionButtonListener			newListener					= null;
 	private ActionButtonListener			tokengameStartListener		= null;
@@ -418,7 +417,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private RibbonTask getTokengameTask() {
 		
 		if (tokengameTask == null) {
-			tokengameTask = new RibbonTask(Messages.getTitle("Task.Tokengame"), getTokengamePlayBand(), getTokengameEditBand());
+			tokengameTask = new RibbonTask(Messages.getTitle("Task.Tokengame"), getTokengameCloseBand(), getTokengameStepBand(), getTokengameAutoBand());
 			tokengameTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(tokengameTask));
 		}
 		
@@ -616,38 +615,46 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return optionsAndHelpBand;
 	}
 	
-	private JRibbonBand getTokengamePlayBand (){
+	private JRibbonBand getTokengameCloseBand(){
 		
-		if (tokengamePlayBand == null) {	
-			tokengamePlayBand = new JRibbonBand(Messages.getString("tgPlayBand.textBandTitle"),new tokengame_play_start());
-			tokengamePlayBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(tokengamePlayBand));
-		
-			tokengamePlayBand.addCommandButton(getSkipBackwardButton(), RibbonElementPriority.TOP);
-			tokengamePlayBand.addCommandButton(getSeekBackwardButton(), RibbonElementPriority.TOP);
-			tokengamePlayBand.addCommandButton(getJumpIntoSubProcessButton(), RibbonElementPriority.TOP);
-			tokengamePlayBand.addCommandButton(getPauseButton(), RibbonElementPriority.TOP);
-			tokengamePlayBand.addCommandButton(getPlayButton(), RibbonElementPriority.TOP);
-			tokengamePlayBand.addCommandButton(getStopButton(), RibbonElementPriority.TOP);
-			tokengamePlayBand.addCommandButton(getJumpOutOfSubprocessButton(), RibbonElementPriority.TOP);
-			tokengamePlayBand.addCommandButton(getSeekForwardButton(), RibbonElementPriority.TOP);
-			tokengamePlayBand.addCommandButton(getSkipForwardButton(), RibbonElementPriority.TOP);
+		if (tokengameCloseBand == null) {	
+			tokengameCloseBand = new JRibbonBand(Messages.getString("Tokengame.CloseBand.title"),new tokengame_play_start());
+			tokengameCloseBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(tokengameCloseBand));
+			tokengameCloseBand.addCommandButton(getTokengameCloseButton(), RibbonElementPriority.TOP);		
 		}
 		
-		return tokengamePlayBand;
+		return tokengameCloseBand;
 	}
 
-	private JRibbonBand getTokengameEditBand (){
+	private JRibbonBand getTokengameStepBand(){
 		
-		if (tokengameEditBand == null) {	
-			tokengameEditBand = new JRibbonBand(Messages.getString("tgEditBand.textBandTitle"),new tokengame_edit_step_by_step());
-			tokengameEditBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(tokengameEditBand));
+		if (tokengameStepBand == null) {	
+			tokengameStepBand = new JRibbonBand(Messages.getString("Tokengame.StepBand.title"),new tokengame_play_start());
+			tokengameStepBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(tokengameStepBand));
 		
-			tokengameEditBand.addCommandButton(getStepByStepButton(), RibbonElementPriority.TOP);
-			tokengameEditBand.addCommandButton(getAutoPlayButton(), RibbonElementPriority.TOP);
-			tokengameEditBand.addCommandButton(getTokengameCloseButton(), RibbonElementPriority.TOP);
+			tokengameStepBand.addCommandButton(getStepWiseButton(), RibbonElementPriority.TOP);
+			tokengameStepBand.addCommandButton(getBackwardButton(), RibbonElementPriority.TOP);
+			tokengameStepBand.addCommandButton(getStopButton(), RibbonElementPriority.TOP);
+			tokengameStepBand.addCommandButton(getForwardButton(), RibbonElementPriority.TOP);
+			tokengameStepBand.addCommandButton(getJumpIntoSubProcessButton(), RibbonElementPriority.TOP);
+			tokengameStepBand.addCommandButton(getJumpOutOfSubprocessButton(), RibbonElementPriority.TOP);
+			}
+		
+		return tokengameStepBand;
+	}
+
+	private JRibbonBand getTokengameAutoBand(){
+		
+		if (tokengameAutoBand == null) {	
+			tokengameAutoBand = new JRibbonBand(Messages.getString("Tokengame.AutoBand.title"),new tokengame_edit_step_by_step());
+			tokengameAutoBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(tokengameAutoBand));
+		
+			tokengameAutoBand.addCommandButton(getAutoPlayButton(), RibbonElementPriority.TOP);
+			tokengameAutoBand.addCommandButton(getStartButton(), RibbonElementPriority.TOP);
+			tokengameAutoBand.addCommandButton(getPauseButton(), RibbonElementPriority.TOP);
 		}	
 		
-		return tokengameEditBand;
+		return tokengameAutoBand;
 	}	
 	
 	/***********/
@@ -1311,67 +1318,67 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return m_sampleMenu;
 	}
 
-	private JCommandButton getSkipBackwardButton() {
+	private JCommandButton getBackwardButton() {
 		
-		if (skipBackwardButton == null) {
-			skipBackwardButton = new JCommandButton(Messages.getString("tgPlayBand.skipBackwardButton.text"), new tokengame_play_skip_backward());
-//			skipBackwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.???, AbstractViewEvent.???, skipBackwardButton));			
-			setTooltip(skipBackwardButton, "tgPlayBand.skipBackwardButton");
+		if (backwardButton == null) {
+			backwardButton = new JCommandButton(Messages.getString("Tokengame.StepBand.BackwardButton.text"), new tokengame_play_seek_backward());
+//			backwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, backwardButton));			
+			setTooltip(backwardButton, "Tokengame.StepBand.BackwardButton");
 		}
 		
-		return skipBackwardButton;
-	}
-
-	private JCommandButton getSeekBackwardButton() {
-		
-		if (seekBackwardButton == null) {
-			seekBackwardButton = new JCommandButton(Messages.getString("tgPlayBand.seekBackwardButton.text"), new tokengame_play_seek_backward());
-//			seekBackwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, seekBackwardButton));			
-			setTooltip(seekBackwardButton, "tgPlayBand.seekBackwardButton");
-		}
-		
-		return seekBackwardButton;
+		return backwardButton;
 	}
 
 	private JCommandButton getJumpIntoSubProcessButton() {
 		
 		if (jumpIntoSubProcessButton == null) {
-			jumpIntoSubProcessButton = new JCommandButton(Messages.getString("tgPlayBand.jumpIntoSubProcessButton.text"), new tokengame_play_jump_into_subprocess());
+			jumpIntoSubProcessButton = new JCommandButton(Messages.getString("Tokengame.StepBand.JumpIntoSubProcessButton.text"), new tokengame_play_jump_into_subprocess());
 //			jumpIntoSubProcessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, jumpIntoSubProcessButton));			
-			setTooltip(jumpIntoSubProcessButton, "tgPlayBand.jumpIntoSubProcessButton");
+			setTooltip(jumpIntoSubProcessButton, "Tokengame.StepBand.JumpIntoSubProcessButton");
 		}
 		
 		return jumpIntoSubProcessButton;
 	}
 
+	private JCommandButton getForwardButton() {
+		
+		if (forwardButton == null) {
+			forwardButton = new JCommandButton(Messages.getString("Tokengame.StepBand.ForwardButton.text"), new tokengame_play_seek_forward());
+//			forwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, forwardButton));			
+			setTooltip(forwardButton, "Tokengame.StepBand.ForwardButton");
+		}
+		
+		return forwardButton;
+	}
+
 	private JCommandButton getPauseButton() {
 		
 		if (pauseButton == null) {
-			pauseButton = new JCommandButton(Messages.getString("tgPlayBand.pauseButton.text"), new tokengame_play_pause());
+			pauseButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.PauseButton.text"), new tokengame_play_pause());
 //			pauseButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, pauseButton));			
-			setTooltip(pauseButton, "tgPlayBand.pauseButton");
+			setTooltip(pauseButton, "Tokengame.AutoBand.PauseButton");
 		}
 		
 		return pauseButton;
 	}
 
-	private JCommandButton getPlayButton() {
+	private JCommandButton getStartButton() {
 		
-		if (playButton == null) {
-			playButton = new JCommandButton(Messages.getString("tgPlayBand.playButton.text"), new tokengame_play_start());
-//			playButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, playButton));			
-			setTooltip(playButton, "tgPlayBand.playButton");
+		if (startButton == null) {
+			startButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.StartButton.text"), new tokengame_play_start());
+//			startButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, startButton));			
+			setTooltip(startButton, "Tokengame.AutoBand.StartButton");
 		}
 		
-		return playButton;
+		return startButton;
 	}
 
 	private JCommandButton getStopButton() {
 		
 		if (stopButton == null) {
-			stopButton = new JCommandButton(Messages.getString("tgPlayBand.stopButton.text"), new tokengame_play_stop());
+			stopButton = new JCommandButton(Messages.getString("Tokengame.StepBand.StopButton.text"), new tokengame_play_stop());
 //			stopButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, stopButton));			
-			setTooltip(stopButton, "tgPlayBand.stopButton");
+			setTooltip(stopButton, "Tokengame.StepBand.StopButton");
 		}
 		
 		return stopButton;
@@ -1380,53 +1387,31 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getJumpOutOfSubprocessButton() {
 		
 		if (jumpOutOfSubprocessButton == null) {
-			jumpOutOfSubprocessButton = new JCommandButton(Messages.getString("tgPlayBand.jumpOutOfSubprocessButton.text"), new tokengame_play_jump_out_of_subprocess());
+			jumpOutOfSubprocessButton = new JCommandButton(Messages.getString("Tokengame.StepBand.JumpOutOfSubprocessButton.text"), new tokengame_play_jump_out_of_subprocess());
 //			jumpOutOfSubprocessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, jumpOutOfSubprocessButton));			
-			setTooltip(jumpOutOfSubprocessButton, "tgPlayBand.jumpOutOfSubprocessButton");
+			setTooltip(jumpOutOfSubprocessButton, "Tokengame.StepBand.JumpOutOfSubprocessButton");
 		}
 		
 		return jumpOutOfSubprocessButton;
 	}
 
-	private JCommandButton getSeekForwardButton() {
+	private JCommandButton getStepWiseButton() {
 		
-		if (seekForwardButton == null) {
-			seekForwardButton = new JCommandButton(Messages.getString("tgPlayBand.seekForwardButton.text"), new tokengame_play_seek_forward());
-//			seekForwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, seekForwardButton));			
-			setTooltip(seekForwardButton, "tgPlayBand.seekForwardButton");
-		}
-		
-		return seekForwardButton;
-	}
-
-	private JCommandButton getSkipForwardButton() {
-		
-		if (skipForwardButton == null) {
-			skipForwardButton = new JCommandButton(Messages.getString("tgPlayBand.skipForwardButton.text"), new tokengame_play_skip_forward());
-//			skipForwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, skipForwardButton));			
-			setTooltip(skipForwardButton, "tgPlayBand.skipForwardButton");
-		}
-		
-		return skipForwardButton;
-	}
-	
-	private JCommandButton getStepByStepButton() {
-		
-		if (stepByStepButton == null) {
-			stepByStepButton = new JCommandButton(Messages.getString("tgEditBand.stepByStepButton.text"), new tokengame_edit_step_by_step());
+		if (stepWiseButton == null) {
+			stepWiseButton = new JCommandButton(Messages.getString("Tokengame.StepBand.StepByStepButton.text"), new tokengame_edit_step_by_step());
 //			stepByStepButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, stepByStepButton));			
-			setTooltip(stepByStepButton, "tgEditBand.stepByStepButton");
+			setTooltip(stepWiseButton, "Tokengame.StepBand.StepByStepButton");
 		}
 		
-		return stepByStepButton;
+		return stepWiseButton;
 	}
 		
 	private JCommandButton getAutoPlayButton() {
 		
 		if (autoPlayButton == null) {
-			autoPlayButton = new JCommandButton(Messages.getString("tgEditBand.autoPlayButton.text"), new tokengame_edit_autoPlay());
-//			autoPlayButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, sautoPlayButton));			
-			setTooltip(autoPlayButton, "tgEditBand.autoPlayButton");
+			autoPlayButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.AutoPlayButton.text"), new tokengame_edit_autoPlay());
+//			autoPlayButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, autoPlayButton));			
+			setTooltip(autoPlayButton, "Tokengame.AutoBand.AutoPlayButton");
 		}
 		
 		return autoPlayButton;
@@ -1435,10 +1420,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getTokengameCloseButton() {
 		
 		if (tokengameCloseButton == null) {
-			tokengameCloseButton = new JCommandButton(Messages.getString("tokengameTGBand.tgExitBand.text"), new tokengame_tokengame_exit());
+			tokengameCloseButton = new JCommandButton(Messages.getString("Tokengame.CloseBand.CloseButton.text"), new tokengame_tokengame_exit());
 			tokengameCloseListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_CLOSE_TOKENGAME, AbstractViewEvent.CLOSE_TOKENGAME, tokengameCloseButton);
 			tokengameCloseButton.addActionListener(tokengameCloseListener);
-			setTooltip(tokengameCloseButton, "tokengameTGBand.tgExitBand");
+			setTooltip(tokengameCloseButton, "Tokengame.CloseBand.CloseButton");
 		}
 		
 		return tokengameCloseButton;
