@@ -94,21 +94,25 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 
         if (getGraph().getSelectionCell() instanceof NameModel)
          	getGraph().clearSelection();
+	    
+        if (SwingUtilities.isRightMouseButton(e)) {
+ 	        getEditor().setDrawingMode(false);
+ 	    }
                  
-		if (getEditor().isDrawingMode()) {
-			CreationMap map = CreationMap.createMap();
-			getEditor().setLastMousePosition(e.getPoint());
-			if (getEditor().getCreateElementType() > 100
-					&& getEditor().getCreateElementType() < 110) {
-				map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
-				map.setOperatorType(getEditor().getCreateElementType());
-				getEditor().create(map);
-			} else {
-				map.setType(getEditor().getCreateElementType());
-				getEditor().create(map);
-			}
-		}
-    
+ 		if (getEditor().isDrawingMode() && firstPort == null) {
+ 	        CreationMap map = CreationMap.createMap();
+ 	        getEditor().setLastMousePosition(e.getPoint());
+ 	        if (getEditor().getCreateElementType() > 100
+ 	        		&& getEditor().getCreateElementType() < 110) {
+ 	        	map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
+ 	        	map.setOperatorType(getEditor().getCreateElementType());
+ 	        	getEditor().create(map);
+ 	        } else {
+ 	        	map.setType(getEditor().getCreateElementType());
+ 	        	getEditor().create(map);
+ 	        }
+ 		}
+ 		
         super.mousePressed(e);
     }
 
@@ -199,8 +203,6 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
                 										 		(int)(getEditor().getLastMousePosition().getX()), 
                 										 		(int)(getEditor().getLastMousePosition().getY()));   
                 }
-
-                getEditor().setDrawingMode(false);
             } 
             else
                  if (e.getClickCount() == 2) {
@@ -251,6 +253,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
                         
                         GraphCell[] result = getEditor().createAll(maps);
                         getGraph().startEditingAtCell(result[0]);
+ //                       getEditor().setDrawingMode(false);
                     }
                     else
                         // If Valid Event, Current and First Port
@@ -294,33 +297,28 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
      */
     @Override
     public void mouseMoved(MouseEvent e) {
-        if (!getEditor().isDrawingMode()) {
-            getGraph().setPortsVisible(false);
-        }
-        if (e != null && getEditor().isDrawingMode()) {
-            getGraph().setCursor(Cursors.getElementCreationCursor(getEditor().getCreateElementType()));
-            e.consume();
-        } else {
-            getGraph().setCursor(Cursor.getDefaultCursor());
-            Object cell = getGraph().getFirstCellForLocation(e.getX(), e.getY());
-            if (e != null) {
-                if (getGraph().getPortForLocation(e.getPoint().getX(), e.getPoint().getY()) != null
-                        && getGraph().isEnabled()) {
-                    // Set Cursor on Graph (Automatically Reset)
-                    getGraph().setPortsVisible(true);
-                    getGraph().setCursor(new Cursor(Cursor.HAND_CURSOR));
-                    e.consume();
-                } else if ((cell instanceof GroupModel || cell instanceof AbstractPetriNetElementModel || cell instanceof NameModel)
-                            && getGraph().isEnabled()) {
-                        // Set Cursor on Graph (Automatically Reset)
-                        getGraph().setPortsVisible(true);
-                        getGraph().setCursor(new Cursor(Cursor.MOVE_CURSOR));
-                        e.consume();
-                    }
-            	}
-        }
+    	getGraph().setCursor(Cursor.getDefaultCursor());
+    	Object cell = getGraph().getFirstCellForLocation(e.getX(), e.getY());
+    	if (e != null) {
+    		if (getGraph().getPortForLocation(e.getPoint().getX(), e.getPoint().getY()) != null && getGraph().isEnabled()) {
+    			// Set Cursor on Graph (Automatically Reset)
+    			getGraph().setPortsVisible(true);
+    			getGraph().setCursor(new Cursor(Cursor.HAND_CURSOR));
+    			e.consume();
+    		} else if ((cell instanceof GroupModel || cell instanceof AbstractPetriNetElementModel || cell instanceof NameModel)
+    				&& getGraph().isEnabled()) {
+    			// Set Cursor on Graph (Automatically Reset)
+    			getGraph().setPortsVisible(true);
+    			getGraph().setCursor(new Cursor(Cursor.MOVE_CURSOR));
+     			e.consume();
+    		}
+    		else if (getEditor().isDrawingMode()) {
+    			getGraph().setCursor(Cursors.getElementCreationCursor(getEditor().getCreateElementType()));
+    			e.consume();
+    		} 
+    	}
 
-        super.mouseMoved(e);
+    	super.mouseMoved(e);
     }
 
     @Override
