@@ -47,9 +47,10 @@ public class EditorEventProcessor extends AbstractEventProcessor
 			CreationMap map = CreationMap.createMap();
 			if (editor.getLastMousePosition() != null)
 			{
-				map.setPosition((int) editor.getLastMousePosition().getX(), (int) editor.getLastMousePosition().getY());
+				map.setPosition((int)(editor.getLastMousePosition().getX() / editor.getGraph().getScale()), 
+								(int)(editor.getLastMousePosition().getY() / editor.getGraph().getScale()));                
 			}
-			// map.setEditOnCreation(false);
+
 			switch (event.getOrder())
 			{
 			// Petrinet
