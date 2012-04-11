@@ -1322,7 +1322,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (backwardButton == null) {
 			backwardButton = new JCommandButton(Messages.getString("Tokengame.StepBand.BackwardButton.text"), new tokengame_play_seek_backward());
-//			backwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, backwardButton));			
+			backwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_BACKWARD, AbstractViewEvent.TOKENGAME_BACKWARD, backwardButton));			
 			setTooltip(backwardButton, "Tokengame.StepBand.BackwardButton");
 		}
 		
@@ -1333,7 +1333,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (jumpIntoSubProcessButton == null) {
 			jumpIntoSubProcessButton = new JCommandButton(Messages.getString("Tokengame.StepBand.JumpIntoSubProcessButton.text"), new tokengame_play_jump_into_subprocess());
-//			jumpIntoSubProcessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, jumpIntoSubProcessButton));			
+			jumpIntoSubProcessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_JUMPINTO, AbstractViewEvent.TOKENGAME_JUMPINTO, jumpIntoSubProcessButton));			
 			setTooltip(jumpIntoSubProcessButton, "Tokengame.StepBand.JumpIntoSubProcessButton");
 		}
 		
@@ -1344,7 +1344,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (forwardButton == null) {
 			forwardButton = new JCommandButton(Messages.getString("Tokengame.StepBand.ForwardButton.text"), new tokengame_play_seek_forward());
-//			forwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, forwardButton));			
+			forwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_FORWARD, AbstractViewEvent.TOKENGAME_FORWARD, forwardButton));			
 			setTooltip(forwardButton, "Tokengame.StepBand.ForwardButton");
 		}
 		
@@ -1355,7 +1355,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (pauseButton == null) {
 			pauseButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.PauseButton.text"), new tokengame_play_pause());
-//			pauseButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, pauseButton));			
+			pauseButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_PAUSE, AbstractViewEvent.TOKENGAME_PAUSE, pauseButton));			
 			setTooltip(pauseButton, "Tokengame.AutoBand.PauseButton");
 		}
 		
@@ -1366,7 +1366,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (startButton == null) {
 			startButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.StartButton.text"), new tokengame_play_start());
-//			startButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, startButton));			
+			startButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_START, AbstractViewEvent.TOKENGAME_START, startButton));			
 			setTooltip(startButton, "Tokengame.AutoBand.StartButton");
 		}
 		
@@ -1377,7 +1377,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (stopButton == null) {
 			stopButton = new JCommandButton(Messages.getString("Tokengame.StepBand.StopButton.text"), new tokengame_play_stop());
-//			stopButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, stopButton));			
+			stopButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STOP, AbstractViewEvent.TOKENGAME_STOP, stopButton));			
 			setTooltip(stopButton, "Tokengame.StepBand.StopButton");
 		}
 		
@@ -1388,7 +1388,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (jumpOutOfSubprocessButton == null) {
 			jumpOutOfSubprocessButton = new JCommandButton(Messages.getString("Tokengame.StepBand.JumpOutOfSubprocessButton.text"), new tokengame_play_jump_out_of_subprocess());
-//			jumpOutOfSubprocessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, jumpOutOfSubprocessButton));			
+			jumpOutOfSubprocessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_LEAVE, AbstractViewEvent.TOKENGAME_LEAVE, jumpOutOfSubprocessButton));			
 			setTooltip(jumpOutOfSubprocessButton, "Tokengame.StepBand.JumpOutOfSubprocessButton");
 		}
 		
@@ -1399,7 +1399,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (stepWiseButton == null) {
 			stepWiseButton = new JCommandButton(Messages.getString("Tokengame.StepBand.StepByStepButton.text"), new tokengame_edit_step_by_step());
-//			stepByStepButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, stepByStepButton));			
+			stepWiseButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STEP, AbstractViewEvent.TOKENGAME_STEP, stepWiseButton));			
 			setTooltip(stepWiseButton, "Tokengame.StepBand.StepByStepButton");
 		}
 		
@@ -1410,7 +1410,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (autoPlayButton == null) {
 			autoPlayButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.AutoPlayButton.text"), new tokengame_edit_autoPlay());
-//			autoPlayButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_???, AbstractViewEvent.???, autoPlayButton));			
+			autoPlayButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_AUTO, AbstractViewEvent.TOKENGAME_AUTO, autoPlayButton));			
 			setTooltip(autoPlayButton, "Tokengame.AutoBand.AutoPlayButton");
 		}
 		

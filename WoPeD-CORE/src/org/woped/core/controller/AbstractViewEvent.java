@@ -95,11 +95,22 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int CASCADE                   = 1072;
     public static final int ARRANGE                   = 1073;
     public static final int SHOWSIDEBAR				  = 1074;
-    public static final int SHOWOVERVIEW              = 1077;
-    public static final int SHOWTREEVIEW			  = 1078;
     
     public static final int DRAWMODE_ANDJOIN_XORSPLIT = 1075;
     public static final int DRAWMODE_XORJOIN_ANDSPLIT = 1076;
+    
+    public static final int SHOWOVERVIEW              = 1077;
+    public static final int SHOWTREEVIEW			  = 1078;
+    
+    public static final int TOKENGAME_BACKWARD		  = 1079;
+    public static final int TOKENGAME_JUMPINTO		  = 1080;
+    public static final int TOKENGAME_FORWARD		  = 1081;
+    public static final int TOKENGAME_PAUSE			  = 1082;
+    public static final int TOKENGAME_START			  = 1083;
+    public static final int TOKENGAME_STOP			  = 1084;
+    public static final int TOKENGAME_LEAVE			  = 1085;
+    public static final int TOKENGAME_STEP			  = 1086;
+    public static final int TOKENGAME_AUTO			  = 1087;
     
     // General Orders
     public static final int VIEWEVENT_FIRST           = 0;

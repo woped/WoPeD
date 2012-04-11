@@ -39,8 +39,19 @@ public class ActionFactory
     public final static String         ACTIONID_EXIT                   = "Action.QuitApplication";
     public final static String         ACTIONID_WOFLAN                 = "ToolBar.Woflan";
     public final static String		   ACTIONID_WOPED				   = "ToolBar.Woped";
+    
     public final static String         ACTIONID_OPEN_TOKENGAME         = "ToolBar.OpenTokenGame";
     public final static String         ACTIONID_CLOSE_TOKENGAME        = "ToolBar.CloseTokenGame";
+    public final static String         ACTIONID_TOKENGAME_BACKWARD     = "ToolBar.TokenGame.Backward";
+    public final static String         ACTIONID_TOKENGAME_JUMPINTO     = "ToolBar.TokenGame.JumpInto";
+    public final static String         ACTIONID_TOKENGAME_FORWARD      = "ToolBar.TokenGame.Forward";
+    public final static String         ACTIONID_TOKENGAME_PAUSE  	   = "ToolBar.TokenGame.Pause";
+    public final static String         ACTIONID_TOKENGAME_START  	   = "ToolBar.TokenGame.Start";
+    public final static String         ACTIONID_TOKENGAME_STOP  	   = "ToolBar.TokenGame.Stop";
+    public final static String         ACTIONID_TOKENGAME_LEAVE  	   = "ToolBar.TokenGame.Leave";
+    public final static String         ACTIONID_TOKENGAME_STEP  	   = "ToolBar.TokenGame.Step";
+    public final static String         ACTIONID_TOKENGAME_AUTO  	   = "ToolBar.TokenGame.Auto";
+    
     public final static String		   ACTIONID_ROTATEVIEW			   = "ToolBar.RotateView";
     public final static String		   ACTIONID_ROTATE_TRANS_LEFT	   = "ToolBar.RotateTransLeft";
     public final static String		   ACTIONID_ROTATE_TRANS_RIGHT	   = "ToolBar.RotateTransRight";
@@ -254,6 +265,33 @@ public class ActionFactory
 
         STATIC_ACTION_MAP.put(ACTIONID_CLOSE_TOKENGAME, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.CLOSE_TOKENGAME, null, ACTIONID_CLOSE_TOKENGAME));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_CLOSE_TOKENGAME), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_BACKWARD, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_BACKWARD, null, ACTIONID_TOKENGAME_BACKWARD));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_BACKWARD), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_JUMPINTO, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_JUMPINTO, null, ACTIONID_TOKENGAME_JUMPINTO));        
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_JUMPINTO), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_FORWARD, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_FORWARD, null, ACTIONID_TOKENGAME_FORWARD));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_FORWARD), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_PAUSE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_PAUSE, null, ACTIONID_TOKENGAME_PAUSE));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_PAUSE), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_START, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_START, null, ACTIONID_TOKENGAME_START));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_START), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_STOP, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_STOP, null, ACTIONID_TOKENGAME_STOP));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_STOP), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+                
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_LEAVE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_LEAVE, null, ACTIONID_TOKENGAME_LEAVE));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_LEAVE), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_STEP, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_STEP, null, ACTIONID_TOKENGAME_STEP));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_STEP), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_AUTO, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_AUTO, null, ACTIONID_TOKENGAME_AUTO));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_AUTO), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
 
        STATIC_ACTION_MAP.put(ACTIONID_REDO, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REDO, null, ACTIONID_REDO));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REDO), VisualController.CAN_REDO, VisualController.CAN_REDO, VisualController.IGNORE);
