@@ -16,10 +16,14 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.Constants;
 import org.woped.editor.controller.ArcPropertyEditor;
 import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
+import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
 
 public class EditorEventProcessor extends AbstractEventProcessor
 {
@@ -344,10 +348,76 @@ public class EditorEventProcessor extends AbstractEventProcessor
 			case AbstractViewEvent.GRAPHBEAUTIFIER_ADV:
 				editor.advancedBeautifyDialog();
 				break;
+			
+			case AbstractViewEvent.TOKENGAME_BACKWARD:
+			case AbstractViewEvent.TOKENGAME_JUMPINTO:
+			case AbstractViewEvent.TOKENGAME_FORWARD:
+			case AbstractViewEvent.TOKENGAME_PAUSE:
+			case AbstractViewEvent.TOKENGAME_START:
+			case AbstractViewEvent.TOKENGAME_STOP:
+			case AbstractViewEvent.TOKENGAME_LEAVE:
+			case AbstractViewEvent.TOKENGAME_STEP:
+			case AbstractViewEvent.TOKENGAME_AUTO:
+				TokenGameBarController tgbController =
+					editor.getTokenGameController().getRemoteControl();
+				if (tgbController!=null) {
+					// Adaptor from view event produced by toolbar button to the legacy 
+					// action id of the token game bar controller. Generate "listener" for these
+					// and forward to the token game bar controller
+					int tgbAction = createTgbActionFromViewEvent(event.getOrder());
+					TokenGameBarListener listener = new TokenGameBarListener(tgbAction,tgbController);
+					listener.actionPerformed(null);
+				}
+				else
+					LoggerManager.error(Constants.EDITOR_LOGGER,
+							"Tokengame controls used while tokengame was inactive");
+				break;				
 			default:
 				break;
 			}
 		}
+	}
+
+	private int createTgbActionFromViewEvent(int order) {
+		int result = 0;
+		switch (order)
+		{
+		case AbstractViewEvent.TOKENGAME_BACKWARD:
+			result = TokenGameBarListener.CLICK_BACKWARD;
+			break;		
+		case AbstractViewEvent.TOKENGAME_JUMPINTO:
+			result = TokenGameBarListener.CLICK_STEP_DOWN;
+			break;
+		case AbstractViewEvent.TOKENGAME_FORWARD:
+			// When not in 'auto' mode, the game bar controller will interpret a single CLICK_FORWARD as a single
+			// step operation
+			result = TokenGameBarListener.CLICK_FORWARD;
+			break;
+		case AbstractViewEvent.TOKENGAME_PAUSE:
+			result = TokenGameBarListener.CLICK_PAUSE;
+			break;
+		case AbstractViewEvent.TOKENGAME_START:
+			// When in 'auto' mode, the game bar controller will interpret a single CLICK_FORWARD as a play
+			result = TokenGameBarListener.CLICK_FORWARD;
+			break;
+		case AbstractViewEvent.TOKENGAME_STOP:
+			result = TokenGameBarListener.CLICK_STOP;
+			break;
+		case AbstractViewEvent.TOKENGAME_LEAVE:
+			result = TokenGameBarListener.CLICK_STEP_UP;
+			break;
+		case AbstractViewEvent.TOKENGAME_STEP:
+			result = TokenGameBarListener.CHOOSE_STEPWISE;
+			break;
+		case AbstractViewEvent.TOKENGAME_AUTO:		
+			result = TokenGameBarListener.CHOOSE_PLAYBACK;
+			break;
+		default:
+			LoggerManager.error(Constants.EDITOR_LOGGER,
+					"Unknown view event type passed for conversion to token game action");
+			break;
+		}
+		return result;
 	}
 
 	private void removeResources(EditorVC editor, Object cell)

@@ -19,99 +19,6 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int VIEWEVENTTYPE_IMPORTAPRO = 701;
     public static final int VIEWEVENTTYPE_EXPORTAPRO = 702;
 
-    // WoPeD Orders
-    public static final int SELECT_EDITOR             = 1000;
-    public static final int OPEN_SAMPLE               = 1001;
-    public static final int CONFIG                    = 1002;
-    public static final int ABOUT                     = 1003;
-    public static final int HELP_CONTENTS             = 1004;
-    public static final int SCREENSHOT                = 1005;
-    public static final int EXPORT                    = 1006;
-    public static final int STRETCH                   = 1007;
-    public static final int PRESS                     = 1008;
-    public static final int INCONIFY_EDITOR           = 1009;
-
-    public static final int ZOOM_ABSOLUTE             = 1010;
-    public static final int ZOOM_IN                   = 1011;
-    public static final int ZOOM_OUT                  = 1012;
-    public static final int ZOOMED                    = 1013;
-    public static final int BUGREPORT                 = 1014;
-
-    public static final int DRAWMODE_PLACE            = 1019;
-    public static final int DRAWMODE_TRANSITION       = 1020;
-    public static final int DRAWMODE_ANDSPLIT         = 1021;
-    public static final int DRAWMODE_ANDJOIN          = 1022;
-    public static final int DRAWMODE_ANDSPLITJOIN     = 1023;
-    public static final int DRAWMODE_XORSPLIT         = 1024;
-    public static final int DRAWMODE_XORJOIN          = 1025;
-    public static final int DRAWMODE_SUB              = 1026;
-    public static final int DRAWMODE_XORSPLITJOIN     = 1027;
-
-    public static final int CHECK_SELECTION           = 1028;
-    public static final int ARC_SELECTED              = 1029;
-    public static final int REDO                      = 1030;
-    public static final int UNGROUP                   = 1031;
-    public static final int GROUP                     = 1032;
-    public static final int ROUTING_DEACTIVE          = 1033;
-    public static final int ROUTING_ACTIVE            = 1034;
-    public static final int ROUTING_ALL_DEACTIVE      = 1035;
-    public static final int ROUTING_ALL_ACTIVE        = 1036;
-    public static final int ADD_POINT                 = 1037;
-    public static final int REMOVE_POINT              = 1038;
-    public static final int CELL_SELECTED             = 1039;
-    // Petrinet Elements
-    public static final int ADD_EXT_TRIGGER           = 1040;
-    public static final int ADD_RES_TRIGGER           = 1041;
-    public static final int ADD_TIME_TRIGGER          = 1042;
-    public static final int REMOVE_TRIGGER            = 1043;
-    public static final int ADD_PLACE                 = 1044;
-    public static final int ADD_TRANSITION            = 1045;
-    public static final int ADD_ANDJOIN               = 1046;
-    public static final int ADD_ANDSPLIT              = 1047;
-    public static final int ADD_XORJOIN               = 1048;
-    public static final int ADD_XORSPLIT              = 1049;
-    public static final int ADD_SUBPROCESS            = 1050;
-    public static final int OPEN_SUBPROCESS           = 1051;
-    public static final int REMOVE_TOKEN              = 1052;
-    public static final int ADD_TOKEN                 = 1053;
-    public static final int ADD_XORSPLITJOIN          = 1054;
-    public static final int ADD_ANDSPLITJOIN		  = 1055;
-    public static final int ADD_ANDJOINXORSPLIT       = 1056;
-    public static final int ADD_XORJOINANDSPLIT		  = 1057;
-    
-    public static final int OPEN_PROPERTIES           = 1060;
-    public static final int ANALYSIS_WOPED			  = 1062;
-    public static final int COLORING 		 		  = 1063;
-    public static final int ROTATEVIEW				  = 1064;
-    public static final int ROTATETRANSLEFT			  = 1065;
-    public static final int ROTATETRANSRIGHT		  = 1066;
-    public static final int ANALYSIS_METRIC           = 1067;
-    public static final int ANALYSIS_MASSMETRICANALYSE= 1068;
-    public static final int ANALYSIS_METRICSBUILDER   = 1069;
-    public static final int OPEN_TOKENGAME            = 1070;
-    public static final int CLOSE_TOKENGAME           = 1071;
-
-    //
-    public static final int CASCADE                   = 1072;
-    public static final int ARRANGE                   = 1073;
-    public static final int SHOWSIDEBAR				  = 1074;
-    
-    public static final int DRAWMODE_ANDJOIN_XORSPLIT = 1075;
-    public static final int DRAWMODE_XORJOIN_ANDSPLIT = 1076;
-    
-    public static final int SHOWOVERVIEW              = 1077;
-    public static final int SHOWTREEVIEW			  = 1078;
-    
-    public static final int TOKENGAME_BACKWARD		  = 1079;
-    public static final int TOKENGAME_JUMPINTO		  = 1080;
-    public static final int TOKENGAME_FORWARD		  = 1081;
-    public static final int TOKENGAME_PAUSE			  = 1082;
-    public static final int TOKENGAME_START			  = 1083;
-    public static final int TOKENGAME_STOP			  = 1084;
-    public static final int TOKENGAME_LEAVE			  = 1085;
-    public static final int TOKENGAME_STEP			  = 1086;
-    public static final int TOKENGAME_AUTO			  = 1087;
-    
     // General Orders
     public static final int VIEWEVENT_FIRST           = 0;
     public static final int OK                        = 0;
@@ -269,19 +176,113 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int TEAM                      = 900;
     public static final int WIN                       = 901;
     public static final int EXECUTE                   = 902;
-    public static final int ACTION_EVENT              = 903;
-    public static final int VIEWEVENT_LAST            = 1000;
+    public static final int ACTION_EVENT              = 903;    
     
-    public static final int QUANTCAP				  = 1081;
-    public static final int QUANTSIM				  = 1082;
-    public static final int REACHGRAPH				  = 1083;
+    // WoPeD Orders
+    public static final int SELECT_EDITOR             = 1000;
+    public static final int OPEN_SAMPLE               = 1001;
+    public static final int CONFIG                    = 1002;
+    public static final int ABOUT                     = 1003;
+    public static final int HELP_CONTENTS             = 1004;
+    public static final int SCREENSHOT                = 1005;
+    public static final int EXPORT                    = 1006;
+    public static final int STRETCH                   = 1007;
+    public static final int PRESS                     = 1008;
+    public static final int INCONIFY_EDITOR           = 1009;
+
+    public static final int ZOOM_ABSOLUTE             = 1010;
+    public static final int ZOOM_IN                   = 1011;
+    public static final int ZOOM_OUT                  = 1012;
+    public static final int ZOOMED                    = 1013;
+    public static final int BUGREPORT                 = 1014;
+
+    public static final int DRAWMODE_PLACE            = 1019;
+    public static final int DRAWMODE_TRANSITION       = 1020;
+    public static final int DRAWMODE_ANDSPLIT         = 1021;
+    public static final int DRAWMODE_ANDJOIN          = 1022;
+    public static final int DRAWMODE_ANDSPLITJOIN     = 1023;
+    public static final int DRAWMODE_XORSPLIT         = 1024;
+    public static final int DRAWMODE_XORJOIN          = 1025;
+    public static final int DRAWMODE_SUB              = 1026;
+    public static final int DRAWMODE_XORSPLITJOIN     = 1027;
+
+    public static final int CHECK_SELECTION           = 1028;
+    public static final int ARC_SELECTED              = 1029;
+    public static final int REDO                      = 1030;
+    public static final int UNGROUP                   = 1031;
+    public static final int GROUP                     = 1032;
+    public static final int ROUTING_DEACTIVE          = 1033;
+    public static final int ROUTING_ACTIVE            = 1034;
+    public static final int ROUTING_ALL_DEACTIVE      = 1035;
+    public static final int ROUTING_ALL_ACTIVE        = 1036;
+    public static final int ADD_POINT                 = 1037;
+    public static final int REMOVE_POINT              = 1038;
+    public static final int CELL_SELECTED             = 1039;
+    // Petrinet Elements
+    public static final int ADD_EXT_TRIGGER           = 1040;
+    public static final int ADD_RES_TRIGGER           = 1041;
+    public static final int ADD_TIME_TRIGGER          = 1042;
+    public static final int REMOVE_TRIGGER            = 1043;
+    public static final int ADD_PLACE                 = 1044;
+    public static final int ADD_TRANSITION            = 1045;
+    public static final int ADD_ANDJOIN               = 1046;
+    public static final int ADD_ANDSPLIT              = 1047;
+    public static final int ADD_XORJOIN               = 1048;
+    public static final int ADD_XORSPLIT              = 1049;
+    public static final int ADD_SUBPROCESS            = 1050;
+    public static final int OPEN_SUBPROCESS           = 1051;
+    public static final int REMOVE_TOKEN              = 1052;
+    public static final int ADD_TOKEN                 = 1053;
+    public static final int ADD_XORSPLITJOIN          = 1054;
+    public static final int ADD_ANDSPLITJOIN		  = 1055;
+    public static final int ADD_ANDJOINXORSPLIT       = 1056;
+    public static final int ADD_XORJOINANDSPLIT		  = 1057;
     
-    public static final int GRAPHBEAUTIFIER			  = 1084;
-    public static final int GRAPHBEAUTIFIER_ADV		  = 1085;
+    public static final int OPEN_PROPERTIES           = 1060;
+    public static final int ANALYSIS_WOPED			  = 1062;
+    public static final int COLORING 		 		  = 1063;
+    public static final int ROTATEVIEW				  = 1064;
+    public static final int ROTATETRANSLEFT			  = 1065;
+    public static final int ROTATETRANSRIGHT		  = 1066;
+    public static final int ANALYSIS_METRIC           = 1067;
+    public static final int ANALYSIS_MASSMETRICANALYSE= 1068;
+    public static final int ANALYSIS_METRICSBUILDER   = 1069;
+    public static final int OPEN_TOKENGAME            = 1070;
+    public static final int CLOSE_TOKENGAME           = 1071;
+
+    //
+    public static final int CASCADE                   = 1072;
+    public static final int ARRANGE                   = 1073;
+    public static final int SHOWSIDEBAR				  = 1074;
+    
+    public static final int DRAWMODE_ANDJOIN_XORSPLIT = 1075;
+    public static final int DRAWMODE_XORJOIN_ANDSPLIT = 1076;
+    
+    public static final int SHOWOVERVIEW              = 1077;
+    public static final int SHOWTREEVIEW			  = 1078;
+    
+    public static final int TOKENGAME_BACKWARD		  = 1079;
+    public static final int TOKENGAME_JUMPINTO		  = 1080;
+    public static final int TOKENGAME_FORWARD		  = 1081;
+    public static final int TOKENGAME_PAUSE			  = 1082;
+    public static final int TOKENGAME_START			  = 1083;
+    public static final int TOKENGAME_STOP			  = 1084;
+    public static final int TOKENGAME_LEAVE			  = 1085;
+    public static final int TOKENGAME_STEP			  = 1086;
+    public static final int TOKENGAME_AUTO			  = 1087;
+    
+    public static final int QUANTCAP				  = 1088;
+    public static final int QUANTSIM				  = 1089;
+    public static final int REACHGRAPH				  = 1090;    
+    public static final int GRAPHBEAUTIFIER			  = 1091;
+    public static final int IMPROVE_LAYOUT			  = 1092;
+    public static final int GRAPHBEAUTIFIER_ADV		  = 1093;
+    
+    public static final int VIEWEVENT_LAST            = 1094;
+    
     
     //variable to change toolbars and references
     public static final int CHANGEPANEL				  = 1999;
-    public static final int IMPROVE_LAYOUT			  = 1084;
     
     public AbstractViewEvent(Object source, int type, int order, Object data)
     {

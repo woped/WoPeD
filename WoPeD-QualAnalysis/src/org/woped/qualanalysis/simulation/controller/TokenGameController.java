@@ -87,7 +87,8 @@ public class TokenGameController implements ITokenGameController {
     private IEditor thisEditor = null;
     private ReferenceProvider ParentControl = null;
     private TokenGameBarController RemoteControl = null;
-    private boolean stepIntoSubProcess = false;
+    
+	private boolean stepIntoSubProcess = false;
 
     /**
      * Constructor for the model and visual sided TokenGame.
@@ -104,6 +105,16 @@ public class TokenGameController implements ITokenGameController {
 
     }
 
+    /** 
+     * Get the token game bar controller, which allows complex navigation within the simulation case
+     * (e.g. moving forward and backward, auto play)
+     * 
+     * @return TokenGameBarController instance or null if the token game is not active
+     */
+    public TokenGameBarController getRemoteControl() {
+		return RemoteControl;
+	}
+        
     /**
      * Constructor for the model sided TokenGame.
      * 

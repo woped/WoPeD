@@ -49,7 +49,6 @@ import org.woped.core.controller.AbstractMarqueeHandler;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewListener;
-import org.woped.core.gui.ITokenGameController;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
@@ -2175,7 +2174,7 @@ public class EditorVC implements KeyListener,
 		getEditorPanel().hideMetricsBar();
 	}
 	
-	public ITokenGameController getTokenGameController() {
+	public TokenGameController getTokenGameController() {
 		return m_tokenGameController;
 	}
 	
