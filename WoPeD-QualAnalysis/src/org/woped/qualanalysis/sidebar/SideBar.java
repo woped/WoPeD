@@ -12,7 +12,7 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.sidebar.assistant.StartPage;
-import org.woped.qualanalysis.sidebar.components.CloseableTabbedPane;
+import org.woped.qualanalysis.sidebar.components.PermanentTabbedPane;
 import org.woped.qualanalysis.sidebar.components.TStar;
 import org.woped.qualanalysis.sidebar.expert.ExpertPage;
 import org.woped.translations.Messages;
@@ -21,10 +21,10 @@ import org.woped.translations.Messages;
  * class of the Analysissidebar
  * 
  * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
- * 
+ * @editor Martin Meitz
  */
 @SuppressWarnings("serial")
-public class SideBar extends CloseableTabbedPane {
+public class SideBar extends PermanentTabbedPane {
 
 	private IQualanalysisService qualanService = null;
 
