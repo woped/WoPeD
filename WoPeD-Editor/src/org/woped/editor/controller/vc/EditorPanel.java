@@ -23,9 +23,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTree;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
@@ -34,6 +36,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorAware;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
@@ -42,6 +45,8 @@ import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.orientation.EditorSize;
 import org.woped.editor.orientation.Orientation;
+import org.woped.qualanalysis.paraphrasing.controller.SelectionListener;
+import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
 import org.woped.translations.Messages;
@@ -101,7 +106,9 @@ public class EditorPanel extends JPanel {
 			// NetColorScheme
 			m_understandColoring = new NetColorScheme();			
 		}
+		initializeAnalysisBar();
 	}
+	
 	
 	/**
 	 * Returns the filename if the net was saved before or was opened from a
@@ -198,6 +205,8 @@ public class EditorPanel extends JPanel {
 						setOverviewPanelVisible(false);
 					} else if (panel == treeviewPanel) {
 						setTreeviewPanelVisible(false);
+					} else if (panel == analysisSideBar) {
+						hideAnalysisBar();
 					}
 					propertyChangeSupport.firePropertyChange("Sidebar", null,
 							null);
@@ -406,15 +415,18 @@ public class EditorPanel extends JPanel {
 	 * Method removes analysis sidebar
 	 * 
 	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 * @editor Martin Meitz
 	 */
 	public void hideAnalysisBar() {
 		if (analysisBarVisible) {
 			tStarCheckBox.setSelected(false);
-			analysisSideBar.showTStarIfPossible();
+			qualitiveAnalysisTab.showTStarIfPossible();
 			remove(mainsplitPaneWithAnalysisBar);
 			mainsplitPaneWithAnalysisBar = null;
 			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
 			analysisBarVisible = false;
+
+
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
 					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane
@@ -428,6 +440,12 @@ public class EditorPanel extends JPanel {
 	
 			revalidate();
 			editorSize.resize(false);
+			
+			//remove listener from paraphrasing tool
+			if(this.paraphrasingTab.getParaphrasingOutput().getTable() != null){
+				//this.viewPanel.getParaphrasingOutput().getSelectionListener().setSelectionListernActive(false);
+				this.paraphrasingTab.getParaphrasingOutput().removeListeners();
+			}
 		}
 	}
 
@@ -537,57 +555,130 @@ public class EditorPanel extends JPanel {
 		}
 	}
 
+	public void initializeAnalysisBar(){
+		this.semanticAnalysisPane = new JTabbedPane();
+		semanticLabel = new JLabel(
+			Messages.getString("Tools.semanticalAnalysis.text"));
+		semanticLabel.setFont(HEADER_FONT);
+		
+		paraphrasingTab = new ParaphrasingPanel(this.editor);
+		//this.m_filepath = this.editor.getFilePath();
+		
+		
+		
+		// settings for Qualitive Analysis tab
+		boolean autoRefreshStatus = true;
+		tStarCheckBox = new JCheckBox(
+				Messages.getString("AnalysisSideBar.Footer.TStar"));
+		
+		qualitiveAnalysisTab = new SideBar(editor, centralMediator, autoRefreshStatus,
+				tStarCheckBox);
+
+		JPanel bottomPanel = new JPanel(new BorderLayout());
+		autoRefresh = new JCheckBox(
+				Messages.getString("AnalysisSideBar.Footer.Autorefresh"));
+		autoRefresh.setSelected(autoRefreshStatus);
+		autoRefresh.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				boolean selected = ((JCheckBox) arg0.getSource())
+						.isSelected();
+				qualitiveAnalysisTab.setAutoRefreshStatus(selected);
+				qualitiveAnalysisTab.repaint();
+			}
+		});
+		bottomPanel.add(autoRefresh, BorderLayout.CENTER);
+		// if t star checkbox is selected show t star in editor (only if net
+		// is a workflow net)
+		tStarCheckBox.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				qualitiveAnalysisTab.showTStarIfPossible();
+			}
+		});
+		bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
+
+		JPanel sideBar = new JPanel(new BorderLayout());
+		sideBar.add(qualitiveAnalysisTab, BorderLayout.CENTER);
+		sideBar.add(bottomPanel, BorderLayout.SOUTH);
+		
+		
+		// define close button
+		HideLabel semanticPanelClose = new HideLabel(
+				Messages.getImageIcon("AnalysisSideBar.Cancel"),
+				analysisSideBar);
+		
+		// 
+		analysisSideBar.add(semanticLabel, new GridBagConstraints(0, 0, 2, 2,
+				0.0, 0.0, GridBagConstraints.NORTHWEST,
+				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+		analysisSideBar.add(semanticPanelClose, new GridBagConstraints(3, 0, 1, 1,
+				0.0, 0.0, GridBagConstraints.NORTHEAST,
+				GridBagConstraints.REMAINDER,
+				new Insets(0, 0, 0, 1), 0, 0));
+		analysisSideBar.add(semanticAnalysisPane, new GridBagConstraints(0, 1, 4, 1, 1.0,
+				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
+		
+		semanticAnalysisPane.addTab(Messages.getString("AnalysisSidebar.Description"), sideBar);
+		semanticAnalysisPane.addTab(Messages.getString("Paraphrasing.Description"), paraphrasingTab);
+		
+	}
+	
 	/**
 	 * replaces the "normal" EditorSplitPane with another SplitPane with the
-	 * AnalysisSidebar on the right side
+	 * AnalysisSidebar and Paraphrasing tool on the right side
 	 * 
 	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+	 * @editor Martin Meitz
 	 */
 	public void showAnalysisBar() {
 		if (analysisBarVisible)
 			hideAnalysisBar();
-		if (!analysisBarVisible) {
+		else {
 			if (bMetricsBarVisible) {
 				hideMetricsBar();
 			}
 			remove(m_mainSplitPane);
 			getContainer();
-			boolean autoRefreshStatus = true;
-			tStarCheckBox = new JCheckBox(
-					Messages.getString("AnalysisSideBar.Footer.TStar"));
-			analysisSideBar = new SideBar(editor, centralMediator, autoRefreshStatus,
-					tStarCheckBox);
+			qualitiveAnalysisTab.refresh();
+			//add listener to paraphrasing tool
+
+			if(this.paraphrasingTab.getParaphrasingOutput().getTable() != null){
+				//this.viewPanel.getParaphrasingOutput().getSelectionListener().setSelectionListernActive(true);
+				this.paraphrasingTab.getParaphrasingOutput().addListeners();
 	
-			JPanel bottomPanel = new JPanel(new BorderLayout());
-			autoRefresh = new JCheckBox(
-					Messages.getString("AnalysisSideBar.Footer.Autorefresh"));
-			autoRefresh.setSelected(autoRefreshStatus);
-			autoRefresh.addActionListener(new ActionListener() {
-	
-				public void actionPerformed(ActionEvent arg0) {
-					boolean selected = ((JCheckBox) arg0.getSource())
-							.isSelected();
-					analysisSideBar.setAutoRefreshStatus(selected);
-					analysisSideBar.repaint();
+				//if the table has no entries, load values from element container
+				if(this.paraphrasingTab.getParaphrasingOutput().getDefaultTableModel().getRowCount() == 0) {
+					for(int x = 0; x< this.editor.getModelProcessor().getElementContainer().getParaphrasingModel().getTableSize(); x++){
+						int elements = 0;
+					    //check ids if they are in the diagram
+				    	  String[] content = this.editor.getModelProcessor().getElementContainer().getParaphrasingModel().getElementByRow(x)[0].split(",");
+						  String ids = "";
+				    	  Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
+							while (i.hasNext()) {
+								AbstractPetriNetElementModel cur = (AbstractPetriNetElementModel) i.next();
+								for(String v : content){
+									if(v.equals(cur.getId())){
+										ids = ids + v + ",";
+										elements++;
+									}
+								}
+							}
+							
+							if(elements > 0){
+								ids = ids.substring(0, ids.length()-1);
+								String[] test = {ids, this.editor.getModelProcessor().getElementContainer().getParaphrasingModel().getElementByRow(x)[1]};
+								this.paraphrasingTab.getParaphrasingOutput().addRow(test);
+							}
+						
+					}
 				}
-			});
-			bottomPanel.add(autoRefresh, BorderLayout.CENTER);
-			// if t star checkbox is selected show t star in editor (only if net
-			// is a workflow net)
-			tStarCheckBox.addActionListener(new ActionListener() {
-	
-				public void actionPerformed(ActionEvent arg0) {
-					analysisSideBar.showTStarIfPossible();
-				}
-			});
-			bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
-	
-			JPanel sideBar = new JPanel(new BorderLayout());
-			sideBar.add(analysisSideBar, BorderLayout.CENTER);
-			sideBar.add(bottomPanel, BorderLayout.SOUTH);
-	
+
+			}			
+			
 			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(
-					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, sideBar);
+					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, analysisSideBar);
 			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
 				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
@@ -619,6 +710,7 @@ public class EditorPanel extends JPanel {
 		}
 	}
 
+	
 	/**
 	 * Shows the metrics sidebar and resize the editor window. Replaces the
 	 * normal EditorSplitPane with another SplitPane with the MetricsSidebar on
@@ -687,7 +779,7 @@ public class EditorPanel extends JPanel {
 	public void setRotateSelected(boolean rotateSelected) {
 		m_orientation.setRotateSelected(rotateSelected);
 		if (analysisBarVisible && !bMetricsBarVisible)
-			analysisSideBar.showTStarIfPossible();
+			qualitiveAnalysisTab.showTStarIfPossible();
 	}
 
 	public boolean isRotateSelected() {
@@ -721,13 +813,13 @@ public class EditorPanel extends JPanel {
 	public void autoRefreshAnalysisBar() {
 		if (analysisBarVisible && autoRefresh != null
 				&& autoRefresh.isSelected()) {
-			analysisSideBar.refresh();
+			qualitiveAnalysisTab.refresh();
 			editorSize.resize(false);
 		}
 	}
 	
 	public SideBar getAnalysisSideBar() {
-		return analysisSideBar;
+		return qualitiveAnalysisTab;
 	}
 
 	public void setAutomaticResize(boolean automaticresize) {
@@ -742,6 +834,9 @@ public class EditorPanel extends JPanel {
 		return m_mainSplitPane;
 	}
 
+//	public ParaphrasingController getParaphrasingPanel(){
+//		return this.paraphrasingTab;
+//	}
 	public void checkMainSplitPaneDivider() {
 			BasicSplitPaneUI ui = (BasicSplitPaneUI) getMainSplitPane().getUI();
 			BasicSplitPaneDivider divider = ui.getDivider();
@@ -821,9 +916,16 @@ public class EditorPanel extends JPanel {
 	private AbstractApplicationMediator centralMediator;	
 	private PropertyChangeSupport propertyChangeSupport;
 	private boolean bMetricsBarVisible = false;
-	// Metrics team variables	
+	// Metrics team variables
+	private JTabbedPane semanticAnalysisPane = null;
 	private boolean analysisBarVisible = false;
-	private SideBar analysisSideBar = null;
+	private SideBar qualitiveAnalysisTab = null;
+	private ParaphrasingPanel paraphrasingTab = null;
+	private JLabel semanticLabel = null;
+	
+	public JPanel analysisSideBar = new JPanel(new GridBagLayout());
+	
+
 	private JCheckBox autoRefresh = null;
 	private JCheckBox tStarCheckBox = null;
 	private boolean tStarEnabled = false;
