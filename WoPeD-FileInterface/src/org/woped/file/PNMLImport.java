@@ -30,6 +30,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -90,6 +91,8 @@ import org.woped.pnml.TReply;
 import org.woped.pnml.TVariable;
 import org.woped.pnml.TVariables;
 import org.woped.pnml.TWait;
+import org.woped.pnml.TextType;
+import org.woped.pnml.TextType.Phrase;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.NetType.Page;
 import org.woped.translations.Messages;
@@ -536,6 +539,11 @@ public class PNMLImport {
 			// Import the net into the current ModelElementContainer
 			importNet(currentNet, editor[i].getModelProcessor()
 					.getElementContainer());
+			
+			// Import textual descriptions
+			//if(currentNet.isSetText() == true){
+				//importTextualDescription(currentPetrinet, currentNet, editor[i]);
+			//}
 
 			// Import the simulations if any exist
 			if (simulations != null) {
@@ -555,6 +563,9 @@ public class PNMLImport {
 				getEditor()[i].updateNet();
 				getEditor()[i].setSaved(savedFlag);
 			}
+			
+
+						
 		}
 	}
 
@@ -578,8 +589,41 @@ public class PNMLImport {
 			importTransitions(currentNet, currentContainer);
 			// important... import arcs in the end
 			importArcs(currentNet.getArcArray(), currentContainer);
+			importTextualDescription(currentNet, currentContainer);
 		}
 	}
+	
+	
+	private void importTextualDescription(NetType currentNet, 
+			ModelElementContainer currentContainer) throws Exception{
+		
+		TextType text = currentNet.getText();
+		
+		if(currentNet.getText() != null){
+			
+			try{
+				Phrase[] phraseArray = text.getPhraseArray();
+				for(int z = 0; z < phraseArray.length; z++){
+					
+					String[] description = new String[2];
+					description[0] = phraseArray[z].getIds().trim();
+					description[1] = phraseArray[z].getStringValue().trim();
+					//processor.getParaphrasingModel().addElement(phraseArray[z].getIds(), phraseArray[z].getStringValue());
+					currentContainer.getParaphrasingModel().addElement(description[0], description[1]);
+					LoggerManager.debug(Constants.FILE_LOGGER, " ... Description (ID:"
+							+ description[0] + ") imported");
+				}
+			}
+			catch (Exception e) {
+				warnings
+						.add("- SKIP DESCRIPTION: Exception while importing textual description.\n");
+			}
+
+		}
+	
+	}
+
+	
 	
 	private void importNameAndLayout(NodeType node, CreationMap target)
 	{

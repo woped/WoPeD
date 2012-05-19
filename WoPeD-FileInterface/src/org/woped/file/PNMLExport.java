@@ -95,6 +95,8 @@ import org.woped.pnml.SimulationsType;
 import org.woped.pnml.SuperModelType;
 import org.woped.pnml.TPartnerLinks;
 import org.woped.pnml.TVariables;
+import org.woped.pnml.TextType;
+import org.woped.pnml.TextType.Phrase;
 import org.woped.pnml.ToolspecificType;
 import org.woped.pnml.TransitionResourceType;
 import org.woped.pnml.TransitionToolspecificType;
@@ -499,7 +501,7 @@ public class PNMLExport
                 }
                 
                 // Call ourselves recursively to store the sub-process net
-                saveModelElementContainer(newNet, subProcessContainer);                
+                saveModelElementContainer(newNet, subProcessContainer);
             } else if (currentModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
             {
             	// Special handling code for operators:
@@ -604,7 +606,9 @@ public class PNMLExport
         		initArc(iNet.addNewArc(), (currentOuterArc!=null)?currentOuterArc:currentInnerArc, 
         				currentInnerArc);
         	}
-        }    	
+        }
+        /* ##### Textual description ##### */
+        saveTextualDescription(iNet, elementContainer);
     }
 
     private PlaceType initPlace(PlaceType iPlace, PlaceModel currentModel)
@@ -921,4 +925,29 @@ public class PNMLExport
     // return false;
     // }
     // }
+    
+    private void saveTextualDescription(NetType iNet, ModelElementContainer elementContainer){
+    	
+    	TextType textType = null;
+    	if(iNet.isSetText()){
+    		iNet.unsetText();
+    	}
+
+    	//table has values
+    	int tableSize = elementContainer.getParaphrasingModel().getTableSize();
+    	if(tableSize > 0){
+    		
+    		textType = iNet.addNewText();
+    		
+    		//write every row of the table to the file
+    		for(int i = 0; i < tableSize; i++){
+    			String[] row = elementContainer.getParaphrasingModel().getElementByRow(i);
+    			Phrase phrase = textType.addNewPhrase();
+    			phrase.setIds(row[0].trim());
+    			phrase.setStringValue(row[1].trim());
+    			LoggerManager.debug(Constants.FILE_LOGGER, "   ... Description (ID:" + row[0] + ") set");
+
+    		}    		
+    	}
+    }
 }
