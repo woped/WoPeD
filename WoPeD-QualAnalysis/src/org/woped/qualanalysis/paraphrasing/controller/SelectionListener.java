@@ -9,6 +9,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
@@ -80,6 +81,10 @@ public class SelectionListener implements MouseListener, KeyListener {
 			if(e.getClickCount() == 2){
 				new TextualDescriptionDialog(this.editor, this.table, this.defaultTableModel, "edit", row);
 			}
+			
+			if(SwingUtilities.isRightMouseButton(e)){
+				clearHighlighting();
+			}
 				
 		}
 
@@ -136,6 +141,8 @@ public class SelectionListener implements MouseListener, KeyListener {
 			this.table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);		
 
 		}
+		
+		
 		setEditButtonsStatusApproriately();
 	}
 
@@ -184,28 +191,36 @@ public class SelectionListener implements MouseListener, KeyListener {
 			
 			int row = this.table.getSelectedRow();
 			
-			if(row != -1){
+			
 				//row selected and enter button pressed
 				if(k.getKeyCode() == KeyEvent.VK_ENTER)
 				{
-					new TextualDescriptionDialog(this.editor, this.table, this.defaultTableModel, "edit", row);
-					this.table.setRowSelectionInterval(row-1,row-1);
+					if(row != -1){
+						new TextualDescriptionDialog(this.editor, this.table, this.defaultTableModel, "edit", row);
+						this.table.setRowSelectionInterval(row-1,row-1);
+					}
+					else{
+						JOptionPane.showMessageDialog(null,Messages.getString("Paraphrasing.Delete.Notification"));
+					}
 				}
 			
 				//row selected and delete button pressed
 				if(k.getKeyCode() == KeyEvent.VK_DELETE){
-					
-					if(JOptionPane.showConfirmDialog(null, /*Messages.getString("Paraphrasing.New.Question.Content")*/"Are you sure you want to delete this line?", Messages.getString("Paraphrasing.New.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
-						defaultTableModel.removeRow(row);
-						clearHighlighting();
-						paraphrasingOutput.updateElementContainer();
+					if(row != -1){
+						if(JOptionPane.showConfirmDialog(null, /*Messages.getString("Paraphrasing.New.Question.Content")*/"Are you sure you want to delete this line?", Messages.getString("Paraphrasing.New.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION)
+						{
+							defaultTableModel.removeRow(row);
+							clearHighlighting();
+							paraphrasingOutput.updateElementContainer();
+						}
 					}
+					else{
+						JOptionPane.showMessageDialog(null,Messages.getString("Paraphrasing.Delete.Notification"));
+					
 				}
 				
 			}
-			else{
-				JOptionPane.showMessageDialog(null,Messages.getString("Paraphrasing.Delete.Notification"));
-			}
+			
 			
 		}
 		
