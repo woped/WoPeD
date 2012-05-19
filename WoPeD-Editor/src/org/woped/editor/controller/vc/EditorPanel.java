@@ -555,6 +555,11 @@ public class EditorPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * initializes analysis sidebar
+	 * 
+	 * @author Martin Meitz
+	 */
 	public void initializeAnalysisBar(){
 		this.semanticAnalysisPane = new JTabbedPane();
 		semanticLabel = new JLabel(
@@ -620,7 +625,7 @@ public class EditorPanel extends JPanel {
 				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 0), 0, 0));
 		
-		semanticAnalysisPane.addTab(Messages.getString("AnalysisSidebar.Description"), sideBar);
+		semanticAnalysisPane.addTab(Messages.getString("AnalysisSideBar.Title"), sideBar);
 		semanticAnalysisPane.addTab(Messages.getString("Paraphrasing.Description"), paraphrasingTab);
 		
 	}
