@@ -420,7 +420,7 @@ public class EditorPanel extends JPanel {
 	public void hideAnalysisBar() {
 		if (analysisBarVisible) {
 			tStarCheckBox.setSelected(false);
-			qualitiveAnalysisTab.showTStarIfPossible();
+			qualitiveAnalysisSideBar.showTStarIfPossible();
 			remove(mainsplitPaneWithAnalysisBar);
 			mainsplitPaneWithAnalysisBar = null;
 			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
@@ -576,7 +576,7 @@ public class EditorPanel extends JPanel {
 		tStarCheckBox = new JCheckBox(
 				Messages.getString("AnalysisSideBar.Footer.TStar"));
 		
-		qualitiveAnalysisTab = new SideBar(editor, centralMediator, autoRefreshStatus,
+		qualitiveAnalysisSideBar = new SideBar(editor, centralMediator, autoRefreshStatus,
 				tStarCheckBox);
 
 		JPanel bottomPanel = new JPanel(new BorderLayout());
@@ -588,8 +588,8 @@ public class EditorPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean selected = ((JCheckBox) arg0.getSource())
 						.isSelected();
-				qualitiveAnalysisTab.setAutoRefreshStatus(selected);
-				qualitiveAnalysisTab.repaint();
+				qualitiveAnalysisSideBar.setAutoRefreshStatus(selected);
+				qualitiveAnalysisSideBar.repaint();
 			}
 		});
 		bottomPanel.add(autoRefresh, BorderLayout.CENTER);
@@ -598,14 +598,14 @@ public class EditorPanel extends JPanel {
 		tStarCheckBox.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				qualitiveAnalysisTab.showTStarIfPossible();
+				qualitiveAnalysisSideBar.showTStarIfPossible();
 			}
 		});
 		bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
 
-		JPanel sideBar = new JPanel(new BorderLayout());
-		sideBar.add(qualitiveAnalysisTab, BorderLayout.CENTER);
-		sideBar.add(bottomPanel, BorderLayout.SOUTH);
+		JPanel sideBarTab = new JPanel(new BorderLayout());
+		sideBarTab.add(qualitiveAnalysisSideBar, BorderLayout.CENTER);
+		sideBarTab.add(bottomPanel, BorderLayout.SOUTH);
 		
 		
 		// define close button
@@ -625,7 +625,7 @@ public class EditorPanel extends JPanel {
 				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 0), 0, 0));
 		
-		semanticAnalysisPane.addTab(Messages.getString("AnalysisSideBar.Title"), sideBar);
+		semanticAnalysisPane.addTab(Messages.getString("AnalysisSideBar.Title"), sideBarTab);
 		semanticAnalysisPane.addTab(Messages.getString("Paraphrasing.Description"), paraphrasingTab);
 		
 	}
@@ -646,7 +646,7 @@ public class EditorPanel extends JPanel {
 			}
 			remove(m_mainSplitPane);
 			getContainer();
-			qualitiveAnalysisTab.refresh();
+			qualitiveAnalysisSideBar.refresh();
 			//add listener to paraphrasing tool
 
 			if(this.paraphrasingTab.getParaphrasingOutput().getTable() != null){
@@ -784,7 +784,7 @@ public class EditorPanel extends JPanel {
 	public void setRotateSelected(boolean rotateSelected) {
 		m_orientation.setRotateSelected(rotateSelected);
 		if (analysisBarVisible && !bMetricsBarVisible)
-			qualitiveAnalysisTab.showTStarIfPossible();
+			qualitiveAnalysisSideBar.showTStarIfPossible();
 	}
 
 	public boolean isRotateSelected() {
@@ -818,13 +818,13 @@ public class EditorPanel extends JPanel {
 	public void autoRefreshAnalysisBar() {
 		if (analysisBarVisible && autoRefresh != null
 				&& autoRefresh.isSelected()) {
-			qualitiveAnalysisTab.refresh();
+			qualitiveAnalysisSideBar.refresh();
 			editorSize.resize(false);
 		}
 	}
 	
 	public SideBar getAnalysisSideBar() {
-		return qualitiveAnalysisTab;
+		return qualitiveAnalysisSideBar;
 	}
 
 	public void setAutomaticResize(boolean automaticresize) {
@@ -924,7 +924,7 @@ public class EditorPanel extends JPanel {
 	// Metrics team variables
 	private JTabbedPane semanticAnalysisPane = null;
 	private boolean analysisBarVisible = false;
-	private SideBar qualitiveAnalysisTab = null;
+	private SideBar qualitiveAnalysisSideBar = null;
 	private ParaphrasingPanel paraphrasingTab = null;
 	private JLabel semanticLabel = null;
 	
