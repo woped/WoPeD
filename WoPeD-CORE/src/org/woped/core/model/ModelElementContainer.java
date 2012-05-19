@@ -42,6 +42,7 @@ import org.woped.core.model.bpel.UddiVariable;
 import org.woped.core.model.bpel.UddiVariableList;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
+import org.woped.core.model.petrinet.ParaphrasingModel;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -85,7 +86,8 @@ public class ModelElementContainer implements Serializable {
 	private BpelVariableList variablesList = new BpelVariableList();
 	private PartnerlinkList partnerLinkList = new PartnerlinkList();
 	private UddiVariableList uddiVariableList = new UddiVariableList();
-
+	private ParaphrasingModel paraphrasingModel = new ParaphrasingModel();
+	
 	public void setOwningElement(AbstractPetriNetElementModel element) {
 		owningElement = element;
 	}
@@ -716,5 +718,9 @@ public class ModelElementContainer implements Serializable {
 	public UddiVariable findUddiVariableByName(String name)
 	{
 		return this.uddiVariableList.findUddiVariableByName(name);
+	}
+	
+	public ParaphrasingModel getParaphrasingModel(){
+		return this.paraphrasingModel;
 	}
 }
