@@ -111,6 +111,7 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 		this.id = new JTextField();
 		this.id.setEditable(false);
 		this.id.setBounds((260/2)-120, 30, 240, 20);
+		this.id.setFocusable(false);
 		center.add(this.id);
 
 		this.textLabel = new JLabel("Text");
@@ -183,13 +184,14 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 		
 		this.panel.add(south, BorderLayout.SOUTH);
 		
-
+		this.addKeyListener(this);
 		this.buttonCancel.addActionListener(this);
 		this.buttonOk.addActionListener(this);
 		this.text.addKeyListener(this);
 		this.availableIdsTable.addMouseListener(this);
 		this.availableIdsTable.addKeyListener(this);
 		this.id.addMouseListener(this);
+		this.id.addKeyListener(this);
 		
 		if(type.equals("edit")){
 			this.setTitle(Messages.getString("Paraphrasing.TextualDescriptionDialog.Header.Edit"));
@@ -300,6 +302,10 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 		{
 			this.setVisible(false);
 			this.dispose();	
+			if(this.row != -1){
+				highlightElement(this.row);
+			}
+			
 		}
 		
 		if(k.getKeyCode() == KeyEvent.VK_ENTER)
