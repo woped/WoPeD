@@ -3,13 +3,16 @@ package org.woped.qualanalysis.paraphrasing.view;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import org.woped.core.controller.IEditor;
+import org.woped.qualanalysis.paraphrasing.controller.ButtonListener;
 import org.woped.qualanalysis.paraphrasing.controller.SelectionListener;
 import org.woped.translations.Messages;
 
@@ -24,7 +27,7 @@ public class ParaphrasingOutput{
 	private JScrollPane scrollP = null;
 	private JLabel labelLoading = null;
 	ParaphrasingPanel paraphrasingPanel = null;
-	
+
 	/**
 	 * Constructor for creating the table that contains
 	 * all descriptions 
@@ -44,6 +47,7 @@ public class ParaphrasingOutput{
 		this.mainPanel.setLayout(new BorderLayout());
 		this.labelLoading = new JLabel("",Messages.getImageIcon("Paraphrasing.Output.Load.Animation"), 
 				JLabel.CENTER);
+
 		createTable();
 	}
 	
@@ -52,7 +56,7 @@ public class ParaphrasingOutput{
 	}
 	
 	/**
-	 * Creates an empty table and defines the appearance
+	 * Creates an empty table and defines its appearance
 	 * 
 	 * @author Martin Meitz
 	 * 
@@ -139,6 +143,7 @@ public class ParaphrasingOutput{
 		this.editor.getGraph().addKeyListener(this.selectionListener);
 		this.table.addMouseListener(this.selectionListener);
 		this.table.addKeyListener(this.selectionListener);
+
 	}
 	
 	
@@ -157,13 +162,6 @@ public class ParaphrasingOutput{
 		this.table.removeKeyListener(this.selectionListener);
 		this.selectionListener.clearHighlighting();
 	}
-
-	
-//	public void deleteTable(){
-//		this.defaultTableModel = null;
-//		this.table = null;
-//	}
-	
 	
 	
 	public IEditor getEditor(){
@@ -225,5 +223,6 @@ public class ParaphrasingOutput{
 	public ParaphrasingPanel getParaphrasingPanel(){
 		return this.paraphrasingPanel;
 	}
-
+	
+	
 }

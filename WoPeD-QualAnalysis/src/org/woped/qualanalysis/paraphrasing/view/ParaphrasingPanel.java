@@ -4,9 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.paraphrasing.controller.ButtonListener;
+import org.woped.qualanalysis.paraphrasing.controller.SelectionListener;
 import org.woped.translations.Messages;
 
 public class ParaphrasingPanel extends JPanel{
@@ -23,12 +27,22 @@ public class ParaphrasingPanel extends JPanel{
 	private ParaphrasingOutput paraphrasingOutput = null;
 	private static boolean threadInProgress = false;
 	
+	
+	private JPopupMenu menu = new JPopupMenu();
+	private JMenuItem menuAdd = null;
+	private JMenuItem menuDelete = null;
+	private JMenuItem menuUp = null;
+	private JMenuItem menuDown = null;
+	private JMenuItem menuProperties = null;
+	
 	public ParaphrasingPanel(IEditor editor){
 		super();
 		this.editor = editor;
+		
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
-
+		this.paraphrasingOutput = new ParaphrasingOutput(this);
+		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
 		buttonPanel.add(getNewButton());
@@ -39,18 +53,25 @@ public class ParaphrasingPanel extends JPanel{
 		buttonPanel.add(getDownButton());
 		buttonPanel.add(getExportButton());
 		
-		this.add(buttonPanel, BorderLayout.NORTH);
+				
+		menuAdd = new JMenuItem("Add", Messages.getImageIcon("Paraphrasing.Add"));
+		menuDelete = new JMenuItem("Delete", Messages.getImageIcon("Paraphrasing.Delete"));
+		menuUp = new JMenuItem("Up", Messages.getImageIcon("Paraphrasing.Up"));
+		menuDown = new JMenuItem("Down", Messages.getImageIcon("Paraphrasing.Down"));
+		menuProperties = new JMenuItem("Properties", Messages.getImageIcon("Popup.Properties"));
 		
-		createOutputPanel();
+		ButtonListener btnListener = new ButtonListener(this);
+		this.menuAdd.addActionListener(btnListener);
+		this.menuDelete.addActionListener(btnListener);
+		this.menuUp.addActionListener(btnListener);
+		this.menuDown.addActionListener(btnListener);
+		
+		this.menuProperties.addActionListener(new SelectionListener(this.paraphrasingOutput));
+		
+		this.add(buttonPanel, BorderLayout.NORTH);
 		this.add(this.paraphrasingOutput.getMainPanel(), BorderLayout.CENTER);
 	}
-	
-	private void createOutputPanel(){
-
-		this.paraphrasingOutput = new ParaphrasingOutput(this);
 		
-	}
-	
 	public void enableButtons(boolean value){
 		this.newButton.setEnabled(value);
 		this.loadButton.setEnabled(value);
@@ -198,5 +219,32 @@ public class ParaphrasingPanel extends JPanel{
 	   return threadInProgress;
    	}
    
+   	
+	public JPopupMenu getMenu(){
+		return this.menu;
+	}
+	
+	
+	public JMenuItem getAddItem(){
+		return this.menuAdd;
+	}
+	
+	public JMenuItem getDeleteItem(){
+		return this.menuDelete;
+	}
+	
+	
+	public JMenuItem getUpItem(){
+		return this.menuUp;
+	}
+	
+	
+	public JMenuItem getDownItem(){
+		return this.menuDown;
+	}
+	
+	public JMenuItem getPropertiesItem(){
+		return this.menuProperties;
+	}
 
 }

@@ -291,6 +291,10 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 		if(e.getSource() == buttonCancel){
 			this.setVisible(false);
 			this.dispose();	
+			if(this.row != -1){
+				highlightElement(this.row);
+				table.setRowSelectionInterval(row, row);
+			}
 		}
 	}
 	

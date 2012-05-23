@@ -1,12 +1,16 @@
 package org.woped.qualanalysis.paraphrasing.controller;
 
+import java.awt.geom.Point2D;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.xmlbeans.XmlOptions;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
@@ -18,14 +22,18 @@ import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.pnml.ArcNameType;
+import org.woped.pnml.ArcToolspecificType;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.NetType;
 import org.woped.pnml.NodeNameType;
 import org.woped.pnml.PlaceType;
 import org.woped.pnml.PnmlDocument;
 import org.woped.pnml.PnmlType;
+import org.woped.pnml.PositionType;
+import org.woped.pnml.ToolspecificType;
 import org.woped.pnml.TransitionType;
 import org.woped.qualanalysis.paraphrasing.Constants;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 
 
 
@@ -109,48 +117,24 @@ public class CurrentNetPnml {
             
         }
         /* ##### ARCS ##### */
-
+        
+        
         Set<AbstractPetriNetElementModel> connectedTransitions = new HashSet<AbstractPetriNetElementModel>();  
         Iterator<String> arcIter = elementContainer.getArcMap().keySet().iterator();
+        
         while (arcIter.hasNext())
         {
             ArcModel currentArc = elementContainer.getArcById(arcIter.next());
+            
             AbstractPetriNetElementModel currentTargetModel = (AbstractPetriNetElementModel) elementContainer.getElementById(currentArc.getTargetId());
             AbstractPetriNetElementModel currentSourceModel = (AbstractPetriNetElementModel) elementContainer.getElementById(currentArc.getSourceId());
-            if (currentTargetModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
-            	connectedTransitions.add(currentTargetModel);
-            else if (currentSourceModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
-            	connectedTransitions.add(currentSourceModel);
-            else
-            {
-                initArc(iNet.addNewArc(), currentArc, null);
-            }
+
+    		initArc(iNet.addNewArc(), currentArc);
 
         }
+        
 
-        Iterator<AbstractPetriNetElementModel> currentTransition = connectedTransitions.iterator();
-        while (currentTransition.hasNext())
-        {
-        	OperatorTransitionModel currentConnectedModel = (OperatorTransitionModel)currentTransition.next();
-        	Iterator<String> innerArcIter = currentConnectedModel.getSimpleTransContainer().getArcMap().keySet().iterator();
-        	while (innerArcIter.hasNext())
-        	{
-        		ArcModel currentInnerArc = (ArcModel) currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
-        		ArcModel currentOuterArc = null;
-        		if (elementContainer.getElementById(currentInnerArc.getSourceId())!=null)
-        		{
-        			currentOuterArc = elementContainer.findArc(currentInnerArc.getSourceId(),
-        					currentConnectedModel.getId()); 
-        		}
-        		if (elementContainer.getElementById(currentInnerArc.getTargetId())!=null)
-        		{
-        			currentOuterArc = elementContainer.findArc(currentConnectedModel.getId(), 
-        					currentInnerArc.getTargetId()); 
-        		}
-        		initArc(iNet.addNewArc(), (currentOuterArc!=null)?currentOuterArc:currentInnerArc, 
-        				currentInnerArc);
-        	}
-        }	
+        
 	}
 
 	private PlaceType initPlace(PlaceType iPlace, PlaceModel currentModel)
@@ -159,7 +143,6 @@ public class CurrentNetPnml {
         initNodeName(iPlace.addNewName(), currentModel.getNameModel());       
         // attr. id
         iPlace.setId(currentModel.getId());
-        //LoggerManager.debug(Constants.FILE_LOGGER, "   ... Place (ID:" + currentModel.getId() + ") set");
 
         return iPlace;
     }
@@ -185,20 +168,32 @@ public class CurrentNetPnml {
         return iTransition;
     }
 	
-	
 
-    private ArcType initArc(ArcType iArc, ArcModel outerArc, ArcModel innerArc)
+	private ArcType initArc(ArcType iArc, ArcModel outerArc)
     {
-        ArcModel useArc = innerArc == null ? outerArc : innerArc;
-        // inscription
-        initNodeName(iArc.addNewInscription(), useArc);
-        // attr. id
-        iArc.setId(outerArc.getId());
-        // attr. source
-        iArc.setSource(useArc.getSourceId());
-        // attr. target
-        iArc.setTarget(useArc.getTargetId());
+		ArcModel useArc = outerArc;
 
+		// attr. id
+        iArc.setId(useArc.getId());
+
+        // attr. source
+        
+        iArc.setSource(useArc.getSourceId());
+        
+        String sourceId = useArc.getSourceId();   
+        if (sourceId.indexOf(
+				OperatorTransitionModel.INNERID_SEPERATOR) != 0) {
+        	sourceId = sourceId.split(OperatorTransitionModel.INNERID_SEPERATOR)[0];
+		} 	
+        iArc.setSource(sourceId);
+        
+        // attr. target
+        String targetId = useArc.getTargetId();
+        if (targetId.indexOf(
+				OperatorTransitionModel.INNERID_SEPERATOR) != 0) {
+        	targetId = targetId.split(OperatorTransitionModel.INNERID_SEPERATOR)[0];
+		}
+        iArc.setTarget(targetId);
         return iArc;
     }
     
@@ -221,42 +216,6 @@ public class CurrentNetPnml {
     public String getPnmlString(){
     	return this.pnmlString;
     }
-    
-    
-//    public static String[][] getDescription(String xmlString){
-//    	String[][] result = null;
-//    	try{
-//        	
-//        	PnmlDocument pnmlDoc = PnmlDocument.Factory.parse(xmlString); 	
-//        	
-//        	PnmlType pnmlTag = pnmlDoc.getPnml();
-//        	        	
-//        	if(pnmlTag.getNetArray().length > 0){
-//        		NetType netTag = pnmlTag.getNetArray(0);
-//            	
-//            	if(netTag.isSetText()){
-//            		TextType textTag = netTag.getText();
-//            		
-//                	if(textTag.getPhraseArray().length > 0){
-//                		PhraseType[] phraseTag = textTag.getPhraseArray();
-//                    	
-//                    	result = new String[phraseTag.length][2];        	
-//                    	for(int i = 0; i < phraseTag.length; i++){
-//                    		result[i][0] = phraseTag[i].getIds().trim();
-//                    		result[i][1] = phraseTag[i].getStringValue().trim();	
-//                    	}
-//                	}                	
-//            	}
-//        	}
-//        	
-//    	}
-//    	catch(Exception ex){
-//    		JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.CurrentNetPnml.Parsing.Error.Message"),
-//					Messages.getString("Paraphrasing.CurrentNetPnml.Parsing.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
-//    	}
-//    	
-//    	return result;
-//    	
-//    }
+   
 	
 }

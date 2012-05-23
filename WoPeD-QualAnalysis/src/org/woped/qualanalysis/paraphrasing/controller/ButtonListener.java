@@ -4,14 +4,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Iterator;
+
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileFilter;
+import javax.swing.table.DefaultTableModel;
 
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.paraphrasing.Constants;
 import org.woped.qualanalysis.paraphrasing.editing.TextualDescriptionDialog;
+import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
 import org.woped.translations.Messages;
 
@@ -20,11 +25,18 @@ public class ButtonListener implements ActionListener{
 	private ParaphrasingPanel paraphrasingPanel = null;
 	private WebServiceThread webService = null;
 	
+	private JTable table = null;
+	private DefaultTableModel defaultTableModel = null;
+	private ParaphrasingOutput paraphrasingOutput = null;
+	
+	
 	public ButtonListener(ParaphrasingPanel paraphrasingPanel){
 		this.paraphrasingPanel = paraphrasingPanel;
-		
+		this.table = paraphrasingPanel.getParaphrasingOutput().getTable();
+		this.defaultTableModel = paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel();
+		this.paraphrasingOutput = paraphrasingPanel.getParaphrasingOutput();
 	}
-	
+
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -35,9 +47,9 @@ public class ButtonListener implements ActionListener{
 			
 			if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.New.Question.Content"), Messages.getString("Paraphrasing.New.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
 				//delete existing table and create a new one
-				this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().setRowCount(0);
-				this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().fireTableDataChanged();
-				this.paraphrasingPanel.getParaphrasingOutput().updateElementContainer();
+				this.defaultTableModel.setRowCount(0);
+				this.defaultTableModel.fireTableDataChanged();
+				this.paraphrasingOutput.updateElementContainer();
 				
 				LoggerManager.info(Constants.PARAPHRASING_LOGGER, " New description table created.");	
 				
@@ -48,7 +60,7 @@ public class ButtonListener implements ActionListener{
 		if(e.getSource() == this.paraphrasingPanel.getLoadButton()){
 			
 			if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Load.Question.Content"), Messages.getString("Paraphrasing.Load.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
-				paraphrasingPanel.getParaphrasingOutput().setAnimationVisible();
+				this.paraphrasingOutput.setAnimationVisible();
 				 
 				webService = new WebServiceThread(paraphrasingPanel);
 				webService.start();
@@ -57,13 +69,23 @@ public class ButtonListener implements ActionListener{
 		}
 		
 		//Delete Button
-		if(e.getSource() == this.paraphrasingPanel.getDeleteButton()){
-			int selectedRow = this.paraphrasingPanel.getParaphrasingOutput().getTable().getSelectedRow();
+		if(e.getSource() == this.paraphrasingPanel.getDeleteButton() || e.getSource() == this.paraphrasingPanel.getDeleteItem()){
+			int selectedRow = this.table.getSelectedRow();
 			if(selectedRow != -1){
 				if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Delete.Question.Notification"), Messages.getString("Paraphrasing.Delete.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
 
-					this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().removeRow(selectedRow);
-					this.paraphrasingPanel.getParaphrasingOutput().updateElementContainer();
+					this.defaultTableModel.removeRow(selectedRow);
+					
+					Iterator<AbstractPetriNetElementModel> i = this.paraphrasingOutput.getEditor().getModelProcessor().getElementContainer().getRootElements().iterator();
+					while (i.hasNext()) {
+						AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
+						current.setHighlighted(false);
+					}
+					this.table.clearSelection();
+					this.paraphrasingOutput.getEditor().repaint();		
+					this.table.repaint();
+					
+					this.paraphrasingOutput.updateElementContainer();
 					
 					LoggerManager.info(Constants.PARAPHRASING_LOGGER, "   ... Description deleted.");	
 					
@@ -77,23 +99,23 @@ public class ButtonListener implements ActionListener{
 		
 		
 		//Add Button
-		if(e.getSource() == this.paraphrasingPanel.getAddButton()){
-			JTable table = this.paraphrasingPanel.getParaphrasingOutput().getTable();
-			/*TextualDescriptionDialog textualdescriptionDialog = */ new TextualDescriptionDialog(this.paraphrasingPanel.getEditor() , table, this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel(), "new");
+		if(e.getSource() == this.paraphrasingPanel.getAddButton() || e.getSource() == this.paraphrasingPanel.getAddItem()){
+//			JTable table = this.paraphrasingPanel.getParaphrasingOutput().getTable();
+			/*TextualDescriptionDialog textualdescriptionDialog = */ new TextualDescriptionDialog(this.paraphrasingPanel.getEditor() , this.table, this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel(), "new");
 //			textualdescriptionDialog = null;
 		}
 		
 		
 		//Up Button
-		if(e.getSource() == this.paraphrasingPanel.getUpButton()){
+		if(e.getSource() == this.paraphrasingPanel.getUpButton() || e.getSource() == this.paraphrasingPanel.getUpItem()){
 			int selectedRow = this.paraphrasingPanel.getParaphrasingOutput().getTable().getSelectedRow();
 			if(selectedRow != -1){
-				if(this.paraphrasingPanel.getParaphrasingOutput().getTable().getSelectedRowCount() == 1){
+				if(this.table.getSelectedRowCount() == 1){
 					//Only swap row if a row except the first is selected
 					if(selectedRow > 0){
-						this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().moveRow(selectedRow, selectedRow, selectedRow-1);
-						this.paraphrasingPanel.getParaphrasingOutput().getTable().setRowSelectionInterval(selectedRow-1, selectedRow-1);
-						this.paraphrasingPanel.getParaphrasingOutput().updateElementContainer();
+						this.defaultTableModel.moveRow(selectedRow, selectedRow, selectedRow-1);
+						this.table.setRowSelectionInterval(selectedRow-1, selectedRow-1);
+						this.paraphrasingOutput.updateElementContainer();
 					}
 				}
 			}
@@ -103,15 +125,15 @@ public class ButtonListener implements ActionListener{
 		}
 		
 		//Down Button
-		if(e.getSource() == this.paraphrasingPanel.getDownButton()){
-			int selectedRow = this.paraphrasingPanel.getParaphrasingOutput().getTable().getSelectedRow();
+		if(e.getSource() == this.paraphrasingPanel.getDownButton()  || e.getSource() == this.paraphrasingPanel.getDownItem()){
+			int selectedRow = this.table.getSelectedRow();
 			if(selectedRow != -1){
-				if(this.paraphrasingPanel.getParaphrasingOutput().getTable().getSelectedRowCount() == 1){
+				if(this.table.getSelectedRowCount() == 1){
 					//Only swap row if a row except the last is selected
-					if(selectedRow < this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getRowCount()-1){
-						this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().moveRow(selectedRow, selectedRow, selectedRow+1);
-						this.paraphrasingPanel.getParaphrasingOutput().getTable().setRowSelectionInterval(selectedRow+1, selectedRow+1);
-						this.paraphrasingPanel.getParaphrasingOutput().updateElementContainer();
+					if(selectedRow < this.defaultTableModel.getRowCount()-1){
+						this.defaultTableModel.moveRow(selectedRow, selectedRow, selectedRow+1);
+						this.table.setRowSelectionInterval(selectedRow+1, selectedRow+1);
+						this.paraphrasingOutput.updateElementContainer();
 					}
 				}
 			}
@@ -125,7 +147,7 @@ public class ButtonListener implements ActionListener{
 		if(e.getSource() == this.paraphrasingPanel.getExportButton()){
 			
 			boolean fileTypeOk = false;
-			if (this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getRowCount() > 0){
+			if (this.defaultTableModel.getRowCount() > 0){
 			JFileChooser jFileChooser = new JFileChooser();
 			jFileChooser.setFileFilter(new FileFilter() {
 	            public boolean accept(File f) {
@@ -149,19 +171,18 @@ public class ButtonListener implements ActionListener{
 							FileWriter out = new FileWriter(file);
 							
 							out.write("Created with Workflow PetriNet Designer Version " + Messages.getString("Application.Version") +" (woped.org) \n\n  ");
-//									new java.sql.Timestamp(new java.util.Date().getTime()) + );
 							//Export Ids
 							if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Export.Question.Message"), Messages.getString("Paraphrasing.Export.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
 								for(int i = 0; i < this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getRowCount(); i++){
 									//out.write(this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getValueAt(i,0) + " - " + this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getValueAt(i,1) + "\n");
-									out.write(this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getValueAt(i,0) + "\n");
-									out.write(this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getValueAt(i,1) + "\n\n");
+									out.write(this.defaultTableModel.getValueAt(i,0) + "\n");
+									out.write(this.defaultTableModel.getValueAt(i,1) + "\n\n");
 
 								}
 							}				            	
 							else{
-								for(int i = 0; i < this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getRowCount(); i++){
-									out.write(this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getValueAt(i,1) + "\n\n");
+								for(int i = 0; i < this.defaultTableModel.getRowCount(); i++){
+									out.write(this.defaultTableModel.getValueAt(i,1) + "\n\n");
 								}
 							}
 							LoggerManager.info(Constants.PARAPHRASING_LOGGER, " Description exported to: " + path);	

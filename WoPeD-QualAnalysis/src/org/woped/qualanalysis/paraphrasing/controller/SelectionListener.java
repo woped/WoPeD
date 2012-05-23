@@ -1,12 +1,16 @@
 package org.woped.qualanalysis.paraphrasing.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Iterator;
 
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
@@ -20,19 +24,21 @@ import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
 import org.woped.translations.Messages;
 
 
-public class SelectionListener implements MouseListener, KeyListener {
+public class SelectionListener implements MouseListener, KeyListener, ActionListener {
 	
 	private JTable table = null;
 	private IEditor editor = null;
 	private DefaultTableModel defaultTableModel = null;
 	private ParaphrasingOutput paraphrasingOutput = null;
-		
 	
+	
+		
 	public SelectionListener(ParaphrasingOutput paraphrasingOutput){
 		this.editor = paraphrasingOutput.getEditor();
 		this.table = paraphrasingOutput.getTable();
 		this.defaultTableModel = paraphrasingOutput.getDefaultTableModel();
 		this.paraphrasingOutput = paraphrasingOutput;
+		
 	}
 	
 
@@ -64,26 +70,44 @@ public class SelectionListener implements MouseListener, KeyListener {
 			this.table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			int row = table.rowAtPoint(e.getPoint());
 
-			//Highlight
-			if(e.getClickCount() == 1){
-				if(row != -1){				
-					highlightElement(row);
-					this.editor.repaint(); 
-				    this.table.repaint(); 
+			if(SwingUtilities.isLeftMouseButton(e)){
+				//Highlight
+				if(e.getClickCount() == 1){
+					if(row != -1){				
+						highlightElement(row);
+						this.editor.repaint(); 
+					    this.table.repaint(); 
+					}
+					else{
+						clearHighlighting();
+					}
+					
+				}
+				
+				//Edit
+				if(e.getClickCount() == 2){
+					new TextualDescriptionDialog(this.editor, this.table, this.defaultTableModel, "edit", row);
+				}
+			}
+			
+			
+			if(SwingUtilities.isRightMouseButton(e)){
+				if(row != -1){
+					paraphrasingOutput.getTable().setRowSelectionInterval(row, row);
+
+					paraphrasingOutput.getParaphrasingPanel().getMenu().removeAll();
+					paraphrasingOutput.getParaphrasingPanel().getMenu().add(paraphrasingOutput.getParaphrasingPanel().getPropertiesItem());
+					paraphrasingOutput.getParaphrasingPanel().getMenu().add(paraphrasingOutput.getParaphrasingPanel().getUpItem());
+					paraphrasingOutput.getParaphrasingPanel().getMenu().add(paraphrasingOutput.getParaphrasingPanel().getDownItem());
+					paraphrasingOutput.getParaphrasingPanel().getMenu().add(paraphrasingOutput.getParaphrasingPanel().getDeleteItem());
+					paraphrasingOutput.getParaphrasingPanel().getMenu().show(e.getComponent(), e.getX(), e.getY());
 				}
 				else{
 					clearHighlighting();
+					paraphrasingOutput.getParaphrasingPanel().getMenu().removeAll();
+					paraphrasingOutput.getParaphrasingPanel().getMenu().add(paraphrasingOutput.getParaphrasingPanel().getAddItem());
+					paraphrasingOutput.getParaphrasingPanel().getMenu().show(e.getComponent(), e.getX(), e.getY());
 				}
-				
-			}
-			
-			//Edit
-			if(e.getClickCount() == 2){
-				new TextualDescriptionDialog(this.editor, this.table, this.defaultTableModel, "edit", row);
-			}
-			
-			if(SwingUtilities.isRightMouseButton(e)){
-				clearHighlighting();
 			}
 				
 		}
@@ -207,7 +231,7 @@ public class SelectionListener implements MouseListener, KeyListener {
 				//row selected and delete button pressed
 				if(k.getKeyCode() == KeyEvent.VK_DELETE){
 					if(row != -1){
-						if(JOptionPane.showConfirmDialog(null, /*Messages.getString("Paraphrasing.New.Question.Content")*/"Are you sure you want to delete this line?", Messages.getString("Paraphrasing.New.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION)
+						if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Delete.Question.Notification"), Messages.getString("Paraphrasing.Delete.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION)
 						{
 							defaultTableModel.removeRow(row);
 							clearHighlighting();
@@ -296,6 +320,23 @@ public class SelectionListener implements MouseListener, KeyListener {
 			this.paraphrasingOutput.getParaphrasingPanel().enableEditButtons(true);
 		}
 	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == this.paraphrasingOutput.getParaphrasingPanel().getPropertiesItem()){
+			int row = this.table.getSelectedRow();
+			if(row != -1){
+				new TextualDescriptionDialog(this.editor, this.table, this.defaultTableModel, "edit", row);
+				this.table.setRowSelectionInterval(row-1,row-1);
+			}
+		}
+		
+		
+	}
+
+
+	
 }
 
 

@@ -98,7 +98,6 @@ public class WebServiceThread extends Thread{
     private void extractDescription(String xmlString){
     	
     	try{
-        	
         	PnmlDocument pnmlDoc = PnmlDocument.Factory.parse(xmlString); 	
         	PnmlType pnmlTag = pnmlDoc.getPnml();
        	        	
@@ -116,7 +115,11 @@ public class WebServiceThread extends Thread{
                     		this.result[i][0] = phraseTag[i].getIds().trim();
                     		this.result[i][1] = phraseTag[i].getStringValue().trim();	
                     	}
-                	}                	
+                	}  
+                	else{
+                		JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Parsing.Empty.Message"),
+            					Messages.getString("Paraphrasing.Webservice.Parsing.Empty.Title"), JOptionPane.INFORMATION_MESSAGE);
+                	}
             	}
         	}
         	
