@@ -12,8 +12,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import org.woped.core.controller.IEditor;
-import org.woped.qualanalysis.paraphrasing.controller.ButtonListener;
-import org.woped.qualanalysis.paraphrasing.controller.SelectionListener;
+import org.woped.qualanalysis.paraphrasing.action.ButtonListener;
+import org.woped.qualanalysis.paraphrasing.action.SelectionListener;
 import org.woped.translations.Messages;
 
 public class ParaphrasingOutput{

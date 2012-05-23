@@ -1,16 +1,9 @@
 package org.woped.qualanalysis.paraphrasing.controller;
 
-import java.awt.geom.Point2D;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.xmlbeans.XmlOptions;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
@@ -22,18 +15,14 @@ import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.pnml.ArcNameType;
-import org.woped.pnml.ArcToolspecificType;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.NetType;
 import org.woped.pnml.NodeNameType;
 import org.woped.pnml.PlaceType;
 import org.woped.pnml.PnmlDocument;
 import org.woped.pnml.PnmlType;
-import org.woped.pnml.PositionType;
-import org.woped.pnml.ToolspecificType;
 import org.woped.pnml.TransitionType;
 import org.woped.qualanalysis.paraphrasing.Constants;
-import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 
 
 
@@ -118,16 +107,11 @@ public class CurrentNetPnml {
         }
         /* ##### ARCS ##### */
         
-        
-        Set<AbstractPetriNetElementModel> connectedTransitions = new HashSet<AbstractPetriNetElementModel>();  
         Iterator<String> arcIter = elementContainer.getArcMap().keySet().iterator();
         
         while (arcIter.hasNext())
         {
             ArcModel currentArc = elementContainer.getArcById(arcIter.next());
-            
-            AbstractPetriNetElementModel currentTargetModel = (AbstractPetriNetElementModel) elementContainer.getElementById(currentArc.getTargetId());
-            AbstractPetriNetElementModel currentSourceModel = (AbstractPetriNetElementModel) elementContainer.getElementById(currentArc.getSourceId());
 
     		initArc(iNet.addNewArc(), currentArc);
 
@@ -173,6 +157,9 @@ public class CurrentNetPnml {
     {
 		ArcModel useArc = outerArc;
 
+		// inscription
+        initNodeName(iArc.addNewInscription(), useArc);
+        
 		// attr. id
         iArc.setId(useArc.getId());
 

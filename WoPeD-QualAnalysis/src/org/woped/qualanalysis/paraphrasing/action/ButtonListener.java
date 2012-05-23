@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.paraphrasing.controller;
+package org.woped.qualanalysis.paraphrasing.action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.paraphrasing.Constants;
+import org.woped.qualanalysis.paraphrasing.controller.WebServiceThread;
 import org.woped.qualanalysis.paraphrasing.editing.TextualDescriptionDialog;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
