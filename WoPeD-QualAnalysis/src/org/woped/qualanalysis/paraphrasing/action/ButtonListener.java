@@ -171,7 +171,7 @@ public class ButtonListener implements ActionListener{
 								
 							FileWriter out = new FileWriter(file);
 							
-							out.write("Created with Workflow PetriNet Designer Version " + Messages.getString("Application.Version") +" (woped.org) \n\n  ");
+							out.write("Created with Workflow PetriNet Designer Version " + Messages.getString("Application.Version") +" (woped.org) \n\n");
 							//Export Ids
 							if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Export.Question.Message"), Messages.getString("Paraphrasing.Export.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
 								for(int i = 0; i < this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel().getRowCount(); i++){
