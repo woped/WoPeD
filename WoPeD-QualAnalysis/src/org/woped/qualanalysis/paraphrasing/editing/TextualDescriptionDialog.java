@@ -30,6 +30,8 @@ import javax.swing.table.DefaultTableModel;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.translations.Messages;
 
 
@@ -221,8 +223,27 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 		
 		while (i.hasNext()) {
 			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
-			
-			idList.add(current.getId());
+
+			if (current.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+            {
+            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) current;
+                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+                while (simpleTransIter.hasNext())
+                {
+                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+                    if (simpleTransModel != null 
+                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+                    {
+                      idList.add(((TransitionModel) operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId())).getId());
+                    }
+
+                }
+                
+            }
+			else{
+				idList.add(current.getId());
+			}
+
 			
 		}
 		Collections.sort(idList);
@@ -295,6 +316,10 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 				highlightElement(this.row);
 				table.setRowSelectionInterval(row, row);
 			}
+			else{
+				clearHighlighting(this.editor, this.table);
+			
+			}
 		}
 	}
 	
@@ -308,6 +333,11 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 			this.dispose();	
 			if(this.row != -1){
 				highlightElement(this.row);
+				table.setRowSelectionInterval(row, row);
+			}
+			else{
+				clearHighlighting(this.editor, this.table);
+			
 			}
 			
 		}
@@ -372,16 +402,52 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 			
 			while (i.hasNext()) {
 				AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
-				
-				
-				if(current.isHighlighted() && availableIdsTableModel.getValueAt(row,0).equals(current.getId()) && column == 2){
-					current.setHighlighted(false);
-				}
 
-				else if(availableIdsTableModel.getValueAt(row,0).equals(current.getId())){
-					current.setHighlighted(true);
-				}
-								
+					if (current.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+		            {
+		            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) current;
+		                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+		               
+		                int highlightcounter = 0;
+		                while (simpleTransIter.hasNext())
+		                {
+		                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+		                    if (simpleTransModel != null // Sometimes the iterator
+		                            // returns null...
+		                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+		                    {
+		                       if(availableIdsTableModel.getValueAt(row,1).equals("0") && availableIdsTableModel.getValueAt(row,0).equals(simpleTransModel.getId()) && column == 2){
+									simpleTransModel.setHighlighted(false);
+								}
+
+								else if(availableIdsTableModel.getValueAt(row,1).equals("1") && availableIdsTableModel.getValueAt(row,0).equals(simpleTransModel.getId())){
+									simpleTransModel.setHighlighted(true);
+								}
+		                    	
+		                    	if(simpleTransModel.isHighlighted() == true){
+		                    		highlightcounter++;
+		                    	}
+		                    
+		                    }
+
+		                }
+		                
+		                if(highlightcounter > 0){
+		                	current.setHighlighted(true);
+		                }
+		                else{
+		                	current.setHighlighted(false);
+		                }
+		            }  
+		            
+					else{
+						if(availableIdsTableModel.getValueAt(row,1).equals("0") && availableIdsTableModel.getValueAt(row,0).equals(current.getId()) && column == 2){
+							current.setHighlighted(false);
+						}
+						else if(availableIdsTableModel.getValueAt(row,1).equals("1") && availableIdsTableModel.getValueAt(row,0).equals(current.getId())){
+							current.setHighlighted(true);
+						}
+					}					
 			}
 			this.editor.repaint(); 
 			id.setText(output);
@@ -422,19 +488,41 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 	
 	private void highlightElement(int row){
 		String[] selection = ((String)table.getValueAt(row,0)).split(",");
-		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor().getElementContainer().getRootElements().iterator();
-				
-		//remove highlighting from all elements first and highlight the right one afterwards
+
+		Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
+
 		while (i.hasNext()) {
 			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
 			current.setHighlighted(false);
-			for(String id : selection){
-				if (current.getId().equals(id)){
-					current.setHighlighted(true);
+			if (current.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+            {
+            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) current;
+                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+                while (simpleTransIter.hasNext())
+                {
+                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+                    if (simpleTransModel != null 
+                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+                    {
+                    	simpleTransModel.setHighlighted(false);
+                    	for(String id : selection){
+            				if (simpleTransModel.getId().equals(id)){
+            					current.setHighlighted(true);
+            				}
+            			}
+                    }
+                }
+                
+            }
+			else{
+				for(String id : selection){
+					if (current.getId().equals(id)){
+						current.setHighlighted(true);
+					}
 				}
-			}					
+			}
 		}
-		editor.repaint(); 			
+		this.editor.repaint(); 
 	}
 
 	
@@ -463,6 +551,33 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 				}
 			}
 		}
+	}
+	
+	private void clearHighlighting(IEditor editor, JTable table){
+
+		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor().getElementContainer().getRootElements().iterator();
+		
+		while (i.hasNext()) {
+			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
+			current.setHighlighted(false);
+			if (current.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+            {
+            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) current;
+                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+                while (simpleTransIter.hasNext())
+                {
+                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+                    if (simpleTransModel != null 
+                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+                    {
+                    	simpleTransModel.setHighlighted(false);
+                    }
+                }
+            }
+		}
+		table.clearSelection();
+		editor.repaint();		
+		table.repaint();
 	}
 
 }

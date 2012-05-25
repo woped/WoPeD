@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
@@ -17,6 +18,8 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.paraphrasing.editing.TextualDescriptionDialog;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
 import org.woped.translations.Messages;
@@ -284,21 +287,43 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 	 */
 	private void highlightElement(int row){
 		String[] selection = ((String)this.table.getValueAt(row,0)).split(",");
+
 		Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
-				
-		//remove highlighting from all elements first and highlight the right one afterwards
+	
 		while (i.hasNext()) {
 			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
 			current.setHighlighted(false);
-			for(String id : selection){
-				if (current.getId().equals(id)){
-					current.setHighlighted(true);
+			if (current.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+            {
+            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) current;
+                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+                while (simpleTransIter.hasNext())
+                {
+                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+                    if (simpleTransModel != null 
+                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+                    {
+                    	simpleTransModel.setHighlighted(false);
+                    	for(String id : selection){
+            				if (simpleTransModel.getId().equals(id)){
+            					current.setHighlighted(true);
+            				}
+            			}
+                    }
+                }    
+            }
+			else{
+				for(String id : selection){
+					if (current.getId().equals(id)){
+						current.setHighlighted(true);
+					}
 				}
-			}					
+			}
+
+			
 		}
 		this.editor.repaint(); 
-	    //this.table.repaint(); 
-		
+	    this.table.repaint(); 		
 	}
 	
 	/**

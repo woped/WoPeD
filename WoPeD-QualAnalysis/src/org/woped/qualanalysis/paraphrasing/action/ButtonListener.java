@@ -12,7 +12,9 @@ import javax.swing.JTable;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableModel;
 
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.paraphrasing.Constants;
 import org.woped.qualanalysis.paraphrasing.controller.WebServiceThread;
@@ -101,9 +103,10 @@ public class ButtonListener implements ActionListener{
 		
 		//Add Button
 		if(e.getSource() == this.paraphrasingPanel.getAddButton() || e.getSource() == this.paraphrasingPanel.getAddItem()){
-//			JTable table = this.paraphrasingPanel.getParaphrasingOutput().getTable();
-			/*TextualDescriptionDialog textualdescriptionDialog = */ new TextualDescriptionDialog(this.paraphrasingPanel.getEditor() , this.table, this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel(), "new");
-//			textualdescriptionDialog = null;
+
+			clearHighlighting(this.paraphrasingPanel.getEditor(), this.paraphrasingOutput.getTable());
+			new TextualDescriptionDialog(this.paraphrasingPanel.getEditor() , this.table, this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel(), "new");
+
 		}
 		
 		
@@ -210,5 +213,32 @@ public class ButtonListener implements ActionListener{
 				JOptionPane.showMessageDialog(null,Messages.getString("Paraphrasing.Export.Numberelements.Message"),Messages.getString("Paraphrasing.Export.Numberelements.Title"), JOptionPane.INFORMATION_MESSAGE);
 			}	
 		}		
+	}
+	
+	private void clearHighlighting(IEditor editor, JTable table){
+
+		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor().getElementContainer().getRootElements().iterator();
+		
+		while (i.hasNext()) {
+			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
+			current.setHighlighted(false);
+			if (current.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+            {
+            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) current;
+                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+                while (simpleTransIter.hasNext())
+                {
+                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+                    if (simpleTransModel != null 
+                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+                    {
+                    	simpleTransModel.setHighlighted(false);
+                    }
+                }
+            }
+		}
+		table.clearSelection();
+		editor.repaint();		
+		table.repaint();
 	}
 }
