@@ -19,6 +19,7 @@ import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.paraphrasing.editing.TextualDescriptionDialog;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
@@ -75,7 +76,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 				//Highlight
 				if(e.getClickCount() == 1){
 					if(row != -1){				
-						highlightElement(row);
+						highlightElementInEditor(row);
 						this.editor.repaint(); 
 					    this.table.repaint(); 
 					}
@@ -136,20 +137,26 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 
 				this.table.clearSelection();
 
-		
-				//search for the id in the table and highlight it
-				for(int row=0; row < this.table.getRowCount(); row++){
+				if (model.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+	            {
+	            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) model;
+	                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+	                while (simpleTransIter.hasNext())
+	                {
+	                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+	                    if (simpleTransModel != null 
+	                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+	                    {
+//	                        highlightElementInTable(simpleTransModel.getId());
+	                    }
 
-					String[] value = ((String)this.table.getValueAt(row,0)).split(",");
-					for(String id : value){
-						
-						if(id.equals(selection)){
-							this.table.addRowSelectionInterval(row, row);
-						}
-					}
+	                }
+	            }
+		
+				else{
+					highlightElementInTable(selection);
 				}
-			    this.editor.repaint(); 
-			    this.table.repaint(); 	
+			    this.editor.repaint(); 	
 
 			}
 			else if(object instanceof ArcModel){
@@ -199,7 +206,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 			if(row != -1){
 				//int row = table.rowAtPoint(e.getPoint());
 				this.table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-				highlightElement(this.table.rowAtPoint(e.getPoint()));
+				highlightElementInEditor(this.table.rowAtPoint(e.getPoint()));
 			}
 			else{
 				clearHighlighting();
@@ -265,7 +272,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 		if (k.getSource() == this.table){
 			if(k.getKeyCode() == KeyEvent.VK_DOWN || k.getKeyCode() == KeyEvent.VK_UP)
 			{
-				highlightElement(this.table.getSelectedRow());
+				highlightElementInEditor(this.table.getSelectedRow());
 			}
 		}
 		setEditButtonsStatusApproriately();
@@ -285,7 +292,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 	 * @author Martin Meitz
 	 * 
 	 */
-	private void highlightElement(int row){
+	private void highlightElementInEditor(int row){
 		String[] selection = ((String)this.table.getValueAt(row,0)).split(",");
 
 		Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
@@ -327,7 +334,28 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 	}
 	
 	/**
-	 * Actives the edit buttons of the output panel
+	 * Retrieves the textids and highlights the
+	 * appropriate elements in the editor
+	 * 
+	 * @author Martin Meitz
+	 * 
+	 */
+	private void highlightElementInTable(String selection){
+		for(int row=0; row < this.table.getRowCount(); row++){
+			
+			String[] value = ((String)this.table.getValueAt(row,0)).split(",");
+			for(String id : value){
+				
+				if(id.equals(selection)){
+					this.table.addRowSelectionInterval(row, row);
+				}
+			}
+		}
+		this.table.repaint();
+	}
+	
+	/**
+	 * Activates the edit buttons of the output panel
 	 * if there is at least one element in
 	 * the table
 	 * 
