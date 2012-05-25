@@ -37,6 +37,8 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.VisualController;
@@ -661,12 +663,38 @@ public class EditorPanel extends JPanel {
 				    	  Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
 							while (i.hasNext()) {
 								AbstractPetriNetElementModel cur = (AbstractPetriNetElementModel) i.next();
-								for(String v : content){
-									if(v.equals(cur.getId())){
-										ids = ids + v + ",";
-										elements++;
+								
+								if (cur.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+					            {
+					            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) cur;
+					                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+					                while (simpleTransIter.hasNext())
+					                {
+					                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+					                    if (simpleTransModel != null 
+					                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+					                    {
+					                    	for(String v : content){
+												if(v.equals(simpleTransModel.getId())){
+													ids = ids + v + ",";
+													elements++;
+												}
+											}
+					                    }
+
+					                }
+					            }
+								else{
+									for(String v : content){
+										if(v.equals(cur.getId())){
+											ids = ids + v + ",";
+											elements++;
+										}
 									}
 								}
+								
+								
+								
 							}
 							
 							if(elements > 0){
