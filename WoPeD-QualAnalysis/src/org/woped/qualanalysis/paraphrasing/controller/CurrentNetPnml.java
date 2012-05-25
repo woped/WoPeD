@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
+
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
@@ -123,8 +125,12 @@ public class CurrentNetPnml{
                     }
 
                 }
+                if (operatorModel.getCenterPlace() != null)
+                {
+                    initPlace(iNet.addNewPlace(), operatorModel.getCenterPlace());
+                }
             }
-        }  
+        }
 
         	/* ##### ARCS ##### */
         Set<AbstractPetriNetElementModel> connectedTransitions = new HashSet<AbstractPetriNetElementModel>();  
@@ -166,8 +172,11 @@ public class CurrentNetPnml{
         					currentInnerArc.getTargetId()); 
         		}
         		
-        		initArc(iNet.addNewArc(), currentOuterArc, 
+        		
+                initArc(iNet.addNewArc(), (currentOuterArc!=null)?currentOuterArc:currentInnerArc, 
         				currentInnerArc);
+//        		initArc(iNet.addNewArc(), currentOuterArc, 
+//        				currentInnerArc);
         	}
         }
 
@@ -205,44 +214,13 @@ public class CurrentNetPnml{
         return iTransition;
     }
 	
-
-//	private ArcType initArc(ArcType iArc, ArcModel outerArc)
-//    {
-//		ArcModel useArc = outerArc;
-//
-//		// inscription
-//        initNodeName(iArc.addNewInscription(), useArc);
-//        
-//		// attr. id
-//        iArc.setId(useArc.getId());
-//
-//        // attr. source
-//        
-//        iArc.setSource(useArc.getSourceId());
-//        
-//        String sourceId = useArc.getSourceId();   
-//        if (sourceId.indexOf(
-//				OperatorTransitionModel.INNERID_SEPERATOR) != 0) {
-//        	sourceId = sourceId.split(OperatorTransitionModel.INNERID_SEPERATOR)[0];
-//		} 	
-//        iArc.setSource(sourceId);
-//        
-//        // attr. target
-//        String targetId = useArc.getTargetId();
-//        if (targetId.indexOf(
-//				OperatorTransitionModel.INNERID_SEPERATOR) != 0) {
-//        	targetId = targetId.split(OperatorTransitionModel.INNERID_SEPERATOR)[0];
-//		}
-//        iArc.setTarget(targetId);
-//        return iArc;
-//    }
     
 	private ArcType initArc(ArcType iArc, ArcModel outerArc, ArcModel innerArc)
     {
         ArcModel useArc = innerArc == null ? outerArc : innerArc;
         // inscription
         initNodeName(iArc.addNewInscription(), useArc);
-
+        
         // attr. id
         iArc.setId(outerArc.getId());
         // attr. source

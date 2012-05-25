@@ -147,7 +147,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 	                    if (simpleTransModel != null 
 	                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
 	                    {
-//	                        highlightElementInTable(simpleTransModel.getId());
+	                        highlightElementInTable(simpleTransModel.getId());
 	                    }
 
 	                }
