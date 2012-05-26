@@ -143,7 +143,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 				String selection= model.getId();		
 				
 				clearHighlightingEditor();
-				model.setHighlighted(true);
+//				model.setHighlighted(true);
 
 				this.table.clearSelection();
 
@@ -157,14 +157,18 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 	                    if (simpleTransModel != null 
 	                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
 	                    {
-	                        highlightElementInTable(simpleTransModel.getId());
+	                        if(highlightElementInTable(simpleTransModel.getId()) == true){
+	                        	model.setHighlighted(true);
+	                        }
 	                    }
 
 	                }
 	            }
 		
 				else{
-					highlightElementInTable(selection);
+					if(highlightElementInTable(selection) == true){
+						model.setHighlighted(true);
+					}
 				}
 			    this.editor.repaint(); 	
 
@@ -294,7 +298,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 	 */
 	private void highlightElementInEditor(int row){
 		String[] selection = ((String)this.table.getValueAt(row,0)).split(",");
-
+				
 		Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
 	
 		while (i.hasNext()) {
@@ -331,7 +335,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 			
 		}
 		this.editor.repaint(); 
-	    this.table.repaint(); 		
+	    this.table.repaint(); 
 	}
 	
 	/**
@@ -341,7 +345,8 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 	 * @author Martin Meitz
 	 * 
 	 */
-	private void highlightElementInTable(String selection){
+	private boolean highlightElementInTable(String selection){
+		boolean ret = false;
 		for(int row=0; row < this.table.getRowCount(); row++){
 			
 			String[] value = ((String)this.table.getValueAt(row,0)).split(",");
@@ -349,10 +354,12 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 				
 				if(id.equals(selection)){
 					this.table.addRowSelectionInterval(row, row);
+					ret = true;
 				}
 			}
 		}
 		this.table.repaint();
+		return ret;
 	}
 	
 	/**
