@@ -6,8 +6,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import javax.swing.JOptionPane;
-
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;

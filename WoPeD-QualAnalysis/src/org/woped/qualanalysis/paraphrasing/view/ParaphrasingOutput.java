@@ -3,16 +3,13 @@ package org.woped.qualanalysis.paraphrasing.view;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import org.woped.core.controller.IEditor;
-import org.woped.qualanalysis.paraphrasing.action.ButtonListener;
 import org.woped.qualanalysis.paraphrasing.action.SelectionListener;
 import org.woped.translations.Messages;
 
@@ -160,7 +157,9 @@ public class ParaphrasingOutput{
 		this.editor.getGraph().removeKeyListener(this.selectionListener);
 		this.table.removeMouseListener(this.selectionListener);
 		this.table.removeKeyListener(this.selectionListener);
-		this.selectionListener.clearHighlighting();
+		this.selectionListener.clearAllHighlighting();
+		
+		
 	}
 	
 	

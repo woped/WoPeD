@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.WebServiceException;
 
+import org.apache.xmlbeans.XmlException;
 import org.woped.core.controller.IEditor;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.pnml.NetType;
@@ -92,12 +93,13 @@ public class WebServiceThread extends Thread{
 	 * and saves it to the result variable
 	 * 
 	 * @author Martin Meitz
+	 * @throws XmlException 
 	 *
 	 * 
 	 */
-    private void extractDescription(String xmlString){
+    private void extractDescription(String xmlString) throws XmlException{
     	
-    	try{
+//    	try{
         	PnmlDocument pnmlDoc = PnmlDocument.Factory.parse(xmlString); 	
         	PnmlType pnmlTag = pnmlDoc.getPnml();
        	        	
@@ -123,11 +125,11 @@ public class WebServiceThread extends Thread{
             	}
         	}
         	
-    	}
-    	catch(Exception ex){
-    		JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Parsing.Error.Message"),
-					Messages.getString("Paraphrasing.Webservice.Parsing.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
-    	}
+//    	}
+//    	catch(Exception ex){
+//    		JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Parsing.Error.Message"),
+//					Messages.getString("Paraphrasing.Webservice.Parsing.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+//    	}
     	
     }
 }

@@ -31,6 +31,7 @@ public class ButtonListener implements ActionListener{
 	private JTable table = null;
 	private DefaultTableModel defaultTableModel = null;
 	private ParaphrasingOutput paraphrasingOutput = null;
+	private IEditor editor = null;
 	
 	
 	public ButtonListener(ParaphrasingPanel paraphrasingPanel){
@@ -38,6 +39,7 @@ public class ButtonListener implements ActionListener{
 		this.table = paraphrasingPanel.getParaphrasingOutput().getTable();
 		this.defaultTableModel = paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel();
 		this.paraphrasingOutput = paraphrasingPanel.getParaphrasingOutput();
+		this.editor = paraphrasingPanel.getEditor();
 	}
 
 	
@@ -50,6 +52,7 @@ public class ButtonListener implements ActionListener{
 			
 			if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.New.Question.Content"), Messages.getString("Paraphrasing.New.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
 				//delete existing table and create a new one
+				clearAllHighlighting();
 				this.defaultTableModel.setRowCount(0);
 				this.defaultTableModel.fireTableDataChanged();
 				this.paraphrasingOutput.updateElementContainer();
@@ -64,7 +67,7 @@ public class ButtonListener implements ActionListener{
 			
 			if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Load.Question.Content"), Messages.getString("Paraphrasing.Load.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
 				this.paraphrasingOutput.setAnimationVisible();
-				 
+				clearAllHighlighting();
 				webService = new WebServiceThread(paraphrasingPanel);
 				webService.start();
 				webService = null;
@@ -78,15 +81,7 @@ public class ButtonListener implements ActionListener{
 				if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Delete.Question.Notification"), Messages.getString("Paraphrasing.Delete.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
 
 					this.defaultTableModel.removeRow(selectedRow);
-					
-					Iterator<AbstractPetriNetElementModel> i = this.paraphrasingOutput.getEditor().getModelProcessor().getElementContainer().getRootElements().iterator();
-					while (i.hasNext()) {
-						AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
-						current.setHighlighted(false);
-					}
-					this.table.clearSelection();
-					this.paraphrasingOutput.getEditor().repaint();		
-					this.table.repaint();
+					clearAllHighlighting();
 					
 					this.paraphrasingOutput.updateElementContainer();
 					
@@ -104,7 +99,7 @@ public class ButtonListener implements ActionListener{
 		//Add Button
 		if(e.getSource() == this.paraphrasingPanel.getAddButton() || e.getSource() == this.paraphrasingPanel.getAddItem()){
 
-			clearHighlighting(this.paraphrasingPanel.getEditor(), this.paraphrasingOutput.getTable());
+			clearAllHighlighting();
 			new TextualDescriptionDialog(this.paraphrasingPanel.getEditor() , this.table, this.paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel(), "new");
 
 		}
@@ -215,7 +210,7 @@ public class ButtonListener implements ActionListener{
 		}		
 	}
 	
-	private void clearHighlighting(IEditor editor, JTable table){
+	private void clearAllHighlighting(){
 
 		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor().getElementContainer().getRootElements().iterator();
 		

@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
@@ -19,8 +18,6 @@ import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.paraphrasing.editing.TextualDescriptionDialog;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
 import org.woped.translations.Messages;
@@ -51,17 +48,36 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 	 * @author Martin Meitz
 	 * 
 	 */
-	public void clearHighlighting(){	
+	public void clearAllHighlighting(){	
+		clearHighlightingEditor();	
+		this.table.clearSelection();
+		this.table.repaint();
+	}
+	
+	
+	private void clearHighlightingEditor(){
 		Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
 		while (i.hasNext()) {
 			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
 			current.setHighlighted(false);
+			
+			if (current.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
+            {
+            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) current;
+                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
+                while (simpleTransIter.hasNext())
+                {
+                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+                    if (simpleTransModel != null 
+                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+                    {
+                    	simpleTransModel.setHighlighted(false);
+                    }
+                }    
+            }
 		}
-		this.table.clearSelection();
-		this.editor.repaint();		
-		this.table.repaint();
+		this.editor.repaint();
 	}
-	
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -81,9 +97,8 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 					    this.table.repaint(); 
 					}
 					else{
-						clearHighlighting();
+						clearAllHighlighting();
 					}
-					
 				}
 				
 				//Edit
@@ -105,7 +120,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 					paraphrasingOutput.getParaphrasingPanel().getMenu().show(e.getComponent(), e.getX(), e.getY());
 				}
 				else{
-					clearHighlighting();
+					clearAllHighlighting();
 					paraphrasingOutput.getParaphrasingPanel().getMenu().removeAll();
 					paraphrasingOutput.getParaphrasingPanel().getMenu().add(paraphrasingOutput.getParaphrasingPanel().getAddItem());
 					paraphrasingOutput.getParaphrasingPanel().getMenu().show(e.getComponent(), e.getX(), e.getY());
@@ -126,13 +141,8 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 				
 
 				String selection= model.getId();		
-				Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
-	
-				//remove highlighting from all elements first and highlight the clicked one afterwards
-				while (i.hasNext()) {
-					AbstractPetriNetElementModel cur = (AbstractPetriNetElementModel) i.next();
-					cur.setHighlighted(false);
-				}
+				
+				clearHighlightingEditor();
 				model.setHighlighted(true);
 
 				this.table.clearSelection();
@@ -163,12 +173,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 				this.table.clearSelection();
 			}
 			else{
-				Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
-				while (i.hasNext()) {
-					AbstractPetriNetElementModel cur = (AbstractPetriNetElementModel) i.next();
-					cur.setHighlighted(false);
-				}
-				this.table.clearSelection();
+				clearAllHighlighting();
 			}
 			this.table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);		
 
@@ -209,7 +214,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 				highlightElementInEditor(this.table.rowAtPoint(e.getPoint()));
 			}
 			else{
-				clearHighlighting();
+				clearAllHighlighting();
 			}
 		}
 		setEditButtonsStatusApproriately();
@@ -222,7 +227,6 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 		if (k.getSource() == this.table){
 			
 			int row = this.table.getSelectedRow();
-			
 			
 				//row selected and enter button pressed
 				if(k.getKeyCode() == KeyEvent.VK_ENTER)
@@ -242,7 +246,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 						if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Delete.Question.Notification"), Messages.getString("Paraphrasing.Delete.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION)
 						{
 							defaultTableModel.removeRow(row);
-							clearHighlighting();
+							clearAllHighlighting();
 							paraphrasingOutput.updateElementContainer();
 						}
 					}
@@ -250,17 +254,13 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 						JOptionPane.showMessageDialog(null,Messages.getString("Paraphrasing.Delete.Notification"));
 					
 				}
-				
-			}
-			
-			
+			}	
 		}
 		
 		//row selected and esc button pressed
 		if(k.getKeyCode() == KeyEvent.VK_ESCAPE){
-			clearHighlighting();
+			clearAllHighlighting();
 		}
-		
 		setEditButtonsStatusApproriately();
 	}
 
@@ -314,6 +314,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
                     	for(String id : selection){
             				if (simpleTransModel.getId().equals(id)){
             					current.setHighlighted(true);
+            					simpleTransModel.setHighlighted(true);
             				}
             			}
                     }

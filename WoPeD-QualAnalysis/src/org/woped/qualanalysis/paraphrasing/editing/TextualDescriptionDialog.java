@@ -276,7 +276,6 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 			if(row != -1){
 				this.defaultTableModel.setValueAt(input, row, 0);
 				this.defaultTableModel.setValueAt(this.text.getText(), row, 1);
-				this.defaultTableModel.fireTableDataChanged();
 			}
 			//new
 			else {
@@ -286,12 +285,11 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 			}
 			updateElementContainer();
 			table.setRowSelectionInterval(row, row);
-			
-			
-			highlightElement(row);
+			highlightElementsInEditor(row);
 			
 			this.setVisible(false);
 			this.dispose();
+			
 		
 		}
 		else{
@@ -306,6 +304,7 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 
 		if(e.getSource() == buttonOk){
 			writeData();
+			
 		}
 		
 		
@@ -313,7 +312,7 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 			this.setVisible(false);
 			this.dispose();	
 			if(this.row != -1){
-				highlightElement(this.row);
+				highlightElementsInEditor(this.row);
 				table.setRowSelectionInterval(row, row);
 			}
 			else{
@@ -332,7 +331,7 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 			this.setVisible(false);
 			this.dispose();	
 			if(this.row != -1){
-				highlightElement(this.row);
+				highlightElementsInEditor(this.row);
 				table.setRowSelectionInterval(row, row);
 			}
 			else{
@@ -486,7 +485,7 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 	}
 	
 	
-	private void highlightElement(int row){
+	private void highlightElementsInEditor(int row){
 		String[] selection = ((String)table.getValueAt(row,0)).split(",");
 
 		Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
