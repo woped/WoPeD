@@ -66,11 +66,19 @@ public class ButtonListener implements ActionListener{
 		if(e.getSource() == this.paraphrasingPanel.getLoadButton()){
 			
 			if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Load.Question.Content"), Messages.getString("Paraphrasing.Load.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
-				this.paraphrasingOutput.setAnimationVisible();
-				clearAllHighlighting();
-				webService = new WebServiceThread(paraphrasingPanel);
-				webService.start();
-				webService = null;
+				
+				if(paraphrasingPanel.getThreadInProgress() == false){
+					this.paraphrasingOutput.setAnimationVisible();
+					clearAllHighlighting();
+					paraphrasingPanel.setThreadInProgress(true);
+					webService = new WebServiceThread(paraphrasingPanel);
+					webService.start();
+					webService = null;
+				}				
+				else{
+					JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.ThreadInProgress.Message"),
+							Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		}
 		

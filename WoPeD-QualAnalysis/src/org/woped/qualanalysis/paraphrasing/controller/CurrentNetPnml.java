@@ -37,6 +37,14 @@ public class CurrentNetPnml{
 
 	private IEditor editor = null;
 	
+	private int arcCounter = 0;
+	
+	private int root = 0;
+	
+	private int sink = 0;
+	
+	private boolean isProcessable = false;
+	
 	public CurrentNetPnml(){       
 	}
 	
@@ -131,6 +139,7 @@ public class CurrentNetPnml{
         }
 
         	/* ##### ARCS ##### */
+        this.arcCounter = 0;
         Set<AbstractPetriNetElementModel> connectedTransitions = new HashSet<AbstractPetriNetElementModel>();  
         Iterator<String> arcIter = elementContainer.getArcMap().keySet().iterator();
         while (arcIter.hasNext())
@@ -173,12 +182,16 @@ public class CurrentNetPnml{
         		
                 initArc(iNet.addNewArc(), (currentOuterArc!=null)?currentOuterArc:currentInnerArc, 
         				currentInnerArc);
-//        		initArc(iNet.addNewArc(), currentOuterArc, 
-//        				currentInnerArc);
         	}
         }
 
-        
+        //Webservice can only process graphs that have one root and one sink element
+        if(this.root == 1 && this.sink == 1){
+        	this.isProcessable = true;
+        }
+        else{
+        	this.isProcessable = false;
+        }
 	}
 
 	private PlaceType initPlace(PlaceType iPlace, PlaceModel currentModel)
@@ -187,7 +200,13 @@ public class CurrentNetPnml{
         initNodeName(iPlace.addNewName(), currentModel.getNameModel());       
         // attr. id
         iPlace.setId(currentModel.getId());
-
+        
+        if(currentModel.isRoot()){
+        	root++;
+        }
+        if(currentModel.isSink()){
+        	sink++;
+        }
         return iPlace;
     }
 	
@@ -219,8 +238,13 @@ public class CurrentNetPnml{
         // inscription
         initNodeName(iArc.addNewInscription(), useArc);
         
+        this.arcCounter++;
+        
         // attr. id
-        iArc.setId(outerArc.getId());
+//        iArc.setId(outerArc.getId());
+        // For the webservice the arc id is not important. To avoid errors because of two same arc numbers, a simple arc counter
+        // variable is used.
+        iArc.setId("a" + this.arcCounter);
         // attr. source
         iArc.setSource(useArc.getSourceId());
         
@@ -248,6 +272,16 @@ public class CurrentNetPnml{
     public String getPnmlString(){
     	return this.pnmlString;
     }
-   
+    
+    /**
+	 * Returns true if the webservice can process the net
+	 * 
+	 * @author Martin Meitz
+	 * 
+	 */
+    public boolean isProcessable(){
+    	return this.isProcessable;
+    }
+    
 	
 }

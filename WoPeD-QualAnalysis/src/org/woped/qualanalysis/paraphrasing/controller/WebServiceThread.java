@@ -30,15 +30,14 @@ public class WebServiceThread extends Thread{
 	public void run(){
 		IEditor editor = paraphrasingPanel.getEditor();
 		paraphrasingPanel.enableButtons(false);
-		
-		if(paraphrasingPanel.getThreadInProgress() == false){
-			paraphrasingPanel.setThreadInProgress(true);
-			if(editor.getModelProcessor().getElementContainer().getRootElements().size() > 3){
-				try{
-					
-					CurrentNetPnml currentNetPnml = new CurrentNetPnml(editor);	
-					currentNetPnml.setPnmlString();
-					
+
+		if(editor.getModelProcessor().getElementContainer().getRootElements().size() > 3){
+			try{
+				
+				CurrentNetPnml currentNetPnml = new CurrentNetPnml(editor);	
+				currentNetPnml.setPnmlString();
+				
+				if(currentNetPnml.isProcessable() == true){
 					ProcessToTextImplService pttService =  new ProcessToTextImplService();
 					String output = pttService.getProcessToTextImplPort().toText(currentNetPnml.getPnmlString());
 					if(!output.isEmpty()){
@@ -60,30 +59,32 @@ public class WebServiceThread extends Thread{
 						}
 					}
 				}
-				catch(WebServiceException wsEx){	
-					JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
-							Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+				else{
+					JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Processable.Message"),
+							Messages.getString("Paraphrasing.Webservice.Processable.Title"), JOptionPane.INFORMATION_MESSAGE);
 				}
-				catch(Exception ex){	
-					JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Error.Exception.Message"),
-							Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
-					
-				}
-				finally{
-					this.paraphrasingPanel.getParaphrasingOutput().setTableVisible();
-					paraphrasingPanel.enableButtons(true);
-					paraphrasingPanel.setThreadInProgress(false);
-				}
+				
 			}
-			else{
-				JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Numberelements.Message"),
+			catch(WebServiceException wsEx){	
+				JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
 						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+			}
+			catch(Exception ex){	
+				JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Error.Exception.Message"),
+						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+			finally{
+				this.paraphrasingPanel.getParaphrasingOutput().setTableVisible();
+				paraphrasingPanel.enableButtons(true);
+				paraphrasingPanel.setThreadInProgress(false);
 			}
 		}
 		else{
-			JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.ThreadInProgress.Message"),
+			JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Numberelements.Message"),
 					Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
 		}
+
 		
 		
 	}
@@ -98,38 +99,30 @@ public class WebServiceThread extends Thread{
 	 * 
 	 */
     private void extractDescription(String xmlString) throws XmlException{
-    	
-//    	try{
-        	PnmlDocument pnmlDoc = PnmlDocument.Factory.parse(xmlString); 	
-        	PnmlType pnmlTag = pnmlDoc.getPnml();
-       	        	
-        	if(pnmlTag.getNetArray().length > 0){
-        		NetType netTag = pnmlTag.getNetArray(0);
-            	
-            	if(netTag.isSetText()){
-            		TextType textTag = netTag.getText();
-            		
-                	if(textTag.getPhraseArray().length > 0){
-                		PhraseType[] phraseTag = textTag.getPhraseArray();
-                    	
-                    	this.result = new String[phraseTag.length][2];        	
-                    	for(int i = 0; i < phraseTag.length; i++){
-                    		this.result[i][0] = phraseTag[i].getIds().trim();
-                    		this.result[i][1] = phraseTag[i].getStringValue().trim();	
-                    	}
-                	}  
-                	else{
-                		JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Parsing.Empty.Message"),
-            					Messages.getString("Paraphrasing.Webservice.Parsing.Empty.Title"), JOptionPane.INFORMATION_MESSAGE);
+
+    	PnmlDocument pnmlDoc = PnmlDocument.Factory.parse(xmlString); 	
+    	PnmlType pnmlTag = pnmlDoc.getPnml();
+   	        	
+    	if(pnmlTag.getNetArray().length > 0){
+    		NetType netTag = pnmlTag.getNetArray(0);
+        	
+        	if(netTag.isSetText()){
+        		TextType textTag = netTag.getText();
+        		
+            	if(textTag.getPhraseArray().length > 0){
+            		PhraseType[] phraseTag = textTag.getPhraseArray();
+                	
+                	this.result = new String[phraseTag.length][2];        	
+                	for(int i = 0; i < phraseTag.length; i++){
+                		this.result[i][0] = phraseTag[i].getIds().trim();
+                		this.result[i][1] = phraseTag[i].getStringValue().trim();	
                 	}
+            	}  
+            	else{
+            		JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Parsing.Empty.Message"),
+        					Messages.getString("Paraphrasing.Webservice.Parsing.Empty.Title"), JOptionPane.INFORMATION_MESSAGE);
             	}
         	}
-        	
-//    	}
-//    	catch(Exception ex){
-//    		JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Parsing.Error.Message"),
-//					Messages.getString("Paraphrasing.Webservice.Parsing.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
-//    	}
-    	
+    	}    	
     }
 }
