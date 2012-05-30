@@ -504,6 +504,22 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
 		}
 		return result;
 	}
+	
+	/**
+	 * Determine whether an element is a root node (no incoming connections)
+	 * @return true if element is a root node, false otherwise
+	 */
+	public boolean isRoot() {
+		boolean result = true;
+		Iterator<ModelElementContainer> ownerIterator = getOwningContainers().iterator();
+		while (ownerIterator.hasNext()) {
+			ModelElementContainer currentContainer = ownerIterator.next();
+			Map<String, AbstractPetriNetElementModel> sourceElements = currentContainer.getSourceElements(getId());
+			if (sourceElements.size()>0)
+				result = false;
+		}
+		return result;
+	}
 
 	/**
 	 * While the actual implementation is node-type specific, we have a common definition of what active means for
