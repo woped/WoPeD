@@ -1,7 +1,5 @@
 package org.woped.qualanalysis.paraphrasing.action;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -23,7 +21,7 @@ import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
 import org.woped.translations.Messages;
 
 
-public class SelectionListener implements MouseListener, KeyListener, ActionListener {
+public class SelectionListener implements MouseListener, KeyListener {
 	
 	private JTable table = null;
 	private IEditor editor = null;
@@ -174,7 +172,7 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 
 			}
 			else if(object instanceof ArcModel){
-				this.table.clearSelection();
+				clearAllHighlighting();
 			}
 			else{
 				clearAllHighlighting();
@@ -379,22 +377,6 @@ public class SelectionListener implements MouseListener, KeyListener, ActionList
 			this.paraphrasingOutput.getParaphrasingPanel().enableEditButtons(true);
 		}
 	}
-
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == this.paraphrasingOutput.getParaphrasingPanel().getPropertiesItem()){
-			int row = this.table.getSelectedRow();
-			if(row != -1){
-				new TextualDescriptionDialog(this.editor, this.table, this.defaultTableModel, "edit", row);
-				this.table.setRowSelectionInterval(row-1,row-1);
-			}
-		}
-		
-		
-	}
-
-
 	
 }
 

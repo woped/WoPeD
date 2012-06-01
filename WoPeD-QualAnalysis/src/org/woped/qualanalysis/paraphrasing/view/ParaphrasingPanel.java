@@ -52,22 +52,7 @@ public class ParaphrasingPanel extends JPanel{
 		buttonPanel.add(getUpButton());
 		buttonPanel.add(getDownButton());
 		buttonPanel.add(getExportButton());
-		
-				
-		menuAdd = new JMenuItem("Add", Messages.getImageIcon("Paraphrasing.Add"));
-		menuDelete = new JMenuItem("Delete", Messages.getImageIcon("Paraphrasing.Delete"));
-		menuUp = new JMenuItem("Up", Messages.getImageIcon("Paraphrasing.Up"));
-		menuDown = new JMenuItem("Down", Messages.getImageIcon("Paraphrasing.Down"));
-		menuProperties = new JMenuItem("Properties", Messages.getImageIcon("Popup.Properties"));
-		
-		ButtonListener btnListener = new ButtonListener(this);
-		this.menuAdd.addActionListener(btnListener);
-		this.menuDelete.addActionListener(btnListener);
-		this.menuUp.addActionListener(btnListener);
-		this.menuDown.addActionListener(btnListener);
-		
-		this.menuProperties.addActionListener(new SelectionListener(this.paraphrasingOutput));
-		
+
 		this.add(buttonPanel, BorderLayout.NORTH);
 		this.add(this.paraphrasingOutput.getMainPanel(), BorderLayout.CENTER);
 	}
@@ -226,25 +211,45 @@ public class ParaphrasingPanel extends JPanel{
 	
 	
 	public JMenuItem getAddItem(){
-		return this.menuAdd;
+		if (menuAdd == null){
+			menuAdd = new JMenuItem("Add", Messages.getImageIcon("Paraphrasing.Add"));	
+			this.menuAdd.addActionListener(new ButtonListener(this));					
+		}
+		return menuAdd;
 	}
 	
 	public JMenuItem getDeleteItem(){
-		return this.menuDelete;
+		if (menuDelete == null){
+			menuDelete = new JMenuItem("Delete", Messages.getImageIcon("Paraphrasing.Delete"));
+			menuDelete.addActionListener(new ButtonListener(this));
+		}
+		return menuDelete;
 	}
 	
 	
 	public JMenuItem getUpItem(){
-		return this.menuUp;
+		if (menuUp == null){
+			menuUp = new JMenuItem("Up", Messages.getImageIcon("Paraphrasing.Up"));
+			menuUp.addActionListener(new ButtonListener(this));
+		}
+		return menuUp;
 	}
 	
 	
 	public JMenuItem getDownItem(){
-		return this.menuDown;
+		if (menuDown == null){
+			menuDown = new JMenuItem("Down", Messages.getImageIcon("Paraphrasing.Down"));
+			menuDown.addActionListener(new ButtonListener(this));
+		}
+		return menuDown;
 	}
 	
 	public JMenuItem getPropertiesItem(){
-		return this.menuProperties;
+		if (menuProperties == null){
+			menuProperties = new JMenuItem("Properties", Messages.getImageIcon("Popup.Properties"));
+			menuProperties.addActionListener(new ButtonListener(this));
+		}
+		return menuProperties;
 	}
 
 }

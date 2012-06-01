@@ -82,7 +82,7 @@ public class ButtonListener implements ActionListener{
 			}
 		}
 		
-		//Delete Button
+		//Delete Button or Delete JMenuItem
 		if(e.getSource() == this.paraphrasingPanel.getDeleteButton() || e.getSource() == this.paraphrasingPanel.getDeleteItem()){
 			int selectedRow = this.table.getSelectedRow();
 			if(selectedRow != -1){
@@ -104,7 +104,7 @@ public class ButtonListener implements ActionListener{
 		}
 		
 		
-		//Add Button
+		//Add Button or Add JMenuItem
 		if(e.getSource() == this.paraphrasingPanel.getAddButton() || e.getSource() == this.paraphrasingPanel.getAddItem()){
 
 			clearAllHighlighting();
@@ -113,7 +113,7 @@ public class ButtonListener implements ActionListener{
 		}
 		
 		
-		//Up Button
+		//Up Button or Up JMenuItem
 		if(e.getSource() == this.paraphrasingPanel.getUpButton() || e.getSource() == this.paraphrasingPanel.getUpItem()){
 			int selectedRow = this.paraphrasingPanel.getParaphrasingOutput().getTable().getSelectedRow();
 			if(selectedRow != -1){
@@ -131,7 +131,7 @@ public class ButtonListener implements ActionListener{
 			}
 		}
 		
-		//Down Button
+		//Down Button or Down JMenuItem
 		if(e.getSource() == this.paraphrasingPanel.getDownButton()  || e.getSource() == this.paraphrasingPanel.getDownItem()){
 			int selectedRow = this.table.getSelectedRow();
 			if(selectedRow != -1){
@@ -215,7 +215,16 @@ public class ButtonListener implements ActionListener{
 			else{
 				JOptionPane.showMessageDialog(null,Messages.getString("Paraphrasing.Export.Numberelements.Message"),Messages.getString("Paraphrasing.Export.Numberelements.Title"), JOptionPane.INFORMATION_MESSAGE);
 			}	
-		}		
+		}
+		
+		//Properties JMenuItem
+		if(e.getSource() == this.paraphrasingPanel.getPropertiesItem()){
+			int selectedRow = this.table.getSelectedRow();
+			if(selectedRow != -1){
+				new TextualDescriptionDialog(this.editor, this.table, this.defaultTableModel, "edit", selectedRow);
+				this.table.setRowSelectionInterval(selectedRow,selectedRow);
+			}
+		}
 	}
 	
 	private void clearAllHighlighting(){
