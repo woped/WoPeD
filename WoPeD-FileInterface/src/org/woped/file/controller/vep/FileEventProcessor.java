@@ -842,11 +842,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		
 		try {
 			is = aao.getPNML(aImp.getElement()).getInputStream();
-			// TESTCODE
-            File a = new File("C:\\aprotest.pnml");
-            InputStream c = new FileInputStream(a);
-            is = c;
-            // END OF TESTCODE
             loadSuccess = pr.run(is);
             		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
@@ -930,15 +925,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
                         	 succeed = true;
                         editor.setSaved(true);
                          } 
-                        // TESTCODE
-                        else succeed = true;
-                        try {
-							Thread.sleep(4000);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-                        // TESTCODE END	 
 
 					} 
 		getMediator().getUi().getComponent()
