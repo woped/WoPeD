@@ -159,10 +159,6 @@ public class NewVariableDialog extends JDialog {
 		return "" + this.VariableName.getText();
 	}
 
-	public String getType() {
-		return "" + this.variableTypesComboBox.getSelectedItem().toString();
-	}
-
 	public TransitionPropertyEditor getTransitionPropertyEditor() {
 		return this._editor;
 	}
