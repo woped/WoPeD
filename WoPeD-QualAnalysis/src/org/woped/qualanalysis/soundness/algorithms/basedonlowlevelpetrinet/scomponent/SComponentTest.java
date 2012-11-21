@@ -17,8 +17,7 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  *
  */
-@SuppressWarnings("unchecked")
-public class SComponentTest extends AbstractLowLevelPetriNetTest implements ISComponentTest {
+ public class SComponentTest extends AbstractLowLevelPetriNetTest implements ISComponentTest {
 	
     private Set<Set<AbstractNode>> sComponents;
     private HashSet<PlaceNode> uncoveredPlaces;

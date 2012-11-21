@@ -20,11 +20,12 @@
  * For contact information please visit http://woped.dhbw-karlsruhe.de
  *
  */
-package org.woped.qualanalysis.simulation.controller;
+package org.woped.qualanalysis.simulation;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.beans.PropertyChangeSupport;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -71,7 +72,7 @@ import org.woped.qualanalysis.soundness.marking.IMarking;
  *         If you have set the the <code>PetriNet</code> and the <code>WoPeDJGraph</code> with the Constructor you have to call
  *         <code>disableVisualTokenGame()</code>.<br>
  * 
- *         Created on 21.09.2004 Last Change on 13.10.2004
+ *         Created on 21.09.2004
  */
 public class TokenGameController implements ITokenGameController {
 
@@ -83,12 +84,12 @@ public class TokenGameController implements ITokenGameController {
     // ! (Visual token game only!)
     private Set<PlaceModel> sinkPlaces = null;
     private MouseHandler tokenGameMouseHandler = null;
-    private boolean visualTokenGame = false;
     private IEditor thisEditor = null;
     private ReferenceProvider ParentControl = null;
-    private TokenGameBarController RemoteControl = null;
+    private TokenGameSession RemoteControl = null;
     
-	private boolean stepIntoSubProcess = false;
+    private PropertyChangeSupport m_propertyChangeSupport = null;
+    private TokenGameStats oldState = null;
 
     /**
      * Constructor for the model and visual sided TokenGame.
@@ -96,11 +97,11 @@ public class TokenGameController implements ITokenGameController {
      * @param petrinet
      * @param graph
      */
-    public TokenGameController(IEditor thisEditor) {
+    public TokenGameController(IEditor thisEditor, PropertyChangeSupport propertyChangeSupport) {
         this.petrinet = (PetriNetModelProcessor) thisEditor.getModelProcessor();
         this.graph = thisEditor.getGraph();
         this.thisEditor = thisEditor;
-        setVisualTokenGame(graph != null);
+        this.m_propertyChangeSupport = propertyChangeSupport;
         tokenGameMouseHandler = new MouseHandler();
 
     }
@@ -111,22 +112,10 @@ public class TokenGameController implements ITokenGameController {
      * 
      * @return TokenGameBarController instance or null if the token game is not active
      */
-    public TokenGameBarController getRemoteControl() {
+    public TokenGameSession getRemoteControl() {
 		return RemoteControl;
 	}
-        
-    /**
-     * Constructor for the model sided TokenGame.
-     * 
-     * @param petrinet
-     */
-    public TokenGameController(PetriNetModelProcessor petrinet) {
-        this.petrinet = petrinet;
-        this.graph = null;
-        this.thisEditor = null;
-        setVisualTokenGame(false);
-        tokenGameMouseHandler = new MouseHandler();
-    }
+
 
     /* ###################### Controller Methods ###################### */
 
@@ -152,7 +141,6 @@ public class TokenGameController implements ITokenGameController {
             allTransitions
                     .putAll(getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
             // Find and show active Transitions/Arcs
-            RemoteControl.cleanupTransition();
             checkNet();
         } else {
             // remove highlighting from RG in Editor
@@ -161,7 +149,11 @@ public class TokenGameController implements ITokenGameController {
             if (RemoteControl != null) {
                 RemoteControl.addControlElements();
             } else {
-                RemoteControl = new TokenGameBarController(this, petrinet);
+            	// A session spans across all the sub processes of a workflow.
+            	// While associated with one net (and thus one token game controller) at a time,
+            	// it can be associated to multiple token game controllers throughout its lifetime.
+            	// Note that we preserve history inside a token game session
+                RemoteControl = new TokenGameSession(this, petrinet);
             }
 
             // Storing Transition Reference (simple and operator)
@@ -172,11 +164,10 @@ public class TokenGameController implements ITokenGameController {
             allTransitions
                     .putAll(getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
 
+            // Find and show active Transitions/Arcs
+            checkNet();
+            
         }
-        ReferenceProvider refer = new ReferenceProvider();
-        refer.getUIReference().setFirstTransitionActive();        
-        // set first transition active
-        RemoteControl.startPlayback();
         
     }
 
@@ -192,13 +183,8 @@ public class TokenGameController implements ITokenGameController {
         // restore origin tokencount
         resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
         // disable visualTokenGame
-        if (isVisualTokenGame()) {
-            disableVisualTokenGame();
-        }
+        disableVisualTokenGame();
         // animator.stop();
-
-        // Hide and remove Tokengame Remote-Control
-        RemoteControl.removeControlElements();
     }
 
     private void deHighlightRG() {
@@ -240,8 +226,6 @@ public class TokenGameController implements ITokenGameController {
      * Enables the visual TokenGame.
      */
     public void enableVisualTokenGame() {
-        this.visualTokenGame = true;
-
         // disable editor access
         thisEditor.setReadOnly(false);
         getGraph().enableMarqueehandler(false);
@@ -285,21 +269,31 @@ public class TokenGameController implements ITokenGameController {
     /*
 	 *  
 	 */
-    private void checkNet() {
+    public void checkNet() {
+    	TokenGameStats newState = new TokenGameStats();
+    	
+        RemoteControl.cleanupTransition();
+    	
         long begin = System.currentTimeMillis();
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "TokenGame: CHECK NET");
         Iterator<String> transIter = allTransitions.keySet().iterator();
-        RemoteControl.disableStepDown(); // Disables the stepDown-Navigation button
         resetArcStatus();
         // Iterate over all Transitions
         while (transIter.hasNext()) {
-            checkTransition((TransitionModel) allTransitions.get(transIter.next()));
+            checkTransition((TransitionModel) allTransitions.get(transIter.next()), newState);
         }
 
+        newState.hasHistory = (RemoteControl.getNumHistoryItems() > 0);
+        newState.inSubprocess = this.thisEditor.isSubprocessEditor();
+        newState.autoPlayMode = this.RemoteControl.getAutoPlayBack();
+        newState.autoPlayPlaying = this.RemoteControl.getAutoPlayBackPlaying();
+        
+		m_propertyChangeSupport.firePropertyChange("TokenGameState", 
+				this.oldState, newState);        
+        
         getGraph().updateUI();
         RemoteControl.fillChoiceBox(); // Fills the Choicebox with the active Transitions that have been encountered through checkTransition()
         // Check if there is a transition to choose in SlimChoiceBox
-        RemoteControl.checkSlimChoiceBox();
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "           ... DONE ("
                 + (System.currentTimeMillis() - begin) + " ms)");
         setMarkingInRG((BuilderFactory.createCurrentMarking(BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(
@@ -326,7 +320,7 @@ public class TokenGameController implements ITokenGameController {
     /*
      * Will check transitions if they have to be activated or not
      */
-    private void checkTransition(TransitionModel transition) {
+    private void checkTransition(TransitionModel transition, TokenGameStats tokenGameStats) {
         Map<String, ArcModel> incomingArcs = getPetriNet().getElementContainer().getIncomingArcs(transition.getId());
 
         Map<String, Object> outgoingArcs = getPetriNet().getElementContainer().getOutgoingArcs(transition.getId());
@@ -339,9 +333,10 @@ public class TokenGameController implements ITokenGameController {
                 // This will add all currently active postSet Transitions to the TokenGameBarVC-Autochoice-List
 
                 RemoteControl.addFollowingItem(transition);
+                tokenGameStats.numActiveTransitions++;   
 
                 if (transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
-                    RemoteControl.enableStepDown(transition); // Enables Step-Down Navigation Button
+                    tokenGameStats.numActiveSubprocesses++;   
                 }
             }
         } else
@@ -353,6 +348,7 @@ public class TokenGameController implements ITokenGameController {
                     if (transition.isActivated()) {
                         // This will add the AND-X-Transition to the OccurenceList
                         RemoteControl.addFollowingItem(transition);
+                        tokenGameStats.numActiveTransitions++;                                                        
                     }
 
                 } else
@@ -379,6 +375,7 @@ public class TokenGameController implements ITokenGameController {
                                 XorName = transition.getNameValue() + " -> (" + helpPlace.getNameValue() + ")";
                                 virtualTransition.setNameValue(XorName);
                                 RemoteControl.addFollowingItem(virtualTransition);
+                                tokenGameStats.numActiveTransitions++;                                                                
                                 virtualTransition = null;
                                 XorName = "";
                             }
@@ -413,6 +410,7 @@ public class TokenGameController implements ITokenGameController {
                                         XorName = "(" + helpPlace.getNameValue() + ")-> " + transition.getNameValue();
                                         virtualTransition.setNameValue(XorName);
                                         RemoteControl.addFollowingItem(virtualTransition);
+                                        tokenGameStats.numActiveTransitions++;                                                                        
                                         virtualTransition = null;
                                         XorName = "";
                                     }
@@ -447,7 +445,8 @@ public class TokenGameController implements ITokenGameController {
                                                 getPetriNet().getElementContainer().getArcById(ID).getTargetId());
                                         XorName = transition.getNameValue() + " -> (" + helpPlace.getNameValue() + ")";
                                         virtualTransition.setNameValue(XorName);
-                                        RemoteControl.addFollowingItem(virtualTransition);
+                                        RemoteControl.addFollowingItem(virtualTransition);                                        
+                                        tokenGameStats.numActiveTransitions++;                                                                        
                                         virtualTransition = null;
                                         XorName = "";
                                     }
@@ -483,20 +482,46 @@ public class TokenGameController implements ITokenGameController {
                                             XorName = "(" + helpPlace.getNameValue() + ")-> "
                                                     + transition.getNameValue();
                                             virtualTransition.setNameValue(XorName);
-                                            RemoteControl.addFollowingItem(virtualTransition);
+                                            RemoteControl.addFollowingItem(virtualTransition);                                            
+                                            tokenGameStats.numActiveTransitions++;                                                                            
                                             virtualTransition = null;
                                             XorName = "";
                                         }
                                     }
                                 }
                             }
-            }
+            }        
     }
-
+    
     /*
      * Handles a click on any Transition in any state
-     */
+     */    
     private void transitionClicked(TransitionModel transition, MouseEvent e) {
+    	boolean stepInto = false;    	
+    	if (transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+    		if (e != null) {
+    			int relativeX = 0;
+    			int relativeY = 0;
+    			if (e != null) {
+    				relativeX = e.getX() - transition.getX();
+    				relativeY = e.getY() - transition.getY();
+    			}
+    			// the lower left half of the transition will trigger 'step into'
+
+    			if (relativeY >= relativeX)
+    				stepInto = true;
+    		}
+    	}
+    	occurTransition(transition, stepInto);
+    }    	
+
+    /**
+     * Occur the specified transition
+     * @param transition Transition to occur
+     * @param stepInto   true if we should step into a subprocess rather
+     *                   than stepping over it
+     */
+    private void occurTransition(TransitionModel transition, boolean stepInto) {
         if (transition.isActivated()) {
             // Remember whether we actually did something here
             // and only deactivate the transition after a *successful* click
@@ -509,22 +534,11 @@ public class TokenGameController implements ITokenGameController {
                 receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
                 sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
                 if (transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
-                    if ((e != null) || (stepIntoSubProcess)) {
-                        int relativeX = 0;
-                        int relativeY = 0;
-                        if (e != null) {
-                            relativeX = e.getX() - transition.getX();
-                            relativeY = e.getY() - transition.getY();
-                        }
-                        // the lower left half of the transition will trigger 'step into'
-                        if ((relativeY >= relativeX) || (stepIntoSubProcess)) {
-                            // Step into sub-process and process it in a new modal editor
-                            // dialog in token-game mode
-                            ParentControl = new ReferenceProvider();
-                            ParentControl.setRemoteControlReference(RemoteControl);
-                            thisEditor.openTokenGameSubProcess((SubProcessModel) transition);
-                        }
-                    }
+                	if (stepInto) {
+                		// Step into sub-process and process it in a new modal editor
+                		// dialog in token-game mode
+                		this.openSubProcess((SubProcessModel) transition);
+                	}
                 }
                 actionPerformed = true;
 
@@ -564,17 +578,7 @@ public class TokenGameController implements ITokenGameController {
 
                 // Track the "walked way"
                 RemoteControl.addHistoryItem(transition);
-                if (RemoteControl.isRecordSelected()) {
-                    // Track the way in the history-box
-                    RemoteControl.addHistoryListItem(transition);
-                }
-                if (stepIntoSubProcess) {
-                    setStepIntoSubProcess(false);
-                } else {
-                    RemoteControl.cleanupTransition();
-                    checkNet();
-                }
-
+                checkNet();
             }
         }
     }
@@ -653,13 +657,8 @@ public class TokenGameController implements ITokenGameController {
                 helpTransitionReference = RemoteControl.getFollowingActivatedTransitions().get(i);
                 if (arc.getId().equals(helpTransitionReference.getId())) {
                     RemoteControl.addHistoryItem(helpTransitionReference);
-                    if (RemoteControl.isRecordSelected()) {
-                        // Track the way in the history
-                        RemoteControl.addHistoryListItem(helpTransitionReference);
-                    }
                 }
             }
-            RemoteControl.cleanupTransition();
             checkNet();
 
         }
@@ -676,6 +675,7 @@ public class TokenGameController implements ITokenGameController {
         // Either transition or arc has to be null
         // Remember whether we actually did something here
         // and only deactivate the transition after a *successful* click
+    	
         boolean actionPerformed = false;
         if (transition != null) {
             receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
@@ -725,9 +725,6 @@ public class TokenGameController implements ITokenGameController {
             // transitions and activating them
             // if their input conditions are fulfilled
             // This will also trigger a redraw
-            // Cleans up the RemoteControl. Needed to make sure that in-Editor-click and Remote-click work properly
-            RemoteControl.cleanupTransition();
-            RemoteControl.clearChoiceBox();
             checkNet();
         }
     }
@@ -915,23 +912,6 @@ public class TokenGameController implements ITokenGameController {
      * ################################### Getter & Setter ########################################
      */
 
-    /**
-     * Returns if the visual TokenGame is enabled.
-     * 
-     * @return Returns the visualTokenGame.
-     */
-    public boolean isVisualTokenGame() {
-        return visualTokenGame;
-    }
-
-    /*
-     * use with caution. does not affect the TokenGame Controlling directly. Just for setting the initial variable value. @param visualTokenGame The
-     * visualTokenGame to set.
-     */
-    private void setVisualTokenGame(boolean visualTokenGame) {
-        this.visualTokenGame = visualTokenGame;
-    }
-
     /*
      * @return Returns the graph.
      */
@@ -978,9 +958,6 @@ public class TokenGameController implements ITokenGameController {
 		 *  
 		 */
         public void mouseReleased(MouseEvent e) {
-            if (RemoteControl.playbackRunning()) {
-                return;
-            }
             Vector<Object> allCells = getGraph().getAllCellsForLocation(e.getPoint().x, e.getPoint().y);
             TransitionModel transition = findTransitionInCell(allCells);
             PlaceModel place = findPlaceInCell(allCells);
@@ -1053,9 +1030,12 @@ public class TokenGameController implements ITokenGameController {
     /**
      * will be called by TokenGameBarVC to let active transitions occur
      * 
-     * @param transition
+     * @param transition Specifies the transition to occur
+     * @param BackWard   True if we should step backwards
+     * @param stepInto   True if we should step into sub processes we find
      */
-    public void occurTransitionbyTokenGameBarVC(TransitionModel transition, boolean BackWard) {
+    public void occurTransitionbyTokenGameBarVC(TransitionModel transition, 
+    		boolean BackWard, boolean stepInto) {
         char checkA = transition.getId().charAt(0);
         if (checkA == 'a') {
             if (BackWard) {
@@ -1063,23 +1043,23 @@ public class TokenGameController implements ITokenGameController {
             } else {
                 arcClicked(getPetriNet().getElementContainer().getArcById(transition.getId()));
             }
-        } else
-            if (checkA == 'S') {
-                thisEditor.openTokenGameSubProcess((SubProcessModel) transition);
-            } else {
-                if (BackWard) {
-                    backwardItem(transition, null);
-                } else {
-                    transitionClicked(transition, null);
-                }
-            }
+        } else {
+        	if (BackWard)
+        		backwardItem(transition, null);
+        	else
+        		// When triggered from the toolbar, step into sub process
+        		occurTransition(transition, stepInto);
+        }
     }
-
+    
     /**
-     * method to call private checkNet() method from TokenGameBar
+     * Open an new sub process window based on the 
+     * specified sub process transition
      */
-    public void tokenGameCheckNet() {
-        checkNet();
+    private void openSubProcess(SubProcessModel subProcess) {
+    	ParentControl = new ReferenceProvider();
+    	ParentControl.setRemoteControlReference(RemoteControl);            	
+        thisEditor.openTokenGameSubProcess(subProcess);
     }
 
     /**
@@ -1099,15 +1079,7 @@ public class TokenGameController implements ITokenGameController {
         resetTransitionStatus();
         resetArcStatus();
         resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
-        // getGraph().setPortsVisible(true);
-        getGraph().refreshNet();
-        getGraph().updateUI();
-    }
-
-    // If tokengamebar-user chooses to step into a subprocess
-    public void setStepIntoSubProcess(boolean step) {
-        stepIntoSubProcess = step;
-
+    	checkNet();    	
     }
 
     public IEditor getThisEditor() {

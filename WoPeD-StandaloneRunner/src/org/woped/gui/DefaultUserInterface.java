@@ -41,7 +41,8 @@ import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.controller.vc.StatusBarVC;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.gui.icons.logo_woped;
+import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.translations.Messages;
 
 @SuppressWarnings("serial")
@@ -53,7 +54,6 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     private StatusBarVC           statusBar              = null;
     private DefaultEditorFrame    frame                  = null;
     
-    private int                   m_numEditors           = 0;
     private List<IEditor>         editorList             = new ArrayList<IEditor>();
     
     //! Stores a list of internal frames that should stay in foreground
@@ -71,7 +71,8 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
         propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
         setIconImage(Messages.getImageIcon("Application").getImage());
-        setTitle("WoPeD Version " + Messages.getString("Application.Version"));
+        setTitle("WoPeD " + Messages.getString("Application.Version"));
+		setApplicationIcon(new logo_woped());
         setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(),
                 (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -126,7 +127,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     {
         if (editor != null)
         {
-        	frame = new DefaultEditorFrame((EditorVC) editor, new EditorOperations((EditorVC) editor), new EditorData(),new PetriNetResourceEditor((EditorVC) editor));
+        	frame = new DefaultEditorFrame((EditorVC) editor, new EditorOperations((IEditor) editor), new EditorData(),new PetriNetResourceEditor((EditorVC) editor));
             
             Point position = getNextEditorPosition();
             frame.setAlignmentX((float) position.getX());
@@ -143,10 +144,6 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
             
             editorList.add(frame.getEditor());
             ((EditorVC)frame.getEditor()).getEditorPanel().setContainer(frame);
-            // frame.setBounds((int) position.getX(), (int) position.getY(),
-            // (int) frame.getBounds().getWidth(), (int)
-            // frame.getBounds().getHeight());
-            m_numEditors++;
             frame.setVisible(true);
            
             // Notify MainFrame
@@ -180,7 +177,6 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     	((DefaultEditorFrame) ((EditorVC)editor).getEditorPanel().getContainer()).dispose();
     	editorList.remove(editor);
     	m_modalityStack.remove(((DefaultEditorFrame) ((EditorVC)editor).getEditorPanel().getContainer()));
-    	m_numEditors--;
     	// try to Select a different Frame
     	if (desktop.getAllFrames().length > 0)
     	{
@@ -483,20 +479,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     	// because we will change back to the original frame in an instant
     	boolean modalityFixed = FixModality();
     	if (!modalityFixed)
-    	{
     		getEditorFocus().fireViewEvent(new ViewEvent(getEditorFocus(), AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));
-
- /*   		if (!getEditorFocus().isSubprocessEditor()) {
-    			if (getEditorFocus().isTokenGameEnabled()) {
-    				switchToolBar(true);
-    			} else {
-    				switchToolBar(false);
-//    				getToolBar().addAnalysisButtons();
-    			}
-    		} else {
-    			return;
-    		} */
-    	}
 	}
 
     public void internalFrameClosed(InternalFrameEvent e)

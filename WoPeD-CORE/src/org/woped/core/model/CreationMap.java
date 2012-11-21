@@ -356,8 +356,7 @@ public class CreationMap extends HashMap<String, Object>
         put(UNKNOWN_TOOLSPEC, toolSpec);
     }
 
-    @SuppressWarnings("unchecked")
-	public void addUnknownToolSpec(Object toolSpec)
+    public void addUnknownToolSpec(Object toolSpec)
     {
         if (get(UNKNOWN_TOOLSPEC) == null) setUnknownToolSpec(new Vector<Object>());
         
@@ -428,7 +427,6 @@ public class CreationMap extends HashMap<String, Object>
         }
     }
 
-	@SuppressWarnings("unchecked")
 	public List<Object> getArcPoints()
     {
         if (containsKey(ARC_POINTS))

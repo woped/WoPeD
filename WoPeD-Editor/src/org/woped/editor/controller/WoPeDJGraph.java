@@ -42,7 +42,6 @@ import javax.swing.JToolTip;
 import org.jgraph.JGraph;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.BasicMarqueeHandler;
-import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.ParentMap;
 import org.jgraph.plaf.GraphUI;
@@ -75,7 +74,7 @@ public class WoPeDJGraph extends AbstractGraph
 	private int minPreferredHeight = 0; /// Minimal preferred height. Used to override the preferred height of the JGraph.
 	
 	
-    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, ViewFactory viewFactory)
+    public WoPeDJGraph(WoPeDJGraphGraphModel model, BasicMarqueeHandler editorMarquee, ViewFactory viewFactory)
     {
         this(model, editorMarquee, null, null, viewFactory);
     }
@@ -85,7 +84,7 @@ public class WoPeDJGraph extends AbstractGraph
      * 
      * @param model
      */
-    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, ViewFactory viewFactory)
+    public WoPeDJGraph(WoPeDJGraphGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, ViewFactory viewFactory)
     {
         this(model, editorMarquee, undoManager, null, viewFactory);
     }
@@ -95,7 +94,7 @@ public class WoPeDJGraph extends AbstractGraph
      * 
      * @param model
      */
-    public WoPeDJGraph(DefaultGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, GraphUI ui, ViewFactory viewFactory)
+    public WoPeDJGraph(WoPeDJGraphGraphModel model, BasicMarqueeHandler editorMarquee, WoPeDUndoManager undoManager, GraphUI ui, ViewFactory viewFactory)
     {
         super(model, editorMarquee, undoManager, viewFactory);
         if (ui != null) setUI(ui);
@@ -164,6 +163,9 @@ public class WoPeDJGraph extends AbstractGraph
      */
     public boolean isValidConnection(AbstractPetriNetElementModel sourceCell, AbstractPetriNetElementModel targetCell)
     {
+    	if ((sourceCell == null) || (targetCell == null))
+    		return false;
+    	
     	boolean result = false;
     	Set<Integer> destinations = connectionTypes.get(new Integer(sourceCell.getType()));
     	if (destinations!=null)

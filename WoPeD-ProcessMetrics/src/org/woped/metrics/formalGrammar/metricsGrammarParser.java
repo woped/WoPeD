@@ -132,8 +132,7 @@ public class metricsGrammarParser extends Parser {
         //Check if the Error-List is not empty and Syntax-Check is activated
         //(This is the fact if you have error which could be recovered)
         if((!ErrorList.getInstance().isEmpty()) && syntaxCheck){
-            @SuppressWarnings("unchecked")
-            ArrayList<CalculateFormulaException> errorList = 
+             ArrayList<CalculateFormulaException> errorList = 
              (ArrayList<CalculateFormulaException>)ErrorList.getInstance().getErrorList().clone();
      
             ErrorList.getInstance().clear();

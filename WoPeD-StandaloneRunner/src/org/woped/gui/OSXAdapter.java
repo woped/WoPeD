@@ -67,7 +67,7 @@
  * STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright å© 2003-2007 Apple, Inc., All Rights Reserved
+ * Copyright ï¿½ï¿½ 2003-2007 Apple, Inc., All Rights Reserved
  */
 package org.woped.gui;
 
@@ -85,10 +85,10 @@ import java.lang.reflect.*;
  * <p>
  * This class has been derived from <a
  * href="http://developer.apple.com/mac/library/samplecode/OSXAdapter/listing3.html"
- * >OSXAdapter 2.0 å© Apple Inc., All Rights Rserved</a>.
+ * >OSXAdapter 2.0 ï¿½ï¿½ Apple Inc., All Rights Rserved</a>.
  *
  * @author Werner Randelshofer
- * @version $Id: OSXAdapter.java,v 1.2 2012/03/10 19:41:11 dos4gw Exp $
+ * @version $Id: OSXAdapter.java,v 1.3 2012/11/21 19:28:33 dos4gw Exp $
  */
 public class OSXAdapter implements InvocationHandler {
 
@@ -238,14 +238,13 @@ public class OSXAdapter implements InvocationHandler {
      * {@code setHandler} creates a Proxy object from the passed
      * {@code OSXAdapter} and adds it as an {@code ApplicationListener}.
      */
-    @SuppressWarnings("unchecked")
     public static void setHandler(OSXAdapter adapter) {
         try {
-            Class applicationClass = Class.forName("com.apple.eawt.Application");
+            Class<?> applicationClass = Class.forName("com.apple.eawt.Application");
             if (macOSXApplication == null) {
                 macOSXApplication = applicationClass.getConstructor((Class[]) null).newInstance((Object[]) null);
             }
-            Class applicationListenerClass = Class.forName("com.apple.eawt.ApplicationListener");
+            Class<?> applicationListenerClass = Class.forName("com.apple.eawt.ApplicationListener");
             Method addListenerMethod = applicationClass.getDeclaredMethod("addApplicationListener", new Class[]{applicationListenerClass});
             // Create a proxy object around this handler that can be reflectively added as an Apple ApplicationListener
             Object osxAdapterProxy = Proxy.newProxyInstance(OSXAdapter.class.getClassLoader(), new Class[]{applicationListenerClass}, adapter);

@@ -117,21 +117,18 @@ public class EditorStatusBarVC extends JPanel implements Observer {
 		
 		// Saskia Kurz, Jan 2012
 		// net statistics have been removed from the status bar!
-		
-		String orientation = "";
-
 		// Saskia Kurz, Jan 2012
 		// adaption: depending on modeling direction the respective icon is added
 		
 		if (m_editor.isRotateSelected()) {
-			orientation = Messages.getString("Statusbar.Vertical");
+			Messages.getString("Statusbar.Vertical");
 			
 			// set icon for vertical direction
 			getModelingDirection().setIcon(Messages.getImageIcon("Button.Vertical"));
 			getModelingDirection().setText(Messages.getString("Button.Vertical.Title"));
 			
 		} else {
-			orientation = Messages.getString("Statusbar.Horizontal");
+			Messages.getString("Statusbar.Horizontal");
 			
 			// set icon for horizontal direction
 			getModelingDirection().setIcon(Messages.getImageIcon("Button.Horizontal"));

@@ -47,9 +47,9 @@ import org.woped.core.model.petrinet.TransitionModel;
 public class DefaultPropertiesDialog extends JDialog implements IEditorProperties
 {
 
-    private Object[]            m_selection;
-    private Hashtable<?, ?>           m_parameters;
-    private static final String TOKENS = "Tokens";
+    private Object[]            	m_selection;
+    private Hashtable<?, ?>         m_parameters;
+    private static final String 	TOKENS = "Tokens";
 
     /**
      * TODO: DOCUMENTATION (xraven)

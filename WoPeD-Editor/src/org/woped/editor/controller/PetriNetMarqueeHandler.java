@@ -41,6 +41,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractMarqueeHandler;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
@@ -49,7 +50,6 @@ import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.gui.PopupMenuPetrinet;
 import org.woped.editor.utilities.Cursors;
@@ -73,7 +73,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
      * 
      * @param editor
      */
-    public PetriNetMarqueeHandler(EditorVC editor, AbstractApplicationMediator mediator) {
+    public PetriNetMarqueeHandler(IEditor editor, AbstractApplicationMediator mediator) {
         super(editor);
         this.mediator = mediator;
     }
@@ -95,36 +95,24 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
         if (getGraph().getSelectionCell() instanceof NameModel)
          	getGraph().clearSelection();
 	    
-        if (SwingUtilities.isRightMouseButton(e)) {
+        if (SwingUtilities.isRightMouseButton(e) || e.getClickCount() == 2) {
  	        getEditor().setDrawingMode(false);
  	    }
                  
- 		if (getEditor().isDrawingMode() && firstPort == null) {
- 	        CreationMap map = CreationMap.createMap();
- 	        getEditor().setLastMousePosition(e.getPoint());
- 	        if (getEditor().getCreateElementType() > 100
- 	        		&& getEditor().getCreateElementType() < 110) {
- 	        	map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
- 	        	map.setOperatorType(getEditor().getCreateElementType());
- 	        	getEditor().create(map);
- 	        } else {
- 	        	map.setType(getEditor().getCreateElementType());
- 	        	getEditor().create(map);
- 	        }
- 		}
- 		
         super.mousePressed(e);
     }
 
     /**
      * The mouseDragged method is messaged repeatedly, before the mouseReleased method is invoked. 
-     * The method is used to provide the livepreview, that is, to
+     * The method is used to provide the live preview, that is, to
      * draw a line between the source and target port for visual feedback.
      * 
      * @see BasicMarqueeHandler#mouseDragged(java.awt.event.MouseEvent)
      */
     @Override
     public void mouseDragged(MouseEvent e) {
+    	
+    	getEditor().setDrawingMode(false);
          // If remembered Start Point is Valid
         if (start != null && !e.isConsumed()) {
             Dimension graphSize = getGraph().getSize();
@@ -175,119 +163,150 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
      * 
      * @see BasicMarqueeHandler#mouseReleased(java.awt.event.MouseEvent)s
      */
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        Object object;
-    	
-    	// Undo setting of minimum preferred size during mouse dragging so that JGraph can return its newly calculated values
-        getGraph().setMinPreferredWidth(0);
-        getGraph().setMinPreferredHeight(0);
+	@Override
+	public void mouseReleased(MouseEvent e) {
 
-        if (e != null)
-        {
-            // Scale From Screen to Model
-            getEditor().setLastMousePosition(e.getPoint());
-            getGraph().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));            
-            object = getGraph().getFirstCellForLocation(e.getX(), e.getY());
-            
-            if (object != null)
-        		getGraph().setSelectionCell(object);
+		if (e == null)
+			return;
 
-            if (SwingUtilities.isRightMouseButton(e)) {
-            	
-               if (!getEditor().isDrawingMode()) {
-                    VisualController.getInstance().setArcpointSelection(isArcPoint(e));
-                   	e.consume();
-                    PopupMenuPetrinet.setMediator(mediator);
-                	PopupMenuPetrinet.getInstance().show(object, getGraph(), 
-                										 		(int)(getEditor().getLastMousePosition().getX()), 
-                										 		(int)(getEditor().getLastMousePosition().getY()));   
-                }
-            } 
-            else
-                 if (e.getClickCount() == 2) {
-                	while (object instanceof GroupModel) {
-                		object = ((GroupModel)object).getMainElement();
-                	}               	
-                	if (object instanceof SubProcessModel)
-                		getEditor().fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, 
-                				AbstractViewEvent.OPEN_SUBPROCESS));
-                	else {
-                		getEditor().setLastMousePosition(e.getPoint());
-                		getEditor().fireViewEvent(new EditorViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_EDIT, 
-                				AbstractViewEvent.OPEN_PROPERTIES));
-                		
-                	}
-                } 
-                else 
-                {
-                    if (ConfigurationManager.getConfiguration().isSmartEditing() && port == null && firstPort != null
-                            && firstPort != port) {
-                        CreationMap[] maps = new CreationMap[2];
-                        boolean allowConnection = true;
-                        Object element = ((firstPort != null) ? ((DefaultPort) firstPort.getCell()).getParent() : null);
-                        if (element instanceof AbstractPetriNetElementModel) {
-                            allowConnection = ((AbstractPetriNetElementModel) element).getAllowOutgoingConnections();
-                        }
-                        if (allowConnection) {
-                            DefaultPort source = (DefaultPort) firstPort.getCell();
-                            CreationMap map = CreationMap.createMap();
-                            if (source.getParent() instanceof TransitionModel) {
-                                map.setType(AbstractPetriNetElementModel.PLACE_TYPE);
-                                map.setId(getEditor().getModelProcessor().getNewElementId(map.getType()));
-                                maps[0] = map;
-                             } else {
-                                if (source.getParent() instanceof PlaceModel) {
-                                    map.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
-                                    map.setId(getEditor().getModelProcessor().getNewElementId(map.getType()));
-                                    maps[0] = map;
-                                }
-                             }
-                            
-                             String targetId = map.getId();
-                             map = CreationMap.createMap();
-                             map.setArcSourceId(((AbstractPetriNetElementModel) (source).getParent()).getId());
-                             map.setArcTargetId(targetId);
-                             maps[1] = map;
-                         }
-                        
-                        GraphCell[] result = getEditor().createAll(maps);
-                        getGraph().startEditingAtCell(result[0]);
- //                       getEditor().setDrawingMode(false);
-                    }
-                    else
-                        // If Valid Event, Current and First Port
-                        if (e != null && !e.isConsumed() && port != null && firstPort != null && firstPort != port) {
-                            // Fetch the Underlying Source Port
-                            Port source = (Port) firstPort.getCell();
-                            // Fetch the Underlying Target Port
-                            Port target = (Port) port.getCell();
-                            
-                            // CHECK if connection is valid
-                            CreationMap map = CreationMap.createMap();
-                            map.setArcSourceId(((AbstractPetriNetElementModel) ((DefaultPort) source).getParent()).getId());
-                            map.setArcTargetId(((AbstractPetriNetElementModel) ((DefaultPort) target).getParent()).getId());
-                            getEditor().create(map);
-                            e.consume();
-                        }
-                    
-                    if (getGraph().getFirstCellForLocation(e.getX(), e.getY()) instanceof ArcModel /*&& e.isShiftDown()*/) {
-                        getEditor().setLastMousePosition(e.getPoint());
-                        getEditor().addPointToSelectedArc();
-                    }
+		// Undo setting of minimum preferred size during mouse dragging 
+		getGraph().setMinPreferredWidth(0);
+		getGraph().setMinPreferredHeight(0);
+		getEditor().setLastMousePosition(e.getPoint());
 
-                    super.mouseReleased(e);
-                    e.consume();
-                    getGraph().repaint();
-                } 
-            
-            // Reset Global Vars
-            firstPort = port = null;
-            start = current = null;
-        }
+		// If in drawing mode, create new node at current position
+		if (getEditor().isDrawingMode() && firstPort == null) {
+			CreationMap map = CreationMap.createMap();
+			if (getEditor().getCreateElementType() > 100 && getEditor().getCreateElementType() < 110) {
+				map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
+				map.setOperatorType(getEditor().getCreateElementType());
+				getEditor().create(map);
+			} 
+			else {
+				map.setType(getEditor().getCreateElementType());
+				getEditor().create(map);
+			}
+			
+			return;
+		}
 
-        getGraph().setCursor(Cursor.getDefaultCursor());
-    }
+		// Set normal cursor and determine current position of mouse click
+		getGraph().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		Object currentCell = getGraph().getFirstCellForLocation(e.getX(), e.getY());
+		
+		// Set selection to object under cursor unless group selection is active
+		if (currentCell != null && getGraph().getSelectionCount() <= 1)
+			getGraph().setSelectionCell(currentCell);
+
+		// Handle right mouse button behaviour
+		if (SwingUtilities.isRightMouseButton(e)) {
+
+			if (!getEditor().isDrawingMode()) {
+				VisualController.getInstance().setArcpointSelection(isArcPoint(e));
+				e.consume();
+				PopupMenuPetrinet.setMediator(mediator);
+				PopupMenuPetrinet.getInstance().show(currentCell, getGraph(),
+						(int) (getEditor().getLastMousePosition().getX()),
+						(int) (getEditor().getLastMousePosition().getY()));
+			}
+			return;
+		} 
+		else {
+			if (e.getClickCount() == 2) {
+				// Handle single left mouse double click behaviour
+				while (currentCell instanceof GroupModel) {
+					currentCell = ((GroupModel) currentCell).getMainElement();
+				}
+			
+				// Double click on subprocess element opens subprocess editor
+				if (currentCell instanceof SubProcessModel) {
+					getEditor().fireViewEvent(
+						new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, 
+											AbstractViewEvent.OPEN_SUBPROCESS));
+				}
+				// Double click on normal element opens property dialog
+				else {
+					getEditor().setLastMousePosition(e.getPoint());
+					getEditor().fireViewEvent(
+						new EditorViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_EDIT, 
+												  AbstractViewEvent.OPEN_PROPERTIES));
+
+				}
+			} 
+			else {
+				// Handle single left mouse button click behaviour
+				if (ConfigurationManager.getConfiguration().isSmartEditing()
+						&& port == null && firstPort != null && firstPort != port) {
+					// Smart editing is enabled, i. e. create elements on the fly
+					CreationMap[] maps = new CreationMap[2];
+					boolean allowConnection = true;
+					Object element = ((firstPort != null) ? ((DefaultPort) firstPort.getCell()).getParent() : null);
+					
+					if (element instanceof AbstractPetriNetElementModel) {
+						allowConnection = ((AbstractPetriNetElementModel) element).getAllowOutgoingConnections();
+					}
+					
+					// Check if connection is between valid nodes
+					if (allowConnection) {
+						DefaultPort source = (DefaultPort) firstPort.getCell();
+						CreationMap map = CreationMap.createMap();
+						if (source.getParent() instanceof TransitionModel) {
+							map.setType(AbstractPetriNetElementModel.PLACE_TYPE);
+							map.setId(getEditor().getModelProcessor().getNewElementId(map.getType()));
+							maps[0] = map;
+						} 
+						else {
+							if (source.getParent() instanceof PlaceModel) {
+								map.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+								map.setId(getEditor().getModelProcessor().getNewElementId(map.getType()));
+								maps[0] = map;
+							}
+						}
+
+						String targetId = map.getId();
+						map = CreationMap.createMap();
+						map.setArcSourceId(((AbstractPetriNetElementModel) (source).getParent()).getId());
+						map.setArcTargetId(targetId);
+						maps[1] = map;
+					}
+
+					GraphCell[] result = getEditor().createAll(maps);
+					getGraph().startEditingAtCell(result[0]);
+				} 
+				else {
+					// No smart editing, just draw connections
+					if (e != null && !e.isConsumed() && port != null && firstPort != null && firstPort != port) {
+						// Fetch the underlying source and target port
+						Port source = (Port) firstPort.getCell();
+						Port target = (Port) port.getCell();
+
+						// Check if connection is valid
+						CreationMap map = CreationMap.createMap();
+						map.setArcSourceId(((AbstractPetriNetElementModel) ((DefaultPort) source).getParent()).getId());
+						map.setArcTargetId(((AbstractPetriNetElementModel) ((DefaultPort) target).getParent()).getId());
+						getEditor().create(map);
+						e.consume();
+					}
+				}
+			
+				// Handle special case for arc point selection
+				if (getGraph().getFirstCellForLocation(e.getX(), e.getY()) instanceof ArcModel) {
+					getEditor().setLastMousePosition(e.getPoint());
+					getEditor().addPointToSelectedArc();
+				}
+			}
+
+
+			super.mouseReleased(e);
+			e.consume();
+			getGraph().repaint();
+		}
+
+		// Reset global variables
+		firstPort = port = null;
+		start = current = null;
+		getGraph().setCursor(Cursor.getDefaultCursor());
+	}
 
     /**
      * The marquee handler also implements the mouseMoved method, which is messaged independently of the others, 
@@ -308,7 +327,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
     		} else if ((cell instanceof GroupModel || cell instanceof AbstractPetriNetElementModel || cell instanceof NameModel)
     				&& getGraph().isEnabled()) {
     			// Set Cursor on Graph (Automatically Reset)
-    			getGraph().setPortsVisible(true);
+    			getGraph().setPortsVisible(false);
     			getGraph().setCursor(new Cursor(Cursor.MOVE_CURSOR));
      			e.consume();
     		}

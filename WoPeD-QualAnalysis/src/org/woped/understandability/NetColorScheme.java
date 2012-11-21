@@ -10,7 +10,7 @@ import org.woped.core.model.petrinet.CombiOperatorTransitionModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.components.ClusterElement;
 

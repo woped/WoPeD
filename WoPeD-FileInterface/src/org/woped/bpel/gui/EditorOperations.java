@@ -15,7 +15,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import org.woped.bpel.BPEL;
-import org.woped.editor.controller.vc.EditorVC;
+import org.woped.core.controller.IEditor;
 
 /**
  * @author Lavinia Posler
@@ -35,13 +35,13 @@ public class EditorOperations extends JPanel {
 	
 	public EventListenerEditorOperations _listener = null;
 
-	private EditorVC editor;
+	private IEditor editor;
 
-	public EditorVC getEditor() {
+	public IEditor getEditor() {
 		return editor;
 	}
 
-	public EditorOperations(EditorVC editor) {
+	public EditorOperations(IEditor editor) {
 		this.editor = editor;
 		this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		this.setLayout(new GridBagLayout());

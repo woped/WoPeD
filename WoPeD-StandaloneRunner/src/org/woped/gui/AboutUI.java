@@ -64,6 +64,7 @@ public class AboutUI extends JDialog
 {
     private JLabel              logoLabel       = null;
     private JLabel              aboutTextLabel  = null;
+    private JLabel              javaTextLabel   = null;
     private JLabel              homepageLabel   = null;
     private JLabel              mailtoLabel     = null;
     private JLabel              sfLabel         = null;
@@ -128,12 +129,12 @@ public class AboutUI extends JDialog
     {    	
        	String[] aboutArgs       = { Messages.getWoPeDVersionWithTimestamp() };
        	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) + "</p></html>";
-       
-    	if (aboutPanel == null)
+       	String   javaText 		 = "<html><p><b>" + Messages.getString("About.Java") + ": </b>" + System.getProperty("java.version") + "</p></html>";
+       	
+       	if (aboutPanel == null)
         {
             JPanel panel = new JPanel();
             panel.setLayout(new GridBagLayout());
-            // this.getContentPane().setBackground(Color.WHITE);
             GridBagConstraints c = new GridBagConstraints();
 
             c.gridx = 0;
@@ -146,28 +147,34 @@ public class AboutUI extends JDialog
             c.gridy = 1;
             c.insets = new Insets(0, 10, 0, 10);
             c.anchor = GridBagConstraints.WEST;
+            javaTextLabel = new JLabel(javaText);
+            panel.add(javaTextLabel, c);
+
+            c.gridy = 2;
+            c.insets = new Insets(0, 10, 0, 10);
+            c.anchor = GridBagConstraints.WEST;
             aboutTextLabel = new JLabel(aboutText);
             panel.add(aboutTextLabel, c);
 
-            c.gridy = 2;
+            c.gridy = 3;
             c.insets = new Insets(0, 10, 0, 10);
             homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
             homepageLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Homepage.Link"), homepageLabel));
             panel.add(homepageLabel, c);
 
-            c.gridy = 3;
+            c.gridy = 4;
             c.insets = new Insets(0, 10, 0, 10);
             mailtoLabel = new JLabel("<html><p>" + Messages.getString("About.Email") + "</p></html>");
             mailtoLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Email.Link"), mailtoLabel));
             panel.add(mailtoLabel, c);
 
-            c.gridy = 4;
+            c.gridy = 5;
             c.insets = new Insets(0, 10, 0, 10);
             sfLabel = new JLabel("<html><p>" + Messages.getString("About.Development") + "</p></html>");
             sfLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Development.Link"), sfLabel));
             panel.add(sfLabel, c);
 
-            c.gridy = 5;
+            c.gridy = 6;
             c.insets = new Insets(0, 10, 0, 10);
             icLabel = new JLabel("<html><p>" + Messages.getString("About.Iconset") + "</p></html>");
             icLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Iconset.Link"), icLabel));

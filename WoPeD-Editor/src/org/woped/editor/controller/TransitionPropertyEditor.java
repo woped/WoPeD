@@ -1553,7 +1553,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			rlist = ((PetriNetModelProcessor) (editor.getModelProcessor()))
 					.getResourceClassesResourceIsAssignedTo(name);
 
-			if (rlist.contains(role) & rlist.contains(group)) {
+			if (rlist.contains(role) && rlist.contains(group)) {
 				count++;
 			}
 		}

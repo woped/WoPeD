@@ -27,7 +27,7 @@ public class Orientation {
 	private static final int TURN_LEFT = -1;
 	private static final int TURN_RIGHT = 1;
 	
-	private static int triggerXOffset;
+	private int triggerXOffset;
 	private static int triggerYOffset;
 	private static int resourceXOffset;
 	private static int resourceYOffset;

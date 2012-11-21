@@ -672,10 +672,13 @@ public class PNMLImport {
 				importNameAndLayout(places[i], map);
 					
 				try {
-					if (places[i].isSetInitialMarking()
-							&& (tokens = Integer.parseInt(places[i]
-									.getInitialMarking().getText())) > 0) {
-						map.setTokens(tokens);
+					if (places[i].isSetInitialMarking()) {
+						// Remove all flavors of whitespace before converting to an integer
+						String initialMarkingString = places[i]
+								.getInitialMarking().getText().replaceAll("\\s", "");
+						if ((tokens = Integer.parseInt(initialMarkingString)) > 0) {
+							map.setTokens(tokens);
+						}
 					}
 					// toolspecific
 					if (ConfigurationManager.getConfiguration()

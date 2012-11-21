@@ -42,7 +42,7 @@
 	<taskdef name="try" classname="ise.antelope.tasks.TryTask" classpath="build-tools/ant/AntelopeTasks_3.4.2.jar" />
 	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="build-tools/ant/jarbundler-2.2.0.jar"/>
 
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeMacInstaller, makeWindowsInstallerOnMac, makeLinuxInstaller" /> 
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstallerOnMac, makeLinuxInstaller, makeMacInstaller" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -76,21 +76,6 @@
 		<copy file="../WoPeD-Translations/src/org/woped/translations/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
 		<copy file="dist/Messages.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages.properties" />
 		<copy file="dist/Messages_de.properties" tofile="../WoPeD-Translations/bin/org/woped/translations/Messages_de.properties" />
-	</target>
-
-	<target name="buildjar">
-		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
-			<fileset dir="../WoPeD-BPELExport/bin" />
-			<fileset dir="../WoPeD-CORE/bin" />
-			<fileset dir="../WoPeD-Editor/bin" />
-			<fileset dir="../WoPeD-FileInterface/bin" />
-			<fileset dir="../WoPeD-ProcessMetrics/bin" />
-			<fileset dir="../WoPeD-QualAnalysis/bin" />
-			<fileset dir="../WoPeD-QuantAnalysis/bin" />
-			<fileset dir="../WoPeD-StandaloneRunner/bin" />
-			<fileset dir="../WoPeD-Translations/bin" />
-			<fileset dir="../WoPeD-XMLConfiguration/bin" />
-		</jar>
 	</target>
 
 	<target name="copyfiles">
@@ -178,20 +163,6 @@
 		<unzip src="build-tools/setup/izpack.zip" dest="dist" />
 	</target>
 
-	<target name="makejavadoc">
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-CORE/src" destdir="dist/doc/WoPeD-CORE/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Editor/src" destdir="dist/doc/WoPeD-Editor/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-StandaloneRunner/src" destdir="dist/doc/WoPeD-StandaloneRunner/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-FileInterface/src" destdir="dist/doc/WoPeD-FileInterface/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-XMLConfiguration/src" destdir="dist/doc/WoPeD-XMLConfiguration/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-Translations/src" destdir="dist/doc/WoPeD-Translations/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QuantAnalysis/src" destdir="dist/doc/QuantAnalysis/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-QualAnalysis/src" destdir="dist/doc/WoPeD-QualAnalysis/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-BPELExport/src" destdir="dist/doc/WoPeD-BPELExport/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-ProcessMetrics/src" destdir="dist/doc/WoPeD-ProcessMetrics/api-doc" />
-		<javadoc packagenames="org.woped.*" sourcepath="../WoPeD-StandaloneRunner/src" destdir="dist/doc/WoPeD-StandaloneRunner/api-doc" />
-	</target>
-
 	<target name="makesubprojects">
 		<ant antfile="../WoPeD-CORE/build.xml" dir="../WoPeD-CORE" />
 		<ant antfile="../WoPeD-BPELExport/build.xml" dir="../WoPeD-BPELExport" />
@@ -203,6 +174,21 @@
 		<ant antfile="../WoPeD-QualAnalysis/build.xml" dir="../WoPeD-QualAnalysis" />
 		<ant antfile="../WoPeD-Translations/build.xml" dir="../WoPeD-Translations" />
 		<ant antfile="../WoPeD-ProcessMetrics/build.xml" dir="../WoPeD-ProcessMetrics" />
+	</target>
+
+	<target name="buildjar">
+		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
+			<fileset dir="../WoPeD-BPELExport/bin" />
+			<fileset dir="../WoPeD-CORE/bin" />
+			<fileset dir="../WoPeD-Editor/bin" />
+			<fileset dir="../WoPeD-FileInterface/bin" />
+			<fileset dir="../WoPeD-ProcessMetrics/bin" />
+			<fileset dir="../WoPeD-QualAnalysis/bin" />
+			<fileset dir="../WoPeD-QuantAnalysis/bin" />
+			<fileset dir="../WoPeD-StandaloneRunner/bin" />
+			<fileset dir="../WoPeD-Translations/bin" />
+			<fileset dir="../WoPeD-XMLConfiguration/bin" />
+		</jar>
 	</target>
 
 	<target name="makeWindowsInstaller">
@@ -283,7 +269,8 @@
 
 				<jarfileset dir="dist">
 			    	<include name="lib/*.jar" />
-	            	<include name="WoPeD*.jar" />
+	            	<include name="WoPeD.jar" />
+	            	<include name="WoPeD-classes*.jar" />
 	            	<include name="doc/**" />
 	            	<include name="nets/**" />
 	            	<include name="*.txt" />

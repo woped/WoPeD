@@ -292,7 +292,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	 * @param index
 	 */
 	public void addPoint(Point2D c, int index) {
-		@SuppressWarnings("unchecked")
 		List<Object> points = GraphConstants.getPoints(getAttributes());
 		if (points == null) {
 			points = new Vector<Object>();
@@ -312,7 +311,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	 */
 	public void addPoint(Point2D c) {
 		AttributeMap map = getAttributes();
-		@SuppressWarnings("unchecked")
 		List<Object> points = GraphConstants.getPoints(map);
 		if (points == null) {
 			points = new Vector<Object>();
@@ -346,7 +344,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		addPoint(c, index);
 	}
 
-	@SuppressWarnings("unchecked")
 	public Point2D[] getPoints() {
 		AttributeMap map = getAttributes();
 		List<Object> points = GraphConstants.getPoints(map);
@@ -366,7 +363,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 
 	public void setPoints(Point2D[] points) {
 		AttributeMap map = getAttributes();
-		@SuppressWarnings("unchecked")
 		List<Object> pointList = GraphConstants.getPoints(map);
 		if (pointList != null) {
 			while (pointList.size() > 2)
@@ -381,7 +377,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 	/**
 	 * @param l
 	 */
-	@SuppressWarnings("unchecked")
 	public void removePoint(Point2D l) {
 		int pos = getPointPosition(l, 10);
 		AttributeMap map = getAttributes();
@@ -397,7 +392,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		return (getPointPosition(p, tolerance)) != -1;
 	}
 
-	@SuppressWarnings("unchecked")
 	private int getPointPosition(Point2D p, int tolerance) {
 		List<Object> points = GraphConstants.getPoints(getAttributes());
 		int pos = -1;
@@ -455,7 +449,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		getUnknownToolSpecs().add(unknownToolSpecs);
 	}
 
-	@SuppressWarnings("unchecked")
 	public CreationMap getCreationMap() {
 		CreationMap map = CreationMap.createMap();
 		map.setArcId(getId());
@@ -496,7 +489,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public void setProbability(double probability) {
 		getAttributes().put("Probability", new Double(probability));
 		updateLabel();
@@ -513,7 +505,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public void setDisplayOn(boolean displayOn) {
 		getAttributes().put("DisplayProbability", new Boolean(displayOn));
 		updateLabel();

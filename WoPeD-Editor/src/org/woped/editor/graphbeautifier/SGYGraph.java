@@ -199,8 +199,7 @@ public class SGYGraph {
 	 * hierarchies
 	 * 
 	 */
-	@SuppressWarnings("unchecked")
-	private void gettingElements(HashMap<String, SGYElement> vertices) {
+ 	private void gettingElements(HashMap<String, SGYElement> vertices) {
 		HashMap<String, SGYElement> potentialSources;
 		AbstractPetriNetElementModel ele;
 		ArcModel arc;
@@ -503,8 +502,7 @@ public class SGYGraph {
 	 * sweeps through the graph in order to find solution with minimum of
 	 * crossing arcs
 	 */
-	@SuppressWarnings("unchecked")
-	private void crossingReduction() {
+ 	private void crossingReduction() {
 		int sumIndex = 0;
 		boolean direction;
 		SGYElement neighbour;
@@ -674,8 +672,7 @@ public class SGYGraph {
 	 * are no further improvements (forgivenessCounter = 0), it will stop
 	 * crossing reduction
 	 */
-	@SuppressWarnings("unchecked")
-	private boolean breakCondition(ArrayList<ArrayList<SGYElement>> copyGraph) {
+     private boolean breakCondition(ArrayList<ArrayList<SGYElement>> copyGraph) {
 		boolean breaking = false;
 		if (lowest_global_crossings > global_crossings) {
 			lowest_global_crossings = global_crossings;

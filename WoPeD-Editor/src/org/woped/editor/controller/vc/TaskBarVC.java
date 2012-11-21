@@ -145,8 +145,7 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
 	 * If the vector not null
 	 * To Test is to check the viewEvent 
 	 */
-	@SuppressWarnings("unchecked")
-	public final void fireViewEvent(AbstractViewEvent viewevent) {
+     public final void fireViewEvent(AbstractViewEvent viewevent) {
 		if (viewevent == null)
 			return;
 		Vector<IViewListener> vector;

@@ -217,4 +217,10 @@ public interface IEditor extends IViewController {
 	public ITokenGameController getTokenGameController();
 	
 	public void repaint();
+
+	public abstract void terminateTokenGameSession();
+
+	public abstract void disableTokenGame();
+
+	public abstract void enableTokenGame();
 }

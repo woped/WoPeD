@@ -24,7 +24,7 @@ import org.woped.editor.gui.PopUpDialog;
 import org.woped.translations.Messages;
 
 /**
- * @author Frank Schüler, Ester Landes
+ * @author Frank Schï¿½ler, Ester Landes
  * 
  */
 

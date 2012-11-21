@@ -39,7 +39,7 @@ import org.woped.file.controller.vep.FileEventProcessor;
 import org.woped.gui.Constants;
 import org.woped.gui.DefaultUserInterface;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.qualanalysis.simulation.ReferenceProvider;
 
 /**
  * 

@@ -1,9 +1,9 @@
 package org.woped.qualanalysis.soundness.datamodel;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 
 /**
  * this class represents a low level petri net
@@ -14,8 +14,8 @@ import java.util.TreeMap;
 public class LowLevelPetriNet implements ILowLevelPetriNet {
     // declaration
 
-    private Map<String, PlaceNode> places = new TreeMap<String, PlaceNode>(new PlaceSort());
-    private Map<String, TransitionNode> transitions = new TreeMap<String, TransitionNode>();
+    private Map<String, PlaceNode> places = new HashMap<String, PlaceNode>();
+    private Map<String, TransitionNode> transitions = new HashMap<String, TransitionNode>();
 
     /**
      * 

@@ -1,5 +1,4 @@
 package org.woped.qualanalysis.simulation;
-import  org.woped.qualanalysis.simulation.controller.*;
 
 /**
  * This class is needed for AutoPlayback Action in Tokengame.
@@ -17,9 +16,9 @@ import  org.woped.qualanalysis.simulation.controller.*;
 
 public class TokenGameRunnableObject implements Runnable {
 	
-	TokenGameBarController tb = null;
+	TokenGameSession tb = null;
 	
-	public TokenGameRunnableObject(TokenGameBarController tgbv)
+	public TokenGameRunnableObject(TokenGameSession tgbv)
 	{
 		tb = tgbv;
 	}

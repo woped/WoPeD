@@ -13,9 +13,11 @@ import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -35,7 +37,6 @@ import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.BasicMarqueeHandler;
 import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphCell;
 import org.jgraph.graph.GraphConstants;
@@ -72,6 +73,7 @@ import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.controller.PetriNetMarqueeHandler;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDJGraph;
+import org.woped.editor.controller.WoPeDJGraphGraphModel;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.graphbeautifier.AdvancedDialog;
@@ -80,8 +82,8 @@ import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.view.ViewFactory;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
-import org.woped.qualanalysis.simulation.controller.TokenGameController;
+import org.woped.qualanalysis.simulation.ReferenceProvider;
+import org.woped.qualanalysis.simulation.TokenGameController;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.StructuralAnalysis;
 import org.woped.qualanalysis.structure.components.ArcConfiguration;
@@ -235,7 +237,7 @@ public class EditorVC implements KeyListener,
 		marqueehandler = new PetriNetMarqueeHandler(this, mediator);
 		this.modelProcessor = new PetriNetModelProcessor();
 		if (loadUI)
-			this.m_graph = new WoPeDJGraph(new DefaultGraphModel(),
+			this.m_graph = new WoPeDJGraph(new WoPeDJGraphGraphModel(this),
 					marqueehandler,
 					undoSupport ? new WoPeDUndoManager(this) : null,
 							viewFactory);
@@ -252,7 +254,7 @@ public class EditorVC implements KeyListener,
 			getGraph().getModel().addGraphModelListener(this);
 			getGraph().addKeyListener(this);
 		
-			this.m_tokenGameController = new TokenGameController(this);
+			this.m_tokenGameController = new TokenGameController(this, m_propertyChangeSupport);
 		}
 	}
 
@@ -636,31 +638,37 @@ public class EditorVC implements KeyListener,
 			}
 		}
 
+		// Expand groups --> result will contain all the group elements themselves
+		// plus their content
+		
+		LinkedList<Object>  toBeProcessed = new LinkedList<Object>(Arrays.asList(toDelete));		
 		Vector<Object> result = new Vector<Object>();
-		for (int i = 0; i < toDelete.length; i++) {
-
-			if (toDelete[i] instanceof GroupModel
-					&& !((GroupModel) toDelete[i]).isUngroupable()) {
-				GroupModel tempGroup = (GroupModel) toDelete[i];
-
-				Object cell = tempGroup;
-				while (cell instanceof GroupModel) {
-					cell = ((GroupModel) cell).getMainElement();
-				}
-
-				if (cell instanceof AbstractPetriNetElementModel
-						&& !((AbstractPetriNetElementModel) cell).isReadOnly()) {
-					result.add(tempGroup);
-					for (int j = 0; j < tempGroup.getChildCount(); j++) {
-						result.add(tempGroup.getChildAt(j));
+		
+		while (!toBeProcessed.isEmpty()) {
+			Object currentElement = toBeProcessed.poll();			
+			if (currentElement instanceof GroupModel)
+			{
+				GroupModel tempGroup = (GroupModel) currentElement;
+				if (!tempGroup.isUngroupable()) {
+					Object cell = tempGroup;
+					while (cell instanceof GroupModel) {
+						cell = ((GroupModel) cell).getMainElement();
 					}
-
-				}
+					if (cell instanceof AbstractPetriNetElementModel
+							&& !((AbstractPetriNetElementModel) cell).isReadOnly()) {
+						result.add(tempGroup);
+						for (int j = 0; j < tempGroup.getChildCount(); j++) {
+							result.add(tempGroup.getChildAt(j));
+						}
+					}
+				} else {
+					result.add(currentElement);
+					for (int j = 0; j < tempGroup.getChildCount(); j++)
+						toBeProcessed.offer(tempGroup.getChildAt(j));
+				}		
 			} else {
-
-				result.add(toDelete[i]);
+				result.add(currentElement);
 			}
-
 		}
 
 		HashSet<Object> uniqueResult = new HashSet<Object>();
@@ -797,7 +805,10 @@ public class EditorVC implements KeyListener,
 	 * will be deleted too.
 	 */
 	public void deleteSelection() {
+		// Delete atomically
+		getGraph().getModel().beginUpdate();
 		deleteCells(getGraph().getSelectionCells(), true);
+		getGraph().getModel().endUpdate();		
 	}
 
 	/* ########## ELEMENT MODIFICATION METHODS ########### */
@@ -880,38 +891,55 @@ public class EditorVC implements KeyListener,
 		getGraph().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		long begin = System.currentTimeMillis();
 
-		// get the Selection
-		// tempContainer = getModelProcessor().getElementContainer();
-		Object[] cells = getGraph().getSelectionCells();
 		m_clipboard.clearClipboard();
 		m_clipboard.setM_sourceEditor(this);
-		AbstractPetriNetElementModel tempElement;
-		ArcModel tempArc;
-		for (int idx = 0; idx < cells.length; idx++) {
-			if (cells[idx] instanceof GroupModel) {
-				cells[idx] = ((GroupModel) cells[idx]).getMainElement();
-			} else if (cells[idx] instanceof NameModel) {
-				cells[idx] = getModelProcessor().getElementContainer()
-						.getElementById(((NameModel) cells[idx]).getOwnerId());
-			} else if (cells[idx] instanceof TriggerModel) {
-				cells[idx] = getModelProcessor().getElementContainer()
+		// get the Selection
+		Object[] cells = getGraph().getSelectionCells();
+		// Fill processing queue with selected cells
+		LinkedList<Object> toBeProcessed = new LinkedList<Object>(Arrays.asList(cells));		
+		// Arcs to be added to the clipboard
+		LinkedList<ArcModel> clipboardArcs = new LinkedList<ArcModel>();
+		
+		while (!toBeProcessed.isEmpty()) {
+			Object currentElement = toBeProcessed.poll();
+			if (currentElement instanceof GroupModel) {
+				GroupModel tempGroup = (GroupModel)currentElement;
+				if (tempGroup.isUngroupable()) {
+					// Regular group of multiple elements, add
+					// its elements instead of the group itself
+					for (int j = 0; j < tempGroup.getChildCount(); j++)
+						toBeProcessed.offer(tempGroup.getChildAt(j));
+					// Do not process the group itself
+					currentElement = null;
+				 } else {
+					 // The is just the usual group of main element, name label and other stuff.
+					 // We are only interested in the main model in this case
+					 currentElement = ((GroupModel) currentElement).getMainElement();
+				 }
+			} else if (currentElement instanceof NameModel) {
+				currentElement = getModelProcessor().getElementContainer()
+						.getElementById(((NameModel) currentElement).getOwnerId());
+			} else if (currentElement instanceof TriggerModel) {
+				currentElement = getModelProcessor().getElementContainer()
 						.getElementById(
-								((TriggerModel) cells[idx]).getOwnerId());
+								((TriggerModel) currentElement).getOwnerId());
 			}
-			if (cells[idx] instanceof AbstractPetriNetElementModel) {
-				tempElement = (AbstractPetriNetElementModel) cells[idx];
+			if (currentElement instanceof ArcModel) {
+				ArcModel tempArc = (ArcModel) currentElement;
+				clipboardArcs.add(tempArc);
+			}			
+			if (currentElement instanceof AbstractPetriNetElementModel) {
+				AbstractPetriNetElementModel tempElement = (AbstractPetriNetElementModel) currentElement;
 				// copy the element
 				m_clipboard.putElement(tempElement);
 			}
 		}
-		// TODO: delete this in "implicite Arc copy" perhaps in configuration?
-		for (int idx = 0; idx < cells.length; idx++) {
-			if (cells[idx] instanceof ArcModel) {
-				tempArc = (ArcModel) cells[idx];
-				if (m_clipboard.containsElement(tempArc.getSourceId())
-						|| m_clipboard.containsElement(tempArc.getTargetId())) {
-					m_clipboard.putArc(tempArc);
-				}
+		// Add all arcs after all other cells, because those cells need to exist in the clipboard
+		// for a connecting arc to be added
+		for (ArcModel currentArc : clipboardArcs) {
+			if (m_clipboard.containsElement(currentArc.getSourceId())
+					|| m_clipboard.containsElement(currentArc.getTargetId())) {
+				m_clipboard.putArc(currentArc);
 			}
 		}
 		LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements copied. ("
@@ -945,6 +973,10 @@ public class EditorVC implements KeyListener,
 		// get elements from clipboard
 		Map<String, CreationMap> pasteElements = m_clipboard
 				.getCopiedElementsList();
+		
+		// Start an atomic transaction on the graph (to make paste appear as a 
+		// single undoable operation
+		getGraph().getModel().beginUpdate();
 		
 		copyFlag = true;
 
@@ -1137,6 +1169,12 @@ public class EditorVC implements KeyListener,
 				cmap.setArcSourceId(currentArcMap.getArcSourceId());
 				cmap.setArcTargetId(currentArcMap.getArcTargetId());
 				tempArc = createArc(cmap, true);
+				
+				// It is possible that an arc could not be created, because either its source
+				// or target element are missing. Simply ignore the arc in this case
+				if (tempArc == null)
+					continue;
+				
 				for (short k = 0; k < currentArcMap.getArcPoints().size(); k++) {
 
 					IntPair ip = (IntPair) currentArcMap.getArcPoints().get(k);
@@ -1149,6 +1187,10 @@ public class EditorVC implements KeyListener,
 				toSelectElements.add(tempArc);
 			}
 		}
+
+		// End of atomic graph update
+		getGraph().getModel().endUpdate();
+		
 		// select the new element
 		LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements pasted. ("
 				+ (System.currentTimeMillis() - begin) + " ms)");
@@ -1159,6 +1201,8 @@ public class EditorVC implements KeyListener,
 		copySelection();
 		getGraph().setCursor(Cursor.getDefaultCursor());
 		getEditorPanel().m_understandColoring.update();
+		
+		
 	}
 
 	private Point getMiddleOfSelection(Map<String, CreationMap> maps) {
@@ -1302,6 +1346,67 @@ public class EditorVC implements KeyListener,
 			}
 		}
 	}
+	
+	/* ########## View and utils methods ########### */
+	
+	/**
+	 * Enable TokenGame Mode for this net. <br>
+	 * In TokenGame-Mode the net is not editable, but you call pefrorm a simple
+	 * token movements.
+	 * 
+	 * @see TokenGameController
+	 */
+	public void enableTokenGame() {
+		if (isTokenGameEnabled()) {
+			LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame already running");
+			return;
+		}
+		
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "START TokenGame");		
+		tokenGameEnabled = true;
+		setDrawingMode(false);
+		m_tokenGameController.start();
+		
+		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
+	}
+	
+	/* ########## View and utils methods ########### */
+	/**
+	 * Disable TokenGame Mode for this net. <br>
+	 * In TokenGame-Mode the net is not editable, but you call pefrorm a simple
+	 * token movements.
+	 * 
+	 * @see TokenGameController
+	 */
+	public void disableTokenGame() {
+		if (!isTokenGameEnabled()) {
+			LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
+			return;
+		}
+		
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
+		tokenGameEnabled = false;
+		m_tokenGameController.stop();
+		m_centralMediator.getUi().refreshFocusOnFrames();
+		
+		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
+	}	
+	
+	
+	/**
+	 * Terminates a running token game session this net is part of.
+	 * A token game session spans across multiple nets if sub processes exist.
+	 * This method will close all sub processes and reset the token game to 
+	 * it's initial state, then will disable the token game for the top net
+	 */
+	public void terminateTokenGameSession() {
+		if (!isTokenGameEnabled()) {
+			LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
+			return;
+		}
+		
+		m_tokenGameController.getRemoteControl().terminateTokenGameSession();
+	}
 
 	/* ########## View and utils methods ########### */
 	/**
@@ -1313,40 +1418,21 @@ public class EditorVC implements KeyListener,
 	 */
 	public void toggleTokenGame() {
 		if (isTokenGameEnabled()) {
-			LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
-			tokenGameEnabled = false;
-			m_tokenGameController.stop();
-			m_centralMediator.getUi().refreshFocusOnFrames();
-
+			disableTokenGame();
 		} else {
-			LoggerManager.debug(Constants.EDITOR_LOGGER, "START TokenGame");
-			tokenGameEnabled = true;
-			setDrawingMode(false);
-			m_tokenGameController.start();
+			enableTokenGame();
 		}
-		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
 	}
 
 	// 02122008 MarioBeiser --> ChangePanel-Option
 	public void changePanel(boolean change) {
 		ReferenceProvider refer = new ReferenceProvider();
-
-		boolean change_flag = change;
-
-		if (change_flag) {
-			refer.getUIReference().switchToolBar(change_flag);
-			refer.getUIReference().getContentPane().repaint();
-		} else {
-			refer.getUIReference().switchToolBar(change_flag);
-			refer.getUIReference().getContentPane().repaint();
-		}
-
+		refer.getUIReference().getContentPane().repaint();
 	}
 
 	// 02122008 MarioBeiser --> ManualSwitchToolbar
 	public void manualChangePanel() {
 		ReferenceProvider refer = new ReferenceProvider();
-		refer.getUIReference().switchToolBar(false);
 		refer.getUIReference().getContentPane().repaint();
 	}
 
@@ -1592,8 +1678,7 @@ public class EditorVC implements KeyListener,
 	 * Fires a ViewEvent to each listener as long as the event is not consumed.
 	 * The event is also set with a reference to the current listener.
 	 */
-	@SuppressWarnings("unchecked")
-	public final void fireViewEvent(AbstractViewEvent viewevent) {
+ 	public final void fireViewEvent(AbstractViewEvent viewevent) {
 		if (viewevent == null) {
 			return;
 		}
@@ -1909,8 +1994,7 @@ public class EditorVC implements KeyListener,
 	}
 
 	public void internalFrameActivated(InternalFrameEvent e) {
-		ReferenceProvider refer = new ReferenceProvider();
-		refer.getUIReference().switchToolBar(tokenGameEnabled);
+		new ReferenceProvider();
 	}
 
 	public void internalFrameClosed(InternalFrameEvent e) {
@@ -1919,7 +2003,6 @@ public class EditorVC implements KeyListener,
 	public void internalFrameClosing(InternalFrameEvent e) {
 		// Get the standard-toolbar if the editor is being closed.
 		ReferenceProvider refer = new ReferenceProvider();
-		refer.getUIReference().switchToolBar(false);
 		refer.getUIReference().getContentPane().repaint();
 	}
 

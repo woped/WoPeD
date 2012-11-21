@@ -206,6 +206,16 @@ public class TransitionModel extends AbstractPetriNetElementModel
      * @return Number of places that contain at least one token 
      */
     public int getNumIncomingActivePlaces() {
+    	// TODO: This is an error condition, triggered by a broken model (e.g.
+    	// TransitionModel has not been created through its factory).
+    	// Unfortunately, this error condition currently occurs due to the
+    	// code in TStar.java which generates model elements and arcs that
+    	// are part of the JGraph model and view, but intentionally excluded
+    	// from the ModelElementContainer to not disturb semantic analysis.
+    	// This is broken and should be fixed.
+    	if (getRootOwningContainer() == null)
+    		return 0;
+    	
         Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
     	
         Iterator<String> incomingArcsIter = arcsFromPlaces.keySet().iterator();
@@ -231,6 +241,16 @@ public class TransitionModel extends AbstractPetriNetElementModel
      * @return Number of incoming arcs
      */
     public int getNumInputPlaces() {
+    	// TODO: This is an error condition, triggered by a broken model (e.g.
+    	// TransitionModel has not been created through its factory).
+    	// Unfortunately, this error condition currently occurs due to the
+    	// code in TStar.java which generates model elements and arcs that
+    	// are part of the JGraph model and view, but intentionally excluded
+    	// from the ModelElementContainer to not disturb semantic analysis.
+    	// This is broken and should be fixed.    	
+    	if (getRootOwningContainer() == null)
+    		return 0;
+    	
     	Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
     	return arcsFromPlaces.size();
     }

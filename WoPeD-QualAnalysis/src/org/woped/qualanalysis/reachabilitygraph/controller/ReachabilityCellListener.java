@@ -177,8 +177,7 @@ public class ReachabilityCellListener implements MouseListener {
 
         if (lastHighlighted != null) {
             ReachabilityPortModel port = (ReachabilityPortModel) this.lastHighlighted.getChildAt(0);
-            @SuppressWarnings("unchecked")
-			Set<ReachabilityEdgeModel> edges = port.getEdges();
+ 			Set<ReachabilityEdgeModel> edges = port.getEdges();
             Iterator<ReachabilityEdgeModel> iterEdges = edges.iterator();
             while (iterEdges.hasNext()) {
                 ReachabilityEdgeModel edge = iterEdges.next();
@@ -206,8 +205,7 @@ public class ReachabilityCellListener implements MouseListener {
 
     private void highlightEdges(ReachabilityPlaceModel place) {
         ReachabilityPortModel port = (ReachabilityPortModel) place.getChildAt(0);
-        @SuppressWarnings("unchecked")
-		Set<ReachabilityEdgeModel> edges = port.getEdges();
+ 		Set<ReachabilityEdgeModel> edges = port.getEdges();
         Iterator<ReachabilityEdgeModel> iterEdges = edges.iterator();
         Map<ReachabilityEdgeModel, AttributeMap> editMap = new HashMap<ReachabilityEdgeModel, AttributeMap>();
         while (iterEdges.hasNext()) {

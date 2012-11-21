@@ -52,7 +52,7 @@ import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.gui.config.AbstractConfPanel;
-import org.woped.editor.gui.config.ConfApromorePanel;
+//import org.woped.editor.gui.config.ConfApromorePanel;
 import org.woped.editor.gui.config.ConfEditorPanel;
 import org.woped.editor.gui.config.ConfFilePanel;
 import org.woped.editor.gui.config.ConfLanguagePanel;
@@ -95,7 +95,7 @@ public class ConfigVC extends JDialog implements IViewController
     private AbstractConfPanel	  langPanel      = null;			
     private AbstractConfPanel	  colorPanel 	 = null;			
     private AbstractConfPanel	  metricsPanel   = null;			
-    private AbstractConfPanel	  aproPanel   	 = null;			
+//    private AbstractConfPanel	  aproPanel   	 = null;			
     // ButtonPanel
     private JPanel                buttonPanel    = null;
     private JButton               okButton       = null;
@@ -262,9 +262,9 @@ public class ConfigVC extends JDialog implements IViewController
     		tabbedPane.addTab(Messages.getString("Configuration.Metrics.Title"), metricsPanel);
     		confPanels.put(metricsPanel.getPanelName(), metricsPanel);
     		
-    		aproPanel = new ConfApromorePanel(Messages.getString("Configuration.Apromore.Title"));
+/*    		aproPanel = new ConfApromorePanel(Messages.getString("Configuration.Apromore.Title"));
     		tabbedPane.addTab(Messages.getString("Configuration.Apromore.Title"), aproPanel);
-    		confPanels.put(aproPanel.getPanelName(), aproPanel);
+    		confPanels.put(aproPanel.getPanelName(), aproPanel);*/
     		
     		readConfiguration();
     		
@@ -386,8 +386,7 @@ public class ConfigVC extends JDialog implements IViewController
      * Fires a ViewEvent to each listener as long as the event is not consumed.
      * The event is also set with a reference to the current listener.
      */
-    @SuppressWarnings("unchecked")
-	public final void fireViewEvent(AbstractViewEvent viewevent)
+    public final void fireViewEvent(AbstractViewEvent viewevent)
     {
         if (viewevent == null) return;
         Vector<IViewListener> vector;

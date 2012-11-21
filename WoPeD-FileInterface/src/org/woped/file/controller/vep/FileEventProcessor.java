@@ -289,7 +289,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
      * @param editor
      */
 
-    private boolean isSound(EditorVC editor) {
+    private boolean isSound(IEditor editor) {
 
         IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
 

@@ -41,9 +41,7 @@ refer to the online user manual available within WoPeD or on the WoPeD
 website http://www.woped.org.
    
 Note: WoPeD is written in Java. It is necessary that you have installed 
-Java 6.0 on your machine. Otherwise download it from http://java.sun.com. 
-
-Please note: WoPeD is NOT (yet) compatible with new Java 7!!!
+Java 6.0 or newer on your machine.  
 
 WoPeD is known to run on Microsoft Windows platforms, on MacOS X and on 
 many Linux distributions. Any reports of successfully having installed 
@@ -55,24 +53,26 @@ Download and Run
 ----------------
  
 Download the latest version via the WoPeD website www.woped.org.
+
 For Microsoft Windows, download WoPeD-install-windows-@wopedversion@.zip, 
 unpack it with an archiving tool and run the contained executable 
-WoPeD-install.exe. You may want to assign WoPeD.exe as the standard 
-application for the file type "pnml" to open a net with WoPeD 
-just by double-clicking on the associated PNML document. 
+WoPeD-install.exe.  
 
 For Linux, download WoPeD-install-linux-@wopedversion@.tgz, unpack and 
 decompress it with the tar utility. Then launch the contained executable 
 WoPeD-install. 
 
-For MacOS, download WoPeD-install-macos-@wopedversion@.zip and decompress 
-it into the target folder of your choice. Then launch the contained package
-installer WoPeD-install.pkg. 
+For MacOS, download WoPeD-install-macos-@wopedversion@.pkg, move 
+it into the target folder of your choice and launch the package file. 
 
 In all three cases, a setup wizard appears and will guide you through 
 the installation process, letting you choose several installation
 options. Note that the creation of desktop and start menu shortcuts 
 may not work on all target GUI systems.
+
+You may want to assign WoPeD as the standard application opening PNML 
+documents. Under Windows this is simply done in the control panel, under
+MacOS it is already enabled in the package properties. Try it.
 
 That's it!
    

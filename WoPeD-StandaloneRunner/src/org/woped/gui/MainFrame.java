@@ -66,7 +66,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JRibbonBand 					saveBand					= null;
 	private	JRibbonBand 					documentBand				= null;
 	private	JRibbonBand 					outputBand					= null;
-	private	JRibbonBand 					apromoreBand				= null;
+//	private	JRibbonBand 					apromoreBand				= null;
 	private	JRibbonBand 					editBand					= null;
 	private	JRibbonBand 					formsBand					= null;
 	private	JRibbonBand 					layoutBand					= null;
@@ -97,8 +97,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JCommandButton 					printButton					= null; 
 	private	JCommandButton 					exportAsButton				= null; 
 
-	private	JCommandButton 					importApromoreButton		= null; 
-	private	JCommandButton 					exportApromoreButton		= null; 
+//	private	JCommandButton 					importApromoreButton		= null; 
+//	private	JCommandButton 					exportApromoreButton		= null; 
 	
 	private	JCommandButton 					undoButton					= null; 
 	private	JCommandButton 					redoButton					= null; 
@@ -230,14 +230,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     		getRibbon().setSelectedTask(getEditTask());
 		}
 	}
-	
-    public MainFrame() {	
-    	
-		super();
-		setApplicationIcon(new logo_woped());
-		setTitle("WoPeD Version " + Messages.getString("Application.Version"));
-	}
-	
+		
 	public void initialize(AbstractApplicationMediator mediator) {
 		
 		setMediator(mediator);
@@ -362,7 +355,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (fileTask == null) {
 			if (ConfigurationManager.getConfiguration().getApromoreUse())
-				fileTask = new RibbonTask(Messages.getTitle("Task.File"), getDocumentBand(), getSaveBand(), getOutputBand(), getApromoreBand());	
+				fileTask = new RibbonTask(Messages.getTitle("Task.File"), getDocumentBand(), getSaveBand(), getOutputBand()/*, getApromoreBand()*/);	
 			else
 				fileTask = new RibbonTask(Messages.getTitle("Task.File"), getDocumentBand(), getSaveBand(), getOutputBand());						
 			fileTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(fileTask));
@@ -466,7 +459,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return outputBand;
 	}
 	
-	private JRibbonBand getApromoreBand() {
+/*	private JRibbonBand getApromoreBand() {
 		
 		if (apromoreBand == null) {
 			apromoreBand = new JRibbonBand(Messages.getString("Apromore.textBandTitle"), null);
@@ -476,7 +469,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		}
 		
 		return apromoreBand;
-	}
+	}*/
 			
 	private JRibbonBand getEditBand() {
 		
@@ -621,6 +614,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			tokengameCloseBand = new JRibbonBand(Messages.getString("Tokengame.CloseBand.title"),new tokengame_play_start());
 			tokengameCloseBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(tokengameCloseBand));
 			tokengameCloseBand.addCommandButton(getTokengameCloseButton(), RibbonElementPriority.TOP);		
+			tokengameCloseBand.addCommandButton(getStopButton(), RibbonElementPriority.TOP);
 		}
 		
 		return tokengameCloseBand;
@@ -634,7 +628,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 			tokengameStepBand.addCommandButton(getStepWiseButton(), RibbonElementPriority.TOP);
 			tokengameStepBand.addCommandButton(getBackwardButton(), RibbonElementPriority.TOP);
-			tokengameStepBand.addCommandButton(getStopButton(), RibbonElementPriority.TOP);
 			tokengameStepBand.addCommandButton(getForwardButton(), RibbonElementPriority.TOP);
 			tokengameStepBand.addCommandButton(getJumpIntoSubProcessButton(), RibbonElementPriority.TOP);
 			tokengameStepBand.addCommandButton(getJumpOutOfSubprocessButton(), RibbonElementPriority.TOP);
@@ -783,7 +776,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return exportAsButton;
 	}
 		
-	private JCommandButton getImportApromoreButton() {
+/*	private JCommandButton getImportApromoreButton() {
 		
 		if (importApromoreButton == null) {		
 			importApromoreButton = new JCommandButton(Messages.getString("Apromore.aproImport.text"), new apromore_import());
@@ -803,7 +796,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		}
 		
 		return exportApromoreButton;
-	}
+	}*/
 				
 
 	private JCommandButton getUndoButton() {
@@ -1284,6 +1277,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 							m_sampleMenu.addMenuButton(sampleItem);
 						}
 					}
+					
+					jf.close();
 				}
 				// Normal dir access
 				else {
@@ -1486,42 +1481,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	}
 
 	@Override
-	public void quit() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void refreshFocusOnFrames() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeToolBar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setFirstTransitionActive() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setSimulatorBar(Object simulatorBar) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void switchToolBar(boolean change) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void addEditor(IEditor editor) {
 	    getRibbon().setSelectedTask(getEditTask());
 	}
@@ -1561,6 +1520,18 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 	@Override
 	public void updateRecentMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void refreshFocusOnFrames() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void quit() {
 		// TODO Auto-generated method stub
 		
 	}

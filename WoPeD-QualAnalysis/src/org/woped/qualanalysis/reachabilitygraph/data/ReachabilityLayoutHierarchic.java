@@ -45,8 +45,7 @@ public class ReachabilityLayoutHierarchic {
 	 * 
 	 * @param graph
 	 */
-	@SuppressWarnings("unchecked")
-	private static void applyHierarchicLayout(ReachabilityJGraph graph){
+ 	private static void applyHierarchicLayout(ReachabilityJGraph graph){
 		GraphModel model = graph.getModel();
 		LinkedList<ReachabilityPlaceModel> markings = new LinkedList<ReachabilityPlaceModel>();
 		// get all marking and reset them to not recursively touched
@@ -114,8 +113,7 @@ public class ReachabilityLayoutHierarchic {
 		for(int portIndex = 0; portIndex < ports.size(); portIndex++){
 			if(ports.get(portIndex) instanceof ReachabilityPortModel){
 				ReachabilityPortModel port = (ReachabilityPortModel) ports.get(portIndex);
-				@SuppressWarnings("unchecked")
-				Set<ReachabilityEdgeModel> edgeSet = port.getEdges();
+ 				Set<ReachabilityEdgeModel> edgeSet = port.getEdges();
 		     	Iterator<ReachabilityEdgeModel> edgeIterator = edgeSet.iterator();
 		     	// iterate over ports edges
 		     	while(edgeIterator.hasNext()){

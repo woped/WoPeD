@@ -22,8 +22,8 @@ import org.woped.editor.controller.ArcPropertyEditor;
 import org.woped.editor.controller.PlacePropertyEditor;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.qualanalysis.simulation.controller.TokenGameBarController;
-import org.woped.qualanalysis.simulation.controller.TokenGameBarListener;
+import org.woped.qualanalysis.simulation.TokenGameBarListener;
+import org.woped.qualanalysis.simulation.TokenGameSession;
 
 public class EditorEventProcessor extends AbstractEventProcessor
 {
@@ -291,7 +291,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 				editor.toggleTokenGame();
 				break;
 			case AbstractViewEvent.CLOSE_TOKENGAME:
-				editor.toggleTokenGame();
+				editor.terminateTokenGameSession();
 				break;
 			case AbstractViewEvent.SHOWSIDEBAR:
 				// Toggle visibility of side tree view
@@ -358,7 +358,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 			case AbstractViewEvent.TOKENGAME_LEAVE:
 			case AbstractViewEvent.TOKENGAME_STEP:
 			case AbstractViewEvent.TOKENGAME_AUTO:
-				TokenGameBarController tgbController =
+				TokenGameSession tgbController =
 					editor.getTokenGameController().getRemoteControl();
 				if (tgbController!=null) {
 					// Adaptor from view event produced by toolbar button to the legacy 
@@ -389,16 +389,13 @@ public class EditorEventProcessor extends AbstractEventProcessor
 			result = TokenGameBarListener.CLICK_STEP_DOWN;
 			break;
 		case AbstractViewEvent.TOKENGAME_FORWARD:
-			// When not in 'auto' mode, the game bar controller will interpret a single CLICK_FORWARD as a single
-			// step operation
 			result = TokenGameBarListener.CLICK_FORWARD;
 			break;
 		case AbstractViewEvent.TOKENGAME_PAUSE:
 			result = TokenGameBarListener.CLICK_PAUSE;
 			break;
 		case AbstractViewEvent.TOKENGAME_START:
-			// When in 'auto' mode, the game bar controller will interpret a single CLICK_FORWARD as a play
-			result = TokenGameBarListener.CLICK_FORWARD;
+			result = TokenGameBarListener.CLICK_PLAY;
 			break;
 		case AbstractViewEvent.TOKENGAME_STOP:
 			result = TokenGameBarListener.CLICK_STOP;

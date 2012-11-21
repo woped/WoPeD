@@ -32,7 +32,7 @@ import org.woped.qualanalysis.reachabilitygraph.data.IReachabilityGraphModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModelUsingMarkingNet;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
-import org.woped.qualanalysis.simulation.controller.ReferenceProvider;
+import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.translations.Messages;
 
 public class ReachabilityGraphPanel extends JPanel {

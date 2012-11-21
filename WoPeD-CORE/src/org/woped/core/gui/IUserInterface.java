@@ -50,14 +50,6 @@ public interface IUserInterface extends IEditorAware
     public IReachabilityGraph getReachGraphFocus();
        
     public Container getContentPane();
-    
-    public void switchToolBar(boolean change);
-    
-    public void removeToolBar();
-    
-    public void setSimulatorBar(Object simulatorBar);
-    
-    public void setFirstTransitionActive();
 
 	public void initialize(AbstractApplicationMediator mediator);
 	

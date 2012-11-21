@@ -331,6 +331,8 @@ public class PetriNetResourceEditor extends JPanel
 	        DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
 	        renderer.setLeafIcon(Messages.getImageIcon("PetriNet.Resources.Unassign"));
 	        renderer.setOpenIcon(Messages.getImageIcon("PetriNet.Resources.Unassign"));
+
+	        this.updateUI();
 	   }
 
 
@@ -1240,7 +1242,7 @@ public class PetriNetResourceEditor extends JPanel
 					   	if(e.getSource()== resourceColorButtonRole ){
 							   
 							 //JOptionPane.showMessageDialog(null, "Computer sagt NEIN", "Fehlermeldung", JOptionPane.ERROR_MESSAGE);
-							 //mxGraph Objekt, jede Zelle im Graph prüfbar ob aktiv mit while schleife im mouselistener
+							 //mxGraph Objekt, jede Zelle im Graph prï¿½fbar ob aktiv mit while schleife im mouselistener
 					   	}
 				   }
 				   catch(Exception ex){
@@ -1600,8 +1602,8 @@ public class PetriNetResourceEditor extends JPanel
 	   private DropTree getRolesTree(){
 		   if (RolesTree == null){
 			    RolesTopNode = new DefaultMutableTreeNode("Roles");
-			    RolesTree = new DropTree(RolesTopNode,getPetrinet());
 			    RolesTreeModel = new DefaultTreeModel(RolesTopNode);
+			    RolesTree = new DropTree(RolesTreeModel,getPetrinet());
 			    RolesTree.setRowHeight(20);
 			    RolesTree.setEditable(false);
 			    RolesTree.setRootVisible(false);
@@ -1740,8 +1742,8 @@ public class PetriNetResourceEditor extends JPanel
 	          private JTree getSuperRolesTree(){
 	               if (superRolesTree == null){
 	                    superRolesTopNode = new DefaultMutableTreeNode("Super-Roles");
-	                    superRolesTree = new JTree(superRolesTopNode);
 	                    superRolesTreeModel = new DefaultTreeModel(superRolesTopNode);
+	                    superRolesTree = new JTree(superRolesTreeModel);
 	                    superRolesTree.setRowHeight(20);
 	                    superRolesTree.setEditable(false);
 	                    superRolesTree.setRootVisible(false);
@@ -1819,8 +1821,8 @@ public class PetriNetResourceEditor extends JPanel
 	   private DropTree getGroupsTree(){
 		   if (GroupsTree == null){
 			    GroupsTopNode = new DefaultMutableTreeNode("Groups");
-			    GroupsTree = new DropTree(GroupsTopNode,getPetrinet());
 			    GroupsTreeModel = new DefaultTreeModel(GroupsTopNode);
+			    GroupsTree = new DropTree(GroupsTreeModel,getPetrinet());
 			    GroupsTree.setRowHeight(20);
 			    GroupsTree.setRootVisible(false);
 			    GroupsTree.setEditable(false);
@@ -2035,8 +2037,8 @@ public class PetriNetResourceEditor extends JPanel
 	          private JTree getSuperGroupsTree(){
 	               if (superGroupsTree == null){
 	                    superGroupsTopNode = new DefaultMutableTreeNode("Super-Groups");
-	                    superGroupsTree = new JTree(superGroupsTopNode);
 	                    superGroupsTreeModel = new DefaultTreeModel(superGroupsTopNode);
+	                    superGroupsTree = new JTree(superGroupsTreeModel);
 	                    superGroupsTree.setRowHeight(20);
 	                    superGroupsTree.setEditable(false);
 	                    superGroupsTree.setRootVisible(false);
@@ -3912,7 +3914,8 @@ public class PetriNetResourceEditor extends JPanel
     			RolesTreeModel.insertNodeInto(new RolesTreeNode(RolesListModel.get(i).toString()), RolesTopNode, i);
     		
     		}
-	    	
+	
+	    	RolesTree.expandPath(new TreePath(RolesTreeModel.getRoot()));
     		RolesTree.updateUI();
 	    }
 
@@ -3936,6 +3939,7 @@ public class PetriNetResourceEditor extends JPanel
 	    		}
     		}
 	    	
+	    	superRolesTree.expandPath(new TreePath(superRolesTreeModel.getRoot()));	    	
     		superRolesTree.updateUI();
 	    }
 
@@ -3958,7 +3962,8 @@ public class PetriNetResourceEditor extends JPanel
 	    			}
 	    		}
     		}
-	    	
+	    
+	    	superGroupsTree.expandPath(new TreePath(superGroupsTreeModel.getRoot()));	    	
     		superGroupsTree.updateUI();
 	    }
 
@@ -3971,6 +3976,7 @@ public class PetriNetResourceEditor extends JPanel
 
     		}
 	    	
+	    	GroupsTree.expandPath(new TreePath(GroupsTreeModel.getRoot()));	    	
     		GroupsTree.updateUI();
 	    }
 	    	    
@@ -3984,6 +3990,7 @@ public class PetriNetResourceEditor extends JPanel
 	    	for (int i = 0; i < objectsUnassignedListModel.getSize();i++){
     			objectsTreeModel.insertNodeInto(new ObjectsTreeNode(objectsUnassignedListModel.get(i).toString()), objectsUnassignedNode, i);
     		}	    	
+	    	objectsTree.expandPath(new TreePath(objectsTreeModel.getRoot()));	    	
     		objectsTree.updateUI();
 	    }
 
@@ -4251,8 +4258,8 @@ class DragTree extends JTree {
 
 		  private int top = 0, bottom = 0, topRow = 0, bottomRow = 0;
 
-		  public DropTree(DefaultMutableTreeNode rootNode,PetriNetModelProcessor petrinet ) {
-			  super( rootNode );
+		  public DropTree(TreeModel treeModel,PetriNetModelProcessor petrinet ) {
+			  super( treeModel );
 			  this.petrinet=petrinet;
 		      @SuppressWarnings("unused")
 			DropTarget dropTarget = new DropTarget(this,

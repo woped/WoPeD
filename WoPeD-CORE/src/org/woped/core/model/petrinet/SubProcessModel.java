@@ -1,4 +1,3 @@
-//<<<<<<< SubProcessModel.java
 /*
  * 
  * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
@@ -169,8 +168,6 @@ public class SubProcessModel extends TransitionModel implements
 				+ splitedSourceId[splitedSourceId.length - 1];
 				cMapSub.setArcSourceId(newSourceName);
 				((TransitionModel) newContainer.getElementById(newSourceName)).setOutgoingSource(true);
-//				arcSub = processor.createArc(cMapSub.getArcSourceId(),originalElementId
-//						);
 			}
 		}
 		/* insert arcs */
@@ -242,5 +239,4 @@ public class SubProcessModel extends TransitionModel implements
 		return direction;
 	}
 
-//>>>>>>> 1.20.2.3
 }

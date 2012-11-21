@@ -27,14 +27,13 @@ import java.beans.PropertyChangeEvent;
 
 import javax.swing.JOptionPane;
 import javax.swing.event.UndoableEditEvent;
-import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoableEdit;
 
-import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphUndoManager;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.SubProcessModel;
+import org.woped.editor.controller.WoPeDJGraphGraphModel.WoPeDUndoableEdit;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
 
@@ -87,23 +86,26 @@ public class WoPeDUndoManager extends GraphUndoManager
     	if (arg0 == null || !isInProgress())
     		super.undo();
     	else {
-    		WoPeDUndoableEdit edit = (WoPeDUndoableEdit) super.editToBeUndone();
+    		UndoableEdit edit = super.editToBeUndone();
     		if (edit == null)
-    			throw new CannotUndoException();
-    		doIt = true;
-    		if (edit.m_inserted != null){
-    			for (int i = 0; i < edit.m_inserted.length; i++){
-    				
-    				if (edit.m_inserted[i] instanceof SubProcessModel){
-    				Object[] options = {
-    						Messages.getString("Popup.Confirm.SubProcess.Ok"),
-    						Messages.getString("Popup.Confirm.SubProcess.No") };
-    				int j = JOptionPane.showOptionDialog(null,
-    						Messages.getString("Popup.Confirm.SubProcess.Info"),
-    						Messages.getString("Popup.Confirm.SubProcess.Warn"),
-    						JOptionPane.DEFAULT_OPTION,
-    						JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-    				if ( j != 0) doIt = false;
+    			throw new CannotUndoException();    		
+			doIt = true;
+    		if (edit instanceof WoPeDUndoableEdit) {
+    			WoPeDUndoableEdit wopedEdit = (WoPeDUndoableEdit) edit; 
+    			if (wopedEdit.getInserted() != null){
+    				for (int i = 0; i < wopedEdit.getInserted().length; i++){
+
+    					if (wopedEdit.getInserted()[i] instanceof SubProcessModel){
+    						Object[] options = {
+    								Messages.getString("Popup.Confirm.SubProcess.Ok"),
+    								Messages.getString("Popup.Confirm.SubProcess.No") };
+    						int j = JOptionPane.showOptionDialog(null,
+    								Messages.getString("Popup.Confirm.SubProcess.Info"),
+    								Messages.getString("Popup.Confirm.SubProcess.Warn"),
+    								JOptionPane.DEFAULT_OPTION,
+    								JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+    						if ( j != 0) doIt = false;
+    					}
     				}
     			}
     		}
@@ -124,23 +126,26 @@ public class WoPeDUndoManager extends GraphUndoManager
 	if (arg0 == null || !isInProgress())
 		super.redo();
 	else {
-		WoPeDUndoableEdit edit = (WoPeDUndoableEdit) super.editToBeRedone();
+		UndoableEdit edit = super.editToBeRedone();
 		if (edit == null)
-			throw new CannotRedoException();
+			throw new CannotUndoException();    		
 		doIt = true;
-		if (edit.m_removed != null){
-			for (int i = 0; i < edit.m_removed.length; i++){
-				
-				if (edit.m_removed[i] instanceof SubProcessModel){
-				Object[] options = {
-						Messages.getString("Popup.Confirm.SubProcess.Ok"),
-						Messages.getString("Popup.Confirm.SubProcess.No") };
-				int j = JOptionPane.showOptionDialog(null,
-						Messages.getString("Popup.Confirm.SubProcess.Info"),
-						Messages.getString("Popup.Confirm.SubProcess.Warn"),
-						JOptionPane.DEFAULT_OPTION,
-						JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-				if ( j != 0) doIt = false;
+		if (edit instanceof WoPeDUndoableEdit) {
+			WoPeDUndoableEdit wopedEdit = (WoPeDUndoableEdit) edit; 
+			if (wopedEdit.getRemoved() != null){
+				for (int i = 0; i < wopedEdit.getRemoved().length; i++){
+
+					if (wopedEdit.getRemoved()[i] instanceof SubProcessModel){
+						Object[] options = {
+								Messages.getString("Popup.Confirm.SubProcess.Ok"),
+								Messages.getString("Popup.Confirm.SubProcess.No") };
+						int j = JOptionPane.showOptionDialog(null,
+								Messages.getString("Popup.Confirm.SubProcess.Info"),
+								Messages.getString("Popup.Confirm.SubProcess.Warn"),
+								JOptionPane.DEFAULT_OPTION,
+								JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+						if ( j != 0) doIt = false;
+					}
 				}
 			}
 		}
@@ -170,11 +175,8 @@ public class WoPeDUndoManager extends GraphUndoManager
     public synchronized boolean addEdit(UndoableEdit arg0)
     {
         if (m_enabled)
-        {
-            WoPeDUndoableEdit edit = new WoPeDUndoableEdit((DefaultGraphModel.GraphModelEdit) arg0, m_editor);
-//            LoggerManager.debug(Constants.EDITOR_LOGGER, edit.toString());
-            return super.addEdit(edit);
-        }
+            return super.addEdit(arg0);
+        
         return false;
     }
 
@@ -204,7 +206,7 @@ public class WoPeDUndoManager extends GraphUndoManager
     	if (super.canUndo())
     	{WoPeDUndoableEdit edit = (WoPeDUndoableEdit) super.editToBeUndone();
     	
-    	if (edit.m_inserted != null)    
+    	if (edit.getInserted() != null)    
     		return (container.getIdMap().size() > 2);
     	else return true;
     }return false;

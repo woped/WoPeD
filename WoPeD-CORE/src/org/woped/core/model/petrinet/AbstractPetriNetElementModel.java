@@ -29,9 +29,9 @@ import org.woped.core.utilities.LoggerManager;
  *         <br>
  *         Note: (from JGraph) <br>
  *         When combining the attributes from a GraphCell with the attributes
- *         from the CellView, the graph cell’s attributes have precedence over
- *         the view’s attributes. The special value attribute is in sync with
- *         the cell’s user object.
+ *         from the CellView, the graph cellï¿½s attributes have precedence over
+ *         the viewï¿½s attributes. The special value attribute is in sync with
+ *         the cellï¿½s user object.
  * 
  * 09.10.2003
  */
@@ -521,6 +521,24 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
 		return result;
 	}
 
+	/**
+	 * Determine whether an element is a source node (no incoming connections in any of the owning containers)
+	 * @return true if element is a source node, false otherwise
+	 */
+	public boolean isSource() {
+		boolean result = true;
+		// An object can have multiple owning containers
+		// Iterate through all of them to get all connections
+		Iterator<ModelElementContainer> ownerIterator = getOwningContainers().iterator();
+		while (ownerIterator.hasNext()) {
+			ModelElementContainer currentContainer = ownerIterator.next();
+			Map<String, AbstractPetriNetElementModel> sourceElements = currentContainer.getSourceElements(getId());
+			if (sourceElements.size()>0)
+				result = false;
+		}
+		return result;
+	}	
+	
 	/**
 	 * While the actual implementation is node-type specific, we have a common definition of what active means for
 	 * all node types: Being active means that the node can fire when triggered to do so.

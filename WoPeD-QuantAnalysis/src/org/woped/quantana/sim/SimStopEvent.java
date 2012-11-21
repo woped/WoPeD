@@ -17,8 +17,7 @@ public class SimStopEvent extends SimulatorEvent{
 		this.r = a.getResource();		
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void invoke(){
+ 	public void invoke(){
 		SimRunner sim = getSim();		
 		double time = getTime();
 		s.updateRunStats(time, -1);		

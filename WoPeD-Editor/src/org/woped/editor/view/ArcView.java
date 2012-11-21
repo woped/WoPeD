@@ -42,6 +42,7 @@ import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.ArcModel;
 import org.woped.translations.Messages;
 
@@ -195,6 +196,7 @@ public class ArcView extends EdgeView
 				Object[] labels = GraphConstants.getExtraLabels(view
 						.getAllAttributes());
 				JGraph graph = (JGraph)this.graph.get();
+				g.setFont(DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
 				if (labels != null) {
 					for (int i = 0; i < labels.length; i++)
 						paintLabel(g, graph.convertValueToString(labels[i]),

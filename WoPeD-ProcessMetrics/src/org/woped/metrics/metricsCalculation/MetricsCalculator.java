@@ -447,8 +447,7 @@ public class MetricsCalculator {
 		this.doNotdisplay = doNotDisplay;
 			
 		//Clone HashSet
-		@SuppressWarnings("unchecked")
-		HashSet<String> newStack = (HashSet<String>) stack.clone();
+ 		HashSet<String> newStack = (HashSet<String>) stack.clone();
 		
 		//Add the actual Token to the Stack
 		newStack.add(token);

@@ -53,11 +53,11 @@ import org.jgraph.event.GraphLayoutCacheListener;
 import org.jgraph.event.GraphModelEvent;
 import org.jgraph.event.GraphModelListener;
 import org.jgraph.graph.CellView;
-import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.WoPeDJGraph;
+import org.woped.editor.controller.WoPeDJGraphGraphModel;
 import org.woped.editor.controller.vc.EditorVC;
 
 /**
@@ -75,7 +75,7 @@ public class OverviewPanel extends JPanel
 		PropertyChangeListener
 {
     protected AbstractGraph    graph;
-    protected EditorVC         editor;
+    protected IEditor         editor;
     protected JGraph           originalGraph;
     protected PannerViewfinder v;
     protected Rectangle        r;
@@ -94,7 +94,7 @@ public class OverviewPanel extends JPanel
         v = new PannerViewfinder(this, scrollPane.getViewport());
         GraphLayoutCache view = new ViewRedirector(editorInterface.getGraph().getGraphLayoutCache());
 
-        graph = new WoPeDJGraph((DefaultGraphModel) editorInterface.getGraph().getModel(), 
+        graph = new WoPeDJGraph((WoPeDJGraphGraphModel) editorInterface.getGraph().getModel(), 
         	editorInterface.getGraph().getMarqueeHandler(), 
         	editor2.viewFactory);
         

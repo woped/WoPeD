@@ -178,8 +178,7 @@ public class LinearPathDescriptor {
 		for(String key:nodes)
 			startNode=key;
 		for(String key:keySet){
-			@SuppressWarnings("unchecked")
-			HashMap<String,ArrayList<String>> newMap = (HashMap<String,ArrayList<String>>) pathMap.clone();
+ 			HashMap<String,ArrayList<String>> newMap = (HashMap<String,ArrayList<String>>) pathMap.clone();
 			newMap.put(key, new ArrayList<String>());
 			if(!isConnected(startNode, newMap, new HashSet<String>(), key)){
 				vertices++;
