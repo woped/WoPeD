@@ -65,6 +65,11 @@ public class ParaphrasingOutput{
 		this.defaultTableModel.setColumnIdentifiers(columnNames);
 		
 		this.table = new JTable(this.defaultTableModel){  
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int row,int column){  
 				    return false;  
 				  }

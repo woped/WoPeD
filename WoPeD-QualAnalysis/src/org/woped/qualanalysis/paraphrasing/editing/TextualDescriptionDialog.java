@@ -143,10 +143,14 @@ public class TextualDescriptionDialog extends JDialog implements ActionListener,
 		this.availableIdsTableModel = new DefaultTableModel();
 		this.availableIdsTableModel.setColumnIdentifiers(columnNames);
 		this.availableIdsTable = new JTable(this.availableIdsTableModel){  
-			  public boolean isCellEditable(int row,int column){  
+			  /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			public boolean isCellEditable(int row,int column){  
 				    return false;  
 				  }  
-			  public Class getColumnClass(int col) {   
+			  public Class<?> getColumnClass(int col) {   
 			        if (col == 0 || col == 1)       //second column accepts only String values   
 			            return String.class;   
 			        if(col == 2) 

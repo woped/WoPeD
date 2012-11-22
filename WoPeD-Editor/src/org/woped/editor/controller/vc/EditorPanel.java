@@ -38,7 +38,6 @@ import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.VisualController;

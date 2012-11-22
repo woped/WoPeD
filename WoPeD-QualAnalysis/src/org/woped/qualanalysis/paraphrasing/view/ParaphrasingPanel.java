@@ -10,7 +10,6 @@ import javax.swing.JPopupMenu;
 
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.paraphrasing.action.ButtonListener;
-import org.woped.qualanalysis.paraphrasing.action.SelectionListener;
 import org.woped.translations.Messages;
 
 public class ParaphrasingPanel extends JPanel{

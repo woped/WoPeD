@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 public class ParaphrasingModel {
 
-	private String id = null;
-	
 	private ArrayList<Object[]> table= new ArrayList<Object[]>(0);
 	
 	public ParaphrasingModel(){
@@ -13,7 +11,6 @@ public class ParaphrasingModel {
 	}
 	
 	public ParaphrasingModel(String id){
-		this.id = id;
 	}
 	
 	public void addElement(String id, String text){
@@ -31,7 +28,6 @@ public class ParaphrasingModel {
 	}
 	
 	public void setId(String id){
-		this.id = id;
 	}
 	
 	public int getTableSize(){

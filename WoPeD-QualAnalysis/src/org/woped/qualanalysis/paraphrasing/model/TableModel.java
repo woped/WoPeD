@@ -39,7 +39,7 @@ public class TableModel extends AbstractTableModel {
 		fireTableDataChanged();
 	}
 	
-	public Class getColumnClass(int num){
+	public Class<? extends Object> getColumnClass(int num){
 		Object obj = getValueAt(0,num);
 		return obj.getClass();
 	}
