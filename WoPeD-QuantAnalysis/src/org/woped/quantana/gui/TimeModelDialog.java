@@ -234,9 +234,9 @@ public class TimeModelDialog extends JDialog {
 		
 		setTitle(Messages.getTitle("QuantAna.TimeModel"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = 330;
+		int width = 350;
 		int x = screenSize.width > width ? (screenSize.width - width)/2 : 0;
-		int height = 300;
+		int height = 320;
 		int y = screenSize.height > height  ? (screenSize.height - height)/2 : 0;
 		setBounds(x, y, width, height);
 

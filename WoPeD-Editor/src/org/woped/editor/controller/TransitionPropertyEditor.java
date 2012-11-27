@@ -621,7 +621,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			triggerResourceEntry.add(j1, BorderLayout.LINE_START);
 			triggerResourceEntry.add(j2, BorderLayout.CENTER);
 			triggerResourceEntry.add(new JLabel(
-					"                                    "),
+					"                               "),
 					BorderLayout.LINE_END);
 		}
 
@@ -1404,7 +1404,7 @@ public class TransitionPropertyEditor extends JDialog implements
 							.getString("Transition.Properties.ServiceTime")),
 					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 			GridBagConstraints c = new GridBagConstraints();
-			c.fill = GridBagConstraints.HORIZONTAL;
+			c.fill = GridBagConstraints.BOTH;
 			c.anchor = GridBagConstraints.WEST;
 			c.weightx = 1;
 			c.weighty = 1;
