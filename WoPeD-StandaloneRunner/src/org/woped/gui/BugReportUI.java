@@ -30,7 +30,6 @@ public class BugReportUI extends JDialog
     private JScrollPane         bugReportPanel = null;
     private JPanel              buttonPanel    = null;
 
-    // TODO: move in propertie files (tfreytag)
     private static final String bugReportText  = Messages.getString("BugReport.Text"); ;
 
     public BugReportUI()
@@ -100,7 +99,6 @@ public class BugReportUI extends JDialog
 
             c.gridy = 2;
             c.insets = new Insets(0, 10, 10, 10);
-            // TODO: move in propertie files (tfreytag)
             bugPageLabel = new JLabel(Messages.getString("BugReport.Link"));
             bugPageLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("BugReport.URL"), bugPageLabel));
             panel.add(bugPageLabel, c);
