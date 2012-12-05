@@ -2,7 +2,7 @@
 	<property file="../CommonLibs/build.properties" />
 		
 	<target name="compile">
-			<javac srcdir="src" destdir="bin" compiler="extJavac">
+			<javac srcdir="src" destdir="bin" compiler="extJavac" includeantruntime="false">
 				<classpath>
 					<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
 					<pathelement path="../WoPeD-QualAnalysis/lib/woped-qualanalysis-${QUALANAVERSION}${SNAPSHOT}.jar" />

@@ -198,7 +198,7 @@
 				<arg line="/c java -jar launch4j.jar buildexe.xml" />
 			</exec>
 			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar lib\compiler.jar -HOME . install.xml -b . -o WoPeD-install.jar" />
+				<arg line="/c java -jar izpack\lib\compiler.jar install.xml -o WoPeD-install.jar" />
 			</exec>
 			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
 
@@ -220,9 +220,7 @@
 			<exec dir="dist" executable="/bin/sh">
 				<arg line="buildexeOnMac" />
 			</exec>
-
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
-
+			
 			<exec dir="dist" executable="/bin/sh">
 				<arg line="buildsetupOnMac" />
 			</exec>

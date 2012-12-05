@@ -6,7 +6,7 @@
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 
 	<target name="compile">
-		<javac srcdir="src" destdir="bin" compiler="extJavac">
+		<javac srcdir="src" destdir="bin" compiler="extJavac" includeantruntime="false">
 			<classpath>
 				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-Translations/lib/woped-translations-${TRANSLATIONVERSION}${SNAPSHOT}.jar" />
