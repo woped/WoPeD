@@ -124,7 +124,8 @@ public class PetriNetModelProcessor implements
 					|| map.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
 				// Trigger
 				if (map.getTriggerType() != -1) {
-					newTrigger(map);
+					((TransitionModel)anElement).getToolSpecific().setTrigger(newTrigger(map));
+					
 					
 					if (map.getTriggerPosition() != null) {
 						((TransitionModel) anElement)

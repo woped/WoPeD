@@ -2193,7 +2193,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		}
 
 		// Remove the old transition
-		editor.deleteCell((DefaultGraphCell)editor.getGraph().getSelectionCell());
+		editor.deleteCell(transition, true);
 		editor.create(newMap);
 
 		for (int i = 0; i < outAcrs.size(); i++)

@@ -731,7 +731,7 @@ public class EditorVC implements KeyListener,
 				TransitionModel owner = (TransitionModel) getModelProcessor()
 						.getElementContainer().getElementById(
 								((TriggerModel) toDelete[i]).getOwnerId());
-				if (owner != null) {
+				if (owner != null && owner.getToolSpecific().getTrigger() != null) {
 					if (owner.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE
 							&& owner.getToolSpecific().getTransResource() != null) {
 						owner.getToolSpecific().removeTransResource();
