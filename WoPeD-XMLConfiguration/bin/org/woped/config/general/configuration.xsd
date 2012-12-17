@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="config.woped.org" xmlns="config.woped.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Configuration">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="gui" type="GUI"/>
+				<xs:element name="editor" type="Editor"/>
+				<xs:element name="general" type="General"/>
+				<xs:element name="tools" type="Tool"/>
+				<xs:element name="coloring" type="Coloring"/>
+				<xs:element name="metrics" type="Metrics"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="Importing">
+		<xs:sequence>
+			<xs:element name="toolspecific" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Exporting">
+		<xs:sequence>
+			<xs:element name="toolspecific" type="xs:boolean"/>
+			<xs:element name="tpnExportElementAsName" type="xs:boolean" default="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="GUI">
+		<xs:sequence>
+			<xs:element name="Window">
+				<xs:complexType>
+					<xs:attribute name="maximize" type="xs:boolean" default="true" use="optional"/>
+					<xs:attribute name="width" type="xs:int" use="optional"/>
+					<xs:attribute name="height" type="xs:int" use="optional"/>
+					<xs:attribute name="x" type="xs:int" use="optional"/>
+					<xs:attribute name="y" type="xs:int" use="optional"/>
+					<xs:attribute name="lookAndFeel" type="xs:string" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Locale">
+				<xs:complexType>
+					<xs:attribute name="language" type="xs:string"/>
+					<xs:attribute name="country" type="xs:string" use="optional"/>
+					<xs:attribute name="variant" type="xs:string" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Editor">
+		<xs:sequence>
+			<xs:element name="editOnCreation" type="xs:boolean" default="true" minOccurs="0"/>
+			<xs:element name="insert_copy" type="xs:boolean" default="false" minOccurs="0"/>
+			<xs:element name="smartEditing" type="xs:boolean" default="true" minOccurs="0"/>
+			<xs:element name="showGrid" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="arrowWidth" type="xs:int" minOccurs="0"/>
+			<xs:element name="arrowheadSize" type="xs:int" minOccurs="0"/>
+			<xs:element name="arrowFilledHead" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="roundRouting" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RecentFile">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="path" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="General">
+		<xs:sequence>
+			<xs:element name="homedir" type="xs:string"/>
+			<xs:element name="recentFiles" type="RecentFile" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Tool">
+		<xs:sequence>
+			<xs:element name="exporting" type="Exporting"/>
+			<xs:element name="importing" type="Importing"/>
+			<xs:element name="woflan" type="Woflan"/>
+			<xs:element name="aproUse" type="xs:boolean" minOccurs="0" />
+			<xs:element name="aproServerName" type="xs:string" minOccurs="0" />
+			<xs:element name="aproUserName" type="xs:string" minOccurs="0" />
+			<xs:element name="aproProxyName" type="xs:string" minOccurs="0" />
+			<xs:element name="aproProxyPort" type="xs:int" minOccurs="0" />
+			<xs:element name="aproServerPort" type="xs:int" minOccurs="0" />
+			<xs:element name="aproUseProxy" type="xs:boolean" minOccurs="0" />			
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Woflan">
+		<xs:sequence>
+			<xs:element name="useWoflan" type="xs:boolean" default="false" minOccurs="0"/>
+			<xs:element name="woflanPath" type="xs:string" minOccurs="0"/>
+			<xs:element name="useWoflanDLL" type="xs:boolean" default="false" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Coloring">
+		<xs:sequence>
+			<xs:element name="colorOn" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="algorithmMode" type="xs:int" minOccurs="0"/>
+			<xs:element name="color1" type="xs:int" minOccurs="0"/>
+			<xs:element name="color2" type="xs:int" minOccurs="0"/>
+			<xs:element name="color3" type="xs:int" minOccurs="0"/>
+			<xs:element name="color4" type="xs:int" minOccurs="0"/>
+			<xs:element name="color5" type="xs:int" minOccurs="0"/>
+			<xs:element name="color6" type="xs:int" minOccurs="0"/>
+			<xs:element name="color7" type="xs:int" minOccurs="0"/>
+			<xs:element name="color8" type="xs:int" minOccurs="0"/>
+			<xs:element name="color9" type="xs:int" minOccurs="0"/>
+			<xs:element name="color10" type="xs:int" minOccurs="0"/>
+			<xs:element name="color11" type="xs:int" minOccurs="0"/>
+			<xs:element name="color12" type="xs:int" minOccurs="0"/>
+			<xs:element name="color13" type="xs:int" minOccurs="0"/>
+			<xs:element name="color14" type="xs:int" minOccurs="0"/>
+			<xs:element name="color15" type="xs:int" minOccurs="0"/>
+			<xs:element name="color16" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor1" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor2" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor3" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor4" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor5" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor6" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor7" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor8" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor9" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor10" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor11" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor12" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor13" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor14" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor15" type="xs:int" minOccurs="0"/>
+			<xs:element name="defaultcolor16" type="xs:int" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Metrics">
+		<xs:sequence>
+			<xs:element name="useMetrics" 					type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
+			<xs:element name="variableDecimalPlaces" 		type="xs:int" 		minOccurs="0" maxOccurs="1"/>
+			<xs:element name="algorithmDecimalPlaces" 		type="xs:int" 		minOccurs="0" maxOccurs="1"/>
+			<xs:element name="useAlgorithmHighlighting" 	type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
+			<xs:element name="showNamesInBuilder" 			type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
+			<xs:element name="showAdvancedErrorMessages"	type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

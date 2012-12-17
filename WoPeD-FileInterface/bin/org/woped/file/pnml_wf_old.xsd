@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Dietmar Hantsch (KYBEIDOS GmbH) -->
+<xs:schema targetNamespace="oldpnml.woped.org" xmlns="oldpnml.woped.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation>
+		      Proposal: Petri Net Markup Language schema for st-Nets
+		      Matthias Juengel 12.10.2000
+		      Michael Weber 12.10.2000
+		      Modified for WoPeD
+		      Simon Isaak Landes - last change 21.10.2004
+  	  	</xs:documentation>
+	</xs:annotation>
+	<xs:element name="pnml">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="net" type="Net"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Net">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="place" type="Place" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="transition" type="Transition" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="arc" type="Arc" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="page" type="Page" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="referencePlace" type="ReferencePlace" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="referenceTransition" type="ReferenceTransition" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="type" type="xs:string" use="required"/>
+		<xs:attribute name="frameWidth" type="xs:double" use="optional"/>
+		<xs:attribute name="frameHeight" type="xs:double" use="optional"/>
+		<xs:attribute name="frameX" type="xs:double" use="optional"/>
+		<xs:attribute name="frameY" type="xs:double" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="Place">
+		<xs:sequence>
+			<xs:element name="graphics" type="Graphics"/>
+			<xs:element name="name" type="Name"/>
+			<xs:element name="initialMarking" type="InitialMarking" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Transition">
+		<xs:sequence>
+			<xs:element name="graphics" type="Graphics"/>
+			<xs:element name="name" type="Name"/>
+			<xs:element name="toolspecific" type="Toolspecific" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Arc">
+		<xs:sequence>
+			<xs:element name="graphics" type="Graphics" minOccurs="0"/>
+			<xs:element name="inscription" type="Inscription" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="source" type="xs:anyURI" use="required"/>
+		<xs:attribute name="target" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ReferencePlace">
+		<xs:sequence>
+			<xs:element name="graphics" type="Graphics"/>
+			<xs:element name="name" type="Name"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="ref" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ReferenceTransition">
+		<xs:sequence>
+			<xs:element name="graphics" type="Graphics"/>
+			<xs:element name="name" type="Name"/>
+			<xs:element name="toolspecific" type="Toolspecific" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="ref" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Page">
+		<xs:sequence>
+			<xs:element name="name" type="Name"/>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="place" type="Place" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="transition" type="Transition" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="arc" type="Arc" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="page" type="Page" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="referencePlace" type="ReferencePlace" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="referenceTransition" type="ReferenceTransition" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Graphics">
+		<xs:choice>
+			<xs:element name="position" type="Position" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="offset" type="Offset" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--
+	This schema allows a graphics element of offsetType in a place.
+	To avoid this, in a future version of this schema there will be local element declarations for 
+	the graphics element. The following type definitions show, how it could look like.
+	<xs:complexType name="PlaceTransitionGraphicsType" content="elementOnly">
+		<xs:sequence>
+			<xs:element name="position" type="positionType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArcGraphicsType" content="elementOnly">
+		<xs:sequence>
+			<xs:element name="position" type="positionType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OffsetGraphicsType" content="elementOnly">
+		<xs:element name="offset" type="offsetType"/>
+	</xs:complexType>
+	-->
+	<xs:complexType name="Offset">
+		<xs:attribute name="x" type="xs:int" use="required"/>
+		<xs:attribute name="y" type="xs:int" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Position">
+		<xs:attribute name="x" type="xs:int" use="required"/>
+		<xs:attribute name="y" type="xs:int" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Name">
+		<xs:sequence>
+			<xs:element name="value" type="xs:string"/>
+			<xs:element name="graphics" type="Graphics" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InitialMarking">
+		<xs:sequence>
+			<xs:element name="value" type="xs:string"/>
+			<xs:element name="graphics" type="Graphics" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Inscription">
+		<xs:sequence>
+			<xs:element name="value" type="xs:string"/>
+			<xs:element name="graphics" type="Graphics" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Toolspecific">
+		<xs:sequence>
+			<xs:element name="operator" type="Operator" minOccurs="0"/>
+			<xs:element name="trigger" type="Trigger" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="tool" type="xs:string" use="required"/>
+		<xs:attribute name="version" type="xs:double" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Operator">
+		<xs:attribute name="operatorType" type="xs:int" use="required"/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Trigger">
+		<xs:sequence>
+			<xs:element name="graphics" type="Graphics"/>
+		</xs:sequence>
+		<xs:attribute name="triggerType" type="xs:int" use="required"/>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>
