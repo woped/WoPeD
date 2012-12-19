@@ -60,10 +60,11 @@ import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
-import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.bpel.Assign;
@@ -2171,7 +2172,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		// Most of the settings are just taken from the old model, but some 
 		// settings need to be different, of course (operator type,...)
 		newMap.setType(nodeType);
-		newMap.setOperatorType(operatorType);
+		newMap.setOperatorType(operatorType);		
 		
 		ArrayList<CreationMap> incAcrs = new ArrayList<CreationMap>();
 		ArrayList<CreationMap> outAcrs = new ArrayList<CreationMap>();
@@ -2193,8 +2194,14 @@ public class TransitionPropertyEditor extends JDialog implements
 		}
 
 		// Remove the old transition
-		// editor.deleteCell((DefaultGraphCell)editor.getGraph().getSelectionCell());
-		editor.deleteCell(transition, true);
+		// If we are part of a group (we always should be if we're a transition),
+		// we delete the group to make sure we delete name and any other cells
+		// that might be grouped along with us
+		DefaultGraphCell transitionCell = transition;
+		if (transition.getParent() instanceof GroupModel) {
+			transitionCell = (DefaultGraphCell) transition.getParent();
+		}
+		editor.deleteCell(transitionCell, true);
 		editor.create(newMap);
 
 		for (int i = 0; i < outAcrs.size(); i++)
