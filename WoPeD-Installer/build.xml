@@ -160,6 +160,9 @@
 			<fileset file="build-tools/setup/MacOS/makepackage" />
 		</copy>
 
+		<copy file="dist/Readme.txt" tofile="installers/Readme-${WOPEDVERSION}${SNAPSHOT}.txt" />
+		<copy file="dist/Changelog.txt" tofile="installers/Changelog-${WOPEDVERSION}${SNAPSHOT}.txt" />
+
 		<unzip src="build-tools/setup/izpack.zip" dest="dist" />
 	</target>
 
@@ -191,29 +194,6 @@
 		</jar>
 	</target>
 
-	<target name="makeWindowsInstaller">
-		<try>
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
-			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar launch4j.jar buildexe.xml" />
-			</exec>
-			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar izpack\lib\compiler.jar install.xml -o WoPeD-install.jar" />
-			</exec>
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
-
-			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar launch4j.jar buildsetup.xml" />
-			</exec>
-
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
-
-		    <catch>
-			  <echo>Not running on Windows</echo>
-		    </catch>
-		</try>
-	</target>
-		
 	<target name="makeWindowsInstallerOnMac">
 		<try>
 			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
@@ -225,10 +205,37 @@
 				<arg line="buildsetupOnMac" />
 			</exec>
 
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install.exe" />
+			<exec dir="dist" executable="/bin/sh">
+				<arg line="buildsetupexeOnMac" />
+			</exec>
+
+			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install-windows.exe" />
 
 		    <catch>
 			  	<echo>Not running on Mac</echo>
+		    </catch>
+		</try>
+	</target>
+		
+	<target name="makeWindowsInstaller">
+		<try>
+			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
+			<exec dir="dist" executable="cmd">
+				<arg line="/c java -jar launch4j.jar buildexe.xml" />
+			</exec>
+			<exec dir="dist" executable="cmd">
+				<arg line="/c java -jar izpack\lib\compiler.jar install.xml -o WoPeD-install-windows.jar" />
+			</exec>
+			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
+
+			<exec dir="dist" executable="cmd">
+				<arg line="/c java -jar launch4j.jar buildsetup.xml" />
+			</exec>
+
+			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install-windows.exe" />
+
+		    <catch>
+			  <echo>Not running on Windows</echo>
 		    </catch>
 		</try>
 	</target>
@@ -241,10 +248,10 @@
 			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
 			<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
 				<tarfileset dir="dist" mode="755">
-					<include name="WoPeD-install" />
+					<include name="WoPeD-install-linux" />
 				</tarfileset>
 				<tarfileset dir="dist">
-					<include name="WoPeD-install.jar" />
+					<include name="WoPeD-install-linux.jar" />
 				</tarfileset>
 			</tar>
 		    <catch>
@@ -293,9 +300,7 @@
 	</target>
 
 	<target name="purge">
-		<copy file="dist/Readme.txt" tofile="installers/Readme-${WOPEDVERSION}${SNAPSHOT}.txt" />
-		<copy file="dist/Changelog.txt" tofile="installers/Changelog-${WOPEDVERSION}${SNAPSHOT}.txt" />
 		<delete dir="dist" />
 	</target>
-
+	
 </project>

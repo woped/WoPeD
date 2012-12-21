@@ -61,7 +61,7 @@ int main(int argc, char* args[])
     char cmd[1024];
 
     strcpy(currPath, args[0]);
-    strcpy(jarName, "/WoPeD-install.jar");
+    strcpy(jarName, "/WoPeD-install-linux.jar");
 
     // search for JRE
     if (javasearch() == 0)
