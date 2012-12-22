@@ -149,7 +149,9 @@ public class EditorVC implements KeyListener,
 	// Petri net model
 	private PetriNetModelProcessor modelProcessor = null;
 
-	private String m_filePath = null;
+	private String m_filepath = null;
+
+	private String m_pathname = null;
 
 	private int m_defaultFileType = -1;
 
@@ -1859,13 +1861,33 @@ public class EditorVC implements KeyListener,
 	}
 
 	/**
+	 * Returns the pathname if the net was saved before or was opened from a
+	 * file.
+	 * 
+	 * @return String
+	 */
+	public String getPathName() {
+		return m_pathname;
+	}
+
+	/**
 	 * Returns the filepath if the net was saved before or was opened from a
 	 * file.
 	 * 
 	 * @return String
 	 */
 	public String getFilePath() {
-		return m_filePath;
+		return m_filepath;
+	}
+
+	/**
+	 * Sets the pathname. Should be called when the net was saved in a file.
+	 * 
+	 * @param filePath
+	 *            The filePath to set
+	 */
+	public void setPathName(String pathname) {
+		this.m_pathname = pathname;
 	}
 
 	/**
@@ -1874,8 +1896,8 @@ public class EditorVC implements KeyListener,
 	 * @param filePath
 	 *            The filePath to set
 	 */
-	public void setFilePath(String filePath) {
-		this.m_filePath = filePath;
+	public void setFilePath(String filepath) {
+		this.m_filepath = filepath;
 	}
 
 	/**
