@@ -45,7 +45,6 @@ import org.woped.qualanalysis.simulation.ReferenceProvider;
  * 
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *
- * TODO DOCUMENTATION (lai)
  */
 public class DefaultApplicationMediator extends ApplicationMediator
 {
@@ -55,62 +54,56 @@ public class DefaultApplicationMediator extends ApplicationMediator
     public static final int VIEWCONTROLLER_SIMULATORBAR = 13;
  
     private int             statusCounter            = 0;
-    
-	public DefaultApplicationMediator(IUserInterface ui, IGeneralConfiguration conf, String[] args)
+    private IUserInterface  ui;
+    private TaskBarVC		taskbar;
+    private StatusBarVC		statusbar;
+    private ConfigVC		config;
+   
+	public DefaultApplicationMediator(IUserInterface ui, IGeneralConfiguration conf)
     {
         super(ui, conf);
+        this.ui = ui;
 		ReferenceProvider helper = new ReferenceProvider();
 		helper.setMediatorReference(this);
         getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(ViewEvent.VIEWEVENTTYPE_GUI, this));
         getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(ViewEvent.VIEWEVENTTYPE_FILE, this));
         if (ui == null)
         {
-            TaskBarVC taskbar = (TaskBarVC) this.createViewController(VIEWCONTROLLER_TASKBAR);
+            taskbar = (TaskBarVC) this.createViewController(VIEWCONTROLLER_TASKBAR);
             addViewController(taskbar);
-            StatusBarVC statusbar = (StatusBarVC) this.createViewController(VIEWCONTROLLER_STATUSBAR);
+            statusbar = (StatusBarVC) this.createViewController(VIEWCONTROLLER_STATUSBAR);
             addViewController(statusbar);
-            ConfigVC config = (ConfigVC) this.createViewController(ApplicationMediator.VIEWCONTROLLER_CONFIG);
+            config = (ConfigVC) this.createViewController(ApplicationMediator.VIEWCONTROLLER_CONFIG);
             addViewController(config);
-            ui = new DefaultUserInterface(taskbar, statusbar);
-            setUi(ui);
-            setDisplayUI((JFrame)ui);
-            
-            ui.initialize(this);  
-            
-
-            if (args != null)
-            {
-                for (int i = 0; i < args.length; i++)
-                {
-                    	File f = new File(args[i]);
-        				LoggerManager.info(Constants.GUI_LOGGER, "OPENING FILE " + args[i]);  
-        				
-                    	fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.OPEN, f));
-                } 
-            }      
         }
     }
+        
+	public void startUI(String args[]) {
+        ui = new DefaultUserInterface(taskbar, statusbar);
+        setUi(ui);
+        setDisplayUI((JFrame)ui);          
+        ui.initialize(this);  
+
+        if (args != null) {
+			for (int i = 0; i < args.length; i++) {
+				File f = new File(args[i]);
+				LoggerManager.info(Constants.GUI_LOGGER, "OPENING FILE "
+						+ args[i]);
+
+				fireViewEvent(new ViewEvent(this,
+						AbstractViewEvent.VIEWEVENTTYPE_FILE,
+						AbstractViewEvent.OPEN, f));
+			}
+		}
+	}
 
     public IViewController createViewController(int type)
     {
         IViewController vc = null;
-        if (type == VIEWCONTROLLER_TOOLBAR)
-        {
-//            vc = new ToolBarVC(ToolBarVC.ID_PREFIX + toolbarCounter);
-//            toolbarCounter++;
-        } else if (type == VIEWCONTROLLER_MENU)
-        {
-//            vc = new MenuBarVC(MenuBarVC.ID_PREFIX + menuCounter);
-//            menuCounter++;
-        } else if (type == VIEWCONTROLLER_STATUSBAR)
+        if (type == VIEWCONTROLLER_STATUSBAR)
         {
         	vc = new StatusBarVC(StatusBarVC.ID_PREFIX + statusCounter);
         }
-        else if (type == VIEWCONTROLLER_SIMULATORBAR)
-        {
-        	//vc = new SimulatorBarVC(SimulatorBarVC.ID_PREFIX + toolbarCounter, tgbController, acoChoiceItems, ahxHistoryContent );
-//        	toolbarCounter++;
-        }  
         else
         {
             vc = super.createViewController(type);
