@@ -524,7 +524,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
         return getHomedir() != null && !getHomedir().equals("");
     }
 
-    public boolean isCurrentWorkingdirSet()
+   public boolean isCurrentWorkingdirSet()
     {
         return getCurrentWorkingdir() != null && !getCurrentWorkingdir().equals("");
     }
