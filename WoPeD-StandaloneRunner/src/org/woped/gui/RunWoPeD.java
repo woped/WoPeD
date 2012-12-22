@@ -33,7 +33,9 @@ import javax.swing.SwingUtilities;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
+import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.controller.vc.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
 
@@ -51,18 +53,16 @@ public class RunWoPeD extends JFrame {
 	
 	private 	   String[] files;
 	private static RunWoPeD instance = null;
+	private        DefaultApplicationMediator dam = null;
 	 /**
      * 
      * Main Entry Point. Starts WoPeD and the GUI.
      *  
      */
 	
-	/**
-	 * Main method for WoPeD
-	**/
     public static void main(String[] args)
     {    
-    	instance = new RunWoPeD(args);
+		instance = new RunWoPeD(args);
     	
         SwingUtilities.invokeLater(new Runnable() {
     		public void run() {
@@ -75,7 +75,9 @@ public class RunWoPeD extends JFrame {
 	 * Constructor managing files passed over the command line (or over openFileEvent on MacOS)
 	**/
     private RunWoPeD(String[] args) {
-    	/* Check if we are running on a Mac */
+		dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
+		
+		/* Check if we are running on a Mac */
         if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")) {            
             /* Set PNML open document handling in MacOS */
             OSXAdapter.setOpenFileHandler(new ActionListener() {
@@ -84,7 +86,31 @@ public class RunWoPeD extends JFrame {
             		files[0] = e.getActionCommand();
             	}
             });
-        }
+ 
+            OSXAdapter.setQuitHandler(new ActionListener() {
+            	public void actionPerformed(ActionEvent e) {
+            		System.out.println("QuitHandler");
+					dam.fireViewEvent(
+							new ViewEvent(
+									dam,
+									AbstractViewEvent.VIEWEVENTTYPE_GUI,
+									AbstractViewEvent.EXIT));
+
+            	}
+            });
+           
+            OSXAdapter.setAboutHandler(new ActionListener() {
+            	public void actionPerformed(ActionEvent e) {
+            		System.out.println("QuitHandler");
+					dam.fireViewEvent(
+							new ViewEvent(
+									dam,
+									AbstractViewEvent.VIEWEVENTTYPE_GUI,
+									AbstractViewEvent.ABOUT));
+
+            	}
+            });
+       }
         else {
         	/* On other platforms simple command line argument passing is sufficient */
             files = args;
@@ -138,7 +164,7 @@ public class RunWoPeD extends JFrame {
 		
 		try {
 			initLogging();
-			new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration(), files);
+			dam.startUI(files);
 		} 
     	catch (Exception e) {
 			e.printStackTrace();
