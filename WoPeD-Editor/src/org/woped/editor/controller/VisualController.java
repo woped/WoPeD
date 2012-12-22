@@ -565,6 +565,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			boolean operatorSelected = false;	
 			boolean groupSelected = false;
 			boolean multipleSelected = false;
+			int triggerType = TriggerModel.TRIGGER_NONE;
 			
 			while (selectedCell instanceof GroupModel)
 			{
@@ -606,14 +607,21 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 				transitionSelected = true;
 				operatorSelected = true;
 				
-				if (((TransitionModel) selectedCell).hasTrigger())
-				{
+				if (((OperatorTransitionModel) selectedCell).hasTrigger()) {
+					triggerType = ((OperatorTransitionModel)selectedCell).getTriggerType();
 					triggeredTransitionSelected = true;
 				}
+				
+				if (triggerType != TriggerModel.TRIGGER_MESSAGE) 
+					noMessageTriggerSelected = true;
+				if (triggerType != TriggerModel.TRIGGER_TIME) 
+					noTimeTriggerSelected = true;
+				if (triggerType != TriggerModel.TRIGGER_RESOURCE) 
+					noResourceTriggerSelected = true;				
+
 			} 
 			else if (selectedCell instanceof TransitionModel)
 			{
-				int triggerType = TriggerModel.TRIGGER_NONE;
 				transitionSelected = true;
 				
 				if (((TransitionModel)selectedCell).hasTrigger()) {
@@ -642,7 +650,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 				transitionSelected = true;
 				triggeredTransitionSelected = true;
 				
-				int triggerType = ((TriggerModel)selectedCell).getTriggertype();
+				triggerType = ((TriggerModel)selectedCell).getTriggertype();
 				
 				if (triggerType != TriggerModel.TRIGGER_MESSAGE) 
 					noMessageTriggerSelected = true;
