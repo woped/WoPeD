@@ -86,35 +86,27 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 		boolean confOk = true;
 		String fn = "";
 
-		if (!startedAsApplet) {
-			fn = getConfigFilePath();
+		fn = getConfigFilePath();
 
-			if (new File(fn).exists()) {
-				LoggerManager.info(Constants.CONFIG_LOGGER,
-						rb.getString("Init.Config.LoadingFrom") + ": " + fn
-								+ ".");
-				confOk = readConfig(new File(fn));
-			} else {
-				LoggerManager.warn(Constants.CONFIG_LOGGER,
-						rb.getString("Init.Config.FileNotFound") + ": " + fn
-								+ ". " + rb.getString("Init.Config.Fallback")
-								+ ".");
-				confOk = readConfig(WoPeDConfiguration.class
-						.getResourceAsStream(CONFIG_BUILTIN_FILE));
-			}
-
-			File ud = new File(getUserdir());
-			if (!ud.exists())
-				ud.mkdir();
-
-			File hd = new File(getHomedir());
-			if (!hd.exists())
-				hd.mkdir();
+		if (new File(fn).exists()) {
+			LoggerManager.info(Constants.CONFIG_LOGGER,
+					rb.getString("Init.Config.LoadingFrom") + ": " + fn + ".");
+			confOk = readConfig(new File(fn));
 		} else {
-			// if started as an applet, always use built-in config file
+			LoggerManager.warn(Constants.CONFIG_LOGGER,
+					rb.getString("Init.Config.FileNotFound") + ": " + fn + ". "
+							+ rb.getString("Init.Config.Fallback") + ".");
 			confOk = readConfig(WoPeDConfiguration.class
 					.getResourceAsStream(CONFIG_BUILTIN_FILE));
 		}
+
+		File ud = new File(getUserdir());
+		if (!ud.exists())
+			ud.mkdir();
+
+		File hd = new File(getHomedir());
+		if (!hd.exists())
+			hd.mkdir();
 
 		if (!confOk) {
 			JOptionPane.showMessageDialog(null,
@@ -230,8 +222,10 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 				setHomedir(getDefaultHomedir());
 
 			// Current working dir for file operations
-			setCurrentWorkingdir(getHomedir());
-
+			setCurrentWorkingdir(config.getGeneral().getCurrentWorkingdir());
+			if (!isCurrentWorkingdirSet())
+				setCurrentWorkingdir(config.getGeneral().getHomedir());
+				
 			// Import
 			setImportToolspecific(config.getTools().getImporting()
 					.getToolspecific());
@@ -287,7 +281,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 				xmlRecent.setPath(recent.getPath());
 			}
 
-			// getConfDocument().getConfiguration().getGeneral().setHomedir(homedir);
+			getConfDocument().getConfiguration().getGeneral().setCurrentWorkingdir(currentWorkingdir);
 			getConfDocument().save(file, xmlOptions);
 			LoggerManager.info(Constants.CONFIG_LOGGER, 
 					rb.getString("Exit.Config.SavingSuccess") + ": " + file.getName());
@@ -827,12 +821,10 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 		// language is English if startedAsApplet, using default Resource File
 		// required
 		// Locale.setDefault not possible because of AccessControlException
-		if (startedAsApplet) {
-			setLocaleCountry(null);
-			setLocaleLanguage(null);
-			setLocaleVariant(null);
-			language = "";
-		}
+		setLocaleCountry(null);
+		setLocaleLanguage(null);
+		setLocaleVariant(null);
+		language = "";
 
 		if (getLocaleLanguage() != null) {
 			language = getLocaleLanguage();

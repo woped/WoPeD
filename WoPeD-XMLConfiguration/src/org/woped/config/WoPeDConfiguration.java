@@ -27,7 +27,6 @@ public abstract class WoPeDConfiguration implements IConfiguration {
 	
 	protected static XmlOptions xmlOptions = new XmlOptions();
 	
-	protected boolean startedAsApplet;
 	protected boolean isLoaded;
 
 	public WoPeDConfiguration() {
