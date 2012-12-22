@@ -87,57 +87,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		case AbstractViewEvent.EXPORTAPRO:
 			exportApromore((EditorVC) getMediator().getUi().getEditorFocus());
 			break;
-/*        case AbstractViewEvent.SAVEWEBSERVICE:
-            saveWebFile((EditorVC) getMediator().getUi().getEditorFocus());
-            break;
-        case AbstractViewEvent.OPENWEBSERVICE:
-            if (event.getData() != null) {
-                int modellid = Integer.valueOf(((String) event.getData()));
-                openWebServiceEditor(modellid);
-            } else {
-                openWebServiceEditor(0);
-            }
-            break;*/
         case AbstractViewEvent.EXPORT:
             export((EditorVC) getMediator().getUi().getEditorFocus());
             break;
         case AbstractViewEvent.ANALYSIS_WOPED:
             if (editor != null) {
-
-/*                File woflanExportFile = new WoflanFileFactory().createFile(editor);
-
-                if (woflanExportFile != null) {
-
-                    if (!bRunWofLanDLL) {
-                        Process process = null;
-                        String processCmd = ConfigurationManager.getConfiguration().getWoflanPath() + " " + "\""
-                                + woflanExportFile.getAbsolutePath() + "\"";
-
-                        try {
-                            process = Runtime.getRuntime().exec(processCmd);
-
-                            LoggerManager.info(Constants.FILE_LOGGER, "WOFLAN Started.");
-
-                        } catch (IOException e) {
-                            LoggerManager.warn(Constants.FILE_LOGGER, "COULD NOT START WOFLAN PROCESS.");
-                        }
-
-                        if (process == null) {
-                            // something goes wrong
-                            LoggerManager.info(Constants.FILE_LOGGER, "Wolflan process can't created. procces command:"
-                                    + processCmd);
-                            String[] arg = { woflanExportFile.getAbsolutePath() };
-                            JOptionPane.showMessageDialog(null, Messages.getString("File.Error.Woflan.Text", arg),
-                                    Messages.getString("File.Error.Woflan.Title"), JOptionPane.WARNING_MESSAGE);
-                        }
-                    } else {*/
-                        // calls the new analysis sidebar
-                        editor.getEditorPanel().showAnalysisBar();
-                        LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
-                 //   }
-
-//                }
-
+                editor.getEditorPanel().showAnalysisBar();
+                LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
             }
             break;
          
@@ -217,71 +173,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
             break;
         }
     }
-
-    /**
-     * saveWebFile()
-     * <p>
-     * saves a PetriNetModle above the Web on the WopedWebServer
-     * 
-     * @param editor - PetriNetModel which has to save on the WebServer
-     * @returns Returns if the save Process fails or succeed
-     */
-/*    private boolean saveWebFile(EditorVC editor) {
-        boolean succeed = false;
-
-        getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        try {
-            IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
-            IStatusBar iSB[] = new IStatusBar[iVC.length];
-            for (int i = 0; i < iSB.length; i++) {
-
-                iSB[i] = (IStatusBar) iVC[i];
-            }
-            PNMLExport pe = new PNMLExport(iSB);
-            // creates a Stream to hold the XML Data from the PNMLExport
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            pe.saveToWebFile(editor, baos);
-
-            // save the Model on the Webserver
-            // if this is the first save, ask the user about a filename or a title
-            Object title = null;
-
-            // if modelID == -1 then it is a new model
-            // dialog for entering name of model
-            if (editor.getModelid() == -1) {
-                title = JOptionPane.showInputDialog((JFrame) getMediator().getUi(), Messages
-                        .getString("SaveWebServiceEditor.Input"), Messages.getTitle("SaveWebServiceEditor"),
-                        JOptionPane.QUESTION_MESSAGE, null, null, editor.getName());
-            } else {
-                title = editor.getName();
-            }
-
-            editor.setModelid(ServerLoader.getInstance().saveModel(UserHolder.getUserID(), editor.getModelid(),
-                    baos.toString(), (String) title));
-            // close the Stream
-            editor.setName((String) title);
-
-            baos.close();
-
-            LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in webfile: " + editor.getModelid() + " "
-                    + editor.getName());
-            JOptionPane.showMessageDialog((JFrame) getMediator().getUi(), Messages
-                    .getString("SaveWebServiceEditor.Saved"));
-
-            editor.setSaved(true);
-            succeed = true;
-        } catch (AccessControlException ace) {
-            ace.printStackTrace();
-            LoggerManager.warn(Constants.FILE_LOGGER, "Could not save Editor. No rights to write the file to "
-                    + editor.getModelid() + ". " + ace.getMessage());
-            JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages
-                    .getString("File.Error.Applet.Text"), Messages.getString("File.Error.Applet.Title"),
-                    JOptionPane.ERROR_MESSAGE);
-        } catch (IOException e) {
-        }
-        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
-        return succeed;
-    }*/
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -482,11 +373,10 @@ public class FileEventProcessor extends AbstractEventProcessor {
                                                 + editor.getFilePath());
 
                                         ConfigurationManager.getConfiguration().addRecentFile(
-                                                new File(editor.getFilePath()).getName(), editor.getFilePath());
+                                                new File(editor.getFilePath()).getName(), editor.getPathName());
                                         getMediator().getUi().updateRecentMenu();
                                         editor.setSaved(true);
-                                        ConfigurationManager.getConfiguration().setCurrentWorkingdir(
-                                                editor.getFilePath());
+                                        ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
                                         succeed = true;
                                     }
                                     // BPEL-Export
@@ -498,10 +388,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
                                             int freeChoice = qualanService.getFreeChoiceViolations().size();
                                             int sound = wellStruct + freeChoice;
                                             if (sound == 0) {
-                                                succeed = BPEL.getBPELMainClass()
-                                                        .saveFile(editor.getFilePath(), editor);
-                                                ConfigurationManager.getConfiguration().setCurrentWorkingdir(
-                                                        editor.getFilePath());
+                                                succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), editor);
+                                                ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
                                             } else {
                                                 JOptionPane.showMessageDialog(null, Messages
                                                         .getString("QuantAna.Message.SoundnessViolation"));
@@ -513,8 +401,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                                             if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
                                                 succeed = TPNExport.save(editor.getFilePath(),
                                                         (PetriNetModelProcessor) editor.getModelProcessor());
-                                                ConfigurationManager.getConfiguration().setCurrentWorkingdir(
-                                                        editor.getFilePath());
+                                                ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
 
                                             } else
                                                 if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
@@ -601,14 +488,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
                         // setting the new filename to editor, and Title to
                         // Frame
                         editor.setName(fileName);
+                        editor.setPathName(savePath);
                         editor.setFilePath(savePath.concat(fileName));
-                        // getTaskBar().getsetToolTipText(getActiveEditor().getFileName());
-                        // ... and saving
                         ConfigurationManager.getConfiguration().setCurrentWorkingdir(savePath);
                         LoggerManager.debug(Constants.FILE_LOGGER, "Current working dir is: "
                                 + ConfigurationManager.getConfiguration().getCurrentWorkingdir());
                         editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
-                        editor.setFilePath(savePath.concat(fileName));
                         succeed = save(editor);
                     } else {
                         LoggerManager.debug(Constants.FILE_LOGGER, "\"Save as\" canceled or nothing to save at all.");
@@ -620,92 +505,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
         getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
         return succeed;
-
     }
 
-    /**
-     * openWebServiceEditor()
-     * <p>
-     * 
-     * @return IEditor
-     */
- /*   private IEditor openWebServiceEditor(int modellID) {
-        // get loadable List of PetriNetModels
-        try {
-            ArrayList<ModellHolder> values = null;
-            ModellHolder selected = null;
-            if (modellID != 0) {
-                values = ServerLoader.getInstance().getList(UserHolder.getUserID(), true);
-                for (int i = 0; i < values.size(); i++) {
-                    if (values.get(i).getModellID() == modellID) {
-                        selected = values.get(i);
-                        break;
-                    }
-                }
-            } else {
-                OpenWebEditorUI openWebEditorGUI = new OpenWebEditorUI((JFrame) getMediator().getUi());
-                selected = openWebEditorGUI.execute();
-                openWebEditorGUI.dispose();
-            }
-            if (selected != null) {
-                // load the choosen model
-                String content = ServerLoader.getInstance().loadModel(selected.getModellID());
-                return openWebFile(content, selected);
-            }
-        } catch (RemoteException e) {
-            // for first ignore
-        }
-        return null;
-
-    }*/
-
-    /**
-     * openWebFile()
-     * <p>
-     * creates a IEditor from a given XML String
-     * 
-     * @param content
-     * @param modell
-     * @return
-     */
-    /*private IEditor openWebFile(String content, ModellHolder modell) {
-        IEditor editor = null;
-        final PNMLImport pr;
-
-        getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-        pr = new PNMLImport((ApplicationMediator) getMediator());
-
-        if (pr != null) {
-            boolean loadSuccess = false;
-
-            // TODO Generate Thread
-            loadSuccess = pr.runEx(content);
-
-            if (loadSuccess) {
-                editor = pr.getEditor()[pr.getEditor().length - 1];
-                for (int i = 0; i < pr.getEditor().length; i++) {
-                    if (editor instanceof EditorVC) {
-                        ((EditorVC) pr.getEditor()[i]).setDefaultFileType(FileFilterImpl.PNMLFilter);
-                        ((EditorVC) pr.getEditor()[i]).setName(modell.getTitle());
-                        ((EditorVC) pr.getEditor()[i]).setModelid(modell.getModellID());
-                    }
-                    // add Editor
-                    LoggerManager.info(Constants.FILE_LOGGER, "Petrinet loaded from Webfile: " + modell.getModellID()
-                            + " " + modell.getTitle());
-                }
-            } else {
-                String arg[] = { modell.getModellID() + " " + modell.getTitle() };
-                JOptionPane.showMessageDialog(null, Messages.getString("File.Error.FileOpen.Text", arg), Messages
-                        .getString("File.Error.FileOpen.Title"), JOptionPane.ERROR_MESSAGE);
-            }
-
-        }
-
-        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
-        return editor;
-    }
-*/
     /**
      * TODO: DOCUMENTATION (silenco)
      */
@@ -736,6 +537,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
         jfc.showOpenDialog(null);
 
         if (jfc.getSelectedFile() != null) {
+        	String abspath = jfc.getSelectedFile().getAbsolutePath();
+        	ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0,abspath.lastIndexOf(File.separator)));
             return openFile(jfc.getSelectedFile(), ((FileFilterImpl) jfc.getFileFilter()).getFilterType());
         }
         return null;
@@ -796,11 +599,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
                         ((EditorVC) pr.getEditor()[i]).setFilePath(file.getAbsolutePath());
                     }
                     // add recent
+                	String abspath = file.getAbsolutePath();
                     if (filter == FileFilterImpl.PNMLFilter) {
                         ConfigurationManager.getConfiguration().addRecentFile(file.getName(), file.getAbsolutePath());
+                        ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0,abspath.lastIndexOf(File.separator)));
                     }
                     if (filter != FileFilterImpl.SAMPLEFilter) {
-                        ConfigurationManager.getConfiguration().setCurrentWorkingdir(file.getAbsolutePath());
+//                        ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0,abspath.lastIndexOf(File.separator)));
                     }
                     // add Editor
                     LoggerManager.info(Constants.FILE_LOGGER, "Petrinet loaded from file: " + file.getAbsolutePath());
@@ -813,10 +618,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
             }
 
             getMediator().getUi().updateRecentMenu();
-
-            if (ConfigurationManager.getConfiguration().getColorOn() == true) {
-                // new NetColorScheme().update();
-            }
         }
 
         getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
