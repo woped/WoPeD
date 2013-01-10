@@ -16,6 +16,7 @@ import org.apache.xmlbeans.XmlObject;
 import org.woped.config.ConfigurationDocument;
 import org.woped.config.Constants;
 import org.woped.config.RecentFile;
+import org.woped.config.Registration;
 import org.woped.config.WoPeDConfiguration;
 import org.woped.config.metrics.WoPeDMetricsConfiguration;
 import org.woped.core.config.ConfigurationManager;
@@ -84,6 +85,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	 */
 	public boolean readConfig() {
 		boolean confOk = true;
+		File f;
 		String fn = "";
 
 		fn = getConfigFilePath();
@@ -98,15 +100,52 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 							+ rb.getString("Init.Config.Fallback") + ".");
 			confOk = readConfig(WoPeDConfiguration.class
 					.getResourceAsStream(CONFIG_BUILTIN_FILE));
+			
+			if (confOk) {			
+				// For built-in configuration choose Locale of the host computer
+				// unless installer has preset language
+				// First check if installer has put a file deu.xml in WoPeD main
+				// installation location
+				// If yes, set Locale to German and delete this file
+				f = new File("deu.xml");
+				if (f.exists()) {
+					setLocaleLanguage("de");
+					setLocaleCountry("DE");
+					setLocaleVariant("");
+				}
+				// Check if installer has put a file eng.xml in WoPeD main
+				// installation location
+				// If yes, set Locale to English and delete this file
+				else {
+					f = new File("eng.xml");
+					if (f.exists()) {
+						setLocaleLanguage("en");
+						setLocaleCountry("EN");
+						setLocaleVariant("");
+					}
+					// Else set Locale to host computer Locale
+					else {
+						setLocaleLanguage(System.getProperty("user.language"));
+						setLocaleCountry(System.getProperty("user.country"));
+						setLocaleVariant(System.getProperty("user.variant"));
+					}
+				}
+				setLocale();
+			}
 		}
+		
+		// Clean up first-time installation files to set initial Locale
+		f = new File("deu.xml");
+		try {
+			f.delete();	
+		}
+		catch (Exception e) {};
 
-		File ud = new File(getUserdir());
-		if (!ud.exists())
-			ud.mkdir();
-
-		File hd = new File(getHomedir());
-		if (!hd.exists())
-			hd.mkdir();
+		f = new File("eng.xml");
+		try {
+			f.delete();	
+		}
+		catch (Exception e) {};
 
 		if (!confOk) {
 			JOptionPane.showMessageDialog(null,
@@ -115,7 +154,15 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 					JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		}
+		
+		File ud = new File(getUserdir());
+		if (!ud.exists())
+			ud.mkdir();
 
+		File hd = new File(getHomedir());
+		if (!hd.exists())
+			hd.mkdir();
+		
 		return confOk;
 	}
 
@@ -253,7 +300,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 			LoggerManager.info(Constants.CONFIG_LOGGER,
 					rb.getString("Init.Config.LoadingSuccess") + ".");
 			return true;
-		} else {
+		} 
+		else {
 			LoggerManager.info(Constants.CONFIG_LOGGER,
 					rb.getString("Init.Config.LoadingError") + ".");
 			return false;
@@ -282,6 +330,19 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 			}
 
 			getConfDocument().getConfiguration().getGeneral().setCurrentWorkingdir(currentWorkingdir);
+			
+			if (getConfDocument().getConfiguration().getRegistration() != null) {
+				int n = getConfDocument().getConfiguration().getRegistration().getCounter();
+				getConfDocument().getConfiguration().getRegistration().setCounter(n+1);
+			}
+			else {
+				Registration reg = Registration.Factory.newInstance();
+				reg.setEmailaddress("");
+				reg.setDisabled(false);
+				reg.setCounter(0);
+				getConfDocument().getConfiguration().setRegistration(reg);			
+			}
+				
 			getConfDocument().save(file, xmlOptions);
 			LoggerManager.info(Constants.CONFIG_LOGGER, 
 					rb.getString("Exit.Config.SavingSuccess") + ": " + file.getName());
@@ -545,13 +606,12 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	 * @return String
 	 */
 	public String getHomedir() {
-		return getConfDocument().getConfiguration().getGeneral()
-				.getHomedir();
+		ConfigurationDocument confDoc = getConfDocument();
+		return confDoc.getConfiguration().getGeneral().getHomedir();
 	}
 
 	public boolean isHomedirSet() {
-		String hd = getConfDocument().getConfiguration().getGeneral()
-				.getHomedir();
+		String hd = getConfDocument().getConfiguration().getGeneral().getHomedir();
 		return hd != null && !hd.equals("");
 	}
 
@@ -817,14 +877,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 		String country = null;
 		String variant = null;
 		Locale userLocale = null;
-
-		// language is English if startedAsApplet, using default Resource File
-		// required
-		// Locale.setDefault not possible because of AccessControlException
-		setLocaleCountry(null);
-		setLocaleLanguage(null);
-		setLocaleVariant(null);
-		language = "";
 
 		if (getLocaleLanguage() != null) {
 			language = getLocaleLanguage();

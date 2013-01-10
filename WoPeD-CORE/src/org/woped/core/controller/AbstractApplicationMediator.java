@@ -38,6 +38,7 @@ import org.woped.core.gui.IEditorAware;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -78,12 +79,19 @@ public abstract class AbstractApplicationMediator implements IViewListener
         // use system look and feel
         try
         {
-        	ConfigurationManager.setConfiguration(conf);                      	                    
-            UIManager.setLookAndFeel(ConfigurationManager.getConfiguration().getLookAndFeel());             
-            LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set to " + UIManager.getSystemLookAndFeelClassName());
-        }
-        catch (Exception e)
-        { 
+			ConfigurationManager.setConfiguration(conf);
+			// Set Look and Feel initially when no configuration settings are there
+			if (ConfigurationManager.getConfiguration().getLookAndFeel() == null) {
+				ConfigurationManager.getConfiguration().setLookAndFeel(
+								Platform.getSystemLookAndFeel());
+			}
+
+			UIManager.setLookAndFeel(ConfigurationManager.getConfiguration()
+					.getLookAndFeel());
+			LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set to "
+					+ UIManager.getSystemLookAndFeelClassName());
+		}        
+        catch (Exception e) { 
             LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set to System default");
         }
     }

@@ -122,61 +122,56 @@ public class WoPeDMetricsConfiguration extends WoPeDConfiguration implements
 		String metricsFilePath = "";
 		String[] customMetricsFilePaths = null;
 		
-		if (!startedAsApplet) {
-			metricsFilePath = getConfigFilePath();
-			currentFileID = 0;
-			if (new File(metricsFilePath).exists()) {
-				fileMap.put(currentFileID, getConfigFilePath());
-				LoggerManager.info(Constants.CONFIG_LOGGER,
-						rb.getString("Init.Config.LoadingFrom") + ": " + metricsFilePath
-								+ ".");
-				confOk = readConfig(new File(metricsFilePath));
-				if(confOk)
-					confMap.put(currentFileID, confDoc);
-			} else {
-				fileMap.put(currentFileID, CONFIG_BUILTIN_FILE);
-				LoggerManager.warn(Constants.CONFIG_LOGGER,
-						rb.getString("Init.Config.FileNotFound") + ": " + metricsFilePath
-								+ ". " + rb.getString("Init.Config.Fallback")
-								+ ".");
-				confOk = readConfig(WoPeDConfiguration.class
-						.getResourceAsStream(CONFIG_BUILTIN_FILE));
-				if(confOk)
-					confMap.put(currentFileID, confDoc);
-			}			
-			
-			File file = new File(getUserdir() + CONFIG_CUSTOM_DIR);
-			FilenameFilter filter = new FilenameFilter() {
-				public boolean accept(File dir, String name) {
-					if (name.endsWith(".xml"))
-						return true;
-					return false;
-				}
-			};
-			File[] customFiles = file.listFiles(filter);
-			
-			if (customFiles != null) {
-				customMetricsFilePaths = new String[customFiles.length];
-				for(int i = 0; i < customFiles.length; i++)
-					customMetricsFilePaths[i] = customFiles[i].getPath();
-				
-				for(int i = 0; i < customMetricsFilePaths.length; i++) {
-					currentFileID = i + 1;
-					fileMap.put(currentFileID, customMetricsFilePaths[i]);
-					LoggerManager.info(Constants.CONFIG_LOGGER,
-								rb.getString("Init.Config.LoadingFrom") + ": " + customMetricsFilePaths[i]
-										+ ".");
-						confOk = readConfig(new File(customMetricsFilePaths[i]));
-						confMap.put(currentFileID, confDoc);
-				}
-			}
-			
-			createManualGroups();
+		metricsFilePath = getConfigFilePath();
+		currentFileID = 0;
+		if (new File(metricsFilePath).exists()) {
+			fileMap.put(currentFileID, getConfigFilePath());
+			LoggerManager.info(Constants.CONFIG_LOGGER,
+					rb.getString("Init.Config.LoadingFrom") + ": "
+							+ metricsFilePath + ".");
+			confOk = readConfig(new File(metricsFilePath));
+			if (confOk)
+				confMap.put(currentFileID, confDoc);
 		} else {
-			// if started as an applet, always use built-in config file
+			fileMap.put(currentFileID, CONFIG_BUILTIN_FILE);
+			LoggerManager.warn(
+					Constants.CONFIG_LOGGER,
+					rb.getString("Init.Config.FileNotFound") + ": "
+							+ metricsFilePath + ". "
+							+ rb.getString("Init.Config.Fallback") + ".");
 			confOk = readConfig(WoPeDConfiguration.class
 					.getResourceAsStream(CONFIG_BUILTIN_FILE));
+			if (confOk)
+				confMap.put(currentFileID, confDoc);
 		}
+
+		File file = new File(getUserdir() + CONFIG_CUSTOM_DIR);
+		FilenameFilter filter = new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				if (name.endsWith(".xml"))
+					return true;
+				return false;
+			}
+		};
+		File[] customFiles = file.listFiles(filter);
+
+		if (customFiles != null) {
+			customMetricsFilePaths = new String[customFiles.length];
+			for (int i = 0; i < customFiles.length; i++)
+				customMetricsFilePaths[i] = customFiles[i].getPath();
+
+			for (int i = 0; i < customMetricsFilePaths.length; i++) {
+				currentFileID = i + 1;
+				fileMap.put(currentFileID, customMetricsFilePaths[i]);
+				LoggerManager.info(Constants.CONFIG_LOGGER,
+						rb.getString("Init.Config.LoadingFrom") + ": "
+								+ customMetricsFilePaths[i] + ".");
+				confOk = readConfig(new File(customMetricsFilePaths[i]));
+				confMap.put(currentFileID, confDoc);
+			}
+		}
+
+		createManualGroups();
 
 		if (!confOk) {
 			JOptionPane.showMessageDialog(null,

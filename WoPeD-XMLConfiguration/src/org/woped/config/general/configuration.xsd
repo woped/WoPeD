@@ -9,6 +9,7 @@
 				<xs:element name="tools" type="Tool"/>
 				<xs:element name="coloring" type="Coloring"/>
 				<xs:element name="metrics" type="Metrics"/>
+				<xs:element name="registration" type="Registration"/>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -139,6 +140,13 @@
 			<xs:element name="useAlgorithmHighlighting" 	type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
 			<xs:element name="showNamesInBuilder" 			type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
 			<xs:element name="showAdvancedErrorMessages"	type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Registration">
+		<xs:sequence>
+			<xs:element name="emailaddress" type="xs:string" 	default=""		minOccurs="0" maxOccurs="1"/>
+			<xs:element name="counter" 		type="xs:int" 		default="0" 	minOccurs="0" maxOccurs="1"/>
+			<xs:element name="disabled" 	type="xs:boolean" 	default="false" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

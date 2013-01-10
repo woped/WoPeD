@@ -73,13 +73,13 @@ public class ConfLanguagePanel extends AbstractConfPanel
         int selected = getLanguageComboBox().getSelectedIndex();
         Locale locale = language[selected];
 
-        boolean changed = (!locale.equals(ConfigurationManager.getConfiguration().getLocale()));
-        ConfigurationManager.getConfiguration().setLocaleLanguage(locale.getLanguage());
-        ConfigurationManager.getConfiguration().setLocaleCountry(locale.getCountry());
-        ConfigurationManager.getConfiguration().setLocaleVariant(locale.getVariant());
+        boolean changed = !locale.getLanguage().equals(ConfigurationManager.getConfiguration().getLocale().getLanguage());
 
         if (changed)
         {
+            ConfigurationManager.getConfiguration().setLocaleLanguage(locale.getLanguage());
+            ConfigurationManager.getConfiguration().setLocaleCountry(locale.getCountry());
+            ConfigurationManager.getConfiguration().setLocaleVariant(locale.getVariant());
             ConfigurationManager.getConfiguration().setLocale();
             JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Language.Dialog.Restart.Message"), Messages.getString("Configuration.Language.Dialog.Restart.Title"),
                     JOptionPane.INFORMATION_MESSAGE);
@@ -93,9 +93,11 @@ public class ConfLanguagePanel extends AbstractConfPanel
     public void readConfiguration()
     {
         int selected = 0;
+    	Locale loc = ConfigurationManager.getConfiguration().getLocale();
+
         for (int i = 0; i < language.length; i++)
         {
-            if (language[i].equals(ConfigurationManager.getConfiguration().getLocale()))
+            if (language[i].getLanguage().equals(loc.getLanguage()))
             {
                 selected = i;
                 break;
@@ -136,10 +138,12 @@ public class ConfLanguagePanel extends AbstractConfPanel
             {
                 languageBoxItems[i] = language[i].getDisplayLanguage(language[i]);
             }
+            
             languageComboBox = new JComboBox(languageBoxItems);
-            languageComboBox.setMinimumSize(new Dimension(100, 20));
+            languageComboBox.setMinimumSize(new Dimension(300, 20));
             languageComboBox.setToolTipText("<html>" + Messages.getString("Configuration.Language.Tooltip") + "</html>");
         }
+        
         return languageComboBox;
     }
 
@@ -163,6 +167,7 @@ public class ConfLanguagePanel extends AbstractConfPanel
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 0;
+            c.fill = GridBagConstraints.HORIZONTAL;
             languagePanel.add(getLanguageComboBox(), c);
 
         }

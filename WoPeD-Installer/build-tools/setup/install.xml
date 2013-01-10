@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <installation version="1.0">
-	<guiprefs width="640" height="550" resizable="no">
-		<laf name="looks">
-			<os family="windows" />
-			<param name="variant" value="extwin" />
-		</laf>
-		<laf name="metouia">
-			<os family="unix" />
-		</laf>
+	
+	<guiprefs width="640" height="560" resizable="no">
+ 	   	<modifier key="useHeadingPanel" value="yes"/>
+       	<modifier key="useHeadingForSummary" value="yes"/>
+    	<modifier key="headingLineCount" value="2"/>
+    	<modifier key="headingFontSize" value="1.5"/>
+    	<modifier key="headingBackgroundColor" value="0x00ffffff"/>
+    	<modifier key="headingPanelCounter" value="progressbar"/>
+    	<modifier key="headingPanelCounterPos" value="inNavigationPanel"/>
+    	<modifier key="langDisplayType" value="native"/>
+    	<modifier key="layoutAnchor" value="NORTHWEST"/>
 	</guiprefs>
 	
 	<native type="izpack" name="ShellLink.dll">
+		<os family="windows" />
+	</native> 
+
+	<native type="izpack" name="ShellLink_x64.dll">
 		<os family="windows" />
 	</native> 
 
@@ -22,53 +30,54 @@
   	<resources>
 		<res id="LicencePanel.licence" src="License.txt"></res>
 		<res id="InfoPanel.info" src="Readme.txt"></res>
-		<res id="Installer.image.0" src="helloPanel.png" />
-		<res id="Installer.image.1" src="infoPanel.png" />
-		<res id="Installer.image.2" src="licencePanel.png" />
-		<res id="Installer.image.3" src="packsPanel.png" />
-		<res id="Installer.image.4" src="targetPanel.png" />
-		<res id="Installer.image.5" src="installPanel.png" />
-		<res id="Installer.image.6" src="shortcutPanel.png" />
-		<res id="Installer.image.7" src="finishPanel.png" />
+		<res id="Installer.image.0" src="izpack/helloPanel.png" />
+		<res id="Installer.image.1" src="izpack/infoPanel.png" />
+		<res id="Installer.image.2" src="izpack/licencePanel.png" />
+		<res id="Installer.image.3" src="izpack/packsPanel.png" />
+		<res id="Installer.image.4" src="izpack/targetPanel.png" />
+		<res id="Installer.image.5" src="izpack/installPanel.png" />
+		<res id="Installer.image.6" src="izpack/shortcutPanel.png" />
+		<res id="Installer.image.7" src="izpack/finishPanel.png" />
 		<res id="installer.langsel.img" src="woped-logo.jpg" />
+		<res id="packsLang.xml_eng" src="install-eng.xml" />
+		<res id="packsLang.xml_deu" src="install-deu.xml" />
 		<res id="Unix_shortcutSpec.xml" src="shortcut-linux.xml" />
 		<res id="shortcutSpec.xml" src="shortcut-win.xml" />
+		<res id="ProcessPanel.Spec.xml" src="process.xml" />
+		<str id="installer.quit.reversemessage" txt="Are you sure you want to cancel installation?"/>
+  		<str id="installer.quit.reversetitle" txt="WoPeD @wopedversion@ Setup"/>	
 	</resources>
 	
 	<info>
 		<appname>WoPeD</appname>
 		<appversion>@wopedversion@</appversion>
 		<authors>
-			<author name="Afraa Abbas, Philipp Allgaier, Alexander Assall, Daniel Becea," email=""></author>
-			<author name="Gregor Becker, Mario Beiser, Jenny Braun, Anke Christian," email=""></author>
+			<author name="Afraa Abbas, Philipp Allgaier, Benedikt Arnold, Alexander Assall, Daniel Becea," email=""></author>
+			<author name="Gregor Becker, Mario Beiser, Jenny Braun, Dragi Breko, Anke Christian," email=""></author>
 			<author name="Christian Czech, Sascha Dörner, Wolfgang Dörner, Andreas Eckleder," email=""></author>
 			<author name="Christina Eckleder, Manuel Fladt, Christian Flender," email=""></author>
-			<author name="Thomas Freytag, Rüdiger Fuhrmann, Sebastian Fuß," email=""></author>
+			<author name="Thomas Freytag, Sebastian Fuchs, Rüdiger Fuhrmann, Sebastian Fuß," email=""></author>
 			<author name="Steffen Gegenheimer, Benjamin Geiger, Tilmann Glaser," email=""></author>
-			<author name="Janina Glutsch, Johannes Grenzemann, Matthias Gruschinske," email=""></author>
+			<author name="Janina Glutsch, Johannes Grenzemann, Matthias Gruschinske, Pierre Gunkler," email=""></author>
 			<author name="Stefan Hackenberg, Johannes Händel, Bernhard von Hasseln," email=""></author>
 			<author name="Christian Hauschild, Heiko Herzog, Tobias Heinemann, Benjamin Jörger," email=""></author>
-			<author name="Cosima Jünger, Jascha Kanngießer, Mona Ketterer, Kristian Kindler," email=""></author>
+			<author name="Cosima Jünger, Jascha Kanngießer, Simon Karrle, Mona Ketterer, Kristian Kindler," email=""></author>
 			<author name=" Patrick Kirchgäßner, Holger Kraus, Konstantin Krüger, Saskia Kurz," email=""></author>
 			<author name="Nils Lamb, Esther Landes, Simon Landes, Ralf Lehmann, Jörn Liebau, " email=""></author>
 			<author name="Linda Linsenbolz, Markus Lipps, Tobias Lorentz, Samuel Mellert," email=""></author>
 			<author name="Lisa Mais, Ulrich Minet, Enrico Möller, Torsten Moser, Matthias Mruzek," email=""></author>
-			<author name="Alexis Nagy, Markus Nöltner, Stefanie Obergfell, Lennart Oeß," email=""></author>
+			<author name="Alexis Nagy, Markus Nöltner, Stefanie Obergfell, Lennart Oeß, Philipp Ohl" email=""></author>
 			<author name="Sebastian Orts, Jonathan Peuker, Katharina Pfeifer, Thomas Pohl," email=""></author>
-			<author name="Valentino Pola, Lavinia Posler, Svenja Rayker, Tobias Rehnig," email=""></author>
+			<author name="Valentino Pola, Lavinia Posler, Robert Radburg, Svenja Rayker, Tobias Rehnig," email=""></author>
 			<author name="Karsten Ripsam, Frederick Rouviere, Jan Saalbach, Martin Sänger," email=""></author>
 			<author name="Michael Schäfer, Robin Schäfer, Rolf Schäuble, Christina Schempp," email=""></author>
 			<author name="Frank Schüler, David Schoch, Anthony Soprano, Patrick Spies, Jens Tessen," email=""></author>
-			<author name="Robert Tochman-Scewc, Arthur Vetter, Niko Waldow, Jens Wiegert." email=""></author>
+			<author name="Robert Tochman-Scewc, Arthur Vetter, Niko Waldow, Aljoscha Weber, Jens Wiegert." email=""></author>
 			<author name="Responsible: Thomas Freytag" email="freytag@woped.org"></author>
 		</authors>
 		<url>http://www.woped.org</url>
 	</info>
 
-	<locale>
-		<langpack iso3="eng"></langpack>
-	</locale>
-	
 	<panels>
 		<panel classname="HelloPanel"></panel>
 		<panel classname="InfoPanel"></panel>
@@ -80,21 +89,20 @@
 		<panel classname="SimpleFinishPanel"></panel>
 	</panels>
 	
+	<conditions>
+		<condition type="variable" id="IsGerman">
+  			<name>ISO3_LANG</name>
+ 	 		<value>deu</value>
+		</condition>
+		<condition type="variable" id="IsEnglish">
+  			<name>ISO3_LANG</name>
+ 	 		<value>eng</value>
+		</condition>
+	</conditions>
+	
 	<packs>
 		<pack name="Executable" required="yes">
 			<description>Executable files</description>
-			<file src="Readme.txt" targetdir="$INSTALL_PATH">				
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="License.txt" targetdir="$INSTALL_PATH">			
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="Changelog.txt" targetdir="$INSTALL_PATH">			
-				<os family="unix" />
-				<os family="windows" />
-			</file>
 
 			<file src="WoPeD.exe" targetdir="$INSTALL_PATH">
 				<os family="windows" />
@@ -103,133 +111,69 @@
 			<file src="WoPeD" targetdir="$INSTALL_PATH">
 				<os family="unix" />
 			</file>
-			<file src="woped-icon16.png" targetdir="$INSTALL_PATH">
-				<os family="unix" />
-			</file>
+
 			<executable src="WoPeD" targetfile="$INSTALL_PATH/WoPeD" stage="never" 
 						keep="true" workingDirectory="$INSTALL_PATH">
 				<os family="unix" />
 			</executable>
+
+			<file src="woped-icon16.png" targetdir="$INSTALL_PATH">
+				<os family="unix" />
+			</file>
+						
 			<file src="WoPeD.jar" targetdir="$INSTALL_PATH">
 				<os family="unix" />
 			</file>
 
-			<file src="WoPeD-classes-@wopedversion@.jar" targetdir="$INSTALL_PATH">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/antlrworks-@antlrworksversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/flamingo-@flamingoversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/flanagan-@flanaganversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/jbpt-@jbptversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/jcalendar-@jcalendarversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/jcommon-@jcommonversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/jfreechart-@jfreechartversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/jgraph-@jgraphversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/jgraphx-@jgraphxversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/jsr-@jsrversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/log4j-@log4jversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/mysqlconnector-@mysqlconnectorversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/ruddi-@ruddiversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/ssj-@ssjversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/stax-@staxversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/tablelayout-@tablelayoutversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/trident-@tridentversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/xmlbeans-@xmlbeansversion@.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/bpelBeans.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/pnmlBeans.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/pnmlBeans_old.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/confBeans.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="lib/metricsBeans.jar" targetdir="$INSTALL_PATH/lib">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
-			<file src="nets/Example.pnml" targetdir="$INSTALL_PATH/nets">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
+			<file src="Readme.txt" targetdir="$INSTALL_PATH" />				
+			<file src="License.txt" targetdir="$INSTALL_PATH" />
+			<file src="Changelog.txt" targetdir="$INSTALL_PATH" />
+			<file src="WoPeD-classes-@wopedversion@.jar" targetdir="$INSTALL_PATH" />			
+			<file src="lib/antlrworks-@antlrworksversion@.jar" targetdir="$INSTALL_PATH/lib" />		
+			<file src="lib/flamingo-@flamingoversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/flanagan-@flanaganversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/jbpt-@jbptversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/jcalendar-@jcalendarversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/jcommon-@jcommonversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/jfreechart-@jfreechartversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/jgraph-@jgraphversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/jgraphx-@jgraphxversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/jsr-@jsrversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/log4j-@log4jversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/mysqlconnector-@mysqlconnectorversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/ruddi-@ruddiversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/ssj-@ssjversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/stax-@staxversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/tablelayout-@tablelayoutversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/trident-@tridentversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/xmlbeans-@xmlbeansversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/bpelBeans.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/pnmlBeans.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/pnmlBeans_old.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/confBeans.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/metricsBeans.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="nets/Example.pnml" targetdir="$INSTALL_PATH/nets" />
+		</pack>
+		
+		<pack name="English Language Support" required="yes" condition="IsEnglish">
+			<description>Languagepack English</description>
+			<file src="eng.xml" targetdir="$INSTALL_PATH" />
+		</pack>
+
+		<pack name="German Language Support" required="yes" condition="IsGerman">
+			<description>Languagepack German</description>
+			<file src="deu.xml" targetdir="$INSTALL_PATH" />
+		</pack>
+		
+		<pack name="PDF Documentation" required="no">
+			<description>Additional manual and user doc files</description>
+			<file src="doc/pdf" targetdir="$INSTALL_PATH/doc" />			
 		</pack>
 		
 		<pack name="HTML Manual" required="no">
 			<description>Separate HTML Manual files</description>
-			<file src="doc/html" targetdir="$INSTALL_PATH/doc">
-				<os family="unix" />
-				<os family="windows" />
-			</file>
+			<file src="doc/html" targetdir="$INSTALL_PATH/doc" />
 		</pack>
-
-		<pack name="PDF Documentation" required="no">
-			<description>Additional manual and user doc files</description>
-			<file src="doc/pdf" targetdir="$INSTALL_PATH/doc">
-				<os family="unix" />
-				<os family="windows" />
-			</file>			
-		</pack>
+				
 	</packs>
 </installation>

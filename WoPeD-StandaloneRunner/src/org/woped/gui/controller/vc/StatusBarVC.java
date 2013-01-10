@@ -39,13 +39,10 @@ import org.woped.editor.utilities.SynchonizeTask;
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
- *         TODO: DOCUMENTATION (silenco) Created on: 05.03.2005 Last Change on:
- *         05.03.2005
+ *         Created on: 05.03.2005 Last Change on 05.03.2005
  */
 
-public class StatusBarVC extends JPanel implements IViewController, IStatusBar
-{
-	
+public class StatusBarVC extends JPanel implements IViewController, IStatusBar {
     /**
 	 * 
 	 */
@@ -56,11 +53,11 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
     private int                progressBarCount    = -1;
     
     public static final String ID_PREFIX           = "STATUSBAR_VC_";
-    private Vector<IViewListener>   viewListener   = new Vector<IViewListener>(1, 3);
+    private Vector<IViewListener> viewListener   = new Vector<IViewListener>(1, 3);
     SynchonizeTask             task;
 
     /**
-     * TODO: DOCUMENTATION (silenco)
+     * 
      */
     public StatusBarVC(String id)
     {
@@ -73,24 +70,9 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar
         this.setMinimumSize(new Dimension(200, 20));
         this.setMaximumSize(new Dimension(200, 20));
         this.setPreferredSize(new Dimension(200, 20));
-/*      Removed progressbar from layout  
- *      this.setBorder(new BevelBorder(BevelBorder.LOWERED));
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        c.weightx = 1;
-        c.weighty = 1;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.insets = new Insets(3, 0, 0, 0);
-        this.add(getProgressBar(), c);
-        c.gridx = 0;
-        c.gridy = 1;
-        c.insets = new Insets(0, 0, 0, 0);
-        this.add(Box.createHorizontalStrut(200), c);*/
     }
     
     /**
-     * TODO: DOCUMENTATION (silenco)
      * 
      * @return
      */

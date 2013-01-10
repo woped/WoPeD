@@ -40,6 +40,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.gui.controller.vc.MenuBarVC;
 import org.woped.gui.controller.vc.StatusBarVC;
 import org.woped.gui.icons.logo_woped;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
@@ -59,7 +60,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     //! Stores a list of internal frames that should stay in foreground
     private List<DefaultEditorFrame>  m_modalityStack = new ArrayList<DefaultEditorFrame>();
     
-    public DefaultUserInterface(TaskBarVC taskBar, StatusBarVC statusBar)
+    public DefaultUserInterface(TaskBarVC taskBar, StatusBarVC statusBar, MenuBarVC menuBar)
     {
         super();
   
@@ -87,11 +88,12 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 			}
 		});
 
-        if (ConfigurationManager.getConfiguration().getHomedir() == null) ConfigurationManager.getConfiguration().setHomedir("nets/");
+        if (ConfigurationManager.getConfiguration().getHomedir() == null) 
+        	ConfigurationManager.getConfiguration().setHomedir("nets/");
 
-         getContentPane().add(desktop, BorderLayout.CENTER);
+        getContentPane().add(desktop, BorderLayout.CENTER);
         
-        // Prepare Status & Taskbar
+        // Prepare Statusbar & Taskbar & Menubar
         JPanel toolPanel = new JPanel();
         JPanel p1 = new JPanel();
         p1.setLayout(new GridBagLayout());
@@ -110,7 +112,9 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         toolPanel.add(statusBar, BorderLayout.EAST);          
         toolPanel.setPreferredSize(new Dimension(100, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
-       
+
+        getRootPane().setJMenuBar(menuBar);
+        
         new SplashWindow(this);
 
         //Helper for adding Tokengame

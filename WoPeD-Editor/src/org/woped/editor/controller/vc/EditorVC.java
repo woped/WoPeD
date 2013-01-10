@@ -235,7 +235,7 @@ public class EditorVC implements KeyListener,
 		this.undoSupport = undoSupport;
 		// initialize
 		this.m_clipboard = clipboard;
-
+	
 		marqueehandler = new PetriNetMarqueeHandler(this, mediator);
 		this.modelProcessor = new PetriNetModelProcessor();
 		if (loadUI)
@@ -255,7 +255,6 @@ public class EditorVC implements KeyListener,
 			getGraph().getSelectionModel().addGraphSelectionListener(this);
 			getGraph().getModel().addGraphModelListener(this);
 			getGraph().addKeyListener(this);
-		
 			this.m_tokenGameController = new TokenGameController(this, m_propertyChangeSupport);
 		}
 	}

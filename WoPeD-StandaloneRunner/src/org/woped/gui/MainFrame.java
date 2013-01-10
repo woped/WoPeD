@@ -62,6 +62,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton 					taskbarButtonCopy			= null;
 	private JCommandButton 					taskbarButtonUndo			= null;
 	private JCommandButton 					taskbarButtonRedo			= null;
+	private JCommandButton 					taskbarButtonTokengame		= null;
+	private JCommandButton 					taskbarButtonAnalyze		= null;
+	private JCommandButton 					taskbarButtonConfig			= null;
 	
 	private	JRibbonBand 					saveBand					= null;
 	private	JRibbonBand 					documentBand				= null;
@@ -164,6 +167,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 	private ActionButtonListener			newListener					= null;
 	private ActionButtonListener			tokengameStartListener		= null;
+	private ActionButtonListener			tokengameStartListener1		= null;
 	private ActionButtonListener			tokengameCloseListener		= null;
 	
 	private JCommandPopupMenu              	m_sampleMenu             	= null;
@@ -244,6 +248,11 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		getRibbon().addTaskbarComponent(new JSeparator(JSeparator.VERTICAL));
 		getRibbon().addTaskbarComponent(getTaskbarButtonUndo());		
 		getRibbon().addTaskbarComponent(getTaskbarButtonRedo());		
+		getRibbon().addTaskbarComponent(new JSeparator(JSeparator.VERTICAL));
+		getRibbon().addTaskbarComponent(getTaskbarButtonTokengame());		
+		getRibbon().addTaskbarComponent(getTaskbarButtonAnalyze());		
+		getRibbon().addTaskbarComponent(new JSeparator(JSeparator.VERTICAL));
+		getRibbon().addTaskbarComponent(getTaskbarButtonConfig());		
 
 		getRibbon().addTask(getFileTask());
 		getRibbon().addTask(getEditTask());
@@ -264,7 +273,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private void setPopupTooltip(JCommandButton button, String prefix) {
 		button.setPopupRichTooltip(new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip")));
 	}
-
 	
 	/*************/
 	/* TASKGROUP */
@@ -315,6 +323,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (taskbarButtonPaste == null) {
 			taskbarButtonPaste = new JCommandButton("",new edit_paste());
+			setTooltip(taskbarButtonPaste, "Edit.paste");
 			taskbarButtonPaste.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_PASTE, AbstractViewEvent.PASTE, taskbarButtonPaste));
 		}
 		return taskbarButtonPaste;
@@ -324,6 +333,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (taskbarButtonCopy == null) {
 			taskbarButtonCopy = new JCommandButton("",new edit_copy());
+			setTooltip(taskbarButtonCopy, "Edit.copy");
 			taskbarButtonCopy.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_COPY, AbstractViewEvent.COPY, taskbarButtonCopy));	
 		}
 		return taskbarButtonCopy;
@@ -333,6 +343,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (taskbarButtonUndo == null) {
 			taskbarButtonUndo = new JCommandButton("",new editor_undo());
+			setTooltip(taskbarButtonUndo, "Edit.undo");
 			taskbarButtonUndo.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_UNDO, AbstractViewEvent.UNDO, taskbarButtonUndo));
 		}
 		return taskbarButtonUndo;
@@ -342,11 +353,41 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (taskbarButtonRedo == null) {
 			taskbarButtonRedo = new JCommandButton("",new editor_redo());
+			setTooltip(taskbarButtonRedo, "Edit.redo");
 			taskbarButtonRedo.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_REDO, AbstractViewEvent.REDO, taskbarButtonRedo));
 		}
 		return taskbarButtonRedo;
 	}
 			
+	private JCommandButton getTaskbarButtonTokengame() {		
+		if (taskbarButtonTokengame == null) {
+			taskbarButtonTokengame = new JCommandButton(Messages.getString("Tools.tokengame.text"), new analyze_tokengame());
+			tokengameStartListener1 = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_OPEN_TOKENGAME, AbstractViewEvent.OPEN_TOKENGAME, taskbarButtonTokengame);
+			setTooltip(taskbarButtonTokengame, "Tools.tokengame");
+			taskbarButtonTokengame.addActionListener(tokengameStartListener1);
+		}
+		return taskbarButtonTokengame;
+	}
+
+	private JCommandButton getTaskbarButtonAnalyze() {
+		
+		if (taskbarButtonAnalyze == null) {
+			taskbarButtonAnalyze = new JCommandButton(Messages.getString("Tools.semanticalAnalysis.text"), new analyze_semanticalanalysis());
+			setTooltip(taskbarButtonAnalyze, "Tools.semanticalAnalysis");
+			taskbarButtonAnalyze.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_WOPED, AbstractViewEvent.ANALYSIS_WOPED, taskbarButtonAnalyze));
+		}
+		return taskbarButtonAnalyze;
+	}
+
+	private JCommandButton getTaskbarButtonConfig() {
+		
+		if (taskbarButtonConfig == null) {
+			taskbarButtonConfig = new JCommandButton(Messages.getString("OptionsAndHelp.Configuration.text"), new help_configuration());
+			setTooltip(taskbarButtonConfig, "OptionsAndHelp.Configuration");
+			taskbarButtonConfig.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWCONFIG, AbstractViewEvent.CONFIG, taskbarButtonConfig));		
+		}
+		return taskbarButtonConfig;
+	}
 			
 	/*********/
 	/* TASKS */

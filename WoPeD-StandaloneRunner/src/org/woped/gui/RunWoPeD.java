@@ -25,9 +25,12 @@ package org.woped.gui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Locale;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.SwingUtilities;
 
@@ -35,9 +38,11 @@ import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.controller.vc.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
+import org.woped.translations.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -54,15 +59,18 @@ public class RunWoPeD extends JFrame {
 	private 	   String[] files;
 	private static RunWoPeD instance = null;
 	private        DefaultApplicationMediator dam = null;
+	
 	 /**
      * 
      * Main Entry Point. Starts WoPeD and the GUI.
      *  
      */
-	
-    public static void main(String[] args)
-    {    
+    public static void main(String[] args) {      	
 		instance = new RunWoPeD(args);
+		
+    	if (args.length > 0 && args[0].equals("-delay")) {
+    		instance.WaitForSetupFinished();
+    	}
     	
         SwingUtilities.invokeLater(new Runnable() {
     		public void run() {
@@ -78,7 +86,7 @@ public class RunWoPeD extends JFrame {
 		dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
 		
 		/* Check if we are running on a Mac */
-        if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")) {            
+        if (Platform.isMac()) {            
             /* Set PNML open document handling in MacOS */
             OSXAdapter.setOpenFileHandler(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
@@ -110,14 +118,17 @@ public class RunWoPeD extends JFrame {
 
             	}
             });
-       }
+            
+        	System.setProperty("apple.laf.useScreenMenuBar", "true");
+        	System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WoPeD");
+        }
         else {
         	/* On other platforms simple command line argument passing is sufficient */
             files = args;
         }
 
         /* Adjust some font sizes for non-Windows platforms */
-        if (!System.getProperty("os.name").toLowerCase().startsWith("win")) {            
+        if (!Platform.isWindows()) {            
         	UIManager.put("Button.font", new Font(Font.SANS_SERIF, 0, 11));
         	UIManager.put("Label.font", new Font(Font.SANS_SERIF, 0, 12));
         }
@@ -160,8 +171,7 @@ public class RunWoPeD extends JFrame {
 	/**
 	 * Run WoPeD by starting Default Application Mediator
 	**/
-	private void run() { 	
-		
+	private void run() { 			
 		try {
 			initLogging();
 			dam.startUI(files);
@@ -170,5 +180,62 @@ public class RunWoPeD extends JFrame {
 			e.printStackTrace();
 			System.exit(1);
 		}
+	}
+	
+	private void WaitForSetupFinished() {
+		
+		// Wait until WoPeD setup utility has completely terminated
+		try {
+			while (!setupHasFinished()) {
+				Thread.sleep(1000);
+			}
+		}
+		catch(InterruptedException e){ } 
+
+		int result = JOptionPane.showConfirmDialog(
+				null, 
+				Messages.getString("Dialog.StartWoPeD.Text"),
+				Messages.getString("Dialog.StartWoPeD.Title"),
+               JOptionPane.YES_NO_OPTION);
+
+		if (result == JOptionPane.NO_OPTION) {
+			System.exit(0);
+		}
+	}
+	
+	private boolean setupHasFinished() {
+		try {
+			String 	line;	
+			String  pattern;
+			Process p;
+			
+			if (Platform.isWindows()) {		
+				p = Runtime.getRuntime().exec
+			        	(System.getenv("windir") +"\\system32\\"+"tasklist.exe -v");
+				pattern = "IzPack -";
+			}
+			else if (Platform.isMac()) {		
+				p = Runtime.getRuntime().exec("ps -e");
+				pattern = "Installer";
+			}
+			else {
+				p = Runtime.getRuntime().exec("ps -e");
+				pattern = "WoPeD-install-";				
+			}
+
+			BufferedReader input = new BufferedReader(new InputStreamReader(
+					p.getInputStream()));
+			while ((line = input.readLine()) != null) {
+				if (line.contains(pattern))
+					return false;
+			}
+			
+			input.close();
+			
+		} catch (Exception err) {
+			err.printStackTrace();
+		}
+		
+		return true;
 	}
 }

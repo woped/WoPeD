@@ -31,6 +31,7 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.TaskBarVC;
@@ -48,16 +49,15 @@ import org.woped.qualanalysis.simulation.ReferenceProvider;
  */
 public class DefaultApplicationMediator extends ApplicationMediator
 {
-    public static final int VIEWCONTROLLER_TOOLBAR      = 10;
-    public static final int VIEWCONTROLLER_MENU         = 11;
+    public static final int VIEWCONTROLLER_MENUBAR      = 11;
     public static final int VIEWCONTROLLER_STATUSBAR    = 12; 
-    public static final int VIEWCONTROLLER_SIMULATORBAR = 13;
  
     private int             statusCounter            = 0;
     private IUserInterface  ui;
     private TaskBarVC		taskbar;
     private StatusBarVC		statusbar;
     private ConfigVC		config;
+    private MenuBarVC		menubar = null;
    
 	public DefaultApplicationMediator(IUserInterface ui, IGeneralConfiguration conf)
     {
@@ -67,19 +67,22 @@ public class DefaultApplicationMediator extends ApplicationMediator
 		helper.setMediatorReference(this);
         getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(ViewEvent.VIEWEVENTTYPE_GUI, this));
         getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(ViewEvent.VIEWEVENTTYPE_FILE, this));
+    }
+        
+	public void startUI(String args[]) {
         if (ui == null)
         {
             taskbar = (TaskBarVC) this.createViewController(VIEWCONTROLLER_TASKBAR);
             addViewController(taskbar);
             statusbar = (StatusBarVC) this.createViewController(VIEWCONTROLLER_STATUSBAR);
             addViewController(statusbar);
+            menubar = (MenuBarVC) this.createViewController(VIEWCONTROLLER_MENUBAR);
             config = (ConfigVC) this.createViewController(ApplicationMediator.VIEWCONTROLLER_CONFIG);
             addViewController(config);
         }
-    }
-        
-	public void startUI(String args[]) {
-        ui = new DefaultUserInterface(taskbar, statusbar);
+
+
+        ui = new DefaultUserInterface(taskbar, statusbar, menubar);
         setUi(ui);
         setDisplayUI((JFrame)ui);          
         ui.initialize(this);  
@@ -103,6 +106,10 @@ public class DefaultApplicationMediator extends ApplicationMediator
         if (type == VIEWCONTROLLER_STATUSBAR)
         {
         	vc = new StatusBarVC(StatusBarVC.ID_PREFIX + statusCounter);
+        }
+        else if (type == VIEWCONTROLLER_MENUBAR && Platform.isMac())
+        {
+        	vc = new MenuBarVC();
         }
         else
         {

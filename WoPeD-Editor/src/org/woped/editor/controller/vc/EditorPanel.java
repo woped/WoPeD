@@ -26,7 +26,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTree;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
@@ -35,9 +34,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorAware;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
-import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.VisualController;
@@ -45,7 +42,6 @@ import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.orientation.EditorSize;
 import org.woped.editor.orientation.Orientation;
-import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
 import org.woped.translations.Messages;
@@ -53,6 +49,55 @@ import org.woped.understandability.NetColorScheme;
 
 @SuppressWarnings("serial")
 public class EditorPanel extends JPanel {
+	
+	private JComponent container = null;
+	private IEditor editor;
+	private AbstractApplicationMediator centralMediator;	
+	private PropertyChangeSupport propertyChangeSupport;
+	private boolean bMetricsBarVisible = false;
+	private boolean analysisBarVisible = false;
+	private SideBar qualitativeAnalysisSideBar = null;
+	private JLabel semanticLabel = null;
+	private JPanel analysisSideBar = new JPanel(new GridBagLayout());
+	private JCheckBox autoRefresh = null;
+	private JCheckBox tStarCheckBox = null;
+	private boolean tStarEnabled = false;
+	private boolean m_UnderstandabilityColoringEnabled = false;	
+	
+	// Headers of the different Panes
+	private static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD, 11);
+	private static final int m_splitPosition = 600;
+	private static final int m_splitSize = 10;
+	private final int m_splitHeightOverviewPosition = 100;
+	private boolean automaticResize = false;
+	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;	
+	
+	/**
+	 * TODO: These members are public for now while we are still in 
+	 * the process or factoring out their uses from EditorVC
+	 */
+	// ! Stores a reference to the tree view and overview window
+	// ! for the net
+	// ! It is kept as a member to be able to show / hide this part of the
+	// ! editor window as required
+	public EditorStatusBarVC m_statusbar;
+	public JSplitPane m_rightSideTreeView = null;
+	public JSplitPane m_mainSplitPane = null;
+	public JSplitPane mainsplitPaneWithAnalysisBar = null;
+	public JSplitPane m_rightSideTreeViewWithAnalysisBar = null;
+	public JTree m_treeObject = null;
+	public JPanel overviewPanel = null;
+	public JPanel treeviewPanel = null;
+	public JScrollPane m_scrollPane = null;
+	// rotate
+	public Orientation m_orientation = null;
+	
+	public EditorSize editorSize = null;
+	// Metrics team variables
+	
+	NetColorScheme m_understandColoring = null;
+	public GraphTreeModel m_treeModel = null;
+	public EditorLayoutInfo m_EditorLayoutInfo = null;
 	
 	public EditorPanel(IEditor editor, AbstractApplicationMediator centralMediator,
 			PropertyChangeSupport propertyChangeSupport, boolean loadUI)
@@ -419,7 +464,7 @@ public class EditorPanel extends JPanel {
 	public void hideAnalysisBar() {
 		if (analysisBarVisible) {
 			tStarCheckBox.setSelected(false);
-			qualitiveAnalysisSideBar.showTStarIfPossible();
+			qualitativeAnalysisSideBar.showTStarIfPossible();
 			remove(mainsplitPaneWithAnalysisBar);
 			mainsplitPaneWithAnalysisBar = null;
 			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
@@ -428,23 +473,17 @@ public class EditorPanel extends JPanel {
 
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
 					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
-				m_mainSplitPane.setDividerLocation(m_mainSplitPane
-						.getMaximumDividerLocation());
+				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
 				m_mainSplitPane.setEnabled(false);
 			} else {
 				m_mainSplitPane.setResizeWeight(0.85);
 			}
 			add(m_mainSplitPane);
+
 	
 			revalidate();
-			editorSize.resize(false);
-			
-			//remove listener from paraphrasing tool
-			if(this.paraphrasingTab.getParaphrasingOutput().getTable() != null){
-				//this.viewPanel.getParaphrasingOutput().getSelectionListener().setSelectionListernActive(false);
-				this.paraphrasingTab.getParaphrasingOutput().removeListeners();
-			}
+//			editorSize.resize(false);
 		}
 	}
 
@@ -481,10 +520,9 @@ public class EditorPanel extends JPanel {
 				m_mainSplitPane.setResizeWeight(0.85);
 			}
 			add(m_mainSplitPane);
-			// analysisBarVisible = false;
 	
 			revalidate();
-			editorSize.resize(false);
+//			editorSize.resize(false);
 		}
 	}
 
@@ -560,22 +598,15 @@ public class EditorPanel extends JPanel {
 	 * @author Martin Meitz
 	 */
 	public void initializeAnalysisBar(){
-		this.semanticAnalysisPane = new JTabbedPane();
-		semanticLabel = new JLabel(
-			Messages.getString("Tools.semanticalAnalysis.text"));
-		semanticLabel.setFont(HEADER_FONT);
+		semanticLabel = new JLabel(Messages.getString("Tools.semanticalAnalysis.text"));
+//		semanticLabel.setFont(HEADER_FONT);		
 		
-		paraphrasingTab = new ParaphrasingPanel(this.editor);
-		//this.m_filepath = this.editor.getFilePath();
-		
-		
-		
-		// settings for Qualitive Analysis tab
+		// settings for qualitative Analysis tab
 		boolean autoRefreshStatus = true;
 		tStarCheckBox = new JCheckBox(
 				Messages.getString("AnalysisSideBar.Footer.TStar"));
 		
-		qualitiveAnalysisSideBar = new SideBar(editor, centralMediator, autoRefreshStatus,
+		qualitativeAnalysisSideBar = new SideBar(editor, centralMediator, autoRefreshStatus,
 				tStarCheckBox);
 
 		JPanel bottomPanel = new JPanel(new BorderLayout());
@@ -587,8 +618,8 @@ public class EditorPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean selected = ((JCheckBox) arg0.getSource())
 						.isSelected();
-				qualitiveAnalysisSideBar.setAutoRefreshStatus(selected);
-				qualitiveAnalysisSideBar.repaint();
+				qualitativeAnalysisSideBar.setAutoRefreshStatus(selected);
+				qualitativeAnalysisSideBar.repaint();
 			}
 		});
 		bottomPanel.add(autoRefresh, BorderLayout.CENTER);
@@ -597,16 +628,11 @@ public class EditorPanel extends JPanel {
 		tStarCheckBox.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				qualitiveAnalysisSideBar.showTStarIfPossible();
+				qualitativeAnalysisSideBar.showTStarIfPossible();
 			}
 		});
 		bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
 
-		JPanel sideBarTab = new JPanel(new BorderLayout());
-		sideBarTab.add(qualitiveAnalysisSideBar, BorderLayout.CENTER);
-		sideBarTab.add(bottomPanel, BorderLayout.SOUTH);
-		
-		
 		// define close button
 		HideLabel semanticPanelClose = new HideLabel(
 				Messages.getImageIcon("AnalysisSideBar.Cancel"),
@@ -620,18 +646,12 @@ public class EditorPanel extends JPanel {
 				0.0, 0.0, GridBagConstraints.NORTHEAST,
 				GridBagConstraints.REMAINDER,
 				new Insets(0, 0, 0, 1), 0, 0));
-		analysisSideBar.add(semanticAnalysisPane, new GridBagConstraints(0, 1, 4, 1, 1.0,
+		analysisSideBar.add(qualitativeAnalysisSideBar, new GridBagConstraints(0, 1, 4, 1, 1.0,
 				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 0), 0, 0));
-		
-		semanticAnalysisPane.addTab(Messages.getString("AnalysisSideBar.Title"), sideBarTab);
-		semanticAnalysisPane.addTab(Messages.getString("Paraphrasing.Description"), paraphrasingTab);
-		
 	}
 	
 	/**
-	 * replaces the "normal" EditorSplitPane with another SplitPane with the
-	 * AnalysisSidebar and Paraphrasing tool on the right side
 	 * 
 	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
 	 * @editor Martin Meitz
@@ -645,67 +665,7 @@ public class EditorPanel extends JPanel {
 			}
 			remove(m_mainSplitPane);
 			getContainer();
-			qualitiveAnalysisSideBar.refresh();
-			//add listener to paraphrasing tool
-
-			if(this.paraphrasingTab.getParaphrasingOutput().getTable() != null){
-				//this.viewPanel.getParaphrasingOutput().getSelectionListener().setSelectionListernActive(true);
-				this.paraphrasingTab.getParaphrasingOutput().addListeners();
-	
-				//if the table has no entries, load values from element container
-				if(this.paraphrasingTab.getParaphrasingOutput().getDefaultTableModel().getRowCount() == 0) {
-					for(int x = 0; x< this.editor.getModelProcessor().getElementContainer().getParaphrasingModel().getTableSize(); x++){
-						int elements = 0;
-					    //check ids if they are in the diagram
-				    	  String[] content = this.editor.getModelProcessor().getElementContainer().getParaphrasingModel().getElementByRow(x)[0].split(",");
-						  String ids = "";
-				    	  Iterator<AbstractPetriNetElementModel> i = this.editor.getModelProcessor().getElementContainer().getRootElements().iterator();
-							while (i.hasNext()) {
-								AbstractPetriNetElementModel cur = (AbstractPetriNetElementModel) i.next();
-								
-								if (cur.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
-					            {
-					            	OperatorTransitionModel operatorModel = (OperatorTransitionModel) cur;
-					                Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
-					                while (simpleTransIter.hasNext())
-					                {
-					                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
-					                    if (simpleTransModel != null 
-					                            && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
-					                    {
-					                    	for(String v : content){
-												if(v.equals(simpleTransModel.getId())){
-													ids = ids + v + ",";
-													elements++;
-												}
-											}
-					                    }
-
-					                }
-					            }
-								else{
-									for(String v : content){
-										if(v.equals(cur.getId())){
-											ids = ids + v + ",";
-											elements++;
-										}
-									}
-								}
-								
-								
-								
-							}
-							
-							if(elements > 0){
-								ids = ids.substring(0, ids.length()-1);
-								String[] test = {ids, this.editor.getModelProcessor().getElementContainer().getParaphrasingModel().getElementByRow(x)[1]};
-								this.paraphrasingTab.getParaphrasingOutput().addRow(test);
-							}
-						
-					}
-				}
-
-			}			
+			qualitativeAnalysisSideBar.refresh();
 			
 			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(
 					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, analysisSideBar);
@@ -809,7 +769,7 @@ public class EditorPanel extends JPanel {
 	public void setRotateSelected(boolean rotateSelected) {
 		m_orientation.setRotateSelected(rotateSelected);
 		if (analysisBarVisible && !bMetricsBarVisible)
-			qualitiveAnalysisSideBar.showTStarIfPossible();
+			qualitativeAnalysisSideBar.showTStarIfPossible();
 	}
 
 	public boolean isRotateSelected() {
@@ -843,13 +803,13 @@ public class EditorPanel extends JPanel {
 	public void autoRefreshAnalysisBar() {
 		if (analysisBarVisible && autoRefresh != null
 				&& autoRefresh.isSelected()) {
-			qualitiveAnalysisSideBar.refresh();
+			qualitativeAnalysisSideBar.refresh();
 			editorSize.resize(false);
 		}
 	}
 	
 	public SideBar getAnalysisSideBar() {
-		return qualitiveAnalysisSideBar;
+		return qualitativeAnalysisSideBar;
 	}
 
 	public void setAutomaticResize(boolean automaticresize) {
@@ -940,63 +900,4 @@ public class EditorPanel extends JPanel {
 		}
 		editorVC.setSaved(false);
 	}
-
-	private JComponent container = null;
-	private IEditor editor;
-	private AbstractApplicationMediator centralMediator;	
-	private PropertyChangeSupport propertyChangeSupport;
-	private boolean bMetricsBarVisible = false;
-	// Metrics team variables
-	private JTabbedPane semanticAnalysisPane = null;
-	private boolean analysisBarVisible = false;
-	private SideBar qualitiveAnalysisSideBar = null;
-	private ParaphrasingPanel paraphrasingTab = null;
-	private JLabel semanticLabel = null;
-	
-	public JPanel analysisSideBar = new JPanel(new GridBagLayout());
-	
-
-	private JCheckBox autoRefresh = null;
-	private JCheckBox tStarCheckBox = null;
-	private boolean tStarEnabled = false;
-	private boolean m_UnderstandabilityColoringEnabled = false;	
-	
-	// Headers of the different Panes
-	private static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD,
-			11);
-	private static final int m_splitPosition = 600;
-	private static final int m_splitSize = 10;
-	private final int m_splitHeightOverviewPosition = 100;
-	private boolean automaticResize = false;
-	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;	
-	
-	/**
-	 * TODO: These members are public for now while we are still in 
-	 * the process or factoring out their uses from EditorVC
-	 */
-	
-
-	// ! Stores a reference to the tree view and overview window
-	// ! for the net
-	// ! It is kept as a member to be able to show / hide this part of the
-	// ! editor window as required
-	public EditorStatusBarVC m_statusbar;
-	public JSplitPane m_rightSideTreeView = null;
-	public JSplitPane m_mainSplitPane = null;
-	public JSplitPane mainsplitPaneWithAnalysisBar = null;
-	public JSplitPane m_rightSideTreeViewWithAnalysisBar = null;
-	public JTree m_treeObject = null;
-	public JPanel overviewPanel = null;
-	public JPanel treeviewPanel = null;
-	public JScrollPane m_scrollPane = null;
-	// rotate
-	public Orientation m_orientation = null;
-	
-	public EditorSize editorSize = null;
-	// Metrics team variables
-	
-	NetColorScheme m_understandColoring = null;
-	public GraphTreeModel m_treeModel = null;
-	public EditorLayoutInfo m_EditorLayoutInfo = null;
-	
 }

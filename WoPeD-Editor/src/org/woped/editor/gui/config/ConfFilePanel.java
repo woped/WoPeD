@@ -193,7 +193,7 @@ public class ConfFilePanel extends AbstractConfPanel
             c.fill = GridBagConstraints.HORIZONTAL;
             homeDirPanel.add(getHomeDirTextField(), c);
 
-            c.gridx = 4;
+            c.gridx = 6;
             c.gridy = 1;
             c.fill = GridBagConstraints.NONE;
             c.anchor = GridBagConstraints.PAGE_END;

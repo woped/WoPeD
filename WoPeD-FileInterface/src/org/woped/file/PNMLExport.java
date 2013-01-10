@@ -233,7 +233,7 @@ public class PNMLExport
             NetToolspecificType iNetToolSpec = iNet.addNewToolspecific();
 
             iNetToolSpec.setTool("WoPeD");
-            iNetToolSpec.setVersion("1.0"); //TODO Version aus properties übernehmen!?
+            iNetToolSpec.setVersion("1.0"); //TODO Version aus properties ï¿½bernehmen!?
             
             //get PartnerLinks
             TPartnerLinks iPLs = iNetToolSpec.addNewPartnerLinks();
@@ -256,9 +256,10 @@ public class PNMLExport
             	iVar.setName(petrinetModel.getElementContainer().getTVariablesList().getVariableArray(VarCounter).getName());
             	iVar.setType(petrinetModel.getElementContainer().getTVariablesList().getVariableArray(VarCounter).getType());
             	VarCounter++;
-            	
+             }
             
-            }
+            // scale
+            iNetToolSpec.setScale((int)(editor.getGraph().getScale() * 100));
             
             // graphics
             GraphicsSimpleType iGraphicsNet = iNetToolSpec.addNewBounds();
@@ -346,7 +347,7 @@ public class PNMLExport
                 String tempResourceClass = (String) iter.next();
                 Vector<String> values = petrinetModel.getResourceMapping().get(tempResourceClass);
                 // TODO check if mapping exists NullPointerExeption bei
-                // speicherung geänderter orgUnit die keine zugeordnete Resource
+                // speicherung geï¿½nderter orgUnit die keine zugeordnete Resource
                 // hat!
                 for (Iterator<String> iterator = values.iterator(); iterator.hasNext();)
                 {
@@ -632,7 +633,7 @@ public class PNMLExport
                 {
                     iPlace.setToolspecificArray(iPlace.getToolspecificArray().length - 1, (PlaceToolspecificType) currentModel.getUnknownToolSpecs().get(i));
                 }
-                // TODO 1 HochzŠhlen
+                // TODO 1 Hochzï¿½hlen
             }
         }
         // attr. id
@@ -659,7 +660,7 @@ public class PNMLExport
                 {
                     iTransition.setToolspecificArray(iTransition.getToolspecificArray().length - 1, (TransitionToolspecificType) takenModel.getUnknownToolSpecs().get(i));
                 }
-                // TODO 1 HochzŠhlen
+                // TODO 1 Hochzï¿½hlen
             }
             initToolspecific(iTransition.addNewToolspecific(), takenModel);
         }

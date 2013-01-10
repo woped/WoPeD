@@ -1,5 +1,5 @@
 <project default="makedistribution" name="INSTALLER">
-
+	   
 	<tstamp />
 	<property file="../CommonLibs/build.properties" />
 
@@ -41,8 +41,8 @@
 
 	<taskdef name="try" classname="ise.antelope.tasks.TryTask" classpath="build-tools/ant/AntelopeTasks_3.4.2.jar" />
 	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="build-tools/ant/jarbundler-2.2.0.jar"/>
-
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstallerOnMac, makeLinuxInstaller, makeMacInstaller" /> 
+ 
+ 	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstallerOnMac, makeLinuxInstaller, makeMacInstaller" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -50,6 +50,7 @@
 
 	<target name="makedir" depends="clean">
 		<mkdir dir="dist" />
+		<mkdir dir="dist/izpack" />
 		<mkdir dir="dist/mac" />
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
@@ -85,8 +86,11 @@
 		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
 		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/metricsBeans.jar" />
-		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD.class" />
-		<copy todir="dist/run/org/woped/gui" file="../WoPeD-StandaloneRunner/bin/org/woped/gui/RunWoPeD$1.class" />
+		<copy todir="dist/run/org/woped/gui">
+			<fileset dir="../WoPeD-StandaloneRunner/bin/org/woped/gui">
+				<include name="RunWoPeD*.class" />
+			</fileset>
+		</copy>
 		<copy todir="dist/lib" file="../CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
 		<copy todir="dist/lib" file="../CommonLibs/lib/flamingo-${FLAMINGOVERSION}.jar" />
@@ -151,19 +155,26 @@
 			<fileset dir="build-tools/setup/Windows" />
 			<fileset dir="build-tools/setup/Linux" />
 			<fileset dir="build-tools/setup/MacOS" />
-			<fileset file="woped-logo.jpg" />
+		</copy>
+
+		<copy todir="dist/izpack" overwrite="true">
+			<fileset dir="build-tools/izpack" />
 		</copy>
 
 		<copy todir="dist" filtering="true" overwrite="true">
-			<fileset file="build-tools/*.*" />
-			<fileset file="build-tools/setup/install.xml" />
-			<fileset file="build-tools/setup/MacOS/makepackage" />
+			<fileset file="build-tools/*.txt" />
+			<fileset file="build-tools/*.mf" />
+			<fileset file="build-tools/setup/*.xml" />
 		</copy>
+		
+		<copy todir="dist" file="build-tools/setup/MacOS/makepackage" filtering="true" overwrite="true" />
+		<copy todir="dist" file="build-tools/setup/MacOS/runWoPeDOnMac.sh" filtering="true" overwrite="true" />
+		<chmod file="dist/runWoPeDOnMac.sh" perm="755" />
 
 		<copy file="dist/Readme.txt" tofile="installers/Readme-${WOPEDVERSION}${SNAPSHOT}.txt" />
 		<copy file="dist/Changelog.txt" tofile="installers/Changelog-${WOPEDVERSION}${SNAPSHOT}.txt" />
 
-		<unzip src="build-tools/setup/izpack.zip" dest="dist" />
+		
 	</target>
 
 	<target name="makesubprojects">
@@ -254,13 +265,14 @@
 					<include name="WoPeD-install-linux.jar" />
 				</tarfileset>
 			</tar>
+			
 		    <catch>
 			  	<echo>Not running on Linux</echo>
 		    </catch>
 		</try>
 	</target>
 		
-	<target name="makeMacInstaller">
+	<target name="makeMacInstaller">		
 		<try>
 			<jarbundler dir="dist/mac"
 		    	        name="WoPeD"
@@ -269,12 +281,11 @@
 		            	icon="dist/woped.icns"
 		            	jvmversion="1.6+"
 		            	version="${WOPEDVERSION}${SNAPSHOT}"
-		            	infostring="WoPeD copyright 2012"
+		            	infostring="WoPeD copyright 2013"
 						workingdirectory="$APP_PACKAGE/Contents/Resources/Java"> 
 
 				<jarfileset dir="dist">
 			    	<include name="lib/*.jar" />
-	            	<include name="WoPeD.jar" />
 	            	<include name="WoPeD-classes*.jar" />
 	            	<include name="doc/**" />
 	            	<include name="nets/**" />
@@ -292,8 +303,8 @@
 			<exec dir="dist" executable="/bin/sh"> 
 				<arg line="./makepackage" />
 			</exec>
-
-		    <catch>
+			
+			<catch>
 				<echo>Not running on Mac</echo>
 		    </catch>
 		</try>

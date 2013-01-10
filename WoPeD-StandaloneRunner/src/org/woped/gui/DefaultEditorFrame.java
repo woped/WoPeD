@@ -30,6 +30,7 @@ import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.beans.PropertyVetoException;
+import java.util.Iterator;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
@@ -43,11 +44,16 @@ import org.woped.bpel.gui.EditorData;
 import org.woped.bpel.gui.EditorOperations;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorFrame;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.editor.controller.PetriNetResourceEditor;
+import org.woped.editor.controller.vc.EditorPanel;
 import org.woped.editor.controller.vc.EditorStatusBarVC;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.translations.Messages;
+
+import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
+
 
 /**
  * The EditorFrame is the container for each <code>Editor</code>.
@@ -58,84 +64,25 @@ import org.woped.translations.Messages;
 public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 {
     private EditorVC               m_editor                 = null;
-    private PetriNetResourceEditor m_petriNetResourceEditornew = null;
+    private JScrollPane 		   m_resourcePanel			= null;
+    private EditorPanel			   m_editorPanel		    = null;
+    private PetriNetResourceEditor m_petriNetResourceEditor = null;
     private EditorStatusBarVC      m_statusBar              = null;
-    private EditorOperations       m_operationsEditor		= null;
+    private EditorOperations       m_operationsPanel		= null;
+    private ParaphrasingPanel	   m_paraPhrasingPanel		= null;
     private JTabbedPane            tabbedPane               = null;
 
-    public DefaultEditorFrame(EditorVC editor, PetriNetResourceEditor propEditor, EditorOperations opEditor, EditorData dEditor)
+    public DefaultEditorFrame(EditorVC editor, EditorOperations opEditor, EditorData dEditor, PetriNetResourceEditor resEditor)
     {          
         super(editor.getName(), true, true, true, true);
         this.setVisible(false);
         m_editor = editor;
         this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
- 
+        m_petriNetResourceEditor = resEditor;
     	addInternalFrameListener(m_editor);
-    	m_operationsEditor = opEditor;
-        this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
-
-        if (editor instanceof SubprocessEditorVC) {
-            this.setFrameIcon(Messages.getImageIcon("Popup.Add.Subprocess"));
-            this.getContentPane().add(m_editor.getEditorPanel(), BorderLayout.CENTER);
-        } else {
-            this.setFrameIcon(Messages.getImageIcon("Document"));
-            
-            // TabbedPane
-            JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
-            tabbedPane = new JTabbedPane();
-            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor.getEditorPanel());
-            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
-            tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);            
-            tabbedPane.getModel().addChangeListener(new ChangeListener()
-            		{
-            	public void stateChanged(ChangeEvent e)
-            	{
-            		getPetriNetResourceEditor().reset();
-            		
-            	}
-            	
-            		});
-            
-            this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
-            if (propEditor != null)
-            {
-        	propScrollPane.addFocusListener(new FocusListener()
-        	{
-        	    public void focusGained(FocusEvent e)
-        	    {
-        		getPetriNetResourceEditor().reset();
-        	    }
-        	    
-        	    public void focusLost(FocusEvent e)
-        	    {
-        		;
-        	    }
-        	});
-            } else
-            {
-        	this.getContentPane().add(m_editor.getEditorPanel(), BorderLayout.CENTER);
-            }
-        }
-                
-        setTitle(m_editor.getName());
-                       
-        this.pack();
-        if (!editor.isSubprocessEditor()) {
-        	this.setSize(800,600);
-        }
-        this.repaint();
-        this.setVisible(true);
-    }
-
-    public DefaultEditorFrame(EditorVC editor,  EditorOperations opEditor, EditorData dEditor,PetriNetResourceEditor propEditor)
-    {          
-        super(editor.getName(), true, true, true, true);
-        this.setVisible(false);
-        m_editor = editor;
-        this.getContentPane().add(getStatusBar(), BorderLayout.SOUTH);
-        m_petriNetResourceEditornew = propEditor;
-    	addInternalFrameListener(m_editor);
-    	m_operationsEditor = opEditor;
+    	m_operationsPanel = opEditor;
+        m_editorPanel = m_editor.getEditorPanel();
+        m_paraPhrasingPanel = new ParaphrasingPanel(m_editor);
         this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
         if (editor.isSubprocessEditor()) {
@@ -145,13 +92,14 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             this.setFrameIcon(Messages.getImageIcon("Document"));
             
             // TabbedPane
-            JScrollPane propScrollPane = new JScrollPane(getPetriNetResourceEditor());
+            m_resourcePanel = new JScrollPane(getPetriNetResourceEditor());
             tabbedPane = new JTabbedPane();
-            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor.getEditorPanel());
-            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
-            tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
+            tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editorPanel);
+            tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), m_resourcePanel);
+            tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsPanel);
+            tabbedPane.addTab(Messages.getString("Paraphrasing.Description"), m_paraPhrasingPanel);   
             tabbedPane.getModel().addChangeListener(new ChangeListener()
-            		{
+            {
             	public void stateChanged(ChangeEvent e)
             	{
             		getPetriNetResourceEditor().reset();
@@ -161,9 +109,9 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             		});
             
             this.getContentPane().add(tabbedPane, BorderLayout.CENTER);
-            if (propEditor != null)
+            if (resEditor != null)
             {
-        	propScrollPane.addFocusListener(new FocusListener()
+        	m_resourcePanel.addFocusListener(new FocusListener()
         	{
         	    public void focusGained(FocusEvent e)
         	    {
@@ -175,7 +123,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         		;
         	    }
         	});
-        	propScrollPane.addFocusListener(new FocusListener()
+        	m_resourcePanel.addFocusListener(new FocusListener()
         	{
         	    public void focusGained(FocusEvent e)
         	    {
@@ -188,7 +136,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         		;
         	    }
         	});
-        	propScrollPane.addFocusListener(new FocusListener()
+        	m_resourcePanel.addFocusListener(new FocusListener()
         	{
         	    public void focusGained(FocusEvent e)
         	    {
@@ -205,6 +153,8 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         	this.getContentPane().add(m_editor.getEditorPanel(), BorderLayout.CENTER);
             }
         }
+        
+        setParaphrasingListeners();
                 
         setTitle(m_editor.getName());
                        
@@ -216,6 +166,83 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         this.setVisible(true);
     }
     
+	// add listener to paraphrasing tool
+	void setParaphrasingListeners() {
+		if (m_paraPhrasingPanel.getParaphrasingOutput().getTable() != null) {
+			m_paraPhrasingPanel.getParaphrasingOutput().addListeners();
+
+			// if the table has no entries, load values from element container
+			if (m_paraPhrasingPanel.getParaphrasingOutput()
+					.getDefaultTableModel().getRowCount() == 0) {
+				for (int x = 0; x < m_editor.getModelProcessor()
+						.getElementContainer().getParaphrasingModel()
+						.getTableSize(); x++) {
+					int elements = 0;
+					// check ids if they are in the diagram
+					String[] content = m_editor.getModelProcessor()
+							.getElementContainer().getParaphrasingModel()
+							.getElementByRow(x)[0].split(",");
+					String ids = "";
+					Iterator<AbstractPetriNetElementModel> i = m_editor
+							.getModelProcessor().getElementContainer()
+							.getRootElements().iterator();
+					while (i.hasNext()) {
+						AbstractPetriNetElementModel cur = (AbstractPetriNetElementModel) i
+								.next();
+
+						if (cur.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+							OperatorTransitionModel operatorModel = (OperatorTransitionModel) cur;
+							Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel
+									.getSimpleTransContainer()
+									.getElementsByType(
+											AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+									.values().iterator();
+							while (simpleTransIter.hasNext()) {
+								AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter
+										.next();
+								if (simpleTransModel != null
+										&& operatorModel
+												.getSimpleTransContainer()
+												.getElementById(
+														simpleTransModel
+																.getId())
+												.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE) {
+									for (String v : content) {
+										if (v.equals(simpleTransModel.getId())) {
+											ids = ids + v + ",";
+											elements++;
+										}
+									}
+								}
+
+							}
+						} else {
+							for (String v : content) {
+								if (v.equals(cur.getId())) {
+									ids = ids + v + ",";
+									elements++;
+								}
+							}
+						}
+
+					}
+
+					if (elements > 0) {
+						ids = ids.substring(0, ids.length() - 1);
+						String[] test = {
+								ids,
+								m_editor.getModelProcessor()
+										.getElementContainer()
+										.getParaphrasingModel()
+										.getElementByRow(x)[1] };
+						m_paraPhrasingPanel.getParaphrasingOutput()
+								.addRow(test);
+					}
+
+				}
+			}
+		}
+	}
 
     private EditorStatusBarVC getStatusBar()
     {
@@ -243,7 +270,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 
     public PetriNetResourceEditor getPetriNetResourceEditor()
     {
-        return m_petriNetResourceEditornew;
+        return m_petriNetResourceEditor;
     }
 	/**
 	 * When a Frame isIconified it should be invisible.
@@ -297,8 +324,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 			}
 		}
 	}
-	
-	
 
 	@Override
 	public void setBounds(int p_arg0, int p_arg1, int p_arg2, int p_arg3)

@@ -26,7 +26,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -82,8 +81,8 @@ public class ConfigVC extends JDialog implements IViewController
 
     private HashMap<String, AbstractConfPanel>               confPanels     = new HashMap<String, AbstractConfPanel>();
 
-    public static final Dimension CONF_DIM       = new Dimension(510, 500);
-    public static final Dimension SCROLL_DIM     = new Dimension(450, 370);
+    public static final Dimension CONF_DIM       = new Dimension(580, 450);
+    public static final Dimension SCROLL_DIM     = new Dimension(580, 450);
     public static final Color     BACK_COLOR     = new Color(255, 255, 255);
 
     private static JFileChooser   jfc            = null;
@@ -288,19 +287,12 @@ public class ConfigVC extends JDialog implements IViewController
         if (buttonPanel == null)
         {
             buttonPanel = new JPanel();
-            buttonPanel.setLayout(new GridLayout(1, 2));
-            JPanel innerPanelLeft = new JPanel();
-            innerPanelLeft.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-            JPanel innerPanelRight = new JPanel();
-            innerPanelRight.setLayout(new FlowLayout(FlowLayout.RIGHT));
-            innerPanelRight.add(getOkButton());
-            innerPanelRight.add(getCancelButton());
-            innerPanelRight.add(getApplyButton());
-
-            buttonPanel.add(innerPanelLeft);
-            buttonPanel.add(innerPanelRight);
+            buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+            buttonPanel.add(getOkButton());
+            buttonPanel.add(getCancelButton());
+            buttonPanel.add(getApplyButton());
         }
+
         return buttonPanel;
     }
 

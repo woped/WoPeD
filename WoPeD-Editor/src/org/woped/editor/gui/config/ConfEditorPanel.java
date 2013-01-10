@@ -140,14 +140,21 @@ public class ConfEditorPanel extends AbstractConfPanel
         ConfigurationManager.getConfiguration().setArrowWidth(getArrowWidthJComboBox().getSelectedIndex());
         ConfigurationManager.getConfiguration().setFillArrowHead(getArrowFillHeadCheckBox().isSelected());
         
-        boolean changed = (!lnfClasses.get(getLnfChooser().getSelectedItem()).equals(ConfigurationManager.getConfiguration().getLookAndFeel()));
+		boolean changed = !lnfClasses.get(getLnfChooser().getSelectedItem())
+				.equals(ConfigurationManager.getConfiguration()
+						.getLookAndFeel());
+
+		if (changed) {
+			ConfigurationManager.getConfiguration().setLookAndFeel(
+					lnfClasses.get(getLnfChooser().getSelectedItem()));
+			JOptionPane
+					.showMessageDialog(
+							null,
+							Messages.getString("Configuration.Editor.Dialog.Restart.Message"),
+							Messages.getString("Configuration.Editor.Dialog.Restart.Title"),
+							JOptionPane.INFORMATION_MESSAGE);
+		}
         
-        if (changed) {
-        	
-            ConfigurationManager.getConfiguration().setLookAndFeel(lnfClasses.get(getLnfChooser().getSelectedItem()));
-        	JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Editor.Dialog.Restart.Message"), Messages.getString("Configuration.Editor.Dialog.Restart.Title"),
-                    JOptionPane.INFORMATION_MESSAGE);
-         }
         return true;
     }
     

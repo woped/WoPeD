@@ -338,8 +338,8 @@ public class PNMLImport {
 								EditorLayoutInfo layout = new EditorLayoutInfo();
 								layout.setSavedSize(dim);
 								layout.setSavedLocation(location);
-								// try to import the type of Layout (false if vertical)
 								
+								// try to import the type of Layout (false if vertical)
 								((EditorVC) editor[i]).setRotateSelected(currentNet
 										.getToolspecificArray(j)
 										.getVerticalLayout());
@@ -355,6 +355,14 @@ public class PNMLImport {
 										// Update the UI representation
 											//EditorVC.getGraph().updateUI();	
 										}
+									
+									if (currentNet.getToolspecificArray(j).isSetScale()) {
+										// try to import the saved scale
+										((EditorVC) editor[i]).getGraph().setScale(currentNet
+											.getToolspecificArray(j).getScale()/100.0);
+									}
+									
+
 								// Only if also the remaining information is
 								// available,
 								// try to import the width of the tree view and the height of the overview panel

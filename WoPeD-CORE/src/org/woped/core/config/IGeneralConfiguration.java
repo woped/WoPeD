@@ -428,5 +428,4 @@ public interface IGeneralConfiguration extends IConfiguration {
 	public void setApromoreUse(boolean selected);
 
 	public boolean getApromoreUse();
-
 }

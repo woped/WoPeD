@@ -32,6 +32,7 @@ import java.net.URL;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
+import org.woped.core.utilities.Platform;
 import org.woped.translations.Messages;
 
 /**
@@ -60,18 +61,13 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
      *            "file://").
      */
 
-    // Used to identify the windows platform.
-    private static final String WIN_ID      = "Windows";
-    // Used to identify the macintosh platform.
-    private static final String MAC_ID      = "Mac OS X";
-    // The default system browser under windows.
     private static final String WIN_PATH    = "rundll32";
     // The flag to display a url.
     private static final String WIN_FLAG    = "url.dll,FileProtocolHandler";
     // The default browser under unix.
-    private static final String UNIX_PATH[] = { "netscape", "firefox", "mozilla", "galeon", "opera", "epiphany", "safari", "konqueror", "lynx" };
+//    private static final String UNIX_PATH[] = { "netscape", "firefox", "mozilla", "galeon", "opera", "epiphany", "safari", "konqueror", "lynx" };
     // The flag to display a url.
-    private static final String UNIX_FLAG   = "-remote openURL";
+//    private static final String UNIX_FLAG   = "-remote openURL";
 
     private URL                 url;
     private JComponent          jComp;
@@ -105,29 +101,20 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
 
     public void displayURL()
     {
-        String cmd = null;
-        int exitCode;
-        boolean success = false;
+    	String cmd = null;
+//        int exitCode;
+//        boolean success = false;
 
         try
         {
-            if (isWindowsPlatform())
-            {
-                // cmd = 'rundll32 url.dll,FileProtocolHandler http://...'
+           if (Platform.isWindows()) {
                 cmd = WIN_PATH + " " + WIN_FLAG + " " + url;
                 Runtime.getRuntime().exec(cmd);
-            } else
-            {
-                if (isMacOSXPlatform())
+            } else {
+            	java.awt.Desktop.getDesktop().browse(java.net.URI.create(url.toString()));
+            }
+/*                if (Platform.isMac())
                 {
-                    //Hard- coded solution for the beginning, starts the Mac
-                    // Browser Safari
-                    cmd = "open -a /Applications/Safari.app " + url;
-                    try
-                    {
-                        Runtime.getRuntime().exec(cmd);
-                    } catch (Exception e)
-                    {}
                 } else
                 {
                     // try to find locate a linux browser and launch it remotely
@@ -158,31 +145,13 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
                         {}
                     }
                 }
-            }
+            }*/
         }
 
         catch (IOException e)
         {
             // couldn't exec browser
-            JOptionPane.showMessageDialog(null, Messages.getString("Help.Message.noDefaultBrowser") + "\nCommand = " + cmd + "\nException: " + e);
+            JOptionPane.showMessageDialog(null, Messages.getString("Help.Message.noDefaultBrowser") + "\nException: " + e);
         }
-    }
-
-    /**
-     * Try to determine whether this application is running under Windows or
-     * some other platform by examing the "os.name" property.
-     * 
-     * @return true if this application is running under a Windows OS
-     */
-    private boolean isWindowsPlatform()
-    {
-        String os = System.getProperty("os.name");
-        return (os != null && os.startsWith(WIN_ID));
-    }
-
-    private boolean isMacOSXPlatform()
-    {
-        String os = System.getProperty("os.name");
-        return (os != null && os.startsWith(MAC_ID));
     }
 }
