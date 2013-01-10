@@ -1,0 +1,6 @@
+/Applications/Developer/usr/bin/packagemaker \
+--doc woped.pmdoc \
+--version 3.0.2 \
+--out ../installers/WoPeD-install-macos-3.0.2.pkg
+hdiutil create ../installers/WoPeD-install-macos-3.0.2.dmg -ov -srcfolder ../installers/WoPeD-install-macos-3.0.2.pkg
+rm -rf ../installers/WoPeD-install-macos-3.0.2.pkg

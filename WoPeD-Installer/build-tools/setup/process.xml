@@ -1,0 +1,12 @@
+<processing>
+  <job name="Start WoPeD">
+    <os family="windows" />
+    <executefile name="$INSTALL_PATH/WoPeD.exe" />
+  </job>
+  <job name="Start WoPeD">
+    <os family="unix" />
+    <executefile name="$INSTALL_PATH/WoPeD" />
+  </job>
+    <onFail previous="true" next="false" />
+  	<onSuccess previous="true" next="true" />
+</processing>
