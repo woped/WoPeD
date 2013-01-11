@@ -70,6 +70,7 @@ public class RunWoPeD extends JFrame {
 		
     	if (args.length > 0 && args[0].equals("-delay")) {
     		instance.WaitForSetupFinished();
+    		args = null;
     	}
     	
         SwingUtilities.invokeLater(new Runnable() {
@@ -97,7 +98,6 @@ public class RunWoPeD extends JFrame {
  
             OSXAdapter.setQuitHandler(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
-            		System.out.println("QuitHandler");
 					dam.fireViewEvent(
 							new ViewEvent(
 									dam,
@@ -109,8 +109,7 @@ public class RunWoPeD extends JFrame {
            
             OSXAdapter.setAboutHandler(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
-            		System.out.println("QuitHandler");
-					dam.fireViewEvent(
+ 					dam.fireViewEvent(
 							new ViewEvent(
 									dam,
 									AbstractViewEvent.VIEWEVENTTYPE_GUI,
@@ -196,7 +195,7 @@ public class RunWoPeD extends JFrame {
 				null, 
 				Messages.getString("Dialog.StartWoPeD.Text"),
 				Messages.getString("Dialog.StartWoPeD.Title"),
-               JOptionPane.YES_NO_OPTION);
+                JOptionPane.YES_NO_OPTION);
 
 		if (result == JOptionPane.NO_OPTION) {
 			System.exit(0);
@@ -209,30 +208,32 @@ public class RunWoPeD extends JFrame {
 			String  pattern;
 			Process p;
 			
-			if (Platform.isWindows()) {		
+/*			if (Platform.isWindows()) {		
 				p = Runtime.getRuntime().exec
 			        	(System.getenv("windir") +"\\system32\\"+"tasklist.exe -v");
 				pattern = "IzPack -";
 			}
-			else if (Platform.isMac()) {		
-				p = Runtime.getRuntime().exec("ps -e");
-				pattern = "Installer";
-			}
+			else */ 
+			/*
 			else {
 				p = Runtime.getRuntime().exec("ps -e");
 				pattern = "WoPeD-install-";				
-			}
+			}*/
 
-			BufferedReader input = new BufferedReader(new InputStreamReader(
+			if (Platform.isMac()) {		
+				p = Runtime.getRuntime().exec("ps -e");
+				pattern = "Installer";
+				BufferedReader input = new BufferedReader(new InputStreamReader(
 					p.getInputStream()));
-			while ((line = input.readLine()) != null) {
-				if (line.contains(pattern))
-					return false;
+				while ((line = input.readLine()) != null) {
+					if (line.contains(pattern))
+						return false;
+				}
+			
+				input.close();
 			}
-			
-			input.close();
-			
-		} catch (Exception err) {
+		} 
+		catch (Exception err) {
 			err.printStackTrace();
 		}
 		
