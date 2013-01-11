@@ -54,6 +54,7 @@
 		<mkdir dir="dist/mac" />
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
+		<mkdir dir="dist/launch" />
 		<mkdir dir="dist/doc" />
 		<mkdir dir="dist/doc/html" />
 		<mkdir dir="dist/doc/html/de" />
@@ -148,13 +149,21 @@
 			<fileset file="../WoPeD-StandaloneRunner/doc/html/images/icons/tango/*.*" />
 		</copy>
 
-		<copy todir="dist">
+		<copy todir="dist/launch">
 			<fileset dir="build-tools/launcher/Windows" />
+			<fileset file="build-tools/setup/Windows/buildsetup.xml" />
+			<fileset file="build-tools/setup/Windows/buildsetupexeOnMac" />
+			<fileset file="build-tools/setup/Windows/*.ico" />
+		</copy>
+		
+		<copy todir="dist">
 			<fileset dir="build-tools/launcher/Linux" />
 			<fileset dir="build-tools/launcher/MacOS/" />
-			<fileset dir="build-tools/setup/Windows" />
 			<fileset dir="build-tools/setup/Linux" />
 			<fileset dir="build-tools/setup/MacOS" />
+			<fileset file="build-tools/setup/Windows/buildsetupexeOnMac" />
+			<fileset file="build-tools/setup/Windows/buildsetupOnMac" />
+			<fileset file="build-tools/setup/Windows/shortcut-win.xml" />
 		</copy>
 
 		<copy todir="dist/izpack" overwrite="true">
@@ -207,8 +216,8 @@
 
 	<target name="makeWindowsInstallerOnMac">
 		<try>
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
-			<exec dir="dist" executable="/bin/sh">
+			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
+			<exec dir="dist/launch" executable="/bin/sh">
 				<arg line="buildexeOnMac" />
 			</exec>
 			
@@ -220,7 +229,7 @@
 				<arg line="buildsetupexeOnMac" />
 			</exec>
 
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install-windows.exe" />
+			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="launch/WoPeD-install-windows.exe" />
 
 		    <catch>
 			  	<echo>Not running on Mac</echo>
@@ -230,20 +239,19 @@
 		
 	<target name="makeWindowsInstaller">
 		<try>
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
-			<exec dir="dist" executable="cmd">
+			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
+			<exec dir="dist/launch" executable="cmd">
 				<arg line="/c java -jar launch4j.jar buildexe.xml" />
 			</exec>
 			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar izpack\lib\compiler.jar install.xml -o WoPeD-install-windows.jar" />
+				<arg line="/c java -jar izpack\lib\compiler.jar install.xml -o launch\\WoPeD-install-windows.jar" />
 			</exec>
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
 
-			<exec dir="dist" executable="cmd">
+			<exec dir="dist/launch" executable="cmd">
 				<arg line="/c java -jar launch4j.jar buildsetup.xml" />
 			</exec>
 
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist" includes="WoPeD-install-windows.exe" />
+			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
 
 		    <catch>
 			  <echo>Not running on Windows</echo>
