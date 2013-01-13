@@ -80,6 +80,6 @@ public class SvgBatchConverter {
 			e.printStackTrace();
 		}
 		
-		System.out.println(" ... done");
+//		System.out.println(" ... done");
 	}
 }

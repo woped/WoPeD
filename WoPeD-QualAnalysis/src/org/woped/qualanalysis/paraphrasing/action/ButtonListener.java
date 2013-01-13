@@ -197,7 +197,7 @@ public class ButtonListener implements ActionListener{
 							out.close();
 						}
 						catch(Exception ex){
-							System.out.println("Fehler: " + ex);
+//							System.out.println("Fehler: " + ex);
 							
 							JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Export.Error.Message") + "\n" + ex.getMessage(),
 									Messages.getString("Paraphrasing.Export.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
