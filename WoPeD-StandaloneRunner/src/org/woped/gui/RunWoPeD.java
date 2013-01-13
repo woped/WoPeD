@@ -65,15 +65,22 @@ public class RunWoPeD extends JFrame {
      * Main Entry Point. Starts WoPeD and the GUI.
      *  
      */
-    public static void main(String[] args) {      	
-		instance = new RunWoPeD(args);
+    public static void main(String[] args) { 
+    	
+    	boolean startDelayed = false;
 		
     	if (args.length > 0 && args[0].equals("-delay")) {
-    		instance.WaitForSetupFinished();
+    		startDelayed = true;
     		args = null;
-    	}
+     	}
     	
-        SwingUtilities.invokeLater(new Runnable() {
+    	instance = new RunWoPeD(args);
+    	
+		if (startDelayed) {
+			instance.WaitForSetupFinished();
+		}
+
+    	SwingUtilities.invokeLater(new Runnable() {
     		public void run() {
     			instance.run();
     		}
@@ -114,6 +121,17 @@ public class RunWoPeD extends JFrame {
 									dam,
 									AbstractViewEvent.VIEWEVENTTYPE_GUI,
 									AbstractViewEvent.ABOUT));
+
+            	}
+            });
+            
+            OSXAdapter.setPreferencesHandler(new ActionListener() {
+            	public void actionPerformed(ActionEvent e) {
+ 					dam.fireViewEvent(
+							new ViewEvent(
+									dam,
+									AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
+									AbstractViewEvent.CONFIG));
 
             	}
             });
