@@ -1,7 +1,5 @@
 package org.woped.core.utilities;
 
-import org.woped.core.config.ConfigurationManager;
-
 /**
  * @author <a href="mailto:freytag@woped.org">Thomas Freytag </a> <br>
  *         <br>
