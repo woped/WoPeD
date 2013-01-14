@@ -46,12 +46,11 @@ import org.woped.core.utilities.Platform;
  */
 public abstract class AbstractApplicationMediator implements IViewListener
 {
-    private HashMap<String, IViewController>        viewControllerMap = null;
-    private VEPController  vepController     = null;
-    private IUserInterface ui                = null;
-    private IGeneralConfiguration conf 		 = null;
-
-	private LinkedList<Object> editorLists = new LinkedList<Object>();
+    private 	HashMap<String, IViewController>        viewControllerMap = null;
+    private 	VEPController  vepController     = null;
+    protected 	IUserInterface ui                = null;
+    private 	IGeneralConfiguration conf 		 = null;
+	private 	LinkedList<Object> editorLists = new LinkedList<Object>();
 
     public abstract IEditor createEditor(boolean undoSupport, boolean loadUI);
     
@@ -86,13 +85,11 @@ public abstract class AbstractApplicationMediator implements IViewListener
 								Platform.getSystemLookAndFeel());
 			}
 
-			UIManager.setLookAndFeel(ConfigurationManager.getConfiguration()
-					.getLookAndFeel());
-			LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set to "
-					+ UIManager.getSystemLookAndFeelClassName());
+			UIManager.setLookAndFeel(ConfigurationManager.getConfiguration().getLookAndFeel());
+			LoggerManager.info(Constants.CORE_LOGGER, "Look-And-Feel set to " + Platform.getSystemLookAndFeel());
 		}        
         catch (Exception e) { 
-            LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel set to System default");
+            LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel could not be set");
         }
     }
 
