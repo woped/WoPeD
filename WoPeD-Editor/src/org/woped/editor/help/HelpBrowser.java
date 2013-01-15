@@ -84,13 +84,13 @@ public class HelpBrowser extends JFrame implements HyperlinkListener
     {
         super("WoPeD Helpbrowser");
 
-        try
+/*        try
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e)
         {
             LoggerManager.error(Constants.EDITOR_LOGGER, "Error setting Look and Feel: " + e);
-        }
+        }*/
 
         addWindowListener(new WindowAdapter()
         {
