@@ -31,8 +31,8 @@ import java.util.Locale;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
@@ -96,9 +96,9 @@ public class RunWoPeD extends JFrame {
 		// Initialize Application mediator
     	Locale.setDefault(Locale.ENGLISH);
     	m_filesToOpen = args;
+    	initLogging();
     	m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
     	initUI();
-    	initLogging();
     }
     
 	/**
@@ -217,10 +217,11 @@ public class RunWoPeD extends JFrame {
 				Thread.sleep(1000);
 			}
 		}
-		catch(InterruptedException e){ } 
-
+		catch(InterruptedException e){ 
+		} 
+		
 		int result = JOptionPane.showConfirmDialog(
-				null, 
+				this,
 				Messages.getString("Dialog.StartWoPeD.Text"),
 				Messages.getString("Dialog.StartWoPeD.Title"),
                 JOptionPane.YES_NO_OPTION);
