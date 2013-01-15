@@ -90,7 +90,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 		}
 
 		if(!alreadyContainsPanel){
-			ReachabilityGraphPanel rgp =  new ReachabilityGraphPanel(editor);
+			ReachabilityGraphPanel rgp =  new ReachabilityGraphPanel(this, editor);
 			this.panels.add(rgp);
 			this.add(rgp);
 			this.add(BorderLayout.CENTER, rgp);

@@ -76,6 +76,7 @@ public class ReachabilityToolbarVC extends JToolBar {
 	private static final int        stYsize              = 20;
 	
 	// Declaration of all Buttons
+	private JButton					pbnClose			 = null;
 	private JButton					pbnRefresh			 = null;
 	private JButton					pbnUnselect			 = null;
 	private JButton					pbnSettings			 = null;
@@ -136,35 +137,41 @@ public class ReachabilityToolbarVC extends JToolBar {
 	 */
 	private void addButtons()
 	{
+		pbnClose	= new JButton(Messages.getImageIcon("QuanlAna.ReachabilityGraph.CloseButton"));
 		pbnRefresh	= new JButton(Messages.getImageIcon("QuanlAna.ReachabilityGraph.RefreshButton"));
 		pbnUnselect	= new JButton(Messages.getImageIcon("QuanlAna.ReachabilityGraph.UnselectButton"));
 		pbnSettings = new JButton(Messages.getImageIcon("QuanlAna.ReachabilityGraph.SettingsButton"));
 		pbnExport 	= new JButton(Messages.getImageIcon("QuanlAna.ReachabilityGraph.ExportAsButton"));
 		
 		// Buttons without focus
+		pbnClose.setFocusable(false);
 		pbnRefresh.setFocusable(false);
 		pbnUnselect.setFocusable(false);
 		pbnSettings.setFocusable(false);
 		pbnExport.setFocusable(false);
 		
 		//Define Button-Size
+		pbnClose.setPreferredSize(new Dimension(stXsize, stYsize));
 		pbnRefresh.setPreferredSize(new Dimension(stXsize, stYsize));
 		pbnUnselect.setPreferredSize(new Dimension(stXsize, stYsize));
 		pbnSettings.setPreferredSize(new Dimension(stXsize, stYsize));
 		pbnExport.setPreferredSize(new Dimension(stXsize, stYsize));
 		
 		//Define ToolTips
+		pbnRefresh.setToolTipText(Messages.getTitle("QuanlAna.ReachabilityGraph.CloseButton")); 
 		pbnRefresh.setToolTipText(Messages.getTitle("QuanlAna.ReachabilityGraph.RefreshButton")); 
 		pbnUnselect.setToolTipText(Messages.getTitle("QuanlAna.ReachabilityGraph.UnselectButton")); 
 		pbnSettings.setToolTipText(Messages.getTitle("QuanlAna.ReachabilityGraph.SettingsButton"));
 		pbnExport.setToolTipText(Messages.getTitle("QuanlAna.ReachabilityGraph.ExportAsButton"));
 		
 		//Define Actions
+		pbnClose.addActionListener(listener);
 		pbnRefresh.addActionListener(listener);
 		pbnUnselect.addActionListener(listener);
 		pbnSettings.addActionListener(listener);
 		pbnExport.addActionListener(listener);
 		
+		add(pbnClose);
 		add(pbnRefresh);
 		add(pbnUnselect);
 		add(pbnSettings);
@@ -173,6 +180,14 @@ public class ReachabilityToolbarVC extends JToolBar {
 	
 	protected int getSelectedType(){
 		return LayoutIndex;
+	}
+	
+	public void setCloseButtonEnabled(boolean value){
+		pbnClose.setEnabled(value);
+	}
+	
+	public boolean pbnCloseButtonEnabled(){
+		return pbnClose.isEnabled();
 	}
 	
 	public void setRrefreshButtonEnabled(boolean value){
@@ -219,7 +234,10 @@ public class ReachabilityToolbarVC extends JToolBar {
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			if		(e.getSource() == pbnRefresh){
+			if	(e.getSource() == pbnClose){
+				doClose();
+			}			
+			else if	(e.getSource() == pbnRefresh){
 				doRefresh();
 			}			
 			else if	(e.getSource() == pbnUnselect){
@@ -348,6 +366,10 @@ public class ReachabilityToolbarVC extends JToolBar {
 		private void doShowSettings(){
 			ReachabilitySettingsDialog dialog = new ReachabilitySettingsDialog(rgp);
 			dialog.setVisible(true);
+		}
+		
+		private void doClose(){
+			rgp.getRGVC().removePanel(rgp.getEditor());
 		}
 		
 		private void doRefresh(){

@@ -39,7 +39,8 @@ public class ReachabilityGraphPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private IEditor editor = null;
-
+    private ReachabilityGraphVC rgvc = null;
+    
     // Panels
     private JScrollPane rgp_topPanel = null; // top SplitPane
 
@@ -61,9 +62,10 @@ public class ReachabilityGraphPanel extends JPanel {
     // Helper
     private boolean legendToggle = false;
 
-    public ReachabilityGraphPanel(IEditor editor) {
+    public ReachabilityGraphPanel(ReachabilityGraphVC rg, IEditor editor) {
         super();
         this.editor = editor;
+        this.rgvc = rg;
         this.logicalFingerprint = ((PetriNetModelProcessor) editor.getModelProcessor()).getLogicalFingerprint();
         this.editor.updateNet();
         init();
@@ -83,6 +85,7 @@ public class ReachabilityGraphPanel extends JPanel {
         legendToggleButton.addActionListener(new LegendListener(this));
         legendToggleButton.setBorder(BorderFactory.createEmptyBorder());
         legendToggleButton.setFocusPainted(false);
+        setLegendByName(true);
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 20, 0));
         this.add(BorderLayout.SOUTH, southPanel);
@@ -98,6 +101,15 @@ public class ReachabilityGraphPanel extends JPanel {
     }
 
     /**
+     * returns the editor for this instance.
+     * 
+     * @return
+     */
+    public ReachabilityGraphVC getRGVC() {
+        return rgvc;
+    }
+
+   /**
      * returns the editor for this instance.
      * 
      * @return

@@ -26,11 +26,14 @@ import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.Border;
 
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.translations.Messages;
+
+import com.sun.medialib.mlib.Constants;
 
 @SuppressWarnings("serial")
 public abstract class BeginnerPanel extends JPanel implements MouseListener {
@@ -45,17 +48,13 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	protected static final String COLON = ":";
 
 	// Constants for Fonts and Icons
-	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD,
-			14);
+	protected static final Font HEADER_FONT = DefaultStaticConfiguration.DEFAULT_BIGLABEL_BOLDFONT;
 
-	protected static final Font SUBHEADER_FONT = new Font(Font.DIALOG,
-			Font.PLAIN, 14);
+	protected static final Font SUBHEADER_FONT = DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT;
 
-	protected static final Font ITEMS_FONT = new Font(Font.DIALOG, Font.PLAIN,
-			12);
+	protected static final Font ITEMS_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_FONT;
 
-	protected static final Font HELP_TEXT_FONT = new Font(Font.DIALOG,
-			Font.PLAIN, 12);
+	protected static final Font HELP_TEXT_FONT = DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT;;
 
 	// String for Details - Icon
 	protected static final String DETAILS_ICON = PREFIX_BUTTON + "Details";
@@ -83,8 +82,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	// String for second details button (navigation)
 	protected static final String NAV_DETAILS2 = "QuanlAna.Navigation.Details2";
 
-	private static final Cursor DEFAULT_CURSOR = new Cursor(
-			Cursor.DEFAULT_CURSOR);
+	private static final Cursor DEFAULT_CURSOR = new Cursor(Cursor.DEFAULT_CURSOR);
 
 	private static final Cursor HAND_CURSOR = new Cursor(Cursor.HAND_CURSOR);
 
