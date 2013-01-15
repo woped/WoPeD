@@ -1,12 +1,18 @@
 package org.woped.editor.controller.vc;
 
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JToggleButton;
+import javax.swing.SwingUtilities;
 
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
@@ -15,6 +21,7 @@ import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.utilities.SwingUtils;
+import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.ApplicationMediator;
 
@@ -70,6 +77,29 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
 			((JToggleButton) actions.get(editor)).setSelected(true);
 		}
 	}
+	
+	class ClosePopupMenu extends JPopupMenu {
+		public ClosePopupMenu() {
+          	String action_id = ActionFactory.ACTIONID_CLOSE;
+        	WoPeDAction action = ActionFactory.getStaticAction(action_id);
+            add(new JMenuItem(action));
+            pack();
+		}
+	}
+	
+	class ClosePopupListener extends MouseAdapter {
+		private Component parent = null;
+		
+		ClosePopupListener(Component parent) {
+			this.parent = parent;
+		}
+		public void mousePressed(MouseEvent e) {  
+            if (SwingUtilities.isRightMouseButton(e)) {  
+                ClosePopupMenu cpm = new ClosePopupMenu();
+                cpm.show(parent, parent.getX(), parent.getY()-25);
+            }
+		}
+    }
 
 	/* (non-Javadoc)
 	 * @see org.woped.core.gui.IEditorAware#addEditor(org.woped.core.controller.IEditor)
@@ -84,9 +114,11 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
 																// TaskBarButton(editor);
 		actions.put(editor, button);
 		this.add(button);
+		button.addMouseListener(new ClosePopupListener(button));
+		
 		selectEditor(editor);
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see org.woped.core.gui.IEditorAware#removeEditor(org.woped.core.controller.IEditor)
 	 * remove togglebutton 
@@ -193,3 +225,4 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
 		return selectedEditor;
 	}
 }
+
