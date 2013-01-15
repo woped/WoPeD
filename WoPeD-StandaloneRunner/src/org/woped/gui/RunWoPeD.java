@@ -44,6 +44,8 @@ import org.woped.gui.controller.vc.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
 import org.woped.translations.Messages;
 
+//import ch.randelshofer.quaqua.QuaquaManager;
+
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
@@ -56,9 +58,9 @@ import org.woped.translations.Messages;
 @SuppressWarnings("serial")
 public class RunWoPeD extends JFrame {
 	
-	private 	   String[] files;
-	private static RunWoPeD instance = null;
-	private        DefaultApplicationMediator dam = null;
+	private static RunWoPeD 				  m_instance = null;
+	private 	   String [] 				  m_filesToOpen = null;
+	private        DefaultApplicationMediator m_dam = null;
 	
 	 /**
      * 
@@ -74,40 +76,49 @@ public class RunWoPeD extends JFrame {
     		args = null;
      	}
     	
-    	instance = new RunWoPeD(args);
+    	m_instance = new RunWoPeD(args);
     	
 		if (startDelayed) {
-			instance.WaitForSetupFinished();
+			m_instance.WaitForSetupFinished();
 		}
 
     	SwingUtilities.invokeLater(new Runnable() {
     		public void run() {
-    			instance.run();
+    			m_instance.run();
     		}
     	});
     }
 	
 	/**
-	 * Constructor managing files passed over the command line (or over openFileEvent on MacOS)
+	 * Constructor 
 	**/
     private RunWoPeD(String[] args) {
-		dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
-		
-		/* Check if we are running on a Mac */
+		// Initialize Application mediator
+    	Locale.setDefault(Locale.ENGLISH);
+    	m_filesToOpen = args;
+    	m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
+    	initUI();
+    	initLogging();
+    }
+    
+	/**
+	 * Initialize GUI 
+	**/
+    private void initUI() {
+		/* If we are running on a Mac, set associated screen menu handlers */
         if (Platform.isMac()) {            
-            /* Set PNML open document handling in MacOS */
             OSXAdapter.setOpenFileHandler(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
-            		files = new String[1];
-            		files[0] = e.getActionCommand();
+            		m_filesToOpen = new String[1];
+            		m_filesToOpen[0] = e.getActionCommand();
             	}
             });
  
             OSXAdapter.setQuitHandler(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
-					dam.fireViewEvent(
+					m_dam.fireViewEvent(
 							new ViewEvent(
-									dam,
+									m_dam,
 									AbstractViewEvent.VIEWEVENTTYPE_GUI,
 									AbstractViewEvent.EXIT));
 
@@ -116,9 +127,9 @@ public class RunWoPeD extends JFrame {
            
             OSXAdapter.setAboutHandler(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
- 					dam.fireViewEvent(
+ 					m_dam.fireViewEvent(
 							new ViewEvent(
-									dam,
+									m_dam,
 									AbstractViewEvent.VIEWEVENTTYPE_GUI,
 									AbstractViewEvent.ABOUT));
 
@@ -127,9 +138,9 @@ public class RunWoPeD extends JFrame {
             
             OSXAdapter.setPreferencesHandler(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
- 					dam.fireViewEvent(
+ 					m_dam.fireViewEvent(
 							new ViewEvent(
-									dam,
+									m_dam,
 									AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
 									AbstractViewEvent.CONFIG));
 
@@ -138,10 +149,6 @@ public class RunWoPeD extends JFrame {
             
         	System.setProperty("apple.laf.useScreenMenuBar", "true");
         	System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WoPeD");
-        }
-        else {
-        	/* On other platforms simple command line argument passing is sufficient */
-            files = args;
         }
 
         /* Adjust some font sizes for non-Windows platforms */
@@ -152,9 +159,9 @@ public class RunWoPeD extends JFrame {
     }
     
 	/**
-	 * Init loggers for different WoPeD projects
+	 * Init loggers for different WoPeD components
 	**/
-    void initLogging() throws Exception {
+    void initLogging() {
     	DOMConfigurator.configure(RunWoPeD.class.getResource("/org/woped/gui/utilities/log4j.xml"));
 	
     	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
@@ -162,6 +169,9 @@ public class RunWoPeD extends JFrame {
     	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
 				org.woped.editor.Constants.EDITOR_LOGGER)),
 				org.woped.editor.Constants.EDITOR_LOGGER);
+    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.config.Constants.CONFIG_LOGGER)),
+				org.woped.config.Constants.CONFIG_LOGGER);
     	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
 				org.woped.file.Constants.FILE_LOGGER)),
 				org.woped.file.Constants.FILE_LOGGER);
@@ -182,7 +192,6 @@ public class RunWoPeD extends JFrame {
 				org.woped.translations.Constants.TRANSLATIONS_LOGGER);
 		
     	LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
-    	Locale.setDefault(Locale.ENGLISH);
     }
     
 	/**
@@ -190,8 +199,7 @@ public class RunWoPeD extends JFrame {
 	**/
 	private void run() { 			
 		try {
-			initLogging();
-			dam.startUI(files);
+			m_dam.startUI(m_filesToOpen);
 		} 
     	catch (Exception e) {
 			e.printStackTrace();
@@ -199,9 +207,11 @@ public class RunWoPeD extends JFrame {
 		}
 	}
 	
+	/**
+	 * Wait until WoPeD setup utility has completely terminated
+	**/
 	private void WaitForSetupFinished() {
 		
-		// Wait until WoPeD setup utility has completely terminated
 		try {
 			while (!setupHasFinished()) {
 				Thread.sleep(1000);
@@ -220,25 +230,16 @@ public class RunWoPeD extends JFrame {
 		}
 	}
 	
+	/**
+	 * Check for process ID of Mac Installer app
+	**/
 	private boolean setupHasFinished() {
 		try {
 			String 	line;	
 			String  pattern;
 			Process p;
 			
-/*			if (Platform.isWindows()) {		
-				p = Runtime.getRuntime().exec
-			        	(System.getenv("windir") +"\\system32\\"+"tasklist.exe -v");
-				pattern = "IzPack -";
-			}
-			else */ 
-			/*
-			else {
-				p = Runtime.getRuntime().exec("ps -e");
-				pattern = "WoPeD-install-";				
-			}*/
-
-			if (Platform.isMac()) {		
+		if (Platform.isMac()) {		
 				p = Runtime.getRuntime().exec("ps -e");
 				pattern = "Installer";
 				BufferedReader input = new BufferedReader(new InputStreamReader(

@@ -25,6 +25,7 @@ package org.woped.gui.controller.vc;
 import java.io.File;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
@@ -41,6 +42,7 @@ import org.woped.gui.Constants;
 import org.woped.gui.DefaultUserInterface;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
+import org.woped.translations.Messages;
 
 /**
  * 
@@ -53,53 +55,47 @@ public class DefaultApplicationMediator extends ApplicationMediator
     public static final int VIEWCONTROLLER_STATUSBAR    = 12; 
  
     private int             statusCounter            = 0;
-    private IUserInterface  ui;
     private TaskBarVC		taskbar;
     private StatusBarVC		statusbar;
     private ConfigVC		config;
-    private MenuBarVC		menubar = null;
    
-	public DefaultApplicationMediator(IUserInterface ui, IGeneralConfiguration conf)
-    {
+	public DefaultApplicationMediator(IUserInterface ui, IGeneralConfiguration conf) {
         super(ui, conf);
-        this.ui = ui;
 		ReferenceProvider helper = new ReferenceProvider();
 		helper.setMediatorReference(this);
         getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(ViewEvent.VIEWEVENTTYPE_GUI, this));
         getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(ViewEvent.VIEWEVENTTYPE_FILE, this));
     }
         
-	public void startUI(String args[]) {
+	public void startUI(String[] filesToOpen) {
         if (ui == null)
         {
             taskbar = (TaskBarVC) this.createViewController(VIEWCONTROLLER_TASKBAR);
             addViewController(taskbar);
             statusbar = (StatusBarVC) this.createViewController(VIEWCONTROLLER_STATUSBAR);
             addViewController(statusbar);
-            menubar = (MenuBarVC) this.createViewController(VIEWCONTROLLER_MENUBAR);
             config = (ConfigVC) this.createViewController(ApplicationMediator.VIEWCONTROLLER_CONFIG);
             addViewController(config);
         }
 
-
-        ui = new DefaultUserInterface(taskbar, statusbar, menubar);
+        ui = new DefaultUserInterface(taskbar, statusbar);
         setUi(ui);
         setDisplayUI((JFrame)ui);          
         ui.initialize(this);  
 
-        if (args != null) {
-			for (int i = 0; i < args.length; i++) {
-				File f = new File(args[i]);
-				LoggerManager.info(Constants.GUI_LOGGER, "OPENING FILE "
-						+ args[i]);
+        if (filesToOpen != null && filesToOpen.length > 0) {
+			for (int i = 0; i < filesToOpen.length; i++) {
+				File f = new File(filesToOpen[i]);
+				
+				LoggerManager.info(Constants.GUI_LOGGER, "OPENING FILE " + filesToOpen[i]);
 
 				fireViewEvent(new ViewEvent(this,
 						AbstractViewEvent.VIEWEVENTTYPE_FILE,
 						AbstractViewEvent.OPEN, f));
 			}
 		}
-	}
-
+    }
+	
     public IViewController createViewController(int type)
     {
         IViewController vc = null;
