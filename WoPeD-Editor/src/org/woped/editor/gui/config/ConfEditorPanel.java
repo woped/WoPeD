@@ -40,6 +40,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.utilities.Platform;
 import org.woped.translations.Messages;
 
 /**
@@ -158,16 +159,6 @@ public class ConfEditorPanel extends AbstractConfPanel
         return true;
     }
     
-//    private void setLookAndFeel(String classname){
-//        try {
-//			UIManager.setLookAndFeel(classname);
-//			SwingUtilities.updateComponentTreeUI(ApplicationMediator.getDisplayUI());
-//			SwingUtilities.updateComponentTreeUI(getParent().getParent().getParent());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//    }
-
     /**
      * @see AbstractConfPanel#readConfiguration()
      */
@@ -192,7 +183,7 @@ public class ConfEditorPanel extends AbstractConfPanel
     
     private void setSelectedLNF(String lnf){
     	for(String key:lnfClasses.keySet())
-    		if(lnfClasses.get(key).equals(lnf)){
+    		if(lnfClasses.get(key).equals(lnf)) {
     			getLnfChooser().setSelectedItem(key);
     			return;
     		}
@@ -311,11 +302,11 @@ public class ConfEditorPanel extends AbstractConfPanel
     {
          if(lnfChooser == null){
         	lnfChooser = new JComboBox();
-        	for(LookAndFeelInfo lafi:UIManager.getInstalledLookAndFeels()){
+        	for (LookAndFeelInfo lafi:UIManager.getInstalledLookAndFeels()) {
         		lnfChooser.addItem(lafi.getName());
         		lnfClasses.put(lafi.getName(), lafi.getClassName());
         	}
-            lnfChooser.setToolTipText("<HTML>Choose favourite toolkit.<br>NOTE: Some changes may need application restart.</HTML>");
+            lnfChooser.setToolTipText("<html>" + Messages.getString("Configuration.Editor.Panel.LNF.Tooltip") + "</html>");
          }
          return lnfChooser;
     }
