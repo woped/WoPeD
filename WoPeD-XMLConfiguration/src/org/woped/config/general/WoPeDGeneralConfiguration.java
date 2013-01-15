@@ -22,6 +22,7 @@ import org.woped.config.metrics.WoPeDMetricsConfiguration;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 
 /**
  * Class that provides access to the general WoPeD configuration settings. 
@@ -702,8 +703,9 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	}
 
 	public void setLookAndFeel(String className) {
-		getConfDocument().getConfiguration().getGui().getWindow()
-				.setLookAndFeel(className);
+		getConfDocument().getConfiguration().getGui().getWindow().setLookAndFeel(className);
+		LoggerManager.info(Constants.CONFIG_LOGGER, "Look-And-Feel set to " + className);
+
 	}
 
 	public String getLookAndFeel() {
