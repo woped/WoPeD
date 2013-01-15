@@ -48,8 +48,8 @@ public class ImageExport {
             }
             else
             {
-            	ReferenceProvider mediator = new ReferenceProvider();
-            	JOptionPane.showMessageDialog(mediator.getMediatorReference().getUi().getComponent(),
+//            	ReferenceProvider mediator = new ReferenceProvider();
+            	JOptionPane.showMessageDialog(null,
     					Messages.getString("QuanlAna.ReachabilityGraph.ExportFailed"), Messages
     							.getString("QuanlAna.ReachabilityGraph.ExportFailed.Title"),
     					JOptionPane.ERROR_MESSAGE);

@@ -127,8 +127,7 @@ public class ReachabilityGraphPanel extends JPanel {
         Cursor crWait = Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR);
         Cursor crDefault = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
         // Set the cursor when the RG is calculated the first time
-        ReferenceProvider ref = new ReferenceProvider();
-        ref.getMediatorReference().getUi().getComponent().setCursor(crWait);
+        setCursor(crWait);
         // set the cursor when the RG is refreshed
         toolbar.setCursor(crWait);
         if (rgp_topPanel != null) {
@@ -136,7 +135,7 @@ public class ReachabilityGraphPanel extends JPanel {
                 if (editor.isTokenGameEnabled()) {
                     this.toolbar.setRrefreshButtonEnabled(true);
                     // set the default cursors
-                    ref.getMediatorReference().getUi().getComponent().setCursor(crDefault);
+                    setCursor(crDefault);
                     toolbar.setCursor(crDefault);
                     throw new SimulationRunningException();
                 } else {
@@ -150,7 +149,7 @@ public class ReachabilityGraphPanel extends JPanel {
             this.validate();
         }
         // set the default cursors
-        ref.getMediatorReference().getUi().getComponent().setCursor(crDefault);
+        setCursor(crDefault);
         toolbar.setCursor(crDefault);
     }
 
