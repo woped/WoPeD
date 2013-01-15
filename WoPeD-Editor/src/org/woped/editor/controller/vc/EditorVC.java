@@ -1425,18 +1425,6 @@ public class EditorVC implements KeyListener,
 		}
 	}
 
-	// 02122008 MarioBeiser --> ChangePanel-Option
-	public void changePanel(boolean change) {
-		ReferenceProvider refer = new ReferenceProvider();
-		refer.getUIReference().getContentPane().repaint();
-	}
-
-	// 02122008 MarioBeiser --> ManualSwitchToolbar
-	public void manualChangePanel() {
-		ReferenceProvider refer = new ReferenceProvider();
-		refer.getUIReference().getContentPane().repaint();
-	}
-
 	/**
 	 * Zooms the net. <br>
 	 * The factor should be between <code>MIN_SCALE</code> and
@@ -2014,18 +2002,11 @@ public class EditorVC implements KeyListener,
 		return false;
 	}
 
-	public void internalFrameActivated(InternalFrameEvent e) {
-		new ReferenceProvider();
-	}
+	public void internalFrameActivated(InternalFrameEvent e) {}
 
-	public void internalFrameClosed(InternalFrameEvent e) {
-	};
+	public void internalFrameClosed(InternalFrameEvent e) {}
 
-	public void internalFrameClosing(InternalFrameEvent e) {
-		// Get the standard-toolbar if the editor is being closed.
-		ReferenceProvider refer = new ReferenceProvider();
-		refer.getUIReference().getContentPane().repaint();
-	}
+	public void internalFrameClosing(InternalFrameEvent e) {}
 
 	public void internalFrameDeactivated(InternalFrameEvent e) {};
 
