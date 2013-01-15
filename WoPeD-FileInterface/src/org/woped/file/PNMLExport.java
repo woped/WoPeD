@@ -428,7 +428,6 @@ public class PNMLExport
         // Now save the root model element container into the 
         // NetType XMLBean holding our net
         saveModelElementContainer(iNet, elementContainer);
-
     }
     
     //! Dump the specified ModelElementContainer into the specified XMLBeans bean responsible for
