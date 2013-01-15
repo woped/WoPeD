@@ -305,9 +305,6 @@ public class EditorEventProcessor extends AbstractEventProcessor
 				// visibility of elements tree panel
 				editor.getEditorPanel().setTreeviewPanelVisible(!editor.getEditorPanel().isTreeviewPanelVisible());
 				break;
-			case AbstractViewEvent.CHANGEPANEL:
-			    editor.manualChangePanel();
-			    break;				
 			case AbstractViewEvent.PRESS:
 				editor.scaleNet(0.5);
 				break;
