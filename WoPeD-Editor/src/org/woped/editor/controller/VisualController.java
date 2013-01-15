@@ -201,21 +201,23 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 
 	public static final int CAN_CUTCOPY 					= 41;
 
-	public static final int SUBPROCESS_EDITOR 				= 42;
+	public static final int CAN_RENAME	 					= 42;
+
+	public static final int SUBPROCESS_EDITOR 				= 43;
 	
-	public static final int REACH_GRAPH_START 				= 43;
+	public static final int REACH_GRAPH_START 				= 44;
 
-	public static final int COLORING 						= 44;
+	public static final int COLORING 						= 45;
 	
-	public static final int ROTATE 							= 45;
+	public static final int ROTATE 							= 46;
 
-	public static final int TREEVIEW_VISIBLE 				= 46;
+	public static final int TREEVIEW_VISIBLE 				= 47;
 
-	public static final int OVERVIEW_VISIBLE 				= 47;
+	public static final int OVERVIEW_VISIBLE 				= 48;
 
-	public static final int APROMORE_IMPORT 				= 48;
+	public static final int APROMORE_IMPORT 				= 49;
 	
-	public static final int APROMORE_EXPORT 				= 49;
+	public static final int APROMORE_EXPORT 				= 50;
 	
 	// The following describe states that may occur while token game mode
 	// is enabled
@@ -600,7 +602,6 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			else if (selectedCell instanceof SubProcessModel)
 			{
 				subprocessSelected = true;
-				transitionSelected = true;
 			}
 			else if (selectedCell instanceof OperatorTransitionModel)
 			{
@@ -673,7 +674,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			setStatus(NODE_OR_XORARC_SELECTION, (transitionSelected | placeSelected | xorArcSelected) && !arcpointSelected);
 			setStatus(UNROUTED_ARC_SELECTION, unroutedArcSelected);
 			setStatus(TRANSITION_SELECTION, transitionSelected);
-			setStatus(NODE_SELECTION, transitionSelected | placeSelected);
+			setStatus(NODE_SELECTION, transitionSelected | placeSelected | subprocessSelected);
 			setStatus(TRIGGERED_TRANSITION_SELECTION, triggeredTransitionSelected);
 			setStatus(TIME_TRIGGER_SELECTION, noTimeTriggerSelected);
 			setStatus(RESOURCE_TRIGGER_SELECTION, noResourceTriggerSelected);
@@ -684,8 +685,9 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			setStatus(OPERATOR_SELECTION, operatorSelected);
 			setStatus(GROUP_SELECTION, groupSelected);
 			setStatus(MULTIPLE_SELECTION, multipleSelected);
-			setStatus(CAN_CUTCOPY, transitionSelected | placeSelected | multipleSelected | groupSelected);
+			setStatus(CAN_CUTCOPY, transitionSelected | placeSelected | multipleSelected | groupSelected | subprocessSelected);
 			setStatus(CAN_PASTE, editor == null ? false : !editor.isClipboardEmpty());
+			setStatus(CAN_RENAME, subprocessSelected);
 		};		
 	}
 
