@@ -132,6 +132,9 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     private int					  defaultcolor16			 	= -16751104;
     private Color[]               defaultUnderstandColorArray	= new Color[16];
     
+    //Registration
+    private boolean				  isRegistered					= false;
+    
     public DefaultStaticConfiguration()
     {
         initConfig();
@@ -939,5 +942,10 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
 	@Override
 	public boolean getApromoreUse() {
 		return apromore_use;
+	}
+	
+	@Override
+	public boolean getRegistration() {
+		return isRegistered;
 	}
 }
