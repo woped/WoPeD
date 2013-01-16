@@ -1557,7 +1557,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			setTooltip(signUpButton, "");
 		}
 		
-		return signUpButton;
+		return signUpButton;	
 	}
 
 private JCommandButton getCommunityButton() {
