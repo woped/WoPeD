@@ -1377,4 +1377,9 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 			return ConfigurationManager.getStandardConfiguration()
 					.getApromoreUse(); 
 	}
+	
+	public boolean getRegistration() {
+		//return  getConfDocument().getConfiguration().getGui().getWindow().getRegistration();
+		return ConfigurationManager.getStandardConfiguration().getRegistration();
+	}
 }
