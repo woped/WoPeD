@@ -124,7 +124,15 @@ public class ActionFactory
 
     public final static String         ACTIONID_QUANTCAP               = "ToolBar.QuantCap";
     public final static String         ACTIONID_QUANTSIM               = "ToolBar.QuantSim";
-    public final static String         ACTIONID_REACHGRAPH_START       = "ToolBar.ReachabilityGraph";   
+    public final static String         ACTIONID_REACHGRAPH_START       = "ToolBar.ReachabilityGraph";  
+    
+    public final static String         ACTIONID_REGISTRATION		   = "Registration";   
+    public final static String		   ACTIONID_FACEBOOK			   = "Facebook";
+    public final static String		   ACTIONID_GOOGLEPLUS			   = "Googleplus";
+    public final static String		   ACTIONID_TWITTER  			   = "Twitter";
+    public final static String		   ACTIONID_COMMUNITY  			   = "Community";
+    
+    
     
     private static HashMap<String, WoPeDAction> STATIC_ACTION_MAP               = null;
     private static HashMap<IEditor, Action>     SELECT_EDITOR_SELECT_ACTION     = new HashMap<IEditor, Action>();
@@ -516,6 +524,20 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_SHOWTREEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.SHOWTREEVIEW, null, ACTIONID_SHOWTREEVIEW));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SHOWTREEVIEW), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.TREEVIEW_VISIBLE);
 
+        STATIC_ACTION_MAP.put(ACTIONID_REGISTRATION, 	new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.REGISTRATION, 	null, ACTIONID_REGISTRATION));
+        STATIC_ACTION_MAP.put(ACTIONID_FACEBOOK, 		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.FACEBOOK, 		null, ACTIONID_FACEBOOK));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_FACEBOOK), VisualController.SUBPROCESS_EDITOR, VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_GOOGLEPLUS, 		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.GOOGLEPLUS, 		null, ACTIONID_GOOGLEPLUS));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_GOOGLEPLUS), VisualController.SUBPROCESS_EDITOR, VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_TWITTER, 		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.TWITTER, 		null, ACTIONID_TWITTER));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TWITTER), VisualController.SUBPROCESS_EDITOR, VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_COMMUNITY, 		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.COMMUNITY, 		null, ACTIONID_COMMUNITY));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COMMUNITY), VisualController.SUBPROCESS_EDITOR, VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE);
+         
+        
         return STATIC_ACTION_MAP;
     }
 
