@@ -40,7 +40,7 @@ import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.file.controller.vep.FileEventProcessor;
 import org.woped.gui.Constants;
 import org.woped.gui.DefaultUserInterface;
-import org.woped.gui.RememberRegistration;
+import org.woped.gui.RegistrationUI;
 import org.woped.gui.controller.vep.GUIViewEventProcessor;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.translations.Messages;
@@ -68,7 +68,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
         getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(ViewEvent.VIEWEVENTTYPE_FILE, this));
         
         if(!conf.getRegistration()){
-        	RememberRegistration rem = new RememberRegistration();
+        	RegistrationUI rem = new RegistrationUI();
 			rem.initialize();
         }
 	}
