@@ -66,10 +66,11 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton 					taskbarButtonAnalyze		= null;
 	private JCommandButton 					taskbarButtonConfig			= null;
 	
+	
 	private	JRibbonBand 					saveBand					= null;
 	private	JRibbonBand 					documentBand				= null;
 	private	JRibbonBand 					outputBand					= null;
-//	private	JRibbonBand 					apromoreBand				= null;
+	//private	JRibbonBand 					apromoreBand				= null;
 	private	JRibbonBand 					editBand					= null;
 	private	JRibbonBand 					formsBand					= null;
 	private	JRibbonBand 					layoutBand					= null;
@@ -81,6 +82,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JRibbonBand 					tokengameCloseBand			= null;
 	private	JRibbonBand 					tokengameStepBand			= null;
 	private	JRibbonBand 					tokengameAutoBand			= null;
+	private JRibbonBand						registrationBand			= null;
+	private JRibbonBand						socialMediaBand				= null;
 	
 	private RibbonTask						fileTask					= null;
 	private RibbonTask						editTask					= null;
@@ -88,6 +91,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private RibbonTask						analyzeTask					= null;
 	private RibbonTask						optionsHelpTask				= null;
 	private RibbonTask						tokengameTask				= null;
+	private RibbonTask						registrationTask			= null;
 
 	private	JCommandButton 					newButton					= null; 
 	private	JCommandButton 					openButton					= null; 
@@ -100,8 +104,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JCommandButton 					printButton					= null; 
 	private	JCommandButton 					exportAsButton				= null; 
 
-//	private	JCommandButton 					importApromoreButton		= null; 
-//	private	JCommandButton 					exportApromoreButton		= null; 
+	//private	JCommandButton 					importApromoreButton		= null; 
+	//private	JCommandButton 					exportApromoreButton		= null; 
 	
 	private	JCommandButton 					undoButton					= null; 
 	private	JCommandButton 					redoButton					= null; 
@@ -164,10 +168,16 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JCommandButton 					autoPlayButton 				= null;
 	private JCommandButton					startButton					= null;
 	private	JCommandButton 					pauseButton 				= null;
-
+	
+	private JCommandButton					facebookButton				= null;
+	private JCommandButton					googleplusButton			= null;
+	private JCommandButton					twitterButton				= null;
+	private JCommandButton					signUpButton				= null;
+	private JCommandButton					communityButton				= null;
+	
 	private ActionButtonListener			newListener					= null;
 	private ActionButtonListener			tokengameStartListener		= null;
-	private ActionButtonListener			tokengameStartListener1		= null;
+	private ActionButtonListener			tokengameStartListener1		= null;	
 	private ActionButtonListener			tokengameCloseListener		= null;
 	
 	private JCommandPopupMenu              	m_sampleMenu             	= null;
@@ -234,9 +244,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     		getRibbon().setSelectedTask(getEditTask());
 		}
 	}
-		
+	
+   	
 	public void initialize(AbstractApplicationMediator mediator) {
-		
+			
 		setMediator(mediator);
 				
 		getRibbon().addTaskbarComponent(getTaskbarButtonNew());
@@ -247,18 +258,19 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		getRibbon().addTaskbarComponent(getTaskbarButtonCopy());
 		getRibbon().addTaskbarComponent(new JSeparator(JSeparator.VERTICAL));
 		getRibbon().addTaskbarComponent(getTaskbarButtonUndo());		
-		getRibbon().addTaskbarComponent(getTaskbarButtonRedo());		
+		getRibbon().addTaskbarComponent(getTaskbarButtonRedo());
 		getRibbon().addTaskbarComponent(new JSeparator(JSeparator.VERTICAL));
 		getRibbon().addTaskbarComponent(getTaskbarButtonTokengame());		
 		getRibbon().addTaskbarComponent(getTaskbarButtonAnalyze());		
 		getRibbon().addTaskbarComponent(new JSeparator(JSeparator.VERTICAL));
-		getRibbon().addTaskbarComponent(getTaskbarButtonConfig());		
+		getRibbon().addTaskbarComponent(getTaskbarButtonConfig());
 
 		getRibbon().addTask(getFileTask());
 		getRibbon().addTask(getEditTask());
 		getRibbon().addTask(getAnalyzeTask());
 		getRibbon().addTask(getViewTask());
 		getRibbon().addTask(getOptionsHelpTask());
+		getRibbon().addTask(getRegistrationTask());
 		getRibbon().addContextualTaskGroup(getTokengameGroup());
 
 		VisualController.getInstance().propertyChange(new PropertyChangeEvent(mediator, "InternalFrameCount", null, null));
@@ -273,6 +285,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private void setPopupTooltip(JCommandButton button, String prefix) {
 		button.setPopupRichTooltip(new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip")));
 	}
+
 	
 	/*************/
 	/* TASKGROUP */
@@ -387,8 +400,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			taskbarButtonConfig.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWCONFIG, AbstractViewEvent.CONFIG, taskbarButtonConfig));		
 		}
 		return taskbarButtonConfig;
-	}
-			
+	}		
 	/*********/
 	/* TASKS */
 	/*********/
@@ -458,6 +470,17 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return tokengameTask;
 	}
 	
+	private RibbonTask getRegistrationTask() {
+		
+		if(registrationTask == null){
+			//registrationTask = new RibbonTask(Messages.getTitle("Task.Registration"), getRegistrationBand());			
+			registrationTask = new RibbonTask("Registration", getSocialMediaBand(), getRegistrationBand());			
+			registrationTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(registrationTask));
+			
+		}
+		return registrationTask;
+	}
+	
 	/*********/
 	/* BANDS */
 	/*********/
@@ -500,7 +523,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return outputBand;
 	}
 	
-/*	private JRibbonBand getApromoreBand() {
+	/*private JRibbonBand getApromoreBand() {
 		
 		if (apromoreBand == null) {
 			apromoreBand = new JRibbonBand(Messages.getString("Apromore.textBandTitle"), null);
@@ -655,7 +678,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			tokengameCloseBand = new JRibbonBand(Messages.getString("Tokengame.CloseBand.title"),new tokengame_play_start());
 			tokengameCloseBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(tokengameCloseBand));
 			tokengameCloseBand.addCommandButton(getTokengameCloseButton(), RibbonElementPriority.TOP);		
-			tokengameCloseBand.addCommandButton(getStopButton(), RibbonElementPriority.TOP);
 		}
 		
 		return tokengameCloseBand;
@@ -669,6 +691,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 			tokengameStepBand.addCommandButton(getStepWiseButton(), RibbonElementPriority.TOP);
 			tokengameStepBand.addCommandButton(getBackwardButton(), RibbonElementPriority.TOP);
+			tokengameStepBand.addCommandButton(getStopButton(), RibbonElementPriority.TOP);
 			tokengameStepBand.addCommandButton(getForwardButton(), RibbonElementPriority.TOP);
 			tokengameStepBand.addCommandButton(getJumpIntoSubProcessButton(), RibbonElementPriority.TOP);
 			tokengameStepBand.addCommandButton(getJumpOutOfSubprocessButton(), RibbonElementPriority.TOP);
@@ -690,7 +713,33 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		return tokengameAutoBand;
 	}	
+	private JRibbonBand getSocialMediaBand(){
+		
+		if(socialMediaBand == null){
+			socialMediaBand = new JRibbonBand("Social Media", null);
+			socialMediaBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(socialMediaBand));			
+			socialMediaBand.addCommandButton(getFacebookButton(), RibbonElementPriority.TOP);
+			socialMediaBand.addCommandButton(getGoogleplusButton(), RibbonElementPriority.TOP);
+			socialMediaBand.addCommandButton(getTwitterButton(), RibbonElementPriority.TOP);
+		
+			
+		}
+		return socialMediaBand;
+	}
 	
+	private JRibbonBand getRegistrationBand(){
+		
+		if(registrationBand == null){
+			//registrationBand = new JRibbonBand(Messages.getString("Registration.TextBandTitle"), null);
+			registrationBand = new JRibbonBand("Registration", null);
+			//registrationBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(registrationBand));
+			registrationBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(registrationBand));			
+			registrationBand.addCommandButton(getSignUpButton(), RibbonElementPriority.TOP);
+			registrationBand.addCommandButton(getCommunityButton(), RibbonElementPriority.TOP);
+			
+		}
+		return registrationBand;
+	}
 	/***********/
 	/* BUTTONS */
 	/***********/
@@ -816,8 +865,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		return exportAsButton;
 	}
-		
-/*	private JCommandButton getImportApromoreButton() {
+	/*	
+	private JCommandButton getImportApromoreButton() {
 		
 		if (importApromoreButton == null) {		
 			importApromoreButton = new JCommandButton(Messages.getString("Apromore.aproImport.text"), new apromore_import());
@@ -837,8 +886,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		}
 		
 		return exportApromoreButton;
-	}*/
-				
+	}
+			*/	
 
 	private JCommandButton getUndoButton() {
 		
@@ -1318,8 +1367,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 							m_sampleMenu.addMenuButton(sampleItem);
 						}
 					}
-					
-					jf.close();
 				}
 				// Normal dir access
 				else {
@@ -1464,6 +1511,68 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		return tokengameCloseButton;
 	}
+	
+	private JCommandButton getFacebookButton() {
+			
+			if (facebookButton == null) {
+				facebookButton = new JCommandButton("Facebook", new F_icon());
+				newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_FACEBOOK, AbstractViewEvent.FACEBOOK, facebookButton);
+				facebookButton.addActionListener(newListener);
+				setTooltip(facebookButton, "");
+			}
+			
+			return facebookButton;
+		}
+
+	private JCommandButton getGoogleplusButton() {
+		
+		if (googleplusButton == null) {
+			googleplusButton = new JCommandButton("GooglePlus", new Google_plus_icon());
+			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS, googleplusButton);
+			googleplusButton.addActionListener(newListener);
+			setTooltip(googleplusButton, "");
+		}
+		
+		return googleplusButton;
+	}
+
+	private JCommandButton getTwitterButton() {
+		
+		if (twitterButton == null) {
+			twitterButton = new JCommandButton("Twitter", new Twitter_icon());
+			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TWITTER, AbstractViewEvent.TWITTER, twitterButton);
+			twitterButton.addActionListener(newListener);
+			setTooltip(twitterButton, "");
+		}
+		
+		return twitterButton;
+	}
+
+	private JCommandButton getSignUpButton() {
+		
+		if (signUpButton == null) {
+			signUpButton = new JCommandButton("Sign Up", new Up());
+			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REGISTRATION, AbstractViewEvent.REGISTRATION, signUpButton);
+			signUpButton.addActionListener(newListener);
+			setTooltip(signUpButton, "");
+		}
+		
+		return signUpButton;
+	}
+
+private JCommandButton getCommunityButton() {
+		
+		if (communityButton == null) {
+			communityButton = new JCommandButton("Community ", new CommunityButton());
+			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REGISTRATION, AbstractViewEvent.REGISTRATION, communityButton);
+			communityButton.addActionListener(newListener);
+			setTooltip(communityButton, "");
+		}
+		
+		return communityButton;
+	}
+
+	
 		
 	public void fireViewEvent(AbstractViewEvent viewevent) {
 		this.m_mediator.fireViewEvent(viewevent);
@@ -1522,6 +1631,42 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	}
 
 	@Override
+	public void quit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void refreshFocusOnFrames() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeToolBar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFirstTransitionActive() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSimulatorBar(Object simulatorBar) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void switchToolBar(boolean change) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void addEditor(IEditor editor) {
 	    getRibbon().setSelectedTask(getEditTask());
 	}
@@ -1561,18 +1706,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 	@Override
 	public void updateRecentMenu() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void refreshFocusOnFrames() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void quit() {
 		// TODO Auto-generated method stub
 		
 	}
