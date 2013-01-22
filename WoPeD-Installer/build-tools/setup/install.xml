@@ -44,8 +44,6 @@
 		<res id="Unix_shortcutSpec.xml" src="shortcut-linux.xml" />
 		<res id="shortcutSpec.xml" src="shortcut-win.xml" />
 		<res id="ProcessPanel.Spec.xml" src="process.xml" />
-		<str id="installer.quit.reversemessage" txt="Are you sure you want to cancel installation?"/>
-  		<str id="installer.quit.reversetitle" txt="WoPeD @wopedversion@ Setup"/>	
 	</resources>
 	
 	<info>
@@ -153,16 +151,6 @@
 			<file src="lib/confBeans.jar" targetdir="$INSTALL_PATH/lib" />
 			<file src="lib/metricsBeans.jar" targetdir="$INSTALL_PATH/lib" />
 			<file src="nets/Example.pnml" targetdir="$INSTALL_PATH/nets" />
-		</pack>
-		
-		<pack name="English Language Support" required="yes" condition="IsEnglish">
-			<description>Languagepack English</description>
-			<file src="eng.xml" targetdir="$INSTALL_PATH" />
-		</pack>
-
-		<pack name="German Language Support" required="yes" condition="IsGerman">
-			<description>Languagepack German</description>
-			<file src="deu.xml" targetdir="$INSTALL_PATH" />
 		</pack>
 		
 		<pack name="PDF Documentation" required="no">

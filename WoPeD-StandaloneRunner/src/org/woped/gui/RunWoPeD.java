@@ -22,7 +22,6 @@
  */
 package org.woped.gui;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -30,21 +29,18 @@ import java.io.InputStreamReader;
 import java.util.Locale;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.controller.vc.DefaultApplicationMediator;
 import org.woped.gui.utilities.WopedLogger;
-import org.woped.translations.Messages;
-
-//import ch.randelshofer.quaqua.QuaquaManager;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -55,27 +51,45 @@ import org.woped.translations.Messages;
  * 
  * 29.04.2003
  */
+
 @SuppressWarnings("serial")
 public class RunWoPeD extends JFrame {
 	
 	private static RunWoPeD 				  m_instance = null;
+
 	private 	   String [] 				  m_filesToOpen = null;
-	private        DefaultApplicationMediator m_dam = null;
+	private        DefaultApplicationMediator m_dam = null;	
 	
 	 /**
      * 
      * Main Entry Point. Starts WoPeD and the GUI.
      *  
      */
-    public static void main(String[] args) { 
-    	
+    public static void main(String[] args) { 	
     	boolean startDelayed = false;
-		
-    	if (args.length > 0 && args[0].equals("-delay")) {
-    		startDelayed = true;
-    		args = null;
-     	}
+    	boolean forceGerman = false;
+    	boolean forceEnglish = false;
     	
+ 		for (int i = 0; i < args.length; i++) {
+			if (args[i].equals("-delay")) {
+				startDelayed = true;
+			}
+			if (args[i].equals("-german")) {
+				forceGerman = true;
+			}
+			if (args[i].equals("-english")) {
+				forceEnglish = true;
+			}
+		}
+		
+		if (startDelayed || forceGerman || forceEnglish)
+			args = null;
+    	
+		if (forceGerman)
+			Locale.setDefault(Locale.GERMANY);
+		if (forceEnglish)
+			Locale.setDefault(Locale.ENGLISH);
+		
     	m_instance = new RunWoPeD(args);
     	
 		if (startDelayed) {
@@ -93,8 +107,6 @@ public class RunWoPeD extends JFrame {
 	 * Constructor 
 	**/
     private RunWoPeD(String[] args) {
-		// Initialize Application mediator
-    	Locale.setDefault(Locale.ENGLISH);
     	m_filesToOpen = args;
     	initLogging();
     	m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
@@ -102,11 +114,11 @@ public class RunWoPeD extends JFrame {
     }
     
 	/**
-	 * Initialize GUI 
-	**/
-    private void initUI() {
+	 * Initialize GUI
+	 **/
+	private void initUI() {
 		/* If we are running on a Mac, set associated screen menu handlers */
-        if (Platform.isMac()) {            
+		if (Platform.isMac()) {
             OSXAdapter.setOpenFileHandler(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
             		m_filesToOpen = new String[1];
@@ -114,50 +126,54 @@ public class RunWoPeD extends JFrame {
             	}
             });
  
-            OSXAdapter.setQuitHandler(new ActionListener() {
-            	public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(
-							new ViewEvent(
-									m_dam,
-									AbstractViewEvent.VIEWEVENTTYPE_GUI,
-									AbstractViewEvent.EXIT));
+			OSXAdapter.setQuitHandler(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					m_dam.fireViewEvent(new ViewEvent(m_dam,
+							AbstractViewEvent.VIEWEVENTTYPE_GUI,
+							AbstractViewEvent.EXIT));
 
-            	}
-            });
-           
-            OSXAdapter.setAboutHandler(new ActionListener() {
-            	public void actionPerformed(ActionEvent e) {
- 					m_dam.fireViewEvent(
-							new ViewEvent(
-									m_dam,
-									AbstractViewEvent.VIEWEVENTTYPE_GUI,
-									AbstractViewEvent.ABOUT));
+				}
+			});
 
-            	}
-            });
-            
-            OSXAdapter.setPreferencesHandler(new ActionListener() {
-            	public void actionPerformed(ActionEvent e) {
- 					m_dam.fireViewEvent(
-							new ViewEvent(
-									m_dam,
-									AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
-									AbstractViewEvent.CONFIG));
+			OSXAdapter.setAboutHandler(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					m_dam.fireViewEvent(new ViewEvent(m_dam,
+							AbstractViewEvent.VIEWEVENTTYPE_GUI,
+							AbstractViewEvent.ABOUT));
 
-            	}
-            });
-            
-        	System.setProperty("apple.laf.useScreenMenuBar", "true");
-        	System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WoPeD");
-        }
+				}
+			});
 
-        /* Adjust some font sizes for non-Windows platforms */
-        if (!Platform.isWindows()) {            
-        	UIManager.put("Button.font", new Font(Font.SANS_SERIF, 0, 11));
-        	UIManager.put("Label.font", new Font(Font.SANS_SERIF, 0, 12));
-        }
-    }
-    
+			OSXAdapter.setPreferencesHandler(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					m_dam.fireViewEvent(new ViewEvent(m_dam,
+							AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
+							AbstractViewEvent.CONFIG));
+
+				}
+			});
+
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
+			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WoPeD");
+		}
+
+		// Set some fonts to make WoPeD look better on Mac and Linux
+		if (!Platform.isWindows()) {
+			UIManager.put("Button.font", DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+			UIManager.put("MenuItem.font", DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+			UIManager.put("Label.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
+			UIManager.put("RadioButton.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
+			UIManager.put("CheckBox.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
+			UIManager.put("CheckBox.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
+			UIManager.put("TextField.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
+			UIManager.put("TextArea.font", DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+			UIManager.put("ComboBox.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
+			UIManager.put("PopupMenu.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
+			UIManager.put("TitledBorder.font", DefaultStaticConfiguration.DEFAULT_LABEL_BOLDFONT);
+			UIManager.put("TabbedPane.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
+		}
+	}
+  
 	/**
 	 * Init loggers for different WoPeD components
 	**/
@@ -220,7 +236,7 @@ public class RunWoPeD extends JFrame {
 		catch(InterruptedException e){ 
 		} 
 		
-		int result = JOptionPane.showConfirmDialog(
+/*		int result = JOptionPane.showConfirmDialog(
 				this,
 				Messages.getString("Dialog.StartWoPeD.Text"),
 				Messages.getString("Dialog.StartWoPeD.Title"),
@@ -228,7 +244,9 @@ public class RunWoPeD extends JFrame {
 
 		if (result == JOptionPane.NO_OPTION) {
 			System.exit(0);
-		}
+		}*/
+		
+		new AskToStartWoPeDUI(this).setVisible(true);	
 	}
 	
 	/**

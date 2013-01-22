@@ -93,6 +93,7 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.ResourceClassModel;
@@ -279,7 +280,7 @@ public class PetriNetResourceEditor extends JPanel
 	
     private static final int ITALIC = 0;
 	
-    private Font Nodes = new Font("Nodes",ITALIC,14);
+    private Font Nodes = DefaultStaticConfiguration.DEFAULT_HUGELABEL_ITALICFONT;
     
     // JgraphX Cell with Focus for Coloring
     private mxCell currentCell = null;
@@ -1242,7 +1243,7 @@ public class PetriNetResourceEditor extends JPanel
 					   	if(e.getSource()== resourceColorButtonRole ){
 							   
 							 //JOptionPane.showMessageDialog(null, "Computer sagt NEIN", "Fehlermeldung", JOptionPane.ERROR_MESSAGE);
-							 //mxGraph Objekt, jede Zelle im Graph pr�fbar ob aktiv mit while schleife im mouselistener
+							 //mxGraph Objekt, jede Zelle im Graph pr���fbar ob aktiv mit while schleife im mouselistener
 					   	}
 				   }
 				   catch(Exception ex){

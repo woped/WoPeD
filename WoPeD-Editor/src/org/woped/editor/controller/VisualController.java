@@ -219,23 +219,25 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	
 	public static final int APROMORE_EXPORT 				= 50;
 	
+	public static final int IS_REGISTERED					= 51;
+	
 	// The following describe states that may occur while token game mode
 	// is enabled
 	
 	// Exactly one sub process 'transition' is active and can be executed
-	public static final int TOKENGAME_SUBPROCESS_TRANSITION_ACTIVE = 50;
+	public static final int TOKENGAME_SUBPROCESS_TRANSITION_ACTIVE = 52;
 	// We are currently executing a sub process
-	public static final int TOKENGAME_IN_SUBPROCESS = 51;
+	public static final int TOKENGAME_IN_SUBPROCESS		    = 53;
 	// Exactly one transition is active and can occur
-	public static final int TOKENGAME_TRANSITION_ACTIVE		= 52;
+	public static final int TOKENGAME_TRANSITION_ACTIVE		= 54;
 	// Transitions have occurred, so there is history information
-	public static final int TOKENGAME_TRANSITION_HISTORY	= 53;
+	public static final int TOKENGAME_TRANSITION_HISTORY	= 55;
 	// The token game is in auto-play mode
-	public static final int TOKENGAME_AUTOPLAY_MODE			= 54;
+	public static final int TOKENGAME_AUTOPLAY_MODE			= 56;
 	// Auto play is running 
-	public static final int TOKENGAME_AUTOPLAY_PLAYING		= 55;
+	public static final int TOKENGAME_AUTOPLAY_PLAYING		= 57;
 	
-	private static final int MAX_ID 						= 56;
+	private static final int MAX_ID 						= 58;
 
 	// For each WoPeD action, we store a corresponding visibility configuration
 	private Map<WoPeDAction, IVisibility> actionVisibilityMap = new HashMap<WoPeDAction,IVisibility>();	
@@ -846,6 +848,11 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		setStatus(ROTATE, rotateActive);
 	}
 		
+	protected void checkRegistration()
+	{
+//		setStatus(IS_REGISTERED, am.);
+	}
+
 	public void notify(boolean isEmpty)
 	{
 		setStatus(CAN_PASTE, am.getUi().getAllEditors().size() > 0 && !isEmpty);

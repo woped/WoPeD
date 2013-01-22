@@ -53,6 +53,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 import org.jgraph.graph.DefaultGraphCell;
 import org.woped.core.controller.IDialog;
@@ -150,7 +151,7 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JRadioButton branchingAndSplitJoinRadioButton = null;
 
-	private JRadioButton branchingXorSplittRadioButton = null;
+	private JRadioButton branchingXorSplitRadioButton = null;
 
 	private JRadioButton branchingXorJoinRadioButton = null;
 
@@ -344,7 +345,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		this.editor = editor;
 		this.setVisible(false);
 		initialize();
-		this.setSize(580, 680);
+		this.setSize(650, 620);
 		this.setLocation(new Point(position.x + 50, position.y));
 		this.setVisible(true);
 	}
@@ -421,12 +422,8 @@ public class TransitionPropertyEditor extends JDialog implements
 			namePanel = new JPanel();
 			namePanel.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
-			namePanel
-					.setBorder(BorderFactory.createCompoundBorder(
-							BorderFactory
-									.createTitledBorder(Messages
-											.getString("Transition.Properties.Identification")),
-							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+			TitledBorder border = new TitledBorder(Messages.getString("Transition.Properties.Identification"));
+			namePanel.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 			c.weightx = 1;
 			c.weighty = 1;
@@ -524,10 +521,8 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JPanel getTriggerPanel() {
 		if (triggerPanel == null) {
 			triggerPanel = new JPanel();
-			triggerPanel.setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createTitledBorder(Messages
-							.getString("Transition.Properties.Trigger")),
-					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+			TitledBorder border = new TitledBorder(Messages.getString("Transition.Properties.Trigger"));
+			triggerPanel.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 			triggerButtonGroup = new ButtonGroup();
 			triggerButtonGroup.add(getTriggerNoneRadioButton());
@@ -561,6 +556,11 @@ public class TransitionPropertyEditor extends JDialog implements
 			c.gridy = 1;
 			c.insets = new Insets(0, 20, 0, 0);
 			triggerPanel.add(getTriggerTimeEntry(), c);
+
+			c.gridx = 2;
+			c.gridy = 0;
+			c.insets = new Insets(0, 20, 0, 0);
+			triggerPanel.add(new JLabel("                            "), c);
 
 			setTriggerConfiguration();
 		}
@@ -608,7 +608,7 @@ public class TransitionPropertyEditor extends JDialog implements
 
 		return triggerNoneEntry;
 	}
-
+	
 	private JPanel getTriggerResourceEntry() {
 		if (triggerResourceEntry == null) {
 			triggerResourceEntry = new JPanel();
@@ -621,9 +621,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			j2.add(getTriggerResourceIcon(), BorderLayout.LINE_END);
 			triggerResourceEntry.add(j1, BorderLayout.LINE_START);
 			triggerResourceEntry.add(j2, BorderLayout.CENTER);
-			triggerResourceEntry.add(new JLabel(
-					"                               "),
-					BorderLayout.LINE_END);
+			triggerResourceEntry.add(new JLabel("  "), BorderLayout.LINE_END);
 		}
 
 		return triggerResourceEntry;
@@ -641,9 +639,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			j2.add(getTriggerMessageIcon(), BorderLayout.LINE_END);
 			triggerMessageEntry.add(j1, BorderLayout.LINE_START);
 			triggerMessageEntry.add(j2, BorderLayout.CENTER);
-			triggerMessageEntry.add(new JLabel(
-					"                                    "),
-					BorderLayout.LINE_END);
+			triggerMessageEntry.add(new JLabel("  "), BorderLayout.LINE_END);
 		}
 
 		return triggerMessageEntry;
@@ -661,9 +657,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			j2.add(getTriggerTimeIcon(), BorderLayout.LINE_END);
 			triggerTimeEntry.add(j1, BorderLayout.LINE_START);
 			triggerTimeEntry.add(j2, BorderLayout.CENTER);
-			triggerTimeEntry.add(new JLabel(
-					"                                    "),
-					BorderLayout.LINE_END);
+			triggerTimeEntry.add(new JLabel("  "), BorderLayout.LINE_END);
 		}
 
 		return triggerTimeEntry;
@@ -736,10 +730,9 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JPanel getOrientationPanel() {
 		if (orientationPanel == null) {
 			orientationPanel = new JPanel();
-			orientationPanel.setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createTitledBorder(Messages
-							.getString("Transition.Properties.Orientation")),
-					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+			
+			TitledBorder border = new TitledBorder(Messages.getString("Transition.Properties.Orientation"));
+			orientationPanel.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 			orientationButtonGroup = new ButtonGroup();
 			orientationButtonGroup.add(getOrientationNorthRadioButton());
@@ -749,34 +742,25 @@ public class TransitionPropertyEditor extends JDialog implements
 
 			orientationPanel.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
-			// c.weightx = 1;
-			// c.weighty = 1;
-			// c.fill = GridBagConstraints.HORIZONTAL;
-			// c.anchor = GridBagConstraints.WEST;
 
 			c.gridx = 1;
 			c.gridy = 0;
-			// c.insets = new Insets(0, 50, 0, 0);
 			orientationPanel.add(getOrientationNorthRadioButton(), c);
 
 			c.gridx = 2;
 			c.gridy = 1;
-			// c.insets = new Insets(0, 100, 0, 0);
 			orientationPanel.add(getOrientationEastRadioButton(), c);
 
 			c.gridx = 1;
 			c.gridy = 2;
-			// c.insets = new Insets(0, 60, 0, 20);
 			orientationPanel.add(getOrientationSouthRadioButton(), c);
 
 			c.gridx = 0;
 			c.gridy = 1;
-			// c.insets = new Insets(0, 0, 0, 20);
 			orientationPanel.add(getOrientationWestRadioButton(), c);
 
 			c.gridx = 1;
 			c.gridy = 1;
-			// c.insets = new Insets(0, 0, 0, 20);
 			orientationPanel.add(getOrientationIcon(), c);
 
 			getOrientationNorthRadioButton().addActionListener(
@@ -822,7 +806,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		int currentPosition = selectedTransition.getToolSpecific()
 				.getOperatorPosition().ordinal();
 
-		// Nord and South
+		// North and South
 		if (currentPosition == 0 || currentPosition == 2) {
 			selectedTransition.getNameModel().setPosition(
 					selectedTransition.getX() + selectedTransition.getWidth(),
@@ -941,10 +925,9 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JPanel getBranchingPanel() {
 		if (branchingPanel == null) {
 			branchingPanel = new JPanel();
-			branchingPanel.setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createTitledBorder(Messages
-							.getString("Transition.Properties.Branching")),
-					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+			
+			TitledBorder border = new TitledBorder(Messages.getString("Transition.Properties.Branching"));
+			branchingPanel.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
 			branchingButtonGroup = new ButtonGroup();
 			branchingButtonGroup.add(getBranchingNoneRadioButton());
@@ -1093,14 +1076,14 @@ public class TransitionPropertyEditor extends JDialog implements
 	}
 
 	private JRadioButton getBranchingXorSplitRadioButton() {
-		if (branchingXorSplittRadioButton == null) {
-			branchingXorSplittRadioButton = new JRadioButton(
+		if (branchingXorSplitRadioButton == null) {
+			branchingXorSplitRadioButton = new JRadioButton(
 					Messages.getString("Transition.Properties.Branching.XorSplit"));
-			branchingXorSplittRadioButton.setActionCommand(Messages
+			branchingXorSplitRadioButton.setActionCommand(Messages
 					.getString("Transition.Properties.Branching.XorSplit"));
-			branchingXorSplittRadioButton.addActionListener(this);
+			branchingXorSplitRadioButton.addActionListener(this);
 		}
-		return branchingXorSplittRadioButton;
+		return branchingXorSplitRadioButton;
 	}
 
 	private JRadioButton getBranchingXorJoinRadioButton() {
@@ -1400,10 +1383,10 @@ public class TransitionPropertyEditor extends JDialog implements
 		if (serviceTimePanel == null) {
 			serviceTimePanel = new JPanel();
 			serviceTimePanel.setLayout(new GridBagLayout());
-			serviceTimePanel.setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createTitledBorder(Messages
-							.getString("Transition.Properties.ServiceTime")),
-					BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
+			TitledBorder border = new TitledBorder(Messages.getString("Transition.Properties.ServiceTime"));
+			serviceTimePanel.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
 			c.anchor = GridBagConstraints.WEST;
@@ -1465,13 +1448,10 @@ public class TransitionPropertyEditor extends JDialog implements
 		if (resourcePanel == null) {
 			resourcePanel = new JPanel();
 			resourcePanel.setLayout(new GridBagLayout());
-			resourcePanel
-					.setBorder(BorderFactory.createCompoundBorder(
-							BorderFactory
-									.createTitledBorder(Messages
-											.getString("Transition.Properties.ResourceAssignment")),
-							BorderFactory.createEmptyBorder(5, 5, 0, 5)));
 
+			TitledBorder border = new TitledBorder(Messages.getString("Transition.Properties.ResourceAssignment"));
+			resourcePanel.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 0, 5)));
+			
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
 			c.anchor = GridBagConstraints.WEST;
@@ -2007,10 +1987,30 @@ public class TransitionPropertyEditor extends JDialog implements
 		// Name change handling
 		transition.setNameValue(getNameTextField().getText());
 		
+		// Service time
+		if (!oldTime.equals(serviceTimeTextField.getText())) {
+			transition.getToolSpecific().setTime(
+					Integer.parseInt(serviceTimeTextField.getText()));
+			map.setTransitionTime(Integer.parseInt(serviceTimeTextField.getText()));
+		}
+		if (!oldTimeUnit.equals(serviceTimeComboBox.getSelectedItem()
+				.toString())) {
+			transition.getToolSpecific().setTimeUnit(
+					serviceTimeComboBox.getSelectedIndex());
+			map.setTransitionTimeUnit(serviceTimeComboBox.getSelectedIndex());
+		}
+		
+  		if (orientationChanged) {
+			OperatorPosition oldposition = transition.getToolSpecific()
+					.getOperatorPosition();
+			transition.getToolSpecific().setOperatorPosition(pos);
+			flipNameResourceTrigger(transition, oldposition);
+		}
+		
 		String command = getBranchingButtonGroup().getSelection().getActionCommand();
 		int type = transition.getToolSpecific().getOperatorType();
 
-		if (command.equals(Messages.getString("Transition.Properties.Branching.None")) && type != OperatorTransitionModel.TRANS_SIMPLE_TYPE)
+		if (command.equals(Messages.getString("Transition.Properties.Branching.None")) && type != -1 && type != OperatorTransitionModel.TRANS_SIMPLE_TYPE)
 		{
 			transformTransition(OperatorTransitionModel.TRANS_SIMPLE_TYPE, -1);
 		}
@@ -2047,34 +2047,13 @@ public class TransitionPropertyEditor extends JDialog implements
 			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE);
 		}
 
-		// Service time
-		if (!oldTime.equals(serviceTimeTextField.getText()))
-			transition.getToolSpecific().setTime(
-					Integer.parseInt(serviceTimeTextField.getText()));
-
-		if (!oldTimeUnit.equals(serviceTimeComboBox.getSelectedItem()
-				.toString()))
-			transition.getToolSpecific().setTimeUnit(
-					serviceTimeComboBox.getSelectedIndex());
-
-		// TODO
-		if (orientationChanged) {
-			OperatorPosition oldposition = transition.getToolSpecific()
-					.getOperatorPosition();
-			transition.getToolSpecific().setOperatorPosition(pos);
-			flipNameResourceTrigger(transition, oldposition);
-		}
-
 		// Set change flag
 		getEditor().setSaved(false);
 		getEditor().updateNet();
 	}
 
 	/*
-	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals(TRIGGER_MESSAGE)
@@ -2202,7 +2181,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			transitionCell = (DefaultGraphCell) transition.getParent();
 		}
 		editor.deleteCell(transitionCell, true);
-		editor.create(newMap);
+		editor.create(newMap, false);
 
 		for (int i = 0; i < outAcrs.size(); i++)
 		{

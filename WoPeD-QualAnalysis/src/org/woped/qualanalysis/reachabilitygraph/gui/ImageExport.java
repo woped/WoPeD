@@ -15,7 +15,6 @@ import org.jgraph.JGraph;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
-import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.translations.Messages;
 
 public class ImageExport {

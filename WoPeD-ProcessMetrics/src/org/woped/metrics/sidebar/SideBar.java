@@ -3,7 +3,6 @@ package org.woped.metrics.sidebar;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ItemEvent;
@@ -20,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.IEditor;
 import org.woped.metrics.builder.MetricsBuilder;
 import org.woped.metrics.formulaEnhancement.FormulaEnhancementList;
@@ -41,10 +41,7 @@ public class SideBar extends JPanel {
 
 	protected static final String PREFIX = "Metrics.";
 	protected static final String PREFIX_QUALANALYSIS = "AnalysisSideBar.";
-	protected static final String PREFIX_BUTTON = PREFIX_QUALANALYSIS
-			+ "Beginner.Button.";
-
-	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD, 11);
+	protected static final String PREFIX_BUTTON = PREFIX_QUALANALYSIS + "Beginner.Button.";
 
 	/**
 	 * @param editor
@@ -79,7 +76,7 @@ public class SideBar extends JPanel {
 		// headline
 		JLabel metricsLabel = new JLabel(Messages.getString(PREFIX
 				+ "SideBar.Header"));
-		metricsLabel.setFont(HEADER_FONT);
+		metricsLabel.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_BOLDFONT);
 		metricsLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
 
 		// create an instance of the ui request handler

@@ -33,8 +33,6 @@ import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.translations.Messages;
 
-import com.sun.medialib.mlib.Constants;
-
 @SuppressWarnings("serial")
 public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
@@ -48,13 +46,13 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	protected static final String COLON = ":";
 
 	// Constants for Fonts and Icons
-	protected static final Font HEADER_FONT = DefaultStaticConfiguration.DEFAULT_BIGLABEL_BOLDFONT;
+	protected static final Font HEADER_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_BOLDFONT;
 
-	protected static final Font SUBHEADER_FONT = DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT;
+	protected static final Font SUBHEADER_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_FONT;
 
-	protected static final Font ITEMS_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_FONT;
+	protected static final Font ITEMS_FONT = DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT;
 
-	protected static final Font HELP_TEXT_FONT = DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT;;
+	protected static final Font HELP_TEXT_FONT = DefaultStaticConfiguration.DEFAULT_TINYLABEL_FONT;;
 
 	// String for Details - Icon
 	protected static final String DETAILS_ICON = PREFIX_BUTTON + "Details";

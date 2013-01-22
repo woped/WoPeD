@@ -7,8 +7,6 @@ import java.io.File;
 import java.util.Locale;
 import java.util.Vector;
 
-import javax.swing.ImageIcon;
-
 /**
  * Class that provides fallback configuration settings for the general WoPeD configuration part
  * @author Philip Allgaier
@@ -20,7 +18,6 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     public static int             DEFAULT_ARROW_WIDTH        		= 1;
     public static int             DEFAULT_ARROW_HEADSIZE     		= 7;
     public static boolean         DEFAULT_ARROW_FILLHEAD     		= false;
-    public static final ImageIcon DEFAULTEDITORFRAMEICON     		= null;
     public static Color           DEFAULT_SELECTION_COLOR    		= Color.BLUE;
     public static Color           DEFAULT_INVERSE_COLOR    	 		= Color.WHITE;
     public static Color           DEFAULT_PORT_COLOR         		= Color.RED;
@@ -29,21 +26,28 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     public static Color           DEFAULT_HEADER_BACKGROUND_COLOR 	= Color.LIGHT_GRAY;
     public static Color           DEFAULT_TIME_COLOR 		 		= new Color(0, 128, 0);
     public static Color		  	  DEFAULT_SUBPROCESS_FRAME_COLOR 	= new Color(255, 151, 5);
-    public static Font            DEFAULT_HUGELABEL_FONT    		= new Font("Verdana", Font.PLAIN, 12);
-    public static Font            DEFAULT_HUGELABEL_BOLDFONT    	= new Font("Verdana", Font.BOLD, 12);
-    public static Font            DEFAULT_BIGLABEL_FONT         	= new Font("Verdana", Font.PLAIN, 11);
-    public static Font            DEFAULT_BIGLABEL_BOLDFONT         = new Font("Verdana", Font.BOLD, 11);
-    public static Font            DEFAULT_LABEL_FONT         		= new Font("Verdana", Font.PLAIN, 10);
-    public static Font            DEFAULT_LABEL_BOLDFONT         	= new Font("Verdana", Font.BOLD, 10);
-    public static Font            DEFAULT_SMALLLABEL_FONT    		= new Font("Verdana", Font.PLAIN, 9);
-    public static Font            DEFAULT_SMALLLABEL_BOLDFONT    	= new Font("Verdana", Font.PLAIN, 9);
+    public static Font            DEFAULT_HUGELABEL_FONT    		= new Font("Verdana", Font.PLAIN, 14);
+    public static Font            DEFAULT_HUGELABEL_BOLDFONT    	= new Font("Verdana", Font.BOLD, 14);
+    public static Font            DEFAULT_HUGELABEL_ITALICFONT    	= new Font("Verdana", Font.ITALIC, 14);
+    public static Font            DEFAULT_BIGLABEL_FONT    			= new Font("Verdana", Font.PLAIN, 12);
+    public static Font            DEFAULT_BIGLABEL_BOLDFONT    		= new Font("Verdana", Font.BOLD, 12);
+    public static Font            DEFAULT_BIGLABEL_ITALICFONT    	= new Font("Verdana", Font.ITALIC, 12);
+    public static Font            DEFAULT_LABEL_FONT         		= new Font("Verdana", Font.PLAIN, 11);
+    public static Font            DEFAULT_LABEL_BOLDFONT         	= new Font("Verdana", Font.BOLD, 11);
+    public static Font            DEFAULT_LABEL_ITALICFONT    		= new Font("Verdana", Font.ITALIC, 11);
+    public static Font            DEFAULT_SMALLLABEL_FONT         	= new Font("Verdana", Font.PLAIN, 10);
+    public static Font            DEFAULT_SMALLLABEL_BOLDFONT       = new Font("Verdana", Font.BOLD, 10);
+    public static Font            DEFAULT_SMALLLABEL_ITALICFONT    	= new Font("Verdana", Font.ITALIC, 10);
+    public static Font            DEFAULT_TINYLABEL_FONT    		= new Font("Verdana", Font.PLAIN, 9);
+    public static Font            DEFAULT_TINYLABEL_BOLDFONT    	= new Font("Verdana", Font.PLAIN, 9);
+    public static Font            DEFAULT_TINYLABEL_ITALICFONT    	= new Font("Verdana", Font.ITALIC, 9);
     public static Font            DEFAULT_RESOURCE_ROLE_FONT 		= new Font("Verdana", Font.PLAIN, 9);
     public static Font            DEFAULT_RESOURCE_ORG_FONT  		= new Font("Verdana", Font.ITALIC, 9);
     public static Font            DEFAULT_TOKEN_FONT         		= new Font("Verdana", Font.ITALIC, 20);
     public static Font            DEFAULT_TABLE_FONT         		= new Font("Verdana", Font.PLAIN, 11);
     public static Font            DEFAULT_TABLE_BOLDFONT     		= new Font("Verdana", Font.BOLD, 11);
     public static Font			  DEFAULT_TOOLTIP_FONT		 		= new Font("Verdana", Font.PLAIN, 10);
-    public static String          DEFAULT_LANGUAGE           		= "en";
+    public static String          DEFAULT_LANGUAGE           		= "";
     public static String          DEFAULT_COUNTRY            		= "";
     public static String          DEFAULT_VARIANT            		= "";
     public static String          DEFAULT_APROMORE_SERVER      		= "http://brahms0.imag.fr";
@@ -131,6 +135,9 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     private int					  defaultcolor15			 	= -10053121;
     private int					  defaultcolor16			 	= -16751104;
     private Color[]               defaultUnderstandColorArray	= new Color[16];
+    //Registration
+    private boolean				  isRegistered					= false;
+    
     
     //Registration
     private boolean				  isRegistered					= false;
@@ -776,44 +783,10 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
 
     public void setLocale()
     {
-        String language = null;
-        String country = null;
-        String variant = null;
-
-        Locale userLocale = null;
-
-        if (getLocaleLanguage() != null)
-        {
-            language = getLocaleLanguage();
-        }
-        if (getLocaleCountry() != null)
-        {
-            country = getLocaleCountry();
-        }
-        if (getLocaleVariant() != null)
-        {
-            variant = getLocaleVariant();
-        }
-
-        if (language != null && country != null && variant != null)
-        {
-            userLocale = new Locale(language, country, variant);
-        } 
-        else if (language != null && country != null)
-        {
-            userLocale = new Locale(language, country);
-        } 
-        else if (language != null)
-        {
-            userLocale = new Locale(language);
-        } 
-        else 
-        {
-            userLocale = Locale.ENGLISH;
-            setLocaleLanguage(this.locale.getLanguage());
-        }
-
-        this.locale = userLocale;
+        this.locale = Locale.getDefault();
+        this.country = Locale.getDefault().getCountry();
+        this.country = Locale.getDefault().getCountry();
+        this.country = Locale.getDefault().getCountry();
     }
 
     public Locale getLocale()

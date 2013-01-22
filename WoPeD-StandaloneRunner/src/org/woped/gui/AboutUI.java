@@ -222,7 +222,6 @@ public class AboutUI extends JDialog
             c1.anchor = GridBagConstraints.WEST;
             
             JTextArea text = new JTextArea();
-            text.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
             text.setBackground(panel.getBackground());
             text.append(changeLog);
             panel.add(text, c1);

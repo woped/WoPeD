@@ -16,6 +16,7 @@ import org.apromore.manager.model_portal.ExportFormatInputMsgType;
 
 import java.util.StringTokenizer;
 import org.apromore.access.*;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.translations.Messages;
 
 public class ImportFrame extends JDialog {
@@ -109,7 +110,7 @@ public class ImportFrame extends JDialog {
 
 		lblPnmlImportFunction = new JLabel(
 				Messages.getString("Apromore.Import.UI.Headline"));
-		lblPnmlImportFunction.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPnmlImportFunction.setFont(DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT);
 		lblPnmlImportFunction.setBounds(10, 11, 166, 20);
 		getContentPane().add(lblPnmlImportFunction);
 
@@ -120,7 +121,7 @@ public class ImportFrame extends JDialog {
 
 		lblFilterBy = new JLabel(
 				Messages.getString("Apromore.Import.UI.FilterBy"));
-		lblFilterBy.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblFilterBy.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_BOLDFONT);
 		lblFilterBy.setBounds(10, 61, 228, 14);
 		getContentPane().add(lblFilterBy);
 
@@ -162,7 +163,7 @@ public class ImportFrame extends JDialog {
 
 		lblResults = new JLabel(
 				Messages.getString("Apromore.Import.UI.Results"));
-		lblResults.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblResults.setFont(DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT);
 		lblResults.setBounds(10, 202, 166, 20);
 		getContentPane().add(lblResults);
 

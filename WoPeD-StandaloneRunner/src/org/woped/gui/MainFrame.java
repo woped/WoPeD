@@ -91,7 +91,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private RibbonTask						analyzeTask					= null;
 	private RibbonTask						optionsHelpTask				= null;
 	private RibbonTask						tokengameTask				= null;
-	private RibbonTask						registrationTask			= null;
+	private RibbonTask						communityTask				= null;
 
 	private	JCommandButton 					newButton					= null; 
 	private	JCommandButton 					openButton					= null; 
@@ -270,7 +270,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		getRibbon().addTask(getAnalyzeTask());
 		getRibbon().addTask(getViewTask());
 		getRibbon().addTask(getOptionsHelpTask());
-		getRibbon().addTask(getRegistrationTask());
+//		getRibbon().addTask(getCommunityTask());
 		getRibbon().addContextualTaskGroup(getTokengameGroup());
 
 		VisualController.getInstance().propertyChange(new PropertyChangeEvent(mediator, "InternalFrameCount", null, null));
@@ -470,15 +470,14 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return tokengameTask;
 	}
 	
-	private RibbonTask getRegistrationTask() {
+	private RibbonTask getCommunityTask() {
 		
-		if(registrationTask == null){
-			//registrationTask = new RibbonTask(Messages.getTitle("Task.Registration"), getRegistrationBand());			
-			registrationTask = new RibbonTask("Registration", getSocialMediaBand(), getRegistrationBand());			
-			registrationTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(registrationTask));
+		if(communityTask == null){
+			communityTask = new RibbonTask(Messages.getTitle("Task.Community"), getSocialMediaBand(), getRegistrationBand());	
+			communityTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(communityTask));
 			
 		}
-		return registrationTask;
+		return communityTask;
 	}
 	
 	/*********/
@@ -716,7 +715,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JRibbonBand getSocialMediaBand(){
 		
 		if(socialMediaBand == null){
-			socialMediaBand = new JRibbonBand("Social Media", null);
+			socialMediaBand = new JRibbonBand(Messages.getString("Community.socialmediaBandTitle"), null);
 			socialMediaBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(socialMediaBand));			
 			socialMediaBand.addCommandButton(getFacebookButton(), RibbonElementPriority.TOP);
 			socialMediaBand.addCommandButton(getGoogleplusButton(), RibbonElementPriority.TOP);
@@ -730,9 +729,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JRibbonBand getRegistrationBand(){
 		
 		if(registrationBand == null){
-			//registrationBand = new JRibbonBand(Messages.getString("Registration.TextBandTitle"), null);
-			registrationBand = new JRibbonBand("Registration", null);
-			//registrationBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(registrationBand));
+			registrationBand = new JRibbonBand(Messages.getString("Community.registerBandTitle"), null);
 			registrationBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(registrationBand));			
 			registrationBand.addCommandButton(getSignUpButton(), RibbonElementPriority.TOP);
 			registrationBand.addCommandButton(getCommunityButton(), RibbonElementPriority.TOP);
@@ -1515,10 +1512,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getFacebookButton() {
 			
 			if (facebookButton == null) {
-				facebookButton = new JCommandButton("Facebook", new F_icon());
+				facebookButton = new JCommandButton(Messages.getString("Community.Facebook.text"), new F_icon());
 				newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_FACEBOOK, AbstractViewEvent.FACEBOOK, facebookButton);
 				facebookButton.addActionListener(newListener);
-				setTooltip(facebookButton, "");
+				setTooltip(facebookButton, "Community.Facebook");
 			}
 			
 			return facebookButton;
@@ -1527,10 +1524,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getGoogleplusButton() {
 		
 		if (googleplusButton == null) {
-			googleplusButton = new JCommandButton("GooglePlus", new Google_plus_icon());
+			googleplusButton = new JCommandButton(Messages.getString("Community.Googleplus.text"), new Google_plus_icon());
 			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS, googleplusButton);
 			googleplusButton.addActionListener(newListener);
-			setTooltip(googleplusButton, "");
+			setTooltip(googleplusButton, "Community.Googleplus");
 		}
 		
 		return googleplusButton;
@@ -1539,10 +1536,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getTwitterButton() {
 		
 		if (twitterButton == null) {
-			twitterButton = new JCommandButton("Twitter", new Twitter_icon());
+			twitterButton = new JCommandButton(Messages.getString("Community.Twitter.text"), new Twitter_icon());
 			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TWITTER, AbstractViewEvent.TWITTER, twitterButton);
 			twitterButton.addActionListener(newListener);
-			setTooltip(twitterButton, "");
+			setTooltip(twitterButton, "Community.Twitter");
 		}
 		
 		return twitterButton;
@@ -1551,10 +1548,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getSignUpButton() {
 		
 		if (signUpButton == null) {
-			signUpButton = new JCommandButton("Sign Up", new Up());
+			signUpButton = new JCommandButton(Messages.getString("Community.Register.text"), new Up());
 			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REGISTRATION, AbstractViewEvent.REGISTRATION, signUpButton);
 			signUpButton.addActionListener(newListener);
-			setTooltip(signUpButton, "");
+			setTooltip(signUpButton, "Community.Register");
 		}
 		
 		return signUpButton;	
@@ -1563,10 +1560,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 private JCommandButton getCommunityButton() {
 		
 		if (communityButton == null) {
-			communityButton = new JCommandButton("Community ", new CommunityButton());
+			communityButton = new JCommandButton(Messages.getString("Community.Community.text"), new CommunityButton());
 			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REGISTRATION, AbstractViewEvent.REGISTRATION, communityButton);
 			communityButton.addActionListener(newListener);
-			setTooltip(communityButton, "");
+			setTooltip(communityButton, "Community.Community");
 		}
 		
 		return communityButton;
@@ -1638,30 +1635,6 @@ private JCommandButton getCommunityButton() {
 
 	@Override
 	public void refreshFocusOnFrames() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeToolBar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setFirstTransitionActive() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setSimulatorBar(Object simulatorBar) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void switchToolBar(boolean change) {
 		// TODO Auto-generated method stub
 		
 	}

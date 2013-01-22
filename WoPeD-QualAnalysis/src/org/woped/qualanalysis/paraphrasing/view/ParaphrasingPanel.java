@@ -3,12 +3,16 @@ package org.woped.qualanalysis.paraphrasing.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.Iterator;
+
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.paraphrasing.action.ButtonListener;
 import org.woped.translations.Messages;
 
@@ -22,7 +26,7 @@ public class ParaphrasingPanel extends JPanel{
 	private JButton upButton = null;
 	private JButton downButton = null;
 	private JButton exportButton = null;
-	private IEditor editor = null;
+	private IEditor m_editor = null;
 	private ParaphrasingOutput paraphrasingOutput = null;
 	private static boolean threadInProgress = false;
 	
@@ -36,7 +40,7 @@ public class ParaphrasingPanel extends JPanel{
 	
 	public ParaphrasingPanel(IEditor editor){
 		super();
-		this.editor = editor;
+		this.m_editor = editor;
 		
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
@@ -54,6 +58,85 @@ public class ParaphrasingPanel extends JPanel{
 
 		this.add(buttonPanel, BorderLayout.NORTH);
 		this.add(this.paraphrasingOutput.getMainPanel(), BorderLayout.CENTER);
+	}
+	
+	// add listener to paraphrasing tool
+	public void setParaphrasingListeners() {
+		if (getParaphrasingOutput().getTable() != null) {
+
+//			getParaphrasingOutput().addListeners();
+
+			// if the table has no entries, load values from element container
+			if (getParaphrasingOutput()
+					.getDefaultTableModel().getRowCount() == 0) {
+				for (int x = 0; x < m_editor.getModelProcessor()
+						.getElementContainer().getParaphrasingModel()
+						.getTableSize(); x++) {
+					int elements = 0;
+					// check ids if they are in the diagram
+					String[] content = m_editor.getModelProcessor()
+							.getElementContainer().getParaphrasingModel()
+							.getElementByRow(x)[0].split(",");
+					String ids = "";
+					Iterator<AbstractPetriNetElementModel> i = m_editor
+							.getModelProcessor().getElementContainer()
+							.getRootElements().iterator();
+					while (i.hasNext()) {
+						AbstractPetriNetElementModel cur = (AbstractPetriNetElementModel) i
+								.next();
+
+						if (cur.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+							OperatorTransitionModel operatorModel = (OperatorTransitionModel) cur;
+							Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel
+									.getSimpleTransContainer()
+									.getElementsByType(
+											AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
+									.values().iterator();
+							while (simpleTransIter.hasNext()) {
+								AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter
+										.next();
+								if (simpleTransModel != null
+										&& operatorModel
+												.getSimpleTransContainer()
+												.getElementById(
+														simpleTransModel
+																.getId())
+												.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE) {
+									for (String v : content) {
+										if (v.equals(simpleTransModel.getId())) {
+											ids = ids + v + ",";
+											elements++;
+										}
+									}
+								}
+
+							}
+						} else {
+							for (String v : content) {
+								if (v.equals(cur.getId())) {
+									ids = ids + v + ",";
+									elements++;
+								}
+							}
+						}
+
+					}
+
+					if (elements > 0) {
+						ids = ids.substring(0, ids.length() - 1);
+						String[] test = {
+								ids,
+								m_editor.getModelProcessor()
+										.getElementContainer()
+										.getParaphrasingModel()
+										.getElementByRow(x)[1] };
+										getParaphrasingOutput()
+								.addRow(test);
+					}
+
+				}
+			}
+		}
 	}
 		
 	public void enableButtons(boolean value){
@@ -190,7 +273,7 @@ public class ParaphrasingPanel extends JPanel{
 
   
    	public IEditor getEditor(){
-	   return this.editor;
+	   return this.m_editor;
    	}
    
    

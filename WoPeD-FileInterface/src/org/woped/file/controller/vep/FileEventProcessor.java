@@ -285,7 +285,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
             jfc.setFileFilter(PNGFilter);
 
             // insert of the BPEL Export filefilter
-            jfc.setFileFilter(BPEL.getBPELMainClass().getFilefilter());
+ //           jfc.setFileFilter(BPEL.getBPELMainClass().getFilefilter());
 
             jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
             jfc.showSaveDialog(null);
@@ -317,6 +317,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
                 editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
                 editor.setFilePath(savePath);
+                ConfigurationManager.getConfiguration().setCurrentWorkingdir(savePath.substring(0,savePath.lastIndexOf(File.separator)));
                 save(editor);
             } else {
                 LoggerManager.info(Constants.FILE_LOGGER, "\"Export\" canceled or nothing to export.");
@@ -373,7 +374,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                                                 + editor.getFilePath());
 
                                         ConfigurationManager.getConfiguration().addRecentFile(
-                                                new File(editor.getFilePath()).getName(), editor.getPathName());
+                                                new File(editor.getFilePath()).getName(), editor.getFilePath());
                                         getMediator().getUi().updateRecentMenu();
                                         editor.setSaved(true);
                                         ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());

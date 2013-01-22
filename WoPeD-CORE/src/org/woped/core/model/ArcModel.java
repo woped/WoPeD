@@ -130,7 +130,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 		// GraphConstants.setValue(map,
 		// Integer.toString(Double.valueOf(probability * 100).intValue()));
 		GraphConstants.setForeground(map, new Color(255, 0, 0));
-		GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+		GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
 		// GraphConstants.setLabelPosition(map, new
 		// Point2D.Double(GraphConstants.PERMILLE/2, 0));
 		// GraphConstants.setSelectable(map, true);

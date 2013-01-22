@@ -22,7 +22,6 @@ import org.woped.config.metrics.WoPeDMetricsConfiguration;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.core.utilities.Platform;
 
 /**
  * Class that provides access to the general WoPeD configuration settings. 
@@ -99,55 +98,16 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 			LoggerManager.warn(Constants.CONFIG_LOGGER,
 					rb.getString("Init.Config.FileNotFound") + ": " + fn + ". "
 							+ rb.getString("Init.Config.Fallback") + ".");
-			confOk = readConfig(WoPeDConfiguration.class
-					.getResourceAsStream(CONFIG_BUILTIN_FILE));
+			confOk = readConfig(WoPeDConfiguration.class.getResourceAsStream(CONFIG_BUILTIN_FILE));
 			
 			if (confOk) {			
-				// For built-in configuration choose Locale of the host computer
-				// unless installer has preset language
-				// First check if installer has put a file deu.xml in WoPeD main
-				// installation location
-				// If yes, set Locale to German and delete this file
-				f = new File("deu.xml");
-				if (f.exists()) {
-					setLocaleLanguage("de");
-					setLocaleCountry("DE");
-					setLocaleVariant("");
-				}
-				// Check if installer has put a file eng.xml in WoPeD main
-				// installation location
-				// If yes, set Locale to English and delete this file
-				else {
-					f = new File("eng.xml");
-					if (f.exists()) {
-						setLocaleLanguage("en");
-						setLocaleCountry("EN");
-						setLocaleVariant("");
-					}
-					// Else set Locale to host computer Locale
-					else {
-						setLocaleLanguage(System.getProperty("user.language"));
-						setLocaleCountry(System.getProperty("user.country"));
-						setLocaleVariant(System.getProperty("user.variant"));
-					}
-				}
+				setLocaleLanguage(Locale.getDefault().getLanguage());
+				setLocaleCountry(Locale.getDefault().getCountry());
+				setLocaleVariant(Locale.getDefault().getVariant());
 				setLocale();
 			}
 		}
 		
-		// Clean up first-time installation files to set initial Locale
-		f = new File("deu.xml");
-		try {
-			f.delete();	
-		}
-		catch (Exception e) {};
-
-		f = new File("eng.xml");
-		try {
-			f.delete();	
-		}
-		catch (Exception e) {};
-
 		if (!confOk) {
 			JOptionPane.showMessageDialog(null,
 					rb.getString("Init.Config.Error") + ". ",
@@ -235,8 +195,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
 		if (confDoc != null && (config = confDoc.getConfiguration()) != null) {
 			// MAC, WIN, Linux and XPlatform LookAndFeel
-			String lafConf = config.getGui().getWindow().getLookAndFeel();
-			setLookAndFeel(lafConf);
+			setLookAndFeel(config.getGui().getWindow().getLookAndFeel());
 
 			setWindowX(config.getGui().getWindow().getX());
 			setWindowY(config.getGui().getWindow().getY());
@@ -704,8 +663,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
 	public void setLookAndFeel(String className) {
 		getConfDocument().getConfiguration().getGui().getWindow().setLookAndFeel(className);
-		LoggerManager.info(Constants.CONFIG_LOGGER, "Look-And-Feel set to " + className);
-
 	}
 
 	public String getLookAndFeel() {
@@ -828,8 +785,11 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	 * @see org.woped.editor.config.IConfiguration#getLocaleLanguage()
 	 */
 	public String getLocaleLanguage() {
-		return getConfDocument().getConfiguration().getGui().getLocale()
-				.getLanguage();
+		String language = getConfDocument().getConfiguration().getGui().getLocale().getLanguage();
+		if (language.equals("")) {
+			language = Locale.getDefault().getLanguage();
+		}
+		return language;
 	}
 
 	/*
@@ -839,8 +799,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	 * org.woped.editor.config.IConfiguration#setLocaleCountry(java.lang.String)
 	 */
 	public void setLocaleCountry(String country) {
-		getConfDocument().getConfiguration().getGui().getLocale()
-				.setCountry(country);
+		getConfDocument().getConfiguration().getGui().getLocale().setCountry(country);
 	}
 
 	/*
@@ -849,8 +808,11 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	 * @see org.woped.editor.config.IConfiguration#getLocaleCountry()
 	 */
 	public String getLocaleCountry() {
-		return getConfDocument().getConfiguration().getGui().getLocale()
-				.getCountry();
+		String country = getConfDocument().getConfiguration().getGui().getLocale().getCountry();
+		if (country.equals("")) {
+			country = Locale.getDefault().getCountry();
+		}
+		return country;
 	}
 
 	/*
@@ -860,8 +822,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	 * org.woped.editor.config.IConfiguration#setLocaleVariant(java.lang.String)
 	 */
 	public void setLocaleVariant(String variant) {
-		getConfDocument().getConfiguration().getGui().getLocale()
-				.setVariant(variant);
+		getConfDocument().getConfiguration().getGui().getLocale().setVariant(variant);
 	}
 
 	/*
@@ -870,38 +831,17 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	 * @see org.woped.editor.config.IConfiguration#getLocaleVariant()
 	 */
 	public String getLocaleVariant() {
-		return getConfDocument().getConfiguration().getGui().getLocale()
-				.getVariant();
+		String variant = getConfDocument().getConfiguration().getGui().getLocale().getVariant();
+		if (variant.equals("")) {
+			variant = Locale.getDefault().getVariant();
+		}
+		return variant;
 	}
 
 	public void setLocale() {
-		String language = null;
-		String country = null;
-		String variant = null;
-		Locale userLocale = null;
-
-		if (getLocaleLanguage() != null) {
-			language = getLocaleLanguage();
-		}
-		if (getLocaleCountry() != null) {
-			country = getLocaleCountry();
-		}
-		if (getLocaleVariant() != null) {
-			variant = getLocaleVariant();
-		}
-
-		if (language != null && country != null && variant != null) {
-			userLocale = new Locale(language, country, variant);
-		} else if (language != null && country != null) {
-			userLocale = new Locale(language, country);
-		} else if (language != null) {
-			userLocale = new Locale(language);
-		} else {
-			userLocale = Locale.ENGLISH;
-			setLocaleLanguage(this.locale.getLanguage());
-		}
-
-		this.locale = userLocale;
+		this.locale = new Locale(getLocaleLanguage(), getLocaleCountry(), getLocaleVariant());
+		Locale.setDefault(this.locale);
+		LoggerManager.info(Constants.CONFIG_LOGGER,"Setting Locale to " + this.locale);
 	}
 
 	public Locale getLocale() {
@@ -1365,6 +1305,12 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 		getConfDocument().getConfiguration().getTools()
 		.setAproUse(selected);
 
+	}
+	
+	
+	public boolean getRegistration() {
+		//return  getConfDocument().getConfiguration().getGui().getWindow().getRegistration();
+		return ConfigurationManager.getStandardConfiguration().getRegistration();
 	}
 
 	@Override

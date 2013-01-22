@@ -191,7 +191,7 @@ public class OLDPNMLImport2 extends PNMLImport
             {
                 map.setTokens(tokens);
             }
-            getEditor()[editorIndex].create(map);
+            getEditor()[editorIndex].create(map, true);
             LoggerManager.debug(Constants.FILE_LOGGER, "   ... Place (ID:" + places[i].getId() + ") imported");
         }
     }
@@ -252,7 +252,7 @@ public class OLDPNMLImport2 extends PNMLImport
             }
             if (!getEditor()[editorIndex].getModelProcessor().getElementContainer().containsElement(map.getId()))
             {
-                getEditor()[editorIndex].create(map);
+                getEditor()[editorIndex].create(map, true);
                 LoggerManager.debug(Constants.FILE_LOGGER, " ... Transition (ID:" + map.getId() + ")imported");
             }
         }
@@ -286,7 +286,7 @@ public class OLDPNMLImport2 extends PNMLImport
                         map = CreationMap.createMap();
                         map.setArcSourceId(arcs[i].getSource());
                         map.setArcTargetId(tempID);
-                        arc = (ArcModel)getEditor()[editorIndex].create(map);
+                        arc = (ArcModel)getEditor()[editorIndex].create(map, true);
                     }
                 }
                 if (currentSourceModel == null && currentTargetModel != null)
@@ -304,7 +304,7 @@ public class OLDPNMLImport2 extends PNMLImport
                         map = CreationMap.createMap();
                         map.setArcSourceId(tempID);
                         map.setArcTargetId(arcs[i].getTarget());
-                        arc = (ArcModel)getEditor()[editorIndex].create(map);
+                        arc = (ArcModel)getEditor()[editorIndex].create(map, true);
                     }
                 }
                 if (currentTargetModel != null && currentSourceModel != null)
@@ -312,14 +312,14 @@ public class OLDPNMLImport2 extends PNMLImport
                     map = CreationMap.createMap();
                     map.setArcSourceId(arcs[i].getSource());
                     map.setArcTargetId(arcs[i].getTarget());
-                    arc = (ArcModel)getEditor()[editorIndex].create(map);
+                    arc = (ArcModel)getEditor()[editorIndex].create(map, true);
                 }
             } else
             {
                 map = CreationMap.createMap();
                 map.setArcSourceId(arcs[i].getSource());
                 map.setArcTargetId(arcs[i].getTarget());
-                arc = (ArcModel)getEditor()[editorIndex].create(map);
+                arc = (ArcModel)getEditor()[editorIndex].create(map, true);
             }
             if (arcs[i].isSetGraphics() && arc != null)
             {

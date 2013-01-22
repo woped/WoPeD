@@ -109,9 +109,7 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
 	 * select the editor 
 	 */
 	public void addEditor(IEditor editor) {
-		JToggleButton button = new JToggleButton(
-				ActionFactory.getSelectEditorAction(editor));// new
-																// TaskBarButton(editor);
+		JToggleButton button = new JToggleButton(ActionFactory.getSelectEditorAction(editor));
 		actions.put(editor, button);
 		this.add(button);
 		button.addMouseListener(new ClosePopupListener(button));
@@ -194,29 +192,6 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
 		}
 	}
 
-	
-	/**
-	 * 
-	 * 
-	 *
-	 */
-	class TaskBarButton extends JToggleButton {
-		IEditor editor;
-
-		/**
-		 * @param editor
-		 * Create new ToggleButton with the title of the editor
-		 */
-		TaskBarButton(IEditor editor) {
-			super(editor.toString(),
-					DefaultStaticConfiguration.DEFAULTEDITORFRAMEICON);
-			this.editor = editor;
-			SwingUtils.setPreferredWidth(this, 100);
-		}
-
-	}
-
-	
 	/**
 	 * @return
 	 * Return selected editor 

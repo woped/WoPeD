@@ -553,6 +553,6 @@ public abstract class AbstractRibbonBand<T extends AbstractBandControlPanel>
 					"Ribbon band cannot be added to more than one ribbon task");
 		}
 		this.ribbonTask = ribbonTask;
-		FlamingoUtilities.checkResizePoliciesConsistency(this);
+//		FlamingoUtilities.checkResizePoliciesConsistency(this);
 	}
 }

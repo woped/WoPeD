@@ -196,12 +196,13 @@ public class ArcView extends EdgeView
 				Object[] labels = GraphConstants.getExtraLabels(view
 						.getAllAttributes());
 				JGraph graph = (JGraph)this.graph.get();
-				g.setFont(DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
+				g.setFont(DefaultStaticConfiguration.DEFAULT_TINYLABEL_FONT);
 				if (labels != null) {
-					for (int i = 0; i < labels.length; i++)
+					for (int i = 0; i < labels.length; i++) {
 						paintLabel(g, graph.convertValueToString(labels[i]),
 								getExtraLabelPosition(view, i),
-								false || !simpleExtraLabels);
+								simpleExtraLabels);
+					}
 				}
 
                 

@@ -180,11 +180,11 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 			if (getEditor().getCreateElementType() > 100 && getEditor().getCreateElementType() < 110) {
 				map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
 				map.setOperatorType(getEditor().getCreateElementType());
-				getEditor().create(map);
+				getEditor().create(map, true);
 			} 
 			else {
 				map.setType(getEditor().getCreateElementType());
-				getEditor().create(map);
+				getEditor().create(map, true);
 			}
 			
 			return;
@@ -237,7 +237,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 				// Handle single left mouse button click behaviour
 				if (ConfigurationManager.getConfiguration().isSmartEditing()
 						&& port == null && firstPort != null && firstPort != port) {
-					// Smart editing is enabled, i. e. create elements on the fly
+					// Smart edit is enabled, i. e. create elements on the fly
 					CreationMap[] maps = new CreationMap[2];
 					boolean allowConnection = true;
 					Object element = ((firstPort != null) ? ((DefaultPort) firstPort.getCell()).getParent() : null);
@@ -284,7 +284,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 						CreationMap map = CreationMap.createMap();
 						map.setArcSourceId(((AbstractPetriNetElementModel) ((DefaultPort) source).getParent()).getId());
 						map.setArcTargetId(((AbstractPetriNetElementModel) ((DefaultPort) target).getParent()).getId());
-						getEditor().create(map);
+						getEditor().create(map, true);
 						e.consume();
 					}
 				}

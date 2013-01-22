@@ -25,6 +25,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.woped.translations.Messages;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.quantana.sim.SimReportServerStats;
 import org.woped.quantana.sim.SimReportStats;
 import org.woped.quantana.sim.SimRunner;
@@ -137,7 +138,7 @@ public class DetailsDialog extends JDialog {
             false
         );
         PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        plot.setLabelFont(DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
         plot.setCircular(false);
         plot.setLabelGap(0.02);
         return chart;

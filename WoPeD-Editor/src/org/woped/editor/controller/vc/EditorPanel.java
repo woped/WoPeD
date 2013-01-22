@@ -31,6 +31,7 @@ import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorAware;
@@ -65,7 +66,7 @@ public class EditorPanel extends JPanel {
 	private boolean m_UnderstandabilityColoringEnabled = false;	
 	
 	// Headers of the different Panes
-	private static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD, 11);
+	private static final Font HEADER_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_BOLDFONT;
 	private static final int m_splitPosition = 600;
 	private static final int m_splitSize = 10;
 	private final int m_splitHeightOverviewPosition = 100;
@@ -599,7 +600,7 @@ public class EditorPanel extends JPanel {
 	 */
 	public void initializeAnalysisBar(){
 		semanticLabel = new JLabel(Messages.getString("Tools.semanticalAnalysis.text"));
-//		semanticLabel.setFont(HEADER_FONT);		
+		semanticLabel.setFont(HEADER_FONT);		
 		
 		// settings for qualitative Analysis tab
 		boolean autoRefreshStatus = true;

@@ -63,7 +63,7 @@ public class NameModel extends DefaultGraphCell
         this.m_ownerId = creationMap.getId();
 //        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         AttributeMap map = getAttributes();
-        GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+        GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
 //        GraphConstants.setOpaque(map, false);
         // GraphConstants.setBorderColor(map, Color.black);
         GraphConstants.setEditable(map, true);

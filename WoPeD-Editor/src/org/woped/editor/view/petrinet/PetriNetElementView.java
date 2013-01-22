@@ -282,14 +282,14 @@ public class PetriNetElementView extends AbstractElementView {
     	if (!time.equals("0") &&
     		trans.getToolSpecific().getTrigger() != null &&
 			trans.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE) {
-    		Font timeFont = DefaultStaticConfiguration.DEFAULT_LABEL_FONT;
+    		Font timeFont = DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT;
     		g2.setColor(DefaultStaticConfiguration.DEFAULT_TIME_COLOR);
     		g2.setFont(timeFont);
     		Rectangle2D bounds = timeFont.getStringBounds(time, g2.getFontRenderContext());
     		int xCoord = (int)((d.width - bounds.getWidth())/2);
     		int yCoord = (int)((d.height - bounds.getHeight() - bounds.getY())/2);
     		g2.drawString(time, xCoord, yCoord);
-    		Font unitFont = DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT;
+    		Font unitFont = DefaultStaticConfiguration.DEFAULT_TINYLABEL_FONT;
     		g2.setFont(unitFont);
     		bounds = unitFont.getStringBounds(tuString, g2.getFontRenderContext());
     		xCoord = (int)((d.width - bounds.getWidth())/2);

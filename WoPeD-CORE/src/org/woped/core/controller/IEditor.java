@@ -33,7 +33,7 @@ public interface IEditor extends IViewController {
 	 * @param creationMap
 	 * @return
 	 */
-	public GraphCell create(CreationMap map);
+	public GraphCell create(CreationMap map, boolean doNotEdit);
 
 	/**
 	 * Creates the Elements in the Graph and stores them in the used
@@ -223,4 +223,8 @@ public interface IEditor extends IViewController {
 	public abstract void disableTokenGame();
 
 	public abstract void enableTokenGame();
+
+	public void setPathname(String absolutePath);
+
+	public String getPathname();
 }

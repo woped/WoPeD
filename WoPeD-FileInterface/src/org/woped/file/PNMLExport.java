@@ -858,6 +858,8 @@ public class PNMLExport
             probPos.setY(BigDecimal.valueOf(probPosPoint.getY()));
 
             iArcTool.setDisplayProbabilityPosition(probPos);
+            LoggerManager.debug(Constants.FILE_LOGGER, "... Arc label position: X = " + probPos.getX() + " / Y = " + probPos.getY());
+            
             // toolspecific
             for (short i = 0; i < outerArc.getUnknownToolSpecs().size(); i++)
             {
@@ -871,7 +873,7 @@ public class PNMLExport
         // attr. target
         iArc.setTarget(useArc.getTargetId());
         LoggerManager.debug(Constants.FILE_LOGGER, "   ... Arc (ID:" + useArc.getId() + "( " + useArc.getSourceId() + " -> " + useArc.getTargetId() + ") set");
-
+        
         return iArc;
     }
 
@@ -946,7 +948,6 @@ public class PNMLExport
     			phrase.setIds(row[0].trim());
     			phrase.setStringValue(row[1].trim());
     			LoggerManager.debug(Constants.FILE_LOGGER, "   ... Description (ID:" + row[0] + ") set");
-
     		}    		
     	}
     }

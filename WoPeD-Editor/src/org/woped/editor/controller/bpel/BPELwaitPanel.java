@@ -28,7 +28,7 @@ import org.woped.translations.Messages;
 import com.toedter.calendar.JCalendar;
 
 /**
- * @author Kristian Kindler / Esther Landes / Frank Schüler
+ * @author Kristian Kindler / Esther Landes / Frank Schï¿½ler
  * 
  * This is a panel in the transition properties, which enables the user to
  * maintain data for a "wait" BPEL activity.
@@ -254,7 +254,6 @@ public class BPELwaitPanel extends BPELadditionalPanel implements
 	private JCalendar getDeadlineCalendar() {
 		if (calendar == null) {
 			calendar = new JCalendar();
-			// To do: hier noch WoPeD aktuelle Sprache abfragen
 			calendar.setLocale(Locale.ENGLISH);
 		}
 		return calendar;

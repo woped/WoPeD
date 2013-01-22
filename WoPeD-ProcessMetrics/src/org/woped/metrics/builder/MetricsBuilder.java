@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.config.IMetricsConfiguration;
 import org.woped.core.controller.IEditor;
 import org.woped.translations.Messages;
@@ -19,8 +20,8 @@ public class MetricsBuilder extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD, 14);
-	protected static final Font ITEMS_FONT = new Font(Font.DIALOG, Font.PLAIN, 12);
+	protected static final Font HEADER_FONT = DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT;
+	protected static final Font ITEMS_FONT = DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT;
 	
 	private MetricsBuilderPanel mbp;
 	

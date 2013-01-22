@@ -82,7 +82,6 @@ import org.woped.editor.gui.IEditorProperties;
 import org.woped.editor.view.ViewFactory;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
-import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.qualanalysis.simulation.TokenGameController;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.StructuralAnalysis;
@@ -1087,7 +1086,7 @@ public class EditorVC implements KeyListener,
 			// set ID to null, to get new ID
 			tempMap.setId(null);
 			// get tempGroupModel with new ID
-			GroupModel tempGroupModel = (GroupModel) (create(tempMap));
+			GroupModel tempGroupModel = (GroupModel) (create(tempMap, true));
 			// get form the group an AbstractElementModel (extends GraphCell)
 
 			tempElement = tempGroupModel.getMainElement();
@@ -2035,8 +2034,13 @@ public class EditorVC implements KeyListener,
 		// Enable token game mode
 		newEditorWindow.toggleTokenGame();
 	}
+
 	public GraphCell create(CreationMap map) {
 		return create(map, true, true);
+	}
+
+	public GraphCell create(CreationMap map, boolean doNotEdit) {
+		return create(map, true, doNotEdit);
 	}
 
 	public GraphCell create(CreationMap map, boolean insertIntoCache,
@@ -2266,6 +2270,15 @@ public class EditorVC implements KeyListener,
 	public void repaint() {
 		getGraph().refreshNet();
 		getGraph().repaint();
+	}
+
+	public void setPathname(String absolutePath) {
+		m_pathname = absolutePath;
+		
+	}
+
+	public String getPathname() {
+		return m_pathname;
 	}
 	
 }

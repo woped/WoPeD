@@ -88,13 +88,11 @@ public class DefaultApplicationMediator extends ApplicationMediator
         setUi(ui);
         setDisplayUI((JFrame)ui);          
         ui.initialize(this);  
-
+        
         if (filesToOpen != null && filesToOpen.length > 0) {
 			for (int i = 0; i < filesToOpen.length; i++) {
 				File f = new File(filesToOpen[i]);
 				
-				LoggerManager.info(Constants.GUI_LOGGER, "OPENING FILE " + filesToOpen[i]);
-
 				fireViewEvent(new ViewEvent(this,
 						AbstractViewEvent.VIEWEVENTTYPE_FILE,
 						AbstractViewEvent.OPEN, f));
@@ -109,11 +107,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
         {
         	vc = new StatusBarVC(StatusBarVC.ID_PREFIX + statusCounter);
         }
-        else if (type == VIEWCONTROLLER_MENUBAR && Platform.isMac())
-        {
-        	vc = new MenuBarVC();
-        }
-        else
+        else 
         {
             vc = super.createViewController(type);
         }

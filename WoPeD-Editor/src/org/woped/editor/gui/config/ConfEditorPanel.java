@@ -40,7 +40,6 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.utilities.Platform;
 import org.woped.translations.Messages;
 
 /**

@@ -1191,7 +1191,7 @@ public class PNMLImport {
 														.getToolspecificArray(j)
 														.getDisplayProbabilityPosition()
 														.getY().intValue());
-										arc.setLabelPosition(location);
+										arc.setLabelPosition(location);								         
 									}
 								} else {
 									arc.addUnknownToolSpecs(arcs[i]

@@ -204,7 +204,7 @@ public class SplashWindow extends JWindow
         if (versionLabel == null)
         {
             versionLabel = new JLabel("Version " + Messages.getString("Application.Version"));
-            versionLabel.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+            versionLabel.setFont(DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
             versionLabel.setForeground(DefaultStaticConfiguration.DEFAULT_INVERSE_COLOR);
         }
         return versionLabel;
@@ -215,7 +215,7 @@ public class SplashWindow extends JWindow
         if (copyrightLabel == null)
         {
             copyrightLabel = new JLabel(Messages.getString("Splash.Text.Copyright"));
-            copyrightLabel.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
+            copyrightLabel.setFont(DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
             copyrightLabel.setForeground(DefaultStaticConfiguration.DEFAULT_INVERSE_COLOR);
         }
         return copyrightLabel;

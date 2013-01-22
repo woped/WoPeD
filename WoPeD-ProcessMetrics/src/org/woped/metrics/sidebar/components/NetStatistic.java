@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.IEditor;
 import org.woped.metrics.metricsCalculation.MetricsCalculator;
 import org.woped.qualanalysis.service.IQualanalysisService;
@@ -26,10 +27,8 @@ public class NetStatistic extends JPanel {
 	private IEditor editor;
 
 	protected static final String PREFIX_QUALANALYSIS = "AnalysisSideBar.";
-	protected static final Font HEADER_FONT = new Font(Font.DIALOG, Font.BOLD,
-			14);
-	protected static final Font ITEMS_FONT = new Font(Font.DIALOG, Font.PLAIN,
-			12);
+	protected static final Font HEADER_FONT = DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT;
+	protected static final Font ITEMS_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_FONT;
 	protected static final String SUB_POINT = " - ";
 
 

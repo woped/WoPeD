@@ -21,8 +21,6 @@ public class WatermarkedJTextField extends JTextField{
 	private String watermark;
 	
 	public void setText(String text){
-		//if(cFont.isItalic())
-		//	cFont = new Font(cFont.getName(), Font.PLAIN, cFont.getSize());
 		if(text == null || text.length() == 0){
 			watermarkMode(true,true);
 			return;
