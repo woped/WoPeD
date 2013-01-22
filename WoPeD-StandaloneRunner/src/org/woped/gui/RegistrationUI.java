@@ -2,39 +2,30 @@ package org.woped.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.HeadlessException;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.swing.AbstractAction;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.Border;
 
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
-import org.woped.gui.controller.vep.GUIViewEventProcessor;
 import org.woped.translations.Messages;
-import org.woped.gui.icons.*;
-import org.woped.gui.utilities.*;
 
 public class RegistrationUI extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel logoLabel 					= null;
 	private JLabel proregistrationTextLabel 	= null;
 	private JButton registrationLinkLabel 		= null;
@@ -46,12 +37,12 @@ public class RegistrationUI extends JDialog {
 	private JScrollPane registrationTextPanel 	= null;
 	private JPanel buttonPanel 					= null;
 	
-	//Für Möglichkeit 1
+	//Fï¿½ï¿½r Mï¿½ï¿½glichkeit 1
 	private JLabel facebookLink					= null;
 	private JLabel googlePlus					= null;
 	private JLabel twitter						= null;
 	
-	//Für Möglichkeit 2
+	//Fï¿½ï¿½r Mï¿½ï¿½glichkeit 2
 	private JLabel allIcons						= null;
 	
 	
@@ -65,7 +56,7 @@ public class RegistrationUI extends JDialog {
 	public void initialize(){
 		  	this.setVisible(true);
 	        this.getContentPane().setLayout(new BorderLayout());
-	        //this.setUndecorated(false);  //führt zu Fehler
+	        //this.setUndecorated(false);  //fï¿½ï¿½ï¿½hrt zu Fehler
 	        this.setResizable(false);
 	        this.getContentPane().add(getregistrationTextPanel(), BorderLayout.NORTH);
 	        this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
@@ -103,7 +94,7 @@ public class RegistrationUI extends JDialog {
             c.gridy = 0;
             c.anchor = GridBagConstraints.CENTER;
             //c.insets = new Insets(10, 10, 10, 10);
-            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.LogoNEW.Image"))));
+            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.Logo.Image"))));
             panel.add(logoLabel, c);
 
            
@@ -118,27 +109,27 @@ public class RegistrationUI extends JDialog {
             c.gridy = 2;
             c.insets = new Insets(2, 35, 1, 5);           
             c.anchor = GridBagConstraints.WEST;
-            /* --- Möglichkeit 1 zur Darstellung
-            facebookLink = new JLabel("<html><p>" + Messages.getString("Registration.Facebook.Text") + "</p></html>");
-            facebookLink.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("Registration.Facebook.Link"), facebookLink));
+            /* --- Mï¿½ï¿½ï¿½glichkeit 1 zur Darstellung
+            facebookLink = new JLabel("<html><p>" + Messages.getString("Community.Facebook.Text") + "</p></html>");
+            facebookLink.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("Community.Facebook.Link"), facebookLink));
             panel.add(facebookLink, c);
             
             c.gridy = 3;
             c.anchor = GridBagConstraints.WEST;
-            googlePlus = new JLabel("<html><p>" + Messages.getString("Registration.GooglePlus.Text") + "</p></html>");
-            googlePlus.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("Registration.GooglePlus.Link"), googlePlus));
+            googlePlus = new JLabel("<html><p>" + Messages.getString("Community.GooglePlus.Text") + "</p></html>");
+            googlePlus.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("Community.GooglePlus.Link"), googlePlus));
             panel.add(googlePlus, c);
             
             
             c.gridy = 4;
             c.anchor = GridBagConstraints.WEST;
-            twitter = new JLabel("<html><p>" + Messages.getString("Registration.Twitter.Text") + "</p></html>");
-            twitter.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("Registration.Twitter.Link"), twitter));
+            twitter = new JLabel("<html><p>" + Messages.getString("Community.Twitter.Text") + "</p></html>");
+            twitter.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("Community.Twitter.Link"), twitter));
             panel.add(twitter, c);
             */
             
-            /* --- Möglichkeit 2 ---*/
-            allIcons = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Windwo.AllIcons.Image"))));
+            /* --- Mï¿½ï¿½ï¿½glichkeit 2 ---*/
+            allIcons = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.AllIcons.Image"))));
             panel.add(allIcons, c);
             
             registrationTextPanel = new JScrollPane(panel);
@@ -168,17 +159,11 @@ public class RegistrationUI extends JDialog {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					// TODO Auto-generated method stub
-					try {
-            			Registration reg = new Registration();
-            			String info[] = reg.getOS();
-            			Runtime.getRuntime()
-            					.exec("rundll32 url.dll,FileProtocolHandler "
-            							+ "http://b-arnold.net/woped/registration/index.php?java="+info[1]+"&os="+info[0]+"&woped="+info[2]);
-            			dispose();
-                	} catch (IOException e) {
-            			e.printStackTrace();
-            		}
+					Registration reg = new Registration();
+					String info[] = reg.getOS();
+					new LaunchDefaultBrowserAction(
+							"http://b-arnold.net/woped/registration/index.php?java="+info[1]+"&os="+info[0]+"&woped="+info[2], registrationLinkLabel);
+					dispose();
 				}
 			});
             //registrationLinkLabel.setText("Join Now");
