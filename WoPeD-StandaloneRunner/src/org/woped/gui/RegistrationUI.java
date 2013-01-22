@@ -94,7 +94,7 @@ public class RegistrationUI extends JDialog {
             c.gridy = 0;
             c.anchor = GridBagConstraints.CENTER;
             //c.insets = new Insets(10, 10, 10, 10);
-            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.Logo.Image"))));
+            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.LogoNEW.Image"))));
             panel.add(logoLabel, c);
 
            

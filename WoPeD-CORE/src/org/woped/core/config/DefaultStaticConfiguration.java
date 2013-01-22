@@ -139,9 +139,6 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     private boolean				  isRegistered					= false;
     
     
-    //Registration
-    private boolean				  isRegistered					= false;
-    
     public DefaultStaticConfiguration()
     {
         initConfig();
