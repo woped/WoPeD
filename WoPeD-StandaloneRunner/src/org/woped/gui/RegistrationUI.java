@@ -37,29 +37,27 @@ public class RegistrationUI extends JDialog {
 	private JScrollPane registrationTextPanel 	= null;
 	private JPanel buttonPanel 					= null;
 	
-	//F��r M��glichkeit 1
+	//F������r M������glichkeit 1
 	private JLabel facebookLink					= null;
 	private JLabel googlePlus					= null;
 	private JLabel twitter						= null;
 	
-	//F��r M��glichkeit 2
+	//F������r M������glichkeit 2
 	private JLabel allIcons						= null;
 	
 	
 
-	public RegistrationUI(){
-		
-		
+	public RegistrationUI(){	
 		initialize();
 	}
 	
-	public void initialize(){
+	private void initialize(){
 		  	this.setVisible(true);
 	        this.getContentPane().setLayout(new BorderLayout());
-	        //this.setUndecorated(false);  //f���hrt zu Fehler
 	        this.setResizable(false);
 	        this.getContentPane().add(getregistrationTextPanel(), BorderLayout.NORTH);
 	        this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+	        this.setAlwaysOnTop(true);
 	        this.setTitle("Already Signed Up?");
 	        this.pack();
 	        /*
@@ -76,11 +74,9 @@ public class RegistrationUI extends JDialog {
 	        this.setSize(this.getWidth(), this.getHeight());
 	}
 	
-	public  JScrollPane getregistrationTextPanel(){
+	public JScrollPane getregistrationTextPanel(){
 		String[] aboutArgs       	= { Messages.getWoPeDVersionWithTimestamp() };
        	String   registrationText   = "<html><p>" + Messages.getStringReplaced("Registration.Text", aboutArgs) + "</p></html>";
-            	
-       	
        	
     	if (registrationTextPanel == null)
         {
@@ -109,7 +105,7 @@ public class RegistrationUI extends JDialog {
             c.gridy = 2;
             c.insets = new Insets(2, 35, 1, 5);           
             c.anchor = GridBagConstraints.WEST;
-            /* --- M���glichkeit 1 zur Darstellung
+            /* --- M���������glichkeit 1 zur Darstellung
             facebookLink = new JLabel("<html><p>" + Messages.getString("Community.Facebook.Text") + "</p></html>");
             facebookLink.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("Community.Facebook.Link"), facebookLink));
             panel.add(facebookLink, c);
@@ -128,7 +124,7 @@ public class RegistrationUI extends JDialog {
             panel.add(twitter, c);
             */
             
-            /* --- M���glichkeit 2 ---*/
+            /* --- M���������glichkeit 2 ---*/
             allIcons = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.AllIcons.Image"))));
             panel.add(allIcons, c);
             

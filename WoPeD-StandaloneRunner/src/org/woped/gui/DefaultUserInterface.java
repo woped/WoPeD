@@ -111,15 +111,20 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         toolPanel.add(statusBar, BorderLayout.EAST);          
         toolPanel.setPreferredSize(new Dimension(100, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
-
-        new SplashWindow(this);
+       
+        if (!ConfigurationManager.getConfiguration().getRegistration()) {
+        	new RegistrationUI().setVisible(true);
+        }
+        else {
+        	new SplashWindow(this);
+        }
 
         //Helper for adding Tokengame
         //see Java-Doc for explanation
         ReferenceProvider helper = new ReferenceProvider();
         helper.setDesktopReference(desktop);
         helper.setUIReference(this);
-    
+            
         setVisible(true);
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
     }

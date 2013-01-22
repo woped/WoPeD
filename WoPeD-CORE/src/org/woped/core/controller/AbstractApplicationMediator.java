@@ -49,7 +49,7 @@ public abstract class AbstractApplicationMediator implements IViewListener
     private 	HashMap<String, IViewController>        viewControllerMap = null;
     private 	VEPController  vepController     = null;
     protected 	IUserInterface ui                = null;
-    private 	IGeneralConfiguration conf 		 = null;
+    protected 	IGeneralConfiguration conf 		 = null;
 	private 	LinkedList<Object> editorLists = new LinkedList<Object>();
 
     public abstract IEditor createEditor(boolean undoSupport, boolean loadUI);

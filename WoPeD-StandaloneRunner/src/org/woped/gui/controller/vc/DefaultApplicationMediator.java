@@ -27,6 +27,7 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
@@ -66,12 +67,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
 		helper.setMediatorReference(this);
         getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(ViewEvent.VIEWEVENTTYPE_GUI, this));
         getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(ViewEvent.VIEWEVENTTYPE_FILE, this));
-        
-        if(!conf.getRegistration()){
-        	RegistrationUI rem = new RegistrationUI();
-			rem.initialize();
-        }
-	}
+   	}
         
 	public void startUI(String[] filesToOpen) {
         if (ui == null)
@@ -83,7 +79,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
             config = (ConfigVC) this.createViewController(ApplicationMediator.VIEWCONTROLLER_CONFIG);
             addViewController(config);
         }
-
+        
         ui = new DefaultUserInterface(taskbar, statusbar);
         setUi(ui);
         setDisplayUI((JFrame)ui);          

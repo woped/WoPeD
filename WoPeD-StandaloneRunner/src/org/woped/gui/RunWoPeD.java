@@ -34,6 +34,7 @@ import javax.swing.UIManager;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
