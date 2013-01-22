@@ -15,7 +15,7 @@ public class AskToStartWoPeDUI extends JDialog {
 	private JButton noButton, yesButton;
 
 	public AskToStartWoPeDUI(JFrame owner) {
-		super(owner, Messages.getString("Dialog.StartWoPeD.Text"), true);
+		super(owner, Messages.getString("Dialog.StartWoPeD.Title"), true);
 		this.setAlwaysOnTop(true);
 		setLayout(new BorderLayout());
 		setSize(400,300); 
