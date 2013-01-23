@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,53 +26,46 @@ public class RegistrationUI extends JDialog {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private JLabel logoLabel 					= null;
-	private JLabel proregistrationTextLabel 	= null;
-	private JButton registrationLinkLabel 		= null;
+	private static final long 	serialVersionUID = 1L;
+	private JLabel 			 	logoLabel 					= null;
+	private JLabel  			proRegistrationTextLabel 	= null;
+	private JButton 			registrationLinkLabel 		= null;
 
-	private JCheckBox dontRemeberMe 			= null;
+	private JCheckBox 			dontRemeberMe 				= null;
 
-	private JButton closeButton 				= null;
+	private JButton 			closeButton 				= null;
 
-	private JScrollPane registrationTextPanel 	= null;
-	private JPanel buttonPanel 					= null;
+	private JScrollPane 		registrationTextPanel 		= null;
+	private JPanel 				buttonPanel 				= null;
 	
-	//F������r M������glichkeit 1
-	private JLabel facebookLink					= null;
-	private JLabel googlePlus					= null;
-	private JLabel twitter						= null;
+/*	private JLabel 				facebookLink				= null;
+	private JLabel 				googlePlus					= null;
+	private JLabel 				twitter						= null;*/
 	
-	//F������r M������glichkeit 2
-	private JLabel allIcons						= null;
-	
-	
+	private JLabel 				allIcons					= null;
 
-	public RegistrationUI(){	
+	public RegistrationUI(JFrame parent) {	
+		super(parent, Messages.getString("Registration.Title"), true);
 		initialize();
 	}
 	
 	private void initialize(){
-		  	this.setVisible(true);
-	        this.getContentPane().setLayout(new BorderLayout());
-	        this.setResizable(false);
-	        this.getContentPane().add(getregistrationTextPanel(), BorderLayout.NORTH);
-	        this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-	        this.setAlwaysOnTop(true);
-	        this.setTitle("Already Signed Up?");
-	        this.pack();
-	        /*
-	        if (getOwner() != null)
-	        {
-	            this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2), getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
-	        } else
-	        {
-	            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	            this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
-	        }
-			*/
-	        setLocationRelativeTo(null);
-	        this.setSize(this.getWidth(), this.getHeight());
+		this.setResizable(false);
+		this.setAlwaysOnTop(true);
+		this.getContentPane().setLayout(new BorderLayout());
+		this.getContentPane().add(getregistrationTextPanel(), BorderLayout.NORTH);
+		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+		this.pack();
+		/*
+		 * if (getOwner() != null) { this.setLocation(getOwner().getX() +
+		 * ((getOwner().getWidth() - this.getWidth()) / 2), getOwner().getY() +
+		 * ((getOwner().getHeight() - this.getHeight()) / 2)); } else {
+		 * Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		 * this.setLocation((screenSize.width - this.getWidth()) / 2,
+		 * (screenSize.height - this.getHeight()) / 2); }
+		 */
+		setLocationRelativeTo(null);
+		this.setSize(this.getWidth(), this.getHeight());
 	}
 	
 	public JScrollPane getregistrationTextPanel(){
@@ -91,22 +85,19 @@ public class RegistrationUI extends JDialog {
             c.anchor = GridBagConstraints.CENTER;
             //c.insets = new Insets(10, 10, 10, 10);
             logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.LogoNEW.Image"))));
-            panel.add(logoLabel, c);
-
-           
+            panel.add(logoLabel, c);          
             
             c.gridy = 1;
             c.insets = new Insets(4, 10, 3, 10);
             c.anchor = GridBagConstraints.CENTER;
-            proregistrationTextLabel = new JLabel(registrationText);
-            panel.add(proregistrationTextLabel, c);
+            proRegistrationTextLabel = new JLabel(registrationText);
+            panel.add(proRegistrationTextLabel, c);
            
-            
+/*            
             c.gridy = 2;
             c.insets = new Insets(2, 35, 1, 5);           
             c.anchor = GridBagConstraints.WEST;
-            /* --- M���������glichkeit 1 zur Darstellung
-            facebookLink = new JLabel("<html><p>" + Messages.getString("Community.Facebook.Text") + "</p></html>");
+             facebookLink = new JLabel("<html><p>" + Messages.getString("Community.Facebook.Text") + "</p></html>");
             facebookLink.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("Community.Facebook.Link"), facebookLink));
             panel.add(facebookLink, c);
             
@@ -124,7 +115,6 @@ public class RegistrationUI extends JDialog {
             panel.add(twitter, c);
             */
             
-            /* --- M���������glichkeit 2 ---*/
             allIcons = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.AllIcons.Image"))));
             panel.add(allIcons, c);
             
@@ -138,7 +128,7 @@ public class RegistrationUI extends JDialog {
 		if(buttonPanel == null){
 			buttonPanel = new JPanel();
             buttonPanel.setLayout(new GridBagLayout());
-            //buttonPanel.setBackground(Color.GRAY);
+
             GridBagConstraints c = new GridBagConstraints();
             
             c.gridx = 0;
@@ -162,6 +152,7 @@ public class RegistrationUI extends JDialog {
 					dispose();
 				}
 			});
+
             //registrationLinkLabel.setText("Join Now");
             
             buttonPanel.add(registrationLinkLabel, c);

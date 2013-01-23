@@ -47,9 +47,11 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.help.HelpBrowser;
+import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.AboutUI;
 import org.woped.gui.BugReportUI;
 import org.woped.gui.Constants;
+import org.woped.gui.RegistrationUI;
 import org.woped.gui.controller.vc.DefaultApplicationMediator;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
@@ -183,14 +185,27 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			break;
 
 		case AbstractViewEvent.UPDATE:
-			// TODO: fire update event for editor
 			break;
-
 		case AbstractViewEvent.EXIT:
 			quit();
 			break;
         case AbstractViewEvent.ZOOMED:
             break;
+        case AbstractViewEvent.FACEBOOK:
+        	new LaunchDefaultBrowserAction("http://www.facebook.com/WorkflowPetriNetDesigner", null).displayURL();
+            break;
+        case AbstractViewEvent.TWITTER:
+        	new LaunchDefaultBrowserAction("http://twitter.com/WoPeD_WPND", null).displayURL();
+            break;
+        case AbstractViewEvent.GOOGLEPLUS:
+        	new LaunchDefaultBrowserAction("http://plus.google.com/u/0/114590102000896134066", null).displayURL();
+            break;
+        case AbstractViewEvent.COMMUNITY:
+        	new LaunchDefaultBrowserAction("http://www.woped.org", null).displayURL();
+            break;
+    	case AbstractViewEvent.REGISTER:
+    		new RegistrationUI((JFrame) getMediator().getUi()).setVisible(true);
+    		break;
 		}
 	}
 

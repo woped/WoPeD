@@ -429,5 +429,20 @@ public interface IGeneralConfiguration extends IConfiguration {
 
 	public boolean getApromoreUse();
 	
-	public boolean getRegistration();
+	public boolean isRegistered();
+	
+	public void setRegistered(boolean selected);
+	
+	public boolean isShowOnStartup();
+	
+	public void setShowOnStartup(boolean selected);
+	
+	public String getRegistrationEmail();
+	
+	public void setRegistrationEmail(String address);
+	
+	public int getLaunchCounter();
+	
+	public void setLaunchCounter(int value);
+	
 }

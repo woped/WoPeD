@@ -280,11 +280,11 @@ public abstract class AbstractViewEvent extends ActionEvent
     
     public static final int VIEWEVENT_LAST            = 1094;
     
-    public static final int REGISTRATION			  = 1095;
-    public static final int FACEBOOK     			  = 1095;
-    public static final int GOOGLEPLUS  			  = 1095;
-    public static final int TWITTER     			  = 1095;
-    public static final int COMMUNITY     			  = 1095;
+    public static final int REGISTER				  = 1095;
+    public static final int FACEBOOK     			  = 1096;
+    public static final int GOOGLEPLUS  			  = 1097;
+    public static final int TWITTER     			  = 1098;
+    public static final int COMMUNITY     			  = 1099;
     
     
     //variable to change toolbars and references

@@ -135,8 +135,10 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     private int					  defaultcolor15			 	= -10053121;
     private int					  defaultcolor16			 	= -16751104;
     private Color[]               defaultUnderstandColorArray	= new Color[16];
-    //Registration
-    private boolean				  isRegistered					= false;
+    private boolean				  registered					= false;
+	private boolean 			  showOnStartup;
+	private String 				  registrationEmail;
+	private int 				  launchCounter;
     
     
     public DefaultStaticConfiguration()
@@ -915,7 +917,42 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
 	}
 	
 	@Override
-	public boolean getRegistration() {
-		return isRegistered;
+	public boolean isRegistered() {
+		return registered;
+	}
+	
+	@Override
+	public void setRegistered(boolean selected) {
+		registered = selected;
+	}
+
+	@Override
+	public boolean isShowOnStartup() {
+		return showOnStartup;
+	}
+
+	@Override
+	public void setShowOnStartup(boolean selected) {
+		showOnStartup = selected;
+	}
+
+	@Override
+	public String getRegistrationEmail() {
+		return registrationEmail;
+	}
+
+	@Override
+	public void setRegistrationEmail(String address) {
+		registrationEmail = address;
+	}
+
+	@Override
+	public int getLaunchCounter() {
+		return launchCounter;
+	}
+
+	@Override
+	public void setLaunchCounter(int value) {
+		launchCounter = value;
 	}
 }

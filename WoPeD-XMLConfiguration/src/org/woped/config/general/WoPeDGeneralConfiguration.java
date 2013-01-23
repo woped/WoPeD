@@ -22,6 +22,7 @@ import org.woped.config.metrics.WoPeDMetricsConfiguration;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.translations.Messages;
 
 /**
  * Class that provides access to the general WoPeD configuration settings. 
@@ -85,7 +86,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	 */
 	public boolean readConfig() {
 		boolean confOk = true;
-		File f;
 		String fn = "";
 
 		fn = getConfigFilePath();
@@ -256,6 +256,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
 			// Coloring
 			setColorOn(config.getColoring().getColorOn());
+			
+			setRegistered(config.getRegistration().getRegistered());
 
 			LoggerManager.info(Constants.CONFIG_LOGGER,
 					rb.getString("Init.Config.LoadingSuccess") + ".");
@@ -292,14 +294,15 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 			getConfDocument().getConfiguration().getGeneral().setCurrentWorkingdir(currentWorkingdir);
 			
 			if (getConfDocument().getConfiguration().getRegistration() != null) {
-				int n = getConfDocument().getConfiguration().getRegistration().getCounter();
-				getConfDocument().getConfiguration().getRegistration().setCounter(n+1);
+				int n = getConfDocument().getConfiguration().getRegistration().getLaunchCounter();
+				getConfDocument().getConfiguration().getRegistration().setLaunchCounter(n+1);
 			}
 			else {
 				Registration reg = Registration.Factory.newInstance();
-				reg.setEmailaddress("");
-				reg.setDisabled(false);
-				reg.setCounter(0);
+				reg.setEmailAddress("");
+				reg.setShowOnStartup(true);
+				reg.setRegistered(false);
+				reg.setLaunchCounter(0);
 				getConfDocument().getConfiguration().setRegistration(reg);			
 			}
 				
@@ -841,7 +844,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	public void setLocale() {
 		this.locale = new Locale(getLocaleLanguage(), getLocaleCountry(), getLocaleVariant());
 		Locale.setDefault(this.locale);
-		LoggerManager.info(Constants.CONFIG_LOGGER,"Setting Locale to " + this.locale);
+		LoggerManager.info(Constants.CONFIG_LOGGER, 
+						  (this.locale.equals(Locale.GERMANY) ? "Setze Locale auf " : "Setting Locale to ") + this.locale);
 	}
 
 	public Locale getLocale() {
@@ -1287,39 +1291,68 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
 	@Override
 	public void setApromoreServerPort(int port) {
-		getConfDocument().getConfiguration().getTools()
-		.setAproServerPort(port);
+		getConfDocument().getConfiguration().getTools().setAproServerPort(port);
 		
 	}
 
 	@Override
 	public void setApromoreUseProxy(boolean set) {
-		getConfDocument().getConfiguration().getTools()
-		.setAproUseProxy(set);
+		getConfDocument().getConfiguration().getTools().setAproUseProxy(set);
 
 		
 	}
 
 	@Override
 	public void setApromoreUse(boolean selected) {
-		getConfDocument().getConfiguration().getTools()
-		.setAproUse(selected);
+		getConfDocument().getConfiguration().getTools().setAproUse(selected);
 
 	}
 	
 	@Override
 	public boolean getApromoreUse() {
-		if (getConfDocument().getConfiguration().getTools()
-				.isSetAproUse())
-			return getConfDocument().getConfiguration().getTools()
-					.getAproUse();
+		if (getConfDocument().getConfiguration().getTools().isSetAproUse())
+			return getConfDocument().getConfiguration().getTools().getAproUse();
 		else
-			return ConfigurationManager.getStandardConfiguration()
-					.getApromoreUse(); 
+			return ConfigurationManager.getStandardConfiguration().getApromoreUse(); 
 	}
 	
-	public boolean getRegistration() {
-		//return  getConfDocument().getConfiguration().getGui().getWindow().getRegistration();
-		return ConfigurationManager.getStandardConfiguration().getRegistration();
+	@Override
+	public boolean isRegistered() {
+		return getConfDocument().getConfiguration().getRegistration().getRegistered();
+	}
+	
+	@Override
+	public void setRegistered(boolean b) {
+		getConfDocument().getConfiguration().getRegistration().setRegistered(b);
+	}
+
+	@Override
+	public boolean isShowOnStartup() {
+		return getConfDocument().getConfiguration().getRegistration().getShowOnStartup();
+	}
+
+	@Override
+	public void setShowOnStartup(boolean selected) {
+		getConfDocument().getConfiguration().getRegistration().setShowOnStartup(selected);
+	}
+
+	@Override
+	public String getRegistrationEmail() {
+		return getConfDocument().getConfiguration().getRegistration().getEmailAddress();
+	}
+
+	@Override
+	public void setRegistrationEmail(String address) {
+		getConfDocument().getConfiguration().getRegistration().setEmailAddress(address);
+	}
+
+	@Override
+	public int getLaunchCounter() {
+		return getConfDocument().getConfiguration().getRegistration().getLaunchCounter();
+	}
+
+	@Override
+	public void setLaunchCounter(int value) {
+		getConfDocument().getConfiguration().getRegistration().setLaunchCounter(value);
 	}
 }

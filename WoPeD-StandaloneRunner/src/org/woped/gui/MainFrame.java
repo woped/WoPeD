@@ -174,12 +174,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton					twitterButton				= null;
 	private JCommandButton					signUpButton				= null;
 	private JCommandButton					communityButton				= null;
-	
-	private ActionButtonListener			newListener					= null;
-	private ActionButtonListener			tokengameStartListener		= null;
-	private ActionButtonListener			tokengameStartListener1		= null;	
-	private ActionButtonListener			tokengameCloseListener		= null;
-	
+		
 	private JCommandPopupMenu              	m_sampleMenu             	= null;
     private JCommandPopupMenu			   	m_recentMenu				= null;
     
@@ -270,7 +265,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		getRibbon().addTask(getAnalyzeTask());
 		getRibbon().addTask(getViewTask());
 		getRibbon().addTask(getOptionsHelpTask());
-//		getRibbon().addTask(getCommunityTask());
+		getRibbon().addTask(getCommunityTask());
 		getRibbon().addContextualTaskGroup(getTokengameGroup());
 
 		VisualController.getInstance().propertyChange(new PropertyChangeEvent(mediator, "InternalFrameCount", null, null));
@@ -375,9 +370,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getTaskbarButtonTokengame() {		
 		if (taskbarButtonTokengame == null) {
 			taskbarButtonTokengame = new JCommandButton(Messages.getString("Tools.tokengame.text"), new analyze_tokengame());
-			tokengameStartListener1 = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_OPEN_TOKENGAME, AbstractViewEvent.OPEN_TOKENGAME, taskbarButtonTokengame);
+			taskbarButtonTokengame.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_OPEN_TOKENGAME, AbstractViewEvent.OPEN_TOKENGAME, taskbarButtonTokengame));
 			setTooltip(taskbarButtonTokengame, "Tools.tokengame");
-			taskbarButtonTokengame.addActionListener(tokengameStartListener1);
 		}
 		return taskbarButtonTokengame;
 	}
@@ -473,7 +467,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private RibbonTask getCommunityTask() {
 		
 		if(communityTask == null){
-			communityTask = new RibbonTask(Messages.getTitle("Task.Community"), getSocialMediaBand(), getRegistrationBand());	
+			communityTask = new RibbonTask(Messages.getTitle("Task.Community"), getSocialMediaBand() /*, getRegistrationBand()*/);	
 			communityTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(communityTask));
 			
 		}
@@ -744,8 +738,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (newButton == null) {
 			newButton = new JCommandButton(Messages.getString("Document.new.text"), new file_new());
-			newListener = new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_NEW, AbstractViewEvent.NEW, newButton);
-			newButton.addActionListener(newListener);			
+			newButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_NEW, AbstractViewEvent.NEW, newButton));
 			setTooltip(newButton, "Document.new");
 		}
 		
@@ -1315,8 +1308,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (tokengameStartButton == null) {
 			tokengameStartButton = new JCommandButton(Messages.getString("Tools.tokengame.text"), new analyze_tokengame());
-			tokengameStartListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_OPEN_TOKENGAME, AbstractViewEvent.OPEN_TOKENGAME, getTokengameStartButton());
-			tokengameStartButton.addActionListener(tokengameStartListener);
+			tokengameStartButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_OPEN_TOKENGAME, AbstractViewEvent.OPEN_TOKENGAME, tokengameStartButton));
 			setTooltip(tokengameStartButton, "Tools.tokengame");
 		}
 		
@@ -1501,8 +1493,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (tokengameCloseButton == null) {
 			tokengameCloseButton = new JCommandButton(Messages.getString("Tokengame.CloseBand.CloseButton.text"), new tokengame_tokengame_exit());
-			tokengameCloseListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_CLOSE_TOKENGAME, AbstractViewEvent.CLOSE_TOKENGAME, tokengameCloseButton);
-			tokengameCloseButton.addActionListener(tokengameCloseListener);
+			tokengameCloseButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_CLOSE_TOKENGAME, AbstractViewEvent.CLOSE_TOKENGAME, tokengameCloseButton));
 			setTooltip(tokengameCloseButton, "Tokengame.CloseBand.CloseButton");
 		}
 		
@@ -1511,22 +1502,20 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	
 	private JCommandButton getFacebookButton() {
 			
-			if (facebookButton == null) {
-				facebookButton = new JCommandButton(Messages.getString("Community.Facebook.text"), new F_icon());
-				newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_FACEBOOK, AbstractViewEvent.FACEBOOK, facebookButton);
-				facebookButton.addActionListener(newListener);
-				setTooltip(facebookButton, "Community.Facebook");
-			}
-			
-			return facebookButton;
+		if (facebookButton == null) {
+			facebookButton = new JCommandButton(Messages.getString("Community.Facebook.text"), new F_icon());
+			facebookButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_FACEBOOK, AbstractViewEvent.FACEBOOK, facebookButton));
+			setTooltip(facebookButton, "Community.Facebook");
 		}
+			
+		return facebookButton;
+	}
 
 	private JCommandButton getGoogleplusButton() {
 		
 		if (googleplusButton == null) {
 			googleplusButton = new JCommandButton(Messages.getString("Community.Googleplus.text"), new Google_plus_icon());
-			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS, googleplusButton);
-			googleplusButton.addActionListener(newListener);
+			googleplusButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS, googleplusButton));
 			setTooltip(googleplusButton, "Community.Googleplus");
 		}
 		
@@ -1537,8 +1526,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (twitterButton == null) {
 			twitterButton = new JCommandButton(Messages.getString("Community.Twitter.text"), new Twitter_icon());
-			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TWITTER, AbstractViewEvent.TWITTER, twitterButton);
-			twitterButton.addActionListener(newListener);
+			twitterButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TWITTER, AbstractViewEvent.TWITTER, twitterButton));
 			setTooltip(twitterButton, "Community.Twitter");
 		}
 		
@@ -1549,8 +1537,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (signUpButton == null) {
 			signUpButton = new JCommandButton(Messages.getString("Community.Register.text"), new Up());
-			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REGISTRATION, AbstractViewEvent.REGISTRATION, signUpButton);
-			signUpButton.addActionListener(newListener);
+			signUpButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REGISTER, AbstractViewEvent.REGISTER, signUpButton));
 			setTooltip(signUpButton, "Community.Register");
 		}
 		
@@ -1561,8 +1548,7 @@ private JCommandButton getCommunityButton() {
 		
 		if (communityButton == null) {
 			communityButton = new JCommandButton(Messages.getString("Community.Community.text"), new CommunityButton());
-			newListener = new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REGISTRATION, AbstractViewEvent.REGISTRATION, communityButton);
-			communityButton.addActionListener(newListener);
+			communityButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_COMMUNITY, AbstractViewEvent.COMMUNITY, communityButton));
 			setTooltip(communityButton, "Community.Community");
 		}
 		

@@ -126,7 +126,7 @@ public class ActionFactory
     public final static String         ACTIONID_QUANTSIM               = "ToolBar.QuantSim";
     public final static String         ACTIONID_REACHGRAPH_START       = "ToolBar.ReachabilityGraph";  
     
-    public final static String         ACTIONID_REGISTRATION		   = "Action.Registration";   
+    public final static String         ACTIONID_REGISTER			   = "Action.Register";   
     public final static String		   ACTIONID_FACEBOOK			   = "Action.Facebook";
     public final static String		   ACTIONID_GOOGLEPLUS			   = "Action.Googleplus";
     public final static String		   ACTIONID_TWITTER  			   = "Action.Twitter";
@@ -524,7 +524,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_SHOWTREEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.SHOWTREEVIEW, null, ACTIONID_SHOWTREEVIEW));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SHOWTREEVIEW), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.TREEVIEW_VISIBLE);
 
-        STATIC_ACTION_MAP.put(ACTIONID_REGISTRATION, 	new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.REGISTRATION, 	null, ACTIONID_REGISTRATION));
+        STATIC_ACTION_MAP.put(ACTIONID_REGISTER, 	new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.REGISTER, 	null, ACTIONID_REGISTER));
 
         STATIC_ACTION_MAP.put(ACTIONID_FACEBOOK, 		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.FACEBOOK, 		null, ACTIONID_FACEBOOK));
         
@@ -533,7 +533,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_TWITTER, 		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.TWITTER, 		null, ACTIONID_TWITTER));
         
         STATIC_ACTION_MAP.put(ACTIONID_COMMUNITY, 		new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.COMMUNITY, 		null, ACTIONID_COMMUNITY));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COMMUNITY), VisualController.IS_REGISTERED, VisualController.IS_REGISTERED, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COMMUNITY), VisualController.IS_REGISTERED, VisualController.IGNORE, VisualController.IGNORE);
         
         return STATIC_ACTION_MAP;
     }

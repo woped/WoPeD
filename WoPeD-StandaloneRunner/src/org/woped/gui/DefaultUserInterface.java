@@ -112,12 +112,12 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         toolPanel.setPreferredSize(new Dimension(100, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
        
-        if (!ConfigurationManager.getConfiguration().getRegistration()) {
-        	new RegistrationUI().setVisible(true);
+ /*       if (!ConfigurationManager.getConfiguration().isRegistered()) {
+        	new RegistrationUI(this).setVisible(true);
         }
-        else {
+        else {*/
         	new SplashWindow(this);
-        }
+//        }
 
         //Helper for adding Tokengame
         //see Java-Doc for explanation

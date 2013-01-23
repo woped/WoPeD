@@ -453,6 +453,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	{
 		if (isActive())
 		{
+			checkRegistration();
 			if ("InternalFrameCount".equals(arg0.getPropertyName()))
 			{
 				checkActiveEditor();
@@ -848,9 +849,9 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		setStatus(ROTATE, rotateActive);
 	}
 		
-	protected void checkRegistration()
-	{
-//		setStatus(IS_REGISTERED, am.);
+	protected void checkRegistration() {
+		boolean isRegistered = ConfigurationManager.getConfiguration().isRegistered();
+		setStatus(IS_REGISTERED, isRegistered);
 	}
 
 	public void notify(boolean isEmpty)
