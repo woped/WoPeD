@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.controller.vc.StatusBarVC;
-import org.woped.gui.icons.logo_woped;
+import org.woped.gui.icons.woped;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.translations.Messages;
 
@@ -70,9 +71,9 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         desktop.setBackground(DefaultStaticConfiguration.DEFAULT_UI_BACKGROUND_COLOR);
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
         propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
-        setIconImage(Messages.getImageIcon("Application").getImage());
         setTitle("WoPeD " + Messages.getString("Application.Version"));
-		setApplicationIcon(new logo_woped());
+        setIconImage(Messages.getImageIcon("Application").getImage());
+		setApplicationIcon(new woped());
         setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(),
                 (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -112,12 +113,17 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         toolPanel.setPreferredSize(new Dimension(100, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
        
- /*       if (!ConfigurationManager.getConfiguration().isRegistered()) {
-        	new RegistrationUI(this).setVisible(true);
+		VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "Registration", null, null));
+
+		if (!ConfigurationManager.getConfiguration().isRegistered() && 
+        		ConfigurationManager.getConfiguration().isShowOnStartup() &&
+        		(ConfigurationManager.getConfiguration().getLaunchCounter() < 10 | 
+        				(ConfigurationManager.getConfiguration().getLaunchCounter() % 5) == 3)) {
+        	new RegistrationUI(this, true);
         }
-        else {*/
+        else {
         	new SplashWindow(this);
-//        }
+        }
 
         //Helper for adding Tokengame
         //see Java-Doc for explanation

@@ -453,7 +453,10 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	{
 		if (isActive())
 		{
-			checkRegistration();
+			if ("Registration".equals(arg0.getPropertyName())) {
+				checkRegistration();
+			}
+			
 			if ("InternalFrameCount".equals(arg0.getPropertyName()))
 			{
 				checkActiveEditor();

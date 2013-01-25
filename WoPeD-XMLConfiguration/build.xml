@@ -1,6 +1,6 @@
 <project default="makejar" name="XMLCONFIGURATION">
 
-	<property file="../CommonLibs/build.properties" />
+	<property file="../WoPeD-CommonLibs/build.properties" />
 	
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
 
@@ -10,8 +10,8 @@
 				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-Translations/lib/woped-translations-${TRANSLATIONVERSION}${SNAPSHOT}.jar" />
-				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
-				<pathelement path="../CommonLibs/lib/xmlbeans-${XMLBEANSVERSION}.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/xmlbeans-${XMLBEANSVERSION}.jar" />
 				<pathelement path="lib/confBeans.jar" />
 				<pathelement path="lib/metricsBeans.jar" />
 			</classpath>
@@ -34,13 +34,13 @@
 		<delete file="lib/metricsBeans.jar" />
 	</target>
 
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
 	<!-- Please do not run this unless you really know what you're doing -->
 	<target name="generateXMLBeans" unless="ConfigBeansUpToDate, MetricsBeansUpToDate">
 		<echo message="Compiling the config schema..." />
-		<xmlbean schema="src/org/woped/config/general/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="../CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+		<xmlbean schema="src/org/woped/config/general/configuration.xsd" destfile="lib/confBeans.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
 		<echo message="Compiling the metrics schema..." />
-		<xmlbean schema="src/org/woped/config/metrics/metrics.xsd" destfile="lib/metricsBeans.jar" debug="on" classpath="../CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+		<xmlbean schema="src/org/woped/config/metrics/metrics.xsd" destfile="lib/metricsBeans.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
 	</target>
 	
 	<uptodate property="ConfigBeansUpToDate" srcfile="src/org/woped/config/general/configuration.xsd" targetfile="lib/confBeans.jar"/>

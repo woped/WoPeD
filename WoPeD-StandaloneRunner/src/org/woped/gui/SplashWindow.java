@@ -90,6 +90,7 @@ public class SplashWindow extends JWindow
     private JLabel       copyrightLabel = null;
     private Timer        timer          = null;
     private boolean      closed         = false;
+    private JFrame		 parent			= null;
 
     /**
      * TODO: DOCUMENTATION (xraven)
@@ -99,6 +100,7 @@ public class SplashWindow extends JWindow
     public SplashWindow(JFrame owner)
     {
         super(owner);
+        parent = owner;
         initialize();
     }
 
@@ -149,6 +151,7 @@ public class SplashWindow extends JWindow
 	    	timer.stop();
 	        setVisible(false);
 	        dispose();
+	        parent.setState(JFrame.NORMAL);
     	}
     }
 

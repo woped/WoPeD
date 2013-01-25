@@ -1,6 +1,6 @@
 <project default="makejar" name="ProcessMetrics">
 
-	<property file="../CommonLibs/build.properties" />
+	<property file="../WoPeD-CommonLibs/build.properties" />
 
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="antlrworksversion" value="${ANTLRWORKSVERSION}" />
@@ -12,9 +12,9 @@
 				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-Translations/lib/woped-translations-${TRANSLATIONVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-QualAnalysis/lib/woped-qualana-${QUALANAVERSION}${SNAPSHOT}.jar" />
-				<pathelement path="../CommonLibs/lib/jbpt.jar" />
-				<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-				<pathelement path="../CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/jbpt.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
 			</classpath>
 		</javac>
 	</target>

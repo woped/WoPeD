@@ -34,7 +34,6 @@ import javax.swing.UIManager;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
@@ -156,6 +155,8 @@ public class RunWoPeD extends JFrame {
 
 			System.setProperty("apple.laf.useScreenMenuBar", "true");
 			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WoPeD");
+//			Application application = Application.getApplication();
+//			application.setDockIconImage(Toolkit.getDefaultToolkit().getImage("/org/woped/gui/icons/woped.png"));
 		}
 
 		// Set some fonts to make WoPeD look better on Mac and Linux

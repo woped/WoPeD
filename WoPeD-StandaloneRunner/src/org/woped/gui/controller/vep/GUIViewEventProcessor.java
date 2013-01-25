@@ -192,19 +192,19 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         case AbstractViewEvent.ZOOMED:
             break;
         case AbstractViewEvent.FACEBOOK:
-        	new LaunchDefaultBrowserAction("http://www.facebook.com/WorkflowPetriNetDesigner", null).displayURL();
+        	new LaunchDefaultBrowserAction(Messages.getString("Community.Facebook.link"), null).displayURL();
             break;
         case AbstractViewEvent.TWITTER:
-        	new LaunchDefaultBrowserAction("http://twitter.com/WoPeD_WPND", null).displayURL();
+        	new LaunchDefaultBrowserAction(Messages.getString("Community.Twitter.link"), null).displayURL();
             break;
         case AbstractViewEvent.GOOGLEPLUS:
-        	new LaunchDefaultBrowserAction("http://plus.google.com/u/0/114590102000896134066", null).displayURL();
+        	new LaunchDefaultBrowserAction(Messages.getString("Community.Googleplus.link"), null).displayURL();
             break;
         case AbstractViewEvent.COMMUNITY:
-        	new LaunchDefaultBrowserAction("http://www.woped.org", null).displayURL();
+        	new LaunchDefaultBrowserAction(Messages.getString("Community.Community.link"), null).displayURL();
             break;
     	case AbstractViewEvent.REGISTER:
-    		new RegistrationUI((JFrame) getMediator().getUi()).setVisible(true);
+    		new RegistrationUI((JFrame) getMediator().getUi(), false);
     		break;
 		}
 	}

@@ -467,7 +467,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private RibbonTask getCommunityTask() {
 		
 		if(communityTask == null){
-			communityTask = new RibbonTask(Messages.getTitle("Task.Community"), getSocialMediaBand() /*, getRegistrationBand()*/);	
+			communityTask = new RibbonTask(Messages.getTitle("Task.Community"), getSocialMediaBand(), getRegistrationBand());	
 			communityTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(communityTask));
 			
 		}
@@ -1547,7 +1547,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 private JCommandButton getCommunityButton() {
 		
 		if (communityButton == null) {
-			communityButton = new JCommandButton(Messages.getString("Community.Community.text"), new CommunityButton());
+			communityButton = new JCommandButton(Messages.getString("Community.Community.text"), new woped_community());
 			communityButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_COMMUNITY, AbstractViewEvent.COMMUNITY, communityButton));
 			setTooltip(communityButton, "Community.Community");
 		}

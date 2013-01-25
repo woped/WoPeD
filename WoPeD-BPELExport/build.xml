@@ -1,6 +1,6 @@
 <project default="makejar" name="BPELExport">
 
-	<property file="../CommonLibs/build.properties" />
+	<property file="../WoPeD-CommonLibs/build.properties" />
 
 	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
 	<filter token="log4jversion" value="${LOG4JVERSION}" />
@@ -8,9 +8,9 @@
 	<target name="compile" depends="generateBPELXMLBeans">
 		<javac srcdir="src" destdir="bin" compiler="extJavac" includeantruntime="false">
 			<classpath>
-				<pathelement path="../CommonLibs/lib/xmlbeans-${XMLBEANSVERSION}.jar" />
-				<pathelement path="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
-				<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/xmlbeans-${XMLBEANSVERSION}.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}${SNAPSHOT}.jar" />
 				<pathelement path="../WoPeD-Translations/lib/woped-translations-${TRANSLATIONVERSION}${SNAPSHOT}.jar" />
@@ -40,10 +40,10 @@
 	</target>
 
 	<!-- Please do not run this unless you really know what you're doing -->
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
 	<target name="generateBPELXMLBeans" unless="BPELBeansUpToDate">
 		<echo message="Compiling the BPEL schema..." />
-		<xmlbean schema="src/org/woped/bpel/xml/ws-bpel_executable.xsd" destfile="lib/bpelBeans.jar" debug="on" classpath="../CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+		<xmlbean schema="src/org/woped/bpel/xml/ws-bpel_executable.xsd" destfile="lib/bpelBeans.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
 	</target>
 	<uptodate property="BPELBeansUpToDate" srcfile="src/org/woped/bpel/xml/ws-bpel_executable.xsd" targetfile="lib/bpelBeans.jar" />
 

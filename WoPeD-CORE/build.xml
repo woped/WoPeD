@@ -1,11 +1,11 @@
 <project default="makejar" name="CORE" >
 
-	<property file="../CommonLibs/build.properties" />
+	<property file="../WoPeD-CommonLibs/build.properties" />
 
 	<target name="compile">
 		<javac srcdir="src" destdir="bin" compiler="extJavac" includeantruntime="false">
 			<classpath>
-				<pathelement path="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+				<pathelement path="../WoPeD-CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
 			</classpath>
 		</javac>
 	</target>
