@@ -43,7 +43,7 @@
 	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
 	<target name="generateBPELXMLBeans" unless="BPELBeansUpToDate">
 		<echo message="Compiling the BPEL schema..." />
-		<xmlbean schema="src/org/woped/bpel/xml/ws-bpel_executable.xsd" destfile="lib/bpelBeans.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+		<xmlbean schema="src/org/woped/bpel/xml/ws-bpel_executable.xsd" destfile="lib/bpelBeans.jar" debug="on" classpath="lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
 	</target>
 	<uptodate property="BPELBeansUpToDate" srcfile="src/org/woped/bpel/xml/ws-bpel_executable.xsd" targetfile="lib/bpelBeans.jar" />
 

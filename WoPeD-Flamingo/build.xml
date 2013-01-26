@@ -1,0 +1,27 @@
+<project default="makejar" name="Flamingo">
+
+	<property file="../WoPeD-CommonLibs/build.properties" />
+
+	<target name="compile">
+		<javac srcdir="src" destdir="bin" compiler="extJavac" includeantruntime="false">
+			<classpath>
+				<pathelement path="../WoPeD-CommonLibs/lib/trident-${TRIDENTVERSION}.jar" />
+			</classpath>
+		</javac>
+
+	</target>
+	
+	<target name="makejar" depends="compile">
+		<delete>
+			<fileset file="lib/woped-flamingo-${FLAMINGOVERSION}.jar" />
+		</delete>
+		<jar destfile="lib/woped-flamingo-${FLAMINGOVERSION}.jar">
+			<fileset dir="bin" />
+		</jar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="bin/org" />
+	</target>
+
+</project>
