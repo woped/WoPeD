@@ -38,7 +38,7 @@
 		<res id="Installer.image.5" src="izpack/installPanel.png" />
 		<res id="Installer.image.6" src="izpack/shortcutPanel.png" />
 		<res id="Installer.image.7" src="izpack/finishPanel.png" />
-		<res id="installer.langsel.img" src="woped-logo.jpg" />
+		<res id="installer.langsel.img" src="WoPeD-logo.jpg" />
 		<res id="packsLang.xml_eng" src="install-eng.xml" />
 		<res id="packsLang.xml_deu" src="install-deu.xml" />
 		<res id="Unix_shortcutSpec.xml" src="shortcut-linux.xml" />
@@ -87,17 +87,6 @@
 		<panel classname="SimpleFinishPanel"></panel>
 	</panels>
 	
-	<conditions>
-		<condition type="variable" id="IsGerman">
-  			<name>ISO3_LANG</name>
- 	 		<value>deu</value>
-		</condition>
-		<condition type="variable" id="IsEnglish">
-  			<name>ISO3_LANG</name>
- 	 		<value>eng</value>
-		</condition>
-	</conditions>
-	
 	<packs>
 		<pack name="Executable" required="yes">
 			<description>Executable files</description>
@@ -115,7 +104,7 @@
 				<os family="unix" />
 			</executable>
 
-			<file src="woped-icon16.png" targetdir="$INSTALL_PATH">
+			<file src="WoPeD.png" targetdir="$INSTALL_PATH">
 				<os family="unix" />
 			</file>
 						
@@ -127,8 +116,7 @@
 			<file src="License.txt" targetdir="$INSTALL_PATH" />
 			<file src="Changelog.txt" targetdir="$INSTALL_PATH" />
 			<file src="WoPeD-classes-@wopedversion@.jar" targetdir="$INSTALL_PATH" />			
-			<file src="lib/antlrworks-@antlrworksversion@.jar" targetdir="$INSTALL_PATH/lib" />		
-			<file src="lib/flamingo-@flamingoversion@.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="lib/antlrworks-@antlrworksversion@.jar" targetdir="$INSTALL_PATH/lib" />					
 			<file src="lib/flanagan-@flanaganversion@.jar" targetdir="$INSTALL_PATH/lib" />
 			<file src="lib/jbpt-@jbptversion@.jar" targetdir="$INSTALL_PATH/lib" />
 			<file src="lib/jcalendar-@jcalendarversion@.jar" targetdir="$INSTALL_PATH/lib" />

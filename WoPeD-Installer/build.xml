@@ -1,7 +1,7 @@
 <project default="makedistribution" name="INSTALLER">
 	   
 	<tstamp />
-	<property file="../CommonLibs/build.properties" />
+	<property file="../WoPeD-CommonLibs/build.properties" />
 
 	<filter token="antlrworksversion" value="${ANTLRWORKSVERSION}" />
 	<filter token="batikversion" value="${BATIKVERSION}" />
@@ -92,24 +92,23 @@
 				<include name="RunWoPeD*.class" />
 			</fileset>
 		</copy>
-		<copy todir="dist/lib" file="../CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/flamingo-${FLAMINGOVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jbpt-${JBPTVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jgraphx-${JGRAPHXVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/jsr-${JSRVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/mysqlconnector-${MYSQLCONNECTORVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/ssj-${SSJVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/stax-${STAXVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/tablelayout-${TABLELAYOUTVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/trident-${TRIDENTVERSION}.jar" />
-		<copy todir="dist/lib" file="../CommonLibs/lib/xmlbeans-${XMLBEANSVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jbpt-${JBPTVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jfreechart-${JFREECHARTVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jgraphx-${JGRAPHXVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jsr-${JSRVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/mysqlconnector-${MYSQLCONNECTORVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ruddi-${RUDDIVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ssj-${SSJVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/stax-${STAXVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/tablelayout-${TABLELAYOUTVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/trident-${TRIDENTVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/xmlbeans-${XMLBEANSVERSION}.jar" />
 
 		<copy todir="dist/doc/pdf/en">
 			<fileset file="../WoPeD-StandaloneRunner/doc/pdf/en/*.pdf" />
@@ -191,6 +190,7 @@
 		<ant antfile="../WoPeD-BPELExport/build.xml" dir="../WoPeD-BPELExport" />
 		<ant antfile="../WoPeD-Editor/build.xml" dir="../WoPeD-Editor" />
 		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
+		<ant antfile="../WoPeD-Flamingo/build.xml" dir="../WoPeD-Flamingo" />
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
 		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
 		<ant antfile="../WoPeD-QuantAnalysis/build.xml" dir="../WoPeD-QuantAnalysis" />
@@ -205,6 +205,7 @@
 			<fileset dir="../WoPeD-CORE/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
+			<fileset dir="../WoPeD-Flamingo/bin" />
 			<fileset dir="../WoPeD-ProcessMetrics/bin" />
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
@@ -286,7 +287,7 @@
 		    	        name="WoPeD"
 		        	    shortname="WoPeD"
 		            	mainclass="org.woped.gui.RunWoPeD"
-		            	icon="dist/woped.icns"
+		            	icon="dist/WoPeD.icns"
 		            	jvmversion="1.6+"
 		            	version="${WOPEDVERSION}${SNAPSHOT}"
 		            	infostring="WoPeD copyright 2013"
@@ -304,7 +305,7 @@
 		
 				<documenttype name="PNML document"
 		                    extensions="pnml" 
-		                    iconFile="dist/woped-document.icns"
+		                    iconFile="dist/WoPeD-document.icns"
 		                    role="Editor"/>
 			</jarbundler>
 			
