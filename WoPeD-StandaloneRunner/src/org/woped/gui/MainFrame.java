@@ -1536,7 +1536,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getSignUpButton() {
 		
 		if (signUpButton == null) {
-			signUpButton = new JCommandButton(Messages.getString("Community.Register.text"), new Up());
+			signUpButton = new JCommandButton(Messages.getString("Community.Register.text"), new register());
 			signUpButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REGISTER, AbstractViewEvent.REGISTER, signUpButton));
 			setTooltip(signUpButton, "Community.Register");
 		}
