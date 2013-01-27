@@ -1,59 +1,21 @@
-<project default="makejar" name="FileInterface">
+<project default="updateProject" name="FileInterface">
 
 	<property file="../WoPeD-CommonLibs/build.properties" />
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+	<uptodate property="PNMLBeansUpToDate" srcfile="src/org/woped/file/pnml_wf.xsd" targetfile="../WoPeD-CommonLibs/lib/pnmlBeans.jar"/>
 
-	<filter token="jgraphversion" value="${JGRAPHVERSION}" />
-	<filter token="log4jversion" value="${LOG4JVERSION}" />
-
-	<target name="compile" depends="generateOldPnmlXMLBeans">
-		<javac srcdir="src" destdir="bin" compiler="extJavac" includeantruntime="false">
-			<classpath>
-				<pathelement path="../WoPeD-CommonLibs/lib/xmlbeans-${XMLBEANSVERSION}.jar" />
-				<pathelement path="../WoPeD-CommonLibs/lib/log4j-${LOG4JVERSION}.jar" />
-				<pathelement path="../WoPeD-CommonLibs/lib/jgraph-${JGRAPHVERSION}.jar" />
-				<pathelement path="../WoPeD-CORE/lib/woped-core-${COREVERSION}${SNAPSHOT}.jar" />
-				<pathelement path="../WoPeD-Editor/lib/woped-editor-${EDITORVERSION}${SNAPSHOT}.jar" />
-				<pathelement path="../WoPeD-QualAnalysis/lib/woped-qualana-${QUALANAVERSION}${SNAPSHOT}.jar" />
-				<pathelement path="../WoPeD-QuantAnalysis/lib/woped-quantana-${QUANTANAVERSION}${SNAPSHOT}.jar" />
-				<pathelement path="../WoPeD-Translations/lib/woped-translations-${TRANSLATIONVERSION}${SNAPSHOT}.jar" />
-				<pathelement path="lib/pnmlBeans.jar" />
-				<pathelement path="lib/pnmlBeans_old.jar" />
-			</classpath>
-		</javac>
+	<target name="updateProject" depends="copysamples, updatePNMLbeans" />
+	
+	<target name="copysamples" depends="updatePNMLbeans">
 		<copy todir="bin/org/woped/file/samples">
 			<fileset dir="src/org/woped/file/samples"/>
 		</copy>
 	</target>
 	
-	<target name="makejar" depends="compile">
-		<delete>
-			<fileset file="lib/woped*.jar" />
-		</delete>
-		<jar destfile="lib/woped-fileinterface-${FILEINTERFACEVERSION}${SNAPSHOT}.jar">
-			<fileset dir="bin" />
-			<fileset dir="lib" file="lib/pnmlBeans.jar" />
-			<fileset dir="lib" file="lib/pnmlBeans_old.jar" />
-		</jar>
-	</target>
-	
-	<target name="cleanup" depends="makejar">
-		<delete file="./lib/pnmlBeans.jar" />
-		<delete file="./lib/pnmlBeans_old.jar" />
-	</target>
-	
-	<!-- Please do not run this unless you really know what you're doing -->
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
-	<target name="generatePnmlXMLBeans" unless="PNMLBeansUpToDate">
+	<target name="updatePNMLbeans" unless="PNMLBeansUpToDate">
 		<echo message="Compiling the PNML schema..." />
-		<xmlbean schema="src/org/woped/file/pnml_wf.xsd" destfile="lib/pnmlBeans.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+		<xmlbean schema="src/org/woped/file/pnml_wf.xsd" destfile="../WoPeD-CommonLibs/lib/pnmlBeans.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
 	</target>
-	<uptodate property="PNMLBeansUpToDate" srcfile="src/org/woped/file/pnml_wf.xsd" targetfile="lib/pnmlBeans.jar"/>
-	
-	<target name="generateOldPnmlXMLBeans" depends="generatePnmlXMLBeans" unless="PNMLBeans_oldUpToDate">
-		<echo message="Compiling the old PNML schema..." />
-		<xmlbean schema="src/org/woped/file/pnml_wf_old.xsd" destfile="lib/pnmlBeans_old.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
-	</target>
-	<uptodate property="PNMLBeans_oldUpToDate" srcfile="src/org/woped/file/pnml_wf_old.xsd" targetfile="lib/pnmlBeans_old.jar"/>
 	
 	<target name="clean">
 		<delete dir="bin/org" />

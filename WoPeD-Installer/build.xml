@@ -25,17 +25,6 @@
 	<filter token="tridentversion" value="${TRIDENTVERSION}" />
 	<filter token="w3cversion" value="${W3CVERSION}" />
 	<filter token="xmlbeansversion" value="${XMLBEANSVERSION}" />
-	<filter token="appletversion" value="${APPLETVERSION}${SNAPSHOT}" />
-	<filter token="bpelexportversion" value="${BPELEXPORTVERSION}${SNAPSHOT}" />
-	<filter token="coreversion" value="${COREVERSION}${SNAPSHOT}" />
-	<filter token="editorversion" value="${EDITORVERSION}${SNAPSHOT}" />
-	<filter token="fileinterfaceversion" value="${FILEINTERFACEVERSION}${SNAPSHOT}" />
-	<filter token="processmetricsversion" value="${PROCESSMETRICSVERSION}${SNAPSHOT}" />
-	<filter token="qualanaversion" value="${QUALANAVERSION}${SNAPSHOT}" />
-	<filter token="quantanaversion" value="${QUANTANAVERSION}${SNAPSHOT}" />
-	<filter token="standalonerunnerversion" value="${STANDALONERUNNERVERSION}${SNAPSHOT}" />
-	<filter token="translationversion" value="${TRANSLATIONVERSION}${SNAPSHOT}" />
-	<filter token="xmlconfigurationversion" value="${XMLCONFIGURATIONVERSION}${SNAPSHOT}" />
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
@@ -82,11 +71,6 @@
 
 	<target name="copyfiles">
 		<copy todir="dist/nets" file="build-tools/Example.pnml" />
-		<copy todir="dist/lib" file="../WoPeD-BPELExport/lib/bpelBeans.jar" />
-		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans.jar" />
-		<copy todir="dist/lib" file="../WoPeD-FileInterface/lib/pnmlBeans_old.jar" />
-		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/confBeans.jar" />
-		<copy todir="dist/lib" file="../WoPeD-XMLConfiguration/lib/metricsBeans.jar" />
 		<copy todir="dist/run/org/woped/gui">
 			<fileset dir="../WoPeD-StandaloneRunner/bin/org/woped/gui">
 				<include name="RunWoPeD*.class" />
@@ -94,6 +78,7 @@
 		</copy>
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/flamingo-${FLAMINGOVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jbpt-${JBPTVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
@@ -109,6 +94,10 @@
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/tablelayout-${TABLELAYOUTVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/trident-${TRIDENTVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/xmlbeans-${XMLBEANSVERSION}.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/bpelBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/pnmlBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/confBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/metricsBeans.jar" />
 
 		<copy todir="dist/doc/pdf/en">
 			<fileset file="../WoPeD-StandaloneRunner/doc/pdf/en/*.pdf" />
@@ -186,17 +175,10 @@
 	</target>
 
 	<target name="makesubprojects">
-		<ant antfile="../WoPeD-CORE/build.xml" dir="../WoPeD-CORE" />
 		<ant antfile="../WoPeD-BPELExport/build.xml" dir="../WoPeD-BPELExport" />
-		<ant antfile="../WoPeD-Editor/build.xml" dir="../WoPeD-Editor" />
 		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
 		<ant antfile="../WoPeD-Flamingo/build.xml" dir="../WoPeD-Flamingo" />
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
-		<ant antfile="../WoPeD-StandaloneRunner/build.xml" dir="../WoPeD-StandaloneRunner" />
-		<ant antfile="../WoPeD-QuantAnalysis/build.xml" dir="../WoPeD-QuantAnalysis" />
-		<ant antfile="../WoPeD-QualAnalysis/build.xml" dir="../WoPeD-QualAnalysis" />
-		<ant antfile="../WoPeD-Translations/build.xml" dir="../WoPeD-Translations" />
-		<ant antfile="../WoPeD-ProcessMetrics/build.xml" dir="../WoPeD-ProcessMetrics" />
 	</target>
 
 	<target name="buildjar">

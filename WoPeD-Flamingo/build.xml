@@ -1,8 +1,14 @@
-<project default="makejar" name="Flamingo">
+<project default="update" name="Flamingo">
 
 	<property file="../WoPeD-CommonLibs/build.properties" />
 
-	<target name="compile">
+	<uptodate property="srcFilesUpToDate" targetfile="../WoPeD-CommonLibs/lib/flamingo-${FLAMINGOVERSION}.jar">
+	    <srcfiles dir="src" includes="**/*.java"/>
+	</uptodate>
+	
+	<target name="update" depends="compile, makejar" />
+	
+	<target name="compile" unless="srcFilesUpToDate">
 		<javac srcdir="src" destdir="bin" compiler="extJavac" includeantruntime="false">
 			<classpath>
 				<pathelement path="../WoPeD-CommonLibs/lib/trident-${TRIDENTVERSION}.jar" />
@@ -11,11 +17,11 @@
 
 	</target>
 	
-	<target name="makejar" depends="compile">
+	<target name="makejar" unless="srcFilesUpToDate">
 		<delete>
-			<fileset file="lib/woped-flamingo-${FLAMINGOVERSION}.jar" />
+			<fileset file="../WoPeD-CommonLibs/lib/flamingo-${FLAMINGOVERSION}.jar" />
 		</delete>
-		<jar destfile="lib/woped-flamingo-${FLAMINGOVERSION}.jar">
+		<jar destfile="../WoPeD-CommonLibs/lib/flamingo-${FLAMINGOVERSION}.jar">
 			<fileset dir="bin" />
 		</jar>
 	</target>

@@ -41,7 +41,6 @@ import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.Constants;
 import org.woped.file.ImageExport;
-import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.gui.ExportFrame;
@@ -529,12 +528,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
         Vector<String> extensions = new Vector<String>();
 
         extensions.add("pnml");
-        extensions.add("xml");
+//        extensions.add("xml");
         // extensions.add("xmi");
-        jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.OLDPNMLFilter,
-                "Petri Net Markup Language older version (*.pnml,*.xml)", extensions));
+/*        jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.OLDPNMLFilter,
+                "Petri Net Markup Language older version (*.pnml)", extensions));*/
         jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.PNMLFilter,
-                "Petri Net Markup Language (1.3.2) (*.pnml,*.xml)", extensions));
+                "Petri Net Markup Language (1.3.2) (*.pnml)", extensions));
         jfc.showOpenDialog(null);
 
         if (jfc.getSelectedFile() != null) {
@@ -566,10 +565,10 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
             pr = new PNMLImport((ApplicationMediator) getMediator());
 
-        } else
+        } /*else
             if (filter == FileFilterImpl.OLDPNMLFilter) {
                 pr = new OLDPNMLImport2((ApplicationMediator) getMediator());
-            } else {
+            } */else {
                 pr = null;
             }
         if (pr != null) {

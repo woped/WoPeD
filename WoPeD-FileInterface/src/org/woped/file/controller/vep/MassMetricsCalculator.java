@@ -14,7 +14,6 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
 import org.woped.editor.controller.ApplicationMediator;
-import org.woped.file.OLDPNMLImport2;
 import org.woped.file.PNMLImport;
 import org.woped.metrics.metricsCalculation.MetricsUIRequestHandler;
 import org.woped.metrics.metricsCalculation.StringPair;
@@ -96,7 +95,7 @@ public class MassMetricsCalculator {
 	        }
 
 	        PNMLImport pr = new PNMLImport(medi);
-	        OLDPNMLImport2 oldpr = new OLDPNMLImport2(medi);
+//	        OLDPNMLImport2 oldpr = new OLDPNMLImport2(medi);
 	        IEditor edit = null;
 	        IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
 			try{
@@ -113,8 +112,8 @@ public class MassMetricsCalculator {
 					write.write(f.getName());
 					if(pr.run(new FileInputStream(f),false))
 						edit = pr.getEditor()[0];
-					else if(oldpr.run(new FileInputStream(f),false))
-						edit = oldpr.getEditor()[0];
+					/*else if(oldpr.run(new FileInputStream(f),false))
+						edit = oldpr.getEditor()[0];*/
 					else continue;
 					MetricsUIRequestHandler ui = new MetricsUIRequestHandler(edit);
 					for(String metric:metricsList){
