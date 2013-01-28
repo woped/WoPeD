@@ -95,10 +95,6 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
         if (getGraph().getSelectionCell() instanceof NameModel)
          	getGraph().clearSelection();
 	    
-        if (SwingUtilities.isRightMouseButton(e) || e.getClickCount() == 2) {
- 	        getEditor().setDrawingMode(false);
- 	    }
-                 
         super.mousePressed(e);
     }
 
@@ -165,17 +161,22 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
      */
 	@Override
 	public void mouseReleased(MouseEvent e) {
-
-		if (e == null)
+		
+		if (e == null) {
 			return;
-
+		}
+		
 		// Undo setting of minimum preferred size during mouse dragging 
 		getGraph().setMinPreferredWidth(0);
 		getGraph().setMinPreferredHeight(0);
 		getEditor().setLastMousePosition(e.getPoint());
 
+        if (SwingUtilities.isRightMouseButton(e) || e.getClickCount() == 2) {
+ 	        getEditor().setDrawingMode(false);
+  	    }
+		
 		// If in drawing mode, create new node at current position
-		if (getEditor().isDrawingMode() && firstPort == null) {
+		if (getEditor().isDrawingMode() && e.getClickCount() != 2 && firstPort == null) {
 			CreationMap map = CreationMap.createMap();
 			if (getEditor().getCreateElementType() > 100 && getEditor().getCreateElementType() < 110) {
 				map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
@@ -201,7 +202,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 		// Handle right mouse button behaviour
 		if (SwingUtilities.isRightMouseButton(e)) {
 
-			if (!getEditor().isDrawingMode()) {
+			if (!getEditor().isDrawingMode() && currentCell != null) {
 				VisualController.getInstance().setArcpointSelection(isArcPoint(e));
 				e.consume();
 				PopupMenuPetrinet.setMediator(mediator);
@@ -209,11 +210,12 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 						(int) (getEditor().getLastMousePosition().getX()),
 						(int) (getEditor().getLastMousePosition().getY()));
 			}
+	                 
 			return;
 		} 
 		else {
 			if (e.getClickCount() == 2) {
-				// Handle single left mouse double click behaviour
+				// Handle left mouse double click behaviour
 				while (currentCell instanceof GroupModel) {
 					currentCell = ((GroupModel) currentCell).getMainElement();
 				}

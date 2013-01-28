@@ -5,7 +5,6 @@
 
 	<filter token="antlrworksversion" value="${ANTLRWORKSVERSION}" />
 	<filter token="batikversion" value="${BATIKVERSION}" />
-	<filter token="flamingoversion" value="${FLAMINGOVERSION}" />
 	<filter token="flanaganversion" value="${FLANAGANVERSION}" />
 	<filter token="jbptversion" value="${JBPTVERSION}" />
 	<filter token="jcalendarversion" value="${JCALENDARVERSION}" />
@@ -78,7 +77,6 @@
 		</copy>
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
-		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/flamingo-${FLAMINGOVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jbpt-${JBPTVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcalendar-${JCALENDARVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcommon-${JCOMMONVERSION}.jar" />
@@ -177,7 +175,6 @@
 	<target name="makesubprojects">
 		<ant antfile="../WoPeD-BPELExport/build.xml" dir="../WoPeD-BPELExport" />
 		<ant antfile="../WoPeD-FileInterface/build.xml" dir="../WoPeD-FileInterface" />
-		<ant antfile="../WoPeD-Flamingo/build.xml" dir="../WoPeD-Flamingo" />
 		<ant antfile="../WoPeD-XMLConfiguration/build.xml" dir="../WoPeD-XMLConfiguration" />
 	</target>
 

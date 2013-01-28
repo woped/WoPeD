@@ -950,5 +950,5 @@ public class PNMLExport
     			LoggerManager.debug(Constants.FILE_LOGGER, "   ... Description (ID:" + row[0] + ") set");
     		}    		
     	}
-    }
+    } 
 }
