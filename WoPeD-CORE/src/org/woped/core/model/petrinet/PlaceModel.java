@@ -55,7 +55,6 @@ public class PlaceModel extends AbstractPetriNetElementModel
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
         setAttributes(attributes);
- //       System.err.println(this.getToolTipText());
     }
 
     /**

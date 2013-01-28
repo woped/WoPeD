@@ -171,12 +171,15 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 		getGraph().setMinPreferredHeight(0);
 		getEditor().setLastMousePosition(e.getPoint());
 
-        if (SwingUtilities.isRightMouseButton(e) || e.getClickCount() == 2) {
- 	        getEditor().setDrawingMode(false);
+        if (getEditor().isDrawingMode() && (SwingUtilities.isRightMouseButton(e) || e.getClickCount() == 2)) {
+        	getEditor().setDrawingMode(false);
+        	if (SwingUtilities.isRightMouseButton(e)) {
+        		return;
+        	} 
   	    }
 		
 		// If in drawing mode, create new node at current position
-		if (getEditor().isDrawingMode() && e.getClickCount() != 2 && firstPort == null) {
+		if (getEditor().isDrawingMode() && firstPort == null) {
 			CreationMap map = CreationMap.createMap();
 			if (getEditor().getCreateElementType() > 100 && getEditor().getCreateElementType() < 110) {
 				map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
@@ -202,7 +205,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 		// Handle right mouse button behaviour
 		if (SwingUtilities.isRightMouseButton(e)) {
 
-			if (!getEditor().isDrawingMode() && currentCell != null) {
+			if (!getEditor().isDrawingMode()) {
 				VisualController.getInstance().setArcpointSelection(isArcPoint(e));
 				e.consume();
 				PopupMenuPetrinet.setMediator(mediator);

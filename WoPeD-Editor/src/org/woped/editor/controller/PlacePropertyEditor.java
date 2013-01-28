@@ -42,6 +42,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.jgraph.graph.DefaultGraphCell;
+import org.woped.core.model.CreationMap;
+import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.translations.Messages;
@@ -367,7 +370,7 @@ public class PlacePropertyEditor extends JDialog
 
     private void apply()
     {
-        // name changing handling
+		// name changing handling
         place.setNameValue(getNameTextField().getText());
         place.setTokens(Integer.valueOf(markingTextField.getText()).intValue());
         getEditor().setSaved(false);
