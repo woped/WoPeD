@@ -139,7 +139,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     {
         if (editor != null)
         {
-        	frame = new DefaultEditorFrame((EditorVC) editor, new EditorOperations((IEditor) editor), new EditorData(),new PetriNetResourceEditor((EditorVC) editor));
+        	frame = new DefaultEditorFrame((EditorVC)editor, new EditorOperations((IEditor) editor), new EditorData(), new PetriNetResourceEditor((EditorVC) editor));
             
             Point position = getNextEditorPosition();
             frame.setAlignmentX((float) position.getX());

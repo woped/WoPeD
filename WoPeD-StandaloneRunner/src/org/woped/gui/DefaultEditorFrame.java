@@ -70,7 +70,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
     private ParaphrasingPanel	   m_paraPhrasingPanel		= null;
     private JTabbedPane            m_tabbedPane             = null;
 
-     public DefaultEditorFrame(EditorVC editor,  EditorOperations opEditor, EditorData dEditor,PetriNetResourceEditor propEditor)
+     public DefaultEditorFrame(EditorVC editor,  EditorOperations opEditor, EditorData dEditor, PetriNetResourceEditor propEditor)
     {          
         super(editor.getName(), true, true, true, true);
         this.setVisible(false);

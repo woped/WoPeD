@@ -27,10 +27,11 @@
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
-	<taskdef name="try" classname="ise.antelope.tasks.TryTask" classpath="build-tools/ant/AntelopeTasks_3.4.2.jar" />
-	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="build-tools/ant/jarbundler-2.2.0.jar"/>
- 
- 	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstallerOnMac, makeLinuxInstaller, makeMacInstaller" /> 
+	<taskdef name="try" classname="ise.antelope.tasks.TryTask" classpath="../WoPeD-CommonLibs/lib/AntelopeTasks_3.4.2.jar" />
+	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="../WoPeD-CommonLibs/lib/jarbundler-2.2.0.jar"/>
+ 	
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, 
+										     makeWindowsInstallerOnMac, makeLinuxInstaller, makeMacInstaller" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -38,7 +39,6 @@
 
 	<target name="makedir" depends="clean">
 		<mkdir dir="dist" />
-		<mkdir dir="dist/izpack" />
 		<mkdir dir="dist/mac" />
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
@@ -75,6 +75,7 @@
 				<include name="RunWoPeD*.class" />
 			</fileset>
 		</copy>
+
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/antlrworks-${ANTLRWORKSVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/flanagan-${FLANAGANVERSION}.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jbpt-${JBPTVERSION}.jar" />
@@ -150,10 +151,7 @@
 			<fileset file="build-tools/setup/Windows/buildsetupexeOnMac" />
 			<fileset file="build-tools/setup/Windows/buildsetupOnMac" />
 			<fileset file="build-tools/setup/Windows/shortcut-win.xml" />
-		</copy>
-
-		<copy todir="dist/izpack" overwrite="true">
-			<fileset dir="build-tools/izpack" />
+			<fileset file="build-tools/setup/*.png" />
 		</copy>
 
 		<copy todir="dist" filtering="true" overwrite="true">
@@ -179,7 +177,7 @@
 	</target>
 
 	<target name="buildjar">
-		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST2.mf">
+		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST.mf">
 			<fileset dir="../WoPeD-BPELExport/bin" />
 			<fileset dir="../WoPeD-CORE/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
@@ -196,11 +194,11 @@
 
 	<target name="makeWindowsInstallerOnMac">
 		<try>
-			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
+			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
 			<exec dir="dist/launch" executable="/bin/sh">
 				<arg line="buildexeOnMac" />
-			</exec>
-			
+			</exec> 
+						
 			<exec dir="dist" executable="/bin/sh">
 				<arg line="buildsetupOnMac" />
 			</exec>
@@ -219,12 +217,12 @@
 		
 	<target name="makeWindowsInstaller">
 		<try>
-			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
+			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
 			<exec dir="dist/launch" executable="cmd">
 				<arg line="/c java -jar launch4j.jar buildexe.xml" />
 			</exec>
 			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar izpack\lib\compiler.jar install.xml -o launch\\WoPeD-install-windows.jar" />
+				<arg line="/c java -jar ../WoPeD-CommonLibs/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
 			</exec>
 
 			<exec dir="dist/launch" executable="cmd">
@@ -244,7 +242,7 @@
 			<exec dir="dist" executable="/bin/sh">
 				<arg line="buildLinuxSetup" />
 			</exec>
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST3.mf" />
+			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
 			<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
 				<tarfileset dir="dist" mode="755">
 					<include name="WoPeD-install-linux" />

@@ -3,13 +3,11 @@ package org.woped.gui.icons;
 import java.awt.*;
 import java.awt.geom.*;
 
-import org.pushingpixels.flamingo.api.common.icon.ResizableIcon;
-
 /**
  * This class has been automatically generated using svg2java
  * 
  */
-public class woped implements ResizableIcon {
+public class woped implements org.pushingpixels.flamingo.api.common.icon.ResizableIcon {
 	
 	private float origAlpha = 1.0f;
 
@@ -41,17 +39,7 @@ public class woped implements ResizableIcon {
 	}
 
 	private void paintShapeNode_0_0_0_0(Graphics2D g) {
-		GeneralPath shape0 = new GeneralPath();
-		shape0.moveTo(28.383, 4.743);
-		shape0.lineTo(182.747, 4.743);
-		shape0.curveTo(194.875, 4.743, 204.706, 14.574, 204.706, 26.702);
-		shape0.lineTo(204.706, 174.767);
-		shape0.curveTo(204.706, 186.895, 194.875, 196.72699, 182.747, 196.72699);
-		shape0.lineTo(28.383, 196.72699);
-		shape0.curveTo(16.255, 196.72699, 6.4230003, 186.89499, 6.4230003, 174.767);
-		shape0.lineTo(6.4230003, 26.702);
-		shape0.curveTo(6.423, 14.574, 16.255, 4.743, 28.383, 4.743);
-		shape0.closePath();
+		RoundRectangle2D.Double shape0 = new RoundRectangle2D.Double(6.423509120941162, 4.742427349090576, 198.28317260742188, 191.98423767089844, 43.91897201538086, 43.91897201538086);
 		g.setPaint(new Color(255, 127, 42, 255));
 		g.fill(shape0);
 	}
@@ -61,19 +49,19 @@ public class woped implements ResizableIcon {
 		g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 		g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 		GeneralPath shape1 = new GeneralPath();
-		shape1.moveTo(26.929688, 0.0);
-		shape1.lineTo(0.140625, -104.0625);
-		shape1.lineTo(14.34375, -104.0625);
-		shape1.lineTo(35.648438, -21.867188);
-		shape1.lineTo(55.265625, -104.0625);
-		shape1.lineTo(69.46875, -104.0625);
-		shape1.lineTo(88.03125, -22.992188);
-		shape1.lineTo(110.953125, -104.0625);
-		shape1.lineTo(122.97656, -104.0625);
-		shape1.lineTo(93.796875, 0.0);
-		shape1.lineTo(79.10156, 0.0);
-		shape1.lineTo(60.75, -80.22656);
-		shape1.lineTo(41.554688, 0.0);
+		shape1.moveTo(59.632633, 130.98059);
+		shape1.lineTo(33.65607, 22.175901);
+		shape1.lineTo(56.144352, 22.175901);
+		shape1.lineTo(72.5467, 96.914185);
+		shape1.lineTo(92.437325, 22.175901);
+		shape1.lineTo(118.562325, 22.175901);
+		shape1.lineTo(137.63654, 98.1759);
+		shape1.lineTo(154.33575, 22.175901);
+		shape1.lineTo(176.45294, 22.175901);
+		shape1.lineTo(150.03107, 130.98059);
+		shape1.lineTo(126.72639, 130.98059);
+		shape1.lineTo(105.05451, 49.636837);
+		shape1.lineTo(83.456856, 130.98059);
 		shape1.closePath();
 		g.setPaint(new Color(255, 255, 255, 255));
 		g.fill(shape1);
@@ -81,29 +69,19 @@ public class woped implements ResizableIcon {
 	}
 
 	private void paintShapeNode_0_0_0_2(Graphics2D g) {
-		GeneralPath shape2 = new GeneralPath();
-		shape2.moveTo(24.684, 146.057);
-		shape2.lineTo(186.016, 146.057);
-		shape2.curveTo(196.29501, 146.057, 204.62701, 154.39001, 204.62701, 164.668);
-		shape2.lineTo(204.62701, 182.736);
-		shape2.curveTo(204.62701, 193.015, 196.29501, 201.34698, 186.01602, 201.34698);
-		shape2.lineTo(24.684, 201.34698);
-		shape2.curveTo(14.406, 201.34698, 6.073, 193.01498, 6.073, 182.736);
-		shape2.lineTo(6.073, 164.668);
-		shape2.curveTo(6.073, 154.39, 14.406, 146.057, 24.684, 146.057);
-		shape2.closePath();
+		RoundRectangle2D.Double shape2 = new RoundRectangle2D.Double(6.073121547698975, 146.05706787109375, 198.55467224121094, 55.29145812988281, 37.22266387939453, 37.22266387939453);
 		g.setPaint(new Color(255, 173, 0, 241));
 		g.fill(shape2);
 	}
 
 	private void paintShapeNode_0_0_0_3(Graphics2D g) {
-		Rectangle2D.Double shape3 = new Rectangle2D.Double(5.561999797821045, 143.93299865722656, 200.25399780273438, 1.9199999570846558);
+		Rectangle2D.Double shape3 = new Rectangle2D.Double(5.56222677230835, 143.93276977539062, 200.2532196044922, 1.9198436737060547);
 		g.setPaint(new Color(255, 255, 255, 241));
 		g.fill(shape3);
 	}
 
 	private void paintShapeNode_0_0_0_4(Graphics2D g) {
-		Rectangle2D.Double shape4 = new Rectangle2D.Double(5.946000099182129, 145.85299682617188, 198.89599609375, 33.404998779296875);
+		Rectangle2D.Double shape4 = new Rectangle2D.Double(5.946183681488037, -179.25787353515625, 198.8957061767578, 33.40525817871094);
 		g.setPaint(new Color(255, 173, 0, 241));
 		g.fill(shape4);
 	}
@@ -113,89 +91,102 @@ public class woped implements ResizableIcon {
 		g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 		g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 		GeneralPath shape5 = new GeneralPath();
-		shape5.moveTo(7.4804688, 0.0);
-		shape5.lineTo(0.0390625, -28.90625);
-		shape5.lineTo(3.984375, -28.90625);
-		shape5.lineTo(9.902344, -6.0742188);
-		shape5.lineTo(15.3515625, -28.90625);
-		shape5.lineTo(19.296875, -28.90625);
-		shape5.lineTo(24.453125, -6.3867188);
-		shape5.lineTo(30.820312, -28.90625);
-		shape5.lineTo(34.160156, -28.90625);
-		shape5.lineTo(26.054688, 0.0);
-		shape5.lineTo(21.972656, 0.0);
-		shape5.lineTo(16.875, -22.285156);
-		shape5.lineTo(11.542969, 0.0);
+		shape5.moveTo(26.787035, 158.39166);
+		shape5.lineTo(35.18547, 158.39166);
+		shape5.lineTo(38.212814, 174.38776);
+		shape5.lineTo(42.626877, 158.39166);
+		shape5.lineTo(51.005783, 158.39166);
+		shape5.lineTo(55.439377, 174.38776);
+		shape5.lineTo(58.46672, 158.39166);
+		shape5.lineTo(66.826096, 158.39166);
+		shape5.lineTo(60.5175, 187.02448);
+		shape5.lineTo(51.845627, 187.02448);
+		shape5.lineTo(46.826096, 168.99713);
+		shape5.lineTo(41.826096, 187.02448);
+		shape5.lineTo(33.15422, 187.02448);
 		shape5.closePath();
-		shape5.moveTo(46.367188, 0.48828125);
-		shape5.quadTo(41.816406, 0.48828125, 39.101562, -2.5292969);
-		shape5.quadTo(36.38672, -5.546875, 36.38672, -10.605469);
-		shape5.quadTo(36.38672, -15.722656, 39.11133, -18.701172);
-		shape5.quadTo(41.835938, -21.679688, 46.503906, -21.679688);
-		shape5.quadTo(51.171875, -21.679688, 53.896484, -18.701172);
-		shape5.quadTo(56.621094, -15.722656, 56.621094, -10.644531);
-		shape5.quadTo(56.621094, -5.4492188, 53.88672, -2.4804688);
-		shape5.quadTo(51.152344, 0.48828125, 46.367188, 0.48828125);
+		shape5.moveTo(68.232346, 176.71198);
+		shape5.quadTo(68.232346, 171.96588, 71.43547, 168.88971);
+		shape5.quadTo(74.638596, 165.81354, 80.087814, 165.81354);
+		shape5.quadTo(86.31828, 165.81354, 89.50188, 169.42682);
+		shape5.quadTo(92.06047, 172.33698, 92.06047, 176.59479);
+		shape5.quadTo(92.06047, 181.37994, 88.88664, 184.43658);
+		shape5.quadTo(85.712814, 187.49323, 80.107346, 187.49323);
+		shape5.quadTo(75.107346, 187.49323, 72.02141, 184.95416);
+		shape5.quadTo(68.232346, 181.80963, 68.232346, 176.71198);
 		shape5.closePath();
-		shape5.moveTo(46.42578, -2.4023438);
-		shape5.quadTo(52.539062, -2.4023438, 52.539062, -10.644531);
-		shape5.quadTo(52.539062, -18.789062, 46.503906, -18.789062);
-		shape5.quadTo(40.48828, -18.789062, 40.48828, -10.605469);
-		shape5.quadTo(40.48828, -2.4023438, 46.42578, -2.4023438);
+		shape5.moveTo(76.201096, 176.69244);
+		shape5.quadTo(76.201096, 179.46588, 77.32414, 180.794);
+		shape5.quadTo(78.44719, 182.12213, 80.14641, 182.12213);
+		shape5.quadTo(81.86516, 182.12213, 82.96867, 180.81354);
+		shape5.quadTo(84.07219, 179.50494, 84.07219, 176.61432);
+		shape5.quadTo(84.07219, 173.919, 82.95891, 172.60065);
+		shape5.quadTo(81.84563, 171.28229, 80.205, 171.28229);
+		shape5.quadTo(78.46672, 171.28229, 77.33391, 172.62018);
+		shape5.quadTo(76.201096, 173.95807, 76.201096, 176.69244);
 		shape5.closePath();
-		shape5.moveTo(62.51953, 0.0);
-		shape5.lineTo(62.51953, -28.90625);
-		shape5.lineTo(70.390625, -28.90625);
-		shape5.quadTo(75.625, -28.90625, 77.91016, -27.138672);
-		shape5.quadTo(80.19531, -25.371094, 80.19531, -21.328125);
-		shape5.quadTo(80.19531, -16.71875, 77.07031, -14.1015625);
-		shape5.quadTo(73.94531, -11.484375, 68.39844, -11.484375);
-		shape5.lineTo(66.58203, -11.484375);
-		shape5.lineTo(66.58203, 0.0);
+		shape5.moveTo(96.37688, 158.39166);
+		shape5.lineTo(111.08391, 158.39166);
+		shape5.quadTo(115.888596, 158.39166, 118.28117, 160.67682);
+		shape5.quadTo(120.67375, 162.96198, 120.67375, 167.18073);
+		shape5.quadTo(120.67375, 171.51666, 118.06633, 173.95807);
+		shape5.quadTo(115.45891, 176.39948, 110.107346, 176.39948);
+		shape5.lineTo(105.263596, 176.39948);
+		shape5.lineTo(105.263596, 187.02448);
+		shape5.lineTo(96.37688, 187.02448);
 		shape5.closePath();
-		shape5.moveTo(66.58203, -14.589844);
-		shape5.lineTo(68.24219, -14.589844);
-		shape5.quadTo(71.89453, -14.589844, 73.88672, -16.269531);
-		shape5.quadTo(75.87891, -17.949219, 75.87891, -21.015625);
-		shape5.quadTo(75.87891, -23.613281, 74.31641, -24.726562);
-		shape5.quadTo(72.75391, -25.839844, 69.10156, -25.839844);
-		shape5.lineTo(66.58203, -25.839844);
+		shape5.moveTo(105.263596, 170.5987);
+		shape5.lineTo(107.431564, 170.5987);
+		shape5.quadTo(109.99016, 170.5987, 111.025314, 169.71002);
+		shape5.quadTo(112.06047, 168.82135, 112.06047, 167.43463);
+		shape5.quadTo(112.06047, 166.08698, 111.16203, 165.14948);
+		shape5.quadTo(110.263596, 164.21198, 107.78313, 164.21198);
+		shape5.lineTo(105.263596, 164.21198);
 		shape5.closePath();
-		shape5.moveTo(100.29297, -0.68359375);
-		shape5.quadTo(96.42578, 0.48828125, 93.671875, 0.48828125);
-		shape5.quadTo(88.984375, 0.48828125, 86.02539, -2.6269531);
-		shape5.quadTo(83.06641, -5.7421875, 83.06641, -10.703125);
-		shape5.quadTo(83.06641, -15.527344, 85.67383, -18.613281);
-		shape5.quadTo(88.28125, -21.699219, 92.34375, -21.699219);
-		shape5.quadTo(96.19141, -21.699219, 98.291016, -18.964844);
-		shape5.quadTo(100.390625, -16.230469, 100.390625, -11.191406);
-		shape5.lineTo(100.37109, -10.0);
-		shape5.lineTo(86.99219, -10.0);
-		shape5.quadTo(87.83203, -2.4414062, 94.39453, -2.4414062);
-		shape5.quadTo(96.796875, -2.4414062, 100.29297, -3.7304688);
+		shape5.moveTo(147.80266, 178.62604);
+		shape5.lineTo(131.86516, 178.62604);
+		shape5.quadTo(132.08, 180.5401, 132.90031, 181.4776);
+		shape5.quadTo(134.05266, 182.82526, 135.90813, 182.82526);
+		shape5.quadTo(137.08, 182.82526, 138.13469, 182.23932);
+		shape5.quadTo(138.77922, 181.86823, 139.52141, 180.93073);
+		shape5.lineTo(147.35344, 181.65338);
+		shape5.quadTo(145.55656, 184.77838, 143.0175, 186.1358);
+		shape5.quadTo(140.47844, 187.49323, 135.73235, 187.49323);
+		shape5.quadTo(131.61125, 187.49323, 129.24797, 186.33112);
+		shape5.quadTo(126.88469, 185.169, 125.331955, 182.63971);
+		shape5.quadTo(123.77922, 180.11041, 123.77922, 176.69244);
+		shape5.quadTo(123.77922, 171.82916, 126.894455, 168.82135);
+		shape5.quadTo(130.00969, 165.81354, 135.49797, 165.81354);
+		shape5.quadTo(139.9511, 165.81354, 142.52922, 167.1612);
+		shape5.quadTo(145.10735, 168.50885, 146.455, 171.06744);
+		shape5.quadTo(147.80266, 173.62604, 147.80266, 177.7276);
 		shape5.closePath();
-		shape5.moveTo(87.16797, -12.890625);
-		shape5.lineTo(96.52344, -12.890625);
-		shape5.quadTo(96.52344, -18.808594, 92.109375, -18.808594);
-		shape5.quadTo(87.67578, -18.808594, 87.16797, -12.890625);
+		shape5.moveTo(139.71672, 174.81744);
+		shape5.quadTo(139.48235, 172.51276, 138.47649, 171.51666);
+		shape5.quadTo(137.47063, 170.52057, 135.83, 170.52057);
+		shape5.quadTo(133.93547, 170.52057, 132.80266, 172.02448);
+		shape5.quadTo(132.08, 172.96198, 131.88469, 174.81744);
 		shape5.closePath();
-		shape5.moveTo(106.91406, 0.0);
-		shape5.lineTo(106.91406, -28.90625);
-		shape5.lineTo(116.52344, -28.90625);
-		shape5.quadTo(120.82031, -28.90625, 123.4668, -27.949219);
-		shape5.quadTo(126.11328, -26.992188, 128.04688, -24.707031);
-		shape5.quadTo(131.11328, -21.074219, 131.11328, -15.136719);
-		shape5.quadTo(131.11328, -7.9296875, 127.30469, -3.9648438);
-		shape5.quadTo(123.49609, 0.0, 116.58203, 0.0);
+		shape5.moveTo(152.09953, 158.39166);
+		shape5.lineTo(165.24406, 158.39166);
+		shape5.quadTo(169.13078, 158.39166, 171.52336, 159.44635);
+		shape5.quadTo(173.91594, 160.50104, 175.47844, 162.4737);
+		shape5.quadTo(177.04094, 164.44635, 177.74406, 167.06354);
+		shape5.quadTo(178.44719, 169.68073, 178.44719, 172.61041);
+		shape5.quadTo(178.44719, 177.20026, 177.40227, 179.72955);
+		shape5.quadTo(176.35735, 182.25885, 174.50188, 183.96783);
+		shape5.quadTo(172.64641, 185.67682, 170.5175, 186.24323);
+		shape5.quadTo(167.60735, 187.02448, 165.24406, 187.02448);
+		shape5.lineTo(152.09953, 187.02448);
 		shape5.closePath();
-		shape5.moveTo(111.015625, -3.0664062);
-		shape5.lineTo(116.26953, -3.0664062);
-		shape5.quadTo(121.89453, -3.0664062, 124.23828, -6.09375);
-		shape5.quadTo(126.75781, -9.316406, 126.75781, -14.746094);
-		shape5.quadTo(126.75781, -19.84375, 124.27734, -22.753906);
-		shape5.quadTo(122.77344, -24.53125, 120.68359, -25.185547);
-		shape5.quadTo(118.59375, -25.839844, 114.39453, -25.839844);
-		shape5.lineTo(111.015625, -25.839844);
+		shape5.moveTo(160.94719, 164.87604);
+		shape5.lineTo(160.94719, 180.52057);
+		shape5.lineTo(163.11516, 180.52057);
+		shape5.quadTo(165.8886, 180.52057, 167.06047, 179.90533);
+		shape5.quadTo(168.23235, 179.2901, 168.89641, 177.7569);
+		shape5.quadTo(169.56047, 176.2237, 169.56047, 172.7862);
+		shape5.quadTo(169.56047, 168.23541, 168.0761, 166.55573);
+		shape5.quadTo(166.59172, 164.87604, 163.15422, 164.87604);
 		shape5.closePath();
 		g.setPaint(new Color(255, 255, 255, 255));
 		g.fill(shape5);
@@ -212,7 +203,7 @@ public class woped implements ResizableIcon {
 		// _0_0_0_1
 		g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 		AffineTransform trans_0_0_0_1 = g.getTransform();
-		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 37.37590026855469f, 130.9810028076172f));
+		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f));
 		paintTextNode_0_0_0_1(g);
 		g.setTransform(trans_0_0_0_1);
 		// _0_0_0_2
@@ -227,12 +218,12 @@ public class woped implements ResizableIcon {
 		g.setTransform(trans_0_0_0_3);
 		// _0_0_0_4
 		AffineTransform trans_0_0_0_4 = g.getTransform();
-		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f));
+		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f));
 		paintShapeNode_0_0_0_4(g);
 		g.setTransform(trans_0_0_0_4);
 		// _0_0_0_5
 		AffineTransform trans_0_0_0_5 = g.getTransform();
-		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 39.21580123901367f, 187.02490234375f));
+		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f));
 		paintTextNode_0_0_0_5(g);
 		g.setTransform(trans_0_0_0_5);
 	}
@@ -240,7 +231,7 @@ public class woped implements ResizableIcon {
 	private void paintCanvasGraphicsNode_0_0(Graphics2D g) {
 		// _0_0_0
 		AffineTransform trans_0_0_0 = g.getTransform();
-		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, -5.56222677230835f, -4.742427349090576f));
+		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f));
 		paintCompositeGraphicsNode_0_0_0(g);
 		g.setTransform(trans_0_0_0);
 	}
@@ -249,7 +240,7 @@ public class woped implements ResizableIcon {
 		// _0_0
 		g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 		AffineTransform trans_0_0 = g.getTransform();
-		g.transform(new AffineTransform(0.9987316131591797f, 0.0f, 0.0f, 0.9987316131591797f, -0.0f, 0.3221921350923367f));
+		g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f));
 		paintCanvasGraphicsNode_0_0(g);
 		g.setTransform(trans_0_0);
 	}
@@ -261,7 +252,7 @@ public class woped implements ResizableIcon {
      * @return The X of the bounding box of the original SVG image.
      */
     public int getOrigX() {
-        return 0;
+        return 6;
     }
 
     /**
@@ -269,7 +260,7 @@ public class woped implements ResizableIcon {
      * @return The Y of the bounding box of the original SVG image.
      */
     public int getOrigY() {
-        return 1;
+        return 5;
     }
 
     /**
@@ -277,7 +268,7 @@ public class woped implements ResizableIcon {
      * @return The width of the bounding box of the original SVG image.
      */
     public int getOrigWidth() {
-        return 200;
+        return 201;
     }
 
     /**
