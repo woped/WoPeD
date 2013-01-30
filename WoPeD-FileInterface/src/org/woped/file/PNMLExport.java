@@ -106,7 +106,7 @@ import org.woped.pnml.TriggerType;
 import org.woped.pnml.NetType.Page;
 import org.woped.translations.Messages;
 
-/**
+/** 
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
  * 

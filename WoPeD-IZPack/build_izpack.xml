@@ -1,0 +1,61 @@
+<project default="makejar" name="INSTALLER">
+	 
+	<target name="makedirs" depends="clean">
+		<mkdir dir="compiler" />
+		<mkdir dir="compiler/lib" />
+		<mkdir dir="compiler/lib/com" />
+		<mkdir dir="compiler/lib/com/izforge" />
+		<mkdir dir="compiler/lib/com/izforge/izpack" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/ant" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/ant/langpacks" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/compiler" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/compressor" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/event" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/installer" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/io" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/rules" />
+		<mkdir dir="compiler/lib/com/izforge/izpack/util" />
+		<mkdir dir="compiler/lib/net" />
+		<mkdir dir="compiler/lib/net/n3" />
+		<mkdir dir="compiler/lib/net/n3/nanoxml" />
+	</target>
+	
+	<target name="copyfiles" depends="makedirs">
+		<copy todir="compiler/lib/com/izforge/izpack">
+			<fileset file="bin/com/izforge/izpack/*.*" />
+		</copy>
+		<copy todir="compiler/lib/com/izforge/izpack/ant">
+			<fileset dir="bin/com/izforge/izpack/ant" />
+		</copy>
+		<copy todir="compiler/lib/com/izforge/izpack/compiler">
+			<fileset dir="bin/com/izforge/izpack/compiler" />
+		</copy>
+		<copy todir="compiler/lib/com/izforge/izpack/compressor">
+			<fileset dir="bin/com/izforge/izpack/compressor" />
+		</copy>
+		<copy todir="compiler/lib/com/izforge/izpack/installer">
+			<fileset dir="bin/com/izforge/izpack/installer" />
+		</copy>
+		<copy todir="compiler/lib/com/izforge/izpack/io">
+			<fileset dir="bin/com/izforge/izpack/io" />
+		</copy>
+		<copy todir="compiler/lib/com/izforge/izpack/rules">
+			<fileset dir="bin/com/izforge/izpack/rules" />
+		</copy>
+		<copy todir="compiler/lib/com/izforge/izpack/util">
+			<fileset dir="bin/com/izforge/izpack/util" />
+		</copy>
+		<copy todir="compiler/lib/net">
+			<fileset dir="bin/net" />
+		</copy>
+	</target>
+	
+	<target name="makejar" depends="copyfiles">
+		<jar destfile="lib/compiler.jar" basedir="lib/compiler" manifest="src/MANIFEST.mf" />
+	</target>
+	
+	<target name="clean">
+		<delete dir="lib/compiler" />
+	</target>
+
+</project>
