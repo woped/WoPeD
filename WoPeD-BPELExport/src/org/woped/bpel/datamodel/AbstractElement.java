@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TExtensibleElements;
 
 /**
- * @author Frank Schüler
+ * @author Frank Schï¿½ler
  * 
  * This class is the basic object for an element at the data model, for the easy
  * navigation between the elements.
@@ -420,7 +420,10 @@ public abstract class AbstractElement<E>
 	 */
 	public AbstractElement<?> get_first_post_element()
 	{
-		return this._post.iterator().next();
+		try {
+			return this._post.iterator().next();
+			}
+		catch (Exception e) { return null; }
 	}
 
 	/**

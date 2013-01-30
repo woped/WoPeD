@@ -30,9 +30,9 @@ import org.woped.core.model.petrinet.XORJoinOperatorTransitionModel;
 import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 
 /**
- * @author Frank Schüler
+ * @author Frank Schueler
  * 
- * This class reprasents the model a petrinet.
+ * This class represents the model a petrinet.
  */
 public class BpelParserModel
 {
@@ -143,11 +143,12 @@ public class BpelParserModel
 	private boolean createModel(AbstractPetriNetElementModel e,
 			ModelElementContainer con)
 	{
-
+		
 		if (this.get_registrated_element(e) != null)
 		{
 			return true;
 		}
+		
 		AbstractElement<?> element = BpelParserModel.createElement(e);
 		if (element == null)
 			return false;
@@ -164,10 +165,10 @@ public class BpelParserModel
 			AbstractPetriNetElementModel tmp = iter.next();
 			if (AbstractPetriNetElementModel.class.isInstance(tmp))
 			{
-				if (!this.createModel((AbstractPetriNetElementModel) tmp, con))
+				if (!this.createModel(tmp, con))
 					return false;
 				AbstractElement<?> abs = this
-						.get_registrated_element((AbstractPetriNetElementModel) tmp);
+						.get_registrated_element(tmp);
 
 				if (abs == null)
 					return false;
@@ -185,10 +186,10 @@ public class BpelParserModel
 			AbstractPetriNetElementModel tmp = iter.next();
 			if (AbstractPetriNetElementModel.class.isInstance(tmp))
 			{
-				if (!this.createModel((AbstractPetriNetElementModel) tmp, con))
+				if (!this.createModel(tmp, con))
 					return false;
 				AbstractElement<?> abs = this
-						.get_registrated_element((AbstractPetriNetElementModel) tmp);
+						.get_registrated_element(tmp);
 
 				if (abs == null)
 					return false;
@@ -307,7 +308,9 @@ public class BpelParserModel
 	 */
 	public AbstractElement<?> get_registrated_element(AbstractPetriNetElementModel e)
 	{
-		return this.get_registrated_element(BpelParserModel.createElement(e));
+		AbstractElement<?> ae = BpelParserModel.createElement(e);
+		AbstractElement<?> result = this.get_registrated_element(ae);
+		return result;
 	}
 
 	/**
@@ -326,7 +329,10 @@ public class BpelParserModel
 			while (iter.hasNext())
 			{
 				AbstractElement<?> erg = iter.next();
-				if (erg.equals(e))
+				String erg_id = ((PlaceModel)(erg.getData())).getId();
+				String e_id = ((PlaceModel)(e.getData())).getId();
+				
+				if (erg_id.equals(e_id))
 				{
 					return erg;
 				}
@@ -338,7 +344,10 @@ public class BpelParserModel
 			while (iter.hasNext())
 			{
 				AbstractElement<?> erg = iter.next();
-				if (erg.equals(e))
+				String erg_id = ((TransitionModel)(erg.getData())).getId();
+				String e_id = ((TransitionModel)(e.getData())).getId();
+				
+				if (erg_id.equals(e_id))
 				{
 					return erg;
 				}
