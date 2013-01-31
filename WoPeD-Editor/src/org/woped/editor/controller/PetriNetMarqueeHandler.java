@@ -162,6 +162,8 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		
+		boolean rightButtonClickedInDrawingMode = false;
+		
 		if (e == null) {
 			return;
 		}
@@ -174,7 +176,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
         if (getEditor().isDrawingMode() && (SwingUtilities.isRightMouseButton(e) || e.getClickCount() == 2)) {
         	getEditor().setDrawingMode(false);
         	if (SwingUtilities.isRightMouseButton(e)) {
-        		return;
+        		rightButtonClickedInDrawingMode = true;
         	} 
   	    }
 		
@@ -205,7 +207,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 		// Handle right mouse button behaviour
 		if (SwingUtilities.isRightMouseButton(e)) {
 
-			if (!getEditor().isDrawingMode()) {
+			if (!getEditor().isDrawingMode() || rightButtonClickedInDrawingMode) {
 				VisualController.getInstance().setArcpointSelection(isArcPoint(e));
 				e.consume();
 				PopupMenuPetrinet.setMediator(mediator);
