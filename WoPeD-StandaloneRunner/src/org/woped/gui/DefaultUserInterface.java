@@ -72,7 +72,6 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
         propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
         setTitle("WoPeD " + Messages.getString("Application.Version"));
-        setIconImage(Messages.getImageIcon("Application").getImage());
 		setApplicationIcon(new woped());
         setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(),
                 (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
