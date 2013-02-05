@@ -470,7 +470,7 @@ public class EditorPanel extends JPanel {
 			mainsplitPaneWithAnalysisBar = null;
 			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
 			analysisBarVisible = false;
-
+			qualitativeAnalysisSideBar.refresh();
 
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
 					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
