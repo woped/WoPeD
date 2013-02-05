@@ -31,7 +31,7 @@ import org.woped.metrics.exceptions.CalculateFormulaException;
 import org.woped.metrics.exceptions.NestedCalculateFormulaException;
 import org.woped.metrics.helpers.LabeledFileFilter;
 import org.woped.metrics.metricsCalculation.MetricsCalculator;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * Class that handles all the events from the metrics builder

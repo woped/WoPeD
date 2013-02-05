@@ -21,7 +21,7 @@ import org.woped.qualanalysis.paraphrasing.controller.WebServiceThread;
 import org.woped.qualanalysis.paraphrasing.editing.TextualDescriptionDialog;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ButtonListener implements ActionListener{
 

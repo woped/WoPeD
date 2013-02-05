@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class WoflanFileFactory {
     /**

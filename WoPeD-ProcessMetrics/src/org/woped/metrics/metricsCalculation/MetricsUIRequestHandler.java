@@ -23,7 +23,7 @@ import org.woped.metrics.exceptions.NaNException;
 import org.woped.metrics.helpers.LabeledFileFilter;
 import org.woped.metrics.metricsCalculation.UITypes.UIMetricsGroup;
 import org.woped.metrics.metricsCalculation.UITypes.UIThreshold;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * Please note:

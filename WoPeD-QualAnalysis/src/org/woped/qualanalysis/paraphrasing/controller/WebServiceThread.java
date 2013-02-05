@@ -15,7 +15,7 @@ import org.woped.pnml.TextType;
 import org.woped.qualanalysis.paraphrasing.Constants;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextImplService;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class WebServiceThread extends Thread{
 	

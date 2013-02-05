@@ -17,7 +17,7 @@ import org.apromore.manager.model_portal.ExportFormatInputMsgType;
 import java.util.StringTokenizer;
 import org.apromore.access.*;
 import org.woped.core.config.DefaultStaticConfiguration;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ImportFrame extends JDialog {
 

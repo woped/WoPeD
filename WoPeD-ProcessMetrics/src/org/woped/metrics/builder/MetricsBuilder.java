@@ -11,7 +11,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.config.IMetricsConfiguration;
 import org.woped.core.controller.IEditor;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class MetricsBuilder extends JFrame {
 

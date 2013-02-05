@@ -26,7 +26,7 @@ import org.woped.metrics.builder.MetricsBuilder;
 import org.woped.metrics.metricsCalculation.MetricsUIRequestHandler;
 import org.woped.metrics.metricsCalculation.UITypes.UIThreshold;
 import org.woped.metrics.sidebar.SideBar;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author Mathias Gruschinske

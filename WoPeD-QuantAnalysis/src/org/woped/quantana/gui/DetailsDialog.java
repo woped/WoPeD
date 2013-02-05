@@ -24,7 +24,7 @@ import org.jfree.data.general.PieDataset;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.quantana.sim.SimReportServerStats;
 import org.woped.quantana.sim.SimReportStats;

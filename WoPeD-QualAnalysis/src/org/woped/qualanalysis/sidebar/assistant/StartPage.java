@@ -17,7 +17,7 @@ import org.woped.qualanalysis.sidebar.assistant.components.DetailsMouseListener;
 import org.woped.qualanalysis.sidebar.assistant.components.SimpleGridBagLayout;
 import org.woped.qualanalysis.sidebar.assistant.pages.SoundnessPage;
 import org.woped.qualanalysis.sidebar.assistant.pages.WorkflowPage;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * shows the analysis startpage with the overview of soundness analysis, workflow analysis and the net statistics

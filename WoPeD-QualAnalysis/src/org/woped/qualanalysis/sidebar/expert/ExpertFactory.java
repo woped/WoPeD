@@ -8,7 +8,7 @@ import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.sidebar.expert.components.NetInfo;
 import org.woped.qualanalysis.sidebar.expert.components.NodeGroupListNetInfo;
 import org.woped.qualanalysis.sidebar.expert.components.NodeGroupNetInfo;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * factory containing methods to create the expert page

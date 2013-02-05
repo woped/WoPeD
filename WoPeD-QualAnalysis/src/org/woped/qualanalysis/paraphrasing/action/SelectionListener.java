@@ -18,7 +18,7 @@ import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.paraphrasing.editing.TextualDescriptionDialog;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingOutput;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 
 public class SelectionListener implements MouseListener, KeyListener {

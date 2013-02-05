@@ -45,7 +45,7 @@ import org.woped.editor.orientation.EditorSize;
 import org.woped.editor.orientation.Orientation;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 import org.woped.understandability.NetColorScheme;
 
 @SuppressWarnings("serial")

@@ -21,10 +21,10 @@ import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.BpelVariableList;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.gui.PopUpDialog;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
- * @author Frank Sch�ler, Ester Landes
+ * @author Frank Sch���ler, Ester Landes
  * 
  */
 

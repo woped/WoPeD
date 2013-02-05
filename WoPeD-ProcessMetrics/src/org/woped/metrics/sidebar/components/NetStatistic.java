@@ -14,7 +14,7 @@ import org.woped.metrics.metricsCalculation.MetricsCalculator;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.sidebar.assistant.components.ClickLabel;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
   * @author Mathias Gruschinske

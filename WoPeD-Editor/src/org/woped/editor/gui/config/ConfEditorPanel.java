@@ -40,7 +40,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

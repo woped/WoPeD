@@ -94,7 +94,7 @@ import org.woped.pnml.TextType;
 import org.woped.pnml.TextType.Phrase;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.NetType.Page;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!

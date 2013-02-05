@@ -57,7 +57,7 @@ import org.woped.editor.gui.config.ConfFilePanel;
 import org.woped.editor.gui.config.ConfLanguagePanel;
 import org.woped.editor.gui.config.ConfMetricsPanel;
 import org.woped.editor.gui.config.ConfUnderstandabilityPanel;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

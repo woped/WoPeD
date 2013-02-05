@@ -47,7 +47,7 @@ import org.woped.core.model.CreationMap;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author tfreytag

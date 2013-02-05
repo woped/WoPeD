@@ -8,7 +8,7 @@ import org.woped.editor.controller.Role;
 import org.woped.editor.controller.GroupLayoutGrid;
 import org.woped.editor.controller.Layout;
 import org.woped.editor.controller.RoleLayoutGrid;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 			//*****************************Layout algorithm**********************
 			//*******************************************************************

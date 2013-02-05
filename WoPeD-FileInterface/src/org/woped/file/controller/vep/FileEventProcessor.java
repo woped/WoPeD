@@ -52,7 +52,7 @@ import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.woflan.TPNExport;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class FileEventProcessor extends AbstractEventProcessor {
     public FileEventProcessor(int vepID, ApplicationMediator mediator) {

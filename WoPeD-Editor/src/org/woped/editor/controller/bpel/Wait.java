@@ -1,11 +1,11 @@
 package org.woped.editor.controller.bpel;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * 
- * @author Frank Schüler, Alexander Roßwog, Johannes Händel
+ * @author Frank Schï¿½ler, Alexander Roï¿½wog, Johannes Hï¿½ndel
  * 
  */
 public class Wait extends BaseActivity<TWait> {

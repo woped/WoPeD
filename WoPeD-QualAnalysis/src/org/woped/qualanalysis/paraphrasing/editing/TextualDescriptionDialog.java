@@ -32,7 +32,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 
 public class TextualDescriptionDialog extends JDialog implements ActionListener, KeyListener, MouseListener{

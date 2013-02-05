@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JTabbedPane;
 
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * Superclass for the analysis sidebar

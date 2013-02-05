@@ -23,7 +23,7 @@ import org.woped.core.utilities.IntegerFilter;
 import org.woped.core.utilities.JTextFieldEvalution;
 import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.gui.PopUpDialog;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 import com.toedter.calendar.JCalendar;
 

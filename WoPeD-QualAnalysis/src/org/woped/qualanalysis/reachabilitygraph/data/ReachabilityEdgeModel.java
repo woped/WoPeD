@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.GraphConstants;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ReachabilityEdgeModel extends DefaultEdge {
 

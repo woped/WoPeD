@@ -37,7 +37,7 @@ import org.jgraph.graph.EdgeView;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -92,7 +92,7 @@ public class PlaceView extends PetriNetElementView
 	public Point2D getPerimeterPoint(EdgeView edge, Point2D source, Point2D p)
 	{
 
-		// liefert die Größe und die Koordinaten der Stelle.
+		// liefert die Grï¿½ï¿½e und die Koordinaten der Stelle.
 		Rectangle2D r = getBounds();
 		// Berechnet den relative Mittelpunkt der Stelle.
 		double a = (r.getWidth() - 1) / 2;
@@ -105,7 +105,7 @@ public class PlaceView extends PetriNetElementView
 		double dy = p.getY() - absCenterY;
 		// Winkelberechnung siehe Abb. 16. Tangens(aplha) = dy/dx.
 		double aplha = Math.atan2(dy, dx);
-		// Berechne Berührungspunkt mit Außenhülle der Stelle.
+		// Berechne Berï¿½hrungspunkt mit Auï¿½enhï¿½lle der Stelle.
 		double dockPointX = (absCenterX + (a * Math.cos(aplha)));
 		double dockPointY = (absCenterY + (b * Math.sin(aplha)));
 

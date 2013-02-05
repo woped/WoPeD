@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import org.apromore.manager.model_portal.EditSessionType;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ExportFrame extends JDialog {
 

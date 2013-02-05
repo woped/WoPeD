@@ -40,7 +40,7 @@ import org.woped.core.config.IMetricsConfiguration.MetricThresholdState;
 import org.woped.metrics.helpers.WatermarkedJTextField;
 import org.woped.metrics.metricsCalculation.MetricsUIRequestHandler;
 import org.woped.metrics.metricsCalculation.UITypes.UIThreshold;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo

@@ -25,7 +25,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 import org.woped.understandability.NetColorScheme;
 
 /**

@@ -28,7 +28,7 @@ import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 
 public class ReachabilityGraphVC extends JInternalFrame implements IReachabilityGraph, InternalFrameListener {

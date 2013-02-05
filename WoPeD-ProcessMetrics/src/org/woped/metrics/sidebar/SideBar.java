@@ -27,7 +27,7 @@ import org.woped.metrics.formulaEnhancement.FormulaEnhancementUI;
 import org.woped.metrics.metricsCalculation.MetricsUIRequestHandler;
 import org.woped.metrics.metricsCalculation.UITypes.UIMetricsGroup;
 import org.woped.metrics.sidebar.components.MetricGroup;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author Mathias Gruschinske

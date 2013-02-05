@@ -35,7 +35,7 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.editor.controller.WoPeDJGraphGraphModel.WoPeDUndoableEdit;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author Thomas Pohl TODO: DOCUMENTATION (xraven)

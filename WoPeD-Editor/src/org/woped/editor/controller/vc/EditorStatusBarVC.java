@@ -16,7 +16,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import org.woped.core.controller.IEditor;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
 public class EditorStatusBarVC extends JPanel implements Observer {

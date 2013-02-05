@@ -22,7 +22,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 /**
  * Class <code>AdvancedDialog</code> is a dialog for the beautification with advanced configuration.
  * 

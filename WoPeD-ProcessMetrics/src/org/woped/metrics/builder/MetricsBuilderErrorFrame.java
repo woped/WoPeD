@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import org.woped.metrics.exceptions.CalculateFormulaException;
 import org.woped.metrics.exceptions.NestedCalculateFormulaException;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author Tobias Lorentz

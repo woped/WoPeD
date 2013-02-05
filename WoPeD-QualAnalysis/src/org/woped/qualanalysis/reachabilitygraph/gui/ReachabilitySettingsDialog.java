@@ -32,7 +32,7 @@ import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ReachabilitySettingsDialog extends JDialog {
 
@@ -88,7 +88,7 @@ public class ReachabilitySettingsDialog extends JDialog {
     private void initComponents() {
         graphVisual = new JLabel("<html><b>" + Messages.getString("QuanlAna.ReachabilityGraph.Settings.GraphSection")
                 + "</b></html>");
-        // Rect: (links->rechts,oben->unten,breite,h�he)
+        // Rect: (links->rechts,oben->unten,breite,h���he)
         graphVisual.setBounds(new Rectangle(20, 15, 220, 16));
 
         grayGraphRb = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Settings.Color.Grayscale"));

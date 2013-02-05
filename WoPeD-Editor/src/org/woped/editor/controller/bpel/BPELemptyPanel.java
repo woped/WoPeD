@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.controller.TransitionPropertyEditor;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class BPELemptyPanel extends BPELadditionalPanel {
 

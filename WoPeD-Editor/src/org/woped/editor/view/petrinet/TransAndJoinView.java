@@ -33,7 +33,7 @@ import org.jgraph.graph.CellViewRenderer;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.Toolspecific;
 import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -86,7 +86,7 @@ public class TransAndJoinView extends TransSimpleView
         public void paint(Graphics g)
         {
 
-            /* Trigger hinzufügen */
+            /* Trigger hinzufï¿½gen */
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();

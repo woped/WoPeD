@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class MassMetricsStatus extends Thread{
 

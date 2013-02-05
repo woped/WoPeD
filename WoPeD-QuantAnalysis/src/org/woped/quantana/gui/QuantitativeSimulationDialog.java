@@ -74,7 +74,7 @@ import org.woped.quantana.sim.SimReportServerStats;
 import org.woped.quantana.sim.SimRunStats;
 import org.woped.quantana.sim.SimRunner;
 import org.woped.quantana.sim.SimServer;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class QuantitativeSimulationDialog extends JDialog implements
 		MouseMotionListener, KeyListener {

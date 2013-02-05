@@ -10,10 +10,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /*
- * @author: Alexander Roßwog
+ * @author: Alexander Roï¿½wog
  */
 @SuppressWarnings("serial")
 public class NewUddiVariableDialog extends JDialog

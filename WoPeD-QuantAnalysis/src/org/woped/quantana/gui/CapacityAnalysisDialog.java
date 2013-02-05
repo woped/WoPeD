@@ -52,7 +52,7 @@ import org.woped.quantana.resourcealloc.AllocationTable;
 import org.woped.quantana.resourcealloc.ResourceAllocation;
 import org.woped.quantana.resourcealloc.ResourceClassTaskAllocation;
 import org.woped.quantana.resourcealloc.ResourceClassTaskAllocationTable;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class CapacityAnalysisDialog extends JDialog {
 

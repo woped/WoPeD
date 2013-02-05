@@ -104,7 +104,7 @@ import org.woped.pnml.TransitionType;
 import org.woped.pnml.TransitionsequenceType;
 import org.woped.pnml.TriggerType;
 import org.woped.pnml.NetType.Page;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /** 
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

@@ -15,7 +15,7 @@ import org.jgraph.JGraph;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ImageExport {
 	

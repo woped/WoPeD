@@ -31,7 +31,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.sidebar.SideBar;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
 public abstract class BeginnerPanel extends JPanel implements MouseListener {

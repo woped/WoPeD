@@ -37,10 +37,10 @@ import org.woped.editor.controller.wsdl.Message;
 import org.woped.editor.controller.wsdl.PartnerLinkType;
 import org.woped.editor.controller.wsdl.Role;
 import org.woped.editor.controller.wsdl.WsdlFileRepresentation;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
- * @author Esther Landes / Kristian Kindler / Alexander Roßwog
+ * @author Esther Landes / Kristian Kindler / Alexander Roï¿½wog
  *
  * This is the basic class for the different BPEL activity panels. It contains
  * methods and data that is used in the activity panels' dialogs.

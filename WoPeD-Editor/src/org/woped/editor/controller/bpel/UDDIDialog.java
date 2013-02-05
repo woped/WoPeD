@@ -6,7 +6,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.woped.core.model.ModelElementContainer;
 import org.woped.editor.controller.TransitionPropertyEditor;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 import java.awt.*;
 import java.awt.event.*;

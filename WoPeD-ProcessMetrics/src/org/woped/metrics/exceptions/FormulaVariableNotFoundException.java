@@ -1,6 +1,6 @@
 package org.woped.metrics.exceptions;
 
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class FormulaVariableNotFoundException extends CalculateFormulaException {
 

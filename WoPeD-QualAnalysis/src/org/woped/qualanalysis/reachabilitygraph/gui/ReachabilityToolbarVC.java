@@ -47,7 +47,7 @@ import org.woped.core.utilities.SwingUtils;
 import org.woped.core.utilities.Utils;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * Part of a small example showing basic use of JToolBar. Creates a small

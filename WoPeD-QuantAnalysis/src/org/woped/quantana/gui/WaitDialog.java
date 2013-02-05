@@ -22,7 +22,7 @@ import javax.swing.SwingWorker;
 
 import org.woped.quantana.Constants;
 import org.woped.quantana.sim.SimRunner;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class WaitDialog extends JDialog{
 

@@ -82,7 +82,7 @@ import org.woped.editor.controller.bpel.Receive;
 import org.woped.editor.controller.bpel.Reply;
 import org.woped.editor.controller.bpel.Wait;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author waschtl

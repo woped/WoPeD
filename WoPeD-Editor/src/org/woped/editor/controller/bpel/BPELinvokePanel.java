@@ -24,7 +24,7 @@ import org.woped.editor.controller.*;
 import org.woped.editor.controller.wsdl.Wsdl;
 import org.woped.editor.controller.wsdl.NoPortTypeFoundException;
 import org.woped.editor.controller.wsdl.Operation;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author Esther Landes / Kristian Kindler

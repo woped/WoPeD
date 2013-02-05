@@ -14,7 +14,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.paraphrasing.action.ButtonListener;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ParaphrasingPanel extends JPanel{
 

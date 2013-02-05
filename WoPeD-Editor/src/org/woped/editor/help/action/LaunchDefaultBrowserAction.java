@@ -33,7 +33,7 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import org.woped.core.utilities.Platform;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * A simple, static class to display a URL in the system browser.

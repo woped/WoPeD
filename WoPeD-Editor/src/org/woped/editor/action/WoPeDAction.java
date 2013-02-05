@@ -31,7 +31,7 @@ import javax.swing.JComponent;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author Thomas Pohl

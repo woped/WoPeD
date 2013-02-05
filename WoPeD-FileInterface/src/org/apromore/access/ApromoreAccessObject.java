@@ -19,7 +19,7 @@ import org.apromore.manager.model_portal.ReadProcessSummariesOutputMsgType;
 import org.apromore.manager.service_portal.ManagerPortalPortType;
 import org.apromore.manager.service_portal.ManagerPortalService;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ApromoreAccessObject {
 

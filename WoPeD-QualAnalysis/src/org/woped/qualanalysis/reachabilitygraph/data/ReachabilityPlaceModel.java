@@ -15,7 +15,7 @@ import java.awt.geom.Rectangle2D;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ReachabilityPlaceModel extends DefaultGraphCell
 {

@@ -2,7 +2,7 @@ package org.woped.qualanalysis.sidebar.assistant.pages;
 
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.assistant.components.BeginnerPanel;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * shows token details

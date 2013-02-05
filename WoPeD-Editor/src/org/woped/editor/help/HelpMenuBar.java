@@ -39,7 +39,7 @@ import org.woped.editor.help.action.BrowserForwardAction;
 import org.woped.editor.help.action.BrowserHomeAction;
 import org.woped.editor.help.action.BrowserRefreshAction;
 import org.woped.editor.help.action.BrowserWebpageAction;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * @author <a href="mailto:freytag@dhbw-karlsruhe.de">Thomas Freytag </a> <br>

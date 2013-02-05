@@ -2,7 +2,7 @@ package org.woped.qualanalysis.reachabilitygraph.gui;
 
 import java.awt.Component;
 import javax.swing.JOptionPane;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger.

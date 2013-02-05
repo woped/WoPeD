@@ -10,7 +10,7 @@ import org.antlr.runtime.Parser;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.Token;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class ErrorMessageProcessing {
 	public static String getErrorMessage(RecognitionException e, String[] tokens, BaseRecognizer processor) {

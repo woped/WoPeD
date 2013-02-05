@@ -15,7 +15,7 @@ import org.woped.qualanalysis.sidebar.assistant.StartPage;
 import org.woped.qualanalysis.sidebar.components.PermanentTabbedPane;
 import org.woped.qualanalysis.sidebar.components.TStar;
 import org.woped.qualanalysis.sidebar.expert.ExpertPage;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * class of the Analysissidebar

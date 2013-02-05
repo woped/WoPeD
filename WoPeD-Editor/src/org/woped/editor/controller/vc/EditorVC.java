@@ -87,7 +87,7 @@ import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.StructuralAnalysis;
 import org.woped.qualanalysis.structure.components.ArcConfiguration;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /*
  * 

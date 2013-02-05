@@ -21,7 +21,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 //TODO class description
 public class BPEL

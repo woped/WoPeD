@@ -17,7 +17,7 @@ import javax.swing.SpinnerNumberModel;
 
 import org.woped.config.metrics.WoPeDMetricsConfiguration;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
 public class ConfMetricsPanel extends AbstractConfPanel

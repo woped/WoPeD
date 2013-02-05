@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 public class PopUpDialog extends JDialog {
 

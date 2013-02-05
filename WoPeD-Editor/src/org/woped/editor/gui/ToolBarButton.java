@@ -36,7 +36,7 @@ import javax.swing.JToggleButton;
 
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.VisualController;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 /**
  * Part of a small example showing basic use of JToolBar. The point here is that

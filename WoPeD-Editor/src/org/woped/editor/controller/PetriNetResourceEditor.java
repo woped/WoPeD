@@ -103,7 +103,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.SwingUtils;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.translations.Messages;
+import org.woped.gui.translations.Messages;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.swing.mxGraphComponent;
@@ -1243,7 +1243,7 @@ public class PetriNetResourceEditor extends JPanel
 					   	if(e.getSource()== resourceColorButtonRole ){
 							   
 							 //JOptionPane.showMessageDialog(null, "Computer sagt NEIN", "Fehlermeldung", JOptionPane.ERROR_MESSAGE);
-							 //mxGraph Objekt, jede Zelle im Graph pr���fbar ob aktiv mit while schleife im mouselistener
+							 //mxGraph Objekt, jede Zelle im Graph pr���������fbar ob aktiv mit while schleife im mouselistener
 					   	}
 				   }
 				   catch(Exception ex){

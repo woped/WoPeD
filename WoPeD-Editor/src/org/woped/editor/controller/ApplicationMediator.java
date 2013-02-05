@@ -49,10 +49,10 @@ import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
+import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphEventProcessor;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.components.ArcConfiguration;
-import org.woped.translations.Messages;
 import org.woped.understandability.NetColorScheme;
 
 /**
