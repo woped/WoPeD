@@ -344,7 +344,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		makeTasksAndResources();
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = screenSize.width > 800 ? 800 : screenSize.width;
+		int width = screenSize.width > 820 ? 820 : screenSize.width;
 		int x = screenSize.width > width ? (screenSize.width - width) / 2 : 0;
 		int height = screenSize.height > 740 ? 740 : screenSize.height;
 		int y = screenSize.height > height ? (screenSize.height - height) / 2 : 0;
@@ -435,9 +435,9 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			generalPanel.add(txtPeriod, constraints);
 
 			cboTimeUnits = new JComboBox(Constants.TIMEUNITS);
-			cboTimeUnits.setMinimumSize(new Dimension(100, 20));
-			cboTimeUnits.setMaximumSize(new Dimension(100, 20));
-			cboTimeUnits.setPreferredSize(new Dimension(100, 20));
+			cboTimeUnits.setMinimumSize(new Dimension(120, 20));
+			cboTimeUnits.setMaximumSize(new Dimension(120, 20));
+			cboTimeUnits.setPreferredSize(new Dimension(120, 20));
 			cboTimeUnits.setSelectedIndex(periodIndex);
 			constraints.gridx = 4;
 			constraints.gridy = 0;
@@ -493,7 +493,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
 			statsPanel.add(getServerTableScrollPane(), constraints);
-			statsPanel.setMinimumSize(new Dimension(720, 140));
+			statsPanel.setMinimumSize(new Dimension(780, 140));
 		}
 
 		return statsPanel;
@@ -504,7 +504,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			serverTableScrollPane = new JScrollPane(getServerTable());
 			serverTableScrollPane.setBorder(BorderFactory.createEmptyBorder());
 			serverTableScrollPane.setWheelScrollingEnabled(true);
-			serverTableScrollPane.setMinimumSize(new Dimension(760, 120));
+			serverTableScrollPane.setMinimumSize(new Dimension(780, 120));
 		}
 		return serverTableScrollPane;
 	}
@@ -597,7 +597,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridwidth = 1;
 			constraints.gridheight = 1;
 			utilPanel.add(getResUtilTableScrollPane(), constraints);
-			utilPanel.setMinimumSize(new Dimension(760, 120));
+			utilPanel.setMinimumSize(new Dimension(780, 120));
 		}
 		return utilPanel;
 	}
@@ -607,7 +607,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			resUtilTableScrollPane = new JScrollPane(getResUtilTable());
 			resUtilTableScrollPane.setBorder(BorderFactory.createEmptyBorder());
 			resUtilTableScrollPane.setWheelScrollingEnabled(true);
-			resUtilTableScrollPane.setMinimumSize(new Dimension(720, 120));
+			resUtilTableScrollPane.setMinimumSize(new Dimension(780, 120));
 		}
 		return resUtilTableScrollPane;
 	}
