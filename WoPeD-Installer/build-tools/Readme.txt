@@ -62,8 +62,9 @@ For Linux, download WoPeD-install-linux-@wopedversion@.tgz, unpack and
 decompress it with the tar utility. Then launch the contained executable 
 WoPeD-install. 
 
-For MacOS, download WoPeD-install-macos-@wopedversion@.pkg, move 
-it into the target folder of your choice and launch the package file. 
+For MacOS, download WoPeD-install-macos-@wopedversion@.dmg, double-click on it
+to mount the image and launch the contained package file 
+WoPeD-install-macos.pkg. 
 
 In all three cases, a setup wizard appears and will guide you through 
 the installation process, letting you choose several installation
@@ -92,7 +93,7 @@ Root directory:
 lib directory
   ./lib/antlrworks-@antlrworksversion@.jar 
   ./lib/bpelBeans.jar                
-  ./lib/flamingo-@flamingoversion@.jar 
+  ./lib/confBeans.jar                
   ./lib/flanagan-@flanaganversion@.jar           
   ./lib/jbpt-@jbptversion@.jar
   ./lib/jcalendar-@jcalendarversion@.jar          
@@ -104,8 +105,7 @@ lib directory
   ./lib/log4j-@log4jversion@.jar    
   ./lib/metricsBeans.jar             
   ./lib/mysqlconnector-@mysqlconnectorversion@.jar
-  ./lib/pnmlBeans.jar                
-  ./lib/pnmlBeans_old.jar           
+  ./lib/pnmlBeans.jar                  
   ./lib/ruddi-@ruddiversion@.jar
   ./lib/ssj-@ssjversion@.jar  
   ./lib/stax-@staxversion@.jar              
