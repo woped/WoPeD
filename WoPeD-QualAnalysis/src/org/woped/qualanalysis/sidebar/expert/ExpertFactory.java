@@ -191,7 +191,7 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 				.iterator()) {
 			@Override
 			public String getGroupDisplayString(int nIndex, Collection<?> group) {
-				return Messages.getString(prefix + "stronglyConnectedComponent") + ":" + group.size();
+				return Messages.getString(prefix + "stronglyConnectedNodes") + ":" + group.size();
 			}
 
 			@Override
