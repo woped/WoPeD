@@ -820,11 +820,14 @@ public class PetriNetResourceEditor extends JPanel
 				    String[] RoleColorAssociation = new String[lm.allRoles.size()];
 				    int index = 0;
 				    Iterator<?> colorIt = lm.allGroups.iterator();
+				    try {
 				    while (colorIt.hasNext()) {
 				    	Group currentGroup = (Group) colorIt.next();
 				    	RoleColorAssociation[index] = currentGroup.name;
 				    	index+=1;
 				    }
+				    }
+				    catch (Exception e) {}
 				    
 		        	Iterator<Layout> it = GroupLayoutSet.iterator();
 		        	
@@ -3922,7 +3925,10 @@ public class PetriNetResourceEditor extends JPanel
 
 	    //Refresh the display of compound Roles in the related jtree	
 	    private void refreshSuperRolesTreeFromListModel(){
+	    	try {
 	    	removeAllNodesFromTreeModel(superRolesTreeModel,superRolesTopNode);
+	    	}
+	    	catch (Exception e) {}
 	    	for (int i = 0; i < superRolesListModel.getSize();i++){
 	    		String superRole = superRolesListModel.get(i).toString();
 	    		SuperRolesTreeNode parent = new SuperRolesTreeNode(superRole);
@@ -3999,8 +4005,10 @@ public class PetriNetResourceEditor extends JPanel
 	    private void removeAllNodesFromTreeModel(DefaultTreeModel model,MutableTreeNode node){
 	    	while(model.getChildCount(node)!=0)
 	    		{
+	    		try {
 	    			MutableTreeNode node2remove = (MutableTreeNode) model.getChild(node, 0);
 		    		model.removeNodeFromParent(node2remove);
+	    		} catch (Exception e) {}
 	    		}
 	    }
 
