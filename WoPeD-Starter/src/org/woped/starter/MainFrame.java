@@ -70,7 +70,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JRibbonBand 					saveBand					= null;
 	private	JRibbonBand 					documentBand				= null;
 	private	JRibbonBand 					outputBand					= null;
-	//private	JRibbonBand 					apromoreBand				= null;
+	private	JRibbonBand 					apromoreBand				= null;
 	private	JRibbonBand 					editBand					= null;
 	private	JRibbonBand 					formsBand					= null;
 	private	JRibbonBand 					layoutBand					= null;
@@ -104,8 +104,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JCommandButton 					printButton					= null; 
 	private	JCommandButton 					exportAsButton				= null; 
 
-	//private	JCommandButton 					importApromoreButton		= null; 
-	//private	JCommandButton 					exportApromoreButton		= null; 
+	private	JCommandButton 					importApromoreButton		= null; 
+	private	JCommandButton 					exportApromoreButton		= null; 
 	
 	private	JCommandButton 					undoButton					= null; 
 	private	JCommandButton 					redoButton					= null; 
@@ -402,7 +402,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		if (fileTask == null) {
 			if (ConfigurationManager.getConfiguration().getApromoreUse())
-				fileTask = new RibbonTask(Messages.getTitle("Task.File"), getDocumentBand(), getSaveBand(), getOutputBand()/*, getApromoreBand()*/);	
+				fileTask = new RibbonTask(Messages.getTitle("Task.File"), getDocumentBand(), getSaveBand(), getOutputBand(), getApromoreBand());	
 			else
 				fileTask = new RibbonTask(Messages.getTitle("Task.File"), getDocumentBand(), getSaveBand(), getOutputBand());						
 			fileTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(fileTask));
@@ -516,7 +516,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return outputBand;
 	}
 	
-	/*private JRibbonBand getApromoreBand() {
+	private JRibbonBand getApromoreBand() {
 		
 		if (apromoreBand == null) {
 			apromoreBand = new JRibbonBand(Messages.getString("Apromore.textBandTitle"), null);
@@ -526,7 +526,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		}
 		
 		return apromoreBand;
-	}*/
+	}
 			
 	private JRibbonBand getEditBand() {
 		
@@ -855,7 +855,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		return exportAsButton;
 	}
-	/*	
+		
 	private JCommandButton getImportApromoreButton() {
 		
 		if (importApromoreButton == null) {		
@@ -877,7 +877,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		return exportApromoreButton;
 	}
-			*/	
+			
 
 	private JCommandButton getUndoButton() {
 		
