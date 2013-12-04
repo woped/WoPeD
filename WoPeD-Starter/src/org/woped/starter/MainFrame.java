@@ -2,8 +2,10 @@ package org.woped.starter;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.util.Enumeration;
@@ -15,7 +17,10 @@ import java.util.zip.ZipEntry;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JSeparator;
+import javax.swing.SwingUtilities;
 
 import org.pushingpixels.flamingo.api.common.JCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandMenuButton;
@@ -38,12 +43,17 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.images.svg.*;
 import org.woped.gui.translations.Messages;
+import org.woped.starter.osxMenu.OSXFullscreen;
+import org.woped.starter.osxMenu.OSXMenu;
+import org.woped.starter.osxMenu.OSXMenuAdapter;
+import org.woped.starter.osxMenu.OSXMenuItem;
 import org.woped.config.general.WoPeDRecentFile;
 
 public class MainFrame extends JRibbonFrame implements IUserInterface {
@@ -244,7 +254,97 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	public void initialize(AbstractApplicationMediator mediator) {
 			
 		setMediator(mediator);
-				
+		
+		 /**
+         * Instantiates a new MacOS X MenuBar.
+         *
+         * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
+         */
+		if (Platform.isMac()) {
+	        // Get the frame
+		      OSXMenuAdapter menuAdapter = new OSXMenuAdapter((JFrame) SwingUtilities.getRoot((Component) this));
+		      //new File Menu
+		      OSXMenu osxFileMenu = new OSXMenu(Messages.getTitle("Menu.File"));
+		      
+		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.NewEditor"), KeyEvent.VK_N).addAction(mediator, ActionFactory.ACTIONID_NEW, AbstractViewEvent.NEW);  
+		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.OpenEditor"), KeyEvent.VK_O).addAction(mediator, ActionFactory.ACTIONID_OPEN, AbstractViewEvent.OPEN);  
+		      //recent files
+		      //JMenu recentFiles = osxMenu.addSubMenu(Messages.getTitle("Menu.File.RecentMenu"))
+				JMenu recentFiles = new JMenu(Messages.getTitle("Menu.File.RecentMenu"));
+				Vector<?> v = ConfigurationManager.getConfiguration().getRecentFiles();
+				if (v.size() != 0) {
+					for (int idx = 0; idx < v.size(); idx++) {
+						String name = ((WoPeDRecentFile) v.get(idx)).getName();
+						String path = ((WoPeDRecentFile) v.get(idx)).getPath();
+						OSXMenuItem recentFile = new OSXMenuItem(name);
+						recentFile.addActionListener(new recentFileListener(path));
+						recentFiles.add(recentFile);
+					}
+				} else {
+					OSXMenuItem emptyItem = new OSXMenuItem(Messages.getString("Menu.File.RecentMenu.empty"));
+					emptyItem.setEnabled(false);
+					recentFiles.add(emptyItem);
+				}
+				osxFileMenu.add(recentFiles);
+
+		      //osxMenu.addMenuItem("Close").addAction(mediator, ActionFactory.ACTIONID_CLOSE, AbstractViewEvent.CLOSE);
+		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.CloseEditor"), KeyEvent.VK_W).addAction(mediator, ActionFactory.ACTIONID_CLOSE, AbstractViewEvent.CLOSE);  
+		      osxFileMenu.addSeparator();
+		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.SaveEditor"), KeyEvent.VK_S).addAction(mediator, ActionFactory.ACTIONID_SAVE, AbstractViewEvent.SAVE);  
+		      osxFileMenu.addMenuItem(Messages.getTitle("Action.EditorSaveAs")).addAction(mediator, ActionFactory.ACTIONID_SAVEAS, AbstractViewEvent.SAVEAS); 
+
+		      osxFileMenu.addSeparator();
+		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.PrintEditor"), KeyEvent.VK_P).addAction(mediator, ActionFactory.ACTIONID_PRINT, AbstractViewEvent.PRINT);  
+		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.Export"), KeyEvent.VK_E).addAction(mediator, ActionFactory.ACTIONID_EXPORT, AbstractViewEvent.EXPORT);  
+
+		      menuAdapter.addMenu(osxFileMenu);
+		     
+		      OSXMenu osxEditMenu = new OSXMenu(Messages.getTitle("Menu.Edit"));
+		      
+		      osxEditMenu.addMenuItemWithShortcut(Messages.getTitle("Action.Undo"), KeyEvent.VK_Z).addAction(mediator, ActionFactory.ACTIONID_UNDO, AbstractViewEvent.UNDO);  
+		      osxEditMenu.addMenuItemWithShortcut(Messages.getTitle("Action.Redo"), KeyEvent.VK_Z, java.awt.event.InputEvent.SHIFT_DOWN_MASK).addAction(mediator, ActionFactory.ACTIONID_REDO, AbstractViewEvent.REDO);  
+		      //osxEditMenu.addMenuItemWithShortcut(Messages.getTitle("Action.Redo"), Messages.getShortcutKey("Action.Redo"), Messages.getShortcutModifier("Action.Redo")).addAction(mediator, ActionFactory.ACTIONID_REDO, AbstractViewEvent.REDO);  
+		      
+		      osxEditMenu.addSeparator();
+		      osxEditMenu.addMenuItemWithShortcut(Messages.getTitle("Action.CutSelection"), KeyEvent.VK_X).addAction(mediator, ActionFactory.ACTIONID_CUT, AbstractViewEvent.CUT);  
+		      osxEditMenu.addMenuItemWithShortcut(Messages.getTitle("Action.CopySelection"), KeyEvent.VK_C).addAction(mediator, ActionFactory.ACTIONID_COPY, AbstractViewEvent.COPY);  
+		      osxEditMenu.addMenuItemWithShortcut(Messages.getTitle("Action.PasteElements"), KeyEvent.VK_V).addAction(mediator, ActionFactory.ACTIONID_PASTE, AbstractViewEvent.PASTE);   
+		      osxEditMenu.addSeparator();
+		      osxEditMenu.addMenuItemWithShortcut(Messages.getTitle("Action.GroupSelection"), KeyEvent.VK_G).addAction(mediator, ActionFactory.ACTIONID_GROUP, AbstractViewEvent.GROUP);  
+		      osxEditMenu.addMenuItemWithShortcut(Messages.getTitle("Action.UngroupSelection"), KeyEvent.VK_G, java.awt.event.InputEvent.SHIFT_DOWN_MASK).addAction(mediator, ActionFactory.ACTIONID_UNGROUP, AbstractViewEvent.UNGROUP);  
+		      
+		      menuAdapter.addMenu(osxEditMenu);
+		      
+		      OSXMenu osxViewMenu = new OSXMenu(Messages.getTitle("Menu.View"));
+		      osxViewMenu.addMenuItem(Messages.getString("View.changeModellingDirection.text"));
+		      osxViewMenu.addMenuItem(Messages.getString("View.optimizeLayout.text"));
+		      osxViewMenu.addSeparator();
+		      osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Cascade"));
+		      osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Arrange"));
+		      osxViewMenu.addSeparator();
+		      final Window currentWindow = (Window) SwingUtilities.getRoot((Component) this);
+		      OSXFullscreen.enableOSXFullscreen(currentWindow);
+		     
+		      osxViewMenu.addMenuItemWithShortcut("Toggle Fullscreen",KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK).addActionListener(new ActionListener() {
+		    	  @Override  
+		    	  public void actionPerformed(ActionEvent evt) {
+		    		  OSXFullscreen.toggleOSXFullscreen(currentWindow);
+		            }
+		        });
+		      
+		      menuAdapter.addMenu(osxViewMenu);
+		      
+		      OSXMenu osxHelpMenu = new OSXMenu(Messages.getTitle("Menu.Help"));
+		      
+		      osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Index"));
+		      osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Contents"));
+		      osxHelpMenu.addMenuItem(Messages.getString("OptionsAndHelp.ReportBug.text"));
+		      osxHelpMenu.addMenuItem("TEST").setEnabled(false);
+		      osxHelpMenu.addMenuItem("TEST2").setVisible(false);
+		      
+		      menuAdapter.addMenu(osxHelpMenu);
+
+		}
 		getRibbon().addTaskbarComponent(getTaskbarButtonNew());
 		getRibbon().addTaskbarComponent(getTaskbarButtonSave());
 		getRibbon().addTaskbarComponent(getTaskbarButtonClose());		
@@ -1560,7 +1660,17 @@ private JCommandButton getCommunityButton() {
 	public void fireViewEvent(AbstractViewEvent viewevent) {
 		this.m_mediator.fireViewEvent(viewevent);
 	}
-
+	
+	/**
+	 * Gets the mediator for fireing events with shortcuts
+	 *
+	 * @return the mediator
+	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
+	 */
+	public AbstractApplicationMediator getMediator(){
+		return this.m_mediator;
+	}
+	
 	@Override
 	public void arrangeFrames() {
 		// TODO Auto-generated method stub

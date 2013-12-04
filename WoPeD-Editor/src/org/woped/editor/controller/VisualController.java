@@ -396,9 +396,18 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 				while (it.hasNext()) 
 				{
 					JComponent target = it.next();
+//					if (target instanceof OSXMenuItem) 
+//					{
+//						//TODO: Workaround for OSXMenuItem - Check depenencies
+//						target.setEnabled(status);
+//					}
+//					else 
 					if (target instanceof JMenuItem) 
 					{
-						target.setVisible(status);
+						if( target.getClass().getName().equals("org.woped.starter.osxMenu.OSXMenuItem"))
+								target.setEnabled(status);
+						else
+							target.setVisible(status);
 					}
 				}
 
