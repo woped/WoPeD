@@ -20,6 +20,7 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 
@@ -271,24 +272,22 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.NewEditor"), KeyEvent.VK_N).addAction(mediator, ActionFactory.ACTIONID_NEW, AbstractViewEvent.NEW);  
 		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.OpenEditor"), KeyEvent.VK_O).addAction(mediator, ActionFactory.ACTIONID_OPEN, AbstractViewEvent.OPEN);  
 		      //recent files
-		      //JMenu recentFiles = osxMenu.addSubMenu(Messages.getTitle("Menu.File.RecentMenu"))
-				JMenu recentFiles = new JMenu(Messages.getTitle("Menu.File.RecentMenu"));
-				Vector<?> v = ConfigurationManager.getConfiguration().getRecentFiles();
-				if (v.size() != 0) {
-					for (int idx = 0; idx < v.size(); idx++) {
-						String name = ((WoPeDRecentFile) v.get(idx)).getName();
-						String path = ((WoPeDRecentFile) v.get(idx)).getPath();
-						OSXMenuItem recentFile = new OSXMenuItem(name);
-						recentFile.addActionListener(new recentFileListener(path));
-						recentFiles.add(recentFile);
-					}
-				} else {
-					OSXMenuItem emptyItem = new OSXMenuItem(Messages.getString("Menu.File.RecentMenu.empty"));
-					emptyItem.setEnabled(false);
-					recentFiles.add(emptyItem);
-				}
-				osxFileMenu.add(recentFiles);
 
+				JMenu recentFiles = new JMenu(Messages.getTitle("Menu.File.RecentMenu"));
+			      getRecentMenu();
+			      for (Component temp : m_recentMenu.getMenuComponents()) {
+			  		final JCommandMenuButton a = (JCommandMenuButton) temp;
+			  		OSXMenuItem recentFile = new OSXMenuItem(a.getText());
+			  		recentFile.addActionListener(new ActionListener() {
+				    	  @Override  
+				    	  public void actionPerformed(ActionEvent evt) {
+				    		  a.doActionClick();
+				            }
+				        });
+			  		recentFiles.add(recentFile);
+			  	 }
+			      osxFileMenu.add(recentFiles);
+			      
 		      //osxMenu.addMenuItem("Close").addAction(mediator, ActionFactory.ACTIONID_CLOSE, AbstractViewEvent.CLOSE);
 		      osxFileMenu.addMenuItemWithShortcut(Messages.getTitle("Action.CloseEditor"), KeyEvent.VK_W).addAction(mediator, ActionFactory.ACTIONID_CLOSE, AbstractViewEvent.CLOSE);  
 		      osxFileMenu.addSeparator();
@@ -337,7 +336,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		    			 
 		            }
 		        });
-		    //  checkBoxItem.setState(treeviewCheckbox.isSelected());
 		      overviewCheckboxMenu.setSelected(true);
 		      osxViewMenu.add(overviewCheckboxMenu);
 		      treeviewCheckboxMenu = new JCheckBoxMenuItem(Messages.getString("Sidebar.Treeview.Title"));
@@ -357,8 +355,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		      
 		      osxViewMenu.addSeparator();
 		      //Fullscreen support
+		      
 		      final Window currentWindow = (Window) SwingUtilities.getRoot((Component) this);
-		      OSXFullscreen.enableOSXFullscreen(currentWindow);
 		     
 		      osxViewMenu.addMenuItemWithShortcut("Toggle Fullscreen",KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK).addActionListener(new ActionListener() {
 		    	  @Override  
@@ -369,15 +367,36 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		      
 		      menuAdapter.addMenu(osxViewMenu);
 		      
-		      OSXMenu osxHelpMenu = new OSXMenu(Messages.getTitle("Menu.Help"));
+		      OSXMenu osxCommunityMenu = new OSXMenu(Messages.getTitle("Task.Community"));
+		      osxCommunityMenu.addMenuItem(Messages.getString("Community.Facebook.text"));
+		      osxCommunityMenu.addMenuItem(Messages.getString("Community.Googleplus.text"));
+		      osxCommunityMenu.addMenuItem(Messages.getString("Community.Twitter.text"));
+		      osxCommunityMenu.addSeparator();
+		      osxCommunityMenu.addMenuItem(Messages.getString("Community.Register.text"));
+		      osxCommunityMenu.addMenuItem(Messages.getString("Community.Community.text"));
+		      menuAdapter.addMenu(osxCommunityMenu);
 		      
+		      OSXMenu osxHelpMenu = new OSXMenu(Messages.getTitle("Menu.Help"));
+		        
 		      osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Index"));
 		      osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Contents"));
 		      osxHelpMenu.addMenuItem(Messages.getString("OptionsAndHelp.ReportBug.text"));
-		      osxHelpMenu.addMenuItem("TEST").setEnabled(false);
-		      osxHelpMenu.addMenuItem("TEST2").setVisible(false);
 		      
-		      menuAdapter.addMenu(osxHelpMenu);
+		      JMenu sampleNets = new JMenu(Messages.getString("OptionsAndHelp.SampleNets.text"));
+		      getSampleMenu();
+		      for (Component temp : m_sampleMenu.getMenuComponents()) {
+		  		final JCommandMenuButton a = (JCommandMenuButton) temp;
+		  		OSXMenuItem sampleFile = new OSXMenuItem(a.getText());
+		  		sampleFile.addActionListener(new ActionListener() {
+			    	  @Override  
+			    	  public void actionPerformed(ActionEvent evt) {
+			    		  a.doActionClick();
+			            }
+			        });
+		  		sampleNets.add(sampleFile);
+		  	 }
+		     osxHelpMenu.add(sampleNets);
+		     menuAdapter.addMenu(osxHelpMenu);
 
 		}
 		getRibbon().addTaskbarComponent(getTaskbarButtonNew());
