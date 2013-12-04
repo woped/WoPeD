@@ -51,6 +51,7 @@ import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
 import org.woped.editor.gui.config.AbstractConfPanel;
+import org.woped.editor.gui.config.ConfApromorePanel;
 //import org.woped.editor.gui.config.ConfApromorePanel;
 import org.woped.editor.gui.config.ConfEditorPanel;
 import org.woped.editor.gui.config.ConfFilePanel;
@@ -94,7 +95,7 @@ public class ConfigVC extends JDialog implements IViewController
     private AbstractConfPanel	  langPanel      = null;			
     private AbstractConfPanel	  colorPanel 	 = null;			
     private AbstractConfPanel	  metricsPanel   = null;			
-//    private AbstractConfPanel	  aproPanel   	 = null;			
+    private AbstractConfPanel	  aproPanel   	 = null;			
     // ButtonPanel
     private JPanel                buttonPanel    = null;
     private JButton               okButton       = null;
@@ -261,9 +262,9 @@ public class ConfigVC extends JDialog implements IViewController
     		tabbedPane.addTab(Messages.getString("Configuration.Metrics.Title"), metricsPanel);
     		confPanels.put(metricsPanel.getPanelName(), metricsPanel);
     		
-/*    		aproPanel = new ConfApromorePanel(Messages.getString("Configuration.Apromore.Title"));
+    		aproPanel = new ConfApromorePanel(Messages.getString("Configuration.Apromore.Title"));
     		tabbedPane.addTab(Messages.getString("Configuration.Apromore.Title"), aproPanel);
-    		confPanels.put(aproPanel.getPanelName(), aproPanel);*/
+    		confPanels.put(aproPanel.getPanelName(), aproPanel);
     		
     		readConfiguration();
     		
