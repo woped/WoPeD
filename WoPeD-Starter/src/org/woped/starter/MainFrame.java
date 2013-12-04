@@ -16,6 +16,7 @@ import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
 import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -147,7 +148,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JRibbonComponent				treeviewComponent			= null;
 	private JCheckBox						overviewCheckbox			= null;
 	private JCheckBox						treeviewCheckbox			= null;
-
+	private JCheckBoxMenuItem				overviewCheckboxMenu;
+	private JCheckBoxMenuItem				treeviewCheckboxMenu;
 	private	JCommandButton 					tokengameStartButton		= null;
 	private	JCommandButton 					coverabilityGraphButton 	= null;
 	private	JCommandButton 					coloringButton 				= null;
@@ -322,6 +324,39 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		      osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Cascade"));
 		      osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Arrange"));
 		      osxViewMenu.addSeparator();
+		      //synchronized checkbox menus
+		      overviewCheckboxMenu = new JCheckBoxMenuItem(Messages.getString("Sidebar.Overview.Title"));
+		      overviewCheckboxMenu.addActionListener(new ActionButtonListener(mediator,ActionFactory.ACTIONID_SHOWOVERVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI, overviewCheckboxMenu));
+		      overviewCheckboxMenu.addActionListener(new ActionListener() {
+		    	  @Override  
+		    	  public void actionPerformed(ActionEvent evt) {
+		    		 if(overviewCheckboxMenu.isSelected())
+		    			 overviewCheckbox.setSelected(true);
+		    		 else
+		    			 overviewCheckbox.setSelected(false);
+		    			 
+		            }
+		        });
+		    //  checkBoxItem.setState(treeviewCheckbox.isSelected());
+		      overviewCheckboxMenu.setSelected(true);
+		      osxViewMenu.add(overviewCheckboxMenu);
+		      treeviewCheckboxMenu = new JCheckBoxMenuItem(Messages.getString("Sidebar.Treeview.Title"));
+		      treeviewCheckboxMenu.addActionListener(new ActionButtonListener(mediator,ActionFactory.ACTIONID_SHOWTREEVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI, treeviewCheckboxMenu));
+		      treeviewCheckboxMenu.addActionListener(new ActionListener() {
+		    	  @Override  
+		    	  public void actionPerformed(ActionEvent evt) {
+		    		 if(treeviewCheckboxMenu.isSelected())
+		    			 treeviewCheckbox.setSelected(true);
+		    		 else
+		    			 treeviewCheckbox.setSelected(false);
+		    			 
+		            }
+		        });
+		      treeviewCheckboxMenu.setSelected(true);
+		      osxViewMenu.add(treeviewCheckboxMenu);
+		      
+		      osxViewMenu.addSeparator();
+		      //Fullscreen support
 		      final Window currentWindow = (Window) SwingUtilities.getRoot((Component) this);
 		      OSXFullscreen.enableOSXFullscreen(currentWindow);
 		     
@@ -372,11 +407,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	}
 
 	
-	private void setTooltip(JCommandButton button, String prefix) {
-		button.setActionRichTooltip(new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip")));
-	}
-
-	
 	private void setPopupTooltip(JCommandButton button, String prefix) {
 		button.setPopupRichTooltip(new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip")));
 	}
@@ -393,6 +423,11 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		
 		return tokengameGroup;
 	}
+
+	private void setTooltip(JCommandButton button, String prefix) {
+		button.setActionRichTooltip(new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip")));
+	}
+
 
 	/***********/
 	/* TASKBAR */
@@ -1314,6 +1349,15 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			overviewCheckbox = new JCheckBox(Messages.getString("Sidebar.Overview.Title"));
 			overviewComponent = new JRibbonComponent(overviewCheckbox);
 			overviewCheckbox.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWOVERVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI, overviewCheckbox));
+			overviewCheckbox.addActionListener(new ActionListener() {
+		    	  @Override  
+		    	  public void actionPerformed(ActionEvent evt) {
+		    		 if(overviewCheckbox.isSelected())
+		    			 overviewCheckboxMenu.setSelected(true);
+		    		 else
+		    			 overviewCheckboxMenu.setSelected(false);
+		    			 
+		    	  }});
 			overviewCheckbox.setToolTipText(Messages.getString("Sidebar.Overview.Tooltip"));
 		}
 		
@@ -1326,6 +1370,15 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			treeviewCheckbox = new JCheckBox(Messages.getString("Sidebar.Treeview.Title"));
 			treeviewComponent = new JRibbonComponent(treeviewCheckbox);
 			treeviewCheckbox.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWTREEVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI, treeviewCheckbox));
+			treeviewCheckbox.addActionListener(new ActionListener() {
+		    	  @Override  
+		    	  public void actionPerformed(ActionEvent evt) {
+		    		 if(treeviewCheckbox.isSelected())
+		    			 treeviewCheckboxMenu.setSelected(true);
+		    		 else
+		    			 treeviewCheckboxMenu.setSelected(false);
+		    			 
+		            }});
 			treeviewCheckbox.setToolTipText(Messages.getString("Sidebar.Treeview.Tooltip"));
 		}
 		

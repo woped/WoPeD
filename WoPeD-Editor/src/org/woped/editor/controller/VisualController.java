@@ -35,6 +35,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.JSplitPane;
@@ -404,7 +405,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 //					else 
 					if (target instanceof JMenuItem) 
 					{
-						if( target.getClass().getName().equals("org.woped.starter.osxMenu.OSXMenuItem"))
+						if( target.getClass().getName().equals("org.woped.starter.osxMenu.OSXMenuItem") || target instanceof JCheckBoxMenuItem)
 								target.setEnabled(status);
 						else
 							target.setVisible(status);
