@@ -323,10 +323,21 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 				while (it.hasNext()) 
 				{
 					JComponent target = it.next();	
+					
 					if (! (target instanceof JMenuItem)) 
 					{
 						target.setEnabled(status);
 					}
+					//TODO: Workaround for OSXMenuItem
+					if ((target instanceof JMenuItem)) 
+					{
+						if( target.getClass().getName().equals("org.woped.starter.osxMenu.OSXMenuItem") || target instanceof JCheckBoxMenuItem){
+							target.setEnabled(status);
+							target.setVisible(true);		
+						}
+					}
+					
+					
 				}
 				
 				return true;
@@ -397,16 +408,11 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 				while (it.hasNext()) 
 				{
 					JComponent target = it.next();
-//					if (target instanceof OSXMenuItem) 
-//					{
-//						//TODO: Workaround for OSXMenuItem - Check depenencies
-//						target.setEnabled(status);
-//					}
-//					else 
+					//TODO: Workaround for OSXMenuItem - Check depenencies
 					if (target instanceof JMenuItem) 
 					{
 						if( target.getClass().getName().equals("org.woped.starter.osxMenu.OSXMenuItem") || target instanceof JCheckBoxMenuItem)
-								target.setEnabled(status);
+							target.setVisible(true);
 						else
 							target.setVisible(status);
 					}
