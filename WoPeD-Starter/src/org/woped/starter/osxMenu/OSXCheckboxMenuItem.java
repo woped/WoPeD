@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Method;
 
+import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
@@ -19,14 +21,15 @@ import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.gui.translations.Messages;
+
 
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class OSXMenuItem.
  */
-public class OSXMenuItem extends JMenuItem {
-    
+public class OSXCheckboxMenuItem extends JCheckBoxMenuItem {
     /**
      * The listener interface for receiving shortcutAction events.
      * The class that is interested in processing a shortcutAction
@@ -75,15 +78,37 @@ public class OSXMenuItem extends JMenuItem {
 			action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, event_id));
 		}
     }
-  
+
 	/**
 	 * Instantiates a new oSX menu item.
 	 *
 	 * @param itemName the item name
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 	 */
-	public OSXMenuItem(String itemName) {
+	public OSXCheckboxMenuItem(String itemName, final JCheckBox synchronizedItem) {
 		super(itemName);
+		final OSXCheckboxMenuItem currentItem = this;
+		this.addActionListener(new ActionListener() {
+			  @Override  
+			  public void actionPerformed(ActionEvent evt) {
+				 if(currentItem.isSelected())
+					 synchronizedItem.setSelected(true);
+				 else
+					 synchronizedItem.setSelected(false);
+					 
+		      }
+		  });
+		synchronizedItem.addActionListener(new ActionListener() {
+	    	  @Override  
+	    	  public void actionPerformed(ActionEvent evt) {
+	    		 if(synchronizedItem.isSelected())
+	    			 currentItem.setSelected(true);
+	    		 else
+	    			 currentItem.setSelected(false);
+	    			 
+	            }
+	        });
+		currentItem.setSelected(true);
 	}
 	
 	/**
@@ -97,7 +122,5 @@ public class OSXMenuItem extends JMenuItem {
 	public void addAction(AbstractApplicationMediator mediator, String action_id, int viewEvent){
 		this.addActionListener(new ShortcutActionListener(mediator, action_id, viewEvent, this));
 	}
-
-
-
 }
+

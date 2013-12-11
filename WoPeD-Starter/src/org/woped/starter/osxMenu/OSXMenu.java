@@ -6,6 +6,7 @@ package org.woped.starter.osxMenu;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
+import javax.swing.JCheckBox;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
@@ -93,4 +94,33 @@ public class OSXMenu extends JMenu {
       this.add(item);
       return item;
    }
+   
+   public OSXCheckboxMenuItem addCheckboxMenuItem(String itemName, final JCheckBox synchronizedItem) {
+		  OSXCheckboxMenuItem item = new OSXCheckboxMenuItem(itemName, synchronizedItem);
+	      this.add(item);
+	      return item;
+   }
+   public OSXCheckboxMenuItem addCheckboxMenuItemWithShortcut(String itemName, int shortcut, final JCheckBox synchronizedItem) {
+	  OSXCheckboxMenuItem item = new OSXCheckboxMenuItem(itemName, synchronizedItem);
+      item.setAccelerator(KeyStroke.getKeyStroke(shortcut, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+      this.add(item);
+      return item;
+   }
+   public OSXCheckboxMenuItem addCheckboxMenuItemWithShortcut(String itemName, int shortcut, int modifier, final JCheckBox synchronizedItem) {
+	  OSXCheckboxMenuItem item = new OSXCheckboxMenuItem(itemName, synchronizedItem);
+      item.setAccelerator(KeyStroke.getKeyStroke(shortcut, (modifier | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())));
+      this.add(item);
+      return item;
+   }
+   public OSXCheckboxMenuItem addMenuItemWithSingleShortcut(String itemName, int shortcut, final JCheckBox synchronizedItem) {
+	   OSXCheckboxMenuItem item = new OSXCheckboxMenuItem(itemName, synchronizedItem);
+      item.setAccelerator(KeyStroke.getKeyStroke(shortcut,0));
+      this.add(item);
+      return item;
+   }
+
+public void addSubMenu(OSXMenu subMenu) {
+	this.add(subMenu);
+}
+   
 }
