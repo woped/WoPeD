@@ -39,16 +39,13 @@ public class OSXMenuItem extends JMenuItem {
      * @see ShortcutActionEvent
      */
     class ShortcutActionListener implements ActionListener {
-		
+
 		/** The event_id. */
 		private int			event_id;
-		
 		/** The action_id. */
 		private String      action_id;
-		
 		/** The action. */
-		private WoPeDAction	action;
-				
+		private WoPeDAction	action;				
 		/**
 		 * Instantiates a new shortcut action listener.
 		 *
