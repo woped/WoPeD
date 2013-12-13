@@ -308,7 +308,7 @@ public class ActionFactory
         
         STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_STEP, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_STEP, null, ACTIONID_TOKENGAME_STEP));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_STEP), VisualController.TOKENGAME_AUTOPLAY_MODE, VisualController.WITH_EDITOR, VisualController.IGNORE);
-        
+
         STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_BACKWARD, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_BACKWARD, null, ACTIONID_TOKENGAME_BACKWARD));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_BACKWARD),
         		new VisualController.IVisibility() {
@@ -328,7 +328,22 @@ public class ActionFactory
 				});
 
         STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_STOP, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_STOP, null, ACTIONID_TOKENGAME_STOP));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_STOP), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        //VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_STOP), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_STOP),                
+        		new VisualController.IVisibility() {
+			
+					public boolean getVisible(boolean[] status) {
+						return status[VisualController.WITH_EDITOR];
+					}
+					
+					public boolean getSelected(boolean[] status) {
+						return false;
+					}
+					
+					public boolean getEnabled(boolean[] status) {
+						return (status[VisualController.TOKENGAME] && status[VisualController.WITH_EDITOR]);
+					}
+				});
         
         STATIC_ACTION_MAP.put(ACTIONID_TOKENGAME_FORWARD, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.TOKENGAME_FORWARD, null, ACTIONID_TOKENGAME_FORWARD));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_TOKENGAME_FORWARD),
@@ -397,7 +412,7 @@ public class ActionFactory
         					}
         					
         					public boolean getEnabled(boolean[] status) {
-        						return ((!status[VisualController.TOKENGAME_AUTOPLAY_MODE]) &&
+        						return (status[VisualController.TOKENGAME] && (!status[VisualController.TOKENGAME_AUTOPLAY_MODE]) &&
         								status[VisualController.WITH_EDITOR]);
         					}
         				});
