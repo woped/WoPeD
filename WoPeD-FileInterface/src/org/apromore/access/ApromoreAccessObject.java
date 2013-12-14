@@ -23,6 +23,8 @@ import org.woped.gui.translations.Messages;
 
 public class ApromoreAccessObject {
 
+	//managerService = ()...
+	
 	ManagerPortalService service;
 	ManagerPortalPortType serviceport;
 	boolean isOnline = false;
@@ -56,10 +58,19 @@ public class ApromoreAccessObject {
 
 	public List<ProcessSummaryType> getList() {
 
+		/*komplette klasse auskommentieren, getList() Methode nur anpassen und versuchen ob das schon
+		 * funktioniert bzw. reicht (2 Zeile sind einzufügen und oben eine Sache zu implementieren)
+		 * 
+		 * 
+		 * ProcessSummaries
+		 * 
+		 * 
+		 */
+		
 		ReadProcessSummariesOutputMsgType sumout = serviceport
 				.readProcessSummaries(new ReadProcessSummariesInputMsgType());
 		ProcessSummariesType summaries = sumout.getProcessSummaries();
-		return summaries.getProcessSummary();
+		return summaries.getProcessSummary(); //processes
 	}
 
 	public DataHandler getPNML(ExportFormatInputMsgType request) {
