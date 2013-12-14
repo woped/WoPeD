@@ -345,12 +345,21 @@ public class JRibbonFrame extends JFrame {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see javax.swing.JFrame#setJMenuBar(javax.swing.JMenuBar)
+	 * 
+	 * 
 	 */
+    /**
+     * Alows to add a JMenuBar (for MacOS X Menu-Bar). 
+     *
+     * @see javax.swing.JFrame#setJMenuBar(javax.swing.JMenuBar)
+     *
+     * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
+     */
 	@Override
 	public void setJMenuBar(JMenuBar menubar) {
-		throw new IllegalArgumentException(
-				"Can't set a menu bar on JRibbonFrame");
+		super.setJMenuBar(menubar);
+		//throw new IllegalArgumentException(
+		//"Can't set a menu bar on JRibbonFrame");
 	}
 
 	/*

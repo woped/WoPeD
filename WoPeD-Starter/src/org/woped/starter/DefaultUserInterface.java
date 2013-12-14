@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
@@ -20,6 +21,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
@@ -33,6 +35,7 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.PetriNetResourceEditor;
@@ -44,6 +47,7 @@ import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.images.svg.woped;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.starter.controller.vc.StatusBarVC;
+import org.woped.starter.osxMenu.OSXFullscreen;
 import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
@@ -63,7 +67,10 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     public DefaultUserInterface(TaskBarVC taskBar, StatusBarVC statusBar)
     {
         super();
-  
+        if(Platform.isMac()){
+  	      final Window currentWindow = (Window) SwingUtilities.getRoot((Component) this);
+  	      OSXFullscreen.enableOSXFullscreen(currentWindow);
+        }
         // Adaption of constructor signature
         this.statusBar = statusBar;
     
