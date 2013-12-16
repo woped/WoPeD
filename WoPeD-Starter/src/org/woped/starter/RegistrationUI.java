@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.translations.Messages;
@@ -171,6 +172,7 @@ public class RegistrationUI extends JDialog {
 			
 			registerButton.setIcon(Messages.getImageIcon("Action.Register"));
 			registerButton.setText(Messages.getTitle("Action.Register"));
+			OSXHelper.macToggleButton(registerButton);
 		}
 		
 		return registerButton;
@@ -197,6 +199,7 @@ public class RegistrationUI extends JDialog {
 			
 			closeButton.setIcon(Messages.getImageIcon("Action.Close"));
 			closeButton.setText(Messages.getTitle("Action.Close"));
+			OSXHelper.macToggleButton(closeButton);
 		}
 			
 		return closeButton;
@@ -209,12 +212,11 @@ public class RegistrationUI extends JDialog {
             buttonPanel.setLayout(new GridBagLayout());
  
             GridBagConstraints c = new GridBagConstraints();
-            
             c.gridx = 0;
             c.gridy = 0;
             c.anchor = GridBagConstraints.EAST;
             c.insets = new Insets(5, 5, 5, 5);
- 
+            
             buttonPanel.add(getRegisterButton(), c);                                          
             c.gridx = 1;
             buttonPanel.add(getCloseButton(), c);

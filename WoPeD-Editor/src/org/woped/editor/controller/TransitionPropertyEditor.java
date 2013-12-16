@@ -67,6 +67,7 @@ import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.bpel.Assign;
 import org.woped.editor.controller.bpel.BPELadditionalPanel;
@@ -1898,6 +1899,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			buttonOk.setText(Messages.getTitle("Button.Ok"));
 			buttonOk.setMnemonic(Messages.getMnemonic("Button.Ok"));
 			buttonOk.setPreferredSize(new Dimension(120, 25));
+			OSXHelper.macToggleButton(buttonOk);
 			
 			buttonOk.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -1931,6 +1933,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
 			buttonCancel.setMnemonic(Messages.getMnemonic("Button.Cancel"));
 			buttonCancel.setPreferredSize(new Dimension(120, 25));
+			OSXHelper.macToggleButton(buttonCancel);
 			buttonCancel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					TransitionPropertyEditor.this.dispose();

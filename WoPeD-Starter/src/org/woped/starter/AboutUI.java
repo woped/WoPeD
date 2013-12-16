@@ -23,6 +23,7 @@
 package org.woped.starter;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -46,7 +47,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.translations.Messages;
@@ -263,6 +264,7 @@ public class AboutUI extends JDialog
             c1.gridx = 0;
             c1.insets = new Insets(10, 10, 10, 10);
             c1.anchor = GridBagConstraints.WEST;
+            OSXHelper.macToggleButton(aboutButton);
             buttonPanel.add(aboutButton, c1);
 
             /* Changelog Button */
@@ -286,6 +288,7 @@ public class AboutUI extends JDialog
             c1.gridx = 1;
             c1.insets = new Insets(0, 0, 0, 0);
             c1.anchor = GridBagConstraints.CENTER;
+            OSXHelper.macToggleButton(changelogButton);
             buttonPanel.add(changelogButton, c1);
 
             /* Close Button */
@@ -297,8 +300,10 @@ public class AboutUI extends JDialog
             c1.gridx = 2;
             c1.insets = new Insets(10, 10, 10, 10);
             c1.anchor = GridBagConstraints.EAST;
+            OSXHelper.macToggleButton(closeButton);
             buttonPanel.add(closeButton, c1);
         }
         return buttonPanel;
     }
+    
 } // @jve:visual-info decl-index=0 visual-constraint="0,0"

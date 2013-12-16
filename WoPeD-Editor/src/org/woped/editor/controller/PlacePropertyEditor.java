@@ -46,6 +46,7 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.translations.Messages;
 
@@ -334,6 +335,7 @@ public class PlacePropertyEditor extends JDialog
 
             buttonOk.setMnemonic(Messages.getMnemonic("Button.Ok"));
             buttonOk.setPreferredSize(new Dimension(100, 25));
+            OSXHelper.macToggleButton(buttonOk);
             buttonOk.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -356,6 +358,7 @@ public class PlacePropertyEditor extends JDialog
             buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
             buttonCancel.setMnemonic(Messages.getMnemonic("Button.Cancel"));
             buttonCancel.setPreferredSize(new Dimension(100, 25));
+            OSXHelper.macToggleButton(buttonCancel);
             buttonCancel.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)

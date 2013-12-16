@@ -47,6 +47,7 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.core.utilities.FileFilterImpl;
+import org.woped.core.utilities.OSXHelper;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
@@ -305,7 +306,9 @@ public class ConfigVC extends JDialog implements IViewController
             applyButton.setMnemonic(Messages.getMnemonic("Button.Apply"));
             applyButton.setText(Messages.getTitle("Button.Apply"));
             applyButton.setIcon(Messages.getImageIcon("Button.Apply"));
+            OSXHelper.macToggleButton(applyButton);
             applyButton.addActionListener(new ActionListener()
+            
             {
                 public void actionPerformed(ActionEvent arg0)
                 {
@@ -324,6 +327,7 @@ public class ConfigVC extends JDialog implements IViewController
             cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
             cancelButton.setText(Messages.getTitle("Button.Cancel"));
             cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
+            OSXHelper.macToggleButton(cancelButton);
             cancelButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)
@@ -344,6 +348,7 @@ public class ConfigVC extends JDialog implements IViewController
             okButton.setMnemonic(Messages.getMnemonic("Button.Ok"));
             okButton.setText(Messages.getTitle("Button.Ok"));
             okButton.setIcon(Messages.getImageIcon("Button.Ok"));
+            OSXHelper.macToggleButton(okButton);
             okButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)

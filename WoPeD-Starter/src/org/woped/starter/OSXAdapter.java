@@ -75,6 +75,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.*;
 
+
 /**
  * {@code OSXAdapter} uses a Proxy object to dynamically implement the
  * {@code com.apple.eawt.ApplicationListener} interface and register it with the
@@ -338,4 +339,6 @@ public class OSXAdapter implements InvocationHandler {
             }
         }
     }
+    
+
 }

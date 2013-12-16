@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.OSXHelper;
 import org.woped.gui.translations.Messages;
 
 public class AskToStartWoPeDUI extends JDialog {
@@ -28,6 +29,7 @@ public class AskToStartWoPeDUI extends JDialog {
 		panel2.setLayout(new FlowLayout(FlowLayout.CENTER));
 		yesButton = new JButton(Messages.getString("Dialog.StartWoPeD.Yes.Text"));
         yesButton.setIcon(Messages.getImageIcon("Dialog.StartWoPeD.Yes"));
+        OSXHelper.macToggleButton(yesButton);
 		yesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				setVisible(false);
@@ -37,6 +39,7 @@ public class AskToStartWoPeDUI extends JDialog {
 		panel2.add(yesButton);
 		noButton = new JButton(Messages.getString("Dialog.StartWoPeD.No.Text"));
         noButton.setIcon(Messages.getImageIcon("Dialog.StartWoPeD.No"));
+        OSXHelper.macToggleButton(noButton);
 		noButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				LoggerManager.info(Constants.GUI_LOGGER, "EXIT APPLICATION");

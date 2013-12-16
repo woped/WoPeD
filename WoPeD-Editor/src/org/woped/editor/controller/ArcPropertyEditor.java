@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.core.model.ArcModel;
+import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.translations.Messages;
 
@@ -269,9 +270,11 @@ public class ArcPropertyEditor extends JDialog {
             buttonOk = new JButton();
             buttonOk.setIcon(Messages.getImageIcon("Button.Ok"));
             buttonOk.setText(Messages.getString("Button.Ok.Title"));
+           
 
             buttonOk.setMnemonic(KeyEvent.VK_O);
             buttonOk.setPreferredSize(new Dimension(100, 25));
+            OSXHelper.macToggleButton(buttonOk);
             buttonOk.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -294,6 +297,7 @@ public class ArcPropertyEditor extends JDialog {
             buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
             buttonCancel.setMnemonic(KeyEvent.VK_C);
             buttonCancel.setPreferredSize(new Dimension(120, 25));
+            OSXHelper.macToggleButton(buttonCancel);
             buttonCancel.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)

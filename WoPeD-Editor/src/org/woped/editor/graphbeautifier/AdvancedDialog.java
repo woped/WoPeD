@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.translations.Messages;
 /**
@@ -261,6 +262,7 @@ public class AdvancedDialog extends JDialog {
             cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
             cancelButton.setText(Messages.getTitle("Button.Cancel"));
             cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
+            OSXHelper.macToggleButton(cancelButton);
             cancelButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)
@@ -278,6 +280,7 @@ public class AdvancedDialog extends JDialog {
             okButton.setText(Messages.getTitle("Button.Ok"));
             okButton.setIcon(Messages.getImageIcon("Button.Ok"));
             okButton.setMnemonic(Messages.getMnemonic("Button.Ok"));
+            OSXHelper.macToggleButton(okButton);
             okButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)

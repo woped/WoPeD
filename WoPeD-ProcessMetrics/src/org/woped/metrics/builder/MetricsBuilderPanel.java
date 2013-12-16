@@ -37,6 +37,7 @@ import javax.swing.table.TableColumnModel;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IMetricsConfiguration;
 import org.woped.core.config.IMetricsConfiguration.MetricThresholdState;
+import org.woped.core.utilities.OSXHelper;
 import org.woped.metrics.helpers.WatermarkedJTextField;
 import org.woped.metrics.metricsCalculation.MetricsUIRequestHandler;
 import org.woped.metrics.metricsCalculation.UITypes.UIThreshold;
@@ -530,8 +531,10 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 							jPanelOptions.setLayout(jPanelOptionsLayout);
 							jPanelBuilder
 									.add(jPanelOptions, BorderLayout.SOUTH);
+							/*
 							jPanelOptions
 									.setPreferredSize(new java.awt.Dimension(350, 75));
+									*/
 							{
 								jButtonNew = new JButton();
 								jPanelOptions.add(jButtonNew);
@@ -539,6 +542,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 								jButtonNew.setText(Messages.getString("Metrics.Builder.Button.New.Text"));
 								jButtonNew.setName(NEW_BTN);
 								jButtonNew.setToolTipText(Messages.getString("Metrics.Builder.Button.New.Tooltip"));
+								OSXHelper.macToggleButton(jButtonNew);
 								jButtonNew.addActionListener(new MetricsUpdateListener());
 							}
 							{
@@ -548,6 +552,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 								jButtonCheck.setText(Messages.getString("Metrics.Builder.Button.Check.Text"));
 								jButtonCheck.setName(CHECK_BTN);
 								jButtonCheck.setToolTipText(Messages.getString("Metrics.Builder.Button.Check.Tooltip"));
+								OSXHelper.macToggleButton(jButtonCheck);
 								jButtonCheck
 								.addActionListener(new MetricsBuilderListener());
 							}
@@ -558,6 +563,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 								jButtonImport.setText(Messages.getString("Metrics.Builder.Button.Import.Text"));
 								jButtonImport.setName(IMPORT_BTN);
 								jButtonImport.setToolTipText(Messages.getString("Metrics.Builder.Button.Import.Tooltip"));
+								OSXHelper.macToggleButton(jButtonImport);
 								jButtonImport
 								.addActionListener(new MetricsUpdateListener());
 							}
@@ -568,6 +574,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 								jButtonExport.setText(Messages.getString("Metrics.Builder.Button.Export.Text"));
 								jButtonExport.setName(EXPORT_BTN);
 								jButtonExport.setToolTipText(Messages.getString("Metrics.Builder.Button.Export.Tooltip"));
+								OSXHelper.macToggleButton(jButtonExport);
 								jButtonExport
 								.addActionListener(new MetricsBuilderListener());
 							}
@@ -578,6 +585,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 								jButtonSave.setText(Messages.getString("Metrics.Builder.Button.Save.Text"));
 								jButtonSave.setName(SAVE_BTN);
 								jButtonSave.setToolTipText(Messages.getString("Metrics.Builder.Button.Save.Tooltip"));
+								OSXHelper.macToggleButton(jButtonSave);
 								jButtonSave
 								.addActionListener(new MetricsUpdateListener());
 							}
@@ -588,6 +596,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 								jButtonExit.setText(Messages.getString("Metrics.Builder.Button.Exit.Text"));
 								jButtonExit.setName(EXIT_BTN);
 								jButtonExit.setToolTipText(Messages.getString("Metrics.Builder.Button.Exit.Tooltip"));
+								OSXHelper.macToggleButton(jButtonExit);
 								jButtonExit
 										.addActionListener(new MetricsCloseListener());
 							}
@@ -717,6 +726,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 										jButtonSave.setText(Messages.getString("Metrics.Builder.Save.Text"));
 										jButtonSave.setToolTipText(Messages.getString("Metrics.Builder.Save.Tooltip"));
 										jButtonSave.setPreferredSize(new java.awt.Dimension(43, 67));
+										OSXHelper.macToggleButton(jButtonSave);
 										jButtonSave.addActionListener(new MetricsBuilderListener());
 										
 									}
@@ -728,6 +738,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 										jButtonAddRow.setText(Messages.getString("Metrics.Builder.Add.Text"));
 										jButtonAddRow.setToolTipText(Messages.getString("Metrics.Builder.Add.Tooltip"));
 										jButtonAddRow.setPreferredSize(new java.awt.Dimension(43, 67));
+										OSXHelper.macToggleButton(jButtonAddRow);
 										jButtonAddRow.addActionListener(new MetricsBuilderListener());
 										
 									}
@@ -739,6 +750,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 										deleteRowButton.setText(Messages.getString("Metrics.Builder.Exit.Delete"));
 										deleteRowButton.setToolTipText(Messages.getString("Metrics.Builder.Delete.Tooltip"));
 										deleteRowButton.setPreferredSize(new java.awt.Dimension(43, 67));
+										OSXHelper.macToggleButton(deleteRowButton);
 										deleteRowButton.addActionListener(new MetricsCloseListener());
 									}
 									{
@@ -749,6 +761,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 										jButtonExit.setText(Messages.getString("Metrics.Builder.Exit.Text"));
 										jButtonExit.setToolTipText(Messages.getString("Metrics.Builder.Exit.Tooltip"));
 										jButtonExit.setPreferredSize(new java.awt.Dimension(43, 67));
+										OSXHelper.macToggleButton(jButtonExit);
 										jButtonExit.addActionListener(new MetricsCloseListener());
 									}
 									
