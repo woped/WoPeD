@@ -245,6 +245,7 @@ public abstract class Messages
     				shortcutKeyCodeFromString.put(keyName,keyCode);
     			}
     		}
+    		shortcutKeyCodeFromString.put("",0);
     		// Get all of the fields in InputEvent
     		fields = java.awt.event.InputEvent.class.getFields();
     		for (int i = 0; i < fields.length; i++) {
