@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import org.woped.core.model.ArcModel;
 import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
@@ -47,8 +48,8 @@ public class ArcPropertyEditor extends JDialog {
 
     // Buttons
     private JPanel      buttonPanel      = null;
-    private JButton     buttonOk         = null;
-    private JButton     buttonCancel     = null;
+    private WopedButton     buttonOk         = null;
+    private WopedButton     buttonCancel     = null;
     
     private int oldValue;
     private boolean oldDisplayOn;
@@ -267,14 +268,13 @@ public class ArcPropertyEditor extends JDialog {
     {
         if (buttonOk == null)
         {
-            buttonOk = new JButton();
+            buttonOk = new WopedButton();
             buttonOk.setIcon(Messages.getImageIcon("Button.Ok"));
             buttonOk.setText(Messages.getString("Button.Ok.Title"));
            
 
             buttonOk.setMnemonic(KeyEvent.VK_O);
             buttonOk.setPreferredSize(new Dimension(100, 25));
-            OSXHelper.macToggleButton(buttonOk);
             buttonOk.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -292,12 +292,11 @@ public class ArcPropertyEditor extends JDialog {
     {
         if (buttonCancel == null)
         {
-            buttonCancel = new JButton();
+            buttonCancel = new WopedButton();
             buttonCancel.setText(Messages.getString("Button.Cancel.Title"));
             buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
             buttonCancel.setMnemonic(KeyEvent.VK_C);
             buttonCancel.setPreferredSize(new Dimension(120, 25));
-            OSXHelper.macToggleButton(buttonCancel);
             buttonCancel.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)

@@ -23,7 +23,6 @@
 package org.woped.starter;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -40,16 +39,15 @@ import java.io.IOException;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 /**
@@ -70,9 +68,9 @@ public class AboutUI extends JDialog
     private JLabel              mailtoLabel     = null;
     private JLabel              sfLabel         = null;
     private JLabel              icLabel         = null;    
-    private JButton             closeButton     = null;
-    private JButton             aboutButton     = null;
-    private JButton             changelogButton = null;
+    private WopedButton             closeButton     = null;
+    private WopedButton             aboutButton     = null;
+    private WopedButton             changelogButton = null;
 
     private JScrollPane         aboutPanel      = null;
     private JScrollPane         changeLogPanel  = null;
@@ -243,7 +241,7 @@ public class AboutUI extends JDialog
             GridBagConstraints c1 = new GridBagConstraints();
 
             /* About Button */
-            aboutButton = new JButton(new AbstractAction()
+            aboutButton = new WopedButton(new AbstractAction()
             {
                 public void actionPerformed(ActionEvent arg0)
                 {
@@ -264,11 +262,10 @@ public class AboutUI extends JDialog
             c1.gridx = 0;
             c1.insets = new Insets(10, 10, 10, 10);
             c1.anchor = GridBagConstraints.WEST;
-            OSXHelper.macToggleButton(aboutButton);
             buttonPanel.add(aboutButton, c1);
 
             /* Changelog Button */
-            changelogButton = new JButton(new AbstractAction()
+            changelogButton = new WopedButton(new AbstractAction()
             {
                 public void actionPerformed(ActionEvent arg0)
                 {
@@ -288,11 +285,10 @@ public class AboutUI extends JDialog
             c1.gridx = 1;
             c1.insets = new Insets(0, 0, 0, 0);
             c1.anchor = GridBagConstraints.CENTER;
-            OSXHelper.macToggleButton(changelogButton);
             buttonPanel.add(changelogButton, c1);
 
             /* Close Button */
-            closeButton = new JButton(new DisposeWindowAction());
+            closeButton = new WopedButton(new DisposeWindowAction());
             closeButton.setMnemonic(KeyEvent.VK_C);
             closeButton.requestFocus();
 
@@ -300,7 +296,6 @@ public class AboutUI extends JDialog
             c1.gridx = 2;
             c1.insets = new Insets(10, 10, 10, 10);
             c1.anchor = GridBagConstraints.EAST;
-            OSXHelper.macToggleButton(closeButton);
             buttonPanel.add(closeButton, c1);
         }
         return buttonPanel;

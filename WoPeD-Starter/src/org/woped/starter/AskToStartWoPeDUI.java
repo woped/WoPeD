@@ -8,12 +8,13 @@ import javax.swing.*;
 
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.OSXHelper;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 public class AskToStartWoPeDUI extends JDialog {
 	private static final long serialVersionUID = 1L;
 	
-	private JButton noButton, yesButton;
+	private WopedButton noButton, yesButton;
 
 	public AskToStartWoPeDUI(JFrame owner) {
 		super(owner, Messages.getString("Dialog.StartWoPeD.Title"), true);
@@ -27,9 +28,8 @@ public class AskToStartWoPeDUI extends JDialog {
         add(new JLabel(Messages.getImageIcon("Dialog.StartWoPeD")), BorderLayout.CENTER);
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(new FlowLayout(FlowLayout.CENTER));
-		yesButton = new JButton(Messages.getString("Dialog.StartWoPeD.Yes.Text"));
+		yesButton = new WopedButton(Messages.getString("Dialog.StartWoPeD.Yes.Text"));
         yesButton.setIcon(Messages.getImageIcon("Dialog.StartWoPeD.Yes"));
-        OSXHelper.macToggleButton(yesButton);
 		yesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				setVisible(false);
@@ -37,9 +37,8 @@ public class AskToStartWoPeDUI extends JDialog {
 			}
 		});
 		panel2.add(yesButton);
-		noButton = new JButton(Messages.getString("Dialog.StartWoPeD.No.Text"));
+		noButton = new WopedButton(Messages.getString("Dialog.StartWoPeD.No.Text"));
         noButton.setIcon(Messages.getImageIcon("Dialog.StartWoPeD.No"));
-        OSXHelper.macToggleButton(noButton);
 		noButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				LoggerManager.info(Constants.GUI_LOGGER, "EXIT APPLICATION");

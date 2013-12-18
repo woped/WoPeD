@@ -59,6 +59,7 @@ import org.woped.editor.gui.config.ConfFilePanel;
 import org.woped.editor.gui.config.ConfLanguagePanel;
 import org.woped.editor.gui.config.ConfMetricsPanel;
 import org.woped.editor.gui.config.ConfUnderstandabilityPanel;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 /**
@@ -99,9 +100,9 @@ public class ConfigVC extends JDialog implements IViewController
     private AbstractConfPanel	  aproPanel   	 = null;			
     // ButtonPanel
     private JPanel                buttonPanel    = null;
-    private JButton               okButton       = null;
-    private JButton               cancelButton   = null;
-    private JButton               applyButton    = null;
+    private WopedButton               okButton       = null;
+    private WopedButton               cancelButton   = null;
+    private WopedButton               applyButton    = null;
 
     public ConfigVC(boolean modal, String id)
     {
@@ -302,11 +303,10 @@ public class ConfigVC extends JDialog implements IViewController
     {
         if (applyButton == null)
         {
-            applyButton = new JButton();
+            applyButton = new WopedButton();
             applyButton.setMnemonic(Messages.getMnemonic("Button.Apply"));
             applyButton.setText(Messages.getTitle("Button.Apply"));
             applyButton.setIcon(Messages.getImageIcon("Button.Apply"));
-            OSXHelper.macToggleButton(applyButton);
             applyButton.addActionListener(new ActionListener()
             
             {
@@ -323,11 +323,10 @@ public class ConfigVC extends JDialog implements IViewController
     {
         if (cancelButton == null)
         {
-            cancelButton = new JButton();
+            cancelButton = new WopedButton();
             cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
             cancelButton.setText(Messages.getTitle("Button.Cancel"));
             cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
-            OSXHelper.macToggleButton(cancelButton);
             cancelButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)
@@ -344,11 +343,10 @@ public class ConfigVC extends JDialog implements IViewController
     {
         if (okButton == null)
         {
-            okButton = new JButton();
+            okButton = new WopedButton();
             okButton.setMnemonic(Messages.getMnemonic("Button.Ok"));
             okButton.setText(Messages.getTitle("Button.Ok"));
             okButton.setIcon(Messages.getImageIcon("Button.Ok"));
-            OSXHelper.macToggleButton(okButton);
             okButton.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent arg0)

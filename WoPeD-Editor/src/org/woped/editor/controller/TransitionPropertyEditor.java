@@ -67,7 +67,6 @@ import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.bpel.Assign;
 import org.woped.editor.controller.bpel.BPELadditionalPanel;
@@ -83,6 +82,7 @@ import org.woped.editor.controller.bpel.Receive;
 import org.woped.editor.controller.bpel.Reply;
 import org.woped.editor.controller.bpel.Wait;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 /**
@@ -336,9 +336,9 @@ public class TransitionPropertyEditor extends JDialog implements
 	// Buttons
 	private JPanel buttonPanel = null;
 
-	private JButton buttonOk = null;
+	private WopedButton buttonOk = null;
 	
-	private JButton buttonCancel = null;
+	private WopedButton buttonCancel = null;
 
 	public TransitionPropertyEditor(Frame owner, Point position, TransitionModel transition, EditorVC editor) {
 		super(owner, true);
@@ -1894,12 +1894,11 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JButton getButtonOk() {
 		if (buttonOk == null) {
-			buttonOk = new JButton();
+			buttonOk = new WopedButton();
 			buttonOk.setIcon(Messages.getImageIcon("Button.Ok"));
 			buttonOk.setText(Messages.getTitle("Button.Ok"));
 			buttonOk.setMnemonic(Messages.getMnemonic("Button.Ok"));
 			buttonOk.setPreferredSize(new Dimension(120, 25));
-			OSXHelper.macToggleButton(buttonOk);
 			
 			buttonOk.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -1928,12 +1927,11 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JButton getButtonCancel() {
 		if (buttonCancel == null) {
-			buttonCancel = new JButton();
+			buttonCancel = new WopedButton();
 			buttonCancel.setText(Messages.getTitle("Button.Cancel"));
 			buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
 			buttonCancel.setMnemonic(Messages.getMnemonic("Button.Cancel"));
 			buttonCancel.setPreferredSize(new Dimension(120, 25));
-			OSXHelper.macToggleButton(buttonCancel);
 			buttonCancel.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					TransitionPropertyEditor.this.dispose();

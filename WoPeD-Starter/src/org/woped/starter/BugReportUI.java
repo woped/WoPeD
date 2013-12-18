@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
@@ -27,7 +28,7 @@ public class BugReportUI extends JDialog
     private JLabel              logoLabel      = null;
     private JLabel              bugReportLabel = null;
     private JLabel              bugPageLabel   = null;
-    private JButton             closeButton    = null;
+    private WopedButton             closeButton    = null;
     private JScrollPane         bugReportPanel = null;
     private JPanel              buttonPanel    = null;
 
@@ -116,9 +117,8 @@ public class BugReportUI extends JDialog
             buttonPanel = new JPanel();
             GridBagConstraints c = new GridBagConstraints();
 
-            closeButton = new JButton(new DisposeWindowAction());
+            closeButton = new WopedButton(new DisposeWindowAction());
             closeButton.setIcon(new ImageIcon(getClass().getResource(Messages.getString("BugReport.Close.Icon"))));
-            OSXHelper.macToggleButton(closeButton);
             closeButton.requestFocus();
             c.insets = new Insets(20, 0, 20, 0);
             c.anchor = GridBagConstraints.CENTER;

@@ -48,6 +48,7 @@ import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 /**
@@ -76,8 +77,8 @@ public class PlacePropertyEditor extends JDialog
 
     // Buttons
     private JPanel        buttonPanel      = null;
-    private JButton     buttonOk         = null;
-    private JButton     buttonCancel     = null;
+    private WopedButton     buttonOk         = null;
+    private WopedButton     buttonCancel     = null;
 
     public PlacePropertyEditor(Frame owner, Point position, PlaceModel place, EditorVC editor)
     {
@@ -325,17 +326,16 @@ public class PlacePropertyEditor extends JDialog
         return buttonPanel;
     }
 
-    private JButton getButtonOk()
+    private WopedButton getButtonOk()
     {
         if (buttonOk == null)
         {
-            buttonOk = new JButton();
+            buttonOk = new WopedButton();
             buttonOk.setIcon(Messages.getImageIcon("Button.Ok"));
             buttonOk.setText(Messages.getTitle("Button.Ok"));
 
             buttonOk.setMnemonic(Messages.getMnemonic("Button.Ok"));
             buttonOk.setPreferredSize(new Dimension(100, 25));
-            OSXHelper.macToggleButton(buttonOk);
             buttonOk.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)
@@ -349,16 +349,15 @@ public class PlacePropertyEditor extends JDialog
         return buttonOk;
     }
 
-    private JButton getButtonCancel()
+    private WopedButton getButtonCancel()
     {
         if (buttonCancel == null)
         {
-            buttonCancel = new JButton();
+            buttonCancel = new WopedButton();
             buttonCancel.setText(Messages.getTitle("Button.Cancel"));
             buttonCancel.setIcon(Messages.getImageIcon("Button.Cancel"));
             buttonCancel.setMnemonic(Messages.getMnemonic("Button.Cancel"));
             buttonCancel.setPreferredSize(new Dimension(100, 25));
-            OSXHelper.macToggleButton(buttonCancel);
             buttonCancel.addActionListener(new ActionListener()
             {
                 public void actionPerformed(ActionEvent e)

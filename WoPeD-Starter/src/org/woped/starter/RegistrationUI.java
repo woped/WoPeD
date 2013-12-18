@@ -21,9 +21,9 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 public class RegistrationUI extends JDialog {
@@ -35,8 +35,8 @@ public class RegistrationUI extends JDialog {
 	private JLabel 			 	logoLabel 					= null;
 	private JLabel  			registrationTextLabel 		= null;
 	private JCheckBox 			showAgainCheckBox 			= null;
-	private JButton 			closeButton 				= null;
-	private JButton 			registerButton		 		= null;
+	private WopedButton 			closeButton 				= null;
+	private WopedButton 			registerButton		 		= null;
 	private JPanel		 		registrationTextPanel 		= null;
 	private JPanel			    socialMediaPanel			= null;
 	private JPanel 				buttonPanel 				= null;
@@ -146,7 +146,7 @@ public class RegistrationUI extends JDialog {
 	private JButton getRegisterButton() {
 		
 		if (registerButton == null) {
-			registerButton = new JButton(new AbstractAction() {
+			registerButton = new WopedButton(new AbstractAction() {
 				/**
 				 * 
 				 */
@@ -172,7 +172,6 @@ public class RegistrationUI extends JDialog {
 			
 			registerButton.setIcon(Messages.getImageIcon("Action.Register"));
 			registerButton.setText(Messages.getTitle("Action.Register"));
-			OSXHelper.macToggleButton(registerButton);
 		}
 		
 		return registerButton;
@@ -182,7 +181,7 @@ public class RegistrationUI extends JDialog {
 	private JButton getCloseButton() {
 		
 		if (closeButton == null) {
-			closeButton = new JButton(new AbstractAction() {
+			closeButton = new WopedButton(new AbstractAction() {
 				/**
 				 * 
 				 */
@@ -199,7 +198,6 @@ public class RegistrationUI extends JDialog {
 			
 			closeButton.setIcon(Messages.getImageIcon("Action.Close"));
 			closeButton.setText(Messages.getTitle("Action.Close"));
-			OSXHelper.macToggleButton(closeButton);
 		}
 			
 		return closeButton;
