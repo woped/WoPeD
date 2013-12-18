@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.core.model.ArcModel;
-import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
