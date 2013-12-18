@@ -9,14 +9,12 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import org.woped.core.utilities.OSXHelper;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.lookAndFeel.WopedButton;

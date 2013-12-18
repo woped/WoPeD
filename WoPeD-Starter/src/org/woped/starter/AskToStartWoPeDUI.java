@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import org.woped.core.utilities.LoggerManager;
-import org.woped.core.utilities.OSXHelper;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
