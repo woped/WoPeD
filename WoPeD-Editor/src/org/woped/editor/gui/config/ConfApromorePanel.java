@@ -265,7 +265,7 @@ public class ConfApromorePanel extends AbstractConfPanel
             GridBagConstraints d = new GridBagConstraints();
             d.anchor = GridBagConstraints.WEST;
 
-            proxyPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Proxy-Einstellungen"), 
+            proxyPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Apromore.ProxySettings.Panel.Title")), 
             		BorderFactory.createEmptyBorder(10, 10, 10, 10)));
             
             d.weightx = 1;
