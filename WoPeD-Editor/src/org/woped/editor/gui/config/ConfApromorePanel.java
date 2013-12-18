@@ -26,6 +26,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Properties;
 
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
@@ -64,6 +68,7 @@ public class ConfApromorePanel extends AbstractConfPanel
     private JCheckBox 		useProxyBox = null;
     private JLabel 			serverPortLabel = null;
     private JTextField 		serverPortText = null;
+    private JPanel			proxyPanel = null;
  
     /**
      * Constructor for ConfToolsPanel.
@@ -74,13 +79,13 @@ public class ConfApromorePanel extends AbstractConfPanel
         initialize();
     }
 
+
+
     /**
      * @see AbstractConfPanel#applyConfiguration()
      */
     public boolean applyConfiguration()
     {
-         if (useBox.isSelected() != ConfigurationManager.getConfiguration().getApromoreUse())
-        {
             JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Apromore.Dialog.Restart.Message"), Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
                     JOptionPane.INFORMATION_MESSAGE);
             ConfigurationManager.getConfiguration().setApromoreServer(getServerText().getText());
@@ -90,8 +95,27 @@ public class ConfApromorePanel extends AbstractConfPanel
             ConfigurationManager.getConfiguration().setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
             ConfigurationManager.getConfiguration().setApromoreUseProxy(useProxyBox.isSelected());
             ConfigurationManager.getConfiguration().setApromoreUse(useBox.isSelected());
-        }
-      
+            
+            String hostname = this.getURL();
+            String port = this.getPort();
+            
+            Writer writer = null;
+            try
+            {
+             writer = new FileWriter( "../WoPeD-FileInterface/src/main/resources/apromore-client.properties");
+              Properties prop1 = new Properties();
+              prop1.setProperty("hostanme",hostname);
+              prop1.setProperty("port", port);
+              prop1.store(writer, null);
+            }
+            catch ( IOException e )
+            {
+              e.printStackTrace();
+            }
+            finally
+            {
+              try { writer.close(); } catch ( Exception e ) { }
+            } 
         return true;
     }
 
@@ -128,12 +152,18 @@ public class ConfApromorePanel extends AbstractConfPanel
         c.gridx = 0;
         c.gridy = 1;
         contentPanel.add(getSettingsPanel(), c);
-
+        
+        c.weightx = 1;
+        c.gridx = 0;
+        c.gridy = 2;
+        contentPanel.add(getProxyPanel(), c);
+        
         // dummy
-        c.fill = GridBagConstraints.VERTICAL;
+       c.fill = GridBagConstraints.VERTICAL;
         c.weighty = 1;
         c.gridy = 2;
         contentPanel.add(new JPanel(), c);
+        
         setMainPanel(contentPanel);
     }
 
@@ -219,39 +249,65 @@ public class ConfApromorePanel extends AbstractConfPanel
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 3;
-            settingsPanel.add(getUseProxyCheckbox(), c);
-            
-            c.weightx = 1;
-            c.gridx = 0;
-            c.gridy = 4;
-            settingsPanel.add(getProxyNameLabel(), c);
-            
-            c.weightx = 1;
-            c.gridx = 1;
-            c.gridy = 4;
-            settingsPanel.add(getProxyNameText(), c);
-            
-            c.weightx = 1;
-            c.gridx = 0;
-            c.gridy = 5;
-            settingsPanel.add(getProxyPortLabel(), c);
-            
-            c.weightx = 1;
-            c.gridx = 1;
-            c.gridy = 5;
-            settingsPanel.add(getProxyPortText(), c);
-            
+            settingsPanel.add(getUseProxyCheckbox(), c);           
         }
     	
 		settingsPanel.setVisible(getUseBox().isSelected());
         return settingsPanel;
     }
     
+    private JPanel getProxyPanel() 
+    {
+    	if (proxyPanel == null) 
+        {
+    		proxyPanel = new JPanel();
+    		proxyPanel.setLayout(new GridBagLayout());
+            GridBagConstraints d = new GridBagConstraints();
+            d.anchor = GridBagConstraints.WEST;
+
+            proxyPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("Proxy-Einstellungen"), 
+            		BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            
+            d.weightx = 1;
+            d.gridx = 0;
+            d.gridy = 4;
+            proxyPanel.add(getProxyNameLabel(), d);
+            
+            d.weightx = 1;
+            d.gridx = 1;
+            d.gridy = 4;
+            proxyPanel.add(getProxyNameText(), d);
+            
+            d.weightx = 1;
+            d.gridx = 0;
+            d.gridy = 5;
+            proxyPanel.add(getProxyPortLabel(), d);
+            
+            d.weightx = 1;
+            d.gridx = 1;
+            d.gridy = 5;
+            proxyPanel.add(getProxyPortText(), d);
+            
+        }
+    	
+    	proxyPanel.setVisible(getUseProxyCheckbox().isSelected());
+        return proxyPanel;
+    }
+    
 	class CheckboxListener implements ItemListener{					
 
 		public void itemStateChanged(ItemEvent ie) {
 			JCheckBox jcb = (JCheckBox) ie.getSource();
+			if (jcb==useBox){
 			getSettingsPanel().setVisible(jcb.isSelected());
+				if(jcb.isSelected()==false){
+					getProxyPanel().setVisible(false);
+				}else if (jcb.isSelected()==true && getUseProxyCheckbox().isSelected()==true){
+					getProxyPanel().setVisible(true);
+				}
+			}else{
+				getProxyPanel().setVisible(jcb.isSelected());
+			}
 
 		}
 	}
@@ -368,6 +424,8 @@ public class ConfApromorePanel extends AbstractConfPanel
         	useProxyBox = new JCheckBox();
         	useProxyBox.setEnabled(true);
         	useProxyBox.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.UseProxy") + "</html>");
+            CheckboxListener cbl = new CheckboxListener();
+    		useProxyBox.addItemListener(cbl);
         }
         return useProxyBox;
     }    
@@ -384,5 +442,14 @@ public class ConfApromorePanel extends AbstractConfPanel
        }
 		        
         return useBox;
+    }
+    private String getPort(){
+    	JTextField port = this.getServerPortText();
+    	return port.getText();
+    }
+    
+    private String getURL(){
+    	JTextField url = this.getServerText();
+    	return url.getText();
     }
 }
