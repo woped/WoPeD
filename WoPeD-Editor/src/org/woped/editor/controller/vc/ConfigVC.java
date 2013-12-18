@@ -47,7 +47,6 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.core.utilities.FileFilterImpl;
-import org.woped.core.utilities.OSXHelper;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.EditorViewEvent;
