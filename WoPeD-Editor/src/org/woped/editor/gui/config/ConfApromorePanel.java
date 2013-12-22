@@ -86,37 +86,49 @@ public class ConfApromorePanel extends AbstractConfPanel
      */
     public boolean applyConfiguration()
     {
+        boolean changed = useBox.isSelected() != ConfigurationManager.getConfiguration().getApromoreUse();
+
+        if (changed)
+        {
             JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Apromore.Dialog.Restart.Message"), Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
                     JOptionPane.INFORMATION_MESSAGE);
-            ConfigurationManager.getConfiguration().setApromoreServer(getServerText().getText());
-            ConfigurationManager.getConfiguration().setApromoreProxyName(getProxyNameText().getText());
-            ConfigurationManager.getConfiguration().setApromoreProxyPort(Integer.parseInt(getProxyPortText().getText()));
-            ConfigurationManager.getConfiguration().setApromoreUsername(getUsernameText().getText());
-            ConfigurationManager.getConfiguration().setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
-            ConfigurationManager.getConfiguration().setApromoreUseProxy(useProxyBox.isSelected());
-            ConfigurationManager.getConfiguration().setApromoreUse(useBox.isSelected());
-            
-            String hostname = this.getURL();
-            String port = this.getPort();
-            
-            Writer writer = null;
-            try
-            {
-             writer = new FileWriter( "src/org/woped/starter/utilities/apromore-client.properties");
-              Properties prop1 = new Properties();
-              prop1.setProperty("hostanme",hostname);
-              prop1.setProperty("port", port);
-              prop1.store(writer, null);
-            }
-            catch ( IOException e )
-            {
-              e.printStackTrace();
-            }
-            finally
-            {
-              try { writer.close(); } catch ( Exception e ) { }
-            } 
-        return true;
+        }
+        
+		ConfigurationManager.getConfiguration().setApromoreServer(
+				getServerText().getText());
+		ConfigurationManager.getConfiguration().setApromoreProxyName(
+				getProxyNameText().getText());
+		ConfigurationManager.getConfiguration().setApromoreProxyPort(
+				Integer.parseInt(getProxyPortText().getText()));
+		ConfigurationManager.getConfiguration().setApromoreUsername(
+				getUsernameText().getText());
+		ConfigurationManager.getConfiguration().setApromoreServerPort(
+				Integer.parseInt(getServerPortText().getText()));
+		ConfigurationManager.getConfiguration().setApromoreUseProxy(
+				useProxyBox.isSelected());
+		ConfigurationManager.getConfiguration().setApromoreUse(
+				useBox.isSelected());
+
+		String hostname = this.getURL();
+		String port = this.getPort();
+
+		Writer writer = null;
+		try {
+			writer = new FileWriter(
+					"src/org/woped/starter/utilities/apromore-client.properties");
+			Properties prop1 = new Properties();
+			prop1.setProperty("hostname", hostname);
+			prop1.setProperty("port", port);
+			prop1.store(writer, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+       return true;
     }
 
     /**
