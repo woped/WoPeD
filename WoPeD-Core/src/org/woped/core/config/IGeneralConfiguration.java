@@ -405,6 +405,10 @@ public interface IGeneralConfiguration extends IConfiguration {
 	
 	public void setApromoreServer(String server);
 	
+	public String getApromoreManagerUrl();
+	
+	public void setApromoreManagerUrl(String managerUrl);
+	
 	public String getApromoreUsername();
 	
 	public void setApromoreUsername(String user);
@@ -446,3 +450,4 @@ public interface IGeneralConfiguration extends IConfiguration {
 	public void setLaunchCounter(int value);
 	
 }
+

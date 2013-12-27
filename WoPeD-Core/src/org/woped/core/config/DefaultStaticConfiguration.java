@@ -955,4 +955,16 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
 	public void setLaunchCounter(int value) {
 		launchCounter = value;
 	}
+
+	@Override
+	public String getApromoreManagerUrl() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setApromoreManagerUrl(String managerUrl) {
+		// TODO Auto-generated method stub
+		
+	}
 }

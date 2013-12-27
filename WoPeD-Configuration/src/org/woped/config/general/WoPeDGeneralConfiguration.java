@@ -1355,4 +1355,17 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	public void setLaunchCounter(int value) {
 		getConfDocument().getConfiguration().getRegistration().setLaunchCounter(value);
 	}
+
+	@Override
+	public String getApromoreManagerUrl() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setApromoreManagerUrl(String managerUrl) {
+		// TODO Auto-generated method stub
+		
+	}
 }
+

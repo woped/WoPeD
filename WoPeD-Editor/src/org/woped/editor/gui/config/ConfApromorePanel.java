@@ -69,7 +69,8 @@ public class ConfApromorePanel extends AbstractConfPanel
     private JLabel 			serverPortLabel = null;
     private JTextField 		serverPortText = null;
     private JPanel			proxyPanel = null;
- 
+    private JTextField      managerUrlText = null;
+    private JLabel         	managerUrlLabel    = null;
     /**
      * Constructor for ConfToolsPanel.
      */
@@ -86,49 +87,39 @@ public class ConfApromorePanel extends AbstractConfPanel
      */
     public boolean applyConfiguration()
     {
-        boolean changed = useBox.isSelected() != ConfigurationManager.getConfiguration().getApromoreUse();
-
-        if (changed)
-        {
             JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Apromore.Dialog.Restart.Message"), Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
                     JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-		ConfigurationManager.getConfiguration().setApromoreServer(
-				getServerText().getText());
-		ConfigurationManager.getConfiguration().setApromoreProxyName(
-				getProxyNameText().getText());
-		ConfigurationManager.getConfiguration().setApromoreProxyPort(
-				Integer.parseInt(getProxyPortText().getText()));
-		ConfigurationManager.getConfiguration().setApromoreUsername(
-				getUsernameText().getText());
-		ConfigurationManager.getConfiguration().setApromoreServerPort(
-				Integer.parseInt(getServerPortText().getText()));
-		ConfigurationManager.getConfiguration().setApromoreUseProxy(
-				useProxyBox.isSelected());
-		ConfigurationManager.getConfiguration().setApromoreUse(
-				useBox.isSelected());
-
-		String hostname = this.getURL();
-		String port = this.getPort();
-
-		Writer writer = null;
-		try {
-			writer = new FileWriter(
-					"src/org/woped/starter/utilities/apromore-client.properties");
-			Properties prop1 = new Properties();
-			prop1.setProperty("hostname", hostname);
-			prop1.setProperty("port", port);
-			prop1.store(writer, null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				writer.close();
-			} catch (Exception e) {
-			}
-		}
-       return true;
+            ConfigurationManager.getConfiguration().setApromoreServer(getServerText().getText());
+            ConfigurationManager.getConfiguration().setApromoreManagerUrl(getManagerUrlText().getText());
+            ConfigurationManager.getConfiguration().setApromoreProxyName(getProxyNameText().getText());
+            ConfigurationManager.getConfiguration().setApromoreProxyPort(Integer.parseInt(getProxyPortText().getText()));
+            ConfigurationManager.getConfiguration().setApromoreUsername(getUsernameText().getText());
+            ConfigurationManager.getConfiguration().setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
+            ConfigurationManager.getConfiguration().setApromoreUseProxy(useProxyBox.isSelected());
+            ConfigurationManager.getConfiguration().setApromoreUse(useBox.isSelected());
+            
+            String hostname = this.getURL();
+            String port = this.getPort();
+            String managerUrl= this.getmanagerUrl();
+            Writer writer = null;
+            try
+            {
+             writer = new FileWriter( "src/org/woped/starter/utilities/apromore-client.properties");
+              Properties prop1 = new Properties();
+              prop1.setProperty("hostanme",hostname);
+              prop1.setProperty("port", port);
+              prop1.setProperty("manager-url", managerUrl);
+              prop1.store(writer, null);
+            }
+            catch ( IOException e )
+            {
+              e.printStackTrace();
+            }
+            finally
+            {
+              try { writer.close(); } catch ( Exception e ) { }
+            } 
+        return true;
     }
 
     /**
@@ -138,6 +129,7 @@ public class ConfApromorePanel extends AbstractConfPanel
     {
     	
     	getServerText().setText(ConfigurationManager.getConfiguration().getApromoreServer());
+    	getManagerUrlText().setText(ConfigurationManager.getConfiguration().getApromoreManagerUrl());
     	getServerPortText().setText(""+ConfigurationManager.getConfiguration().getApromoreServerPort());
     	getProxyNameText().setText(ConfigurationManager.getConfiguration().getApromoreProxyName());
     	getProxyPortText().setText(""+ConfigurationManager.getConfiguration().getApromoreProxyPort());
@@ -233,6 +225,7 @@ public class ConfApromorePanel extends AbstractConfPanel
             c.gridx = 1;
             c.gridy = 0;
             settingsPanel.add(getServerText(), c);
+            
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 1;
@@ -246,21 +239,30 @@ public class ConfApromorePanel extends AbstractConfPanel
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 2;
-            settingsPanel.add(getUsernameLabel(), c);
-            
+            settingsPanel.add(getManagerUrlLabel(), c);
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 2;
-            settingsPanel.add(getUsernameText(), c);
+            settingsPanel.add(getManagerUrlText(), c);
             
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 3;
-            settingsPanel.add(getUseProxyLabel(), c);
+            settingsPanel.add(getUsernameLabel(), c);
             
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 3;
+            settingsPanel.add(getUsernameText(), c);
+            
+            c.weightx = 1;
+            c.gridx = 0;
+            c.gridy = 4;
+            settingsPanel.add(getUseProxyLabel(), c);
+            
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 4;
             settingsPanel.add(getUseProxyCheckbox(), c);           
         }
     	
@@ -282,22 +284,22 @@ public class ConfApromorePanel extends AbstractConfPanel
             
             d.weightx = 1;
             d.gridx = 0;
-            d.gridy = 4;
+            d.gridy = 5;
             proxyPanel.add(getProxyNameLabel(), d);
             
             d.weightx = 1;
             d.gridx = 1;
-            d.gridy = 4;
+            d.gridy = 5;
             proxyPanel.add(getProxyNameText(), d);
             
             d.weightx = 1;
             d.gridx = 0;
-            d.gridy = 5;
+            d.gridy = 6;
             proxyPanel.add(getProxyPortLabel(), d);
             
             d.weightx = 1;
             d.gridx = 1;
-            d.gridy = 5;
+            d.gridy = 6;
             proxyPanel.add(getProxyPortText(), d);
             
         }
@@ -463,5 +465,32 @@ public class ConfApromorePanel extends AbstractConfPanel
     private String getURL(){
     	JTextField url = this.getServerText();
     	return url.getText();
+    }
+    
+    private String getmanagerUrl(){
+    	JTextField managerUrl = this.getManagerUrlText();
+    	return managerUrl.getText();
+    }
+    
+    private JLabel getManagerUrlLabel()
+    {
+        if (managerUrlLabel == null)
+        {
+        	managerUrlLabel = new JLabel("<html>" + Messages.getString("Configuration.Apromore.Label.ManagerUrl") + "</html>");
+        	managerUrlLabel.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return managerUrlLabel;
+    }
+    
+    private JTextField getManagerUrlText()
+    {
+        if (managerUrlText == null)
+        {
+        	managerUrlText = new JTextField();
+        	managerUrlText.setColumns(15);
+        	managerUrlText.setEnabled(true);
+        	managerUrlText.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.ManagerUrl") + "</html>");
+        }
+        return managerUrlText;
     }
 }
