@@ -106,7 +106,7 @@ public class ConfApromorePanel extends AbstractConfPanel
             {
              writer = new FileWriter( "src/org/woped/starter/utilities/apromore-client.properties");
               Properties prop1 = new Properties();
-              prop1.setProperty("hostanme",hostname);
+              prop1.setProperty("hostname",hostname);
               prop1.setProperty("port", port);
               prop1.setProperty("manager-url", managerUrl);
               prop1.store(writer, null);
