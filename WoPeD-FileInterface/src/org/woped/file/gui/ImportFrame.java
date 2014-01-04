@@ -35,7 +35,7 @@ public class ImportFrame extends JDialog {
 	JLabel lblOwner;
 	JLabel lblResults;
 	JLabel lblSelectProcess;
-	ApromoreAccessObject initAAO;
+	//ApromoreAccessObject initAAO;
 	ArrayMaker dc;
 	String[][] rowData;
 	final String[] columnNames = {
@@ -172,13 +172,13 @@ public class ImportFrame extends JDialog {
 		lblSelectProcess.setBounds(10, 227, 444, 14);
 		getContentPane().add(lblSelectProcess);
 
-		initAAO = new ApromoreAccessObject();
-		if (!initAAO.IsOnline()) {
-			dispose();
-			return;
-		}
+	//	initAAO = new ApromoreAccessObject();
+	//	if (!initAAO.IsOnline()) {
+	//		dispose();
+	//		return;
+	//	}
 		dc = new ArrayMaker();
-		rowData = ArrayMaker.run(initAAO.getList());
+		rowData = ArrayMaker.dummyRun();
 
 		tabModel = new DefaultTableModel(rowData, columnNames);
 
@@ -197,18 +197,18 @@ public class ImportFrame extends JDialog {
 
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					if (txtID.getText().equals(""))
+			/*		if (txtID.getText().equals(""))
 						tabModel.setDataVector(ArrayMaker.run(
 								initAAO.getList(), txtName.getText(), 0,
 								txtOwner.getText(), txtDomain.getText()),
-								columnNames);
+								columnNames); 
 					else
 						tabModel.setDataVector(ArrayMaker.run(
 								initAAO.getList(), txtName.getText(),
 								Integer.parseInt(txtID.getText()),
 								txtOwner.getText(), txtDomain.getText()),
-								columnNames);
-				} catch (Exception e) {
+								columnNames);  
+			*/	} catch (Exception e) {
 					Object[] options = { "OK" };
 					JOptionPane.showOptionDialog(
 							null,
@@ -311,3 +311,4 @@ public class ImportFrame extends JDialog {
 	}
 
 }
+
