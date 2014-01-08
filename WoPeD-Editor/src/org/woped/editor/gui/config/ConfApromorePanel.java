@@ -87,8 +87,13 @@ public class ConfApromorePanel extends AbstractConfPanel
      */
     public boolean applyConfiguration()
     {
-            JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Apromore.Dialog.Restart.Message"), Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
-                    JOptionPane.INFORMATION_MESSAGE);
+       boolean changed = useBox.isSelected() != ConfigurationManager.getConfiguration().getApromoreUse();
+
+       if (changed)
+       {
+           JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Apromore.Dialog.Restart.Message"), Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
+                   JOptionPane.INFORMATION_MESSAGE);
+       }
             ConfigurationManager.getConfiguration().setApromoreServer(getServerText().getText());
             ConfigurationManager.getConfiguration().setApromoreManagerUrl(getManagerUrlText().getText());
             ConfigurationManager.getConfiguration().setApromoreProxyName(getProxyNameText().getText());
