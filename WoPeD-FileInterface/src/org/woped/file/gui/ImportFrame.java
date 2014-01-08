@@ -49,7 +49,6 @@ public class ImportFrame extends JDialog {
 	JScrollPane scrollPane;
 	JButton btnFind;
 	JComboBox comboBox;
-	JButton btnImport;
 	JLabel lblSelectVersion;
 
 	public ImportFrame() {
@@ -239,19 +238,15 @@ public class ImportFrame extends JDialog {
 		comboBox.setVisible(false);
 		getContentPane().add(comboBox);
 
-		btnImport = new JButton(Messages.getString("Apromore.Import.UI.Import"));
-		btnImport.setBounds(10, 516, 89, 23);
-		btnImport.setVisible(false);
+		final JButton btnImport = new JButton(
+				Messages.getString("Apromore.Import.UI.Import"));
+		btnImport.setBounds(10, 457, 89, 23);
 		getContentPane().add(btnImport);
-
-		final JButton btnSelectRow = new JButton(
-				Messages.getString("Apromore.Import.UI.Select"));
-		btnSelectRow.setBounds(10, 457, 89, 23);
-		getContentPane().add(btnSelectRow);
-		btnSelectRow.setVisible(true);
-		btnSelectRow.addActionListener(new ActionListener() {
+		btnImport.setVisible(true);
+		btnImport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					//Auswählen-Buttonlistener
 					lblSelectVersion.setText(Messages
 							.getString("Apromore.Import.UI.SelectVersionMsg"));
 					lblSelectVersion.setVisible(false);
@@ -282,7 +277,8 @@ public class ImportFrame extends JDialog {
 								+ "?");
 						lblSelectVersion.setVisible(true);
 					}
-					btnImport.setVisible(true);
+					setVisible(false);
+					dispose();
 
 				} catch (Exception ex) {
 					Object[] options = { "OK" };
@@ -296,13 +292,6 @@ public class ImportFrame extends JDialog {
 
 							null, options, options[0]);
 				}
-			}
-		});
-
-		btnImport.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				dispose();
 			}
 		});
 
