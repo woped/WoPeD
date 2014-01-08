@@ -49,7 +49,7 @@ import org.woped.gui.translations.Messages;
  *         language. <br>
  *         Created on: 26.11.2004 Last Change on: 14.11.2005
  */
-/* Test */
+/* Test 1 */
 @SuppressWarnings("serial")
 public class ConfApromorePanel extends AbstractConfPanel
 {
