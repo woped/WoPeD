@@ -49,7 +49,6 @@ import org.woped.gui.translations.Messages;
  *         language. <br>
  *         Created on: 26.11.2004 Last Change on: 14.11.2005
  */
-/* Test 1 */
 @SuppressWarnings("serial")
 public class ConfApromorePanel extends AbstractConfPanel
 {
@@ -85,47 +84,57 @@ public class ConfApromorePanel extends AbstractConfPanel
     /**
      * @see AbstractConfPanel#applyConfiguration()
      */
-    public boolean applyConfiguration()
-    {
-       boolean changed = useBox.isSelected() != ConfigurationManager.getConfiguration().getApromoreUse();
+	public boolean applyConfiguration() {
+		boolean changed = useBox.isSelected() != ConfigurationManager
+				.getConfiguration().getApromoreUse();
 
-       if (changed)
-       {
-           JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Apromore.Dialog.Restart.Message"), Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
-                   JOptionPane.INFORMATION_MESSAGE);
-       }
-            ConfigurationManager.getConfiguration().setApromoreServer(getServerText().getText());
-            ConfigurationManager.getConfiguration().setApromoreManagerUrl(getManagerUrlText().getText());
-            ConfigurationManager.getConfiguration().setApromoreProxyName(getProxyNameText().getText());
-            ConfigurationManager.getConfiguration().setApromoreProxyPort(Integer.parseInt(getProxyPortText().getText()));
-            ConfigurationManager.getConfiguration().setApromoreUsername(getUsernameText().getText());
-            ConfigurationManager.getConfiguration().setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
-            ConfigurationManager.getConfiguration().setApromoreUseProxy(useProxyBox.isSelected());
-            ConfigurationManager.getConfiguration().setApromoreUse(useBox.isSelected());
-            
-            String hostname = this.getURL();
-            String port = this.getPort();
-            String managerUrl= this.getmanagerUrl();
-            Writer writer = null;
-            try
-            {
-             writer = new FileWriter( "src/org/woped/starter/utilities/apromore-client.properties");
-              Properties prop1 = new Properties();
-              prop1.setProperty("hostname",hostname);
-              prop1.setProperty("port", port);
-              prop1.setProperty("manager-url", managerUrl);
-              prop1.store(writer, null);
-            }
-            catch ( IOException e )
-            {
-              e.printStackTrace();
-            }
-            finally
-            {
-              try { writer.close(); } catch ( Exception e ) { }
-            } 
-        return true;
-    }
+		if (changed) {
+			JOptionPane
+					.showMessageDialog(
+							null,
+							Messages.getString("Configuration.Apromore.Dialog.Restart.Message"),
+							Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
+							JOptionPane.INFORMATION_MESSAGE);
+		}
+		ConfigurationManager.getConfiguration().setApromoreServer(
+				getServerText().getText());
+		ConfigurationManager.getConfiguration().setApromoreManagerUrl(
+				getManagerUrlText().getText());
+		ConfigurationManager.getConfiguration().setApromoreProxyName(
+				getProxyNameText().getText());
+		ConfigurationManager.getConfiguration().setApromoreProxyPort(
+				Integer.parseInt(getProxyPortText().getText()));
+		ConfigurationManager.getConfiguration().setApromoreUsername(
+				getUsernameText().getText());
+		ConfigurationManager.getConfiguration().setApromoreServerPort(
+				Integer.parseInt(getServerPortText().getText()));
+		ConfigurationManager.getConfiguration().setApromoreUseProxy(
+				useProxyBox.isSelected());
+		ConfigurationManager.getConfiguration().setApromoreUse(
+				useBox.isSelected());
+
+		String hostname = this.getURL();
+		String port = this.getPort();
+		String managerUrl = this.getmanagerUrl();
+		Writer writer = null;
+		try {
+			writer = new FileWriter(
+					"src/org/woped/starter/utilities/apromore-client.properties");
+			Properties prop1 = new Properties();
+			prop1.setProperty("hostname", hostname);
+			prop1.setProperty("port", port);
+			prop1.setProperty("manager-url", managerUrl);
+			prop1.store(writer, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+		return true;
+	}
 
     /**
      * @see AbstractConfPanel#readConfiguration()
