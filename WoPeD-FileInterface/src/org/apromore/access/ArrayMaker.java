@@ -27,19 +27,6 @@ public class ArrayMaker {
 		}
 		return s;
 	}
-	
-	public static String[][] dummyRun() {
-		String[][] s = new String[1][5];
-
-			s[0][0] = "test"; 
-			s[0][1] = "testID";
-			s[0][2] = "testOwner";
-			s[0][3] = "gfds";
-			s[0][4] = "sfgdhfjg";
-
-		
-		return s;
-	}
 
 	public static String[][] run(List<ProcessSummaryType> list, String name,
 			int id, String owner, String domain) {
@@ -115,4 +102,3 @@ public class ArrayMaker {
 	}
 
 }
-
