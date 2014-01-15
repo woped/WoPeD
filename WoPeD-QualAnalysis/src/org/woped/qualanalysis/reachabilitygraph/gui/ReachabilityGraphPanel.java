@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.LoggerManager;
@@ -39,11 +40,12 @@ public class ReachabilityGraphPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private IEditor editor = null;
     private ReachabilityGraphVC rgvc = null;
-    
+
     // Panels
     private JScrollPane rgp_topPanel = null; // top SplitPane
 
-    private ReachabilityToolbarVC toolbar = null;
+    //private ReachabilityToolbarVC toolbar = null;
+    private ReachabilityRibbonVC ribbon = null;
 
     // jGraph related
     private ReachabilityJGraph rgp_jgraph = null; // the jGraph
@@ -74,9 +76,20 @@ public class ReachabilityGraphPanel extends JPanel {
         this.builder = new ReachabilityGraphModelUsingMarkingNet(editor);
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
         this.setLayout(new BorderLayout());
-        toolbar = new ReachabilityToolbarVC(this);
+        //
+        //Ribbon instead of Toolbar
+        ribbon = new ReachabilityRibbonVC(this);
+        //hide taskbar
+        JPanel containerPanel = new JPanel();
+        containerPanel.setBorder(BorderFactory.createEmptyBorder(-25, 0, 0, 0));
+        containerPanel.setLayout(new BorderLayout());
+        containerPanel.add(ribbon,BorderLayout.CENTER);
         // NORTH Components
-        this.add(BorderLayout.NORTH, toolbar);
+        this.add(BorderLayout.NORTH, containerPanel);
+        //
+        //toolbar = new ReachabilityToolbarVC(this);
+        // NORTH Components
+        //this.add(BorderLayout.NORTH, toolbar);
         // SOUTH Components
         legendInfo = new JLabel(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
         legendToggleButton = new JButton(Messages.getImageIcon("Action.Browser.Refresh"));
@@ -101,7 +114,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * returns the editor for this instance.
-     * 
+     *
      * @return
      */
     public ReachabilityGraphVC getRGVC() {
@@ -110,7 +123,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
    /**
      * returns the editor for this instance.
-     * 
+     *
      * @return
      */
     public IEditor getEditor() {
@@ -119,17 +132,17 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * returns the selected layout type.
-     * 
+     *
      * @return
      */
     protected int getSelectedType() {
-        return this.toolbar.getSelectedType();
+        return this.ribbon.getSelectedType();
     }
 
     /**
      * layout a graph with given layout type. Layouting can be done without to recmpute the graph. In some cases it's needed to recompute e.g. the petri net has
      * changed.
-     * 
+     *
      * @param type
      * @param computeNew
      */
@@ -140,14 +153,14 @@ public class ReachabilityGraphPanel extends JPanel {
         // Set the cursor when the RG is calculated the first time
         setCursor(crWait);
         // set the cursor when the RG is refreshed
-        toolbar.setCursor(crWait);
+        ribbon.setCursor(crWait);
         if (rgp_topPanel != null) {
             if (computeNew) {
                 if (editor.isTokenGameEnabled()) {
-                    this.toolbar.setRrefreshButtonEnabled(true);
+                    this.ribbon.setRrefreshButtonEnabled(true);
                     // set the default cursors
                     setCursor(crDefault);
-                    toolbar.setCursor(crDefault);
+                    ribbon.setCursor(crDefault);
                     throw new SimulationRunningException();
                 } else {
                     this.remove(rgp_topPanel);
@@ -161,12 +174,12 @@ public class ReachabilityGraphPanel extends JPanel {
         }
         // set the default cursors
         setCursor(crDefault);
-        toolbar.setCursor(crDefault);
+        ribbon.setCursor(crDefault);
     }
 
     /**
      * is used to get a new computed {@link ReachabilityJGraph} instance. Layout in a given type.
-     * 
+     *
      * @param type
      * @return
      */
@@ -185,7 +198,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * Returns the graph with no tokens changed
-     * 
+     *
      * @return
      */
     public ReachabilityJGraph getDefaultGraph() {
@@ -194,7 +207,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * returns {@link ReachabilityJGraph} instance of this panel.
-     * 
+     *
      * @return
      */
     public ReachabilityJGraph getGraph() {
@@ -211,14 +224,14 @@ public class ReachabilityGraphPanel extends JPanel {
                 this.logicalFingerprint)
                 && !editor.isTokenGameEnabled()) {
             if (this.rgp_jgraph.getRoots().length == 0) {
-                this.toolbar.setRrefreshButtonEnabled(true);
+                this.ribbon.setRrefreshButtonEnabled(true);
                 setGraphOutOfSync(true);
             } else {
-                this.toolbar.setRrefreshButtonEnabled(false);
+                this.ribbon.setRrefreshButtonEnabled(false);
                 setGraphOutOfSync(false);
             }
         } else {
-            this.toolbar.setRrefreshButtonEnabled(true);
+            this.ribbon.setRrefreshButtonEnabled(true);
             setGraphOutOfSync(true);
         }
         bottomInfo.setText(this.getGraphInfo());
@@ -227,7 +240,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * sets legendByName. It's used for showing the legend with names or id's.
-     * 
+     *
      * @param legend
      */
     protected void setLegendByName(boolean legend) {
@@ -236,7 +249,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * returns the legendByName toggle attribute.
-     * 
+     *
      * @return
      */
     protected boolean getLegendByName() {
@@ -245,7 +258,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * sets the graph out of sync label.
-     * 
+     *
      * @param outOfSync
      */
     protected void setGraphOutOfSync(boolean outOfSync) {
@@ -254,7 +267,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * returns the Legend as String.
-     * 
+     *
      * @return
      */
     private String getLegend() {
@@ -275,7 +288,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * returns a string with information on the graph
-     * 
+     *
      * @return
      */
     private String getGraphInfo() {
@@ -297,7 +310,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * set the logicalFingerprint of actual petrinet. LogicalFingerprint is used to track changes of the petrinet.
-     * 
+     *
      * @param logicalFingerprint
      */
     protected void setLogicalFingerPrint(String logicalFingerprint) {
@@ -306,24 +319,24 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * sets the refresh button to be clickable - or not.
-     * 
+     *
      * @param b
      */
     public void setRefreshButtonEnabled(boolean b) {
-        this.toolbar.setRrefreshButtonEnabled(b);
+        this.ribbon.setRrefreshButtonEnabled(b);
     }
 
     public boolean getRefreshButtonEnabled() {
-        return this.toolbar.getRrefreshButtonEnabled();
+        return this.ribbon.getRrefreshButtonEnabled();
     }
 
     public void setUnselectButtonEnabled(boolean b) {
-        this.toolbar.setUnselectButtonEnabled(b);
+        this.ribbon.setUnselectButtonEnabled(b);
     }
 
     /**
      * enables parallel rounting for the RG or not. ParallelRouting is very slow on big RG's.
-     * 
+     *
      * @param enabled
      */
     protected void setParallelRouting(boolean enabled) {
@@ -332,7 +345,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     /**
      * enables a gray-scale view of the graph.
-     * 
+     *
      * @param enabled
      */
     protected void setGrayScale(boolean enabled) {
