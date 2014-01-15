@@ -178,7 +178,7 @@ public class ImportFrame extends JDialog {
 			return;
 		}
 		dc = new ArrayMaker();
-		rowData = ArrayMaker.run(initAAO.getList());
+		rowData = ArrayMaker.run(initAAO.getList());	
 
 		tabModel = new DefaultTableModel(rowData, columnNames);
 

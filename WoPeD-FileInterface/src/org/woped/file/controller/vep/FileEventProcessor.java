@@ -802,12 +802,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
 																// 8080);
 
 		try {
-			is = aao.getPNML(aImp.getElement()).getInputStream();
-			loadSuccess = pr.run(is);
+//			is = aao.getPNML(aImp.getElement()).getInputStream();
+//			loadSuccess = pr.run(is);
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
+//		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -877,11 +877,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				return false;
 			}
 			DataHandler dh = new DataHandler(new FileDataSource("tmp.pnml"));
-			ImportProcessOutputMsgType check = aao.export(dh, editSess);
-			if (check.getResult().getCode() == 0) {
-				succeed = true;
-				editor.setSaved(true);
-			}
+//			ImportProcessOutputMsgType check = aao.export(dh, editSess);
+////			if (check.getResult().getCode() == 0) {
+//				succeed = true;
+//				editor.setSaved(true);
+//			}
 
 		}
 		getMediator().getUi().getComponent()

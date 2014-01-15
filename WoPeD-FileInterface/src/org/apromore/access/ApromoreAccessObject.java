@@ -7,43 +7,56 @@ import javax.activation.DataHandler;
 import javax.swing.JOptionPane;
 import javax.xml.ws.WebServiceException;
 
-import org.apromore.manager.model_portal.EditSessionType;
-import org.apromore.manager.model_portal.ExportFormatInputMsgType;
-import org.apromore.manager.model_portal.ExportFormatOutputMsgType;
-import org.apromore.manager.model_portal.ImportProcessInputMsgType;
-import org.apromore.manager.model_portal.ImportProcessOutputMsgType;
-import org.apromore.manager.model_portal.ProcessSummariesType;
-import org.apromore.manager.model_portal.ProcessSummaryType;
-import org.apromore.manager.model_portal.ReadProcessSummariesInputMsgType;
-import org.apromore.manager.model_portal.ReadProcessSummariesOutputMsgType;
-import org.apromore.manager.service_portal.ManagerPortalPortType;
-import org.apromore.manager.service_portal.ManagerPortalService;
+import org.apromore.manager.client.ManagerService;
+import org.apromore.manager.client.ManagerServiceClient;
+import org.apromore.model.EditSessionType;
+import org.apromore.model.ProcessSummariesType;
+import org.apromore.model.ProcessSummaryType;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.ws.client.core.WebServiceTemplate;
+import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
+import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.translations.Messages;
 
 public class ApromoreAccessObject {
 
 	//managerService = ()...
-	
-	ManagerPortalService service;
-	ManagerPortalPortType serviceport;
+
+	ApplicationContext appContext = new ClassPathXmlApplicationContext(
+            "managerClientContext.xml");
+    HttpComponentsMessageSender httpCms = (HttpComponentsMessageSender) appContext.getBean("httpSender");
+    
+    Jaxb2Marshaller serviceMarshaller = (Jaxb2Marshaller) appContext.getBean("serviceMarshaller");
+    
+    SaajSoapMessageFactory ssmf = (SaajSoapMessageFactory) appContext.getBean("messageFactory");
+    
+    WebServiceTemplate temp = new WebServiceTemplate(ssmf);
+    ManagerService managerService;
+//	ManagerPortalService service;
+//	ManagerPortalPortType serviceport;
 	boolean isOnline = false;
 	EditSessionType aproParams;
 	public ApromoreAccessObject() {
-		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
-		ProxySelector.setDefault(new WoProxySelector(ConfigurationManager.getConfiguration().getApromoreProxyName(), ConfigurationManager.getConfiguration().getApromoreProxyPort()));
+//		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
+//		ProxySelector.setDefault(new WoProxySelector(ConfigurationManager.getConfiguration().getApromoreProxyName(), ConfigurationManager.getConfiguration().getApromoreProxyPort()));
 		setupService();
 	}
-
-
-
+	
 	private void setupService() {
 		Object[] options = { "OK" };
 		
 		try
 		{
-		service = new ManagerPortalService();
-		serviceport = service.getManagerPortal();
+			temp.setMarshaller(serviceMarshaller);
+		    temp.setUnmarshaller(serviceMarshaller);
+		    temp.setMessageSender(httpCms);
+		    temp.setDefaultUri("http://woped.dhbw-karlsruhe.de:9000/manager/services/manager/");
+		    managerService = new ManagerServiceClient(temp);
+//		service = new ManagerPortalService();
+//		serviceport = service.getManagerPortal();
 		isOnline = true;
 		} catch (WebServiceException e)
 		{
@@ -67,19 +80,18 @@ public class ApromoreAccessObject {
 		 * 
 		 */
 		
-		ReadProcessSummariesOutputMsgType sumout = serviceport
-				.readProcessSummaries(new ReadProcessSummariesInputMsgType());
-		ProcessSummariesType summaries = sumout.getProcessSummaries();
-		return summaries.getProcessSummary(); //processes
+		ProcessSummariesType processSummaries = managerService
+                .readProcessSummaries(null);
+		return processSummaries.getProcessSummary(); //processes
 	}
 
-	public DataHandler getPNML(ExportFormatInputMsgType request) {
-		request.setFormat("XPDL 2.1");
-		ExportFormatOutputMsgType a = serviceport.exportFormat(request);
-		return a.getNative();
-
-	}
-	
+////	public DataHandler getPNML(ExportFormatInputMsgType request) {
+////		request.setFormat("XPDL 2.1");
+////		ExportFormatOutputMsgType a =  managerService.exportFormat(request);
+////		return a.getNative();
+//
+//	}
+//	
 	public EditSessionType getParams() {
 		return aproParams;
 
@@ -87,14 +99,14 @@ public class ApromoreAccessObject {
 
 
 
-	public ImportProcessOutputMsgType export(DataHandler a, EditSessionType e) {
-		ImportProcessInputMsgType request = new ImportProcessInputMsgType();
-		request.setProcessDescription(a);
-		request.setAddFakeEvents(false);
-		request.setEditSession(e);
-		return serviceport.importProcess(request);
-	}
-	
+//	public ImportProcessOutputMsgType export(DataHandler a, EditSessionType e) {
+//		ImportProcessInputMsgType request = new ImportProcessInputMsgType();
+//		request.setProcessDescription(a);
+//		request.setAddFakeEvents(false);
+//		request.setEditSession(e);
+//		return serviceport.importProcess(request);
+//	}
+//	
 	public boolean IsOnline()
 	{
 		return isOnline;

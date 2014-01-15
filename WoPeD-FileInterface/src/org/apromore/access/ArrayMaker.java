@@ -2,8 +2,9 @@ package org.apromore.access;
 
 import java.util.List;
 
-import org.apromore.manager.model_portal.ProcessSummaryType;
-import org.apromore.manager.model_portal.VersionSummaryType;
+import org.apromore.model.ProcessSummaryType;
+import org.apromore.model.VersionSummaryType;
+
 
 public class ArrayMaker {
 
@@ -11,9 +12,12 @@ public class ArrayMaker {
 	 * @param args
 	 */
 	public static String[][] run(List<ProcessSummaryType> list) {
-		String[][] s = new String[list.size() - 1][5];
+		 for (ProcessSummaryType pst : list) {
+	            System.out.println(pst.getName());
+		 }
+		String[][] s = new String[list.size()][5];
 
-		for (int i = 0; i < list.size() - 1; i++) {
+		for (int i = 0; i < list.size(); i++) {
 			s[i][0] = "" + list.get(i).getName();
 			s[i][1] = "" + list.get(i).getId();
 			s[i][2] = "" + list.get(i).getOwner();
