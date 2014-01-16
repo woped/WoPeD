@@ -255,7 +255,7 @@ public class ReachabilityRibbonVC extends JRibbon {
 	}
 	private JCommandButton getZoomChooser() {
 		if (zoomChooserButton == null) {
-	        zoomChooserButton = new JCommandButton("Zoom", null);
+	        zoomChooserButton = new JCommandButton(Messages.getTitle("Action.ZoomLevelChooser"), getResizableIcon("Action.ZoomLevelChooser"));
 	        zoomChooserButton.setCommandButtonKind(JCommandButton.CommandButtonKind.POPUP_ONLY);
 	        zoomChooserButton.setPopupCallback(new PopupPanelCallback() {
 				@Override
