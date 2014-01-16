@@ -209,7 +209,7 @@ public class ConfApromorePanel extends AbstractConfPanel
         	serverURLText = new JTextField();
         	serverURLText.setColumns(25);
         	serverURLText.setEnabled(true);
-        	serverURLText.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.ServerName") + "</html>");
+        	serverURLText.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.ServerURL") + "</html>");
         }
         return serverURLText;
     }
