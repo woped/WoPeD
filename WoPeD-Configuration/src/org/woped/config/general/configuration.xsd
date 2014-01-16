@@ -79,12 +79,14 @@
 			<xs:element name="importing" type="Importing"/>
 			<xs:element name="woflan" type="Woflan"/>
 			<xs:element name="aproUse" type="xs:boolean" minOccurs="0" />
-			<xs:element name="aproServerName" type="xs:string" minOccurs="0" />
+			<xs:element name="aproServerURL" type="xs:string" minOccurs="0" />
+			<xs:element name="aproServerPort" type="xs:int" minOccurs="0" />
+			<xs:element name="aproManagerPath" type="xs:string" minOccurs="0" />
 			<xs:element name="aproUserName" type="xs:string" minOccurs="0" />
+			<xs:element name="aproPassword" type="xs:string" minOccurs="0" />
+			<xs:element name="aproUseProxy" type="xs:boolean" minOccurs="0" />			
 			<xs:element name="aproProxyName" type="xs:string" minOccurs="0" />
 			<xs:element name="aproProxyPort" type="xs:int" minOccurs="0" />
-			<xs:element name="aproServerPort" type="xs:int" minOccurs="0" />
-			<xs:element name="aproUseProxy" type="xs:boolean" minOccurs="0" />			
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Woflan">

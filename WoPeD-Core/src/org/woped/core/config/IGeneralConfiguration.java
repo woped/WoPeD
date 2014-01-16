@@ -401,18 +401,22 @@ public interface IGeneralConfiguration extends IConfiguration {
 	//
 	public void setShowAdvancedErrorMessages(boolean showAdvanced);
 	
-	public String getApromoreServer();
+	public String getApromoreServerURL();
 	
-	public void setApromoreServer(String server);
+	public void setApromoreServerURL(String server);
 	
-	public String getApromoreManagerUrl();
+	public String getApromoreManagerPath();
 	
-	public void setApromoreManagerUrl(String managerUrl);
+	public void setApromoreManagerPath(String managerUrl);
 	
 	public String getApromoreUsername();
 	
 	public void setApromoreUsername(String user);
 	
+	public String getApromorePassword();
+	
+	public void setApromorePassword(String user);
+
 	public String getApromoreProxyName();
 	
 	public void setApromoreProxyName(String user);

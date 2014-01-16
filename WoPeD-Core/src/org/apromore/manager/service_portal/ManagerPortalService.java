@@ -34,7 +34,7 @@ public class ManagerPortalService
         try {
         	String a = "";
         	if (ConfigurationManager.getConfiguration().getApromoreServerPort() != 0) a = ":"+ConfigurationManager.getConfiguration().getApromoreServerPort();
-            url = new URL(ConfigurationManager.getConfiguration().getApromoreServer()+a+"/Apromore-manager/services/ManagerPortal?wsdl");
+            url = new URL(ConfigurationManager.getConfiguration().getApromoreServerURL()+a+"/Apromore-manager/services/ManagerPortal?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

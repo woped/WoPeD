@@ -25,8 +25,7 @@ public class ApromoreAccessObject {
 
 	//managerService = ()...
 
-	ApplicationContext appContext = new ClassPathXmlApplicationContext(
-            "managerClientContext.xml");
+	ApplicationContext appContext = new ClassPathXmlApplicationContext("managerClientContext.xml");
     HttpComponentsMessageSender httpCms = (HttpComponentsMessageSender) appContext.getBean("httpSender");
     
     Jaxb2Marshaller serviceMarshaller = (Jaxb2Marshaller) appContext.getBean("serviceMarshaller");
@@ -53,7 +52,9 @@ public class ApromoreAccessObject {
 			temp.setMarshaller(serviceMarshaller);
 		    temp.setUnmarshaller(serviceMarshaller);
 		    temp.setMessageSender(httpCms);
-		    temp.setDefaultUri("http://woped.dhbw-karlsruhe.de:9000/manager/services/manager/");
+		    temp.setDefaultUri(ConfigurationManager.getConfiguration().getApromoreServerURL() + ":" +
+		    				   ConfigurationManager.getConfiguration().getApromoreServerPort() + "/" +
+		    				   ConfigurationManager.getConfiguration().getApromoreManagerPath());
 		    managerService = new ManagerServiceClient(temp);
 //		service = new ManagerPortalService();
 //		serviceport = service.getManagerPortal();
@@ -72,7 +73,7 @@ public class ApromoreAccessObject {
 	public List<ProcessSummaryType> getList() {
 
 		/*komplette klasse auskommentieren, getList() Methode nur anpassen und versuchen ob das schon
-		 * funktioniert bzw. reicht (2 Zeile sind einzufügen und oben eine Sache zu implementieren)
+		 * funktioniert bzw. reicht (2 Zeile sind einzufï¿½gen und oben eine Sache zu implementieren)
 		 * 
 		 * 
 		 * ProcessSummaries
