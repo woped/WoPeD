@@ -26,10 +26,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.Properties;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -120,7 +116,7 @@ public class ConfApromorePanel extends AbstractConfPanel
 		ConfigurationManager.getConfiguration().setApromoreUse(
 				useBox.isSelected());
 
-		String hostname = this.getURL();
+/*		String hostname = this.getURL();
 		String port = this.getPort();
 		String managerUrl = this.getmanagerUrl();
 		Writer writer = null;
@@ -139,7 +135,7 @@ public class ConfApromorePanel extends AbstractConfPanel
 				writer.close();
 			} catch (Exception e) {
 			}
-		}
+		}*/
 		return true;
 	}
 
@@ -523,20 +519,6 @@ public class ConfApromorePanel extends AbstractConfPanel
        }
 		        
         return useBox;
-    }
-    private String getPort(){
-    	JTextField port = this.getServerPortText();
-    	return port.getText();
-    }
-    
-    private String getURL(){
-    	JTextField url = this.getServerURLText();
-    	return url.getText();
-    }
-    
-    private String getmanagerUrl(){
-    	JTextField managerUrl = this.getManagerPathText();
-    	return managerUrl.getText();
     }
     
     private JLabel getManagerPathLabel()
