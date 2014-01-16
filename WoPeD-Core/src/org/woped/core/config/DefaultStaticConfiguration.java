@@ -50,13 +50,15 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     public static String          DEFAULT_LANGUAGE           		= "";
     public static String          DEFAULT_COUNTRY            		= "";
     public static String          DEFAULT_VARIANT            		= "";
-    public static String          DEFAULT_APROMORE_SERVER      		= "http://brahms0.imag.fr";
-    public static String          DEFAULT_APROMORE_USERNAME    		= "public";
+    public static String          DEFAULT_APROMORE_SERVERURL     	= "http://localhost";
+    public static int 			  DEFAULT_APROMORE_SERVERPORT 		= 9000;
+    public static String 		  DEFAULT_APROMORE_MANAGERPATH 		= "";
+    public static String          DEFAULT_APROMORE_USERNAME    		= "";
+    public static String          DEFAULT_APROMORE_PASSWORD    		= "";
     public static String          DEFAULT_APROMORE_PROXYNAME    	= "";
     public static int	 	      DEFAULT_APROMORE_PROXYPORT    	= 0;
-    private static int 			  DEFAULT_APROMORE_SERVERPORT 		= 8080;
-	private static boolean 	      DEFAULT_APROMORE_USEPROXY 		= false;
-	private static boolean 	      DEFAULT_APROMORE_USE				= true;
+	public static boolean 	      DEFAULT_APROMORE_USEPROXY 		= false;
+	public static boolean 	      DEFAULT_APROMORE_USE				= true;
     
     // File
     private String                homedir                    = "";
@@ -86,11 +88,13 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     private String                country                    = DEFAULT_COUNTRY;
     private String                variant                    = DEFAULT_VARIANT;
     //SERVER
-    private String                apromore_server            = DEFAULT_APROMORE_SERVER;
+    private String                apromore_serverURL         = DEFAULT_APROMORE_SERVERURL;
+    private int                	  apromore_serverport        = DEFAULT_APROMORE_SERVERPORT;
+    private String                apromore_managerPath        = DEFAULT_APROMORE_MANAGERPATH;
     private String                apromore_username          = DEFAULT_APROMORE_USERNAME;
+    private String                apromore_password          = DEFAULT_APROMORE_USERNAME;
     private String                apromore_proxyname         = DEFAULT_APROMORE_PROXYNAME;
     private int                	  apromore_proxyport         = DEFAULT_APROMORE_PROXYPORT;
-    private int                	  apromore_serverport        = DEFAULT_APROMORE_SERVERPORT;
     private boolean               apromore_useproxy          = DEFAULT_APROMORE_USEPROXY;
     private boolean               apromore_use		         = DEFAULT_APROMORE_USE;
 
@@ -836,14 +840,14 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
 	}
 	
 	@Override
-	public String getApromoreServer() {
+	public String getApromoreServerURL() {
 		
-		return apromore_server;
+		return apromore_serverURL;
 	}
 
 	@Override
-	public void setApromoreServer(String server) {
-		this.apromore_server = server;
+	public void setApromoreServerURL(String url) {
+		this.apromore_serverURL = url;
 		
 	}
 
@@ -957,14 +961,24 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
 	}
 
 	@Override
-	public String getApromoreManagerUrl() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getApromoreManagerPath() {
+		return apromore_managerPath;
 	}
 
 	@Override
-	public void setApromoreManagerUrl(String managerUrl) {
-		// TODO Auto-generated method stub
+	public void setApromoreManagerPath(String path) {
+		apromore_managerPath = path;
+		
+	}
+
+	@Override
+	public String getApromorePassword() {
+		return apromore_password;
+	}
+
+	@Override
+	public void setApromorePassword(String pwd) {
+		apromore_password = pwd;
 		
 	}
 }

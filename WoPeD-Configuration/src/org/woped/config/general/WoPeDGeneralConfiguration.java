@@ -1196,9 +1196,9 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	}
 
 	@Override
-	public void setApromoreServer(String server) {
+	public void setApromoreServerURL(String server) {
 		getConfDocument().getConfiguration().getTools()
-				.setAproServerName(server);
+				.setAproServerURL(server);
 		
 	}
 
@@ -1221,16 +1221,28 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 				.setAproProxyPort(port);
 	}
 
-	public String getApromoreServer() {
+	public String getApromoreServerURL() {
 		if (getConfDocument().getConfiguration().getTools()
-				.isSetAproServerName())
+				.isSetAproServerURL())
 			return getConfDocument().getConfiguration().getTools()
-					.getAproServerName();
+					.getAproServerURL();
 		else
 			return ConfigurationManager.getStandardConfiguration()
-					.getApromoreServer();
+					.getApromoreServerURL();
 	}
 	
+	@Override
+	public String getApromoreManagerPath() {
+		
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproManagerPath())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproManagerPath();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromoreManagerPath();
+	}
+
 	@Override
 	public String getApromoreUsername() {
 		
@@ -1241,6 +1253,18 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 		else
 			return ConfigurationManager.getStandardConfiguration()
 					.getApromoreUsername();
+	}
+
+	@Override
+	public String getApromorePassword() {
+		
+		if (getConfDocument().getConfiguration().getTools()
+				.isSetAproPassword())
+			return getConfDocument().getConfiguration().getTools()
+					.getAproPassword();
+		else
+			return ConfigurationManager.getStandardConfiguration()
+					.getApromorePassword();
 	}
 
 	@Override
@@ -1291,23 +1315,29 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
 	@Override
 	public void setApromoreServerPort(int port) {
-		getConfDocument().getConfiguration().getTools().setAproServerPort(port);
-		
+		getConfDocument().getConfiguration().getTools().setAproServerPort(port);	
 	}
 
 	@Override
 	public void setApromoreUseProxy(boolean set) {
 		getConfDocument().getConfiguration().getTools().setAproUseProxy(set);
+	}
 
-		
+	@Override
+	public void setApromoreManagerPath(String path) {
+		getConfDocument().getConfiguration().getTools().setAproManagerPath(path);
 	}
 
 	@Override
 	public void setApromoreUse(boolean selected) {
 		getConfDocument().getConfiguration().getTools().setAproUse(selected);
-
 	}
 	
+	@Override
+	public void setApromorePassword(String pwd) {
+		getConfDocument().getConfiguration().getTools().setAproPassword(pwd);
+		
+	}
 	@Override
 	public boolean getApromoreUse() {
 		if (getConfDocument().getConfiguration().getTools().isSetAproUse())
@@ -1354,18 +1384,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	@Override
 	public void setLaunchCounter(int value) {
 		getConfDocument().getConfiguration().getRegistration().setLaunchCounter(value);
-	}
-
-	@Override
-	public String getApromoreManagerUrl() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setApromoreManagerUrl(String managerUrl) {
-		// TODO Auto-generated method stub
-		
 	}
 }
 
