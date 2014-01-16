@@ -1,17 +1,17 @@
 /*
- * 
- * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
- * 
+ *
+ * Copyright (C) 2004-2005, see @author in JavaDoc for the author
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -44,6 +44,7 @@ import javax.swing.KeyStroke;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 
 /**
  * @author Thomas Pohl
@@ -59,12 +60,12 @@ public abstract class Messages
         {
     		PropertyResourceBundle.getBundle(BUNDLE_NAME, ConfigurationManager.getConfiguration().getLocale()).getString(key);
             return true;
-        } catch (MissingResourceException e) 
+        } catch (MissingResourceException e)
         {
         	return false;
         }
     }
-    
+
     public static String getString(String key)
     {
         try
@@ -124,12 +125,12 @@ public abstract class Messages
     {
         return getString(propertiesPrefix + ".Icon");
     }
-    
+
     public static String getImageLocation(String propertiesPrefix)
     {
         return getString(propertiesPrefix + ".Image");
     }
-    
+
     public static String getCursorIconLocation(String propertiesPrefix)
     {
         return getString(propertiesPrefix + ".CursorIcon");
@@ -153,7 +154,7 @@ public abstract class Messages
         }
         return null;
     }
-    
+
     public static Image getImageSource(String propertiesPrefix)
     {
         String imageLocation = getImageLocation(propertiesPrefix);
@@ -163,7 +164,7 @@ public abstract class Messages
             Image result = null;
             try
             {
-                result = ImageIO.read(iconURL); 
+                result = ImageIO.read(iconURL);
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -172,7 +173,7 @@ public abstract class Messages
         }
         return null;
     }
-    
+
     public static ImageIcon getCursorImageIcon(String propertiesPrefix)
     {
         String iconLocation = getCursorIconLocation(propertiesPrefix);
@@ -192,7 +193,7 @@ public abstract class Messages
         return null;
     }
 
- 
+
     public static int getMnemonic(String propertiesPrefix)
     {
         // if (true) return KeyEvent.VK_N;
@@ -211,18 +212,18 @@ public abstract class Messages
     {
         String shortcutString = getString(propertiesPrefix + ".Shortcut");
         KeyStroke result = KeyStroke.getKeyStroke(shortcutString);
-        
+
         return result;
     }
-    
+
 	/**
 	 * HashMaps for converting from String to KeyEvent/Input Event
 	 *
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 	 */
-    private static HashMap<String, Integer> shortcutKeyCodeFromString = null;	
+    private static HashMap<String, Integer> shortcutKeyCodeFromString = null;
 	private static HashMap<String, Integer> modifierKeyCodeFromString = null;
-	
+
 	/**
 	 * Create Mapping from String to KeyEvent
 	 *
@@ -230,8 +231,8 @@ public abstract class Messages
 	 */
     private static void initShortcutMap(){
     	// converts names to codes
-        shortcutKeyCodeFromString = new HashMap<String,Integer>();	
-    	modifierKeyCodeFromString = new HashMap<String,Integer>();	
+        shortcutKeyCodeFromString = new HashMap<String,Integer>();
+    	modifierKeyCodeFromString = new HashMap<String,Integer>();
     	try {
     		// Get all of the fields in KeyEvent
     		Field[] fields = KeyEvent.class.getFields();
@@ -258,7 +259,7 @@ public abstract class Messages
     		e.printStackTrace();
     	}
     }
-    
+
 	/**
 	 * Create Mapping from String to InputEvent
 	 *
@@ -266,7 +267,7 @@ public abstract class Messages
 	 */
     private static void initModifierMap(){
     	// converts names to codes
-    	modifierKeyCodeFromString = new HashMap<String,Integer>();	
+    	modifierKeyCodeFromString = new HashMap<String,Integer>();
     	try {
     		// Get all of the fields in InputEvent
     		Field[] fields = java.awt.event.InputEvent.class.getFields();
@@ -280,7 +281,7 @@ public abstract class Messages
     		e.printStackTrace();
     	}
     }
-    
+
     /**
      * Gets the shortcut key. Returns 0 (no modifier) if no entry is found.
      *
@@ -293,9 +294,24 @@ public abstract class Messages
     	if(shortcutKeyCodeFromString == null){
     		initShortcutMap();
     	}
-    	if(exists(propertiesPrefix + ".Shortcut")){
+    	String osIdentifier = "";
+    	if(Platform.isMac()){
+    		osIdentifier = "_Mac";
+    	}
+    	else if(Platform.isWindows()){
+    		osIdentifier = "_Windows";
+    	}
+    	else if(Platform.isUnix()){
+    		osIdentifier = "_Unix";
+    	}
+
+    	if(exists(propertiesPrefix + ".Shortcut" + osIdentifier )){
+    		String shortcutString = getString(propertiesPrefix + ".Shortcut" + osIdentifier);
+    		return shortcutKeyCodeFromString.get(shortcutString.toUpperCase());
+    	}
+    	else if(exists(propertiesPrefix + ".Shortcut")){
     		String shortcutString = getString(propertiesPrefix + ".Shortcut");
-    		return shortcutKeyCodeFromString.get(shortcutString.toUpperCase());    		
+    		return shortcutKeyCodeFromString.get(shortcutString.toUpperCase());
     	}
     	else
     		return 0;
@@ -312,27 +328,41 @@ public abstract class Messages
     	if(modifierKeyCodeFromString == null){
     		initModifierMap();
     	}
-    	if(exists(propertiesPrefix + ".ShortcutModifier")){
+    	String osIdentifier = "";
+    	if(Platform.isMac()){
+    		osIdentifier = "_Mac";
+    	}
+    	else if(Platform.isWindows()){
+    		osIdentifier = "_Windows";
+    	}
+    	else if(Platform.isUnix()){
+    		osIdentifier = "_Unix";
+    	}
+    	if(exists(propertiesPrefix + ".ShortcutModifier" + osIdentifier)){
+    		String modifierString = getString(propertiesPrefix + ".ShortcutModifier" + osIdentifier);
+    		return modifierKeyCodeFromString.get(modifierString.toUpperCase());
+    	}
+    	else if(exists(propertiesPrefix + ".ShortcutModifier")){
     		String modifierString = getString(propertiesPrefix + ".ShortcutModifier");
-    		return modifierKeyCodeFromString.get(modifierString.toUpperCase());    		
+    		return modifierKeyCodeFromString.get(modifierString.toUpperCase());
     	}
     	else
     		return 0;
     }
-    
+
     public static String getWoPeDVersionWithTimestamp() {
         String version = getString("Application.Version");
         String builtstamp = getString("Application.Builtstamp");
         if ("@builtstamp@".equals(builtstamp)) {
             return version;
-        } 
+        }
         else {
             return version + "." + builtstamp;
         }
     }
-    
+
     /**
-     * 
+     *
      * @param key
      * @param args
      * @return returns localized String, placeholders replaced by args
