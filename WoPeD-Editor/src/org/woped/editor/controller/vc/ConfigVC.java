@@ -83,8 +83,8 @@ public class ConfigVC extends JDialog implements IViewController
 
     private HashMap<String, AbstractConfPanel>               confPanels     = new HashMap<String, AbstractConfPanel>();
 
-    public static final Dimension CONF_DIM       = new Dimension(580, 480);
-    public static final Dimension SCROLL_DIM     = new Dimension(580, 480);
+    public static final Dimension CONF_DIM       = new Dimension(600, 480);
+    public static final Dimension SCROLL_DIM     = new Dimension(600, 480);
     public static final Color     BACK_COLOR     = new Color(255, 255, 255);
 
     private static JFileChooser   jfc            = null;
