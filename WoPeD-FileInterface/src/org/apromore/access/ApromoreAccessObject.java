@@ -3,7 +3,6 @@ package org.apromore.access;
 import java.net.ProxySelector;
 import java.util.List;
 
-import javax.activation.DataHandler;
 import javax.swing.JOptionPane;
 import javax.xml.ws.WebServiceException;
 
@@ -13,7 +12,7 @@ import org.apromore.model.EditSessionType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
@@ -23,29 +22,23 @@ import org.woped.gui.translations.Messages;
 
 public class ApromoreAccessObject {
 
-	//managerService = ()...
-
-	ApplicationContext appContext = new ClassPathXmlApplicationContext("managerClientContext.xml");
-    HttpComponentsMessageSender httpCms = (HttpComponentsMessageSender) appContext.getBean("httpSender");
-    
-    Jaxb2Marshaller serviceMarshaller = (Jaxb2Marshaller) appContext.getBean("serviceMarshaller");
-    
-    SaajSoapMessageFactory ssmf = (SaajSoapMessageFactory) appContext.getBean("messageFactory");
-    
-    WebServiceTemplate temp = new WebServiceTemplate(ssmf);
-    ManagerService managerService;
-//	ManagerPortalService service;
-//	ManagerPortalPortType serviceport;
-	boolean isOnline = false;
-	EditSessionType aproParams;
+	private ApplicationContext appContext = new AnnotationConfigApplicationContext(ApromoreConfig.class);   
+	private HttpComponentsMessageSender httpCms = (HttpComponentsMessageSender) appContext.getBean(HttpComponentsMessageSender.class);
+	private Jaxb2Marshaller serviceMarshaller = (Jaxb2Marshaller) appContext.getBean(Jaxb2Marshaller.class);
+	private SaajSoapMessageFactory ssmf = (SaajSoapMessageFactory) appContext.getBean(SaajSoapMessageFactory.class);
+	private WebServiceTemplate temp = new WebServiceTemplate(ssmf); 
+	private ManagerService managerService;
+	private boolean isOnline = false;
+	private EditSessionType aproParams;
+	
 	public ApromoreAccessObject() {
-//		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
-//		ProxySelector.setDefault(new WoProxySelector(ConfigurationManager.getConfiguration().getApromoreProxyName(), ConfigurationManager.getConfiguration().getApromoreProxyPort()));
+		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
+			ProxySelector.setDefault(new WoProxySelector(ConfigurationManager.getConfiguration().getApromoreProxyName(), ConfigurationManager.getConfiguration().getApromoreProxyPort()));
 		setupService();
 	}
 	
 	private void setupService() {
-		Object[] options = { "OK" };
+		String[] options = { "OK" };
 		
 		try
 		{
@@ -56,10 +49,10 @@ public class ApromoreAccessObject {
 		    				   ConfigurationManager.getConfiguration().getApromoreServerPort() + "/" +
 		    				   ConfigurationManager.getConfiguration().getApromoreManagerPath());
 		    managerService = new ManagerServiceClient(temp);
-//		service = new ManagerPortalService();
-//		serviceport = service.getManagerPortal();
-		isOnline = true;
-		} catch (WebServiceException e)
+
+		    isOnline = true;
+		} 
+		catch (WebServiceException e)
 		{
 			JOptionPane.showOptionDialog(null, Messages.getString("Apromore.Export.UI.Error.AproNoConn"), Messages.getString("Apromore.Export.UI.Error.AproNoConnTitle"),
 
@@ -71,43 +64,30 @@ public class ApromoreAccessObject {
 	}
 
 	public List<ProcessSummaryType> getList() {
-
-		/*komplette klasse auskommentieren, getList() Methode nur anpassen und versuchen ob das schon
-		 * funktioniert bzw. reicht (2 Zeile sind einzuf�gen und oben eine Sache zu implementieren)
-		 * 
-		 * 
-		 * ProcessSummaries
-		 * 
-		 * 
-		 */
 		
-		ProcessSummariesType processSummaries = managerService
-                .readProcessSummaries(null);
-		return processSummaries.getProcessSummary(); //processes
+		ProcessSummariesType processSummaries = managerService.readProcessSummaries(null);
+		return processSummaries.getProcessSummary(); 
 	}
 
-////	public DataHandler getPNML(ExportFormatInputMsgType request) {
-////		request.setFormat("XPDL 2.1");
-////		ExportFormatOutputMsgType a =  managerService.exportFormat(request);
-////		return a.getNative();
-//
+//	public DataHandler getPNML(ExportFormatInputMsgType request) {
+//		request.setFormat("XPDL 2.1");
+//		ExportFormatOutputMsgType a =  managerService.exportFormat(request);
+//		return a.getNative();
 //	}
-//	
+	
 	public EditSessionType getParams() {
 		return aproParams;
-
 	}
-
-
-
+	
 //	public ImportProcessOutputMsgType export(DataHandler a, EditSessionType e) {
 //		ImportProcessInputMsgType request = new ImportProcessInputMsgType();
 //		request.setProcessDescription(a);
 //		request.setAddFakeEvents(false);
 //		request.setEditSession(e);
+//		Object serviceport;
 //		return serviceport.importProcess(request);
 //	}
-//	
+	
 	public boolean IsOnline()
 	{
 		return isOnline;

@@ -2,6 +2,10 @@ package org.apromore.access;
 import java.io.IOException;
 import java.net.*;
 import java.util.*;
+
+import javax.swing.JOptionPane;
+
+import org.woped.gui.translations.Messages;
  
 public class WoProxySelector extends ProxySelector {
  
@@ -21,6 +25,14 @@ public class WoProxySelector extends ProxySelector {
  
     @Override
     public void connectFailed(URI uri, SocketAddress sa, IOException ioe) {
-        System.err.println("Connection to " + uri + " failed.");
+    	
+		String[] options = { "OK" };
+    	
+		JOptionPane.showOptionDialog(null, 
+				Messages.getString("Apromore.Export.UI.Error.AproNoConn"), 
+				Messages.getString("Apromore.Export.UI.Error.AproNoConnTitle"),
+		        JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
+
+		        null, options, options[0]);
     }
 }
