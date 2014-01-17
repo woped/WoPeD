@@ -15,7 +15,9 @@ import org.apromore.manager.model_portal.EditSessionType;
 import org.apromore.manager.model_portal.ExportFormatInputMsgType;
 
 import java.util.StringTokenizer;
+
 import org.apromore.access.*;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.gui.translations.Messages;
 
@@ -26,6 +28,8 @@ public class ImportFrame extends JDialog {
 	JTextField txtID;
 	JTextField txtDomain;
 	JTextField txtOwner;
+	JTextField serverURLText = null;
+    JLabel serverURLLabel    = null;
 	JLabel lblPnmlImportFunction;
 	JLabel lblImportAPnml;
 	JLabel lblFilterBy;
@@ -93,6 +97,7 @@ public class ImportFrame extends JDialog {
 		a.setWithAnnotation(false);
 		return a;
 	}
+	
 
 	public void initComponents() {
 
@@ -111,13 +116,25 @@ public class ImportFrame extends JDialog {
 		lblPnmlImportFunction = new JLabel(
 				Messages.getString("Apromore.Import.UI.Headline"));
 		lblPnmlImportFunction.setFont(DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT);
-		lblPnmlImportFunction.setBounds(10, 11, 166, 20);
+		lblPnmlImportFunction.setBounds(10, 11, 200, 20);
 		getContentPane().add(lblPnmlImportFunction);
 
 		lblImportAPnml = new JLabel(
 				Messages.getString("Apromore.Import.UI.ImportDescription"));
 		lblImportAPnml.setBounds(10, 36, 333, 14);
 		getContentPane().add(lblImportAPnml);
+    	
+    	serverURLLabel = new JLabel("<html>" + Messages.getString("Configuration.Apromore.Label.ServerURL") + "</html>");
+        serverURLLabel.setHorizontalAlignment(JLabel.RIGHT);
+		serverURLLabel.setBounds(360, 33, 210, 14);
+        getContentPane().add(serverURLLabel);
+        
+		serverURLText = new JTextField(Messages.getString("Configuration.Apromore.Label.ServerURL"+":"));
+    	serverURLText.setColumns(25);
+    	serverURLText.setBounds(580, 30, 200, 20);
+    	serverURLText.setText(ConfigurationManager.getConfiguration().getApromoreServerURL());
+    	serverURLText.setEditable(false);
+    	getContentPane().add(serverURLText);
 
 		lblFilterBy = new JLabel(
 				Messages.getString("Apromore.Import.UI.FilterBy"));
@@ -311,6 +328,7 @@ public class ImportFrame extends JDialog {
 		setVisible(true);
 
 	}
+
 
 }
 
