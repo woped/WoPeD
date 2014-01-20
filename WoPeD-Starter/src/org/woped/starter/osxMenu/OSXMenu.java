@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package org.woped.starter.osxMenu;
 
@@ -19,7 +19,7 @@ import org.woped.gui.translations.Messages;
  * The Class OSXMenu.
  */
 public class OSXMenu extends JMenu {
-   
+
    /**
     * Instantiates a new oSX menu.
     *
@@ -29,7 +29,7 @@ public class OSXMenu extends JMenu {
    public OSXMenu(String string){
       super(string);
    }
-   
+
    /**
     * Adds the menu seperator.
     *
@@ -38,7 +38,7 @@ public class OSXMenu extends JMenu {
    public void addMenuSeperator() {
       this.addSeparator();
    }
-   
+
    /**
     * Adds the menu item.
     *
@@ -59,14 +59,14 @@ public class OSXMenu extends JMenu {
     * @return the OSX menu item
     * @param ignoreDefaultKeyMask pass true if the default key (eg. Win CTRL; Mac cmd) should be ignored
     * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
-    */   
+    */
    public OSXMenuItem addMenuItem(String itemName, String propertiesPrefixForShortcuts, Boolean ignoreDefaultKeyMask) {
 	   OSXMenuItem item = new OSXMenuItem(itemName);
 	   if(!ignoreDefaultKeyMask){
-			item.setAccelerator(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts) | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())));			
+			item.setAccelerator(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts) | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())));
 		}
 		else{
-			item.setAccelerator(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts))));			
+			item.setAccelerator(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts))));
 		}
 	   this.add(item);
 	   return item;
@@ -78,7 +78,7 @@ public class OSXMenu extends JMenu {
     * @param propertiesPrefixForShortcuts the prefix in Messages_xx.properties
     * @return the OSX menu item
     * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
-    */   
+    */
    public OSXMenuItem addMenuItem(String itemName, String propertiesPrefixForShortcuts) {
 	   return addMenuItem(itemName, propertiesPrefixForShortcuts, false);
    }
@@ -122,14 +122,14 @@ public class OSXMenu extends JMenu {
     * @param ignoreDefaultKeyMask pass true if the default key (eg. Win CTRL; Mac cmd) should be ignored
     * @return the OSXCheckboxMenuItem
     * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
-    */   
+    */
    public OSXCheckboxMenuItem addCheckboxMenuItem(String itemName, String propertiesPrefixForShortcuts, final JCheckBox synchronizedItem, Boolean ignoreDefaultKeyMask) {
 	   OSXCheckboxMenuItem item = new OSXCheckboxMenuItem(itemName, synchronizedItem);
 	   if(!ignoreDefaultKeyMask){
-			item.setAccelerator(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts) | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())));			
+			item.setAccelerator(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts) | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())));
 		}
 		else{
-			item.setAccelerator(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts))));			
+			item.setAccelerator(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts))));
 		}
 	   this.add(item);
 	   return item;
@@ -142,7 +142,7 @@ public class OSXMenu extends JMenu {
     * @param synchronizedItem the checkbox to synchronize
     * @return the OSXCheckboxMenuItem
     * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
-    */   
+    */
    public OSXCheckboxMenuItem addCheckboxMenuItem(String itemName, String propertiesPrefixForShortcuts, final JCheckBox synchronizedItem) {
 	   return addCheckboxMenuItem(itemName, propertiesPrefixForShortcuts, synchronizedItem, false);
    }
@@ -170,5 +170,5 @@ public void addSubMenu(OSXMenu subMenu) {
 }
 
 
-   
+
 }

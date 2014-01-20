@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package org.woped.starter.osxMenu;
 
@@ -26,7 +26,7 @@ import org.woped.editor.controller.vep.ViewEvent;
  * The Class OSXMenuItem.
  */
 public class OSXMenuItem extends JMenuItem {
-    
+
     /**
      * The listener interface for receiving shortcutAction events.
      * The class that is interested in processing a shortcutAction
@@ -45,7 +45,7 @@ public class OSXMenuItem extends JMenuItem {
 		/** The action_id. */
 		private String      action_id;
 		/** The action. */
-		private WoPeDAction	action;				
+		private WoPeDAction	action;
 		/**
 		 * Instantiates a new shortcut action listener.
 		 *
@@ -64,15 +64,15 @@ public class OSXMenuItem extends JMenuItem {
 			target.setName(action_id);
 			//target.setEnabled(false);
 		}
-		
+
 		/* (non-Javadoc)
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
-		public void actionPerformed(ActionEvent e) {	
+		public void actionPerformed(ActionEvent e) {
 			action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, event_id));
 		}
     }
-  
+
 	/**
 	 * Instantiates a new oSX menu item.
 	 *
@@ -82,7 +82,7 @@ public class OSXMenuItem extends JMenuItem {
 	public OSXMenuItem(String itemName) {
 		super(itemName);
 	}
-	
+
 	/**
 	 * Adds the action.
 	 *

@@ -4,6 +4,8 @@ import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Frame;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Robot;
@@ -14,10 +16,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -35,6 +40,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
+import org.pushingpixels.flamingo.api.common.AbstractCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandMenuButton;
 import org.pushingpixels.flamingo.api.common.RichTooltip;
@@ -1962,15 +1968,16 @@ private JCommandButton getCommunityButton() {
 	 * @param ignoreDefaultKeyMask the ignore default key mask
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 	 */
-	private void addShortcutToJCommandButton(String propertiesPrefixForShortcuts, JCommandButton button, String action_id, Boolean ignoreDefaultKeyMask){
-		button.getActionMap().put(action_id, ActionFactory.getStaticAction(action_id));
+	private void addShortcutToJCommandButton(final String propertiesPrefixForShortcuts, final JCommandButton button, String action_id, final Boolean ignoreDefaultKeyMask){
 		if(!ignoreDefaultKeyMask){
 			button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts) | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())), action_id);
 		}
 		else{
 			button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), Messages.getShortcutModifier(propertiesPrefixForShortcuts)), action_id);
 		}
-
+		if(!Platform.isMac()){
+			GlobalShortcutEventDispatcher.addShortcutButtonListener(button, propertiesPrefixForShortcuts, ignoreDefaultKeyMask);
+		}
 	}
 	/**
 	 * Adds the shortcut to a button.
@@ -1983,8 +1990,9 @@ private JCommandButton getCommunityButton() {
 	private void addShortcutToJCommandButton(String propertiesPrefixForShortcuts, JCommandButton button, String action_id) {
 		addShortcutToJCommandButton(propertiesPrefixForShortcuts, button, action_id, false);
 	}
+
 	/**
-	 * Adds the shortcut to a button.
+	 * Adds the shortcut to a button - requires mouseclick.
 	 * Action will be triggered by click
 	 * required for Petri-Net-Elements - DrawingMode
 	 *
@@ -1994,34 +2002,17 @@ private JCommandButton getCommunityButton() {
 	 * @param ignoreDefaultKeyMask the ignore default key mask
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 	 */
-	private void addShortcutToMouseButton(String propertiesPrefixForShortcuts, JCommandButton button, String action_id, Boolean ignoreDefaultKeyMask){
-		final JCommandButton buttonToClick = button;
-
-		AbstractAction buttonAction = new AbstractAction("DoButtonClick") {
-		    public void actionPerformed(ActionEvent e) {
-		    	Point cachedMousePosition = MouseInfo.getPointerInfo().getLocation();
-		    	Point buttonPosition = buttonToClick.getLocationOnScreen();
-				try {
-					Robot r;
-					r = new Robot();
-					r.mouseMove(buttonPosition.x + buttonToClick.getWidth() / 2, buttonPosition.y + buttonToClick.getHeight() / 2);
-			        r.mousePress(InputEvent.BUTTON1_MASK);
-			        try { Thread.sleep(1); } catch (Exception e2) {}
-			        r.mouseRelease(InputEvent.BUTTON1_MASK);
-			        r.mouseMove(cachedMousePosition.x,cachedMousePosition.y);
-				} catch (AWTException e1) {}
-		    }
-		};
-		button.getActionMap().put("shortcutAction", buttonAction);
+	private void addShortcutToMouseButton(final String propertiesPrefixForShortcuts, final JCommandButton button, String action_id, final Boolean ignoreDefaultKeyMask){
 		if(!ignoreDefaultKeyMask){
 			button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), (Messages.getShortcutModifier(propertiesPrefixForShortcuts) | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())), "shortcutAction");
 		}
 		else{
 			button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(Messages.getShortcutKey(propertiesPrefixForShortcuts), Messages.getShortcutModifier(propertiesPrefixForShortcuts)), "shortcutAction");
 		}
+		GlobalShortcutEventDispatcher.addShortcutClickListener(button, propertiesPrefixForShortcuts, ignoreDefaultKeyMask);
 	}
 	/**
-	 * Adds the shortcut to a button.
+	 * Adds the shortcut to a button - requires mouseclick..
 	 * Action will be triggered by click
 	 * required for Petri-Net-Elements - DrawingMode
 	 *
