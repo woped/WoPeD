@@ -15,7 +15,7 @@ import org.apromore.model.EditSessionType;
 import org.apromore.model.ExportFormatResultType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
-import org.apromore.plugin.property.RequestParameterType;
+// import org.apromore.plugin.property.RequestParameterType;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -80,12 +80,12 @@ public class ApromoreAccessObject {
 		ProcessSummaryType p = processSummaries.getProcessSummary().get(id);
 		ExportFormatResultType exf = null;
 		
-		try {
-			exf = managerService.exportFormat(p.getId(), null, null, null, null, null, false, null, Collections.<RequestParameterType<?>> emptySet());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			exf = managerService.exportFormat(p.getId(), null, null, null, null, null, false, null, Collections.<RequestParameterType<?>> emptySet());
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		return exf;
 	}
