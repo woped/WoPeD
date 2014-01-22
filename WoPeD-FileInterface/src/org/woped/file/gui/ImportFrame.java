@@ -26,7 +26,7 @@ public class ImportFrame extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JTextField txtName;
 	JTextField txtID;
-	JTextField txtDomain;
+	JTextField txtType;
 	JTextField txtOwner;
 	JTextField serverURLText = null;
     JLabel serverURLLabel    = null;
@@ -35,7 +35,7 @@ public class ImportFrame extends JDialog {
 	JLabel lblFilterBy;
 	JLabel lblPnmlName;
 	JLabel lblID;
-	JLabel lblDomain;
+	JLabel lblType;
 	JLabel lblOwner;
 	JLabel lblResults;
 	JLabel lblSelectProcess;
@@ -46,7 +46,7 @@ public class ImportFrame extends JDialog {
 			Messages.getString("Apromore.Import.UI.ProcessName"),
 			Messages.getString("Apromore.Import.UI.ID"),
 			Messages.getString("Apromore.Import.UI.Owner"),
-			Messages.getString("Apromore.Import.UI.Domain"),
+			Messages.getString("Apromore.Import.UI.Type"),
 			Messages.getString("Apromore.Import.UI.Versions") };
 	DefaultTableModel tabModel;
 	JTable table;
@@ -55,6 +55,7 @@ public class ImportFrame extends JDialog {
 	JComboBox comboBox;
 	JButton btnImport;
 	JLabel lblSelectVersion;
+	private int selectedRow = -1;
 
 	public ImportFrame() {
 		setModal(true);
@@ -88,16 +89,14 @@ public class ImportFrame extends JDialog {
 
 		EditSessionType a = new EditSessionType();
 		a.setAnnotation("");
-		a.setDomain(rowData[table.getSelectedRow()][3]);
-		a.setNativeType("PNML");
+		a.setNativeType(rowData[table.getSelectedRow()][3]);
 		a.setProcessId(Integer.valueOf(rowData[table.getSelectedRow()][1]));
 		a.setProcessName(rowData[table.getSelectedRow()][0]);
 		a.setUsername(rowData[table.getSelectedRow()][2]);
 		a.setVersionName(comboBox.getSelectedItem().toString());
 		a.setWithAnnotation(false);
 		return a;
-	}
-	
+	}	
 
 	public void initComponents() {
 
@@ -160,14 +159,14 @@ public class ImportFrame extends JDialog {
 		getContentPane().add(txtID);
 		txtID.setColumns(10);
 
-		lblDomain = new JLabel(Messages.getString("Apromore.Import.UI.Domain"));
-		lblDomain.setBounds(315, 87, 46, 14);
-		getContentPane().add(lblDomain);
+		lblType = new JLabel(Messages.getString("Apromore.Import.UI.Type"));
+		lblType.setBounds(315, 87, 46, 14);
+		getContentPane().add(lblType);
 
-		txtDomain = new JTextField();
-		txtDomain.setBounds(440, 84, 86, 20);
-		getContentPane().add(txtDomain);
-		txtDomain.setColumns(10);
+		txtType = new JTextField();
+		txtType.setBounds(440, 84, 86, 20);
+		getContentPane().add(txtType);
+		txtType.setColumns(10);
 
 		lblOwner = new JLabel(Messages.getString("Apromore.Import.UI.Owner"));
 		lblOwner.setBounds(315, 122, 46, 14);
@@ -189,15 +188,20 @@ public class ImportFrame extends JDialog {
 		lblSelectProcess.setBounds(10, 227, 444, 14);
 		getContentPane().add(lblSelectProcess);
 
+		tabModel = new DefaultTableModel(null, columnNames);	
+		
 		initAAO = new ApromoreAccessObject();
 		if (!initAAO.IsOnline()) {
 			dispose();
 			return;
 		}
+
 		dc = new ArrayMaker();
 		rowData = ArrayMaker.run(initAAO.getList());	
 
-		tabModel = new DefaultTableModel(rowData, columnNames);
+		for (String[] s : rowData) {
+			tabModel.addRow(s);
+		}
 
 		table = new JTable(tabModel);
 		table.setShowVerticalLines(false);
@@ -217,13 +221,13 @@ public class ImportFrame extends JDialog {
 					if (txtID.getText().equals(""))
 						tabModel.setDataVector(ArrayMaker.run(
 								initAAO.getList(), txtName.getText(), 0,
-								txtOwner.getText(), txtDomain.getText()),
+								txtOwner.getText(), txtType.getText()),
 								columnNames);
 					else
 						tabModel.setDataVector(ArrayMaker.run(
 								initAAO.getList(), txtName.getText(),
 								Integer.parseInt(txtID.getText()),
-								txtOwner.getText(), txtDomain.getText()),
+								txtOwner.getText(), txtType.getText()),
 								columnNames);
 				} catch (Exception e) {
 					Object[] options = { "OK" };
@@ -255,11 +259,6 @@ public class ImportFrame extends JDialog {
 		comboBox.setBounds(196, 485, 54, 20);
 		comboBox.setVisible(false);
 		getContentPane().add(comboBox);
-
-	//	btnImport = new JButton(Messages.getString("Apromore.Import.UI.Import"));
-	//	btnImport.setBounds(10, 516, 89, 23);
-	//	btnImport.setVisible(false);
-	//	getContentPane().add(btnImport);
 
 		final JButton btnSelectRow = new JButton(
 				Messages.getString("Apromore.Import.UI.Import"));
@@ -299,7 +298,7 @@ public class ImportFrame extends JDialog {
 								+ "?");
 						lblSelectVersion.setVisible(true);
 					}
-					setVisible(false);
+					setVisible(false); 
 					dispose();
 
 				} catch (Exception ex) {
@@ -314,21 +313,14 @@ public class ImportFrame extends JDialog {
 
 							null, options, options[0]);
 				}
+					
 			}
 		});
 		
-//		btnImport.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				setVisible(false);
-//				dispose();
-//			}
-//		});
-
-
 		setVisible(true);
-
 	}
 
-
+	public int getSelectedID() {
+		return table.getSelectedRow();
+	}
 }
-

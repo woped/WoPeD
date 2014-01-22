@@ -12,16 +12,14 @@ public class ArrayMaker {
 	 * @param args
 	 */
 	public static String[][] run(List<ProcessSummaryType> list) {
-		 for (ProcessSummaryType pst : list) {
-	            System.out.println(pst.getName());
-		 }
+
 		String[][] s = new String[list.size()][5];
 
 		for (int i = 0; i < list.size(); i++) {
 			s[i][0] = "" + list.get(i).getName();
 			s[i][1] = "" + list.get(i).getId();
 			s[i][2] = "" + list.get(i).getOwner();
-			s[i][3] = "" + list.get(i).getDomain();
+			s[i][3] = "" + list.get(i).getOriginalNativeType();
 			List<VersionSummaryType> b = list.get(i).getVersionSummaries();
 			s[i][4] = "";
 			for (int z = 0; z < b.size() - 1; z++) {
@@ -33,19 +31,19 @@ public class ArrayMaker {
 	}
 
 	public static String[][] run(List<ProcessSummaryType> list, String name,
-			int id, String owner, String domain) {
+			int id, String owner, String type) {
 
 		int j = list.size() - 1;
 
 		if (!((name.equalsIgnoreCase("")) && (id == 0)
-				&& (owner.equalsIgnoreCase("")) && (domain.equalsIgnoreCase("")))) {
+				&& (owner.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")))) {
 			j = 0;
 			for (int i = 0; i < list.size() - 1; i++) {
 				if ((list.get(i).getName().toLowerCase()
 						.contains(name.toLowerCase()) || name
 						.equalsIgnoreCase(""))
 						&& (list.get(i).getDomain().toLowerCase()
-								.contains(domain.toLowerCase()) || domain
+								.contains(type.toLowerCase()) || type
 								.equalsIgnoreCase(""))
 						&& (list.get(i).getOwner().toLowerCase()
 								.contains(owner.toLowerCase()) || owner
@@ -61,14 +59,14 @@ public class ArrayMaker {
 
 		for (int i = 0; i < list.size() - 1; i++) {
 			if (!((name.equalsIgnoreCase("")) && (id == 0)
-					&& (owner.equalsIgnoreCase("")) && (domain
+					&& (owner.equalsIgnoreCase("")) && (type
 						.equalsIgnoreCase("")))) {
 
 				if ((list.get(i).getName().toLowerCase()
 						.contains(name.toLowerCase()) || name
 						.equalsIgnoreCase(""))
 						&& (list.get(i).getDomain().toLowerCase()
-								.contains(domain.toLowerCase()) || domain
+								.contains(type.toLowerCase()) || type
 								.equalsIgnoreCase(""))
 						&& (list.get(i).getOwner().toLowerCase()
 								.contains(owner.toLowerCase()) || owner

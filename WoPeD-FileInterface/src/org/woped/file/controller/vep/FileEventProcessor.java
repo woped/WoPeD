@@ -6,7 +6,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.security.AccessControlException;
@@ -20,11 +19,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
-import javax.xml.bind.JAXBException;
 
 import org.apromore.access.ApromoreAccessObject;
 import org.apromore.manager.model_portal.EditSessionType;
-import org.apromore.manager.model_portal.ImportProcessOutputMsgType;
+import org.apromore.model.ExportFormatResultType;
 import org.woped.bpel.BPEL;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
@@ -786,28 +784,28 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	private IEditor importApromore() {
 		IEditor editor = null;
 		final PNMLImport pr;
+		InputStream is = null;
+		ExportFormatResultType ef;
+		int ind;
 
 		pr = new PNMLImport((ApplicationMediator) getMediator());
 		boolean loadSuccess = false;
 
-		InputStream is;
-
 		ImportFrame aImp = new ImportFrame();
-		if (aImp.getElement() == null) {
+		if (aImp.getSelectedID() == -1) {
 			getMediator().getUi().getComponent()
 					.setCursor(Cursor.getDefaultCursor());
+			aImp.dispose();
 			return null;
-		}
-		ApromoreAccessObject aao = new ApromoreAccessObject();// "proxy.dhbw-karlsruhe.de",
-																// 8080);
-
+		}	
+		
+		ApromoreAccessObject aao = new ApromoreAccessObject();
 		try {
-//			is = aao.getPNML(aImp.getElement()).getInputStream();
-//			loadSuccess = pr.run(is);
-		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-//		} catch (IOException e) {
+			ind = aImp.getSelectedID();
+			ef = aao.importProcess(ind);
+			is = ef.getNative().getInputStream();
+			loadSuccess = pr.run(is);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -831,11 +829,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					JOptionPane.ERROR_MESSAGE);
 		}
 
-		getMediator().getUi().updateRecentMenu();
+//		getMediator().getUi().updateRecentMenu();
 
-		if (ConfigurationManager.getConfiguration().getColorOn() == true) {
-			// new NetColorScheme().update();
-		}
+//		if (ConfigurationManager.getConfiguration().getColorOn() == true) {
+// 			new NetColorScheme().update();
+//		}
 
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getDefaultCursor());

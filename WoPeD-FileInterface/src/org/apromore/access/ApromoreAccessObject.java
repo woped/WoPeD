@@ -1,7 +1,10 @@
 package org.apromore.access;
 
 import java.net.ProxySelector;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JOptionPane;
 import javax.xml.ws.WebServiceException;
@@ -9,8 +12,10 @@ import javax.xml.ws.WebServiceException;
 import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
 import org.apromore.model.EditSessionType;
+import org.apromore.model.ExportFormatResultType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
+import org.apromore.plugin.property.RequestParameterType;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -69,11 +74,21 @@ public class ApromoreAccessObject {
 		return processSummaries.getProcessSummary(); 
 	}
 
-//	public DataHandler getPNML(ExportFormatInputMsgType request) {
-//		request.setFormat("XPDL 2.1");
-//		ExportFormatOutputMsgType a =  managerService.exportFormat(request);
-//		return a.getNative();
-//	}
+	public ExportFormatResultType importProcess(int id) {
+		
+		ProcessSummariesType processSummaries = managerService.readProcessSummaries(null);
+		ProcessSummaryType p = processSummaries.getProcessSummary().get(id);
+		ExportFormatResultType exf = null;
+		
+		try {
+			exf = managerService.exportFormat(p.getId(), null, null, null, null, null, false, null, Collections.<RequestParameterType<?>> emptySet());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return exf;
+	}
 	
 	public EditSessionType getParams() {
 		return aproParams;
