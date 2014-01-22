@@ -58,12 +58,12 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     // Used VC
     private StatusBarVC           statusBar              = null;
     private DefaultEditorFrame    frame                  = null;
-    
+
     private List<IEditor>         editorList             = new ArrayList<IEditor>();
-    
+
     //! Stores a list of internal frames that should stay in foreground
     private List<DefaultEditorFrame>  m_modalityStack = new ArrayList<DefaultEditorFrame>();
-    
+
     public DefaultUserInterface(TaskBarVC taskBar, StatusBarVC statusBar)
     {
         super();
@@ -73,7 +73,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         }
         // Adaption of constructor signature
         this.statusBar = statusBar;
-    
+
         desktop = new JDesktopPane();
         desktop.setBackground(DefaultStaticConfiguration.DEFAULT_UI_BACKGROUND_COLOR);
         PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(desktop);
@@ -83,7 +83,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         setBounds(ConfigurationManager.getConfiguration().getWindowX(), ConfigurationManager.getConfiguration().getWindowY(), (int) ConfigurationManager.getConfiguration().getWindowSize().getWidth(),
                 (int) ConfigurationManager.getConfiguration().getWindowSize().getHeight());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-       
+
         // Maximize JFrame?
         if(ConfigurationManager.getConfiguration().isMaximizeWindow())
         	setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
@@ -94,11 +94,11 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 			}
 		});
 
-        if (ConfigurationManager.getConfiguration().getHomedir() == null) 
+        if (ConfigurationManager.getConfiguration().getHomedir() == null)
         	ConfigurationManager.getConfiguration().setHomedir("nets/");
 
         getContentPane().add(desktop, BorderLayout.CENTER);
-        
+
         // Prepare Statusbar & Taskbar
         JPanel toolPanel = new JPanel();
         JPanel p1 = new JPanel();
@@ -111,19 +111,19 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         c.gridy = 0;
         c.gridwidth = GridBagConstraints.REMAINDER;
         p1.add(taskBar, c);
- 
+
         toolPanel.setLayout(new BorderLayout());
         toolPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
         toolPanel.add(p1, BorderLayout.WEST);
-        toolPanel.add(statusBar, BorderLayout.EAST);          
+        toolPanel.add(statusBar, BorderLayout.EAST);
         toolPanel.setPreferredSize(new Dimension(100, 25));
         getContentPane().add(toolPanel, BorderLayout.SOUTH);
-       
+
 		VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "Registration", null, null));
 
-		if (!ConfigurationManager.getConfiguration().isRegistered() && 
+		if (!ConfigurationManager.getConfiguration().isRegistered() &&
         		ConfigurationManager.getConfiguration().isShowOnStartup() &&
-        		(ConfigurationManager.getConfiguration().getLaunchCounter() < 10 | 
+        		(ConfigurationManager.getConfiguration().getLaunchCounter() < 10 |
         				(ConfigurationManager.getConfiguration().getLaunchCounter() % 5) == 3)) {
         	new RegistrationUI(this, true);
         }
@@ -136,7 +136,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         ReferenceProvider helper = new ReferenceProvider();
         helper.setDesktopReference(desktop);
         helper.setUIReference(this);
-            
+
         setVisible(true);
         LoggerManager.info(Constants.GUI_LOGGER, "END  INIT Application");
     }
@@ -146,27 +146,27 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
         if (editor != null)
         {
         	frame = new DefaultEditorFrame((EditorVC)editor, new EditorOperations((IEditor) editor), new EditorData(), new PetriNetResourceEditor((EditorVC) editor));
-            
+
             Point position = getNextEditorPosition();
             frame.setAlignmentX((float) position.getX());
             frame.setAlignmentY((float) position.getY());
             frame.addInternalFrameListener(this);
             frame.setLocation(position);
             desktop.add(frame, BorderLayout.CENTER);
-            
+
             if (editor instanceof SubprocessEditorVC)
             {
             	// Make subprocess editor window stay in foreground
             	m_modalityStack.add(0,frame);
             }
-            
+
             editorList.add(frame.getEditor());
             ((EditorVC)frame.getEditor()).getEditorPanel().setContainer(frame);
             frame.setVisible(true);
-           
+
             // Notify MainFrame
             super.addEditor(frame.getEditor());
-            
+
             try
             {
                 frame.setSelected(true);
@@ -235,7 +235,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
             LoggerManager.debug(Constants.GUI_LOGGER, "Could not select Frame");
         }
     }
-    
+
     public void renameEditor(IEditor editor)
     {
     	// Nothing to do here
@@ -253,7 +253,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     		}
     	return result;
     }
-    
+
     public IReachabilityGraph getReachGraphFocus()
     {
     	JInternalFrame[] frames = desktop.getAllFrames();
@@ -266,7 +266,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 
     /**
      * TODO: DOCUMENTATION (xraven)
-     *  
+     *
      */
     public void cascadeFrames()
     {
@@ -279,7 +279,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
             if (!allFrames[i].isIcon())
             {
                 allOpenFrames.add(0, allFrames[i]);
-                if (allFrames[i].isMaximum()) 
+                if (allFrames[i].isMaximum())
                 {
                     try
                     {
@@ -303,12 +303,12 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
             {}
         }
     }
-    
-    
+
+
 
     /**
      * TODO: DOCUMENTATION (xraven)
-     *  
+     *
      */
     public void arrangeFrames()
     {
@@ -321,7 +321,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
             if (!allFrames[i].isIcon())
             {
                 allOpenFrames.add(0, allFrames[i]);
-                if (allFrames[i].isMaximum()) 
+                if (allFrames[i].isMaximum())
                 {
                     try
                     {
@@ -332,25 +332,25 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
                     }
                 }
             }
-            
+
         }
         if (allOpenFrames.size()!=0)
         {
             int xCount = (int) Math.ceil(Math.sqrt(allOpenFrames.size()));
             int yCount = (int) Math.ceil((double) allOpenFrames.size() / xCount);
-    
+
             int frameWidth = desktop.getWidth() / xCount;
             int frameHeight = desktop.getHeight() / yCount;
             int lastRowWidth = desktop.getWidth() / (xCount - (xCount * yCount - allOpenFrames.size()));
-    
+
             LoggerManager.debug(Constants.GUI_LOGGER, "Frames" + allOpenFrames.size() + ":" + xCount + "x" + yCount);
-    
+
             for (int i = 0; i < allOpenFrames.size(); i++)
             {
                 JInternalFrame currentFrame = ((JInternalFrame) allOpenFrames.get(i));
                 int row = i / xCount;
                 int col = i % xCount;
-    
+
                 if ((row + 1) == yCount)
                 {
                     // LastRow
@@ -359,11 +359,11 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
                 {
                     currentFrame.setBounds(new Rectangle(col * frameWidth, row * frameHeight, frameWidth, frameHeight));
                 }
-    
+
             }
         }
     }
-    
+
 	public void refreshFocusOnFrames() {
 		JInternalFrame[] allFrames = desktop.getAllFrames();
 		boolean foundEditor = false;
@@ -390,12 +390,12 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     {
         return editorList;
     }
-      
+
 
     /**
      * This method provides the possibility to have a "started" TokenGame and the "ProcessTab" is viewed
      * when simulation is running
-     * 
+     *
      */
     public void setFirstTransitionActive(){
     	// activate the "ProcessTab" to view the TokenGame
@@ -406,15 +406,15 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 				if(current == desktop.getSelectedFrame()){
 					if (current.getProcessTab()!=null){
 						current.getProcessTab().setSelectedIndex(0);
-					}				
+					}
 				}
 			}
-		}  		
+		}
     }
 
     /**
      * TODO: DOCUMENTATION (silenco)
-     * 
+     *
      * @return
      */
     public Point getNextEditorPosition()
@@ -478,7 +478,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     		}
     	}
     	// Always activate the first modal frame
-    	if (modalFrame!=null)    	
+    	if (modalFrame!=null)
     	{
     		modalFrame.acceptMouseEvents(true);
     		try {
@@ -489,11 +489,11 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     	}
     	return ((modalFrame!=null)&&(activatedEditor!=modalFrame.getEditor()));
     }
-    
+
     public void internalFrameActivated(InternalFrameEvent e)
     {
     	// First check whether we have any active modal dialogs.
-    	// If so, there is no point and even some danger in reacting on the activated message 
+    	// If so, there is no point and even some danger in reacting on the activated message
     	// because we will change back to the original frame in an instant
     	boolean modalityFixed = FixModality();
     	if (!modalityFixed)
@@ -508,7 +508,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     }
 
     public void internalFrameClosing(InternalFrameEvent e)
-    {    	
+    {
         IEditor editor = ((DefaultEditorFrame) e.getSource()).getEditor();
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_CLOSE);
         action.actionPerformed(new ViewEvent(editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE));
@@ -543,5 +543,10 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 	public boolean isMaximized() {
 		return this.getExtendedState() == MAXIMIZED_BOTH;
 	}
-    
+
+	public DefaultEditorFrame getFrame() {
+		// TODO Auto-generated method stub
+		return frame;
+	}
+
 }

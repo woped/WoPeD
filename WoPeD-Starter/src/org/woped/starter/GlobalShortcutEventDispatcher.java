@@ -1,15 +1,28 @@
 package org.woped.starter;
 
+import java.awt.Component;
+import java.awt.Frame;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
+import javax.swing.ButtonModel;
+import javax.swing.SwingUtilities;
+
+import org.pushingpixels.flamingo.api.common.AbstractCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandButton;
+import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.editor.controller.EditorViewEvent;
 import org.woped.gui.translations.Messages;
 
 public class GlobalShortcutEventDispatcher implements KeyEventDispatcher{
+	private long delay = 500; //repeat Rate
 
+	private long lastKeyPressed = 0;
 	/** prefix in messages.properties */
 	private String prefix = null;
 
@@ -86,8 +99,18 @@ public class GlobalShortcutEventDispatcher implements KeyEventDispatcher{
 	private void doButtonClick(){
 		button.setVisible(false);
 		if(buttonRequiresMouseClick){
-			//Action is a combination of ButtonActionEvent and MouseEvent
-			//Special logic for clicking
+			 SwingUtilities.invokeLater(new Runnable() {
+				    public void run() {
+				    	final Window currentWindow = (Window) SwingUtilities.getRoot((Component) button);
+
+						DefaultUserInterface dui = (DefaultUserInterface) currentWindow;
+
+						dui.getFrame().getProcessTab().setSelectedIndex(1);
+						dui.getAllEditors().get(0).setDrawingMode(false);
+						button.doActionClick();
+						dui.getFrame().getProcessTab().setSelectedIndex(0);
+				    }
+				  });
 		}
 		else{
 			//standard-button: therefore we can perform the attached action
@@ -101,20 +124,24 @@ public class GlobalShortcutEventDispatcher implements KeyEventDispatcher{
 	 */
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent e) {
+
 		if(e.getID() == KeyEvent.KEY_RELEASED){
-			if(!ignoreDefaultKeyMask){
-				if(e.getKeyCode() == Messages.getShortcutKey(prefix) && e.getModifiers() == (Messages.getShortcutModifier(prefix) | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())){
-					doButtonClick();
+			if(e.getWhen() - lastKeyPressed > delay){
+
+				if(!ignoreDefaultKeyMask){
+					if(e.getKeyCode() == Messages.getShortcutKey(prefix) && e.getModifiers() == (Messages.getShortcutModifier(prefix) | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask())){
+						doButtonClick();
+					}
+
 				}
-			}
-			else{
-				if(e.getKeyCode() == Messages.getShortcutKey(prefix) && e.getModifiers() == Messages.getShortcutModifier(prefix)){
-					doButtonClick();
+				else{
+					if(e.getKeyCode() == Messages.getShortcutKey(prefix) && e.getModifiers() == Messages.getShortcutModifier(prefix)){
+						doButtonClick();
+					}
 				}
+				lastKeyPressed = System.currentTimeMillis();
 			}
 		}
 		return false;
 	}
-
-
 }
