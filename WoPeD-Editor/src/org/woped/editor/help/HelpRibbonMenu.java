@@ -59,6 +59,13 @@ import org.woped.editor.help.action.BrowserForwardAction;
 import org.woped.editor.help.action.BrowserHomeAction;
 import org.woped.editor.help.action.BrowserRefreshAction;
 import org.woped.editor.help.action.BrowserWebpageAction;
+import org.woped.gui.images.svg.file_close;
+import org.woped.gui.images.svg.help_contents;
+import org.woped.gui.images.svg.home;
+import org.woped.gui.images.svg.refresh;
+import org.woped.gui.images.svg.tokengame_play_seek_backward;
+import org.woped.gui.images.svg.tokengame_play_seek_forward;
+import org.woped.gui.images.svg.woped_community;
 import org.woped.gui.translations.Messages;
 
 /**
@@ -112,6 +119,7 @@ public class HelpRibbonMenu extends JRibbon
     private HelpRibbonMenu(HelpBrowser controlledWindow)
     {
     	helpBrowser = controlledWindow;
+
     	this.addTask(getHelpTask());
     }
 
@@ -163,7 +171,7 @@ public class HelpRibbonMenu extends JRibbon
     {
         if (m_closeButton == null)
         {
-            m_closeButton = new JCommandButton(Messages.getTitle("Action.Browser.Close"), getResizableIcon("Action.Browser.Close"));
+            m_closeButton = new JCommandButton(Messages.getTitle("Action.Browser.Close"), new file_close());
             m_closeButton.addActionListener(new ActionListener() {
             	WoPeDAction action = BrowserCloseAction.getInstance(helpBrowser);
 				public void actionPerformed(ActionEvent arg0) {
@@ -178,7 +186,7 @@ public class HelpRibbonMenu extends JRibbon
     {
         if (m_backButton == null)
         {
-            m_backButton = new JCommandButton(Messages.getTitle("Action.Browser.Back"), getResizableIcon("Action.Browser.Back"));
+            m_backButton = new JCommandButton(Messages.getTitle("Action.Browser.Back"), new tokengame_play_seek_backward());
             m_backButton.addActionListener(new ActionListener() {
             	WoPeDAction action = BrowserBackAction.getInstance(helpBrowser);
 				public void actionPerformed(ActionEvent arg0) {
@@ -194,7 +202,7 @@ public class HelpRibbonMenu extends JRibbon
     {
         if (m_refreshButton == null)
         {
-            m_refreshButton = new JCommandButton(Messages.getTitle("Action.Browser.Refresh"), getResizableIcon("Action.Browser.Refresh"));
+            m_refreshButton = new JCommandButton(Messages.getTitle("Action.Browser.Refresh"), new refresh());
             m_refreshButton.addActionListener(new ActionListener() {
             	WoPeDAction action = BrowserRefreshAction.getInstance(helpBrowser);
 				public void actionPerformed(ActionEvent arg0) {
@@ -209,7 +217,7 @@ public class HelpRibbonMenu extends JRibbon
     {
         if (m_homeButton == null)
         {
-            m_homeButton = new JCommandButton(Messages.getTitle("Action.Browser.Home"), getResizableIcon("Action.Browser.Home"));
+            m_homeButton = new JCommandButton(Messages.getTitle("Action.Browser.Home"), new home());
             m_homeButton.addActionListener(new ActionListener() {
             	WoPeDAction action = BrowserHomeAction.getInstance(helpBrowser);
 				public void actionPerformed(ActionEvent arg0) {
@@ -224,7 +232,7 @@ public class HelpRibbonMenu extends JRibbon
     {
         if (m_contentsButton == null)
         {
-            m_contentsButton = new JCommandButton(Messages.getTitle("Action.Browser.Contents"), getResizableIcon("Action.Browser.Contents"));
+            m_contentsButton = new JCommandButton(Messages.getTitle("Action.Browser.Contents"), new help_contents());
             m_contentsButton.addActionListener(new ActionListener() {
             	WoPeDAction action = BrowserContentsAction.getInstance(helpBrowser);
 				public void actionPerformed(ActionEvent arg0) {
@@ -239,7 +247,7 @@ public class HelpRibbonMenu extends JRibbon
     {
         if (m_forwardButton == null)
         {
-            m_forwardButton = new JCommandButton(Messages.getTitle("Action.Browser.Forward"), getResizableIcon("Action.Browser.Forward"));
+            m_forwardButton = new JCommandButton(Messages.getTitle("Action.Browser.Forward"), new tokengame_play_seek_forward());
             m_forwardButton.addActionListener(new ActionListener() {
             	WoPeDAction action = BrowserForwardAction.getInstance(helpBrowser);
 				public void actionPerformed(ActionEvent arg0) {
@@ -255,7 +263,7 @@ public class HelpRibbonMenu extends JRibbon
     {
         if (m_wwwButton == null)
         {
-            m_wwwButton = new JCommandButton(Messages.getTitle("Action.Browser.WWW"), getResizableIcon("Action.Browser.WWW"));
+            m_wwwButton = new JCommandButton(Messages.getTitle("Action.Browser.WWW"), new woped_community());
             m_wwwButton.addActionListener(new ActionListener() {
             	WoPeDAction action = BrowserWebpageAction.getInstance(helpBrowser);
 				public void actionPerformed(ActionEvent arg0) {
