@@ -1,11 +1,14 @@
 package org.apromore.access;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.ProxySelector;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.activation.DataHandler;
 import javax.swing.JOptionPane;
 import javax.xml.ws.WebServiceException;
 
@@ -13,8 +16,12 @@ import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
 import org.apromore.model.EditSessionType;
 import org.apromore.model.ExportFormatResultType;
+import org.apromore.model.ImportProcessInputMsgType;
+import org.apromore.model.ImportProcessOutputMsgType;
+import org.apromore.model.ImportProcessResultType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
+import org.apromore.plugin.property.RequestParameterType;
 // import org.apromore.plugin.property.RequestParameterType;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -79,13 +86,14 @@ public class ApromoreAccessObject {
 		ProcessSummariesType processSummaries = managerService.readProcessSummaries(null);
 		ProcessSummaryType p = processSummaries.getProcessSummary().get(id);
 		ExportFormatResultType exf = null;
+		final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
 		
-//		try {
-//			exf = managerService.exportFormat(p.getId(), null, null, null, null, null, false, null, Collections.<RequestParameterType<?>> emptySet());
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			exf = managerService.exportFormat(p.getId(), p.getName(), null, p.getLastVersion(), p.getOriginalNativeType(), null, false, p.getOwner(), noCanoniserParameters);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return exf;
 	}
@@ -94,14 +102,27 @@ public class ApromoreAccessObject {
 		return aproParams;
 	}
 	
-//	public ImportProcessOutputMsgType export(DataHandler a, EditSessionType e) {
-//		ImportProcessInputMsgType request = new ImportProcessInputMsgType();
-//		request.setProcessDescription(a);
-//		request.setAddFakeEvents(false);
-//		request.setEditSession(e);
-//		Object serviceport;
-//		return serviceport.importProcess(request);
-//	}
+	public ImportProcessResultType export(FileInputStream fis) {
+        final String userName = "admin";
+        final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
+        try {
+        	
+        	return managerService.importProcess(userName, 50, "PNML 1.3.2", "lala",
+			        1.0D, fis,
+			        "domain",
+			        "documentation",
+			        "created",
+			        "lastUpdate", true, noCanoniserParameters);
+					 
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        return null;
+	}
 	
 	public boolean IsOnline()
 	{
