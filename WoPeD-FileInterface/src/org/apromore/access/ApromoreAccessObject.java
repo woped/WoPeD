@@ -1,6 +1,5 @@
 package org.apromore.access;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.ProxySelector;
@@ -8,16 +7,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import javax.activation.DataHandler;
 import javax.swing.JOptionPane;
-import javax.xml.ws.WebServiceException;
 
 import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
 import org.apromore.model.EditSessionType;
 import org.apromore.model.ExportFormatResultType;
-import org.apromore.model.ImportProcessInputMsgType;
-import org.apromore.model.ImportProcessOutputMsgType;
 import org.apromore.model.ImportProcessResultType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
@@ -54,6 +49,7 @@ public class ApromoreAccessObject {
 		
 		try
 		{
+			httpCms.setConnectionTimeout(10000);
 			temp.setMarshaller(serviceMarshaller);
 		    temp.setUnmarshaller(serviceMarshaller);
 		    temp.setMessageSender(httpCms);
@@ -64,7 +60,7 @@ public class ApromoreAccessObject {
 
 		    isOnline = true;
 		} 
-		catch (WebServiceException e)
+		catch (Exception e)
 		{
 			JOptionPane.showOptionDialog(null, Messages.getString("Apromore.Export.UI.Error.AproNoConn"), Messages.getString("Apromore.Export.UI.Error.AproNoConnTitle"),
 
@@ -89,7 +85,7 @@ public class ApromoreAccessObject {
 		final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
 		
 		try {
-			exf = managerService.exportFormat(p.getId(), p.getName(), null, p.getLastVersion(), p.getOriginalNativeType(), null, false, p.getOwner(), noCanoniserParameters);
+			exf = managerService.exportFormat(p.getId(), p.getName(), "MAIN", p.getLastVersion(), "PNML 1.3.2", null, false, p.getOwner(), noCanoniserParameters);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,12 +99,12 @@ public class ApromoreAccessObject {
 	}
 	
 	public ImportProcessResultType export(FileInputStream fis) {
-        final String userName = "admin";
+        final String userName = "ms09";
         final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
         try {
         	
-        	return managerService.importProcess(userName, 50, "PNML 1.3.2", "lala",
-			        1.0D, fis,
+        	return managerService.importProcess(userName, 5546, "PNML 1.3.2", "exporttest4",
+			        "1.0", fis,
 			        "domain",
 			        "documentation",
 			        "created",
