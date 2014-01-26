@@ -76,13 +76,12 @@ public class ExportFrame extends JDialog {
 		try{
 			serverVerbindung();
 		}catch(Exception e){
-			Object[] options = { "OK" };
+			Object[] options = { Messages.getString("Apromore.Connect.Error.Button") };
 			JOptionPane
 					.showOptionDialog(
 							null,
-							"Die Verbindung zum Apromore-Server konnte nicht hergestellt werden. Bitte üperprüfen Sie die Einstellungen",
-							"Verbindungsfehler",
-
+							Messages.getString("Apromore.Connect.Error"),
+							Messages.getString("Apromore.Connect.Error.Title"),
 							JOptionPane.DEFAULT_OPTION,
 							JOptionPane.WARNING_MESSAGE,
 
