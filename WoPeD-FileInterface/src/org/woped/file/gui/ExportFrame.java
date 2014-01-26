@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import org.apromore.access.ApromoreAccessObject;
+import org.apromore.access.ArrayMaker;
 import org.apromore.manager.model_portal.EditSessionType;
 import org.woped.gui.translations.Messages;
 
@@ -22,11 +24,11 @@ public class ExportFrame extends JDialog {
 	EditSessionType z;
 	boolean isNew;
 
-	JTextField idField;
-	JTextField userField;
-	JTextField versionField;
-	JTextField domainField;
-	JTextField processField;
+	public static JTextField idField;
+	public static JTextField userField;
+	public static JTextField versionField;
+	public static JTextField domainField;
+	public static JTextField processField;
 	JButton btnExport;
 
 	public ExportFrame() {
@@ -56,7 +58,39 @@ public class ExportFrame extends JDialog {
 		return z;
 	}
 
+	
+	ApromoreAccessObject initAAO;
+	public void serverVerbindung(){
+		initAAO = new ApromoreAccessObject();
+		String[][] rowData;
+		rowData = ArrayMaker.run(initAAO.getList());
+
+		if (!initAAO.IsOnline()) {
+			dispose();
+			return;
+		}	
+	}
+	
+	
 	public void initComponents() {
+		try{
+			serverVerbindung();
+		}catch(Exception e){
+			Object[] options = { "OK" };
+			JOptionPane
+					.showOptionDialog(
+							null,
+							"Die Verbindung zum Apromore-Server konnte nicht hergestellt werden. Bitte üperprüfen Sie die Einstellungen",
+							"Verbindungsfehler",
+
+							JOptionPane.DEFAULT_OPTION,
+							JOptionPane.WARNING_MESSAGE,
+
+							null, options, options[0]);
+			dispose();
+			return;
+		
+		}
 		setTitle(Messages.getString("Apromore.Export.UI.Title"));
 
 		Dimension frameSize = new Dimension(300, 300);
@@ -173,5 +207,25 @@ public class ExportFrame extends JDialog {
 		});
 		setVisible(true);
 
+	}
+	
+	public static String getUserName(){
+		return userField.getText();
+	}
+	
+	public static String getVersion(){
+		return versionField.getText();
+	}
+	
+	public static String getDomain(){
+		return domainField.getText();
+	}
+	
+	public static String getID(){
+		return idField.getText();
+	}
+	
+	public static String getProcess(){
+		return processField.getText();
 	}
 }

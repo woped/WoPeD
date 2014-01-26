@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
@@ -26,7 +27,7 @@ import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.translations.Messages;
-
+import org.woped.file.gui.*;
 public class ApromoreAccessObject {
 
 	private ApplicationContext appContext = new AnnotationConfigApplicationContext(ApromoreConfig.class);   
@@ -98,17 +99,19 @@ public class ApromoreAccessObject {
 		return aproParams;
 	}
 	
+
+	
 	public ImportProcessResultType export(FileInputStream fis) {
-        final String userName = "ms09";
         final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
         try {
         	
-        	return managerService.importProcess(userName, 5546, "PNML 1.3.2", "exporttest4",
-			        "1.0", fis,
-			        "domain",
-			        "documentation",
-			        "created",
-			        "lastUpdate", true, noCanoniserParameters);
+        	String userName = ExportFrame.getUserName();
+        	String domain = ExportFrame.getDomain();
+        	String ID = ExportFrame.getID();
+        	String process = ExportFrame.getProcess();
+        	String version = ExportFrame.getVersion();
+        	
+        	return managerService.importProcess(userName, 5546, "PNML 1.3.2", process, version, fis, domain, "documentation", "created", "lastUpdate", true, noCanoniserParameters);
 					 
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
