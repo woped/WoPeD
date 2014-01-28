@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,6 +30,7 @@ public class ExportFrame extends JDialog {
 	public static JTextField versionField;
 	public static JTextField domainField;
 	public static JTextField processField;
+	JCheckBox pub;
 	JButton btnExport;
 
 	public ExportFrame() {
@@ -92,7 +94,7 @@ public class ExportFrame extends JDialog {
 		}
 		setTitle(Messages.getString("Apromore.Export.UI.Title"));
 
-		Dimension frameSize = new Dimension(300, 300);
+		Dimension frameSize = new Dimension(300, 340);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int top = (screenSize.height - frameSize.height) / 2;
 		int left = (screenSize.width - frameSize.width) / 2;
@@ -102,6 +104,8 @@ public class ExportFrame extends JDialog {
 
 		getContentPane().setLayout(null);
 
+		//Name, ID, Ersteller, Typ, Versionen
+		
 		JLabel lblId = new JLabel(Messages.getString("Apromore.Export.UI.ID"));
 		lblId.setBounds(10, 34, 76, 14);
 		getContentPane().add(lblId);
@@ -150,9 +154,17 @@ public class ExportFrame extends JDialog {
 		versionField.setColumns(10);
 		versionField.setBounds(104, 194, 180, 20);
 		getContentPane().add(versionField);
+		
+		JLabel pubLabel = new JLabel (Messages.getString ("Apromore.Export.UI.Public"));
+		pubLabel.setBounds(10, 234, 180, 20);
+		getContentPane().add(pubLabel);
+		
+		pub = new JCheckBox();
+		pub.setBounds(104, 234, 180, 20);
+		getContentPane().add(pub);
 
 		btnExport = new JButton(Messages.getString("Apromore.Export.UI.Export"));
-		btnExport.setBounds(97, 238, 89, 23);
+		btnExport.setBounds(97, 278, 89, 23);
 		getContentPane().add(btnExport);
 
 	}
