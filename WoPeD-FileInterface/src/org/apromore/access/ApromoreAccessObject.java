@@ -3,7 +3,9 @@ package org.apromore.access;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.ProxySelector;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -107,11 +109,16 @@ public class ApromoreAccessObject {
         	
         	String userName = ExportFrame.getUserName();
         	String domain = ExportFrame.getDomain();
-        	String ID = ExportFrame.getID();
         	String process = ExportFrame.getProcess();
         	String version = ExportFrame.getVersion();
+        	//+public
         	
-        	return managerService.importProcess(userName, 5546, "PNML 1.3.2", process, version, fis, domain, "documentation", "created", "lastUpdate", true, noCanoniserParameters);
+        	SimpleDateFormat sdf = new SimpleDateFormat();
+			sdf.applyPattern("yyyy'/'MM'/'dd");
+			
+        	return managerService.importProcess(userName, 0, "PNML 1.3.2",
+        		process, version, fis, "", "", sdf.format(new Date()), "", true,
+        		noCanoniserParameters);
 					 
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block

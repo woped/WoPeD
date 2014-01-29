@@ -103,8 +103,6 @@ public class ExportFrame extends JDialog {
 		setResizable(false);
 
 		getContentPane().setLayout(null);
-
-		//Name, ID, Ersteller, Typ, Versionen
 		
 		JLabel lblId = new JLabel(Messages.getString("Apromore.Export.UI.ID"));
 		lblId.setBounds(10, 34, 76, 14);
@@ -208,6 +206,7 @@ public class ExportFrame extends JDialog {
 				z.setUsername(userField.getText());
 				z.setVersionName(versionField.getText());
 				z.setWithAnnotation(false);
+				
 
 				if (flag) {
 					setVisible(false);
@@ -230,10 +229,6 @@ public class ExportFrame extends JDialog {
 	
 	public static String getDomain(){
 		return domainField.getText();
-	}
-	
-	public static String getID(){
-		return idField.getText();
 	}
 	
 	public static String getProcess(){
