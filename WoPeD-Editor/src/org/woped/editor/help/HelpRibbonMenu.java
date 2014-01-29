@@ -81,9 +81,10 @@ public class HelpRibbonMenu extends JRibbon
     private HelpBrowser        helpBrowser      = null;
 
 	private RibbonTask helpTask = null;
-	private JRibbonBand fileBand, navigationBand = null;
+//	private JRibbonBand fileBand = null;
+	private JRibbonBand navigationBand = null;
 
-    private JCommandButton     m_closeButton    = null;
+//    private JCommandButton     m_closeButton    = null;
     private JCommandButton     m_backButton     = null;
     private JCommandButton     m_homeButton     = null;
     private JCommandButton     m_contentsButton = null;
@@ -132,55 +133,56 @@ public class HelpRibbonMenu extends JRibbon
 	private RibbonTask getHelpTask() {
 
 		if (helpTask == null) {
-			helpTask = new RibbonTask(Messages.getTitle("Help"), getFileBand(), getNavigationBand());
+			//helpTask = new RibbonTask(Messages.getTitle("Help"), getFileBand(), getNavigationBand());
+			helpTask = new RibbonTask(Messages.getTitle("Help"), getNavigationBand());
 		}
 		return helpTask;
 	}
 	/*********/
 	/* BANDS */
 	/*********/
-    private JRibbonBand getFileBand() {
-    	if (fileBand == null) {
-    		fileBand = new JRibbonBand(Messages.getTitle("Menu.Browser.File"), null);
-
-    		fileBand.addCommandButton(getCloseButton(), RibbonElementPriority.MEDIUM);
-
-    		fileBand.setResizePolicies((List) Arrays.asList(new CoreRibbonResizePolicies.None(fileBand.getControlPanel()), new IconRibbonBandResizePolicy(fileBand.getControlPanel())));
-
-		}
-		return fileBand;
-	}
+//    private JRibbonBand getFileBand() {
+//    	if (fileBand == null) {
+//    		fileBand = new JRibbonBand(Messages.getTitle("Menu.Browser.File"), null);
+//
+//    		fileBand.addCommandButton(getCloseButton(), RibbonElementPriority.MEDIUM);
+//
+//    		fileBand.setResizePolicies((List) Arrays.asList(new CoreRibbonResizePolicies.None(fileBand.getControlPanel()), new IconRibbonBandResizePolicy(fileBand.getControlPanel())));
+//
+//		}
+//		return fileBand;
+//	}
 
 	private JRibbonBand getNavigationBand() {
 		if (navigationBand == null) {
-			fileBand = new JRibbonBand(Messages.getTitle("Menu.Browser.Navigate"), null);
+			navigationBand = new JRibbonBand(Messages.getTitle("Menu.Browser.Navigate"), null);
 
-			fileBand.addCommandButton(getBackButton(), RibbonElementPriority.MEDIUM);
-	    	fileBand.addCommandButton(getForwardButton(), RibbonElementPriority.MEDIUM);
-	    	fileBand.addCommandButton(getHomeButton(), RibbonElementPriority.MEDIUM);
-	    	fileBand.addCommandButton(getContentsButton(), RibbonElementPriority.MEDIUM);
-	    	fileBand.addCommandButton(getRefreshButton(), RibbonElementPriority.MEDIUM);
-	    	fileBand.addCommandButton(getWWWButton(), RibbonElementPriority.MEDIUM);
+			navigationBand.addCommandButton(getBackButton(), RibbonElementPriority.MEDIUM);
+			navigationBand.addCommandButton(getForwardButton(), RibbonElementPriority.MEDIUM);
+			navigationBand.addCommandButton(getHomeButton(), RibbonElementPriority.MEDIUM);
+	    	navigationBand.addCommandButton(getContentsButton(), RibbonElementPriority.MEDIUM);
+	    	navigationBand.addCommandButton(getRefreshButton(), RibbonElementPriority.MEDIUM);
+	    	navigationBand.addCommandButton(getWWWButton(), RibbonElementPriority.MEDIUM);
 
-	    	fileBand.setResizePolicies((List) Arrays.asList(new CoreRibbonResizePolicies.None(fileBand.getControlPanel()), new IconRibbonBandResizePolicy(fileBand.getControlPanel())));
+	    	navigationBand.setResizePolicies((List) Arrays.asList(new CoreRibbonResizePolicies.None(navigationBand.getControlPanel()), new IconRibbonBandResizePolicy(navigationBand.getControlPanel())));
 		}
-		return fileBand;
+		return navigationBand;
 	}
 
-    public JCommandButton getCloseButton()
-    {
-        if (m_closeButton == null)
-        {
-            m_closeButton = new JCommandButton(Messages.getTitle("Action.Browser.Close"), new file_close());
-            m_closeButton.addActionListener(new ActionListener() {
-            	WoPeDAction action = BrowserCloseAction.getInstance(helpBrowser);
-				public void actionPerformed(ActionEvent arg0) {
-					action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.VIEWEVENTTYPE_GUI));
-				}
-            });
-        }
-        return m_closeButton;
-    }
+//    public JCommandButton getCloseButton()
+//    {
+//        if (m_closeButton == null)
+//        {
+//            m_closeButton = new JCommandButton(Messages.getTitle("Action.Browser.Close"), new file_close());
+//            m_closeButton.addActionListener(new ActionListener() {
+//            	WoPeDAction action = BrowserCloseAction.getInstance(helpBrowser);
+//				public void actionPerformed(ActionEvent arg0) {
+//					action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.VIEWEVENTTYPE_GUI));
+//				}
+//            });
+//        }
+//        return m_closeButton;
+//    }
 
     public JCommandButton getBackButton()
     {
