@@ -440,11 +440,12 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		//Submenu
 
 			tokengameMenu = new OSXMenu(Messages.getString("Tools.tokengame.text"));
-			OSXMenuItem tokenGameStart = tokengameMenu.addMenuItem(Messages.getTitle("ToolBar.TokenGame.Start"), "ToolBar.TokenGame.Start");
+			OSXMenuItem tokenGameStart = tokengameMenu.addMenuItem(Messages.getTitle("TokenGame.Start"), "TokenGame.Start");
 			tokenGameStart.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_OPEN_TOKENGAME, AbstractViewEvent.OPEN_TOKENGAME, tokenGameStart));
 
 			//tokengameMenu.addMenuItem(Messages.getString("Tokengame.CloseBand.CloseButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_CLOSE_TOKENGAME, AbstractViewEvent.CLOSE_TOKENGAME);
-			OSXMenuItem tokenGameEnd = tokengameMenu.addMenuItem(Messages.getTitle("ToolBar.TokenGame.Leave"),"ToolBar.TokenGame.Leave");
+			//OSXMenuItem tokenGameEnd = tokengameMenu.addMenuItem(Messages.getTitle("ToolBar.TokenGame.Leave"),"ToolBar.TokenGame.Leave");
+			OSXMenuItem tokenGameEnd = tokengameMenu.addMenuItem(Messages.getString("Tokengame.CloseBand.CloseButton.text"),"Tokengame.CloseBand.CloseButton");
 			tokenGameEnd.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_CLOSE_TOKENGAME, AbstractViewEvent.CLOSE_TOKENGAME, tokenGameEnd));
 
 			tokengameMenu.addSeparator();
@@ -471,15 +472,15 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		osxAnalyzeMenu.addSubMenu(tokengameMenu);
 
 		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.coloring.text"), "Action.Coloring").addAction(m_mediator,ActionFactory.ACTIONID_COLORING, AbstractViewEvent.COLORING);
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.semanticalAnalysis.text"), "ToolBar.Woped").addAction(m_mediator,ActionFactory.ACTIONID_WOPED, AbstractViewEvent.ANALYSIS_WOPED);
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.capacityPlanning.text"), "ToolBar.QuantCap").addAction(m_mediator,ActionFactory.ACTIONID_QUANTCAP, AbstractViewEvent.QUANTCAP);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.semanticalAnalysis.text"), "Tools.semanticalAnalysis").addAction(m_mediator,ActionFactory.ACTIONID_WOPED, AbstractViewEvent.ANALYSIS_WOPED);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.capacityPlanning.text"), "Tools.capacityPlanning").addAction(m_mediator,ActionFactory.ACTIONID_QUANTCAP, AbstractViewEvent.QUANTCAP);
 		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.quantitativeSimulation.text"), "Menu.Analysis.QuantSim").addAction(m_mediator,ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM);
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.reachabilityGraph.text"), "ToolBar.ReachabilityGraph").addAction(m_mediator,ActionFactory.ACTIONID_REACHGRAPH_START, AbstractViewEvent.REACHGRAPH);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.reachabilityGraph.text"), "Tools.reachabilityGraph").addAction(m_mediator,ActionFactory.ACTIONID_REACHGRAPH_START, AbstractViewEvent.REACHGRAPH);
 		osxAnalyzeMenu.addSeparator();
 		//Submenu
 			OSXMenu processMetricsMenu = new OSXMenu(Messages.getString("Metrics.textBandTitle"));
 			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetricsmassanalysis.text")).addAction(m_mediator,ActionFactory.ACTIONID_MASSMETRICANALYSE, AbstractViewEvent.ANALYSIS_MASSMETRICANALYSE);
-			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetrics.text"), "ToolBar.Metric").addAction(m_mediator,ActionFactory.ACTIONID_METRIC, AbstractViewEvent.ANALYSIS_METRIC);
+			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetrics.text"), "Metrics.processmetrics").addAction(m_mediator,ActionFactory.ACTIONID_METRIC, AbstractViewEvent.ANALYSIS_METRIC);
 			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetricsbuilder.text")).addAction(m_mediator,ActionFactory.ACTIONID_METRICSBUILDER, AbstractViewEvent.ANALYSIS_METRICSBUILDER);
 			osxAnalyzeMenu.addSubMenu(processMetricsMenu);
 		menuAdapter.addMenu(osxAnalyzeMenu);
@@ -512,8 +513,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 //            }
 //        });
 
-		osxViewMenu.addMenuItem(Messages.getTitle("ToolBar.RotateView"),"ToolBar.RotateView").addAction(m_mediator,ActionFactory.ACTIONID_ROTATEVIEW, AbstractViewEvent.ROTATEVIEW);;
-		osxViewMenu.addMenuItem(Messages.getTitle("ToolBar.GraphBeautifier"),"ToolBar.GraphBeautifier").addAction(m_mediator,ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT, AbstractViewEvent.GRAPHBEAUTIFIER);
+		osxViewMenu.addMenuItem(Messages.getString("View.changeModellingDirection.text"),"View.changeModellingDirection").addAction(m_mediator,ActionFactory.ACTIONID_ROTATEVIEW, AbstractViewEvent.ROTATEVIEW);;
+		osxViewMenu.addMenuItem(Messages.getString("View.optimizeLayout.text"),"View.optimizeLayout").addAction(m_mediator,ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT, AbstractViewEvent.GRAPHBEAUTIFIER);
 		osxViewMenu.addSeparator();
 		osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Cascade")).addAction(m_mediator,ActionFactory.ACTIONID_CASCADE, AbstractViewEvent.CASCADE);
 		osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Arrange")).addAction(m_mediator,ActionFactory.ACTIONID_ARRANGE, AbstractViewEvent.ARRANGE);
@@ -1473,7 +1474,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (coverabilityGraphButton == null) {
 			coverabilityGraphButton = new JCommandMenuButton(Messages.getString("Tools.reachabilityGraph.text"), new analyze_reachability_graph());
 			coverabilityGraphButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_REACHGRAPH_START, 																			 AbstractViewEvent.REACHGRAPH, coverabilityGraphButton));
-			addShortcutToJCommandButton("ToolBar.ReachabilityGraph", coverabilityGraphButton, ActionFactory.ACTIONID_REACHGRAPH_START);
+			addShortcutToJCommandButton("Tools.reachabilityGraph", coverabilityGraphButton, ActionFactory.ACTIONID_REACHGRAPH_START);
 			setTooltip(coverabilityGraphButton, "Tools.reachabilityGraph", true);
 		}
 
@@ -1497,7 +1498,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (semanticalAnalysisButton == null) {
 			semanticalAnalysisButton = new JCommandButton(Messages.getString("Tools.semanticalAnalysis.text"), new analyze_semanticalanalysis());
 			semanticalAnalysisButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_WOPED, AbstractViewEvent.ANALYSIS_WOPED, semanticalAnalysisButton));
-			addShortcutToJCommandButton("ToolBar.Woped", semanticalAnalysisButton, ActionFactory.ACTIONID_WOPED);
+			addShortcutToJCommandButton("Tools.semanticalAnalysis", semanticalAnalysisButton, ActionFactory.ACTIONID_WOPED);
 			setTooltip(semanticalAnalysisButton, "Tools.semanticalAnalysis", true);
 		}
 
@@ -1509,7 +1510,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (capacityPlanningButton == null) {
 			capacityPlanningButton = new JCommandButton(Messages.getString("Tools.capacityPlanning.text"), new analyze_capacityplanning());
 			capacityPlanningButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_QUANTCAP, AbstractViewEvent.QUANTCAP, capacityPlanningButton));
-			addShortcutToJCommandButton("ToolBar.QuantCap", capacityPlanningButton, ActionFactory.ACTIONID_QUANTCAP);
+			addShortcutToJCommandButton("Tools.capacityPlanning", capacityPlanningButton, ActionFactory.ACTIONID_QUANTCAP);
 			setTooltip(capacityPlanningButton, "Tools.capacityPlanning", true);
 		}
 
@@ -1522,7 +1523,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			quantitativeSimulationButton = new JCommandButton(Messages.getString("Tools.quantitativeSimulation.text"),new analyze_quantitative_simulation());
 			quantitativeSimulationButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM, quantitativeSimulationButton));
 			addShortcutToJCommandButton("Menu.Analysis.QuantSim", quantitativeSimulationButton, ActionFactory.ACTIONID_QUANTSIM);
-			setTooltip(quantitativeSimulationButton, "Tools.quantitativeSimulation", true);
+			setTooltip(quantitativeSimulationButton, "Menu.Analysis.QuantSim", true);
 		}
 
 		return quantitativeSimulationButton;
@@ -1533,7 +1534,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (processMetricsButton == null) {
 			processMetricsButton = new JCommandButton(Messages.getString("Metrics.processmetrics.text"), new analyze_metric());
 			processMetricsButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_METRIC, AbstractViewEvent.ANALYSIS_METRIC, processMetricsButton));
-			addShortcutToJCommandButton("ToolBar.Metric", processMetricsButton, ActionFactory.ACTIONID_METRIC);
+			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton, ActionFactory.ACTIONID_METRIC);
 			setTooltip(processMetricsButton, "Metrics.processmetrics", true);
 		}
 
@@ -1567,7 +1568,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (changeOrientationButton == null) {
 			changeOrientationButton = new JCommandButton(Messages.getString("View.changeModellingDirection.text"),new view_change_modelling_direction());
 			changeOrientationButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_ROTATEVIEW, AbstractViewEvent.ROTATEVIEW, changeOrientationButton));
-			addShortcutToJCommandButton("ToolBar.RotateView", changeOrientationButton, ActionFactory.ACTIONID_ROTATEVIEW);
+			addShortcutToJCommandButton("View.changeModellingDirection", changeOrientationButton, ActionFactory.ACTIONID_ROTATEVIEW);
 			setTooltip(changeOrientationButton, "View.changeModellingDirection", true);
 		}
 
@@ -1579,7 +1580,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (optimizeLayoutButton == null) {
 			optimizeLayoutButton = new JCommandButton(Messages.getString("View.optimizeLayout.text"),new view_optimize_layout());
 			optimizeLayoutButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT, AbstractViewEvent.GRAPHBEAUTIFIER, optimizeLayoutButton));
-			addShortcutToJCommandButton("ToolBar.GraphBeautifier", optimizeLayoutButton, ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT);
+			addShortcutToJCommandButton("View.optimizeLayout", optimizeLayoutButton, ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT);
 			setTooltip(optimizeLayoutButton, "View.optimizeLayout", true);
 		}
 
