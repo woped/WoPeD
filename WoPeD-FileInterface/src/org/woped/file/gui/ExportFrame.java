@@ -205,7 +205,7 @@ public class ExportFrame extends JDialog {
 		getContentPane().add(btnUpdate);
 		btnUpdate.setVisible(true);
 		
-		JButton btnExport = new JButton(
+		btnExport = new JButton(
 				Messages.getString("Apromore.Export.UI.Export"));
 		btnExport.setBounds(10, 457, 89, 23);
 		getContentPane().add(btnExport);
@@ -275,23 +275,7 @@ public class ExportFrame extends JDialog {
 				z.setDomain(domainField.getText());
 				z.setLastUpdate(sdf.format(new Date()));
 
-				boolean flag = true;
-
-				try {
-					z.setProcessId(Integer.parseInt(idField.getText()));
-				} catch (Exception e) {
-					flag = false;
-					Object[] options = { "OK" };
-					JOptionPane.showOptionDialog(
-							null,
-							Messages.getString("Apromore.Export.UI.Error.IDFieldNotInteger"),
-							Messages.getString("Apromore.Export.UI.Error.IDFieldNotIntegerTitle"),
-
-							JOptionPane.DEFAULT_OPTION,
-							JOptionPane.WARNING_MESSAGE,
-
-							null, options, options[0]);
-				}
+				
 
 				z.setProcessName(processField.getText());
 				z.setUsername(userField.getText());
@@ -299,10 +283,10 @@ public class ExportFrame extends JDialog {
 				z.setWithAnnotation(false);
 				
 
-				if (flag) {
+				
 					setVisible(false);
 					dispose();
-				}
+				
 
 			}
 		});
