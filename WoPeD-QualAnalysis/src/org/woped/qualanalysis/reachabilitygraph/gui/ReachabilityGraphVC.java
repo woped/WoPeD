@@ -35,7 +35,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 
 	private HashSet<ReachabilityGraphPanel> panels = new HashSet<ReachabilityGraphPanel>();
 	private IUserInterface dui = null;
-	
+
 	private static final long serialVersionUID = 1L;
 	private static ReachabilityGraphVC myInstance = null;
 
@@ -65,7 +65,7 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	private void init() {
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
 		this.setFrameIcon(Messages.getImageIcon("ToolBar.ReachabilityGraph"));
-		this.setSize(new Dimension(640, 480));
+		this.setSize(new Dimension(680, 480));
 		this.setMinimumSize(new Dimension(320,240));
 		this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title"));
         this.setClosable(true);
@@ -125,13 +125,13 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 		}
 		return null;
 	}
-	
+
 	public void setUnselectButtonEnabled(IEditor editor, boolean value){
 		for (ReachabilityGraphPanel rgp : panels) {
 			if(rgp.getEditor() == editor){
 				rgp.setUnselectButtonEnabled(value);
 			}
-		}		
+		}
 	}
 
 	/**
@@ -187,9 +187,9 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	 */
 	public void updatePanelsVisibility(IEditor editor){
 		LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> updatePanelsVisibility " + this.getClass().getName());
-		for (ReachabilityGraphPanel rgp : panels) {			
+		for (ReachabilityGraphPanel rgp : panels) {
 			if(rgp.getEditor().equals(editor)){
-				this.add(rgp);		
+				this.add(rgp);
 				rgp.updateVisibility();
 				this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title")+ " - " + editor.getName());
 			} else {
@@ -223,12 +223,12 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 	public void internalFrameActivated(InternalFrameEvent e) {
 		this.updateShowingPanelVisibility();
 	}
-	public void internalFrameClosed(InternalFrameEvent e) { }	
-	
-	
+	public void internalFrameClosed(InternalFrameEvent e) { }
+
+
 	public void internalFrameClosing(InternalFrameEvent e) {
-		dui.refreshFocusOnFrames();		
-		for (ReachabilityGraphPanel rgp : panels) {			
+		dui.refreshFocusOnFrames();
+		for (ReachabilityGraphPanel rgp : panels) {
 			// Dehighlight RG
 			for(int i = 0; i < rgp.getDefaultGraph().getModel().getRootCount(); i++){
 				if(rgp.getDefaultGraph().getModel().getRootAt(i) instanceof ReachabilityPlaceModel){
@@ -241,11 +241,11 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
 			rgp.setUnselectButtonEnabled(false);
 			rgp.getDefaultGraph().getGraphLayoutCache().reload();
 			rgp.getDefaultGraph().clearSelection();
-			
-			// Dehighlight Petrinet and reset VirtualTokens	
+
+			// Dehighlight Petrinet and reset VirtualTokens
 			((PetriNetModelProcessor)rgp.getEditor().getModelProcessor()).resetRGHighlightAndVTokens();
-			rgp.getEditor().setReadOnly(true);			
-		}		
+			rgp.getEditor().setReadOnly(true);
+		}
 	}
 	public void internalFrameDeactivated(InternalFrameEvent e) { }
 	public void internalFrameDeiconified(InternalFrameEvent e) { }

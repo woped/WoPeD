@@ -23,6 +23,7 @@ import javax.swing.filechooser.FileFilter;
 import org.apromore.access.ApromoreAccessObject;
 import org.apromore.manager.model_portal.EditSessionType;
 import org.apromore.model.ExportFormatResultType;
+import org.apromore.model.ImportProcessResultType;
 import org.woped.bpel.BPEL;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
@@ -874,13 +875,20 @@ public class FileEventProcessor extends AbstractEventProcessor {
 						.setCursor(Cursor.getDefaultCursor());
 				return false;
 			}
-			DataHandler dh = new DataHandler(new FileDataSource("tmp.pnml"));
-//			ImportProcessOutputMsgType check = aao.export(dh, editSess);
-////			if (check.getResult().getCode() == 0) {
-//				succeed = true;
-//				editor.setSaved(true);
-//			}
+			try {
+				ImportProcessResultType check = aao.export(new FileInputStream(new File("tmp.pnml")));		
+				succeed = true;
+				editor.setSaved(true);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
 
+			
+		
+	
+			
 		}
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getDefaultCursor());

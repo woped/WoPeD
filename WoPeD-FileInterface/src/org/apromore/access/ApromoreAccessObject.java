@@ -1,20 +1,25 @@
 package org.apromore.access;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.ProxySelector;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 import javax.swing.JOptionPane;
-import javax.xml.ws.WebServiceException;
+import javax.swing.JTextField;
 
 import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
 import org.apromore.model.EditSessionType;
 import org.apromore.model.ExportFormatResultType;
+import org.apromore.model.ImportProcessResultType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
+import org.apromore.plugin.property.RequestParameterType;
 // import org.apromore.plugin.property.RequestParameterType;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -24,7 +29,7 @@ import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.translations.Messages;
-
+import org.woped.file.gui.*;
 public class ApromoreAccessObject {
 
 	private ApplicationContext appContext = new AnnotationConfigApplicationContext(ApromoreConfig.class);   
@@ -47,6 +52,7 @@ public class ApromoreAccessObject {
 		
 		try
 		{
+			httpCms.setConnectionTimeout(10000);
 			temp.setMarshaller(serviceMarshaller);
 		    temp.setUnmarshaller(serviceMarshaller);
 		    temp.setMessageSender(httpCms);
@@ -57,7 +63,7 @@ public class ApromoreAccessObject {
 
 		    isOnline = true;
 		} 
-		catch (WebServiceException e)
+		catch (Exception e)
 		{
 			JOptionPane.showOptionDialog(null, Messages.getString("Apromore.Export.UI.Error.AproNoConn"), Messages.getString("Apromore.Export.UI.Error.AproNoConnTitle"),
 
@@ -79,13 +85,14 @@ public class ApromoreAccessObject {
 		ProcessSummariesType processSummaries = managerService.readProcessSummaries(null);
 		ProcessSummaryType p = processSummaries.getProcessSummary().get(id);
 		ExportFormatResultType exf = null;
+		final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
 		
-//		try {
-//			exf = managerService.exportFormat(p.getId(), null, null, null, null, null, false, null, Collections.<RequestParameterType<?>> emptySet());
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			exf = managerService.exportFormat(p.getId(), p.getName(), "MAIN", p.getLastVersion(), "PNML 1.3.2", null, false, p.getOwner(), noCanoniserParameters);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return exf;
 	}
@@ -94,14 +101,34 @@ public class ApromoreAccessObject {
 		return aproParams;
 	}
 	
-//	public ImportProcessOutputMsgType export(DataHandler a, EditSessionType e) {
-//		ImportProcessInputMsgType request = new ImportProcessInputMsgType();
-//		request.setProcessDescription(a);
-//		request.setAddFakeEvents(false);
-//		request.setEditSession(e);
-//		Object serviceport;
-//		return serviceport.importProcess(request);
-//	}
+
+	
+	public ImportProcessResultType export(FileInputStream fis) {
+        final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
+        try {
+        	
+        	String userName = ExportFrame.getUserName();
+        	String domain = ExportFrame.getDomain();
+        	String process = ExportFrame.getProcess();
+        	String version = ExportFrame.getVersion();
+        	//+public
+        	
+        	SimpleDateFormat sdf = new SimpleDateFormat();
+			sdf.applyPattern("yyyy'/'MM'/'dd");
+			
+        	return managerService.importProcess(userName, 0, "PNML 1.3.2",
+        		process, version, fis, "", "", sdf.format(new Date()), "", true,
+        		noCanoniserParameters);
+					 
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        return null;
+	}
 	
 	public boolean IsOnline()
 	{

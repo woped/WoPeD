@@ -65,8 +65,16 @@ import org.woped.core.utilities.SwingUtils;
 import org.woped.core.utilities.Utils;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
+import org.woped.gui.images.svg.editor_undo;
+import org.woped.gui.images.svg.file_close;
+import org.woped.gui.images.svg.file_exportas;
 import org.woped.gui.images.svg.file_new;
+import org.woped.gui.images.svg.help_configuration;
 import org.woped.gui.images.svg.help_smaplenets;
+import org.woped.gui.images.svg.refresh;
+import org.woped.gui.images.svg.zoom_chooser;
+import org.woped.gui.images.svg.zoom_in;
+import org.woped.gui.images.svg.zoom_out;
 import org.woped.gui.translations.Messages;
 
 /**
@@ -151,7 +159,7 @@ public class ReachabilityRibbonVC extends JRibbon {
             viewBand.addCommandButton(getZoomChooser(), RibbonElementPriority.MEDIUM);
 
         	viewBand.setResizePolicies((List) Arrays.asList(new CoreRibbonResizePolicies.None(viewBand.getControlPanel()), new IconRibbonBandResizePolicy(viewBand.getControlPanel())));
-
+        	viewBand.setResizePolicies((List) Arrays.asList(new CoreRibbonResizePolicies.None(viewBand.getControlPanel()), new IconRibbonBandResizePolicy(viewBand.getControlPanel())));
 		}
 		return viewBand;
 	}
@@ -160,7 +168,7 @@ public class ReachabilityRibbonVC extends JRibbon {
 		if (reachabilityBand == null) {
 			reachabilityBand = new JRibbonBand(Messages.getString("Tools.reachabilityGraph.text"), null);
 
-	    	reachabilityBand.addCommandButton(getCloseButton(), RibbonElementPriority.MEDIUM);
+//	    	reachabilityBand.addCommandButton(getCloseButton(), RibbonElementPriority.MEDIUM);
 	    	reachabilityBand.addCommandButton(getRefreshButton(), RibbonElementPriority.MEDIUM);
 	    	reachabilityBand.addCommandButton(getUnselectButton(), RibbonElementPriority.MEDIUM);
 	    	reachabilityBand.addCommandButton(getSettingsButton(), RibbonElementPriority.MEDIUM);
@@ -184,44 +192,45 @@ public class ReachabilityRibbonVC extends JRibbon {
 	/*********/
 	/* BUTTONS */
 	/*********/
-	private JCommandButton getCloseButton() {
-		if (pbnClose == null) {
-			pbnClose	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.CloseButton"), getResizableIcon("QuanlAna.ReachabilityGraph.CloseButton"));
-			pbnClose.addActionListener(listener);
-		}
-		return pbnClose;
-	}
+//	private JCommandButton getCloseButton() {
+//		if (pbnClose == null) {
+//			pbnClose	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.CloseButton"), new file_close());
+//			pbnClose.addActionListener(listener);
+//		}
+//		return pbnClose;
+//	}
+
 	private JCommandButton getRefreshButton() {
 		if (pbnRefresh == null) {
-			pbnRefresh	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.RefreshButton"), getResizableIcon("QuanlAna.ReachabilityGraph.RefreshButton"));
+			pbnRefresh	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.RefreshButton"), new refresh());
 			pbnRefresh.addActionListener(listener);
 		}
 		return pbnRefresh;
 	}
 	private JCommandButton getUnselectButton() {
 		if (pbnUnselect == null) {
-			pbnUnselect	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.UnselectButton"), getResizableIcon("QuanlAna.ReachabilityGraph.UnselectButton"));
+			pbnUnselect	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.UnselectButton"), new editor_undo());
 			pbnUnselect.addActionListener(listener);
 		}
 		return pbnUnselect;
 	}
 	private JCommandButton getSettingsButton() {
 		if (pbnSettings == null) {
-			pbnSettings = new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.SettingsButton"), getResizableIcon("QuanlAna.ReachabilityGraph.SettingsButton"));
+			pbnSettings = new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.SettingsButton"), new help_configuration());
 			pbnSettings.addActionListener(listener);
 		}
 		return pbnSettings;
 	}
 	private JCommandButton getExportButton() {
 		if (pbnExport == null) {
-			pbnExport 	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.ExportAsButton"), getResizableIcon("QuanlAna.ReachabilityGraph.ExportAsButton"));
+			pbnExport 	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.ExportAsButton"), new file_exportas());
 			pbnExport.addActionListener(listener);
 		}
 		return pbnExport;
 	}
 	private JCommandButton getLayoutButton() {
 		if (layoutButton == null) {
-			layoutButton = new JCommandButton(Messages.getString("QuanlAna.ReachabilityGraph.Layout"), getResizableIcon("QuanlAna.ReachabilityGraph.Layout"));
+			layoutButton = new JCommandButton(Messages.getString("QuanlAna.ReachabilityGraph.Layout"), new org.woped.gui.images.svg.layout());
 	    	layoutButton.setCommandButtonKind(JCommandButton.CommandButtonKind.POPUP_ONLY);
 	    	layoutButton.setPopupCallback(new PopupPanelCallback() {
 				@Override
@@ -241,21 +250,21 @@ public class ReachabilityRibbonVC extends JRibbon {
 	}
 	private JCommandButton getZoomInButton() {
 		if (zoomInButton == null) {
-	    	zoomInButton = new JCommandButton(Messages.getTitle("Action.ZoomIn"), getResizableIcon("Action.ZoomIn"));
+	    	zoomInButton = new JCommandButton(Messages.getTitle("Action.ZoomIn"), new zoom_in());
 	    	zoomInButton.addActionListener(listener);
 		}
 		return zoomInButton;
 	}
 	private JCommandButton getZoomOutButton() {
 		if (zoomOutButton == null) {
-	        zoomOutButton = new JCommandButton(Messages.getTitle("Action.ZoomOut"), getResizableIcon("Action.ZoomOut"));
+	        zoomOutButton = new JCommandButton(Messages.getTitle("Action.ZoomOut"), new zoom_out());
 	        zoomOutButton.addActionListener(listener);
 		}
 		return zoomOutButton;
 	}
 	private JCommandButton getZoomChooser() {
 		if (zoomChooserButton == null) {
-	        zoomChooserButton = new JCommandButton(Messages.getTitle("Action.ZoomLevelChooser"), getResizableIcon("Action.ZoomLevelChooser"));
+	        zoomChooserButton = new JCommandButton(Messages.getTitle("Action.ZoomLevelChooser"), new zoom_chooser());
 	        zoomChooserButton.setCommandButtonKind(JCommandButton.CommandButtonKind.POPUP_ONLY);
 	        zoomChooserButton.setPopupCallback(new PopupPanelCallback() {
 				@Override

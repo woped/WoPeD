@@ -8,11 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import org.apromore.access.ApromoreAccessObject;
+import org.apromore.access.ArrayMaker;
 import org.apromore.manager.model_portal.EditSessionType;
 import org.woped.gui.translations.Messages;
 
@@ -22,11 +25,12 @@ public class ExportFrame extends JDialog {
 	EditSessionType z;
 	boolean isNew;
 
-	JTextField idField;
-	JTextField userField;
-	JTextField versionField;
-	JTextField domainField;
-	JTextField processField;
+	public static JTextField idField;
+	public static JTextField userField;
+	public static JTextField versionField;
+	public static JTextField domainField;
+	public static JTextField processField;
+	JCheckBox pub;
 	JButton btnExport;
 
 	public ExportFrame() {
@@ -56,10 +60,41 @@ public class ExportFrame extends JDialog {
 		return z;
 	}
 
+	
+	ApromoreAccessObject initAAO;
+	public void serverVerbindung(){
+		initAAO = new ApromoreAccessObject();
+		String[][] rowData;
+		rowData = ArrayMaker.run(initAAO.getList());
+
+		if (!initAAO.IsOnline()) {
+			dispose();
+			return;
+		}	
+	}
+	
+	
 	public void initComponents() {
+		try{
+			serverVerbindung();
+		}catch(Exception e){
+			Object[] options = { Messages.getString("Apromore.Connect.Error.Button") };
+			JOptionPane
+					.showOptionDialog(
+							null,
+							Messages.getString("Apromore.Connect.Error"),
+							Messages.getString("Apromore.Connect.Error.Title"),
+							JOptionPane.DEFAULT_OPTION,
+							JOptionPane.WARNING_MESSAGE,
+
+							null, options, options[0]);
+			dispose();
+			return;
+		
+		}
 		setTitle(Messages.getString("Apromore.Export.UI.Title"));
 
-		Dimension frameSize = new Dimension(300, 300);
+		Dimension frameSize = new Dimension(300, 340);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int top = (screenSize.height - frameSize.height) / 2;
 		int left = (screenSize.width - frameSize.width) / 2;
@@ -68,7 +103,7 @@ public class ExportFrame extends JDialog {
 		setResizable(false);
 
 		getContentPane().setLayout(null);
-
+		
 		JLabel lblId = new JLabel(Messages.getString("Apromore.Export.UI.ID"));
 		lblId.setBounds(10, 34, 76, 14);
 		getContentPane().add(lblId);
@@ -117,9 +152,17 @@ public class ExportFrame extends JDialog {
 		versionField.setColumns(10);
 		versionField.setBounds(104, 194, 180, 20);
 		getContentPane().add(versionField);
+		
+		JLabel pubLabel = new JLabel (Messages.getString ("Apromore.Export.UI.Public"));
+		pubLabel.setBounds(10, 234, 180, 20);
+		getContentPane().add(pubLabel);
+		
+		pub = new JCheckBox();
+		pub.setBounds(104, 234, 180, 20);
+		getContentPane().add(pub);
 
 		btnExport = new JButton(Messages.getString("Apromore.Export.UI.Export"));
-		btnExport.setBounds(97, 238, 89, 23);
+		btnExport.setBounds(97, 278, 89, 23);
 		getContentPane().add(btnExport);
 
 	}
@@ -163,6 +206,7 @@ public class ExportFrame extends JDialog {
 				z.setUsername(userField.getText());
 				z.setVersionName(versionField.getText());
 				z.setWithAnnotation(false);
+				
 
 				if (flag) {
 					setVisible(false);
@@ -173,5 +217,21 @@ public class ExportFrame extends JDialog {
 		});
 		setVisible(true);
 
+	}
+	
+	public static String getUserName(){
+		return userField.getText();
+	}
+	
+	public static String getVersion(){
+		return versionField.getText();
+	}
+	
+	public static String getDomain(){
+		return domainField.getText();
+	}
+	
+	public static String getProcess(){
+		return processField.getText();
 	}
 }

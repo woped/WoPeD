@@ -1233,6 +1233,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 	
 	@Override
 	public String getApromoreManagerPath() {
+		//ttet
 		
 		if (getConfDocument().getConfiguration().getTools()
 				.isSetAproManagerPath())

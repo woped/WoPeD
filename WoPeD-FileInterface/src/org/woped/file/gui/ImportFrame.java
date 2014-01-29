@@ -1,22 +1,26 @@
 package org.woped.file.gui;
 
-import javax.swing.*;
-
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import javax.swing.table.DefaultTableModel;
-
-import org.apromore.manager.model_portal.EditSessionType;
-import org.apromore.manager.model_portal.ExportFormatInputMsgType;
-
+import java.awt.event.ActionListener;
 import java.util.StringTokenizer;
 
-import org.apromore.access.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import org.apromore.access.ApromoreAccessObject;
+import org.apromore.access.ArrayMaker;
+import org.apromore.manager.model_portal.EditSessionType;
+import org.apromore.manager.model_portal.ExportFormatInputMsgType;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.gui.translations.Messages;
@@ -29,7 +33,7 @@ public class ImportFrame extends JDialog {
 	JTextField txtType;
 	JTextField txtOwner;
 	JTextField serverURLText = null;
-    JLabel serverURLLabel    = null;
+	JLabel serverURLLabel = null;
 	JLabel lblPnmlImportFunction;
 	JLabel lblImportAPnml;
 	JLabel lblFilterBy;
@@ -96,7 +100,7 @@ public class ImportFrame extends JDialog {
 		a.setVersionName(comboBox.getSelectedItem().toString());
 		a.setWithAnnotation(false);
 		return a;
-	}	
+	}
 
 	public void initComponents() {
 
@@ -114,7 +118,8 @@ public class ImportFrame extends JDialog {
 
 		lblPnmlImportFunction = new JLabel(
 				Messages.getString("Apromore.Import.UI.Headline"));
-		lblPnmlImportFunction.setFont(DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT);
+		lblPnmlImportFunction
+				.setFont(DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT);
 		lblPnmlImportFunction.setBounds(10, 11, 200, 20);
 		getContentPane().add(lblPnmlImportFunction);
 
@@ -122,18 +127,23 @@ public class ImportFrame extends JDialog {
 				Messages.getString("Apromore.Import.UI.ImportDescription"));
 		lblImportAPnml.setBounds(10, 36, 333, 14);
 		getContentPane().add(lblImportAPnml);
-    	
-    	serverURLLabel = new JLabel("<html>" + Messages.getString("Configuration.Apromore.Label.ServerURL") + "</html>");
-        serverURLLabel.setHorizontalAlignment(JLabel.RIGHT);
+
+		serverURLLabel = new JLabel("<html>"
+				+ Messages.getString("Configuration.Apromore.Label.ServerURL")
+				+ "</html>");
+		serverURLLabel.setHorizontalAlignment(JLabel.RIGHT);
 		serverURLLabel.setBounds(360, 33, 210, 14);
-        getContentPane().add(serverURLLabel);
-        
-		serverURLText = new JTextField(Messages.getString("Configuration.Apromore.Label.ServerURL"+":"));
-    	serverURLText.setColumns(25);
-    	serverURLText.setBounds(580, 30, 200, 20);
-    	serverURLText.setText(ConfigurationManager.getConfiguration().getApromoreServerURL());
-    	serverURLText.setEditable(false);
-    	getContentPane().add(serverURLText);
+		getContentPane().add(serverURLLabel);
+
+		serverURLText = new JTextField(
+				Messages.getString("Configuration.Apromore.Label.ServerURL"
+						+ ":"));
+		serverURLText.setColumns(25);
+		serverURLText.setBounds(580, 30, 200, 20);
+		serverURLText.setText(ConfigurationManager.getConfiguration()
+				.getApromoreServerURL());
+		serverURLText.setEditable(false);
+		getContentPane().add(serverURLText);
 
 		lblFilterBy = new JLabel(
 				Messages.getString("Apromore.Import.UI.FilterBy"));
@@ -179,7 +189,8 @@ public class ImportFrame extends JDialog {
 
 		lblResults = new JLabel(
 				Messages.getString("Apromore.Import.UI.Results"));
-		lblResults.setFont(DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT);
+		lblResults
+				.setFont(DefaultStaticConfiguration.DEFAULT_HUGELABEL_BOLDFONT);
 		lblResults.setBounds(10, 202, 166, 20);
 		getContentPane().add(lblResults);
 
@@ -188,8 +199,8 @@ public class ImportFrame extends JDialog {
 		lblSelectProcess.setBounds(10, 227, 444, 14);
 		getContentPane().add(lblSelectProcess);
 
-		tabModel = new DefaultTableModel(null, columnNames);	
-		
+		tabModel = new DefaultTableModel(null, columnNames);
+
 		initAAO = new ApromoreAccessObject();
 		if (!initAAO.IsOnline()) {
 			dispose();
@@ -197,7 +208,22 @@ public class ImportFrame extends JDialog {
 		}
 
 		dc = new ArrayMaker();
-		rowData = ArrayMaker.run(initAAO.getList());	
+		try {
+			rowData = ArrayMaker.run(initAAO.getList());
+		} catch (Exception e) {
+			Object[] options = { Messages.getString("Apromore.Connect.Error.Button") };
+			JOptionPane
+					.showOptionDialog(
+							null,
+							Messages.getString("Apromore.Connect.Error"),
+							Messages.getString("Apromore.Connect.Error.Title"),
+
+							JOptionPane.DEFAULT_OPTION,
+							JOptionPane.WARNING_MESSAGE,
+
+							null, options, options[0]);
+			dispose();
+		}
 
 		for (String[] s : rowData) {
 			tabModel.addRow(s);
@@ -219,9 +245,10 @@ public class ImportFrame extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					if (txtID.getText().equals(""))
-						tabModel.setDataVector(ArrayMaker.run(
-								initAAO.getList(), txtName.getText(), 0,
-								txtOwner.getText(), txtType.getText()),
+						tabModel.setDataVector(
+								ArrayMaker.run(initAAO.getList(),
+										txtName.getText(), 0,
+										txtOwner.getText(), txtType.getText()),
 								columnNames);
 					else
 						tabModel.setDataVector(ArrayMaker.run(
@@ -298,7 +325,7 @@ public class ImportFrame extends JDialog {
 								+ "?");
 						lblSelectVersion.setVisible(true);
 					}
-					setVisible(false); 
+					setVisible(false);
 					dispose();
 
 				} catch (Exception ex) {
@@ -313,10 +340,10 @@ public class ImportFrame extends JDialog {
 
 							null, options, options[0]);
 				}
-					
+
 			}
 		});
-		
+
 		setVisible(true);
 	}
 
