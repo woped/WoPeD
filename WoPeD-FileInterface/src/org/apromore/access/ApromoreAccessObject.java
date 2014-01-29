@@ -111,13 +111,13 @@ public class ApromoreAccessObject {
         	String domain = ExportFrame.getDomain();
         	String process = ExportFrame.getProcess();
         	String version = ExportFrame.getVersion();
-        	//+public
+        	boolean pub = ExportFrame.getPub();
         	
         	SimpleDateFormat sdf = new SimpleDateFormat();
 			sdf.applyPattern("yyyy'/'MM'/'dd");
 			
         	return managerService.importProcess(userName, 0, "PNML 1.3.2",
-        		process, version, fis, "", "", sdf.format(new Date()), "", true,
+        		process, version, fis, "", "", sdf.format(new Date()), "", pub,
         		noCanoniserParameters);
 					 
 		} catch (FileNotFoundException e1) {
@@ -135,3 +135,4 @@ public class ApromoreAccessObject {
 		return isOnline;
 	}
 }
+
