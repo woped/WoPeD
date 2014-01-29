@@ -168,7 +168,7 @@ public class ReachabilityRibbonVC extends JRibbon {
 		if (reachabilityBand == null) {
 			reachabilityBand = new JRibbonBand(Messages.getString("Tools.reachabilityGraph.text"), null);
 
-	    	reachabilityBand.addCommandButton(getCloseButton(), RibbonElementPriority.MEDIUM);
+//	    	reachabilityBand.addCommandButton(getCloseButton(), RibbonElementPriority.MEDIUM);
 	    	reachabilityBand.addCommandButton(getRefreshButton(), RibbonElementPriority.MEDIUM);
 	    	reachabilityBand.addCommandButton(getUnselectButton(), RibbonElementPriority.MEDIUM);
 	    	reachabilityBand.addCommandButton(getSettingsButton(), RibbonElementPriority.MEDIUM);
@@ -192,13 +192,14 @@ public class ReachabilityRibbonVC extends JRibbon {
 	/*********/
 	/* BUTTONS */
 	/*********/
-	private JCommandButton getCloseButton() {
-		if (pbnClose == null) {
-			pbnClose	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.CloseButton"), new file_close());
-			pbnClose.addActionListener(listener);
-		}
-		return pbnClose;
-	}
+//	private JCommandButton getCloseButton() {
+//		if (pbnClose == null) {
+//			pbnClose	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.CloseButton"), new file_close());
+//			pbnClose.addActionListener(listener);
+//		}
+//		return pbnClose;
+//	}
+
 	private JCommandButton getRefreshButton() {
 		if (pbnRefresh == null) {
 			pbnRefresh	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.RefreshButton"), new refresh());
