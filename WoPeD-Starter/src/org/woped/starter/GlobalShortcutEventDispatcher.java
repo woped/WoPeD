@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ButtonModel;
 import javax.swing.SwingUtilities;
 
+import org.hamcrest.core.IsInstanceOf;
 import org.pushingpixels.flamingo.api.common.AbstractCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandButton;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -101,8 +102,10 @@ public class GlobalShortcutEventDispatcher implements KeyEventDispatcher{
 		if(buttonRequiresMouseClick){
 			 SwingUtilities.invokeLater(new Runnable() {
 				    public void run() {
-				    	final Window currentWindow = (Window) SwingUtilities.getRoot((Component) button);
 
+				    	KeyboardFocusManager keyboardFocusManager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+				    	Window currentWindow = keyboardFocusManager.getActiveWindow();
+				    	//Window currentWindow = (Window) SwingUtilities.getRoot((Component) button);
 						DefaultUserInterface dui = (DefaultUserInterface) currentWindow;
 
 						dui.getFrame().getProcessTab().setSelectedIndex(1);
