@@ -1,11 +1,13 @@
 package org.woped.file.controller.vep;
 
 import java.awt.Cursor;
+import java.awt.FileDialog;
 import java.awt.Frame;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.security.AccessControlException;
@@ -38,6 +40,7 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
@@ -517,6 +520,81 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				textMessages, textMessages[1]) == JOptionPane.YES_OPTION;
 	}
 
+	public boolean macSaveAs(EditorVC editor) {
+		boolean succeed = false;
+		FileDialog fileDialog;
+		Frame frame = null;
+		if (editor != null) {
+			// Open save as Dialog
+
+			if (ConfigurationManager.getConfiguration()
+					.isCurrentWorkingdirSet()) {
+				fileDialog = new FileDialog(frame , Messages.getString("Action.EditorSaveAs.Title"), FileDialog.SAVE);
+				fileDialog.setDirectory(ConfigurationManager
+						.getConfiguration().getCurrentWorkingdir());
+			} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+				fileDialog = new FileDialog(frame , Messages.getString("Action.EditorSaveAs.Title"), FileDialog.SAVE);
+				fileDialog.setDirectory(ConfigurationManager
+						.getConfiguration().getHomedir());
+				
+			} else {
+				fileDialog = new FileDialog(frame ,Messages.getString("Action.EditorSaveAs.Title"), FileDialog.SAVE);
+			}
+			fileDialog.setFile(editor.getName());
+			fileDialog.setVisible(true);
+		
+		
+		//Set fileFilter to pnml files here
+		fileDialog.setFilenameFilter(new  FilenameFilter (){
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".pnml");
+            }   
+        });
+		Vector<String> extensions = new Vector<String>();
+		extensions.add("pnml");
+		
+		if (fileDialog.getFile()  != null) {
+			String savePath = fileDialog.getDirectory();
+			String fileName = Utils.getQualifiedFileName(fileDialog.getFile(), extensions);
+			System.out.println(fileName);
+			System.out.println(savePath);
+			
+			if (!new File(savePath.concat(fileName)).exists()
+					|| (isFileOverride(null, fileDialog.getDirectory()))) {
+				if (editor != null && new File(savePath).exists()) {
+					editor.setName(fileName);
+					editor.setPathName(savePath);
+					editor.setFilePath(savePath.concat(fileName));
+					ConfigurationManager.getConfiguration()
+							.setCurrentWorkingdir(savePath);
+					LoggerManager.debug(Constants.FILE_LOGGER,
+							"Current working dir is: "
+									+ ConfigurationManager
+											.getConfiguration()
+											.getCurrentWorkingdir());
+					succeed = save(editor);
+				} else {
+					LoggerManager
+							.debug(Constants.FILE_LOGGER,
+									"\"Save as\" canceled or nothing to save at all.");
+					succeed = false;
+				}
+			}
+		}
+		
+		
+		}
+
+		return succeed;
+	}
+	
+	
+	/**
+	 * TODO: Documentation
+	 * 
+	 * @param editor
+	 * @return
+	 */
 	/**
 	 * TODO: Documentation
 	 * 
@@ -528,6 +606,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		if (!Platform.isMac()) {
 		if (editor != null) {
 			// Open save as Dialog
 			JFileChooser jfc;
@@ -538,9 +617,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
 				jfc = new JFileChooser(new File(ConfigurationManager
 						.getConfiguration().getHomedir()));
+				
 			} else {
 				jfc = new JFileChooser();
 			}
+
+			
+			
 
 			// FileFilters
 			Vector<String> extensions = new Vector<String>();
@@ -568,6 +651,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
 												.length());
 				String fileName = Utils.getQualifiedFileName(jfc
 						.getSelectedFile().getName(), extensions);
+				System.out.println(fileName);
+				System.out.println(savePath);
+				
 				if (!new File(savePath.concat(fileName)).exists()
 						|| (isFileOverride(null, jfc.getSelectedFile()
 								.getPath()))) {
@@ -598,8 +684,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					}
 				}
 			}
+		}}
+		else {
+			succeed = macSaveAs(editor);
 		}
-
+		
+			
+	
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getDefaultCursor());
 		return succeed;
@@ -610,7 +701,10 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	 */
 	public IEditor openEditor() {
 		JFileChooser fileChooser;
+		FileDialog fileDialog;
 		String fn;
+		
+		if (!Platform.isMac()) {
 
 		if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
 			fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
@@ -647,7 +741,41 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			return openFile(fileChooser.getSelectedFile(),
 					((FileFilterImpl) fileChooser.getFileFilter()).getFilterType());
 		}
-		return null;
+		}
+			else {
+				Frame frame = null;
+				//Mac part, let's do the same with the awt.FileDialog
+				if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
+					fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
+					fileDialog = new FileDialog(frame , "Choose a file", FileDialog.LOAD);
+					fileDialog.setDirectory(fn);
+				} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+					fn = ConfigurationManager.getConfiguration().getHomedir();
+					fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
+					fileDialog.setDirectory(fn);
+				} else {
+					fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
+				}
+				//Set fileFilter to pnml files here
+				fileDialog.setFilenameFilter(new  FilenameFilter (){
+	                public boolean accept(File dir, String name) {
+	                    return name.endsWith(".pnml");
+	                }   
+	            });
+				
+				fileDialog.setVisible(true);
+				if (fileDialog.getFile() != null) {
+					String abspath = fileDialog.getDirectory() + fileDialog.getFile();
+					ConfigurationManager.getConfiguration().setCurrentWorkingdir(
+							abspath.substring(0, abspath.lastIndexOf(File.separator)));
+					//set new file object and pass it to the open file method. Integer 2 is the pnml suffix.
+					File file = new File(fileDialog.getDirectory(), fileDialog.getFile());
+					return openFile(file,
+							2);
+				}
+			}
+				return null;
+			
 	}
 
 	/**
