@@ -2,7 +2,7 @@
 
 	<property file="../WoPeD-CommonLibs/build.properties" />
 	
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-2.3.0.jar" />
 	<uptodate property="ConfigBeansUpToDate" srcfile="src/org/woped/config/general/configuration.xsd" targetfile="../WoPeD-CommonLibs/lib/confBeans.jar"/>
 	<uptodate property="MetricsBeansUpToDate" srcfile="src/org/woped/config/metrics/metrics.xsd" targetfile="../WoPeD-CommonLibs/lib/metricsBeans.jar"/>
 	

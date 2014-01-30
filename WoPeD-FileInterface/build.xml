@@ -1,7 +1,7 @@
 <project default="updateProject" name="FileInterface">
 
 	<property file="../WoPeD-CommonLibs/build.properties" />
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-2.3.0.jar" />
 	<uptodate property="PNMLBeansUpToDate" srcfile="src/org/woped/file/pnml_wf.xsd" targetfile="../WoPeD-CommonLibs/lib/pnmlBeans.jar"/>
 
 	<target name="updateProject" depends="copysamples, updatePNMLbeans" />

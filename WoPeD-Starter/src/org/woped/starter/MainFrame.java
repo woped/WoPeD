@@ -474,7 +474,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.coloring.text"), "Action.Coloring").addAction(m_mediator,ActionFactory.ACTIONID_COLORING, AbstractViewEvent.COLORING);
 		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.semanticalAnalysis.text"), "Tools.semanticalAnalysis").addAction(m_mediator,ActionFactory.ACTIONID_WOPED, AbstractViewEvent.ANALYSIS_WOPED);
 		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.capacityPlanning.text"), "Tools.capacityPlanning").addAction(m_mediator,ActionFactory.ACTIONID_QUANTCAP, AbstractViewEvent.QUANTCAP);
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.quantitativeSimulation.text"), "Menu.Analysis.QuantSim").addAction(m_mediator,ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.quantitativeSimulation.text"), "Tools.quantitativeSimulation").addAction(m_mediator,ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM);
 		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.reachabilityGraph.text"), "Tools.reachabilityGraph").addAction(m_mediator,ActionFactory.ACTIONID_REACHGRAPH_START, AbstractViewEvent.REACHGRAPH);
 		osxAnalyzeMenu.addSeparator();
 		//Submenu
@@ -1522,8 +1522,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (quantitativeSimulationButton == null) {
 			quantitativeSimulationButton = new JCommandButton(Messages.getString("Tools.quantitativeSimulation.text"),new analyze_quantitative_simulation());
 			quantitativeSimulationButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM, quantitativeSimulationButton));
-			addShortcutToJCommandButton("Menu.Analysis.QuantSim", quantitativeSimulationButton, ActionFactory.ACTIONID_QUANTSIM);
-			setTooltip(quantitativeSimulationButton, "Menu.Analysis.QuantSim", true);
+			addShortcutToJCommandButton("Tools.quantitativeSimulation", quantitativeSimulationButton, ActionFactory.ACTIONID_QUANTSIM);
+			setTooltip(quantitativeSimulationButton, "Tools.quantitativeSimulation", true);
 		}
 
 		return quantitativeSimulationButton;

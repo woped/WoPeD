@@ -91,27 +91,7 @@ Root directory:
   ./WoPeD-classes-@wopedversion@.jar         (WoPeD program classes)
 
 lib directory
-  ./lib/antlrworks-@antlrworksversion@.jar 
-  ./lib/bpelBeans.jar                
-  ./lib/confBeans.jar                
-  ./lib/flanagan-@flanaganversion@.jar           
-  ./lib/jbpt-@jbptversion@.jar
-  ./lib/jcalendar-@jcalendarversion@.jar          
-  ./lib/jcommon-@jcommonversion@.jar           
-  ./lib/jfreechart-@jfreechartversion@.jar        
-  ./lib/jgraph-@jgraphversion@.jar             
-  ./lib/jgraphx-@jgraphxversion@.jar             
-  ./lib/jsr-@jsrversion@.jar             
-  ./lib/log4j-@log4jversion@.jar    
-  ./lib/metricsBeans.jar             
-  ./lib/mysqlconnector-@mysqlconnectorversion@.jar
-  ./lib/pnmlBeans.jar                  
-  ./lib/ruddi-@ruddiversion@.jar
-  ./lib/ssj-@ssjversion@.jar  
-  ./lib/stax-@staxversion@.jar              
-  ./lib/tablelayout-@tablelayoutversion@.jar 
-  ./lib/trident-@tridentversion@.jar 
-  ./lib/xmlbeans-@xmlbeansversion@.jar                   
+  Various external JAR libraries to run WoPeD                   
   
 doc directory
   ./doc/html/de                     (Complete HTML online manual in German - still rudimentary)

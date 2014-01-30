@@ -2,7 +2,7 @@
 
 	<property file="../WoPeD-CommonLibs/build.properties" />
 
-	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+	<taskdef name="xmlbean" classname="org.apache.xmlbeans.impl.tool.XMLBean" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-2.3.0.jar" />
 	<uptodate property="BPELBeansUpToDate" srcfile="src/org/woped/bpel/xml/ws-bpel_executable.xsd" targetfile="../WoPeD-CommonLibs/lib/bpelBeans.jar" />
 
 	<target name="updateBPELbeans" unless="BPELBeansUpToDate">
