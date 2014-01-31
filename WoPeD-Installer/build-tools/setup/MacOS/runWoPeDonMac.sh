@@ -1,2 +1,2 @@
 #! /bin/sh
-open /Applications/WoPeD.app --args -delay
+java -jar /Applications/WoPeD.app/Contents/Java/WoPeD-classes-3.2.0.jar -delay &
