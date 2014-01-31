@@ -32,7 +32,7 @@ public class YawlImport {
         // Use JAXB to import the YAWL XML file
         JAXBContext yawlJc = JAXBContext.newInstance("org.woped.file.yawlinterface.yawlmodel");
         Unmarshaller unmarshaller = yawlJc.createUnmarshaller();
-        JAXBElement jaxbElement = (JAXBElement) unmarshaller.unmarshal(file);
+        JAXBElement<?> jaxbElement = (JAXBElement<?>) unmarshaller.unmarshal(file);
 
         SpecificationSetFactsType yawlRootElement = (SpecificationSetFactsType) jaxbElement.getValue();
 
@@ -69,17 +69,16 @@ public class YawlImport {
             for (LayoutNetFactsType layout : spec.getNet()) {
 
                 //String id = layout.getId();
-                for (JAXBElement boundsOrFrameOrViewport : layout.getBoundsOrFrameOrViewport()) {
+                for (JAXBElement<?> boundsOrFrameOrViewport : layout.getBoundsOrFrameOrViewport()) {
 
                     if (boundsOrFrameOrViewport.getValue() instanceof LayoutFrameType) {
 
-                        LayoutFrameType lft = (LayoutFrameType) boundsOrFrameOrViewport.getValue();
+                        boundsOrFrameOrViewport.getValue();
 
 
                     } else if (boundsOrFrameOrViewport.getValue() instanceof LayoutFlowFactsType) {
 
-                        // metadata for the arcs (line style etc.)
-                        LayoutFlowFactsType lfft = (LayoutFlowFactsType) boundsOrFrameOrViewport.getValue();
+                        boundsOrFrameOrViewport.getValue();
 
                     } else if (boundsOrFrameOrViewport.getValue() instanceof LayoutVertexFactsType) {
 
@@ -134,7 +133,7 @@ public class YawlImport {
 
                                 // import label position/dimension
                                 LayoutLabelFactsType lbl = (LayoutLabelFactsType) vld;
-                                for (JAXBElement sbb : lbl.getAttributes().getAutosizeOrBackgroundColorOrBendable()) {
+                                for (JAXBElement<?> sbb : lbl.getAttributes().getAutosizeOrBackgroundColorOrBendable()) {
 
                                     if (sbb.getValue() instanceof LayoutRectangleType) {
                                         LayoutRectangleType rectLabel = (LayoutRectangleType) sbb.getValue();
@@ -226,7 +225,7 @@ public class YawlImport {
         // import a YAWL <vertex>...</vertex> element (position and
         // dimensions) and set values to the Node object 
 
-        for (JAXBElement sizeOrBackgroundOrBendable : v.getAttributes().getAutosizeOrBackgroundColorOrBendable()) {
+        for (JAXBElement<?> sizeOrBackgroundOrBendable : v.getAttributes().getAutosizeOrBackgroundColorOrBendable()) {
             if (sizeOrBackgroundOrBendable.getValue() instanceof LayoutRectangleType) {
                 LayoutRectangleType rect = (LayoutRectangleType) sizeOrBackgroundOrBendable.getValue();
 
@@ -298,7 +297,6 @@ public class YawlImport {
 
                     }
                 }
-                String x = "y";
             }
 
 
