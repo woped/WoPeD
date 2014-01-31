@@ -160,11 +160,11 @@ public class PNMLExport
     }
     
     /**
-     * Method saveToFile. Saves a PetriNet Object to *.pnml File.
+     * Method saveToWebFile. Saves a PetriNet Object to a Bytestream.
      * 
      * @param fileName
      */
-    public boolean saveToWebFile(EditorVC editor, ByteArrayOutputStream baos)
+    public boolean saveToStream(EditorVC editor, ByteArrayOutputStream os)
     {
         LoggerManager.debug(Constants.FILE_LOGGER, "##### START PNML EXPORT #####");
         long begin = System.currentTimeMillis();
@@ -179,7 +179,7 @@ public class PNMLExport
             map.put("", "pnml.woped.org");
             opt.setSaveImplicitNamespaces(map);
 
-            pnmlDoc.save(baos, opt);
+            pnmlDoc.save(os, opt);
             
             return true;
         } catch (IOException e)
