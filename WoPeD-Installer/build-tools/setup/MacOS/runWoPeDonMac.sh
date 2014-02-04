@@ -1,2 +1,3 @@
 #! /bin/sh
-java -jar /Applications/WoPeD.app/Contents/Java/WoPeD-classes-3.2.0.jar -delay &
+cd /Applications/WoPeD.app/Contents/Java/
+java -jar -Xdock:name=WoPeD WoPeD-classes-@wopedversion@.jar -delay &

@@ -83,7 +83,7 @@ public class TransAndSplitView extends TransSimpleView
         public void paint(Graphics g)
         {
 
-            /* Trigger hinzuf�gen */
+            /* Trigger hinzuf���gen */
             int b = borderWidth;
             Graphics2D g2 = (Graphics2D) g;
             Dimension d = getSize();

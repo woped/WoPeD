@@ -22,7 +22,6 @@ import org.woped.config.metrics.WoPeDMetricsConfiguration;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.gui.translations.Messages;
 
 /**
  * Class that provides access to the general WoPeD configuration settings. 

@@ -4,12 +4,8 @@
 package org.woped.starter.osxMenu;
 
 import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-
 import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import org.woped.gui.translations.Messages;
@@ -21,6 +17,11 @@ import org.woped.gui.translations.Messages;
 public class OSXMenu extends JMenu {
 
    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8385613195699694481L;
+
+/**
     * Instantiates a new oSX menu.
     *
     * @param string the string

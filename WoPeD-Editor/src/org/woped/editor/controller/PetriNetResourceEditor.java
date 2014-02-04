@@ -278,8 +278,6 @@ public class PetriNetResourceEditor extends JPanel
     private	superTreeRenderer 		rendererResourceSuperClass 		= new superTreeRenderer();
     private	treeRenderer 			rendererResourceClass 			= new treeRenderer();
 	
-    private static final int ITALIC = 0;
-	
     private Font Nodes = DefaultStaticConfiguration.DEFAULT_HUGELABEL_ITALICFONT;
     
     // JgraphX Cell with Focus for Coloring
@@ -2610,6 +2608,7 @@ public class PetriNetResourceEditor extends JPanel
 	   	   
 	   // ActionListener registered to the OK and CANCEL button to check correctness of input
 	   private class createSuperResourceListener implements ActionListener{
+		@SuppressWarnings("deprecation")
 		public void actionPerformed(ActionEvent e){
 			   // CANCEL button pressed
 			   if(e.getSource()==dialogFrameCancelButton){
@@ -2720,7 +2719,8 @@ public class PetriNetResourceEditor extends JPanel
 	   }   
 
 	   // method to create a compound resource
-	   private void createSuperResource() {
+	   @SuppressWarnings("deprecation")
+	private void createSuperResource() {
 			// create a new compound Role	
 		   if(selectedGroupsList==null&&selectedRolesList!=null){				
 				try{
@@ -2949,6 +2949,7 @@ public class PetriNetResourceEditor extends JPanel
 
 	   // ActionListener to check correctness of user input   
 	   private class editSuperResourceListener implements ActionListener{
+		@SuppressWarnings("deprecation")
 		public void actionPerformed(ActionEvent e){
 			   if(e.getSource()==dialogFrameCancelButton){
 					dialogFrame.dispose();
@@ -3060,7 +3061,8 @@ public class PetriNetResourceEditor extends JPanel
 	   }      
 
 	   // Method to edit a compound resource
-	   private void editSuperResource (){
+	   @SuppressWarnings("deprecation")
+	private void editSuperResource (){
 		   		// edit compound Role
 		   		if(selectedGroupsList==null){				
 					Object [] selectedRoles = selectedRolesList.getSelectedValues();

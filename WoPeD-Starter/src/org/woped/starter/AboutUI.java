@@ -36,6 +36,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -127,7 +128,10 @@ public class AboutUI extends JDialog
     private JScrollPane getAboutPanel()
     {    	
        	String[] aboutArgs       = { Messages.getWoPeDVersionWithTimestamp() };
-       	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) + "</p></html>";
+       	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) + 
+       								Messages.getString("About.Members") +
+       								Messages.getString("About.Thanks") +
+       								"</p></html>";
        	String   javaText 		 = "<html><p><b>" + Messages.getString("About.Java") + ": </b>" + System.getProperty("java.version") + "</p></html>";
        	
        	if (aboutPanel == null)
@@ -184,19 +188,34 @@ public class AboutUI extends JDialog
         return aboutPanel;
     }
 
-    private JScrollPane getChangeLogPanel()
+    private JScrollPane getChangeLogPanel() throws IOException
     {
-        if (changeLogPanel == null)
-        {
+        if (changeLogPanel == null) {
+        	
+        	// Try to find the current working directory where Changelog.txt is located
  			String changeLog = "";
-        	String path = System.getProperty("user.dir");
-         	       	
-        	int pos = path.indexOf("WoPeD-StandaloneRunner");
-        	if (pos > -1)
-        	{
-        		path = path.substring(0, pos);
-        		path += "WoPeD-Installer" + File.separator + "build-tools";
-        	}
+ 			URL main = AboutUI.class.getResource("RunWoPeD.class");
+ 			File file = new File(main.getPath());  
+ 			String path = file.getAbsolutePath();
+ 			
+ 			// Check if we are running WoPeD from a jar file
+ 			if (path.contains("!")) {
+ 				int pos = path.indexOf("WoPeD-classes");
+  				if (pos > -1) {
+  					// Remove URL prefix
+  					int ff = path.indexOf("file:") + 5;
+  	 				path = path.substring(ff);
+ 					path = path.substring(0, pos - ff);
+ 				}
+ 			}
+ 			else {
+ 				// Running inside Eclipse, no jar file, go to folder directly
+ 				int pos = path.indexOf("WoPeD-Starter");
+ 				if (pos > -1) {
+ 					path = path.substring(0, pos);
+ 					path += "WoPeD-Installer" + File.separator + "build-tools";
+ 				}
+ 			}
         	
         	path += File.separator + "Changelog.txt";
         	
@@ -245,7 +264,12 @@ public class AboutUI extends JDialog
             {
                 public void actionPerformed(ActionEvent arg0)
                 {
-                    getContentPane().remove(getChangeLogPanel());
+                    try {
+						getContentPane().remove(getChangeLogPanel());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                     getContentPane().add(getAboutPanel(), BorderLayout.CENTER, 0);
                     aboutButton.setEnabled(false);
                     changelogButton.setEnabled(true);
@@ -270,7 +294,12 @@ public class AboutUI extends JDialog
                 public void actionPerformed(ActionEvent arg0)
                 {
                     getContentPane().remove(getAboutPanel());
-                    getContentPane().add(getChangeLogPanel(), BorderLayout.CENTER, 0);
+                    try {
+						getContentPane().add(getChangeLogPanel(), BorderLayout.CENTER, 0);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                     aboutButton.setEnabled(true);
                     changelogButton.setEnabled(false);
                     pack();

@@ -10,8 +10,7 @@
 	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="lib/jarbundler-2.2.0.jar"/>
 	<taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="lib/appbundler-1.0.jar"/>
 
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, 
-										     makeOracleMacInstaller, makeWindowsInstallerOnMac, makeLinuxInstaller" /> 
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeMacInstaller, makeWindowsInstallerOnMac, makeLinuxInstaller" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -56,8 +55,6 @@
 				<include name="RunWoPeD*.class" />
 			</fileset>
 		</copy>
-
-		<copy todir="dist" file="Info.plist" />
 
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/antlrworks-1.4.0.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/bpelBeans.jar" />
@@ -151,10 +148,13 @@
 			<fileset dir="build-tools/launcher/MacOS/" />
 			<fileset dir="build-tools/setup/Linux" />
 			<fileset dir="build-tools/setup/MacOS" />
-			<fileset file="build-tools/setup/Windows/buildsetupexeOnMac" />
 			<fileset file="build-tools/setup/Windows/buildsetupOnMac" />
 			<fileset file="build-tools/setup/Windows/shortcut-win.xml" />
 			<fileset file="build-tools/setup/*.png" />
+		</copy>
+
+		<copy todir="dist" filtering="true" overwrite="true">
+			<fileset file="build-tools/launcher/MacOS/Info.plist" />
 		</copy>
 
 		<copy todir="dist" filtering="true" overwrite="true">
@@ -260,7 +260,7 @@
 		</try>
 	</target>
 		
-	<target name="makeOracleMacInstaller">
+	<target name="makeMacInstaller">
 		<bundleapp outputdirectory="dist/mac"
 		        name="WoPeD"
 		        displayname="WoPeD"
@@ -271,16 +271,12 @@
 		        mainclassname="org.woped.starter.RunWoPeD"
        	 		copyright="WoPeD copyright 2014">
  	            <option value="-Dapple.laf.useScreenMenuBar=true"/>
-		    </bundleapp>
+		</bundleapp>
 
 		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/lib" />
 		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/doc" />
 		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/nets" />
 	
-		<copy todir="dist/mac/WoPeD.app/Contents">
-			<fileset file="dist/Info.plist" />
-		</copy>
-
 		<copy todir="dist/mac/WoPeD.app/Contents/Java">
 			<fileset file="dist/WoPeD*.jar" />
 			<fileset file="dist/*.txt" />
@@ -295,7 +291,7 @@
 		</copy>
 		
 		<copy todir="dist/mac/WoPeD.app/Contents/Resources">
-			<fileset file="dist/WoPeD-document.icns" />
+			<file name="dist/WoPeD-document.icns" />
 		</copy>
 		
 		<copy todir="dist/mac/WoPeD.app/Contents/Java/nets">
@@ -303,12 +299,16 @@
 		</copy>
 
 		<exec dir="dist" executable="/bin/sh"> 
+			<arg line="./copy_missing_files.sh" />
+		</exec>
+
+		<exec dir="dist" executable="/bin/sh"> 
 			<arg line="./makepackage" />
 		</exec>
 	
 	</target>
 		
-	<target name="makeMacInstaller">		
+	<target name="makeMacInstallerOld">		
 		<try>
 			<jarbundler dir="dist/mac"
 		    	        name="WoPeD"

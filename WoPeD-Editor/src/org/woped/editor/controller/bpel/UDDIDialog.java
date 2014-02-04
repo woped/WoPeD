@@ -31,7 +31,7 @@ public class UDDIDialog extends JDialog
 	JTextField wsdlTextField					= null;
 	
 	JLabel	LuddiServer							= null;
-	JComboBox<String> CBuddiServer						= null;
+	JComboBox CBuddiServer						= null;
 	JButton BcreateUddi							= null;
 	
 	JLabel LBusiness							= null;
@@ -40,9 +40,9 @@ public class UDDIDialog extends JDialog
 	
 	JLabel LfindBusiness						= null;
 	JLabel LfindService							= null;
-	JList<String> LIfindBusiness						= null;
+	JList LIfindBusiness						= null;
 	JScrollPane SPfindBusiness					= null;
-	JList<String> LIfindService							= null;
+	JList LIfindService							= null;
 	JScrollPane SPfindService					= null;
 	JLabel Larc									= null;
 	
@@ -69,7 +69,7 @@ public class UDDIDialog extends JDialog
 		LuddiServer.setBounds(15,15,75,20);
 		add(LuddiServer);
 		
-		CBuddiServer = new JComboBox<String>();
+		CBuddiServer = new JComboBox();
 		CBuddiServer.setBounds(100,15,105,20);
 		
 		String[] uddibuslist = modelElementContainer.getUddiVariableNameList();
@@ -84,7 +84,7 @@ public class UDDIDialog extends JDialog
 		{
 			public void itemStateChanged(ItemEvent arg0) 
 			{
-				DefaultListModel<String> model = new DefaultListModel<String>();
+				DefaultListModel model = new DefaultListModel();
 				model.add(0, "");
 				LIfindService.setModel(model);
 				LIfindBusiness.setModel(model);
@@ -122,7 +122,7 @@ public class UDDIDialog extends JDialog
 		LfindService.setBounds(215,120,85,20);
 		add(LfindService);
 		
-		LIfindBusiness = new JList<String>(UDDI.find_business(uddiUrl, businessName));
+		LIfindBusiness = new JList(UDDI.find_business(uddiUrl, businessName));
 		SPfindBusiness = new JScrollPane(LIfindBusiness);
 		SPfindBusiness.setBounds(15,145,170,190);
 		add(SPfindBusiness);
@@ -132,7 +132,7 @@ public class UDDIDialog extends JDialog
 		add(Larc);
 		
 		String[] list = {"-none-"};
-		LIfindService = new JList<String>(list);
+		LIfindService = new JList(list);
 		SPfindService = new JScrollPane(LIfindService);
 		SPfindService.setBounds(215,145,170,190);
 		add(SPfindService);
@@ -278,8 +278,8 @@ class FindBusiness implements ActionListener
 	
 	public void actionPerformed(ActionEvent e) 
 	{
-		DefaultListModel<String> model  = null;
-		DefaultListModel<String> model2 = null;
+		DefaultListModel model  = null;
+		DefaultListModel model2 = null;
 		
 		String busname = adaptee.TFBusiness.getText();
 		if(busname.equals("") || busname == null)
@@ -303,12 +303,12 @@ class FindBusiness implements ActionListener
 				{
 					adaptee.showErrorPopup(Messages.getString("Transition.Properties.BPEL.UDDI.ResultWarning"), Messages.getString("Transition.Properties.BPEL.UDDI.fortyResultWarning"));
 				}
-				model = new DefaultListModel<String>();
+				model = new DefaultListModel();
 			    for (int i=0; i<buslist.length; i++) {
 			        model.add(i, buslist[i]);
 			    }
 			    adaptee.LIfindBusiness.setModel(model);
-				model2 = new DefaultListModel<String>();
+				model2 = new DefaultListModel();
 				model2.add(0, "-none-");
 				adaptee.LIfindService.setModel(model2);
 			}
@@ -342,7 +342,7 @@ class FindService implements ListSelectionListener
 			String[] blist = UDDI.find_services(UDDI.getBusinessInfoFromName(UDDIServerURL, business));
 			if(blist.length > 0)
 			{
-				DefaultListModel<String> model = new DefaultListModel<String>();
+				DefaultListModel model = new DefaultListModel();
 			    for (int i=0; i<blist.length; i++) {
 			        model.add(i, blist[i]);
 			    }
@@ -350,7 +350,7 @@ class FindService implements ListSelectionListener
 			}
 			else
 			{
-				DefaultListModel<String> model = new DefaultListModel<String>();
+				DefaultListModel model = new DefaultListModel();
 				model.add(0, "-none-");
 				adaptee.LIfindService.setModel(model);
 			}

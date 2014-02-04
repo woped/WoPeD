@@ -556,8 +556,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		if (fileDialog.getFile()  != null) {
 			String savePath = fileDialog.getDirectory();
 			String fileName = Utils.getQualifiedFileName(fileDialog.getFile(), extensions);
-			System.out.println(fileName);
-			System.out.println(savePath);
 			
 			if (!new File(savePath.concat(fileName)).exists()
 					|| (isFileOverride(null, fileDialog.getDirectory()))) {
@@ -651,8 +649,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
 												.length());
 				String fileName = Utils.getQualifiedFileName(jfc
 						.getSelectedFile().getName(), extensions);
-				System.out.println(fileName);
-				System.out.println(savePath);
 				
 				if (!new File(savePath.concat(fileName)).exists()
 						|| (isFileOverride(null, jfc.getSelectedFile()

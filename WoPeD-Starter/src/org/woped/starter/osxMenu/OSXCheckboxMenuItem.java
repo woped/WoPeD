@@ -3,25 +3,18 @@
  */
 package org.woped.starter.osxMenu;
 
-import java.awt.KeyboardFocusManager;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Method;
 
 import javax.swing.JCheckBox;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
-import javax.swing.JMenuItem;
-import javax.swing.SwingUtilities;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
-import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
-import org.woped.gui.translations.Messages;
 
 
 
@@ -31,6 +24,11 @@ import org.woped.gui.translations.Messages;
  */
 public class OSXCheckboxMenuItem extends JCheckBoxMenuItem {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8233344546417789531L;
+
+	/**
      * The listener interface for receiving shortcutAction events.
      * The class that is interested in processing a shortcutAction
      * event implements this interface, and the object created
@@ -45,9 +43,6 @@ public class OSXCheckboxMenuItem extends JCheckBoxMenuItem {
 		
 		/** The event_id. */
 		private int			event_id;
-		
-		/** The action_id. */
-		private String      action_id;
 		
 		/** The action. */
 		private WoPeDAction	action;
@@ -66,7 +61,6 @@ public class OSXCheckboxMenuItem extends JCheckBoxMenuItem {
 			//VisualController.getInstance().addElement(action, VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
 			ActionFactory.addTarget(mediator, action_id, target);
 			this.event_id = event_id;
-			this.action_id = action_id;
 			target.setName(action_id);
 			//target.setEnabled(false);
 		}

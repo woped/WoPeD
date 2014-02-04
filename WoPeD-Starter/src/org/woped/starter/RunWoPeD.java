@@ -29,6 +29,7 @@ import java.io.InputStreamReader;
 import java.util.Locale;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -39,6 +40,7 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.gui.translations.Messages;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.starter.utilities.WopedLogger;
 
@@ -71,6 +73,7 @@ public class RunWoPeD extends JFrame {
     	boolean forceEnglish = false;
     	
  		for (int i = 0; i < args.length; i++) {
+ 			
 			if (args[i].equals("-delay")) {
 				startDelayed = true;
 			}
@@ -123,7 +126,7 @@ public class RunWoPeD extends JFrame {
             	public void actionPerformed(ActionEvent e) {
             		m_filesToOpen = new String[1];
             		m_filesToOpen[0] = e.getActionCommand();
-            	}
+                }
             });
  
 			OSXAdapter.setQuitHandler(new ActionListener() {
@@ -152,12 +155,10 @@ public class RunWoPeD extends JFrame {
 
 				}
 			});
-
-			System.setProperty("apple.laf.useScreenMenuBar", "true");
-			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WoPeD");
-//			Application application = Application.getApplication();
-//			application.setDockIconImage(Toolkit.getDefaultToolkit().getImage("/org/woped/gui/icons/woped.png"));
 		}
+
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
+		System.setProperty("com.apple.mrj.application.apple.menu.about.name", "WoPeD");
 
 		// Set some fonts to make WoPeD look better on Mac and Linux
 		if (!Platform.isWindows()) {
@@ -220,7 +221,7 @@ public class RunWoPeD extends JFrame {
 			m_dam.startUI(m_filesToOpen);
 		} 
     	catch (Exception e) {
-			e.printStackTrace();
+            LoggerManager.error(Constants.GUI_LOGGER, "Could not start WoPeD");
 			System.exit(1);
 		}
 	}
@@ -237,17 +238,7 @@ public class RunWoPeD extends JFrame {
 		}
 		catch(InterruptedException e){ 
 		} 
-		
-/*		int result = JOptionPane.showConfirmDialog(
-				this,
-				Messages.getString("Dialog.StartWoPeD.Text"),
-				Messages.getString("Dialog.StartWoPeD.Title"),
-                JOptionPane.YES_NO_OPTION);
-
-		if (result == JOptionPane.NO_OPTION) {
-			System.exit(0);
-		}*/
-		
+				
 		new AskToStartWoPeDUI(this).setVisible(true);	
 	}
 	
