@@ -20,9 +20,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import org.apromore.access.ApromoreAccessObject;
-import org.apromore.access.ArrayMaker;
 import org.apromore.manager.model_portal.EditSessionType;
+import org.woped.apromore.ApromoreAccess;
+import org.woped.apromore.ArrayMaker;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.gui.translations.Messages;
@@ -57,7 +57,7 @@ public class ExportFrame extends JDialog {
 	JScrollPane scrollPane;
 	JComboBox comboBox;
 	private int selectedRow = -1;
-	ApromoreAccessObject initAAO;
+	ApromoreAccess initAAO;
 	
 	public static JTextField idField;
 	public static JTextField userField;
@@ -213,7 +213,7 @@ public class ExportFrame extends JDialog {
 
 		tabModel = new DefaultTableModel(null, columnNames);
 
-		initAAO = new ApromoreAccessObject();
+		initAAO = new ApromoreAccess();
 		if (!initAAO.IsOnline()) {
 			dispose();
 			return;

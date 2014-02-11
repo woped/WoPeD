@@ -1,4 +1,4 @@
-package org.apromore.access;
+package org.woped.apromore;
 import java.io.IOException;
 import java.net.*;
 import java.util.*;

@@ -21,11 +21,12 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
+import javax.xml.soap.SOAPException;
 
-import org.apromore.access.ApromoreAccessObject;
 import org.apromore.manager.model_portal.EditSessionType;
 import org.apromore.model.ExportFormatResultType;
 import org.apromore.model.ImportProcessResultType;
+import org.woped.apromore.ApromoreAccess;
 import org.woped.bpel.BPEL;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
@@ -924,7 +925,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			return null;
 		}	
 		
-		ApromoreAccessObject aao = new ApromoreAccessObject();
+		ApromoreAccess aao = new ApromoreAccess();
 		try {
 			ind = aImp.getSelectedID();
 			ef = aao.importProcess(ind);
@@ -993,14 +994,14 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			LoggerManager.info(Constants.FILE_LOGGER,
 					"Petrinet saved in file: " + "tmp.pnml");
 
-			ApromoreAccessObject aao = new ApromoreAccessObject();
+			ApromoreAccess aao = new ApromoreAccess();
 			if (!aao.IsOnline()) {
 				getMediator().getUi().getComponent()
 						.setCursor(Cursor.getDefaultCursor());
 				return false;
 			}
 			try {
-				ImportProcessResultType check = aao.export(new FileInputStream(new File("tmp.pnml")));		
+				ImportProcessResultType check = aao.export(null, null, null, null, succeed, new FileInputStream(new File("tmp.pnml")));		
 				succeed = true;
 				editor.setSaved(true);
 			} catch (FileNotFoundException e1) {

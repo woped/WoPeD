@@ -17,10 +17,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import org.apromore.access.ApromoreAccessObject;
-import org.apromore.access.ArrayMaker;
 import org.apromore.manager.model_portal.EditSessionType;
 import org.apromore.manager.model_portal.ExportFormatInputMsgType;
+import org.woped.apromore.ApromoreAccess;
+import org.woped.apromore.ArrayMaker;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.gui.translations.Messages;
@@ -43,7 +43,7 @@ public class ImportFrame extends JDialog {
 	JLabel lblOwner;
 	JLabel lblResults;
 	JLabel lblSelectProcess;
-	ApromoreAccessObject initAAO;
+	ApromoreAccess initAAO;
 	ArrayMaker dc;
 	String[][] rowData;
 	final String[] columnNames = {
@@ -136,8 +136,8 @@ public class ImportFrame extends JDialog {
 		getContentPane().add(serverURLLabel);
 
 		serverURLText = new JTextField(
-				Messages.getString("Configuration.Apromore.Label.ServerURL"
-						+ ":"));
+				Messages.getString("Configuration.Apromore.Label.ServerURL")
+						+ ":");
 		serverURLText.setColumns(25);
 		serverURLText.setBounds(580, 30, 200, 20);
 		serverURLText.setText(ConfigurationManager.getConfiguration()
@@ -201,7 +201,7 @@ public class ImportFrame extends JDialog {
 
 		tabModel = new DefaultTableModel(null, columnNames);
 
-		initAAO = new ApromoreAccessObject();
+		initAAO = new ApromoreAccess();
 		if (!initAAO.IsOnline()) {
 			dispose();
 			return;

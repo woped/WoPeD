@@ -1,4 +1,4 @@
-package org.apromore.access;
+package org.woped.apromore;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.SOAPException;
 
 import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
@@ -20,55 +21,72 @@ import org.apromore.model.ImportProcessResultType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
 import org.apromore.plugin.property.RequestParameterType;
-// import org.apromore.plugin.property.RequestParameterType;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
+
 import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.translations.Messages;
-import org.woped.file.gui.*;
-public class ApromoreAccessObject {
 
-	private ApplicationContext appContext = new AnnotationConfigApplicationContext(ApromoreConfig.class);   
-	private HttpComponentsMessageSender httpCms = (HttpComponentsMessageSender) appContext.getBean(HttpComponentsMessageSender.class);
-	private Jaxb2Marshaller serviceMarshaller = (Jaxb2Marshaller) appContext.getBean(Jaxb2Marshaller.class);
-	private SaajSoapMessageFactory ssmf = (SaajSoapMessageFactory) appContext.getBean(SaajSoapMessageFactory.class);
-	private WebServiceTemplate temp = new WebServiceTemplate(ssmf); 
-	private ManagerService managerService;
-	private boolean isOnline = false;
-	private EditSessionType aproParams;
+public class ApromoreAccess {
 	
-	public ApromoreAccessObject() {
+	private static ApromoreAccess instance = null;
+	
+	public static ApromoreAccess getInstance() {
+		return instance;
+	}
+
+	private HttpComponentsMessageSender httpCms;
+	private Jaxb2Marshaller serviceMarshaller;
+	private SaajSoapMessageFactory soapMsgFactory;
+	private WebServiceTemplate wsTemp; 
+	private ManagerService managerService;
+	private EditSessionType aproParams;
+	private boolean online = false;
+	
+	public ApromoreAccess() {
 		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
 			ProxySelector.setDefault(new WoProxySelector(ConfigurationManager.getConfiguration().getApromoreProxyName(), ConfigurationManager.getConfiguration().getApromoreProxyPort()));
-		setupService();
+		try {
+			setupService();
+		} catch (SOAPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	private void setupService() {
+	private void setupService() throws SOAPException {
 		String[] options = { "OK" };
+		httpCms = new HttpComponentsMessageSender();
+		httpCms.setReadTimeout(40000);
 		
+		serviceMarshaller = new Jaxb2Marshaller();
+		serviceMarshaller.setContextPath("org.apromore.model");
+		soapMsgFactory = new SaajSoapMessageFactory(MessageFactory.newInstance());
+		soapMsgFactory.setSoapVersion(org.springframework.ws.soap.SoapVersion.SOAP_11);
+		
+		wsTemp = new WebServiceTemplate(soapMsgFactory);
 		try
 		{
+			
 			httpCms.setConnectionTimeout(10000);
-			temp.setMarshaller(serviceMarshaller);
-		    temp.setUnmarshaller(serviceMarshaller);
-		    temp.setMessageSender(httpCms);
-		    temp.setDefaultUri(ConfigurationManager.getConfiguration().getApromoreServerURL() + ":" +
+			wsTemp.setMarshaller(serviceMarshaller);
+		    wsTemp.setUnmarshaller(serviceMarshaller);
+		    wsTemp.setMessageSender(httpCms);
+		    wsTemp.setDefaultUri(ConfigurationManager.getConfiguration().getApromoreServerURL() + ":" +
 		    				   ConfigurationManager.getConfiguration().getApromoreServerPort() + "/" +
 		    				   ConfigurationManager.getConfiguration().getApromoreManagerPath());
-		    managerService = new ManagerServiceClient(temp);
+		    managerService = new ManagerServiceClient(wsTemp);
 
-		    isOnline = true;
+		    online = true;
 		} 
 		catch (Exception e)
 		{
-			JOptionPane.showOptionDialog(null, Messages.getString("Apromore.Export.UI.Error.AproNoConn"), Messages.getString("Apromore.Export.UI.Error.AproNoConnTitle"),
-
+			JOptionPane.showOptionDialog(null, Messages.getString("Apromore.Export.UI.Error.AproNoConn"), 
+					Messages.getString("Apromore.Export.UI.Error.AproNoConnTitle"),
 			        JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
-
 			        null, options, options[0]);
 		}
 		
@@ -103,21 +121,16 @@ public class ApromoreAccessObject {
 	
 
 	
-	public ImportProcessResultType export(FileInputStream fis) {
+	public ImportProcessResultType export(String userName, String domain, String processName, 
+			String version, boolean makePublic, FileInputStream fis) {
         final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
         try {
-        	
-        	String userName = ExportFrame.getUserName();
-        	String domain = ExportFrame.getDomain();
-        	String process = ExportFrame.getProcess();
-        	String version = ExportFrame.getVersion();
-        	boolean pub = ExportFrame.getPub();
         	
         	SimpleDateFormat sdf = new SimpleDateFormat();
 			sdf.applyPattern("yyyy'/'MM'/'dd");
 			
         	return managerService.importProcess(userName, 0, "PNML 1.3.2",
-        		process, version, fis, "", "", sdf.format(new Date()), "", pub,
+        		processName, version, fis, "", "", sdf.format(new Date()), "", makePublic,
         		noCanoniserParameters);
 					 
 		} catch (FileNotFoundException e1) {
@@ -132,7 +145,7 @@ public class ApromoreAccessObject {
 	
 	public boolean IsOnline()
 	{
-		return isOnline;
+		return online;
 	}
 }
 
