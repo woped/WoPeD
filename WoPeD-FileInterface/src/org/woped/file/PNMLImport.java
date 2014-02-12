@@ -39,6 +39,7 @@ import javax.swing.JOptionPane;
 
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.ArcModel;
@@ -121,14 +122,14 @@ public class PNMLImport {
 	private XmlOptions opt = new XmlOptions();
 	private Vector<String> warnings = new Vector<String>();
 	//private IStatusBar[] statusBars = null;
-	private ApplicationMediator mediator = null;
+	private AbstractApplicationMediator mediator = null;
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
 	 * @param statusBar
 	 */
-	public PNMLImport(ApplicationMediator am) {
+	public PNMLImport(AbstractApplicationMediator am) {
 		opt.setUseDefaultNamespace();
 		mediator = am;
 		Map<String, String> map = new HashMap<String, String>();
@@ -1399,7 +1400,7 @@ public class PNMLImport {
 	/**
 	 * @return Returns the mediator.
 	 */
-	protected ApplicationMediator getMediator() {
+	protected AbstractApplicationMediator getMediator() {
 		return mediator;
 	}
 }

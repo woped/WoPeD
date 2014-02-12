@@ -22,12 +22,11 @@ import javax.swing.table.DefaultTableModel;
 
 import org.apromore.manager.model_portal.EditSessionType;
 import org.woped.apromore.ApromoreAccess;
-import org.woped.apromore.ArrayMaker;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.gui.translations.Messages;
 
-public class ExportFrame extends JDialog {
+public class ApromoreExportFrame extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	EditSessionType z;
@@ -38,7 +37,6 @@ public class ExportFrame extends JDialog {
 	JLabel lblExportAPnml;
 	JLabel lblResults;
 	JLabel lblSelectProcess;
-	ArrayMaker dc;
 	JLabel lblUser;
 	JLabel lblDomain;
 	JLabel lblProcessName;
@@ -67,13 +65,13 @@ public class ExportFrame extends JDialog {
 	public static JCheckBox pub;
 	JButton btnExport;
 
-	public ExportFrame() {
+	public ApromoreExportFrame() {
 		initComponents();
 		z = new EditSessionType();
 		isNew = true;
 	}
 
-	public ExportFrame(EditSessionType z) {
+	public ApromoreExportFrame(EditSessionType z) {
 		initComponents();
 		this.z = z;
 		isNew = false;
@@ -219,24 +217,7 @@ public class ExportFrame extends JDialog {
 			return;
 		}
 
-		dc = new ArrayMaker();
-		try {
-			rowData = ArrayMaker.run(initAAO.getList());
-		} catch (Exception e) {
-			Object[] options = { Messages.getString("Apromore.Connect.Error.Button") };
-			JOptionPane
-					.showOptionDialog(
-							null,
-							Messages.getString("Apromore.Connect.Error"),
-							Messages.getString("Apromore.Connect.Error.Title"),
-
-							JOptionPane.DEFAULT_OPTION,
-							JOptionPane.WARNING_MESSAGE,
-
-							null, options, options[0]);
-			dispose();
-		}
-
+		rowData = initAAO.getProcessList();
 		for (String[] s : rowData) {
 			tabModel.addRow(s);
 		}

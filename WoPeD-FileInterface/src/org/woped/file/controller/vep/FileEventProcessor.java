@@ -15,13 +15,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
-import javax.xml.soap.SOAPException;
 
 import org.apromore.manager.model_portal.EditSessionType;
 import org.apromore.model.ExportFormatResultType;
@@ -49,9 +46,8 @@ import org.woped.file.Constants;
 import org.woped.file.ImageExport;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
-import org.woped.file.YAWLImport;
-import org.woped.file.gui.ExportFrame;
-import org.woped.file.gui.ImportFrame;
+import org.woped.file.gui.ApromoreExportFrame;
+import org.woped.file.gui.ApromoreImportFrame;
 import org.woped.file.yawlinterface.YawlInterface;
 import org.woped.metrics.builder.MetricsBuilder;
 import org.woped.metrics.helpers.LabeledFileFilter;
@@ -60,6 +56,7 @@ import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.woflan.TPNExport;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
+import org.woped.understandability.NetColorScheme;
 import org.woped.gui.translations.Messages;
 
 public class FileEventProcessor extends AbstractEventProcessor {
@@ -907,64 +904,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		return editor;
 	}
 
-	private IEditor importApromore() {
-		IEditor editor = null;
-		final PNMLImport pr;
-		InputStream is = null;
-		ExportFormatResultType ef;
-		int ind;
+	private void importApromore() {
 
-		pr = new PNMLImport((ApplicationMediator) getMediator());
-		boolean loadSuccess = false;
+		new ApromoreImportFrame(new PNMLImport(getMediator()));
 
-		ImportFrame aImp = new ImportFrame();
-		if (aImp.getSelectedID() == -1) {
-			getMediator().getUi().getComponent()
-					.setCursor(Cursor.getDefaultCursor());
-			aImp.dispose();
-			return null;
-		}	
-		
-		ApromoreAccess aao = new ApromoreAccess();
-		try {
-			ind = aImp.getSelectedID();
-			ef = aao.importProcess(ind);
-			is = ef.getNative().getInputStream();
-			loadSuccess = pr.run(is);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (ConfigurationManager.getConfiguration().getColorOn()) {
+			new NetColorScheme().update();
 		}
-
-		if (loadSuccess) {
-			editor = pr.getEditor()[pr.getEditor().length - 1];
-			for (int i = 0; i < pr.getEditor().length; i++) {
-
-				// add Editor
-				LoggerManager.info(Constants.FILE_LOGGER,
-						"Petrinet loaded from Apromore");
-
-				((EditorVC) pr.getEditor()[i]).setApromoreSettings(aImp
-						.getEditSession());
-			}
-		} else {
-			String arg[] = { "Apromore" };
-			JOptionPane.showMessageDialog(null,
-					Messages.getString("File.Error.FileOpen.Text", arg),
-					Messages.getString("File.Error.FileOpen.Title"),
-					JOptionPane.ERROR_MESSAGE);
-		}
-
-//		getMediator().getUi().updateRecentMenu();
-
-//		if (ConfigurationManager.getConfiguration().getColorOn() == true) {
-// 			new NetColorScheme().update();
-//		}
-
-		getMediator().getUi().getComponent()
-				.setCursor(Cursor.getDefaultCursor());
-
-		return editor;
 	}
 
 	public boolean exportApromore(EditorVC editor) {
@@ -973,12 +919,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-		ExportFrame a;
-		if (editor.getApromoreSettings() != null) {
-			a = new ExportFrame(editor.getApromoreSettings());
-		} else {
-			a = new ExportFrame();
-		}
+		ApromoreExportFrame a;
+		a = new ApromoreExportFrame();
 		EditSessionType editSess = a.showDialog();
 
 		if (editor != null) {
@@ -1008,12 +950,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		
-
-			
-		
-	
-			
 		}
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getDefaultCursor());

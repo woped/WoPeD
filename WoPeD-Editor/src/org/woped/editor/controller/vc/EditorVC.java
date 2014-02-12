@@ -1838,14 +1838,6 @@ public class EditorVC implements KeyListener,
 		this.m_defaultFileType = defaultFileType;
 	}
 
-	public EditSessionType getApromoreSettings() {
-		return m_apro_settings;
-	}
-
-	public void setApromoreSettings(EditSessionType aproname) {
-		this.m_apro_settings = aproname;
-	}
-
 	/**
 	 * Returns the pathname if the net was saved before or was opened from a
 	 * file.

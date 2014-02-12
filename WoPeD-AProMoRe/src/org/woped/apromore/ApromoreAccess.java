@@ -2,6 +2,7 @@ package org.woped.apromore;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.ProxySelector;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -20,6 +21,7 @@ import org.apromore.model.ExportFormatResultType;
 import org.apromore.model.ImportProcessResultType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
+import org.apromore.model.VersionSummaryType;
 import org.apromore.plugin.property.RequestParameterType;
 
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -49,18 +51,12 @@ public class ApromoreAccess {
 	public ApromoreAccess() {
 		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
 			ProxySelector.setDefault(new WoProxySelector(ConfigurationManager.getConfiguration().getApromoreProxyName(), ConfigurationManager.getConfiguration().getApromoreProxyPort()));
-		try {
-			setupService();
-		} catch (SOAPException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
-	private void setupService() throws SOAPException {
-		String[] options = { "OK" };
+	public void connect() throws SOAPException {
 		httpCms = new HttpComponentsMessageSender();
 		httpCms.setReadTimeout(40000);
+		httpCms.setConnectionTimeout(40000);
 		
 		serviceMarshaller = new Jaxb2Marshaller();
 		serviceMarshaller.setContextPath("org.apromore.model");
@@ -68,58 +64,143 @@ public class ApromoreAccess {
 		soapMsgFactory.setSoapVersion(org.springframework.ws.soap.SoapVersion.SOAP_11);
 		
 		wsTemp = new WebServiceTemplate(soapMsgFactory);
-		try
-		{
-			
-			httpCms.setConnectionTimeout(10000);
-			wsTemp.setMarshaller(serviceMarshaller);
-		    wsTemp.setUnmarshaller(serviceMarshaller);
-		    wsTemp.setMessageSender(httpCms);
-		    wsTemp.setDefaultUri(ConfigurationManager.getConfiguration().getApromoreServerURL() + ":" +
+		wsTemp.setMarshaller(serviceMarshaller);
+		wsTemp.setUnmarshaller(serviceMarshaller);
+		wsTemp.setMessageSender(httpCms);
+		wsTemp.setDefaultUri(ConfigurationManager.getConfiguration().getApromoreServerURL() + ":" +
 		    				   ConfigurationManager.getConfiguration().getApromoreServerPort() + "/" +
 		    				   ConfigurationManager.getConfiguration().getApromoreManagerPath());
-		    managerService = new ManagerServiceClient(wsTemp);
-
-		    online = true;
-		} 
-		catch (Exception e)
-		{
-			JOptionPane.showOptionDialog(null, Messages.getString("Apromore.Export.UI.Error.AproNoConn"), 
-					Messages.getString("Apromore.Export.UI.Error.AproNoConnTitle"),
-			        JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
-			        null, options, options[0]);
-		}
-		
+		managerService = new ManagerServiceClient(wsTemp);
 	}
 
-	public List<ProcessSummaryType> getList() {
+	
+/*	new ArrayMaker();
+	try {
+		rowData = ArrayMaker.run(aproAccess.getList());
+	} catch (Exception e) {
+		Object[] options = { Messages
+				.getString("Apromore.Connect.Error.Button") };
+		JOptionPane.showOptionDialog(null,
+				Messages.getString("Apromore.Connect.Error"),
+				Messages.getString("Apromore.Connect.Error.Title"),
+
+				JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+
+				null, options, options[0]);
+		dispose();
+	}
+*/
+
+	public String[][] getProcessList() {
 		
 		ProcessSummariesType processSummaries = managerService.readProcessSummaries(null);
-		return processSummaries.getProcessSummary(); 
+		List<ProcessSummaryType> list = processSummaries.getProcessSummary(); 
+		String[][] s = new String[list.size()][5];
+
+		for (int i = 0; i < list.size(); i++) {
+			s[i][0] = "" + list.get(i).getName();
+			s[i][1] = "" + list.get(i).getId();
+			s[i][2] = "" + list.get(i).getOwner();
+			s[i][3] = "" + list.get(i).getOriginalNativeType();
+			List<VersionSummaryType> b = list.get(i).getVersionSummaries();
+			s[i][4] = "";
+			for (int z = 0; z < b.size() - 1; z++) {
+				s[i][4] = s[i][4] + b.get(z).getName() + "; ";
+			}
+			s[i][4] = s[i][4] + b.get(b.size() - 1).getName();
+		}
+		return s;
+	}
+	
+	public String[][] filterProcessList(String name, int id, String owner, String type) {
+
+		ProcessSummariesType processSummaries = managerService.readProcessSummaries(null);
+		List<ProcessSummaryType> list = processSummaries.getProcessSummary(); 
+
+		int j = list.size() - 1;
+
+		if (!((name.equalsIgnoreCase("")) && (id == 0)
+				&& (owner.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")))) {
+			j = 0;
+			for (int i = 0; i < list.size() - 1; i++) {
+				if ((list.get(i).getName().toLowerCase()
+						.contains(name.toLowerCase()) || name
+						.equalsIgnoreCase(""))
+						&& (list.get(i).getDomain().toLowerCase()
+								.contains(type.toLowerCase()) || type
+								.equalsIgnoreCase(""))
+						&& (list.get(i).getOwner().toLowerCase()
+								.contains(owner.toLowerCase()) || owner
+								.equalsIgnoreCase(""))
+						&& ((list.get(i).getId() == id) || (id == 0)))
+					j++;
+			}
+		}
+
+		String[][] s = new String[j][5];
+
+		int k = 0;
+
+		for (int i = 0; i < list.size() - 1; i++) {
+			if (!((name.equalsIgnoreCase("")) && (id == 0)
+					&& (owner.equalsIgnoreCase("")) && (type
+						.equalsIgnoreCase("")))) {
+
+				if ((list.get(i).getName().toLowerCase()
+						.contains(name.toLowerCase()) || name
+						.equalsIgnoreCase(""))
+						&& (list.get(i).getDomain().toLowerCase()
+								.contains(type.toLowerCase()) || type
+								.equalsIgnoreCase(""))
+						&& (list.get(i).getOwner().toLowerCase()
+								.contains(owner.toLowerCase()) || owner
+								.equalsIgnoreCase(""))
+						&& ((list.get(i).getId() == id) || (id == 0))) {
+					s[k][0] = "" + list.get(i).getName();
+					s[k][1] = "" + list.get(i).getId();
+					s[k][2] = "" + list.get(i).getOwner();
+					s[k][3] = "" + list.get(i).getDomain();
+					List<VersionSummaryType> b = list.get(i)
+							.getVersionSummaries();
+					s[k][4] = "";
+					for (int z = 0; z < b.size() - 1; z++) {
+						s[k][4] = s[k][4] + b.get(z).getName() + "; ";
+					}
+					s[k][4] = s[k][4] + b.get(b.size() - 1).getName();
+
+					k++;
+				}
+			} else {
+				s[i][0] = "" + list.get(i).getName();
+				s[i][1] = "" + list.get(i).getId();
+				s[i][2] = "" + list.get(i).getOwner();
+				s[i][3] = "" + list.get(i).getDomain();
+				List<VersionSummaryType> b = list.get(i).getVersionSummaries();
+				s[i][4] = "";
+				for (int z = 0; z < b.size() - 1; z++) {
+					s[i][4] = s[i][4] + b.get(z).getName() + "; ";
+				}
+				s[i][4] = s[i][4] + b.get(b.size() - 1).getName();
+			}
+
+		}
+		return s;
 	}
 
-	public ExportFormatResultType importProcess(int id) {
+	public InputStream importProcess(int id) throws Exception {
 		
 		ProcessSummariesType processSummaries = managerService.readProcessSummaries(null);
 		ProcessSummaryType p = processSummaries.getProcessSummary().get(id);
 		ExportFormatResultType exf = null;
 		final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
-		
-		try {
-			exf = managerService.exportFormat(p.getId(), p.getName(), "MAIN", p.getLastVersion(), "PNML 1.3.2", null, false, p.getOwner(), noCanoniserParameters);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return exf;
+		exf = managerService.exportFormat(p.getId(), p.getName(), "MAIN", p.getLastVersion(), "PNML 1.3.2", null, false, p.getOwner(), noCanoniserParameters);		
+		InputStream is = exf.getNative().getInputStream();
+		return is;
 	}
 	
 	public EditSessionType getParams() {
 		return aproParams;
 	}
-	
-
 	
 	public ImportProcessResultType export(String userName, String domain, String processName, 
 			String version, boolean makePublic, FileInputStream fis) {
