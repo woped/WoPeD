@@ -81,7 +81,8 @@
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/plugin-api-1.1.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/pnmlBeans.jar" />	
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ruddi-1.0.0.jar" />
-		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-api-1.7.5.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-simple-1.7.6.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-api-1.7.6.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-beans-3.2.5.RELEASE.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-context-3.2.5.RELEASE.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-core-3.2.5.RELEASE.jar" />
@@ -180,6 +181,7 @@
 
 	<target name="buildjar">
 		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST.mf">
+			<fileset dir="../WoPeD-AProMoRe/bin" />
 			<fileset dir="../WoPeD-BPELExport/bin" />
 			<fileset dir="../WoPeD-Core/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
