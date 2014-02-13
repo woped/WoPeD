@@ -212,10 +212,6 @@ public class ApromoreExportFrame extends JDialog {
 		tabModel = new DefaultTableModel(null, columnNames);
 
 		initAAO = new ApromoreAccess();
-		if (!initAAO.IsOnline()) {
-			dispose();
-			return;
-		}
 
 		rowData = initAAO.getProcessList();
 		for (String[] s : rowData) {

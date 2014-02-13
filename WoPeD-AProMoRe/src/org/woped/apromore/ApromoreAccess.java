@@ -41,13 +41,12 @@ public class ApromoreAccess {
 	}
 
 	private HttpComponentsMessageSender httpCms;
-	private Jaxb2Marshaller serviceMarshaller;
-	private SaajSoapMessageFactory soapMsgFactory;
-	private WebServiceTemplate wsTemp; 
-	private ManagerService managerService;
-	private EditSessionType aproParams;
-	private boolean online = false;
-	
+	private Jaxb2Marshaller 			serviceMarshaller;
+	private SaajSoapMessageFactory 		soapMsgFactory;
+	private WebServiceTemplate 			wsTemp; 
+	private ManagerService 				managerService;
+	private EditSessionType 			aproParams;
+		
 	public ApromoreAccess() {
 		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
 			ProxySelector.setDefault(new WoProxySelector(ConfigurationManager.getConfiguration().getApromoreProxyName(), ConfigurationManager.getConfiguration().getApromoreProxyPort()));
@@ -72,24 +71,6 @@ public class ApromoreAccess {
 		    				   ConfigurationManager.getConfiguration().getApromoreManagerPath());
 		managerService = new ManagerServiceClient(wsTemp);
 	}
-
-	
-/*	new ArrayMaker();
-	try {
-		rowData = ArrayMaker.run(aproAccess.getList());
-	} catch (Exception e) {
-		Object[] options = { Messages
-				.getString("Apromore.Connect.Error.Button") };
-		JOptionPane.showOptionDialog(null,
-				Messages.getString("Apromore.Connect.Error"),
-				Messages.getString("Apromore.Connect.Error.Title"),
-
-				JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-
-				null, options, options[0]);
-		dispose();
-	}
-*/
 
 	public String[][] getProcessList() {
 		
@@ -126,7 +107,7 @@ public class ApromoreAccess {
 				if ((list.get(i).getName().toLowerCase()
 						.contains(name.toLowerCase()) || name
 						.equalsIgnoreCase(""))
-						&& (list.get(i).getDomain().toLowerCase()
+						&& (list.get(i).getOriginalNativeType().toLowerCase()
 								.contains(type.toLowerCase()) || type
 								.equalsIgnoreCase(""))
 						&& (list.get(i).getOwner().toLowerCase()
@@ -149,7 +130,7 @@ public class ApromoreAccess {
 				if ((list.get(i).getName().toLowerCase()
 						.contains(name.toLowerCase()) || name
 						.equalsIgnoreCase(""))
-						&& (list.get(i).getDomain().toLowerCase()
+						&& (list.get(i).getOriginalNativeType().toLowerCase()
 								.contains(type.toLowerCase()) || type
 								.equalsIgnoreCase(""))
 						&& (list.get(i).getOwner().toLowerCase()
@@ -159,7 +140,7 @@ public class ApromoreAccess {
 					s[k][0] = "" + list.get(i).getName();
 					s[k][1] = "" + list.get(i).getId();
 					s[k][2] = "" + list.get(i).getOwner();
-					s[k][3] = "" + list.get(i).getDomain();
+					s[k][3] = "" + list.get(i).getOriginalNativeType();
 					List<VersionSummaryType> b = list.get(i)
 							.getVersionSummaries();
 					s[k][4] = "";
@@ -174,7 +155,7 @@ public class ApromoreAccess {
 				s[i][0] = "" + list.get(i).getName();
 				s[i][1] = "" + list.get(i).getId();
 				s[i][2] = "" + list.get(i).getOwner();
-				s[i][3] = "" + list.get(i).getDomain();
+				s[i][3] = "" + list.get(i).getOriginalNativeType();
 				List<VersionSummaryType> b = list.get(i).getVersionSummaries();
 				s[i][4] = "";
 				for (int z = 0; z < b.size() - 1; z++) {
@@ -182,8 +163,8 @@ public class ApromoreAccess {
 				}
 				s[i][4] = s[i][4] + b.get(b.size() - 1).getName();
 			}
-
 		}
+		
 		return s;
 	}
 
@@ -203,30 +184,16 @@ public class ApromoreAccess {
 	}
 	
 	public ImportProcessResultType export(String userName, String domain, String processName, 
-			String version, boolean makePublic, FileInputStream fis) {
-        final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
-        try {
-        	
-        	SimpleDateFormat sdf = new SimpleDateFormat();
-			sdf.applyPattern("yyyy'/'MM'/'dd");
+			String version, boolean makePublic, FileInputStream fis) throws Exception {
+        
+		final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
+         	
+        SimpleDateFormat sdf = new SimpleDateFormat();
+		sdf.applyPattern("yyyy'/'MM'/'dd");
 			
-        	return managerService.importProcess(userName, 0, "PNML 1.3.2",
+        return managerService.importProcess(userName, 0, "PNML 1.3.2",
         		processName, version, fis, "", "", sdf.format(new Date()), "", makePublic,
         		noCanoniserParameters);
-					 
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-        return null;
-	}
-	
-	public boolean IsOnline()
-	{
-		return online;
 	}
 }
 

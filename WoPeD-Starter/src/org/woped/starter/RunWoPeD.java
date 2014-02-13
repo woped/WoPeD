@@ -29,7 +29,6 @@ import java.io.InputStreamReader;
 import java.util.Locale;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -40,7 +39,6 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 import org.woped.editor.controller.vep.ViewEvent;
-import org.woped.gui.translations.Messages;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.starter.utilities.WopedLogger;
 
@@ -184,7 +182,8 @@ public class RunWoPeD extends JFrame {
     	DOMConfigurator.configure(RunWoPeD.class.getResource("/org/woped/starter/utilities/log4j.xml"));
 	
     	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				Constants.GUI_LOGGER)), Constants.GUI_LOGGER);
+				Constants.GUI_LOGGER)), 
+				Constants.GUI_LOGGER);
     	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
 				org.woped.editor.Constants.EDITOR_LOGGER)),
 				org.woped.editor.Constants.EDITOR_LOGGER);
@@ -208,7 +207,10 @@ public class RunWoPeD extends JFrame {
 				org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER);
     	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
 				org.woped.gui.translations.Constants.TRANSLATIONS_LOGGER)),
-				org.woped.gui.translations.Constants.TRANSLATIONS_LOGGER);
+				org.woped.gui.translations.Constants.TRANSLATIONS_LOGGER);  	
+		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.apromore.Constants.APROMORE_LOGGER)), 
+				org.woped.apromore.Constants.APROMORE_LOGGER);
 		
     	LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
     }

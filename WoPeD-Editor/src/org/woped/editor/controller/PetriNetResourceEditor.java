@@ -1244,7 +1244,7 @@ public class PetriNetResourceEditor extends JPanel
 					   	if(e.getSource()== resourceColorButtonRole ){
 							   
 							 //JOptionPane.showMessageDialog(null, "Computer sagt NEIN", "Fehlermeldung", JOptionPane.ERROR_MESSAGE);
-							 //mxGraph Objekt, jede Zelle im Graph pr���������fbar ob aktiv mit while schleife im mouselistener
+							 //mxGraph Objekt, jede Zelle im Graph pruefbar ob aktiv mit while schleife im mouselistener
 					   	}
 				   }
 				   catch(Exception ex){

@@ -78,7 +78,7 @@ public class ApplicationMediator extends AbstractApplicationMediator {
         this(null, null);
     }
     
-    protected static void setDisplayUI(JFrame js){
+    public static void setDisplayUI(JFrame js){
     	displayUI = js;
     }
     

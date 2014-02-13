@@ -160,10 +160,10 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			} catch (Exception e)
 			{
 				LoggerManager.error(Constants.GUI_LOGGER,
-						"Cannot find HTML manual files. " + e.getMessage());
+						"Cannot find HTML manual files in " + (String)event.getData() + "." + e.getMessage());
 				JOptionPane.showMessageDialog(getMediator().getUi()
 						.getComponent(), Messages
-						.getString("Help.Message.HTMLManualFileNotFound"),
+						.getString("Help.Message.HTMLManualFileNotFound") + " in " + (String)event.getData(),
 						Messages.getString("Help.Message.notFound"),
 						JOptionPane.ERROR_MESSAGE);
 			}

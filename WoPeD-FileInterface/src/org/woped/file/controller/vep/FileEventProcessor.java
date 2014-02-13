@@ -2,7 +2,6 @@ package org.woped.file.controller.vep;
 
 import java.awt.Cursor;
 import java.awt.FileDialog;
-import java.awt.Frame;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -506,7 +505,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		return succeed;
 	}
 
-	public static boolean isFileOverride(Frame owner, String fileName) {
+	public static boolean isFileOverride(JFrame owner, String fileName) {
 		String textMessages[] = { Messages.getString("Dialog.Yes"),
 				Messages.getString("Dialog.No") };
 		String[] args = { fileName };
@@ -521,7 +520,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	public boolean macSaveAs(EditorVC editor) {
 		boolean succeed = false;
 		FileDialog fileDialog;
-		Frame frame = null;
+		JFrame frame = null;
 		if (editor != null) {
 			// Open save as Dialog
 
@@ -737,7 +736,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		}
 		}
 			else {
-				Frame frame = null;
+				JFrame frame = null;
 				//Mac part, let's do the same with the awt.FileDialog
 				if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
 					fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
@@ -906,7 +905,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
 	private void importApromore() {
 
-		new ApromoreImportFrame(new PNMLImport(getMediator()));
+		new ApromoreImportFrame(getMediator());
 
 		if (ConfigurationManager.getConfiguration().getColorOn()) {
 			new NetColorScheme().update();
@@ -937,18 +936,14 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					"Petrinet saved in file: " + "tmp.pnml");
 
 			ApromoreAccess aao = new ApromoreAccess();
-			if (!aao.IsOnline()) {
-				getMediator().getUi().getComponent()
-						.setCursor(Cursor.getDefaultCursor());
-				return false;
-			}
+
 			try {
 				ImportProcessResultType check = aao.export(null, null, null, null, succeed, new FileInputStream(new File("tmp.pnml")));		
 				succeed = true;
 				editor.setSaved(true);
-			} catch (FileNotFoundException e1) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 		getMediator().getUi().getComponent()
