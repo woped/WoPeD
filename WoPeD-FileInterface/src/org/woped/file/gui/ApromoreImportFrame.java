@@ -1,6 +1,7 @@
 package org.woped.file.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -74,6 +75,7 @@ public class ApromoreImportFrame extends JDialog {
 
 	private void initialize() {
 
+		ApplicationMediator.getDisplayUI().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try {
 			aproAccess.connect();
 		} catch (Exception e) {
@@ -82,6 +84,7 @@ public class ApromoreImportFrame extends JDialog {
 			return;
 		}
 
+		ApplicationMediator.getDisplayUI().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		setTitle(Messages.getString("Apromore.Import.UI.Title"));
 		setSize(new Dimension(520, 390));
 		int left = (int)ApplicationMediator.getDisplayUI().getLocation().getX();
@@ -336,12 +339,7 @@ public class ApromoreImportFrame extends JDialog {
 
 		if (scrollableProcessTable == null) {
 			tabModel = new DefaultTableModel(null, columnNames);
-			rowData = aproAccess.getProcessList();
-
-			for (String[] s : rowData) {
-				tabModel.addRow(s);
-			}
-
+			
 			table = new JTable(tabModel);
 			table.setShowVerticalLines(true);
 			table.setFillsViewportHeight(true);
@@ -351,6 +349,21 @@ public class ApromoreImportFrame extends JDialog {
 			int width = table.getPreferredSize().width + 80;
 			int height = table.getRowHeight() * table.getRowCount() + 20;		
 			scrollableProcessTable.setPreferredSize(new Dimension(width, height > 180 ? 180 : height));
+			
+			ApplicationMediator.getDisplayUI().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+			try {
+				rowData = aproAccess.getProcessList();
+				for (String[] s : rowData) {
+					tabModel.addRow(s);
+				}
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null,
+						Messages.getString("Apromore.GetProcesses.Error"),
+						Messages.getString("Apromore.Import.UI.Error.Title"),
+						JOptionPane.ERROR_MESSAGE);
+				dispose();
+			}
+			ApplicationMediator.getDisplayUI().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		}
 
 		return scrollableProcessTable;

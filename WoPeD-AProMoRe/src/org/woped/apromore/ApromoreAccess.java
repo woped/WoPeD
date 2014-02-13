@@ -72,7 +72,7 @@ public class ApromoreAccess {
 		managerService = new ManagerServiceClient(wsTemp);
 	}
 
-	public String[][] getProcessList() {
+	public String[][] getProcessList() throws Exception {
 		
 		ProcessSummariesType processSummaries = managerService.readProcessSummaries(null);
 		List<ProcessSummaryType> list = processSummaries.getProcessSummary(); 

@@ -213,10 +213,13 @@ public class ApromoreExportFrame extends JDialog {
 
 		initAAO = new ApromoreAccess();
 
-		rowData = initAAO.getProcessList();
-		for (String[] s : rowData) {
-			tabModel.addRow(s);
-		}
+		try {
+			rowData = initAAO.getProcessList();
+			for (String[] s : rowData) {
+				tabModel.addRow(s);
+			}
+		} catch (Exception e) {}
+
 
 		table = new JTable(tabModel);
 		table.setShowVerticalLines(false);
