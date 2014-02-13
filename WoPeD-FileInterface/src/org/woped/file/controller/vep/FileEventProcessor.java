@@ -816,12 +816,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				// TODO Generate Thread
 				try {
 					inputStream = new FileInputStream(file.getAbsolutePath());
-					loadSuccess = pnmlImport.run(inputStream);
+					loadSuccess = pnmlImport.run(inputStream, "");
 				} catch (FileNotFoundException e) {
 					String jarPath = file.getPath().replace('\\', '/');
 
 					inputStream = this.getClass().getResourceAsStream(jarPath);
-					loadSuccess = pnmlImport.run(inputStream);
+					loadSuccess = pnmlImport.run(inputStream, "");
 
 					/*
 					 * if (!loadSuccess) LoggerManager.error(Constants.FILE_LOGGER,
@@ -842,7 +842,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				try {
 					String s = YawlInterface.importYawlFile(file);//po.ImportYawl(file);
 					inputStream = new ByteArrayInputStream(s.getBytes(Charset.forName("UTF-8")));
-					loadSuccess = pnmlImport.run(inputStream);
+					loadSuccess = pnmlImport.run(inputStream, "");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

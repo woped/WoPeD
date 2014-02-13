@@ -441,9 +441,11 @@ public class ApromoreImportFrame extends JDialog {
 	private void importAction() {
 		try {
 			int ind = table.getSelectedRow();
+			String processName = (String)table.getModel().getValueAt(ind, 0);
 			
 			if (ind != -1) {
-				if (new PNMLImport(mediator).run(aproAccess.importProcess(ind))) {
+				PNMLImport pLoader = new PNMLImport(mediator);
+				if (pLoader.run(aproAccess.importProcess(ind), processName + ".pnml")) {
 					LoggerManager.info(Constants.APROMORE_LOGGER, "Model description loaded from Apromore");
 					dispose();
 				} else {

@@ -159,7 +159,7 @@ public class PNMLImport {
 		InputStream is;
 		try {
 			is = new FileInputStream(absolutePath);
-			return run(is, showUI);
+			return run(is, null, showUI);
 		} catch (FileNotFoundException e) {
 			LoggerManager.warn(Constants.FILE_LOGGER, "File does not exists. "
 					+ absolutePath);
@@ -169,23 +169,30 @@ public class PNMLImport {
 	}
 
 	public boolean run(InputStream is) {
-		return run(is, true);
+		return run(is, null, true);
 	}
 	
+	public boolean run(InputStream is, String editorName) {
+		return run(is, editorName, true);
+	}
+
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
 	 * @param is
 	 * @return
 	 */
-	public boolean run(InputStream is, boolean showUI) {
+	public boolean run(InputStream is, String editorName, boolean showUI) {
 		LoggerManager.debug(Constants.FILE_LOGGER,
 				"##### START PNML Version (1.3.2) IMPORT #####");
 
 		long begin = System.currentTimeMillis();
 		try {
 			pnmlDoc = PnmlDocument.Factory.parse(is, opt);
-			createEditorFromBeans(showUI);
+			if (editorName != null)
+				createEditorFromBeans(editorName, showUI);
+			else 
+				createEditorFromBeans(showUI);
 			if (!warnings.isEmpty()) {
 				LoggerManager.warn(Constants.FILE_LOGGER,
 						"Imported a not valid PNML.");
@@ -205,14 +212,6 @@ public class PNMLImport {
 					.warn(
 							Constants.FILE_LOGGER,
 							"   ... Could parse PNML file. Perhaps OLD PNML file-format. When saving, new pnml file-format will be created.");
-			// e.printStackTrace();
-			/*
-			 * PNMLImport oldPnml = new PNMLImport(); if
-			 * (oldPnml.loadExistingInstance(is)) { PetriNet petriNet =
-			 * oldPnml.getPetriNet(); // TODO build editor return loadSuccess =
-			 * true; } else { return loadSuccess = false; }
-			 */
-			// return
 			return false;
 		} finally {
 			LoggerManager.debug(Constants.FILE_LOGGER,
@@ -272,10 +271,13 @@ public class PNMLImport {
 
 	}
 
-	private void createEditorFromBeans(boolean showUI) throws Exception {
-		importNets(pnmlDoc.getPnml(), showUI);
+	private void createEditorFromBeans(String editorName, boolean showUI) throws Exception {
+		importNets(pnmlDoc.getPnml(), editorName, showUI);
 	}
 
+	private void createEditorFromBeans(boolean showUI) throws Exception {
+		importNets(pnmlDoc.getPnml(), null, showUI);
+	}
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
@@ -286,7 +288,7 @@ public class PNMLImport {
 		return editor;
 	}
 
-	private void importNets(PnmlType pnml, boolean showUI) throws Exception {
+	private void importNets(PnmlType pnml, String editorName, boolean showUI) throws Exception {
 		editor = new IEditor[pnml.getNetArray().length];
 		NetType currentNet;
 		Dimension dim;
@@ -299,7 +301,8 @@ public class PNMLImport {
 			boolean savedFlag = true;
 			currentNet = pnml.getNetArray(i);
 			editor[i] = mediator.createEditor(true, showUI);
-			if(showUI){
+
+			if (showUI){
 				if (((WoPeDUndoManager) editor[i].getGraph().getUndoManager()) != null) {
 
 				((WoPeDUndoManager) editor[i].getGraph().getUndoManager())
@@ -560,20 +563,22 @@ public class PNMLImport {
 
 			// Now build the graph from the ModelElementContainer
 			if(showUI){
-				getEditor()[i].getGraph().drawNet(editor[i].getModelProcessor());
-				getEditor()[i].updateNet();
+				editor[i].getGraph().drawNet(editor[i].getModelProcessor());
+				editor[i].updateNet();
 	
-				getEditor()[i].getGraph().clearSelection();
+				editor[i].getGraph().clearSelection();
 				if (editor[i].getGraph().getUndoManager() != null) {
 					((WoPeDUndoManager) editor[i].getGraph().getUndoManager())
 							.setEnabled(true);
 				}
-				getEditor()[i].updateNet();
-				getEditor()[i].setSaved(savedFlag);
+				editor[i].updateNet();
+				if (editorName != null) {
+					editor[i].setName(editorName);
+					editor[i].setSaved(false);
+				}			
+				else
+					editor[i].setSaved(savedFlag);
 			}
-			
-
-						
 		}
 	}
 

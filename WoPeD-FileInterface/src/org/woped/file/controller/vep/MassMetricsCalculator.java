@@ -110,7 +110,7 @@ public class MassMetricsCalculator {
 				// Loop over all selected files to analyze them
 				for(File f:filesToCheck){
 					write.write(f.getName());
-					if(pr.run(new FileInputStream(f),false))
+					if(pr.run(new FileInputStream(f), "", false))
 						edit = pr.getEditor()[0];
 					/*else if(oldpr.run(new FileInputStream(f),false))
 						edit = oldpr.getEditor()[0];*/
