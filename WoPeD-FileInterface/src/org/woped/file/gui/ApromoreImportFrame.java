@@ -340,15 +340,11 @@ public class ApromoreImportFrame extends JDialog {
 		if (scrollableProcessTable == null) {
 			tabModel = new DefaultTableModel(null, columnNames);
 			
-			table = new JTable(tabModel);
+			table = new JTable();
 			table.setShowVerticalLines(true);
 			table.setFillsViewportHeight(true);
 
 			scrollableProcessTable = new JScrollPane(table);
-			
-			int width = table.getPreferredSize().width + 80;
-			int height = table.getRowHeight() * table.getRowCount() + 20;		
-			scrollableProcessTable.setPreferredSize(new Dimension(width, height > 180 ? 180 : height));
 			
 			ApplicationMediator.getDisplayUI().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 			try {
@@ -356,6 +352,7 @@ public class ApromoreImportFrame extends JDialog {
 				for (String[] s : rowData) {
 					tabModel.addRow(s);
 				}
+				table.setModel(tabModel);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Apromore.GetProcesses.Error"),
@@ -363,6 +360,10 @@ public class ApromoreImportFrame extends JDialog {
 						JOptionPane.ERROR_MESSAGE);
 				dispose();
 			}
+			
+			int width = table.getPreferredSize().width + 80;
+			int height = table.getRowHeight() * table.getRowCount() + 20;		
+			scrollableProcessTable.setPreferredSize(new Dimension(width, height > 180 ? 180 : height));			
 			ApplicationMediator.getDisplayUI().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		}
 
@@ -454,9 +455,9 @@ public class ApromoreImportFrame extends JDialog {
 	private void importAction() {
 		try {
 			int ind = table.getSelectedRow();
-			String processName = (String)table.getModel().getValueAt(ind, 0);
 			
 			if (ind != -1) {
+				String processName = (String)table.getModel().getValueAt(ind, 0);
 				PNMLImport pLoader = new PNMLImport(mediator);
 				if (pLoader.run(aproAccess.importProcess(ind), processName + ".pnml")) {
 					LoggerManager.info(Constants.APROMORE_LOGGER, "Model description loaded from Apromore");
