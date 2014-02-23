@@ -478,6 +478,7 @@ public class ApromoreImportFrame extends JDialog {
 								JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null,
 					Messages.getString("Apromore.Import.UI.Error.Import"),
 					Messages.getString("Apromore.Import.UI.Error.Title"),

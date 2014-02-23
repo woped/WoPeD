@@ -101,18 +101,18 @@ import org.woped.gui.translations.Messages;
 // !!!
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
- *         <br>
- * 
- * The Import Class parses an <code>PetriNet </code> defined in PNML Format. To
- * get more Information about PNML look at <br>
- * <a
- * href="http://www.informatik.hu-berlin.de/top/pnml">http://www.informatik.hu-berlin.de/top/pnml
- * </a> <br>
  * <br>
- * In Order to parse the extended Notation (WF-Nets from W.v.d.Aalst) its
- * necessary to read toolspecific elements additionaly. <br>
+ * 
+ *         The Import Class parses an <code>PetriNet </code> defined in PNML
+ *         Format. To get more Information about PNML look at <br>
+ *         <a
+ *         href="http://www.informatik.hu-berlin.de/top/pnml">http://www.informatik
+ *         .hu-berlin.de/top/pnml </a> <br>
+ * <br>
+ *         In Order to parse the extended Notation (WF-Nets from W.v.d.Aalst)
+ *         its necessary to read toolspecific elements additionaly. <br>
  * @see org.woped.editor.core.model.PetriNetModelProcessor <br>
- *      <br>
+ * <br>
  *      Created on 29.04.2003 <br>
  *      Last change 05.12.2004 (S.Landes) <br>
  */
@@ -121,7 +121,7 @@ public class PNMLImport {
 	private PnmlDocument pnmlDoc = null;
 	private XmlOptions opt = new XmlOptions();
 	private Vector<String> warnings = new Vector<String>();
-	//private IStatusBar[] statusBars = null;
+	// private IStatusBar[] statusBars = null;
 	private AbstractApplicationMediator mediator = null;
 
 	/**
@@ -134,9 +134,11 @@ public class PNMLImport {
 		mediator = am;
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("", "pnml.woped.org");
-		// Interpret pnml documents according to foreign standardized pnml schema as our own
-		map.put("http://www.pnml.org/version-2009/grammar/pnml", "pnml.woped.org");
-		
+		// Interpret pnml documents according to foreign standardized pnml
+		// schema as our own
+		map.put("http://www.pnml.org/version-2009/grammar/pnml",
+				"pnml.woped.org");
+
 		opt.setLoadSubstituteNamespaces(map);
 		if (true) {
 			opt.setCompileNoUpaRule();
@@ -148,7 +150,7 @@ public class PNMLImport {
 	public boolean run(String absolutePath) {
 		return run(absolutePath, true);
 	}
-	
+
 	/**
 	 * Load an XML document using the generated PNMLFactory class
 	 * 
@@ -171,7 +173,7 @@ public class PNMLImport {
 	public boolean run(InputStream is) {
 		return run(is, null, true);
 	}
-	
+
 	public boolean run(InputStream is, String editorName) {
 		return run(is, editorName, true);
 	}
@@ -191,30 +193,33 @@ public class PNMLImport {
 			pnmlDoc = PnmlDocument.Factory.parse(is, opt);
 			if (editorName != null)
 				createEditorFromBeans(editorName, showUI);
-			else 
+			else
 				createEditorFromBeans(showUI);
 			if (!warnings.isEmpty()) {
 				LoggerManager.warn(Constants.FILE_LOGGER,
 						"Imported a not valid PNML.");
 				StringBuffer warningStrings = new StringBuffer();
-				for (Iterator<String> iter = warnings.iterator(); iter.hasNext();) {
+				for (Iterator<String> iter = warnings.iterator(); iter
+						.hasNext();) {
 					warningStrings.append(iter.next());
 				}
-				JOptionPane.showMessageDialog(null, Messages
-						.getString("Import.PNML.Text"), Messages
-						.getString("Import.PNML.Title"),
-						JOptionPane.WARNING_MESSAGE);
 			}
 			return true;
-		} catch (Exception e) { e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 			// e.printStackTrace();
 			LoggerManager
-					.warn(
-							Constants.FILE_LOGGER,
+					.warn(Constants.FILE_LOGGER,
 							"   ... Could parse PNML file. Perhaps OLD PNML file-format. When saving, new pnml file-format will be created.");
+
+			JOptionPane.showMessageDialog(null,
+					Messages.getString("Import.PNML.Text"),
+					Messages.getString("Import.PNML.Title"),
+					JOptionPane.WARNING_MESSAGE);
 			return false;
 		} finally {
-			LoggerManager.debug(Constants.FILE_LOGGER,
+			LoggerManager.debug(
+					Constants.FILE_LOGGER,
 					"##### END PNML IMPORT Version (1.3.2) ##### ("
 							+ (System.currentTimeMillis() - begin) + " ms)");
 		}
@@ -224,15 +229,15 @@ public class PNMLImport {
 	public boolean runEx(String content) {
 		return runEx(content, true);
 	}
-	
+
 	/**
 	 * runEx()
 	 * <p>
 	 * load the Content from a given XML String
 	 * <p>
 	 * 
-	 * @param content -
-	 *            Content of PNML File
+	 * @param content
+	 *            - Content of PNML File
 	 * @return
 	 */
 	public boolean runEx(String content, boolean showUI) {
@@ -247,31 +252,33 @@ public class PNMLImport {
 				LoggerManager.warn(Constants.FILE_LOGGER,
 						"Imported a not valid PNML.");
 				StringBuffer warningStrings = new StringBuffer();
-				for (Iterator<String> iter = warnings.iterator(); iter.hasNext();) {
+				for (Iterator<String> iter = warnings.iterator(); iter
+						.hasNext();) {
 					warningStrings.append(iter.next());
 				}
-				JOptionPane.showMessageDialog(null, Messages
-						.getString("Import.PNML.Text"), Messages
-						.getString("Import.PNML.Title"),
+				JOptionPane.showMessageDialog(null,
+						Messages.getString("Import.PNML.Text"),
+						Messages.getString("Import.PNML.Title"),
 						JOptionPane.WARNING_MESSAGE);
 			}
 			return true;
 		} catch (Exception e) {
 			LoggerManager
-					.warn(
-							Constants.FILE_LOGGER,
+					.warn(Constants.FILE_LOGGER,
 							"   ... Could parse PNML file. Perhaps OLD PNML file-format. When saving, new pnml file-format will be created.");
 			// return
 			return false;
 		} finally {
-			LoggerManager.debug(Constants.FILE_LOGGER,
+			LoggerManager.debug(
+					Constants.FILE_LOGGER,
 					"##### END PNML IMPORT Version (1.3.2) ##### ("
 							+ (System.currentTimeMillis() - begin) + " ms)");
 		}
 
 	}
 
-	private void createEditorFromBeans(String editorName, boolean showUI) throws Exception {
+	private void createEditorFromBeans(String editorName, boolean showUI)
+			throws Exception {
 		importNets(pnmlDoc.getPnml(), editorName, showUI);
 	}
 
@@ -288,7 +295,8 @@ public class PNMLImport {
 		return editor;
 	}
 
-	private void importNets(PnmlType pnml, String editorName, boolean showUI) throws Exception {
+	private void importNets(PnmlType pnml, String editorName, boolean showUI)
+			throws Exception {
 		editor = new IEditor[pnml.getNetArray().length];
 		NetType currentNet;
 		Dimension dim;
@@ -302,12 +310,12 @@ public class PNMLImport {
 			currentNet = pnml.getNetArray(i);
 			editor[i] = mediator.createEditor(true, showUI);
 
-			if (showUI){
+			if (showUI) {
 				if (((WoPeDUndoManager) editor[i].getGraph().getUndoManager()) != null) {
 
-				((WoPeDUndoManager) editor[i].getGraph().getUndoManager())
-						.setEnabled(false);
-			}
+					((WoPeDUndoManager) editor[i].getGraph().getUndoManager())
+							.setEnabled(false);
+				}
 			}
 			currentPetrinet = ((PetriNetModelProcessor) editor[i]
 					.getModelProcessor());
@@ -319,242 +327,299 @@ public class PNMLImport {
 			if (currentNet.isSetName()) {
 				currentPetrinet.setName(currentNet.getName().getText());
 			}
-			if(showUI) if (ConfigurationManager.getConfiguration().isImportToolspecific()) {
-				// toolspecific
-				for (int j = 0; j < currentNet.getToolspecificArray().length; j++) {
-					if (currentNet.getToolspecificArray(j).getTool().equals(
-							"WoPeD")) {
-						if (currentNet.getToolspecificArray(j).isSetBounds()) {
-							dim = new Dimension(currentNet
-									.getToolspecificArray(j).getBounds()
-									.getDimension().getX().intValue(),
-									currentNet.getToolspecificArray(j)
-											.getBounds().getDimension().getY()
-											.intValue());
-							location = new Point(currentNet
-									.getToolspecificArray(j).getBounds()
-									.getPosition().getX().intValue(),
-									currentNet.getToolspecificArray(j)
-											.getBounds().getPosition().getY()
-											.intValue());
-							if (editor[i] instanceof EditorVC) {
-								// Pass read layout information on to the editor
-								EditorLayoutInfo layout = new EditorLayoutInfo();
-								layout.setSavedSize(dim);
-								layout.setSavedLocation(location);
-								
-								// try to import the type of Layout (false if vertical)
-								((EditorVC) editor[i]).setRotateSelected(currentNet
-										.getToolspecificArray(j)
-										.getVerticalLayout());
-								
-									//for importing a vertical net to change the rotate-button	
-									if (currentNet
-												.getToolspecificArray(j)
-												.getVerticalLayout()== true){
-											//EditorVC.setRotateSelected(true);
-										VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "Import", null, null));
-											
-										
-										// Update the UI representation
-											//EditorVC.getGraph().updateUI();	
-										}
-									
-									if (currentNet.getToolspecificArray(j).isSetScale()) {
-										// try to import the saved scale
-										((EditorVC) editor[i]).getGraph().setScale(currentNet
-											.getToolspecificArray(j).getScale()/100.0);
-									}
-									
+			if (showUI)
+				if (ConfigurationManager.getConfiguration()
+						.isImportToolspecific()) {
+					// toolspecific
+					for (int j = 0; j < currentNet.getToolspecificArray().length; j++) {
+						if (currentNet.getToolspecificArray(j).getTool()
+								.equals("WoPeD")) {
+							if (currentNet.getToolspecificArray(j)
+									.isSetBounds()) {
+								dim = new Dimension(currentNet
+										.getToolspecificArray(j).getBounds()
+										.getDimension().getX().intValue(),
+										currentNet.getToolspecificArray(j)
+												.getBounds().getDimension()
+												.getY().intValue());
+								location = new Point(currentNet
+										.getToolspecificArray(j).getBounds()
+										.getPosition().getX().intValue(),
+										currentNet.getToolspecificArray(j)
+												.getBounds().getPosition()
+												.getY().intValue());
+								if (editor[i] instanceof EditorVC) {
+									// Pass read layout information on to the
+									// editor
+									EditorLayoutInfo layout = new EditorLayoutInfo();
+									layout.setSavedSize(dim);
+									layout.setSavedLocation(location);
 
-								// Only if also the remaining information is
-								// available,
-								// try to import the width of the tree view and the height of the overview panel
-									if (currentNet.getToolspecificArray(j).isSetTreeWidth()){
-										GraphicsSimpleType bounds = currentNet.getToolspecificArray(j).getBounds();
-										DimensionType dimension = bounds.getDimension();
-										int x =(int) (dimension.getX()).doubleValue();
-										x = x - currentNet.getToolspecificArray(j).getTreeWidth();
+									// try to import the type of Layout (false
+									// if vertical)
+									((EditorVC) editor[i])
+											.setRotateSelected(currentNet
+													.getToolspecificArray(j)
+													.getVerticalLayout());
+
+									// for importing a vertical net to change
+									// the rotate-button
+									if (currentNet.getToolspecificArray(j)
+											.getVerticalLayout() == true) {
+										// EditorVC.setRotateSelected(true);
+										VisualController
+												.getInstance()
+												.propertyChange(
+														new PropertyChangeEvent(
+																this, "Import",
+																null, null));
+
+										// Update the UI representation
+										// EditorVC.getGraph().updateUI();
+									}
+
+									if (currentNet.getToolspecificArray(j)
+											.isSetScale()) {
+										// try to import the saved scale
+										((EditorVC) editor[i])
+												.getGraph()
+												.setScale(
+														currentNet
+																.getToolspecificArray(
+																		j)
+																.getScale() / 100.0);
+									}
+
+									// Only if also the remaining information is
+									// available,
+									// try to import the width of the tree view
+									// and the height of the overview panel
+									if (currentNet.getToolspecificArray(j)
+											.isSetTreeWidth()) {
+										GraphicsSimpleType bounds = currentNet
+												.getToolspecificArray(j)
+												.getBounds();
+										DimensionType dimension = bounds
+												.getDimension();
+										int x = (int) (dimension.getX())
+												.doubleValue();
+										x = x
+												- currentNet
+														.getToolspecificArray(j)
+														.getTreeWidth();
 										layout.setTreeViewWidthRight(x);
-									} else if (currentNet.getToolspecificArray(j).isSetTreeWidthRight()){
-										layout.setTreeViewWidthRight(currentNet.getToolspecificArray(j).getTreeWidthRight());
-									}
-									else {
+									} else if (currentNet.getToolspecificArray(
+											j).isSetTreeWidthRight()) {
 										layout.setTreeViewWidthRight(currentNet
-												.getToolspecificArray(j).getBounds()
-												.getDimension().getX().intValue() - 100);										
+												.getToolspecificArray(j)
+												.getTreeWidthRight());
+									} else {
+										layout.setTreeViewWidthRight(currentNet
+												.getToolspecificArray(j)
+												.getBounds().getDimension()
+												.getX().intValue() - 100);
 									}
-									
-									if(currentNet.getToolspecificArray(j).isSetOverviewPanelVisible()){
-										layout.setOverviewPanelVisible(currentNet.getToolspecificArray(j).getOverviewPanelVisible());
-									}else{
+
+									if (currentNet.getToolspecificArray(j)
+											.isSetOverviewPanelVisible()) {
+										layout.setOverviewPanelVisible(currentNet
+												.getToolspecificArray(j)
+												.getOverviewPanelVisible());
+									} else {
 										layout.setOverviewPanelVisible(true);
 									}
-									
-									if (currentNet.getToolspecificArray(j).isSetTreeHeightOverview()){
-										if(currentNet.getToolspecificArray(j).getTreeHeightOverview() < 1){
+
+									if (currentNet.getToolspecificArray(j)
+											.isSetTreeHeightOverview()) {
+										if (currentNet.getToolspecificArray(j)
+												.getTreeHeightOverview() < 1) {
 											layout.setTreeHeightOverview(100);
-										}else{
-										layout.setTreeHeightOverview(currentNet.getToolspecificArray(j).getTreeHeightOverview());
+										} else {
+											layout.setTreeHeightOverview(currentNet
+													.getToolspecificArray(j)
+													.getTreeHeightOverview());
 										}
-									}else{
+									} else {
 										layout.setTreeHeightOverview(100);
 									}
-									
-									if(currentNet.getToolspecificArray(j).isSetTreePanelVisible()){
 
-										layout.setTreePanelVisible(currentNet.getToolspecificArray(j).getTreePanelVisible());
-											
-									}else{
+									if (currentNet.getToolspecificArray(j)
+											.isSetTreePanelVisible()) {
+
+										layout.setTreePanelVisible(currentNet
+												.getToolspecificArray(j)
+												.getTreePanelVisible());
+
+									} else {
 										layout.setTreePanelVisible(true);
 									}
-									
-									((EditorVC) editor[i]).getEditorPanel().setSavedLayoutInfo(layout);
+
+									((EditorVC) editor[i]).getEditorPanel()
+											.setSavedLayoutInfo(layout);
 								}
 							}
-						if (currentNet.getToolspecificArray(j).isSetResources()) {
-							// ResourceMapType resourceMap =
-							// currentNet.getToolspecificArray(j).getResources().getResourceMap();
-							ResourceMappingType[] resourceMaps = currentNet
-									.getToolspecificArray(j).getResources()
-									.getResourceMappingArray();
+							if (currentNet.getToolspecificArray(j)
+									.isSetResources()) {
+								// ResourceMapType resourceMap =
+								// currentNet.getToolspecificArray(j).getResources().getResourceMap();
+								ResourceMappingType[] resourceMaps = currentNet
+										.getToolspecificArray(j).getResources()
+										.getResourceMappingArray();
 
-							RoleType[] roles = currentNet.getToolspecificArray(
-									j).getResources().getRoleArray();
-							ResourceClassModel roleModelTemp;
-							for (int k = 0; k < roles.length; k++) {
-								roleModelTemp = new ResourceClassModel(roles[k]
-										.getName(),
-										ResourceClassModel.TYPE_ROLE);
-								currentPetrinet.addRole(roleModelTemp);
-								SuperModelType[] supermodels = roles[k].getSuperModelArray();
-								ResourceClassModel superModelTemp;
-								for( int l=0;l<supermodels.length;l++){
-									superModelTemp = new ResourceClassModel(supermodels[l]
-									     .getName(),ResourceClassModel.TYPE_ROLE);
-									roleModelTemp.addSuperModel(superModelTemp);
+								RoleType[] roles = currentNet
+										.getToolspecificArray(j).getResources()
+										.getRoleArray();
+								ResourceClassModel roleModelTemp;
+								for (int k = 0; k < roles.length; k++) {
+									roleModelTemp = new ResourceClassModel(
+											roles[k].getName(),
+											ResourceClassModel.TYPE_ROLE);
+									currentPetrinet.addRole(roleModelTemp);
+									SuperModelType[] supermodels = roles[k]
+											.getSuperModelArray();
+									ResourceClassModel superModelTemp;
+									for (int l = 0; l < supermodels.length; l++) {
+										superModelTemp = new ResourceClassModel(
+												supermodels[l].getName(),
+												ResourceClassModel.TYPE_ROLE);
+										roleModelTemp
+												.addSuperModel(superModelTemp);
+									}
+								}
+
+								OrganizationUnitType[] units = currentNet
+										.getToolspecificArray(j).getResources()
+										.getOrganizationUnitArray();
+								ResourceClassModel orgUnitTemp;
+								for (int l = 0; l < units.length; l++) {
+									orgUnitTemp = new ResourceClassModel(
+											units[l].getName(),
+											ResourceClassModel.TYPE_ORGUNIT);
+									currentPetrinet.addOrgUnit(orgUnitTemp);
+
+									SuperModelType[] supermodels = units[l]
+											.getSuperModelArray();
+									ResourceClassModel superModelTemp;
+									for (int m = 0; m < supermodels.length; m++) {
+										superModelTemp = new ResourceClassModel(
+												supermodels[m].getName(),
+												ResourceClassModel.TYPE_ORGUNIT);
+										orgUnitTemp
+												.addSuperModel(superModelTemp);
+									}
+								}
+
+								ResourceType[] resources = currentNet
+										.getToolspecificArray(j).getResources()
+										.getResourceArray();
+								ResourceModel resourceModelTemp;
+								for (int m = 0; m < resources.length; m++) {
+									resourceModelTemp = new ResourceModel(
+											resources[m].getName());
+									currentPetrinet
+											.addResource(resourceModelTemp);
+								}
+
+								for (int n = 0; n < resourceMaps.length; n++) {
+									currentPetrinet.addResourceMapping(
+											resourceMaps[n].getResourceClass(),
+											resourceMaps[n].getResourceID());
 								}
 							}
-							 
-							
+							if (currentNet.getToolspecificArray(j)
+									.isSetSimulations()) {
+								// only save the simulationsarray to local
+								// variable
+								// here - the import itself
+								// has to be done after import of the
+								// transitions
+								// because the simulation
+								// references transitions (which otherwise
+								// result in
+								// 'null')
+								// see "importSimulations([...])" below
+								simulations = currentNet
+										.getToolspecificArray(j)
+										.getSimulations().getSimulationArray();
+							}
 
-							OrganizationUnitType[] units = currentNet
-									.getToolspecificArray(j).getResources()
-									.getOrganizationUnitArray();
-							ResourceClassModel orgUnitTemp;
-							for (int l = 0; l < units.length; l++) {
-								orgUnitTemp = new ResourceClassModel(units[l]
-										.getName(),
-										ResourceClassModel.TYPE_ORGUNIT);
-								currentPetrinet.addOrgUnit(orgUnitTemp);
-								
-								SuperModelType[] supermodels = units[l].getSuperModelArray();
-								ResourceClassModel superModelTemp;
-								for( int m=0;m<supermodels.length;m++){
-									superModelTemp = new ResourceClassModel(supermodels[m]
-									     .getName(),ResourceClassModel.TYPE_ORGUNIT);
-									orgUnitTemp.addSuperModel(superModelTemp);
+							if (currentNet.getToolspecificArray(j)
+									.isSetPartnerLinks()) {
+								TPartnerLinks plist = currentNet
+										.getToolspecificArray(j)
+										.getPartnerLinks();
+								for (int x = 0; x < plist
+										.sizeOfPartnerLinkArray(); x++) {
+									TPartnerLink link = plist
+											.getPartnerLinkArray(x);
+									if (link.isSetMyRole()
+											&& link.isSetPartnerRole()) {
+										currentPetrinet
+												.getElementContainer()
+												.addPartnerLink(
+														link.getName(),
+														link.getPartnerLinkType()
+																.getNamespaceURI(),
+														link.getPartnerLinkType()
+																.getLocalPart(),
+														link.getPartnerRole(),
+														link.getMyRole(),
+														link.getWSDL());
+									} else if (link.isSetMyRole()) {
+										currentPetrinet
+												.getElementContainer()
+												.addPartnerLinkWithoutPartnerRole(
+														link.getName(),
+														link.getPartnerLinkType()
+																.getNamespaceURI(),
+														link.getPartnerLinkType()
+																.getLocalPart(),
+														link.getMyRole(),
+														link.getWSDL());
+									} else if (link.isSetPartnerRole()) {
+										currentPetrinet
+												.getElementContainer()
+												.addPartnerLinkWithoutMyRole(
+														link.getName(),
+														link.getPartnerLinkType()
+																.getNamespaceURI(),
+														link.getPartnerLinkType()
+																.getLocalPart(),
+														link.getPartnerRole(),
+														link.getWSDL());
+									}
 								}
 							}
 
-							ResourceType[] resources = currentNet
-									.getToolspecificArray(j).getResources()
-									.getResourceArray();
-							ResourceModel resourceModelTemp;
-							for (int m = 0; m < resources.length; m++) {
-								resourceModelTemp = new ResourceModel(
-										resources[m].getName());
-								currentPetrinet.addResource(resourceModelTemp);
-							}
-
-							for (int n = 0; n < resourceMaps.length; n++) {
-								currentPetrinet.addResourceMapping(
-										resourceMaps[n].getResourceClass(),
-										resourceMaps[n].getResourceID());
-							}
-						}
-						if (currentNet.getToolspecificArray(j)
-								.isSetSimulations()) {
-							// only save the simulationsarray to local variable
-							// here - the import itself
-							// has to be done after import of the transitions
-							// because the simulation
-							// references transitions (which otherwise result in
-							// 'null')
-							// see "importSimulations([...])" below
-							simulations = currentNet.getToolspecificArray(j)
-									.getSimulations().getSimulationArray();
-						}
-
-						if (currentNet.getToolspecificArray(j)
-								.isSetPartnerLinks()) {
-							TPartnerLinks plist = currentNet
-									.getToolspecificArray(j).getPartnerLinks();
-							for (int x = 0; x < plist.sizeOfPartnerLinkArray(); x++) {
-								TPartnerLink link = plist
-										.getPartnerLinkArray(x);
-								if (link.isSetMyRole()
-										&& link.isSetPartnerRole()) {
+							if (currentNet.getToolspecificArray(j)
+									.isSetVariables()) {
+								TVariables vlist = currentNet
+										.getToolspecificArray(j).getVariables();
+								for (int x = 0; x < vlist.sizeOfVariableArray(); x++) {
+									TVariable var = vlist.getVariableArray(x);
 									currentPetrinet.getElementContainer()
-											.addPartnerLink(
-													link.getName(),
-													link.getPartnerLinkType()
-															.getNamespaceURI(),
-													link.getPartnerLinkType()
-															.getLocalPart(),
-													link.getPartnerRole(),
-													link.getMyRole(),
-													link.getWSDL());
-								} else if (link.isSetMyRole()) {
-									currentPetrinet.getElementContainer()
-											.addPartnerLinkWithoutPartnerRole(
-													link.getName(),
-													link.getPartnerLinkType()
-															.getNamespaceURI(),
-													link.getPartnerLinkType()
-															.getLocalPart(),
-													link.getMyRole(),
-													link.getWSDL());
-								} else if (link.isSetPartnerRole()) {
-									currentPetrinet.getElementContainer()
-											.addPartnerLinkWithoutMyRole(
-													link.getName(),
-													link.getPartnerLinkType()
-															.getNamespaceURI(),
-													link.getPartnerLinkType()
-															.getLocalPart(),
-													link.getPartnerRole(),
-													link.getWSDL());
+											.addVariable(
+													var.getName(),
+													var.getType()
+															.getLocalPart());
 								}
 							}
+						} else {
+							currentPetrinet.addUnknownToolSpecs(currentNet
+									.getToolspecificArray(j));
 						}
-
-						if (currentNet.getToolspecificArray(j).isSetVariables()) {
-							TVariables vlist = currentNet.getToolspecificArray(
-									j).getVariables();
-							for (int x = 0; x < vlist.sizeOfVariableArray(); x++) {
-								TVariable var = vlist.getVariableArray(x);
-								currentPetrinet.getElementContainer()
-										.addVariable(var.getName(),
-												var.getType().getLocalPart());
-							}
-						}
-					} else {
-						currentPetrinet.addUnknownToolSpecs(currentNet
-								.getToolspecificArray(j));
 					}
-				}
 
-			}
+				}
 
 			// Import the net into the current ModelElementContainer
 			importNet(currentNet, editor[i].getModelProcessor()
 					.getElementContainer());
-			
+
 			// Import textual descriptions
-			//if(currentNet.isSetText() == true){
-				//importTextualDescription(currentPetrinet, currentNet, editor[i]);
-			//}
+			// if(currentNet.isSetText() == true){
+			// importTextualDescription(currentPetrinet, currentNet, editor[i]);
+			// }
 
 			// Import the simulations if any exist
 			if (simulations != null) {
@@ -562,10 +627,10 @@ public class PNMLImport {
 			}
 
 			// Now build the graph from the ModelElementContainer
-			if(showUI){
+			if (showUI) {
 				editor[i].getGraph().drawNet(editor[i].getModelProcessor());
 				editor[i].updateNet();
-	
+
 				editor[i].getGraph().clearSelection();
 				if (editor[i].getGraph().getUndoManager() != null) {
 					((WoPeDUndoManager) editor[i].getGraph().getUndoManager())
@@ -575,8 +640,7 @@ public class PNMLImport {
 				if (editorName != null) {
 					editor[i].setName(editorName);
 					editor[i].setSaved(false);
-				}			
-				else
+				} else
 					editor[i].setSaved(savedFlag);
 			}
 		}
@@ -592,12 +656,11 @@ public class PNMLImport {
 	// ! transitions and arcs from the net stored in the XMLBean
 	private void importNet(NetType currentNet,
 			ModelElementContainer currentContainer) throws Exception {
-		if ((currentNet.getPlaceArray().length==0)&&
-			(currentNet.getTransitionArray().length==0)&&
-			(currentNet.getPageArray().length==1))
+		if ((currentNet.getPlaceArray().length == 0)
+				&& (currentNet.getTransitionArray().length == 0)
+				&& (currentNet.getPageArray().length == 1))
 			importNet(currentNet.getPageArray()[0], currentContainer);
-		else
-		{
+		else {
 			importPlaces(currentNet.getPlaceArray(), currentContainer);
 			importTransitions(currentNet, currentContainer);
 			// important... import arcs in the end
@@ -605,71 +668,63 @@ public class PNMLImport {
 			importTextualDescription(currentNet, currentContainer);
 		}
 	}
-	
-	
-	private void importTextualDescription(NetType currentNet, 
-			ModelElementContainer currentContainer) throws Exception{
-		
+
+	private void importTextualDescription(NetType currentNet,
+			ModelElementContainer currentContainer) throws Exception {
+
 		TextType text = currentNet.getText();
-		
-		if(currentNet.getText() != null){
-			
-			try{
+
+		if (currentNet.getText() != null) {
+
+			try {
 				Phrase[] phraseArray = text.getPhraseArray();
-				for(int z = 0; z < phraseArray.length; z++){
-					
+				for (int z = 0; z < phraseArray.length; z++) {
+
 					String[] description = new String[2];
 					description[0] = phraseArray[z].getIds().trim();
 					description[1] = phraseArray[z].getStringValue().trim();
-					//processor.getParaphrasingModel().addElement(phraseArray[z].getIds(), phraseArray[z].getStringValue());
-					currentContainer.getParaphrasingModel().addElement(description[0], description[1]);
-					LoggerManager.debug(Constants.FILE_LOGGER, " ... Description (ID:"
-							+ description[0] + ") imported");
+					// processor.getParaphrasingModel().addElement(phraseArray[z].getIds(),
+					// phraseArray[z].getStringValue());
+					currentContainer.getParaphrasingModel().addElement(
+							description[0], description[1]);
+					LoggerManager.debug(Constants.FILE_LOGGER,
+							" ... Description (ID:" + description[0]
+									+ ") imported");
 				}
-			}
-			catch (Exception e) {
-				warnings
-						.add("- SKIP DESCRIPTION: Exception while importing textual description.\n");
+			} catch (Exception e) {
+				warnings.add("- SKIP DESCRIPTION: Exception while importing textual description.\n");
 			}
 
 		}
-	
+
 	}
 
-	
-	
-	private void importNameAndLayout(NodeType node, CreationMap target)
-	{
+	private void importNameAndLayout(NodeType node, CreationMap target) {
 		target.setId(node.getId());
-		if (node.getGraphics()!=null)
-		{
+		if (node.getGraphics() != null) {
 			target.setPosition(node.getGraphics().getPosition().getX()
-					.intValue(), node.getGraphics().getPosition()
-					.getY().intValue());
+					.intValue(), node.getGraphics().getPosition().getY()
+					.intValue());
 			if (node.getGraphics().isSetDimension())
-				target.setSize(new IntPair(new Dimension(node
-				                                             .getGraphics().getDimension().getX().intValue(),
-				                                             node.getGraphics().getDimension().getY()
-				                                             .intValue())));
+				target.setSize(new IntPair(new Dimension(node.getGraphics()
+						.getDimension().getX().intValue(), node.getGraphics()
+						.getDimension().getY().intValue())));
 		}
-		if (node.getName()!=null)				
+		if (node.getName() != null)
 			target.setName(node.getName().getText());
 		else
 			// Elements that don't have a name will have their id used instead
 			target.setName(node.getId());
-		
-		if (node.getName()!=null
-				&& node.getName().isSetGraphics()
-				&& node.getName().getGraphics()
-						.getOffsetArray() != null
-				&& node.getName().getGraphics()
-						.getOffsetArray().length > 0) {
-			int x = node.getName().getGraphics().getOffsetArray(0)
-					.getX().intValue();
-			int y = node.getName().getGraphics().getOffsetArray(0)
-					.getY().intValue();
-			target.setNamePosition(x, y);		
-		}		
+
+		if (node.getName() != null && node.getName().isSetGraphics()
+				&& node.getName().getGraphics().getOffsetArray() != null
+				&& node.getName().getGraphics().getOffsetArray().length > 0) {
+			int x = node.getName().getGraphics().getOffsetArray(0).getX()
+					.intValue();
+			int y = node.getName().getGraphics().getOffsetArray(0).getY()
+					.intValue();
+			target.setNamePosition(x, y);
+		}
 	}
 
 	private void importPlaces(PlaceType[] places,
@@ -683,12 +738,14 @@ public class PNMLImport {
 			map.setType(AbstractPetriNetElementModel.PLACE_TYPE);
 			try {
 				importNameAndLayout(places[i], map);
-					
+
 				try {
 					if (places[i].isSetInitialMarking()) {
-						// Remove all flavors of whitespace before converting to an integer
+						// Remove all flavors of whitespace before converting to
+						// an integer
 						String initialMarkingString = places[i]
-								.getInitialMarking().getText().replaceAll("\\s", "");
+								.getInitialMarking().getText()
+								.replaceAll("\\s", "");
 						if ((tokens = Integer.parseInt(initialMarkingString)) > 0) {
 							map.setTokens(tokens);
 						}
@@ -716,10 +773,9 @@ public class PNMLImport {
 						}
 					}
 				} catch (Exception e) {
-					warnings
-							.add("- PLACE LOST INFORMATION ("
-									+ places[i].getId()
-									+ ") Exception while importing lesser important information.\n");
+					warnings.add("- PLACE LOST INFORMATION ("
+							+ places[i].getId()
+							+ ") Exception while importing lesser important information.\n");
 				}
 				if (!doNOTcreate) {
 					// Seems like we're supposed to actually create this place
@@ -737,8 +793,7 @@ public class PNMLImport {
 				LoggerManager.debug(Constants.FILE_LOGGER, "   ... Place (ID:"
 						+ places[i].getId() + ") imported");
 			} catch (Exception e) {
-				warnings
-						.add("- SKIP PLACE: Exception while importing important information.\n");
+				warnings.add("- SKIP PLACE: Exception while importing important information.\n");
 			}
 			// increaseCurrent();
 
@@ -780,21 +835,20 @@ public class PNMLImport {
 											.getToolspecificArray(j)
 											.getTimeUnit());
 								}
-								
-								//set operatorOrientation
+
+								// set operatorOrientation
 								if (transitions[i].getToolspecificArray(j)
 										.isSetOrientation()) {
 									map.setOperatorPosition(transitions[i]
 											.getToolspecificArray(j)
 											.getOrientation());
-								} 
+								}
 								if (transitions[i].getToolspecificArray(j)
 										.isSetOperator()) {
 									map.setOperatorType(transitions[i]
 											.getToolspecificArray(j)
 											.getOperator().getType());
-									map
-											.setType(TransitionModel.TRANS_OPERATOR_TYPE);
+									map.setType(TransitionModel.TRANS_OPERATOR_TYPE);
 									map.setId(transitions[i]
 											.getToolspecificArray(j)
 											.getOperator().getId());
@@ -865,10 +919,10 @@ public class PNMLImport {
 											.getToolspecificArray(j)
 											.getInvoke();
 									Invoke bpel = new Invoke(invoke.getName(),
-											invoke.getPartnerLink(), invoke
-													.getOperation(), "", invoke
-													.getInputVariable(), invoke
-													.getOutputVariable());
+											invoke.getPartnerLink(),
+											invoke.getOperation(), "",
+											invoke.getInputVariable(),
+											invoke.getOutputVariable());
 									map.setBpeldata(bpel);
 								}
 								if (transitions[i].getToolspecificArray(j)
@@ -876,11 +930,11 @@ public class PNMLImport {
 									TReceive receive = transitions[i]
 											.getToolspecificArray(j)
 											.getReceive();
-									Receive bpel = new Receive(receive
-											.getName(), receive
-											.getPartnerLink(), receive
-											.getOperation(), receive
-											.getVariable());
+									Receive bpel = new Receive(
+											receive.getName(),
+											receive.getPartnerLink(),
+											receive.getOperation(),
+											receive.getVariable());
 									map.setBpeldata(bpel);
 								}
 								if (transitions[i].getToolspecificArray(j)
@@ -888,20 +942,20 @@ public class PNMLImport {
 									TReply reply = transitions[i]
 											.getToolspecificArray(j).getReply();
 									Reply bpel = new Reply(reply.getName(),
-											reply.getPartnerLink(), reply
-													.getOperation(), reply
-													.getVariable());
+											reply.getPartnerLink(),
+											reply.getOperation(),
+											reply.getVariable());
 									map.setBpeldata(bpel);
 								}
 								if (transitions[i].getToolspecificArray(j)
 										.isSetWait()) {
 									TWait wait = transitions[i]
 											.getToolspecificArray(j).getWait();
-									Wait bpel = new Wait(wait.getName(), wait
-											.getTyp(), wait.getYear(), wait
-											.getMonth(), wait.getDay(), wait
-											.getHour(), wait.getMinute(), wait
-											.getSecond());
+									Wait bpel = new Wait(wait.getName(),
+											wait.getTyp(), wait.getYear(),
+											wait.getMonth(), wait.getDay(),
+											wait.getHour(), wait.getMinute(),
+											wait.getSecond());
 									map.setBpeldata(bpel);
 								}
 							} else {
@@ -912,10 +966,9 @@ public class PNMLImport {
 						}
 					}
 				} catch (Exception e) {
-					warnings
-							.add("- TRANSITION LOST INFORMATION ("
-									+ transitions[i].getId()
-									+ "): Exception while importing lesser important information.");
+					warnings.add("- TRANSITION LOST INFORMATION ("
+							+ transitions[i].getId()
+							+ "): Exception while importing lesser important information.");
 				}
 
 				if (!currentContainer.containsElement(map.getId())) {
@@ -929,7 +982,8 @@ public class PNMLImport {
 					// and all but the first such instance are discarded here
 					// because an element
 					// with the same id already exists at this point
-					AbstractPetriNetElementModel element = processor.createElement(map);
+					AbstractPetriNetElementModel element = processor
+							.createElement(map);
 					currentContainer.addElement(element);
 					LoggerManager.debug(Constants.FILE_LOGGER,
 							" ... Transition (ID:" + map.getId() + ")imported");
@@ -952,8 +1006,7 @@ public class PNMLImport {
 											.getNetArray();
 									if (subProcessNets.length > 0) {
 										if (subProcessNets.length > 1)
-											warnings
-													.add("- SKIP SUBPROCESS NET: Only one sub-process net may be defined per sub-process.");
+											warnings.add("- SKIP SUBPROCESS NET: Only one sub-process net may be defined per sub-process.");
 
 										NetType subProcessNet = subProcessNets[0];
 										ModelElementContainer container = ((SubProcessModel) element)
@@ -1007,53 +1060,87 @@ public class PNMLImport {
 													EditorLayoutInfo layout = new EditorLayoutInfo();
 
 													layout.setSavedSize(dim);
-													layout
-															.setSavedLocation(location);
+													layout.setSavedLocation(location);
 													// Only if also the
 													// remaining information is
 													// available,
 													// try to import the width
 													// of the tree view
-													if (subProcessNet.getToolspecificArray(j).isSetTreeWidth()){
-														layout.setTreeViewWidthRight(subProcessNet.getToolspecificArray(j).getBounds()
-																		.getDimension().getX().intValue() - subProcessNet.getToolspecificArray(j).getTreeWidth());
+													if (subProcessNet
+															.getToolspecificArray(
+																	j)
+															.isSetTreeWidth()) {
+														layout.setTreeViewWidthRight(subProcessNet
+																.getToolspecificArray(
+																		j)
+																.getBounds()
+																.getDimension()
+																.getX()
+																.intValue()
+																- subProcessNet
+																		.getToolspecificArray(
+																				j)
+																		.getTreeWidth());
 													}
-													
-													if (subProcessNet.getToolspecificArray(j).isSetTreeWidthRight()){
-														layout.setTreeViewWidthRight(subProcessNet.getToolspecificArray(j).getTreeWidthRight());
+
+													if (subProcessNet
+															.getToolspecificArray(
+																	j)
+															.isSetTreeWidthRight()) {
+														layout.setTreeViewWidthRight(subProcessNet
+																.getToolspecificArray(
+																		j)
+																.getTreeWidthRight());
 													}
-														
-													if(subProcessNet.getToolspecificArray(j).isSetOverviewPanelVisible()){
-														layout.setOverviewPanelVisible(subProcessNet.getToolspecificArray(j).getOverviewPanelVisible());
-													}else{
+
+													if (subProcessNet
+															.getToolspecificArray(
+																	j)
+															.isSetOverviewPanelVisible()) {
+														layout.setOverviewPanelVisible(subProcessNet
+																.getToolspecificArray(
+																		j)
+																.getOverviewPanelVisible());
+													} else {
 														layout.setOverviewPanelVisible(true);
 													}
-													
-													if(subProcessNet.getToolspecificArray(j).isSetTreeHeightOverview()){
-														layout.setTreeHeightOverview(subProcessNet.getToolspecificArray(j).getTreeHeightOverview());
-												
+
+													if (subProcessNet
+															.getToolspecificArray(
+																	j)
+															.isSetTreeHeightOverview()) {
+														layout.setTreeHeightOverview(subProcessNet
+																.getToolspecificArray(
+																		j)
+																.getTreeHeightOverview());
+
 													}
-													
-													if(subProcessNet.getToolspecificArray(j).isSetTreePanelVisible()){
-														layout.setTreePanelVisible(subProcessNet.getToolspecificArray(j).getTreePanelVisible());
-													}else{
+
+													if (subProcessNet
+															.getToolspecificArray(
+																	j)
+															.isSetTreePanelVisible()) {
+														layout.setTreePanelVisible(subProcessNet
+																.getToolspecificArray(
+																		j)
+																.getTreePanelVisible());
+													} else {
 														layout.setTreePanelVisible(true);
 													}
-													
-													container.setEditorLayoutInfo(layout);
+
+													container
+															.setEditorLayoutInfo(layout);
 												}
 											}
 									}
 								}
 							}
 						} else
-							warnings
-									.add("- EXPECTED PAGE NOT FOUND: Subprocess information lost during import.");
+							warnings.add("- EXPECTED PAGE NOT FOUND: Subprocess information lost during import.");
 					}
 				}
 			} catch (Exception e) {
-				warnings
-						.add("- SKIP TRANSITION: Exception while importing important information.");
+				warnings.add("- SKIP TRANSITION: Exception while importing important information.");
 			}
 		}
 	}
@@ -1093,8 +1180,7 @@ public class PNMLImport {
 										.getTarget()
 										.substring(
 												0,
-												arcs[i]
-														.getTarget()
+												arcs[i].getTarget()
 														.indexOf(
 																OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
 							} else {
@@ -1102,8 +1188,7 @@ public class PNMLImport {
 										.getTarget()
 										.substring(
 												0,
-												arcs[i]
-														.getTarget()
+												arcs[i].getTarget()
 														.indexOf(
 																OperatorTransitionModel.INNERID_SEPERATOR_OLD));
 							}
@@ -1125,8 +1210,7 @@ public class PNMLImport {
 										.getSource()
 										.substring(
 												0,
-												arcs[i]
-														.getSource()
+												arcs[i].getSource()
 														.indexOf(
 																OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
 							} else {
@@ -1134,8 +1218,7 @@ public class PNMLImport {
 										.getSource()
 										.substring(
 												0,
-												arcs[i]
-														.getSource()
+												arcs[i].getSource()
 														.indexOf(
 																OperatorTransitionModel.INNERID_SEPERATOR_OLD));
 							}
@@ -1189,15 +1272,13 @@ public class PNMLImport {
 									if (arcs[i].getToolspecificArray(j)
 											.isSetDisplayProbabilityPosition()) {
 										Point location = new Point(
-												arcs[i]
-														.getToolspecificArray(j)
+												arcs[i].getToolspecificArray(j)
 														.getDisplayProbabilityPosition()
 														.getX().intValue(),
-												arcs[i]
-														.getToolspecificArray(j)
+												arcs[i].getToolspecificArray(j)
 														.getDisplayProbabilityPosition()
 														.getY().intValue());
-										arc.setLabelPosition(location);								         
+										arc.setLabelPosition(location);
 									}
 								} else {
 									arc.addUnknownToolSpecs(arcs[i]
@@ -1206,10 +1287,9 @@ public class PNMLImport {
 							}
 						}
 					} catch (Exception e) {
-						warnings
-								.add("- ARC LOST INFORMATION ("
-										+ arcs[i].getId()
-										+ "): Exception while importing lesser important information.");
+						warnings.add("- ARC LOST INFORMATION ("
+								+ arcs[i].getId()
+								+ "): Exception while importing lesser important information.");
 					}
 				} else {
 					// if toolspecific import is disabled then import the arc
@@ -1244,8 +1324,7 @@ public class PNMLImport {
 						+ arcs[i].getTarget() + ") created");
 				// increaseCurrent();
 			} catch (Exception e) {
-				warnings
-						.add("- SKIP ARC: Exception while importing important information.");
+				warnings.add("- SKIP ARC: Exception while importing important information.");
 			}
 		}
 	}
@@ -1326,10 +1405,8 @@ public class PNMLImport {
 			if (!currentPetrinet.isLogicalFingerprintEqual(simulations[k]
 					.getNetFingerprint())) {
 				Object[] options = {
-						Messages
-								.getString("Tokengame.ChangedNetDialog.ButtonKeep"),
-						Messages
-								.getString("Tokengame.ChangedNetDialog.ButtonDelete") };
+						Messages.getString("Tokengame.ChangedNetDialog.ButtonKeep"),
+						Messages.getString("Tokengame.ChangedNetDialog.ButtonDelete") };
 				// get the localized message text
 				String message = Messages
 						.getString("Tokengame.ChangedNetDialog.Import.Message");
@@ -1337,16 +1414,17 @@ public class PNMLImport {
 				// simulationdate
 				message = message.replaceAll("##SIMULATIONNAME##",
 						simulations[k].getSimulationname());
-				message = message.replaceAll("##SIMULATIONDATE##", DateFormat
-						.getDateTimeInstance(
+				message = message.replaceAll(
+						"##SIMULATIONDATE##",
+						DateFormat.getDateTimeInstance(
 								DateFormat.MEDIUM,
 								DateFormat.MEDIUM,
 								ConfigurationManager.getConfiguration()
 										.getLocale()).format(
 								simulations[k].getSimulationdate().getTime()));
 
-				answer = JOptionPane.showOptionDialog(null, message, Messages
-						.getString("Tokengame.ChangedNetDialog.Title"),
+				answer = JOptionPane.showOptionDialog(null, message,
+						Messages.getString("Tokengame.ChangedNetDialog.Title"),
 						JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
 						null, options, options[0]);
 				// if the user didn't choose one of the buttons but closed the
