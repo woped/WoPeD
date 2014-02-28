@@ -7,9 +7,12 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.InputStream;
+import java.util.Comparator;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
@@ -22,6 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import org.woped.apromore.ApromoreAccess;
 import org.woped.apromore.Constants;
@@ -39,11 +44,11 @@ public class ApromoreImportFrame extends JDialog {
 	
 	private String[ ][ ] 		rowData = null;
 	private final String[ ] 	columnNames = {
-									Messages.getString("Apromore.Import.UI.ProcessName"),
-									Messages.getString("Apromore.Import.UI.ID"),
-									Messages.getString("Apromore.Import.UI.Owner"),
-									Messages.getString("Apromore.Import.UI.Type"),
-									Messages.getString("Apromore.Import.UI.Versions") };
+									Messages.getString("Apromore.UI.ProcessName"),
+									Messages.getString("Apromore.UI.ID"),
+									Messages.getString("Apromore.UI.Owner"),
+									Messages.getString("Apromore.UI.Type"),
+									Messages.getString("Apromore.UI.Version") };
 	private DefaultTableModel 	tabModel = null;
 	private JTable 				table = null;
 	private WopedButton 		importButton = null;
@@ -80,19 +85,24 @@ public class ApromoreImportFrame extends JDialog {
 			aproAccess.connect();
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null,
-					Messages.getString("Apromore.Export.UI.Error.AproNoConn"));
+					Messages.getString("Apromore.Error.Connect"));
 			return;
 		}
 
 		ApplicationMediator.getDisplayUI().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-		setTitle(Messages.getString("Apromore.Import.UI.Title"));
-		setSize(new Dimension(520, 390));
+		setTitle(Messages.getString("Apromore.UI.Import.Title"));
+		setSize(new Dimension(600, 410));
 		int left = (int)ApplicationMediator.getDisplayUI().getLocation().getX();
 		int top = (int)ApplicationMediator.getDisplayUI().getLocation().getY();
 		setLocation(left+400, top+180);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(getContentPanel(), BorderLayout.NORTH);
 		getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+		getContentPane().addMouseListener(new MouseAdapter() {
+			   public void mouseClicked(MouseEvent e) {
+				   table.clearSelection();
+			   	}
+				});
 		setVisible(true);
 	}
 
@@ -125,7 +135,7 @@ public class ApromoreImportFrame extends JDialog {
 
 			processListPanel.setBorder(BorderFactory.createCompoundBorder(
 					BorderFactory.createTitledBorder(Messages
-							.getString("Apromore.Import.UI.Serversource")),
+							.getString("Apromore.UI.ProcessList")),
 					BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 			
 			GridBagConstraints c = new GridBagConstraints();
@@ -146,7 +156,7 @@ public class ApromoreImportFrame extends JDialog {
 	private JLabel getNameFilterLabel() {
 		
 		if (nameFilterLabel == null) {
-			nameFilterLabel = new JLabel(Messages.getString("Apromore.Import.UI.Name"));
+			nameFilterLabel = new JLabel(Messages.getString("Apromore.UI.ProcessName"));
 		}
 		
 		return nameFilterLabel;
@@ -168,8 +178,7 @@ public class ApromoreImportFrame extends JDialog {
 
 				public void changedUpdate(DocumentEvent e) {
 					filterAction();					
-				}
-				
+				}	
 			});
 		}
 		
@@ -179,7 +188,7 @@ public class ApromoreImportFrame extends JDialog {
 	private JLabel getIDFilterLabel() {
 		
 		if (idFilterLabel == null) {
-			idFilterLabel = new JLabel(Messages.getString("Apromore.Import.UI.ID"));
+			idFilterLabel = new JLabel(Messages.getString("Apromore.UI.ID"));
 		}
 		
 		return idFilterLabel;
@@ -212,7 +221,7 @@ public class ApromoreImportFrame extends JDialog {
 	private JLabel getTypeFilterLabel() {
 		
 		if (typeFilterLabel == null) {
-			typeFilterLabel = new JLabel(Messages.getString("Apromore.Import.UI.Type"));
+			typeFilterLabel = new JLabel(Messages.getString("Apromore.UI.Type"));
 		}
 		
 		return typeFilterLabel;
@@ -245,7 +254,7 @@ public class ApromoreImportFrame extends JDialog {
 	private JLabel getOwnerFilterLabel() {
 		
 		if (ownerFilterLabel == null) {
-			ownerFilterLabel = new JLabel(Messages.getString("Apromore.Import.UI.Owner"));
+			ownerFilterLabel = new JLabel(Messages.getString("Apromore.UI.Owner"));
 		}
 		
 		return ownerFilterLabel;
@@ -287,7 +296,7 @@ public class ApromoreImportFrame extends JDialog {
 			
 			filterPanel.setBorder(BorderFactory.createCompoundBorder(
 					BorderFactory.createTitledBorder(Messages
-							.getString("Apromore.Import.UI.FilterBy")),
+							.getString("Apromore.UI.FilterBy")),
 					BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 			
 			c.gridx = 0;
@@ -335,14 +344,34 @@ public class ApromoreImportFrame extends JDialog {
 		return filterPanel;
 	}
 
+	@SuppressWarnings("serial")
+	private class NonEditableTableModel extends DefaultTableModel {
+
+		public NonEditableTableModel(String[] cols) {
+			super(null, cols);
+		}
+	
+		public boolean isCellEditable(int row, int column) {
+	        return false;
+	    }
+	}
+	
 	private JScrollPane getScrollableProcessTable() {
 
 		if (scrollableProcessTable == null) {
-			tabModel = new DefaultTableModel(null, columnNames);
+			tabModel = new NonEditableTableModel(columnNames);
 			
 			table = new JTable();
 			table.setShowVerticalLines(true);
 			table.setFillsViewportHeight(true);
+			table.addMouseListener(new MouseAdapter() {
+				   public void mouseClicked(MouseEvent e) {
+					      if (e.getClickCount() == 2) {
+					         JTable target = (JTable)e.getSource();
+					         importAction(target.getSelectedRow());
+					         }
+					   }
+					});
 
 			scrollableProcessTable = new JScrollPane(table);
 			
@@ -353,10 +382,23 @@ public class ApromoreImportFrame extends JDialog {
 					tabModel.addRow(s);
 				}
 				table.setModel(tabModel);
+				TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tabModel);
+				sorter.setComparator(1, new Comparator<String>() {
+		             
+		            @Override
+		            public int compare(String o1, String o2)
+		            {
+		            	return Integer.parseInt(o1) - Integer.parseInt(o2);
+		            }
+		        });
+				
+				table.setRowSorter(sorter);
+				table.getColumnModel().getColumn(0).setPreferredWidth(200);
+				table.getColumnModel().getColumn(1).setPreferredWidth(50);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null,
-						Messages.getString("Apromore.GetProcesses.Error"),
-						Messages.getString("Apromore.Import.UI.Error.Title"),
+						Messages.getString("Apromore.UI.Error.GetProcesses"),
+						Messages.getString("Apromore.UI.Error.Title"),
 						JOptionPane.ERROR_MESSAGE);
 				dispose();
 			}
@@ -372,7 +414,7 @@ public class ApromoreImportFrame extends JDialog {
 
 	private JLabel getServerIDLabel() {
 		if (serverIDLabel == null) {
-			serverIDLabel = new JLabel(Messages.getString("Apromore.Import.UI.CurrentServer") + 
+			serverIDLabel = new JLabel(Messages.getString("Apromore.UI.CurrentServer") + 
 							ConfigurationManager.getConfiguration().getApromoreServerURL());
 		}
 		
@@ -398,10 +440,10 @@ public class ApromoreImportFrame extends JDialog {
 			importButton.setText(Messages.getTitle("Button.Import"));
 			importButton.setIcon(Messages.getImageIcon("Button.Import"));
 			importButton.setMnemonic(Messages.getMnemonic("Button.Import"));
-			importButton.setPreferredSize(new Dimension(100, 25));
+			importButton.setPreferredSize(new Dimension(130, 25));
 			importButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					importAction();
+					importAction(table.getSelectedRow());
 				}
 			});
 		}
@@ -416,7 +458,7 @@ public class ApromoreImportFrame extends JDialog {
 			cancelButton.setText(Messages.getTitle("Button.Cancel"));
 			cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
 			cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
-			cancelButton.setPreferredSize(new Dimension(100, 25));
+			cancelButton.setPreferredSize(new Dimension(130, 25));
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					cancelAction();
@@ -443,45 +485,40 @@ public class ApromoreImportFrame extends JDialog {
 																	columnNames); 
 			} 
 		catch (Exception e) { 
+				e.printStackTrace();
 				JOptionPane.showMessageDialog( null,
-							Messages.getString("Apromore.Import.UI.Error.IDFieldNotInteger"),
-							Messages.getString("Apromore.Import.UI.Error.IDFieldNotIntegerTitle"),
+							Messages.getString("Apromore.UI.Error.IDFieldNotInteger"),
+							Messages.getString("Apromore.UI.Error.Title"),
 							JOptionPane.ERROR_MESSAGE); 
 		} 
 		
 		tabModel.fireTableStructureChanged();
 	}
 	
-	private void importAction() {
+	private void importAction(int ind) {
 		try {
-			int ind = table.getSelectedRow();
-			
 			if (ind != -1) {
 				String processName = (String)table.getModel().getValueAt(ind, 0);
 				PNMLImport pLoader = new PNMLImport(mediator);
-				if (pLoader.run(aproAccess.importProcess(ind), processName + ".pnml")) {
-					LoggerManager.info(Constants.APROMORE_LOGGER, "Model description loaded from Apromore");
+				InputStream is = aproAccess.importProcess(ind);
+				if (pLoader.run(is, processName + ".pnml")) {
+					LoggerManager.info(Constants.APROMORE_LOGGER, "Model description successfully loaded from Apromore");
 					dispose();
-				} else {
-					JOptionPane
-							.showMessageDialog(null, Messages.getString(
-									"File.Error.FileOpen.Text" + ": AProMoRe Import"), Messages
-									.getString("File.Error.FileOpen.Title"),
-									JOptionPane.ERROR_MESSAGE);
-				}
+					return;
+				} 
 			} else {
 				JOptionPane
 						.showMessageDialog(
 								null,
-								Messages.getString("Apromore.Import.UI.Error.NoRowSelected"),
-								Messages.getString("Apromore.Import.UI.Error.NoRowSelectedTitle"),
+								Messages.getString("Apromore.UI.Error.NoRowSelected"),
+								Messages.getString("Apromore.UI.Error.Title"),
 								JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null,
-					Messages.getString("Apromore.Import.UI.Error.Import"),
-					Messages.getString("Apromore.Import.UI.Error.Title"),
+					Messages.getString("Apromore.UI.Error.Import"),
+					Messages.getString("Apromore.UI.Error.Title"),
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}

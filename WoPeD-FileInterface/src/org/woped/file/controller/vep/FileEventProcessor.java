@@ -46,6 +46,7 @@ import org.woped.file.ImageExport;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.gui.ApromoreExportFrame;
+import org.woped.file.gui.ApromoreExportFrame_ORIG;
 import org.woped.file.gui.ApromoreImportFrame;
 import org.woped.file.yawlinterface.YawlInterface;
 import org.woped.metrics.builder.MetricsBuilder;
@@ -496,7 +497,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 							+ editor.getFilePath() + ". " + ace.getMessage());
 			JOptionPane.showMessageDialog(getMediator().getUi().getComponent(),
 					Messages.getString("File.Error.Applet.Text"),
-					Messages.getString("File.Error.Appleat.Title"),
+					Messages.getString("File.Error.Applet.Title"),
 					JOptionPane.ERROR_MESSAGE);
 		}
 
@@ -816,12 +817,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				// TODO Generate Thread
 				try {
 					inputStream = new FileInputStream(file.getAbsolutePath());
-					loadSuccess = pnmlImport.run(inputStream, "");
+					loadSuccess = pnmlImport.run(inputStream, null);
 				} catch (FileNotFoundException e) {
 					String jarPath = file.getPath().replace('\\', '/');
 
 					inputStream = this.getClass().getResourceAsStream(jarPath);
-					loadSuccess = pnmlImport.run(inputStream, "");
+					loadSuccess = pnmlImport.run(inputStream, null);
 
 					/*
 					 * if (!loadSuccess) LoggerManager.error(Constants.FILE_LOGGER,
@@ -912,51 +913,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		}
 	}
 
-	public boolean exportApromore(EditorVC editor) {
-
-		boolean succeed = false;
-		getMediator().getUi().getComponent()
-				.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-		ApromoreExportFrame a;
-		a = new ApromoreExportFrame();
-		EditSessionType editSess = a.showDialog();
-
-		if (editor != null) {
-			IViewController[] iVC = getMediator().findViewController(
-					IStatusBar.TYPE);
-			IStatusBar iSB[] = new IStatusBar[iVC.length];
-			for (int i = 0; i < iSB.length; i++) {
-
-				iSB[i] = (IStatusBar) iVC[i];
-			}
-			PNMLExport pe = new PNMLExport(iSB);
-			pe.saveToFile(editor, "tmp.pnml");
-			LoggerManager.info(Constants.FILE_LOGGER,
-					"Petrinet saved in file: " + "tmp.pnml");
-
-			ApromoreAccess aao = new ApromoreAccess();
-
-			try {
-				ImportProcessResultType check = aao.export(null, null, null, null, succeed, new FileInputStream(new File("tmp.pnml")));		
-				succeed = true;
-				editor.setSaved(true);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		getMediator().getUi().getComponent()
-				.setCursor(Cursor.getDefaultCursor());
-		if (succeed == true)
-			JOptionPane
-					.showMessageDialog(
-							null,
-							Messages.getString("Apromore.Export.UI.Status.AproUpload"),
-							Messages.getString("Apromore.Export.UI.Status.AproUploadTitle"),
-							JOptionPane.INFORMATION_MESSAGE);
-
-		return succeed;
+	public void exportApromore(EditorVC editor) {
+		new ApromoreExportFrame(getMediator());
 
 	}
 }
