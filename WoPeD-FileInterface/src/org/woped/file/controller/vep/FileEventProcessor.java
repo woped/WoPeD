@@ -19,10 +19,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
-import org.apromore.manager.model_portal.EditSessionType;
-import org.apromore.model.ExportFormatResultType;
-import org.apromore.model.ImportProcessResultType;
-import org.woped.apromore.ApromoreAccess;
 import org.woped.bpel.BPEL;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
@@ -30,9 +26,9 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
-import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.FileFilterImpl;
@@ -46,9 +42,9 @@ import org.woped.file.ImageExport;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
 import org.woped.file.gui.ApromoreExportFrame;
-import org.woped.file.gui.ApromoreExportFrame_ORIG;
 import org.woped.file.gui.ApromoreImportFrame;
 import org.woped.file.yawlinterface.YawlInterface;
+import org.woped.gui.translations.Messages;
 import org.woped.metrics.builder.MetricsBuilder;
 import org.woped.metrics.helpers.LabeledFileFilter;
 import org.woped.qualanalysis.service.IQualanalysisService;
@@ -57,7 +53,6 @@ import org.woped.qualanalysis.woflan.TPNExport;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 import org.woped.understandability.NetColorScheme;
-import org.woped.gui.translations.Messages;
 
 public class FileEventProcessor extends AbstractEventProcessor {
 	public FileEventProcessor(int vepID, ApplicationMediator mediator) {
