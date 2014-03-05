@@ -41,12 +41,12 @@ import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
+import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
@@ -56,7 +56,6 @@ import org.woped.core.model.petrinet.SimulationModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.controller.bpel.Assign;
@@ -66,10 +65,12 @@ import org.woped.editor.controller.bpel.Receive;
 import org.woped.editor.controller.bpel.Reply;
 import org.woped.editor.controller.bpel.Wait;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.gui.translations.Messages;
 import org.woped.pnml.ArcType;
 import org.woped.pnml.DimensionType;
 import org.woped.pnml.GraphicsSimpleType;
 import org.woped.pnml.NetType;
+import org.woped.pnml.NetType.Page;
 import org.woped.pnml.NodeType;
 import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.OrganizationUnitType;
@@ -94,8 +95,6 @@ import org.woped.pnml.TWait;
 import org.woped.pnml.TextType;
 import org.woped.pnml.TextType.Phrase;
 import org.woped.pnml.TransitionType;
-import org.woped.pnml.NetType.Page;
-import org.woped.gui.translations.Messages;
 
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
@@ -206,8 +205,6 @@ public class PNMLImport {
 			}
 			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
-			// e.printStackTrace();
 			LoggerManager
 					.warn(Constants.FILE_LOGGER,
 							"   ... Could parse PNML file. Perhaps OLD PNML file-format. When saving, new pnml file-format will be created.");

@@ -43,7 +43,9 @@ import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IStatusBar;
+import org.woped.core.controller.IViewController;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -114,10 +116,14 @@ import org.woped.gui.translations.Messages;
  */
 public class PNMLExport
 {
-
-    public PNMLExport(IStatusBar[] statusBars)
+    public PNMLExport(AbstractApplicationMediator mediator)
     {
-        this.statusBars = statusBars;
+		IViewController[] iVC = mediator.findViewController(IStatusBar.TYPE);
+		statusBars = new IStatusBar[iVC.length];
+		for (int i = 0; i < iVC.length; i++) {
+
+			statusBars[i] = (IStatusBar) iVC[i];
+		}
     }
 
     private PnmlDocument       pnmlDoc    = null;

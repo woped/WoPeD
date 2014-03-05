@@ -222,8 +222,8 @@ public class ConfApromorePanel extends AbstractConfPanel
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
 
-            enabledPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.Metrics.Panel.MetricsUsage.Title")), BorderFactory
-                    .createEmptyBorder(5, 5, 10, 5)));
+            enabledPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getTitle("Configuration.Apromore.Enabled.Panel")), 
+            		BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
             c.weightx = 1;
             c.gridx = 1;
@@ -323,22 +323,22 @@ public class ConfApromorePanel extends AbstractConfPanel
             
             d.weightx = 1;
             d.gridx = 0;
-            d.gridy = 5;
+            d.gridy = 0;
             proxyPanel.add(getProxyNameLabel(), d);
             
             d.weightx = 1;
             d.gridx = 1;
-            d.gridy = 5;
+            d.gridy = 0;
             proxyPanel.add(getProxyNameText(), d);
             
             d.weightx = 1;
             d.gridx = 0;
-            d.gridy = 6;
+            d.gridy = 1;
             proxyPanel.add(getProxyPortLabel(), d);
             
             d.weightx = 1;
             d.gridx = 1;
-            d.gridy = 6;
+            d.gridy = 1;
             proxyPanel.add(getProxyPortText(), d);
             
         }
@@ -400,7 +400,7 @@ public class ConfApromorePanel extends AbstractConfPanel
         if (usernameText == null)
         {
             usernameText = new JTextField();
-            usernameText.setColumns(15);
+            usernameText.setColumns(20);
             usernameText.setEnabled(true);
             usernameText.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.UserName") + "</html>");
         }
@@ -412,7 +412,7 @@ public class ConfApromorePanel extends AbstractConfPanel
        if (passwordText == null)
        {
     	   passwordText = new JPasswordField();
-    	   passwordText.setColumns(15);
+    	   passwordText.setColumns(20);
     	   passwordText.setEnabled(true);
     	   passwordText.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.Password") + "</html>");
        }
@@ -435,7 +435,7 @@ public class ConfApromorePanel extends AbstractConfPanel
         if (proxyNameText == null)
         {
         	proxyNameText = new JTextField();
-        	proxyNameText.setColumns(15);
+        	proxyNameText.setColumns(25);
         	proxyNameText.setEnabled(true);
         	proxyNameText.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.ProxyName") + "</html>");
         }
@@ -536,7 +536,7 @@ public class ConfApromorePanel extends AbstractConfPanel
         if (managerPathText == null)
         {
         	managerPathText = new JTextField();
-        	managerPathText.setColumns(15);
+        	managerPathText.setColumns(25);
         	managerPathText.setEnabled(true);
         	managerPathText.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.ManagerPath") + "</html>");
         }

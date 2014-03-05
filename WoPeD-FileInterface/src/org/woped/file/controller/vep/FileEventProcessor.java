@@ -41,9 +41,9 @@ import org.woped.file.Constants;
 import org.woped.file.ImageExport;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
-import org.woped.file.gui.ApromoreExportFrame;
-import org.woped.file.gui.ApromoreImportFrame;
-import org.woped.file.yawlinterface.YawlInterface;
+import org.woped.file.apromore.ApromoreExportFrame;
+import org.woped.file.apromore.ApromoreImportFrame;
+import org.woped.file.yawl.YawlInterface;
 import org.woped.gui.translations.Messages;
 import org.woped.metrics.builder.MetricsBuilder;
 import org.woped.metrics.helpers.LabeledFileFilter;
@@ -409,14 +409,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 						}
 						/* Tool for PNML Export */
 						else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
-							IViewController[] iVC = getMediator()
-									.findViewController(IStatusBar.TYPE);
-							IStatusBar iSB[] = new IStatusBar[iVC.length];
-							for (int i = 0; i < iSB.length; i++) {
-
-								iSB[i] = (IStatusBar) iVC[i];
-							}
-							PNMLExport pe = new PNMLExport(iSB);
+							PNMLExport pe = new PNMLExport(getMediator());
 							pe.saveToFile(editor, editor.getFilePath());
 							LoggerManager.info(
 									Constants.FILE_LOGGER,
