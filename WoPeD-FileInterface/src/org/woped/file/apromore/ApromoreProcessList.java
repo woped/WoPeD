@@ -455,6 +455,9 @@ public class ApromoreProcessList {
 				ByteArrayInputStream is = aproAccess.importProcess(ind);
 				if (pLoader.run(is, processName + ".pnml")) {
 					LoggerManager.info(Constants.APROMORE_LOGGER, "Model description successfully loaded from Apromore");
+					
+					EditorVC editor = (EditorVC) mediator.getUi().getEditorFocus();
+					editor.startBeautify(0, 0, 0);		
 					frame.dispose();
 					return;
 				} 
