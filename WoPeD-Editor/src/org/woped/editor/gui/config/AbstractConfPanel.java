@@ -72,7 +72,6 @@ public abstract class AbstractConfPanel extends JPanel
     {
         this.name = name;
         this.setLayout(new BorderLayout());
-//        this.add(getNamePanel(), BorderLayout.NORTH);
     }
 
     /**

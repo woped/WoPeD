@@ -135,6 +135,7 @@ public class ConfigVC extends JDialog implements IViewController
         this.setTitle(Messages.getString("Configuration.Title"));
         this.setSize(CONF_DIM);
         this.setResizable(true);
+        this.setAlwaysOnTop(true);
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(getTabbedPane(), BorderLayout.CENTER);		
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import org.woped.apromore.ApromoreAccess;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.gui.lookAndFeel.WopedButton;
@@ -37,25 +38,35 @@ public class ApromoreImportFrame extends JDialog {
 		setModal(true);
 		setResizable(false);
 		initialize();
-		setVisible(true);
 	}
 
 	public AbstractApplicationMediator getMediator() {
 		return mediator;
 	}
 	
+	private String getURI() {
+		return ConfigurationManager.getConfiguration()
+		.getApromoreServerURL()
+		+ ":"
+		+ ConfigurationManager.getConfiguration()
+				.getApromoreServerPort()
+		+ "/"
+		+ ConfigurationManager.getConfiguration()
+				.getApromoreManagerPath();
+	}
+	
 	private void initialize() {
 
-		ApplicationMediator.getDisplayUI().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try {
-			aproAccess.connect();
+			aproAccess.connect(getURI());
 		} catch (Exception e) {
-			JOptionPane.showConfirmDialog(null,
-					Messages.getString("Apromore.Error.Connect"));
+			JOptionPane.showMessageDialog(null,
+					Messages.getString("Apromore.UI.Error.Connect"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		ApplicationMediator.getDisplayUI().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		setTitle(Messages.getString("Apromore.UI.Import.Title"));
 		setSize(new Dimension(660, 400));
 		int left = (int)ApplicationMediator.getDisplayUI().getLocation().getX();
@@ -78,6 +89,7 @@ public class ApromoreImportFrame extends JDialog {
 				   processList.clearSelection();
 			   	}
 				});
+		setVisible(true);
 	}
 		
 	private JPanel getButtonPanel() {

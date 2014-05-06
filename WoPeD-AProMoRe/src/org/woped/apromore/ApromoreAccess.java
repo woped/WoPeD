@@ -51,7 +51,7 @@ public class ApromoreAccess {
 							.getApromoreProxyPort()));
 	}
 
-	public void connect() throws SOAPException {
+	public void connect(String uri) throws SOAPException {
 		httpCms = new HttpComponentsMessageSender();
 		httpCms.setReadTimeout(120000);
 		httpCms.setConnectionTimeout(120000);
@@ -67,19 +67,17 @@ public class ApromoreAccess {
 		wsTemp.setMarshaller(serviceMarshaller);
 		wsTemp.setUnmarshaller(serviceMarshaller);
 		wsTemp.setMessageSender(httpCms);
-		wsTemp.setDefaultUri(ConfigurationManager.getConfiguration()
-				.getApromoreServerURL()
-				+ ":"
-				+ ConfigurationManager.getConfiguration()
-						.getApromoreServerPort()
-				+ "/"
-				+ ConfigurationManager.getConfiguration()
-						.getApromoreManagerPath());
+		wsTemp.setDefaultUri(uri);
 		managerService = new ManagerServiceClient(wsTemp);
+		processSummaries = managerService.readProcessSummaries(1, null);
+	}
+	
+	public void test(String server, String user) throws Exception {
+		connect(server);
+		managerService.readUserByUsername(user);
 	}
 
 	public String[][] getProcessList() throws Exception {
-		processSummaries = managerService.readProcessSummaries(1, null);
 		processList = processSummaries.getProcessSummary();
 		String[][] s = new String[processList.size()][6];
 
@@ -101,19 +99,14 @@ public class ApromoreAccess {
 		int j = processList.size() - 1;
 
 		if (!((name.equalsIgnoreCase("")) && (id == null)
-				&& (owner.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")))) {
+				&& (owner.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")) && domain.equalsIgnoreCase(""))) {
 			j = 0;
 			for (int i = 0; i < processList.size() - 1; i++) {
-				if ((processList.get(i).getName().toLowerCase()
-						.contains(name.toLowerCase()) || name
-						.equalsIgnoreCase(""))
-						&& (processList.get(i).getOriginalNativeType()
-								.toLowerCase().contains(type.toLowerCase()) || type
-								.equalsIgnoreCase(""))
-						&& (processList.get(i).getOwner().toLowerCase()
-								.contains(owner.toLowerCase()) || owner
-								.equalsIgnoreCase(""))
-						&& (id.equals("" + processList.get(i).getId()) || (id == null)))
+				if ((processList.get(i).getName().toLowerCase().contains(name.toLowerCase()) || name.equalsIgnoreCase(""))
+						&& (processList.get(i).getOriginalNativeType().toLowerCase().contains(type.toLowerCase()) || type.equalsIgnoreCase(""))
+						&& (processList.get(i).getOwner().toLowerCase().contains(owner.toLowerCase()) || owner.equalsIgnoreCase(""))
+						&& (processList.get(i).getOwner().toLowerCase().contains(domain.toLowerCase()) || domain.equalsIgnoreCase(""))
+						&& ((id == null) || id.equals("" + processList.get(i).getId())))
 					j++;
 			}
 		}
@@ -123,27 +116,20 @@ public class ApromoreAccess {
 		int k = 0;
 
 		for (int i = 0; i < processList.size() - 1; i++) {
-			if (!((name.equalsIgnoreCase("")) && (id == null)
-					&& (owner.equalsIgnoreCase("")) && (type
-						.equalsIgnoreCase("")))) {
+			if (!((name.equalsIgnoreCase("")) && (id == null) && (owner.equalsIgnoreCase("")) && 
+					(domain.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")))) {
 
-				if ((processList.get(i).getName().toLowerCase()
-						.contains(name.toLowerCase()) || name
-						.equalsIgnoreCase(""))
-						&& (processList.get(i).getOriginalNativeType()
-								.toLowerCase().contains(type.toLowerCase()) || type
-								.equalsIgnoreCase(""))
-						&& (processList.get(i).getOwner().toLowerCase()
-								.contains(owner.toLowerCase()) || owner
-								.equalsIgnoreCase(""))
-						&& (id.equals("" + processList.get(i).getId()) || (id == null))) {
+				if ((processList.get(i).getName().toLowerCase().contains(name.toLowerCase()) || name.equalsIgnoreCase(""))
+						&& (processList.get(i).getOriginalNativeType().toLowerCase().contains(type.toLowerCase()) || type.equalsIgnoreCase(""))
+						&& (processList.get(i).getOwner().toLowerCase().contains(owner.toLowerCase()) || owner.equalsIgnoreCase(""))
+						&& (processList.get(i).getDomain().toLowerCase().contains(domain.toLowerCase()) || domain.equalsIgnoreCase(""))
+						&& ((id == null) || id.equals("" + processList.get(i).getId()))) {
 					s[k][0] = "" + processList.get(i).getName();
 					s[k][1] = "" + processList.get(i).getId();
 					s[k][2] = "" + processList.get(i).getOwner();
 					s[k][3] = "" + processList.get(i).getOriginalNativeType();
 					s[k][4] = "" + processList.get(i).getDomain();
-					List<VersionSummaryType> vst = processList.get(i)
-							.getVersionSummaries();
+					List<VersionSummaryType> vst = processList.get(i).getVersionSummaries();
 					s[k][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
 					k++;
 				}
@@ -153,8 +139,7 @@ public class ApromoreAccess {
 				s[i][2] = "" + processList.get(i).getOwner();
 				s[i][3] = "" + processList.get(i).getOriginalNativeType();
 				s[i][4] = "" + processList.get(i).getDomain();
-				List<VersionSummaryType> vst = processList.get(i)
-						.getVersionSummaries();
+				List<VersionSummaryType> vst = processList.get(i).getVersionSummaries();
 				s[i][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
 			}
 		}

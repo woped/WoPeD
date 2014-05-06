@@ -22,10 +22,14 @@
  */
 package org.woped.editor.gui.config;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.net.UnknownHostException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -36,9 +40,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.xml.soap.SOAPException;
 
+import org.springframework.ws.WebServiceException;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
+import org.woped.apromore.ApromoreAccess;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -71,6 +79,7 @@ public class ConfApromorePanel extends AbstractConfPanel
     private JPanel			proxyPanel = null;
     private JTextField      managerPathText = null;
     private JLabel         	managerPathLabel    = null;
+    private WopedButton		testButton = null;
     /**
      * Constructor for ConfToolsPanel.
      */
@@ -116,26 +125,6 @@ public class ConfApromorePanel extends AbstractConfPanel
 		ConfigurationManager.getConfiguration().setApromoreUse(
 				useBox.isSelected());
 
-/*		String hostname = this.getURL();
-		String port = this.getPort();
-		String managerUrl = this.getmanagerUrl();
-		Writer writer = null;
-		try {
-			writer = new FileWriter(
-					"src/org/woped/starter/utilities/apromore-client.properties");
-			Properties prop1 = new Properties();
-			prop1.setProperty("hostname", hostname);
-			prop1.setProperty("port", port);
-			prop1.setProperty("manager-url", managerUrl);
-			prop1.store(writer, null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				writer.close();
-			} catch (Exception e) {
-			}
-		}*/
 		return true;
 	}
 
@@ -253,11 +242,13 @@ public class ConfApromorePanel extends AbstractConfPanel
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 0;
+            c.gridwidth = 2;
             settingsPanel.add(getServerURLText(), c);
-            
+ 
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 1;
+            c.gridwidth = 1;
             settingsPanel.add(getServerPortLabel(), c);
 
             c.weightx = 1;
@@ -266,42 +257,55 @@ public class ConfApromorePanel extends AbstractConfPanel
             settingsPanel.add(getServerPortText(), c);
             
             c.weightx = 1;
+            c.gridx = 2;
+            c.gridy = 1;
+            settingsPanel.add(getTestButton(), c);
+            
+            c.weightx = 1;
             c.gridx = 0;
             c.gridy = 2;
             settingsPanel.add(getManagerPathLabel(), c);
+            
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 2;
+            c.gridwidth = 2;
             settingsPanel.add(getManagerPathText(), c);
             
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 3;
+            c.gridwidth = 1;
             settingsPanel.add(getUsernameLabel(), c);
             
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 3;
+            c.gridwidth = 2;
             settingsPanel.add(getUsernameText(), c);
             
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 4;
+            c.gridwidth = 1;
             settingsPanel.add(getPasswordLabel(), c);
             
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 4;
+            c.gridwidth = 2;
             settingsPanel.add(getPasswordText(), c);
             
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 5;
+            c.gridwidth = 1;
             settingsPanel.add(getUseProxyLabel(), c);
             
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 5;
+            c.gridwidth = 2;
             settingsPanel.add(getUseProxyCheckbox(), c);           
         }
     	
@@ -541,5 +545,47 @@ public class ConfApromorePanel extends AbstractConfPanel
         	managerPathText.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.ManagerPath") + "</html>");
         }
         return managerPathText;
+    }
+    
+    private WopedButton getTestButton()
+    {
+        if (testButton == null)
+        {
+        	testButton = new WopedButton();
+        	testButton.setText(Messages.getTitle("Button.TestConnection"));
+        	testButton.setIcon(Messages.getImageIcon("Button.TestConnection"));
+        	testButton.setMnemonic(Messages.getMnemonic("Button.TestConnection"));
+        	testButton.setPreferredSize(new Dimension(160, 25));
+        	testButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					testApromoreConnection();
+				}
+			});
+
+        }
+        
+        return testButton;
+    }
+    
+    private void testApromoreConnection() {
+    	ApromoreAccess aproAccess = new ApromoreAccess();
+    	String server = getServerURLText().getText();
+    	String user = getUsernameText().getText();
+    	
+		try {
+			aproAccess.test(server, user);
+		}
+		catch (SOAPException e) {
+			System.out.println("SOAP ERROR");
+		}	
+		catch (UnknownHostException e) {
+			System.out.println("Unknown Host Error " + server);
+		}	
+		catch (WebServiceException e) {
+			System.out.println("Server Error " + server);
+		}	
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}	
     }
 }

@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.apromore.ApromoreAccess;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.gui.lookAndFeel.WopedButton;
@@ -56,19 +57,31 @@ public class ApromoreExportFrame extends JDialog {
 		initialize();
 		setVisible(true);
 	}
+	
+	private String getURI() {
+		return ConfigurationManager.getConfiguration()
+		.getApromoreServerURL()
+		+ ":"
+		+ ConfigurationManager.getConfiguration()
+				.getApromoreServerPort()
+		+ "/"
+		+ ConfigurationManager.getConfiguration()
+				.getApromoreManagerPath();
+	}
+	
 
 	private void initialize() {
 
-		ApplicationMediator.getDisplayUI().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try {
-			aproAccess.connect();
+			aproAccess.connect(getURI());
 		} catch (Exception e) {
-			JOptionPane.showConfirmDialog(null,
-					Messages.getString("Apromore.UI.Error.Connect"));
+			JOptionPane.showMessageDialog(null,
+					Messages.getString("Apromore.UI.Error.Connect"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		ApplicationMediator.getDisplayUI().setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		setTitle(Messages.getString("Apromore.UI.Export.Title"));
 		setSize(new Dimension(660, 500));
 		int left = (int) ApplicationMediator.getDisplayUI().getLocation().getX();
