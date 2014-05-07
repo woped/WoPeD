@@ -68,7 +68,7 @@ public class ApromoreImportFrame extends JDialog {
 		}
 
 		setTitle(Messages.getString("Apromore.UI.Import.Title"));
-		setSize(new Dimension(660, 400));
+		setSize(new Dimension(670, 400));
 		int left = (int)ApplicationMediator.getDisplayUI().getLocation().getX();
 		int top = (int)ApplicationMediator.getDisplayUI().getLocation().getY();
 		setLocation(left+400, top+180);
