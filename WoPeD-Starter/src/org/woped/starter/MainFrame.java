@@ -1,46 +1,32 @@
 package org.woped.starter;
 
-import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Frame;
-import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.Window;
-import java.awt.Desktop.Action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.util.Enumeration;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.Vector;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
-import javax.swing.AbstractAction;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JSeparator;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-import org.pushingpixels.flamingo.api.common.AbstractCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandMenuButton;
 import org.pushingpixels.flamingo.api.common.RichTooltip;
@@ -66,7 +52,6 @@ import org.woped.core.utilities.Platform;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
-import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.images.svg.*;
 import org.woped.gui.translations.Messages;
@@ -390,7 +375,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		osxFileMenu.addMenuItem(Messages.getTitle("Action.CloseEditor"), "Action.CloseEditor").addAction(mediator, ActionFactory.ACTIONID_CLOSE, AbstractViewEvent.CLOSE);
 		osxFileMenu.addSeparator();
 		osxFileMenu.addMenuItem(Messages.getTitle("Action.SaveEditor"), "Action.SaveEditor").addAction(mediator, ActionFactory.ACTIONID_SAVE, AbstractViewEvent.SAVE);
-		osxFileMenu.addMenuItem(Messages.getTitle("Action.EditorSaveAs")).addAction(mediator, ActionFactory.ACTIONID_SAVEAS, AbstractViewEvent.SAVEAS);
+		osxFileMenu.addMenuItem(Messages.getTitle("Action.EditorSaveAs"), "Action.EditorSaveAs").addAction(mediator, ActionFactory.ACTIONID_SAVEAS, AbstractViewEvent.SAVEAS);
 		osxFileMenu.addSeparator();
 		osxFileMenu.addMenuItem(Messages.getTitle("Action.PrintEditor"), "Action.PrintEditor").addAction(mediator, ActionFactory.ACTIONID_PRINT, AbstractViewEvent.PRINT);
 		osxFileMenu.addMenuItem(Messages.getTitle("Action.Export"), "Action.Export").addAction(mediator, ActionFactory.ACTIONID_EXPORT, AbstractViewEvent.EXPORT);
@@ -434,7 +419,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 	 */
 	private void getOSXAnalyzeMenu() {
-		AbstractApplicationMediator mediator = m_mediator;
+		//AbstractApplicationMediator mediator = m_mediator;
 		osxAnalyzeMenu = new OSXMenu(Messages.getTitle("Task.Analyze"));
 		//osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.tokengame.text"));
 		//Submenu
@@ -454,10 +439,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 				OSXMenuItem tokenGameStepByStepButton = tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.StepByStepButton.text"));
 				tokenGameStepByStepButton.addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STEP, AbstractViewEvent.TOKENGAME_STEP);
 
-				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.BackwardButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_BACKWARD, AbstractViewEvent.TOKENGAME_BACKWARD);
-				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.StopButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STOP, AbstractViewEvent.TOKENGAME_STOP);
+				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.BackwardButton.text"), "Tokengame.StepBand.BackwardButton").addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_BACKWARD, AbstractViewEvent.TOKENGAME_BACKWARD);
+				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.StopButton.text"), "Tokengame.StepBand.StopButton").addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STOP, AbstractViewEvent.TOKENGAME_STOP);
 
-				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.ForwardButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_FORWARD, AbstractViewEvent.TOKENGAME_FORWARD);
+				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.ForwardButton.text"), "Tokengame.StepBand.ForwardButton").addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_FORWARD, AbstractViewEvent.TOKENGAME_FORWARD);
 				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.JumpIntoSubProcessButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_JUMPINTO, AbstractViewEvent.TOKENGAME_JUMPINTO);
 				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.JumpOutOfSubprocessButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_LEAVE, AbstractViewEvent.TOKENGAME_LEAVE);
 			tokengameMenu.addSubMenu(tokengameStepModeMenu);
@@ -546,7 +531,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 	 */
 	private void getOSXCommunityMenu() {
-		AbstractApplicationMediator mediator = m_mediator;
+		//AbstractApplicationMediator mediator = m_mediator;
 		osxCommunityMenu = new OSXMenu(Messages.getTitle("Task.Community"));
 		osxCommunityMenu.addMenuItem(Messages.getString("Community.Facebook.text")).addAction(m_mediator, ActionFactory.ACTIONID_FACEBOOK, AbstractViewEvent.FACEBOOK);
 		osxCommunityMenu.addMenuItem(Messages.getString("Community.Googleplus.text")).addAction(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS);
@@ -565,7 +550,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 	 */
 	private void getOSXHelpMenu() {
-		AbstractApplicationMediator mediator = m_mediator;
+		//AbstractApplicationMediator mediator = m_mediator;
 		osxHelpMenu = new OSXMenu(Messages.getTitle("Menu.Help"));
 
 		osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Index"), "Menu.Help.Index").addAction(m_mediator,ActionFactory.ACTIONID_SHOWHELPINDEX, AbstractViewEvent.HELP);
@@ -621,12 +606,12 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		}
 		else{
 			String shortcut = "";
-
-			KeyStroke shortcutKS = button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).allKeys()[0];
-
-			int modifier = shortcutKS.getModifiers();
-
-			 	if ((modifier & (InputEvent.CTRL_DOWN_MASK|InputEvent.CTRL_MASK)) != 0) {
+			KeyStroke shortcutKS = null;
+			int modifier = 0;
+			try {
+				shortcutKS = button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).allKeys()[0];
+				modifier = shortcutKS.getModifiers();
+				if ((modifier & (InputEvent.CTRL_DOWN_MASK|InputEvent.CTRL_MASK)) != 0) {
 				 	shortcut += "Ctrl+";
 		        }
 		        if ((modifier & (InputEvent.META_DOWN_MASK|InputEvent.META_MASK)) != 0) {
@@ -649,12 +634,19 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		        }
 		        else{
 		        	shortcut += KeyEvent.getKeyText(shortcutKS.getKeyCode());
-
 		        	RichTooltip rt = new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip"));
-		        	rt.addFooterSection(shortcut);
+		        	//rt.addFooterSection(shortcut); //Alternative display of Shortcut
 		        	rt.setTitle(rt.getTitle() + " (" + shortcut + ")");
 		        	button.setActionRichTooltip(rt);
 		        }
+
+	        } catch(NullPointerException nex) {
+	        	RichTooltip rt = new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip"));
+	        	//rt.addFooterSection(shortcut); //Alternative display of Shortcut
+	        	button.setActionRichTooltip(rt);
+	        } catch(Exception ex) {
+	            System.out.print("exception");
+	        }
 			}
 		}
 
@@ -1197,7 +1189,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (saveAsButton == null) {
 			saveAsButton = new JCommandButton(Messages.getString("Save.saveAs.text"), new file_saveas());
 			saveAsButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SAVEAS, AbstractViewEvent.SAVEAS, saveAsButton));
-			setTooltip(saveAsButton, "Save.saveAs");
+			addShortcutToJCommandButton("Action.EditorSaveAs", saveAsButton, ActionFactory.ACTIONID_SAVEAS);
+			setTooltip(saveAsButton, "Save.saveAs",true);
 		}
 
 		return saveAsButton;
@@ -1800,8 +1793,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (backwardButton == null) {
 			backwardButton = new JCommandButton(Messages.getString("Tokengame.StepBand.BackwardButton.text"), new tokengame_play_seek_backward());
 			backwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_BACKWARD, AbstractViewEvent.TOKENGAME_BACKWARD, backwardButton));
-			setTooltip(backwardButton, "Tokengame.StepBand.BackwardButton");
-		}
+			addShortcutToJCommandButton("Tokengame.StepBand.BackwardButton", backwardButton, ActionFactory.ACTIONID_TOKENGAME_BACKWARD);
+			setTooltip(backwardButton, "Tokengame.StepBand.BackwardButton", true);
+			}
 
 		return backwardButton;
 	}
@@ -1822,7 +1816,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (forwardButton == null) {
 			forwardButton = new JCommandButton(Messages.getString("Tokengame.StepBand.ForwardButton.text"), new tokengame_play_seek_forward());
 			forwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_FORWARD, AbstractViewEvent.TOKENGAME_FORWARD, forwardButton));
-			setTooltip(forwardButton, "Tokengame.StepBand.ForwardButton");
+			addShortcutToJCommandButton("Tokengame.StepBand.ForwardButton", forwardButton, ActionFactory.ACTIONID_TOKENGAME_FORWARD);
+			setTooltip(forwardButton, "Tokengame.StepBand.ForwardButton", true);
 		}
 
 		return forwardButton;
@@ -1855,7 +1850,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (stopButton == null) {
 			stopButton = new JCommandButton(Messages.getString("Tokengame.StepBand.StopButton.text"), new tokengame_play_stop());
 			stopButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STOP, AbstractViewEvent.TOKENGAME_STOP, stopButton));
-			setTooltip(stopButton, "Tokengame.StepBand.StopButton");
+			addShortcutToJCommandButton("Tokengame.StepBand.StopButton", stopButton, ActionFactory.ACTIONID_TOKENGAME_STOP);
+			setTooltip(stopButton, "Tokengame.StepBand.StopButton", true);
 		}
 
 		return stopButton;
