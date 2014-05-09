@@ -6,11 +6,7 @@
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
-	<taskdef name="try" classname="ise.antelope.tasks.TryTask" classpath="lib/AntelopeTasks_3.4.2.jar" />
-	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="lib/jarbundler-2.2.0.jar"/>
-	<taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="lib/appbundler-1.0.jar"/>
-
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeMacInstaller, makeWindowsInstallerOnMac, makeLinuxInstaller" /> 
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstaller" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -196,29 +192,6 @@
 		</jar>
 	</target>
 
-	<target name="makeWindowsInstallerOnMac">
-		<try>
-			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-			<exec dir="dist/launch" executable="/bin/sh">
-				<arg line="buildexeOnMac" />
-			</exec> 
-						
-			<exec dir="dist" executable="/bin/sh">
-				<arg line="buildsetupOnMac" />
-			</exec>
-
-			<exec dir="dist/launch" executable="/bin/sh">
-				<arg line="buildsetupexeOnMac" />
-			</exec>
-
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
-
-		    <catch>
-			  	<echo>Not running on Mac</echo>
-		    </catch>
-		</try>
-	</target>
-		
 	<target name="makeWindowsInstaller">
 		<try>
 			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
@@ -226,7 +199,7 @@
 				<arg line="/c java -jar launch4j.jar buildexe.xml" />
 			</exec>
 			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar ../WoPeD-CommonLibs/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
+				<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
 			</exec>
 
 			<exec dir="dist/launch" executable="cmd">
@@ -241,113 +214,6 @@
 		</try>
 	</target>
 		
-	<target name="makeLinuxInstaller">
-		<try>
-			<exec dir="dist" executable="/bin/sh">
-				<arg line="buildLinuxSetup" />
-			</exec>
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-			<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
-				<tarfileset dir="dist" mode="755">
-					<include name="WoPeD-install-linux" />
-				</tarfileset>
-				<tarfileset dir="dist">
-					<include name="WoPeD-install-linux.jar" />
-				</tarfileset>
-			</tar>
-			
-		    <catch>
-			  	<echo>Not running on Linux</echo>
-		    </catch>
-		</try>
-	</target>
-		
-	<target name="makeMacInstaller">
-		<bundleapp outputdirectory="dist/mac"
-		        name="WoPeD"
-		        displayname="WoPeD"
-		        identifier="org.woped"
-		        shortversion="${WOPEDVERSION}${SNAPSHOT}"
-        		icon="dist/WoPeD.icns"
- 		        applicationCategory="public.app-category.developer-tools"
-		        mainclassname="org.woped.starter.RunWoPeD"
-       	 		copyright="WoPeD copyright 2014">
- 	            <option value="-Dapple.laf.useScreenMenuBar=true"/>
-		</bundleapp>
-
-		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/lib" />
-		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/doc" />
-		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/nets" />
-	
-		<copy todir="dist/mac/WoPeD.app/Contents/Java">
-			<fileset file="dist/WoPeD*.jar" />
-			<fileset file="dist/*.txt" />
-		</copy>
-
-		<copy todir="dist/mac/WoPeD.app/Contents/Java/doc">
-			<fileset file="dist/doc/**" />
-		</copy>
-		
-		<copy todir="dist/mac/WoPeD.app/Contents/Java/lib">
-			<fileset file="dist/lib/*.jar" />
-		</copy>
-		
-		<copy todir="dist/mac/WoPeD.app/Contents/Resources">
-			<file name="dist/WoPeD-document.icns" />
-		</copy>
-		
-		<copy todir="dist/mac/WoPeD.app/Contents/Java/nets">
-			<fileset file="dist/nets/*.*" />
-		</copy>
-
-		<exec dir="dist" executable="/bin/sh"> 
-			<arg line="./copy_missing_files.sh" />
-		</exec>
-
-		<exec dir="dist" executable="/bin/sh"> 
-			<arg line="./makepackage" />
-		</exec>
-	
-	</target>
-		
-	<target name="makeMacInstallerOld">		
-		<try>
-			<jarbundler dir="dist/mac"
-		    	        name="WoPeD"
-		        	    shortname="WoPeD"
-		            	mainclass="org.woped.starter.RunWoPeD"
-		            	icon="dist/WoPeD.icns"
-		            	jvmversion="1.7+"
-		            	version="${WOPEDVERSION}${SNAPSHOT}"
-		            	infostring="WoPeD copyright 2014"
-						workingdirectory="$APP_PACKAGE/Contents/Resources/Java"> 
-
-				<jarfileset dir="dist">
-			    	<include name="lib/*.jar" />
-	            	<include name="WoPeD-classes*.jar" />
-	            	<include name="doc/**" />
-	            	<include name="nets/**" />
-	            	<include name="*.txt" />
-				</jarfileset>
- 
-				<javaproperty name="apple.laf.useScreenMenuBar" value="true"/>
-		
-				<documenttype name="PNML document"
-		                    extensions="pnml" 
-		                    iconFile="dist/WoPeD-document.icns"
-		                    role="Editor"/>
-			</jarbundler>
-			
-			<exec dir="dist" executable="/bin/sh"> 
-				<arg line="./makepackage" />
-			</exec>
-		
-			<catch>
-				<echo>Not running on Mac</echo>
-		    </catch>
-		</try>
-	</target>
-
 	<target name="purge">
 		<delete dir="dist" />
 	</target>
