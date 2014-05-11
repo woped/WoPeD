@@ -22,12 +22,12 @@ import org.woped.gui.translations.Messages;
 
 public class ApromoreImportFrame extends JDialog {
 	private static final long serialVersionUID = 1L;
-	
-	private WopedButton 				importButton = null;
-	private WopedButton 				cancelButton = null;
-	private ApromoreAccess 				aproAccess = null;
-	private JPanel 						buttonPanel = null;
-	private ApromoreProcessList			processList = null;
+
+	private WopedButton importButton = null;
+	private WopedButton cancelButton = null;
+	private ApromoreAccess aproAccess = null;
+	private JPanel buttonPanel = null;
+	private ApromoreProcessList processList = null;
 	private AbstractApplicationMediator mediator = null;
 
 	public ApromoreImportFrame(AbstractApplicationMediator mediator) {
@@ -43,18 +43,17 @@ public class ApromoreImportFrame extends JDialog {
 	public AbstractApplicationMediator getMediator() {
 		return mediator;
 	}
-	
+
 	private String getURI() {
-		return ConfigurationManager.getConfiguration()
-		.getApromoreServerURL()
-		+ ":"
-		+ ConfigurationManager.getConfiguration()
-				.getApromoreServerPort()
-		+ "/"
-		+ ConfigurationManager.getConfiguration()
-				.getApromoreManagerPath();
+		return ConfigurationManager.getConfiguration().getApromoreServerURL()
+				+ ":"
+				+ ConfigurationManager.getConfiguration()
+						.getApromoreServerPort()
+				+ "/"
+				+ ConfigurationManager.getConfiguration()
+						.getApromoreManagerPath();
 	}
-	
+
 	private void initialize() {
 
 		try {
@@ -69,29 +68,32 @@ public class ApromoreImportFrame extends JDialog {
 
 		setTitle(Messages.getString("Apromore.UI.Import.Title"));
 		setSize(new Dimension(670, 400));
-		int left = (int)ApplicationMediator.getDisplayUI().getLocation().getX();
-		int top = (int)ApplicationMediator.getDisplayUI().getLocation().getY();
-		setLocation(left+400, top+180);
+		int left = (int) ApplicationMediator.getDisplayUI().getLocation()
+				.getX();
+		int top = (int) ApplicationMediator.getDisplayUI().getLocation().getY();
+		setLocation(left + 400, top + 180);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(processList.getFilterPanel(), BorderLayout.NORTH);
-		getContentPane().add(processList.getProcessListPanel(), BorderLayout.CENTER);
+		getContentPane().add(processList.getProcessListImportPanel(false),
+				BorderLayout.CENTER);
 		processList.getTable().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
-					processList.importAction();
+					processList.importAction(processList.getBeautifyCheckBox()
+							.isSelected());
 				}
 			}
 		});
 
 		getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
 		getContentPane().addMouseListener(new MouseAdapter() {
-			   public void mouseClicked(MouseEvent e) {
-				   processList.clearSelection();
-			   	}
-				});
+			public void mouseClicked(MouseEvent e) {
+				processList.clearSelection();
+			}
+		});
 		setVisible(true);
 	}
-		
+
 	private JPanel getButtonPanel() {
 
 		if (buttonPanel == null) {
@@ -99,10 +101,10 @@ public class ApromoreImportFrame extends JDialog {
 			buttonPanel.add(getImportButton());
 			buttonPanel.add(getCancelButton());
 		}
-		
+
 		return buttonPanel;
 	}
-	
+
 	private WopedButton getImportButton() {
 
 		if (importButton == null) {
@@ -113,7 +115,8 @@ public class ApromoreImportFrame extends JDialog {
 			importButton.setPreferredSize(new Dimension(130, 25));
 			importButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					processList.importAction();
+					processList.importAction(processList.getBeautifyCheckBox()
+							.isSelected());
 				}
 			});
 		}
@@ -135,7 +138,7 @@ public class ApromoreImportFrame extends JDialog {
 				}
 			});
 		}
-		
+
 		return cancelButton;
 	}
 }

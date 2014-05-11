@@ -29,7 +29,8 @@ import org.woped.core.config.ConfigurationManager;
 public class ApromoreAccess {
 
 	private static ApromoreAccess instance = null;
-	private static final SimpleDateFormat apromoreTimeFormat = new SimpleDateFormat("dd-MM-yyyy hh-mm-ss");
+	private static final SimpleDateFormat apromoreTimeFormat = new SimpleDateFormat(
+			"dd-MM-yyyy hh-mm-ss");
 
 	public static ApromoreAccess getInstance() {
 		return instance;
@@ -68,16 +69,16 @@ public class ApromoreAccess {
 		wsTemp.setUnmarshaller(serviceMarshaller);
 		wsTemp.setMessageSender(httpCms);
 		wsTemp.setDefaultUri(uri);
-		managerService = new ManagerServiceClient(wsTemp);
-		processSummaries = managerService.readProcessSummaries(1, null);
+		managerService = new ManagerServiceClient(wsTemp);		
 	}
-	
+
 	public void test(String server, String user) throws Exception {
 		connect(server);
 		managerService.readUserByUsername(user);
 	}
 
 	public String[][] getProcessList() throws Exception {
+		processSummaries = managerService.readProcessSummaries(1, null);
 		processList = processSummaries.getProcessSummary();
 		String[][] s = new String[processList.size()][6];
 
@@ -94,19 +95,30 @@ public class ApromoreAccess {
 		return s;
 	}
 
-	public String[][] filterProcessList(String name, String id, String owner, String type, String domain) {
+	public String[][] filterProcessList(String name, String id, String owner,
+			String type, String domain) {
 
 		int j = processList.size() - 1;
 
 		if (!((name.equalsIgnoreCase("")) && (id == null)
-				&& (owner.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")) && domain.equalsIgnoreCase(""))) {
+				&& (owner.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")) && domain
+					.equalsIgnoreCase(""))) {
 			j = 0;
 			for (int i = 0; i < processList.size() - 1; i++) {
-				if ((processList.get(i).getName().toLowerCase().contains(name.toLowerCase()) || name.equalsIgnoreCase(""))
-						&& (processList.get(i).getOriginalNativeType().toLowerCase().contains(type.toLowerCase()) || type.equalsIgnoreCase(""))
-						&& (processList.get(i).getOwner().toLowerCase().contains(owner.toLowerCase()) || owner.equalsIgnoreCase(""))
-						&& (processList.get(i).getOwner().toLowerCase().contains(domain.toLowerCase()) || domain.equalsIgnoreCase(""))
-						&& ((id == null) || id.equals("" + processList.get(i).getId())))
+				if ((processList.get(i).getName().toLowerCase()
+						.contains(name.toLowerCase()) || name
+						.equalsIgnoreCase(""))
+						&& (processList.get(i).getOriginalNativeType()
+								.toLowerCase().contains(type.toLowerCase()) || type
+								.equalsIgnoreCase(""))
+						&& (processList.get(i).getOwner().toLowerCase()
+								.contains(owner.toLowerCase()) || owner
+								.equalsIgnoreCase(""))
+						&& (processList.get(i).getOwner().toLowerCase()
+								.contains(domain.toLowerCase()) || domain
+								.equalsIgnoreCase(""))
+						&& ((id == null) || id.equals(""
+								+ processList.get(i).getId())))
 					j++;
 			}
 		}
@@ -116,20 +128,32 @@ public class ApromoreAccess {
 		int k = 0;
 
 		for (int i = 0; i < processList.size() - 1; i++) {
-			if (!((name.equalsIgnoreCase("")) && (id == null) && (owner.equalsIgnoreCase("")) && 
-					(domain.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")))) {
+			if (!((name.equalsIgnoreCase("")) && (id == null)
+					&& (owner.equalsIgnoreCase(""))
+					&& (domain.equalsIgnoreCase("")) && (type
+						.equalsIgnoreCase("")))) {
 
-				if ((processList.get(i).getName().toLowerCase().contains(name.toLowerCase()) || name.equalsIgnoreCase(""))
-						&& (processList.get(i).getOriginalNativeType().toLowerCase().contains(type.toLowerCase()) || type.equalsIgnoreCase(""))
-						&& (processList.get(i).getOwner().toLowerCase().contains(owner.toLowerCase()) || owner.equalsIgnoreCase(""))
-						&& (processList.get(i).getDomain().toLowerCase().contains(domain.toLowerCase()) || domain.equalsIgnoreCase(""))
-						&& ((id == null) || id.equals("" + processList.get(i).getId()))) {
+				if ((processList.get(i).getName().toLowerCase()
+						.contains(name.toLowerCase()) || name
+						.equalsIgnoreCase(""))
+						&& (processList.get(i).getOriginalNativeType()
+								.toLowerCase().contains(type.toLowerCase()) || type
+								.equalsIgnoreCase(""))
+						&& (processList.get(i).getOwner().toLowerCase()
+								.contains(owner.toLowerCase()) || owner
+								.equalsIgnoreCase(""))
+						&& (processList.get(i).getDomain().toLowerCase()
+								.contains(domain.toLowerCase()) || domain
+								.equalsIgnoreCase(""))
+						&& ((id == null) || id.equals(""
+								+ processList.get(i).getId()))) {
 					s[k][0] = "" + processList.get(i).getName();
 					s[k][1] = "" + processList.get(i).getId();
 					s[k][2] = "" + processList.get(i).getOwner();
 					s[k][3] = "" + processList.get(i).getOriginalNativeType();
 					s[k][4] = "" + processList.get(i).getDomain();
-					List<VersionSummaryType> vst = processList.get(i).getVersionSummaries();
+					List<VersionSummaryType> vst = processList.get(i)
+							.getVersionSummaries();
 					s[k][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
 					k++;
 				}
@@ -139,7 +163,8 @@ public class ApromoreAccess {
 				s[i][2] = "" + processList.get(i).getOwner();
 				s[i][3] = "" + processList.get(i).getOriginalNativeType();
 				s[i][4] = "" + processList.get(i).getDomain();
-				List<VersionSummaryType> vst = processList.get(i).getVersionSummaries();
+				List<VersionSummaryType> vst = processList.get(i)
+						.getVersionSummaries();
 				s[i][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
 			}
 		}
@@ -162,44 +187,49 @@ public class ApromoreAccess {
 		Scanner scanner = new Scanner(exf.getNative().getInputStream());
 		Scanner s = scanner.useDelimiter("\\A");
 		inputString = s.hasNext() ? s.next() : "";
-		inputString = inputString.replaceAll("pnml.apromore.org", "pnml.woped.org");
+		inputString = inputString.replaceAll("pnml.apromore.org",
+				"pnml.woped.org");
 		scanner.close();
 		return new ByteArrayInputStream(inputString.getBytes());
 	}
 
 	public void exportProcess(String userName, String processName,
-			ByteArrayOutputStream os, String domain, boolean makePublic) throws Exception {
+			ByteArrayOutputStream os, String domain, String version,
+			boolean makePublic) throws Exception {
 
 		Integer folderId = 1;
 		String nativeType = "PNML 1.3.2";
-		String version = "1.0";
 		String documentation = "";
 		final Set<RequestParameterType<?>> noCanoniserParameters = Collections
-				.emptySet();		
+				.emptySet();
 		ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
 
 		managerService.importProcess(userName, folderId, nativeType,
-					processName, version, is, domain, documentation,
-					getCurrentDate(), getCurrentDate(), makePublic,
-					noCanoniserParameters);
+				processName, version, is, domain, documentation,
+				getCurrentDate(), getCurrentDate(), makePublic,
+				noCanoniserParameters);
 	}
 
-	public void updateProcess(Integer id, String newVersionNumber, ByteArrayOutputStream os) throws Exception {
+	public void updateProcess(Integer id, String username, String nativeType,
+			String processName, String newVersionNumber,
+			ByteArrayOutputStream os) throws Exception {
 
-		ProcessSummaryType p = processList.get(id);
-		String username = p.getOwner();
-		String nativeType = p.getOriginalNativeType();
-		String domain = p.getDomain();
-		String processName = p.getName();
+		ProcessSummaryType p = null;
+		for (ProcessSummaryType process : processList) {
+			if (process.getId() == id) {
+				p = process;
+			}
+		}
+
 		String originalBranchName = "MAIN";
 		String newBranchName = "MAIN";
-		String originalVersionNumber = p.getLastVersion();		
+		String originalVersionNumber = p.getLastVersion();
 		ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
+		String domain = p.getDomain();
 
-
-		managerService.updateProcess(0, username, nativeType, id, domain,
-					processName, originalBranchName, newBranchName,
-					newVersionNumber, originalVersionNumber, "", is);
+		managerService.updateProcess(Integer.MAX_VALUE, username, nativeType,
+				id, domain, processName, originalBranchName, newBranchName,
+				newVersionNumber, originalVersionNumber, "", is);
 	}
 
 	private String getCurrentDate() {

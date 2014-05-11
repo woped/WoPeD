@@ -7,9 +7,12 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,65 +39,102 @@ import org.woped.gui.translations.Messages;
 
 public class ApromoreProcessList {
 
-	private JScrollPane 				scrollableProcessTable = null;
-	private JPanel 						filterPanel = null;
-	private JLabel 						serverIDLabel = null;
-	private JLabel 						nameFilterLabel = null;
-	private JTextField 					nameFilterText = null;
-	private JLabel 						idFilterLabel = null;
-	private JTextField 					idFilterText = null;
-	private JTextField 					ownerFilterText = null;
-	private JLabel 						ownerFilterLabel = null;
-	private JTextField 					typeFilterText = null;
-	private JLabel 						typeFilterLabel = null;
-	private JTextField 					domainFilterText = null;
-	private JLabel 						domainFilterLabel = null;
-	private JPanel 						processListPanel = null;
-	private String[ ][ ] 				rowData = null;
-	private final String[ ] 			columnNames = {
-											Messages.getString("Apromore.UI.ProcessName"),
-											Messages.getString("Apromore.UI.ID"),
-											Messages.getString("Apromore.UI.Owner"),
-											Messages.getString("Apromore.UI.Type"),
-											Messages.getString("Apromore.UI.Domain"),
-											Messages.getString("Apromore.UI.Version") };
-	private DefaultTableModel 			tabModel = null;
-	private JTable 						table = null;
-	private ApromoreAccess				aproAccess = null;
-	private JDialog						frame = null;
+	private JScrollPane scrollableProcessTable = null;
+	private JPanel filterPanel = null;
+	private JLabel serverIDLabel = null;
+	private JLabel nameFilterLabel = null;
+	private JTextField nameFilterText = null;
+	private JLabel idFilterLabel = null;
+	private JTextField idFilterText = null;
+	private JTextField ownerFilterText = null;
+	private JLabel ownerFilterLabel = null;
+	private JTextField typeFilterText = null;
+	private JLabel typeFilterLabel = null;
+	private JTextField domainFilterText = null;
+	private JLabel domainFilterLabel = null;
+	private JPanel processListExportPanel = null;
+	private JPanel processListImportPanel = null;
+	private JCheckBox beautifyCheckBox = null;
+	private String[][] rowData = null;
+	private final String[] columnNames = {
+			Messages.getString("Apromore.UI.ProcessName"),
+			Messages.getString("Apromore.UI.ID"),
+			Messages.getString("Apromore.UI.Owner"),
+			Messages.getString("Apromore.UI.Type"),
+			Messages.getString("Apromore.UI.Domain"),
+			Messages.getString("Apromore.UI.Version") };
+	private DefaultTableModel tabModel = null;
+	private JTable table = null;
+	private ApromoreAccess aproAccess = null;
+	private JDialog frame = null;
 	private AbstractApplicationMediator mediator;
 
-	ApromoreProcessList(ApromoreAccess aproAccess, JDialog frame, AbstractApplicationMediator mediator) {
+	ApromoreProcessList(ApromoreAccess aproAccess, JDialog frame,
+			AbstractApplicationMediator mediator) {
 		this.aproAccess = aproAccess;
 		this.frame = frame;
 		this.mediator = mediator;
 	}
 
-	public JPanel getProcessListPanel() {
+	public JPanel getProcessListImportPanel(boolean showPnmlOnly) {
 
-		if (processListPanel == null) {
-			processListPanel = new JPanel(new GridBagLayout());
+		if (processListImportPanel == null) {
+			processListImportPanel = new JPanel(new GridBagLayout());
 
-			processListPanel.setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createTitledBorder(Messages
-							.getString("Apromore.UI.ProcessList")),
-					BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+			processListImportPanel.setBorder(BorderFactory
+					.createCompoundBorder(BorderFactory
+							.createTitledBorder(Messages
+									.getString("Apromore.UI.ProcessList")),
+							BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
 			GridBagConstraints c = new GridBagConstraints();
 			c.fill = GridBagConstraints.BOTH;
 			c.insets = new Insets(5, 5, 5, 5);
 			c.gridx = 0;
 			c.gridy = 0;
-			processListPanel.add(getServerIDLabel(), c);
+			processListImportPanel.add(getServerIDLabel(), c);
+			c.fill = GridBagConstraints.BOTH;
+			c.insets = new Insets(5, 5, 5, 5);
+			c.gridx = 0;
+			c.gridy = 1;
+			processListImportPanel.add(getBeautifyCheckBox(), c);
+			c.insets = new Insets(0, 5, 0, 0);
+			c.gridx = 0;
+			c.gridy = 2;
+			processListImportPanel.add(getScrollableProcessTable(showPnmlOnly),
+					c);
+		}
+
+		return processListImportPanel;
+	}
+
+	public JPanel getProcessListExportPanel(boolean showPnmlOnly) {
+
+		if (processListExportPanel == null) {
+			processListExportPanel = new JPanel(new GridBagLayout());
+
+			processListExportPanel.setBorder(BorderFactory
+					.createCompoundBorder(BorderFactory
+							.createTitledBorder(Messages
+									.getString("Apromore.UI.ProcessList")),
+							BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+
+			GridBagConstraints c = new GridBagConstraints();
+			c.fill = GridBagConstraints.BOTH;
+			c.insets = new Insets(5, 5, 5, 5);
+			c.gridx = 0;
+			c.gridy = 0;
+			processListExportPanel.add(getServerIDLabel(), c);
 			c.insets = new Insets(0, 5, 0, 0);
 			c.gridx = 0;
 			c.gridy = 1;
-			processListPanel.add(getScrollableProcessTable(), c);
+			processListExportPanel.add(getScrollableProcessTable(showPnmlOnly),
+					c);
 		}
 
-		return processListPanel;
+		return processListExportPanel;
 	}
-	
+
 	public JPanel getFilterPanel() {
 
 		if (filterPanel == null) {
@@ -163,7 +203,7 @@ public class ApromoreProcessList {
 
 		return filterPanel;
 	}
-	
+
 	public JTable getTable() {
 		return table;
 	}
@@ -352,7 +392,7 @@ public class ApromoreProcessList {
 		}
 	}
 
-	public JScrollPane getScrollableProcessTable() {
+	public JScrollPane getScrollableProcessTable(boolean showPnmlOnly) {
 
 		if (scrollableProcessTable == null) {
 			tabModel = new NonEditableTableModel(columnNames);
@@ -367,7 +407,13 @@ public class ApromoreProcessList {
 			try {
 				rowData = aproAccess.getProcessList();
 				for (String[] s : rowData) {
-					tabModel.addRow(s);
+					if (showPnmlOnly) {
+						if (s[3].toLowerCase().contains("pnml")) {
+							tabModel.addRow(s);
+						}
+					} else {
+						tabModel.addRow(s);
+					}
 				}
 				table.setModel(tabModel);
 				TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
@@ -402,7 +448,7 @@ public class ApromoreProcessList {
 
 		return scrollableProcessTable;
 	}
-	
+
 	private JLabel getServerIDLabel() {
 		if (serverIDLabel == null) {
 			serverIDLabel = new JLabel(
@@ -413,61 +459,70 @@ public class ApromoreProcessList {
 
 		return serverIDLabel;
 	}
-	
+
+	public JCheckBox getBeautifyCheckBox() {
+		if (beautifyCheckBox == null) {
+			beautifyCheckBox = new JCheckBox(
+					Messages.getString("Apromore.UI.Beautify"));
+		}
+		return beautifyCheckBox;
+	}
+
 	public void clearSelection() {
 		table.clearSelection();
 	}
-	
+
 	private void filterAction() {
-		try { 
-			if (getIDFilterText().getText().equals("")) 
-				tabModel.setDataVector(aproAccess.filterProcessList(getNameFilterText().getText(), 
-																	null,
-																	getOwnerFilterText().getText(), 
-																	getTypeFilterText().getText(), 
-																	getDomainFilterText().getText()),
-																	columnNames); 
+		try {
+			if (getIDFilterText().getText().equals(""))
+				tabModel.setDataVector(aproAccess.filterProcessList(
+						getNameFilterText().getText(), null,
+						getOwnerFilterText().getText(), getTypeFilterText()
+								.getText(), getDomainFilterText().getText()),
+						columnNames);
 			else
-				tabModel.setDataVector(aproAccess.filterProcessList(getNameFilterText().getText(), 
-																	getIDFilterText().getText(),
-																	getOwnerFilterText().getText(), 
-																	getTypeFilterText().getText(), 
-																	getDomainFilterText().getText()),
-																	columnNames); 
-			} 
-		catch (Exception e) { 
-				e.printStackTrace();
-				JOptionPane.showMessageDialog( null,
-							Messages.getString("Apromore.UI.Error.IDFieldNotInteger"),
-							Messages.getString("Apromore.UI.Error.Title"),
-							JOptionPane.ERROR_MESSAGE); 
-		} 
-		
+				tabModel.setDataVector(aproAccess.filterProcessList(
+						getNameFilterText().getText(), getIDFilterText()
+								.getText(), getOwnerFilterText().getText(),
+						getTypeFilterText().getText(), getDomainFilterText()
+								.getText()), columnNames);
+		} catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,
+					Messages.getString("Apromore.UI.Error.IDFieldNotInteger"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+		}
+
 		tabModel.fireTableStructureChanged();
 	}
-	
-	public void importAction() {
+
+	public void importAction(boolean beautify) {
 		int ind = table.getSelectedRow();
 		try {
 			if (ind != -1) {
-				String processName = (String)table.getModel().getValueAt(ind, 0);
+				String processName = (String) table.getModel().getValueAt(ind,
+						0);
 				PNMLImport pLoader = new PNMLImport(mediator);
 				ByteArrayInputStream is = aproAccess.importProcess(ind);
 				if (pLoader.run(is, processName + ".pnml")) {
-					LoggerManager.info(Constants.APROMORE_LOGGER, "Model description successfully loaded from Apromore");
-					
-					EditorVC editor = (EditorVC) mediator.getUi().getEditorFocus();
-					editor.startBeautify(0, 0, 0);		
+					LoggerManager
+							.info(Constants.APROMORE_LOGGER,
+									"Model description successfully loaded from Apromore");
+
+					EditorVC editor = (EditorVC) mediator.getUi()
+							.getEditorFocus();
+					if (beautify) {
+						editor.startBeautify(0, 0, 0);
+					}
 					frame.dispose();
 					return;
-				} 
+				}
 			} else {
-				JOptionPane
-						.showMessageDialog(
-								null,
-								Messages.getString("Apromore.UI.Error.NoRowSelected"),
-								Messages.getString("Apromore.UI.Error.Title"),
-								JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,
+						Messages.getString("Apromore.UI.Error.NoRowSelected"),
+						Messages.getString("Apromore.UI.Error.Title"),
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -478,13 +533,14 @@ public class ApromoreProcessList {
 		}
 	}
 
-	public void exportAction(String owner, String name) {
+	public void exportAction(String owner, String name, String version) {
 		try {
 
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			PNMLExport pExport = new PNMLExport(mediator);
-			pExport.saveToStream((EditorVC) mediator.getUi().getEditorFocus(), os);
-			aproAccess.exportProcess(owner, name, os, "", true);
+			pExport.saveToStream((EditorVC) mediator.getUi().getEditorFocus(),
+					os);
+			aproAccess.exportProcess(owner, name, os, "", version, true);
 
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -495,14 +551,16 @@ public class ApromoreProcessList {
 		}
 	}
 
-	public void updateAction() {
-		int ind = table.getSelectedRow();
+	public void updateAction(Integer id, String username, String nativeType,
+			String processName, String newVersionNumber) {
 		try {
-			String versionNo = "";
+
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			PNMLExport pExport = new PNMLExport(mediator);
-			pExport.saveToStream((EditorVC) mediator.getUi().getEditorFocus(), os);
-			aproAccess.updateProcess(ind, versionNo, os);
+			pExport.saveToStream((EditorVC) mediator.getUi().getEditorFocus(),
+					os);
+			aproAccess.updateProcess(id, username, nativeType, processName,
+					newVersionNumber, os);
 
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -515,5 +573,51 @@ public class ApromoreProcessList {
 
 	public void cancelAction() {
 		frame.dispose();
+	}
+
+	public void updateTable(JTable table, Integer rowid, Integer processId) {
+		try {
+			tabModel = (DefaultTableModel) table.getModel();
+			tabModel.removeRow(rowid);
+			rowData = aproAccess.getProcessList();
+
+			for (String[] row : rowData) {
+				if (row[1].equals(processId.toString())) {
+					tabModel.addRow(row);
+				}
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void addNewRow(JTable table) {
+		try {
+			tabModel = (DefaultTableModel) table.getModel();
+			rowData = aproAccess.getProcessList();
+			String[] row = rowData[rowData.length - 1];
+			tabModel.addRow(row);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<String> getProcessNames() {
+		ArrayList<String> names = new ArrayList<String>();
+		try {
+			rowData = aproAccess.getProcessList();
+			for (String[] row : rowData) {
+				names.add(row[0]);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return names;
+
 	}
 }
