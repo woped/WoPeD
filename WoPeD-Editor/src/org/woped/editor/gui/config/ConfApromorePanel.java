@@ -29,7 +29,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.net.UnknownHostException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -40,9 +39,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.xml.soap.SOAPException;
 
-import org.springframework.ws.WebServiceException;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
@@ -569,23 +566,6 @@ public class ConfApromorePanel extends AbstractConfPanel
     
     private void testApromoreConnection() {
     	ApromoreAccess aproAccess = new ApromoreAccess();
-    	String server = getServerURLText().getText();
-    	String user = getUsernameText().getText();
-    	
-		try {
-			aproAccess.test(server, user);
-		}
-		catch (SOAPException e) {
-			System.out.println("SOAP ERROR");
-		}	
-		catch (UnknownHostException e) {
-			System.out.println("Unknown Host Error " + server);
-		}	
-		catch (WebServiceException e) {
-			System.out.println("Server Error " + server);
-		}	
-		catch (Exception e) {
-			System.out.println(e.getMessage());
-		}	
+    	aproAccess.test(getServerURLText().getText(), getUsernameText().getText());
     }
 }

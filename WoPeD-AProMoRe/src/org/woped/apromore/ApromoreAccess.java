@@ -3,6 +3,7 @@ package org.woped.apromore;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.net.ProxySelector;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
@@ -21,6 +22,7 @@ import org.apromore.model.ProcessSummaryType;
 import org.apromore.model.VersionSummaryType;
 import org.apromore.plugin.property.RequestParameterType;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.ws.WebServiceException;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
@@ -72,9 +74,21 @@ public class ApromoreAccess {
 		managerService = new ManagerServiceClient(wsTemp);		
 	}
 
-	public void test(String server, String user) throws Exception {
-		connect(server);
-		managerService.readUserByUsername(user);
+	public void test(String server, String user) {
+		
+		try {
+			connect(server);
+			managerService.readUserByUsername(user);
+		}
+		catch (SOAPException e) {
+			System.out.println("SOAP ERROR");
+		}	
+		catch (WebServiceException e) {
+			System.out.println("Server Error " + server);
+		}	
+		catch (Exception e) {
+			System.out.println("Unknown Exception");
+		}	
 	}
 
 	public String[][] getProcessList() throws Exception {

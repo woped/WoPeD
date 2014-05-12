@@ -97,12 +97,11 @@ public class ApromoreProcessList {
 			c.insets = new Insets(5, 5, 5, 5);
 			c.gridx = 0;
 			c.gridy = 1;
-			processListImportPanel.add(getBeautifyCheckBox(), c);
+/*			processListImportPanel.add(getBeautifyCheckBox(), c);
 			c.insets = new Insets(0, 5, 0, 0);
 			c.gridx = 0;
-			c.gridy = 2;
-			processListImportPanel.add(getScrollableProcessTable(showPnmlOnly),
-					c);
+			c.gridy = 2;*/
+			processListImportPanel.add(getScrollableProcessTable(showPnmlOnly), c);
 		}
 
 		return processListImportPanel;
