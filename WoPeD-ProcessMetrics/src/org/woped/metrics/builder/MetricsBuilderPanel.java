@@ -731,9 +731,9 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 										jButtonAddRow = new WopedButton();
 										jPanelValueSouth.add(jButtonAddRow);
 										jButtonAddRow.setName(ADD_TAB2_BTN);
-										jButtonAddRow.setIcon(Messages.getImageIcon("Metrics.Builder.Add"));
-										jButtonAddRow.setText(Messages.getString("Metrics.Builder.Add.Text"));
-										jButtonAddRow.setToolTipText(Messages.getString("Metrics.Builder.Add.Tooltip"));
+										jButtonAddRow.setIcon(Messages.getImageIcon("Metrics.Builder.Button.New"));
+										jButtonAddRow.setText(Messages.getString("Metrics.Builder.Button.New.Text"));
+										jButtonAddRow.setToolTipText(Messages.getString("Metrics.Builder.Button.New.Tooltip"));
 										jButtonAddRow.setPreferredSize(new java.awt.Dimension(43, 67));
 										
 										jButtonAddRow.addActionListener(new MetricsBuilderListener());
@@ -743,9 +743,9 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 										deleteRowButton = new WopedButton();
 										jPanelValueSouth.add(deleteRowButton);
 										deleteRowButton.setName(DELETE_TAB2_BTN);
-										deleteRowButton.setIcon(Messages.getImageIcon("Metrics.Builder.Delete"));
-										deleteRowButton.setText(Messages.getString("Metrics.Builder.Exit.Delete"));
-										deleteRowButton.setToolTipText(Messages.getString("Metrics.Builder.Delete.Tooltip"));
+										deleteRowButton.setIcon(Messages.getImageIcon("Metrics.Builder.delete"));
+										deleteRowButton.setText(Messages.getString("Metrics.Builder.delete.Text"));
+										deleteRowButton.setToolTipText(Messages.getString("Metrics-Builder.delete.Tooltip"));
 										deleteRowButton.setPreferredSize(new java.awt.Dimension(43, 67));
 										
 										deleteRowButton.addActionListener(new MetricsCloseListener());

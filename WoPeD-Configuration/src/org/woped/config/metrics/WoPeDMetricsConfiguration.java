@@ -70,8 +70,8 @@ public class WoPeDMetricsConfiguration extends WoPeDConfiguration implements
 	private final String CONFIG_FILE 			= "WoPeDmetrics.xml";
 	private final String CONFIG_CUSTOM_DIR 		= "/usermetrics";
 	private final String CONFIG_BUILTIN_FILE	= "/org/woped/config/metrics/WoPeDmetrics.xml";
-	private final String ALL_METRICS_GROUP_NAME = "ALL_METRICS";
-	private final String ALL_CUSTOM_GROUP_NAME	= "ALL_CUSTOM";
+	private final String ALL_METRICS_GROUP_NAME = rb.getString("Metrics.AlgorthimGroup.Name.AllMetrics");
+	private final String ALL_CUSTOM_GROUP_NAME	= rb.getString("Metrics.AlgorthimGroup.Name.AllCustom");
 	
 	private boolean doubleIDUsage = false;
 
