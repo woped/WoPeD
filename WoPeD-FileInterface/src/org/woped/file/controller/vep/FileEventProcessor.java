@@ -531,13 +531,17 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		
 		
 		//Set fileFilter to pnml files here
-		fileDialog.setFilenameFilter(new  FilenameFilter (){
+			Vector<String> extensions = new Vector<String>();
+			extensions.add("pnml");
+			extensions.add("xml");
+			FileFilterImpl PNMLFilter = new FileFilterImpl(
+					FileFilterImpl.PNMLFilter,
+					"Petri Net Markup Language (1.3.2) (*.pnml)", extensions);
+		fileDialog.setFilenameFilter(new FilenameFilter (){
             public boolean accept(File dir, String name) {
                 return name.endsWith(".pnml");
             }   
         });
-		Vector<String> extensions = new Vector<String>();
-		extensions.add("pnml");
 		
 		if (fileDialog.getFile()  != null) {
 			String savePath = fileDialog.getDirectory();
@@ -556,6 +560,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 									+ ConfigurationManager
 											.getConfiguration()
 											.getCurrentWorkingdir());
+					editor.setDefaultFileType(PNMLFilter.getFilterType());
 					succeed = save(editor);
 				} else {
 					LoggerManager
@@ -739,7 +744,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
 				}
 				//Set fileFilter to pnml files here
-				fileDialog.setFilenameFilter(new  FilenameFilter (){
+				fileDialog.setFilenameFilter(new FilenameFilter (){
 	                public boolean accept(File dir, String name) {
 	                    return name.endsWith(".pnml");
 	                }   
