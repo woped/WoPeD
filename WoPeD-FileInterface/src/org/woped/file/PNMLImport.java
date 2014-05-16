@@ -204,9 +204,13 @@ public class PNMLImport {
 				}
 			}
 			return true;
-		} catch (Exception e) {
-			LoggerManager
-					.warn(Constants.FILE_LOGGER,
+		} 
+		catch (FileNotFoundException e) {
+			LoggerManager.warn(Constants.FILE_LOGGER, "PNML file not found");
+			return false;	
+		}
+		catch (Exception e) {
+			LoggerManager.warn(Constants.FILE_LOGGER,
 							"   ... Could parse PNML file. Perhaps OLD PNML file-format. When saving, new pnml file-format will be created.");
 
 			JOptionPane.showMessageDialog(null,
