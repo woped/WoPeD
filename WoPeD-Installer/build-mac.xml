@@ -292,13 +292,13 @@
 			<fileset file="dist/lib/*.jar" />
 		</copy>
 		
-		<copy todir="dist/mac/WoPeD.app/Contents/Resources">
-			<file name="dist/WoPeD-document.icns" />
-		</copy>
-		
 		<copy todir="dist/mac/WoPeD.app/Contents/Java/nets">
 			<fileset file="dist/nets/*.*" />
 		</copy>
+
+		<exec dir="dist" executable="/bin/sh"> 
+			<arg line="./copy_docicon.sh" />
+		</exec>
 
 		<exec dir="dist" executable="/bin/sh"> 
 			<arg line="./copy_missing_files.sh" />

@@ -452,7 +452,7 @@ public class ApromoreProcessList {
 		if (serverIDLabel == null) {
 			serverIDLabel = new JLabel(
 					Messages.getString("Apromore.UI.CurrentServer")
-							+ ConfigurationManager.getConfiguration()
+							+ " " + ConfigurationManager.getConfiguration()
 									.getApromoreServerURL());
 		}
 
@@ -524,7 +524,6 @@ public class ApromoreProcessList {
 						JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null,
 					Messages.getString("Apromore.UI.Error.Import"),
 					Messages.getString("Apromore.UI.Error.Title"),
@@ -542,7 +541,6 @@ public class ApromoreProcessList {
 			aproAccess.exportProcess(owner, name, os, "", version, true);
 
 		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null,
 					Messages.getString("Apromore.UI.Error.Export"),
 					Messages.getString("Apromore.UI.Error.Title"),

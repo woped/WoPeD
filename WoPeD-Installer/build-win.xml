@@ -1,12 +1,12 @@
 <project default="makedistribution" name="INSTALLER">
-	   
+
 	<tstamp />
 	<property file="../WoPeD-CommonLibs/build.properties" />
 
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstaller" /> 
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstaller" />
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -37,7 +37,7 @@
 	</target>
 
 	<target name="setversion">
-		<copy file="build-tools/log4j.xml" tofile="../WoPeD-Starter/bin/org/woped/starter/utilities/log4j.xml" overwrite="true"/> 
+		<copy file="build-tools/log4j.xml" tofile="../WoPeD-Starter/bin/org/woped/starter/utilities/log4j.xml" overwrite="true"/>
 		<copy file="../WoPeD-GUI/src/org/woped/gui/translations/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
 		<copy file="../WoPeD-GUI/src/org/woped/gui/translations/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
 		<copy file="dist/Messages.properties" tofile="../WoPeD-GUI/bin/org/woped/gui/translations/Messages.properties" />
@@ -75,7 +75,7 @@
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/manager-ws-model.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/metricsBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/plugin-api-1.1.jar" />
-		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/pnmlBeans.jar" />	
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/pnmlBeans.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ruddi-1.0.0.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-simple-1.7.6.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-api-1.7.6.jar" />
@@ -139,7 +139,7 @@
 			<fileset file="build-tools/setup/Windows/buildsetup.xml" />
 			<fileset file="build-tools/setup/Windows/buildsetupexeOnMac" />
 		</copy>
-		
+
 		<copy todir="dist">
 			<fileset dir="build-tools/launcher/Linux" />
 			<fileset dir="build-tools/launcher/MacOS/" />
@@ -159,14 +159,14 @@
 			<fileset file="build-tools/*.mf" />
 			<fileset file="build-tools/setup/*.xml" />
 		</copy>
-		
+
 		<copy todir="dist" file="build-tools/setup/MacOS/makepackage" filtering="true" overwrite="true" />
 		<copy todir="dist" file="build-tools/setup/MacOS/runWoPeDOnMac.sh" filtering="true" overwrite="true" />
 		<chmod file="dist/runWoPeDOnMac.sh" perm="755" />
 
 		<copy file="dist/Readme.txt" tofile="installers/Readme-${WOPEDVERSION}${SNAPSHOT}.txt" />
 		<copy file="dist/Changelog.txt" tofile="installers/Changelog-${WOPEDVERSION}${SNAPSHOT}.txt" />
-		
+
 	</target>
 
 	<target name="makesubprojects">
@@ -193,29 +193,25 @@
 	</target>
 
 	<target name="makeWindowsInstaller">
-		<try>
-			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-			<exec dir="dist/launch" executable="cmd">
-				<arg line="/c java -jar launch4j.jar buildexe.xml" />
-			</exec>
-			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
-			</exec>
 
-			<exec dir="dist/launch" executable="cmd">
-				<arg line="/c java -jar launch4j.jar buildsetup.xml" />
-			</exec>
+		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+		<exec dir="dist/launch" executable="cmd">
+			<arg line="/c java -jar launch4j.jar buildexe.xml" />
+		</exec>
+		<exec dir="dist" executable="cmd">
+			<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
+		</exec>
 
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
+		<exec dir="dist/launch" executable="cmd">
+			<arg line="/c java -jar launch4j.jar buildsetup.xml" />
+		</exec>
 
-		    <catch>
-			  <echo>Not running on Windows</echo>
-		    </catch>
-		</try>
+		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
+
 	</target>
-		
+
 	<target name="purge">
 		<delete dir="dist" />
 	</target>
-	
+
 </project>
