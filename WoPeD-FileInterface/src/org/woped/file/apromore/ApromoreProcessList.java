@@ -62,7 +62,8 @@ public class ApromoreProcessList {
 			Messages.getString("Apromore.UI.Owner"),
 			Messages.getString("Apromore.UI.Type"),
 			Messages.getString("Apromore.UI.Domain"),
-			Messages.getString("Apromore.UI.Version") };
+			Messages.getString("Apromore.UI.Version"),
+			Messages.getString("Apromore.UI.Foldername") };
 	private DefaultTableModel tabModel = null;
 	private JTable table = null;
 	private ApromoreAccess aproAccess = null;
@@ -97,11 +98,12 @@ public class ApromoreProcessList {
 			c.insets = new Insets(5, 5, 5, 5);
 			c.gridx = 0;
 			c.gridy = 1;
-/*			processListImportPanel.add(getBeautifyCheckBox(), c);
-			c.insets = new Insets(0, 5, 0, 0);
-			c.gridx = 0;
-			c.gridy = 2;*/
-			processListImportPanel.add(getScrollableProcessTable(showPnmlOnly), c);
+			/*
+			 * processListImportPanel.add(getBeautifyCheckBox(), c); c.insets =
+			 * new Insets(0, 5, 0, 0); c.gridx = 0; c.gridy = 2;
+			 */
+			processListImportPanel.add(getScrollableProcessTable(showPnmlOnly),
+					c);
 		}
 
 		return processListImportPanel;
@@ -452,7 +454,8 @@ public class ApromoreProcessList {
 		if (serverIDLabel == null) {
 			serverIDLabel = new JLabel(
 					Messages.getString("Apromore.UI.CurrentServer")
-							+ " " + ConfigurationManager.getConfiguration()
+							+ " "
+							+ ConfigurationManager.getConfiguration()
 									.getApromoreServerURL());
 		}
 
@@ -531,14 +534,16 @@ public class ApromoreProcessList {
 		}
 	}
 
-	public void exportAction(String owner, String name, String version) {
+	public void exportAction(String owner, String folder, String name,
+			String version) {
 		try {
 
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			PNMLExport pExport = new PNMLExport(mediator);
 			pExport.saveToStream((EditorVC) mediator.getUi().getEditorFocus(),
 					os);
-			aproAccess.exportProcess(owner, name, os, "", version, true);
+			aproAccess
+					.exportProcess(owner, folder, name, os, "", version, true);
 
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null,

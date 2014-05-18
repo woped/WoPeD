@@ -2,31 +2,39 @@ package org.woped.apromore;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.net.MalformedURLException;
 import java.net.ProxySelector;
-import java.net.UnknownHostException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPException;
 
 import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
 import org.apromore.model.ExportFormatResultType;
+import org.apromore.model.FolderType;
 import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
+import org.apromore.model.UserType;
 import org.apromore.model.VersionSummaryType;
 import org.apromore.plugin.property.RequestParameterType;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.ws.WebServiceException;
+import org.springframework.ws.client.WebServiceIOException;
+import org.springframework.ws.client.WebServiceTransportException;
 import org.springframework.ws.client.core.WebServiceTemplate;
+import org.springframework.ws.soap.SoapMessageCreationException;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.gui.translations.Messages;
 
 public class ApromoreAccess {
 
@@ -71,30 +79,94 @@ public class ApromoreAccess {
 		wsTemp.setUnmarshaller(serviceMarshaller);
 		wsTemp.setMessageSender(httpCms);
 		wsTemp.setDefaultUri(uri);
-		managerService = new ManagerServiceClient(wsTemp);		
+		managerService = new ManagerServiceClient(wsTemp);
 	}
 
-	public void test(String server, String user) {
-		
+	public void test(String server, String port, String managerpath,
+			String username) {
+
 		try {
-			connect(server);
-			managerService.readUserByUsername(user);
+			Integer.valueOf(port);
+		} catch (NumberFormatException e) {
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.Port"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+			return;
 		}
-		catch (SOAPException e) {
-			System.out.println("SOAP ERROR");
-		}	
-		catch (WebServiceException e) {
-			System.out.println("Server Error " + server);
-		}	
-		catch (Exception e) {
-			System.out.println("Unknown Exception");
-		}	
+
+		if (!managerpath.equals("manager/services/manager")) {
+			showDialog(
+					Messages.getString("Apromore.UI.Validation.Warning.WebservicePath"),
+					Messages.getString("Apromore.UI.Warning.Title"),
+					JOptionPane.WARNING_MESSAGE);
+		}
+
+		String serverUrl = server + ":" + port + "/" + managerpath;
+
+		try {
+			URL url = new URL(serverUrl);
+			connect(serverUrl);
+			managerService.readAllUsers();
+		} catch (MalformedURLException e) {
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.url"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		} catch (SOAPException e) {
+			showDialog(
+					Messages.getString("Apromore.UI.Validation.Error.connection"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		} catch (WebServiceTransportException e) {
+			showDialog(
+					Messages.getString("Apromore.UI.Validation.Error.connection"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		} catch (WebServiceIOException e) {
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.url"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		} catch (SoapMessageCreationException e) {
+			showDialog(
+					Messages.getString("Apromore.UI.Validation.Error.WebservicePath"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		UserType user = managerService.readUserByUsername(username);
+		if (user == null) {
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.user"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		showDialog(Messages.getString("Apromore.UI.Validation.connection"),
+				Messages.getString("Apromore.textBandTitle"),
+				JOptionPane.INFORMATION_MESSAGE);
+
 	}
 
 	public String[][] getProcessList() throws Exception {
-		processSummaries = managerService.readProcessSummaries(1, null);
-		processList = processSummaries.getProcessSummary();
-		String[][] s = new String[processList.size()][6];
+		UserType user = managerService.readUserByUsername(ConfigurationManager
+				.getConfiguration().getApromoreUsername());
+		List<FolderType> folderForUser = managerService
+				.getWorkspaceFolderTree(user.getId());
+		processList = new ArrayList<ProcessSummaryType>();
+		for (FolderType folder : folderForUser) {
+			processSummaries = managerService.readProcessSummaries(
+					folder.getId(), null);
+			List<ProcessSummaryType> processesWithoutFolder = processSummaries
+					.getProcessSummary();
+			for (ProcessSummaryType pst : processesWithoutFolder) {
+				pst.setFolder(folder);
+			}
+			processList.addAll(processesWithoutFolder);
+		}
+		String[][] s = new String[processList.size()][7];
 
 		for (int i = 0; i < processList.size(); i++) {
 			s[i][0] = "" + processList.get(i).getName();
@@ -105,6 +177,7 @@ public class ApromoreAccess {
 			List<VersionSummaryType> vst = processList.get(i)
 					.getVersionSummaries();
 			s[i][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
+			s[i][6] = "" + processList.get(i).getFolder().getFolderName();
 		}
 		return s;
 	}
@@ -207,21 +280,31 @@ public class ApromoreAccess {
 		return new ByteArrayInputStream(inputString.getBytes());
 	}
 
-	public void exportProcess(String userName, String processName,
-			ByteArrayOutputStream os, String domain, String version,
-			boolean makePublic) throws Exception {
+	public void exportProcess(String userName, String folder,
+			String processName, ByteArrayOutputStream os, String domain,
+			String version, boolean makePublic) throws Exception {
 
-		Integer folderId = 1;
-		String nativeType = "PNML 1.3.2";
-		String documentation = "";
-		final Set<RequestParameterType<?>> noCanoniserParameters = Collections
-				.emptySet();
-		ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
+		UserType user = managerService.readUserByUsername(userName);
+		List<FolderType> folders = managerService.getWorkspaceFolderTree(user
+				.getId());
+		int folderId = Integer.MIN_VALUE;
+		for (FolderType ft : folders) {
+			if (ft.getFolderName().equals(folder)) {
+				folderId = ft.getId();
+			}
+		}
+		if (folderId != Integer.MIN_VALUE) {
+			String nativeType = "PNML 1.3.2";
+			String documentation = "";
+			final Set<RequestParameterType<?>> noCanoniserParameters = Collections
+					.emptySet();
+			ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
 
-		managerService.importProcess(userName, folderId, nativeType,
-				processName, version, is, domain, documentation,
-				getCurrentDate(), getCurrentDate(), makePublic,
-				noCanoniserParameters);
+			managerService.importProcess(userName, folderId, nativeType,
+					processName, version, is, domain, documentation,
+					getCurrentDate(), getCurrentDate(), makePublic,
+					noCanoniserParameters);
+		}
 	}
 
 	public void updateProcess(Integer id, String username, String nativeType,
@@ -249,5 +332,16 @@ public class ApromoreAccess {
 	private String getCurrentDate() {
 		Date currentDate = new Date(System.currentTimeMillis());
 		return apromoreTimeFormat.format(currentDate).toString();
+	}
+
+	public List<FolderType> getFoldersForCurrentUser() {
+		UserType user = managerService.readUserByUsername(ConfigurationManager
+				.getConfiguration().getApromoreUsername());
+		return managerService.getWorkspaceFolderTree(user.getId());
+
+	}
+
+	private void showDialog(String message, String titel, Integer type) {
+		JOptionPane.showMessageDialog(null, message, titel, type);
 	}
 }

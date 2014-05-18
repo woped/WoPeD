@@ -9,14 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apromore.model.FolderType;
 import org.woped.apromore.ApromoreAccess;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -44,6 +47,8 @@ public class ApromoreExportFrame extends JDialog {
 	private JTextField processVersionText = null;
 	private JLabel processTypeLabel = null;
 	private JTextField processTypeText = null;
+	private JLabel processFolderLabel = null;
+	private JComboBox<String> processFolderBox = null;
 	private AbstractApplicationMediator mediator = null;
 
 	public ApromoreExportFrame(AbstractApplicationMediator mediator) {
@@ -80,7 +85,7 @@ public class ApromoreExportFrame extends JDialog {
 		}
 
 		setTitle(Messages.getString("Apromore.UI.Export.Title"));
-		setSize(new Dimension(670, 500));
+		setSize(new Dimension(750, 500));
 		int left = (int) ApplicationMediator.getDisplayUI().getLocation()
 				.getX();
 		int top = (int) ApplicationMediator.getDisplayUI().getLocation().getY();
@@ -117,7 +122,7 @@ public class ApromoreExportFrame extends JDialog {
 								JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
-				enableIdFields();
+				prepareUpdateFields();
 				updateDataFields();
 				getUpdateButton().setEnabled(true);
 				getExportButton().setEnabled(false);
@@ -136,7 +141,7 @@ public class ApromoreExportFrame extends JDialog {
 		getContentPane().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				processList.clearSelection();
-				disableIdFields();
+				prepareExportFields();
 				initDataFields();
 				getUpdateButton().setEnabled(false);
 				getExportButton().setEnabled(true);
@@ -146,14 +151,18 @@ public class ApromoreExportFrame extends JDialog {
 		initDataFields();
 	}
 
-	private void enableIdFields() {
+	private void prepareUpdateFields() {
 		processIDLabel.setVisible(true);
 		processIDText.setVisible(true);
+		processFolderLabel.setVisible(false);
+		processFolderBox.setVisible(false);
 	}
 
-	private void disableIdFields() {
+	private void prepareExportFields() {
 		processIDLabel.setVisible(false);
 		processIDText.setVisible(false);
+		processFolderLabel.setVisible(true);
+		processFolderBox.setVisible(true);
 	}
 
 	private JPanel getProcessDataPanel() {
@@ -237,8 +246,22 @@ public class ApromoreExportFrame extends JDialog {
 			c.insets = new Insets(0, 0, 0, 0);
 			c.fill = GridBagConstraints.HORIZONTAL;
 			processDataPanel.add(getProcessVersionText(), c);
+
+			c.gridx = 0;
+			c.gridy = 3;
+			c.gridwidth = 1;
+			c.insets = new Insets(5, 0, 0, 20);
+			c.fill = GridBagConstraints.NONE;
+			processDataPanel.add(getProcessFolderLabel(), c);
+
+			c.gridx = 1;
+			c.gridy = 3;
+			c.gridwidth = 2;
+			c.insets = new Insets(0, 0, 0, 0);
+			c.fill = GridBagConstraints.HORIZONTAL;
+			processDataPanel.add(getProcessFolderBox(), c);
 		}
-		disableIdFields();
+		prepareExportFields();
 
 		return processDataPanel;
 	}
@@ -318,6 +341,26 @@ public class ApromoreExportFrame extends JDialog {
 		return processTypeText;
 	}
 
+	private JLabel getProcessFolderLabel() {
+		if (processFolderLabel == null) {
+			processFolderLabel = new JLabel("Ordner");
+		}
+		return processFolderLabel;
+	}
+
+	private JComboBox<String> getProcessFolderBox() {
+		if (processFolderBox == null) {
+			List<FolderType> folders = aproAccess.getFoldersForCurrentUser();
+			String[] folderNames = new String[folders.size()];
+			for (int i = 0; i < folders.size(); i++) {
+				folderNames[i] = folders.get(i).getFolderName();
+			}
+
+			processFolderBox = new JComboBox<String>(folderNames);
+		}
+		return processFolderBox;
+	}
+
 	private JLabel getProcessVersionLabel() {
 
 		if (processVersionLabel == null) {
@@ -364,21 +407,29 @@ public class ApromoreExportFrame extends JDialog {
 							.getText());
 
 					if (version != null) {
-						if (!processList.getProcessNames().contains(
-								getProcessNameText().getText())) {
-							processList.exportAction(getProcessOwnerText()
-									.getText(), getProcessNameText().getText(),
-									version);
-							processList.addNewRow(processList.getTable());
-							showDialog(
-									Messages.getString("Apromore.UI.ExportDialog.Succes"),
-									Messages.getString("Apromore.UI.ExportDialog.Title"),
-									JOptionPane.INFORMATION_MESSAGE);
-						} else {
-							showDialog(
-									Messages.getString("Apromore.UI.Error.NameExists"),
-									Messages.getString("Apromore.UI.Error.Title"),
-									JOptionPane.ERROR_MESSAGE);
+						try {
+							if (!processList.getProcessNames().contains(
+									getProcessNameText().getText())) {
+								processList
+										.exportAction(getProcessOwnerText()
+												.getText(),
+												getProcessFolderBox()
+														.getSelectedItem()
+														.toString(),
+												getProcessNameText().getText(),
+												version);
+								processList.addNewRow(processList.getTable());
+								showDialog(
+										Messages.getString("Apromore.UI.ExportDialog.Succes"),
+										Messages.getString("Apromore.UI.ExportDialog.Title"),
+										JOptionPane.INFORMATION_MESSAGE);
+							} else {
+								showDialog(
+										Messages.getString("Apromore.UI.Error.NameExists"),
+										Messages.getString("Apromore.UI.Error.Title"),
+										JOptionPane.ERROR_MESSAGE);
+							}
+						} catch (Exception exc) {
 						}
 					}
 				}
@@ -401,18 +452,22 @@ public class ApromoreExportFrame extends JDialog {
 					String version = checkCurrentVersion(processVersionText
 							.getText());
 					if (version != null) {
-						processList.updateAction(
-								Integer.valueOf(getProcessIDText().getText()),
-								getProcessOwnerText().getText(),
-								getProcessTypeText().getText(),
-								getProcessNameText().getText(), version);
-						processList.updateTable(processList.getTable(),
-								processList.getTable().getSelectedRow(),
-								Integer.valueOf(getProcessIDText().getText()));
-						showDialog(
-								Messages.getString("Apromore.UI.UpdateDialog.Succes"),
-								Messages.getString("Apromore.UI.UpdateDialog.Title"),
-								JOptionPane.INFORMATION_MESSAGE);
+						try {
+							processList.updateAction(Integer
+									.valueOf(getProcessIDText().getText()),
+									getProcessOwnerText().getText(),
+									getProcessTypeText().getText(),
+									getProcessNameText().getText(), version);
+							processList.updateTable(processList.getTable(),
+									processList.getTable().getSelectedRow(),
+									Integer.valueOf(getProcessIDText()
+											.getText()));
+							showDialog(
+									Messages.getString("Apromore.UI.UpdateDialog.Succes"),
+									Messages.getString("Apromore.UI.UpdateDialog.Title"),
+									JOptionPane.INFORMATION_MESSAGE);
+						} catch (Exception exc) {
+						}
 					}
 				}
 			});
@@ -441,18 +496,20 @@ public class ApromoreExportFrame extends JDialog {
 
 	private void updateDataFields() {
 		int ind = processList.getTable().getSelectedRow();
-		getProcessNameText().setText(
-				"" + processList.getTable().getModel().getValueAt(ind, 0));
-		getProcessIDText().setText(
-				"" + processList.getTable().getModel().getValueAt(ind, 1));
-		getProcessOwnerText().setText(
-				"" + processList.getTable().getModel().getValueAt(ind, 2));
-		getProcessTypeText().setText(
-				"" + processList.getTable().getModel().getValueAt(ind, 3));
-		String version = getNewVersion(processList.getTable().getModel()
-				.getValueAt(ind, 5).toString());
-		if (version != null) {
-			getProcessVersionText().setText("" + version);
+		if (ind != -1) {
+			getProcessNameText().setText(
+					"" + processList.getTable().getModel().getValueAt(ind, 0));
+			getProcessIDText().setText(
+					"" + processList.getTable().getModel().getValueAt(ind, 1));
+			getProcessOwnerText().setText(
+					"" + processList.getTable().getModel().getValueAt(ind, 2));
+			getProcessTypeText().setText(
+					"" + processList.getTable().getModel().getValueAt(ind, 3));
+			String version = getNewVersion(processList.getTable().getModel()
+					.getValueAt(ind, 5).toString());
+			if (version != null) {
+				getProcessVersionText().setText("" + version);
+			}
 		}
 
 	}
