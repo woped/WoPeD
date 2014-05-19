@@ -104,7 +104,7 @@ public class ApromoreAccess {
 		String serverUrl = server + ":" + port + "/" + managerpath;
 
 		try {
-			URL url = new URL(serverUrl);
+			new URL(serverUrl);
 			connect(serverUrl);
 			managerService.readAllUsers();
 		} catch (MalformedURLException e) {
@@ -201,7 +201,7 @@ public class ApromoreAccess {
 						&& (processList.get(i).getOwner().toLowerCase()
 								.contains(owner.toLowerCase()) || owner
 								.equalsIgnoreCase(""))
-						&& (processList.get(i).getOwner().toLowerCase()
+						&& (processList.get(i).getDomain().toLowerCase()
 								.contains(domain.toLowerCase()) || domain
 								.equalsIgnoreCase(""))
 						&& ((id == null) || id.equals(""
@@ -210,7 +210,7 @@ public class ApromoreAccess {
 			}
 		}
 
-		String[][] s = new String[j][6];
+		String[][] s = new String[j][7];
 
 		int k = 0;
 
@@ -242,6 +242,7 @@ public class ApromoreAccess {
 					List<VersionSummaryType> vst = processList.get(i)
 							.getVersionSummaries();
 					s[k][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
+					s[k][6] = "" + processList.get(i).getFolder().getFolderName();
 					k++;
 				}
 			} else {
@@ -253,6 +254,7 @@ public class ApromoreAccess {
 				List<VersionSummaryType> vst = processList.get(i)
 						.getVersionSummaries();
 				s[i][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
+				s[i][6] = "" + processList.get(i).getFolder().getFolderName();
 			}
 		}
 
