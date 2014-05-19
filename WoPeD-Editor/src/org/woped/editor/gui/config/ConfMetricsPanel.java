@@ -48,7 +48,7 @@ public class ConfMetricsPanel extends AbstractConfPanel
     {
         if (useMetricsCheckBox.isSelected() != ConfigurationManager.getConfiguration().isUseMetrics())
         {
-            JOptionPane.showMessageDialog(null, Messages.getString("Configuration.Metrics.Dialog.Restart.Message"), Messages.getString("Configuration.Metrics.Dialog.Restart.Title"),
+            JOptionPane.showMessageDialog(this, Messages.getString("Configuration.Metrics.Dialog.Restart.Message"), Messages.getString("Configuration.Metrics.Dialog.Restart.Title"),
                     JOptionPane.INFORMATION_MESSAGE);
             ConfigurationManager.getConfiguration().setUseMetrics(useMetricsCheckBox.isSelected());
         

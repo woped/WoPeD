@@ -1,5 +1,6 @@
 package org.woped.apromore;
 
+import java.awt.Container;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
@@ -46,6 +47,7 @@ public class ApromoreAccess {
 		return instance;
 	}
 
+	private Container parent;
 	private HttpComponentsMessageSender httpCms;
 	private Jaxb2Marshaller serviceMarshaller;
 	private SaajSoapMessageFactory soapMsgFactory;
@@ -54,7 +56,8 @@ public class ApromoreAccess {
 	private ProcessSummariesType processSummaries;
 	private List<ProcessSummaryType> processList;
 
-	public ApromoreAccess() {
+	public ApromoreAccess(Container parent) {
+		this.parent = parent;
 		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
 			ProxySelector.setDefault(new WoProxySelector(ConfigurationManager
 					.getConfiguration().getApromoreProxyName(),
@@ -144,7 +147,7 @@ public class ApromoreAccess {
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		showDialog(Messages.getString("Apromore.UI.Validation.connection"),
+		showDialog(Messages.getString("Apromore.UI.Validation.ConnectionOk"),
 				Messages.getString("Apromore.textBandTitle"),
 				JOptionPane.INFORMATION_MESSAGE);
 
@@ -344,6 +347,6 @@ public class ApromoreAccess {
 	}
 
 	private void showDialog(String message, String titel, Integer type) {
-		JOptionPane.showMessageDialog(null, message, titel, type);
+		JOptionPane.showMessageDialog(parent, message, titel, type);
 	}
 }

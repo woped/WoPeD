@@ -94,7 +94,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (changed) {
 			JOptionPane
 					.showMessageDialog(
-							null,
+							this,
 							Messages.getString("Configuration.Apromore.Dialog.Restart.Message"),
 							Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
 							JOptionPane.INFORMATION_MESSAGE);
@@ -612,7 +612,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	}
 
 	private void testApromoreConnection() {
-		ApromoreAccess aproAccess = new ApromoreAccess();
+		ApromoreAccess aproAccess = new ApromoreAccess(this);
 		aproAccess.test(getServerURLText().getText(), getServerPortText()
 				.getText(), getManagerPathText().getText(), getUsernameText()
 				.getText());

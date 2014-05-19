@@ -149,7 +149,7 @@ public class ConfEditorPanel extends AbstractConfPanel
 					lnfClasses.get(getLnfChooser().getSelectedItem()));
 			JOptionPane
 					.showMessageDialog(
-							null,
+							this,
 							Messages.getString("Configuration.Editor.Dialog.Restart.Message"),
 							Messages.getString("Configuration.Editor.Dialog.Restart.Title"),
 							JOptionPane.INFORMATION_MESSAGE);

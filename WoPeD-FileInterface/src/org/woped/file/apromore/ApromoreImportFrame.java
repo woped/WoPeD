@@ -33,7 +33,7 @@ public class ApromoreImportFrame extends JDialog {
 	public ApromoreImportFrame(AbstractApplicationMediator mediator) {
 
 		this.mediator = mediator;
-		aproAccess = new ApromoreAccess();
+		aproAccess = new ApromoreAccess(this.getContentPane());
 		processList = new ApromoreProcessList(aproAccess, this, mediator);
 		setModal(true);
 		setResizable(false);
@@ -59,7 +59,7 @@ public class ApromoreImportFrame extends JDialog {
 		try {
 			aproAccess.connect(getURI());
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,
+			JOptionPane.showMessageDialog(this,
 					Messages.getString("Apromore.UI.Error.Connect"),
 					Messages.getString("Apromore.UI.Error.Title"),
 					JOptionPane.ERROR_MESSAGE);
