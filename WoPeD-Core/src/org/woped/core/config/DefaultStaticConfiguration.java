@@ -50,10 +50,10 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration
     public static String          DEFAULT_LANGUAGE           		= "";
     public static String          DEFAULT_COUNTRY            		= "";
     public static String          DEFAULT_VARIANT            		= "";
-    public static String          DEFAULT_APROMORE_SERVERURL     	= "http://localhost";
+    public static String          DEFAULT_APROMORE_SERVERURL     	= "http://woped.dhbw-karlsruhe.de";
     public static int 			  DEFAULT_APROMORE_SERVERPORT 		= 9000;
-    public static String 		  DEFAULT_APROMORE_MANAGERPATH 		= "";
-    public static String          DEFAULT_APROMORE_USERNAME    		= "";
+    public static String 		  DEFAULT_APROMORE_MANAGERPATH 		= "manager/services/manager";
+    public static String          DEFAULT_APROMORE_USERNAME    		= "Test";
     public static String          DEFAULT_APROMORE_PASSWORD    		= "";
     public static String          DEFAULT_APROMORE_PROXYNAME    	= "";
     public static int	 	      DEFAULT_APROMORE_PROXYPORT    	= 0;
