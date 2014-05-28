@@ -1,41 +1,72 @@
 @CHARSET "ISO-8859-1";
 
-body {			
+html#frame {
+				background-color: #e3e3e3;
+}
+
+body {          
+				background-color: #ffffff; 
 				position: relative;
 				max-width: 830px;
 				min-width: 330px;
-				margin-left: 30px;
-				margin-right: 30px;
+				margin: 0px auto;
 				overflow: visible;
-				font-family:Calibri;				
+				font-family:Calibri;			
 }
 
-h2 {
+img {
+				max-width: 830px;
+}
+
+#loadIndex:hover, #loadGlossary:hover {
+				cursor: hand;
+}
+
+#toolbarButtons {	
+				position:relative;
+				width: 13%;
+				height: 70px;
+				float: right;
+				margin-left: -5px;
+				padding-top: 0px;
+				vertical-align: middle;
+}
+
+#toolbarButtons img {	
+				padding-top: 15px;
+				padding-right: 5px;
+				float: right;
+}
+
+#toolbarButtons, #wopedHeader {
 				border-bottom-style:solid;
 				border-bottom-width:2px;
 				border-bottom-color:#e3e3e3;
 }
 
-#wopedImage {	
-				position:absolute;
-				top: 25px;
-				width: 10%;
+#wopedHeader {	
+				margin-left: 5px;
+				width: 87%;
+				height: 70px;
 				float: left;
+				
 }
 
-#wopedGeneral {	
-				width: 80%;
-				float: right;
+#headerImage {
+				width: 830px;
+				padding-top: 0px;
+				padding-left: 0px;
+				padding-right: 0px;
 }
 
 #germanVersion {
 				position:absolute;
-				top: 450px;
+				top: 300px;
 }
 
 div.Master {	
 				position:absolute;
-				top: 200px;
+				top: 70px;
 				width: 200px;
 				float: left;
 				
@@ -49,11 +80,9 @@ div.Master {
 }
 
 div.MasterItem { 	
-				margin-top: 0;
-				margin-bottom: 0;
-				
+				margin-top: 0px;
+				margin-bottom: 0px;
 				text-indent:5px;
-				
 				border-bottom-style:solid;
 				border-bottom-width:1px;
 				border-bottom-color:#e3e3e3;
@@ -62,9 +91,27 @@ div.MasterItem {
 				line-height:50px;
 }
 
+div.MasterItem:hover {
+				cursor: hand;
+}
+
 div.Detail {	
 				position:absolute;
-				top: 200px;
-				right:0px;
-				width: 520px;
+				top: 70px;
+				right:5px;
+				width: 600px;
+}
+
+iFrame.content {
+				border:none;
+				background-color: #ffffff; 
+				position: relative;
+				width: 825px;
+				height: 100%;
+				margin: 0px auto;
+				overflow: visible;
+				font-family:Calibri;
+				padding-top: 10px;
+				padding-left: 5px;
+				padding-right: 0px;	
 }
