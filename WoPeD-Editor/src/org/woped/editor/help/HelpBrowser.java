@@ -75,18 +75,10 @@ public class HelpBrowser
     public void init(String currFileName)
     {
     	String contentFileName = Messages.getString("Help.File.Contents");
-    	contentFileName = "contentWithFrame.htm";
     	String indexFileName = Messages.getString("Help.File.Index");
-    	indexFileName = "manualWithFrame.htm";
+    	
     	if (currFileName == null){
         	currFileName = Messages.getString("Help.File.Index");
-        	currFileName = "manualWithFrame.htm";
-    	} else {
-    		if(currFileName.equals(Messages.getString("Help.File.Contents"))){
-    			currFileName = "contentWithFrame.htm";;
-    		} else {
-    			currFileName = "manualWithFrame.htm";
-    		}
     	}
    	
     	URL url = this.getClass().getResource("/doc");
