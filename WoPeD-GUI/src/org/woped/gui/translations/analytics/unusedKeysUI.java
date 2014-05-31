@@ -33,28 +33,49 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
+/**
+ * The UI for analytic tools.
+ */
 @SuppressWarnings("serial")
 public class unusedKeysUI extends JFrame implements TableModelListener  {
 
+	/** current selected locale. */
 	private Locale currLocale = Locale.ROOT;
 
+    /** data list. */
     private ArrayList<String> dataList;
+
+    /** The table. */
     private JTable table;
+
+    /** The deletion list. */
     private HashSet<String> deletionList = new HashSet<String>();
 
+    /** The ribbon UI. */
     private AnalysisRibbonBar ribbon = null;
 
+    /**
+     * Instantiates a new unusedKeysUI.
+     */
     public unusedKeysUI() {
-    super("messages.properties Analyze-Tool");
-    createFrame();
-
+    	super("messages.properties Analyze-Tool");
+    	createFrame();
     }
+
+    /**
+     * Instantiates a unusedKeysUI with data.
+     *
+     * @param data the data in JTable
+     */
     public unusedKeysUI(ArrayList<String> data) {
         super("messages.properties Analyze-Tool");
         createFrame();
         dataList = data;
     }
 
+    /**
+     * Creates the frame.
+     */
     private void createFrame() {
         setLayout(new BorderLayout());
         setSize(500, 700);
@@ -72,16 +93,32 @@ public class unusedKeysUI extends JFrame implements TableModelListener  {
         add(new JScrollPane(table), BorderLayout.CENTER);
 
 	}
+
+	/**
+	 * Close window.
+	 */
 	public void closeWindow() {
     	this.setVisible(false);
     	System.exit(0);
     }
+
+	/**
+	 * Sets the locale to en.
+	 */
 	public void setLocaleEN() {
     	this.currLocale = Locale.ROOT;
     }
+
+	/**
+	 * Sets the locale to de.
+	 */
 	public void setLocaleDE() {
     	this.currLocale = Locale.GERMAN;
     }
+
+	/**
+	 * Do analysis action.
+	 */
 	public void doAct() {
 		ArrayList<File> files = new ArrayList<File>();
 		String workingDir = System.getProperty("user.dir");
@@ -125,6 +162,10 @@ public class unusedKeysUI extends JFrame implements TableModelListener  {
         table.getModel().addTableModelListener(this);
         table.getColumnModel().getColumn(0).setHeaderRenderer(new SelectAllHeader(table, 0));
 	}
+
+	/* (non-Javadoc)
+	 * @see javax.swing.event.TableModelListener#tableChanged(javax.swing.event.TableModelEvent)
+	 */
 	@Override
 	public void tableChanged(TableModelEvent e) {
         int row = e.getFirstRow();
@@ -138,6 +179,10 @@ public class unusedKeysUI extends JFrame implements TableModelListener  {
         	deletionList.remove(key);
         }
 	}
+
+	/**
+	 * Delete selected keys.
+	 */
 	public void deleteKeys() {
 		String workingDir = System.getProperty("user.dir");
 		String file = workingDir + "/src/org/woped/gui/translations/";
@@ -151,6 +196,10 @@ public class unusedKeysUI extends JFrame implements TableModelListener  {
 			AnalysisTools.removeKeyFromFile(file, key);
 		}
 	}
+
+	/**
+	 * Copy keys to clipboard.
+	 */
 	public void copyToClipboard() {
 		String stringSelection = "";
 		for (String key : deletionList) {

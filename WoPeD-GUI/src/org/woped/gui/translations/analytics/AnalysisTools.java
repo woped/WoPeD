@@ -11,106 +11,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ *  Class AnalysisTools.
+ *  Provides static methods for analyzing Messages.properties files
+ */
 public class AnalysisTools {
+
+	/** available key list. */
 	public static ArrayList<String> keyList = new ArrayList<String>();
+
+	/** used keys list. */
 	public static ArrayList<String> usedKeys = new ArrayList<String>();
 
-	static void checkUsageInFile(File file) {
-		keyLoop:
-		for (int i = 0; i < keyList.size(); i++){
-			String keyElement = keyList.get(i);
-		try {
-			@SuppressWarnings("resource")
-			Scanner scanner = new Scanner(file);
-			while (scanner.hasNextLine()) {
-				String line = scanner.nextLine().toLowerCase();
-				String key = keyElement.toLowerCase();
-				String keyNoExt = substringBeforeLastSeperator(key, ".").toLowerCase();
-				//System.out.println(line);
-				//System.out.println(keyNoExt);
-				if (key.endsWith(".title")){
-					if(line.contains("gettitle(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else if (key.endsWith(".icon")){
-					if(line.contains("geticonlocation(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else if (key.endsWith(".image")){
-					if(line.contains("getimagelocation(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else if (key.endsWith(".cursoricon")){
-					if(line.contains("getcursoriconlocation(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else if (key.endsWith(".mnemonic")){
-					if(line.contains("getmnemonic(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else if (key.endsWith(".shortcut")){
-					if(line.contains("getshortcut(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-					else if(line.contains("getshortcutkey(\"" + keyNoExt )){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else if (key.contains(".shortcutmodifier")){
-					if(line.contains("getshortcutmodifier(\"" + keyNoExt )){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else if (key.endsWith(".text")){
-					if(line.contains(keyNoExt)){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else if (key.endsWith(".tooltip")){
-					if(line.contains(keyNoExt)){
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-				else{
-					if(line.contains(key)) {
-						usedKeys.add(keyElement);
-						continue keyLoop;
-						//keyIterator.remove();
-					}
-				}
-			}
-			//System.out.println(key);
-		} catch(Exception e) {
-			//handle this
-		}
-	}
-	keyList.removeAll(usedKeys);
-}
+	/**
+	 * Check usage of keys in file.
+	 *
+	 * @param file the java sourcecode-file to check usage of keys in
+	 */
 	static void checkUsageInFileExtend(File file) {
 		try {
 			@SuppressWarnings("resource")
@@ -121,10 +38,83 @@ public class AnalysisTools {
 					  String keyElement = iterator.next();
 
 				String key = keyElement.toLowerCase();
+
 				String keyNoExt = substringBeforeLastSeperator(key, ".").toLowerCase();
-				//System.out.println(line);
-				//System.out.println(keyNoExt);
-				if(line.contains(keyNoExt) && line.contains("actionid_")) {
+				if (key.endsWith(".title")){
+					if(line.contains("gettitle(\"" + keyNoExt + "\")")){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+				}
+				else if (key.endsWith(".icon")){
+					if(line.contains("geticonlocation(\"" + keyNoExt + "\")")){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+				}
+				else if (key.endsWith(".image")){
+					if(line.contains("getimagelocation(\"" + keyNoExt + "\")")){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+				}
+				else if (key.endsWith(".cursoricon")){
+					if(line.contains("getcursoriconlocation(\"" + keyNoExt + "\")")){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+				}
+				else if (key.endsWith(".mnemonic")){
+					if(line.contains("getmnemonic(\"" + keyNoExt + "\")")){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+				}
+				else if (key.endsWith(".shortcut")){
+					if(line.contains("getshortcut(\"" + keyNoExt + "\")")){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+					else if(line.contains("getshortcutkey(\"" + keyNoExt )){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+					else if(line.contains("addshortcuttojcommandbutton(\"" + keyNoExt)) {
+						usedKeys.add(keyElement);;
+						iterator.remove();
+					}
+					else if(line.contains("addshortcuttomousebutton(\"" + keyNoExt)) {
+						usedKeys.add(keyElement);;
+						iterator.remove();
+					}
+				}
+				else if (key.contains(".shortcutmodifier")){
+					if(line.contains("getshortcutmodifier(\"" + keyNoExt )){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+					else if(line.contains("addshortcuttojcommandbutton(\"" + keyNoExt)) {
+						usedKeys.add(keyElement);;
+						iterator.remove();
+					}
+					else if(line.contains("addshortcuttomousebutton(\"" + keyNoExt)) {
+						usedKeys.add(keyElement);;
+						iterator.remove();
+					}
+				}
+				else if (key.endsWith(".text")){
+					if(line.contains(keyNoExt)){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+				}
+				else if (key.endsWith(".tooltip")){
+					if(line.contains(keyNoExt)){
+						usedKeys.add(keyElement);
+						iterator.remove();
+					}
+				}
+				else if(line.contains(keyNoExt) && line.contains("actionid_")) {
 					usedKeys.add(substringBeforeLastSeperator(keyElement, ".") + ".Title");
 					usedKeys.add(substringBeforeLastSeperator(keyElement, ".") + ".title");
 					usedKeys.add(substringBeforeLastSeperator(keyElement, ".") + ".Image");
@@ -136,72 +126,6 @@ public class AnalysisTools {
 					usedKeys.add(substringBeforeLastSeperator(keyElement, ".") + ".Shortcut");
 					usedKeys.add(substringBeforeLastSeperator(keyElement, ".") + ".shortcut");
 				}
-				else if (key.endsWith(".title")){
-					if(line.contains("gettitle(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-				}
-				else if (key.endsWith(".icon")){
-					if(line.contains("geticonlocation(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-				}
-				else if (key.endsWith(".image")){
-					if(line.contains("getimagelocation(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-				}
-				else if (key.endsWith(".cursoricon")){
-					if(line.contains("getcursoriconlocation(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-				}
-				else if (key.endsWith(".mnemonic")){
-					if(line.contains("getmnemonic(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-				}
-				else if (key.endsWith(".shortcut")){
-					if(line.contains("getshortcut(\"" + keyNoExt + "\")")){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-					else if(line.contains("getshortcutkey(\"" + keyNoExt )){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-					else if(line.contains("addshortcuttojcommandbutton(\"" + keyNoExt)) {
-						usedKeys.add(keyElement);;
-						iterator.remove();
-					}
-				}
-				else if (key.contains(".shortcutmodifier")){
-					if(line.contains("getshortcutmodifier(\"" + keyNoExt )){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-					else if(line.contains("addshortcuttojcommandbutton(\"" + keyNoExt)) {
-						usedKeys.add(keyElement);;
-						iterator.remove();
-					}
-				}
-				else if (key.endsWith(".text")){
-					if(line.contains(keyNoExt)){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-				}
-				else if (key.endsWith(".tooltip")){
-					if(line.contains(keyNoExt)){
-						usedKeys.add(keyElement);
-						iterator.remove();
-					}
-				}
 				else{
 					if(line.contains(key)) {
 						usedKeys.add(keyElement);
@@ -209,7 +133,6 @@ public class AnalysisTools {
 					}
 				}
 			}
-			//System.out.println(key);
 			}
 		} catch(Exception e) {
 			//handle this
@@ -218,6 +141,14 @@ public class AnalysisTools {
 	keyList.removeAll(usedKeys);
 }
 
+	/**
+	 * Substring before last seperator.
+	 * Returns substring before last occurrence of a given seperator.
+	 *
+	 * @param str the original string
+	 * @param separator to split
+	 * @return string after modification
+	 */
 	public static String substringBeforeLastSeperator(String str, String separator) {
 		if (isEmptyString(str) || isEmptyString(separator)) {
 			return str;
@@ -228,10 +159,24 @@ public class AnalysisTools {
 		}
 		return str.substring(0, pos);
 	}
+
+	/**
+	 * Checks if is empty string.
+	 *
+	 * @param str the original string
+	 * @return true, if it is a empty string
+	 */
 	public static boolean isEmptyString(String str) {
 		return str == null || str.length() == 0;
 	}
 
+	/**
+	 * List files.
+	 * retruns all .java files in a given directory (incl. subdirectories)
+	 *
+	 * @param directoryName the directory name
+	 * @param files the files
+	 */
 	public static void listFiles(String directoryName, ArrayList<File> files) {
 		File directory = new File(directoryName);
 		File[] fList = directory.listFiles();
@@ -249,6 +194,12 @@ public class AnalysisTools {
 		}
 	}
 
+	/**
+	 * Removes the key from file.
+	 *
+	 * @param file the file
+	 * @param keyToRemove the key to remove
+	 */
 	public static void removeKeyFromFile(String file, String keyToRemove) {
 		try {
 		  File inFile = new File(file);

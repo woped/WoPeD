@@ -23,21 +23,43 @@ import org.woped.gui.images.svg.flag_of_germany;
 import org.woped.gui.images.svg.flag_of_us;
 import org.woped.gui.images.svg.zoom_chooser;
 
+/**
+ * The Class AnalysisRibbonBar.
+ * Provides the RibbonUI for AnalyticTools
+ */
 @SuppressWarnings("serial")
 public class AnalysisRibbonBar extends JRibbon {
 
+	/** basic analytics task. */
 	private RibbonTask analysisTask = null;
+
+	/** action band. */
 	private JRibbonBand analysisBand, actionBand = null;
+
+	/** JCommandButtons. */
 	private JCommandButton refreshButton, saveButton, deleteButton, fileChooserButton = null;
+
+	/** TJCommandMenuButtons. */
 	private JCommandMenuButton de_Button, en_Button = null;
 
-	private TB_Listener	listener = null;
+	/** actionListener */
+	private ribbonListener	listener = null;
 
+	/**
+	 * Instantiates a new RibbonUI.
+	 *
+	 * @param panel the panel
+	 */
 	public AnalysisRibbonBar(unusedKeysUI panel){
-        listener = new TB_Listener(panel);
+        listener = new ribbonListener(panel);
 		this.addTask(getAnalysisTask());
 	}
-	/*********/
+
+	/**
+	 * Gets the analysisTask.
+	 *
+	 * @return singleton instance of analysisTask
+	 */
 	/* TASK */
 	/*********/
 	private RibbonTask getAnalysisTask() {
@@ -46,7 +68,12 @@ public class AnalysisRibbonBar extends JRibbon {
 		}
 		return analysisTask;
 	}
-	/*********/
+
+	/**
+	 *  Gets the analysisBand.
+	 *
+	 * @return singleton instance of analysisBand
+	 */
 	/* BANDS */
 	/*********/
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -54,7 +81,7 @@ public class AnalysisRibbonBar extends JRibbon {
     	if (analysisBand == null) {
     		analysisBand = new JRibbonBand("Analysis", null);
 
-    		analysisBand.addCommandButton(getZoomChooser(), RibbonElementPriority.LOW);
+    		analysisBand.addCommandButton(getLanguageChooser(), RibbonElementPriority.LOW);
     		analysisBand.addCommandButton(getRefreshButton(), RibbonElementPriority.LOW);
 
             analysisBand.setResizePolicies((List) Arrays.asList(new CoreRibbonResizePolicies.None(analysisBand.getControlPanel()), new IconRibbonBandResizePolicy(analysisBand.getControlPanel())));
@@ -63,6 +90,11 @@ public class AnalysisRibbonBar extends JRibbon {
 		return analysisBand;
 	}
 
+	/**
+	 * Gets the actionBand.
+	 *
+	 * @return singleton instance of actionBand
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JRibbonBand getActionBand() {
     	if (actionBand == null) {
@@ -77,7 +109,11 @@ public class AnalysisRibbonBar extends JRibbon {
 		return actionBand;
 	}
 
-	/*********/
+	/**
+	 * Gets the saveButton.
+	 *
+	 * @return singleton instance of saveButton
+	 */
 	/* BUTTONS */
 	/*********/
 	private JCommandButton getSaveButton() {
@@ -90,7 +126,12 @@ public class AnalysisRibbonBar extends JRibbon {
 		return saveButton;
 	}
 
-	private JCommandButton getZoomChooser() {
+	/**
+	 * Gets the language chooser.
+	 *
+	 * @return singleton instance of fileChooserButton
+	 */
+	private JCommandButton getLanguageChooser() {
 		if (fileChooserButton == null) {
 	        fileChooserButton = new JCommandButton("Choose", new zoom_chooser());
 	        fileChooserButton.setCommandButtonKind(JCommandButton.CommandButtonKind.POPUP_ONLY);
@@ -111,6 +152,11 @@ public class AnalysisRibbonBar extends JRibbon {
 		return fileChooserButton;
 	}
 
+	/**
+	 * Gets the refreshButton.
+	 *
+	 * @return singleton instance of refreshButton
+	 */
 	private JCommandButton getRefreshButton() {
 		if (refreshButton == null) {
 			refreshButton	= new JCommandButton("Check", new analyze_quantitative_simulation());
@@ -119,6 +165,11 @@ public class AnalysisRibbonBar extends JRibbon {
 		return refreshButton;
 	}
 
+	/**
+	 * Gets the deleteButton.
+	 *
+	 * @return singleton instance of deleteButton
+	 */
 	private JCommandButton getDeleteButton() {
 	if (deleteButton == null) {
 		deleteButton	= new JCommandButton("Delete", new file_close());
@@ -128,13 +179,34 @@ public class AnalysisRibbonBar extends JRibbon {
 }
 
 
-class TB_Listener implements ActionListener {
-		 unusedKeysUI controller = null;
+/**
+ * The listener interface for receiving ribbonListener events.
+ * The class that is interested in processing a ribbonListener
+ * event implements this interface, and the object created
+ * with that class is registered with a component using the
+ * component's <code>addribbonListener<code> method. When
+ * the TB_ event occurs, that object's appropriate
+ * method is invoked.
+ *
+ * @see TB_Event
+ */
+class ribbonListener implements ActionListener {
 
-			public TB_Listener(unusedKeysUI panel){
+ 		/** The controller. */
+ 		unusedKeysUI controller = null;
+
+			/**
+			 * Instantiates a new t b_ listener.
+			 *
+			 * @param panel the panel
+			 */
+			public ribbonListener(unusedKeysUI panel){
 				this.controller = panel;
 			}
 
+			/* (non-Javadoc)
+			 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
 			public void actionPerformed(ActionEvent e) {
 				if	(e.getSource() == deleteButton){
 					controller.deleteKeys();
