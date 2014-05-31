@@ -37,17 +37,6 @@ import org.woped.gui.translations.Messages;
 
 /**
  * A simple, static class to display a URL in the system browser.
- * 
- * Under Unix, the system browser is hard-coded to be 'netscape'. Netscape must
- * be in your PATH for this to work. This has been tested with the following
- * platforms: AIX, HP-UX and Solaris.
- * 
- * Under Windows, this will bring up the default browser under windows, usually
- * either Netscape or Microsoft IE. The default browser is determined by the OS.
- * This has been tested under Windows 95/98/NT.
- * 
- * Note - you must include the url type -- either "http://" or "file://".
- * 17.01.2005
  */
 
 public class LaunchDefaultBrowserAction extends MouseAdapter
@@ -62,12 +51,7 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
      */
 
     private static final String WIN_PATH    = "rundll32";
-    // The flag to display a url.
     private static final String WIN_FLAG    = "url.dll,FileProtocolHandler";
-    // The default browser under unix.
-//    private static final String UNIX_PATH[] = { "netscape", "firefox", "mozilla", "galeon", "opera", "epiphany", "safari", "konqueror", "lynx" };
-    // The flag to display a url.
-//    private static final String UNIX_FLAG   = "-remote openURL";
 
     private URL                 url;
     private JComponent          jComp;
@@ -102,56 +86,25 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
     public void displayURL()
     {
     	String cmd = null;
-//        int exitCode;
-//        boolean success = false;
 
         try
         {
            if (Platform.isWindows()) {
                 cmd = WIN_PATH + " " + WIN_FLAG + " " + url;
                 Runtime.getRuntime().exec(cmd);
-            } else {
-            	java.awt.Desktop.getDesktop().browse(java.net.URI.create(url.toString()));
-            }
-/*                if (Platform.isMac())
-                {
-                } else
-                {
-                    // try to find locate a linux browser and launch it remotely
-                    for (int i = 0; i < UNIX_PATH.length && !success; i++)
-                    {
-                        try
-                        {
-                            cmd = UNIX_PATH[i] + " " + UNIX_FLAG + "(\"" + url + "\")";
-                            Process p = Runtime.getRuntime().exec(cmd);
-                            exitCode = p.waitFor();
-                            if (exitCode == 0) success = true;
-                        } catch (Exception e)
-                        {}
-                    }
-                }
-                if (!success)
-                {
-                    // Command failed, try to launch it without remote option
-                    for (int i = 0; i < UNIX_PATH.length && !success; i++)
-                    {
-                        try
-                        {
-                            cmd = UNIX_PATH[i] + " " + url;
-                            Process p = Runtime.getRuntime().exec(cmd);
-                            exitCode = p.waitFor();
-                            if (exitCode == 0) success = true;
-                        } catch (Exception e)
-                        {}
-                    }
-                }
-            }*/
+            } 
+           else if (Platform.isUnix()) {
+        	   Runtime.getRuntime().exec("xdg-open " + java.net.URI.create(url.toString()));
+           }
+           else {
+        	   java.awt.Desktop.getDesktop().browse(java.net.URI.create(url.toString()));
+           }
+
         }
 
         catch (IOException e)
         {
-            // couldn't exec browser
-            JOptionPane.showMessageDialog(null, Messages.getString("Help.Message.noDefaultBrowser") + "\nException: " + e);
+             JOptionPane.showMessageDialog(jComp, Messages.getString("Help.Message.noDefaultBrowser") + "\nException: " + e);
         }
     }
 }
