@@ -30,11 +30,13 @@ $.docReady = function(downloadText, installationText, startText, useText) {
 		detail = downloadText; 
 		selectedMaster = $("#download");
 	}
-	
+
 	//Set color for selected/unselected master items
-	$(".MasterItem").css("background","transparent");
-	$(selectedMaster).css("background-image","-webkit-gradient(linear,0 0,100% 100%,from(white),to(orange))");
-	
+	$(".MasterItem").css("background", "transparent");
+	$(".MasterItem").css("color", "black");
+	$(selectedMaster).css("background-color", "orange");
+	$(selectedMaster).css("color", "white");
+
 	//Set detail text in html for selected master item
 	$( ".Detail" ).html( detail );
 };
