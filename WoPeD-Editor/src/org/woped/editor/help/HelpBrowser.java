@@ -31,7 +31,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
+
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 import org.woped.editor.Constants;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.translations.Messages;
@@ -42,142 +45,50 @@ import org.woped.gui.translations.Messages;
  * TODO: DOCUMENTATION (tfreytag)
  */
 
-@SuppressWarnings("serial")
 public class HelpBrowser
 {	      
 	    
 	    
     public static HelpBrowser c_instance = null;
 
-    private String            currURL;
-    private String            homeURL;
-    private String            contentsURL;
-    private String			  defaultLangPat;
-
-    public static HelpBrowser getInstance()
-    {
+    public static HelpBrowser getInstance() {
         if (c_instance == null) c_instance = new HelpBrowser();
         return c_instance;
     }
 
-    private HelpBrowser()
-    {
+    private HelpBrowser() {
     }   
-     
-    
+      
     /**
-     * TODO: DOCUMENTATION (tfreytag)
      * 
      * @param currURL
-     * @param homeURL
-     * @param contentsURL
      */
-    public void init(String currFileName)
-    {
-    	String contentFileName = Messages.getString("Help.File.Contents");
-    	String indexFileName = Messages.getString("Help.File.Index");
-    	
-    	if (currFileName == null){
+    public void showURL(String currFileName) {
+    	String helpDir         	= Messages.getString("Help.Dir");
+    	String contentFileName 	= Messages.getString("Help.File.Contents");
+    	String indexFileName   	= Messages.getString("Help.File.Index");
+    	String docPath			= this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();;
+    	  	
+    	if (currFileName == null) {
         	currFileName = Messages.getString("Help.File.Index");
     	}
    	
-    	URL url = this.getClass().getResource("/doc");
+     	int pos = docPath.lastIndexOf("/");
+    	docPath = docPath.substring(0, pos) + "/doc";
+    	
+ 		if (!new File(docPath).exists()) {
+			// locate HTML help files in local folder
+			docPath = new File(".").getAbsolutePath();
+			pos = docPath.lastIndexOf(".");
+			docPath = docPath.substring(0, pos) + "/doc";
+ 		}
+			
+ 		docPath = "file:" + docPath;
+ 		currFileName =  docPath + "/" + helpDir + currFileName;
+		contentFileName = docPath + "/" + helpDir + contentFileName;
+		indexFileName = docPath + "/" + helpDir + indexFileName;
 
-		if (url != null)
-		{
-			// locate HTML files in jarfile
-			currFileName = url.toExternalForm().concat(
-					Messages.getString("Help.Dir")).concat(currFileName);
-			contentFileName = url.toExternalForm().concat(
-					Messages.getString("Help.Dir")).concat(contentFileName);
-			indexFileName = url.toExternalForm().concat(
-					Messages.getString("Help.Dir")).concat(indexFileName);
-		} else
-		{
-			//locate HTML files in local folder
-			File f = new File(".");
-			String filePath = "file:" + f.getAbsolutePath();
-			int dotAt = filePath.lastIndexOf(".");
-			currFileName = filePath.substring(0, dotAt) + "doc/"
-					+ Messages.getString("Help.Dir") + currFileName;
-			contentFileName = filePath.substring(0, dotAt) + "doc/"
-					+ Messages.getString("Help.Dir") + contentFileName;
-			indexFileName = filePath.substring(0, dotAt) + "doc/"
-					+ Messages.getString("Help.Dir") + indexFileName;
-		}
-
-        this.currURL = currFileName;
-        this.homeURL = indexFileName;
-        this.contentsURL = contentFileName;
-        showPage(currURL, false, false);
-    }
-
-
-    /**
-     * Method showPage Displays a given HTML page in the HelpBrowser window
-     * 
-     * @param url
-     *            URL of the page to be displayed
-     * @param enterPage
-     *            true if current URL should only be refreshed
-     * @param fromHistory
-     *            true if URL is retrieved from history buffer
-     */
-    private void showPage(final String url, boolean justRefresh, boolean fromHistory)
-    {
-        try {
-        	new LaunchDefaultBrowserAction(url, null).displayURL();
-        } catch (Exception ioe) {
-            LoggerManager.error(Constants.EDITOR_LOGGER, "Can't open URL " + url + ": " + ioe);
-        }
-    }
-	
-	/**
-     * Method transformHyperlinkURL 
-     * 
-     * @param prevUrl
-     *            URL of the page (including path) that has been displayed before
-     * @param nextDocument
-     *            String value of the document that should be loaded next
-     */
-	private String transformHyperlinkURL(String prevUrl, String nextDocument){ 
-		String linkedURL = prevUrl + nextDocument;
-		
-		String path = prevUrl;
-		int index = path.lastIndexOf("/");
-		path= path.substring(0, index+1);
-		
-        if ((path.substring(0, 5)).equals("file:") || (path.substring(0, 4)).equals("jar:"))
-        { 
-        	if (path.substring(0, 5).equals("file:"))
-        	{   
-        		if (defaultLangPat != null)
-        		{
-        			path = path.replace("/en/", "/"+defaultLangPat+"/");
-        		}
-        		
-        		linkedURL = path + nextDocument;
-        		
-        		File f= new File(linkedURL.substring(5));
-        		if (!f.exists())
-        		{
-        			Pattern p = Pattern.compile("/");
-        			String[] dirs = p.split(linkedURL);
-        			
-        			// Vorletzter teil ist die Sprache
-        			defaultLangPat = dirs[dirs.length - 2];
-        			dirs[dirs.length - 2] = "en";
-        			
-        			linkedURL = dirs[0];
-        			for (int i = 1; i < dirs.length; i++)
-        				linkedURL = linkedURL + "/" + dirs[i];
-        		}	
-        	}
-            // Local link, open in helpbrowser
-            //showPage(linkedURL, false, false);
-            
-        }
-        return linkedURL;
-    } 
+ 		new LaunchDefaultBrowserAction(currFileName, null).displayURL();
+ 	}
 }
 

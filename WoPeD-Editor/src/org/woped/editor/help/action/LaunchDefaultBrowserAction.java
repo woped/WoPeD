@@ -36,7 +36,7 @@ import org.woped.core.utilities.Platform;
 import org.woped.gui.translations.Messages;
 
 /**
- * A simple, static class to display a URL in the system browser.
+ * A simple class to display a URL in the system browser.
  */
 
 public class LaunchDefaultBrowserAction extends MouseAdapter
@@ -53,8 +53,8 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
     private static final String WIN_PATH    = "rundll32";
     private static final String WIN_FLAG    = "url.dll,FileProtocolHandler";
 
-    private URL                 url;
-    private JComponent          jComp;
+    private URL        url;
+    private JComponent jComp;
 
     public LaunchDefaultBrowserAction(String url, JComponent jComp)
     {
@@ -75,12 +75,16 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
 
     public void mouseEntered(MouseEvent e)
     {
-        if (jComp != null) jComp.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        if (jComp != null) {
+        	jComp.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
     }
 
     public void mouseExited(MouseEvent e)
     {
-        if (jComp != null) jComp.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        if (jComp != null) {
+        	jComp.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
     }
 
     public void displayURL()
@@ -93,18 +97,17 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
                 cmd = WIN_PATH + " " + WIN_FLAG + " " + url;
                 Runtime.getRuntime().exec(cmd);
             } 
-           else if (Platform.isUnix()) {
-        	   Runtime.getRuntime().exec("xdg-open " + java.net.URI.create(url.toString()));
+           if (Platform.isUnix()) {
+        	   Runtime.getRuntime().exec("xdg-open " + url);
            }
-           else {
+           
+           if (Platform.isMac()) {
         	   java.awt.Desktop.getDesktop().browse(java.net.URI.create(url.toString()));
            }
-
         }
 
-        catch (IOException e)
-        {
-             JOptionPane.showMessageDialog(jComp, Messages.getString("Help.Message.noDefaultBrowser") + "\nException: " + e);
+        catch (IOException e) {
+             JOptionPane.showMessageDialog(jComp, Messages.getString("Help.Message.noDefaultBrowser") + url.toString());
         }
     }
 }

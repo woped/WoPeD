@@ -460,11 +460,11 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			throws Exception
 	{
 		HelpBrowser br = HelpBrowser.getInstance();
-		br.init(fileName);
+		br.showURL(fileName);
 	}
 	private void showHelpContents() throws Exception
 	{
 		HelpBrowser br = HelpBrowser.getInstance();
-		br.init(Messages.getString("Help.File.Contents"));
+		br.showURL(Messages.getString("Help.File.Contents"));
 	}
 }
