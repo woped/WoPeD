@@ -72,6 +72,7 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
                     }
                 }
 
+                // TODO(aeckleder): This is highly inefficient.
                 Set<Marking> allMarkings = new HashSet<Marking>();
                 allMarkings.addAll(markings);
                 allMarkings.addAll(markingsToCheck);

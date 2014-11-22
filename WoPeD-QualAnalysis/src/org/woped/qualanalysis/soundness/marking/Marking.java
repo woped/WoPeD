@@ -76,8 +76,9 @@ public class Marking implements IMarking, INode<Marking> {
         }
         
         for (int i = 0; i < tokens.length; i++) {
-
-            if (placeUnlimited[i] && other.placeUnlimited[i]) {
+        	// We only need to check one of the two unlimited arrays, the other one must be the same
+        	// due to the Arrays.equals() check above.
+            if (placeUnlimited[i]) {
                 // it's okay
             } else
                 if (tokens[i].intValue() != other.tokens[i].intValue()) {
@@ -147,7 +148,7 @@ public class Marking implements IMarking, INode<Marking> {
         }
         return transitions;
     }
-
+    
     /**
      * 
      * @param compareMarking marking to compare
@@ -156,12 +157,10 @@ public class Marking implements IMarking, INode<Marking> {
     public boolean smallerEquals(Marking compareMarking) {
         boolean smallerEquals = true;
         for (int i = 0; i < this.tokens.length && smallerEquals; i++) {
-            if (!(this.tokens[i] <= compareMarking.tokens[i])) {
-                smallerEquals = false;
-            }
-            if (compareMarking.placeUnlimited[i]) {
-                smallerEquals = true;
-            }
+			if (!compareMarking.placeUnlimited[i]
+					&& (this.placeUnlimited[i] || this.tokens[i] > compareMarking.tokens[i])) {
+				smallerEquals = false;
+			}
         }
         return smallerEquals;
     }
