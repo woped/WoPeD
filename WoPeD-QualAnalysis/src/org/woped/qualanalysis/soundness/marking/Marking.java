@@ -163,14 +163,13 @@ public class Marking implements IMarking, INode<Marking> {
      * @return true, if markings are comparable and the marking is smaller or equal than the provided marking.
      */
     public boolean smallerEquals(Marking compareMarking) {
-        boolean smallerEquals = true;
-        for (int i = 0; i < this.tokens.length && smallerEquals; i++) {
+        for (int i = 0; i < this.tokens.length; i++) {
 			if (!compareMarking.placeUnlimited[i]
 					&& (this.placeUnlimited[i] || this.tokens[i] > compareMarking.tokens[i])) {
-				smallerEquals = false;
+				return false;
 			}
         }
-        return smallerEquals;
+        return true;
     }
     
     /**

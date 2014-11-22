@@ -147,12 +147,8 @@ public class MarkingNet implements IMarkingNet {
      * @return a new Marking with the tokens after the transition is switched
      */
     public Marking calculateSucceedingMarking(Marking parentMarking, TransitionNode transition) {
-        int[] tokens = new int[parentMarking.getTokens().length];
-
-        // copy tokens from given marking (call by value)
-        for (int i = 0; i < tokens.length; i++) {
-            tokens[i] = parentMarking.getTokens()[i];
-        }
+    	// Create a copy of the tokens array
+        int[] tokens = parentMarking.getTokens().clone();
 
         // decrease all tokenCounts for prePlaces of given transition
         // and increase all tokenCounts for postPlaces of given transition
