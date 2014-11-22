@@ -219,6 +219,9 @@ public class Marking implements IMarking, INode<Marking> {
      */
     public void setPlaceUnlimited(Integer position) {
         this.placeUnlimited[position] = true;
+        // Reset token count for the new unlimited place to ensure we generate
+        // the same hash for equivalent representations.
+        this.tokens[position] = 0;
     }
 
     /**

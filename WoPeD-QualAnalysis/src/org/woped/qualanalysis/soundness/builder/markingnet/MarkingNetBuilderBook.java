@@ -1,6 +1,8 @@
 package org.woped.qualanalysis.soundness.builder.markingnet;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
@@ -39,20 +41,24 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
      * @param marking the marking to start calculating succeeding markings with
      */
     private void calculateSucceedingMarkings(Marking marking) {
-        Set<Marking> markingsToCheck = new HashSet<Marking>();
-        Set<Marking> markings = new HashSet<Marking>();
+        // We use a map here to be able to find markings by hash. Unfortunately, Set<> does not
+        // allow us to access a matching object within the set, but this is exactly what we want
+        // to do here.
+        Map<Integer, Marking> markingsToCheck = new HashMap<Integer, Marking>();
+        Map<Integer, Marking> markings = new HashMap<Integer, Marking>();
         TransitionNode[] transitions;
         Marking currentMarking;
         Marking newMarking;
         Marking compareMarking;
         Marking equalMarking = null;
 
-        markingsToCheck.add(marking);
+        markingsToCheck.put(new Integer(marking.hashCode()), marking);
 
         while (!markingsToCheck.isEmpty()) {
-            currentMarking = markingsToCheck.iterator().next();
-            markingsToCheck.remove(currentMarking);
-            markings.add(currentMarking);
+        	Integer currentKey = markingsToCheck.keySet().iterator().next();
+            currentMarking = markingsToCheck.get(currentKey);
+            markingsToCheck.remove(currentKey);
+            markings.put(new Integer(currentMarking.hashCode()), currentMarking);
 
             transitions = mNet.getActivatedTransitions(currentMarking);
 
@@ -72,27 +78,24 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
                     }
                 }
 
-                // TODO(aeckleder): This is highly inefficient.
-                Set<Marking> allMarkings = new HashSet<Marking>();
-                allMarkings.addAll(markings);
-                allMarkings.addAll(markingsToCheck);
-                equalMarking = null;
-                for (Marking m : allMarkings) {
-                    if (m.equals(newMarking)) {
-                        equalMarking = m;
-                    }
+                // Check if this marking exists either in the check queue or has been added
+                // to the marking graph already. In this case, use the existing object and
+                // discard the new one.
+                equalMarking = markingsToCheck.get(newMarking.hashCode());
+                if (equalMarking == null) {
+                	equalMarking = markings.get(newMarking.hashCode());
                 }
 
                 if (equalMarking == null) {
                     currentMarking.addSuccessor(new Arc(newMarking, transitions[i]));
                     newMarking.setPredecessor(currentMarking);
-                    markingsToCheck.add(newMarking);
+                    markingsToCheck.put(newMarking.hashCode(), newMarking);
                 } else {
                     currentMarking.addSuccessor(new Arc(equalMarking, transitions[i]));
                 }
 
             }
         }
-        mNet.getMarkings().addAll(markings);
+        mNet.getMarkings().addAll(markings.values());
     }
 }
