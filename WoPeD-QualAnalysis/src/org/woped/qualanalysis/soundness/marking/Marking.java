@@ -29,6 +29,9 @@ public class Marking implements IMarking, INode<Marking> {
     
     private static int markingCounter = 0;
     
+    // Cache the hash code unless something changes in our marking. -1 means the hash code
+    // needs to be updated.
+    private int cachedHashCode = -1;    
 
     /**
      * 
@@ -38,11 +41,9 @@ public class Marking implements IMarking, INode<Marking> {
      */
     public Marking(int[] tokens, PlaceNode[] places, boolean[] placeUnlimited) {
         this.places = places;
-        this.tokens = new int[tokens.length];
-        this.placeUnlimited = new boolean[placeUnlimited.length];
+        this.tokens = tokens.clone();
+        this.placeUnlimited = placeUnlimited.clone();
         for (int i = 0; i < tokens.length; i++) {
-            this.tokens[i] = tokens[i];
-            this.placeUnlimited[i] = placeUnlimited[i];
             placeToIndexMap.put(places[i], new Integer(i));            
         }
         markingID = markingCounter;
@@ -55,10 +56,14 @@ public class Marking implements IMarking, INode<Marking> {
 
     @Override
     public int hashCode() {
+    	if (cachedHashCode != -1) {
+    		return cachedHashCode;
+    	}
         final int prime = 31;
         int result = 1;
         result = prime * result + Arrays.hashCode(placeUnlimited);
         result = prime * result + Arrays.hashCode(tokens);
+        cachedHashCode = result;
         return result;
     }
 
@@ -111,7 +116,8 @@ public class Marking implements IMarking, INode<Marking> {
 
     /**
      * 
-     * @return the array where UnlimitedPlaces are marked as true
+     * @return the array where UnlimitedPlaces are marked as true. 
+     * Do not manipulate the returned array!
      */
     public boolean[] getPlaceUnlimited() {
         return placeUnlimited;
@@ -133,6 +139,7 @@ public class Marking implements IMarking, INode<Marking> {
 
     /**
      * @return the tokens
+     * Do not manipulate the returned array!
      */
     public int[] getTokens() {
         return this.tokens;
@@ -237,6 +244,8 @@ public class Marking implements IMarking, INode<Marking> {
         // Reset token count for the new unlimited place to ensure we generate
         // the same hash for equivalent representations.
         this.tokens[position] = 0;
+        // We need to recalculate the hash if we do this.
+        cachedHashCode = -1; 
     }
 
     /**
