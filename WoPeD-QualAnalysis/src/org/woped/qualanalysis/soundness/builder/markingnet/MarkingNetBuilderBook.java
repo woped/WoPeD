@@ -58,7 +58,7 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
         	Integer currentKey = markingsToCheck.keySet().iterator().next();
             currentMarking = markingsToCheck.get(currentKey);
             markingsToCheck.remove(currentKey);
-            markings.put(new Integer(currentMarking.hashCode()), currentMarking);
+            markings.put(currentKey, currentMarking);
 
             transitions = mNet.getActivatedTransitions(currentMarking);
 
