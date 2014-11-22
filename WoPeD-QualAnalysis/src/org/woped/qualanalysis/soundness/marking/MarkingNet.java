@@ -54,9 +54,9 @@ public class MarkingNet implements IMarkingNet {
     public TransitionNode[] getActivatedTransitions(Marking marking) {
         // declaration
         List<TransitionNode> activatedTransitions = new ArrayList<TransitionNode>();
-        Integer[] tokens = marking.getTokens(); // tokens of the given marking
-        Boolean[] placeUnlimited = marking.getPlaceUnlimited();
-        Boolean activated; // flag if transition is activated or not
+        int[] tokens = marking.getTokens(); // tokens of the given marking
+        boolean[] placeUnlimited = marking.getPlaceUnlimited();
+        boolean activated; // flag if transition is activated or not
 
         for (int i = 0; i < transitions.length; i++) {
             // transition
@@ -147,7 +147,7 @@ public class MarkingNet implements IMarkingNet {
      * @return a new Marking with the tokens after the transition is switched
      */
     public Marking calculateSucceedingMarking(Marking parentMarking, TransitionNode transition) {
-        Integer[] tokens = new Integer[parentMarking.getTokens().length];
+        int[] tokens = new int[parentMarking.getTokens().length];
 
         // copy tokens from given marking (call by value)
         for (int i = 0; i < tokens.length; i++) {

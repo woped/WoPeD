@@ -59,8 +59,8 @@ public class MNetMock implements IMarkingNet {
 		places[1].addPreNode(transitions[3]);
 		
 //		Create markings
-		Integer[][] tokens = { {1, 0, 0}, {0, 0, 1}, {0, 1, 0} };
-		Boolean[] placeUnlimited = {false, false, false};
+		int[][] tokens = { {1, 0, 0}, {0, 0, 1}, {0, 1, 0} };
+		boolean[] placeUnlimited = {false, false, false};
 		Marking[] marking = new Marking[3];
 		
 		marking[0] = new Marking(tokens[0], places, placeUnlimited);

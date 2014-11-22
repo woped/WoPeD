@@ -13,8 +13,8 @@ public class CurrentMarking extends AbstractCurrentMarking{
 	
 	private void calcCurrentMarking(){
 		PlaceNode[] places = lolNet.getPlaces().toArray(new PlaceNode[lolNet.getPlaces().size()]);
-        Integer[] tokens = new Integer[places.length];
-        Boolean[] placeUnlimited = new Boolean[places.length];
+        int[] tokens = new int[places.length];
+        boolean[] placeUnlimited = new boolean[places.length];
         for (int i = 0; i < tokens.length; i++) {
         	if(useVirtualTokens){
         		tokens[i] = places[i].getVirtualTokenCount();

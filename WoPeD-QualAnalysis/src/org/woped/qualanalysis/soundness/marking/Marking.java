@@ -20,8 +20,8 @@ public class Marking implements IMarking, INode<Marking> {
     // declaration
 	private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<PlaceNode, Integer>();
     private final PlaceNode[] places;
-    private final Integer[] tokens;
-    private final Boolean[] placeUnlimited;
+    private final int[] tokens;
+    private final boolean[] placeUnlimited;
     private final Set<Arc> successors = new HashSet<Arc>();
     private Marking predecessor;
     private boolean isInitial = false;
@@ -36,10 +36,10 @@ public class Marking implements IMarking, INode<Marking> {
      * @param places all Places in the right order
      * @param placeUnlimited an array with true where the places are unlimited in the same order as places
      */
-    public Marking(Integer[] tokens, PlaceNode[] places, Boolean[] placeUnlimited) {
+    public Marking(int[] tokens, PlaceNode[] places, boolean[] placeUnlimited) {
         this.places = places;
-        this.tokens = new Integer[tokens.length];
-        this.placeUnlimited = new Boolean[placeUnlimited.length];
+        this.tokens = new int[tokens.length];
+        this.placeUnlimited = new boolean[placeUnlimited.length];
         for (int i = 0; i < tokens.length; i++) {
             this.tokens[i] = tokens[i];
             this.placeUnlimited[i] = placeUnlimited[i];
@@ -83,7 +83,7 @@ public class Marking implements IMarking, INode<Marking> {
         	// We only need to check one of the two unlimited arrays, the other one must be the same
         	// due to the Arrays.equals() check above.
 			if (!placeUnlimited[i]
-					&& tokens[i].intValue() != other.tokens[i].intValue()) {
+					&& tokens[i] != other.tokens[i]) {
 				return false;
 			}
         }
@@ -113,7 +113,7 @@ public class Marking implements IMarking, INode<Marking> {
      * 
      * @return the array where UnlimitedPlaces are marked as true
      */
-    public Boolean[] getPlaceUnlimited() {
+    public boolean[] getPlaceUnlimited() {
         return placeUnlimited;
     }
     
@@ -134,7 +134,7 @@ public class Marking implements IMarking, INode<Marking> {
     /**
      * @return the tokens
      */
-    public Integer[] getTokens() {
+    public int[] getTokens() {
         return this.tokens;
     }
 

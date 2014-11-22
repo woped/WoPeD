@@ -32,7 +32,7 @@ public class UnboundPlacesTest extends AbstractMarkingNetTest implements IUnboun
     @Override
     public Set<PlaceNode> getUnboundedPlaces() {
         Set<PlaceNode> unboundedPlaces = new HashSet<PlaceNode>();
-        Boolean[] unboundedPlacesArr;
+        boolean[] unboundedPlacesArr;
 
         for (Marking marking : mNet.getMarkings()) {
             unboundedPlacesArr = marking.getPlaceUnlimited();
