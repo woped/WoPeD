@@ -53,7 +53,7 @@ public class MarkingNet implements IMarkingNet {
      */
     public TransitionNode[] getActivatedTransitions(Marking marking) {
         // declaration
-        Set<TransitionNode> activatedTransitions = new HashSet<TransitionNode>();
+        List<TransitionNode> activatedTransitions = new ArrayList<TransitionNode>();
         Integer[] tokens = marking.getTokens(); // tokens of the given marking
         Boolean[] placeUnlimited = marking.getPlaceUnlimited();
         Boolean activated; // flag if transition is activated or not
@@ -62,13 +62,12 @@ public class MarkingNet implements IMarkingNet {
             // transition
             activated = true; // initialize flag for current transition
             for (AbstractNode preNode : transitions[i].getPreNodes()) {
-                for (int k = 0; k < places.length && activated; k++) {
-                    if (preNode == places[k]) {
-                        if (tokens[k] <= 0 && !placeUnlimited[k]) { // current PrePlace without token?
-                            activated = false;
-                        }
-                    }
-                }
+            	int k = marking.getIndexByPlace((PlaceNode)preNode);
+				if (tokens[k] <= 0 && !placeUnlimited[k]) { // current PrePlace
+															// without token?
+					activated = false;
+					break;
+				}
             }
             if (activated) {
                 activatedTransitions.add(transitions[i]); // add transition to
@@ -76,7 +75,7 @@ public class MarkingNet implements IMarkingNet {
             }
         }
         // return all activated transitions as an array
-        return activatedTransitions.toArray(new TransitionNode[0]);
+        return activatedTransitions.toArray(new TransitionNode[activatedTransitions.size()]);
     }
 
     /**

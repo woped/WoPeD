@@ -1,7 +1,9 @@
 package org.woped.qualanalysis.soundness.marking;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -16,6 +18,7 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  */
 public class Marking implements IMarking, INode<Marking> {
     // declaration
+	private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<PlaceNode, Integer>();
     private final PlaceNode[] places;
     private final Integer[] tokens;
     private final Boolean[] placeUnlimited;
@@ -40,6 +43,7 @@ public class Marking implements IMarking, INode<Marking> {
         for (int i = 0; i < tokens.length; i++) {
             this.tokens[i] = tokens[i];
             this.placeUnlimited[i] = placeUnlimited[i];
+            placeToIndexMap.put(places[i], new Integer(i));            
         }
         markingID = markingCounter;
         markingCounter++;
@@ -78,13 +82,10 @@ public class Marking implements IMarking, INode<Marking> {
         for (int i = 0; i < tokens.length; i++) {
         	// We only need to check one of the two unlimited arrays, the other one must be the same
         	// due to the Arrays.equals() check above.
-            if (placeUnlimited[i]) {
-                // it's okay
-            } else
-                if (tokens[i].intValue() != other.tokens[i].intValue()) {
-                    return false;
-                }
-
+			if (!placeUnlimited[i]
+					&& tokens[i].intValue() != other.tokens[i].intValue()) {
+				return false;
+			}
         }
         return true;
     }
@@ -115,7 +116,7 @@ public class Marking implements IMarking, INode<Marking> {
     public Boolean[] getPlaceUnlimited() {
         return placeUnlimited;
     }
-
+    
     /**
      * @return the predecessor (marking)
      */
@@ -164,7 +165,21 @@ public class Marking implements IMarking, INode<Marking> {
         }
         return smallerEquals;
     }
-
+    
+    /**
+     * Returns the index of a given place or -1 if not found
+     * @param place
+     * @return
+     */
+    public int getIndexByPlace(PlaceNode place) {
+    	Integer index = placeToIndexMap.get(place);
+    	if (index == null) {
+    		return -1;
+    	} else {
+    		return index.intValue();
+    	}
+    }
+    
     /**
      * @return the isInitial
      */
