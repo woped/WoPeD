@@ -1,105 +1,89 @@
 package org.woped.file.apromore;
 
-import java.awt.BorderLayout;
-import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.SwingWorker;
 
-import org.woped.apromore.ApromoreAccess;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.editor.controller.ApplicationMediator;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
-public class ApromoreImportFrame extends JDialog {
-	private static final long serialVersionUID = 1L;
-
-	private WopedButton importButton = null;
-	private WopedButton cancelButton = null;
-	private ApromoreAccess aproAccess = null;
-	private JPanel buttonPanel = null;
-	private ApromoreProcessList processList = null;
-	private AbstractApplicationMediator mediator = null;
+public class ApromoreImportFrame extends AbstractApromoreFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2682701694108230125L;
+	protected ImportWorker importWorker;
 
 	public ApromoreImportFrame(AbstractApplicationMediator mediator) {
+		super(mediator);
+		this.setTitle(Messages.getString("Apromore.UI.Import.Title"));
+		this.initialize();
+		this.pack();
+		this.setModal(true);
+		executeProgressBarWorker();
+		this.setVisible(true);
 
-		this.mediator = mediator;
-		aproAccess = new ApromoreAccess(this.getContentPane());
-		processList = new ApromoreProcessList(aproAccess, this, mediator);
-		setModal(true);
-		setResizable(false);
-		initialize();
 	}
 
-	public AbstractApplicationMediator getMediator() {
-		return mediator;
-	}
-
-	private String getURI() {
-		return ConfigurationManager.getConfiguration().getApromoreServerURL()
-				+ ":"
-				+ ConfigurationManager.getConfiguration()
-						.getApromoreServerPort()
-				+ "/"
-				+ ConfigurationManager.getConfiguration()
-						.getApromoreManagerPath();
-	}
 
 	private void initialize() {
 
-		try {
-			aproAccess.connect(getURI());
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this,
-					Messages.getString("Apromore.UI.Error.Connect"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-
-		setTitle(Messages.getString("Apromore.UI.Import.Title"));
-		setSize(new Dimension(750, 400));
-		int left = (int) ApplicationMediator.getDisplayUI().getLocation()
-				.getX();
-		int top = (int) ApplicationMediator.getDisplayUI().getLocation().getY();
-		setLocation(left + 400, top + 180);
-		getContentPane().setLayout(new BorderLayout());
-		getContentPane().add(processList.getFilterPanel(), BorderLayout.NORTH);
-		getContentPane().add(processList.getProcessListImportPanel(false),
-				BorderLayout.CENTER);
-		processList.getTable().addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				if (e.getClickCount() == 2) {
-					processList.importAction(processList.getBeautifyCheckBox()
-							.isSelected());
-				}
-			}
-		});
-
-		getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 2;
+		c.weightx = 1;
+		c.weighty = 0;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.insets = new Insets(5, 0, 5, 0); // Abstand nach oben/unten von 10px
+		getContentPane().add(getButtonPanel(), c);
 		getContentPane().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				processList.clearSelection();
 			}
 		});
-		setVisible(true);
+
+		// Import Event
+		processList.getTable().addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+
+				if (e.getClickCount() == 2) {
+					processList.importAction(false);
+				}
+			}
+
+		});
+
+		importButton.setEnabled(false);
+
 	}
 
 	private JPanel getButtonPanel() {
 
 		if (buttonPanel == null) {
+
 			buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			buttonPanel.setBorder(BorderFactory.createCompoundBorder(
+					BorderFactory.createTitledBorder(Messages
+							.getString("Apromore.UI.ButoonPanelImport")),
+					BorderFactory.createEmptyBorder(0, 2, 0, 2)));
+
 			buttonPanel.add(getImportButton());
+			buttonPanel.add(getUpdateButton());
 			buttonPanel.add(getCancelButton());
+			buttonPanel.add(getWopedProgressBar());
+
 		}
 
 		return buttonPanel;
@@ -114,9 +98,15 @@ public class ApromoreImportFrame extends JDialog {
 			importButton.setMnemonic(Messages.getMnemonic("Button.Import"));
 			importButton.setPreferredSize(new Dimension(130, 25));
 			importButton.addActionListener(new ActionListener() {
+
 				public void actionPerformed(ActionEvent e) {
-					processList.importAction(processList.getBeautifyCheckBox()
-							.isSelected());
+					if (importWorker != null) {
+						importWorker.cancel(true);
+					}
+					ImportWorker importWorker = new ImportWorker(
+							ApromoreImportFrame.this);
+					importWorker.execute();
+
 				}
 			});
 		}
@@ -124,21 +114,60 @@ public class ApromoreImportFrame extends JDialog {
 		return importButton;
 	}
 
-	private WopedButton getCancelButton() {
+	class ImportWorker extends SwingWorker<Void, Void> {
 
-		if (cancelButton == null) {
-			cancelButton = new WopedButton();
-			cancelButton.setText(Messages.getTitle("Button.Cancel"));
-			cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
-			cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
-			cancelButton.setPreferredSize(new Dimension(130, 25));
-			cancelButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					processList.cancelAction();
-				}
-			});
+		private AbstractApromoreFrame parent;
+		private boolean importSuccess = false;
+
+		public ImportWorker(AbstractApromoreFrame parent) {
+			this.parent = parent;
 		}
 
-		return cancelButton;
+		@Override
+		protected Void doInBackground() throws Exception {
+
+			wopedPorgressBar.setIndeterminate(true);
+			wopedPorgressBar.setIndeterminate(false);
+			if (importButton != null) {
+				importButton.setEnabled(false);
+			}
+			if (serverDropdown != null) {
+				serverDropdown.setEnabled(false);
+			}
+
+			if (updateButton != null) {
+				updateButton.setEnabled(false);
+			}
+			importSuccess = processList.importAction(processList
+					.getBeautifyCheckBox().isSelected());
+
+			return null;
+		}
+
+		@Override
+		public void done() {
+
+			wopedPorgressBar.setIndeterminate(false);
+			if (importButton != null) {
+				importButton.setEnabled(true);
+			}
+
+			if (serverDropdown != null) {
+				serverDropdown.setEnabled(true);
+			}
+			if (updateButton != null) {
+				updateButton.setEnabled(true);
+			}
+
+			if (importSuccess) {
+				try {
+					parent.dispose(); // ensure Frame is Closing after
+										// succesfull Import
+				} catch (Exception e) {
+				}
+
+			}
+
+		}
 	}
 }

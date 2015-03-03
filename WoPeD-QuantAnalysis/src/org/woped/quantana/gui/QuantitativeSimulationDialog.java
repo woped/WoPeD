@@ -55,6 +55,10 @@ import org.woped.core.model.petrinet.ResourceClassModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.quantana.Constants;
+import org.woped.quantana.dashboard.storage.StorageEngine;
+import org.woped.quantana.dashboard.storage.StorageEngine.Table;
+import org.woped.quantana.dashboard.storage.SimRunnerDB;
+import org.woped.quantana.dashboard.webserver.DashboardRunner;
 import org.woped.quantana.graph.Key;
 import org.woped.quantana.gui.CapacityAnalysisDialog.MyTableHeaderRenderer;
 import org.woped.quantana.model.ResUtilTableModel;
@@ -142,6 +146,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	private JCheckBox stop2;
 	
 	private JCheckBox ptk;
+	
+	private JCheckBox startDashboard;
 
 	private JTable tableServers;
 
@@ -165,7 +171,17 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private double epsilon = 0.001;
 	
-	SimRunner sim = null; 
+	
+	
+	//-->CN
+	//SimRunner sim = null; 
+	
+	SimRunner sim = null;
+	
+	private StorageEngine storageengine = null;
+	private static DashboardRunner dashboard = null;
+	
+	//<--CN
 
 	private String[] colServers = {
 			Messages.getString("QuantAna.Simulation.Column.Names"),
@@ -1249,6 +1265,11 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridy = 6;
 			ptk = new JCheckBox(Messages.getTitle("QuantAna.Simulation.Ptk"));
 			buttonPanel.add(ptk, constraints);
+			
+			constraints.gridx = 0;
+			constraints.gridy = 7;
+			startDashboard = new JCheckBox(Messages.getTitle("QuantAna.Simulation.StartDashboard"));
+			buttonPanel.add(startDashboard, constraints);
 
 		}
 
@@ -1436,7 +1457,39 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		}	
 		
 		unfoldNet(simgraph, sp.getPeriod()/sp.getLambda(), epsilon);		
-		sim = new SimRunner(simgraph, new ResourceUtilization(resAlloc), sp);		
+		//sim = new SimRunner(simgraph, new ResourceUtilization(resAlloc), sp);	
+		
+		//-->CN
+		
+		
+		if(startDashboard.isSelected()){
+			try {
+				
+				storageengine = StorageEngine.getInstance();
+					
+				if(dashboard == null){
+					dashboard = new DashboardRunner(storageengine);
+					if(dashboard!= null){
+						this.dashboard.startServer();
+					}
+				}
+	
+				storageengine.setOwner(this);
+				storageengine.setSimParameters(sp);
+				storageengine.CreateTable(Table.SIM_VALUES);
+							
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				
+				e.printStackTrace();
+			}
+			
+			sim = new SimRunnerDB(simgraph, new ResourceUtilization(resAlloc), sp, storageengine);
+		}
+		else{
+			sim = new SimRunner(simgraph, new ResourceUtilization(resAlloc), sp);
+		}
+		//<--CN
 		// the waitdialog starts and observs the simulation
 		new WaitDialog(this, Messages.getString("QuantAna.Simulation.Wait"),sp.getPeriod()/sp.getLambda(),sim);     
 	}

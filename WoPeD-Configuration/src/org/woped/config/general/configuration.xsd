@@ -3,13 +3,15 @@
 	<xs:element name="Configuration">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="gui" type="GUI"/>
-				<xs:element name="editor" type="Editor"/>
-				<xs:element name="general" type="General"/>
-				<xs:element name="tools" type="Tool"/>
-				<xs:element name="coloring" type="Coloring"/>
-				<xs:element name="metrics" type="Metrics"/>
-				<xs:element name="registration" type="Registration"/>
+				<xs:element name="gui" 				type="GUI"/>
+				<xs:element name="editor" 			type="Editor"/>
+				<xs:element name="general" 			type="General"/>
+				<xs:element name="tools" 			type="Tool"/>
+				<xs:element name="apromoreServers" 	type="ApromoreServers" 		minOccurs="0" 	maxOccurs="1"/>
+				<xs:element name="p2t" 				type="Process2Text"/>
+				<xs:element name="coloring" 		type="Coloring"/>
+				<xs:element name="metrics" 			type="Metrics"/>
+				<xs:element name="registration" 	type="Registration"/>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -79,6 +81,8 @@
 			<xs:element name="importing" type="Importing"/>
 			<xs:element name="woflan" type="Woflan"/>
 			<xs:element name="aproUse" type="xs:boolean" minOccurs="0" />
+			<xs:element name="aproCurrentIndex" type="xs:int" minOccurs="0" />
+			<xs:element name="aproServerName" type="xs:string" minOccurs="0" />
 			<xs:element name="aproServerURL" type="xs:string" minOccurs="0" />
 			<xs:element name="aproServerPort" type="xs:int" minOccurs="0" />
 			<xs:element name="aproManagerPath" type="xs:string" minOccurs="0" />
@@ -87,6 +91,36 @@
 			<xs:element name="aproUseProxy" type="xs:boolean" minOccurs="0" />			
 			<xs:element name="aproProxyName" type="xs:string" minOccurs="0" />
 			<xs:element name="aproProxyPort" type="xs:int" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ApromoreServers">
+		<xs:sequence>
+			<xs:element name="apromoreServer" 	type="ApromoreServer" 	minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ApromoreServer">
+		<xs:sequence>
+			<xs:element name="apromoreServerID" 	type="xs:int" 		minOccurs="1" 		maxOccurs="1"/>
+			<xs:element name="apromoreServerName" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
+			<xs:element name="apromoreServerURL" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
+			<xs:element name="apromoreServerPort" 	type="xs:int" 		minOccurs="0" 		maxOccurs="1"/>
+			<xs:element name="apromoreManagerPath" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
+			<xs:element name="apromoreUserName" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
+			<xs:element name="apromorePassword" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
+			<xs:element name="apromoreUseProxy" 	type="xs:boolean" 	minOccurs="0" 		maxOccurs="1"/>			
+			<xs:element name="apromoreProxyName" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
+			<xs:element name="apromoreProxyPort" 	type="xs:int" 		minOccurs="0" 		maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Process2Text">
+		<xs:sequence>
+			<xs:element name="p2tUse" type="xs:boolean" minOccurs="0" />
+			<xs:element name="p2tServerHost" type="xs:string" minOccurs="0" />
+			<xs:element name="p2tServerPort" type="xs:int" minOccurs="0" />
+			<xs:element name="p2tServerURI" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Woflan">

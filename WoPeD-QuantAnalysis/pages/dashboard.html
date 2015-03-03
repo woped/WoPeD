@@ -1,0 +1,1212 @@
+<script type="text/javascript">
+
+
+var runs = 0;
+
+var chartDoughnut  = null;
+
+var chartLine  = null;
+
+var SimStat  = new objSimStatistic();
+
+var playAuto = false;
+
+var colors = [	"rgba(50,30,55,0.6)",
+					"rgba(150,200,55,0.6)",
+					"rgba(50,150,100,0.6)",
+					"rgba(0,225,155,0.6)",
+					"rgba(15,225,105,0.6)",
+					"rgba(115,220,105,0.6)",
+					"rgba(115,20,105,0.6)",
+					"rgba(215,20,105,0.6)",
+					"rgba(105,120,105,0.6)",
+										
+];
+
+var arrRessources = [];
+var arrServers = [];
+var arrProcess = [];
+
+objProcess = function(){
+
+	this.FinishedCases = [];
+	this.Duration  = [];
+	this.ProcServTime  = [];
+	this.ProcWaitTime  = [];
+	this.ProcCompTime  = [];
+	this.ThroughPut  = [];
+	
+	this.AvgFinishedCases  = [];
+	this.AvgDuration  = [];
+	this.AvgProcServTime  = [];
+	this.AvgProcWaitTime = [];
+	this.AvgProcCompTime = [];
+	this.AvgThroughPut = [];
+
+	this.DeliveryAdherence = [];
+	this.AvgDeliveryAdherence= [];
+	this.Efficiency= [];
+	this.AvgEfficiency= [];
+
+	this.addFinishedCases = function(val){
+		this.FinishedCases.push(val);
+	}
+	this.addAvgFinishedCases = function(val){
+		this.FinishedCases.push(val);
+	} 
+
+	this.Duration = function(val){
+		this.Duration.push(val);
+	} 
+	this.AvgDuration = function(val){
+		this.AvgDuration.push(val);
+	} 
+
+	this.ProcServTime = function(val){
+		this.ProcServTime.push(val);
+	} 
+	this.AvgProcServTime = function(val){
+		this.AvgProcServTime.push(val);
+	} 
+
+	this.ProcWaitTime = function(val){
+		this.ProcWaitTime.push(val);
+	} 
+	this.AvgProcWaitTime = function(val){
+		this.AvgProcWaitTime.push(val);
+	} 
+
+	this.ProcCompTime = function(val){
+		this.ProcCompTime.push(val);
+	} 
+	this.AvgProcCompTime = function(val){
+		this.AvgProcCompTime.push(val);
+	} 
+
+	this.ThroughPut = function(val){
+		this.ThroughPut.push(val);
+	} 
+	this.AvgThroughPut = function(val){
+		this.AvgThroughPut.push(val);
+	} 
+
+
+	this.DeliveryAdherence = function(val){
+		this.DeliveryAdherence.push(val);
+	}
+	this.AvgDeliveryAdherence=  function(val){
+		this.AvgDeliveryAdherence.push(val);
+	}
+	this.Efficiency=  function(val){
+		this.Efficiency.push(val);
+	}
+	this.AvgEfficiency=  function(val){
+		this.AvgEfficiency.push(val);
+	}
+}
+
+
+objRessource = function(){
+
+	this.Name = "";
+	this.IdleTime = [];
+	this.UtilizationRatio = [];
+	this.AvgIdleTime = [];
+	this.AvgUtilizationRatio = [];
+	
+	this.addUtilizationRatio = function(val){
+		this.UtilizationRatio.push(val);
+	} 
+	this.addIdleTime = function(val){
+		this.IdleTime.push(val);
+	} 
+
+	this.addAvgUtilizationRatio = function(val){
+		this.AvgUtilizationRatio.push(val);
+	} 
+	this.addAvgIdleTime = function(val){
+		this.AvgIdleTime.push(val);
+	} 
+
+}
+
+objServer = function(){
+	
+	this.Name = "";
+
+	this.Accesses = [];
+	this.AvgAccesses = [];
+
+	this.QLength = [];
+	this.AvgQLength = [];
+
+	this.ResNumber = [];
+	this.AvgResNumber = [];
+	
+	this.WaitTime = [];
+	this.AvgWaitTime = [];
+	
+	this.ServTime = [];
+	this.AvgServTime = [];
+
+	this.Calls = [];
+	this.AvgCalls = [];
+
+
+/*
+
+stoDat.getServers()[i] = new SimulationStorageDataServer();	
+
+
+		  stoDat.getServers()[i].setAccesses(rr.getAccesses());
+		  stoDat.getServers()[i].setAvgQLength(UIDCreater.round(rr.getAvgQLength()));
+		  stoDat.getServers()[i].setAvgResNumber(UIDCreater.round(rr.getAvgResNumber()));
+		  
+		  
+		  
+		  stoDat.getServers()[i].setWaitTime(UIDCreater.round(rr.getAvgWaitTime()));
+		  stoDat.getServers()[i].setAvgWaitTime( UIDCreater.round(avgCalcServ[i].getAvgWaitTime() / currentRun));
+*/
+	
+	this.addAccesses = function(val){
+		this.Accesses.push(val);
+	} 
+	this.addAvgAccesses = function(val){
+		this.AvgAccesses.push(val);
+	} 
+
+
+	this.addQLength = function(val){
+		this.QLength.push(val);
+	}
+	this.addAvgQLength = function(val){
+		this.AvgQLength.push(val);
+	}
+
+
+	this.addResNumber = function(val){
+		this.ResNumber.push(val);
+	}
+	this.addAvgResNumber = function(val){
+		this.AvgResNumber.push(val);
+	}
+	
+	this.addWaitTime = function(val){
+		this.WaitTime.push(val);
+	}
+	
+	this.addAvgWaitTime = function(val){
+		this.AvgWaitTime.push(val);
+	}
+	
+	this.addServTime = function(val){
+		this.ServTime.push(val);
+	}
+	
+	this.addAvgServTime = function(val){
+		this.AvgServTime.push(val);
+	}
+this.addAvgCalls = function(val){
+		this.AvgCalls.push(val);
+	}
+	this.addCalls = function(val){
+		this.Calls.push(val);
+	}
+	
+	
+}
+
+
+
+
+
+
+$(document).ready(function(){
+
+	
+
+    /* 
+    
+    	Start Dashboard 
+    	
+    */
+    
+
+  	myinit();
+
+   	function myinit(){
+	   
+   		$.getJSON(strURLPrefix + '/getrequest/?action=getArchiveList', function(){
+    	}).done(function(response){
+    		
+    		if(response.length == 0){
+    			$("#main").html("no data");
+    		}
+    		else{
+
+	    		fctFillPullDown(response);
+	    		
+	    		//abfragen, wie viele simulationsläufe insgesamt stattfinden
+				$.getJSON('/getrequest/?action=getSimulationStats', function(){
+			    	}).done(function(response){
+
+
+					SimStat.period = response['period'];
+		    		SimStat.lambda = response['lambda'];
+					SimStat.queue = response['queue'];
+					SimStat.runs = response['runs'];
+
+
+		   			$("#timeSlider").attr( "min", 1);
+
+		    		$("#timeSlider").attr( "max", SimStat.runs);
+
+		    		$('#aMaxTick').html(SimStat.runs);
+
+		    		$('#timeSlider').val(SimStat.runs);
+
+
+		    		// werte an dashboard-elemente uebertragen
+					fctGetDashboardValues($("#timeSlider").val(), false);
+			    })	
+		    }
+    		
+    	}).fail(function(jqxhr,textStatus, error){
+    		console.log("error occured: " + textStatus * " / " + error );
+    	})
+  	}
+   
+   
+	/* 
+    
+    	Auto-Update
+    	
+    */
+    
+
+    if(intervalObj == null){
+    	$('#chkAutoUpdate').prop('checked', false);
+    }
+    else{
+    	$('#chkAutoUpdate').prop('checked', true);
+    }
+   
+    
+    $('#chkAutoUpdate').click(function(){
+    	if ( $('#chkAutoUpdate').prop('checked') == true  ){
+		
+			fctStartGetDashboardValuesCyclic(1000);
+			
+		}
+		else{
+			fctStopGetDashboardValuesCyclic(intervalObj);
+			intervalObj = null;
+		}
+    });
+    
+    
+
+    
+    $('#btnSlideAuto').click(function(){
+    	if (  playAuto == false  ){
+		
+    		$('#btnSlideAuto').html("pause");
+    		playAuto = true;
+
+			/* Daten fuer Dashboard holen */
+			
+			fctStartGetDashboardValuesCyclic(1000,parseInt($('#timeSlider').val())+1);
+			
+		}
+		else{
+			$('#btnSlideAuto').html("play");
+			playAuto = false;
+			fctStopGetDashboardValuesCyclic(intervalObj);
+			intervalObj = null;
+		}
+    });
+    
+	
+    
+    function fctStartGetDashboardValuesCyclic ( cycle_in_ms, fromTick){
+
+    	intervalObj = setInterval(function(){
+			
+			//fctGetDashboardValues
+			
+			var curTick = null;
+
+			var requestString = "";
+
+			if(fromTick){
+
+				// play button 
+				curTick = parseInt($('#timeSlider').val())+	1;
+
+				requestString = strURLPrefix + "/getrequest/?action=getDashboardValues&single=true&tick="+curTick ;
+
+			}else{
+
+				//autoupdate-> es wurde kein spezieller zeitpunkt angegeben, es wird der zuletzt angewählte verwendet
+				//curTick = parseInt($('#timeSlider').val())+1;
+				
+				requestString = strURLPrefix + "/getrequest/?action=getDashboardValues&single=true";
+			
+			}
+
+			
+			/* zyklisch Werte nachfragen */
+			
+			$.getJSON(requestString, function(){}).done(function(response){
+	    	    	
+	    		fctPrintValues(response);
+	    		//parseInt($('#timeSlider').val())
+
+	    		
+	    	}).fail(function(jqxhr,textStatus, error){
+	    		console.log("error occured in fctStartGetDashboardValuesCyclic" );
+	    	}) 	
+	    }
+		, cycle_in_ms);
+    
+    	//return setInterval(fctGetDashboardValues(), cycle_in_ms);
+    };
+
+
+    function fctStopGetDashboardValuesCyclic  (intervalObj){
+    	clearInterval(intervalObj);
+    	intervalObj = null;
+    };
+	
+	
+	function fctGetDashboardValues  (tick,bSingle){
+
+		/* zyklisch Werte nachfragen */
+		
+		selectedTableName = getSelectedArchive();
+		
+		$.getJSON(strURLPrefix + '/getrequest/?action=getDashboardValues&tick='+ tick + '&single='+bSingle+"&table="+selectedTableName , function(){
+    	}).done(function(response){
+    				
+    		currentTick = response.Tick;
+    		
+    		//daten an einzelne anzeigeelemente senden
+    		fctPrintValues(response);
+    		
+    	}).fail(function(jqxhr,textStatus, error){
+    		console.log("error occured: " + textStatus * " / " + error );
+    	});
+	};
+
+
+
+	
+	
+
+	function fctPrintSimStats(){
+		/* zyklisch Werte nachfragen */
+		
+		selectedTableName = $( "#archiveselection" ).val()
+		
+		$.getJSON(strURLPrefix + '/getrequest/?action=getSimulationStats', function(){
+    	}).done(function(response){
+   		
+    		$('#simstats').html(JSON.stringify(response));
+    		
+    	}).always(function(){
+    		//console.log("Dashboardsvalues wurden gelierfert");
+    	}).fail(function(jqxhr,textStatus, error){
+    		console.log("error occured: " + textStatus * " / " + error );
+    	});
+	}
+	
+	
+	 function fctPrintValues(response){
+	
+		var len = response.length;
+		var i = 0;
+
+
+		arrProcess = [];
+		arrRessources=[];
+		arrServers = [];
+
+		
+		var ressources = [];
+		
+		if(len>0)
+			currentRun = response[len-1].Tick;
+		else
+			currentRun = 0;
+
+		//sliderwerte aktualisieren
+		$('#aCurrentTick').html(currentRun);
+
+		$('#timeSlider').val(currentRun);
+		
+		
+		
+		/*
+			Processing of Process Data
+		*/
+
+		for(iProc = 0; iProc< len; iProc++) {
+			var procData =  response[iProc]["Data"]["process"];
+			
+			
+			var p = new  objProcess();
+			p.FinishedCases = procData.FinishedCases;
+			p.Duration  = procData.Duration;
+			p.ProcServTime  = procData.ProcServTime;
+			p.ProcWaitTime  = procData.ProcWaitTime;
+			p.ProcCompTime  = procData.ProcCompTime;
+			p.ThroughPut  = procData.ThroughPut;
+			
+			p.AvgFinishedCases  = procData.AvgFinishedCases;
+			p.AvgDuration  = procData.AvgDuration;
+			p.AvgProcServTime  = procData.AvgProcServTime;
+			p.AvgProcWaitTime = procData.AvgProcWaitTime;
+			p.AvgProcCompTime = procData.AvgProcCompTime;
+			p.AvgThroughPut = procData.AvgThroughPut;
+
+			p.DeliveryAdherence = procData.DeliveryAdherence;
+			p.AvgDeliveryAdherence= procData.AvgDeliveryAdherence;
+			p.Efficiency= procData.Efficiency;
+			p.AvgEfficiency= procData.AvgEfficiency;
+
+
+			arrProcess.push(p);
+		}
+
+
+
+		
+		/*
+			Processing of the Ressources
+		*/
+
+
+
+		for(i = 0; i< len; i++) {
+
+			var arrRes=  response[i]["Data"]["ressources"];
+			var iRes = arrRes.length;
+			
+			for(var j = 0; j< iRes; j++){
+				var strName = arrRes[j].RessourceName;
+				var utliRatio = arrRes[j].UtilizationRatio;
+				var IdleTime = arrRes[j].IdleTime;
+				var avgutliRatio = arrRes[j].avgUtilizationRatio;
+				var avgIdleTime = arrRes[j].avgIdleTime;
+				
+				//pruefen, ob name bereits im array
+				//if( $.inArray(strName,arrRessources) == -1 ){
+				if( !(strName in arrRessources)){
+					
+					var o = new objRessource();
+					o.Name = strName;
+					
+				}else{
+					
+					var o = arrRessources[strName];
+				
+				}	
+				o.addUtilizationRatio(utliRatio);
+				o.addIdleTime(IdleTime);
+				o.addAvgUtilizationRatio(avgutliRatio);
+				o.addAvgIdleTime(avgIdleTime);
+				arrRessources[strName] = o;		
+			
+				
+			} //end for(j)
+			
+
+			/*
+				Processing of the Servers
+			*/
+			
+			
+			var arrServ=  response[i]["Data"]["servers"];
+
+			var iRes = arrServ.length;
+			
+			for(var k = 0; k< iRes; k++){
+				var strName = arrServ[k].ServerName;
+				var Accesses = arrServ[k].Accesses;
+				var AvgAccesses = arrServ[k].AvgAccesses;
+
+				var AvgQLength = arrServ[k].AvgQLength;
+				var AvgResNumber = arrServ[k].AvgResNumber;
+				
+				var ServTime = arrServ[k].ServTime;
+				var AvgServTime = arrServ[k].AvgServTime;
+				
+				var WaitTime = arrServ[k].WaitTime;
+				var AvgWaitTime = arrServ[k].AvgWaitTime;
+				
+				var Calls = arrServ[k].Calls;
+				var AvgCalls = arrServ[k].AvgCalls;
+
+
+				//pruefen, ob name bereits im array
+				
+				if( !(strName in arrServers)){
+
+					var o = new objServer();
+					o.Name = strName;
+
+				}else{
+					
+					var o = arrServers[strName];
+	
+				}	
+				o.addAccesses(Accesses);
+				o.addAvgAccesses(AvgAccesses);
+
+				o.addAvgQLength(AvgQLength);
+				o.addAvgResNumber(AvgResNumber);
+				
+				o.addWaitTime(WaitTime);
+				o.addAvgWaitTime(AvgWaitTime);
+				
+				o.addServTime(ServTime);
+				o.addAvgServTime(AvgServTime);
+
+				
+				o.addAvgCalls(AvgCalls);
+				o.addCalls(Calls);
+
+
+				arrServers[strName] = o;	
+				
+				
+			} // end for k
+			
+					
+				
+				
+				
+				
+				
+			/*
+				Fill into elements
+			*/
+			
+			// Ressources
+			
+			//only last element
+			
+			// start insert into divs
+			if(i == len-1){
+			
+				// process
+
+
+				
+
+				var strInfoProcess = "";
+				var res  = arrProcess[i];
+				var strInfoProcess = "";
+
+				function getQualityClass(indikatorvalue, bad,good){
+
+						if(indikatorvalue <= bad){
+
+							return "ValueBad";
+
+						}else if(indikatorvalue >= good){
+						
+							return "ValueGood"; 
+
+						}else{
+							return "ValueMedium";
+						}
+
+				}
+
+				var EfficienceClass = res.Efficiency<=0.1?"ValueBad":"ValueGood";
+				var AvgEfficienceClass = res.AvgEfficiency<=0.1?"ValueBad":"ValueGood";
+
+				strInfoProcess =
+										"<table class=\"table text-center\">"+
+										"<tr>"+
+										"	<th></th>"+
+										//"	<th><p title=\"ThroughPut / FinishedCases)\">Delivery Adherence</p></th>"+
+										"	<th><p title=\"ProcServTime / ProcCompTime\">Efficiency</p></th>"+
+										"	<th><p title=\"Count of completetely finished cases during period\">Finished Cases</p></th>"+
+										
+										//"	<th>Duration</th>"+
+										"	<th><p title=\"Custom tooltip text.\">Completion Time</p></th>"+
+										"	<th><p title=\"Custom tooltip text.\">Absolute Throughput</p></th>"+
+										"	<th><p title=\"CinishedCases /  lambda\">Throughput</p></th>"+
+										"</tr>"+
+										"<tr>"+
+										"	<td></td>"+
+										//"	<td>" + (res.DeliveryAdherence*100).toFixed(1)+ "</td>"+
+										"	<td class=\""+ getQualityClass(res.Efficiency,0.10,0.90) +"\">" + (res.Efficiency*100).toFixed(2) + "% </td>"+
+										"	<td class=\""+ getQualityClass(res.FinishedCases,0) + "\">" + res.FinishedCases.toFixed(0) + "</td>"+	
+										//"	<td>" + res.Duration.toFixed(2) + "</td>"+		
+										"	<td>" + res.ProcCompTime.toFixed(2) + " min</td>"+
+										"	<td>" + res.ThroughPut.toFixed(2) + "</td>"+
+										"	<td>" + (res.FinishedCases /  SimStat.lambda *100).toFixed(1)+  "% </td>"+
+										"</tr><tr>" +
+										"	<td>&#216;</td>"+
+										//"	<td>" + (res.AvgDeliveryAdherence*100).toFixed(1) + "</td>"+
+										"	<td class=\""+ getQualityClass(res.AvgEfficiency,0.1,0.9) + "\"> "+ (res.AvgEfficiency*100).toFixed(2) + "% </td>"+
+										"	<td>" + res.AvgFinishedCases.toFixed(0) + "</td>"+
+										//"	<td>" + res.AvgDuration.toFixed(2) + "</td>"+		
+										"	<td>" + res.AvgProcCompTime.toFixed(2) + " min</td>"+
+										"	<td>" + res.AvgThroughPut.toFixed(2) + "</td>"+
+										"	<td>" + (res.AvgFinishedCases / (/*(SimStat.period/60) * */SimStat.lambda) *100).toFixed(1) +  "% </td>"+
+										"</tr></table>"
+				
+		
+
+				$('#simProcessValues').html(strInfoProcess);
+
+
+				// ressources
+				
+				var strInfoRessource = "<table class=\"table text-center\">"+
+										"<tr>"+
+										"	<th>Ressource</th>"+
+										"	<th>Utilization Ratio</th>"+
+										"	<th>&#216;</th>"+
+										"</tr>";
+
+
+				var colorIndex;
+				colorIndex = 0;
+
+				for (var k in arrRessources)
+				{
+					var res  = arrRessources[k];
+				
+
+					strInfoRessource += "<tr>"+
+										"	<td><a  style=\"color:" + colors[colorIndex++] +  ";\" href=\"#dialogSimulationStat\" data-toggle=\"modal\" onclick=\"showSimulationResssourceDetails('','" + k +  "');\">" + k + "</a></td>"+
+										"	<td>  " + (res.UtilizationRatio[i]*100).toFixed(2) + "%</td>"+
+										"	<td>"+ (res.AvgUtilizationRatio[i]*100).toFixed(2) +"%</td>"+
+										"</tr>"
+				}
+
+				strInfoRessource +=	"</table>";
+
+				$('#simRessourceValues').html(strInfoRessource);
+
+
+				
+				
+
+
+			
+				// Server
+				
+				
+				
+				var strInfoServer = "<table class=\"table text-center\">"+
+									"<tr>"+
+									"	<th>Task</th>"+
+									"	<th>Wait Time</th>"+
+									"	<th>&#216;</th>"+
+									//"	<th>Service Time</th>"+
+									//"	<th>&#216;</th>"+
+									"</tr>";
+				
+
+				colorIndex = 0;
+
+
+				for (var k in arrServers)
+				{
+					var serv  = arrServers[k];
+					
+					strInfoServer += "<tr><td>" + 
+
+									"<a  style=\"color:" + colors[colorIndex++] +  ";\" href=\"#dialogSimulationStat\" data-toggle=\"modal\" onclick=\"showSimulationServerDetails('','" + serv.Name+  "');\">" +  serv.Name  + "</a></td>"+
+									"</td>"+
+									"	<td> " + serv.WaitTime[i].toFixed(2) + "</td>"+
+									"	<td>"+ serv.AvgWaitTime[i].toFixed(2) +"</td>"+
+									//"	<td> " + res.ServTime[i] + "</td>"+
+									//"	<td>"+ res.AvgServTime[i] +"</td>"+
+									"</tr>"
+										
+
+				}
+				strInfoServer += "</table>";
+
+				$('#simServerValues').html(strInfoServer);
+			} // end insert into divs
+			
+		}; //end for
+		
+
+
+
+		/*
+		*	Draw Diagramms
+		*/
+
+		//Ressources
+		var nonZeroRessourceValues = false; 
+
+		if(len > 0){
+			var keys = []
+			
+			var resaxis = fctBuildAxisLabel(len);
+			
+			for(var tres in arrRessources){
+
+    			//keys.push(k)
+				
+				var resdata = fctBuildAxisData(arrRessources, tres);
+				keys[tres] = resdata;
+
+				if(resdata != 0){
+					nonZeroRessourceValues = true;
+				}
+
+			}
+	
+			
+		}
+
+		var ctxLineDiag = $("#canvasRessourceLineDiag")[0].getContext("2d");
+
+		ctxLineDiag.canvas.width = 200;
+		ctxLineDiag.canvas.height = 200;
+		ctxLineDiag.clearRect(0, 0, ctxLineDiag.width, ctxLineDiag.height);	
+
+
+		if (nonZeroRessourceValues == true){
+
+
+			//String - A legend template
+			var strLegendeTemplate = "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"color:<%=datasets[i].strokeColor%>\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
+
+			if (chartLine){
+				chartLine.destroy();
+			}
+			chartLine  = new Chart(ctxLineDiag).Line(addValuesToLineChart(resaxis,keys), {
+				scaleShowGridLines:false,
+				responsive: false, 
+				animation:false,
+				animationSteps: 20,
+				scaleShowLabels:true , 
+				legendTemplate : strLegendeTemplate,
+				pointDotRadius : 0,
+				datasetStrokeWidth:5,
+				scaleOverride: true,
+				showScale: true,
+			    scaleSteps: 1,
+			    // Number - The value jump in the hard coded scale
+			    scaleStepWidth: 100,
+			    // Number - The scale starting value
+			    scaleStartValue: 0
+			});
+			var strLegende = chartLine.generateLegend();
+			var legende = $("#RessourceLineDiag");
+			legende.html (strLegende);
+		}
+		else{
+
+			ctxLineDiag.strokeStyle = "#000000";
+			ctxLineDiag.font = "16px Arial";
+			ctxLineDiag.fillText("no data to display",50,50);
+			ctxLineDiag.fillText("(no waiting-times)",50,80);
+		}
+
+
+		// Server
+
+		var nonZeroServerValues = false; 
+		if(len > 0){
+			var keys = []
+			
+			
+			for(var tserv in arrServers){
+				
+				var resdata = fctBuildDoughnutData(arrServers, tserv);
+				keys[tserv] = resdata;
+
+				if(resdata != 0){
+					nonZeroServerValues = true;
+				}
+
+			}		
+		}
+
+
+
+		var ctxDoughnut = $("#canvasTasksDoughnut")[0].getContext("2d");
+
+
+		ctxDoughnut.canvas.width = 200;
+		ctxDoughnut.canvas.height = 200;
+		ctxDoughnut.clearRect(0, 0, ctxDoughnut.width, ctxDoughnut.height);
+
+		if ( nonZeroServerValues == true ){
+
+
+			//String - A legend template
+			var strLegendeTemplateDoughnut = "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>"
+
+			var t_vals = addValuesToDoughnutChart(keys);
+
+
+			
+			
+			if (chartDoughnut)
+				chartDoughnut.destroy();
+
+
+			chartDoughnut  = new Chart(ctxDoughnut).Doughnut(t_vals, {animation:false,legendTemplate:strLegendeTemplateDoughnut
+																			});
+			var strLegendeDoughnut = chartDoughnut.generateLegend();
+			var legendeDoughnut = $("#legendeDoughnut");
+			legendeDoughnut.html(strLegendeDoughnut);
+		}
+		else{
+
+			ctxDoughnut.strokeStyle = "#000000";
+			ctxDoughnut.font = "16px Arial";
+			ctxDoughnut.fillText("no data to display",50,50);
+			ctxDoughnut.fillText("(no waiting-times)",50,80);
+		}
+	};
+	
+	
+	function fctBuildAxisLabel(ticks){
+		var label = [];
+		for (var i = 0 ; i < ticks; i++){
+
+			label.push("");
+
+		}
+		return label;
+	}
+
+	function fctBuildAxisData(res, k){
+		
+		var r = res[k];
+		
+		var values =  r.AvgUtilizationRatio;
+
+
+		for(var i=0; i< values.length;i++){
+			values[i] = (values[i]*100).toFixed(1);
+		}
+		return values;
+
+	}
+
+	function fctBuildDoughnutData(res, k){
+		
+		var r = res[k];
+		var lastIndex = r.AvgWaitTime.length-1;
+		return r.AvgWaitTime[lastIndex];
+	}
+	
+
+	/*
+		Slider to changes on the sliders position
+	*/
+	
+	$( "#timeSlider" ).change(function( event, ui ) {
+		
+					currentTick = 0;
+					fctGetDashboardValues($(this).val(), false);
+	});
+	
+	$("#btnSlideLeft").click(function(){
+		var slidervalue = parseInt($( "#timeSlider" ).val());
+		if(slidervalue > 1){
+			slidervalue = slidervalue -1;
+		
+			$( "#timeSlider" ).val( slidervalue );
+			fctGetDashboardValues(slidervalue, false);
+		}
+	});
+
+	$("#btnSlideRight").click(function(){
+		var slidervalue = parseInt($( "#timeSlider" ).val());
+		slidervalue = slidervalue +1;
+
+		$( "#timeSlider" ).val( slidervalue );
+		fctGetDashboardValues(slidervalue, false);
+	});
+	
+	
+	
+	/* 
+    
+    	End Dashboard 
+    	
+    */
+    
+    /*
+    	Archivselection
+    */
+    
+    $( "#archiveselection" ).change(function() {
+    	selectedTableName =  $( "#archiveselection" ).val();
+ 
+
+		$.getJSON('/getrequest/?action=getSimulationStats&table='+selectedTableName, function(){
+		    	}).done(function(response){
+
+
+			SimStat.period = response['period'];
+    		SimStat.lambda = response['lambda'];
+			SimStat.queue = response['queue'];
+			SimStat.runs = response['runs'];
+
+
+   			$("#timeSlider").attr( "min", 1);
+
+    		$("#timeSlider").attr( "max", SimStat.runs);
+
+    		$('#aMaxTick').html(SimStat.runs);
+
+    		//$('#timeSlider').val(SimStat.runs);
+
+
+    		// werte an dashboard-elemente uebertragen
+			fctGetDashboardValues($("#timeSlider").val(), false);
+    	})	
+
+    });
+	
+	
+    
+    
+    
+    function fctFillPullDown(response){
+    		
+    	var trHTML = ''
+    		
+    	if(response.length == 0){
+
+    		console.log("keine Archive");
+
+    	}
+
+    	var arrTables = [];	
+
+    	$.each(response, function(i, item){
+
+    		arrTables.push(item['TABLENAME']);
+    		
+    	});
+    	
+    	//liste sortieren
+    	//arrTables = arrTables.reverse();
+    	
+    	$.each(arrTables, function(i, item){
+    		trHTML += "<option>"+item+"</option>";		
+    	});
+    	
+    	$('#archiveselection').html(trHTML);
+    };
+    
+    
+    
+    /*
+    	End ArchivSelection
+    */
+
+    
+    /*
+    	graph
+    	
+    */
+
+
+	
+
+
+	/* 
+		Line Chart
+		
+	*/
+	
+	
+	
+	//myinit();
+
+
+
+
+
+    
+ });  
+
+	/*
+		Helper functions for Line Diag
+	*/
+
+	function addValuesToLineChart(resaxis, keys){
+
+		
+
+		var lineDiag =null;
+
+		var dataset = [];
+		var farbe = 0;
+		farbe = 0;
+		
+
+
+		for (var k in keys){
+			
+			dataset.push({		label: k, 
+								fillColor : "rgba(255,255,255,0.3)",//colors[farbe],
+								strokeColor : colors[farbe++],
+								data : keys[k] });
+		}
+			
+		var lineChartData = {
+			labels : resaxis,
+			datasets : dataset
+		}
+		return lineChartData;
+		
+	}
+
+	/*
+			Helper functions for Doughnut Diag
+	*/
+	function addValuesToDoughnutChart(keys){
+
+		
+
+		var DoughnutDiag =null;
+
+		var dataset = [];
+		var farbe = 0;
+		farbe = 0;
+		
+		
+
+		for (var k in keys){
+			
+			var lastValue = keys[k].length -1;
+			dataset.push({		label: k, 
+								color: colors[farbe],
+						        highlight: colors[farbe++],
+								value : keys[k] });
+		}
+			
+		var DoughnutChartData = {
+			datasets : dataset
+		}
+		return dataset;
+		
+	}
+
+
+</script>
+
+<div class="row">
+	<div class="panel panel-default">
+			<div class="panel-heading">
+			    <h3 class="panel-title">Process</h3>
+			</div>
+			<div class="panel-body">
+
+				<div id="simProcessValues"></div>
+
+			</div>
+	</div>
+</div>
+
+
+<div class="row">
+
+	
+	<div class="col-md-6">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+
+		    <h3 class="panel-title">Tasks</h3>
+
+		</div>
+		<div class="panel-body">
+			<div class="pull-left">
+				<canvas id="canvasTasksDoughnut" 
+						height="200px" 
+						width="200px">
+				</canvas>
+			</div>
+			<div class="pull-right">
+				<div 	id="simServerValues"></div>
+			</div>
+		</div>
+		</div>
+		
+		
+	</div>
+
+	<div class="col-md-6">
+		<!--canvas id="myLineChart" width="200" height="400">mein LineChart</canvas-->
+		<div class="panel panel-default">
+		<div class="panel-heading">
+
+		    <h3 class="panel-title">Ressources</h3>
+
+		</div>
+		
+		<div class="panel-body">
+			<div class = "row">
+<!--
+				<div id ="RessourceLineDiag" class="pull-left" tyle="margin-left:10%;vertical:center;"></div>
+-->
+				<div class="pull-left">
+					
+					<div 	id="simRessourceValues"
+						style="margin-left:10%;">
+				</div>
+				</div>
+			<div class="pull-right">
+				<canvas id="canvasRessourceLineDiag" 
+							
+							style="margin-right:10%;">
+					</canvas>
+			</div>	
+		</div>
+		</div>
+	</div>
+</div>
+
+
+<div class ="navbar navbar-default navbar-fixed-bottom"> 
+	<div class = "container"> 
+	
+			<div class="pull-left">
+				<select id="archiveselection"></select>
+				<a  class="btn btn-default" 
+					href='#dialogSimulationStat' 
+					data-toggle='modal' 
+					onclick="showSimulationStats();">Info
+				</a>
+			</div>
+	
+		
+		
+			<div class="pull-right">
+				<button id="btnSlideLeft">&lt;</button>
+
+				<input id="timeSlider" type="range" min="1" max="100" style="width: 10em; display: inline;" value="1" />
+				<button id="btnSlideRight">&gt;</button>
+					
+				<button id="btnSlideAuto">play</button>
+		
+				<span><a id="aCurrentTick">0</a>/<a id="aMaxTick">0</a></span>
+				
+				<input id="chkAutoUpdate" type="checkbox"> Automatic Update<br>
+	 		<div>	
+	 	 
+	</div>	 
+</div>
+
+

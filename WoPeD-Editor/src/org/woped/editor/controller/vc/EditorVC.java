@@ -29,7 +29,6 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 import javax.swing.tree.TreeNode;
 
-import org.apromore.manager.model_portal.EditSessionType;
 import org.jgraph.event.GraphModelEvent;
 import org.jgraph.event.GraphModelListener;
 import org.jgraph.event.GraphSelectionEvent;
@@ -172,8 +171,6 @@ public class EditorVC implements KeyListener,
 
 	private boolean tokenGameEnabled = false;
 
-	private EditSessionType m_apro_settings = null;
-
 	private Point2D m_lastMousePosition = null;
 
 	private PropertyChangeSupport m_propertyChangeSupport = null;
@@ -189,7 +186,7 @@ public class EditorVC implements KeyListener,
 
 	// ! Store a reference to the application mediator.
 	// ! It is used to create a new subprocess editor if required
-	public AbstractApplicationMediator m_centralMediator = null;
+	public AbstractApplicationMediator m_mediator = null;
 	
 
 	// Metrics team variables
@@ -229,7 +226,7 @@ public class EditorVC implements KeyListener,
 		this.m_propertyChangeSupport = new PropertyChangeSupport(this);
 		this.m_propertyChangeSupport.addPropertyChangeListener(VisualController
 				.getInstance());
-		this.m_centralMediator = mediator;
+		this.m_mediator = mediator;
 		
 		this.undoSupport = undoSupport;
 		// initialize
@@ -1387,7 +1384,7 @@ public class EditorVC implements KeyListener,
 		LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
 		tokenGameEnabled = false;
 		m_tokenGameController.stop();
-		m_centralMediator.getUi().refreshFocusOnFrames();
+		m_mediator.getUi().refreshFocusOnFrames();
 		
 		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
 	}	
@@ -1752,8 +1749,8 @@ public class EditorVC implements KeyListener,
 		}
 	}
 
-	public AbstractApplicationMediator getM_centralMediator() {
-		return m_centralMediator;
+	public AbstractApplicationMediator getMediator() {
+		return m_mediator;
 	}
 
 	public boolean isUndoSupport() {
@@ -1793,7 +1790,7 @@ public class EditorVC implements KeyListener,
 		int oldValue = m_createElementType;
 		this.m_createElementType = createElementType;
 		
-		VisualController.getInstance().propertyChange(new PropertyChangeEvent(m_centralMediator, "DrawMode", oldValue, createElementType));
+		VisualController.getInstance().propertyChange(new PropertyChangeEvent(m_mediator, "DrawMode", oldValue, createElementType));
 	}
 
 	/**
@@ -2013,7 +2010,7 @@ public class EditorVC implements KeyListener,
 	// ! The source of the sub-process will receive a virtual token for the game
 	// ! @param subProcess specifies the sub-process to be opened
 	public void openTokenGameSubProcess(SubProcessModel subProcess) {
-		EditorVC newEditorWindow = (EditorVC) m_centralMediator
+		EditorVC newEditorWindow = (EditorVC) m_mediator
 				.createSubprocessEditor(true, this, subProcess);
 		newEditorWindow.getModelProcessor().getElementContainer();
 		IQualanalysisService qualanService = QualAnalysisServiceFactory
@@ -2183,7 +2180,7 @@ public class EditorVC implements KeyListener,
 		getEditorPanel().m_treeObject = null;
 		getEditorPanel().m_treeModel = null;
 		getEditorPanel().editorSize = null;
-		m_centralMediator = null;
+		m_mediator = null;
 		getEditorPanel().m_understandColoring = null;
 	}
 
@@ -2199,11 +2196,11 @@ public class EditorVC implements KeyListener,
 					SubProcessModel subprocess = (SubProcessModel) element
 							.getMainElement();
 					NetAlgorithms.getArcConfiguration(subprocess, arcConfig);
-					IEditor editor = (EditorVC) getM_centralMediator().getUi()
+					IEditor editor = (EditorVC) getMediator().getUi()
 							.getEditorFocus();
 					if ((arcConfig.m_numIncoming != 0)
 							|| (arcConfig.m_numOutgoing != 0)) {
-						subEditor = getM_centralMediator()
+						subEditor = getMediator()
 								.createSubprocessEditor(
 										true,
 										editor,
@@ -2271,6 +2268,5 @@ public class EditorVC implements KeyListener,
 
 	public String getPathname() {
 		return m_pathname;
-	}
-	
+	}	
 }

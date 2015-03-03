@@ -1,6 +1,7 @@
 package org.woped.file.controller.vep;
 
 import java.awt.Cursor;
+import java.awt.EventQueue;
 import java.awt.FileDialog;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -8,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.security.AccessControlException;
 import java.util.Iterator;
@@ -119,7 +121,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			cFolder.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			cFolder.setDialogTitle(Messages
 					.getString("Metrics.Mass.OpenDialog"));
-			int cont = cFolder.showOpenDialog(null);
+			int cont = cFolder.showOpenDialog((JFrame) getMediator().getUi());
 			if (cont != JFileChooser.APPROVE_OPTION)
 				return;
 			File folder = cFolder.getSelectedFile();
@@ -142,7 +144,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			cFolder.addChoosableFileFilter(filter);
 			cFolder.setDialogTitle(Messages
 					.getString("Metrics.Mass.SaveDialog"));
-			cont = cFolder.showSaveDialog(null);
+			cont = cFolder.showSaveDialog((JFrame) getMediator().getUi());
 			if (cont != JFileChooser.APPROVE_OPTION)
 				return;
 			File saveTo = new File(cFolder.getSelectedFile().getAbsolutePath());
@@ -515,69 +517,73 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
 			if (ConfigurationManager.getConfiguration()
 					.isCurrentWorkingdirSet()) {
-				fileDialog = new FileDialog(frame , Messages.getString("Action.EditorSaveAs.Title"), FileDialog.SAVE);
-				fileDialog.setDirectory(ConfigurationManager
-						.getConfiguration().getCurrentWorkingdir());
+				fileDialog = new FileDialog(frame,
+						Messages.getString("Action.EditorSaveAs.Title"),
+						FileDialog.SAVE);
+				fileDialog.setDirectory(ConfigurationManager.getConfiguration()
+						.getCurrentWorkingdir());
 			} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
-				fileDialog = new FileDialog(frame , Messages.getString("Action.EditorSaveAs.Title"), FileDialog.SAVE);
-				fileDialog.setDirectory(ConfigurationManager
-						.getConfiguration().getHomedir());
-				
+				fileDialog = new FileDialog(frame,
+						Messages.getString("Action.EditorSaveAs.Title"),
+						FileDialog.SAVE);
+				fileDialog.setDirectory(ConfigurationManager.getConfiguration()
+						.getHomedir());
+
 			} else {
-				fileDialog = new FileDialog(frame ,Messages.getString("Action.EditorSaveAs.Title"), FileDialog.SAVE);
+				fileDialog = new FileDialog(frame,
+						Messages.getString("Action.EditorSaveAs.Title"),
+						FileDialog.SAVE);
 			}
 			fileDialog.setFile(editor.getName());
 			fileDialog.setVisible(true);
-		
-		
-		//Set fileFilter to pnml files here
+
+			// Set fileFilter to pnml files here
 			Vector<String> extensions = new Vector<String>();
 			extensions.add("pnml");
 			extensions.add("xml");
 			FileFilterImpl PNMLFilter = new FileFilterImpl(
 					FileFilterImpl.PNMLFilter,
 					"Petri Net Markup Language (1.3.2) (*.pnml)", extensions);
-		fileDialog.setFilenameFilter(new FilenameFilter (){
-            public boolean accept(File dir, String name) {
-                return name.endsWith(".pnml");
-            }   
-        });
-		
-		if (fileDialog.getFile()  != null) {
-			String savePath = fileDialog.getDirectory();
-			String fileName = Utils.getQualifiedFileName(fileDialog.getFile(), extensions);
-			
-			if (!new File(savePath.concat(fileName)).exists()
-					|| (isFileOverride(null, fileDialog.getDirectory()))) {
-				if (editor != null && new File(savePath).exists()) {
-					editor.setName(fileName);
-					editor.setPathName(savePath);
-					editor.setFilePath(savePath.concat(fileName));
-					ConfigurationManager.getConfiguration()
-							.setCurrentWorkingdir(savePath);
-					LoggerManager.debug(Constants.FILE_LOGGER,
-							"Current working dir is: "
-									+ ConfigurationManager
-											.getConfiguration()
-											.getCurrentWorkingdir());
-					editor.setDefaultFileType(PNMLFilter.getFilterType());
-					succeed = save(editor);
-				} else {
-					LoggerManager
-							.debug(Constants.FILE_LOGGER,
-									"\"Save as\" canceled or nothing to save at all.");
-					succeed = false;
+			fileDialog.setFilenameFilter(new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.endsWith(".pnml");
+				}
+			});
+
+			if (fileDialog.getFile() != null) {
+				String savePath = fileDialog.getDirectory();
+				String fileName = Utils.getQualifiedFileName(
+						fileDialog.getFile(), extensions);
+
+				if (!new File(savePath.concat(fileName)).exists()
+						|| (isFileOverride(null, fileDialog.getDirectory()))) {
+					if (editor != null && new File(savePath).exists()) {
+						editor.setName(fileName);
+						editor.setPathName(savePath);
+						editor.setFilePath(savePath.concat(fileName));
+						ConfigurationManager.getConfiguration()
+								.setCurrentWorkingdir(savePath);
+						LoggerManager.debug(Constants.FILE_LOGGER,
+								"Current working dir is: "
+										+ ConfigurationManager
+												.getConfiguration()
+												.getCurrentWorkingdir());
+						editor.setDefaultFileType(PNMLFilter.getFilterType());
+						succeed = save(editor);
+					} else {
+						LoggerManager
+								.debug(Constants.FILE_LOGGER,
+										"\"Save as\" canceled or nothing to save at all.");
+						succeed = false;
+					}
 				}
 			}
-		}
-		
-		
+
 		}
 
 		return succeed;
 	}
-	
-	
+
 	/**
 	 * TODO: Documentation
 	 * 
@@ -596,88 +602,86 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		if (!Platform.isMac()) {
-		if (editor != null) {
-			// Open save as Dialog
-			JFileChooser jfc;
-			if (ConfigurationManager.getConfiguration()
-					.isCurrentWorkingdirSet()) {
-				jfc = new JFileChooser(new File(ConfigurationManager
-						.getConfiguration().getCurrentWorkingdir()));
-			} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
-				jfc = new JFileChooser(new File(ConfigurationManager
-						.getConfiguration().getHomedir()));
-				
-			} else {
-				jfc = new JFileChooser();
-			}
+			if (editor != null) {
+				// Open save as Dialog
+				JFileChooser jfc;
+				if (ConfigurationManager.getConfiguration()
+						.isCurrentWorkingdirSet()) {
+					jfc = new JFileChooser(new File(ConfigurationManager
+							.getConfiguration().getCurrentWorkingdir()));
+				} else if (ConfigurationManager.getConfiguration()
+						.isHomedirSet()) {
+					jfc = new JFileChooser(new File(ConfigurationManager
+							.getConfiguration().getHomedir()));
 
-			
-			
+				} else {
+					jfc = new JFileChooser();
+				}
 
-			// FileFilters
-			Vector<String> extensions = new Vector<String>();
-			extensions.add("pnml");
-			extensions.add("xml");
-			FileFilterImpl PNMLFilter = new FileFilterImpl(
-					FileFilterImpl.PNMLFilter,
-					"Petri Net Markup Language (1.3.2) (*.pnml)", extensions);
-			jfc.setFileFilter(PNMLFilter);
+				// FileFilters
+				Vector<String> extensions = new Vector<String>();
+				extensions.add("pnml");
+				extensions.add("xml");
+				FileFilterImpl PNMLFilter = new FileFilterImpl(
+						FileFilterImpl.PNMLFilter,
+						"Petri Net Markup Language (1.3.2) (*.pnml)",
+						extensions);
+				jfc.setFileFilter(PNMLFilter);
 
-			jfc.setDialogTitle(Messages.getString("Action.EditorSaveAs.Title"));
+				jfc.setDialogTitle(Messages
+						.getString("Action.EditorSaveAs.Title"));
 
-			int returnVal = jfc.showSaveDialog(null);
+				int returnVal = jfc.showSaveDialog(null);
 
-			if (jfc.getSelectedFile() != null
-					&& returnVal == JFileChooser.APPROVE_OPTION) {
-				String savePath = jfc
-						.getSelectedFile()
-						.getAbsolutePath()
-						.substring(
-								0,
-								jfc.getSelectedFile().getAbsolutePath()
-										.length()
-										- jfc.getSelectedFile().getName()
-												.length());
-				String fileName = Utils.getQualifiedFileName(jfc
-						.getSelectedFile().getName(), extensions);
-				
-				if (!new File(savePath.concat(fileName)).exists()
-						|| (isFileOverride(null, jfc.getSelectedFile()
-								.getPath()))) {
-					if (editor != null && new File(savePath).exists()) {
-						// setting the Default File Type
-						editor.setDefaultFileType(((FileFilterImpl) jfc
-								.getFileFilter()).getFilterType());
-						// setting the new filename to editor, and Title to
-						// Frame
-						editor.setName(fileName);
-						editor.setPathName(savePath);
-						editor.setFilePath(savePath.concat(fileName));
-						ConfigurationManager.getConfiguration()
-								.setCurrentWorkingdir(savePath);
-						LoggerManager.debug(Constants.FILE_LOGGER,
-								"Current working dir is: "
-										+ ConfigurationManager
-												.getConfiguration()
-												.getCurrentWorkingdir());
-						editor.setDefaultFileType(((FileFilterImpl) jfc
-								.getFileFilter()).getFilterType());
-						succeed = save(editor);
-					} else {
-						LoggerManager
-								.debug(Constants.FILE_LOGGER,
-										"\"Save as\" canceled or nothing to save at all.");
-						succeed = false;
+				if (jfc.getSelectedFile() != null
+						&& returnVal == JFileChooser.APPROVE_OPTION) {
+					String savePath = jfc
+							.getSelectedFile()
+							.getAbsolutePath()
+							.substring(
+									0,
+									jfc.getSelectedFile().getAbsolutePath()
+											.length()
+											- jfc.getSelectedFile().getName()
+													.length());
+					String fileName = Utils.getQualifiedFileName(jfc
+							.getSelectedFile().getName(), extensions);
+
+					if (!new File(savePath.concat(fileName)).exists()
+							|| (isFileOverride(null, jfc.getSelectedFile()
+									.getPath()))) {
+						if (editor != null && new File(savePath).exists()) {
+							// setting the Default File Type
+							editor.setDefaultFileType(((FileFilterImpl) jfc
+									.getFileFilter()).getFilterType());
+							// setting the new filename to editor, and Title to
+							// Frame
+							editor.setName(fileName);
+							editor.setPathName(savePath);
+							editor.setFilePath(savePath.concat(fileName));
+							ConfigurationManager.getConfiguration()
+									.setCurrentWorkingdir(savePath);
+							LoggerManager.debug(Constants.FILE_LOGGER,
+									"Current working dir is: "
+											+ ConfigurationManager
+													.getConfiguration()
+													.getCurrentWorkingdir());
+							editor.setDefaultFileType(((FileFilterImpl) jfc
+									.getFileFilter()).getFilterType());
+							succeed = save(editor);
+						} else {
+							LoggerManager
+									.debug(Constants.FILE_LOGGER,
+											"\"Save as\" canceled or nothing to save at all.");
+							succeed = false;
+						}
 					}
 				}
 			}
-		}}
-		else {
+		} else {
 			succeed = macSaveAs(editor);
 		}
-		
-			
-	
+
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getDefaultCursor());
 		return succeed;
@@ -690,79 +694,93 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		JFileChooser fileChooser;
 		FileDialog fileDialog;
 		String fn;
-		
+
 		if (!Platform.isMac()) {
 
-		if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
-			fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
-			fileChooser = new JFileChooser(new File(fn));
-		} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
-			fn = ConfigurationManager.getConfiguration().getHomedir();
-			fileChooser = new JFileChooser(new File(fn));
-		} else {
-			fileChooser = new JFileChooser();
-		}
-		// FileFilters
-		// Vector<String> extensions = new Vector<String>();
-
-		// extensions.add("pnml");
-		// extensions.add("xml");
-		// extensions.add("xmi");
-		/*
-		 * jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.OLDPNMLFilter,
-		 * "Petri Net Markup Language older version (*.pnml)", extensions));
-		 */
-		// jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.PNMLFilter,
-		// "Petri Net Markup Language (1.3.2) (*.pnml)", extensions));
-		fileChooser.addChoosableFileFilter(new FileFilterImpl(
-				FileFilterImpl.YAWLFilter, "YAWL-Files (*.yawl)", "yawl"));
-
-		fileChooser.setFileFilter(new FileFilterImpl(FileFilterImpl.PNMLFilter,
-				"Petri Net Markup Language (1.3.2) (*.pnml)", "pnml"));
-		fileChooser.showOpenDialog(null);
-
-		if (fileChooser.getSelectedFile() != null) {
-			String abspath = fileChooser.getSelectedFile().getAbsolutePath();
-			ConfigurationManager.getConfiguration().setCurrentWorkingdir(
-					abspath.substring(0, abspath.lastIndexOf(File.separator)));
-			return openFile(fileChooser.getSelectedFile(),
-					((FileFilterImpl) fileChooser.getFileFilter()).getFilterType());
-		}
-		}
-			else {
-				JFrame frame = null;
-				//Mac part, let's do the same with the awt.FileDialog
-				if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
-					fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
-					fileDialog = new FileDialog(frame , "Choose a file", FileDialog.LOAD);
-					fileDialog.setDirectory(fn);
-				} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
-					fn = ConfigurationManager.getConfiguration().getHomedir();
-					fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
-					fileDialog.setDirectory(fn);
-				} else {
-					fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
-				}
-				//Set fileFilter to pnml files here
-				fileDialog.setFilenameFilter(new FilenameFilter (){
-	                public boolean accept(File dir, String name) {
-	                    return name.endsWith(".pnml");
-	                }   
-	            });
-				
-				fileDialog.setVisible(true);
-				if (fileDialog.getFile() != null) {
-					String abspath = fileDialog.getDirectory() + fileDialog.getFile();
-					ConfigurationManager.getConfiguration().setCurrentWorkingdir(
-							abspath.substring(0, abspath.lastIndexOf(File.separator)));
-					//set new file object and pass it to the open file method. Integer 2 is the pnml suffix.
-					File file = new File(fileDialog.getDirectory(), fileDialog.getFile());
-					return openFile(file,
-							2);
-				}
+			if (ConfigurationManager.getConfiguration()
+					.isCurrentWorkingdirSet()) {
+				fn = ConfigurationManager.getConfiguration()
+						.getCurrentWorkingdir();
+				fileChooser = new JFileChooser(new File(fn));
+			} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+				fn = ConfigurationManager.getConfiguration().getHomedir();
+				fileChooser = new JFileChooser(new File(fn));
+			} else {
+				fileChooser = new JFileChooser();
 			}
-				return null;
-			
+			// FileFilters
+			// Vector<String> extensions = new Vector<String>();
+
+			// extensions.add("pnml");
+			// extensions.add("xml");
+			// extensions.add("xmi");
+			/*
+			 * jfc.setFileFilter(new
+			 * FileFilterImpl(FileFilterImpl.OLDPNMLFilter,
+			 * "Petri Net Markup Language older version (*.pnml)", extensions));
+			 */
+			// jfc.setFileFilter(new FileFilterImpl(FileFilterImpl.PNMLFilter,
+			// "Petri Net Markup Language (1.3.2) (*.pnml)", extensions));
+			fileChooser.addChoosableFileFilter(new FileFilterImpl(
+					FileFilterImpl.YAWLFilter, "YAWL-Files (*.yawl)", "yawl"));
+
+			fileChooser.setFileFilter(new FileFilterImpl(
+					FileFilterImpl.PNMLFilter,
+					"Petri Net Markup Language (1.3.2) (*.pnml)", "pnml"));
+			fileChooser.showOpenDialog(null);
+
+			if (fileChooser.getSelectedFile() != null) {
+				String abspath = fileChooser.getSelectedFile()
+						.getAbsolutePath();
+				ConfigurationManager.getConfiguration().setCurrentWorkingdir(
+						abspath.substring(0,
+								abspath.lastIndexOf(File.separator)));
+				return openFile(fileChooser.getSelectedFile(),
+						((FileFilterImpl) fileChooser.getFileFilter())
+								.getFilterType());
+			}
+		} else {
+			JFrame frame = null;
+			// Mac part, let's do the same with the awt.FileDialog
+			if (ConfigurationManager.getConfiguration()
+					.isCurrentWorkingdirSet()) {
+				fn = ConfigurationManager.getConfiguration()
+						.getCurrentWorkingdir();
+				fileDialog = new FileDialog(frame, "Choose a file",
+						FileDialog.LOAD);
+				fileDialog.setDirectory(fn);
+			} else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+				fn = ConfigurationManager.getConfiguration().getHomedir();
+				fileDialog = new FileDialog(frame, "Choose a file",
+						FileDialog.LOAD);
+				fileDialog.setDirectory(fn);
+			} else {
+				fileDialog = new FileDialog(frame, "Choose a file",
+						FileDialog.LOAD);
+			}
+			// Set fileFilter to pnml files here
+			fileDialog.setFilenameFilter(new FilenameFilter() {
+				public boolean accept(File dir, String name) {
+					return name.endsWith(".pnml");
+				}
+			});
+
+			fileDialog.setVisible(true);
+			if (fileDialog.getFile() != null) {
+				String abspath = fileDialog.getDirectory()
+						+ fileDialog.getFile();
+				ConfigurationManager.getConfiguration().setCurrentWorkingdir(
+						abspath.substring(0,
+								abspath.lastIndexOf(File.separator)));
+				// set new file object and pass it to the open file method.
+				// Integer 2 is the pnml suffix.
+				File file = new File(fileDialog.getDirectory(),
+						fileDialog.getFile());
+				return openFile(file, 2);
+			}
+		}
+		return null;
+
 	}
 
 	/**
@@ -790,7 +808,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
 			pnmlImport = new PNMLImport((ApplicationMediator) getMediator());
 
-		} 
+		}
 		/*
 		 * else if (filter == FileFilterImpl.OLDPNMLFilter) { pr = new
 		 * OLDPNMLImport2((ApplicationMediator) getMediator()); }
@@ -798,13 +816,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		else {
 			pnmlImport = null;
 		}
-		
+
 		if (pnmlImport != null) {
 			boolean loadSuccess = false;
 			InputStream inputStream;
 
 			switch (filter) {
-			
+
 			case FileFilterImpl.PNMLFilter:
 			case FileFilterImpl.SAMPLEFilter:
 				// TODO Generate Thread
@@ -818,45 +836,51 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					loadSuccess = pnmlImport.run(inputStream, null);
 
 					/*
-					 * if (!loadSuccess) LoggerManager.error(Constants.FILE_LOGGER,
+					 * if (!loadSuccess)
+					 * LoggerManager.error(Constants.FILE_LOGGER,
 					 * "Could not open InputStream. " + file.getAbsolutePath());
 					 */
 					// }
 				}
 				break;
-				
+
 			case FileFilterImpl.YAWLFilter:
 				// To avoid having to deal with the internals of WoPeD we're
 				// transforming YAWL-XML into PNML-XML and then pass that
 				// to the pnmlImport object as a ByteArrayInputStream.
-				
+
 				// Get some test data to see if this works
-				
-				//PnmlOutput po = new PnmlOutput();
+
+				// PnmlOutput po = new PnmlOutput();
 				try {
-					String s = YawlInterface.importYawlFile(file);//po.ImportYawl(file);
-					inputStream = new ByteArrayInputStream(s.getBytes(Charset.forName("UTF-8")));
+					String s = YawlInterface.importYawlFile(file);// po.ImportYawl(file);
+					inputStream = new ByteArrayInputStream(s.getBytes(Charset
+							.forName("UTF-8")));
 					loadSuccess = pnmlImport.run(inputStream, "");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				// String s = org.woped.file.yawlimport.Yawlimport.importYawl(file);//YAWLImport.getTestPnml();
-				// inputStream = new ByteArrayInputStream(s.getBytes(Charset.forName("UTF-8")));
+
+				// String s =
+				// org.woped.file.yawlimport.Yawlimport.importYawl(file);//YAWLImport.getTestPnml();
+				// inputStream = new
+				// ByteArrayInputStream(s.getBytes(Charset.forName("UTF-8")));
 				// loadSuccess = pnmlImport.run(inputStream);
 				break;
-				
-			default: break;
+
+			default:
+				break;
 			} // end switch(filter) {...}
-			
+
 			if (loadSuccess) {
 				editor = pnmlImport.getEditor()[pnmlImport.getEditor().length - 1];
 				for (int i = 0; i < pnmlImport.getEditor().length; i++) {
 					if (editor instanceof EditorVC) {
 						((EditorVC) pnmlImport.getEditor()[i])
 								.setDefaultFileType(filter);
-						((EditorVC) pnmlImport.getEditor()[i]).setName(file.getName());
+						((EditorVC) pnmlImport.getEditor()[i]).setName(file
+								.getName());
 						((EditorVC) pnmlImport.getEditor()[i]).setFilePath(file
 								.getAbsolutePath());
 					}
@@ -899,11 +923,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
 	private void importApromore() {
 
-		new ApromoreImportFrame(getMediator());
+		ApromoreImportFrame frame = new ApromoreImportFrame(getMediator());
 
-		if (ConfigurationManager.getConfiguration().getColorOn()) {
-			new NetColorScheme().update();
-		}
+		
 	}
 
 	public void exportApromore(EditorVC editor) {

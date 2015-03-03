@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,7 +14,7 @@ import org.woped.core.config.IMetricsConfiguration;
 import org.woped.core.controller.IEditor;
 import org.woped.gui.translations.Messages;
 
-public class MetricsBuilder extends JFrame {
+public class MetricsBuilder extends JDialog {
 
 	/**
 	 * 
@@ -26,14 +27,14 @@ public class MetricsBuilder extends JFrame {
 	private MetricsBuilderPanel mbp;
 	
 	public MetricsBuilder(IEditor editor, String metricID) {
-		super(Messages.getString("Metrics.Builder.Title"));
+		super((JFrame)editor.getMediator().getUi(), true);
+		setTitle(Messages.getString("Metrics.Builder.Title"));
 		setLayout(new BorderLayout());
 		addComponents(metricID);
-		setVisible(true);
-		setSize(getPreferredSize());
+		setSize(600, 480);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2,
 				(Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
-		setResizable(false);
+		setVisible(true);
 		
 		if(!metricID.equals(""))
 				MetricsBuilderPanel.displayMetric(metricID);

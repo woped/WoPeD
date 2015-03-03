@@ -420,12 +420,8 @@ public class WoPeDMetricsConfiguration extends WoPeDConfiguration implements
 			
 			toBeSavedConfig.save(new File(fileMap.get(fileID)), xmlOptions);
 			confMap.put(fileID, toBeSavedConfig);
-			LoggerManager.info(Constants.CONFIG_LOGGER, 
-					rb.getString("Exit.Config.SavingSuccess") + ": " + fileMap.get(fileID));
 			return true;
 		} catch (IOException e) {
-			LoggerManager.error(Constants.CONFIG_LOGGER,
-					rb.getString("Exit.Config.SavingError") + ": " + fileMap.get(fileID));
 			return false;
 		}
 	}

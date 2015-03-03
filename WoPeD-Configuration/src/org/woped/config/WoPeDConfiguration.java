@@ -1,6 +1,7 @@
 package org.woped.config;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
@@ -150,18 +151,19 @@ public abstract class WoPeDConfiguration implements IConfiguration {
 	 * @return indicates whether saving was successful
 	 */
 	public boolean saveConfig() {
-		boolean confOk;
-		String fn = getConfigFilePath();
-
-		confOk = saveConfig(new File(fn));
-
-		if (confOk) {
-			LoggerManager.info(Constants.CONFIG_LOGGER,
-					rb.getString("Exit.Config.SavingTo") + ": " + fn + ".");
-		} else {
-			LoggerManager.warn(Constants.CONFIG_LOGGER,
-					rb.getString("Exit.Config.SavingError") + ": " + fn + ".");
-		}
+		boolean confOk = false;
+		confOk = saveConfig(new File(getConfigFilePath()));
+		if (confOk)
+			LoggerManager.info(
+					Constants.CONFIG_LOGGER,
+					rb.getString("Exit.Config.SavingSuccess") + ": "
+					+ getConfigFilePath());
+		else		
+			LoggerManager.error(
+					Constants.CONFIG_LOGGER,
+					rb.getString("Exit.Config.SavingError") + ": "
+					+ getConfigFilePath());
+		
 		return confOk;
 	}
 

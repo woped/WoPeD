@@ -211,6 +211,12 @@ public class RunWoPeD extends JFrame {
 		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
 				org.woped.apromore.Constants.APROMORE_LOGGER)), 
 				org.woped.apromore.Constants.APROMORE_LOGGER);
+		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.quantana.dashboard.webserver.Constants.DASHBOARDWEBSRV_LOGGER)), 
+				org.woped.quantana.dashboard.webserver.Constants.DASHBOARDWEBSRV_LOGGER);
+		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
+				org.woped.quantana.dashboard.storage.Constants.DASHBOARDSTORE_LOGGER)), 
+				org.woped.quantana.dashboard.storage.Constants.DASHBOARDSTORE_LOGGER);
 		
     	LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
     }

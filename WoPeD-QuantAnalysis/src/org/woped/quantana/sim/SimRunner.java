@@ -31,18 +31,20 @@ public class SimRunner implements Runnable{
 	public static final int MAX_VALUE = 2;
 
 	public static final int MAX_ARRIVAL = 3;
+	
 
-	SimGraph graph = null;
-	ResourceAllocation resAlloc = null;
-	ResourceUtilization resUtil = null;
-	SimParameters params = null;
+	
+	protected SimGraph graph = null;
+	protected ResourceAllocation resAlloc = null;
+	protected ResourceUtilization resUtil = null;
+	protected SimParameters params = null;
 	int[][] fstProb = null;
 	
 	Thread thr = null;
 	
 	RandomStream randStart = new MRG32k3a();
 	PriorityQueue<SimulatorEvent> eventList = new PriorityQueue<SimulatorEvent>();
-	HashMap<String, SimServer> serverList = new HashMap<String, SimServer>();
+	protected HashMap<String, SimServer> serverList = new HashMap<String, SimServer>();
 	SimCaseMaker caseMaker = new SimCaseMaker(this);
 	ArrayList<SimRunStats> runStats;
 	SimReportStats repStats = new SimReportStats();
@@ -73,8 +75,9 @@ public class SimRunner implements Runnable{
 		params = sp;
 		createServerForBirth();		
 	}
+	
 
-	private void createServerForBirth() {
+	protected void createServerForBirth() {
 		SimNode n = graph.getSource();
 		ArrayList<SimArc> out = n.getarcOut();
 		fstProb = new int[out.size()][3];
@@ -113,6 +116,7 @@ public class SimRunner implements Runnable{
 	}
 
 	public void start() {
+		
 		thr = new Thread(this);
 		thr.start();		
 	}
@@ -120,6 +124,9 @@ public class SimRunner implements Runnable{
 		
 	public void run() {		
 		createServerList();
+		
+	
+		
 		runStats = new ArrayList<SimRunStats>();
 		distLogger = new SimDistributionLogger(params.getPeriod()/params.getLambda());
 		caseMaker.setDistLogger(distLogger);		
@@ -203,7 +210,7 @@ public class SimRunner implements Runnable{
 		return caseMaker;
 	}
 
-	private void finishRun() {
+	protected SimRunStats finishRun() {
 		SimRunStats stats = new SimRunStats();
 		HashMap<SimServer, SimServerStats> sStats = stats.getServStats();
 		HashMap<Resource, ResourceStats> rStats = stats.getResStats();
@@ -272,10 +279,12 @@ public class SimRunner implements Runnable{
 			stats.setProcCompTime(avgRunTime / cntFinished);
 			stats.setThroughPut(cntFinished / runClock * params.getPeriod());
 		}
-		runStats.add(stats);		
+		
+		runStats.add(stats);	
+		return stats; //CN:modified
 	}
 	
-	private void generateReport(){		
+	protected void generateReport(){		
 		int sum = 0;
 		double sumDur = 0;
 		double sumPST = 0;
@@ -305,7 +314,7 @@ public class SimRunner implements Runnable{
 		
 		generateReportRepStats();
 		
-		runStats.add(repStats);
+		runStats.add(repStats);		
 	}
 
 	public void generateReportRepStats() {

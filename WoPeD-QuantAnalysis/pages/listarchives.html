@@ -1,0 +1,119 @@
+
+<!--script type="text/javascript" src="http://localhost:2711/jquery.js" -->
+
+<script type="text/javascript">
+
+var strURLPrefix = "http://localhost:2711";
+
+$(document).ready(function() {
+    
+    
+    
+    
+    
+    /* liste der Archive anfordern */
+    
+    $.getJSON(strURLPrefix + '/getrequest/?action=getArchiveList', function(){
+    		console.log("json-liste angefordert");
+    	}).done(function(response){
+    		
+    		fctFillTable(response);
+    		
+    		
+    	}).always(function(){
+    		console.log("irgendwas mit der Liste ist passiert");
+    	}).fail(function(jqxhr,textStatus, error){
+    		console.log("error occured: " + textStatus * " / " + error );
+    	})
+    
+    	$('#btnDeleteArchives').click(function(){
+	    	var values = new Array();
+	    	$.each($("input[class='chkEntry']:checked"),function(){
+	    		var data = $(this).parents('tr:eq(0)');
+	    		values.push( $(data).find('td:eq(1)').text().trim());
+	    	   	console.log(values);
+	    		console.log("checked");	
+    	});
+    	
+    	var strIDs = "";
+    	var countIDs = values.length;
+    	for(var i=0; i<countIDs; i++){
+    		var valID= values[i];
+    		strIDs += "{ID:\""+ valID + "\"}";
+    		
+    		//wenn nicht letzte Stelle, dann komma setzen
+    		if( i != (countIDs-1)){
+    			strIDs += ","
+    		}
+    	}
+    	
+
+    	$.ajax({
+    	
+    		type: "POST",
+    		url : strURLPrefix+"/postrequest/",
+    		dataType: "json",
+    		async: false,
+    		data: "json={\"action\":\"deleteArchives\",\"parameter\":[" + strIDs + "]}",
+    		success: function(data){
+    			console.log("erfolgreich geloescht");
+    			fctFillTable(data);
+    		}
+    	
+    	})
+    	
+    });
+    
+    var fctFillTable = function(response){
+    	console.log("json-liste geliefert - laenge: " +response.length);
+    		
+    	var trHTML = "";
+    		
+    	if(response.length == 0){
+    		console.log("keine Archive");
+    		$('#tblArchives').append("keine Archive");
+    	}
+    	
+    	$.each(response, function(i, item){
+    		console.log('item ' + i);
+    		trHTML += 	"<tr><td>"+
+    						"<input class='chkEntry' id='chkEntry" + i + "' type='checkbox' />" +
+    					"</td><td>"+
+    					"<a href='#dialogSimulationStat' data-toggle='modal' onclick=\"showSimulationStats('"+item['TABLENAME']+"');\">" + item['TABLENAME'] + "</a>" +
+    					" </td><td>description (to be done)</td></tr>";
+    		//console.log('item ' + i);
+    	});
+    	$('#tblArchives tr').slice(1).remove();
+    	$('#tblArchives').append(trHTML);
+    }  
+    
+    // link statistic into dialog
+    
+   
+    
+
+    
+    
+	
+});
+
+</script>
+
+<div class="row">
+	<h2>List of stored simulation</h2>
+	<div class="col-md-12">
+		<table id="tblArchives" class="table">
+			<tr><th></th><th>Name</th><th>Beschreibung</th></th>
+		</table>
+	</div>
+
+</div>
+
+<div class = "navbar navbar-default navbar-fixed-bottom"> 
+
+	<div class = "container"> 
+		<!--button id="btnDeleteArchives">Delete selected</button-->
+		<a id ="btnDeleteArchives" class="btn-danger btn pull-right">delete selected table</a>
+	</div>
+
+</div>

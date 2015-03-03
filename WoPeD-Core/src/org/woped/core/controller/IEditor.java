@@ -1,6 +1,10 @@
 package org.woped.core.controller;
 
+import java.awt.Frame;
 import java.awt.geom.Point2D;
+
+import javax.swing.JFrame;
+
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphCell;
 import org.woped.core.gui.ITokenGameController;
@@ -227,4 +231,6 @@ public interface IEditor extends IViewController {
 	public void setPathname(String absolutePath);
 
 	public String getPathname();
+	
+	public AbstractApplicationMediator getMediator();
 }

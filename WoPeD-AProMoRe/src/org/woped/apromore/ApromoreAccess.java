@@ -34,10 +34,15 @@ import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.soap.SoapMessageCreationException;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
+import org.woped.config.ApromoreServer;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.gui.images.svg.apromore_export;
 import org.woped.gui.translations.Messages;
 
 public class ApromoreAccess {
+
+	public final int READ_TIMEOUT = 120000;
+	public final int CONNECTION_TIMEOUT = 120000;
 
 	private static ApromoreAccess instance = null;
 	private static final SimpleDateFormat apromoreTimeFormat = new SimpleDateFormat(
@@ -56,19 +61,28 @@ public class ApromoreAccess {
 	private ProcessSummariesType processSummaries;
 	private List<ProcessSummaryType> processList;
 
+	private ApromoreServer[] servers = null;
+
 	public ApromoreAccess(Container parent) {
 		this.parent = parent;
-		if (ConfigurationManager.getConfiguration().getApromoreUseProxy())
-			ProxySelector.setDefault(new WoProxySelector(ConfigurationManager
-					.getConfiguration().getApromoreProxyName(),
-					ConfigurationManager.getConfiguration()
-							.getApromoreProxyPort()));
+		this.servers = ConfigurationManager.getConfiguration()
+				.getApromoreServers();
+
+	}
+
+	public boolean checkIfServerAvailable() {
+		try {
+			managerService.readAllUsers();
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 
 	public void connect(String uri) throws SOAPException {
 		httpCms = new HttpComponentsMessageSender();
-		httpCms.setReadTimeout(120000);
-		httpCms.setConnectionTimeout(120000);
+		httpCms.setReadTimeout(READ_TIMEOUT);
+		httpCms.setConnectionTimeout(CONNECTION_TIMEOUT);
 
 		serviceMarshaller = new Jaxb2Marshaller();
 		serviceMarshaller.setContextPath("org.apromore.model");
@@ -81,7 +95,7 @@ public class ApromoreAccess {
 		wsTemp.setMarshaller(serviceMarshaller);
 		wsTemp.setUnmarshaller(serviceMarshaller);
 		wsTemp.setMessageSender(httpCms);
-		wsTemp.setDefaultUri(uri);
+		wsTemp.setDefaultUri(getURI());
 		managerService = new ManagerServiceClient(wsTemp);
 	}
 
@@ -156,8 +170,10 @@ public class ApromoreAccess {
 	public String[][] getProcessList() throws Exception {
 		UserType user = managerService.readUserByUsername(ConfigurationManager
 				.getConfiguration().getApromoreUsername());
+
 		List<FolderType> folderForUser = managerService
 				.getWorkspaceFolderTree(user.getId());
+
 		processList = new ArrayList<ProcessSummaryType>();
 		for (FolderType folder : folderForUser) {
 			processSummaries = managerService.readProcessSummaries(
@@ -177,6 +193,7 @@ public class ApromoreAccess {
 			s[i][2] = "" + processList.get(i).getOwner();
 			s[i][3] = "" + processList.get(i).getOriginalNativeType();
 			s[i][4] = "" + processList.get(i).getDomain();
+
 			List<VersionSummaryType> vst = processList.get(i)
 					.getVersionSummaries();
 			s[i][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
@@ -245,7 +262,8 @@ public class ApromoreAccess {
 					List<VersionSummaryType> vst = processList.get(i)
 							.getVersionSummaries();
 					s[k][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
-					s[k][6] = "" + processList.get(i).getFolder().getFolderName();
+					s[k][6] = ""
+							+ processList.get(i).getFolder().getFolderName();
 					k++;
 				}
 			} else {
@@ -340,13 +358,84 @@ public class ApromoreAccess {
 	}
 
 	public List<FolderType> getFoldersForCurrentUser() {
-		UserType user = managerService.readUserByUsername(ConfigurationManager
-				.getConfiguration().getApromoreUsername());
-		return managerService.getWorkspaceFolderTree(user.getId());
+		List<FolderType> list = new ArrayList<FolderType>();
+		try {
 
+			UserType user = managerService
+					.readUserByUsername(ConfigurationManager.getConfiguration()
+							.getApromoreUsername());
+			return managerService.getWorkspaceFolderTree(user.getId());
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
+	}
+
+	private String getURI() {
+		return ConfigurationManager.getConfiguration().getApromoreServerURL()
+				+ ":"
+				+ ConfigurationManager.getConfiguration()
+						.getApromoreServerPort()
+				+ "/"
+				+ ConfigurationManager.getConfiguration()
+						.getApromoreManagerPath();
+	}
+
+	private String getURI(String url, int port, String managerPath) {
+		return url + ":" + port + "/" + managerPath;
 	}
 
 	private void showDialog(String message, String titel, Integer type) {
 		JOptionPane.showMessageDialog(parent, message, titel, type);
 	}
+
+	public ApromoreServer[] getServers() {
+		return servers;
+	}
+
+	public void setApromoreServerByName(String serverName) {
+
+	}
+
+	// public ApromoreServer getCurrentServer() {
+	//
+	// }
+
+	public int getCurrentServerIndex() {
+		return ConfigurationManager.getConfiguration()
+				.getCurrentApromoreIndex();
+	}
+
+	public void setCurrentServer(int selectedIndex) {
+
+		ConfigurationManager.getConfiguration().setCurrentApromoreIndex(
+				selectedIndex);
+
+		ConfigurationManager.getConfiguration().setApromoreManagerPath(
+				servers[selectedIndex].getApromoreManagerPath());
+		ConfigurationManager.getConfiguration().setApromoreServerName(
+				servers[selectedIndex].getApromoreServerName());
+		ConfigurationManager.getConfiguration().setApromoreServerPort(
+				servers[selectedIndex].getApromoreServerPort());
+
+		ConfigurationManager.getConfiguration().setApromoreServerURL(
+				servers[selectedIndex].getApromoreServerURL());
+
+		String url = servers[selectedIndex].getApromoreServerURL();
+		int port = servers[selectedIndex].getApromoreServerPort();
+		String managerPath = servers[selectedIndex].getApromoreManagerPath();
+
+		try {
+			connect(getURI(url, port, managerPath));
+		} catch (SOAPException e) {
+			showDialog(
+					Messages.getString("Apromore.UI.Validation.Error.connection"),
+					Messages.getString("Apromore.UI.Error.Title"),
+					JOptionPane.ERROR_MESSAGE);
+
+		}
+
+	}
+	
 }

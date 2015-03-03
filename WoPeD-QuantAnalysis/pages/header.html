@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8" />
+<title>WoPeD Online Dashboard</title>
+
+
+<script src="http://localhost:2711/jquery.js"></script>
+<link href="http://localhost:2711/bootstrap.min.css" rel="stylesheet">
+<link href="http://localhost:2711/bootstrap-theme.min.css" rel="stylesheet">
+
+
+<style type="text/css">
+
+    #dialogSimulationStat .modal-dialog
+    {
+        width: 800px; /* your width */
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+    .text-center th {text-align:center}
+
+    .row {
+        
+        margin-top: 0px;
+    }
+
+
+    .ValueGood {
+        
+        background-color: #aaffaa;
+
+    }
+    .ValueAcceptable {
+        
+        margin-top: 0px;
+    }
+    .ValueBad {
+        
+        background-color: #ffaaaa;
+    }
+
+
+</style>
+
+<script src="http://localhost:2711/bootstrap.min.js"></script>
+
+<script src="http://localhost:2711/chart.min.js"></script>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+   
+    objSimStatistic = function(){
+
+        this.lambda =0;
+        this.queue = 0;
+        this.runs = 0;
+        this.period = 0;
+
+        this.getQueueText= function(){
+
+            switch(this.queue)
+            {
+                case 0:
+                    return "First in First Out";
+                    break;
+                case 1:
+                    return "Last in First Out";
+                    break;
+                default:
+                    return "not defined";
+                
+            }
+
+        }
+        this.getPeriodText= function(){
+
+            return this.period/60  + " hour(s)";
+
+        }
+    }
+    
+
+
+
+    var SimStats =  new objSimStatistic() ;
+
+
+    var intervalObj  =  null;
+
+    var strURLPrefix = "";http://localhost:2711";
+
+    var selectedTableName ="";
+
+
+
+     
+
+     /*
+      *	Normale Funtionen außerhalb von OnLoad
+      */
+
+     function showSimulationStats (tablename){
+     	
+     	/* zyklisch Werte nachfragen */
+     	if(tablename === undefined || tablename == ""){
+     		tablename = getSelectedArchive();
+     	}
+     		
+     	$.getJSON('/getrequest/?action=getSimulationStats&table='+tablename, function(){
+        }).done(function(response){
+     		
+     		SimStats.lambda = response['lambda'];
+            SimStats.period = response['period'];
+
+            SimStats.queue  = response['queue'];
+     		SimStats.runs   = response['runs'];
+
+         
+
+     		strPrint="<table class=\"table\">"+
+     					"<tr><td>Runs</td>            <td>"+ SimStats.runs +"</td></tr>"+
+     					"<tr><td>Lambda</td>          <td>"+ SimStats.lambda +"</td></tr>"+
+     					"<tr><td>Queue</td>           <td>"+ SimStats.getQueueText()+"</td></tr>"+
+     					"<tr><td>Period</td>   <td>"+SimStats.getPeriodText()+" hour(s)</td></tr>"+
+     					"</table>"
+
+            
+
+     		$('#simstatsCaption').html(getSelectedArchive());
+     		
+     		$('#simstats').html(strPrint);
+     		
+     		//daten an einzelne anzeigeelemente senden	
+     		
+     	});
+     	
+     	
+     }
+
+    function showSimulationServerDetails(tablename, server){
+         var res  = arrServers[server];
+
+         
+                
+        var indexLastElement = res.Accesses.length-1;
+
+                    var strInfoServer = "<table class=\"table\">"+
+                                        "<tr>"+
+                                        "   <th>Indicator</th>"+
+                                        "   <th>Value</th>"+
+                                        "   <th>&#216;</th>"+
+                                        "   </tr><tr>" +
+                                        "   <td>ServTime</td>"+
+                                        "   <td>  " + res.ServTime[indexLastElement].toFixed(2) + "</td>"+
+                                        "   <td>"+ res.AvgServTime[indexLastElement].toFixed(2) +"</td>"+
+                                        "   </tr><tr>" +
+                                        "   <tr>" +
+                                        "   <td>WaitTime</td>"+
+                                        "   <td>  " + res.WaitTime[indexLastElement].toFixed(2) + "</td>"+
+                                        "   <td>"+ res.AvgWaitTime[indexLastElement].toFixed(2) +"</td>"+
+                                        "   </tr><tr>" +
+                                        "   <td>Accesses</td>"+
+                                        "   <td>  " + res.Accesses[indexLastElement].toFixed(2) + "</td>"+
+                                        "   <td>"+ res.AvgAccesses[indexLastElement].toFixed(2) +"</td>"+
+                                        "   </tr><tr>" +
+                                        "   <td>Calls</td>"+
+                                        "   <td>  " + res.Calls[indexLastElement].toFixed(2) + "</td>"+
+                                        "   <td>"+ res.AvgCalls[indexLastElement].toFixed(2) +"</td>"+
+                                         "   </tr><tr>" +
+
+                                        /*"   <td>ResNumber</td>"+
+                                        "   <td>  " + res.Accesses[indexLastElement].toFixed(2) + "</td>"+
+                                        "   <td>"+ res.AvgAccesses[indexLastElement].toFixed(2) +"</td>"+
+                                         "   </tr><tr>" +
+                                        "   <td>QLength</td>"+
+                                        "   <td>  " + res.ResNumber[indexLastElement].toFixed(2) + "</td>"+
+                                        "   <td>"+ res.AvgResNumber[indexLastElement].toFixed(2) +"</td>"+
+                                        "</tr>"+*/
+                                        "</table>";
+
+                
+             
+                    $('#simstatsCaption').html("Details of Task " + res.Name);
+                    $('#simstats').html(strInfoServer);
+
+    }
+
+     function showSimulationResssourceDetails(tablename, ressource, server){
+
+  
+        /* zyklisch Werte nachfragen */
+        if(  isValidValue(tablename) == false ){
+            tablename = getSelectedArchive();
+        }
+        $.getJSON('/getrequest/?action=getSimulationStats&table='+tablename, function(){
+        }).done(function(response){
+            
+            ticks = response["period"];
+            
+            $.getJSON('/getrequest/?action=getSimulationResAlloc&server='+ server + '&ressource='+ressource+'&table='+tablename, function(){
+                
+            }).done(function(response){
+                    
+
+
+
+                    var res  = arrRessources[ressource];
+                
+                    var indexLastElement = res.UtilizationRatio.length-1;
+
+                    var strInfoRessource = "<table class=\"table\">"+
+                                        "<tr>"+
+                                        "   <th>Indicator</th>"+
+                                        "   <th>Value</th>"+
+                                        "   <th>&#216;</th>"+
+                                        "   <tr>" +
+                                        "   <td>Utilization Ratio</td>"+
+                                        "   <td>  " + (res.UtilizationRatio[indexLastElement]*100).toFixed(2) + "%</td>"+
+                                        "   <td>"+ res.AvgUtilizationRatio[indexLastElement] +"%</td>"+
+                                        "</tr>"+
+                                        "   <tr>" +
+                                        "   <td>IdleTime</td>"+
+                                        "   <td>  " + res.IdleTime[indexLastElement].toFixed(2) + "</td>"+
+                                        "   <td>"+ res.AvgIdleTime[indexLastElement].toFixed(2) +"</td>"+
+                                        "</tr>"+
+                                        "</table>";
+
+                    $('#simstatsCaption').html("Details of Resource " + res.name);
+                    $('#simstats').html(strInfoRessource);
+
+
+                    showSimulationResAllocGantt(ticks,response);
+            });
+        });                
+     }
+     
+     function showSimulationResAllocGantt (ticks,response){
+      	
+	     		var strCanvas =  "<canvas id=\"myCanvas\" width=\"750\" height=\"400\" style=\"border:0px solid #000000;\"></canvas>"; 
+	     		$('#simstats').append(strCanvas);
+	     		
+                
+	     		var c = document.getElementById("myCanvas");
+				var ctx = c.getContext("2d");
+	     	    drawGantt(ctx, ticks, response);	
+      }
+     
+     function getSelectedArchive(){
+    		var archivename = "";
+    		
+    		if( isValidValue(selectedTableName) == false){
+    			selectedTableName =  $( "#archiveselection" ).val();
+    		}
+    		
+    		return selectedTableName;
+    	}
+     
+    function isValidValue(val){
+        if (val == "" || 
+            val === undefined || 
+            val === false || 
+            val == null){
+
+            return false;
+        }
+        else
+            return true;
+
+    }
+
+
+
+
+     function drawGantt(ctx, ticks, values){
+ 
+    	 
+    	 
+     	var maxTime = ticks;
+
+     	// get sizeof the canvas
+     	var c = document.getElementById("myCanvas");
+     	var canvaswidth = c.width;
+
+     	var lanesSpaceLeft = 100;
+     	var lanesSpaceRight = 30;
+     	var lanesSpaceTop = 30;
+     	var calcFactor = (canvaswidth-lanesSpaceLeft-lanesSpaceRight) / maxTime;
+     	var width 	=	100;
+     	var LaneHeight	=	20;
+     	var radius	=	1;
+     	var fill 	= 	true;
+     	var stroke 	= 	true;
+     		
+     		
+     	var swimLines = [];
+     	
+     	
+     	//array mit unterschiedlichen servern f?llen anpassen
+     	for(var i = 0; i<values.length ; i++){
+     		
+     		var v		= 	values[i];
+     		var Server = v["server"];
+     		var check = false;
+     		for(var j=0; j<swimLines.length;j++)
+     		{
+     			if(swimLines[j]==Server)
+     			check = true;
+     		 }
+     		 if (check == false){
+     		 
+     			swimLines.push(Server);
+     		}
+     	}
+     	//adapt canvas height
+     	
+     	var canvas = document.getElementById("myCanvas");  
+     	if (canvas.getContext) {  
+     		canvas.height = 50+(swimLines.length+1) *  (LaneHeight+10);
+     		
+     	}
+     	
+     	for( i = 0; i<values.length ; i++){
+     		
+     		var v		= 	values[i];
+     		var Server = v["server"];
+     		var line = swimLines.indexOf(Server);
+     		
+     		var tStart = 	v["TimeStart"] * calcFactor;
+     		var tDuration  = (v["TimeStop"]-v["TimeStart"]) * calcFactor;
+     		
+
+     		roundRect(ctx,lanesSpaceLeft +tStart , ((LaneHeight+10)*line +5) + lanesSpaceTop , tDuration , LaneHeight, radius, fill, stroke);		
+     	}  
+     	
+     	for (var s =0 ; s< swimLines.length;s++){
+     		var line = swimLines[s];
+     		writeLabel(ctx, swimLines[s], 5 , ((LaneHeight+10))*(s)+20 + lanesSpaceTop);
+     	}
+     	
+     	//Wertachse malen
+     	ctx.beginPath();
+     	ctx.strokeStyle = "#000000";
+     	ctx.moveTo(lanesSpaceLeft, 10+(swimLines.length+1) * (LaneHeight+10));
+     	ctx.lineTo(lanesSpaceLeft, lanesSpaceTop);
+     	ctx.closePath();
+     	ctx.stroke();
+
+     	//zeitachse malen
+     	ctx.beginPath();
+     	ctx.moveTo(lanesSpaceLeft, 10+(swimLines.length+1) * (LaneHeight+10));
+     	ctx.lineTo(maxTime*calcFactor + lanesSpaceLeft, 10+(swimLines.length+1) * (LaneHeight+10));
+     	ctx.closePath();
+     	ctx.stroke();
+     	
+     	//achsenbeschriftung
+     	ctx.font = "12px Arial";
+     	
+     	ctx.fillText("0", lanesSpaceLeft-3, 25+(swimLines.length+1) * (LaneHeight+10));
+     	ctx.fillText(maxTime, maxTime*calcFactor + lanesSpaceLeft-10,  25+(swimLines.length+1) * (LaneHeight+10) );
+     	
+     	function writeLabel(ctx, text,  posX, posY){
+     		//ctx.fillStyle = "blue";
+     	  ctx.font = "12px Arial";
+     	  ctx.fillText(text, posX, posY);
+     	}
+     	
+     	
+     	function roundRect(ctx, x, y, width, LaneHeight, radius, fill, stroke) {
+     		  if (typeof stroke == "undefined" ) {
+     			stroke = true;
+     		  }
+     		  if (typeof radius === "undefined") {
+     			radius = 5;
+     		  }
+     		  ctx.fillStyle = "#808080";
+     		  ctx.strokeStyle = "#808080";
+     		  ctx.beginPath();
+     		  ctx.moveTo(x + radius, y);
+     		  ctx.lineTo(x + width - radius, y);
+     		  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+     		  ctx.lineTo(x + width, y + LaneHeight - radius);
+     		  ctx.quadraticCurveTo(x + width, y + LaneHeight, x + width - radius, y + LaneHeight);
+     		  ctx.lineTo(x + radius, y + LaneHeight);
+     		  ctx.quadraticCurveTo(x, y + LaneHeight, x, y + LaneHeight - radius);
+     		  ctx.lineTo(x, y + radius);
+     		  ctx.quadraticCurveTo(x, y, x + radius, y);
+     		  ctx.closePath();
+     		  
+     		  if (stroke) {
+     			ctx.stroke();
+     		  }
+     		  if (fill) {
+     			ctx.fill();
+     		  }        
+     	}
+     } //end showGantt
+
+</script>
+
+
+</head>
+
+
+<body>
+
+
+<div class = "navbar navbar-inverse navbar-static-top">
+
+	<div class = "container">
+		<span  class="navbar-brand">WoPeD Online Dashboard</span>
+		<button class ="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<div class="collapse navbar-collapse navHeaderCollapse">
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="http://localhost:2711/getrequest/?action=showdashboardFull">Dashboard</a></li>
+				<li><a href="http://localhost:2711/getrequest/?action=listarchivesFull">Archiv</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#dialogLicenses" data-toggle="modal">License information</a>
+						</li>
+						<li>
+							<a href="#dialogManual" data-toggle="modal">Manual</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+</div>
+
+<div id="main" class="container">

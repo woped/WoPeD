@@ -94,7 +94,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             m_tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor.getEditorPanel());
             m_tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             m_tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
- //           m_tabbedPane.addTab(Messages.getString("Paraphrasing.Description"), m_paraPhrasingPanel);
+            m_tabbedPane.addTab(Messages.getString("Paraphrasing.Description"), m_paraPhrasingPanel);
             m_tabbedPane.getModel().addChangeListener(new ChangeListener()
             {
             	public void stateChanged(ChangeEvent e)

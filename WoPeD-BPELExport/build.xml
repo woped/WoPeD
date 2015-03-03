@@ -7,7 +7,7 @@
 
 	<target name="updateBPELbeans" unless="BPELBeansUpToDate">
 		<echo message="Compiling the BPEL schema..." />
-		<xmlbean schema="src/org/woped/bpel/xml/ws-bpel_executable.xsd" destfile="../WoPeD-CommonLibs/lib/bpelBeans.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-${XMLBEANSVERSION}.jar" />
+		<xmlbean schema="src/org/woped/bpel/xml/ws-bpel_executable.xsd" destfile="../WoPeD-CommonLibs/lib/bpelBeans.jar" debug="on" classpath="../WoPeD-CommonLibs/lib/xmlbeansbuild-2.3.0.jar" />
 	</target>
 
 	<target name="clean">

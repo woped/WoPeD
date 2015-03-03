@@ -25,26 +25,19 @@ package org.woped.starter.controller.vc;
 import java.io.File;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IUserInterface;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.core.utilities.Platform;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.file.controller.vep.FileEventProcessor;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
-import org.woped.starter.Constants;
 import org.woped.starter.DefaultUserInterface;
-import org.woped.starter.RegistrationUI;
 import org.woped.starter.controller.vep.GUIViewEventProcessor;
-import org.woped.gui.translations.Messages;
 
 /**
  * 
@@ -59,7 +52,6 @@ public class DefaultApplicationMediator extends ApplicationMediator
     private int             statusCounter            = 0;
     private TaskBarVC		taskbar;
     private StatusBarVC		statusbar;
-    private ConfigVC		config;
    
 	public DefaultApplicationMediator(IUserInterface ui, IGeneralConfiguration conf) {
         super(ui, conf);
@@ -76,10 +68,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
             addViewController(taskbar);
             statusbar = (StatusBarVC) this.createViewController(VIEWCONTROLLER_STATUSBAR);
             addViewController(statusbar);
-            config = (ConfigVC) this.createViewController(ApplicationMediator.VIEWCONTROLLER_CONFIG);
-            addViewController(config);
         }
-        
         ui = new DefaultUserInterface(taskbar, statusbar);
         setUi(ui);
         setDisplayUI((JFrame)ui);          
