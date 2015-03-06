@@ -11,6 +11,7 @@ import org.woped.quantana.dashboard.webserver.TestpathAction;
 import org.woped.quantana.dashboard.webserver.ThinServer;
 import org.woped.quantana.dashboard.webserver.ClientStarter;
 import org.woped.quantana.dashboard.storage.StorageEngine;
+import org.woped.quantana.gui.EmbeddedBrowserView;
 
 
 public class DashboardRunner implements Runnable{
@@ -21,7 +22,7 @@ public class DashboardRunner implements Runnable{
 	
 
 	
-	public DashboardRunner(StorageEngine se) {
+	public DashboardRunner(StorageEngine se,int port) {
 		
 		this.storageengine = se;
 		server.setStorageEngine(storageengine);
@@ -36,8 +37,8 @@ public class DashboardRunner implements Runnable{
 	public void RunServer() {	
         
         //Browser Starten
-		client = new ClientStarter();
-        client.startClient();
+		//EmbeddedBrowserView browser = new EmbeddedBrowserView(2711);
+		
 		
 		//storageengine.CreateTable(Table.SIM_VALUES);		
 		server.start();

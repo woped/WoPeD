@@ -119,7 +119,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 	}
 
 	/**
-	 * Aktuallisiert die Prozess-Datenfelder mit dem ausgewählten
+	 * Aktuallisiert die Prozess-Datenfelder mit dem ausgewâ€°hlten
 	 * Tabellenelement
 	 */
 	private void updateDataFields() {

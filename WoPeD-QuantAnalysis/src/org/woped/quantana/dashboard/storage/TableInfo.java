@@ -4,12 +4,14 @@ public class TableInfo {
 	private String TABLENAME = "";
 	private String TABLETYPE = "";
 	private String TABLEID = "";
+	private String DESCRIPTION = "";
 	
-	public TableInfo(String TABLENAME, String TABLETYPE, String TABLEID){
+	public TableInfo(String TABLENAME, String TABLETYPE, String TABLEID, String DESCRIPTION){
 		
 		this.TABLENAME = TABLENAME;
 		this.TABLETYPE = TABLETYPE;
 		this.TABLEID = TABLEID;
+		this.DESCRIPTION = DESCRIPTION;
 	}
 	
 	public String getTABLENAME() {

@@ -1,5 +1,7 @@
 package org.woped.quantana.dashboard.webserver;
 
+import java.io.IOException;
+
 import org.woped.quantana.dashboard.webserver.ThinServerAction;
 import org.woped.quantana.dashboard.webserver.TemplateEngine;
 import org.woped.quantana.dashboard.webserver.Request;
@@ -32,8 +34,57 @@ public class ExampleAction extends ThinServerAction {
 			response.addContent(te.getTemplateContent(strPath));
 			
 			
-		}else
-		if(response.getContent().equals("")){
+		}else if(strPath.endsWith(".png") || strPath.endsWith(".gif")){
+			
+				String strFile = "";
+			
+				TemplateEngine te = new TemplateEngine();
+				try {
+					String current = new java.io.File( "." ).getCanonicalPath();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				strFile = strPath.replace("/GUI/","");
+				
+				if (strPath.endsWith(".png")){
+					response.setContentType("image/png");
+				}
+				else if (strPath.endsWith(".gif")){
+					response.setContentType("image/gif");
+				}
+				
+				byte[] _byte = te.getImageContent(strFile);
+				
+				response.setBinContent(_byte);
+				
+				
+		 }
+		else if(strPath.endsWith(".svg")){
+		
+		String strFile = "";
+	
+		TemplateEngine te = new TemplateEngine();
+		try {
+			String current = new java.io.File( "." ).getCanonicalPath();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		strFile = strPath.replace("/SVG/","");
+		
+
+		response.setContentType("image/svg+xml");
+		byte[] _byte = te.getImageSVGContent(strFile);
+		
+		response.setBinContent(_byte);
+		
+		
+ 	}
+
+		else if(response.getContent().equals("")){
 				
 				TemplateEngine te = new TemplateEngine();
 				

@@ -1,13 +1,26 @@
 package org.woped.quantana.dashboard.webserver;
 
 
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 import com.google.gson.Gson;
 
 import org.woped.core.utilities.LoggerManager;
+import org.woped.gui.translations.Messages;
 import org.woped.quantana.dashboard.webserver.ThinServerAction;
 import org.woped.quantana.dashboard.webserver.TemplateEngine;
 import org.woped.quantana.dashboard.webserver.Request;
 import org.woped.quantana.dashboard.webserver.Response;
+import org.woped.quantana.dashboard.storage.SaveConfig;
 import org.woped.quantana.dashboard.storage.SimulationRessourceAllocData;
 import org.woped.quantana.dashboard.storage.SimulationStorageEntry;
 import org.woped.quantana.dashboard.storage.TableInfo;
@@ -83,6 +96,9 @@ public class GetRequestAction extends ThinServerAction {
 			
 			LoggerManager.debug(Constants.DASHBOARDWEBSRV_LOGGER,"showdashboardFull");
 			
+			//content-language setzen?
+			//http://nimbupani.com/declaring-languages-in-html-5.html
+			
 			response.addContent(te.getTemplateContent("header.html"));
 			
 			showdashboard(response);
@@ -100,9 +116,11 @@ public class GetRequestAction extends ThinServerAction {
 			String tick = request.getParameter("tick");
 			String bSingleValue = request.getParameter("single");
 			String tablename = request.getParameter("table");
+			String strBounding = request.getParameter("bounding");
 			
-			long Tick = 0;
+			long Tick= 0;
 			Boolean single = false;
+			Boolean bBounding = false;
 			
 			if( tick!= null && !tick.equals("undefined")){
 				Tick = Long.parseLong(tick);
@@ -110,11 +128,19 @@ public class GetRequestAction extends ThinServerAction {
 			else{
 				Tick = -1;				
 			}
+			
+			if( strBounding!= null && !strBounding.equals("undefined")){
+				bBounding = Boolean.parseBoolean(strBounding);
+			}
+			else{
+				bBounding = false;				
+			}
+			
 			if(bSingleValue !=null ){
 				single = Boolean.parseBoolean(bSingleValue);
 			}
 			
-			SimulationStorageEntry[] sd =  ThinServerAction.storageengine.GetSimulationData(tablename, Tick,single);
+			SimulationStorageEntry[] sd =  ThinServerAction.storageengine.GetSimulationData(tablename, Tick, single, bBounding);
 			
 			Gson gson = new Gson();
 			String ret = gson.toJson(sd);
@@ -168,6 +194,25 @@ public class GetRequestAction extends ThinServerAction {
 			response.addContent(ret);
 			
 		}
+		else if(strAction.equals("getImage")){
+			
+			LoggerManager.debug(Constants.DASHBOARDWEBSRV_LOGGER,"getSimulationResAlloc");
+
+			//response.setContentType("application/json");
+
+			String tablename = request.getParameter("table");
+			
+			byte[] imageInByte = ThinServerAction.storageengine.GetImage(tablename);
+			
+			response.setContentType("image/png");
+			
+			
+			response.setBinContent(imageInByte);
+		}
+		else if(strAction.equals("getUIConfig")){
+			//has to be changed to SaveConfig Object
+			SaveConfig c = storageengine.GetUIConfig("SIM_ATTRIBUTES");
+		}
 	}
 	
 	
@@ -191,7 +236,8 @@ public class GetRequestAction extends ThinServerAction {
 	 */
 	private void showdashboard(Response response) {
 
-		response.addContent(te.getTemplateContent("dashboard.html"));
+		String strret = te.getTemplateContent("dashboard.html");
+		response.addContent(strret);
 		
 	}
 	
@@ -206,6 +252,8 @@ public class GetRequestAction extends ThinServerAction {
 		response.addContent(te.getTemplateContent("listarchives.html"));
 		
 	}
+	
+	
 	
 	
 

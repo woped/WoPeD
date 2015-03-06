@@ -1,7 +1,19 @@
 package org.woped.quantana.dashboard.storage;
 
-//import java.io.ByteArrayOutputStream;
-//import java.io.IOException;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,23 +21,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-
-//import org.apache.derby.client.am.DateTimeValue;
-
 import java.util.HashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import javax.imageio.ImageIO;
 
-
-
-
-
-
-//import java.util.zip.GZIPInputStream;
-//import java.util.zip.GZIPOutputStream;
-
+import org.jgraph.JGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.quantana.dashboard.storage.TableInfo;
 import org.woped.quantana.dashboard.storage.UIDCreater;
@@ -44,7 +46,8 @@ import org.woped.quantana.sim.SimServerStats;
 
 import com.google.gson.Gson;
 
-
+//import java.util.zip.GZIPInputStream;
+//import java.util.zip.GZIPOutputStream;
 
 public class StorageEngine {
 	
@@ -77,6 +80,10 @@ public class StorageEngine {
 
   private int clockTick = 0;
   
+  private int maxEntries = 100;
+  
+  WoPeDDashboardConfiguration wdc = null;
+  
   public static synchronized StorageEngine getInstance(){
 
 	  if (uniqInstance == null) {
@@ -95,7 +102,12 @@ public class StorageEngine {
 		
 		Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
 		
-		connect = DriverManager.getConnection("jdbc:derby:data/dashboarddb;create=true", "", "");
+		wdc = new WoPeDDashboardConfiguration();
+		
+		String strDerbyPath = wdc.getUserdir();
+		
+		connect = DriverManager.getConnection("jdbc:derby:" + strDerbyPath + "data/dashboarddb;create=true", "", "");
+
 		LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER, "StorageEngine: DB: " + connect.getMetaData().toString());
 		
 		
@@ -260,23 +272,38 @@ public class StorageEngine {
 	  
 	  //convert data
 	 ArrayList<SimulationStorageEntry> arrSse = new ArrayList<>();
+	 
+	 
+	  
+	 ArchiveFilter archiveFilter = new ArchiveFilter();
+	  
+	 int[] arrRelevantIndizes = archiveFilter.Filter(simParams.getRuns(), maxEntries);
+	 
+	 ArrayList<Integer> arrlist = new ArrayList<Integer>(maxEntries);
+	 
+	 for(int i : arrRelevantIndizes){
+		 arrlist.add(i);
+	 }
+	 
+	 
 	
+	 SimulationStorageData  sd = toStorageObject(o);
+	  
+	  
+	 SimulationStorageEntry sse = new SimulationStorageEntry();
+	  
+	 sse.setTick(++this.clockTick);
+	 sse.setData(sd);
+		  
+	 if(  arrlist.contains(this.clockTick-1) ){  
+	
+		 //aktuellen wert speichern
+		  arrSse.add(sse);
+	  
+		  InsertSimRunStatsBulk(arrSse);
 	 
-	 
-	  SimulationStorageData  sd = toStorageObject(o);
+	 }
 	  
-	  
-	  SimulationStorageEntry sse = new SimulationStorageEntry();
-	  
-	  sse.setTick(++this.clockTick);
-	  sse.setData(sd);
-	  
-	  
-	  //aktuellen wert speichern
-	  arrSse.add(sse);
-	  
-	  
-	  InsertSimRunStatsBulk(arrSse);
 	  
   }
   public void InsertSimRunStatsBulk(ArrayList<SimulationStorageEntry> objList){
@@ -584,6 +611,7 @@ public class StorageEngine {
 	  
 	  
 	  	// informationen über simulation in separater DB speichern
+	  	
 		  
 	  	strCreateStatement ="CREATE TABLE " + Table.SIM_ATTRIBUTES.toString() +
 								  "(" +
@@ -591,7 +619,9 @@ public class StorageEngine {
 								  " Tablename varchar(255)," +
 								  " Description varchar(255)," +
 								  " Data CLOB,"+
-								  " ResAlloc CLOB"+
+								  " ResAlloc CLOB,"+
+								  " Image BLOB," +
+								  " UIConfig varchar(255)" +
 								  ")"; 
 		  
 		  
@@ -624,14 +654,14 @@ public class StorageEngine {
   
 
   public SimulationStorageEntry GetSimulationDataSingle(long tick){
-	  SimulationStorageEntry[] ret =  GetSimulationData(this.strCurrentSimulationTable, tick, true);
+	  SimulationStorageEntry[] ret =  GetSimulationData(this.strCurrentSimulationTable, tick, true, false);
 	  return ret[0];
 	  
   }
   
   
   public SimulationStorageEntry[] GetSimulationData(long tick, boolean single){
-	  return GetSimulationData(this.strCurrentSimulationTable, tick, single);
+	  return GetSimulationData(this.strCurrentSimulationTable, tick, single, false);
   }
   
  /* public SimulationStorageEntry GetLastSimulationData(){
@@ -675,7 +705,7 @@ public class StorageEngine {
 				strSerializedObject = gson.toJson(this.simParams);
 				
 				pstmt.setString(1, this.strCurrentSimulationTable);
-				pstmt.setString(2, "kommentar");
+				pstmt.setString(2, UIDCreater.CreateComment());
 				pstmt.setString(3, strSerializedObject);
 				
 				//LoggerManager.debug (Constants.DASHBOARDSTORE_LOGGER, "InsertSimRunParams: Strings set");
@@ -750,7 +780,109 @@ public class StorageEngine {
 		  }
 			  
 }
-  
+
+  public void InsertImage(){
+	  		 
+
+		//String strName = this.editor.getClass().toString();
+		JGraph graph = owner.getEditorGraph();
+	    byte[] imgByte = null;
+	    PreparedStatement pstmt = null;
+		ObjectOutputStream oos = null;
+	    
+		graph.clearSelection();
+		Object[] cells = graph.getRoots();
+		BufferedImage image = null;
+		
+		if (cells.length > 0) {
+          Rectangle2D rectangle = graph.getCellBounds(cells);
+
+          graph.setGridVisible(false);
+          graph.toScreen(rectangle);
+
+          // Create a Buffered Image
+          Dimension dimension = rectangle.getBounds().getSize();
+          image = new BufferedImage(dimension.width, dimension.height, BufferedImage.TYPE_INT_RGB);
+          Graphics2D graphics = image.createGraphics();
+          graphics.translate(-rectangle.getX(), -rectangle.getY());
+          graph.paint(graphics);
+		}
+
+
+		try {
+			//Graphics2D g2 = image.createGraphics();
+		
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			if (ImageIO.write(image, "PNG", baos)) {
+				imgByte = baos.toByteArray();
+			}
+				
+		} catch (IOException ex) {
+			
+		}	  	
+	  	  	
+	  	if(imgByte != null && connect != null ){
+		  	try {
+
+			  	if(this.strCurrentSimulationTable.length() == 0)
+			  	{
+			  		LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER,"InsertImage: no current table to write into");
+			  		return;
+			  	}
+
+		  		
+		  		// simulationswert speichern
+		  		  	
+				String insertNewSQLObject = "update " + Table.SIM_ATTRIBUTES.toString() +  
+											" SET Image=? where Tablename = ?";
+				
+				dbLock.lock();
+
+				LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"InsertImage: prepare statement: update " + Table.SIM_ATTRIBUTES.toString() + " SET ResAlloc= <json-content> where Tablename = "+ strCurrentSimulationTable +";");
+				
+				pstmt = connect.prepareStatement(insertNewSQLObject);
+				
+				Blob blob = connect.createBlob();
+
+
+		
+				try {
+		         	
+					oos = new ObjectOutputStream(blob.setBinaryStream(1));
+					oos.writeObject(imgByte);
+				    oos.close();
+				    
+				} catch (IOException e) {
+					LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER,"InsertImage IOException : " + e.getMessage());	
+				}
+		        finally {
+		           
+		        }
+			
+			    
+				
+			    pstmt.setBlob(1, blob);
+			    pstmt.setString(2, this.strCurrentSimulationTable);
+			    
+				LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"InsertImage: image saved");
+				
+				pstmt.executeUpdate();
+				
+				LoggerManager.debug (Constants.DASHBOARDSTORE_LOGGER, "InsertImage: update finished");
+				
+				dbLock.unlock();
+	  
+		    } catch (SQLException e) {
+				//e.printStackTrace();
+		    	LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER,"InsertImage: SQLException in InsertSimResAlloc: " + e.toString());
+			}
+	    }
+		  else{
+			  LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER,"InsertImage: No Image or "+ ERR_NOCONNECTION);
+		  }
+			  
+}
+
   
  public SimulationRessourceAllocData[]  GetSimResAlloc(String tablename, String ressource, String server){
 	
@@ -838,8 +970,229 @@ public class StorageEngine {
 	 
 	 
  }
+ 
+ public byte[]  GetImage(String tablename){
+	
+	 PreparedStatement statement;
+	    
+	  
+	  
+	 tablename = GetValidTablename(tablename);
+	 byte[] retVal = null;
+	  
+	  if(connect != null && (tablename != ""))
+	  {
+	  	try {	 
+	  		
+	  		LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"GetImage: SELECT ResAlloc from " + Table.SIM_ATTRIBUTES +" where Tablename = "+ tablename);
+			
+	  		statement = connect.prepareStatement("SELECT Image from " + Table.SIM_ATTRIBUTES + " where Tablename = ?");
+	  		statement.setString(1, tablename); // set input parameter
+	  		
+	  		LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"GetImage: strings are set");
+	
+	  		dbLock.lock();
+	  		
+	  		resultSet = statement.executeQuery();  
+	      
+	  		LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"GetImage: select finished");
+	      
+	  		dbLock.unlock();
+	      
+	  		while (resultSet.next()) {
+	    
+	    	  Blob photo = resultSet.getBlob(1);
+	          ObjectInputStream ois = null;
+	          try {
+	        	  ois = new ObjectInputStream(photo.getBinaryStream());
+	        	  retVal = (byte[]) ois.readObject();
+	          } catch (ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+	          }
+	  		}
+	
+		} catch (SQLException e) {
+			LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER , "GetImage: SQLException: " + e.toString());
+		}
+	  	
+	  	return retVal;
+	  }
+	  else{
+		  return null;
+	  }
+	 
+	 
+ }
+ 
+ 
+
+ public SaveConfig GetUIConfig(String tablename){
+	
+	 PreparedStatement statement;
+	 String strUIConfig = "";
+	 SaveConfig uiConfig = null;
+	 Gson gson = new Gson();
+	 
+	 
+	 BufferedReader reader = null;
+	 String strDerbyPath = wdc.getUserdir();
+	 String strConfigfile =  strDerbyPath+  "uiconfig.conf";
+	 try	{
+		 reader = new BufferedReader( new FileReader(strConfigfile));
+		 strUIConfig = reader.readLine();
+		 
+		 uiConfig = gson.fromJson(strUIConfig, SaveConfig.class);
+	
+	 }catch ( IOException e)
+	 {
+	 }
+	 finally
+	 {
+		    try
+		    {
+		        if ( reader != null)
+		        reader.close( );
+		    }
+		    catch ( IOException e)
+		    {
+		    }
+	 }
+	
+	 return uiConfig;
+	/*	
+	 tablename = GetValidTablename(tablename);
+
+	 
+	 
+	  if(connect != null && (tablename != ""))
+	  {
+	  	try {	 
+	  		
+	  		LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"GetUIConfig: SELECT UIConfig from " + Table.SIM_ATTRIBUTES +" where Tablename = "+ tablename);
+			
+	  		statement = connect.prepareStatement("SELECT UIConfig from " + Table.SIM_ATTRIBUTES + " where Tablename = ?");
+	  		statement.setString(1, tablename); // set input parameter
+	  		
+	  		LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"GetUIConfig: strings are set");
+	
+	  		dbLock.lock();
+	  		
+	  		resultSet = statement.executeQuery();  
+	      
+	  		LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"GetUIConfig: select finished");
+	      
+	  		dbLock.unlock();
+	      
+	  			
+	  		while (resultSet.next()) {
+	  			try{
+	  				strUIConfig = resultSet.getString(1);
+	  				
+	  				uiConfig = gson.fromJson(strUIConfig, SaveConfig.class);
+	  	          
+	  			}catch(SQLException e){
+	  				LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER,"GetUIConfig: config not available");
+	  				
+	  			}
+	  		}
+	
+		} catch (SQLException e) {
+			LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER , "UIConfig: SQLException: " + e.toString());
+		}
+	  	
+	  	return uiConfig;
+	  }
+	  else{
+		  return null;
+	  }
+	  */
+ }
+ private HashMap<Integer,Integer> FillHashMapID2Tick(){
+	 
+	
+	 
+	 HashMap<Integer,Integer> hmTick2ID = new HashMap<Integer, Integer>();
+	 
+	 ArchiveFilter archiveFilter = new ArchiveFilter();
+	  
+	 int[] arrRelevantIndizes = archiveFilter.Filter(simParams.getRuns(), maxEntries);
+	 
+	 ArrayList<Integer> arrlist = new ArrayList<Integer>(maxEntries);
+	 
+	 for(int i : arrRelevantIndizes){
+		 arrlist.add(i);
+	 }
+	 
+	 for(int i=0; i< maxEntries; i++){
+		 
+		 hmTick2ID.put(i, arrlist.get(i)+1);
+	 }
+ 
+	 
+	 return hmTick2ID;
+ }
   
-  public SimulationStorageEntry[] GetSimulationData(String tablename , long tick, Boolean singlevalue){
+ private HashMap<Integer,Integer> FillHashMapTick2ID(){
+	 
+	 
+	 
+	 HashMap<Integer,Integer> hmTick2ID = new HashMap<Integer, Integer>();
+	 
+	 ArchiveFilter archiveFilter = new ArchiveFilter();
+	  
+	 int[] arrRelevantIndizes = archiveFilter.Filter(simParams.getRuns(), maxEntries);
+	 
+	 ArrayList<Integer> arrlist = new ArrayList<Integer>(maxEntries);
+	 
+	 
+	 for(int i : arrRelevantIndizes){
+		 arrlist.add(i);
+	 }
+	 
+	 for(int i=0 ; i< maxEntries; i++){
+		 //arrlist.add(i);
+		 hmTick2ID.put(arrlist.get(i)+1,i);
+	 }
+ 
+	 
+	 return hmTick2ID;
+ }
+ 
+ public int GetNextTick(int tick){
+	 
+	 int nextTick = tick;
+	 
+	 if( maxEntries > simParams.getRuns() ){
+		 maxEntries = simParams.getRuns() ;
+	 }
+	 
+	 HashMap<Integer,Integer> hmTick2ID  = FillHashMapTick2ID();
+	 HashMap<Integer,Integer> hmID2Tick  = FillHashMapID2Tick();
+	 
+	 if( !hmTick2ID.containsKey((int)tick)){
+		
+	 
+		 while(tick< simParams.getRuns()){
+			 tick++;
+			 
+			 if(hmTick2ID.containsKey((int)tick)){
+				 int index = hmTick2ID.get((int)tick);
+				 if(index < (maxEntries)){
+					 nextTick = hmID2Tick.get((int)index);
+				 }
+				 break;
+			 }
+		 }
+	 
+	 }
+	
+	 
+	 return nextTick;
+	 
+ }
+ 
+  public SimulationStorageEntry[] GetSimulationData(String tablename , long tick,  Boolean singlevalue, Boolean bounding){
 	  
 	  PreparedStatement statement;
 	  
@@ -864,9 +1217,16 @@ public class StorageEngine {
 	  				statement = connect.prepareStatement(strQuery);
 	  			}
 	  		}else{
-	  			strQuery = "SELECT ID,Tick,Data from " + tablename + " where ID <= ? ";
+	  			if( bounding == true ){
+	  				tick = GetNextTick((int)tick);
+	  			}
+	  			
+	  			strQuery = "SELECT ID,Tick,Data from " + tablename + " where Tick <= ?";
 	  			statement = connect.prepareStatement(strQuery );
 	  			statement.setLong(1, tick); // set input parameter	
+	  			
+	  			
+	  			//statement.setLong(2, id); // set input parameter	
 	  		}
 	  		LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"GetSimulationData: statement prepared (" +strQuery+")");
 	  		
@@ -1151,7 +1511,7 @@ public SimParameters GetSimulationStatisticData(String tablename){
 	  	try {	      
 	      //statement = connect.prepareStatement("SELECT TABLENAME,TABLETYPE,TABLEID  from SYS.SYSTABLES WHERE TABLETYPE like 'T'");
 	      
-	      statement = connect.prepareStatement("SELECT Tablename from " +Table.SIM_ATTRIBUTES.toString() +" ORDER BY Tablename DESC");
+	      statement = connect.prepareStatement("SELECT Tablename, Description from " +Table.SIM_ATTRIBUTES.toString() +" ORDER BY Tablename DESC");
 	      
 	      dbLock.lock();
 	      
@@ -1173,7 +1533,11 @@ public SimParameters GetSimulationStatisticData(String tablename){
 	        //String tableID = resultSet.getString("TABLEID");
 		    String tableID = "1234";
 		    
-	        TableInfo ti = new TableInfo(tablename,tabletype,tableID);
+		    //String tablename = resultSet.getString("TABLENAME");
+		    String description = resultSet.getString("Description");
+	        
+		    
+	        TableInfo ti = new TableInfo(tablename,tabletype,tableID,description);
 	        retTableInfo.add(ti);
 	        
 	      }
@@ -1194,6 +1558,92 @@ public SimParameters GetSimulationStatisticData(String tablename){
 		  return null;
 	  
   }
+  
+  public void InsertDescription(String tablename, String description){
+	  	
+	  	//Gson gson = new Gson();
+	  		  	
+	  	PreparedStatement pstmt;
+	  	
+	  	if(description.length()>255){
+	  		description = description.substring(0, 254);
+	  	}
+	  	
+	  	
+	  	if(connect != null ){
+		  	try {
+
+			  
+		  		
+		  		// simulationswert speichern
+		  		  	
+				String insertNewSQLObject = "update " + Table.SIM_ATTRIBUTES.toString() +  
+											" SET Description=? where Tablename = ?";
+				
+				dbLock.lock();
+
+				LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"Insert description: prepare statement: update " + Table.SIM_ATTRIBUTES.toString() + " SET description= <content> where Tablename = "+ strCurrentSimulationTable +";");
+				
+				pstmt = connect.prepareStatement(insertNewSQLObject);
+				
+			
+			    pstmt.setString(1, description);
+			    pstmt.setString(2, tablename);
+			    
+				LoggerManager.debug(Constants.DASHBOARDSTORE_LOGGER,"Insert description: description saved");
+				
+				pstmt.executeUpdate();
+				
+				LoggerManager.debug (Constants.DASHBOARDSTORE_LOGGER, "Insert description: update finished");
+				
+				dbLock.unlock();
+	  
+			
+		    } catch (SQLException e) {
+				//e.printStackTrace();
+		    	LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER,"InsertImage: SQLException in InsertSimResAlloc: " + e.toString());
+			}
+	    }
+		  else{
+			  LoggerManager.error(Constants.DASHBOARDSTORE_LOGGER,"InsertImage "+ ERR_NOCONNECTION);
+	}
+			  
+}
+  
+  //Change String UIconfig to SaveConfig Object
+  public void InsertUIconfig(String tablename, SaveConfig UIconfig){
+	  	
+	  
+	  
+	  	Gson gson = new Gson();
+	  	String strSerializedObject = "";
+	  	
+	  	strSerializedObject = gson.toJson(UIconfig);
+	  		
+		String strDerbyPath = wdc.getUserdir();
+		String strConfigfile =  strDerbyPath+  "data/uiconfig.conf";
+		BufferedWriter writer = null;
+		try	{
+		    writer = new BufferedWriter( new FileWriter(strConfigfile));
+		    writer.write( strSerializedObject);
+
+		}catch ( IOException e)
+		{
+		}
+		finally
+		{
+		    try
+		    {
+		        if ( writer != null)
+		        writer.close( );
+		    }
+		    catch ( IOException e)
+		    {
+		    }
+		}
+			  
+}
+  
  
   public void CloseConnection() {
     try {

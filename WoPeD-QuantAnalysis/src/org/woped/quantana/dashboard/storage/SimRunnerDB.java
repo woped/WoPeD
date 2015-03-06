@@ -57,6 +57,7 @@ public class SimRunnerDB extends SimRunner {
 		super.generateReport();
 		
 		storageengine.storeAllocationMatrix();
+		storageengine.InsertImage();
 	}
 
 	

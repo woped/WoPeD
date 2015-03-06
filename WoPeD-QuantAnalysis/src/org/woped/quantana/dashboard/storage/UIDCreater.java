@@ -2,6 +2,7 @@ package org.woped.quantana.dashboard.storage;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.woped.config.general.WoPeDGeneralConfiguration;
 
 public class UIDCreater {
 
@@ -18,6 +19,37 @@ public class UIDCreater {
 	  			String.valueOf(date.getSeconds());
 	  	*/
 	}
+	
+	public static String CreateComment(){
+		//String sdf = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		WoPeDGeneralConfiguration wgc = new WoPeDGeneralConfiguration();
+		String strComment = "";
+		Date d = new Date();
+
+		wgc.readConfig();
+		String strLocale = wgc.getLocaleLanguage();
+		
+		if(strLocale.equals("de") == true){
+			strComment = 	"Simulation vom " + new SimpleDateFormat("dd").format(d) + "." 
+					 + new SimpleDateFormat("MM").format(d) + " um " 
+					 + new SimpleDateFormat("HH").format(d) + ":" 
+					 + new SimpleDateFormat("mm").format(d) + ":" 
+					 + new SimpleDateFormat("ss").format(d);
+		}
+		else{
+			strComment = 	"Simulation of " + new SimpleDateFormat("dd").format(d) + "." 
+					 + new SimpleDateFormat("MM").format(d) + " at " 
+					 + new SimpleDateFormat("hh").format(d) + ":" 
+					 + new SimpleDateFormat("mm").format(d) + ":" 
+					 + new SimpleDateFormat("ss").format(d) +  " "
+					 + new SimpleDateFormat("a").format(d);
+					 
+			
+		}
+		
+	  	return strComment;  
+	}
+	
 	
 	public static double round(double d) {
 		
