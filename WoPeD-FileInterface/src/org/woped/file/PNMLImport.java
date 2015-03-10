@@ -188,7 +188,7 @@ public class PNMLImport {
 				"##### START PNML Version (1.3.2) IMPORT #####");
 
 		long begin = System.currentTimeMillis();
-		try {
+	try {
 			pnmlDoc = PnmlDocument.Factory.parse(is, opt);
 			if (editorName != null)
 				createEditorFromBeans(editorName, showUI);
@@ -212,6 +212,7 @@ public class PNMLImport {
 		catch (Exception e) {
 			LoggerManager.warn(Constants.FILE_LOGGER,
 							"   ... Could parse PNML file. Perhaps OLD PNML file-format. When saving, new pnml file-format will be created.");
+			e.printStackTrace();
 
 			JOptionPane.showMessageDialog(null,
 					Messages.getString("Import.PNML.Text"),

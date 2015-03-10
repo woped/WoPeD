@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.util.Iterator;
 
 import javax.swing.BorderFactory;
@@ -21,14 +22,18 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JEditorPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTree;
+import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.HTMLFrameHyperlinkEvent;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
@@ -43,6 +48,7 @@ import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.orientation.EditorSize;
 import org.woped.editor.orientation.Orientation;
+import org.woped.qualanalysis.p2t.P2TSideBar;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
 import org.woped.gui.translations.Messages;
@@ -57,6 +63,7 @@ public class EditorPanel extends JPanel {
 	private PropertyChangeSupport propertyChangeSupport;
 	private boolean bMetricsBarVisible = false;
 	private boolean analysisBarVisible = false;
+	private boolean p2TBarVisible = false;
 	private SideBar qualitativeAnalysisSideBar = null;
 	private JLabel semanticLabel = null;
 	private JPanel analysisSideBar = new JPanel(new GridBagLayout());
@@ -71,7 +78,9 @@ public class EditorPanel extends JPanel {
 	private static final int m_splitSize = 10;
 	private final int m_splitHeightOverviewPosition = 100;
 	private boolean automaticResize = false;
-	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;	
+	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
+	
+	private P2TSideBar p2tSideBar = null;
 	
 	/**
 	 * TODO: These members are public for now while we are still in 
@@ -85,7 +94,9 @@ public class EditorPanel extends JPanel {
 	public JSplitPane m_rightSideTreeView = null;
 	public JSplitPane m_mainSplitPane = null;
 	public JSplitPane mainsplitPaneWithAnalysisBar = null;
+	public JSplitPane mainsplitPaneWithP2TBar = null;
 	public JSplitPane m_rightSideTreeViewWithAnalysisBar = null;
+	public JSplitPane m_rightSideTreeViewWithP2TBar = null;
 	public JTree m_treeObject = null;
 	public JPanel overviewPanel = null;
 	public JPanel treeviewPanel = null;
@@ -252,6 +263,8 @@ public class EditorPanel extends JPanel {
 						setTreeviewPanelVisible(false);
 					} else if (panel == analysisSideBar) {
 						hideAnalysisBar();
+					} else if (panel == p2tSideBar) {
+						hideP2TBar();
 					}
 					propertyChangeSupport.firePropertyChange("Sidebar", null,
 							null);
@@ -445,6 +458,10 @@ public class EditorPanel extends JPanel {
 
 	public boolean isMetricsBarVisible() {
 		return bMetricsBarVisible;
+	}
+
+	public boolean isP2TBarVisible() {
+		return p2TBarVisible;
 	}
 
 	/**
@@ -658,9 +675,11 @@ public class EditorPanel extends JPanel {
 	 * @editor Martin Meitz
 	 */
 	public void showAnalysisBar() {
-		if (analysisBarVisible)
+		if (analysisBarVisible) {
 			hideAnalysisBar();
-		else {
+		}
+		
+		if (!analysisBarVisible) {
 			if (bMetricsBarVisible) {
 				hideMetricsBar();
 			}
@@ -710,8 +729,10 @@ public class EditorPanel extends JPanel {
 	 * @author Mathias Gruschinske, Stefan Hackenberg
 	 */
 	public void showMetricsBar() {
-		if (bMetricsBarVisible)
+		if (bMetricsBarVisible){
 			hideMetricsBar();
+		}
+		
 		if (!bMetricsBarVisible) {
 			if (analysisBarVisible) {
 				hideAnalysisBar();
@@ -900,5 +921,93 @@ public class EditorPanel extends JPanel {
 			((WoPeDUndoManager) editorVC.getGraph().getUndoManager()).setEnabled(true);
 		}
 		editorVC.setSaved(false);
+	}
+
+	public void showP2TBar() {
+		if (p2TBarVisible){
+			hideP2TBar();
+		} 
+		
+		if (!p2TBarVisible) {
+			if (bMetricsBarVisible) {
+				hideMetricsBar();
+			}
+			if (analysisBarVisible){
+				hideAnalysisBar();
+			}
+			
+			remove(m_mainSplitPane);
+			// create the metrics sidebar
+			p2tSideBar = new org.woped.qualanalysis.p2t.P2TSideBar(editor);
+	
+			// create a Panel, which contains the sidebar
+			JPanel sideBar = new JPanel(new BorderLayout());
+			sideBar.add(p2tSideBar, BorderLayout.CENTER);
+			
+			m_rightSideTreeViewWithP2TBar= new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, p2tSideBar);
+			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
+				m_rightSideTreeViewWithP2TBar.setDividerLocation(200);
+				m_rightSideTreeViewWithP2TBar.setEnabled(true);
+			} else if (isOverviewPanelVisible() || isTreeviewPanelVisible()) {
+				m_rightSideTreeViewWithP2TBar.setDividerLocation(100);
+				m_rightSideTreeViewWithP2TBar.setEnabled(true);
+			} else {
+				m_rightSideTreeViewWithP2TBar.setDividerLocation(0);
+				m_mainSplitPane.setOneTouchExpandable(true);
+				m_mainSplitPane.setEnabled(true);
+				m_rightSideTreeViewWithP2TBar.setEnabled(false);
+			}
+			
+			Dimension rightSideTreeViewWithP2TBarMinimumSize = new Dimension(0,0);
+			m_rightSideTreeViewWithP2TBar.setMinimumSize(rightSideTreeViewWithP2TBarMinimumSize);
+			
+			
+			mainsplitPaneWithP2TBar = m_mainSplitPane;
+			mainsplitPaneWithP2TBar.setBottomComponent(m_rightSideTreeViewWithP2TBar);
+	
+			add(mainsplitPaneWithP2TBar);
+			p2TBarVisible = true;
+			revalidate();
+//			editorSize.resize(false);
+			mainsplitPaneWithP2TBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
+			mainsplitPaneWithP2TBar.setResizeWeight(1);
+			
+			
+			JEditorPane p2TeditorPane = new JEditorPane();
+			p2TeditorPane.setEditable(false);
+			
+			p2TeditorPane.setText("geparster Text");
+
+		}
+	}
+
+
+	public void hideP2TBar() {
+		
+		if (p2TBarVisible) {
+			
+			qualitativeAnalysisSideBar.showTStarIfPossible();		
+//			remove(mainsplitPaneWithAnalysisBar);
+//			mainsplitPaneWithAnalysisBar = null;
+			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
+			p2TBarVisible = false;
+			qualitativeAnalysisSideBar.refresh();
+
+			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
+					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
+				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
+				m_mainSplitPane.setOneTouchExpandable(false);
+				m_mainSplitPane.setEnabled(false);
+			} else {
+				m_mainSplitPane.setResizeWeight(0.85);
+			}
+			add(m_mainSplitPane);
+
+	
+			revalidate();
+//			editorSize.resize(false);
+		}
+		
+//		System.out.println("hide");
 	}
 }

@@ -62,6 +62,8 @@ public class ActionFactory
     public final static String		   ACTIONID_MASSMETRICANALYSE      = "Menu.Metric.MassAnalyse";
     public final static String		   ACTIONID_METRICSBUILDER		   = "Menu.Metric.MetricsBuilder";
     public final static String         ACTIONID_UPDATENETS             = "Action.UpdateNets";
+    
+    public final static String		   ACTIONID_P2T					   = "ToolBar.P2T";	
 
     public final static String         ACTIONID_DRAWMODE_PLACE         = "ToolBar.DrawPlace";
     public final static String         ACTIONID_DRAWMODE_TRANSITION    = "ToolBar.DrawTransition";
@@ -251,7 +253,10 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_COLORING, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.COLORING, null, ACTIONID_COLORING));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_COLORING), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.COLORING);
         
-        STATIC_ACTION_MAP.put(ACTIONID_ROTATEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATEVIEW, null, ACTIONID_ROTATEVIEW));
+        STATIC_ACTION_MAP.put(ACTIONID_P2T, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2T));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_P2T), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.P2T);
+        
+          STATIC_ACTION_MAP.put(ACTIONID_ROTATEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATEVIEW, null, ACTIONID_ROTATEVIEW));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATEVIEW), VisualController.SUBPROCESS_EDITOR, VisualController.SUBPROCESS_EDITOR, VisualController.ROTATE);
         
         STATIC_ACTION_MAP.put(ACTIONID_ROTATE_TRANS_LEFT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATETRANSLEFT, null, ACTIONID_ROTATE_TRANS_LEFT));

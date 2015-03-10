@@ -93,6 +93,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JRibbonBand 					sidebarBand					= null;
 	private	JRibbonBand 					analyzeBand					= null;
 	private	JRibbonBand 					metricsBand					= null;
+	private	JRibbonBand 					p2tBand						= null;
 	private JRibbonBand 					optionsAndHelpBand			= null;
 	private	JRibbonBand 					tokengameCloseBand			= null;
 	private	JRibbonBand 					tokengameStepBand			= null;
@@ -162,6 +163,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private	JCommandButton 					processMetricsButton 		= null;
 	private	JCommandButton 					processMassAnalyzeButton 	= null;
 	private	JCommandButton 					processMetricsBuilderButton = null;
+	
+	private	JCommandButton 					p2tButton 					= null;
 
 	private	JCommandButton 					configurationButton 		= null;
 	private	JCommandButton 					manualButton 				= null;
@@ -468,6 +471,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetrics.text"), "Metrics.processmetrics").addAction(m_mediator,ActionFactory.ACTIONID_METRIC, AbstractViewEvent.ANALYSIS_METRIC);
 			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetricsbuilder.text")).addAction(m_mediator,ActionFactory.ACTIONID_METRICSBUILDER, AbstractViewEvent.ANALYSIS_METRICSBUILDER);
 			osxAnalyzeMenu.addSubMenu(processMetricsMenu);
+		//Submenu
+			OSXMenu p2tMenu = new OSXMenu(Messages.getString("P2T.textBandTitle"));
+			p2tMenu.addMenuItem(Messages.getString("P2T.openP2T.text")).addAction(m_mediator, ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T);
+			osxAnalyzeMenu.addSubMenu(p2tMenu);
 		menuAdapter.addMenu(osxAnalyzeMenu);
 	}
 
@@ -782,10 +789,28 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private RibbonTask getAnalyzeTask() {
 
 		if (analyzeTask == null) {
-			if (ConfigurationManager.getConfiguration().isUseMetrics())
-				analyzeTask = new RibbonTask(Messages.getTitle("Task.Analyze"), getAnalyzeBand(), getMetricsBand());
-			else
-				analyzeTask = new RibbonTask(Messages.getTitle("Task.Analyze"), getAnalyzeBand());
+			if (ConfigurationManager.getConfiguration().isUseMetrics()){
+				if (ConfigurationManager.getConfiguration().getProcess2TextUse()){
+					analyzeTask = new RibbonTask(Messages.getTitle("Task.Analyze"), getAnalyzeBand(), getMetricsBand(), getP2TBand());
+				} else {
+					analyzeTask = new RibbonTask(Messages.getTitle("Task.Analyze"), getAnalyzeBand(), getMetricsBand());
+				}
+			} else {
+				if (ConfigurationManager.getConfiguration().getProcess2TextUse()){
+					analyzeTask = new RibbonTask(Messages.getTitle("Task.Analyze"), getAnalyzeBand(), getP2TBand());
+				} else {
+					analyzeTask = new RibbonTask(Messages.getTitle("Task.Analyze"), getAnalyzeBand());
+				}
+			}
+		
+//		if (ConfigurationManager.getConfiguration().isUseMetrics()){
+//				analyzeTask = new RibbonTask(Messages.getTitle("Task.Analyze"), getAnalyzeBand(), getMetricsBand(), getP2TBand());
+//			
+//		} else {		
+//				analyzeTask = new RibbonTask(Messages.getTitle("Task.Analyze"), getAnalyzeBand(), getP2TBand());
+//			
+//		}
+		
 			analyzeTask.setResizeSequencingPolicy(new CoreRibbonResizeSequencingPolicies.CollapseFromLast(analyzeTask));
 		}
 
@@ -972,6 +997,18 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		return metricsBand;
 	}
 
+	private JRibbonBand getP2TBand(){
+		if (null == p2tBand) {
+			p2tBand = new JRibbonBand(Messages.getString("P2T.textBandTitle"), new P2T());
+			p2tBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(p2tBand));
+			p2tBand.startGroup();
+			
+			p2tBand.addCommandButton(getP2TButton(), RibbonElementPriority.TOP);
+		}
+		
+		return p2tBand;
+	}
+	
 	private JRibbonBand getWindowsBand (){
 
 		if (windowsBand == null) {
@@ -1554,6 +1591,18 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		}
 
 		return processMetricsBuilderButton;
+	}
+	
+	private JCommandButton getP2TButton() {
+		if (p2tButton == null) {
+			p2tButton = new JCommandButton(Messages.getString("P2T.text"), new P2T());
+			p2tButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T, p2tButton));
+//			TODO(optional):
+//			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton, ActionFactory.ACTIONID_METRIC);
+			setTooltip(p2tButton, "P2T");
+		}
+
+		return p2tButton;
 	}
 
 	private JCommandButton getChangeOrientationButton() {

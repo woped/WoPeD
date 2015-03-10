@@ -238,7 +238,9 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	// Auto play is running 
 	public static final int TOKENGAME_AUTOPLAY_PLAYING		= 57;
 	
-	private static final int MAX_ID 						= 58;
+	public static final int P2T	 							= 58;
+	
+	private static final int MAX_ID 						= 59;
 
 	// For each WoPeD action, we store a corresponding visibility configuration
 	private Map<WoPeDAction, IVisibility> actionVisibilityMap = new HashMap<WoPeDAction,IVisibility>();	

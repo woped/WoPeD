@@ -13,6 +13,7 @@ import javax.swing.JPopupMenu;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.qualanalysis.p2t.Process2Text;
 import org.woped.qualanalysis.paraphrasing.action.ButtonListener;
 import org.woped.gui.translations.Messages;
 
@@ -29,6 +30,7 @@ public class ParaphrasingPanel extends JPanel{
 	private IEditor m_editor = null;
 	private ParaphrasingOutput paraphrasingOutput = null;
 	private static boolean threadInProgress = false;
+	private Process2Text p2tInstance;
 	
 	
 	private JPopupMenu menu = new JPopupMenu();
@@ -332,6 +334,14 @@ public class ParaphrasingPanel extends JPanel{
 			menuProperties.addActionListener(new ButtonListener(this));
 		}
 		return menuProperties;
+	}
+
+	public Process2Text getP2tInstance() {
+		return this.p2tInstance;
+	}
+
+	public void setP2tInstance(Process2Text p2tInstance) {
+		this.p2tInstance = p2tInstance;
 	}
 
 }

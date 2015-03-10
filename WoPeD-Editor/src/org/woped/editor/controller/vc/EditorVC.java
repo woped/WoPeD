@@ -2268,5 +2268,12 @@ public class EditorVC implements KeyListener,
 
 	public String getPathname() {
 		return m_pathname;
-	}	
+	}
+
+	@Override
+	public void hideP2TBar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

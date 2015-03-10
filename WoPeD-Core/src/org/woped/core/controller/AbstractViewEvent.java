@@ -286,6 +286,8 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int TWITTER     			  = 1098;
     public static final int COMMUNITY     			  = 1099;
     
+    public static final int P2T						  = 1100;
+    
     
     //variable to change toolbars and references
     public static final int CHANGEPANEL				  = 1999;

@@ -65,21 +65,34 @@ public class ButtonListener implements ActionListener{
 		//Call Webservice Button
 		if(e.getSource() == this.paraphrasingPanel.getLoadButton()){
 			
-			if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Load.Question.Content"), Messages.getString("Paraphrasing.Load.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
-				
-				if(paraphrasingPanel.getThreadInProgress() == false){
-					this.paraphrasingOutput.setAnimationVisible();
-					clearAllHighlighting();
-					paraphrasingPanel.setThreadInProgress(true);
-					webService = new WebServiceThread(paraphrasingPanel);
-					webService.start();
-					webService = null;
-				}				
-				else{
-					JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.ThreadInProgress.Message"),
-							Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
-				}
-			}
+//			if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Load.Question.Content"), Messages.getString("Paraphrasing.Load.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
+//				
+//				if(paraphrasingPanel.getThreadInProgress() == false){
+//					this.paraphrasingOutput.setAnimationVisible();
+//					clearAllHighlighting();
+//					paraphrasingPanel.setThreadInProgress(true);
+//					webService = new WebServiceThread(paraphrasingPanel);
+//					webService.start();
+//					while(!webService.getIsFinished()){
+//						try {
+//							Thread.sleep(500);
+//						} catch (InterruptedException e1) {
+//							// TODO Auto-generated catch block
+//							e1.printStackTrace();
+//						}
+//					}
+//					DefaultTableModel defaultTableModel = paraphrasingPanel.getParaphrasingOutput().getDefaultTableModel();
+//					defaultTableModel.setRowCount(0);
+//					String[] tmp = {"", paraphrasingPanel.getP2tInstance().getHtmlText()};						
+//					defaultTableModel.addRow(tmp);						
+//					paraphrasingPanel.getParaphrasingOutput().updateElementContainer();
+//					webService = null;
+//				}				
+//				else{
+//					JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.ThreadInProgress.Message"),
+//							Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+//				}
+//			}
 		}
 		
 		//Delete Button or Delete JMenuItem
