@@ -314,7 +314,6 @@ $(document).ready(function(){
       	 
          $('.js-seralize').on('click', function() {
              var s = gridster.serialize();
-             $('#log').val(JSON.stringify(s));
              var x = null;
              
              for(var i = 0; i < s.length; i++) {
@@ -1328,8 +1327,6 @@ $(document).ready(function(){
 			<button class="js-seralize"><img src="/SVG/save_save.svg"> Ansicht speichern</button>
 		</div>
 
-		<!-- Textfeld um Ausgabe zu prfen -->
-		<textarea id="log"></textarea>
 
 
 		<div class="pull-left">
