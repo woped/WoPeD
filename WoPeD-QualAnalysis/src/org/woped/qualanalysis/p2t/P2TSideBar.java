@@ -34,6 +34,17 @@ public class P2TSideBar extends JPanel implements ActionListener{
 	private WebServiceThread webService;
 	private boolean threadInProgress;
 	
+	public P2TSideBar(IEditor currentEditor){
+    	super();
+    	editor = currentEditor;
+    	addComponents();
+    	new Thread(){
+    		public void run(){
+    			getText();
+    		}
+    	}.start();
+    }
+	
 	public org.woped.qualanalysis.p2t.Process2Text getNaturalTextParser() {
 		return naturalTextParser;
 	}
@@ -46,12 +57,6 @@ public class P2TSideBar extends JPanel implements ActionListener{
 		return editor;
 	}
 	
-    public P2TSideBar(IEditor currentEditor){
-    	super();
-    	editor = currentEditor;
-    	addComponents();
-    }
-    
     private void addComponents(){
     		JLabel header = new JLabel(Messages.getString("P2T.textBandTitle"));
     	this.add(header);
@@ -62,7 +67,7 @@ public class P2TSideBar extends JPanel implements ActionListener{
     	
     	this.add(new HideLabel(Messages.getImageIcon("AnalysisSideBar.Cancel"),Messages.getString("Metrics.SideBar.Hide")));
     	
-	    	textpane =  new JEditorPane();
+	    	textpane = new JEditorPane("text/html", "");
 	    	textpane.addHyperlinkListener(new HyperlinkListener() {
 				@Override
 				public void hyperlinkUpdate(HyperlinkEvent hle) {
@@ -73,7 +78,7 @@ public class P2TSideBar extends JPanel implements ActionListener{
 			});
 			textpane.setAutoscrolls(true);
 			textpane.setEditable(false);
-	    	textpane.setContentType("text/html");
+	    	textpane.setMinimumSize(new Dimension(150,100));	    	
     	this.add(textpane);
     	
     }
@@ -81,15 +86,23 @@ public class P2TSideBar extends JPanel implements ActionListener{
     private void highlightElement(String ids) {
     	String[] singleIDs = ids.split(",");
     	for (String id : singleIDs){
+    		highlightIDinText(id);
     		id = id.split("_op_")[0]; //ignore the path option
+    		highlightIDinProcess(id);
     	}
 	}
+    private void highlightIDinProcess(String id){
+    	ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
+    	mec.getElementById(id).setHighlighted(true);
+    }
+    
     
     /**
      * highlights passages linked to the given id within the displayed text
      * @param id, the id of the element of which the corresponding text is to be highlighted
      */
-    public void highlightID(String id){
+    public void highlightIDinText(String id){
+    	clean();
     	//is there a linked text
     	if (naturalTextParser != null){
     		//get the text(s) of the id
@@ -106,7 +119,6 @@ public class P2TSideBar extends JPanel implements ActionListener{
 					}
 					//if the text is found
 					if (find.equals(match)) {
-						textpane.getHighlighter().removeAllHighlights();
 						javax.swing.text.DefaultHighlighter.DefaultHighlightPainter highlightPainter = null;
 						highlightPainter = new javax.swing.text.DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
 		
@@ -166,20 +178,7 @@ public class P2TSideBar extends JPanel implements ActionListener{
 			new WebServiceThread(this);			
 			if(JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Load.Question.Content"), Messages.getString("Paraphrasing.Load.Question.Title"), JOptionPane.YES_NO_OPTION)  == JOptionPane.YES_OPTION){
 				if(this.getThreadInProgress() == false){
-					clean();
-					
-					this.setThreadInProgress(true);
-					webService = new WebServiceThread(this);
-					webService.start();
-					while(!webService.getIsFinished()){
-						try {
-							Thread.sleep(500);
-						} catch (InterruptedException e1) {
-							//ignore
-						}
-					}
-					this.textpane.setText(naturalTextParser.getHtmlText());
-					webService = null;
+					getText();
 				}				
 				else{
 					JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.ThreadInProgress.Message"),
@@ -188,6 +187,23 @@ public class P2TSideBar extends JPanel implements ActionListener{
 			}
 		}
 		
+	}
+	
+	private void getText(){
+		clean();
+		
+		this.setThreadInProgress(true);
+		webService = new WebServiceThread(this);
+		webService.start();
+		while(!webService.getIsFinished()){
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e1) {
+				//ignore
+			}
+		}
+		this.textpane.setText(naturalTextParser.getHtmlText());
+		webService = null;
 	}
 
 	private void setThreadInProgress(boolean b) {
@@ -201,6 +217,9 @@ public class P2TSideBar extends JPanel implements ActionListener{
 	
 	
 	public void clean() {
+		textpane.getHighlighter().removeAllHighlights();
+		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
+    	mec.removeAllHighlighting();
 		editor.getGraph().refreshNet();
 		editor.getGraph().repaint();
 	}
