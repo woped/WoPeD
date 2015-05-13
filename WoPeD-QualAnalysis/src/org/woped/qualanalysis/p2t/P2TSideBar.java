@@ -166,6 +166,7 @@ public class P2TSideBar extends JPanel implements ActionListener{
 
 				public void mouseClicked(MouseEvent e) {
 					editor.hideP2TBar();
+					editor.repaint();
 				}
 			});
 		}
