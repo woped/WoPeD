@@ -353,22 +353,16 @@ $(document).ready(function(){
 
          });
         
-         
-        
          $(".cfgBtn").click(function(){
-        	 var ParentSelector = this.name;    	 
-        	 var inputs = $("#coloumSelectorProcess input").each(function(i, e){
-        		var parent =  "#table" +ParentSelector;
-        	    		 var child = this.name
-        	 if(this.checked){//        	$(parent child).show();  
-        	 }
-        	 else{// $(parent child).hide(); 
-        	 
-        	 }
-        	 })
+        	setColVisibilty(this.name, getColVisibility("#coloumSelector" + this.name)); 	 
+        	
          })
          
-         }
+        
+
+    
+        
+   
    
    
 	/* 
@@ -424,7 +418,7 @@ $(document).ready(function(){
     });
     
 	
-    
+  }  
     function fctStartGetDashboardValuesCyclic ( cycle_in_ms, fromTick){
 
     	intervalObj = setInterval(function(){
@@ -735,13 +729,13 @@ $(document).ready(function(){
 										"<tr>"+
 										"	<th></th>"+
 										//"	<th><p title=\"ThroughPut / FinishedCases)\">Delivery Adherence</p></th>"+
-										"	<th><p title=\"ProcServTime / ProcCompTime\">Efficiency</p></th>"+
-										"	<th><p title=\"Count of completetely finished cases during period\">%%QuantAna.Simulation.Details.FinishedCases%%</p></th>"+
+										"	<th class=\"effen\"><p title=\"ProcServTime / ProcCompTime\">Efficiency</p></th>"+
+										"	<th class=\"fin\"><p title=\"Count of completetely finished cases during period\">%%QuantAna.Simulation.Details.FinishedCases%%</p></th>"+
 										
 										//"	<th>Duration</th>"+
-										"	<th><p title=\"Custom tooltip text.\">Completion Time</p></th>"+
-										"	<th><p title=\"Custom tooltip text.\">Absolute Throughput</p></th>"+
-										"	<th><p title=\"FinishedCases /  lambda\">%%QuantAna.Simulation.Details.Throughput%%</p></th>"+
+										"	<th class=\"com\"><p title=\"Custom tooltip text.\">Completion Time</p></th>"+
+										"	<th class=\"throAbs\"><p title=\"Custom tooltip text.\">Absolute Throughput</p></th>"+
+										"	<th class=\"thro\"><p title=\"FinishedCases /  lambda\">%%QuantAna.Simulation.Details.Throughput%%</p></th>"+
 										"</tr>"+
 										"<tr>"+
 										"	<td></td>"+
@@ -776,11 +770,11 @@ $(document).ready(function(){
 
 				// ressources
 				
-				var strInfoRessource = "<table class=\"table text-center\">"+
+				var strInfoRessource = "<table class=\"table text-center\" id=\"tableRessource\">"+
 										"<tr>"+
-										"	<th>Ressource</th>"+
-										"	<th>%%QuantAna.Simulation.Column.Util%%</th>"+
-										"	<th>&#216;</th>"+
+										"	<th class=\"res\">Ressource</th>"+
+										"	<th class=\"util\">%%QuantAna.Simulation.Column.Util%%</th>"+
+										"	<th class=\"avg\">&#216;</th>"+
 										"</tr>";
 
 
@@ -813,11 +807,11 @@ $(document).ready(function(){
 				
 				
 				
-				var strInfoServer = "<table class=\"table text-center\">"+
+				var strInfoServer = "<table class=\"table text-center \" id=\"tableTask\">"+
 									"<tr>"+
-									"	<th>Task</th>"+
-									"	<th>%%QuantAna.Simulation.Column.Wq%%</th>"+
-									"	<th>&#216;</th>"+
+									"	<th class=\"class=\"avg\"\">Task</th>"+
+									"	<th class=\"time\">%%QuantAna.Simulation.Column.Wq%%</th>"+
+									"	<th class=\"avg\">&#216;</th>"+
 									//"	<th>Service Time</th>"+
 									//"	<th>&#216;</th>"+
 									"</tr>";
@@ -1062,8 +1056,7 @@ $(document).ready(function(){
     	selectedTableName =  $( "#archiveselection" ).val();
     	
  
-     	//org.woped.quantana.dashboard.gui.EmbeddedBrowserView browser = new EmbeddedBrowserView(2711);
-		//browser.setVisible(true);
+
 	$.ajax({
     	
     		type: "POST",
@@ -1231,14 +1224,55 @@ $(document).ready(function(){
 
 
 
-	
+//Put every action which needs a rendered DOM here 
 	function tablesRenderingFinished(){
 		 $('.table').dragtable();
 	
 		 
 
 	}
+
+	  function   getColVisibility(configWin){
+	  		visibilityJSON = {}
+         	 var inputs = $(configWin + " input").each(function(i, e){
+        	
+        	    		  
+        	 if(this.checked){visibilityJSON[this.name] = true;  
+        	 }
+        	 else{visibilityJSON[this.name] = false;
+        	 
+        	 }
+        	 })
+        	 return visibilityJSON;
+
+         }
+
+        function setColVisibilty(tableIdentifier, visibilityJSON){
+
+var tableId = '#table' + tableIdentifier;
+for( keys in visibilityJSON){
+var index = $(tableId + " ."+ keys).index() +1;
+console.log(tableId + " ."+ keys);
+if(visibilityJSON[keys])
+{ (visibilityJSON[keys])
+	console.dir($(tableId + " th:nth-child("+ index+ "),"+  tableId  + " td:nth-child("+ index + ")" ).show())}
+else
+{
+	$(tableId + " th:nth-child("+ index +")," +  tableId  + " td:nth-child("+ index+")" ).hide()}
+}
+
+         }      
+
+function setColVisibiltyCheckboxes(configWin, visibilityJSON){
+//TODO
+
+}
+
+function getColVisibiltyForAllTables(){
+return { Process :getColVisibility("#coloumSelectorProcess") , Task : getColVisibility("#coloumSelectorTask"), Ressource : getColVisibility("#coloumSelectorRessource")
 	
+}
+}	
 
 
 </script>
@@ -1253,7 +1287,7 @@ $(document).ready(function(){
 		style="display: list-item; position: absolute;">
 		<div class="panel-heading header">
 			<h3 class="panel-title">%%QuantAna.Simulation.Column.Object3%% </h3> 
-			<!--<a href="#coloumSelectorProcess" class="pull-right" style="margin-top:-20px;" data-toggle="modal"><img src="/SVG/options_configuration.svg" /></a> -->
+			<a href="#coloumSelectorProcess" class="pull-right" style="margin-top:-20px;" data-toggle="modal"><img src="/SVG/options_configuration.svg" /></a>
 		</div>
 		<div class="panel-body">
 			<div id="simProcessValues"></div>
@@ -1272,7 +1306,7 @@ $(document).ready(function(){
 			<div class="panel-heading header">
 
 				<h3 class="panel-title">%%QuantAna.Simulation.Column.Object2%%</h3> 
-				<!--<a href="#coloumSelectorTask" class="pull-right" style="margin-top:-20px;" data-toggle="modal"><img src="/SVG/options_configuration.svg" /></a>-->
+				<a href="#coloumSelectorTask" class="pull-right" style="margin-top:-20px;" data-toggle="modal"><img src="/SVG/options_configuration.svg" /></a>
 
 			</div>
 			<div class="panel-body">
@@ -1297,7 +1331,7 @@ $(document).ready(function(){
 			<div class="panel-heading header">
 
 				 <h3 class="panel-title"><img src="/GUI/folder_objects.png" /> %%QuantAna.Simulation.Column.Object%%</h3>
- <!--<a href="#coloumSelectorRessource" class="pull-right" style="margin-top:-20px;" data-toggle="modal"><img src="/SVG/options_configuration.svg" /></a> -->
+ <a href="#coloumSelectorRessource" class="pull-right" style="margin-top:-20px;" data-toggle="modal"><img src="/SVG/options_configuration.svg" /></a>
 			</div>
 
 			<div class="panel-body">
@@ -1325,11 +1359,6 @@ $(document).ready(function(){
 		<!-- Button um Ansicht zu speichern -->
 		<div class="controls">
 			<button class="js-seralize"><img src="/SVG/save_save.svg"> %%QuantAna.Simulation.Column.SaveView%%</button>
-		</div>
-		
-		<!-- Button um Ansicht zu laden -->
-		<div class="controls">
-			<button class="js-seralizer"><img src="/SVG/save_save.svg"> %%QuantAna.Simulation.Column.LoadView%%</button>
 		</div>
 
 
