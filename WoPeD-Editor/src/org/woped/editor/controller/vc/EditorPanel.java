@@ -354,13 +354,13 @@ public class EditorPanel extends JPanel {
 		m_rightSideTreeView.setDividerLocation(100);
 		if (show) {
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isTreeviewPanelVisible()) {
+					&& !isTreeviewPanelVisible() && !isP2TBarVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane
 						.getLastDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
 			}
-			if (isAnalysisBarVisible() || isMetricsBarVisible()) {
+			if (isAnalysisBarVisible() || isMetricsBarVisible() || isP2TBarVisible()) {
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
 				if (isTreeviewPanelVisible()) {
 					m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
@@ -374,20 +374,20 @@ public class EditorPanel extends JPanel {
 		} else {
 			if (isTreeviewPanelVisible()) {
 				m_rightSideTreeView.setEnabled(false);
-				if (isAnalysisBarVisible() || isMetricsBarVisible()) {
+				if (isAnalysisBarVisible() || isMetricsBarVisible() || isP2TBarVisible()) {
 					m_rightSideTreeViewWithAnalysisBar.setDividerLocation(100);
 				} else {
 					m_rightSideTreeView.setDividerLocation(0);
 				}
 			} else {
 				m_rightSideTreeView.setVisible(false);
-				if (isAnalysisBarVisible() || isMetricsBarVisible()) {
+				if (isAnalysisBarVisible() || isMetricsBarVisible() || isP2TBarVisible()) {
 					m_rightSideTreeViewWithAnalysisBar.setDividerLocation(0);
 					m_rightSideTreeViewWithAnalysisBar.setEnabled(false);
 				}
 			}
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
+					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane
 						.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
@@ -405,13 +405,13 @@ public class EditorPanel extends JPanel {
 		m_rightSideTreeView.setDividerLocation(100);
 		if (show) {
 			if (!isOverviewPanelVisible() && !isAnalysisBarVisible()
-					&& !isMetricsBarVisible()) {
+					&& !isMetricsBarVisible() && !isP2TBarVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane
 						.getLastDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
 			}
-			if (isAnalysisBarVisible() || isMetricsBarVisible()) {
+			if (isAnalysisBarVisible() || isMetricsBarVisible()||isP2TBarVisible()) {
 				if (isOverviewPanelVisible()) {
 					m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
 					m_rightSideTreeView.setEnabled(true);
@@ -425,13 +425,13 @@ public class EditorPanel extends JPanel {
 			}
 		} else {
 			if (isOverviewPanelVisible()) {
-				if (isAnalysisBarVisible() || isMetricsBarVisible()) {
+				if (isAnalysisBarVisible() || isMetricsBarVisible()||isP2TBarVisible()) {
 					m_rightSideTreeViewWithAnalysisBar.setDividerLocation(100);
 					m_rightSideTreeView.setEnabled(false);
 				}
 			} else {
 				m_rightSideTreeView.setVisible(false);
-				if (isAnalysisBarVisible() || isMetricsBarVisible()) {
+				if (isAnalysisBarVisible() || isMetricsBarVisible() || isP2TBarVisible()) {
 					m_rightSideTreeViewWithAnalysisBar.setDividerLocation(0);
 					m_rightSideTreeView.setEnabled(false);
 					m_rightSideTreeViewWithAnalysisBar.setEnabled(false);
@@ -439,7 +439,7 @@ public class EditorPanel extends JPanel {
 			}
 	
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
+					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane
 						.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
@@ -490,7 +490,7 @@ public class EditorPanel extends JPanel {
 			qualitativeAnalysisSideBar.refresh();
 
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
+					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
 				m_mainSplitPane.setEnabled(false);
@@ -750,10 +750,10 @@ public class EditorPanel extends JPanel {
 			// create a new SplitPane with a horizontal split
 			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(
 					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, sideBar);
-			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
+			if (isOverviewPanelVisible() && isTreeviewPanelVisible() && isP2TBarVisible()) {
 				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
-			} else if (isOverviewPanelVisible() || isTreeviewPanelVisible()) {
+			} else if (isOverviewPanelVisible() || isTreeviewPanelVisible() || isP2TBarVisible()) {
 				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(100);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
 			} else {
@@ -994,7 +994,7 @@ public class EditorPanel extends JPanel {
 			qualitativeAnalysisSideBar.refresh();
 
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
+					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
 				m_mainSplitPane.setEnabled(false);
