@@ -2273,7 +2273,7 @@ public class EditorVC implements KeyListener,
 	@Override
 	public void hideP2TBar() {
 		// TODO Auto-generated method stub
-		
+		editorPanel.hideP2TBar();
 	}
 	
 }
