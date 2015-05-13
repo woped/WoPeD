@@ -123,6 +123,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private int apromoreServerID;
 	private int selected;
 	private boolean nameAlreadyInUse = false;
+	private boolean changed;
 
 	/**
 	 * Constructor for ConfToolsPanel.
@@ -137,6 +138,18 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	 *      xml-file
 	 */
 	public boolean applyConfiguration() {
+
+		changed = useBox.isSelected() != ConfigurationManager
+				.getConfiguration().getApromoreUse();
+
+		if (changed) {
+			JOptionPane
+					.showMessageDialog(
+							this,
+							Messages.getString("Configuration.Apromore.Dialog.Restart.Message"),
+							Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
+							JOptionPane.INFORMATION_MESSAGE);
+		}
 
 		if (ConfigurationManager.getConfiguration().isSetApromoreServers()) {
 			currentIndex = ConfigurationManager.getConfiguration()
@@ -380,14 +393,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			c.weightx = 1;
 			c.gridx = 2;
 			c.gridy = 2;
-//			c.anchor = GridBagConstraints.EAST;
-//			c.ipadx = 60;
 			settingsPanel.add(getTestButton(), c);
 			c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 3;
-//			c.anchor = GridBagConstraints.WEST;
-//			c.ipadx = 0;
 			settingsPanel.add(getManagerPathLabel(), c);
 			c.weightx = 1;
 			c.gridx = 1;
@@ -855,21 +864,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	// ################## SERVER ADMINISTRATION LOGIC #################### */
 
 	class CheckboxListener implements ItemListener {
+
 		public void itemStateChanged(ItemEvent ie) {
 			JCheckBox jcb = (JCheckBox) ie.getSource();
 			if (jcb == useBox) {
-				boolean changed = useBox.isSelected() != ConfigurationManager
-						.getConfiguration().getApromoreUse();
-				if (changed) {
-					JOptionPane
-							.showMessageDialog(
-									getEnabledPanel(),
-									Messages.getString("Configuration.Apromore.Dialog.Restart.Message"),
-									Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
-									JOptionPane.INFORMATION_MESSAGE);
-					ConfigurationManager.getConfiguration().setApromoreUse(
-							useBox.isSelected());
-				}
 				getServerListPanel().setVisible(jcb.isSelected());
 				getSettingsPanel().setVisible(jcb.isSelected());
 				if (jcb.isSelected() == false) {
@@ -1167,6 +1165,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 							JOptionPane.WARNING_MESSAGE);
 			return;
 		}
+
+		// TO-DO:
+		// Hier Server-Namen in Pop-Up-Dialog
+
 		int result = JOptionPane
 				.showConfirmDialog(
 						this,

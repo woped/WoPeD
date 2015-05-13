@@ -76,7 +76,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	 * @see AbstractConfPanel#applyConfiguration()
 	 */
 	public boolean applyConfiguration() {
-/*		boolean changed = useBox.isSelected() != ConfigurationManager
+		boolean changed = useBox.isSelected() != ConfigurationManager
 				.getConfiguration().getProcess2TextUse();
 
 		if (changed) {
@@ -86,7 +86,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 							Messages.getString("Configuration.P2T.Dialog.Restart.Message"),
 							Messages.getString("Configuration.P2T.Dialog.Restart.Title"),
 							JOptionPane.INFORMATION_MESSAGE);
-		}*/
+		}
 		ConfigurationManager.getConfiguration().setProcess2TextServerHost(
 				getServerURLText().getText());
 		ConfigurationManager.getConfiguration().setProcess2TextServerURI(
@@ -249,18 +249,6 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		public void itemStateChanged(ItemEvent ie) {
 			JCheckBox jcb = (JCheckBox) ie.getSource();
 			if (jcb == useBox) {
-				boolean changed = useBox.isSelected() != ConfigurationManager
-						.getConfiguration().getProcess2TextUse();
-				if (changed) {
-					JOptionPane
-							.showMessageDialog(
-									getEnabledPanel(),
-									Messages.getString("Configuration.P2T.Dialog.Restart.Message"),
-									Messages.getString("Configuration.P2T.Dialog.Restart.Title"),
-									JOptionPane.INFORMATION_MESSAGE);
-					ConfigurationManager.getConfiguration().setProcess2TextUse(
-							useBox.isSelected());
-				}
 				getSettingsPanel().setVisible(jcb.isSelected());
 			}
 		}
@@ -358,9 +346,6 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		if (defaultButton == null) {
 			defaultButton = new WopedButton();
 			defaultButton.setText(Messages.getTitle("Button.SetToDefault"));
-			// defaultButton.setIcon(Messages.getImageIcon("Button.TestConnection"));
-			// defaultButton.setMnemonic(Messages
-			// .getMnemonic("Button.TestConnection"));
 			defaultButton.setPreferredSize(new Dimension(200, 25));
 			defaultButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -403,10 +388,6 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 							JOptionPane.INFORMATION_MESSAGE);
 		}
 
-		// ApromoreAccess aproAccess = new ApromoreAccess(this);
-		// aproAccess.test(getServerURLText().getText(), getServerPortText()
-		// .getText(), getManagerPathText().getText(), getServerPortText()
-		// .getText());
 	}
 
 	private void setDefaultValues() {

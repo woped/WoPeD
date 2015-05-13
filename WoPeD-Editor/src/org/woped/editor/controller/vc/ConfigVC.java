@@ -38,6 +38,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.*;
@@ -160,7 +161,7 @@ public class ConfigVC extends JDialog implements IViewController {
 			aproPanel.addApromoreServer(aproPanel.getApromoreServerID());
 		}
 		if (confOK) {
-//			ConfigurationManager.getConfiguration().saveConfig();
+			// ConfigurationManager.getConfiguration().saveConfig();
 			fireViewEvent(new EditorViewEvent(this,
 					AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
 					AbstractViewEvent.UPDATE));
@@ -289,19 +290,16 @@ public class ConfigVC extends JDialog implements IViewController {
 					p2tPanel);
 			confPanels.put(p2tPanel.getPanelName(), p2tPanel);
 			readConfiguration();
-/*			tabbedPane.addChangeListener(new ChangeListener() {
-				public void stateChanged(ChangeEvent changeEvent) {
-					if (tabbedPane.getSelectedComponent() == aproPanel)
-						aproPanel.setIsApromorePanelSelected(true);
-					else
-						aproPanel.setIsApromorePanelSelected(false);
-					tabbedPane = (JTabbedPane) changeEvent.getSource();
-					if (tabbedPane.getSelectedComponent() == null) {
-						return;
-					}
-					applyConfiguration();
-				}
-			});*/
+			/*
+			 * tabbedPane.addChangeListener(new ChangeListener() { public void
+			 * stateChanged(ChangeEvent changeEvent) { if
+			 * (tabbedPane.getSelectedComponent() == aproPanel)
+			 * aproPanel.setIsApromorePanelSelected(true); else
+			 * aproPanel.setIsApromorePanelSelected(false); tabbedPane =
+			 * (JTabbedPane) changeEvent.getSource(); if
+			 * (tabbedPane.getSelectedComponent() == null) { return; }
+			 * applyConfiguration(); } });
+			 */
 		}
 		return tabbedPane;
 	}
@@ -343,7 +341,18 @@ public class ConfigVC extends JDialog implements IViewController {
 				public void actionPerformed(ActionEvent arg0) {
 					aproPanel.disableServerSettings();
 					aproPanel.setButtonsToDefault();
-					resetConfiguration();
+
+					int result = JOptionPane.showConfirmDialog(
+							tabbedPane,
+							Messages.getString("Configuration.Dialog.DiscardChanges.Message"),
+							Messages.getString("Configuration.Dialog.DiscardChanges.Title"),
+							JOptionPane.YES_NO_OPTION);
+
+					if (result == JOptionPane.YES_OPTION) {
+
+						resetConfiguration();
+
+					}
 					ConfigVC.this.dispose();
 				}
 			});
