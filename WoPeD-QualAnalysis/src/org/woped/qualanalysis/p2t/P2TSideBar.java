@@ -190,6 +190,7 @@ public class P2TSideBar extends JPanel implements ActionListener{
 	}
 	
 	private void getText(){
+		this.textpane.setText("loading...");
 		clean();
 		
 		this.setThreadInProgress(true);
