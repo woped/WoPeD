@@ -300,6 +300,9 @@ $(document).ready(function(){
     	}).fail(function(jqxhr,textStatus, error){
     		console.log("error occured: " + textStatus * " / " + error );
     	})
+    	
+    	
+    	 
     	var widgets = $(".gridster ul").children();
     	
       	 var gridster = $(".gridster ul").gridster({
@@ -313,43 +316,116 @@ $(document).ready(function(){
       	    }).data('gridster');
       	 
          $('.js-seralize').on('click', function() {
-             var s = gridster.serialize();
-             var x = null;
+         
+         	var visibleProcess = getColVisibility("#coloumSelectorProcess");
+         	var visibleTasks = getColVisibility("#coloumSelectorTask");
+         	var visibleRessource = getColVisibility("#coloumSelectorRessource");
+         	
+         	for (keys in visibleProcess) {
+         		if(visibleProcess[keys]) {
+         			if (keys == "com") {
+         				localStorage.setItem('ProcessCompleteTime','True');
+         			} else if (keys == "effen") {
+         				localStorage.setItem('ProcessEfficiency','True');
+         			} else if (keys == "fin") {
+         				localStorage.setItem('ProcessFinishedCases','True');
+         			} else if (keys == "thro") {
+         				localStorage.setItem('ProcessThroughput','True');
+         			} else if (keys == "throAbs") {
+         				localStorage.setItem('ProcessThroughputAbsolute','True');
+         			}
+         		} else {
+         			if (keys == "com") {
+         				localStorage.setItem('ProcessCompleteTime','False');
+         			} else if (keys == "effen") {
+         				localStorage.setItem('ProcessEfficiency','False');
+         			} else if (keys == "fin") {
+         				localStorage.setItem('ProcessFinishedCases','False');
+         			} else if (keys == "thro") {
+         				localStorage.setItem('ProcessThroughput','False');
+         			} else if (keys == "throAbs") {
+         				localStorage.setItem('ProcessThroughputAbsolute','False');
+         			}
+         		}
+         	}
+         	
+         	for (keys in visibleTasks) {
+         		if(visibleTasks[keys]) {
+         			if (keys == "avg") {
+         				localStorage.setItem('TasksAverage','True');
+         			} else if (keys == "task") {
+         				localStorage.setItem('TasksTask','True');
+         			} else if (keys == "time") {
+         				localStorage.setItem('TasksTime','True');
+         			}
+         		} else {
+         			if (keys == "avg") {
+         				localStorage.setItem('TasksAverage','False');
+         			} else if (keys == "task") {
+         				localStorage.setItem('TasksTask','False');
+         			} else if (keys == "time") {
+         				localStorage.setItem('TasksTime','False');
+         			}
+         		}
+         	}
+         	
+         	for (keys in visibleRessource) {
+         		if(visibleRessource[keys]) {
+         			if (keys == "avg") {
+         				localStorage.setItem('RessourceAverage','True');
+         			} else if (keys == "res") {
+         				localStorage.setItem('RessourceRessource','True');
+         			} else if (keys == "util") {
+         				localStorage.setItem('RessourceUtilization','True');
+         			}
+         		} else {
+         			if (keys == "avg") {
+         				localStorage.setItem('RessourceAverage','False');
+         			} else if (keys == "task") {
+         				localStorage.setItem('RessourceRessource','False');
+         			} else if (keys == "time") {
+         				localStorage.setItem('RessourceUtilization','False');
+         			}
+         		}
+         	}
+         	
+             //var s = gridster.serialize();
+             //var x = null;
              
-             for(var i = 0; i < s.length; i++) {
-            	 x += s[i];
-             }
+            // for(var i = 0; i < s.length; i++) {
+            //	 x += s[i];
+            // }
              
              
-             var value = JSON.stringify(s);
+             //var value = JSON.stringify(s);
              //aus value muss hier String gemacht werden der dann in ein SaveConfog Objekt umgewandelt werden kann
              
              
- /*             String[] a = value.Split("{");
-             var s = "";
-             for (int i = 0; i < a.length; i++){
+             //String[] a = value.Split("{");
+             //var s = "";
+            // for (int i = 0; i < a.length; i++){
              	
-             	var valID = a[i];
-             	s += "{ID:\""+ valID + "\"}";
-             	if (i != a.length-1) {
-             		s += ",";
-             	}
-             } */
+             //	var valID = a[i];
+             //	s += "{ID:\""+ valID + "\"}";
+             //	if (i != a.length-1) {
+             //		s += ",";
+             //	}
+            // } 
              
             
-         	$.ajax({
+         	//$.ajax({
              	
-         		type: "POST",
-         		url : strURLPrefix+"/postrequest/",
-         		dataType: "json",
-         		async: false,
-         		data: "json={\"action\":\"saveConfig\",\"parameter\":" + value + "}",
-         		success: function(data){
-         			console.log("successfully saved");
+         	//	type: "POST",
+         	//	url : strURLPrefix+"/postrequest/",
+         	//	dataType: "json",
+         	//	async: false,
+         	//	data: "json={\"action\":\"saveConfig\",\"parameter\":" + value + "}",
+         	//	success: function(data){
+         	//		console.log("successfully saved");
    
-         		}
+         	//	}
          	
-         	})
+         	//})
 
          });
         
@@ -358,7 +434,114 @@ $(document).ready(function(){
         	
          })
          
-        
+        $(".js-seralizer").click(function(){
+        	var ProcessCompleteTime = localStorage.getItem('ProcessCompleteTime');
+        	var ProcessEfficiency = localStorage.getItem('ProcessEfficiency');
+        	var ProcessFinishedCases = localStorage.getItem('ProcessFinishedCases');
+        	var ProcessThroughput = localStorage.getItem('ProcessThroughput');
+        	var ProcessThroughputAbsolute = localStorage.getItem('ProcessThroughputAbsolute');
+        	
+        	var TasksAverage = localStorage.getItem('TasksAverage');
+        	var TasksTask = localStorage.getItem('TasksTask');
+        	var TasksTime = localStorage.getItem('TasksTime');
+        	
+        	var RessourceAverage = localStorage.getItem('RessourceAverage');
+        	var RessourceRessource = localStorage.getItem('RessourceRessource');
+        	var RessourceUtilization = localStorage.getItem('RessourceUtilization');
+        	
+        	//Process
+        	visibilityJSON = {}
+ 		  
+        	 if(ProcessCompleteTime == "True"){
+        	 visibilityJSON["com"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["com"]= false;
+        	 }
+        	 
+        	 if(ProcessEfficiency == "True"){
+        	 visibilityJSON["effen"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["effen"]= false;
+        	 }
+        	 
+        	 if(ProcessFinishedCases == "True"){
+        	 visibilityJSON["fin"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["fin"]= false;
+        	 }
+        	 
+        	 if(ProcessThroughput == "True"){
+        	 visibilityJSON["thro"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["thro"]= false;
+        	 }
+        	 
+        	 if(ProcessThroughputAbsolute == "True"){
+        	 visibilityJSON["throAbs"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["throAbs"]= false;
+        	 }
+        	 
+        	 setColVisibilty("Process", visibilityJSON);
+        	 
+        	//Tasks
+        	visibilityJSON = {}
+ 		  
+        	 if(TasksAverage == "True"){
+        	 visibilityJSON["avg"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["avg"]= false;
+        	 }
+        	 
+        	 if(TasksTask == "True"){
+        	 visibilityJSON["task"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["task"]= false;
+        	 }
+        	 
+        	 if(TasksTime == "True"){
+        	 visibilityJSON["time"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["time"]= false;
+        	 }
+        	 
+        	 setColVisibilty("Task", visibilityJSON);
+        	 
+        	//Ressources
+        	visibilityJSON = {}
+ 		  
+        	 if(RessourceAverage == "True"){
+        	 visibilityJSON["avg"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["avg"]= false;
+        	 }
+        	 
+        	 if(RessourceRessource == "True"){
+        	 visibilityJSON["res"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["res"]= false;
+        	 }
+        	 
+        	 if(RessourceUtilization == "True"){
+        	 visibilityJSON["util"] = true;  
+        	 }
+        	 else {
+        	 visibilityJSON["util"]= false;
+        	 }
+        	 
+        	 setColVisibilty("Ressource", visibilityJSON);
+        	 
+        })
 
     
         
@@ -1358,7 +1541,12 @@ return { Process :getColVisibility("#coloumSelectorProcess") , Task : getColVisi
 
 		<!-- Button um Ansicht zu speichern -->
 		<div class="controls">
-			<button class="js-seralize"><img src="/SVG/save_save.svg"> %%QuantAna.Simulation.Column.SaveView%%</button>
+			<button class="js-seralize"><img src="/SVG/save_save.svg">%%QuantAna.Simulation.Column.SaveView%%</button>
+		</div>
+		
+		<!-- Button um Ansicht zu laden -->
+		<div class="controls">
+			<button class="js-seralizer"><img src="/SVG/save_save.svg">Ansicht laden</button>
 		</div>
 
 
