@@ -261,7 +261,7 @@ $(document).ready(function(){
   		  	
 
    	function myinit(){
-   		
+  	
    		$.getJSON(strURLPrefix + '/getrequest/?action=getArchiveList', function(){
     	}).done(function(response){
     		
@@ -294,6 +294,13 @@ $(document).ready(function(){
 
 		    		// werte an dashboard-elemente uebertragen
 					fctGetDashboardValues($("#timeSlider").val(), false);
+		    		
+		    		if($('#chkAutoUpdate').prop('checked') == true){
+		    			console.log("AutoUpdate active");
+		    			fctStartGetDashboardValuesCyclic(1000);
+		    		}else{
+		    			console.log("AutoUpdate not active");
+		    		}
 			    })	
 		    }
     		
@@ -554,14 +561,8 @@ $(document).ready(function(){
     	
     */
     
-
-    if(intervalObj == null){
-    	$('#chkAutoUpdate').prop('checked', false);
-    }
-    else{
-    	$('#chkAutoUpdate').prop('checked', true);
-    }
-   
+    
+  
     
     $('#chkAutoUpdate').click(function(){
     	if ( $('#chkAutoUpdate').prop('checked') == true  ){
@@ -575,8 +576,6 @@ $(document).ready(function(){
 		}
     });
     
-    
-
     
     $('#btnSlideAuto').click(function(){
     	if (  playAuto == false  ){
@@ -1237,9 +1236,7 @@ $(document).ready(function(){
     
     $( "#archiveselection" ).change(function() {
     	selectedTableName =  $( "#archiveselection" ).val();
-    	
- 
-
+    
 	$.ajax({
     	
     		type: "POST",
@@ -1572,7 +1569,8 @@ return { Process :getColVisibility("#coloumSelectorProcess") , Task : getColVisi
 			<button id="btnSlideAuto"><img src="/SVG/tokengame_play_start.svg" alt="%%QuantAna.Simulation.Column.Play%%"></button>
 
 			<span><a id="aCurrentTick">0</a>/<a id="aMaxTick">0</a></span> <input
-				id="chkAutoUpdate" type="checkbox"> %%QuantAna.Simulation.Column.Update%%<br>
+				id="chkAutoUpdate" type="checkbox" %%AUTOUPDATE%%> 
+				%%QuantAna.Simulation.Column.Update%%<br>
 		</div>
 
 	</div>

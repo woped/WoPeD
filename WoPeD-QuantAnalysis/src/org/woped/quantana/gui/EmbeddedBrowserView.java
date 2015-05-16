@@ -17,10 +17,14 @@ import org.woped.gui.translations.Messages;
 public class EmbeddedBrowserView extends JFrame {
 	private static int serverPort;
 	private static boolean bIsAbleToUseJfx = false;
+	private static boolean bAutoUpdate = false;
 
-	
-	public EmbeddedBrowserView(int port) throws JFXUsageNotSupported {
+	public EmbeddedBrowserView(int port, boolean bAutoUpdate2) throws JFXUsageNotSupported {
+
+		
 		super();
+		
+		EmbeddedBrowserView.bAutoUpdate = bAutoUpdate2;
 		try{
 			if(bIsAbleToUseJfx == true){
 				this.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
@@ -56,6 +60,11 @@ public class EmbeddedBrowserView extends JFrame {
 			throw(ex);
 		}
 
+		
+	}
+	
+	public EmbeddedBrowserView(int port) throws JFXUsageNotSupported {
+		this(port, false);
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -67,7 +76,7 @@ public class EmbeddedBrowserView extends JFrame {
 		// Obtain the webEngine to navigate
 		WebEngine webEngine = webView.getEngine();
 		webEngine.load("http://localhost:" + serverPort
-				+ "/getrequest/?action=showdashboardFull");
+				+ "/getrequest/?action=showdashboardFull&AutoUpdate=" + Boolean.toString(bAutoUpdate));
 		fxPanel.setScene(new Scene(webView));
 
 	}

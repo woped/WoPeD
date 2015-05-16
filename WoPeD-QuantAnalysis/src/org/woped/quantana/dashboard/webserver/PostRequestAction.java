@@ -54,12 +54,12 @@ public class PostRequestAction extends ThinServerAction {
 			}
 			else if(aa.getAction().equals("createEmbeddedBrowserView")) {
 				try{
-					EmbeddedBrowserView browser = new EmbeddedBrowserView(2711);
+					EmbeddedBrowserView browser = new EmbeddedBrowserView(2711,false);
 					browser.setVisible(true);
 				}
 				catch(JFXUsageNotSupported e){
 					ClientStarter cs = new ClientStarter();
-					cs.startClient();
+					cs.startClient(false);
 				}
 
 			}

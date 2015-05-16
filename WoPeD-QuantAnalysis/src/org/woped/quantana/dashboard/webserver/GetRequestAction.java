@@ -99,9 +99,16 @@ public class GetRequestAction extends ThinServerAction {
 			//content-language setzen?
 			//http://nimbupani.com/declaring-languages-in-html-5.html
 			
+			String bAutoUpdate = request.getParameter("AutoUpdate"); 
+			
 			response.addContent(te.getTemplateContent("header.html"));
 			
-			showdashboard(response);
+			if(bAutoUpdate!=null && bAutoUpdate.equals("true")){
+				showdashboardWithAutoUpdateOption(response, true);
+			}else{
+				showdashboard(response);
+			}
+			
 			
 			response.addContent(te.getTemplateContent("footer.html"));
 			
@@ -236,10 +243,34 @@ public class GetRequestAction extends ThinServerAction {
 	 */
 	private void showdashboard(Response response) {
 
+		//String strret = te.getTemplateContent("dashboard.html");
+		//response.addContent(strret);
+		showdashboardWithAutoUpdateOption(response,false);
+	}
+	
+	private void showdashboardWithAutoUpdateOption(Response response, Boolean bAutoUpdate) {
+
 		String strret = te.getTemplateContent("dashboard.html");
+		String patternString = "%%.*%%";
+		Pattern pattern = Pattern.compile(patternString);
+		Matcher matcher = pattern.matcher(strret);
+		
+		while(matcher.find()) {
+			
+			String strFound = matcher.group();
+			if(strFound.equals("%%AUTOUPDATE%%")){	
+				if (true == bAutoUpdate){
+					strret = strret.replace("%%AUTOUPDATE%%", "checked=\"checked\"");
+				}else{
+					strret = strret.replace("%%AUTOUPDATE%%", "");
+				}
+			}
+			 		    	    
+		}
 		response.addContent(strret);
 		
 	}
+		
 	
 	/**
 	 * Returns the HTML-content that shows all available simulation-runs

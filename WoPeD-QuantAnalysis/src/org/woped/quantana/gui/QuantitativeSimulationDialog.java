@@ -1531,12 +1531,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				storageengine.CreateTable(Table.SIM_VALUES);
 				
 				try{
-					EmbeddedBrowserView browser = new EmbeddedBrowserView(port);
+					EmbeddedBrowserView browser = new EmbeddedBrowserView(port,true);
 					browser.setVisible(true);
 				}
 				catch(JFXUsageNotSupported e){
 					ClientStarter cs = new ClientStarter();
-					cs.startClient();
+					cs.startClient(true);
 				}
 					//dashboard.add(null);
 
