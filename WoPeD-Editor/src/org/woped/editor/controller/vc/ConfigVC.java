@@ -58,9 +58,12 @@ import org.woped.editor.gui.config.ConfFilePanel;
 import org.woped.editor.gui.config.ConfLanguagePanel;
 import org.woped.editor.gui.config.ConfMetricsPanel;
 import org.woped.editor.gui.config.ConfProcess2TextPanel;
+import org.woped.editor.gui.config.ConfBusinessDashboardPanel;
 import org.woped.editor.gui.config.ConfUnderstandabilityPanel;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
+
+import umontreal.iro.lecuyer.probdistmulti.BiStudentDist;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -93,6 +96,7 @@ public class ConfigVC extends JDialog implements IViewController {
 	private AbstractConfPanel metricsPanel = null;
 	private AbstractConfPanel p2tPanel = null;
 	private AbstractConfPanel aproPanel = null;
+	private AbstractConfPanel businessdashboardPanel = null;
 	// ButtonPanel
 	private JPanel buttonPanel = null;
 	private WopedButton okButton = null;
@@ -289,6 +293,11 @@ public class ConfigVC extends JDialog implements IViewController {
 			tabbedPane.addTab(Messages.getString("Configuration.P2T.Title"),
 					p2tPanel);
 			confPanels.put(p2tPanel.getPanelName(), p2tPanel);
+			
+			businessdashboardPanel = new ConfBusinessDashboardPanel("Business Dashboard");
+			tabbedPane.addTab("Business Dashboard", businessdashboardPanel);
+			confPanels.put(businessdashboardPanel.getPanelName(), businessdashboardPanel);
+			
 			readConfiguration();
 			/*
 			 * tabbedPane.addChangeListener(new ChangeListener() { public void
