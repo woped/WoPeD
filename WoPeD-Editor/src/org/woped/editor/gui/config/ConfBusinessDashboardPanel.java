@@ -195,9 +195,9 @@ public class ConfBusinessDashboardPanel extends AbstractConfPanel {
 		if (serverPortText == null) {
 			serverPortText = new JTextField();
 			serverPortText.setColumns(4);
-			serverPortText.setEnabled(true);
+			serverPortText.setEnabled(false);
 			serverPortText.setToolTipText("<html>"
-					+ 2711 
+					+ Messages.getString("Configuration.BusinessDashboard.Label.ServerPort")
 					+ "</html>");
 		}
 		return serverPortText;

@@ -28,6 +28,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.imageio.ImageIO;
 
 import org.jgraph.JGraph;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.quantana.dashboard.storage.TableInfo;
 import org.woped.quantana.dashboard.storage.UIDCreater;
@@ -80,7 +81,7 @@ public class StorageEngine {
 
   private int clockTick = 0;
   
-  private int maxEntries = 100;
+  private int maxEntries = ConfigurationManager.getConfiguration().getBusinessDashboardMaxValues();
   
   WoPeDDashboardConfiguration wdc = null;
   
