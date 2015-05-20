@@ -1595,9 +1595,9 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 		
 		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
 		
-		if (bd.isSetBusinessdashboardServerPort()) {
+		if (bd.isSetServerport()) {
 			return getConfDocument().getConfiguration().getBusinessdashboard()
-					.getBusinessdashboardServerPort();
+					.getServerport();
 		} else
 			return ConfigurationManager.getStandardConfiguration()
 					.getBusinessDashboardServerPort();
@@ -1606,7 +1606,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	@Override
 	public void setBusinessDashboardServerPort(int port) {
 		
-		getConfDocument().getConfiguration().getBusinessdashboard().setBusinessdashboardServerPort(port);
+		getConfDocument().getConfiguration().getBusinessdashboard().setServerport(port);
 		
 	}
 
@@ -1614,9 +1614,9 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	public boolean getBusinessDashboardUseByDefault() {
 		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
 		
-		if (bd.isSetBusinessdashboardServerPort()) {
+		if (bd.isSetUsebydefault()) {
 			return getConfDocument().getConfiguration().getBusinessdashboard()
-					.getBusinessdashboardUseByDefault();
+					.getUsebydefault();
 		} else
 			return ConfigurationManager.getStandardConfiguration()
 					.getBusinessDashboardUseByDefault();
@@ -1624,7 +1624,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	@Override
 	public void setBusinessDashboardUseByDefault(boolean bAutoStart) {
-		getConfDocument().getConfiguration().getBusinessdashboard().setBusinessdashboardUseByDefault(bAutoStart);
+		getConfDocument().getConfiguration().getBusinessdashboard().setUsebydefault(bAutoStart);
 		
 	}
 
@@ -1632,9 +1632,9 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	public int getBusinessDashboardMaxValues() {
 		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
 		
-		if (bd.isSetBusinessdashboardMaxValues()) {
+		if (bd.isSetMaxvalues()) {
 			return getConfDocument().getConfiguration().getBusinessdashboard()
-					.getBusinessdashboardMaxValues();
+					.getMaxvalues();
 		} else
 			return ConfigurationManager.getStandardConfiguration()
 					.getBusinessDashboardMaxValues();
@@ -1642,7 +1642,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	@Override
 	public void setBusinessDashboardMaxValues(int maxvalues) {
-		getConfDocument().getConfiguration().getBusinessdashboard().setBusinessdashboardMaxValues(maxvalues);
+		getConfDocument().getConfiguration().getBusinessdashboard().setMaxvalues(maxvalues);
 		
 	}
 }
