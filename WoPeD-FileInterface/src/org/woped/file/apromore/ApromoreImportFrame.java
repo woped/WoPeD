@@ -1,7 +1,6 @@
 package org.woped.file.apromore;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -12,18 +11,25 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+
 import javax.swing.SwingWorker;
 
 import org.woped.core.controller.AbstractApplicationMediator;
+
+import org.woped.file.apromore.worker.ImportWorker;
+import org.woped.file.apromore.worker.ProcessListWorker;
+
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 public class ApromoreImportFrame extends AbstractApromoreFrame {
+
+	private ImportWorker importWorker = null;
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2682701694108230125L;
-	protected ImportWorker importWorker;
 
 	public ApromoreImportFrame(AbstractApplicationMediator mediator) {
 		super(mediator);
@@ -31,11 +37,10 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		this.initialize();
 		this.pack();
 		this.setModal(true);
-		executeProgressBarWorker();
+		loadProcessList();
 		this.setVisible(true);
 
 	}
-
 
 	private void initialize() {
 
@@ -58,11 +63,13 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		processList.getTable().addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 
-				if (e.getClickCount() == 2) {
-					processList.importAction(false);
+				if (e.getClickCount() == 2 && !importing) {
+					importing = true;
+
+					loadImport();
+
 				}
 			}
-
 		});
 
 		importButton.setEnabled(false);
@@ -89,7 +96,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		return buttonPanel;
 	}
 
-	private WopedButton getImportButton() {
+	public WopedButton getImportButton() {
 
 		if (importButton == null) {
 			importButton = new WopedButton();
@@ -100,12 +107,8 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 			importButton.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
-					if (importWorker != null) {
-						importWorker.cancel(true);
-					}
-					ImportWorker importWorker = new ImportWorker(
-							ApromoreImportFrame.this);
-					importWorker.execute();
+
+					loadImport();
 
 				}
 			});
@@ -114,60 +117,22 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		return importButton;
 	}
 
-	class ImportWorker extends SwingWorker<Void, Void> {
+	protected void loadImport() {
+		getWopedPorgressBar().setIndeterminate(false);
+		setButtons(true);
+		Thread queryThread = new Thread() {
+			public void run() {
 
-		private AbstractApromoreFrame parent;
-		private boolean importSuccess = false;
+				if (importWorker != null) {
+					importWorker.cancel(true);
 
-		public ImportWorker(AbstractApromoreFrame parent) {
-			this.parent = parent;
-		}
-
-		@Override
-		protected Void doInBackground() throws Exception {
-
-			wopedPorgressBar.setIndeterminate(true);
-			wopedPorgressBar.setIndeterminate(false);
-			if (importButton != null) {
-				importButton.setEnabled(false);
-			}
-			if (serverDropdown != null) {
-				serverDropdown.setEnabled(false);
-			}
-
-			if (updateButton != null) {
-				updateButton.setEnabled(false);
-			}
-			importSuccess = processList.importAction(processList
-					.getBeautifyCheckBox().isSelected());
-
-			return null;
-		}
-
-		@Override
-		public void done() {
-
-			wopedPorgressBar.setIndeterminate(false);
-			if (importButton != null) {
-				importButton.setEnabled(true);
-			}
-
-			if (serverDropdown != null) {
-				serverDropdown.setEnabled(true);
-			}
-			if (updateButton != null) {
-				updateButton.setEnabled(true);
-			}
-
-			if (importSuccess) {
-				try {
-					parent.dispose(); // ensure Frame is Closing after
-										// succesfull Import
-				} catch (Exception e) {
 				}
 
+				importWorker = new ImportWorker(ApromoreImportFrame.this);
+				importWorker.execute();
 			}
-
-		}
+		};
+		queryThread.start();
 	}
+
 }

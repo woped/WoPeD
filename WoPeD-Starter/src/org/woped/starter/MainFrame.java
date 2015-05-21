@@ -472,8 +472,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetricsbuilder.text")).addAction(m_mediator,ActionFactory.ACTIONID_METRICSBUILDER, AbstractViewEvent.ANALYSIS_METRICSBUILDER);
 			osxAnalyzeMenu.addSubMenu(processMetricsMenu);
 		//Submenu
-			OSXMenu p2tMenu = new OSXMenu(Messages.getString("P2T.textBandTitle"));
-			p2tMenu.addMenuItem(Messages.getString("P2T.openP2T.text")).addAction(m_mediator, ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T);
+			OSXMenu p2tMenu = new OSXMenu(Messages.getString("P2T.openP2T.text"));
+			p2tMenu.addMenuItem(Messages.getString("P2T.text")).addAction(m_mediator, ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T);
 			osxAnalyzeMenu.addSubMenu(p2tMenu);
 		menuAdapter.addMenu(osxAnalyzeMenu);
 	}
@@ -998,7 +998,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	}
 
 	private JRibbonBand getP2TBand(){
-		if (null == p2tBand) {
+		if (p2tBand == null) {
 			p2tBand = new JRibbonBand(Messages.getString("P2T.textBandTitle"), new P2T());
 			p2tBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(p2tBand));
 			p2tBand.startGroup();

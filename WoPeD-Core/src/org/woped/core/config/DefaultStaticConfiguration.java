@@ -88,6 +88,10 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static String DEFAULT_PROCESS2TEXT_URI = "/ProcessToTextWebService/ProcessToText?wsdl";
 	public static boolean DEFAULT_PROCESS2TEXT_USE = false;
 
+	public static int DEFAULT_BUSINESSDASHBOARD_PORT = 2711;
+	public static int DEFAULT_BUSINESSDASHBOARD_MAXVALUES = 1000;
+	public static boolean DEFAULT_BUSINESSDASHBOARD_USEBYDEFAULT = false;
+	
 	// File
 	private String homedir = "";
 	private String logdir = "";
@@ -134,6 +138,13 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	private String process2text_serverUri = DEFAULT_PROCESS2TEXT_URI;
 	private boolean process2text_use = DEFAULT_PROCESS2TEXT_USE;
 
+	//Dashboard
+	
+	private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
+	private int businessdashboard_maxvalues = DEFAULT_BUSINESSDASHBOARD_MAXVALUES;
+	private boolean businessdashboard_usebydefault = DEFAULT_BUSINESSDASHBOARD_USEBYDEFAULT;
+	
+	
 	// Booleans for alpha-functions (TEST) later integration in configuration &
 	// GUI
 	public static boolean ACTIVATE_NET_ROUTING = false;
@@ -999,5 +1010,39 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public void setProcess2TextUse(boolean selected) {
 		this.process2text_use = selected;
 	}
+
+	@Override
+	public int getBusinessDashboardServerPort() {
+		return this.businessdashboard_serverport;
+	}
+
+	@Override
+	public void setBusinessDashboardServerPort(int port) {
+		this.businessdashboard_serverport = port;
+		
+	}
+
+	@Override
+	public boolean getBusinessDashboardUseByDefault() {
+		return this.businessdashboard_usebydefault;
+	}
+
+	@Override
+	public void setBusinessDashboardUseByDefault(boolean bAutoStart) {
+		this.businessdashboard_usebydefault = bAutoStart;	
+	}
+
+	@Override
+	public int getBusinessDashboardMaxValues() {
+		return this.businessdashboard_maxvalues;
+	}
+
+	@Override
+	public void setBusinessDashboardMaxValues(int maxvalues) {
+		this.businessdashboard_maxvalues = maxvalues;
+		
+	}
+
+
 
 }

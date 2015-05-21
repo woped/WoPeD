@@ -505,4 +505,17 @@ public interface IGeneralConfiguration extends IConfiguration {
 
 	public void setProcess2TextUse(boolean selected);
 
+	
+	//dashboard
+	public int getBusinessDashboardServerPort();
+
+	public void setBusinessDashboardServerPort(int port);
+	
+	public boolean getBusinessDashboardUseByDefault();
+
+	public void setBusinessDashboardUseByDefault(boolean bAutoStart);
+	
+	public int getBusinessDashboardMaxValues();
+
+	public void setBusinessDashboardMaxValues(int maxvalues);
 }

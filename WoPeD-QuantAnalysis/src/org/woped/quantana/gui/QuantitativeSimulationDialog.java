@@ -189,8 +189,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private StorageEngine storageengine = null;
 	private static DashboardRunner dashboard;
-	private static int nextport = 2711;
-	public int port = 2711;
+	//private static int nextport = 2711;
+	public int port = 2711; //= ConfigurationManager.getConfiguration().getBusinessDashboardServerPort();
 
 	// <--CN
 
@@ -1304,7 +1304,11 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridy = 7;
 			startDashboard = new JCheckBox(
 					Messages.getTitle("QuantAna.Simulation.StartDashboard"));
+			if(ConfigurationManager.getConfiguration().getBusinessDashboardUseByDefault() == true){ 
+					startDashboard.setSelected(true);
+			} else 	startDashboard.setSelected(false);
 			buttonPanel.add(startDashboard, constraints);
+			
 
 		}
 
@@ -1531,12 +1535,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				storageengine.CreateTable(Table.SIM_VALUES);
 				
 				try{
-					EmbeddedBrowserView browser = new EmbeddedBrowserView(port);
+					EmbeddedBrowserView browser = new EmbeddedBrowserView(port,true);
 					browser.setVisible(true);
 				}
 				catch(JFXUsageNotSupported e){
 					ClientStarter cs = new ClientStarter();
-					cs.startClient();
+					cs.startClient(true);
 				}
 					//dashboard.add(null);
 

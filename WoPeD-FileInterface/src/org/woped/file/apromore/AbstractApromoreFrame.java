@@ -8,16 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingWorker;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import org.apromore.model.FolderType;
 import org.woped.apromore.ApromoreAccess;
@@ -25,6 +26,9 @@ import org.woped.config.ApromoreServer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.editor.controller.ApplicationMediator;
+import org.woped.file.apromore.processList.ApromoreProcessList;
+import org.woped.file.apromore.tree.ApromoreFoldertree;
+import org.woped.file.apromore.worker.ProcessListWorker;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.lookAndFeel.WopedProgressBar;
 import org.woped.gui.translations.Messages;
@@ -32,7 +36,7 @@ import org.woped.gui.translations.Messages;
 /**
  * Abstract Class for Apromore Im/Export- Frames
  * 
- * @author David Rah�user Abstract Class-Template for Apromore In/Export
+ * @author David Rahäuser Abstract Class-Template for Apromore In/Export
  *
  */
 public abstract class AbstractApromoreFrame extends JDialog {
@@ -41,26 +45,29 @@ public abstract class AbstractApromoreFrame extends JDialog {
 	protected AbstractApplicationMediator mediator;
 	protected ApromoreAccess aproAccess;
 
-	public ApromoreAccess getAproAccess() {
-		return aproAccess;
-	}
-
 	protected ApromoreProcessList processList;
+
+	protected boolean importing = false;
 
 	protected JPanel serverSelectionPane;
 	protected JComboBox<String> serverDropdown;
 	protected JPanel processListPanel;
-	protected JPanel buttonPanel = null;
+	protected JPanel buttonPanel;
 
-	protected WopedButton cancelButton = null;
-	protected WopedButton updateButton = null;
+	protected WopedButton cancelButton;
+	protected WopedButton updateButton;
 	protected WopedProgressBar wopedPorgressBar;
-	protected JComboBox<String> processFolderBox = null;
-	protected WopedButton importButton = null;
+	protected JComboBox<String> processFolderBox;
+	protected WopedButton importButton;
 
-	protected ProgressbarWorker progressBarWorker;
+	protected ProcessListWorker progressBarWorker;
 
-	protected WopedButton exportButton = null;
+	protected WopedButton exportButton;
+	protected JPanel createFolderPanel;
+	protected WopedButton createFolderButton;
+	protected JTextField textInput;
+	protected ApromoreFoldertree tree;
+	protected boolean firsttime = true;
 
 	public AbstractApromoreFrame(AbstractApplicationMediator mediator) {
 
@@ -107,6 +114,41 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 	}
 
+	protected JPanel getCreateFolderPanel() {
+		if (createFolderPanel == null) {
+			createFolderPanel = new JPanel();
+
+			createFolderPanel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+
+			c.gridy = 0;
+			c.weightx = 1;
+			c.weighty = 1;
+			c.fill = GridBagConstraints.BOTH;
+			c.gridx = 0;
+			c.insets = new Insets(5, 5, 5, 5);
+			textInput = new JTextField();
+			createFolderPanel.add(textInput, c);
+
+			c.insets = new Insets(0, 0, 0, 0);
+			createFolderButton = new WopedButton("Create new Folder");
+			createFolderButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+					// aproAccess.createNewFolder(textInput.getText());
+
+				}
+			});
+			c.gridx = 1;
+			createFolderPanel.add(createFolderButton);
+
+		}
+		createFolderPanel.setVisible(false);
+		return createFolderPanel;
+	}
+
 	protected JPanel getProcessListPanel(boolean showPnmlOnly) {
 		if (processListPanel == null) {
 			processListPanel = new JPanel(new GridBagLayout());
@@ -120,14 +162,36 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 			c.gridx = 0;
 			c.gridy = 0;
-			c.fill = GridBagConstraints.BOTH;
-			c.weightx = 1;
+			c.weightx = 0.3;
 			c.weighty = 1;
+			c.fill = GridBagConstraints.BOTH;
+			processListPanel.add(getApromoreFoldertree().getTree(), c);
+
+			c.gridx = 0;
+			c.gridy = 1;
+			c.weighty = 0.01;
+			c.fill = GridBagConstraints.BOTH;
+			processListPanel.add(getCreateFolderPanel(), c);
+
+			c.fill = GridBagConstraints.BOTH;
+			c.gridx = 1;
+			c.gridy = 0;
+			c.weightx = 1;
+			c.weighty = 2;
+			c.gridheight = 2;
 			processListPanel.add(
 					processList.getScrollableProcessTable(showPnmlOnly), c);
+
 		}
 		return processListPanel;
 
+	}
+
+	private ApromoreFoldertree getApromoreFoldertree() {
+		if (tree == null) {
+			tree = new ApromoreFoldertree(this);
+		}
+		return tree;
 	}
 
 	protected JPanel getServerSelectionPane() {
@@ -147,9 +211,6 @@ public abstract class AbstractApromoreFrame extends JDialog {
 					.createEmptyBorder(2, 0, 0, 2));
 			serverDropdown.setPreferredSize(new Dimension(250, 20));
 
-			// aproAccess.setCurrentServer(ConfigurationManager.getConfiguration()
-			// .getCurrentApromoreIndex());
-
 			ApromoreServer[] servers = aproAccess.getServers();
 			if (servers != null) {
 
@@ -161,8 +222,10 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 				}
 			}
+
 			serverDropdown.setSelectedIndex(ConfigurationManager
 					.getConfiguration().getCurrentApromoreIndex());
+			aproAccess.setCurrentServer(serverDropdown.getSelectedIndex());
 
 			serverDropdown.addItemListener(new ItemListener() {
 
@@ -170,9 +233,9 @@ public abstract class AbstractApromoreFrame extends JDialog {
 				public void itemStateChanged(ItemEvent e) {
 
 					if (e.getStateChange() == ItemEvent.SELECTED) {
-						// String item = (String)e.getItem();
 
-						executeProgressBarWorker();
+						loadProcessList();
+
 					}
 				}
 
@@ -186,11 +249,13 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 	protected WopedProgressBar getWopedProgressBar() {
 
-		return wopedPorgressBar = new WopedProgressBar();
+		wopedPorgressBar = new WopedProgressBar();
+		wopedPorgressBar.connectToServerLoading();
+		return wopedPorgressBar;
 
 	}
 
-	protected WopedButton getUpdateButton() {
+	public WopedButton getUpdateButton() {
 
 		if (updateButton == null) {
 			updateButton = new WopedButton();
@@ -202,9 +267,7 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-
-					executeProgressBarWorker();
-
+					loadProcessList();
 				}
 
 			});
@@ -239,92 +302,116 @@ public abstract class AbstractApromoreFrame extends JDialog {
 	 * Methode zur Apromore Anbindung
 	 */
 
-	class ProgressbarWorker extends SwingWorker<String[][], Void> {
+	@Override
+	public void dispose() {
 
-		private AbstractApromoreFrame parent;
+		aproAccess = null;
+		processList = null;
+		progressBarWorker.cancel(true);
+		progressBarWorker = null;
+		super.dispose();
 
-		public ProgressbarWorker(AbstractApromoreFrame parent) {
-			this.parent = parent;
-		}
-
-		@Override
-		protected String[][] doInBackground() throws Exception {
-
-			aproAccess.setCurrentServer(ConfigurationManager.getConfiguration()
-					.getCurrentApromoreIndex());
-
-			if (processFolderBox != null) {
-
-				processFolderBox.removeAllItems();
-				List<FolderType> folders = aproAccess
-						.getFoldersForCurrentUser();
-
-				for (FolderType folder : folders) {
-					processFolderBox.addItem(folder.getFolderName());
-				}
-				processFolderBox.addItem("User");
-			}
-
-			String[][] rowStrings = processList.getProcessList(false);
-
-			return rowStrings;
-		}
-
-		public void done() {
-
-			try {
-				String[][] rows = this.get();
-				if (rows != null) {
-
-					processList.setProcessList(rows);
-
-					setButtonsEnabled(true);
-
-					wopedPorgressBar.connectingToSeverSuccess();
-				} else {
-					if (serverDropdown != null) {
-						serverDropdown.setEnabled(true);
-					}
-					if (updateButton != null) {
-						updateButton.setEnabled(true);
-					}
-					wopedPorgressBar.connectingToSeverFailed();
-				}
-
-			} catch (InterruptedException | ExecutionException ex) {
-				ex.printStackTrace();
-			}
-
-		}
 	}
 
-	public void executeProgressBarWorker() {
-
+	protected void loadProcessList() {
 		wopedPorgressBar.connectToServerLoading();
-		if (progressBarWorker == null) {
-			wopedPorgressBar.setIndeterminate(true);
-			new ProgressbarWorker(this).execute();
-		}
-		setButtonsEnabled(false);
+
+		Thread queryThread = new Thread() {
+
+			public void run() {
+
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						AbstractApromoreFrame.this.getWopedPorgressBar()
+								.setIndeterminate(true);
+
+						AbstractApromoreFrame.this.setButtons(false);
+
+					}
+				});
+
+				if (progressBarWorker != null) {
+					progressBarWorker.cancel(true);
+
+				}
+				progressBarWorker = new ProcessListWorker(
+						AbstractApromoreFrame.this);
+				progressBarWorker.execute();
+			}
+		};
+		queryThread.start();
 
 	}
 
-	protected void setButtonsEnabled(boolean enabled) {
+	public void setButtons(boolean b) {
+
 		if (importButton != null) {
-			importButton.setEnabled(enabled);
+			importButton.setEnabled(b);
+		}
+
+		if (updateButton != null) {
+			updateButton.setEnabled(b);
 		}
 
 		if (exportButton != null) {
-			exportButton.setEnabled(enabled);
-
-		}
-		if (updateButton != null) {
-			updateButton.setEnabled(enabled);
+			exportButton.setEnabled(b);
 		}
 
 		if (serverDropdown != null) {
-			serverDropdown.setEnabled(enabled);
+			aproAccess.setCurrentServer(serverDropdown.getSelectedIndex());
+
 		}
+		if (createFolderButton != null) {
+			createFolderButton.setEnabled(false);
+			// createFolderButton.setEnabled(b);
+		}
+
+	}
+
+	public void setListFilter(String[] filters) {
+
+		processList.setFilter(filters);
+
+	}
+
+	public WopedButton getImportButton() {
+		return importButton;
+	}
+
+	public WopedButton getExportButton() {
+		return exportButton;
+	}
+
+	public WopedProgressBar getWopedPorgressBar() {
+		return wopedPorgressBar;
+	}
+
+	public JComboBox<String> getServerDropdown() {
+		return serverDropdown;
+	}
+
+	public ApromoreProcessList getProcessList() {
+		return processList;
+	}
+
+	public JComboBox<String> getProcessFolderBox() {
+		return processFolderBox;
+	}
+
+	public ApromoreAccess getAproAccess() {
+		return aproAccess;
+	}
+
+	public boolean isImporting() {
+		return importing;
+	}
+
+	public void setImporting(boolean importing) {
+		this.importing = importing;
+	}
+
+	public void setApromorTree(ArrayList<String> subFolders) {
+		tree.setSubFolders(subFolders);
 	}
 
 }

@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlObject;
+import org.woped.config.BusinessDashboard;
 import org.woped.config.ConfigurationDocument;
 import org.woped.config.Constants;
 import org.woped.config.RecentFile;
@@ -65,6 +66,10 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 				return false;
 
 			isLoaded = true;
+				
+			// <business dashboard> tag is not existing yet -> create it
+			if (getConfDocument().getConfiguration().getBusinessdashboard() == null)
+				getConfDocument().getConfiguration().addNewBusinessdashboard();
 
 			// <p2t> tag is not existing yet -> create it
 			if (getConfDocument().getConfiguration().getP2T() == null)
@@ -1583,5 +1588,61 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	@Override
 	public void setProcess2TextUse(boolean selected) {
 		getConfDocument().getConfiguration().getP2T().setP2TUse(selected);
+	}
+
+	@Override
+	public int getBusinessDashboardServerPort() {
+		
+		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
+		
+		if (bd.isSetServerport()) {
+			return getConfDocument().getConfiguration().getBusinessdashboard()
+					.getServerport();
+		} else
+			return ConfigurationManager.getStandardConfiguration()
+					.getBusinessDashboardServerPort();
+	}
+
+	@Override
+	public void setBusinessDashboardServerPort(int port) {
+		
+		getConfDocument().getConfiguration().getBusinessdashboard().setServerport(port);
+		
+	}
+
+	@Override
+	public boolean getBusinessDashboardUseByDefault() {
+		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
+		
+		if (bd.isSetUsebydefault()) {
+			return getConfDocument().getConfiguration().getBusinessdashboard()
+					.getUsebydefault();
+		} else
+			return ConfigurationManager.getStandardConfiguration()
+					.getBusinessDashboardUseByDefault();
+	}
+
+	@Override
+	public void setBusinessDashboardUseByDefault(boolean bAutoStart) {
+		getConfDocument().getConfiguration().getBusinessdashboard().setUsebydefault(bAutoStart);
+		
+	}
+
+	@Override
+	public int getBusinessDashboardMaxValues() {
+		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
+		
+		if (bd.isSetMaxvalues()) {
+			return getConfDocument().getConfiguration().getBusinessdashboard()
+					.getMaxvalues();
+		} else
+			return ConfigurationManager.getStandardConfiguration()
+					.getBusinessDashboardMaxValues();
+	}
+
+	@Override
+	public void setBusinessDashboardMaxValues(int maxvalues) {
+		getConfDocument().getConfiguration().getBusinessdashboard().setMaxvalues(maxvalues);
+		
 	}
 }

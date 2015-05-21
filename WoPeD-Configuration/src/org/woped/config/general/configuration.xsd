@@ -9,6 +9,7 @@
 				<xs:element name="tools" 			type="Tool"/>
 				<xs:element name="apromoreServers" 	type="ApromoreServers" 		minOccurs="0" 	maxOccurs="1"/>
 				<xs:element name="p2t" 				type="Process2Text"/>
+				<xs:element name="businessdashboard" type="BusinessDashboard"/>
 				<xs:element name="coloring" 		type="Coloring"/>
 				<xs:element name="metrics" 			type="Metrics"/>
 				<xs:element name="registration" 	type="Registration"/>
@@ -123,6 +124,14 @@
 			<xs:element name="p2tServerURI" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
+	<xs:complexType name="BusinessDashboard">
+		<xs:sequence>
+			<xs:element name="usebydefault" type="xs:boolean" default="false" minOccurs="0" />
+			<xs:element name="serverport" type="xs:int" default="2711" minOccurs="0" />
+			<xs:element name="maxvalues" type="xs:int" default="1000" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>	
+	
 	<xs:complexType name="Woflan">
 		<xs:sequence>
 			<xs:element name="useWoflan" type="xs:boolean" default="false" minOccurs="0"/>

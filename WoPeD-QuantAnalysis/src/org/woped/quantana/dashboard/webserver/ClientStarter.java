@@ -9,13 +9,13 @@ import org.woped.core.utilities.LoggerManager;
 
 public class ClientStarter {
 
-		
+		static Boolean bAutoUpdate = false;
 
         Thread runBrowser = new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
-				String url = "http://localhost:" + 2711 + "/getrequest/?action=showdashboardFull";
+				String url = "http://localhost:" + 2711 + "/getrequest/?action=showdashboardFull&AutoUpdate=" + Boolean.toString(ClientStarter.bAutoUpdate);
 				
 		        if(Desktop.isDesktopSupported()){
 		            Desktop desktop = Desktop.getDesktop();
@@ -44,6 +44,11 @@ public class ClientStarter {
 		});
         
         public void startClient(){
+        	LoggerManager.debug(Constants.DASHBOARDWEBSRV_LOGGER,"ClientStarter::startClient");
+        	runBrowser.start();
+        };
+        public void startClient(boolean bAutoUpdate){
+        	ClientStarter.bAutoUpdate = bAutoUpdate;
         	LoggerManager.debug(Constants.DASHBOARDWEBSRV_LOGGER,"ClientStarter::startClient");
         	runBrowser.start();
         };

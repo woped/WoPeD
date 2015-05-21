@@ -143,6 +143,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 				.getConfiguration().getApromoreUse();
 
 		if (changed) {
+			ConfigurationManager.getConfiguration().setApromoreUse(changed);
 			JOptionPane
 					.showMessageDialog(
 							this,
@@ -1156,6 +1157,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	}
 
 	private void deleteServer() {
+
 		if (serverComboBox.getItemCount() == 1) {
 			JOptionPane
 					.showMessageDialog(
@@ -1166,13 +1168,13 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			return;
 		}
 
-		// TO-DO:
-		// Hier Server-Namen in Pop-Up-Dialog
-
 		int result = JOptionPane
 				.showConfirmDialog(
 						this,
-						Messages.getString("Configuration.Apromore.Validation.Warning.DeleteServer"),
+						Messages.getString("Configuration.Apromore.Validation.Warning.DeleteServer1")
+								+ serverNameText.getText()
+								+ Messages
+										.getString("Configuration.Apromore.Validation.Warning.DeleteServer2"),
 						Messages.getString("Configuration.Apromore.Validation.Warning.DeleteServer.Title"),
 						JOptionPane.YES_NO_OPTION);
 
