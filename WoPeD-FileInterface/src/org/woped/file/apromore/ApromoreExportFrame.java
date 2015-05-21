@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
@@ -18,11 +17,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingWorker;
 
-import org.apromore.model.FolderType;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.file.apromore.worker.ExportWorker;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
@@ -42,9 +40,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 	private JTextField processTypeText = null;
 	private JLabel processFolderLabel = null;
 	private JLabel processPrivacyLabel = null;
-	private JComboBox<String> processPrivacyText = null;
-
-	private ExportUpdateWorker exportUpdateWorker;
+	private JComboBox<String> processPrivacyText;
 	private ExportWorker exportWorker;
 
 	public ApromoreExportFrame(AbstractApplicationMediator mediator) {
@@ -92,16 +88,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 							.getText());
 					if (version != null) {
 
-						if (aproAccess.checkIfServerAvailable()) {
-
-							if (exportUpdateWorker != null) {
-								exportUpdateWorker.cancel(true);
-							}
-							exportUpdateWorker = new ExportUpdateWorker(
-									ApromoreExportFrame.this, version);
-							exportUpdateWorker.execute();
-
-						}
+						exportToApromore(version, true);
 
 					}
 				}
@@ -113,13 +100,13 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		this.pack();
 		this.setModal(true);
 		initDataFields();
-		executeProgressBarWorker();
+		loadProcessList();
 		setVisible(true);
 
 	}
 
 	/**
-	 * Aktuallisiert die Prozess-Datenfelder mit dem ausgew‰hlten
+	 * Aktuallisiert die Prozess-Datenfelder mit dem ausgewählten
 	 * Tabellenelement
 	 */
 	private void updateDataFields() {
@@ -171,7 +158,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		return buttonPanel;
 	}
 
-	private WopedButton getExportButton() {
+	public WopedButton getExportButton() {
 
 		if (exportButton == null) {
 			exportButton = new WopedButton();
@@ -184,14 +171,14 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 					String version = checkCurrentVersion(processVersionText
 							.getText());
 					if (version != null) {
-						if (aproAccess.checkIfServerAvailable()) {
-							if (exportWorker != null) {
-								exportWorker.cancel(true);
-							}
-							exportWorker = new ExportWorker(
-									ApromoreExportFrame.this, version);
-							exportWorker.execute();
+
+						if (!(processList.getTable().getSelectedRow() == -1)) {
+							exportToApromore(version, true);
+						} else {
+							exportToApromore(version, false);
+
 						}
+
 					}
 				}
 			});
@@ -292,7 +279,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		return c;
 	}
 
-	private JTextField getProcessIDText() {
+	public JTextField getProcessIDText() {
 
 		if (processIDText == null) {
 			processIDText = new JTextField(5);
@@ -320,7 +307,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		return processNameLabel;
 	}
 
-	private JTextField getProcessNameText() {
+	public JTextField getProcessNameText() {
 
 		if (processNameText == null) {
 			processNameText = new JTextField(30);
@@ -339,7 +326,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		return processOwnerLabel;
 	}
 
-	private JTextField getProcessOwnerText() {
+	public JTextField getProcessOwnerText() {
 
 		if (processOwnerText == null) {
 			processOwnerText = new JTextField(10);
@@ -358,7 +345,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		return processTypeLabel;
 	}
 
-	private JTextField getProcessTypeText() {
+	public JTextField getProcessTypeText() {
 
 		if (processTypeText == null) {
 			processTypeText = new JTextField(10);
@@ -395,7 +382,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		return processPrivacyLabel;
 	}
 
-	private JComboBox<String> getProcessFolderBox() {
+	public JComboBox<String> getProcessFolderBox() {
 		if (processFolderBox == null) {
 
 			processFolderBox = new JComboBox<String>();
@@ -438,7 +425,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		processFolderBox.setVisible(true);
 	}
 
-	private void showDialog(String message, String titel, Integer type) {
+	public void showDialog(String message, String titel, Integer type) {
 		JOptionPane.showMessageDialog(this, message, titel, type);
 	}
 
@@ -494,119 +481,23 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 
 	}
 
-	class ExportUpdateWorker extends SwingWorker<Void, Void> {
+	protected void exportToApromore(final String version, final boolean update) {
+		Thread queryThread = new Thread() {
+			public void run() {
 
-		private AbstractApromoreFrame parent;
-		private boolean importSuccess = false;
-		private String version;
-
-		public ExportUpdateWorker(ApromoreExportFrame apromoreExportFrame,
-				String version) {
-			this.version = version;
-		}
-
-		@Override
-		protected Void doInBackground() throws Exception {
-
-			wopedPorgressBar.setIndeterminate(true);
-			wopedPorgressBar.setIndeterminate(false);
-			if (serverDropdown != null) {
-				serverDropdown.setEnabled(false);
-			}
-			if (exportButton != null) {
-				exportButton.setEnabled(false);
-			}
-
-			processList.updateAction(Integer.valueOf(getProcessIDText()
-					.getText()), getProcessOwnerText().getText(),
-					getProcessTypeText().getText(), getProcessNameText()
-							.getText(), version);
-			processList.updateTable(processList.getTable(), processList
-					.getTable().getSelectedRow(), Integer
-					.valueOf(getProcessIDText().getText()));
-			showDialog(Messages.getString("Apromore.UI.UpdateDialog.Succes"),
-					Messages.getString("Apromore.UI.UpdateDialog.Title"),
-					JOptionPane.INFORMATION_MESSAGE);
-
-			return null;
-		}
-
-		@Override
-		public void done() {
-
-			wopedPorgressBar.setIndeterminate(false);
-
-			if (exportButton != null) {
-				exportButton.setEnabled(true);
-			}
-
-			if (serverDropdown != null) {
-				serverDropdown.setEnabled(true);
-			}
-
-		}
-	}
-
-	class ExportWorker extends SwingWorker<Void, Void> {
-
-		private AbstractApromoreFrame parent;
-		private boolean importSuccess = false;
-		private String version;
-
-		public ExportWorker(ApromoreExportFrame apromoreExportFrame,
-				String version) {
-			this.version = version;
-		}
-
-		@Override
-		protected Void doInBackground() throws Exception {
-			try {
-				wopedPorgressBar.setIndeterminate(true);
-				wopedPorgressBar.setIndeterminate(false);
-				if (serverDropdown != null) {
-					serverDropdown.setEnabled(false);
-				}
-				if (exportButton != null) {
-					exportButton.setEnabled(false);
+				if (exportWorker != null) {
+					exportWorker.cancel(true);
 				}
 
-				if (!processList.getProcessNames().contains(
-						getProcessNameText().getText())) {
-
-					processList.exportAction(getProcessOwnerText().getText(),
-							getProcessFolderBox().getSelectedItem().toString(),
-							getProcessNameText().getText(), version);
-					processList.addNewRow(processList.getTable());
-					showDialog(
-							Messages.getString("Apromore.UI.ExportDialog.Succes"),
-							Messages.getString("Apromore.UI.ExportDialog.Title"),
-							JOptionPane.INFORMATION_MESSAGE);
-				} else {
-					showDialog(
-							Messages.getString("Apromore.UI.Error.NameExists"),
-							Messages.getString("Apromore.UI.Error.Title"),
-							JOptionPane.ERROR_MESSAGE);
-				}
-			} catch (Exception exc) {
+				getWopedPorgressBar().setIndeterminate(true);
+				setButtons(false);
+				exportWorker = new ExportWorker(ApromoreExportFrame.this,
+						version, update);
+				exportWorker.execute();
 			}
+		};
+		queryThread.start();
 
-			return null;
-		}
-
-		@Override
-		public void done() {
-
-			wopedPorgressBar.setIndeterminate(false);
-
-			if (exportButton != null) {
-				exportButton.setEnabled(true);
-			}
-
-			if (serverDropdown != null) {
-				serverDropdown.setEnabled(true);
-			}
-
-		}
 	}
 
 }
