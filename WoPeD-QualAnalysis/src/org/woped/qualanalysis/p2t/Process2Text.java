@@ -16,14 +16,21 @@ public class Process2Text {
 	private static final String startTag = "<text>";
 	private static final String stopTag = "</text>";
 	private static final String endOfNetTag = "</net>";
-	
+	/**
+	 * 
+	 * @param xml the xml to be used as a base for the parsing
+	 */
 	public Process2Text(String xml){
 		super();
 		this.xmlText = xml;
 		parseXmlToHtml();
 	}
 	
-	//returns all text passages the id is linking to
+	/**
+	 * 
+	 * @param id	the ID of which the text passages are to be searched
+	 * @return		an array of the text-passages the id is linked to
+	 */
 	public String [] getText (String id){
 		Vector <String> temptexts = new Vector <String> (0);
 		//search every pair .get(Object) won't work for there can be multiple IDs within a key
@@ -39,7 +46,9 @@ public class Process2Text {
 		
 		return temptexts.toArray(new String [temptexts.size()]);
 	}
-	
+	/**
+	 * The xml is used to create the html-text with hyperlinks
+	 */
 	private void parseXmlToHtml(){
 		int start = -1;
 		int stop = -1;
@@ -62,7 +71,9 @@ public class Process2Text {
 		}
 	}
 	
-	//creates a html-formated text with hyperlinks based on the previous created structure
+	/**
+	 * creates a html-formated text with hyperlinks based on the previous created structure
+	 */
 	private void createHTML(){
 		StringBuilder sb = new StringBuilder(0);
 		
@@ -78,7 +89,11 @@ public class Process2Text {
 		htmlText = sb.toString();
 	}
 	
-	
+	/**
+	 * 
+	 * @param textcontent the xml-text is parsed into a map. The id(s) are used as keys, the values are the text-passages
+	 * @return
+	 */
 	private LinkedHashMap<String, String> createMap(String textcontent){
 		String[] temp = null;
 		LinkedHashMap<String, String> tempMap = new LinkedHashMap<String, String>();
@@ -95,7 +110,11 @@ public class Process2Text {
 		return tempMap;
 	}
 	
-	//returns the id(s) of the phrase
+	/**
+	 * 
+	 * @param phraseline	a single line to be searched for the id(s)
+	 * @return				the id(s) that is(are) found in the line
+	 */
 	private String getIdOfPhrase(String phraseline){
 		String id = null;
 		String idstart = "ids=\"";
@@ -107,19 +126,28 @@ public class Process2Text {
 		return id;
 	}
 	
-	//returns the text of the phrase
+	/**
+	 * 
+	 * @param phraseline	a single line to be searched for the contained text-passages
+	 * @return				the text-passage within the given line
+	 */
 	private String getTextOfPhrase(String phraseline){
 		String text = null;
 		int start = 0;
-		
-		start = phraseline.indexOf('>') + 1;//Position after the first ">"/ the beginning of the content
-		text = phraseline.substring(start);
-		text = text.replace(phraseDelimiter, "");//removes the delimiter
-		text = text.trim();
+		if (phraseline != null) {
+			start = phraseline.indexOf('>') + 1;//Position after the first ">"/ the beginning of the content
+			text = phraseline.substring(start);
+			text = text.replace(phraseDelimiter, "");//removes the delimiter
+			text = text.trim();
+		}
 		
 		return text;
 	}
-	
+	/**
+	 * 
+	 * @param id	the id of which the linked texts are to be searched
+	 * @return		an array of the found linked texts
+	 */
 	public String[] getLinkedTexts(String id){
 		String [] singleIDs = null;
 		Vector<String> linkedTexts = new Vector<String>(0);
@@ -136,20 +164,26 @@ public class Process2Text {
 		
 		return linkedTexts.toArray(new String[linkedTexts.size()]);
 	}
-	
+	/**
+	 * 
+	 * @return the maps of the ids and the linked texts
+	 */
 	public LinkedHashMap<String, String> getTextelements() {
 		return textelements;
 	}
-	
+	/**
+	 * 
+	 * @return	the original/given xml-text
+	 */
 	public String getXmlText() {
 		return xmlText;
 	}
-	
+	/**
+	 * 
+	 * @return	an html-text with hiperlinks, wo be used in an JEditorPane
+	 */
 	public String getHtmlText() {
 		return htmlText;
 	}
-	
-
-	
 	
 }

@@ -25,6 +25,10 @@ import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.paraphrasing.controller.WebServiceThread;
 
 @SuppressWarnings("serial")
+/**
+ * the sidebar to be used for the displaying of the natural text-presentation
+ *
+ */
 public class P2TSideBar extends JPanel implements ActionListener{
 //  in further releases the logic, listeners and the panel should be separated in different classes 
 	private IEditor editor = null;
@@ -34,6 +38,10 @@ public class P2TSideBar extends JPanel implements ActionListener{
 	private WebServiceThread webService;
 	private boolean threadInProgress;
 	
+	/**
+	 * 
+	 * @param currentEditor	the editor in which the instance of the sidebar is used
+	 */
 	public P2TSideBar(IEditor currentEditor){
     	super();
     	editor = currentEditor;
@@ -45,18 +53,31 @@ public class P2TSideBar extends JPanel implements ActionListener{
     	}.start();
     }
 	
+	/**
+	 * Getter for the used parser
+	 * @return	org.woped.qualanalysis.p2t.Process2Text 	used parser
+	 */
 	public org.woped.qualanalysis.p2t.Process2Text getNaturalTextParser() {
 		return naturalTextParser;
 	}
-
+	
+	/**
+	 * Setter for the used pareser
+	 * @param naturalTextParser 	the parser-instance to be used in this sidebar
+	 */
 	public void setNaturalTextParser(org.woped.qualanalysis.p2t.Process2Text naturalTextParser) {
 		this.naturalTextParser = naturalTextParser;
 	}
-
+	/**
+	 * Getter for the IEditor
+	 * @return IEditor	the editor in which the instance of the sidebar is used
+	 */
 	public IEditor getEditor() {
 		return editor;
 	}
-	
+	/**
+	 * Method to initialize and add the the components to the sidebar
+	 */
     private void addComponents(){
     		JLabel header = new JLabel(Messages.getString("P2T.textBandTitle"));
     	this.add(header);
@@ -82,7 +103,10 @@ public class P2TSideBar extends JPanel implements ActionListener{
     	this.add(textpane);
     	
     }
-    
+    /**
+     * Method to handle the highlighting of the elements and in the text
+     * @param ids; id of the element and the text-passage to be highlighted 
+     */
     private void highlightElement(String ids) {
     	String[] singleIDs = ids.split(",");
     	for (String id : singleIDs){
@@ -91,6 +115,11 @@ public class P2TSideBar extends JPanel implements ActionListener{
     		highlightIDinProcess(id);
     	}
 	}
+    
+    /**
+     * Hanles the highlighting of the elements in the text
+     * @param id; the ID of the element to be set highlighted
+     */
     private void highlightIDinProcess(String id){
     	ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
     	mec.getElementById(id).setHighlighted(true);
@@ -98,7 +127,8 @@ public class P2TSideBar extends JPanel implements ActionListener{
     
     
     /**
-     * highlights passages linked to the given id within the displayed text
+     * 
+     * Highlights passages linked to the given id within the displayed text
      * @param id, the id of the element of which the corresponding text is to be highlighted
      */
     public void highlightIDinText(String id){
@@ -172,7 +202,9 @@ public class P2TSideBar extends JPanel implements ActionListener{
 		}
 	}
 
-
+	/**
+	 * If the reload-button is pressed and the webservice thread is not in progress it will be startet
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == reload){
@@ -189,9 +221,11 @@ public class P2TSideBar extends JPanel implements ActionListener{
 		}
 		
 	}
-	
+	/**
+	 * Starts the webservice to get the description of the Petri-Net 
+	 */
 	private void getText(){
-		this.textpane.setText("loading...");
+		this.textpane.setText(Messages.getString("P2T.loading"));
 		clean();
 		
 		this.setThreadInProgress(true);
@@ -205,19 +239,28 @@ public class P2TSideBar extends JPanel implements ActionListener{
 			}
 		}
 		this.textpane.setText(naturalTextParser.getHtmlText());
+		setThreadInProgress(false);
 		webService = null;
 	}
-
+	/**
+	 * Setter of the thread-in-progress flag
+	 * @param boolen b; sets the in-progress-state-flag of the webservice
+	 */
 	private void setThreadInProgress(boolean b) {
 		threadInProgress = b;
 		
 	}
-
+	/**
+	 * Getter of the Thread in 
+	 * @return boolean; returns true if the webservice is still supposed to be in progress
+	 */
 	private boolean getThreadInProgress() {
 		return threadInProgress;
 	}
 	
-	
+	/**
+	 * Removes the highlights from the elements and the text. Afterwards those are repainted. 
+	 */
 	public void clean() {
 		textpane.getHighlighter().removeAllHighlights();
 		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
