@@ -246,7 +246,7 @@ public class P2TSideBar extends JPanel implements ActionListener{
 	 * Setter of the thread-in-progress flag
 	 * @param boolen b; sets the in-progress-state-flag of the webservice
 	 */
-	private void setThreadInProgress(boolean b) {
+	public void setThreadInProgress(boolean b) {
 		threadInProgress = b;
 		
 	}

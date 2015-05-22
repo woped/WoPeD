@@ -37,16 +37,11 @@ public class WebServiceThread extends Thread{
 		this.paraphrasingPanel = paraphrasingPanel;
 		isFinished = false;
 	}	
-	/**
-	 * Returns whether the thread is finished or not
-	 * @return 
-	 */
+
 	public boolean getIsFinished(){
 		return isFinished;
 	}
-	/**
-	 * Execution of the webservice.
-	 */
+	
 	public void run(){
 		IEditor editor = paraphrasingPanel.getEditor();
 
@@ -61,7 +56,7 @@ public class WebServiceThread extends Thread{
 					String output = pttService.getProcessToTextWebServicePort().generateTextFromProcessSpecification(currentNetPnml.getPnmlString());
 					isFinished=true;
 					paraphrasingPanel.setNaturalTextParser(new org.woped.qualanalysis.p2t.Process2Text(output));	
-					
+					paraphrasingPanel.setThreadInProgress(false);
 				}
 			}				
 			catch(WebServiceException wsEx){	
@@ -116,11 +111,7 @@ public class WebServiceThread extends Thread{
 		    }		
 		return result;
 	}
-	/**
-	 * 
-	 * @param xmlString
-	 * @throws XmlException
-	 */
+	
     private void extractDescription(String xmlString) throws XmlException{
 
     	PnmlDocument pnmlDoc = PnmlDocument.Factory.parse(xmlString); 	
