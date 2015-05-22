@@ -567,7 +567,7 @@ $(document).ready(function(){
 				curTick = parseInt($('#timeSlider').val())+	1;
 
 				requestString = strURLPrefix + "/getrequest/?action=getDashboardValues&single=true&tick="+curTick ;
-
+				loadPos();
 			}else{
 
 				//autoupdate-> es wurde kein spezieller zeitpunkt angegeben, es wird der zuletzt angewählte verwendet
@@ -617,7 +617,7 @@ $(document).ready(function(){
     		
     		//daten an einzelne anzeigeelemente senden
     		fctPrintValues(response);
-    		
+    		loadPos();
     	}).fail(function(jqxhr,textStatus, error){
     		console.log("error occured: " + textStatus * " / " + error );
     	});
@@ -625,6 +625,7 @@ $(document).ready(function(){
 	
 	function fctGetDashboardValues(tick,bSingle){
 		fctGetDashboardValuesEx (tick,bSingle,false);
+		loadPos();
 	}
 
 	
@@ -1153,6 +1154,7 @@ $(document).ready(function(){
 		
 					currentTick = 0;
 					fctGetDashboardValues($(this).val(), false);
+					loadPos();
 	});
 	
 	$("#btnSlideLeft").click(function(){
@@ -1162,6 +1164,7 @@ $(document).ready(function(){
 		
 			$( "#timeSlider" ).val( slidervalue );
 			fctGetDashboardValues(slidervalue, false);
+			loadPos();
 		}
 	});
 
@@ -1171,6 +1174,7 @@ $(document).ready(function(){
 
 		$( "#timeSlider" ).val( slidervalue );
 		fctGetDashboardValuesEx(slidervalue, false, true);
+		loadPos();
 	});
 	
 	
@@ -1222,6 +1226,7 @@ $(document).ready(function(){
 
     		// werte an dashboard-elemente uebertragen
 			fctGetDashboardValues($("#timeSlider").val(), false);
+			loadPos();
     	})	
 
     });
