@@ -234,96 +234,9 @@ $(document).ready(function(){
     
     
   	myinit();
-  	//loadPos();
+  	loadPos();
   	
-
-  	
-/*   	function loadPos(){
-  	    var localData = JSON.parse(localStorage.getItem('positions'));
-  	    
-  	    if(localData!=null)
-  	     {
-  	               $.each(localData, function(i,value){
-  	    
-  	               var id_name;
-
-  	                id_name="#";
-  	               id_name = id_name + value.id;
-  	      
-  	               $(id_name).attr({"data-col":value.col, "data-row":value.row, "data-sizex":value.size_x, "data-sizey":value.size_y});
-  	      
-  	                });
-  	     }
-  	   else{
-  	              console.log('No data stored in the local storage. Continue with the default values'); 
-  	     }
-  	} */
-  		  	
-
-   	function myinit(){
-  	
-   		$.getJSON(strURLPrefix + '/getrequest/?action=getArchiveList', function(){
-    	}).done(function(response){
-    		
-    		if(response.length == 0){
-    			$("#main").html("no data");
-    		}
-    		else{
-
-	    		fctFillPullDown(response);
-	    		
-	    		//abfragen, wie viele simulationsläufe insgesamt stattfinden
-				$.getJSON('/getrequest/?action=getSimulationStats', function(){
-			    	}).done(function(response){
-
-
-					SimStat.period = response['period'];
-		    		SimStat.lambda = response['lambda'];
-					SimStat.queue = response['queue'];
-					SimStat.runs = response['runs'];
-
-
-		   			$("#timeSlider").attr( "min", 1);
-
-		    		$("#timeSlider").attr( "max", SimStat.runs);
-
-		    		$('#aMaxTick').html(SimStat.runs);
-
-		    		$('#timeSlider').val(SimStat.runs);
-
-
-		    		// werte an dashboard-elemente uebertragen
-					fctGetDashboardValues($("#timeSlider").val(), false);
-		    		
-		    		if($('#chkAutoUpdate').prop('checked') == true){
-		    			console.log("AutoUpdate active");
-		    			fctStartGetDashboardValuesCyclic(1000);
-		    		}else{
-		    			console.log("AutoUpdate not active");
-		    		}
-			    })	
-		    }
-    		
-    	}).fail(function(jqxhr,textStatus, error){
-    		console.log("error occured: " + textStatus * " / " + error );
-    	})
-    	
-    	
-    	 
-    	var widgets = $(".gridster ul").children();
-    	
-      	 var gridster = $(".gridster ul").gridster({
-      	        widget_margins: [10, 10],
-      	        widget_selector: widgets,
-      	        extra_cols: 2,
-      	        widget_base_dimensions: [550],
-      	      draggable: {
-                  handle: $('.header , .header>*')
-                }
-      	    }).data('gridster');
-      	 
-         $('.js-seralize').on('click', function() {
-         
+	function savePos(){
          	var visibleProcess = getColVisibility("#coloumSelectorProcess");
          	var visibleTasks = getColVisibility("#coloumSelectorTask");
          	var visibleRessource = getColVisibility("#coloumSelectorRessource");
@@ -395,53 +308,10 @@ $(document).ready(function(){
          			}
          		}
          	}
-         	
-             //var s = gridster.serialize();
-             //var x = null;
-             
-            // for(var i = 0; i < s.length; i++) {
-            //	 x += s[i];
-            // }
-             
-             
-             //var value = JSON.stringify(s);
-             //aus value muss hier String gemacht werden der dann in ein SaveConfog Objekt umgewandelt werden kann
-             
-             
-             //String[] a = value.Split("{");
-             //var s = "";
-            // for (int i = 0; i < a.length; i++){
-             	
-             //	var valID = a[i];
-             //	s += "{ID:\""+ valID + "\"}";
-             //	if (i != a.length-1) {
-             //		s += ",";
-             //	}
-            // } 
-             
-            
-         	//$.ajax({
-             	
-         	//	type: "POST",
-         	//	url : strURLPrefix+"/postrequest/",
-         	//	dataType: "json",
-         	//	async: false,
-         	//	data: "json={\"action\":\"saveConfig\",\"parameter\":" + value + "}",
-         	//	success: function(data){
-         	//		console.log("successfully saved");
-   
-         	//	}
-         	
-         	//})
-
-         });
-        
-         $(".cfgBtn").click(function(){
-        	setColVisibilty(this.name, getColVisibility("#coloumSelector" + this.name)); 	 
-        	
-         })
-         
-        $(".js-seralizer").click(function(){
+         	loadPos();
+	}
+  	
+   	function loadPos(){
         	var ProcessCompleteTime = localStorage.getItem('ProcessCompleteTime');
         	var ProcessEfficiency = localStorage.getItem('ProcessEfficiency');
         	var ProcessFinishedCases = localStorage.getItem('ProcessFinishedCases');
@@ -495,6 +365,7 @@ $(document).ready(function(){
         	 }
         	 
         	 setColVisibilty("Process", visibilityJSON);
+        	 setColVisibiltyCheckboxes("#coloumSelectorProcess", visibilityJSON);
         	 
         	//Tasks
         	visibilityJSON = {}
@@ -521,7 +392,7 @@ $(document).ready(function(){
         	 }
         	 
         	 setColVisibilty("Task", visibilityJSON);
-        	 
+        	 setColVisibiltyCheckboxes("#coloumSelectorTask", visibilityJSON);
         	//Ressources
         	visibilityJSON = {}
  		  
@@ -547,7 +418,84 @@ $(document).ready(function(){
         	 }
         	 
         	 setColVisibilty("Ressource", visibilityJSON);
-        	 
+        	 setColVisibiltyCheckboxes("#coloumSelectorRessource", visibilityJSON);
+  	} 
+  		  	
+
+   	function myinit(){
+  	
+   		$.getJSON(strURLPrefix + '/getrequest/?action=getArchiveList', function(){
+    	}).done(function(response){
+    		
+    		if(response.length == 0){
+    			$("#main").html("no data");
+    		}
+    		else{
+
+	    		fctFillPullDown(response);
+	    		
+	    		//abfragen, wie viele simulationsläufe insgesamt stattfinden
+				$.getJSON('/getrequest/?action=getSimulationStats', function(){
+			    	}).done(function(response){
+
+
+					SimStat.period = response['period'];
+		    		SimStat.lambda = response['lambda'];
+					SimStat.queue = response['queue'];
+					SimStat.runs = response['runs'];
+
+
+		   			$("#timeSlider").attr( "min", 1);
+
+		    		$("#timeSlider").attr( "max", SimStat.runs);
+
+		    		$('#aMaxTick').html(SimStat.runs);
+
+		    		$('#timeSlider').val(SimStat.runs);
+
+
+		    		// werte an dashboard-elemente uebertragen
+					fctGetDashboardValues($("#timeSlider").val(), false);
+		    		loadPos();
+		    		if($('#chkAutoUpdate').prop('checked') == true){
+		    			console.log("AutoUpdate active");
+		    			fctStartGetDashboardValuesCyclic(1000);
+		    			loadPos();
+		    		}else{
+		    			console.log("AutoUpdate not active");
+		    		}
+			    })	
+		    }
+    		
+    	}).fail(function(jqxhr,textStatus, error){
+    		console.log("error occured: " + textStatus * " / " + error );
+    	})
+    	
+    	
+    	 
+    	var widgets = $(".gridster ul").children();
+    	
+      	 var gridster = $(".gridster ul").gridster({
+      	        widget_margins: [10, 10],
+      	        widget_selector: widgets,
+      	        extra_cols: 2,
+      	        widget_base_dimensions: [550],
+      	      draggable: {
+                  handle: $('.header , .header>*')
+                }
+      	    }).data('gridster');
+      	 
+         $('.js-seralize').on('click', function() {    
+			savePos();
+         });
+        
+         $(".cfgBtn").click(function(){
+        	setColVisibilty(this.name, getColVisibility("#coloumSelector" + this.name)); 	 
+        	
+         })
+         
+        $(".js-seralizer").click(function(){
+        	loadPos();	 
         })
 
     
@@ -568,10 +516,11 @@ $(document).ready(function(){
     	if ( $('#chkAutoUpdate').prop('checked') == true  ){
 		
 			fctStartGetDashboardValuesCyclic(1000);
-			
+			loadPos();
 		}
 		else{
 			fctStopGetDashboardValuesCyclic(intervalObj);
+			loadPos();
 			intervalObj = null;
 		}
     });
@@ -588,13 +537,14 @@ $(document).ready(function(){
 			/* Daten fuer Dashboard holen */
 			
 			fctStartGetDashboardValuesCyclic(1000,parseInt($('#timeSlider').val())+1);
-			
+			loadPos();
 		}
 		else{
 			//$('#btnSlideAuto').html("play");
 			$('#btnSlideAuto').html("<img src=\"/SVG/tokengame_play_start.svg\" alt=\"%%QuantAna.Simulation.Column.Play%%\">");
 			playAuto = false;
 			fctStopGetDashboardValuesCyclic(intervalObj);
+			loadPos();
 			intervalObj = null;
 		}
     });
@@ -617,14 +567,14 @@ $(document).ready(function(){
 				curTick = parseInt($('#timeSlider').val())+	1;
 
 				requestString = strURLPrefix + "/getrequest/?action=getDashboardValues&single=true&tick="+curTick ;
-
+				loadPos();
 			}else{
 
 				//autoupdate-> es wurde kein spezieller zeitpunkt angegeben, es wird der zuletzt angewählte verwendet
 				//curTick = parseInt($('#timeSlider').val())+1;
 				
 				requestString = strURLPrefix + "/getrequest/?action=getDashboardValues&single=true";
-			
+				loadPos();
 			}
 
 			
@@ -641,13 +591,14 @@ $(document).ready(function(){
 	    	}) 	
 	    }
 		, cycle_in_ms);
-    
+    loadPos();
     	//return setInterval(fctGetDashboardValues(), cycle_in_ms);
     };
 
 
     function fctStopGetDashboardValuesCyclic  (intervalObj){
     	clearInterval(intervalObj);
+    	loadPos();
     	intervalObj = null;
     };
 	
@@ -666,7 +617,7 @@ $(document).ready(function(){
     		
     		//daten an einzelne anzeigeelemente senden
     		fctPrintValues(response);
-    		
+    		loadPos();
     	}).fail(function(jqxhr,textStatus, error){
     		console.log("error occured: " + textStatus * " / " + error );
     	});
@@ -674,6 +625,7 @@ $(document).ready(function(){
 	
 	function fctGetDashboardValues(tick,bSingle){
 		fctGetDashboardValuesEx (tick,bSingle,false);
+		loadPos();
 	}
 
 	
@@ -1202,6 +1154,7 @@ $(document).ready(function(){
 		
 					currentTick = 0;
 					fctGetDashboardValues($(this).val(), false);
+					loadPos();
 	});
 	
 	$("#btnSlideLeft").click(function(){
@@ -1211,6 +1164,7 @@ $(document).ready(function(){
 		
 			$( "#timeSlider" ).val( slidervalue );
 			fctGetDashboardValues(slidervalue, false);
+			loadPos();
 		}
 	});
 
@@ -1220,6 +1174,7 @@ $(document).ready(function(){
 
 		$( "#timeSlider" ).val( slidervalue );
 		fctGetDashboardValuesEx(slidervalue, false, true);
+		loadPos();
 	});
 	
 	
@@ -1271,6 +1226,7 @@ $(document).ready(function(){
 
     		// werte an dashboard-elemente uebertragen
 			fctGetDashboardValues($("#timeSlider").val(), false);
+			loadPos();
     	})	
 
     });
