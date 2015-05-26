@@ -327,7 +327,7 @@ $(document).ready(function(){
         	var RessourceUtilization = localStorage.getItem('RessourceUtilization');
         	
         	//Process
-        	visibilityJSON = {}
+        	visibilityJSON_proc = {}
  		  
         	 if(ProcessCompleteTime == "True"){
         	 visibilityJSON["com"] = true;  
@@ -364,11 +364,11 @@ $(document).ready(function(){
         	 visibilityJSON["throAbs"]= false;
         	 }
         	 
-        	 setColVisibilty("Process", visibilityJSON);
-        	 setColVisibiltyCheckboxes("#coloumSelectorProcess", visibilityJSON);
+        	 setColVisibilty("Process", visibilityJSON_proc);
+        	
         	 
         	//Tasks
-        	visibilityJSON = {}
+        	visibilityJSON_task = {}
  		  
         	 if(TasksAverage == "True"){
         	 visibilityJSON["avg"] = true;  
@@ -391,10 +391,10 @@ $(document).ready(function(){
         	 visibilityJSON["time"]= false;
         	 }
         	 
-        	 setColVisibilty("Task", visibilityJSON);
-        	 setColVisibiltyCheckboxes("#coloumSelectorTask", visibilityJSON);
+        	 setColVisibilty("Task", visibilityJSON_task);
+        	 
         	//Ressources
-        	visibilityJSON = {}
+        	visibilityJSON_res = {}
  		  
         	 if(RessourceAverage == "True"){
         	 visibilityJSON["avg"] = true;  
@@ -417,8 +417,9 @@ $(document).ready(function(){
         	 visibilityJSON["util"]= false;
         	 }
         	 
-        	 setColVisibilty("Ressource", visibilityJSON);
-        	 setColVisibiltyCheckboxes("#coloumSelectorRessource", visibilityJSON);
+        	 setColVisibilty("Ressource", visibilityJSON_res);
+        	 setColVisibiltyCheckboxes({Process:visibilityJSON_proc , Task: visibilityJSON_task , Ressources: visibilityJSON_res })
+        
   	} 
   		  	
 
@@ -1399,9 +1400,20 @@ else
 
          }      
 
-function setColVisibiltyCheckboxes(configWin, visibilityJSON){
-//TODO
+function setColVisibiltyCheckboxes(visibilityJSON){
+for(key in visibilityJSON){
+	var configWin = $("#coloumSelector"+key);
+	 configWin.children("input").each(function(i, e){
+        	if(visibilityJSON[key][i]){
+        		this.checked = true;
+        	}
+        	else{
+        		this.checked = false;
+        	}
+        	    		  
+        	
 
+})}
 }
 
 function getColVisibiltyForAllTables(){
