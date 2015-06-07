@@ -330,38 +330,38 @@ $(document).ready(function(){
         	visibilityJSON_proc = {}
  		  
         	 if(ProcessCompleteTime == "True"){
-        	 visibilityJSON["com"] = true;  
+        	 visibilityJSON_proc["com"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["com"]= false;
+        	 visibilityJSON_proc["com"]= false;
         	 }
         	 
         	 if(ProcessEfficiency == "True"){
-        	 visibilityJSON["effen"] = true;  
+        	 visibilityJSON_proc["effen"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["effen"]= false;
+        	 visibilityJSON_proc["effen"]= false;
         	 }
         	 
         	 if(ProcessFinishedCases == "True"){
-        	 visibilityJSON["fin"] = true;  
+        	 visibilityJSON_proc["fin"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["fin"]= false;
+        	visibilityJSON_proc["fin"]= false;
         	 }
         	 
         	 if(ProcessThroughput == "True"){
-        	 visibilityJSON["thro"] = true;  
+        	visibilityJSON_proc["thro"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["thro"]= false;
+        	 visibilityJSON_proc["thro"]= false;
         	 }
         	 
         	 if(ProcessThroughputAbsolute == "True"){
-        	 visibilityJSON["throAbs"] = true;  
+        	 visibilityJSON_proc["throAbs"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["throAbs"]= false;
+        	 visibilityJSON_proc["throAbs"]= false;
         	 }
         	 
         	 setColVisibilty("Process", visibilityJSON_proc);
@@ -371,24 +371,24 @@ $(document).ready(function(){
         	visibilityJSON_task = {}
  		  
         	 if(TasksAverage == "True"){
-        	 visibilityJSON["avg"] = true;  
+        	 visibilityJSON_task["avg"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["avg"]= false;
+        	 visibilityJSON_task["avg"]= false;
         	 }
         	 
         	 if(TasksTask == "True"){
-        	 visibilityJSON["task"] = true;  
+        	 visibilityJSON_task["task"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["task"]= false;
+        	 visibilityJSON_task["task"]= false;
         	 }
         	 
         	 if(TasksTime == "True"){
-        	 visibilityJSON["time"] = true;  
+        	 visibilityJSON_task["time"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["time"]= false;
+        	 visibilityJSON_task["time"]= false;
         	 }
         	 
         	 setColVisibilty("Task", visibilityJSON_task);
@@ -397,24 +397,24 @@ $(document).ready(function(){
         	visibilityJSON_res = {}
  		  
         	 if(RessourceAverage == "True"){
-        	 visibilityJSON["avg"] = true;  
+        	 visibilityJSON_res["avg"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["avg"]= false;
+        	 visibilityJSON_res["avg"]= false;
         	 }
         	 
         	 if(RessourceRessource == "True"){
-        	 visibilityJSON["res"] = true;  
+        	 visibilityJSON_res["res"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["res"]= false;
+        	 visibilityJSON_res["res"]= false;
         	 }
         	 
         	 if(RessourceUtilization == "True"){
-        	 visibilityJSON["util"] = true;  
+        	 visibilityJSON_res["util"] = true;  
         	 }
         	 else {
-        	 visibilityJSON["util"]= false;
+        	 visibilityJSON_res["util"]= false;
         	 }
         	 
         	 setColVisibilty("Ressource", visibilityJSON_res);
