@@ -152,7 +152,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	private JTextField getServerURLText() {
 		if (serverURLText == null) {
 			serverURLText = new JTextField();
-			serverURLText.setColumns(25);
+			serverURLText.setColumns(40);
 			serverURLText.setEnabled(true);
 			serverURLText.setToolTipText("<html>"
 					+ Messages.getString("Configuration.P2T.Label.ServerHost")
@@ -314,7 +314,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	private JTextField getManagerPathText() {
 		if (managerPathText == null) {
 			managerPathText = new JTextField();
-			managerPathText.setColumns(50);
+			managerPathText.setColumns(40);
 			managerPathText.setEnabled(true);
 			managerPathText.setToolTipText("<html>"
 					+ Messages.getString("Configuration.P2T.Label.ServerURI")

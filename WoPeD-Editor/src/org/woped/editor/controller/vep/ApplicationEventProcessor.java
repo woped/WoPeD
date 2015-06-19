@@ -143,7 +143,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
                 config.setLocation(Utils.getCenterPoint(getMediator().getUi().getBounds(), config.getSize()));
             }
             config.setVisible(true);
-
+        
             break;
 
         case AbstractViewEvent.EXIT:
