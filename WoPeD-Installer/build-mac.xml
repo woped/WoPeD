@@ -287,7 +287,52 @@
 		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/lib" />
 		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/doc" />
 		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/nets" />
+		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/dashboardpages" />
+		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/dashboardpages/GUI" />
+		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/dashboardpages/SVG" />
+		
+		
+		<copy todir="dist/mac/WoPeD.app/Contents/Java/dashboardpages">
+					<fileset file="../WoPeD-QuantAnalysis/pages/*.*" />
+		</copy>
+		
+		<copy todir="dist/mac/WoPeD.app/Contents/Java/dashboardpages/SVG">
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/tokengame_play_pause.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/tokengame_play_start.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/options_configuration.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/save_save.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/tokengame_tokengame_options.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/tokengame_play_seek_backward.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/tokengame_play_seek_forward.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/tokengame_play_start.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/analyze_quantitative_simulation.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/document_open.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/help_contents.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/help_info2.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/options_manual.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/register.svg" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/svg/edit-cut.svg" />
+		</copy>
+		
+		
+		<copy todir="dist/mac/WoPeD.app/Contents/Java/dashboardpages/GUI">
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/folder_objects.png" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/WoPeD.png" />
+					<fileset file="../WoPeD-GUI/src/org/woped/gui/images/close.gif" />
+		</copy>
+		
+		<copy todir="dist/mac/WoPeD.app/Contents/Java">
+					<fileset file="dist/WoPeD*.jar" />
+					<fileset file="dist/*.txt" />
+		</copy>
+		
+		
+		
+		
+		
 	
+		
+		
 		<copy todir="dist/mac/WoPeD.app/Contents/Java">
 			<fileset file="dist/WoPeD*.jar" />
 			<fileset file="dist/*.txt" />

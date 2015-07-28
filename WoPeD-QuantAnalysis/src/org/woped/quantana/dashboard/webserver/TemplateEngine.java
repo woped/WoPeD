@@ -10,6 +10,8 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.apple.eio.FileManager;
+
 import org.woped.gui.translations.Messages;
 
 public class TemplateEngine {
@@ -20,6 +22,7 @@ public class TemplateEngine {
 		 String zusammen = "";
 		 StringBuffer buffer = new StringBuffer();
 	      try{
+	    	  
 			  
 	    	  FileReader in = new FileReader( "../WoPeD-QuantAnalysis/pages/"+strFile);
 			   for (int n;(n = in.read()) != -1;buffer.append((char) n));
@@ -28,69 +31,79 @@ public class TemplateEngine {
 			    zusammen = buffer.toString(); 
 	      }
 	      catch(FileNotFoundException e){
+	    	 
+	    	  String strApp = FileManager.getPathToApplicationBundle();
+	    	  FileReader fr;
+			try {
+				fr = new FileReader( strApp + "/Contents/Java/dashboardpages/"+strFile);
+				for (int n;(n = fr.read()) != -1;buffer.append((char) n));
+				   fr.close();
+				
+				    zusammen = buffer.toString(); 
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			   
+	    	  
 	      }
 	      catch(IOException e){
+	    	  return "";
 	      }
 	      return getI18nText(zusammen);    
 	}
 	
 	public byte[] getImageContent(String strFile){
-		
-		
-		   
-		
-		  
-		  
-		    Path path = Paths.get("../WoPeD-GUI/src/org/woped/gui/images/"+ strFile);
+		    
 		    byte[] _bytes = null;
+		    
 		    try {
+		    	Path path = Paths.get("../WoPeD-GUI/src/org/woped/gui/images/"+ strFile);
 		    	_bytes = Files.readAllBytes(path);
 		    
 		    } catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		    	
+		    	try {
+		    		
+			    	String strApp = FileManager.getPathToApplicationBundle();
+			    	Path path = Paths.get(strApp + "/Contents/Java/dashboardpages/GUI/"+strFile);
+		    		_bytes = Files.readAllBytes(path);
+		    		
+				} catch (IOException e1) {
+					return new byte[0];
+				}
+  	
 			}
-		    //String file_string = "";
-/*
-		    for(int i = 0; i < _bytes.length; i++)
-		    {
-		        file_string += (char)_bytes[i];
-		    }
-		    return new String(_bytes)
-*/
-		    return _bytes;  
 		    
-		   
-		
+		    return _bytes;  
+	
 	}	
 	
 	public byte[] getImageSVGContent(String strFile){
-		
-		
-		   
-		
-		  
-		  
-	    Path path = Paths.get("../WoPeD-GUI/src/org/woped/gui/images/svg/"+ strFile);
+			  
+	    
 	    byte[] _bytes = null;
+	    
 	    try {
+	    	Path path = Paths.get("../WoPeD-GUI/src/org/woped/gui/images/svg/"+ strFile);
 	    	_bytes = Files.readAllBytes(path);
 	    
 	    } catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	    	
+	    	try {
+	    		
+		    	String strApp = FileManager.getPathToApplicationBundle();
+		    	Path path = Paths.get(strApp + "/Contents/Java/dashboardpages/SVG/"+strFile);
+	    		_bytes = Files.readAllBytes(path);
+	    		
+			} catch (IOException e1) {
+				return new byte[0];
+			}
+	
 		}
-	    //String file_string = "";
-/*
-	    for(int i = 0; i < _bytes.length; i++)
-	    {
-	        file_string += (char)_bytes[i];
-	    }
-	    return new String(_bytes)
-*/
-	    return _bytes;  
 	    
-	   
+	    return _bytes;  
+
 	
 }	
 	private String getI18nText(String strText){
