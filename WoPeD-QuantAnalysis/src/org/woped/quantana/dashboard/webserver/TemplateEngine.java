@@ -1,15 +1,19 @@
 package org.woped.quantana.dashboard.webserver;
 
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.apple.eio.FileManager;
+
 
 import org.woped.gui.translations.Messages;
 
@@ -19,37 +23,75 @@ public class TemplateEngine {
 	
 	public String getTemplateContent(String strFile){
 		 String zusammen = "";
-		 StringBuffer buffer = new StringBuffer();
-	      try{
-	    	  
-			  
-	    	  FileReader in = new FileReader( "../WoPeD-QuantAnalysis/pages/"+strFile);
-			   for (int n;(n = in.read()) != -1;buffer.append((char) n));
-			   in.close();
-			
-			    zusammen = buffer.toString(); 
-	      }
-	      catch(FileNotFoundException e){
-	    	 
-	    	  String strApp = FileManager.getPathToApplicationBundle();
-	    	  FileReader fr;
-			try {
-				fr = new FileReader( strApp + "/Contents/Java/dashboardpages/"+strFile);
-				for (int n;(n = fr.read()) != -1;buffer.append((char) n));
-				   fr.close();
+		 String strApp = "";
+		 FileReader fr = null;
+		 
+		 
+		 //extract file name only
+		 if(true == strFile.contains("/"))
+			 strFile = strFile.split("/")[1];
+		 
+		
+	 
+			 try {
+				strApp = Paths.get(".").toRealPath().toAbsolutePath().normalize().toString();
+			} catch (IOException e) {
 				
-				    zusammen = buffer.toString(); 
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e.printStackTrace();
 			}
-			   
-	    	  
-	      }
-	      catch(IOException e){
-	    	  return "";
-	      }
+			 
+			 strApp = strApp.replace("\\", "/");
+			 			 
+			 // eclipse project
+			 String strFileName = "";  
+			 
+			 if(zusammen.length() == 0){
+				 
+				 strFileName = strApp + "/../WoPeD-QuantAnalysis/pages/"+ strFile;
+		    	 
+				 zusammen = getTextFileContent(strFileName);
+			 }
+			 
+			 if(zusammen.length() == 0){
+				 	 
+				 strFileName = strApp + "/Contents/Java/dashboardpages/" + strFile;
+			 
+				 zusammen = getTextFileContent(strFileName);
+			 }
+			 
+			
 	      return getI18nText(zusammen);    
+	}
+	
+	private String getTextFileContent(String strFileName){
+		StringBuffer buffer = new StringBuffer();
+		String zusammen = "";
+		FileReader fr;
+		
+		if (true == new File(strFileName).exists()){
+			 
+			try {
+				fr = new FileReader(strFileName);
+			
+   			 
+	   		  	for (int n;(n = fr.read()) != -1;buffer.append((char) n));
+		   		  	fr.close();
+		   		
+	   		    zusammen = buffer.toString(); 
+		   		    
+	   		    return zusammen;
+	    	
+			
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return zusammen;
 	}
 	
 	public byte[] getImageContent(String strFile){
@@ -63,10 +105,13 @@ public class TemplateEngine {
 		    } catch (IOException e) {
 		    	
 		    	try {
+		    		String strApp;
 		    		
-			    	String strApp = FileManager.getPathToApplicationBundle();
-			    	Path path = Paths.get(strApp + "/Contents/Java/dashboardpages/GUI/"+strFile);
-		    		_bytes = Files.readAllBytes(path);
+					strApp = new File(".").getCanonicalPath();
+			    	
+					Path path = Paths.get(strApp + "/Contents/Java/dashboardpages/GUI/"+strFile);
+		    		
+					_bytes = Files.readAllBytes(path);
 		    		
 				} catch (IOException e1) {
 					return new byte[0];
@@ -91,8 +136,12 @@ public class TemplateEngine {
 	    	
 	    	try {
 	    		
-		    	String strApp = FileManager.getPathToApplicationBundle();
-		    	Path path = Paths.get(strApp + "/Contents/Java/dashboardpages/SVG/"+strFile);
+	    		String strApp;
+	    		
+				strApp = new File(".").getCanonicalPath();
+	    		
+				Path path = Paths.get(strApp + "/Contents/Java/dashboardpages/GUI/"+strFile);
+				
 	    		_bytes = Files.readAllBytes(path);
 	    		
 			} catch (IOException e1) {

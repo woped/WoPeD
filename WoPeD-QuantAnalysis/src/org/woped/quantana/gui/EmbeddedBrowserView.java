@@ -1,5 +1,5 @@
 package org.woped.quantana.gui;
-
+/*
 import java.awt.Dialog;
 import java.awt.Image;
 
@@ -82,3 +82,4 @@ public class EmbeddedBrowserView extends JFrame {
 	}
 
 }
+*/

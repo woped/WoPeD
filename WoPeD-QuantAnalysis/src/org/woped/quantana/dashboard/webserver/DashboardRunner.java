@@ -11,7 +11,7 @@ import org.woped.quantana.dashboard.webserver.TestpathAction;
 import org.woped.quantana.dashboard.webserver.ThinServer;
 import org.woped.quantana.dashboard.webserver.ClientStarter;
 import org.woped.quantana.dashboard.storage.StorageEngine;
-import org.woped.quantana.gui.EmbeddedBrowserView;
+//import org.woped.quantana.gui.EmbeddedBrowserView;
 
 
 public class DashboardRunner implements Runnable{

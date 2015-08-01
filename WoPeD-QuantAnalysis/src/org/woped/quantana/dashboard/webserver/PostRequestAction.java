@@ -13,7 +13,7 @@ import org.woped.quantana.dashboard.storage.Constants;
 import org.woped.quantana.dashboard.storage.SaveConfig;
 import org.woped.quantana.dashboard.storage.TableInfo;
 import org.woped.quantana.dashboard.storage.StorageEngine;
-import org.woped.quantana.gui.EmbeddedBrowserView;
+//import org.woped.quantana.gui.EmbeddedBrowserView;
 import org.woped.quantana.gui.JFXUsageNotSupported;
 
 import java.io.*;
@@ -53,14 +53,14 @@ public class PostRequestAction extends ThinServerAction {
 				response.addContent(strRet);
 			}
 			else if(aa.getAction().equals("createEmbeddedBrowserView")) {
-				try{
-					EmbeddedBrowserView browser = new EmbeddedBrowserView(2711,false);
-					browser.setVisible(true);
-				}
-				catch(JFXUsageNotSupported e){
+				//try{
+				//	EmbeddedBrowserView browser = new EmbeddedBrowserView(2711,false);
+				//	browser.setVisible(true);
+				//}
+				//catch(JFXUsageNotSupported e){
 					ClientStarter cs = new ClientStarter();
 					cs.startClient(false);
-				}
+				//}
 
 			}
 			else if(aa.getAction().equals("saveConfig")) {
