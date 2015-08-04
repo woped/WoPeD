@@ -33,7 +33,7 @@ public class P2TSideBar extends JPanel implements ActionListener{
 //  in further releases the logic, listeners and the panel should be separated in different classes 
 	private IEditor editor = null;
 	private JEditorPane textpane = null;
-	private org.woped.qualanalysis.p2t.Process2Text naturalTextParser = null;
+	private Process2Text naturalTextParser = null;
 	private JButton reload = null;
 	private WebServiceThread webService;
 	private boolean threadInProgress;

@@ -370,9 +370,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 							"Tokengame controls used while tokengame was inactive");
 				break;		
 				//TODO(P2T):
-			case AbstractViewEvent.P2T:
-				System.out.println("I'm here!");
-				
+			case AbstractViewEvent.P2T:				
 				if (!editor.getEditorPanel().isP2TBarVisible()) {
 					editor.getEditorPanel().showP2TBar();
 				} else {

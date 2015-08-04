@@ -652,7 +652,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	        	//rt.addFooterSection(shortcut); //Alternative display of Shortcut
 	        	button.setActionRichTooltip(rt);
 	        } catch(Exception ex) {
-	            System.out.print("exception");
 	        }
 			}
 		}

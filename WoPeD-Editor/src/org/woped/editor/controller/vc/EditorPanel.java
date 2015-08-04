@@ -968,16 +968,11 @@ public class EditorPanel extends JPanel {
 			add(mainsplitPaneWithP2TBar);
 			p2TBarVisible = true;
 			revalidate();
-//			editorSize.resize(false);
 			mainsplitPaneWithP2TBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithP2TBar.setResizeWeight(1);
-			
-			
+						
 			JEditorPane p2TeditorPane = new JEditorPane();
 			p2TeditorPane.setEditable(false);
-			
-			p2TeditorPane.setText("geparster Text");
-
 		}
 	}
 
@@ -987,8 +982,6 @@ public class EditorPanel extends JPanel {
 		if (p2TBarVisible) {
 			
 			qualitativeAnalysisSideBar.showTStarIfPossible();		
-//			remove(mainsplitPaneWithAnalysisBar);
-//			mainsplitPaneWithAnalysisBar = null;
 			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
 			p2TBarVisible = false;
 			qualitativeAnalysisSideBar.refresh();
@@ -1005,9 +998,6 @@ public class EditorPanel extends JPanel {
 
 	
 			revalidate();
-//			editorSize.resize(false);
-		}
-		
-//		System.out.println("hide");
+		}		
 	}
 }
