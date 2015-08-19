@@ -54,12 +54,12 @@ public class TemplateEngine {
 			 
 			 if(zusammen.length() == 0){
 				 	 
-				 strFileName = strApp + "/Contents/Java/dashboardpages/" + strFile;
+				 strFileName = strApp + "/dashboardpages/" + strFile;
 			 
 				 zusammen = getTextFileContent(strFileName);
 			 }
 			 
-			
+//		  System.out.println("PATH = "+ strFileName);			
 	      return getI18nText(zusammen);    
 	}
 	
@@ -109,7 +109,7 @@ public class TemplateEngine {
 		    		
 					strApp = new File(".").getCanonicalPath();
 			    	
-					Path path = Paths.get(strApp + "/Contents/Java/dashboardpages/GUI/"+strFile);
+					Path path = Paths.get(strApp + "/dashboardpages/GUI/"+strFile);
 		    		
 					_bytes = Files.readAllBytes(path);
 		    		
@@ -140,7 +140,7 @@ public class TemplateEngine {
 	    		
 				strApp = new File(".").getCanonicalPath();
 	    		
-				Path path = Paths.get(strApp + "/Contents/Java/dashboardpages/GUI/"+strFile);
+				Path path = Paths.get(strApp + "/dashboardpages/GUI/"+strFile);
 				
 	    		_bytes = Files.readAllBytes(path);
 	    		

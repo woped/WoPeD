@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dialog;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -19,20 +18,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Vector;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -140,7 +132,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 	private JTextField txtSTStdDev;
 
-	private JComboBox cboTimeUnits;
+	private JComboBox<?> cboTimeUnits;
 
 	private int timeUnit = 1;
 
@@ -1545,8 +1537,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 					//dashboard.add(null);
 
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-
 				e.printStackTrace();
 			}
 			

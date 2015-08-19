@@ -76,10 +76,11 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	 * @see AbstractConfPanel#applyConfiguration()
 	 */
 	public boolean applyConfiguration() {
-		boolean changed = useBox.isSelected() != ConfigurationManager
-				.getConfiguration().getProcess2TextUse();
+		boolean newsetting = useBox.isSelected();
+		boolean oldsetting = ConfigurationManager.getConfiguration().getProcess2TextUse();
 
-		if (changed) {
+		if (newsetting != oldsetting) {
+			ConfigurationManager.getConfiguration().setProcess2TextUse(newsetting);
 			JOptionPane
 					.showMessageDialog(
 							this,

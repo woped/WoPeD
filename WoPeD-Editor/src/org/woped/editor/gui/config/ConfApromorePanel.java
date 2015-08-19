@@ -139,11 +139,11 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	 */
 	public boolean applyConfiguration() {
 
-		changed = useBox.isSelected() != ConfigurationManager
-				.getConfiguration().getApromoreUse();
+		boolean newsetting = useBox.isSelected();
+		boolean oldsetting = ConfigurationManager.getConfiguration().getApromoreUse();
 
-		if (changed) {
-			ConfigurationManager.getConfiguration().setApromoreUse(changed);
+		if (newsetting != oldsetting) {
+			ConfigurationManager.getConfiguration().setApromoreUse(newsetting);
 			JOptionPane
 					.showMessageDialog(
 							this,
@@ -151,7 +151,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 							Messages.getString("Configuration.Apromore.Dialog.Restart.Title"),
 							JOptionPane.INFORMATION_MESSAGE);
 		}
-
+		
 		if (ConfigurationManager.getConfiguration().isSetApromoreServers()) {
 			currentIndex = ConfigurationManager.getConfiguration()
 					.getCurrentApromoreIndex();
