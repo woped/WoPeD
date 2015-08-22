@@ -160,16 +160,17 @@ public class TemplateEngine {
 		Matcher matcher = pattern.matcher(strText);
 		
 		while(matcher.find()) {
-			
+				
 			String strFound = matcher.group();
+			
 			String strToFindInMessagesTable = strFound.replace("%%", "");
+			
 			if(Messages.exists(strToFindInMessagesTable)){
 				String strMessagesEntry = Messages.getString(strToFindInMessagesTable);
 		    	strText = strText.replaceAll(strFound, strMessagesEntry);
-		    }
-		    	    
-		}
-
+		    }	
+			
+		}	
 		return strText;
 	}
 	

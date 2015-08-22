@@ -186,7 +186,7 @@
         }
         this.getPeriodText= function(){
 
-            return this.period/60  + " hour(s)";
+            return this.period/60;
 
         }
     }
@@ -231,10 +231,10 @@
 
      		strPrint="<img class=\"PetriNetImage\" src=\"getrequest/?action=getImage\"></img>" +
      					"<table class=\"table\">"+
-     					"<tr><td>Runs</td>            <td>"+ SimStats.runs +"</td></tr>"+
-     					"<tr><td>Lambda</td>          <td>"+ SimStats.lambda +"</td></tr>"+
-     					"<tr><td>Queue</td>           <td>"+ SimStats.getQueueText()+"</td></tr>"+
-     					"<tr><td>Period</td>   <td>"+SimStats.getPeriodText()+" hour(s)</td></tr>"+
+     					"<tr><td>%%QuantAna.Simulation.NumRuns%%</td>            <td>"+ SimStats.runs +"</td></tr>"+
+     					"<tr><td>%%QuantAna.Simulation.Mean%%</td>          <td>"+ SimStats.lambda +"</td></tr>"+
+     					"<tr><td>%%QuantAna.Simulation.QueueingDiscipline%%</td>           <td>"+ SimStats.getQueueText()+"</td></tr>"+
+     					"<tr><td>%%QuantAna.Simulation.Period%%</td>   <td>"+SimStats.getPeriodText()+" hour(s)</td></tr>"+
      					"</table>"
 
             

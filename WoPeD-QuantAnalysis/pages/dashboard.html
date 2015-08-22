@@ -864,13 +864,19 @@ $(document).ready(function(){
 										"<tr>"+
 										"	<th></th>"+
 										//"	<th><p title=\"ThroughPut / FinishedCases)\">Delivery Adherence</p></th>"+
-										"	<th class=\"effen\"><p title=\"ProcServTime / ProcCompTime\">Efficiency</p></th>"+
-										"	<th class=\"fin\"><p title=\"Count of completetely finished cases during period\">%%QuantAna.Simulation.Details.FinishedCases%%</p></th>"+
+										"	<th class=\"effen\"><p title=\"%%QuantAna.Simulation.Details.ProcServiceTime%% /"+
+										" %%QuantAna.Simulation.Details.ProcCompletionTime%%\">" + 
+										" %%QuantAna.Simulation.Footer.Efficiency%%</p></th>"+
+										"	<th class=\"fin\"><p title=\"%%QuantAna.Simulation.Details.FinishedCases%%\">"+
+										"%%QuantAna.Simulation.Details.FinishedCases%%</p></th>"+
 										
 										//"	<th>Duration</th>"+
-										"	<th class=\"com\"><p title=\"Custom tooltip text.\">Completion Time</p></th>"+
-										"	<th class=\"throAbs\"><p title=\"Custom tooltip text.\">Absolute Throughput</p></th>"+
-										"	<th class=\"thro\"><p title=\"FinishedCases /  lambda\">%%QuantAna.Simulation.Details.Throughput%%</p></th>"+
+										"	<th class=\"com\"><p title=\"%%QuantAna.CapacityPlanning.Column.AggregateTime%%\">"+
+										"%%QuantAna.CapacityPlanning.Column.AggregateTime%%</p></th>"+
+										"	<th class=\"throAbs\"><p title=\"%%QuantAna.Simulation.Details.Throughput%%\">"+
+										"%%QuantAna.Simulation.Details.Throughput%%</p></th>"+
+										"	<th class=\"thro\"><p title=\"%%QuantAna.Simulation.Details.FinishedCases%% / "+
+										"%%QuantAna.Simulation.Mean%%\">rel. %%QuantAna.Simulation.Details.Throughput%%</p></th>"+
 										"</tr>"+
 										"<tr>"+
 										"	<td></td>"+
