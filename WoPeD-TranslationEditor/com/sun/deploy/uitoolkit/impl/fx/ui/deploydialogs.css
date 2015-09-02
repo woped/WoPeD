@@ -1,0 +1,538 @@
+.multiline-text {
+    -fx-padding: 8;
+}
+
+.default-preloader {
+    -fx-background-color: white;
+    -fx-text-fill: #555659;
+}
+
+.default-preloader .progress-bar {
+    -fx-skin: "com.sun.deploy.uitoolkit.impl.fx.FXProgressBarSkin";
+    -fx-background-color: transparent;
+}
+
+.default-preloader .progress-bar .bar {
+    -fx-background-color:
+        linear-gradient(from 0% 100% to 100% 100%,
+               #03337E, #054BB8 10%, #054BB8 40%, #0660EB 46%,
+               #0660EB 54%, #054BB8 60%, #054BB8 90%, #03337E),
+        radial-gradient(center 50% 50%, radius 70%, rgba(255, 255, 255, 0.25), transparent);
+        /* Note: Highlight gradients and vertical lines are added in
+	   the skin code, as they need management of width and height */
+    -fx-background-insets: 0, 0;
+    -fx-padding: 7 0 7 0;
+}
+
+.default-preloader .progress-bar .track {
+     -fx-background-color:
+        linear-gradient(rgba(189, 189, 189, 0.84), rgba(66, 66, 66, 0.7) 41%,
+                     rgba(0, 0, 0, 0.0) 50%, rgba(127, 127, 127, 1.0));
+    -fx-border-color: rgba(66, 66, 66, 0.55);
+    -fx-opacity: 0.3;
+}
+
+.progress-label {
+    -fx-font: 11pt "Amble Cn";
+}
+
+.hyperlink {
+    -fx-text-fill: #214f83;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #c06600;
+}
+
+
+/**** Window buttons: Close, Minimize, Maximize ****/
+
+.window-button {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ButtonSkin";
+    -fx-background-color: transparent transparent;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 2;
+    -fx-padding: 0 0 0 0;
+    -fx-alignment: center;
+}
+
+.decorated-root:active .window-button:hover {
+    -fx-background-color: linear-gradient(#505050,#2d2d2d),
+                          linear-gradient(#a3a3a3, #8b8b8b 34%, #777777 36%, #777777 63%, #8b8b8b 65%, #adadad);
+}
+
+.window-button:pressed {
+    -fx-background-color: linear-gradient(#515151,#202020),
+                          linear-gradient(#a3a3a3, #8b8b8b 34%, #777777 36%, #777777 63%, #8b8b8b 65%, #adadad);
+}
+
+.window-button .graphic {
+    -fx-background-color: #949494;
+    -fx-scale-shape: false;
+    -fx-padding: 4.5 4.5 4.5 4.5; /* Graphic is 9x9 px */
+}
+
+.decorated-root:active .window-button:hover .graphic {
+    -fx-background-color: #fefeff;
+}
+
+.window-button:pressed .graphic {
+    -fx-background-color: #cfcfcf;
+}
+
+#window-close-button .graphic {
+    -fx-shape: "M395.992,296.758l1.794-1.794l7.292,7.292l-1.795,1.794 L395.992,296.758z M403.256,294.992l1.794,1.794l-7.292,7.292l-1.794-1.795 L403.256,294.992z";
+}
+
+/* used in updated security dialogs */
+#window-black-close-button .graphic {
+    -fx-shape: "M395.992,296.758l1.794-1.794l7.292,7.292l-1.795,1.794 L395.992,296.758z M403.256,294.992l1.794,1.794l-7.292,7.292l-1.794-1.795 L403.256,294.992z";
+    -fx-background-color: black;
+}
+
+#window-minimize-button .graphic {
+    -fx-shape: "M420.012,299.248v2.537h-9.001v-2.537H420.012z";
+}
+
+#window-maximize-button .graphic {
+    -fx-shape: "M406.283,294.985h2.537v9.031h-2.538L406.283,294.985z M412.012,298.248v2.537h-9.001v-2.537H412.012z";
+}
+
+
+.decorated-root {
+    -fx-padding: -1;
+    -fx-border-insets: 0 10 10 0;
+    -fx-border-width: 2;
+    -fx-border-radius: 5 5 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 11, 0.0, 3, 3);
+    -fx-border-color: #a3a3a3;
+}
+
+.decorated-root:active {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 11, 0.0, 3, 3);
+    -fx-border-color: #3e3e3e;
+}
+
+#window-header {
+    -fx-padding: 3 3 0 8;
+    -fx-background-color: linear-gradient(#cccccc, #bababa 37%, #a6a6a6);
+    -fx-background-radius: 5 5 0 0;
+}
+
+.decorated-root:active #window-header {
+    -fx-background-color: linear-gradient(#595959, #474747 37%, #343434);
+}
+
+#window-title {
+    -fx-padding: 2 0 0 0;
+    -fx-alignment: center;
+    -fx-font: 15px "Amble Cn";
+    -fx-text-fill: #808080;
+}
+
+.decorated-root:active #window-title {
+    -fx-text-fill: #ebebeb;
+}
+
+#window-resize-corner {
+    -fx-fill: transparent;
+    -fx-cursor: se_resize;
+}
+
+
+.ssv-small-label {
+    -fx-font-size: 0.833333em; /* Two px less than default */
+}
+
+.ssv-small-bold-label {
+    -fx-font-size: 0.833333em; /* Two px less than default */
+    -fx-font-weight: bold;
+}
+
+.ssv-bold-label {
+    -fx-font-weight: bold;
+}
+
+.ssv-big-bold-label {
+    -fx-font-size: 1.166667em; /* Two px more than default */
+    -fx-font-weight: bold;
+}
+
+#content-pane {
+    -fx-background-color: #eeeeee;
+    -fx-text-fill: #292929;
+}
+
+/* DialogTemplate etc. */
+#top-panel {
+    -fx-padding: 10 14 10 14;
+    -fx-background-color: linear-gradient(#e2e2e2,#e2e2e2,#eeeeee);
+}
+
+#masthead-label-1 {
+    -fx-font: 15px "Amble Cn";
+    -fx-wrap-text: true;
+}
+
+#masthead-label-2 {
+    -fx-font: 15px "Amble Cn";
+    -fx-wrap-text: true;
+    -fx-text-fill: #646464;
+}
+
+#center-panel {
+    -fx-padding: 16 16 14 28;
+    -fx-spacing: 14;
+    -fx-background-color: linear-gradient(#ffffff,#f3f3f4);
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: #b4b4b4 white #b4b4b4 white;
+    -fx-font: 13px "Amble Cn";
+}
+
+#center-panel-grid {
+    -fx-hgap: 12;
+    -fx-vgap: 14;
+}
+
+#center-bottom-button-bar {
+    -fx-padding: 0;
+}
+
+#error-panel {
+    -fx-padding: 18 14 6 14;
+    -fx-background-color: linear-gradient(#ffffff,#f3f3f4);
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: #b4b4b4 white white white;
+}
+
+#bottom-panel {
+    -fx-padding: 14 14 14 14;
+    -fx-spacing: 14;
+    -fx-background-color: linear-gradient(#eeeeee,#e2e2e2,#e2e2e2);
+    -fx-alignment: center-left;
+}
+
+#bottom-text {
+    -fx-font: 11px "Amble Cn";
+    -fx-text-fill: #646464;
+    -fx-wrap-text: true;
+    -fx-alignment: center left;
+}
+
+#bottom-more-info-link {
+    -fx-font: 11px "Amble Cn";
+    -fx-alignment: center left;
+}
+
+#user-name-label {
+    -fx-font: bold 11px "Amble Cn";
+}
+
+/* These id's don't have any specific styles yet. Uncomment as needed.
+#user-name-field {
+}
+
+#more-info-text-block {
+}
+
+#info-panel-text {
+}
+
+
+#cache-upgrade-content {
+}
+*/
+#center-content-area {
+    -fx-wrap-text: true;
+}
+
+#password-panel {
+    -fx-padding: 11 11 6 11;
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #ffffff, #f3f3f4);
+}
+
+#password-panel-grid {
+    -fx-hgap: 12;
+    -fx-vgap: 6;
+}
+
+#password-details {
+    -fx-font: bold 11px "Amble Cn";
+}
+
+#password-label {
+    -fx-font: bold 11px "Amble Cn";
+}
+
+#password-domain-label {
+    -fx-font: bold 11px "Amble Cn";
+}
+
+#password-always-checkbox {
+    -fx-font: bold 11px "Amble Cn";
+}
+
+#password-button-bar {
+    -fx-padding: 0;
+}
+
+#dialog-name-label {
+    -fx-font: bold 13px "Amble Cn";
+    -fx-alignment: center right;
+}
+
+#dialog-name-value {
+    -fx-font: 13px "Amble Cn";
+}
+
+#dialog-publisher-label {
+    -fx-font: bold 13px "Amble Cn";
+    -fx-alignment: center right;
+}
+
+#dialog-publisher-value {
+    -fx-font: 13px "Amble Cn";
+}
+
+#dialog-from-label {
+    -fx-font: bold 13px "Amble Cn";
+    -fx-alignment: center right;
+}
+
+#dialog-from-value {
+    -fx-font: 13px "Amble Cn";
+}
+
+#detail-panel {
+    -fx-padding: 0 0 4 0;
+}
+
+#detail-panel-top-pane {
+    -fx-padding: 0 0 8 0;
+    -fx-spacing: 8;
+}
+
+#error-dialog-error-label {
+    -fx-font: bold 15px "Amble Cn";
+}
+
+#detail-panel-msg0 {
+    -fx-font: 15px "Amble Cn";
+}
+
+#more-info-dialog {
+    -fx-background-color: #eeeeee;
+    -fx-padding: 15 18 8 18;
+}
+
+#more-info-dialog-button-panel {
+    -fx-padding: 12 0 12 12;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+#detail-panel-tab-pane *.tab-header-area {
+    -fx-padding: 0 0 0 0;
+}
+
+#detail-panel-tab-pane *.scroll-pane {
+    -fx-background-color: -fx-box-border, white;
+}
+
+#console-dialog-button-bar {
+    -fx-background-color: #dedede;
+    -fx-border-color: #c0c0c0 transparent transparent transparent;
+}
+
+.button-bar {
+    -fx-alignment: center-right;
+    -fx-padding: 8 8 8 8;
+}
+
+
+#about-dialog-top-panel {
+    -fx-background-color: white;
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: #b4b4b4;
+}
+
+#about-dialog-center-panel {
+    -fx-background-color: transparent;
+    -fx-padding: 8 8 8 8;
+}
+
+#about-dialog-text-area {
+    -fx-background-color: transparent;
+    -fx-border-width: 0px;
+    -fx-border-style: none;
+}
+
+#about-dialog-button-bar {
+    -fx-background-color: #dedede;
+    -fx-border-color: #c0c0c0 transparent transparent transparent;
+}
+
+#info-panel {
+    -fx-padding: 20 12 20 12;
+}
+
+#ssv-top-panel-name-label {
+    -fx-padding: 0 16 0 16;
+}
+
+#ssv-top-panel-from-label {
+    -fx-padding: 0 16 0 16;
+}
+
+/* Updated security dialogs */
+#security-content-panel {
+    -fx-background-color: linear-gradient(#ffffff,#e2e2e2);
+    -fx-padding: 0 0 16 24;
+    -fx-font: 12px "Amble Cn";
+}
+
+/* security dialogs - top panel */
+#security-name-label {
+    -fx-font: bold 12px "Amble Cn";
+}
+
+#security-publisher-label {
+    -fx-font: bold 12px "Amble Cn";
+}
+
+#security-from-label {
+    -fx-font: bold 12px "Amble Cn";
+}
+
+#security-name-value {
+    -fx-font: bold 14px "Amble Cn";
+}
+
+#security-masthead-label {
+    -fx-font: bold 15px "Amble Cn";
+    -fx-padding: 16 0 16 0;
+}
+
+#security-top-icon-label {
+    -fx-padding: 8 16 8 8;
+}
+
+#security-top-labels-grid {
+    -fx-hgap: 10;
+    -fx-vgap: 12;
+    -fx-padding: 0 16 0 0;
+}
+
+/* security dialogs - center panel */
+#security-risk-panel {
+    -fx-padding: 16 16 16 0;
+}
+
+#security-risk-label {
+    -fx-font: bold 12px "Amble Cn";
+}
+
+#security-risk-value {
+    -fx-wrap-text: true;
+}
+
+#security-accept-risk-panel {
+    -fx-padding: 8 16 8 24;
+}
+
+#security-always-trust-checkbox {
+    -fx-padding: 8 0 0 24;
+}
+
+/* security dialogs - bottom panel */
+#security-bottom-panel {
+    -fx-padding: 24 24 8 0;
+    -fx-alignment: center-left;
+}
+
+#yellow-warning-pane {
+    -fx-padding: 8 8 8 8;
+    -fx-background-color: #FFFCC4;
+    -fx-border-color: #D4C15A;
+    -fx-border-radius: 4 4 4 4;
+    -fx-background-radius: 4 4 4 4;
+    -fx-spacing: 4;
+}
+
+#security-expand-button {
+    -fx-padding: 0 0 0 0;
+    -fx-background-color: transparent transparent;
+    -fx-alignment: center-left;
+}
+
+.security-button-bar {
+    -fx-alignment: center-right;
+    -fx-spacing: 8;
+    -fx-padding: 0 0 0 0;
+}
+
+#security-more-info-panel {
+    -fx-padding: 0 0 0 8;
+}
+
+#security-expired-label {
+    -fx-alignment: center-left;
+}
+
+#security-more-info-link {
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 0;
+}
+
+/* ssv3 settings */
+/* -fx-padding: top right bottom left */
+
+
+/* main content panel */
+#ssv3-content-panel {
+    -fx-background-color: linear-gradient(#ffffff,#e2e2e2);
+    -fx-padding: 0 15 23 24;
+    -fx-font: 12px "Amble Cn";
+}
+
+#security-masthead-label {
+    -fx-font: bold 17px "Amble Cn";
+    /*-fx-padding: 16 0 16 0;*/
+}
+
+#ssv3-main-text {
+    -fx-font: bold 14px "Amble Cn";
+}
+
+#ssv3-location-label-url {
+    -fx-padding: 8 0 0 0;
+}
+#ssv3-multi-click {
+    -fx-font: bold 13px "Amble Cn";
+    -fx-padding: 0 0 8 0;
+}
+
+#ssv3-checkbox {
+    -fx-padding: 0 0 8 0;
+}
+
+#ssv3-location-url {
+    -fx-wrap-text: false;
+    -fx-text-overrun: center-ellipsis;
+}
+
+#ssv3-prompt {
+    -fx-wrap-text: true;
+    -fx-padding: 12 0 12 0;
+    -fx-font: 13px "Amble Cn";
+    /*-fx-font: 12px "Amble Cn";*/
+}
+
+#ssv3-shield {
+    -fx-padding: 0 20 0 6
+}
+
+#ssv3-location-label {
+    -fx-font: bold 13px "Amble Cn";
+    -fx-padding: 0  6  0 16;
+}
+

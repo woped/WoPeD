@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="269.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.woped.messageeditor.controller.WorkspaceConfigurationController">
+   <children>
+      <ToolBar prefHeight="25.0" prefWidth="434.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <CheckBox fx:id="checkBoxSelectAll" mnemonicParsing="false" onAction="#handleSelectAllOnAction" prefHeight="17.0" prefWidth="193.0" text="%nomessage.checkbox.selectall" />
+         </items>
+      </ToolBar>
+      <ListView fx:id="listView" layoutY="24.0" prefHeight="205.0" prefWidth="434.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0" />
+      <Button layoutX="368.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleButtonCancel" prefHeight="25.0" prefWidth="95.0" text="%confirmation.cancel" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="307.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleButtonOK" prefHeight="25.0" prefWidth="85.0" text="%confirmation.ok" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="123.0" />
+   </children>
+</AnchorPane>

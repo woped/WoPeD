@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.woped.messageeditor.controller.NoExsistMessageStringController">
+   <top>
+      <ToolBar prefHeight="22.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <items>
+            <CheckBox fx:id="checkBoxSelectAll" disable="false" mnemonicParsing="false" onAction="#handleSelectAllOnAction" prefHeight="9.0" prefWidth="105.0" text="%nomessage.checkbox.selectall" />
+         </items>
+      </ToolBar>
+   </top>
+   
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER_RIGHT">
+        <items>
+        <Pane HBox.hgrow="ALWAYS" />
+          <Button fx:id="buttonCreateMessages" mnemonicParsing="false" onAction="#handleCreateMessageOnAction" text="%nomessage.button.create.message" />
+          <Button fx:id="buttonCancel" mnemonicParsing="false" onAction="#handleCancelOnAction" text="%nomessage.button.create.cancel" />
+        </items>
+      </ToolBar>
+   </bottom>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <ListView fx:id="listViewMessageStrings" prefHeight="158.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <ListView fx:id="listViewJavaUse" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Label prefHeight="17.0" prefWidth="194.0" text="%tabpan.in.java.lable" />
+               </items>
+            </ToolBar>
+         </center>
+      </BorderPane>
+   </center>
+   
+</BorderPane>

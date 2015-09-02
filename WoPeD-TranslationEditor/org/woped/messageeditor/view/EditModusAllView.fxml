@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Tooltip?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.woped.messageeditor.controller.EditModusAllViewController">
+   <children>
+      <TextField fx:id="messageString" layoutX="14.0" layoutY="28.0" prefHeight="25.0" prefWidth="396.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="28.0" />
+      <TextArea fx:id="textAreaMessageText" layoutX="14.0" layoutY="82.0" prefHeight="77.0" prefWidth="396.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="82.0" />
+      <Button fx:id="buttonOK" layoutX="242.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleOkOnAction" prefHeight="25.0" prefWidth="80.0" text="%confirmation.ok" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="102.0">
+      	<tooltip>
+      		<Tooltip text="%editModusAll.button.tooltip" />
+      	</tooltip>
+      </Button>
+      <Button fx:id="buttonCancel" layoutX="330.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleCancelOnAction" prefHeight="25.0" prefWidth="80.0" text="%confirmation.cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Label layoutX="14.0" layoutY="6.0" text="%message.text.Lable" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="6.0" />
+      <Label layoutX="14.0" layoutY="58.0" text="%message.text.Lable.messagetext" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="58.0" />
+   </children>
+</AnchorPane>

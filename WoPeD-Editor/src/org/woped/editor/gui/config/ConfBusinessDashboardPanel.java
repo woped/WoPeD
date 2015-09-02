@@ -78,17 +78,22 @@ public class ConfBusinessDashboardPanel extends AbstractConfPanel {
 	 * @see AbstractConfPanel#applyConfiguration()
 	 */
 	public boolean applyConfiguration() {
+		boolean newsetting = useByDefaultBox.isSelected();
+		boolean oldsetting = ConfigurationManager.getConfiguration().getBusinessDashboardUseByDefault();
+
+		if (newsetting != oldsetting) {
+
 			ConfigurationManager.getConfiguration().setBusinessDashboardServerPort(
 					Integer.parseInt(getServerPortText().getText()));
 			
 			ConfigurationManager.getConfiguration().setBusinessDashboardUseByDefault(
-					useByDefaultBox.isSelected());
-			
+					useByDefaultBox.isSelected());	
 			
 			ConfigurationManager.getConfiguration().setBusinessDashboardMaxValues(
 					Integer.parseInt(getMaxValuesText().getText()));
-			
-			return true;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -169,7 +174,7 @@ public class ConfBusinessDashboardPanel extends AbstractConfPanel {
 			settingsPanel.add(getUseByDefaultBox(),c);
 		}
 
-		//settingsPanel.setVisible(getUseBox().isSelected());
+//		settingsPanel.setVisible(getUseByDefaultBox().isSelected());
 		return settingsPanel;
 	}
 

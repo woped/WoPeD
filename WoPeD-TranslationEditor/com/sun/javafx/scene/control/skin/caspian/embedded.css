@@ -1,0 +1,245 @@
+/*
+ * Copyright (c) 2012, Oracle and/or its affiliates. All rights reserved. 
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER. 
+ *  
+ * This code is free software; you can redistribute it and/or modify it 
+ * under the terms of the GNU General Public License version 2 only, as 
+ * published by the Free Software Foundation.  Oracle designates this 
+ * particular file as subject to the "Classpath" exception as provided 
+ * by Oracle in the LICENSE file that accompanied this code. 
+ *  
+ * This code is distributed in the hope that it will be useful, but WITHOUT 
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License 
+ * version 2 for more details (a copy is included in the LICENSE file that 
+ * accompanied this code). 
+ *  
+ * You should have received a copy of the GNU General Public License version 
+ * 2 along with this work; if not, write to the Free Software Foundation, 
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA. 
+ *  
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA 
+ * or visit www.oracle.com if you need additional information or have any 
+ * questions.
+ *                                                                              
+ */
+
+/*******************************************************************************
+ *                                                                             *
+ * CSS Styles for embedded devices. These styles either override or            *
+ * supplement those in caspian.css                                             *
+ *                                                                             *
+ ******************************************************************************/
+
+/*******************************************************************************
+ *                                                                             *
+ * PopupMenu                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.context-menu .text-input-context-menu {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.context-menu .text-input-context-menu .button {
+    -fx-background-radius: 0;   
+    -fx-background-color: derive(-fx-color,-40%);
+    -fx-text-fill: white;
+}
+
+.context-menu .text-input-context-menu .pointer {    
+    -fx-background-color: derive(-fx-color,-40%);    
+    -fx-padding: 6px;
+    -fx-shape: "M 6 0 L 12 12 L 0 12 z";
+    -fx-scale-shape: true;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollBar                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.scroll-bar {
+    -fx-opacity: 50%;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: blue;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: blue;
+}
+
+.scroll-bar:horizontal .track {
+    -fx-background-color: skyblue;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: skyblue;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollPane                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.scroll-pane .corner {
+    -fx-background-color: skyblue;    
+}
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * TextField, PasswordField, TextArea                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.text-field {
+    -fx-padding: 6 5 6 5; /* Adding 3px to top and bottom for handles */
+}
+
+.text-area .content {
+    -fx-padding: 9 5 9 5; /* Adding 6px to top and bottom for handles */
+}
+
+
+.caret-handle {
+    -fx-background-color: transparent,
+                          black /*#ACACAC*/,
+                          linear-gradient(to bottom, #AFAFAF 0%, #DFDFDF 100%);
+    -fx-background-insets: -4 -18 -8 -18, 0, 1;
+    -fx-shape: "M11.974,2.579L20,12.358V20H4V12.356L11.974,2.579z";
+/*
+    -fx-shape: "M11.972,1L3,12v17h18V12L11.972,1L11.972,1z";
+    -fx-padding: 0.375em 0.291em 0.375em 0.291em;
+*/
+    -fx-padding: 0.32em 0.3em 0.32em 0.3em;
+    -fx-cursor: hand;
+}
+
+
+
+.selection-handle {
+    -fx-background-color: transparent,
+                          #0071bc /*-fx-accent*/,
+                          linear-gradient(to bottom, #0063AA 0%, #008AED 100%);
+    -fx-background-insets: -4 -18 -8 -18, 0, 1;
+    -fx-shape: "M10.974,2.579L19,12.358V20H3V12.356L10.974,2.579z";
+/*
+    -fx-shape: "M10.972,1L2,12v17h18V12L10.972,1L10.972,1z";
+    -fx-padding: 0.375em 0.291em 0.375em 0.291em;
+*/
+    -fx-padding: 0.32em 0.3em 0.32em 0.3em;
+    -fx-cursor: hand;
+}
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * Virtual Keyboard                                                            *
+ *                                                                             *
+ ******************************************************************************/
+.fxvk {
+    -fx-skin: "com.sun.javafx.scene.control.skin.FXVKSkin";
+    -fx-cursor: default;
+    -fx-background-color: #a1a1a1, #d7d7d7, #c2c2c2;
+    -fx-background-insets: 0, 1 0 0 0, 2 0 0 0;
+    -fx-padding: 8 4 10 4;
+}
+
+.fxvk #vbox {
+    -fx-spacing: 8;
+}
+
+.fxvk #hbox {
+    -fx-spacing: 8;
+}
+
+.fxvk-secondary {
+    -fx-background-color: #ffffff, #ededed;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.75), 8, 0.0, 0, 0);
+}
+
+.fxvk .key { 
+    -fx-background-color: #acacac,
+                          linear-gradient(to bottom, #f8f8f8, #acacac),
+                          linear-gradient(to bottom, #dedede, #acacac);
+    -fx-background-insets: 0, 1, 2;
+    -fx-font-weight: bold;
+    -fx-font: bold 36px "Amble";
+    -fx-text-fill: #333333;
+    -fx-padding: 3 3 5 0;
+    -fx-background-radius: 4;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.75), 2, 0.0, 0, 1);
+}
+
+.fxvk-portrait .key { 
+    -fx-padding: 3 0 5 0;
+}
+
+.fxvk .key:pressed { 
+    -fx-background-color: #464646,
+                          linear-gradient(to bottom, #e8e8e8, #9c9c9c),
+                          linear-gradient(to bottom, #c3c3c3, #888888);
+}
+
+.fxvk .multi-char-key { 
+    -fx-font: bold 20px "Amble";
+}
+
+.fxvk .key .label { 
+    -fx-text-fill: #959595;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: TOP_RIGHT;
+}
+
+.fxvk .multi-char-key .label { 
+    -fx-font-size: 12px;
+}
+
+.fxvk .special-key { 
+    -fx-background-color: linear-gradient(to bottom, #676767, #404040),
+                          linear-gradient(to bottom, #808080, #3e3e3e),
+                          linear-gradient(to bottom, #686868, #3e3e3e);
+    -fx-background-insets: 0, 1, 2;
+    -fx-font: bold 22px "Amble";
+    -fx-text-fill: white;
+    -fx-padding: 3 0 5 0;
+}
+
+.fxvk .special-key:disabled { 
+    -fx-background-color: #707070;
+}
+
+/* The url based images don't load properly. Using workaround in FXVKSkin instead.
+.fxvk #shift-key {
+    -fx-graphic: url("fxvk-shift-button.png");
+}
+
+.fxvk #capslock-key {
+    -fx-graphic: url("fxvk-capslock-button.png");
+}
+
+.fxvk #shift-key:disabled {
+    -fx-graphic: null;
+}
+
+.fxvk #backspace-key {
+    -fx-graphic: url("fxvk-backspace-button.png");
+}
+
+.fxvk #enter-key {
+    -fx-graphic: url("fxvk-enter-button.png");
+}
+*/
+

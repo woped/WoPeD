@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.woped.messageeditor.scene.control.MessageTextAreaField?>
+
+<?scenebuilder-preview-i18n-resource Messages.properties?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.woped.messageeditor.controller.MainViewController">
+   <top>
+      <MenuBar fx:id="menu" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="menuFile" mnemonicParsing="true" text="%menu.file">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleNewFileOnAction" text="%menu.file.new" />
+              <MenuItem mnemonicParsing="true" onAction="#handleOpenAction" text="%menu.file.open" />
+              <MenuItem mnemonicParsing="false" onAction="#handleSaveAction" text="%menu.file.save" />
+              <MenuItem mnemonicParsing="false" onAction="#handleSaveAsAction" text="%menu.file.saveas" />
+              <MenuItem mnemonicParsing="false" onAction="#handleCloseAction" text="%menu.file.close" />
+              <SeparatorMenuItem />
+              <MenuItem mnemonicParsing="false" onAction="#handleConnectWorkspaceAction" text="%menu.file.connect" />
+              <MenuItem fx:id="disconnectWorkspace" mnemonicParsing="false" onAction="#handleDisconnectWorkspaceAction" text="%menu.file.disconnect" disable="true" />
+              <SeparatorMenuItem />
+              <MenuItem mnemonicParsing="false" onAction="#handleExitAction" text="%menu.file.exit" />
+            </items>
+          </Menu>
+          <Menu text="%menu.edit">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="%menu.edit.new" />
+              <MenuItem mnemonicParsing="false" onAction="#handleDeleteAction" text="%menu.edit.delete" />
+            </items>
+          </Menu>
+          <Menu text="%menu.preferences">
+            <items>
+                  <RadioMenuItem fx:id="menuPreferencesEnglish" mnemonicParsing="false" onAction="#handleSetEnglishAction" text="%menu.preferences.english" />
+                  <RadioMenuItem fx:id="menuPreferencesGerman" mnemonicParsing="false" onAction="#handleSetGermanAction" text="%menu.preferences.german" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleWorkspaceSettingsAction" text="%menu.preferences.workspace" />
+            </items>
+          </Menu>
+          <Menu text="%menu.help">
+            <items>
+              <MenuItem disable="true" text="Search" />
+              <MenuItem text="Online Manual" visible="false" />
+              <SeparatorMenuItem />
+              <MenuItem onAction="#handleAboutAction" text="%menu.help.about" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <ToolBar prefHeight="30.0" prefWidth="898.0" BorderPane.alignment="CENTER">
+              <items>
+                  <MenuButton fx:id="newButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#handleNewMessageOnAction" text="%button.neu.message" />
+                       
+                      <MenuItem mnemonicParsing="false" onAction="#handleNewFileOnAction" text="%button.neu.file" />
+                    </items>
+                     <graphic>
+                        <ImageView fitHeight="13.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@new.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuButton>
+                  <Button fx:id="saveButton" mnemonicParsing="true" onAction="#handleSaveAction" prefHeight="15.0" prefWidth="19.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@save.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+        						<Tooltip text="%button.tooltip.save" />
+    					  </tooltip>
+                  </Button>
+                  <Button fx:id="saveAsButton" mnemonicParsing="false" onAction="#handleSaveAsAction" prefHeight="15.0" prefWidth="19.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@save_as.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                           <tooltip>
+        						<Tooltip text="%button.tooltip.saveas" />
+    					  </tooltip>
+                  </Button>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteAction" prefHeight="15.0" prefWidth="19.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@remove.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                           <tooltip>
+        						<Tooltip text="%button.tooltip.delete" />
+    					  </tooltip>
+                  </Button>
+                 <Button fx:id="buttonEditModus" mnemonicParsing="false"  onAction="#handleEditModusAll">
+                	 <graphic>
+                         <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@edit.gif" />
+                              </image>
+                           </ImageView>
+                      </graphic>
+                      <tooltip>
+       						<Tooltip text="%button.tooltip.editModusAll" />
+   					  </tooltip>
+   				</Button>
+                   <Button fx:id="showNonExsistMessageString" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="15.0" prefWidth="19.0">
+                      <graphic>
+                         <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@search.png" />
+                              </image>
+                           </ImageView>
+                      </graphic>
+                      
+                      <tooltip>
+       						<Tooltip text="%button.tooltip.showNonExsistMessagStrings" />
+   					  </tooltip>
+                  </Button>
+                  <Button fx:id="htmlEditor" mnemonicParsing="false" onAction="#handleHTMLEditAction" prefHeight="15.0" prefWidth="19.0">
+                      <graphic>
+                         <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@html.png" />
+                              </image>
+                           </ImageView>
+                      </graphic>
+                      
+                      <tooltip>
+       						<Tooltip text="%button.tooltip.htmlEditor" />
+   					  </tooltip>
+                  </Button>
+                  <Pane HBox.hgrow="ALWAYS"/>
+                  <TextField fx:id="searchField" prefHeight="25.0" prefWidth="260.0" promptText="search" />
+              </items>
+            </ToolBar>
+         </top>
+         <center>
+            <TableView fx:id="messageTableView" editable="true" prefHeight="621.0" prefWidth="898.0" BorderPane.alignment="CENTER">
+             <columnResizePolicy>
+            	 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+           	 </columnResizePolicy>
+            </TableView>
+         </center>
+      </BorderPane>
+   </center>
+   <bottom>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <TabPane fx:id="tabpane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab fx:id="tabJavaUse" text="%tabpan.in.java.use">
+                     <content>
+                        <ListView fx:id="tableViewInJavaUse" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                <Tab fx:id="tabEditor" text="%tabpane.message.edit">
+                     <content>
+                        <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="109.0" prefWidth="446.0">
+                                 <children>
+                                    <Label fx:id="messageDescriptionLabel" prefHeight="26.0" prefWidth="446.0" text="%message.description.Lable" />
+                                    <TextArea fx:id="messageDescriptionText" layoutX="1.0" layoutY="24.0" prefHeight="135.0" prefWidth="449.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0" />
+                                 </children>
+                           </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <Label fx:id="messageTextLabel" layoutX="1.0" prefHeight="24.0" prefWidth="445.0" text="%message.text.Lable" />
+                                    <CheckBox fx:id="checkboxEditModus" layoutX="300.0" layoutY="4.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="180.0"  text="%message.text.checkbox"  />
+                                    <MessageTextAreaField fx:id="messageTextArea"  prefHeight="135.0" prefWidth="428.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0" />
+                                 </children>
+                           </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+         <bottom>
+            <ToolBar prefHeight="24.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+               <Pane prefHeight="0.0" prefWidth="815.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="progressbarLable" layoutX="697.0" layoutY="-1.0" prefHeight="17.0" prefWidth="112.0" text="%progressbar.lable" visible="false" />
+                     </children>
+                </Pane>
+               <ProgressBar fx:id="progressbar" prefHeight="1.0" prefWidth="67.0" progress="0.0" />
+               </items>
+            </ToolBar>
+         </bottom>
+      </BorderPane>
+   </bottom>
+</BorderPane>
