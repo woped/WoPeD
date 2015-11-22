@@ -4,7 +4,6 @@ import java.awt.Container;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
-import java.net.ProxySelector;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,7 +35,6 @@ import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 import org.woped.config.ApromoreServer;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.gui.images.svg.apromore_export;
 import org.woped.gui.translations.Messages;
 
 public class ApromoreAccess {

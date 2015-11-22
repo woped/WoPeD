@@ -22,28 +22,16 @@
  */
 package org.woped.editor.gui.config;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.woped.core.config.ConfigurationManager;
-import org.woped.editor.gui.config.ConfProcess2TextPanel.CheckboxListener;
-import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 /**

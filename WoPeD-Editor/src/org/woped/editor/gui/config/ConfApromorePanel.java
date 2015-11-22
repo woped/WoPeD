@@ -74,7 +74,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private JPanel proxyPanel = null;
 
 	// Boxes
-	private JComboBox serverComboBox = null;
+	private JComboBox<String> serverComboBox = null;
 	private JCheckBox useBox = null;
 	private JCheckBox useProxyBox = null;
 
@@ -123,8 +123,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private int apromoreServerID;
 	private int selected;
 	private boolean nameAlreadyInUse = false;
-	private boolean changed;
-
+	
 	/**
 	 * Constructor for ConfToolsPanel.
 	 */
@@ -474,14 +473,14 @@ public class ConfApromorePanel extends AbstractConfPanel {
 
 	// Boxes
 
-	private JComboBox getServersComboBox() {
+	private JComboBox<String> getServersComboBox() {
 
 		if (serverComboBox == null) {
 			if (!ConfigurationManager.getConfiguration().isSetApromoreServers()) {
 				String[] serverNames = new String[1];
 				serverNames[0] = ConfigurationManager.getConfiguration()
 						.getApromoreServerName();
-				serverComboBox = new JComboBox(serverNames);
+				serverComboBox = new JComboBox<String>(serverNames);
 				serverComboBox.setPreferredSize(new Dimension(500, 25));
 				serverComboBox.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -496,7 +495,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 				for (int i = 0; i < servers.length; i++) {
 					serverBoxItems[i] = servers[i].getApromoreServerName();
 				}
-				serverComboBox = new JComboBox(serverBoxItems);
+				serverComboBox = new JComboBox<String>(serverBoxItems);
 				serverComboBox.setPreferredSize(new Dimension(500, 25));
 				serverComboBox.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -1195,7 +1194,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		for (int i = 0; i < servers.length; i++) {
 			serverBoxItems[i] = servers[i].getApromoreServerName();
 		}
-		serverComboBox.setModel(new DefaultComboBoxModel(serverBoxItems));
+		serverComboBox.setModel(new DefaultComboBoxModel<String>(serverBoxItems));
 	}
 
 	private void updateServerComboBoxAfterChange() {
@@ -1204,7 +1203,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		for (int i = 0; i < servers.length; i++) {
 			serverBoxItems[i] = servers[i].getApromoreServerName();
 		}
-		serverComboBox.setModel(new DefaultComboBoxModel(serverBoxItems));
+		serverComboBox.setModel(new DefaultComboBoxModel<String>(serverBoxItems));
 		serverComboBox.setSelectedIndex(selected);
 	}
 
@@ -1216,7 +1215,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		for (int i = 0; i < servers.length; i++) {
 			serverBoxItems[i] = servers[i].getApromoreServerName();
 		}
-		serverComboBox.setModel(new DefaultComboBoxModel(serverBoxItems));
+		serverComboBox.setModel(new DefaultComboBoxModel<String>(serverBoxItems));
 		serverComboBox.setSelectedIndex(selected);
 	}
 
@@ -1227,7 +1226,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		for (int i = 0; i < servers.length; i++) {
 			serverBoxItems[i] = servers[i].getApromoreServerName();
 		}
-		serverComboBox.setModel(new DefaultComboBoxModel(serverBoxItems));
+		serverComboBox.setModel(new DefaultComboBoxModel<String>(serverBoxItems));
 		serverComboBox.setSelectedIndex(servers.length - 1);
 	}
 

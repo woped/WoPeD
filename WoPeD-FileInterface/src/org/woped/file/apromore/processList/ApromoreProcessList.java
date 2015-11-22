@@ -1,21 +1,17 @@
 package org.woped.file.apromore.processList;
 
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -26,8 +22,6 @@ import net.coderazzi.filters.gui.TableFilterHeader;
 
 import org.woped.apromore.ApromoreAccess;
 import org.woped.apromore.Constants;
-import org.woped.config.ApromoreServer;
-import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
@@ -51,8 +45,6 @@ public class ApromoreProcessList {
 
 	private JDialog frame = null;
 	private JCheckBox beautifyCheckBox = null;
-
-	private JComboBox<String> serverDropdown = null;
 
 	private AbstractApplicationMediator mediator = null;;
 	private ApromoreAccess aproAccess = null;
@@ -80,9 +72,7 @@ public class ApromoreProcessList {
 		int ind = table.getSelectedRow();
 		try {
 			if (ind != -1) {
-				String processName = (String) table.getModel().getValueAt(ind,
-						0);
-				PNMLImport pLoader = new PNMLImport(mediator);
+				new PNMLImport(mediator);
 			} else {
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Apromore.UI.Error.NoRowSelected"),
@@ -90,7 +80,7 @@ public class ApromoreProcessList {
 						JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
-			ByteArrayInputStream is = aproAccess.importProcess(ind);
+			aproAccess.importProcess(ind);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					Messages.getString("Apromore.UI.Error.Import"),
@@ -108,7 +98,7 @@ public class ApromoreProcessList {
 		int ind = table.getSelectedRow();
 		try {
 			if (ind != -1) {
-				String processName = (String) table.getModel().getValueAt(ind,
+				String processName = (String) table.getModel().getValueAt(ind + 1,
 						0);
 				PNMLImport pLoader = new PNMLImport(mediator);
 				ByteArrayInputStream is = aproAccess.importProcess(ind);
@@ -150,11 +140,8 @@ public class ApromoreProcessList {
 		int ind = table.getSelectedRow();
 		try {
 			if (ind != -1) {
-				String processName = (String) table.getModel().getValueAt(ind,
-						0);
-				PNMLImport pLoader = new PNMLImport(mediator);
-				ByteArrayInputStream is = aproAccess.importProcess(ind);
-
+				new PNMLImport(mediator);
+				aproAccess.importProcess(ind);
 			} else {
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Apromore.UI.Error.NoRowSelected"),
