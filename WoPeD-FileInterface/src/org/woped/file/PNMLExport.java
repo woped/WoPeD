@@ -40,7 +40,6 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 import org.apache.xmlbeans.XmlCursor;
-import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -69,6 +68,7 @@ import org.woped.editor.controller.bpel.Receive;
 import org.woped.editor.controller.bpel.Reply;
 import org.woped.editor.controller.bpel.Wait;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.gui.translations.Messages;
 import org.woped.pnml.AnnotationGraphisType;
 import org.woped.pnml.ArcNameType;
 import org.woped.pnml.ArcToolspecificType;
@@ -79,6 +79,7 @@ import org.woped.pnml.GraphicsNodeType;
 import org.woped.pnml.GraphicsSimpleType;
 import org.woped.pnml.NetToolspecificType;
 import org.woped.pnml.NetType;
+import org.woped.pnml.NetType.Page;
 import org.woped.pnml.NodeNameType;
 import org.woped.pnml.OccuredtransitionType;
 import org.woped.pnml.OperatorType;
@@ -105,8 +106,6 @@ import org.woped.pnml.TransitionToolspecificType;
 import org.woped.pnml.TransitionType;
 import org.woped.pnml.TransitionsequenceType;
 import org.woped.pnml.TriggerType;
-import org.woped.pnml.NetType.Page;
-import org.woped.gui.translations.Messages;
 
 /** 
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -202,7 +201,7 @@ public class PNMLExport
     private void createJavaBeansInstances(EditorVC editor)
     {
         ModelElementContainer elementContainer = editor.getModelProcessor().getElementContainer();
-        PetriNetModelProcessor petrinetModel = (PetriNetModelProcessor) editor.getModelProcessor();
+        PetriNetModelProcessor petrinetModel = editor.getModelProcessor();
         pnmlDoc = PnmlDocument.Factory.newInstance();
         PnmlType iPnml = pnmlDoc.addNewPnml();
 
@@ -301,7 +300,7 @@ public class PNMLExport
 
             for (Iterator<ResourceModel> iter = petrinetModel.getResources().iterator(); iter.hasNext();)
             {
-                rModelTemp = (ResourceModel) iter.next();
+                rModelTemp = iter.next();
                 iResourceType = iNetResources.addNewResource();
                 iResourceType.setName(rModelTemp.getName());
                 for (int i = 0; i < statusBars.length; i++)
@@ -313,7 +312,7 @@ public class PNMLExport
             ResourceClassModel roleModelTemp;
             for (Iterator<ResourceClassModel> iter = petrinetModel.getRoles().iterator(); iter.hasNext();)
             {
-                roleModelTemp = (ResourceClassModel) iter.next();
+                roleModelTemp = iter.next();
                 iRoleType = iNetResources.addNewRole();
                 iRoleType.setName(roleModelTemp.getName());
                 if(roleModelTemp.getSuperModels()!= null){
@@ -332,7 +331,7 @@ public class PNMLExport
             ResourceClassModel orgunitModelTemp;
             for (Iterator<ResourceClassModel> iter = petrinetModel.getOrganizationUnits().iterator(); iter.hasNext();)
             {
-                orgunitModelTemp = (ResourceClassModel) iter.next();
+                orgunitModelTemp = iter.next();
                 iOrganizationUnitType = iNetResources.addNewOrganizationUnit();
                 iOrganizationUnitType.setName(orgunitModelTemp.getName());
                 if(orgunitModelTemp.getSuperModels()!=null){
@@ -350,7 +349,7 @@ public class PNMLExport
             ResourceMappingType iNetResourceMap;            
             for (Iterator<String> iter = petrinetModel.getResourceMapping().keySet().iterator();iter.hasNext();)
             {
-                String tempResourceClass = (String) iter.next();
+                String tempResourceClass = iter.next();
                 Vector<String> values = petrinetModel.getResourceMapping().get(tempResourceClass);
                 // TODO check if mapping exists NullPointerExeption bei
                 // speicherung ge�nderter orgUnit die keine zugeordnete Resource
@@ -448,7 +447,7 @@ public class PNMLExport
         Iterator<AbstractPetriNetElementModel> root2Iter = elementContainer.getRootElements().iterator();
         while (root2Iter.hasNext())
         {
-            AbstractPetriNetElementModel currentModel = (AbstractPetriNetElementModel) root2Iter.next();
+            AbstractPetriNetElementModel currentModel = root2Iter.next();
             /* ##### PLACES ##### */
             if (currentModel.getType() == AbstractPetriNetElementModel.PLACE_TYPE)
             {
@@ -522,7 +521,7 @@ public class PNMLExport
                 Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
                 while (simpleTransIter.hasNext())
                 {
-                    AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter.next();
+                    AbstractPetriNetElementModel simpleTransModel = simpleTransIter.next();
                     if (simpleTransModel != null // Sometimes the iterator
                             // returns null...
                             && operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId()).getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
@@ -554,8 +553,8 @@ public class PNMLExport
         while (arcIter.hasNext())
         {
             ArcModel currentArc = elementContainer.getArcById(arcIter.next());
-            AbstractPetriNetElementModel currentTargetModel = (AbstractPetriNetElementModel) elementContainer.getElementById(currentArc.getTargetId());
-            AbstractPetriNetElementModel currentSourceModel = (AbstractPetriNetElementModel) elementContainer.getElementById(currentArc.getSourceId());
+            AbstractPetriNetElementModel currentTargetModel = elementContainer.getElementById(currentArc.getTargetId());
+            AbstractPetriNetElementModel currentSourceModel = elementContainer.getElementById(currentArc.getSourceId());
             // Remember either source or target if it is a transition
             // Please note that one special condition of petri nets is that
             // a transition is never directly connected to another transition
@@ -592,7 +591,7 @@ public class PNMLExport
         	while (innerArcIter.hasNext())
         	{
            		// Dump all inner arcs of connected transitions
-        		ArcModel currentInnerArc = (ArcModel) currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
+        		ArcModel currentInnerArc = currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
         		// Find outer arc corresponding to inner arc
         		// (carries graphics information)
         		ArcModel currentOuterArc = null;
@@ -732,15 +731,15 @@ public class PNMLExport
         }
         if (Invoke.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TInvoke iInvoke = iToolspecific.addNewInvoke();
-        	iInvoke.set((XmlObject)((Invoke)currentModel.getBpelData()).getActivity());
+        	iInvoke.set(((Invoke)currentModel.getBpelData()).getActivity());
         }
         if (Receive.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TReceive iReceive = iToolspecific.addNewReceive();
-        	iReceive.set((XmlObject)((Receive)currentModel.getBpelData()).getActivity());
+        	iReceive.set(((Receive)currentModel.getBpelData()).getActivity());
         }
         if (org.woped.editor.controller.bpel.Reply.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TReply iReply = iToolspecific.addNewReply();
-        	iReply.set((XmlObject)((Reply)currentModel.getBpelData()).getActivity());
+        	iReply.set(((Reply)currentModel.getBpelData()).getActivity());
         }
         if (org.woped.editor.controller.bpel.Wait.class.isInstance(currentModel.getBpelData())){
         	org.woped.pnml.TWait iWait = iToolspecific.addNewWait();

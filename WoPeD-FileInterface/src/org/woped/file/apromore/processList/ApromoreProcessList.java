@@ -64,7 +64,6 @@ public class ApromoreProcessList {
 		this.aproAccess = aproAccess;
 		this.frame = frame;
 		this.mediator = mediator;
-
 	}
 
 	public boolean getModelFromServer(boolean beautify) {
@@ -90,7 +89,6 @@ public class ApromoreProcessList {
 
 		}
 		return beautify;
-
 	}
 
 	public boolean importAction(boolean beautify) {
@@ -114,7 +112,6 @@ public class ApromoreProcessList {
 					if (beautify) {
 						editor.startBeautify(0, 0, 0);
 					}
-
 				}
 			} else {
 				JOptionPane.showMessageDialog(null,
@@ -133,7 +130,6 @@ public class ApromoreProcessList {
 
 		}
 		return true;
-
 	}
 
 	public boolean getImportModelFromServer(boolean beautify) {
@@ -148,7 +144,7 @@ public class ApromoreProcessList {
 						Messages.getString("Apromore.UI.Error.Title"),
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-
+				
 			}
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null,
@@ -159,7 +155,6 @@ public class ApromoreProcessList {
 
 		}
 		return true;
-
 	}
 
 	public JScrollPane getScrollableProcessTable(boolean showPnmlOnly) {
@@ -197,14 +192,12 @@ public class ApromoreProcessList {
 			table.getColumnModel().getColumn(6).setMinWidth(0);
 			table.getColumnModel().getColumn(6).setMaxWidth(0);
 			table.getColumnModel().getColumn(6).setWidth(0);
-
 		}
 
 		ApplicationMediator.getDisplayUI().setCursor(
 				new Cursor(Cursor.DEFAULT_CURSOR));
 
 		return scrollableProcessTable;
-
 	}
 
 	@SuppressWarnings("serial")
@@ -214,6 +207,7 @@ public class ApromoreProcessList {
 			super(null, cols);
 		}
 
+		@Override
 		public boolean isCellEditable(int row, int column) {
 			return false;
 		}
@@ -232,7 +226,6 @@ public class ApromoreProcessList {
 		} catch (Exception e) {
 			return null;
 		}
-
 	}
 
 	public void setList(String rowData[][]) {
@@ -294,7 +287,6 @@ public class ApromoreProcessList {
 		pExport.saveToStream((EditorVC) mediator.getUi().getEditorFocus(), os);
 		aproAccess.updateProcess(id, username, nativeType, processName,
 				newVersionNumber, os);
-
 	}
 
 	public void updateTable(JTable table, Integer rowid, Integer processId) {
@@ -339,7 +331,6 @@ public class ApromoreProcessList {
 			e.printStackTrace();
 		}
 		return names;
-
 	}
 
 	public void addNewRow(JTable table) {
@@ -390,7 +381,6 @@ public class ApromoreProcessList {
 
 		filterHeader.addFilter(userFilter);
 		userFilter.setEnabled(true);
-
 	}
 
 }

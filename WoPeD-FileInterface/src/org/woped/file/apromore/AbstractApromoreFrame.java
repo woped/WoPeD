@@ -9,10 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -20,7 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import org.apromore.model.FolderType;
 import org.woped.apromore.ApromoreAccess;
 import org.woped.config.ApromoreServer;
 import org.woped.core.config.ConfigurationManager;
@@ -36,7 +33,7 @@ import org.woped.gui.translations.Messages;
 /**
  * Abstract Class for Apromore Im/Export- Frames
  * 
- * @author David Rah√§user Abstract Class-Template for Apromore In/Export
+ * @author David Rah‰user Abstract Class-Template for Apromore In/Export
  *
  */
 public abstract class AbstractApromoreFrame extends JDialog {
@@ -285,6 +282,7 @@ public abstract class AbstractApromoreFrame extends JDialog {
 			cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
 			cancelButton.setPreferredSize(new Dimension(130, 25));
 			cancelButton.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e) {
 					processList.cancelAction();
 				}
@@ -318,9 +316,11 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 		Thread queryThread = new Thread() {
 
+			@Override
 			public void run() {
 
 				SwingUtilities.invokeLater(new Runnable() {
+					@Override
 					public void run() {
 						AbstractApromoreFrame.this.getWopedPorgressBar()
 								.setIndeterminate(true);

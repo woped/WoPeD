@@ -624,9 +624,6 @@ public class YawlToPnmlTransform {
                 continue;
             }
 
-            String old_id = t_old.getId();
-
-
             // Generate an xor transition node that will act as an
             // entry point into our OR split construct. 
             // IMPORTANT: the transformXorSplits() call will have to
@@ -711,9 +708,6 @@ public class YawlToPnmlTransform {
                     || t_old.getSplitType() != Transition.JoinSplitType.None) {
                 continue;
             }
-
-            String old_id = t_old.getId();
-
 
             // Generate an xor transition node that will act as an
             // exit point into our OR join construct. 

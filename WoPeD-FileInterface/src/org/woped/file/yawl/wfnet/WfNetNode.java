@@ -5,7 +5,6 @@
 package org.woped.file.yawl.wfnet;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.ListIterator;
 
 /**

@@ -1,7 +1,6 @@
 package org.woped.file.controller.vep;
 
 import java.awt.Cursor;
-import java.awt.EventQueue;
 import java.awt.FileDialog;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -9,7 +8,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.security.AccessControlException;
 import java.util.Iterator;
@@ -30,7 +28,6 @@ import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.utilities.FileFilterImpl;
@@ -54,7 +51,6 @@ import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.woflan.TPNExport;
 import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.understandability.NetColorScheme;
 
 public class FileEventProcessor extends AbstractEventProcessor {
 	public FileEventProcessor(int vepID, ApplicationMediator mediator) {
@@ -127,16 +123,19 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			File folder = cFolder.getSelectedFile();
 			cFolder.setFileSelectionMode(JFileChooser.FILES_ONLY);
 			FileFilter filter = new LabeledFileFilter() {
+				@Override
 				public boolean accept(File file) {
 					if (file.getAbsolutePath().endsWith(".csv"))
 						return true;
 					return false;
 				}
 
+				@Override
 				public String getDescription() {
 					return "Comma Separated Values (*.csv)";
 				}
 
+				@Override
 				public String getExtension() {
 					return ".csv";
 				}
@@ -167,7 +166,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			break;
 
 		case AbstractViewEvent.QUANTCAP:
-			if (isSound(editor) & isBranchingOk(editor)) {
+			if (isSound(editor) && isBranchingOk(editor)) {
 				new CapacityAnalysisDialog((JFrame) getMediator().getUi(),
 						editor);
 			}
@@ -218,12 +217,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				.createNewQualAnalysisService(editor);
 		Iterator<AbstractPetriNetElementModel> places = qualanService
 				.getPlaces().iterator();
-		AbstractPetriNetElementModel end = (AbstractPetriNetElementModel) qualanService
-				.getSinkPlaces().iterator().next();
+		AbstractPetriNetElementModel end = qualanService.getSinkPlaces()
+				.iterator().next();
 
 		while (transes.hasNext()) {
-			AbstractPetriNetElementModel trans = (AbstractPetriNetElementModel) transes
-					.next();
+			AbstractPetriNetElementModel trans = transes.next();
 			Map<String, Object> outArcs = mec.getOutgoingArcs(trans.getId());
 			int sum = 0;
 			for (Object v : outArcs.values()) {
@@ -243,8 +241,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		}
 
 		while (places.hasNext()) {
-			AbstractPetriNetElementModel place = (AbstractPetriNetElementModel) places
-					.next();
+			AbstractPetriNetElementModel place = places.next();
 			if (!place.equals(end)) {
 				Map<String, Object> outArcs = mec
 						.getOutgoingArcs(place.getId());
@@ -387,96 +384,87 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		try {
 			// Open save dialog
 			if (editor != null) {
-				if (editor != null) {
-					if (editor.getFilePath() == null) {
-						LoggerManager
-								.debug(Constants.FILE_LOGGER,
-										"File was not saved before. Call \"Save as\" instead.");
-						saveAs(editor);
-					} else {
+				if (editor.getFilePath() == null) {
+					LoggerManager
+							.debug(Constants.FILE_LOGGER,
+									"File was not saved before. Call \"Save as\" instead.");
+					saveAs(editor);
+				} else {
 
-						if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter) {
-							succeed = ImageExport.saveJPG(
-									ImageExport.getRenderedImage(editor),
-									new File(editor.getFilePath()));
-							// TODO: !!! Working dir
-						} else if (editor.getDefaultFileType() == FileFilterImpl.PNGFilter) {
-							succeed = ImageExport.savePNG(
-									ImageExport.getRenderedImage(editor),
-									new File(editor.getFilePath()));
-						} else if (editor.getDefaultFileType() == FileFilterImpl.BMPFilter) {
-							succeed = ImageExport.saveBMP(
-									ImageExport.getRenderedImage(editor),
-									new File(editor.getFilePath()));
-						}
-						/* Tool for PNML Export */
-						else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
-							PNMLExport pe = new PNMLExport(getMediator());
-							pe.saveToFile(editor, editor.getFilePath());
-							LoggerManager.info(
-									Constants.FILE_LOGGER,
-									"Petrinet saved in file: "
-											+ editor.getFilePath());
+					if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter) {
+						succeed = ImageExport.saveJPG(ImageExport
+								.getRenderedImage(editor),
+								new File(editor.getFilePath()));
+						// TODO: !!! Working dir
+					} else if (editor.getDefaultFileType() == FileFilterImpl.PNGFilter) {
+						succeed = ImageExport.savePNG(ImageExport
+								.getRenderedImage(editor),
+								new File(editor.getFilePath()));
+					} else if (editor.getDefaultFileType() == FileFilterImpl.BMPFilter) {
+						succeed = ImageExport.saveBMP(ImageExport
+								.getRenderedImage(editor),
+								new File(editor.getFilePath()));
+					}
+					/* Tool for PNML Export */
+					else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
+						PNMLExport pe = new PNMLExport(getMediator());
+						pe.saveToFile(editor, editor.getFilePath());
+						LoggerManager.info(
+								Constants.FILE_LOGGER,
+								"Petrinet saved in file: "
+										+ editor.getFilePath());
 
-							ConfigurationManager
-									.getConfiguration()
-									.addRecentFile(
-											new File(editor.getFilePath())
-													.getName(),
-											editor.getFilePath());
-							getMediator().getUi().updateRecentMenu();
-							editor.setSaved(true);
+						ConfigurationManager.getConfiguration().addRecentFile(
+								new File(editor.getFilePath()).getName(),
+								editor.getFilePath());
+						getMediator().getUi().updateRecentMenu();
+						editor.setSaved(true);
+						ConfigurationManager.getConfiguration()
+								.setCurrentWorkingdir(editor.getPathName());
+						succeed = true;
+					}
+					// BPEL-Export
+					else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
+							&& this.isSound(editor)) {
+						IQualanalysisService qualanService = QualAnalysisServiceFactory
+								.createNewQualAnalysisService(editor);
+						int wellStruct = qualanService.getPTHandles().size()
+								+ qualanService.getTPHandles().size();
+						int freeChoice = qualanService
+								.getFreeChoiceViolations().size();
+						int sound = wellStruct + freeChoice;
+						if (sound == 0) {
+							succeed = BPEL.getBPELMainClass().saveFile(
+									editor.getFilePath(), editor);
 							ConfigurationManager.getConfiguration()
 									.setCurrentWorkingdir(editor.getPathName());
-							succeed = true;
-						}
-						// BPEL-Export
-						else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter
-								&& this.isSound(editor)) {
-							IQualanalysisService qualanService = QualAnalysisServiceFactory
-									.createNewQualAnalysisService(editor);
-							int wellStruct = qualanService.getPTHandles()
-									.size()
-									+ qualanService.getTPHandles().size();
-							int freeChoice = qualanService
-									.getFreeChoiceViolations().size();
-							int sound = wellStruct + freeChoice;
-							if (sound == 0) {
-								succeed = BPEL.getBPELMainClass().saveFile(
-										editor.getFilePath(), editor);
-								ConfigurationManager.getConfiguration()
-										.setCurrentWorkingdir(
-												editor.getPathName());
-							} else {
-								JOptionPane
-										.showMessageDialog(
-												null,
-												Messages.getString("QuantAna.Message.SoundnessViolation"));
-							}
-
-						}
-						/* Tool for TPN Export */
-						else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
-							succeed = TPNExport.save(editor.getFilePath(),
-									(PetriNetModelProcessor) editor
-											.getModelProcessor());
-							ConfigurationManager.getConfiguration()
-									.setCurrentWorkingdir(editor.getPathName());
-
-						} else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
-							String arg[] = { editor.getName() };
-							JOptionPane.showMessageDialog(null, Messages
-									.getString("File.Error.SampleSave.Text",
-											arg), Messages
-									.getString("File.Error.SampleSave.Title"),
-									JOptionPane.ERROR_MESSAGE);
-							succeed = false;
 						} else {
-							LoggerManager.warn(Constants.FILE_LOGGER,
-									"Unable to save File. Filetype not known: "
-											+ editor.getDefaultFileType());
-							succeed = false;
+							JOptionPane
+									.showMessageDialog(
+											null,
+											Messages.getString("QuantAna.Message.SoundnessViolation"));
 						}
+
+					}
+					/* Tool for TPN Export */
+					else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
+						succeed = TPNExport.save(editor.getFilePath(),
+								editor.getModelProcessor());
+						ConfigurationManager.getConfiguration()
+								.setCurrentWorkingdir(editor.getPathName());
+
+					} else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
+						String arg[] = { editor.getName() };
+						JOptionPane.showMessageDialog(null, Messages.getString(
+								"File.Error.SampleSave.Text", arg), Messages
+								.getString("File.Error.SampleSave.Title"),
+								JOptionPane.ERROR_MESSAGE);
+						succeed = false;
+					} else {
+						LoggerManager.warn(Constants.FILE_LOGGER,
+								"Unable to save File. Filetype not known: "
+										+ editor.getDefaultFileType());
+						succeed = false;
 					}
 				}
 			}
@@ -545,6 +533,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					FileFilterImpl.PNMLFilter,
 					"Petri Net Markup Language (1.3.2) (*.pnml)", extensions);
 			fileDialog.setFilenameFilter(new FilenameFilter() {
+				@Override
 				public boolean accept(File dir, String name) {
 					return name.endsWith(".pnml");
 				}
@@ -760,6 +749,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			}
 			// Set fileFilter to pnml files here
 			fileDialog.setFilenameFilter(new FilenameFilter() {
+				@Override
 				public boolean accept(File dir, String name) {
 					return name.endsWith(".pnml");
 				}
@@ -806,7 +796,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 				iSB[i] = (IStatusBar) iVC[i];
 			}
 
-			pnmlImport = new PNMLImport((ApplicationMediator) getMediator());
+			pnmlImport = new PNMLImport(getMediator());
 
 		}
 		/*
@@ -922,14 +912,10 @@ public class FileEventProcessor extends AbstractEventProcessor {
 	}
 
 	private void importApromore() {
-
-		ApromoreImportFrame frame = new ApromoreImportFrame(getMediator());
-
-		
+		new ApromoreImportFrame(getMediator());
 	}
 
 	public void exportApromore(EditorVC editor) {
 		new ApromoreExportFrame(getMediator());
-
 	}
 }

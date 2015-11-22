@@ -45,7 +45,7 @@ public class ImageExport {
     
     public static boolean saveJPG(RenderedImage image, File file) {
 	try {
-	    ImageIO.write((RenderedImage) image, "jpg", file);
+	    ImageIO.write(image, "jpg", file);
 	    LoggerManager.info(Constants.FILE_LOGGER, "File saved to: " + file.getAbsolutePath());
 	    return true;
 	} catch (IOException e) {
@@ -57,7 +57,7 @@ public class ImageExport {
     
     public static boolean savePNG(RenderedImage image, File file) {
 	try {
-	    ImageIO.write((RenderedImage) image, "png", file);
+	    ImageIO.write(image, "png", file);
 	    LoggerManager.info(Constants.FILE_LOGGER, "File saved to: " + file.getAbsolutePath());
 	    return true;
 	} catch (IOException e) {
@@ -69,7 +69,7 @@ public class ImageExport {
     
     public static boolean saveBMP(RenderedImage image, File file) {
 	try {
-	    ImageIO.write((RenderedImage) image, "bmp", file);
+	    ImageIO.write(image, "bmp", file);
 	    LoggerManager.info(Constants.FILE_LOGGER, "File saved to: " + file.getAbsolutePath());
 	    return true;
 	} catch (IOException e) {

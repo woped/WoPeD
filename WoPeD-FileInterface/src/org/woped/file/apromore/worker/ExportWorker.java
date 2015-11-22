@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
-import org.woped.file.apromore.AbstractApromoreFrame;
 import org.woped.file.apromore.ApromoreExportFrame;
 import org.woped.file.apromore.processList.ApromoreProcessList;
 import org.woped.gui.translations.Messages;
@@ -12,7 +11,6 @@ import org.woped.gui.translations.Messages;
 public class ExportWorker extends SwingWorker<Void, Void> {
 
 	private ApromoreExportFrame parent;
-	private boolean importSuccess = false;
 	private String version;
 	private boolean update;
 	private ApromoreProcessList processList;
@@ -81,6 +79,7 @@ public class ExportWorker extends SwingWorker<Void, Void> {
 	public void done() {
 
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				parent.getWopedPorgressBar().setIndeterminate(false);
 				parent.setButtons(true);

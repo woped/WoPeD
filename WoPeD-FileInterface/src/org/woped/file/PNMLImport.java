@@ -319,7 +319,7 @@ public class PNMLImport {
 							.setEnabled(false);
 				}
 			}
-			currentPetrinet = ((PetriNetModelProcessor) editor[i]
+			currentPetrinet = (editor[i]
 					.getModelProcessor());
 			// attr. id
 			currentPetrinet.setId(currentNet.getId());
@@ -850,7 +850,7 @@ public class PNMLImport {
 									map.setOperatorType(transitions[i]
 											.getToolspecificArray(j)
 											.getOperator().getType());
-									map.setType(TransitionModel.TRANS_OPERATOR_TYPE);
+									map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
 									map.setId(transitions[i]
 											.getToolspecificArray(j)
 											.getOperator().getId());
@@ -1163,9 +1163,9 @@ public class PNMLImport {
 			ArcModel arc = null;
 
 			try {
-				currentSourceModel = (AbstractPetriNetElementModel) currentContainer
+				currentSourceModel = currentContainer
 						.getElementById(arcs[i].getSource());
-				currentTargetModel = (AbstractPetriNetElementModel) currentContainer
+				currentTargetModel = currentContainer
 						.getElementById(arcs[i].getTarget());
 				String tempID;
 

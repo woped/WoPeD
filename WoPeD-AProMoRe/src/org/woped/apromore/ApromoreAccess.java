@@ -334,7 +334,7 @@ public class ApromoreAccess {
 
 		ProcessSummaryType p = null;
 		for (ProcessSummaryType process : processList) {
-			if (process.getId() == id) {
+			if (process.getId().equals(id)) {
 				p = process;
 			}
 		}

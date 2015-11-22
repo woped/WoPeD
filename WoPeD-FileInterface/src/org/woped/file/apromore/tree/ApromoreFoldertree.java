@@ -1,12 +1,7 @@
 package org.woped.file.apromore.tree;
 
-import java.awt.PopupMenu;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.event.TreeSelectionEvent;
@@ -14,7 +9,6 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.TreePath;
 
 import org.woped.file.apromore.AbstractApromoreFrame;
 import org.woped.gui.translations.Messages;
@@ -22,14 +16,12 @@ import org.woped.gui.translations.Messages;
 public class ApromoreFoldertree extends JTree {
 
 	private JTree tree;
-	private AbstractApromoreFrame parent;
 	public final static String TOP_NODE_NAME = Messages.getTitle("Node.Root");
 	private DefaultMutableTreeNode root = new DefaultMutableTreeNode(
 			TOP_NODE_NAME);
 
 	public ApromoreFoldertree(final AbstractApromoreFrame parent) {
 
-		this.parent = parent;
 		tree = new JTree(root);
 
 		tree.getSelectionModel().addTreeSelectionListener(
@@ -69,6 +61,7 @@ public class ApromoreFoldertree extends JTree {
 		tree = new JTree(root1);
 
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				model.reload();
 			}
@@ -82,8 +75,6 @@ public class ApromoreFoldertree extends JTree {
 		DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
 
 		if (root.getChildCount() > 0) {
-			int counter = root.getChildCount();
-
 			while (root.getChildCount() > 0) {
 				model.removeNodeFromParent((MutableTreeNode) model.getChild(
 						root, 0));

@@ -8,12 +8,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 import org.apromore.model.FolderType;
-import org.apromore.model.UserType;
 import org.woped.config.ApromoreServer;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.file.apromore.AbstractApromoreFrame;
 import org.woped.file.apromore.worker.elements.ReturnElement;
-import org.woped.gui.images.svg.folder;
 
 public class ProcessListWorker extends SwingWorker<ReturnElement, Void> {
 
@@ -45,9 +43,11 @@ public class ProcessListWorker extends SwingWorker<ReturnElement, Void> {
 		return new ReturnElement(data, folders, serverAviable);
 	}
 
+	@Override
 	public void done() {
 
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 
 				ReturnElement ele = null;

@@ -12,13 +12,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import javax.swing.SwingWorker;
-
 import org.woped.core.controller.AbstractApplicationMediator;
-
 import org.woped.file.apromore.worker.ImportWorker;
-import org.woped.file.apromore.worker.ProcessListWorker;
-
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
@@ -54,6 +49,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		c.insets = new Insets(5, 0, 5, 0); // Abstand nach oben/unten von 10px
 		getContentPane().add(getButtonPanel(), c);
 		getContentPane().addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				processList.clearSelection();
 			}
@@ -61,6 +57,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 
 		// Import Event
 		processList.getTable().addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent e) {
 
 				if (e.getClickCount() == 2 && !importing) {
@@ -96,6 +93,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		return buttonPanel;
 	}
 
+	@Override
 	public WopedButton getImportButton() {
 
 		if (importButton == null) {
@@ -106,6 +104,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 			importButton.setPreferredSize(new Dimension(130, 25));
 			importButton.addActionListener(new ActionListener() {
 
+				@Override
 				public void actionPerformed(ActionEvent e) {
 
 					loadImport();
@@ -121,6 +120,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		getWopedPorgressBar().setIndeterminate(false);
 		setButtons(true);
 		Thread queryThread = new Thread() {
+			@Override
 			public void run() {
 
 				if (importWorker != null) {

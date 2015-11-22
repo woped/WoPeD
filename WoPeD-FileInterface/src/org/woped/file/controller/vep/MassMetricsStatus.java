@@ -25,6 +25,7 @@ public class MassMetricsStatus extends Thread{
 	/**
 	 * Separate Thread to display the proper status of the calculation
 	 */
+	@Override
 	public void run(){
 		int max = mass.getMetricsCount();
 		int current = 0;

@@ -31,6 +31,7 @@ public class ImportWorker extends SwingWorker<Boolean, Void> {
 	public void done() {
 
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 
 				parent.setImporting(false);
