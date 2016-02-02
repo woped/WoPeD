@@ -350,6 +350,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			e.gridx = 3;
 			e.gridy = 0;
 			buttonPanel.add(getSaveButton(), e);
+			//TEst Tizian
 			e.weightx = 0;
 			e.gridx = 4;
 			e.gridy = 0;
