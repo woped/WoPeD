@@ -39,8 +39,8 @@ import org.woped.gui.translations.Messages;
 
 public class ApromoreAccess {
 
-	public final int READ_TIMEOUT = 120000;
-	public final int CONNECTION_TIMEOUT = 120000;
+	public final int READ_TIMEOUT = 10000;
+	public final int CONNECTION_TIMEOUT = 10000;
 
 	private static ApromoreAccess instance = null;
 	private static final SimpleDateFormat apromoreTimeFormat = new SimpleDateFormat(

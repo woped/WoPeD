@@ -84,6 +84,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private WopedButton deleteButton = null;
 	private WopedButton saveButton = null;
 	private WopedButton testButton = null;
+	//Test DEUTIZ
+	private WopedButton cancelButton = null;
 
 	// Labels
 	private JLabel serverNameLabel = null;
@@ -244,6 +246,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 						+ ConfigurationManager.getConfiguration()
 								.getApromoreProxyPort());
 		getSaveButton().setEnabled(false);
+		getCancelButton().setEnabled(false);
 	}
 
 	private void initialize() {
@@ -347,6 +350,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			e.gridx = 3;
 			e.gridy = 0;
 			buttonPanel.add(getSaveButton(), e);
+			e.weightx = 0;
+			e.gridx = 4;
+			e.gridy = 0;
+			buttonPanel.add(getCancelButton(), e);
 		}
 		return buttonPanel;
 	}
@@ -552,6 +559,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 					setApromoreServerID(apromoreServerID);
 					setButtonsToAddOrChange();
 					clearTextFields();
+					serverPortText.setText("9000");
+					managerPathText.setText("manager/services/manager");
 				}
 			});
 		}
@@ -620,6 +629,23 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			});
 		}
 		return saveButton;
+	}
+	
+	private WopedButton getCancelButton() {
+		if (cancelButton == null) {
+			cancelButton = new WopedButton();
+			cancelButton.setText(Messages.getTitle("Button.Cancel"));
+			cancelButton.setPreferredSize(new Dimension(110, 25));
+			cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
+			cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
+			cancelButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					updateServerComboBoxAfterChange();
+					updateSettingsPanel();
+				}
+			});
+		}
+		return cancelButton;
 	}
 
 	private WopedButton getTestButton() {
@@ -1345,6 +1371,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 
 	private void setButtonsToAddOrChange() {
 		getSaveButton().setEnabled(true);
+		getCancelButton().setEnabled(true);
 		getAddButton().setEnabled(false);
 		getChangeButton().setEnabled(false);
 		getDeleteButton().setEnabled(false);
@@ -1355,5 +1382,6 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		getChangeButton().setEnabled(true);
 		getDeleteButton().setEnabled(true);
 		getSaveButton().setEnabled(false);
+		getCancelButton().setEnabled(false);
 	}
 }
