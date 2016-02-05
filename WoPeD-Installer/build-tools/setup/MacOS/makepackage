@@ -1,6 +1,3 @@
-/Applications/Developer/PackageMaker.app/Contents/MacOS/PackageMaker -m \
---doc woped.pmdoc \
---version @wopedversion@ \
---out ../installers/WoPeD-install-macos.pkg
-hdiutil create ../installers/WoPeD-install-macos-@wopedversion@.dmg -ov -srcfolder ../installers/WoPeD-install-macos.pkg
-rm -rf ../installers/WoPeD-install-macos.pkg
+/usr/local/bin/packagesbuild WoPeD-install-macos-@wopedversion@.pkgproj
+hdiutil create ../installers/WoPeD-install-macos-@wopedversion@.dmg -ov -srcfolder ../installers/WoPeD-install-macos-@wopedversion@.pkg
+rm -rf ../installers/WoPeD-install-macos-@wopedversion@.pkg
