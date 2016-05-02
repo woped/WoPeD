@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SimSplitServer extends SimServer{
 	
-	SimJoinServer sv_join = null;
+	SimServer sv_join = null;
 	
 	public SimSplitServer(SimRunner sim, String id, String name, String role, String group, SimDistribution dist){
 		super(sim,id,name,role,group,dist);		
@@ -16,10 +16,18 @@ public class SimSplitServer extends SimServer{
 		while(sv_join ==null){
 			if(o.server instanceof SimSplitServer){
 				innerSplitt.add(o.server);				
-			}
-			else if(o.server instanceof SimJoinServer){
+			} else if (o.server instanceof SimJoinSplitServer) {
 				if (innerSplitt.isEmpty()){
-					sv_join = (SimJoinServer)o.server;
+					sv_join = o.server;
+					break;
+				}
+				else{
+					innerSplitt.remove(0);					
+					innerSplitt.add(o.server);				
+				}								
+			} else if(o.server instanceof SimJoinServer){
+				if (innerSplitt.isEmpty()){
+					sv_join = o.server;
 					break;
 				}
 				else{
@@ -39,8 +47,11 @@ public class SimSplitServer extends SimServer{
 			int idx = (int)(Math.random()*slist.size());
 			SimServer s = slist.get(idx);
 			SimCaseCopy cc = new SimCaseCopy(sim.getCaseMaker().getNextId(),c);
-			cc.setcurrArrivalTime(time);			
-			sv_join.addWaitingCase(c.getid(),cc);			
+			cc.setcurrArrivalTime(time);	
+			if (sv_join instanceof SimJoinServer)
+				((SimJoinServer)sv_join).addWaitingCase(c.getid(),cc);			
+			if (sv_join instanceof SimJoinSplitServer)
+				((SimJoinSplitServer)sv_join).addWaitingCase(c.getid(),cc);			
 			SimWorkItem wi = new SimWorkItem(cc,s);
 			SimArriveEvent ae = new SimArriveEvent(sim, time, wi);			
 			sim.addEvent(ae);			

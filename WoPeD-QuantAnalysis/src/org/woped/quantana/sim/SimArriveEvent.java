@@ -18,10 +18,17 @@ public class SimArriveEvent extends SimulatorEvent{
 	public void invoke(){
 		SimRunner sim = getSim();
 		double time = getTime();	
-		getSim().addLog(c.getid(),s.getName(),time);
+		if (c instanceof SimCaseCopy)
+			getSim().addLog( ((SimCaseCopy)c).getorigid(),s.getName(),time);
+		else
+			getSim().addLog(c.getid(),s.getName(),time);
 		
 		if (s instanceof SimJoinServer){
 			((SimJoinServer)s).handleJoin(sim, time, (SimCaseCopy)c);
+			SimBirthEvent be = new SimBirthEvent(sim, time);
+			sim.addEvent(be);
+		} else if (s instanceof SimJoinSplitServer){
+			((SimJoinSplitServer)s).handleJoin(sim, time, (SimCaseCopy)c);
 			SimBirthEvent be = new SimBirthEvent(sim, time);
 			sim.addEvent(be);
 		} else {

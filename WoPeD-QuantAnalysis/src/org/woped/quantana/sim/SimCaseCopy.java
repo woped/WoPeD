@@ -14,5 +14,13 @@ public class SimCaseCopy extends SimCase {
 
 	public void setOriginal(SimCase original) {
 		this.original = original;
-	}	
+	}
+	
+	public int getorigid() {
+		SimCase o = original;
+		while (o instanceof SimCaseCopy) {
+			o = ((SimCaseCopy)o).getOriginal();
+		}
+		return o.getid();
+	}
 }

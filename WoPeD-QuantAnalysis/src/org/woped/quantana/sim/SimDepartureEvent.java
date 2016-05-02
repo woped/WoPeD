@@ -21,6 +21,8 @@ public class SimDepartureEvent extends SimulatorEvent{
 		} else {
 			if (s instanceof SimSplitServer){				
 				((SimSplitServer)s).handleSplit(sim, time, c, slist);
+			} else 	if (s instanceof SimJoinSplitServer){	
+				((SimJoinSplitServer)s).handleSplit(sim, time, c, slist);
 			} else {			
 				SimWorkItem wi = new SimWorkItem(c, slist.get(0));				
 				SimArriveEvent e = new SimArriveEvent(sim, time, wi);

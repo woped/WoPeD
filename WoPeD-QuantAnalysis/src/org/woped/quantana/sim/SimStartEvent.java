@@ -42,7 +42,10 @@ public class SimStartEvent extends SimulatorEvent{
                   ap = new ActivityPanel(time, (time + serv), s.getName() + " (" + s.getid() + ")", r.getName(), c, r.getColor());
             }
             sim.getActPanelList().add(ap);
-    		sim.addLog(r.getName(), s.getName(), c.getid(), serv, wait, time);
+            if (c instanceof SimCaseCopy) 
+            	sim.addLog(r.getName(), s.getName(), ((SimCaseCopy)c).getorigid(), serv, wait, time);
+            else
+            	sim.addLog(r.getName(), s.getName(), c.getid(), serv, wait, time);            	
 		}
 		
 		SimStopEvent sp = new SimStopEvent(sim, (time + serv), act);
