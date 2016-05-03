@@ -23,6 +23,7 @@ import org.woped.qualanalysis.p2t.P2TSideBar;
 import org.woped.qualanalysis.p2t.Process2Text;
 import org.woped.qualanalysis.paraphrasing.Constants;
 import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
+import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebService;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebServiceImpl;
 import org.woped.gui.translations.Messages;
 import org.xml.sax.InputSource;
@@ -53,9 +54,11 @@ public class WebServiceThread extends Thread{
 				
 				if(currentNetPnml.isProcessable() == true){
 					ProcessToTextWebServiceImpl pttService =  new ProcessToTextWebServiceImpl();
-					String output = pttService.getProcessToTextWebServicePort().generateTextFromProcessSpecification(currentNetPnml.getPnmlString());
+					ProcessToTextWebService port = pttService.getProcessToTextWebServicePort();
+					String text = currentNetPnml.getPnmlString();
+					String output = port.generateTextFromProcessSpecification(text);
 					isFinished=true;
-					paraphrasingPanel.setNaturalTextParser(new org.woped.qualanalysis.p2t.Process2Text(output));	
+					paraphrasingPanel.setNaturalTextParser(new Process2Text(output));	
 					paraphrasingPanel.setThreadInProgress(false);
 				}
 			}				
