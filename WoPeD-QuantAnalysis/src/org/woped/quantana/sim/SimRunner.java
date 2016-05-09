@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
+import org.woped.gui.translations.Messages;
 import org.woped.quantana.gui.ActivityPanel;
 import org.woped.quantana.model.ResourceStats;
 import org.woped.quantana.resourcealloc.Resource;
@@ -31,9 +32,7 @@ public class SimRunner implements Runnable{
 	public static final int MAX_VALUE = 2;
 
 	public static final int MAX_ARRIVAL = 3;
-	
 
-	
 	protected SimGraph graph = null;
 	protected ResourceAllocation resAlloc = null;
 	protected ResourceUtilization resUtil = null;
@@ -75,9 +74,8 @@ public class SimRunner implements Runnable{
 		params = sp;
 		createServerForBirth();		
 	}
-	
 
-	protected void createServerForBirth() {
+	private void createServerForBirth() {
 		SimNode n = graph.getSource();
 		ArrayList<SimArc> out = n.getarcOut();
 		fstProb = new int[out.size()][3];
@@ -116,7 +114,6 @@ public class SimRunner implements Runnable{
 	}
 
 	public void start() {
-		
 		thr = new Thread(this);
 		thr.start();		
 	}
@@ -124,9 +121,6 @@ public class SimRunner implements Runnable{
 		
 	public void run() {		
 		createServerList();
-		
-	
-		
 		runStats = new ArrayList<SimRunStats>();
 		distLogger = new SimDistributionLogger(params.getPeriod()/params.getLambda());
 		caseMaker.setDistLogger(distLogger);		
@@ -279,8 +273,7 @@ public class SimRunner implements Runnable{
 			stats.setProcCompTime(avgRunTime / cntFinished);
 			stats.setThroughPut(cntFinished / runClock * params.getPeriod());
 		}
-		
-		runStats.add(stats);	
+		runStats.add(stats);		
 		return stats; //CN:modified
 	}
 	
@@ -314,7 +307,7 @@ public class SimRunner implements Runnable{
 		
 		generateReportRepStats();
 		
-		runStats.add(repStats);		
+		runStats.add(repStats);
 	}
 
 	public void generateReportRepStats() {
@@ -408,7 +401,8 @@ public class SimRunner implements Runnable{
 		createServerConnections();
 		// find corresponding join to the splits
 		for (SimServer s : serverList.values()) {
-			if(s instanceof SimSplitServer) ((SimSplitServer)s).findJoin();			
+			if(s instanceof SimSplitServer) ((SimSplitServer)s).findJoin();
+			if(s instanceof SimJoinSplitServer) ((SimJoinSplitServer)s).findJoin();
 		}		
 	}
 
@@ -437,11 +431,14 @@ public class SimRunner implements Runnable{
 				SimDistribution sd = null;
 				if (n.gettime()>0) 
 					sd = new SimDistribution(params.getDistServ(),n.gettime(), params.getSParam());
-				if (n.isAndJoin()) {
+				if (n.isAndJoin() && !n.isAndSplit()) {
 					s = new SimJoinServer(this, n.getid(), n.getname(), n
 							.getrole(), n.getgroup(), sd);
-				} else if (n.isAndSplit()) {
+				} else if (n.isAndSplit() && !n.isAndJoin()) {
 					s = new SimSplitServer(this, n.getid(), n.getname(), n
+							.getrole(), n.getgroup(), sd);
+				} else if (n.isAndSplit() && n.isAndJoin() ) {
+					s = new SimJoinSplitServer(this, n.getid(), n.getname(), n
 							.getrole(), n.getgroup(), sd);
 				} else {
 					s = new SimServer(this, n.getid(), n.getname(),
@@ -568,15 +565,26 @@ public class SimRunner implements Runnable{
 
 	public void addLog(int id, String name, double time) {
 		if(params.getWriteLog())
-			log.add("CASE_"+id+" an TASK '"+name+"' um "+String.format("%.2f", time)+" angekommen\n");		
+// Joerg Evermann, Feb 18 2016
+			log.add(Messages.getString("QuantAna.Simulation.Log.CaseArrival") + " CASE_" + id + " " +
+					Messages.getString("QuantAna.Simulation.Log.At") + " TASK '" + name+ "' " +
+					Messages.getString("QuantAna.Simulation.Log.AtTime") + String.format( " %.2f", time) + "\n");
+//			log.add("CASE_"+id+" an TASK '"+name+"' um "+String.format("%.2f", time)+" angekommen\n");		
 	}
 	
 	public void addLog(String res, String task, int caseid, double svctime, double wttime, double runtime) {
 		if(params.getWriteLog())
-			log.add("RES "+res+" an TASK '"+task+"' um "+
-					String.format("%.2f", runtime)+" gebunden; CASE_"+caseid+" Bedienzeit "+
-					String.format("%.2f", svctime)+" Wartezeit "+
-					String.format("%.2f", wttime)+"\n");
+// Joerg Evermann, Feb 18 2016
+			log.add(Messages.getString("QuantAna.Simulation.Log.ResourceBinding") + " RES " + res + " " +
+					Messages.getString("QuantAna.Simulation.Log.To") + " TASK '" + task + "' " + 
+					Messages.getString("QuantAna.Simulation.Log.AtTime") + String.format(" %.2f", runtime) + "; CASE_" + caseid + " " +
+					Messages.getString("QuantAna.Simulation.Log.ServiceTime") + String.format(" %.2f", svctime)+ " " +
+					Messages.getString("QuantAna.Simulation.Log.WaitTime") + String.format(" %.2f", wttime)+"\n");
+
+//			log.add("RES "+res+" an TASK '"+task+"' um "+
+//					String.format("%.2f", runtime)+" gebunden; CASE_"+caseid+" Bedienzeit "+
+//					String.format("%.2f", svctime)+" Wartezeit "+
+//					String.format("%.2f", wttime)+"\n");
 	}
 	
 	public ArrayList<String> getLog(){

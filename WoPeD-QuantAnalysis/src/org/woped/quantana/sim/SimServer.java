@@ -206,6 +206,9 @@ public class SimServer {
 			if (this instanceof SimSplitServer){
 				for (SimOutServer s : out)
 					list.add(s.getserver());
+			} else if (this instanceof SimJoinSplitServer){
+				for (SimOutServer s : out)
+					list.add(s.getserver());
 			} else {
 				int[][] probs = new int[num][3];
 				for (int i = 0; i < num; i++){
