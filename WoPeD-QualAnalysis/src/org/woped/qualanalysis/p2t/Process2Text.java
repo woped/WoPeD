@@ -52,7 +52,7 @@ public class Process2Text {
 		start = temp.indexOf(startTag) + startTag.length(); //beginning of the content
 		stop = temp.indexOf(stopTag);	//end of the content
 		
-		//if both tags cab be found /there is some contend continue
+		//if both tags can be found / there is some content continue
 		if (start >= startTag.length() && stop > start){
 			temp = temp.substring(start, stop); //the content
 			temp = temp.replace("\n", "");
