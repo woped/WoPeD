@@ -91,7 +91,7 @@ public class ApromoreAccess {
 		wsTemp.setMessageSender(httpCms);
 		
 		// Falls URI leer ist wird die für den Server abgespeicherte Uri
-		// genommen
+		// genommen DEUTIZ
 		
 		if (uri == null) {
 			wsTemp.setDefaultUri(getURI());
