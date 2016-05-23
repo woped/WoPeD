@@ -43,8 +43,7 @@ public class ApromoreAccess {
 	public final int CONNECTION_TIMEOUT = 10000;
 
 	private static ApromoreAccess instance = null;
-	private static final SimpleDateFormat apromoreTimeFormat = new SimpleDateFormat(
-			"dd-MM-yyyy hh-mm-ss");
+	private static final SimpleDateFormat apromoreTimeFormat = new SimpleDateFormat("dd-MM-yyyy hh-mm-ss");
 
 	public static ApromoreAccess getInstance() {
 		return instance;
@@ -63,8 +62,7 @@ public class ApromoreAccess {
 
 	public ApromoreAccess(Container parent) {
 		this.parent = parent;
-		this.servers = ConfigurationManager.getConfiguration()
-				.getApromoreServers();
+		this.servers = ConfigurationManager.getConfiguration().getApromoreServers();
 
 	}
 
@@ -84,36 +82,38 @@ public class ApromoreAccess {
 
 		serviceMarshaller = new Jaxb2Marshaller();
 		serviceMarshaller.setContextPath("org.apromore.model");
-		soapMsgFactory = new SaajSoapMessageFactory(
-				MessageFactory.newInstance());
-		soapMsgFactory
-				.setSoapVersion(org.springframework.ws.soap.SoapVersion.SOAP_11);
+		soapMsgFactory = new SaajSoapMessageFactory(MessageFactory.newInstance());
+		soapMsgFactory.setSoapVersion(org.springframework.ws.soap.SoapVersion.SOAP_11);
 
 		wsTemp = new WebServiceTemplate(soapMsgFactory);
 		wsTemp.setMarshaller(serviceMarshaller);
 		wsTemp.setUnmarshaller(serviceMarshaller);
 		wsTemp.setMessageSender(httpCms);
-		wsTemp.setDefaultUri(getURI());
+		
+		// Falls URI leer ist wird die für den Server abgespeicherte Uri
+		// genommen
+		
+		if (uri == null) {
+			wsTemp.setDefaultUri(getURI());
+		} else {
+			wsTemp.setDefaultUri(uri);
+		}
 		managerService = new ManagerServiceClient(wsTemp);
 	}
 
-	public void test(String server, String port, String managerpath,
-			String username) {
+	public void test(String server, String port, String managerpath, String username) {
 
 		try {
 			Integer.valueOf(port);
 		} catch (NumberFormatException e) {
 			showDialog(Messages.getString("Apromore.UI.Validation.Error.Port"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
+					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
 		if (!managerpath.equals("manager/services/manager")) {
-			showDialog(
-					Messages.getString("Apromore.UI.Validation.Warning.WebservicePath"),
-					Messages.getString("Apromore.UI.Warning.Title"),
-					JOptionPane.WARNING_MESSAGE);
+			showDialog(Messages.getString("Apromore.UI.Validation.Warning.WebservicePath"),
+					Messages.getString("Apromore.UI.Warning.Title"), JOptionPane.WARNING_MESSAGE);
 		}
 
 		String serverUrl = server + ":" + port + "/" + managerpath;
@@ -121,63 +121,57 @@ public class ApromoreAccess {
 		try {
 			new URL(serverUrl);
 			connect(serverUrl);
-			managerService.readAllUsers();
+
+			org.apromore.model.UsernamesType test = managerService.readAllUsers();
+
+			if (test == null) {
+				showDialog(Messages.getString("Apromore.UI.Validation.Error.connection"),
+						Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+
 		} catch (MalformedURLException e) {
 			showDialog(Messages.getString("Apromore.UI.Validation.Error.url"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
+					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		} catch (SOAPException e) {
-			showDialog(
-					Messages.getString("Apromore.UI.Validation.Error.connection"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.connection"),
+					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		} catch (WebServiceTransportException e) {
-			showDialog(
-					Messages.getString("Apromore.UI.Validation.Error.connection"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.connection"),
+					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		} catch (WebServiceIOException e) {
 			showDialog(Messages.getString("Apromore.UI.Validation.Error.url"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
+					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		} catch (SoapMessageCreationException e) {
-			showDialog(
-					Messages.getString("Apromore.UI.Validation.Error.WebservicePath"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.WebservicePath"),
+					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
 		UserType user = managerService.readUserByUsername(username);
 		if (user == null) {
 			showDialog(Messages.getString("Apromore.UI.Validation.Error.user"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
+					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		showDialog(Messages.getString("Apromore.UI.Validation.ConnectionOk"),
-				Messages.getString("Apromore.textBandTitle"),
-				JOptionPane.INFORMATION_MESSAGE);
-
+				Messages.getString("Apromore.textBandTitle"), JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public String[][] getProcessList() throws Exception {
-		UserType user = managerService.readUserByUsername(ConfigurationManager
-				.getConfiguration().getApromoreUsername());
+		UserType user = managerService
+				.readUserByUsername(ConfigurationManager.getConfiguration().getApromoreUsername());
 
-		List<FolderType> folderForUser = managerService
-				.getWorkspaceFolderTree(user.getId());
+		List<FolderType> folderForUser = managerService.getWorkspaceFolderTree(user.getId());
 
 		processList = new ArrayList<ProcessSummaryType>();
 		for (FolderType folder : folderForUser) {
-			processSummaries = managerService.readProcessSummaries(
-					folder.getId(), null);
-			List<ProcessSummaryType> processesWithoutFolder = processSummaries
-					.getProcessSummary();
+			processSummaries = managerService.readProcessSummaries(folder.getId(), null);
+			List<ProcessSummaryType> processesWithoutFolder = processSummaries.getProcessSummary();
 			for (ProcessSummaryType pst : processesWithoutFolder) {
 				pst.setFolder(folder);
 			}
@@ -192,38 +186,30 @@ public class ApromoreAccess {
 			s[i][3] = "" + processList.get(i).getOriginalNativeType();
 			s[i][4] = "" + processList.get(i).getDomain();
 
-			List<VersionSummaryType> vst = processList.get(i)
-					.getVersionSummaries();
+			List<VersionSummaryType> vst = processList.get(i).getVersionSummaries();
 			s[i][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
 			s[i][6] = "" + processList.get(i).getFolder().getFolderName();
 		}
 		return s;
 	}
 
-	public String[][] filterProcessList(String name, String id, String owner,
-			String type, String domain) {
+	public String[][] filterProcessList(String name, String id, String owner, String type, String domain) {
 
 		int j = processList.size() - 1;
 
-		if (!((name.equalsIgnoreCase("")) && (id == null)
-				&& (owner.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")) && domain
-					.equalsIgnoreCase(""))) {
+		if (!((name.equalsIgnoreCase("")) && (id == null) && (owner.equalsIgnoreCase("")) && (type.equalsIgnoreCase(""))
+				&& domain.equalsIgnoreCase(""))) {
 			j = 0;
 			for (int i = 0; i < processList.size() - 1; i++) {
-				if ((processList.get(i).getName().toLowerCase()
-						.contains(name.toLowerCase()) || name
-						.equalsIgnoreCase(""))
-						&& (processList.get(i).getOriginalNativeType()
-								.toLowerCase().contains(type.toLowerCase()) || type
-								.equalsIgnoreCase(""))
-						&& (processList.get(i).getOwner().toLowerCase()
-								.contains(owner.toLowerCase()) || owner
-								.equalsIgnoreCase(""))
-						&& (processList.get(i).getDomain().toLowerCase()
-								.contains(domain.toLowerCase()) || domain
-								.equalsIgnoreCase(""))
-						&& ((id == null) || id.equals(""
-								+ processList.get(i).getId())))
+				if ((processList.get(i).getName().toLowerCase().contains(name.toLowerCase())
+						|| name.equalsIgnoreCase(""))
+						&& (processList.get(i).getOriginalNativeType().toLowerCase().contains(type.toLowerCase())
+								|| type.equalsIgnoreCase(""))
+						&& (processList.get(i).getOwner().toLowerCase().contains(owner.toLowerCase())
+								|| owner.equalsIgnoreCase(""))
+						&& (processList.get(i).getDomain().toLowerCase().contains(domain.toLowerCase())
+								|| domain.equalsIgnoreCase(""))
+						&& ((id == null) || id.equals("" + processList.get(i).getId())))
 					j++;
 			}
 		}
@@ -233,35 +219,26 @@ public class ApromoreAccess {
 		int k = 0;
 
 		for (int i = 0; i < processList.size() - 1; i++) {
-			if (!((name.equalsIgnoreCase("")) && (id == null)
-					&& (owner.equalsIgnoreCase(""))
-					&& (domain.equalsIgnoreCase("")) && (type
-						.equalsIgnoreCase("")))) {
+			if (!((name.equalsIgnoreCase("")) && (id == null) && (owner.equalsIgnoreCase(""))
+					&& (domain.equalsIgnoreCase("")) && (type.equalsIgnoreCase("")))) {
 
-				if ((processList.get(i).getName().toLowerCase()
-						.contains(name.toLowerCase()) || name
-						.equalsIgnoreCase(""))
-						&& (processList.get(i).getOriginalNativeType()
-								.toLowerCase().contains(type.toLowerCase()) || type
-								.equalsIgnoreCase(""))
-						&& (processList.get(i).getOwner().toLowerCase()
-								.contains(owner.toLowerCase()) || owner
-								.equalsIgnoreCase(""))
-						&& (processList.get(i).getDomain().toLowerCase()
-								.contains(domain.toLowerCase()) || domain
-								.equalsIgnoreCase(""))
-						&& ((id == null) || id.equals(""
-								+ processList.get(i).getId()))) {
+				if ((processList.get(i).getName().toLowerCase().contains(name.toLowerCase())
+						|| name.equalsIgnoreCase(""))
+						&& (processList.get(i).getOriginalNativeType().toLowerCase().contains(type.toLowerCase())
+								|| type.equalsIgnoreCase(""))
+						&& (processList.get(i).getOwner().toLowerCase().contains(owner.toLowerCase())
+								|| owner.equalsIgnoreCase(""))
+						&& (processList.get(i).getDomain().toLowerCase().contains(domain.toLowerCase())
+								|| domain.equalsIgnoreCase(""))
+						&& ((id == null) || id.equals("" + processList.get(i).getId()))) {
 					s[k][0] = "" + processList.get(i).getName();
 					s[k][1] = "" + processList.get(i).getId();
 					s[k][2] = "" + processList.get(i).getOwner();
 					s[k][3] = "" + processList.get(i).getOriginalNativeType();
 					s[k][4] = "" + processList.get(i).getDomain();
-					List<VersionSummaryType> vst = processList.get(i)
-							.getVersionSummaries();
+					List<VersionSummaryType> vst = processList.get(i).getVersionSummaries();
 					s[k][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
-					s[k][6] = ""
-							+ processList.get(i).getFolder().getFolderName();
+					s[k][6] = "" + processList.get(i).getFolder().getFolderName();
 					k++;
 				}
 			} else {
@@ -270,8 +247,7 @@ public class ApromoreAccess {
 				s[i][2] = "" + processList.get(i).getOwner();
 				s[i][3] = "" + processList.get(i).getOriginalNativeType();
 				s[i][4] = "" + processList.get(i).getDomain();
-				List<VersionSummaryType> vst = processList.get(i)
-						.getVersionSummaries();
+				List<VersionSummaryType> vst = processList.get(i).getVersionSummaries();
 				s[i][5] = "" + vst.get(vst.size() - 1).getVersionNumber();
 				s[i][6] = "" + processList.get(i).getFolder().getFolderName();
 			}
@@ -284,30 +260,25 @@ public class ApromoreAccess {
 
 		ProcessSummaryType p = processList.get(id);
 		ExportFormatResultType exf = null;
-		final Set<RequestParameterType<?>> noCanoniserParameters = Collections
-				.emptySet();
+		final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
 		String inputString;
 
-		exf = managerService.exportFormat(p.getId(), p.getName(), "MAIN",
-				p.getLastVersion(), "PNML 1.3.2", p.getLastVersion(), true,
-				p.getOwner(), noCanoniserParameters);
+		exf = managerService.exportFormat(p.getId(), p.getName(), "MAIN", p.getLastVersion(), "PNML 1.3.2",
+				p.getLastVersion(), true, p.getOwner(), noCanoniserParameters);
 
 		Scanner scanner = new Scanner(exf.getNative().getInputStream());
 		Scanner s = scanner.useDelimiter("\\A");
 		inputString = s.hasNext() ? s.next() : "";
-		inputString = inputString.replaceAll("pnml.apromore.org",
-				"pnml.woped.org");
+		inputString = inputString.replaceAll("pnml.apromore.org", "pnml.woped.org");
 		scanner.close();
 		return new ByteArrayInputStream(inputString.getBytes());
 	}
 
-	public void exportProcess(String userName, String folder,
-			String processName, ByteArrayOutputStream os, String domain,
-			String version, boolean makePublic) throws Exception {
+	public void exportProcess(String userName, String folder, String processName, ByteArrayOutputStream os,
+			String domain, String version, boolean makePublic) throws Exception {
 
 		UserType user = managerService.readUserByUsername(userName);
-		List<FolderType> folders = managerService.getWorkspaceFolderTree(user
-				.getId());
+		List<FolderType> folders = managerService.getWorkspaceFolderTree(user.getId());
 		int folderId = Integer.MIN_VALUE;
 		for (FolderType ft : folders) {
 			if (ft.getFolderName().equals(folder)) {
@@ -317,20 +288,16 @@ public class ApromoreAccess {
 		if (folderId != Integer.MIN_VALUE) {
 			String nativeType = "PNML 1.3.2";
 			String documentation = "";
-			final Set<RequestParameterType<?>> noCanoniserParameters = Collections
-					.emptySet();
+			final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
 			ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
 
-			managerService.importProcess(userName, folderId, nativeType,
-					processName, version, is, domain, documentation,
-					getCurrentDate(), getCurrentDate(), makePublic,
-					noCanoniserParameters);
+			managerService.importProcess(userName, folderId, nativeType, processName, version, is, domain,
+					documentation, getCurrentDate(), getCurrentDate(), makePublic, noCanoniserParameters);
 		}
 	}
 
-	public void updateProcess(Integer id, String username, String nativeType,
-			String processName, String newVersionNumber,
-			ByteArrayOutputStream os) throws Exception {
+	public void updateProcess(Integer id, String username, String nativeType, String processName,
+			String newVersionNumber, ByteArrayOutputStream os) throws Exception {
 
 		ProcessSummaryType p = null;
 		for (ProcessSummaryType process : processList) {
@@ -345,9 +312,8 @@ public class ApromoreAccess {
 		ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
 		String domain = p.getDomain();
 
-		managerService.updateProcess(Integer.MAX_VALUE, username, nativeType,
-				id, domain, processName, originalBranchName, newBranchName,
-				newVersionNumber, originalVersionNumber, "", is);
+		managerService.updateProcess(Integer.MAX_VALUE, username, nativeType, id, domain, processName,
+				originalBranchName, newBranchName, newVersionNumber, originalVersionNumber, "", is);
 	}
 
 	private String getCurrentDate() {
@@ -360,8 +326,7 @@ public class ApromoreAccess {
 		try {
 
 			UserType user = managerService
-					.readUserByUsername(ConfigurationManager.getConfiguration()
-							.getApromoreUsername());
+					.readUserByUsername(ConfigurationManager.getConfiguration().getApromoreUsername());
 			return managerService.getWorkspaceFolderTree(user.getId());
 
 		} catch (Exception e) {
@@ -371,13 +336,9 @@ public class ApromoreAccess {
 	}
 
 	private String getURI() {
-		return ConfigurationManager.getConfiguration().getApromoreServerURL()
-				+ ":"
-				+ ConfigurationManager.getConfiguration()
-						.getApromoreServerPort()
-				+ "/"
-				+ ConfigurationManager.getConfiguration()
-						.getApromoreManagerPath();
+		return ConfigurationManager.getConfiguration().getApromoreServerURL() + ":"
+				+ ConfigurationManager.getConfiguration().getApromoreServerPort() + "/"
+				+ ConfigurationManager.getConfiguration().getApromoreManagerPath();
 	}
 
 	private String getURI(String url, int port, String managerPath) {
@@ -401,24 +362,18 @@ public class ApromoreAccess {
 	// }
 
 	public int getCurrentServerIndex() {
-		return ConfigurationManager.getConfiguration()
-				.getCurrentApromoreIndex();
+		return ConfigurationManager.getConfiguration().getCurrentApromoreIndex();
 	}
 
 	public void setCurrentServer(int selectedIndex) {
 
-		ConfigurationManager.getConfiguration().setCurrentApromoreIndex(
-				selectedIndex);
+		ConfigurationManager.getConfiguration().setCurrentApromoreIndex(selectedIndex);
 
-		ConfigurationManager.getConfiguration().setApromoreManagerPath(
-				servers[selectedIndex].getApromoreManagerPath());
-		ConfigurationManager.getConfiguration().setApromoreServerName(
-				servers[selectedIndex].getApromoreServerName());
-		ConfigurationManager.getConfiguration().setApromoreServerPort(
-				servers[selectedIndex].getApromoreServerPort());
+		ConfigurationManager.getConfiguration().setApromoreManagerPath(servers[selectedIndex].getApromoreManagerPath());
+		ConfigurationManager.getConfiguration().setApromoreServerName(servers[selectedIndex].getApromoreServerName());
+		ConfigurationManager.getConfiguration().setApromoreServerPort(servers[selectedIndex].getApromoreServerPort());
 
-		ConfigurationManager.getConfiguration().setApromoreServerURL(
-				servers[selectedIndex].getApromoreServerURL());
+		ConfigurationManager.getConfiguration().setApromoreServerURL(servers[selectedIndex].getApromoreServerURL());
 
 		String url = servers[selectedIndex].getApromoreServerURL();
 		int port = servers[selectedIndex].getApromoreServerPort();
@@ -427,13 +382,11 @@ public class ApromoreAccess {
 		try {
 			connect(getURI(url, port, managerPath));
 		} catch (SOAPException e) {
-			showDialog(
-					Messages.getString("Apromore.UI.Validation.Error.connection"),
-					Messages.getString("Apromore.UI.Error.Title"),
-					JOptionPane.ERROR_MESSAGE);
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.connection"),
+					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 
 		}
 
 	}
-	
+
 }
