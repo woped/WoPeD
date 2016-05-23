@@ -117,7 +117,7 @@ public class P2TSideBar extends JPanel implements ActionListener{
 	}
     
     /**
-     * Hanles the highlighting of the elements in the text
+     * Handles the highlighting of the elements in the text
      * @param id; the ID of the element to be set highlighted
      */
     private void highlightIDinProcess(String id){
