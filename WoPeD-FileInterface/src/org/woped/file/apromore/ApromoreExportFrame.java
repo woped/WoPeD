@@ -145,10 +145,10 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 	private JPanel getButtonPanel() {
 		if (buttonPanel == null) {
 			buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-			buttonPanel.setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createTitledBorder(Messages
-							.getString("Apromore.UI.ButoonPanelExport")),
-					BorderFactory.createEmptyBorder(0, 2, 0, 2)));
+//			buttonPanel.setBorder(BorderFactory.createCompoundBorder(
+//					BorderFactory.createTitledBorder(Messages
+//							.getString("Apromore.UI.ButoonPanelExport")),
+//					BorderFactory.createEmptyBorder(0, 2, 0, 2)));
 
 			buttonPanel.add(getExportButton());
 			buttonPanel.add(getUpdateButton());
