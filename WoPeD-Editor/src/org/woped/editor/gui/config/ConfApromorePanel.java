@@ -154,35 +154,45 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			JOptionPane.showMessageDialog(this, Messages.getString("Configuration.Apromore.Dialog.Restart.Message"),
 					Messages.getString("Configuration.Apromore.Dialog.Restart.Title"), JOptionPane.INFORMATION_MESSAGE);
 		}
+		if (saveButton.isEnabled()) {
+			int result = JOptionPane.showConfirmDialog(this,
+					Messages.getString("Configuration.Dialog.DiscardChanges.Message"),
+					Messages.getString("Configuration.Dialog.DiscardChanges.Title"), JOptionPane.YES_NO_OPTION);
 
-		if (ConfigurationManager.getConfiguration().isSetApromoreServers()) {
-			currentIndex = ConfigurationManager.getConfiguration().getCurrentApromoreIndex();
-			serverComboBox.setSelectedIndex(currentIndex);
-			servers = ConfigurationManager.getConfiguration().getApromoreServers();
-			setTextFields();
-		} else {
-			setDefaultApromoreServer();
-			servers = ConfigurationManager.getConfiguration().getApromoreServers();
-			ConfigurationManager.getConfiguration().setApromoreUse(useBox.isSelected());
-			ConfigurationManager.getConfiguration().setCurrentApromoreIndex(serverComboBox.getSelectedIndex());
-			ConfigurationManager.getConfiguration()
-					.setApromoreServerName(getServerNameText().getText() + getServerNameTextUser().getText());
-			ConfigurationManager.getConfiguration().setApromoreServerURL(getServerURLText().getText());
-			ConfigurationManager.getConfiguration()
-					.setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
-			ConfigurationManager.getConfiguration().setApromoreManagerPath(getManagerPathText().getText());
-			ConfigurationManager.getConfiguration().setApromoreUsername(getUsernameText().getText());
-			try {
-				password = ApromorePasswordSecurity.encode(passwordText.getPassword().toString());
-				ConfigurationManager.getConfiguration().setApromorePassword(password);
-			} catch (NoSuchAlgorithmException | InvalidKeyException | UnsupportedEncodingException
-					| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
-				e.printStackTrace();
+			if (result == JOptionPane.YES_OPTION) {
+
+				if (ConfigurationManager.getConfiguration().isSetApromoreServers()) {
+					currentIndex = ConfigurationManager.getConfiguration().getCurrentApromoreIndex();
+					serverComboBox.setSelectedIndex(currentIndex);
+					servers = ConfigurationManager.getConfiguration().getApromoreServers();
+					setTextFields();
+				} else {
+					setDefaultApromoreServer();
+					servers = ConfigurationManager.getConfiguration().getApromoreServers();
+					ConfigurationManager.getConfiguration().setApromoreUse(useBox.isSelected());
+					ConfigurationManager.getConfiguration().setCurrentApromoreIndex(serverComboBox.getSelectedIndex());
+					ConfigurationManager.getConfiguration()
+							.setApromoreServerName(getServerNameText().getText() + getServerNameTextUser().getText());
+					ConfigurationManager.getConfiguration().setApromoreServerURL(getServerURLText().getText());
+					ConfigurationManager.getConfiguration()
+							.setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
+					ConfigurationManager.getConfiguration().setApromoreManagerPath(getManagerPathText().getText());
+					ConfigurationManager.getConfiguration().setApromoreUsername(getUsernameText().getText());
+					try {
+						password = ApromorePasswordSecurity.encode(passwordText.getPassword().toString());
+						ConfigurationManager.getConfiguration().setApromorePassword(password);
+					} catch (NoSuchAlgorithmException | InvalidKeyException | UnsupportedEncodingException
+							| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
+						e.printStackTrace();
+					}
+					ConfigurationManager.getConfiguration().setApromoreUseProxy(useProxyBox.isSelected());
+					ConfigurationManager.getConfiguration().setApromoreProxyName(getProxyNameText().getText());
+					ConfigurationManager.getConfiguration()
+							.setApromoreProxyPort(Integer.parseInt(getProxyPortText().getText()));
+				}
+
 			}
-			ConfigurationManager.getConfiguration().setApromoreUseProxy(useProxyBox.isSelected());
-			ConfigurationManager.getConfiguration().setApromoreProxyName(getProxyNameText().getText());
-			ConfigurationManager.getConfiguration()
-					.setApromoreProxyPort(Integer.parseInt(getProxyPortText().getText()));
+
 		}
 
 		return true;
