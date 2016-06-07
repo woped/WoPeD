@@ -72,7 +72,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static String DEFAULT_COUNTRY = "";
 	public static String DEFAULT_VARIANT = "";
 	public static int DEFAULT_APROMORE_CURRENTINDEX = 0;
-	public static String DEFAULT_APROMORE_SERVERNAME = "DHBW Karlsruhe";
+	public static String DEFAULT_APROMORE_SERVERNAME = "Test@DHBW Karlsruhe";
 	public static String DEFAULT_APROMORE_SERVERURL = "http://woped.dhbw-karlsruhe.de";
 	public static int DEFAULT_APROMORE_SERVERPORT = 9000;
 	public static String DEFAULT_APROMORE_MANAGERPATH = "manager/services/manager";
