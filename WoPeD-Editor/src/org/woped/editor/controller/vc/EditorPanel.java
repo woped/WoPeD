@@ -14,7 +14,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
-import java.io.IOException;
 import java.util.Iterator;
 
 import javax.swing.BorderFactory;
@@ -22,18 +21,14 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JEditorPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTree;
-import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
-import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.HTMLFrameHyperlinkEvent;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
@@ -48,10 +43,10 @@ import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.editor.gui.OverviewPanel;
 import org.woped.editor.orientation.EditorSize;
 import org.woped.editor.orientation.Orientation;
+import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.p2t.P2TSideBar;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
-import org.woped.gui.translations.Messages;
 import org.woped.understandability.NetColorScheme;
 
 @SuppressWarnings("serial")
@@ -65,8 +60,11 @@ public class EditorPanel extends JPanel {
 	private boolean analysisBarVisible = false;
 	private boolean p2TBarVisible = false;
 	private SideBar qualitativeAnalysisSideBar = null;
+	private P2TSideBar p2tSideBar = null;
 	private JLabel semanticLabel = null;
-	private JPanel analysisSideBar = new JPanel(new GridBagLayout());
+	private JLabel p2tLabel = null;
+	private JPanel analysisSideBarPanel = new JPanel(new GridBagLayout());
+	private JPanel p2tSideBarPanel = new JPanel(new GridBagLayout());
 	private JCheckBox autoRefresh = null;
 	private JCheckBox tStarCheckBox = null;
 	private boolean tStarEnabled = false;
@@ -78,9 +76,7 @@ public class EditorPanel extends JPanel {
 	private static final int m_splitSize = 10;
 	private final int m_splitHeightOverviewPosition = 100;
 	private boolean automaticResize = false;
-	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
-	
-	private P2TSideBar p2tSideBar = null;
+	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;	
 	
 	/**
 	 * TODO: These members are public for now while we are still in 
@@ -128,12 +124,12 @@ public class EditorPanel extends JPanel {
 		m_EditorLayoutInfo.setVerticalLayout(isRotateSelected());		
 		
 		if (loadUI) {
-			//big Editorpanel
+			// Big editor panel
 			m_scrollPane = new JScrollPane(editor.getGraph());
 			Dimension scrollPaneMinimumSize = new Dimension(0, 0);
 			m_scrollPane.setMinimumSize(scrollPaneMinimumSize);
 
-			//treePanel
+			// TreePanel
 			treeviewPanel = getTreeviewPanel();
 			// Overview Panel
 			overviewPanel = getOverviewPanel();
@@ -162,7 +158,9 @@ public class EditorPanel extends JPanel {
 			// NetColorScheme
 			m_understandColoring = new NetColorScheme();			
 		}
-		initializeAnalysisBar();
+		
+		initializeAnalysisSideBar();
+		initializeP2TSideBar();
 	}
 	
 	
@@ -261,9 +259,9 @@ public class EditorPanel extends JPanel {
 						setOverviewPanelVisible(false);
 					} else if (panel == treeviewPanel) {
 						setTreeviewPanelVisible(false);
-					} else if (panel == analysisSideBar) {
+					} else if (panel == analysisSideBarPanel) {
 						hideAnalysisBar();
-					} else if (panel == p2tSideBar) {
+					} else if (panel == p2tSideBarPanel) {
 						hideP2TBar();
 					}
 					propertyChangeSupport.firePropertyChange("Sidebar", null,
@@ -501,7 +499,6 @@ public class EditorPanel extends JPanel {
 
 	
 			revalidate();
-//			editorSize.resize(false);
 		}
 	}
 
@@ -540,7 +537,6 @@ public class EditorPanel extends JPanel {
 			add(m_mainSplitPane);
 	
 			revalidate();
-//			editorSize.resize(false);
 		}
 	}
 
@@ -615,7 +611,7 @@ public class EditorPanel extends JPanel {
 	 * 
 	 * @author Martin Meitz
 	 */
-	public void initializeAnalysisBar(){
+	public void initializeAnalysisSideBar(){
 		semanticLabel = new JLabel(Messages.getString("Tools.semanticalAnalysis.text"));
 		semanticLabel.setFont(HEADER_FONT);		
 		
@@ -654,17 +650,16 @@ public class EditorPanel extends JPanel {
 		// define close button
 		HideLabel semanticPanelClose = new HideLabel(
 				Messages.getImageIcon("AnalysisSideBar.Cancel"),
-				analysisSideBar);
-		
-		// 
-		analysisSideBar.add(semanticLabel, new GridBagConstraints(0, 0, 2, 2,
+				analysisSideBarPanel);
+
+		analysisSideBarPanel.add(semanticLabel, new GridBagConstraints(0, 0, 2, 2,
 				0.0, 0.0, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-		analysisSideBar.add(semanticPanelClose, new GridBagConstraints(3, 0, 1, 1,
+		analysisSideBarPanel.add(semanticPanelClose, new GridBagConstraints(3, 0, 1, 1,
 				0.0, 0.0, GridBagConstraints.NORTHEAST,
 				GridBagConstraints.REMAINDER,
 				new Insets(0, 0, 0, 1), 0, 0));
-		analysisSideBar.add(qualitativeAnalysisSideBar, new GridBagConstraints(0, 1, 4, 1, 1.0,
+		analysisSideBarPanel.add(qualitativeAnalysisSideBar, new GridBagConstraints(0, 1, 4, 1, 1.0,
 				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
 				new Insets(0, 0, 0, 0), 0, 0));
 	}
@@ -688,7 +683,7 @@ public class EditorPanel extends JPanel {
 			qualitativeAnalysisSideBar.refresh();
 			
 			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(
-					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, analysisSideBar);
+					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, analysisSideBarPanel);
 			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
 				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
@@ -700,8 +695,7 @@ public class EditorPanel extends JPanel {
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(false);
-			}
-	
+			}	
 			
 			Dimension rightSideTreeViewWithAnalysisBarMinimumSize = new Dimension(0,0);
 			m_rightSideTreeViewWithAnalysisBar.setMinimumSize(rightSideTreeViewWithAnalysisBarMinimumSize);
@@ -846,9 +840,6 @@ public class EditorPanel extends JPanel {
 		return m_mainSplitPane;
 	}
 
-//	public ParaphrasingController getParaphrasingPanel(){
-//		return this.paraphrasingTab;
-//	}
 	public void checkMainSplitPaneDivider() {
 			BasicSplitPaneUI ui = (BasicSplitPaneUI) getMainSplitPane().getUI();
 			BasicSplitPaneDivider divider = ui.getDivider();
@@ -882,7 +873,7 @@ public class EditorPanel extends JPanel {
 
 	/**
 	 * Calls the algorithms for rotating the view and the elements
-	 * @param editorVC TODO
+	 * @param editorVC
 	 */
 	public void rotateLayout(EditorVC editorVC) {
 		// Is necessary to switch off the undoManager
@@ -890,9 +881,7 @@ public class EditorPanel extends JPanel {
 			((WoPeDUndoManager) editorVC.getGraph().getUndoManager()).setEnabled(false);
 		}
 		editorVC.getEditorPanel().m_orientation.rotateView(editorVC.getModelProcessor().getElementContainer());
-	
-		// TODO
-	
+		
 		if (editorVC.isRotateSelected()) {
 			LoggerManager.debug(Constants.EDITOR_LOGGER,
 					"DEACTIVATE RotateSelected ");
@@ -923,6 +912,29 @@ public class EditorPanel extends JPanel {
 		editorVC.setSaved(false);
 	}
 
+	public void initializeP2TSideBar(){
+		p2tLabel = new JLabel(Messages.getString("P2T.openP2T.text"));
+		p2tLabel.setFont(HEADER_FONT);
+				
+		p2tSideBar = new org.woped.qualanalysis.p2t.P2TSideBar(editor);
+
+		// Define close button
+		HideLabel p2tPanelClose = new HideLabel(
+				Messages.getImageIcon("AnalysisSideBar.Cancel"),
+				p2tSideBarPanel);
+		
+		p2tSideBarPanel.add(p2tLabel, new GridBagConstraints(0, 0, 2, 2,
+				0.0, 0.0, GridBagConstraints.NORTHWEST,
+				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+		p2tSideBarPanel.add(p2tPanelClose, new GridBagConstraints(3, 0, 1, 1,
+				0.0, 0.0, GridBagConstraints.NORTHEAST,
+				GridBagConstraints.REMAINDER,
+				new Insets(0, 0, 0, 1), 0, 0));
+		p2tSideBarPanel.add(p2tSideBar, new GridBagConstraints(0, 1, 4, 1, 1.0,
+				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
+				new Insets(0, 0, 0, 0), 0, 0));
+	}
+	
 	public void showP2TBar() {
 		if (p2TBarVisible){
 			hideP2TBar();
@@ -937,14 +949,10 @@ public class EditorPanel extends JPanel {
 			}
 			
 			remove(m_mainSplitPane);
-			// create the metrics sidebar
-			p2tSideBar = new org.woped.qualanalysis.p2t.P2TSideBar(editor);
-	
-			// create a Panel, which contains the sidebar
-			JPanel sideBar = new JPanel(new BorderLayout());
-			sideBar.add(p2tSideBar, BorderLayout.CENTER);
+			getContainer();
 			
-			m_rightSideTreeViewWithP2TBar= new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, p2tSideBar);
+			m_rightSideTreeViewWithP2TBar = new JSplitPane(
+					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, p2tSideBarPanel);
 			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
 				m_rightSideTreeViewWithP2TBar.setDividerLocation(200);
 				m_rightSideTreeViewWithP2TBar.setEnabled(true);
@@ -956,23 +964,22 @@ public class EditorPanel extends JPanel {
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
 				m_rightSideTreeViewWithP2TBar.setEnabled(false);
-			}
+			}	
 			
 			Dimension rightSideTreeViewWithP2TBarMinimumSize = new Dimension(0,0);
 			m_rightSideTreeViewWithP2TBar.setMinimumSize(rightSideTreeViewWithP2TBarMinimumSize);
-			
-			
+	
 			mainsplitPaneWithP2TBar = m_mainSplitPane;
-			mainsplitPaneWithP2TBar.setBottomComponent(m_rightSideTreeViewWithP2TBar);
+			mainsplitPaneWithP2TBar
+					.setBottomComponent(m_rightSideTreeViewWithP2TBar);
 	
 			add(mainsplitPaneWithP2TBar);
 			p2TBarVisible = true;
 			revalidate();
-			mainsplitPaneWithP2TBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
+			editorSize.resize(false);
+			mainsplitPaneWithP2TBar.setDividerLocation((int) (
+					getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithP2TBar.setResizeWeight(1);
-						
-			JEditorPane p2TeditorPane = new JEditorPane();
-			p2TeditorPane.setEditable(false);
 		}
 	}
 

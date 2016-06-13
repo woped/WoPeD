@@ -30,7 +30,6 @@ import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.beans.PropertyVetoException;
-import java.util.Iterator;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
@@ -44,15 +43,11 @@ import org.woped.bpel.gui.EditorData;
 import org.woped.bpel.gui.EditorOperations;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorFrame;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.editor.controller.PetriNetResourceEditor;
 import org.woped.editor.controller.vc.EditorStatusBarVC;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.gui.translations.Messages;
-
-import org.woped.qualanalysis.paraphrasing.view.ParaphrasingPanel;
 
 
 /**
@@ -67,7 +62,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
     private PetriNetResourceEditor m_resourceEditor 		= null;
     private EditorStatusBarVC      m_statusBar              = null;
     private EditorOperations       m_operationsEditor		= null;
-    private ParaphrasingPanel	   m_paraPhrasingPanel		= null;
     private JTabbedPane            m_tabbedPane             = null;
 
      public DefaultEditorFrame(EditorVC editor, EditorOperations opEditor, EditorData dEditor, PetriNetResourceEditor propEditor) {
@@ -78,8 +72,7 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
         m_resourceEditor = propEditor;
     	addInternalFrameListener(m_editor);
     	m_operationsEditor = opEditor;
-    	m_paraPhrasingPanel = new ParaphrasingPanel(m_editor);
-        this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
+    	this.setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
 
         if (editor instanceof SubprocessEditorVC) {
             this.setFrameIcon(Messages.getImageIcon("Popup.Add.Subprocess"));
@@ -94,7 +87,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             m_tabbedPane.addTab(Messages.getString("PetriNet.Process.Title"), m_editor.getEditorPanel());
             m_tabbedPane.addTab(Messages.getString("PetriNet.Resources.Title"), propScrollPane);
             m_tabbedPane.addTab(Messages.getString("PetriNet.Operations.Title"), m_operationsEditor);
-//            m_tabbedPane.addTab(Messages.getString("Paraphrasing.Description"), m_paraPhrasingPanel);
             m_tabbedPane.getModel().addChangeListener(new ChangeListener()
             {
             	public void stateChanged(ChangeEvent e)
