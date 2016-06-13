@@ -2,19 +2,14 @@ package org.woped.qualanalysis.p2t;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.LinkedHashMap;
 
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
@@ -40,21 +35,21 @@ import org.woped.qualanalysis.paraphrasing.controller.WebServiceThread;
  *
  */
 public class P2TSideBar extends JPanel implements ActionListener {
-	// in further releases the logic, listeners and the panel should be
-	// separated in different classes
+
 	private IEditor editor = null;
 	private JEditorPane textpane = null;
 	private Process2Text naturalTextParser = null;
 	private JButton buttonLoad = null;
 	private JButton buttonExport = null;
 	private JLabel labelLoading = null;
-	private WebServiceThread webService;
-	private boolean threadInProgress;
+	private WebServiceThread webService = null;
+	private boolean threadInProgress = false;
+	private boolean firstTimeDisplayed = false;
 
 	/**
 	 * 
 	 * @param currentEditor
-	 *            the editor in which the instance of the sidebar is used
+	 *            Editor in which the instance of the sidebar is used
 	 */
 	public P2TSideBar(IEditor currentEditor) {
 		super();
@@ -74,10 +69,10 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Setter for the used pareser
+	 * Setter for the used parser
 	 * 
 	 * @param naturalTextParser
-	 *            the parser-instance to be used in this sidebar
+	 *            Parser instance to be used in this sidebar
 	 */
 	public void setNaturalTextParser(org.woped.qualanalysis.p2t.Process2Text naturalTextParser) {
 		this.naturalTextParser = naturalTextParser;
@@ -166,7 +161,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	 * Method to handle the highlighting of the elements and in the text
 	 * 
 	 * @param ids;
-	 *            id of the element and the text-passage to be highlighted
+	 *            ID of the element and the text-passage to be highlighted
 	 */
 	private void highlightElement(String ids) {
 		String[] singleIDs = ids.split(",");
@@ -182,7 +177,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	 * Handles the highlighting of the elements in the text
 	 * 
 	 * @param id;
-	 *            the ID of the element to be set highlighted
+	 *            ID of the element to be set highlighted
 	 */
 	private void highlightIDinProcess(String id) {
 		ModelElementContainer mec = editor.getModelProcessor().getElementContainer();
@@ -191,17 +186,18 @@ public class P2TSideBar extends JPanel implements ActionListener {
 
 	/**
 	 * 
-	 * Highlights passages linked to the given id within the displayed text
+	 * Highlights passages linked to the given ID within the displayed text
 	 * 
 	 * @param id,
-	 *            the id of the element of which the corresponding text is to be
+	 *            ID of the element of which the corresponding text is to be
 	 *            highlighted
 	 */
 	public void highlightIDinText(String id) {
 		clean();
-		// is there a linked text
+
+		// Check if there is a linked text
 		if (naturalTextParser != null) {
-			// get the text(s) of the id
+			// get the text(s) of the ID
 			String[] textsToHighlight = naturalTextParser.getLinkedTexts(id);
 			for (String find : textsToHighlight) {
 
@@ -217,7 +213,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 					if (find.equals(match)) {
 						javax.swing.text.DefaultHighlighter.DefaultHighlightPainter highlightPainter = null;
 						highlightPainter = new javax.swing.text.DefaultHighlighter.DefaultHighlightPainter(
-								Color.ORANGE);
+								new Color(255, 0, 0, 128));
 
 						try {
 							textpane.getHighlighter().addHighlight(index, index + find.length(), highlightPainter);
@@ -231,44 +227,6 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * @author original by Mathias Gruschinske Label with mouse listener and
-	 *         icon to hide the sidebar
-	 */
-	class HideLabel extends JLabel {
-
-		private static final long serialVersionUID = 1L;
-
-		public HideLabel(Icon icon, String toolTip) {
-			super(icon);
-
-			this.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
-			this.setToolTipText(toolTip);
-
-			this.addMouseListener(new MouseListener() {
-
-				public void mouseReleased(MouseEvent e) {
-				}
-
-				public void mousePressed(MouseEvent e) {
-				}
-
-				public void mouseEntered(MouseEvent arg0) {
-					setCursor(new Cursor(Cursor.HAND_CURSOR));
-				}
-
-				public void mouseExited(MouseEvent arg0) {
-					setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-				}
-
-				public void mouseClicked(MouseEvent e) {
-					editor.hideP2TBar();
-					editor.repaint();
-				}
-			});
-		}
-	}
-
-	/**
 	 * If the reload-button is pressed and the webservice thread is not in
 	 * progress it will be started.
 	 */
@@ -277,7 +235,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		// Process "load" button
 		if (e.getSource() == this.buttonLoad) {
 			showLoadingAnimation(true);
-			
+
 			new WebServiceThread(this);
 
 			// If we already have a text/process description, ask for overwrite
@@ -296,6 +254,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 						Messages.getString("Paraphrasing.Webservice.ThreadInProgress.Message"),
 						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
 			}
+			showLoadingAnimation(false);
 		}
 		// Process "export "button
 		else if (e.getSource() == this.buttonExport) {
@@ -375,9 +334,11 @@ public class P2TSideBar extends JPanel implements ActionListener {
 			}
 		}
 		this.textpane.setText("");
-		this.textpane.setText(naturalTextParser.getHtmlText());
+
+		if (naturalTextParser != null)
+			this.textpane.setText(naturalTextParser.getHtmlText());
+
 		setThreadInProgress(false);
-		showLoadingAnimation(false);
 		webService = null;
 	}
 
@@ -432,4 +393,17 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		this.buttonExport.setEnabled(enable);
 	}
 
+	/**
+	 * Callback method which automatically gets called every time the side bar
+	 * gets displayed or hidden. Can be used to prepare / update the displayed
+	 * content, if required.
+	 * 
+	 * @param visible
+	 */
+	public void onSideBarShown(boolean visible) {
+		if (visible == true && this.firstTimeDisplayed == false) {
+			getText();
+			this.firstTimeDisplayed = true;
+		}
+	}
 }

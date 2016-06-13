@@ -25,13 +25,17 @@ public class ProcessToTextWebServiceImpl
     extends Service
 {
 
-    private final static URL PROCESSTOTEXTWEBSERVICESERVICE_WSDL_LOCATION;
-    private final static WebServiceException PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION;
-    private final static QName PROCESSTOTEXTWEBSERVICESERVICE_QNAME = new QName("http://ws.processtotext/", "ProcessToTextWebServiceService");
-    private final static String CONNECTIONSTRING;
+    private static URL PROCESSTOTEXTWEBSERVICESERVICE_WSDL_LOCATION = null;
+    private static WebServiceException PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION = null;
+    private static QName PROCESSTOTEXTWEBSERVICESERVICE_QNAME = new QName("http://ws.processtotext/", "ProcessToTextWebServiceService");
+    private static String CONNECTIONSTRING = "";
     
-    static {
-        URL url = null;
+    /**
+     * Generate new URL for P2T web service.
+     * @author allgaier
+     */
+    public static void generateURL(){
+    	URL url = null;
         WebServiceException e = null;
         CONNECTIONSTRING = "http://" + ConfigurationManager.getConfiguration().getProcess2TextServerHost() + ":" + ConfigurationManager.getConfiguration().getProcess2TextServerPort() + ConfigurationManager.getConfiguration().getProcess2TextServerURI();
         try {
@@ -44,7 +48,7 @@ public class ProcessToTextWebServiceImpl
     }
 
     public ProcessToTextWebServiceImpl() {
-        super(__getWsdlLocation(), PROCESSTOTEXTWEBSERVICESERVICE_QNAME);
+    	super(__getWsdlLocation(), PROCESSTOTEXTWEBSERVICESERVICE_QNAME);
     }
 
     public ProcessToTextWebServiceImpl(WebServiceFeature... features) {
@@ -93,6 +97,11 @@ public class ProcessToTextWebServiceImpl
         if (PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION!= null) {
             throw PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION;
         }
+        
+        // Ensure that for each call, we generate a new URL to reflect potential
+        // configuration changes.
+        generateURL();
+        
         return PROCESSTOTEXTWEBSERVICESERVICE_WSDL_LOCATION;
     }
 

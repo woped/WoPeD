@@ -51,10 +51,10 @@ import org.woped.understandability.NetColorScheme;
 
 @SuppressWarnings("serial")
 public class EditorPanel extends JPanel {
-	
+
 	private JComponent container = null;
 	private IEditor editor;
-	private AbstractApplicationMediator centralMediator;	
+	private AbstractApplicationMediator centralMediator;
 	private PropertyChangeSupport propertyChangeSupport;
 	private boolean bMetricsBarVisible = false;
 	private boolean analysisBarVisible = false;
@@ -68,19 +68,19 @@ public class EditorPanel extends JPanel {
 	private JCheckBox autoRefresh = null;
 	private JCheckBox tStarCheckBox = null;
 	private boolean tStarEnabled = false;
-	private boolean m_UnderstandabilityColoringEnabled = false;	
-	
+	private boolean m_UnderstandabilityColoringEnabled = false;
+
 	// Headers of the different Panes
 	private static final Font HEADER_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_BOLDFONT;
 	private static final int m_splitPosition = 600;
 	private static final int m_splitSize = 10;
 	private final int m_splitHeightOverviewPosition = 100;
 	private boolean automaticResize = false;
-	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;	
-	
+	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
+
 	/**
-	 * TODO: These members are public for now while we are still in 
-	 * the process or factoring out their uses from EditorVC
+	 * TODO: These members are public for now while we are still in the process
+	 * or factoring out their uses from EditorVC
 	 */
 	// ! Stores a reference to the tree view and overview window
 	// ! for the net
@@ -99,30 +99,29 @@ public class EditorPanel extends JPanel {
 	public JScrollPane m_scrollPane = null;
 	// rotate
 	public Orientation m_orientation = null;
-	
+
 	public EditorSize editorSize = null;
 	// Metrics team variables
-	
+
 	NetColorScheme m_understandColoring = null;
 	public GraphTreeModel m_treeModel = null;
 	public EditorLayoutInfo m_EditorLayoutInfo = null;
-	
+
 	public EditorPanel(IEditor editor, AbstractApplicationMediator centralMediator,
-			PropertyChangeSupport propertyChangeSupport, boolean loadUI)
-	{
+			PropertyChangeSupport propertyChangeSupport, boolean loadUI) {
 		this.editor = editor;
 		this.centralMediator = centralMediator;
 		this.propertyChangeSupport = propertyChangeSupport;
-		this.setLayout(new BorderLayout());		
+		this.setLayout(new BorderLayout());
 		// Set some default size for the subprocess window
 		setPreferredSize(new Dimension(600, 400));
-		
+
 		m_orientation = new Orientation();
-		m_EditorLayoutInfo = new EditorLayoutInfo();		
+		m_EditorLayoutInfo = new EditorLayoutInfo();
 		editorSize = new EditorSize(editor);
-		
-		m_EditorLayoutInfo.setVerticalLayout(isRotateSelected());		
-		
+
+		m_EditorLayoutInfo.setVerticalLayout(isRotateSelected());
+
 		if (loadUI) {
 			// Big editor panel
 			m_scrollPane = new JScrollPane(editor.getGraph());
@@ -135,10 +134,8 @@ public class EditorPanel extends JPanel {
 			overviewPanel = getOverviewPanel();
 
 			// Splits
-			m_rightSideTreeView = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-					overviewPanel, treeviewPanel);
+			m_rightSideTreeView = new JSplitPane(JSplitPane.VERTICAL_SPLIT, overviewPanel, treeviewPanel);
 			m_rightSideTreeView.setDividerLocation(100);
-
 
 			m_mainSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, m_scrollPane, m_rightSideTreeView);
 
@@ -147,23 +144,21 @@ public class EditorPanel extends JPanel {
 			m_mainSplitPane.setOneTouchExpandable(true);
 			m_mainSplitPane.setDividerSize(m_splitSize);
 			add(m_mainSplitPane);
-			m_mainSplitPane.addPropertyChangeListener(VisualController
-					.getInstance());
+			m_mainSplitPane.addPropertyChangeListener(VisualController.getInstance());
 
 			Dimension d = m_rightSideTreeView.getMinimumSize();
 			d.width = 0;
 			m_rightSideTreeView.setMinimumSize(d);
 			m_mainSplitPane.setResizeWeight(0.85);
-			
+
 			// NetColorScheme
-			m_understandColoring = new NetColorScheme();			
+			m_understandColoring = new NetColorScheme();
 		}
-		
+
 		initializeAnalysisSideBar();
 		initializeP2TSideBar();
 	}
-	
-	
+
 	/**
 	 * Returns the filename if the net was saved before or was opened from a
 	 * file.
@@ -171,10 +166,9 @@ public class EditorPanel extends JPanel {
 	 * @return String
 	 */
 	public String getName() {
-		return super.getName() == null ? Messages
-				.getString("Document.Title.Untitled") : super.getName();
+		return super.getName() == null ? Messages.getString("Document.Title.Untitled") : super.getName();
 	}
-	
+
 	@SuppressWarnings("all")
 	public JComponent getContainer() {
 		return container;
@@ -183,7 +177,7 @@ public class EditorPanel extends JPanel {
 	public void setContainer(JComponent container) {
 		this.container = container;
 	}
-	
+
 	/**
 	 * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico
 	 *         Moeller, Sebastian Fuss
@@ -192,8 +186,8 @@ public class EditorPanel extends JPanel {
 	@Override
 	public Container getParent() {
 		return super.getParent();
-	}	
-	
+	}
+
 	// ! Set the document name
 	// ! Overridden to also update the title bar of the editor window
 	// ! @param name specifies the name of the edited document
@@ -207,24 +201,21 @@ public class EditorPanel extends JPanel {
 		}
 
 		// notify the editor aware vc
-		Iterator<?> editorIter = centralMediator.getEditorAwareVCs()
-				.iterator();
+		Iterator<?> editorIter = centralMediator.getEditorAwareVCs().iterator();
 		while (editorIter.hasNext()) {
 			((IEditorAware) editorIter.next()).renameEditor(editor);
 		}
 	}
-	
+
 	public void setSideTreeViewVisible(boolean showTreeView) {
-		m_mainSplitPane.setDividerLocation(showTreeView ? m_mainSplitPane
-				.getLastDividerLocation() : m_mainSplitPane
-				.getMaximumDividerLocation());
+		m_mainSplitPane.setDividerLocation(
+				showTreeView ? m_mainSplitPane.getLastDividerLocation() : m_mainSplitPane.getMaximumDividerLocation());
 	}
 
 	public boolean isSideTreeViewVisible() {
-		return (m_mainSplitPane.getDividerLocation() < m_mainSplitPane
-				.getMaximumDividerLocation());
+		return (m_mainSplitPane.getDividerLocation() < m_mainSplitPane.getMaximumDividerLocation());
 	}
-	
+
 	/**
 	 * @author Svenja label with mouse listener and icon to close the
 	 *         overviewpanel or the treeviewPanel
@@ -264,19 +255,18 @@ public class EditorPanel extends JPanel {
 					} else if (panel == p2tSideBarPanel) {
 						hideP2TBar();
 					}
-					propertyChangeSupport.firePropertyChange("Sidebar", null,
-							null);
+					propertyChangeSupport.firePropertyChange("Sidebar", null, null);
 
 				}
 			});
 		}
 	}
-	
+
 	public JPanel getTreeviewPanel() {
 		if (treeviewPanel == null) {
 			// creates TreeModel
 			m_treeModel = new GraphTreeModel(editor);
-			
+
 			// Element Tree
 			m_treeObject = new JTree(m_treeModel);
 			m_treeObject.setCellRenderer(new NetInfoTreeRenderer());
@@ -285,33 +275,26 @@ public class EditorPanel extends JPanel {
 			m_treeObject.setShowsRootHandles(true);
 			// Handle selection of tree items
 			// by selecting corresponding item in graph
-			GraphTreeModelSelector selectionHandler = new GraphTreeModelSelector(
-					editor, m_treeObject, centralMediator, false);
+			GraphTreeModelSelector selectionHandler = new GraphTreeModelSelector(editor, m_treeObject, centralMediator,
+					false);
 			m_treeObject.addTreeSelectionListener(selectionHandler);
-			editor.getGraph().getSelectionModel().addGraphSelectionListener(
-					selectionHandler);
-	
+			editor.getGraph().getSelectionModel().addGraphSelectionListener(selectionHandler);
+
 			JScrollPane sTree = new JScrollPane(m_treeObject);
-	
+
 			treeviewPanel = new JPanel(new GridBagLayout());
-			JLabel elementsLabel = new JLabel(
-					Messages.getString("Sidebar.Treeview.Title"));
+			JLabel elementsLabel = new JLabel(Messages.getString("Sidebar.Treeview.Title"));
 			elementsLabel.setFont(EditorPanel.HEADER_FONT);
-	
-			HideLabel treeviewPanelClose = new HideLabel(
-					Messages.getImageIcon("AnalysisSideBar.Cancel"), treeviewPanel);
-	
-			treeviewPanel.add(elementsLabel, new GridBagConstraints(0, 0, 2, 2,
-					0.0, 0.0, GridBagConstraints.NORTHWEST,
+
+			HideLabel treeviewPanelClose = new HideLabel(Messages.getImageIcon("AnalysisSideBar.Cancel"),
+					treeviewPanel);
+
+			treeviewPanel.add(elementsLabel, new GridBagConstraints(0, 0, 2, 2, 0.0, 0.0, GridBagConstraints.NORTHWEST,
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-			treeviewPanel
-					.add(treeviewPanelClose, new GridBagConstraints(3, 0, 1, 1,
-							0.0, 0.0, GridBagConstraints.NORTHEAST,
-							GridBagConstraints.REMAINDER,
-							new Insets(0, 0, 0, 1), 0, 0));
-			treeviewPanel.add(sTree, new GridBagConstraints(0, 1, 4, 1, 1.0, 1.0,
-					GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
-					new Insets(0, 0, 0, 0), 0, 0));
+			treeviewPanel.add(treeviewPanelClose, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
+					GridBagConstraints.NORTHEAST, GridBagConstraints.REMAINDER, new Insets(0, 0, 0, 1), 0, 0));
+			treeviewPanel.add(sTree, new GridBagConstraints(0, 1, 4, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST,
+					GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 		}
 		return treeviewPanel;
 	}
@@ -320,25 +303,18 @@ public class EditorPanel extends JPanel {
 		if (overviewPanel == null) {
 			OverviewPanel overview = new OverviewPanel(editor, m_scrollPane);
 			overviewPanel = new JPanel(new GridBagLayout());
-			JLabel overviewLabel = new JLabel(
-					Messages.getString("Sidebar.Overview.Title"));
+			JLabel overviewLabel = new JLabel(Messages.getString("Sidebar.Overview.Title"));
 			overviewLabel.setFont(HEADER_FONT);
-	
-			HideLabel overviewPanelClose = new HideLabel(
-					Messages.getImageIcon("AnalysisSideBar.Cancel"),
+
+			HideLabel overviewPanelClose = new HideLabel(Messages.getImageIcon("AnalysisSideBar.Cancel"),
 					overviewPanel);
-			overviewPanel.add(overviewLabel, new GridBagConstraints(0, 0, 2, 2,
-					0.0, 0.0, GridBagConstraints.NORTHWEST,
+			overviewPanel.add(overviewLabel, new GridBagConstraints(0, 0, 2, 2, 0.0, 0.0, GridBagConstraints.NORTHWEST,
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-			overviewPanel
-					.add(overviewPanelClose, new GridBagConstraints(3, 0, 1, 1,
-							0.0, 0.0, GridBagConstraints.NORTHEAST,
-							GridBagConstraints.REMAINDER,
-							new Insets(0, 0, 0, 1), 0, 0));
-			overviewPanel.add(overview, new GridBagConstraints(0, 1, 4, 1, 1.0,
-					1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
-					new Insets(0, 0, 0, 0), 0, 0));
-	
+			overviewPanel.add(overviewPanelClose, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
+					GridBagConstraints.NORTHEAST, GridBagConstraints.REMAINDER, new Insets(0, 0, 0, 1), 0, 0));
+			overviewPanel.add(overview, new GridBagConstraints(0, 1, 4, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST,
+					GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+
 		}
 		return overviewPanel;
 	}
@@ -351,10 +327,8 @@ public class EditorPanel extends JPanel {
 		overviewPanel.setVisible(show);
 		m_rightSideTreeView.setDividerLocation(100);
 		if (show) {
-			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isTreeviewPanelVisible() && !isP2TBarVisible()) {
-				m_mainSplitPane.setDividerLocation(m_mainSplitPane
-						.getLastDividerLocation());
+			if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
+				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getLastDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
 			}
@@ -384,10 +358,9 @@ public class EditorPanel extends JPanel {
 					m_rightSideTreeViewWithAnalysisBar.setEnabled(false);
 				}
 			}
-			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
-				m_mainSplitPane.setDividerLocation(m_mainSplitPane
-						.getMaximumDividerLocation());
+			if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isOverviewPanelVisible()
+					&& !isTreeviewPanelVisible() && !isP2TBarVisible()) {
+				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
 				m_mainSplitPane.setEnabled(false);
 			}
@@ -402,14 +375,12 @@ public class EditorPanel extends JPanel {
 		treeviewPanel.setVisible(show);
 		m_rightSideTreeView.setDividerLocation(100);
 		if (show) {
-			if (!isOverviewPanelVisible() && !isAnalysisBarVisible()
-					&& !isMetricsBarVisible() && !isP2TBarVisible()) {
-				m_mainSplitPane.setDividerLocation(m_mainSplitPane
-						.getLastDividerLocation());
+			if (!isOverviewPanelVisible() && !isAnalysisBarVisible() && !isMetricsBarVisible() && !isP2TBarVisible()) {
+				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getLastDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
 			}
-			if (isAnalysisBarVisible() || isMetricsBarVisible()||isP2TBarVisible()) {
+			if (isAnalysisBarVisible() || isMetricsBarVisible() || isP2TBarVisible()) {
 				if (isOverviewPanelVisible()) {
 					m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
 					m_rightSideTreeView.setEnabled(true);
@@ -423,7 +394,7 @@ public class EditorPanel extends JPanel {
 			}
 		} else {
 			if (isOverviewPanelVisible()) {
-				if (isAnalysisBarVisible() || isMetricsBarVisible()||isP2TBarVisible()) {
+				if (isAnalysisBarVisible() || isMetricsBarVisible() || isP2TBarVisible()) {
 					m_rightSideTreeViewWithAnalysisBar.setDividerLocation(100);
 					m_rightSideTreeView.setEnabled(false);
 				}
@@ -435,11 +406,10 @@ public class EditorPanel extends JPanel {
 					m_rightSideTreeViewWithAnalysisBar.setEnabled(false);
 				}
 			}
-	
-			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
-				m_mainSplitPane.setDividerLocation(m_mainSplitPane
-						.getMaximumDividerLocation());
+
+			if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isOverviewPanelVisible()
+					&& !isTreeviewPanelVisible() && !isP2TBarVisible()) {
+				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
 				m_mainSplitPane.setEnabled(false);
 			}
@@ -487,8 +457,8 @@ public class EditorPanel extends JPanel {
 			analysisBarVisible = false;
 			qualitativeAnalysisSideBar.refresh();
 
-			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible() && !isP2TBarVisible()) {
+			if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isOverviewPanelVisible()
+					&& !isTreeviewPanelVisible() && !isP2TBarVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
 				m_mainSplitPane.setEnabled(false);
@@ -497,7 +467,6 @@ public class EditorPanel extends JPanel {
 			}
 			add(m_mainSplitPane);
 
-	
 			revalidate();
 		}
 	}
@@ -510,7 +479,7 @@ public class EditorPanel extends JPanel {
 		result.setTreePanelVisible(isTreeviewPanelVisible());
 		result.setSavedSize(getSize());
 		result.setSavedLocation(getLocation());
-	
+
 		return result;
 	}
 
@@ -525,17 +494,16 @@ public class EditorPanel extends JPanel {
 			metricsSideBar.clean();
 			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
 			bMetricsBarVisible = false;
-			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
-				m_mainSplitPane.setDividerLocation(m_mainSplitPane
-						.getMaximumDividerLocation());
+			if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isOverviewPanelVisible()
+					&& !isTreeviewPanelVisible()) {
+				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
 				m_mainSplitPane.setEnabled(false);
 			} else {
 				m_mainSplitPane.setResizeWeight(0.85);
 			}
 			add(m_mainSplitPane);
-	
+
 			revalidate();
 		}
 	}
@@ -544,27 +512,25 @@ public class EditorPanel extends JPanel {
 		if (layoutInfo != null) {
 			if (m_mainSplitPane != null) {
 				int divLoc;
-				//if(layoutInfo.getTreeViewWidthRight()){
-					divLoc = layoutInfo.getTreeViewWidthRight();
-				//}//else{
-					//divLoc = layoutInfo.getTreeViewWidth();
-				//}
+				// if(layoutInfo.getTreeViewWidthRight()){
+				divLoc = layoutInfo.getTreeViewWidthRight();
+				// }//else{
+				// divLoc = layoutInfo.getTreeViewWidth();
+				// }
 				m_mainSplitPane.setDividerLocation(divLoc);
 				if (divLoc <= 1) {
-					m_mainSplitPane
-							.setLastDividerLocation(m_splitPosition);
+					m_mainSplitPane.setLastDividerLocation(m_splitPosition);
 				}
 			}
-	
+
 			if (m_rightSideTreeView != null) {
 				int heightLoc = layoutInfo.getTreeHeightOverview();
 				m_rightSideTreeView.setDividerLocation(heightLoc);
 				if (heightLoc <= 1) {
-					m_rightSideTreeView
-							.setLastDividerLocation(m_splitHeightOverviewPosition);
+					m_rightSideTreeView.setLastDividerLocation(m_splitHeightOverviewPosition);
 				}
 			}
-	
+
 			if (overviewPanel != null) {
 				setOverviewPanelVisible(layoutInfo.getOverviewPanelVisible());
 			}
@@ -579,8 +545,7 @@ public class EditorPanel extends JPanel {
 			// Instead, look into our parents
 			// to find the one that is a JInternalFrame
 			Container currentParent = getParent();
-			while ((currentParent != null)
-					&& (!(currentParent instanceof JInternalFrame))) {
+			while ((currentParent != null) && (!(currentParent instanceof JInternalFrame))) {
 				currentParent = currentParent.getParent();
 			}
 			if (currentParent != null) {
@@ -588,18 +553,19 @@ public class EditorPanel extends JPanel {
 				getSize(editorDim);
 				Dimension frameDim = new Dimension();
 				currentParent.getSize(frameDim);
-	
+
 				// There is some overhead that must be taken into account
 				// here...
 				d.width += frameDim.width - editorDim.width;
 				d.height += frameDim.height - editorDim.height;
-	
+
 				currentParent.setSize(d);
-	
+
 			}
-	
-			VisualController.getInstance().propertyChange(new PropertyChangeEvent(centralMediator, "InternalFrameCount", null, null));
-	
+
+			VisualController.getInstance()
+					.propertyChange(new PropertyChangeEvent(centralMediator, "InternalFrameCount", null, null));
+
 			// Currently, we ignore the position
 			// It's unwanted sometimes, especially if things like desktop
 			// resolution change
@@ -611,27 +577,23 @@ public class EditorPanel extends JPanel {
 	 * 
 	 * @author Martin Meitz
 	 */
-	public void initializeAnalysisSideBar(){
+	public void initializeAnalysisSideBar() {
 		semanticLabel = new JLabel(Messages.getString("Tools.semanticalAnalysis.text"));
-		semanticLabel.setFont(HEADER_FONT);		
-		
+		semanticLabel.setFont(HEADER_FONT);
+
 		// settings for qualitative Analysis tab
 		boolean autoRefreshStatus = true;
-		tStarCheckBox = new JCheckBox(
-				Messages.getString("AnalysisSideBar.Footer.TStar"));
-		
-		qualitativeAnalysisSideBar = new SideBar(editor, centralMediator, autoRefreshStatus,
-				tStarCheckBox);
+		tStarCheckBox = new JCheckBox(Messages.getString("AnalysisSideBar.Footer.TStar"));
+
+		qualitativeAnalysisSideBar = new SideBar(editor, centralMediator, autoRefreshStatus, tStarCheckBox);
 
 		JPanel bottomPanel = new JPanel(new BorderLayout());
-		autoRefresh = new JCheckBox(
-				Messages.getString("AnalysisSideBar.Footer.Autorefresh"));
+		autoRefresh = new JCheckBox(Messages.getString("AnalysisSideBar.Footer.Autorefresh"));
 		autoRefresh.setSelected(autoRefreshStatus);
 		autoRefresh.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				boolean selected = ((JCheckBox) arg0.getSource())
-						.isSelected();
+				boolean selected = ((JCheckBox) arg0.getSource()).isSelected();
 				qualitativeAnalysisSideBar.setAutoRefreshStatus(selected);
 				qualitativeAnalysisSideBar.repaint();
 			}
@@ -648,22 +610,17 @@ public class EditorPanel extends JPanel {
 		bottomPanel.add(tStarCheckBox, BorderLayout.SOUTH);
 
 		// define close button
-		HideLabel semanticPanelClose = new HideLabel(
-				Messages.getImageIcon("AnalysisSideBar.Cancel"),
+		HideLabel semanticPanelClose = new HideLabel(Messages.getImageIcon("AnalysisSideBar.Cancel"),
 				analysisSideBarPanel);
 
-		analysisSideBarPanel.add(semanticLabel, new GridBagConstraints(0, 0, 2, 2,
-				0.0, 0.0, GridBagConstraints.NORTHWEST,
-				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-		analysisSideBarPanel.add(semanticPanelClose, new GridBagConstraints(3, 0, 1, 1,
-				0.0, 0.0, GridBagConstraints.NORTHEAST,
-				GridBagConstraints.REMAINDER,
-				new Insets(0, 0, 0, 1), 0, 0));
-		analysisSideBarPanel.add(qualitativeAnalysisSideBar, new GridBagConstraints(0, 1, 4, 1, 1.0,
-				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 0), 0, 0));
+		analysisSideBarPanel.add(semanticLabel, new GridBagConstraints(0, 0, 2, 2, 0.0, 0.0,
+				GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+		analysisSideBarPanel.add(semanticPanelClose, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
+				GridBagConstraints.NORTHEAST, GridBagConstraints.REMAINDER, new Insets(0, 0, 0, 1), 0, 0));
+		analysisSideBarPanel.add(qualitativeAnalysisSideBar, new GridBagConstraints(0, 1, 4, 1, 1.0, 1.0,
+				GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 	}
-	
+
 	/**
 	 * 
 	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
@@ -673,7 +630,7 @@ public class EditorPanel extends JPanel {
 		if (analysisBarVisible) {
 			hideAnalysisBar();
 		}
-		
+
 		if (!analysisBarVisible) {
 			if (bMetricsBarVisible) {
 				hideMetricsBar();
@@ -681,9 +638,9 @@ public class EditorPanel extends JPanel {
 			remove(m_mainSplitPane);
 			getContainer();
 			qualitativeAnalysisSideBar.refresh();
-			
-			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(
-					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, analysisSideBarPanel);
+
+			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView,
+					analysisSideBarPanel);
 			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
 				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
@@ -695,26 +652,23 @@ public class EditorPanel extends JPanel {
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(false);
-			}	
-			
-			Dimension rightSideTreeViewWithAnalysisBarMinimumSize = new Dimension(0,0);
+			}
+
+			Dimension rightSideTreeViewWithAnalysisBarMinimumSize = new Dimension(0, 0);
 			m_rightSideTreeViewWithAnalysisBar.setMinimumSize(rightSideTreeViewWithAnalysisBarMinimumSize);
-	
+
 			mainsplitPaneWithAnalysisBar = m_mainSplitPane;
-			mainsplitPaneWithAnalysisBar
-					.setBottomComponent(m_rightSideTreeViewWithAnalysisBar);
-	
+			mainsplitPaneWithAnalysisBar.setBottomComponent(m_rightSideTreeViewWithAnalysisBar);
+
 			add(mainsplitPaneWithAnalysisBar);
 			analysisBarVisible = true;
 			revalidate();
 			editorSize.resize(false);
-			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (
-					getWidth() - editorSize.SIDEBAR_WIDTH));
+			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
 		}
 	}
 
-	
 	/**
 	 * Shows the metrics sidebar and resize the editor window. Replaces the
 	 * normal EditorSplitPane with another SplitPane with the MetricsSidebar on
@@ -723,27 +677,27 @@ public class EditorPanel extends JPanel {
 	 * @author Mathias Gruschinske, Stefan Hackenberg
 	 */
 	public void showMetricsBar() {
-		if (bMetricsBarVisible){
+		if (bMetricsBarVisible) {
 			hideMetricsBar();
 		}
-		
+
 		if (!bMetricsBarVisible) {
 			if (analysisBarVisible) {
 				hideAnalysisBar();
 			}
-	
+
 			remove(m_mainSplitPane);
-	
+
 			// create the metrics sidebar
 			metricsSideBar = new org.woped.metrics.sidebar.SideBar(editor);
-	
+
 			// create a Panel, which contains the sidebar
 			JPanel sideBar = new JPanel(new BorderLayout());
 			sideBar.add(metricsSideBar, BorderLayout.CENTER);
-	
+
 			// create a new SplitPane with a horizontal split
-			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(
-					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, sideBar);
+			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView,
+					sideBar);
 			if (isOverviewPanelVisible() && isTreeviewPanelVisible() && isP2TBarVisible()) {
 				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
@@ -756,29 +710,27 @@ public class EditorPanel extends JPanel {
 				m_mainSplitPane.setEnabled(true);
 				m_rightSideTreeViewWithAnalysisBar.setEnabled(false);
 			}
-	
-			Dimension rightSideTreeViewWithAnalysisBarMinimumSize = new Dimension(0,0);
+
+			Dimension rightSideTreeViewWithAnalysisBarMinimumSize = new Dimension(0, 0);
 			m_rightSideTreeViewWithAnalysisBar.setMinimumSize(rightSideTreeViewWithAnalysisBarMinimumSize);
-	
+
 			mainsplitPaneWithAnalysisBar = m_mainSplitPane;
-			mainsplitPaneWithAnalysisBar
-					.setBottomComponent(m_rightSideTreeViewWithAnalysisBar);
-	
+			mainsplitPaneWithAnalysisBar.setBottomComponent(m_rightSideTreeViewWithAnalysisBar);
+
 			add(mainsplitPaneWithAnalysisBar);
-	
+
 			// analysisBarVisible = true;
 			bMetricsBarVisible = true;
 			revalidate();
-	
+
 			// new calculation of the size from editor window (only width)
 			editorSize.resize(false);
-	
-			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (
-					getWidth() - editorSize.SIDEBAR_WIDTH));
+
+			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
-	
+
 			metricsSideBar.setKeyLabelWidth();
-	
+
 		}
 	}
 
@@ -812,18 +764,17 @@ public class EditorPanel extends JPanel {
 	public NetColorScheme getM_understandColoring() {
 		return m_understandColoring;
 	}
-	
+
 	/**
 	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
 	 */
 	public void autoRefreshAnalysisBar() {
-		if (analysisBarVisible && autoRefresh != null
-				&& autoRefresh.isSelected()) {
+		if (analysisBarVisible && autoRefresh != null && autoRefresh.isSelected()) {
 			qualitativeAnalysisSideBar.refresh();
 			editorSize.resize(false);
 		}
 	}
-	
+
 	public SideBar getAnalysisSideBar() {
 		return qualitativeAnalysisSideBar;
 	}
@@ -836,35 +787,35 @@ public class EditorPanel extends JPanel {
 		return automaticResize;
 	}
 
-	public JSplitPane getMainSplitPane(){
+	public JSplitPane getMainSplitPane() {
 		return m_mainSplitPane;
 	}
 
 	public void checkMainSplitPaneDivider() {
-			BasicSplitPaneUI ui = (BasicSplitPaneUI) getMainSplitPane().getUI();
-			BasicSplitPaneDivider divider = ui.getDivider();
-			JButton rightArrowButton = (JButton) divider.getComponent(1);
-			JButton leftArrowButton = (JButton) divider.getComponent(0);
-			
-			JSplitPane mainSplit = getMainSplitPane();
-			int minDividerLocation = mainSplit.getMinimumDividerLocation();
-			int dividerLocation = mainSplit.getDividerLocation();
-			int maxDividerLocation = mainSplit.getMaximumDividerLocation();
-			
-			if(minDividerLocation >= dividerLocation){
-				leftArrowButton.setVisible(false);
-				rightArrowButton.setVisible(true);
-			}else if((minDividerLocation < dividerLocation) && (dividerLocation < maxDividerLocation)){
-				leftArrowButton.setVisible(true);
-				rightArrowButton.setVisible(true);
-			}else if(maxDividerLocation >= dividerLocation){
-				leftArrowButton.setVisible(true);
-				rightArrowButton.setVisible(false);
-			}else{
-				leftArrowButton.setVisible(true);
-				rightArrowButton.setVisible(true);
-			}
-		
+		BasicSplitPaneUI ui = (BasicSplitPaneUI) getMainSplitPane().getUI();
+		BasicSplitPaneDivider divider = ui.getDivider();
+		JButton rightArrowButton = (JButton) divider.getComponent(1);
+		JButton leftArrowButton = (JButton) divider.getComponent(0);
+
+		JSplitPane mainSplit = getMainSplitPane();
+		int minDividerLocation = mainSplit.getMinimumDividerLocation();
+		int dividerLocation = mainSplit.getDividerLocation();
+		int maxDividerLocation = mainSplit.getMaximumDividerLocation();
+
+		if (minDividerLocation >= dividerLocation) {
+			leftArrowButton.setVisible(false);
+			rightArrowButton.setVisible(true);
+		} else if ((minDividerLocation < dividerLocation) && (dividerLocation < maxDividerLocation)) {
+			leftArrowButton.setVisible(true);
+			rightArrowButton.setVisible(true);
+		} else if (maxDividerLocation >= dividerLocation) {
+			leftArrowButton.setVisible(true);
+			rightArrowButton.setVisible(false);
+		} else {
+			leftArrowButton.setVisible(true);
+			rightArrowButton.setVisible(true);
+		}
+
 	}
 
 	public GraphTreeModel GetTreeModel() {
@@ -873,6 +824,7 @@ public class EditorPanel extends JPanel {
 
 	/**
 	 * Calls the algorithms for rotating the view and the elements
+	 * 
 	 * @param editorVC
 	 */
 	public void rotateLayout(EditorVC editorVC) {
@@ -881,15 +833,13 @@ public class EditorPanel extends JPanel {
 			((WoPeDUndoManager) editorVC.getGraph().getUndoManager()).setEnabled(false);
 		}
 		editorVC.getEditorPanel().m_orientation.rotateView(editorVC.getModelProcessor().getElementContainer());
-		
+
 		if (editorVC.isRotateSelected()) {
-			LoggerManager.debug(Constants.EDITOR_LOGGER,
-					"DEACTIVATE RotateSelected ");
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "DEACTIVATE RotateSelected ");
 			editorVC.setRotateSelected(false);
 			editorVC.getEditorPanel().m_EditorLayoutInfo.setVerticalLayout(false);
 		} else {
-			LoggerManager.debug(Constants.EDITOR_LOGGER,
-					"ACTIVATE RotateSelected ");
+			LoggerManager.debug(Constants.EDITOR_LOGGER, "ACTIVATE RotateSelected ");
 			editorVC.setRotateSelected(true);
 			editorVC.getEditorPanel().m_EditorLayoutInfo.setVerticalLayout(true);
 		}
@@ -897,14 +847,14 @@ public class EditorPanel extends JPanel {
 		editorVC.getGraph().updateUI();
 		editorVC.getGraph().drawNet(editorVC.getModelProcessor());
 		editorVC.updateNet();
-	
+
 		// Nils Lamb, Jan 2012
 		// prevent resizing if frame is empty (seems weird otherwise)
 		if (editorVC.getModelProcessor().getElementContainer().getIdMap().isEmpty())
 			editorVC.getEditorPanel().editorSize.resize(false);
 		else
 			editorVC.getEditorPanel().editorSize.resize(true);
-	
+
 		// Is necessary to switch on the undoManager
 		if (editorVC.getGraph().getUndoManager() != null) {
 			((WoPeDUndoManager) editorVC.getGraph().getUndoManager()).setEnabled(true);
@@ -912,47 +862,41 @@ public class EditorPanel extends JPanel {
 		editorVC.setSaved(false);
 	}
 
-	public void initializeP2TSideBar(){
+	public void initializeP2TSideBar() {
 		p2tLabel = new JLabel(Messages.getString("P2T.openP2T.text"));
 		p2tLabel.setFont(HEADER_FONT);
-				
+
 		p2tSideBar = new org.woped.qualanalysis.p2t.P2TSideBar(editor);
 
 		// Define close button
-		HideLabel p2tPanelClose = new HideLabel(
-				Messages.getImageIcon("AnalysisSideBar.Cancel"),
-				p2tSideBarPanel);
-		
-		p2tSideBarPanel.add(p2tLabel, new GridBagConstraints(0, 0, 2, 2,
-				0.0, 0.0, GridBagConstraints.NORTHWEST,
+		HideLabel p2tPanelClose = new HideLabel(Messages.getImageIcon("AnalysisSideBar.Cancel"), p2tSideBarPanel);
+
+		p2tSideBarPanel.add(p2tLabel, new GridBagConstraints(0, 0, 2, 2, 0.0, 0.0, GridBagConstraints.NORTHWEST,
 				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-		p2tSideBarPanel.add(p2tPanelClose, new GridBagConstraints(3, 0, 1, 1,
-				0.0, 0.0, GridBagConstraints.NORTHEAST,
-				GridBagConstraints.REMAINDER,
-				new Insets(0, 0, 0, 1), 0, 0));
-		p2tSideBarPanel.add(p2tSideBar, new GridBagConstraints(0, 1, 4, 1, 1.0,
-				1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH,
-				new Insets(0, 0, 0, 0), 0, 0));
+		p2tSideBarPanel.add(p2tPanelClose, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTHEAST,
+				GridBagConstraints.REMAINDER, new Insets(0, 0, 0, 1), 0, 0));
+		p2tSideBarPanel.add(p2tSideBar, new GridBagConstraints(0, 1, 4, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST,
+				GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 	}
-	
+
 	public void showP2TBar() {
-		if (p2TBarVisible){
+		if (p2TBarVisible) {
 			hideP2TBar();
-		} 
-		
+		}
+
 		if (!p2TBarVisible) {
 			if (bMetricsBarVisible) {
 				hideMetricsBar();
 			}
-			if (analysisBarVisible){
+			if (analysisBarVisible) {
 				hideAnalysisBar();
 			}
-			
+
 			remove(m_mainSplitPane);
 			getContainer();
-			
-			m_rightSideTreeViewWithP2TBar = new JSplitPane(
-					JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView, p2tSideBarPanel);
+
+			m_rightSideTreeViewWithP2TBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView,
+					p2tSideBarPanel);
 			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
 				m_rightSideTreeViewWithP2TBar.setDividerLocation(200);
 				m_rightSideTreeViewWithP2TBar.setEnabled(true);
@@ -964,37 +908,38 @@ public class EditorPanel extends JPanel {
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
 				m_rightSideTreeViewWithP2TBar.setEnabled(false);
-			}	
-			
-			Dimension rightSideTreeViewWithP2TBarMinimumSize = new Dimension(0,0);
+			}
+
+			Dimension rightSideTreeViewWithP2TBarMinimumSize = new Dimension(0, 0);
 			m_rightSideTreeViewWithP2TBar.setMinimumSize(rightSideTreeViewWithP2TBarMinimumSize);
-	
+
 			mainsplitPaneWithP2TBar = m_mainSplitPane;
-			mainsplitPaneWithP2TBar
-					.setBottomComponent(m_rightSideTreeViewWithP2TBar);
-	
+			mainsplitPaneWithP2TBar.setBottomComponent(m_rightSideTreeViewWithP2TBar);
+
 			add(mainsplitPaneWithP2TBar);
 			p2TBarVisible = true;
 			revalidate();
 			editorSize.resize(false);
-			mainsplitPaneWithP2TBar.setDividerLocation((int) (
-					getWidth() - editorSize.SIDEBAR_WIDTH));
+			mainsplitPaneWithP2TBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
 			mainsplitPaneWithP2TBar.setResizeWeight(1);
+
+			// Trigger callback on P2T side bar.
+			p2tSideBar.onSideBarShown(true);
 		}
 	}
 
-
 	public void hideP2TBar() {
-		
+
 		if (p2TBarVisible) {
-			
-			qualitativeAnalysisSideBar.showTStarIfPossible();		
+
+			qualitativeAnalysisSideBar.showTStarIfPossible();
 			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
 			p2TBarVisible = false;
+
 			qualitativeAnalysisSideBar.refresh();
 
-			if (!isAnalysisBarVisible() && !isMetricsBarVisible()
-					&& !isOverviewPanelVisible() && !isTreeviewPanelVisible()) {
+			if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isOverviewPanelVisible()
+					&& !isTreeviewPanelVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
 				m_mainSplitPane.setOneTouchExpandable(false);
 				m_mainSplitPane.setEnabled(false);
@@ -1003,8 +948,10 @@ public class EditorPanel extends JPanel {
 			}
 			add(m_mainSplitPane);
 
-	
 			revalidate();
-		}		
+
+			// Trigger callback on P2T side bar.
+			p2tSideBar.onSideBarShown(false);
+		}
 	}
 }
