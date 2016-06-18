@@ -20,7 +20,6 @@ public class P2T implements
 	public static void paint(Graphics2D g) {
         Shape shape = null;
         Paint paint = null;
-        Stroke stroke = null;
          
         float origAlpha = 1.0f;
         Composite origComposite = ((Graphics2D)g).getComposite();

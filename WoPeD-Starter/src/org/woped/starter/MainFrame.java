@@ -1782,6 +1782,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 					fn = fn.replaceAll("%20", " ");
 					JarFile jf = new JarFile(fn);
 					Enumeration<JarEntry> e = jf.entries();
+					jf.close();
 					ZipEntry ze;
 					// process entries
 					while (e.hasMoreElements()) {
@@ -2056,26 +2057,13 @@ private JCommandButton getCommunityButton() {
 		}
 		GlobalShortcutEventDispatcher.addShortcutClickListener(button, propertiesPrefixForShortcuts, ignoreDefaultKeyMask);
 	}
-	/**
-	 * Adds the shortcut to a button - requires mouseclick..
-	 * Action will be triggered by click
-	 * required for Petri-Net-Elements - DrawingMode
-	 *
-	 * @param propertiesPrefixForShortcuts the properties prefix for shortcuts
-	 * @param button the button
-	 * @param action_id the action_id
-	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
-	 */
-	private void addShortcutToMouseButton(String propertiesPrefixForShortcuts, JCommandButton button, String action_id) {
-		addShortcutToMouseButton(propertiesPrefixForShortcuts, button, action_id, false);
-	}
-
+	
 	public void fireViewEvent(AbstractViewEvent viewevent) {
 		this.m_mediator.fireViewEvent(viewevent);
 	}
 
 	/**
-	 * Gets the mediator for fireing events with shortcuts
+	 * Gets the mediator for firing events with shortcuts
 	 *
 	 * @return the mediator
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
@@ -2087,13 +2075,11 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void arrangeFrames() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void cascadeFrames() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -2129,7 +2115,6 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void hideEditor(IEditor editor) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void setMediator(AbstractApplicationMediator mediator) {
@@ -2139,13 +2124,11 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void quit() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void refreshFocusOnFrames() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -2163,7 +2146,6 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void renameEditor(IEditor editor) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -2189,6 +2171,5 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void updateRecentMenu() {
 		// TODO Auto-generated method stub
-
 	}
 }
