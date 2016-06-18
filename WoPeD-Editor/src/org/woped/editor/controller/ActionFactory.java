@@ -38,7 +38,7 @@ public class ActionFactory
 
     public final static String         ACTIONID_EXIT                   = "Action.QuitApplication";
     public final static String         ACTIONID_WOFLAN                 = "ToolBar.Woflan";
-    public final static String		   ACTIONID_WOPED				   = "ToolBar.Woped";
+    public final static String		   ACTIONID_SEMANTICAL_ANALYSIS	   = "ToolBar.SemanticalAnalysis";
     
     public final static String         ACTIONID_OPEN_TOKENGAME         = "ToolBar.TokenGame.Open";
     public final static String         ACTIONID_CLOSE_TOKENGAME        = "ToolBar.TokenGame.Close";
@@ -95,9 +95,9 @@ public class ActionFactory
     public final static String         ACTIONID_ADD_POINT              = "Popup.AddPoint";
     public final static String         ACTIONID_REMOVE_POINT           = "Popup.RemovePoint";
     public final static String         ACTIONID_OPEN_PROPERTIES        = "Popup.Properties";
-    public final static String         ACTIONID_ADD_RESOURCE_TRIGGER        = "Popup.Trigger.AddResource";
+    public final static String         ACTIONID_ADD_RESOURCE_TRIGGER   = "Popup.Trigger.AddResource";
     public final static String         ACTIONID_ADD_TIME_TRIGGER       = "Popup.Trigger.AddTime";
-    public final static String         ACTIONID_ADD_MESSAGE_TRIGGER        = "Popup.Trigger.AddExternal";
+    public final static String         ACTIONID_ADD_MESSAGE_TRIGGER    = "Popup.Trigger.AddExternal";
     public final static String         ACTIONID_REMOVE_TRIGGER         = "Popup.Trigger.Remove";
 
     public final static String         ACTIONID_ADD_PLACE              = "Popup.Add.Place";
@@ -191,8 +191,8 @@ public class ActionFactory
 
         STATIC_ACTION_MAP.put(ACTIONID_UPDATENETS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.UPDATE));
 
-        STATIC_ACTION_MAP.put(ACTIONID_WOPED, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_WOPED, null, ACTIONID_WOPED));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_WOPED), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
+        STATIC_ACTION_MAP.put(ACTIONID_SEMANTICAL_ANALYSIS, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_WOPED, null, ACTIONID_SEMANTICAL_ANALYSIS));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SEMANTICAL_ANALYSIS), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
         
         STATIC_ACTION_MAP.put(ACTIONID_METRIC, new WoPeDAction(am,AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.ANALYSIS_METRIC, null, ACTIONID_METRIC));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_METRIC), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
