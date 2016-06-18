@@ -56,7 +56,7 @@ public class EditorPanel extends JPanel {
 	private IEditor editor;
 	private AbstractApplicationMediator centralMediator;
 	private PropertyChangeSupport propertyChangeSupport;
-	private boolean bMetricsBarVisible = false;
+	private boolean metricsBarVisible = false;
 	private boolean analysisBarVisible = false;
 	private boolean p2TBarVisible = false;
 	private SideBar qualitativeAnalysisSideBar = null;
@@ -92,7 +92,6 @@ public class EditorPanel extends JPanel {
 	public JSplitPane mainsplitPaneWithAnalysisBar = null;
 	public JSplitPane mainsplitPaneWithP2TBar = null;
 	public JSplitPane m_rightSideTreeViewWithAnalysisBar = null;
-	public JSplitPane m_rightSideTreeViewWithP2TBar = null;
 	public JTree m_treeObject = null;
 	public JPanel overviewPanel = null;
 	public JPanel treeviewPanel = null;
@@ -256,7 +255,6 @@ public class EditorPanel extends JPanel {
 						hideP2TBar();
 					}
 					propertyChangeSupport.firePropertyChange("Sidebar", null, null);
-
 				}
 			});
 		}
@@ -425,18 +423,13 @@ public class EditorPanel extends JPanel {
 	}
 
 	public boolean isMetricsBarVisible() {
-		return bMetricsBarVisible;
+		return metricsBarVisible;
 	}
 
 	public boolean isP2TBarVisible() {
 		return p2TBarVisible;
 	}
 
-	/**
-	 * Method returns if analysis sidebar is visible or not
-	 * 
-	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
-	 */
 	public boolean isAnalysisBarVisible() {
 		return analysisBarVisible;
 	}
@@ -488,12 +481,12 @@ public class EditorPanel extends JPanel {
 	 * @author Mathias Gruschinske, Stefan Hackenberg
 	 */
 	public void hideMetricsBar() {
-		if (bMetricsBarVisible) {
+		if (metricsBarVisible) {
 			remove(mainsplitPaneWithAnalysisBar);
 			mainsplitPaneWithAnalysisBar = null;
 			metricsSideBar.clean();
 			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
-			bMetricsBarVisible = false;
+			metricsBarVisible = false;
 			if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isOverviewPanelVisible()
 					&& !isTreeviewPanelVisible()) {
 				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
@@ -548,6 +541,7 @@ public class EditorPanel extends JPanel {
 			while ((currentParent != null) && (!(currentParent instanceof JInternalFrame))) {
 				currentParent = currentParent.getParent();
 			}
+			
 			if (currentParent != null) {
 				Dimension editorDim = new Dimension();
 				getSize(editorDim);
@@ -560,7 +554,6 @@ public class EditorPanel extends JPanel {
 				d.height += frameDim.height - editorDim.height;
 
 				currentParent.setSize(d);
-
 			}
 
 			VisualController.getInstance()
@@ -632,9 +625,14 @@ public class EditorPanel extends JPanel {
 		}
 
 		if (!analysisBarVisible) {
-			if (bMetricsBarVisible) {
+			if (metricsBarVisible) {
 				hideMetricsBar();
 			}
+			
+			if (p2TBarVisible) {
+				hideP2TBar();
+			}
+			
 			remove(m_mainSplitPane);
 			getContainer();
 			qualitativeAnalysisSideBar.refresh();
@@ -677,13 +675,18 @@ public class EditorPanel extends JPanel {
 	 * @author Mathias Gruschinske, Stefan Hackenberg
 	 */
 	public void showMetricsBar() {
-		if (bMetricsBarVisible) {
+		if (metricsBarVisible) {
 			hideMetricsBar();
 		}
 
-		if (!bMetricsBarVisible) {
+		if (!metricsBarVisible) {
+			
 			if (analysisBarVisible) {
 				hideAnalysisBar();
+			}
+			
+			if (p2TBarVisible) {
+				hideP2TBar();
 			}
 
 			remove(m_mainSplitPane);
@@ -720,7 +723,7 @@ public class EditorPanel extends JPanel {
 			add(mainsplitPaneWithAnalysisBar);
 
 			// analysisBarVisible = true;
-			bMetricsBarVisible = true;
+			metricsBarVisible = true;
 			revalidate();
 
 			// new calculation of the size from editor window (only width)
@@ -730,13 +733,12 @@ public class EditorPanel extends JPanel {
 			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
 
 			metricsSideBar.setKeyLabelWidth();
-
 		}
 	}
 
 	public void setRotateSelected(boolean rotateSelected) {
 		m_orientation.setRotateSelected(rotateSelected);
-		if (analysisBarVisible && !bMetricsBarVisible)
+		if (analysisBarVisible && !metricsBarVisible)
 			qualitativeAnalysisSideBar.showTStarIfPossible();
 	}
 
@@ -885,7 +887,7 @@ public class EditorPanel extends JPanel {
 		}
 
 		if (!p2TBarVisible) {
-			if (bMetricsBarVisible) {
+			if (metricsBarVisible) {
 				hideMetricsBar();
 			}
 			if (analysisBarVisible) {
@@ -894,27 +896,27 @@ public class EditorPanel extends JPanel {
 
 			remove(m_mainSplitPane);
 			getContainer();
-
-			m_rightSideTreeViewWithP2TBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView,
+			
+			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView,
 					p2tSideBarPanel);
 			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
-				m_rightSideTreeViewWithP2TBar.setDividerLocation(200);
-				m_rightSideTreeViewWithP2TBar.setEnabled(true);
+				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
+				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
 			} else if (isOverviewPanelVisible() || isTreeviewPanelVisible()) {
-				m_rightSideTreeViewWithP2TBar.setDividerLocation(100);
-				m_rightSideTreeViewWithP2TBar.setEnabled(true);
+				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(100);
+				m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
 			} else {
-				m_rightSideTreeViewWithP2TBar.setDividerLocation(0);
+				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(0);
 				m_mainSplitPane.setOneTouchExpandable(true);
 				m_mainSplitPane.setEnabled(true);
-				m_rightSideTreeViewWithP2TBar.setEnabled(false);
+				m_rightSideTreeViewWithAnalysisBar.setEnabled(false);
 			}
 
 			Dimension rightSideTreeViewWithP2TBarMinimumSize = new Dimension(0, 0);
-			m_rightSideTreeViewWithP2TBar.setMinimumSize(rightSideTreeViewWithP2TBarMinimumSize);
+			m_rightSideTreeViewWithAnalysisBar.setMinimumSize(rightSideTreeViewWithP2TBarMinimumSize);
 
 			mainsplitPaneWithP2TBar = m_mainSplitPane;
-			mainsplitPaneWithP2TBar.setBottomComponent(m_rightSideTreeViewWithP2TBar);
+			mainsplitPaneWithP2TBar.setBottomComponent(m_rightSideTreeViewWithAnalysisBar);
 
 			add(mainsplitPaneWithP2TBar);
 			p2TBarVisible = true;
