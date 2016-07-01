@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.text.DecimalFormat;
 import java.util.Observable;
 import java.util.Observer;
@@ -74,6 +76,17 @@ public class EditorStatusBarVC extends JPanel implements Observer {
 			m_zoom.setToolTipText("Zoom");
 			m_zoom.putClientProperty("JSlider.isFilled", Boolean.TRUE);
 			m_zoom.addChangeListener(new SliderComboListener());
+			m_zoom.addMouseWheelListener(new MouseWheelListener() {
+				@Override
+				public void mouseWheelMoved(MouseWheelEvent e) {
+					int notches = e.getWheelRotation();
+					if (notches < 0) {
+						m_zoom.setValue(m_zoom.getValue() + 10);
+					} else if (notches > 0) {
+						m_zoom.setValue(m_zoom.getValue() - 10);
+					}
+				}
+			});
 		}
 		return m_zoom;
 	}

@@ -3,6 +3,7 @@ package org.woped.metrics.builder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -37,11 +38,11 @@ import javax.swing.table.TableColumnModel;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IMetricsConfiguration;
 import org.woped.core.config.IMetricsConfiguration.MetricThresholdState;
+import org.woped.gui.lookAndFeel.WopedButton;
+import org.woped.gui.translations.Messages;
 import org.woped.metrics.helpers.WatermarkedJTextField;
 import org.woped.metrics.metricsCalculation.MetricsUIRequestHandler;
 import org.woped.metrics.metricsCalculation.UITypes.UIThreshold;
-import org.woped.gui.lookAndFeel.WopedButton;
-import org.woped.gui.translations.Messages;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -78,8 +79,7 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 	public static final String CLEAR_GROUP_BTN  = "clearGrBtn";
 	public static final String EXIT_GROUP_BTN   = "exitGrBtn";
 	public static final String ADD_TAB2_BTN		= "addRowBtn";
-	public static final Object[] DEFAULT_CELL_VALUES = { null, "-infinity", "infinity" };
-	
+	public static final Object[] DEFAULT_CELL_VALUES = { null, "-infinity", "infinity" };	
 	
 	private static final Color COLOR_DEACTIVATED = new Color(220,220,220);
 
@@ -229,9 +229,11 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 				this.setPreferredSize(new java.awt.Dimension(600, 437));
 			  }
 			{
+				BorderLayout layout = new BorderLayout();
+				this.setLayout(layout);
 				jTabbedPane = new JTabbedPane();
 				jTabbedPane.addChangeListener(new MetricsBuilderListener());
-				this.add(jTabbedPane);
+				this.add(jTabbedPane, BorderLayout.CENTER);
 				jTabbedPane.setPreferredSize(new java.awt.Dimension(600, 430));
 				{
 					jTabbedPaneMetrics = new JPanel();
@@ -700,6 +702,8 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 									jPanelValueCenter.add(jLabelInput,
 											BorderLayout.NORTH);
 									jLabelInput.setText(Messages.getString("Metrics.Builder.table.description"));
+									Font font = new Font("Verdana", Font.PLAIN, 11);
+									jLabelInput.setFont(font);
 									jLabelInput.setPreferredSize(new java.awt.Dimension(395, 78));
 									jLabelInput.setLineWrap(true);
 									jLabelInput.setWrapStyleWord(true);

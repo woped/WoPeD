@@ -29,9 +29,9 @@ import org.woped.core.utilities.LoggerManager;
  *         <br>
  *         Note: (from JGraph) <br>
  *         When combining the attributes from a GraphCell with the attributes
- *         from the CellView, the graph cell�s attributes have precedence over
- *         the view�s attributes. The special value attribute is in sync with
- *         the cell�s user object.
+ *         from the CellView, the graph cell's attributes have precedence over
+ *         the view's attributes. The special value attribute is in sync with
+ *         the cell's user object.
  * 
  * 09.10.2003
  */

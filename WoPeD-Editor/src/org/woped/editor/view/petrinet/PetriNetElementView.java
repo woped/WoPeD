@@ -33,7 +33,7 @@ public class PetriNetElementView extends AbstractElementView {
     	private boolean readOnly;
     	private Color readOnlyColor = new Color(225, 225, 225);
     	private Color highLightedColor = new Color(255, 0, 0, 128);
-    	private Color HighLightedRGColor = new Color(188,235,253);
+    	private Color HighLightedRGColor = new Color(188, 235, 253);
     	public PetriNetElementRenderer(Object cell) {
     		AbstractPetriNetElementModel model = (AbstractPetriNetElementModel) cell;
     		readOnly = model.isReadOnly();

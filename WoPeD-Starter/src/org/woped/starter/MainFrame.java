@@ -440,36 +440,36 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 			//Submenu
 				OSXMenu tokengameStepModeMenu = new OSXMenu(Messages.getString("Tokengame.StepBand.title"));
 				OSXMenuItem tokenGameStepByStepButton = tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.StepByStepButton.text"));
-				tokenGameStepByStepButton.addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STEP, AbstractViewEvent.TOKENGAME_STEP);
+				tokenGameStepByStepButton.addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_STEP, AbstractViewEvent.TOKENGAME_STEP);
 
-				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.BackwardButton.text"), "Tokengame.StepBand.BackwardButton").addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_BACKWARD, AbstractViewEvent.TOKENGAME_BACKWARD);
-				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.StopButton.text"), "Tokengame.StepBand.StopButton").addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STOP, AbstractViewEvent.TOKENGAME_STOP);
+				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.BackwardButton.text"), "Tokengame.StepBand.BackwardButton").addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_BACKWARD, AbstractViewEvent.TOKENGAME_BACKWARD);
+				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.StopButton.text"), "Tokengame.StepBand.StopButton").addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_STOP, AbstractViewEvent.TOKENGAME_STOP);
 
-				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.ForwardButton.text"), "Tokengame.StepBand.ForwardButton").addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_FORWARD, AbstractViewEvent.TOKENGAME_FORWARD);
-				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.JumpIntoSubProcessButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_JUMPINTO, AbstractViewEvent.TOKENGAME_JUMPINTO);
-				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.JumpOutOfSubprocessButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_LEAVE, AbstractViewEvent.TOKENGAME_LEAVE);
+				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.ForwardButton.text"), "Tokengame.StepBand.ForwardButton").addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_FORWARD, AbstractViewEvent.TOKENGAME_FORWARD);
+				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.JumpIntoSubProcessButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_JUMPINTO, AbstractViewEvent.TOKENGAME_JUMPINTO);
+				tokengameStepModeMenu.addMenuItem(Messages.getString("Tokengame.StepBand.JumpOutOfSubprocessButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_LEAVE, AbstractViewEvent.TOKENGAME_LEAVE);
 			tokengameMenu.addSubMenu(tokengameStepModeMenu);
 			tokengameMenu.addSeparator();
 			//Submenu
 				OSXMenu tokengameAutomaticModeMenu = new OSXMenu(Messages.getString("Tokengame.AutoBand.title"));
-				tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.AutoPlayButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_AUTO, AbstractViewEvent.TOKENGAME_AUTO);;
-				tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.StartButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_START, AbstractViewEvent.TOKENGAME_START);
-				tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.PauseButton.text")).addAction(m_mediator,ActionFactory.ACTIONID_TOKENGAME_PAUSE, AbstractViewEvent.TOKENGAME_PAUSE);
+				tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.AutoPlayButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_AUTO, AbstractViewEvent.TOKENGAME_AUTO);;
+				tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.StartButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_START, AbstractViewEvent.TOKENGAME_START);
+				tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.PauseButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_PAUSE, AbstractViewEvent.TOKENGAME_PAUSE);
 			tokengameMenu.addSubMenu(tokengameAutomaticModeMenu);
 
 		osxAnalyzeMenu.addSubMenu(tokengameMenu);
 
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.coloring.text"), "Action.Coloring").addAction(m_mediator,ActionFactory.ACTIONID_COLORING, AbstractViewEvent.COLORING);
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.semanticalAnalysis.text"), "Tools.semanticalAnalysis").addAction(m_mediator,ActionFactory.ACTIONID_WOPED, AbstractViewEvent.ANALYSIS_WOPED);
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.capacityPlanning.text"), "Tools.capacityPlanning").addAction(m_mediator,ActionFactory.ACTIONID_QUANTCAP, AbstractViewEvent.QUANTCAP);
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.quantitativeSimulation.text"), "Tools.quantitativeSimulation").addAction(m_mediator,ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM);
-		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.reachabilityGraph.text"), "Tools.reachabilityGraph").addAction(m_mediator,ActionFactory.ACTIONID_REACHGRAPH_START, AbstractViewEvent.REACHGRAPH);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.coloring.text"), "Action.Coloring").addAction(m_mediator, ActionFactory.ACTIONID_COLORING, AbstractViewEvent.COLORING);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.semanticalAnalysis.text"), "Tools.semanticalAnalysis").addAction(m_mediator, ActionFactory.ACTIONID_SEMANTICAL_ANALYSIS, AbstractViewEvent.ANALYSIS_WOPED);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.capacityPlanning.text"), "Tools.capacityPlanning").addAction(m_mediator, ActionFactory.ACTIONID_QUANTCAP, AbstractViewEvent.QUANTCAP);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.quantitativeSimulation.text"), "Tools.quantitativeSimulation").addAction(m_mediator, ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM);
+		osxAnalyzeMenu.addMenuItem(Messages.getString("Tools.reachabilityGraph.text"), "Tools.reachabilityGraph").addAction(m_mediator, ActionFactory.ACTIONID_REACHGRAPH_START, AbstractViewEvent.REACHGRAPH);
 		osxAnalyzeMenu.addSeparator();
 		//Submenu
 			OSXMenu processMetricsMenu = new OSXMenu(Messages.getString("Metrics.textBandTitle"));
-			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetricsmassanalysis.text")).addAction(m_mediator,ActionFactory.ACTIONID_MASSMETRICANALYSE, AbstractViewEvent.ANALYSIS_MASSMETRICANALYSE);
-			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetrics.text"), "Metrics.processmetrics").addAction(m_mediator,ActionFactory.ACTIONID_METRIC, AbstractViewEvent.ANALYSIS_METRIC);
-			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetricsbuilder.text")).addAction(m_mediator,ActionFactory.ACTIONID_METRICSBUILDER, AbstractViewEvent.ANALYSIS_METRICSBUILDER);
+			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetricsmassanalysis.text")).addAction(m_mediator, ActionFactory.ACTIONID_MASSMETRICANALYSE, AbstractViewEvent.ANALYSIS_MASSMETRICANALYSE);
+			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetrics.text"), "Metrics.processmetrics").addAction(m_mediator, ActionFactory.ACTIONID_METRIC, AbstractViewEvent.ANALYSIS_METRIC);
+			processMetricsMenu.addMenuItem(Messages.getString("Metrics.processmetricsbuilder.text")).addAction(m_mediator, ActionFactory.ACTIONID_METRICSBUILDER, AbstractViewEvent.ANALYSIS_METRICSBUILDER);
 			osxAnalyzeMenu.addSubMenu(processMetricsMenu);
 		//Submenu
 			OSXMenu p2tMenu = new OSXMenu(Messages.getString("P2T.openP2T.text"));
@@ -505,11 +505,11 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 //            }
 //        });
 
-		osxViewMenu.addMenuItem(Messages.getString("View.changeModellingDirection.text"),"View.changeModellingDirection").addAction(m_mediator,ActionFactory.ACTIONID_ROTATEVIEW, AbstractViewEvent.ROTATEVIEW);;
-		osxViewMenu.addMenuItem(Messages.getString("View.optimizeLayout.text"),"View.optimizeLayout").addAction(m_mediator,ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT, AbstractViewEvent.GRAPHBEAUTIFIER);
+		osxViewMenu.addMenuItem(Messages.getString("View.changeModellingDirection.text"),"View.changeModellingDirection").addAction(m_mediator, ActionFactory.ACTIONID_ROTATEVIEW, AbstractViewEvent.ROTATEVIEW);;
+		osxViewMenu.addMenuItem(Messages.getString("View.optimizeLayout.text"),"View.optimizeLayout").addAction(m_mediator, ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT, AbstractViewEvent.GRAPHBEAUTIFIER);
 		osxViewMenu.addSeparator();
-		osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Cascade")).addAction(m_mediator,ActionFactory.ACTIONID_CASCADE, AbstractViewEvent.CASCADE);
-		osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Arrange")).addAction(m_mediator,ActionFactory.ACTIONID_ARRANGE, AbstractViewEvent.ARRANGE);
+		osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Cascade")).addAction(m_mediator, ActionFactory.ACTIONID_CASCADE, AbstractViewEvent.CASCADE);
+		osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Arrange")).addAction(m_mediator, ActionFactory.ACTIONID_ARRANGE, AbstractViewEvent.ARRANGE);
 		osxViewMenu.addSeparator();
 
 		//synchronized checkbox menus
@@ -560,9 +560,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		//AbstractApplicationMediator mediator = m_mediator;
 		osxHelpMenu = new OSXMenu(Messages.getTitle("Menu.Help"));
 
-		osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Index"), "Menu.Help.Index").addAction(m_mediator,ActionFactory.ACTIONID_SHOWHELPINDEX, AbstractViewEvent.HELP);
-		osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Contents"), "Menu.Help.Contents").addAction(m_mediator,ActionFactory.ACTIONID_SHOWHELPCONTENTS, AbstractViewEvent.HELP_CONTENTS);
-		osxHelpMenu.addMenuItem(Messages.getString("OptionsAndHelp.ReportBug.text")).addAction(m_mediator,ActionFactory.ACTIONID_SHOWBUGREPORT, AbstractViewEvent.BUGREPORT);
+		osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Index"), "Menu.Help.Index").addAction(m_mediator, ActionFactory.ACTIONID_SHOWHELPINDEX, AbstractViewEvent.HELP);
+		osxHelpMenu.addMenuItem(Messages.getTitle("Menu.Help.Contents"), "Menu.Help.Contents").addAction(m_mediator, ActionFactory.ACTIONID_SHOWHELPCONTENTS, AbstractViewEvent.HELP_CONTENTS);
+		osxHelpMenu.addMenuItem(Messages.getString("OptionsAndHelp.ReportBug.text")).addAction(m_mediator, ActionFactory.ACTIONID_SHOWBUGREPORT, AbstractViewEvent.BUGREPORT);
 
 		OSXMenu sampleNets = new OSXMenu(Messages.getString("OptionsAndHelp.SampleNets.text"));
 		getSampleMenu();
@@ -696,7 +696,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (taskbarButtonPaste == null) {
 			taskbarButtonPaste = new JCommandButton("",new edit_paste());
 			setTooltip(taskbarButtonPaste, "Edit.paste");
-			taskbarButtonPaste.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_PASTE, AbstractViewEvent.PASTE, taskbarButtonPaste));
+			taskbarButtonPaste.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_PASTE, AbstractViewEvent.PASTE, taskbarButtonPaste));
 		}
 		return taskbarButtonPaste;
 	}
@@ -706,7 +706,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (taskbarButtonCopy == null) {
 			taskbarButtonCopy = new JCommandButton("",new edit_copy());
 			setTooltip(taskbarButtonCopy, "Edit.copy");
-			taskbarButtonCopy.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_COPY, AbstractViewEvent.COPY, taskbarButtonCopy));
+			taskbarButtonCopy.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_COPY, AbstractViewEvent.COPY, taskbarButtonCopy));
 		}
 		return taskbarButtonCopy;
 	}
@@ -716,7 +716,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (taskbarButtonUndo == null) {
 			taskbarButtonUndo = new JCommandButton("",new editor_undo());
 			setTooltip(taskbarButtonUndo, "Edit.undo");
-			taskbarButtonUndo.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_UNDO, AbstractViewEvent.UNDO, taskbarButtonUndo));
+			taskbarButtonUndo.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_UNDO, AbstractViewEvent.UNDO, taskbarButtonUndo));
 		}
 		return taskbarButtonUndo;
 	}
@@ -726,7 +726,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (taskbarButtonRedo == null) {
 			taskbarButtonRedo = new JCommandButton("",new editor_redo());
 			setTooltip(taskbarButtonRedo, "Edit.redo");
-			taskbarButtonRedo.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_REDO, AbstractViewEvent.REDO, taskbarButtonRedo));
+			taskbarButtonRedo.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REDO, AbstractViewEvent.REDO, taskbarButtonRedo));
 		}
 		return taskbarButtonRedo;
 	}
@@ -745,7 +745,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (taskbarButtonAnalyze == null) {
 			taskbarButtonAnalyze = new JCommandButton(Messages.getString("Tools.semanticalAnalysis.text"), new analyze_semanticalanalysis());
 			setTooltip(taskbarButtonAnalyze, "Tools.semanticalAnalysis");
-			taskbarButtonAnalyze.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_WOPED, AbstractViewEvent.ANALYSIS_WOPED, taskbarButtonAnalyze));
+			taskbarButtonAnalyze.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SEMANTICAL_ANALYSIS, AbstractViewEvent.ANALYSIS_WOPED, taskbarButtonAnalyze));
 		}
 		return taskbarButtonAnalyze;
 	}
@@ -755,7 +755,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (taskbarButtonConfig == null) {
 			taskbarButtonConfig = new JCommandButton(Messages.getString("OptionsAndHelp.Configuration.text"), new help_configuration());
 			setTooltip(taskbarButtonConfig, "OptionsAndHelp.Configuration");
-			taskbarButtonConfig.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWCONFIG, AbstractViewEvent.CONFIG, taskbarButtonConfig));
+			taskbarButtonConfig.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SHOWCONFIG, AbstractViewEvent.CONFIG, taskbarButtonConfig));
 		}
 		return taskbarButtonConfig;
 	}
@@ -1132,7 +1132,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (newButton == null) {
 			newButton = new JCommandButton(Messages.getString("Document.new.text"), new file_new());
-			newButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_NEW, AbstractViewEvent.NEW, newButton));
+			newButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_NEW, AbstractViewEvent.NEW, newButton));
 			addShortcutToJCommandButton("Action.NewEditor", newButton, ActionFactory.ACTIONID_NEW);
 			setTooltip(newButton, "Document.new", true);
 		}
@@ -1144,7 +1144,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (openButton == null) {
 			openButton = new JCommandButton(Messages.getString("Document.open.text"), new file_open());
-			openButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_OPEN, AbstractViewEvent.OPEN, openButton));
+			openButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_OPEN, AbstractViewEvent.OPEN, openButton));
 			addShortcutToJCommandButton("Action.OpenEditor", openButton, ActionFactory.ACTIONID_OPEN);
 			setTooltip(openButton, "Document.open", true);
 		}
@@ -1200,7 +1200,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (closeButton == null) {
 			closeButton = new JCommandButton(Messages.getString("Document.close.text"), new file_close());
-			closeButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_CLOSE, AbstractViewEvent.CLOSE, closeButton));
+			closeButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_CLOSE, AbstractViewEvent.CLOSE, closeButton));
 			addShortcutToJCommandButton("Action.CloseEditor", closeButton, ActionFactory.ACTIONID_CLOSE);
 			setTooltip(closeButton, "Document.close", true);
 		}
@@ -1212,7 +1212,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (saveButton == null) {
 			saveButton = new JCommandButton(Messages.getString("Save.save.text"), new file_save());
-			saveButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SAVE, AbstractViewEvent.SAVE, saveButton));
+			saveButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SAVE, AbstractViewEvent.SAVE, saveButton));
 			addShortcutToJCommandButton("Action.SaveEditor", saveButton, ActionFactory.ACTIONID_SAVE);
 			setTooltip(saveButton, "Save.save",true);
 		}
@@ -1224,7 +1224,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (saveAsButton == null) {
 			saveAsButton = new JCommandButton(Messages.getString("Save.saveAs.text"), new file_saveas());
-			saveAsButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SAVEAS, AbstractViewEvent.SAVEAS, saveAsButton));
+			saveAsButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SAVEAS, AbstractViewEvent.SAVEAS, saveAsButton));
 			addShortcutToJCommandButton("Action.EditorSaveAs", saveAsButton, ActionFactory.ACTIONID_SAVEAS);
 			setTooltip(saveAsButton, "Save.saveAs",true);
 		}
@@ -1236,7 +1236,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (printButton == null) {
 			printButton = new JCommandButton(Messages.getString("DataOutput.print.text"), new file_print());
-			printButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_PRINT, AbstractViewEvent.PRINT, printButton));
+			printButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_PRINT, AbstractViewEvent.PRINT, printButton));
 			addShortcutToJCommandButton("Action.PrintEditor", printButton, ActionFactory.ACTIONID_PRINT);
 			setTooltip(printButton, "DataOutput.print",true);
 		}
@@ -1248,7 +1248,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (exportAsButton == null) {
 			exportAsButton = new JCommandButton(Messages.getString("DataOutput.exportAs.text"), new file_exportas());
-			exportAsButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_EXPORT, AbstractViewEvent.EXPORT, exportAsButton));
+			exportAsButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_EXPORT, AbstractViewEvent.EXPORT, exportAsButton));
 			addShortcutToJCommandButton("Action.Export", exportAsButton, ActionFactory.ACTIONID_EXPORT);
 			setTooltip(exportAsButton, "DataOutput.exportAs", true);
 		}
@@ -1260,7 +1260,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (importApromoreButton == null) {
 			importApromoreButton = new JCommandButton(Messages.getString("Apromore.aproImport.text"), new apromore_import());
-			importApromoreButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_IMPORTAPRO, AbstractViewEvent.IMPORTAPRO, importApromoreButton));
+			importApromoreButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_IMPORTAPRO, AbstractViewEvent.IMPORTAPRO, importApromoreButton));
 			addShortcutToJCommandButton("Action.ImportApromore", importApromoreButton, ActionFactory.ACTIONID_IMPORTAPRO);
 			setTooltip(importApromoreButton, "Apromore.aproImport", true);
 		}
@@ -1272,7 +1272,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (exportApromoreButton == null) {
 			exportApromoreButton = new JCommandButton(Messages.getString("Apromore.aproExport.text"), new apromore_export());
-			exportApromoreButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_EXPORTAPRO, AbstractViewEvent.EXPORTAPRO, exportApromoreButton));
+			exportApromoreButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_EXPORTAPRO, AbstractViewEvent.EXPORTAPRO, exportApromoreButton));
 			addShortcutToJCommandButton("Action.ExportApromore", exportApromoreButton, ActionFactory.ACTIONID_EXPORTAPRO);
 			setTooltip(exportApromoreButton, "Apromore.aproExport", true);
 		}
@@ -1285,7 +1285,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (undoButton == null) {
 			undoButton = new JCommandButton(Messages.getString("Edit.undo.text"), new editor_undo());
-			undoButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_UNDO, AbstractViewEvent.UNDO, undoButton));
+			undoButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_UNDO, AbstractViewEvent.UNDO, undoButton));
 			addShortcutToJCommandButton("Action.Undo", undoButton, ActionFactory.ACTIONID_UNDO);
 			setTooltip(undoButton, "Edit.undo", true);
 		}
@@ -1297,7 +1297,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (redoButton == null) {
 			redoButton = new JCommandButton(Messages.getString("Edit.redo.text"), new editor_redo());
-			redoButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_REDO, AbstractViewEvent.REDO, redoButton));
+			redoButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REDO, AbstractViewEvent.REDO, redoButton));
 			addShortcutToJCommandButton("Action.Redo", redoButton, ActionFactory.ACTIONID_REDO);
 			setTooltip(redoButton, "Edit.redo", true);
 		}
@@ -1309,7 +1309,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (cutButton == null) {
 			cutButton = new JCommandButton(Messages.getString("Edit.cut.text"), new editor_cut());
-			cutButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_CUT, AbstractViewEvent.CUT, cutButton));
+			cutButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_CUT, AbstractViewEvent.CUT, cutButton));
 			addShortcutToJCommandButton("Action.CutSelection", cutButton, ActionFactory.ACTIONID_CUT);
 			setTooltip(cutButton, "Edit.cut", true);
 		}
@@ -1321,7 +1321,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (copyButton == null) {
 			copyButton = new JCommandButton(Messages.getString("Edit.copy.text"), new editor_copy());
-			copyButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_COPY, AbstractViewEvent.COPY, copyButton));
+			copyButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_COPY, AbstractViewEvent.COPY, copyButton));
 			addShortcutToJCommandButton("Action.CopySelection", copyButton, ActionFactory.ACTIONID_COPY);
 			setTooltip(copyButton, "Edit.copy", true);
 		}
@@ -1333,7 +1333,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (pasteButton == null) {
 			pasteButton = new JCommandButton(Messages.getString("Edit.paste.text"), new editor_paste());
-			pasteButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_PASTE, AbstractViewEvent.PASTE, pasteButton));
+			pasteButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_PASTE, AbstractViewEvent.PASTE, pasteButton));
 			addShortcutToJCommandButton("Action.PasteElements", pasteButton, ActionFactory.ACTIONID_PASTE);
 			setTooltip(pasteButton, "Edit.paste", true);
 		}
@@ -1345,7 +1345,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (groupButton == null) {
 			groupButton = new JCommandButton(Messages.getString("Edit.group.text"), new editor_group());
-			groupButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_GROUP, AbstractViewEvent.GROUP, groupButton));
+			groupButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_GROUP, AbstractViewEvent.GROUP, groupButton));
 			addShortcutToJCommandButton("Action.GroupSelection", groupButton, ActionFactory.ACTIONID_GROUP);
 			setTooltip(groupButton, "Edit.group", true);
 
@@ -1358,7 +1358,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (ungroupButton == null) {
 			ungroupButton = new JCommandButton(Messages.getString("Edit.ungroup.text"), new editor_ungroup());
-			ungroupButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_UNGROUP, AbstractViewEvent.UNGROUP, ungroupButton));
+			ungroupButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_UNGROUP, AbstractViewEvent.UNGROUP, ungroupButton));
 			addShortcutToJCommandButton("Action.UngroupSelection", ungroupButton, ActionFactory.ACTIONID_UNGROUP);
 			setTooltip(ungroupButton, "Edit.ungroup", true);
 		}
@@ -1370,7 +1370,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (placeButton == null) {
 			placeButton = new JCommandButton(Messages.getString("Forms.place.text"), new forms_place());
-			placeButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_PLACE, AbstractViewEvent.DRAWMODE_PLACE, placeButton));
+			placeButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_PLACE, AbstractViewEvent.DRAWMODE_PLACE, placeButton));
 			addShortcutToMouseButton("Forms.place", placeButton, ActionFactory.ACTIONID_DRAWMODE_PLACE, false);
 			setTooltip(placeButton, "Forms.place", true);
 
@@ -1383,7 +1383,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (transitionButton == null) {
 			 transitionButton = new JCommandButton(Messages.getString("Forms.transition.text"), new forms_transition());
-			transitionButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_TRANSITION, AbstractViewEvent.DRAWMODE_TRANSITION, transitionButton));
+			transitionButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_TRANSITION, AbstractViewEvent.DRAWMODE_TRANSITION, transitionButton));
 			addShortcutToMouseButton("Forms.transition", transitionButton, ActionFactory.ACTIONID_DRAWMODE_TRANSITION, false);
 			setTooltip(transitionButton, "Forms.transition", true);
 		}
@@ -1395,7 +1395,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (xorSplitButton == null) {
 			xorSplitButton = new JCommandButton(Messages.getString("Forms.XORSplit.text"), new forms_xor_split());
-			xorSplitButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_XORSPLIT, AbstractViewEvent.DRAWMODE_XORSPLIT, xorSplitButton));
+			xorSplitButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_XORSPLIT, AbstractViewEvent.DRAWMODE_XORSPLIT, xorSplitButton));
 			addShortcutToMouseButton("Forms.XORSplit", xorSplitButton, ActionFactory.ACTIONID_DRAWMODE_XORSPLIT, false);
 			setTooltip(xorSplitButton, "Forms.XORSplit", true);
 		}
@@ -1407,7 +1407,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (xorJoinButton == null) {
 			xorJoinButton = new JCommandButton(Messages.getString("Forms.XORJoin.text"), new forms_xor_join());
-			xorJoinButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_XORJOIN, AbstractViewEvent.DRAWMODE_XORJOIN, xorJoinButton));
+			xorJoinButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_XORJOIN, AbstractViewEvent.DRAWMODE_XORJOIN, xorJoinButton));
 			addShortcutToMouseButton("Forms.XORJoin", xorJoinButton, ActionFactory.ACTIONID_DRAWMODE_XORJOIN, true);
 			setTooltip(xorJoinButton, "Forms.XORJoin", true);
 		}
@@ -1419,7 +1419,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getAndSplitButton() {
 		if (andSplitButton == null) {
 			andSplitButton = new JCommandButton(Messages.getString("Forms.ANDSplit.text"),new forms_and_split());
-			andSplitButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_ANDSPLIT, AbstractViewEvent.DRAWMODE_ANDSPLIT, andSplitButton));
+			andSplitButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_ANDSPLIT, AbstractViewEvent.DRAWMODE_ANDSPLIT, andSplitButton));
 			addShortcutToMouseButton("Forms.ANDSplit", andSplitButton, ActionFactory.ACTIONID_DRAWMODE_ANDSPLIT, false);
 			setTooltip(andSplitButton, "Forms.ANDSplit", true);
 		}
@@ -1431,7 +1431,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (andJoinButton == null) {
 			andJoinButton = new JCommandButton(Messages.getString("Forms.ANDJoin.text"), new forms_and_join());
-			andJoinButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_ANDJOIN, AbstractViewEvent.DRAWMODE_ANDJOIN, andJoinButton));
+			andJoinButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_ANDJOIN, AbstractViewEvent.DRAWMODE_ANDJOIN, andJoinButton));
 			addShortcutToMouseButton("Forms.ANDJoin", andJoinButton, ActionFactory.ACTIONID_DRAWMODE_ANDJOIN, true);
 			setTooltip(andJoinButton, "Forms.ANDJoin", true);
 		}
@@ -1442,7 +1442,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getXorSplitJoinButton() {
 		if (xorSplitJoinButton == null) {
 			xorSplitJoinButton = new JCommandButton(Messages.getString("Forms.XORSplitJoin.text"), new forms_xor_split_join());
-			xorSplitJoinButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_XORSPLITJOIN, AbstractViewEvent.DRAWMODE_XORSPLITJOIN, xorSplitJoinButton));
+			xorSplitJoinButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_XORSPLITJOIN, AbstractViewEvent.DRAWMODE_XORSPLITJOIN, xorSplitJoinButton));
 			addShortcutToMouseButton("Forms.XORSplitJoin", xorSplitJoinButton, ActionFactory.ACTIONID_DRAWMODE_XORSPLITJOIN, true);
 			setTooltip(xorSplitJoinButton, "Forms.XORSplitJoin", true);
 		}
@@ -1454,7 +1454,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (andSplitJoinButton == null) {
 			andSplitJoinButton = new JCommandButton(Messages.getString("Forms.ANDSplitJoin.text"), new forms_and_split_join());
-			andSplitJoinButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_ANDSPLITJOIN, AbstractViewEvent.DRAWMODE_ANDSPLITJOIN, andSplitJoinButton));
+			andSplitJoinButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_ANDSPLITJOIN, AbstractViewEvent.DRAWMODE_ANDSPLITJOIN, andSplitJoinButton));
 			addShortcutToMouseButton("Forms.ANDSplitJoin", andSplitJoinButton, ActionFactory.ACTIONID_DRAWMODE_ANDSPLITJOIN, true);
 			setTooltip(andSplitJoinButton, "Forms.ANDSplitJoin", true);
 		}
@@ -1466,7 +1466,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (andJoinXorSplitButton == null) {
 			andJoinXorSplitButton = new JCommandButton(Messages.getString("Forms.ANDJoinXORSplit.text"), new forms_and_join_xor_split());
-			andJoinXorSplitButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_ANDJOINXORSPLIT, AbstractViewEvent.DRAWMODE_ANDJOIN_XORSPLIT, andJoinXorSplitButton));
+			andJoinXorSplitButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_ANDJOINXORSPLIT, AbstractViewEvent.DRAWMODE_ANDJOIN_XORSPLIT, andJoinXorSplitButton));
 			addShortcutToMouseButton("Forms.ANDJoinXORSplit", andJoinXorSplitButton, ActionFactory.ACTIONID_DRAWMODE_ANDJOINXORSPLIT, false);
 			setTooltip(andJoinXorSplitButton, "Forms.ANDJoinXORSplit", true);
 		}
@@ -1478,7 +1478,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (xorJoinAndSplitButton == null) {
 			xorJoinAndSplitButton = new JCommandButton(Messages.getString("Forms.XORJoinANDSplit.text"), new forms_xor_join_and_split());
-			xorJoinAndSplitButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_XORJOINANDSPLIT, AbstractViewEvent.DRAWMODE_XORJOIN_ANDSPLIT, xorJoinAndSplitButton));
+			xorJoinAndSplitButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_XORJOINANDSPLIT, AbstractViewEvent.DRAWMODE_XORJOIN_ANDSPLIT, xorJoinAndSplitButton));
 			addShortcutToMouseButton("Forms.XORJoinANDSplit", xorJoinAndSplitButton, ActionFactory.ACTIONID_DRAWMODE_XORJOINANDSPLIT, false);
 			setTooltip(xorJoinAndSplitButton, "Forms.XORJoinANDSplit", true);
 		}
@@ -1488,9 +1488,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 	private JCommandButton getSubprocessButton() {
 
-		if (subprocessButton == null) {
+		if (subprocessButton == null) { 
 			subprocessButton = new JCommandButton(Messages.getString("Forms.subprocess.text"), new forms_subprocess());
-			subprocessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_DRAWMODE_SUB, AbstractViewEvent.DRAWMODE_SUB, subprocessButton));
+			subprocessButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_DRAWMODE_SUB, AbstractViewEvent.DRAWMODE_SUB, subprocessButton));
 			addShortcutToMouseButton("Forms.subprocess", subprocessButton, ActionFactory.ACTIONID_DRAWMODE_SUB, false);
 			setTooltip(subprocessButton, "Forms.subprocess", true);
 		}
@@ -1502,7 +1502,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (coverabilityGraphButton == null) {
 			coverabilityGraphButton = new JCommandMenuButton(Messages.getString("Tools.reachabilityGraph.text"), new analyze_reachability_graph());
-			coverabilityGraphButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_REACHGRAPH_START, 																			 AbstractViewEvent.REACHGRAPH, coverabilityGraphButton));
+			coverabilityGraphButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_REACHGRAPH_START, 																			 AbstractViewEvent.REACHGRAPH, coverabilityGraphButton));
 			addShortcutToJCommandButton("Tools.reachabilityGraph", coverabilityGraphButton, ActionFactory.ACTIONID_REACHGRAPH_START);
 			setTooltip(coverabilityGraphButton, "Tools.reachabilityGraph", true);
 		}
@@ -1514,7 +1514,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (coloringButton == null) {
 			coloringButton = new JCommandButton(Messages.getString("Tools.coloring.text"), new analyze_coloring());
-			coloringButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_COLORING, AbstractViewEvent.COLORING, coloringButton));
+			coloringButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_COLORING, AbstractViewEvent.COLORING, coloringButton));
 			addShortcutToJCommandButton("Action.Coloring", coloringButton, ActionFactory.ACTIONID_COLORING);
 			setTooltip(coloringButton, "Tools.coloring", true);
 		}
@@ -1526,8 +1526,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (semanticalAnalysisButton == null) {
 			semanticalAnalysisButton = new JCommandButton(Messages.getString("Tools.semanticalAnalysis.text"), new analyze_semanticalanalysis());
-			semanticalAnalysisButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_WOPED, AbstractViewEvent.ANALYSIS_WOPED, semanticalAnalysisButton));
-			addShortcutToJCommandButton("Tools.semanticalAnalysis", semanticalAnalysisButton, ActionFactory.ACTIONID_WOPED);
+			semanticalAnalysisButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SEMANTICAL_ANALYSIS, AbstractViewEvent.ANALYSIS_WOPED, semanticalAnalysisButton));
+			addShortcutToJCommandButton("Tools.semanticalAnalysis", semanticalAnalysisButton, ActionFactory.ACTIONID_SEMANTICAL_ANALYSIS);
 			setTooltip(semanticalAnalysisButton, "Tools.semanticalAnalysis", true);
 		}
 
@@ -1538,7 +1538,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (capacityPlanningButton == null) {
 			capacityPlanningButton = new JCommandButton(Messages.getString("Tools.capacityPlanning.text"), new analyze_capacityplanning());
-			capacityPlanningButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_QUANTCAP, AbstractViewEvent.QUANTCAP, capacityPlanningButton));
+			capacityPlanningButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_QUANTCAP, AbstractViewEvent.QUANTCAP, capacityPlanningButton));
 			addShortcutToJCommandButton("Tools.capacityPlanning", capacityPlanningButton, ActionFactory.ACTIONID_QUANTCAP);
 			setTooltip(capacityPlanningButton, "Tools.capacityPlanning", true);
 		}
@@ -1550,7 +1550,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (quantitativeSimulationButton == null) {
 			quantitativeSimulationButton = new JCommandButton(Messages.getString("Tools.quantitativeSimulation.text"),new analyze_quantitative_simulation());
-			quantitativeSimulationButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM, quantitativeSimulationButton));
+			quantitativeSimulationButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_QUANTSIM, AbstractViewEvent.QUANTSIM, quantitativeSimulationButton));
 			addShortcutToJCommandButton("Tools.quantitativeSimulation", quantitativeSimulationButton, ActionFactory.ACTIONID_QUANTSIM);
 			setTooltip(quantitativeSimulationButton, "Tools.quantitativeSimulation", true);
 		}
@@ -1562,7 +1562,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (processMetricsButton == null) {
 			processMetricsButton = new JCommandButton(Messages.getString("Metrics.processmetrics.text"), new analyze_metric());
-			processMetricsButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_METRIC, AbstractViewEvent.ANALYSIS_METRIC, processMetricsButton));
+			processMetricsButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_METRIC, AbstractViewEvent.ANALYSIS_METRIC, processMetricsButton));
 			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton, ActionFactory.ACTIONID_METRIC);
 			setTooltip(processMetricsButton, "Metrics.processmetrics", true);
 		}
@@ -1574,7 +1574,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (processMassAnalyzeButton == null) {
 			processMassAnalyzeButton = new JCommandButton(Messages.getString("Metrics.processmetricsmassanalysis.text"), new analyze_metric_mass_import());
-			processMassAnalyzeButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_MASSMETRICANALYSE, AbstractViewEvent.ANALYSIS_MASSMETRICANALYSE, processMassAnalyzeButton));
+			processMassAnalyzeButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_MASSMETRICANALYSE, AbstractViewEvent.ANALYSIS_MASSMETRICANALYSE, processMassAnalyzeButton));
 			setTooltip(processMassAnalyzeButton, "Metrics.processmetricsmassanalysis");
 		}
 
@@ -1585,7 +1585,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (processMetricsBuilderButton == null) {
 			processMetricsBuilderButton = new JCommandButton(Messages.getString("Metrics.processmetricsbuilder.text"), new analyze_metric_builder());
-			processMetricsBuilderButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_METRICSBUILDER, AbstractViewEvent.ANALYSIS_METRICSBUILDER, processMetricsBuilderButton));
+			processMetricsBuilderButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_METRICSBUILDER, AbstractViewEvent.ANALYSIS_METRICSBUILDER, processMetricsBuilderButton));
 			setTooltip(processMetricsBuilderButton, "Metrics.processmetricsbuilder");
 		}
 
@@ -1595,7 +1595,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 	private JCommandButton getP2TButton() {
 		if (p2tButton == null) {
 			p2tButton = new JCommandButton(Messages.getString("P2T.text"), new P2T());
-			p2tButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T, p2tButton));
+			p2tButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T, p2tButton));
 //			TODO(optional):
 //			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton, ActionFactory.ACTIONID_METRIC);
 			setTooltip(p2tButton, "P2T");
@@ -1608,7 +1608,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (changeOrientationButton == null) {
 			changeOrientationButton = new JCommandButton(Messages.getString("View.changeModellingDirection.text"),new view_change_modelling_direction());
-			changeOrientationButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_ROTATEVIEW, AbstractViewEvent.ROTATEVIEW, changeOrientationButton));
+			changeOrientationButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_ROTATEVIEW, AbstractViewEvent.ROTATEVIEW, changeOrientationButton));
 			addShortcutToJCommandButton("View.changeModellingDirection", changeOrientationButton, ActionFactory.ACTIONID_ROTATEVIEW);
 			setTooltip(changeOrientationButton, "View.changeModellingDirection", true);
 		}
@@ -1620,7 +1620,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (optimizeLayoutButton == null) {
 			optimizeLayoutButton = new JCommandButton(Messages.getString("View.optimizeLayout.text"),new view_optimize_layout());
-			optimizeLayoutButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT, AbstractViewEvent.GRAPHBEAUTIFIER, optimizeLayoutButton));
+			optimizeLayoutButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT, AbstractViewEvent.GRAPHBEAUTIFIER, optimizeLayoutButton));
 			addShortcutToJCommandButton("View.optimizeLayout", optimizeLayoutButton, ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT);
 			setTooltip(optimizeLayoutButton, "View.optimizeLayout", true);
 		}
@@ -1632,7 +1632,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (arrangeButton == null) {
 			arrangeButton = new JCommandButton(Messages.getString("WindowPreferences.arrange.text"), new window_arrange());
-			arrangeButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_ARRANGE, AbstractViewEvent.ARRANGE, arrangeButton));
+			arrangeButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_ARRANGE, AbstractViewEvent.ARRANGE, arrangeButton));
 			//addShortcutToJCommandButton("Action.Frames.Arrange", arrangeButton, ActionFactory.ACTIONID_ARRANGE);
 			setTooltip(arrangeButton, "WindowPreferences.arrange");
 		}
@@ -1644,7 +1644,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (cascadeButton == null) {
 			cascadeButton = new JCommandButton(Messages.getString("WindowPreferences.cascade.text"), new window_cascadewindows());
-			cascadeButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_CASCADE, AbstractViewEvent.CASCADE, cascadeButton));
+			cascadeButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_CASCADE, AbstractViewEvent.CASCADE, cascadeButton));
 			//addShortcutToJCommandButton("Action.Frames.Cascade", cascadeButton, ActionFactory.ACTIONID_CASCADE);
 			setTooltip(cascadeButton, "WindowPreferences.arrange");
 		}
@@ -1657,7 +1657,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (overviewComponent == null) {
 			overviewCheckbox = new JCheckBox(Messages.getString("Sidebar.Overview.Title"));
 			overviewComponent = new JRibbonComponent(overviewCheckbox);
-			overviewCheckbox.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWOVERVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI, overviewCheckbox));
+			overviewCheckbox.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SHOWOVERVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI, overviewCheckbox));
 			overviewCheckbox.setToolTipText(Messages.getString("Sidebar.Overview.Tooltip"));
 		}
 
@@ -1669,7 +1669,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 		if (treeviewComponent == null) {
 			treeviewCheckbox = new JCheckBox(Messages.getString("Sidebar.Treeview.Title"));
 			treeviewComponent = new JRibbonComponent(treeviewCheckbox);
-			treeviewCheckbox.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWTREEVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI, treeviewCheckbox));
+			treeviewCheckbox.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SHOWTREEVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI, treeviewCheckbox));
 			treeviewCheckbox.setToolTipText(Messages.getString("Sidebar.Treeview.Tooltip"));
 		}
 
@@ -1680,7 +1680,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (configurationButton == null) {
 			configurationButton = new JCommandButton(Messages.getString("OptionsAndHelp.Configuration.text"), new help_configuration());
-			configurationButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWCONFIG, AbstractViewEvent.CONFIG, configurationButton));
+			configurationButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SHOWCONFIG, AbstractViewEvent.CONFIG, configurationButton));
 			setTooltip(configurationButton, "OptionsAndHelp.Configuration");
 		}
 
@@ -1691,7 +1691,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (manualButton == null) {
 			manualButton = new JCommandButton(Messages.getString("OptionsAndHelp.Manual.text"), new help_manual());
-			manualButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWHELPINDEX, AbstractViewEvent.HELP, manualButton));
+			manualButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SHOWHELPINDEX, AbstractViewEvent.HELP, manualButton));
 			addShortcutToJCommandButton("Menu.Help.Index", manualButton, ActionFactory.ACTIONID_SHOWHELPINDEX);
 			setTooltip(manualButton, "OptionsAndHelp.Manual", true);
 		}
@@ -1703,7 +1703,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (contentsButton == null) {
 			contentsButton = new JCommandButton(Messages.getString("OptionsAndHelp.Contents.text"),new help_contents());
-			contentsButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWHELPCONTENTS, AbstractViewEvent.HELP_CONTENTS, contentsButton));
+			contentsButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SHOWHELPCONTENTS, AbstractViewEvent.HELP_CONTENTS, contentsButton));
 			addShortcutToJCommandButton("Menu.Help.Contents", contentsButton, ActionFactory.ACTIONID_SHOWHELPCONTENTS);
 			setTooltip(contentsButton, "OptionsAndHelp.Contents", true);
 		}
@@ -1732,7 +1732,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (reportBugButton == null) {
 			reportBugButton = new JCommandButton(Messages.getString("OptionsAndHelp.ReportBug.text"), new help_reportbug());
-			reportBugButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWBUGREPORT, AbstractViewEvent.BUGREPORT, reportBugButton));
+			reportBugButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SHOWBUGREPORT, AbstractViewEvent.BUGREPORT, reportBugButton));
 			setTooltip(reportBugButton, "OptionsAndHelp.ReportBug");
 		}
 
@@ -1743,7 +1743,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (aboutButton == null) {
 			aboutButton = new JCommandButton(Messages.getString("OptionsAndHelp.About.text"), new help_about());
-			aboutButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_SHOWABOUT, AbstractViewEvent.ABOUT, aboutButton));
+			aboutButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_SHOWABOUT, AbstractViewEvent.ABOUT, aboutButton));
 			setTooltip(aboutButton, "OptionsAndHelp.About");
 		}
 
@@ -1782,6 +1782,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 					fn = fn.replaceAll("%20", " ");
 					JarFile jf = new JarFile(fn);
 					Enumeration<JarEntry> e = jf.entries();
+					jf.close();
 					ZipEntry ze;
 					// process entries
 					while (e.hasMoreElements()) {
@@ -1840,7 +1841,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (backwardButton == null) {
 			backwardButton = new JCommandButton(Messages.getString("Tokengame.StepBand.BackwardButton.text"), new tokengame_play_seek_backward());
-			backwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_BACKWARD, AbstractViewEvent.TOKENGAME_BACKWARD, backwardButton));
+			backwardButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_BACKWARD, AbstractViewEvent.TOKENGAME_BACKWARD, backwardButton));
 			addShortcutToJCommandButton("Tokengame.StepBand.BackwardButton", backwardButton, ActionFactory.ACTIONID_TOKENGAME_BACKWARD);
 			setTooltip(backwardButton, "Tokengame.StepBand.BackwardButton", true);
 			}
@@ -1852,7 +1853,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (jumpIntoSubProcessButton == null) {
 			jumpIntoSubProcessButton = new JCommandButton(Messages.getString("Tokengame.StepBand.JumpIntoSubProcessButton.text"), new tokengame_play_jump_into_subprocess());
-			jumpIntoSubProcessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_JUMPINTO, AbstractViewEvent.TOKENGAME_JUMPINTO, jumpIntoSubProcessButton));
+			jumpIntoSubProcessButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_JUMPINTO, AbstractViewEvent.TOKENGAME_JUMPINTO, jumpIntoSubProcessButton));
 			setTooltip(jumpIntoSubProcessButton, "Tokengame.StepBand.JumpIntoSubProcessButton");
 		}
 
@@ -1863,7 +1864,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (forwardButton == null) {
 			forwardButton = new JCommandButton(Messages.getString("Tokengame.StepBand.ForwardButton.text"), new tokengame_play_seek_forward());
-			forwardButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_FORWARD, AbstractViewEvent.TOKENGAME_FORWARD, forwardButton));
+			forwardButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_FORWARD, AbstractViewEvent.TOKENGAME_FORWARD, forwardButton));
 			addShortcutToJCommandButton("Tokengame.StepBand.ForwardButton", forwardButton, ActionFactory.ACTIONID_TOKENGAME_FORWARD);
 			setTooltip(forwardButton, "Tokengame.StepBand.ForwardButton", true);
 		}
@@ -1875,7 +1876,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (pauseButton == null) {
 			pauseButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.PauseButton.text"), new tokengame_play_pause());
-			pauseButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_PAUSE, AbstractViewEvent.TOKENGAME_PAUSE, pauseButton));
+			pauseButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_PAUSE, AbstractViewEvent.TOKENGAME_PAUSE, pauseButton));
 			setTooltip(pauseButton, "Tokengame.AutoBand.PauseButton");
 		}
 
@@ -1886,7 +1887,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (startButton == null) {
 			startButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.StartButton.text"), new tokengame_play_start());
-			startButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_START, AbstractViewEvent.TOKENGAME_START, startButton));
+			startButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_START, AbstractViewEvent.TOKENGAME_START, startButton));
 			setTooltip(startButton, "Tokengame.AutoBand.StartButton");
 		}
 
@@ -1897,7 +1898,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (stopButton == null) {
 			stopButton = new JCommandButton(Messages.getString("Tokengame.StepBand.StopButton.text"), new tokengame_play_stop());
-			stopButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STOP, AbstractViewEvent.TOKENGAME_STOP, stopButton));
+			stopButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_STOP, AbstractViewEvent.TOKENGAME_STOP, stopButton));
 			addShortcutToJCommandButton("Tokengame.StepBand.StopButton", stopButton, ActionFactory.ACTIONID_TOKENGAME_STOP);
 			setTooltip(stopButton, "Tokengame.StepBand.StopButton", true);
 		}
@@ -1909,7 +1910,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (jumpOutOfSubprocessButton == null) {
 			jumpOutOfSubprocessButton = new JCommandButton(Messages.getString("Tokengame.StepBand.JumpOutOfSubprocessButton.text"), new tokengame_play_jump_out_of_subprocess());
-			jumpOutOfSubprocessButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_LEAVE, AbstractViewEvent.TOKENGAME_LEAVE, jumpOutOfSubprocessButton));
+			jumpOutOfSubprocessButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_LEAVE, AbstractViewEvent.TOKENGAME_LEAVE, jumpOutOfSubprocessButton));
 			setTooltip(jumpOutOfSubprocessButton, "Tokengame.StepBand.JumpOutOfSubprocessButton");
 		}
 
@@ -1920,7 +1921,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (stepWiseButton == null) {
 			stepWiseButton = new JCommandButton(Messages.getString("Tokengame.StepBand.StepByStepButton.text"), new tokengame_edit_step_by_step());
-			stepWiseButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_STEP, AbstractViewEvent.TOKENGAME_STEP, stepWiseButton));
+			stepWiseButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_STEP, AbstractViewEvent.TOKENGAME_STEP, stepWiseButton));
 			setTooltip(stepWiseButton, "Tokengame.StepBand.StepByStepButton");
 		}
 
@@ -1931,7 +1932,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		if (autoPlayButton == null) {
 			autoPlayButton = new JCommandButton(Messages.getString("Tokengame.AutoBand.AutoPlayButton.text"), new tokengame_edit_autoPlay());
-			autoPlayButton.addActionListener(new ActionButtonListener(m_mediator,ActionFactory.ACTIONID_TOKENGAME_AUTO, AbstractViewEvent.TOKENGAME_AUTO, autoPlayButton));
+			autoPlayButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_TOKENGAME_AUTO, AbstractViewEvent.TOKENGAME_AUTO, autoPlayButton));
 			setTooltip(autoPlayButton, "Tokengame.AutoBand.AutoPlayButton");
 		}
 
@@ -2056,26 +2057,13 @@ private JCommandButton getCommunityButton() {
 		}
 		GlobalShortcutEventDispatcher.addShortcutClickListener(button, propertiesPrefixForShortcuts, ignoreDefaultKeyMask);
 	}
-	/**
-	 * Adds the shortcut to a button - requires mouseclick..
-	 * Action will be triggered by click
-	 * required for Petri-Net-Elements - DrawingMode
-	 *
-	 * @param propertiesPrefixForShortcuts the properties prefix for shortcuts
-	 * @param button the button
-	 * @param action_id the action_id
-	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
-	 */
-	private void addShortcutToMouseButton(String propertiesPrefixForShortcuts, JCommandButton button, String action_id) {
-		addShortcutToMouseButton(propertiesPrefixForShortcuts, button, action_id, false);
-	}
-
+	
 	public void fireViewEvent(AbstractViewEvent viewevent) {
 		this.m_mediator.fireViewEvent(viewevent);
 	}
 
 	/**
-	 * Gets the mediator for fireing events with shortcuts
+	 * Gets the mediator for firing events with shortcuts
 	 *
 	 * @return the mediator
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
@@ -2087,13 +2075,11 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void arrangeFrames() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void cascadeFrames() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -2129,7 +2115,6 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void hideEditor(IEditor editor) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void setMediator(AbstractApplicationMediator mediator) {
@@ -2139,13 +2124,11 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void quit() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void refreshFocusOnFrames() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -2163,7 +2146,6 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void renameEditor(IEditor editor) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -2189,6 +2171,5 @@ private JCommandButton getCommunityButton() {
 	@Override
 	public void updateRecentMenu() {
 		// TODO Auto-generated method stub
-
 	}
 }

@@ -15,8 +15,6 @@ import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.vep.ViewEvent;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class OSXMenuItem.
  */
@@ -71,7 +69,7 @@ public class OSXMenuItem extends JMenuItem {
     }
 
 	/**
-	 * Instantiates a new oSX menu item.
+	 * Instantiates a new OSX menu item.
 	 *
 	 * @param itemName the item name
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
@@ -91,7 +89,4 @@ public class OSXMenuItem extends JMenuItem {
 	public void addAction(AbstractApplicationMediator mediator, String action_id, int viewEvent){
 		this.addActionListener(new ShortcutActionListener(mediator, action_id, viewEvent, this));
 	}
-
-
-
 }

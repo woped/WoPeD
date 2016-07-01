@@ -8,6 +8,8 @@ import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeEvent;
@@ -122,7 +124,7 @@ import org.woped.gui.translations.Messages;
  *         Created on 29.04.2003
  */
 
-public class EditorVC implements KeyListener,
+public class EditorVC implements KeyListener, MouseWheelListener,
 		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor,
 		InternalFrameListener {
 	// ModelID for DB
@@ -251,6 +253,7 @@ public class EditorVC implements KeyListener,
 			getGraph().getSelectionModel().addGraphSelectionListener(this);
 			getGraph().getModel().addGraphModelListener(this);
 			getGraph().addKeyListener(this);
+			getGraph().addMouseWheelListener((MouseWheelListener) this);
 			this.m_tokenGameController = new TokenGameController(this, m_propertyChangeSupport);
 		}
 	}
@@ -1642,6 +1645,15 @@ public class EditorVC implements KeyListener,
 			}
 		}
 	}
+	
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		int notches = e.getWheelRotation();
+		if (notches < 0) {
+			zoom(+0.1, false);
+		} else {
+			zoom(-0.1, false);
+		}
+	}
 
 	public void addViewListener(IViewListener listener) {
 		viewListener.addElement(listener);
@@ -2272,7 +2284,6 @@ public class EditorVC implements KeyListener,
 
 	@Override
 	public void hideP2TBar() {
-		// TODO Auto-generated method stub
 		editorPanel.hideP2TBar();
 	}
 	

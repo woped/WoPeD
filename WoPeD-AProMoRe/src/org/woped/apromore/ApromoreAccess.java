@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPException;
 
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
 import org.apromore.model.ExportFormatResultType;
@@ -89,10 +91,8 @@ public class ApromoreAccess {
 		wsTemp.setMarshaller(serviceMarshaller);
 		wsTemp.setUnmarshaller(serviceMarshaller);
 		wsTemp.setMessageSender(httpCms);
-		
-		// Falls URI leer ist wird die für den Server abgespeicherte Uri
-		// genommen DEUTIZ
-		
+
+		// If URI is empty, take the one from the server configuration.
 		if (uri == null) {
 			wsTemp.setDefaultUri(getURI());
 		} else {
@@ -125,26 +125,36 @@ public class ApromoreAccess {
 			org.apromore.model.UsernamesType test = managerService.readAllUsers();
 
 			if (test == null) {
-				showDialog(Messages.getString("Apromore.UI.Validation.Error.connection"),
+				showDialog(Messages.getString("Apromore.UI.Validation.Error.Connection"),
 						Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
 		} catch (MalformedURLException e) {
-			showDialog(Messages.getString("Apromore.UI.Validation.Error.url"),
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.Url"),
 					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		} catch (SOAPException e) {
-			showDialog(Messages.getString("Apromore.UI.Validation.Error.connection"),
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.Connection"),
 					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		} catch (WebServiceTransportException e) {
-			showDialog(Messages.getString("Apromore.UI.Validation.Error.connection"),
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.Connection"),
 					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		} catch (WebServiceIOException e) {
-			showDialog(Messages.getString("Apromore.UI.Validation.Error.url"),
-					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
+			if (e.getCause() instanceof ConnectTimeoutException) {
+				showDialog(Messages.getString("Apromore.UI.Validation.Error.Timeout"),
+						Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
+			}
+			else if (e.getCause() instanceof UnknownHostException) {
+				showDialog(Messages.getString("Apromore.UI.Validation.Error.UnknownHost"),
+						Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				showDialog(Messages.getString("Apromore.UI.Validation.Error.Connection"),
+						Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
+			}
 			return;
 		} catch (SoapMessageCreationException e) {
 			showDialog(Messages.getString("Apromore.UI.Validation.Error.WebservicePath"),
@@ -154,7 +164,7 @@ public class ApromoreAccess {
 
 		UserType user = managerService.readUserByUsername(username);
 		if (user == null) {
-			showDialog(Messages.getString("Apromore.UI.Validation.Error.user"),
+			showDialog(Messages.getString("Apromore.UI.Validation.Error.User"),
 					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			return;
 		}

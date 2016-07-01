@@ -22,7 +22,6 @@
  */
 package org.woped.editor.gui.config;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -168,7 +167,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (saveButton.isEnabled()) {
 			int result = JOptionPane.showConfirmDialog(this,
 					Messages.getString("Configuration.Apromore.Dialog.SaveChanges.Message"),
-					Messages.getString("Configuration.Apromore.Dialog.SaveChanges.Message"), JOptionPane.YES_NO_OPTION);
+					Messages.getString("Configuration.Apromore.Dialog.SaveChanges.Title"), JOptionPane.YES_NO_OPTION);
 
 			if (result == JOptionPane.YES_OPTION) {
 
