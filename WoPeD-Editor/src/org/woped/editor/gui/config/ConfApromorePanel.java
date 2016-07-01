@@ -30,12 +30,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -45,6 +47,7 @@ import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -52,6 +55,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.PlainDocument;
 
 import org.woped.config.ApromoreServer;
 import org.woped.core.config.ConfigurationManager;
@@ -186,9 +193,9 @@ public class ConfApromorePanel extends AbstractConfPanel {
 				servers = ConfigurationManager.getConfiguration().getApromoreServers();
 				ConfigurationManager.getConfiguration().setApromoreUse(useBox.isSelected());
 				ConfigurationManager.getConfiguration().setCurrentApromoreIndex(serverComboBox.getSelectedIndex());
-				ConfigurationManager.getConfiguration()
-						.setApromoreServerName(//getServerNameText().getText() + 
-								getServerNameTextUser().getText());
+				ConfigurationManager.getConfiguration().setApromoreServerName(// getServerNameText().getText()
+																				// +
+						getServerNameTextUser().getText());
 				ConfigurationManager.getConfiguration().setApromoreServerURL(getServerURLText().getText());
 				ConfigurationManager.getConfiguration()
 						.setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
@@ -222,7 +229,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			getServersComboBox().setSelectedIndex(ConfigurationManager.getConfiguration().getCurrentApromoreIndex());
 		getServerNameText().setText(ConfigurationManager.getConfiguration().getApromoreServerName()
 				.replace(ConfigurationManager.getConfiguration().getApromoreUsername() + "@", ""));
-		getServerNameTextUser().setText(//ConfigurationManager.getConfiguration().getApromoreUsername() + "@"	+ 
+		getServerNameTextUser().setText(// ConfigurationManager.getConfiguration().getApromoreUsername()
+										// + "@" +
 				ConfigurationManager.getConfiguration().getApromoreServerName());
 		getServerURLText().setText(ConfigurationManager.getConfiguration().getApromoreServerURL());
 		getServerPortText().setText("" + ConfigurationManager.getConfiguration().getApromoreServerPort());
@@ -236,8 +244,13 @@ public class ConfApromorePanel extends AbstractConfPanel {
 					| BadPaddingException | IOException e) {
 				e.printStackTrace();
 			}
-		getProxyPanel().setVisible(ConfigurationManager.getConfiguration().getApromoreUseProxy());
 		getUseProxyCheckbox().setSelected(ConfigurationManager.getConfiguration().getApromoreUseProxy());
+		if (getUseProxyCheckbox().isSelected() == true && getUseBox().isSelected() == true) {
+			proxyPanel.setVisible(true);
+		} else {
+			proxyPanel.setVisible(false);
+		}
+		// getProxyPanel().setVisible(ConfigurationManager.getConfiguration().getApromoreUseProxy());
 		getProxyNameText().setText(ConfigurationManager.getConfiguration().getApromoreProxyName());
 		getProxyPortText().setText("" + ConfigurationManager.getConfiguration().getApromoreProxyPort());
 		getSaveButton().setEnabled(false);
@@ -267,9 +280,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		c.gridy = 3;
 		contentPanel.add(getProxyPanel(), c);
 		// dummy
+
 		c.fill = GridBagConstraints.VERTICAL;
 		c.weighty = 1;
-		c.gridy = 2;
+		c.gridy = 4;
 		contentPanel.add(new JPanel(), c);
 		setMainPanel(contentPanel);
 	}
@@ -346,6 +360,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			e.gridx = 4;
 			e.gridy = 0;
 			buttonPanel.add(getCancelButton(), e);
+			e.weightx = 0;
+			e.gridx = 5;
+			e.gridy = 0;
+			buttonPanel.add(getTestButton(), e);
 		}
 		return buttonPanel;
 	}
@@ -359,86 +377,84 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			settingsPanel.setBorder(BorderFactory.createCompoundBorder(
 					BorderFactory.createTitledBorder(Messages.getString("Configuration.Apromore.Settings.Panel.Title")),
 					BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-			c.weightx = 1;
+			c.weightx = 0.5;
+			// c.fill = GridBagConstraints.HORIZONTAL;
 			c.gridx = 0;
 			c.gridy = 0;
 			settingsPanel.add(getServerNameLabelUser(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 0;
-			c.gridwidth = 2;
+			c.gridwidth = 1;
 			// settingsPanel.add(getServerNamePanel(), c);
 			settingsPanel.add(getServerNameTextUser(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 1;
 			settingsPanel.add(getServerNameLabel(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 1;
-			c.gridwidth = 2;
+			c.gridwidth = 1;
 			// settingsPanel.add(getServerNamePanel(), c);
 			settingsPanel.add(getServerNameText(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 2;
 			settingsPanel.add(getServerURLLabel(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 2;
-			c.gridwidth = 2;
+			c.gridwidth = 1;
 			settingsPanel.add(getServerURLText(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 3;
 			c.gridwidth = 1;
 			settingsPanel.add(getServerPortLabel(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 3;
 			settingsPanel.add(getServerPortText(), c);
-			c.weightx = 1;
-			c.gridx = 2;
-			c.gridy = 3;
-			settingsPanel.add(getTestButton(), c);
-			c.weightx = 1;
+
+			// c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 4;
 			settingsPanel.add(getManagerPathLabel(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 4;
-			c.gridwidth = 2;
+			c.gridwidth = 1;
 			settingsPanel.add(getManagerPathText(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 5;
 			c.gridwidth = 1;
 			settingsPanel.add(getUsernameLabel(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 5;
-			c.gridwidth = 2;
+			c.gridwidth = 1;
 			settingsPanel.add(getUsernameText(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 6;
 			c.gridwidth = 1;
 			settingsPanel.add(getPasswordLabel(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 6;
-			c.gridwidth = 2;
+			c.gridwidth = 1;
 			settingsPanel.add(getPasswordText(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 0;
 			c.gridy = 7;
 			c.gridwidth = 1;
 			settingsPanel.add(getUseProxyLabel(), c);
-			c.weightx = 1;
+			// c.weightx = 1;
 			c.gridx = 1;
 			c.gridy = 7;
-			c.gridwidth = 2;
+			c.gridwidth = 1;
 			settingsPanel.add(getUseProxyCheckbox(), c);
 		}
 		settingsPanel.setVisible(getUseBox().isSelected());
@@ -465,11 +481,12 @@ public class ConfApromorePanel extends AbstractConfPanel {
 					BorderFactory
 							.createTitledBorder(Messages.getString("Configuration.Apromore.ProxySettings.Panel.Title")),
 					BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-			d.weightx = 1;
+			d.weightx = 0.5;
+			// d.fill = GridBagConstraints.HORIZONTAL;
 			d.gridx = 0;
 			d.gridy = 0;
 			proxyPanel.add(getProxyNameLabel(), d);
-			d.weightx = 1;
+			// d.weightx = 1;
 			d.gridx = 1;
 			d.gridy = 0;
 			proxyPanel.add(getProxyNameText(), d);
@@ -477,18 +494,23 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			// d.gridx = 2;
 			// d.gridy = 0;
 			// proxyPanel.add(new JPanel(), d);
-			d.weightx = 1;
+			// d.weightx = 1;
 			d.gridx = 0;
 			d.gridy = 1;
 			d.gridwidth = 1;
 			proxyPanel.add(getProxyPortLabel(), d);
-			d.weightx = 1;
+			// d.weightx = 1;
 			d.gridx = 1;
 			d.gridy = 1;
-			d.gridwidth = 2;
+			d.gridwidth = 1;
 			proxyPanel.add(getProxyPortText(), d);
 		}
-		proxyPanel.setVisible(getUseProxyCheckbox().isSelected());
+		if (getUseProxyCheckbox().isSelected() == true && getUseBox().isSelected() == true) {
+			proxyPanel.setVisible(true);
+		} else {
+			proxyPanel.setVisible(false);
+		}
+
 		return proxyPanel;
 	}
 
@@ -585,7 +607,9 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			changeButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					setChangeServer(true);
-					setApromoreServerID(servers[serverComboBox.getSelectedIndex()].getApromoreServerID());
+					if (servers != null) {
+						setApromoreServerID(servers[serverComboBox.getSelectedIndex()].getApromoreServerID());
+					}
 					setButtonsToAddOrChange();
 					enableServerSettings();
 					addKeyListeners();
@@ -674,7 +698,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (serverNameLabel == null) {
 			serverNameLabel = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ServerName") + "</html>");
-			serverNameLabel.setHorizontalAlignment(JLabel.RIGHT);
+			serverNameLabel.setHorizontalAlignment(JLabel.LEFT);
+			serverNameLabel.setPreferredSize(new Dimension(150, 20));
 		}
 		return serverNameLabel;
 	}
@@ -683,7 +708,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (serverNameLabelUser == null) {
 			serverNameLabelUser = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ServerNameDisplayed") + "</html>");
-			serverNameLabelUser.setHorizontalAlignment(JLabel.RIGHT);
+			serverNameLabelUser.setHorizontalAlignment(JLabel.LEFT);
+			serverNameLabelUser.setPreferredSize(new Dimension(150, 20));
 		}
 		return serverNameLabelUser;
 	}
@@ -700,7 +726,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (serverURLLabel == null) {
 			serverURLLabel = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ServerURL") + "</html>");
-			serverURLLabel.setHorizontalAlignment(JLabel.RIGHT);
+			serverURLLabel.setHorizontalAlignment(JLabel.LEFT);
+			serverURLLabel.setPreferredSize(new Dimension(150, 20));
 		}
 		return serverURLLabel;
 	}
@@ -709,7 +736,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (serverPortLabel == null) {
 			serverPortLabel = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ServerPort") + "</html>");
-			serverPortLabel.setHorizontalAlignment(JLabel.RIGHT);
+			serverPortLabel.setHorizontalAlignment(JLabel.LEFT);
+			serverPortLabel.setPreferredSize(new Dimension(150, 20));
 		}
 		return serverPortLabel;
 	}
@@ -718,7 +746,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (managerPathLabel == null) {
 			managerPathLabel = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ManagerPath") + "</html>");
-			managerPathLabel.setHorizontalAlignment(JLabel.RIGHT);
+			managerPathLabel.setHorizontalAlignment(JLabel.LEFT);
+			managerPathLabel.setPreferredSize(new Dimension(150, 20));
 		}
 		return managerPathLabel;
 	}
@@ -727,7 +756,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (usernameLabel == null) {
 			usernameLabel = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.UserName") + "</html>");
-			usernameLabel.setHorizontalAlignment(JLabel.RIGHT);
+			usernameLabel.setHorizontalAlignment(JLabel.LEFT);
+			usernameLabel.setPreferredSize(new Dimension(150, 20));
 		}
 		return usernameLabel;
 	}
@@ -736,7 +766,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (passwordLabel == null) {
 			passwordLabel = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.Password") + "</html>");
-			passwordLabel.setHorizontalAlignment(JLabel.RIGHT);
+			passwordLabel.setHorizontalAlignment(JLabel.LEFT);
+			passwordLabel.setPreferredSize(new Dimension(150, 20));
 		}
 		return passwordLabel;
 	}
@@ -745,7 +776,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (useProxyLabel == null) {
 			useProxyLabel = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.UseProxy") + "</html>");
-			useProxyLabel.setHorizontalAlignment(JLabel.RIGHT);
+			useProxyLabel.setHorizontalAlignment(JLabel.LEFT);
+			useProxyLabel.setPreferredSize(new Dimension(150, 20));
 		}
 		return useProxyLabel;
 	}
@@ -756,6 +788,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ProxyName") + "</html>");
 			proxyNameLabel.setHorizontalAlignment(JLabel.RIGHT);
 		}
+		proxyNameLabel.setHorizontalAlignment(JLabel.LEFT);
+		proxyNameLabel.setPreferredSize(new Dimension(150, 20));
 		return proxyNameLabel;
 	}
 
@@ -763,7 +797,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (proxyPortLabel == null) {
 			proxyPortLabel = new JLabel(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ProxyPort") + "</html>");
-			proxyPortLabel.setHorizontalAlignment(JLabel.RIGHT);
+			proxyPortLabel.setHorizontalAlignment(JLabel.LEFT);
+			proxyPortLabel.setPreferredSize(new Dimension(150, 20));
 		}
 		return proxyPortLabel;
 	}
@@ -819,11 +854,51 @@ public class ConfApromorePanel extends AbstractConfPanel {
 
 	private JTextField getServerPortText() {
 		if (proxyPortText == null) {
+
 			serverPortText = new JTextField();
-			serverPortText.setColumns(4);
+			serverPortText.setColumns(5);
 			serverPortText.setEnabled(false);
 			serverPortText.setToolTipText(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ServerPort") + "</html>");
+
+			/*
+			 * Das Textfeld soll nur Zahlen zulassen und als Maximum soll
+			 * maximal eine fünfstellige Zahl im Textfeld stehen.
+			 */
+			serverPortText.setDocument(new PlainDocument() {
+				private static final long serialVersionUID = 1L;
+
+				public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+					// Prüfen, ob bereits 5 Zeichen drin stehen
+					if (this.getLength() >= 5)
+						return;
+
+					// Prüfen, ob die einzufügenden Zeichen Zahlen sind
+					for (int i = 0; i < str.length(); i++) {
+						if (!Character.isDigit(str.charAt(i)))
+							return;
+					}
+
+					// Zahl(en) einfügen
+					super.insertString(offs, str, a);
+				}
+			});
+			// serverPortText.addKeyListener(new KeyAdapter() {
+			// public void keyTyped(KeyEvent e) {
+			//
+			//// try {
+			//// @SuppressWarnings("unused")
+			//// int x = Integer.parseInt(proxyPortText.getText());
+			//// } catch (NumberFormatException nfe) {
+			//// e.consume();
+			//// }
+			//
+			// if (serverPortText.getText().length() >= 5) // limit
+			// // textfield to
+			// // characters
+			// e.consume();
+			// }
+			// });
 		}
 		return serverPortText;
 	}
@@ -842,10 +917,23 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private JTextField getUsernameText() {
 		if (usernameText == null) {
 			usernameText = new JTextField();
-			usernameText.setColumns(20);
+			usernameText.setColumns(25);
 			usernameText.setEnabled(false);
 			usernameText
 					.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.UserName") + "</html>");
+
+			usernameText.setDocument(new PlainDocument() {
+				private static final long serialVersionUID = 1L;
+
+				public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+					// Prüfen, ob bereits 5 Zeichen drin stehen
+					if (this.getLength() >= 45)
+						return;
+
+					// String einfügen
+					super.insertString(offs, str, a);
+				}
+			});
 
 			// Listener to add username to servername
 			usernameText.getDocument().addDocumentListener(new DocumentListener() {
@@ -881,7 +969,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private JTextField getPasswordText() {
 		if (passwordText == null) {
 			passwordText = new JPasswordField();
-			passwordText.setColumns(20);
+			passwordText.setColumns(25);
 			passwordText.setEnabled(false);
 			passwordText
 					.setToolTipText("<html>" + Messages.getString("Configuration.Apromore.Label.Password") + "</html>");
@@ -903,10 +991,45 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private JTextField getProxyPortText() {
 		if (proxyPortText == null) {
 			proxyPortText = new JTextField();
-			proxyPortText.setColumns(4);
+			proxyPortText.setColumns(5);
 			proxyPortText.setEnabled(false);
 			proxyPortText.setToolTipText(
 					"<html>" + Messages.getString("Configuration.Apromore.Label.ProxyPort") + "</html>");
+
+			proxyPortText.setDocument(new PlainDocument() {
+				private static final long serialVersionUID = 1L;
+
+				public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+					// Prüfen, ob bereits 5 Zeichen drin stehen
+					if (this.getLength() >= 5)
+						return;
+
+					// Prüfen, ob die einzufügenden Zeichen Zahlen sind
+					for (int i = 0; i < str.length(); i++) {
+						if (!Character.isDigit(str.charAt(i)))
+							return;
+					}
+
+					// Zahl(en) einfügen
+					super.insertString(offs, str, a);
+				}
+			});
+			// proxyPortText.addKeyListener(new KeyAdapter() {
+			// public void keyTyped(KeyEvent e) {
+			//
+			// // try {
+			// // int x = Integer.parseInt(proxyPortText.getText());
+			// // } catch (NumberFormatException nfe) {
+			// // e.consume();
+			// // }
+			//
+			// if (proxyPortText.getText().length() >= 5) // limit
+			// // textfield to
+			// // 5
+			// // characters
+			// e.consume();
+			// }
+			// });
 		}
 		return proxyPortText;
 	}
@@ -920,6 +1043,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			if (jcb == useBox) {
 				getServerListPanel().setVisible(jcb.isSelected());
 				getSettingsPanel().setVisible(jcb.isSelected());
+				// applyConfiguration();
 				if (jcb.isSelected() == false) {
 					getProxyPanel().setVisible(false);
 				} else if (jcb.isSelected() == true && getUseProxyCheckbox().isSelected() == true) {
@@ -936,8 +1060,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		serverNameText.setText(servers[currentIndex].getApromoreServerName()
 				.replace(servers[currentIndex].getApromoreUserName() + "@", ""));
 		serverNameTextUser.setText(
-				//servers[currentIndex].getApromoreUserName() + "@" + 
-		servers[currentIndex].getApromoreServerName());
+				// servers[currentIndex].getApromoreUserName() + "@" +
+				servers[currentIndex].getApromoreServerName());
 		serverURLText.setText(servers[currentIndex].getApromoreServerURL());
 		serverPortText.setText(String.valueOf(servers[currentIndex].getApromoreServerPort()));
 
@@ -957,9 +1081,9 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private void setAttributeForCurrentApromoreServer(int index) {
 
 		ConfigurationManager.getConfiguration().setCurrentApromoreIndex(index);
-		ConfigurationManager.getConfiguration()
-				.setApromoreServerName(//getServerNameText().getText() + 
-						getServerNameTextUser().getText());
+		ConfigurationManager.getConfiguration().setApromoreServerName(// getServerNameText().getText()
+																		// +
+				getServerNameTextUser().getText());
 		ConfigurationManager.getConfiguration().setApromoreServerURL(getServerURLText().getText());
 		ConfigurationManager.getConfiguration().setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
 		ConfigurationManager.getConfiguration().setApromoreManagerPath(getManagerPathText().getText());
@@ -1140,8 +1264,8 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	}
 
 	private void addServerAttribute() {
-		name = //getServerNameText().getText() +
-				getServerNameTextUser().getText();
+		name = // getServerNameText().getText() +
+		getServerNameTextUser().getText();
 		url = getServerURLText().getText();
 		try {
 			port = Integer.parseInt(getServerPortText().getText());
