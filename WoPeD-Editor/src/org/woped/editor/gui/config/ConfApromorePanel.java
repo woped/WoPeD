@@ -64,6 +64,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 import org.woped.apromore.ApromoreAccess;
+import org.woped.apromore.ApromorePasswordSecurity;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -226,11 +227,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		getUseBox().setSelected(ConfigurationManager.getConfiguration().getApromoreUse());
 		if (ConfigurationManager.getConfiguration().isSetApromoreServers())
 			getServersComboBox().setSelectedIndex(ConfigurationManager.getConfiguration().getCurrentApromoreIndex());
-		getServerNameText().setText(ConfigurationManager.getConfiguration().getApromoreServerName()
-				.replace(ConfigurationManager.getConfiguration().getApromoreUsername() + "@", ""));
-		getServerNameTextUser().setText(// ConfigurationManager.getConfiguration().getApromoreUsername()
-										// + "@" +
-				ConfigurationManager.getConfiguration().getApromoreServerName());
+		String sname = ConfigurationManager.getConfiguration().getApromoreServerName();
+
+		getServerNameText().setText(sname.substring(sname.indexOf("@")+1));
+		getServerNameTextUser().setText(ConfigurationManager.getConfiguration().getApromoreServerName());
 		getServerURLText().setText(ConfigurationManager.getConfiguration().getApromoreServerURL());
 		getServerPortText().setText("" + ConfigurationManager.getConfiguration().getApromoreServerPort());
 		getManagerPathText().setText(ConfigurationManager.getConfiguration().getApromoreManagerPath());

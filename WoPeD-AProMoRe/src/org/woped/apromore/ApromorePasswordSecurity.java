@@ -1,4 +1,4 @@
-package org.woped.editor.gui.config;
+package org.woped.apromore;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

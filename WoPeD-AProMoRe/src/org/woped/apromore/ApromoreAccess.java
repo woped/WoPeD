@@ -65,7 +65,6 @@ public class ApromoreAccess {
 	public ApromoreAccess(Container parent) {
 		this.parent = parent;
 		this.servers = ConfigurationManager.getConfiguration().getApromoreServers();
-
 	}
 
 	public boolean checkIfServerAvailable() {
