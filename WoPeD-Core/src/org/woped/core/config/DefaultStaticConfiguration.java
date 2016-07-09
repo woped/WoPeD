@@ -72,12 +72,12 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static String DEFAULT_COUNTRY = "";
 	public static String DEFAULT_VARIANT = "";
 	public static int DEFAULT_APROMORE_CURRENTINDEX = 0;
-	public static String DEFAULT_APROMORE_SERVERNAME = "Test@Apromore DHBW Karlsruhe";
-	public static String DEFAULT_APROMORE_SERVERURL = "http://apromore.dhbw-karlsruhe.de";
+	public static String DEFAULT_APROMORE_SERVERNAME = "";
+	public static String DEFAULT_APROMORE_SERVERURL = "";
 	public static int DEFAULT_APROMORE_SERVERPORT = 9000;
 	public static String DEFAULT_APROMORE_MANAGERPATH = "manager/services/manager";
-	public static String DEFAULT_APROMORE_USERNAME = "Test";
-	public static boolean DEFAULT_APROMORE_ISSETPASSWORD = true;
+	public static String DEFAULT_APROMORE_USERNAME = "";
+	public static boolean DEFAULT_APROMORE_ISSETPASSWORD = false;
 	public static String DEFAULT_APROMORE_PASSWORD = "";
 	public static String DEFAULT_APROMORE_PROXYNAME = "";
 	public static int DEFAULT_APROMORE_PROXYPORT = 0;

@@ -158,12 +158,13 @@ public class ConfigVC extends JDialog implements IViewController {
 					.applyConfiguration())
 				confOK = false;
 		}
-		if (aproPanel.getChangeServer() == true) {
-			aproPanel.changeApromoreServer(aproPanel.getApromoreServerID());
-		}
-		if (aproPanel.getAddServer() == true) {
-			aproPanel.addApromoreServer(aproPanel.getApromoreServerID());
-		}
+//		if (((ConfApromorePanel) aproPanel).getInputOK()){
+//		if (aproPanel.getChangeServer() == true) {
+//			aproPanel.changeApromoreServer(aproPanel.getApromoreServerID());
+//		}
+//		if (aproPanel.getAddServer() == true) {
+//			aproPanel.addApromoreServer(aproPanel.getApromoreServerID());
+//		}}
 		if (confOK) {
 			// ConfigurationManager.getConfiguration().saveConfig();
 			fireViewEvent(new EditorViewEvent(this,
@@ -284,6 +285,7 @@ public class ConfigVC extends JDialog implements IViewController {
 			confPanels.put(metricsPanel.getPanelName(), metricsPanel);
 			aproPanel = new ConfApromorePanel(
 					Messages.getString("Configuration.Apromore.Title"));
+//			((ConfApromorePanel) aproPanel).saveConfig();
 			tabbedPane.addTab(
 					Messages.getString("Configuration.Apromore.Title"),
 					aproPanel);
@@ -348,8 +350,7 @@ public class ConfigVC extends JDialog implements IViewController {
 			cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					aproPanel.disableServerSettings();
-					aproPanel.setButtonsToDefault();
+					
 
 					int result = JOptionPane.showConfirmDialog(
 							tabbedPane,
@@ -358,11 +359,12 @@ public class ConfigVC extends JDialog implements IViewController {
 							JOptionPane.YES_NO_OPTION);
 
 					if (result == JOptionPane.YES_OPTION) {
-
+						aproPanel.disableServerSettings();
+						aproPanel.setButtonsToDefault();
 						resetConfiguration();
-
-					}
-					ConfigVC.this.dispose();
+						ConfigVC.this.dispose();
+					} 
+					
 				}
 			});
 		}
@@ -379,7 +381,7 @@ public class ConfigVC extends JDialog implements IViewController {
 				public void actionPerformed(ActionEvent arg0) {
 					if (applyConfiguration())
 						if (tabbedPane.getSelectedComponent() == aproPanel
-								&& aproPanel.getNameAlreadyInUse() == true) {
+								&& (aproPanel.getNameAlreadyInUse() == true || !((ConfApromorePanel) aproPanel).getInputOK()) ) {
 							return;
 						} else
 							ConfigVC.this.dispose();
