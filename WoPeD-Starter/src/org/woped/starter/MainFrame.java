@@ -1780,9 +1780,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 					fn = fn.substring(0, n);
 					// Replace all whitespaces in filename
 					fn = fn.replaceAll("%20", " ");
+					System.out.println(fn);
 					JarFile jf = new JarFile(fn);
 					Enumeration<JarEntry> e = jf.entries();
-					jf.close();
 					ZipEntry ze;
 					// process entries
 					while (e.hasMoreElements()) {
@@ -1803,6 +1803,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 							m_sampleMenu.addMenuButton(sampleItem);
 						}
 					}
+					jf.close();
 				}
 				// Normal dir access
 				else {

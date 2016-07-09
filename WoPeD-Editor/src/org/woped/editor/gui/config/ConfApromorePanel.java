@@ -61,6 +61,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 import org.woped.apromore.ApromoreAccess;
+import org.woped.apromore.ApromorePasswordSecurity;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -180,7 +181,6 @@ public class ConfApromorePanel extends AbstractConfPanel {
 						ConfigurationManager.getConfiguration().saveConfig();
 						saveConfig();
 					}
-					
 
 				}
 
@@ -189,46 +189,6 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			}
 
 		}
-
-		// if
-		// (ConfigurationManager.getConfiguration().isSetApromoreServers())
-		// {
-		// currentIndex =
-		// ConfigurationManager.getConfiguration().getCurrentApromoreIndex();
-		// serverComboBox.setSelectedIndex(currentIndex);
-		// servers =
-		// ConfigurationManager.getConfiguration().getApromoreServers();
-		// setTextFields();
-		// } else {
-		// setDefaultApromoreServer();
-		// servers =
-		// ConfigurationManager.getConfiguration().getApromoreServers();
-		// ConfigurationManager.getConfiguration().setApromoreUse(useBox.isSelected());
-		// ConfigurationManager.getConfiguration().setCurrentApromoreIndex(serverComboBox.getSelectedIndex());
-		// ConfigurationManager.getConfiguration().setApromoreServerName(//
-		// getServerNameText().getText()
-		// // +
-		// getServerNameTextUser().getText());
-		// ConfigurationManager.getConfiguration().setApromoreServerURL(getServerURLText().getText());
-		// ConfigurationManager.getConfiguration()
-		// .setApromoreServerPort(Integer.parseInt(getServerPortText().getText()));
-		// ConfigurationManager.getConfiguration().setApromoreManagerPath(getManagerPathText().getText());
-		// ConfigurationManager.getConfiguration().setApromoreUsername(getUsernameText().getText());
-		// try {
-		// password =
-		// ApromorePasswordSecurity.encode(passwordText.getPassword().toString());
-		// ConfigurationManager.getConfiguration().setApromorePassword(password);
-		// } catch (NoSuchAlgorithmException | InvalidKeyException |
-		// UnsupportedEncodingException
-		// | NoSuchPaddingException | IllegalBlockSizeException |
-		// BadPaddingException e) {
-		// e.printStackTrace();
-		// }
-		// ConfigurationManager.getConfiguration().setApromoreUseProxy(useProxyBox.isSelected());
-		// ConfigurationManager.getConfiguration().setApromoreProxyName(getProxyNameText().getText());
-		// ConfigurationManager.getConfiguration()
-		// .setApromoreProxyPort(Integer.parseInt(getProxyPortText().getText()));
-		// }
 
 		return true;
 
@@ -278,20 +238,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (ConfigurationManager.getConfiguration().isSetApromoreServers())
 			getServersComboBox().setSelectedIndex(ConfigurationManager.getConfiguration().getCurrentApromoreIndex());
 
-		// getServerNameText().setText(ConfigurationManager.getConfiguration().getApromoreServerName()
-		// .replace(ConfigurationManager.getConfiguration().getApromoreUsername()
-		// + "@", ""));
+		getServerNameTextUser().setText(ConfigurationManager.getConfiguration().getApromoreServerName());
+		String sname = ConfigurationManager.getConfiguration().getApromoreServerName();
 
-		String username = ConfigurationManager.getConfiguration().getApromoreUsername();
-		if (username.equals("")) {
-			getServerNameText()
-					.setText(ConfigurationManager.getConfiguration().getApromoreServerName().replace("Unknown@", ""));
-
-		} else {
-			getServerNameText().setText(
-					ConfigurationManager.getConfiguration().getApromoreServerName().replace(username + "@", ""));
-		}
-
+		getServerNameText().setText(sname.substring(sname.indexOf("@") + 1));
 		getServerNameTextUser().setText(ConfigurationManager.getConfiguration().getApromoreServerName());
 		getServerURLText().setText(ConfigurationManager.getConfiguration().getApromoreServerURL());
 		getServerPortText().setText("" + ConfigurationManager.getConfiguration().getApromoreServerPort());
@@ -311,12 +261,11 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		} else {
 			proxyPanel.setVisible(false);
 		}
-		// getProxyPanel().setVisible(ConfigurationManager.getConfiguration().getApromoreUseProxy());
 		getProxyNameText().setText(ConfigurationManager.getConfiguration().getApromoreProxyName());
 		getProxyPortText().setText("" + ConfigurationManager.getConfiguration().getApromoreProxyPort());
 		getSaveButton().setEnabled(false);
 		getCancelButton().setEnabled(false);
-		// saveConfig();
+
 	}
 
 	private void initialize() {
@@ -994,7 +943,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			if (!username.equals("") && !servername.equals("")) {
 				serverNameTextUser.setText(username + "@" + servername);
 			} else if (username.equals("") && !servername.equals("")) {
-				serverNameTextUser.setText("Unknown" + "@" + servername);
+				serverNameTextUser.setText("PleaseRegister" + "@" + servername);
 			} else {
 				serverNameTextUser.setText("");
 			}
@@ -1080,14 +1029,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 	private void setTextFields() {
 
 		serverNameTextUser.setText(servers[currentIndex].getApromoreServerName());
-		String username = servers[currentIndex].getApromoreUserName();
-		if (username.equals("")) {
-			serverNameText.setText(servers[currentIndex].getApromoreServerName().replace("Unknown@", ""));
 
-		} else {
-			serverNameText.setText(servers[currentIndex].getApromoreServerName().replace(username + "@", ""));
+		String sname = servers[currentIndex].getApromoreServerName();
+		serverNameText.setText(sname.substring(sname.indexOf("@") + 1));
 
-		}
 		serverURLText.setText(servers[currentIndex].getApromoreServerURL());
 		serverPortText.setText(String.valueOf(servers[currentIndex].getApromoreServerPort()));
 
@@ -1454,7 +1399,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 		if (useBox.isSelected() && (usernameText.getText().equals(""))) {
 			if (inputOK) {
 				url = serverURLText.getText() + ":" + serverPortText.getText() + "/portal/login.zul";
-				message = Messages.getString("Apromore.UI.MandatoryFields") + " "
+				message = Messages.getString("Apromore.UI.MandatoryFields")
 						+ Messages.getString("Apromore.UI.OptionCreateUser");
 				addButton = true;
 			} else {
@@ -1468,7 +1413,7 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			inputOK = false;
 			if (message.equals("")) {
 
-				message =  Messages.getString("Apromore.UI.MandatoryFields");
+				message = Messages.getString("Apromore.UI.MandatoryFields");
 			}
 		}
 
@@ -1476,8 +1421,9 @@ public class ConfApromorePanel extends AbstractConfPanel {
 
 			if (addButton) {
 				Object[] options = { Messages.getString("Apromore.UI.CreateUser"), Messages.getString("Dialog.Ok") };
-				int option = JOptionPane.showOptionDialog(this, message, Messages.getString("Apromore.UI.MandatoryFields"),
-						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+				int option = JOptionPane.showOptionDialog(this, message,
+						Messages.getString("Apromore.UI.MandatoryFields"), JOptionPane.YES_NO_CANCEL_OPTION,
+						JOptionPane.WARNING_MESSAGE, null, options, options[1]);
 
 				if (option == 0) {
 					try {
