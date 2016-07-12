@@ -77,7 +77,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static int DEFAULT_APROMORE_SERVERPORT = 9000;
 	public static String DEFAULT_APROMORE_MANAGERPATH = "manager/services/manager";
 	public static String DEFAULT_APROMORE_USERNAME = "";
-	public static boolean DEFAULT_APROMORE_ISSETPASSWORD = false;
+	public static boolean DEFAULT_APROMORE_ISSETPASSWORD = true;
 	public static String DEFAULT_APROMORE_PASSWORD = "";
 	public static String DEFAULT_APROMORE_PROXYNAME = "";
 	public static int DEFAULT_APROMORE_PROXYPORT = 0;

@@ -188,6 +188,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 
 			}
 
+		} else {
+			
+			checkInput();
+			
 		}
 
 		return true;
@@ -1396,7 +1400,10 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			inputOK = false;
 			message = Messages.getString("Apromore.UI.MandatoryFields");
 		}
-		if (useBox.isSelected() && (usernameText.getText().equals(""))) {
+		
+		
+		char[] testchar = passwordText.getPassword();
+		if (useBox.isSelected() && (usernameText.getText().equals("") || passwordText.getPassword().length == 0 )) {
 			if (inputOK) {
 				url = serverURLText.getText() + ":" + serverPortText.getText() + "/portal/login.zul";
 				message = Messages.getString("Apromore.UI.MandatoryFields")
