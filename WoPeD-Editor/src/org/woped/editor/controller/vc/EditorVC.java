@@ -1,4 +1,4 @@
-﻿package org.woped.editor.controller.vc;
+package org.woped.editor.controller.vc;
 
 import java.awt.Cursor;
 import java.awt.Point;
