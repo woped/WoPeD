@@ -4,6 +4,19 @@
  */
 package net.didion.jwnl;
 
+import net.didion.jwnl.data.Adjective;
+import net.didion.jwnl.data.PointerType;
+import net.didion.jwnl.data.VerbFrame;
+import net.didion.jwnl.dictionary.Dictionary;
+import net.didion.jwnl.util.ResourceBundleSet;
+import net.didion.jwnl.util.factory.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -11,30 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import net.didion.jwnl.JWNLException;
-import net.didion.jwnl.JWNLRuntimeException;
-import net.didion.jwnl.data.Adjective;
-import net.didion.jwnl.data.PointerType;
-import net.didion.jwnl.data.VerbFrame;
-import net.didion.jwnl.dictionary.Dictionary;
-import net.didion.jwnl.util.ResourceBundleSet;
-import net.didion.jwnl.util.factory.Element;
-import net.didion.jwnl.util.factory.NameValueParam;
-import net.didion.jwnl.util.factory.Param;
-import net.didion.jwnl.util.factory.ParamList;
-import net.didion.jwnl.util.factory.ValueParam;
-
-import org.jboss.resteasy.core.ContextParameterInjector;
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import com.itextpdf.text.log.SysoLogger;
 
 /** Contains system info as well as JWNL properties. */
 public final class JWNL {

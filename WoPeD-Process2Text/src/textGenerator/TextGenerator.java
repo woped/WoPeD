@@ -1,15 +1,15 @@
 package textGenerator;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import org.hibernate.validator.util.privilegedactions.GetConstructor;
-
+import contentDetermination.labelAnalysis.EnglishLabelDeriver;
+import contentDetermination.labelAnalysis.EnglishLabelHelper;
+import dataModel.dsynt.DSynTSentence;
+import dataModel.pnmlReader.PNMLReader;
+import dataModel.pnmlReader.PetriNet.PetriNet;
+import dataModel.pnmlReader.PetriNetToProcessConverter;
+import dataModel.process.ProcessModel;
+import de.hpi.bpt.graph.algo.rpst.RPST;
+import de.hpi.bpt.process.ControlFlow;
+import de.hpi.bpt.process.Node;
 import preprocessing.FormatConverter;
 import preprocessing.RigidStructurer;
 import sentencePlanning.DiscourseMarker;
@@ -18,16 +18,10 @@ import sentencePlanning.SentenceAggregator;
 import sentenceRealization.SurfaceRealizer;
 import textPlanning.PlanningHelper;
 import textPlanning.TextPlanner;
-import contentDetermination.labelAnalysis.EnglishLabelDeriver;
-import contentDetermination.labelAnalysis.EnglishLabelHelper;
-import dataModel.dsynt.DSynTSentence;
-import dataModel.pnmlReader.PNMLReader;
-import dataModel.pnmlReader.PetriNetToProcessConverter;
-import dataModel.pnmlReader.PetriNet.PetriNet;
-import dataModel.process.ProcessModel;
-import de.hpi.bpt.graph.algo.rpst.RPST;
-import de.hpi.bpt.process.ControlFlow;
-import de.hpi.bpt.process.Node;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TextGenerator {
 	
