@@ -31,7 +31,6 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IViewController;
 import org.woped.core.gui.IUserInterface;
 import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.controller.vc.ConfigVC;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.file.controller.vep.FileEventProcessor;

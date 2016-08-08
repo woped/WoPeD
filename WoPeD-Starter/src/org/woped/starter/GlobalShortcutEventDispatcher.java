@@ -1,27 +1,18 @@
 package org.woped.starter;
 
-import java.awt.Component;
-import java.awt.Frame;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 
-import javax.swing.ButtonModel;
 import javax.swing.SwingUtilities;
 
-import org.hamcrest.core.IsInstanceOf;
-import org.pushingpixels.flamingo.api.common.AbstractCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandButton;
-import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.controller.AbstractViewEvent;
-import org.woped.editor.controller.EditorViewEvent;
 import org.woped.gui.translations.Messages;
 
 public class GlobalShortcutEventDispatcher implements KeyEventDispatcher{
-	private long delay = 500; //repeat Rate
+	private long delay = 500; //repeat rate
 
 	private long lastKeyPressed = 0;
 	/** prefix in messages.properties */

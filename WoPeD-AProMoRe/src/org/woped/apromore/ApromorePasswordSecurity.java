@@ -37,7 +37,7 @@ public class ApromorePasswordSecurity {
 		byte[] encrypted = cipher.doFinal(password.getBytes());
 
 		// Convert bytes to Base64 string
-		String topSecret = Base64.getEncoder().encode(encrypted).toString();
+		String topSecret = new String(Base64.getEncoder().encode(encrypted));
 
 		return topSecret;
 	}
@@ -45,6 +45,7 @@ public class ApromorePasswordSecurity {
 	// Decoding
 	public static String decode(String password) throws NoSuchAlgorithmException, IOException, NoSuchPaddingException,
 			InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+
 		String keyStr = "secret";
 		byte[] key = (keyStr).getBytes("UTF-8");
 		MessageDigest sha = MessageDigest.getInstance("MD5");
@@ -58,8 +59,8 @@ public class ApromorePasswordSecurity {
 		Cipher cipher = Cipher.getInstance("AES");
 		cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
 		byte[] decrypted = cipher.doFinal(crypted);
-		String clear = new String(decrypted);
+		String plain = new String(decrypted);
 
-		return clear;
+		return plain;
 	}
 }
