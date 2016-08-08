@@ -13,20 +13,17 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import java.util.Base64;
 
 /**
- * @author Sascha Schneider
+ * @author Sascha Schneider, Philip Allgaier
  */
 
 public class ApromorePasswordSecurity {
 
-	// encoding
-	public static String encode(String password)
-			throws UnsupportedEncodingException, NoSuchAlgorithmException,
-			NoSuchPaddingException, InvalidKeyException,
-			IllegalBlockSizeException, BadPaddingException {
+	// Encoding
+	public static String encode(String password) throws UnsupportedEncodingException, NoSuchAlgorithmException,
+			NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 
 		String keyStr = "secret";
 		byte[] key = (keyStr).getBytes("UTF-8");
@@ -39,18 +36,15 @@ public class ApromorePasswordSecurity {
 		cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
 		byte[] encrypted = cipher.doFinal(password.getBytes());
 
-		// convert bytes to Base64-String
-		BASE64Encoder myEncoder = new BASE64Encoder();
-		String topSecret = myEncoder.encode(encrypted);
+		// Convert bytes to Base64 string
+		String topSecret = Base64.getEncoder().encode(encrypted).toString();
 
 		return topSecret;
 	}
 
-	// decoding
-	public static String decode(String password)
-			throws NoSuchAlgorithmException, IOException,
-			NoSuchPaddingException, InvalidKeyException,
-			IllegalBlockSizeException, BadPaddingException {
+	// Decoding
+	public static String decode(String password) throws NoSuchAlgorithmException, IOException, NoSuchPaddingException,
+			InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 		String keyStr = "secret";
 		byte[] key = (keyStr).getBytes("UTF-8");
 		MessageDigest sha = MessageDigest.getInstance("MD5");
@@ -58,9 +52,8 @@ public class ApromorePasswordSecurity {
 		key = Arrays.copyOf(key, 16);
 		SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
 
-		// convert BASE64-String to Byte-Array
-		BASE64Decoder myDecoder = new BASE64Decoder();
-		byte[] crypted = myDecoder.decodeBuffer(password);
+		// Convert Base64 string to byte array
+		byte[] crypted = Base64.getDecoder().decode(password);
 
 		Cipher cipher = Cipher.getInstance("AES");
 		cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
