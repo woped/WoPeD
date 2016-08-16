@@ -599,7 +599,7 @@ public class ModelElementContainer implements Serializable {
 	}
 
 	/**
-	 * @edit by Alexander Roﬂwog
+	 * @edit by Alexander Ro√üwog
 	 *
 	 * Insert a partnerlink to a consisting list of partnerlinks
 	 * Attention: Parameters: name, namespace, partnerLinkType, partnerRole
