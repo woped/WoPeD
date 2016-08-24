@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class LoggerManager
 {
 
-    private static HashMap<String, Object> list = new HashMap<String, Object>();
+    private static HashMap<String, Object> list = new HashMap<>();
 
     public static void register(Object logger, String loggerName)
     {
@@ -53,6 +53,10 @@ public class LoggerManager
         {
             ((ILogger) list.get(logger)).fatal(msg);
         }
+    }
+
+    public static void resetForTesting(){
+        list = new HashMap<>();
     }
 
 }
