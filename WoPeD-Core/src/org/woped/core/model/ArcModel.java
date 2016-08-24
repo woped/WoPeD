@@ -47,483 +47,456 @@ import org.woped.core.utilities.LoggerManager;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
- * 
- * 
- * 19.04.2003
+ *         <p>
+ *         <p>
+ *         19.04.2003
  */
 
 @SuppressWarnings("serial")
 public class ArcModel extends DefaultEdge implements Serializable {
 
-	private String id;
+    private String id;
 
-	private boolean activated = false;
+    private boolean activated = false;
 
-	private Vector<Object> unknownToolSpecs = new Vector<Object>();
+    private Vector<Object> unknownToolSpecs = new Vector<Object>();
 
-	private ElementContext elementContext = null;
-	
-	private static final Color DEFAULT_COLOR = Color.BLACK;
-	private static final Color DEFAULT_HIGHLIGHTED_COLOR = Color.RED;
+    private ElementContext elementContext = null;
 
-	// ! Stores the probability for this arc to be chosen
-	// ! Currently, this is a dummy value
-	// ! It is stored to the PNML file as a tool-specific extension
-	// ! and read back but not used for anything.
-	// ! It will, however, be used in the future for quantitative analysis of
-	// ! workflow nets. Time of this writing: 2006/12/18, A.Eckleder
+    private static final Color DEFAULT_COLOR = Color.BLACK;
+    private static final Color DEFAULT_HIGHLIGHTED_COLOR = Color.RED;
+
+    // ! Stores the probability for this arc to be chosen
+    // ! Currently, this is a dummy value
+    // ! It is stored to the PNML file as a tool-specific extension
+    // ! and read back but not used for anything.
+    // ! It will, however, be used in the future for quantitative analysis of
+    // ! workflow nets. Time of this writing: 2006/12/18, A.Eckleder
 //	private double probability = 1.0;// 0.0d;
 //
 //	private boolean displayOn = false;
 
-	// private GraphLayoutCache graphLayoutCache = null;
+    // private GraphLayoutCache graphLayoutCache = null;
 
-	/**
-	 * Constructor for ArcModel.
-	 */
-	public ArcModel() {
-		this(null);
-	}
+    /**
+     * Constructor for ArcModel.
+     */
+    public ArcModel() {
+        this(null);
+    }
 
-	/**
-	 * Constructor for ArcModel.
-	 * 
-	 * @param userObject
-	 */
-	public ArcModel(Object userObject) {
-		super(userObject);
-		this.elementContext = new ElementContext();
-		initAttributes();
-	}
-	
-	public void setHighlighted(boolean highlighted){
-		AttributeMap map = getAttributes();
-		if(highlighted)
-			GraphConstants.setLineColor(map, DEFAULT_HIGHLIGHTED_COLOR);
-		else
-			GraphConstants.setLineColor(map, DEFAULT_COLOR);
-		updateLabel();
-	}
+    /**
+     * Constructor for ArcModel.
+     *
+     * @param userObject
+     */
+    public ArcModel(Object userObject) {
+        super(userObject);
+        this.elementContext = new ElementContext();
+        initAttributes();
+    }
 
-	public void initAttributes() {
-		AttributeMap map = getAttributes();
-		GraphConstants.setEditable(map, false);
-		GraphConstants.setBendable(map, true);
-		GraphConstants
-				.setLineStyle(map, ConfigurationManager.getConfiguration()
-						.isRoundRouting() ? GraphConstants.STYLE_BEZIER
-						: GraphConstants.STYLE_ORTHOGONAL);
-		GraphConstants.setEndFill(map, ConfigurationManager.getConfiguration()
-				.isFillArrowHead());
-		GraphConstants.setEndSize(map, ConfigurationManager.getConfiguration()
-				.getArrowheadSize() == 0 ? ConfigurationManager
-				.getStandardConfiguration().getArrowheadSize()
-				: ConfigurationManager.getConfiguration().getArrowheadSize());
-		GraphConstants.setLineWidth(map, ConfigurationManager
-				.getConfiguration().getArrowWidth() == 0 ? ConfigurationManager
-				.getStandardConfiguration().getArrowWidth()
-				: ConfigurationManager.getConfiguration().getArrowWidth());
-		GraphConstants.setDisconnectable(map, false);
-		// GraphConstants.setRouting(map, Edge.)
+    public void setHighlighted(boolean highlighted) {
+        AttributeMap map = getAttributes();
+        if (highlighted) GraphConstants.setLineColor(map, DEFAULT_HIGHLIGHTED_COLOR);
+        else GraphConstants.setLineColor(map, DEFAULT_COLOR);
+        updateLabel();
+    }
 
-		// Add Probability
-		// GraphConstants.setValue(map,
-		// Integer.toString(Double.valueOf(probability * 100).intValue()));
-		GraphConstants.setForeground(map, new Color(255, 0, 0));
-		GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
-		// GraphConstants.setLabelPosition(map, new
-		// Point2D.Double(GraphConstants.PERMILLE/2, 0));
-		// GraphConstants.setSelectable(map, true);
-		Point2D[] pos = { getDefaultLabelPosition() };
-		GraphConstants.setExtraLabelPositions(map, pos);
+    public void initAttributes() {
+        AttributeMap map = getAttributes();
+        GraphConstants.setEditable(map, false);
+        GraphConstants.setBendable(map, true);
+        GraphConstants.setLineStyle(map, ConfigurationManager.getConfiguration().isRoundRouting() ? GraphConstants.STYLE_BEZIER : GraphConstants.STYLE_ORTHOGONAL);
+        GraphConstants.setEndFill(map, ConfigurationManager.getConfiguration().isFillArrowHead());
+        GraphConstants.setEndSize(map, ConfigurationManager.getConfiguration().getArrowheadSize() == 0 ? ConfigurationManager.getStandardConfiguration().getArrowheadSize() : ConfigurationManager.getConfiguration().getArrowheadSize());
+        GraphConstants.setLineWidth(map, ConfigurationManager.getConfiguration().getArrowWidth() == 0 ? ConfigurationManager.getStandardConfiguration().getArrowWidth() : ConfigurationManager.getConfiguration().getArrowWidth());
+        GraphConstants.setDisconnectable(map, false);
+        // GraphConstants.setRouting(map, Edge.)
+
+        // Add Probability
+        // GraphConstants.setValue(map,
+        // Integer.toString(Double.valueOf(probability * 100).intValue()));
+        GraphConstants.setForeground(map, new Color(255, 0, 0));
+        GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
+        // GraphConstants.setLabelPosition(map, new
+        // Point2D.Double(GraphConstants.PERMILLE/2, 0));
+        // GraphConstants.setSelectable(map, true);
+        Point2D[] pos = {getDefaultLabelPosition()};
+        GraphConstants.setExtraLabelPositions(map, pos);
         GraphConstants.setLineEnd(map, GraphConstants.ARROW_CLASSIC);
 
-		getAttributes().applyMap(map);
-	}
+        getAttributes().applyMap(map);
+    }
 
-	public void setLabelPosition(Point2D newLabelPos) {
-		AttributeMap map = getAttributes();
-		Point2D[] pos = { newLabelPos };
-		GraphConstants.setExtraLabelPositions(map, pos);
+    public Point2D getLabelPosition() {
+        Point2D result = null;
+        Point2D positions[] = GraphConstants.getExtraLabelPositions(getAttributes());
+        if (positions.length > 0) result = positions[0];
+        if (result == null) result = getDefaultLabelPosition();
+        return result;
+    }
 
-		getAttributes().applyMap(map);
-	}
+    public void setLabelPosition(Point2D newLabelPos) {
+        AttributeMap map = getAttributes();
+        Point2D[] pos = {newLabelPos};
+        GraphConstants.setExtraLabelPositions(map, pos);
 
-	public Point2D getDefaultLabelPosition() {
-		return new Point2D.Double((int)GraphConstants.PERMILLE / 2, 0);
-	}
+        getAttributes().applyMap(map);
+    }
 
-	public Point2D getLabelPosition() {
-		Point2D result = null;
-		Point2D positions[] = GraphConstants
-				.getExtraLabelPositions(getAttributes());
-		if (positions.length > 0)
-			result = positions[0];
-		if (result == null)
-			result = getDefaultLabelPosition();
-		return result;
-	}
-
-	public int getWeight() {
-		return Integer.parseInt((String) getUserObject());
-	}
-
-	public void setWeight(int weight) {
-		setUserObject(String.valueOf(weight));
-	}
-
-	public boolean isXORsplit(PetriNetModelProcessor mp) {
-		Object cell = ((DefaultPort)getSource()).getParent();
-		
-		if (cell instanceof GroupModel) {
-			cell = ((GroupModel) cell).getMainElement();
-		}
-		
-		if (cell instanceof TransitionModel) {
-			TransitionModel trans = (TransitionModel) cell;
-			int opType = trans.getToolSpecific().getOperatorType();
-			if (opType == OperatorTransitionModel.XOR_SPLIT_TYPE
-					|| opType == OperatorTransitionModel.XOR_SPLITJOIN_TYPE
-					|| opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
-				return true;
-			}
-		}
-		
-		if (cell instanceof PlaceModel) {
-			PlaceModel place = (PlaceModel) cell; 
-			int num = mp.getElementContainer().
-				getOutgoingArcs(place.getId()).size();
-
-			return num > 1;
-		}
-
-		return false;
-	}
+    public Point2D getDefaultLabelPosition() {
+        return new Point2D.Double(GraphConstants.PERMILLE / 2, 0);
+    }
 
 
-	/**
-	 * Returns the inscriptionValue.
-	 * 
-	 * @return String
-	 */
-	public int getInscriptionValue() {
-		int i = 1;
-		try {
-			i = Integer.parseInt((String) getUserObject());
-		} catch (Exception e) {
-			i = 1;
-		}
-		return i == -1 ? 1 : i;
-	}
+//	public int getWeight() {
+//		return Integer.parseInt((String) getUserObject());
+//	}
+//
+//	public void setWeight(int weight) {
+//		setUserObject(String.valueOf(weight));
+//	}
 
-	/**
-	 * Returns the sourceId.
-	 * 
-	 * @return Object
-	 */
-	public String getSourceId() {
-		DefaultPort port = ((DefaultPort) getSource());
-		AbstractPetriNetElementModel pnme = ((AbstractPetriNetElementModel) port.getParent());
-		return pnme.getId();
-	}
+    public boolean isXORsplit(PetriNetModelProcessor mp) {
+        Object cell = ((DefaultPort) getSource()).getParent();
 
-	/**
-	 * Returns the id.
-	 * 
-	 * @return Object
-	 */
-	public String getId() {
-		return id;
-	}
+        if (cell instanceof GroupModel) {
+            cell = ((GroupModel) cell).getMainElement();
+        }
 
-	/**
-	 * Sets the id.
-	 * 
-	 * @param id
-	 *            The id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
+        if (cell instanceof TransitionModel) {
+            TransitionModel trans = (TransitionModel) cell;
+            int opType = trans.getToolSpecific().getOperatorType();
+            if ((opType == OperatorTransitionModel.XOR_SPLIT_TYPE) || (opType == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) || (opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
+                return true;
+            }
+        }
 
-	public String getTargetId() {
-		return ((AbstractPetriNetElementModel) ((DefaultPort) getTarget()).getParent())
-				.getId();
-	}
+        if (cell instanceof PlaceModel) {
+            PlaceModel place = (PlaceModel) cell;
+            int num = mp.getElementContainer().
+                    getOutgoingArcs(place.getId()).size();
 
-	/**
-	 * Sets the inscriptionValue.
-	 * 
-	 * @param inscriptionValue
-	 *            The inscriptionValue to set
-	 */
-	public void setInscriptionValue(String inscriptionValue) {
-		setUserObject(inscriptionValue);
-	}
+            return num > 1;
+        }
 
-	/**
-	 * TODO: Documentation
-	 * 
-	 * @param route
-	 */
-	public void setRoute(boolean route) {
+        return false;
+    }
 
-		if (route) {
-			getAttributes().applyValue(GraphConstants.ROUTING,
-					GraphConstants.ROUTING_SIMPLE);
-			getAttributes().remove(GraphConstants.POINTS);
-		} else {
-			getAttributes().remove(GraphConstants.ROUTING);
-			getAttributes().remove(GraphConstants.POINTS);
-		}
-	}
 
-	public boolean isRoute() {
-		return (!GraphConstants.ROUTING_DEFAULT.equals(GraphConstants
-				.getRouting(getAttributes())));
+    /**
+     * Returns the inscriptionValue.
+     *
+     * @return String
+     */
+    public int getInscriptionValue() {
+        int i;
+        try {
+            i = Integer.parseInt((String) getUserObject());
+        } catch (Exception e) {
+            i = 1;
+        }
+        return i == -1 ? 1 : i;
+    }
 
-	}
+    /**
+     * Sets the inscriptionValue.
+     *
+     * @param inscriptionValue The inscriptionValue to set
+     */
+    public void setInscriptionValue(int inscriptionValue) {
+        setUserObject(inscriptionValue);
+    }
 
-	/**
-	 * 
-	 * Adds point c to the arc at the position <code>index</code>.
-	 * 
-	 * @param c
-	 * @param index
-	 */
-	public void addPoint(Point2D c, int index) {
-		List<Object> points = GraphConstants.getPoints(getAttributes());
-		if (points == null) {
-			points = new Vector<Object>();
-		}
-		points.add(index, c);
-		HashMap<Object, Object> map = new HashMap<Object, Object>();
-		GraphConstants.setPoints(map, points);
-		getAttributes().applyMap(map);
-		LoggerManager.debug(Constants.CORE_LOGGER, "Point added "
-				+ c.toString());
-	}
+    /**
+     * Returns the id.
+     *
+     * @return Object
+     */
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * Adds point c to the arc. Calculates the right position
-	 * 
-	 * @param c
-	 */
-	public void addPoint(Point2D c) {
-		AttributeMap map = getAttributes();
-		List<Object> points = GraphConstants.getPoints(map);
-		if (points == null) {
-			points = new Vector<Object>();
-			Point2D[] currentPoints = getPoints();
-			for (int i = 0; i < currentPoints.length; i++) {
-				points.add(currentPoints[i]);
-			}
-		}
+    /**
+     * Sets the id.
+     *
+     * @param id The id to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
 
-		int index = 0;
-		double min = Double.MAX_VALUE, dist = 0;
-		for (int i = 0; i < points.size() - 1; i++) {
-			Point2D p = null;
-			Point2D p1 = null;
-			if (points.get(i) instanceof Point2D) {
-				p = (Point2D) points.get(i);
-			} else if (points.get(i) instanceof PortView) {
-				p = ((PortView) points.get(i)).getLocation();
-			}
-			if (points.get(i + 1) instanceof Point2D) {
-				p1 = (Point2D) points.get(i + 1);
-			} else if (points.get(i + 1) instanceof PortView) {
-				p1 = ((PortView) points.get(i + 1)).getLocation();
-			}
-			dist = new Line2D.Double(p, p1).ptLineDistSq(c);
-			if (dist < min) {
-				min = dist;
-				index = i + 1;
-			}
-		}
-		addPoint(c, index);
-	}
+    /**
+     * Gets the id of the arcs source
+     *
+     * @return the id of the source
+     */
+    public String getSourceId() {
+        DefaultPort port = ((DefaultPort) getSource());
+        AbstractPetriNetElementModel pnme = ((AbstractPetriNetElementModel) port.getParent());
+        return pnme.getId();
+    }
 
-	public Point2D[] getPoints() {
-		AttributeMap map = getAttributes();
-		List<Object> points = GraphConstants.getPoints(map);
-		Point2D[] result = new Point2D[] {};
-		if (points != null) {
-			result = new Point2D[points.size()];
-			for (int i = 0; i < points.size(); i++) {
-				if (points.get(i) instanceof PortView) {
-					result[i] = ((PortView) points.get(i)).getLocation();
-				} else {
-					result[i] = (Point2D) points.get(i);
-				}
-			}
-		}
-		return result;
-	}
+    /**
+     * Gets the id of the arcs target
+     *
+     * @return the id of the target
+     */
+    public String getTargetId() {
+        return ((AbstractPetriNetElementModel) ((DefaultPort) getTarget()).getParent()).getId();
+    }
 
-	public void setPoints(Point2D[] points) {
-		AttributeMap map = getAttributes();
-		List<Object> pointList = GraphConstants.getPoints(map);
-		if (pointList != null) {
-			while (pointList.size() > 2)
-				pointList.remove(1);
-			for (int i = points.length - 1; i >= 0; i--) {
-				pointList.add(1, points[i]);
-			}
-			GraphConstants.setPoints(map, pointList);
-		}
-	}
+    /**
+     * TODO: Documentation
+     *
+     * @param route
+     */
+    public void setRoute(boolean route) {
 
-	/**
-	 * @param l
-	 */
-	public void removePoint(Point2D l) {
-		int pos = getPointPosition(l, 10);
-		AttributeMap map = getAttributes();
-		List<Object> points = GraphConstants.getPoints(map);
-		points.remove(pos);
-		GraphConstants.setPoints(map, points);
-		getAttributes().applyMap(map);
-		LoggerManager.debug(Constants.CORE_LOGGER, "Point removed");
+        if (route) {
+            getAttributes().applyValue(GraphConstants.ROUTING, GraphConstants.ROUTING_SIMPLE);
+            getAttributes().remove(GraphConstants.POINTS);
+        } else {
+            getAttributes().remove(GraphConstants.ROUTING);
+            getAttributes().remove(GraphConstants.POINTS);
+        }
+    }
 
-	}
+    public boolean isRoute() {
+        return (!GraphConstants.ROUTING_DEFAULT.equals(GraphConstants.getRouting(getAttributes())));
 
-	public boolean hasPoint(Point2D p, int tolerance) {
-		return (getPointPosition(p, tolerance)) != -1;
-	}
+    }
 
-	private int getPointPosition(Point2D p, int tolerance) {
-		List<Object> points = GraphConstants.getPoints(getAttributes());
-		int pos = -1;
-		double dist = Double.MAX_VALUE;
-		for (int i = 1; i < points.size() - 1; i++) {
-			Point2D a = (Point2D) points.get(i);
+    /**
+     * Adds point c to the arc at the position <code>index</code>.
+     *
+     * @param c
+     * @param index
+     */
+    public void addPoint(Point2D c, int index) {
+        List<Object> points = GraphConstants.getPoints(getAttributes());
+        if (points == null) {
+            points = new Vector<Object>();
+        }
+        points.add(index, c);
+        HashMap<Object, Object> map = new HashMap<Object, Object>();
+        GraphConstants.setPoints(map, points);
+        getAttributes().applyMap(map);
+        LoggerManager.debug(Constants.CORE_LOGGER, "Point added " + c.toString());
+    }
 
-			double tp = Point2D
-					.distance(a.getX(), a.getY(), p.getX(), p.getY());
-			if (tp < dist) {
-				dist = tp;
-				pos = i;
-			}
-		}
-		if (dist < tolerance) {
-			return pos;
-		}
-		return -1;
-	}
+    /**
+     * Adds point c to the arc. Calculates the right position
+     *
+     * @param c
+     */
+    public void addPoint(Point2D c) {
+        AttributeMap map = getAttributes();
+        List<Object> points = GraphConstants.getPoints(map);
+        if (points == null) {
+            points = new Vector<Object>();
+            Point2D[] currentPoints = getPoints();
+            for (int i = 0; i < currentPoints.length; i++) {
+                points.add(currentPoints[i]);
+            }
+        }
 
-	public static double getHeightC(Point2D A, Point2D B, Point2D C) {
-		double distAC = Point2D
-				.distance(A.getX(), A.getY(), C.getX(), C.getY());
-		double thetaAB = Math.atan2(B.getY() - A.getY(), B.getX() - A.getX());
-		double thetaAC = Math.atan2(C.getY() - A.getY(), C.getX() - A.getX());
-		double height = Math.sin(thetaAC - thetaAB) * distAC;
+        int index = 0;
+        double min = Double.MAX_VALUE, dist = 0;
+        for (int i = 0; i < points.size() - 1; i++) {
+            Point2D p = null;
+            Point2D p1 = null;
+            if (points.get(i) instanceof Point2D) {
+                p = (Point2D) points.get(i);
+            } else if (points.get(i) instanceof PortView) {
+                p = ((PortView) points.get(i)).getLocation();
+            }
+            if (points.get(i + 1) instanceof Point2D) {
+                p1 = (Point2D) points.get(i + 1);
+            } else if (points.get(i + 1) instanceof PortView) {
+                p1 = ((PortView) points.get(i + 1)).getLocation();
+            }
+            dist = new Line2D.Double(p, p1).ptLineDistSq(c);
+            if (dist < min) {
+                min = dist;
+                index = i + 1;
+            }
+        }
+        addPoint(c, index);
+    }
 
-		return height;
-	}
+    public Point2D[] getPoints() {
+        AttributeMap map = getAttributes();
+        List<Object> points = GraphConstants.getPoints(map);
+        Point2D[] result = new Point2D[]{};
+        if (points != null) {
+            result = new Point2D[points.size()];
+            for (int i = 0; i < points.size(); i++) {
+                if (points.get(i) instanceof PortView) {
+                    result[i] = ((PortView) points.get(i)).getLocation();
+                } else {
+                    result[i] = (Point2D) points.get(i);
+                }
+            }
+        }
+        return result;
+    }
 
-	/**
-	 * @return Returns the activated.
-	 */
-	public boolean isActivated() {
-		return activated;
-	}
+    public void setPoints(Point2D[] points) {
+        AttributeMap map = getAttributes();
+        List<Object> pointList = GraphConstants.getPoints(map);
+        if (pointList != null) {
+            while (pointList.size() > 2) pointList.remove(1);
+            for (int i = points.length - 1; i >= 0; i--) {
+                pointList.add(1, points[i]);
+            }
+            GraphConstants.setPoints(map, pointList);
+        }
+    }
 
-	/**
-	 * @param activated
-	 *            The activated to set.
-	 */
-	public void setActivated(boolean activated) {
-		this.activated = activated;
-	}
+    /**
+     * @param l
+     */
+    public void removePoint(Point2D l) {
+        int pos = getPointPosition(l, 10);
+        AttributeMap map = getAttributes();
+        List<Object> points = GraphConstants.getPoints(map);
+        points.remove(pos);
+        GraphConstants.setPoints(map, points);
+        getAttributes().applyMap(map);
+        LoggerManager.debug(Constants.CORE_LOGGER, "Point removed");
 
-	public Vector<Object> getUnknownToolSpecs() {
-		return unknownToolSpecs;
-	}
+    }
 
-	public void setUnknownToolSpecs(Vector<Object> unknownToolSpecs) {
-		this.unknownToolSpecs = unknownToolSpecs;
-	}
+    public boolean hasPoint(Point2D p, int tolerance) {
+        return (getPointPosition(p, tolerance)) != -1;
+    }
 
-	public void addUnknownToolSpecs(Object unknownToolSpecs) {
-		getUnknownToolSpecs().add(unknownToolSpecs);
-	}
+    private int getPointPosition(Point2D p, int tolerance) {
+        List<Object> points = GraphConstants.getPoints(getAttributes());
+        int pos = -1;
+        double dist = Double.MAX_VALUE;
+        for (int i = 1; i < points.size() - 1; i++) {
+            Point2D a = (Point2D) points.get(i);
 
-	public CreationMap getCreationMap() {
-		CreationMap map = CreationMap.createMap();
-		map.setArcId(getId());
-		map.setArcRoute(isRoute());
-		map.setArcSourceId(getSourceId());
-		map.setArcTargetId(getTargetId());
-		List<Object> points = GraphConstants.getPoints(getAttributes());
-		Vector<Object> newPoints = new Vector<Object>();
-		for (int i = 1; i < points.size() - 1; i++) {
-			newPoints.add(new IntPair((int) ((Point2D) points.get(i)).getX(),
-					(int) ((Point2D) points.get(i)).getY()));
-		}
-		map.setArcPoints(newPoints);
-		map.setArcProbability(getProbability());
-		map.setArcDisplayProbability(isDisplayOn());
-		map.setArcLabelPosition((int)this.getLabelPosition().getX(),
-				(int)this.getLabelPosition().getY());
-		
-		return map;
-	}
+            double tp = Point2D.distance(a.getX(), a.getY(), p.getX(), p.getY());
+            if (tp < dist) {
+                dist = tp;
+                pos = i;
+            }
+        }
+        if (dist < tolerance) {
+            return pos;
+        }
+        return -1;
+    }
 
-	public ElementContext getElementContext() {
-		return elementContext;
-	}
+    public static double getHeightC(Point2D A, Point2D B, Point2D C) {
+        double distAC = Point2D.distance(A.getX(), A.getY(), C.getX(), C.getY());
+        double thetaAB = Math.atan2(B.getY() - A.getY(), B.getX() - A.getX());
+        double thetaAC = Math.atan2(C.getY() - A.getY(), C.getX() - A.getX());
+        double height = Math.sin(thetaAC - thetaAB) * distAC;
 
-	public void setElementContext(ElementContext elementContext) {
-		this.elementContext = elementContext;
-	}
+        return height;
+    }
 
-	public double getProbability() {
-		Object probability = getAttributes().get("Probability");
-		if (probability instanceof Double){
-			return ((Double)probability).doubleValue();
-		}
-		else
-		{
-			return 1.0;
-		}
-	}
+    /**
+     * Checks if the arc is activated
+     * @return Returns true if the arc is activated, otherwise false
+     */
+    public boolean isActivated() {
+        return activated;
+    }
 
-	public void setProbability(double probability) {
-		getAttributes().put("Probability", new Double(probability));
-		updateLabel();
-	}
+    /**
+     * Sets the arc activation state to the provide value
+     * @param newState the new activation state
+     */
+    public void setActivated(boolean newState) {
+        this.activated = newState;
+    }
 
-	public boolean isDisplayOn() {
-		Object probability = getAttributes().get("DisplayProbability");
-		if (probability instanceof Boolean){
-			return ((Boolean)probability).booleanValue();
-		}
-		else
-		{
-			return false;
-		}
-	}
+    public Vector<Object> getUnknownToolSpecs() {
+        return unknownToolSpecs;
+    }
 
-	public void setDisplayOn(boolean displayOn) {
-		getAttributes().put("DisplayProbability", new Boolean(displayOn));
-		updateLabel();
-	}
+    public void setUnknownToolSpecs(Vector<Object> unknownToolSpecs) {
+        this.unknownToolSpecs = unknownToolSpecs;
+    }
 
-	/*
-	 * public GraphLayoutCache getGraphLayoutCache() { return graphLayoutCache; }
-	 * 
-	 * public void setGraphLayoutCache(GraphLayoutCache graphLayoutCache) {
-	 * this.graphLayoutCache = graphLayoutCache; }
-	 */
-	private void updateLabel() {
-		Object[] labels = {};
-		if (isDisplayOn()) {
-			labels = new Object[] { Integer.toString(Double.valueOf(
-					getProbability() * 100).intValue()) + "%" };
-		}
-		HashMap<Object, Object> map = new HashMap<Object, Object>();
-		GraphConstants.setExtraLabels(map, labels);
-		getAttributes().applyMap(map);
-	}
+    public void addUnknownToolSpecs(Object unknownToolSpecs) {
+        getUnknownToolSpecs().add(unknownToolSpecs);
+    }
+
+    public CreationMap getCreationMap() {
+        CreationMap map = CreationMap.createMap();
+        map.setArcId(getId());
+        map.setArcRoute(isRoute());
+        map.setArcSourceId(getSourceId());
+        map.setArcTargetId(getTargetId());
+        List<Object> points = GraphConstants.getPoints(getAttributes());
+        Vector<Object> newPoints = new Vector<Object>();
+        for (int i = 1; i < points.size() - 1; i++) {
+            newPoints.add(new IntPair((int) ((Point2D) points.get(i)).getX(), (int) ((Point2D) points.get(i)).getY()));
+        }
+        map.setArcPoints(newPoints);
+        map.setArcProbability(getProbability());
+        map.setArcDisplayProbability(isDisplayOn());
+        map.setArcLabelPosition((int) this.getLabelPosition().getX(), (int) this.getLabelPosition().getY());
+
+        return map;
+    }
+
+    public ElementContext getElementContext() {
+        return elementContext;
+    }
+
+    public void setElementContext(ElementContext elementContext) {
+        this.elementContext = elementContext;
+    }
+
+    public double getProbability() {
+        Object probability = getAttributes().get("Probability");
+        if (probability instanceof Double) {
+            return ((Double) probability).doubleValue();
+        } else {
+            return 1.0;
+        }
+    }
+
+    public void setProbability(double probability) {
+        getAttributes().put("Probability", new Double(probability));
+        updateLabel();
+    }
+
+    public boolean isDisplayOn() {
+        Object probability = getAttributes().get("DisplayProbability");
+        if (probability instanceof Boolean) {
+            return ((Boolean) probability).booleanValue();
+        } else {
+            return false;
+        }
+    }
+
+    public void setDisplayOn(boolean displayOn) {
+        getAttributes().put("DisplayProbability", new Boolean(displayOn));
+        updateLabel();
+    }
+
+    /*
+     * public GraphLayoutCache getGraphLayoutCache() { return graphLayoutCache; }
+     *
+     * public void setGraphLayoutCache(GraphLayoutCache graphLayoutCache) {
+     * this.graphLayoutCache = graphLayoutCache; }
+     */
+    private void updateLabel() {
+        Object[] labels = {};
+        if (isDisplayOn()) {
+            labels = new Object[]{Integer.toString(Double.valueOf(getProbability() * 100).intValue()) + "%"};
+        }
+        HashMap<Object, Object> map = new HashMap<Object, Object>();
+        GraphConstants.setExtraLabels(map, labels);
+        getAttributes().applyMap(map);
+    }
 }

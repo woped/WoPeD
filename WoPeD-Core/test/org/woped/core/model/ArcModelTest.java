@@ -24,7 +24,7 @@ public class ArcModelTest {
         ArcModel cut = new ArcModel();
 
         int expected = 2;
-        cut.setInscriptionValue(String.valueOf(expected));
+        cut.setInscriptionValue(expected);
         int actual = cut.getInscriptionValue();
 
         assertEquals(expected, actual);
