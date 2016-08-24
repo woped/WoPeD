@@ -193,7 +193,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
     public int getInscriptionValue() {
         int i;
         try {
-            i = Integer.parseInt((String) getUserObject());
+            i = (int) getUserObject();
         } catch (Exception e) {
             i = 1;
         }
@@ -227,12 +227,14 @@ public class ArcModel extends DefaultEdge implements Serializable {
         this.id = id;
     }
 
+    // REVIEW: Why not just hold a ref to the source?
     /**
      * Gets the id of the arcs source
      *
      * @return the id of the source
      */
     public String getSourceId() {
+
         DefaultPort port = ((DefaultPort) getSource());
         AbstractPetriNetElementModel pnme = ((AbstractPetriNetElementModel) port.getParent());
         return pnme.getId();

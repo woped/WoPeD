@@ -64,663 +64,640 @@ import org.woped.core.utilities.LoggerManager;
 
 @SuppressWarnings("serial")
 public class ModelElementContainer implements Serializable {
-	// ! If !=null, stores editor layout info for the editor
-	// ! that is to be used to edit the sub-process
-	private EditorLayoutInfo editorLayoutInfo = null;
+    // ! If !=null, stores editor layout info for the editor
+    // ! that is to be used to edit the sub-process
+    private EditorLayoutInfo editorLayoutInfo = null;
 
-	public EditorLayoutInfo getEditorLayoutInfo() {
-		return editorLayoutInfo;
-	}
+    public EditorLayoutInfo getEditorLayoutInfo() {
+        return editorLayoutInfo;
+    }
 
-	public void setEditorLayoutInfo(EditorLayoutInfo editorLayoutInfo) {
-		this.editorLayoutInfo = editorLayoutInfo;
-	}
+    public void setEditorLayoutInfo(EditorLayoutInfo editorLayoutInfo) {
+        this.editorLayoutInfo = editorLayoutInfo;
+    }
 
-	// ! Just as we own elements, elements own us
-	// ! if we're a simple transition element container
-	// ! Again, it is important for navigation to know these things
-	// ! The owningElement member may be null (which is in fact the default)
-	// ! if we're not owned by an AbstractElementModel instance at all
-	private AbstractPetriNetElementModel owningElement = null;
+    // ! Just as we own elements, elements own us
+    // ! if we're a simple transition element container
+    // ! Again, it is important for navigation to know these things
+    // ! The owningElement member may be null (which is in fact the default)
+    // ! if we're not owned by an AbstractElementModel instance at all
+    private AbstractPetriNetElementModel owningElement = null;
 
-	private BpelVariableList variablesList = new BpelVariableList();
-	private PartnerlinkList partnerLinkList = new PartnerlinkList();
-	private UddiVariableList uddiVariableList = new UddiVariableList();
-	private ParaphrasingModel paraphrasingModel = new ParaphrasingModel();
-	
-	public void setOwningElement(AbstractPetriNetElementModel element) {
-		owningElement = element;
-	}
+    private BpelVariableList variablesList = new BpelVariableList();
+    private PartnerlinkList partnerLinkList = new PartnerlinkList();
+    private UddiVariableList uddiVariableList = new UddiVariableList();
+    private ParaphrasingModel paraphrasingModel = new ParaphrasingModel();
 
-	public AbstractPetriNetElementModel getOwningElement() {
-		return owningElement;
-	}
+    public void setOwningElement(AbstractPetriNetElementModel element) {
+        owningElement = element;
+    }
 
-	private Map<String, Map<String, Object>> idMap = null;
-	private Map<String, ArcModel> arcs = null;
-	public static final String SELF_ID = "_#_";
+    public AbstractPetriNetElementModel getOwningElement() {
+        return owningElement;
+    }
 
-	/**
-	 * Constructor for ModelElementContainer.
-	 */
-	public ModelElementContainer() {
-		idMap = new HashMap<String, Map<String, Object>>();
-		arcs = new HashMap<String, ArcModel>();
-	}
+    private Map<String, Map<String, Object>> idMap = null;
+    private Map<String, ArcModel> arcs = null;
+    public static final String SELF_ID = "_#_";
 
-	/**
-	 * Returns the idMapper. This is the Main Hashmap containing the whole
-	 * Petri-Net. Is mainly used by the Class itselfs. Should not be necessary
-	 * to use this Method outside of the Container!
-	 *
-	 * @return Map
-	 */
-	public Map<String, Map<String, Object>> getIdMap() {
-		
-		return idMap;
-	}
+    /**
+     * Constructor for ModelElementContainer.
+     */
+    public ModelElementContainer() {
+        idMap = new HashMap<String, Map<String, Object>>();
+        arcs = new HashMap<String, ArcModel>();
+    }
 
-	/**
-	 * Method addElement. Adds an <code>PetriNetModelElement</code> to the
-	 * Container.
-	 *
-	 * @param theElement
-	 * @throws ElementException
-	 */
-	public AbstractPetriNetElementModel addElement(AbstractPetriNetElementModel theElement) {
-		if (getIdMap().get(theElement.getId()) == null) {
-			// if referenceMap does not exits, create it
-			Map<String, Object> referenceMap = new HashMap<String, Object>();
-			// =>frist time adding element, first add Element itself with
-			// SELF_ID to the referenceMap
-			referenceMap.put(SELF_ID, theElement);
-			// ... and to the idMap
-			getIdMap().put(theElement.getId(), referenceMap);
+    /**
+     * Returns the idMapper. This is the Main Hashmap containing the whole
+     * Petri-Net. Is mainly used by the Class itselfs. Should not be necessary
+     * to use this Method outside of the Container!
+     *
+     * @return Map
+     */
+    public Map<String, Map<String, Object>> getIdMap() {
+        return idMap;
+    }
 
-			// Tell the element that it is now owned
-			theElement.addOwningContainer(this);
+    // REVIEW: Is this the expected behaviour when adding an existing element?
 
-			LoggerManager.debug(Constants.CORE_LOGGER, "Element: "
-					+ theElement.getId() + " added");
-		} else {
-			LoggerManager.debug(Constants.CORE_LOGGER,
-					"The Element already exists, did nothing!");
-		}
-		return theElement;
-	}
+    /**
+     * Adds an <code>PetriNetModelElement</code> to the container.
+     * <p>
+     * If an element with the id of the new element already exists in the container
+     * it will be kept and the new element will not be added to the container.
+     *
+     * @param element the element to add
+     * @return the element provided as parameter {@code element}
+     */
+    public AbstractPetriNetElementModel addElement(AbstractPetriNetElementModel element) {
 
-	/**
-	 * Method addReference. Adds an Reference from the
-	 * <code>PetriNetModelElement</code> with id <code>sourceId</code> to
-	 * the Element with id <code>targetId</code>.
-	 *
-	 * @param sourceId
-	 * @param targetId
-	 */
-	public void addReference(ArcModel arc) {
+        // Check if an element with this id already exists in the container
+        if (getIdMap().get(element.getId()) == null) {
 
-		if (getElementById(arc.getSourceId()) == null) {
-			// if referenceMap is not setup, then the Element itself was not set
-			LoggerManager.warn(Constants.CORE_LOGGER, "Source (ID:"
-					+ arc.getSourceId() + ") does not exist");
-		} else if (getElementById(arc.getTargetId()) == null) {
-			LoggerManager.warn(Constants.CORE_LOGGER, "Target (ID:"
-					+ arc.getTargetId() + ") does not exist");
-		} else if (containsArc(arc)) {
-			LoggerManager.debug(Constants.CORE_LOGGER, "Arc already exists!");
-		} else {
-			getIdMap().get(arc.getSourceId()).put(arc.getId(), arc);
-			arcs.put(arc.getId(), arc);
-			LoggerManager.debug(Constants.CORE_LOGGER, "Reference: "
-					+ arc.getId() + " (" + arc.getSourceId() + " -> "
-					+ arc.getTargetId() + ") added.");
-		}
+            // create a new reference map
+            Map<String, Object> referenceMap = new HashMap<String, Object>();
 
-	}
+            // add element as self reference
+            referenceMap.put(SELF_ID, element);
 
-	/**
-	 * Check whether a reference from sourceID to targetID exists. Note that
-	 * this will check for top-level references, not low-level components of van
-	 * der Aalst operators. This means that only actual, visible arcs as present
-	 * in the graphical Petri-Net representation will be found
-	 *
-	 * @param sourceId
-	 * @param targetId
-	 * @return
-	 */
-	public boolean hasReference(Object sourceId, Object targetId) {
-		return (findArc(sourceId.toString(), targetId.toString()) != null);
-	}
+            // add element to the container
+            getIdMap().put(element.getId(), referenceMap);
 
-	/**
-	 * Method removeElement. Removes a <code>PetriNetModelElement</code>
-	 * including all its References.
-	 *
-	 * @param id
-	 */
-	public void removeElement(Object id) {
+            // set the new owning container of the element
+            element.addOwningContainer(this);
 
-		// AT FIRST delete element's connections
-		removeArcsFromElement(id);
-		// AND THEN remove the element, and all its target information
-		removeOnlyElement(id);
+            LoggerManager.debug(Constants.CORE_LOGGER, String.format("Element: %s added", element.getId()));
+        } else {
 
-	}
+            // an element with the id of the new element already exists
+            LoggerManager.debug(Constants.CORE_LOGGER, "The Element already exists, did nothing!");
+        }
 
-	public void removeOnlyElement(Object id) {
-		AbstractPetriNetElementModel element = getElementById(id);
-		// The element is no longer owned by anybody
-		if (element!=null) element.removeOwningContainer(this);
-		getIdMap().remove(id);
-		LoggerManager.debug(Constants.CORE_LOGGER, "Element (ID:" + id
-				+ ") deleted.");
-	}
+        return element;
+    }
 
-	public void removeTargetArcsFromElement(Object id) {
-		// remove all Target Arcs
-		Iterator<String> arcsToRemove2 = getOutgoingArcs(id).keySet().iterator();
-		// arcsToRemove2.next();
-		while (arcsToRemove2.hasNext()) {
-			removeArc(arcsToRemove2.next());
-		}
-	}
+    /**
+     * Adds a reference between the source of the arc and the target of the arc {@code PetriNetModelElement} to the net
+     * Method addReference. Adds an Reference from the
+     * <code>PetriNetModelElement</code> with id <code>sourceId</code> to
+     * the Element with id <code>targetId</code>.
+     *
+     * @param arc the arc representing the reference
+     */
+    public void addReference(ArcModel arc) {
 
-	public void removeSourceArcsFromElement(Object id) {
-		// remove all Source Arcs
-		Iterator<String> arcsToRemove = getIncomingArcs(id).keySet().iterator();
-		while (arcsToRemove.hasNext()) {
-			removeArc(arcsToRemove.next());
-		}
-	}
+        // validate source
+        if (getElementById(arc.getSourceId()) == null) {
+            // REVIEW: Why not throw an IllegalArgumentException?
+            // For now, there is no indicator that something went wrong.
+            LoggerManager.warn(Constants.CORE_LOGGER, String.format("Source (ID: %s) doesn't exist", arc.getSourceId()));
+            return;
+        }
 
-	/**
-	 * Method removeRefElements. Removes only all Arcs from a
-	 * <code>PetriNetModelElement</code>, not the Element itselfs.
-	 *
-	 * @param id
-	 */
-	public void removeArcsFromElement(Object id) {
-		removeSourceArcsFromElement(id);
-		removeTargetArcsFromElement(id);
+        // validate target
+        if (getElementById(arc.getTargetId()) == null) {
+            // REVIEW: Why not throw an IllegalArgumentException?
+            LoggerManager.warn(Constants.CORE_LOGGER, "Target (ID:" + arc.getTargetId() + ") does not exist");
+            return;
+        }
 
-		LoggerManager.debug(Constants.CORE_LOGGER,
-				"All References from/to (ID:" + id + ") deleted");
-	}
+        // Check if reference already exists
+        if (containsArc(arc)) {
+            LoggerManager.debug(Constants.CORE_LOGGER, "Arc already exists!");
+            // MODIFY: Increase arc weight instead?
+            return;
+        }
 
-	public void removeArc(Object id) {
-		if (getArcById(id) != null) {
-			// remove the Arc-Model
-			removeArc(getArcById(id));
-		} else
-			LoggerManager.warn(Constants.CORE_LOGGER, "Arc with ID: " + id
-					+ " does not exists");
-	}
+        // Add reference
+        getIdMap().get(arc.getSourceId()).put(arc.getId(), arc);
+        arcs.put(arc.getId(), arc);
+        LoggerManager.debug(Constants.CORE_LOGGER, "Reference: " + arc.getId() + " (" + arc.getSourceId() + " -> " + arc.getTargetId() + ") added.");
+    }
 
-	public void removeArc(ArcModel arc) {
-		if (arc != null) {
-			LoggerManager.debug(Constants.CORE_LOGGER, "Reference (ID:"
-					+ arc.getId() + ") deleted");
-			// remove in arc Map
-			arcs.remove(arc.getId());
-			// remove Target Entry, (in Source Element's reference Map)
-			((Map<String, Object>) getIdMap().get(arc.getSourceId())).remove(arc.getId());
-		}
+    /**
+     * Check whether a reference from sourceID to targetID exists. Note that
+     * this will check for top-level references, not low-level components of van
+     * der Aalst operators. This means that only actual, visible arcs as present
+     * in the graphical Petri-Net representation will be found
+     *
+     * @param sourceId The id of the source element of the reference
+     * @param targetId The id of the target element of the reference
+     * @return true if an reference exits, otherwise false
+     */
+    public boolean hasReference(Object sourceId, Object targetId) {
+        // REVIEW: Any reason for not using string instead of object?
+        return (findArc(sourceId.toString(), targetId.toString()) != null);
+    }
 
-	}
+    /**
+     * Removes an {@code PetriNetModelElement} from the net
+     * including all its References.
+     *
+     * @param id the id of the element to remove
+     */
+    public void removeElement(Object id) {
+        // REVIEW: Why not use type String?
 
-	public void removeAllSourceElements(Object targetId) {
-		Iterator<String> transIter = getSourceElements(targetId).keySet().iterator();
-		while (transIter.hasNext()) {
-			removeElement(transIter.next());
-		}
-	}
+        // AT FIRST delete element's connections
+        removeArcsFromElement(id);
 
-	public void removeAllTargetElements(Object sourceId) {
-		Iterator<String> transIter = getTargetElements(sourceId).keySet().iterator();
-		while (transIter.hasNext()) {
-			removeElement(transIter.next());
-		}
-	}
+        // AND THEN remove the element, and all its target information
+        removeOnlyElement(id);
+    }
 
-	/**
-	 * Method getReferenceElements. Returns the all
-	 * <code>AbstractElementModel</code>, of which an Element with a special
-	 * id is source.
-	 *
-	 * @param id
-	 * @return Map
-	 */
-	public Map<String, AbstractPetriNetElementModel> getTargetElements(Object id) {
+    public void removeOnlyElement(Object id) {
+        AbstractPetriNetElementModel element = getElementById(id);
+        // The element is no longer owned by anybody
+        if (element != null) element.removeOwningContainer(this);
+        getIdMap().remove(id);
+        LoggerManager.debug(Constants.CORE_LOGGER, "Element (ID:" + id + ") deleted.");
+    }
 
-		if ((Map<String, Object>) getIdMap().get(id) != null) {
+    public void removeTargetArcsFromElement(Object id) {
+        // remove all Target Arcs
+        Iterator<String> arcsToRemove2 = getOutgoingArcs(id).keySet().iterator();
+        // arcsToRemove2.next();
+        while (arcsToRemove2.hasNext()) {
+            removeArc(arcsToRemove2.next());
+        }
+    }
 
-			Iterator<String> refIter = ((Map<String, Object>) getIdMap().get(id)).keySet().iterator();
-			Map<String, AbstractPetriNetElementModel> targetMap = new HashMap<String, AbstractPetriNetElementModel>();
-			while (refIter.hasNext()) {
-				Object arc = ((Map<String, Object>) getIdMap().get(id)).get(refIter.next());
-				if (arc instanceof ArcModel) {
-					AbstractPetriNetElementModel aCell = (AbstractPetriNetElementModel) ((DefaultPort) ((ArcModel) arc)
-							.getTarget()).getParent();
-					targetMap.put(aCell.getId(), aCell);
-				}
-			}
-			return targetMap;
-		} else {
-			return null;
-		}
-	}
+    public void removeSourceArcsFromElement(Object id) {
+        // remove all Source Arcs
+        Iterator<String> arcsToRemove = getIncomingArcs(id).keySet().iterator();
+        while (arcsToRemove.hasNext()) {
+            removeArc(arcsToRemove.next());
+        }
+    }
 
-	public Map<String, Object> getOutgoingArcs(Object id) {
+    /**
+     * Method removeRefElements. Removes only all Arcs from a
+     * <code>PetriNetModelElement</code>, not the Element itselfs.
+     *
+     * @param id
+     */
+    public void removeArcsFromElement(Object id) {
+        removeSourceArcsFromElement(id);
+        removeTargetArcsFromElement(id);
 
-		if ((Map<String, Object>) getIdMap().get(id) != null) {
-			Map<String, Object> arcOut = new HashMap<String, Object>(getIdMap().get(id));
-			arcOut.remove("_#_");
-			return arcOut;
-		} else
-			return new HashMap<String, Object>();
-	}
+        LoggerManager.debug(Constants.CORE_LOGGER, "All References from/to (ID:" + id + ") deleted");
+    }
 
-	public Map<String, ArcModel> getIncomingArcs(Object id) {
-		return findSourceArcs(id);
-	}
+    public void removeArc(Object id) {
+        if (getArcById(id) != null) {
+            // remove the Arc-Model
+            removeArc(getArcById(id));
+        } else LoggerManager.warn(Constants.CORE_LOGGER, "Arc with ID: " + id + " does not exists");
+    }
 
-	/**
-	 * Method getSourceElements. Returns the all
-	 * <code>PetriNetModelElement</code>, of which an Element with a special
-	 * id is target.
-	 *
-	 * @param id
-	 * @return Map
-	 */
-	public Map<String, AbstractPetriNetElementModel> getSourceElements(Object targetId) {
+    public void removeArc(ArcModel arc) {
+        if (arc != null) {
+            LoggerManager.debug(Constants.CORE_LOGGER, "Reference (ID:" + arc.getId() + ") deleted");
+            // remove in arc Map
+            arcs.remove(arc.getId());
+            // remove Target Entry, (in Source Element's reference Map)
+            getIdMap().get(arc.getSourceId()).remove(arc.getId());
+        }
 
-		return findSourceElements(targetId);
+    }
 
-	}
+    public void removeAllSourceElements(Object targetId) {
+        Iterator<String> transIter = getSourceElements(targetId).keySet().iterator();
+        while (transIter.hasNext()) {
+            removeElement(transIter.next());
+        }
+    }
 
-	/**
-	 * Method getRootElements. Returns a <code>List</code> containing all
-	 * <code>PetriNetModelElement</code> without any Reference information.
-	 *
-	 * @return List
-	 */
-	public List<AbstractPetriNetElementModel> getRootElements() {
+    public void removeAllTargetElements(Object sourceId) {
+        Iterator<String> transIter = getTargetElements(sourceId).keySet().iterator();
+        while (transIter.hasNext()) {
+            removeElement(transIter.next());
+        }
+    }
 
-		List<AbstractPetriNetElementModel> rootElements = new ArrayList<AbstractPetriNetElementModel>();
-		Iterator<String> allIter = getIdMap().keySet().iterator();
-		while (allIter.hasNext()) {
-			AbstractPetriNetElementModel element = getElementById(allIter.next());
-			rootElements.add(element);
-		}
+    /**
+     * Method getReferenceElements. Returns the all
+     * <code>AbstractElementModel</code>, of which an Element with a special
+     * id is source.
+     *
+     * @param id
+     * @return Map
+     */
+    public Map<String, AbstractPetriNetElementModel> getTargetElements(Object id) {
 
-		return rootElements;
+        if (getIdMap().get(id) != null) {
 
-	}
+            Iterator<String> refIter = getIdMap().get(id).keySet().iterator();
+            Map<String, AbstractPetriNetElementModel> targetMap = new HashMap<String, AbstractPetriNetElementModel>();
+            while (refIter.hasNext()) {
+                Object arc = getIdMap().get(id).get(refIter.next());
+                if (arc instanceof ArcModel) {
+                    AbstractPetriNetElementModel aCell = (AbstractPetriNetElementModel) ((DefaultPort) ((ArcModel) arc).getTarget()).getParent();
+                    targetMap.put(aCell.getId(), aCell);
+                }
+            }
+            return targetMap;
+        } else {
+            return null;
+        }
+    }
 
-	/**
-	 * Method findSourceElements. Returns a Map with the Elements that contains
-	 * a reference to the Object with a special id.
-	 *
-	 * @param id
-	 * @return List
-	 */
-	protected Map<String, AbstractPetriNetElementModel> findSourceElements(
-			Object targetId) {
+    public Map<String, Object> getOutgoingArcs(Object id) {
 
-		Map<String, AbstractPetriNetElementModel> sourceMap = new HashMap<String, AbstractPetriNetElementModel>();
-		Iterator<String> sourceArcIter = findSourceArcs(targetId).keySet().iterator();
-		ArcModel tempArc;
-		while (sourceArcIter.hasNext()) {
-			tempArc = (ArcModel) arcs.get(sourceArcIter.next());
-			sourceMap.put(tempArc.getSourceId(), getElementById(tempArc
-					.getSourceId()));
-		}
-		return sourceMap;
-	}
+        if (getIdMap().get(id) != null) {
+            Map<String, Object> arcOut = new HashMap<>(getIdMap().get(id));
+            arcOut.remove("_#_");
+            return arcOut;
+        } else return new HashMap<String, Object>();
+    }
 
-	protected Map<String, ArcModel> findSourceArcs(Object id) {
+    public Map<String, ArcModel> getIncomingArcs(Object id) {
+        return findSourceArcs(id);
+    }
 
-		Iterator<String> arcIter = arcs.keySet().iterator();
-		Map<String, ArcModel> sourceArcs = new HashMap<String, ArcModel>();
-		ArcModel tempArc;
-		while (arcIter.hasNext()) {
-			tempArc = (ArcModel) arcs.get(arcIter.next());
-			if (tempArc.getTargetId() != null) {
-				if (tempArc.getTargetId().equals(id)) {
-					sourceArcs.put(tempArc.getId(), tempArc);
-				}
-			}
-		}
-		return sourceArcs;
+    /**
+     * Method getSourceElements. Returns the all
+     * <code>PetriNetModelElement</code>, of which an Element with a special
+     * id is target.
+     *
+     * @param id
+     * @return Map
+     */
+    public Map<String, AbstractPetriNetElementModel> getSourceElements(Object targetId) {
 
-	}
+        return findSourceElements(targetId);
 
-	/**
-	 * Method getElementById. Returns the a ModelElement with a special id
-	 * itselfs
-	 *
-	 * @param id
-	 * @return ModelElement
-	 */
-	public AbstractPetriNetElementModel getElementById(Object id) {
+    }
 
-		if (getIdMap().get(id) != null) {
-			return (AbstractPetriNetElementModel) ((Map<String, Object>) getIdMap().get(id))
-					.get(ModelElementContainer.SELF_ID);
-			
-			
-		} else {
-			LoggerManager.debug(Constants.CORE_LOGGER, "Requested Element (ID:"
-					+ id + ") does not exists");
-			return null;
-		}
+    /**
+     * Method getRootElements. Returns a <code>List</code> containing all
+     * <code>PetriNetModelElement</code> without any Reference information.
+     *
+     * @return List
+     */
+    public List<AbstractPetriNetElementModel> getRootElements() {
 
-	}
-	
-	public void removeAllHighlighting(){
-		Map<String, Map<String, Object>> map = getIdMap();
-		for(String id:map.keySet())
-			((AbstractPetriNetElementModel) map.get(id).get(ModelElementContainer.SELF_ID)).setHighlighted(false);
-		for(String arc:arcs.keySet())
-			((ArcModel)arcs.get(arc)).setHighlighted(false);
-	}
+        List<AbstractPetriNetElementModel> rootElements = new ArrayList<AbstractPetriNetElementModel>();
+        Iterator<String> allIter = getIdMap().keySet().iterator();
+        while (allIter.hasNext()) {
+            AbstractPetriNetElementModel element = getElementById(allIter.next());
+            rootElements.add(element);
+        }
 
-	public ArcModel getArcById(Object id) {
+        return rootElements;
 
-		if (arcs.get(id) != null) {
-			return (ArcModel) arcs.get(id);
-		} else {
-			LoggerManager.debug(Constants.CORE_LOGGER, " Requested Arc (ID:"
-					+ id + ") does not exists");
-			return null;
-		}
-	}
+    }
+
+    /**
+     * Method findSourceElements. Returns a Map with the Elements that contains
+     * a reference to the Object with a special id.
+     *
+     * @param id
+     * @return List
+     */
+    protected Map<String, AbstractPetriNetElementModel> findSourceElements(Object targetId) {
+
+        Map<String, AbstractPetriNetElementModel> sourceMap = new HashMap<String, AbstractPetriNetElementModel>();
+        Iterator<String> sourceArcIter = findSourceArcs(targetId).keySet().iterator();
+        ArcModel tempArc;
+        while (sourceArcIter.hasNext()) {
+            tempArc = arcs.get(sourceArcIter.next());
+            sourceMap.put(tempArc.getSourceId(), getElementById(tempArc.getSourceId()));
+        }
+        return sourceMap;
+    }
+
+    protected Map<String, ArcModel> findSourceArcs(Object id) {
+
+        Iterator<String> arcIter = arcs.keySet().iterator();
+        Map<String, ArcModel> sourceArcs = new HashMap<String, ArcModel>();
+        ArcModel tempArc;
+        while (arcIter.hasNext()) {
+            tempArc = arcs.get(arcIter.next());
+            if (tempArc.getTargetId() != null) {
+                if (tempArc.getTargetId().equals(id)) {
+                    sourceArcs.put(tempArc.getId(), tempArc);
+                }
+            }
+        }
+        return sourceArcs;
+
+    }
+
+    /**
+     * Method getElementById. Returns the a ModelElement with a special id
+     * itselfs
+     *
+     * @param id
+     * @return ModelElement
+     */
+    public AbstractPetriNetElementModel getElementById(Object id) {
+
+        if (getIdMap().get(id) != null) {
+            return (AbstractPetriNetElementModel) getIdMap().get(id).get(ModelElementContainer.SELF_ID);
 
 
-	public boolean containsArc(ArcModel arc) {
+        } else {
+            LoggerManager.debug(Constants.CORE_LOGGER, "Requested Element (ID:" + id + ") does not exists");
+            return null;
+        }
 
-		Iterator<String> arcIter = getSourceElements(arc.getTargetId()).keySet()
-				.iterator();
-		while (arcIter.hasNext()) {
-			if (arcIter.next().equals(arc.getSourceId())) {
-				return true;
-			}
-		}
-		return false;
-	}
+    }
 
-	public boolean containsElement(Object id) {
-		return getIdMap().containsKey(id);
-	}
+    public void removeAllHighlighting() {
+        Map<String, Map<String, Object>> map = getIdMap();
+        for (String id : map.keySet())
+            ((AbstractPetriNetElementModel) map.get(id).get(ModelElementContainer.SELF_ID)).setHighlighted(false);
+        for (String arc : arcs.keySet())
+            arcs.get(arc).setHighlighted(false);
+    }
 
-	/**
-	 * Returns the arcs.
-	 *
-	 * @return Map
-	 */
-	public Map<String, ArcModel> getArcMap() {
-		return arcs;
-	}
+    public ArcModel getArcById(Object id) {
 
-	/**
-	 * Sets the arcs.
-	 *
-	 * @param arcs
-	 *            The arcs to set
-	 */
-	public void setArcMap(Map<String, ArcModel> arcs) {
-		this.arcs = arcs;
-	}
+        if (arcs.get(id) != null) {
+            return arcs.get(id);
+        } else {
+            LoggerManager.debug(Constants.CORE_LOGGER, " Requested Arc (ID:" + id + ") does not exists");
+            return null;
+        }
+    }
 
-	public Map<String, AbstractPetriNetElementModel> getElementsByType(int type) {
-		Map<String, AbstractPetriNetElementModel> elements = new HashMap<String, AbstractPetriNetElementModel>();
-		Iterator<String> elementsIter = getIdMap().keySet().iterator();
-		AbstractPetriNetElementModel element;
-		// try {
-		while (elementsIter.hasNext()) {
-			element = getElementById(elementsIter.next());
-			if (element != null && element.getType() == type) {
-				elements.put(element.getId(), element);
-			}
-		}
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-		return elements;
-	}
 
-	public ArcModel findArc(String sourceId, String targetId) {
-		Iterator<String> iter = arcs.keySet().iterator();
-		while (iter.hasNext()) {
-			ArcModel arc = (ArcModel) arcs.get(iter.next());
-			if (arc.getSourceId().equals(sourceId)
-					&& arc.getTargetId().equals(targetId)) {
-				return arc;
-			}
-		}
-		return null;
-	}
+    public boolean containsArc(ArcModel arc) {
+
+        Iterator<String> arcIter = getSourceElements(arc.getTargetId()).keySet().iterator();
+        while (arcIter.hasNext()) {
+            if (arcIter.next().equals(arc.getSourceId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsElement(Object id) {
+        return getIdMap().containsKey(id);
+    }
+
+    /**
+     * Returns the arcs.
+     *
+     * @return Map
+     */
+    public Map<String, ArcModel> getArcMap() {
+        return arcs;
+    }
+
+    /**
+     * Sets the arcs.
+     *
+     * @param arcs The arcs to set
+     */
+    public void setArcMap(Map<String, ArcModel> arcs) {
+        this.arcs = arcs;
+    }
+
+    public Map<String, AbstractPetriNetElementModel> getElementsByType(int type) {
+        Map<String, AbstractPetriNetElementModel> elements = new HashMap<String, AbstractPetriNetElementModel>();
+        Iterator<String> elementsIter = getIdMap().keySet().iterator();
+        AbstractPetriNetElementModel element;
+        // try {
+        while (elementsIter.hasNext()) {
+            element = getElementById(elementsIter.next());
+            if (element != null && element.getType() == type) {
+                elements.put(element.getId(), element);
+            }
+        }
+        // } catch (Exception e) {
+        // e.printStackTrace();
+        // }
+        return elements;
+    }
+
+    public ArcModel findArc(String sourceId, String targetId) {
+        Iterator<String> iter = arcs.keySet().iterator();
+        while (iter.hasNext()) {
+            ArcModel arc = arcs.get(iter.next());
+            if (arc.getSourceId().equals(sourceId) && arc.getTargetId().equals(targetId)) {
+                return arc;
+            }
+        }
+        return null;
+    }
 
 	/* Bpel extension */
 
 
-	/**
-	 * @return
-	 */
-	public BpelVariableList getVariableList()
-	{
-		return this.variablesList;
-	}
+    /**
+     * @return
+     */
+    public BpelVariableList getVariableList() {
+        return this.variablesList;
+    }
 
-	/**
-	 *
-	 * @return
-	 */
-	public PartnerlinkList getPartnerlinkList()
-	{
-		return this.partnerLinkList;
-	}
+    /**
+     * @return
+     */
+    public PartnerlinkList getPartnerlinkList() {
+        return this.partnerLinkList;
+    }
 
-	/**
-	 * @return
-	 */
-	public TPartnerLinks getTPartnerLinkList() {
-		return this.partnerLinkList.getBpelCode();
-	}
+    /**
+     * @return
+     */
+    public TPartnerLinks getTPartnerLinkList() {
+        return this.partnerLinkList.getBpelCode();
+    }
 
-	/**
-	 * Returns a list of TVariables. This method is used by the bpel-generator
-	 * to produce BPEL-Code.
-	 *
-	 * @return
-	 */
-	public TVariables getTVariablesList() {
-		return this.variablesList.getBpelCode();
-	}
+    /**
+     * Returns a list of TVariables. This method is used by the bpel-generator
+     * to produce BPEL-Code.
+     *
+     * @return
+     */
+    public TVariables getTVariablesList() {
+        return this.variablesList.getBpelCode();
+    }
 
-	/**
-	 * Returns a list of PartnerLinkTypes. This method is used by the
-	 * BPEL-generator to pruduce the global datamodel of partnerlinks
-	 *
-	 * @return
-	 */
-	public String[] getPartnerLinkList() {
-		return this.partnerLinkList.getPartnerlinkNameArray();
-	}
+    /**
+     * Returns a list of PartnerLinkTypes. This method is used by the
+     * BPEL-generator to pruduce the global datamodel of partnerlinks
+     *
+     * @return
+     */
+    public String[] getPartnerLinkList() {
+        return this.partnerLinkList.getPartnerlinkNameArray();
+    }
 
-	/**
-	 * Insert a partnerlink to a consisting list of partnerlinks
-	 *
-	 * @param name
-	 * @param namespace
-	 * @param partnerLinkType
-	 * @param partnerRole
-	 * @param WsdlUrl
-	 */
-	public void setPartnerLink(String name, String namespace,
-			String partnerLinkType, String partnerRole, String WsdlUrl) {
-		this.partnerLinkList.setPartnerLink(name, namespace, partnerLinkType,
-				partnerRole, WsdlUrl);
-	}
+    /**
+     * Insert a partnerlink to a consisting list of partnerlinks
+     *
+     * @param name
+     * @param namespace
+     * @param partnerLinkType
+     * @param partnerRole
+     * @param WsdlUrl
+     */
+    public void setPartnerLink(String name, String namespace, String partnerLinkType, String partnerRole, String WsdlUrl) {
+        this.partnerLinkList.setPartnerLink(name, namespace, partnerLinkType, partnerRole, WsdlUrl);
+    }
 
-	/**
-	 * Insert a partnerlink to a consisting list of partnerlinks Attention:
-	 * Parameters: name, namespace, partnerLinkType, partnerRole, myRole
-	 *
-	 * @param name
-	 * @param namespace
-	 * @param partnerLinkType
-	 * @param partnerRole
-	 * @param myRole
-	 * @param WsdlUrl
-	 */
-	public void addPartnerLink(String name, String namespace,
-			String partnerLinkType, String partnerRole, String myRole,
-			String WsdlUrl) {
-		this.partnerLinkList.addPartnerLink(name, namespace, partnerLinkType,
-				partnerRole, myRole, WsdlUrl);
-	}
+    /**
+     * Insert a partnerlink to a consisting list of partnerlinks Attention:
+     * Parameters: name, namespace, partnerLinkType, partnerRole, myRole
+     *
+     * @param name
+     * @param namespace
+     * @param partnerLinkType
+     * @param partnerRole
+     * @param myRole
+     * @param WsdlUrl
+     */
+    public void addPartnerLink(String name, String namespace, String partnerLinkType, String partnerRole, String myRole, String WsdlUrl) {
+        this.partnerLinkList.addPartnerLink(name, namespace, partnerLinkType, partnerRole, myRole, WsdlUrl);
+    }
 
-	/**
-	 * Insert a partnerlink to a consisting list of partnerlinks Attention:
-	 * Parameters: name, namespace, partnerLinkType, myRole (without
-	 * partnerRole)
-	 *
-	 * @param name
-	 * @param namespace
-	 * @param partnerLinkType
-	 * @param myRole
-	 * @param WsdlUrl
-	 */
-	public void addPartnerLinkWithoutPartnerRole(String name, String namespace,
-			String partnerLinkType, String myRole, String WsdlUrl) {
-		this.partnerLinkList.addPartnerLinkWithoutPartnerRole(name, namespace,
-				partnerLinkType, myRole, WsdlUrl);
-	}
+    /**
+     * Insert a partnerlink to a consisting list of partnerlinks Attention:
+     * Parameters: name, namespace, partnerLinkType, myRole (without
+     * partnerRole)
+     *
+     * @param name
+     * @param namespace
+     * @param partnerLinkType
+     * @param myRole
+     * @param WsdlUrl
+     */
+    public void addPartnerLinkWithoutPartnerRole(String name, String namespace, String partnerLinkType, String myRole, String WsdlUrl) {
+        this.partnerLinkList.addPartnerLinkWithoutPartnerRole(name, namespace, partnerLinkType, myRole, WsdlUrl);
+    }
 
-	/**
-	 * @edit by Alexander Roßwog
-	 *
-	 * Insert a partnerlink to a consisting list of partnerlinks
-	 * Attention: Parameters: name, namespace, partnerLinkType, partnerRole
-	 *
-	 * @param name
-	 * @param namespace
-	 * @param partnerLinkType
-	 * @param partnerRole
-	 * @param WsdlUrl
-	 */
-	public void addPartnerLinkWithoutMyRole(String name, String namespace,
-			String partnerLinktType, String partnerRole, String WsdlUrl) {
-		this.partnerLinkList.addPartnerLinkWithoutMyRole(name, namespace,
-				partnerLinktType, partnerRole, WsdlUrl);
-	}
+    /**
+     * @param name
+     * @param namespace
+     * @param partnerLinkType
+     * @param partnerRole
+     * @param WsdlUrl
+     * @edit by Alexander Roßwog
+     * <p>
+     * Insert a partnerlink to a consisting list of partnerlinks
+     * Attention: Parameters: name, namespace, partnerLinkType, partnerRole
+     */
+    public void addPartnerLinkWithoutMyRole(String name, String namespace, String partnerLinktType, String partnerRole, String WsdlUrl) {
+        this.partnerLinkList.addPartnerLinkWithoutMyRole(name, namespace, partnerLinktType, partnerRole, WsdlUrl);
+    }
 
-	public boolean existWsdlUrl(String WsdlUrl){
+    public boolean existWsdlUrl(String WsdlUrl) {
 
-		String[] urls = this.partnerLinkList.getWsdlUrls();
-		if(urls==null)return false;
-		for (int i=0;i<urls.length-1;i++){
-			if (urls[i].equals(WsdlUrl))return true;
-		}
+        String[] urls = this.partnerLinkList.getWsdlUrls();
+        if (urls == null) return false;
+        for (int i = 0; i < urls.length - 1; i++) {
+            if (urls[i].equals(WsdlUrl)) return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public boolean existPLName(String newname){
-		String[] names = this.partnerLinkList.getPartnerlinkNameArray();
-		if(names==null)return false;
-		for(int i=0;i<names.length-1;i++){
-			if(names[i].equals(newname))return true;
-		}
-		return false;
-	}
+    public boolean existPLName(String newname) {
+        String[] names = this.partnerLinkList.getPartnerlinkNameArray();
+        if (names == null) return false;
+        for (int i = 0; i < names.length - 1; i++) {
+            if (names[i].equals(newname)) return true;
+        }
+        return false;
+    }
 
-	/**
-	 *
-	 * @param arg
-	 */
-	public void addVariable(TVariable arg) {
-	    this.variablesList.addVariable(arg);
-	}
+    /**
+     * @param arg
+     */
+    public void addVariable(TVariable arg) {
+        this.variablesList.addVariable(arg);
+    }
 
-	/**
-	 *
-	 * @param name
-	 * @param type
-	 */
-	public void addVariable(String name, String type) {
-		this.variablesList.addVariable(name, type);
-	}
+    /**
+     * @param name
+     * @param type
+     */
+    public void addVariable(String name, String type) {
+        this.variablesList.addVariable(name, type);
+    }
 
-	/**
-	 *
-	 * @param name
-	 * @param namespace
-	 * @param type
-	 */
-	public void addWSDLVariable(String name, String namespace, String type) {
-		this.variablesList.addWSDLVariable(name, namespace, type);
-	}
+    /**
+     * @param name
+     * @param namespace
+     * @param type
+     */
+    public void addWSDLVariable(String name, String namespace, String type) {
+        this.variablesList.addWSDLVariable(name, namespace, type);
+    }
 
-	/**
-	 *
-	 * @param Name
-	 * @return
-	 */
-	public BpelVariable findBpelVariableByName(String Name)
-	{
-		return this.variablesList.findBpelVaraibleByName(Name);
-	}
+    /**
+     * @param Name
+     * @return
+     */
+    public BpelVariable findBpelVariableByName(String Name) {
+        return this.variablesList.findBpelVaraibleByName(Name);
+    }
 
-	/**
-	 *
-	 * @return
-	 */
-	public String[] getBpelVariableNameList()
-	{
-		return this.variablesList.getVariableNameArray();
-	}
+    /**
+     * @return
+     */
+    public String[] getBpelVariableNameList() {
+        return this.variablesList.getVariableNameArray();
+    }
 
-	/**
-	 *
-	 * @return
-	 */
-	public HashSet<BpelVariable> getBpelVariableList()
-	{
-		return this.variablesList.getBpelVariableList();
-	}
-	
-	/**
-	 *@Param: Name, URL
-	 *
-	 */
-	
-	public void addUddiVariable(String name, String url)
-	{
-		this.uddiVariableList.addVariable(name,url);
-	}
-	
-	/**
-	 *
-	 * @return
-	 */
-	public String[] getUddiVariableNameList()
-	{
-		return this.uddiVariableList.getVariableNameArray();
-	}
-	
-	/**
-	 * @param: Name
-	 * @return
-	 */
+    /**
+     * @return
+     */
+    public HashSet<BpelVariable> getBpelVariableList() {
+        return this.variablesList.getBpelVariableList();
+    }
 
-	public UddiVariable findUddiVariableByName(String name)
-	{
-		return this.uddiVariableList.findUddiVariableByName(name);
-	}
-	
-	public ParaphrasingModel getParaphrasingModel(){
-		return this.paraphrasingModel;
-	}
+    /**
+     * @Param: Name, URL
+     */
+
+    public void addUddiVariable(String name, String url) {
+        this.uddiVariableList.addVariable(name, url);
+    }
+
+    /**
+     * @return
+     */
+    public String[] getUddiVariableNameList() {
+        return this.uddiVariableList.getVariableNameArray();
+    }
+
+    /**
+     * @return
+     * @param: Name
+     */
+
+    public UddiVariable findUddiVariableByName(String name) {
+        return this.uddiVariableList.findUddiVariableByName(name);
+    }
+
+    public ParaphrasingModel getParaphrasingModel() {
+        return this.paraphrasingModel;
+    }
 }
