@@ -5,5 +5,5 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ArcModelTest.class, ModelElementFactoryTest.class, ModelElementContainerTest.class})
-public class AllTests {
+public class AllTestsWopedCore {
 }

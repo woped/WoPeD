@@ -8,7 +8,7 @@ import org.woped.tests.soundness.SoundnessTests;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         SoundnessTests.class,
-        org.woped.core.model.AllTests.class
+        org.woped.core.model.AllTestsWopedCore.class
 })
 
 public class AllTests {
