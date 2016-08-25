@@ -282,7 +282,7 @@ public class PetriNetModelProcessor implements
 						targetElement);
 
 				currentOperator.getSimpleTransContainer()
-						.removeSourceArcsFromElement(arcToDelete.getTargetId());
+						.removeIncomingArcsFromElement(arcToDelete.getTargetId());
 
 				// Each inner transition container contains a local copy of each
 				// element connecting to an operator
@@ -297,7 +297,7 @@ public class PetriNetModelProcessor implements
 						sourceElement);
 
 				currentOperator.getSimpleTransContainer()
-						.removeTargetArcsFromElement(arcToDelete.getSourceId());
+						.removeOutgoingArcsFromElement(arcToDelete.getSourceId());
 
 				// Each inner transition container contains a local copy of each
 				// element connecting to an operator
@@ -815,7 +815,7 @@ public class PetriNetModelProcessor implements
 	public void resetRGHighlightAndVTokens() {
 		for (Iterator<AbstractPetriNetElementModel> iter = getElementContainer()
 				.getRootElements().iterator(); iter.hasNext();) {
-			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) iter.next();
+			AbstractPetriNetElementModel current = iter.next();
 			current.setRGHighlighted(false);
 			if (current instanceof PlaceModel) {
 				((PlaceModel) current).resetVirtualTokens();

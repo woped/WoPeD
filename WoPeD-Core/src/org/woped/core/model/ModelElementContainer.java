@@ -45,6 +45,8 @@ import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.ParaphrasingModel;
 import org.woped.core.utilities.LoggerManager;
 
+import javax.swing.tree.TreeNode;
+
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
@@ -101,11 +103,11 @@ public class ModelElementContainer implements Serializable {
     public static final String SELF_ID = "_#_";
 
     /**
-     * Constructor for ModelElementContainer.
+     * Creates an new instance of an {@code ModelElementContainer}
      */
     public ModelElementContainer() {
-        idMap = new HashMap<String, Map<String, Object>>();
-        arcs = new HashMap<String, ArcModel>();
+        idMap = new HashMap<>();
+        arcs = new HashMap<>();
     }
 
     /**
@@ -226,51 +228,81 @@ public class ModelElementContainer implements Serializable {
         removeOnlyElement(id);
     }
 
+    // REVIEW: Accessed from outside, references will consist in the net
+    // And if there are any references to the element it will not be removed by the
+    // garbage collector. This could produce wrong analysis results.
+
+    /**
+     * Removes an element from the net.
+     * Caution! The references from the element will consist in the net!
+     * @param id the id of the element to remove
+     */
     public void removeOnlyElement(Object id) {
         AbstractPetriNetElementModel element = getElementById(id);
         // The element is no longer owned by anybody
         if (element != null) element.removeOwningContainer(this);
         getIdMap().remove(id);
-        LoggerManager.debug(Constants.CORE_LOGGER, "Element (ID:" + id + ") deleted.");
-    }
-
-    public void removeTargetArcsFromElement(Object id) {
-        // remove all Target Arcs
-        Iterator<String> arcsToRemove2 = getOutgoingArcs(id).keySet().iterator();
-        // arcsToRemove2.next();
-        while (arcsToRemove2.hasNext()) {
-            removeArc(arcsToRemove2.next());
-        }
-    }
-
-    public void removeSourceArcsFromElement(Object id) {
-        // remove all Source Arcs
-        Iterator<String> arcsToRemove = getIncomingArcs(id).keySet().iterator();
-        while (arcsToRemove.hasNext()) {
-            removeArc(arcsToRemove.next());
-        }
+        LoggerManager.debug(Constants.CORE_LOGGER, "Element (ID:" + id + ") removed.");
     }
 
     /**
-     * Method removeRefElements. Removes only all Arcs from a
-     * <code>PetriNetModelElement</code>, not the Element itselfs.
+     * Removes only all references from or to an {@code PetriNetModelElement}.
+     * The element itself will not be removed
      *
-     * @param id
+     * @param id the id of the element from which the references should be removed
      */
     public void removeArcsFromElement(Object id) {
-        removeSourceArcsFromElement(id);
-        removeTargetArcsFromElement(id);
+        removeIncomingArcsFromElement(id);
+        removeOutgoingArcsFromElement(id);
 
         LoggerManager.debug(Constants.CORE_LOGGER, "All References from/to (ID:" + id + ") deleted");
     }
 
-    public void removeArc(Object id) {
-        if (getArcById(id) != null) {
-            // remove the Arc-Model
-            removeArc(getArcById(id));
-        } else LoggerManager.warn(Constants.CORE_LOGGER, "Arc with ID: " + id + " does not exists");
+    /**
+     * Removes all outgoing arcs from the element.
+     * The element is the source of this arcs.
+     *
+     * @param elementId the id of the element from which the outgoing arcs should be removed
+     */
+    protected void removeOutgoingArcsFromElement(Object elementId) {
+
+        for (String arcId : getOutgoingArcs(elementId).keySet()) {
+            removeArc(arcId);
+        }
     }
 
+    /**
+     * Removes all incoming arcs from an element.
+     * The element is the target of this arcs.
+     *
+     * @param elementId the id of the element from which the incoming arcs should be removed
+     */
+    protected void removeIncomingArcsFromElement(Object elementId) {
+
+        for (String arcId : getIncomingArcs(elementId).keySet()) {
+            removeArc(arcId);
+        }
+    }
+
+    /**
+     * Removes the arc with the given id from the petrinet
+     * @param id the id of the arc to remove
+     */
+    public void removeArc(Object id) {
+
+        ArcModel arc = getArcById(id);
+
+        if(arc == null){
+            LoggerManager.warn(Constants.CORE_LOGGER, "Arc with ID: " + id + " does not exists");
+        }
+
+        removeArc(arc);
+    }
+
+    /**
+     * Removes the given arc from the petrinet.
+     * @param arc the arc to remove
+     */
     public void removeArc(ArcModel arc) {
         if (arc != null) {
             LoggerManager.debug(Constants.CORE_LOGGER, "Reference (ID:" + arc.getId() + ") deleted");
@@ -279,7 +311,6 @@ public class ModelElementContainer implements Serializable {
             // remove Target Entry, (in Source Element's reference Map)
             getIdMap().get(arc.getSourceId()).remove(arc.getId());
         }
-
     }
 
     public void removeAllSourceElements(Object targetId) {
@@ -297,30 +328,34 @@ public class ModelElementContainer implements Serializable {
     }
 
     /**
-     * Method getReferenceElements. Returns the all
-     * <code>AbstractElementModel</code>, of which an Element with a special
-     * id is source.
+     * Gets all {@code AbstractPetriNetElementModel} which have a outgoing reference
+     * from the {@code AbstractPetriNetElementModel} with the given id.
      *
-     * @param id
-     * @return Map
+     * Method getReferenceElements. Returns the all
+     *
+     * @param sourceId the id of the {@code AbstractPetriNetElementModel} to get the targets from.
+     * @return a Map containing all existing targets or {@code null} if no element with the provided id exists.
      */
-    public Map<String, AbstractPetriNetElementModel> getTargetElements(Object id) {
+    public Map<String, AbstractPetriNetElementModel> getTargetElements(Object sourceId) {
 
-        if (getIdMap().get(id) != null) {
+        Map<String, Object> sourceMap = getIdMap().get(sourceId);
+        Map<String, AbstractPetriNetElementModel> targetMap = new HashMap<>();
 
-            Iterator<String> refIter = getIdMap().get(id).keySet().iterator();
-            Map<String, AbstractPetriNetElementModel> targetMap = new HashMap<String, AbstractPetriNetElementModel>();
-            while (refIter.hasNext()) {
-                Object arc = getIdMap().get(id).get(refIter.next());
-                if (arc instanceof ArcModel) {
-                    AbstractPetriNetElementModel aCell = (AbstractPetriNetElementModel) ((DefaultPort) ((ArcModel) arc).getTarget()).getParent();
-                    targetMap.put(aCell.getId(), aCell);
-                }
-            }
-            return targetMap;
-        } else {
+        if(sourceMap == null){
             return null;
         }
+
+        for (String key:sourceMap.keySet()) {
+
+            Object value = sourceMap.get(key);
+
+            if(!(value instanceof ArcModel)) continue;
+
+            AbstractPetriNetElementModel target = (AbstractPetriNetElementModel) ((DefaultPort) ((ArcModel) value).getTarget()).getParent();
+            targetMap.put(target.getId(), target);
+        }
+
+        return targetMap;
     }
 
     public Map<String, Object> getOutgoingArcs(Object id) {
