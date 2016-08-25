@@ -1401,8 +1401,6 @@ public class ConfApromorePanel extends AbstractConfPanel {
 			message = Messages.getString("Apromore.UI.MandatoryFields");
 		}
 		
-		
-		char[] testchar = passwordText.getPassword();
 		if (useBox.isSelected() && (usernameText.getText().equals("") || passwordText.getPassword().length == 0 )) {
 			if (inputOK) {
 				url = serverURLText.getText() + ":" + serverPortText.getText() + "/portal/login.zul";
