@@ -330,6 +330,22 @@ public class ModelElementContainer implements Serializable {
         }
     }
 
+    // REVIEW: Inconsistent behaviour if id doesn't exist.
+    // getSourceElements returns empty map
+    // getTargetElements returns null
+
+    /**
+     * Gets all {@code PetriNetModelElement} which has an outgoing arc to the {code PetriNetModelElement}
+     * with the given id.
+     *
+     * @param targetId The id of the {@code PetriNetModelElement} to detect the source elements from.
+     * @return A map containing all source elements. The map may be empty.
+     */
+    public Map<String, AbstractPetriNetElementModel> getSourceElements(Object targetId) {
+
+        return findSourceElements(targetId);
+    }
+
     /**
      * Gets all {@code AbstractPetriNetElementModel} which have a outgoing reference
      * from the {@code AbstractPetriNetElementModel} with the given id.
@@ -389,24 +405,11 @@ public class ModelElementContainer implements Serializable {
         return findSourceArcs(elementId);
     }
 
-    /**
-     * Method getSourceElements. Returns the all
-     * <code>PetriNetModelElement</code>, of which an Element with a special
-     * id is target.
-     *
-     * @param id
-     * @return Map
-     */
-    public Map<String, AbstractPetriNetElementModel> getSourceElements(Object targetId) {
-
-        return findSourceElements(targetId);
-    }
 
     /**
-     * Method getRootElements. Returns a <code>List</code> containing all
-     * <code>PetriNetModelElement</code> without any Reference information.
+     * Gets all {@code PetriNetModelElement} without any Reference information.
      *
-     * @return List
+     * @return A List containing all {@code PetriNetModelElement}.
      */
     public List<AbstractPetriNetElementModel> getRootElements() {
 
