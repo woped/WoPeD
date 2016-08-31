@@ -456,11 +456,10 @@ public class ModelElementContainer implements Serializable {
 
 
     /**
-     * Method getElementById. Returns the a ModelElement with a special id
-     * itselfs
+     * Gets the {@code AbstractPetriNetElementModel} with the given id.
      *
-     * @param id
-     * @return ModelElement
+     * @param id The id of the requested {@code AbstractPetriNetElementModel}.
+     * @return The requested {@code AbstractPetriNetElementModel} or null, if non such element exists.
      */
     public AbstractPetriNetElementModel getElementById(Object id) {
 

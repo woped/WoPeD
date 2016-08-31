@@ -542,9 +542,7 @@ public class ModelElementContainerTest {
         assertTrue(incomingArcs.containsKey(arc1.getId()));
 
         // Contains the correct element
-        ArcModel expected = arc1;
-        ArcModel actual = incomingArcs.get(arc1.getId());
-        assertEquals(expected, actual);
+        assertTrue(incomingArcs.containsValue(arc1));
     }
 
     @Test
