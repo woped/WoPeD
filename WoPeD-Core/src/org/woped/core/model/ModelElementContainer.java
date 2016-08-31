@@ -378,8 +378,15 @@ public class ModelElementContainer implements Serializable {
         return arcOut;
     }
 
-    public Map<String, ArcModel> getIncomingArcs(Object id) {
-        return findSourceArcs(id);
+    /**
+     * Gets all incoming arcs from the {@code AbstractPetriNetElement} with the given id.
+     * This element is the target of that arcs
+     *
+     * @param elementId The id of the {@code AbstractPetriNetElement} to get the incoming arcs from.
+     * @return A map containing all incoming arcs. The map may be empty if no such arcs exist.
+     */
+    public Map<String, ArcModel> getIncomingArcs(Object elementId) {
+        return findSourceArcs(elementId);
     }
 
     /**
@@ -393,7 +400,6 @@ public class ModelElementContainer implements Serializable {
     public Map<String, AbstractPetriNetElementModel> getSourceElements(Object targetId) {
 
         return findSourceElements(targetId);
-
     }
 
     /**
