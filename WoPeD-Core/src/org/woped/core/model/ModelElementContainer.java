@@ -443,32 +443,17 @@ public class ModelElementContainer implements Serializable {
      */
     protected Map<String, AbstractPetriNetElementModel> findSourceElements(Object targetId) {
 
-        Map<String, AbstractPetriNetElementModel> sourceMap = new HashMap<String, AbstractPetriNetElementModel>();
-        Iterator<String> sourceArcIter = findSourceArcs(targetId).keySet().iterator();
-        ArcModel tempArc;
-        while (sourceArcIter.hasNext()) {
-            tempArc = arcs.get(sourceArcIter.next());
-            sourceMap.put(tempArc.getSourceId(), getElementById(tempArc.getSourceId()));
+        Map<String, AbstractPetriNetElementModel> result = new HashMap<>();
+        AbstractPetriNetElementModel source;
+
+        for (ArcModel arc: getIncomingArcs(targetId).values()){
+            source = getElementById(arc.getSourceId());
+            result.put(source.getId(), source);
         }
-        return sourceMap;
+
+        return result;
     }
 
-    protected Map<String, ArcModel> findSourceArcs(Object id) {
-
-        Iterator<String> arcIter = arcs.keySet().iterator();
-        Map<String, ArcModel> sourceArcs = new HashMap<String, ArcModel>();
-        ArcModel tempArc;
-        while (arcIter.hasNext()) {
-            tempArc = arcs.get(arcIter.next());
-            if (tempArc.getTargetId() != null) {
-                if (tempArc.getTargetId().equals(id)) {
-                    sourceArcs.put(tempArc.getId(), tempArc);
-                }
-            }
-        }
-        return sourceArcs;
-
-    }
 
     /**
      * Method getElementById. Returns the a ModelElement with a special id
