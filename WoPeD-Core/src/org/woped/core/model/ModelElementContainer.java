@@ -198,8 +198,10 @@ public class ModelElementContainer implements Serializable {
     }
 
     /**
-     * Check whether a reference from sourceID to targetID exists. Note that
-     * this will check for top-level references, not low-level components of van
+     * Checks if there exists a reference from the {@code PetriNetModelElement} with the sourceID
+     * to the {@code PetriNetModelElement} with the targetID.
+     * <br>
+     * Note that this will check for top-level references, not low-level components of van
      * der Aalst operators. This means that only actual, visible arcs as present
      * in the graphical Petri-Net representation will be found
      *
@@ -335,7 +337,7 @@ public class ModelElementContainer implements Serializable {
     // getTargetElements returns null
 
     /**
-     * Gets all {@code PetriNetModelElement} which has an outgoing arc to the {code PetriNetModelElement}
+     * Gets all {@code PetriNetModelElement} which has an outgoing arc to the {@code PetriNetModelElement}
      * with the given id.
      *
      * @param targetId The id of the {@code PetriNetModelElement} to detect the source elements from.
@@ -348,7 +350,7 @@ public class ModelElementContainer implements Serializable {
 
     /**
      * Gets all {@code AbstractPetriNetElementModel} which have a outgoing reference
-     * from the {@code AbstractPetriNetElementModel} with the given id.
+     * to the {@code AbstractPetriNetElementModel} with the given id.
      *
      * @param sourceId the id of the {@code AbstractPetriNetElementModel} to get the targets from.
      * @return a Map containing all existing targets or {@code null} if no element with the provided id exists.
@@ -405,7 +407,6 @@ public class ModelElementContainer implements Serializable {
         return findSourceArcs(elementId);
     }
 
-
     /**
      * Gets all {@code PetriNetModelElement} without any Reference information.
      *
@@ -425,11 +426,11 @@ public class ModelElementContainer implements Serializable {
     }
 
     /**
-     * Method findSourceElements. Returns a Map with the Elements that contains
-     * a reference to the Object with a special id.
+     * Searches for all elements, which have an outgoing arc to the {@code PetriNetModelElement}
+     * with the given id.
      *
-     * @param id
-     * @return List
+     * @param targetId The id of the {@code PetriNetModelElement} to search for.
+     * @return A map containing all {@code PetriNetModelElement}. The map may be empty.
      */
     protected Map<String, AbstractPetriNetElementModel> findSourceElements(Object targetId) {
 
@@ -658,8 +659,8 @@ public class ModelElementContainer implements Serializable {
      * Insert a partnerlink to a consisting list of partnerlinks
      * Attention: Parameters: name, namespace, partnerLinkType, partnerRole
      */
-    public void addPartnerLinkWithoutMyRole(String name, String namespace, String partnerLinktType, String partnerRole, String WsdlUrl) {
-        this.partnerLinkList.addPartnerLinkWithoutMyRole(name, namespace, partnerLinktType, partnerRole, WsdlUrl);
+    public void addPartnerLinkWithoutMyRole(String name, String namespace, String partnerLinkType, String partnerRole, String WsdlUrl) {
+        this.partnerLinkList.addPartnerLinkWithoutMyRole(name, namespace, partnerLinkType, partnerRole, WsdlUrl);
     }
 
     public boolean existWsdlUrl(String WsdlUrl) {
