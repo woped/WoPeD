@@ -235,6 +235,7 @@ public class ModelElementContainer implements Serializable {
     /**
      * Removes an element from the net.
      * Caution! The references from the element will consist in the net!
+     *
      * @param id the id of the element to remove
      */
     public void removeOnlyElement(Object id) {
@@ -286,13 +287,14 @@ public class ModelElementContainer implements Serializable {
 
     /**
      * Removes the arc with the given id from the petrinet
+     *
      * @param id the id of the arc to remove
      */
     public void removeArc(Object id) {
 
         ArcModel arc = getArcById(id);
 
-        if(arc == null){
+        if (arc == null) {
             LoggerManager.warn(Constants.CORE_LOGGER, "Arc with ID: " + id + " does not exists");
         }
 
@@ -301,6 +303,7 @@ public class ModelElementContainer implements Serializable {
 
     /**
      * Removes the given arc from the petrinet.
+     *
      * @param arc the arc to remove
      */
     public void removeArc(ArcModel arc) {
@@ -331,8 +334,6 @@ public class ModelElementContainer implements Serializable {
      * Gets all {@code AbstractPetriNetElementModel} which have a outgoing reference
      * from the {@code AbstractPetriNetElementModel} with the given id.
      *
-     * Method getReferenceElements. Returns the all
-     *
      * @param sourceId the id of the {@code AbstractPetriNetElementModel} to get the targets from.
      * @return a Map containing all existing targets or {@code null} if no element with the provided id exists.
      */
@@ -341,15 +342,15 @@ public class ModelElementContainer implements Serializable {
         Map<String, Object> sourceMap = getIdMap().get(sourceId);
         Map<String, AbstractPetriNetElementModel> targetMap = new HashMap<>();
 
-        if(sourceMap == null){
+        if (sourceMap == null) {
             return null;
         }
 
-        for (String key:sourceMap.keySet()) {
+        for (String key : sourceMap.keySet()) {
 
             Object value = sourceMap.get(key);
 
-            if(!(value instanceof ArcModel)) continue;
+            if (!(value instanceof ArcModel)) continue;
 
             AbstractPetriNetElementModel target = (AbstractPetriNetElementModel) ((DefaultPort) ((ArcModel) value).getTarget()).getParent();
             targetMap.put(target.getId(), target);
@@ -358,13 +359,23 @@ public class ModelElementContainer implements Serializable {
         return targetMap;
     }
 
-    public Map<String, Object> getOutgoingArcs(Object id) {
+    /**
+     * Gets all outgoing arcs from the {@code AbstractPetriNetElement} with the given id.
+     * This element is source of all that arcs.
+     *
+     * @param elementId the id of the {@code AbstractPetriNetElement} to get the outgoing arcs from.
+     * @return A map containing all outgoing arcs. The map may be empty if no such arcs exist.
+     */
+    public Map<String, Object> getOutgoingArcs(Object elementId) {
 
-        if (getIdMap().get(id) != null) {
-            Map<String, Object> arcOut = new HashMap<>(getIdMap().get(id));
-            arcOut.remove("_#_");
-            return arcOut;
-        } else return new HashMap<String, Object>();
+        if (null == getIdMap().get(elementId)) {
+            return new HashMap<>();
+        }
+
+        Map<String, Object> arcOut = new HashMap<>(getIdMap().get(elementId));
+        arcOut.remove(SELF_ID);
+
+        return arcOut;
     }
 
     public Map<String, ArcModel> getIncomingArcs(Object id) {

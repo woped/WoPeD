@@ -419,4 +419,73 @@ public class ModelElementContainerTest {
 
         assertFalse(result.containsKey(target3));
     }
+
+    @Test
+    public void getOutgoingArcs_noArcs_returnsEmptyMap(){
+        ModelElementContainer sut = new ModelElementContainer();
+
+        ILogger logger = mock(ILogger.class);
+        LoggerManager.register(logger, Constants.CORE_LOGGER);
+
+        Map<String, Object> outgoingArcs = sut.getOutgoingArcs("notExistingId");
+
+        assertTrue(outgoingArcs.isEmpty());
+    }
+
+    @Test
+    public void getOutgoingArcs_validSource_returnArcs(){
+        ModelElementContainer sut = new ModelElementContainer();
+
+        ILogger logger = mock(ILogger.class);
+        LoggerManager.register(logger, Constants.CORE_LOGGER);
+
+        PlaceModel source = new PlaceModel(new CreationMap());
+        source.setId("fakeSource");
+        sut.addElement(source);
+
+        TransitionModel target = new TransitionModel(new CreationMap());
+        target.setId("fakeTarget");
+        sut.addElement(target);
+
+        ArcModel arc = mock(ArcModel.class);
+        when(arc.getId()).thenReturn("arc1");
+        when(arc.getSourceId()).thenReturn(source.getId());
+        when(arc.getTargetId()).thenReturn(target.getId());
+
+        sut.addReference(arc);
+
+        Map<String, Object> outgoingArcs = sut.getOutgoingArcs(source.getId());
+
+        int expected = 1;
+        int actual = outgoingArcs.size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getOutgoingArcs_validSource_mapDoesNotContainSelfReference(){
+        ModelElementContainer sut = new ModelElementContainer();
+
+        ILogger logger = mock(ILogger.class);
+        LoggerManager.register(logger, Constants.CORE_LOGGER);
+
+        PlaceModel source = new PlaceModel(new CreationMap());
+        source.setId("fakeSource");
+        sut.addElement(source);
+
+        TransitionModel target = new TransitionModel(new CreationMap());
+        target.setId("fakeTarget");
+        sut.addElement(target);
+
+        ArcModel arc = mock(ArcModel.class);
+        when(arc.getId()).thenReturn("arc1");
+        when(arc.getSourceId()).thenReturn(source.getId());
+        when(arc.getTargetId()).thenReturn(target.getId());
+
+        sut.addReference(arc);
+
+        Map<String, Object> outgoingArcs = sut.getOutgoingArcs(source.getId());
+
+        assertFalse(outgoingArcs.containsKey(ModelElementContainer.SELF_ID));
+    }
 }
