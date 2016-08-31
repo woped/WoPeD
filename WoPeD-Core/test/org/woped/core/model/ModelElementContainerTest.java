@@ -488,4 +488,119 @@ public class ModelElementContainerTest {
 
         assertFalse(outgoingArcs.containsKey(ModelElementContainer.SELF_ID));
     }
+
+    @Test
+    public void getIncomingArcs_noArcs_returnsEmptyMap(){
+        ModelElementContainer sut = new ModelElementContainer();
+
+        ILogger logger = mock(ILogger.class);
+        LoggerManager.register(logger, Constants.CORE_LOGGER);
+
+        Map<String, ArcModel> incomingArcs = sut.getIncomingArcs("notExistingId");
+
+        assertTrue(incomingArcs.isEmpty());
+    }
+
+    @Test
+    public void getIncomingArcs_hasValidArc_mapContainsThisArc(){
+        ModelElementContainer sut = new ModelElementContainer();
+
+        ILogger logger = mock(ILogger.class);
+        LoggerManager.register(logger, Constants.CORE_LOGGER);
+
+        PlaceModel source = new PlaceModel(new CreationMap());
+        source.setId("fakeSource");
+        sut.addElement(source);
+
+        TransitionModel target1 = new TransitionModel(new CreationMap());
+        target1.setId("fakeTarget1");
+        sut.addElement(target1);
+
+        TransitionModel target2 = new TransitionModel(new CreationMap());
+        target2.setId("fakeTarget2");
+        sut.addElement(target2);
+
+        ArcModel arc1 = mock(ArcModel.class);
+        when(arc1.getId()).thenReturn("arc1");
+        when(arc1.getSourceId()).thenReturn(source.getId());
+        when(arc1.getTargetId()).thenReturn(target1.getId());
+
+        ArcModel arc2 = mock(ArcModel.class);
+        when(arc2.getId()).thenReturn("arc2");
+        when(arc2.getSourceId()).thenReturn(source.getId());
+        when(arc2.getTargetId()).thenReturn(target2.getId());
+
+        sut.addReference(arc1);
+        sut.addReference(arc2);
+
+        Map<String, ArcModel> incomingArcs = sut.getIncomingArcs(target1.getId());
+
+        // Contains only one arc
+        assertEquals(incomingArcs.size(), 1);
+
+        // Contains the correct key
+        assertTrue(incomingArcs.containsKey(arc1.getId()));
+
+        // Contains the correct element
+        ArcModel expected = arc1;
+        ArcModel actual = incomingArcs.get(arc1.getId());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findSourceElements_invalidId_mapIsEmpty(){
+        ModelElementContainer sut = new ModelElementContainer();
+
+        ILogger logger = mock(ILogger.class);
+        LoggerManager.register(logger, Constants.CORE_LOGGER);
+
+        Map<String, AbstractPetriNetElementModel> sourceElements = sut.findSourceElements("notExistingId");
+
+        assertTrue(sourceElements.isEmpty());
+    }
+
+    @Test
+    public void findSourceElements_OneSource_MapContainsOnlyThatSource(){
+        ModelElementContainer sut = new ModelElementContainer();
+
+        ILogger logger = mock(ILogger.class);
+        LoggerManager.register(logger, Constants.CORE_LOGGER);
+
+        PlaceModel source = new PlaceModel(new CreationMap());
+        source.setId("fakeSource");
+        sut.addElement(source);
+
+        TransitionModel target1 = new TransitionModel(new CreationMap());
+        target1.setId("fakeTarget1");
+        sut.addElement(target1);
+
+        TransitionModel target2 = new TransitionModel(new CreationMap());
+        target2.setId("fakeTarget2");
+        sut.addElement(target2);
+
+        ArcModel arc1 = mock(ArcModel.class);
+        when(arc1.getId()).thenReturn("arc1");
+        when(arc1.getSourceId()).thenReturn(source.getId());
+        when(arc1.getTargetId()).thenReturn(target1.getId());
+
+        ArcModel arc2 = mock(ArcModel.class);
+        when(arc2.getId()).thenReturn("arc2");
+        when(arc2.getSourceId()).thenReturn(source.getId());
+        when(arc2.getTargetId()).thenReturn(target2.getId());
+
+        sut.addReference(arc1);
+        sut.addReference(arc2);
+
+        Map<String, AbstractPetriNetElementModel> sourceElements = sut.findSourceElements(target1.getId());
+
+        // map has only one element
+        assertEquals(sourceElements.size(), 1);
+
+        // map contains the correct key
+        assertTrue(sourceElements.containsKey(source.getId()));
+
+        // map contains the correct value
+        assertTrue(sourceElements.containsValue(source));
+    }
+
 }

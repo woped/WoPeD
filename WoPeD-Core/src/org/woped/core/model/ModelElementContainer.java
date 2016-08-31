@@ -404,7 +404,16 @@ public class ModelElementContainer implements Serializable {
      * @return A map containing all incoming arcs. The map may be empty if no such arcs exist.
      */
     public Map<String, ArcModel> getIncomingArcs(Object elementId) {
-        return findSourceArcs(elementId);
+
+        Map<String, ArcModel> result = new HashMap<>();
+
+        for(ArcModel arc: arcs.values()){
+            if(arc.getTargetId().equals(elementId)){
+                result.put(arc.getId(), arc);
+            }
+        }
+
+        return result;
     }
 
     /**
