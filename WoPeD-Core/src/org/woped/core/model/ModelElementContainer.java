@@ -440,7 +440,6 @@ public class ModelElementContainer implements Serializable {
         return result;
     }
 
-
     /**
      * Gets the {@code AbstractPetriNetElementModel} with the given id.
      *
@@ -568,28 +567,8 @@ public class ModelElementContainer implements Serializable {
         return elements;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	/* Bpel extension */
-
+    // REVIEW: Shouldn't this extension be a class on its own?
 
     /**
      * @return
