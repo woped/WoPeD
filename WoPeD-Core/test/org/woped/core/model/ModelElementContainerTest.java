@@ -601,4 +601,30 @@ public class ModelElementContainerTest {
         assertTrue(sourceElements.containsValue(source));
     }
 
+    @Test
+    public void getElementByType_wantsTransitions_returnCorrectNumber() {
+        ModelElementContainer sut = new ModelElementContainer();
+
+        ILogger logger = mock(ILogger.class);
+        LoggerManager.register(logger, Constants.CORE_LOGGER);
+
+        PlaceModel source = new PlaceModel(new CreationMap());
+        source.setId("fakeSource");
+        sut.addElement(source);
+
+        TransitionModel target1 = new TransitionModel(new CreationMap());
+        target1.setId("fakeTarget1");
+        sut.addElement(target1);
+
+        TransitionModel target2 = new TransitionModel(new CreationMap());
+        target2.setId("fakeTarget2");
+        sut.addElement(target2);
+
+        Map<String, AbstractPetriNetElementModel> transitions = sut.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+
+        int expected = 2;
+        int actual = transitions.size();
+
+        assertEquals(expected, actual);
+    }
 }

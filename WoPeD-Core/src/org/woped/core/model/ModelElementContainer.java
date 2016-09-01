@@ -489,7 +489,15 @@ public class ModelElementContainer implements Serializable {
 
     // REVIEW: Methods containsArc, findArc, hasReference have the semantically equivalent meaning
 
-    public boolean containsArc(ArcModel arc) {
+    /**
+     * Checks if the given arc already exists in the net.
+     * <br>
+     * Arcs are considered equal if the have the same source and target.
+     *
+     * @param arc the arc to check.
+     * @return true if such an arc already exists, otherwise false
+     */
+    boolean containsArc(ArcModel arc) {
 
         Iterator<String> arcIter = getSourceElements(arc.getTargetId()).keySet().iterator();
         while (arcIter.hasNext()) {
@@ -500,6 +508,13 @@ public class ModelElementContainer implements Serializable {
         return false;
     }
 
+    /**
+     * Checks if an arc with the given source and target exists in the net.
+     *
+     * @param sourceId the id of the arcs source
+     * @param targetId the id of the arcs target
+     * @return the arc or null, if no such arc exists
+     */
     public ArcModel findArc(String sourceId, String targetId) {
         Iterator<String> iter = arcs.keySet().iterator();
         while (iter.hasNext()) {
@@ -511,34 +526,45 @@ public class ModelElementContainer implements Serializable {
         return null;
     }
 
-    public boolean containsElement(Object id) {
-        return getIdMap().containsKey(id);
+    /**
+     * Checks if the {@code AbstractPetriNetElementModel} with the given id exists in the net.
+     *
+     * @param elementId the id of the {@code AbstractPetriNetElementModel} to check.
+     * @return true if the element exists, otherwise false
+     */
+    public boolean containsElement(Object elementId) {
+        return getIdMap().containsKey(elementId);
     }
 
     /**
-     * Returns the arcs.
+     * Gets a map containing all arcs from the net.
      *
-     * @return Map
+     * @return A Map containing all arcs.
      */
     public Map<String, ArcModel> getArcMap() {
         return arcs;
     }
 
-
+    /**
+     * Gets all {@code AbstractPetriNetElementModel} with the given type.
+     * <br>
+     * The types are defined in the {@link AbstractPetriNetElementModel} class.
+     *
+     * @param type the requested type
+     * @return A map containing the {@code AbstractPetriNetElementModel} with their id as key. The map may be empty.
+     */
     public Map<String, AbstractPetriNetElementModel> getElementsByType(int type) {
-        Map<String, AbstractPetriNetElementModel> elements = new HashMap<String, AbstractPetriNetElementModel>();
+        Map<String, AbstractPetriNetElementModel> elements = new HashMap<>();
         Iterator<String> elementsIter = getIdMap().keySet().iterator();
         AbstractPetriNetElementModel element;
-        // try {
+
         while (elementsIter.hasNext()) {
             element = getElementById(elementsIter.next());
             if (element != null && element.getType() == type) {
                 elements.put(element.getId(), element);
             }
         }
-        // } catch (Exception e) {
-        // e.printStackTrace();
-        // }
+
         return elements;
     }
 
