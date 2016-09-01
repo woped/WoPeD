@@ -22,30 +22,19 @@
  */
 package org.woped.core.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import org.jgraph.graph.DefaultPort;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
 import org.woped.core.Constants;
-import org.woped.core.model.bpel.BpelVariable;
-import org.woped.core.model.bpel.BpelVariableList;
-import org.woped.core.model.bpel.PartnerlinkList;
-import org.woped.core.model.bpel.UddiVariable;
-import org.woped.core.model.bpel.UddiVariableList;
+import org.woped.core.model.bpel.*;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.ParaphrasingModel;
 import org.woped.core.utilities.LoggerManager;
 
-import javax.swing.tree.TreeNode;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -66,9 +55,30 @@ import javax.swing.tree.TreeNode;
 
 @SuppressWarnings("serial")
 public class ModelElementContainer implements Serializable {
+    public static final String SELF_ID = "_#_";
     // ! If !=null, stores editor layout info for the editor
     // ! that is to be used to edit the sub-process
     private EditorLayoutInfo editorLayoutInfo = null;
+    // ! Just as we own elements, elements own us
+    // ! if we're a simple transition element container
+    // ! Again, it is important for navigation to know these things
+    // ! The owningElement member may be null (which is in fact the default)
+    // ! if we're not owned by an AbstractElementModel instance at all
+    private AbstractPetriNetElementModel owningElement = null;
+    private BpelVariableList variablesList = new BpelVariableList();
+    private PartnerlinkList partnerLinkList = new PartnerlinkList();
+    private UddiVariableList uddiVariableList = new UddiVariableList();
+    private ParaphrasingModel paraphrasingModel = new ParaphrasingModel();
+    private Map<String, Map<String, Object>> idMap = null;
+    private Map<String, ArcModel> arcs = null;
+
+    /**
+     * Creates an new instance of an {@code ModelElementContainer}
+     */
+    public ModelElementContainer() {
+        idMap = new HashMap<>();
+        arcs = new HashMap<>();
+    }
 
     public EditorLayoutInfo getEditorLayoutInfo() {
         return editorLayoutInfo;
@@ -78,36 +88,12 @@ public class ModelElementContainer implements Serializable {
         this.editorLayoutInfo = editorLayoutInfo;
     }
 
-    // ! Just as we own elements, elements own us
-    // ! if we're a simple transition element container
-    // ! Again, it is important for navigation to know these things
-    // ! The owningElement member may be null (which is in fact the default)
-    // ! if we're not owned by an AbstractElementModel instance at all
-    private AbstractPetriNetElementModel owningElement = null;
-
-    private BpelVariableList variablesList = new BpelVariableList();
-    private PartnerlinkList partnerLinkList = new PartnerlinkList();
-    private UddiVariableList uddiVariableList = new UddiVariableList();
-    private ParaphrasingModel paraphrasingModel = new ParaphrasingModel();
-
-    public void setOwningElement(AbstractPetriNetElementModel element) {
-        owningElement = element;
-    }
-
     public AbstractPetriNetElementModel getOwningElement() {
         return owningElement;
     }
 
-    private Map<String, Map<String, Object>> idMap = null;
-    private Map<String, ArcModel> arcs = null;
-    public static final String SELF_ID = "_#_";
-
-    /**
-     * Creates an new instance of an {@code ModelElementContainer}
-     */
-    public ModelElementContainer() {
-        idMap = new HashMap<>();
-        arcs = new HashMap<>();
+    public void setOwningElement(AbstractPetriNetElementModel element) {
+        owningElement = element;
     }
 
     /**
@@ -407,8 +393,8 @@ public class ModelElementContainer implements Serializable {
 
         Map<String, ArcModel> result = new HashMap<>();
 
-        for(ArcModel arc: arcs.values()){
-            if(arc.getTargetId().equals(elementId)){
+        for (ArcModel arc : arcs.values()) {
+            if (arc.getTargetId().equals(elementId)) {
                 result.put(arc.getId(), arc);
             }
         }
@@ -446,7 +432,7 @@ public class ModelElementContainer implements Serializable {
         Map<String, AbstractPetriNetElementModel> result = new HashMap<>();
         AbstractPetriNetElementModel source;
 
-        for (ArcModel arc: getIncomingArcs(targetId).values()){
+        for (ArcModel arc : getIncomingArcs(targetId).values()) {
             source = getElementById(arc.getSourceId());
             result.put(source.getId(), source);
         }
@@ -474,6 +460,9 @@ public class ModelElementContainer implements Serializable {
 
     }
 
+    /**
+     * Removes the highlighting from all {@code AbstractPetriNetElementModel} and {@code ArcModel}.
+     */
     public void removeAllHighlighting() {
         Map<String, Map<String, Object>> map = getIdMap();
         for (String id : map.keySet())
@@ -482,6 +471,12 @@ public class ModelElementContainer implements Serializable {
             arcs.get(arc).setHighlighted(false);
     }
 
+    /**
+     * Gets the arc with the given id.
+     *
+     * @param id the id of the requested arc.
+     * @return the requested arc or null if no such arc exists.
+     */
     public ArcModel getArcById(Object id) {
 
         if (arcs.get(id) != null) {
@@ -492,6 +487,7 @@ public class ModelElementContainer implements Serializable {
         }
     }
 
+    // REVIEW: Methods containsArc, findArc, hasReference have the semantically equivalent meaning
 
     public boolean containsArc(ArcModel arc) {
 
@@ -502,6 +498,17 @@ public class ModelElementContainer implements Serializable {
             }
         }
         return false;
+    }
+
+    public ArcModel findArc(String sourceId, String targetId) {
+        Iterator<String> iter = arcs.keySet().iterator();
+        while (iter.hasNext()) {
+            ArcModel arc = arcs.get(iter.next());
+            if (arc.getSourceId().equals(sourceId) && arc.getTargetId().equals(targetId)) {
+                return arc;
+            }
+        }
+        return null;
     }
 
     public boolean containsElement(Object id) {
@@ -517,14 +524,6 @@ public class ModelElementContainer implements Serializable {
         return arcs;
     }
 
-    /**
-     * Sets the arcs.
-     *
-     * @param arcs The arcs to set
-     */
-    public void setArcMap(Map<String, ArcModel> arcs) {
-        this.arcs = arcs;
-    }
 
     public Map<String, AbstractPetriNetElementModel> getElementsByType(int type) {
         Map<String, AbstractPetriNetElementModel> elements = new HashMap<String, AbstractPetriNetElementModel>();
@@ -543,16 +542,25 @@ public class ModelElementContainer implements Serializable {
         return elements;
     }
 
-    public ArcModel findArc(String sourceId, String targetId) {
-        Iterator<String> iter = arcs.keySet().iterator();
-        while (iter.hasNext()) {
-            ArcModel arc = arcs.get(iter.next());
-            if (arc.getSourceId().equals(sourceId) && arc.getTargetId().equals(targetId)) {
-                return arc;
-            }
-        }
-        return null;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/* Bpel extension */
 
