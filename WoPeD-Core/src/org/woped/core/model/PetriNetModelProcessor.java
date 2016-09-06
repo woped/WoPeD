@@ -30,7 +30,10 @@ import org.woped.core.utilities.LoggerManager;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.io.Serializable;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Vector;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -65,16 +68,18 @@ public class PetriNetModelProcessor implements Serializable {
     private ModelElementContainer elementContainer = null;
 
     /**
-     * Empty Constructor creates a new PetriNet without ID (ID "noID").s
+     * Creates a new {@code PetriNetModelProcessor}.
+     * <p>
+     * The new instance is going to have the id "noID".
      */
     public PetriNetModelProcessor() {
         this("noID");
     }
 
     /**
-     * Method PetriNet. Creates a PetriNet with a spiecial ID.
+     * Creates a new {@code PetriNetModelProcessor} with the given id.
      *
-     * @param name
+     * @param id the id of the {@code PetriNetModelProcessor}.
      */
     public PetriNetModelProcessor(String id) {
         elementContainer = new ModelElementContainer();
@@ -86,12 +91,10 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     /**
-     * Method getNewPetriNetElement. Creates a new PetriNetElement with a
-     * special type (@see AbstractElementModel) and a Aalst type respectivley
+     * Creates a new {@link AbstractPetriNetElementModel}.
      *
-     * @param type
-     * @param aalsttype
-     * @return AbstractElementModel
+     * @param map the map containing the parameters of the new element.
+     * @return the new created element or null, if the map is not valid.
      */
     public AbstractPetriNetElementModel createElement(CreationMap map) {
         // creating a new ModelElement through Factory
@@ -131,42 +134,46 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     /**
+     * Creates an new arc from the source to the target.
+     * <p>
      * This Method is called, when Elements get connected. If the source or the
      * target is an Operator, the internal transformation to the classic
      * petrinet will be done.
      *
-     * @param sourceId
-     * @param targetId
-     * @return ArcModel
+     * @param sourceId the id of the source of the arc, not null
+     * @param targetId the id of the target of the arc, not null
+     * @return ArcModel the new arc or null if one of the parameters is invalid.
      */
     public ArcModel createArc(Object sourceId, Object targetId) {
         return createArc(null, sourceId, targetId, new Point2D[0], true);
     }
 
     /**
+     * Creates an new arc from the source to the target via the given points.
+     * <p>
      * This Method is called, when Elements get connected. It only checks the
      * connection for AalstElements and guarantees the building of a classical
      * Petrinet in The Model, if transformOperators is true.
      *
-     * @param id
-     * @param sourceId
-     * @param targetId
-     * @param points
-     * @param transformOperators
-     * @return ArcModel
+     * @param id                 the id of the arc
+     * @param sourceId           the id of the source, not null
+     * @param targetId           the id of the target, not null
+     * @param points             the points describing the route of the arc, may be null
+     * @param transformOperators indicator if the inner connection of an operator type should be processed
+     * @return ArcModel the new arc or null, if one of the parameters is invalid
      */
     public ArcModel createArc(String id, Object sourceId, Object targetId, Point2D[] points, boolean transformOperators) {
 
         AbstractPetriNetElementModel sourceModel = getElementContainer().getElementById(sourceId);
         AbstractPetriNetElementModel targetModel = getElementContainer().getElementById(targetId);
 
-        // Ensure that the connection is valid
+        // Ensures that the connection is valid
         if ((sourceModel == null) || (targetModel == null)) {
             return null;
         }
 
-        // Ensure that the id is fresh
-        if (id == null | this.getElementContainer().getArcById(id) != null) {
+        // Ensures that the id is fresh
+        if (id == null || this.getElementContainer().getArcById(id) != null) {
             id = getNexArcId();
         }
 
@@ -178,6 +185,10 @@ public class PetriNetModelProcessor implements Serializable {
         return displayedArc;
     }
 
+    private void transformOperators(ArcModel arc) {
+
+    }
+
     public void insertArc(ArcModel arc, boolean transformOperators) {
         AbstractPetriNetElementModel sourceModel = getElementContainer().getElementById(arc.getSourceId());
         AbstractPetriNetElementModel targetModel = getElementContainer().getElementById(arc.getTargetId());
@@ -185,6 +196,7 @@ public class PetriNetModelProcessor implements Serializable {
 
 
         if (!transformOperators) {
+            transformOperators(arc);
             return;
         }
 
@@ -223,51 +235,60 @@ public class PetriNetModelProcessor implements Serializable {
         }
     }
 
-    public void removeArc(Object id) {
+    /**
+     * Deletes the arc with the given id from the petrinet.
+     *
+     * @param arcId the id of the arc to remove.
+     */
+    public void removeArc(Object arcId) {
 
-        ArcModel arcToDelete = getElementContainer().getArcById(id);
-        if (arcToDelete != null) {
-            AbstractPetriNetElementModel sourceElement = getElementContainer().getElementById(arcToDelete.getSourceId());
-            AbstractPetriNetElementModel targetElement = getElementContainer().getElementById(arcToDelete.getTargetId());
+        ArcModel arcToDelete = getElementContainer().getArcById(arcId);
 
-            if (sourceElement.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
-                OperatorTransitionModel currentOperator = (OperatorTransitionModel) sourceElement;
-                // Register the removal of an outgoing arc
-                currentOperator.registerOutgoingConnectionRemoval(this, targetElement);
-
-                currentOperator.getSimpleTransContainer().removeIncomingArcsFromElement(arcToDelete.getTargetId());
-
-                // Each inner transition container contains a local copy of each
-                // element connecting to an operator
-                // We have to remove this local copy
-                currentOperator.getSimpleTransContainer().removeElement(targetElement.getId());
-
-            } else if (targetElement.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
-                OperatorTransitionModel currentOperator = (OperatorTransitionModel) targetElement;
-                // Register the removal of an incoming arc
-                currentOperator.registerIncomingConnectionRemoval(this, sourceElement);
-
-                currentOperator.getSimpleTransContainer().removeOutgoingArcsFromElement(arcToDelete.getSourceId());
-
-                // Each inner transition container contains a local copy of each
-                // element connecting to an operator
-                // We have to remove this local copy
-                currentOperator.getSimpleTransContainer().removeElement(sourceElement.getId());
-
-                LoggerManager.debug(Constants.CORE_LOGGER, "INNER ARC TO SOURCE deleted");
-            }
-
-            // remove element from the subprocess model
-            if (targetElement.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
-                ((SubProcessModel) targetElement).getSimpleTransContainer().removeElement(sourceElement.getId());
-            }
-
-            if (sourceElement.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
-                ((SubProcessModel) sourceElement).getSimpleTransContainer().removeElement(targetElement.getId());
-            }
-
-            getElementContainer().removeArc(arcToDelete);
+        // Ensure arc exists
+        if (null == arcToDelete) {
+            return;
         }
+
+        AbstractPetriNetElementModel sourceElement = getElementContainer().getElementById(arcToDelete.getSourceId());
+        AbstractPetriNetElementModel targetElement = getElementContainer().getElementById(arcToDelete.getTargetId());
+
+        if (sourceElement.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+            OperatorTransitionModel currentOperator = (OperatorTransitionModel) sourceElement;
+            // Register the removal of an outgoing arc
+            currentOperator.registerOutgoingConnectionRemoval(this, targetElement);
+
+            currentOperator.getSimpleTransContainer().removeIncomingArcsFromElement(arcToDelete.getTargetId());
+
+            // Each inner transition container contains a local copy of each
+            // element connecting to an operator
+            // We have to remove this local copy
+            currentOperator.getSimpleTransContainer().removeElement(targetElement.getId());
+
+        } else if (targetElement.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+            OperatorTransitionModel currentOperator = (OperatorTransitionModel) targetElement;
+            // Register the removal of an incoming arc
+            currentOperator.registerIncomingConnectionRemoval(this, sourceElement);
+
+            currentOperator.getSimpleTransContainer().removeOutgoingArcsFromElement(arcToDelete.getSourceId());
+
+            // Each inner transition container contains a local copy of each
+            // element connecting to an operator
+            // We have to remove this local copy
+            currentOperator.getSimpleTransContainer().removeElement(sourceElement.getId());
+
+            LoggerManager.debug(Constants.CORE_LOGGER, "INNER ARC TO SOURCE deleted");
+        }
+
+        // remove element from the subprocess model
+        if (targetElement.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+            ((SubProcessModel) targetElement).getSimpleTransContainer().removeElement(sourceElement.getId());
+        }
+
+        if (sourceElement.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+            ((SubProcessModel) sourceElement).getSimpleTransContainer().removeElement(targetElement.getId());
+        }
+
+        getElementContainer().removeArc(arcToDelete);
 
     }
 
@@ -401,15 +422,18 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     /**
+     * Returns a string representing the logical structure of the petrinet.
+     * <p>
      * The fingerprint is represented as a String with the following components
      * concatenated: - the number of places - all place-IDs directly followed by
-     * their individual TokenCount - the '#'-sign as an seperator - the number
+     * their individual TokenCount - the '#'-sign as an separator - the number
      * of arcs - for each arc a concatenation of '*', the arc's sourceID and the
-     * arc's targetID Example: p11p20p30p4#6*p1t1*t1p2*p2t2*t2p3*p3t3*t3p4
+     * arc's targetID Example: 4p11p20p30p40#6*p1t1*t1p2*p2t2*t2p3*p3t3*t3p4
      *
-     * @return Returns a String witch logically identifys the petrinet
+     * @return Returns a String witch logically identifies the petrinet
      */
     public String getLogicalFingerprint() {
+        StringBuilder sb = new StringBuilder();
         String fingerprint = "";
         // fingerprint of places & markings
         Iterator<AbstractPetriNetElementModel> aemIter = getElementContainer().getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE).values().iterator();
@@ -433,7 +457,7 @@ public class PetriNetModelProcessor implements Serializable {
             // but the arcs are distinctly described by arc-source and
             // arc-target
             /*
-			 * arcFingerprint += currArc.getId() + currArc.getSourceId() +
+             * arcFingerprint += currArc.getId() + currArc.getSourceId() +
 			 * currArc.getTargetId();
 			 */
             arcFingerprint += "*" + currArc.getSourceId() + currArc.getTargetId();
@@ -447,68 +471,76 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     /**
-     * Compares an fingerprint to the fingerprint of the current net on a
+     * Compares a fingerprint to the fingerprint of the current net on a
      * logical basis and not absolute like the equals-method of the String would
-     * do
+     * do.
+     * <p>
+     * This means that fingerprints with a different ordering of arcs
+     * are still logically equal. But the id's of the places has to be consistent.
      *
-     * @param fingerprintToCheck The fingerprintrepresentation which get's compared to the
-     *                           current fingerprint
+     * @param fingerprintToCheck The fingerprint to compare
      * @return <code>true</code> if equal, otherwise <code>false</code>
      */
     public boolean isLogicalFingerprintEqual(String fingerprintToCheck) {
         boolean equal = true;
-        String currFingerprint, currLeadingPart;
-        currFingerprint = this.getLogicalFingerprint();
-        currLeadingPart = currFingerprint.substring(0, currFingerprint.indexOf('*'));
+        String currFingerprint = this.getLogicalFingerprint();
+
+        // Equal fingerprints are always logically equal
+        if (currFingerprint.equals(fingerprintToCheck)) {
+            return true;
+        }
+
+        String currLeadingPart = currFingerprint.substring(0, currFingerprint.indexOf('*'));
+        String otherLeadingPart = fingerprintToCheck.substring(0, fingerprintToCheck.indexOf('*'));
+
         // if the strings have a different length or the leading part (places,
-        // tokens, number of Arcs)
-        // is different, then the fingerprint is always different
-        if (currFingerprint.length() == fingerprintToCheck.length() && currLeadingPart.equals(fingerprintToCheck.substring(0, fingerprintToCheck.indexOf('*')))) {
-            // creating a Hashmap with all arcsource-arctarget values from the
-            // current net
-            HashSet<String> currentArcs = new HashSet<String>();
-            Iterator<ArcModel> amIter = this.getElementContainer().getArcMap().values().iterator();
-            while (amIter.hasNext()) {
-                ArcModel currArc = amIter.next();
-                currentArcs.add(currArc.getSourceId() + currArc.getTargetId());
-            }
+        // tokens, number of Arcs) is different, then the fingerprint is always different
+        if (currFingerprint.length() != fingerprintToCheck.length() || !currLeadingPart.equals(otherLeadingPart)) {
+            return false;
+        }
 
-            // check if the arcs in the fingerprintToCheck are present in the
-            // HashSet of the current net's arcs
-            String arcsToCheck = fingerprintToCheck.substring(fingerprintToCheck.indexOf('*'));
-            String currArc;
-            boolean deleted = true;
-            while (deleted && arcsToCheck != "") {
-                // delete the leading '*'
-                arcsToCheck = arcsToCheck.substring(arcsToCheck.indexOf('*') + 1);
-                // Get the next arc
-                // - String till the next occurance of '*'
-                // - or till the end of the String if there is no more '*'
-                if (arcsToCheck.indexOf('*') != -1) {
-                    currArc = arcsToCheck.substring(0, arcsToCheck.indexOf('*'));
-                    arcsToCheck.substring(arcsToCheck.indexOf('*'));
-                } else {
-                    currArc = arcsToCheck;
-                    arcsToCheck = "";
-                }
-                deleted = currentArcs.remove(currArc);
-            }
+        // creating a Hashmap with all arcsource-arctarget values from the current net
+        HashSet<String> currentArcs = new HashSet<>();
+        for (ArcModel arc : this.getElementContainer().getArcMap().values()) {
+            currentArcs.add(String.format("%s%s", arc.getSourceId(), arc.getTargetId()));
+        }
 
-            if (currentArcs.size() != 0 | !deleted) {
-                equal = false;
+        Iterator<ArcModel> amIter = this.getElementContainer().getArcMap().values().iterator();
+        while (amIter.hasNext()) {
+            ArcModel currArc = amIter.next();
+            currentArcs.add(currArc.getSourceId() + currArc.getTargetId());
+        }
+
+        // check if the arcs in the fingerprintToCheck are present in the
+        // HashSet of the current net's arcs
+        String arcsToCheck = fingerprintToCheck.substring(fingerprintToCheck.indexOf('*'));
+        String currArc;
+        boolean deleted = true;
+        while (deleted && arcsToCheck != "") {
+            // delete the leading '*'
+            arcsToCheck = arcsToCheck.substring(arcsToCheck.indexOf('*') + 1);
+            // Get the next arc
+            // - String till the next occurance of '*'
+            // - or till the end of the String if there is no more '*'
+            if (arcsToCheck.indexOf('*') != -1) {
+                currArc = arcsToCheck.substring(0, arcsToCheck.indexOf('*'));
+                arcsToCheck.substring(arcsToCheck.indexOf('*'));
+            } else {
+                currArc = arcsToCheck;
+                arcsToCheck = "";
             }
-        } else {
+            deleted = currentArcs.remove(currArc);
+        }
+
+        if (currentArcs.size() != 0 | !deleted) {
             equal = false;
         }
+
         return equal;
     }
 
     public Vector<Object> getUnknownToolSpecs() {
         return unknownToolSpecs;
-    }
-
-    public void setUnknownToolSpecs(Vector<Object> unknownToolSpecs) {
-        this.unknownToolSpecs = unknownToolSpecs;
     }
 
     public void addUnknownToolSpecs(Object unknownToolSpecs) {
@@ -543,13 +575,6 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     public void setResourceMapping(HashMap<String, Vector<String>> resourceMapping) {
-        this.resourceMapping = resourceMapping;
-    }
-
-    /**
-     * @param resourceMap The resourceMap to set.
-     */
-    public void setResourceMapping(LinkedHashMap<String, Vector<String>> resourceMapping) {
         this.resourceMapping = resourceMapping;
     }
 
@@ -668,48 +693,8 @@ public class PetriNetModelProcessor implements Serializable {
         }
     }
 
-    public void removeElement(AbstractPetriNetElementModel element) {
-        removeElement(element.getId());
-    }
-
     public void removeElement(Object id) {
         getElementContainer().removeElement(id);
-    }
-
-    public int getArcCounter() {
-        return arcCounter;
-    }
-
-    public void setArcCounter(int arcCounter) {
-        this.arcCounter = arcCounter;
-    }
-
-    public int getPlaceCouter() {
-        return placeCouter;
-    }
-
-    public void setPlaceCouter(int placeCouter) {
-        this.placeCouter = placeCouter;
-    }
-
-    public int getSubprocessCounter() {
-        return subprocessCounter;
-    }
-
-    public void setSubprocessCounter(int subprocessCounter) {
-        this.subprocessCounter = subprocessCounter;
-    }
-
-    public int getTransitionCounter() {
-        return transitionCounter;
-    }
-
-    public void setTransitionCounter(int transitionCounter) {
-        this.transitionCounter = transitionCounter;
-    }
-
-    public int getSimulationCounter() {
-        return simulationCounter;
     }
 
     public void setSimulationCounter(int simulationCounter) {
@@ -747,14 +732,6 @@ public class PetriNetModelProcessor implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public ModelProcessorContext getModelProcessorContext() {
-        return modelProcessorContext;
-    }
-
-    public void setModelProcessorContext(ModelProcessorContext modelProcessorContext) {
-        this.modelProcessorContext = modelProcessorContext;
     }
 
     public String getName() {
