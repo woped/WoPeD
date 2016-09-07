@@ -30,10 +30,7 @@ import org.woped.core.utilities.LoggerManager;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -422,52 +419,59 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     /**
-     * Returns a string representing the logical structure of the petrinet.
+     * Gets a string representing the logical structure of the petrinet.
      * <p>
-     * The fingerprint is represented as a String with the following components
-     * concatenated: - the number of places - all place-IDs directly followed by
-     * their individual TokenCount - the '#'-sign as an separator - the number
-     * of arcs - for each arc a concatenation of '*', the arc's sourceID and the
-     * arc's targetID Example: 4p11p20p30p40#6*p1t1*t1p2*p2t2*t2p3*p3t3*t3p4
+     * The fingerprint is represented as a String with the following components:
+     * <ul>
+     *     <li>number of places</li>
+     *     <li>place details</li>
+     *     <li>a part delimiter (#)</li>
+     *     <li>number of arcs</li>
+     *     <li>arc details</li>
+     * </ul>
+     * <p>
+     * The place details consist of the place id and the amount of tokens for each place.
+     * For example place p0 with 2 tokens: "p02".
+     * <p>
+     * The arc details consists of the source id and the target id of each arc. The arc id is not
+     * appropriate for this purpose, because it is possible they could be different after saving/loading a net.
+     * Each arc is preceded with a single {@code *}.
+     * For example, an arc form p1 to t1 is listed as "*p1t1"
+     * <p>
+     * This is an example of an whole fingerprint: <code>2p10p20#2*t1p2*p2t1</code>
      *
-     * @return Returns a String witch logically identifies the petrinet
+     * @return a string representing the logical structure of the petrinet
      */
     public String getLogicalFingerprint() {
         StringBuilder sb = new StringBuilder();
-        String fingerprint = "";
-        // fingerprint of places & markings
-        Iterator<AbstractPetriNetElementModel> aemIter = getElementContainer().getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE).values().iterator();
-        int count = 0;
-        while (aemIter.hasNext()) {
-            count++;
-            PlaceModel currPlace = (PlaceModel) aemIter.next();
-            fingerprint += currPlace.getId() + currPlace.getTokenCount();
-        }
-        fingerprint = count + fingerprint;
-        fingerprint += "#";
-        // fingerprint of arcs
-        Iterator<ArcModel> amIter = this.getElementContainer().getArcMap().values().iterator();
-        count = 0;
-        String arcFingerprint = "";
-        while (amIter.hasNext()) {
-            count++;
-            ArcModel currArc = amIter.next();
-            // don't use ArcId in fingerprint because some ArcId's change on
-            // save/load pnml
-            // but the arcs are distinctly described by arc-source and
-            // arc-target
-            /*
-             * arcFingerprint += currArc.getId() + currArc.getSourceId() +
-			 * currArc.getTargetId();
-			 */
-            arcFingerprint += "*" + currArc.getSourceId() + currArc.getTargetId();
-        }
-        fingerprint += count + arcFingerprint;
-        // fingerprint of subprocesses
-        // iter =
-        // this.getElementContainer().getElementsByType(PetriNetModelElement.SUBP_TYPE).values().iterator();
 
-        return fingerprint;
+        // Add places
+        Collection<AbstractPetriNetElementModel> places = getElementContainer().getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE).values();
+
+        // Add number of places
+        sb.append(places.size());
+
+        // Add place details
+        for (AbstractPetriNetElementModel place : places) {
+            PlaceModel p = (PlaceModel) place;
+            sb.append(String.format("%s%d", p.getId(), p.getTokenCount()));
+        }
+
+        // Add part delimiter
+        sb.append("#");
+
+        // Add arcs
+        Collection<ArcModel> arcs = this.getElementContainer().getArcMap().values();
+
+        // Add number of arcs
+        sb.append(arcs.size());
+
+        // Add arc details
+        for (ArcModel arc : arcs) {
+            sb.append(String.format("*%s%s", arc.getSourceId(), arc.getTargetId()));
+        }
+
+        return sb.toString();
     }
 
     /**
