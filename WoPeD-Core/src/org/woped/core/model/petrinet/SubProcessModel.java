@@ -22,9 +22,6 @@
  */
 package org.woped.core.model.petrinet;
 
-import java.util.Iterator;
-import java.util.Map;
-
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
 import org.woped.core.Constants;
@@ -33,6 +30,9 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.utilities.LoggerManager;
+
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * @author lai
@@ -49,9 +49,9 @@ public class SubProcessModel extends TransitionModel implements
 
 	public static final int WIDTH = 40;
 	public static final int HEIGHT = 40;
+	private static final String SUBELEMENT_SEPERATOR = "_";
 	private int subElementCounter = 0;
 	private ModelElementContainer subElementContainer;
-	private static final String SUBELEMENT_SEPERATOR = "_";
 	private boolean direction = false;
 	private CreationMap map = null;
 
@@ -99,7 +99,7 @@ public class SubProcessModel extends TransitionModel implements
 		AbstractPetriNetElementModel newElementSub = null;
 		while (keyIterator.hasNext()) {
 
-			AbstractPetriNetElementModel currentElementSub = (AbstractPetriNetElementModel) container
+			AbstractPetriNetElementModel currentElementSub = container
 					.getElementById(keyIterator.next());
 
 			if (!currentElementSub.isReadOnly()) {
@@ -159,7 +159,7 @@ public class SubProcessModel extends TransitionModel implements
 				newTargetName =super.getId() + SUBELEMENT_SEPERATOR
 				+ splitedTargetId[splitedTargetId.length - 1];
 				cMapSub.setArcTargetId(newTargetName);
-				((TransitionModel) newContainer.getElementById(newTargetName)).setIncommingTarget(true);
+				((TransitionModel) newContainer.getElementById(newTargetName)).setIncomingTarget(true);
 				processor.createArc(originalElementId,
 						cMapSub.getArcTargetId());
 			}
@@ -231,12 +231,12 @@ public class SubProcessModel extends TransitionModel implements
 		return result;
 	}
 
-	public void setDirection(boolean dir) {
-		direction = dir;
-	}
-
 	public boolean getDirection() {
 		return direction;
+	}
+
+	public void setDirection(boolean dir) {
+		direction = dir;
 	}
 
 }

@@ -24,14 +24,12 @@ package org.woped.core.model.petrinet;
 
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
-import org.woped.core.Constants;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
-import org.woped.core.utilities.LoggerManager;
 
 import java.awt.*;
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -44,11 +42,11 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class TransitionModel extends AbstractPetriNetElementModel {
 
-    public static final int WIDTH = 40;
-    public static final int HEIGHT = 40;
+    private static final int WIDTH = 40;
+    private static final int HEIGHT = 40;
     private Toolspecific toolSpecific;
     // it is important only in Subprocess
-    private boolean incommingTarget;
+    private boolean incomingTarget;
     private boolean outgoingSource;
 
     public TransitionModel(CreationMap map) {
@@ -96,22 +94,16 @@ public class TransitionModel extends AbstractPetriNetElementModel {
         // This is broken and should be fixed.
         if (getRootOwningContainer() == null) return 0;
 
-        Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
+        Collection<ArcModel> arcs = getRootOwningContainer().getIncomingArcs(this.getId()).values();
 
-        Iterator<String> incomingArcsIter = arcsFromPlaces.keySet().iterator();
         int activePlaces = 0;
-        while (incomingArcsIter.hasNext()) {
-            ArcModel arc = getRootOwningContainer().getArcById(incomingArcsIter.next());
-            try {
-                PlaceModel place = (PlaceModel) getRootOwningContainer().getElementById(arc.getSourceId());
-                if (place != null && place.getVirtualTokenCount() > 0) {
-                    // TODO: when ARC WEIGTH implemented check tokens >= weigth
-                    activePlaces++;
-                }
-            } catch (ClassCastException cce) {
-                LoggerManager.warn(Constants.CORE_LOGGER, "TokenGame: Source not a Place. Ignore arc: " + arc.getId());
+        for (ArcModel arc : arcs) {
+            PlaceModel source = (PlaceModel) getRootOwningContainer().getElementById(arc.getSourceId());
+            if (source.getVirtualTokenCount() >= arc.getInscriptionValue()) {
+                activePlaces++;
             }
         }
+
         return activePlaces;
     }
 
@@ -123,18 +115,19 @@ public class TransitionModel extends AbstractPetriNetElementModel {
      *
      * @return the number of incoming arcs.
      */
-    public int getNumInputPlaces() {
-        // TODO: This is an error condition, triggered by a broken model (e.g.
-        // TransitionModel has not been created through its factory).
-        // Unfortunately, this error condition currently occurs due to the
-        // code in TStar.java which generates model elements and arcs that
-        // are part of the JGraph model and view, but intentionally excluded
-        // from the ModelElementContainer to not disturb semantic analysis.
-        // This is broken and should be fixed.
+    int getNumInputPlaces() {
+
+        //TODO: This is an error condition, triggered by a broken model (e.g.
+        //TransitionModel has not been created through its factory).
+        //Unfortunately, this error condition currently occurs due to the
+        //code in TStar.java which generates model elements and arcs that
+        //are part of the JGraph model and view, but intentionally excluded
+        //from the ModelElementContainer to not disturb semantic analysis.
+        //This is broken and should be fixed.
         if (getRootOwningContainer() == null) return 0;
 
-        Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
-        return arcsFromPlaces.size();
+        Map<String, ArcModel> incomingArcs = getRootOwningContainer().getIncomingArcs(getId());
+        return incomingArcs.size();
     }
 
 
@@ -227,19 +220,19 @@ public class TransitionModel extends AbstractPetriNetElementModel {
         return AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE;
     }
 
-    public boolean isIncommingTarget() {
-        return incommingTarget;
+    public boolean isIncomingTarget() {
+        return incomingTarget;
     }
 
-    public void setIncommingTarget(boolean incommingTarget) {
-        this.incommingTarget = incommingTarget;
+    void setIncomingTarget(boolean incomingTarget) {
+        this.incomingTarget = incomingTarget;
     }
 
     public boolean isOutgoingSource() {
         return outgoingSource;
     }
 
-    public void setOutgoingSource(boolean outgoingSource) {
+    void setOutgoingSource(boolean outgoingSource) {
         this.outgoingSource = outgoingSource;
     }
 

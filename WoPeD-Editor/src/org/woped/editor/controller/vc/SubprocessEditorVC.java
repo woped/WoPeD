@@ -1,33 +1,28 @@
 package org.woped.editor.controller.vc;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Vector;
-
-import javax.swing.border.LineBorder;
-import javax.swing.event.InternalFrameEvent;
-
 import org.jgraph.event.GraphModelEvent;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.EditorLayoutInfo;
-import org.woped.core.model.petrinet.ResourceClassModel;
-import org.woped.core.model.petrinet.ResourceModel;
-import org.woped.core.model.petrinet.SubProcessModel;
-import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.*;
 import org.woped.editor.controller.EditorClipboard;
 import org.woped.editor.controller.WoPeDUndoManager;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 
+import javax.swing.border.LineBorder;
+import javax.swing.event.InternalFrameEvent;
+import java.util.*;
+
 public class SubprocessEditorVC extends EditorVC {
-	
+
+	private SubProcessModel model = null;
+	// for subprocess
+	private AbstractPetriNetElementModel m_subprocessInput = null;
+	private AbstractPetriNetElementModel m_subprocessOutput = null;
+	private IEditor m_parentEditor = null;
+
 	public SubprocessEditorVC(String string, EditorClipboard clipboard,
 			boolean undoSupport, IEditor parentEditor,
 			SubProcessModel model, AbstractApplicationMediator mediator) {
@@ -62,7 +57,7 @@ public class SubprocessEditorVC extends EditorVC {
 		// Check whether the source element already exists
 		if (container.getElementById(sourceModel.getId()) == null) {
 			CreationMap sourceCreationMap = sourceModel.getCreationMap();
-			if (((EditorVC) parentEditor).isCopyFlag() == false) {			
+			if (((EditorVC) parentEditor).isCopyFlag() == false) {
 			container.getArcMap().clear();
 			container.getIdMap().clear();
 			}
@@ -130,23 +125,19 @@ public class SubprocessEditorVC extends EditorVC {
 			getEditorPanel().setSavedLayoutInfo(layoutInfo);
 		}
 		// Copy resources from parentEditor to subprocessEditor
-		Vector<ResourceModel> res = ((PetriNetModelProcessor) (parentEditor
-				.getModelProcessor())).getResources();
-		((PetriNetModelProcessor) (getModelProcessor())).setResources(res);
+		Vector<ResourceModel> res = parentEditor.getModelProcessor().getResources();
+		getModelProcessor().setResources(res);
 
-		HashMap<String, Vector<String>> mapping = ((PetriNetModelProcessor) (parentEditor
-				.getModelProcessor())).getResourceMapping();
-		((PetriNetModelProcessor) (getModelProcessor()))
+		HashMap<String, Vector<String>> mapping = parentEditor.getModelProcessor().getResourceMapping();
+		getModelProcessor()
 				.setResourceMapping(mapping);
 
-		Vector<ResourceClassModel> units = ((PetriNetModelProcessor) (parentEditor
-				.getModelProcessor())).getOrganizationUnits();
-		((PetriNetModelProcessor) (getModelProcessor()))
+		Vector<ResourceClassModel> units = parentEditor.getModelProcessor().getOrganizationUnits();
+		getModelProcessor()
 				.setOrganizationUnits(units);
 
-		Vector<ResourceClassModel> roles = ((PetriNetModelProcessor) (parentEditor
-				.getModelProcessor())).getRoles();
-		((PetriNetModelProcessor) (getModelProcessor())).setRoles(roles);
+		Vector<ResourceClassModel> roles = parentEditor.getModelProcessor().getRoles();
+		getModelProcessor().setRoles(roles);
 
 		Map<String, AbstractPetriNetElementModel> transitions;
 		TransitionModel trans;
@@ -154,7 +145,7 @@ public class SubprocessEditorVC extends EditorVC {
 			Iterator<AbstractPetriNetElementModel> iterTrans = transitions.values().iterator();
 			while (iterTrans.hasNext()) {
 				trans = (TransitionModel) iterTrans.next();
-				if (trans.isIncommingTarget())
+				if (trans.isIncomingTarget())
 					createArc(this.m_subprocessInput.getId(), trans.getId());
 				if (trans.isOutgoingSource())
 					createArc(trans.getId(), this.m_subprocessOutput.getId());
@@ -164,17 +155,17 @@ public class SubprocessEditorVC extends EditorVC {
 		// Restore original "edited" status of parent editor
 		// because creation of source and target places should not
 		// influence the parent model
-		parentEditor.setSaved(origStatus);		
+		parentEditor.setSaved(origStatus);
 	}
 
 	public SubProcessModel getModel() {
 		return model;
 	}
-	
+
 	public boolean isSubprocessEditor() {
 		return true;
 	}
-	
+
 	public AbstractPetriNetElementModel getSubprocessInput() {
 		return m_subprocessInput;
 	}
@@ -192,36 +183,35 @@ public class SubprocessEditorVC extends EditorVC {
 	}
 
 	protected void clearYourself() {
-		super.clearYourself(); 
+		super.clearYourself();
 
 		m_subprocessInput = null;
 		m_subprocessOutput = null;
-		m_parentEditor = null;		
-	}	
+		m_parentEditor = null;
+	}
 	
 	public void graphChanged(GraphModelEvent e) {
 		getParentEditor().setSaved(false);
 		// Nils Lamb, Jan 2012
 		// trigger update of status bar in sub prozess
-		if (getEditorPanel().m_statusbar != null)
-			getEditorPanel().m_statusbar.updateStatus();		
+		if (getEditorPanel().m_statusbar != null) getEditorPanel().m_statusbar.updateStatus();
 		super.graphChanged(e);
 	}
-	
+
 	public void internalFrameActivated(InternalFrameEvent e) {
 		// Do nothing in case of sub process editor
-	}	
+	}
 	
 	public void internalFrameClosing(InternalFrameEvent e) {
-		// Remember our layout if this is a sub-process editor		
+		// Remember our layout if this is a sub-process editor
 		this.getModelProcessor().getElementContainer()
 		.setEditorLayoutInfo(getEditorPanel().getSavedLayoutInfo());
 	}
-	
+
 	public void setSaved(boolean savedFlag) {
 		// Ignore saved flag for subprocesses. This is dealt with by our parent
 	}
-	
+
 	public IEditor getParentEditor() {
 		return m_parentEditor;
 	}
@@ -229,11 +219,4 @@ public class SubprocessEditorVC extends EditorVC {
 	public void setParentEditor(IEditor editor) {
 		m_parentEditor = editor;
 	}
-	
-	private SubProcessModel model = null;
-	// for subprocess
-	private AbstractPetriNetElementModel m_subprocessInput = null;
-	private AbstractPetriNetElementModel m_subprocessOutput = null;
-
-	private IEditor m_parentEditor = null;
 }
