@@ -475,18 +475,15 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     /**
-     * Compares a fingerprint to the fingerprint of the current net on a
-     * logical basis and not absolute like the equals-method of the String would
-     * do.
+     * Checks if a fingerprint is logically equal with the fingerprint of the current net.
      * <p>
-     * This means that fingerprints with a different ordering of arcs
-     * are still logically equal. But the id's of the places has to be consistent.
+     * The difference to the {@code String.equals()}-method is, that fingerprints are considered equal
+     * if the have a different order of the contained arcs. But the id's of the places has to be consistent.
      *
      * @param fingerprintToCheck The fingerprint to compare
-     * @return <code>true</code> if equal, otherwise <code>false</code>
+     * @return <code>true</code> if the fingerprint is equal, otherwise <code>false</code>
      */
     public boolean isLogicalFingerprintEqual(String fingerprintToCheck) {
-        boolean equal = true;
         String currFingerprint = this.getLogicalFingerprint();
 
         // Equal fingerprints are always logically equal
@@ -497,50 +494,36 @@ public class PetriNetModelProcessor implements Serializable {
         String currLeadingPart = currFingerprint.substring(0, currFingerprint.indexOf('*'));
         String otherLeadingPart = fingerprintToCheck.substring(0, fingerprintToCheck.indexOf('*'));
 
-        // if the strings have a different length or the leading part (places,
-        // tokens, number of Arcs) is different, then the fingerprint is always different
-        if (currFingerprint.length() != fingerprintToCheck.length() || !currLeadingPart.equals(otherLeadingPart)) {
+        // fingerprints are always different, if they have a different length.
+        if (currFingerprint.length() != fingerprintToCheck.length()) {
             return false;
         }
 
-        // creating a Hashmap with all arcsource-arctarget values from the current net
-        HashSet<String> currentArcs = new HashSet<>();
+        // fingerprints are not equal if the have a different leading part. (place ids + tokens)
+        if (!currLeadingPart.equals(otherLeadingPart)) {
+            return false;
+        }
+
+        // extract the fingerprint specific arc ids from the current net
+        Set<String> currentArcs = new HashSet<>();
         for (ArcModel arc : this.getElementContainer().getArcMap().values()) {
             currentArcs.add(String.format("%s%s", arc.getSourceId(), arc.getTargetId()));
         }
 
-        Iterator<ArcModel> amIter = this.getElementContainer().getArcMap().values().iterator();
-        while (amIter.hasNext()) {
-            ArcModel currArc = amIter.next();
-            currentArcs.add(currArc.getSourceId() + currArc.getTargetId());
-        }
+        // Ensure that the arc sets are equal.
+        String arcString = fingerprintToCheck.substring(fingerprintToCheck.indexOf('*') + 1);
+        String[] arcs = arcString.split("\\*");
 
-        // check if the arcs in the fingerprintToCheck are present in the
-        // HashSet of the current net's arcs
-        String arcsToCheck = fingerprintToCheck.substring(fingerprintToCheck.indexOf('*'));
-        String currArc;
-        boolean deleted = true;
-        while (deleted && arcsToCheck != "") {
-            // delete the leading '*'
-            arcsToCheck = arcsToCheck.substring(arcsToCheck.indexOf('*') + 1);
-            // Get the next arc
-            // - String till the next occurance of '*'
-            // - or till the end of the String if there is no more '*'
-            if (arcsToCheck.indexOf('*') != -1) {
-                currArc = arcsToCheck.substring(0, arcsToCheck.indexOf('*'));
-                arcsToCheck.substring(arcsToCheck.indexOf('*'));
-            } else {
-                currArc = arcsToCheck;
-                arcsToCheck = "";
+        // Check each arc
+        for (String arc : arcs) {
+            boolean arcContained = currentArcs.remove(arc);
+            if (!arcContained) {
+                return false;
             }
-            deleted = currentArcs.remove(currArc);
         }
 
-        if (currentArcs.size() != 0 | !deleted) {
-            equal = false;
-        }
-
-        return equal;
+        // Ensure that no arcs remain.
+        return currentArcs.size() == 0;
     }
 
     public Vector<Object> getUnknownToolSpecs() {
