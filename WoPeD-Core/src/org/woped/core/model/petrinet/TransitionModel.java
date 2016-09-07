@@ -22,10 +22,6 @@
  */
 package org.woped.core.model.petrinet;
 
-import java.awt.Point;
-import java.util.Iterator;
-import java.util.Map;
-
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.Constants;
@@ -34,26 +30,28 @@ import org.woped.core.model.CreationMap;
 import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 import org.woped.core.utilities.LoggerManager;
 
+import java.awt.*;
+import java.util.Iterator;
+import java.util.Map;
+
 /**
  * @author Simon Landes
- * 
- * 
- * 29.03.2003
+ *         <p>
+ *         <p>
+ *         29.03.2003
  */
 
 @SuppressWarnings("serial")
-public class TransitionModel extends AbstractPetriNetElementModel
-{
+public class TransitionModel extends AbstractPetriNetElementModel {
 
-    private Toolspecific    toolSpecific;
-    public static final int WIDTH     = 40;
-    public static final int HEIGHT    = 40;
+    public static final int WIDTH = 40;
+    public static final int HEIGHT = 40;
+    private Toolspecific toolSpecific;
     // it is important only in Subprocess
-    private boolean incommingTarget ;
+    private boolean incommingTarget;
     private boolean outgoingSource;
-    
-    public TransitionModel(CreationMap map)
-    {
+
+    public TransitionModel(CreationMap map) {
         super(map);
         toolSpecific = new Toolspecific(getId());
         AttributeMap attributes = getAttributes();
@@ -64,160 +62,42 @@ public class TransitionModel extends AbstractPetriNetElementModel
     }
 
     /**
-     * Returns the toolSpecific.
-     * 
-     * @return Toolspecific
+     * Gets the default height of the transition.
+     *
+     * @return the default height of the transition.
      */
-    public Toolspecific getToolSpecific()
-    {
-        return toolSpecific;
+    public int getDefaultHeight() {
+        return HEIGHT;
     }
 
     /**
-     * Sets the toolSpecific.
-     * 
-     * @param toolSpecific
-     *            The toolSpecific to set
+     * Gets the default width of the transition.
+     *
+     * @return the default width of the transition.
      */
-    public void setToolSpecific(Toolspecific toolSpecific)
-    {
-        this.toolSpecific = toolSpecific;
-    }
-
-    public boolean hasTrigger()
-    {
-        return (getToolSpecific().getTrigger() != null);
-    }
-
-    public int getTriggerType()
-    {
-        return (getToolSpecific().getTrigger().getTriggertype());
-    }
-
-    public boolean hasResource()
-    {
-        return (getToolSpecific().getTransResource() != null);
-    }
-    
-    public Point getTriggerPosition()
-    {
-    	if (hasTrigger())
-    		return getToolSpecific().getTrigger().getPosition();
-    	else
-    		if(toolSpecific.getOperatorPosition() == OperatorPosition.NORTH || toolSpecific.getOperatorPosition() == OperatorPosition.SOUTH)
-    		{
-    			return new Point(getX() - 25, getY() + 10);
-    		}
-    		else
-    		{
-    			return new Point(getX() + 10, getY() - 20);
-    		}
-    }
-
-    public Point getResourcePosition()
-    {
-    	if (hasResource())
-    		return getToolSpecific().getTransResource().getPosition();
-    	else
-    		if(toolSpecific.getOperatorPosition() == OperatorPosition.NORTH || toolSpecific.getOperatorPosition() == OperatorPosition.SOUTH)
-    		{
-    			return new Point(getX() - 65, getY() - TransitionResourceModel.DEFAULT_HEIGHT + 5);
-    		}
-    		else
-    		{
-    			return new Point(getX() + 10, getY() - TransitionResourceModel.DEFAULT_HEIGHT - 25);
-    		}
-    }
-
-    public int getDefaultWidth()
-    {
+    public int getDefaultWidth() {
         return WIDTH;
     }
 
-    public int getDefaultHeight()
-    {
-        return HEIGHT;
-    }
-    
-    public CreationMap getCreationMap()
-    {
-        CreationMap map = super.getCreationMap();
-        if (hasTrigger())
-        {
-            map.setTriggerType(getToolSpecific().getTrigger().getTriggertype());
-            map.setTriggerPosition(new Point(getToolSpecific().getTrigger().getPosition()));
-        }
-        else
-        	// If no trigger exists, our creation map must reflect this
-        	// (there might have been a trigger before which was removed
-        	// during editing)
-        	map.setTriggerType(-1);
-        if (hasResource())
-        {
-            map.setResourceOrgUnit(getToolSpecific().getTransResource().getTransOrgUnitName());
-            map.setResourceRole(getToolSpecific().getTransResource().getTransRoleName());
-            map.setResourcePosition(new Point(getToolSpecific().getTransResource().getPosition()));
-        }
-        else
-        {
-        	// If no resource org unit exists, our creation map must reflect this
-        	// (there might have been a resource unit before which was removed
-        	// during editing)
-        	map.setResourceOrgUnit(null);
-        	map.setResourceRole(null);
-        	map.setResourcePosition(null);
-        }
-        // Extract transition service time and transition service
-        // time unit
-        map.setTransitionTime(getToolSpecific().getTime());
-        map.setTransitionTimeUnit(getToolSpecific().getTimeUnit());
-       
-        return map;
-    }
-
-    public String getToolTipText()
-    {
-        return "Transition\nID: " + getId() + "\nName: " + getNameValue();
-    }
-
-    public int getType()
-    {
-        return AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE;
-    }
-
-	public void setIncommingTarget(boolean incommingTarget) {
-		this.incommingTarget = incommingTarget;
-	}
-
-	public boolean isIncommingTarget() {
-		return incommingTarget;
-	}
-
-	public void setOutgoingSource(boolean outgoingSource) {
-		this.outgoingSource = outgoingSource;
-	}
-
-	public boolean isOutgoingSource() {
-		return outgoingSource;
-	}
-	
     /**
-     * Counts the token-filled Places which are the source of the Map filled Arcs.
-     * @return Number of places that contain at least one token 
+     * Gets the number of active places which have an outgoing arc to this transition.
+     * <p>
+     * Active means, that their token count is greater or equal to the weight of the arc.
+     *
+     * @return Number of places that contain at least one token
      */
     public int getNumIncomingActivePlaces() {
-    	// TODO: This is an error condition, triggered by a broken model (e.g.
-    	// TransitionModel has not been created through its factory).
-    	// Unfortunately, this error condition currently occurs due to the
-    	// code in TStar.java which generates model elements and arcs that
-    	// are part of the JGraph model and view, but intentionally excluded
-    	// from the ModelElementContainer to not disturb semantic analysis.
-    	// This is broken and should be fixed.
-    	if (getRootOwningContainer() == null)
-    		return 0;
-    	
+        // TODO: This is an error condition, triggered by a broken model (e.g.
+        // TransitionModel has not been created through its factory).
+        // Unfortunately, this error condition currently occurs due to the
+        // code in TStar.java which generates model elements and arcs that
+        // are part of the JGraph model and view, but intentionally excluded
+        // from the ModelElementContainer to not disturb semantic analysis.
+        // This is broken and should be fixed.
+        if (getRootOwningContainer() == null) return 0;
+
         Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
-    	
+
         Iterator<String> incomingArcsIter = arcsFromPlaces.keySet().iterator();
         int activePlaces = 0;
         while (incomingArcsIter.hasNext()) {
@@ -229,34 +109,141 @@ public class TransitionModel extends AbstractPetriNetElementModel
                     activePlaces++;
                 }
             } catch (ClassCastException cce) {
-                LoggerManager.warn(Constants.CORE_LOGGER, "TokenGame: Source not a Place. Ignore arc: "
-                        + arc.getId());
+                LoggerManager.warn(Constants.CORE_LOGGER, "TokenGame: Source not a Place. Ignore arc: " + arc.getId());
             }
         }
         return activePlaces;
-    }	
-    
+    }
+
     /**
-     * Calculate and return the number of incoming arcs for this transition
-     * @return Number of incoming arcs
+     * Get the number of places, which have an outgoing arc to this transition.
+     * <p>
+     * Because of the fact, that an arc must have a source and a target, this number is equal
+     * to the number of incoming arcs.
+     *
+     * @return the number of incoming arcs.
      */
     public int getNumInputPlaces() {
-    	// TODO: This is an error condition, triggered by a broken model (e.g.
-    	// TransitionModel has not been created through its factory).
-    	// Unfortunately, this error condition currently occurs due to the
-    	// code in TStar.java which generates model elements and arcs that
-    	// are part of the JGraph model and view, but intentionally excluded
-    	// from the ModelElementContainer to not disturb semantic analysis.
-    	// This is broken and should be fixed.    	
-    	if (getRootOwningContainer() == null)
-    		return 0;
-    	
-    	Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
-    	return arcsFromPlaces.size();
+        // TODO: This is an error condition, triggered by a broken model (e.g.
+        // TransitionModel has not been created through its factory).
+        // Unfortunately, this error condition currently occurs due to the
+        // code in TStar.java which generates model elements and arcs that
+        // are part of the JGraph model and view, but intentionally excluded
+        // from the ModelElementContainer to not disturb semantic analysis.
+        // This is broken and should be fixed.
+        if (getRootOwningContainer() == null) return 0;
+
+        Map<String, ArcModel> arcsFromPlaces = getRootOwningContainer().getIncomingArcs(getId());
+        return arcsFromPlaces.size();
     }
-		
-    public boolean isActivated()    
-    {
-    	return (getNumInputPlaces()==getNumIncomingActivePlaces());
-    }    	
+
+
+    /**
+     * Gets the WoPeD specific parameter object.
+     *
+     * @return the WoPeD specific parameter object
+     * @see Toolspecific
+     */
+    public Toolspecific getToolSpecific() {
+        return toolSpecific;
+    }
+
+    /**
+     * Sets the WoPeD specific parameter object.
+     *
+     * @param toolSpecific the new parameter object to set.
+     * @see Toolspecific
+     */
+    public void setToolSpecific(Toolspecific toolSpecific) {
+        this.toolSpecific = toolSpecific;
+    }
+
+    public boolean hasTrigger() {
+        return (getToolSpecific().getTrigger() != null);
+    }
+
+    public int getTriggerType() {
+        return (getToolSpecific().getTrigger().getTriggertype());
+    }
+
+    public boolean hasResource() {
+        return (getToolSpecific().getTransResource() != null);
+    }
+
+    public Point getTriggerPosition() {
+        if (hasTrigger()) return getToolSpecific().getTrigger().getPosition();
+        else if (toolSpecific.getOperatorPosition() == OperatorPosition.NORTH || toolSpecific.getOperatorPosition() == OperatorPosition.SOUTH) {
+            return new Point(getX() - 25, getY() + 10);
+        } else {
+            return new Point(getX() + 10, getY() - 20);
+        }
+    }
+
+    public Point getResourcePosition() {
+        if (hasResource()) return getToolSpecific().getTransResource().getPosition();
+        else if (toolSpecific.getOperatorPosition() == OperatorPosition.NORTH || toolSpecific.getOperatorPosition() == OperatorPosition.SOUTH) {
+            return new Point(getX() - 65, getY() - TransitionResourceModel.DEFAULT_HEIGHT + 5);
+        } else {
+            return new Point(getX() + 10, getY() - TransitionResourceModel.DEFAULT_HEIGHT - 25);
+        }
+    }
+
+
+    public CreationMap getCreationMap() {
+        CreationMap map = super.getCreationMap();
+        if (hasTrigger()) {
+            map.setTriggerType(getToolSpecific().getTrigger().getTriggertype());
+            map.setTriggerPosition(new Point(getToolSpecific().getTrigger().getPosition()));
+        } else
+            // If no trigger exists, our creation map must reflect this
+            // (there might have been a trigger before which was removed
+            // during editing)
+            map.setTriggerType(-1);
+        if (hasResource()) {
+            map.setResourceOrgUnit(getToolSpecific().getTransResource().getTransOrgUnitName());
+            map.setResourceRole(getToolSpecific().getTransResource().getTransRoleName());
+            map.setResourcePosition(new Point(getToolSpecific().getTransResource().getPosition()));
+        } else {
+            // If no resource org unit exists, our creation map must reflect this
+            // (there might have been a resource unit before which was removed
+            // during editing)
+            map.setResourceOrgUnit(null);
+            map.setResourceRole(null);
+            map.setResourcePosition(null);
+        }
+        // Extract transition service time and transition service
+        // time unit
+        map.setTransitionTime(getToolSpecific().getTime());
+        map.setTransitionTimeUnit(getToolSpecific().getTimeUnit());
+
+        return map;
+    }
+
+    public String getToolTipText() {
+        return "Transition\nID: " + getId() + "\nName: " + getNameValue();
+    }
+
+    public int getType() {
+        return AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE;
+    }
+
+    public boolean isIncommingTarget() {
+        return incommingTarget;
+    }
+
+    public void setIncommingTarget(boolean incommingTarget) {
+        this.incommingTarget = incommingTarget;
+    }
+
+    public boolean isOutgoingSource() {
+        return outgoingSource;
+    }
+
+    public void setOutgoingSource(boolean outgoingSource) {
+        this.outgoingSource = outgoingSource;
+    }
+
+    public boolean isActivated() {
+        return (getNumInputPlaces() == getNumIncomingActivePlaces());
+    }
 }

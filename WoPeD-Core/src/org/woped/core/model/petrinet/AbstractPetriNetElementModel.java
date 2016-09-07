@@ -1,18 +1,5 @@
 package org.woped.core.model.petrinet;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Vector;
-
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultPort;
@@ -23,6 +10,12 @@ import org.woped.core.model.ElementContext;
 import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.utilities.LoggerManager;
+
+import java.awt.*;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -37,46 +30,34 @@ import org.woped.core.utilities.LoggerManager;
  */
 public abstract class AbstractPetriNetElementModel extends DefaultGraphCell implements Serializable
 {
+	public static final int PLACE_TYPE = 1;
+	public static final int TRANS_SIMPLE_TYPE = 2;
+	public static final int TRANS_OPERATOR_TYPE = 3;
+	public static final int SUBP_TYPE = 4;
+	public static final int TRIGGER_TYPE = 5;
+	public static final int NAME_TYPE = 6;
+	public static final int GROUP_TYPE = 7;
+	public static final int RESOURCE_TYPE = 8;
+	public static final int SIMULATION_TYPE = 9;
 	//! Default color to be used for understandability (Color for not highlighted elements)
 	protected static final Color defaultUnderstandabilityColor = Color.white;
-
-	public static final int PLACE_TYPE = 1;
-
-	public static final int TRANS_SIMPLE_TYPE = 2;
-
-	public static final int TRANS_OPERATOR_TYPE = 3;
-
-	public static final int SUBP_TYPE = 4;
-
-	public static final int TRIGGER_TYPE = 5;
-
-	public static final int NAME_TYPE = 6;
-
-	public static final int GROUP_TYPE = 7;
-
-	public static final int RESOURCE_TYPE = 8;
-
-	public static final int SIMULATION_TYPE = 9;
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	protected Object BpelData = null;
 	//! Specifies whether the element represented by this model
 	//! is highlighted
 	//! Highlighted elements are drawn differently by their respective view
 	//! This is used for structural analysis, to show that an element is selected
 	//! in the analysis dialog
-	boolean highlighted = false;	
+	boolean highlighted = false;
 	//! RGHighlighted elements are drawn differently by their view
 	//! This is used for the highlighting for the current marking of the Reachabilitygraph
 	boolean RGhighlighted = false;
-
 	//! For better understandability a new color from the config colorset will highlight this element.
 	private boolean understandabilityColoringActive = false;
     private Color understandabilityColor = defaultUnderstandabilityColor;
-	
     private CreationMap    creationMap        = null;
     private String         id                 = null;
     private ElementContext elementContext     = null;
@@ -90,28 +71,67 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
     //! addElement() and removeOnlyElement() which will call addOwningContainer() and
     //! removeOwningContainer() to do so.
     private Set<ModelElementContainer> owningContainers = new HashSet<ModelElementContainer>();
-    
     //! Stores a reference to the owning container with the lowest hierarchical level
     //! (root container == 0)
     private ModelElementContainer rootOwningContainer = null;
-
 	private Vector<?> m_unknownToolspecific = null;
 
-	protected Object BpelData = null;
-    
+	public AbstractPetriNetElementModel(CreationMap creationMap, Object userObject) {
+		super(null);
+		this.elementContext = new ElementContext();
+		nameModel = new NameModel(creationMap);
+		AttributeMap map = getAttributes();
+		GraphConstants.setOpaque(map, false);
+		if (creationMap.getReadOnly()) {
+			GraphConstants.setBorderColor(map, new Color(125, 125, 125));
+		} else {
+			GraphConstants.setBorderColor(map, Color.BLACK);
+		}
+		GraphConstants.setEditable(map, true);
+		if (creationMap.getSize() == null) {
+			GraphConstants.setSize(map, new Dimension(getDefaultWidth(), getDefaultHeight()));
+		} else {
+			GraphConstants.setSize(map, new Dimension(creationMap.getSize().getX1(), creationMap.getSize().getX2()));
+		}
+		GraphConstants.setMoveable(map, true);
+		setAttributes(map);
+
+		if (creationMap.getId() != null) {
+			setId(creationMap.getId());
+			if (creationMap.getPosition() != null) {
+				setPosition(new Point(creationMap.getPosition().x, creationMap.getPosition().y));
+			}
+
+			if (creationMap.getNamePosition() != null) {
+				nameModel.setPosition(new Point(creationMap.getNamePosition().x, creationMap.getNamePosition().y));
+			} else if (getPosition() != null) {
+				nameModel.setPosition(getPosition().x + ((this.getWidth() - getNameModel().getWidth()) / 2), getPosition().y + getHeight() + 5);
+			}
+			// ToolSpec
+			if (creationMap.getUnknownToolSpec() != null) setUnknownToolSpecs(creationMap.getUnknownToolSpec());
+			if (creationMap.getBpeldata() != null) this.BpelData = creationMap.getBpeldata();
+		} else {
+			LoggerManager.error(Constants.CORE_LOGGER, "It's not allowed to create a Element without id. Please use ModelElementFactory instead.");
+		}
+
+	}
+
+	public AbstractPetriNetElementModel(CreationMap creationMap) {
+		this(creationMap, creationMap.getName());
+	}
+
     //! Return the owning container with the lowest hierarchical level
     //! @return returns the lowest model element container owning this element
     public ModelElementContainer getRootOwningContainer()
     {
     	return rootOwningContainer;
     }
-        
+
     //! Determine the hierarchy level of this element
     //! using the root owning container
     //! @return hierarchy level starting at zero for elements owned by the root container
     //! or -1 if the element is not currently owned
-    public int getHierarchyLevel() 
-    {
+	public int getHierarchyLevel() {
     	int result = -1;
     	if (rootOwningContainer!=null)
     	{
@@ -120,12 +140,13 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
     		if (owningElement!=null)
     			result = owningElement.getHierarchyLevel() + 1;
     	}
-    	return result;    	
-    }
-    public void addOwningContainer(ModelElementContainer owningContainer)
+		return result;
+	}
+
+	public void addOwningContainer(ModelElementContainer owningContainer)
     {
     	owningContainers.add(owningContainer);
-    	
+
     	// We may have a new element to own us
     	AbstractPetriNetElementModel newOwningElement = owningContainer.getOwningElement();
     	int nNewHiearchyLevel = ((newOwningElement!=null)?(newOwningElement.getHierarchyLevel() + 1):0);
@@ -134,7 +155,8 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
     		// our 'root owning container'
     		rootOwningContainer = owningContainer;
     }
-    public void removeOwningContainer(ModelElementContainer owningContainer)
+
+	public void removeOwningContainer(ModelElementContainer owningContainer)
     {
     	owningContainers.remove(owningContainer);
     	if (owningContainer==rootOwningContainer)
@@ -146,8 +168,8 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
     		if (i.hasNext())
     		{
     			// Start with the first one
-    			rootOwningContainer = i.next();    		
-    			AbstractPetriNetElementModel owningElement = rootOwningContainer.getOwningElement();
+				rootOwningContainer = i.next();
+				AbstractPetriNetElementModel owningElement = rootOwningContainer.getOwningElement();
     			int newLowest = ((owningElement!=null)?owningElement.getHierarchyLevel()+1:0);
     			while (i.hasNext())
     			{
@@ -164,7 +186,7 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
     		else
     			rootOwningContainer = null;
     	}
-    	
+
     }
     
     public Set<ModelElementContainer> getOwningContainers()
@@ -175,63 +197,6 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
     public Iterator<ModelElementContainer> getOwningContainersIterator()
     {
     	return (owningContainers!=null)?owningContainers.iterator():null;
-    }
-    
-    public AbstractPetriNetElementModel(CreationMap creationMap, Object userObject)
-    {
-        super(null);
-        this.elementContext = new ElementContext();
-        nameModel = new NameModel(creationMap);
-        AttributeMap map = getAttributes();
-        GraphConstants.setOpaque(map, false);
-        if (creationMap.getReadOnly()) {
-			GraphConstants.setBorderColor(map, new Color(125, 125, 125));
-		} else {
-			GraphConstants.setBorderColor(map, Color.BLACK);
-		}
-        GraphConstants.setEditable(map, true);
-        if (creationMap.getSize() == null)
-        {
-            GraphConstants.setSize(map, new Dimension(getDefaultWidth(), getDefaultHeight()));
-        } else
-        {
-            GraphConstants.setSize(map, new Dimension(creationMap.getSize().getX1(), creationMap.getSize().getX2()));
-        }
-        GraphConstants.setMoveable(map, true);
-        setAttributes(map);
-
-        if (creationMap.getId() != null)
-        {
-            setId(creationMap.getId());
-            if (creationMap.getPosition() != null)
-            {
-                setPosition(new Point(creationMap.getPosition().x, creationMap.getPosition().y));
-            }
-
-            if (creationMap.getNamePosition() != null)
-            {
-                nameModel.setPosition(new Point(creationMap.getNamePosition().x, creationMap.getNamePosition().y));
-            } else if (getPosition() != null)
-            {
-                nameModel.setPosition(getPosition().x + ((this.getWidth() - getNameModel().getWidth()) / 2), getPosition().y + getHeight() + 5);
-            }
-        	// ToolSpec
-        	if (creationMap.getUnknownToolSpec() != null)
-        		setUnknownToolSpecs(creationMap.getUnknownToolSpec());
-        	if (creationMap.getBpeldata() != null)
-        		this.BpelData = creationMap.getBpeldata();
-        } else {
-        	LoggerManager
-        	.error(
-        			Constants.CORE_LOGGER,
-        	"It's not allowed to create a Element without id. Please use ModelElementFactory instead.");
-        }        
-
-    }
-    
-    public AbstractPetriNetElementModel(CreationMap creationMap)
-    {
-        this(creationMap, creationMap.getName());
     }
 
     public CreationMap getCreationMap()
@@ -280,11 +245,6 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
         return (int) GraphConstants.getBounds(getAttributes()).getY();
     }
 
-    public void setPosition(Point2D p)
-    {
-        setPosition((int) p.getX(), (int) p.getY());
-    }
-
     public Point getPosition()
     {
         Rectangle2D rect = GraphConstants.getBounds(getAttributes());
@@ -294,6 +254,10 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
         }
         return null;
     }
+
+	public void setPosition(Point2D p) {
+		setPosition((int) p.getX(), (int) p.getY());
+	}
 
     public void setPosition(int x, int y)
     {
@@ -421,16 +385,16 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
 	public boolean isUnderstandabilityColoringActive(){
 		return this.understandabilityColoringActive;
 	}
-    
+
+	public Color getColor() {
+		return this.understandabilityColor;
+	}
+	
     public void setColor(Color c) {
-    	// alpha 0-255, the lower the brighter 
-    	int alpha = 180;
+		// alpha 0-255, the lower the brighter
+		int alpha = 180;
     	this.understandabilityColor = new Color(c.getRed(),
 				c.getGreen(), c.getBlue(), alpha);
-	}	
-	
-	public Color getColor(){
-		return this.understandabilityColor;
 	}
 	
 	//! Reset any previously set understandability colors to their default value
@@ -521,23 +485,23 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell impl
 		return result;
 	}
 
-	/**
-	 * Determine whether an element is a source node (no incoming connections in any of the owning containers)
-	 * @return true if element is a source node, false otherwise
-	 */
-	public boolean isSource() {
-		boolean result = true;
-		// An object can have multiple owning containers
-		// Iterate through all of them to get all connections
-		Iterator<ModelElementContainer> ownerIterator = getOwningContainers().iterator();
-		while (ownerIterator.hasNext()) {
-			ModelElementContainer currentContainer = ownerIterator.next();
-			Map<String, AbstractPetriNetElementModel> sourceElements = currentContainer.getSourceElements(getId());
-			if (sourceElements.size()>0)
-				result = false;
-		}
-		return result;
-	}	
+//	/**
+//	 * Determine whether an element is a source node (no incoming connections in any of the owning containers)
+//	 * @return true if element is a source node, false otherwise
+//	 */
+//	public boolean isSource() {
+//		boolean result = true;
+//		// An object can have multiple owning containers
+//		// Iterate through all of them to get all connections
+//		Iterator<ModelElementContainer> ownerIterator = getOwningContainers().iterator();
+//		while (ownerIterator.hasNext()) {
+//			ModelElementContainer currentContainer = ownerIterator.next();
+//			Map<String, AbstractPetriNetElementModel> sourceElements = currentContainer.getSourceElements(getId());
+//			if (sourceElements.size()>0)
+//				result = false;
+//		}
+//		return result;
+//	}
 	
 	/**
 	 * While the actual implementation is node-type specific, we have a common definition of what active means for
