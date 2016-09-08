@@ -242,7 +242,7 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
 
     private TransitionModel createSimpleTransition() {
 
-        TransitionModel aTranstitonModel;
+        TransitionModel transition;
         CreationMap map = CreationMap.createMap();
         map.setId(getNewElementId());
         if (getNameValue() != null) map.setName(getNameValue());
@@ -250,9 +250,9 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
         map.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
         if (getPosition() != null) map.setPosition(getPosition());
         else map.setPosition(new Point(0, 0));
-        aTranstitonModel = (TransitionModel) ModelElementFactory.createModelElement(map);
+        transition = (TransitionModel) ModelElementFactory.createModelElement(map);
 
-        return aTranstitonModel;
+        return transition;
     }
 
     public String getNewElementId() {

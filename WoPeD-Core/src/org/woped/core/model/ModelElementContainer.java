@@ -335,8 +335,8 @@ public class ModelElementContainer implements Serializable {
     }
 
     /**
-     * Gets all {@code AbstractPetriNetElementModel} which have a outgoing reference
-     * to the {@code AbstractPetriNetElementModel} with the given id.
+     * Gets all {@code AbstractPetriNetElementModel} which have a incoming reference
+     * from the {@code AbstractPetriNetElementModel} with the given id.
      *
      * @param sourceId the id of the {@code AbstractPetriNetElementModel} to get the targets from.
      * @return a Map containing all existing targets or {@code null} if no element with the provided id exists.
