@@ -72,14 +72,13 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
     private int simpleTransCounter = 0;
     private ModelElementContainer simpleTransContainer = null;
     private PlaceModel centerPlace = null;
-    private EditorLayoutInfo m_EditorLayoutInfo = null;
 
     /**
      * Creates a new instance of an OperatorTransitionModel.
      *
      * @param map the property object for the new element.
      */
-    protected OperatorTransitionModel(CreationMap map, int operatorType) {
+    protected OperatorTransitionModel(CreationMap map) {
 
         // its an ordinary Model Element
         super(map);
@@ -96,15 +95,15 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
         // getSimpleTransContainer().addElement(initalSimpleTrans);
         // this.initalSimpleTrans = initalSimpleTrans;
 
-        OperatorPosition east_south = OperatorPosition.EAST;
-        OperatorPosition west_north = OperatorPosition.WEST;
+        OperatorPosition east_south;
+        OperatorPosition west_north;
 
         //checks if the current modelling direction is vertical or horizontal
         //and sets the corresponding direction
         //verticalView = EditorLayoutInfo.m_verticalLayout;
 
-        m_EditorLayoutInfo = new EditorLayoutInfo();
-        //TODO
+        EditorLayoutInfo m_EditorLayoutInfo = new EditorLayoutInfo();
+
         if (m_EditorLayoutInfo.getVerticalLayout()) {
             east_south = OperatorPosition.SOUTH;
             west_north = OperatorPosition.NORTH;
@@ -246,7 +245,7 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
         CreationMap map = CreationMap.createMap();
         map.setId(getNewElementId());
         if (getNameValue() != null) map.setName(getNameValue());
-        else map.setName(getId().toString());
+        else map.setName(getId());
         map.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
         if (getPosition() != null) map.setPosition(getPosition());
         else map.setPosition(new Point(0, 0));
@@ -274,7 +273,7 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
      *
      * @param operatorType The operatorType to set
      */
-    public void setOperatorType(int operatorType) {
+    private void setOperatorType(int operatorType) {
         getToolSpecific().setOperatorType(operatorType);
     }
 
@@ -357,7 +356,7 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
     //! Check whether our only inner transition so far is unused
     //! If so, return it. Otherwise,
     //! create a new simple transition
-    protected TransitionModel getCreateUnusedSimpleTrans() {
+    TransitionModel getCreateUnusedSimpleTrans() {
         TransitionModel result = null;
 
         Map<String, AbstractPetriNetElementModel> existingTransitions = getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
@@ -383,10 +382,10 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
     //! Note that you may *never ever* use the next free arc returned by the outer
     //! model processor directly because that arc may already exist inside the
     //! inner transition container and would be overwritten which results in a broken net
-    protected String getNextFreeArcID(PetriNetModelProcessor processor) {
+    String getNextFreeArcID(PetriNetModelProcessor processor) {
         // Connect the new source object to our IN transition
-        String nextArcId = null;
-        ArcModel exists = null;
+        String nextArcId;
+        ArcModel exists;
         do {
             nextArcId = processor.getNexArcId();
             exists = getSimpleTransContainer().getArcById(nextArcId);
@@ -402,8 +401,5 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
                 if (aem.getRootOwningContainer().getOwningElement() == this) aem.setNameValue(name);
             }
         }
-    }
-
-    public void setVerticalView(boolean verticalView) {
     }
 }

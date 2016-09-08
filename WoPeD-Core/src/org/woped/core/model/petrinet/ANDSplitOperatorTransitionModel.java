@@ -6,7 +6,7 @@ import org.woped.core.model.CreationMap;
 public class ANDSplitOperatorTransitionModel extends OperatorTransitionModel {
 
 	public ANDSplitOperatorTransitionModel(CreationMap map) {
-		super(map, AND_SPLIT_TYPE);
+		super(map);
 		// TODO Auto-generated constructor stub
 	}
 }

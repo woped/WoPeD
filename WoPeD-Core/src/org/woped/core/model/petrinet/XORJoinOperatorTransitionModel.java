@@ -13,7 +13,7 @@ import java.util.Iterator;
 public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 
 	public XORJoinOperatorTransitionModel(CreationMap map) {
-		super(map, XOR_JOIN_TYPE);
+		super(map);
 	}
 
 	@Override

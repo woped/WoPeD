@@ -1,17 +1,17 @@
 package org.woped.core.model.petrinet;
 
-import java.util.Iterator;
-
 import org.jgraph.graph.DefaultPort;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 
+import java.util.Iterator;
+
 @SuppressWarnings("serial")
 public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
 
 	public XORSplitOperatorTransitionModel(CreationMap map) {
-		super(map, XOR_SPLIT_TYPE);
+		super(map);
 	}
 	
     public void registerIncomingConnection(
@@ -32,8 +32,7 @@ public class XORSplitOperatorTransitionModel extends OperatorTransitionModel {
     		while (simpleRootIter.hasNext())
     		{
     			// wenn simpletrans dann reference
-    			AbstractPetriNetElementModel tempTarget = (AbstractPetriNetElementModel) simpleRootIter
-    			.next();
+				AbstractPetriNetElementModel tempTarget = simpleRootIter.next();
     			if (tempTarget.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE)
     				addReference(getNextFreeArcID(processor),
     						(DefaultPort) tempSource.getChildAt(0),

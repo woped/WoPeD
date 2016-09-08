@@ -6,7 +6,7 @@ import org.woped.core.model.CreationMap;
 public class ANDJoinOperatorTransitionModel extends OperatorTransitionModel {
 
 	public ANDJoinOperatorTransitionModel(CreationMap map) {
-		super(map, AND_JOIN_TYPE);
+		super(map);
 		// TODO Auto-generated constructor stub
 	}
 }
