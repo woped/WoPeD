@@ -32,21 +32,23 @@ import java.util.Map;
 
 
 /**
- * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
- *         <br>
- *         <p>
- *         The OperatorTransitionModel is a special Class. In the internal modelstructur
- *         it is an ordinary
- * @see org.woped.core.model.petrinet.TransitionModel. But it contains itselfs
- * Models, stored in an own
- * @see org.woped.model.ModelElementContainer.
+ * An OperatorTransitionModel is the abstract base class for complex transition types.
  * <p>
+ * Complex transition are common structures of classic places and transitions such as Xor-Split or And-Join.
+ * They can be used as abbreviations to increase the understandability of larger petri nets.
+ * <p>
+ * The OperatorTransitionModel acts as a {@link TransitionModel} but it contains its own {@link ModelElementContainer},
+ * where it stores the required sub net.
+ * <p>
+ * Note that the AND-Join/XOR-Split and the XOR-Split operator are semantically equivalent but they have a different
+ * visual representation. The same is true for the XOR-Join/AND-Split and the AND-Split operator.
  *
- * 29.04.2003
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a>
+ * @since 29.04.2003
  */
 
 @SuppressWarnings("serial")
-public class OperatorTransitionModel extends TransitionModel implements InnerElementContainer {
+public abstract class OperatorTransitionModel extends TransitionModel implements InnerElementContainer {
 
     public static final String INNERID_SEPERATOR_OLD = "#";
     public static final String INNERID_SEPERATOR = "_";
@@ -73,12 +75,11 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     private EditorLayoutInfo m_EditorLayoutInfo = null;
 
     /**
-     * Constructor for OperatorTransitionModel.
+     * Creates a new instance of an OperatorTransitionModel.
      *
-     * @param type
-     * @param jGraphModel
+     * @param map the property object for the new element.
      */
-    public OperatorTransitionModel(CreationMap map, int operatorType) {
+    protected OperatorTransitionModel(CreationMap map, int operatorType) {
 
         // its an ordinary Model Element
         super(map);
@@ -271,7 +272,7 @@ public class OperatorTransitionModel extends TransitionModel implements InnerEle
     /**
      * Sets the operatorType.
      *
-     * @param aalsttype The operatorType to set
+     * @param operatorType The operatorType to set
      */
     public void setOperatorType(int operatorType) {
         getToolSpecific().setOperatorType(operatorType);

@@ -33,12 +33,10 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * @author Simon Landes
- *         <p>
- *         <p>
- *         29.03.2003
+ * This class represents a classic transition in a petrinet.
+ *
+ * @see <a href="https://en.wikipedia.org/wiki/Petri_net">Petri net</a>
  */
-
 @SuppressWarnings("serial")
 public class TransitionModel extends AbstractPetriNetElementModel {
 
@@ -57,6 +55,36 @@ public class TransitionModel extends AbstractPetriNetElementModel {
         GraphConstants.setEditable(attributes, false);
         GraphConstants.setSizeable(attributes, false);
         setAttributes(attributes);
+    }
+
+    public CreationMap getCreationMap() {
+        CreationMap map = super.getCreationMap();
+        if (hasTrigger()) {
+            map.setTriggerType(getToolSpecific().getTrigger().getTriggertype());
+            map.setTriggerPosition(new Point(getToolSpecific().getTrigger().getPosition()));
+        } else
+            // If no trigger exists, our creation map must reflect this
+            // (there might have been a trigger before which was removed
+            // during editing)
+            map.setTriggerType(-1);
+        if (hasResource()) {
+            map.setResourceOrgUnit(getToolSpecific().getTransResource().getTransOrgUnitName());
+            map.setResourceRole(getToolSpecific().getTransResource().getTransRoleName());
+            map.setResourcePosition(new Point(getToolSpecific().getTransResource().getPosition()));
+        } else {
+            // If no resource org unit exists, our creation map must reflect this
+            // (there might have been a resource unit before which was removed
+            // during editing)
+            map.setResourceOrgUnit(null);
+            map.setResourceRole(null);
+            map.setResourcePosition(null);
+        }
+        // Extract transition service time and transition service
+        // time unit
+        map.setTransitionTime(getToolSpecific().getTime());
+        map.setTransitionTimeUnit(getToolSpecific().getTimeUnit());
+
+        return map;
     }
 
     /**
@@ -130,6 +158,14 @@ public class TransitionModel extends AbstractPetriNetElementModel {
         return incomingArcs.size();
     }
 
+    public Point getResourcePosition() {
+        if (hasResource()) return getToolSpecific().getTransResource().getPosition();
+        else if (toolSpecific.getOperatorPosition() == OperatorPosition.NORTH || toolSpecific.getOperatorPosition() == OperatorPosition.SOUTH) {
+            return new Point(getX() - 65, getY() - TransitionResourceModel.DEFAULT_HEIGHT + 5);
+        } else {
+            return new Point(getX() + 10, getY() - TransitionResourceModel.DEFAULT_HEIGHT - 25);
+        }
+    }
 
     /**
      * Gets the WoPeD specific parameter object.
@@ -151,16 +187,8 @@ public class TransitionModel extends AbstractPetriNetElementModel {
         this.toolSpecific = toolSpecific;
     }
 
-    public boolean hasTrigger() {
-        return (getToolSpecific().getTrigger() != null);
-    }
-
-    public int getTriggerType() {
-        return (getToolSpecific().getTrigger().getTriggertype());
-    }
-
-    public boolean hasResource() {
-        return (getToolSpecific().getTransResource() != null);
+    public String getToolTipText() {
+        return "Transition\nID: " + getId() + "\nName: " + getNameValue();
     }
 
     public Point getTriggerPosition() {
@@ -172,52 +200,24 @@ public class TransitionModel extends AbstractPetriNetElementModel {
         }
     }
 
-    public Point getResourcePosition() {
-        if (hasResource()) return getToolSpecific().getTransResource().getPosition();
-        else if (toolSpecific.getOperatorPosition() == OperatorPosition.NORTH || toolSpecific.getOperatorPosition() == OperatorPosition.SOUTH) {
-            return new Point(getX() - 65, getY() - TransitionResourceModel.DEFAULT_HEIGHT + 5);
-        } else {
-            return new Point(getX() + 10, getY() - TransitionResourceModel.DEFAULT_HEIGHT - 25);
-        }
-    }
-
-
-    public CreationMap getCreationMap() {
-        CreationMap map = super.getCreationMap();
-        if (hasTrigger()) {
-            map.setTriggerType(getToolSpecific().getTrigger().getTriggertype());
-            map.setTriggerPosition(new Point(getToolSpecific().getTrigger().getPosition()));
-        } else
-            // If no trigger exists, our creation map must reflect this
-            // (there might have been a trigger before which was removed
-            // during editing)
-            map.setTriggerType(-1);
-        if (hasResource()) {
-            map.setResourceOrgUnit(getToolSpecific().getTransResource().getTransOrgUnitName());
-            map.setResourceRole(getToolSpecific().getTransResource().getTransRoleName());
-            map.setResourcePosition(new Point(getToolSpecific().getTransResource().getPosition()));
-        } else {
-            // If no resource org unit exists, our creation map must reflect this
-            // (there might have been a resource unit before which was removed
-            // during editing)
-            map.setResourceOrgUnit(null);
-            map.setResourceRole(null);
-            map.setResourcePosition(null);
-        }
-        // Extract transition service time and transition service
-        // time unit
-        map.setTransitionTime(getToolSpecific().getTime());
-        map.setTransitionTimeUnit(getToolSpecific().getTimeUnit());
-
-        return map;
-    }
-
-    public String getToolTipText() {
-        return "Transition\nID: " + getId() + "\nName: " + getNameValue();
+    public int getTriggerType() {
+        return (getToolSpecific().getTrigger().getTriggertype());
     }
 
     public int getType() {
         return AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE;
+    }
+
+    public boolean hasResource() {
+        return (getToolSpecific().getTransResource() != null);
+    }
+
+    public boolean hasTrigger() {
+        return (getToolSpecific().getTrigger() != null);
+    }
+
+    public boolean isActivated() {
+        return (getNumInputPlaces() == getNumIncomingActivePlaces());
     }
 
     public boolean isIncomingTarget() {
@@ -234,9 +234,5 @@ public class TransitionModel extends AbstractPetriNetElementModel {
 
     void setOutgoingSource(boolean outgoingSource) {
         this.outgoingSource = outgoingSource;
-    }
-
-    public boolean isActivated() {
-        return (getNumInputPlaces() == getNumIncomingActivePlaces());
     }
 }
