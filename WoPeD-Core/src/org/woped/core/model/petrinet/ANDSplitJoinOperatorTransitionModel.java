@@ -8,7 +8,6 @@ public class ANDSplitJoinOperatorTransitionModel extends
 
 	public ANDSplitJoinOperatorTransitionModel(CreationMap map) {
 		super(map, AND_SPLITJOIN_TYPE);
-		// TODO Auto-generated constructor stub
 	}
 
 }

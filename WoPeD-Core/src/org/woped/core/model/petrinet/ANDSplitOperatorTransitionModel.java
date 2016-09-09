@@ -7,6 +7,5 @@ public class ANDSplitOperatorTransitionModel extends OperatorTransitionModel {
 
 	public ANDSplitOperatorTransitionModel(CreationMap map) {
 		super(map);
-		// TODO Auto-generated constructor stub
 	}
 }

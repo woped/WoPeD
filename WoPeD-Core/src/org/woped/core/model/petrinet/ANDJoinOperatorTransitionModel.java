@@ -7,6 +7,5 @@ public class ANDJoinOperatorTransitionModel extends OperatorTransitionModel {
 
 	public ANDJoinOperatorTransitionModel(CreationMap map) {
 		super(map);
-		// TODO Auto-generated constructor stub
 	}
 }

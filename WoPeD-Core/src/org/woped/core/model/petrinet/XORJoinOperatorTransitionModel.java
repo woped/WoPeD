@@ -48,8 +48,8 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
 			TransitionModel simpleTrans = addNewSimpleTrans();
 			
 			// add new arc from new source to cew simpleTrans in
-			// SimpleTransConatainer
-			addReference(getNextFreeArcID(processor),
+            // SimpleTransContainer
+            addReference(getNextFreeArcID(processor),
 					(DefaultPort) sourceModel.getChildAt(0),
 					(DefaultPort) simpleTrans.getChildAt(0));
 
