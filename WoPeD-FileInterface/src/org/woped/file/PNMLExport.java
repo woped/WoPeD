@@ -355,13 +355,17 @@ public class PNMLExport {
         saveModelElementContainer(iNet, elementContainer);
     }
 
-    //! Dump the specified ModelElementContainer into the specified XMLBeans bean responsible for
-    //! the net layout
-    //! This method may be called multiple times:
-    //! It is called once for the main model (the root net)
-    //! and recursively for all sub-process ModelElementContainer instances found
-    //! @param iNet specifies the XMLBeans object representing the PNML section that will store the specified net
-    //! @param modelElementContainer specifies the ModelElementContainer to be stored to the specified XMLBean
+    /**
+     * Dump the specified ModelElementContainer into the specified XMLBeans bean responsible for
+     * the net layout
+     * This method may be called multiple times:
+     * It is called once for the main model (the root net)
+     * and recursively for all sub-process ModelElementContainer instances found
+     *
+     * @param iNet             specifies the XMLBeans object representing the PNML section that will store
+     *                         the specified net
+     * @param elementContainer specifies the ModelElementContainer to be stored in the specified XMLBean
+     */
     private void saveModelElementContainer(NetType iNet, ModelElementContainer elementContainer) {
         Iterator<AbstractPetriNetElementModel> root2Iter = elementContainer.getRootElements().iterator();
         while (root2Iter.hasNext()) {
@@ -426,7 +430,7 @@ public class PNMLExport {
                 // (and also have to be because the operator screen location is not stored separately
                 // but restored from its replacement elements)
 
-                LoggerManager.debug(Constants.FILE_LOGGER, "   ... Setting InnerTtransitions for Operator (ID:" + currentModel.getId() + ")");
+                LoggerManager.debug(Constants.FILE_LOGGER, "   ... Setting InnerTransitions for Operator (ID:" + currentModel.getId() + ")");
                 OperatorTransitionModel operatorModel = (OperatorTransitionModel) currentModel;
                 Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
                 while (simpleTransIter.hasNext()) {
@@ -442,7 +446,7 @@ public class PNMLExport {
                     PlaceType iCenterPlace = initPlace(iNet.addNewPlace(), operatorModel.getCenterPlace());
                     initToolspecific(iCenterPlace.addNewToolspecific(), operatorModel.getCenterPlace(), operatorModel.getId(), operatorModel.getOperatorType());
                 }
-                LoggerManager.debug(Constants.FILE_LOGGER, "   ... InnerTtransitions set.");
+                LoggerManager.debug(Constants.FILE_LOGGER, "   ... InnerTransitions set.");
             }
             for (int i = 0; i < statusBars.length; i++)
                 statusBars[i].nextStep();
@@ -461,12 +465,14 @@ public class PNMLExport {
             ArcModel currentArc = elementContainer.getArcById(arcIter.next());
             AbstractPetriNetElementModel currentTargetModel = elementContainer.getElementById(currentArc.getTargetId());
             AbstractPetriNetElementModel currentSourceModel = elementContainer.getElementById(currentArc.getSourceId());
+
             // Remember either source or target if it is a transition
             // Please note that one special condition of petri nets is that
             // a transition is never directly connected to another transition
             // so either source or target may be a transition, never both
             if (currentTargetModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
                 connectedTransitions.add(currentTargetModel);
+
             else if (currentSourceModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
                 connectedTransitions.add(currentSourceModel);
             else {
@@ -489,9 +495,12 @@ public class PNMLExport {
         // For all transitions connected to at least one arc we will
         // dump the internal arcs now instead of the (previously ignored) visible arcs
         Iterator<AbstractPetriNetElementModel> currentTransition = connectedTransitions.iterator();
+
         while (currentTransition.hasNext()) {
+
             OperatorTransitionModel currentConnectedModel = (OperatorTransitionModel) currentTransition.next();
             Iterator<String> innerArcIter = currentConnectedModel.getSimpleTransContainer().getArcMap().keySet().iterator();
+
             while (innerArcIter.hasNext()) {
                 // Dump all inner arcs of connected transitions
                 ArcModel currentInnerArc = currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
@@ -510,6 +519,7 @@ public class PNMLExport {
                 initArc(iNet.addNewArc(), (currentOuterArc != null) ? currentOuterArc : currentInnerArc, currentInnerArc);
             }
         }
+
         /* ##### Textual description ##### */
         saveTextualDescription(iNet, elementContainer);
     }
