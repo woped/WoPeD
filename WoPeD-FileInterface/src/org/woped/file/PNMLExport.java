@@ -448,10 +448,23 @@ public class PNMLExport {
                 }
                 LoggerManager.debug(Constants.FILE_LOGGER, "   ... InnerTransitions set.");
             }
-            for (int i = 0; i < statusBars.length; i++)
-                statusBars[i].nextStep();
+            for (IStatusBar statusBar : statusBars) statusBar.nextStep();
         }
+
         /* ##### ARCS ##### */
+        exportArcs(iNet, elementContainer);
+
+        /* ##### Textual description ##### */
+        saveTextualDescription(iNet, elementContainer);
+    }
+
+    /**
+     * Exports the arc of the container to the provided output bean.
+     *
+     * @param netBean   the bean to save the arcs to.
+     * @param container the ElementContainer which contains the arcs
+     */
+    void exportArcs(NetType netBean, ModelElementContainer container) {
 
         // When iterating through our arcs, we remember all
         // transitions that are either source or destination of
@@ -459,30 +472,28 @@ public class PNMLExport {
         // Instead of serializing the arc itself, we serialize
         // the "inner arcs" of all such transitions
         // To sort out duplicates, we create a set
-        Set<AbstractPetriNetElementModel> connectedTransitions = new HashSet<AbstractPetriNetElementModel>();
-        Iterator<String> arcIter = elementContainer.getArcMap().keySet().iterator();
-        while (arcIter.hasNext()) {
-            ArcModel currentArc = elementContainer.getArcById(arcIter.next());
-            AbstractPetriNetElementModel currentTargetModel = elementContainer.getElementById(currentArc.getTargetId());
-            AbstractPetriNetElementModel currentSourceModel = elementContainer.getElementById(currentArc.getSourceId());
+        Set<AbstractPetriNetElementModel> connectedTransitions = new HashSet<>();
+
+        for (ArcModel arc : container.getArcMap().values()) {
+            AbstractPetriNetElementModel source = container.getElementById(arc.getSourceId());
+            AbstractPetriNetElementModel target = container.getElementById(arc.getTargetId());
 
             // Remember either source or target if it is a transition
             // Please note that one special condition of petri nets is that
             // a transition is never directly connected to another transition
             // so either source or target may be a transition, never both
-            if (currentTargetModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
-                connectedTransitions.add(currentTargetModel);
-
-            else if (currentSourceModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
-                connectedTransitions.add(currentSourceModel);
-            else {
+            if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+                connectedTransitions.add(target);
+            } else if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+                connectedTransitions.add(source);
+            } else {
                 // The current arc is not connected to any transition
                 // We do not need to take care of any inner arcs
                 // and instead store the currentArc itself
-                initArc(iNet.addNewArc(), currentArc, null);
+                initArc(netBean.addNewArc(), arc, null);
             }
-            for (int i = 0; i < statusBars.length; i++)
-                statusBars[i].nextStep();
+
+            for (IStatusBar statusBar : statusBars) statusBar.nextStep();
         }
         // A transition can be a very complex construct consisting
         // of a lot more than just one primitive petri-net transition (e.g.
@@ -494,34 +505,51 @@ public class PNMLExport {
         // with (ID, Object-Reference) entries.
         // For all transitions connected to at least one arc we will
         // dump the internal arcs now instead of the (previously ignored) visible arcs
-        Iterator<AbstractPetriNetElementModel> currentTransition = connectedTransitions.iterator();
 
-        while (currentTransition.hasNext()) {
-
-            OperatorTransitionModel currentConnectedModel = (OperatorTransitionModel) currentTransition.next();
-            Iterator<String> innerArcIter = currentConnectedModel.getSimpleTransContainer().getArcMap().keySet().iterator();
-
-            while (innerArcIter.hasNext()) {
-                // Dump all inner arcs of connected transitions
-                ArcModel currentInnerArc = currentConnectedModel.getSimpleTransContainer().getArcMap().get(innerArcIter.next());
-                // Find outer arc corresponding to inner arc
-                // (carries graphics information)
-                ArcModel currentOuterArc = null;
-                if (elementContainer.getElementById(currentInnerArc.getSourceId()) != null) {
-                    currentOuterArc = elementContainer.findArc(currentInnerArc.getSourceId(), currentConnectedModel.getId());
-                }
-                if (elementContainer.getElementById(currentInnerArc.getTargetId()) != null) {
-                    currentOuterArc = elementContainer.findArc(currentConnectedModel.getId(), currentInnerArc.getTargetId());
-                }
-
-                // Always try to pass an outer arc with graphics information
-                // (contains way points)
-                initArc(iNet.addNewArc(), (currentOuterArc != null) ? currentOuterArc : currentInnerArc, currentInnerArc);
-            }
+        for (AbstractPetriNetElementModel operator : connectedTransitions) {
+            exportInnerArcs(netBean, container, (OperatorTransitionModel) operator);
         }
+    }
 
-        /* ##### Textual description ##### */
-        saveTextualDescription(iNet, elementContainer);
+    /**
+     * Exports all inner arcs of the given operator transition.
+     * <p>
+     * The method first checks for each inner arc if an corresponding outer arc exists.
+     * If so, it exports the attributes of the outer arc together with the inner arc, such as way points, arc weight,
+     * and so on.
+     * <p>
+     * Not all arcs have an corresponding outer arc. For example, all arcs connected to the center place of
+     * an {@link XORSplitJoinOperatorTransitionModel}.
+     *
+     * @param netBean  the output bean for the petrinet
+     * @param operator the operator
+     */
+    private void exportInnerArcs(NetType netBean, ModelElementContainer container, OperatorTransitionModel operator) {
+
+        for (ArcModel innerArc : operator.getSimpleTransContainer().getArcMap().values()) {
+            ArcModel outerArc = getOuterArc(container, operator.getId(), innerArc);
+            initArc(netBean.addNewArc(), (outerArc != null) ? outerArc : innerArc, innerArc);
+        }
+    }
+
+    /**
+     * Gets the corresponding outer arc to the given inner arc.
+     *
+     * @param container  the container which could contain the outer arc
+     * @param operatorId the id of the operator which contains the inner arc.
+     * @param innerArc   the inner arc to get the outer arc for.
+     * @return the corresponding outer arc or {@code null}, if no such arc exists.
+     */
+    private ArcModel getOuterArc(ModelElementContainer container, String operatorId, ArcModel innerArc) {
+        ArcModel outerArc = null;
+
+        if (container.containsElement(innerArc.getSourceId())) {
+            outerArc = container.findArc(innerArc.getSourceId(), operatorId);
+        }
+        if (container.containsElement(innerArc.getTargetId())) {
+            outerArc = container.findArc(operatorId, innerArc.getTargetId());
+        }
+        return outerArc;
     }
 
     private PlaceType initPlace(PlaceType iPlace, PlaceModel currentModel) {
@@ -730,28 +758,28 @@ public class PNMLExport {
      *                 If !=null, this arc will be dumped to PNML, together with the graphics
      *                 information of the specified outerArc
      */
-    ArcType initArc(ArcType iArc, ArcModel outerArc, ArcModel innerArc) {
+    ArcType initArc(ArcType arcBean, ArcModel outerArc, ArcModel innerArc) {
         ArcModel useArc = innerArc == null ? outerArc : innerArc;
 
         // inscription
-        initNodeName(iArc.addNewInscription(), useArc);
+        initNodeName(arcBean.addNewInscription(), outerArc);
 
         // graphics
-        initArcGraphics(iArc.addNewGraphics(), outerArc);
+        initArcGraphics(arcBean.addNewGraphics(), outerArc);
 
         // attr. id
-        iArc.setId(outerArc.getId());
+        arcBean.setId(outerArc.getId());
 
         // attr. source
-        iArc.setSource(useArc.getSourceId());
+        arcBean.setSource(useArc.getSourceId());
 
         // attr. target
-        iArc.setTarget(useArc.getTargetId());
+        arcBean.setTarget(useArc.getTargetId());
         LoggerManager.debug(Constants.FILE_LOGGER, "   ... Arc (ID:" + useArc.getId() + "( " + useArc.getSourceId() + " -> " + useArc.getTargetId() + ") set");
 
         // tool specific
         if (ConfigurationManager.getConfiguration().isExportToolspecific()) {
-            ArcToolspecificType iArcTool = iArc.addNewToolspecific();
+            ArcToolspecificType iArcTool = arcBean.addNewToolspecific();
             iArcTool.setTool("WoPeD");
             iArcTool.setVersion("1.0");
 
@@ -770,14 +798,14 @@ public class PNMLExport {
 
             // unknown parameters
             for (short i = 0; i < outerArc.getUnknownToolSpecs().size(); i++) {
-                iArc.addNewToolspecific();
+                arcBean.addNewToolspecific();
                 if (outerArc.getUnknownToolSpecs().get(i) instanceof ToolspecificType) {
-                    iArc.setToolspecificArray(iArc.getToolspecificArray().length - 1, (ArcToolspecificType) outerArc.getUnknownToolSpecs().get(i));
+                    arcBean.setToolspecificArray(arcBean.getToolspecificArray().length - 1, (ArcToolspecificType) outerArc.getUnknownToolSpecs().get(i));
                 }
             }
         }
 
-        return iArc;
+        return arcBean;
     }
 
     /**
