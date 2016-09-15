@@ -48,7 +48,7 @@ public class PNMLExportTest {
     }
 
     @Test
-    public void initArc_innerArcNotNull_setInnerArcWeight() throws Exception {
+    public void initArc_innerArcNotNull_setOuterArcWeight() throws Exception {
 
         DemoArcTypeData exportArcData = new DemoArcTypeData();
         ArcType exportArc = exportArcData.arc;
@@ -61,7 +61,7 @@ public class PNMLExportTest {
 
         sut.initArc(exportArc, outerArc, innerArc);
 
-        verify(exportArcData.arcName).setText(innerArcData.weight);
+        verify(exportArcData.arcName).setText(outerArcData.weight);
     }
 
     @Test
