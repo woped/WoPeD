@@ -91,10 +91,15 @@ import org.woped.pnml.TextType.Phrase;
  * Last change 05.12.2004 (S.Landes) <br>
  */
 public class PNMLImport {
+    /**
+     * Contains a collection of warnings which has occurred during import.
+     * <p>
+     * Access is package local for testing purposes.
+     */
+    Vector<String> warnings = new Vector<>();
     private IEditor[] editor = null;
     private PnmlDocument pnmlDoc = null;
     private XmlOptions opt = new XmlOptions();
-    private Vector<String> warnings = new Vector<String>();
     // private IStatusBar[] statusBars = null;
     private AbstractApplicationMediator mediator = null;
 
@@ -164,11 +169,13 @@ public class PNMLImport {
             if (editorName != null) createEditorFromBeans(editorName, showUI);
             else createEditorFromBeans(showUI);
             if (!warnings.isEmpty()) {
-                LoggerManager.warn(Constants.FILE_LOGGER, "Imported a not valid PNML.");
-                StringBuffer warningStrings = new StringBuffer();
+                StringBuilder warningStrings = new StringBuilder();
+                warningStrings.append("Imported a not valid PNML:\n");
+
                 for (Iterator<String> iter = warnings.iterator(); iter.hasNext(); ) {
-                    warningStrings.append(iter.next());
+                    warningStrings.append(iter.next() + "\n");
                 }
+                LoggerManager.warn(Constants.FILE_LOGGER, warningStrings.toString());
             }
             return true;
         } catch (FileNotFoundException e) {
@@ -581,9 +588,10 @@ public class PNMLImport {
                     // element container
                     AbstractPetriNetElementModel element = ModelElementFactory.createModelElement(map);
                     currentContainer.addElement(element);
+
+                    LoggerManager.debug(Constants.FILE_LOGGER, "   ... Place (ID:" + places[i].getId() + ") imported");
                 }
                 doNOTcreate = false;
-                LoggerManager.debug(Constants.FILE_LOGGER, "   ... Place (ID:" + places[i].getId() + ") imported");
             } catch (Exception e) {
                 warnings.add("- SKIP PLACE: Exception while importing important information.\n");
             }
@@ -779,7 +787,7 @@ public class PNMLImport {
         }
     }
 
-    private void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) throws Exception {
+    void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) throws Exception {
         // The model element processor is the only object that knows how to
         // properly connect
         // petri-net model elements, taking into account inner transitions
@@ -789,8 +797,8 @@ public class PNMLImport {
         processor.setElementContainer(currentContainer);
 
         for (int i = 0; i < arcs.length; i++) {
-            AbstractPetriNetElementModel currentSourceModel = null;
-            AbstractPetriNetElementModel currentTargetModel = null;
+            AbstractPetriNetElementModel currentSourceModel;
+            AbstractPetriNetElementModel currentTargetModel;
             ArcModel arc = null;
 
             try {
@@ -798,12 +806,28 @@ public class PNMLImport {
                 currentTargetModel = currentContainer.getElementById(arcs[i].getTarget());
                 String tempID;
 
-                if (ConfigurationManager.getConfiguration().isImportToolspecific()) {
+                if (!ConfigurationManager.getConfiguration().isImportToolspecific()) {
+
+                    // verify that source and target exists
+                    if (currentSourceModel == null || currentTargetModel == null) {
+                        warnings.add("- INVALID ARC (" + arcs[i].getId() + "): Couldn't resolve source and/or target.");
+                        continue;
+                    }
+
+                    // if toolspecific import is disabled then import the arc
+                    // "as is" (and don't replace transitions with toolspecific
+                    // operators)
+                    String sourceId = arcs[i].getSource();
+                    String targetId = arcs[i].getTarget();
+                    arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
+                } else {
                     try {
+
+                        // target is operator
                         if (currentTargetModel == null && currentSourceModel != null) {
                             // if the current arcs target is an operator this
                             // block is executed
-                            if (arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != 0) {
+                            if (arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != -1) {
                                 tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
                             } else {
                                 tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
@@ -814,10 +838,12 @@ public class PNMLImport {
                                 arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                             }
                         }
-                        if (currentSourceModel == null && currentTargetModel != null) {
+
+                        // source is operator
+                        else if (currentSourceModel == null && currentTargetModel != null) {
                             // if the current arcs source is an operator this
                             // block is executed
-                            if (arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != 0) {
+                            if (arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != -1) {
                                 tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
                             } else {
                                 tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
@@ -829,6 +855,8 @@ public class PNMLImport {
                                 arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                             }
                         }
+
+                        // non of them is a operator
                         if (currentTargetModel != null && currentSourceModel != null) {
                             // in the easiest case if the imported arc isn't
                             // connected to an operator this block is executed
@@ -864,16 +892,17 @@ public class PNMLImport {
                             }
                         }
                     } catch (Exception e) {
+
+                        // REVIEW: Why is a invalid arc less important?
                         warnings.add("- ARC LOST INFORMATION (" + arcs[i].getId() + "): Exception while importing lesser important information.");
                     }
-                } else {
-                    // if toolspecific import is disabled then import the arc
-                    // "as is" (and don't replace transitions with toolspecific
-                    // operators)
-                    String sourceId = arcs[i].getSource();
-                    String targetId = arcs[i].getTarget();
-                    arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
                 }
+
+                if (arc == null) {
+                    LoggerManager.debug(Constants.FILE_LOGGER, " ... Arc (ID:" + arcs[i].getId() + "( " + arcs[i].getSource() + " -> " + arcs[i].getTarget() + ") SKIPPED\t");
+                    continue;
+                }
+
                 if (arcs[i].isSetGraphics() && arc != null) {
                     // Create two standard points that need to be always present
                     // When created using the editor, those points are added
@@ -887,12 +916,12 @@ public class PNMLImport {
                     for (int j = 0; j < arcs[i].getGraphics().getPositionArray().length; j++) {
                         arc.addPoint(new Point2D.Double(arcs[i].getGraphics().getPositionArray(j).getX().doubleValue(), arcs[i].getGraphics().getPositionArray(j).getY().doubleValue()), j + 1);
                     }
-
-                    // Import weight
-                    arc.setInscriptionValue(arcs[i].getInscription().getText());
                 }
-                LoggerManager.debug(Constants.FILE_LOGGER, " ... Arc (ID:" + arcs[i].getId() + "( " + arcs[i].getSource() + " -> " + arcs[i].getTarget() + ") created");
-                // increaseCurrent();
+
+                // Import weight
+                arc.setInscriptionValue(arcs[i].getInscription().getText());
+
+                LoggerManager.debug(Constants.FILE_LOGGER, " ... Arc (ID:" + arcs[i].getId() + "( " + arcs[i].getSource() + " -> " + arcs[i].getTarget() + ") created\t");
             } catch (Exception e) {
                 warnings.add("- SKIP ARC: Exception while importing important information.");
             }
