@@ -1,12 +1,16 @@
 package org.woped.file;
 
 import org.junit.After;
+
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IStatusBar;
 import org.woped.core.controller.IViewController;
-import org.woped.core.model.ArcModel;
+import org.woped.core.model.*;
+import org.woped.core.model.petrinet.*;
 import org.woped.pnml.*;
 
 import java.awt.geom.Point2D;
@@ -171,6 +175,75 @@ public class PNMLExportTest {
         verify(exportArcData.arc).setTarget(innerArcData.targetId);
     }
 
+    @Test
+    public void exportArc_containsSimpleTransition_usesTransitionId() throws Exception {
+
+        NetType netBean = NetType.Factory.newInstance();
+        ModelElementContainer container = new ModelElementContainer();
+
+        PlaceModel p1 = new PlaceModel(CreationMap.createMap());
+        p1.setId("p1");
+        container.addElement(p1);
+
+        TransitionModel t1 = new TransitionModel(CreationMap.createMap());
+        t1.setId("t1");
+        container.addElement(t1);
+
+        DemoArcModelData a1Data = new DemoArcModelData("a1", p1.getId(), t1.getId(), 2);
+        container.addReference(a1Data.arc);
+
+        sut.exportArcs(netBean, container);
+
+        ArcType[] exportedArcs = netBean.getArcArray();
+        assertEquals(exportedArcs.length, 1);
+        assertEquals(exportedArcs[0].getId(), a1Data.id);
+        assertEquals(exportedArcs[0].getSource(), p1.getId());
+        assertEquals(exportedArcs[0].getTarget(), t1.getId());
+    }
+
+    @Test
+    public void exportArc_containsOperatorTransitionAsTarget_usesInnerTransitionId() throws Exception {
+
+        NetType netBean = NetType.Factory.newInstance();
+
+        DemoNet net = new DemoNet();
+        ArcModel arc = net.processor.createArc(net.p1.getId(), net.t1.getId());
+        arc.setInscriptionValue(2);
+
+        sut.exportArcs(netBean, net.container);
+        ArcType[] exportedArcs = netBean.getArcArray();
+
+        String expectedSourceId = net.p1.getId();
+        String expectedTargetId = "t1_op_1";
+        assertTrue(containsArc(exportedArcs, expectedSourceId, expectedTargetId));
+    }
+
+    @Test
+    public void exportArc_containsOperatorTransitionAsSource_usesInnerTransitionId() throws Exception {
+
+        NetType netBean = NetType.Factory.newInstance();
+
+        DemoNet net = new DemoNet();
+        ArcModel arc = net.processor.createArc(net.t1.getId(), net.p1.getId());
+        arc.setInscriptionValue(2);
+
+        sut.exportArcs(netBean, net.container);
+        ArcType[] exportedArcs = netBean.getArcArray();
+
+        String expectedSourceId = "t1_op_1";
+        String expectedTargetId = net.p1.getId();
+        assertTrue(containsArc(exportedArcs, expectedSourceId, expectedTargetId));
+    }
+
+    private boolean containsArc(ArcType[] exportedArcs, String sourceId, String targetId) {
+
+        for (ArcType arc : exportedArcs) {
+            if (arc.getSource().equals(sourceId) && arc.getTarget().equals(targetId)) return true;
+        }
+
+        return false;
+    }
+
     private class DemoArcTypeData {
 
         ArcType arc;
@@ -226,6 +299,32 @@ public class PNMLExportTest {
             when(arc.getPoints()).thenReturn(points);
             when(arc.getLabelPosition()).thenReturn(labelPosition);
             when(arc.getUnknownToolSpecs()).thenReturn(new Vector<>(0));
+        }
+    }
+
+    private class DemoNet {
+        PetriNetModelProcessor processor;
+        ModelElementContainer container;
+        PlaceModel p1;
+        XORSplitJoinOperatorTransitionModel t1;
+
+        public DemoNet() {
+
+            processor = new PetriNetModelProcessor();
+            container = processor.getElementContainer();
+
+            CreationMap placeMap = CreationMap.createMap();
+            placeMap.setId("p1");
+            placeMap.setType(AbstractPetriNetElementModel.PLACE_TYPE);
+            p1 = (PlaceModel) ModelElementFactory.createModelElement(placeMap);
+            container.addElement(p1);
+
+            CreationMap map = CreationMap.createMap();
+            map.setId("t1");
+            map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
+            map.setOperatorType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+            t1 = (XORSplitJoinOperatorTransitionModel) ModelElementFactory.createModelElement(map);
+            container.addElement(t1);
         }
     }
 }

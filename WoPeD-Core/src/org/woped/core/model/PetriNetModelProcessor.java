@@ -182,21 +182,19 @@ public class PetriNetModelProcessor implements Serializable {
         return displayedArc;
     }
 
-    private void transformOperators(ArcModel arc) {
-
-    }
-
     public void insertArc(ArcModel arc, boolean transformOperators) {
+
+        // add arc to net
         AbstractPetriNetElementModel sourceModel = getElementContainer().getElementById(arc.getSourceId());
         AbstractPetriNetElementModel targetModel = getElementContainer().getElementById(arc.getTargetId());
         getElementContainer().addReference(arc);
 
-
-        if (!transformOperators) {
-            transformOperators(arc);
-            return;
+        if (transformOperators) {
+            resolveInnerConnections(sourceModel, targetModel);
         }
+    }
 
+    private void resolveInnerConnections(AbstractPetriNetElementModel sourceModel, AbstractPetriNetElementModel targetModel) {
         OperatorTransitionModel operatorModel;
             /* IF THE SOURCE IS AN OPERATOR */
         if (sourceModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
@@ -423,11 +421,11 @@ public class PetriNetModelProcessor implements Serializable {
      * <p>
      * The fingerprint is represented as a String with the following components:
      * <ul>
-     *     <li>number of places</li>
-     *     <li>place details</li>
-     *     <li>a part delimiter (#)</li>
-     *     <li>number of arcs</li>
-     *     <li>arc details</li>
+     * <li>number of places</li>
+     * <li>place details</li>
+     * <li>a part delimiter (#)</li>
+     * <li>number of arcs</li>
+     * <li>arc details</li>
      * </ul>
      * <p>
      * The place details consist of the place id and the amount of tokens for each place.
