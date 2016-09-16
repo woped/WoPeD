@@ -70,6 +70,7 @@ import org.woped.pnml.*;
 import org.woped.pnml.NetType.Page;
 import org.woped.pnml.TextType.Phrase;
 
+// REVIEW: Does this bug still exists? Could not be reproduced.
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
 
@@ -589,7 +590,7 @@ public class PNMLImport {
                     AbstractPetriNetElementModel element = ModelElementFactory.createModelElement(map);
                     currentContainer.addElement(element);
 
-                    LoggerManager.debug(Constants.FILE_LOGGER, "   ... Place (ID:" + places[i].getId() + ") imported");
+                    LoggerManager.debug(Constants.FILE_LOGGER, " ... Place (ID:" + places[i].getId() + ") imported");
                 }
                 doNOTcreate = false;
             } catch (Exception e) {
@@ -703,7 +704,7 @@ public class PNMLImport {
                     // with the same id already exists at this point
                     AbstractPetriNetElementModel element = processor.createElement(map);
                     currentContainer.addElement(element);
-                    LoggerManager.debug(Constants.FILE_LOGGER, " ... Transition (ID:" + map.getId() + ")imported");
+                    LoggerManager.debug(Constants.FILE_LOGGER, " ... Transition (ID:" + map.getId() + ") imported ");
                     // increaseCurrent();
 
                     if (element.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
@@ -787,145 +788,236 @@ public class PNMLImport {
         }
     }
 
-    void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) throws Exception {
-        // The model element processor is the only object that knows how to
-        // properly connect
-        // petri-net model elements, taking into account inner transitions
-        // for operators
-        // So we will be using it here to instantiate the serialized arcs
+    /**
+     * Imports the arc beans into the given ModelElementContainer.
+     * <p>
+     * The method uses its own temporary {@code PetriNetModelProcessor} to create the arcs and operators.
+     *
+     * @param arcs             the arcs to be imported.
+     * @param currentContainer the target container to import the arcs to.
+     */
+    void importArcs(ArcType[] arcs, ModelElementContainer currentContainer) {
+
         PetriNetModelProcessor processor = new PetriNetModelProcessor();
         processor.setElementContainer(currentContainer);
+        boolean importToolSpecificAttributes = ConfigurationManager.getConfiguration().isImportToolspecific();
 
         for (int i = 0; i < arcs.length; i++) {
-            AbstractPetriNetElementModel currentSourceModel;
-            AbstractPetriNetElementModel currentTargetModel;
-            ArcModel arc = null;
+            importArc(processor, arcs[i], importToolSpecificAttributes);
+        }
+    }
 
-            try {
-                currentSourceModel = currentContainer.getElementById(arcs[i].getSource());
-                currentTargetModel = currentContainer.getElementById(arcs[i].getTarget());
-                String tempID;
+    /**
+     * Imports the given arc bean in the {@code ModelElementContainer} form the given {@code PetriNetModelProcessor}.
+     * <p>
+     * If the parameter importToolSpecificAttributes is set to true, the method tries to generate the WoPeD specific
+     * operator transitions. Otherwise the arc is going to be imported with simple transitions only.
+     *
+     * @param processor                    the processor used to create the arcs.
+     * @param arcBean                      the bean containing the attributes of the arc.
+     * @param importToolSpecificAttributes flag to determine if the tool specific attributes should be imported.
+     */
+    private void importArc(PetriNetModelProcessor processor, ArcType arcBean, boolean importToolSpecificAttributes) {
 
-                if (!ConfigurationManager.getConfiguration().isImportToolspecific()) {
+        try {
 
-                    // verify that source and target exists
-                    if (currentSourceModel == null || currentTargetModel == null) {
-                        warnings.add("- INVALID ARC (" + arcs[i].getId() + "): Couldn't resolve source and/or target.");
-                        continue;
-                    }
+            // Create the arc instance
+            ArcModel arc = createArc(arcBean, processor, importToolSpecificAttributes);
 
-                    // if toolspecific import is disabled then import the arc
-                    // "as is" (and don't replace transitions with toolspecific
-                    // operators)
-                    String sourceId = arcs[i].getSource();
-                    String targetId = arcs[i].getTarget();
-                    arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
-                } else {
-                    try {
+            if (arc == null) {
+                return;
+            }
 
-                        // target is operator
-                        if (currentTargetModel == null && currentSourceModel != null) {
-                            // if the current arcs target is an operator this
-                            // block is executed
-                            if (arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != -1) {
-                                tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
-                            } else {
-                                tempID = arcs[i].getTarget().substring(0, arcs[i].getTarget().indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
-                            }
-                            if (isOperator(currentContainer, tempID)) {
-                                String sourceId = arcs[i].getSource();
-                                String targetId = tempID;
-                                arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
-                            }
-                        }
+            // Set additional attributes
+            setArcAttributes(arcBean, arc, importToolSpecificAttributes);
 
-                        // source is operator
-                        else if (currentSourceModel == null && currentTargetModel != null) {
-                            // if the current arcs source is an operator this
-                            // block is executed
-                            if (arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR) != -1) {
-                                tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
-                            } else {
-                                tempID = arcs[i].getSource().substring(0, arcs[i].getSource().indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
-                            }
+            LoggerManager.debug(Constants.FILE_LOGGER, " ... Arc created: (ID:" + arc.getId() + ") " + arc.getSourceId() + " -> " + arc.getTargetId() + " ");
+        } catch (Exception e) {
+            warnings.add("- SKIP ARC: Exception while importing important information. ");
+        }
+    }
 
-                            if (isOperator(currentContainer, tempID)) {
-                                String sourceId = tempID;
-                                String targetId = arcs[i].getTarget();
-                                arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
-                            }
-                        }
+    /**
+     * Creates the imported arc within the petrinet.
+     * <p>
+     * If the parameter importToolSpecificAttributes is set to true, the method tries to generate the WoPeD specific
+     * operator transitions. Otherwise the arc is going to be imported with simple transitions only.
+     *
+     * @param arcBean                      the arc bean containing the attributes of the imported arc.
+     * @param processor                    the processor used to create the arc
+     * @param importToolSpecificAttributes flag to determine, if the tool specific attributes should be imported.
+     * @return the created arc, or {@code null} if the arc could not be created.
+     */
+    private ArcModel createArc(ArcType arcBean, PetriNetModelProcessor processor, boolean importToolSpecificAttributes) {
 
-                        // non of them is a operator
-                        if (currentTargetModel != null && currentSourceModel != null) {
-                            // in the easiest case if the imported arc isn't
-                            // connected to an operator this block is executed
-                            String sourceId = arcs[i].getSource();
-                            String targetId = arcs[i].getTarget();
-                            arc = processor.createArc(arcs[i].getId(), sourceId, targetId, new Point2D[0], true);
-                        }
-                        if (arc != null) {
-                            // Check whether we actually have an arc. If not, it
-                            // does not make sense
-                            // to import any tool-specific information.
-                            // Note that internal arcs with no connection to any
-                            // outer nodes
-                            // will not be imported, they will be implicitly
-                            // re-generated,
-                            // e.g. XOR Split-Join
-                            // Import toolspecific information for the arc
-                            for (int j = 0; j < arcs[i].getToolspecificArray().length; j++) {
-                                if ((arcs[i].getToolspecificArray(j).getTool() != null) && (arcs[i].getToolspecificArray(j).getTool().equals("WoPeD"))) {
-                                    if (arcs[i].getToolspecificArray(j).isSetRoute() && arcs[i].getToolspecificArray(j).getRoute())
-                                        arc.setRoute(true);
-                                    if (arcs[i].getToolspecificArray(j).isSetProbability())
-                                        arc.setProbability(arcs[i].getToolspecificArray(j).getProbability());
-                                    if (arcs[i].getToolspecificArray(j).isSetDisplayProbabilityOn())
-                                        arc.setDisplayOn(arcs[i].getToolspecificArray(j).getDisplayProbabilityOn());
-                                    if (arcs[i].getToolspecificArray(j).isSetDisplayProbabilityPosition()) {
-                                        Point location = new Point(arcs[i].getToolspecificArray(j).getDisplayProbabilityPosition().getX().intValue(), arcs[i].getToolspecificArray(j).getDisplayProbabilityPosition().getY().intValue());
-                                        arc.setLabelPosition(location);
-                                    }
-                                } else {
-                                    arc.addUnknownToolSpecs(arcs[i].getToolspecificArray(j));
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
+        ArcModel createdArc;
+        ModelElementContainer container = processor.getElementContainer();
+        AbstractPetriNetElementModel source;
+        AbstractPetriNetElementModel target;
 
-                        // REVIEW: Why is a invalid arc less important?
-                        warnings.add("- ARC LOST INFORMATION (" + arcs[i].getId() + "): Exception while importing lesser important information.");
-                    }
+        source = container.getElementById(arcBean.getSource());
+        target = container.getElementById(arcBean.getTarget());
+
+        if (!importToolSpecificAttributes) {
+
+            // verify that source and target exists
+            if (source == null || target == null) {
+                warnings.add("- INVALID ARC (" + arcBean.getId() + "): Couldn't resolve source and/or target.");
+                return null;
+            }
+
+            // create arc with an simple transition
+            createdArc = processor.createArc(arcBean.getId(), arcBean.getSource(), arcBean.getTarget(), new Point2D[0], true);
+
+        } else {
+
+            String operatorId;
+
+            // Neither source or target is an operator
+            if (target != null && source != null) {
+
+                // create the arc with an simple transition
+                createdArc = processor.createArc(arcBean.getId(), arcBean.getSource(), arcBean.getTarget(), new Point2D[0], true);
+            }
+
+            // source is an possible operator
+            else if (source == null && target != null) {
+
+                // extract operator id
+                operatorId = getParentId(arcBean.getSource());
+
+                // verify operator
+                if (!isValidOperator(container, operatorId)) {
+                    warnings.add("- INVALID ARC (" + arcBean.getId() + "): Source is not a valid operator.");
+                    return null;
                 }
 
-                if (arc == null) {
-                    LoggerManager.debug(Constants.FILE_LOGGER, " ... Arc (ID:" + arcs[i].getId() + "( " + arcs[i].getSource() + " -> " + arcs[i].getTarget() + ") SKIPPED\t");
-                    continue;
+                // create arc
+                createdArc = processor.createArc(arcBean.getId(), operatorId, arcBean.getTarget(), new Point2D[0], true);
+            }
+
+            // target is an possible operator
+            else if (target == null && source != null) {
+
+                // extract operator Id
+                operatorId = getParentId(arcBean.getTarget());
+
+                // verify operator
+                if (!isValidOperator(container, operatorId)) {
+                    warnings.add("- INVALID ARC (" + arcBean.getId() + "): Target is not a valid operator" + ".");
+                    return null;
                 }
 
-                if (arcs[i].isSetGraphics() && arc != null) {
-                    // Create two standard points that need to be always present
-                    // When created using the editor, those points are added
-                    // automatically
-                    // by the view
-                    // but if we want to restore arc points from the PNML file
-                    // we have to add those points manually
-                    arc.addPoint(arc.getAttributes().createPoint(10, 10));
-                    arc.addPoint(arc.getAttributes().createPoint(20, 20));
+                // create arc
+                createdArc = processor.createArc(arcBean.getId(), arcBean.getSource(), operatorId, new Point2D[0], true);
+            }
 
-                    for (int j = 0; j < arcs[i].getGraphics().getPositionArray().length; j++) {
-                        arc.addPoint(new Point2D.Double(arcs[i].getGraphics().getPositionArray(j).getX().doubleValue(), arcs[i].getGraphics().getPositionArray(j).getY().doubleValue()), j + 1);
-                    }
+            // Arc is maybe an auto generated inner arc of an operator and could be ignored
+            else {
+                String sourceId = getParentId(arcBean.getSource());
+                String targetId = getParentId(arcBean.getTarget());
+
+                if (!isValidOperator(container, sourceId) || !isValidOperator(container, targetId)) {
+                    warnings.add("- INVALID ARC (" + arcBean.getId() + "): Source and/or target could not be resolved.");
+                    return null;
                 }
 
-                // Import weight
-                arc.setInscriptionValue(arcs[i].getInscription().getText());
-
-                LoggerManager.debug(Constants.FILE_LOGGER, " ... Arc (ID:" + arcs[i].getId() + "( " + arcs[i].getSource() + " -> " + arcs[i].getTarget() + ") created\t");
-            } catch (Exception e) {
-                warnings.add("- SKIP ARC: Exception while importing important information.");
+                LoggerManager.debug(Constants.FILE_LOGGER, " ... Arc skipped: (ID:" + arcBean.getId() + ") " + arcBean.getSource() + " -> " + arcBean.getTarget() + " ");
+                return null;
             }
         }
+
+        return createdArc;
+    }
+
+    /**
+     * Sets the additional attributes of the arc, which aren't set during arc creation.
+     * <p>
+     * Such attributes may be the arc weight, the graphical representation or other tool specific values.
+     *
+     * @param arcBean                      the arc bean containing the attributes. Not null.
+     * @param arc                          the arc on which the attributes should be set. Not null.
+     * @param importToolSpecificAttributes flag to determine, if the tool specific attributes should be set.
+     */
+    private void setArcAttributes(ArcType arcBean, ArcModel arc, boolean importToolSpecificAttributes) {
+        if (arcBean.isSetGraphics() && arc != null) {
+            // Create two standard points that need to be always present
+            // When created using the editor, those points are added
+            // automatically
+            // by the view
+            // but if we want to restore arc points from the PNML file
+            // we have to add those points manually
+            arc.addPoint(arc.getAttributes().createPoint(10, 10));
+            arc.addPoint(arc.getAttributes().createPoint(20, 20));
+
+            for (int j = 0; j < arcBean.getGraphics().getPositionArray().length; j++) {
+                arc.addPoint(new Point2D.Double(arcBean.getGraphics().getPositionArray(j).getX().doubleValue(), arcBean.getGraphics().getPositionArray(j).getY().doubleValue()), j + 1);
+            }
+        }
+
+        // Import weight
+        arc.setInscriptionValue(arcBean.getInscription().getText());
+
+        if (arc != null && importToolSpecificAttributes) {
+            // Check whether we actually have an arc. If not, it
+            // does not make sense
+            // to import any tool-specific information.
+            // Note that internal arcs with no connection to any
+            // outer nodes
+            // will not be imported, they will be implicitly
+            // re-generated,
+            // e.g. XOR Split-Join
+            // Import toolspecific information for the arc
+            for (int j = 0; j < arcBean.getToolspecificArray().length; j++) {
+                if ((arcBean.getToolspecificArray(j).getTool() != null) && (arcBean.getToolspecificArray(j).getTool().equals("WoPeD"))) {
+                    if (arcBean.getToolspecificArray(j).isSetRoute() && arcBean.getToolspecificArray(j).getRoute())
+                        arc.setRoute(true);
+                    if (arcBean.getToolspecificArray(j).isSetProbability())
+                        arc.setProbability(arcBean.getToolspecificArray(j).getProbability());
+                    if (arcBean.getToolspecificArray(j).isSetDisplayProbabilityOn())
+                        arc.setDisplayOn(arcBean.getToolspecificArray(j).getDisplayProbabilityOn());
+                    if (arcBean.getToolspecificArray(j).isSetDisplayProbabilityPosition()) {
+                        Point location = new Point(arcBean.getToolspecificArray(j).getDisplayProbabilityPosition().getX().intValue(), arcBean.getToolspecificArray(j).getDisplayProbabilityPosition().getY().intValue());
+                        arc.setLabelPosition(location);
+                    }
+                } else {
+                    arc.addUnknownToolSpecs(arcBean.getToolspecificArray(j));
+                }
+            }
+        }
+    }
+
+    /**
+     * Extracts the id of the parent from the given child id.
+     * <p>
+     * The method checks if a known operator separator is contained in the child id, and if so, it extracts the id of
+     * the parent from it.
+     * <p>
+     * The access is package local for testing purposes. The method should not be uses outside this class.
+     *
+     * @param childId the id of the child. Not null.
+     * @return the id of the parent or null, if the id couldn't be extracted.
+     */
+    String getParentId(String childId) {
+
+        String parentId = null;
+
+        // Check for place separator
+        if (childId.contains(OperatorTransitionModel.OPERATOR_SEPERATOR_PLACE)) {
+            parentId = childId.replace(OperatorTransitionModel.OPERATOR_SEPERATOR_PLACE, "");
+        }
+
+        // Check for transition separator
+        if (childId.contains(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION)) {
+            parentId = childId.substring(0, childId.indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION));
+        }
+
+        // Check for old separator
+        if (childId.contains(OperatorTransitionModel.INNERID_SEPERATOR_OLD)) {
+            parentId = childId.substring(0, childId.indexOf(OperatorTransitionModel.INNERID_SEPERATOR_OLD));
+        }
+
+        return parentId;
     }
 
     /**
@@ -1031,7 +1123,16 @@ public class PNMLImport {
         return savedFlag;
     }
 
-    private boolean isOperator(ModelElementContainer elementContainer, String elementId) throws Exception {
+    /**
+     * Checks if the element with the given id is an valid operator.
+     * <p>
+     * The method checks, if the id exists and if the element is an instance of {@link OperatorTransitionModel}.
+     *
+     * @param elementContainer the container which should contain the element.
+     * @param elementId        the id of the element to check.
+     * @return true if the element is an valid operator, otherwise false
+     */
+    private boolean isValidOperator(ModelElementContainer elementContainer, String elementId) {
         return elementId != null && elementContainer.getElementById(elementId) != null && elementContainer.getElementById(elementId).getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE;
     }
 
