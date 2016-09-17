@@ -69,6 +69,40 @@ public class MetricsCalculator {
 		this.variableValueBuffer = new HashMap<String, Double>();
 		highlight = new MetricsHighlighter();
 	}
+
+	/**
+	 * This Method should be used only to validate a formula;
+	 * The formula is valid, if you do not get an exception
+	 *
+	 * @param formula a Metrics-Formula
+	 * @throws CalculateFormulaException
+	 */
+	public static void checkFormula(String formula) throws CalculateFormulaException {
+		MetricsInterpreter.interpretString(formula, null, null, false, true);
+	}
+
+	/**
+	 * @param variableName
+	 * @return True if the Variable exists
+	 */
+	public static boolean isVariableValid(String variableName) {
+		IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
+
+		if (metricsConfig.hasAlgorithmFormula(variableName)) {
+			return true;
+		}
+
+		if (metricsConfig.hasAlgorithmMethod(variableName)) {
+			return true;
+		}
+
+		if (metricsConfig.hasVariableFormula(variableName)) {
+			return true;
+		}
+
+		return metricsConfig.hasVariableMethod(variableName);
+
+	}
 	
 	public MetricsHighlighter getHighlighter(){
 		return highlight;
@@ -78,12 +112,12 @@ public class MetricsCalculator {
 	 * ATTENTION:
 	 * The following block contains dynamically called calculation methods.
 	 * They all seem unused because their method names are invoked based on XML input - at runtime they will get invoked!
-	 * 
+	 *
 	 * If highlight.addHighlight is called, the method contains highlighting information, otherwise it does not.
 	 * Logic descriptions are given in the called methods and classes where required (See Javadocs of each)
-	 * 
+	 *
 	 * ----- BEGIN OF GENERICALLY CALLED METHODS -----
-	 * 
+	 *
 	 */
 	@SuppressWarnings("unused")
 	private double calculateN(){
@@ -97,30 +131,30 @@ public class MetricsCalculator {
 		for(String key:transitions.keySet())
 			nodeids.add(transitions.get(key).getId());
 		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
-		
+
 		return transitions.size();
 	}
-	
-	private double calculateP(){ 
+
+	private double calculateP(){
 		Map<String, AbstractPetriNetElementModel> places =  mec.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE);
 		// Highlighting
 		Set<String> nodeids = new HashSet<String>();
 		for(String key:places.keySet())
 			nodeids.add(places.get(key).getId());
 		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
-		
+
 		return places.size();
 	}
 	
 	public double calculateA(){
 		Map<String, ArcModel> arcs = mec.getArcMap();
-		
+
 		// Highlighting
 		Set<String> arcids = new HashSet<String>();
 		for(String key:arcs.keySet())
 			arcids.add(arcs.get(key).getId());
 		highlight.addHighlight(currentDynamicCall, null, arcids, doNotdisplay);
-		
+
 		return arcs.size();
 	}
 	
@@ -184,8 +218,8 @@ public class MetricsCalculator {
 	@SuppressWarnings("unused")
 	private double calculateCycN(){
 		if(lpd == null) lpd = new LinearPathDescriptor(mec.getIdMap(), mec.getArcMap());
-		double cyclic = lpd.getCyclicNodes();
-		
+		double cyclic = lpd.getNumberOfCyclicNodes();
+
 		// Highlighting
 		Set<String> nodeids = lpd.getHighlightedNodes();
 		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
@@ -198,7 +232,7 @@ public class MetricsCalculator {
 		double lpmax = lpd.longestPath();
 		// Highlighting
 		Set<String> nodeids = lpd.getHighlightedNodes();
-		Set<String> arcids = lpd.calculateHighlightedArcs();
+		Set<String> arcids = lpd.getHighlightedArcIds();
 		highlight.addHighlight(currentDynamicCall, nodeids, arcids, doNotdisplay);
 		return lpmax;
 	}
@@ -208,17 +242,17 @@ public class MetricsCalculator {
 		Map<String, AbstractPetriNetElementModel> operators = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
 		Map<String, Map<String,Object>> origMap = mec.getIdMap();
 		double ts = 0;
-		
+
 		Set<String> nodeids = new HashSet<String>();
-		
+
 		for(String key:operators.keySet())
 			if(origMap.get(key).size() > 2) {
 				ts += origMap.get(key).size()-2;
 				nodeids.add(key);
 			}
-		
+
 		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
-		
+
 		return ts;
 	}
 	
@@ -226,7 +260,7 @@ public class MetricsCalculator {
 	private double calculateCut() throws NaNException{
 		if(lpd == null) lpd = new LinearPathDescriptor(mec.getIdMap(), mec.getArcMap());
 		double cutVert = lpd.cutVertices();
-		
+
 		//Highlighting
 		highlight.addHighlight(currentDynamicCall, lpd.getHighlightedNodes(), null, doNotdisplay);
 		return cutVert;
@@ -250,18 +284,18 @@ public class MetricsCalculator {
 		ReachabilityGraphModelUsingMarkingNet reach = new ReachabilityGraphModelUsingMarkingNet(editor);
 		IMarkingNet net = reach.getMarkingNet();
 		Set<Marking> markings = net.getMarkings();
-		for(Marking mark:markings){
-			Map<String, Integer> markingMap = mark.getMarking(); 
+		for (Marking mark : markings) {
+			Map<String, Integer> markingMap = mark.getMarking();
 			for(boolean infinite: mark.getPlaceUnlimited())
 				if(infinite) return Double.POSITIVE_INFINITY;
 			for(String id:markingMap.keySet())
 				max = Math.max(max,markingMap.get(id));}
-			
+
 		return max;
 	}
 	
 	/**
-	 * 
+	 *
 	 * @param type
 	 * 	0 = all, 1 = transitions, 2 = places
 	 * @return
@@ -271,7 +305,7 @@ public class MetricsCalculator {
 		HashMap<String, Integer> outboundLines = new HashMap<String, Integer>();
 		Map<String, Map<String,Object>> origMap = mec.getIdMap();
 		double seqn = 0;
-		
+
 		for(String key:origMap.keySet()){
 			// Number of children
 			outboundLines.put(key, origMap.get(key).size() - 1);
@@ -280,19 +314,19 @@ public class MetricsCalculator {
 				ArcModel arc = mec.getArcMap().get(subkey);
 				if(arc == null) continue;
 				String childKey = arc.getTargetId();
-				
+
 				if(inboundLines.containsKey(childKey))
 					inboundLines.put(childKey, inboundLines.get(childKey) + 1);
 				else
 					inboundLines.put(childKey, 1);
 			}
 		}
-		
+
 		Set<String> map;
 		if(type == 1) map = getTransitions().keySet();
 		else if (type == 2) map = mec.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE).keySet();
 		else map = origMap.keySet();
-		
+
 		Set<String> nodeids = new HashSet<String>(); // Highlighting
 		for(String key:map)
 			if(outboundLines.get(key) < 2 && (!inboundLines.containsKey(key) || inboundLines.get(key) < 2) ){
@@ -300,10 +334,14 @@ public class MetricsCalculator {
 				// Highlighting
 				nodeids.add(key);
 			}
-				
+
 		highlight.addHighlight(currentDynamicCall, nodeids, null, doNotdisplay);
 		return seqn;
 	}
+
+	/**
+	 * ----- END OF GENERICALLY CALLED METHODS -----
+	 */
 	
 	@SuppressWarnings("unused")
 	private double calculateCM(){
@@ -316,11 +354,6 @@ public class MetricsCalculator {
 	private double calculateStrongReaches(IMarkingNet net){
 		return AlgorithmFactory.createSccTest(net).getStronglyConnectedComponents().size();
 	}
-
-	/**
-	 * ----- END OF GENERICALLY CALLED METHODS -----
-	 */
-	
 	
 	/**
 	 * Returns a map of all nodes that can be considered transitions
@@ -337,25 +370,25 @@ public class MetricsCalculator {
 		partialTransitions = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
 		for(String key:partialTransitions.keySet())
 			transitions.put(key,partialTransitions.get(key));
-		
+
 		return transitions;
 	}
 	
 	/**
 	 * Calculates a formula (recursion where necessary)
-	 * 
+	 *
 	 * @param formula	Formula to be calculated
 	 * @return			Result of the calculation
 	 * @throws CalculateFormulaException	Exception thrown (e.g. invalid formula)
 	 */
 	public double calculate(String formula)throws CalculateFormulaException{
 		return calculate(formula, false);
-	}	
-	
+	}
+
 	/**
-	 * 
+	 *
 	 * Calculates a formula (recursion where necessary)
-	 * 
+	 *
 	 * @param formula		Formula to be calculated
 	 * @param syntaxCheck	Whether or not the syntax should be checked
 	 * @return				Result of the calculation
@@ -364,11 +397,11 @@ public class MetricsCalculator {
 	public double calculate(String formula, boolean syntaxCheck) throws CalculateFormulaException{
 		return calculate(formula, new HashSet<String>(), false, syntaxCheck);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Calculates a formula (recursion where necessary)
-	 * 
+	 *
 	 * @param formula		Formula to be calculated
 	 * @param stack			Stack of previously called parent elements in the formula (e.g. if this is C in A = B * C, the stack will contain A)
 	 * @param doNotDisplay	Whether or not the highlighting should be displayed
@@ -378,11 +411,11 @@ public class MetricsCalculator {
 	public double calculate(String formula, HashSet<String> stack, boolean doNotDisplay) throws CalculateFormulaException{
 		return MetricsInterpreter.interpretString(formula, this, stack,doNotDisplay, false);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Calculates a formula (recursion where necessary)
-	 * 
+	 *
 	 * @param formula		Formula to be calculated
 	 * @param stack			Stack of previously called parent elements in the formula (e.g. if this is C in A = B * C, the stack will contain A)
 	 * @param doNotDisplay	Whether or not the highlighting should be displayed
@@ -409,18 +442,9 @@ public class MetricsCalculator {
 			for(String highlight:removeHighlights)
 				MetricsInterpreter.interpretString(highlight, this, fakeStack,false, false);
 			highlight.setInverted(false);
-		}		
+		}
 		currentDynamicCall = new HashSet<String>();
 		return MetricsInterpreter.interpretString(formula, this, stack,doNotDisplay, syntaxCheck);
-	}
-	/**
-	 * This Method should be used only to validate a formula; 
-	 * The formula is valid, if you do not get an exception
-	 * @param formula a Metrics-Formula
-	 * @throws CalculateFormulaException
-	 */
-	public static void checkFormula(String formula)throws CalculateFormulaException{
-		MetricsInterpreter.interpretString(formula, null, null, false, true);
 	}
 	
 	/**
@@ -431,32 +455,32 @@ public class MetricsCalculator {
 	 * @throws CalculateFormulaException
 	 * @author Tobias Lorentz
 	 * @author Holger Kraus
-	 * @throws RecognitionException 
+	 * @throws RecognitionException
 	 */
 	public double calculateVariable(String token, HashSet<String> stack, boolean doNotDisplay) throws CalculateFormulaException, RecognitionException {
-		
+
 		double result;
 		if(algorithmHighlighting)currentDynamicCall.add(token);
 		if(this.isVariableAlreadyCalculated(token, stack)){
 			//This Formula is already called--> unless recursion --> Error
 			throw new InfiniteRecursiveFormulaCallException(token);
 		}
-		
+
 		try{
 		//Put the value of the local doNotDisplay Variable into the global one for accesing the value by the dynamic called functions
 		this.doNotdisplay = doNotDisplay;
-			
+
 		//Clone HashSet
  		HashSet<String> newStack = (HashSet<String>) stack.clone();
-		
+
 		//Add the actual Token to the Stack
 		newStack.add(token);
-		
+
 		if (variableValueBuffer.containsKey(token)){
 			highlight.mergeHighlights(currentDynamicCall, token, doNotdisplay);
 			currentDynamicCall.remove(token);
 			return variableValueBuffer.get(token);
-		}		
+		}
 		else if (metricsConfig.hasAlgorithmFormula(token)){
 			try{
 				result =  calculate(metricsConfig.getAlgorithmFormula(token), newStack, doNotDisplay);
@@ -471,10 +495,10 @@ public class MetricsCalculator {
 			variableValueBuffer.put(token, result);
 			currentDynamicCall.remove(token);
 			return result;
-		}			
+		}
 		else if (metricsConfig.hasAlgorithmMethod(token)){
 			currentDynamicCall.add(token);
-			result = Double.parseDouble(getClass().getDeclaredMethod(metricsConfig.getAlgorithmMethod(token), new Class[0]).invoke(this,new Object[0]).toString()); 
+			result = Double.parseDouble(getClass().getDeclaredMethod(metricsConfig.getAlgorithmMethod(token), new Class[0]).invoke(this, new Object[0]).toString());
 			variableValueBuffer.put(token, result);
 			currentDynamicCall.remove(token);
 			return result;
@@ -509,15 +533,15 @@ public class MetricsCalculator {
 			System.err.println("Invalid method name: "+token+" ("+metricsConfig.getVariableMethod(token)+")");
 			throw new CalculateFormulaException();
 		}
-	    
+
 		//Variable is not found --> Throw exception
 		throw new FormulaVariableNotFoundException(token);
-	     
+
 	}
 	
 	/**
 	 * Checks whether a variable has already been calculated
-	 * 
+	 *
 	 * @param token	ID of the variable
 	 * @param stack	Stack of previous calls
 	 * @return		Boolean containing whether or not the variable had already been calculated
@@ -529,9 +553,9 @@ public class MetricsCalculator {
 				return true;
 			}
 		}
-		
+
 		return false;
-		
+
 	}
 	
 	/**
@@ -540,32 +564,6 @@ public class MetricsCalculator {
 	 */
 	public void clearVariableValueBuffer(){
 		this.variableValueBuffer.clear();
-	}
-	
-	/**
-	 * @param variableName
-	 * @return True if the Variable exists
-	 */
-	public static boolean isVariableValid(String variableName){
-		IMetricsConfiguration metricsConfig = ConfigurationManager.getMetricsConfiguration();
-		
-		if (metricsConfig.hasAlgorithmFormula(variableName)){
-			return true;
-		}
-		
-		if (metricsConfig.hasAlgorithmMethod(variableName)){
-			return true;
-		}
-		
-		if(metricsConfig.hasVariableFormula(variableName)){
-			return true;
-		}
-		
-		if(metricsConfig.hasVariableMethod(variableName)){
-			return true;
-		}
-		
-		return false;
 	}
 
 }
