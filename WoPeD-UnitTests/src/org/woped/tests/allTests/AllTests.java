@@ -3,11 +3,13 @@ package org.woped.tests.allTests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.woped.tests.soundness.SoundnessTests;
+import org.woped.core.AllTestsCore;
+import org.woped.file.AllTestsFile;
+import org.woped.metrics.AllTestsMetrics;
 
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({SoundnessTests.class, org.woped.core.AllTestsCore.class, org.woped.file.AllTestsFile.class
-})
+@Suite.SuiteClasses({SoundnessTests.class, AllTestsCore.class, AllTestsFile.class, AllTestsMetrics.class})
 
 public class AllTests {
 }
