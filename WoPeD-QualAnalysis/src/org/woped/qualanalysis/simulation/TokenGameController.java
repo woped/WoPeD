@@ -58,20 +58,20 @@ import org.woped.qualanalysis.soundness.marking.IMarking;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
- * <br>
- * 
+ *         <br>
+ *         <p>
  *         The <code>TokenGameController</code> provides the visual and/or model sided TokenGame of a Petrinet. <br>
- * <br>
+ *         <br>
  *         1) Visual (and Model) sided TokenGame: <br>
  *         You have to set a <code>PetriNet</code> and a <code>WoPeDJGraph</code>. <br>
  *         If it's done via the Contructor you have nothing to worry about. <br>
  *         If you only set the petrinet via Constructor and the Graph with the setter method, you'll have to enable the visualTokenGame explicit with the method
  *         <code>enableVisualTokenGame()</code>.<br>
- * <br>
+ *         <br>
  *         2) Only model sided TokenGame: <br>
  *         If you have set the the <code>PetriNet</code> and the <code>WoPeDJGraph</code> with the Constructor you have to call
  *         <code>disableVisualTokenGame()</code>.<br>
- * 
+ *         <p>
  *         Created on 21.09.2004
  */
 public class TokenGameController implements ITokenGameController {
@@ -87,15 +87,15 @@ public class TokenGameController implements ITokenGameController {
     private IEditor thisEditor = null;
     private ReferenceProvider ParentControl = null;
     private TokenGameSession RemoteControl = null;
-    
+
     private PropertyChangeSupport m_propertyChangeSupport = null;
     private TokenGameStats oldState = null;
 
     /**
      * Constructor for the model and visual sided TokenGame.
-     * 
-     * @param petrinet
-     * @param graph
+     *
+     * @param thisEditor
+     * @param propertyChangeSupport
      */
     public TokenGameController(IEditor thisEditor, PropertyChangeSupport propertyChangeSupport) {
         this.petrinet = thisEditor.getModelProcessor();
@@ -106,16 +106,26 @@ public class TokenGameController implements ITokenGameController {
 
     }
 
-    /** 
+    /**
      * Get the token game bar controller, which allows complex navigation within the simulation case
      * (e.g. moving forward and backward, auto play)
-     * 
+     *
      * @return TokenGameBarController instance or null if the token game is not active
      */
     public TokenGameSession getRemoteControl() {
-		return RemoteControl;
-	}
+        return RemoteControl;
+    }
 
+    /**
+     * Sets the current token game session to the given instance.
+     * <p>
+     * Just for testing purposes.
+     *
+     * @param session the current session to set.
+     */
+    void setRemoteControl(TokenGameSession session) {
+        this.RemoteControl = session;
+    }
 
     /* ###################### Controller Methods ###################### */
 
@@ -134,12 +144,9 @@ public class TokenGameController implements ITokenGameController {
             RemoteControl.changeTokenGameReference(this, false);
 
             // Storing Transition Reference (simple and operator)
-            allTransitions = getPetriNet().getElementContainer().getElementsByType(
-                    AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
-            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(
-                    AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
-            allTransitions
-                    .putAll(getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
+            allTransitions = getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
+            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
             // Find and show active Transitions/Arcs
             checkNet();
         } else {
@@ -149,26 +156,23 @@ public class TokenGameController implements ITokenGameController {
             if (RemoteControl != null) {
                 RemoteControl.addControlElements();
             } else {
-            	// A session spans across all the sub processes of a workflow.
-            	// While associated with one net (and thus one token game controller) at a time,
-            	// it can be associated to multiple token game controllers throughout its lifetime.
-            	// Note that we preserve history inside a token game session
+                // A session spans across all the sub processes of a workflow.
+                // While associated with one net (and thus one token game controller) at a time,
+                // it can be associated to multiple token game controllers throughout its lifetime.
+                // Note that we preserve history inside a token game session
                 RemoteControl = new TokenGameSession(this, petrinet);
             }
 
             // Storing Transition Reference (simple and operator)
-            allTransitions = getPetriNet().getElementContainer().getElementsByType(
-                    AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
-            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(
-                    AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
-            allTransitions
-                    .putAll(getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
+            allTransitions = getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
+            allTransitions.putAll(getPetriNet().getElementContainer().getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
 
             // Find and show active Transitions/Arcs
             checkNet();
-            
+
         }
-        
+
     }
 
     /**
@@ -216,8 +220,7 @@ public class TokenGameController implements ITokenGameController {
         Iterator<String> subpIter = container.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE).keySet().iterator();
         while (subpIter.hasNext()) {
             // Now we call ourselves recursively for all sub-processes
-            ModelElementContainer innerContainer = ((SubProcessModel) container.getElementById(subpIter.next()))
-                    .getSimpleTransContainer();
+            ModelElementContainer innerContainer = ((SubProcessModel) container.getElementById(subpIter.next())).getSimpleTransContainer();
             resetVirtualTokensInElementContainer(innerContainer);
         }
     }
@@ -267,13 +270,13 @@ public class TokenGameController implements ITokenGameController {
     }
 
     /*
-	 *  
+     *
 	 */
     public void checkNet() {
-    	TokenGameStats newState = new TokenGameStats();
-    	
+        TokenGameStats newState = new TokenGameStats();
+
         RemoteControl.cleanupTransition();
-    	
+
         long begin = System.currentTimeMillis();
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "TokenGame: CHECK NET");
         Iterator<String> transIter = allTransitions.keySet().iterator();
@@ -287,17 +290,14 @@ public class TokenGameController implements ITokenGameController {
         newState.inSubprocess = this.thisEditor.isSubprocessEditor();
         newState.autoPlayMode = this.RemoteControl.getAutoPlayBack();
         newState.autoPlayPlaying = this.RemoteControl.getAutoPlayBackPlaying();
-        
-		m_propertyChangeSupport.firePropertyChange("TokenGameState", 
-				this.oldState, newState);        
-        
+
+        m_propertyChangeSupport.firePropertyChange("TokenGameState", this.oldState, newState);
+
         getGraph().updateUI();
         RemoteControl.fillChoiceBox(); // Fills the Choicebox with the active Transitions that have been encountered through checkTransition()
         // Check if there is a transition to choose in SlimChoiceBox
-        LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "           ... DONE ("
-                + (System.currentTimeMillis() - begin) + " ms)");
-        setMarkingInRG((BuilderFactory.createCurrentMarking(BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(
-                thisEditor).getLowLevelPetriNet(), true)));
+        LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
+        setMarkingInRG((BuilderFactory.createCurrentMarking(BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(thisEditor).getLowLevelPetriNet(), true)));
         // FIXME highlighting does not work properly for markings with unbounded places
     }
 
@@ -326,197 +326,182 @@ public class TokenGameController implements ITokenGameController {
         Map<String, Object> outgoingArcs = getPetriNet().getElementContainer().getOutgoingArcs(transition.getId());
         // temporary variables
 
-        if (transition.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE
-                || transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+        if (transition.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE || transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
 
             if (transition.isActivated()) {
                 // This will add all currently active postSet Transitions to the TokenGameBarVC-Autochoice-List
 
                 RemoteControl.addFollowingItem(transition);
-                tokenGameStats.numActiveTransitions++;   
+                tokenGameStats.numActiveTransitions++;
 
                 if (transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
-                    tokenGameStats.numActiveSubprocesses++;   
+                    tokenGameStats.numActiveSubprocesses++;
                 }
             }
-        } else
-            if (transition.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
-                OperatorTransitionModel operator = (OperatorTransitionModel) transition;
-                if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE
-                        || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE
-                        || operator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE) {
-                    if (transition.isActivated()) {
-                        // This will add the AND-X-Transition to the OccurenceList
-                        RemoteControl.addFollowingItem(transition);
-                        tokenGameStats.numActiveTransitions++;                                                        
-                    }
+        } else if (transition.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+            OperatorTransitionModel operator = (OperatorTransitionModel) transition;
+            if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE) {
+                if (transition.isActivated()) {
+                    // This will add the AND-X-Transition to the OccurenceList
+                    RemoteControl.addFollowingItem(transition);
+                    tokenGameStats.numActiveTransitions++;
+                }
 
-                } else
-                    if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
-                            || (operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
-                        if (transition.isActivated()) {
-                            String XorName, ID;
-                            Iterator<String> outArcs = outgoingArcs.keySet().iterator();
-                            TransitionModel virtualTransition; // needed to build virtual Transitions.
-                            AbstractPetriNetElementModel helpPlace;
+            } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE) || (operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
+                if (transition.isActivated()) {
+                    String XorName, ID;
+                    Iterator<String> outArcs = outgoingArcs.keySet().iterator();
+                    TransitionModel virtualTransition; // needed to build virtual Transitions.
+                    AbstractPetriNetElementModel helpPlace;
 
                             /*
                              * In this while-loop, Virtual Transitions will be build which represent the Arcs in the OccurenceList. If a virtual Transition is
                              * chosen by the user, it will be identified by its ID as Arc and the depending Arc will be taken instead to be occured
                              */
-                            while (outArcs.hasNext()) {
-                                ID = outArcs.next(); // get the Arc's ID
-                                // Use a new CreationMap with the arcs id to create the virtual transition
-                                CreationMap map = CreationMap.createMap();
-                                map.setId(ID);
-                                virtualTransition = new TransitionModel(map);
-                                helpPlace = getPetriNet().getElementContainer().getElementById(
-                                        getPetriNet().getElementContainer().getArcById(ID).getTargetId());
-                                XorName = transition.getNameValue() + " -> (" + helpPlace.getNameValue() + ")";
-                                virtualTransition.setNameValue(XorName);
-                                RemoteControl.addFollowingItem(virtualTransition);
-                                tokenGameStats.numActiveTransitions++;                                                                
-                                virtualTransition = null;
-                                XorName = "";
-                            }
+                    while (outArcs.hasNext()) {
+                        ID = outArcs.next(); // get the Arc's ID
+                        // Use a new CreationMap with the arcs id to create the virtual transition
+                        CreationMap map = CreationMap.createMap();
+                        map.setId(ID);
+                        virtualTransition = new TransitionModel(map);
+                        helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getTargetId());
+                        XorName = transition.getNameValue() + " -> (" + helpPlace.getNameValue() + ")";
+                        virtualTransition.setNameValue(XorName);
+                        RemoteControl.addFollowingItem(virtualTransition);
+                        tokenGameStats.numActiveTransitions++;
+                        virtualTransition = null;
+                        XorName = "";
+                    }
 
-                            setOutgoingArcsActive(transition.getId(), true);
-                        }
-                    } else
-                        if ((operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
-                                || (operator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)) {
-                            if (transition.getNumIncomingActivePlaces() > 0) {
-                                String XorName, ID;
-                                Iterator<String> inArcs = incomingArcs.keySet().iterator();
-                                TransitionModel virtualTransition; // needed to build virtual Transitions.
-                                AbstractPetriNetElementModel helpPlace;
-                                // ArcModel activeArc;
+                    setOutgoingArcsActive(transition.getId(), true);
+                }
+            } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE) || (operator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)) {
+                if (transition.getNumIncomingActivePlaces() > 0) {
+                    String XorName, ID;
+                    Iterator<String> inArcs = incomingArcs.keySet().iterator();
+                    TransitionModel virtualTransition; // needed to build virtual Transitions.
+                    AbstractPetriNetElementModel helpPlace;
+                    // ArcModel activeArc;
 
                                 /*
                                  * In this while-loop, Virtual Transitions will be build which represent the Arcs in the OccurenceList. If a virtual Transition
                                  * is chosen by the user, it will be identified by its ID as Arc and the depending Arc will be taken instead to be occured
                                  */
-                                setIncomingArcsActive(transition.getId(), true);
-                                while (inArcs.hasNext()) {
-                                    ID = inArcs.next(); // Get Arcs ID
-                                    // List all activated Arcs in the occur List
-                                    if (getPetriNet().getElementContainer().getArcById(ID).isActivated()) {
-                                        // Use a new CreationMap with the arcs id to create the virtual transition
-                                        CreationMap map = CreationMap.createMap();
-                                        map.setId(ID);
-                                        virtualTransition = new TransitionModel(map);
-                                        helpPlace = getPetriNet().getElementContainer().getElementById(
-                                                getPetriNet().getElementContainer().getArcById(ID).getSourceId());
-                                        XorName = "(" + helpPlace.getNameValue() + ")-> " + transition.getNameValue();
-                                        virtualTransition.setNameValue(XorName);
-                                        RemoteControl.addFollowingItem(virtualTransition);
-                                        tokenGameStats.numActiveTransitions++;                                                                        
-                                        virtualTransition = null;
-                                        XorName = "";
-                                    }
-                                }
-                            }
-                        } else
-                            if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
-                                // This is the XOR split-join combination type.
-                                // Check whether the center place already contains (a) token(s)
-                                if ((operator.getCenterPlace() != null)
-                                        && (operator.getCenterPlace().getVirtualTokenCount() > 0)) {
+                    setIncomingArcsActive(transition.getId(), true);
+                    while (inArcs.hasNext()) {
+                        ID = inArcs.next(); // Get Arcs ID
+                        // List all activated Arcs in the occur List
+                        if (getPetriNet().getElementContainer().getArcById(ID).isActivated()) {
+                            // Use a new CreationMap with the arcs id to create the virtual transition
+                            CreationMap map = CreationMap.createMap();
+                            map.setId(ID);
+                            virtualTransition = new TransitionModel(map);
+                            helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getSourceId());
+                            XorName = "(" + helpPlace.getNameValue() + ")-> " + transition.getNameValue();
+                            virtualTransition.setNameValue(XorName);
+                            RemoteControl.addFollowingItem(virtualTransition);
+                            tokenGameStats.numActiveTransitions++;
+                            virtualTransition = null;
+                            XorName = "";
+                        }
+                    }
+                }
+            } else if (operator.getOperatorType() == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
+                // This is the XOR split-join combination type.
+                // Check whether the center place already contains (a) token(s)
+                if ((operator.getCenterPlace() != null) && (operator.getCenterPlace().getVirtualTokenCount() > 0)) {
 
-                                    String XorName, ID;
-                                    Iterator<String> outArcs = outgoingArcs.keySet().iterator();
-                                    TransitionModel virtualTransition; // needed to build virtual Transitions.
-                                    AbstractPetriNetElementModel helpPlace;
+                    String XorName, ID;
+                    Iterator<String> outArcs = outgoingArcs.keySet().iterator();
+                    TransitionModel virtualTransition; // needed to build virtual Transitions.
+                    AbstractPetriNetElementModel helpPlace;
 
                                     /*
                                      * In this while-loop, Virtual Transitions will be build which represent the Arcs in the OccurenceList. If a virtual
                                      * Transition is chosen by the user, it will be identified by its ID as Arc and the depending Arc will be taken instead to
                                      * be occured
                                      */
-                                    while (outArcs.hasNext()) {
-                                        ID = outArcs.next(); // get the Arc's ID
-                                        // Use a new CreationMap with the arcs id to create the virtual transition
-                                        CreationMap map = CreationMap.createMap();
-                                        map.setId(ID);
-                                        virtualTransition = new TransitionModel(map);
+                    while (outArcs.hasNext()) {
+                        ID = outArcs.next(); // get the Arc's ID
+                        // Use a new CreationMap with the arcs id to create the virtual transition
+                        CreationMap map = CreationMap.createMap();
+                        map.setId(ID);
+                        virtualTransition = new TransitionModel(map);
 
-                                        virtualTransition.setId(ID); // set HelpTransition's ID to Arc's ID
-                                        helpPlace = getPetriNet().getElementContainer().getElementById(
-                                                getPetriNet().getElementContainer().getArcById(ID).getTargetId());
-                                        XorName = transition.getNameValue() + " -> (" + helpPlace.getNameValue() + ")";
-                                        virtualTransition.setNameValue(XorName);
-                                        RemoteControl.addFollowingItem(virtualTransition);                                        
-                                        tokenGameStats.numActiveTransitions++;                                                                        
-                                        virtualTransition = null;
-                                        XorName = "";
-                                    }
+                        virtualTransition.setId(ID); // set HelpTransition's ID to Arc's ID
+                        helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getTargetId());
+                        XorName = transition.getNameValue() + " -> (" + helpPlace.getNameValue() + ")";
+                        virtualTransition.setNameValue(XorName);
+                        RemoteControl.addFollowingItem(virtualTransition);
+                        tokenGameStats.numActiveTransitions++;
+                        virtualTransition = null;
+                        XorName = "";
+                    }
 
-                                    setOutgoingArcsActive(transition.getId(), true);
-                                }
-                                // There must at least be one token at the input side for
-                                // the transition to be
-                                // activated
-                                if (transition.getNumIncomingActivePlaces() > 0) {
-                                    String XorName, ID;
-                                    Iterator<String> inArcs = incomingArcs.keySet().iterator();
-                                    TransitionModel virtualTransition; // needed to build virtual Transitions.
-                                    AbstractPetriNetElementModel helpPlace;
-                                    // ArcModel activeArc;
+                    setOutgoingArcsActive(transition.getId(), true);
+                }
+                // There must at least be one token at the input side for
+                // the transition to be
+                // activated
+                if (transition.getNumIncomingActivePlaces() > 0) {
+                    String XorName, ID;
+                    Iterator<String> inArcs = incomingArcs.keySet().iterator();
+                    TransitionModel virtualTransition; // needed to build virtual Transitions.
+                    AbstractPetriNetElementModel helpPlace;
+                    // ArcModel activeArc;
 
                                     /*
                                      * In this while-loop, Virtual Transitions will be build which represent the Arcs in the OccurenceList. If a virtual
                                      * Transition is chosen by the user, it will be identified by its ID as Arc and the depending Arc will be taken instead to
                                      * be occured
                                      */
-                                    setIncomingArcsActive(transition.getId(), true);
-                                    while (inArcs.hasNext()) {
-                                        ID = inArcs.next(); // Get Arcs ID
-                                        // List all activated Arcs in the occur List
-                                        if (getPetriNet().getElementContainer().getArcById(ID).isActivated()) {
-                                            // Use a new CreationMap with the arcs id to create the virtual transition
-                                            CreationMap map = CreationMap.createMap();
-                                            map.setId(ID);
-                                            virtualTransition = new TransitionModel(map);
-                                            helpPlace = getPetriNet().getElementContainer().getElementById(
-                                                    getPetriNet().getElementContainer().getArcById(ID).getSourceId());
-                                            XorName = "(" + helpPlace.getNameValue() + ")-> "
-                                                    + transition.getNameValue();
-                                            virtualTransition.setNameValue(XorName);
-                                            RemoteControl.addFollowingItem(virtualTransition);                                            
-                                            tokenGameStats.numActiveTransitions++;                                                                            
-                                            virtualTransition = null;
-                                            XorName = "";
-                                        }
-                                    }
-                                }
-                            }
-            }        
+                    setIncomingArcsActive(transition.getId(), true);
+                    while (inArcs.hasNext()) {
+                        ID = inArcs.next(); // Get Arcs ID
+                        // List all activated Arcs in the occur List
+                        if (getPetriNet().getElementContainer().getArcById(ID).isActivated()) {
+                            // Use a new CreationMap with the arcs id to create the virtual transition
+                            CreationMap map = CreationMap.createMap();
+                            map.setId(ID);
+                            virtualTransition = new TransitionModel(map);
+                            helpPlace = getPetriNet().getElementContainer().getElementById(getPetriNet().getElementContainer().getArcById(ID).getSourceId());
+                            XorName = "(" + helpPlace.getNameValue() + ")-> " + transition.getNameValue();
+                            virtualTransition.setNameValue(XorName);
+                            RemoteControl.addFollowingItem(virtualTransition);
+                            tokenGameStats.numActiveTransitions++;
+                            virtualTransition = null;
+                            XorName = "";
+                        }
+                    }
+                }
+            }
+        }
     }
-    
+
     /*
      * Handles a click on any Transition in any state
-     */    
+     */
     private void transitionClicked(TransitionModel transition, MouseEvent e) {
-    	boolean stepInto = false;    	
-    	if (transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
-    		if (e != null) {
-    			int relativeX = 0;
-    			int relativeY = 0;
-    			if (e != null) {
-    				relativeX = e.getX() - transition.getX();
-    				relativeY = e.getY() - transition.getY();
-    			}
-    			// the lower left half of the transition will trigger 'step into'
+        boolean stepInto = false;
+        if (transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+            if (e != null) {
+                int relativeX = 0;
+                int relativeY = 0;
+                if (e != null) {
+                    relativeX = e.getX() - transition.getX();
+                    relativeY = e.getY() - transition.getY();
+                }
+                // the lower left half of the transition will trigger 'step into'
 
-    			if (relativeY >= relativeX)
-    				stepInto = true;
-    		}
-    	}
-    	occurTransition(transition, stepInto);
-    }    	
+                if (relativeY >= relativeX) stepInto = true;
+            }
+        }
+        occurTransition(transition, stepInto);
+    }
 
     /**
      * Occur the specified transition
+     *
      * @param transition Transition to occur
      * @param stepInto   true if we should step into a subprocess rather
      *                   than stepping over it
@@ -526,50 +511,41 @@ public class TokenGameController implements ITokenGameController {
             // Remember whether we actually did something here
             // and only deactivate the transition after a *successful* click
             boolean actionPerformed = false;
-            if (transition.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE
-                    || transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+            if (transition.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE || transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
                 // LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: FIRE
                 // simple Transition:
                 // "+transition.getId());
                 receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
                 sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
                 if (transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
-                	if (stepInto) {
-                		// Step into sub-process and process it in a new modal editor
-                		// dialog in token-game mode
-                		this.openSubProcess((SubProcessModel) transition);
-                	}
+                    if (stepInto) {
+                        // Step into sub-process and process it in a new modal editor
+                        // dialog in token-game mode
+                        this.openSubProcess((SubProcessModel) transition);
+                    }
                 }
                 actionPerformed = true;
 
-            } else
-                if (transition.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
-                    OperatorTransitionModel operator = (OperatorTransitionModel) transition;
-                    if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE
-                            || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE
-                            || operator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE) {
-                        // LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
-                        // FIRE AND-Transition:
-                        // "+transition.getId());
-                        receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
-                        sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
-                        actionPerformed = true;
+            } else if (transition.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+                OperatorTransitionModel operator = (OperatorTransitionModel) transition;
+                if (operator.getOperatorType() == OperatorTransitionModel.AND_JOIN_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLIT_TYPE || operator.getOperatorType() == OperatorTransitionModel.AND_SPLITJOIN_TYPE) {
+                    // LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
+                    // FIRE AND-Transition:
+                    // "+transition.getId());
+                    receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
+                    sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+                    actionPerformed = true;
 
-                    } else
-                        if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE)
-                                || (operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
-                            // Do nothing: Only controlled by Arc Clicking
-                        } else
-                            if ((operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE)
-                                    || (operator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)) {
-                                // Do nothing: Only controlled by Arc Clicking
-                            } else
-                                if (operator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
-                                    // Do nothing: Only controlled by Arc Clicking as the user
-                                    // has to select the
-                                    // token source
-                                }
+                } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE) || (operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
+                    // Do nothing: Only controlled by Arc Clicking
+                } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE) || (operator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)) {
+                    // Do nothing: Only controlled by Arc Clicking
+                } else if (operator.getOperatorType() == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
+                    // Do nothing: Only controlled by Arc Clicking as the user
+                    // has to select the
+                    // token source
                 }
+            }
             if (actionPerformed == true) {
                 // Now update the status of the petri net by checking all
                 // transitions and activating them
@@ -583,18 +559,43 @@ public class TokenGameController implements ITokenGameController {
         }
     }
 
-    /*
+    /**
      * Handles a click on any arc in any state
      */
-    private void arcClicked(ArcModel arc) {
+    void arcClicked(ArcModel arc) {
 
         if (!arc.isActivated()) {
             return;
         }
 
+        executeOperators(arc);
+        // Update net status
+        // and trigger redraw
+
+        // Track the "walked way" by get out the transition's ID of the Choice-Box
+        TransitionModel helpTransitionReference;
+        for (int i = 0; i < RemoteControl.getFollowingActivatedTransitions().size(); i++) {
+            helpTransitionReference = RemoteControl.getFollowingActivatedTransitions().get(i);
+            if (arc.getId().equals(helpTransitionReference.getId())) {
+                RemoteControl.addHistoryItem(helpTransitionReference);
+            }
+        }
+        checkNet();
+    }
+
+    /**
+     * Executes the operators referenced by the given arc.
+     * <p>
+     * Checks if either the target or the source of the arc is an operator. If so, it fires the operator
+     * triggered by the arc.
+     * <p>
+     * Just for testing purposes.
+     *
+     * @param arc the arc containing possible operators.
+     */
+    void executeOperators(ArcModel arc) {
         AbstractPetriNetElementModel source = getPetriNet().getElementContainer().getElementById(arc.getSourceId());
         AbstractPetriNetElementModel target = getPetriNet().getElementContainer().getElementById(arc.getTargetId());
-
         OperatorTransitionModel tempOperator;
 
         // As a reminder, an arc is generally going from a place to a
@@ -612,9 +613,9 @@ public class TokenGameController implements ITokenGameController {
         if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
             tempOperator = (OperatorTransitionModel) source;
             if (tempOperator.isActivated()) {
-                if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
+                if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
                     receiveTokens(arc);
-                    if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+                    if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
                         sendTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
                     } else {
                         // Special code for splitjoin. We have to take the
@@ -629,9 +630,9 @@ public class TokenGameController implements ITokenGameController {
             }
         } else if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
             tempOperator = (OperatorTransitionModel) target;
-            if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+            if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
                 sendTokens(arc);
-                if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+                if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
                     receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
                 } else {
                     // Special code for splitjoin. We have to send the token
@@ -640,28 +641,16 @@ public class TokenGameController implements ITokenGameController {
                         // FIXME: Once implemented, this place will also have to
                         // receive weighted tokens
                         tempOperator.getCenterPlace().receiveToken();
-                        }
                     }
                 }
             }
-        // Update net status
-        // and trigger redraw
-
-        // Track the "walked way" by get out the transition's ID of the Choice-Box
-        TransitionModel helpTransitionReference;
-        for (int i = 0; i < RemoteControl.getFollowingActivatedTransitions().size(); i++) {
-            helpTransitionReference = RemoteControl.getFollowingActivatedTransitions().get(i);
-            if (arc.getId().equals(helpTransitionReference.getId())) {
-                RemoteControl.addHistoryItem(helpTransitionReference);
-            }
         }
-        checkNet();
     }
 
     /**
      * This method has been implemented to allow backward-stepping through the net. It cares about stepping back transitions as well as arcs. This method is
      * called by the TokenGameController.occurTransitionbyTokenGameBarVC
-     * 
+     *
      * @param transition
      * @param arc
      */
@@ -669,7 +658,7 @@ public class TokenGameController implements ITokenGameController {
         // Either transition or arc has to be null
         // Remember whether we actually did something here
         // and only deactivate the transition after a *successful* click
-    	
+
         boolean actionPerformed = false;
         if (transition != null) {
             receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
@@ -677,15 +666,13 @@ public class TokenGameController implements ITokenGameController {
             actionPerformed = true;
         } else // if it is an arc ==> it is some kind of XOR-Operation
         {
-            AbstractPetriNetElementModel source = getPetriNet().getElementContainer().getElementById(
-                    arc.getSourceId());
-            AbstractPetriNetElementModel target = getPetriNet().getElementContainer().getElementById(
-                    arc.getTargetId());
+            AbstractPetriNetElementModel source = getPetriNet().getElementContainer().getElementById(arc.getSourceId());
+            AbstractPetriNetElementModel target = getPetriNet().getElementContainer().getElementById(arc.getTargetId());
             OperatorTransitionModel tempOperator;
             if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
                 tempOperator = (OperatorTransitionModel) target;
                 receiveBackwardTokens(arc);
-                if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+                if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
                     sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
                     actionPerformed = true;
                 } else {
@@ -700,7 +687,7 @@ public class TokenGameController implements ITokenGameController {
             if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
                 tempOperator = (OperatorTransitionModel) source;
                 sendBackwardTokens(arc);
-                if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+                if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
                     receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
                     actionPerformed = true;
                 } else {
@@ -727,8 +714,7 @@ public class TokenGameController implements ITokenGameController {
      * Sets incoming Arcs of an Transition active, if the Place before has Tokens. Sets incoming Arcs of an Transition inactive, without any condition.
      */
     private void setIncomingArcsActive(Object transitionId, boolean active) {
-        Iterator<String> incomingArcsIter = getPetriNet().getElementContainer().getIncomingArcs(transitionId).keySet()
-                .iterator();
+        Iterator<String> incomingArcsIter = getPetriNet().getElementContainer().getIncomingArcs(transitionId).keySet().iterator();
         while (incomingArcsIter.hasNext()) {
             ArcModel arc = getPetriNet().getElementContainer().getArcById(incomingArcsIter.next());
             if (active) {
@@ -747,8 +733,7 @@ public class TokenGameController implements ITokenGameController {
      * Sets all outgoing arcs of an Transition active/inactive, without any condition.
      */
     private void setOutgoingArcsActive(Object transitionId, boolean active) {
-        Iterator<String> outgoingIter = getPetriNet().getElementContainer().getOutgoingArcs(transitionId).keySet()
-                .iterator();
+        Iterator<String> outgoingIter = getPetriNet().getElementContainer().getOutgoingArcs(transitionId).keySet().iterator();
         while (outgoingIter.hasNext()) {
             getPetriNet().getElementContainer().getArcById(outgoingIter.next()).setActivated(active);
         }
@@ -776,8 +761,7 @@ public class TokenGameController implements ITokenGameController {
                 // TODO: when ARC WEIGTH implemented send tokens weigth times
             }
         } catch (ClassCastException cce) {
-            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER,
-                    "TokenGame: Cannot send token. Source is not a place. Ignore arc: " + arc.getId());
+            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Cannot send token. Source is not a place. Ignore arc: " + arc.getId());
         }
     }
 
@@ -803,8 +787,7 @@ public class TokenGameController implements ITokenGameController {
                 // TODO: when ARC WEIGTH implemented receive tokens weigth times
             }
         } catch (ClassCastException cce) {
-            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER,
-                    "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
+            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
         }
     }
 
@@ -831,8 +814,7 @@ public class TokenGameController implements ITokenGameController {
                 // TODO: when ARC WEIGTH implemented send tokens weigth times
             }
         } catch (ClassCastException cce) {
-            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER,
-                    "TokenGame: Cannot send token. Source is not a place. Ignore arc: " + arc.getId());
+            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Cannot send token. Source is not a place. Ignore arc: " + arc.getId());
         }
     }
 
@@ -858,8 +840,7 @@ public class TokenGameController implements ITokenGameController {
                 // TODO: when ARC WEIGTH implemented receive tokens weigth times
             }
         } catch (ClassCastException cce) {
-            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER,
-                    "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
+            LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
         }
     }
 
@@ -1015,31 +996,33 @@ public class TokenGameController implements ITokenGameController {
             ArcModel arc = findArcInCell(allCells);
             if (transition != null && transition.isActivated()) {
                 transitionClicked(transition, e);
-            } else
-                if (arc != null && arc.isActivated()) {
-                    arcClicked(arc);
-                } else
-                    if (place != null && place.isActivated()) {
-                        // If an active place has been clicked there is only one reasonable explanation for this:
-                        // It is a sink place of a sub-process
-                        RemoteControl = ParentControl.getRemoteControlReference();
-                        // De-register the sub-process
-                        RemoteControl.changeTokenGameReference(null, true);
-                        // and close the editor
-                        thisEditor.closeEditor();
+            } else if (arc != null && arc.isActivated()) {
+                arcClicked(arc);
+            } else if (place != null && place.isActivated()) {
+                // If an active place has been clicked there is only one reasonable explanation for this:
+                // It is a sink place of a sub-process
+                RemoteControl = ParentControl.getRemoteControlReference();
+                // De-register the sub-process
+                RemoteControl.changeTokenGameReference(null, true);
+                // and close the editor
+                thisEditor.closeEditor();
 
-                    }
+            }
             e.consume();
         }
 
         @SuppressWarnings("unused")
-        public void mouseMoved(MouseEvent arg0) {}
+        public void mouseMoved(MouseEvent arg0) {
+        }
 
-        public void mouseClicked(MouseEvent arg0) {}
+        public void mouseClicked(MouseEvent arg0) {
+        }
 
-        public void mouseEntered(MouseEvent arg0) {}
+        public void mouseEntered(MouseEvent arg0) {
+        }
 
-        public void mouseExited(MouseEvent arg0) {}
+        public void mouseExited(MouseEvent arg0) {
+        }
 
         /*
          * Checks if cell is a Place or if a Place is nested in a Group.
