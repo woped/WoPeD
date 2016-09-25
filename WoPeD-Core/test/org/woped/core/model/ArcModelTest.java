@@ -1,6 +1,5 @@
 package org.woped.core.model;
 
-import javafx.scene.shape.Arc;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

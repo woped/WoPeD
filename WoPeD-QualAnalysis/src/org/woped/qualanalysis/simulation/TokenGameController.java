@@ -98,7 +98,7 @@ public class TokenGameController implements ITokenGameController {
      * @param graph
      */
     public TokenGameController(IEditor thisEditor, PropertyChangeSupport propertyChangeSupport) {
-        this.petrinet = (PetriNetModelProcessor) thisEditor.getModelProcessor();
+        this.petrinet = thisEditor.getModelProcessor();
         this.graph = thisEditor.getGraph();
         this.thisEditor = thisEditor;
         this.m_propertyChangeSupport = propertyChangeSupport;
@@ -588,80 +588,74 @@ public class TokenGameController implements ITokenGameController {
      */
     private void arcClicked(ArcModel arc) {
 
-        if (arc.isActivated()) {
-            AbstractPetriNetElementModel source = (AbstractPetriNetElementModel) getPetriNet().getElementContainer().getElementById(
-                    arc.getSourceId());
-            AbstractPetriNetElementModel target = (AbstractPetriNetElementModel) getPetriNet().getElementContainer().getElementById(
-                    arc.getTargetId());
+        if (!arc.isActivated()) {
+            return;
+        }
 
-            OperatorTransitionModel tempOperator;
+        AbstractPetriNetElementModel source = getPetriNet().getElementContainer().getElementById(arc.getSourceId());
+        AbstractPetriNetElementModel target = getPetriNet().getElementContainer().getElementById(arc.getTargetId());
 
-            // As a reminder, an arc is generally going from a place to a
-            // transition or from a
-            // transition to a place.
-            // When pointing to a transition it is referencing a potential
-            // provider of a token.
-            // When pointing to a place that place is potential receiver for a
-            // token.
-            // First, we check if the origin of our clicked arc is a transition
-            // (Note that we check for the operator type only as ordinary
-            // transitions are not triggered
-            // by clicking the arrow but by clicking the transition itself which
-            // is handled in transitionClicked())
-            if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
-                tempOperator = (OperatorTransitionModel) source;
-                if (tempOperator.isActivated()) {
-                    if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE
-                            || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE
-                            || tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
-                        receiveTokens(arc);
-                        if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
-                            sendTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
-                        } else {
-                            // Special code for splitjoin. We have to take the
-                            // token from the center place
-                            if (tempOperator.getCenterPlace() != null) {
-                                // FIXME: Once implemented, this place will also
-                                // have to remove weighted tokens
-                                tempOperator.getCenterPlace().sendToken();
-                            }
+        OperatorTransitionModel tempOperator;
+
+        // As a reminder, an arc is generally going from a place to a
+        // transition or from a
+        // transition to a place.
+        // When pointing to a transition it is referencing a potential
+        // provider of a token.
+        // When pointing to a place that place is potential receiver for a
+        // token.
+        // First, we check if the origin of our clicked arc is a transition
+        // (Note that we check for the operator type only as ordinary
+        // transitions are not triggered
+        // by clicking the arrow but by clicking the transition itself which
+        // is handled in transitionClicked())
+        if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+            tempOperator = (OperatorTransitionModel) source;
+            if (tempOperator.isActivated()) {
+                if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
+                    receiveTokens(arc);
+                    if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+                        sendTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
+                    } else {
+                        // Special code for splitjoin. We have to take the
+                        // token from the center place
+                        if (tempOperator.getCenterPlace() != null) {
+                            // FIXME: Once implemented, this place will also
+                            // have to remove weighted tokens
+                            tempOperator.getCenterPlace().sendToken();
                         }
                     }
-                }
-            } else
-                if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
-                    tempOperator = (OperatorTransitionModel) target;
-                    if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE
-                            || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE
-                            || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
-                        sendTokens(arc);
-                        if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
-                            receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
-                        } else {
-                            // Special code for splitjoin. We have to send the token
-                            // to the center place
-                            if (tempOperator.getCenterPlace() != null) {
-                                // FIXME: Once implemented, this place will also have to
-                                // receive weighted tokens
-                                tempOperator.getCenterPlace().receiveToken();
-                            }
-                        }
-                    }
-                }
-            // Update net status
-            // and trigger redraw
-
-            // Track the "walked way" by get out the transition's ID of the Choice-Box
-            TransitionModel helpTransitionReference;
-            for (int i = 0; i < RemoteControl.getFollowingActivatedTransitions().size(); i++) {
-                helpTransitionReference = RemoteControl.getFollowingActivatedTransitions().get(i);
-                if (arc.getId().equals(helpTransitionReference.getId())) {
-                    RemoteControl.addHistoryItem(helpTransitionReference);
                 }
             }
-            checkNet();
+        } else if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+            tempOperator = (OperatorTransitionModel) target;
+            if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+                sendTokens(arc);
+                if (tempOperator.getOperatorType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
+                    receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
+                } else {
+                    // Special code for splitjoin. We have to send the token
+                    // to the center place
+                    if (tempOperator.getCenterPlace() != null) {
+                        // FIXME: Once implemented, this place will also have to
+                        // receive weighted tokens
+                        tempOperator.getCenterPlace().receiveToken();
+                        }
+                    }
+                }
+            }
+        // Update net status
+        // and trigger redraw
 
+        // Track the "walked way" by get out the transition's ID of the Choice-Box
+        TransitionModel helpTransitionReference;
+        for (int i = 0; i < RemoteControl.getFollowingActivatedTransitions().size(); i++) {
+            helpTransitionReference = RemoteControl.getFollowingActivatedTransitions().get(i);
+            if (arc.getId().equals(helpTransitionReference.getId())) {
+                RemoteControl.addHistoryItem(helpTransitionReference);
+            }
         }
+        checkNet();
     }
 
     /**
@@ -683,9 +677,9 @@ public class TokenGameController implements ITokenGameController {
             actionPerformed = true;
         } else // if it is an arc ==> it is some kind of XOR-Operation
         {
-            AbstractPetriNetElementModel source = (AbstractPetriNetElementModel) getPetriNet().getElementContainer().getElementById(
+            AbstractPetriNetElementModel source = getPetriNet().getElementContainer().getElementById(
                     arc.getSourceId());
-            AbstractPetriNetElementModel target = (AbstractPetriNetElementModel) getPetriNet().getElementContainer().getElementById(
+            AbstractPetriNetElementModel target = getPetriNet().getElementContainer().getElementById(
                     arc.getTargetId());
             OperatorTransitionModel tempOperator;
             if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
@@ -942,6 +936,63 @@ public class TokenGameController implements ITokenGameController {
      * ################################### Mouse Handler ########################################
      */
 
+    /**
+     * will be called by TokenGameBarVC to let active transitions occur
+     *
+     * @param transition Specifies the transition to occur
+     * @param BackWard   True if we should step backwards
+     * @param stepInto   True if we should step into sub processes we find
+     */
+    public void occurTransitionbyTokenGameBarVC(TransitionModel transition, boolean BackWard, boolean stepInto) {
+        char checkA = transition.getId().charAt(0);
+        if (checkA == 'a') {
+            if (BackWard) {
+                backwardItem(null, getPetriNet().getElementContainer().getArcById(transition.getId()));
+            } else {
+                arcClicked(getPetriNet().getElementContainer().getArcById(transition.getId()));
+            }
+        } else {
+            if (BackWard) backwardItem(transition, null);
+            else
+                // When triggered from the toolbar, step into sub process
+                occurTransition(transition, stepInto);
+        }
+    }
+
+    /**
+     * Open an new sub process window based on the
+     * specified sub process transition
+     */
+    private void openSubProcess(SubProcessModel subProcess) {
+        ParentControl = new ReferenceProvider();
+        ParentControl.setRemoteControlReference(RemoteControl);
+        thisEditor.openTokenGameSubProcess(subProcess);
+    }
+
+    /**
+     * if the current Editor is a SubProcess, it will be closed.
+     */
+    public void closeSubProcess() {
+        if (thisEditor.isSubprocessEditor()) {
+            thisEditor.closeEditor();
+        }
+    }
+
+    /**
+     * this method is similiar to stop(). it will reset all tokens and playactions but it will not activate editor. through play button you could simulate again
+     */
+    public void tokenGameRestore() {
+        deHighlightRG();
+        resetTransitionStatus();
+        resetArcStatus();
+        resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
+        checkNet();
+    }
+
+    public IEditor getThisEditor() {
+        return thisEditor;
+    }
+
     /*
      * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br><br> MouseHandle for the TokenGame. USE ONLY if visual TokenGame is ENABLED.
      */
@@ -955,8 +1006,8 @@ public class TokenGameController implements ITokenGameController {
         }
 
         /**
-		 *  
-		 */
+         *
+         */
         public void mouseReleased(MouseEvent e) {
             Vector<Object> allCells = getGraph().getAllCellsForLocation(e.getPoint().x, e.getPoint().y);
             TransitionModel transition = findTransitionInCell(allCells);
@@ -970,9 +1021,9 @@ public class TokenGameController implements ITokenGameController {
                 } else
                     if (place != null && place.isActivated()) {
                         // If an active place has been clicked there is only one reasonable explanation for this:
-                        // It is a sink place of a sub-process 
+                        // It is a sink place of a sub-process
                         RemoteControl = ParentControl.getRemoteControlReference();
-                        // De-register the sub-process 
+                        // De-register the sub-process
                         RemoteControl.changeTokenGameReference(null, true);
                         // and close the editor
                         thisEditor.closeEditor();
@@ -1025,65 +1076,6 @@ public class TokenGameController implements ITokenGameController {
             }
             return null;
         }
-    }
-
-    /**
-     * will be called by TokenGameBarVC to let active transitions occur
-     * 
-     * @param transition Specifies the transition to occur
-     * @param BackWard   True if we should step backwards
-     * @param stepInto   True if we should step into sub processes we find
-     */
-    public void occurTransitionbyTokenGameBarVC(TransitionModel transition, 
-    		boolean BackWard, boolean stepInto) {
-        char checkA = transition.getId().charAt(0);
-        if (checkA == 'a') {
-            if (BackWard) {
-                backwardItem(null, getPetriNet().getElementContainer().getArcById(transition.getId()));
-            } else {
-                arcClicked(getPetriNet().getElementContainer().getArcById(transition.getId()));
-            }
-        } else {
-        	if (BackWard)
-        		backwardItem(transition, null);
-        	else
-        		// When triggered from the toolbar, step into sub process
-        		occurTransition(transition, stepInto);
-        }
-    }
-    
-    /**
-     * Open an new sub process window based on the 
-     * specified sub process transition
-     */
-    private void openSubProcess(SubProcessModel subProcess) {
-    	ParentControl = new ReferenceProvider();
-    	ParentControl.setRemoteControlReference(RemoteControl);            	
-        thisEditor.openTokenGameSubProcess(subProcess);
-    }
-
-    /**
-     * if the current Editor is a SubProcess, it will be closed.
-     */
-    public void closeSubProcess() {
-        if (thisEditor.isSubprocessEditor()) {
-            thisEditor.closeEditor();
-        }
-    }
-
-    /**
-     * this method is similiar to stop(). it will reset all tokens and playactions but it will not activate editor. through play button you could simulate again
-     */
-    public void tokenGameRestore() {
-        deHighlightRG();
-        resetTransitionStatus();
-        resetArcStatus();
-        resetVirtualTokensInElementContainer(getPetriNet().getElementContainer());
-    	checkNet();    	
-    }
-
-    public IEditor getThisEditor() {
-        return thisEditor;
     }
 
 }
