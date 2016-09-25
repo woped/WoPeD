@@ -17,14 +17,12 @@ import org.woped.qualanalysis.structure.NetAlgorithms;
 public class NodeNetInfo extends NetInfo {
 
 	private int typeId = 0;
-
-	public int getTypeId() {
-		return typeId;
-	}
-
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
-	}
+    // ! Store the node object this tree item represents
+    private AbstractPetriNetElementModel m_nodeObject;
+    // ! Sometimes it is better to reference the node owner
+    // ! instead of the node itself (inner transitions and places
+    // ! of a complex operator)
+    private AbstractPetriNetElementModel m_nodeOwner = null;
 
 	// ! Instantiate this class with an element model node and a flag
 	// ! specifying whether children of that node (sub-processes,
@@ -51,9 +49,7 @@ public class NodeNetInfo extends NetInfo {
 		if (addChildren && (node instanceof InnerElementContainer) && 
 				(typeId == OperatorTransitionModel.XOR_SPLIT_TYPE
 				|| typeId == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE
-				|| typeId == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE
-				|| typeId == OperatorTransitionModel.XOR_SPLITJOIN_TYPE 
-				|| typeId == OperatorTransitionModel.SUBP_TYPE)) {
+				|| typeId == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE || typeId == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE || typeId == OperatorTransitionModel.SUBP_TYPE)) {
 			// Add sub-elements as tree items
 			InnerElementContainer operator = (InnerElementContainer) node;
 			ModelElementContainer simpleTransContainer = operator.getSimpleTransContainer();
@@ -61,8 +57,8 @@ public class NodeNetInfo extends NetInfo {
 			Iterator<AbstractPetriNetElementModel> innerIterator = simpleTransContainer.getRootElements().iterator();
 			while (innerIterator.hasNext()) {
 				try {
-					AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) innerIterator.next();
-					AbstractPetriNetElementModel owningElement = current.getRootOwningContainer().getOwningElement();
+                    AbstractPetriNetElementModel current = innerIterator.next();
+                    AbstractPetriNetElementModel owningElement = current.getRootOwningContainer().getOwningElement();
 					if ((owningElement != null)
 							&& (operator.equals(current.getRootOwningContainer().getOwningElement())))
 						add(new NodeNetInfo(current, true));
@@ -91,8 +87,8 @@ public class NodeNetInfo extends NetInfo {
 		int nodeHierarchyLevel = node.getHierarchyLevel();
 		boolean isFirst = true;
 		while (relevantNodes.hasNext()) {
-			AbstractPetriNetElementModel currentNode = (AbstractPetriNetElementModel) relevantNodes.next();
-			// If superOnly is specified
+            AbstractPetriNetElementModel currentNode = relevantNodes.next();
+            // If superOnly is specified
 			// only nodes that are contained in the next lower level container
 			// are relevant for us
 			if ((!superOnly) || (currentNode.getHierarchyLevel() < nodeHierarchyLevel)) {
@@ -122,9 +118,8 @@ public class NodeNetInfo extends NetInfo {
 		if (nodeOwner != null && nodeOwner.getType() == TransitionModel.TRANS_OPERATOR_TYPE) {
 			typeId = ((OperatorTransitionModel) nodeOwner).getOperatorType();
 			if (typeId == OperatorTransitionModel.XOR_JOIN_TYPE
-					|| typeId == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE
-					|| typeId == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
-				result = predecessors;
+					|| typeId == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE || typeId == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
+                result = predecessors;
 			}
 		}
 
@@ -133,9 +128,8 @@ public class NodeNetInfo extends NetInfo {
 		if (nodeOwner != null && nodeOwner.getType() == TransitionModel.TRANS_OPERATOR_TYPE) {
 			typeId = ((OperatorTransitionModel) nodeOwner).getOperatorType();
 			if (typeId == OperatorTransitionModel.XOR_SPLIT_TYPE
-					|| typeId == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE
-					|| typeId == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
-				result += successors;
+					|| typeId == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE || typeId == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
+                result += successors;
 			}
 		}
 
@@ -147,6 +141,14 @@ public class NodeNetInfo extends NetInfo {
 		return result;
 	}
 
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
 	public Object[] getReferencedElements() {
 		Object[] result = new Object[1];
 		// If the owner is a sub-process
@@ -155,12 +157,5 @@ public class NodeNetInfo extends NetInfo {
 		result[0] = (((m_nodeOwner != null) && (m_nodeOwner.getType() != AbstractPetriNetElementModel.SUBP_TYPE)) ? m_nodeOwner
 				: m_nodeObject);
 		return result;
-	};
-
-	// ! Store the node object this tree item represents
-	private AbstractPetriNetElementModel m_nodeObject;
-	// ! Sometimes it is better to reference the node owner
-	// ! instead of the node itself (inner transitions and places
-	// ! of a complex operator)
-	private AbstractPetriNetElementModel m_nodeOwner = null;
+    }
 }

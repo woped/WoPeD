@@ -59,7 +59,7 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
     public static final int OR_SPLIT_TYPE = 103;
     public static final int XOR_SPLIT_TYPE = 104;
     public static final int XOR_JOIN_TYPE = 105;
-    public static final int XOR_SPLITJOIN_TYPE = 106;
+    public static final int XORJOIN_XORSPLIT_TYPE = 106;
     public static final int AND_SPLITJOIN_TYPE = 107;
     //! The AND-Join XOR-Split is just an alias for the XOR split operator
     //! It has a different visual representation but behaves exactly the same
@@ -147,7 +147,7 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
                     getToolSpecific().setOperatorPosition(OperatorPosition.values()[map.getOperatorPosition()]);
                 }
                 break;
-            case XOR_SPLITJOIN_TYPE:
+            case XORJOIN_XORSPLIT_TYPE:
                 getToolSpecific().setOperatorDirection(OperatorDirection.OUT);
                 if (map.getOperatorPosition() == -1) {
                     getToolSpecific().setOperatorPosition(west_north);
@@ -327,7 +327,7 @@ public abstract class OperatorTransitionModel extends TransitionModel implements
     public PlaceModel getCenterPlace() {
         if (centerPlace == null) {
             switch (getOperatorType()) {
-                case XOR_SPLITJOIN_TYPE:
+                case XORJOIN_XORSPLIT_TYPE:
                 case ANDJOIN_XORSPLIT_TYPE:
                 case XORJOIN_ANDSPLIT_TYPE:
                     centerPlace = addNewCenterPlace();

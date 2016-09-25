@@ -322,7 +322,7 @@ public class PNMLExportTest {
             CreationMap map = CreationMap.createMap();
             map.setId("t1");
             map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
-            map.setOperatorType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+            map.setOperatorType(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
             t1 = (XORSplitJoinOperatorTransitionModel) ModelElementFactory.createModelElement(map);
             container.addElement(t1);
         }

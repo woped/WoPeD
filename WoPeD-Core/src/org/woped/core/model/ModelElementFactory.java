@@ -93,8 +93,8 @@ public class ModelElementFactory
                 	case OperatorTransitionModel.XOR_JOIN_TYPE:
                 		modElement = new XORJoinOperatorTransitionModel(map);
                 		break;
-                	case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
-                		modElement = new XORSplitJoinOperatorTransitionModel(map);
+                        case OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE:
+                            modElement = new XORSplitJoinOperatorTransitionModel(map);
                 		break;
                 	case OperatorTransitionModel.AND_SPLIT_TYPE:
                 		modElement = new ANDSplitOperatorTransitionModel(map);

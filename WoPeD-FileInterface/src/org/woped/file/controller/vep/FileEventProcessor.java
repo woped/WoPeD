@@ -57,6 +57,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		super(vepID, mediator);
 	}
 
+    public static boolean isFileOverride(JFrame owner, String fileName) {
+        String textMessages[] = {Messages.getString("Dialog.Yes"), Messages.getString("Dialog.No")};
+        String[] args = {fileName};
+
+        return JOptionPane.showOptionDialog(owner, Messages.getStringReplaced("Action.Confirm.File.Overwrite.Text", args), Messages.getString("Action.Confirm.File.Overwrite.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, textMessages, textMessages[1]) == JOptionPane.YES_OPTION;
+    }
+
 	@Override
 	public void processViewEvent(AbstractViewEvent event) {
 		EditorVC editor = (EditorVC) getMediator().getUi().getEditorFocus();
@@ -125,10 +132,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			FileFilter filter = new LabeledFileFilter() {
 				@Override
 				public boolean accept(File file) {
-					if (file.getAbsolutePath().endsWith(".csv"))
-						return true;
-					return false;
-				}
+                    return file.getAbsolutePath().endsWith(".csv");
+                }
 
 				@Override
 				public String getDescription() {
@@ -187,8 +192,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
-	 * 
-	 * @param editor
+     *
+     * @param editor
 	 */
 
 	private boolean isSound(IEditor editor) {
@@ -230,9 +235,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 			}
 
 			int type = ((OperatorTransitionModel) trans).getOperatorType();
-			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE
-					|| type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE || type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
-					& sum != 100) {
+			if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE || type == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE || type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) & sum != 100) {
 				branchingOk = false;
 				param[0] = Messages.getString("QuantAna.Transition");
 				param[1] = trans.getNameValue();
@@ -372,8 +375,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
-	 * 
-	 * @param editor
+     *
+     * @param editor
 	 * @return
 	 */
 	public boolean save(final EditorVC editor) {
@@ -482,18 +485,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
 		getMediator().getUi().getComponent()
 				.setCursor(Cursor.getDefaultCursor());
 		return succeed;
-	}
-
-	public static boolean isFileOverride(JFrame owner, String fileName) {
-		String textMessages[] = { Messages.getString("Dialog.Yes"),
-				Messages.getString("Dialog.No") };
-		String[] args = { fileName };
-
-		return JOptionPane.showOptionDialog(owner, Messages.getStringReplaced(
-				"Action.Confirm.File.Overwrite.Text", args), Messages
-				.getString("Action.Confirm.File.Overwrite.Title"),
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-				textMessages, textMessages[1]) == JOptionPane.YES_OPTION;
 	}
 
 	public boolean macSaveAs(EditorVC editor) {
@@ -869,8 +860,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 					if (editor instanceof EditorVC) {
 						((EditorVC) pnmlImport.getEditor()[i])
 								.setDefaultFileType(filter);
-						((EditorVC) pnmlImport.getEditor()[i]).setName(file
-								.getName());
+                        pnmlImport.getEditor()[i].setName(file.getName());
 						((EditorVC) pnmlImport.getEditor()[i]).setFilePath(file
 								.getAbsolutePath());
 					}

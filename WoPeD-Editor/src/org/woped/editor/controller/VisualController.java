@@ -74,188 +74,86 @@ import org.woped.editor.controller.vc.SubprocessEditorVC;
  */
 public class VisualController implements PropertyChangeListener, IClipboaredListener, GraphSelectionListener, MouseListener
 {
-	/**
-	 * Objects implementing IVisibility control the visual representation
-	 * of WoPeDAction instances in menus etc.
-	 * Whether an action is visible, enabled or selected depends on attributes
-	 * describing application-wide state, such as whether an editor window is currently
-	 * open and in focus (WITH_EDITOR) or whether a token game is active (TOKENGAME). 
-	 * 
-	 * For convenience, there is a default implementation called DefaultVisibility,
-	 * covering simple cases where visual representation depends on only one 
-	 * attribute for each visible, enabled and selected.
-	 * 
-	 * @author weirdsoul
-	 *
-	 */
-	public interface IVisibility {
-		/**
-		 * Return whether an associated action should be visible, depending on the 
-		 * specified status
-		 * @param status An array of attributes that are either enabled or disabled
-		 * @return true if action should be visible, false otherwise
-		 */
-		public boolean getVisible(boolean status[]);
-		/**
-		 * Return whether an associated action should be enabled, depending on the 
-		 * specified status
-		 * @param status An array of attributes that are either enabled or disabled
-		 * @return true if action should be enabled, false otherwise
-		 */
-		public boolean getEnabled(boolean status[]);
-		/**
-		 * Return whether an associated action should be selected, depending on the 
-		 * specified status
-		 * @param status An array of attributes that are either enabled or disabled
-		 * @return true if action should be selected, false otherwise
-		 */
-		public boolean getSelected(boolean status[]);
-	}	
-	
-	private AbstractApplicationMediator am = null;
-
-	private boolean active = true;
-
 	public static final int IGNORE 							= -1;
-
 	public static final int ALWAYS 							= 0;
-
 	public static final int NEVER 							= 1;
-
 	public static final int WITH_EDITOR 					= 2;
-
 	// Selections
 	public static final int NO_SELECTION 					= 3;
-
 	public static final int ANY_SELECTION 					= 4;
-
 	public static final int NODE_SELECTION 					= 5;
-
 	public static final int TRANSITION_SELECTION 			= 6;
-
 	public static final int TRIGGERED_TRANSITION_SELECTION 	= 7;
-
 	public static final int TIME_TRIGGER_SELECTION 			= 8;
-
 	public static final int RESOURCE_TRIGGER_SELECTION 		= 9;
-
 	public static final int MESSAGE_TRIGGER_SELECTION 		= 10;
-
 	public static final int ANY_TRIGGER_SELECTION 			= 11;
-	
 	public static final int OPERATOR_SELECTION 				= 12;
-
 	public static final int PLACE_SELECTION 				= 13;
-	
 	public static final int TOKEN_PLACE_SELECTION 			= 14;
-
 	public static final int SUBPROCESS_SELECTION 			= 15;
-
 	public static final int ARC_SELECTION 					= 16;
-	
 	public static final int ROUTED_ARC_SELECTION 			= 17;
-	
 	public static final int UNROUTED_ARC_SELECTION 			= 18;
-
 	public static final int NODE_OR_XORARC_SELECTION 		= 19;
-
 	public static final int ARCPOINT_SELECTION				= 20;
-
 	public static final int MULTIPLE_SELECTION				= 21;
-
 	public static final int GROUP_SELECTION					= 22;
-	
 	// Drawmode
 	public static final int DRAWMODE_PLACE 					= 23;
-	
 	public static final int DRAWMODE_TRANSITION 			= 24;
-
 	public static final int DRAWMODE_AND_SPLIT 				= 25;
-
 	public static final int DRAWMODE_AND_JOIN 				= 26;
-
 	public static final int DRAWMODE_XOR_SPLIT 				= 27;
-
 	public static final int DRAWMODE_XOR_JOIN 				= 28;
-	
 	public static final int DRAWMODE_OR_SPLIT 				= 29;
-
 	public static final int DRAWMODE_SUBPROCESS 			= 30;
-
 	public static final int DRAWMODE_XOR_SPLITJOIN 			= 31;
-
 	public static final int DRAWMODE_ANDJOIN_XORSPLIT 		= 32;
-
 	public static final int DRAWMODE_AND_SPLITJOIN 			= 33;
-
 	public static final int DRAWMODE_XORJOIN_ANDSPLIT 		= 34;
-
 	public static final int DRAWMODE 						= 35;
-	
 	public static final int TOKENGAME 						= 36;
-
 	public static final int CAN_UNDO 						= 38;
-	
 	public static final int CAN_REDO 						= 39;
-
 	public static final int CAN_PASTE 						= 40;
-
 	public static final int CAN_CUTCOPY 					= 41;
-
 	public static final int CAN_RENAME	 					= 42;
-
 	public static final int SUBPROCESS_EDITOR 				= 43;
-	
 	public static final int REACH_GRAPH_START 				= 44;
-
 	public static final int COLORING 						= 45;
-	
 	public static final int ROTATE 							= 46;
-
 	public static final int TREEVIEW_VISIBLE 				= 47;
-
 	public static final int OVERVIEW_VISIBLE 				= 48;
-
 	public static final int APROMORE_IMPORT 				= 49;
-	
 	public static final int APROMORE_EXPORT 				= 50;
-	
 	public static final int IS_REGISTERED					= 51;
-	
-	// The following describe states that may occur while token game mode
-	// is enabled
-	
 	// Exactly one sub process 'transition' is active and can be executed
 	public static final int TOKENGAME_SUBPROCESS_TRANSITION_ACTIVE = 52;
 	// We are currently executing a sub process
 	public static final int TOKENGAME_IN_SUBPROCESS		    = 53;
 	// Exactly one transition is active and can occur
 	public static final int TOKENGAME_TRANSITION_ACTIVE		= 54;
-	// Transitions have occurred, so there is history information
+
+    // The following describe states that may occur while token game mode
+    // is enabled
+    // Transitions have occurred, so there is history information
 	public static final int TOKENGAME_TRANSITION_HISTORY	= 55;
 	// The token game is in auto-play mode
 	public static final int TOKENGAME_AUTOPLAY_MODE			= 56;
-	// Auto play is running 
-	public static final int TOKENGAME_AUTOPLAY_PLAYING		= 57;
-	
+    // Auto play is running
+    public static final int TOKENGAME_AUTOPLAY_PLAYING		= 57;
 	public static final int P2T	 							= 58;
-	
 	private static final int MAX_ID 						= 59;
-
-	// For each WoPeD action, we store a corresponding visibility configuration
+    private static VisualController instance = null;
+    private AbstractApplicationMediator am = null;
+    private boolean active = true;
+    // For each WoPeD action, we store a corresponding visibility configuration
 	private Map<WoPeDAction, IVisibility> actionVisibilityMap = new HashMap<WoPeDAction,IVisibility>();	
 	
 	private boolean arcpointSelected   = false;
 	
 	private boolean[] m_status = new boolean[MAX_ID + 1];
-
-	private static VisualController instance = null;
-
-	
-	public static VisualController getInstance()
-	{
-		return instance;
-	}
 
 	public VisualController(ApplicationMediator am)
 	{
@@ -270,47 +168,14 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		m_status[NO_SELECTION] = true;
 	}
 
-	/**
-	 * Adds a object which is supposed to be controlled, using DefaultVisibility.
-	 * Note that each aspect of an action's visibility (enabled, visible, selected)
-	 * must depend on exactly one attribute. If this is too simplistic for you,
-	 * please supply a custom IVisibility implementation using the method below
-	 * 
-	 * @param obj
-	 *            the newly added Object
-	 * @param enable
-	 *            tells when the element is supposed to be enabled.
-	 * @param visible
-	 *            tells when the element is supposed to be visible.
-	 * @param selected
-	 *            element is supposed to be selected.
-	 */
-	public void addElement(WoPeDAction action, int enable, int visible, int selected)
-	{
-		IVisibility visibilityConfiguration = 
-				new DefaultVisibility(enable, visible, selected);
-		addElement(action, visibilityConfiguration);
-	}
+    public static VisualController getInstance() {
+        return instance;
+    }
 
-
-	/**
-	 * Adds a object which is supposed to be controlled, using a custom visibility object.
-	 * 
-	 * @param obj
-	 *            the newly added Object
-	 * @param visibility
-	 *            decide about visibility options for the specified WoPeDAction
-	 */
-	public void addElement(WoPeDAction action, IVisibility visibilityConfiguration)
-	{
-		actionVisibilityMap.put(action, visibilityConfiguration);
-		updateStatus(action);
-	}
-	
 	/**
 	 * Changes the enabling status of all targets belonging to action
-	 * 
-	 * @param action	associated WoPeD action
+     *
+     * @param action	associated WoPeD action
 	 * @param status	target enabling status
 	 * @return tells whether the status has been changed successfully.
 	 */
@@ -322,29 +187,25 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			{
 				ArrayList<JComponent> targets = action.getTarget();
 				Iterator<JComponent> it = targets.iterator();
-				while (it.hasNext()) 
-				{
-					JComponent target = it.next();	
-					
-					if (! (target instanceof JMenuItem)) 
-					{
+                while (it.hasNext()) {
+                    JComponent target = it.next();
+
+                    if (!(target instanceof JMenuItem)) {
 						target.setEnabled(status);
 					}
 					//TODO: Workaround for OSXMenuItem
-					if ((target instanceof JMenuItem)) 
-					{
+                    if ((target instanceof JMenuItem)) {
 						if( target.getClass().getName().equals("org.woped.starter.osxMenu.OSXMenuItem") || target instanceof JCheckBoxMenuItem){
 							target.setEnabled(status);
-							target.setVisible(true);		
-						}
+                            target.setVisible(true);
+                        }
 					}
-					
-					
-				}
-				
+
+
+                }
+
 				return true;
-			} 
-			catch (Exception e)
+            } catch (Exception e)
 			{
 				LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change enabling status (code: " + action.getValue("NAME") + "): " + status);
 			}
@@ -355,8 +216,8 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 
 	/**
 	 * Changes the selection status of all targets belonging to action
-	 * 
-	 * @param action	associated WoPeD action
+     *
+     * @param action	associated WoPeD action
 	 * @param status target selection status
 	 * @return tells whether the status has been changed successfully.
 	 */
@@ -368,22 +229,17 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			{
 				ArrayList<JComponent> targets = action.getTarget();
 				Iterator<JComponent> it = targets.iterator();
-				while (it.hasNext()) 
-				{
+                while (it.hasNext()) {
 					JComponent target = it.next();
-					if (target instanceof JCommandButton) 
-					{
+                    if (target instanceof JCommandButton) {
 						((JCommandButton)target).setFlat(!status);
-					} 
-					else if (target instanceof JCheckBox) 
-					{
+                    } else if (target instanceof JCheckBox) {
 						((JCheckBox)target).setSelected(status);
 					}
 				}
 
 				return true;
-			} 
-			catch (Exception e)
+            } catch (Exception e)
 			{
 				LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change selection status (code: " + action.getValue("NAME") + "): " + status);
 			}
@@ -394,8 +250,8 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 
 	/**
 	 * Changes the visibility status of all targets belonging to action
-	 * 
-	 * @param action	associated WoPeD action
+     *
+     * @param action	associated WoPeD action
 	 * @param status target visibility status
 	 * @return tells whether the status has been changed successfully.
 	 */
@@ -407,12 +263,10 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			{
 				ArrayList<JComponent> targets = action.getTarget();
 				Iterator<JComponent> it = targets.iterator();
-				while (it.hasNext()) 
-				{
+                while (it.hasNext()) {
 					JComponent target = it.next();
 					//TODO: Workaround for OSXMenuItem - Check depenencies
-					if (target instanceof JMenuItem) 
-					{
+                    if (target instanceof JMenuItem) {
 						if( target.getClass().getName().equals("org.woped.starter.osxMenu.OSXMenuItem") || target instanceof JCheckBoxMenuItem)
 							target.setVisible(true);
 						else
@@ -421,42 +275,70 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 				}
 
 				return true;
-			} 
-			catch (Exception e)
+            } catch (Exception e)
 			{
 				LoggerManager.warn(Constants.EDITOR_LOGGER, "Could not change visibility status (code: " + action.getValue("NAME") + "): " + status);
 			}
 		}
-		
+
 		return false;
 	}
 
+    /**
+     * Adds a object which is supposed to be controlled, using DefaultVisibility.
+     * Note that each aspect of an action's visibility (enabled, visible, selected)
+     * must depend on exactly one attribute. If this is too simplistic for you,
+     * please supply a custom IVisibility implementation using the method below
+     *
+     * @param obj      the newly added Object
+     * @param enable   tells when the element is supposed to be enabled.
+     * @param visible  tells when the element is supposed to be visible.
+     * @param selected element is supposed to be selected.
+     */
+    public void addElement(WoPeDAction action, int enable, int visible, int selected) {
+        IVisibility visibilityConfiguration = new DefaultVisibility(enable, visible, selected);
+        addElement(action, visibilityConfiguration);
+    }
+
 	/**
-	 * Changes the selected the selected, visible and enable status for all
+     * Adds a object which is supposed to be controlled, using a custom visibility object.
+     *
+     * @param obj
+     *            the newly added Object
+     * @param visibility
+     *            decide about visibility options for the specified WoPeDAction
+     */
+    public void addElement(WoPeDAction action, IVisibility visibilityConfiguration) {
+        actionVisibilityMap.put(action, visibilityConfiguration);
+        updateStatus(action);
+    }
+
+    /**
+     * Changes the selected the selected, visible and enable status for all
 	 * subscribed objects.
-	 * 
+     *
 	 * @param attribute
-	 * @param status
+     * @param status
 	 */
 	private void setStatus(int attribute, boolean status)
 	{
 		m_status[attribute] = status;
-		updateStatusAll();		
+        updateStatusAll();
+    }
+
+    private void updateStatusAll() {
+        for (WoPeDAction action : this.actionVisibilityMap.keySet())
+            updateStatus(action);
 	}
 
-	private void updateStatusAll() {
-		for (WoPeDAction action: this.actionVisibilityMap.keySet())			
-			updateStatus(action);
-	}
-	
 	private void updateStatus(WoPeDAction action) {
 		setEnabled(action, actionVisibilityMap.get(action).getEnabled(m_status));
 		setVisible(action, actionVisibilityMap.get(action).getVisible(m_status));
-		setSelected(action, actionVisibilityMap.get(action).getSelected(m_status));					
-	}
+        setSelected(action, actionVisibilityMap.get(action).getSelected(m_status));
+    }
 
-	/**
-	 * PropertyChanges will be fired when one of the following happens:
+    /**
+     * PropertyChanges will be fired when one of the following happens:
 	 * <ul>
 	 * <li>The Number of InternalFrames(Editors) changes.</li>
 	 * <li>A different InternalFrame gets selected.</li>
@@ -464,7 +346,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	 * <li>The TokenGame gets started or stopped.</li>
 	 * <li>The Understandability Coloring gets activated.</li>
 	 * </ol>
-	 * 
+     *
 	 * @see PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
 	 */
 	public void propertyChange(PropertyChangeEvent arg0)
@@ -474,7 +356,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			if ("Registration".equals(arg0.getPropertyName())) {
 				checkRegistration();
 			}
-			
+
 			if ("InternalFrameCount".equals(arg0.getPropertyName()))
 			{
 				checkActiveEditor();
@@ -491,9 +373,9 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 				checkActiveEditor();
 				checkSelection();
 				checkUndoRedo();
-				checkColoring();	
-				checkSidebar();
-				checkRotation();
+                checkColoring();
+                checkSidebar();
+                checkRotation();
 				checkDrawMode();
 				checkMode();
 			} else if ("DrawMode".equals(arg0.getPropertyName()))
@@ -519,10 +401,10 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			} else if ("Import".equals(arg0.getPropertyName()))
 			{
 				setStatus(ROTATE, true);
-			}			
+            }
 			} else if (JSplitPane.DIVIDER_LOCATION_PROPERTY.equals(arg0.getPropertyName())){
 				checkSidebarDivider();
-		}	
+        }
 	}
 
 	/**
@@ -535,26 +417,25 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 
 	protected void checkSidebarDivider() {
 		IEditor editor = am.getUi().getEditorFocus();
-		
+
 		if (editor != null) {
 			editor.checkMainSplitPaneDivider();
 		}
 	}
-	
+
 	protected void checkSidebar()
 	{
 		boolean status = false;
 		EditorVC editor = ((EditorVC)(am.getUi().getEditorFocus()));
-		
-		status = (editor == null) ? false : editor.getEditorPanel().isOverviewPanelVisible();
-		setStatus(OVERVIEW_VISIBLE, status);
-		
-		status = (editor == null) ? false : editor.getEditorPanel().isTreeviewPanelVisible();
-		setStatus(TREEVIEW_VISIBLE, status);
+
+		status = editor != null && editor.getEditorPanel().isOverviewPanelVisible();
+        setStatus(OVERVIEW_VISIBLE, status);
+
+		status = editor != null && editor.getEditorPanel().isTreeviewPanelVisible();
+        setStatus(TREEVIEW_VISIBLE, status);
 	}
 
-
-	/**
+    /**
 	 * Check what elements are selected and changes the status accordingly.
 	 */
 	protected void checkSelection()
@@ -562,18 +443,17 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		IEditor 		editor = am.getUi().getEditorFocus();
 		AbstractGraph 	graph = null;
 		Object 			selectedCell = null, mainCell = null;
-		
-		if (isActive())
-		{	
+
+		if (isActive()) {
 			graph = null;
-			selectedCell = null;
+            selectedCell = null;
 			if (editor != null)
 			{
 				graph = editor.getGraph();
 				selectedCell = graph.getSelectionCell();
 				mainCell = selectedCell;
 			}
-			
+
 			boolean noSelection = (selectedCell == null && !arcpointSelected);
 			boolean routedArcSelected = false;
 			boolean xorArcSelected = false;
@@ -588,41 +468,38 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			boolean subprocessSelected = false;
 			boolean arcSelected = false;
 			boolean nameSelected = false;
-			boolean operatorSelected = false;	
-			boolean groupSelected = false;
+            boolean operatorSelected = false;
+            boolean groupSelected = false;
 			boolean multipleSelected = false;
 			int triggerType = TriggerModel.TRIGGER_NONE;
-			
+
 			while (selectedCell instanceof GroupModel)
 			{
 				selectedCell = ((GroupModel) selectedCell).getMainElement();
 			}
-			
-			if (graph != null && graph.isGroup(mainCell) && ((GroupModel)mainCell).isUngroupable()) 
-			{
-				groupSelected = true;
-			} 
-			else if (graph != null && graph.getSelectionCount() > 1) 
-			{
-				multipleSelected = true;
+
+			if (graph != null && graph.isGroup(mainCell) && ((GroupModel) mainCell).isUngroupable()) {
+                groupSelected = true;
+            }
+			else if (graph != null && graph.getSelectionCount() > 1) {
+                multipleSelected = true;
 			}
 			else if (selectedCell instanceof ArcModel)
 			{
 				arcSelected = true;
 				ArcModel a = (ArcModel)selectedCell;
-				if (a.isXORsplit(editor.getModelProcessor())) 
-				{
-					xorArcSelected = true;
+                if (a.isXORsplit(editor.getModelProcessor())) {
+                    xorArcSelected = true;
 				}
 				if (((ArcModel) selectedCell).isRoute())
 				{
 					routedArcSelected = true;
-				} 
+                }
 				else
 				{
-					unroutedArcSelected = true;
-				} 					
-			} 
+                    unroutedArcSelected = true;
+                }
+			}
 			else if (selectedCell instanceof SubProcessModel)
 			{
 				subprocessSelected = true;
@@ -631,38 +508,30 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			{
 				transitionSelected = true;
 				operatorSelected = true;
-				
+
 				if (((OperatorTransitionModel) selectedCell).hasTrigger()) {
 					triggerType = ((OperatorTransitionModel)selectedCell).getTriggerType();
 					triggeredTransitionSelected = true;
 				}
-				
-				if (triggerType != TriggerModel.TRIGGER_MESSAGE) 
-					noMessageTriggerSelected = true;
-				if (triggerType != TriggerModel.TRIGGER_TIME) 
-					noTimeTriggerSelected = true;
-				if (triggerType != TriggerModel.TRIGGER_RESOURCE) 
-					noResourceTriggerSelected = true;				
 
-			} 
-			else if (selectedCell instanceof TransitionModel)
+				if (triggerType != TriggerModel.TRIGGER_MESSAGE) noMessageTriggerSelected = true;
+                if (triggerType != TriggerModel.TRIGGER_TIME) noTimeTriggerSelected = true;
+                if (triggerType != TriggerModel.TRIGGER_RESOURCE) noResourceTriggerSelected = true;
+
+            } else if (selectedCell instanceof TransitionModel)
 			{
 				transitionSelected = true;
-				
+
 				if (((TransitionModel)selectedCell).hasTrigger()) {
 					triggerType = ((TransitionModel)selectedCell).getTriggerType();
 					triggeredTransitionSelected = true;
 				}
-					
-				if (triggerType != TriggerModel.TRIGGER_MESSAGE) 
-					noMessageTriggerSelected = true;
-				if (triggerType != TriggerModel.TRIGGER_TIME) 
-					noTimeTriggerSelected = true;
-				if (triggerType != TriggerModel.TRIGGER_RESOURCE) 
-					noResourceTriggerSelected = true;				
 
-			} 	
-			else if (selectedCell instanceof PlaceModel)
+				if (triggerType != TriggerModel.TRIGGER_MESSAGE) noMessageTriggerSelected = true;
+                if (triggerType != TriggerModel.TRIGGER_TIME) noTimeTriggerSelected = true;
+                if (triggerType != TriggerModel.TRIGGER_RESOURCE) noResourceTriggerSelected = true;
+
+            } else if (selectedCell instanceof PlaceModel)
 			{
 				placeSelected = true;
 				if (((PlaceModel) selectedCell).hasTokens())
@@ -674,24 +543,21 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			{
 				transitionSelected = true;
 				triggeredTransitionSelected = true;
-				
+
 				triggerType = ((TriggerModel)selectedCell).getTriggertype();
-				
-				if (triggerType != TriggerModel.TRIGGER_MESSAGE) 
-					noMessageTriggerSelected = true;
-				if (triggerType != TriggerModel.TRIGGER_TIME) 
-					noTimeTriggerSelected = true;
-				if (triggerType != TriggerModel.TRIGGER_RESOURCE) 
-					noResourceTriggerSelected = true;
+
+				if (triggerType != TriggerModel.TRIGGER_MESSAGE) noMessageTriggerSelected = true;
+                if (triggerType != TriggerModel.TRIGGER_TIME) noTimeTriggerSelected = true;
+                if (triggerType != TriggerModel.TRIGGER_RESOURCE) noResourceTriggerSelected = true;
 			}
 			else if (selectedCell instanceof NameModel)
 			{
 				nameSelected = true;
-			} 
-							
+            }
+
 			setStatus(NO_SELECTION, noSelection);
-			setStatus(ANY_SELECTION, !noSelection && !nameSelected && !arcpointSelected); 
-			setStatus(SUBPROCESS_SELECTION, subprocessSelected);
+            setStatus(ANY_SELECTION, !noSelection && !nameSelected && !arcpointSelected);
+            setStatus(SUBPROCESS_SELECTION, subprocessSelected);
 			setStatus(PLACE_SELECTION, placeSelected);
 			setStatus(TOKEN_PLACE_SELECTION, tokenPlaceSelected);
 			setStatus(ROUTED_ARC_SELECTION, routedArcSelected);
@@ -710,10 +576,10 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			setStatus(GROUP_SELECTION, groupSelected);
 			setStatus(MULTIPLE_SELECTION, multipleSelected);
 			setStatus(CAN_CUTCOPY, transitionSelected | placeSelected | multipleSelected | groupSelected | subprocessSelected);
-			setStatus(CAN_PASTE, editor == null ? false : !editor.isClipboardEmpty());
-			setStatus(CAN_RENAME, subprocessSelected);
-		};		
-	}
+            setStatus(CAN_PASTE, editor != null && !editor.isClipboardEmpty());
+            setStatus(CAN_RENAME, subprocessSelected);
+        }
+    }
 
 	protected void checkDrawMode()
 	{
@@ -752,8 +618,8 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			case (OperatorTransitionModel.XOR_SPLIT_TYPE):
 				xorSplit = true;
 				break;
-			case (OperatorTransitionModel.XOR_SPLITJOIN_TYPE):
-				xorSplitJoin = true;
+                case (OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE):
+                xorSplitJoin = true;
 				break;
 			case (OperatorTransitionModel.XOR_JOIN_TYPE):
 				xorJoin = true;
@@ -772,7 +638,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 				break;
 			}
 		}
-	
+
 		setStatus(DRAWMODE_PLACE, place);
 		setStatus(DRAWMODE_TRANSITION, transition);
 		setStatus(DRAWMODE_AND_SPLIT, andSplit);
@@ -784,23 +650,23 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		setStatus(DRAWMODE_ANDJOIN_XORSPLIT, andJoinXorSplit);
 		setStatus(DRAWMODE_XORJOIN_ANDSPLIT, xorJoinAndSplit);
 		setStatus(DRAWMODE_OR_SPLIT, orSplit);
-		setStatus(DRAWMODE_SUBPROCESS, subprocess);			
-	}
+        setStatus(DRAWMODE_SUBPROCESS, subprocess);
+    }
 
-	protected void checkAproMoRe() {
+    protected void checkAproMoRe() {
 		setStatus(APROMORE_IMPORT, ConfigurationManager.getConfiguration().getApromoreUse());
 		setStatus(APROMORE_EXPORT, ConfigurationManager.getConfiguration().getApromoreUse() & am.getUi().getEditorFocus() != null);
 	}
-	
+
 	/**
 	 * Checks whether an Editor is active.
-	 * 
+     *
 	 */
 	protected void checkActiveEditor()
 	{
 		boolean noEditors = (am.getUi().getAllEditors().size() < 1);
 		setStatus(WITH_EDITOR, !noEditors);
-		
+
 		if (am.getUi().getEditorFocus() != null)
 		{
 			setStatus(SUBPROCESS_EDITOR, !(am.getUi().getEditorFocus()
@@ -812,12 +678,12 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		}
 	}
 
-	protected void checkMode()
+    protected void checkMode()
 	{
 		boolean tokengame = false;
 		boolean drawMode = false;
 		IEditor editor = am.getUi().getEditorFocus();
-		
+
 		if (editor != null) {
 			tokengame = editor.isTokenGameEnabled();
 			drawMode = !tokengame;
@@ -832,21 +698,18 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		boolean redo = false;
 		if (am.getUi().getEditorFocus() != null)
 		{
-			UndoManager undoManager = ((WoPeDJGraph) am.getUi()
-					.getEditorFocus().getGraph()).getUndoManager();
-			if (undoManager != null) {
+            UndoManager undoManager = am.getUi().getEditorFocus().getGraph().getUndoManager();
+            if (undoManager != null) {
 
 				if (am.getUi().getEditorFocus() instanceof SubprocessEditorVC)
 					undo = ((WoPeDUndoManager) undoManager).canUndo(am.getUi()
-							.getEditorFocus().getModelProcessor()
-							.getElementContainer());	
-			
-				else
-				undo = undoManager.canUndo();
+							.getEditorFocus().getModelProcessor().getElementContainer());
+
+                else undo = undoManager.canUndo();
 				redo = undoManager.canRedo();
 			}
 		}
-		
+
 		setStatus(CAN_UNDO, undo);
 		setStatus(CAN_REDO, redo);
 	}
@@ -859,7 +722,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		}
 		setStatus(COLORING, coloringActive);
 	}
-	
+
 	protected void checkRotation(){
 		boolean rotateActive = false;
 		if (am.getUi().getEditorFocus() != null)
@@ -869,17 +732,17 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		}
 		setStatus(ROTATE, rotateActive);
 	}
-		
-	protected void checkRegistration() {
+
+    protected void checkRegistration() {
 		boolean isRegistered = ConfigurationManager.getConfiguration().isRegistered();
 		setStatus(IS_REGISTERED, isRegistered);
 	}
 
-	public void notify(boolean isEmpty)
+    public void notify(boolean isEmpty)
 	{
 		setStatus(CAN_PASTE, am.getUi().getAllEditors().size() > 0 && !isEmpty);
 	}
-	
+
 	protected void checkTokenGame(ITokenGameController.TokenGameStats tokenGameStats) {
 		setStatus(TOKENGAME_SUBPROCESS_TRANSITION_ACTIVE, tokenGameStats.numActiveSubprocesses == 1);
 		setStatus(TOKENGAME_IN_SUBPROCESS, tokenGameStats.inSubprocess);
@@ -889,7 +752,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 		setStatus(TOKENGAME_AUTOPLAY_PLAYING, tokenGameStats.autoPlayPlaying);
 	}
 
-	public boolean isActive()
+    public boolean isActive()
 	{
 		return active;
 	}
@@ -922,34 +785,76 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	public void setArcpointSelection(boolean status) {
 		arcpointSelected = status;
 		checkSelection();
-		
+
 	}
-		
-	private class DefaultVisibility implements IVisibility {		
-		
-		public boolean getVisible(boolean status[]) {
-			return ((attributeVisible > IGNORE && attributeVisible <= MAX_ID)
-					?status[attributeVisible]:false);
-		}
-		public boolean getEnabled(boolean status[]) {
-			return ((attributeEnabled > IGNORE && attributeEnabled <= MAX_ID)
-					?status[attributeEnabled]:false);			
-		}
-		public boolean getSelected(boolean status[]) {
-			return ((attributeSelected > IGNORE && attributeSelected <= MAX_ID)
-					?status[attributeSelected]:false);						
-		}
+
+	/**
+     * Objects implementing IVisibility control the visual representation
+     * of WoPeDAction instances in menus etc.
+     * Whether an action is visible, enabled or selected depends on attributes
+     * describing application-wide state, such as whether an editor window is currently
+     * open and in focus (WITH_EDITOR) or whether a token game is active (TOKENGAME).
+     *
+     * For convenience, there is a default implementation called DefaultVisibility,
+     * covering simple cases where visual representation depends on only one
+     * attribute for each visible, enabled and selected.
+     *
+     * @author weirdsoul
+     *
+     */
+    public interface IVisibility {
+        /**
+         * Return whether an associated action should be visible, depending on the
+         * specified status
+         *
+         * @param status An array of attributes that are either enabled or disabled
+         * @return true if action should be visible, false otherwise
+         */
+        boolean getVisible(boolean status[]);
+
+        /**
+         * Return whether an associated action should be enabled, depending on the
+         * specified status
+         *
+         * @param status An array of attributes that are either enabled or disabled
+         * @return true if action should be enabled, false otherwise
+         */
+        boolean getEnabled(boolean status[]);
+
+        /**
+         * Return whether an associated action should be selected, depending on the
+         * specified status
+         *
+         * @param status An array of attributes that are either enabled or disabled
+         * @return true if action should be selected, false otherwise
+         */
+        boolean getSelected(boolean status[]);
+    }
+
+    private class DefaultVisibility implements IVisibility {
+
+        private int attributeVisible;
+        private int attributeEnabled;
+		private int attributeSelected;
 		
 		public DefaultVisibility(int attributeEnabled,
 				int attributeVisible, int attributeSelected) {
 			this.attributeVisible = attributeVisible;
-			this.attributeEnabled = attributeEnabled;
-			this.attributeSelected = attributeSelected;
-		}
-		
-		private int attributeVisible;
-		private int attributeEnabled;
-		private int attributeSelected;
+            this.attributeEnabled = attributeEnabled;
+            this.attributeSelected = attributeSelected;
+        }
+
+        public boolean getVisible(boolean status[]) {
+            return ((attributeVisible > IGNORE && attributeVisible <= MAX_ID) && status[attributeVisible]);
+        }
+
+        public boolean getEnabled(boolean status[]) {
+            return ((attributeEnabled > IGNORE && attributeEnabled <= MAX_ID) && status[attributeEnabled]);
+        }
+
+        public boolean getSelected(boolean status[]) {
+            return ((attributeSelected > IGNORE && attributeSelected <= MAX_ID) && status[attributeSelected]);
+        }
 	}		
 	
 }

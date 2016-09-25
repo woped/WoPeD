@@ -116,7 +116,7 @@ public class PNMLImportTest {
         CreationMap map = CreationMap.createMap();
         map.setId("t2");
         map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
-        map.setOperatorType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+        map.setOperatorType(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
         TransitionModel t2 = (TransitionModel) ModelElementFactory.createModelElement(map);
         net.container.addElement(t2);
 
@@ -153,7 +153,7 @@ public class PNMLImportTest {
         CreationMap map = CreationMap.createMap();
         map.setId("t2");
         map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
-        map.setOperatorType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+        map.setOperatorType(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
         TransitionModel t2 = (TransitionModel) ModelElementFactory.createModelElement(map);
         net.container.addElement(t2);
 
@@ -277,7 +277,7 @@ public class PNMLImportTest {
         CreationMap map = CreationMap.createMap();
         map.setId("t2");
         map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
-        map.setOperatorType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+        map.setOperatorType(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
         TransitionModel t2 = (TransitionModel) ModelElementFactory.createModelElement(map);
         net.container.addElement(t2);
 

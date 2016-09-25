@@ -150,7 +150,7 @@ public class ViewFactory extends AbstractViewFactory
 
                 return new TransOrSplitView(cell, editor);
 
-            } else if (aTCell.getOperatorType() == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+            } else if (aTCell.getOperatorType() == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE)
             {
 
                 return new TransXOrSplitJoinView(cell, editor);
@@ -178,7 +178,7 @@ public class ViewFactory extends AbstractViewFactory
         } else if (cell instanceof TriggerModel)
         {
             TriggerModel aTCell = (TriggerModel) cell;
-            /* Hier die Überprüfung ob Besondere View ? */
+            /* Hier die ï¿½berprï¿½fung ob Besondere View ? */
             if (aTCell.getTriggertype() == TriggerModel.TRIGGER_MESSAGE)
             {
 

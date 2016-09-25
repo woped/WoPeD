@@ -9,8 +9,8 @@ public class XORSplitJoinOperatorTransitionModel extends
 		CombiOperatorTransitionModel {
 
 	public XORSplitJoinOperatorTransitionModel(CreationMap map) {
-		super(map, XOR_SPLITJOIN_TYPE);
-	}
+        super(map, XORJOIN_XORSPLIT_TYPE);
+    }
 
 	@Override
 	public void registerIncomingConnection(

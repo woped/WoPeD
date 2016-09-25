@@ -27,6 +27,81 @@ import org.woped.qualanalysis.structure.components.RouteInfo;
 
 public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWellStructuredness {
 
+    // ! Will become true once
+    // ! the basic net info has been calculated
+    boolean m_bBasicNetInfoAvailable = false;
+    // ! Stores a set of all the places of
+    // ! the processed net
+    HashSet<AbstractPetriNetElementModel> m_places = new HashSet<AbstractPetriNetElementModel>();
+    // ! Stores a set of all the transitions of
+    // ! the processed net
+    HashSet<AbstractPetriNetElementModel> m_transitions = new HashSet<AbstractPetriNetElementModel>();
+    // ! Stores a set of all the subprocesses of
+    // ! the processed net
+    HashSet<AbstractPetriNetElementModel> m_subprocesses = new HashSet<AbstractPetriNetElementModel>();
+    // ! Stores a set of all operators.
+    // ! Operators are AND-split, AND-join
+    // ! XOR-Split, XOR-Join, AND-Split-Join
+    // ! XOR-Split-Join
+    HashSet<AbstractPetriNetElementModel> m_operators = new HashSet<AbstractPetriNetElementModel>();
+    // ! Remember XOR-split operators and operators that
+    // ! function as an XOR-split (e.g. xor-split-join)
+    HashSet<AbstractPetriNetElementModel> m_xorsplits = new HashSet<AbstractPetriNetElementModel>();
+    // ! Remember XOR-join operators and operators that
+    // ! function as an XOR-join (e.g. xor-split-join)
+    HashSet<AbstractPetriNetElementModel> m_xorjoins = new HashSet<AbstractPetriNetElementModel>();
+    // ! Remember AND-split operators and operators that
+    // ! function as an AND-split (e.g. and-split-join)
+    HashSet<AbstractPetriNetElementModel> m_andsplits = new HashSet<AbstractPetriNetElementModel>();
+    // ! Remember AND-join operators and operators that
+    // ! function as an AND-join (e.g. and-split-join)
+    HashSet<AbstractPetriNetElementModel> m_andjoins = new HashSet<AbstractPetriNetElementModel>();
+    // ! Stores the number of arcs contained in this net
+    int m_nNumArcs = 0;
+    // ! Stores a set of source places
+    HashSet<AbstractPetriNetElementModel> m_sourcePlaces = new HashSet<AbstractPetriNetElementModel>();
+    // ! Stores a set of sink places
+    HashSet<AbstractPetriNetElementModel> m_sinkPlaces = new HashSet<AbstractPetriNetElementModel>();
+    // ! Stores a set of source transitions
+    HashSet<AbstractPetriNetElementModel> m_sourceTransitions = new HashSet<AbstractPetriNetElementModel>();
+    // ! Stores a set of sink transitions
+    HashSet<AbstractPetriNetElementModel> m_sinkTransitions = new HashSet<AbstractPetriNetElementModel>();
+    // ! Misused operators are operators that
+    // ! do not have a specific minimum or maximum of
+    // ! input/output arcs
+    // ! as is required by their operator type
+    HashSet<AbstractPetriNetElementModel> m_misusedOperators = new HashSet<AbstractPetriNetElementModel>();
+    boolean m_bConnectionInfoAvailable = false;
+    // ! Stores a list of all nodes (transitions
+    // ! and places that are not connected)
+    HashSet<AbstractPetriNetElementModel> m_notConnectedNodes = new HashSet<AbstractPetriNetElementModel>();
+    // ! Stores a list of all nodes (transitions
+    // ! and places that are not strongly connected)
+    HashSet<AbstractPetriNetElementModel> m_notStronglyConnectedNodes = new HashSet<AbstractPetriNetElementModel>();
+    boolean m_bFreeChoiceInfoAvailable = false;
+    // ! Stores a list of free-choice violations
+    // ! consisting of node sets
+    HashSet<Set<AbstractPetriNetElementModel>> m_freeChoiceViolations = new HashSet<Set<AbstractPetriNetElementModel>>();
+    // ! Becomes true once TP handles have been detected
+    boolean m_bTPHandlesAvailable = false;
+    // ! Stores a list of TP handles
+    // ! consisting of node sets
+    HashSet<Set<AbstractPetriNetElementModel>> m_TPHandles = new HashSet<Set<AbstractPetriNetElementModel>>();
+    // ! Becomes true once PT handles have been detected
+    boolean m_bPTHandlesAvailable = false;
+    // ! Stores a list of TP handles
+    // ! consisting of node sets
+    HashSet<Set<AbstractPetriNetElementModel>> m_PTHandles = new HashSet<Set<AbstractPetriNetElementModel>>();
+    HashSet<Set<ClusterElement>> m_handles = new HashSet<Set<ClusterElement>>();
+    // ! Becomes true once handle clusters have been detected
+    boolean m_bHandleClustersAvailable = false;
+    HashSet<Set<ClusterElement>> m_handleClusters = new HashSet<Set<ClusterElement>>();
+    // ! Remember a reference to the current editor
+    // ! as we need it to access the net
+    private IEditor m_currentEditor;
+    // ! Reference to the low level net
+    private LowLevelNet m_lolNet = null;
+
     // ! Construct static analysis object from
     // ! a petri-net editor
     // ! Note that this object will not perform all
@@ -153,98 +228,6 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         return m_handleClusters;
     }
 
-    // ! Remember a reference to the current editor
-    // ! as we need it to access the net
-    private IEditor m_currentEditor;
-
-    // ! Will become true once
-    // ! the basic net info has been calculated
-    boolean m_bBasicNetInfoAvailable = false;
-
-    // ! Stores a set of all the places of
-    // ! the processed net
-    HashSet<AbstractPetriNetElementModel> m_places = new HashSet<AbstractPetriNetElementModel>();
-    // ! Stores a set of all the transitions of
-    // ! the processed net
-    HashSet<AbstractPetriNetElementModel> m_transitions = new HashSet<AbstractPetriNetElementModel>();
-    // ! Stores a set of all the subprocesses of
-    // ! the processed net
-    HashSet<AbstractPetriNetElementModel> m_subprocesses = new HashSet<AbstractPetriNetElementModel>();
-
-    // ! Stores a set of all operators.
-    // ! Operators are AND-split, AND-join
-    // ! XOR-Split, XOR-Join, AND-Split-Join
-    // ! XOR-Split-Join
-    HashSet<AbstractPetriNetElementModel> m_operators = new HashSet<AbstractPetriNetElementModel>();
-
-    // ! Remember XOR-split operators and operators that
-    // ! function as an XOR-split (e.g. xor-split-join)
-    HashSet<AbstractPetriNetElementModel> m_xorsplits = new HashSet<AbstractPetriNetElementModel>();
-    // ! Remember XOR-join operators and operators that
-    // ! function as an XOR-join (e.g. xor-split-join)
-    HashSet<AbstractPetriNetElementModel> m_xorjoins = new HashSet<AbstractPetriNetElementModel>();
-
-    // ! Remember AND-split operators and operators that
-    // ! function as an AND-split (e.g. and-split-join)
-    HashSet<AbstractPetriNetElementModel> m_andsplits = new HashSet<AbstractPetriNetElementModel>();
-    // ! Remember AND-join operators and operators that
-    // ! function as an AND-join (e.g. and-split-join)
-    HashSet<AbstractPetriNetElementModel> m_andjoins = new HashSet<AbstractPetriNetElementModel>();
-
-    // ! Stores the number of arcs contained in this net
-    int m_nNumArcs = 0;
-
-    // ! Stores a set of source places
-    HashSet<AbstractPetriNetElementModel> m_sourcePlaces = new HashSet<AbstractPetriNetElementModel>();
-    // ! Stores a set of sink places
-    HashSet<AbstractPetriNetElementModel> m_sinkPlaces = new HashSet<AbstractPetriNetElementModel>();
-
-    // ! Stores a set of source transitions
-    HashSet<AbstractPetriNetElementModel> m_sourceTransitions = new HashSet<AbstractPetriNetElementModel>();
-    // ! Stores a set of sink transitions
-    HashSet<AbstractPetriNetElementModel> m_sinkTransitions = new HashSet<AbstractPetriNetElementModel>();
-
-    // ! Misused operators are operators that
-    // ! do not have a specific minimum or maximum of
-    // ! input/output arcs
-    // ! as is required by their operator type
-    HashSet<AbstractPetriNetElementModel> m_misusedOperators = new HashSet<AbstractPetriNetElementModel>();
-
-    boolean m_bConnectionInfoAvailable = false;
-
-    // ! Stores a list of all nodes (transitions
-    // ! and places that are not connected)
-    HashSet<AbstractPetriNetElementModel> m_notConnectedNodes = new HashSet<AbstractPetriNetElementModel>();
-    // ! Stores a list of all nodes (transitions
-    // ! and places that are not strongly connected)
-    HashSet<AbstractPetriNetElementModel> m_notStronglyConnectedNodes = new HashSet<AbstractPetriNetElementModel>();
-
-    boolean m_bFreeChoiceInfoAvailable = false;
-    // ! Stores a list of free-choice violations
-    // ! consisting of node sets
-    HashSet<Set<AbstractPetriNetElementModel>> m_freeChoiceViolations = new HashSet<Set<AbstractPetriNetElementModel>>();
-
-    // ! Becomes true once TP handles have been detected
-    boolean m_bTPHandlesAvailable = false;
-    // ! Stores a list of TP handles
-    // ! consisting of node sets
-    HashSet<Set<AbstractPetriNetElementModel>> m_TPHandles = new HashSet<Set<AbstractPetriNetElementModel>>();
-
-    // ! Becomes true once PT handles have been detected
-    boolean m_bPTHandlesAvailable = false;
-    // ! Stores a list of TP handles
-    // ! consisting of node sets
-    HashSet<Set<AbstractPetriNetElementModel>> m_PTHandles = new HashSet<Set<AbstractPetriNetElementModel>>();
-
-    // ! Reference to the low level net
-    private LowLevelNet m_lolNet = null;
-
-    HashSet<Set<ClusterElement>> m_handles = new HashSet<Set<ClusterElement>>();
-
-    // ! Becomes true once handle clusters have been detected
-    boolean m_bHandleClustersAvailable = false;
-    HashSet<Set<ClusterElement>> m_handleClusters = new HashSet<Set<ClusterElement>>();
-
     // ! Trigger the calculation of basic net information
     private void calculateBasicNetInfo() {
         // We cache all calculated information
@@ -299,13 +282,11 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
                         m_andjoins.add(operator);
 
                     }
-                    if ((operatorType == OperatorTransitionModel.XOR_SPLIT_TYPE)
-                            || (operatorType == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+                    if ((operatorType == OperatorTransitionModel.XOR_SPLIT_TYPE) || (operatorType == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE)
                             || (operatorType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
                         m_xorsplits.add(operator);
                     }
-                    if ((operatorType == OperatorTransitionModel.XOR_JOIN_TYPE)
-                            || (operatorType == OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
+                    if ((operatorType == OperatorTransitionModel.XOR_JOIN_TYPE) || (operatorType == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE)
                             || (operatorType == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)) {
                         m_xorjoins.add(operator);
                     }
@@ -369,7 +350,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
             break;
         // All split-join types must have at least two inputs
         // as well as at least two outputs
-        case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
+            case OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE:
         case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
         case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
         case OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE:
@@ -434,7 +415,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         AbstractPetriNetElementModel ttemp = null;
         // Create transition 't*'
         Iterator<AbstractPetriNetElementModel> i = m_transitions.iterator();
-        AbstractPetriNetElementModel transitionTemplate = ((i.hasNext()) ? (AbstractPetriNetElementModel) i.next() : null);
+        AbstractPetriNetElementModel transitionTemplate = ((i.hasNext()) ? i.next() : null);
         if (transitionTemplate != null) {
             CreationMap tempMap = transitionTemplate.getCreationMap();
             tempMap.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
@@ -935,10 +916,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         if (getNotConnectedNodes().size() != 0) {
             return false;
         }
-        if (getNotStronglyConnectedNodes().size() != 0) {
-            return false;
-        }
-        return true;
+        return getNotStronglyConnectedNodes().size() == 0;
     }
 
 }

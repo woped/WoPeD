@@ -30,13 +30,13 @@ public class WorkflowNetGraph {
 		
 		nodeArray = new Node[numNodes];
 		int nextIdx = 0;
-		
-		AbstractPetriNetElementModel source = (AbstractPetriNetElementModel)qualanService.getSourcePlaces().iterator().next();
-		sourcePlace = new Node(source.getId(), source.getNameValue());
+
+        AbstractPetriNetElementModel source = qualanService.getSourcePlaces().iterator().next();
+        sourcePlace = new Node(source.getId(), source.getNameValue());
 		sourcePlace.setType(Node.TYPE_PLACE);
-		
-		AbstractPetriNetElementModel sink = (AbstractPetriNetElementModel)qualanService.getSinkPlaces().iterator().next();
-		sinkPlace = new Node(sink.getId(), sink.getNameValue());
+
+        AbstractPetriNetElementModel sink = qualanService.getSinkPlaces().iterator().next();
+        sinkPlace = new Node(sink.getId(), sink.getNameValue());
 		sinkPlace.setType(Node.TYPE_PLACE);
 		
 		initNodeArray();
@@ -123,7 +123,7 @@ public class WorkflowNetGraph {
 			n.setFork(true);
 		
 		while (postNodes.hasNext()){
-			AbstractPetriNetElementModel currentPlace = (AbstractPetriNetElementModel) postNodes.next();
+            AbstractPetriNetElementModel currentPlace = postNodes.next();
 
 			int nodeIdx = getNodeIdx(currentPlace.getId());
 			Node postNode = null;
@@ -150,11 +150,11 @@ public class WorkflowNetGraph {
 							postNode.setAndSplit(true);
 							postNode.setType(Node.TYPE_AND_SPLIT);							
 						}
-						if ((type == OperatorTransitionModel.XOR_JOIN_TYPE) || (type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)){
-							postNode.setType(Node.TYPE_XOR_JOIN);
+                        if ((type == OperatorTransitionModel.XOR_JOIN_TYPE) || (type == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) || (type == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE)) {
+                            postNode.setType(Node.TYPE_XOR_JOIN);
 						}
-						if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE) || (type == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) || (type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)){
-							postNode.setType(Node.TYPE_XOR_SPLIT);
+                        if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE) || (type == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) || (type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
+                            postNode.setType(Node.TYPE_XOR_SPLIT);
 						}
 						break;
 					case AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE:
@@ -188,7 +188,7 @@ public class WorkflowNetGraph {
 		}
 		
 		while (preNodes.hasNext()){
-			AbstractPetriNetElementModel currentNode = (AbstractPetriNetElementModel) preNodes.next();
+            AbstractPetriNetElementModel currentNode = preNodes.next();
 
 			int nodeIdx = getNodeIdx(currentNode.getId());
 			if (nodeIdx >= nodeArray.length){

@@ -564,7 +564,7 @@ public class PNMLImport {
                         for (int j = 0; j < places[i].getToolspecificArray().length; j++) {
                             if (places[i].getToolspecificArray(j).getTool().equals("WoPeD")) {
                                 switch (places[i].getToolspecificArray(j).getOperator().getType()) {
-                                    case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
+                                    case OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE:
                                     case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
                                     case OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE:
                                         doNOTcreate = true;

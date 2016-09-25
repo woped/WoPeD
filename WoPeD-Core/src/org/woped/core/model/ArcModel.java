@@ -55,16 +55,12 @@ import org.woped.core.utilities.LoggerManager;
 @SuppressWarnings("serial")
 public class ArcModel extends DefaultEdge implements Serializable {
 
-    private String id;
-
-    private boolean activated = false;
-
-    private Vector<Object> unknownToolSpecs = new Vector<Object>();
-
-    private ElementContext elementContext = null;
-
     private static final Color DEFAULT_COLOR = Color.BLACK;
     private static final Color DEFAULT_HIGHLIGHTED_COLOR = Color.RED;
+    private String id;
+    private boolean activated = false;
+    private Vector<Object> unknownToolSpecs = new Vector<Object>();
+    private ElementContext elementContext = null;
 
     // ! Stores the probability for this arc to be chosen
     // ! Currently, this is a dummy value
@@ -94,6 +90,15 @@ public class ArcModel extends DefaultEdge implements Serializable {
         super(userObject);
         this.elementContext = new ElementContext();
         initAttributes();
+    }
+
+    public static double getHeightC(Point2D A, Point2D B, Point2D C) {
+        double distAC = Point2D.distance(A.getX(), A.getY(), C.getX(), C.getY());
+        double thetaAB = Math.atan2(B.getY() - A.getY(), B.getX() - A.getX());
+        double thetaAC = Math.atan2(C.getY() - A.getY(), C.getX() - A.getX());
+        double height = Math.sin(thetaAC - thetaAB) * distAC;
+
+        return height;
     }
 
     public void setHighlighted(boolean highlighted) {
@@ -145,10 +150,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
         getAttributes().applyMap(map);
     }
 
-    public Point2D getDefaultLabelPosition() {
-        return new Point2D.Double(GraphConstants.PERMILLE / 2, 0);
-    }
-
 
 //	public int getWeight() {
 //		return Integer.parseInt((String) getUserObject());
@@ -157,6 +158,10 @@ public class ArcModel extends DefaultEdge implements Serializable {
 //	public void setWeight(int weight) {
 //		setUserObject(String.valueOf(weight));
 //	}
+
+    public Point2D getDefaultLabelPosition() {
+        return new Point2D.Double(GraphConstants.PERMILLE / 2, 0);
+    }
 
     public boolean isXORsplit(PetriNetModelProcessor mp) {
         Object cell = ((DefaultPort) getSource()).getParent();
@@ -168,7 +173,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
         if (cell instanceof TransitionModel) {
             TransitionModel trans = (TransitionModel) cell;
             int opType = trans.getToolSpecific().getOperatorType();
-            if ((opType == OperatorTransitionModel.XOR_SPLIT_TYPE) || (opType == OperatorTransitionModel.XOR_SPLITJOIN_TYPE) || (opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
+            if ((opType == OperatorTransitionModel.XOR_SPLIT_TYPE) || (opType == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) || (opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
                 return true;
             }
         }
@@ -183,7 +188,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
 
         return false;
     }
-
 
     /**
      * Returns the inscriptionValue.
@@ -218,6 +222,8 @@ public class ArcModel extends DefaultEdge implements Serializable {
         return id;
     }
 
+    // REVIEW: Why not just hold a ref to the source?
+
     /**
      * Sets the id.
      *
@@ -227,7 +233,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
         this.id = id;
     }
 
-    // REVIEW: Why not just hold a ref to the source?
     /**
      * Gets the id of the arcs source
      *
@@ -249,6 +254,11 @@ public class ArcModel extends DefaultEdge implements Serializable {
         return ((AbstractPetriNetElementModel) ((DefaultPort) getTarget()).getParent()).getId();
     }
 
+    public boolean isRoute() {
+        return (!GraphConstants.ROUTING_DEFAULT.equals(GraphConstants.getRouting(getAttributes())));
+
+    }
+
     /**
      * TODO: Documentation
      *
@@ -263,11 +273,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
             getAttributes().remove(GraphConstants.ROUTING);
             getAttributes().remove(GraphConstants.POINTS);
         }
-    }
-
-    public boolean isRoute() {
-        return (!GraphConstants.ROUTING_DEFAULT.equals(GraphConstants.getRouting(getAttributes())));
-
     }
 
     /**
@@ -392,15 +397,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
             return pos;
         }
         return -1;
-    }
-
-    public static double getHeightC(Point2D A, Point2D B, Point2D C) {
-        double distAC = Point2D.distance(A.getX(), A.getY(), C.getX(), C.getY());
-        double thetaAB = Math.atan2(B.getY() - A.getY(), B.getX() - A.getX());
-        double thetaAC = Math.atan2(C.getY() - A.getY(), C.getX() - A.getX());
-        double height = Math.sin(thetaAC - thetaAB) * distAC;
-
-        return height;
     }
 
     /**

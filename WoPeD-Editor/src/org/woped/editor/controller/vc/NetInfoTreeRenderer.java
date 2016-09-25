@@ -98,8 +98,8 @@ public class NetInfoTreeRenderer extends DefaultTreeCellRenderer
 	    	case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
 	    		result = andSplitJoin;
 	    		break;
-	    	case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
-	    		result = xorSplitJoin;
+                case OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE:
+                    result = xorSplitJoin;
 	    		break;
 	    	case OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE:
 	    		result = andJoinXorSplit;

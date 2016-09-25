@@ -100,9 +100,9 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
     		}
             break;
         case AbstractViewEvent.DRAWMODE_XORSPLITJOIN:
-        	if (currentEditor.getCreateElementType() != OperatorTransitionModel.XOR_SPLITJOIN_TYPE) {
-        		currentEditor.setDrawMode(OperatorTransitionModel.XOR_SPLITJOIN_TYPE, true);
-        	}
+            if (currentEditor.getCreateElementType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
+                currentEditor.setDrawMode(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE, true);
+            }
         	else {
         		currentEditor.setDrawMode(-1, false);
     		}
@@ -153,7 +153,7 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
         case AbstractViewEvent.UPDATE:
             for (Iterator<IEditor> iter = getMediator().getUi().getAllEditors().iterator(); iter.hasNext();)
             {
-                currentEditor = ((EditorVC) iter.next());
+                currentEditor = iter.next();
                 currentEditor.getGraph().setGridVisible(ConfigurationManager.getConfiguration().isShowGrid());
                 for (Iterator<String> iterator = currentEditor.getModelProcessor().getElementContainer().getArcMap().keySet().iterator(); iterator.hasNext();)
                 {

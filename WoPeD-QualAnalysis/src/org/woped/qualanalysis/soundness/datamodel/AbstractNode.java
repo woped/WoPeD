@@ -145,9 +145,7 @@ public abstract class AbstractNode implements INode<AbstractNode> {
     public String toString() {
     	String nodeName = "";
     	
-        if (this.optype == OperatorTransitionModel.XOR_JOIN_TYPE || 
-            	this.optype == OperatorTransitionModel.XOR_SPLITJOIN_TYPE ||
-            	this.optype == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE) {
+        if (this.optype == OperatorTransitionModel.XOR_JOIN_TYPE || this.optype == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE || this.optype == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE) {
         	Iterator<AbstractNode> it = getPreNodes().iterator();
     		nodeName += "(";
     		while (it.hasNext()) {
@@ -162,9 +160,7 @@ public abstract class AbstractNode implements INode<AbstractNode> {
         
         nodeName += name;
     	
-        if (this.optype == OperatorTransitionModel.XOR_SPLIT_TYPE || 
-        	this.optype == OperatorTransitionModel.XOR_SPLITJOIN_TYPE ||
-        	this.optype == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
+        if (this.optype == OperatorTransitionModel.XOR_SPLIT_TYPE || this.optype == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE || this.optype == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
         	Iterator<AbstractNode> it = getPostNodes().iterator();
     		nodeName += "(";
     		while (it.hasNext()) {

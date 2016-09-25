@@ -93,246 +93,120 @@ import org.woped.gui.translations.Messages;
 public class TransitionPropertyEditor extends JDialog implements
 		ActionListener, IDialog {
 
-	Object activityType = null;
-
+    private static final String COMBOBOX_YEARS_TEXT = Messages.getString("Transition.Properties.Years");
+    private static final String COMBOBOX_MONTHS_TEXT = Messages.getString("Transition.Properties.Months");
+    private static final String COMBOBOX_WEEKS_TEXT = Messages.getString("Transition.Properties.Weeks");
+    private static final String COMBOBOX_DAYS_TEXT = Messages.getString("Transition.Properties.Days");
+    private static final String COMBOBOX_HOURS_TEXT = Messages.getString("Transition.Properties.Hours");
+    private static final String COMBOBOX_MINUTES_TEXT = Messages.getString("Transition.Properties.Minutes");
+    private static final String COMBOBOX_SECONDS_TEXT = Messages.getString("Transition.Properties.Seconds");
+    private static final Object[] serviceTimeValues = {COMBOBOX_SECONDS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT, COMBOBOX_WEEKS_TEXT, COMBOBOX_MONTHS_TEXT, COMBOBOX_YEARS_TEXT};
+    private static final String TRIGGER_NONE = Messages.getString("Transition.Properties.Trigger.None");
+    private static final String TRIGGER_MESSAGE = Messages.getString("Transition.Properties.Trigger.Message");
+    private static final String TRIGGER_RESOURCE = Messages.getString("Transition.Properties.Trigger.Resource");
+    private static final String TRIGGER_TIME = Messages.getString("Transition.Properties.Trigger.Time");
+    private static final String ORIENTATION_NORTH = Messages.getString("Transition.Properties.Orientation.North");
+    private static final String ORIENTATION_EAST = Messages.getString("Transition.Properties.Orientation.East");
+    private static final String ORIENTATION_SOUTH = Messages.getString("Transition.Properties.Orientation.South");
+    private static final String ORIENTATION_WEST = Messages.getString("Transition.Properties.Orientation.West");
+    private static final String ROLE_NONE = Messages.getString("Transition.Properties.Role.None");
+    private static final String GROUP_NONE = Messages.getString("Transition.Properties.Group.None");
+    Object activityType = null;
 	// General
 	private TransitionModel transition = null;
-
 	private EditorVC editor = null;
-
 	private JPanel contentPanel = null;
-
 	private JPanel bpelContentPanel = null;
-
 	private JPanel bpelPanel = null;
-
 	private JTabbedPane tabPane = null;
-
 	private JPanel activityChoosePanel = null;
-
 	private JComboBox activityChooseComboBox = null;
-
 	private JLabel activityChooseLabel = null;
-
 	private BPELemptyPanel emptyPanel = null;
-
 	private BPELassignPanel assignPanel = null;
-
 	private BPELinvokePanel invokePanel = null;
-
 	private BPELreceivePanel receivePanel = null;
-
 	private BPELreplyPanel replyPanel = null;
-
 	private BPELwaitPanel waitPanel = null;
-
 	private GridBagConstraints c1 = new GridBagConstraints();
-
 	private GridBagConstraints c2 = new GridBagConstraints();
-
 	// Name
 	private JPanel namePanel = null;
-
 	private JLabel nameLabel = null;
-
 	private JTextField nameTextField = null;
-
 	private JLabel idLabel = null;
-
 	private JTextField idTextField = null;
-
 	// Branching
 	private JPanel branchingPanel = null;
-
 	private JRadioButton branchingNoneRadioButton = null;
-
 	private JRadioButton branchingAndSplitRadioButton = null;
-
 	private JRadioButton branchingAndJoinRadioButton = null;
-
 	private JRadioButton branchingAndSplitJoinRadioButton = null;
-
 	private JRadioButton branchingXorSplitRadioButton = null;
-
 	private JRadioButton branchingXorJoinRadioButton = null;
-
 	private JRadioButton branchingXorSplitJoinRadioButton = null;
-
 	private JRadioButton branchingAndJoinXorSplitRadioButton = null;
-
 	private JRadioButton branchingXorJoinAndSplitRadioButton = null;
-
 	private ButtonGroup branchingButtonGroup = null;
-
 	private JPanel branchingNoneEntry = null;
-
 	private JPanel branchingAndSplitEntry = null;
-
 	private JPanel branchingAndJoinEntry = null;
-
 	private JPanel branchingAndSplitJoinEntry = null;
-
 	private JPanel branchingXorSplitEntry = null;
-
 	private JPanel branchingXorJoinEntry = null;
-
 	private JPanel branchingXorSplitJoinEntry = null;
-
 	private JPanel branchingAndJoinXorSplitEntry = null;
-
 	private JPanel branchingXorJoinAndSplitEntry = null;
-
 	private JLabel branchingNoneIcon = null;
-
 	private JLabel branchingAndSplitIcon = null;
-
 	private JLabel branchingAndJoinIcon = null;
-
 	private JLabel branchingAndSplitJoinIcon = null;
-
 	private JLabel branchingXorSplitIcon = null;
-
 	private JLabel branchingXorJoinIcon = null;
-
 	private JLabel branchingXorSplitJoinIcon = null;
-
 	private JLabel branchingAndJoinXorSplitIcon = null;
-
 	private JLabel branchingXorJoinAndSplitIcon = null;
-
 	// Service time
 	private JPanel serviceTimePanel = null;
-
 	private JLabel serviceTimeLabel = null;
-
 	private JTextField serviceTimeTextField = null;
-
 	private JComboBox serviceTimeComboBox = null;
-
-	private static final String COMBOBOX_YEARS_TEXT = Messages
-			.getString("Transition.Properties.Years");
-
-	private static final String COMBOBOX_MONTHS_TEXT = Messages
-			.getString("Transition.Properties.Months");
-
-	private static final String COMBOBOX_WEEKS_TEXT = Messages
-			.getString("Transition.Properties.Weeks");
-
-	private static final String COMBOBOX_DAYS_TEXT = Messages
-			.getString("Transition.Properties.Days");
-
-	private static final String COMBOBOX_HOURS_TEXT = Messages
-			.getString("Transition.Properties.Hours");
-
-	private static final String COMBOBOX_MINUTES_TEXT = Messages
-			.getString("Transition.Properties.Minutes");
-
-	private static final String COMBOBOX_SECONDS_TEXT = Messages
-			.getString("Transition.Properties.Seconds");
-
-	private static final Object[] serviceTimeValues = { COMBOBOX_SECONDS_TEXT,
-			COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT,
-			COMBOBOX_WEEKS_TEXT, COMBOBOX_MONTHS_TEXT, COMBOBOX_YEARS_TEXT };
-
 	private String oldTime;
-
 	private String oldTimeUnit;
-
 	// Trigger
 	private JPanel triggerPanel = null;
-
 	private JRadioButton triggerNoneRadioButton = null;
-
 	private JRadioButton triggerResourceRadioButton = null;
-
 	private JRadioButton triggerMessageRadioButton = null;
-
 	private JRadioButton triggerTimeRadioButton = null;
-
 	private ButtonGroup triggerButtonGroup = null;
-
 	private JPanel triggerNoneEntry = null;
-
 	private JPanel triggerResourceEntry = null;
-
 	private JPanel triggerMessageEntry = null;
-
 	private JPanel triggerTimeEntry = null;
-
 	private JLabel triggerResourceIcon = null;
-
 	private JLabel triggerMessageIcon = null;
-
 	private JLabel triggerTimeIcon = null;
-
-	private static final String TRIGGER_NONE = Messages
-			.getString("Transition.Properties.Trigger.None");
-
-	private static final String TRIGGER_MESSAGE = Messages
-			.getString("Transition.Properties.Trigger.Message");
-
-	private static final String TRIGGER_RESOURCE = Messages
-			.getString("Transition.Properties.Trigger.Resource");
-
-	private static final String TRIGGER_TIME = Messages
-			.getString("Transition.Properties.Trigger.Time");
-
 	// Orientation
 	private JPanel orientationPanel = null;
-
 	private JRadioButton orientationNorthRadioButton = null;
-
 	private JRadioButton orientationEastRadioButton = null;
-
 	private JRadioButton orientationSouthRadioButton = null;
-
 	private JRadioButton orientationWestRadioButton = null;
-
 	private ButtonGroup orientationButtonGroup = null;
-
 	private JLabel orientationIcon = null;
-
-	private static final String ORIENTATION_NORTH = Messages
-			.getString("Transition.Properties.Orientation.North");
-
-	private static final String ORIENTATION_EAST = Messages
-			.getString("Transition.Properties.Orientation.East");
-
-	private static final String ORIENTATION_SOUTH = Messages
-			.getString("Transition.Properties.Orientation.South");
-
-	private static final String ORIENTATION_WEST = Messages
-			.getString("Transition.Properties.Orientation.West");
-
 	private OperatorPosition pos = null;
-
 	private boolean orientationChanged = false;
-
 	// Resource
 	private JPanel resourcePanel = null;
-
 	private JLabel resourceRoleLabel = null;
-
 	private JLabel resourceGroupLabel = null;
-
 	private JComboBox resourceRoleComboBox = null;
-
 	private JComboBox resourceGroupComboBox = null;
-
 	private DefaultComboBoxModel roleComboBoxModel = null;
-
 	private DefaultComboBoxModel groupComboBoxModel = null;
-
 	private JLabel numResourcesLabel = null;
-
 	private JTextField numResourcesTextField = null;
-
-	private static final String ROLE_NONE = Messages
-			.getString("Transition.Properties.Role.None");
-
-	private static final String GROUP_NONE = Messages
-			.getString("Transition.Properties.Group.None");
-
 	// Buttons
 	private JPanel buttonPanel = null;
 
@@ -1014,8 +888,8 @@ public class TransitionPropertyEditor extends JDialog implements
 			case OperatorTransitionModel.XOR_JOIN_TYPE:
 				getBranchingXorJoinRadioButton().setSelected(true);
 				break;
-			case OperatorTransitionModel.XOR_SPLITJOIN_TYPE:
-				getBranchingXorSplitJoinRadioButton().setSelected(true);
+                case OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE:
+                    getBranchingXorSplitJoinRadioButton().setSelected(true);
 				break;
 			case OperatorTransitionModel.AND_SPLITJOIN_TYPE:
 				getBranchingAndSplitJoinRadioButton().setSelected(true);
@@ -1525,15 +1399,13 @@ public class TransitionPropertyEditor extends JDialog implements
 		String role = resourceRoleComboBox.getSelectedItem().toString();
 		String group = resourceGroupComboBox.getSelectedItem().toString();
 
-		Vector<?> res = ((PetriNetModelProcessor) (editor.getModelProcessor()))
-				.getResources();
+        Vector<?> res = editor.getModelProcessor().getResources();
 		int count = 0;
 		Vector<?> rlist;
 
 		for (int i = 0; i < res.size(); i++) {
 			String name = res.get(i).toString();
-			rlist = ((PetriNetModelProcessor) (editor.getModelProcessor()))
-					.getResourceClassesResourceIsAssignedTo(name);
+            rlist = editor.getModelProcessor().getResourceClassesResourceIsAssignedTo(name);
 
 			if (rlist.contains(role) && rlist.contains(group)) {
 				count++;
@@ -1563,14 +1435,11 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private DefaultComboBoxModel getRoleComboxBoxModel() {
 		if (roleComboBoxModel == null) {
-			if (((PetriNetModelProcessor) getEditor().getModelProcessor())
-					.getRoles() != null) {
+            if (getEditor().getModelProcessor().getRoles() != null) {
 				roleComboBoxModel = new DefaultComboBoxModel();
 				roleComboBoxModel.addElement(ROLE_NONE);
 
-				for (Iterator<?> iter = ((PetriNetModelProcessor) getEditor()
-						.getModelProcessor()).getRoles().iterator(); iter
-						.hasNext();) {
+                for (Iterator<?> iter = getEditor().getModelProcessor().getRoles().iterator(); iter.hasNext();) {
 					roleComboBoxModel.addElement(iter.next());
 				}
 
@@ -1589,14 +1458,11 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private DefaultComboBoxModel getGroupComboxBoxModel() {
 		if (groupComboBoxModel == null) {
-			if (((PetriNetModelProcessor) getEditor().getModelProcessor())
-					.getOrganizationUnits() != null) {
+            if (getEditor().getModelProcessor().getOrganizationUnits() != null) {
 				groupComboBoxModel = new DefaultComboBoxModel();
 				groupComboBoxModel.addElement(GROUP_NONE);
 
-				for (Iterator<?> iter = ((PetriNetModelProcessor) getEditor()
-						.getModelProcessor()).getOrganizationUnits().iterator(); iter
-						.hasNext();) {
+                for (Iterator<?> iter = getEditor().getModelProcessor().getOrganizationUnits().iterator(); iter.hasNext();) {
 					groupComboBoxModel.addElement(iter.next());
 				}
 
@@ -2034,11 +1900,9 @@ public class TransitionPropertyEditor extends JDialog implements
 		else if (command.equals(Messages.getString("Transition.Properties.Branching.XorJoin")) && type != OperatorTransitionModel.XOR_JOIN_TYPE)
 		{
 			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XOR_JOIN_TYPE);
-		}
-		else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplitJoin")) && type != OperatorTransitionModel.XOR_SPLITJOIN_TYPE)
-		{
-			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
-		}
+		} else if (command.equals(Messages.getString("Transition.Properties.Branching.XorSplitJoin")) && type != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
+            transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
+        }
 		else if (command.equals(Messages.getString("Transition.Properties.Branching.AndJoinXorSplit")) && type != OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)
 		{
 			transformTransition(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE, OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE);
@@ -2163,7 +2027,7 @@ public class TransitionPropertyEditor extends JDialog implements
 
 		while (arcIterator.hasNext())
 		{
-			ArcModel curArc = (ArcModel) arcMap.get(arcIterator.next());
+            ArcModel curArc = arcMap.get(arcIterator.next());
 
 			if (curArc.getSourceId().equals(oldMap.getId()))
 				outAcrs.add(curArc.getCreationMap());

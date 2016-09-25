@@ -93,7 +93,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 				break;
 			case AbstractViewEvent.ADD_XORSPLITJOIN:
 				map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
-				map.setOperatorType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+				map.setOperatorType(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
 				editor.create(map);
 				break;
 			case AbstractViewEvent.ADD_ANDJOINXORSPLIT:
