@@ -648,8 +648,8 @@ public class TokenGameController implements ITokenGameController {
     }
 
     /**
-     * This method has been implemented to allow backward-stepping through the net. It cares about stepping back transitions as well as arcs. This method is
-     * called by the TokenGameController.occurTransitionbyTokenGameBarVC
+     * This method has been implemented to allow backward-stepping through the net. It cares about stepping back
+     * transitions as well as arcs. This method is called by the TokenGameController.occurTransition by TokenGameBarVC
      *
      * @param transition
      * @param arc
@@ -660,45 +660,12 @@ public class TokenGameController implements ITokenGameController {
         // and only deactivate the transition after a *successful* click
 
         boolean actionPerformed = false;
+
         if (transition != null) {
-            receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
-            sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
-            actionPerformed = true;
-        } else // if it is an arc ==> it is some kind of XOR-Operation
-        {
-            AbstractPetriNetElementModel source = getPetriNet().getElementContainer().getElementById(arc.getSourceId());
-            AbstractPetriNetElementModel target = getPetriNet().getElementContainer().getElementById(arc.getTargetId());
-            OperatorTransitionModel tempOperator;
-            if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
-                tempOperator = (OperatorTransitionModel) target;
-                receiveBackwardTokens(arc);
-                if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
-                    sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
-                    actionPerformed = true;
-                } else {
-                    // Special code for splitjoin. We have to take the
-                    // token from the center place
-                    if (tempOperator.getCenterPlace() != null) {
-                        tempOperator.getCenterPlace().sendToken();
-                        actionPerformed = true;
-                    }
-                }
-            }
-            if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
-                tempOperator = (OperatorTransitionModel) source;
-                sendBackwardTokens(arc);
-                if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
-                    receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
-                    actionPerformed = true;
-                } else {
-                    // Special code for splitjoin. We have to send the token
-                    // to the center place
-                    if (tempOperator.getCenterPlace() != null) {
-                        tempOperator.getCenterPlace().receiveToken();
-                    }
-                    actionPerformed = true;
-                }
-            }
+            actionPerformed = reverseTransition(transition);
+        } else if (arc != null) {
+            // if it is an arc ==> it is some kind of XOR-Operation
+            actionPerformed = reverseOperatorTransition(arc);
         }
 
         if (actionPerformed == true) {
@@ -708,6 +675,66 @@ public class TokenGameController implements ITokenGameController {
             // This will also trigger a redraw
             checkNet();
         }
+    }
+
+    /**
+     * Fires the transition in the reverse direction.
+     *
+     * @param transition the transition to execute reverse.
+     * @return true if the action was performed, otherwise false.
+     */
+    private boolean reverseTransition(TransitionModel transition) {
+        boolean actionPerformed;
+        receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+        sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
+        actionPerformed = true;
+        return actionPerformed;
+    }
+
+    /**
+     * Fires the transition the arc points to in the reverse direction.
+     * <p>
+     * This operation is only useful, if the transition is a kind of xor operator.
+     * If a other kind of operator is passed then the action won't be performed.
+     *
+     * @param arc the arc containing the transition to execute reverse.
+     * @return true if the action was performed, otherwise false
+     */
+    boolean reverseOperatorTransition(ArcModel arc) {
+        boolean actionPerformed = false;
+        AbstractPetriNetElementModel source = getPetriNet().getElementContainer().getElementById(arc.getSourceId());
+        AbstractPetriNetElementModel target = getPetriNet().getElementContainer().getElementById(arc.getTargetId());
+        OperatorTransitionModel tempOperator;
+
+        if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+            tempOperator = (OperatorTransitionModel) target;
+            receiveBackwardTokens(arc);
+            if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
+                sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
+                actionPerformed = true;
+            } else {
+                // Special code for splitjoin. We have to take the token from the center place
+                if (tempOperator.getCenterPlace() != null) {
+                    tempOperator.getCenterPlace().sendToken();
+                    actionPerformed = true;
+                }
+            }
+        }
+        if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+            tempOperator = (OperatorTransitionModel) source;
+            sendBackwardTokens(arc);
+            if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
+                receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
+                actionPerformed = true;
+            } else {
+                // Special code for splitjoin. We have to send the token to the center place
+                if (tempOperator.getCenterPlace() != null) {
+                    tempOperator.getCenterPlace().receiveToken();
+                }
+                actionPerformed = true;
+            }
+        }
+        return actionPerformed;
     }
 
     /*

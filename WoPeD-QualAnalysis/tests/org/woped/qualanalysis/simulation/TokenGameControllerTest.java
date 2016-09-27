@@ -3,6 +3,7 @@ package org.woped.qualanalysis.simulation;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.config.PlaceholderConfigurerSupport;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
@@ -134,6 +135,263 @@ public class TokenGameControllerTest {
         int actual = targetPlace.getVirtualTokenCount();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseOperatorTransition_targetIsXorJoinOperator_sourceReceivesTokens() throws Exception {
+        sut = createTestInstance(createXorJoinNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        PlaceModel sourcePlace = (PlaceModel) container.getElementById("p1");
+        ArcModel reversedArc = container.findArc("p1", "t1");
+
+        int expected = sourcePlace.getVirtualTokenCount() + reversedArc.getInscriptionValue();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = sourcePlace.getVirtualTokenCount();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseOperatorTransition_targetIsXorJoinOperator_targetPlaceRemovesTokens() throws Exception {
+        sut = createTestInstance(createXorJoinNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        PlaceModel targetPlace = (PlaceModel) container.getElementById("p3");
+        targetPlace.setTokens(2);
+
+        ArcModel reversedArc = container.findArc("p1", "t1");
+        ArcModel outgoingArc = container.findArc("t1", "p3");
+
+        int expected = targetPlace.getVirtualTokenCount() - outgoingArc.getInscriptionValue();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = targetPlace.getVirtualTokenCount();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseOperatorTransition_targetIsXorJoinOperator_independentPlaceDoesNotReceiveTokens() throws Exception {
+        sut = createTestInstance(createXorJoinNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        PlaceModel independentPlace = (PlaceModel) container.getElementById("p2");
+        ArcModel reversedArc = container.findArc("p1", "t1");
+
+        int expected = independentPlace.getVirtualTokenCount();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = independentPlace.getVirtualTokenCount();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseOperatorTransition_targetIsXorJoinOperator_returnsTrue() throws Exception {
+        sut = createTestInstance(createXorJoinNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("p1", "t1");
+
+        boolean actionPerformed = sut.reverseOperatorTransition(reversedArc);
+        assertTrue(actionPerformed);
+    }
+
+    @Test
+    public void reversedOperatorTransition_targetIsXorJoinSplitOperator_centerPlaceRemovesToken() throws Exception {
+        sut = createTestInstance(createXorJoinSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("p1", "t1");
+        reversedArc.setInscriptionValue(2);
+
+        XORJoinSplitOperatorTransitionModel transition = (XORJoinSplitOperatorTransitionModel) container.getElementById(reversedArc.getTargetId());
+        PlaceModel centerPlace = transition.getCenterPlace();
+        centerPlace.setVirtualTokens(1);
+
+        int expected = centerPlace.getVirtualTokenCount() - 1; // Indepentend of arc weight
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = centerPlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reversedOperatorTransition_targetIsXorJoinSplitOperator_sourcePlaceReceivesTokens() throws Exception {
+        sut = createTestInstance(createXorJoinSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("p1", "t1");
+
+        PlaceModel sourcePlace = (PlaceModel) container.getElementById(reversedArc.getSourceId());
+        int expected = sourcePlace.getVirtualTokenCount() + reversedArc.getInscriptionValue();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = sourcePlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reversedOperatorTransition_targetIsXorJoinSplitOperator_otherSourcePlacesDoNotChangeTokens() throws Exception {
+        sut = createTestInstance(createXorJoinSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("p1", "t1");
+
+        PlaceModel otherSourcePlace = (PlaceModel) container.getElementById("p2");
+        int expected = otherSourcePlace.getVirtualTokenCount();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = otherSourcePlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reversedOperatorTransition_targetIsXorJoinSplitOperator_targetPlacesDoNotChangeTokens() throws Exception {
+        sut = createTestInstance(createXorJoinSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("p1", "t1");
+
+        PlaceModel targetPlace1 = (PlaceModel) container.getElementById("p3");
+        PlaceModel targetPlace2 = (PlaceModel) container.getElementById("p4");
+        int target1TokensBefore = targetPlace1.getVirtualTokenCount();
+        int target2TokensBefore = targetPlace2.getVirtualTokenCount();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int target1TokensAfter = targetPlace1.getVirtualTokenCount();
+        int target2TokensAfter = targetPlace2.getVirtualTokenCount();
+        assertEquals(target1TokensBefore, target1TokensAfter);
+        assertEquals(target2TokensBefore, target2TokensAfter);
+    }
+
+    @Test
+    public void reverseOperatorTransition_sourceIsXorSplitOperator_returnsTrue() throws Exception {
+        sut = createTestInstance(createXorSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("t1", "p2");
+
+        boolean actionPerformed = sut.reverseOperatorTransition(reversedArc);
+        assertTrue(actionPerformed);
+    }
+
+    @Test
+    public void reverseOperatorTransition_sourceIsXorSplitOperator_targetPlaceRemovesTokens() throws Exception {
+        sut = createTestInstance(createXorSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("t1", "p2");
+        PlaceModel targetPlace = (PlaceModel) container.getElementById(reversedArc.getTargetId());
+        targetPlace.setVirtualTokens(reversedArc.getInscriptionValue());
+
+        int expected = targetPlace.getVirtualTokenCount() - reversedArc.getInscriptionValue();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = targetPlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseOperatorTransition_sourceIsXorSplitOperator_sourcePlaceReceivesTokens() throws Exception {
+        sut = createTestInstance(createXorSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("t1", "p2");
+        ArcModel incomingArc = container.findArc("p1", "t1");
+        PlaceModel sourcePlace = (PlaceModel) container.getElementById(incomingArc.getSourceId());
+
+        int expected = sourcePlace.getVirtualTokenCount() + incomingArc.getInscriptionValue();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = sourcePlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reverseOperatorTransition_sourceIsXorSplitOperator_independentPlaceDoesNotChangeTokens() throws Exception {
+        sut = createTestInstance(createXorSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("t1", "p2");
+        PlaceModel independentPlace = (PlaceModel) container.getElementById("p3");
+
+        int expected = independentPlace.getVirtualTokenCount();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = independentPlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reversedOperatorTransition_sourceIsXorJoinSplitOperator_centerPlaceReceivesToken() throws Exception {
+        sut = createTestInstance(createXorJoinSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+        ArcModel reversedArc = container.findArc("t1", "p3");
+        reversedArc.setInscriptionValue(2);
+
+        XORJoinSplitOperatorTransitionModel transition = (XORJoinSplitOperatorTransitionModel) container.getElementById(reversedArc.getSourceId());
+        PlaceModel centerPlace = transition.getCenterPlace();
+
+        int expected = centerPlace.getVirtualTokenCount() + 1; // independent of arc weight
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = centerPlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reversedOperatorTransition_sourceIsXorJoinSplitOperator_targetPlaceRemovesTokens() throws Exception {
+        sut = createTestInstance(createXorJoinSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("t1", "p3");
+
+        PlaceModel targetPlace = (PlaceModel) container.getElementById(reversedArc.getTargetId());
+        targetPlace.setVirtualTokens(reversedArc.getInscriptionValue());
+
+        int expected = targetPlace.getVirtualTokenCount() - reversedArc.getInscriptionValue();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = targetPlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reversedOperatorTransition_sourceIsXorJoinSplitOperator_otherTargetPlacesDoesNotChangeTokens() throws Exception {
+        sut = createTestInstance(createXorJoinSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("t1", "p3");
+        PlaceModel otherTargetPlace = (PlaceModel) container.getElementById("p4");
+
+        int expected = otherTargetPlace.getVirtualTokenCount();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actual = otherTargetPlace.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void reversedOperatorTransition_sourceIsXorJoinSplitOperator_sourcePlacesDoNotChangeTokens() throws Exception {
+        sut = createTestInstance(createXorJoinSplitNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+        ArcModel reversedArc = container.findArc("t1", "p3");
+
+        PlaceModel source1 = (PlaceModel) container.getElementById("p1");
+        PlaceModel source2 = (PlaceModel) container.getElementById("p2");
+        source2.setVirtualTokens(source1.getVirtualTokenCount() + 2);
+
+        int expectedSource1 = source1.getVirtualTokenCount();
+        int expectedSource2 = source2.getVirtualTokenCount();
+        sut.reverseOperatorTransition(reversedArc);
+
+        int actualSource1 = source1.getVirtualTokenCount();
+        int actualSource2 = source2.getVirtualTokenCount();
+        assertEquals("First place should not change tokens", expectedSource1, actualSource1);
+        assertEquals("Second place should not change tokens", expectedSource2, actualSource2);
     }
 
     private TokenGameController createTestInstance(PetriNetModelProcessor net) {
