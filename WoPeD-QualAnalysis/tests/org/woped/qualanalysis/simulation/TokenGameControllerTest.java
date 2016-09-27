@@ -3,7 +3,6 @@ package org.woped.qualanalysis.simulation;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.config.PlaceholderConfigurerSupport;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
@@ -15,10 +14,9 @@ import org.woped.core.model.petrinet.XORJoinSplitOperatorTransitionModel;
 
 import java.beans.PropertyChangeSupport;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.PLACE_TYPE;
 import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE;
