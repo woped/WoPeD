@@ -306,7 +306,7 @@ public class PNMLExportTest {
         PetriNetModelProcessor processor;
         ModelElementContainer container;
         PlaceModel p1;
-        XORSplitJoinOperatorTransitionModel t1;
+        XORJoinSplitOperatorTransitionModel t1;
 
         public DemoNet() {
 
@@ -323,7 +323,7 @@ public class PNMLExportTest {
             map.setId("t1");
             map.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
             map.setOperatorType(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
-            t1 = (XORSplitJoinOperatorTransitionModel) ModelElementFactory.createModelElement(map);
+            t1 = (XORJoinSplitOperatorTransitionModel) ModelElementFactory.createModelElement(map);
             container.addElement(t1);
         }
     }

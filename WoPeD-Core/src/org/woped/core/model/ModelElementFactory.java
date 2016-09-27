@@ -35,7 +35,7 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.XORJoinANDSplitOperatorTransitionModel;
 import org.woped.core.model.petrinet.XORJoinOperatorTransitionModel;
-import org.woped.core.model.petrinet.XORSplitJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.XORJoinSplitOperatorTransitionModel;
 import org.woped.core.model.petrinet.XORSplitOperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
 
@@ -94,8 +94,8 @@ public class ModelElementFactory
                 		modElement = new XORJoinOperatorTransitionModel(map);
                 		break;
                         case OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE:
-                            modElement = new XORSplitJoinOperatorTransitionModel(map);
-                		break;
+                            modElement = new XORJoinSplitOperatorTransitionModel(map);
+                            break;
                 	case OperatorTransitionModel.AND_SPLIT_TYPE:
                 		modElement = new ANDSplitOperatorTransitionModel(map);
                 		break;

@@ -519,7 +519,7 @@ public class PNMLExport {
      * and so on.
      * <p>
      * Not all arcs have an corresponding outer arc. For example, all arcs connected to the center place of
-     * an {@link XORSplitJoinOperatorTransitionModel}.
+     * an {@link XORJoinSplitOperatorTransitionModel}.
      *
      * @param netBean  the output bean for the petrinet
      * @param operator the operator

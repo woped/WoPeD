@@ -1,10 +1,8 @@
 package org.woped.qualanalysis.simulation;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.config.PlaceholderConfigurerSupport;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
@@ -12,8 +10,7 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.model.petrinet.XORSplitJoinOperatorTransitionModel;
+import org.woped.core.model.petrinet.XORJoinSplitOperatorTransitionModel;
 
 import java.beans.PropertyChangeSupport;
 
@@ -24,7 +21,6 @@ import static org.mockito.Mockito.when;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.PLACE_TYPE;
 import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE;
-import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE;
 
 public class TokenGameControllerTest {
 
@@ -123,7 +119,7 @@ public class TokenGameControllerTest {
         sut = createTestInstance(createXorJoinSplitNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
-        XORSplitJoinOperatorTransitionModel transition = (XORSplitJoinOperatorTransitionModel) container.getElementById("t1");
+        XORJoinSplitOperatorTransitionModel transition = (XORJoinSplitOperatorTransitionModel) container.getElementById("t1");
         PlaceModel centerPlace = transition.getCenterPlace();
         centerPlace.setTokens(1);
 
