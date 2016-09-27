@@ -110,7 +110,7 @@ public class TransitionModel extends AbstractPetriNetElementModel {
      * <p>
      * Active means, that their token count is greater or equal to the weight of the arc.
      *
-     * @return Number of places that contain at least one token
+     * @return the number of incoming places which are active
      */
     public int getNumIncomingActivePlaces() {
         // TODO: This is an error condition, triggered by a broken model (e.g.
