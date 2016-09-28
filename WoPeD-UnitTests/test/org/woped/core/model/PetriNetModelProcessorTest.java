@@ -157,7 +157,7 @@ public class PetriNetModelProcessorTest {
         private String transition1Id;
         private ModelElementContainer container;
 
-        public SimpleDemoData invoke() {
+        SimpleDemoData invoke() {
             place1Id = "p1";
             PlaceModel place1 = mock(PlaceModel.class);
             DefaultPort place1port = mock(DefaultPort.class);

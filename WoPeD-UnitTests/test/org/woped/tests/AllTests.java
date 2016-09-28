@@ -1,4 +1,4 @@
-package org.woped.tests.allTests;
+package org.woped.tests;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -10,7 +10,11 @@ import org.woped.qualanalysis.AllTestsQualAnalysis;
 
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({SoundnessTests.class, AllTestsCore.class, AllTestsFile.class, AllTestsMetrics.class, AllTestsQualAnalysis.class})
+@Suite.SuiteClasses({SoundnessTests.class,
+        AllTestsCore.class,
+        AllTestsFile.class,
+        AllTestsMetrics.class,
+        AllTestsQualAnalysis.class})
 
 public class AllTests {
 }

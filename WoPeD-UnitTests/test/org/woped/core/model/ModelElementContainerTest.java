@@ -417,6 +417,7 @@ public class ModelElementContainerTest {
         assertTrue(result.containsKey(target2.getId()));
         assertEquals(result.get(target2.getId()), target2);
 
+        //noinspection SuspiciousMethodCalls
         assertFalse(result.containsKey(target3));
     }
 

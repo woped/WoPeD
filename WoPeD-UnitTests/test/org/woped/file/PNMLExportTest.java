@@ -1,9 +1,6 @@
 package org.woped.file;
 
 import org.junit.After;
-
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -16,6 +13,8 @@ import org.woped.pnml.*;
 import java.awt.geom.Point2D;
 import java.util.Vector;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class PNMLExportTest {
@@ -308,7 +307,7 @@ public class PNMLExportTest {
         PlaceModel p1;
         XORJoinSplitOperatorTransitionModel t1;
 
-        public DemoNet() {
+        DemoNet() {
 
             processor = new PetriNetModelProcessor();
             container = processor.getElementContainer();

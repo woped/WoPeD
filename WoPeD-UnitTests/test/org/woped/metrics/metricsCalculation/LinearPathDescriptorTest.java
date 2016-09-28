@@ -8,10 +8,9 @@ import org.woped.core.model.PetriNetModelProcessor;
 
 import java.util.Set;
 
+import static org.junit.Assert.*;
 import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.PLACE_TYPE;
 import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE;
-
-import static org.junit.Assert.*;
 
 public class LinearPathDescriptorTest {
 
