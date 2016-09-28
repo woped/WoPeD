@@ -1,8 +1,10 @@
 package org.woped.tests.qualanalysis.soundness.algorithms.generic.scc;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Set;
 
-import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,19 +19,19 @@ public class StronglyConnectedComponentTestGenTarjanTest {
 	@Before
 	public void setUp() throws Exception {
 		mNetMock = new MNetMock();
-		stronglyConnectedComponentTestGenTarjan = new StronglyConnectedComponentTestGenTarjan<Marking>(mNetMock);
+		stronglyConnectedComponentTestGenTarjan = new StronglyConnectedComponentTestGenTarjan<>(mNetMock);
 	}
 
 	@Test
 	public void testGetStronglyConnectedComponents() {
 		Set<Set<Marking>> actual = stronglyConnectedComponentTestGenTarjan.getStronglyConnectedComponents();
-		
-		Assert.assertFalse(actual.isEmpty());
-		}
+
+		assertFalse(actual.isEmpty());
+	}
 
 	@Test
 	public void testIsStronglyConnected() {
-		Assert.assertTrue(stronglyConnectedComponentTestGenTarjan.isStronglyConnected());
+		assertTrue(stronglyConnectedComponentTestGenTarjan.isStronglyConnected());
 	}
 
 }
