@@ -8,13 +8,19 @@ import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.XORJoinSplitOperatorTransitionModel;
+import org.woped.core.utilities.ILogger;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.file.yawl.wfnet.Place;
+import org.woped.qualanalysis.Constants;
 
 import java.beans.PropertyChangeSupport;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
@@ -24,15 +30,18 @@ import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.TRANS_O
 public class TokenGameControllerTest {
 
     private TokenGameController sut;
+    private ILogger mockLogger;
 
     @Before
     public void setUp() throws Exception {
-
+        mockLogger = mock(ILogger.class);
+        LoggerManager.resetForTesting();
+        LoggerManager.register(mockLogger, Constants.QUALANALYSIS_LOGGER);
     }
 
     @After
     public void tearDown() throws Exception {
-
+        LoggerManager.resetForTesting();
     }
 
     @Test
@@ -392,6 +401,226 @@ public class TokenGameControllerTest {
         assertEquals("Second place should not change tokens", expectedSource2, actualSource2);
     }
 
+    @Test
+    public void produceTokensBackward_arcFromPlaceToTransition_sourcePlaceReceivesToken() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        PlaceModel p1 = (PlaceModel) container.getElementById("p1");
+        ArcModel reversedArc = container.findArc("p1", "t1");
+
+        int expected = p1.getVirtualTokenCount() + reversedArc.getInscriptionValue();
+        sut.produceTokensBackward(reversedArc);
+
+        int actual = p1.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void produceTokensBackward_arcFromTransitionToPlace_logsError() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("t1", "p2");
+
+        sut.produceTokensBackward(reversedArc);
+        verify(mockLogger).warn("TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + reversedArc.getId());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void produceTokensBackward_arcIsNull_throwsException() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        sut.produceTokensBackward(null);
+    }
+
+    @Test
+    public void produceTokensBackward_arcFromNotExistingSource_doesNothing() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+
+        ArcModel reversedArc = mock(ArcModel.class);
+        when(reversedArc.getSourceId()).thenReturn("p6");
+
+        sut.produceTokensBackward(reversedArc);
+    }
+
+    @Test
+    public void produceTokens_arcFromTransitionToPlace_placeReceivesToken() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        PlaceModel p2 = (PlaceModel) container.getElementById("p2");
+        ArcModel arc = container.findArc("t1", "p2");
+
+        int expected = p2.getVirtualTokenCount() + arc.getInscriptionValue();
+        sut.produceTokens(arc);
+
+        int actual = p2.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void produceTokens_arcIsNull_throwsException() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        sut.produceTokens(null);
+    }
+
+    @Test
+    public void produceTokens_arcFromPlaceToTransition_logsError() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel arc = container.findArc("p1", "t1");
+        sut.produceTokens(arc);
+
+        verify(mockLogger).warn("TokenGame: Cannot receive token. Target is not a place. Ignore arc: " + arc.getId());
+    }
+
+    @Test
+    public void produceTokens_arcToNotExistingPlace_doesNothing() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+
+        ArcModel arc = mock(ArcModel.class);
+        when(arc.getTargetId()).thenReturn("p6");
+
+        sut.produceTokens(arc);
+    }
+
+    @Test
+    public void consumeTokens_arcFromPlaceToTransition_placeReducesTokens() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        PlaceModel source = (PlaceModel) container.getElementById("p1");
+        source.setVirtualTokens(2);
+
+        ArcModel arc = container.findArc("p1", "t1");
+
+        int expected = source.getVirtualTokenCount() - arc.getInscriptionValue();
+        sut.consumeTokens(arc);
+
+        int actual = source.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void consumeTokens_arcIsNull_throwsException() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        sut.produceTokens(null);
+    }
+
+    @Test
+    public void consumeTokens_arcFromTransitionToPlace_logsWarning() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel arc = container.findArc("t1", "p2");
+        sut.consumeTokens(arc);
+
+        verify(mockLogger).warn("TokenGame: Cannot send token. Source is not a place. Ignore arc: " + arc.getId());
+    }
+
+    @Test
+    public void consumeTokens_arcToNotExistingPlace_doesNothing() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+
+        ArcModel arc = mock(ArcModel.class);
+        when(arc.getTargetId()).thenReturn("p7");
+
+        sut.consumeTokens(arc);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void consumeTokensBackward_arcIsNull_throwsException() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        sut.consumeTokensBackward(null);
+    }
+
+    @Test
+    public void consumeTokensBackward_arcFromTransitionToPlace_placeReducesTokens() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        PlaceModel p2 = (PlaceModel) container.getElementById("p2");
+        p2.setVirtualTokens(2);
+
+        ArcModel reversedArc = container.findArc("t1", "p2");
+
+        int expected = p2.getVirtualTokenCount() - reversedArc.getInscriptionValue();
+        sut.consumeTokensBackward(reversedArc);
+
+        int actual = p2.getVirtualTokenCount();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void consumeTokensBackward_arcFromPlaceToTransition_logsWarning() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel reversedArc = container.findArc("p1", "t1");
+
+        sut.consumeTokensBackward(reversedArc);
+        verify(mockLogger).warn("TokenGame: Cannot send token. Source is not a place. Ignore arc: " + reversedArc.getId());
+    }
+
+    @Test
+    public void consumeTokensBackward_arcToNotExistingPlace_doesNothing() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+
+        ArcModel arc = mock(ArcModel.class);
+        when(arc.getTargetId()).thenReturn("p7");
+
+        sut.consumeTokensBackward(arc);
+    }
+
+    @Test
+    public void setArcActiveState_activateAndPlaceFulfillsRequirements_arcIsSetToTrue() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel arc = container.findArc("p1", "t1");
+        arc.setActivated(false);
+
+        PlaceModel p1 = (PlaceModel) container.getElementById("p1");
+        p1.setVirtualTokens(arc.getInscriptionValue());
+
+        boolean newState = true;
+        sut.setArcActiveState(arc, newState);
+
+        assertTrue(arc.isActivated());
+    }
+
+    @Test
+    public void setArcActiveState_activateAndPlaceDoesNotFulfillsRequirements_arcStateIsFalse() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        ArcModel arc = container.findArc("p1", "t1");
+        arc.setActivated(false);
+
+        PlaceModel p1 = (PlaceModel) container.getElementById("p1");
+        p1.setVirtualTokens(arc.getInscriptionValue() - 1);
+
+        boolean newState = true;
+        sut.setArcActiveState(arc, newState);
+
+        assertFalse(arc.isActivated());
+    }
+
+    @Test
+    public void setArcActiveState_deactivateArcIsAlreadyActivated_arcIsNotActivated() throws Exception {
+        sut = createTestInstance(createSimpleNet());
+        ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
+
+        boolean previousState = true;
+        ArcModel arc = container.findArc("p1", "t1");
+        arc.setActivated(previousState);
+
+        sut.setArcActiveState(arc, false);
+
+        assertFalse(arc.isActivated());
+    }
+
     private TokenGameController createTestInstance(PetriNetModelProcessor net) {
 
         IEditor editor = mock(IEditor.class);
@@ -400,6 +629,28 @@ public class TokenGameControllerTest {
 
         PropertyChangeSupport propertyChangedSupport = new PropertyChangeSupport(editor);
         return new TokenGameController(editor, propertyChangedSupport);
+    }
+
+    private PetriNetModelProcessor createSimpleNet() {
+
+        PetriNetModelProcessor processor = new PetriNetModelProcessor();
+
+        CreationMap placeMap = CreationMap.createMap();
+        placeMap.setType(AbstractPetriNetElementModel.PLACE_TYPE);
+        for (int i = 1; i <= 2; i++) {
+            placeMap.setId("p" + i);
+            processor.createElement(placeMap);
+        }
+
+        CreationMap transitionMap = CreationMap.createMap();
+        transitionMap.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+        transitionMap.setId("t1");
+        processor.createElement(transitionMap);
+
+        processor.createArc("p1", "t1");
+        processor.createArc("t1", "p2");
+
+        return processor;
     }
 
     private PetriNetModelProcessor createXorJoinNet() {

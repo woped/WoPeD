@@ -515,8 +515,8 @@ public class TokenGameController implements ITokenGameController {
                 // LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame: FIRE
                 // simple Transition:
                 // "+transition.getId());
-                receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
-                sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+                produceTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
+                consumeTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
                 if (transition.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
                     if (stepInto) {
                         // Step into sub-process and process it in a new modal editor
@@ -532,8 +532,8 @@ public class TokenGameController implements ITokenGameController {
                     // LoggerManager.debug(Constants.EDITOR_LOGGER, "TokenGame:
                     // FIRE AND-Transition:
                     // "+transition.getId());
-                    receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
-                    sendTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+                    produceTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
+                    consumeTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
                     actionPerformed = true;
 
                 } else if ((operator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE) || (operator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
@@ -614,9 +614,9 @@ public class TokenGameController implements ITokenGameController {
             tempOperator = (OperatorTransitionModel) source;
             if (tempOperator.isActivated()) {
                 if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_SPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) {
-                    receiveTokens(arc);
+                    produceTokens(arc);
                     if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
-                        sendTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
+                        consumeTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
                     } else {
                         // Special code for splitjoin. We have to take the
                         // token from the center place
@@ -631,9 +631,9 @@ public class TokenGameController implements ITokenGameController {
         } else if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
             tempOperator = (OperatorTransitionModel) target;
             if (tempOperator.getOperatorType() == OperatorTransitionModel.XOR_JOIN_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_ANDSPLIT_TYPE || tempOperator.getOperatorType() == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
-                sendTokens(arc);
+                consumeTokens(arc);
                 if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
-                    receiveTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
+                    produceTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
                 } else {
                     // Special code for splitjoin. We have to send the token
                     // to the center place
@@ -685,8 +685,8 @@ public class TokenGameController implements ITokenGameController {
      */
     private boolean reverseTransition(TransitionModel transition) {
         boolean actionPerformed;
-        receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
-        sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
+        produceTokensBackward(getPetriNet().getElementContainer().getIncomingArcs(transition.getId()));
+        consumeTokensBackward(getPetriNet().getElementContainer().getOutgoingArcs(transition.getId()));
         actionPerformed = true;
         return actionPerformed;
     }
@@ -708,9 +708,9 @@ public class TokenGameController implements ITokenGameController {
 
         if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
             tempOperator = (OperatorTransitionModel) target;
-            receiveBackwardTokens(arc);
+            produceTokensBackward(arc);
             if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
-                sendBackwardTokens(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
+                consumeTokensBackward(getPetriNet().getElementContainer().getOutgoingArcs(tempOperator.getId()));
                 actionPerformed = true;
             } else {
                 // Special code for splitjoin. We have to take the token from the center place
@@ -722,9 +722,9 @@ public class TokenGameController implements ITokenGameController {
         }
         if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
             tempOperator = (OperatorTransitionModel) source;
-            sendBackwardTokens(arc);
+            consumeTokensBackward(arc);
             if (tempOperator.getOperatorType() != OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) {
-                receiveBackwardTokens(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
+                produceTokensBackward(getPetriNet().getElementContainer().getIncomingArcs(tempOperator.getId()));
                 actionPerformed = true;
             } else {
                 // Special code for splitjoin. We have to send the token to the center place
@@ -737,22 +737,50 @@ public class TokenGameController implements ITokenGameController {
         return actionPerformed;
     }
 
-    /*
-     * Sets incoming Arcs of an Transition active, if the Place before has Tokens. Sets incoming Arcs of an Transition inactive, without any condition.
+    /**
+     * Sets the active state of the incoming arcs of the transition.
+     * <p>
+     * if param {@code activate} is set to true, all arcs will be checked, if the fulfill the requirement to activate
+     * the transition. If so, the state of the arc will be set to true.
+     * <p>
+     * if param {@code activate} is set to false, the activated state of all arcs will be set to false without any
+     * checks.
+     * <p>
+     * Access package local for testing purposes.
+     *
+     * @param transitionId the id of the transition.
+     * @param activate     flag if the arcs should be activated or deactivated.
      */
-    private void setIncomingArcsActive(Object transitionId, boolean active) {
+    void setIncomingArcsActive(Object transitionId, boolean activate) {
         Iterator<String> incomingArcsIter = getPetriNet().getElementContainer().getIncomingArcs(transitionId).keySet().iterator();
         while (incomingArcsIter.hasNext()) {
             ArcModel arc = getPetriNet().getElementContainer().getArcById(incomingArcsIter.next());
-            if (active) {
-                PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getSourceId());
-                if (place.getVirtualTokenCount() > 0) {
-                    arc.setActivated(true);
-                    // TODO: check weight
-                }
-            } else {
-                arc.setActivated(false);
+            setArcActiveState(arc, activate);
+        }
+    }
+
+    /**
+     * Sets the active state of the arc.
+     * <p>
+     * If param {@code newState} is set to {@code true}, the source place of the arc will be checked, if it fulfills
+     * the requirements to enable the target transition.
+     * <p>
+     * If param {@code newState} is set to {@code false}, the state will be set without any further checks.
+     * <p>
+     * Access package-locale for testing purposes.
+     *
+     * @param arc      the arc to set the active state.
+     * @param newState the new state to set.
+     */
+    void setArcActiveState(ArcModel arc, boolean newState) {
+        if (newState) {
+            PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getSourceId());
+            if (place.getVirtualTokenCount() > 0) {
+                arc.setActivated(true);
+                // TODO: check weight
             }
+        } else {
+            arc.setActivated(false);
         }
     }
 
@@ -769,18 +797,23 @@ public class TokenGameController implements ITokenGameController {
     /*
      * Send (subtract) Tokens from the places that are the source of the Map-filled arcs. ATTENTION: source ot the arcs must be always a place
      */
-    private void sendTokens(Map<String, ArcModel> arcsToFire) {
+    private void consumeTokens(Map<String, ArcModel> arcsToFire) {
         Iterator<String> arcIter = arcsToFire.keySet().iterator();
         while (arcIter.hasNext()) {
-            sendTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
-
+            consumeTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
         }
     }
 
-    /*
-     * Send (subtract) Tokens from the arc's source. ATTENTION: source must be a Place.
+    /**
+     * Consumes the tokens in the source place of the arc
+     * <p>
+     * The arc must point from a place to a transition.
+     * <p>
+     * Access package local for testing purposes.
+     *
+     * @param arc the arc which consumes the tokens.
      */
-    private void sendTokens(ArcModel arc) {
+    void consumeTokens(ArcModel arc) {
         try {
             PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getSourceId());
             if (place != null) {
@@ -795,18 +828,23 @@ public class TokenGameController implements ITokenGameController {
     /*
      * Receive (add) Tokens to the places that are the target or the Map-filled arcs. ATTENTION: targets must be places.
      */
-    private void receiveTokens(Map<String, Object> arcsToFire) {
+    private void produceTokens(Map<String, Object> arcsToFire) {
         Iterator<String> arcIter = arcsToFire.keySet().iterator();
         while (arcIter.hasNext()) {
-            receiveTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
-
+            produceTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
         }
     }
 
-    /*
-     * Receive (add) Tokens to the place that is the target of the arc. ATTENTION: Target must be a place.
+    /**
+     * Adds the by firing the given arc produced tokens to its target place.
+     * <p>
+     * The arc must point from a transition to a place.
+     * <p>
+     * Access package local for testing purposes.
+     *
+     * @param arc the fired arc to produce the tokens for. Not {@code null}
      */
-    private void receiveTokens(ArcModel arc) {
+    void produceTokens(ArcModel arc) {
         try {
             PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getTargetId());
             if (place != null) {
@@ -822,18 +860,24 @@ public class TokenGameController implements ITokenGameController {
      * Send (subtract) Tokens from the places that are the target of the arcs. ATTENTION: target of the arcs must be always a place
      */
 
-    private void sendBackwardTokens(Map<String, Object> arcsToFire) {
+    private void consumeTokensBackward(Map<String, Object> arcsToFire) {
         Iterator<String> arcIter = arcsToFire.keySet().iterator();
         while (arcIter.hasNext()) {
-            sendBackwardTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
+            consumeTokensBackward(getPetriNet().getElementContainer().getArcById(arcIter.next()));
 
         }
     }
 
-    /*
-     * Send (subtract) Tokens from the arc's target on Backward stepping. ATTENTION: target must be a Place.
+    /**
+     * Consumes produced by firing the given arc in its target place.
+     * <p>
+     * The arc must point from a transition to a place.
+     * <p>
+     * Access package local for testing purposes.
+     *
+     * @param arc the arc to fire reverse.
      */
-    private void sendBackwardTokens(ArcModel arc) {
+    void consumeTokensBackward(ArcModel arc) {
         try {
             PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getTargetId());
             if (place != null) {
@@ -848,18 +892,25 @@ public class TokenGameController implements ITokenGameController {
     /*
      * Receive Tokens when doing backward steps
      */
-    private void receiveBackwardTokens(Map<String, ArcModel> arcsToFire) {
+    private void produceTokensBackward(Map<String, ArcModel> arcsToFire) {
         Iterator<String> arcIter = arcsToFire.keySet().iterator();
         while (arcIter.hasNext()) {
-            receiveBackwardTokens(getPetriNet().getElementContainer().getArcById(arcIter.next()));
+            produceTokensBackward(getPetriNet().getElementContainer().getArcById(arcIter.next()));
 
         }
     }
 
-    /*
-     * Receive (add) Tokens to the place that is the source of the arc. ATTENTION: Target must be a place.
+    /**
+     * Sends the tokens backwards along the given arc.
+     * <p>
+     * The arc must point from a place to a transition.
+     * The tokens will be added to the places virtual token count.
+     * <p>
+     * Access package private for testing purposes.
+     *
+     * @param arc the arc to fire reverse.
      */
-    private void receiveBackwardTokens(ArcModel arc) {
+    void produceTokensBackward(ArcModel arc) {
         try {
             PlaceModel place = (PlaceModel) getPetriNet().getElementContainer().getElementById(arc.getSourceId());
             if (place != null) {
